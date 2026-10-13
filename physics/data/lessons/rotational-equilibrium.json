@@ -1,0 +1,88 @@
+{
+ "topic": "rotational-equilibrium",
+ "hook": "A shop sign sticks straight out from a wall on a beam held by a slanted cable. Nothing moves, yet the cable pulls hard and the bolt at the wall pushes in a direction you might not guess. Two rules, zero net force and zero net torque, tell you every force on it.",
+ "prereq": [
+  {
+   "q": "An object at rest has a net force on it of",
+   "options": [
+    "zero",
+    "its weight",
+    "the normal force",
+    "its mass times g"
+   ],
+   "correct": 0,
+   "why": "Translational equilibrium: ΣF = 0.",
+   "review": "first-law"
+  },
+  {
+   "q": "Counterclockwise is positive. A force pushing down to the right of a pivot gives a torque that is",
+   "options": [
+    "negative",
+    "positive",
+    "zero",
+    "positive or negative, depending on size"
+   ],
+   "correct": 0,
+   "why": "Down on the right turns the object clockwise.",
+   "review": "torque"
+  }
+ ],
+ "figure": {
+  "figure": "seesaw-torques",
+  "caption": "A balanced seesaw: 470 N·m counterclockwise equals 470 N·m clockwise about the pivot, and the pivot pushes up with the total weight."
+ },
+ "chain": [
+  {
+   "cause": "The net torque on an object is zero",
+   "effect": "its angular velocity does not change (rotational first law)"
+  },
+  {
+   "cause": "The net force on it is also zero",
+   "effect": "its center of mass does not accelerate"
+  },
+  {
+   "cause": "Both hold and the object starts at rest",
+   "effect": "it stays at rest: static equilibrium"
+  },
+  {
+   "cause": "You take torques about the point where an unknown force acts",
+   "effect": "that force drops out of the torque equation"
+  },
+  {
+   "cause": "One torque in the balance changes",
+   "effect": "the net torque is no longer zero and the object starts to turn"
+  }
+ ],
+ "ideas": [
+  "Rotational equilibrium: <b>Στ = 0</b>, so ω stays constant. Translational equilibrium: <b>ΣF = 0</b>. They are independent; static objects need both.",
+  "In equilibrium you may take torques about any point. Choose the point where an unknown force acts (a hinge, a support) to remove it.",
+  "A uniform object’s weight acts at its center; it has a torque unless that point is on the axis.",
+  "A hinge force usually has both a horizontal and a vertical part. Do not assume its direction.",
+  "Draw a force diagram first, each force at its point of application."
+ ],
+ "misconception": {
+  "wrong": "A hinge or pivot always pushes straight up, and its force must be included in the torque sum.",
+  "right": "A hinge can push in any direction that keeps the net force zero, often slanted. Its torque about the hinge itself is zero, which is why the hinge is the best axis to choose."
+ },
+ "check": [
+  "phys-rotational-equilibrium-1",
+  "phys-rotational-equilibrium-2",
+  "phys-rotational-equilibrium-3",
+  "phys-rotational-equilibrium-4",
+  "phys-rotational-equilibrium-5",
+  "phys-rotational-equilibrium-10",
+  "phys-rotational-equilibrium-11",
+  "phys-rotational-equilibrium-14"
+ ],
+ "summary": "An object is in rotational equilibrium when the net torque on it is zero, so its angular velocity stays constant; it is in translational equilibrium when the net force is zero. A static object needs both. Take torques about the point where an unknown force (such as a hinge force) acts, and remember that a hinge force can point in any direction.",
+ "connections": [
+  {
+   "href": "../notes/torque.html",
+   "label": "Back: torque and lever arm (5.3)"
+  },
+  {
+   "href": "../notes/rotational-second-law.html",
+   "label": "Next: what an unbalanced torque does (5.6)"
+  }
+ ]
+}

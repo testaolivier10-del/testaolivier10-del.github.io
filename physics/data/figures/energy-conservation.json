@@ -1,0 +1,12 @@
+{
+ "energy-track-bars": {
+  "file": "figures/energy-track-bars.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A block released from rest at A, 6.0 m above the lowest point B of a frictionless curved track, slides through B and up to C, 2.0 m above B. Bar charts at A, B and C show kinetic energy, gravitational potential energy and their constant total: 0 and 6 units at A, 6 and 0 at B, 4 and 2 at C."
+ }
+}

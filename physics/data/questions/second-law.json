@@ -1,0 +1,509 @@
+{
+ "stimuli": {
+  "second-law-s1": {
+   "kind": "diagram",
+   "title": "A cart pulled by a hanging block",
+   "text": "<p>A 0.80 kg cart on a level track is tied to a light string that runs over a light, frictionless pulley to a hanging 0.20 kg block. Friction on the cart is negligible. The block is released from rest. Use g = 9.8 m/s².</p>",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 250\" role=\"img\" aria-label=\"A cart on a level table is tied to a light string that runs over a light pulley at the table edge to a hanging block.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"420\" height=\"250\" fill=\"#FFFFFF\"/><rect x=\"20\" y=\"120\" width=\"300\" height=\"14\" rx=\"3\" fill=\"#EEF1EF\" stroke=\"#1F2A28\" stroke-width=\"2\"/><line x1=\"40\" y1=\"134\" x2=\"40\" y2=\"240\" stroke=\"#5A6268\" stroke-width=\"5\"/><line x1=\"300\" y1=\"134\" x2=\"300\" y2=\"240\" stroke=\"#5A6268\" stroke-width=\"5\"/><rect x=\"60\" y=\"76\" width=\"100\" height=\"30\" rx=\"5\" fill=\"#E6E0D2\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"76\" cy=\"113\" r=\"7\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"144\" cy=\"113\" r=\"7\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"110\" y=\"96\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">cart</text><line x1=\"311\" y1=\"123\" x2=\"330\" y2=\"104\" stroke=\"#5A6268\" stroke-width=\"4\"/><circle cx=\"330\" cy=\"104\" r=\"13\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"330\" cy=\"104\" r=\"3\" fill=\"#1F2A28\"/><line x1=\"160\" y1=\"91\" x2=\"330\" y2=\"91\" stroke=\"#1F2A28\" stroke-width=\"1.8\"/><line x1=\"343\" y1=\"104\" x2=\"343\" y2=\"180\" stroke=\"#1F2A28\" stroke-width=\"1.8\"/><line x1=\"343\" y1=\"180\" x2=\"343\" y2=\"190\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"324\" y=\"190\" width=\"38\" height=\"36\" rx=\"4\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><line x1=\"324\" y1=\"202\" x2=\"362\" y2=\"202\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"324\" y1=\"214\" x2=\"362\" y2=\"214\" stroke=\"#5A6268\" stroke-width=\"1\"/><text x=\"343\" y=\"213\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">block</text></svg>"
+  },
+  "second-law-s2": {
+   "kind": "table",
+   "title": "Acceleration against net force",
+   "text": "<p>Students pull a 2.0 kg cart along a level, low-friction track with a force sensor and measure its acceleration with a motion detector. They also repeat one trial with 2.0 kg of bricks loaded onto the cart.</p>",
+   "table": {
+    "caption": "Net force on the cart and its acceleration",
+    "cols": [
+     "Trial",
+     "Mass of cart and load (kg)",
+     "Net force (N)",
+     "Acceleration (m/s²)"
+    ],
+    "rows": [
+     [
+      "1",
+      "2.0",
+      "1.0",
+      "0.51"
+     ],
+     [
+      "2",
+      "2.0",
+      "2.0",
+      "0.98"
+     ],
+     [
+      "3",
+      "2.0",
+      "3.0",
+      "1.52"
+     ],
+     [
+      "4",
+      "2.0",
+      "4.0",
+      "2.01"
+     ],
+     [
+      "5",
+      "4.0",
+      "4.0",
+      "0.99"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-second-law-1",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "second-law-s1",
+   "q": "Choose the cart, string and block as the system. What is the size of the acceleration of the cart, in m/s²?",
+   "numeric": {
+    "answer": 2,
+    "tol": 0.1,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "units": [
+     "m/s/s"
+    ],
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "Value: that divides by the cart's mass only. The block's weight speeds up both the cart and the block, so divide by the total, 1.00 kg."
+     },
+     {
+      "value": 9.8,
+      "why": "Value: that is free fall. The block cannot fall freely, because the string makes it drag the cart along."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For the whole system, the only external force along the string's path that is not balanced is the block's weight, mg = 0.20 kg × 9.8 m/s² = 1.96 N (the cart's weight is balanced by the track; the tension is internal). a = F_net ÷ m_total = 1.96 N ÷ 1.00 kg = 2.0 m/s²."
+   }
+  },
+  {
+   "id": "phys-second-law-2",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "second-law-s1",
+   "q": "What is the tension in the string while the block falls, in newtons?",
+   "numeric": {
+    "answer": 1.6,
+    "tol": 0.1,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "Value: 1.96 N is the block's weight. The tension is less than that, because the block speeds up downward, so the net force on it points down."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Apply the second law to the cart alone: the only horizontal force on it is the tension, so F_T = Ma = 0.80 kg × 1.96 m/s² = 1.6 N (1.57 N rounded)."
+   }
+  },
+  {
+   "id": "phys-second-law-3",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "second-law-s1",
+   "q": "How does the tension in the string compare with the weight of the hanging block while the block falls?",
+   "options": [
+    "Less than the weight, so the block speeds up downward",
+    "Equal to the weight, since the string holds the block",
+    "Greater than the weight, since it also pulls the cart",
+    "Zero, since the block is falling"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The block accelerates downward, so the net force on it points down: its weight must be larger than the string's upward pull. F_T = 1.6 N while mg = 1.96 N.",
+    "options": [
+     "Right: a downward net force on the block means F_g > F_T.",
+     "Tension equals the weight only if the block hangs at rest or moves at constant velocity.",
+     "Pulling the cart does not make the tension exceed the weight; the block's own motion caps it below mg.",
+     "The string stays tight and pulls on the block the whole time; otherwise the cart would not speed up."
+    ]
+   }
+  },
+  {
+   "id": "phys-second-law-4",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "second-law-s1",
+   "q": "The hanging block is replaced by one with twice the mass, 0.40 kg. How does the acceleration change?",
+   "options": [
+    "It rises by less than a factor of 2",
+    "It doubles exactly",
+    "It stays the same as before",
+    "It increases by more than a factor of 2"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "a = mg ÷ (M + m). Doubling m doubles the top (the pulling weight) but also increases the bottom, from 1.00 kg to 1.20 kg: a = 3.92 N ÷ 1.20 kg = 3.3 m/s², up by a factor of 1.67.",
+    "options": [
+     "Right: the extra mass both pulls harder and has to be accelerated.",
+     "It would double only if the total mass stayed the same; the heavier block adds mass to the system.",
+     "A larger pulling weight with the same cart gives a larger acceleration.",
+     "The total mass grows too, so the gain is less than the gain in the pull."
+    ]
+   }
+  },
+  {
+   "id": "phys-second-law-5",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "second-law-s1",
+   "q": "Why can the tension be left out when the second law is applied to the cart-string-block system as a whole?",
+   "options": [
+    "Both ends of the string pull on objects inside the system",
+    "The tension is too small to change the acceleration",
+    "The tension acts in the same direction as the weight",
+    "The pulley removes the tension from the system"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both ends of the string pull on objects inside the system, so tension is internal. Internal forces do not change the motion of the system's center of mass, so only external forces go into ΣF = m_total a.",
+    "options": [
+     "Right: internal forces drop out for the system.",
+     "The tension is 1.6 N, not negligible; it drops out because it is internal.",
+     "On the block the tension points up, opposite the weight.",
+     "An ideal pulley only turns the string; the tension is still there."
+    ]
+   }
+  },
+  {
+   "id": "phys-second-law-6",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "second-law-s2",
+   "q": "Which conclusion do trials 1 to 4 best support?",
+   "options": [
+    "For a fixed mass, the acceleration is proportional to the net force",
+    "For a fixed mass, the acceleration is the same at any force",
+    "For a fixed mass, the acceleration grows faster than the force",
+    "For a fixed mass, the acceleration is inversely proportional to the force"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As the net force goes 1.0 → 2.0 → 3.0 → 4.0 N, the acceleration goes about 0.5 → 1.0 → 1.5 → 2.0 m/s²: doubling the force doubles the acceleration, so a ∝ F_net.",
+    "options": [
+     "Right: the ratio a ÷ F_net stays about 0.50 per kg.",
+     "The acceleration changes from trial to trial, rising with the force.",
+     "Quadrupling the force quadruples the acceleration, no more; the relationship is linear.",
+     "Inverse proportion would make the acceleration fall as the force rises; it rises."
+    ]
+   }
+  },
+  {
+   "id": "phys-second-law-7",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "second-law-s2",
+   "q": "Use trials 1 to 4: a graph of acceleration against net force is a straight line through the origin. What is its slope, in kg⁻¹ (equivalently m/s² per N)? Use trials 1 and 4.",
+   "numeric": {
+    "answer": 0.5,
+    "tol": 0.01,
+    "unit": "1/kg",
+    "sigfigs": 2,
+    "units": [
+     "kg^-1",
+     "m/s^2/N",
+     "m/(N*s^2)"
+    ],
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "Value: 2.0 kg is the mass, the reciprocal of the slope. The slope of a against F is 1/m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Slope = Δa ÷ ΔF = (2.01 − 0.51) m/s² ÷ (4.0 − 1.0) N = 1.50 ÷ 3.0 = 0.50 kg⁻¹. By the second law a = F_net/m, so the slope is 1/m: 1 ÷ 0.50 kg⁻¹ = 2.0 kg, the cart's mass."
+   }
+  },
+  {
+   "id": "phys-second-law-8",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "second-law-s2",
+   "q": "Compare trials 4 and 5. What does doubling the mass do at the same net force?",
+   "options": [
+    "It halves the acceleration",
+    "It doubles the acceleration",
+    "It leaves the acceleration unchanged",
+    "It reduces the acceleration to a quarter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Same 4.0 N, mass 2.0 → 4.0 kg, acceleration 2.01 → 0.99 m/s²: about half. a = F_net/m, so a ∝ 1/m.",
+    "options": [
+     "Right: a is inversely proportional to m at fixed net force.",
+     "More mass makes the cart harder to speed up, not easier.",
+     "The data show a clear drop, from 2.01 to 0.99 m/s².",
+     "A quarter would need a square: a ∝ 1/m², which the data do not show."
+    ]
+   }
+  },
+  {
+   "id": "phys-second-law-9",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "second-law-s2",
+   "q": "In trial 3 the net force is 3.0 N. At the moment the reading is taken, the cart is moving to the left. What can you conclude?",
+   "options": [
+    "It speeds up if the net force also points left",
+    "The net force points left, as the cart moves left",
+    "It is speeding up, as there is a net force on it",
+    "Its velocity is constant, as the force is constant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The second law fixes the direction of the acceleration, not of the velocity: the acceleration points along the net force. If the net force points right while the cart moves left, the cart slows down.",
+    "options": [
+     "Right: speeding up needs the net force along the velocity.",
+     "The direction of motion does not set the direction of the net force; a cart can move left while being pushed right.",
+     "A net force opposite the velocity slows the cart down.",
+     "A constant nonzero net force gives a constant acceleration, so the velocity changes."
+    ]
+   }
+  },
+  {
+   "id": "phys-second-law-10",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A net force of 12 N acts on a 3.0 kg box. What is the size of the box's acceleration? Give the value and its unit.",
+   "numeric": {
+    "answer": 4,
+    "tol": 0.1,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "askUnit": true,
+    "units": [
+     "m/s/s",
+     "N/kg"
+    ],
+    "mistakes": [
+     {
+      "value": 36,
+      "why": "Value: that multiplies the force by the mass. The acceleration is F_net divided by m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "a = F_net ÷ m = 12 N ÷ 3.0 kg = 4.0 m/s² (a newton is a kg·m/s², so N/kg = m/s²)."
+   }
+  },
+  {
+   "id": "phys-second-law-11",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 1200 kg car speeds up from rest to 15 m/s in 5.0 s along a straight, level road. What is the size of the net force on the car, in newtons?",
+   "numeric": {
+    "answer": 3600,
+    "tol": 100,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 18000,
+      "why": "Value: that multiplies mass by velocity. The second law uses the acceleration, Δv/Δt = 3.0 m/s²."
+     },
+     {
+      "value": 12000,
+      "why": "Value: that is the car's weight. The net force along the road comes from its acceleration."
+     }
+    ]
+   },
+   "why": {
+    "correct": "First the acceleration: a = Δv ÷ Δt = (15 m/s − 0) ÷ 5.0 s = 3.0 m/s². Then F_net = ma = 1200 kg × 3.0 m/s² = 3600 N (3.6 × 10³ N)."
+   }
+  },
+  {
+   "id": "phys-second-law-12",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A 2.0 kg box is pulled across a floor by a horizontal 15 N force. Friction on the box is 6.0 N. What is the box's acceleration, in m/s²?",
+   "numeric": {
+    "answer": 4.5,
+    "tol": 0.1,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "units": [
+     "m/s/s"
+    ],
+    "mistakes": [
+     {
+      "value": 7.5,
+      "why": "Value: that uses the 15 N pull alone. Friction pulls back, so subtract it to get the net force."
+     },
+     {
+      "value": 11,
+      "why": "Value: friction opposes the pull, so subtract it rather than add it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The net horizontal force is 15 N − 6.0 N = 9.0 N forward (the vertical forces balance). a = F_net ÷ m = 9.0 N ÷ 2.0 kg = 4.5 m/s²."
+   }
+  },
+  {
+   "id": "phys-second-law-13",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "An elevator moves upward and slows down as it nears the top floor. Which is true of the forces on it?",
+   "options": [
+    "The cable's pull is less than the elevator's weight",
+    "The cable's pull is greater than the elevator's weight",
+    "The cable's pull equals the elevator's weight",
+    "The cable's pull points down to slow it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Moving up and slowing down means the acceleration points down, so the net force points down: Earth's pull is larger than the cable's.",
+    "options": [
+     "Right: acceleration down, net force down.",
+     "A larger pull would speed the elevator up while it rises.",
+     "Equal forces would keep the velocity constant.",
+     "A cable can only pull up on the elevator; it slows because its pull is less than the weight."
+    ]
+   }
+  },
+  {
+   "id": "phys-second-law-14",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "predict",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A constant net force pushes a puck across frictionless ice. Predict how the puck's acceleration changes in each case.",
+   "variables": [
+    {
+     "name": "The net force is doubled, same puck",
+     "answer": "up",
+     "why": "a = F_net/m: doubling the net force doubles a."
+    },
+    {
+     "name": "A puck with twice the mass gets the same net force",
+     "answer": "down",
+     "why": "Twice the mass at the same net force halves a."
+    },
+    {
+     "name": "The puck is already moving fast when the force starts",
+     "answer": "none",
+     "why": "a depends on net force and mass, not on the velocity the puck already has."
+    }
+   ],
+   "why": {
+    "correct": "The second law, a = F_net/m, ties the acceleration to the net force and the mass only."
+   }
+  },
+  {
+   "id": "phys-second-law-15",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A net force F gives an object of mass m an acceleration a. What net force gives an object of mass 3m an acceleration of 2a?",
+   "options": [
+    "6F",
+    "2F/3",
+    "3F/2",
+    "5F"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F_net = ma, so the new net force is (3m)(2a) = 6ma = 6F.",
+    "options": [
+     "Right: both factors multiply.",
+     "This divides by 3 instead of multiplying: more mass needs more force for the same acceleration.",
+     "This divides the factor for a by the factor for m; the second law multiplies them.",
+     "Factors of change multiply, they do not add."
+    ]
+   }
+  },
+  {
+   "id": "phys-second-law-16",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Two teams pull on the ends of a rope. A student says the team that wins must pull harder on the rope. Treat each team as the system. What actually decides which team is accelerated toward the other?",
+   "options": [
+    "The ground's friction on each team's feet",
+    "Which team pulls harder on the rope",
+    "Which team has the greater total mass",
+    "Which team the rope pulls on harder"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An ideal rope pulls both teams with the same tension. The external forces on each team are the rope's pull and the ground's friction on its feet, so the team whose feet get the larger push from the ground has a net force toward its own side.",
+    "options": [
+     "Right: the tension is the same on both teams, so the ground's forces decide.",
+     "With a light rope the two teams pull equally hard on it; one cannot pull harder than the other.",
+     "Mass matters only through how much grip the feet get; it does not decide the net force by itself.",
+     "The rope pulls each team with the same tension."
+    ]
+   }
+  }
+ ]
+}

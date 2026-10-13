@@ -1,0 +1,71 @@
+{
+ "topic": "spring-forces",
+ "hook": "Kitchen scales, car suspensions, trampolines and pogo sticks all rely on the same simple rule: stretch or squash a spring twice as far and it pushes back twice as hard. That one proportionality, Hooke's law, comes back again and again later in the course, so it is worth getting exactly right now.",
+ "prereq": [
+  {
+   "q": "If y is directly proportional to x and x triples, y",
+   "options": [
+    "triples",
+    "stays the same",
+    "is divided by 3",
+    "is multiplied by 9"
+   ],
+   "correct": 0,
+   "why": "Direct proportion: same factor of change.",
+   "review": "math-proportional"
+  },
+  {
+   "q": "A block hangs at rest from a cord. The cord's pull on it is",
+   "options": [
+    "equal to its weight",
+    "larger than its weight",
+    "smaller than its weight",
+    "zero"
+   ],
+   "correct": 0,
+   "why": "At rest, the net force is zero.",
+   "review": "first-law"
+  }
+ ],
+ "figure": {
+  "figure": "spring-hooke",
+  "caption": "Double the hanging weight, double the stretch. The slope of force against stretch is the spring constant."
+ },
+ "chain": [
+  {
+   "cause": "A spring is stretched or compressed by Δx from its relaxed length",
+   "effect": "it exerts a force on whatever is attached to it, toward its relaxed length"
+  },
+  {
+   "cause": "The spring is ideal (massless, within its limit)",
+   "effect": "the force is proportional to the displacement: |F_s| = k|Δx|"
+  },
+  {
+   "cause": "The spring constant k is larger",
+   "effect": "the spring is stiffer: more force for the same stretch, less stretch for the same force"
+  },
+  {
+   "cause": "A mass hangs at rest on the spring",
+   "effect": "kΔx = mg, so measuring the stretch measures the weight (a spring scale)"
+  }
+ ],
+ "ideas": [
+  "<b>Hooke's law</b>: F<sub>s</sub> = −kΔx. Δx is the displacement of the spring's end from its relaxed length; the minus sign means the force points back toward the relaxed length.",
+  "A stretched spring pulls; a compressed spring pushes. The <b>spring constant</b> k, in N/m, measures stiffness.",
+  "An <b>ideal spring</b> is massless and obeys Hooke's law, so it pulls equally on whatever is at each end.",
+  "A graph of |F<sub>s</sub>| against |Δx| is a straight line through the origin with slope k."
+ ],
+ "misconception": {
+  "wrong": "Δx in Hooke's law is the length of the spring.",
+  "right": "Δx is how far the spring is stretched or compressed from its relaxed length. A 30 cm spring stretched to 34 cm has Δx = 0.04 m."
+ },
+ "check": [
+  "phys-spring-forces-1",
+  "phys-spring-forces-2",
+  "phys-spring-forces-3",
+  "phys-spring-forces-6",
+  "phys-spring-forces-7",
+  "phys-spring-forces-8"
+ ],
+ "summary": "An ideal spring exerts a force proportional to its stretch or compression from its relaxed length, F_s = −kΔx, always back toward the relaxed length; the spring constant k (N/m) is the slope of force against stretch, and a hanging mass at rest stretches it by mg/k."
+}

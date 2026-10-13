@@ -1,0 +1,83 @@
+{
+ "topic": "forces-fbd",
+ "hook": "Kick a soccer ball and it flies off; let go of a phone and it drops; lean on a wall and the wall holds you up. Each of these is an interaction between two objects. Learning to see every interaction acting on one object, and to draw them as a free-body diagram, is the single most tested skill in this course.",
+ "prereq": [
+  {
+   "q": "Which quantity is a vector?",
+   "options": [
+    "Force",
+    "Mass",
+    "Distance",
+    "Time"
+   ],
+   "correct": 0,
+   "why": "A force has a size and a direction, so it is a vector. Mass, distance and time are sizes only.",
+   "review": "scalars-vectors"
+  },
+  {
+   "q": "On a line, a 30 m/s velocity to the right and a 10 m/s velocity to the left are written as",
+   "options": [
+    "+30 m/s and −10 m/s",
+    "+30 m/s and +10 m/s",
+    "−30 m/s and +10 m/s",
+    "30 m/s and 10 m/s, with no sign"
+   ],
+   "correct": 0,
+   "why": "Pick right as positive; then left is negative.",
+   "review": "scalars-vectors"
+  },
+  {
+   "q": "The center of mass of a system is",
+   "options": [
+    "its mass-weighted average position",
+    "its geometric middle in every case",
+    "the heaviest part of it",
+    "the point where it touches the ground"
+   ],
+   "correct": 0,
+   "why": "x_cm = Σm·x ÷ Σm weights each position by its mass.",
+   "review": "systems-center-of-mass"
+  }
+ ],
+ "figure": {
+  "figure": "fbd-crate-pulled",
+  "caption": "Each force on the crate, drawn from a dot and labeled with its type and agent. Velocity stays in the scene."
+ },
+ "chain": [
+  {
+   "cause": "Two objects interact (they touch, or one is Earth)",
+   "effect": "each exerts a force on the other: a push or pull with a size and a direction"
+  },
+  {
+   "cause": "You choose one object and list everything that touches it, plus Earth",
+   "effect": "you have every force on it, each with an agent"
+  },
+  {
+   "cause": "You draw each force as an arrow starting on a dot at the center of mass",
+   "effect": "you get a free-body diagram: whole forces, labeled with type and agent, lengths in proportion"
+  },
+  {
+   "cause": "You add the forces as vectors, with signs on each axis",
+   "effect": "you get the net force, which is a result of the diagram, not one of its arrows"
+  }
+ ],
+ "ideas": [
+  "A <b>force</b> is a push or pull between two objects, measured in newtons (1 N = 1 kg·m/s²). It is a vector.",
+  "<b>Contact forces</b> (normal force, tension, friction) need touching. <b>Weight</b>, F_g = mg, is Earth's pull at a distance; near Earth g = 9.8 m/s² (10 m/s² is accepted).",
+  "A <b>free-body diagram</b>: a dot for the object, one arrow per force starting on the dot, labeled type and agent (\"F_N, floor on box\"), no components, no velocity, no net force arrow.",
+  "The <b>net force</b> is the vector sum of all the forces. Find it from the diagram; never draw it on the diagram."
+ ],
+ "misconception": {
+  "wrong": "A moving object has a \"force of motion\" pushing it along, and the free-body diagram should show it.",
+  "right": "Every force needs an agent touching the object (or Earth). Once a thrown ball leaves the hand, only Earth (and air) act on it. Motion does not need a forward force."
+ },
+ "check": [
+  "phys-forces-fbd-1",
+  "phys-forces-fbd-2",
+  "phys-forces-fbd-3",
+  "phys-forces-fbd-4",
+  "phys-forces-fbd-11",
+  "phys-forces-fbd-15"
+ ],
+ "summary": "A force is an interaction between two objects. To draw a free-body diagram, list every object touching your object plus Earth, and draw each force as a whole arrow from a dot, labeled with type and agent; the net force is their vector sum and is never drawn as an extra arrow."
+}

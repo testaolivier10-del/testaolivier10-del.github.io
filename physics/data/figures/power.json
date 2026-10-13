@@ -1,0 +1,12 @@
+{
+ "power-two-winches": {
+  "file": "figures/power-two-winches.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two winches each lift an identical crate 3.0 m at constant speed, with the cable's tension up and the gravitational force down drawn equal. Winch X lifts at 0.5 m/s in 6.0 s, winch Y at 0.25 m/s in 12 s. Same work; X has twice the power."
+ }
+}

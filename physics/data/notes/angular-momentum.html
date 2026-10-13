@@ -1,0 +1,43 @@
+<p>Momentum, p = mv, measured how much motion an object carries in a straight line, and impulse measured how a force changes it. Rotation has its own pair: <b>angular momentum</b> and <b>angular impulse</b>. They behave so much like their straight-line partners that you can often reason by analogy. One new idea needs care: a moving point object can have angular momentum about a point even when nothing is spinning.</p>
+
+<h2>Angular momentum of a turning object</h2>
+<p>For a rigid object turning about a fixed axis, angular momentum is rotational inertia times angular velocity:</p>
+<p style="text-align:center"><b>L = Iω</b></p>
+<p>The unit is kg·m²/s. Its sign follows ω: positive for counterclockwise, negative for clockwise (with the usual choice). A bicycle wheel with I = 0.25 kg·m² spinning at 12 rad/s has L = 3.0 kg·m²/s.</p>
+
+<h2>Angular momentum of a point object</h2>
+<p>Now take a single small object, a puck, sliding in a straight line at constant velocity on a frictionless table. Pick a point P beside its path. The puck has angular momentum about P:</p>
+<p style="text-align:center"><b>L = rmv sin θ</b></p>
+<p>Here r is the distance from P to the puck and θ is the angle between r and the velocity. The product r sin θ is the perpendicular distance from P to the puck's line of motion, the lever arm of its momentum. So L is the momentum mv times that lever arm.</p>
+<figure id="fig-puck" data-fig="puck-passing-point"><figcaption>As the puck slides by, r changes but r sin θ stays equal to d, so L = mvd about P is constant.</figcaption></figure>
+<p>Two consequences surprise most students.</p>
+<ul>
+<li>As the puck slides by, r grows and shrinks, but r sin θ stays equal to the fixed distance d from P to the line. So the puck's angular momentum about P is <b>constant</b>: L = mvd, the same at every position.</li>
+<li>Angular momentum depends on the point you choose. About a point Q on the puck's own path, the lever arm is zero and L = 0.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> A 0.20 kg puck slides at 3.0 m/s along a line that passes 0.40 m from point P. What is its angular momentum about P?</p>
+<p>L = mv(r sin θ) = mvd = (0.20 kg)(3.0 m/s)(0.40 m) = <b>0.24 kg·m²/s</b>.</p>
+<p>A puck of the same mass at 6.0 m/s on a line 0.20 m from P has the same L: twice the speed, half the lever arm.</p>
+</div>
+<p>A ball whirled on a string in a circle of radius r at speed v also has L = rmv about the center, since its velocity is perpendicular to r. That matches L = Iω with I = mr² and ω = v/r.</p>
+
+<h2>Angular impulse changes angular momentum</h2>
+<p>A net torque acting for a time Δt delivers an <b>angular impulse</b>, τΔt, and that is exactly the change in angular momentum:</p>
+<p style="text-align:center"><b>τ<sub>net</sub>Δt = ΔL</b></p>
+<p>If the torque changes with time, the angular impulse is the area under a graph of torque against time. Rearranged, τ<sub>net</sub> = ΔL/Δt: the net torque is the slope of a graph of L against time. When I is constant this is the same as τ<sub>net</sub> = Iα from Unit 5.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A wheel (I = 0.50 kg·m²) starts at rest. A net torque of +4.0 N·m acts for 2.0 s, then nothing for 2.0 s, then −2.0 N·m for 2.0 s. Find L and ω at the end.</p>
+<p>Add the signed areas under τ-t: (4.0)(2.0) + 0 + (−2.0)(2.0) = 8.0 − 4.0 = 4.0 kg·m²/s.</p>
+<p>L = <b>4.0 kg·m²/s</b>, so ω = L/I = (4.0 kg·m²/s)/(0.50 kg·m²) = <b>8.0 rad/s</b>. The L-t graph rises with slope 4.0, stays flat, then falls with slope −2.0.</p>
+</div>
+
+<h2>Side by side</h2>
+<table class="compare"><thead><tr><th>Linear</th><th>Rotational</th></tr></thead><tbody>
+<tr><td>p = mv (kg·m/s)</td><td>L = Iω, or L = rmv sin θ for a point object (kg·m²/s)</td></tr>
+<tr><td>impulse FΔt = Δp</td><td>angular impulse τΔt = ΔL</td></tr>
+<tr><td>F<sub>net</sub> = slope of p-t</td><td>τ<sub>net</sub> = slope of L-t</td></tr>
+<tr><td>area under F-t</td><td>area under τ-t</td></tr>
+</tbody></table>
+<p>Keep τΔt and τΔθ apart. Torque times time changes the angular momentum; torque times angle (the work) changes the kinetic energy.</p>
+<aside class="going-further"><p><b>Going further:</b> in full three-dimensional physics, angular momentum is a vector along the axis, found with a right-hand rule. This course stays with one plane: you describe L as clockwise or counterclockwise.</p></aside>

@@ -1,0 +1,42 @@
+<p>A cart moving at speed v has kinetic energy ½mv². A wheel spinning on a fixed axle does not go anywhere, yet stopping it takes work, and a heavy spinning wheel can drive a machine. So the spinning wheel must hold energy. This page finds how much, and the answer has a familiar shape.</p>
+
+<h2>Adding up the moving pieces</h2>
+<p>Think of the wheel as many small pieces. A piece of mass m at distance r from the axle moves in a circle at speed v = rω. Its kinetic energy is ½mv² = ½m(rω)² = ½mr²ω².</p>
+<p>Every piece shares the same ω, so adding them up gives</p>
+<p style="text-align:center">K = ½(m₁r₁² + m₂r₂² + …)ω² = ½(Σmr²)ω²</p>
+<p>The bracket is the rotational inertia I. So a turning object has <b>rotational kinetic energy</b></p>
+<p style="text-align:center"><b>K<sub>rot</sub> = ½Iω²</b></p>
+<p>Compare it with ½mv²: rotational inertia stands in for mass and angular velocity for velocity, exactly the pairing from Unit 5.</p>
+<figure id="fig-fly" data-fig="flywheel-energy"><figcaption>Each piece of the rim moves even though the wheel's center does not.</figcaption></figure>
+
+<h2>Energy without going anywhere</h2>
+<p>The wheel's center of mass stays put, so its total momentum is zero: pieces on opposite sides move in opposite directions, and their momenta cancel. Kinetic energy does not cancel. It is a <b>scalar</b>, never negative, so each piece adds to the total no matter which way it moves. A spinning wheel with its center at rest still has kinetic energy.</p>
+<p>The direction of turning does not matter either. Squaring ω removes its sign, so a wheel turning clockwise at 10 rad/s has the same K as one turning counterclockwise at 10 rad/s. The unit is the joule: kg·m² × (rad/s)² = kg·m²/s² = J.</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> A turntable is a solid disk of mass 3.0 kg and radius 0.20 m (I = ½MR², given) with a 0.10 kg lump of clay stuck 0.15 m from the axis. It turns at 6.0 rad/s. What is its rotational kinetic energy?</p>
+<p>Rotational inertia of the system: I = ½MR² + mr² = ½(3.0 kg)(0.20 m)² + (0.10 kg)(0.15 m)² = 0.0600 + 0.00225 = 0.06225 kg·m².</p>
+<p>K = ½Iω² = ½(0.06225 kg·m²)(6.0 rad/s)² = <b>1.1 J</b>.</p>
+</div>
+
+<h2>How K scales</h2>
+<p>Two factors set the energy, and they behave differently.</p>
+<ul>
+<li><b>ω is squared.</b> Double the angular velocity and K becomes 4 times as large. Triple it: 9 times.</li>
+<li><b>I enters directly.</b> At the same ω, twice the rotational inertia means twice the energy. A hoop spinning at the same rate as a disk of the same mass and radius has twice the disk's energy, because its I is MR² instead of ½MR².</li>
+</ul>
+<p>That is why flywheels for storing energy put most of their mass in a heavy rim: at a given ω, mass far from the axle stores far more energy.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A wheel with I = 0.40 kg·m² has 25 J of rotational kinetic energy. How fast is it turning?</p>
+<p>Rearrange K = ½Iω²: ω = √(2K/I) = √(2 × 25 J / 0.40 kg·m²) = √125 rad/s = <b>11 rad/s</b>.</p>
+<p>Two slips to avoid: leaving out the ½ (which gives 7.9 rad/s) and forgetting the square root (125 rad/s).</p>
+</div>
+
+<h2>Reading data</h2>
+<p>If you measure K at several angular velocities, plotting K against ω gives a curve that bends upward. Plotting K against ω² gives a straight line through the origin, because K = (½I)ω². The slope is ½I, so the rotational inertia is twice the slope.</p>
+<table class="compare"><thead><tr><th></th><th>Moving along a line</th><th>Turning about an axis</th></tr></thead><tbody>
+<tr><td>Inertia</td><td>mass m</td><td>rotational inertia I</td></tr>
+<tr><td>Rate of motion</td><td>v (m/s)</td><td>ω (rad/s)</td></tr>
+<tr><td>Kinetic energy</td><td>½mv²</td><td>½Iω²</td></tr>
+</tbody></table>
+<p>Some objects do both at once: a rolling ball moves along and spins. Its kinetic energy is the sum of the two, a topic of its own later in this unit.</p>

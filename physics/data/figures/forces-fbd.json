@@ -1,0 +1,22 @@
+{
+ "fbd-crate-pulled": {
+  "file": "figures/fbd-crate-pulled.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a 40 kg crate on a floor pulled to the right by a horizontal rope, moving at constant velocity. Right: its free-body diagram, a dot with four arrows starting on it: F_N, floor on crate, up; F_g, Earth on crate, down, the same length; F_T, rope on crate, right; F_f, floor on crate, left, the same length as F_T. Velocity is not drawn on the diagram."
+ },
+ "fbd-tossed-ball": {
+  "file": "figures/fbd-tossed-ball.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A ball moving upward after leaving a hand. Its correct free-body diagram has a single arrow down, F_g, Earth on ball. A wrong diagram adds dashed arrows labeled force of the throw, v and F_net, none of which is a force exerted on the ball by another object."
+ }
+}

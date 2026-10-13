@@ -1,0 +1,472 @@
+{
+ "stimuli": {
+  "density-fluids-s1": {
+   "kind": "table",
+   "title": "Four metal samples",
+   "text": "<p>A student measures the mass of four small metal samples on a balance and finds each volume by lowering the sample into a graduated cylinder of water and reading the rise in the water level.</p>",
+   "table": {
+    "caption": "Mass and volume of each sample",
+    "cols": [
+     "Sample",
+     "Mass (g)",
+     "Volume (cm³)"
+    ],
+    "rows": [
+     [
+      "A",
+      "27.0",
+      "10.0"
+     ],
+     [
+      "B",
+      "89.6",
+      "10.0"
+     ],
+     [
+      "C",
+      "54.0",
+      "20.0"
+     ],
+     [
+      "D",
+      "19.3",
+      "1.0"
+     ]
+    ]
+   }
+  },
+  "density-fluids-s2": {
+   "kind": "setup",
+   "title": "Squeezing a syringe",
+   "text": "<p>Two identical sealed syringes have their tips blocked. Syringe 1 holds 20 cm³ of air; syringe 2 holds 20 cm³ of water. A student pushes each plunger with the same force.</p><p>The plunger of syringe 1 moves in noticeably and springs back when released. The plunger of syringe 2 hardly moves at all.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-density-fluids-1",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "density-fluids-s1",
+   "q": "What is the density of sample B in SI units? Give the value and its unit.",
+   "numeric": {
+    "answer": 8960,
+    "tol": 10,
+    "unit": "kg/m^3",
+    "sigfigs": 3,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 8.96,
+      "rel": 0.02,
+      "why": "Value: 8.96 is the density in g/cm³. Convert: 1 g/cm³ = 1000 kg/m³."
+     },
+     {
+      "value": 112,
+      "rel": 0.02,
+      "why": "Value: you divided volume by mass. Density is mass per volume, ρ = m/V."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ρ = m/V = 89.6 g / 10.0 cm³ = 8.96 g/cm³. Since 1 g/cm³ = 1000 kg/m³ (1 g = 10⁻³ kg and 1 cm³ = 10⁻⁶ m³), ρ = 8.96 × 10³ kg/m³."
+   }
+  },
+  {
+   "id": "phys-density-fluids-2",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "density-fluids-s1",
+   "q": "Which two samples could be made of the same metal?",
+   "options": [
+    "A and C",
+    "A and B",
+    "B and D",
+    "C and D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Density is a property of the material, not of the sample's size. A: 27.0/10.0 = 2.70 g/cm³; C: 54.0/20.0 = 2.70 g/cm³. Same density, likely the same metal (aluminum has 2.70 g/cm³).",
+    "options": [
+     "Right: C has twice the mass and twice the volume of A, so the same density.",
+     "A has 2.70 g/cm³ and B has 8.96 g/cm³: same volume, very different masses.",
+     "B has 8.96 g/cm³ and D has 19.3 g/cm³.",
+     "C has 2.70 g/cm³ and D has 19.3 g/cm³; D's small volume makes its mass misleading."
+    ]
+   }
+  },
+  {
+   "id": "phys-density-fluids-3",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "density-fluids-s1",
+   "q": "Sample C is cut into two pieces, one twice the volume of the other. How does the density of the smaller piece compare with the density of sample C?",
+   "options": [
+    "It is the same",
+    "It is one third as large",
+    "It is half as large",
+    "It is two thirds as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cutting reduces mass and volume in the same ratio, so m/V does not change. Density belongs to the material.",
+    "options": [
+     "Right: density does not depend on how much of the material you have.",
+     "The smaller piece has one third of the mass and one third of the volume, so the ratio is unchanged.",
+     "Halving would need the mass to drop without the volume dropping.",
+     "Both mass and volume shrink by the same factor."
+    ]
+   }
+  },
+  {
+   "id": "phys-density-fluids-4",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "density-fluids-s1",
+   "q": "A block of the same metal as sample D has a volume of 2.0 × 10⁻⁴ m³. What is its mass? Give the value and its unit.",
+   "numeric": {
+    "answer": 3.9,
+    "tol": 0.1,
+    "unit": "kg",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.0039,
+      "rel": 0.02,
+      "why": "Value: you used 19.3 g/cm³ with a volume in m³. Convert the density first: 19.3 g/cm³ = 1.93 × 10⁴ kg/m³."
+     },
+     {
+      "value": 1e-8,
+      "rel": 0.02,
+      "why": "Value: you divided the volume by the density. m = ρV."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ρ = 19.3 g/cm³ = 1.93 × 10⁴ kg/m³. m = ρV = (1.93 × 10⁴ kg/m³)(2.0 × 10⁻⁴ m³) = 3.86 kg ≈ 3.9 kg."
+   }
+  },
+  {
+   "id": "phys-density-fluids-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "density-fluids-s2",
+   "q": "What does the experiment show about the two fluids?",
+   "options": [
+    "Water is nearly incompressible; air is easily compressed",
+    "Both fluids are incompressible, since neither leaks out",
+    "The air is nearly incompressible, but the water is compressed",
+    "Neither is a fluid, because they are trapped in the syringe"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Squeezing changed the air's volume noticeably but not the water's. Liquids are close to incompressible because their particles are already touching; gas particles are far apart.",
+    "options": [
+     "Right: water's volume hardly changes under the push.",
+     "Not leaking does not make a fluid incompressible; the air's volume clearly shrank.",
+     "This reverses the observations: the air plunger moved in.",
+     "A fluid is defined by flowing and taking its container's shape, which both do."
+    ]
+   }
+  },
+  {
+   "id": "phys-density-fluids-6",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "density-fluids-s2",
+   "q": "What happens to the density of the air in syringe 1 while the plunger is pushed in?",
+   "options": [
+    "It increases, because the same mass occupies a smaller volume",
+    "It stays the same, because no air leaves the syringe",
+    "It decreases, because the particles are pushed apart",
+    "It stays the same, because density is a property of the material"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The blocked tip keeps the mass of air fixed, while the volume shrinks. ρ = m/V, so the density rises. A compressible fluid's density can change.",
+    "options": [
+     "Right: same m, smaller V, larger ρ.",
+     "The mass stays the same, but density is mass per volume and the volume shrank.",
+     "Pushing the plunger in squeezes the particles closer together, not farther apart.",
+     "For an incompressible fluid density is fixed, but air is compressible."
+    ]
+   }
+  },
+  {
+   "id": "phys-density-fluids-7",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 2,
+   "stimulus": "density-fluids-s2",
+   "q": "When fluids are treated as ideal on the exam, which property is assumed?",
+   "options": [
+    "Its density stays the same as it flows and is squeezed",
+    "The fluid sticks to the walls of its container",
+    "The fluid has no mass, so it exerts no forces",
+    "The fluid keeps its shape when it is poured"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An ideal fluid is incompressible (constant density) and nonviscous (no internal friction), and its flow is smooth and steady.",
+    "options": [
+     "Right: incompressible means constant density.",
+     "Sticking to walls is a sign of viscosity, which an ideal fluid lacks.",
+     "An ideal fluid has mass and weight; only its friction is ignored.",
+     "No fluid keeps its shape; that is the difference between a fluid and a solid."
+    ]
+   }
+  },
+  {
+   "id": "phys-density-fluids-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "density-fluids-s2",
+   "q": "Why is liquid water much harder to compress than air?",
+   "options": [
+    "Water particles already touch; air particles are far apart",
+    "Water particles are locked in fixed places, as in a solid",
+    "Water has a larger mass than air, so it is harder to move",
+    "Air particles attract each other more strongly than water particles do"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In a liquid the particles touch and slide past each other; there is little empty space to squeeze out. In a gas most of the volume is empty space between particles.",
+    "options": [
+     "Right: the spacing of the particles decides how compressible the fluid is.",
+     "Water particles can slide past each other; that is why water flows.",
+     "The two syringes hold the same volume; the difference is in particle spacing, not mass.",
+     "In a gas the attractions between particles are weak, which is why they spread out."
+    ]
+   }
+  },
+  {
+   "id": "phys-density-fluids-9",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which of these is a fluid?",
+   "options": [
+    "Honey",
+    "A steel ball bearing",
+    "A block of ice",
+    "A rubber band"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A fluid is a substance that flows and takes the shape of its container: a liquid or a gas. Honey flows, slowly.",
+    "options": [
+     "Right: honey is a liquid, so it is a fluid (a viscous one).",
+     "Steel keeps its own shape: a solid.",
+     "Ice is solid water; it keeps its shape until it melts.",
+     "A rubber band can stretch but keeps a shape of its own; it does not flow."
+    ]
+   }
+  },
+  {
+   "id": "phys-density-fluids-10",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A rectangular swimming pool is 10.0 m long, 5.0 m wide and filled to a depth of 2.0 m with water of density 1000 kg/m³. What is the mass of the water? Give the value and its unit.",
+   "numeric": {
+    "answer": 100000,
+    "tol": 10000,
+    "unit": "kg",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 980000,
+      "rel": 0.02,
+      "why": "Value: that is the weight in newtons (you multiplied by g). The question asks for the mass, m = ρV."
+     },
+     {
+      "value": 17000,
+      "rel": 0.02,
+      "why": "Value: you added the dimensions. Volume is length × width × depth."
+     }
+    ]
+   },
+   "why": {
+    "correct": "V = 10.0 m × 5.0 m × 2.0 m = 100 m³. m = ρV = (1000 kg/m³)(100 m³) = 1.0 × 10⁵ kg, about 100 metric tons."
+   }
+  },
+  {
+   "id": "phys-density-fluids-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Cube X is made of the same material as cube Y but has sides twice as long. How does the mass of X compare with the mass of Y?",
+   "options": [
+    "8 times as large",
+    "2 times as large",
+    "4 times as large",
+    "The same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Same material, same density. Volume = side³, so doubling the side gives 2³ = 8 times the volume, and m = ρV gives 8 times the mass.",
+    "options": [
+     "Right: volume, and so mass, goes as the cube of the side.",
+     "This treats the volume as proportional to the side length.",
+     "This uses the area of one face (side²) instead of the volume.",
+     "Density is the same, but a bigger cube contains more material."
+    ]
+   }
+  },
+  {
+   "id": "phys-density-fluids-12",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A sealed bottle of air is warmed in the sun, and its volume does not change. What happens to the density of the air inside?",
+   "options": [
+    "It stays the same, because m and V do not change",
+    "It increases, because the particles move faster",
+    "It decreases, because warm air is less dense",
+    "It increases, because the pressure inside rises"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ρ = m/V. The bottle is sealed (same mass) and rigid (same volume), so the density is unchanged even though the particles move faster.",
+    "options": [
+     "Right: density depends only on mass and volume.",
+     "Faster particles raise the pressure, not the mass or volume.",
+     "Warm air is less dense only when it is free to expand; this bottle is sealed and rigid.",
+     "The pressure does rise, but density is mass per volume, which has not changed."
+    ]
+   }
+  },
+  {
+   "id": "phys-density-fluids-13",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A 250 cm³ sample of olive oil has a mass of 0.229 kg. What is its density in SI units? Give the value and its unit.",
+   "numeric": {
+    "answer": 916,
+    "tol": 1,
+    "unit": "kg/m^3",
+    "sigfigs": 3,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.000916,
+      "rel": 0.02,
+      "why": "Value: you used the volume in cm³ with a mass in kg. Convert: 250 cm³ = 2.50 × 10⁻⁴ m³."
+     },
+     {
+      "value": 0.916,
+      "rel": 0.02,
+      "why": "Value: 250 cm³ is 0.250 L, not 0.250 m³. 1 m³ = 10⁶ cm³, so 250 cm³ = 2.50 × 10⁻⁴ m³."
+     }
+    ]
+   },
+   "why": {
+    "correct": "V = 250 cm³ = 250 × 10⁻⁶ m³ = 2.50 × 10⁻⁴ m³. ρ = m/V = 0.229 kg / 2.50 × 10⁻⁴ m³ = 916 kg/m³, a little less than water."
+   }
+  },
+  {
+   "id": "phys-density-fluids-14",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A brick is weighed, then sawn into two halves. Predict how each quantity for one half compares with the whole brick.",
+   "variables": [
+    {
+     "name": "Mass",
+     "answer": "down",
+     "why": "Half the material, so half the mass."
+    },
+    {
+     "name": "Volume",
+     "answer": "down",
+     "why": "Half the material takes up half the space."
+    },
+    {
+     "name": "Density",
+     "answer": "none",
+     "why": "Mass and volume both halve, so their ratio ρ = m/V does not change."
+    }
+   ],
+   "why": {
+    "correct": "Density is a property of the material; mass and volume depend on how much material there is."
+   }
+  },
+  {
+   "id": "phys-density-fluids-15",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What makes a liquid different from a solid at the level of its particles?",
+   "options": [
+    "The particles can slide past one another, so it flows",
+    "The particles are much farther apart, so the liquid is easy to compress",
+    "The particles do not attract each other",
+    "The particles stop moving when the liquid is at rest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In both solids and liquids the particles are close together, but in a liquid they are not locked in place, so the liquid flows.",
+    "options": [
+     "Right: particles that slide past each other make a fluid.",
+     "Particles far apart describe a gas; liquids are nearly incompressible.",
+     "Liquid particles attract each other; that is what holds a drop together.",
+     "The particles keep moving even when the liquid as a whole is still."
+    ]
+   }
+  }
+ ]
+}

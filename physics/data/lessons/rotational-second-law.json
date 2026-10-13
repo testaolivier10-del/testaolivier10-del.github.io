@@ -1,0 +1,100 @@
+{
+ "topic": "rotational-second-law",
+ "hook": "Drop a bucket into a well with the rope wound on a heavy drum, and the bucket falls far slower than a dropped stone: part of gravity’s pull goes into spinning up the drum. One law, net torque equals rotational inertia times angular acceleration, explains the drum, the bucket and the tension between them.",
+ "prereq": [
+  {
+   "q": "A 2.0 kg cart has a net force of 6.0 N on it. Its acceleration is",
+   "options": [
+    "3.0 m/s²",
+    "12 m/s²",
+    "0.33 m/s²",
+    "6.0 m/s²"
+   ],
+   "correct": 0,
+   "why": "a = F_net/m = 6.0/2.0.",
+   "review": "second-law"
+  },
+  {
+   "q": "A string unwinds from a wheel of radius R without slipping. The string’s acceleration a and the wheel’s α are linked by",
+   "options": [
+    "a = Rα",
+    "a = α/R",
+    "a = R²α",
+    "a = α"
+   ],
+   "correct": 0,
+   "why": "The string moves with the rim: a = Rα.",
+   "review": "linear-rotational-link"
+  },
+  {
+   "q": "Rotational inertia depends on",
+   "options": [
+    "mass and its distance from the axis",
+    "mass alone",
+    "how fast the object turns",
+    "the net torque"
+   ],
+   "correct": 0,
+   "why": "I = Σmr².",
+   "review": "rotational-inertia"
+  }
+ ],
+ "figure": {
+  "figure": "pulley-block-forces",
+  "caption": "A pulley with mass and a hanging block: the string’s pull gives the pulley its torque, F_T R = Iα, while the block obeys mg − F_T = ma."
+ },
+ "chain": [
+  {
+   "cause": "A net torque acts on an object that can turn",
+   "effect": "its angular velocity changes"
+  },
+  {
+   "cause": "The net torque is larger",
+   "effect": "the angular acceleration is larger: α = τ_net/I"
+  },
+  {
+   "cause": "The rotational inertia is larger",
+   "effect": "the same torque gives a smaller angular acceleration"
+  },
+  {
+   "cause": "A string pulls a pulley with mass while a block hangs from it",
+   "effect": "the tension is less than the block’s weight, and the two sides of a string over the pulley carry different tensions"
+  },
+  {
+   "cause": "The string does not slip",
+   "effect": "a = Rα links the block’s motion to the pulley’s"
+  }
+ ],
+ "ideas": [
+  "<b>α = τ<sub>net</sub>/I</b>, in the direction of the net torque: the rotational partner of a = F<sub>net</sub>/m.",
+  "For a system with parts that move and parts that turn, write ΣF = ma for each moving part and Στ = Iα for each turning part, then link them with a = Rα.",
+  "A pulley with mass needs a net torque, so the tensions on its two sides differ.",
+  "Same torque, larger I (mass farther out): smaller α.",
+  "α against τ is a line through the origin with slope 1/I."
+ ],
+ "misconception": {
+  "wrong": "The tension in a string holding a falling block equals the block’s weight, and is the same on both sides of any pulley.",
+  "right": "If the block speeds up downward, the tension is less than its weight. Over a pulley with mass, the two sides differ, because their difference supplies the torque that spins the pulley up."
+ },
+ "check": [
+  "phys-rotational-second-law-1",
+  "phys-rotational-second-law-2",
+  "phys-rotational-second-law-3",
+  "phys-rotational-second-law-4",
+  "phys-rotational-second-law-5",
+  "phys-rotational-second-law-10",
+  "phys-rotational-second-law-13",
+  "phys-rotational-second-law-14"
+ ],
+ "summary": "Newton’s second law in rotational form says α = τ_net/I: the net torque sets the angular acceleration, and a larger rotational inertia means a smaller α. Systems with a pulley that has mass need both the translational law for each block and the rotational law for the pulley, linked by a = Rα; the string’s tension is then less than a falling block’s weight.",
+ "connections": [
+  {
+   "href": "../notes/rotational-equilibrium.html",
+   "label": "Back: balanced torques (5.5)"
+  },
+  {
+   "href": "../notes/rotational-kinetic-energy.html",
+   "label": "Next: the energy of turning (6.1)"
+  }
+ ]
+}

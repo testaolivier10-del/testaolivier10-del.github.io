@@ -1,0 +1,48 @@
+<p>So far the fluids in this unit have been at rest. Now they move: water through pipes, out of holes, down from faucets. The exam uses two equations here, and the most important skill is knowing which one does which job. Continuity comes from conservation of mass and sets the speeds. Bernoulli's equation comes from conservation of energy and sets the pressures. Both assume an ideal fluid in a full pipe.</p>
+
+<h2>Volume flow rate</h2>
+<p>Water moves through a pipe of cross-sectional area A at speed v. In a time Δt, a column of water of length vΔt passes a point, with volume A·vΔt. So the volume passing each second is</p>
+<p style="text-align:center"><b>volume flow rate = Av</b></p>
+<p>in m³/s. A kitchen faucet delivers about 1 × 10⁻⁴ m³/s (a tenth of a liter per second).</p>
+
+<h2>Continuity: what goes in must come out</h2>
+<p>An ideal fluid is incompressible, and the pipe is full. So fluid cannot pile up or thin out anywhere. Every cubic meter that enters a section of pipe each second must leave it. That is conservation of mass, and for an incompressible fluid it says the volume flow rate is the same everywhere:</p>
+<p style="text-align:center"><b>A₁v₁ = A₂v₂</b></p>
+<p>This is the <b>continuity equation</b>. Where the pipe is narrow, the fluid moves fast; where it is wide, the fluid moves slowly. Speed is inversely proportional to area: a quarter of the area, four times the speed. Since the area of a round pipe goes as the diameter squared, half the diameter means a quarter of the area and four times the speed.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Water flows at 0.80 m/s through a pipe of area 3.0 × 10⁻³ m², which narrows to 1.2 × 10⁻³ m². Find the speed in the narrow part.</p>
+<p>Continuity: v₂ = v₁A₁/A₂ = (0.80 m/s)(3.0 × 10⁻³ m²)/(1.2 × 10⁻³ m²) = <b>2.0 m/s</b>.</p>
+</div>
+
+<h2>Bernoulli's equation: energy for a fluid</h2>
+<figure id="fig-pipe" data-fig="fluid-flow-pipe"><figcaption>A pipe that narrows and rises. Continuity gives v₂ from v₁ and the areas; Bernoulli then gives P₂.</figcaption></figure>
+<p>Follow a small parcel of fluid along <a class="figref" href="#fig-pipe">the pipe</a>. As it moves, its kinetic energy and gravitational potential energy can change. What changes them? The fluid behind the parcel pushes it forward and the fluid ahead pushes back. If the pressure behind is larger, the net work on the parcel is positive. Since an ideal fluid has no friction, that work is all the energy accounting there is. Written per unit volume, the result is <b>Bernoulli's equation</b>:</p>
+<p style="text-align:center"><b>P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂²</b></p>
+<p>Each term is an energy per cubic meter: ½ρv² is kinetic energy per volume (½mv² with m/V = ρ), ρgy is gravitational potential energy per volume, and P is the work the pressure does per volume. It is energy conservation, not a new law.</p>
+<p>For a horizontal pipe, y₁ = y₂ and the ρgy terms cancel: <b>where the fluid moves faster, its pressure is lower</b>. That surprises many students, who expect a narrow pipe to "squeeze" the water to a higher pressure. Think about cause and effect instead: the water speeds up as it enters the narrow part, so a net force must push it forward, which means the pressure behind it is higher than the pressure ahead.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> In worked example 1, the pipe is horizontal and the pressure in the wide part is 1.50 × 10⁵ Pa. Find the pressure in the narrow part (ρ = 1000 kg/m³).</p>
+<p>Speeds first, from continuity: v₁ = 0.80 m/s, v₂ = 2.0 m/s.</p>
+<p>Bernoulli, y₁ = y₂: P₂ = P₁ + ½ρ(v₁² − v₂²) = 1.50 × 10⁵ Pa + ½(1000 kg/m³)(0.64 − 4.0) m²/s² = 1.50 × 10⁵ Pa − 1.68 × 10³ Pa = <b>1.48 × 10⁵ Pa</b>.</p>
+</div>
+
+<h2>Which equation does which job</h2>
+<table class="compare">
+<thead><tr><th></th><th>Continuity</th><th>Bernoulli</th></tr></thead>
+<tbody>
+<tr><td>Conservation law</td><td>mass</td><td>energy</td></tr>
+<tr><td>Equation</td><td>A₁v₁ = A₂v₂</td><td>P + ρgy + ½ρv² = constant</td></tr>
+<tr><td>Usually finds</td><td>a speed (from areas)</td><td>a pressure (or a speed when pressures are known)</td></tr>
+<tr><td>Needs</td><td>incompressible fluid, full pipe</td><td>ideal fluid (no friction), steady flow</td></tr>
+</tbody></table>
+<p>A typical problem uses both, in order: continuity for the unknown speed, then Bernoulli for the unknown pressure. Bernoulli alone has too many unknowns.</p>
+
+<h2>Torricelli: water from a hole</h2>
+<p>A wide, open tank has a small hole a depth h below the water surface. Apply Bernoulli from the surface (1) to the jet just outside the hole (2). Both are open to the air, so P₁ = P₂ = P₀ and the pressures cancel. The tank is much wider than the hole, so by continuity the surface barely moves: v₁ ≈ 0. Put y₁ − y₂ = h:</p>
+<p style="text-align:center">ρgh = ½ρv² &nbsp;so&nbsp; <b>v = √(2gh)</b></p>
+<p>This is <b>Torricelli's theorem</b>. It is not on the equations sheet, so be ready to derive it as above. The jet leaves at the speed a drop would reach falling freely through h, and the size of the hole does not matter (it changes the flow rate, Av, not the speed).</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A hole is 0.45 m below the surface of an open tank. Find the jet speed. Use g = 9.8 m/s².</p>
+<p>v = √(2gh) = √(2 × 9.8 m/s² × 0.45 m) = √8.82 m/s = <b>3.0 m/s</b>.</p>
+</div>
+<aside class="going-further"><p><b>Going further.</b> Real fluids have viscosity, so pressure drops along a long pipe even at constant speed, and fast flows become turbulent. The exam keeps fluids ideal and pipes full unless a question says otherwise.</p></aside>

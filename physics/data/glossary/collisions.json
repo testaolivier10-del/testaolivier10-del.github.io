@@ -1,0 +1,14 @@
+{
+ "elastic-collision": {
+  "def": "A collision in which the total kinetic energy of the system is the same before and after (momentum is also conserved)."
+ },
+ "inelastic-collision": {
+  "def": "A collision in which momentum is conserved but the total kinetic energy decreases, the difference becoming thermal energy, sound and deformation."
+ },
+ "perfectly-inelastic": {
+  "def": "An inelastic collision in which the objects stick together and move with one common velocity, v_f = Σp/Σm."
+ },
+ "momentum-bar-chart": {
+  "def": "Bars showing each object's momentum (with its sign) and the system total before and after an interaction; with no net external impulse, the totals match."
+ }
+}

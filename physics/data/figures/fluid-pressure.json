@@ -1,0 +1,12 @@
+{
+ "fluid-pressure-depth": {
+  "file": "figures/fluid-pressure-depth.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An open tank of water with points A and B at the same depth and point C deeper. At each point equal arrows push from all four sides, longer at C. Absolute pressure P = P₀ + ρgh; gauge pressure P_gauge = ρgh."
+ }
+}

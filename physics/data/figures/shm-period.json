@@ -1,0 +1,12 @@
+{
+ "shm-period-factors": {
+  "file": "figures/shm-period-factors.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a block of mass m hanging from a spring of constant k, with T = 2π√(m/k); the period depends on m and k, not on the amplitude or g. Right: a simple pendulum of length ℓ at a small angle, with T = 2π√(ℓ/g); the period depends on ℓ and g, not on the bob's mass or the amplitude."
+ }
+}

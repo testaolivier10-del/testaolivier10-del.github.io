@@ -1,0 +1,60 @@
+<p>Every quantity in physics has two parts: a number and a unit. "The cart moved 3" means nothing; "the cart moved 3 m" is a measurement. This page covers the units Physics 1 uses, how to convert between them without guessing, how to write very large or very small numbers, and how many digits to report. These are the habits that stop a correct method from losing points to a factor of 100.</p>
+
+<h2>SI units: meters, kilograms, seconds</h2>
+<p>Scientists agreed on one set of units, the International System, or <b>SI units</b>. Physics 1 is built on three base units:</p>
+<table class="compare"><thead><tr><th scope="col">Quantity</th><th scope="col">SI base unit</th><th scope="col">Symbol</th><th scope="col">Not SI (convert first)</th></tr></thead>
+<tbody><tr><td>Length</td><td>meter</td><td>m</td><td>cm, mm, km</td></tr>
+<tr><td>Mass</td><td>kilogram</td><td>kg</td><td>g</td></tr>
+<tr><td>Time</td><td>second</td><td>s</td><td>ms, min, h</td></tr></tbody></table>
+<p>Other units are built from these. A speed is a length divided by a time, so its unit is meters per second, m/s. The kilogram is the odd one out: it is the base unit even though it carries a prefix. A gram is not SI for mass.</p>
+<p>Why it matters: the equations you will use are written for SI units. Put in meters, kilograms and seconds and the answer comes out in SI units too. Put in centimeters or grams and the answer is off by a power of ten, with nothing to warn you.</p>
+
+<h2>Metric prefixes are powers of ten</h2>
+<figure id="fig-units" data-fig="meterstick-prefixes"><figcaption>A meterstick, zoomed in. The prefixes centi and milli are fractions of a meter; kilo is a thousand of them.</figcaption></figure>
+<p>A <b>metric prefix</b> in front of a unit multiplies it by a power of ten. You need four:</p>
+<table class="compare"><thead><tr><th scope="col">Prefix</th><th scope="col">Symbol</th><th scope="col">Multiplies by</th><th scope="col">Example</th></tr></thead>
+<tbody><tr><td>kilo</td><td>k</td><td>10³ = 1000</td><td>1 km = 1000 m</td></tr>
+<tr><td>centi</td><td>c</td><td>10⁻² = 0.01</td><td>1 cm = 0.01 m</td></tr>
+<tr><td>milli</td><td>m</td><td>10⁻³ = 0.001</td><td>1 ms = 0.001 s</td></tr>
+<tr><td>micro</td><td>μ</td><td>10⁻⁶</td><td>1 μm = 10⁻⁶ m</td></tr></tbody></table>
+<p>The equations sheet lists more prefixes (tera to pico) if a question uses one.</p>
+
+<h2>Converting: multiply by 1</h2>
+<p>A <b>unit conversion</b> never changes how big a quantity is, only how it is written. The safe method is to multiply by a fraction whose top and bottom are equal, such as (1 m / 100 cm). That fraction equals 1, so the quantity does not change. Put the unit you want on top and the unit you want to get rid of on the bottom, then cancel units exactly as you cancel numbers.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A toy car rolls 45 cm. How far is that in meters?</p>
+<p>45 cm × (1 m / 100 cm) = 0.45 m</p>
+<p>Check: cm on top cancels cm on the bottom, leaving m. A meter is bigger than a centimeter, so the number got smaller. That makes sense.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> A car drives at 72 km/h. What is its speed in m/s?</p>
+<p>72 km/h × (1000 m / 1 km) × (1 h / 3600 s) = 72 000 m / 3600 s = 20 m/s</p>
+<p>Check: km cancels km and h cancels h, leaving m/s. Dividing by 3.6 is a shortcut for this exact chain; if you forget which way the shortcut goes, write out the factors.</p>
+</div>
+<p>One trap: an area or a volume needs the factor more than once. A square meter is a square 100 cm on each side, so 1 m² = 100 cm × 100 cm = 10 000 cm². Multiply by (100 cm / 1 m) twice for an area.</p>
+
+<h2>Scientific notation</h2>
+<p>Very small and very large numbers are easier to read in <b>scientific notation</b>: a number from 1 to 10 times a power of ten. A camera flash lasting 0.0025 s is 2.5 × 10⁻³ s; a run lasting 5400 s is 5.4 × 10³ s. On a calculator, type 2.5E-3 (the EE or E key means "times ten to the"). A negative power means a small number, not a negative one.</p>
+
+<h2>Significant figures: how many digits to report</h2>
+<p>A measurement is known only so well. A meterstick read to the millimeter gives 0.452 m, not 0.4523718 m. The <b>significant figures</b> of a value are the digits that were actually measured, including the last, estimated one.</p>
+<ul>
+<li>Nonzero digits count: 8.019 has four.</li>
+<li>Zeros in front only place the decimal point and do not count: 0.00620 has three (6, 2 and the last 0).</li>
+<li>Zeros at the end count when there is a decimal point: 15.0 has three. Without one (5400) they are unclear, so write 5.4 × 10³ for two figures.</li>
+</ul>
+<p>When you calculate:</p>
+<ul>
+<li><b>Multiplying or dividing</b>: keep as many significant figures as the value with the fewest. 100.0 m ÷ 12.47 s = 8.019 m/s (both have four).</li>
+<li><b>Adding or subtracting</b>: keep the fewest decimal places. 12.4 m + 3.2 m = 15.6 m.</li>
+<li><b>Round once, at the end.</b> Keep extra digits in your calculator between steps; rounding early piles up errors.</li>
+</ul>
+<p>The exam does not grade significant figures harshly, and most data come with two or three figures. Reporting a sensible number of digits is still a habit readers notice, and this course grades it on numeric answers so you build it now.</p>
+
+<h2>A checklist for every calculation</h2>
+<ol>
+<li>Convert every value to m, kg and s before you put it into an equation.</li>
+<li>Carry the units through each step and check that they cancel to the unit you expect.</li>
+<li>Ask whether the size makes sense: a person does not walk at 30 m/s.</li>
+<li>Round once, at the end, to the significant figures the data support.</li>
+</ol>

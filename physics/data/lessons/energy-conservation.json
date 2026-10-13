@@ -1,0 +1,98 @@
+{
+ "topic": "energy-conservation",
+ "hook": "A roller coaster has no engine after the first hill, yet it races through loops and over smaller hills for a full minute. Nothing pushes it; energy simply changes form, from height to speed and back. Learning to track that energy, and to choose what is inside the system, solves problems that would take pages with forces.",
+ "prereq": [
+  {
+   "q": "Near Earth's surface, the change in gravitational potential energy of an object-Earth system is",
+   "options": [
+    "mgΔy",
+    "½mv²",
+    "½k(Δx)²",
+    "mg/Δy"
+   ],
+   "correct": 0,
+   "why": "ΔU_g = mgΔy.",
+   "review": "potential-energy"
+  },
+  {
+   "q": "The net work done on an object equals its",
+   "options": [
+    "change in kinetic energy",
+    "kinetic energy",
+    "change in potential energy",
+    "momentum"
+   ],
+   "correct": 0,
+   "why": "The work-energy theorem: W_net = ΔK.",
+   "review": "work-by-forces"
+  },
+  {
+   "q": "A force exerted on the system by an object outside it is",
+   "options": [
+    "an external force",
+    "an internal force",
+    "a conservative force",
+    "a normal force"
+   ],
+   "correct": 0,
+   "why": "External forces come from outside the chosen system.",
+   "review": "third-law"
+  }
+ ],
+ "figure": {
+  "figure": "energy-track-bars",
+  "caption": "Energy bar charts for a block on a frictionless track: the bars change, the total does not."
+ },
+ "chain": [
+  {
+   "cause": "Choose a system and draw its boundary",
+   "effect": "every energy is either inside it (K, U, thermal) or crossing the boundary as work done by external forces"
+  },
+  {
+   "cause": "External forces do work on the system",
+   "effect": "the system's energy changes by exactly that work: ΔE_system = W_external"
+  },
+  {
+   "cause": "No external work, and no friction inside",
+   "effect": "mechanical energy K + U is constant: K_i + U_i = K_f + U_f"
+  },
+  {
+   "cause": "Kinetic friction acts inside the system",
+   "effect": "mechanical energy decreases and thermal energy increases by the same amount"
+  },
+  {
+   "cause": "The energies are drawn as bars",
+   "effect": "the bars before plus any work in equal the bars after: the bar chart is the equation"
+  }
+ ],
+ "ideas": [
+  "A one-object system has only kinetic energy. Potential energy appears only when the interacting objects (Earth, a spring) are inside the system.",
+  "<b>Mechanical energy</b> is K + U. It is constant in a <b>closed system</b> with no external work and no internal nonconservative forces.",
+  "<b>Conservation of energy</b>: total energy never changes; it moves across the boundary as work or changes form inside.",
+  "Kinetic friction turns mechanical energy into <b>thermal energy</b>; only mechanical energy is calculated, but the loss equals f_k d.",
+  "An <b>energy bar chart</b> shows each energy at two moments; the bars must add up (with any work) and match the situation."
+ ],
+ "misconception": {
+  "wrong": "Mechanical energy is conserved because energy is always conserved.",
+  "right": "Total energy is always conserved. Mechanical energy K + U stays constant only when no external force does work on the system and no friction acts inside it. A justification must state that condition."
+ },
+ "check": [
+  "phys-energy-conservation-1",
+  "phys-energy-conservation-2",
+  "phys-energy-conservation-3",
+  "phys-energy-conservation-5",
+  "phys-energy-conservation-14",
+  "phys-energy-conservation-15"
+ ],
+ "summary": "Pick the system first. Inside it energy changes form; across its boundary it moves as work by external forces. With no external work and no friction, K + U is constant. Friction turns mechanical energy into thermal energy, and energy bar charts must add up to match the equation.",
+ "connections": [
+  {
+   "href": "../notes/potential-energy.html",
+   "label": "Back: potential energy (3.3)"
+  },
+  {
+   "href": "../notes/power.html",
+   "label": "Next: 3.5"
+  }
+ ]
+}

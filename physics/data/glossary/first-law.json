@@ -1,0 +1,14 @@
+{
+ "translational-equilibrium": {
+  "def": "The state of an object whose net force is zero (ΣF = 0, in every direction). Its velocity stays constant, which includes staying at rest."
+ },
+ "first-law": {
+  "def": "Newton's first law: an object's velocity stays constant (it stays at rest or keeps moving in a straight line at the same speed) unless a nonzero net force acts on it."
+ },
+ "inertia": {
+  "def": "The tendency of an object to keep its velocity. Mass measures inertia: the more mass, the harder it is to change the velocity. Inertia is not a force."
+ },
+ "inertial-frame": {
+  "def": "A reference frame in which Newton's first law holds, such as the ground or a vehicle moving at constant velocity. An accelerating vehicle is a noninertial frame."
+ }
+}

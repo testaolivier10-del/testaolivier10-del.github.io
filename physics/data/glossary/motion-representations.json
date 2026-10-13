@@ -1,0 +1,26 @@
+{
+ "motion-diagram": {
+  "def": "A picture of an object's position at equal time intervals, as dots or images, often with velocity arrows. Growing gaps mean speeding up; shrinking gaps, slowing down."
+ },
+ "position-time-graph": {
+  "def": "A graph of position x against time t. Its slope at any instant is the velocity; a straight line means constant velocity, a curve means the velocity changes."
+ },
+ "velocity-time-graph": {
+  "def": "A graph of velocity v against time t. Its slope is the acceleration and the area between it and the time axis is the displacement."
+ },
+ "acceleration-time-graph": {
+  "def": "A graph of acceleration a against time t. The area between it and the time axis is the change in velocity."
+ },
+ "constant-acceleration": {
+  "def": "Motion in which the velocity changes by the same amount in every equal time interval: a straight, sloped v-t graph and a horizontal a-t graph."
+ },
+ "kinematic-equations": {
+  "def": "The three equations for constant acceleration: v = v₀ + at; x = x₀ + v₀t + ½at²; v² = v₀² + 2a(x − x₀). Each leaves out one quantity."
+ },
+ "free-fall": {
+  "def": "Motion under gravity alone, with air resistance negligible. Near Earth every freely falling object has a constant acceleration g = 9.8 m/s² (about 10 m/s²) downward."
+ },
+ "nonuniform-acceleration": {
+  "def": "Acceleration that changes with time: a curved v-t graph. In this course it is described from graphs and in words, not calculated."
+ }
+}

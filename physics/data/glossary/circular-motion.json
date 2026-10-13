@@ -1,0 +1,35 @@
+{
+ "uniform-circular-motion": {
+  "def": "Motion in a circle at a constant speed. The velocity changes direction continuously, so the object accelerates toward the center."
+ },
+ "centripetal-acceleration": {
+  "def": "The acceleration of an object moving in a circle, pointing toward the center, of size a_c = v²/r."
+ },
+ "centripetal-force": {
+  "def": "The net force toward the center of a circular path, of size mv²/r. It is not a separate force: one or more real forces (tension, friction, normal force, gravity) supply it, and it is never drawn as its own arrow on a free-body diagram."
+ },
+ "tangential-acceleration": {
+  "def": "The part of an object's acceleration along its velocity, which changes its speed. On a circle it adds to the centripetal part as a vector."
+ },
+ "period-motion": {
+  "def": "The time for one complete trip around a circle (or one cycle of a repeating motion), T, in seconds. For uniform circular motion, v = 2πr/T."
+ },
+ "frequency": {
+  "def": "The number of trips or cycles per second, f = 1/T, in hertz (Hz = 1/s)."
+ },
+ "banked-curve": {
+  "def": "A curve whose road is tilted toward the center. On a frictionless banked curve the horizontal part of the normal force supplies the centripetal net force, at one speed: tan θ = v²/(gr). Curves that need friction are treated in words only."
+ },
+ "vertical-loop": {
+  "def": "A circle in a vertical plane, such as a loop-the-loop. At the top, gravity and the track's normal force both point to the center; the minimum speed there is when gravity alone supplies the net force, v = √(gr)."
+ },
+ "conical-pendulum": {
+  "def": "A mass on a string swinging in a horizontal circle so that the string traces a cone. The vertical part of the tension balances the weight, and the horizontal part supplies the centripetal net force."
+ },
+ "circular-orbit": {
+  "def": "The circular path of a satellite or moon around a central body, with gravity supplying the centripetal net force: GMm/r² = mv²/r, so v = √(GM/r), independent of the satellite's own mass."
+ },
+ "kepler-third": {
+  "def": "For circular orbits around the same central body of mass M, T² = (4π²/GM)r³: the square of the period is proportional to the cube of the orbit radius."
+ }
+}

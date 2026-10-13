@@ -1,0 +1,11 @@
+{
+ "spring-force": {
+  "def": "The force a stretched or compressed spring exerts on an object attached to its end, always toward the spring's relaxed length: a stretched spring pulls, a compressed spring pushes."
+ },
+ "hookes-law": {
+  "def": "For an ideal spring, F_s = −kΔx: the spring force is proportional to the displacement Δx of its end from the relaxed length, and opposite to it. The spring constant k (N/m) measures stiffness."
+ },
+ "ideal-spring": {
+  "def": "A model spring that has no mass and obeys Hooke's law exactly, so it exerts forces of equal size at its two ends."
+ }
+}

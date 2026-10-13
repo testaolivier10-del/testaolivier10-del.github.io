@@ -1,0 +1,20 @@
+{
+ "variable-symbol": {
+  "def": "A letter that stands for a physical quantity, such as x for position, v for velocity or t for time. It stands for a number with a unit."
+ },
+ "delta-notation": {
+  "def": "The Greek letter Δ (delta) in front of a symbol means \"change in\": final value minus initial value. Δx = x − x₀."
+ },
+ "subscript-notation": {
+  "def": "A small label written below a symbol to say which value is meant: x₀ is the starting position, v₁ and v₂ two different velocities."
+ },
+ "rearrange-equation": {
+  "def": "Solving an equation for one symbol by doing the same operation to both sides, undoing the operations in reverse order."
+ },
+ "symbolic-expression": {
+  "def": "An answer written with symbols for given quantities instead of numbers, such as t = (x − x₀)/v. The exam asks for these in derivations."
+ },
+ "substitution": {
+  "def": "Putting numbers, with their units, in place of the symbols of an expression, after it has been solved for the unknown."
+ }
+}

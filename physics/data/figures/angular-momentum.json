@@ -1,0 +1,12 @@
+{
+ "puck-passing-point": {
+  "file": "figures/puck-passing-point.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Top view of a level, frictionless table. A puck of mass m slides at constant velocity v along a straight dashed line. A point P lies off the line, a perpendicular distance d from it. The puck is shown at three positions; grey lines from P reach the first and third positions, and at the first one the angle θ between r and v is marked. The amber perpendicular from P to the line has length r⊥ = d. A panel gives L = rmv sin θ = mvd: r changes as the puck moves, but r sin θ always equals d, so the angular momentum about P is constant. About any point on the puck’s own line, L is zero."
+ }
+}

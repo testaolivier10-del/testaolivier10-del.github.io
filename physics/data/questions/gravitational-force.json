@@ -1,0 +1,476 @@
+{
+ "stimuli": {
+  "gravitational-force-s1": {
+   "kind": "table",
+   "title": "Scale readings during an elevator ride",
+   "text": "<p>A 60 kg student stands on a bathroom scale in an elevator that starts at rest on the ground floor and stops at rest on an upper floor. She records the scale reading at several times. Use g = 9.8 m/s².</p>",
+   "table": {
+    "caption": "Scale reading during the ride",
+    "cols": [
+     "Time (s)",
+     "Scale reading (N)"
+    ],
+    "rows": [
+     [
+      "0.0",
+      "588"
+     ],
+     [
+      "2.0",
+      "660"
+     ],
+     [
+      "4.0",
+      "588"
+     ],
+     [
+      "8.0",
+      "588"
+     ],
+     [
+      "10.0",
+      "516"
+     ],
+     [
+      "12.0",
+      "588"
+     ]
+    ]
+   }
+  },
+  "gravitational-force-s2": {
+   "kind": "model",
+   "title": "Weighing a lander on Mars",
+   "html": "<p>A robotic lander has a mass of 300 kg. Mars has a mass of 6.42 × 10²³ kg and a radius of 3.39 × 10⁶ m. Earth has a mass of 5.97 × 10²⁴ kg and a radius of 6.37 × 10⁶ m. Use G = 6.67 × 10⁻¹¹ N·m²/kg².</p><p>The size of the gravitational force between two objects is |F<sub>g</sub>| = Gm₁m₂/r², where r is the distance between their centers. The gravitational field at a point is g = F<sub>g</sub>/m.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-gravitational-force-1",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "gravitational-force-s1",
+   "q": "Between 1.0 s and 3.0 s the scale reads 660 N. What is the elevator doing then?",
+   "options": [
+    "Speeding up while moving upward",
+    "Moving upward at a constant speed",
+    "Slowing down while moving upward",
+    "At rest, waiting at the ground floor"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The scale pushes up on the student with 660 N while Earth pulls her down with mg = 588 N. The net force is 72 N up, so she accelerates upward. Starting from rest, that means speeding up on the way up.",
+    "options": [
+     "Right: the normal force exceeds the weight, so the acceleration points up.",
+     "At constant speed the scale would read her weight, 588 N.",
+     "Slowing down on the way up needs a downward acceleration, so a reading below 588 N.",
+     "At rest the scale reads 588 N, her weight."
+    ]
+   }
+  },
+  {
+   "id": "phys-gravitational-force-2",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "gravitational-force-s1",
+   "q": "What is the size of the elevator's acceleration when the scale reads 660 N, in m/s²?",
+   "numeric": {
+    "answer": 1.2,
+    "tol": 0.1,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "units": [
+     "m/s/s"
+    ],
+    "mistakes": [
+     {
+      "value": 11,
+      "why": "Value: that divides the scale reading by the mass. Use the net force, the scale reading minus her weight."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Second law for the student, up positive: F_N − mg = ma, so a = (660 N − 588 N) ÷ 60 kg = 72 N ÷ 60 kg = 1.2 m/s² upward."
+   }
+  },
+  {
+   "id": "phys-gravitational-force-3",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "gravitational-force-s1",
+   "q": "At 10.0 s the scale reads 516 N. Which is true at that moment?",
+   "options": [
+    "The gravitational force on her is still 588 N",
+    "The gravitational force on her has dropped to 516 N",
+    "Her mass has dropped to about 53 kg",
+    "The elevator is moving downward at that moment"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The scale reads the normal force, her apparent weight. The gravitational force mg depends only on her mass and Earth's field, so it stays 588 N; the smaller reading means the acceleration points down (the elevator slows as it nears the top).",
+    "options": [
+     "Right: apparent weight changed, the gravitational force did not.",
+     "Earth's pull does not change in an elevator; only the scale's push does.",
+     "Her mass does not change during the ride.",
+     "A downward acceleration can mean slowing down while moving up, which is what happens near the top floor."
+    ]
+   }
+  },
+  {
+   "id": "phys-gravitational-force-4",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "gravitational-force-s1",
+   "q": "The cable snaps (safety brakes catch it a moment later). In the instant the elevator and student fall freely together, what does the scale read, in newtons?",
+   "numeric": {
+    "answer": 0,
+    "tol": 0,
+    "unit": "N",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 588,
+      "why": "Value: 588 N is the gravitational force, which still acts. The scale reads the normal force, which is zero when both fall freely together."
+     }
+    ]
+   },
+   "why": {
+    "correct": "In free fall both the student and the scale accelerate down at g. Second law for the student: mg − F_N = mg, so F_N = 0. She is weightless: the gravitational force (588 N) still acts, but nothing pushes up on her."
+   }
+  },
+  {
+   "id": "phys-gravitational-force-5",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "gravitational-force-s1",
+   "q": "A student says: \"Astronauts in the space station are weightless because there is no gravity up there.\" Which evidence best contradicts this?",
+   "options": [
+    "Earth's field there is about 90% of its surface value",
+    "The astronauts feel no push from the floor",
+    "The station is above most of the atmosphere",
+    "The astronauts float freely inside the station"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gravity at the station's orbit is only about 10% weaker than at the ground; it is what keeps the station in orbit. The astronauts feel weightless because they and the station fall together, so the floor pushes on them with no force: zero apparent weight, like the falling elevator.",
+    "options": [
+     "Right: gravity is nearly as strong; the normal force is what vanishes.",
+     "That is the effect, zero normal force, not evidence about whether gravity is present.",
+     "The air has nothing to do with gravity's strength.",
+     "Floating is what the claim is trying to explain, so it cannot test it."
+    ]
+   }
+  },
+  {
+   "id": "phys-gravitational-force-6",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "gravitational-force-s2",
+   "q": "What is the strength of the gravitational field at the surface of Mars, in N/kg?",
+   "numeric": {
+    "answer": 3.7,
+    "tol": 0.1,
+    "unit": "N/kg",
+    "sigfigs": 2,
+    "units": [
+     "m/s^2",
+     "m/s/s"
+    ],
+    "mistakes": [
+     {
+      "value": 13000000,
+      "why": "Value: the radius must be squared. Gravity weakens with the square of the distance."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The field is the force per kilogram: g = F_g/m = GM/R² = (6.67 × 10⁻¹¹)(6.42 × 10²³) ÷ (3.39 × 10⁶)² = 3.7 N/kg (3.73)."
+   }
+  },
+  {
+   "id": "phys-gravitational-force-7",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "gravitational-force-s2",
+   "q": "What is the size of the gravitational force of Mars on the 300 kg lander resting on its surface, in newtons?",
+   "numeric": {
+    "answer": 1100,
+    "tol": 100,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2900,
+      "why": "Value: that uses Earth's field. On Mars the field is GM/R² for Mars, about 3.7 N/kg."
+     }
+    ]
+   },
+   "why": {
+    "correct": "F_g = mg_Mars = 300 kg × 3.73 N/kg = 1100 N (1.1 × 10³ N). The lander's mass is the same as on Earth; its weight on Mars is about 38% of its weight on Earth."
+   }
+  },
+  {
+   "id": "phys-gravitational-force-8",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "gravitational-force-s2",
+   "q": "The lander leaves Mars and moves to a height above the surface equal to one Mars radius. How does the gravitational force of Mars on it change?",
+   "options": [
+    "It falls to one quarter of its surface value",
+    "It falls to one half of its surface value",
+    "It stays the same, since the mass is the same",
+    "It falls to zero once the lander leaves the surface"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The distance in Newton's law is measured from the center of Mars: it goes from R to 2R. F ∝ 1/r², so the force becomes 1/2² = 1/4 of its surface value.",
+    "options": [
+     "Right: double the center-to-center distance, a quarter of the force.",
+     "The force falls with the square of the distance, not the distance itself.",
+     "The masses are the same, but the distance has doubled.",
+     "Gravity reaches far beyond a planet's surface; it weakens but does not vanish."
+    ]
+   }
+  },
+  {
+   "id": "phys-gravitational-force-9",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "gravitational-force-s2",
+   "q": "How does the gravitational force of the lander on Mars compare with the gravitational force of Mars on the lander?",
+   "options": [
+    "They are equal in size",
+    "Mars's pull is larger, since Mars is far more massive",
+    "The lander exerts no pull on Mars",
+    "The lander's pull is larger, since it is closer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The two forces are a third-law pair from one interaction, so they are equal in size: Gm₁m₂/r² has both masses in it, the same for each. Mars barely responds because its mass is enormous.",
+    "options": [
+     "Right: the same expression gives both forces.",
+     "A larger mass does not let one side of an interaction pull harder.",
+     "Every mass attracts every other mass; the pull is two-sided.",
+     "Both pulls use the same center-to-center distance."
+    ]
+   }
+  },
+  {
+   "id": "phys-gravitational-force-10",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two asteroids attract each other with a force F. If the distance between their centers is tripled, the force becomes",
+   "options": [
+    "F/9",
+    "F/3",
+    "3F",
+    "F/6"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F ∝ 1/r²: tripling r divides F by 3² = 9.",
+    "options": [
+     "Right: the square of 3 is 9.",
+     "That forgets to square the factor.",
+     "Gravity weakens with distance; it does not grow.",
+     "Squaring 3 gives 9, not 6."
+    ]
+   }
+  },
+  {
+   "id": "phys-gravitational-force-11",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two objects attract with a gravitational force F. If both masses double and the distance between their centers doubles too, the force becomes",
+   "options": [
+    "F",
+    "2F",
+    "4F",
+    "F/2"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F = Gm₁m₂/r². Doubling both masses multiplies the top by 4; doubling r multiplies the bottom by 4. The factors cancel: F.",
+    "options": [
+     "Right: 2 × 2 ÷ 2² = 1.",
+     "This counts only one mass doubling.",
+     "This forgets the distance in the bottom.",
+     "This forgets that both masses doubled."
+    ]
+   }
+  },
+  {
+   "id": "phys-gravitational-force-12",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "A 1000 kg space probe coasts past Earth at a distance of 2 Earth radii from Earth's center (2 × 6.37 × 10⁶ m). Earth's mass is 5.97 × 10²⁴ kg. What is the size of Earth's gravitational force on the probe, in newtons? Use G = 6.67 × 10⁻¹¹ N·m²/kg².",
+   "numeric": {
+    "answer": 2500,
+    "tol": 100,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 9800,
+      "why": "Value: that uses one Earth radius. The probe is 2 radii from Earth's center."
+     },
+     {
+      "value": 1100,
+      "why": "Value: \"2 Earth radii from the center\" means r = 2R, not a height of 2R above the surface."
+     }
+    ]
+   },
+   "why": {
+    "correct": "F = GMm/r² = (6.67 × 10⁻¹¹)(5.97 × 10²⁴)(1000) ÷ (1.274 × 10⁷ m)² = 2.5 × 10³ N, a quarter of the 9800 N it would weigh at the surface."
+   }
+  },
+  {
+   "id": "phys-gravitational-force-13",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Near Earth's surface the gravitational field is 9.8 N/kg. What does that number mean?",
+   "options": [
+    "Earth pulls each kilogram with 9.8 N",
+    "Each object near Earth weighs 9.8 N",
+    "Objects fall at a constant speed of 9.8 m/s",
+    "Earth's mass is 9.8 kg per cubic meter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The field is the gravitational force per unit mass, g = F/m. A 1 kg object feels 9.8 N; a 5 kg object feels 49 N. It equals the free-fall acceleration, 9.8 m/s², since N/kg = m/s².",
+    "options": [
+     "Right: force per kilogram.",
+     "An object's weight depends on its mass: mg.",
+     "Free-falling objects speed up by 9.8 m/s each second; their speed is not constant.",
+     "The field is a force per mass, not a density."
+    ]
+   }
+  },
+  {
+   "id": "phys-gravitational-force-14",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A heavy rock and a light pebble are dropped together. The rock has 10 times the mass. With air resistance negligible, which is true?",
+   "options": [
+    "The rock feels 10 times the force; both have the same acceleration",
+    "The rock feels 10 times the force and falls 10 times as fast",
+    "Both feel the same force and fall with the same acceleration",
+    "The rock feels the same force but falls faster since it is heavier"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gravitational force is proportional to mass (gravitational mass), and resistance to acceleration is proportional to mass too (inertial mass). a = F/m = (10mg)/(10m) = g. Experiments find these two masses equal, which is why everything falls together.",
+    "options": [
+     "Right: 10 times the force on 10 times the inertia.",
+     "Ten times the force acts on ten times the mass, so the acceleration is the same.",
+     "The gravitational force is mg, so the rock feels the larger force.",
+     "The force on the rock is larger, not equal, and it does not fall faster."
+    ]
+   }
+  },
+  {
+   "id": "phys-gravitational-force-15",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student's mass is 55 kg. She stands on a scale in an elevator accelerating downward at 2.0 m/s². What does the scale read, in newtons? Use g = 9.8 m/s².",
+   "numeric": {
+    "answer": 430,
+    "tol": 10,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 650,
+      "why": "Value: that adds the accelerations. With the acceleration down, the scale pushes up less than her weight: F_N = m(g − a)."
+     },
+     {
+      "value": 540,
+      "why": "Value: that is her weight. The scale reads less while she accelerates downward."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Down positive: mg − F_N = ma, so F_N = m(g − a) = 55 kg × (9.8 − 2.0) m/s² = 430 N (429 N rounded)."
+   }
+  },
+  {
+   "id": "phys-gravitational-force-16",
+   "unit": "unit-2",
+   "topic": "gravitational-force",
+   "type": "order",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Order these elevator moments from the largest scale reading to the smallest, for the same rider.",
+   "options": [
+    "Moving down and slowing to a stop",
+    "Moving up at a constant speed",
+    "Moving up and slowing to a stop",
+    "Falling freely after the cable breaks"
+   ],
+   "why": {
+    "correct": "Slowing while moving down is an upward acceleration, so F_N > mg; constant speed gives F_N = mg; slowing while moving up is a downward acceleration, F_N < mg; free fall gives F_N = 0."
+   }
+  }
+ ]
+}

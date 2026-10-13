@@ -1,0 +1,83 @@
+{
+ "topic": "buoyancy",
+ "hook": "A cruise ship weighs more than 100,000 tonnes and floats; a pebble sinks. A lump of clay sinks, but shape the same clay into a bowl and it floats. The difference is not how heavy the object is, but how much water it pushes aside. This lesson shows where that upward push comes from and how to calculate it.",
+ "prereq": [
+  {
+   "q": "In a fluid at rest, how does the pressure at the bottom of a block compare with the pressure at its top?",
+   "options": [
+    "Larger, because the bottom is deeper",
+    "Smaller, because the block shields it",
+    "The same, because the block is small",
+    "Zero, because the block is solid"
+   ],
+   "correct": 0,
+   "why": "P = P₀ + ρgh grows with depth.",
+   "review": "fluid-pressure"
+  },
+  {
+   "q": "An object is at rest with two forces on it. What must be true?",
+   "options": [
+    "The two forces are equal in size and opposite",
+    "There are no forces on it",
+    "The larger force points up",
+    "The forces point the same way"
+   ],
+   "correct": 0,
+   "why": "Zero acceleration means zero net force, so the two forces balance.",
+   "review": "first-law"
+  },
+  {
+   "q": "What is the mass of 2.0 × 10⁻³ m³ of water (ρ = 1000 kg/m³)?",
+   "options": [
+    "2.0 kg",
+    "0.50 kg",
+    "20 kg",
+    "2.0 × 10⁻⁶ kg"
+   ],
+   "correct": 0,
+   "why": "m = ρV = (1000 kg/m³)(2.0 × 10⁻³ m³) = 2.0 kg.",
+   "review": "density-fluids"
+  }
+ ],
+ "figure": {
+  "figure": "buoyancy-forces",
+  "caption": "Why the water pushes up: the pressure on the bottom face is larger than on the top. Right: the block's free-body diagram."
+ },
+ "chain": [
+  {
+   "cause": "Pressure in a fluid increases with depth",
+   "effect": "the fluid pushes up on an object's bottom harder than it pushes down on its top"
+  },
+  {
+   "cause": "The side pushes cancel",
+   "effect": "the net push of the fluid is upward: the buoyant force"
+  },
+  {
+   "cause": "The pressure difference across the object is ρg times its height",
+   "effect": "the buoyant force is ρ_fluid V_displaced g, the weight of the displaced fluid"
+  },
+  {
+   "cause": "Newton's second law applies to the object, with the buoyant force and gravity as separate forces",
+   "effect": "it floats where F_b = mg, sinks if mg is larger, and accelerates at a = (mg − F_b)/m"
+  }
+ ],
+ "ideas": [
+  "The <b>buoyant force</b> is the fluid's net upward push. On a free-body diagram it is a separate arrow, up, labeled \"F<sub>b</sub>, water on block\", opposite to the gravitational force.",
+  "<b>Archimedes' principle</b>: F<sub>b</sub> = ρ<sub>fluid</sub>V<sub>displaced</sub>g, the weight of the displaced fluid. It depends on the <i>fluid's</i> density and the displaced volume, not on the object's density or weight.",
+  "A floating object is in equilibrium: F<sub>b</sub> = mg, so the fraction under the surface is ρ<sub>object</sub>/ρ<sub>fluid</sub>.",
+  "A submerged object denser than the fluid sinks with a = g(1 − ρ<sub>fluid</sub>/ρ<sub>object</sub>), neglecting drag."
+ ],
+ "misconception": {
+  "wrong": "The buoyant force equals the object's weight, so a heavier object feels a larger buoyant force.",
+  "right": "The buoyant force equals the weight of the displaced fluid. It equals the object's own weight only when the object floats. Two equal-volume blocks, lead and aluminum, fully submerged feel the same buoyant force."
+ },
+ "check": [
+  "phys-buoyancy-1",
+  "phys-buoyancy-2",
+  "phys-buoyancy-3",
+  "phys-buoyancy-4",
+  "phys-buoyancy-5",
+  "phys-buoyancy-12"
+ ],
+ "summary": "The buoyant force is the fluid's net upward push, caused by pressure increasing with depth; it equals the weight of the displaced fluid, ρ_fluid V_displaced g, and Newton's laws with buoyancy and gravity as separate forces decide whether an object floats, sinks or accelerates."
+}

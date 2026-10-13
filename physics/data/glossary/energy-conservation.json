@@ -1,0 +1,17 @@
+{
+ "mechanical-energy": {
+  "def": "The sum of a system's kinetic and potential energies, K + U."
+ },
+ "closed-system": {
+  "def": "A system that no energy enters or leaves: no external force does net work on it. An open system exchanges energy with its surroundings."
+ },
+ "conservation-of-energy": {
+  "def": "Energy is never created or destroyed: a system's energy changes only by the energy transferred across its boundary."
+ },
+ "energy-bar-chart": {
+  "def": "Bars showing each form of a system's energy at two moments, plus any work across the boundary; the bars must balance."
+ },
+ "dissipated-energy": {
+  "def": "Mechanical energy turned into thermal energy (and sound) by nonconservative forces such as kinetic friction; it is still energy, just no longer mechanical."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "ke-speed-squared": {
+  "file": "figures/ke-speed-squared.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The same car drawn at 10 m/s and at 20 m/s on a road. At twice the speed it has four times the kinetic energy and needs four times the braking distance with the same brakes. Bars show K and 4K."
+ }
+}

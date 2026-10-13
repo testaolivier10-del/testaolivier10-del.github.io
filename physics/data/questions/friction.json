@@ -1,0 +1,464 @@
+{
+ "stimuli": {
+  "friction-s1": {
+   "kind": "table",
+   "title": "Pushing a crate that starts at rest",
+   "text": "<p>A 25 kg crate rests on a level warehouse floor. A worker pushes it horizontally, slowly increasing the push, while a force sensor records the push and a motion detector reports whether the crate moves. Once it slides, the worker adjusts the push to keep the crate sliding at a constant speed. Use g = 9.8 m/s².</p>",
+   "table": {
+    "caption": "Push on the crate and its motion",
+    "cols": [
+     "Push (N)",
+     "Crate"
+    ],
+    "rows": [
+     [
+      "50",
+      "at rest"
+     ],
+     [
+      "75",
+      "at rest"
+     ],
+     [
+      "140",
+      "at rest"
+     ],
+     [
+      "147",
+      "just starts to slide"
+     ],
+     [
+      "98",
+      "sliding at constant speed"
+     ]
+    ]
+   }
+  },
+  "friction-s2": {
+   "kind": "diagram",
+   "title": "A crate resting on a ramp",
+   "text": "<p>A 20 kg wooden crate rests without sliding on a ramp tilted at θ = 25° above the horizontal. Use g = 9.8 m/s².</p>",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 220\" role=\"img\" aria-label=\"A wooden crate rests without sliding on a ramp tilted at angle θ above the horizontal.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"460\" height=\"220\" fill=\"#FFFFFF\"/><path d=\"M30,200 L430,200 L430,70 Z\" fill=\"#EEF1EF\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><g transform=\"translate(250 128.5) rotate(-18)\"><rect x=\"-40\" y=\"-60\" width=\"80\" height=\"60\" rx=\"2\" fill=\"#E3C99A\" stroke=\"#9C7A44\" stroke-width=\"2.5\"/><rect x=\"-35\" y=\"-55\" width=\"70\" height=\"50\" rx=\"1\" fill=\"none\" stroke=\"#9C7A44\" stroke-width=\"1.4\"/><line x1=\"-34\" y1=\"-6\" x2=\"34\" y2=\"-54\" stroke=\"#9C7A44\" stroke-width=\"1.4\"/></g><path d=\"M90,200 A60,60 0 0,0 87.1,181.5\" fill=\"none\" stroke=\"#734200\" stroke-width=\"1.6\"/><text x=\"100\" y=\"190\" font-size=\"15\" fill=\"#734200\" font-weight=\"bold\">θ</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-friction-1",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "friction-s1",
+   "q": "When the push is 75 N, what is the size of the friction force on the crate, in newtons?",
+   "numeric": {
+    "answer": 75,
+    "tol": 1,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 150,
+      "why": "Value: 147 N is the maximum static friction. Below that, static friction is only as large as it needs to be to stop sliding: here, 75 N."
+     },
+     {
+      "value": 98,
+      "why": "Value: 98 N is kinetic friction, which acts only while the crate slides. At rest, static friction balances the push."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The crate stays at rest, so the net horizontal force is zero. Static friction matches the push: 75 N, opposite to it. It is not μ_s F_N; that is only the largest value static friction can reach."
+   }
+  },
+  {
+   "id": "phys-friction-2",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "friction-s1",
+   "q": "What is the coefficient of static friction between the crate and the floor?",
+   "numeric": {
+    "answer": 0.6,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 5.9,
+      "why": "Value: that divides by the mass. μ is a ratio of two forces: the friction over the normal force, mg = 245 N."
+     },
+     {
+      "value": 0.4,
+      "why": "Value: 0.40 is the kinetic coefficient, from the 98 N push at constant speed. The static coefficient comes from the push at which sliding starts."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Sliding starts when the push reaches the maximum static friction: f_s,max = μ_s F_N. On a level floor with a horizontal push, F_N = mg = 25 kg × 9.8 m/s² = 245 N. μ_s = 147 N ÷ 245 N = 0.60."
+   }
+  },
+  {
+   "id": "phys-friction-3",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "friction-s1",
+   "q": "What is the coefficient of kinetic friction between the crate and the floor?",
+   "numeric": {
+    "answer": 0.4,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 3.9,
+      "why": "Value: divide by the normal force (245 N), not by the mass."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At constant speed the push balances kinetic friction, so f_k = 98 N. μ_k = f_k ÷ F_N = 98 N ÷ 245 N = 0.40."
+   }
+  },
+  {
+   "id": "phys-friction-4",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "friction-s1",
+   "q": "Right after the crate starts to slide, the worker keeps pushing with 147 N. What happens?",
+   "options": [
+    "It speeds up, as kinetic friction is 98 N",
+    "The crate moves at a constant speed, since the push equals the friction",
+    "The crate stops again, since friction rises to match",
+    "The crate slows down, since friction grows once it moves"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Once the crate slides, friction drops to the kinetic value, 98 N. A 147 N push gives a net force of 49 N forward, so the crate speeds up at 49 N ÷ 25 kg ≈ 2.0 m/s². That is why things lurch forward once they break free.",
+    "options": [
+     "Right: kinetic friction is smaller than the maximum static friction.",
+     "The push equalled the maximum static friction, but kinetic friction is smaller.",
+     "Static friction stops acting once the surfaces slide; kinetic friction cannot exceed μ_k F_N.",
+     "Kinetic friction is smaller than maximum static friction, not larger."
+    ]
+   }
+  },
+  {
+   "id": "phys-friction-5",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "friction-s1",
+   "q": "A second, identical crate is stacked on top, and the experiment is repeated. How do the push needed to start sliding and the push to keep sliding at a constant speed change?",
+   "options": [
+    "Both double",
+    "Both stay the same",
+    "The first doubles and the second stays the same",
+    "Both halve"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Doubling the mass doubles the normal force (2mg). Both static and kinetic friction are proportional to F_N, so both pushes double: 294 N and 196 N. The coefficients, which depend only on the surfaces, stay the same.",
+    "options": [
+     "Right: friction ∝ F_N, and F_N doubles.",
+     "The coefficients stay the same, but the friction forces depend on the normal force, which doubles.",
+     "Kinetic friction is μ_k F_N too, so it doubles as well.",
+     "More weight presses the surfaces together harder, increasing friction."
+    ]
+   }
+  },
+  {
+   "id": "phys-friction-6",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "friction-s2",
+   "q": "What is the size of the static friction force on the crate on the ramp, in newtons?",
+   "numeric": {
+    "answer": 83,
+    "tol": 1,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 180,
+      "why": "Value: that uses cos θ, which gives the part of gravity into the ramp. The part along the ramp is mg sin θ."
+     },
+     {
+      "value": 200,
+      "why": "Value: that is the whole weight. Only the part along the slope, mg sin θ, tends to slide the crate."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Take axes along and perpendicular to the ramp. Along the ramp, gravity's part is mg sin θ, down the slope; the crate is at rest, so static friction balances it: f_s = mg sin 25° = 20 kg × 9.8 m/s² × 0.423 = 83 N, up the slope."
+   }
+  },
+  {
+   "id": "phys-friction-7",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "friction-s2",
+   "q": "What is the size of the normal force of the ramp on the crate, in newtons?",
+   "numeric": {
+    "answer": 180,
+    "tol": 10,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 200,
+      "why": "Value: on a ramp the normal force is not mg. Only the part of gravity perpendicular to the surface, mg cos θ, presses into it."
+     },
+     {
+      "value": 83,
+      "why": "Value: that uses sin θ, the part along the ramp. Perpendicular to the ramp the part is mg cos θ."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Perpendicular to the ramp nothing accelerates, so F_N balances gravity's part into the ramp: F_N = mg cos 25° = 20 kg × 9.8 m/s² × 0.906 = 180 N (178 N rounded to two significant figures)."
+   }
+  },
+  {
+   "id": "phys-friction-8",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "friction-s2",
+   "q": "Which way does the static friction force on the crate point?",
+   "options": [
+    "Up the slope, along the ramp's surface",
+    "Down the slope, along the ramp's surface",
+    "Straight up, opposite the weight",
+    "Perpendicular to the ramp, away from it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Without friction the crate would slide down the slope. Static friction opposes the sliding that would otherwise happen, so it points up the slope, along the surface.",
+    "options": [
+     "Right: it opposes the tendency to slide down.",
+     "Friction opposes the tendency to slide, which is down the slope.",
+     "Friction acts along the surface, not vertically.",
+     "That is the direction of the normal force."
+    ]
+   }
+  },
+  {
+   "id": "phys-friction-9",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "friction-s2",
+   "q": "The ramp is tilted slowly to a steeper angle, and the crate still has not slipped. Compared with 25°, how have the static friction and the normal force changed?",
+   "options": [
+    "Static friction has increased and the normal force has decreased",
+    "Both have increased",
+    "Static friction has decreased and the normal force has increased",
+    "Both have stayed the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Static friction matches mg sin θ, which grows as θ grows. The normal force is mg cos θ, which shrinks. Eventually mg sin θ needs more friction than μ_s mg cos θ can give, and the crate slips: at tan θ = μ_s.",
+    "options": [
+     "Right: sin θ rises and cos θ falls as the ramp steepens.",
+     "The normal force falls: a steeper ramp presses less into the crate.",
+     "This swaps the two trends.",
+     "Both depend on θ, which has changed."
+    ]
+   }
+  },
+  {
+   "id": "phys-friction-10",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement about kinetic friction is correct?",
+   "options": [
+    "It is μ_k F_N, whatever the contact area",
+    "It grows with the speed of sliding",
+    "It is larger for a wider block of the same mass",
+    "It points in the direction the object slides"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the model used in this course, kinetic friction is f_k = μ_k F_N: set by the surfaces and how hard they are pressed together, not by speed or by area, and it opposes the sliding.",
+    "options": [
+     "Right: f_k = μ_k F_N.",
+     "The model treats kinetic friction as independent of speed.",
+     "The same normal force spread over a larger area gives the same friction.",
+     "It opposes the sliding of the surfaces."
+    ]
+   }
+  },
+  {
+   "id": "phys-friction-11",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A runner speeds up along a track. What is the direction of the friction from the track on her shoe while it is planted?",
+   "options": [
+    "Forward, the way she speeds up",
+    "Backward, opposing her motion",
+    "Straight up",
+    "Zero, since the shoe does not slide"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Her shoe pushes back on the track and does not slip, so static friction from the track pushes her forward. Friction opposes the sliding the surfaces would otherwise do, not the motion of the person.",
+    "options": [
+     "Right: static friction forward is what speeds her up.",
+     "Friction opposes slipping between surfaces; here that means it points forward on her shoe.",
+     "Friction acts along the surface, not perpendicular to it.",
+     "Static friction acts without sliding; it is what keeps the shoe from slipping."
+    ]
+   }
+  },
+  {
+   "id": "phys-friction-12",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 4.0 kg box slides across a level floor. The coefficient of kinetic friction is 0.30. What is the size of its acceleration as it slows down, in m/s²? Use g = 9.8 m/s².",
+   "numeric": {
+    "answer": 2.9,
+    "tol": 0.1,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "units": [
+     "m/s/s"
+    ],
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "Value: that is the friction force in newtons. Divide by the mass to get the acceleration."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The only horizontal force is kinetic friction, f_k = μ_k mg = 0.30 × 4.0 kg × 9.8 m/s² = 11.8 N. a = f_k ÷ m = μ_k g = 0.30 × 9.8 m/s² = 2.9 m/s². The mass cancels."
+   }
+  },
+  {
+   "id": "phys-friction-13",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student pulls a 10 kg sled across level snow with a rope angled 30° above the horizontal. The tension is 50 N and μ_k = 0.10. What is the size of the friction force on the sled, in newtons? Use g = 9.8 m/s².",
+   "numeric": {
+    "answer": 7.3,
+    "tol": 0.1,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 9.8,
+      "why": "Value: that uses F_N = mg. The rope's upward pull lifts part of the sled's weight, so the normal force is mg − F_T sin 30°."
+     },
+     {
+      "value": 12,
+      "why": "Value: the rope pulls up on the sled, which reduces the normal force; it does not add to it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The rope pulls partly upward (50 N × sin 30° = 25 N), so the snow pushes up less: F_N = mg − 25 N = 98 N − 25 N = 73 N. Then f_k = μ_k F_N = 0.10 × 73 N = 7.3 N."
+   }
+  },
+  {
+   "id": "phys-friction-14",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "multi",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which of these statements about static friction are correct? Select all that apply.",
+   "options": [
+    "It can be smaller than μ_s F_N",
+    "It acts when surfaces do not slide relative to each other",
+    "Its size equals μ_s F_N whenever it acts",
+    "It points opposite the object's velocity"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Static friction adjusts to whatever value prevents slipping, up to a maximum of μ_s F_N. Its direction opposes the sliding that would otherwise happen, which need not be opposite the velocity.",
+    "options": [
+     "Right: it is often less than its maximum.",
+     "Right: no relative sliding at the contact.",
+     "μ_s F_N is the maximum, reached only when slipping is about to begin.",
+     "A crate riding on an accelerating truck bed has static friction along its velocity."
+    ]
+   }
+  },
+  {
+   "id": "phys-friction-15",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For most pairs of surfaces, how do the two coefficients compare?",
+   "options": [
+    "μ_s is larger than μ_k",
+    "μ_k is larger than μ_s",
+    "They are equal",
+    "μ_s is zero once things move"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "It takes more force to start an object sliding than to keep it sliding, so usually μ_s > μ_k.",
+    "options": [
+     "Right: breaking free is harder than sliding.",
+     "Then objects would stop as soon as they began to slide under a steady push.",
+     "They differ for most surfaces; a crate lurches forward once it breaks free.",
+     "μ_s is a property of the surfaces; it does not vanish, it just stops applying while they slide."
+    ]
+   }
+  }
+ ]
+}

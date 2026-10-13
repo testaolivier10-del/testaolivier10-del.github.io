@@ -1,0 +1,5 @@
+{
+ "oscillator-energy": {
+  "def": "The total mechanical energy of an oscillating system, constant with no friction; for a block on a spring it equals ½kA², shared between kinetic and spring potential energy."
+ }
+}

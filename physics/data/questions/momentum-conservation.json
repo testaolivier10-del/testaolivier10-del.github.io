@@ -1,0 +1,422 @@
+{
+ "stimuli": {
+  "momentum-conservation-s1": {
+   "kind": "diagram",
+   "title": "Cart A hits cart B",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 300\" role=\"img\" aria-label=\"Before: cart A, 0.50 kg, moves right at 0.80 m/s toward cart B, 0.25 kg, at rest on a level track. After: A moves right at 0.30 m/s and B's velocity is unknown.\" style=\"max-width:100%;height:auto;background:#fff\"><rect width=\"640\" height=\"300\" fill=\"#FFFFFF\"/><text x=\"20\" y=\"48\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#734200\" text-anchor=\"start\" font-weight=\"bold\">Before</text><rect x=\"20\" y=\"140\" width=\"600\" height=\"7\" fill=\"#C9C3B6\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"30\" y=\"147\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"602\" y=\"147\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"120\" y=\"84\" width=\"100\" height=\"42\" rx=\"6\" fill=\"#F6E7C8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"140\" cy=\"131\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"200\" cy=\"131\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"140\" cy=\"131\" r=\"3\" fill=\"#D7D2C8\"/><circle cx=\"200\" cy=\"131\" r=\"3\" fill=\"#D7D2C8\"/><text x=\"170\" y=\"99\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">A</text><text x=\"170\" y=\"116\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.50 kg</text><rect x=\"360\" y=\"84\" width=\"120\" height=\"42\" rx=\"6\" fill=\"#F6E7C8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"380\" cy=\"131\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"460\" cy=\"131\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"380\" cy=\"131\" r=\"3\" fill=\"#D7D2C8\"/><circle cx=\"460\" cy=\"131\" r=\"3\" fill=\"#D7D2C8\"/><text x=\"420\" y=\"99\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">B</text><text x=\"420\" y=\"116\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.25 kg</text><line x1=\"170\" y1=\"70\" x2=\"207.0\" y2=\"70.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"218.0,70.0 207.0,75.0 207.0,65.0\" fill=\"#B07A00\"/><text x=\"226.0\" y=\"75.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"start\" font-weight=\"bold\">+0.80 m/s</text><text x=\"420\" y=\"70\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#5A6268\" text-anchor=\"middle\">at rest</text><text x=\"20\" y=\"188\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#734200\" text-anchor=\"start\" font-weight=\"bold\">After</text><rect x=\"20\" y=\"280\" width=\"600\" height=\"7\" fill=\"#C9C3B6\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"30\" y=\"287\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"602\" y=\"287\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"120\" y=\"224\" width=\"100\" height=\"42\" rx=\"6\" fill=\"#F6E7C8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"140\" cy=\"271\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"200\" cy=\"271\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"140\" cy=\"271\" r=\"3\" fill=\"#D7D2C8\"/><circle cx=\"200\" cy=\"271\" r=\"3\" fill=\"#D7D2C8\"/><text x=\"170\" y=\"239\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">A</text><text x=\"170\" y=\"256\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.50 kg</text><rect x=\"360\" y=\"224\" width=\"120\" height=\"42\" rx=\"6\" fill=\"#F6E7C8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"380\" cy=\"271\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"460\" cy=\"271\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"380\" cy=\"271\" r=\"3\" fill=\"#D7D2C8\"/><circle cx=\"460\" cy=\"271\" r=\"3\" fill=\"#D7D2C8\"/><text x=\"420\" y=\"239\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">B</text><text x=\"420\" y=\"256\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.25 kg</text><line x1=\"170\" y1=\"210\" x2=\"189.0\" y2=\"210.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"200.0,210.0 189.0,214.9 189.0,205.1\" fill=\"#B07A00\"/><text x=\"208.0\" y=\"215.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"start\" font-weight=\"bold\">+0.30 m/s</text><text x=\"420\" y=\"210\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#B07A00\" text-anchor=\"middle\" font-weight=\"bold\">v<tspan baseline-shift=\"sub\" font-size=\"75%\">B</tspan> = ?</text><text x=\"620\" y=\"24\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"end\">positive to the right →</text></svg><p>The track is level and friction is negligible. Positive is to the right.</p>"
+  },
+  "momentum-conservation-s2": {
+   "kind": "diagram",
+   "title": "A dart and a block",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 240\" role=\"img\" aria-label=\"A 0.050 kg dart flies right at 40 m/s toward a 0.450 kg block at rest on a smooth surface; beyond the block is a rough patch with a coefficient of kinetic friction of 0.40.\" style=\"max-width:100%;height:auto;background:#fff\"><rect width=\"640\" height=\"240\" fill=\"#FFFFFF\"/><text x=\"20\" y=\"26\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">A dart hits a block and stays in it</text><rect x=\"20\" y=\"190\" width=\"380\" height=\"8\" fill=\"#DCE8F1\" stroke=\"#1F2A28\" stroke-width=\"1.2\"/><rect x=\"400\" y=\"190\" width=\"220\" height=\"8\" fill=\"#C9A27A\" stroke=\"#1F2A28\" stroke-width=\"1.2\"/><line x1=\"406\" y1=\"192\" x2=\"411\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"416\" y1=\"192\" x2=\"421\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"426\" y1=\"192\" x2=\"431\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"436\" y1=\"192\" x2=\"441\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"446\" y1=\"192\" x2=\"451\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"456\" y1=\"192\" x2=\"461\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"466\" y1=\"192\" x2=\"471\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"476\" y1=\"192\" x2=\"481\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"486\" y1=\"192\" x2=\"491\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"496\" y1=\"192\" x2=\"501\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"506\" y1=\"192\" x2=\"511\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"516\" y1=\"192\" x2=\"521\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"526\" y1=\"192\" x2=\"531\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"536\" y1=\"192\" x2=\"541\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"546\" y1=\"192\" x2=\"551\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"556\" y1=\"192\" x2=\"561\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"566\" y1=\"192\" x2=\"571\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"576\" y1=\"192\" x2=\"581\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"586\" y1=\"192\" x2=\"591\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"596\" y1=\"192\" x2=\"601\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"606\" y1=\"192\" x2=\"611\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><line x1=\"616\" y1=\"192\" x2=\"621\" y2=\"196\" stroke=\"#8B6B3E\" stroke-width=\"1\"/><text x=\"200\" y=\"218\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">smooth (no friction)</text><text x=\"510\" y=\"218\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">rough patch, μ<tspan baseline-shift=\"sub\" font-size=\"75%\">k</tspan> = 0.40</text><rect x=\"260\" y=\"130\" width=\"90\" height=\"60\" fill=\"#D9B27C\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"305\" y=\"156\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">block</text><text x=\"305\" y=\"174\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.450 kg</text><path d=\"M90,157 L150,157 L162,160 L150,163 L90,163 Z\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.2\"/><path d=\"M90,160 L76,151 L84,160 L76,169 Z\" fill=\"#D55E00\"/><text x=\"118\" y=\"148\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">dart, 0.050 kg</text><line x1=\"170\" y1=\"160\" x2=\"219.0\" y2=\"160.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"230.0,160.0 219.0,164.9 219.0,155.1\" fill=\"#B07A00\"/><text x=\"200\" y=\"148\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"middle\" font-weight=\"bold\">40 m/s</text></svg><p>The dart sticks in the block. Use g = 9.8 m/s².</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-momentum-conservation-1",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "momentum-conservation-s1",
+   "q": "What is cart B's velocity after the collision, in m/s?",
+   "numeric": {
+    "answer": 1,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.8,
+      "why": "Value: B does not simply take A's speed. Use momentum: (0.50)(0.80) = (0.50)(0.30) + (0.25)v_B."
+     },
+     {
+      "value": 0.5,
+      "why": "Value: that is A's change in velocity. B's mass is half of A's, so B's change is twice as large."
+     }
+    ]
+   },
+   "why": {
+    "correct": "System: both carts. External forces (gravity, normal) balance and friction is negligible, so p is constant: (0.50)(0.80) = (0.50)(0.30) + (0.25)v_B, giving v_B = +1.0 m/s."
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-2",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "momentum-conservation-s1",
+   "q": "Which is the best justification for using momentum conservation here?",
+   "options": [
+    "The net external force on the two carts is zero: vertical forces balance and friction is negligible",
+    "Momentum is conserved because of the law of conservation of momentum, which holds for any collision",
+    "The carts exert equal forces on each other, so each cart's momentum is constant",
+    "Kinetic energy is conserved in the collision, so momentum is conserved as well"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A system's momentum is constant when the net external force on it is zero. State the system and why the external forces add to zero.",
+    "options": [
+     "Right: it names the system and the condition.",
+     "Circular: it states the law without the condition that makes it apply.",
+     "Each cart's momentum changes. The equal and opposite forces make the changes cancel in the total.",
+     "Momentum does not follow from kinetic energy; and K need not be conserved here."
+    ]
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-3",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "momentum-conservation-s1",
+   "q": "How does the impulse cart A exerts on cart B compare with the impulse cart B exerts on cart A?",
+   "options": [
+    "B's impulse on A is larger, because A is heavier",
+    "Equal in size and opposite in direction",
+    "A's impulse on B is larger, because B speeds up more",
+    "Equal in size and in the same direction"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Δp_A = (0.50)(0.30 − 0.80) = −0.25 kg·m/s; Δp_B = (0.25)(1.0 − 0) = +0.25 kg·m/s. Equal and opposite, so the total is unchanged.",
+    "options": [
+     "Third-law forces are equal regardless of the masses.",
+     "Right: the forces are a third-law pair acting for the same time.",
+     "B's larger velocity change comes from its smaller mass, not from a larger impulse.",
+     "Third-law forces point in opposite directions."
+    ]
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "momentum-conservation-s1",
+   "q": "Take cart A alone as the system. Which is correct?",
+   "options": [
+    "A's momentum is constant, because the track is frictionless",
+    "A's momentum is constant, because the collision is brief",
+    "A's momentum is not constant, because B exerts an external force on it",
+    "A has no momentum after the collision, since its momentum went to B"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Whether momentum is constant depends on the system. Cart A alone feels B's external push; the two-cart system does not.",
+    "options": [
+     "Friction is not the only external force. B's push on A changes A's momentum.",
+     "Brief or not, B's push gives A an impulse of −0.25 N·s.",
+     "Right: with B outside the system, B's push is external.",
+     "A still moves at 0.30 m/s, so p_A = 0.15 kg·m/s."
+    ]
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-5",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "momentum-conservation-s1",
+   "q": "How does the velocity of the center of mass of the two carts after the collision compare with before?",
+   "options": [
+    "It increases, because B speeds up",
+    "It decreases, because A slows down",
+    "It is zero after the collision",
+    "It is the same, about +0.53 m/s"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "v_cm = (0.40 kg·m/s)/(0.75 kg) = 0.53 m/s both times. With no net external force, the center of mass keeps a constant velocity.",
+    "options": [
+     "A slows down by the matching amount of momentum; the total is unchanged.",
+     "B gains exactly the momentum A loses.",
+     "The total momentum is still 0.40 kg·m/s, not zero.",
+     "Right: v_cm = Σp/Σm = 0.40/0.75 before and after."
+    ]
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-6",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "momentum-conservation-s2",
+   "q": "How fast do the dart and block move just after the dart sticks, in m/s?",
+   "numeric": {
+    "answer": 4,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4.4,
+      "why": "Value: after the collision the dart moves with the block. Divide by the total mass, 0.500 kg."
+     },
+     {
+      "value": 13,
+      "why": "Value: that sets kinetic energies equal. The dart sticks, so kinetic energy is not conserved; use momentum."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Momentum of the dart-block system: (0.050 kg)(40 m/s) = (0.500 kg)v, so v = 4.0 m/s."
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-7",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "momentum-conservation-s2",
+   "q": "Why can momentum, but not kinetic energy, be used to find the speed just after the dart sticks?",
+   "options": [
+    "No net external force acts on them, but friction inside the block makes thermal energy",
+    "Kinetic energy is conserved as well, but the momentum equation is easier to solve",
+    "Momentum is conserved just for collisions where the objects join",
+    "The rough patch removes momentum but not kinetic energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "During the impact the only horizontal forces are internal, so p is constant. The dart tearing into the wood does negative work inside the system, so K drops from 40 J to 4.0 J.",
+    "options": [
+     "Right: momentum's condition holds; mechanical energy's does not.",
+     "Kinetic energy falls from 40 J to 4.0 J; it is not conserved.",
+     "Momentum is conserved in any collision with no net external force.",
+     "The rough patch comes after the collision and removes both."
+    ]
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-8",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "momentum-conservation-s2",
+   "q": "The dart and block then slide onto the rough patch. How far do they slide before stopping, in meters?",
+   "numeric": {
+    "answer": 2,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 200,
+      "why": "Value: that uses the dart's speed. On the patch the dart and block move together at 4.0 m/s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Friction does work −μ_k(M)g d = 0 − ½Mv², so d = v²/(2μ_k g) = (4.0 m/s)²/(2 × 0.40 × 9.8 m/s²) = 2.0 m."
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-9",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "momentum-conservation-s2",
+   "q": "While the dart and block slide on the rough patch, is the momentum of the dart-block system constant?",
+   "options": [
+    "Yes: momentum is conserved whatever the forces",
+    "No: friction from the patch is a net external force",
+    "Yes: the dart and the block move together as one object",
+    "No: the dart is now inside the block"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "On the patch, friction from the floor is an unbalanced external force, so the system's momentum decreases to zero.",
+    "options": [
+     "Momentum is constant only with no net external force. Friction is external here.",
+     "Right: the floor is outside the system, and its friction slows it.",
+     "Moving together does not stop an external force from changing their momentum.",
+     "Where the dart sits does not matter; the external friction does."
+    ]
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-10",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A ball falls toward Earth. For which system is momentum constant (ignoring the rest of the universe)?",
+   "options": [
+    "The ball alone",
+    "Earth alone",
+    "Ball + Earth",
+    "Neither the ball alone nor ball + Earth"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Ball alone: Earth's pull is external, so p changes. Ball + Earth: the pull is internal, so the total momentum is constant. Earth's tiny upward speed balances the ball's.",
+    "options": [
+     "Earth's pull is external to the ball and increases its downward momentum.",
+     "The ball pulls Earth up, an external force on Earth.",
+     "Right: the gravitational forces between them are internal and cancel.",
+     "With both inside, the only forces are internal; the total is constant."
+    ]
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-11",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A 60. kg skater at rest throws a 3.0 kg ball forward at 8.0 m/s on frictionless ice. What is the skater's recoil speed, in m/s?",
+   "numeric": {
+    "answer": 0.4,
+    "tol": 0.01,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.38,
+      "why": "Value: the skater and ball separate, so the skater's mass alone (60. kg) carries the recoil."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Starting p = 0: 0 = (3.0)(8.0) + (60.)v, so v = −0.40 m/s, a speed of 0.40 m/s backward."
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-12",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "An astronaut at rest throws a wrench away. If she throws a wrench of twice the mass at the same speed, her recoil speed becomes",
+   "options": [
+    "4 times as large",
+    "√2 times as large",
+    "the same",
+    "2 times as large"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "m_a v_a = m_w v_w. Doubling m_w at the same v_w doubles v_a.",
+    "options": [
+     "Momentum is linear in mass; nothing is squared.",
+     "That would come from equal kinetic energies, which is not the condition here.",
+     "The wrench carries twice the momentum, so she must too.",
+     "Right: her momentum must balance the wrench's, which doubles."
+    ]
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-13",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two ice skaters push off each other from rest. Skater 1 has twice the mass of skater 2. Which statement is correct?",
+   "options": [
+    "Skater 2 moves off twice as fast as skater 1, the other way",
+    "Both move away at the same speed, in opposite directions",
+    "Skater 1 moves away twice as fast, because skater 1 is bigger",
+    "Skater 1 does not move, because skater 2 does the pushing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The total momentum stays zero: m₁v₁ + m₂v₂ = 0 with m₁ = 2m₂ gives v₂ = −2v₁.",
+    "options": [
+     "Right: equal and opposite momenta, so the lighter skater is faster.",
+     "Equal forces give equal momenta, not equal speeds.",
+     "The heavier skater is the slower one.",
+     "Each pushes the other with equal and opposite forces (third law)."
+    ]
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-14",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A 1.5 kg cart moving right at 2.0 m/s collides with a 0.50 kg cart moving left at 3.0 m/s. After the collision the 0.50 kg cart moves right at 1.5 m/s. What is the 1.5 kg cart's velocity after, in m/s? Include the sign (right positive).",
+   "numeric": {
+    "answer": 0.5,
+    "tol": 0.01,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "Value: the 0.50 kg cart moves left before, so its momentum is negative: (0.50)(−3.0)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "p before = (1.5)(2.0) + (0.50)(−3.0) = 1.5 kg·m/s. After: 1.5 = (1.5)v + (0.50)(1.5), so v = +0.50 m/s."
+   }
+  },
+  {
+   "id": "phys-momentum-conservation-15",
+   "type": "predict",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A moving cart collides with a cart at rest on a level, frictionless track. For the two-cart system, compare after with before.",
+   "variables": [
+    {
+     "name": "The total momentum",
+     "answer": "none",
+     "why": "No net external force acts, so the total momentum is constant."
+    },
+    {
+     "name": "The velocity of the center of mass",
+     "answer": "none",
+     "why": "v_cm = Σp/Σm, and neither changes."
+    },
+    {
+     "name": "The momentum of the cart that was moving",
+     "answer": "down",
+     "why": "The other cart pushes it backward, an impulse opposite its motion."
+    }
+   ],
+   "why": {
+    "correct": "Internal forces move momentum between the carts but cannot change the total or the center of mass's velocity."
+   }
+  }
+ ]
+}

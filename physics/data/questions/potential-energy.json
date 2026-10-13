@@ -1,0 +1,473 @@
+{
+ "stimuli": {
+  "potential-energy-s1": {
+   "kind": "diagram",
+   "title": "A book, a shelf and a table",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 580 330\" role=\"img\" aria-label=\"A 2.0 kg book resting on a wall shelf 1.50 m above the floor, beside a table whose top is 0.80 m above the floor.\" style=\"max-width:100%;height:auto;background:#fff\"><rect width=\"580\" height=\"330\" fill=\"#FFFFFF\"/><text x=\"20\" y=\"26\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">A 2.0 kg book, a shelf and a table</text><line x1=\"20\" y1=\"300\" x2=\"560\" y2=\"300\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"26\" y1=\"301\" x2=\"17\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"301\" x2=\"31\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"54\" y1=\"301\" x2=\"45\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"68\" y1=\"301\" x2=\"59\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"82\" y1=\"301\" x2=\"73\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"96\" y1=\"301\" x2=\"87\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"110\" y1=\"301\" x2=\"101\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"124\" y1=\"301\" x2=\"115\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"138\" y1=\"301\" x2=\"129\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"152\" y1=\"301\" x2=\"143\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"166\" y1=\"301\" x2=\"157\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"180\" y1=\"301\" x2=\"171\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"194\" y1=\"301\" x2=\"185\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"208\" y1=\"301\" x2=\"199\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"222\" y1=\"301\" x2=\"213\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"236\" y1=\"301\" x2=\"227\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"250\" y1=\"301\" x2=\"241\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"264\" y1=\"301\" x2=\"255\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"278\" y1=\"301\" x2=\"269\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"292\" y1=\"301\" x2=\"283\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"306\" y1=\"301\" x2=\"297\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"320\" y1=\"301\" x2=\"311\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"334\" y1=\"301\" x2=\"325\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"348\" y1=\"301\" x2=\"339\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"362\" y1=\"301\" x2=\"353\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"376\" y1=\"301\" x2=\"367\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"390\" y1=\"301\" x2=\"381\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"404\" y1=\"301\" x2=\"395\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"418\" y1=\"301\" x2=\"409\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"432\" y1=\"301\" x2=\"423\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"446\" y1=\"301\" x2=\"437\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"460\" y1=\"301\" x2=\"451\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"474\" y1=\"301\" x2=\"465\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"488\" y1=\"301\" x2=\"479\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"502\" y1=\"301\" x2=\"493\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"516\" y1=\"301\" x2=\"507\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"530\" y1=\"301\" x2=\"521\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"544\" y1=\"301\" x2=\"535\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"558\" y1=\"301\" x2=\"549\" y2=\"310\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><rect x=\"60\" y=\"40\" width=\"14\" height=\"260\" fill=\"#CFC9BD\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"74\" y=\"60\" width=\"130\" height=\"10\" fill=\"#B08A5A\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><path d=\"M74,70 L110,70 L74,100 Z\" fill=\"#B08A5A\" stroke=\"#1F2A28\" stroke-width=\"1.2\"/><rect x=\"120\" y=\"38\" width=\"60\" height=\"22\" fill=\"#2F6F9F\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"124\" y=\"42\" width=\"52\" height=\"4\" fill=\"#fff\" opacity=\"0.6\"/><rect x=\"300\" y=\"172\" width=\"170\" height=\"12\" fill=\"#B08A5A\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"312\" y=\"184\" width=\"12\" height=\"116\" fill=\"#B08A5A\" stroke=\"#1F2A28\" stroke-width=\"1.2\"/><rect x=\"446\" y=\"184\" width=\"12\" height=\"116\" fill=\"#B08A5A\" stroke=\"#1F2A28\" stroke-width=\"1.2\"/><line x1=\"180\" y1=\"60\" x2=\"520\" y2=\"60\" stroke=\"#8A8F8C\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><line x1=\"230\" y1=\"300\" x2=\"230\" y2=\"60\" stroke=\"#1F2A28\" stroke-width=\"1.4\"/><line x1=\"224\" y1=\"300\" x2=\"236\" y2=\"300\" stroke=\"#1F2A28\" stroke-width=\"1.4\"/><line x1=\"224\" y1=\"60\" x2=\"236\" y2=\"60\" stroke=\"#1F2A28\" stroke-width=\"1.4\"/><text x=\"238\" y=\"185\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">1.50 m</text><line x1=\"500\" y1=\"300\" x2=\"500\" y2=\"172\" stroke=\"#1F2A28\" stroke-width=\"1.4\"/><line x1=\"494\" y1=\"300\" x2=\"506\" y2=\"300\" stroke=\"#1F2A28\" stroke-width=\"1.4\"/><line x1=\"494\" y1=\"172\" x2=\"506\" y2=\"172\" stroke=\"#1F2A28\" stroke-width=\"1.4\"/><text x=\"508\" y=\"241\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">0.80 m</text><text x=\"330\" y=\"162\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"start\">table top</text><text x=\"90\" y=\"326\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"start\">floor</text></svg><p>Use g = 9.8 m/s². Heights are measured to the bottom of the book.</p>"
+  },
+  "potential-energy-s2": {
+   "kind": "table",
+   "title": "Energy stored in a compressed spring",
+   "text": "<p>A student compresses an ideal spring by different amounts and calculates the elastic potential energy of the block-spring system for each.</p>",
+   "table": {
+    "caption": "Compression and stored energy",
+    "cols": [
+     "Compression Δx (m)",
+     "U_s (J)"
+    ],
+    "rows": [
+     [
+      "0.020",
+      "0.10"
+     ],
+     [
+      "0.040",
+      "0.40"
+     ],
+     [
+      "0.060",
+      "0.90"
+     ],
+     [
+      "0.080",
+      "1.6"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-potential-energy-1",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "potential-energy-s1",
+   "q": "Take the floor as the zero of gravitational potential energy. What is the gravitational potential energy of the book-Earth system with the book on the shelf? Give the value and its unit.",
+   "numeric": {
+    "answer": 29,
+    "tol": 1,
+    "unit": "J",
+    "askUnit": true,
+    "sigfigs": 2
+   },
+   "why": {
+    "correct": "U_g = mgΔy = (2.0 kg)(9.8 m/s²)(1.50 m) = 29 J, measured from the floor."
+   }
+  },
+  {
+   "id": "phys-potential-energy-2",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "potential-energy-s1",
+   "q": "Now take the table top as the zero. What is the gravitational potential energy of the book-Earth system with the book on the shelf, in joules?",
+   "numeric": {
+    "answer": 14,
+    "tol": 1,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 16,
+      "why": "Value: 0.80 m is the table's height above the floor. Measure from the new zero: 1.50 m − 0.80 m = 0.70 m."
+     },
+     {
+      "value": 29,
+      "why": "Value: that is measured from the floor. With the table top as zero, the height is 0.70 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Δy = 1.50 m − 0.80 m = 0.70 m above the table top, so U_g = (2.0 kg)(9.8 m/s²)(0.70 m) = 14 J."
+   }
+  },
+  {
+   "id": "phys-potential-energy-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "potential-energy-s1",
+   "q": "The book is moved from the shelf to the table top. How does the change in the system's gravitational potential energy depend on the choice of zero?",
+   "options": [
+    "It is about −14 J for either choice of zero",
+    "It is −29 J with the floor as zero and −14 J with the table as zero",
+    "It is zero with the table as zero, because the book ends at zero",
+    "It is +14 J, because the book moves to a new height"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ΔU_g = mgΔy = (2.0 kg)(9.8 m/s²)(−0.70 m) = −14 J. Any zero gives the same change, which is why the choice of zero is free.",
+    "options": [
+     "Right: the change depends only on the change in height, −0.70 m.",
+     "These are values of U_g on the shelf, not changes. A change subtracts two values measured from the same zero.",
+     "Ending at zero does not make the change zero; it started at +14 J.",
+     "The book moves down, so U_g decreases: the change is negative."
+    ]
+   }
+  },
+  {
+   "id": "phys-potential-energy-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "potential-energy-s1",
+   "q": "A student writes \"the book has 29 J of potential energy.\" Which correction is best?",
+   "options": [
+    "The potential energy belongs to the shelf, which holds the book up",
+    "The potential energy belongs to the book-Earth system, not to the book alone",
+    "The value should be 29 N, because it comes from the weight",
+    "The book has 29 J of kinetic energy instead"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Potential energy is energy of a system of interacting objects. The gravitational potential energy here belongs to the book-Earth system.",
+    "options": [
+     "The shelf's support is a contact force, not the interaction that stores gravitational potential energy.",
+     "Right: it comes from the interaction of the book and Earth.",
+     "Weight is a force in newtons; energy is in joules, a force times a distance.",
+     "The book is at rest on the shelf, so it has no kinetic energy."
+    ]
+   }
+  },
+  {
+   "id": "phys-potential-energy-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "potential-energy-s1",
+   "q": "The book falls from the shelf to the floor. With the floor as zero, which pair describes the work done on the book by the gravitational force and the change in the book-Earth system's potential energy?",
+   "options": [
+    "W = −29 J and ΔU_g = +29 J",
+    "W = +29 J and ΔU_g = +29 J",
+    "W = +29 J and ΔU_g = −29 J",
+    "W = 0 and ΔU_g = −29 J"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "W_grav = mgd = +29 J, and ΔU_g = mgΔy = −29 J. For a conservative force, W = −ΔU.",
+    "options": [
+     "The force (down) and the displacement (down) are in the same direction, so the work is positive.",
+     "U_g decreases as the book gets lower. The work by a conservative force is minus the change in potential energy.",
+     "Right: gravity does positive work as the book falls, and U_g drops by the same amount.",
+     "The gravitational force acts along the fall, so it does work: mg times 1.50 m."
+    ]
+   }
+  },
+  {
+   "id": "phys-potential-energy-6",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "potential-energy-s2",
+   "q": "When the compression doubles from 0.020 m to 0.040 m, the stored energy",
+   "options": [
+    "doubles",
+    "stays the same, because the spring is the same",
+    "increases by 0.10 J",
+    "becomes 4 times as large"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "U_s = ½k(Δx)², so doubling Δx multiplies U_s by 4.",
+    "options": [
+     "That would be true if U_s were proportional to Δx. The table shows a factor of 4.",
+     "The spring constant stays the same, but the energy depends on the compression.",
+     "It increases by 0.30 J, from 0.10 J to 0.40 J.",
+     "Right: U_s ∝ (Δx)², and 2² = 4; the table shows 0.10 J to 0.40 J."
+    ]
+   }
+  },
+  {
+   "id": "phys-potential-energy-7",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "potential-energy-s2",
+   "q": "Use the 0.080 m row to find the spring constant, in N/m.",
+   "numeric": {
+    "answer": 500,
+    "tol": 10,
+    "unit": "N/m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 250,
+      "why": "Value: you left out the 2. From U_s = ½k(Δx)², k = 2U_s/(Δx)²."
+     },
+     {
+      "value": 40,
+      "why": "Value: the compression must be squared: k = 2U_s/(Δx)²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "k = 2U_s/(Δx)² = 2(1.6 J)/(0.080 m)² = 5.0 × 10² N/m."
+   }
+  },
+  {
+   "id": "phys-potential-energy-8",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "potential-energy-s2",
+   "q": "How much energy does the same spring store when compressed 0.10 m, in joules?",
+   "numeric": {
+    "answer": 2.5,
+    "tol": 0.1,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 25,
+      "why": "Value: the compression must be squared: ½k(Δx)² = ½(500 N/m)(0.10 m)²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "k = 5.0 × 10² N/m from the table, so U_s = ½(500 N/m)(0.10 m)² = 2.5 J."
+   }
+  },
+  {
+   "id": "phys-potential-energy-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "potential-energy-s2",
+   "q": "The student wants a straight-line graph whose slope gives k. What should be plotted?",
+   "options": [
+    "U_s against (Δx)²; the slope is ½k",
+    "U_s against Δx; the slope is k",
+    "U_s against (Δx)²; the slope is k",
+    "Δx against U_s; the slope is 1/k"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Write the model as y = (slope)x: U_s = (½k)(Δx)². Plot U_s on the vertical axis and (Δx)² on the horizontal; k = 2 × slope.",
+    "options": [
+     "Right: U_s = (½k)(Δx)² is a line through the origin with slope ½k.",
+     "U_s against Δx is a curve (a parabola), so its slope is not constant.",
+     "The line is right, but the equation has a ½: the slope is ½k, so k is twice the slope.",
+     "This is still a curve, because Δx grows as the square root of U_s."
+    ]
+   }
+  },
+  {
+   "id": "phys-potential-energy-10",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these forces is nonconservative?",
+   "options": [
+    "The force from an ideal spring on a block",
+    "Kinetic friction from a rough floor on a sliding box",
+    "The gravitational force from Earth on a ball",
+    "The gravitational force between two distant asteroids"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A force is conservative when the work it does depends only on the start and end positions. Kinetic friction does more negative work on a longer path, so it is nonconservative.",
+    "options": [
+     "An ideal spring is conservative: its work depends only on the start and end stretch.",
+     "Right: its work depends on the path length, so no potential energy can describe it.",
+     "Gravity is conservative: its work depends only on the change in height.",
+     "Gravity is conservative at any distance; its work depends only on the start and end separation."
+    ]
+   }
+  },
+  {
+   "id": "phys-potential-energy-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A 1.0 kg ball is carried from the floor to a 2.0 m high shelf, once straight up and once along a long winding staircase. Compare the work done on the ball by the gravitational force on the two paths.",
+   "options": [
+    "It is larger on the staircase, which is longer",
+    "It is zero on the staircase, because most of the motion is horizontal",
+    "It is the same on both paths",
+    "It is larger on the straight path, which is steeper"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "On both paths W_grav = −mgΔy = −(1.0 kg)(9.8 m/s²)(2.0 m) = −20 J. The path does not matter for a conservative force.",
+    "options": [
+     "Path length matters for friction, not for a conservative force like gravity.",
+     "Only the horizontal parts do no work; the climbs add up to the same 2.0 m rise.",
+     "Right: gravity is conservative, so its work depends only on the change in height.",
+     "Steepness changes how fast the height changes, not the total change in height."
+    ]
+   }
+  },
+  {
+   "id": "phys-potential-energy-12",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "A 500. kg satellite orbits 7.0 × 10⁶ m from Earth's center. Earth's mass is 5.97 × 10²⁴ kg and G = 6.67 × 10⁻¹¹ N·m²/kg². What is the gravitational potential energy of the satellite-Earth system, with zero at infinite separation? Give the value and its unit.",
+   "numeric": {
+    "answer": -28000000000,
+    "tol": 1000000000,
+    "unit": "J",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -4100,
+      "why": "Value: that divides by r². Gravitational force goes as 1/r², but the potential energy goes as 1/r: U_G = −Gm₁m₂/r."
+     },
+     {
+      "value": 34000000000,
+      "why": "Value: mgh only works near Earth's surface, where g is constant. Far away, use U_G = −Gm₁m₂/r."
+     }
+    ]
+   },
+   "why": {
+    "correct": "U_G = −Gm₁m₂/r = −(6.67 × 10⁻¹¹)(5.97 × 10²⁴)(500.)/(7.0 × 10⁶) J = −2.8 × 10¹⁰ J. It is negative because the zero is at infinite separation."
+   }
+  },
+  {
+   "id": "phys-potential-energy-13",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A space probe moves farther from Earth. With zero at infinite separation, what happens to the gravitational potential energy of the probe-Earth system?",
+   "options": [
+    "It decreases, because the gravitational force gets weaker",
+    "It stays the same, because the masses do not change",
+    "It becomes more negative, approaching negative infinity",
+    "It increases toward zero, becoming less negative"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "U_G = −Gm₁m₂/r. As r increases, the size shrinks and the value rises toward zero. Separating the objects takes positive work, which raises U_G.",
+    "options": [
+     "A weaker force does not mean less potential energy. U_G is negative and climbs toward zero.",
+     "U_G depends on the separation r as well as the masses.",
+     "Very negative values belong to small separations, not large ones.",
+     "Right: U_G = −Gm₁m₂/r rises toward 0 as r grows."
+    ]
+   }
+  },
+  {
+   "id": "phys-potential-energy-14",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Near Earth's surface, a crate is raised to twice its original height above the floor (floor as zero). The gravitational potential energy of the crate-Earth system becomes",
+   "options": [
+    "2 times as large",
+    "4 times as large",
+    "√2 times as large",
+    "unchanged, because the mass is the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "U_g = mgΔy with constant g, so doubling Δy doubles U_g.",
+    "options": [
+     "Right: U_g = mgΔy is proportional to the height.",
+     "That would be true for U_s ∝ (Δx)². Near the surface, U_g is proportional to height, not its square.",
+     "No square root appears in mgΔy.",
+     "U_g depends on the height too."
+    ]
+   }
+  },
+  {
+   "id": "phys-potential-energy-15",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A ball sits at the bottom of a pit, 3.0 m below the ground. A student puts the zero of gravitational potential energy at ground level. Which statement is correct?",
+   "options": [
+    "U_g has to be positive, so the zero should move to the pit floor",
+    "U_g is negative, and that is fine: only changes in U_g have physical meaning",
+    "U_g is positive, because the ball is 3.0 m from the zero",
+    "U_g is zero, because the ball is at rest"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With the zero at ground level, Δy = −3.0 m and U_g = mg(−3.0 m) < 0. The choice of zero shifts every U_g by the same amount, so changes are unaffected.",
+    "options": [
+     "U_g can be negative. Any zero works, as long as you use the same one throughout.",
+     "Right: below the chosen zero, mgΔy is negative.",
+     "The ball is below the zero, so Δy is negative and so is U_g.",
+     "Being at rest makes K zero, not U_g."
+    ]
+   }
+  },
+  {
+   "id": "phys-potential-energy-16",
+   "type": "predict",
+   "unit": "unit-3",
+   "topic": "potential-energy",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "An ideal spring compressed 0.020 m is compressed further, to 0.040 m. Predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "The spring constant k",
+     "answer": "none",
+     "why": "k is a property of the spring; it does not depend on how far it is compressed."
+    },
+    {
+     "name": "The elastic potential energy of the system",
+     "answer": "up",
+     "why": "U_s = ½k(Δx)² grows, by a factor of 4 when Δx doubles."
+    },
+    {
+     "name": "The size of the spring's force on the block",
+     "answer": "up",
+     "why": "Hooke's law: F_s = kΔx, so the force doubles."
+    }
+   ],
+   "why": {
+    "correct": "Compressing further stores more energy (∝ (Δx)²) and makes the spring push harder (∝ Δx), while k stays the same."
+   }
+  }
+ ]
+}

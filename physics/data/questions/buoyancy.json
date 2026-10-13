@@ -1,0 +1,540 @@
+{
+ "stimuli": {
+  "buoyancy-s1": {
+   "kind": "table",
+   "title": "Lowering a cylinder into water",
+   "text": "<p>A solid metal cylinder 10.0 cm tall with a base of area 1.00 × 10⁻³ m² hangs from a spring scale. A student lowers it, flat end first, into a beaker of water (ρ = 1000 kg/m³) and records the scale reading at each depth of the cylinder's bottom below the surface. Use g = 9.8 m/s².</p>",
+   "table": {
+    "caption": "Spring scale reading against depth",
+    "cols": [
+     "Depth of bottom below surface (cm)",
+     "Scale reading (N)"
+    ],
+    "rows": [
+     [
+      "0.0",
+      "2.65"
+     ],
+     [
+      "2.0",
+      "2.45"
+     ],
+     [
+      "4.0",
+      "2.25"
+     ],
+     [
+      "6.0",
+      "2.06"
+     ],
+     [
+      "8.0",
+      "1.86"
+     ],
+     [
+      "10.0",
+      "1.67"
+     ],
+     [
+      "12.0",
+      "1.67"
+     ]
+    ]
+   }
+  },
+  "buoyancy-s2": {
+   "kind": "diagram",
+   "title": "Three blocks in water",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 580 270\" role=\"img\" aria-label=\"A tank of water with three blocks of equal volume: block X floats with half its volume below the surface, block Y floats with three quarters of its volume below the surface, and block Z rests on the bottom of the tank, fully under water.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"580\" height=\"270\" fill=\"#FFFFFF\"/><rect x=\"30\" y=\"80\" width=\"520\" height=\"170\" fill=\"#D7EBF4\"/><path d=\"M30,30 L30,250 L550,250 L550,30\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><line x1=\"30\" y1=\"80\" x2=\"550\" y2=\"80\" stroke=\"#7FB6CF\" stroke-width=\"2\"/><rect x=\"80\" y=\"40\" width=\"80\" height=\"80\" rx=\"3\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"120\" y=\"85\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">X</text><rect x=\"250\" y=\"60\" width=\"80\" height=\"80\" rx=\"3\" fill=\"#D9C08F\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"290\" y=\"105\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">Y</text><rect x=\"420\" y=\"170\" width=\"80\" height=\"80\" rx=\"3\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"460\" y=\"215\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">Z</text><text x=\"290\" y=\"22\" font-size=\"13\" fill=\"#5A6268\" text-anchor=\"middle\">Blocks X, Y and Z have equal volumes</text></svg><p>The blocks are at rest. The water has density 1000 kg/m³.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-buoyancy-1",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buoyancy-s1",
+   "q": "What is the buoyant force on the cylinder when it is fully under water? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.98,
+    "tol": 0.01,
+    "unit": "N",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 1.7,
+      "rel": 0.02,
+      "why": "Value: that is the scale reading, the tension in the scale. The buoyant force is the drop in the reading: weight in air minus reading in water."
+     },
+     {
+      "value": 2.6,
+      "rel": 0.02,
+      "why": "Value: that is the cylinder's weight. The buoyant force is the part of the weight the water now supports: 2.65 N − 1.67 N."
+     }
+    ]
+   },
+   "why": {
+    "correct": "In air the scale holds the whole weight, 2.65 N. Fully under water it reads 1.67 N, because the water pushes up with the rest: F_b = 2.65 N − 1.67 N = 0.98 N. Check: ρVg = (1000)(1.00 × 10⁻⁴ m³)(9.8) = 0.98 N."
+   }
+  },
+  {
+   "id": "phys-buoyancy-2",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buoyancy-s1",
+   "q": "Why does the scale reading stop changing once the depth is more than 10 cm?",
+   "options": [
+    "The cylinder is fully submerged, so the volume of water it displaces stops growing",
+    "The water pressure stops increasing below 10 cm of depth",
+    "The cylinder's weight decreases until it matches the buoyant force",
+    "The buoyant force reaches its largest possible value for any object in water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F_b = ρ_fluid V_displaced g. Once the cylinder is all under water, V_displaced equals its full volume and cannot grow. The pressures on the top and bottom both rise with depth, but their difference stays the same.",
+    "options": [
+     "Right: the buoyant force follows the displaced volume.",
+     "Pressure keeps rising with depth; it is the difference between the bottom and top pressures that stays fixed.",
+     "The weight mg does not change in water; the scale reading changes because the buoyant force supports part of it.",
+     "A bigger object would displace more water and feel a larger buoyant force."
+    ]
+   }
+  },
+  {
+   "id": "phys-buoyancy-3",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "buoyancy-s1",
+   "q": "Use the data to find the density of the cylinder's metal. Give the value and its unit.",
+   "numeric": {
+    "answer": 2700,
+    "tol": 100,
+    "unit": "kg/m^3",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 1700,
+      "rel": 0.02,
+      "why": "Value: you used the reading in water in place of the weight. ρ_object/ρ_water = weight / buoyant force when fully submerged: 2.65 N / 0.98 N."
+     },
+     {
+      "value": 370,
+      "rel": 0.02,
+      "why": "Value: you divided the buoyant force by the weight; the ratio is upside down. The object is denser than water, so its density must be above 1000 kg/m³."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Fully submerged, F_b = ρ_w V g and the weight is ρ_cyl V g. Dividing, ρ_cyl/ρ_w = W/F_b = 2.65 N / 0.98 N = 2.70, so ρ_cyl = 2.7 × 10³ kg/m³ (aluminum)."
+   }
+  },
+  {
+   "id": "phys-buoyancy-4",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buoyancy-s1",
+   "q": "The experiment is repeated in salt water, which is denser than fresh water. Compared with the fresh-water value, what is the scale reading when the cylinder is fully submerged?",
+   "options": [
+    "Smaller, because the buoyant force is larger",
+    "Larger, because salt water pushes down harder on the top",
+    "The same, because the cylinder displaces the same volume",
+    "Larger, because the cylinder's weight increases in salt water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F_b = ρ_fluid V g: the same displaced volume of a denser fluid weighs more, so the buoyant force is larger and the scale has less weight left to support.",
+    "options": [
+     "Right: denser fluid, larger buoyant force, smaller reading.",
+     "Salt water pushes harder on both the top and the bottom; the upward push on the bottom grows more.",
+     "Same volume, but the buoyant force depends on the fluid's density too.",
+     "The gravitational force on the cylinder, mg, does not depend on the fluid around it."
+    ]
+   }
+  },
+  {
+   "id": "phys-buoyancy-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buoyancy-s1",
+   "q": "While the cylinder hangs at rest fully under water, which equation describes the forces on it?",
+   "options": [
+    "F_T + F_b = F_g",
+    "F_T = F_g + F_b",
+    "F_b = F_g",
+    "F_T = F_g"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two forces act up on the cylinder (the scale's tension and the water's buoyant force) and one down (Earth's gravitational force). At rest the net force is zero: F_T + F_b = F_g.",
+    "options": [
+     "Right: up forces balance the down force.",
+     "This puts the buoyant force downward; it acts upward, opposite to gravity.",
+     "This leaves out the scale's pull; the cylinder would sink without it.",
+     "This leaves out the buoyant force, so the reading would equal the weight."
+    ]
+   }
+  },
+  {
+   "id": "phys-buoyancy-6",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buoyancy-s2",
+   "q": "Rank the buoyant forces on the three blocks, from largest to smallest.",
+   "options": [
+    "Z, then Y, then X",
+    "X, then Y, then Z",
+    "X, Y and Z are equal",
+    "Y, then X, then Z"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F_b = ρ_water V_displaced g. Z displaces its whole volume, Y three quarters, X one half. The blocks have equal volumes, so Z > Y > X.",
+    "options": [
+     "Right: more displaced water, larger buoyant force.",
+     "This reverses the ranking; floating higher means less water displaced.",
+     "Equal volumes are not equal displaced volumes: X and Y are only partly under water.",
+     "Z, fully under water, displaces the most."
+    ]
+   }
+  },
+  {
+   "id": "phys-buoyancy-7",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buoyancy-s2",
+   "q": "What is the density of block X? Give the value and its unit.",
+   "numeric": {
+    "answer": 500,
+    "tol": 10,
+    "unit": "kg/m^3",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 2000,
+      "rel": 0.02,
+      "why": "Value: the ratio is upside down. A floating block is less dense than water; ρ_X = ρ_water × (fraction submerged) = 1000 × ½."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Floating at rest, F_b = F_g: ρ_w V_sub g = ρ_X V g, so ρ_X = ρ_w (V_sub/V) = 1000 kg/m³ × ½ = 500 kg/m³."
+   }
+  },
+  {
+   "id": "phys-buoyancy-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buoyancy-s2",
+   "q": "How does the buoyant force on block Y compare with the gravitational force on Y?",
+   "options": [
+    "They are equal, because Y is floating at rest",
+    "The buoyant force is larger, because Y floats",
+    "The buoyant force is smaller, because Y is partly above the water",
+    "The buoyant force is larger, because Y is denser than X"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Y is at rest with only two forces on it, so they balance: F_b = F_g. Floating means the buoyant force equals the weight, not that it exceeds it.",
+    "options": [
+     "Right: equilibrium of a floating object.",
+     "If F_b were larger, Y would accelerate upward until it displaced less water.",
+     "Being partly out of the water lowers F_b only until it matches the weight.",
+     "Y is denser than X, which is why it sits lower; it still floats with F_b = F_g."
+    ]
+   }
+  },
+  {
+   "id": "phys-buoyancy-9",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "buoyancy-s2",
+   "q": "Block Z rests on the bottom. Which statement about the forces on Z is correct?",
+   "options": [
+    "F_b is less than Z's weight; the floor's normal force makes up the rest",
+    "There is no buoyant force on Z, because water is not pushing up from under it",
+    "The buoyant force equals Z's weight, because Z is at rest",
+    "The buoyant force on Z is smaller than on X, because Z is denser"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Z displaces its full volume, so it does feel a buoyant force, but Z is denser than water, so F_b < F_g. At rest, F_b + F_N = F_g.",
+    "options": [
+     "Right: three forces balance on the sunk block.",
+     "The model treats the water as pushing up on Z, giving a buoyant force ρVg; the floor adds a normal force.",
+     "At rest the net force is zero, but the normal force is part of the balance.",
+     "The buoyant force depends on the displaced volume, not the block's density: Z displaces the most."
+    ]
+   }
+  },
+  {
+   "id": "phys-buoyancy-10",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buoyancy-s2",
+   "q": "Block X is pushed down until it is just fully under water and held there. How does the buoyant force on it now compare with before?",
+   "options": [
+    "Twice as large",
+    "The same",
+    "Half as large",
+    "Four times as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Floating, X displaced half its volume; fully under, it displaces all of it. F_b ∝ V_displaced, so it doubles. The extra push comes from the hand.",
+    "options": [
+     "Right: twice the displaced volume, twice the buoyant force.",
+     "The buoyant force depends on how much water is displaced, which doubled.",
+     "Pushing it deeper displaces more water, not less.",
+     "The displaced volume doubled, so the force doubles, not quadruples."
+    ]
+   }
+  },
+  {
+   "id": "phys-buoyancy-11",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A rock of volume 3.0 × 10⁻³ m³ is fully under water (ρ = 1000 kg/m³). What is the buoyant force on it? Use g = 9.8 m/s². Give the value and its unit.",
+   "numeric": {
+    "answer": 29,
+    "tol": 1,
+    "unit": "N",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 3,
+      "rel": 0.02,
+      "why": "Value: that is the mass of the displaced water in kg. The buoyant force is its weight: multiply by g."
+     }
+    ]
+   },
+   "why": {
+    "correct": "F_b = ρ_water V_displaced g = (1000 kg/m³)(3.0 × 10⁻³ m³)(9.8 m/s²) = 29 N. The rock's own density does not enter."
+   }
+  },
+  {
+   "id": "phys-buoyancy-12",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A lead block and an aluminum block have the same volume and are both held fully under water. A student claims the lead block feels the larger buoyant force because it is heavier. What is the best response?",
+   "options": [
+    "The forces are equal: each displaces the same volume of water",
+    "The claim is right: a heavier object pushes more water aside",
+    "The aluminum feels more, because it is less dense and tends to rise",
+    "The lead feels more, because it sinks deeper and feels more pressure"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F_b = ρ_fluid V_displaced g depends on the fluid and the displaced volume, not on the object. The lead sinks because its weight is larger, not because its buoyant force is different.",
+    "options": [
+     "Right: same displaced volume, same buoyant force.",
+     "Both displace exactly their own volume when fully submerged; weight does not change that.",
+     "Density decides whether an object floats, not the size of the buoyant force when submerged.",
+     "Both are held at the same depth here; and once submerged, depth does not change F_b."
+    ]
+   }
+  },
+  {
+   "id": "phys-buoyancy-13",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "An ice cube (ρ = 917 kg/m³) floats in fresh water (ρ = 1000 kg/m³). What fraction of its volume is below the surface? Give a decimal.",
+   "numeric": {
+    "answer": 0.917,
+    "tol": 0.001,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1.09,
+      "rel": 0.02,
+      "why": "Value: the ratio is upside down; a fraction below the surface must be less than 1. V_sub/V = ρ_ice/ρ_water."
+     },
+     {
+      "value": 0.083,
+      "rel": 0.02,
+      "why": "Value: that is the fraction above the surface. The fraction below is ρ_ice/ρ_water."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Floating: F_b = F_g, so ρ_w V_sub g = ρ_ice V g and V_sub/V = 917/1000 = 0.917. About 92% of the ice is under water."
+   }
+  },
+  {
+   "id": "phys-buoyancy-14",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 0.60 kg wooden block floats at rest in fresh water (ρ = 1000 kg/m³). What volume of water does it displace? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.0006,
+    "tol": 0.00001,
+    "unit": "m^3",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.0059,
+      "rel": 0.02,
+      "why": "Value: you set the volume equal to weight/density. Floating: ρ_w V g = m g, so g cancels and V = m/ρ_w."
+     },
+     {
+      "value": 0.0012,
+      "rel": 0.02,
+      "why": "Value: you used a density for wood. The displaced volume follows from the water's density: V = m/ρ_water."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Floating, F_b = mg: ρ_w V g = mg, so V = m/ρ_w = 0.60 kg / 1000 kg/m³ = 6.0 × 10⁻⁴ m³. A floating object displaces its own mass of fluid."
+   }
+  },
+  {
+   "id": "phys-buoyancy-15",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A steel ball (ρ = 7800 kg/m³) is released from rest under water (ρ = 1000 kg/m³). Neglecting the water's drag, what is the size of its acceleration just after release? Use g = 9.8 m/s². Give the value and its unit.",
+   "numeric": {
+    "answer": 8.5,
+    "tol": 0.1,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 9.8,
+      "rel": 0.02,
+      "why": "Value: that ignores the buoyant force. Newton's second law: ma = mg − F_b, with F_b = ρ_w V g."
+     },
+     {
+      "value": 1.3,
+      "rel": 0.02,
+      "why": "Value: that is F_b/m alone. The net force is the weight minus the buoyant force: a = g(1 − ρ_w/ρ_steel)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Newton's second law, down positive: ma = mg − ρ_w V g. With m = ρ_s V, a = g(1 − ρ_w/ρ_s) = 9.8 m/s² × (1 − 1000/7800) = 8.5 m/s²."
+   }
+  },
+  {
+   "id": "phys-buoyancy-16",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A floating barge is loaded with extra cargo and still floats. Predict how each quantity compares with before the cargo was added.",
+   "variables": [
+    {
+     "name": "Buoyant force on the barge",
+     "answer": "up",
+     "why": "Floating means F_b equals the total weight, which increased."
+    },
+    {
+     "name": "Volume of water the barge displaces",
+     "answer": "up",
+     "why": "A larger buoyant force needs more displaced water: the barge sits lower."
+    },
+    {
+     "name": "Density of the river water",
+     "answer": "none",
+     "why": "The water is incompressible; loading the barge does not change it."
+    }
+   ],
+   "why": {
+    "correct": "A floating object displaces a weight of fluid equal to its own weight."
+   }
+  },
+  {
+   "id": "phys-buoyancy-17",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Imagine a parcel of water, the same shape as a submerged stone, sitting at rest inside a lake. Why does this show that the buoyant force on the stone equals the weight of the water it displaces?",
+   "options": [
+    "The parcel is at rest, so the water around it holds up its weight; the stone gets the same push",
+    "The parcel has no weight in water, so the stone has no weight either",
+    "Water pressure is equal at each depth in the lake, so objects feel equal forces",
+    "The parcel sinks at the same rate as the stone, so the forces on them match"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The surrounding water does not know what is inside the boundary. It pushes on the parcel exactly as it would push on the stone. The parcel is at rest (Newton's first law), so that push equals the parcel's weight, ρ_w V g.",
+    "options": [
+     "Right: same boundary, same push, and for the parcel that push balances its weight.",
+     "The parcel has weight; it is held up by the buoyant force.",
+     "Pressure grows with depth; that difference is what makes the buoyant force.",
+     "The water parcel does not sink; it is at rest."
+    ]
+   }
+  }
+ ]
+}

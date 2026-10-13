@@ -1,0 +1,12 @@
+{
+ "seesaw-torques": {
+  "file": "figures/seesaw-torques.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A uniform plank rests on a pivot at its center. Child A, 30 kg, sits 1.6 m left of the pivot; child B, 40 kg, sits 1.2 m right of it, and the plank is balanced. Below, the force diagram of the plank shows each force where it acts: the normal force from A pushing down at A’s seat, the larger normal force from B pushing down at B’s seat, the plank’s weight (Earth on plank) down at the center, and the pivot’s normal force up at the center, the longest arrow, equal to the sum of the downward forces. About the pivot, A gives 294 N times 1.6 m counterclockwise and B gives 392 N times 1.2 m clockwise, both 470 N·m, so the net torque is zero; the pivot force and the plank’s weight act at the pivot and give no torque."
+ }
+}

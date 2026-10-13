@@ -1,0 +1,12 @@
+{
+ "fluid-states-density": {
+  "file": "figures/fluid-states-density.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Particles in a solid (a fixed grid), a liquid (close together but disordered, filling the bottom of the container with a flat surface) and a gas (far apart, moving freely to fill the box). Below: density ρ = m/V in kg/m³; water is about 1000 kg/m³."
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "system": {
+  "def": "The object or group of objects you choose to study, inside a boundary you draw. Everything else is the surroundings."
+ },
+ "surroundings": {
+  "def": "Everything outside the system you chose. Objects in the surroundings can push or pull on the system."
+ },
+ "mass": {
+  "def": "A scalar measure of the amount of matter in an object, in kilograms (kg). The masses of parts add to the mass of the whole."
+ },
+ "internal-structure": {
+  "def": "The parts inside a system and how they are arranged and move relative to each other. When it does not affect the question, the system can be modeled as one object."
+ },
+ "center-of-mass": {
+  "def": "The mass-weighted average position of a system: x_cm = Σmᵢxᵢ ÷ Σmᵢ (the same for y). It lies on any line of symmetry of a uniform object, and the system moves as if all its mass were there."
+ }
+}

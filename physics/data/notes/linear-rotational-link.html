@@ -1,0 +1,45 @@
+<p>Every point of a turning wheel shares one angle, one angular velocity and one angular acceleration. Yet a fly on the rim of a fan blade gets a much wilder ride than a fly near the hub. This page explains why, with three short equations that turn rotational quantities into the distances, speeds and accelerations of individual points.</p>
+
+<h2>Distance along the circle: s = rθ</h2>
+<p>Take a point a distance r from the axis. As the object turns through an angle θ, the point travels along a circle of radius r. How far? The definition of the radian answers it directly. θ = s/r, so</p>
+<p style="text-align:center"><b>s = rθ</b> &#160;(θ in radians)</p>
+<p>s is the <b>arc length</b>, the distance along the circle. A point twice as far from the axis travels twice as far for the same turn. This only works with θ in radians. In degrees you would need an extra factor of π/180, which is why physics keeps to radians.</p>
+
+<h2>Speed: v = rω</h2>
+<p>Divide both sides of s = rθ by the time it takes. Distance per time is the point's speed along its circle; angle per time is the angular velocity. So</p>
+<p style="text-align:center"><b>v = rω</b></p>
+<p>This is the <b>tangential speed</b>: the point's velocity points along the circle, at right angles to the radius. Every point shares ω, but v grows in proportion to r.</p>
+<figure id="fig-car" data-fig="carousel-speeds"><figcaption>Riders on one merry-go-round share ω; the rider twice as far out moves twice as fast.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A Ferris wheel of radius 15 m turns once every 60 s. How fast does a rider move?</p>
+<p>ω = 2π rad / 60 s = 0.105 rad/s.</p>
+<p>v = rω = (15 m)(0.105 rad/s) = <b>1.6 m/s</b>. The rad drops out because it is a ratio of lengths: m × rad/s = m/s.</p>
+</div>
+
+<h2>Tangential acceleration: a<sub>T</sub> = rα</h2>
+<p>Do it once more. If ω changes at a rate α, then v = rω changes at a rate</p>
+<p style="text-align:center"><b>a<sub>T</sub> = rα</b></p>
+<p>This <b>tangential acceleration</b> speeds the point up or slows it down along its circle. Do not confuse it with the centripetal acceleration from Unit 2, v²/r = rω², which points toward the center and changes the point's direction. A wheel spinning at a steady rate has α = 0 and so no tangential acceleration, but every point on it still has a centripetal acceleration.</p>
+<table class="compare"><thead><tr><th>Quantity of the whole object</th><th>Matching quantity for a point at r</th></tr></thead><tbody>
+<tr><td>angle θ (rad)</td><td>arc length s = rθ (m)</td></tr>
+<tr><td>angular velocity ω (rad/s)</td><td>tangential speed v = rω (m/s)</td></tr>
+<tr><td>angular acceleration α (rad/s²)</td><td>tangential acceleration a<sub>T</sub> = rα (m/s²)</td></tr>
+</tbody></table>
+<div class="worked">
+<p><b>Worked example 2.</b> A bicycle wheel turning at 12 rad/s slows steadily to rest in 6.0 s. Its valve is 0.33 m from the axle. Find the valve's speed at the start, its tangential acceleration, and how far it travels while the wheel stops.</p>
+<p>Speed: v = rω = (0.33 m)(12 rad/s) = <b>4.0 m/s</b>.</p>
+<p>α = Δω/Δt = (0 − 12 rad/s)/(6.0 s) = −2.0 rad/s², so a<sub>T</sub> = rα has size (0.33 m)(2.0 rad/s²) = <b>0.66 m/s²</b>.</p>
+<p>Angle: the average ω is 6.0 rad/s, so Δθ = (6.0 rad/s)(6.0 s) = 36 rad. Distance: s = rθ = (0.33 m)(36 rad) = <b>12 m</b>.</p>
+</div>
+
+<h2>Strings, belts and no slipping</h2>
+<p>When a string unwinds from a spool without slipping, the string and the rim move together where they touch. So the length of string pulled off is rθ, its speed is rω, and its acceleration is rα, with r the spool's radius. The same link makes a hanging block and a pulley move together in later topics.</p>
+<p>A belt joining two pulleys works the same way. The belt has one speed, and it equals the rim speed of each pulley: r₁ω₁ = r₂ω₂. The pulleys are not one rigid body, so their angular velocities differ. The smaller pulley turns faster.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A belt joins a pulley of radius 0.10 m, turning at 30 rad/s, to a pulley of radius 0.30 m. How fast does the large pulley turn?</p>
+<p>Belt speed = rim speed of the small pulley: (0.10 m)(30 rad/s) = 3.0 m/s.</p>
+<p>Large pulley: ω = v/r = (3.0 m/s)/(0.30 m) = <b>10 rad/s</b>.</p>
+</div>
+
+<h2>Reading the factors</h2>
+<p>Because all three links are simple proportions, scaling questions are quick. At a fixed ω, a point three times as far out moves three times as fast. Doubling ω doubles every point's speed. Halving r halves s, v and a<sub>T</sub>, but leaves θ, ω and α alone, because those belong to the whole object.</p>

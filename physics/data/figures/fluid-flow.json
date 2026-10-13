@@ -1,0 +1,12 @@
+{
+ "fluid-flow-pipe": {
+  "file": "figures/fluid-flow-pipe.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A full pipe whose wide lower section (area A₁, speed v₁, pressure P₁, height y₁) narrows and rises into a smaller upper section (area A₂, faster speed v₂, height y₂). Continuity A₁v₁ = A₂v₂ sets the speeds; Bernoulli P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂² gives the pressures."
+ }
+}

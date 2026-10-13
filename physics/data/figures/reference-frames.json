@@ -1,0 +1,12 @@
+{
+ "train-walker-frames": {
+  "file": "figures/train-walker-frames.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A train moves to the right at +20.0 m/s relative to the ground. Inside, a passenger walks toward the front at +1.5 m/s relative to the train. An observer stands on the platform. The walker's velocity relative to the ground is 1.5 m/s + 20.0 m/s = +21.5 m/s; walking toward the back at 1.5 m/s would give +18.5 m/s."
+ }
+}

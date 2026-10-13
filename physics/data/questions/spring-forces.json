@@ -1,0 +1,471 @@
+{
+ "stimuli": {
+  "spring-forces-s1": {
+   "kind": "table",
+   "title": "Stretching a spring with hanging masses",
+   "text": "<p>A student hangs a light spring from a clamp and hangs slotted masses from its lower end. For each mass, once the mass hangs at rest, she measures how far the spring has stretched from its relaxed length with a meterstick. Use g = 9.8 m/s².</p>",
+   "table": {
+    "caption": "Hanging mass and stretch of the spring",
+    "cols": [
+     "Hanging mass (kg)",
+     "Stretch (m)"
+    ],
+    "rows": [
+     [
+      "0.050",
+      "0.020"
+     ],
+     [
+      "0.100",
+      "0.040"
+     ],
+     [
+      "0.150",
+      "0.061"
+     ],
+     [
+      "0.200",
+      "0.080"
+     ],
+     [
+      "0.250",
+      "0.100"
+     ]
+    ]
+   }
+  },
+  "spring-forces-s2": {
+   "kind": "diagram",
+   "title": "A cart held against a compressed spring",
+   "text": "<p>A 0.50 kg cart on a level, frictionless track is attached to an ideal spring of spring constant 80 N/m whose other end is fixed to a wall. A student pushes the cart toward the wall, compressing the spring by 0.15 m, and holds it at rest. Take the direction away from the wall as positive.</p>",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 540 210\" role=\"img\" aria-label=\"A cart on a level track is attached to a horizontal spring whose other end is fixed to a wall. The cart has been pushed toward the wall, so the spring is compressed: its end sits to the left of the dashed line that marks where the end sits when the spring is relaxed.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"540\" height=\"210\" fill=\"#FFFFFF\"/><rect x=\"20\" y=\"160\" width=\"500\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"20\" y1=\"160\" x2=\"520\" y2=\"160\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"26\" y1=\"161\" x2=\"18\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"38\" y1=\"161\" x2=\"30\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"161\" x2=\"42\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"62\" y1=\"161\" x2=\"54\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"74\" y1=\"161\" x2=\"66\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"86\" y1=\"161\" x2=\"78\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"98\" y1=\"161\" x2=\"90\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"110\" y1=\"161\" x2=\"102\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"122\" y1=\"161\" x2=\"114\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"134\" y1=\"161\" x2=\"126\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"146\" y1=\"161\" x2=\"138\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"158\" y1=\"161\" x2=\"150\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"170\" y1=\"161\" x2=\"162\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"182\" y1=\"161\" x2=\"174\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"194\" y1=\"161\" x2=\"186\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"206\" y1=\"161\" x2=\"198\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"218\" y1=\"161\" x2=\"210\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"230\" y1=\"161\" x2=\"222\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"242\" y1=\"161\" x2=\"234\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"254\" y1=\"161\" x2=\"246\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"266\" y1=\"161\" x2=\"258\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"278\" y1=\"161\" x2=\"270\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"290\" y1=\"161\" x2=\"282\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"302\" y1=\"161\" x2=\"294\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"314\" y1=\"161\" x2=\"306\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"326\" y1=\"161\" x2=\"318\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"338\" y1=\"161\" x2=\"330\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"350\" y1=\"161\" x2=\"342\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"362\" y1=\"161\" x2=\"354\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"374\" y1=\"161\" x2=\"366\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"386\" y1=\"161\" x2=\"378\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"398\" y1=\"161\" x2=\"390\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"410\" y1=\"161\" x2=\"402\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"422\" y1=\"161\" x2=\"414\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"434\" y1=\"161\" x2=\"426\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"446\" y1=\"161\" x2=\"438\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"458\" y1=\"161\" x2=\"450\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"470\" y1=\"161\" x2=\"462\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"482\" y1=\"161\" x2=\"474\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"494\" y1=\"161\" x2=\"486\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"506\" y1=\"161\" x2=\"498\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"518\" y1=\"161\" x2=\"510\" y2=\"170\" stroke=\"#5A6268\" stroke-width=\"1\"/><rect x=\"48\" y=\"60\" width=\"12\" height=\"100\" fill=\"#EEF1EF\"/><line x1=\"60\" y1=\"60\" x2=\"60\" y2=\"160\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"59\" y1=\"64\" x2=\"50\" y2=\"72\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"59\" y1=\"76\" x2=\"50\" y2=\"84\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"59\" y1=\"88\" x2=\"50\" y2=\"96\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"59\" y1=\"100\" x2=\"50\" y2=\"108\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"59\" y1=\"112\" x2=\"50\" y2=\"120\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"59\" y1=\"124\" x2=\"50\" y2=\"132\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"59\" y1=\"136\" x2=\"50\" y2=\"144\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"59\" y1=\"148\" x2=\"50\" y2=\"156\" stroke=\"#5A6268\" stroke-width=\"1\"/><polyline points=\"60,126 70,126 74.2,116 82.5,136 90.8,116 99.2,136 107.5,116 115.8,136 124.2,116 132.5,136 140.8,116 149.2,136 157.5,116 165.8,136 174.2,116 182.5,136 190.8,116 199.2,136 207.5,116 215.8,136 220,126 230,126\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><rect x=\"230\" y=\"112\" width=\"110\" height=\"34\" rx=\"5\" fill=\"#E6E0D2\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"246\" cy=\"153\" r=\"7\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"324\" cy=\"153\" r=\"7\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"285\" y=\"134\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">cart</text><line x1=\"300\" y1=\"60\" x2=\"300\" y2=\"186\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-dasharray=\"4 3\"/><text x=\"300\" y=\"200\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">relaxed position of the spring end</text><line x1=\"230\" y1=\"70\" x2=\"300\" y2=\"70\" stroke=\"#734200\" stroke-width=\"1.6\"/><line x1=\"230\" y1=\"64\" x2=\"230\" y2=\"76\" stroke=\"#734200\" stroke-width=\"1.6\"/><line x1=\"300\" y1=\"64\" x2=\"300\" y2=\"76\" stroke=\"#734200\" stroke-width=\"1.6\"/><text x=\"265\" y=\"60\" font-size=\"12.5\" fill=\"#734200\" text-anchor=\"middle\" font-weight=\"bold\">compression</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-spring-forces-1",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "spring-forces-s1",
+   "q": "When the 0.150 kg mass hangs at rest, how does the spring's upward force on it compare with its weight?",
+   "options": [
+    "They are equal in size",
+    "The spring force is larger, since the spring is stretched",
+    "The spring force is smaller, since part of the weight stretches it",
+    "The spring force is zero, since the mass is at rest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The mass hangs at rest, so the net force on it is zero: the spring pulls up exactly as hard as Earth pulls down. That is why the spring force equals mg in this experiment.",
+    "options": [
+     "Right: translational equilibrium.",
+     "A stretched spring pulls, but at rest it pulls with exactly mg; a larger pull would accelerate the mass upward.",
+     "The whole weight is balanced by the spring's pull; nothing is left over.",
+     "At rest the spring must still hold the mass up; otherwise the mass would fall."
+    ]
+   }
+  },
+  {
+   "id": "phys-spring-forces-2",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "spring-forces-s1",
+   "q": "A graph of the spring force (the weight of the hanging mass) against the stretch is close to a straight line through the origin. Use the first and last rows to find its slope, the spring constant, in N/m.",
+   "numeric": {
+    "answer": 25,
+    "tol": 1,
+    "unit": "N/m",
+    "sigfigs": 2,
+    "units": [
+     "N m^-1",
+     "kg/s^2"
+    ],
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "Value: that uses the masses, in kg, instead of the forces. The spring constant is force per meter: multiply each mass by g first."
+     },
+     {
+      "value": 0.041,
+      "why": "Value: that is stretch per newton, the reciprocal of k. k is force divided by stretch."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Spring force = mg: 0.050 × 9.8 = 0.49 N and 0.250 × 9.8 = 2.45 N. Slope k = ΔF ÷ Δx = (2.45 − 0.49) N ÷ (0.100 − 0.020) m = 1.96 N ÷ 0.080 m = 25 N/m (24.5)."
+   }
+  },
+  {
+   "id": "phys-spring-forces-3",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "numeric",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "spring-forces-s1",
+   "q": "Using the pattern in the table, how far would the spring stretch with a 0.400 kg mass hanging at rest, in meters?",
+   "numeric": {
+    "answer": 0.16,
+    "tol": 0.01,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.32,
+      "why": "Value: the stretch is proportional to the mass, not to its square: twice the mass, twice the stretch."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The stretch is proportional to the force: 0.400 kg is twice 0.200 kg, so the stretch is twice 0.080 m = 0.16 m. With k: Δx = mg ÷ k = 3.92 N ÷ 24.5 N/m = 0.16 m."
+   }
+  },
+  {
+   "id": "phys-spring-forces-4",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "spring-forces-s1",
+   "q": "Which feature of the data shows that the spring behaves like an ideal spring over this range?",
+   "options": [
+    "Equal mass steps give equal stretch steps",
+    "Each stretch is a smaller number than its mass",
+    "The largest mass gives the largest stretch",
+    "The stretch values stay below 1 m"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each extra 0.050 kg adds about 0.020 m of stretch, so the stretch is proportional to the force: Hooke's law, F = k|Δx|, a straight line through the origin.",
+    "options": [
+     "Right: equal steps in force, equal steps in stretch, so the stretch is proportional to the force.",
+     "Comparing a mass in kg with a length in m means nothing; they are different quantities.",
+     "Any spring stretches more under more weight, ideal or not; this does not show proportionality.",
+     "Small stretches are not the test; proportionality is."
+    ]
+   }
+  },
+  {
+   "id": "phys-spring-forces-5",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "spring-forces-s1",
+   "q": "The student hangs the 0.200 kg mass, then pulls it down 0.030 m further and holds it. Compared with the spring force when the mass hung at rest, the spring force now",
+   "options": [
+    "increases by about 0.74 N",
+    "stays the same, since the mass is the same",
+    "decreases, since the student pulls down too",
+    "increases by about 2.7 N"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The spring force depends only on how far the spring is stretched: 0.030 m more stretch adds kΔx = 24.5 N/m × 0.030 m ≈ 0.74 N.",
+    "options": [
+     "Right: more stretch, more spring force.",
+     "The spring does not know what hangs on it; it responds to its stretch.",
+     "Pulling down stretches the spring more, which increases its pull.",
+     "That would need an extra stretch of about 0.11 m."
+    ]
+   }
+  },
+  {
+   "id": "phys-spring-forces-6",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "spring-forces-s2",
+   "q": "What is the spring force on the cart while the student holds it, including its sign (positive away from the wall), in newtons?",
+   "numeric": {
+    "answer": 12,
+    "tol": 1,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -12,
+      "why": "Value: the size is right but the direction is not. A compressed spring pushes the cart away from the wall: positive."
+     },
+     {
+      "value": 530,
+      "why": "Value: that divides k by the compression. The force is k times the compression."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Hooke's law: F_s = −kΔx. The spring is compressed, so its end is displaced toward the wall: Δx = −0.15 m. F_s = −(80 N/m)(−0.15 m) = +12 N, away from the wall. A compressed spring pushes outward."
+   }
+  },
+  {
+   "id": "phys-spring-forces-7",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "spring-forces-s2",
+   "q": "What force does the student exert on the cart while holding it at rest?",
+   "options": [
+    "12 N toward the wall",
+    "12 N away from the wall",
+    "24 N toward the wall",
+    "No force, since the cart is at rest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The cart is at rest, so the student's push balances the spring's 12 N push away from the wall: 12 N toward the wall.",
+    "options": [
+     "Right: equal and opposite to the spring force, on the same cart.",
+     "Away from the wall is the spring's push; the student must push the other way.",
+     "Only the spring's 12 N needs balancing.",
+     "At rest means zero net force, but the spring still pushes, so the student must push back."
+    ]
+   }
+  },
+  {
+   "id": "phys-spring-forces-8",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "spring-forces-s2",
+   "q": "The student lets go. What is the size of the cart's acceleration just after release, in m/s²?",
+   "numeric": {
+    "answer": 24,
+    "tol": 1,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "units": [
+     "m/s/s"
+    ],
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "Value: that multiplies by the mass. a = F/m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Just after release the only horizontal force is the spring's 12 N: a = F ÷ m = 12 N ÷ 0.50 kg = 24 m/s², away from the wall."
+   }
+  },
+  {
+   "id": "phys-spring-forces-9",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "spring-forces-s2",
+   "q": "As the cart moves away from the wall toward the spring's relaxed position, what happens to the cart's acceleration and speed?",
+   "options": [
+    "The acceleration shrinks; the speed still grows",
+    "The acceleration and the speed both shrink",
+    "The acceleration stays 24 m/s² and the speed increases",
+    "The acceleration shrinks, so the speed decreases"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The spring force, kΔx, shrinks as the compression shrinks, so the acceleration shrinks. But it still points the way the cart moves, so the cart keeps speeding up until the spring reaches its relaxed length.",
+    "options": [
+     "Right: a smaller forward acceleration still speeds the cart up.",
+     "A shrinking acceleration still points forward, so the speed still grows.",
+     "The spring force depends on the compression, which is decreasing.",
+     "Speed falls only if the acceleration points opposite the velocity."
+    ]
+   }
+  },
+  {
+   "id": "phys-spring-forces-10",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "For an ideal spring, the spring force",
+   "options": [
+    "points toward the spring's relaxed length",
+    "points the way the spring is stretched",
+    "is the same size at any stretch",
+    "is larger for a spring with a smaller k at the same stretch"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F_s = −kΔx: the minus sign means the force points opposite the displacement from the relaxed length, back toward it. A stretched spring pulls; a compressed spring pushes.",
+    "options": [
+     "Right: it points back toward the relaxed length.",
+     "It points opposite the stretch, back toward the relaxed length.",
+     "It grows in proportion to the stretch.",
+     "At the same stretch, a smaller k gives a smaller force."
+    ]
+   }
+  },
+  {
+   "id": "phys-spring-forces-11",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A force of 6.0 N stretches a spring by 0.040 m. What is the spring constant? Give the value and its unit.",
+   "numeric": {
+    "answer": 150,
+    "tol": 10,
+    "unit": "N/m",
+    "sigfigs": 2,
+    "askUnit": true,
+    "units": [
+     "N m^-1",
+     "kg/s^2"
+    ],
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "Value: 4 cm must be 0.040 m. Convert before you divide."
+     },
+     {
+      "value": 0.24,
+      "why": "Value: that multiplies. k is force divided by stretch."
+     }
+    ]
+   },
+   "why": {
+    "correct": "k = F ÷ |Δx| = 6.0 N ÷ 0.040 m = 150 N/m (1.5 × 10² N/m)."
+   }
+  },
+  {
+   "id": "phys-spring-forces-12",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A spring stretches 3.0 cm when a 2.0 N weight hangs from it. How far does it stretch when a 5.0 N weight hangs from it instead?",
+   "options": [
+    "7.5 cm",
+    "5.0 cm",
+    "6.0 cm",
+    "15 cm"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Hooke's law: stretch ∝ force. 5.0 N is 2.5 times 2.0 N, so the stretch is 2.5 × 3.0 cm = 7.5 cm.",
+    "options": [
+     "Right: the stretch scales with the force.",
+     "That adds the extra 3.0 N as if each newton added 1 cm; the spring gives 1.5 cm per newton.",
+     "That doubles the stretch; the force grew by 2.5 times, not 2.",
+     "That multiplies the stretch by 5, using the new force alone instead of the ratio of forces."
+    ]
+   }
+  },
+  {
+   "id": "phys-spring-forces-13",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Spring A has k = 200 N/m and spring B has k = 50 N/m. Each holds the same block hanging at rest. How do their stretches compare?",
+   "options": [
+    "A stretches one fourth as much as B",
+    "A stretches four times as much as B",
+    "They stretch the same, since the block is the same",
+    "A stretches half as much as B"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both pull up with the block's weight, mg. Δx = mg ÷ k, so the stiffer spring stretches less: 50/200 = 1/4 as much.",
+    "options": [
+     "Right: stretch ∝ 1/k at the same force.",
+     "The stiffer spring, A, stretches less, not more.",
+     "Same force, but different k, so different stretches.",
+     "The ratio of the k values is 4, not 2."
+    ]
+   }
+  },
+  {
+   "id": "phys-spring-forces-14",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "multi",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which arrows belong on the free-body diagram of a block hanging at rest from a vertical spring? Select all that apply.",
+   "options": [
+    "F_s, spring on block, up",
+    "F_g, Earth on block, down",
+    "F_T, ceiling on block, up",
+    "F_s, block on spring, down"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Two objects act on the block: the spring (touching it) and Earth. The ceiling touches the spring, not the block.",
+    "options": [
+     "Right: the spring pulls up on the block.",
+     "Right: Earth pulls down on the block.",
+     "The ceiling does not touch the block; its pull acts on the spring.",
+     "That force acts on the spring, so it belongs on the spring's diagram."
+    ]
+   }
+  },
+  {
+   "id": "phys-spring-forces-15",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "predict",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A block hangs at rest from an ideal spring. Predict how the stretch of the spring changes in each case.",
+   "variables": [
+    {
+     "name": "The block is replaced by one of twice the mass",
+     "answer": "up",
+     "why": "Twice the weight needs twice the spring force, so twice the stretch."
+    },
+    {
+     "name": "The spring is replaced by a stiffer one (larger k)",
+     "answer": "down",
+     "why": "Δx = mg/k: a larger k gives a smaller stretch for the same weight."
+    },
+    {
+     "name": "The spring and block are moved to a higher shelf in the same room",
+     "answer": "none",
+     "why": "The weight and k are unchanged, so the stretch is unchanged."
+    }
+   ],
+   "why": {
+    "correct": "At rest, kΔx = mg, so Δx = mg/k depends on the weight and the spring constant only."
+   }
+  }
+ ]
+}

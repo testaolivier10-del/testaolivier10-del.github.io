@@ -1,0 +1,148 @@
+{
+ "id": "frq-u2-hill-crest",
+ "type": "tbr",
+ "points": 12,
+ "title": "A car over a hill",
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "circular-motion",
+  "forces-fbd"
+ ],
+ "practices": [
+  "1.A",
+  "1.C",
+  "2.A",
+  "2.D",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "diagram",
+  "title": "A car over a hill",
+  "html": "<p>A car of mass m drives over the crest of a hill at a constant speed v. Near the crest the road follows a vertical circle of radius R. Air resistance and the friction along the direction of motion balance, so the speed stays constant.</p><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 480 230\" role=\"img\" aria-label=\"A car drives over the top of a rounded hill whose crest is part of a vertical circle of radius r.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"480\" height=\"230\" fill=\"#FFFFFF\"/><path d=\"M10,190 Q240,40 470,190 L470,220 L10,220 Z\" fill=\"#CFE3D3\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><rect x=\"212\" y=\"92\" width=\"56\" height=\"22\" rx=\"6\" fill=\"#C0392B\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"225\" cy=\"117\" r=\"7\" fill=\"#1F2A28\"/><circle cx=\"255\" cy=\"117\" r=\"7\" fill=\"#1F2A28\"/><polygon points=\"280,103.5 336,103.5 336,109 350,100 336,91 336,96.5 280,96.5\" fill=\"#FFFFFF\" stroke=\"#B07A00\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><text x=\"358\" y=\"105\" font-size=\"14\" fill=\"#B07A00\" font-weight=\"bold\" font-style=\"italic\">v</text><text x=\"240\" y=\"175\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\">crest: part of a vertical circle of radius r</text></svg>"
+ },
+ "drawSpec": {
+  "kind": "fbd",
+  "label": "A dot that stands for the car at the crest of the hill; draw each force on it as an arrow starting on the dot"
+ },
+ "graphSpec": {
+  "type": "line",
+  "x": {
+   "label": "Square of the speed, v²",
+   "unit": "m²/s²"
+  },
+  "y": {
+   "label": "Normal force on the car",
+   "unit": "N"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "space": "draw",
+   "prompt": "<b>Draw</b> a free-body diagram of the car at the top of the crest, showing only the vertical forces. Represent each force with a distinct arrow starting on the dot, labeled with its type and agent, with lengths that show their relative sizes.",
+   "rubric": [
+    {
+     "point": "Gravitational force down, labeled (F_g, Earth on car)",
+     "accept": [
+      "mg down"
+     ]
+    },
+    {
+     "point": "Normal force up, labeled (F_N, road on car)",
+     "accept": [
+      "road pushes up on the car"
+     ]
+    },
+    {
+     "point": "F_N drawn shorter than F_g, and no \"centripetal force\" or net force arrow",
+     "accept": [
+      "normal force arrow visibly shorter, with only two arrows"
+     ]
+    }
+   ],
+   "sample": "Two arrows start on the dot: F_g (Earth on car) pointing down, and F_N (road on car) pointing up, drawn shorter than F_g. No centripetal or net force arrow is drawn: the net force toward the center is the difference between these two."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "<b>Derive</b> an expression for the normal force on the car at the crest in terms of m, v, R and physical constants, consistent with your free-body diagram.",
+   "rubric": [
+    {
+     "point": "Newton's second law with the centripetal acceleration v²/R toward the center (down)",
+     "accept": [
+      "ΣF = ma_c, a_c = v²/R"
+     ]
+    },
+    {
+     "point": "mg − F_N = mv²/R (down positive)",
+     "accept": [
+      "F_N − mg = −mv²/R"
+     ]
+    },
+    {
+     "point": "F_N = m(g − v²/R)",
+     "accept": [
+      "F_N = mg − mv²/R"
+     ]
+    }
+   ],
+   "sample": "Newton's second law toward the center of the circle, which is below the car: ΣF = ma_c with a_c = v²/R. The forces toward the center are F_g = mg (down, toward) and F_N (up, away): mg − F_N = mv²/R. So F_N = m(g − v²/R) = mg − (m/R)v²."
+  },
+  {
+   "label": "c",
+   "points": 3,
+   "space": "graph",
+   "prompt": "<b>Sketch</b> a graph of the normal force on the car at the crest against v², for speeds from zero up to the speed at which the normal force becomes zero. Label the intercepts in terms of m, g and R.",
+   "rubric": [
+    {
+     "point": "A straight line with negative slope",
+     "accept": [
+      "linear, decreasing"
+     ]
+    },
+    {
+     "point": "Vertical intercept at F_N = mg",
+     "accept": [
+      "starts at mg when v = 0"
+     ]
+    },
+    {
+     "point": "Horizontal intercept at v² = gR",
+     "accept": [
+      "reaches zero at v² = gR"
+     ]
+    }
+   ],
+   "sample": "A straight line that starts at F_N = mg on the vertical axis (v² = 0) and falls with slope −m/R, reaching F_N = 0 at v² = gR on the horizontal axis."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "The driver goes over the crest faster than √(gR). <b>Predict</b> what happens to the car at the crest, and <b>explain</b> how your free-body diagram, your equation and your graph each support the prediction.",
+   "rubric": [
+    {
+     "point": "Predicts the car leaves the road (loses contact) at the crest",
+     "accept": [
+      "the tires lift off; the car becomes airborne"
+     ]
+    },
+    {
+     "point": "Equation/graph: F_N = m(g − v²/R) would be negative for v² > gR, beyond the graph's horizontal intercept, but a road can only push, not pull",
+     "accept": [
+      "the line crosses zero at v² = gR"
+     ]
+    },
+    {
+     "point": "Free-body diagram: gravity is the only force left and mg is smaller than the mv²/R needed to follow the circle, so the car's path curves less than the road",
+     "accept": [
+      "gravity alone cannot supply the needed centripetal net force"
+     ]
+    }
+   ],
+   "sample": "The car leaves the road at the crest. My equation gives F_N = m(g − v²/R), which is negative for v² > gR: the graph has crossed its horizontal intercept. A road can only push up on the car, so it cannot supply a negative normal force; F_N drops to zero. With only F_g left on the free-body diagram, the net force toward the center is mg, smaller than the mv²/R needed to follow a circle of radius R, so the car follows a flatter path than the road and lifts off."
+  }
+ ]
+}

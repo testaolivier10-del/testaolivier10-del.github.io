@@ -1,0 +1,469 @@
+{
+ "stimuli": {
+  "rolling-s1": {
+   "kind": "diagram",
+   "title": "Three shapes race down a ramp",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 250\" role=\"img\" aria-label=\"A ramp of height 0.80 m with a solid sphere, a solid disk and a hoop at the top, all of mass M and radius R, released from rest to roll without slipping\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"250\" fill=\"#FFFFFF\"/><polygon points=\"30,60 30,220 330,220\" fill=\"#EEF1EF\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><rect x=\"10\" y=\"220\" width=\"350\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"10\" y1=\"220\" x2=\"360\" y2=\"220\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"14\" y1=\"220\" x2=\"6\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"26\" y1=\"220\" x2=\"18\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"38\" y1=\"220\" x2=\"30\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"220\" x2=\"42\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"62\" y1=\"220\" x2=\"54\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"74\" y1=\"220\" x2=\"66\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"86\" y1=\"220\" x2=\"78\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"98\" y1=\"220\" x2=\"90\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"110\" y1=\"220\" x2=\"102\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"122\" y1=\"220\" x2=\"114\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"134\" y1=\"220\" x2=\"126\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"146\" y1=\"220\" x2=\"138\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"158\" y1=\"220\" x2=\"150\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"170\" y1=\"220\" x2=\"162\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"182\" y1=\"220\" x2=\"174\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"194\" y1=\"220\" x2=\"186\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"206\" y1=\"220\" x2=\"198\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"218\" y1=\"220\" x2=\"210\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"230\" y1=\"220\" x2=\"222\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"242\" y1=\"220\" x2=\"234\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"254\" y1=\"220\" x2=\"246\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"266\" y1=\"220\" x2=\"258\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"278\" y1=\"220\" x2=\"270\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"290\" y1=\"220\" x2=\"282\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"302\" y1=\"220\" x2=\"294\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"314\" y1=\"220\" x2=\"306\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"326\" y1=\"220\" x2=\"318\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"338\" y1=\"220\" x2=\"330\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"350\" y1=\"220\" x2=\"342\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><circle cx=\"60.9\" cy=\"57.2\" r=\"17\" fill=\"#C0D6E4\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"101.5\" cy=\"78.9\" r=\"17\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"142.1\" cy=\"100.5\" r=\"17\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"4.5\"/><line x1=\"20\" y1=\"140\" x2=\"20\" y2=\"68\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"20,60 24,68 16,68\" fill=\"#5A6268\"/><line x1=\"20\" y1=\"140\" x2=\"20\" y2=\"212\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"20,220 16,212 24,212\" fill=\"#5A6268\"/><text x=\"36\" y=\"180\" font-size=\"12\" fill=\"#1F2A28\">h = 0.80 m</text><rect x=\"370\" y=\"30\" width=\"175\" height=\"190\" rx=\"8\" fill=\"#EEF1EF\" stroke=\"#C9CFCC\"/><text x=\"380\" y=\"54\" font-size=\"12\" fill=\"#1F2A28\">Each has mass M and</text><text x=\"380\" y=\"75\" font-size=\"12\" fill=\"#1F2A28\">radius R. Given:</text><text x=\"380\" y=\"96\" font-size=\"12\" fill=\"#1F2A28\">solid sphere I = ⅖MR²</text><text x=\"380\" y=\"117\" font-size=\"12\" fill=\"#1F2A28\">solid disk I = ½MR²</text><text x=\"380\" y=\"138\" font-size=\"12\" fill=\"#1F2A28\">hoop I = MR²</text><text x=\"380\" y=\"159\" font-size=\"12\" fill=\"#1F2A28\">Released together from</text><text x=\"380\" y=\"180\" font-size=\"12\" fill=\"#1F2A28\">rest; each rolls without</text><text x=\"380\" y=\"201\" font-size=\"12\" fill=\"#1F2A28\">slipping.</text></svg>"
+  },
+  "rolling-s2": {
+   "kind": "table",
+   "title": "A bowling ball that skids, then rolls",
+   "text": "<p>A bowling ball of radius 0.11 m is released on a level lane sliding at 8.0 m/s without spinning. High-speed video gives the speed of its center, v<sub>cm</sub>, and its angular velocity ω.</p>",
+   "table": {
+    "caption": "The ball’s motion after release",
+    "cols": [
+     "Time (s)",
+     "v_cm (m/s)",
+     "ω (rad/s)"
+    ],
+    "rows": [
+     [
+      "0.0",
+      "8.0",
+      "0"
+     ],
+     [
+      "0.4",
+      "7.2",
+      "17"
+     ],
+     [
+      "0.8",
+      "6.5",
+      "35"
+     ],
+     [
+      "1.2",
+      "5.7",
+      "52"
+     ],
+     [
+      "1.6",
+      "5.7",
+      "52"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-rolling-1",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rolling-s1",
+   "q": "In what order do the three objects reach the bottom?",
+   "options": [
+    "Sphere, then disk, then hoop",
+    "Hoop, then disk, then sphere",
+    "A three-way tie: they have the same mass and radius",
+    "Disk, then sphere, then hoop"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each loses the same Mgh, shared as ½Mv² + ½Iω². With v = Rω, v = √(2gh/(1 + I/MR²)). The smaller I/MR² (sphere ⅖ < disk ½ < hoop 1), the faster the object.",
+    "options": [
+     "Right: the smaller I/MR², the larger the share of energy in moving along.",
+     "The hoop puts the most energy into spinning, so it is slowest.",
+     "Same M and R, but different mass distributions and so different I.",
+     "The sphere has a smaller I/MR² (⅖) than the disk (½), so it is faster."
+    ]
+   }
+  },
+  {
+   "id": "phys-rolling-2",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "rolling-s1",
+   "q": "Use g = 9.8 m/s². What is the disk’s speed at the bottom?",
+   "numeric": {
+    "answer": 3.2,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4,
+      "rel": 0.015,
+      "why": "Value: that is the speed of an object that slides without spinning. A rolling disk also has rotational kinetic energy."
+     },
+     {
+      "value": 2.8,
+      "rel": 0.015,
+      "why": "Value: that treats the disk like a hoop (I = MR²). For a disk, I = ½MR²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Mgh = ½Mv² + ½(½MR²)(v/R)² = ¾Mv², so v = √(4gh/3) = √(4 × 9.8 × 0.80/3) = 3.23 m/s, about 3.2 m/s."
+   }
+  },
+  {
+   "id": "phys-rolling-3",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rolling-s1",
+   "q": "At the bottom, what fraction of the hoop’s kinetic energy is rotational?",
+   "options": [
+    "One half",
+    "One third",
+    "Two sevenths",
+    "Zero"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With v = Rω, the hoop’s rotational kinetic energy ½(MR²)ω² = ½Mv² equals its translational kinetic energy, so each is half the total.",
+    "options": [
+     "Right: for a hoop, ½Iω² = ½(MR²)(v/R)² = ½Mv².",
+     "That is the disk’s share: ½Iω² = ¼Mv² out of ¾Mv².",
+     "That is the solid sphere’s share.",
+     "A rolling hoop spins, so part of its kinetic energy is rotational."
+    ]
+   }
+  },
+  {
+   "id": "phys-rolling-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rolling-s1",
+   "q": "A second solid sphere with twice the mass and twice the radius rolls down the same ramp. Compared with the first sphere, its speed at the bottom is",
+   "options": [
+    "the same",
+    "larger, because it is heavier",
+    "smaller, because it has more rotational inertia",
+    "smaller, because its radius is larger"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For any solid sphere I/MR² = ⅖, so v = √(10gh/7) depends only on h and g. Mass and radius cancel; only the shape matters.",
+    "options": [
+     "Right: v = √(2gh/(1 + I/MR²)) has no M or R in it.",
+     "Mass cancels: twice the mass needs twice the energy for the same speed and gets twice the Mgh.",
+     "Its I is larger, but so is its mass; the ratio I/MR² is still ⅖.",
+     "R cancels through v = Rω."
+    ]
+   }
+  },
+  {
+   "id": "phys-rolling-5",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rolling-s1",
+   "q": "A frictionless block, released from the top at the same moment, slides down beside them. Where does it finish?",
+   "options": [
+    "First, ahead of all three",
+    "Last, because nothing makes it spin",
+    "Tied with the sphere",
+    "Between the disk and the hoop"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A sliding block with no friction turns all of Mgh into ½Mv², reaching v = √(2gh) ≈ 4.0 m/s. Every rolling object shares its energy with rotation and is slower.",
+    "options": [
+     "Right: all its Mgh becomes translational kinetic energy.",
+     "Not spinning means none of its energy goes into rotation, so it is fastest.",
+     "The sphere puts 2/7 of its energy into spinning; the block puts none.",
+     "With no rotation it beats every rolling object."
+    ]
+   }
+  },
+  {
+   "id": "phys-rolling-6",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rolling-s2",
+   "q": "From the data, when has the ball begun rolling without slipping?",
+   "options": [
+    "By 1.2 s, when v_cm equals Rω",
+    "At 0.0 s, because the ball is moving",
+    "At 0.8 s, when ω reaches 35 rad/s",
+    "Not yet, because v_cm keeps falling"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rolling without slipping needs v_cm = Rω. Rω = 0, 1.9, 3.9, 5.7, 5.7 m/s; v_cm = 8.0, 7.2, 6.5, 5.7, 5.7 m/s. They match by 1.2 s and stay matched.",
+    "options": [
+     "Right: 0.11 m × 52 rad/s = 5.7 m/s = v_cm.",
+     "At first ω = 0 while v_cm = 8.0 m/s: it slides without spinning.",
+     "Rω = 3.9 m/s, still less than v_cm = 6.5 m/s.",
+     "v_cm stops falling at 5.7 m/s, once it equals Rω."
+    ]
+   }
+  },
+  {
+   "id": "phys-rolling-7",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rolling-s2",
+   "q": "While the ball skids, which way does the lane’s friction force on the ball point, and what does it do?",
+   "options": [
+    "Backward: it slows v_cm and speeds up the spin",
+    "Forward: it speeds up v_cm and the spin",
+    "Backward: it slows both v_cm and the spin",
+    "No friction acts, because the lane is level"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The bottom of the ball slides forward on the lane, so kinetic friction on the ball points backward. That reduces v_cm, and because it acts at the bottom, a distance R below the center, its torque increases ω until v_cm = Rω.",
+    "options": [
+     "Right: one force, two effects.",
+     "v_cm falls in the data, so the friction force points backward.",
+     "ω rises in the data; the backward force at the bottom gives a torque in the direction of rolling.",
+     "A skidding ball rubs on the lane, so kinetic friction acts."
+    ]
+   }
+  },
+  {
+   "id": "phys-rolling-8",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rolling-s2",
+   "q": "What happens to the ball’s total kinetic energy during the skid (0 to 1.2 s)?",
+   "options": [
+    "It decreases: kinetic friction dissipates energy",
+    "It stays the same: the spin gains what v_cm loses",
+    "It increases, because the ball starts to spin",
+    "It decreases to zero, because the ball stops skidding"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "While the contact point slides, kinetic friction dissipates mechanical energy as thermal energy. Total kinetic energy (translational + rotational) falls during the skid, then stays constant once the ball rolls without slipping.",
+    "options": [
+     "Right: sliding friction turns some kinetic energy into thermal energy.",
+     "The spin gains some energy, but kinetic friction during sliding removes energy overall.",
+     "Nothing outside does positive work on the ball overall.",
+     "The ball keeps rolling at 5.7 m/s."
+    ]
+   }
+  },
+  {
+   "id": "phys-rolling-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rolling-s2",
+   "q": "After 1.2 s the ball rolls without slipping on the level lane. Ignoring air and the small losses in the lane, why do v_cm and ω stay constant?",
+   "options": [
+    "Its contact point does not slide, so no friction acts",
+    "Static friction keeps pushing the ball forward",
+    "Kinetic friction balances the ball’s weight",
+    "The ball’s spin pushes it along the lane"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rolling without slipping, the bottom point has zero velocity relative to the lane, so nothing slides. On a level lane with no other horizontal force, no friction acts, the net force and net torque are zero, and v_cm and ω stay constant.",
+    "options": [
+     "Right: no sliding, no kinetic friction; on a level lane no static friction is needed either.",
+     "A forward force would speed the ball up; the data show constant v_cm.",
+     "Friction is horizontal and the weight vertical; they do not balance.",
+     "Spinning does not push the ball; with no net force v_cm stays constant."
+    ]
+   }
+  },
+  {
+   "id": "phys-rolling-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "For a ball of radius R rolling without slipping, the speed of its center is",
+   "options": [
+    "v_cm = Rω",
+    "v_cm = ω/R",
+    "v_cm = 2Rω",
+    "v_cm = 0"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In one revolution (2π rad) the ball rolls forward one circumference (2πR), so Δx_cm = RΔθ and v_cm = Rω.",
+    "options": [
+     "Right: in one turn the center moves forward one circumference, 2πR.",
+     "Units do not match: ω/R is not a speed.",
+     "2Rω is the speed of the top of the ball, not the center.",
+     "The center moves forward as the ball rolls."
+    ]
+   }
+  },
+  {
+   "id": "phys-rolling-11",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 0.60 kg solid ball (I = ⅖MR², given) rolls without slipping at 2.0 m/s. What is its total kinetic energy?",
+   "numeric": {
+    "answer": 1.7,
+    "tol": 0.1,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.2,
+      "rel": 0.015,
+      "why": "Value: that is only the translational part. Add ½Iω² with ω = v/R."
+     },
+     {
+      "value": 2.4,
+      "rel": 0.015,
+      "why": "Value: that adds a rotational part equal to the translational one, as for a hoop. For a solid ball it is ⅖ of it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K = ½Mv² + ½(⅖MR²)(v/R)² = ½Mv²(1 + ⅖) = 1.2 J × 1.4 = 1.68 J."
+   }
+  },
+  {
+   "id": "phys-rolling-12",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A wheel rolls without slipping down a ramp. The static friction force from the ramp",
+   "options": [
+    "spins it up but does no work on it",
+    "dissipates energy, so less arrives at the bottom",
+    "points down the ramp and speeds up the center",
+    "is zero, because the wheel is not slipping"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On the ramp, static friction points up the slope at the contact point. Its torque about the center increases ω. The contact point is momentarily at rest, so the friction does no work: mechanical energy (translational + rotational + gravitational) is conserved.",
+    "options": [
+     "Right: static friction acts at a point at rest, so it dissipates nothing.",
+     "Static friction acts at a point that is not sliding; no energy is dissipated.",
+     "It points up the ramp: it slows the center and spins the wheel up.",
+     "On a slope it is needed to make the wheel turn faster as it speeds up."
+    ]
+   }
+  },
+  {
+   "id": "phys-rolling-13",
+   "type": "predict",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A hollow ball and a solid ball of the same mass and radius roll without slipping at the same speed. Predict how each quantity compares for the hollow ball.",
+   "variables": [
+    {
+     "name": "Its angular velocity",
+     "answer": "none",
+     "why": "Same speed and radius, and v = Rω, so the same ω."
+    },
+    {
+     "name": "Its rotational kinetic energy",
+     "answer": "up",
+     "why": "Its mass is farther out, so its I is larger and ½Iω² is larger."
+    },
+    {
+     "name": "Its translational kinetic energy",
+     "answer": "none",
+     "why": "½Mv² with the same M and v."
+    }
+   ],
+   "why": {
+    "correct": "Rolling at the same v with the same R fixes ω. The hollow ball’s larger I gives it more rotational kinetic energy; its translational kinetic energy is the same."
+   }
+  },
+  {
+   "id": "phys-rolling-14",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A hoop rolls without slipping from rest down a ramp 1.2 m high. Use g = 9.8 m/s². What is its speed at the bottom?",
+   "numeric": {
+    "answer": 3.4,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4.8,
+      "rel": 0.015,
+      "why": "Value: that ignores the hoop’s spin. Half its kinetic energy is rotational."
+     },
+     {
+      "value": 12,
+      "rel": 0.015,
+      "why": "Value: that is v². Take the square root: v = √(gh)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Mgh = ½Mv² + ½(MR²)(v/R)² = Mv², so v = √(gh) = √(9.8 × 1.2) = 3.43 m/s, about 3.4 m/s."
+   }
+  },
+  {
+   "id": "phys-rolling-15",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A wheel of radius 0.30 m rolls without slipping through 5.0 revolutions. How far does its center move?",
+   "numeric": {
+    "answer": 9.4,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "rel": 0.015,
+      "why": "Value: that uses 5.0 as the angle in radians. 5.0 revolutions = 10π rad."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Δx_cm = RΔθ = (0.30 m)(5.0 × 2π rad) = 9.4 m, about 9.4 m."
+   }
+  }
+ ]
+}

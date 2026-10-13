@@ -1,0 +1,17 @@
+{
+ "si-unit": {
+  "def": "One of the agreed units of the International System. Physics 1 uses the base units meter (m) for length, kilogram (kg) for mass and second (s) for time, and units built from them, such as m/s."
+ },
+ "si-prefix": {
+  "def": "A word in front of a unit that multiplies it by a power of ten: kilo (k) = 10³, centi (c) = 10⁻², milli (m) = 10⁻³, micro (μ) = 10⁻⁶."
+ },
+ "unit-conversion": {
+  "def": "Changing a value to another unit by multiplying by a fraction equal to 1, such as (1 m / 100 cm), so the old unit cancels."
+ },
+ "scientific-notation": {
+  "def": "Writing a number as a value from 1 to 10 times a power of ten, such as 2.5 × 10⁻³ s for 0.0025 s."
+ },
+ "sig-figs": {
+  "def": "The digits of a measured value that are known, plus one estimated digit. A calculated result keeps as many as the least precise data allow."
+ }
+}

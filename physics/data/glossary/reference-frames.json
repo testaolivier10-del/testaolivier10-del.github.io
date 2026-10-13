@@ -1,0 +1,8 @@
+{
+ "reference-frame": {
+  "def": "The point of view from which motion is measured: an observer with a coordinate system that moves with them. A velocity has meaning only relative to some frame."
+ },
+ "relative-velocity": {
+  "def": "The velocity of an object as measured in a given frame. Along a line: v(object relative to ground) = v(object relative to frame) + v(frame relative to ground)."
+ }
+}

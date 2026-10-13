@@ -1,0 +1,83 @@
+{
+ "topic": "shm-representations",
+ "hook": "A seismograph, a heart monitor and a motion detector all draw a wave-like trace across a screen. When the trace comes from a mass on a spring, you can read everything about the motion from it: how far the mass swings, how long each swing takes, and where it moves fastest.",
+ "prereq": [
+  {
+   "q": "On a position-time graph, the slope gives",
+   "options": [
+    "the velocity",
+    "the acceleration",
+    "the displacement",
+    "the distance traveled"
+   ],
+   "correct": 0,
+   "why": "Velocity is the rate of change of position, the slope of x against t.",
+   "review": "motion-representations"
+  },
+  {
+   "q": "What is cos 0?",
+   "options": [
+    "1",
+    "0",
+    "−1",
+    "0.5"
+   ],
+   "correct": 0,
+   "why": "cos 0 = 1 and sin 0 = 0.",
+   "review": "math-trig-components"
+  },
+  {
+   "q": "A block on a spring is pulled twice as far. Its period",
+   "options": [
+    "stays the same",
+    "doubles",
+    "halves",
+    "grows by √2"
+   ],
+   "correct": 0,
+   "why": "T = 2π√(m/k) has no amplitude in it.",
+   "review": "shm-period"
+  }
+ ],
+ "figure": {
+  "figure": "shm-xva-graphs",
+  "caption": "Position, velocity and acceleration over one period, lined up in time."
+ },
+ "chain": [
+  {
+   "cause": "A restoring force F = −kx acts on the object",
+   "effect": "its acceleration is always opposite to its displacement, so the a-t graph is the x-t graph flipped"
+  },
+  {
+   "cause": "The object turns around at x = ±A",
+   "effect": "its velocity is zero there: the x-t graph is flat at its peaks and troughs"
+  },
+  {
+   "cause": "The object passes x = 0 with no force to slow it yet",
+   "effect": "its speed is greatest there: the x-t graph is steepest where it crosses zero"
+  },
+  {
+   "cause": "Doubling the amplitude doubles the force and the speed at each matching point",
+   "effect": "the cycle takes the same time: the period does not depend on the amplitude"
+  }
+ ],
+ "ideas": [
+  "Position in SHM is <b>x = A cos(2πft)</b> if the object starts at +A, or <b>x = A sin(2πft)</b> if it starts at equilibrium moving in +x. Use radians.",
+  "On an x-t graph: the height of a peak is A; the time from peak to peak is T; the slope is the velocity.",
+  "<b>Speed is greatest at x = 0</b> and zero at x = ±A. <b>Acceleration is zero at x = 0</b> and largest at x = ±A, always pointing toward equilibrium.",
+  "The <b>period does not depend on the amplitude</b>: a bigger swing has more distance to cover and covers it faster."
+ ],
+ "misconception": {
+  "wrong": "The object moves fastest at the turning points, because that is where the force on it is largest.",
+  "right": "A large force means a large acceleration, not a large speed. At the turning points the object is momentarily at rest; it is fastest at equilibrium, where the force is zero."
+ },
+ "check": [
+  "phys-shm-representations-1",
+  "phys-shm-representations-2",
+  "phys-shm-representations-3",
+  "phys-shm-representations-4",
+  "phys-shm-representations-9",
+  "phys-shm-representations-12"
+ ],
+ "summary": "SHM is described by x = A cos(2πft) or A sin(2πft); on the graphs, speed is greatest and acceleration zero at equilibrium, speed zero and acceleration greatest at the turning points, and the period is independent of the amplitude."
+}

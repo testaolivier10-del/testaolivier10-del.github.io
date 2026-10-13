@@ -1,0 +1,87 @@
+{
+ "topic": "linear-rotational-link",
+ "hook": "On a merry-go-round the kids at the rim scream and the kids near the middle barely notice. Everyone goes around once in the same time, yet the ride at the edge is much faster. The link between turning and moving is one factor: the distance from the axis.",
+ "prereq": [
+  {
+   "q": "One revolution is how many radians?",
+   "options": [
+    "2π rad",
+    "π rad",
+    "360 rad",
+    "1 rad"
+   ],
+   "correct": 0,
+   "why": "A full circle is 2π rad = 360°.",
+   "review": "rotational-kinematics"
+  },
+  {
+   "q": "An object in uniform circular motion at speed v on radius r has centripetal acceleration",
+   "options": [
+    "v²/r",
+    "v/r",
+    "vr",
+    "v²r"
+   ],
+   "correct": 0,
+   "why": "a_c = v²/r, toward the center.",
+   "review": "circular-motion"
+  }
+ ],
+ "figure": {
+  "figure": "carousel-speeds",
+  "caption": "Riders A and B share one ω; A is twice as far from the axis, so A moves twice as fast: v = rω."
+ },
+ "chain": [
+  {
+   "cause": "A point sits a distance r from the axis",
+   "effect": "it moves on a circle of radius r as the object turns"
+  },
+  {
+   "cause": "The object turns through θ (in radians)",
+   "effect": "the point travels a distance s = rθ along its circle"
+  },
+  {
+   "cause": "The object turns at ω",
+   "effect": "the point moves at speed v = rω, tangent to its circle"
+  },
+  {
+   "cause": "ω changes at α",
+   "effect": "the point’s speed changes at a_T = rα"
+  },
+  {
+   "cause": "A string or belt leaves the rim without slipping",
+   "effect": "it moves with the rim: same distance, speed and acceleration"
+  }
+ ],
+ "ideas": [
+  "Every point of a rigid object shares θ, ω and α; how far and how fast a point moves depends on r.",
+  "<b>s = rθ</b>, <b>v = rω</b>, <b>a<sub>T</sub> = rα</b>, with angles in radians.",
+  "A point twice as far from the axis travels twice as far and twice as fast.",
+  "A string unwinding without slipping moves with the rim: its length, speed and acceleration are rθ, rω, rα.",
+  "Centripetal acceleration v²/r = rω² is a different quantity from the tangential rα."
+ ],
+ "misconception": {
+  "wrong": "Two gears or pulleys joined by a belt turn at the same angular velocity.",
+  "right": "The belt makes their rim speeds equal: r₁ω₁ = r₂ω₂. The smaller pulley turns faster."
+ },
+ "check": [
+  "phys-linear-rotational-link-1",
+  "phys-linear-rotational-link-2",
+  "phys-linear-rotational-link-3",
+  "phys-linear-rotational-link-5",
+  "phys-linear-rotational-link-10",
+  "phys-linear-rotational-link-13",
+  "phys-linear-rotational-link-16"
+ ],
+ "summary": "A point a distance r from the axis of a turning rigid object travels s = rθ, moves at v = rω and has tangential acceleration a_T = rα, with angles in radians. All points share θ, ω and α, but points farther out move farther and faster. A string or belt that does not slip moves with the rim it touches.",
+ "connections": [
+  {
+   "href": "../notes/rotational-kinematics.html",
+   "label": "Back: angle, angular velocity, angular acceleration (5.1)"
+  },
+  {
+   "href": "../notes/torque.html",
+   "label": "Next: what makes things start turning (5.3)"
+  }
+ ]
+}

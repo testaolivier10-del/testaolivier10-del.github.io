@@ -1,0 +1,98 @@
+{
+ "topic": "work-by-forces",
+ "hook": "Pushing on a stuck car until your arms ache changes nothing about the car, yet a gentle shove on a shopping cart sends it rolling. In physics, work means energy moved into or out of an object by a force acting along a displacement, and that definition explains why effort alone does not count.",
+ "prereq": [
+  {
+   "q": "Kinetic energy is",
+   "options": [
+    "½mv²",
+    "mv",
+    "mv²",
+    "½mv"
+   ],
+   "correct": 0,
+   "why": "K = ½mv², with the speed squared.",
+   "review": "kinetic-energy"
+  },
+  {
+   "q": "In a right triangle, the side next to angle θ equals the hypotenuse times",
+   "options": [
+    "cos θ",
+    "sin θ",
+    "tan θ",
+    "1/cos θ"
+   ],
+   "correct": 0,
+   "why": "Adjacent = hypotenuse × cos θ.",
+   "review": "math-trig-components"
+  },
+  {
+   "q": "Kinetic friction on a sliding crate points",
+   "options": [
+    "opposite the crate's sliding",
+    "along the crate's sliding",
+    "straight down",
+    "perpendicular to the floor"
+   ],
+   "correct": 0,
+   "why": "Kinetic friction opposes the sliding of the surfaces.",
+   "review": "friction"
+  }
+ ],
+ "figure": {
+  "figure": "work-pulled-crate",
+  "caption": "Work done by each force on a crate pulled 4.0 m: the rope does positive work, friction negative work, and the normal and gravitational forces none."
+ },
+ "chain": [
+  {
+   "cause": "A force acts on an object while the object moves",
+   "effect": "the force does work W = F d cos θ, using only the component along the displacement"
+  },
+  {
+   "cause": "The force has a component along the motion",
+   "effect": "the work is positive and energy enters the object"
+  },
+  {
+   "cause": "The force opposes the motion (like kinetic friction)",
+   "effect": "the work is negative and energy leaves the object"
+  },
+  {
+   "cause": "The force is perpendicular to the motion",
+   "effect": "it does no work and does not change the speed"
+  },
+  {
+   "cause": "All the works on an object are added",
+   "effect": "the net work equals the change in kinetic energy: W_net = ΔK"
+  }
+ ],
+ "ideas": [
+  "<b>Work</b> is energy moved into or out of a system by a force acting along a displacement: W = F d cos θ, with θ between the force and the displacement. It is a scalar, in joules.",
+  "Positive work adds energy, negative work removes it, and a force perpendicular to the motion does none.",
+  "The <b>work-energy theorem</b>: the net work done on an object equals its change in kinetic energy, W_net = ΔK.",
+  "Work by a varying force is the area under its <b>force-position graph</b>.",
+  "Kinetic friction does negative work that grows with the path length, even on a round trip."
+ ],
+ "misconception": {
+  "wrong": "Gravity does work on a crate dragged across a level floor, because gravity acts on it the whole time.",
+  "right": "A force does work only through its component along the displacement. Gravity is vertical and the motion is horizontal, so gravity does zero work here."
+ },
+ "check": [
+  "phys-work-by-forces-1",
+  "phys-work-by-forces-2",
+  "phys-work-by-forces-3",
+  "phys-work-by-forces-4",
+  "phys-work-by-forces-14",
+  "phys-work-by-forces-18"
+ ],
+ "summary": "Work is W = F d cos θ: energy carried into an object (positive) or out of it (negative) by a force along a displacement. Perpendicular forces do none. The net work equals ΔK, and a varying force's work is the area under its force-position graph.",
+ "connections": [
+  {
+   "href": "../notes/kinetic-energy.html",
+   "label": "Back: kinetic energy (3.1)"
+  },
+  {
+   "href": "../notes/potential-energy.html",
+   "label": "Next: 3.3"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+<p>Unit 3 tracked energy, a scalar. Unit 4 tracks a second quantity, <b>momentum</b>, which is a vector. Both combine mass and velocity, both are useful for "before and after" problems, and students mix them up constantly. This page defines momentum, shows how it differs from kinetic energy, and introduces the two ideas the rest of the unit builds on: the momentum of a system and the collision model.</p>
+
+<h2>Momentum is mass times velocity</h2>
+<p>An object of mass m moving with velocity v has momentum</p>
+<p style="text-align:center"><b>p = mv</b></p>
+<p>Momentum is a vector in the same direction as the velocity. In one dimension, its direction is carried by its sign: with right as positive, a cart moving left has negative momentum. The SI unit is kg·m/s.</p>
+<p>Momentum measures how much "motion" an object carries in a way that matters for stopping it or for what it does in a collision. A loaded freight train crawling at 1 m/s and a baseball at 40 m/s are both hard to stop; the train because of its mass, the ball because of its speed.</p>
+
+<h2>Momentum and kinetic energy are different</h2>
+<figure id="fig-p" data-fig="momentum-two-carts"><figcaption>Two carts with the same momentum but different velocities and kinetic energies.</figcaption></figure>
+<table class="compare"><thead><tr><th></th><th>Momentum p = mv</th><th>Kinetic energy K = ½mv²</th></tr></thead><tbody>
+<tr><td>Type</td><td>vector (has a direction, a sign in 1D)</td><td>scalar (never negative)</td></tr>
+<tr><td>Unit</td><td>kg·m/s</td><td>J = kg·m²/s²</td></tr>
+<tr><td>Speed doubles</td><td>×2</td><td>×4</td></tr>
+<tr><td>Ball bounces straight back at the same speed</td><td>reverses: changes by 2mv</td><td>unchanged</td></tr>
+<tr><td>Two objects moving in opposite directions</td><td>can cancel</td><td>add, never cancel</td></tr>
+</tbody></table>
+<p>Combining the two formulas gives K = p²/(2m). Two objects with the same momentum have different kinetic energies: the lighter one, which must move faster, has more.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Cart 1 (2.0 kg) moves right at 1.0 m/s; cart 2 (0.50 kg) moves right at 4.0 m/s. Compare their momenta and kinetic energies.</p>
+<p>p₁ = (2.0 kg)(1.0 m/s) = 2.0 kg·m/s; p₂ = (0.50 kg)(4.0 m/s) = 2.0 kg·m/s. Equal.</p>
+<p>K₁ = ½(2.0)(1.0)² = 1.0 J; K₂ = ½(0.50)(4.0)² = 4.0 J. Cart 2 has four times as much.</p>
+</div>
+
+<h2>The momentum of a system</h2>
+<p>A system's momentum is the vector sum of its parts' momenta. In one dimension, add them with their signs. If cart 2 above turned around and moved left at 4.0 m/s, the two-cart system would have momentum (2.0)(+1.0) + (0.50)(−4.0) = 0, even though both carts are moving and the system has 5.0 J of kinetic energy.</p>
+<p>Dividing a system's momentum by its total mass gives the <b>velocity of the center of mass</b>:</p>
+<p style="text-align:center"><b>v_cm = Σp / Σm = (m₁v₁ + m₂v₂ + …)/(m₁ + m₂ + …)</b></p>
+<p>This is a mass-weighted average velocity, not a plain average. For the two carts both moving right, v_cm = (2.0 + 2.0)/(2.5) = 1.6 m/s, not the plain average 2.5 m/s.</p>
+
+<h2>The collision model and explosions</h2>
+<p>When two carts collide, they push on each other very hard for a very short time. Those pushes are internal forces, a third-law pair. Any outside forces (friction from the track, for example) are small by comparison and act for only that brief moment. The <b>collision model</b> treats the outside forces as negligible during the collision, so the system's momentum just before equals its momentum just after.</p>
+<p>An <b>explosion</b> is the same model run backward: objects at rest (or moving together) push apart. A compressed spring between two carts, a firework shell, a skater pushing off a wall of another skater. The system's momentum is the same before and after; if it starts at rest, it stays zero.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Carts A (0.60 kg) and B (0.40 kg) rest on a track with a compressed spring between them. When released, A moves left at 0.80 m/s. Find B's velocity (right positive).</p>
+<p>System: both carts. The spring's forces are internal and the explosion is brief, so the system's momentum stays 0.</p>
+<p>0 = (0.60 kg)(−0.80 m/s) + (0.40 kg)v_B, so v_B = +1.2 m/s.</p>
+<p>The center of mass stays at rest: v_cm = 0/1.00 kg = 0. The lighter cart moves faster, and it gets more of the spring's energy (0.29 J versus 0.19 J).</p>
+</div>
+<p>Why momentum is unchanged by internal forces, and exactly when it changes, is the subject of 4.2 and 4.3.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Writing ½mv for momentum. There is no ½: p = mv.</li>
+<li>Dropping the sign of a velocity to the left. Momentum keeps its direction.</li>
+<li>Averaging velocities for v_cm instead of dividing the system's momentum by its mass.</li>
+<li>Assuming equal momenta mean equal kinetic energies.</li>
+</ul>

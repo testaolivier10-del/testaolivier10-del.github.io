@@ -1,0 +1,99 @@
+{
+ "topic": "torque-work",
+ "hook": "Wind up a bucket from a well and your arm makes big slow circles while the bucket creeps up. Turning a crank is doing work, just as lifting the bucket directly would be. In rotation, work is torque times angle, and it lands exactly where energy bookkeeping says it should.",
+ "prereq": [
+  {
+   "q": "A 20 N force pushes a box 3.0 m in the direction of the force. The work done is",
+   "options": [
+    "60 J",
+    "6.7 J",
+    "23 J",
+    "0.15 J"
+   ],
+   "correct": 0,
+   "why": "W = Fd = (20 N)(3.0 m).",
+   "review": "work-by-forces"
+  },
+  {
+   "q": "On a force-position graph, the area under the line is",
+   "options": [
+    "the work done",
+    "the power",
+    "the impulse",
+    "the acceleration"
+   ],
+   "correct": 0,
+   "why": "Area = force × distance = work.",
+   "review": "work-by-forces"
+  },
+  {
+   "q": "A wheel with I = 0.50 kg·m² turns at 4.0 rad/s. Its rotational kinetic energy is",
+   "options": [
+    "4.0 J",
+    "1.0 J",
+    "8.0 J",
+    "2.0 J"
+   ],
+   "correct": 0,
+   "why": "K = ½Iω² = ½(0.50)(16) = 4.0 J.",
+   "review": "rotational-kinetic-energy"
+  }
+ ],
+ "figure": {
+  "figure": "torque-angle-work",
+  "caption": "A crank turned by a torque: the work is τΔθ, the area under the torque-angle graph."
+ },
+ "chain": [
+  {
+   "cause": "A force at the rim pushes the wheel through a distance s along the rim",
+   "effect": "it does work Fs on the wheel"
+  },
+  {
+   "cause": "s = rθ and the torque is rF",
+   "effect": "the work is Fs = (rF)θ = τΔθ"
+  },
+  {
+   "cause": "The torque changes with angle",
+   "effect": "the work is the area under the torque-angle graph"
+  },
+  {
+   "cause": "The net torque does positive work on a wheel",
+   "effect": "its rotational kinetic energy increases by that amount"
+  },
+  {
+   "cause": "A torque opposes the turning",
+   "effect": "it does negative work and takes kinetic energy out"
+  }
+ ],
+ "ideas": [
+  "<b>W = τΔθ</b> for a constant torque, with Δθ in radians: the partner of W = Fd.",
+  "For a changing torque, W is the area under the τ-θ graph.",
+  "Positive when the torque turns the object the way it is going; negative when it opposes.",
+  "The net work done on a turning object equals its change in rotational kinetic energy.",
+  "Convert revolutions to radians first: 1 rev = 2π rad."
+ ],
+ "misconception": {
+  "wrong": "Work done by a torque is τ times the number of revolutions (or degrees).",
+  "right": "W = τΔθ only works with the angle in radians, because it comes from W = Fs with s = rθ. Four revolutions is 8π rad, about 25 rad."
+ },
+ "check": [
+  "phys-torque-work-1",
+  "phys-torque-work-2",
+  "phys-torque-work-3",
+  "phys-torque-work-4",
+  "phys-torque-work-5",
+  "phys-torque-work-6",
+  "phys-torque-work-7"
+ ],
+ "summary": "A torque that turns an object through an angle does work W = τΔθ (angle in radians), or the area under a torque-angle graph when the torque varies. The net work done on a turning object changes its rotational kinetic energy; a torque that opposes the turning does negative work.",
+ "connections": [
+  {
+   "href": "../notes/rotational-kinetic-energy.html",
+   "label": "Back: rotational kinetic energy (6.1)"
+  },
+  {
+   "href": "../notes/angular-momentum.html",
+   "label": "Next: the rotational partner of momentum (6.3)"
+  }
+ ]
+}

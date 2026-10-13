@@ -1,0 +1,55 @@
+<p>Energy is never created or destroyed. That one sentence is the most powerful tool in Unit 3, but only if you use it with care. You must say which objects are in your system, what energy forms they have, and whether any energy crosses the boundary. This page builds that bookkeeping step by step, then shows how energy bar charts make it visible.</p>
+
+<h2>Step one: choose the system</h2>
+<p>A system is whatever you draw a boundary around. The choice decides which energies you count:</p>
+<ul>
+<li><b>A single object</b> (a block alone) has only kinetic energy. Earth's pull on it is an external force, and its work moves energy into or out of the block.</li>
+<li><b>Object + Earth</b> has kinetic energy and gravitational potential energy. Gravity is now internal; instead of doing external work, it changes U_g.</li>
+<li><b>Object + spring</b> adds elastic potential energy in the same way.</li>
+<li><b>Object + Earth + rough surface</b> also contains the thermal energy that friction produces.</li>
+</ul>
+<p>Both views give the same answer. For a block sliding down a track: block alone, W_grav = +mgh = ΔK. Block + Earth, ΔU_g = −mgh, so ΔK = +mgh. Same speed. What you must not do is mix them: counting U_g <i>and</i> the work done by gravity counts the same energy twice.</p>
+
+<h2>Step two: the energy equation</h2>
+<p>The <b>conservation of energy</b> says a system's energy changes only by the energy transferred across its boundary. In mechanics that transfer is work done by external forces:</p>
+<p style="text-align:center"><b>K_i + U_i + W_external = K_f + U_f + ΔE_thermal</b></p>
+<p>The <b>mechanical energy</b> of a system is K + U. It stays constant only under a condition: no external force does net work on the system (a <b>closed system</b>), and no nonconservative force such as kinetic friction acts inside it. Then K_i + U_i = K_f + U_f.</p>
+<p>Always state that condition when you justify a claim. "Mechanical energy is conserved because energy is conserved" earns nothing; total energy is always conserved, and mechanical energy often is not. "The track is frictionless and the normal force is perpendicular to the motion, so no work is done on the block-Earth system and K + U_g stays constant" earns the point.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A 2.0 kg block is released from rest at A, 6.0 m above the lowest point B of a frictionless track, and slides up to C, 2.0 m above B. Find its speeds at B and C. Use g = 9.8 m/s².</p>
+<p>System: block + track + Earth. The track is frictionless and its normal force does no work, so K + U_g is constant. Zero of U_g at B.</p>
+<p>A to B: mg(6.0 m) = ½mv_B², so v_B = √(2 × 9.8 × 6.0) m/s = 11 m/s.</p>
+<p>A to C: mg(6.0 m) = mg(2.0 m) + ½mv_C², so v_C = √(2 × 9.8 × 4.0) m/s = 8.9 m/s.</p>
+<p>The mass cancels: a 4.0 kg block would have the same speeds.</p>
+</div>
+
+<h2>Energy bar charts</h2>
+<figure id="fig-bars" data-fig="energy-track-bars"><figcaption>Bar charts for the block at A, B and C. The bars change; their total does not.</figcaption></figure>
+<p>An <b>energy bar chart</b> (sometimes an LOL diagram) shows each energy form of the system at two moments, side by side, with a column for any work done by external forces. The rules:</p>
+<ul>
+<li>Name the system above the chart.</li>
+<li>Make bar heights match the situation. An object at rest has no K bar. An object at the zero of height has no U_g bar. A relaxed spring has no U_s bar.</li>
+<li>The bars before, plus any work in, must equal the bars after. Do not split bars evenly by default; compute or estimate them.</li>
+<li>Thermal energy from friction gets its own bar, which only grows.</li>
+</ul>
+<p>Each bar becomes one term in the energy equation. That makes the bar chart and the equation two views of the same statement, which is exactly what the Translation Between Representations question asks you to show.</p>
+<p>Careful with springs: U_s ∝ (Δx)². A cart compressing a spring is at half its greatest compression when only one quarter of its energy is stored, not half; K is still three quarters of the total.</p>
+
+<h2>When mechanical energy is not constant</h2>
+<p>Kinetic friction turns mechanical energy into <b>thermal energy</b> (the surfaces warm up), and impacts turn some into sound. The exam asks you to calculate only the mechanical part; the "missing" mechanical energy equals the energy dissipated. For kinetic friction acting over a path length d, that is f_k d.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A 60.0 kg skier starts from rest at the top of a slope 20.0 m high and reaches the bottom at 17.0 m/s after skiing 50.0 m along the slope. How much mechanical energy is dissipated, and what is the average friction force?</p>
+<p>Top: K + U_g = 0 + (60.0)(9.8)(20.0) J = 11,760 J. Bottom: ½(60.0)(17.0)² J = 8670 J.</p>
+<p>Dissipated: 11,760 J − 8670 J = 3.09 × 10³ J of thermal energy and sound.</p>
+<p>Friction: f(50.0 m) = 3090 J, so f = 61.8 N.</p>
+</div>
+<p>If you include the snow in the system, friction is internal and the total (K + U_g + thermal) stays constant. If you leave it out, friction is an external force doing negative work on the skier-Earth system. Either way, no energy disappears.</p>
+
+<h2>A checklist for energy problems</h2>
+<ol>
+<li>Name the system and the two moments you are comparing.</li>
+<li>Pick the zero of U_g (often the lowest point).</li>
+<li>Draw a bar chart: which energies exist at each moment? Is any work done by external forces?</li>
+<li>Write one equation term per bar, substitute, and solve. Put K only where the object moves.</li>
+<li>Check: does the answer depend on mass when it should not? Is every speed from a square root?</li>
+</ol>

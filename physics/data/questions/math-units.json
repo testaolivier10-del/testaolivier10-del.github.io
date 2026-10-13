@@ -1,0 +1,293 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "phys-math-units-1",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A toy car rolls 45 cm across a table. How far is that in meters?",
+   "numeric": {
+    "answer": 0.45,
+    "tol": 0.01,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4.5,
+      "why": "Value: you moved the decimal point one place. There are 100 cm in a meter, so move it two places: 45 cm = 0.45 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "1 m = 100 cm, so 45 cm × (1 m / 100 cm) = 0.45 m."
+   }
+  },
+  {
+   "id": "phys-math-units-2",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cyclist rides at 27 km/h. What is her speed in m/s?",
+   "numeric": {
+    "answer": 7.5,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 97.0,
+      "why": "Value: you multiplied by 3.6. A meter is smaller than a kilometer but a second is much shorter than an hour, so the number in m/s is smaller: divide by 3.6."
+     },
+     {
+      "value": 450.0,
+      "why": "Value: you changed hours to minutes but not to seconds. One hour is 3600 s, not 60."
+     }
+    ]
+   },
+   "why": {
+    "correct": "27 km/h × (1000 m / 1 km) × (1 h / 3600 s) = 27 000 m / 3600 s = 7.5 m/s."
+   }
+  },
+  {
+   "id": "phys-math-units-3",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A tennis ball has a mass of 58.5 g. What is its mass in kilograms, the SI unit?",
+   "numeric": {
+    "answer": 0.0585,
+    "tol": 0.0001,
+    "unit": "kg",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.585,
+      "why": "Value: you divided by 100. Kilo means 1000, so 58.5 g = 0.0585 kg."
+     }
+    ]
+   },
+   "why": {
+    "correct": "1 kg = 1000 g, so 58.5 g × (1 kg / 1000 g) = 0.0585 kg."
+   }
+  },
+  {
+   "id": "phys-math-units-4",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "A student records a length as 0.00620 m. How many significant figures does it have?",
+   "options": [
+    "6",
+    "5",
+    "3",
+    "2"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Leading zeros never count; the trailing zero after the decimal point does. 0.00620 = 6.20 × 10⁻³, three significant figures.",
+    "options": [
+     "This counts every digit, but the zeros in front of the 6 only show where the decimal point is.",
+     "This counts the zeros after the decimal point, which only place the 6.",
+     "Right: the leading zeros only place the decimal point; 6, 2 and the final 0 count.",
+     "The final zero comes after a nonzero digit and after the decimal point, so it was measured and counts."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-units-5",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A camera flash lasts 2.5 ms. How long is that in seconds? (Scientific notation such as 1.0e-3 is fine.)",
+   "numeric": {
+    "answer": 0.0025,
+    "tol": 0.0001,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.025,
+      "why": "Value: that is 2.5 × 10⁻², as if milli were centi. Milli means 10⁻³: 2.5 ms = 2.5 × 10⁻³ s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Milli means 10⁻³, so 2.5 ms = 2.5 × 10⁻³ s = 0.0025 s."
+   }
+  },
+  {
+   "id": "phys-math-units-6",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A sprinter runs 100.0 m in 12.47 s. A calculator shows 100.0 ÷ 12.47 = 8.019246191. How should the speed be reported?",
+   "options": [
+    "8.019 m/s",
+    "8.0 m/s",
+    "8.019246191 m/s",
+    "8 m/s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Multiplying or dividing: keep as many significant figures as the least precise value. 100.0 m and 12.47 s each have four, so 8.019 m/s.",
+    "options": [
+     "Right: both measurements have four significant figures, so the result keeps four.",
+     "Two figures throws away precision the measurements had; both data values have four.",
+     "A calculator does not know how precise the data are; extra digits claim precision nobody measured.",
+     "One figure throws away most of the precision of four-figure data."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-units-7",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A tabletop measures 1.2 m by 0.80 m. What is its area in square centimeters (cm²)?",
+   "numeric": {
+    "answer": 9600.0,
+    "tol": 100.0,
+    "unit": "cm^2",
+    "units": [
+     "cm2",
+     "cm²"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 96.0,
+      "why": "Value: you multiplied by 100 once. A square meter is 100 cm by 100 cm, so multiply by 100 twice (10 000)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Area = 1.2 m × 0.80 m = 0.96 m². Each meter is 100 cm, and a square meter is 100 cm × 100 cm = 10 000 cm², so 0.96 m² = 9600 cm² (two significant figures)."
+   }
+  },
+  {
+   "id": "phys-math-units-8",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which set lists the SI base units for length, mass and time?",
+   "options": [
+    "centimeter, gram, second",
+    "meter, gram, minute",
+    "meter, kilogram, second",
+    "kilometer, kilogram, hour"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The SI base units for length, mass and time are the meter (m), the kilogram (kg) and the second (s).",
+    "options": [
+     "These are older lab units. SI uses the meter and the kilogram.",
+     "SI mass is the kilogram, and SI time is the second, not the minute.",
+     "Right: m, kg and s. The kilogram is the one base unit with a prefix built in.",
+     "The kilometer and the hour are convenient but not base units; use m and s."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-units-9",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A quantity is found by dividing a value in m/s by a value in s. What unit does the result have?",
+   "options": [
+    "m",
+    "m/s²",
+    "m·s",
+    "s/m"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Units cancel and combine like numbers: (m/s) ÷ s = m/s².",
+    "options": [
+     "That would come from multiplying m/s by s, not dividing.",
+     "Right: (m/s) ÷ s = m/(s·s) = m/s², read \"meters per second squared\".",
+     "Dividing by seconds puts another s in the denominator, not the numerator.",
+     "This flips the whole unit; only one more second goes below the line."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-units-10",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bike ride lasts 1.5 hours. How many seconds is that?",
+   "numeric": {
+    "answer": 5400.0,
+    "tol": 100.0,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 90.0,
+      "why": "Value: 90 is the number of minutes. Each minute has 60 s, so multiply by 60 again (3600 s per hour)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "1.5 h × (3600 s / 1 h) = 5400 s (two significant figures; 5.4 × 10³ s)."
+   }
+  },
+  {
+   "id": "phys-math-units-11",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student measures a hallway as 12.4 m and another as 3.2 m and adds them on a calculator, which shows 15.6. How should the total length be reported?",
+   "options": [
+    "16 m",
+    "15.60 m",
+    "15 m",
+    "15.6 m"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For a sum or difference, keep the fewest decimal places of the data: 12.4 m + 3.2 m = 15.6 m.",
+    "options": [
+     "Adding follows decimal places, not the count of significant figures; both values are known to 0.1 m.",
+     "A second decimal place claims precision to 0.01 m that neither measurement had.",
+     "Dropping the decimal throws away the tenths both measurements had, and it also rounds the wrong way.",
+     "Right: when adding, the answer keeps the fewest decimal places of the data. Both have one decimal place."
+    ]
+   }
+  }
+ ]
+}

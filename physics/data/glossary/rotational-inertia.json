@@ -1,0 +1,11 @@
+{
+ "rotational-inertia": {
+  "def": "How hard it is to change an object’s rotation about an axis: I = Σmr² for point masses, in kg·m². It depends on the mass and how far that mass is from the axis. Also called moment of inertia."
+ },
+ "mass-distribution": {
+  "def": "How an object’s mass is spread out relative to an axis. The same mass placed farther from the axis gives a larger rotational inertia."
+ },
+ "parallel-axis": {
+  "def": "I = I_cm + Md²: the rotational inertia about any axis equals the inertia about a parallel axis through the center of mass plus the total mass times the square of the distance between the axes."
+ }
+}

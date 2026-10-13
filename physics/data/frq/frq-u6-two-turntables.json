@@ -1,0 +1,103 @@
+{
+ "id": "frq-u6-two-turntables",
+ "type": "qqt",
+ "points": 8,
+ "title": "Clay on two turntables",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "angular-momentum-conservation",
+  "rotational-inertia"
+ ],
+ "practices": [
+  "2.A",
+  "2.D",
+  "3.B",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "Clay on two turntables",
+  "text": "<p>Two turntables have the same mass M and the same radius R, and each turns freely on a frictionless vertical axle. Turntable A is a uniform solid disk (I<sub>A</sub> = ½MR², given). Turntable B is a ring with nearly all its mass at the rim (I<sub>B</sub> = MR², given). Both spin at the same angular velocity ω₀. A small lump of clay of mass m is dropped straight down onto each turntable and sticks at its rim. Model the clay as a point object.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "space": "lines",
+   "prompt": "After the clay sticks, which turntable spins faster, or do they spin at the same rate? <b>Justify</b> your answer without using equations.",
+   "rubric": [
+    {
+     "point": "Claims turntable B (the ring) spins faster after the clay sticks",
+     "accept": [
+      "B ends with the larger angular velocity"
+     ]
+    },
+    {
+     "point": "Reason: B starts with more angular momentum (larger rotational inertia at the same ω₀), and the same clay at the same radius adds the same rotational inertia, which is a smaller fraction of B’s total, so B’s angular velocity drops by a smaller fraction",
+     "accept": [
+      "the clay is a smaller share of B’s rotational inertia",
+      "B has more angular momentum to share with the same clay"
+     ]
+    }
+   ],
+   "sample": "Turntable B spins faster. Both spin at the same rate, but B’s mass is farther from the axle, so B has the larger rotational inertia and more angular momentum. The clay adds the same extra rotational inertia to each (same mass, same radius). That extra inertia is a smaller fraction of B’s total, so B slows by a smaller fraction, and it ends up turning faster."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "space": "lines",
+   "prompt": "A turntable has rotational inertia I = βMR², where β is a number that depends on its shape. <b>Derive</b> an expression for its angular velocity ω after the clay sticks, in terms of β, M, m and ω₀. Begin your derivation by writing a fundamental physics principle or an equation from the reference information.",
+   "rubric": [
+    {
+     "point": "Uses conservation of angular momentum for the turntable-clay system, with the condition (no net external torque about the axle: the axle is frictionless and the clay falls straight down, so it brings no angular momentum about the axle)",
+     "accept": [
+      "L_i = L_f because the net external torque about the axle is zero"
+     ]
+    },
+    {
+     "point": "Writes I_f = βMR² + mR² with the clay’s initial angular momentum about the axle equal to zero",
+     "accept": [
+      "βMR²ω₀ = (βMR² + mR²)ω"
+     ]
+    },
+    {
+     "point": "Correct answer",
+     "accept": [
+      "ω = βMω₀/(βM + m)",
+      "ω = ω₀/(1 + m/(βM))"
+     ]
+    }
+   ],
+   "sample": "System: turntable and clay. The axle is frictionless, and the clay falls straight down, parallel to the axle, so it brings no angular momentum about the axle; gravity and the forces during the landing are vertical and exert no torque about the vertical axle. The net external torque about the axle is zero, so L is constant. Before: L = βMR²ω₀. After: I = βMR² + mR². βMR²ω₀ = (βMR² + mR²)ω, so ω = βMω₀/(βM + m)."
+  },
+  {
+   "label": "c",
+   "points": 3,
+   "space": "lines",
+   "prompt": "<b>Explain</b> how your expression from part (b) supports or contradicts your answer to part (a).",
+   "rubric": [
+    {
+     "point": "Reads the dependence: ω = ω₀/(1 + m/(βM)), so a larger β gives a smaller m/(βM) and a larger final ω (closer to ω₀)",
+     "accept": [
+      "ω increases with β"
+     ]
+    },
+    {
+     "point": "Applies it: β = ½ for A and β = 1 for B, so ω_B > ω_A (e.g. ω_A = ω₀/(1 + 2m/M), ω_B = ω₀/(1 + m/M))",
+     "accept": [
+      "ω_B/ω_A = (1 + 2m/M)/(1 + m/M) > 1"
+     ]
+    },
+    {
+     "point": "States that this agrees with the claim in part (a) that B spins faster",
+     "accept": [
+      "consistent with part (a)"
+     ]
+    }
+   ],
+   "sample": "Rewrite the result as ω = ω₀/(1 + m/(βM)). A larger β makes m/(βM) smaller, so the denominator is closer to 1 and ω is closer to ω₀. Turntable A has β = ½: ω_A = ω₀/(1 + 2m/M). Turntable B has β = 1: ω_B = ω₀/(1 + m/M), which is larger. So B ends up spinning faster, which supports the claim in part (a)."
+  }
+ ]
+}

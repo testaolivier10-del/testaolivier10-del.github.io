@@ -1,0 +1,277 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "phys-math-symbols-1",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Solve d = vt for t.",
+   "options": [
+    "t = v / d",
+    "t = d / v",
+    "t = dv",
+    "t = d − v"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "d = vt. Divide both sides by v: d/v = t. Units check: m ÷ (m/s) = s.",
+    "options": [
+     "This flips the fraction. Check with units: (m/s) ÷ m = 1/s, not seconds.",
+     "Right: divide both sides by v, and v cancels on the right.",
+     "Multiplying by v does not undo multiplying by v; divide instead.",
+     "v multiplies t, so it is removed by dividing, not subtracting."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-symbols-2",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve x = x₀ + vt for v.",
+   "options": [
+    "v = (x − x₀) / t",
+    "v = x / t − x₀",
+    "v = (x + x₀) / t",
+    "v = t / (x − x₀)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Undo in reverse order: x − x₀ = vt, then v = (x − x₀)/t.",
+    "options": [
+     "Right: subtract x₀ from both sides, then divide both sides by t.",
+     "Dividing first leaves x₀/t, not x₀. Undo the addition before the multiplication.",
+     "x₀ was added on the right, so it is removed by subtracting it from both sides.",
+     "The fraction is upside down; check units: s ÷ m is not m/s."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-symbols-3",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A thermometer reads 14.5 °C at noon and 9.0 °C at 6 p.m. What is ΔT, the change in temperature? Give a signed value.",
+   "numeric": {
+    "answer": -5.5,
+    "tol": 0.1,
+    "unit": "°C",
+    "units": [
+     "C",
+     "deg C"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 5.5,
+      "why": "Value: the size is right but Δ means final minus initial, 9.0 − 14.5. The temperature fell, so ΔT is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Δ always means final minus initial: ΔT = 9.0 °C − 14.5 °C = −5.5 °C. The minus sign says the temperature went down."
+   }
+  },
+  {
+   "id": "phys-math-symbols-4",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A rolling ball starts at x₀ = 1.20 m and moves at a steady v = 0.45 m/s. Using x = x₀ + vt, where is it at t = 4.0 s?",
+   "numeric": {
+    "answer": 3.0,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.8,
+      "why": "Value: 1.8 m is how far it rolled. The equation adds the starting position x₀ = 1.20 m."
+     },
+     {
+      "value": 6.6,
+      "why": "Value: you added x₀ and v before multiplying by t. Only v is multiplied by t: x = x₀ + (vt)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Substitute with units: x = 1.20 m + (0.45 m/s)(4.0 s) = 1.20 m + 1.8 m = 3.0 m. 0.45 and 4.0 each have two significant figures."
+   }
+  },
+  {
+   "id": "phys-math-symbols-5",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A hiker walks at a steady 1.4 m/s. How long does she take to cover a 91 m bridge? Rearrange d = vt first.",
+   "numeric": {
+    "answer": 65.0,
+    "tol": 1.0,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 130.0,
+      "why": "Value: you multiplied. Solving d = vt for t gives t = d/v: divide the distance by the speed."
+     },
+     {
+      "value": 0.015,
+      "why": "Value: the fraction is upside down. t = d/v, so the distance goes on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "t = d/v = 91 m ÷ 1.4 m/s = 65 s."
+   }
+  },
+  {
+   "id": "phys-math-symbols-6",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student derives t = v / d for the time to cover distance d at speed v. Which check shows the expression is wrong?",
+   "options": [
+    "Its units are (m/s) ÷ m = 1/s, not seconds",
+    "It contains two symbols instead of one number",
+    "It does not include the starting position x₀",
+    "It gives a larger time for a faster speed, which is fine"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Units check: (m/s)/m = 1/s. A time must be in s, so the expression is upside down; t = d/v gives m ÷ (m/s) = s. It also gives less time for a faster speed, as it should.",
+    "options": [
+     "Right: a correct expression for a time must come out in seconds. Checking units catches upside-down fractions.",
+     "A symbolic answer is supposed to contain symbols; that is not the problem.",
+     "The question asks only for a time over a distance; x₀ is not needed.",
+     "A faster walker should take less time; this expression gives more, which is exactly what shows it is wrong."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-symbols-7",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "The density of a block is ρ = m/V, where m is its mass and V its volume. Which expression gives the volume?",
+   "options": [
+    "V = ρ / m",
+    "V = ρm",
+    "V = m − ρ",
+    "V = m / ρ"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "ρ = m/V → ρV = m → V = m/ρ. Units: kg ÷ (kg/m³) = m³.",
+    "options": [
+     "This is upside down. Units: (kg/m³) ÷ kg = 1/m³, not m³.",
+     "Units: (kg/m³)(kg) = kg²/m³, not a volume.",
+     "ρ and m are joined by division, so subtraction cannot separate them (and they have different units).",
+     "Right: multiply both sides by V, then divide both sides by ρ."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-symbols-8",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the symbol v₀, what does the subscript 0 tell you?",
+   "options": [
+    "The velocity is zero",
+    "v is multiplied by zero",
+    "It is the value at the starting time, t = 0",
+    "v is raised to the power 0"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A subscript is a label. v₀ (\"v naught\") is the velocity at the start; v with no subscript is usually the value at a later time t.",
+    "options": [
+     "v₀ can be any value; a subscript is a label, not a number to multiply or set equal.",
+     "A subscript never multiplies; it only names which value of v you mean.",
+     "Right: by convention a 0 subscript labels the initial value of the quantity.",
+     "A power is written as a superscript (v²), not a subscript."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-symbols-9",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve x = x₀ + vt for t, then find t when x = 9.0 m, x₀ = 3.0 m and v = 1.5 m/s.",
+   "numeric": {
+    "answer": 4.0,
+    "tol": 0.1,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 6.0,
+      "why": "Value: 6.0 s ignores the starting position. Subtract x₀ before dividing: t = (x − x₀)/v."
+     },
+     {
+      "value": 8.0,
+      "why": "Value: x₀ was added in the equation, so it is subtracted when you solve: t = (x − x₀)/v."
+     }
+    ]
+   },
+   "why": {
+    "correct": "t = (x − x₀)/v = (9.0 m − 3.0 m) ÷ 1.5 m/s = 4.0 s. Rearrange in symbols first, then substitute once."
+   }
+  },
+  {
+   "id": "phys-math-symbols-10",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A runner covers distance d at speed v₁, then the same distance again at speed v₂. Which expression gives the total time?",
+   "options": [
+    "d/v₁ + d/v₂",
+    "2d/(v₁ + v₂)",
+    "d(v₁ + v₂)",
+    "(v₁ + v₂)/d"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Write one equation per part: t₁ = d/v₁ and t₂ = d/v₂. Total time = d/v₁ + d/v₂. Units: m ÷ (m/s) = s for each term.",
+    "options": [
+     "Right: each part takes distance ÷ speed, and the times add.",
+     "This treats the trip as if it ran at the plain average of the two speeds, which is only true if each speed lasts the same time.",
+     "Units: m × (m/s) is not a time. Times come from dividing distance by speed.",
+     "Units: (m/s) ÷ m = 1/s, not a time; the fraction is upside down."
+    ]
+   }
+  }
+ ]
+}

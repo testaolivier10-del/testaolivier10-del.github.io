@@ -1,0 +1,12 @@
+{
+ "slope-and-area": {
+  "file": "figures/slope-and-area.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two graphs. Left: distance walked in meters against time in seconds, a straight line through the origin to 20 m at 10 s. A dashed triangle between the points (2 s, 4 m) and (8 s, 16 m) shows a run of 6 s and a rise of 12 m, so the slope is 12 m divided by 6 s = 2 m/s; the units of a slope are the y unit over the x unit. Right: speed in m/s against time, a horizontal line at 3 m/s. The rectangle under it from 2 s to 8 s is shaded: its area is 3 m/s times 6 s = 18 m, the distance covered; the units of an area are the y unit times the x unit."
+ }
+}

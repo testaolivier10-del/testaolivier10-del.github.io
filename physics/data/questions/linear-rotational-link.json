@@ -1,0 +1,508 @@
+{
+ "stimuli": {
+  "linear-rotational-link-s1": {
+   "kind": "diagram",
+   "title": "A bicycle wheel on a stand",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 270\" role=\"img\" aria-label=\"A bicycle wheel turning on a fixed axle on a stand, with the valve 0.33 m from the axle and a reflector 0.20 m from the axle on the same spoke line, turning at 12 rad/s and then slowing steadily to rest in 6.0 s\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"270\" fill=\"#FFFFFF\"/><rect x=\"20\" y=\"255\" width=\"310\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"20\" y1=\"255\" x2=\"330\" y2=\"255\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"24\" y1=\"255\" x2=\"16\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"36\" y1=\"255\" x2=\"28\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"48\" y1=\"255\" x2=\"40\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"255\" x2=\"52\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"72\" y1=\"255\" x2=\"64\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"84\" y1=\"255\" x2=\"76\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"96\" y1=\"255\" x2=\"88\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"108\" y1=\"255\" x2=\"100\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"120\" y1=\"255\" x2=\"112\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"132\" y1=\"255\" x2=\"124\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"144\" y1=\"255\" x2=\"136\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"156\" y1=\"255\" x2=\"148\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"168\" y1=\"255\" x2=\"160\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"180\" y1=\"255\" x2=\"172\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"192\" y1=\"255\" x2=\"184\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"204\" y1=\"255\" x2=\"196\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"216\" y1=\"255\" x2=\"208\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"228\" y1=\"255\" x2=\"220\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"240\" y1=\"255\" x2=\"232\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"252\" y1=\"255\" x2=\"244\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"264\" y1=\"255\" x2=\"256\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"276\" y1=\"255\" x2=\"268\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"288\" y1=\"255\" x2=\"280\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"300\" y1=\"255\" x2=\"292\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"312\" y1=\"255\" x2=\"304\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"324\" y1=\"255\" x2=\"316\" y2=\"264\" stroke=\"#5A6268\" stroke-width=\"1\"/><polygon points=\"164,130 110,255 126,255 176,150\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"170\" cy=\"130\" r=\"105\" fill=\"#3A4442\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><circle cx=\"170\" cy=\"130\" r=\"86.1\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><line x1=\"182.6\" y1=\"130\" x2=\"256.1\" y2=\"130\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"180.9\" y1=\"136.3\" x2=\"244.6\" y2=\"173\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"176.3\" y1=\"140.9\" x2=\"213.1\" y2=\"204.6\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"170\" y1=\"142.6\" x2=\"170\" y2=\"216.1\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"163.7\" y1=\"140.9\" x2=\"127\" y2=\"204.6\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"159.1\" y1=\"136.3\" x2=\"95.4\" y2=\"173\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"157.4\" y1=\"130\" x2=\"83.9\" y2=\"130\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"159.1\" y1=\"123.7\" x2=\"95.4\" y2=\"87\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"163.7\" y1=\"119.1\" x2=\"126.9\" y2=\"55.4\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"170\" y1=\"117.4\" x2=\"170\" y2=\"43.9\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"176.3\" y1=\"119.1\" x2=\"213.1\" y2=\"55.4\" stroke=\"#8E989E\" stroke-width=\"3\"/><line x1=\"180.9\" y1=\"123.7\" x2=\"244.6\" y2=\"86.9\" stroke=\"#8E989E\" stroke-width=\"3\"/><circle cx=\"170\" cy=\"130\" r=\"12.6\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"170\" cy=\"130\" r=\"3\" fill=\"#1F2A28\"/><rect x=\"234.2\" y=\"67\" width=\"10\" height=\"10\" rx=\"2\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"249.2\" y=\"64\" font-size=\"12\" fill=\"#1F2A28\" font-weight=\"bold\">valve</text><rect x=\"202.8\" y=\"90.9\" width=\"18\" height=\"8\" rx=\"2\" fill=\"#D55E00\" stroke=\"#1F2A28\" stroke-width=\"1.2\"/><text x=\"199.8\" y=\"84.9\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"end\" font-weight=\"bold\">reflector</text><path d=\"M110.5,26.9 A119 119 0 0 0 55.2,161.2\" fill=\"none\" stroke=\"#B07A00\" stroke-width=\"2.5\"/><polygon points=\"58.2,170.7 49.9,162.8 60.4,159.5\" fill=\"#B07A00\"/><rect x=\"330\" y=\"30\" width=\"215\" height=\"210\" rx=\"8\" fill=\"#EEF1EF\" stroke=\"#C9CFCC\"/><text x=\"342\" y=\"56\" font-size=\"13\" fill=\"#1F2A28\">Wheel on a fixed axle (bike</text><text x=\"342\" y=\"81\" font-size=\"13\" fill=\"#1F2A28\">upside down on a stand).</text><text x=\"342\" y=\"106\" font-size=\"13\" fill=\"#1F2A28\">Axle to valve: 0.33 m</text><text x=\"342\" y=\"131\" font-size=\"13\" fill=\"#1F2A28\">Axle to reflector: 0.20 m</text><text x=\"342\" y=\"156\" font-size=\"13\" fill=\"#1F2A28\">Turning at 12 rad/s, then</text><text x=\"342\" y=\"181\" font-size=\"13\" fill=\"#1F2A28\">slows steadily to rest</text><text x=\"342\" y=\"206\" font-size=\"13\" fill=\"#1F2A28\">in 6.0 s.</text></svg>"
+  },
+  "linear-rotational-link-s2": {
+   "kind": "table",
+   "title": "String pulled off a spool",
+   "text": "<p>A string is wound on a spool of radius 0.025 m that turns on a fixed axle. A student pulls the string so it comes off the spool without slipping. A rotation sensor records the angle the spool has turned, starting from rest.</p>",
+   "table": {
+    "caption": "Angle turned by the spool",
+    "cols": [
+     "Time (s)",
+     "Angle (rad)"
+    ],
+    "rows": [
+     [
+      "0.0",
+      "0.0"
+     ],
+     [
+      "1.0",
+      "2.0"
+     ],
+     [
+      "2.0",
+      "8.0"
+     ],
+     [
+      "3.0",
+      "18.0"
+     ],
+     [
+      "4.0",
+      "32.0"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-linear-rotational-link-1",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-rotational-link-s1",
+   "q": "What is the speed of the valve while the wheel turns at 12 rad/s?",
+   "numeric": {
+    "answer": 4,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 36,
+      "rel": 0.015,
+      "why": "Value: that divides ω by r. Speed is v = rω: multiply."
+     },
+     {
+      "value": 2.4,
+      "rel": 0.015,
+      "why": "Value: that uses the reflector’s distance, 0.20 m. The valve is 0.33 m from the axle."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v = rω = (0.33 m)(12 rad/s) = 3.96 m/s, about 4.0 m/s. The radian drops out of the unit."
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-2",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-rotational-link-s1",
+   "q": "Compared with the valve, the reflector has",
+   "options": [
+    "the same angular velocity and a smaller speed",
+    "the same speed and a smaller angular velocity",
+    "a larger angular velocity and the same speed",
+    "the same angular velocity and the same speed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The wheel is rigid, so both share ω = 12 rad/s. Speed is v = rω, so the reflector (0.20 m) moves at 2.4 m/s and the valve (0.33 m) at about 4.0 m/s.",
+    "options": [
+     "Right: one ω for the whole wheel, and v = rω is smaller at smaller r.",
+     "Every point on the wheel shares ω; it is the speed that depends on r.",
+     "Points closer to the axle do not turn faster; ω is shared.",
+     "The reflector traces a smaller circle in the same time, so it moves more slowly."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-3",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-rotational-link-s1",
+   "q": "While the wheel slows steadily to rest, what is the size of the valve’s tangential acceleration?",
+   "numeric": {
+    "answer": 0.66,
+    "tol": 0.01,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "units": [
+     "m/s²"
+    ],
+    "mistakes": [
+     {
+      "value": 48,
+      "rel": 0.015,
+      "why": "Value: that is the centripetal acceleration rω² at 12 rad/s. The tangential acceleration is rα."
+     },
+     {
+      "value": 2,
+      "rel": 0.015,
+      "why": "Value: that is the angular acceleration in rad/s². Multiply by r to get the tangential acceleration."
+     }
+    ]
+   },
+   "why": {
+    "correct": "α = Δω/Δt = 12 rad/s ÷ 6.0 s = 2.0 rad/s² in size, so a_T = rα = (0.33 m)(2.0 rad/s²) = 0.66 m/s²."
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-4",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "linear-rotational-link-s1",
+   "q": "How far does the valve travel along its circle while the wheel slows from 12 rad/s to rest?",
+   "numeric": {
+    "answer": 12,
+    "tol": 1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 24,
+      "rel": 0.015,
+      "why": "Value: that uses 12 rad/s for the whole 6.0 s. The wheel slows steadily, so its average ω is 6.0 rad/s."
+     },
+     {
+      "value": 36,
+      "rel": 0.015,
+      "why": "Value: that is the angle turned, in radians. Multiply by r for the distance: s = rθ."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With steady slowing, the average ω is (12 + 0)/2 = 6.0 rad/s, so Δθ = (6.0 rad/s)(6.0 s) = 36 rad and s = rθ = (0.33 m)(36 rad) = 11.9 m, about 12 m."
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-5",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-rotational-link-s1",
+   "q": "If the wheel turned at 24 rad/s instead of 12 rad/s, the valve’s speed would be",
+   "options": [
+    "2 times as large",
+    "4 times as large",
+    "the same",
+    "half as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "v = rω with r fixed at 0.33 m, so v ∝ ω: doubling ω doubles v (to about 7.9 m/s).",
+    "options": [
+     "Right: v = rω, so v is proportional to ω at fixed r.",
+     "v = rω has no square; doubling ω doubles v.",
+     "The valve stays at 0.33 m, so a larger ω means a larger speed.",
+     "A faster wheel moves the valve faster, not slower."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-6",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-rotational-link-s2",
+   "q": "How much string has come off the spool after 4.0 s?",
+   "numeric": {
+    "answer": 0.8,
+    "tol": 0.01,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1300,
+      "rel": 0.015,
+      "why": "Value: that divides the angle by r. The length is s = rθ."
+     },
+     {
+      "value": 5,
+      "rel": 0.015,
+      "why": "Value: that treats the 32.0 rad as 32 revolutions. The sensor gives radians, so s = rθ directly."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The string leaves the rim, so its length equals the distance along the rim: s = rθ = (0.025 m)(32.0 rad) = 0.80 m."
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-7",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-rotational-link-s2",
+   "q": "The data fit θ = (2.0 rad/s²)t². What is the string’s acceleration?",
+   "numeric": {
+    "answer": 0.1,
+    "tol": 0.01,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "units": [
+     "m/s²"
+    ],
+    "mistakes": [
+     {
+      "value": 0.05,
+      "rel": 0.015,
+      "why": "Value: that uses 2.0 rad/s² as α. Compare with θ = ½αt²: ½α = 2.0 rad/s², so α = 4.0 rad/s²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "θ = ½αt² = (2.0 rad/s²)t² gives α = 4.0 rad/s². The string’s acceleration equals the rim’s tangential acceleration: a = rα = (0.025 m)(4.0 rad/s²) = 0.10 m/s²."
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-8",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-rotational-link-s2",
+   "q": "Which graph of the string’s speed against time fits the data?",
+   "options": [
+    "A straight line rising from the origin",
+    "A horizontal line above zero",
+    "A curve that gets steeper with time",
+    "A straight line falling to zero"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "θ ∝ t² means constant α from rest, so ω = αt and the string’s speed v = rω = rαt: a straight line through the origin with slope rα.",
+    "options": [
+     "Right: constant α gives constant a = rα, so v grows steadily from zero.",
+     "A flat speed graph means no acceleration, but the angle grows faster each second.",
+     "That would need a growing acceleration; here α is constant.",
+     "The spool starts from rest and speeds up."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-9",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-rotational-link-s2",
+   "q": "The string comes off the spool without slipping. Which two quantities are equal?",
+   "options": [
+    "The string’s speed and the speed of the spool’s rim",
+    "The string’s speed and the spool’s angular velocity",
+    "The string’s acceleration and the spool’s angular acceleration",
+    "The string’s length and the spool’s angle"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Where the string leaves the rim they move together, so the string’s speed equals the rim’s speed rω, its acceleration equals rα, and its length equals rθ.",
+    "options": [
+     "Right: no slipping means the string and the rim move together where they touch.",
+     "These have different units (m/s and rad/s); they are linked by v = rω, not equal.",
+     "Different units again: a = rα links them.",
+     "The length pulled off is s = rθ, not θ itself."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-10",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The tip of a ceiling-fan blade is 0.60 m from the axis and moves at 9.0 m/s. What is the fan’s angular velocity?",
+   "numeric": {
+    "answer": 15,
+    "tol": 1,
+    "unit": "rad/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 5.4,
+      "rel": 0.015,
+      "why": "Value: that multiplies v by r. From v = rω, ω = v/r."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ω = v/r = (9.0 m/s)/(0.60 m) = 15 rad/s."
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-11",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In s = rθ and v = rω, the angle and angular velocity have to be in radians because",
+   "options": [
+    "the radian is defined so that distance along a circle equals rθ",
+    "degrees are not SI units of length",
+    "the equations are on the equations sheet in radians",
+    "radians make the numbers smaller"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "θ in radians is (distance along the circle)/r, so s = rθ is just the definition rearranged. In degrees you would need an extra factor of π/180.",
+    "options": [
+     "Right: a radian is the angle where the distance equals the radius.",
+     "Neither radians nor degrees are units of length; the reason is how the radian is defined.",
+     "The sheet uses radians because of the definition, not the reverse.",
+     "The size of the numbers has nothing to do with it."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-12",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A Ferris wheel of radius 15 m makes one revolution every 60 s. What is the speed of a rider?",
+   "numeric": {
+    "answer": 1.6,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.25,
+      "rel": 0.015,
+      "why": "Value: that divides r by the period. In one period the rider covers the whole circumference, 2πr."
+     },
+     {
+      "value": 94,
+      "rel": 0.015,
+      "why": "Value: that is the circumference, a distance. Divide by the 60 s period."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ω = 2π rad / 60 s = 0.105 rad/s, so v = rω = (15 m)(0.105 rad/s) = 1.57 m/s, about 1.6 m/s."
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-13",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A belt joins a small pulley (radius 0.10 m) to a large pulley (radius 0.30 m) without slipping. The small pulley turns at 30 rad/s. How fast does the large pulley turn?",
+   "options": [
+    "10 rad/s",
+    "90 rad/s",
+    "30 rad/s",
+    "3.3 rad/s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The belt moves at one speed, which equals each rim’s speed: v = (0.10 m)(30 rad/s) = 3.0 m/s. The large pulley then turns at ω = v/r = 3.0/0.30 = 10 rad/s.",
+    "options": [
+     "Right: the belt gives both rims the same speed, 3.0 m/s, so ω = 3.0/0.30.",
+     "This multiplies by the ratio of radii the wrong way; the larger pulley turns more slowly.",
+     "The pulleys are not one rigid body; the belt links their rim speeds, not their ω.",
+     "This divides by 9, as if speed scaled with r². Rim speed v = rω is linear in r."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-14",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A point on the rim of a grinding wheel of radius 0.40 m has a tangential acceleration of 2.0 m/s². What is the wheel’s angular acceleration?",
+   "numeric": {
+    "answer": 5,
+    "tol": 0.1,
+    "unit": "rad/s^2",
+    "sigfigs": 2,
+    "units": [
+     "rad/s²"
+    ],
+    "mistakes": [
+     {
+      "value": 0.8,
+      "rel": 0.015,
+      "why": "Value: that multiplies a_T by r. From a_T = rα, α = a_T/r."
+     }
+    ]
+   },
+   "why": {
+    "correct": "α = a_T/r = (2.0 m/s²)/(0.40 m) = 5.0 rad/s²."
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-15",
+   "type": "predict",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A turntable spins at a constant angular velocity. A beetle walks slowly from the rim straight in to a point halfway to the center. Predict how each quantity for the beetle changes.",
+   "variables": [
+    {
+     "name": "Its angular velocity",
+     "answer": "none",
+     "why": "The beetle turns with the turntable, which keeps the same ω at every radius."
+    },
+    {
+     "name": "Its speed around the circle",
+     "answer": "down",
+     "why": "v = rω, and r halves while ω stays the same, so the speed halves."
+    },
+    {
+     "name": "Its centripetal acceleration",
+     "answer": "down",
+     "why": "a_c = v²/r = rω², so at the same ω it is proportional to r and halves."
+    }
+   ],
+   "why": {
+    "correct": "ω is shared by the whole turntable. Speed v = rω and centripetal acceleration rω² are both proportional to r, so both fall as the beetle moves inward."
+   }
+  },
+  {
+   "id": "phys-linear-rotational-link-16",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "linear-rotational-link",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A turntable speeds up with constant angular acceleration. A point at distance r from the axis has tangential acceleration a. A point at distance 3r has tangential acceleration",
+   "options": [
+    "3a",
+    "9a",
+    "a",
+    "a/3"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every point shares α, and a_T = rα, so tripling r triples the tangential acceleration.",
+    "options": [
+     "Right: a_T = rα with α shared, so a_T ∝ r.",
+     "a_T = rα has no square in r.",
+     "α is shared, but a_T also depends on r.",
+     "Points farther out speed up more, not less."
+    ]
+   }
+  }
+ ]
+}

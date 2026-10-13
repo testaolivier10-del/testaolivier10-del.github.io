@@ -1,0 +1,505 @@
+{
+ "stimuli": {
+  "shm-energy-s1": {
+   "kind": "diagram",
+   "title": "A glider on an air track",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 180\" role=\"img\" aria-label=\"A glider of mass 0.50 kg on a level air track, attached to a spring of constant 50 N/m fixed to a wall. Dashed lines mark equilibrium at x = 0 and the turning points at x = −0.12 m and x = +0.12 m.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"180\" fill=\"#FFFFFF\"/><rect x=\"28\" y=\"40\" width=\"12\" height=\"80\" fill=\"#EEF1EF\"/><line x1=\"40\" y1=\"40\" x2=\"40\" y2=\"120\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"40\" y1=\"44\" x2=\"30\" y2=\"52\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"40\" y1=\"54\" x2=\"30\" y2=\"62\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"40\" y1=\"64\" x2=\"30\" y2=\"72\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"40\" y1=\"74\" x2=\"30\" y2=\"82\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"40\" y1=\"84\" x2=\"30\" y2=\"92\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"40\" y1=\"94\" x2=\"30\" y2=\"102\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"40\" y1=\"104\" x2=\"30\" y2=\"112\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"40\" y1=\"114\" x2=\"30\" y2=\"122\" stroke=\"#5A6268\" stroke-width=\"1\"/><rect x=\"40\" y=\"120\" width=\"480\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"40\" y1=\"120\" x2=\"520\" y2=\"120\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"44\" y1=\"120\" x2=\"36\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"56\" y1=\"120\" x2=\"48\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"68\" y1=\"120\" x2=\"60\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"80\" y1=\"120\" x2=\"72\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"92\" y1=\"120\" x2=\"84\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"104\" y1=\"120\" x2=\"96\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"116\" y1=\"120\" x2=\"108\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"128\" y1=\"120\" x2=\"120\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"140\" y1=\"120\" x2=\"132\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"152\" y1=\"120\" x2=\"144\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"164\" y1=\"120\" x2=\"156\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"176\" y1=\"120\" x2=\"168\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"188\" y1=\"120\" x2=\"180\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"200\" y1=\"120\" x2=\"192\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"212\" y1=\"120\" x2=\"204\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"224\" y1=\"120\" x2=\"216\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"236\" y1=\"120\" x2=\"228\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"248\" y1=\"120\" x2=\"240\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"260\" y1=\"120\" x2=\"252\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"272\" y1=\"120\" x2=\"264\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"284\" y1=\"120\" x2=\"276\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"296\" y1=\"120\" x2=\"288\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"308\" y1=\"120\" x2=\"300\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"320\" y1=\"120\" x2=\"312\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"332\" y1=\"120\" x2=\"324\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"344\" y1=\"120\" x2=\"336\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"356\" y1=\"120\" x2=\"348\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"368\" y1=\"120\" x2=\"360\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"380\" y1=\"120\" x2=\"372\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"392\" y1=\"120\" x2=\"384\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"404\" y1=\"120\" x2=\"396\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"416\" y1=\"120\" x2=\"408\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"428\" y1=\"120\" x2=\"420\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"440\" y1=\"120\" x2=\"432\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"452\" y1=\"120\" x2=\"444\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"464\" y1=\"120\" x2=\"456\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"476\" y1=\"120\" x2=\"468\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"488\" y1=\"120\" x2=\"480\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"500\" y1=\"120\" x2=\"492\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"512\" y1=\"120\" x2=\"504\" y2=\"129\" stroke=\"#5A6268\" stroke-width=\"1\"/><polyline points=\"40,88 50,88 54.7,80 64.2,96 73.6,80 83.1,96 92.5,80 101.9,96 111.4,80 120.8,96 130.3,80 139.7,96 149.2,80 158.6,96 168.1,80 177.5,96 186.9,80 196.4,96 205.8,80 215.3,96 220,88 230,88\" fill=\"none\" stroke=\"#CC79A7\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><rect x=\"230\" y=\"72\" width=\"70\" height=\"34\" rx=\"5\" fill=\"#E6E0D2\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"245\" cy=\"113\" r=\"7\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"285\" cy=\"113\" r=\"7\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"265\" y=\"94\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">m</text><line x1=\"265\" y1=\"30\" x2=\"265\" y2=\"150\" stroke=\"#734200\" stroke-width=\"1.5\" stroke-dasharray=\"6 5\"/><text x=\"265\" y=\"166\" font-size=\"12\" fill=\"#734200\" text-anchor=\"middle\">x = 0</text><line x1=\"385\" y1=\"30\" x2=\"385\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><text x=\"385\" y=\"166\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">x = +0.12 m</text><line x1=\"145\" y1=\"30\" x2=\"145\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><text x=\"145\" y=\"166\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">x = −0.12 m</text><text x=\"300\" y=\"24\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\">k = 50 N/m, m = 0.50 kg</text></svg><p>The glider is pulled to x = +0.12 m and released from rest. Friction is negligible. The system is the glider and the spring.</p>"
+  },
+  "shm-energy-s2": {
+   "kind": "table",
+   "title": "Energy of an oscillating block",
+   "text": "<p>A block oscillates on a horizontal spring with negligible friction. Sensors record its kinetic energy and the spring's potential energy at four moments.</p>",
+   "table": {
+    "caption": "Energies at four moments",
+    "cols": [
+     "Moment",
+     "Kinetic energy K (J)",
+     "Spring potential energy U_s (J)"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.00",
+      "0.36"
+     ],
+     [
+      "2",
+      "0.27",
+      "0.09"
+     ],
+     [
+      "3",
+      "0.36",
+      "0.00"
+     ],
+     [
+      "4",
+      "?",
+      "0.16"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-shm-energy-1",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "shm-energy-s1",
+   "q": "What is the total mechanical energy of the glider-spring system? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.36,
+    "tol": 0.01,
+    "unit": "J",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.72,
+      "rel": 0.02,
+      "why": "Value: you left out the ½. Spring potential energy is U_s = ½kx²."
+     },
+     {
+      "value": 3,
+      "rel": 0.02,
+      "why": "Value: you did not square the displacement. U_s = ½k(Δx)²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At release the glider is at rest, so all the energy is in the spring: E = ½kA² = ½(50 N/m)(0.12 m)² = 0.36 J. With no friction this total stays the same throughout."
+   }
+  },
+  {
+   "id": "phys-shm-energy-2",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "shm-energy-s1",
+   "q": "What is the glider's speed as it passes x = 0? Give the value and its unit.",
+   "numeric": {
+    "answer": 1.2,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 1.4,
+      "rel": 0.02,
+      "why": "Value: that is v². Take the square root: v = √(2K/m)."
+     },
+     {
+      "value": 0.85,
+      "rel": 0.02,
+      "why": "Value: you used K = mv² without the ½. ½mv² = 0.36 J gives v = √(2 × 0.36 J / 0.50 kg)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At x = 0 the spring has no energy, so K = E = 0.36 J. ½mv² = 0.36 J gives v = √(2 × 0.36 J / 0.50 kg) = √1.44 m/s = 1.2 m/s."
+   }
+  },
+  {
+   "id": "phys-shm-energy-3",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "shm-energy-s1",
+   "q": "What is the glider's kinetic energy at x = +0.060 m? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.27,
+    "tol": 0.01,
+    "unit": "J",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.09,
+      "rel": 0.02,
+      "why": "Value: that is the spring's potential energy at x = 0.060 m. The kinetic energy is the rest of the total: K = E − U_s."
+     },
+     {
+      "value": 0.18,
+      "rel": 0.02,
+      "why": "Value: halfway in position is not halfway in energy. U_s = ½kx² goes as x², so at x = A/2 the spring holds a quarter of E."
+     }
+    ]
+   },
+   "why": {
+    "correct": "U_s = ½(50 N/m)(0.060 m)² = 0.090 J. K = E − U_s = 0.36 J − 0.09 J = 0.27 J: three quarters of the energy is kinetic at half the amplitude."
+   }
+  },
+  {
+   "id": "phys-shm-energy-4",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "shm-energy-s1",
+   "q": "Which statement explains why the glider's speed is the same each time it passes x = 0?",
+   "options": [
+    "With no friction, the system's energy stays fixed, and at x = 0 it is all kinetic",
+    "The spring force at x = 0 is zero, so the glider's speed at that point stays fixed",
+    "The glider's momentum is conserved, because the spring force is internal to the glider",
+    "The period does not depend on the amplitude, so each pass at x = 0 takes the same time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With no friction, the only force doing work on the glider is the spring force, which is internal to the glider-spring system and conservative. So the system's mechanical energy is constant, and at x = 0 all of it is kinetic energy.",
+    "options": [
+     "Right: energy conservation with its condition (no nonconservative work).",
+     "Zero force at that instant does not explain why the speed is the same on every pass; the energy argument does.",
+     "The spring (attached to a wall) exerts an external force on the glider, and the glider's momentum keeps changing direction.",
+     "The period is unrelated; the speed at x = 0 depends on the energy, ½kA²."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-energy-5",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "shm-energy-s2",
+   "q": "What is the kinetic energy of the block at moment 4? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.2,
+    "tol": 0.01,
+    "unit": "J",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.16,
+      "rel": 0.02,
+      "why": "Value: that is the spring's potential energy. K is the rest of the 0.36 J total."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Every row adds to 0.36 J, the constant total. K = 0.36 J − 0.16 J = 0.20 J."
+   }
+  },
+  {
+   "id": "phys-shm-energy-6",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "shm-energy-s2",
+   "q": "At which moment is the block at its equilibrium position?",
+   "options": [
+    "Moment 3",
+    "Moment 1",
+    "Moment 2",
+    "Moment 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At equilibrium the spring is at its relaxed length, so U_s = 0 and all the energy is kinetic. That is moment 3.",
+    "options": [
+     "Right: U_s = 0 means x = 0.",
+     "At moment 1 K = 0: the block is at a turning point.",
+     "At moment 2 the spring still holds 0.09 J, so the block is displaced.",
+     "At moment 4 the spring holds 0.16 J."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-energy-7",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "shm-energy-s2",
+   "q": "At moment 2, what is the block's displacement as a fraction of the amplitude A?",
+   "options": [
+    "A/2",
+    "A/4",
+    "3A/4",
+    "A/√2"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "U_s = ½kx² and the total is ½kA². At moment 2, U_s/E = 0.09/0.36 = 1/4, so x²/A² = 1/4 and x = A/2.",
+    "options": [
+     "Right: a quarter of the energy in the spring means half the amplitude.",
+     "This treats U_s as proportional to x; it goes as x².",
+     "This uses the kinetic share (3/4) as if it gave the position.",
+     "A/√2 is where the energy splits half and half."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-energy-8",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "shm-energy-s2",
+   "q": "The block is stopped and set oscillating again with twice the amplitude. What is the total energy now?",
+   "options": [
+    "1.44 J",
+    "0.72 J",
+    "0.36 J",
+    "0.18 J"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "E = ½kA². Doubling A multiplies E by 2² = 4: 4 × 0.36 J = 1.44 J.",
+    "options": [
+     "Right: total energy goes as the amplitude squared.",
+     "This doubles E; it should be multiplied by 4 because E depends on A².",
+     "The total energy depends on the amplitude; it is not fixed by the spring.",
+     "A larger amplitude stores more energy, not less."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-energy-9",
+   "type": "predict",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A block on a horizontal spring oscillates with amplitude A. The same block is set oscillating on a spring with four times the spring constant, with the same amplitude A. Predict how each quantity compares with the first motion.",
+   "variables": [
+    {
+     "name": "Total mechanical energy",
+     "answer": "up",
+     "why": "E = ½kA²: four times k at the same A gives four times the energy."
+    },
+    {
+     "name": "Period",
+     "answer": "down",
+     "why": "T = 2π√(m/k): four times k halves the period."
+    },
+    {
+     "name": "Mass of the block",
+     "answer": "none",
+     "why": "Nothing about the block changed."
+    }
+   ],
+   "why": {
+    "correct": "Total energy depends on k and A; the period depends on m and k."
+   }
+  },
+  {
+   "id": "phys-shm-energy-10",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A pendulum is released from rest at a small angle. Which describes the energy of the pendulum-Earth system as the bob swings from the release point to the bottom?",
+   "options": [
+    "U_g decreases and K increases by the same amount",
+    "Kinetic energy and gravitational potential energy both increase",
+    "The total energy decreases, because the bob speeds up and uses energy",
+    "Gravitational potential energy stays the same, because the bob's mass is unchanged"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The bob drops in height, so U_g decreases; with no air resistance and a string that does no work (it pulls at right angles to the motion), the total is constant, so K rises by exactly that amount.",
+    "options": [
+     "Right: a constant total means the gain in K equals the loss in U_g.",
+     "With no energy coming in from outside the system, both cannot increase.",
+     "Speeding up is energy changing form, not energy being used up.",
+     "U_g = mgy depends on height, and the bob gets lower."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-energy-11",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "In SHM with no friction, which quantity has the same value at every point in the motion?",
+   "options": [
+    "The total mechanical energy",
+    "The kinetic energy of the object",
+    "The potential energy of the system",
+    "The speed of the object"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With no nonconservative work done, the mechanical energy K + U stays constant; only how it is split changes.",
+    "options": [
+     "Right: E = K + U is constant.",
+     "K goes from zero at the ends to its largest value at equilibrium.",
+     "U is largest at the ends and smallest at equilibrium.",
+     "The speed changes from zero to its top value and back."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-energy-12",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 3,
+   "q": "A 0.20 kg block on a spring with k = 80 N/m passes x = 0 at 0.60 m/s. What is the amplitude of its motion? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.03,
+    "tol": 0.001,
+    "unit": "m",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.0009,
+      "rel": 0.02,
+      "why": "Value: you did not take the square root. ½kA² = ½mv² gives A = v√(m/k)."
+     },
+     {
+      "value": 12,
+      "rel": 0.02,
+      "why": "Value: you put k on top. A = v√(m/k)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Energy at x = 0 (all kinetic) equals energy at x = A (all spring): ½mv² = ½kA², so A = v√(m/k) = (0.60 m/s)√(0.20 kg / 80 N/m) = (0.60 m/s)(0.050 s) = 0.030 m."
+   }
+  },
+  {
+   "id": "phys-shm-energy-13",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Where in a block's oscillation are its kinetic energy and the spring's potential energy equal?",
+   "options": [
+    "At x = ±A/√2",
+    "At x = ±A/2, halfway out",
+    "At x = 0, the equilibrium position",
+    "At x = ±A, the turning points"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equal shares means U_s = E/2: ½kx² = ½(½kA²), so x² = A²/2 and x = ±A/√2 ≈ ±0.71A.",
+    "options": [
+     "Right: half the energy in the spring means x² = A²/2.",
+     "At A/2 the spring holds only a quarter of the energy, because U_s goes as x².",
+     "At x = 0 all the energy is kinetic.",
+     "At the turning points all the energy is in the spring."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-energy-14",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says: \"At the turning points of a mass on a spring, the energy is zero, because the mass is not moving.\" What is the error?",
+   "options": [
+    "K is zero there, but the spring holds the energy as U_s",
+    "The mass is moving at the turning points, so its kinetic energy is not zero",
+    "The energy is zero at equilibrium instead, because the spring is relaxed there",
+    "There is no error: the energy drops to zero and is restored by the spring"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At x = ±A the kinetic energy is zero, but the spring is stretched or compressed the most, so U_s = ½kA², the whole total.",
+    "options": [
+     "Right: zero kinetic energy is not zero total energy.",
+     "At the turning points the mass is momentarily at rest, so K is zero.",
+     "At equilibrium U_s = 0, but the mass is moving fastest, so K holds all the energy.",
+     "The total mechanical energy is constant with no friction; it never drops to zero."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-energy-15",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 0.30 kg pendulum bob is released from rest 0.080 m above its lowest point. What is its speed at the lowest point? Use g = 9.8 m/s². Give the value and its unit.",
+   "numeric": {
+    "answer": 1.3,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 1.6,
+      "rel": 0.02,
+      "why": "Value: that is v². Take the square root: v = √(2gΔy)."
+     },
+     {
+      "value": 0.89,
+      "rel": 0.02,
+      "why": "Value: you lost the factor of 2. mgΔy = ½mv² gives v = √(2gΔy)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For the bob-Earth system with negligible air resistance: mgΔy = ½mv², so v = √(2gΔy) = √(2 × 9.8 m/s² × 0.080 m) = 1.25 m/s ≈ 1.3 m/s. The mass cancels."
+   }
+  },
+  {
+   "id": "phys-shm-energy-16",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "The amplitude of a block's oscillation on a spring is tripled. By what factor does its largest kinetic energy change?",
+   "options": [
+    "9",
+    "3",
+    "√3",
+    "1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The largest K equals the total E = ½kA², which goes as A². Tripling A gives 3² = 9 times the energy.",
+    "options": [
+     "Right: energy goes as amplitude squared.",
+     "This treats the energy as proportional to A, not A².",
+     "The energy grows faster than A, not more slowly.",
+     "More amplitude stores more energy in the spring at release."
+    ]
+   }
+  }
+ ]
+}

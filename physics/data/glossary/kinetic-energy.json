@@ -1,0 +1,11 @@
+{
+ "energy": {
+  "def": "A scalar quantity a system has that can change form and move between objects; measured in joules."
+ },
+ "joule": {
+  "def": "The SI unit of energy: 1 J = 1 kg·m²/s² = 1 N·m."
+ },
+ "kinetic-energy": {
+  "def": "The energy an object has because it moves: K = ½mv². A scalar, never negative, that depends on the reference frame."
+ }
+}

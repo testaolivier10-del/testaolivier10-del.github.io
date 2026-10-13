@@ -1,0 +1,32 @@
+{
+ "interaction": {
+  "def": "Two objects acting on each other: pushing, pulling, rubbing or attracting. Every force is one side of an interaction."
+ },
+ "force": {
+  "def": "A push or pull exerted on an object by another object, with a size and a direction (a vector). Unit: the newton, 1 N = 1 kg·m/s²."
+ },
+ "contact-force": {
+  "def": "A force between objects that touch: the normal force, tension and friction. At the scale of atoms these are electric forces between the surfaces."
+ },
+ "long-range-force": {
+  "def": "A force between objects that do not touch. In this course the only one is gravity, such as Earth's pull on a falling ball."
+ },
+ "agent-of-force": {
+  "def": "The object that exerts a force. A free-body diagram label names the type and the agent: \"F_N, floor on box\"."
+ },
+ "free-body-diagram": {
+  "def": "A diagram of one object (a dot at its center of mass) with every force exerted on it by other objects drawn as a whole arrow starting on the dot, labeled with its type and agent, lengths in proportion. It never shows velocity, components or a net force arrow."
+ },
+ "normal-force": {
+  "def": "The push of a surface on an object touching it, perpendicular to the surface and away from it (F_N). Its size is whatever the situation requires, not always mg."
+ },
+ "tension": {
+  "def": "The pull of a rope, string or cable on an object attached to it, directed along the rope away from the object (F_T)."
+ },
+ "weight": {
+  "def": "The pull of Earth (or another planet) on an object, F_g = mg, pointing down toward the planet's center. Near Earth, g = 9.8 m/s² (10 m/s² is accepted). Mass stays the same everywhere; weight depends on where you are."
+ },
+ "net-force": {
+  "def": "The vector sum of all the forces on an object, ΣF. It is found from the free-body diagram and is not itself one of the forces."
+ }
+}

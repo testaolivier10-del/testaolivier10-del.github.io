@@ -1,0 +1,502 @@
+{
+ "stimuli": {
+  "rotational-inertia-s1": {
+   "kind": "diagram",
+   "title": "A rod with three balls",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 230\" role=\"img\" aria-label=\"A light rod 0.80 m long with a 0.20 kg ball at each end and a 0.40 kg ball at its middle, with axis A through the middle and axis B through one end, both perpendicular to the rod\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"230\" fill=\"#FFFFFF\"/><line x1=\"80\" y1=\"110\" x2=\"480\" y2=\"110\" stroke=\"#1F2A28\" stroke-width=\"4\"/><circle cx=\"80\" cy=\"110\" r=\"16\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"88\" y=\"86\" font-size=\"13\" fill=\"#1F2A28\" font-weight=\"bold\">0.20 kg</text><circle cx=\"280\" cy=\"110\" r=\"20\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"288\" y=\"82\" font-size=\"13\" fill=\"#1F2A28\" font-weight=\"bold\">0.40 kg</text><circle cx=\"480\" cy=\"110\" r=\"16\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"488\" y=\"86\" font-size=\"13\" fill=\"#1F2A28\" font-weight=\"bold\">0.20 kg</text><line x1=\"80\" y1=\"40\" x2=\"80\" y2=\"180\" stroke=\"#734200\" stroke-width=\"2\" stroke-dasharray=\"6 5\"/><text x=\"80\" y=\"198\" font-size=\"12\" fill=\"#734200\" text-anchor=\"middle\" font-weight=\"bold\">axis B (end)</text><line x1=\"280\" y1=\"40\" x2=\"280\" y2=\"180\" stroke=\"#734200\" stroke-width=\"2\" stroke-dasharray=\"6 5\"/><text x=\"280\" y=\"198\" font-size=\"12\" fill=\"#734200\" text-anchor=\"middle\" font-weight=\"bold\">axis A (center)</text><line x1=\"180\" y1=\"144\" x2=\"88\" y2=\"144\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"80,144 88,140 88,148\" fill=\"#5A6268\"/><line x1=\"180\" y1=\"144\" x2=\"272\" y2=\"144\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"280,144 272,148 272,140\" fill=\"#5A6268\"/><text x=\"180\" y=\"162\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.40 m</text><line x1=\"380\" y1=\"144\" x2=\"288\" y2=\"144\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"280,144 288,140 288,148\" fill=\"#5A6268\"/><line x1=\"380\" y1=\"144\" x2=\"472\" y2=\"144\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"480,144 472,148 472,140\" fill=\"#5A6268\"/><text x=\"380\" y=\"162\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.40 m</text><text x=\"20\" y=\"220\" font-size=\"12\" fill=\"#5A6268\">Light rod 0.80 m long; treat each ball as a point object. Each axis is perpendicular to the rod.</text></svg>"
+  },
+  "rotational-inertia-s2": {
+   "kind": "table",
+   "title": "Moving two sliders out on a platform",
+   "text": "<p>Two 0.50 kg sliders sit on a light platform, one each side of its axis, each a distance r from the axis. A student measures the rotational inertia of the platform and sliders for four values of r.</p>",
+   "table": {
+    "caption": "Rotational inertia against slider distance",
+    "cols": [
+     "Distance r (m)",
+     "Rotational inertia (kg·m²)"
+    ],
+    "rows": [
+     [
+      "0.10",
+      "0.030"
+     ],
+     [
+      "0.20",
+      "0.060"
+     ],
+     [
+      "0.30",
+      "0.110"
+     ],
+     [
+      "0.40",
+      "0.180"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-rotational-inertia-1",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-inertia-s1",
+   "q": "What is the rotational inertia of the rod and balls about axis A? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.064,
+    "tol": 0.001,
+    "unit": "kg·m^2",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2",
+     "kg·m²",
+     "kg m²"
+    ],
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.16,
+      "rel": 0.015,
+      "why": "Value: that uses r instead of r². I = Σmr²."
+     },
+     {
+      "value": 0.13,
+      "rel": 0.015,
+      "why": "Value: that puts the middle ball 0.40 m from axis A. It sits on the axis, so its r is zero."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The middle ball is on axis A (r = 0). I = 2(0.20 kg)(0.40 m)² + 0 = 0.064 kg·m²."
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-2",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-inertia-s1",
+   "q": "What is the rotational inertia about axis B?",
+   "numeric": {
+    "answer": 0.19,
+    "tol": 0.01,
+    "unit": "kg·m^2",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2",
+     "kg·m²",
+     "kg m²"
+    ],
+    "mistakes": [
+     {
+      "value": 0.064,
+      "rel": 0.015,
+      "why": "Value: that is the inertia about axis A. About B, each ball’s distance is measured from the end."
+     },
+     {
+      "value": 0.32,
+      "rel": 0.015,
+      "why": "Value: that uses r instead of r². I = Σmr²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "About B: the near ball has r = 0, the middle ball r = 0.40 m, the far ball r = 0.80 m. I = 0 + (0.40 kg)(0.40 m)² + (0.20 kg)(0.80 m)² = 0.064 + 0.128 = 0.192 kg·m², about 0.19 kg·m²."
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-3",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-inertia-s1",
+   "q": "Why is the rotational inertia about axis B larger than about axis A, although the mass is the same?",
+   "options": [
+    "The mass is, on average, farther from axis B",
+    "Axis B is at the end, where the rod is heavier",
+    "Axis B passes through less of the mass",
+    "Rotational inertia is larger about any axis at an end"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "I = Σmr². About B the 0.20 kg ball is 0.80 m away, and r² makes that distant mass count four times as much as at 0.40 m. Same mass, spread farther from the axis: larger I.",
+    "options": [
+     "Right: I depends on how far the mass is from the axis, as r².",
+     "The rod is light; its ends are not heavier. The distances to the axis change.",
+     "Axis B passes through a 0.20 kg ball; axis A through the 0.40 kg ball. What matters is how far the rest is.",
+     "An end axis gives a larger I here because of the distances, not because it is an end."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-4",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-inertia-s1",
+   "q": "Axis A passes through the center of mass. Which expression gives the inertia about axis B from the inertia about axis A?",
+   "options": [
+    "I_A + (0.80 kg)(0.40 m)²",
+    "I_A + (0.20 kg)(0.40 m)²",
+    "I_A + (0.80 kg)(0.80 m)²",
+    "I_A − (0.80 kg)(0.40 m)²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Parallel-axis theorem: I = I_cm + Md², with M the total mass (0.80 kg) and d the distance between the axes (0.40 m): 0.064 + 0.128 = 0.192 kg·m², which matches the direct sum.",
+    "options": [
+     "Right: parallel-axis theorem, total mass 0.80 kg moved 0.40 m.",
+     "The theorem uses the total mass of the system, 0.80 kg.",
+     "d is the distance between the two parallel axes, 0.40 m.",
+     "Moving the axis away from the center of mass increases I."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-5",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-inertia-s1",
+   "q": "The two end balls are slid in to 0.20 m from the middle. The rotational inertia about axis A becomes",
+   "options": [
+    "one quarter as large",
+    "half as large",
+    "the same",
+    "twice as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only the end balls contribute about A, each as mr². Halving r multiplies r² by ¼, so I goes from 0.064 to 0.016 kg·m².",
+    "options": [
+     "Right: r halves, so each r² term is ¼ as large.",
+     "I depends on r², not r.",
+     "The mass is the same, but it is closer to the axis.",
+     "Moving mass toward the axis decreases I."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-6",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-inertia-s2",
+   "q": "From the pattern in the data, what is the rotational inertia of the platform alone, with no sliders?",
+   "numeric": {
+    "answer": 0.02,
+    "tol": 0.001,
+    "unit": "kg·m^2",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2",
+     "kg·m²"
+    ],
+    "mistakes": [
+     {
+      "value": 0.03,
+      "rel": 0.015,
+      "why": "Value: that is the first row, with the sliders 0.10 m out. Remove their 2mr² = 0.010 kg·m²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each row fits I = I_platform + 2(0.50 kg)r². At r = 0.10 m the sliders add 2(0.50)(0.10)² = 0.010 kg·m², so I_platform = 0.030 − 0.010 = 0.020 kg·m²."
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-7",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-inertia-s2",
+   "q": "Which graph of these data is a straight line?",
+   "options": [
+    "I against r²",
+    "I against r",
+    "I against 1/r",
+    "I² against r"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two point sliders add 2mr², so I = I_platform + (2m)r². Plotting I against r² gives a straight line with slope 2m and intercept I_platform.",
+    "options": [
+     "Right: I = I_platform + (2m)r² is linear in r².",
+     "I grows faster than r; the points curve upward.",
+     "I increases with r, so it decreases against 1/r along a curve.",
+     "Squaring I gives no linear pattern here."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-8",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-inertia-s2",
+   "q": "What is the slope of the graph of I against r²?",
+   "numeric": {
+    "answer": 1,
+    "tol": 0.1,
+    "unit": "kg",
+    "sigfigs": 2,
+    "askUnit": true
+   },
+   "why": {
+    "correct": "Slope = ΔI/Δ(r²) = (0.180 − 0.030) kg·m² / (0.16 − 0.01) m² = 1.0 kg, equal to 2m, the total mass of the two sliders."
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-9",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "rotational-inertia-s2",
+   "q": "Predict the rotational inertia with the sliders 0.60 m from the axis.",
+   "options": [
+    "0.38 kg·m²",
+    "0.32 kg·m²",
+    "0.36 kg·m²",
+    "0.27 kg·m²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "I = I_platform + 2mr² = 0.020 + (1.0 kg)(0.60 m)² = 0.38 kg·m².",
+    "options": [
+     "Right: 0.020 + 2(0.50)(0.60)² = 0.38 kg·m².",
+     "This extends the last step as if I grew linearly with r.",
+     "This leaves out the platform’s own 0.020 kg·m².",
+     "This scales the 0.40 m value by 0.60/0.40, a linear guess."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-10",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "The rotational inertia of an object about an axis depends on",
+   "options": [
+    "its mass and how that mass is spread around the axis",
+    "its mass alone",
+    "how fast it is turning",
+    "the forces acting on it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "I = Σmr²: each bit of mass counts with the square of its distance from the axis, so both the mass and its distribution matter.",
+    "options": [
+     "Right: I = Σmr².",
+     "Two objects of the same mass can have very different I.",
+     "I is a property of the mass and the axis, not of the motion.",
+     "Forces give torques; they do not change I."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-11",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A solid disk has mass 2.0 kg and radius 0.30 m. Its rotational inertia about its center is I = ½MR² (given). What is I?",
+   "numeric": {
+    "answer": 0.09,
+    "tol": 0.001,
+    "unit": "kg·m^2",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2",
+     "kg·m²"
+    ],
+    "mistakes": [
+     {
+      "value": 0.3,
+      "rel": 0.015,
+      "why": "Value: R was not squared. I = ½MR²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "I = ½MR² = ½(2.0 kg)(0.30 m)² = 0.090 kg·m²."
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-12",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A thin hoop and a solid disk have the same mass and radius. Which is harder to start spinning about its center, and why?",
+   "options": [
+    "The hoop, because all its mass is at the rim",
+    "The disk, because it is solid and has more material",
+    "Neither, because they have the same mass",
+    "The disk, because its mass is closer to the axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rotational inertia measures resistance to changes in turning. The hoop’s mass sits at the rim (I = MR²); much of the disk’s mass is near the center (I = ½MR²), so the hoop is harder to spin up.",
+    "options": [
+     "Right: the hoop’s mass is at r = R, so I = MR² > ½MR².",
+     "Same mass: the disk’s mass is spread inward, so its I is smaller.",
+     "Same mass, different distribution, different rotational inertia.",
+     "Mass close to the axis makes an object easier to spin, not harder."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-13",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A uniform rod has I = ¹⁄₁₂ML² about its center and I = ⅓ML² about one end (both given). The inertia about the end is how many times the inertia about the center?",
+   "options": [
+    "4",
+    "2",
+    "3",
+    "12"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "(⅓ML²)/(¹⁄₁₂ML²) = 12/3 = 4. About the end, much of the rod’s mass is far from the axis.",
+    "options": [
+     "Right: (1/3)/(1/12) = 4.",
+     "This compares the distances, not the inertias.",
+     "This reads only the denominator 3 and ignores the 1/12.",
+     "This reads only the denominator 12."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-14",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The same disk (2.0 kg, 0.30 m, I_cm = ½MR²) turns about an axis through a point on its rim, parallel to its central axis. What is its rotational inertia about that axis?",
+   "numeric": {
+    "answer": 0.27,
+    "tol": 0.01,
+    "unit": "kg·m^2",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2",
+     "kg·m²"
+    ],
+    "mistakes": [
+     {
+      "value": 0.09,
+      "rel": 0.015,
+      "why": "Value: that is the inertia about the center. Add Md² for the shifted axis."
+     },
+     {
+      "value": 0.18,
+      "rel": 0.015,
+      "why": "Value: that is only Md². Add the inertia about the center of mass."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Parallel-axis theorem: I = I_cm + Md² = 0.090 + (2.0 kg)(0.30 m)² = 0.090 + 0.18 = 0.27 kg·m²."
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-15",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a given object, about which of these parallel axes is the rotational inertia smallest?",
+   "options": [
+    "The axis through its center of mass",
+    "An axis through its edge",
+    "An axis halfway between the center and the edge",
+    "It is the same about each parallel axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "I = I_cm + Md², and Md² is zero only when the axis passes through the center of mass, so that axis gives the smallest I.",
+    "options": [
+     "Right: I = I_cm + Md² is least when d = 0.",
+     "Moving the axis away from the center of mass adds Md².",
+     "This still adds Md² with d > 0.",
+     "The parallel-axis theorem shows I grows with d²."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-inertia-16",
+   "type": "predict",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two equal rings are threaded on a light rod that spins about its center. The rings slide outward, the same distance on each side. Predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "Rotational inertia of the system about the center",
+     "answer": "up",
+     "why": "The rings move farther from the axis, and each adds mr² with a larger r."
+    },
+    {
+     "name": "Total mass of the system",
+     "answer": "none",
+     "why": "No mass is added or removed; it only moves."
+    },
+    {
+     "name": "Position of the center of mass",
+     "answer": "none",
+     "why": "The rings move symmetrically, so the center of mass stays at the rod’s center."
+    }
+   ],
+   "why": {
+    "correct": "Moving the same mass farther from the axis raises I = Σmr², while the total mass and (by symmetry) the center of mass stay the same."
+   }
+  }
+ ]
+}

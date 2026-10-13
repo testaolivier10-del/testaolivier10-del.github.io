@@ -1,0 +1,93 @@
+{
+ "topic": "motion-2d",
+ "hook": "Fire a bullet horizontally and drop another from the same height at the same instant: on flat ground they land at the same time. It sounds wrong until you split the motion in two. Sideways speed does nothing to how fast something falls, and that one idea solves every projectile problem.",
+ "prereq": [
+  {
+   "q": "A velocity of 10. m/s at 30.° above the horizontal has a vertical component of",
+   "options": [
+    "5.0 m/s",
+    "8.7 m/s",
+    "10. m/s",
+    "3.0 m/s"
+   ],
+   "correct": 0,
+   "why": "v<sub>y</sub> = v sin θ = 10. × sin 30.° = 5.0 m/s.",
+   "review": "math-trig-components"
+  },
+  {
+   "q": "A stone dropped from rest falls for 1.0 s. How far does it fall? (g = 9.8 m/s²)",
+   "options": [
+    "4.9 m",
+    "9.8 m",
+    "19.6 m",
+    "2.5 m"
+   ],
+   "correct": 0,
+   "why": "Δy = ½gt² = ½(9.8)(1.0)² = 4.9 m.",
+   "review": "motion-representations"
+  },
+  {
+   "q": "A walker moves at 1.5 m/s on a walkway moving at 1.0 m/s the same way. Her velocity relative to the floor is",
+   "options": [
+    "2.5 m/s",
+    "0.5 m/s",
+    "1.5 m/s",
+    "1.0 m/s"
+   ],
+   "correct": 0,
+   "why": "Add the velocities along the line.",
+   "review": "reference-frames"
+  }
+ ],
+ "figure": {
+  "figure": "table-launch-strobe",
+  "caption": "A ball launched sideways and a ball dropped at the same moment reach each height together: the vertical motion ignores the horizontal one."
+ },
+ "chain": [
+  {
+   "cause": "A velocity points at an angle",
+   "effect": "it splits into a horizontal component v cos θ and a vertical component v sin θ"
+  },
+  {
+   "cause": "Gravity acts only downward and air resistance is negligible",
+   "effect": "the horizontal acceleration is zero and the vertical acceleration is g downward"
+  },
+  {
+   "cause": "The two directions are independent",
+   "effect": "you solve each as a one-dimensional problem, linked only by the shared time"
+  },
+  {
+   "cause": "The vertical motion sets how long the object is in the air",
+   "effect": "the range is the constant horizontal velocity times that time of flight"
+  }
+ ],
+ "ideas": [
+  "Treat two-dimensional motion as two one-dimensional motions at right angles. They share only the time.",
+  "A <b>projectile</b>: aₓ = 0, so vₓ is constant; a_y = g downward, so the vertical motion is free fall.",
+  "Split the launch velocity: vₓ = v cos θ, v<sub>y</sub> = v sin θ (θ, the <b>launch angle</b>, measured from the horizontal).",
+  "The <b>time of flight</b> comes from the vertical motion only. The <b>horizontal range</b> = vₓ × time of flight.",
+  "At the top, v<sub>y</sub> = 0 but vₓ is unchanged and the acceleration is still g downward."
+ ],
+ "misconception": {
+  "wrong": "A ball launched sideways off a table takes longer to land than a ball dropped from the same height, because it travels farther.",
+  "right": "Both start with zero vertical velocity and have the same downward acceleration, so they fall the same height in the same time. The sideways motion is independent and only decides where the ball lands."
+ },
+ "check": [
+  "phys-motion-2d-1",
+  "phys-motion-2d-2",
+  "phys-motion-2d-3",
+  "phys-motion-2d-5",
+  "phys-motion-2d-15"
+ ],
+ "summary": "Two-dimensional motion is two independent one-dimensional motions sharing the same time. A projectile keeps a constant horizontal velocity v cos θ and falls freely with vertical acceleration g; the vertical motion sets the time of flight, and the range is the horizontal velocity times that time.",
+ "connections": [
+  {
+   "href": "../notes/math-trig-components.html",
+   "label": "Back: trigonometry and components"
+  },
+  {
+   "href": "../notes/motion-representations.html",
+   "label": "Back: free fall and the kinematic equations (1.3)"
+  }
+ ]
+}

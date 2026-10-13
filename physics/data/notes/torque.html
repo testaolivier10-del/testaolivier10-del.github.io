@@ -1,0 +1,47 @@
+<p>A force can push an object along. It can also make an object turn, and how well it does that depends on more than its size. Push a door near its hinges and it barely moves; push at the handle and it swings. Push the handle straight toward the hinges and nothing happens at all. The quantity that captures all of this is <b>torque</b>.</p>
+
+<h2>Where and which way you push</h2>
+<p>Think about the door from above. The hinge is the axis. Three things decide how strongly a push turns the door:</p>
+<ul>
+<li>how hard you push (the force F);</li>
+<li>how far from the hinge you push (the distance r);</li>
+<li>which way you push (the angle θ between the door and the force).</li>
+</ul>
+<p>Only the part of the force at right angles to the door does any turning. A push along the door, toward or away from the hinge, just squeezes or stretches the door against the hinge.</p>
+
+<h2>Line of action and lever arm</h2>
+<p>Extend the force arrow into a long straight line in both directions. This is the force's <b>line of action</b>. Now measure the shortest distance from the axis to that line, the distance at right angles to it. This is the <b>lever arm</b>, r⊥.</p>
+<figure id="fig-wrench" data-fig="wrench-lever-arm"><figcaption>The lever arm r⊥ is the perpendicular distance from the axis to the line of action, r sin θ.</figcaption></figure>
+<p>The torque is the force times its lever arm:</p>
+<p style="text-align:center"><b>τ = r⊥F = rF sin θ</b></p>
+<p>The two forms say the same thing, since r⊥ = r sin θ. Torque is measured in newton-meters, N·m. When the force is perpendicular to r (θ = 90°), sin θ = 1 and τ = rF. When the line of action passes through the axis, r⊥ = 0 and the torque is zero, however big the force.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A mechanic pulls on the end of a 0.25 m wrench with an 80 N force at 60° to the handle. What torque does she exert on the bolt?</p>
+<p>Principle: τ = rF sin θ, with θ the angle between the handle (r) and the force.</p>
+<p>τ = (0.25 m)(80 N)(sin 60°) = (0.25)(80)(0.866) N·m = <b>17 N·m</b>.</p>
+<p>The lever arm is (0.25 m)(0.866) = 0.22 m. Using cos 60° here is a common slip: check which angle you have.</p>
+</div>
+
+<h2>The sign of a torque</h2>
+<p>A torque tends to turn an object either clockwise or counterclockwise. On this exam you describe its direction just that way, never with a vector arrow. Choose one direction as positive, usually counterclockwise, and give each torque a sign. The <b>net torque</b> is the sum of the torques with their signs.</p>
+<p>A quick way to find a sign: imagine the object pinned at the axis and only that one force acting. Which way would it start to turn? A force pushing down to the left of a pivot turns a bar counterclockwise; the same force to the right of the pivot turns it clockwise.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A light bar turns on an axle at its center. A 20 N force pushes down 0.30 m left of the axle, a 15 N force pushes down 0.40 m right of it, and a 10 N force pulls up 0.20 m right of it. Counterclockwise is positive. What is the net torque?</p>
+<p>20 N: down on the left, counterclockwise: +(0.30 m)(20 N) = +6.0 N·m.</p>
+<p>15 N: down on the right, clockwise: −(0.40 m)(15 N) = −6.0 N·m.</p>
+<p>10 N: up on the right, counterclockwise: +(0.20 m)(10 N) = +2.0 N·m.</p>
+<p>τ<sub>net</sub> = 6.0 − 6.0 + 2.0 = <b>+2.0 N·m</b>, counterclockwise. A bar at rest would start turning counterclockwise.</p>
+</div>
+
+<h2>Force diagrams</h2>
+<p>A free-body diagram puts every force at one dot. That is fine for asking how the center of mass accelerates, but it hides where each force acts, and torque depends on exactly that. So for rotation you draw a <b>force diagram</b>: sketch the object (a bar, a door, a beam), and start each force arrow at the point where that force acts.</p>
+<p>The rules are the same as for any free-body diagram. Draw only real forces, each labelled with its type and agent ("F<sub>N</sub>, pivot on beam", "F<sub>g</sub>, Earth on beam", "F<sub>T</sub>, cable on beam"). Draw whole forces, not components. Never add a "net torque" arrow. A uniform object's weight acts at its center.</p>
+
+<h2>Common slips</h2>
+<table class="compare"><thead><tr><th>Slip</th><th>Fix</th></tr></thead><tbody>
+<tr><td>Using the distance to the point of application as the lever arm, whatever the force's direction</td><td>Use r⊥ = r sin θ, the perpendicular distance to the line of action</td></tr>
+<tr><td>Using cos θ</td><td>θ is the angle between r and F; the turning part is F sin θ</td></tr>
+<tr><td>Adding all torques as positive</td><td>Give each a sign: counterclockwise + and clockwise −</td></tr>
+<tr><td>Reading a spring scale as a torque</td><td>A scale measures force; torque needs the lever arm too</td></tr>
+</tbody></table>
+<p>Scaling is direct: at the same angle, doubling the force or doubling r doubles the torque. Halving the force while doubling r leaves the torque unchanged, which is why a longer wrench makes a stuck bolt easier.</p>

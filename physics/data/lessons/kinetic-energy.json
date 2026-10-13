@@ -1,0 +1,98 @@
+{
+ "topic": "kinetic-energy",
+ "hook": "A car at highway speed and the same car in a parking lot differ in one number on the speedometer, but the faster one needs far more road to stop. Kinetic energy explains why: it grows with the square of the speed, so modest speed increases have outsized consequences.",
+ "prereq": [
+  {
+   "q": "Which of these is a scalar?",
+   "options": [
+    "Speed",
+    "Velocity",
+    "Displacement",
+    "Acceleration"
+   ],
+   "correct": 0,
+   "why": "Speed has a size but no direction; the other three are vectors.",
+   "review": "scalars-vectors"
+  },
+  {
+   "q": "A cart moves west at 3.0 m/s, with east positive. What is its speed?",
+   "options": [
+    "3.0 m/s",
+    "−3.0 m/s",
+    "0 m/s",
+    "9.0 m/s"
+   ],
+   "correct": 0,
+   "why": "Speed is the size of the velocity, so it is positive: 3.0 m/s.",
+   "review": "motion-quantities"
+  },
+  {
+   "q": "From v² = v₀² + 2aΔx, a car that stops (v = 0) with a constant deceleration of size a travels",
+   "options": [
+    "v₀²/(2a)",
+    "v₀/(2a)",
+    "2av₀",
+    "v₀²/a"
+   ],
+   "correct": 0,
+   "why": "0 = v₀² − 2aΔx, so Δx = v₀²/(2a).",
+   "review": "motion-representations"
+  }
+ ],
+ "figure": {
+  "figure": "ke-speed-squared",
+  "caption": "The same car at 10 m/s and at 20 m/s. Twice the speed means four times the kinetic energy and, with the same brakes, four times the stopping distance."
+ },
+ "chain": [
+  {
+   "cause": "An object of mass m moves at speed v",
+   "effect": "it has kinetic energy K = ½mv², measured in joules (kg·m²/s²)"
+  },
+  {
+   "cause": "The speed enters squared",
+   "effect": "doubling the speed makes K four times as large, while doubling the mass only doubles it"
+  },
+  {
+   "cause": "Squaring removes the sign of the velocity",
+   "effect": "K is a scalar that is never negative and does not depend on direction"
+  },
+  {
+   "cause": "Speed depends on the reference frame",
+   "effect": "the same object has different kinetic energies in different frames"
+  },
+  {
+   "cause": "A system has several moving parts",
+   "effect": "its kinetic energy is the sum of the parts' kinetic energies, which never cancel"
+  }
+ ],
+ "ideas": [
+  "<b>Energy</b> is a scalar quantity a system has; it can change form and move between objects. Its SI unit is the <b>joule</b>: 1 J = 1 kg·m²/s².",
+  "<b>Kinetic energy</b>, K = ½mv², is the energy of motion. It depends on mass and on the speed squared.",
+  "K is never negative and has no direction. A cart moving left at 3 m/s has the same K as one moving right at 3 m/s.",
+  "ΔK = ½mv_f² − ½mv_i², which is not ½m(Δv)². Square each speed first, then subtract.",
+  "Kinetic energy depends on the reference frame, because speed does."
+ ],
+ "misconception": {
+  "wrong": "A cart that speeds up from 1.5 m/s to 2.5 m/s gains ½m(1.0 m/s)² of kinetic energy.",
+  "right": "The change is ½m(2.5 m/s)² − ½m(1.5 m/s)² = ½m(4.0 m²/s²), four times more than ½m(Δv)². Square each speed before you subtract."
+ },
+ "check": [
+  "phys-kinetic-energy-1",
+  "phys-kinetic-energy-2",
+  "phys-kinetic-energy-3",
+  "phys-kinetic-energy-4",
+  "phys-kinetic-energy-11",
+  "phys-kinetic-energy-14"
+ ],
+ "summary": "Kinetic energy is K = ½mv², in joules. It is a scalar, never negative, independent of direction and dependent on the reference frame. Because the speed is squared, doubling the speed quadruples K; and a change in K is ½mv_f² − ½mv_i², not ½m(Δv)².",
+ "connections": [
+  {
+   "href": "../notes/circular-motion.html",
+   "label": "Back: circular motion (2.9)"
+  },
+  {
+   "href": "../notes/work-by-forces.html",
+   "label": "Next: 3.2"
+  }
+ ]
+}

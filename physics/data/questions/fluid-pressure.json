@@ -1,0 +1,497 @@
+{
+ "stimuli": {
+  "fluid-pressure-s1": {
+   "kind": "diagram",
+   "title": "Three points in a tank",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 300\" role=\"img\" aria-label=\"An open tank of water with three points marked: J and K at the same depth of 1.5 m below the surface, on opposite sides, and L at a depth of 4.5 m near the bottom.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"460\" height=\"300\" fill=\"#FFFFFF\"/><rect x=\"40\" y=\"60\" width=\"280\" height=\"220\" fill=\"#D7EBF4\"/><path d=\"M40,30 L40,280 L320,280 L320,30\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><line x1=\"40\" y1=\"60\" x2=\"320\" y2=\"60\" stroke=\"#7FB6CF\" stroke-width=\"2\"/><circle cx=\"110\" cy=\"120\" r=\"5\" fill=\"#1F2A28\"/><text x=\"120\" y=\"114\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">J</text><circle cx=\"250\" cy=\"120\" r=\"5\" fill=\"#1F2A28\"/><text x=\"260\" y=\"114\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">K</text><circle cx=\"180\" cy=\"240\" r=\"5\" fill=\"#1F2A28\"/><text x=\"190\" y=\"234\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">L</text><line x1=\"340\" y1=\"90\" x2=\"340\" y2=\"68\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"340,60 344,68 336,68\" fill=\"#5A6268\"/><line x1=\"340\" y1=\"90\" x2=\"340\" y2=\"112\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"340,120 336,112 344,112\" fill=\"#5A6268\"/><text x=\"348\" y=\"95\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\">1.5 m</text><line x1=\"380\" y1=\"150\" x2=\"380\" y2=\"68\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"380,60 384,68 376,68\" fill=\"#5A6268\"/><line x1=\"380\" y1=\"150\" x2=\"380\" y2=\"232\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"380,240 376,232 384,232\" fill=\"#5A6268\"/><text x=\"388\" y=\"155\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\">4.5 m</text><line x1=\"40\" y1=\"120\" x2=\"320\" y2=\"120\" stroke=\"#C9CFCC\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><line x1=\"40\" y1=\"240\" x2=\"320\" y2=\"240\" stroke=\"#C9CFCC\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><text x=\"180\" y=\"50\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">open to the air</text></svg><p>The water has density 1000 kg/m³. Atmospheric pressure at the surface is 1.0 × 10⁵ Pa.</p>"
+  },
+  "fluid-pressure-s2": {
+   "kind": "graph",
+   "title": "Pressure in a lake",
+   "text": "<p>A diver carries a pressure sensor that reads absolute pressure. She records the reading at several depths in a freshwater lake.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Depth",
+     "unit": "m",
+     "min": 0,
+     "max": 10,
+     "step": 2
+    },
+    "y": {
+     "label": "Absolute pressure",
+     "unit": "kPa",
+     "min": 0,
+     "max": 220,
+     "step": 40
+    },
+    "series": [
+     {
+      "name": "Sensor",
+      "points": [
+       [
+        0,
+        101
+       ],
+       [
+        2,
+        121
+       ],
+       [
+        4,
+        140
+       ],
+       [
+        6,
+        160
+       ],
+       [
+        8,
+        179
+       ],
+       [
+        10,
+        199
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-fluid-pressure-1",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "fluid-pressure-s1",
+   "q": "How does the pressure at J compare with the pressure at K?",
+   "options": [
+    "It is the same, because J and K are at the same depth",
+    "It is larger at J, because J is nearer the wall",
+    "It is larger at K, because more water is above K",
+    "It is smaller at J, because the water at J pushes sideways"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In a fluid at rest, pressure depends only on depth: P = P₀ + ρgh. J and K are both 1.5 m down, so their pressures are equal, whatever the tank's shape.",
+    "options": [
+     "Right: equal depth, equal pressure.",
+     "Distance from a wall does not appear in P = P₀ + ρgh.",
+     "The same depth of water lies above both points.",
+     "At a point, a fluid pushes equally in every direction; that does not change the pressure from J to K."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-2",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "fluid-pressure-s1",
+   "q": "What is the absolute pressure at L? Use g = 9.8 m/s². Give the value and its unit.",
+   "numeric": {
+    "answer": 140000,
+    "tol": 10000,
+    "unit": "Pa",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 44000,
+      "rel": 0.02,
+      "why": "Value: that is the gauge pressure, ρgh. Absolute pressure adds the air pressing on the surface: P = P₀ + ρgh."
+     },
+     {
+      "value": 110000,
+      "rel": 0.02,
+      "why": "Value: you used the depth of J and K. L is 4.5 m below the surface."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P = P₀ + ρgh = 1.0 × 10⁵ Pa + (1000 kg/m³)(9.8 m/s²)(4.5 m) = 1.0 × 10⁵ Pa + 4.41 × 10⁴ Pa = 1.4 × 10⁵ Pa."
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-3",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "fluid-pressure-s1",
+   "q": "What is the gauge pressure at L? Use g = 9.8 m/s². Give the value and its unit.",
+   "numeric": {
+    "answer": 44000,
+    "tol": 1000,
+    "unit": "Pa",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 140000,
+      "rel": 0.02,
+      "why": "Value: that is the absolute pressure. Gauge pressure is the pressure above atmospheric: P_gauge = ρgh."
+     },
+     {
+      "value": 4500,
+      "rel": 0.02,
+      "why": "Value: you left out g. P_gauge = ρgh."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P_gauge = ρgh = (1000 kg/m³)(9.8 m/s²)(4.5 m) = 4.4 × 10⁴ Pa. This is what a pressure gauge, which reads zero in open air, would show."
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-4",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "fluid-pressure-s1",
+   "q": "L is 3 times as deep as J. How does the absolute pressure at L compare with that at J?",
+   "options": [
+    "Larger, but less than 3 times as large",
+    "Exactly 3 times as large",
+    "Exactly 9 times as large",
+    "The same, because the water is incompressible"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The gauge pressure ρgh triples (1.47 × 10⁴ Pa to 4.41 × 10⁴ Pa), but the absolute pressure also includes P₀ = 1.0 × 10⁵ Pa, which is the same at both. So P goes from 1.15 × 10⁵ Pa to 1.44 × 10⁵ Pa, a factor of about 1.3.",
+    "options": [
+     "Right: only the ρgh part triples; P₀ does not.",
+     "This would be true of the gauge pressure, not the absolute pressure.",
+     "Pressure grows linearly with depth, not with depth squared.",
+     "Constant density is what makes P grow steadily with depth; it does not make P constant."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "fluid-pressure-s2",
+   "q": "Why does the graph not pass through zero at zero depth?",
+   "options": [
+    "It reads absolute pressure, which includes the air's push",
+    "The sensor is faulty, because there is no water above it at the surface",
+    "Water pressure is largest at the surface and decreases with depth",
+    "The sensor reads gauge pressure, which includes the weight of the diver"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the surface the absolute pressure equals atmospheric pressure, about 101 kPa. Gauge pressure would read zero there.",
+    "options": [
+     "Right: the intercept is P₀.",
+     "The reading at the surface is real: the atmosphere presses on the water.",
+     "The graph rises with depth; pressure increases as you go down.",
+     "A gauge reading would start at zero; the diver's weight does not enter."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-6",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "fluid-pressure-s2",
+   "q": "Use the slope of the graph to find the density of the lake water. Use g = 9.8 m/s². Give the value and its unit.",
+   "numeric": {
+    "answer": 1000,
+    "tol": 100,
+    "unit": "kg/m^3",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 1,
+      "rel": 0.02,
+      "why": "Value: you kept the slope in kPa/m. Convert to Pa/m (× 1000) before dividing by g."
+     },
+     {
+      "value": 2000,
+      "rel": 0.02,
+      "why": "Value: you divided the total reading by the depth, which includes the 101 kPa from the air. Use the slope: the change in pressure over the change in depth."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P = P₀ + ρgh, so the slope of P against h is ρg. Slope = (199 kPa − 101 kPa)/(10 m) = 9.8 kPa/m = 9800 Pa/m. ρ = 9800 Pa/m ÷ 9.8 m/s² = 1.0 × 10³ kg/m³."
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-7",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "fluid-pressure-s2",
+   "q": "The diver repeats the measurements in seawater, which is denser than lake water. How would the new graph differ?",
+   "options": [
+    "Same intercept, steeper slope",
+    "Higher intercept, same slope",
+    "Same intercept, same slope",
+    "Higher intercept, steeper slope"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The intercept is the atmospheric pressure, which does not depend on the water. The slope is ρg, which is larger for denser water.",
+    "options": [
+     "Right: P₀ is unchanged; ρg is larger.",
+     "The surface reading is the air's pressure, not the water's.",
+     "Denser water adds more pressure per meter of depth.",
+     "The intercept is set by the atmosphere, not by the water."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "fluid-pressure-s2",
+   "q": "Which statement explains why pressure increases with depth in the lake?",
+   "options": [
+    "Deeper water holds up the weight of more water above it",
+    "Water is compressed at depth, so it becomes much denser",
+    "The pressure force at each depth points down, so it adds up",
+    "Deeper water is colder, so its particles move faster"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Consider a column of water: each layer must hold up the weight of the water above it (plus the air). The deeper the layer, the more weight above, so the larger the pressure. ρgh is that extra weight per unit area.",
+    "options": [
+     "Right: pressure at depth holds up the column above.",
+     "Water is nearly incompressible; its density barely changes with depth.",
+     "Pressure is a scalar; a fluid at a point pushes equally in all directions.",
+     "Colder particles move more slowly; temperature is not the cause here."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-9",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A woman of weight 600 N stands on one heel of area 1.5 × 10⁻⁴ m². What pressure does the heel exert on the floor? Give the value and its unit.",
+   "numeric": {
+    "answer": 4000000,
+    "tol": 100000,
+    "unit": "Pa",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.09,
+      "rel": 0.02,
+      "why": "Value: you multiplied force by area. Pressure is force per area, P = F/A."
+     },
+     {
+      "value": 2.5e-7,
+      "rel": 0.02,
+      "why": "Value: you divided area by force. P = F/A."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P = F⊥/A = 600 N / 1.5 × 10⁻⁴ m² = 4.0 × 10⁶ Pa, about 40 times atmospheric pressure. The same weight on a flat shoe of 150 cm² gives only 4.0 × 10⁴ Pa."
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-10",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"Pressure is a force, so it has a direction.\" What is the best correction?",
+   "options": [
+    "Pressure is force per area, a scalar; its force on a surface is perpendicular to it",
+    "Pressure is a force, but its direction is straight down, toward Earth",
+    "Pressure has a direction: in a fluid it points toward the bottom of the container",
+    "Pressure is the same as weight, so it points down and is measured in newtons"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "P = F⊥/A is a scalar measured in pascals (N/m²). Pressure has no direction of its own; the force it exerts on any surface is perpendicular to that surface, which is why water pushes sideways on a dam.",
+    "options": [
+     "Right: scalar pressure, perpendicular force.",
+     "Water pushes sideways on walls and up on the bottom of a submerged object, so the force is not always down.",
+     "At a point in a fluid, the push is the same in every direction.",
+     "Pressure is force per area (Pa), not force (N), and not weight."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Three containers have different shapes: a tall narrow tube, a wide bowl and a cone that widens upward. All are filled with water to the same height. Where is the pressure at the bottom greatest?",
+   "options": [
+    "It is the same in all three",
+    "In the wide bowl, because it holds the most water",
+    "In the narrow tube, because the water is concentrated",
+    "In the cone, because its walls push the water down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Pressure in a fluid at rest depends only on depth: P = P₀ + ρgh. Same depth of the same liquid, same pressure, whatever the amount or shape.",
+    "options": [
+     "Right: only depth (and ρ and g) set the pressure.",
+     "More water means more total weight, but it is spread over a larger bottom area; the pressure is the same.",
+     "Narrowness does not concentrate pressure; depth decides.",
+     "The walls do push on the water, but the result is still P = P₀ + ρgh."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-12",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A tire gauge reads 2.2 × 10⁵ Pa. Atmospheric pressure is 1.0 × 10⁵ Pa. What is the absolute pressure of the air inside the tire? Give the value and its unit.",
+   "numeric": {
+    "answer": 320000,
+    "tol": 10000,
+    "unit": "Pa",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 220000,
+      "rel": 0.02,
+      "why": "Value: that is the gauge reading. A tire gauge reads pressure above atmospheric, so add P₀ to get absolute pressure."
+     },
+     {
+      "value": 120000,
+      "rel": 0.02,
+      "why": "Value: you subtracted P₀. Absolute pressure is gauge pressure plus atmospheric pressure."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P = P₀ + P_gauge = 1.0 × 10⁵ Pa + 2.2 × 10⁵ Pa = 3.2 × 10⁵ Pa. A flat tire reads 0 on the gauge but still holds air at 1.0 × 10⁵ Pa."
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-13",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 3,
+   "q": "How deep in fresh water (ρ = 1000 kg/m³) is the absolute pressure 1.5 × 10⁵ Pa? Atmospheric pressure is 1.0 × 10⁵ Pa. Use g = 9.8 m/s². Give the value and its unit.",
+   "numeric": {
+    "answer": 5.1,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 15,
+      "rel": 0.02,
+      "why": "Value: you set ρgh equal to the whole 1.5 × 10⁵ Pa. The air already provides 1.0 × 10⁵ Pa; the water adds only the other 0.5 × 10⁵ Pa."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P = P₀ + ρgh, so ρgh = 1.5 × 10⁵ Pa − 1.0 × 10⁵ Pa = 5.0 × 10⁴ Pa and h = 5.0 × 10⁴ Pa / (1000 kg/m³ × 9.8 m/s²) = 5.1 m. Every 10 m of water adds about one atmosphere."
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-14",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A sealed submarine window is 20 m below the surface of the sea. Predict how the gauge pressure on the window changes for each separate change.",
+   "variables": [
+    {
+     "name": "The submarine dives to 40 m",
+     "answer": "up",
+     "why": "P_gauge = ρgh: twice the depth gives twice the gauge pressure."
+    },
+    {
+     "name": "The window is made twice as large, at 20 m",
+     "answer": "none",
+     "why": "Pressure depends on depth, not on the area; a larger window feels a larger force, F = PA, at the same pressure."
+    },
+    {
+     "name": "The submarine moves to fresh water, at 20 m",
+     "answer": "down",
+     "why": "Fresh water is less dense than seawater, so ρgh is smaller."
+    }
+   ],
+   "why": {
+    "correct": "Gauge pressure in a fluid at rest is ρgh: it depends on the fluid's density, g and the depth."
+   }
+  },
+  {
+   "id": "phys-fluid-pressure-15",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A water tower supplies a house. Why are water towers built tall?",
+   "options": [
+    "A greater height of water gives a greater pressure at the taps below",
+    "A taller tower holds more water, which flows out more quickly",
+    "Water high up has less pressure, so it is pulled down to the house",
+    "A tall tower keeps the water away from the air, which lowers its pressure"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The pressure at a tap below the tower is larger by ρgh, where h is the height of the water surface above the tap. A taller tower means larger h and more pressure.",
+    "options": [
+     "Right: pressure grows with the depth below the water surface.",
+     "The amount of water is not what sets the pressure; height is.",
+     "Water is pushed, not pulled: the higher pressure is at the bottom.",
+     "The tower is open to the air; the height of water is what matters."
+    ]
+   }
+  }
+ ]
+}

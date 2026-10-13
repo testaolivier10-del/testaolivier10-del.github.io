@@ -1,0 +1,87 @@
+{
+ "topic": "angular-momentum",
+ "hook": "A spinning bicycle wheel is hard to stop and hard to tilt, and a puck sliding past you in a straight line has, in a precise sense, some of the same turning quantity about the spot where you stand. Angular momentum measures \"how much turning\" an object carries, and torque acting over time is what changes it.",
+ "prereq": [
+  {
+   "q": "A 2.0 kg cart moves at 3.0 m/s. Its momentum is",
+   "options": [
+    "6.0 kg·m/s",
+    "9.0 kg·m/s",
+    "1.5 kg·m/s",
+    "18 kg·m/s"
+   ],
+   "correct": 0,
+   "why": "p = mv.",
+   "review": "linear-momentum"
+  },
+  {
+   "q": "The area under a force-time graph equals",
+   "options": [
+    "the impulse, the change in momentum",
+    "the work done",
+    "the change in kinetic energy",
+    "the average force"
+   ],
+   "correct": 0,
+   "why": "J = FΔt = Δp.",
+   "review": "impulse"
+  }
+ ],
+ "figure": {
+  "figure": "puck-passing-point",
+  "caption": "A puck in straight-line motion has angular momentum mvd about a point a distance d from its path, the same at every position."
+ },
+ "chain": [
+  {
+   "cause": "A rigid object turns at ω and has rotational inertia I",
+   "effect": "it has angular momentum L = Iω"
+  },
+  {
+   "cause": "A point object moves with momentum mv past a chosen point",
+   "effect": "it has angular momentum L = rmv sin θ = mv × (perpendicular distance) about that point"
+  },
+  {
+   "cause": "A net torque acts for a time Δt",
+   "effect": "it delivers an angular impulse τΔt"
+  },
+  {
+   "cause": "An angular impulse is delivered",
+   "effect": "the angular momentum changes by exactly that much: ΔL = τΔt"
+  },
+  {
+   "cause": "The net torque is zero",
+   "effect": "L stays the same, and the L-t graph is flat"
+  }
+ ],
+ "ideas": [
+  "<b>L = Iω</b> for a rigid object about a fixed axis; unit kg·m²/s.",
+  "A point object has <b>L = rmv sin θ</b> about a chosen point: momentum × perpendicular distance from the point to its line of motion. Change the point, change L.",
+  "A puck in straight-line motion keeps the same L about any fixed point, and has L = 0 about points on its path.",
+  "<b>Angular impulse</b> τΔt = ΔL; it is the area under a τ-t graph.",
+  "Net torque = slope of the L-t graph (and = Iα when I is constant)."
+ ],
+ "misconception": {
+  "wrong": "Only spinning objects have angular momentum; a puck moving in a straight line has none.",
+  "right": "About any point not on its line of motion, a moving point object has L = mv × (perpendicular distance). Whether something has angular momentum depends on the point you measure it about."
+ },
+ "check": [
+  "phys-angular-momentum-1",
+  "phys-angular-momentum-2",
+  "phys-angular-momentum-3",
+  "phys-angular-momentum-4",
+  "phys-angular-momentum-9",
+  "phys-angular-momentum-11",
+  "phys-angular-momentum-13"
+ ],
+ "summary": "Angular momentum is L = Iω for a rigid object turning about a fixed axis, and L = rmv sin θ for a point object about a chosen point. A net torque acting over a time changes it: angular impulse τΔt = ΔL, the area under a τ-t graph, and the net torque is the slope of an L-t graph.",
+ "connections": [
+  {
+   "href": "../notes/torque-work.html",
+   "label": "Back: work done by a torque (6.2)"
+  },
+  {
+   "href": "../notes/angular-momentum-conservation.html",
+   "label": "Next: when angular momentum stays the same (6.4)"
+  }
+ ]
+}

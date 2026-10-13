@@ -1,0 +1,98 @@
+{
+ "topic": "motion-quantities",
+ "hook": "A car's dashboard shows speed, but a car is also described by which way it is going and by how fast that is changing. Push the gas and the velocity changes; press the brake and it changes the other way; turn the wheel at a steady speed and it still changes. All three are acceleration.",
+ "prereq": [
+  {
+   "q": "A runner goes from x = +40 m to x = +10 m. What is her displacement?",
+   "options": [
+    "−30 m",
+    "+30 m",
+    "+50 m",
+    "+10 m"
+   ],
+   "correct": 0,
+   "why": "Displacement = final − initial = 10 m − 40 m = −30 m.",
+   "review": "scalars-vectors"
+  },
+  {
+   "q": "What does Δv mean?",
+   "options": [
+    "Final velocity minus initial velocity",
+    "Initial velocity minus final velocity",
+    "The average of the two velocities",
+    "The velocity times the time"
+   ],
+   "correct": 0,
+   "why": "Δ always means \"change in\": final minus initial.",
+   "review": "math-symbols"
+  },
+  {
+   "q": "Solve v = Δx/Δt for Δx.",
+   "options": [
+    "Δx = vΔt",
+    "Δx = v/Δt",
+    "Δx = Δt/v",
+    "Δx = v − Δt"
+   ],
+   "correct": 0,
+   "why": "Multiply both sides by Δt.",
+   "review": "math-symbols"
+  }
+ ],
+ "figure": {
+  "figure": "car-speeding-slowing",
+  "caption": "The acceleration points the same way as the change in velocity. Same direction as v: speeding up. Opposite to v: slowing down."
+ },
+ "chain": [
+  {
+   "cause": "An object changes position over a time interval Δt",
+   "effect": "its average velocity is Δx/Δt, with the sign of the displacement"
+  },
+  {
+   "cause": "The time interval is made shorter and shorter",
+   "effect": "the average velocity approaches the instantaneous velocity at that moment"
+  },
+  {
+   "cause": "The velocity changes in size or in direction",
+   "effect": "the object has an acceleration, a = Δv/Δt, pointing the same way as Δv"
+  },
+  {
+   "cause": "The acceleration points the same way as the velocity",
+   "effect": "the object speeds up; if it points the opposite way, the object slows down"
+  }
+ ],
+ "ideas": [
+  "The <b>object model</b> treats a car or a ball as a point with a position: size, shape and inner parts are ignored.",
+  "<b>Average velocity</b> = Δx/Δt. It uses the displacement, so a round trip has zero average velocity. Average speed uses the distance.",
+  "<b>Average acceleration</b> = Δv/Δt, in m/s². Acceleration is any change in velocity: speeding up, slowing down or turning.",
+  "The sign of a alone does not tell you whether an object speeds up. Compare it with v: same sign, speeding up; opposite signs, slowing down.",
+  "An <b>instantaneous</b> value is the average over a very short interval. An object can have v = 0 at an instant and still be accelerating."
+ ],
+ "misconception": {
+  "wrong": "A negative acceleration means the object is slowing down, and an object at rest has no acceleration.",
+  "right": "A negative acceleration only points in the negative direction. A cart rolling down a ramp (negative v) with a negative a speeds up. At the top of its path, the cart has v = 0 but its velocity is still changing, so a is not zero."
+ },
+ "check": [
+  "phys-motion-quantities-1",
+  "phys-motion-quantities-2",
+  "phys-motion-quantities-3",
+  "phys-motion-quantities-6",
+  "phys-motion-quantities-7",
+  "phys-motion-quantities-15"
+ ],
+ "summary": "Average velocity is displacement over time, Δx/Δt, and average acceleration is change in velocity over time, Δv/Δt. Acceleration is any change in velocity and points along Δv: with v, the object speeds up; against v, it slows down. Instantaneous values are averages over very short intervals.",
+ "connections": [
+  {
+   "href": "../notes/scalars-vectors.html",
+   "label": "Back: scalars and vectors (1.1)"
+  },
+  {
+   "href": "../notes/math-symbols.html",
+   "label": "Back: symbols and Δ"
+  },
+  {
+   "href": "../notes/motion-representations.html",
+   "label": "Next: representing motion (1.3)"
+  }
+ ]
+}

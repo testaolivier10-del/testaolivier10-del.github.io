@@ -1,0 +1,14 @@
+{
+ "friction": {
+  "def": "A contact force exerted by a surface on an object, along the surface, that opposes the sliding (or the tendency to slide) of the two surfaces against each other."
+ },
+ "coefficient-friction": {
+  "def": "A number with no unit, μ, that describes how strongly two particular surfaces grip: friction = μ × normal force (the maximum, for static friction). It depends on the materials, not on area or speed."
+ },
+ "kinetic-friction": {
+  "def": "Friction between surfaces that slide against each other: f_k = μ_k F_N, opposite the direction of sliding."
+ },
+ "static-friction": {
+  "def": "Friction between surfaces that do not slide against each other. It takes whatever value prevents slipping, up to a maximum of μ_s F_N; usually μ_s is larger than μ_k."
+ }
+}

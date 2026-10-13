@@ -1,0 +1,22 @@
+{
+ "motion-graphs-stack": {
+  "file": "figures/motion-graphs-stack.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 760,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A cart on a track with a motion diagram of dots every 0.5 s: the dots spread out while it speeds up, are evenly spaced while it coasts, and bunch together while it slows to a stop at 4.0 m. Below, three graphs share a time axis from 0 to 6 s. Position against time: a curve bending upward from 0 to 1.0 m (0 to 2 s), a straight line to 3.0 m (2 to 4 s), then a curve bending down and leveling off at 4.0 m at 6 s; a dashed tangent line shows the slope at 4 s. Velocity against time: a line rising from 0 to 1.0 m/s, flat at 1.0 m/s, then falling to 0; the shaded rectangle from 2 to 4 s has area 1.0 m/s times 2 s = 2.0 m, the displacement. Acceleration against time: +0.5 m/s squared, then 0, then −0.5 m/s squared; the shaded area from 0 to 2 s is the change in velocity, 1.0 m/s. A side column reads: the slope of x-t is velocity, the slope of v-t is acceleration, the area under v-t is displacement, the area under a-t is the change in velocity."
+ },
+ "free-fall-strobe": {
+  "file": "figures/free-fall-strobe.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 700,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A ball dropped from rest, shown at 0.10 s intervals beside a vertical ruler marked in meters downward from the release point. The images are farther apart each time: 0, 0.049, 0.196, 0.441, 0.784, 1.225 and 1.764 m. Gold velocity arrows grow longer, from 0 to 5.88 m/s, increasing by 0.98 m/s every 0.10 s, while red acceleration arrows stay the same length: 9.8 m/s squared downward at every instant."
+ }
+}

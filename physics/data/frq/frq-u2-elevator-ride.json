@@ -1,0 +1,138 @@
+{
+ "id": "frq-u2-elevator-ride",
+ "type": "mr",
+ "points": 10,
+ "title": "A scale in an elevator",
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "gravitational-force",
+  "second-law"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "2.B",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "diagram",
+  "title": "A scale in an elevator",
+  "html": "<p>A student of mass m stands on a bathroom scale in an elevator. The elevator starts at rest at the ground floor. From t = 0 to t = 2.0 s it speeds up upward with a constant acceleration of size a. From 2.0 s to 8.0 s it moves upward at a constant speed. From 8.0 s to 10.0 s it slows to a stop with an acceleration of the same size a. Air resistance is negligible.</p><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 260 250\" role=\"img\" aria-label=\"A rider stands on a bathroom scale on the floor of an elevator.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"260\" height=\"250\" fill=\"#FFFFFF\"/><rect x=\"40\" y=\"20\" width=\"110\" height=\"220\" rx=\"4\" fill=\"#F7F7F4\" stroke=\"#1F2A28\" stroke-width=\"2.4\"/><line x1=\"95\" y1=\"4\" x2=\"95\" y2=\"20\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"65\" y=\"224\" width=\"60\" height=\"12\" rx=\"2\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"95\" cy=\"117.2\" r=\"13.2\" fill=\"#E8C4A0\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><rect x=\"79.4\" y=\"128\" width=\"31.2\" height=\"40.8\" rx=\"7.2\" fill=\"#5B7DA8\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><line x1=\"79.4\" y1=\"134\" x2=\"71\" y2=\"170.8\" stroke=\"#1F2A28\" stroke-width=\"5\"/><line x1=\"110.6\" y1=\"134\" x2=\"119\" y2=\"170.8\" stroke=\"#1F2A28\" stroke-width=\"5\"/><line x1=\"87.8\" y1=\"168.8\" x2=\"85.4\" y2=\"224\" stroke=\"#1F2A28\" stroke-width=\"6\"/><line x1=\"102.2\" y1=\"168.8\" x2=\"104.6\" y2=\"224\" stroke=\"#1F2A28\" stroke-width=\"6\"/><text x=\"170\" y=\"120\" font-size=\"12.5\" fill=\"#5A6268\">scale under</text><text x=\"170\" y=\"136\" font-size=\"12.5\" fill=\"#5A6268\">the rider</text></svg>"
+ },
+ "graphSpec": {
+  "type": "line",
+  "x": {
+   "label": "Time",
+   "unit": "s"
+  },
+  "y": {
+   "label": "Velocity of the elevator (up positive)",
+   "unit": "m/s"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "space": "graph",
+   "prompt": "<b>Sketch</b> a graph of the elevator's velocity against time from t = 0 to t = 10.0 s, taking upward as positive. Label the times 2.0 s, 8.0 s and 10.0 s.",
+   "rubric": [
+    {
+     "point": "A straight line rising from zero from 0 to 2.0 s",
+     "accept": [
+      "a line from the origin with positive slope that ends at 2.0 s",
+      "straight increasing segment starting at v = 0"
+     ]
+    },
+    {
+     "point": "A horizontal line at a positive velocity from 2.0 s to 8.0 s",
+     "accept": [
+      "flat segment above the axis, joined to the first",
+      "constant positive velocity in the middle interval"
+     ]
+    },
+    {
+     "point": "A straight line falling to zero at 10.0 s, with a slope of the same size as the first segment (opposite sign)",
+     "accept": [
+      "symmetric decreasing line ending on the time axis at 10.0 s",
+      "the last segment is as steep as the first, sloping down"
+     ]
+    }
+   ],
+   "sample": "The graph starts at the origin and rises in a straight line to a positive value v_max at 2.0 s (slope +a). It stays flat at v_max from 2.0 s to 8.0 s. It then falls in a straight line to zero at 10.0 s, with slope −a, as steep as the first segment. The velocity never goes below zero."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "<b>Derive</b> an expression for the scale reading F<sub>N</sub> during the first 2.0 s, in terms of m, a and physical constants. Begin your derivation by writing a fundamental physics principle or an equation from the reference information.",
+   "rubric": [
+    {
+     "point": "Starts from Newton's second law applied to the student: ΣF = ma",
+     "accept": [
+      "F_net = ma written for the student",
+      "a_sys = ΣF/m_sys"
+     ]
+    },
+    {
+     "point": "Writes the forces with correct signs: F_N − mg = ma (up positive)",
+     "accept": [
+      "F_N up and mg down in the sum",
+      "mg − F_N = −ma"
+     ]
+    },
+    {
+     "point": "Solves correctly: F_N = m(g + a)",
+     "accept": [
+      "F_N = mg + ma"
+     ]
+    }
+   ],
+   "sample": "Newton's second law for the student, up positive: ΣF = ma. Two forces act on her: F_N (scale on student, up) and mg (Earth on student, down). So F_N − mg = ma, which gives F_N = m(g + a)."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the scale readings during the first 2.0 s and during the last 2.0 s for m = 60 kg and a = 1.5 m/s². Use g = 9.8 m/s².",
+   "rubric": [
+    {
+     "point": "Speeding up: F_N = m(g + a) = 680 N (accept 678 N, or 690 N with g = 10 m/s²)",
+     "accept": [
+      "678 N",
+      "about 680 N"
+     ]
+    },
+    {
+     "point": "Slowing on the way up (acceleration down): F_N = m(g − a) = 500 N (accept 498 N, or 510 N with g = 10 m/s²)",
+     "accept": [
+      "498 N",
+      "uses g − a for the last interval"
+     ]
+    }
+   ],
+   "sample": "First 2.0 s: F_N = m(g + a) = 60 kg × (9.8 + 1.5) m/s² = 678 N ≈ 680 N. Last 2.0 s the elevator still moves up but slows, so its acceleration points down: F_N = m(g − a) = 60 kg × (9.8 − 1.5) m/s² = 498 N ≈ 500 N."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "A classmate claims: \"From 2.0 s to 8.0 s the elevator is moving up, so the scale must read more than mg.\" Do you agree or disagree? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Disagrees: the scale reads exactly mg",
+     "accept": [
+      "the reading equals the weight in the middle interval"
+     ]
+    },
+    {
+     "point": "Justifies with the zero acceleration: constant velocity, so the net force is zero and F_N = mg (first law or second law with a = 0)",
+     "accept": [
+      "the slope of the velocity graph is zero there, so ΣF = 0",
+      "moving up does not need a net upward force"
+     ]
+    }
+   ],
+   "sample": "I disagree. From 2.0 s to 8.0 s the velocity is constant (the graph is flat), so the acceleration is zero. By Newton's second law the net force on the student is then zero, so F_N − mg = 0 and the scale reads exactly mg. Moving upward does not require a net upward force; only speeding up upward does."
+  }
+ ]
+}

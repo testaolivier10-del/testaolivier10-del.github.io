@@ -1,0 +1,437 @@
+{
+ "stimuli": {
+  "power-s1": {
+   "kind": "diagram",
+   "title": "Two winches",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 400\" role=\"img\" aria-label=\"Two winches each lift an identical 40.0 kg crate 3.00 m at constant speed. Winch X lifts at 0.500 m/s and takes 6.00 s; winch Y lifts at 0.250 m/s and takes 12.0 s.\" style=\"max-width:100%;height:auto;background:#fff\"><rect width=\"760\" height=\"400\" fill=\"#FFFFFF\"/><text x=\"24\" y=\"30\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">Two winches lift identical 40.0 kg crates 3.00 m at constant speed</text><line x1=\"20\" y1=\"350\" x2=\"740\" y2=\"350\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"26\" y1=\"351\" x2=\"17\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"351\" x2=\"31\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"54\" y1=\"351\" x2=\"45\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"68\" y1=\"351\" x2=\"59\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"82\" y1=\"351\" x2=\"73\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"96\" y1=\"351\" x2=\"87\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"110\" y1=\"351\" x2=\"101\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"124\" y1=\"351\" x2=\"115\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"138\" y1=\"351\" x2=\"129\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"152\" y1=\"351\" x2=\"143\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"166\" y1=\"351\" x2=\"157\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"180\" y1=\"351\" x2=\"171\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"194\" y1=\"351\" x2=\"185\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"208\" y1=\"351\" x2=\"199\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"222\" y1=\"351\" x2=\"213\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"236\" y1=\"351\" x2=\"227\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"250\" y1=\"351\" x2=\"241\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"264\" y1=\"351\" x2=\"255\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"278\" y1=\"351\" x2=\"269\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"292\" y1=\"351\" x2=\"283\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"306\" y1=\"351\" x2=\"297\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"320\" y1=\"351\" x2=\"311\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"334\" y1=\"351\" x2=\"325\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"348\" y1=\"351\" x2=\"339\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"362\" y1=\"351\" x2=\"353\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"376\" y1=\"351\" x2=\"367\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"390\" y1=\"351\" x2=\"381\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"404\" y1=\"351\" x2=\"395\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"418\" y1=\"351\" x2=\"409\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"432\" y1=\"351\" x2=\"423\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"446\" y1=\"351\" x2=\"437\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"460\" y1=\"351\" x2=\"451\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"474\" y1=\"351\" x2=\"465\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"488\" y1=\"351\" x2=\"479\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"502\" y1=\"351\" x2=\"493\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"516\" y1=\"351\" x2=\"507\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"530\" y1=\"351\" x2=\"521\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"544\" y1=\"351\" x2=\"535\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"558\" y1=\"351\" x2=\"549\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"572\" y1=\"351\" x2=\"563\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"586\" y1=\"351\" x2=\"577\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"600\" y1=\"351\" x2=\"591\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"614\" y1=\"351\" x2=\"605\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"628\" y1=\"351\" x2=\"619\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"642\" y1=\"351\" x2=\"633\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"656\" y1=\"351\" x2=\"647\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"670\" y1=\"351\" x2=\"661\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"684\" y1=\"351\" x2=\"675\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"698\" y1=\"351\" x2=\"689\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"712\" y1=\"351\" x2=\"703\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"726\" y1=\"351\" x2=\"717\" y2=\"360\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><rect x=\"60\" y=\"70\" width=\"12\" height=\"280\" fill=\"#8A8F8C\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"60\" y=\"62\" width=\"150\" height=\"12\" fill=\"#8A8F8C\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"190\" cy=\"76\" r=\"14\" fill=\"#C9C3B6\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"100\" y=\"56\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">Winch X</text><rect x=\"58\" y=\"310\" width=\"40\" height=\"40\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"78\" y=\"335\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#fff\" text-anchor=\"middle\" font-weight=\"bold\">M</text><line x1=\"98\" y1=\"320\" x2=\"190\" y2=\"90\" stroke=\"#8B6B3E\" stroke-width=\"2\"/><line x1=\"204\" y1=\"76\" x2=\"204\" y2=\"180\" stroke=\"#8B6B3E\" stroke-width=\"2.5\"/><rect x=\"174\" y=\"180\" width=\"60\" height=\"60\" fill=\"#D9B27C\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"179\" y=\"185\" width=\"50\" height=\"50\" fill=\"none\" stroke=\"#9C7440\" stroke-width=\"2\"/><line x1=\"179\" y1=\"185\" x2=\"229\" y2=\"235\" stroke=\"#9C7440\" stroke-width=\"2\"/><line x1=\"229\" y1=\"185\" x2=\"179\" y2=\"235\" stroke=\"#9C7440\" stroke-width=\"2\"/><line x1=\"204\" y1=\"210\" x2=\"204.0\" y2=\"159.0\" stroke=\"#7A4F9E\" stroke-width=\"3\"/><polygon points=\"204.0,148.0 208.9,159.0 199.1,159.0\" fill=\"#7A4F9E\"/><text x=\"212.0\" y=\"150.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#7A4F9E\" text-anchor=\"start\" font-weight=\"bold\">F<tspan baseline-shift=\"sub\" font-size=\"75%\">T</tspan>, cable on crate</text><line x1=\"204\" y1=\"210\" x2=\"204.0\" y2=\"261.0\" stroke=\"#0072B2\" stroke-width=\"3\"/><polygon points=\"204.0,272.0 199.1,261.0 208.9,261.0\" fill=\"#0072B2\"/><text x=\"212.0\" y=\"278.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#0072B2\" text-anchor=\"start\" font-weight=\"bold\">F<tspan baseline-shift=\"sub\" font-size=\"75%\">g</tspan>, Earth on crate</text><circle cx=\"204\" cy=\"210\" r=\"4\" fill=\"#1F2A28\"/><line x1=\"270\" y1=\"240\" x2=\"270.0\" y2=\"181.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"270.0,170.0 274.9,181.0 265.1,181.0\" fill=\"#B07A00\"/><text x=\"274.0\" y=\"172.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"start\" font-weight=\"bold\">v = 0.500 m/s</text><text x=\"174\" y=\"318\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">time to lift 3.00 m: 6.00 s</text><rect x=\"420\" y=\"70\" width=\"12\" height=\"280\" fill=\"#8A8F8C\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"420\" y=\"62\" width=\"150\" height=\"12\" fill=\"#8A8F8C\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"550\" cy=\"76\" r=\"14\" fill=\"#C9C3B6\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"460\" y=\"56\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">Winch Y</text><rect x=\"418\" y=\"310\" width=\"40\" height=\"40\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"438\" y=\"335\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#fff\" text-anchor=\"middle\" font-weight=\"bold\">M</text><line x1=\"458\" y1=\"320\" x2=\"550\" y2=\"90\" stroke=\"#8B6B3E\" stroke-width=\"2\"/><line x1=\"564\" y1=\"76\" x2=\"564\" y2=\"180\" stroke=\"#8B6B3E\" stroke-width=\"2.5\"/><rect x=\"534\" y=\"180\" width=\"60\" height=\"60\" fill=\"#D9B27C\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"539\" y=\"185\" width=\"50\" height=\"50\" fill=\"none\" stroke=\"#9C7440\" stroke-width=\"2\"/><line x1=\"539\" y1=\"185\" x2=\"589\" y2=\"235\" stroke=\"#9C7440\" stroke-width=\"2\"/><line x1=\"589\" y1=\"185\" x2=\"539\" y2=\"235\" stroke=\"#9C7440\" stroke-width=\"2\"/><line x1=\"564\" y1=\"210\" x2=\"564.0\" y2=\"159.0\" stroke=\"#7A4F9E\" stroke-width=\"3\"/><polygon points=\"564.0,148.0 569.0,159.0 559.0,159.0\" fill=\"#7A4F9E\"/><text x=\"572.0\" y=\"150.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#7A4F9E\" text-anchor=\"start\" font-weight=\"bold\">F<tspan baseline-shift=\"sub\" font-size=\"75%\">T</tspan>, cable on crate</text><line x1=\"564\" y1=\"210\" x2=\"564.0\" y2=\"261.0\" stroke=\"#0072B2\" stroke-width=\"3\"/><polygon points=\"564.0,272.0 559.0,261.0 569.0,261.0\" fill=\"#0072B2\"/><text x=\"572.0\" y=\"278.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#0072B2\" text-anchor=\"start\" font-weight=\"bold\">F<tspan baseline-shift=\"sub\" font-size=\"75%\">g</tspan>, Earth on crate</text><circle cx=\"564\" cy=\"210\" r=\"4\" fill=\"#1F2A28\"/><line x1=\"630\" y1=\"240\" x2=\"630.0\" y2=\"216.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"630.0,205.0 635.0,216.0 625.0,216.0\" fill=\"#B07A00\"/><text x=\"634.0\" y=\"207.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"start\" font-weight=\"bold\">v = 0.250 m/s</text><text x=\"534\" y=\"318\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">time to lift 3.00 m: 12.0 s</text></svg><p>Each crate has a mass of 40.0 kg. Use g = 9.8 m/s².</p>"
+  },
+  "power-s2": {
+   "kind": "table",
+   "title": "Running up the stairs",
+   "text": "<p>Three students run up the same flight of stairs, rising 4.50 m. Use g = 9.8 m/s².</p>",
+   "table": {
+    "caption": "Stair-climb data",
+    "cols": [
+     "Student",
+     "Mass (kg)",
+     "Rise (m)",
+     "Time (s)"
+    ],
+    "rows": [
+     [
+      "Ana",
+      "50.0",
+      "4.50",
+      "5.0"
+     ],
+     [
+      "Ben",
+      "75.0",
+      "4.50",
+      "9.0"
+     ],
+     [
+      "Cy",
+      "60.0",
+      "4.50",
+      "6.0"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-power-1",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-s1",
+   "q": "How much work does winch X's cable do on its crate during the lift? Give the value and its unit.",
+   "numeric": {
+    "answer": 1180,
+    "tol": 10,
+    "unit": "J",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 120,
+      "why": "Value: that multiplies mass by height. Work is force times distance: the cable's force is mg = 392 N."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At constant speed the cable's force equals mg = (40.0 kg)(9.8 m/s²) = 392 N, so W = (392 N)(3.00 m) = 1.18 × 10³ J."
+   }
+  },
+  {
+   "id": "phys-power-2",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-s1",
+   "q": "What is winch X's average power output to its crate? Give the value and its unit.",
+   "numeric": {
+    "answer": 196,
+    "tol": 1,
+    "unit": "W",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 7060,
+      "why": "Value: power is work divided by time, not multiplied."
+     },
+     {
+      "value": 98,
+      "why": "Value: 12.0 s is winch Y's time. Winch X takes 6.00 s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P = W/Δt = 1176 J / 6.00 s = 196 W. A watt is a joule per second."
+   }
+  },
+  {
+   "id": "phys-power-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-s1",
+   "q": "How do the two winches compare?",
+   "options": [
+    "Same work; X's power is twice Y's",
+    "X does twice the work and has twice the power",
+    "Same work and same power, because the crates are identical",
+    "Same work; Y's power is twice X's, because Y works longer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "W = mgh = 1176 J for both. P = W/Δt: 196 W for X and 98.0 W for Y.",
+    "options": [
+     "Right: the same force over the same distance, done in half the time.",
+     "The cable force (mg) and the distance (3.00 m) are the same, so the work is the same.",
+     "Power also depends on the time. X takes half as long.",
+     "Working longer for the same work means a smaller rate: lower power."
+    ]
+   }
+  },
+  {
+   "id": "phys-power-4",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-s1",
+   "q": "Use P = Fv to find winch Y's power output to its crate, in watts.",
+   "numeric": {
+    "answer": 98,
+    "tol": 0.1,
+    "unit": "W",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "Value: F is the cable's force, mg = 392 N, not the mass."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At constant speed F_T = mg = 392 N, so P = F_T v = (392 N)(0.250 m/s) = 98.0 W, matching W/Δt = 1176 J / 12.0 s."
+   }
+  },
+  {
+   "id": "phys-power-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "power-s1",
+   "q": "Winch X lifts an 80.0 kg crate at the same 0.500 m/s. Its power output becomes",
+   "options": [
+    "4 times as large",
+    "2 times as large",
+    "the same, since the speed is the same",
+    "half as large"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "P = F_T v = mgv. Doubling m at the same v doubles P, to 392 W.",
+    "options": [
+     "Power is proportional to the mass at fixed speed, not to its square.",
+     "Right: P = mgv, and only m doubled.",
+     "The cable must pull twice as hard, so the power doubles.",
+     "A heavier load at the same speed needs more power, not less."
+    ]
+   }
+  },
+  {
+   "id": "phys-power-6",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "power-s2",
+   "q": "Who does the most work against gravity?",
+   "options": [
+    "Ana, the fastest",
+    "Cy",
+    "Ben",
+    "The three do equal work, since the rise is the same"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "W = mgh: Ana 2.21 kJ, Ben 3.31 kJ, Cy 2.65 kJ. Ben does the most work.",
+    "options": [
+     "Speed does not change the work against gravity; mgh depends on mass and height.",
+     "Cy is heavier than Ana but lighter than Ben.",
+     "Right: the same rise and the largest mass, so the largest mgh.",
+     "The rise is the same, but mgh also depends on mass."
+    ]
+   }
+  },
+  {
+   "id": "phys-power-7",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "power-s2",
+   "q": "Who has the greatest average power output?",
+   "options": [
+    "Ben, who does the most work",
+    "Ana alone, because she is fastest",
+    "The three are equal",
+    "Ana and Cy, equally"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "P = mgh/t: Ana (50.0)(9.8)(4.50)/5.0 = 441 W; Ben 368 W; Cy 441 W.",
+    "options": [
+     "Ben does the most work but takes the longest, so his rate is lowest.",
+     "Cy is heavier and slower in the same proportion: her power matches Ana's.",
+     "Compute mgh/t: 441 W, 368 W and 441 W.",
+     "Right: both 441 W; Ben's is about 370 W."
+    ]
+   }
+  },
+  {
+   "id": "phys-power-8",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-s2",
+   "q": "What is Ben's average power output, in watts?",
+   "numeric": {
+    "answer": 370,
+    "tol": 10,
+    "unit": "W",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 38,
+      "why": "Value: that leaves out g. The force against gravity is mg."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P = mgh/t = (75.0 kg)(9.8 m/s²)(4.50 m)/9.0 s = 3.7 × 10² W, to two significant figures (the time has two)."
+   }
+  },
+  {
+   "id": "phys-power-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "power-s2",
+   "q": "In SI base units, the watt in which these powers are measured is",
+   "options": [
+    "kg·m²/s³",
+    "kg·m²/s²",
+    "kg·m/s²",
+    "kg·m/s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "1 W = 1 J/s = 1 kg·m²/s³.",
+    "options": [
+     "Right: a watt is a joule per second, (kg·m²/s²)/s.",
+     "That is a joule, the unit of energy, not of power.",
+     "That is a newton, the unit of force.",
+     "That is the unit of mass times velocity."
+    ]
+   }
+  },
+  {
+   "id": "phys-power-10",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 1200 kg car speeds up from rest to 20. m/s in 8.0 s on level ground. What is the average power delivered to the car's kinetic energy, in watts?",
+   "numeric": {
+    "answer": 30000,
+    "tol": 1000,
+    "unit": "W",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 3000,
+      "why": "Value: that is mv/t, a force, not a power. Find ΔK = ½mv² first, then divide by the time."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔK = ½(1200 kg)(20. m/s)² = 2.4 × 10⁵ J. P = ΔK/Δt = 2.4 × 10⁵ J / 8.0 s = 3.0 × 10⁴ W."
+   }
+  },
+  {
+   "id": "phys-power-11",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cyclist pushes forward with a 480 N force while moving at 25 m/s. What is the instantaneous power of this force, in watts?",
+   "numeric": {
+    "answer": 12000,
+    "tol": 1000,
+    "unit": "W",
+    "sigfigs": 2
+   },
+   "why": {
+    "correct": "P = Fv = (480 N)(25 m/s) = 1.2 × 10⁴ W, with the force along the velocity."
+   }
+  },
+  {
+   "id": "phys-power-12",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A motor does a fixed amount of work in one third of the time it used to take. Its average power becomes",
+   "options": [
+    "one third as large",
+    "3 times as large",
+    "9 times as large",
+    "unchanged, since the work is the same"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "P = W/Δt ∝ 1/Δt. One third of the time gives three times the power.",
+    "options": [
+     "Less time for the same work means a higher rate, not a lower one.",
+     "Right: P = W/Δt, so dividing Δt by 3 multiplies P by 3.",
+     "Nothing is squared in P = W/Δt.",
+     "The work is the same, but power is work per unit time."
+    ]
+   }
+  },
+  {
+   "id": "phys-power-13",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A car's engine delivers a constant power to the wheels while the car speeds up on a level road. What happens to the forward force on the car as its speed increases?",
+   "options": [
+    "It increases, because the car goes faster",
+    "It stays the same, because the power is constant",
+    "It decreases, because P = Fv is fixed and v grows",
+    "It drops to zero once the car is moving"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Instantaneous power is P = Fv. With P fixed, F = P/v, so the forward force shrinks as the car speeds up.",
+    "options": [
+     "At fixed power, a larger speed means a smaller force.",
+     "Constant power is not constant force; F = P/v.",
+     "Right: F = P/v falls as v rises.",
+     "F = P/v is not zero for any finite speed."
+    ]
+   }
+  },
+  {
+   "id": "phys-power-14",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A 75 W motor lifts a 5.0 kg load straight up at constant speed. How fast does the load rise, in m/s? Use g = 9.8 m/s².",
+   "numeric": {
+    "answer": 1.5,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 15,
+      "why": "Value: that divides power by mass. Divide by the force, mg = 49 N: v = P/(mg)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At constant speed the lifting force is mg = 49 N. P = Fv gives v = 75 W / 49 N = 1.5 m/s."
+   }
+  },
+  {
+   "id": "phys-power-15",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "An electricity bill charges for kilowatt-hours. What does a kilowatt-hour measure?",
+   "options": [
+    "Power: the rate at which energy is used",
+    "Force: the push the electricity delivers",
+    "Speed: how fast the energy moves through the wires",
+    "Energy: one kilowatt of power for one hour, 3.6 × 10⁶ J"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "1 kW·h = (1000 J/s)(3600 s) = 3.6 × 10⁶ J.",
+    "options": [
+     "A kilowatt is power; multiplying by hours gives energy.",
+     "Force is in newtons. Power × time is an energy.",
+     "A kilowatt-hour has the units of energy, not of speed.",
+     "Right: power times time is energy."
+    ]
+   }
+  }
+ ]
+}

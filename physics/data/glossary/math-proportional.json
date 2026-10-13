@@ -1,0 +1,14 @@
+{
+ "proportional": {
+  "def": "y is directly proportional to x (y ∝ x) when y = kx for a constant k: multiplying x by any factor multiplies y by the same factor."
+ },
+ "inverse-proportional": {
+  "def": "y is inversely proportional to x (y ∝ 1/x) when y = k/x: multiplying x by a factor divides y by that factor, so x × y stays constant."
+ },
+ "functional-dependence": {
+  "def": "How one quantity changes when another changes, found from the equation that links them. Written as a factor: \"if v doubles, d becomes 4 times as large\"."
+ },
+ "square-relationship": {
+  "def": "A dependence on the square of a quantity, y ∝ x²: multiplying x by a factor multiplies y by that factor squared. An inverse square, y ∝ 1/x², divides y by the factor squared."
+ }
+}

@@ -1,0 +1,47 @@
+<p>A fluid pushes on everything it touches: the walls of a tank, the inside of a tire, your eardrums underwater. This page defines pressure, explains where it comes from, and derives the rule for how it grows with depth. It also untangles absolute and gauge pressure, a distinction that costs many students points.</p>
+
+<h2>Pressure: force spread over an area</h2>
+<p>Press a thumbtack into a board with 20 N. Under your thumb, 20 N is spread over about 1 cm², and nothing happens. Under the point, the same 20 N is concentrated on a tiny area, and the tack goes in. What matters is the force per area, the <b>pressure</b>:</p>
+<p style="text-align:center"><b>P = F<sub>⊥</sub> / A</b></p>
+<p>F<sub>⊥</sub> is the part of the force perpendicular to the surface. The SI unit is the pascal: 1 Pa = 1 N/m². A pascal is small: a sheet of paper lying on a desk exerts about 1 Pa. Atmospheric pressure at sea level is about 1.0 × 10⁵ Pa, printed on the equations sheet as 1 atm.</p>
+<p>Pressure is a <b>scalar</b>. It has no direction of its own. When a fluid presses on a surface, the force points perpendicular to that surface, into it, whatever way the surface faces. That is why water pushes sideways on a dam and upward on the bottom of a boat. Do not equate pressure with force; the readers flag it every year.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A 1200 kg car rests on four tires, each touching the road over 0.020 m². Find the pressure under each tire. Use g = 9.8 m/s².</p>
+<p>Each tire carries a quarter of the weight: F = (1200 kg)(9.8 m/s²)/4 = 2940 N.</p>
+<p>P = F/A = 2940 N / 0.020 m² = <b>1.5 × 10⁵ Pa</b>.</p>
+</div>
+
+<h2>Where fluid pressure comes from</h2>
+<p>The particles of a fluid are always moving. Each time one hits a surface, it bounces off and gives the surface a tiny push. Billions of collisions every second add up to a steady force on each square meter: the fluid's pressure. Because the particles move in every direction, at any point in a fluid the push is the same in every direction.</p>
+
+<h2>Pressure grows with depth</h2>
+<figure id="fig-depth" data-fig="fluid-pressure-depth"><figcaption>Pressure at points in a tank. Points at the same depth have the same pressure; deeper points have more.</figcaption></figure>
+<p>Picture a column of water of cross-sectional area A, reaching from the surface down to a depth h. Treat the column as the system; it is at rest, so the net force on it is zero (Newton's first law). Three vertical forces act on it:</p>
+<ul>
+<li>the air pushes down on its top: P₀A;</li>
+<li>its weight pulls down: mg = (ρAh)g, since its mass is density × volume;</li>
+<li>the water below pushes up on its bottom: PA.</li>
+</ul>
+<p>Balance: PA = P₀A + ρAhg. Divide by A:</p>
+<p style="text-align:center"><b>P = P₀ + ρgh</b></p>
+<p>This is the <b>absolute pressure</b> at depth h. Note what is <i>not</i> in it: the width of the container, its shape, or how much water it holds. Points at the same depth in the same connected fluid have the same pressure.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the absolute pressure 3.0 m below the surface of a pool (ρ = 1000 kg/m³, P₀ = 1.0 × 10⁵ Pa, g = 9.8 m/s²).</p>
+<p>P = P₀ + ρgh = 1.0 × 10⁵ Pa + (1000 kg/m³)(9.8 m/s²)(3.0 m) = 1.0 × 10⁵ Pa + 2.94 × 10⁴ Pa = <b>1.3 × 10⁵ Pa</b>.</p>
+</div>
+
+<h2>Absolute pressure and gauge pressure</h2>
+<p>A tire gauge reads zero when it is open to the air, not 1.0 × 10⁵ Pa. Most gauges measure how much the pressure exceeds atmospheric pressure. That is the <b>gauge pressure</b>:</p>
+<p style="text-align:center"><b>P<sub>gauge</sub> = P − P₀ = ρgh</b></p>
+<table class="compare">
+<thead><tr><th></th><th>Absolute pressure</th><th>Gauge pressure</th></tr></thead>
+<tbody>
+<tr><td>Formula in a liquid</td><td>P = P₀ + ρgh</td><td>P<sub>gauge</sub> = ρgh</td></tr>
+<tr><td>At the open surface</td><td>P₀ ≈ 1.0 × 10⁵ Pa</td><td>0</td></tr>
+<tr><td>What reads it</td><td>a sensor sealed against a vacuum</td><td>a tire gauge, a blood-pressure cuff</td></tr>
+<tr><td>Doubling the depth</td><td>increases, but less than doubles</td><td>doubles</td></tr>
+</tbody></table>
+<p>Read each question carefully for which one it wants. "The pressure at the bottom" usually means absolute; "the gauge pressure" or "the pressure above atmospheric" means ρgh alone.</p>
+
+<h2>Measuring density from a graph</h2>
+<p>Because P = P₀ + ρgh is a straight line in h, a graph of pressure against depth has intercept P₀ (for absolute pressure) and slope ρg. Dividing the slope by g gives the fluid's density. A denser liquid gives a steeper line from the same intercept. On the course we use g = 9.8 m/s²; 10 m/s² is accepted on the exam if used consistently.</p>

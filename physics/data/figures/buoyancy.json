@@ -1,0 +1,12 @@
+{
+ "buoyancy-forces": {
+  "file": "figures/buoyancy-forces.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A wooden block held under water by a string. Short pressure arrows push down on its top and longer ones push up on its bottom; side pushes cancel. Its free-body diagram: the buoyant force (water on block) up, longest; the gravitational force (Earth on block) and tension (string on block) down, together balancing it. F_b = ρ_fluid V_disp g."
+ }
+}

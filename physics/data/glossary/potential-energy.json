@@ -1,0 +1,20 @@
+{
+ "potential-energy": {
+  "def": "Energy stored in the configuration of a system of objects that interact through conservative forces; it belongs to the system, not to one object."
+ },
+ "conservative-force": {
+  "def": "A force whose work depends only on the start and end positions (gravity, an ideal spring). A force whose work depends on the path, like kinetic friction, is nonconservative."
+ },
+ "gravitational-pe": {
+  "def": "The potential energy of an object-Earth system near Earth's surface: ΔU_g = mgΔy."
+ },
+ "elastic-pe": {
+  "def": "The potential energy stored in a stretched or compressed ideal spring: U_s = ½k(Δx)², with Δx measured from the relaxed length."
+ },
+ "zero-point": {
+  "def": "The configuration chosen to have zero potential energy; any choice works because only changes in potential energy matter."
+ },
+ "universal-gpe": {
+  "def": "The gravitational potential energy of two masses at any separation: U_G = −Gm₁m₂/r, zero at infinite separation."
+ }
+}

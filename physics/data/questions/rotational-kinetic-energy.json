@@ -1,0 +1,504 @@
+{
+ "stimuli": {
+  "rotational-kinetic-energy-s1": {
+   "kind": "diagram",
+   "title": "A turntable with a lump of clay",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 240\" role=\"img\" aria-label=\"Top view of a solid disk turntable of mass 3.0 kg and radius 0.20 m with a 0.10 kg lump of clay stuck 0.15 m from the axis, turning at 6.0 rad/s\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"240\" fill=\"#FFFFFF\"/><circle cx=\"150\" cy=\"115\" r=\"95\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><circle cx=\"150\" cy=\"115\" r=\"8\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"150\" cy=\"115\" r=\"2.5\" fill=\"#1F2A28\"/><ellipse cx=\"217\" cy=\"90.6\" rx=\"11\" ry=\"9\" fill=\"#A9765A\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><line x1=\"150\" y1=\"115\" x2=\"217\" y2=\"90.6\" stroke=\"#5A6268\" stroke-width=\"1.3\"/><text x=\"183.5\" y=\"120.8\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.15 m</text><path d=\"M95.5,20.6 A109 109 0 0 0 51,160.6\" fill=\"none\" stroke=\"#B07A00\" stroke-width=\"2.5\"/><polygon points=\"55.6,169.5 46.1,163.2 55.9,158.1\" fill=\"#B07A00\"/><rect x=\"300\" y=\"30\" width=\"245\" height=\"170\" rx=\"8\" fill=\"#EEF1EF\" stroke=\"#C9CFCC\"/><text x=\"312\" y=\"56\" font-size=\"12.5\" fill=\"#1F2A28\">Solid disk: M = 3.0 kg,</text><text x=\"312\" y=\"80\" font-size=\"12.5\" fill=\"#1F2A28\">R = 0.20 m, I = ½MR² (given)</text><text x=\"312\" y=\"104\" font-size=\"12.5\" fill=\"#1F2A28\">Clay lump: 0.10 kg,</text><text x=\"312\" y=\"128\" font-size=\"12.5\" fill=\"#1F2A28\">0.15 m from the axis</text><text x=\"312\" y=\"152\" font-size=\"12.5\" fill=\"#1F2A28\">Turning at 6.0 rad/s</text><text x=\"312\" y=\"176\" font-size=\"12.5\" fill=\"#1F2A28\">on a fixed vertical axle</text></svg>"
+  },
+  "rotational-kinetic-energy-s2": {
+   "kind": "table",
+   "title": "Energy stored in a flywheel",
+   "text": "<p>An engineer measures the energy stored in a flywheel (from the work needed to spin it up from rest on a frictionless bearing) at four angular velocities.</p>",
+   "table": {
+    "caption": "Stored energy against angular velocity",
+    "cols": [
+     "Angular velocity (rad/s)",
+     "Energy stored (J)"
+    ],
+    "rows": [
+     [
+      "10",
+      "40"
+     ],
+     [
+      "20",
+      "160"
+     ],
+     [
+      "30",
+      "360"
+     ],
+     [
+      "40",
+      "640"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-rotational-kinetic-energy-1",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinetic-energy-s1",
+   "q": "What is the rotational inertia of the turntable and clay together about the axle?",
+   "numeric": {
+    "answer": 0.0623,
+    "tol": 0.0001,
+    "unit": "kg·m^2",
+    "sigfigs": 3,
+    "units": [
+     "kg m^2",
+     "kg·m²"
+    ],
+    "mistakes": [
+     {
+      "value": 0.06,
+      "rel": 0.015,
+      "why": "Value: that is the disk alone. Add the clay as a point object, mr²."
+     },
+     {
+      "value": 0.122,
+      "rel": 0.015,
+      "why": "Value: that uses MR² for the disk. A solid disk has I = ½MR² (given)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "I = ½MR² + mr² = ½(3.0 kg)(0.20 m)² + (0.10 kg)(0.15 m)² = 0.0600 + 0.00225 = 0.0623 kg·m², about 0.0623 kg·m²."
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-2",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinetic-energy-s1",
+   "q": "What is the rotational kinetic energy of the turntable and clay? Give the value and its unit.",
+   "numeric": {
+    "answer": 1.1,
+    "tol": 0.1,
+    "unit": "J",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.19,
+      "rel": 0.015,
+      "why": "Value: ω was not squared. K = ½Iω²."
+     },
+     {
+      "value": 2.2,
+      "rel": 0.015,
+      "why": "Value: the ½ is missing. K = ½Iω²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K = ½Iω² = ½(0.06225 kg·m²)(6.0 rad/s)² = 1.12 J, about 1.1 J."
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-3",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-kinetic-energy-s1",
+   "q": "The turntable’s center does not move. Which statement about its kinetic energy is correct?",
+   "options": [
+    "It has kinetic energy, because every piece of it is moving",
+    "It has no kinetic energy, because its center of mass is at rest",
+    "It has no kinetic energy, because opposite sides cancel out",
+    "Its kinetic energy is at the rim, where the speed is largest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each piece of mass moves at v = rω and has ½mv². Kinetic energy is a scalar, so these add up (to ½Iω²) even though the velocities point in different directions and the center does not move.",
+    "options": [
+     "Right: K = ½Iω² counts the motion of every piece around the axle.",
+     "A body can have rotational kinetic energy while its center of mass stays put.",
+     "Velocities cancel in the total momentum, but kinetic energy is a scalar; it never cancels.",
+     "Every piece moves (v = rω) and contributes ½mv²; the rim pieces just contribute most."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinetic-energy-s1",
+   "q": "The turntable is sped up to 12 rad/s. Its rotational kinetic energy becomes",
+   "options": [
+    "4 times as large",
+    "2 times as large",
+    "the same",
+    "8 times as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K = ½Iω² with I fixed, so doubling ω multiplies K by 4 (to about 4.5 J).",
+    "options": [
+     "Right: K ∝ ω², and (2)² = 4.",
+     "K depends on ω², not ω.",
+     "A faster spin has more kinetic energy.",
+     "There is no cube: K = ½Iω²."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-5",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-kinetic-energy-s1",
+   "q": "What share of the total rotational kinetic energy belongs to the clay?",
+   "options": [
+    "3.6%",
+    "3.2%",
+    "75%",
+    "50%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every part shares ω, so each part’s share of ½Iω² is its share of I: 0.00225/0.06225 = 3.6%.",
+    "options": [
+     "Right: the clay’s I is 0.00225 of 0.06225 kg·m², and they share ω.",
+     "That compares the clay’s mass with the disk’s mass; energy depends on I, not mass alone.",
+     "That compares the distances 0.15 m and 0.20 m; I also depends on mass.",
+     "The clay and the disk do not share the energy equally; they have different I."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-6",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinetic-energy-s2",
+   "q": "Which graph of these data gives a straight line through the origin?",
+   "options": [
+    "K against ω²",
+    "K against ω",
+    "K against 1/ω",
+    "√K against ω²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K = ½Iω², so K against ω² is a straight line through the origin with slope ½I.",
+    "options": [
+     "Right: K = (½I)ω² is proportional to ω².",
+     "K rises faster than ω; the points curve upward.",
+     "K increases with ω, so it falls along a curve against 1/ω.",
+     "√K is proportional to ω, not ω²."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-7",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-kinetic-energy-s2",
+   "q": "Use the data to find the flywheel’s rotational inertia.",
+   "numeric": {
+    "answer": 0.8,
+    "tol": 0.01,
+    "unit": "kg·m^2",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2",
+     "kg·m²"
+    ],
+    "mistakes": [
+     {
+      "value": 0.4,
+      "rel": 0.015,
+      "why": "Value: that is the slope of K against ω², which is ½I. Double it."
+     },
+     {
+      "value": 32,
+      "rel": 0.015,
+      "why": "Value: that divides by ω instead of ω². K = ½Iω², so I = 2K/ω²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From any row, I = 2K/ω²: for example 2(640 J)/(40 rad/s)² = 0.80 kg·m². The slope of K against ω² is ½I = 0.40 kg·m²."
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-8",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinetic-energy-s2",
+   "q": "Predict the flywheel’s kinetic energy at 50 rad/s.",
+   "options": [
+    "1000 J",
+    "800 J",
+    "920 J",
+    "2500 J"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K = ½Iω² = ½(0.80 kg·m²)(50 rad/s)² = 1000 J. The steps between rows grow (120, 200, 280 J), as a square law predicts.",
+    "options": [
+     "Right: K = ½(0.80 kg·m²)(50 rad/s)² = 1000 J.",
+     "This scales 640 J by 50/40, as if K were proportional to ω.",
+     "This adds the last step (280 J) again, but each step is larger than the one before.",
+     "This forgets the ½I and uses ω² alone."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-kinetic-energy-s2",
+   "q": "An engineer wants a flywheel of the same mass and radius to store more energy at the same ω. She should",
+   "options": [
+    "move more of its mass to the rim",
+    "move more of its mass toward the axle",
+    "make it a solid disk instead of a ring",
+    "leave the shape, since K depends on mass"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At a fixed ω, K = ½Iω² is proportional to I. Putting the same mass farther from the axle raises I, so a rim-heavy flywheel stores more energy.",
+    "options": [
+     "Right: that raises I, and K = ½Iω² rises with it.",
+     "That lowers I and so lowers the stored energy.",
+     "A solid disk has less of its mass at the rim than a ring of the same mass and radius.",
+     "K depends on I, which depends on where the mass is, not mass alone."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Rotational kinetic energy is",
+   "options": [
+    "a scalar, measured in joules",
+    "a vector along the axis, in joules",
+    "a scalar, measured in N·m/s",
+    "a vector, measured in kg·m²/s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K = ½Iω² is energy: a scalar, in joules (kg·m²/s² = J). A wheel turning clockwise or counterclockwise at the same rate has the same K.",
+    "options": [
+     "Right: ½Iω² has no direction.",
+     "Energy has no direction; only the sign of ω does.",
+     "N·m/s is a watt, a unit of power.",
+     "kg·m²/s is the unit of a different rotational quantity."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-11",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A small flywheel with rotational inertia 0.050 kg·m² spins at 300 rad/s. How much kinetic energy does it store?",
+   "numeric": {
+    "answer": 2300,
+    "tol": 100,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 7.5,
+      "rel": 0.015,
+      "why": "Value: ω was not squared. K = ½Iω²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K = ½Iω² = ½(0.050 kg·m²)(300 rad/s)² = 2250 J, about 2.3 kJ."
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-12",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A wheel with rotational inertia 0.40 kg·m² has 25 J of rotational kinetic energy. How fast is it turning?",
+   "numeric": {
+    "answer": 11,
+    "tol": 1,
+    "unit": "rad/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 130,
+      "rel": 0.015,
+      "why": "Value: that is ω². Take the square root."
+     },
+     {
+      "value": 7.9,
+      "rel": 0.015,
+      "why": "Value: the ½ was dropped. ω = √(2K/I)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ω = √(2K/I) = √(2 × 25 J / 0.40 kg·m²) = √125 = 11.2 rad/s, about 11 rad/s."
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-13",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A solid disk and a hoop of the same mass and radius spin at the same angular velocity about their centers (disk I = ½MR², hoop I = MR², given). Compared with the disk, the hoop has",
+   "options": [
+    "twice the rotational kinetic energy",
+    "the same rotational kinetic energy",
+    "half the rotational kinetic energy",
+    "four times the rotational kinetic energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K = ½Iω². At the same ω the ratio of energies is the ratio of inertias: MR² ÷ ½MR² = 2.",
+    "options": [
+     "Right: same ω, twice the I.",
+     "Same mass and ω, but the hoop’s mass is all at the rim, so its I is larger.",
+     "The hoop has the larger I, not the smaller.",
+     "K is proportional to I at fixed ω, and I doubles."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-14",
+   "type": "predict",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A figure skater spins on frictionless ice. Ignoring her arms, she is modeled as a cylinder. Predict how each quantity changes if, at the same angular velocity, she were twice as wide (same mass, cylinder radius doubled).",
+   "variables": [
+    {
+     "name": "Her rotational inertia",
+     "answer": "up",
+     "why": "I = ½MR² for a cylinder; doubling R at the same mass gives 4 times the I."
+    },
+    {
+     "name": "Her rotational kinetic energy",
+     "answer": "up",
+     "why": "K = ½Iω²; with ω the same and I four times as large, K is four times as large."
+    },
+    {
+     "name": "Her mass",
+     "answer": "none",
+     "why": "Spreading the same mass over a wider shape does not change the mass."
+    }
+   ],
+   "why": {
+    "correct": "Spreading the same mass farther from the axis raises I (as R²), and at the same ω, K = ½Iω² rises in proportion to I."
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-15",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A solid cylinder of mass 0.60 kg and radius 0.15 m (I = ½MR², given) spins at 20 rad/s about its central axis. What is its rotational kinetic energy?",
+   "numeric": {
+    "answer": 1.4,
+    "tol": 0.1,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.7,
+      "rel": 0.015,
+      "why": "Value: that uses MR². A solid cylinder has I = ½MR²."
+     },
+     {
+      "value": 9,
+      "rel": 0.015,
+      "why": "Value: R was not squared in I = ½MR²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "I = ½(0.60 kg)(0.15 m)² = 0.00675 kg·m²; K = ½(0.00675 kg·m²)(20 rad/s)² = 1.35 J, about 1.4 J."
+   }
+  },
+  {
+   "id": "phys-rotational-kinetic-energy-16",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "rotational-kinetic-energy",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a spinning wheel’s rotational kinetic energy not depend on whether it turns clockwise or counterclockwise?",
+   "options": [
+    "ω is squared, so its sign drops out",
+    "Kinetic energy depends on the mass and not the motion",
+    "The two directions have different rotational inertias",
+    "Clockwise turning has negative kinetic energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K = ½Iω², and squaring removes the sign of ω. Kinetic energy is a scalar and never negative.",
+    "options": [
+     "Right: (−ω)² = ω².",
+     "It depends on I and ω, but not on the sign of ω.",
+     "I depends on the mass and axis, not the direction of turning.",
+     "Kinetic energy is never negative."
+    ]
+   }
+  }
+ ]
+}

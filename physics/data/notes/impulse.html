@@ -1,0 +1,46 @@
+<p>To change an object's momentum, something must push on it for some time. A big push for a short time and a small push for a long time can change the momentum by the same amount. The quantity that measures this is the <b>impulse</b>. It explains how airbags, helmets and bent knees protect you, and it links Newton's second law to momentum.</p>
+
+<h2>Impulse</h2>
+<p>When a force acts on an object for a time interval Δt, the impulse it delivers is</p>
+<p style="text-align:center"><b>J = F_avg Δt</b></p>
+<p>Impulse is a vector in the direction of the force. Its unit is the newton-second, N·s, which is the same as kg·m/s: (kg·m/s²)(s) = kg·m/s. That shared unit is a clue to what impulse does.</p>
+<p>Real collision forces are not constant: they rise as objects squash together and fall as they separate. For any force, the impulse is the <b>area under the force-time graph</b>, the same way displacement is the area under a velocity-time graph.</p>
+
+<h2>The impulse-momentum theorem</h2>
+<p>Newton's second law says F_net = ma = m Δv/Δt for constant mass. Multiply both sides by Δt:</p>
+<p style="text-align:center"><b>F_net Δt = m Δv, so J_net = Δp = m v_f − m v_i</b></p>
+<p>The net impulse on an object equals its change in momentum. Read backward, the net force is the rate of change of momentum, F_net = Δp/Δt, the <b>slope of a momentum-time graph</b>. Newton actually stated his second law this way.</p>
+<figure id="fig-imp" data-fig="impulse-ball-wall"><figcaption>A ball bounces off a wall. The area under the wall's force-time graph is the impulse, equal to the ball's change in momentum.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A 0.20 kg ball moves left at 4.0 m/s, hits a wall and leaves right at 2.0 m/s. The wall's force rises linearly to 600 N in 2.0 ms and falls to zero at 4.0 ms. Find the impulse, the change in momentum and the average force (right positive).</p>
+<p>Impulse = area of the triangle = ½(0.0040 s)(600 N) = 1.2 N·s, to the right.</p>
+<p>Δp = m v_f − m v_i = (0.20)(+2.0) − (0.20)(−4.0) = +1.2 kg·m/s. They match, as the theorem says.</p>
+<p>F_avg = J/Δt = 1.2 N·s / 0.0040 s = 3.0 × 10² N, half the peak.</p>
+</div>
+<p>Watch the signs. The ball's speed went from 4.0 to 2.0 m/s, but its velocity went from −4.0 to +2.0 m/s, a change of 6.0 m/s. Subtracting speeds (2.0 − 4.0) gives a wrong and much smaller answer. A bounce always takes more impulse than a stop: the clay ball that sticks to the wall changes its momentum by only 0.80 kg·m/s.</p>
+
+<h2>Longer time, smaller force</h2>
+<p>If an object must go from a given speed to rest, its Δp is fixed, so the impulse is fixed. But J = F_avg Δt, so stretching the time shrinks the average force. That is the whole idea behind:</p>
+<ul>
+<li>airbags and crumple zones, which make a car's occupants stop over a longer time;</li>
+<li>bending your knees when you land, or rolling with a fall;</li>
+<li>catching an egg with a soft hand that moves back with it.</li>
+</ul>
+<p>Doubling the stopping time halves the average force. This inverse dependence, F_avg ∝ 1/Δt at fixed Δp, is a common functional-dependence question.</p>
+
+<h2>Reading momentum-time graphs</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> A 0.50 kg cart's momentum rises steadily from 0 to 1.2 kg·m/s between 0 and 3.0 s, then stays at 1.2 kg·m/s. Find the net force in each interval and the final speed.</p>
+<p>0 to 3.0 s: F_net = slope = 1.2 kg·m/s / 3.0 s = 0.40 N.</p>
+<p>After 3.0 s: the graph is flat, so F_net = 0. The cart coasts.</p>
+<p>Final speed: v = p/m = 1.2 / 0.50 = 2.4 m/s.</p>
+</div>
+<p>Summary of the two graphs: on a force-time graph, the <i>area</i> is the impulse (Δp). On a momentum-time graph, the <i>slope</i> is the net force.</p>
+
+<h2>Common slips</h2>
+<table class="compare"><thead><tr><th>Slip</th><th>Fix</th></tr></thead><tbody>
+<tr><td>Writing momentum as p = Ft</td><td>Ft is the impulse, the <i>change</i> in momentum; p = mv</td></tr>
+<tr><td>Subtracting speeds in a bounce</td><td>Use signed velocities: Δv = v_f − v_i</td></tr>
+<tr><td>Using the peak force as the average</td><td>F_avg = (area)/Δt</td></tr>
+<tr><td>Forgetting milliseconds</td><td>1 ms = 0.001 s before multiplying</td></tr>
+</tbody></table>

@@ -1,0 +1,47 @@
+<p>Simple harmonic motion has a shape. Plot the position of a mass on a spring against time and you get a smooth, repeating curve: a sine or cosine. This page shows how to read that curve, how to write its equation, and how the position, velocity and acceleration graphs fit together. These graph skills are tested in both multiple choice and free response.</p>
+
+<h2>The equation of motion</h2>
+<p>If an object in SHM starts at x = +A at t = 0 (released from rest at the end), its position is</p>
+<p style="text-align:center"><b>x = A cos(2πft)</b></p>
+<p>If it starts at x = 0 moving in the + direction, its position is</p>
+<p style="text-align:center"><b>x = A sin(2πft)</b></p>
+<p>Both are on the equations sheet. A is the amplitude and f = 1/T is the frequency. The quantity 2πft is an angle in <b>radians</b>: after one period, t = T, it equals 2π, one full cycle. Set your calculator to radian mode before you substitute, or every answer will be wrong.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A block starts at x = +0.10 m and oscillates with period 2.0 s. Where is it at t = 0.25 s?</p>
+<p>It starts at +A, so x = A cos(2πft), with f = 1/T = 0.50 Hz.</p>
+<p>2πft = 2π(0.50 Hz)(0.25 s) = π/4 rad = 0.785 rad.</p>
+<p>x = (0.10 m) cos(0.785) = (0.10 m)(0.707) = <b>0.071 m</b>.</p>
+<p>Check: after one eighth of a period the block has moved only 0.029 m from its start, less than a third of the way to equilibrium. It starts slowly from rest and speeds up.</p>
+</div>
+
+<h2>Reading the position graph</h2>
+<p>On a graph of x against t for SHM:</p>
+<ul>
+<li>The <b>amplitude</b> is the height of a peak above the center line (x = 0).</li>
+<li>The <b>period</b> is the time from one peak to the next (or between any two matching points one full cycle apart). Half a period takes the object from one end to the other.</li>
+<li>The <b>slope</b> at any instant is the velocity. Flat at a peak or trough means v = 0: a turning point. Steepest at a zero crossing means top speed at equilibrium.</li>
+</ul>
+
+<h2>Position, velocity and acceleration together</h2>
+<figure id="fig-xva" data-fig="shm-xva-graphs"><figcaption>One period of SHM, starting at x = +A. Read the three graphs straight down at any instant.</figcaption></figure>
+<p>Look down any vertical line in <a class="figref" href="#fig-xva">the figure</a>. Each graph follows from the one above it.</p>
+<ul>
+<li>The <b>velocity</b> graph is the slope of the position graph. It is zero at 0, T/2 and T (the turning points) and has its largest size at T/4 and 3T/4, where x = 0.</li>
+<li>The <b>acceleration</b> graph comes from the force: a = F/m = −(k/m)x. So the acceleration graph is the position graph flipped upside down. When x is largest and positive, a is largest and negative.</li>
+</ul>
+<table class="compare">
+<thead><tr><th>Position</th><th>Speed</th><th>Size of acceleration (and net force)</th></tr></thead>
+<tbody>
+<tr><td>x = +A or −A (turning points)</td><td>zero</td><td>largest, pointing toward x = 0</td></tr>
+<tr><td>x = 0 (equilibrium)</td><td>largest</td><td>zero</td></tr>
+<tr><td>in between</td><td>in between</td><td>in between, toward x = 0</td></tr>
+</tbody></table>
+<p>The classic error is to put the largest speed where the force is largest. Force sets the acceleration, the rate of change of velocity. At the ends the velocity is changing fastest, from + to −, while passing through zero.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> At t = 3T/8 in the figure, give the sign of x, v and a.</p>
+<p>3T/8 is between T/4 (x = 0) and T/2 (x = −A). The position graph is below zero and still falling: x is −, v is −. The acceleration is opposite to x: a is +. The object is moving left and slowing down, as it approaches −A.</p>
+</div>
+
+<h2>Why the period does not depend on amplitude</h2>
+<p>Release a block from twice as far. Every point on its new path is twice as far from equilibrium as the matching point on the old path, so the force there is twice as large and the acceleration is twice as large. Over the same time, twice the acceleration builds twice the velocity, which covers twice the distance. The whole motion is the old one scaled up by 2, and it fits into exactly the same time. On a graph, a larger amplitude makes the peaks taller but leaves them the same distance apart. That is why the period formulas, 2π√(m/k) and 2π√(ℓ/g), contain no A.</p>
+<p>The top speed does change: it is v<sub>max</sub> = 2πA/T, which doubles when A doubles. You do not need to memorize this for the exam, but you should be able to argue that a larger amplitude, with the same period, means a larger top speed.</p>

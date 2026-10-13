@@ -1,0 +1,22 @@
+{
+ "circular-flat-curve": {
+  "file": "figures/circular-flat-curve.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A car on a flat curve seen from above, with velocity tangent to the road and acceleration toward the center of the curve. Beside it, the free-body diagram seen from behind: F_N, road on car, up and F_g, Earth on car, down, equal; F_f, road on tires, horizontal toward the center. Static friction supplies the centripetal net force; no separate centripetal arrow is drawn."
+ },
+ "vertical-loop-fbd": {
+  "file": "figures/vertical-loop-fbd.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A cart on the inside of a vertical loop. At the top, both F_g, Earth, and F_N, track, point down toward the center: F_g + F_N = mv²/r. At the bottom, F_N, track, points up and is longer than F_g, Earth, down: F_N − F_g = mv²/r. No separate centripetal force arrow is drawn."
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "topic": "second-law",
+ "hook": "Push an empty shopping cart and it shoots forward; push a full one just as hard and it barely creeps. Pull the empty cart twice as hard and it speeds up twice as fast. Newton's second law turns those everyday facts into the one equation that connects forces to motion: a = F_net / m.",
+ "prereq": [
+  {
+   "q": "An object with zero net force",
+   "options": [
+    "keeps a constant velocity",
+    "slows down",
+    "stops at once",
+    "speeds up slowly"
+   ],
+   "correct": 0,
+   "why": "Newton's first law: zero net force, no change in velocity.",
+   "review": "first-law"
+  },
+  {
+   "q": "For the two-block system pushed by a hand, the forces between the blocks are",
+   "options": [
+    "internal and add to zero",
+    "external and add to the push",
+    "larger than the push",
+    "not third-law partners"
+   ],
+   "correct": 0,
+   "why": "Both blocks are in the system, so their pushes on each other are an internal third-law pair.",
+   "review": "third-law"
+  },
+  {
+   "q": "Acceleration is",
+   "options": [
+    "the change in velocity divided by the time",
+    "the change in position divided by the time",
+    "speed in a direction",
+    "distance over time squared"
+   ],
+   "correct": 0,
+   "why": "a = Δv/Δt.",
+   "review": "motion-quantities"
+  }
+ ],
+ "figure": {
+  "figure": "second-law-cart-hanging",
+  "caption": "Free-body diagrams of a cart and the block that pulls it. Acceleration is drawn beside each diagram, not on it."
+ },
+ "chain": [
+  {
+   "cause": "The forces on a system do not balance",
+   "effect": "there is a nonzero net external force ΣF"
+  },
+  {
+   "cause": "There is a net external force",
+   "effect": "the center of mass accelerates in the direction of the net force"
+  },
+  {
+   "cause": "The net force is larger, or the mass smaller",
+   "effect": "the acceleration is larger: a = ΣF / m"
+  },
+  {
+   "cause": "You choose the whole connected system",
+   "effect": "internal forces (tension, contact pushes) drop out, and one equation gives the shared acceleration"
+  }
+ ],
+ "ideas": [
+  "<b>Newton's second law</b>: a = ΣF / m, or ΣF = ma. The acceleration points along the net force, not necessarily along the velocity.",
+  "Apply it one axis at a time: ΣF<sub>x</sub> = ma<sub>x</sub>, ΣF<sub>y</sub> = ma<sub>y</sub>. Pick the axis along the acceleration.",
+  "For a <b>system</b>, use only external forces and the total mass: a<sub>sys</sub> = ΣF<sub>ext</sub> / m<sub>sys</sub>.",
+  "For <b>connected objects</b> (cart and hanging block, Atwood machine), find the shared acceleration from the whole system, then the tension from one object."
+ ],
+ "misconception": {
+  "wrong": "The tension in the string equals the weight of the hanging block, even while it falls.",
+  "right": "The block speeds up downward, so the net force on it points down and the tension is less than its weight. Tension equals the weight only if the block is at rest or at constant velocity."
+ },
+ "check": [
+  "phys-second-law-1",
+  "phys-second-law-2",
+  "phys-second-law-3",
+  "phys-second-law-4",
+  "phys-second-law-10",
+  "phys-second-law-13"
+ ],
+ "summary": "Newton's second law: the acceleration of a system's center of mass equals the net external force divided by its mass, a = ΣF/m, and points along the net force. Apply it one direction at a time; for connected objects, use the whole system for the acceleration and one object for the tension."
+}

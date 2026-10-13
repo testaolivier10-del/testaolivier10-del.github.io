@@ -1,0 +1,12 @@
+{
+ "first-law-zero-net": {
+  "file": "figures/first-law-zero-net.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three objects. A lamp hanging at rest: F_T, cord on lamp, up equals F_g, Earth on lamp, down. A skydiver falling at constant velocity: F_air, air on diver, up equals F_g down. A sled speeding up: F_N and F_g balance, but F_T, rope, to the right is longer than F_f, snow, to the left, so the net force is to the right."
+ }
+}

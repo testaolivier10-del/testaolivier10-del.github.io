@@ -1,0 +1,93 @@
+{
+ "topic": "impulse",
+ "hook": "Airbags, gym mats and the crumple zones in cars do not change how much a body must slow down in a crash. They change how long the slowing takes. Impulse explains why stretching out the time is all it takes to turn a bone-breaking force into a survivable one.",
+ "prereq": [
+  {
+   "q": "Momentum is",
+   "options": [
+    "mass times velocity",
+    "mass times acceleration",
+    "force times distance",
+    "½mv²"
+   ],
+   "correct": 0,
+   "why": "p = mv.",
+   "review": "linear-momentum"
+  },
+  {
+   "q": "On a velocity-time graph, the area under the curve gives the",
+   "options": [
+    "displacement",
+    "acceleration",
+    "force",
+    "speed"
+   ],
+   "correct": 0,
+   "why": "Area under v-t is Δx; slope is acceleration.",
+   "review": "math-slopes-areas"
+  },
+  {
+   "q": "Newton's second law for an object of constant mass is",
+   "options": [
+    "F_net = ma",
+    "F_net = mv",
+    "F_net = m/a",
+    "F_net = ½ma²"
+   ],
+   "correct": 0,
+   "why": "The net force equals mass times acceleration.",
+   "review": "second-law"
+  }
+ ],
+ "figure": {
+  "figure": "impulse-ball-wall",
+  "caption": "A ball bounces off a wall. The area under the force-time graph is the impulse, equal to the ball's change in momentum."
+ },
+ "chain": [
+  {
+   "cause": "A force acts on an object over a time interval",
+   "effect": "it delivers an impulse J = F_avg Δt, the area under the force-time graph, in N·s"
+  },
+  {
+   "cause": "The impulse acts on the object",
+   "effect": "the object's momentum changes by exactly that amount: J = Δp"
+  },
+  {
+   "cause": "The change in momentum is fixed (stop from a given speed)",
+   "effect": "a longer contact time means a smaller average force"
+  },
+  {
+   "cause": "Momentum is graphed against time",
+   "effect": "the slope of the p-t graph is the net force: F_net = Δp/Δt"
+  }
+ ],
+ "ideas": [
+  "<b>Impulse</b> J = F_avg Δt, a vector along the force, in N·s (= kg·m/s). It is the area under a <b>force-time graph</b>.",
+  "The <b>impulse-momentum theorem</b>: J_net = Δp = m v_f − m v_i. Keep the signs: a bounce reverses v.",
+  "The same Δp over a longer time needs a smaller force: airbags, mats, bent knees.",
+  "F_net = Δp/Δt, the slope of a <b>momentum-time graph</b>. For constant mass this is Newton's second law, F_net = ma."
+ ],
+ "misconception": {
+  "wrong": "Momentum is force times time, so p = Ft.",
+  "right": "Force times time is the impulse, which equals the change in momentum, Δp = F_avg Δt. Momentum itself is mv."
+ },
+ "check": [
+  "phys-impulse-1",
+  "phys-impulse-2",
+  "phys-impulse-3",
+  "phys-impulse-4",
+  "phys-impulse-14",
+  "phys-impulse-15"
+ ],
+ "summary": "Impulse J = F_avg Δt is the area under a force-time graph, and it equals the change in momentum. A fixed change in momentum spread over more time needs less force. The slope of a momentum-time graph is the net force.",
+ "connections": [
+  {
+   "href": "../notes/linear-momentum.html",
+   "label": "Back: momentum (4.1)"
+  },
+  {
+   "href": "../notes/momentum-conservation.html",
+   "label": "Next: 4.3"
+  }
+ ]
+}

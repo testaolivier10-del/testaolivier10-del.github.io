@@ -1,0 +1,83 @@
+{
+ "topic": "shm-energy",
+ "hook": "A trampoline jumper, a bungee cord and a car's suspension all trade energy back and forth between motion and a stretched or squeezed spring. Follow the energy and you can find the top speed of an oscillator without knowing anything about its timing.",
+ "prereq": [
+  {
+   "q": "A spring with k = 200 N/m is compressed 0.10 m. How much elastic potential energy does it store?",
+   "options": [
+    "1.0 J",
+    "2.0 J",
+    "10 J",
+    "20 J"
+   ],
+   "correct": 0,
+   "why": "U_s = ½k(Δx)² = ½(200 N/m)(0.10 m)² = 1.0 J.",
+   "review": "potential-energy"
+  },
+  {
+   "q": "When is the mechanical energy of a system constant?",
+   "options": [
+    "When no nonconservative forces (like friction) do work on it",
+    "When the object moves at constant speed",
+    "When the net force is zero",
+    "Always"
+   ],
+   "correct": 0,
+   "why": "Mechanical energy changes only when nonconservative or external forces do work.",
+   "review": "energy-conservation"
+  },
+  {
+   "q": "In SHM, where is the object's speed greatest?",
+   "options": [
+    "At equilibrium",
+    "At the turning points",
+    "Halfway to a turning point",
+    "It is the same everywhere"
+   ],
+   "correct": 0,
+   "why": "The restoring force has sped it up all the way to x = 0.",
+   "review": "shm-representations"
+  }
+ ],
+ "figure": {
+  "figure": "shm-energy-position",
+  "caption": "Energy against position for a block on a spring, with bar charts at three positions."
+ },
+ "chain": [
+  {
+   "cause": "The block is released from rest at x = A",
+   "effect": "all the system's energy is spring potential energy, ½kA²"
+  },
+  {
+   "cause": "The spring pushes the block toward x = 0 and does positive work on it",
+   "effect": "spring energy turns into kinetic energy"
+  },
+  {
+   "cause": "At x = 0 the spring is relaxed",
+   "effect": "all the energy is kinetic and the block moves at top speed"
+  },
+  {
+   "cause": "No friction removes energy from the system",
+   "effect": "the total stays ½kA², so the block reaches the same distance A on the other side"
+  }
+ ],
+ "ideas": [
+  "For a block and spring with no friction, <b>E = K + U<sub>s</sub> is constant</b>. Name the system (block + spring) and the condition (no friction) before you use it.",
+  "The total energy is set by the amplitude: <b>E = ½kA²</b>. At the turning points K = 0; at equilibrium U<sub>s</sub> = 0 and K = E.",
+  "U<sub>s</sub> = ½kx² goes as x², so at x = A/2 the spring holds only a quarter of the energy. Energy graphs against position are parabolas, and the total is a flat line.",
+  "For a pendulum, the energy trades between kinetic and gravitational potential energy: mgΔy = ½mv² at the bottom."
+ ],
+ "misconception": {
+  "wrong": "Halfway to the turning point the energy is half kinetic and half potential.",
+  "right": "Potential energy goes as x², so at x = A/2 the spring holds ¼ of the energy and the block has ¾ as kinetic energy. The half-and-half point is at x = A/√2."
+ },
+ "check": [
+  "phys-shm-energy-1",
+  "phys-shm-energy-2",
+  "phys-shm-energy-3",
+  "phys-shm-energy-4",
+  "phys-shm-energy-11",
+  "phys-shm-energy-14"
+ ],
+ "summary": "With no friction the mechanical energy of an oscillator is constant: for a block on a spring E = ½kA², all potential at the turning points and all kinetic at equilibrium; doubling the amplitude quadruples the energy."
+}

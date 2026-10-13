@@ -1,0 +1,81 @@
+{
+ "topic": "math-proportional",
+ "hook": "Drive twice as fast and your braking distance does not double; it becomes four times as long. Questions like \"if the speed triples, what happens to...\" appear all over the exam, and you can answer them in seconds without a single number, once you know how to read the equation.",
+ "prereq": [
+  {
+   "q": "Solve d = vt for t.",
+   "options": [
+    "t = d/v",
+    "t = v/d",
+    "t = dv",
+    "t = d − v"
+   ],
+   "correct": 0,
+   "why": "Divide both sides by v.",
+   "review": "math-symbols"
+  },
+  {
+   "q": "What is 3²?",
+   "options": [
+    "9",
+    "6",
+    "3",
+    "1.5"
+   ],
+   "correct": 0,
+   "why": "3² = 3 × 3 = 9.",
+   "review": "math-symbols"
+  }
+ ],
+ "figure": {
+  "figure": "doubling-three-ways",
+  "caption": "Doubling one quantity: in a direct proportion the other doubles, in an inverse one it halves, and in a square relationship it becomes 4 times as large."
+ },
+ "chain": [
+  {
+   "cause": "An equation links two quantities while the others stay fixed",
+   "effect": "the power of each quantity in the equation sets how the other responds"
+  },
+  {
+   "cause": "y = kx (first power)",
+   "effect": "multiplying x by a factor multiplies y by the same factor"
+  },
+  {
+   "cause": "y = k/x (x in the denominator)",
+   "effect": "multiplying x by a factor divides y by that factor"
+  },
+  {
+   "cause": "y = kx² (x squared)",
+   "effect": "multiplying x by a factor multiplies y by the factor squared"
+  }
+ ],
+ "ideas": [
+  "To find a <b>functional dependence</b>, solve for the quantity asked, hold everything else fixed, and look at the power of the quantity that changes.",
+  "<b>Directly proportional</b> (y ∝ x): factor in, same factor out. <b>Inversely proportional</b> (y ∝ 1/x): factor in, divide by it.",
+  "<b>Square</b> (y ∝ x²): factor in, factor squared out. Triple x → 9y. A square root (y ∝ √x): quadruple x → 2y.",
+  "Several changes at once: write a factor for each and multiply them. In y = kx²/z, doubling x and z gives 2²/2 = 2."
+ ],
+ "misconception": {
+  "wrong": "If the speed doubles, the braking distance doubles, because a bigger speed means a proportionally bigger distance.",
+  "right": "Read the equation: d = v²/(2a), so d ∝ v². Doubling v multiplies d by 2² = 4."
+ },
+ "check": [
+  "phys-math-proportional-1",
+  "phys-math-proportional-2",
+  "phys-math-proportional-3",
+  "phys-math-proportional-4",
+  "phys-math-proportional-5",
+  "phys-math-proportional-7"
+ ],
+ "summary": "Functional dependence says how one quantity responds when another changes. Directly proportional: the same factor. Inversely proportional: divide by the factor. Square: the factor squared. For several changes, multiply their factors.",
+ "connections": [
+  {
+   "href": "../notes/motion-quantities.html",
+   "label": "Back: velocity and acceleration (1.2)"
+  },
+  {
+   "href": "../notes/math-slopes-areas.html",
+   "label": "Next: slopes and areas of graphs"
+  }
+ ]
+}

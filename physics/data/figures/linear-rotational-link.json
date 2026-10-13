@@ -1,0 +1,12 @@
+{
+ "carousel-speeds": {
+  "file": "figures/carousel-speeds.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A merry-go-round seen from above turns counterclockwise about its center. Rider A sits near the rim and rider B halfway out on the same radius. Both turn through the same angle each second, so they share the same angular velocity ω. Their velocity arrows are perpendicular to the radius, and A’s arrow is twice as long as B’s, because A is twice as far from the axis: v = rω. A panel lists s = rθ, v = rω and a_T = rα, with angles in radians."
+ }
+}

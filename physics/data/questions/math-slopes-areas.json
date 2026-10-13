@@ -1,0 +1,347 @@
+{
+ "stimuli": {
+  "math-slopes-areas-s1": {
+   "kind": "graph",
+   "title": "A rising weather balloon",
+   "text": "<p>A student tracks a small weather balloon just after release and records its height above the ground every 2 s. The line through the data is the best-fit line, height = 0.50 t + 1.2 (height in meters, t in seconds).</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s"
+    },
+    "y": {
+     "label": "Height",
+     "unit": "m",
+     "min": 0,
+     "max": 7,
+     "step": 1
+    },
+    "series": [
+     {
+      "name": "Measured height",
+      "points": [
+       [
+        0,
+        1.2
+       ],
+       [
+        2,
+        2.1
+       ],
+       [
+        4,
+        3.3
+       ],
+       [
+        6,
+        4.1
+       ],
+       [
+        8,
+        5.3
+       ],
+       [
+        10,
+        6.2
+       ]
+      ]
+     },
+     {
+      "name": "Best-fit line",
+      "points": [
+       [
+        0,
+        1.2
+       ],
+       [
+        10,
+        6.2
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-math-slopes-areas-1",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "math-slopes-areas-s1",
+   "q": "Using the best-fit line, what is the slope of the graph, with its unit?",
+   "numeric": {
+    "answer": 0.5,
+    "tol": 0.01,
+    "unit": "m/s",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.62,
+      "why": "Value: 0.62 divides a height by a time without subtracting the starting height. Slope uses changes: (6.2 − 1.2) ÷ (10 − 0)."
+     },
+     {
+      "value": 2.0,
+      "why": "Value: the fraction is upside down. Slope is rise (vertical change) over run (horizontal change)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Pick two points on the line, not data points: (0 s, 1.2 m) and (10 s, 6.2 m). Slope = rise/run = (6.2 m − 1.2 m) ÷ (10 s − 0 s) = 0.50 m/s."
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-2",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "math-slopes-areas-s1",
+   "q": "What does the slope of this graph tell you about the balloon?",
+   "options": [
+    "The rate its height increases (m/s)",
+    "How high it is at each moment of its flight",
+    "How many seconds it takes to reach 6.2 m",
+    "How high above the ground it started"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A slope means \"change in y per change in x\". Here that is meters of height per second: the rate at which the balloon rises.",
+    "options": [
+     "Right: the slope is a change in height per change in time, so it is the balloon's upward speed.",
+     "Height at a moment is read straight off the graph, not from the slope.",
+     "That is a time read from the horizontal axis, not a rate.",
+     "The starting height is the vertical intercept, 1.2 m."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-3",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "math-slopes-areas-s1",
+   "q": "What does the vertical intercept of the best-fit line, 1.2 m, represent?",
+   "options": [
+    "How fast the balloon rises",
+    "The total height the balloon gained in 10 s",
+    "The error in the height measurements made",
+    "Its height when timing began"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For a line y = mx + b, b is the value of y at x = 0. Timing started with the balloon already 1.2 m up.",
+    "options": [
+     "That is the slope, 0.50 m/s.",
+     "The gain is 6.2 m − 1.2 m = 5.0 m, a change, not the intercept.",
+     "The intercept is a real starting value: the balloon was released from a height above the ground.",
+     "Right: the intercept is the value of y when x is zero."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-4",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "math-slopes-areas-s1",
+   "q": "Why is the slope found from the best-fit line instead of from the first and last data points?",
+   "options": [
+    "The data points are not plotted on the graph",
+    "Two data points are not enough to give a slope",
+    "The line averages the scatter of all six points",
+    "The best-fit line passes through each of the data points"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Real data scatter. A best-fit line balances points above and below it, so its slope uses every measurement, not just two.",
+    "options": [
+     "They are plotted; the issue is that each one carries some random error.",
+     "Any two points give a slope, but two scattered points give a less reliable one than a line fit to all six.",
+     "Right: each point has some measurement error; the best-fit line uses all the data, so its slope is more reliable.",
+     "A best-fit line usually passes between points, with about as many above as below."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-5",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "math-slopes-areas-s1",
+   "q": "If the balloon keeps rising the same way, what height does the best-fit line predict at t = 14 s?",
+   "numeric": {
+    "answer": 8.2,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 7.0,
+      "why": "Value: 7.0 m is only the height gained after release. Add the starting height, 1.2 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "height = 0.50 t + 1.2 = (0.50 m/s)(14 s) + 1.2 m = 7.0 m + 1.2 m = 8.2 m."
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-6",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A graph of speed against time is a horizontal line at 2.5 m/s from t = 0 to t = 14 s. What is the area under the line, which is the distance covered?",
+   "numeric": {
+    "answer": 35.0,
+    "tol": 1.0,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.18,
+      "why": "Value: an area multiplies the height by the width; you divided."
+     },
+     {
+      "value": 5.6,
+      "why": "Value: an area multiplies the two sides; dividing gives a time per speed, not a distance."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Area of the rectangle = height × width = 2.5 m/s × 14 s = 35 m. Units: (m/s)(s) = m."
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-7",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A graph has speed (m/s) on the vertical axis and time (s) on the horizontal axis. Which unit does the slope have, and which unit does the area under the line have?",
+   "options": [
+    "Slope: m; area: m/s²",
+    "Slope: m/s; area: m/s",
+    "Slope: s/m; area: m·s²",
+    "Slope: m/s²; area: m"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Slope units = (y unit)/(x unit); area units = (y unit) × (x unit).",
+    "options": [
+     "These are swapped: a slope divides the units, an area multiplies them.",
+     "The axis unit alone is neither; slope and area combine both axes' units.",
+     "Slope is y over x, not x over y, and an area multiplies y by x.",
+     "Right: slope = (m/s) ÷ s = m/s²; area = (m/s) × s = m."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-8",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A graph of speed against time is a straight line from 0 m/s at t = 0 to 8.0 m/s at t = 4.0 s. What is the area under the line from 0 to 4.0 s?",
+   "numeric": {
+    "answer": 16.0,
+    "tol": 1.0,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 32.0,
+      "why": "Value: 32 m is the area of the whole rectangle. The region under a line from zero is a triangle: take half."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The region is a triangle: area = ½ × base × height = ½ × 4.0 s × 8.0 m/s = 16 m."
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-9",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A cart starts from rest with a steady acceleration, so d = ½at². A student wants a straight-line graph whose slope gives a. What should she plot?",
+   "options": [
+    "d against t; the slope is the acceleration a",
+    "d against t²; the slope is ½a",
+    "d against t²; the slope is twice the acceleration, 2a",
+    "d² against t; the slope is half the acceleration"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Linearize by matching y = mx: y = d, x = t², m = ½a. Then a = 2 × slope.",
+    "options": [
+     "d against t curves upward because d depends on t², so it has no single slope.",
+     "Right: d = (½a)(t²) has the form y = mx with x = t², so the graph is a line through the origin with slope ½a.",
+     "The slope is the factor multiplying t², which is ½a, so a = 2 × slope, not slope = 2a.",
+     "Squaring d does not undo the square on t; this graph is not a line either."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-10",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student plots d against t² for a cart released from rest and finds a best-fit slope of 0.36 m/s². Since d = ½at², what is the cart's acceleration?",
+   "numeric": {
+    "answer": 0.72,
+    "tol": 0.01,
+    "unit": "m/s^2",
+    "units": [
+     "m/s/s",
+     "m s^-2"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.36,
+      "why": "Value: the slope is ½a, not a. Multiply the slope by 2."
+     },
+     {
+      "value": 0.18,
+      "why": "Value: you halved the slope. The slope already equals ½a, so a = 2 × slope."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The slope of d against t² is ½a. So a = 2 × slope = 2 × 0.36 m/s² = 0.72 m/s²."
+   }
+  }
+ ]
+}

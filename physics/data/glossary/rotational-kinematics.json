@@ -1,0 +1,23 @@
+{
+ "rigid-body": {
+  "def": "An object or system that keeps its shape as it moves, so every part of it turns through the same angle in the same time."
+ },
+ "axis-of-rotation": {
+  "def": "The line about which an object turns. Every point of the object moves in a circle centered on this line."
+ },
+ "radian": {
+  "def": "The SI unit of angle: the angle for which the distance along a circle equals the radius. One revolution is 2π rad, about 6.28 rad, or 360°."
+ },
+ "angular-displacement": {
+  "def": "The change in an object’s angle, Δθ = θ − θ₀, in radians, with a sign for the direction of turning (counterclockwise positive is a common choice)."
+ },
+ "angular-velocity": {
+  "def": "The rate of change of angle, ω = Δθ/Δt, in rad/s. Its sign says whether the object turns clockwise or counterclockwise."
+ },
+ "angular-acceleration": {
+  "def": "The rate of change of angular velocity, α = Δω/Δt, in rad/s². When α and ω have the same sign the object speeds up; opposite signs, it slows."
+ },
+ "rotational-kinematic-equations": {
+  "def": "For constant angular acceleration: ω = ω₀ + αt, θ = θ₀ + ω₀t + ½αt², and ω² = ω₀² + 2α(θ − θ₀). They mirror the linear equations with θ, ω, α for x, v, a."
+ }
+}

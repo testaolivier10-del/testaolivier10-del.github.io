@@ -1,0 +1,14 @@
+{
+ "impulse": {
+  "def": "The product of the average force and the time it acts, J = F_avg Δt: a vector in N·s, equal to the area under a force-time graph."
+ },
+ "impulse-momentum-theorem": {
+  "def": "The net impulse on an object equals its change in momentum: J = Δp."
+ },
+ "force-time-graph": {
+  "def": "A graph of force against time; the area under it is the impulse."
+ },
+ "momentum-time-graph": {
+  "def": "A graph of momentum against time; its slope is the net force on the object."
+ }
+}

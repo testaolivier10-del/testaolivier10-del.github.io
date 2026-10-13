@@ -1,0 +1,12 @@
+{
+ "com-two-objects": {
+  "file": "figures/com-two-objects.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a light rod with a 3.0 kg ball at 0 m and a 1.0 kg ball at 0.80 m balances on a support at its center of mass, 0.20 m, closer to the heavier ball; the calculation x_cm = (3.0 kg × 0 + 1.0 kg × 0.80 m) ÷ 4.0 kg = 0.20 m is shown. Right: two carts inside a dashed boundary labeled as the system, with the track, Earth and air as the surroundings."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "momentum-two-carts": {
+  "file": "figures/momentum-two-carts.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two carts move right. Cart 1, 2.0 kg at 1.0 m/s, and cart 2, 0.50 kg at 4.0 m/s, have velocity arrows differing by four times but equal momentum arrows of 2.0 kg·m/s. Their kinetic energies are 1.0 J and 4.0 J."
+ }
+}

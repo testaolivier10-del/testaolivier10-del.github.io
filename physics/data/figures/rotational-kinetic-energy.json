@@ -1,0 +1,12 @@
+{
+ "flywheel-energy": {
+  "file": "figures/flywheel-energy.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A flywheel spins counterclockwise on a fixed stand. Its center of mass does not move (v_cm = 0), yet every piece of the rim moves: velocity arrows at the top, bottom, left and right of the rim point in different, opposite directions, tangent to the rim. The wheel therefore has kinetic energy of rotation. A panel derives K_rot = ½Iω² from adding ½m(rω)² for every piece, notes it is a scalar measured in joules, that doubling ω quadruples it, and that moving mass outward at the same ω increases it."
+ }
+}

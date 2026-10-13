@@ -1,0 +1,448 @@
+{
+ "stimuli": {
+  "linear-momentum-s1": {
+   "kind": "diagram",
+   "title": "Two carts on level tracks",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 290\" role=\"img\" aria-label=\"Two carts move right on level tracks. Cart 1 has mass 2.0 kg and velocity 1.0 m/s; cart 2 has mass 0.50 kg and velocity 4.0 m/s.\" style=\"max-width:100%;height:auto;background:#fff\"><rect width=\"760\" height=\"290\" fill=\"#FFFFFF\"/><text x=\"24\" y=\"30\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">Two carts on level tracks</text><rect x=\"30\" y=\"130\" width=\"530\" height=\"7\" fill=\"#C9C3B6\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"40\" y=\"137\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"542\" y=\"137\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"60\" y=\"74\" width=\"120\" height=\"42\" rx=\"6\" fill=\"#F6E7C8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"80\" cy=\"121\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"160\" cy=\"121\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"80\" cy=\"121\" r=\"3\" fill=\"#D7D2C8\"/><circle cx=\"160\" cy=\"121\" r=\"3\" fill=\"#D7D2C8\"/><text x=\"120\" y=\"89\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">Cart 1</text><text x=\"120\" y=\"106\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">2.0 kg</text><line x1=\"190\" y1=\"82\" x2=\"213.0\" y2=\"82.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"224.0,82.0 213.0,87.0 213.0,77.0\" fill=\"#B07A00\"/><text x=\"232.0\" y=\"87.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"start\" font-weight=\"bold\">v = 1.0 m/s</text><rect x=\"30\" y=\"260\" width=\"530\" height=\"7\" fill=\"#C9C3B6\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"40\" y=\"267\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"542\" y=\"267\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"60\" y=\"204\" width=\"80\" height=\"42\" rx=\"6\" fill=\"#F6E7C8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"80\" cy=\"251\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"120\" cy=\"251\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"80\" cy=\"251\" r=\"3\" fill=\"#D7D2C8\"/><circle cx=\"120\" cy=\"251\" r=\"3\" fill=\"#D7D2C8\"/><text x=\"100\" y=\"219\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">Cart 2</text><text x=\"100\" y=\"236\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.50 kg</text><line x1=\"150\" y1=\"212\" x2=\"275.0\" y2=\"212.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"286.0,212.0 275.0,216.9 275.0,207.1\" fill=\"#B07A00\"/><text x=\"294.0\" y=\"217.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"start\" font-weight=\"bold\">v = 4.0 m/s</text></svg><p>Positive is to the right.</p>"
+  },
+  "linear-momentum-s2": {
+   "kind": "setup",
+   "title": "An explosion on a track",
+   "text": "<p>Two carts, A (0.60 kg) and B (0.40 kg), sit at rest on a level, low-friction track with a compressed spring between them, held by a thread. The thread is burned. The spring pushes the carts apart, and cart A moves left at 0.80 m/s. Take right as positive.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-linear-momentum-1",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-momentum-s1",
+   "q": "What is cart 1's momentum? Give the value and its unit.",
+   "numeric": {
+    "answer": 2,
+    "tol": 0.1,
+    "unit": "kg·m/s",
+    "units": [
+     "kg m/s",
+     "N·s",
+     "N s"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "Value: that is ½mv. Momentum has no ½: p = mv."
+     }
+    ]
+   },
+   "why": {
+    "correct": "p = mv = (2.0 kg)(+1.0 m/s) = +2.0 kg·m/s, to the right. Momentum's unit is kg·m/s (the same as N·s)."
+   }
+  },
+  {
+   "id": "phys-linear-momentum-2",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-momentum-s1",
+   "q": "How do the momenta and kinetic energies of the two carts compare?",
+   "options": [
+    "Equal momenta; cart 2 has 4 times the kinetic energy",
+    "Equal momenta and equal kinetic energies",
+    "Cart 2 has 4 times the momentum and 4 times the kinetic energy",
+    "Cart 1 has more momentum, because it is heavier"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "p₁ = (2.0)(1.0) = 2.0 kg·m/s; p₂ = (0.50)(4.0) = 2.0 kg·m/s. K₁ = ½(2.0)(1.0)² = 1.0 J; K₂ = ½(0.50)(4.0)² = 4.0 J.",
+    "options": [
+     "Right: both p = 2.0 kg·m/s; K is 1.0 J and 4.0 J.",
+     "Equal momenta do not mean equal K: K = p²/(2m) is larger for the smaller mass.",
+     "Cart 2 is 4 times as fast but has one quarter the mass, so its momentum is the same.",
+     "Momentum depends on mass and velocity together: 2.0 × 1.0 = 0.50 × 4.0."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-momentum-3",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-momentum-s1",
+   "q": "Cart 2 reverses and moves left at 4.0 m/s. What is the momentum of the two-cart system now?",
+   "options": [
+    "4.0 kg·m/s to the right",
+    "Zero",
+    "2.0 kg·m/s to the right",
+    "5.0 J"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Total p = (2.0 kg)(+1.0 m/s) + (0.50 kg)(−4.0 m/s) = 0. Momenta are vectors and can cancel; kinetic energies cannot.",
+    "options": [
+     "That adds the sizes. Cart 2 now moves left, so its momentum is negative.",
+     "Right: (2.0)(+1.0) + (0.50)(−4.0) = 0. Opposite momenta cancel.",
+     "That is cart 1 alone. Add cart 2's −2.0 kg·m/s.",
+     "That is the kinetic energy, which does not cancel. Momentum is a vector, in kg·m/s."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-momentum-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-momentum-s1",
+   "q": "What is the velocity of the center of mass of the two carts, both moving right as shown?",
+   "options": [
+    "+2.5 m/s",
+    "+5.0 m/s",
+    "+1.6 m/s",
+    "+4.0 m/s"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "v_cm = Σp/Σm = (2.0 + 2.0) kg·m/s / (2.0 + 0.50) kg = +1.6 m/s.",
+    "options": [
+     "This averages the two speeds. The center of mass weights each velocity by its mass.",
+     "This adds the velocities. Divide the sum of the momenta by the total mass.",
+     "Right: v_cm = (sum of momenta)/(total mass) = 4.0/2.5.",
+     "That is the sum of the momenta; it still needs dividing by the total mass, 2.5 kg."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-momentum-5",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-momentum-s2",
+   "q": "What is cart B's velocity after the carts separate, in m/s? Include the sign.",
+   "numeric": {
+    "answer": 1.2,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -1.2,
+      "why": "Value: B moves the opposite way from A, to the right, so its velocity is positive."
+     },
+     {
+      "value": 0.8,
+      "why": "Value: equal momenta, not equal speeds: B is lighter, so it moves faster."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The two-cart system starts at rest with p = 0 and the spring's pushes are internal, so p stays 0: (0.60)(−0.80) + (0.40)v_B = 0 gives v_B = +1.2 m/s."
+   }
+  },
+  {
+   "id": "phys-linear-momentum-6",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-momentum-s2",
+   "q": "What is the velocity of the two-cart system's center of mass after the carts separate?",
+   "options": [
+    "+1.2 m/s, the faster cart's velocity",
+    "−0.80 m/s, the heavier cart's velocity",
+    "+0.40 m/s, the average of the two velocities",
+    "Zero"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "v_cm = Σp/Σm = 0/1.00 kg = 0. Internal forces cannot move the center of mass of a system.",
+    "options": [
+     "The center of mass moves with the sum of the momenta over the total mass, which is zero.",
+     "The center of mass is not attached to one cart; the two momenta cancel.",
+     "An unweighted average ignores the masses. Weighted by mass, the velocities cancel exactly.",
+     "Right: the system's momentum is still zero, so the center of mass stays at rest."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-momentum-7",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-momentum-s2",
+   "q": "Which cart gets more kinetic energy from the spring?",
+   "options": [
+    "B, the lighter cart",
+    "A, the heavier cart",
+    "Neither: they get equal kinetic energies",
+    "Neither: the total kinetic energy stays zero"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K_A = ½(0.60)(0.80)² = 0.19 J; K_B = ½(0.40)(1.2)² = 0.29 J. The lighter cart moves faster with the same size of momentum.",
+    "options": [
+     "Right: equal momenta, and K = p²/(2m) is larger for the smaller mass: 0.29 J against 0.19 J.",
+     "With equal momenta, the heavier cart is slower and gets less kinetic energy.",
+     "They get equal sizes of momentum, not equal kinetic energies.",
+     "The spring's stored energy becomes kinetic energy. Momentum stays zero; kinetic energy does not."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-momentum-8",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-momentum-s2",
+   "q": "Why can the spring's push be treated with the explosion model?",
+   "options": [
+    "The spring's forces are external, so they do not change the momentum",
+    "The spring's forces on the carts are internal and much larger than any outside force during the push",
+    "The spring does no work on the carts",
+    "The carts have equal masses"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In the collision and explosion models, the forces between the objects are internal and briefly much larger than external ones, so the system's momentum is the same before and after.",
+    "options": [
+     "External forces are what change a system's momentum. The spring is inside the system.",
+     "Right: so the system's momentum is the same just before and just after.",
+     "The spring does positive work: that is where the carts' kinetic energy comes from.",
+     "They do not (0.60 kg and 0.40 kg), and the model does not need it."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-momentum-9",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A 0.15 kg ball moving right at 20 m/s and a 1200 kg car moving left at 0.0025 m/s are compared. Which is true?",
+   "options": [
+    "The car has far more momentum, because of its mass",
+    "The ball has far more momentum, because it is faster",
+    "Their momenta have the same size and opposite directions",
+    "Their momenta are equal, including direction"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "p = mv: ball +3.0 kg·m/s, car −3.0 kg·m/s. Same size, opposite directions.",
+    "options": [
+     "The car's mass is large but its speed is tiny; the products match.",
+     "The ball is faster but much lighter; the products match.",
+     "Right: (0.15)(20) = 3.0 kg·m/s and (1200)(0.0025) = 3.0 kg·m/s.",
+     "They move in opposite directions, so the momentum vectors point opposite ways."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-momentum-10",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "If an object's speed doubles, by what factor does its momentum change, and by what factor does its kinetic energy change?",
+   "options": [
+    "Both ×2",
+    "Both ×4",
+    "Momentum ×4, kinetic energy ×2",
+    "Momentum ×2, kinetic energy ×4"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "p = mv doubles with v; K = ½mv² quadruples. This difference is why momentum and energy behave differently in collisions.",
+    "options": [
+     "K depends on v², so it grows by 4.",
+     "p = mv is proportional to v, so it only doubles.",
+     "That swaps the two: p is linear in v, K quadratic.",
+     "Right: p ∝ v, K ∝ v²."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-momentum-11",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A 0.50 kg cart has a momentum of 3.0 kg·m/s. What is its kinetic energy, in joules?",
+   "numeric": {
+    "answer": 9,
+    "tol": 0.1,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 18,
+      "why": "Value: you left out the 2. From K = ½mv² and p = mv, K = p²/(2m)."
+     },
+     {
+      "value": 3,
+      "why": "Value: the momentum must be squared: K = p²/(2m)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v = p/m = 6.0 m/s, so K = ½(0.50 kg)(6.0 m/s)² = 9.0 J. Or directly K = p²/(2m) = 9.0/1.0 J."
+   }
+  },
+  {
+   "id": "phys-linear-momentum-12",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A ball moving right at 5.0 m/s bounces straight back at 5.0 m/s. Which is true of its momentum and kinetic energy?",
+   "options": [
+    "Its momentum changed; its kinetic energy did not",
+    "Neither changed, because the speed is the same",
+    "Both changed",
+    "Its kinetic energy changed; its momentum did not"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Δp = m(−5.0) − m(+5.0) = −10m kg·m/s, a real change. K = ½m(5.0)² before and after.",
+    "options": [
+     "Right: momentum reversed direction, but the speed and so K are the same.",
+     "Momentum is a vector. Reversing it is a change of 2mv.",
+     "K depends on speed only, and the speed is unchanged.",
+     "This reverses the two."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-momentum-13",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 70.0 kg skater moves at 3.0 m/s and a 50.0 kg skater moves at 4.2 m/s in the same direction. What is the momentum of the pair (the sum of their momenta), in kg·m/s?",
+   "numeric": {
+    "answer": 420,
+    "tol": 10,
+    "unit": "kg·m/s",
+    "sigfigs": 2
+   },
+   "why": {
+    "correct": "p = (70.0)(3.0) + (50.0)(4.2) = 210 + 210 = 420 kg·m/s = 4.2 × 10² kg·m/s, in their direction of motion."
+   }
+  },
+  {
+   "id": "phys-linear-momentum-14",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A two-object system has a center of mass that moves at constant velocity. What can you conclude?",
+   "options": [
+    "Both objects move at constant velocity",
+    "The net external force on the system is zero",
+    "The objects do not interact with each other",
+    "The system has no kinetic energy"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The system's momentum, and so v_cm, changes only when there is a net external force. Internal forces move the parts, not the center of mass.",
+    "options": [
+     "The objects can speed up and slow down as they push each other; only their combined momentum is fixed.",
+     "Right: v_cm = Σp/Σm is constant only when the system's momentum is constant.",
+     "They may interact strongly; internal forces cancel in the total.",
+     "A moving center of mass means the system does have kinetic energy."
+    ]
+   }
+  },
+  {
+   "id": "phys-linear-momentum-15",
+   "type": "predict",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A cart moving right is given a push that reverses it, so it moves left at the same speed. Predict how each quantity changes, with right as positive.",
+   "variables": [
+    {
+     "name": "The cart's momentum (x-component)",
+     "answer": "down",
+     "why": "It goes from +mv to −mv."
+    },
+    {
+     "name": "The cart's kinetic energy",
+     "answer": "none",
+     "why": "The speed is the same, so ½mv² is the same."
+    },
+    {
+     "name": "The cart's mass",
+     "answer": "none",
+     "why": "Pushing does not change the cart's mass."
+    }
+   ],
+   "why": {
+    "correct": "Momentum is a vector and reverses; kinetic energy depends only on speed."
+   }
+  },
+  {
+   "id": "phys-linear-momentum-16",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "linear-momentum",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which unit is the same as kg·m/s?",
+   "options": [
+    "J",
+    "N",
+    "N·s",
+    "W"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A newton-second is a force times a time; it reduces to kg·m/s, the unit of momentum. 4.2 shows why.",
+    "options": [
+     "A joule is kg·m²/s², the unit of energy.",
+     "A newton is kg·m/s², the unit of force.",
+     "Right: N·s = (kg·m/s²)(s) = kg·m/s.",
+     "A watt is kg·m²/s³, the unit of power."
+    ]
+   }
+  }
+ ]
+}

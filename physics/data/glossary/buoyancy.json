@@ -1,0 +1,14 @@
+{
+ "fluid-parcel": {
+  "def": "A small, imagined portion of a fluid treated as an object, so Newton's laws can be applied to it."
+ },
+ "buoyant-force": {
+  "def": "The net upward force a fluid exerts on an object in it, because the pressure on the object's bottom is larger than on its top."
+ },
+ "archimedes": {
+  "def": "The buoyant force equals the weight of the fluid the object displaces: F_b = ρ_fluid V_displaced g. It does not depend on the object's own density."
+ },
+ "neutral-buoyancy": {
+  "def": "The condition in which the buoyant force on an object equals its weight, so it neither rises nor sinks; a floating object is in this balance."
+ }
+}

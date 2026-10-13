@@ -1,0 +1,83 @@
+{
+ "topic": "shm-intro",
+ "hook": "A guitar string, a car bouncing on its springs after a pothole, a child on a swing and the quartz crystal timing your phone all do the same thing: they go back and forth, over and over, about a middle position. Physics has one model that describes all of them, and it starts with a single rule about the force.",
+ "prereq": [
+  {
+   "q": "A spring with k = 50 N/m is stretched 0.10 m. How large is the force it exerts?",
+   "options": [
+    "5.0 N",
+    "500 N",
+    "0.0020 N",
+    "50 N"
+   ],
+   "correct": 0,
+   "why": "Hooke's law: |F| = kΔx = (50 N/m)(0.10 m) = 5.0 N.",
+   "review": "spring-forces"
+  },
+  {
+   "q": "An object has zero net force on it. What must be true?",
+   "options": [
+    "Its velocity is constant (possibly zero)",
+    "It is at rest",
+    "It is slowing down",
+    "No forces act on it"
+   ],
+   "correct": 0,
+   "why": "Zero net force means zero acceleration, so the velocity does not change. The object can be moving.",
+   "review": "first-law"
+  },
+  {
+   "q": "A 2.0 kg object has a net force of 6.0 N on it. What is its acceleration?",
+   "options": [
+    "3.0 m/s²",
+    "12 m/s²",
+    "0.33 m/s²",
+    "6.0 m/s²"
+   ],
+   "correct": 0,
+   "why": "a = F/m = 6.0 N / 2.0 kg = 3.0 m/s².",
+   "review": "second-law"
+  }
+ ],
+ "figure": {
+  "figure": "shm-restoring-force",
+  "caption": "The spring force on the cart always points back toward equilibrium and is proportional to the displacement."
+ },
+ "chain": [
+  {
+   "cause": "An object is displaced from its equilibrium position",
+   "effect": "a restoring force pulls it back toward equilibrium"
+  },
+  {
+   "cause": "The restoring force is proportional to the displacement and opposite to it (F = −kx)",
+   "effect": "the acceleration is largest at the ends and zero at equilibrium"
+  },
+  {
+   "cause": "The object reaches equilibrium moving fast",
+   "effect": "it overshoots, because zero force does not stop it"
+  },
+  {
+   "cause": "On the other side the restoring force reverses",
+   "effect": "the object slows, stops at the same distance A, and comes back: simple harmonic motion"
+  }
+ ],
+ "ideas": [
+  "<b>Periodic motion</b> repeats in equal time intervals. <b>Simple harmonic motion</b> (SHM) is the special case caused by a restoring force proportional to the displacement: F = −kx.",
+  "The <b>equilibrium position</b> is where the net force is zero. The object moves fastest there, so zero force does not mean zero velocity.",
+  "The <b>amplitude</b> A is the largest displacement from equilibrium: half the distance from one turning point to the other.",
+  "A <b>simple pendulum</b> at small angles is close to SHM: along its arc the restoring force is about mg·θ, proportional to the angle (in radians)."
+ ],
+ "misconception": {
+  "wrong": "At the turning points the object is at rest, so the force on it is zero; at the middle it is moving fastest, so the force there is largest.",
+  "right": "It is the other way round. The force depends on the displacement, not on the speed: it is largest at the turning points (where the object is momentarily at rest) and zero at equilibrium (where it moves fastest)."
+ },
+ "check": [
+  "phys-shm-intro-1",
+  "phys-shm-intro-2",
+  "phys-shm-intro-3",
+  "phys-shm-intro-4",
+  "phys-shm-intro-13",
+  "phys-shm-intro-14"
+ ],
+ "summary": "Simple harmonic motion is periodic motion driven by a restoring force proportional to the displacement from equilibrium and opposite to it (F = −kx); the force and acceleration are zero at equilibrium and largest at the amplitude, and a pendulum at small angles is a close match."
+}

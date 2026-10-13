@@ -1,0 +1,448 @@
+{
+ "stimuli": {
+  "third-law-s1": {
+   "kind": "diagram",
+   "title": "Two blocks pushed together",
+   "text": "<p>A student pushes a 6.0 kg block to the right with a 24 N horizontal force. The 6.0 kg block pushes a 2.0 kg block that sits against it. The floor is frictionless, and both blocks speed up together.</p>",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 540 190\" role=\"img\" aria-label=\"A hand pushes a 6.0 kg block to the right with a 24 N force; the 6.0 kg block pushes a 2.0 kg block in front of it. The floor is frictionless.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"540\" height=\"190\" fill=\"#FFFFFF\"/><rect x=\"20\" y=\"150\" width=\"500\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"20\" y1=\"150\" x2=\"520\" y2=\"150\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"26\" y1=\"151\" x2=\"18\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"38\" y1=\"151\" x2=\"30\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"151\" x2=\"42\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"62\" y1=\"151\" x2=\"54\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"74\" y1=\"151\" x2=\"66\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"86\" y1=\"151\" x2=\"78\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"98\" y1=\"151\" x2=\"90\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"110\" y1=\"151\" x2=\"102\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"122\" y1=\"151\" x2=\"114\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"134\" y1=\"151\" x2=\"126\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"146\" y1=\"151\" x2=\"138\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"158\" y1=\"151\" x2=\"150\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"170\" y1=\"151\" x2=\"162\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"182\" y1=\"151\" x2=\"174\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"194\" y1=\"151\" x2=\"186\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"206\" y1=\"151\" x2=\"198\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"218\" y1=\"151\" x2=\"210\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"230\" y1=\"151\" x2=\"222\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"242\" y1=\"151\" x2=\"234\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"254\" y1=\"151\" x2=\"246\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"266\" y1=\"151\" x2=\"258\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"278\" y1=\"151\" x2=\"270\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"290\" y1=\"151\" x2=\"282\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"302\" y1=\"151\" x2=\"294\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"314\" y1=\"151\" x2=\"306\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"326\" y1=\"151\" x2=\"318\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"338\" y1=\"151\" x2=\"330\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"350\" y1=\"151\" x2=\"342\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"362\" y1=\"151\" x2=\"354\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"374\" y1=\"151\" x2=\"366\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"386\" y1=\"151\" x2=\"378\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"398\" y1=\"151\" x2=\"390\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"410\" y1=\"151\" x2=\"402\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"422\" y1=\"151\" x2=\"414\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"434\" y1=\"151\" x2=\"426\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"446\" y1=\"151\" x2=\"438\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"458\" y1=\"151\" x2=\"450\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"470\" y1=\"151\" x2=\"462\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"482\" y1=\"151\" x2=\"474\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"494\" y1=\"151\" x2=\"486\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"506\" y1=\"151\" x2=\"498\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"518\" y1=\"151\" x2=\"510\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1\"/><rect x=\"170\" y=\"70\" width=\"90\" height=\"80\" rx=\"2\" fill=\"#E3C99A\" stroke=\"#9C7A44\" stroke-width=\"2.5\"/><rect x=\"175\" y=\"75\" width=\"80\" height=\"70\" rx=\"1\" fill=\"none\" stroke=\"#9C7A44\" stroke-width=\"1.4\"/><line x1=\"176\" y1=\"144\" x2=\"254\" y2=\"76\" stroke=\"#9C7A44\" stroke-width=\"1.4\"/><rect x=\"193\" y=\"99\" width=\"44\" height=\"22\" rx=\"3\" fill=\"#FFFFFF\" stroke=\"#9C7A44\" stroke-width=\"1\"/><text x=\"215\" y=\"115\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">6.0 kg</text><rect x=\"260\" y=\"100\" width=\"60\" height=\"50\" rx=\"2\" fill=\"#E3C99A\" stroke=\"#9C7A44\" stroke-width=\"2.5\"/><rect x=\"265\" y=\"105\" width=\"50\" height=\"40\" rx=\"1\" fill=\"none\" stroke=\"#9C7A44\" stroke-width=\"1.4\"/><line x1=\"266\" y1=\"144\" x2=\"314\" y2=\"106\" stroke=\"#9C7A44\" stroke-width=\"1.4\"/><rect x=\"268\" y=\"114\" width=\"44\" height=\"22\" rx=\"3\" fill=\"#FFFFFF\" stroke=\"#9C7A44\" stroke-width=\"1\"/><text x=\"290\" y=\"130\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">2.0 kg</text><line x1=\"100\" y1=\"110\" x2=\"156\" y2=\"110\" stroke=\"#5A6268\" stroke-width=\"3.2\"/><polygon points=\"168,110 156,116.5 156,103.5\" fill=\"#5A6268\"/><text x=\"60\" y=\"100\" font-size=\"13\" fill=\"#1F2A28\"><tspan fill=\"#5A6268\" font-weight=\"bold\">F<tspan baseline-shift=\"sub\" font-size=\"9\">A</tspan></tspan><tspan fill=\"#1F2A28\"> = 24 N</tspan></text><text x=\"270\" y=\"176\" font-size=\"12.5\" fill=\"#5A6268\" text-anchor=\"middle\">frictionless floor</text></svg>"
+  },
+  "third-law-s2": {
+   "kind": "diagram",
+   "title": "A truck towing a car",
+   "text": "<p>A truck tows a car along a level road with a light tow rope. The truck and the car speed up together to the right. Treat the rope as an ideal string.</p>",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 160\" role=\"img\" aria-label=\"A truck on a level road tows a car with a light tow rope; both speed up to the right together.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"600\" height=\"160\" fill=\"#FFFFFF\"/><rect x=\"10\" y=\"140\" width=\"580\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"10\" y1=\"140\" x2=\"590\" y2=\"140\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"16\" y1=\"141\" x2=\"8\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"28\" y1=\"141\" x2=\"20\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"40\" y1=\"141\" x2=\"32\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"52\" y1=\"141\" x2=\"44\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"64\" y1=\"141\" x2=\"56\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"76\" y1=\"141\" x2=\"68\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"88\" y1=\"141\" x2=\"80\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"100\" y1=\"141\" x2=\"92\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"112\" y1=\"141\" x2=\"104\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"124\" y1=\"141\" x2=\"116\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"136\" y1=\"141\" x2=\"128\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"148\" y1=\"141\" x2=\"140\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"160\" y1=\"141\" x2=\"152\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"172\" y1=\"141\" x2=\"164\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"184\" y1=\"141\" x2=\"176\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"196\" y1=\"141\" x2=\"188\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"208\" y1=\"141\" x2=\"200\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"220\" y1=\"141\" x2=\"212\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"232\" y1=\"141\" x2=\"224\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"244\" y1=\"141\" x2=\"236\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"256\" y1=\"141\" x2=\"248\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"268\" y1=\"141\" x2=\"260\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"280\" y1=\"141\" x2=\"272\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"292\" y1=\"141\" x2=\"284\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"304\" y1=\"141\" x2=\"296\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"316\" y1=\"141\" x2=\"308\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"328\" y1=\"141\" x2=\"320\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"340\" y1=\"141\" x2=\"332\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"352\" y1=\"141\" x2=\"344\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"364\" y1=\"141\" x2=\"356\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"376\" y1=\"141\" x2=\"368\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"388\" y1=\"141\" x2=\"380\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"400\" y1=\"141\" x2=\"392\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"412\" y1=\"141\" x2=\"404\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"424\" y1=\"141\" x2=\"416\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"436\" y1=\"141\" x2=\"428\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"448\" y1=\"141\" x2=\"440\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"460\" y1=\"141\" x2=\"452\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"472\" y1=\"141\" x2=\"464\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"484\" y1=\"141\" x2=\"476\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"496\" y1=\"141\" x2=\"488\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"508\" y1=\"141\" x2=\"500\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"520\" y1=\"141\" x2=\"512\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"532\" y1=\"141\" x2=\"524\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"544\" y1=\"141\" x2=\"536\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"556\" y1=\"141\" x2=\"548\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"568\" y1=\"141\" x2=\"560\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"580\" y1=\"141\" x2=\"572\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1\"/><rect x=\"330\" y=\"66\" width=\"150\" height=\"56\" rx=\"6\" fill=\"#5B7DA8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"480\" y=\"82\" width=\"70\" height=\"40\" rx=\"8\" fill=\"#5B7DA8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"492\" y=\"88\" width=\"40\" height=\"18\" rx=\"3\" fill=\"#DDE7EE\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"360\" cy=\"128\" r=\"12\" fill=\"#1F2A28\"/><circle cx=\"360\" cy=\"128\" r=\"5\" fill=\"#B9C2C7\"/><circle cx=\"450\" cy=\"128\" r=\"12\" fill=\"#1F2A28\"/><circle cx=\"450\" cy=\"128\" r=\"5\" fill=\"#B9C2C7\"/><circle cx=\"520\" cy=\"128\" r=\"12\" fill=\"#1F2A28\"/><circle cx=\"520\" cy=\"128\" r=\"5\" fill=\"#B9C2C7\"/><path d=\"M60,122 L60,96 Q66,84 90,82 L120,64 L190,64 L214,84 Q236,88 240,100 L240,122 Z\" fill=\"#C0392B\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"92\" cy=\"128\" r=\"12\" fill=\"#1F2A28\"/><circle cx=\"92\" cy=\"128\" r=\"5\" fill=\"#B9C2C7\"/><circle cx=\"206\" cy=\"128\" r=\"12\" fill=\"#1F2A28\"/><circle cx=\"206\" cy=\"128\" r=\"5\" fill=\"#B9C2C7\"/><line x1=\"240\" y1=\"104\" x2=\"330\" y2=\"104\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><polygon points=\"250,43.5 316,43.5 316,49 330,40 316,31 316,36.5 250,36.5\" fill=\"#FFFFFF\" stroke=\"#A33B26\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><text x=\"338\" y=\"45\" font-size=\"13\" fill=\"#A33B26\" font-weight=\"bold\">a (speeding up)</text><text x=\"285\" y=\"96\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">tow rope</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-third-law-1",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "third-law-s1",
+   "q": "The 6.0 kg block pushes on the 2.0 kg block with a force of 6.0 N to the right. What force does the 2.0 kg block exert on the 6.0 kg block?",
+   "options": [
+    "6.0 N to the left",
+    "6.0 N to the right",
+    "2.0 N to the left",
+    "18 N to the left"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The two blocks interact by touching, so the forces they exert on each other are a third-law pair: equal in size and opposite in direction, acting on different objects.",
+    "options": [
+     "Right: same size, opposite direction.",
+     "The partner force points the opposite way: the small block pushes back on the large one.",
+     "Third-law partners are equal in size whatever the masses; the smaller block does not push with a smaller force.",
+     "18 N is what is left of the student's 24 N after the 6.0 N, the net force on the 6.0 kg block, not the partner force."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-2",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "third-law-s1",
+   "q": "The student instead pushes the 2.0 kg block to the left with the same 24 N, so that it pushes the 6.0 kg block. How does the force between the blocks compare with before?",
+   "options": [
+    "It is larger, since it now speeds up the 6.0 kg block",
+    "It is the same, because the student's push is the same",
+    "It is smaller, because the 2.0 kg block is lighter",
+    "It is zero, because now the push comes from the other side of the pair"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The force between the blocks is the one that speeds up the block that is not pushed by the student. Now that block is the heavier one, so the contact force must be larger (18 N instead of 6.0 N). Within each pair the two forces still match.",
+    "options": [
+     "Right: the contact force now accelerates 6.0 kg instead of 2.0 kg.",
+     "The student's push is the same, but which block it has to drive through the contact changes, and that changes the contact force.",
+     "The lighter block now does the pushing, but how hard it pushes depends on what it must speed up, the 6.0 kg block.",
+     "The blocks still touch and still speed up together, so they still push on each other."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-3",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "multi",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "third-law-s1",
+   "q": "Choose the two blocks together as the system. Which forces are internal to that system? Select all that apply.",
+   "options": [
+    "The 6.0 kg block on the 2.0 kg block",
+    "The 2.0 kg block on the 6.0 kg block",
+    "The student's hand on the 6.0 kg block",
+    "Earth on the 2.0 kg block"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "An internal force is exerted by one part of the system on another part. Both partners of the push between the blocks are internal; the hand and Earth are outside the system, so their forces are external.",
+    "options": [
+     "Right: both blocks are inside the system.",
+     "Right: the partner force is also between two parts of the system.",
+     "The hand is not part of the system, so its push is external.",
+     "Earth is not part of the system, so its pull is external."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-4",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "third-law-s1",
+   "q": "Why can the 24 N push be used to find how the two-block system's center of mass moves, without knowing the force between the blocks?",
+   "options": [
+    "The forces between the blocks are internal and cancel",
+    "The force between the blocks is too small to matter",
+    "The force between the blocks acts on the lighter block, not the heavier one",
+    "The two blocks move apart, so they do not interact"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each internal force has a third-law partner inside the same system, equal and opposite. Added over the whole system they sum to zero, so only external forces (the push, the weights and the floor) change how the center of mass moves.",
+    "options": [
+     "Right: internal pairs add to zero for the system.",
+     "The force between the blocks is 6.0 N, not small; it drops out because it comes in an equal and opposite pair.",
+     "Each block feels one side of the pair, so the force acts on both blocks.",
+     "The blocks stay in contact and push on each other the whole time."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-5",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "third-law-s2",
+   "q": "While the truck and car speed up, how does the force of the rope on the car compare with the force of the rope on the truck?",
+   "options": [
+    "They are equal in size and opposite in direction",
+    "The force on the car is larger, since the car is pulled",
+    "The force on the truck is larger, since the truck leads",
+    "They are equal in size and point the same way"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An ideal rope (massless, does not stretch) has one tension along its whole length. It pulls the car forward and pulls the truck backward with the same size of force.",
+    "options": [
+     "Right: an ideal rope pulls with the same tension at both ends, each end toward the rope.",
+     "Being pulled does not make one end's tension larger; for an ideal rope the two ends match.",
+     "Leading does not change the tension; the rope pulls the truck back as hard as it pulls the car forward.",
+     "A rope pulls each object toward the rope: forward on the car, backward on the truck."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-6",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "third-law-s2",
+   "q": "A student says: \"The truck pulls the car forward, so the car must pull the truck backward with a smaller force, or they would not speed up.\" Which response is correct?",
+   "options": [
+    "The pulls are equal; the road pushes the truck forward harder than the rope pulls it back",
+    "The student is right: the car pulls back less hard than the truck pulls forward",
+    "The two pulls are equal, so they cancel and the truck and car stay at one speed",
+    "The car exerts no force on the truck, since it is the car that is being towed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Third-law partners act on different objects, so they never cancel each other. Whether the truck speeds up depends on all the forces on the truck, including the forward push of the road on its tires, which is larger than the rope's backward pull.",
+    "options": [
+     "Right: equal pulls, and the motion depends on the other forces on each object.",
+     "The third law holds whether objects speed up or not; the pulls are equal.",
+     "Equal partner forces act on different objects, so they do not cancel; each object can still speed up.",
+     "The car pulls back on the rope and the rope pulls back on the truck; towing is an interaction."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-7",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "third-law-s2",
+   "q": "The truck's tires push backward on the road. What is the third-law partner of that force?",
+   "options": [
+    "The road pushing forward on the tires",
+    "The rope pulling backward on the truck",
+    "Earth pulling down on the truck",
+    "The truck pushing forward on the rope"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The partner of \"tires on road, backward\" swaps the two objects and the direction: \"road on tires, forward\". That forward push from the road is what drives the truck.",
+    "options": [
+     "Right: swap the agent and the object, flip the direction.",
+     "The rope's pull is a different interaction, between the rope and the truck.",
+     "Gravity is a different interaction, between Earth and the truck.",
+     "This involves the rope, not the road."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-8",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "third-law-s2",
+   "q": "The truck and car later move at a constant speed, with the tow rope still tight. Which describes the rope's forces now?",
+   "options": [
+    "It pulls the car forward and the truck backward, with one tension",
+    "It pulls the car forward but no longer pulls on the truck",
+    "It pulls the truck forward and the car backward",
+    "It pushes the car forward and pulls the truck backward"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A tight rope pulls each object it is tied to toward itself, along its length, whatever the motion. An ideal rope has one tension, so the pull on the car and the pull on the truck are equal in size.",
+    "options": [
+     "Right: forward on the car, backward on the truck, same tension.",
+     "A tight rope pulls at both ends; a pull at one end alone is impossible for a massless rope.",
+     "At each end the rope pulls toward itself: the car is behind the rope, so it is pulled forward.",
+     "A rope cannot push; it can only pull along its length."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-9",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which pair of forces is a third-law pair?",
+   "options": [
+    "Earth pulls a ball down; the ball pulls Earth up",
+    "Earth pulls a book down; a table pushes the book up",
+    "A rope pulls a crate right; the floor rubs the crate left",
+    "A hand pushes a door; the hinge pushes the door back"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A third-law pair is one interaction: the same two objects, each acting on the other, with the same type of force. Earth-on-ball and ball-on-Earth are both gravity between the same two objects.",
+    "options": [
+     "Right: two objects, each pulling on the other.",
+     "Both forces act on the book, from two different agents, so they cannot be partners.",
+     "Both forces act on the crate, from the rope and the floor.",
+     "Both forces act on the door."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-10",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A book rests on a table. A student says the normal force on the book and the book's weight are a third-law pair because they are equal and opposite. What is wrong with this claim?",
+   "options": [
+    "Both act on the book, so they are not partners",
+    "The two forces are not equal in size",
+    "The two forces point in the same direction",
+    "Nothing: the two forces are a third-law pair"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Third-law partners act on different objects. The normal force (table on book) and the weight (Earth on book) both act on the book; they are equal here only because the book is at rest. The weight's partner is the book pulling up on Earth.",
+    "options": [
+     "Right: partners never act on the same object.",
+     "They are equal in size here, but that does not make them partners.",
+     "One points up and one down; the trouble is which object they act on.",
+     "Equal and opposite is not enough; partners must also act on different objects and be the same type."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-11",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 1000 kg car hits a 0.10 kg bug. How does the force of the car on the bug compare with the force of the bug on the car?",
+   "options": [
+    "They are equal in size",
+    "The car exerts the larger force",
+    "The bug exerts the larger force",
+    "The car exerts a force but the bug does not"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The car and the bug interact, so they push on each other with forces of equal size, whatever their masses. The bug is squashed because the same force has a far larger effect on its tiny mass.",
+    "options": [
+     "Right: third-law partners are always equal in size.",
+     "A larger mass does not let one side of an interaction push harder.",
+     "The bug cannot push harder than it is pushed.",
+     "Every interaction is two-sided: the bug pushes back on the car."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-12",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "An ideal string runs over an ideal pulley and holds a 3.0 kg block at rest in midair. The other end is tied to the floor. What is the tension in the string where it is tied to the floor, in newtons? Use g = 9.8 m/s².",
+   "numeric": {
+    "answer": 29,
+    "tol": 1,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 15,
+      "why": "Value: halving assumes the pulley splits the tension. An ideal pulley only changes the string's direction; the tension is the same everywhere along it."
+     },
+     {
+      "value": 59,
+      "why": "Value: an ideal string has one tension along its length; it is not doubled at the far end."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The block is at rest, so the string pulls up on it as hard as Earth pulls down: F_T = mg = 3.0 kg × 9.8 m/s² = 29 N. An ideal string over an ideal pulley has the same tension all along, so it is 29 N at the floor too."
+   }
+  },
+  {
+   "id": "phys-third-law-13",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two students hold the ends of a light rope and each pulls with 150 N in a tug of war. Neither moves. What is the tension in the rope?",
+   "options": [
+    "150 N",
+    "300 N",
+    "0 N",
+    "75 N"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each end of the rope is pulled with 150 N, and an ideal rope has one tension along its length: 150 N. The two pulls do not add up to a tension of 300 N.",
+    "options": [
+     "Right: the tension is the pull at each end.",
+     "This adds the two pulls; the rope feels 150 N at each end, which is a tension of 150 N.",
+     "The net force on the rope is zero, but the rope is still pulled tight; tension is not the net force.",
+     "Nothing splits the pull in half; each end feels the full 150 N."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-14",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A horse pulls a cart. A student argues: \"The cart pulls back on the horse as hard as the horse pulls the cart, so they cancel and the cart can never move.\" What is the best response?",
+   "options": [
+    "The pulls act on different objects, so they do not cancel",
+    "The horse pulls a little harder than the cart pulls back",
+    "The two pulls do cancel, and the ground moves the cart instead",
+    "The cart pulls back on the horse after it starts moving"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Forces cancel only when they act on the same object. The horse's pull acts on the cart and the cart's pull acts on the horse. The cart moves forward if the horse's pull on it is larger than the friction on the cart.",
+    "options": [
+     "Right: partners are on different objects, so they never cancel each other.",
+     "Third-law partners are always equal; the horse does not win the pair.",
+     "They do not cancel; each acts on a different object.",
+     "The cart pulls back on the horse from the moment the horse pulls, even while the cart is at rest."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-15",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the ideal string model, a string",
+   "options": [
+    "has no mass and no stretch",
+    "has mass but no stretch",
+    "stretches but has no mass",
+    "can push as well as pull"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An ideal string is massless and inextensible, so the tension is the same all along it and objects tied to it move together.",
+    "options": [
+     "Right: massless and inextensible.",
+     "A string with mass has a tension that changes along it; the ideal model leaves the mass out.",
+     "An ideal string does not stretch, so the objects at its ends move together.",
+     "No string can push; it can only pull along itself."
+    ]
+   }
+  },
+  {
+   "id": "phys-third-law-16",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A swimmer pushes backward on the water with her hands and moves forward. Which explains her forward motion?",
+   "options": [
+    "The water pushes forward on her hands",
+    "Her arms push her body forward from inside",
+    "The water moves away, leaving empty space ahead of her",
+    "Her forward push on the water carries her along"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "She pushes the water back; by the third law the water pushes her forward with a force of the same size. That forward push from outside her body is what moves her.",
+    "options": [
+     "Right: the partner force from the water acts on her.",
+     "Her own muscles cannot give her body a net push; the push must come from outside.",
+     "Empty space does not push anything; the water does.",
+     "She pushes the water backward, not forward, and that force acts on the water."
+    ]
+   }
+  }
+ ]
+}

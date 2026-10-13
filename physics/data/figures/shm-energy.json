@@ -1,0 +1,12 @@
+{
+ "shm-energy-position": {
+  "file": "figures/shm-energy-position.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Energy against position for a block on a spring: the spring potential energy ½kx² is a parabola, zero at x = 0 and equal to the total at ±A; the kinetic energy is the inverted parabola; the total ½kA² is a flat line. Bar charts at x = +A, +A/2 and 0 show K = 0 and U_s = E; K = 3E/4 and U_s = E/4; K = E and U_s = 0."
+ }
+}

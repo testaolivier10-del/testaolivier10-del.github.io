@@ -1,0 +1,81 @@
+{
+ "topic": "math-slopes-areas",
+ "hook": "A graph is a picture of how one quantity depends on another, and two features of it carry most of the physics: how steep it is and how much area sits under it. Read those two and you can get a speed, a distance or an acceleration without a single equation.",
+ "prereq": [
+  {
+   "q": "A walker covers 12 m in 6.0 s at a steady speed. What is her speed?",
+   "options": [
+    "2.0 m/s",
+    "72 m/s",
+    "0.50 m/s",
+    "18 m/s"
+   ],
+   "correct": 0,
+   "why": "Speed = distance ÷ time = 12 m ÷ 6.0 s = 2.0 m/s.",
+   "review": "motion-quantities"
+  },
+  {
+   "q": "If y ∝ x², what happens to y when x triples?",
+   "options": [
+    "It becomes 9 times as large",
+    "It triples",
+    "It becomes 6 times as large",
+    "It becomes one ninth as large"
+   ],
+   "correct": 0,
+   "why": "The factor squared: 3² = 9.",
+   "review": "math-proportional"
+  }
+ ],
+ "figure": {
+  "figure": "slope-and-area",
+  "caption": "The slope is rise over run, in (y unit)/(x unit). The area under a line is height × width, in (y unit) × (x unit)."
+ },
+ "chain": [
+  {
+   "cause": "A graph has a quantity with a unit on each axis",
+   "effect": "its slope and its area each have a unit, built from those two units"
+  },
+  {
+   "cause": "You divide the rise by the run between two points on a line",
+   "effect": "you get the slope, the rate at which y changes per unit of x"
+  },
+  {
+   "cause": "You multiply the height by the width of the region under a graph",
+   "effect": "you get an area whose unit is (y unit) × (x unit), often a total such as a distance"
+  },
+  {
+   "cause": "Data scatter and the relationship may be curved",
+   "effect": "you draw a best-fit line, after choosing what to plot so the graph is straight"
+  }
+ ],
+ "ideas": [
+  "Every axis gets a label and a unit: \"Time (s)\". Without both, the graph cannot be read.",
+  "<b>Slope</b> = rise/run = Δy/Δx, from two points on the line (not data points). Its unit is (y unit)/(x unit), and it is a rate.",
+  "<b>Area under a graph</b> = height × width for a rectangle, ½ × base × height for a triangle. Its unit is (y unit) × (x unit).",
+  "A <b>best-fit line</b> passes between scattered points, never dot to dot. If the relationship is curved, <b>linearize</b>: for d = ½at², plot d against t², and the slope is ½a."
+ ],
+ "misconception": {
+  "wrong": "To find a slope, divide the y-value of a point by its x-value, for example 6.2 m ÷ 10 s.",
+  "right": "A slope uses changes between two points on the line: (6.2 m − 1.2 m) ÷ (10 s − 0 s) = 0.50 m/s. Dividing one point's values works only when the line passes through the origin."
+ },
+ "check": [
+  "phys-math-slopes-areas-1",
+  "phys-math-slopes-areas-2",
+  "phys-math-slopes-areas-3",
+  "phys-math-slopes-areas-4",
+  "phys-math-slopes-areas-7",
+  "phys-math-slopes-areas-9"
+ ],
+ "summary": "Label every axis with a quantity and unit. The slope of a line is Δy/Δx between two points on it, with units (y unit)/(x unit); the area under a graph is height × width, with units (y unit) × (x unit). Fit a line to data, and linearize a curved relationship before fitting.",
+ "connections": [
+  {
+   "href": "../notes/math-proportional.html",
+   "label": "Back: proportional reasoning"
+  },
+  {
+   "href": "../notes/motion-representations.html",
+   "label": "Next: representing motion (1.3)"
+  }
+ ]
+}

@@ -1,0 +1,99 @@
+{
+ "topic": "rolling",
+ "hook": "Line up a solid ball, a soup can and a ring of the same mass at the top of a ramp and let go. Most people bet on the heaviest, or call a tie. The answer depends on neither mass nor size, only on shape: how much of each object’s energy goes into spinning instead of moving along.",
+ "prereq": [
+  {
+   "q": "A ball is released from rest and slides without friction down a ramp of height h. Its speed at the bottom is",
+   "options": [
+    "√(2gh)",
+    "2gh",
+    "gh",
+    "√(gh)"
+   ],
+   "correct": 0,
+   "why": "mgh = ½mv².",
+   "review": "energy-conservation"
+  },
+  {
+   "q": "A wheel with I = 0.50 kg·m² turns at 4.0 rad/s. Its rotational kinetic energy is",
+   "options": [
+    "4.0 J",
+    "2.0 J",
+    "8.0 J",
+    "1.0 J"
+   ],
+   "correct": 0,
+   "why": "½Iω² = ½(0.50)(16).",
+   "review": "rotational-kinetic-energy"
+  },
+  {
+   "q": "Kinetic friction on a sliding object",
+   "options": [
+    "dissipates mechanical energy as thermal energy",
+    "does no work",
+    "always adds energy",
+    "acts only on rolling objects"
+   ],
+   "correct": 0,
+   "why": "Sliding surfaces convert kinetic energy to thermal energy.",
+   "review": "energy-conservation"
+  }
+ ],
+ "figure": {
+  "figure": "rolling-race",
+  "caption": "The rolling race: the smaller I/MR², the larger the share of energy in moving along, and the faster the finish."
+ },
+ "chain": [
+  {
+   "cause": "An object rolls without slipping",
+   "effect": "its center moves one circumference per turn, so v_cm = Rω"
+  },
+  {
+   "cause": "It both moves and spins",
+   "effect": "its kinetic energy is ½Mv² + ½Iω²"
+  },
+  {
+   "cause": "It rolls down a ramp from rest",
+   "effect": "Mgh is shared between moving and spinning: v = √(2gh/(1 + I/MR²))"
+  },
+  {
+   "cause": "Its mass sits farther from its center (larger I/MR²)",
+   "effect": "more energy goes into spinning, so it moves more slowly"
+  },
+  {
+   "cause": "The contact point slides (skidding)",
+   "effect": "v_cm ≠ Rω, kinetic friction dissipates energy, and the motion changes until rolling sets in"
+  }
+ ],
+ "ideas": [
+  "<b>Rolling without slipping</b>: v<sub>cm</sub> = Rω and Δx<sub>cm</sub> = RΔθ.",
+  "Total kinetic energy = <b>½Mv<sub>cm</sub>² + ½Iω²</b>.",
+  "Static friction makes a rolling object spin but does no work: mechanical energy is conserved.",
+  "Rolling race: v = √(2gh/(1 + I/MR²)). Mass and radius cancel; smaller I/MR² wins (sphere, disk, hoop). A frictionless sliding block beats them all.",
+  "Slipping: v<sub>cm</sub> ≠ Rω; kinetic friction dissipates energy and changes v<sub>cm</sub> and ω until they match."
+ ],
+ "misconception": {
+  "wrong": "A heavier or bigger ball rolls down a ramp faster, and every object rolling from the same height arrives with the same speed √(2gh).",
+  "right": "Mass and radius cancel, but shape does not. Each rolling object splits Mgh between moving and spinning, so it arrives slower than √(2gh), and the one with mass nearest its center (smallest I/MR²) arrives first."
+ },
+ "check": [
+  "phys-rolling-1",
+  "phys-rolling-2",
+  "phys-rolling-3",
+  "phys-rolling-4",
+  "phys-rolling-5",
+  "phys-rolling-10",
+  "phys-rolling-12"
+ ],
+ "summary": "An object rolling without slipping has v_cm = Rω, and its kinetic energy is ½Mv² + ½Iω². Static friction makes it spin without doing work, so mechanical energy is conserved: from rest down a height h, v = √(2gh/(1 + I/MR²)), which depends on shape only. When an object slips, v_cm ≠ Rω and kinetic friction dissipates energy until rolling sets in.",
+ "connections": [
+  {
+   "href": "../notes/angular-momentum-conservation.html",
+   "label": "Back: conservation of angular momentum (6.4)"
+  },
+  {
+   "href": "../notes/orbits.html",
+   "label": "Next: satellites in orbit (6.6)"
+  }
+ ]
+}

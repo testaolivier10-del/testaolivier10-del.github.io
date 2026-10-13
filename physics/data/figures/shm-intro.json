@@ -1,0 +1,12 @@
+{
+ "shm-restoring-force": {
+  "file": "figures/shm-restoring-force.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 450,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A cart on a horizontal spring at three positions. At x = −A the spring is compressed and its force on the cart points right, toward equilibrium. At x = 0 there is no spring force. At x = +A the spring is stretched and its force points left. The force is always toward equilibrium and largest at the ends."
+ }
+}

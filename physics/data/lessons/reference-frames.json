@@ -1,0 +1,93 @@
+{
+ "topic": "reference-frames",
+ "hook": "Sit still on a plane cruising at 250 m/s and the drink on your tray does not move. To someone on the ground, you and the drink are crossing the sky faster than a bullet. Neither of you is wrong. A velocity is always measured by someone, and different observers get different numbers.",
+ "prereq": [
+  {
+   "q": "Taking east as positive, which is the velocity of a car moving west at 15 m/s?",
+   "options": [
+    "−15 m/s",
+    "+15 m/s",
+    "0 m/s",
+    "+30 m/s"
+   ],
+   "correct": 0,
+   "why": "West is the negative direction.",
+   "review": "scalars-vectors"
+  },
+  {
+   "q": "What is the vector sum of +4.0 m/s and −1.5 m/s along a line?",
+   "options": [
+    "+2.5 m/s",
+    "+5.5 m/s",
+    "−5.5 m/s",
+    "−2.5 m/s"
+   ],
+   "correct": 0,
+   "why": "Add the signed values: 4.0 − 1.5 = +2.5 m/s.",
+   "review": "scalars-vectors"
+  },
+  {
+   "q": "A cart's velocity goes from 2.0 to 3.0 m/s in 2.0 s. What is its acceleration?",
+   "options": [
+    "0.50 m/s²",
+    "1.0 m/s²",
+    "2.5 m/s²",
+    "2.0 m/s²"
+   ],
+   "correct": 0,
+   "why": "a = Δv/Δt = 1.0 ÷ 2.0.",
+   "review": "motion-quantities"
+  }
+ ],
+ "figure": {
+  "figure": "train-walker-frames",
+  "caption": "A passenger's velocity relative to the ground is her velocity relative to the train plus the train's velocity relative to the ground."
+ },
+ "chain": [
+  {
+   "cause": "Two observers move relative to each other",
+   "effect": "they measure different velocities for the same object"
+  },
+  {
+   "cause": "The object moves at v relative to a frame that moves at V relative to the ground",
+   "effect": "its velocity relative to the ground is v + V (signed, along one line)"
+  },
+  {
+   "cause": "You swap which observer is measuring",
+   "effect": "the relative velocity flips sign: if B moves at +3 m/s relative to A, A moves at −3 m/s relative to B"
+  },
+  {
+   "cause": "The two frames move at a constant velocity relative to each other",
+   "effect": "the same velocity is added at every instant, so both measure the same acceleration"
+  }
+ ],
+ "ideas": [
+  "A <b>reference frame</b> is the observer's point of view, with a coordinate system that moves with the observer. \"At rest\" means at rest relative to some frame.",
+  "<b>Relative velocity</b> along a line: v(object, ground) = v(object, frame) + v(frame, ground). Give each velocity its sign.",
+  "To find a velocity relative to a moving observer, subtract the observer's velocity: v(A, B) = v(A, ground) − v(B, ground).",
+  "Frames moving at a constant velocity relative to each other measure the same acceleration, because the added velocity cancels in Δv."
+ ],
+ "misconception": {
+  "wrong": "The velocity of the walkway only matters to people standing on the floor; a person walking on it has her own speed of 1.8 m/s, period.",
+  "right": "Her velocity depends on who measures it: 1.8 m/s relative to the walkway, 3.0 m/s relative to the floor. Every velocity needs a frame, and the frames are linked by adding velocities."
+ },
+ "check": [
+  "phys-reference-frames-1",
+  "phys-reference-frames-3",
+  "phys-reference-frames-4",
+  "phys-reference-frames-6",
+  "phys-reference-frames-7",
+  "phys-reference-frames-15"
+ ],
+ "summary": "Every velocity is measured relative to a reference frame. Along a line, a velocity relative to the ground is the velocity relative to a moving frame plus that frame's velocity; swapping observers flips the sign. Frames moving at constant velocity relative to each other agree on accelerations.",
+ "connections": [
+  {
+   "href": "../notes/motion-representations.html",
+   "label": "Back: representing motion (1.3)"
+  },
+  {
+   "href": "../notes/motion-2d.html",
+   "label": "Next: motion in two dimensions (1.5)"
+  }
+ ]
+}

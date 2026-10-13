@@ -1,0 +1,80 @@
+{
+ "topic": "power",
+ "hook": "Walking up three flights of stairs and running up them take the same energy, but only one leaves you gasping. The difference is how fast the energy is transferred. That rate is power, the number printed on every motor, light bulb and car engine.",
+ "prereq": [
+  {
+   "q": "At constant speed, the work a cable does lifting a mass m through a height h is",
+   "options": [
+    "mgh",
+    "½mv²",
+    "mh",
+    "mg/h"
+   ],
+   "correct": 0,
+   "why": "The cable's force equals mg; times the distance h.",
+   "review": "work-by-forces"
+  },
+  {
+   "q": "Total energy of a system changes only by",
+   "options": [
+    "energy transferred across its boundary",
+    "friction inside it",
+    "changes in its speed",
+    "changes in its height"
+   ],
+   "correct": 0,
+   "why": "Conservation of energy: inside, energy changes form; it changes in amount only by transfer.",
+   "review": "energy-conservation"
+  }
+ ],
+ "figure": {
+  "figure": "power-two-winches",
+  "caption": "Two winches do the same work on identical crates; the faster one delivers twice the power."
+ },
+ "chain": [
+  {
+   "cause": "A force does work W over a time interval Δt",
+   "effect": "its average power is P = W/Δt, in watts (J/s)"
+  },
+  {
+   "cause": "The same work is done in less time",
+   "effect": "the power is larger, in inverse proportion to the time"
+  },
+  {
+   "cause": "A force F acts along an object moving at speed v",
+   "effect": "its instantaneous power is P = Fv (F_∥v in general)"
+  },
+  {
+   "cause": "A motor delivers constant power",
+   "effect": "the force it can supply falls as the speed rises: F = P/v"
+  }
+ ],
+ "ideas": [
+  "<b>Power</b> is the rate of energy transfer: P_avg = W/Δt = ΔE/Δt. Its unit is the watt, 1 W = 1 J/s.",
+  "Same work in half the time is twice the power. Work tells how much; power tells how fast.",
+  "Instantaneous power of a force is P = F_∥v, the force component along the velocity times the speed.",
+  "A kilowatt-hour is energy, not power: 3.6 × 10⁶ J."
+ ],
+ "misconception": {
+  "wrong": "The person who does more work always has more power.",
+  "right": "Power is work per unit time. A heavier student who climbs slowly can do more work with less power than a lighter one who runs."
+ },
+ "check": [
+  "phys-power-1",
+  "phys-power-2",
+  "phys-power-3",
+  "phys-power-4",
+  "phys-power-12"
+ ],
+ "summary": "Power is how fast energy is transferred: P = W/Δt in watts, or P = F_∥v at an instant. The same work in less time means more power; at constant power a faster object gets a smaller force. A kilowatt-hour is a unit of energy.",
+ "connections": [
+  {
+   "href": "../notes/energy-conservation.html",
+   "label": "Back: conservation of energy (3.4)"
+  },
+  {
+   "href": "../notes/linear-momentum.html",
+   "label": "Next: Unit 4"
+  }
+ ]
+}

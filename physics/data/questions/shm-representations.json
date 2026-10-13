@@ -1,0 +1,594 @@
+{
+ "stimuli": {
+  "shm-representations-s1": {
+   "kind": "graph",
+   "title": "Position of a cart on a spring",
+   "text": "<p>A motion detector records the position of a cart oscillating on a horizontal spring on a frictionless track. Position is measured from equilibrium; + is to the right.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s",
+     "min": 0,
+     "max": 1.6,
+     "step": 0.2
+    },
+    "y": {
+     "label": "Position",
+     "unit": "m",
+     "min": -0.2,
+     "max": 0.2,
+     "step": 0.05
+    },
+    "series": [
+     {
+      "name": "Cart",
+      "points": [
+       [
+        0,
+        0.15
+       ],
+       [
+        0.05,
+        0.139
+       ],
+       [
+        0.1,
+        0.106
+       ],
+       [
+        0.15,
+        0.057
+       ],
+       [
+        0.2,
+        0
+       ],
+       [
+        0.25,
+        -0.057
+       ],
+       [
+        0.3,
+        -0.106
+       ],
+       [
+        0.35,
+        -0.139
+       ],
+       [
+        0.4,
+        -0.15
+       ],
+       [
+        0.45,
+        -0.139
+       ],
+       [
+        0.5,
+        -0.106
+       ],
+       [
+        0.55,
+        -0.057
+       ],
+       [
+        0.6,
+        0
+       ],
+       [
+        0.65,
+        0.057
+       ],
+       [
+        0.7,
+        0.106
+       ],
+       [
+        0.75,
+        0.139
+       ],
+       [
+        0.8,
+        0.15
+       ],
+       [
+        0.85,
+        0.139
+       ],
+       [
+        0.9,
+        0.106
+       ],
+       [
+        0.95,
+        0.057
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        1.05,
+        -0.057
+       ],
+       [
+        1.1,
+        -0.106
+       ],
+       [
+        1.15,
+        -0.139
+       ],
+       [
+        1.2,
+        -0.15
+       ],
+       [
+        1.25,
+        -0.139
+       ],
+       [
+        1.3,
+        -0.106
+       ],
+       [
+        1.35,
+        -0.057
+       ],
+       [
+        1.4,
+        0
+       ],
+       [
+        1.45,
+        0.057
+       ],
+       [
+        1.5,
+        0.106
+       ],
+       [
+        1.55,
+        0.139
+       ],
+       [
+        1.6,
+        0.15
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "shm-representations-s2": {
+   "kind": "setup",
+   "title": "An equation of motion",
+   "text": "<p>A block on a spring moves along a frictionless surface. Its position, measured from equilibrium in meters, is</p><p style=\"text-align:center\"><b>x(t) = (0.040 m) sin(2π · 2.5 t)</b></p><p>with t in seconds. The calculator must be in radian mode for this equation.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-shm-representations-1",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "shm-representations-s1",
+   "q": "What is the period of the cart's motion? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.8,
+    "tol": 0.01,
+    "unit": "s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.4,
+      "rel": 0.02,
+      "why": "Value: that is the time from one turning point to the other, half a cycle. A period ends when the cart is back at +0.15 m moving the same way."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The cart is at +0.15 m at t = 0 and next at t = 0.80 s, so T = 0.80 s. Half a period (0.40 s) only takes it to the other side."
+   }
+  },
+  {
+   "id": "phys-shm-representations-2",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "shm-representations-s1",
+   "q": "At which time is the cart moving fastest?",
+   "options": [
+    "t = 0.20 s",
+    "t = 0.40 s",
+    "t = 0.80 s",
+    "t = 0.30 s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Speed is the steepness of the position-time graph. The graph is steepest where it crosses x = 0, at t = 0.20 s (and 0.60 s, 1.00 s...). The cart passes equilibrium at top speed.",
+    "options": [
+     "Right: the slope is steepest where x = 0.",
+     "At 0.40 s the cart is at −0.15 m, a turning point: the slope is zero and the cart is momentarily at rest.",
+     "At 0.80 s the cart is back at +0.15 m, a turning point with zero speed.",
+     "At 0.30 s the cart is between equilibrium and a turning point; it is still moving, but slower than at 0.20 s."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-representations-3",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "shm-representations-s1",
+   "q": "What are the directions of the cart's velocity and acceleration at t = 0.50 s?",
+   "options": [
+    "Velocity +, acceleration +",
+    "Velocity −, acceleration +",
+    "Velocity +, acceleration −",
+    "Velocity −, acceleration −"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At 0.50 s the cart is below zero (x < 0) and the graph is rising, so v is +. The acceleration always points toward equilibrium, opposite to x; x is negative, so a is +.",
+    "options": [
+     "Right: x < 0 and rising, so v > 0 and a = −(k/m)x > 0.",
+     "The graph is rising at 0.50 s (it left −0.15 m at 0.40 s), so the velocity is positive.",
+     "Acceleration is opposite to the displacement; with x negative, a is positive.",
+     "Both signs are off: the graph is rising at 0.50 s (v > 0), and with x below zero the acceleration points toward equilibrium (a > 0)."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-representations-4",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "shm-representations-s1",
+   "q": "The cart is stopped and released again from x = +0.075 m. Which graph feature changes, compared with the graph shown?",
+   "options": [
+    "The peaks are half as high, and the time between them is unchanged",
+    "The peaks are half as high, and the time between them is halved",
+    "The peaks are the same height, and the time between them is halved",
+    "The peaks are half as high, and the time between them is doubled"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Releasing from 0.075 m makes the amplitude 0.075 m, half of 0.15 m. The period T = 2π√(m/k) does not depend on the amplitude, so the peaks stay 0.80 s apart.",
+    "options": [
+     "Right: smaller amplitude, same period.",
+     "A smaller amplitude does not shorten the period: less distance, but proportionally less force and speed.",
+     "The release point sets the amplitude, so the peaks must be lower.",
+     "The period depends on m and k only; amplitude does not lengthen it."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-representations-5",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "shm-representations-s2",
+   "q": "What is the period of the block's motion? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.4,
+    "tol": 0.01,
+    "unit": "s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 16,
+      "rel": 0.02,
+      "why": "Value: you multiplied 2π by the frequency. In x = A sin(2πft), the number multiplying 2πt is f = 2.5 Hz, and T = 1/f."
+     },
+     {
+      "value": 2.5,
+      "rel": 0.02,
+      "why": "Value: 2.5 is the frequency in hertz. The period is T = 1/f."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Compare with x = A sin(2πft): f = 2.5 Hz, so T = 1/f = 0.40 s."
+   }
+  },
+  {
+   "id": "phys-shm-representations-6",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "shm-representations-s2",
+   "q": "What is the block's position at t = 0.050 s? Include the sign and the unit.",
+   "numeric": {
+    "answer": 0.028,
+    "tol": 0.001,
+    "unit": "m",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.00017,
+      "rel": 0.02,
+      "why": "Value: your calculator was in degree mode. The angle 2π(2.5)(0.050) = 0.785 is in radians."
+     }
+    ]
+   },
+   "why": {
+    "correct": "x = (0.040 m) sin(2π × 2.5 × 0.050) = (0.040 m) sin(0.785 rad) = (0.040 m)(0.707) = 0.028 m. That is one eighth of a period after it left equilibrium."
+   }
+  },
+  {
+   "id": "phys-shm-representations-7",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "shm-representations-s2",
+   "q": "Where is the block, and how is it moving, at t = 0?",
+   "options": [
+    "At equilibrium, moving in the + direction at top speed",
+    "At x = +0.040 m, momentarily at rest",
+    "At equilibrium, momentarily at rest",
+    "At x = −0.040 m, moving in the + direction"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "sin 0 = 0, so x = 0 at t = 0. Just after, sin is positive and growing, so the block moves in +x. At equilibrium its speed is at its largest.",
+    "options": [
+     "Right: a sine graph starts at zero and rises.",
+     "That is how a cosine graph starts; this equation uses sine.",
+     "At equilibrium the block moves fastest; it is at rest only at the turning points.",
+     "sin 0 = 0, so the block is at x = 0, not at a turning point."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-representations-8",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "shm-representations-s2",
+   "q": "At t = 0.10 s, which describes the block?",
+   "options": [
+    "At x = +0.040 m, with zero velocity and the largest acceleration, in −x",
+    "At x = 0, with the largest velocity and zero acceleration",
+    "At x = +0.040 m, with the largest velocity, in +x",
+    "At x = −0.040 m, with zero velocity and acceleration in +x"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "0.10 s is a quarter of the 0.40 s period: sin(2π × 2.5 × 0.10) = sin(π/2) = 1, so x = +0.040 m, a turning point. There v = 0, and the acceleration is largest and points toward equilibrium (−x).",
+    "options": [
+     "Right: a quarter period after leaving equilibrium, the block is at +A.",
+     "x = 0 happens at t = 0 and 0.20 s, not at a quarter period.",
+     "At the turning point the block is momentarily at rest, not moving fastest.",
+     "The block reaches −0.040 m at three quarters of a period, t = 0.30 s."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-representations-9",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two identical blocks on identical springs are released from rest at the same moment, block 1 from 3.0 cm and block 2 from 6.0 cm. Which block returns to its release point first?",
+   "options": [
+    "They return at the same time",
+    "Block 1, because it has a shorter distance to travel",
+    "Block 2, because it is pulled back by a larger force",
+    "Block 1, because its smaller force means less acceleration"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The period T = 2π√(m/k) is the same for both: block 2 travels twice as far but feels twice the force at each matching point, so it moves twice as fast. The two effects cancel.",
+    "options": [
+     "Right: the period does not depend on the amplitude.",
+     "Block 1 does travel less distance, but it also moves more slowly; the times match.",
+     "Block 2 does feel a larger force, but it also has farther to go; the times match.",
+     "Less acceleration slows block 1 down, which works against it, not for it; the times still match."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-representations-10",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "For an object in simple harmonic motion, at which point is its speed zero and the size of its acceleration greatest?",
+   "options": [
+    "At either turning point, x = ±A",
+    "At the equilibrium position, x = 0",
+    "Halfway between equilibrium and a turning point",
+    "At x = 0 for speed and x = ±A for acceleration"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the turning points the object stops for an instant and the restoring force, −kx, has its largest size because |x| = A.",
+    "options": [
+     "Right: speed zero and acceleration largest happen together, at the ends.",
+     "At x = 0 the speed is greatest and the acceleration is zero: the opposite.",
+     "At x = ±A/2 the object is still moving and the force is half its largest value.",
+     "At x = 0 the speed is largest, not zero."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-representations-11",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cart on a spring moves according to x = (0.12 m) cos(2π · 0.50 t). What is the first time after t = 0 at which the cart is at x = +0.060 m? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.33,
+    "tol": 0.01,
+    "unit": "s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.5,
+      "rel": 0.02,
+      "why": "Value: that is a quarter of the period, when the cart reaches x = 0. Half the amplitude is reached sooner: solve cos(πt) = 0.5."
+     },
+     {
+      "value": 19,
+      "rel": 0.02,
+      "why": "Value: you used the angle 60 in degrees as if it were radians. cos⁻¹(0.5) = π/3 rad."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Set (0.12 m) cos(πt) = 0.060 m: cos(πt) = 0.5, so πt = π/3 and t = 1/3 s ≈ 0.33 s. The period is 2.0 s, so the cart covers the first half of its distance to equilibrium in one sixth of a period: it starts slowly."
+   }
+  },
+  {
+   "id": "phys-shm-representations-12",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A block on a spring is released from rest at x = +A at t = 0. Which equation describes its position?",
+   "options": [
+    "x = A cos(2πft)",
+    "x = A sin(2πft)",
+    "x = −A cos(2πft)",
+    "x = A sin(2πft) + A"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At t = 0 the block must be at +A: cos 0 = 1 gives x = A. Both sine and cosine describe SHM; the starting point decides which one fits.",
+    "options": [
+     "Right: cosine starts at its largest value.",
+     "This starts at x = 0, which fits a block that starts at equilibrium.",
+     "This starts at x = −A, the other turning point.",
+     "This oscillates between 0 and 2A, so its center is not the equilibrium position."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-representations-13",
+   "type": "predict",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A block oscillates on a spring with amplitude A. It is stopped and set oscillating again with amplitude 2A. Predict how each quantity compares with the first motion.",
+   "variables": [
+    {
+     "name": "Period",
+     "answer": "none",
+     "why": "T = 2π√(m/k) contains no amplitude."
+    },
+    {
+     "name": "Largest speed",
+     "answer": "up",
+     "why": "The block covers twice the distance in the same time, so its top speed doubles."
+    },
+    {
+     "name": "Largest acceleration",
+     "answer": "up",
+     "why": "The largest force is kA, so it doubles with A, and a = F/m doubles too."
+    }
+   ],
+   "why": {
+    "correct": "Amplitude scales the size of x, v and a, but the timing (period) is set by m and k alone."
+   }
+  },
+  {
+   "id": "phys-shm-representations-14",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The velocity of an object in SHM is graphed against time. At an instant when the velocity graph crosses zero going from positive to negative, where is the object?",
+   "options": [
+    "At its largest positive displacement, x = +A",
+    "At its largest negative displacement, x = −A",
+    "At equilibrium, moving in the − direction",
+    "At equilibrium, moving in the + direction"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "v = 0 means a turning point. Before that instant v was +, so the object was moving toward +x and has just reached the + end, x = +A.",
+    "options": [
+     "Right: moving + and stopping means it has reached +A.",
+     "At −A the velocity changes from − to +, the opposite crossing.",
+     "At equilibrium the speed is largest, so v is not zero there.",
+     "At equilibrium v has its largest size, not zero."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-representations-15",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A mass on a spring oscillates with amplitude 0.050 m and period 0.50 s. What is its largest speed? (Its speed is greatest at equilibrium and equals 2πA/T.) Give the value and its unit.",
+   "numeric": {
+    "answer": 0.63,
+    "tol": 0.01,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.1,
+      "rel": 0.02,
+      "why": "Value: you divided the amplitude by the period with no 2π. In one period the object goes around a full cycle; its top speed is 2πA/T."
+     },
+     {
+      "value": 0.4,
+      "rel": 0.02,
+      "why": "Value: 4A/T is the average speed over a cycle. The top speed, at equilibrium, is larger: 2πA/T."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v_max = 2πA/T = 2π(0.050 m)/(0.50 s) = 0.63 m/s. The average speed is 4A/T = 0.40 m/s; the top speed is higher because the mass slows near the ends."
+   }
+  }
+ ]
+}

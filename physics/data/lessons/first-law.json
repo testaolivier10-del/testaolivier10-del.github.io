@@ -1,0 +1,83 @@
+{
+ "topic": "first-law",
+ "hook": "A hockey puck glides across ice and seems to coast forever; a box shoved across carpet stops almost at once. For two thousand years people believed moving things need a push to keep moving. They were wrong, and finding out why is the start of all of mechanics.",
+ "prereq": [
+  {
+   "q": "The net force on an object is",
+   "options": [
+    "the vector sum of all forces on it",
+    "the largest force on it",
+    "a force drawn on its diagram",
+    "the force that moves it forward"
+   ],
+   "correct": 0,
+   "why": "Add the forces with their signs; the result is the net force.",
+   "review": "forces-fbd"
+  },
+  {
+   "q": "Constant velocity means",
+   "options": [
+    "the same speed in the same direction",
+    "the same speed, any direction",
+    "speeding up at a steady rate",
+    "being at rest"
+   ],
+   "correct": 0,
+   "why": "Velocity is a vector; constant means neither size nor direction changes.",
+   "review": "motion-quantities"
+  },
+  {
+   "q": "A reference frame is",
+   "options": [
+    "the viewpoint from which motion is measured",
+    "the outline of a free-body diagram",
+    "the path an object follows",
+    "the system you choose"
+   ],
+   "correct": 0,
+   "why": "Velocities are measured relative to an observer's frame.",
+   "review": "reference-frames"
+  }
+ ],
+ "figure": {
+  "figure": "first-law-zero-net",
+  "caption": "At rest or at constant velocity the forces balance. When they do not, the velocity changes."
+ },
+ "chain": [
+  {
+   "cause": "The forces on an object add to zero in every direction",
+   "effect": "the object is in translational equilibrium"
+  },
+  {
+   "cause": "The object is in translational equilibrium",
+   "effect": "its velocity stays constant: at rest stays at rest, moving keeps the same speed and direction"
+  },
+  {
+   "cause": "A moving object slows down on Earth",
+   "effect": "some net force (friction, air) acts on it; with that force removed it would keep going"
+  },
+  {
+   "cause": "You view the motion from an accelerating vehicle",
+   "effect": "objects seem to lurch with no force, because that frame is not inertial; use the ground's frame"
+  }
+ ],
+ "ideas": [
+  "<b>Newton's first law</b>: if the net force on an object is zero, its velocity does not change. Rest is just a velocity of zero.",
+  "<b>Translational equilibrium</b>: ΣF = 0. Check each direction separately: ΣF<sub>x</sub> = 0 and ΣF<sub>y</sub> = 0. Forces can balance in one direction and not the other.",
+  "<b>Inertia</b> is an object's tendency to keep its velocity; mass measures it. Inertia is not a force.",
+  "An <b>inertial reference frame</b> is one in which the first law holds: the ground, or a vehicle at constant velocity."
+ ],
+ "misconception": {
+  "wrong": "A moving object needs a forward force on it to keep moving, so a box sliding at constant speed has a larger push than friction.",
+  "right": "Constant velocity means zero net force: the push equals the friction. A larger push would make the box speed up."
+ },
+ "check": [
+  "phys-first-law-6",
+  "phys-first-law-7",
+  "phys-first-law-8",
+  "phys-first-law-9",
+  "phys-first-law-12",
+  "phys-first-law-14"
+ ],
+ "summary": "Newton's first law: zero net force means constant velocity, including rest. Translational equilibrium is ΣF = 0, checked direction by direction; inertia is a property, not a force; and the law holds in inertial frames, such as the ground."
+}

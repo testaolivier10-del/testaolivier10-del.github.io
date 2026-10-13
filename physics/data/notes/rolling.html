@@ -1,0 +1,40 @@
+<p>A rolling ball does two things at once. Its center moves along, and it spins about its center. Everything in this topic comes from connecting those two motions and adding up their energies. The payoff is one of the classic results of mechanics: in a race down a ramp, shape beats mass.</p>
+
+<h2>Rolling without slipping</h2>
+<p>Roll a wheel of radius R one full turn along the ground, and watch a paint mark on its rim. If the wheel does not skid, the rim unrolls onto the ground like tape: one full turn lays down one circumference, 2πR, and the center moves forward by exactly that much. So for <b>rolling without slipping</b>,</p>
+<p style="text-align:center"><b>Δx<sub>cm</sub> = RΔθ</b> &#160; and &#160; <b>v<sub>cm</sub> = Rω</b></p>
+<p>The point touching the ground is momentarily at rest: it is moving backward at Rω relative to the center, while the center moves forward at v<sub>cm</sub> = Rω. That is what "not slipping" means.</p>
+
+<h2>Two kinds of kinetic energy</h2>
+<p>A rolling object's kinetic energy is the energy of its center moving along plus the energy of spinning about its center:</p>
+<p style="text-align:center"><b>K = ½Mv<sub>cm</sub>² + ½Iω²</b></p>
+<div class="worked">
+<p><b>Worked example 1.</b> A 0.60 kg solid ball (I = ⅖MR², given) rolls without slipping at 2.0 m/s. Find its total kinetic energy.</p>
+<p>Translational: ½(0.60 kg)(2.0 m/s)² = 1.2 J.</p>
+<p>Rotational: with ω = v/R, ½(⅖MR²)(v/R)² = ⅖ × ½Mv² = 0.48 J. The radius cancels.</p>
+<p>Total K = <b>1.7 J</b>.</p>
+</div>
+
+<h2>Friction that does no work</h2>
+<p>On a slope, a rolling object needs friction to make it spin faster as it speeds up. That friction is <b>static</b>: it acts at the contact point, which is not sliding. A force on a point that does not move through a distance does no work. So static friction makes the object spin without taking any mechanical energy away. Energy conservation holds: Mgh = ½Mv² + ½Iω².</p>
+<p>(Rolling friction, the small loss from a tire or ball squashing slightly, is beyond the scope of this course.)</p>
+
+<h2>The rolling race</h2>
+<figure id="fig-race" data-fig="rolling-race"><figcaption>Sphere, disk and hoop: the same drop in height, different shares of energy in spinning.</figcaption></figure>
+<p>Release a solid sphere, a solid disk and a hoop, each of mass M and radius R, from rest at height h. Write each one's I as βMR² (sphere β = ⅖, disk β = ½, hoop β = 1, all given). Then, with ω = v/R,</p>
+<p style="text-align:center">Mgh = ½Mv² + ½(βMR²)(v/R)² = ½Mv²(1 + β), so <b>v = √(2gh / (1 + β))</b></p>
+<p>Three things follow. Mass cancels. Radius cancels. Only β, the shape, remains. The smaller β, the more of the energy goes into moving along, so the faster the object. Sphere first, disk second, hoop last. A frictionless block that slides without spinning (β = 0) beats them all, at √(2gh).</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A solid disk rolls from rest down a ramp 0.80 m high. Find its speed at the bottom. Use g = 9.8 m/s².</p>
+<p>β = ½: v = √(2gh/1.5) = √(4gh/3) = √(4 × 9.8 × 0.80/3) m/s = <b>3.2 m/s</b>.</p>
+<p>Check the energy split: ½Mv² is ⅔ of the total and ½Iω² is ⅓.</p>
+</div>
+
+<h2>Rolling while slipping</h2>
+<p>Bowl a ball so it slides along the lane without spinning. Now v<sub>cm</sub> ≠ Rω, and the bottom of the ball rubs forward on the lane. Kinetic friction acts backward on the ball. That one force does two jobs: it slows the center (v<sub>cm</sub> falls), and because it acts at the bottom, a distance R from the center, its torque spins the ball up (ω rises). When v<sub>cm</sub> has fallen and Rω has risen until they are equal, the sliding stops and the ball rolls. During the skid, kinetic friction dissipates mechanical energy, so the total kinetic energy falls. The exam asks about this only in words: which way each quantity changes and why.</p>
+<table class="compare"><thead><tr><th></th><th>Rolling without slipping</th><th>Rolling while slipping</th></tr></thead><tbody>
+<tr><td>Link</td><td>v<sub>cm</sub> = Rω</td><td>no link: v<sub>cm</sub> ≠ Rω</td></tr>
+<tr><td>Friction at the contact</td><td>static (or none on level ground)</td><td>kinetic</td></tr>
+<tr><td>Mechanical energy</td><td>conserved (friction does no work)</td><td>decreases (dissipated as thermal energy)</td></tr>
+<tr><td>Analysis on the exam</td><td>quantitative</td><td>qualitative only</td></tr>
+</tbody></table>

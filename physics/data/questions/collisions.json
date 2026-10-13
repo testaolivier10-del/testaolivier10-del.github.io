@@ -1,0 +1,448 @@
+{
+ "stimuli": {
+  "collisions-s1": {
+   "kind": "table",
+   "title": "Collision trials with two carts",
+   "text": "<p>In each trial a 0.40 kg cart A rolls into a 0.60 kg cart B at rest on a level, low-friction track. Motion sensors record the velocities just before and just after. Positive is to the right.</p>",
+   "table": {
+    "caption": "Velocities in three trials",
+    "cols": [
+     "Trial",
+     "v_A before (m/s)",
+     "v_A after (m/s)",
+     "v_B after (m/s)"
+    ],
+    "rows": [
+     [
+      "1 (magnets)",
+      "+1.00",
+      "−0.20",
+      "+0.80"
+     ],
+     [
+      "2 (bare)",
+      "+1.00",
+      "+0.10",
+      "+0.60"
+     ],
+     [
+      "3 (Velcro)",
+      "+1.00",
+      "+0.40",
+      "+0.40"
+     ]
+    ]
+   }
+  },
+  "collisions-s2": {
+   "kind": "diagram",
+   "title": "Two carts that stick",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 300\" role=\"img\" aria-label=\"Before: cart A, 2.0 kg, moves right at 3.0 m/s; cart B, 1.0 kg, moves left at 1.5 m/s. After: the carts are stuck together and their velocity is unknown.\" style=\"max-width:100%;height:auto;background:#fff\"><rect width=\"640\" height=\"300\" fill=\"#FFFFFF\"/><text x=\"20\" y=\"48\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#734200\" text-anchor=\"start\" font-weight=\"bold\">Before</text><rect x=\"20\" y=\"140\" width=\"600\" height=\"7\" fill=\"#C9C3B6\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"30\" y=\"147\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"602\" y=\"147\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"120\" y=\"84\" width=\"100\" height=\"42\" rx=\"6\" fill=\"#F6E7C8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"140\" cy=\"131\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"200\" cy=\"131\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"140\" cy=\"131\" r=\"3\" fill=\"#D7D2C8\"/><circle cx=\"200\" cy=\"131\" r=\"3\" fill=\"#D7D2C8\"/><text x=\"170\" y=\"99\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">A</text><text x=\"170\" y=\"116\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">2.0 kg</text><rect x=\"360\" y=\"84\" width=\"120\" height=\"42\" rx=\"6\" fill=\"#F6E7C8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"380\" cy=\"131\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"460\" cy=\"131\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"380\" cy=\"131\" r=\"3\" fill=\"#D7D2C8\"/><circle cx=\"460\" cy=\"131\" r=\"3\" fill=\"#D7D2C8\"/><text x=\"420\" y=\"99\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">B</text><text x=\"420\" y=\"116\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">1.0 kg</text><line x1=\"170\" y1=\"70\" x2=\"339.0\" y2=\"70.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"350.0,70.0 339.0,75.0 339.0,65.0\" fill=\"#B07A00\"/><text x=\"358.0\" y=\"75.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"start\" font-weight=\"bold\">+3.00 m/s</text><line x1=\"420\" y1=\"70\" x2=\"341.0\" y2=\"70.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"330.0,70.0 341.0,65.0 341.0,75.0\" fill=\"#B07A00\"/><text x=\"322.0\" y=\"75.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"end\" font-weight=\"bold\">−1.50 m/s</text><text x=\"20\" y=\"188\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#734200\" text-anchor=\"start\" font-weight=\"bold\">After</text><rect x=\"20\" y=\"280\" width=\"600\" height=\"7\" fill=\"#C9C3B6\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"30\" y=\"287\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"602\" y=\"287\" width=\"8\" height=\"14\" fill=\"#8A8F8C\"/><rect x=\"230\" y=\"224\" width=\"100\" height=\"42\" rx=\"6\" fill=\"#F6E7C8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"250\" cy=\"271\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"310\" cy=\"271\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"250\" cy=\"271\" r=\"3\" fill=\"#D7D2C8\"/><circle cx=\"310\" cy=\"271\" r=\"3\" fill=\"#D7D2C8\"/><text x=\"280\" y=\"239\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">A</text><text x=\"280\" y=\"256\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">2.0 kg</text><rect x=\"330\" y=\"224\" width=\"120\" height=\"42\" rx=\"6\" fill=\"#F6E7C8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"350\" cy=\"271\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"430\" cy=\"271\" r=\"9\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"350\" cy=\"271\" r=\"3\" fill=\"#D7D2C8\"/><circle cx=\"430\" cy=\"271\" r=\"3\" fill=\"#D7D2C8\"/><text x=\"390\" y=\"239\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">B</text><text x=\"390\" y=\"256\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">1.0 kg</text><text x=\"330\" y=\"210\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#B07A00\" text-anchor=\"middle\" font-weight=\"bold\">stuck together: v<tspan baseline-shift=\"sub\" font-size=\"75%\">f</tspan> = ?</text><text x=\"620\" y=\"24\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"end\">positive to the right →</text></svg><p>The track is level and friction is negligible. Positive is to the right.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-collisions-1",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "collisions-s1",
+   "q": "In which trials is the total momentum of the two carts the same before and after?",
+   "options": [
+    "In each of the three trials",
+    "In trial 1, the elastic one, and not the others",
+    "In trial 3, where the carts stick, and not the others",
+    "In no trial, because the carts' speeds change"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Before: (0.40)(1.00) = 0.40 kg·m/s. After: trial 1: −0.08 + 0.48 = 0.40; trial 2: 0.04 + 0.36 = 0.40; trial 3: (1.00)(0.40) = 0.40.",
+    "options": [
+     "Right: every trial gives 0.40 kg·m/s after, as before.",
+     "Momentum is conserved in every collision with no net external force, elastic or not.",
+     "Sticking does not make momentum special; check the products in trials 1 and 2 too.",
+     "The individual speeds change, but the total momentum does not."
+    ]
+   }
+  },
+  {
+   "id": "phys-collisions-2",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "collisions-s1",
+   "q": "Which trial is elastic?",
+   "options": [
+    "Trial 2",
+    "Trial 1",
+    "Trial 3",
+    "Each of the three, because momentum is conserved in each"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "K before = ½(0.40)(1.00)² = 0.20 J. After: trial 1, 0.20 J (elastic); trial 2, 0.11 J (inelastic); trial 3, 0.080 J (perfectly inelastic).",
+    "options": [
+     "K after = 0.002 + 0.108 = 0.11 J, less than 0.20 J: inelastic.",
+     "Right: K after = ½(0.40)(0.20)² + ½(0.60)(0.80)² = 0.20 J, equal to K before.",
+     "The carts stick, which is perfectly inelastic: K drops to 0.080 J.",
+     "Conserving momentum does not make a collision elastic. Elastic means total K is unchanged too."
+    ]
+   }
+  },
+  {
+   "id": "phys-collisions-3",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "collisions-s1",
+   "q": "How much kinetic energy is converted to other forms in trial 3, in joules?",
+   "numeric": {
+    "answer": 0.12,
+    "tol": 0.01,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.08,
+      "why": "Value: that is the kinetic energy after. Subtract it from the 0.20 J before."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Before: 0.20 J. After: ½(1.00 kg)(0.40 m/s)² = 0.080 J. Converted: 0.12 J, to thermal energy and sound as the Velcro grips."
+   }
+  },
+  {
+   "id": "phys-collisions-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "collisions-s1",
+   "q": "In trial 1, cart A bounces back. Did cart A's own kinetic energy stay the same?",
+   "options": [
+    "Yes: in an elastic collision each cart keeps its kinetic energy",
+    "Yes: A moves back with its original speed",
+    "No: A gave most of its K to B; the total stayed 0.20 J",
+    "No: the total kinetic energy went down"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In an elastic collision the total kinetic energy is the same before and after, but energy moves between the objects.",
+    "options": [
+     "Elastic means the total K is unchanged; individual kinetic energies can change.",
+     "A moves back at 0.20 m/s, much slower than 1.00 m/s.",
+     "Right: K_A falls from 0.20 J to 0.008 J; B gains 0.192 J.",
+     "Trial 1 is elastic: the total stayed 0.20 J."
+    ]
+   }
+  },
+  {
+   "id": "phys-collisions-5",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "collisions-s1",
+   "q": "Trial 3 is repeated with cart B loaded to 1.60 kg. Compared with the original trial 3, the speed of the stuck carts after the collision is",
+   "options": [
+    "the same, because A has the same momentum",
+    "one quarter as large",
+    "twice as large",
+    "one half as large"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "v_f = m_A v_A/(m_A + m_B): 0.40/1.00 = 0.40 m/s before, 0.40/2.00 = 0.20 m/s now.",
+    "options": [
+     "The same momentum is now shared by twice the total mass.",
+     "B's mass is a little under 3 times larger, but the total mass (which matters) doubles.",
+     "Adding mass to the stuck pair slows it down.",
+     "Right: (0.40)(1.00) = (2.00)v gives 0.20 m/s, half of 0.40 m/s."
+    ]
+   }
+  },
+  {
+   "id": "phys-collisions-6",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "collisions-s2",
+   "q": "What is the velocity of the stuck carts just after the collision, in m/s? Include the sign.",
+   "numeric": {
+    "answer": 1.5,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "Value: B moves left, so its momentum is negative: (1.0)(−1.5)."
+     },
+     {
+      "value": 0.75,
+      "why": "Value: averaging velocities ignores the masses. Use total momentum over total mass."
+     }
+    ]
+   },
+   "why": {
+    "correct": "p = (2.0)(+3.0) + (1.0)(−1.5) = +4.5 kg·m/s. v_f = 4.5/3.0 = +1.5 m/s."
+   }
+  },
+  {
+   "id": "phys-collisions-7",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "collisions-s2",
+   "q": "How much kinetic energy does the system lose in the collision, in joules?",
+   "numeric": {
+    "answer": 6.8,
+    "tol": 0.1,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4.5,
+      "why": "Value: kinetic energies do not cancel. B's 1.1 J adds to A's 9.0 J even though B moves left."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Before: ½(2.0)(3.0)² + ½(1.0)(1.5)² = 9.0 + 1.125 = 10.1 J. After: ½(3.0)(1.5)² = 3.4 J. Lost: 6.8 J (to thermal energy and sound)."
+   }
+  },
+  {
+   "id": "phys-collisions-8",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "collisions-s2",
+   "q": "A student finds the final velocity by setting the kinetic energy before equal to the kinetic energy after. What is wrong?",
+   "options": [
+    "K is not conserved when carts stick; start from momentum",
+    "Nothing: kinetic energy is conserved in a collision like this one",
+    "The student should have used the carts' weights instead of masses",
+    "Kinetic energy gives the speed but not the direction, so add a sign"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In every collision on a frictionless track momentum is conserved; kinetic energy is conserved only if the collision is elastic. When objects stick, start from momentum.",
+    "options": [
+     "Right: start from momentum, which is conserved because no net external force acts.",
+     "Kinetic energy is conserved only in elastic collisions. Sticking is the opposite extreme.",
+     "Weights would not fix the method; kinetic energy is simply not conserved here.",
+     "The magnitude would still be wrong, because K is not conserved."
+    ]
+   }
+  },
+  {
+   "id": "phys-collisions-9",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "collisions-s2",
+   "q": "Which momentum bar chart (bars for A, B and the total, before and after) is correct?",
+   "options": [
+    "Before: A +6.0, B +1.5, total +7.5; after: total +7.5",
+    "Before: A +6.0, B −1.5, total +4.5; after: A and B together +4.5",
+    "Before: A +6.0, B −1.5, total +4.5; after: 0, because the carts stop",
+    "Before: A +3.0, B −1.5, total +1.5; after: +1.5"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Momenta in kg·m/s: A = (2.0)(3.0) = +6.0, B = (1.0)(−1.5) = −1.5. Total +4.5 before and after.",
+    "options": [
+     "B moves left, so its bar points below zero (−1.5).",
+     "Right: the total bar is the same before and after.",
+     "The carts move on together at +1.5 m/s; the total stays +4.5.",
+     "These are velocities, not momenta. Multiply by each mass."
+    ]
+   }
+  },
+  {
+   "id": "phys-collisions-10",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which is true of every collision between two objects on a level, frictionless surface?",
+   "options": [
+    "Total kinetic energy is conserved; momentum may or may not be",
+    "Both total momentum and total kinetic energy are conserved",
+    "Momentum is conserved; kinetic energy may or may not be",
+    "Neither is conserved, because the objects push on each other"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Momentum: conserved whenever the net external force is zero. Kinetic energy: conserved only in elastic collisions.",
+    "options": [
+     "This swaps them. Momentum is the one that is always conserved here.",
+     "True only for elastic collisions.",
+     "Right: no net external force, so p is constant; K is constant only if elastic.",
+     "The pushes are internal; they cannot change the total momentum."
+    ]
+   }
+  },
+  {
+   "id": "phys-collisions-11",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A collision in which the total kinetic energy after is less than before, but the objects do not stick together, is",
+   "options": [
+    "elastic",
+    "perfectly inelastic",
+    "an explosion",
+    "inelastic"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Elastic: K unchanged. Inelastic: K decreases. Perfectly inelastic: K decreases the most possible, and the objects stick.",
+    "options": [
+     "Elastic means no loss of total kinetic energy.",
+     "Perfectly inelastic means the objects stick and move together.",
+     "In an explosion kinetic energy increases, from stored energy.",
+     "Right: some kinetic energy became other forms, but the objects separate."
+    ]
+   }
+  },
+  {
+   "id": "phys-collisions-12",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A 1500 kg car moving at 12 m/s rear-ends a 1000. kg car at rest, and they lock bumpers. How fast do they move just after, in m/s?",
+   "numeric": {
+    "answer": 7.2,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 9.3,
+      "why": "Value: that comes from conserving kinetic energy. Locked bumpers make it perfectly inelastic; use momentum."
+     }
+    ]
+   },
+   "why": {
+    "correct": "(1500 kg)(12 m/s) = (2500 kg)v, so v = 7.2 m/s."
+   }
+  },
+  {
+   "id": "phys-collisions-13",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A ball of clay and a rubber ball, of equal mass and speed, each hit a block. Which one is more likely to knock the block over?",
+   "options": [
+    "The rubber ball, because a bounce gives a larger impulse",
+    "The clay, because it hands its whole energy to the block",
+    "Both equally, because they have the same momentum",
+    "The clay, because sticking is an elastic collision"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The block's impulse equals the ball's change in momentum (opposite). Clay: Δp = mv. Rubber ball bouncing back: up to 2mv.",
+    "options": [
+     "Right: reversing the ball's momentum takes more impulse than stopping it.",
+     "Knocking over depends on the push (impulse). The bounce delivers more.",
+     "Same initial momentum, but different changes: the bounce changes it more.",
+     "Sticking is perfectly inelastic, not elastic."
+    ]
+   }
+  },
+  {
+   "id": "phys-collisions-14",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Two identical carts, one moving at v and one at rest, collide on a frictionless track. Which outcome is impossible?",
+   "options": [
+    "The first cart stops and the second moves at v",
+    "Both carts move forward at v",
+    "They stick and then move together at v/2",
+    "The first moves at v/4 and the second at 3v/4"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Any outcome must keep the total momentum at mv, and the total K cannot rise without a stored energy source. Both moving at v breaks momentum conservation.",
+    "options": [
+     "Possible: momentum mv is conserved and K is unchanged (elastic).",
+     "Right: the total momentum would double, from mv to 2mv.",
+     "Possible: momentum mv is conserved (perfectly inelastic).",
+     "Possible: momentum mv is conserved and K drops (inelastic)."
+    ]
+   }
+  },
+  {
+   "id": "phys-collisions-15",
+   "type": "predict",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two carts on a frictionless track collide and stick together. For the two-cart system, compare just after with just before.",
+   "variables": [
+    {
+     "name": "Total momentum",
+     "answer": "none",
+     "why": "No net external force acts during the collision."
+    },
+    {
+     "name": "Total kinetic energy",
+     "answer": "down",
+     "why": "Sticking is perfectly inelastic; some K becomes thermal energy and sound."
+    },
+    {
+     "name": "Thermal energy of the carts",
+     "answer": "up",
+     "why": "The kinetic energy lost is converted, mostly to thermal energy."
+    }
+   ],
+   "why": {
+    "correct": "Momentum first: it is unchanged. Energy second: the total is conserved, but kinetic energy decreases."
+   }
+  }
+ ]
+}

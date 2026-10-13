@@ -1,0 +1,12 @@
+{
+ "doubling-three-ways": {
+  "file": "figures/doubling-three-ways.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels. Directly proportional, d = v t at steady speed: a car covers distance d in time t and 2d in time 2t, so doubling t doubles d. Inversely proportional, t = d over v for a fixed trip: a car at speed v needs time t, and at speed 2v needs time t over 2, so doubling v halves the time. Square relationship, A = s squared: a square of side s has area A; a square of side 2s holds four copies of the small square, so doubling s multiplies the area by 4."
+ }
+}

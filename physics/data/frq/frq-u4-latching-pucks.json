@@ -1,0 +1,103 @@
+{
+ "id": "frq-u4-latching-pucks",
+ "type": "qqt",
+ "points": 8,
+ "title": "Latching pucks: where does the energy go?",
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "collisions",
+  "momentum-conservation"
+ ],
+ "practices": [
+  "3.B",
+  "2.A",
+  "2.D",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "diagram",
+  "title": "Latching pucks",
+  "text": "<p>Puck A, of mass m, slides at speed v₀ toward puck B, of mass M, which is at rest on level, frictionless ice. The pucks latch together when they collide. A student repeats the experiment with pucks B of different masses M, keeping m and v₀ the same.</p>",
+  "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 190\" role=\"img\" aria-label=\"Puck A of mass m slides right at speed v zero toward a larger puck B of mass M at rest on level ice; Velcro edges make them latch together.\" style=\"max-width:100%;height:auto;background:#fff\"><rect width=\"640\" height=\"190\" fill=\"#FFFFFF\"/><text x=\"20\" y=\"26\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">Puck A slides toward puck B, which is at rest, on level ice</text><rect x=\"20\" y=\"132\" width=\"600\" height=\"10\" fill=\"#E3F0F7\" stroke=\"#1F2A28\" stroke-width=\"1\"/><ellipse cx=\"140\" cy=\"124\" rx=\"38\" ry=\"10\" fill=\"#3B4442\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"102\" y=\"110\" width=\"76\" height=\"14\" fill=\"#3B4442\"/><ellipse cx=\"140\" cy=\"110\" rx=\"38\" ry=\"10\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"140\" y=\"90\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">A, mass m</text><line x1=\"186\" y1=\"114\" x2=\"255.0\" y2=\"114.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"266.0,114.0 255.0,119.0 255.0,109.0\" fill=\"#B07A00\"/><text x=\"274.0\" y=\"119.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"start\" font-weight=\"bold\">v₀</text><ellipse cx=\"440\" cy=\"124\" rx=\"54\" ry=\"12\" fill=\"#734200\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"386\" y=\"108\" width=\"108\" height=\"16\" fill=\"#734200\"/><ellipse cx=\"440\" cy=\"108\" rx=\"54\" ry=\"12\" fill=\"#A86A1F\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"440\" y=\"86\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">B, mass M, at rest</text><text x=\"20\" y=\"170\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#5A6268\" text-anchor=\"start\">Velcro on the facing edges: when A hits B they latch and slide on together.</text></svg>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "prompt": "As M is made larger, does the fraction of A's initial kinetic energy that remains as kinetic energy after the collision increase, decrease or stay the same? <b>Justify</b> your answer without manipulating equations.",
+   "rubric": [
+    {
+     "point": "Claims the fraction decreases.",
+     "accept": [
+      "less kinetic energy remains",
+      "more is lost"
+     ]
+    },
+    {
+     "point": "States that the momentum of the system is the same for every M (no net external force), so a larger total mass must move more slowly after latching.",
+     "accept": [
+      "same momentum shared by more mass",
+      "the pair moves slower"
+     ]
+    },
+    {
+     "point": "Reasons that kinetic energy depends on the speed squared, so the slower, heavier pair carries less kinetic energy for the same momentum.",
+     "accept": [
+      "K = ½(m + M)v², and v falls faster than the mass grows",
+      "for a fixed momentum, more mass means less kinetic energy"
+     ]
+    }
+   ],
+   "sample": "It decreases. With no net external force on the two pucks, their total momentum after latching equals A's initial momentum whatever M is. A larger total mass carrying the same momentum must move more slowly, and since kinetic energy goes as the speed squared but only linearly with mass, the heavier, slower pair has less kinetic energy. More of A's kinetic energy becomes thermal energy and sound in the latch."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "Starting with conservation of momentum, <b>derive</b> an expression for the fraction K_f/K_i of A's initial kinetic energy that remains after the collision, in terms of m and M.",
+   "rubric": [
+    {
+     "point": "Starts from conservation of momentum: mv₀ = (m + M)v_f, so v_f = mv₀/(m + M).",
+     "accept": [
+      "p before = p after for the two pucks"
+     ]
+    },
+    {
+     "point": "Writes K_i = ½mv₀² and K_f = ½(m + M)v_f² with the derived v_f substituted.",
+     "accept": [
+      "K_f = ½(m + M)(mv₀/(m + M))²"
+     ]
+    },
+    {
+     "point": "Correct answer K_f/K_i = m/(m + M).",
+     "accept": [
+      "m/(m + M)"
+     ]
+    }
+   ],
+   "sample": "The net external force on A and B is zero, so mv₀ = (m + M)v_f and v_f = mv₀/(m + M). Then K_f = ½(m + M)v_f² = ½m²v₀²/(m + M), and K_i = ½mv₀², so K_f/K_i = m/(m + M)."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Explain</b> how your expression in part (b) supports your claim in part (a). Then use it to <b>determine</b> the fraction of the kinetic energy lost when M = m.",
+   "rubric": [
+    {
+     "point": "Explains that M appears only in the denominator, so increasing M decreases m/(m + M), consistent with (a).",
+     "accept": [
+      "larger M, smaller fraction"
+     ]
+    },
+    {
+     "point": "For M = m, the fraction remaining is ½, so half of the kinetic energy is lost.",
+     "accept": [
+      "one half lost",
+      "50%"
+     ]
+    }
+   ],
+   "sample": "M appears only in the denominator of m/(m + M), so a larger M gives a smaller fraction of kinetic energy remaining, as claimed. For M = m the fraction remaining is m/(2m) = ½, so half of A's kinetic energy is lost in the collision."
+  }
+ ]
+}

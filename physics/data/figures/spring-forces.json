@@ -1,0 +1,12 @@
+{
+ "spring-hooke": {
+  "file": "figures/spring-hooke.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The same vertical spring beside a ruler, three times: relaxed; with a block of mass m, stretched by Δx; and with a block of mass 2m, stretched by 2Δx. Beside it, a graph of force on the spring against stretch is a straight line through the origin, labeled |F_s| = k|Δx|, with slope k."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "third-law-book-table": {
+  "file": "figures/third-law-book-table.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: the free-body diagram of a book at rest, with F_N, table on book, up and F_g, Earth on book, down, equal. They act on the same object, so they are not a third-law pair. Right: the book, table and Earth pulled apart. Single ticks mark the contact pair, table on book up and book on table down; double ticks mark the gravity pair, Earth on book down and book on Earth up."
+ }
+}

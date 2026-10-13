@@ -1,0 +1,12 @@
+{
+ "work-pulled-crate": {
+  "file": "figures/work-pulled-crate.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A crate on a rough floor pulled 4.0 m right by a rope at 30 degrees. Forces from its center: rope tension up-right, kinetic friction left, normal force up, gravitational force down. A table gives each force's work: tension positive, friction negative, normal and gravity zero."
+ }
+}

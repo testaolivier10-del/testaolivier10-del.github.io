@@ -1,0 +1,42 @@
+<p>In Unit 3, a force that pushes an object through a distance does work on it, and that work changes its energy. Turning has the same story. A torque that turns an object through an angle does work on it. This page finds the formula, shows what to do when the torque changes, and connects the work to rotational kinetic energy.</p>
+
+<h2>From force times distance to torque times angle</h2>
+<p>Push on the rim of a wheel, always along the rim, with a force F. The wheel turns through an angle Δθ, and the point you push on moves a distance s = rΔθ along the rim. The work you do is</p>
+<p style="text-align:center">W = Fs = F(rΔθ) = (rF)Δθ</p>
+<p>But rF is the torque you exert, τ. So the <b>work done by a torque</b> is</p>
+<p style="text-align:center"><b>W = τΔθ</b> &#160;(constant torque, Δθ in radians)</p>
+<p>The angle must be in radians, because the step s = rΔθ only works in radians. Turn revolutions into radians first: four revolutions is 4 × 2π = 25.1 rad.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A screwdriver applies a constant torque of 1.5 N·m while it turns a screw through 4 revolutions. How much work does it do?</p>
+<p>Δθ = 4 × 2π rad = 25.1 rad.</p>
+<p>W = τΔθ = (1.5 N·m)(25.1 rad) = <b>38 J</b>. A newton-meter times a radian is a joule.</p>
+</div>
+
+<h2>The sign of the work</h2>
+<p>As with force, work by a torque can be positive or negative.</p>
+<ul>
+<li>A torque in the direction the object turns does <b>positive</b> work: it adds kinetic energy (a motor spinning up a wheel).</li>
+<li>A torque opposite to the turning does <b>negative</b> work: it removes kinetic energy (a brake).</li>
+<li>A torque on an object that does not turn does no work.</li>
+</ul>
+
+<h2>When the torque changes: the area under τ-θ</h2>
+<p>If the torque changes as the object turns, slice the turning into small angles, each with a nearly constant torque, and add up τΔθ. That sum is the area under a graph of torque against angle, just as work by a changing force is the area under F-x.</p>
+<figure id="fig-ta" data-fig="torque-angle-work"><figcaption>The work done by a torque is the area under the torque-angle graph.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> A motor's torque on a wheel is 6.0 N·m for the first 8.0 rad, then falls steadily to zero at 14.0 rad. The wheel (I = 0.50 kg·m²) starts from rest on a frictionless axle. How fast is it turning at 14.0 rad?</p>
+<p>Work = area: rectangle (6.0 N·m)(8.0 rad) = 48 J, plus triangle ½(6.0 N·m)(6.0 rad) = 18 J, total 66 J.</p>
+<p>Principle: the net work on the wheel equals its change in rotational kinetic energy. From rest, 66 J = ½(0.50 kg·m²)ω².</p>
+<p>ω = √(2 × 66 J / 0.50 kg·m²) = √264 rad/s = <b>16 rad/s</b>.</p>
+</div>
+
+<h2>Work and rotational kinetic energy</h2>
+<p>The work-energy idea carries over: the net work done on a rigid object by all the torques on it equals its change in rotational kinetic energy, W<sub>net</sub> = ΔK<sub>rot</sub> = ½Iω² − ½Iω₀².</p>
+<p>A brake problem uses it backward. A wheel with I = 2.0 kg·m² spinning at 15 rad/s has ½(2.0)(15)² = 225 J. A brake that stops it in 30 rad must do −225 J of work, so its torque has size 225 J ÷ 30 rad = 7.5 N·m.</p>
+<p>Sometimes the work goes into a different kind of energy. Wind a 6.00 kg bucket up a well on a drum of radius 0.0800 m at constant speed. The rope's tension equals the bucket's weight, 58.8 N, so the torque on the drum is (0.0800 m)(58.8 N) = 4.70 N·m. Turning the drum 25.0 rad takes W = (4.70 N·m)(25.0 rad) = 118 J, and the bucket rises rΔθ = 2.00 m, gaining mgΔy = (6.00)(9.8)(2.00) = 118 J of gravitational potential energy. The drum turns at a steady rate, so none of the work stays as its kinetic energy.</p>
+<table class="compare"><thead><tr><th>Linear</th><th>Rotational</th></tr></thead><tbody>
+<tr><td>W = Fd (force along the motion)</td><td>W = τΔθ (torque along the turning)</td></tr>
+<tr><td>area under F-x</td><td>area under τ-θ</td></tr>
+<tr><td>W<sub>net</sub> = ΔK = Δ(½mv²)</td><td>W<sub>net</sub> = ΔK<sub>rot</sub> = Δ(½Iω²)</td></tr>
+</tbody></table>
+<p>Keep the angle in view: work is torque times <i>angle</i>, and it changes the kinetic energy. The next topic multiplies torque by <i>time</i> instead, and that product changes a different quantity.</p>

@@ -1,0 +1,8 @@
+{
+ "rotational-work": {
+  "def": "The work done on a turning object by a torque: W = τΔθ for a constant torque, with Δθ in radians. Positive when the torque is in the direction of turning."
+ },
+ "torque-angle-graph": {
+  "def": "A graph of torque against the angle turned. The area under it is the work done by the torque."
+ }
+}

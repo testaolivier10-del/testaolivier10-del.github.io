@@ -1,0 +1,20 @@
+{
+ "periodic-motion": {
+  "def": "Motion that repeats itself in equal time intervals, such as a swinging pendulum or a block bouncing on a spring."
+ },
+ "restoring-force": {
+  "def": "A force that points back toward an object's equilibrium position whenever the object is displaced from it."
+ },
+ "equilibrium-position": {
+  "def": "The position where the net force on an oscillating object is zero; the center of its oscillation."
+ },
+ "shm": {
+  "def": "Periodic motion caused by a restoring force proportional to the displacement from equilibrium and opposite to it, F = −kx."
+ },
+ "amplitude": {
+  "def": "The largest displacement from the equilibrium position during an oscillation, A; half the distance between the turning points."
+ },
+ "simple-pendulum": {
+  "def": "A small, heavy bob on a light string swinging under gravity; for small angles its motion is very close to simple harmonic motion."
+ }
+}

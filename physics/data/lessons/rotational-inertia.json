@@ -1,0 +1,87 @@
+{
+ "topic": "rotational-inertia",
+ "hook": "A figure skater, a tightrope walker’s long pole and a baseball bat held by the wrong end all show the same thing. How hard something is to set turning depends on where its mass sits, not just how much there is. Move the same mass farther from the axis and it fights a change in rotation much harder.",
+ "prereq": [
+  {
+   "q": "If r doubles, r² becomes",
+   "options": [
+    "4 times as large",
+    "2 times as large",
+    "half as large",
+    "the same"
+   ],
+   "correct": 0,
+   "why": "(2r)² = 4r².",
+   "review": "math-proportional"
+  },
+  {
+   "q": "The center of mass of two equal masses is",
+   "options": [
+    "halfway between them",
+    "at the heavier one",
+    "at either end",
+    "outside the line joining them"
+   ],
+   "correct": 0,
+   "why": "Equal masses balance at the midpoint.",
+   "review": "systems-center-of-mass"
+  }
+ ],
+ "figure": {
+  "figure": "dumbbell-inertia",
+  "caption": "The same two masses at r and at 2r: twice the distance gives four times the rotational inertia."
+ },
+ "chain": [
+  {
+   "cause": "Every bit of mass in a turning object moves in a circle about the axis",
+   "effect": "it resists changes in that motion in proportion to its mass"
+  },
+  {
+   "cause": "Mass farther from the axis moves faster for a given ω",
+   "effect": "it counts more, as the square of its distance"
+  },
+  {
+   "cause": "Adding mr² for every bit of mass",
+   "effect": "gives the rotational inertia I = Σmr², in kg·m²"
+  },
+  {
+   "cause": "The same mass is moved farther from the axis",
+   "effect": "I increases (with r²)"
+  },
+  {
+   "cause": "The axis is moved a distance d from the center of mass",
+   "effect": "I = I_cm + Md², always larger than I_cm"
+  }
+ ],
+ "ideas": [
+  "<b>Rotational inertia</b> I = Σmr² is the rotational partner of mass: it measures resistance to a change in rotation.",
+  "r is each mass’s distance from the <b>axis</b>, and it is squared: doubling r gives 4 times the I.",
+  "Same mass, different distribution, different I. A hoop (MR²) beats a disk (½MR²) of the same M and R.",
+  "Inertias of disks, rods, hoops and spheres are given on the exam; you do not memorize them.",
+  "Parallel-axis theorem: I = I<sub>cm</sub> + Md². I is least about the center of mass."
+ ],
+ "misconception": {
+  "wrong": "Two objects with the same mass have the same rotational inertia.",
+  "right": "Rotational inertia depends on where the mass is. A hoop and a disk of equal mass and radius differ by a factor of 2, and the same rod is 4 times harder to turn about its end than about its middle."
+ },
+ "check": [
+  "phys-rotational-inertia-1",
+  "phys-rotational-inertia-2",
+  "phys-rotational-inertia-3",
+  "phys-rotational-inertia-5",
+  "phys-rotational-inertia-10",
+  "phys-rotational-inertia-12",
+  "phys-rotational-inertia-15"
+ ],
+ "summary": "Rotational inertia I measures how hard an object is to set turning about an axis. For point masses I = Σmr², so it depends on both the mass and how far the mass is from the axis, with distance counted squared. The inertias of standard shapes are given. About an axis a distance d from the center of mass, I = I_cm + Md².",
+ "connections": [
+  {
+   "href": "../notes/torque.html",
+   "label": "Back: torque (5.3)"
+  },
+  {
+   "href": "../notes/rotational-equilibrium.html",
+   "label": "Next: when torques balance (5.5)"
+  }
+ ]
+}

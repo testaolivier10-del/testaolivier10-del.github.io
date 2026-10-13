@@ -1,0 +1,98 @@
+{
+ "topic": "potential-energy",
+ "hook": "Lift a bowling ball onto a high shelf and nothing seems to happen, until it falls. Wind up a toy car and it sits still, until you let go. The energy is stored in the arrangement of interacting objects, ready to become motion. That stored energy is potential energy, and it belongs to a system, not to one object.",
+ "prereq": [
+  {
+   "q": "Work done by a force along a displacement d with angle θ is",
+   "options": [
+    "F d cos θ",
+    "F d sin θ",
+    "F/d",
+    "F d²"
+   ],
+   "correct": 0,
+   "why": "W = F d cos θ.",
+   "review": "work-by-forces"
+  },
+  {
+   "q": "Hooke's law gives the size of an ideal spring's force as",
+   "options": [
+    "kΔx",
+    "½kΔx²",
+    "k/Δx",
+    "mg"
+   ],
+   "correct": 0,
+   "why": "F_s = kΔx, proportional to the stretch or compression.",
+   "review": "spring-forces"
+  },
+  {
+   "q": "Newton's law of universal gravitation gives the force between two masses as",
+   "options": [
+    "Gm₁m₂/r²",
+    "Gm₁m₂/r",
+    "m₁m₂/(Gr²)",
+    "Gm₁m₂r²"
+   ],
+   "correct": 0,
+   "why": "F_g = Gm₁m₂/r².",
+   "review": "gravitational-force"
+  }
+ ],
+ "figure": {
+  "figure": "pe-belongs-to-system",
+  "caption": "Potential energy belongs to a system: ball and Earth (gravitational), block and spring (elastic)."
+ },
+ "chain": [
+  {
+   "cause": "Two objects interact through a conservative force (gravity, an ideal spring)",
+   "effect": "the work the force does depends only on where the objects start and end"
+  },
+  {
+   "cause": "The work depends only on the configuration",
+   "effect": "the system can store energy in its configuration: potential energy, with ΔU = −W_conservative"
+  },
+  {
+   "cause": "The objects are pulled apart against gravity or a spring is squeezed",
+   "effect": "the system's potential energy increases: ΔU_g = mgΔy, U_s = ½k(Δx)²"
+  },
+  {
+   "cause": "Only changes in U appear in physics",
+   "effect": "the zero of potential energy can be placed wherever is convenient"
+  },
+  {
+   "cause": "A force does more work on a longer path, like kinetic friction",
+   "effect": "it is nonconservative and has no potential energy"
+  }
+ ],
+ "ideas": [
+  "<b>Potential energy</b> is energy stored in the configuration of a system of interacting objects. One object alone has none.",
+  "Near Earth: ΔU_g = mgΔy. For an ideal spring: U_s = ½k(Δx)², with Δx measured from the relaxed length.",
+  "A <b>conservative force</b> does work that depends only on the start and end positions; for it, W = −ΔU. Kinetic friction is nonconservative.",
+  "The <b>zero of potential energy</b> is a choice. Values change with the choice; changes do not.",
+  "Far from a planet: U_G = −Gm₁m₂/r, zero at infinite separation and negative everywhere else."
+ ],
+ "misconception": {
+  "wrong": "The book on the shelf has 29 J of potential energy.",
+  "right": "The book-Earth system has 29 J of gravitational potential energy (with the floor as zero). The energy is stored in the interaction, so it belongs to the system."
+ },
+ "check": [
+  "phys-potential-energy-1",
+  "phys-potential-energy-2",
+  "phys-potential-energy-3",
+  "phys-potential-energy-4",
+  "phys-potential-energy-6",
+  "phys-potential-energy-7"
+ ],
+ "summary": "Potential energy is stored in the configuration of interacting objects and belongs to the system. ΔU_g = mgΔy near Earth, U_s = ½k(Δx)² for a spring, U_G = −Gm₁m₂/r far away. Only conservative forces have one; the zero is a free choice because only changes matter.",
+ "connections": [
+  {
+   "href": "../notes/work-by-forces.html",
+   "label": "Back: work (3.2)"
+  },
+  {
+   "href": "../notes/energy-conservation.html",
+   "label": "Next: 3.4"
+  }
+ ]
+}

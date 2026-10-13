@@ -1,0 +1,14 @@
+{
+ "work": {
+  "def": "Energy moved into or out of a system by a force acting along a displacement: W = F d cos θ, a scalar in joules that can be positive, negative or zero."
+ },
+ "work-energy-theorem": {
+  "def": "The net work done on an object equals its change in kinetic energy: W_net = ΔK."
+ },
+ "force-position-graph": {
+  "def": "A graph of the force along the motion against position; the area under it is the work done by the force."
+ },
+ "energy-transfer": {
+  "def": "Energy moving into or out of a system across its boundary, for example by work done by an external force."
+ }
+}

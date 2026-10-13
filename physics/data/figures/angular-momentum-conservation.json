@@ -1,0 +1,12 @@
+{
+ "stool-arms-in-out": {
+  "file": "figures/stool-arms-in-out.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two side views of the same student seated on a stool that turns freely on a vertical axle with very little friction. Left: arms stretched out holding a weight in each hand; the student has a large rotational inertia and turns slowly, shown by a thin rotation arrow around the axis. Right: arms pulled in close to the body; the rotational inertia is smaller and the student turns faster, shown by a thicker arrow. The net external torque about the axle is close to zero, so the angular momentum L = Iω stays the same while I falls and ω rises."
+ }
+}

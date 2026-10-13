@@ -1,0 +1,17 @@
+{
+ "universal-gravitation": {
+  "def": "Newton's law of universal gravitation: any two objects attract each other with a force of size |F_g| = Gm₁m₂/r², where r is the distance between their centers and G = 6.67 × 10⁻¹¹ N·m²/kg² is the gravitational constant."
+ },
+ "gravitational-force": {
+  "def": "The attractive force between two objects because of their masses, acting along the line between their centers. Near a planet's surface it is the object's weight, mg."
+ },
+ "gravitational-field": {
+  "def": "The gravitational force per unit mass at a point, g = F_g/m, in N/kg (the same as m/s²). At a planet's surface g = GM/R²; near Earth it is about 9.8 N/kg and treated as constant."
+ },
+ "apparent-weight": {
+  "def": "The force a scale or floor pushes up with: the normal force. It equals mg only when the object's acceleration is zero; it is larger when accelerating up, smaller when accelerating down, and zero in free fall (weightlessness)."
+ },
+ "gravitational-mass": {
+  "def": "Mass measured by how strongly an object is pulled by gravity. Experiments find it equal to inertial mass (how strongly the object resists acceleration), which is why all objects fall with the same acceleration (the equivalence principle)."
+ }
+}

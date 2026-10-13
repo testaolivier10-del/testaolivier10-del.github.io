@@ -1,0 +1,51 @@
+<p>Lift a ball and hold it still. It has no kinetic energy, yet it clearly has the ability to speed up once you let go. Squeeze a spring and the same is true. The energy is stored somewhere, in the arrangement of objects that pull or push on each other. That stored energy is <b>potential energy</b>. This page explains where it lives, which forces can store it, and how to calculate it for gravity near Earth, for springs, and for gravity far from a planet.</p>
+
+<h2>Potential energy belongs to a system</h2>
+<figure id="fig-pe" data-fig="pe-belongs-to-system"><figcaption>Gravitational potential energy belongs to the ball-Earth system; elastic potential energy belongs to the block-spring system.</figcaption></figure>
+<p>A ball held above the floor does not store energy by itself. The energy is in the <i>interaction</i> between the ball and Earth: pull them farther apart and the system stores more. So potential energy always belongs to a <b>system of interacting objects</b>: ball + Earth, block + spring, satellite + planet. One object alone, with no partner inside the system, has no potential energy.</p>
+<p>This is not just careful wording. On the exam, the system you choose decides which energies appear in your equation. If Earth is inside the system, the change in height shows up as a change in gravitational potential energy. If Earth is outside, the same physics shows up as work done by an external gravitational force. You will use both views in 3.4.</p>
+
+<h2>Conservative forces</h2>
+<p>Not every force can store energy. Carry a ball from the floor to a shelf, straight up or by a long winding staircase: the work done on it by the gravitational force is the same either way, because it depends only on the change in height. A force like this, whose work depends only on the start and end positions, is a <b>conservative force</b>. Gravity and ideal springs are conservative.</p>
+<p>Kinetic friction is not. Drag a crate around a long loop and friction does more negative work than on a short path between the same points; it even does work on a round trip. Friction is a nonconservative force, and there is no "friction potential energy".</p>
+<p>For a conservative force, the change in the system's potential energy is minus the work the force does: <b>ΔU = −W</b>. When a ball falls, gravity does positive work and the potential energy of the ball-Earth system goes down by the same amount.</p>
+<table class="compare"><thead><tr><th></th><th>Conservative (gravity, ideal spring)</th><th>Nonconservative (kinetic friction)</th></tr></thead><tbody>
+<tr><td>Work depends on</td><td>start and end positions only</td><td>the path taken</td></tr>
+<tr><td>Work on a round trip</td><td>zero</td><td>negative</td></tr>
+<tr><td>Potential energy?</td><td>yes: ΔU = −W</td><td>no</td></tr>
+<tr><td>Example</td><td>a ball lifted by any route</td><td>a crate dragged around a loop</td></tr>
+</tbody></table>
+
+<h2>Gravitational potential energy near Earth</h2>
+<p>Near Earth's surface the gravitational force on an object is mg, nearly constant. Raising the object a height Δy takes work mgΔy against it, so the <b>gravitational potential energy</b> of the object-Earth system changes by</p>
+<p style="text-align:center"><b>ΔU_g = mgΔy</b></p>
+<p>Only the change in height counts, not the path. Up is positive Δy, so U_g increases going up and decreases going down.</p>
+<p>What about the value of U_g itself? You choose where U_g = 0: the floor, a table top, the lowest point of a track. This choice is the <b>zero of potential energy</b> (or reference level). Different choices give different values, but every value shifts by the same amount, so every <i>change</i> is the same. Below the zero, U_g is negative, which is fine.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A 2.0 kg book sits on a shelf 1.50 m above the floor, near a table 0.80 m high. Find U_g with the floor as zero, then with the table top as zero, and the change when the book moves from the shelf to the table. Use g = 9.8 m/s².</p>
+<p>Floor as zero: U_g = (2.0 kg)(9.8 m/s²)(1.50 m) = 29 J.</p>
+<p>Table top as zero: Δy = 1.50 m − 0.80 m = 0.70 m, so U_g = (2.0)(9.8)(0.70) J = 14 J.</p>
+<p>Shelf to table: ΔU_g = mgΔy = (2.0)(9.8)(−0.70) J = −14 J, whichever zero you picked.</p>
+</div>
+
+<h2>Elastic potential energy</h2>
+<p>An ideal spring stretched or compressed by Δx from its relaxed length pushes back with a force of size kΔx (Hooke's law). The work needed to compress it is the area under that straight-line force graph, a triangle: ½(kΔx)(Δx). So the block-spring system stores <b>elastic potential energy</b></p>
+<p style="text-align:center"><b>U_s = ½k(Δx)²</b></p>
+<p>Here the natural zero is the relaxed spring. The square matters: twice the compression stores four times the energy. That also gives a good lab method. U_s against Δx is a curve, but U_s against (Δx)² is a straight line through the origin with slope ½k.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A spring stores 1.6 J when compressed 0.080 m. Find k, then the energy stored at 0.10 m.</p>
+<p>From U_s = ½k(Δx)²: k = 2U_s/(Δx)² = 2(1.6 J)/(0.080 m)² = 5.0 × 10² N/m.</p>
+<p>At 0.10 m: U_s = ½(500 N/m)(0.10 m)² = 2.5 J.</p>
+</div>
+
+<h2>Gravitational potential energy far from a planet</h2>
+<p>mgΔy works only where g is constant, close to the surface. For a satellite or a space probe, use the general form, with the zero at infinite separation:</p>
+<p style="text-align:center"><b>U_G = −Gm₁m₂/r</b></p>
+<p>Here r is the distance between the centers. U_G is negative at every finite distance and rises toward zero as the objects separate, because pulling them apart takes positive work. Notice that it goes as 1/r, while the force goes as 1/r². For three or more objects, add U_G for every pair.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A 500. kg satellite is 7.0 × 10⁶ m from Earth's center (Earth's mass 5.97 × 10²⁴ kg). Find U_G.</p>
+<p>U_G = −(6.67 × 10⁻¹¹ N·m²/kg²)(5.97 × 10²⁴ kg)(500. kg)/(7.0 × 10⁶ m) = −2.8 × 10¹⁰ J.</p>
+</div>
+
+<h2>Common slips</h2>
+<p>Saying an object "has" potential energy: it is the system's. Using the incline length d instead of the height d sin θ in mgΔy. Forgetting to square Δx in ½k(Δx)², or forgetting the ½. Using mgh far from Earth. Mixing two different zeros in one problem: pick one and keep it.</p>

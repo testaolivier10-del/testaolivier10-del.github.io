@@ -1,0 +1,17 @@
+{
+ "third-law": {
+  "def": "Newton's third law: when object A exerts a force on object B, B exerts a force on A that is equal in size, opposite in direction and of the same type. The two forces act on different objects, so they never cancel each other."
+ },
+ "internal-force": {
+  "def": "A force that one part of a system exerts on another part. Internal forces come in third-law pairs that add to zero for the system."
+ },
+ "external-force": {
+  "def": "A force exerted on a system by an object outside it. Only external forces can change how the system's center of mass moves."
+ },
+ "ideal-string": {
+  "def": "A model string that has no mass and does not stretch, so the tension is the same all along it and the objects tied to it move together."
+ },
+ "ideal-pulley": {
+  "def": "A model pulley with no mass and no friction. It changes the direction of an ideal string without changing its tension."
+ }
+}

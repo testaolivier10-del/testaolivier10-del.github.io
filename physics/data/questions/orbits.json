@@ -1,0 +1,443 @@
+{
+ "stimuli": {
+  "orbits-s1": {
+   "kind": "diagram",
+   "title": "A satellite on an elliptical orbit",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 250\" role=\"img\" aria-label=\"A satellite on an elliptical orbit around Earth. Point A, the closest point, is 7.0 × 10⁶ m from Earth’s center, where the satellite moves at 8.7 × 10³ m/s; point B, the farthest point, is 1.4 × 10⁷ m from Earth’s center\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"250\" fill=\"#FFFFFF\"/><ellipse cx=\"240\" cy=\"125\" rx=\"180\" ry=\"100\" fill=\"none\" stroke=\"#5A6268\" stroke-width=\"1.8\" stroke-dasharray=\"7 5\"/><circle cx=\"90.3\" cy=\"125\" r=\"22\" fill=\"#6FA3C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"90.3\" y=\"130\" font-size=\"10.5\" fill=\"#FFFFFF\" text-anchor=\"middle\" font-weight=\"bold\">Earth</text><circle cx=\"60\" cy=\"125\" r=\"7\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"50\" y=\"130\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"end\" font-weight=\"bold\">A</text><circle cx=\"420\" cy=\"125\" r=\"7\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"430\" y=\"130\" font-size=\"14\" fill=\"#1F2A28\" font-weight=\"bold\">B</text><line x1=\"60\" y1=\"134\" x2=\"60\" y2=\"184\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"60,195 54,184 66,184\" fill=\"#B07A00\"/><text x=\"20\" y=\"240\" font-size=\"12\" fill=\"#1F2A28\">A: 7.0 × 10⁶ m from Earth’s center, speed 8.7 × 10³ m/s. B: 1.4 × 10⁷ m from Earth’s center.</text></svg>"
+  },
+  "orbits-s2": {
+   "kind": "setup",
+   "title": "A satellite in a circular orbit",
+   "text": "<p>A 200 kg satellite moves in a circular orbit of radius 4.0 × 10⁶ m (measured from the planet’s center) around a planet of mass 6.4 × 10²³ kg. G = 6.67 × 10⁻¹¹ N·m²/kg². Take U<sub>G</sub> = 0 at infinite separation. The satellite’s mass is much smaller than the planet’s.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-orbits-1",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "orbits-s1",
+   "q": "What is the satellite’s speed at B?",
+   "numeric": {
+    "answer": 4400,
+    "tol": 100,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 17000,
+      "rel": 0.015,
+      "why": "Value: the ratio is upside down. The satellite is slower where it is farther away: r_A v_A = r_B v_B."
+     },
+     {
+      "value": 6200,
+      "rel": 0.015,
+      "why": "Value: that is the speed of a circular orbit at B. On an ellipse, use angular momentum: at A and B the velocity is perpendicular to r."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Earth’s pull points toward its center, so it exerts no torque about it and L is constant. At the closest and farthest points the velocity is perpendicular to r, so m r_A v_A = m r_B v_B: v_B = (7.0 × 10⁶)(8.7 × 10³)/(1.4 × 10⁷) = 4.4 × 10³ m/s."
+   }
+  },
+  {
+   "id": "phys-orbits-2",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "orbits-s1",
+   "q": "Why is the satellite’s angular momentum about Earth’s center the same at A and at B?",
+   "options": [
+    "Earth’s pull on it points at Earth’s center: no torque",
+    "The satellite moves at a constant speed around it",
+    "Gravity does no work on a satellite",
+    "The satellite’s distance from Earth is constant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The only force (Earth’s gravitational force) points along the line to Earth’s center, so its lever arm about that point is zero. With no torque, L about Earth’s center is constant, even though r and v both change.",
+    "options": [
+     "Right: a force along r has zero lever arm about the center.",
+     "Its speed changes: fast at A, slow at B.",
+     "On an elliptical orbit gravity does work, changing the speed.",
+     "The distance changes from 7.0 × 10⁶ m to 1.4 × 10⁷ m."
+    ]
+   }
+  },
+  {
+   "id": "phys-orbits-3",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "orbits-s1",
+   "q": "Which quantities for the satellite-Earth system are the same at A and at B?",
+   "options": [
+    "Total mechanical energy and angular momentum",
+    "Kinetic energy and gravitational potential energy",
+    "Speed and distance from Earth",
+    "Kinetic energy and angular momentum"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gravity is the only force, and it is conservative, so E = K + U is constant. It exerts no torque about Earth’s center, so L is constant. K and U change, trading with each other.",
+    "options": [
+     "Right: E and L are constant; K and U trade.",
+     "K is larger at A and U is more negative there; they trade.",
+     "Both change around an elliptical orbit.",
+     "L is constant, but K is larger at A."
+    ]
+   }
+  },
+  {
+   "id": "phys-orbits-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "orbits-s1",
+   "q": "Taking U = 0 at infinite separation, how does the gravitational potential energy at A compare with that at B?",
+   "options": [
+    "It is twice as negative at A",
+    "It is half as negative at A",
+    "It is four times as negative at A",
+    "It is the same at A and B"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "U_G = −GMm/r. At A, r is half as large, so U is twice as large in size and more negative: the satellite is deeper in Earth’s gravitational well.",
+    "options": [
+     "Right: U = −GMm/r, and r_A is half of r_B.",
+     "U is more negative closer in, not less.",
+     "U goes as 1/r, not 1/r².",
+     "U depends on the distance from Earth’s center, which changes."
+    ]
+   }
+  },
+  {
+   "id": "phys-orbits-5",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "orbits-s2",
+   "q": "What is the satellite’s orbital speed?",
+   "numeric": {
+    "answer": 3300,
+    "tol": 100,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4600,
+      "rel": 0.015,
+      "why": "Value: that is the escape speed at this distance, √(2GM/r). A circular orbit needs √(GM/r)."
+     },
+     {
+      "value": 11000000,
+      "rel": 0.015,
+      "why": "Value: that is v². Take the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Gravity supplies the centripetal force: GMm/r² = mv²/r, so v = √(GM/r) = √((6.67 × 10⁻¹¹)(6.4 × 10²³)/(4.0 × 10⁶)) = 3.27 × 10³ m/s, about 3.3 × 10³ m/s."
+   }
+  },
+  {
+   "id": "phys-orbits-6",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "orbits-s2",
+   "q": "What is the total mechanical energy of the satellite-planet system, with U = 0 at infinite separation?",
+   "numeric": {
+    "answer": -1100000000,
+    "tol": 100000000,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1100000000,
+      "rel": 0.015,
+      "why": "Value: the sign is wrong. A bound orbit has negative total energy: E = K + U with U = −2K."
+     },
+     {
+      "value": -2100000000,
+      "rel": 0.015,
+      "why": "Value: that is the gravitational potential energy alone. Add K = ½mv²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K = ½mv² = ½(200 kg)(1.07 × 10⁷ m²/s²) = 1.07 × 10⁹ J. U = −GMm/r = -2.13 × 10⁹ J. E = K + U = -1.1 × 10⁹ J, which equals −K."
+   }
+  },
+  {
+   "id": "phys-orbits-7",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "orbits-s2",
+   "q": "For this circular orbit, which relation holds?",
+   "options": [
+    "E = −K and U = −2K",
+    "E = K and U = 0",
+    "E = 0, because the satellite stays in orbit",
+    "E = U, because the speed is constant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a circular orbit, mv² = GMm/r gives K = GMm/(2r), so U = −GMm/r = −2K and E = K + U = −K. A bound orbit has negative total energy.",
+    "options": [
+     "Right: from GMm/r² = mv²/r, K = GMm/(2r) = −U/2.",
+     "U is negative with U = 0 at infinity, and E is negative for a bound orbit.",
+     "E = 0 is the boundary of escape, not a bound orbit.",
+     "Constant speed means K is constant, not zero."
+    ]
+   }
+  },
+  {
+   "id": "phys-orbits-8",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "orbits-s2",
+   "q": "What speed would the satellite need, at this distance, to escape the planet completely?",
+   "numeric": {
+    "answer": 4600,
+    "tol": 100,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 3300,
+      "rel": 0.015,
+      "why": "Value: that is the circular orbital speed. To escape, the total energy must reach zero: ½mv² = GMm/r."
+     },
+     {
+      "value": 6500,
+      "rel": 0.015,
+      "why": "Value: that doubles the orbital speed. Escape speed is √2 times it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Escape when E = 0: ½mv² − GMm/r = 0, so v = √(2GM/r) = √2 × 3.27 × 10³ = 4.6 × 10³ m/s."
+   }
+  },
+  {
+   "id": "phys-orbits-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "With U_G = 0 at infinite separation, a satellite in a bound orbit has total mechanical energy that is",
+   "options": [
+    "negative",
+    "positive",
+    "zero",
+    "equal to its kinetic energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "U_G = −GMm/r is negative and larger in size than K for a bound orbit, so E = K + U < 0. To escape, E must be raised to zero or above.",
+    "options": [
+     "Right: it does not have enough energy to reach infinity.",
+     "Positive total energy means the object escapes.",
+     "Zero total energy is exactly the escape condition.",
+     "U is negative and adds to K."
+    ]
+   }
+  },
+  {
+   "id": "phys-orbits-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A satellite moves from a circular orbit of radius r to one of radius 2r around the same planet. Its kinetic energy becomes",
+   "options": [
+    "half as large",
+    "twice as large",
+    "one quarter as large",
+    "the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a circular orbit K = ½mv² = GMm/(2r), so doubling r halves K (and v falls by √2).",
+    "options": [
+     "Right: K = GMm/(2r) ∝ 1/r.",
+     "A larger orbit is slower: v = √(GM/r).",
+     "K goes as 1/r, not 1/r².",
+     "The orbital speed depends on r."
+    ]
+   }
+  },
+  {
+   "id": "phys-orbits-11",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A satellite in a circular orbit fires a short rocket burst that raises it to a larger circular orbit (after a second burst). Its total mechanical energy",
+   "options": [
+    "increases, toward zero",
+    "decreases, because it moves more slowly",
+    "stays the same, because gravity is conservative",
+    "becomes positive"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "E = −GMm/(2r): a larger r makes E less negative, that is, larger. The rocket bursts supply that energy. The satellite ends up slower, with less K but much more U.",
+    "options": [
+     "Right: E = −GMm/(2r) is less negative at larger r.",
+     "It does move more slowly, but E = −K becomes less negative.",
+     "The rocket does work on it from outside the satellite-planet system.",
+     "It is still in a bound orbit, so E is still negative."
+    ]
+   }
+  },
+  {
+   "id": "phys-orbits-12",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Earth has mass 6.0 × 10²⁴ kg and radius 6.4 × 10⁶ m. Ignoring air, what is the escape speed from its surface?",
+   "numeric": {
+    "answer": 11000,
+    "tol": 1000,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 7900,
+      "rel": 0.015,
+      "why": "Value: that is the speed of a low circular orbit. Escape needs E = 0: v = √(2GM/R)."
+     },
+     {
+      "value": 130000000,
+      "rel": 0.015,
+      "why": "Value: that is v². Take the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "E = 0: ½mv² = GMm/R, so v = √(2GM/R) = √(2(6.67 × 10⁻¹¹)(6.0 × 10²⁴)/(6.4 × 10⁶)) = 1.1 × 10⁴ m/s, about 11 km/s."
+   }
+  },
+  {
+   "id": "phys-orbits-13",
+   "type": "predict",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A comet on a long elliptical orbit moves from its farthest point toward its closest point to the Sun. Predict how each quantity for the comet-Sun system changes.",
+   "variables": [
+    {
+     "name": "The comet’s speed",
+     "answer": "up",
+     "why": "U becomes more negative as it falls inward, so K grows with E fixed."
+    },
+    {
+     "name": "Total mechanical energy",
+     "answer": "none",
+     "why": "Only gravity acts, a conservative force inside the system."
+    },
+    {
+     "name": "Angular momentum about the Sun",
+     "answer": "none",
+     "why": "The Sun’s pull points at its center and exerts no torque about it."
+    }
+   ],
+   "why": {
+    "correct": "E and L stay constant. Falling inward, U = −GMm/r becomes more negative, so K and the speed increase; r v sin θ stays constant."
+   }
+  },
+  {
+   "id": "phys-orbits-14",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Satellite X is in a circular orbit of radius r around a planet and moves at speed v. Satellite Y orbits the same planet in a circular orbit of radius 4r. Y’s speed is",
+   "options": [
+    "v/2",
+    "v/4",
+    "2v",
+    "v"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "GMm/r² = mv²/r gives v = √(GM/r). With r four times as large, v is 1/√4 = 1/2 as large. The satellite’s own mass cancels.",
+    "options": [
+     "Right: v = √(GM/r), so 4 times the radius gives 1/√4 = 1/2 the speed.",
+     "v goes as 1/√r, not 1/r.",
+     "Higher circular orbits are slower, not faster.",
+     "The orbital speed depends on the radius."
+    ]
+   }
+  },
+  {
+   "id": "phys-orbits-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a satellite in a circular orbit keep the same speed all the way around?",
+   "options": [
+    "Gravity is perpendicular to its velocity",
+    "There is no force on it in space",
+    "Its angular momentum is zero",
+    "A centrifugal force balances the pull"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In a circular orbit, gravity points to the center and the velocity is tangent to the circle, at 90° to it. A perpendicular force does no work, so K and the speed stay constant; U is constant too, since r is.",
+    "options": [
+     "Right: no work, no change in K.",
+     "Gravity pulls it toward the planet all the time.",
+     "It moves around the planet, so L = rmv is not zero.",
+     "There is no such extra force; gravity alone is the centripetal force."
+    ]
+   }
+  }
+ ]
+}

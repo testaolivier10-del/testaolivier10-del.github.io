@@ -1,0 +1,46 @@
+<p>If algebra 2 made you nervous, here is the good news: physics uses only a small part of it, again and again. You will read an equation, solve it for one symbol, and put numbers in. This page shows how to do each step so that it works every time, and how to check your answer before anyone else does.</p>
+
+<h2>Symbols are quantities</h2>
+<p>In math class, x is an unknown number. In physics, each letter is a <b>variable</b> that stands for a physical quantity, and it carries a unit. In the equation for steady motion,</p>
+<p style="text-align:center"><b>x = x₀ + vt</b></p>
+<p>x is a position in meters, v is a velocity in m/s and t is a time in seconds. The product vt has units (m/s)(s) = m, so every term in the equation is in meters. That is no accident: you can only add or set equal quantities with the same unit.</p>
+<figure id="fig-eq" data-fig="equation-anatomy"><figcaption>An equation is a sentence about quantities. Each symbol has a meaning and a unit.</figcaption></figure>
+
+<h2>Subscripts and Δ</h2>
+<p>A <b>subscript</b> is a small label below a symbol. It never multiplies. x₀ (read "x naught") means the position at the start, when t = 0. v₁ and v₂ are two different velocities, for example in two parts of a trip.</p>
+<p>The Greek capital letter <b>Δ</b> (delta) means "change in". It is always the final value minus the initial value:</p>
+<p style="text-align:center">Δx = x − x₀ &nbsp;&nbsp;&nbsp; ΔT = T(final) − T(initial)</p>
+<p>A change can be negative. If the temperature falls from 14.5 °C to 9.0 °C, ΔT = 9.0 − 14.5 = −5.5 °C. The sign is information: it says the quantity went down. Δ is one symbol; never treat it as a number multiplying x.</p>
+
+<h2>Rearranging: undo in reverse order</h2>
+<p>An equation stays true if you do the same thing to both sides. To get one symbol alone, look at what has been done to it, then undo those operations in reverse order.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Solve x = x₀ + vt for t.</p>
+<table class="compare"><thead><tr><th scope="col">Math</th><th scope="col">What you did</th></tr></thead><tbody>
+<tr><td>x = x₀ + vt</td><td>Start. t is multiplied by v, then x₀ is added.</td></tr>
+<tr><td>x − x₀ = vt</td><td>Undo the last step first: subtract x₀ from both sides.</td></tr>
+<tr><td>(x − x₀)/v = t</td><td>Undo the multiplication: divide both sides by v.</td></tr>
+<tr><td>t = Δx/v</td><td>Tidy up, writing x − x₀ as Δx.</td></tr></tbody></table>
+</div>
+<p>Writing a reason beside each line is the "two-column" style the exam readers recommend. It slows you down just enough to stop sign errors.</p>
+
+<h2>Symbols first, numbers last</h2>
+<p>Solve for the unknown in symbols, then <b>substitute</b> the numbers with their units, once. This has three advantages. You make fewer arithmetic mistakes. You can see how the answer depends on each quantity (t = Δx/v gets smaller when v gets bigger). And the exam often asks for the <b>symbolic expression</b> itself, written in the given quantities, with no numbers at all.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A ball starts at x₀ = 3.0 m and rolls at a steady v = 1.5 m/s. When does it reach x = 9.0 m?</p>
+<p>From worked example 1: t = (x − x₀)/v.</p>
+<p>Substitute: t = (9.0 m − 3.0 m) ÷ 1.5 m/s = 6.0 m ÷ 1.5 m/s = 4.0 s.</p>
+<p>Units: m ÷ (m/s) = s. A time, as it should be.</p>
+</div>
+
+<h2>Check with units</h2>
+<p>Every term of an equation must have the same unit, and so must your answer. This catches the most common slip, an upside-down fraction. If you write t = v/d, the units are (m/s)/m = 1/s, which is not a time. Make the check a habit: it takes five seconds and saves whole parts of a free-response answer.</p>
+<p>A second check is common sense. In t = d/v, a faster speed should give a shorter time, and it does, because v is on the bottom.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Undoing in the wrong order: from x = x₀ + vt, dividing by v first leaves x₀/v, which is harder to handle. Undo the addition first.</li>
+<li>Adding x₀ and v before multiplying: in x₀ + vt, only v is multiplied by t.</li>
+<li>Δ as initial minus final. It is always final minus initial.</li>
+<li>Dropping units while substituting, then losing track of whether the answer is in m or cm.</li>
+</ul>

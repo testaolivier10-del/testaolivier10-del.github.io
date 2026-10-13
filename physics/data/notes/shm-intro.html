@@ -1,0 +1,48 @@
+<p>Pull a mass on a spring to one side and let go. It slides back, shoots past the middle, slows, stops, and comes back. Without friction it would do this forever, taking the same time for each trip. This page builds the model behind that motion from one idea: a force that always points back to the middle and grows the farther you go.</p>
+
+<h2>Periodic motion and equilibrium</h2>
+<p>Motion that repeats itself in equal time intervals is <b>periodic motion</b>. A swing, a vibrating ruler and a cart bouncing between two springs are all periodic. Each one moves back and forth about a middle position.</p>
+<p>That middle position is the <b>equilibrium position</b>: the place where the net force on the object is zero. If you set the object down there at rest, it would stay. For a cart on a horizontal spring, it is where the spring is relaxed. For a block hanging from a vertical spring, it is lower than that: where the spring has stretched just enough to hold up the block's weight.</p>
+<p>Displace the object from equilibrium and a force appears that pulls it back. That force is a <b>restoring force</b>. It always points toward equilibrium, whichever side the object is on.</p>
+
+<h2>The rule that makes motion "simple harmonic"</h2>
+<p>A spring gives the cleanest restoring force. You met Hooke's law in Unit 2: a spring stretched or compressed by x exerts a force of size kx. Put the cart's position x = 0 at equilibrium, and the spring force on the cart is</p>
+<p style="text-align:center"><b>F = −kx</b></p>
+<p>The minus sign carries the whole story. When x is positive (cart to the right), the force is negative (to the left). When x is negative, the force is to the right. And the size of the force is <i>proportional</i> to the displacement: twice as far, twice the force.</p>
+<p><b>Simple harmonic motion</b> (SHM) is the motion produced by exactly this kind of force: a restoring force proportional to the displacement from equilibrium and opposite to it. Any system with that force law moves in SHM, whether or not it contains a spring.</p>
+<figure id="fig-restoring" data-fig="shm-restoring-force"><figcaption>A cart on a spring at its two turning points and at equilibrium. The spring force (pink) always points toward x = 0.</figcaption></figure>
+
+<h2>Following one cycle</h2>
+<p>Use <a class="figref" href="#fig-restoring">the figure</a> and walk through one cycle, step by step. Each step causes the next.</p>
+<ol>
+<li>The cart is held at x = −A, the spring compressed, and released. The spring pushes it right with its largest force, kA, so its acceleration is largest here, even though its velocity is zero.</li>
+<li>As the cart moves toward x = 0, the displacement shrinks, so the force shrinks. The cart keeps speeding up, but more and more gently.</li>
+<li>At x = 0 the force is zero. The cart is moving at its greatest speed. Zero net force means zero acceleration, not zero velocity, so it carries on past the middle.</li>
+<li>Past x = 0 the spring is stretched and pulls left. The cart slows down, more strongly the farther it goes.</li>
+<li>At x = +A it stops for an instant. The force is again largest, now to the left, and the cart heads back.</li>
+</ol>
+<p>The largest displacement, A, is the <b>amplitude</b>. Without friction the cart reaches the same distance A on both sides, every time. Notice the pattern that students most often get backwards: <b>force and acceleration are largest where the speed is zero</b> (the ends) and <b>zero where the speed is largest</b> (the middle).</p>
+<div class="worked">
+<p><b>Worked example.</b> A 0.25 kg cart on a spring with k = 20 N/m is pulled to x = +0.060 m and released on a frictionless track. Find its acceleration at release.</p>
+<p>Principle: Newton's second law with the spring as the only horizontal force. F = −kx.</p>
+<p>F = −(20 N/m)(0.060 m) = −1.2 N</p>
+<p>a = F/m = −1.2 N / 0.25 kg = <b>−4.8 m/s²</b>, toward equilibrium.</p>
+<p>At x = 0 the same cart has a = 0; at x = +0.030 m it has −2.4 m/s², half as much, because the force is proportional to x.</p>
+</div>
+
+<h2>Reading SHM from data</h2>
+<p>How can you tell from measurements whether a system will move in SHM? Measure the restoring force at several displacements. If a graph of force against displacement is a straight line through the origin with a negative slope, the force has the form F = −kx, and the slope is −k. If the line curves, the motion is still periodic but not simple harmonic.</p>
+<table class="compare">
+<thead><tr><th>Motion</th><th>Periodic?</th><th>Simple harmonic?</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Cart on a spring, no friction</td><td>Yes</td><td>Yes</td><td>F = −kx exactly</td></tr>
+<tr><td>Pendulum swinging through 5°</td><td>Yes</td><td>Very nearly</td><td>Restoring force ≈ mgθ, proportional to θ</td></tr>
+<tr><td>Pendulum swinging through 70°</td><td>Yes</td><td>No (not closely)</td><td>mg sin θ grows more slowly than θ</td></tr>
+<tr><td>Ball bouncing on a floor</td><td>Yes</td><td>No</td><td>In the air the only force is the constant weight</td></tr>
+</tbody></table>
+
+<h2>The simple pendulum</h2>
+<p>A <b>simple pendulum</b> is a small, heavy bob on a light string of length ℓ. Its equilibrium position is straight below the pivot. When the string makes an angle θ with the vertical, the string pulls along the string, and gravity has a part of size mg sin θ along the bob's path, pointing back toward the bottom. That part is the restoring force.</p>
+<p>For small angles, measured in radians, sin θ is almost exactly θ (at 10°, θ = 0.1745 rad and sin θ = 0.1736). The bob's displacement along the arc is s = ℓθ. So the restoring force is about mgθ = (mg/ℓ)s: proportional to the displacement and opposite to it. That is the SHM force law, with mg/ℓ playing the role of k. In terms of rotation, the restoring torque about the pivot is about mgℓθ, proportional to the angle.</p>
+<p>At large angles the approximation fails. The pendulum still swings back and forth, but the motion is no longer a close match to SHM.</p>
+<aside class="going-further"><p><b>Going further.</b> Real oscillators lose energy to friction and air resistance, so their amplitude slowly shrinks. The model on this page ignores those losses, as the exam does unless a question says otherwise.</p></aside>

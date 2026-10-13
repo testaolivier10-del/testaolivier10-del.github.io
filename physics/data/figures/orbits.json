@@ -1,0 +1,12 @@
+{
+ "elliptical-orbit-energy": {
+  "file": "figures/elliptical-orbit-energy.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A satellite moves counterclockwise on a dashed elliptical orbit around a planet of mass M, which sits off-center. At the near point A the satellite is closest to the planet and its velocity arrow is long; at the far point B it is farthest and its velocity arrow is short. At both points the gravitational force from the planet points toward the planet’s center, perpendicular to the velocity, and is larger at A. A bar chart compares A and B: kinetic energy K is positive and larger at A; gravitational potential energy U is negative, more negative at A; the total energy E = K + U is negative and the same at both points."
+ }
+}

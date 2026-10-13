@@ -1,0 +1,8 @@
+{
+ "rotational-second-law": {
+  "def": "α = τ_net/I: an object’s angular acceleration equals the net torque on it divided by its rotational inertia, and turns the way the net torque does."
+ },
+ "massive-pulley": {
+  "def": "A pulley whose rotational inertia matters. The string’s tensions on its two sides differ, and their difference times the radius gives the torque that spins it up: (F_T1 − F_T2)R = Iα."
+ }
+}

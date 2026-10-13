@@ -1,0 +1,12 @@
+{
+ "second-law-cart-hanging": {
+  "file": "figures/second-law-cart-hanging.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a cart of mass M on a level table tied by a light string over a pulley to a hanging block of mass m, with acceleration arrows showing the cart speeding up to the right and the block downward. Right: free-body diagrams. Cart: F_N, track on cart, up and F_g, Earth on cart, down, equal; F_T, string, to the right. Block: F_T, string on block, up, shorter than F_g, Earth on block, down. Each acceleration is drawn beside its diagram, not on the dot."
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "topic": "fluid-pressure",
+ "hook": "Dive to the bottom of a swimming pool and your ears ache. Push a thumbtack and it slides into a wall, though you could never push your thumb in. Both come down to the same quantity, pressure: how much force is spread over how much area, and how it grows as you go deeper in a fluid.",
+ "prereq": [
+  {
+   "q": "Which is a scalar?",
+   "options": [
+    "Mass",
+    "Force",
+    "Velocity",
+    "Displacement"
+   ],
+   "correct": 0,
+   "why": "Mass has a size but no direction.",
+   "review": "scalars-vectors"
+  },
+  {
+   "q": "A 2.0 kg book rests on a table. Near Earth's surface (g = 9.8 N/kg), the force of the table on it is",
+   "options": [
+    "19.6 N upward",
+    "2.0 N upward",
+    "19.6 N downward",
+    "9.8 N upward"
+   ],
+   "correct": 0,
+   "why": "Equilibrium: the normal force balances the weight, mg = 19.6 N.",
+   "review": "first-law"
+  },
+  {
+   "q": "Density is",
+   "options": [
+    "mass per volume",
+    "volume per mass",
+    "weight per area",
+    "mass times volume"
+   ],
+   "correct": 0,
+   "why": "ρ = m/V.",
+   "review": "density-fluids"
+  }
+ ],
+ "figure": {
+  "figure": "fluid-pressure-depth",
+  "caption": "Pressure at a point acts equally in every direction and grows with depth."
+ },
+ "chain": [
+  {
+   "cause": "Fluid particles collide with any surface they touch",
+   "effect": "they push on it, perpendicular to the surface, with a pressure P = F⊥/A"
+  },
+  {
+   "cause": "Each layer of a fluid at rest holds up the weight of the fluid above it",
+   "effect": "pressure increases with depth"
+  },
+  {
+   "cause": "A column of height h of a fluid of density ρ has weight ρghA on area A",
+   "effect": "the pressure grows by ρgh: P = P₀ + ρgh"
+  },
+  {
+   "cause": "A gauge reads zero in open air",
+   "effect": "it measures gauge pressure, ρgh, not the absolute pressure P₀ + ρgh"
+  }
+ ],
+ "ideas": [
+  "<b>Pressure</b> is perpendicular force per area, <b>P = F⊥/A</b>, in pascals (1 Pa = 1 N/m²). It is a scalar: the force it makes on any surface points straight into that surface.",
+  "In a fluid at rest, <b>P = P₀ + ρgh</b>. Pressure depends only on depth, not on the container's shape or the amount of fluid.",
+  "<b>Absolute pressure</b> P includes the atmosphere's P₀ ≈ 1.0 × 10⁵ Pa. <b>Gauge pressure</b> P − P₀ = ρgh is what a gauge or tire gauge reads.",
+  "About 10 m of water adds one atmosphere of pressure."
+ ],
+ "misconception": {
+  "wrong": "Pressure is a force, so it points down, and more water in a container means more pressure at the bottom.",
+  "right": "Pressure is force per area, a scalar. It acts equally in every direction at a point, and at the bottom of a container it depends only on the depth: P = P₀ + ρgh."
+ },
+ "check": [
+  "phys-fluid-pressure-1",
+  "phys-fluid-pressure-2",
+  "phys-fluid-pressure-3",
+  "phys-fluid-pressure-4",
+  "phys-fluid-pressure-10",
+  "phys-fluid-pressure-12"
+ ],
+ "summary": "Pressure is perpendicular force per area, a scalar in pascals; in a fluid at rest the absolute pressure is P = P₀ + ρgh, set only by depth, and the gauge pressure (what gauges read) is ρgh."
+}
