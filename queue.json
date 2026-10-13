@@ -254,13 +254,20 @@
       "yt_description": "Superficial, partial thickness and full thickness burns, why the deepest part can feel numb, and the EMT treatment steps. Free NREMT practice at levlprep.com #NREMT #EMT #burns",
       "badge": "NREMT",
       "hook": "Part of it doesn't hurt. That's the bad sign.",
-      "buffer": "6acc58cc8e8dd50ffc668fb4",
-      "yt_buffer": "6acc58df63ff33d8c9a66a19",
+      "buffer": "6acd84b9aec88be081ed7dbb",
+      "yt_buffer": "6acd84c49f22b96ae7ec8bbe",
       "youtube_id": null,
       "thumbnail_set": null,
       "shorts_thumb": null,
       "notes": "v2 2026-10-11: natural one take voice, zap sounds removed.",
-      "duration": 45.4
+      "duration": 45.4,
+      "replaced_posts": {
+        "buffer": "6acc58cc8e8dd50ffc668fb4",
+        "yt_buffer": "6acc58df63ff33d8c9a66a19",
+        "tiktok": "https://tiktok.com/@levl.prep/video/7695950929434070285",
+        "youtube": "R-_p0T45FwQ",
+        "note": "2026-10-12 old 39 s v1 posted by mistake; reposted v2"
+      }
     },
     {
       "id": "w1007-07-acid-resonance",
