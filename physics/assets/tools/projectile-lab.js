@@ -26,7 +26,7 @@
   var T = window.ApPhysTools, M = window.ApPhysMath, PS = window.ApPhysScene;
   (function(){
     var me = document.currentScript, href = me && me.src ? me.src.replace(/projectile-lab\.js(\?.*)?$/, 'projectile-lab.css') : null;
-    if(href && !document.querySelector('link[href="' + href + '"]')){ var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; document.head.appendChild(l); }
+    if(href && !document.querySelector('link[href$="tools/projectile-lab.css"]')){ var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; document.head.appendChild(l); }
     var app = document.getElementById('app');
     if(app && !app.getAttribute('data-details-title')) app.setAttribute('data-details-title', 'Numbers & settings');
   })();

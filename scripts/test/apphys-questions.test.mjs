@@ -54,6 +54,15 @@ test('significant figures are counted as written', () => {
   assert.equal(Q.formatKey({ answer: 3e23, sigfigs: 3, unit: 'molecules' }), '3.00 × 10^23 molecules');
   assert.equal(Q.formatKey({ answer: 0.5, sigfigs: 3, unit: 'mol' }), '0.500 mol');
   assert.equal(Q.formatKey({ answer: 4.74, places: 2 }), '4.74');
+  // Never JavaScript's exponential form; plain for small whole numbers.
+  assert.equal(Q.formatKey({ answer: 6.0e4, sigfigs: 2, unit: 'J' }), '6.0 × 10^4 J');
+  assert.equal(Q.formatKey({ answer: 3600, sigfigs: 2, unit: 'N' }), '3.6 × 10^3 N');
+  assert.equal(Q.formatKey({ answer: 20, sigfigs: 1, unit: 'm/s' }), '20 m/s');
+  assert.equal(Q.formatKey({ answer: 850, sigfigs: 2, unit: 'N' }), '850 N');
+  // Trailing zeros without a decimal point are ambiguous, never marked down.
+  assert.equal(JSON.stringify(Q.sigRange('20')), '{"min":1,"max":2}');
+  assert.equal(JSON.stringify(Q.sigRange('20.')), '{"min":2,"max":2}');
+  assert.equal(JSON.stringify(Q.sigRange('0.0450')), '{"min":3,"max":3}');
 });
 
 test('units: physics units normalize to SI base units, the unit is graded on its own, and a prefix slip is named', () => {

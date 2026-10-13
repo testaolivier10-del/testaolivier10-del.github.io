@@ -18,7 +18,7 @@
   if(!T || !M || !M.scalingDrills) return;
   var SD = M.scalingDrills, PI = Math.PI;
   var here = document.currentScript && document.currentScript.src;
-  if(here && !document.querySelector('link[data-sd-css]')){
+  if(here && !document.querySelector('link[data-sd-css], link[href$="tools/scaling-drills.css"]')){
     var ln = document.createElement('link'); ln.rel = 'stylesheet'; ln.href = here.replace(/scaling-drills\.js(\?.*)?$/, 'scaling-drills.css'); ln.setAttribute('data-sd-css', '1');
     document.head.appendChild(ln);
   }

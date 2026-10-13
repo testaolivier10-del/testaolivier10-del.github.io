@@ -27,7 +27,7 @@
   // This tool's own stylesheet, next to this script.
   (function(){
     var me = document.currentScript, href = me && me.src ? me.src.replace(/motion-graphs\.js(\?.*)?$/, 'motion-graphs.css') : null;
-    if(href && !document.querySelector('link[href="' + href + '"]')){ var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; document.head.appendChild(l); }
+    if(href && !document.querySelector('link[href$="tools/motion-graphs.css"]')){ var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; document.head.appendChild(l); }
     var app = document.getElementById('app');
     if(app && !app.getAttribute('data-details-title')) app.setAttribute('data-details-title', 'Readings');
   })();

@@ -72,6 +72,16 @@
     if(!lead) return dot ? Math.max(1, (d.split('.')[1] || '').length) : 1;
     return dot ? lead.length : lead.replace(/0+$/, '').length;
   }
+  /* The range of significant figures a typed number can stand for. A whole
+     number with trailing zeros and no decimal point ("20", "3600") is
+     ambiguous: it counts as anything from its nonzero part (1 for "20") to
+     every digit (2 for "20"), so a correct "20 m/s" is never marked down. */
+  function sigRange(digits){
+    var d = String(digits || '').replace(/^[+-]/, '').replace(/,/g, '');
+    var min = sigFigs(d);
+    if(d.indexOf('.') > -1 || !/[1-9]/.test(d)) return { min: min, max: min };
+    return { min: min, max: d.replace(/^0+/, '').length };
+  }
   function places(digits){ var d = String(digits || ''); return d.indexOf('.') > -1 ? d.split('.')[1].length : 0; }
 
   /* Units are compared in SI base units after normalizing how they can be
@@ -173,9 +183,9 @@
       }
     }
     if(N.sigfigs != null){
-      var sf = sigFigs(p.digits);
-      parts.sig = sf === N.sigfigs;
-      if(!parts.sig) notes.push('Significant figures: you gave ' + sf + '; the data support ' + N.sigfigs + '.' + (sf < N.sigfigs && /0$/.test(p.digits) && p.digits.indexOf('.') < 0 ? ' Trailing zeros without a decimal point do not count; use scientific notation.' : ''));
+      var sf = sigFigs(p.digits), sr = sigRange(p.digits);
+      parts.sig = N.sigfigs >= sr.min && N.sigfigs <= sr.max;
+      if(!parts.sig) notes.push('Significant figures: you gave ' + (sr.max > sr.min && N.sigfigs > sr.max ? sr.max : sf) + '; the data support ' + N.sigfigs + '.' + (sf < N.sigfigs && /0$/.test(p.digits) && p.digits.indexOf('.') < 0 && sr.max < N.sigfigs ? ' Trailing zeros without a decimal point are ambiguous; use scientific notation.' : ''));
     } else if(N.places != null){
       var pl = places(p.digits);
       parts.sig = pl === N.places;
@@ -213,7 +223,11 @@
     var a = Number(N.answer), out;
     if(N.sigfigs != null){
       var e = a === 0 ? 0 : Math.floor(Math.log10(Math.abs(a)));
-      if(e <= -4 || e >= 5){
+      // Scientific notation when very large or small, or when a number of a
+      // thousand or more has fewer significant figures than whole-number digits
+      // (3.6 × 10^3, never "3.6e+3"); "20" or "850" stays a plain number.
+      if(e >= N.sigfigs && e <= 2) out = String(+a.toPrecision(N.sigfigs));
+      else if(e <= -4 || e >= 5 || e >= N.sigfigs){
         var c = a / Math.pow(10, e);
         if(Math.abs(+c.toFixed(N.sigfigs - 1)) >= 10){ e++; c = a / Math.pow(10, e); }
         out = c.toFixed(N.sigfigs - 1) + ' × 10^' + e;
@@ -537,5 +551,5 @@
     return out;
   }
 
-  window.ApPhysQuestions = { render: render, hydrate: hydrate, grade: grade, parseNumber: parseNumber, splitNumber: splitNumber, sigFigs: sigFigs, normUnit: normUnit, formatKey: formatKey, group: group, shuffle: shuffle, displayOrder: displayOrder, orderStart: orderStart, stimulusPanel: stimulusPanel };
+  window.ApPhysQuestions = { render: render, hydrate: hydrate, grade: grade, parseNumber: parseNumber, splitNumber: splitNumber, sigFigs: sigFigs, sigRange: sigRange, normUnit: normUnit, formatKey: formatKey, group: group, shuffle: shuffle, displayOrder: displayOrder, orderStart: orderStart, stimulusPanel: stimulusPanel };
 })();

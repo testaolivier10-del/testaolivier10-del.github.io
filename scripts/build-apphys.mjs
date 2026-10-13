@@ -1043,7 +1043,7 @@ ${bodyOpen(` data-app="tool-${t.slug}"`)}
     : `<p class="phys-soon">This tool arrives with its unit. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `tool:${t.slug}`)}
-<link rel="stylesheet" href="${depth}assets/tools/phys-tools.css">${t.studio ? `\n<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">` : ''}
+<link rel="stylesheet" href="${depth}assets/tools/phys-tools.css">${existsSync(join(ROOT, 'physics', 'assets', 'tools', `${t.slug}.css`)) ? `\n<link rel="stylesheet" href="${depth}assets/tools/${t.slug}.css">` : ''}${t.studio ? `\n<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">` : ''}
 ${tail({ depth, section: 'tools', extra, premium: true, site: t.studio ? ['course/tool-studio.js'] : [] })}
 </body>
 </html>

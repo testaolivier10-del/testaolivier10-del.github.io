@@ -515,7 +515,8 @@ export function formatKey(N) {
   let out;
   if (N.sigfigs != null) {
     let e = a === 0 ? 0 : Math.floor(Math.log10(Math.abs(a)));
-    if (e <= -4 || e >= 5) {
+    if (e >= N.sigfigs && e <= 2) out = String(+a.toPrecision(N.sigfigs));
+    else if (e <= -4 || e >= 5 || e >= N.sigfigs) {
       let c = a / 10 ** e;
       if (Math.abs(+c.toFixed(N.sigfigs - 1)) >= 10) { e++; c = a / 10 ** e; }
       out = `${c.toFixed(N.sigfigs - 1)} × 10<sup>${e}</sup>`;

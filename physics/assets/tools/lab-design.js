@@ -21,7 +21,7 @@
   if(!T || !M || !M.labDesign) return;
   var LD = M.labDesign, G = M.C.g, PI = Math.PI;
   var here = document.currentScript && document.currentScript.src;
-  if(here && !document.querySelector('link[data-ld-css]')){
+  if(here && !document.querySelector('link[data-ld-css], link[href$="tools/lab-design.css"]')){
     var ln = document.createElement('link'); ln.rel = 'stylesheet'; ln.href = here.replace(/lab-design\.js(\?.*)?$/, 'lab-design.css'); ln.setAttribute('data-ld-css', '1');
     document.head.appendChild(ln);
   }

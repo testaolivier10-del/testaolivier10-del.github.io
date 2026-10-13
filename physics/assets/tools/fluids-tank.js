@@ -24,7 +24,7 @@
   if(!T || !M || !M.fluidsTank) return;
   var FT = M.fluidsTank, G = M.C.g, ATM = M.C.ATM;
   var here = document.currentScript && document.currentScript.src;
-  if(here && !document.querySelector('link[data-ft-css]')){
+  if(here && !document.querySelector('link[data-ft-css], link[href$="tools/fluids-tank.css"]')){
     var ln = document.createElement('link'); ln.rel = 'stylesheet'; ln.href = here.replace(/fluids-tank\.js(\?.*)?$/, 'fluids-tank.css'); ln.setAttribute('data-ft-css', '1');
     document.head.appendChild(ln);
   }
