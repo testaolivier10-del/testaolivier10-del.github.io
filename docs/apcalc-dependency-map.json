@@ -1,0 +1,3378 @@
+{
+ "about": "AP Calculus AB concept dependency map (docs/apcalc-spec.md, docs/apcalc-phase0.md): the 81 AB topics in CED order (BC-only numbers skipped), the \"Math you need\" skills with the topic each comes before, and every concept with the topic that teaches it, the concepts it depends on and, for math notation, the TeX patterns that use it. Our own words; no CED text. Checked by scripts/check-apcalc-map.mjs.",
+ "version": 1,
+ "ced": {
+  "edition": "2019 framework, effective fall 2020 (8 units, 81 AB topics)",
+  "effective": "Exam format of May 2027",
+  "note": "Built from docs/apcalc-ced-map.json, itself from docs/apcalc-research/framework.md. Units 3-8 objectives unverified (docs/apcalc-needs-author.md)."
+ },
+ "practices": [
+  {
+   "id": 1,
+   "name": "Implementing Mathematical Processes",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C",
+    "1.D",
+    "1.E",
+    "1.F"
+   ],
+   "mcqWeight": [
+    50,
+    70
+   ],
+   "frqWeight": [
+    35,
+    60
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Connecting Representations",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D",
+    "2.E"
+   ],
+   "mcqWeight": [
+    15,
+    30
+   ],
+   "frqWeight": [
+    10,
+    20
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Justification",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C",
+    "3.D",
+    "3.E",
+    "3.F",
+    "3.G"
+   ],
+   "mcqWeight": [
+    10,
+    20
+   ],
+   "frqWeight": [
+    35,
+    60
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Communication and Notation",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "4.D",
+    "4.E"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ],
+   "frqWeight": [
+    10,
+    25
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "course",
+   "title": "Units"
+  },
+  {
+   "id": "skills",
+   "title": "Skills"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "unit-1",
+   "n": 1,
+   "part": "course",
+   "title": "Limits and Continuity",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "limit-explorer",
+      "title": "Limit explorer: zoom in on a point, one-sided limits, holes, jumps and asymptotes",
+      "topic": "limits-from-plots"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Limits and continuity of a piecewise function from its graph and formula",
+      "topic": "continuity-at-a-point",
+      "type": "graph"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A piecewise graph with a hole and a jump",
+      "topic": "limits-from-plots",
+      "stimulus": "graph"
+     },
+     {
+      "title": "A table of values closing in on x = 2",
+      "topic": "limits-from-tables",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Removable, jump and infinite discontinuities",
+      "topic": "discontinuity-types"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Substitute, then factor or rationalize, then squeeze",
+      "topic": "choosing-limit-methods"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-2",
+   "n": 2,
+   "part": "course",
+   "title": "Differentiation: Definition and Fundamental Properties",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "tangent-tracer",
+      "title": "Tangent tracer: the secant becomes the tangent as h shrinks; the derivative draws itself",
+      "topic": "derivative-definition"
+     },
+     {
+      "id": "rule-drills",
+      "title": "Rule drills: build derivatives step by step, graded by evaluation",
+      "topic": "power-rule"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Estimate a derivative from a table and write a tangent line",
+      "topic": "estimating-derivatives",
+      "type": "table"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A curve with a secant and a tangent line",
+      "topic": "derivative-definition",
+      "stimulus": "graph"
+     },
+     {
+      "title": "A table of f and its derivative at a few points",
+      "topic": "estimating-derivatives",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Average rate versus instantaneous rate",
+      "topic": "average-and-instant-rates"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From the limit definition to the shortcut rules",
+      "topic": "power-rule"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-3",
+   "n": 3,
+   "part": "course",
+   "title": "Differentiation: Composite, Implicit, and Inverse Functions",
+   "weight": [
+    5,
+    10
+   ],
+   "tools": {
+    "frqThemes": [
+     {
+      "title": "A table of f, g and their derivatives: chain and product rules",
+      "topic": "chain-rule",
+      "type": "fg"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Values of f, g, f′ and g′ at four points",
+      "topic": "chain-rule",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Which rule first: product, quotient or chain",
+      "topic": "choosing-derivative-rules"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Implicit differentiation, step by step",
+      "topic": "implicit-differentiation"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-4",
+   "n": 4,
+   "part": "course",
+   "title": "Contextual Applications of Differentiation",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "motion-lab",
+      "title": "Motion lab: a particle on a line with its position, velocity and acceleration",
+      "topic": "straight-line-motion"
+     },
+     {
+      "id": "related-rates",
+      "title": "Related rates: ladder, cone, shadow and circle scenes with live rates",
+      "topic": "related-rates-intro"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A particle moving on a line: direction, speeding up, position",
+      "topic": "straight-line-motion",
+      "type": "motion"
+     },
+     {
+      "title": "A curve given implicitly: tangent lines and a related rate",
+      "topic": "solving-related-rates",
+      "type": "implicit"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A ladder sliding down a wall",
+      "topic": "related-rates-intro",
+      "stimulus": "diagram"
+     },
+     {
+      "title": "Velocity graph of a particle",
+      "topic": "straight-line-motion",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Velocity, speed and acceleration",
+      "topic": "straight-line-motion"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Related rates: draw, relate, differentiate, substitute",
+      "topic": "solving-related-rates"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-5",
+   "n": 5,
+   "part": "course",
+   "title": "Analytical Applications of Differentiation",
+   "weight": [
+    15,
+    20
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "curve-analyzer",
+      "title": "Curve analyzer: f, f′ and f″ linked, sign charts, extrema and inflection",
+      "topic": "f-and-its-derivatives"
+     },
+     {
+      "id": "justification-trainer",
+      "title": "Justification trainer: name the theorem, check the hypotheses, conclude",
+      "topic": "mean-value-theorem"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "The graph of f′: extrema, inflection points and the candidates test",
+      "topic": "f-and-its-derivatives",
+      "type": "graph"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "The graph of a derivative on a closed interval",
+      "topic": "f-and-its-derivatives",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "First derivative test, second derivative test, candidates test",
+      "topic": "candidates-test"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Justify an extremum: local or global",
+      "topic": "candidates-test"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-6",
+   "n": 6,
+   "part": "course",
+   "title": "Integration and Accumulation of Change",
+   "weight": [
+    15,
+    20
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "riemann-sums",
+      "title": "Riemann sums: left, right, midpoint and trapezoid, on functions and on tables",
+      "topic": "riemann-sums"
+     },
+     {
+      "id": "accumulation",
+      "title": "Accumulation: g(x) as the integral of f, area building up",
+      "topic": "ftc-accumulation"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A rate from a table: Riemann sum, meaning with units, average rate",
+      "topic": "riemann-sums",
+      "type": "table"
+     },
+     {
+      "title": "Graphical FTC: g(x) defined as an integral of a graphed f",
+      "topic": "accumulation-behavior",
+      "type": "graph"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A rate table with unequal time steps",
+      "topic": "riemann-sums",
+      "stimulus": "table"
+     },
+     {
+      "title": "A graph of f made of lines and a semicircle",
+      "topic": "integral-properties",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Definite integral, indefinite integral, accumulation function",
+      "topic": "antiderivatives"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From area to antiderivative: the two parts of the Fundamental Theorem",
+      "topic": "ftc-definite-integrals"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-7",
+   "n": 7,
+   "part": "course",
+   "title": "Differential Equations",
+   "weight": [
+    5,
+    10
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "slope-fields",
+      "title": "Slope fields: draw the field, trace a solution through a point, separate variables",
+      "topic": "sketching-slope-fields"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A slope field, a tangent line estimate and a separable solution",
+      "topic": "particular-solutions",
+      "type": "de"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A slope field on a small grid",
+      "topic": "reasoning-with-slope-fields",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "General solution and particular solution",
+      "topic": "particular-solutions"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Separate, integrate, add C, use the initial condition, solve",
+      "topic": "particular-solutions"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-8",
+   "n": 8,
+   "part": "course",
+   "title": "Applications of Integration",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "area-volume",
+      "title": "Area and volume: regions between curves, discs, washers and cross sections in 3D",
+      "topic": "area-between-curves-x"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A region between two curves: area, a cross-section volume, a washer volume",
+      "topic": "area-between-curves-x",
+      "type": "area"
+     },
+     {
+      "title": "A model given by a function: average value, amount at a time, maximum",
+      "topic": "accumulation-in-context",
+      "type": "model"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A region bounded by two curves",
+      "topic": "area-between-curves-x",
+      "stimulus": "graph"
+     },
+     {
+      "title": "A rate-in, rate-out table for a tank",
+      "topic": "accumulation-in-context",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Disc, washer and cross sections",
+      "topic": "washer-method-axes"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Displacement versus total distance",
+      "topic": "motion-with-integrals"
+     }
+    ]
+   }
+  },
+  {
+   "id": "skills-math",
+   "part": "skills",
+   "title": "Math you need"
+  }
+ ],
+ "topics": [
+  {
+   "id": "change-at-an-instant",
+   "ced": "1.1",
+   "title": "Can Change Happen at an Instant?",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "can change happen at an instant? ap calculus ab explained"
+  },
+  {
+   "id": "limit-notation",
+   "ced": "1.2",
+   "title": "What a Limit Is and How to Write It",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "what a limit is and how to write it ap calculus ab explained"
+  },
+  {
+   "id": "limits-from-plots",
+   "ced": "1.3",
+   "title": "Reading Limits from a Graph",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "reading limits from a graph ap calculus ab explained"
+  },
+  {
+   "id": "limits-from-tables",
+   "ced": "1.4",
+   "title": "Estimating Limits from Tables",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "estimating limits from tables ap calculus ab explained"
+  },
+  {
+   "id": "limit-laws",
+   "ced": "1.5",
+   "title": "Limit Laws",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "limit laws ap calculus ab explained"
+  },
+  {
+   "id": "limit-algebra",
+   "ced": "1.6",
+   "title": "Limits by Algebra: Factor, Rationalize, Simplify",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "limits by algebra: factor, rationalize, simplify ap calculus ab explained"
+  },
+  {
+   "id": "choosing-limit-methods",
+   "ced": "1.7",
+   "title": "Choosing a Way to Find a Limit",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "choosing a way to find a limit ap calculus ab explained"
+  },
+  {
+   "id": "squeeze-theorem",
+   "ced": "1.8",
+   "title": "The Squeeze Theorem",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "the squeeze theorem ap calculus ab explained"
+  },
+  {
+   "id": "limit-representations",
+   "ced": "1.9",
+   "title": "Limits Across Graphs, Tables and Formulas",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "limits across graphs, tables and formulas ap calculus ab explained"
+  },
+  {
+   "id": "discontinuity-types",
+   "ced": "1.10",
+   "title": "Types of Discontinuity",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "types of discontinuity ap calculus ab explained"
+  },
+  {
+   "id": "continuity-at-a-point",
+   "ced": "1.11",
+   "title": "Continuity at a Point",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "continuity at a point ap calculus ab explained"
+  },
+  {
+   "id": "continuity-on-intervals",
+   "ced": "1.12",
+   "title": "Continuity on an Interval",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "continuity on an interval ap calculus ab explained"
+  },
+  {
+   "id": "removing-discontinuities",
+   "ced": "1.13",
+   "title": "Removing a Discontinuity",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "removing a discontinuity ap calculus ab explained"
+  },
+  {
+   "id": "infinite-limits",
+   "ced": "1.14",
+   "title": "Infinite Limits and Vertical Asymptotes",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    4
+   ],
+   "searchPhrase": "infinite limits and vertical asymptotes ap calculus ab explained"
+  },
+  {
+   "id": "limits-at-infinity",
+   "ced": "1.15",
+   "title": "Limits at Infinity and Horizontal Asymptotes",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "limits at infinity and horizontal asymptotes ap calculus ab explained"
+  },
+  {
+   "id": "intermediate-value-theorem",
+   "ced": "1.16",
+   "title": "The Intermediate Value Theorem",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "the intermediate value theorem ap calculus ab explained"
+  },
+  {
+   "id": "average-and-instant-rates",
+   "ced": "2.1",
+   "title": "Average and Instantaneous Rates of Change",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "average and instantaneous rates of change ap calculus ab explained"
+  },
+  {
+   "id": "derivative-definition",
+   "ced": "2.2",
+   "title": "The Derivative and Its Notation",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "searchPhrase": "the derivative and its notation ap calculus ab explained"
+  },
+  {
+   "id": "estimating-derivatives",
+   "ced": "2.3",
+   "title": "Estimating a Derivative at a Point",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "estimating a derivative at a point ap calculus ab explained"
+  },
+  {
+   "id": "differentiability",
+   "ced": "2.4",
+   "title": "Differentiability and Continuity",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "differentiability and continuity ap calculus ab explained"
+  },
+  {
+   "id": "power-rule",
+   "ced": "2.5",
+   "title": "The Power Rule",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "the power rule ap calculus ab explained"
+  },
+  {
+   "id": "basic-derivative-rules",
+   "ced": "2.6",
+   "title": "Constant, Sum, Difference and Constant Multiple Rules",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "constant, sum, difference and constant multiple rules ap calculus ab explained"
+  },
+  {
+   "id": "derivatives-sin-cos-exp-ln",
+   "ced": "2.7",
+   "title": "Derivatives of sin x, cos x, e to the x and ln x",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "derivatives of sin x, cos x, e to the x and ln x ap calculus ab explained"
+  },
+  {
+   "id": "product-rule",
+   "ced": "2.8",
+   "title": "The Product Rule",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "the product rule ap calculus ab explained"
+  },
+  {
+   "id": "quotient-rule",
+   "ced": "2.9",
+   "title": "The Quotient Rule",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "the quotient rule ap calculus ab explained"
+  },
+  {
+   "id": "other-trig-derivatives",
+   "ced": "2.10",
+   "title": "Derivatives of tan, cot, sec and csc",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "derivatives of tan, cot, sec and csc ap calculus ab explained"
+  },
+  {
+   "id": "chain-rule",
+   "ced": "3.1",
+   "title": "The Chain Rule",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "the chain rule ap calculus ab explained"
+  },
+  {
+   "id": "implicit-differentiation",
+   "ced": "3.2",
+   "title": "Implicit Differentiation",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "implicit differentiation ap calculus ab explained"
+  },
+  {
+   "id": "inverse-function-derivatives",
+   "ced": "3.3",
+   "title": "Derivatives of Inverse Functions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "derivatives of inverse functions ap calculus ab explained"
+  },
+  {
+   "id": "inverse-trig-derivatives",
+   "ced": "3.4",
+   "title": "Derivatives of Inverse Trigonometric Functions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "derivatives of inverse trigonometric functions ap calculus ab explained"
+  },
+  {
+   "id": "choosing-derivative-rules",
+   "ced": "3.5",
+   "title": "Choosing a Differentiation Rule",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "choosing a differentiation rule ap calculus ab explained"
+  },
+  {
+   "id": "higher-order-derivatives",
+   "ced": "3.6",
+   "title": "Second and Higher Derivatives",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "second and higher derivatives ap calculus ab explained"
+  },
+  {
+   "id": "derivative-in-context",
+   "ced": "4.1",
+   "title": "The Derivative in Context",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "the derivative in context ap calculus ab explained"
+  },
+  {
+   "id": "straight-line-motion",
+   "ced": "4.2",
+   "title": "Straight-Line Motion: Position, Velocity, Acceleration",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "straight-line motion: position, velocity, acceleration ap calculus ab explained"
+  },
+  {
+   "id": "rates-in-context",
+   "ced": "4.3",
+   "title": "Rates of Change in Other Contexts",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "rates of change in other contexts ap calculus ab explained"
+  },
+  {
+   "id": "related-rates-intro",
+   "ced": "4.4",
+   "title": "Introduction to Related Rates",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "introduction to related rates ap calculus ab explained"
+  },
+  {
+   "id": "solving-related-rates",
+   "ced": "4.5",
+   "title": "Solving Related Rates Problems",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "solving related rates problems ap calculus ab explained"
+  },
+  {
+   "id": "local-linearity",
+   "ced": "4.6",
+   "title": "Local Linearity and Linearization",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "local linearity and linearization ap calculus ab explained"
+  },
+  {
+   "id": "lhospitals-rule",
+   "ced": "4.7",
+   "title": "L'Hospital's Rule",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "l'hospital's rule ap calculus ab explained"
+  },
+  {
+   "id": "mean-value-theorem",
+   "ced": "5.1",
+   "title": "The Mean Value Theorem",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "the mean value theorem ap calculus ab explained"
+  },
+  {
+   "id": "extreme-value-theorem",
+   "ced": "5.2",
+   "title": "Extreme Value Theorem, Global and Local Extrema, Critical Points",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "extreme value theorem, global and local extrema, critical points ap calculus ab explained"
+  },
+  {
+   "id": "increasing-decreasing",
+   "ced": "5.3",
+   "title": "Where a Function Increases or Decreases",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "where a function increases or decreases ap calculus ab explained"
+  },
+  {
+   "id": "first-derivative-test",
+   "ced": "5.4",
+   "title": "The First Derivative Test",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "the first derivative test ap calculus ab explained"
+  },
+  {
+   "id": "candidates-test",
+   "ced": "5.5",
+   "title": "The Candidates Test",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "the candidates test ap calculus ab explained"
+  },
+  {
+   "id": "concavity",
+   "ced": "5.6",
+   "title": "Concavity and Points of Inflection",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "concavity and points of inflection ap calculus ab explained"
+  },
+  {
+   "id": "second-derivative-test",
+   "ced": "5.7",
+   "title": "The Second Derivative Test",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "the second derivative test ap calculus ab explained"
+  },
+  {
+   "id": "sketching-derivatives",
+   "ced": "5.8",
+   "title": "Sketching f, f' and f''",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "sketching f, f' and f'' ap calculus ab explained"
+  },
+  {
+   "id": "f-and-its-derivatives",
+   "ced": "5.9",
+   "title": "Connecting f, f' and f''",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "connecting f, f' and f'' ap calculus ab explained"
+  },
+  {
+   "id": "optimization-intro",
+   "ced": "5.10",
+   "title": "Introduction to Optimization",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "introduction to optimization ap calculus ab explained"
+  },
+  {
+   "id": "solving-optimization",
+   "ced": "5.11",
+   "title": "Solving Optimization Problems",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "solving optimization problems ap calculus ab explained"
+  },
+  {
+   "id": "implicit-relations",
+   "ced": "5.12",
+   "title": "Behavior of Implicit Relations",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "behavior of implicit relations ap calculus ab explained"
+  },
+  {
+   "id": "accumulation-of-change",
+   "ced": "6.1",
+   "title": "Accumulating Change",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    2,
+    4
+   ],
+   "searchPhrase": "accumulating change ap calculus ab explained"
+  },
+  {
+   "id": "riemann-sums",
+   "ced": "6.2",
+   "title": "Estimating Area with Riemann Sums",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "estimating area with riemann sums ap calculus ab explained"
+  },
+  {
+   "id": "definite-integral-notation",
+   "ced": "6.3",
+   "title": "Riemann Sums, Sigma Notation and the Definite Integral",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "riemann sums, sigma notation and the definite integral ap calculus ab explained"
+  },
+  {
+   "id": "ftc-accumulation",
+   "ced": "6.4",
+   "title": "The Fundamental Theorem and Accumulation Functions",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "the fundamental theorem and accumulation functions ap calculus ab explained"
+  },
+  {
+   "id": "accumulation-behavior",
+   "ced": "6.5",
+   "title": "Behavior of Accumulation Functions",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "behavior of accumulation functions ap calculus ab explained"
+  },
+  {
+   "id": "integral-properties",
+   "ced": "6.6",
+   "title": "Properties of Definite Integrals",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "properties of definite integrals ap calculus ab explained"
+  },
+  {
+   "id": "ftc-definite-integrals",
+   "ced": "6.7",
+   "title": "The Fundamental Theorem and Definite Integrals",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "the fundamental theorem and definite integrals ap calculus ab explained"
+  },
+  {
+   "id": "antiderivatives",
+   "ced": "6.8",
+   "title": "Antiderivatives and Indefinite Integrals",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "antiderivatives and indefinite integrals ap calculus ab explained"
+  },
+  {
+   "id": "u-substitution",
+   "ced": "6.9",
+   "title": "Integrating by Substitution",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "integrating by substitution ap calculus ab explained"
+  },
+  {
+   "id": "rewriting-integrands",
+   "ced": "6.10",
+   "title": "Integrating by Long Division and Completing the Square",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "integrating by long division and completing the square ap calculus ab explained"
+  },
+  {
+   "id": "choosing-integration-methods",
+   "ced": "6.14",
+   "title": "Choosing an Antidifferentiation Technique",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "choosing an antidifferentiation technique ap calculus ab explained"
+  },
+  {
+   "id": "modeling-with-des",
+   "ced": "7.1",
+   "title": "Writing Differential Equations",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    2,
+    4
+   ],
+   "searchPhrase": "writing differential equations ap calculus ab explained"
+  },
+  {
+   "id": "verifying-solutions",
+   "ced": "7.2",
+   "title": "Verifying Solutions to Differential Equations",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "verifying solutions to differential equations ap calculus ab explained"
+  },
+  {
+   "id": "sketching-slope-fields",
+   "ced": "7.3",
+   "title": "Sketching Slope Fields",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "sketching slope fields ap calculus ab explained"
+  },
+  {
+   "id": "reasoning-with-slope-fields",
+   "ced": "7.4",
+   "title": "Reasoning with Slope Fields",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "reasoning with slope fields ap calculus ab explained"
+  },
+  {
+   "id": "separation-of-variables",
+   "ced": "7.6",
+   "title": "General Solutions by Separation of Variables",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "general solutions by separation of variables ap calculus ab explained"
+  },
+  {
+   "id": "particular-solutions",
+   "ced": "7.7",
+   "title": "Particular Solutions from Initial Conditions",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "particular solutions from initial conditions ap calculus ab explained"
+  },
+  {
+   "id": "exponential-models",
+   "ced": "7.8",
+   "title": "Exponential Models",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "searchPhrase": "exponential models ap calculus ab explained"
+  },
+  {
+   "id": "average-value",
+   "ced": "8.1",
+   "title": "Average Value of a Function",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "average value of a function ap calculus ab explained"
+  },
+  {
+   "id": "motion-with-integrals",
+   "ced": "8.2",
+   "title": "Motion with Integrals",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "motion with integrals ap calculus ab explained"
+  },
+  {
+   "id": "accumulation-in-context",
+   "ced": "8.3",
+   "title": "Accumulation in Context",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "searchPhrase": "accumulation in context ap calculus ab explained"
+  },
+  {
+   "id": "area-between-curves-x",
+   "ced": "8.4",
+   "title": "Area Between Curves (Functions of x)",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "area between curves (functions of x) ap calculus ab explained"
+  },
+  {
+   "id": "area-between-curves-y",
+   "ced": "8.5",
+   "title": "Area Between Curves (Functions of y)",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "area between curves (functions of y) ap calculus ab explained"
+  },
+  {
+   "id": "area-multiple-crossings",
+   "ced": "8.6",
+   "title": "Area Between Curves That Cross More Than Twice",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "area between curves that cross more than twice ap calculus ab explained"
+  },
+  {
+   "id": "cross-sections-squares",
+   "ced": "8.7",
+   "title": "Volumes with Square and Rectangle Cross Sections",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "volumes with square and rectangle cross sections ap calculus ab explained"
+  },
+  {
+   "id": "cross-sections-triangles",
+   "ced": "8.8",
+   "title": "Volumes with Triangle and Semicircle Cross Sections",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "volumes with triangle and semicircle cross sections ap calculus ab explained"
+  },
+  {
+   "id": "disc-method-axes",
+   "ced": "8.9",
+   "title": "Disc Method About the Axes",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "disc method about the axes ap calculus ab explained"
+  },
+  {
+   "id": "disc-method-other-axes",
+   "ced": "8.10",
+   "title": "Disc Method About Other Lines",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "disc method about other lines ap calculus ab explained"
+  },
+  {
+   "id": "washer-method-axes",
+   "ced": "8.11",
+   "title": "Washer Method About the Axes",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "washer method about the axes ap calculus ab explained"
+  },
+  {
+   "id": "washer-method-other-axes",
+   "ced": "8.12",
+   "title": "Washer Method About Other Lines",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "washer method about other lines ap calculus ab explained"
+  },
+  {
+   "id": "math-functions",
+   "ced": null,
+   "title": "Functions and Their Graphs",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    2
+   ],
+   "before": "change-at-an-instant",
+   "searchPhrase": "functions and graphs for calculus"
+  },
+  {
+   "id": "math-exponent-rules",
+   "ced": null,
+   "title": "Exponent Rules and Rewriting Powers",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "change-at-an-instant",
+   "searchPhrase": "exponent rules negative and fractional exponents"
+  },
+  {
+   "id": "math-limit-algebra",
+   "ced": null,
+   "title": "Algebra for Limits: Factoring and Rationalizing",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "limit-algebra",
+   "searchPhrase": "factoring and rationalizing for limits"
+  },
+  {
+   "id": "math-trig",
+   "ced": null,
+   "title": "Trigonometry and the Unit Circle",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "squeeze-theorem",
+   "searchPhrase": "unit circle and trig functions review for calculus"
+  },
+  {
+   "id": "math-exp-log",
+   "ced": null,
+   "title": "Exponentials and Logarithms",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "continuity-on-intervals",
+   "searchPhrase": "exponentials and natural logarithms review"
+  },
+  {
+   "id": "math-inverse-functions",
+   "ced": null,
+   "title": "Inverse Functions",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    2
+   ],
+   "before": "inverse-function-derivatives",
+   "searchPhrase": "inverse functions and inverse trig review"
+  },
+  {
+   "id": "math-geometry",
+   "ced": null,
+   "title": "Geometry for Calculus",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "related-rates-intro",
+   "searchPhrase": "geometry formulas for calculus"
+  }
+ ],
+ "everydayWords": {
+  "about": "Common words a student already roughly knows. They may be used in their everyday sense before the topic that teaches them; the technical terms of the same concept stay strict (\"instantaneous velocity\", \"absolute maximum\", \"definite integral\").",
+  "words": [
+   "speed",
+   "speeds",
+   "velocity",
+   "input",
+   "output",
+   "continuous",
+   "polynomial",
+   "polynomials",
+   "accumulation"
+  ]
+ },
+ "concepts": [
+  {
+   "id": "function",
+   "term": "function",
+   "aliases": [
+    "functions",
+    "function notation",
+    "input",
+    "output"
+   ],
+   "taughtIn": "math-functions",
+   "dependsOn": []
+  },
+  {
+   "id": "domain",
+   "term": "domain",
+   "aliases": [
+    "domains",
+    "range of a function"
+   ],
+   "taughtIn": "math-functions",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "function-graph",
+   "term": "graph of a function",
+   "aliases": [
+    "graphs of functions"
+   ],
+   "taughtIn": "math-functions",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "slope",
+   "term": "slope",
+   "aliases": [
+    "slopes",
+    "slope of a line",
+    "rise over run"
+   ],
+   "taughtIn": "math-functions",
+   "dependsOn": [
+    "function-graph"
+   ]
+  },
+  {
+   "id": "line-equation",
+   "term": "point-slope form",
+   "aliases": [
+    "slope-intercept form",
+    "equation of a line"
+   ],
+   "taughtIn": "math-functions",
+   "dependsOn": [
+    "slope"
+   ]
+  },
+  {
+   "id": "piecewise-function",
+   "term": "piecewise function",
+   "aliases": [
+    "piecewise functions",
+    "piecewise-defined function"
+   ],
+   "taughtIn": "math-functions",
+   "dependsOn": [
+    "function",
+    "domain"
+   ],
+   "notation": [
+    "\\\\begin\\{cases\\}"
+   ]
+  },
+  {
+   "id": "composition",
+   "term": "composite function",
+   "aliases": [
+    "composite functions",
+    "composition",
+    "function composition"
+   ],
+   "taughtIn": "math-functions",
+   "dependsOn": [
+    "function"
+   ],
+   "notation": [
+    "\\\\circ\\s*[a-z]"
+   ]
+  },
+  {
+   "id": "transformation",
+   "term": "graph transformation",
+   "aliases": [
+    "graph transformations",
+    "vertical shift",
+    "horizontal shift"
+   ],
+   "taughtIn": "math-functions",
+   "dependsOn": [
+    "function-graph"
+   ]
+  },
+  {
+   "id": "rational-function",
+   "term": "rational function",
+   "aliases": [
+    "rational functions",
+    "polynomial",
+    "polynomials",
+    "polynomial function"
+   ],
+   "taughtIn": "math-functions",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "asymptote",
+   "term": "asymptote",
+   "aliases": [
+    "asymptotes",
+    "vertical asymptote",
+    "vertical asymptotes",
+    "horizontal asymptote",
+    "horizontal asymptotes"
+   ],
+   "taughtIn": "math-functions",
+   "dependsOn": [
+    "rational-function",
+    "function-graph"
+   ]
+  },
+  {
+   "id": "exponent-rules",
+   "term": "exponent rules",
+   "aliases": [
+    "laws of exponents",
+    "negative exponent",
+    "negative exponents",
+    "fractional exponent",
+    "fractional exponents",
+    "rational exponents"
+   ],
+   "taughtIn": "math-exponent-rules",
+   "dependsOn": []
+  },
+  {
+   "id": "average-rate",
+   "term": "average rate of change",
+   "aliases": [
+    "average rates of change"
+   ],
+   "taughtIn": "change-at-an-instant",
+   "dependsOn": [
+    "slope",
+    "function"
+   ]
+  },
+  {
+   "id": "instantaneous-rate",
+   "term": "instantaneous rate of change",
+   "aliases": [
+    "instantaneous rates of change",
+    "rate of change at an instant"
+   ],
+   "taughtIn": "change-at-an-instant",
+   "dependsOn": [
+    "average-rate"
+   ]
+  },
+  {
+   "id": "limit",
+   "term": "limit",
+   "aliases": [
+    "limits",
+    "limit notation"
+   ],
+   "taughtIn": "limit-notation",
+   "dependsOn": [
+    "function"
+   ],
+   "notation": [
+    "\\\\lim(?![a-z])"
+   ]
+  },
+  {
+   "id": "one-sided-limit",
+   "term": "one-sided limit",
+   "aliases": [
+    "one-sided limits",
+    "left-hand limit",
+    "right-hand limit",
+    "limit from the left",
+    "limit from the right"
+   ],
+   "taughtIn": "limits-from-plots",
+   "dependsOn": [
+    "limit"
+   ],
+   "notation": [
+    "\\\\to\\s*[^{}$]*\\^\\{?[+-]\\}?"
+   ]
+  },
+  {
+   "id": "limit-dne",
+   "term": "limit does not exist",
+   "aliases": [
+    "DNE"
+   ],
+   "taughtIn": "limits-from-plots",
+   "dependsOn": [
+    "one-sided-limit"
+   ]
+  },
+  {
+   "id": "unbounded",
+   "term": "unbounded behavior",
+   "aliases": [
+    "unbounded",
+    "oscillating behavior"
+   ],
+   "taughtIn": "limits-from-plots",
+   "dependsOn": [
+    "limit"
+   ]
+  },
+  {
+   "id": "numerical-estimate",
+   "term": "numerical estimate",
+   "aliases": [
+    "numerical estimates"
+   ],
+   "taughtIn": "limits-from-tables",
+   "dependsOn": [
+    "limit"
+   ]
+  },
+  {
+   "id": "limit-laws",
+   "term": "limit laws",
+   "aliases": [
+    "limit law",
+    "properties of limits"
+   ],
+   "taughtIn": "limit-laws",
+   "dependsOn": [
+    "limit"
+   ]
+  },
+  {
+   "id": "direct-substitution",
+   "term": "direct substitution",
+   "aliases": [],
+   "taughtIn": "limit-laws",
+   "dependsOn": [
+    "limit-laws"
+   ]
+  },
+  {
+   "id": "factoring",
+   "term": "factoring",
+   "aliases": [
+    "difference of squares",
+    "factored form"
+   ],
+   "taughtIn": "math-limit-algebra",
+   "dependsOn": [
+    "rational-function"
+   ]
+  },
+  {
+   "id": "rationalizing",
+   "term": "rationalizing",
+   "aliases": [
+    "rationalize",
+    "conjugate",
+    "conjugates"
+   ],
+   "taughtIn": "math-limit-algebra",
+   "dependsOn": [
+    "exponent-rules"
+   ]
+  },
+  {
+   "id": "complex-fraction",
+   "term": "complex fraction",
+   "aliases": [
+    "complex fractions"
+   ],
+   "taughtIn": "math-limit-algebra",
+   "dependsOn": [
+    "factoring"
+   ]
+  },
+  {
+   "id": "indeterminate-form",
+   "term": "indeterminate form",
+   "aliases": [
+    "indeterminate forms",
+    "0/0"
+   ],
+   "taughtIn": "limit-algebra",
+   "dependsOn": [
+    "direct-substitution",
+    "factoring",
+    "rationalizing"
+   ],
+   "notation": [
+    "\\\\frac\\{0\\}\\{0\\}",
+    "\\\\frac\\{\\\\infty\\}\\{\\\\infty\\}"
+   ]
+  },
+  {
+   "id": "limit-strategy",
+   "term": "limit strategy",
+   "aliases": [
+    "limit strategies"
+   ],
+   "taughtIn": "choosing-limit-methods",
+   "dependsOn": [
+    "indeterminate-form",
+    "limit-laws"
+   ]
+  },
+  {
+   "id": "radian",
+   "term": "radian",
+   "aliases": [
+    "radians",
+    "radian measure"
+   ],
+   "taughtIn": "math-trig",
+   "dependsOn": []
+  },
+  {
+   "id": "unit-circle",
+   "term": "unit circle",
+   "aliases": [],
+   "taughtIn": "math-trig",
+   "dependsOn": [
+    "radian"
+   ]
+  },
+  {
+   "id": "trig-function",
+   "term": "sine",
+   "aliases": [
+    "sines",
+    "cosine",
+    "cosines",
+    "sine function",
+    "cosine function",
+    "tangent function",
+    "cosecant",
+    "cotangent",
+    "secant function",
+    "trigonometric function",
+    "trigonometric functions",
+    "trig function",
+    "trig functions"
+   ],
+   "taughtIn": "math-trig",
+   "dependsOn": [
+    "unit-circle",
+    "function"
+   ],
+   "notation": [
+    "\\\\(?:sin|cos|tan|sec|csc|cot)(?![a-z])"
+   ]
+  },
+  {
+   "id": "trig-identity",
+   "term": "Pythagorean identity",
+   "aliases": [
+    "trig identity",
+    "trig identities",
+    "trigonometric identity",
+    "trigonometric identities"
+   ],
+   "taughtIn": "math-trig",
+   "dependsOn": [
+    "trig-function"
+   ]
+  },
+  {
+   "id": "squeeze-theorem",
+   "term": "squeeze theorem",
+   "aliases": [
+    "sandwich theorem"
+   ],
+   "taughtIn": "squeeze-theorem",
+   "dependsOn": [
+    "limit",
+    "trig-function"
+   ]
+  },
+  {
+   "id": "representations",
+   "term": "multiple representations",
+   "aliases": [],
+   "taughtIn": "limit-representations",
+   "dependsOn": [
+    "numerical-estimate",
+    "one-sided-limit"
+   ]
+  },
+  {
+   "id": "discontinuity",
+   "term": "discontinuity",
+   "aliases": [
+    "discontinuities",
+    "discontinuous",
+    "continuous",
+    "continuity"
+   ],
+   "taughtIn": "discontinuity-types",
+   "dependsOn": [
+    "limit"
+   ]
+  },
+  {
+   "id": "removable-discontinuity",
+   "term": "removable discontinuity",
+   "aliases": [
+    "removable discontinuities",
+    "point discontinuity"
+   ],
+   "taughtIn": "discontinuity-types",
+   "dependsOn": [
+    "discontinuity"
+   ]
+  },
+  {
+   "id": "jump-discontinuity",
+   "term": "jump discontinuity",
+   "aliases": [
+    "jump discontinuities"
+   ],
+   "taughtIn": "discontinuity-types",
+   "dependsOn": [
+    "discontinuity",
+    "one-sided-limit"
+   ]
+  },
+  {
+   "id": "infinite-discontinuity",
+   "term": "infinite discontinuity",
+   "aliases": [
+    "infinite discontinuities"
+   ],
+   "taughtIn": "discontinuity-types",
+   "dependsOn": [
+    "discontinuity",
+    "asymptote"
+   ]
+  },
+  {
+   "id": "continuity-definition",
+   "term": "definition of continuity",
+   "aliases": [
+    "three conditions for continuity",
+    "continuous at a point"
+   ],
+   "taughtIn": "continuity-at-a-point",
+   "dependsOn": [
+    "discontinuity"
+   ]
+  },
+  {
+   "id": "exponential-function",
+   "term": "exponential function",
+   "aliases": [
+    "exponential functions",
+    "exponential growth",
+    "exponential decay",
+    "base e"
+   ],
+   "taughtIn": "math-exp-log",
+   "dependsOn": [
+    "exponent-rules",
+    "function"
+   ],
+   "notation": [
+    "(?<![a-zA-Z\\\\])e\\^"
+   ]
+  },
+  {
+   "id": "natural-log",
+   "term": "natural logarithm",
+   "aliases": [
+    "natural logarithms",
+    "natural log",
+    "ln",
+    "logarithm",
+    "logarithms",
+    "log rules"
+   ],
+   "taughtIn": "math-exp-log",
+   "dependsOn": [
+    "exponential-function"
+   ],
+   "notation": [
+    "\\\\ln(?![a-z])",
+    "\\\\log(?![a-z])"
+   ]
+  },
+  {
+   "id": "continuity-on-interval",
+   "term": "continuous on an interval",
+   "aliases": [
+    "continuous on a closed interval",
+    "continuous on its domain"
+   ],
+   "taughtIn": "continuity-on-intervals",
+   "dependsOn": [
+    "continuity-definition",
+    "natural-log",
+    "trig-function"
+   ]
+  },
+  {
+   "id": "removing-discontinuity",
+   "term": "removing a discontinuity",
+   "aliases": [
+    "remove the discontinuity",
+    "redefine the function"
+   ],
+   "taughtIn": "removing-discontinuities",
+   "dependsOn": [
+    "removable-discontinuity",
+    "continuity-definition",
+    "piecewise-function"
+   ]
+  },
+  {
+   "id": "infinite-limit",
+   "term": "infinite limit",
+   "aliases": [
+    "infinite limits"
+   ],
+   "taughtIn": "infinite-limits",
+   "dependsOn": [
+    "one-sided-limit",
+    "asymptote"
+   ],
+   "notation": [
+    "\\\\lim[^$]*=\\s*-?\\\\infty"
+   ]
+  },
+  {
+   "id": "limit-at-infinity",
+   "term": "limit at infinity",
+   "aliases": [
+    "limits at infinity",
+    "end behavior"
+   ],
+   "taughtIn": "limits-at-infinity",
+   "dependsOn": [
+    "limit",
+    "asymptote"
+   ],
+   "notation": [
+    "\\\\to\\s*[+-]?\\\\infty"
+   ]
+  },
+  {
+   "id": "dominant-term",
+   "term": "dominant term",
+   "aliases": [
+    "dominant terms",
+    "relative growth"
+   ],
+   "taughtIn": "limits-at-infinity",
+   "dependsOn": [
+    "limit-at-infinity",
+    "exponential-function"
+   ]
+  },
+  {
+   "id": "hypothesis",
+   "term": "hypothesis",
+   "aliases": [
+    "hypotheses",
+    "conditions of a theorem"
+   ],
+   "taughtIn": "intermediate-value-theorem",
+   "dependsOn": []
+  },
+  {
+   "id": "ivt",
+   "term": "Intermediate Value Theorem",
+   "aliases": [
+    "intermediate value theorem",
+    "IVT"
+   ],
+   "taughtIn": "intermediate-value-theorem",
+   "dependsOn": [
+    "continuity-on-interval",
+    "hypothesis"
+   ]
+  },
+  {
+   "id": "difference-quotient",
+   "term": "difference quotient",
+   "aliases": [
+    "difference quotients"
+   ],
+   "taughtIn": "average-and-instant-rates",
+   "dependsOn": [
+    "average-rate",
+    "limit"
+   ],
+   "notation": [
+    "f\\(x\\s*\\+\\s*h\\)"
+   ]
+  },
+  {
+   "id": "secant-line",
+   "term": "secant line",
+   "aliases": [
+    "secant lines"
+   ],
+   "taughtIn": "average-and-instant-rates",
+   "dependsOn": [
+    "average-rate",
+    "line-equation"
+   ]
+  },
+  {
+   "id": "derivative",
+   "term": "derivative",
+   "aliases": [
+    "derivatives",
+    "differentiate",
+    "differentiating",
+    "differentiation",
+    "derivative function"
+   ],
+   "taughtIn": "derivative-definition",
+   "dependsOn": [
+    "difference-quotient",
+    "instantaneous-rate"
+   ],
+   "notation": [
+    "[A-Za-z]'",
+    "\\\\prime",
+    "\\\\d?frac\\{d[a-zA-Z]?\\}\\{d[a-z]\\}"
+   ]
+  },
+  {
+   "id": "tangent-line",
+   "term": "tangent line",
+   "aliases": [
+    "tangent lines",
+    "line tangent"
+   ],
+   "taughtIn": "derivative-definition",
+   "dependsOn": [
+    "derivative",
+    "secant-line",
+    "line-equation"
+   ]
+  },
+  {
+   "id": "leibniz",
+   "term": "Leibniz notation",
+   "aliases": [],
+   "taughtIn": "derivative-definition",
+   "dependsOn": [
+    "derivative"
+   ]
+  },
+  {
+   "id": "numerical-derivative",
+   "term": "numerical derivative",
+   "aliases": [
+    "numerical derivatives"
+   ],
+   "taughtIn": "estimating-derivatives",
+   "dependsOn": [
+    "derivative",
+    "difference-quotient"
+   ]
+  },
+  {
+   "id": "differentiable",
+   "term": "differentiable",
+   "aliases": [
+    "differentiability",
+    "not differentiable"
+   ],
+   "taughtIn": "differentiability",
+   "dependsOn": [
+    "derivative",
+    "continuity-definition"
+   ]
+  },
+  {
+   "id": "corner",
+   "term": "corner",
+   "aliases": [
+    "corners",
+    "cusp",
+    "cusps",
+    "vertical tangent",
+    "vertical tangents",
+    "vertical tangent line"
+   ],
+   "taughtIn": "differentiability",
+   "dependsOn": [
+    "differentiable",
+    "tangent-line"
+   ]
+  },
+  {
+   "id": "power-rule",
+   "term": "power rule",
+   "aliases": [],
+   "taughtIn": "power-rule",
+   "dependsOn": [
+    "derivative",
+    "exponent-rules"
+   ]
+  },
+  {
+   "id": "sum-rule",
+   "term": "constant multiple rule",
+   "aliases": [
+    "sum rule",
+    "difference rule",
+    "constant rule"
+   ],
+   "taughtIn": "basic-derivative-rules",
+   "dependsOn": [
+    "power-rule"
+   ]
+  },
+  {
+   "id": "basic-transcendental-derivative",
+   "term": "derivative of sine",
+   "aliases": [
+    "derivative of cosine",
+    "derivative of e^x",
+    "derivative of ln x"
+   ],
+   "taughtIn": "derivatives-sin-cos-exp-ln",
+   "dependsOn": [
+    "derivative",
+    "trig-function",
+    "natural-log"
+   ]
+  },
+  {
+   "id": "limit-as-derivative",
+   "term": "limit as a derivative",
+   "aliases": [
+    "limits as derivatives"
+   ],
+   "taughtIn": "derivatives-sin-cos-exp-ln",
+   "dependsOn": [
+    "difference-quotient",
+    "derivative"
+   ]
+  },
+  {
+   "id": "product-rule",
+   "term": "product rule",
+   "aliases": [],
+   "taughtIn": "product-rule",
+   "dependsOn": [
+    "derivative"
+   ]
+  },
+  {
+   "id": "quotient-rule",
+   "term": "quotient rule",
+   "aliases": [],
+   "taughtIn": "quotient-rule",
+   "dependsOn": [
+    "derivative"
+   ]
+  },
+  {
+   "id": "trig-derivative",
+   "term": "derivative of tangent",
+   "aliases": [
+    "derivative of secant",
+    "derivative of tan x",
+    "derivative of sec x"
+   ],
+   "taughtIn": "other-trig-derivatives",
+   "dependsOn": [
+    "quotient-rule",
+    "trig-identity",
+    "basic-transcendental-derivative"
+   ]
+  },
+  {
+   "id": "chain-rule",
+   "term": "chain rule",
+   "aliases": [
+    "inner function",
+    "outer function"
+   ],
+   "taughtIn": "chain-rule",
+   "dependsOn": [
+    "derivative",
+    "composition"
+   ]
+  },
+  {
+   "id": "implicit-differentiation",
+   "term": "implicit differentiation",
+   "aliases": [
+    "differentiate implicitly",
+    "implicitly defined"
+   ],
+   "taughtIn": "implicit-differentiation",
+   "dependsOn": [
+    "chain-rule"
+   ]
+  },
+  {
+   "id": "inverse-function",
+   "term": "inverse function",
+   "aliases": [
+    "inverse functions",
+    "one-to-one"
+   ],
+   "taughtIn": "math-inverse-functions",
+   "dependsOn": [
+    "function",
+    "composition"
+   ],
+   "notation": [
+    "\\^\\{-1\\}",
+    "\\^-1"
+   ]
+  },
+  {
+   "id": "inverse-trig",
+   "term": "inverse trigonometric function",
+   "aliases": [
+    "inverse trigonometric functions",
+    "inverse trig function",
+    "inverse trig functions",
+    "arcsine",
+    "arccosine",
+    "arctangent"
+   ],
+   "taughtIn": "math-inverse-functions",
+   "dependsOn": [
+    "inverse-function",
+    "trig-function"
+   ],
+   "notation": [
+    "\\\\arc(?:sin|cos|tan)"
+   ]
+  },
+  {
+   "id": "inverse-derivative",
+   "term": "derivative of an inverse function",
+   "aliases": [
+    "derivative of the inverse",
+    "derivatives of inverse functions"
+   ],
+   "taughtIn": "inverse-function-derivatives",
+   "dependsOn": [
+    "inverse-function",
+    "chain-rule"
+   ]
+  },
+  {
+   "id": "inverse-trig-derivative",
+   "term": "derivative of arcsine",
+   "aliases": [
+    "derivative of arctangent",
+    "derivatives of inverse trigonometric functions"
+   ],
+   "taughtIn": "inverse-trig-derivatives",
+   "dependsOn": [
+    "inverse-trig",
+    "inverse-derivative"
+   ]
+  },
+  {
+   "id": "derivative-strategy",
+   "term": "differentiation strategy",
+   "aliases": [
+    "differentiation strategies"
+   ],
+   "taughtIn": "choosing-derivative-rules",
+   "dependsOn": [
+    "chain-rule",
+    "product-rule",
+    "quotient-rule"
+   ]
+  },
+  {
+   "id": "second-derivative",
+   "term": "second derivative",
+   "aliases": [
+    "second derivatives",
+    "higher-order derivative",
+    "higher-order derivatives",
+    "third derivative"
+   ],
+   "taughtIn": "higher-order-derivatives",
+   "dependsOn": [
+    "derivative"
+   ],
+   "notation": [
+    "[A-Za-z]''",
+    "\\\\d?frac\\{d\\^\\{?[2-9]",
+    "\\\\prime\\\\prime"
+   ]
+  },
+  {
+   "id": "derivative-in-context",
+   "term": "derivative in context",
+   "aliases": [
+    "units of a derivative"
+   ],
+   "taughtIn": "derivative-in-context",
+   "dependsOn": [
+    "derivative"
+   ]
+  },
+  {
+   "id": "position-function",
+   "term": "position function",
+   "aliases": [
+    "position functions",
+    "particle motion"
+   ],
+   "taughtIn": "straight-line-motion",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "velocity",
+   "term": "velocity",
+   "aliases": [
+    "velocities",
+    "instantaneous velocity"
+   ],
+   "taughtIn": "straight-line-motion",
+   "dependsOn": [
+    "derivative",
+    "position-function"
+   ]
+  },
+  {
+   "id": "acceleration",
+   "term": "acceleration",
+   "aliases": [
+    "accelerations"
+   ],
+   "taughtIn": "straight-line-motion",
+   "dependsOn": [
+    "velocity",
+    "second-derivative"
+   ]
+  },
+  {
+   "id": "speed",
+   "term": "speed",
+   "aliases": [
+    "speeds"
+   ],
+   "taughtIn": "straight-line-motion",
+   "dependsOn": [
+    "velocity"
+   ]
+  },
+  {
+   "id": "speeding-up",
+   "term": "speeding up",
+   "aliases": [
+    "slowing down"
+   ],
+   "taughtIn": "straight-line-motion",
+   "dependsOn": [
+    "velocity",
+    "acceleration",
+    "speed"
+   ]
+  },
+  {
+   "id": "rate-in-context",
+   "term": "rate of change in context",
+   "aliases": [
+    "rates of change in context"
+   ],
+   "taughtIn": "rates-in-context",
+   "dependsOn": [
+    "derivative-in-context"
+   ]
+  },
+  {
+   "id": "similar-triangles",
+   "term": "similar triangles",
+   "aliases": [],
+   "taughtIn": "math-geometry",
+   "dependsOn": []
+  },
+  {
+   "id": "pythagorean-theorem",
+   "term": "Pythagorean theorem",
+   "aliases": [],
+   "taughtIn": "math-geometry",
+   "dependsOn": []
+  },
+  {
+   "id": "volume-formulas",
+   "term": "volume of a cone",
+   "aliases": [
+    "volume of a sphere",
+    "volume of a cylinder",
+    "area of a trapezoid",
+    "area of a semicircle"
+   ],
+   "taughtIn": "math-geometry",
+   "dependsOn": []
+  },
+  {
+   "id": "related-rates",
+   "term": "related rates",
+   "aliases": [
+    "related rate"
+   ],
+   "taughtIn": "related-rates-intro",
+   "dependsOn": [
+    "chain-rule",
+    "implicit-differentiation",
+    "similar-triangles"
+   ]
+  },
+  {
+   "id": "related-rates-problem",
+   "term": "related rates problem",
+   "aliases": [
+    "related rates problems"
+   ],
+   "taughtIn": "solving-related-rates",
+   "dependsOn": [
+    "related-rates"
+   ]
+  },
+  {
+   "id": "estimate-bias",
+   "term": "overestimate",
+   "aliases": [
+    "overestimates",
+    "underestimate",
+    "underestimates"
+   ],
+   "taughtIn": "local-linearity",
+   "dependsOn": []
+  },
+  {
+   "id": "linearization",
+   "term": "linearization",
+   "aliases": [
+    "local linearity",
+    "linear approximation",
+    "tangent line approximation",
+    "local linear approximation"
+   ],
+   "taughtIn": "local-linearity",
+   "dependsOn": [
+    "tangent-line",
+    "estimate-bias"
+   ]
+  },
+  {
+   "id": "concave",
+   "term": "concave up",
+   "aliases": [
+    "concave down",
+    "concavity"
+   ],
+   "taughtIn": "local-linearity",
+   "dependsOn": [
+    "second-derivative"
+   ],
+   "fullIn": [
+    "concavity"
+   ]
+  },
+  {
+   "id": "lhospital",
+   "term": "L'Hospital's rule",
+   "aliases": [
+    "L'Hôpital's rule",
+    "L'Hopital's rule"
+   ],
+   "taughtIn": "lhospitals-rule",
+   "dependsOn": [
+    "indeterminate-form",
+    "derivative",
+    "limit-at-infinity"
+   ]
+  },
+  {
+   "id": "mvt",
+   "term": "Mean Value Theorem",
+   "aliases": [
+    "mean value theorem",
+    "MVT"
+   ],
+   "taughtIn": "mean-value-theorem",
+   "dependsOn": [
+    "differentiable",
+    "continuity-on-interval",
+    "average-rate",
+    "hypothesis"
+   ]
+  },
+  {
+   "id": "evt",
+   "term": "Extreme Value Theorem",
+   "aliases": [
+    "extreme value theorem",
+    "EVT"
+   ],
+   "taughtIn": "extreme-value-theorem",
+   "dependsOn": [
+    "continuity-on-interval",
+    "hypothesis"
+   ]
+  },
+  {
+   "id": "critical-point",
+   "term": "critical point",
+   "aliases": [
+    "critical points",
+    "critical number",
+    "critical numbers",
+    "critical value",
+    "critical values"
+   ],
+   "taughtIn": "extreme-value-theorem",
+   "dependsOn": [
+    "derivative",
+    "differentiable"
+   ]
+  },
+  {
+   "id": "absolute-extremum",
+   "term": "absolute maximum",
+   "aliases": [
+    "absolute minimum",
+    "absolute extremum",
+    "absolute extrema",
+    "global maximum",
+    "global minimum",
+    "global extremum",
+    "global extrema"
+   ],
+   "taughtIn": "extreme-value-theorem",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "relative-extremum",
+   "term": "relative maximum",
+   "aliases": [
+    "relative minimum",
+    "relative extremum",
+    "relative extrema",
+    "local maximum",
+    "local minimum",
+    "local extremum",
+    "local extrema"
+   ],
+   "taughtIn": "extreme-value-theorem",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "increasing",
+   "term": "increasing on an interval",
+   "aliases": [
+    "decreasing on an interval",
+    "intervals of increase",
+    "intervals of decrease"
+   ],
+   "taughtIn": "increasing-decreasing",
+   "dependsOn": [
+    "derivative"
+   ]
+  },
+  {
+   "id": "first-derivative-test",
+   "term": "First Derivative Test",
+   "aliases": [
+    "first derivative test",
+    "sign chart",
+    "sign charts"
+   ],
+   "taughtIn": "first-derivative-test",
+   "dependsOn": [
+    "critical-point",
+    "increasing",
+    "relative-extremum"
+   ]
+  },
+  {
+   "id": "candidates-test",
+   "term": "Candidates Test",
+   "aliases": [
+    "candidates test",
+    "closed interval method"
+   ],
+   "taughtIn": "candidates-test",
+   "dependsOn": [
+    "critical-point",
+    "absolute-extremum",
+    "evt"
+   ]
+  },
+  {
+   "id": "inflection-point",
+   "term": "point of inflection",
+   "aliases": [
+    "points of inflection",
+    "inflection point",
+    "inflection points"
+   ],
+   "taughtIn": "concavity",
+   "dependsOn": [
+    "concave",
+    "increasing"
+   ]
+  },
+  {
+   "id": "second-derivative-test",
+   "term": "Second Derivative Test",
+   "aliases": [
+    "second derivative test"
+   ],
+   "taughtIn": "second-derivative-test",
+   "dependsOn": [
+    "concave",
+    "critical-point",
+    "relative-extremum"
+   ]
+  },
+  {
+   "id": "derivative-sketch",
+   "term": "graph of the derivative",
+   "aliases": [
+    "graphs of the derivative",
+    "derivative graph"
+   ],
+   "taughtIn": "sketching-derivatives",
+   "dependsOn": [
+    "derivative",
+    "increasing",
+    "inflection-point"
+   ]
+  },
+  {
+   "id": "graphical-analysis",
+   "term": "graphical analysis",
+   "aliases": [],
+   "taughtIn": "f-and-its-derivatives",
+   "dependsOn": [
+    "derivative-sketch",
+    "first-derivative-test"
+   ]
+  },
+  {
+   "id": "optimization",
+   "term": "optimization",
+   "aliases": [
+    "optimize",
+    "optimizing",
+    "objective function"
+   ],
+   "taughtIn": "optimization-intro",
+   "dependsOn": [
+    "absolute-extremum",
+    "critical-point"
+   ]
+  },
+  {
+   "id": "constraint",
+   "term": "constraint",
+   "aliases": [
+    "constraints",
+    "constraint equation"
+   ],
+   "taughtIn": "solving-optimization",
+   "dependsOn": [
+    "optimization"
+   ]
+  },
+  {
+   "id": "horizontal-tangent",
+   "term": "horizontal tangent",
+   "aliases": [
+    "horizontal tangents",
+    "horizontal tangent line",
+    "horizontal tangent lines"
+   ],
+   "taughtIn": "implicit-relations",
+   "dependsOn": [
+    "implicit-differentiation",
+    "critical-point"
+   ]
+  },
+  {
+   "id": "accumulated-change",
+   "term": "accumulated change",
+   "aliases": [
+    "accumulation",
+    "net change"
+   ],
+   "taughtIn": "accumulation-of-change",
+   "dependsOn": [
+    "instantaneous-rate"
+   ]
+  },
+  {
+   "id": "riemann-sum",
+   "term": "Riemann sum",
+   "aliases": [
+    "Riemann sums",
+    "left Riemann sum",
+    "right Riemann sum",
+    "midpoint Riemann sum",
+    "left sum",
+    "right sum",
+    "midpoint sum"
+   ],
+   "taughtIn": "riemann-sums",
+   "dependsOn": [
+    "accumulated-change"
+   ]
+  },
+  {
+   "id": "trapezoidal-sum",
+   "term": "trapezoidal sum",
+   "aliases": [
+    "trapezoidal sums",
+    "trapezoidal rule"
+   ],
+   "taughtIn": "riemann-sums",
+   "dependsOn": [
+    "riemann-sum",
+    "volume-formulas"
+   ]
+  },
+  {
+   "id": "partition",
+   "term": "subinterval",
+   "aliases": [
+    "subintervals",
+    "partition",
+    "partitions"
+   ],
+   "taughtIn": "riemann-sums",
+   "dependsOn": [
+    "riemann-sum"
+   ]
+  },
+  {
+   "id": "definite-integral",
+   "term": "definite integral",
+   "aliases": [
+    "definite integrals",
+    "integral",
+    "integrals",
+    "integrand",
+    "limits of integration"
+   ],
+   "taughtIn": "definite-integral-notation",
+   "dependsOn": [
+    "riemann-sum",
+    "limit"
+   ],
+   "notation": [
+    "\\\\int_"
+   ]
+  },
+  {
+   "id": "sigma-notation",
+   "term": "sigma notation",
+   "aliases": [
+    "summation notation"
+   ],
+   "taughtIn": "definite-integral-notation",
+   "dependsOn": [
+    "riemann-sum"
+   ],
+   "notation": [
+    "\\\\sum"
+   ]
+  },
+  {
+   "id": "antiderivative",
+   "term": "antiderivative",
+   "aliases": [
+    "antiderivatives",
+    "antidifferentiation"
+   ],
+   "taughtIn": "ftc-accumulation",
+   "dependsOn": [
+    "derivative"
+   ]
+  },
+  {
+   "id": "accumulation-function",
+   "term": "accumulation function",
+   "aliases": [
+    "accumulation functions"
+   ],
+   "taughtIn": "ftc-accumulation",
+   "dependsOn": [
+    "definite-integral"
+   ]
+  },
+  {
+   "id": "ftc",
+   "term": "Fundamental Theorem of Calculus",
+   "aliases": [
+    "fundamental theorem of calculus",
+    "FTC"
+   ],
+   "taughtIn": "ftc-accumulation",
+   "dependsOn": [
+    "accumulation-function",
+    "antiderivative",
+    "chain-rule"
+   ]
+  },
+  {
+   "id": "signed-area",
+   "term": "signed area",
+   "aliases": [
+    "net signed area"
+   ],
+   "taughtIn": "accumulation-behavior",
+   "dependsOn": [
+    "definite-integral",
+    "accumulation-function"
+   ]
+  },
+  {
+   "id": "integral-properties",
+   "term": "properties of definite integrals",
+   "aliases": [
+    "additivity"
+   ],
+   "taughtIn": "integral-properties",
+   "dependsOn": [
+    "definite-integral"
+   ]
+  },
+  {
+   "id": "net-change-theorem",
+   "term": "net change theorem",
+   "aliases": [],
+   "taughtIn": "ftc-definite-integrals",
+   "dependsOn": [
+    "ftc",
+    "accumulated-change"
+   ]
+  },
+  {
+   "id": "indefinite-integral",
+   "term": "indefinite integral",
+   "aliases": [
+    "indefinite integrals",
+    "constant of integration"
+   ],
+   "taughtIn": "antiderivatives",
+   "dependsOn": [
+    "antiderivative"
+   ],
+   "notation": [
+    "\\\\int(?!_)",
+    "\\+\\s*C(?![a-zA-Z])"
+   ]
+  },
+  {
+   "id": "u-substitution",
+   "term": "u-substitution",
+   "aliases": [
+    "u-sub",
+    "change of variables",
+    "substitution method"
+   ],
+   "taughtIn": "u-substitution",
+   "dependsOn": [
+    "indefinite-integral",
+    "chain-rule"
+   ]
+  },
+  {
+   "id": "long-division",
+   "term": "long division",
+   "aliases": [
+    "polynomial long division",
+    "completing the square"
+   ],
+   "taughtIn": "rewriting-integrands",
+   "dependsOn": [
+    "indefinite-integral",
+    "u-substitution",
+    "inverse-trig"
+   ]
+  },
+  {
+   "id": "integration-strategy",
+   "term": "antidifferentiation technique",
+   "aliases": [
+    "antidifferentiation techniques",
+    "integration strategy"
+   ],
+   "taughtIn": "choosing-integration-methods",
+   "dependsOn": [
+    "u-substitution",
+    "long-division"
+   ]
+  },
+  {
+   "id": "differential-equation",
+   "term": "differential equation",
+   "aliases": [
+    "differential equations"
+   ],
+   "taughtIn": "modeling-with-des",
+   "dependsOn": [
+    "derivative"
+   ]
+  },
+  {
+   "id": "proportional",
+   "term": "proportional to",
+   "aliases": [
+    "directly proportional",
+    "constant of proportionality"
+   ],
+   "taughtIn": "modeling-with-des",
+   "dependsOn": []
+  },
+  {
+   "id": "de-solution",
+   "term": "solution to a differential equation",
+   "aliases": [
+    "solutions to a differential equation",
+    "verify a solution"
+   ],
+   "taughtIn": "verifying-solutions",
+   "dependsOn": [
+    "differential-equation"
+   ]
+  },
+  {
+   "id": "slope-field",
+   "term": "slope field",
+   "aliases": [
+    "slope fields",
+    "direction field",
+    "direction fields"
+   ],
+   "taughtIn": "sketching-slope-fields",
+   "dependsOn": [
+    "differential-equation",
+    "slope"
+   ]
+  },
+  {
+   "id": "equilibrium",
+   "term": "equilibrium solution",
+   "aliases": [
+    "equilibrium solutions"
+   ],
+   "taughtIn": "reasoning-with-slope-fields",
+   "dependsOn": [
+    "slope-field",
+    "de-solution"
+   ]
+  },
+  {
+   "id": "separation-of-variables",
+   "term": "separation of variables",
+   "aliases": [
+    "separable",
+    "separate the variables",
+    "general solution",
+    "general solutions"
+   ],
+   "taughtIn": "separation-of-variables",
+   "dependsOn": [
+    "de-solution",
+    "indefinite-integral"
+   ]
+  },
+  {
+   "id": "particular-solution",
+   "term": "particular solution",
+   "aliases": [
+    "particular solutions",
+    "initial condition",
+    "initial conditions",
+    "initial value problem"
+   ],
+   "taughtIn": "particular-solutions",
+   "dependsOn": [
+    "separation-of-variables"
+   ]
+  },
+  {
+   "id": "exponential-model",
+   "term": "exponential model",
+   "aliases": [
+    "exponential models",
+    "growth constant",
+    "decay constant"
+   ],
+   "taughtIn": "exponential-models",
+   "dependsOn": [
+    "particular-solution",
+    "exponential-function",
+    "proportional"
+   ]
+  },
+  {
+   "id": "average-value",
+   "term": "average value of a function",
+   "aliases": [
+    "average value"
+   ],
+   "taughtIn": "average-value",
+   "dependsOn": [
+    "definite-integral",
+    "net-change-theorem"
+   ]
+  },
+  {
+   "id": "displacement",
+   "term": "displacement",
+   "aliases": [
+    "net displacement"
+   ],
+   "taughtIn": "motion-with-integrals",
+   "dependsOn": [
+    "velocity",
+    "definite-integral"
+   ]
+  },
+  {
+   "id": "total-distance",
+   "term": "total distance",
+   "aliases": [
+    "total distance traveled"
+   ],
+   "taughtIn": "motion-with-integrals",
+   "dependsOn": [
+    "speed",
+    "definite-integral"
+   ]
+  },
+  {
+   "id": "rate-in-out",
+   "term": "rate in",
+   "aliases": [
+    "rate out",
+    "inflow rate",
+    "outflow rate"
+   ],
+   "taughtIn": "accumulation-in-context",
+   "dependsOn": [
+    "accumulated-change",
+    "net-change-theorem"
+   ]
+  },
+  {
+   "id": "area-between-curves",
+   "term": "area between curves",
+   "aliases": [
+    "area between two curves",
+    "region bounded by"
+   ],
+   "taughtIn": "area-between-curves-x",
+   "dependsOn": [
+    "definite-integral"
+   ]
+  },
+  {
+   "id": "integrate-in-y",
+   "term": "integrating with respect to y",
+   "aliases": [
+    "right minus left"
+   ],
+   "taughtIn": "area-between-curves-y",
+   "dependsOn": [
+    "area-between-curves",
+    "inverse-function"
+   ]
+  },
+  {
+   "id": "split-integral",
+   "term": "splitting the integral",
+   "aliases": [
+    "split the integral"
+   ],
+   "taughtIn": "area-multiple-crossings",
+   "dependsOn": [
+    "area-between-curves",
+    "integral-properties"
+   ]
+  },
+  {
+   "id": "cross-section",
+   "term": "cross section",
+   "aliases": [
+    "cross sections",
+    "cross-section",
+    "cross-sections",
+    "known cross sections"
+   ],
+   "taughtIn": "cross-sections-squares",
+   "dependsOn": [
+    "definite-integral",
+    "volume-formulas"
+   ]
+  },
+  {
+   "id": "triangle-cross-section",
+   "term": "triangular cross section",
+   "aliases": [
+    "triangular cross sections",
+    "semicircular cross section",
+    "semicircular cross sections"
+   ],
+   "taughtIn": "cross-sections-triangles",
+   "dependsOn": [
+    "cross-section"
+   ]
+  },
+  {
+   "id": "disc-method",
+   "term": "disc method",
+   "aliases": [
+    "disk method",
+    "solid of revolution",
+    "solids of revolution",
+    "axis of rotation",
+    "axis of revolution"
+   ],
+   "taughtIn": "disc-method-axes",
+   "dependsOn": [
+    "cross-section"
+   ]
+  },
+  {
+   "id": "shifted-axis",
+   "term": "revolving about a line",
+   "aliases": [
+    "revolved about the line",
+    "rotated about the line"
+   ],
+   "taughtIn": "disc-method-other-axes",
+   "dependsOn": [
+    "disc-method"
+   ]
+  },
+  {
+   "id": "washer-method",
+   "term": "washer method",
+   "aliases": [
+    "washers",
+    "outer radius",
+    "inner radius"
+   ],
+   "taughtIn": "washer-method-axes",
+   "dependsOn": [
+    "disc-method",
+    "area-between-curves"
+   ]
+  },
+  {
+   "id": "washer-other-axis",
+   "term": "washer about a line",
+   "aliases": [
+    "washers about a line"
+   ],
+   "taughtIn": "washer-method-other-axes",
+   "dependsOn": [
+    "washer-method",
+    "shifted-axis"
+   ]
+  }
+ ],
+ "circularDependencies": [
+  {
+   "id": "concavity-for-linearization",
+   "problem": "Local linearity (4.6) asks whether a tangent line estimate is an over- or underestimate, which follows from the sign of the second derivative, before 5.6 teaches concavity.",
+   "resolution": "pull-forward",
+   "into": [
+    "local-linearity"
+   ],
+   "concepts": [
+    "concave"
+   ],
+   "fullIn": [
+    "concavity"
+   ],
+   "detail": "A short version: where f'' > 0 the graph bends up (concave up) and lies above its tangent lines, so a tangent line estimate is an underestimate; where f'' < 0 it bends down and the estimate is an overestimate. 5.6 owns concavity on intervals and points of inflection."
+  }
+ ]
+}
