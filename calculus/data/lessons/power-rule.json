@@ -1,0 +1,84 @@
+{
+ "topic": "power-rule",
+ "hook": "Working out every derivative from the limit definition is like walking everywhere: it works, but it is slow. After doing $x^2$, $x^3$ and $\\frac{1}{x}$ by hand, a pattern jumps out. Turned into a rule, that pattern gives the derivative of any power of $x$ in one line.",
+ "prereq": [
+  {
+   "q": "$\\frac{1}{x^3}$ written as a power of $x$ is",
+   "options": [
+    "$x^{-3}$",
+    "$x^{3}$",
+    "$-x^{3}$",
+    "$x^{1/3}$"
+   ],
+   "correct": 0,
+   "why": "A power in the denominator moves up with its sign changed: $\\frac{1}{x^n} = x^{-n}$.",
+   "review": "math-exponent-rules"
+  },
+  {
+   "q": "$\\sqrt[3]{x^2}$ written as a power of $x$ is",
+   "options": [
+    "$x^{2/3}$",
+    "$x^{3/2}$",
+    "$x^{6}$",
+    "$x^{-2/3}$"
+   ],
+   "correct": 0,
+   "why": "The root is the denominator of the exponent: $\\sqrt[n]{x^m} = x^{m/n}$.",
+   "review": "math-exponent-rules"
+  },
+  {
+   "q": "By the definition of the derivative, $\\frac{d}{dx}\\left( x^2 \\right)$ is",
+   "options": [
+    "$2x$",
+    "$x$",
+    "$2x^2$",
+    "$x^2$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{(x + h)^2 - x^2}{h} = 2x + h \\to 2x$.",
+   "review": "derivative-definition"
+  }
+ ],
+ "figure": {
+  "figure": "power-rule-slopes",
+  "caption": "The slopes of $f(x) = x^3$ at five points, and the graph of $f'(x) = 3x^2$ below, through the same five slopes."
+ },
+ "chain": [
+  {
+   "cause": "The definition gives $x^2 \\to 2x$, $x^3 \\to 3x^2$ and $x^{-1} \\to -x^{-2}$",
+   "effect": "in each case the exponent comes down in front and the new exponent is one less"
+  },
+  {
+   "cause": "That pattern holds for every real exponent $r$",
+   "effect": "the power rule: $\\frac{d}{dx}\\left( x^r \\right) = r x^{r - 1}$"
+  },
+  {
+   "cause": "A root or a power in a denominator is still a power of $x$",
+   "effect": "rewrite it with a fractional or negative exponent before using the rule"
+  },
+  {
+   "cause": "A variable sits in the exponent, as in $2^x$",
+   "effect": "it is not a power of $x$, and the power rule does not apply"
+  }
+ ],
+ "ideas": [
+  "The <b>power rule</b>: $\\frac{d}{dx}\\left( x^r \\right) = r x^{r - 1}$ for any real number $r$. Bring the exponent down, then subtract 1 from it.",
+  "Rewrite first: $\\sqrt{x} = x^{1/2}$, $\\frac{1}{x^4} = x^{-4}$, $\\frac{1}{\\sqrt[3]{x}} = x^{-1/3}$.",
+  "With negative exponents, \"one less\" means more negative: $-4 - 1 = -5$.",
+  "Special cases: $\\frac{d}{dx}(x) = 1$, and the slope of $x^2$ at $x$ is $2x$.",
+  "The rule needs the variable in the base and a fixed number in the exponent."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{d}{dx}\\left( \\frac{1}{x^4} \\right) = \\frac{1}{4x^3}$: differentiate the denominator.",
+  "right": "Rewrite first: $\\frac{1}{x^4} = x^{-4}$. The power rule gives $-4x^{-5} = -\\frac{4}{x^5}$. The new exponent is $-4 - 1 = -5$, not $-3$, and the sign is negative because the graph falls for $x > 0$."
+ },
+ "check": [
+  "calc-power-rule-1",
+  "calc-power-rule-2",
+  "calc-power-rule-3",
+  "calc-power-rule-4",
+  "calc-power-rule-14",
+  "calc-power-rule-16"
+ ],
+ "summary": "The power rule says $\\frac{d}{dx}\\left( x^r \\right) = r x^{r - 1}$ for every real exponent $r$. Rewrite roots and fractions as powers of $x$ first, subtract 1 carefully with negative and fractional exponents, and remember the rule needs the variable in the base, not in the exponent."
+}

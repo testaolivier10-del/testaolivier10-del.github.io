@@ -1,0 +1,5 @@
+{
+ "average-value": {
+  "def": "The average value of a function $f$ on $[a, b]$ is $\\frac{1}{b - a}\\int_a^b f(x)\\,dx$: the height of the rectangle on $[a, b]$ with the same signed area as the region under $f$. It has the units of $f$."
+ }
+}

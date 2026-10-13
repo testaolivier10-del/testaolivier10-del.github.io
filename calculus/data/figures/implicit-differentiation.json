@@ -1,0 +1,22 @@
+{
+ "implicit-tilted-ellipse": {
+  "file": "figures/implicit-tilted-ellipse.svg",
+  "ext": "svg",
+  "w": 740,
+  "h": 480,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The tilted ellipse x² + xy + y² = 7 in crimson on axes from −4 to 4. A dashed vertical line x = 1 meets it at (1, 2) and (1, −3), so y is not a function of x. A blue tangent line at (1, 2) has slope −4/5."
+ },
+ "implicit-cubic-curve": {
+  "file": "figures/implicit-cubic-curve.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 450,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The curve y³ − xy = 6 in two pieces: an upper piece rising through (1, 2) and (7, 3), and a lower piece below the x-axis with its leftmost point near x = 6.2. The curve never meets the x-axis."
+ }
+}

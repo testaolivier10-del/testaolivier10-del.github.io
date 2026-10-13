@@ -1,0 +1,590 @@
+{
+ "stimuli": {
+  "accumulation-of-change-s1": {
+   "kind": "graph",
+   "title": "The velocity of a toy train",
+   "text": "A toy train moves back and forth on a straight track. Its velocity $v(t)$, in feet per second, is positive when it moves forward. The graph is made of line segments.",
+   "plot": {
+    "label": "Graph of the velocity v(t) of a toy train in feet per second for t from 0 to 12 seconds, made of line segments",
+    "width": 420,
+    "height": 270,
+    "x": [
+     0,
+     12.5
+    ],
+    "y": [
+     -3,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "t (seconds)",
+    "yLabel": "v(t) (feet per second)",
+    "curves": [
+     {
+      "fn": "2x",
+      "domain": [
+       0,
+       2
+      ],
+      "cls": "s1",
+      "label": "v"
+     },
+     {
+      "fn": "4",
+      "domain": [
+       2,
+       6
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "16 - 2x",
+      "domain": [
+       6,
+       8
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "8 - x",
+      "domain": [
+       8,
+       10
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "-2",
+      "domain": [
+       10,
+       12
+      ],
+      "cls": "s1"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       0
+      ]
+     },
+     {
+      "at": [
+       2,
+       4
+      ]
+     },
+     {
+      "at": [
+       6,
+       4
+      ]
+     },
+     {
+      "at": [
+       8,
+       0
+      ]
+     },
+     {
+      "at": [
+       10,
+       -2
+      ]
+     },
+     {
+      "at": [
+       12,
+       -2
+      ]
+     }
+    ]
+   }
+  },
+  "accumulation-of-change-s2": {
+   "kind": "table",
+   "title": "Pumping water into a pool",
+   "text": "A pump changes the water in a pool at a constant rate during each period below. A negative rate means the pump is draining the pool. At $t = 0$ the pool holds 8000 gallons.",
+   "table": {
+    "caption": "Rate of change of the water in the pool, in gallons per hour, during each period of time t, in hours",
+    "cols": [
+     "Period (hours)",
+     "$0 \\le t < 2$",
+     "$2 \\le t < 5$",
+     "$5 \\le t \\le 6$"
+    ],
+    "rows": [
+     [
+      "Rate (gallons per hour)",
+      "300",
+      "450",
+      "$-120$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-accumulation-of-change-1",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "accumulation-of-change-s1",
+   "q": "By how many feet does the train's position change from $t = 0$ to $t = 6$ seconds?",
+   "numeric": {
+    "answer": 20,
+    "unit": "feet",
+    "askUnit": true,
+    "units": [
+     "ft",
+     "foot"
+    ],
+    "mistakes": [
+     {
+      "value": 24,
+      "why": "That is the top speed, 4 feet per second, times 6 seconds. The train only reaches that speed at $t = 2$; for the first 2 seconds the region under the graph is a triangle, not a rectangle."
+     },
+     {
+      "value": 16,
+      "why": "That is only the rectangle from $t = 2$ to $t = 6$. Add the triangle from $t = 0$ to $t = 2$: $\\frac{1}{2}(2)(4) = 4$ feet."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The change in position is the area under the velocity graph. Triangle from 0 to 2: $\\frac{1}{2}(2)(4) = 4$. Rectangle from 2 to 6: $4 \\cdot 4 = 16$. Total: $4 + 16 = 20$ feet."
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-2",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "accumulation-of-change-s1",
+   "q": "What are the units of the area of a region between this graph and the t-axis?",
+   "options": [
+    "feet per second",
+    "feet per second per second",
+    "seconds",
+    "feet"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Area is height times width: (feet per second) $\\times$ (seconds) = feet.",
+    "options": [
+     "That is the unit of the height of the graph, the velocity. The area multiplies height by width, so the seconds cancel.",
+     "That is the unit of the slope of the velocity graph (acceleration), which divides by seconds instead of multiplying.",
+     "That is the unit of the width only. Area is height times width.",
+     "Feet per second times seconds is feet: the area measures a change in position."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-3",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "accumulation-of-change-s1",
+   "q": "Find the net change in the train's position, in feet, from $t = 0$ to $t = 12$ seconds.",
+   "numeric": {
+    "answer": 18,
+    "unit": "feet",
+    "askUnit": true,
+    "units": [
+     "ft",
+     "foot"
+    ],
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "You added the area below the axis as if the train were still moving forward. From $t = 8$ to $t = 12$ the velocity is negative: the train backs up 6 feet, so subtract it."
+     },
+     {
+      "value": 24,
+      "why": "That is the change only up to $t = 8$. From $t = 8$ to $t = 12$ the train backs up: a triangle of area 2 and a rectangle of area 4, 6 feet in all. $24 - 6 = 18$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Forward from 0 to 8: $4 + 16 + 4 = 24$ feet. Backward from 8 to 12: triangle $\\frac{1}{2}(2)(2) = 2$ plus rectangle $2 \\cdot 2 = 4$, so 6 feet. Net change: $24 - 6 = 18$ feet."
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-4",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "accumulation-of-change-s1",
+   "q": "At what time in the interval from 0 to 12 seconds is the train farthest forward of where it started?",
+   "options": [
+    "$t = 4$, in the middle of the time at top speed",
+    "$t = 8$, where $v$ turns from positive to negative",
+    "$t = 6$, where the velocity starts to decrease",
+    "$t = 12$, the right end of the time interval"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The position grows while $v(t) > 0$ (from 0 to 8) and shrinks while $v(t) < 0$ (from 8 to 12). It is largest at $t = 8$.",
+    "options": [
+     "The flat part is where the speed is largest, but the train keeps moving forward after t = 4, so its position keeps growing.",
+     "Correct: forward motion adds to the position until t = 8, and after that every second takes some back.",
+     "From 6 to 8 the velocity is smaller but still positive, so the train is still moving forward and its position still grows.",
+     "After t = 8 the velocity is negative, so the train backs up: its position at 12 is 6 feet less than at 8."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-5",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "accumulation-of-change-s2",
+   "q": "How many gallons does the pump add to the pool from $t = 0$ to $t = 5$ hours?",
+   "numeric": {
+    "answer": 1950,
+    "unit": "gallons",
+    "askUnit": true,
+    "units": [
+     "gal",
+     "gallon"
+    ],
+    "mistakes": [
+     {
+      "value": 750,
+      "why": "You added the two rates, 300 + 450. A rate must be multiplied by how long it lasts: 300 for 2 hours and 450 for 3 hours."
+     },
+     {
+      "value": 2250,
+      "why": "That uses 450 gallons per hour for all 5 hours. For the first 2 hours the rate was only 300."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each period is a rectangle under the rate graph: $300 \\cdot 2 + 450 \\cdot 3 = 600 + 1350 = 1950$ gallons."
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-6",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "accumulation-of-change-s2",
+   "q": "How many gallons are in the pool at $t = 6$ hours?",
+   "options": [
+    "1830 gallons",
+    "10,070 gallons",
+    "9950 gallons",
+    "9830 gallons"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Amount at 6 = starting amount + net change $= 8000 + (600 + 1350 - 120) = 9830$ gallons.",
+    "options": [
+     "That is only the net change. The pool started with 8000 gallons; add the change to the starting amount.",
+     "This adds the 120 gallons of the last hour, but the rate is negative then: the pump drains the pool.",
+     "This stops at t = 5. The last hour drains 120 gallons.",
+     "Correct: 8000 + 600 + 1350 - 120."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-7",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "accumulation-of-change-s2",
+   "q": "Which expression gives the change in the amount of water, in gallons, from $t = 2$ to $t = 6$?",
+   "options": [
+    "$(450 - 120) \\cdot 4$",
+    "$450 \\cdot (5 - 2) + 120 \\cdot (6 - 5)$",
+    "$450 \\cdot 3 + (-120) \\cdot 1$",
+    "$450 \\cdot 4 - 120$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Gallons = (gallons per hour) $\\times$ (hours) for each period: $450(3) + (-120)(1) = 1230$ gallons.",
+    "options": [
+     "Subtracting the rates first treats both as lasting 4 hours. Multiply each rate by its own time.",
+     "This adds the 120 gallons of the last hour. The rate is negative then: the pump drains the pool, so that term is subtracted.",
+     "Correct: each rate times the length of its period, with the draining hour negative.",
+     "The rate 450 lasts only 3 hours (from 2 to 5), not 4."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-8",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "accumulation-of-change-s2",
+   "q": "On a graph of the rate against time, the region for $5 \\le t \\le 6$ lies below the t-axis and has area 120. What does it mean?",
+   "options": [
+    "The pool gains 120 gallons, since an area is positive",
+    "The pool loses 120 gallons from t = 5 to t = 6 hours",
+    "The pool holds 120 gallons at t = 6 hours",
+    "The pump drains 120 gallons per hour at t = 6"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Area under a rate graph is an amount of change; a region below the axis is a decrease. From $t = 5$ to $t = 6$ the pool loses 120 gallons.",
+    "options": [
+     "A region below the axis comes from a negative rate, so the amount decreases.",
+     "Correct: area means gallons, and below the axis means the amount goes down.",
+     "The area is a change over the hour, not the amount in the pool.",
+     "That is the height of the graph (a rate). The area is gallons, a rate times a time."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-9",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "A drug enters the bloodstream at a rate $R(t)$, in milligrams per hour, where $t$ is in hours. What does the area under the graph of $R$ from $t = 0$ to $t = 3$ measure?",
+   "options": [
+    "the milligrams of drug that enter during those 3 hours",
+    "the rate at which the drug enters at t = 3 hours",
+    "how fast the rate of entry itself changes over those 3 hours",
+    "the number of hours the drug takes to act"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The area under a rate graph is the amount accumulated: (milligrams per hour) $\\times$ (hours) = milligrams.",
+    "options": [
+     "Correct: milligrams per hour times hours gives milligrams.",
+     "That is the height R(3), in milligrams per hour, not an area.",
+     "That is the slope of the graph of R, in milligrams per hour per hour.",
+     "Hours are only the width; the area multiplies the height by the width."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-10",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A cart starts from rest and its velocity is $v(t) = 3t$ meters per second for $0 \\le t \\le 6$ seconds. How many meters does it move forward in those 6 seconds?",
+   "numeric": {
+    "answer": 54,
+    "unit": "meters",
+    "askUnit": true,
+    "units": [
+     "m",
+     "meter"
+    ],
+    "mistakes": [
+     {
+      "value": 108,
+      "why": "That is the rectangle $18 \\times 6$. The region under $v(t) = 3t$ is a triangle: take half."
+     },
+     {
+      "value": 18,
+      "why": "That is $v(6)$, the velocity at the end, in meters per second. The distance moved is the area under the graph."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The graph of $v$ is a line from $(0, 0)$ to $(6, 18)$, so the region under it is a triangle: $\\frac{1}{2}(6)(18) = 54$ meters."
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-11",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Tank A fills at a constant 5 liters per minute. Tank B fills at a rate that grows steadily from 0 to 10 liters per minute over the same 4 minutes. Which tank gains more water in those 4 minutes?",
+   "options": [
+    "Tank A, because its rate is larger at the start",
+    "It depends on how much water each tank held at first",
+    "They gain the same amount, 20 liters each",
+    "Tank B, because its rate reaches 10 liters per minute"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A: $5 \\cdot 4 = 20$ liters. B: a triangle, $\\frac{1}{2}(4)(10) = 20$ liters. The amounts gained are equal.",
+    "options": [
+     "A leads early, but B catches up. Compare whole areas, not rates at one time.",
+     "The question asks for the amount gained, which is the area under each rate graph, not the amount held.",
+     "Correct: a 4 by 5 rectangle and a triangle with base 4 and height 10 both have area 20.",
+     "B ends faster, but it starts at 0. Compare areas: B has a triangle of area 20, the same as the rectangle for A."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-12",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Water flows into or out of a tank at a rate $r(t)$ liters per minute, positive when water enters. From $t = 0$ to $t = 10$, the regions between the graph of $r$ and the t-axis have area 14 above the axis and 5 below. The tank held 30 liters at $t = 0$. How much does it hold at $t = 10$?",
+   "options": [
+    "9 liters",
+    "39 liters",
+    "49 liters",
+    "44 liters"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Net change = area above minus area below $= 14 - 5 = 9$ liters. Amount at 10 = $30 + 9 = 39$ liters.",
+    "options": [
+     "That is the net change alone. Add it to the 30 liters already in the tank.",
+     "Correct: 30 + 14 - 5.",
+     "This adds the 5 liters, but the region below the axis is water leaving the tank.",
+     "This ignores the 5 liters that drain out."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-13",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The rate of change of the temperature of a cooling oven is negative for all $t$ between 0 and 20 minutes. What can you say about the temperature over that time?",
+   "options": [
+    "It falls, by the area between the graph and the t-axis",
+    "It rises, because the area of any region is a positive number",
+    "It is a negative number of degrees at t = 20",
+    "It stays the same, since the rate has one sign"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A negative rate lowers the amount. The size of the drop, in degrees, is the area of the region between the rate graph and the t-axis.",
+    "options": [
+     "Correct: the region lies below the axis, so its area is a decrease in degrees.",
+     "The size of the region is positive, but it lies below the axis, which means the temperature falls.",
+     "The rate tells the change, not the value. The oven can still be hot after it cools for a while.",
+     "A rate with one sign still changes the amount: a negative rate lowers it steadily."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-14",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Oil leaks from a pipe at a rate that rises steadily from 2 liters per minute at $t = 0$ to 8 liters per minute at $t = 6$ minutes. How many liters leak in those 6 minutes?",
+   "numeric": {
+    "answer": 30,
+    "unit": "liters",
+    "askUnit": true,
+    "units": [
+     "L",
+     "liter",
+     "litres"
+    ],
+    "mistakes": [
+     {
+      "value": 48,
+      "why": "That uses the largest rate, 8, for all 6 minutes. The rate starts at 2, so the region is a trapezoid, not a tall rectangle."
+     },
+     {
+      "value": 12,
+      "why": "That uses the starting rate, 2, for all 6 minutes. The rate climbs to 8, so more leaks."
+     },
+     {
+      "value": 60,
+      "why": "That is $(2 + 8) \\cdot 6$. The area of a trapezoid is the average of the two heights times the width: halve it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The rate graph is a line from $(0, 2)$ to $(6, 8)$; the region under it is a trapezoid with area $\\frac{2 + 8}{2} \\cdot 6 = 30$ liters."
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-15",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The rate of change of the temperature of a cup of soup is $H(t)$ degrees Fahrenheit per minute, $t$ in minutes. What does the area under the graph of $H$ from $t = 0$ to $t = 10$ tell you, if $H(t) > 0$ there?",
+   "options": [
+    "how fast the temperature changes at t = 10 minutes",
+    "the number of degrees per minute that the soup gains on average",
+    "how many degrees the soup warms from t = 0 to t = 10",
+    "the temperature of the soup at t = 10 minutes"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Area under a rate graph = accumulated change. Here: degrees Fahrenheit per minute $\\times$ minutes = degrees Fahrenheit gained over the 10 minutes.",
+    "options": [
+     "That is H(10), the height of the graph, in degrees per minute.",
+     "That would divide a change by the 10 minutes; the area itself is the change in degrees.",
+     "Correct: degrees per minute times minutes gives a change in degrees.",
+     "The area is a change. The temperature at 10 also needs the starting temperature."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-of-change-16",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cyclist rides on a straight path. Her velocity is positive from $t = 0$ to $t = 5$ minutes, where the region under the velocity graph has area 30 meters, and negative from $t = 5$ to $t = 7$, where the region has area 6 meters. Where is she at $t = 7$ compared with her starting point?",
+   "options": [
+    "30 meters ahead",
+    "24 meters ahead",
+    "36 meters ahead",
+    "6 meters behind"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Change in position = area above the axis minus area below $= 30 - 6 = 24$ meters, so she is 24 meters ahead of her start.",
+    "options": [
+     "This is where she is at t = 5. She then rides back 6 meters.",
+     "Correct: 30 meters forward, then 6 meters back.",
+     "This counts the 6 meters as forward. Negative velocity means she rides back toward the start.",
+     "The 6 meters back come after 30 meters forward; she is still ahead of where she began."
+    ]
+   }
+  }
+ ]
+}

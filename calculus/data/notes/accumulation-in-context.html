@@ -1,0 +1,55 @@
+<p>Many exam questions are about a container: a tank, a reservoir, a museum, a pile of gravel, a driveway under snow. Something comes in at one rate and goes out at another. The questions are always the same few. How much is there at a given time? Is it going up or down right now? When is there the most? This page gives one equation that answers all of them.</p>
+
+<h2>Rate in, rate out</h2>
+<p>Call the <b>rate in</b> $R(t)$ (water entering, people arriving, snow falling) and the <b>rate out</b> $D(t)$ (water draining, people leaving, snow melting). The amount $A(t)$ changes at the difference:</p>
+<p>$$A'(t) = R(t) - D(t).$$</p>
+<p>So at any moment, the amount is increasing when $R(t) > D(t)$ and decreasing when $R(t) < D(t)$. Notice what does <i>not</i> matter: whether $R$ itself is rising, or how big $R$ is on its own. Only the comparison counts.</p>
+
+<h2>The amount at a time</h2>
+<p>Integrate the net rate and add what was there at the start:</p>
+<p>$$A(t) = A(a) + \int_a^t \big(R(s) - D(s)\big)\,ds.$$</p>
+<p>The integral is the net change; the first term is the starting amount. Leaving out the starting amount is the most common lost point in these questions.</p>
+<figure id="fig-inout" data-fig="rate-in-out"><figcaption>Rate in $R(t) = 10 + 3\sin\left(\frac{\pi t}{6}\right)$ and rate out $D(t) = 4 + t$, in liters per minute. Green: the amount rises. Vermillion: it falls.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1 (calculator).</b> A tank holds 50 liters at $t = 0$. Water enters at $R(t) = 10 + 3\sin\left(\frac{\pi t}{6}\right)$ and leaves at $D(t) = 4 + t$ liters per minute, $0 \le t \le 12$. (a) How much water is in the tank at $t = 9$? (b) Is the amount increasing or decreasing at $t = 9$? (c) What is the greatest amount?</p>
+<p>(a) $A(9) = 50 + \int_0^9 \big(R(t) - D(t)\big)\,dt \approx 50 + 19.230 = 69.230$ liters.</p>
+<p>(b) $A'(9) = R(9) - D(9) = 7 - 13 = -6 < 0$, so the amount is decreasing, at 6 liters per minute.</p>
+<p>(c) $A'(t) = R(t) - D(t) = 0$ on $(0, 12)$ only at $t = 6$, where $A'$ changes from positive to negative. Candidates: $A(0) = 50$, $A(6) \approx 79.459$, $A(12) \approx 50$. The greatest amount is about 79.459 liters, at $t = 6$.</p>
+</div>
+<p>In (c), the sign change alone shows a relative maximum at $t = 6$. For the absolute maximum on the closed interval, compare with the endpoints: the candidates test.</p>
+
+<h2>From a table</h2>
+<p>When the rate is only known at a few times, estimate the integral with a Riemann or trapezoidal sum, using the table's own widths. They are often unequal.</p>
+<div class="worked">
+<p><b>Worked example 2 (no calculator).</b> Visitors enter a museum at the rates in the table. 25 visitors are inside at $t = 0$, and visitors leave at a constant 70 people per hour. Estimate the number inside at $t = 8$.</p>
+<table>
+<thead><tr><th>$t$ (hours)</th><th>0</th><th>2</th><th>3</th><th>5</th><th>8</th></tr></thead>
+<tbody><tr><td>$E(t)$ (people per hour)</td><td>60</td><td>110</td><td>150</td><td>90</td><td>30</td></tr></tbody>
+</table>
+<p>Trapezoidal sum: $2 \cdot \frac{60 + 110}{2} + 1 \cdot \frac{110 + 150}{2} + 2 \cdot \frac{150 + 90}{2} + 3 \cdot \frac{90 + 30}{2} = 170 + 130 + 240 + 180 = 720$ people entered.</p>
+<p>Leaving: $\int_0^8 70\,dt = 560$ people.</p>
+<p>Amount: $25 + 720 - 560 = 185$ people inside at $t = 8$ (an estimate).</p>
+</div>
+
+<h2>Units and interpretations</h2>
+<p>An integral of a rate carries the accumulated unit. Gallons per hour integrated over hours gives gallons; people per hour over hours gives people. The derivative of an amount carries the rate unit; the derivative of a rate carries "per hour per hour".</p>
+<p>When asked what an integral means, name three things: the quantity, its units and the interval. For example, $\int_0^6 D(t)\,dt = 42$ means "42 liters of water leave the tank during the first 6 minutes." Not "the tank holds 42 liters", and not "the water drops by 42 liters": water was also coming in.</p>
+<table>
+<thead><tr><th>Expression</th><th>Meaning</th><th>Units (rates in liters per minute)</th></tr></thead>
+<tbody>
+<tr><td>$R(t) - D(t)$</td><td>how fast the amount changes at time $t$</td><td>liters per minute</td></tr>
+<tr><td>$\int_a^b R(t)\,dt$</td><td>amount that comes in from $a$ to $b$</td><td>liters</td></tr>
+<tr><td>$\int_a^b (R(t) - D(t))\,dt$</td><td>net change in the amount from $a$ to $b$</td><td>liters</td></tr>
+<tr><td>$A(a) + \int_a^b (R(t) - D(t))\,dt$</td><td>amount at time $b$</td><td>liters</td></tr>
+</tbody>
+</table>
+
+<h2>Common slips</h2>
+<ul>
+<li>Dropping the starting amount.</li>
+<li>Adding the rate out instead of subtracting it.</li>
+<li>Deciding "increasing" from $R'(t) > 0$ instead of from $R(t) - D(t) > 0$.</li>
+<li>Finding the time of the maximum and stopping: the question may ask for the amount.</li>
+<li>Rate units on an amount: an integral of a rate is never "per minute".</li>
+</ul>

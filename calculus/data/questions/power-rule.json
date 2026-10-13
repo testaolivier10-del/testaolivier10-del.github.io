@@ -1,0 +1,570 @@
+{
+ "stimuli": {
+  "power-rule-s1": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = x^3$ and its tangent line at $x = 1$",
+   "plot": {
+    "label": "Graph of f(x) = x cubed from x = -2 to 2, with the dashed line tangent to it at (1, 1), which crosses the y-axis at -2",
+    "x": [
+     -2.2,
+     2.2
+    ],
+    "y": [
+     -5,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^3",
+      "domain": [
+       -2.2,
+       2.2
+      ],
+      "label": "f"
+     }
+    ],
+    "lines": [
+     {
+      "point": [
+       1,
+       1
+      ],
+      "slope": 3,
+      "cls": "s2",
+      "dashed": true
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       1
+      ],
+      "label": "(1, 1)"
+     },
+     {
+      "at": [
+       -1,
+       -1
+      ]
+     }
+    ]
+   }
+  },
+  "power-rule-s2": {
+   "kind": "table",
+   "title": "Four functions, rewritten as powers of $x$",
+   "table": {
+    "caption": "Each function and the same function written as a power of $x$, for $x > 0$",
+    "cols": [
+     "Function",
+     "As a power of $x$"
+    ],
+    "rows": [
+     [
+      "$a(x) = \\sqrt{x}$",
+      "$x^{1/2}$"
+     ],
+     [
+      "$b(x) = \\frac{1}{x^2}$",
+      "$x^{-2}$"
+     ],
+     [
+      "$c(x) = \\sqrt[3]{x^2}$",
+      "$x^{2/3}$"
+     ],
+     [
+      "$d(x) = \\frac{1}{\\sqrt{x}}$",
+      "$x^{-1/2}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-power-rule-1",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "power-rule-s1",
+   "q": "Use the power rule to find $f'(-2)$ for $f(x) = x^3$.",
+   "numeric": {
+    "answer": 12,
+    "mistakes": [
+     {
+      "value": -12,
+      "why": "Square first: $(-2)^2 = 4$, so $3(-2)^2 = 12$. The graph rises at $x = -2$, so the slope is positive."
+     },
+     {
+      "value": -8,
+      "why": "That is $f(-2) = (-2)^3$, the height. The slope is $f'(-2) = 3(-2)^2$."
+     },
+     {
+      "value": 6,
+      "why": "The power rule gives $3x^2$, not $3x$: $3(-2)^2 = 12$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 3x^2$, so $f'(-2) = 3(4) = 12$."
+   }
+  },
+  {
+   "id": "calc-power-rule-2",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "power-rule-s1",
+   "q": "The cubic $f(x) = x^3$ passes through $(1, 1)$. Using the power rule for the slope there, which line touches the cubic at that point?",
+   "options": [
+    "$y = 1 + 3(x - 1)$",
+    "$y = 3 + 1(x - 1)$",
+    "$y = 1 + 3x^2(x - 1)$",
+    "$y = 1 + 3(x + 1)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Point $(1, 1)$ and slope $f'(1) = 3(1)^2 = 3$. It is $y = 3x - 2$, crossing the $y$-axis at $-2$ as in the graph.",
+    "options": [
+     "Height 1, slope 3.",
+     "The height and the slope are swapped.",
+     "The slope of a line is a number: evaluate $f'(x) = 3x^2$ at $x = 1$.",
+     "Point-slope form uses $x - 1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-power-rule-3",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-rule-s1",
+   "q": "At which values of $x$ is the slope of the graph of $f(x) = x^3$ equal to 12?",
+   "options": [
+    "$x = -2$ and $x = 2$",
+    "$x = 2$",
+    "$x = -4$ and $x = 4$",
+    "$x = \\sqrt[3]{12}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Solve $f'(x) = 3x^2 = 12$: $x^2 = 4$, so $x = \\pm 2$. The graph is equally steep at $-2$ and 2.",
+    "options": [
+     "Both square roots of 4.",
+     "$x = -2$ works too: $3(-2)^2 = 12$.",
+     "From $3x^2 = 12$, $x^2 = 4$; take the square root.",
+     "That solves $x^3 = 12$, a height of 12, not a slope of 12."
+    ]
+   }
+  },
+  {
+   "id": "calc-power-rule-4",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "power-rule-s1",
+   "q": "How do the slopes of the graph of $f(x) = x^3$ at $x = -1$ and $x = 1$ compare?",
+   "options": [
+    "They are equal: both are 3.",
+    "They are opposites: $-3$ and 3.",
+    "The slope at $x = -1$ is less, because the graph is lower there.",
+    "They are equal: both are 1."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f'(x) = 3x^2$ gives $3(-1)^2 = 3$ and $3(1)^2 = 3$. The heights $-1$ and 1 are opposites; the slopes are not.",
+    "options": [
+     "Squaring removes the sign of $x$.",
+     "The heights are opposites; $f'$ squares $x$, so the slopes match.",
+     "Height does not set slope; the graph rises at both points with slope 3.",
+     "That is $x^2$ at $\\pm 1$; the power rule also brings down the 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-power-rule-5",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "power-rule-s2",
+   "q": "Find $a'(x)$ for $a(x) = \\sqrt{x}$.",
+   "expr": {
+    "answer": "1/(2sqrt(x))",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.25,
+     4
+    ],
+    "lhs": "a'(x) =",
+    "mistakes": [
+     {
+      "expr": "(1/2)x^(3/2)",
+      "why": "Lower the exponent, do not raise it: $\\frac{1}{2} - 1 = -\\frac{1}{2}$, so $\\frac{1}{2}x^{-1/2}$."
+     },
+     {
+      "expr": "(2/3)x^(3/2)",
+      "why": "That raises the exponent and divides, which undoes a derivative. The power rule brings $\\frac{1}{2}$ down and lowers the exponent by 1."
+     },
+     {
+      "expr": "sqrt(x)/2",
+      "why": "The exponent must go down by 1: $x^{1/2 - 1} = x^{-1/2} = \\frac{1}{\\sqrt{x}}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a(x) = x^{1/2}$, so $a'(x) = \\frac{1}{2}x^{-1/2} = \\frac{1}{2\\sqrt{x}}$."
+   }
+  },
+  {
+   "id": "calc-power-rule-6",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-rule-s2",
+   "q": "Find $b'(x)$ for $b(x) = \\frac{1}{x^2}$.",
+   "expr": {
+    "answer": "-2x^(-3)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     3
+    ],
+    "lhs": "b'(x) =",
+    "mistakes": [
+     {
+      "expr": "-2x^(-1)",
+      "why": "Lowering $-2$ by one gives $-3$, not $-1$: with negative exponents, \"one less\" is more negative."
+     },
+     {
+      "expr": "2x^(-3)",
+      "why": "The exponent $-2$ comes down as the coefficient, so the sign is negative. The graph of $\\frac{1}{x^2}$ falls for $x > 0$."
+     },
+     {
+      "expr": "1/(2x)",
+      "why": "Do not differentiate the denominator. Rewrite $\\frac{1}{x^2} = x^{-2}$ first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$b(x) = x^{-2}$, so $b'(x) = -2x^{-3} = -\\frac{2}{x^3}$."
+   }
+  },
+  {
+   "id": "calc-power-rule-7",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-rule-s2",
+   "q": "Find $c'(x)$ for $c(x) = \\sqrt[3]{x^2}$.",
+   "expr": {
+    "answer": "(2/3)x^(-1/3)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.25,
+     4
+    ],
+    "lhs": "c'(x) =",
+    "mistakes": [
+     {
+      "expr": "(2/3)x^(1/3)",
+      "why": "$\\frac{2}{3} - 1 = -\\frac{1}{3}$, not $\\frac{1}{3}$. Write 1 as $\\frac{3}{3}$ before subtracting."
+     },
+     {
+      "expr": "(3/2)x^(1/2)",
+      "why": "That treats $\\sqrt[3]{x^2}$ as $x^{3/2}$. The root is the denominator: $\\sqrt[3]{x^2} = x^{2/3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$c(x) = x^{2/3}$, so $c'(x) = \\frac{2}{3}x^{-1/3} = \\frac{2}{3\\sqrt[3]{x}}$."
+   }
+  },
+  {
+   "id": "calc-power-rule-8",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "power-rule-s2",
+   "q": "Find $d'(x)$ for $d(x) = \\frac{1}{\\sqrt{x}}$.",
+   "expr": {
+    "answer": "-(1/2)x^(-3/2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.25,
+     4
+    ],
+    "lhs": "d'(x) =",
+    "mistakes": [
+     {
+      "expr": "-(1/2)x^(1/2)",
+      "why": "$-\\frac{1}{2} - 1 = -\\frac{3}{2}$. Moving one less from a negative exponent makes it more negative."
+     },
+     {
+      "expr": "(1/2)x^(-3/2)",
+      "why": "The exponent $-\\frac{1}{2}$ comes down as the coefficient, so the derivative is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$d(x) = x^{-1/2}$, so $d'(x) = -\\frac{1}{2}x^{-3/2} = -\\frac{1}{2x^{3/2}}$."
+   }
+  },
+  {
+   "id": "calc-power-rule-9",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Let $f(x) = x^5$. Find $f'(-1)$.",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": -5,
+      "why": "$(-1)^4 = 1$: an even power of $-1$ is positive, so $5(-1)^4 = 5$."
+     },
+     {
+      "value": -1,
+      "why": "That is $f(-1)$, the height. The slope is $f'(-1) = 5(-1)^4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 5x^4$, so $f'(-1) = 5(-1)^4 = 5$."
+   }
+  },
+  {
+   "id": "calc-power-rule-10",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For which function does the power rule NOT give the derivative, even after rewriting?",
+   "options": [
+    "$f(x) = 2^x$",
+    "$f(x) = \\sqrt[4]{x}$",
+    "$f(x) = \\frac{1}{x^3}$",
+    "$f(x) = x^{5/3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In $2^x$ the variable is the exponent and the base is fixed. The power rule needs the opposite: $x$ in the base, a fixed exponent.",
+    "options": [
+     "An exponential function, not a power of $x$.",
+     "$\\sqrt[4]{x} = x^{1/4}$, a power of $x$.",
+     "$\\frac{1}{x^3} = x^{-3}$, a power of $x$.",
+     "Already a power of $x$ with a fixed exponent."
+    ]
+   }
+  },
+  {
+   "id": "calc-power-rule-11",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rewrite $y = \\frac{1}{x}$ as $x^{-1}$ and use the power rule. Which line is tangent to this hyperbola where $x = 2$?",
+   "options": [
+    "$y = \\frac{1}{2} - \\frac{1}{4}(x - 2)$",
+    "$y = \\frac{1}{2} + \\frac{1}{4}(x - 2)$",
+    "$y = \\frac{1}{2} - 2(x - 2)$",
+    "$y = 2 - \\frac{1}{4}(x - 2)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$y = x^{-1}$ gives $y' = -x^{-2}$, so the slope at 2 is $-\\frac{1}{4}$ and the point is $\\left( 2, \\frac{1}{2} \\right)$.",
+    "options": [
+     "Point $\\left( 2, \\frac{1}{2} \\right)$, slope $-\\frac{1}{4}$.",
+     "The sign: the power rule brings down $-1$, and the graph of $\\frac{1}{x}$ falls.",
+     "The slope is $-\\frac{1}{x^2}$ at 2, which is $-\\frac{1}{4}$, not $-2$.",
+     "The height at $x = 2$ is $\\frac{1}{2}$, not 2."
+    ]
+   }
+  },
+  {
+   "id": "calc-power-rule-12",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "At what value of $x$ does the graph of $y = \\sqrt{x}$ have slope $\\frac{1}{6}$?",
+   "numeric": {
+    "answer": 9,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That is $\\sqrt{x}$. From $\\frac{1}{2\\sqrt{x}} = \\frac{1}{6}$, $\\sqrt{x} = 3$, so square: $x = 9$."
+     },
+     {
+      "value": 36,
+      "why": "The slope is $\\frac{1}{2\\sqrt{x}}$, with a 2: $2\\sqrt{x} = 6$ gives $\\sqrt{x} = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y' = \\frac{1}{2}x^{-1/2} = \\frac{1}{2\\sqrt{x}}$. Setting $\\frac{1}{2\\sqrt{x}} = \\frac{1}{6}$ gives $\\sqrt{x} = 3$, so $x = 9$."
+   }
+  },
+  {
+   "id": "calc-power-rule-13",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "Find $\\frac{d}{dx}\\left( x^{10} \\right)$.",
+   "expr": {
+    "answer": "10x^9",
+    "vars": [
+     "x"
+    ],
+    "lhs": "\\frac{d}{dx}\\left( x^{10} \\right) =",
+    "mistakes": [
+     {
+      "expr": "10x^10",
+      "why": "Bring the 10 down and lower the exponent by one: $x^{9}$."
+     },
+     {
+      "expr": "x^9",
+      "why": "The exponent 10 also comes down as a coefficient: $10x^9$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Power rule: $10x^{10 - 1} = 10x^9$."
+   }
+  },
+  {
+   "id": "calc-power-rule-14",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes $\\frac{d}{dx}\\left( \\frac{1}{x^4} \\right) = \\frac{1}{4x^3}$. What is the correct derivative?",
+   "options": [
+    "$-\\frac{4}{x^5}$",
+    "$-\\frac{4}{x^3}$",
+    "$\\frac{4}{x^5}$",
+    "$-\\frac{1}{4x^5}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rewrite $\\frac{1}{x^4} = x^{-4}$; the power rule gives $-4x^{-5} = -\\frac{4}{x^5}$. The student differentiated the denominator instead.",
+    "options": [
+     "Coefficient $-4$, exponent $-5$.",
+     "$-4 - 1 = -5$, not $-3$.",
+     "The coefficient is the exponent, $-4$, so the derivative is negative.",
+     "The exponent comes down as a factor: $-4$, not $-\\frac{1}{4}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-power-rule-15",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the slope of the graph of $y = x^4$ at $x = -2$?",
+   "options": [
+    "$-32$",
+    "$32$",
+    "$16$",
+    "$-8$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$y' = 4x^3$, so the slope is $4(-2)^3 = 4(-8) = -32$.",
+    "options": [
+     "$4(-2)^3$.",
+     "An odd power of a negative number is negative: $(-2)^3 = -8$.",
+     "That is $y$ at $x = -2$, the height.",
+     "That is $4(-2)$; the power rule gives $4x^3$, not $4x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-power-rule-16",
+   "unit": "unit-2",
+   "topic": "power-rule",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Let $f(x) = \\frac{x^3 \\cdot x^4}{x^2}$ for $x \\ne 0$. Find $f'(x)$.",
+   "expr": {
+    "answer": "5x^4",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     2
+    ],
+    "lhs": "f'(x) =",
+    "mistakes": [
+     {
+      "expr": "6x^4",
+      "why": "That differentiates each piece separately: $\\frac{3x^2 \\cdot 4x^3}{2x}$. Simplify first: $\\frac{x^3 \\cdot x^4}{x^2} = x^5$."
+     },
+     {
+      "expr": "x^5",
+      "why": "That is $f(x)$ simplified. Now apply the power rule."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Exponent rules first: $\\frac{x^{3 + 4}}{x^2} = x^5$. Then $f'(x) = 5x^4$."
+   }
+  }
+ ]
+}

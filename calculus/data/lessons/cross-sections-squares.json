@@ -1,0 +1,51 @@
+{
+ "topic": "cross-sections-squares",
+ "hook": "Slice a loaf of bread and every slice is a flat shape with a tiny thickness. Know the area of each slice and you know the loaf: add up area times thickness. Calculus does exactly that, for solids built by standing squares on a region drawn on the floor.",
+ "prereq": [
+  {
+   "q": "A box has a square face of side 3 cm and a depth of 0.5 cm. What is its volume?",
+   "options": ["$4.5$ cubic centimeters", "$1.5$ cubic centimeters", "$9$ cubic centimeters", "$6$ cubic centimeters"],
+   "correct": 0,
+   "why": "Volume = area of the face times thickness: $3^2 \\cdot 0.5 = 4.5$.",
+   "review": "math-geometry"
+  },
+  {
+   "q": "The region between $y = x + 2$ (top) and $y = x^2$ (bottom) has what height at $x = 1$?",
+   "options": ["$2$", "$4$", "$3$", "$1$"],
+   "correct": 0,
+   "why": "Top minus bottom: $(1 + 2) - 1^2 = 2$.",
+   "review": "area-between-curves-x"
+  }
+ ],
+ "figure": { "figure": "square-sections-solid", "caption": "Square slices standing on the region under $y = 4 - x^2$. The slice at $x$ has side $s = 4 - x^2$ and area $s^2$." },
+ "chain": [
+  { "cause": "Slice the solid perpendicular to the $x$-axis", "effect": "each slice is a thin slab: a cross section of area $A(x)$ with thickness $\\Delta x$" },
+  { "cause": "A slab's volume is about $A(x)\\,\\Delta x$", "effect": "adding the slabs is a Riemann sum for $A$" },
+  { "cause": "Let the slabs get thin", "effect": "the volume is $V = \\int_a^b A(x)\\,dx$" },
+  { "cause": "For a square cross section, the side $s(x)$ is the length of the base across the slice", "effect": "$A(x) = s(x)^2 = \\left(f(x) - g(x)\\right)^2$" }
+ ],
+ "ideas": [
+  "<b>Volume by cross sections</b>: $V = \\int_a^b A(x)\\,dx$, where $A(x)$ is the area of the slice at $x$.",
+  "For squares standing on the base, the side is top minus bottom of the base: $s = f(x) - g(x)$, and $A(x) = s^2$.",
+  "Square the whole difference: $(f - g)^2$ is not $f^2 - g^2$.",
+  "Rectangles work the same way: $A = s \\cdot h$, with $h$ given (a number, or a multiple of $s$).",
+  "Slices perpendicular to the $y$-axis use right minus left and $dy$."
+ ],
+ "misconception": {
+  "wrong": "To get the square's area, square the top function and the bottom function and subtract: $f(x)^2 - g(x)^2$.",
+  "right": "The square's side is the gap between the curves, $f(x) - g(x)$, so its area is $\\left(f(x) - g(x)\\right)^2$. Squaring each curve first gives a different, wrong number."
+ },
+ "check": [
+  "calc-cross-sections-squares-1",
+  "calc-cross-sections-squares-2",
+  "calc-cross-sections-squares-3",
+  "calc-cross-sections-squares-4",
+  "calc-cross-sections-squares-11",
+  "calc-cross-sections-squares-14"
+ ],
+ "summary": "A solid with known cross sections has volume $\\int_a^b A(x)\\,dx$. When the slices are squares standing on a base, each side is the base's width across the slice, $f(x) - g(x)$, and $A(x) = \\left(f(x) - g(x)\\right)^2$. Square the difference, not each curve, and leave out $\\pi$.",
+ "connections": [
+  { "href": "../notes/area-multiple-crossings.html", "label": "Back: 8.6" },
+  { "href": "../notes/cross-sections-triangles.html", "label": "Next: 8.8" }
+ ]
+}

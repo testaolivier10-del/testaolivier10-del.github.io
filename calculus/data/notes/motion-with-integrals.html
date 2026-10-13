@@ -1,0 +1,59 @@
+<p>In Unit 4 you started from a position function $x(t)$ and differentiated: velocity $v = x'$, acceleration $a = v'$. Now run the film backward. Given the velocity, integrals recover how far the particle moved and where it is. Two different questions hide here, and the exam asks both: how far did it end up from its start, and how far did it actually travel?</p>
+
+<h2>Displacement: the integral of velocity</h2>
+<p>Because $v$ is the derivative of $x$, the Fundamental Theorem gives</p>
+<p>$$\int_a^b v(t)\,dt = x(b) - x(a).$$</p>
+<p>This net change in position is the <b>displacement</b> on $[a, b]$. On a velocity graph it is the signed area: area above the $t$-axis (moving right, or up, or forward) counts as positive, area below (moving left) counts as negative. So a trip right followed by an equal trip left has displacement 0.</p>
+
+<h2>Total distance: the integral of speed</h2>
+<p>A car's odometer does not subtract when you drive back home. Speed is $|v(t)|$, and the <b>total distance</b> traveled is</p>
+<p>$$\int_a^b |v(t)|\,dt.$$</p>
+<p>On the graph, that is the sum of the areas, every one counted as positive.</p>
+<figure id="fig-vel" data-fig="velocity-areas"><figcaption>$v(t) = t^2 - 4t + 3$: the particle moves right on $(0, 1)$, left on $(1, 3)$, right on $(3, 4)$. Each shaded region has area $\frac{4}{3}$.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1 (no calculator).</b> A particle moves with $v(t) = t^2 - 4t + 3$ meters per second for $0 \le t \le 4$. Find its displacement and its total distance.</p>
+<p>Antiderivative: $F(t) = \frac{t^3}{3} - 2t^2 + 3t$.</p>
+<p>Displacement: $F(4) - F(0) = \frac{64}{3} - 32 + 12 = \frac{4}{3}$ meters.</p>
+<p>Distance: $v = (t - 1)(t - 3)$ changes sign at $t = 1$ and $t = 3$, so split there. $F(1) - F(0) = \frac{4}{3}$; $F(3) - F(1) = 0 - \frac{4}{3} = -\frac{4}{3}$; $F(4) - F(3) = \frac{4}{3}$.</p>
+<p>Add the sizes: $\frac{4}{3} + \frac{4}{3} + \frac{4}{3} = 4$ meters. The particle traveled 4 m but ended only $\frac{4}{3}$ m to the right of where it began.</p>
+</div>
+<p>Without a calculator you cannot integrate $|v|$ directly. Find where $v$ changes sign, integrate $v$ on each piece, and add the absolute values. Check every zero, not just whole-number times.</p>
+
+<h2>Position from a starting point</h2>
+<p>Displacement tells you the change. To know the position itself, you need one known position, then add the change:</p>
+<p>$$x(t) = x(t_0) + \int_{t_0}^{t} v(s)\,ds.$$</p>
+<div class="worked">
+<p><b>Worked example 2 (graph).</b> A particle's velocity is made of segments through $(0, 0)$, $(2, 4)$, $(5, 4)$, $(8, -2)$ and $(10, -2)$, in m/s, and $x(0) = -3$. Find $x(10)$, the total distance, and the time it is farthest right.</p>
+<p>Areas: 4 on $[0, 2]$, 12 on $[2, 5]$, 4 on $[5, 7]$ (where $v$ reaches 0), then 1 and 4 below the axis on $[7, 8]$ and $[8, 10]$.</p>
+<p>$x(10) = -3 + (4 + 12 + 4 - 1 - 4) = -3 + 15 = 12$ m. Total distance: $4 + 12 + 4 + 1 + 4 = 25$ m.</p>
+<p>The particle moves right while $v > 0$ and left after $v$ changes sign at $t = 7$, so it is farthest right at $t = 7$: $x(7) = -3 + 20 = 17$ m.</p>
+</div>
+<p>The same idea gives velocity from acceleration: $v(t) = v(t_0) + \int_{t_0}^{t} a(s)\,ds$. With $a(t) = 6t$ and $v(0) = -3$, $v(2) = -3 + 12 = 9$ m/s.</p>
+
+<h2>With a calculator</h2>
+<p>When the velocity has no easy antiderivative, the calculator does the integral, and it can integrate $|v|$ directly. Write the setup every time, then the value to three decimal places:</p>
+<ul>
+<li>Displacement: $\int_0^6 (4 - t + 2\sin t)\,dt \approx 6.080$ feet.</li>
+<li>Total distance: $\int_0^6 |4 - t + 2\sin t|\,dt \approx 17.430$ feet.</li>
+<li>Position, if $x(0) = 5$: $x(6) = 5 + \int_0^6 v(t)\,dt \approx 11.080$ feet.</li>
+</ul>
+<p>Radian mode, and keep full precision until the final answer.</p>
+
+<h2>Displacement or distance?</h2>
+<table>
+<thead><tr><th>Question asks for</th><th>Integral</th><th>Can it be negative?</th></tr></thead>
+<tbody>
+<tr><td>displacement, change in position, net distance</td><td>$\int_a^b v(t)\,dt$</td><td>yes</td></tr>
+<tr><td>total distance traveled</td><td>$\int_a^b |v(t)|\,dt$</td><td>no</td></tr>
+<tr><td>position at time $b$</td><td>$x(a) + \int_a^b v(t)\,dt$</td><td>yes</td></tr>
+</tbody>
+</table>
+
+<h2>Common slips</h2>
+<ul>
+<li>Giving the displacement when the question asks for total distance, or the reverse.</li>
+<li>Forgetting the initial position, or starting the integral at 0 when the known position is at another time.</li>
+<li>Putting the absolute value outside: $\left|\int v\,dt\right|$ is the size of the displacement, not the distance.</li>
+<li>Units: the integral of feet per second over seconds is feet.</li>
+</ul>

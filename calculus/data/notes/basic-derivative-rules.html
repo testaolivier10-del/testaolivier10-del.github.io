@@ -1,0 +1,68 @@
+<p>The power rule handles one power of $x$ at a time. Real functions are built from several: $4x^3 - 5x + 2$, or $3f(x) - 2g(x)$. This page gives the rules that take derivatives through constants, constant factors, sums and differences. With them and the power rule, every polynomial can be differentiated in one pass.</p>
+
+<h2>The constant rule</h2>
+<p>A constant function, $f(x) = c$, has a level graph. A level line has slope 0 everywhere, so</p>
+<p>$$\frac{d}{dx}(c) = 0.$$</p>
+<p>The same idea explains what happens when you add a constant to a function. Adding 3 lifts the whole graph 3 units without tilting it, so every tangent line keeps its slope.</p>
+<figure id="fig-shift" data-fig="shift-same-slope"><figcaption>$f$ and $f + 3$ have parallel tangent lines at every $x$.</figcaption></figure>
+<p>Watch for constants that look like variables: $\pi^2$, $e^3$ and $\sqrt{5}$ are numbers, and their derivatives are 0.</p>
+
+<h2>The constant multiple rule</h2>
+<p>Multiply a function by 4 and every height is multiplied by 4. Over the same run, every rise is 4 times as big, so every slope is 4 times as big:</p>
+<p>$$\frac{d}{dx}\left( kf(x) \right) = kf'(x).$$</p>
+<p>A constant factor rides along. So $\frac{d}{dx}\left( 7x^3 \right) = 7 \cdot 3x^2 = 21x^2$, and $\frac{d}{dx}(9x) = 9$.</p>
+<p>Keep the two constant rules apart. A constant <b>term</b> (added) disappears; a constant <b>factor</b> (multiplied) stays:</p>
+<table class="compare">
+<thead><tr><th>Function</th><th>The constant is a</th><th>Derivative</th></tr></thead>
+<tbody>
+<tr><td>$x^2 + 7$</td><td>term</td><td>$2x$</td></tr>
+<tr><td>$7x^2$</td><td>factor</td><td>$14x$</td></tr>
+<tr><td>$7$</td><td>the whole function</td><td>$0$</td></tr>
+<tr><td>$7x$</td><td>factor</td><td>$7$</td></tr>
+</tbody>
+</table>
+
+<h2>The sum and difference rules</h2>
+<p>If $f$ and $g$ change together, the change in $f + g$ is the change in $f$ plus the change in $g$. Divide by the same $h$ and take the limit, and the rates add:</p>
+<p>$$\frac{d}{dx}\left( f(x) + g(x) \right) = f'(x) + g'(x), \qquad \frac{d}{dx}\left( f(x) - g(x) \right) = f'(x) - g'(x).$$</p>
+<p>Two pumps adding 30 and 45 liters a minute fill a pool at 75 liters a minute. If one drains at 20 while the other fills at 45, the level changes at $45 - 20 = 25$.</p>
+
+<h2>Polynomials, term by term</h2>
+<p>A polynomial is a sum of constant multiples of powers of $x$, so the rules take it apart one term at a time.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Differentiate $f(x) = x^3 - 6x^2 + 9x + 1$ and find where its tangent line is level.</p>
+<p>Term by term: $\frac{d}{dx}\left( x^3 \right) = 3x^2$; $\frac{d}{dx}\left( -6x^2 \right) = -12x$; $\frac{d}{dx}(9x) = 9$; $\frac{d}{dx}(1) = 0$.</p>
+<p>So $f'(x) = 3x^2 - 12x + 9$.</p>
+<p>Level tangent line: $3x^2 - 12x + 9 = 3(x^2 - 4x + 3) = 3(x - 1)(x - 3) = 0$ at $x = 1$ and $x = 3$. On the graph these are the top of the hump and the bottom of the dip.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Differentiate $y = 4x^3 - \frac{5}{x} + 2\sqrt{x}$.</p>
+<p>Rewrite every term as a constant times a power: $y = 4x^3 - 5x^{-1} + 2x^{1/2}$.</p>
+<p>Differentiate: $y' = 12x^2 - 5(-1)x^{-2} + 2 \cdot \frac{1}{2}x^{-1/2} = 12x^2 + 5x^{-2} + x^{-1/2}$.</p>
+<p>Signs need care: $-5$ times $-1$ is $+5$.</p>
+</div>
+
+<h2>Expand or divide first</h2>
+<p>The rules cover sums and constant multiples. They say nothing yet about products, quotients or powers of whole expressions, so turn those into sums first when the algebra is easy:</p>
+<ul>
+<li>$(x^2 + 1)^2 = x^4 + 2x^2 + 1$, so its derivative is $4x^3 + 4x$. Writing $2(x^2 + 1)$ treats $x^2 + 1$ as if it were $x$, which it is not.</li>
+<li>$\frac{x^3 - 2x}{x} = x^2 - 2$ for $x \ne 0$, so its derivative is $2x$. Differentiating top and bottom separately gives $3x^2 - 2$, which is wrong.</li>
+</ul>
+<p>Rules for products and quotients that cannot be simplified come in topics 2.8 and 2.9.</p>
+
+<h2>Rules on tables of values</h2>
+<p>The rules work at a single input too. If $h(x) = 3f(x) - 2g(x)$, then $h'(2) = 3f'(2) - 2g'(2)$. You need only the derivative values at $x = 2$, not formulas.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A table gives $f(2) = 3$, $f'(2) = -1$, $g(2) = 5$, $g'(2) = 4$. Write the line tangent to $h(x) = 3f(x) - 2g(x)$ at $x = 2$.</p>
+<p>Height: $h(2) = 3(3) - 2(5) = -1$. Use the value columns.</p>
+<p>Slope: $h'(2) = 3(-1) - 2(4) = -11$. Use the derivative columns.</p>
+<p>Line: $y = -1 - 11(x - 2)$. Mixing up the columns (values for the slope, or derivatives for the height) is the slip to avoid.</p>
+</div>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Keeping a constant term: $\frac{d}{dx}\left( 3x^2 + 7 \right)$ is $6x$, not $6x + 7$.</li>
+<li>Dropping a constant factor: $\frac{d}{dx}\left( 6x^2 \right)$ is $12x$, not $2x$.</li>
+<li>Losing a sign inside a difference: distribute the minus over the whole derivative of the second term.</li>
+</ul>

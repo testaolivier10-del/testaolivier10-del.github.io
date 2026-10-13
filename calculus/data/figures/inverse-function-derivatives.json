@@ -1,0 +1,12 @@
+{
+ "inverse-reciprocal-slopes": {
+  "file": "figures/inverse-reciprocal-slopes.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 500,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The graph of f(x) = x³ + x (crimson) and its inverse g (blue), mirror images in the dashed line y = x. The tangent line to f at (1, 2) has slope 4; the tangent line to g at the reflected point (2, 1) has slope 1/4."
+ }
+}

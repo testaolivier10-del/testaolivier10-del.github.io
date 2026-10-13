@@ -1,0 +1,5 @@
+{
+ "candidates-test": {
+  "def": "A way to find the absolute extrema of a function continuous on $[a, b]$: evaluate $f$ at the endpoints $a$, $b$ and at every critical point in $(a, b)$; the largest value is the absolute maximum and the smallest the absolute minimum. Also called the closed interval method."
+ }
+}

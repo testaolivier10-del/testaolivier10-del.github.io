@@ -1,0 +1,53 @@
+{
+ "topic": "cross-sections-triangles",
+ "hook": "A tent ridge, a Toblerone bar, a half-pipe: each is a solid whose slices are all the same kind of shape, triangles or half circles, growing and shrinking along its length. The method from squares carries over unchanged. Only one thing is new: the area formula for the slice.",
+ "prereq": [
+  {
+   "q": "The base of a solid is the region under $y = \\sqrt{x}$ for $0 \\le x \\le 4$, and its cross sections perpendicular to the $x$-axis are squares. What is $A(x)$?",
+   "options": ["$x$", "$\\sqrt{x}$", "$x^2$", "$2\\sqrt{x}$"],
+   "correct": 0,
+   "why": "The side is $s = \\sqrt{x}$, so $A(x) = s^2 = x$.",
+   "review": "cross-sections-squares"
+  },
+  {
+   "q": "What is the area of a semicircle of radius $r$?",
+   "options": ["$\\frac{1}{2}\\pi r^2$", "$\\pi r^2$", "$\\frac{1}{4}\\pi r^2$", "$\\pi r$"],
+   "correct": 0,
+   "why": "Half of a circle's area $\\pi r^2$.",
+   "review": "math-geometry"
+  }
+ ],
+ "figure": { "figure": "triangle-sections-solid", "caption": "Equilateral triangles standing on the region under $y = \\sqrt{x}$. Each has side $s = \\sqrt{x}$ and area $\\frac{\\sqrt{3}}{4}s^2$, so the volume is $2\\sqrt{3}$." },
+ "chain": [
+  { "cause": "Each slice stands on a segment of the base of length $s = f(x) - g(x)$", "effect": "the segment is a side of the triangle, or the diameter of the semicircle" },
+  { "cause": "Every slice is the same kind of shape", "effect": "its area is a fixed number times $s^2$" },
+  { "cause": "Equilateral triangle: height $\\frac{\\sqrt{3}}{2}s$", "effect": "$A = \\frac{1}{2} \\cdot s \\cdot \\frac{\\sqrt{3}}{2}s = \\frac{\\sqrt{3}}{4}s^2$" },
+  { "cause": "Semicircle: radius $\\frac{s}{2}$", "effect": "$A = \\frac{1}{2}\\pi\\left(\\frac{s}{2}\\right)^2 = \\frac{\\pi}{8}s^2$" },
+  { "cause": "Volume is $\\int_a^b A(x)\\,dx$", "effect": "each volume is its constant times $\\int_a^b s^2\\,dx$" }
+ ],
+ "ideas": [
+  "<b>Triangular and semicircular cross sections</b>: same method as squares, $V = \\int_a^b A(x)\\,dx$, with a new area formula.",
+  "Equilateral triangle with side $s$: $A = \\frac{\\sqrt{3}}{4}s^2$.",
+  "Isosceles right triangle: leg $s$ in the base gives $\\frac{1}{2}s^2$; hypotenuse $s$ in the base gives $\\frac{1}{4}s^2$.",
+  "Semicircle with diameter $s$ in the base: radius $\\frac{s}{2}$, so $A = \\frac{\\pi}{8}s^2$.",
+  "On one base, every volume is a constant times $\\int s^2\\,dx$: squares $1$, equilateral $0.433$, semicircles $0.393$, right isosceles $0.5$ or $0.25$."
+ ],
+ "misconception": {
+  "wrong": "For semicircles, the segment across the base is the radius, so $A = \\frac{1}{2}\\pi s^2$.",
+  "right": "The segment across the base is the diameter. The radius is $\\frac{s}{2}$, and $A = \\frac{1}{2}\\pi\\left(\\frac{s}{2}\\right)^2 = \\frac{\\pi}{8}s^2$. Using $s$ as the radius makes the volume four times too big."
+ },
+ "check": [
+  "calc-cross-sections-triangles-1",
+  "calc-cross-sections-triangles-2",
+  "calc-cross-sections-triangles-3",
+  "calc-cross-sections-triangles-4",
+  "calc-cross-sections-triangles-10",
+  "calc-cross-sections-triangles-11",
+  "calc-cross-sections-triangles-12"
+ ],
+ "summary": "Triangle and semicircle cross sections use the same integral as squares, $V = \\int_a^b A(x)\\,dx$, with $s = f(x) - g(x)$ across the base. Learn the areas: equilateral $\\frac{\\sqrt{3}}{4}s^2$, isosceles right $\\frac{1}{2}s^2$ (leg in base) or $\\frac{1}{4}s^2$ (hypotenuse in base), semicircle $\\frac{\\pi}{8}s^2$.",
+ "connections": [
+  { "href": "../notes/cross-sections-squares.html", "label": "Back: squares and rectangles (8.7)" },
+  { "href": "../notes/disc-method-axes.html", "label": "Next: 8.9" }
+ ]
+}

@@ -1,0 +1,5 @@
+{
+ "equilibrium": {
+  "def": "A constant function $y = c$ that solves a differential equation: $\\frac{dy}{dx} = 0$ at every point of the horizontal line $y = c$. In a slope field it is a row of horizontal segments."
+ }
+}

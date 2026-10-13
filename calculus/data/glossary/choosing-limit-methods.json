@@ -1,0 +1,5 @@
+{
+ "limit-strategy": {
+  "def": "A plan for finding a limit: substitute first, then let the result decide the next step. A number is the limit; $\\frac{0}{0}$ means rewrite (factor, use a conjugate, combine fractions) and substitute again; a nonzero number over 0 means the function is unbounded there; a break point means compare the one-sided limits."
+ }
+}

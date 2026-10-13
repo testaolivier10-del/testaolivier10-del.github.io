@@ -1,0 +1,44 @@
+<p>Zoom in on the graph of any differentiable function, near any point, and it starts to look like a straight line: its tangent line. This is <b>local linearity</b>. It turns the tangent line into a tool for estimating values that are hard to compute, such as $\sqrt{26}$ or $f(2.1)$ when you only know $f$ at 2. The exam then asks one more question every time: is the estimate too big or too small?</p>
+
+<h2>The tangent line as an approximation</h2>
+<p>The tangent line at $x = a$ passes through $(a, f(a))$ with slope $f'(a)$. In point-slope form it is the <b>linearization</b> of $f$ at $a$:</p>
+<p>$$L(x) = f(a) + f'(a)(x - a)$$</p>
+<p>For $x$ close to $a$, $f(x) \approx L(x)$. Read the formula as a story: start at the known height $f(a)$, then add the rate $f'(a)$ times the step $x - a$. It is the "rate times change" idea from the derivative in context, written as a line.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Estimate $\sqrt{26}$.</p>
+<p>Choose a nearby point where $\sqrt{x}$ is easy: $a = 25$, $f(25) = 5$.</p>
+<p>$f'(x) = \frac{1}{2\sqrt{x}}$, so $f'(25) = \frac{1}{10}$.</p>
+<p>$L(26) = 5 + \frac{1}{10}(26 - 25) = 5.1$. A calculator gives $\sqrt{26} \approx 5.0990$, so the estimate is close, and slightly too large.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> A table gives $f(5) = 1$ and $f'(5) = 2$. Estimate $f(4.8)$.</p>
+<p>$L(x) = 1 + 2(x - 5)$, so $f(4.8) \approx 1 + 2(-0.2) = 0.6$.</p>
+<p>The step $x - a = -0.2$ is negative because 4.8 is to the left of 5. Dropping that sign is a common slip.</p>
+</div>
+
+<h2>Too big or too small? Concavity decides</h2>
+<p>A graph is <b>concave up</b> where it bends upward, like a cup, and <b>concave down</b> where it bends downward, like a cap. The second derivative tells which: $f'' > 0$ means $f'$ is increasing, so the slopes keep growing and the graph bends up; $f'' < 0$ means the graph bends down. (Unit 5 studies concavity in full; here we need just this much.)</p>
+<p>A concave up graph lies <i>above</i> its tangent lines, so the line gives values that are too small: an <b>underestimate</b>. A concave down graph lies <i>below</i> its tangent lines, so the line gives an <b>overestimate</b>.</p>
+<figure id="fig-sqrt" data-fig="sqrt-tangent-overestimate"><figcaption>$\sqrt{x}$ is concave down, so its tangent line at $x = 4$ lies above it: $L(7) = 2.75$ overestimates $\sqrt{7} \approx 2.646$.</figcaption></figure>
+<table class="compare">
+<tr><th>On the interval between $a$ and $x$</th><th>Shape</th><th>Tangent line is</th><th>$L(x)$ is</th></tr>
+<tr><td>$f'' > 0$</td><td>concave up</td><td>below the graph</td><td>an underestimate</td></tr>
+<tr><td>$f'' < 0$</td><td>concave down</td><td>above the graph</td><td>an overestimate</td></tr>
+</table>
+<div class="worked">
+<p><b>Worked example 3.</b> Use the tangent line to $\ln x$ at $x = 1$ to estimate $\ln(1.2)$, and decide whether the estimate is too large or too small.</p>
+<p>$\ln 1 = 0$ and the slope is $\frac{1}{1} = 1$, so $L(x) = x - 1$ and $\ln(1.2) \approx 0.2$.</p>
+<p>The second derivative of $\ln x$ is $-\frac{1}{x^2}$, which is negative for every $x > 0$. The graph is concave down, so the tangent line lies above it, and $0.2$ is an <b>overestimate</b>. (Indeed $\ln 1.2 \approx 0.182$.)</p>
+</div>
+<p>The justification must name concavity. "Overestimate because $f$ is increasing" does not earn the point: whether $f$ is increasing decides which way the line tilts, not which side of the curve it sits on. The concavity must hold on the whole interval between $a$ and the point you estimate.</p>
+
+<h2>How good is the estimate?</h2>
+<p>The gap between the curve and the line is tiny near $a$ and grows as you move away. Using the tangent line at $x = 1$, $\ln 1.2$ is estimated as $0.2$ (true value about $0.182$), but $\ln 3$ is estimated as $2$ (true value about $1.099$). Always build the line at the known point closest to where you estimate.</p>
+
+<h2>Slips that cost points</h2>
+<ul>
+<li>Swapping the height and the slope in $L(x) = f(a) + f'(a)(x - a)$.</li>
+<li>Losing the sign of $x - a$ when estimating to the left of $a$.</li>
+<li>Justifying over or under with the sign of $f'$, or with no reason.</li>
+<li>Using a tangent line built at a point far from the estimate.</li>
+</ul>

@@ -1,0 +1,520 @@
+{
+ "stimuli": {
+  "modeling-with-des-s1": {
+   "kind": "table",
+   "title": "A growing culture of cells",
+   "table": {
+    "caption": "The number of cells P and its rate of change, measured at four moments",
+    "cols": [
+     "$P$ (cells)",
+     "200",
+     "350",
+     "500",
+     "800"
+    ],
+    "rows": [
+     [
+      "$\\frac{dP}{dt}$ (cells per hour)",
+      "52",
+      "91",
+      "130",
+      "208"
+     ]
+    ]
+   }
+  },
+  "modeling-with-des-s2": {
+   "kind": "graph",
+   "title": "Soup cooling in a 22 °C kitchen",
+   "plot": {
+    "label": "Graph of the soup temperature H, in degrees Celsius, against time t in minutes, falling from 90 toward the dashed line H = 22",
+    "x": [
+     0,
+     60
+    ],
+    "y": [
+     0,
+     100
+    ],
+    "xStep": 10,
+    "yStep": 20,
+    "xLabel": "t (minutes)",
+    "yLabel": "H (°C)",
+    "curves": [
+     {
+      "fn": "22 + 68e^(-0.04x)",
+      "domain": [
+       0,
+       60
+      ],
+      "label": "H",
+      "ends": [
+       "closed",
+       null
+      ]
+     },
+     {
+      "fn": "22",
+      "domain": [
+       0,
+       60
+      ],
+      "dashed": true,
+      "cls": "s2"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-modeling-with-des-1",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "modeling-with-des-s1",
+   "q": "Which differential equation is consistent with every column of the table?",
+   "options": [
+    "$\\frac{dP}{dt} = 0.26P$",
+    "$\\frac{dP}{dt} = 52$",
+    "$\\frac{dP}{dt} = 0.26t$",
+    "$P = 0.26\\frac{dP}{dt}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Divide each rate by its population: every ratio is $0.26$, so the rate is proportional to $P$ with $k = 0.26$.",
+    "options": [
+     "$\\frac{52}{200} = \\frac{91}{350} = \\frac{130}{500} = \\frac{208}{800} = 0.26$: the rate is always $0.26$ times the size.",
+     "A constant rate would give one rate for every column, but the rate grows with P.",
+     "The table gives no times; the rate is tied to the number of cells, not to the clock.",
+     "The ratio is upside down: $0.26 \\cdot 52 = 13.52$, not 200."
+    ]
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-2",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "modeling-with-des-s1",
+   "q": "The table fits $\\frac{dP}{dt} = kP$. Find the constant of proportionality $k$.",
+   "numeric": {
+    "answer": "0.26",
+    "mistakes": [
+     {
+      "value": "50/13",
+      "why": "That is $\\frac{200}{52}$, the ratio upside down. From $\\frac{dP}{dt} = kP$, $k = \\frac{dP/dt}{P} = \\frac{52}{200}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$k = \\frac{dP/dt}{P} = \\frac{52}{200} = 0.26$ per hour; every column gives the same value."
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-3",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "modeling-with-des-s1",
+   "q": "Using $\\frac{dP}{dt} = 0.26P$, find the rate of change of the population when $P = 1200$ cells. Include units.",
+   "numeric": {
+    "answer": 312,
+    "unit": "cells per hour",
+    "askUnit": true,
+    "units": [
+     "cells/hour",
+     "cells/hr",
+     "cells per hr",
+     "cells/h"
+    ],
+    "mistakes": [
+     {
+      "value": 208,
+      "why": "That is the rate at 800 cells. The model gives a new rate for each size: 0.26 times 1200."
+     },
+     {
+      "value": 52,
+      "why": "The rate is not constant; it grows with the population. Multiply 0.26 by 1200."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dP}{dt} = 0.26(1200) = 312$ cells per hour."
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-4",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "modeling-with-des-s1",
+   "q": "What does the entry 91 in the table mean?",
+   "options": [
+    "After 350 hours, there are 91 cells.",
+    "When there are 350 cells, the population is growing at 91 cells per hour.",
+    "From now on, the population grows by 91 cells each hour.",
+    "The population has grown by 91 cells since the first measurement."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The second row is $\\frac{dP}{dt}$: at the moment $P = 350$ cells, the population increases at 91 cells per hour.",
+    "options": [
+     "The 350 is a number of cells, not a time, and 91 is a rate, not a count.",
+     "It is the derivative, a rate, at the moment P = 350.",
+     "The rate changes as P changes; 91 holds only at that moment.",
+     "It grew by 150 cells between the first two columns; 91 is a rate, not a change in size."
+    ]
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-5",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "modeling-with-des-s1",
+   "q": "For a culture modeled by $\\frac{dP}{dt} = 0.26P$, how does the growth rate change when the population doubles from 400 to 800 cells?",
+   "options": [
+    "It doubles, from 104 to 208 cells per hour.",
+    "It stays the same, because k is constant.",
+    "It quadruples, from 52 to 208 cells per hour.",
+    "It halves, because the culture is larger."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$0.26(400) = 104$ and $0.26(800) = 208$: proportional means doubling $P$ doubles $\\frac{dP}{dt}$.",
+    "options": [
+     "The rate is a constant times $P$, so doubling $P$ doubles the rate.",
+     "$k$ is constant, but the rate is $k$ times $P$, which changes.",
+     "$0.26 \\cdot 400 = 104$, not 52; the rate is proportional to $P$, not to $P^2$.",
+     "Proportional means larger P, larger rate."
+    ]
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-6",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "modeling-with-des-s2",
+   "q": "The soup cools at a rate proportional to the difference between its temperature and the kitchen temperature. Which differential equation fits the graph?",
+   "options": [
+    "$\\frac{dH}{dt} = k(H - 22)$ with $k > 0$",
+    "$\\frac{dH}{dt} = kH$ with $k < 0$",
+    "$\\frac{dH}{dt} = k(t - 22)$ with $k < 0$",
+    "$\\frac{dH}{dt} = k(H - 22)$ with $k < 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "\"Proportional to the difference\" is $k(H - 22)$; the soup is above 22 °C and cooling, so $k < 0$.",
+    "options": [
+     "With $k > 0$ and $H > 22$ the temperature would rise, but the graph falls.",
+     "This makes the soup cool toward 0 °C; the graph levels off at 22 °C.",
+     "The rate depends on the temperature difference, not on the time minus 22.",
+     "Above 22 °C, $H - 22 > 0$ and $k < 0$ make $\\frac{dH}{dt} < 0$, and the drop slows as $H$ nears 22, as the graph shows."
+    ]
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-7",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "modeling-with-des-s2",
+   "q": "According to the graph and the model, when is the soup cooling fastest?",
+   "options": [
+    "At $t = 60$, after it has cooled the longest",
+    "When $H$ is halfway between 90 and 22",
+    "At $t = 0$, where $H - 22$ is largest",
+    "At each moment equally, at a constant rate"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\left|\\frac{dH}{dt}\\right| = |k|(H - 22)$ is largest when $H$ is largest, at $t = 0$.",
+    "options": [
+     "Near 22 °C the difference is small, so the graph is nearly flat.",
+     "The size of $k(H - 22)$ keeps shrinking as $H$ falls; nothing special happens halfway.",
+     "The rate is $k(H - 22)$, largest in size where $H$ is farthest from 22, at the start; the graph is steepest there.",
+     "A constant rate would make the graph a straight line."
+    ]
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-8",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "modeling-with-des-s2",
+   "q": "At $t = 0$ the soup is at 90 °C and cooling at 2.72 °C per minute, so $\\frac{dH}{dt} = -2.72$. Find $k$ in $\\frac{dH}{dt} = k(H - 22)$.",
+   "numeric": {
+    "answer": "-0.04",
+    "mistakes": [
+     {
+      "value": "-2.72/90",
+      "why": "The model uses the difference $H - 22 = 68$, not $H$: $k = \\frac{-2.72}{68}$."
+     },
+     {
+      "value": "0.04",
+      "why": "The soup is cooling, so the rate and k are negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$-2.72 = k(90 - 22) = 68k$, so $k = -\\frac{2.72}{68} = -0.04$ per minute."
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-9",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "modeling-with-des-s2",
+   "q": "With $\\frac{dH}{dt} = -0.04(H - 22)$, find $\\frac{dH}{dt}$ when the soup is at 47 °C. Include units.",
+   "numeric": {
+    "answer": -1,
+    "unit": "degrees Celsius per minute",
+    "askUnit": true,
+    "units": [
+     "°C per minute",
+     "°C/min",
+     "degrees per minute",
+     "°C/minute",
+     "degrees Celsius/minute",
+     "C/min"
+    ],
+    "mistakes": [
+     {
+      "value": -1.88,
+      "why": "That is $-0.04 \\cdot 47$: subtract the kitchen temperature first, $-0.04(47 - 22)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dH}{dt} = -0.04(47 - 22) = -1$ °C per minute: the soup is cooling at 1 degree per minute."
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-10",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The rate of change of y with respect to x is inversely proportional to the square of y. Which equation says this?",
+   "options": [
+    "$\\frac{dy}{dx} = ky^2$",
+    "$\\frac{dy}{dx} = \\frac{k}{x^2}$",
+    "$y = \\frac{k}{x^2}$",
+    "$\\frac{dy}{dx} = \\frac{k}{y^2}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "\"Inversely proportional to $y^2$\" means $\\frac{k}{y^2}$; \"the rate of change of $y$ with respect to $x$\" is $\\frac{dy}{dx}$.",
+    "options": [
+     "That is directly proportional to the square of y.",
+     "The sentence is about the square of y, not of x.",
+     "The sentence describes the rate of change, so a derivative belongs on the left.",
+     "Inversely proportional to $y^2$: a constant divided by $y^2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-11",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A population of fish F decreases at a rate proportional to the square root of the population. With k > 0, which equation models this?",
+   "options": [
+    "$\\frac{dF}{dt} = k\\sqrt{F}$",
+    "$\\frac{dF}{dt} = -k\\sqrt{t}$",
+    "$\\frac{dF}{dt} = -k\\sqrt{F}$",
+    "$F = -k\\sqrt{t}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "\"Decreases at a rate proportional to $\\sqrt{F}$\": $\\frac{dF}{dt} = -k\\sqrt{F}$ with $k > 0$.",
+    "options": [
+     "With $k > 0$ this rate is positive: the population would grow.",
+     "The rate depends on the population, not on the time.",
+     "Proportional to $\\sqrt{F}$, and the minus sign with $k > 0$ makes the population decrease.",
+     "The sentence is about the rate of change of F, so a derivative is needed."
+    ]
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-12",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "multi",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which of these are differential equations? Select all that apply.",
+   "options": [
+    "$\\frac{dy}{dx} = 3xy$",
+    "$y = 3x^2 + 1$",
+    "$y^2 = 4 - x^2$",
+    "$3x + 2y = 7$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "A differential equation contains a derivative of an unknown function.",
+    "options": [
+     "It contains the derivative of the unknown function y.",
+     "This gives y directly; no derivative appears.",
+     "This relates x and y directly; no derivative appears.",
+     "This is the equation of a line; no derivative appears."
+    ]
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-13",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A quantity satisfies $\\frac{dy}{dt} = 0.4(50 - y)$. Find $\\frac{dy}{dt}$ when $y = 30$.",
+   "numeric": {
+    "answer": 8,
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "That is $0.4 \\cdot 30$. Substitute into the whole right side: $0.4(50 - 30)$."
+     },
+     {
+      "value": 20,
+      "why": "That is $50 - 30$ without the factor $0.4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dt} = 0.4(50 - 30) = 0.4(20) = 8$."
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-14",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A quantity satisfies $\\frac{dy}{dt} = 0.4(50 - y)$. For which values of $y$ is $y$ increasing?",
+   "options": [
+    "$y > 50$",
+    "$t < 50$",
+    "$y > 0$",
+    "$y < 50$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$y$ increases where $\\frac{dy}{dt} > 0$: $0.4(50 - y) > 0$ exactly when $y < 50$.",
+    "options": [
+     "Then $50 - y < 0$ and $\\frac{dy}{dt} < 0$: $y$ decreases.",
+     "The sign of the rate depends on y, not on t.",
+     "At $y = 60$, which is positive, $\\frac{dy}{dt} = -4 < 0$.",
+     "Then $50 - y > 0$, so $\\frac{dy}{dt} > 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-15",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The amount A of a medicine in the blood decreases at a rate proportional to the amount present. With k > 0, which equation models this?",
+   "options": [
+    "$\\frac{dA}{dt} = -kt$",
+    "$A = -kt$",
+    "$\\frac{dA}{dt} = -kA$",
+    "$\\frac{dA}{dt} = A - k$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "\"Decreases at a rate proportional to the amount\": $\\frac{dA}{dt} = -kA$, $k > 0$.",
+    "options": [
+     "The rate depends on the amount present, not on the time.",
+     "The sentence is about the rate of change, so a derivative is needed.",
+     "A rate proportional to $A$, negative because the amount decreases.",
+     "Proportional means a constant times $A$, not $A$ minus a constant."
+    ]
+   }
+  },
+  {
+   "id": "calc-modeling-with-des-16",
+   "unit": "unit-7",
+   "topic": "modeling-with-des",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Water drains from a tank. The depth $h$, in feet, changes at a rate equal to $-0.6$ times the square root of the depth. Write $\\frac{dh}{dt}$ in terms of $h$.",
+   "expr": {
+    "answer": "-0.6*sqrt(h)",
+    "vars": [
+     "h"
+    ],
+    "domain": [
+     0.1,
+     9
+    ],
+    "lhs": "\\frac{dh}{dt} =",
+    "mistakes": [
+     {
+      "expr": "-0.6*h",
+      "why": "The rate uses the square root of the depth: write -0.6*sqrt(h)."
+     },
+     {
+      "expr": "0.6*sqrt(h)",
+      "why": "The tank is draining, so the depth decreases: the rate is negative."
+     },
+     {
+      "expr": "-0.6/sqrt(h)",
+      "why": "Equal to -0.6 times the square root, not divided by it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dh}{dt} = -0.6\\sqrt{h}$: negative because the depth falls, and proportional to $\\sqrt{h}$."
+   }
+  }
+ ]
+}

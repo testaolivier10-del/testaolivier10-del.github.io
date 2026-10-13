@@ -1,0 +1,52 @@
+{
+ "topic": "disc-method-other-axes",
+ "hook": "A lathe can spin a piece of wood around any center line the machinist chooses, not just the edge of the table. Revolving a region about a line like $y = 1$ or $x = 3$ works the same way as revolving it about an axis. The only change is where you measure the radius from.",
+ "prereq": [
+  {
+   "q": "The region under $y = \\sqrt{x}$, $0 \\le x \\le 4$, is revolved about the $x$-axis. Which integral gives the volume?",
+   "options": ["$\\pi\\int_0^4 x\\,dx$", "$\\pi\\int_0^4 \\sqrt{x}\\,dx$", "$\\int_0^4 x\\,dx$", "$\\pi\\int_0^2 x\\,dx$"],
+   "correct": 0,
+   "why": "Radius $\\sqrt{x}$, so each disc has area $\\pi(\\sqrt{x})^2 = \\pi x$, from $x = 0$ to $4$.",
+   "review": "disc-method-axes"
+  },
+  {
+   "q": "How far is the point $(2, -1)$ from the line $y = 3$?",
+   "options": ["$4$", "$2$", "$-4$", "$1$"],
+   "correct": 0,
+   "why": "A vertical distance is the larger $y$ minus the smaller: $3 - (-1) = 4$.",
+   "review": "math-functions"
+  }
+ ],
+ "figure": { "figure": "disc-solid-line", "caption": "Revolving the region between $y = x^2$ and $y = 1$ about the line $y = 1$. The radius runs from the axis down to the curve: $r = 1 - x^2$." },
+ "chain": [
+  { "cause": "The axis of rotation is the line $y = k$ (or $x = h$)", "effect": "every slice is a disc centered on that line" },
+  { "cause": "The region touches that line all the way across", "effect": "each rectangle reaches from the line to the curve and sweeps out a solid disc" },
+  { "cause": "The radius is the distance from the line to the curve", "effect": "$r = k - f(x)$ if the line is above the curve, $f(x) - k$ if it is below" },
+  { "cause": "Square the whole radius and multiply by $\\pi$", "effect": "$V = \\pi\\int_a^b \\left(f(x) - k\\right)^2\\,dx$" }
+ ],
+ "ideas": [
+  "<b>Revolving about a line</b>: the disc method still applies; only the radius changes.",
+  "The radius is a distance from the axis: larger value minus smaller value. With the line $y = k$ above the curve, $r = k - f(x)$; below it, $r = f(x) - k$.",
+  "With a negative $k$, subtract carefully: about $y = -2$, $r = f(x) - (-2) = f(x) + 2$.",
+  "A vertical line $x = h$ gives horizontal discs: $r = h - x(y)$ or $x(y) - h$, integrated in $dy$.",
+  "Square $(k - f(x))$ as a whole; $k^2 - f(x)^2$ is a different number."
+ ],
+ "misconception": {
+  "wrong": "The radius is always the curve's height $f(x)$, whatever the axis.",
+  "right": "$f(x)$ is the distance from the $x$-axis. When the axis is $y = k$, measure from that line: $r = |f(x) - k|$. For the region between $y = x^2$ and $y = 1$ about $y = 1$, the radius is $1 - x^2$, not $x^2$."
+ },
+ "check": [
+  "calc-disc-method-other-axes-1",
+  "calc-disc-method-other-axes-2",
+  "calc-disc-method-other-axes-3",
+  "calc-disc-method-other-axes-4",
+  "calc-disc-method-other-axes-5",
+  "calc-disc-method-other-axes-10",
+  "calc-disc-method-other-axes-12"
+ ],
+ "summary": "To revolve a region about a line $y = k$ or $x = h$ that it touches all the way across, use discs whose radius is the distance from that line to the curve: $V = \\pi\\int_a^b \\left(k - f(x)\\right)^2\\,dx$ (or the mirror image). Measure from the axis, subtract in the order that makes the radius positive, and square the whole radius.",
+ "connections": [
+  { "href": "../notes/disc-method-axes.html", "label": "Back: discs about the axes (8.9)" },
+  { "href": "../notes/washer-method-axes.html", "label": "Next: 8.11" }
+ ]
+}

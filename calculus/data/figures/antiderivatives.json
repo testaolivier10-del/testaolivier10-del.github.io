@@ -1,0 +1,12 @@
+{
+ "antiderivative-family": {
+  "file": "figures/antiderivative-family.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Five curves y = x cubed over 3 - x + C for C = -2, -1, 0, 1 and 2, each a vertical shift of the others. At x = 1.5 a dashed line crosses all five, and a short tangent segment at each crossing shows the same slope, 1.25, because every curve has derivative x squared - 1."
+ }
+}

@@ -1,0 +1,5 @@
+{
+ "derivative-in-context": {
+  "def": "The meaning of $f'(a)$ in a real situation: the rate at which the quantity $f$ changes at input $a$, in units of $f$ per unit of the input (for example, centimeters per hour)."
+ }
+}

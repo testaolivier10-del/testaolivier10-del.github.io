@@ -1,0 +1,11 @@
+{
+ "one-sided-limit": {
+  "def": "The limit as $x$ approaches $a$ from one side only: $\\lim_{x \\to a^-} f(x)$ uses $x < a$ (left-hand limit) and $\\lim_{x \\to a^+} f(x)$ uses $x > a$ (right-hand limit)."
+ },
+ "limit-dne": {
+  "def": "A limit does not exist (DNE) when the outputs do not close in on one number: the one-sided limits differ, the outputs grow without bound, or they oscillate."
+ },
+ "unbounded": {
+  "def": "Outputs that grow larger and larger in size without any bound, as near a vertical asymptote. Oscillating behavior is outputs that keep swinging between values and never settle."
+ }
+}

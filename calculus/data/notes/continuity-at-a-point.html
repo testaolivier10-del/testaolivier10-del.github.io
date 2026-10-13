@@ -1,0 +1,52 @@
+<p>The last topic described breaks in a graph. This topic turns "no break" into a precise test you can apply to a graph, a table or a formula, and write up as a justification. The test has three conditions, and every one of them matters.</p>
+
+<h2>The definition</h2>
+<p>A function $f$ is <b>continuous at $x = c$</b> when all three of these hold:</p>
+<ol>
+<li>$f(c)$ is defined. (There is a point on the graph at $x = c$.)</li>
+<li>$\lim_{x \to c} f(x)$ exists. (The curve arrives at one height from both sides.)</li>
+<li>$\lim_{x \to c} f(x) = f(c)$. (The point is exactly where the curve arrives.)</li>
+</ol>
+<figure id="fig-conditions" data-fig="continuity-three-conditions"><figcaption>Each condition can fail while the earlier ones hold.</figcaption></figure>
+<p>Each condition catches a different kind of break. Check them in order: the first one that fails is your reason.</p>
+<table>
+<thead><tr><th>First condition to fail</th><th>What the graph shows</th><th>Kind of discontinuity</th></tr></thead>
+<tbody>
+<tr><td>1: $f(c)$ undefined</td><td>no point at $x = c$</td><td>removable (a hole) or infinite, depending on the limit</td></tr>
+<tr><td>2: the limit does not exist</td><td>the two sides arrive at different heights, or grow without bound</td><td>jump or infinite</td></tr>
+<tr><td>3: limit $\ne f(c)$</td><td>a hole with the point placed elsewhere</td><td>removable</td></tr>
+</tbody>
+</table>
+
+<h2>Checking a formula</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Let $f(x) = \frac{x^2 - 4}{x - 2}$ for $x \ne 2$ and $f(2) = 5$. Is $f$ continuous at $x = 2$?</p>
+<p>Condition 1: $f(2) = 5$, so it is defined.</p>
+<p>Condition 2: for $x \ne 2$, $f(x) = \frac{(x - 2)(x + 2)}{x - 2} = x + 2$, so $\lim_{x \to 2} f(x) = 4$. The limit exists.</p>
+<p>Condition 3: $4 \ne 5$. It fails.</p>
+<p>Conclusion: $f$ is not continuous at 2, because $\lim_{x \to 2} f(x) = 4 \ne 5 = f(2)$. Had the rule been $f(2) = 4$, all three conditions would hold.</p>
+</div>
+
+<h2>Checking a piecewise function</h2>
+<p>At a break point, the one-sided limits come from different pieces. Find each one, then compare.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Let $g(x) = x^2 - 1$ for $x < 2$, $g(2) = 3$, and $g(x) = 4x - 5$ for $x > 2$. Show that $g$ is continuous at $x = 2$.</p>
+<p>Condition 1: $g(2) = 3$.</p>
+<p>Condition 2: $\lim_{x \to 2^-} g(x) = 2^2 - 1 = 3$ and $\lim_{x \to 2^+} g(x) = 4(2) - 5 = 3$. The one-sided limits are equal, so $\lim_{x \to 2} g(x) = 3$.</p>
+<p>Condition 3: $\lim_{x \to 2} g(x) = 3 = g(2)$.</p>
+<p>All three hold, so $g$ is continuous at $x = 2$.</p>
+</div>
+<p>Notice the write-up. Each condition gets its own sentence with its own number. "The pieces match" or "there is no break" is a conclusion, not a justification.</p>
+
+<h2>Reading a graph or a table</h2>
+<p>On a graph, ask three questions at $x = c$. Is there a closed dot? Does the curve arrive at the same height from both sides? Is the dot at that height? A closed dot at the end of one piece (a jump) passes the first question and fails the second. A dot floating above a hole passes the first two and fails the third.</p>
+<p>A table can suggest continuity: if $f(c) = 2$ is listed and the values on both sides close in on 2, continuity at $c$ is likely. As always, a table estimates the limit; it does not prove it.</p>
+
+<h2>Why continuity matters</h2>
+<p>If $f$ is continuous at $c$, then $\lim_{x \to c} f(x) = f(c)$. That single fact is behind direct substitution: polynomials are continuous everywhere, so their limits are their values. It also works in reverse. If you know a function is continuous at 4 and you can find its limit there, you know its value.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> $f$ is continuous at $x = 4$ and $\lim_{x \to 4} (f(x) + 2x) = 13$. Find $f(4)$.</p>
+<p>By the limit laws, $\lim_{x \to 4} f(x) = 13 - \lim_{x \to 4} 2x = 13 - 8 = 5$.</p>
+<p>Continuity at 4 gives $f(4) = \lim_{x \to 4} f(x) = 5$.</p>
+</div>
+<p>Later in the course, big theorems start with "if $f$ is continuous". Each time, you will need to say why the function is continuous before you use the theorem. This definition is where that habit begins.</p>

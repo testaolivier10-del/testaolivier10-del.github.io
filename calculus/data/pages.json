@@ -134,7 +134,7 @@
    "topic": "limits-from-plots",
    "name": "Limit explorer",
    "title": "Limit Explorer",
-   "desc": "Zoom in on a graph near a point: one-sided limits, holes, jumps, asymptotes and the squeeze theorem, with a table of values closing in.",
+   "desc": "Zoom in on a graph near a point: one-sided limits, holes, jumps, asymptotes, oscillation, limits at infinity and the squeeze theorem, with a table of values closing in and a continuity checklist.",
    "blurb": "Zoom in on a point and watch the limit from each side.",
    "lede": "Zoom in on a graph and a table until the limit is clear.",
    "studio": true
@@ -156,7 +156,7 @@
    "topic": "power-rule",
    "name": "Rule drills",
    "title": "Derivative Rule Drills",
-   "desc": "Unlimited derivative drills, step by step: power, product, quotient, chain, implicit and inverse rules, every step typed and graded by value.",
+   "desc": "Unlimited derivative drills, step by step: power, product, quotient, chain, implicit and inverse rules, every step typed and graded by value, plus a rule picker that shows the structure of any function you type.",
    "blurb": "Build a derivative one rule at a time, every step checked.",
    "lede": "Build derivatives one rule at a time.",
    "studio": true
@@ -167,7 +167,7 @@
    "topic": "related-rates-intro",
    "name": "Related rates",
    "title": "Related Rates Trainer",
-   "desc": "Animated related rates scenes (a sliding ladder, a filling cone, a shadow, a growing circle) with live rates and the chain of equations.",
+   "desc": "Animated related rates scenes (a sliding ladder, a filling cone, a streetlight shadow, a spreading ripple, a rising balloon) with live rates and the chain of equations.",
    "blurb": "Watch rates change together, then write the equation that links them.",
    "lede": "See every rate in the scene change together.",
    "premium": "tools",

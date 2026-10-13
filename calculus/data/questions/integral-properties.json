@@ -1,0 +1,529 @@
+{
+ "stimuli": {
+  "integral-properties-s1": {
+   "kind": "table",
+   "title": "Known values of definite integrals",
+   "text": "The functions $f$ and $g$ are continuous. The table gives four definite integrals.",
+   "table": {
+    "caption": "Definite integrals of f and g",
+    "cols": [
+     "Integral",
+     "Value"
+    ],
+    "rows": [
+     [
+      "$\\int_0^3 f(x)\\,dx$",
+      "5"
+     ],
+     [
+      "$\\int_0^7 f(x)\\,dx$",
+      "12"
+     ],
+     [
+      "$\\int_0^3 g(x)\\,dx$",
+      "4"
+     ],
+     [
+      "$\\int_3^7 g(x)\\,dx$",
+      "$-2$"
+     ]
+    ]
+   }
+  },
+  "integral-properties-s2": {
+   "kind": "graph",
+   "title": "The graph of $f$ on $[-4, 4]$",
+   "text": "On $[-4, 0]$ the graph of $f$ is a semicircle of radius 2 below the x-axis. On $[0, 2]$ it is the segment from $(0, 0)$ to $(2, 2)$. On $(2, 4]$, $f(x) = 1$: $f$ has a jump at $x = 2$, where $f(2) = 2$.",
+   "plot": {
+    "label": "Graph of f on [-4, 4]: a semicircle of radius 2 below the x-axis from -4 to 0, a segment from (0, 0) to (2, 2), then a jump down to the horizontal segment y = 1 from x = 2 to 4",
+    "width": 420,
+    "height": 250,
+    "x": [
+     -4.5,
+     4.5
+    ],
+    "y": [
+     -2.5,
+     2.6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "-sqrt(4 - (x + 2)^2)",
+      "domain": [
+       -4,
+       0
+      ],
+      "cls": "s1",
+      "label": "f"
+     },
+     {
+      "fn": "x",
+      "domain": [
+       0,
+       2
+      ],
+      "cls": "s1",
+      "ends": [
+       null,
+       "closed"
+      ]
+     },
+     {
+      "fn": "1",
+      "domain": [
+       2,
+       4
+      ],
+      "cls": "s1",
+      "ends": [
+       "open",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -4,
+       0
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-integral-properties-1",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "integral-properties-s1",
+   "q": "Find $\\int_3^7 f(x)\\,dx$.",
+   "numeric": {
+    "answer": 7,
+    "mistakes": [
+     {
+      "value": 17,
+      "why": "$[0, 3]$ and $[3, 7]$ together make $[0, 7]$, so $\\int_0^3 f + \\int_3^7 f = \\int_0^7 f$. Subtract 5 from 12; do not add."
+     },
+     {
+      "value": -7,
+      "why": "$\\int_3^7 f(x)\\,dx = 12 - 5$, positive. The minus sign would come from writing the limits the other way, $\\int_7^3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Additivity: $\\int_0^7 f = \\int_0^3 f + \\int_3^7 f$, so $\\int_3^7 f(x)\\,dx = 12 - 5 = 7$."
+   }
+  },
+  {
+   "id": "calc-integral-properties-2",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "integral-properties-s1",
+   "q": "Find $\\int_7^3 \\left(2f(x) - g(x)\\right)dx$.",
+   "numeric": {
+    "answer": -16,
+    "mistakes": [
+     {
+      "value": 16,
+      "why": "That is $\\int_3^7$. The limits here run from 7 down to 3, which flips the sign."
+     },
+     {
+      "value": -12,
+      "why": "$\\int_3^7 g(x)\\,dx = -2$, so subtracting it adds 2: $2(7) - (-2) = 16$, then flip the sign."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_3^7 (2f - g)\\,dx = 2(7) - (-2) = 16$. Reversing the limits changes the sign: $\\int_7^3 (2f(x) - g(x))\\,dx = -16$."
+   }
+  },
+  {
+   "id": "calc-integral-properties-3",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integral-properties-s1",
+   "q": "Find $\\int_3^7 \\left(f(x) + 4\\right)dx$.",
+   "numeric": {
+    "answer": 23,
+    "mistakes": [
+     {
+      "value": 11,
+      "why": "The constant 4 is integrated over an interval 4 wide: $\\int_3^7 4\\,dx = 4 \\cdot 4 = 16$, not 4."
+     },
+     {
+      "value": 16,
+      "why": "That is only $\\int_3^7 4\\,dx$. Add $\\int_3^7 f(x)\\,dx = 7$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_3^7 f(x)\\,dx + \\int_3^7 4\\,dx = 7 + 4(7 - 3) = 7 + 16 = 23$."
+   }
+  },
+  {
+   "id": "calc-integral-properties-4",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "integral-properties-s1",
+   "q": "Find $\\int_0^7 g(x)\\,dx$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "$\\int_3^7 g(x)\\,dx$ is $-2$; adding it lowers the total: $4 + (-2) = 2$."
+     },
+     {
+      "value": -8,
+      "why": "Additivity adds the two pieces: $4 + (-2)$, not their product."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^7 g = \\int_0^3 g + \\int_3^7 g = 4 + (-2) = 2$."
+   }
+  },
+  {
+   "id": "calc-integral-properties-5",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integral-properties-s2",
+   "q": "Split $[-4, 4]$ where the pieces of the graph change and add the signed areas. Find $\\int_{-4}^{4} f(x)\\,dx$.",
+   "numeric": {
+    "answer": "4 - 2*pi",
+    "mistakes": [
+     {
+      "value": "4 + 2*pi",
+      "why": "The semicircle lies below the axis, so its area $2\\pi$ is subtracted."
+     },
+     {
+      "value": "4 - 4*pi",
+      "why": "The region on $[-4, 0]$ is half a disc: $\\frac{1}{2}\\pi(2)^2 = 2\\pi$, not $4\\pi$."
+     },
+     {
+      "value": "6 - 2*pi",
+      "why": "On $(2, 4]$ the height is 1, not 2: that rectangle has area 2. The jump at $x = 2$ matters."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$[-4, 0]$: $-2\\pi$. $[0, 2]$: triangle $\\frac{1}{2}(2)(2) = 2$. $[2, 4]$: rectangle $2 \\cdot 1 = 2$. Total: $4 - 2\\pi$."
+   }
+  },
+  {
+   "id": "calc-integral-properties-6",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integral-properties-s2",
+   "q": "Watch the order of the limits: find $\\int_4^0 f(x)\\,dx$.",
+   "numeric": {
+    "answer": -4,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is $\\int_0^4 f(x)\\,dx$. With the limits reversed the value changes sign."
+     },
+     {
+      "value": -3,
+      "why": "On $(2, 4]$, $f = 1$, so that rectangle has area 2. The triangle on $[0, 2]$ also has area 2: $\\int_0^4 f = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^4 f(x)\\,dx = 2 + 2 = 4$, so $\\int_4^0 f(x)\\,dx = -\\int_0^4 f(x)\\,dx = -4$."
+   }
+  },
+  {
+   "id": "calc-integral-properties-7",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "integral-properties-s2",
+   "q": "From $x = -2$ to $x = 2$ the graph passes from the semicircle to the segment. Find $\\int_{-2}^{2} f(x)\\,dx$.",
+   "numeric": {
+    "answer": "2 - pi",
+    "mistakes": [
+     {
+      "value": "2 + pi",
+      "why": "From $-2$ to 0 the graph is a quarter circle below the axis: subtract $\\pi$."
+     },
+     {
+      "value": "2 - 2*pi",
+      "why": "From $-2$ to 0 is only half of the semicircle: a quarter disc, area $\\frac{1}{4}\\pi(2)^2 = \\pi$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$[-2, 0]$: a quarter disc of radius 2 below the axis, $-\\pi$. $[0, 2]$: triangle, $2$. Total $2 - \\pi$."
+   }
+  },
+  {
+   "id": "calc-integral-properties-8",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "integral-properties-s2",
+   "q": "$f$ has a jump at $x = 2$. Can $\\int_0^4 f(x)\\,dx$ still be found, and if so, what is it?",
+   "options": [
+    "Yes, it is 2, counting the area on [0, 2] and leaving out the rest",
+    "Yes, it is 4; a single jump does not stop it",
+    "No: a definite integral needs a continuous integrand",
+    "Yes, it is 6, because f(2) = 2 sets the height on [2, 4]"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Split at the jump: $\\int_0^4 f = \\int_0^2 f + \\int_2^4 f = 2 + 2 = 4$. The value at the single point $x = 2$ does not affect the integral.",
+    "options": [
+     "$f = 1$ on $(2, 4]$ is continuous there too: add its area, 2.",
+     "Correct: the region is a triangle and a rectangle, $2 + 2$; a bounded function with a jump can be integrated.",
+     "Continuity guarantees an integral exists, but a bounded function with a jump is integrable too.",
+     "A single point has no width, so $f(2)$ adds nothing. On $(2, 4]$ the height is 1."
+    ]
+   }
+  },
+  {
+   "id": "calc-integral-properties-9",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "single",
+   "practice": "1.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "If $h$ is continuous, what is $\\int_5^5 h(x)\\,dx$?",
+   "options": [
+    "0",
+    "$h(5)$",
+    "$5h(5)$",
+    "It depends on h"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\int_a^a h(x)\\,dx = 0$: every Riemann sum on $[5, 5]$ has width 0.",
+    "options": [
+     "Correct: an interval of width 0 has no area.",
+     "That is the height at 5. Height times a width of 0 is 0.",
+     "The width of [5, 5] is 0, not 5.",
+     "For any $h$, the interval has no width, so the integral is 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-integral-properties-10",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "If $\\int_1^4 f(x)\\,dx = 6$, what is $\\int_4^1 3f(x)\\,dx$?",
+   "options": [
+    "$18$",
+    "$-6$",
+    "$-9$",
+    "$-18$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\int_4^1 3f(x)\\,dx = -3\\int_1^4 f(x)\\,dx = -3(6) = -18$.",
+    "options": [
+     "The limits run from 4 to 1, which flips the sign.",
+     "The constant 3 multiplies the integral too.",
+     "The 3 multiplies the integral; it is not added to it. Then reverse the sign: -3(6).",
+     "Correct: the 3 multiplies, and reversing the limits flips the sign."
+    ]
+   }
+  },
+  {
+   "id": "calc-integral-properties-11",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "If $\\int_0^6 f(x)\\,dx = -1$, find $\\int_0^6 \\left(2f(x) + 3\\right)dx$.",
+   "numeric": {
+    "answer": 16,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "The 3 is integrated over $[0, 6]$: $\\int_0^6 3\\,dx = 18$, not 3."
+     },
+     {
+      "value": 17,
+      "why": "The 2 multiplies $\\int_0^6 f(x)\\,dx$: $2(-1) = -2$. Then $-2 + 18 = 16$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2\\int_0^6 f(x)\\,dx + \\int_0^6 3\\,dx = 2(-1) + 3 \\cdot 6 = 16$."
+   }
+  },
+  {
+   "id": "calc-integral-properties-12",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For continuous functions $f$ and $g$, which statement is <b>not</b> true in general?",
+   "options": [
+    "$\\int_b^a f(x)\\,dx = -\\int_a^b f(x)\\,dx$",
+    "$\\int_a^b fg\\,dx = \\int_a^b f\\,dx \\cdot \\int_a^b g\\,dx$",
+    "$\\int_a^b \\left(f(x) + g(x)\\right)dx = \\int_a^b f(x)\\,dx + \\int_a^b g(x)\\,dx$",
+    "$\\int_a^b 5f(x)\\,dx = 5\\int_a^b f(x)\\,dx$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Sums and constant multiples pass through an integral; products do not. On $[0, 2]$ with $f = g = 1$: $\\int_0^2 1\\,dx = 2$, but $2 \\cdot 2 = 4$.",
+    "options": [
+     "This is true: running the interval backward makes every width negative.",
+     "Correct, this is false: with $f = g = 1$ on $[0, 2]$ the left side is 2 and the right side is 4. Integrals split over sums, not over products.",
+     "This is true: every Riemann sum of f + g splits into a sum for f plus a sum for g.",
+     "This is true: a constant factor comes out of every Riemann sum, so it comes out of the integral."
+    ]
+   }
+  },
+  {
+   "id": "calc-integral-properties-13",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "If $\\int_1^5 f(x)\\,dx = 8$ and $\\int_3^5 f(x)\\,dx = 10$, what is $\\int_1^3 f(x)\\,dx$?",
+   "options": [
+    "$-2$",
+    "18",
+    "2",
+    "More information about f is needed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\int_1^5 f = \\int_1^3 f + \\int_3^5 f$, so $\\int_1^3 f(x)\\,dx = 8 - 10 = -2$.",
+    "options": [
+     "Correct: $\\int_1^3 f + 10 = 8$.",
+     "$[1, 3]$ and $[3, 5]$ make $[1, 5]$: the two pieces add to 8, so subtract 10 from 8.",
+     "$8 - 10 = -2$: the piece from 1 to 3 must be negative for the total to be less than 10.",
+     "Additivity gives it from the two values: 8 - 10."
+    ]
+   }
+  },
+  {
+   "id": "calc-integral-properties-14",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "$f$ is positive on $[0, 2]$, and the region between its graph and the x-axis there has area 3. Let $g(x) = \\int_2^x f(t)\\,dt$. What is $g(0)$?",
+   "options": [
+    "3",
+    "0",
+    "$-6$",
+    "$-3$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$g(0) = \\int_2^0 f(t)\\,dt = -\\int_0^2 f(t)\\,dt = -3$. With the upper limit below the lower limit, a positive integrand gives a negative value.",
+    "options": [
+     "The area is 3, but $g(0)$ runs from 2 back to 0: reversed limits give $-3$.",
+     "$g$ is 0 at $x = 2$, its lower limit, not at $x = 0$.",
+     "Reversing the limits changes only the sign: -3.",
+     "Correct: $g(0) = \\int_2^0 f(t)\\,dt = -\\int_0^2 f(t)\\,dt = -3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-integral-properties-15",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $p(x) = x$ for $x < 2$ and $p(x) = 5$ for $x \\ge 2$. Find $\\int_0^4 p(x)\\,dx$.",
+   "numeric": {
+    "answer": 12,
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That uses $p(x) = x$ on all of $[0, 4]$. From 2 to 4, $p = 5$: a rectangle of area 10."
+     },
+     {
+      "value": 20,
+      "why": "That uses height 5 on all of $[0, 4]$. From 0 to 2, $p(x) = x$: a triangle of area 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Split at the jump: $\\int_0^2 x\\,dx + \\int_2^4 5\\,dx = 2 + 10 = 12$."
+   }
+  },
+  {
+   "id": "calc-integral-properties-16",
+   "unit": "unit-6",
+   "topic": "integral-properties",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Water enters a reservoir at $r(t)$ millions of gallons per day, with $\\int_0^{10} r(t)\\,dt = 40$ and $\\int_0^{4} r(t)\\,dt = 15$, $t$ in days. What is $\\int_4^{10} r(t)\\,dt$, and what does it mean?",
+   "options": [
+    "25: the reservoir holds 25 million gallons at day 10",
+    "25: 25 million gallons enter from day 4 to day 10",
+    "55: 55 million gallons enter from day 0 to day 10",
+    "25: water enters at 25 million gallons per day after day 4"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Additivity: $\\int_4^{10} r = \\int_0^{10} r - \\int_0^4 r = 25$. It is the number of millions of gallons of water that enter between $t = 4$ and $t = 10$ days.",
+    "options": [
+     "The integral gives the water that entered, not the amount held, which depends on the starting amount.",
+     "Correct: $40 - 15 = 25$, in the accumulated unit, millions of gallons.",
+     "The pieces [0, 4] and [4, 10] add to 40; the second piece is 40 - 15.",
+     "The integral of a rate is an amount (millions of gallons), not a rate."
+    ]
+   }
+  }
+ ]
+}

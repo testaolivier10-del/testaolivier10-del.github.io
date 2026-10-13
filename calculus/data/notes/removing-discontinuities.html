@@ -1,0 +1,38 @@
+<p>The last three topics taught you to spot and classify breaks. Now you repair them. Exam questions phrase this two ways: "what value should $f(c)$ be?" and "for what value of $k$ is $f$ continuous?" Both come down to one idea: the value at the point has to equal the limit there.</p>
+
+<h2>Filling a hole</h2>
+<p>A removable discontinuity has a limit, $L = \lim_{x \to c} f(x)$, but the value $f(c)$ is missing or different. To remove it, define (or redefine) the function at $c$ to be $L$. Then all three conditions hold: $f(c)$ is defined, the limit exists, and they are equal.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> $b(x) = \frac{\sqrt{x + 9} - 3}{x}$ is undefined at 0. What value of $b(0)$ makes $b$ continuous at 0?</p>
+<p>Find the limit. Substitution gives $\frac{0}{0}$, so multiply by the conjugate:</p>
+<p>$$\frac{\sqrt{x + 9} - 3}{x} \cdot \frac{\sqrt{x + 9} + 3}{\sqrt{x + 9} + 3} = \frac{x}{x(\sqrt{x + 9} + 3)} = \frac{1}{\sqrt{x + 9} + 3}$$</p>
+<p>So $\lim_{x \to 0} b(x) = \frac{1}{6}$. Define $b(0) = \frac{1}{6}$.</p>
+</div>
+<p>Often you can do better than patching one point: write a single formula that has no hole. $\frac{x^2 - 9}{x + 3}$ equals $x - 3$ for $x \ne -3$, and $g(x) = x - 3$ is a polynomial, continuous everywhere, with $g(-3) = -6$ exactly where the hole was.</p>
+
+<h2>Choosing a constant in a piecewise function</h2>
+<p>When a piecewise function contains a constant $k$, continuity at the break point turns into an equation for $k$. Find each side's limit using its own rule, and remember which rule gives the value at the break point.</p>
+<figure id="fig-k" data-fig="removing-discontinuity-k"><figcaption>With the wrong $k$ the pieces miss; with the right $k$ they meet.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> Let $f(x) = kx + 1$ for $x < 2$ and $f(x) = x^2 - 1$ for $x \ge 2$. Find $k$ so that $f$ is continuous at 2.</p>
+<p>Left: $\lim_{x \to 2^-} f(x) = 2k + 1$.</p>
+<p>Right and value: $\lim_{x \to 2^+} f(x) = 2^2 - 1 = 3$, and $f(2) = 3$ from the same rule.</p>
+<p>Set them equal: $2k + 1 = 3$, so $k = 1$.</p>
+<p>Check: with $k = 1$ the left side approaches $2 + 1 = 3$, which matches.</p>
+</div>
+<p>Each piece here is a polynomial, continuous on its own interval, so the break point is the only place to check. With $k = 1$, $f$ is continuous on $(-\infty, \infty)$.</p>
+
+<h2>Two constants, two break points</h2>
+<p>A function with three pieces has two break points. Each one gives an equation, and together they fix two constants.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> $f(x) = x + 2$ for $x < 0$, $ax + b$ for $0 \le x \le 2$, and $3x^2 - 2$ for $x > 2$. Find $a$ and $b$ so that $f$ is continuous everywhere.</p>
+<p>At $x = 0$: the left side approaches $0 + 2 = 2$; the middle rule gives $f(0) = b$. So $b = 2$.</p>
+<p>At $x = 2$: the middle rule gives $f(2) = 2a + b = 2a + 2$; the right side approaches $3(4) - 2 = 10$. So $2a + 2 = 10$, and $a = 4$.</p>
+</div>
+
+<h2>When no value works</h2>
+<p>A constant can only move its own piece. Suppose $f(x) = x^2 + k$ for $x < 3$, $f(3) = 5$, and $f(x) = 2x + 1$ for $x > 3$. The right side approaches 7, but the value is fixed at 5. No choice of $k$ changes either of those, so no $k$ makes $f$ continuous at 3. Always compare all three: left limit, right limit and value.</p>
+<p>Jumps and infinite discontinuities cannot be removed either. At a jump the one-sided limits disagree, so there is no single limit for the value to match. Near a vertical asymptote the function is unbounded, so again there is no limit. Only removable discontinuities live up to their name.</p>
+
+<h2>Writing it up</h2>
+<p>A complete answer names the condition and shows the numbers: "For $f$ to be continuous at 2, $\lim_{x \to 2^-} f(x) = \lim_{x \to 2^+} f(x) = f(2)$. The left rule gives $2k + 1$ and the right rule gives 3, so $2k + 1 = 3$ and $k = 1$." Then check by substituting back.</p>

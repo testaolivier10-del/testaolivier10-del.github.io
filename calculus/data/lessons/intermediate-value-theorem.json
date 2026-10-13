@@ -1,0 +1,72 @@
+{
+ "topic": "intermediate-value-theorem",
+ "hook": "If you were 50 cm tall at birth and 170 cm tall at 16, then at some moment you were exactly 1 meter tall. Nobody measured it, but height does not jump, so it had to pass through every value in between. The Intermediate Value Theorem turns that common sense into a tool, and the exam rewards you for saying exactly why it applies.",
+ "prereq": [
+  {
+   "q": "Which function is continuous on $[0, 2]$?",
+   "options": [
+    "$x^2 - 3x$",
+    "$\\frac{1}{x - 1}$",
+    "$\\ln x$",
+    "$\\frac{|x - 1|}{x - 1}$"
+   ],
+   "correct": 0,
+   "why": "A polynomial is continuous everywhere. The others break inside [0, 2] or at 0.",
+   "review": "continuity-on-intervals"
+  },
+  {
+   "q": "At a jump discontinuity, a function",
+   "options": [
+    "skips the values between its one-sided limits",
+    "grows without bound",
+    "has a hole",
+    "is undefined"
+   ],
+   "correct": 0,
+   "why": "The graph steps from one height to another with nothing in between.",
+   "review": "discontinuity-types"
+  }
+ ],
+ "figure": {
+  "figure": "ivt-continuous-vs-jump",
+  "caption": "Continuity on the closed interval forces every in-between value; a jump can skip one."
+ },
+ "chain": [
+  {
+   "cause": "$f$ is continuous on the closed interval $[a, b]$",
+   "effect": "its graph has no break from $(a, f(a))$ to $(b, f(b))$"
+  },
+  {
+   "cause": "A number $d$ lies between $f(a)$ and $f(b)$",
+   "effect": "the horizontal line $y = d$ separates the two endpoints of the graph"
+  },
+  {
+   "cause": "An unbroken graph joins points on opposite sides of a line",
+   "effect": "it must cross the line: $f(c) = d$ for at least one $c$ in $(a, b)$"
+  },
+  {
+   "cause": "Either hypothesis fails (a break, or $d$ outside the range of the endpoint values)",
+   "effect": "the theorem promises nothing; the value may or may not be reached"
+  }
+ ],
+ "ideas": [
+  "<b>Intermediate Value Theorem (IVT):</b> if $f$ is continuous on $[a, b]$ and $d$ is between $f(a)$ and $f(b)$, then $f(c) = d$ for at least one $c$ in $(a, b)$.",
+  "<b>Hypotheses</b> come first: continuity on the closed interval, with a reason (\"polynomial\", \"stated in the problem\"), and $d$ between the endpoint values, with the numbers.",
+  "The conclusion is existence: <b>at least one</b> $c$. The theorem does not say where, or how many.",
+  "With a table, apply the theorem on each pair of neighboring inputs; non-overlapping intervals give separate solutions.",
+  "Finding $c$ is a separate job: algebra, or a calculator (three decimal places)."
+ ],
+ "misconception": {
+  "wrong": "$f(0) = -1$ and $f(4) = 3$, so by the IVT, $f(c) = 1$ for some $c$ in $(0, 4)$.",
+  "right": "The theorem needs $f$ to be continuous on $[0, 4]$, and the justification must say so. A function with a jump can have $f(0) < 1 < f(4)$ and never equal 1. Write: \"$f$ is continuous on $[0, 4]$ and $f(0) < 1 < f(4)$, so by the IVT ...\""
+ },
+ "check": [
+  "calc-intermediate-value-theorem-1",
+  "calc-intermediate-value-theorem-2",
+  "calc-intermediate-value-theorem-4",
+  "calc-intermediate-value-theorem-5",
+  "calc-intermediate-value-theorem-9",
+  "calc-intermediate-value-theorem-13"
+ ],
+ "summary": "If $f$ is continuous on $[a, b]$ and $d$ is between $f(a)$ and $f(b)$, then $f(c) = d$ for at least one $c$ in $(a, b)$. A justification states both hypotheses with reasons and numbers, names the theorem, and concludes \"for some $c$ in $(a, b)$\". Without continuity on the closed interval, the conclusion can fail."
+}

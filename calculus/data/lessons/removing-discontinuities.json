@@ -1,0 +1,84 @@
+{
+ "topic": "removing-discontinuities",
+ "hook": "A bridge crew can fill a single pothole with one shovel of asphalt, but no shovel fills a canyon. Some discontinuities are potholes: one point, set to the right height, repairs them. Others, jumps and asymptotes, cannot be fixed that way. This lesson is about choosing the right value, or the right constant, to make a function whole.",
+ "prereq": [
+  {
+   "q": "$f$ is continuous at $c$ when",
+   "options": [
+    "$f(c)$ exists, the limit at $c$ exists, and they are equal",
+    "the graph looks smooth",
+    "$f(c)$ exists",
+    "the one-sided limits exist"
+   ],
+   "correct": 0,
+   "why": "All three conditions are needed.",
+   "review": "continuity-at-a-point"
+  },
+  {
+   "q": "$\\lim_{x \\to 0} \\frac{\\sin(2x)}{x}$ is",
+   "options": [
+    "2",
+    "1",
+    "0",
+    "$\\frac{1}{2}$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{\\sin(2x)}{x} = 2 \\cdot \\frac{\\sin(2x)}{2x} \\to 2$.",
+   "review": "squeeze-theorem"
+  },
+  {
+   "q": "At a removable discontinuity, the limit",
+   "options": [
+    "exists",
+    "does not exist",
+    "is unbounded",
+    "equals the function value"
+   ],
+   "correct": 0,
+   "why": "Removable: the limit exists but the value is missing or different.",
+   "review": "discontinuity-types"
+  }
+ ],
+ "figure": {
+  "figure": "removing-discontinuity-k",
+  "caption": "Choosing $k$ so that the two pieces meet."
+ },
+ "chain": [
+  {
+   "cause": "$f$ has a removable discontinuity at $c$, with $\\lim_{x \\to c} f(x) = L$",
+   "effect": "defining (or redefining) $f(c) = L$ makes $f$ continuous at $c$"
+  },
+  {
+   "cause": "A piecewise function has a constant $k$ in one or both pieces",
+   "effect": "continuity at the break point gives an equation: the left-hand limit equals the right-hand limit equals the value"
+  },
+  {
+   "cause": "There are two unknown constants and two break points",
+   "effect": "each break point gives one equation; solve them together"
+  },
+  {
+   "cause": "The discontinuity is a jump or infinite",
+   "effect": "no single value can fix it, because the two-sided limit does not exist"
+  }
+ ],
+ "ideas": [
+  "To <b>remove</b> a removable discontinuity, find $L = \\lim_{x \\to c} f(x)$ and define $f(c) = L$.",
+  "At a break point of a piecewise function, set the left-hand limit, the right-hand limit and the value equal. Each break point gives one equation.",
+  "A constant can only move its own piece. If the value at the point and the other piece already disagree, no constant fixes it.",
+  "A jump or an infinite discontinuity cannot be removed: the limit does not exist, so no value can equal it.",
+  "Write the result as a check: substitute your constant back and show both sides give the same number."
+ ],
+ "misconception": {
+  "wrong": "To make $f$ continuous at $c$, just define $f(c)$ to be any number, since the problem is that $f(c)$ is undefined.",
+  "right": "The value must equal the limit: $f(c) = \\lim_{x \\to c} f(x)$. And this works only when that limit exists. For a jump or an asymptote, no value of $f(c)$ makes the function continuous."
+ },
+ "check": [
+  "calc-removing-discontinuities-1",
+  "calc-removing-discontinuities-3",
+  "calc-removing-discontinuities-4",
+  "calc-removing-discontinuities-6",
+  "calc-removing-discontinuities-10",
+  "calc-removing-discontinuities-15"
+ ],
+ "summary": "A removable discontinuity is removed by defining $f(c)$ to be the limit at $c$. A piecewise function is made continuous at a break point by choosing constants so the two one-sided limits and the value agree; each break point gives one equation. Jumps and infinite discontinuities cannot be removed by choosing a value."
+}

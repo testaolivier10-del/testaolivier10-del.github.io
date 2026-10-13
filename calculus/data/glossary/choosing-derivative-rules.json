@@ -1,0 +1,5 @@
+{
+ "derivative-strategy": {
+  "def": "Choosing which differentiation rule to apply first by finding the last operation in the expression (sum, product, quotient or composition), then repeating the choice on each piece; rewriting first when it removes a rule."
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "topic": "math-limit-algebra",
+ "hook": "The most common limit on the exam looks impossible at first: substitute, and the top and bottom are both zero. The way through is algebra you already know from precalculus: factoring, multiplying by a conjugate, combining fractions. This page sharpens exactly those moves, in the form calculus will ask for them.",
+ "prereq": [
+  {
+   "q": "Direct substitution gives $\\lim_{x \\to 2} (x^2 + 1) =$",
+   "options": [
+    "$5$",
+    "$4$",
+    "$3$",
+    "it does not exist"
+   ],
+   "correct": 0,
+   "why": "A polynomial: substitute, $4 + 1 = 5$.",
+   "review": "limit-laws"
+  },
+  {
+   "q": "Which expression equals $\\frac{1}{\\sqrt{x}}$?",
+   "options": [
+    "$x^{-1/2}$",
+    "$x^{1/2}$",
+    "$x^{-2}$",
+    "$-x^{1/2}$"
+   ],
+   "correct": 0,
+   "why": "$\\sqrt{x} = x^{1/2}$; a reciprocal flips the sign of the exponent.",
+   "review": "math-exponent-rules"
+  }
+ ],
+ "figure": {
+  "figure": "rationalize-hole",
+  "caption": "$\\frac{\\sqrt{x} - 2}{x - 4}$ equals $\\frac{1}{\\sqrt{x} + 2}$ everywhere except $x = 4$. Multiplying by the conjugate reveals the height of the hole, $\\frac{1}{4}$."
+ },
+ "chain": [
+  {
+   "cause": "A fraction has a factor that is 0 at $x = a$ in both top and bottom",
+   "effect": "factor top and bottom so that factor is visible"
+  },
+  {
+   "cause": "Canceling the common factor",
+   "effect": "gives a simpler expression equal to the original for every $x \\ne a$"
+  },
+  {
+   "cause": "A square root sits next to a number, as in $\\sqrt{x} - 2$",
+   "effect": "multiplying by the conjugate $\\sqrt{x} + 2$ turns it into $x - 4$, which can cancel"
+  },
+  {
+   "cause": "Fractions inside a fraction",
+   "effect": "a common denominator turns the complex fraction into one fraction you can simplify"
+  }
+ ],
+ "ideas": [
+  "<b>Factoring</b> toolkit: common factor; difference of squares $a^2 - b^2 = (a - b)(a + b)$; trinomials (with the $ac$ method when the leading coefficient is not 1); cubes $a^3 \\pm b^3 = (a \\pm b)(a^2 \\mp ab + b^2)$.",
+  "Cancel factors, never terms: $\\frac{x(x - 4)}{(x - 4)(x + 4)} = \\frac{x}{x + 4}$, but $\\frac{x^2 + 4}{x + 2}$ does not simplify.",
+  "<b>Rationalizing</b>: multiply top and bottom by the <b>conjugate</b> ($\\sqrt{A} - B$ and $\\sqrt{A} + B$ form a pair). Their product is $A - B^2$. Leave the other factor unmultiplied.",
+  "A <b>complex fraction</b> becomes one fraction with a common denominator; then divide.",
+  "Expand powers fully: $(a + h)^2 = a^2 + 2ah + h^2$. The middle term is the one that matters."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{x^2 - 4x}{x^2 - 16} = \\frac{-4x}{-16}$, canceling the $x^2$ terms.",
+  "right": "Only factors cancel. Factor first: $\\frac{x(x - 4)}{(x - 4)(x + 4)} = \\frac{x}{x + 4}$. Test a number to catch the error: at $x = 1$ the original is $\\frac{1}{5}$, not $\\frac{1}{4}$."
+ },
+ "check": [
+  "calc-math-limit-algebra-1",
+  "calc-math-limit-algebra-3",
+  "calc-math-limit-algebra-4",
+  "calc-math-limit-algebra-5",
+  "calc-math-limit-algebra-7",
+  "calc-math-limit-algebra-9",
+  "calc-math-limit-algebra-10"
+ ],
+ "summary": "Limits that give zero over zero are settled with precalculus algebra: factor and cancel a common factor, multiply by a conjugate to clear a square root, or combine a complex fraction into one. Cancel factors, never terms, and expand powers in full. The simplified expression agrees with the original everywhere except the troublesome point."
+}

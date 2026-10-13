@@ -1,0 +1,558 @@
+{
+ "stimuli": {
+  "motion-with-integrals-s1": {
+   "kind": "graph",
+   "title": "The velocity $v(t)$ of a particle",
+   "plot": {
+    "label": "Graph of the velocity v(t) in meters per second for t from 0 to 10 seconds, made of segments through (0, 0), (2, 4), (5, 4), (8, -2) and (10, -2)",
+    "x": [
+     -0.5,
+     10.5
+    ],
+    "y": [
+     -3,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "t (seconds)",
+    "yLabel": "v(t) (m/s)",
+    "curves": [
+     {
+      "fn": "2x",
+      "domain": [
+       0,
+       2
+      ],
+      "ends": [
+       "closed",
+       null
+      ]
+     },
+     {
+      "fn": "4",
+      "domain": [
+       2,
+       5
+      ]
+     },
+     {
+      "fn": "14 - 2x",
+      "domain": [
+       5,
+       8
+      ]
+     },
+     {
+      "fn": "-2",
+      "domain": [
+       8,
+       10
+      ],
+      "ends": [
+       null,
+       "closed"
+      ]
+     }
+    ]
+   }
+  },
+  "motion-with-integrals-s2": {
+   "kind": "graph",
+   "title": "Velocity $v(t) = 4 - t + 2\\sin t$",
+   "plot": {
+    "label": "Graph of the velocity v(t) = 4 - t + 2 sin t in feet per second for t from 0 to 6 seconds, positive at first and negative near the end",
+    "x": [
+     0,
+     6.2
+    ],
+    "y": [
+     -3.5,
+     5.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "t (seconds)",
+    "yLabel": "v(t) (ft/s)",
+    "curves": [
+     {
+      "fn": "4 - x + 2sin(x)",
+      "domain": [
+       0,
+       6
+      ],
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-motion-with-integrals-1",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-with-integrals-s1",
+   "q": "Find the displacement of the particle from $t = 0$ to $t = 10$ seconds. Include units.",
+   "numeric": {
+    "answer": 15,
+    "unit": "meters",
+    "askUnit": true,
+    "units": [
+     "m",
+     "meter",
+     "metres"
+    ],
+    "mistakes": [
+     {
+      "value": 25,
+      "why": "That adds every area as positive: it is the total distance. Displacement subtracts the areas below the axis: $4 + 12 + 4 - 1 - 4$."
+     },
+     {
+      "value": 10,
+      "why": "Count every piece: the triangle above the axis on (5, 7) adds 4 and the one below on (7, 8) subtracts 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^{10} v(t)\\,dt = 4 + 12 + 4 - 1 - 4 = 15$ meters."
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-2",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-with-integrals-s1",
+   "q": "Find the total distance the particle travels from $t = 0$ to $t = 10$ seconds. Include units.",
+   "numeric": {
+    "answer": 25,
+    "unit": "meters",
+    "askUnit": true,
+    "units": [
+     "m",
+     "meter",
+     "metres"
+    ],
+    "mistakes": [
+     {
+      "value": 15,
+      "why": "That is the displacement. Distance counts the leftward motion too: $4 + 12 + 4 + 1 + 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^{10} |v(t)|\\,dt = 4 + 12 + 4 + 1 + 4 = 25$ meters."
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-3",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-with-integrals-s1",
+   "q": "The particle is at $x = -3$ meters at $t = 0$. Find its position at $t = 10$.",
+   "numeric": {
+    "answer": 12,
+    "unit": "meters",
+    "mistakes": [
+     {
+      "value": 15,
+      "why": "That is the displacement. Add it to the starting position: $-3 + 15$."
+     },
+     {
+      "value": 18,
+      "why": "$x(10) = x(0) + 15 = -3 + 15$; the starting position is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x(10) = x(0) + \\int_0^{10} v(t)\\,dt = -3 + 15 = 12$ meters."
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-4",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "motion-with-integrals-s1",
+   "q": "At what time on $[0, 10]$ is the particle farthest to the right, and why?",
+   "options": [
+    "$t = 5$: $v$ starts to decrease there.",
+    "$t = 7$: $v$ changes from positive to negative there.",
+    "$t = 10$: the position has had the most time to grow.",
+    "$t = 2$: $v$ reaches its maximum value there."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x' = v$ changes from positive to negative at $t = 7$, so $x$ has a relative maximum there, and $x(7) = 17$ beats $x(0) = -3$ and $x(10) = 12$.",
+    "options": [
+     "After $t = 5$ the particle still moves right, more slowly, until $t = 7$.",
+     "The particle moves right until $t = 7$ and left after it; $x(7) = -3 + 20 = 17$ is the largest.",
+     "From $t = 7$ on the particle moves left, so $x(10) = 12 < x(7)$.",
+     "The fastest moment is not the farthest point."
+    ]
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-5",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "motion-with-integrals-s1",
+   "q": "On which interval is the particle speeding up?",
+   "options": [
+    "$(7, 8)$",
+    "$(5, 7)$",
+    "$(8, 10)$",
+    "$(2, 5)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Speeding up needs $v$ and $a$ with the same sign. On $(7, 8)$ both are negative (and on $(0, 2)$ both are positive).",
+    "options": [
+     "There $v < 0$ and $a = v' = -2 < 0$: same signs.",
+     "$v > 0$ but $a < 0$: the particle slows down.",
+     "$a = 0$ there: the speed stays 2 m/s.",
+     "$a = 0$ there: the speed stays 4 m/s."
+    ]
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-6",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-with-integrals-s2",
+   "calc": true,
+   "q": "A particle moves with velocity $v(t) = 4 - t + 2\\sin t$ feet per second, $0 \\le t \\le 6$. Find its displacement on $[0, 6]$. Include units.",
+   "numeric": {
+    "answer": 6.079659426699267,
+    "unit": "feet",
+    "askUnit": true,
+    "units": [
+     "ft",
+     "foot"
+    ],
+    "mistakes": [
+     {
+      "value": 17.43023335687935,
+      "why": "That is the total distance. Displacement is $\\int_0^6 v(t)\\,dt$, without absolute value."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^6 (4 - t + 2\\sin t)\\,dt \\approx 6.080$ feet (calculator, radian mode)."
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-7",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-with-integrals-s2",
+   "calc": true,
+   "q": "Find the total distance the particle travels on [0, 6]. Include units.",
+   "numeric": {
+    "answer": 17.43023335687935,
+    "unit": "feet",
+    "askUnit": true,
+    "units": [
+     "ft",
+     "foot"
+    ],
+    "mistakes": [
+     {
+      "value": 6.079659426699312,
+      "why": "That is the displacement: the leftward motion after $t \\approx 3.430$ was subtracted. Use $\\int_0^6 |v(t)|\\,dt$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^6 |4 - t + 2\\sin t|\\,dt \\approx 17.430$ feet."
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-8",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-with-integrals-s2",
+   "calc": true,
+   "q": "At $t = 0$ the particle is at $x = 5$ feet. Find its position at $t = 6$.",
+   "numeric": {
+    "answer": 11.079659426699267,
+    "unit": "feet",
+    "mistakes": [
+     {
+      "value": 6.079659426699312,
+      "why": "Add the starting position: $x(6) = 5 + \\int_0^6 v(t)\\,dt$."
+     },
+     {
+      "value": 22.43023335687935,
+      "why": "Position uses the displacement, not the total distance."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x(6) = 5 + \\int_0^6 v(t)\\,dt \\approx 5 + 6.080 = 11.080$ feet."
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-9",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "motion-with-integrals-s2",
+   "calc": true,
+   "q": "Is the particle speeding up or slowing down at $t = 5$?",
+   "options": [
+    "Speeding up: $v(5) < 0$ and $a(5) < 0$.",
+    "Slowing down: $a(5) < 0$.",
+    "Slowing down: $v(5)$ and $a(5)$ have opposite signs.",
+    "Speeding up: $v(5) > 0$ and $a(5) > 0$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$v(5) \\approx -2.918$ and $a(5) = v'(5) \\approx -0.433$ have the same sign, so the speed is increasing (radian mode).",
+    "options": [
+     "$v(5) = -1 + 2\\sin 5 \\approx -2.918$ and $a(5) = -1 + 2\\cos 5 \\approx -0.433$.",
+     "A negative acceleration slows the particle only when $v > 0$; here $v(5) < 0$ too.",
+     "Both are negative at $t = 5$.",
+     "$v(5) \\approx -2.918$ and $a(5) \\approx -0.433$, both negative."
+    ]
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-10",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which expression gives the total distance a particle with velocity $v(t)$ travels from $t = 1$ to $t = 4$?",
+   "options": [
+    "$\\left|\\int_1^4 v(t)\\,dt\\right|$",
+    "$\\int_1^4 v(t)\\,dt$",
+    "$\\int_1^4 v'(t)\\,dt$",
+    "$\\int_1^4 |v(t)|\\,dt$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Total distance $= \\int_1^4 |v(t)|\\,dt$; the absolute value goes inside the integral.",
+    "options": [
+     "That is the size of the displacement; back-and-forth motion cancels inside.",
+     "That is the displacement.",
+     "That is $v(4) - v(1)$, a change in velocity.",
+     "The integral of speed counts every stretch as positive."
+    ]
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-11",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A particle has velocity $v(t) = 3t^2 - 2$ and position $x(1) = 4$. Find $x(t)$.",
+   "expr": {
+    "answer": "t^3 - 2t + 5",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     0,
+     4
+    ],
+    "lhs": "x(t) =",
+    "mistakes": [
+     {
+      "expr": "t^3 - 2t",
+      "why": "This has $x(1) = -1$. Add the constant that makes $x(1) = 4$."
+     },
+     {
+      "expr": "t^3 - 2t + 4",
+      "why": "That starts the integral at $t = 0$. $x(t) = 4 + \\int_1^t (3s^2 - 2)\\,ds = t^3 - 2t + 5$."
+     },
+     {
+      "expr": "6t",
+      "why": "That is the acceleration, the derivative of v. Position is an antiderivative of v."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x(t) = x(1) + \\int_1^t (3s^2 - 2)\\,ds = 4 + (t^3 - 2t) - (1 - 2) = t^3 - 2t + 5$."
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-12",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A particle moves with $v(t) = t^2 - 4t + 3$ m/s. Find the total distance it travels on $0 \\le t \\le 4$, without a calculator.",
+   "numeric": {
+    "answer": 4,
+    "unit": "meters",
+    "mistakes": [
+     {
+      "value": "4/3",
+      "why": "That is $\\int_0^4 v(t)\\,dt$, the displacement. Split at $t = 1$ and $t = 3$, where $v$ changes sign."
+     },
+     {
+      "value": "8/3",
+      "why": "Three pieces each have size $\\frac{4}{3}$: $\\frac{4}{3} + \\frac{4}{3} + \\frac{4}{3} = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$v = (t - 1)(t - 3)$ changes sign at 1 and 3. $\\int_0^1 v = \\frac{4}{3}$, $\\int_1^3 v = -\\frac{4}{3}$, $\\int_3^4 v = \\frac{4}{3}$. Total distance $= 4$ m."
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-13",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the same particle, $v(t) = t^2 - 4t + 3$ m/s, find the displacement on $0 \\le t \\le 4$.",
+   "numeric": {
+    "answer": "4/3",
+    "unit": "meters",
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is the total distance. Displacement keeps the sign: $\\frac{4}{3} - \\frac{4}{3} + \\frac{4}{3}$."
+     },
+     {
+      "value": "-4/3",
+      "why": "$\\left[\\frac{t^3}{3} - 2t^2 + 3t\\right]_0^4 = \\frac{64}{3} - 32 + 12 = \\frac{4}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^4 (t^2 - 4t + 3)\\,dt = \\frac{64}{3} - 32 + 12 = \\frac{4}{3}$ m."
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-14",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a particle with velocity $v(t)$ in m/s, $\\int_2^5 |v(t)|\\,dt = 9$. What does this mean?",
+   "options": [
+    "At t = 5 the particle is 9 meters from where it was at t = 2.",
+    "At t = 5 the speed of the particle is 9 meters per second.",
+    "At t = 5 the particle is at the point x = 9 meters.",
+    "The particle travels 9 meters between t = 2 and t = 5 seconds, counting both directions."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\int_2^5 |v(t)|\\,dt$ is the total distance traveled from $t = 2$ to $t = 5$ seconds, in meters.",
+    "options": [
+     "That is the displacement, $\\int_2^5 v(t)\\,dt$, which may be smaller.",
+     "An integral of speed is a distance, in meters.",
+     "The integral is a change, not a position.",
+     "The integral of speed is the total distance."
+    ]
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-15",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A particle has acceleration $a(t) = 6t$ m/s² and velocity $v(0) = -3$ m/s. Find $v(2)$.",
+   "numeric": {
+    "answer": 9,
+    "unit": "meters per second",
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "That is $\\int_0^2 6t\\,dt$, the change in velocity. Add $v(0) = -3$."
+     },
+     {
+      "value": 15,
+      "why": "$v(2) = v(0) + 12 = -3 + 12$; the initial velocity is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$v(2) = v(0) + \\int_0^2 6t\\,dt = -3 + 12 = 9$ m/s."
+   }
+  },
+  {
+   "id": "calc-motion-with-integrals-16",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "type": "multi",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A particle's velocity $v$ is continuous and $\\int_0^6 v(t)\\,dt = 0$, with $v$ not 0 on the whole interval. Which statements are true? Select all that apply.",
+   "options": [
+    "$x(6) = x(0)$",
+    "$v$ changes sign somewhere in $(0, 6)$.",
+    "The total distance traveled is 0.",
+    "The particle is at rest at $t = 3$."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$\\int_0^6 v = x(6) - x(0) = 0$; motion right and left cancel, so $v$ changes sign, but the distance is positive.",
+    "options": [
+     "Zero displacement: it ends where it started.",
+     "If $v$ kept one sign and were not 0 throughout, the integral could not be 0.",
+     "Distance is $\\int_0^6 |v(t)|\\,dt > 0$ when the particle moves.",
+     "The integral says nothing about when $v = 0$."
+    ]
+   }
+  }
+ ]
+}

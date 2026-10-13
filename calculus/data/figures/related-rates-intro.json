@@ -1,0 +1,12 @@
+{
+ "ripple-related-rates": {
+  "file": "figures/ripple-related-rates.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A circular ripple seen from above, with earlier smaller ripples dashed, the radius r drawn and an arrow for dr/dt. Beside it: A = πr², differentiated with respect to t to give dA/dt = 2πr · dr/dt; with r = 5 cm and dr/dt = 3 cm/s, dA/dt = 30π cm²/s."
+ }
+}

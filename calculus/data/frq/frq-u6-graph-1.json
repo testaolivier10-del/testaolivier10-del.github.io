@@ -1,0 +1,187 @@
+{
+ "id": "frq-u6-graph-1",
+ "type": "graph",
+ "points": 9,
+ "calc": false,
+ "title": "Graphical FTC: lines and a semicircle, with a limit",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "ftc-accumulation",
+  "accumulation-behavior",
+  "integral-properties"
+ ],
+ "practices": [
+  "1.E",
+  "2.B",
+  "3.D",
+  "3.E",
+  "4.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The graph of $f$ on $[-4, 6]$",
+  "text": "The continuous function $f$ is defined on $[-4, 6]$. Its graph consists of a segment from $(-4, 2)$ to $(-2, 0)$, a semicircle of radius 1 below the x-axis from $x = -2$ to $x = 0$, a segment from $(0, 0)$ to $(2, 2)$, and a segment from $(2, 2)$ to $(6, -2)$. Let $g(x) = \\int_0^x f(t)\\,dt$ for $-4 \\le x \\le 6$.",
+  "plot": {
+   "label": "Graph of f on [-4, 6]: a segment from (-4, 2) to (-2, 0), a semicircle of radius 1 below the x-axis from -2 to 0, a segment from (0, 0) to (2, 2), and a segment from (2, 2) to (6, -2)",
+   "width": 460,
+   "height": 260,
+   "x": [
+    -4.5,
+    6.5
+   ],
+   "y": [
+    -2.5,
+    2.6
+   ],
+   "xStep": 1,
+   "yStep": 1,
+   "xLabel": "x",
+   "yLabel": "y",
+   "curves": [
+    {
+     "fn": "-x - 2",
+     "domain": [
+      -4,
+      -2
+     ],
+     "cls": "s1",
+     "label": "f"
+    },
+    {
+     "fn": "-sqrt(1 - (x + 1)^2)",
+     "domain": [
+      -2,
+      0
+     ],
+     "cls": "s1"
+    },
+    {
+     "fn": "x",
+     "domain": [
+      0,
+      2
+     ],
+     "cls": "s1"
+    },
+    {
+     "fn": "4 - x",
+     "domain": [
+      2,
+      6
+     ],
+     "cls": "s1"
+    }
+   ],
+   "points": [
+    {
+     "at": [
+      -4,
+      2
+     ]
+    },
+    {
+     "at": [
+      6,
+      -2
+     ]
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Find</b> $g(4)$ and $g(-4)$.",
+   "rubric": [
+    {
+     "point": "$g(4) = 4$, from the areas of the two triangles on $[0, 2]$ and $[2, 4]$",
+     "accept": [
+      "$g(4) = \\int_0^2 f(t)\\,dt + \\int_2^4 f(t)\\,dt = 2 + 2 = 4$",
+      "the value 4 with the geometric areas shown"
+     ]
+    },
+    {
+     "point": "$g(-4) = \\frac{\\pi}{2} - 2$, handling the reversed limits",
+     "accept": [
+      "$g(-4) = -\\int_{-4}^0 f(t)\\,dt = -\\left(2 - \\frac{\\pi}{2}\\right)$",
+      "$\\frac{\\pi}{2} - 2$ or $-2 + \\frac{\\pi}{2}$ with the sign reasoning shown"
+     ]
+    }
+   ],
+   "sample": "$g(4) = \\int_0^4 f(t)\\,dt = \\frac{1}{2}(2)(2) + \\frac{1}{2}(2)(2) = 4$. $g(-4) = \\int_0^{-4} f(t)\\,dt = -\\int_{-4}^0 f(t)\\,dt$. On $[-4, -2]$ the triangle above the axis has area 2; on $[-2, 0]$ the half-disc below has area $\\frac{\\pi}{2}$, so $\\int_{-4}^0 f(t)\\,dt = 2 - \\frac{\\pi}{2}$ and $g(-4) = \\frac{\\pi}{2} - 2$."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "On the open interval $-4 < x < 6$, <b>find</b> all values of $x$ at which $g$ has a relative maximum. <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Answers $x = -2$ and $x = 4$ (both, and no others)",
+     "accept": [
+      "x = -2 and x = 4"
+     ]
+    },
+    {
+     "point": "Justification: $g'(x) = f(x)$ changes from positive to negative at each of these values",
+     "accept": [
+      "\"$g' = f$ changes sign from positive to negative at $x = -2$ and $x = 4$\"",
+      "naming f (or g prime) and the direction of the sign change; \"f = 0\" alone does not earn the point"
+     ]
+    }
+   ],
+   "sample": "$g'(x) = f(x)$ by the Fundamental Theorem of Calculus. $g'(x) = f(x)$ changes from positive to negative at $x = -2$ and at $x = 4$, so $g$ has a relative maximum at $x = -2$ and at $x = 4$. (At $x = 0$, $f$ changes from negative to positive: a relative minimum.)"
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Find</b> the $x$-coordinate of each point of inflection of the graph of $g$ on $-4 < x < 6$. <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "Answers $x = -1$ and $x = 2$",
+     "accept": [
+      "x = -1 and x = 2"
+     ]
+    },
+    {
+     "point": "Reason: $g'' = f'$ changes sign there, because $f$ changes from decreasing to increasing at $x = -1$ and from increasing to decreasing at $x = 2$",
+     "accept": [
+      "\"$f$ changes from decreasing to increasing at $x = -1$ and from increasing to decreasing at $x = 2$\"",
+      "\"$g'$ changes from decreasing to increasing ...\"",
+      "zeros of f (x = -2, 0, 4) as inflection points earn nothing"
+     ]
+    }
+   ],
+   "sample": "$g''(x) = f'(x)$. The graph of $f$ is decreasing on $(-4, -1)$ and increasing on $(-1, 2)$, then decreasing on $(2, 6)$. So $g'' = f'$ changes sign at $x = -1$ and at $x = 2$, and the graph of $g$ has points of inflection at $x = -1$ and $x = 2$."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "<b>Find</b> $\\lim_{x \\to 2} \\frac{g(x) - 2}{x^2 - 4}$. <b>Show</b> the work that leads to your answer.",
+   "rubric": [
+    {
+     "point": "Shows that the numerator and the denominator both approach 0, using $g(2) = 2$",
+     "accept": [
+      "$\\lim_{x \\to 2} (g(x) - 2) = g(2) - 2 = 0$ and $\\lim_{x \\to 2} (x^2 - 4) = 0$"
+     ]
+    },
+    {
+     "point": "Applies L'Hospital's Rule correctly, with $g'(x) = f(x)$",
+     "accept": [
+      "$\\lim_{x \\to 2} \\frac{g'(x)}{2x} = \\lim_{x \\to 2} \\frac{f(x)}{2x}$"
+     ]
+    },
+    {
+     "point": "Answer $\\frac{1}{2}$",
+     "accept": [
+      "$\\frac{f(2)}{4} = \\frac{2}{4} = \\frac{1}{2}$",
+      "0.5"
+     ]
+    }
+   ],
+   "sample": "$g(2) = \\int_0^2 f(t)\\,dt = 2$, and $g$ is continuous, so $\\lim_{x \\to 2} (g(x) - 2) = 0$; also $\\lim_{x \\to 2}(x^2 - 4) = 0$. By L'Hospital's Rule, $\\lim_{x \\to 2} \\frac{g(x) - 2}{x^2 - 4} = \\lim_{x \\to 2} \\frac{g'(x)}{2x} = \\lim_{x \\to 2} \\frac{f(x)}{2x} = \\frac{f(2)}{4} = \\frac{2}{4} = \\frac{1}{2}$."
+  }
+ ]
+}

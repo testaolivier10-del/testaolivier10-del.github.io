@@ -1,0 +1,73 @@
+{
+ "topic": "math-exponent-rules",
+ "hook": "A single rule in Unit 2 will handle $x^5$, $\\frac{1}{x^3}$ and $\\sqrt[4]{x}$ in one stroke, but only if they are written as powers of $x$ first. Rewriting roots and fractions as exponents is the quiet skill behind half of the algebra in calculus, and the place where many small sign slips start. Ten minutes here pays off all year.",
+ "prereq": [
+  {
+   "q": "If $f(x) = x^2 - 3x$, what is $f(-2)$?",
+   "options": [
+    "$10$",
+    "$-2$",
+    "$2$",
+    "$-10$"
+   ],
+   "correct": 0,
+   "why": "$(-2)^2 - 3(-2) = 4 + 6 = 10$. Substitute with parentheses.",
+   "review": "math-functions"
+  },
+  {
+   "q": "What is the domain of $g(x) = \\sqrt{x - 5}$?",
+   "options": [
+    "$x \\ge 5$",
+    "$x > 5$",
+    "$x \\ge 0$",
+    "every real number"
+   ],
+   "correct": 0,
+   "why": "A square root needs $x - 5 \\ge 0$.",
+   "review": "math-functions"
+  }
+ ],
+ "figure": {
+  "figure": "powers-of-x",
+  "caption": "$x^2$, $x^{1/2} = \\sqrt{x}$ and $x^{-1} = \\frac{1}{x}$: roots and reciprocals are powers too, and every power of $x$ passes through $(1, 1)$."
+ },
+ "chain": [
+  {
+   "cause": "$x^m \\cdot x^n$ multiplies $m$ copies of $x$ by $n$ more",
+   "effect": "so $x^m \\cdot x^n = x^{m + n}$, and $\\frac{x^m}{x^n} = x^{m - n}$"
+  },
+  {
+   "cause": "$\\frac{x^0}{x^n} = x^{0 - n}$ and $x^0 = 1$",
+   "effect": "a negative exponent is a reciprocal: $x^{-n} = \\frac{1}{x^n}$"
+  },
+  {
+   "cause": "$\\left(x^{1/2}\\right)^2 = x^1$",
+   "effect": "a fractional exponent is a root: $x^{1/2} = \\sqrt{x}$ and $x^{m/n} = \\left(\\sqrt[n]{x}\\right)^m$"
+  },
+  {
+   "cause": "Every root and reciprocal can be written as a power",
+   "effect": "expressions like $\\frac{3}{x^2} + 2\\sqrt{x}$ become $3x^{-2} + 2x^{1/2}$, ready for calculus"
+  }
+ ],
+ "ideas": [
+  "Multiply powers of the same base: add exponents. Divide: subtract. Power of a power: multiply.",
+  "$x^{-n} = \\frac{1}{x^n}$. A negative exponent means reciprocal, never a negative number.",
+  "$x^{m/n} = \\left(\\sqrt[n]{x}\\right)^m$. Take the root first to keep numbers small: $8^{2/3} = 2^2 = 4$.",
+  "An exponent applies only to what it touches: $3x^{-2} = \\frac{3}{x^2}$, but $(3x)^{-2} = \\frac{1}{9x^2}$.",
+  "Exponents do not split over sums: $(x + 3)^{-1} \\ne x^{-1} + 3^{-1}$ and $\\sqrt{x^2 + 9} \\ne x + 3$."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{1}{x + 3} = x^{-1} + 3^{-1}$, so a fraction can be split into separate powers.",
+  "right": "Only a single base can be raised to a power. $\\frac{1}{x + 3} = (x + 3)^{-1}$; test $x = 1$: $\\frac{1}{4}$ is not $1 + \\frac{1}{3}$."
+ },
+ "check": [
+  "calc-math-exponent-rules-1",
+  "calc-math-exponent-rules-2",
+  "calc-math-exponent-rules-3",
+  "calc-math-exponent-rules-4",
+  "calc-math-exponent-rules-6",
+  "calc-math-exponent-rules-7",
+  "calc-math-exponent-rules-11"
+ ],
+ "summary": "Exponent rules let you write every root and fraction as a power: $\\frac{1}{x^n} = x^{-n}$ and $\\sqrt[n]{x^m} = x^{m/n}$. Add exponents to multiply, subtract to divide, multiply for a power of a power, and remember an exponent applies only to the base it touches and never splits over a sum."
+}

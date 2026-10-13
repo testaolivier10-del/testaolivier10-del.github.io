@@ -1,0 +1,5 @@
+{
+ "shifted-axis": {
+  "def": "Revolving a region about a line other than an axis, such as $y = k$ or $x = h$. The radius is the distance from that line to the curve: $r = |f(x) - k|$ for a horizontal line, $r = |h - x(y)|$ for a vertical one."
+ }
+}

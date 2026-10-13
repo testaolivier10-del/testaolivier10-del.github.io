@@ -1,0 +1,52 @@
+<p>The introduction showed the idea; this page is the full routine, applied to the kinds of problems the exam uses: boxes, cans, cables, shapes inside shapes. The calculus is short. Most mistakes happen in the setup, so the setup gets most of the attention here.</p>
+
+<h2>The routine</h2>
+<ol>
+<li><b>Draw</b> the situation and label every changing length or amount with a letter.</li>
+<li>Write the <b>objective function</b>: the quantity to maximize or minimize.</li>
+<li>Write the <b>constraint</b>: the fixed fact that links the variables (a volume, a perimeter, a total length).</li>
+<li>Use the constraint to write the objective in <b>one variable</b>.</li>
+<li>Find the <b>domain</b> from the physical limits.</li>
+<li>Find the <b>critical points</b> in the domain.</li>
+<li><b>Justify</b> the absolute extremum: candidates on a closed domain, or one critical point that is a relative extremum.</li>
+<li><b>Answer</b> the question in context, with units.</li>
+</ol>
+<p>Keep the objective and the constraint apart. In "an open box with a square base must hold 32 cubic feet; use the least material," the constraint is the volume $x^2 h = 32$, and the objective is the material, $S = x^2 + 4xh$. Mixing them up is the most common setup error.</p>
+<figure id="fig-box" data-fig="box-from-sheet"><figcaption>Corner squares of side $x$ cut from a 12-inch sheet: the volume $V(x) = x(12 - 2x)^2$ is zero at both ends of $[0, 6]$ and largest at $x = 2$.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1.</b> A 16-inch by 10-inch sheet has a square of side $x$ cut from each corner, and the sides are folded up into an open box. Find the largest volume.</p>
+<p><i>Objective:</i> the base loses $2x$ in each direction, so $V(x) = x(16 - 2x)(10 - 2x) = 4x^3 - 52x^2 + 160x$.</p>
+<p><i>Domain:</i> the short side needs $10 - 2x \ge 0$, so $0 \le x \le 5$.</p>
+<p><i>Critical points:</i> $V'(x) = 12x^2 - 104x + 160 = 4(3x - 20)(x - 2)$, zero at $x = 2$ and $x = \frac{20}{3}$. Only $x = 2$ is in the domain; $\frac{20}{3}$ would cut away more than the sheet has.</p>
+<p><i>Justify:</i> $V(0) = 0$, $V(2) = 2 \cdot 12 \cdot 6 = 144$, $V(5) = 0$.</p>
+<p><i>Answer:</i> cut 2-inch squares; the box holds 144 cubic inches.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2.</b> A closed can must hold 500 cubic centimeters. What radius uses the least metal?</p>
+<p><i>Objective:</i> surface area, two ends plus the side: $S = 2\pi r^2 + 2\pi r h$.</p>
+<p><i>Constraint:</i> $\pi r^2 h = 500$, so $h = \frac{500}{\pi r^2}$ and $S(r) = 2\pi r^2 + \frac{1000}{r}$, for $r > 0$.</p>
+<p><i>Critical point:</i> $S'(r) = 4\pi r - \frac{1000}{r^2} = 0$ gives $r^3 = \frac{250}{\pi}$, $r = \sqrt[3]{\frac{250}{\pi}} \approx 4.301$ cm.</p>
+<p><i>Justify:</i> it is the only critical point for $r > 0$, and $S''(r) = 4\pi + \frac{2000}{r^3} > 0$, so it is a relative minimum and therefore the absolute minimum.</p>
+</div>
+<p>The domain $r > 0$ has no endpoints to compare, which is exactly when the one-critical-point argument is needed.</p>
+
+<h2>Calculator optimization</h2>
+<p>When the critical point has no clean formula, use the calculator to solve $f'(x) = 0$, store the result, and evaluate.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A cable runs from a station on one bank of a river 2 km wide, underwater to a point $x$ km downstream on the far bank, then along the bank to a factory 8 km downstream. It costs 5 thousand dollars per km underwater and 3.5 on land, so $C(x) = 5\sqrt{x^2 + 4} + 3.5(8 - x)$, $0 \le x \le 8$.</p>
+<p>$C'(x) = \frac{5x}{\sqrt{x^2 + 4}} - 3.5$ (chain rule on the square root). Solving $C'(x) = 0$ gives $x \approx 1.960$.</p>
+<p>Candidates: $C(0) = 38$, $C(1.960) \approx 35.141$, $C(8) = 5\sqrt{68} \approx 41.231$. The cheapest route lands about 1.960 km downstream and costs about 35.141 thousand dollars.</p>
+</div>
+
+<h2>Shapes inside shapes</h2>
+<p>For a rectangle with its base on the diameter of a semicircle of radius 5, put the top right corner at $(x, \sqrt{25 - x^2})$. The width is $2x$, so $A(x) = 2x\sqrt{25 - x^2}$ on $[0, 5]$. The derivative is zero at $x = \frac{5}{\sqrt{2}}$, and $A\left(\frac{5}{\sqrt{2}}\right) = 25$, larger than $A(0) = A(5) = 0$. Placing a corner on the curve is what links the variables here; that is the constraint.</p>
+
+<h2>Checklist before you write the answer</h2>
+<ul>
+<li>Is each critical point inside the domain? Reject the others, and say why.</li>
+<li>Did you justify the extremum, not just find $f'(x) = 0$?</li>
+<li>Did you answer what was asked (the dimensions, the cost, the radius) with units?</li>
+<li>On a calculator problem, did you show the setup, $C'(x) = 0$, and give three decimal places?</li>
+</ul>

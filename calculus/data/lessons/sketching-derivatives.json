@@ -1,0 +1,97 @@
+{
+ "topic": "sketching-derivatives",
+ "hook": "A pilot's instruments show altitude on one dial and climb rate on another. An experienced pilot can glance at one and picture the other: when the altimeter peaks, the climb rate reads zero. Sketching $f'$ from $f$, and $f$ from $f'$, is the same skill, and the exam tests it with graphs every year.",
+ "prereq": [
+  {
+   "q": "If $f$ is concave up on an interval, then $f'$ is",
+   "options": [
+    "increasing there",
+    "positive there",
+    "decreasing there",
+    "zero there"
+   ],
+   "correct": 0,
+   "why": "Concave up: $f'' > 0$, so $f'$ increases.",
+   "review": "concavity"
+  },
+  {
+   "q": "At a relative maximum of a differentiable $f$, $f'$",
+   "options": [
+    "changes from positive to negative",
+    "changes from negative to positive",
+    "is positive",
+    "is undefined"
+   ],
+   "correct": 0,
+   "why": "The First Derivative Test.",
+   "review": "first-derivative-test"
+  },
+  {
+   "q": "$f'(x) > 0$ on $(a, b)$ means $f$ is",
+   "options": [
+    "increasing on $(a, b)$",
+    "concave up on $(a, b)$",
+    "positive on $(a, b)$",
+    "decreasing on $(a, b)$"
+   ],
+   "correct": 0,
+   "why": "The sign of $f'$ gives direction.",
+   "review": "increasing-decreasing"
+  }
+ ],
+ "figure": {
+  "figure": "sketch-f-fprime",
+  "caption": "Line the two graphs up: where $f$ peaks or bottoms out, $f'$ crosses zero; where $f$ inflects, $f'$ turns; where $f$ rises, $f'$ is above the axis."
+ },
+ "chain": [
+  {
+   "cause": "$f$ is rising (falling) on an interval",
+   "effect": "the graph of $f'$ is above (below) the $x$-axis there"
+  },
+  {
+   "cause": "$f$ has a peak or valley with a flat tangent line",
+   "effect": "the graph of $f'$ crosses the $x$-axis there"
+  },
+  {
+   "cause": "$f$ is concave up (down)",
+   "effect": "the graph of $f'$ is rising (falling)"
+  },
+  {
+   "cause": "$f$ has a point of inflection",
+   "effect": "the graph of $f'$ has a peak or valley there"
+  },
+  {
+   "cause": "$f$ has a corner",
+   "effect": "the graph of $f'$ jumps, with no value at that point"
+  }
+ ],
+ "ideas": [
+  "Read a graph of $f$ for features, not values: where it rises, falls, peaks, bends. Each feature becomes a feature of the <b>graph of the derivative</b>.",
+  "$f$ (sign of slope) $\\to$ $f'$ (sign of value). $f$ (concavity) $\\to$ $f'$ (rising or falling). Inflection of $f$ $\\to$ peak or valley of $f'$.",
+  "Going the other way, from $f'$ to $f$: zeros of $f'$ where its sign changes are extrema of $f$; turns of $f'$ are inflection points of $f$; a constant $f'$ means $f$ is a straight line.",
+  "The same pattern links $f'$ and $f''$: the slope of the graph of $f'$ is $f''$."
+ ],
+ "misconception": {
+  "wrong": "The graph of $f'$ looks like the graph of $f$, shifted or flattened.",
+  "right": "$f'$ records slopes, not heights. A peak of $f$ is a zero of $f'$, and a peak of $f'$ is the steepest point of $f$, an inflection point. Build the sketch feature by feature: signs first, then where $f'$ rises or falls."
+ },
+ "check": [
+  "calc-sketching-derivatives-1",
+  "calc-sketching-derivatives-2",
+  "calc-sketching-derivatives-3",
+  "calc-sketching-derivatives-4",
+  "calc-sketching-derivatives-9",
+  "calc-sketching-derivatives-10"
+ ],
+ "summary": "Sketch a derivative feature by feature: where $f$ rises, $f'$ is positive; where $f$ is flat at a peak or valley, $f'$ crosses zero; where $f$ is concave up, $f'$ rises; where $f$ inflects, $f'$ turns; where $f$ has a corner, $f'$ jumps. Read the same links backward to sketch $f$ from $f'$.",
+ "connections": [
+  {
+   "href": "../notes/second-derivative-test.html",
+   "label": "Back: the Second Derivative Test (5.7)"
+  },
+  {
+   "href": "../notes/f-and-its-derivatives.html",
+   "label": "Next: 5.9"
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+ "differential-equation": {
+  "def": "An equation that contains the derivative of an unknown function, such as $\\frac{dy}{dt} = 0.3y$. It says how fast a quantity changes, often in terms of the quantity itself."
+ },
+ "proportional": {
+  "def": "\"$A$ is proportional to $B$\" means $A = kB$ for a constant $k$, the constant of proportionality. \"Inversely proportional to $B$\" means $A = \\frac{k}{B}$."
+ }
+}

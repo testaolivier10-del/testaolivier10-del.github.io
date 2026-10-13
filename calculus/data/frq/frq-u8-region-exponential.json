@@ -1,0 +1,123 @@
+{
+ "id": "frq-u8-region-exponential",
+ "type": "area",
+ "title": "A region between a parabola and an exponential curve",
+ "calc": true,
+ "points": 9,
+ "units": ["unit-8"],
+ "topics": ["area-between-curves-x", "cross-sections-squares", "washer-method-other-axes"],
+ "practices": ["1.C", "1.D", "1.E", "4.C", "4.E"],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The region $R$ between $y = 5 - x^2$ and $y = e^{x/2}$",
+  "text": "Let $f(x) = 5 - x^2$ and $g(x) = e^{x/2}$. Let $R$ be the region enclosed by the graphs of $f$ and $g$, as shown. The graphs intersect at $x = a$ and $x = b$, where $a < b$. A graphing calculator is required; use radian mode.",
+  "plot": {
+   "label": "Graphs of f(x) = 5 − x², a parabola opening down with vertex (0, 5), and g(x) = e^(x/2), an increasing exponential curve. They cross near x = −2.16 and x = 1.65; the region R between them, with f on top, is shaded.",
+   "x": [-2.8, 2.6], "y": [-1, 5.8], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
+   "curves": [
+    { "fn": "5 - x^2", "domain": [-2.45, 2.45], "cls": "s1", "label": "f" },
+    { "fn": "e^(x/2)", "domain": [-2.8, 2.6], "cls": "s2", "label": "g" }
+   ],
+   "shade": [ { "fn": "5 - x^2", "fn2": "e^(x/2)", "domain": [-2.1587477332182994, 1.64901326830319] } ],
+   "labels": [ { "at": [-0.3, 2.6], "text": "R" } ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Find</b> the area of $R$.",
+   "rubric": [
+    {
+     "point": "Integral: $\\int_a^b \\left(f(x) - g(x)\\right)\\,dx$ with the limits $a \\approx -2.159$ and $b \\approx 1.649$ found from $f(x) = g(x)$",
+     "accept": [
+      "$\\int_{-2.159}^{1.649} \\left(5 - x^2 - e^{x/2}\\right)\\,dx$",
+      "the integrand and both limits are needed for this point; an integrand of $g - f$ does not earn it"
+     ]
+    },
+    {
+     "point": "Answer: $10.309$ (or $10.308$)",
+     "accept": [
+      "$10.309$ or $10.308$, correct to three decimal places",
+      "requires the integral point"
+     ]
+    }
+   ],
+   "sample": "$f(x) = g(x)$ when $x = a = -2.158748$ and $x = b = 1.649013$ (values stored in the calculator). Since $f(0) = 5 > 1 = g(0)$, $f$ is on top. Area $= \\int_a^b \\left(5 - x^2 - e^{x/2}\\right)\\,dx = 10.309$."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "<b>Find</b> the volume of the solid generated when $R$ is revolved about the horizontal line $y = -2$.",
+   "rubric": [
+    {
+     "point": "Constant and limits: $\\pi\\int_a^b \\ldots\\,dx$",
+     "accept": [
+      "$\\pi$ in front of an integral from $a$ to $b$",
+      "the limits may be written as $-2.159$ and $1.649$"
+     ]
+    },
+    {
+     "point": "Integrand: $\\left(f(x) + 2\\right)^2 - \\left(g(x) + 2\\right)^2$",
+     "accept": [
+      "$(7 - x^2)^2 - \\left(e^{x/2} + 2\\right)^2$",
+      "radii measured from $y = -2$: outer $5 - x^2 - (-2)$, inner $e^{x/2} - (-2)$",
+      "$\\left(f(x) - g(x)\\right)^2$ or radii measured from $y = 0$ do not earn this point"
+     ]
+    },
+    {
+     "point": "Answer: $297.437$",
+     "accept": [
+      "$297.437$ or $297.437\\ldots$ truncated or rounded to three decimals",
+      "requires the integrand point"
+     ]
+    }
+   ],
+   "sample": "Measured from the axis $y = -2$, the outer radius is $f(x) - (-2) = 7 - x^2$ and the inner radius is $g(x) - (-2) = e^{x/2} + 2$. Volume $= \\pi\\int_a^b \\left[\\left(7 - x^2\\right)^2 - \\left(e^{x/2} + 2\\right)^2\\right]\\,dx = 297.437$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "Region $R$ is the base of a solid. For this solid, each cross section perpendicular to the $x$-axis is a square. <b>Find</b> the volume of the solid.",
+   "rubric": [
+    {
+     "point": "Integral: $\\int_a^b \\left(f(x) - g(x)\\right)^2\\,dx$",
+     "accept": [
+      "$\\int_a^b \\left(5 - x^2 - e^{x/2}\\right)^2\\,dx$",
+      "$\\int_a^b \\left(f(x)^2 - g(x)^2\\right)\\,dx$ does not earn this point; a factor of $\\pi$ does not earn it"
+     ]
+    },
+    {
+     "point": "Answer: $33.467$ (or $33.466$)",
+     "accept": [
+      "$33.467$ or $33.466$",
+      "requires the integral point"
+     ]
+    }
+   ],
+   "sample": "The side of the square at $x$ is $f(x) - g(x)$, so its area is $\\left(f(x) - g(x)\\right)^2$. Volume $= \\int_a^b \\left(5 - x^2 - e^{x/2}\\right)^2\\,dx = 33.467$."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Write</b>, but do not evaluate, an integral expression for the volume of the solid generated when $R$ is revolved about the horizontal line $y = 6$.",
+   "rubric": [
+    {
+     "point": "Integrand: $\\left(6 - g(x)\\right)^2 - \\left(6 - f(x)\\right)^2$",
+     "accept": [
+      "$\\left(6 - e^{x/2}\\right)^2 - \\left(1 + x^2\\right)^2$",
+      "the outer radius goes to $g$, the curve farther from $y = 6$; swapping the radii does not earn this point"
+     ]
+    },
+    {
+     "point": "Constant and limits: $\\pi\\int_a^b \\ldots\\,dx$, in a correct integral expression",
+     "accept": [
+      "$\\pi\\int_{-2.159}^{1.649}$",
+      "the integral is not evaluated; a numerical value is not required"
+     ]
+    }
+   ],
+   "sample": "The line $y = 6$ lies above $R$, so the far edge is the graph of $g$ and the near edge the graph of $f$. Volume $= \\pi\\int_a^b \\left[\\left(6 - e^{x/2}\\right)^2 - \\left(6 - (5 - x^2)\\right)^2\\right]\\,dx = \\pi\\int_a^b \\left[\\left(6 - e^{x/2}\\right)^2 - \\left(1 + x^2\\right)^2\\right]\\,dx$."
+  }
+ ]
+}

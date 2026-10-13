@@ -1,0 +1,12 @@
+{
+ "limit-four-cases": {
+  "file": "figures/limit-four-cases.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 590,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four small graphs near x = 1: a curve with an open circle at (1, 2) and a dot at (1, 3), limit 2; a jump from height 1 on the left to height 3 on the right, no limit; a graph rising without bound on both sides of x = 1, no limit; a graph oscillating faster and faster between 1 and 3 near x = 1, no limit."
+ }
+}

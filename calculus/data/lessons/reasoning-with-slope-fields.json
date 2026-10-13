@@ -1,0 +1,71 @@
+{
+ "topic": "reasoning-with-slope-fields",
+ "hook": "A slope field is a map of every solution at once. Drop a pencil on a point and let the segments steer it, and you trace the one curve through that point: where it rises, where it bends, where it settles. Rows of flat segments act like rails: solution curves approach them or run away from them, but never cross them.",
+ "prereq": [
+  {
+   "q": "If $f'$ changes from negative to positive at $x = a$, then $f$ has",
+   "options": [
+    "a relative minimum at $x = a$",
+    "a relative maximum at $x = a$",
+    "a point of inflection at $x = a$",
+    "no critical point at $x = a$"
+   ],
+   "correct": 0,
+   "why": "Decreasing then increasing: a relative minimum, by the First Derivative Test.",
+   "review": "first-derivative-test"
+  },
+  {
+   "q": "If $f'' > 0$ on an interval, the graph of $f$ there is",
+   "options": [
+    "concave up",
+    "concave down",
+    "increasing",
+    "decreasing"
+   ],
+   "correct": 0,
+   "why": "A positive second derivative means $f'$ is increasing: concave up.",
+   "review": "concavity"
+  }
+ ],
+ "figure": {
+  "figure": "slope-field-solutions",
+  "caption": "The slope field of $\\frac{dy}{dx} = \\frac{3 - y}{2}$. The line $y = 3$ is an equilibrium solution; the curves through $(0, 1)$ and $(0, 5.5)$ both approach it and never cross it."
+ },
+ "chain": [
+  {
+   "cause": "A solution curve passes through a given point",
+   "effect": "it runs along the segment there and keeps following the segments in both directions"
+  },
+  {
+   "cause": "$\\frac{dy}{dx} = 0$ for every $x$ on a horizontal line $y = c$",
+   "effect": "$y = c$ is an equilibrium solution, a row of flat segments"
+  },
+  {
+   "cause": "Solution curves of these equations do not cross one another",
+   "effect": "a curve that starts below an equilibrium line stays below it"
+  },
+  {
+   "cause": "$\\frac{d^2y}{dx^2}$ is found by differentiating $\\frac{dy}{dx}$ with the chain rule and substituting $\\frac{dy}{dx}$",
+   "effect": "its sign at a point tells the concavity of the solution there"
+  }
+ ],
+ "ideas": [
+  "Sketch a solution through a point by following the segments both ways, all the way across the field; never cut across the segments.",
+  "An <b>equilibrium solution</b> $y = c$ makes $\\frac{dy}{dx} = 0$ for every $x$. Solve \"right side $= 0$\" for $y$.",
+  "The sign of $\\frac{dy}{dx}$ says where a solution rises or falls; long-run behavior shows whether curves approach an equilibrium or move away.",
+  "Concavity: $\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left(\\frac{dy}{dx}\\right)$. Every $y$ is a function of $x$, so $\\frac{d}{dx}(y) = \\frac{dy}{dx}$; then substitute the equation."
+ ],
+ "misconception": {
+  "wrong": "For $\\frac{dy}{dx} = \\frac{y - 1}{2}$, $\\frac{d^2y}{dx^2} = 0$, because there is no $x$ in the formula.",
+  "right": "$y$ depends on $x$, so the chain rule applies: $\\frac{d^2y}{dx^2} = \\frac{1}{2}\\frac{dy}{dx} = \\frac{y - 1}{4}$."
+ },
+ "check": [
+  "calc-reasoning-with-slope-fields-1",
+  "calc-reasoning-with-slope-fields-2",
+  "calc-reasoning-with-slope-fields-5",
+  "calc-reasoning-with-slope-fields-10",
+  "calc-reasoning-with-slope-fields-13",
+  "calc-reasoning-with-slope-fields-14"
+ ],
+ "summary": "Trace a solution through a point by following the segments across the field. Rows of flat segments are equilibrium solutions, which other solutions approach or leave but never cross. The sign of $\\frac{dy}{dx}$ gives direction; $\\frac{d^2y}{dx^2}$, found with the chain rule, gives concavity."
+}

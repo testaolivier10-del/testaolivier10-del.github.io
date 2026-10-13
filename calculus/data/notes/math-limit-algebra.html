@@ -1,0 +1,60 @@
+<p>Here is the kind of limit you will meet again and again: $\lim_{x \to 3} \frac{x^2 - 9}{x - 3}$. Substitute $x = 3$ and both the top and the bottom are 0. The limit laws cannot help, because the denominator heads to 0. The way forward is to rewrite the fraction into a form where the trouble disappears. That takes three precalculus moves, and this page drills each one: factoring, rationalizing and simplifying complex fractions.</p>
+
+<h2>Factoring</h2>
+<p>To factor is to rewrite a sum as a product. A <b>factored form</b> shows what each piece is multiplied by, and that is what lets pieces cancel. The patterns you need:</p>
+<table class="compare">
+<thead><tr><th>Pattern</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Common factor</td><td>$x^2 - 4x = x(x - 4)$</td></tr>
+<tr><td><b>Difference of squares</b>: $a^2 - b^2 = (a - b)(a + b)$</td><td>$x^2 - 16 = (x - 4)(x + 4)$</td></tr>
+<tr><td>Trinomial $x^2 + bx + c$: two numbers that multiply to $c$ and add to $b$</td><td>$x^2 + 2x - 8 = (x + 4)(x - 2)$</td></tr>
+<tr><td>Difference of cubes: $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$</td><td>$x^3 - 8 = (x - 2)(x^2 + 2x + 4)$</td></tr>
+<tr><td>Sum of cubes: $a^3 + b^3 = (a + b)(a^2 - ab + b^2)$</td><td>$x^3 + 1 = (x + 1)(x^2 - x + 1)$</td></tr>
+</tbody>
+</table>
+<p>A useful shortcut: if a polynomial is 0 at $x = a$, then $x - a$ is one of its factors. So when substitution gives 0 on top at $x = 3$, you already know to look for the factor $x - 3$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Factor $2x^2 + 5x - 3$. The leading coefficient is not 1, which is where most errors happen.</p>
+<p>Multiply $a \cdot c = 2 \cdot (-3) = -6$. Find two numbers that multiply to $-6$ and add to $b = 5$: they are 6 and $-1$.</p>
+<p>Split the middle term and group: $2x^2 + 6x - x - 3 = 2x(x + 3) - 1(x + 3) = (2x - 1)(x + 3)$.</p>
+<p>Check by expanding: $(2x - 1)(x + 3) = 2x^2 + 6x - x - 3 = 2x^2 + 5x - 3$.</p>
+</div>
+
+<h2>Cancel factors, never terms</h2>
+<p>Canceling divides the top and bottom by the same nonzero <i>factor</i>. A term that is added cannot be canceled. This is the single most common algebra error on limit questions.</p>
+<table class="compare">
+<thead><tr><th>Wrong</th><th>Right</th></tr></thead>
+<tbody>
+<tr><td>$\frac{x^2 - 4x}{x^2 - 16} = \frac{-4x}{-16}$</td><td>$\frac{x(x - 4)}{(x - 4)(x + 4)} = \frac{x}{x + 4}$</td></tr>
+<tr><td>$\frac{x^2 + 9}{x + 3} = x + 3$</td><td>does not simplify: $x^2 + 9$ has no real factors</td></tr>
+<tr><td>$\frac{x + 6}{x + 3} = 2$</td><td>does not simplify</td></tr>
+</tbody>
+</table>
+<p>When in doubt, test a number. At $x = 1$, $\frac{x^2 - 4x}{x^2 - 16} = \frac{-3}{-15} = \frac{1}{5}$. The wrong answer $\frac{x}{4}$ gives $\frac{1}{4}$; the right answer $\frac{x}{x + 4}$ gives $\frac{1}{5}$.</p>
+
+<h2>Rationalizing with a conjugate</h2>
+<p>When a square root sits next to a number, as in $\sqrt{x} - 2$, factoring does not apply directly. Instead multiply by its <b>conjugate</b>, the same expression with the opposite sign in the middle: $\sqrt{x} + 2$. A conjugate pair multiplies to a difference of squares, and the square root disappears:
+$$(\sqrt{x} - 2)(\sqrt{x} + 2) = (\sqrt{x})^2 - 2^2 = x - 4$$
+To keep the fraction's value, multiply the top <i>and</i> the bottom by the conjugate. This is called <b>rationalizing</b>.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Simplify $\frac{\sqrt{x} - 2}{x - 4}$ for $x \ne 4$.</p>
+<p>$$\frac{\sqrt{x} - 2}{x - 4} \cdot \frac{\sqrt{x} + 2}{\sqrt{x} + 2} = \frac{x - 4}{(x - 4)(\sqrt{x} + 2)} = \frac{1}{\sqrt{x} + 2}$$</p>
+<p>Notice the bottom was <i>not</i> multiplied out. Leaving it as $(x - 4)(\sqrt{x} + 2)$ is what makes the factor $x - 4$ visible for canceling.</p>
+<p>Near $x = 4$, the simplified form heads to $\frac{1}{\sqrt{4} + 2} = \frac{1}{4}$.</p>
+</div>
+<figure id="fig-rat" data-fig="rationalize-hole"><figcaption>The original fraction and its simplified form share a graph, except for the hole at $x = 4$.</figcaption></figure>
+
+<h2>Complex fractions</h2>
+<p>A <b>complex fraction</b> has fractions inside its numerator or denominator. Combine the small fractions over a common denominator first, then divide.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Simplify $\frac{\frac{1}{x + 2} - \frac{1}{2}}{x}$ for $x \ne 0, -2$.</p>
+<p>Top, over the common denominator $2(x + 2)$: $\frac{2 - (x + 2)}{2(x + 2)} = \frac{-x}{2(x + 2)}$. The parentheses around $x + 2$ matter: the minus sign applies to both terms.</p>
+<p>Divide by $x$, which is the same as multiplying by $\frac{1}{x}$: $\frac{-x}{2(x + 2)} \cdot \frac{1}{x} = \frac{-1}{2(x + 2)}$.</p>
+<p>Near $x = 0$, this heads to $\frac{-1}{4}$.</p>
+</div>
+
+<h2>Expanding powers</h2>
+<p>Limits often contain expressions like $(3 + h)^2 - 9$. Expand every power completely before simplifying:
+$$(3 + h)^2 - 9 = 9 + 6h + h^2 - 9 = 6h + h^2 = h(6 + h)$$
+Forgetting the middle term, $6h$, is the classic slip; $(a + h)^2$ is never $a^2 + h^2$. For a cube, $(a + h)^3 = a^3 + 3a^2h + 3ah^2 + h^3$.</p>
+<p>In every one of these moves, the goal is the same: produce a factor that matches the troublesome one in the denominator, so it can cancel. The next topic puts these moves to work on limits.</p>

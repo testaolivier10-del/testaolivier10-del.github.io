@@ -1,0 +1,124 @@
+{
+ "id": "frq-u8-region-log-line",
+ "type": "area",
+ "title": "A region bounded by a logarithm, a line and the x-axis",
+ "calc": true,
+ "points": 9,
+ "units": ["unit-8"],
+ "topics": ["area-between-curves-y", "area-multiple-crossings", "cross-sections-triangles", "washer-method-other-axes"],
+ "practices": ["1.C", "1.D", "1.E", "2.C", "4.C"],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The region $R$ bounded by $y = \\ln x$, $y = 4 - x$ and the $x$-axis",
+  "text": "Let $R$ be the region in the first quadrant bounded by the graph of $y = \\ln x$, the line $y = 4 - x$ and the $x$-axis, as shown. The graph of $y = \\ln x$ and the line meet at the point $(c, \\ln c)$. A graphing calculator is required.",
+  "plot": {
+   "label": "The curve y = ln x, rising through (1, 0), and the line y = 4 − x, falling through (4, 0). They meet near (2.93, 1.07). The region R, bounded by the curve on the left, the line on the right and the x-axis below, is shaded.",
+   "x": [-0.3, 4.6], "y": [-0.6, 2], "xStep": 0.5, "yStep": 0.5, "xLabel": "x", "yLabel": "y",
+   "curves": [
+    { "fn": "ln(x)", "domain": [0.55, 4.6], "cls": "s1", "label": "y = ln x" },
+    { "fn": "4 - x", "domain": [2.1, 4.6], "cls": "s2", "label": "y = 4 − x" }
+   ],
+   "shade": [
+    { "fn": "ln(x)", "domain": [1, 2.926271062443501] },
+    { "fn": "4 - x", "domain": [2.926271062443501, 4] }
+   ],
+   "points": [ { "at": [1, 0], "label": "(1, 0)" }, { "at": [4, 0], "label": "(4, 0)" } ],
+   "labels": [ { "at": [2.75, 0.4], "text": "R" } ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Find</b> the area of $R$.",
+   "rubric": [
+    {
+     "point": "Integral: $\\int_0^{d} \\left(4 - y - e^y\\right)\\,dy$ with $d = \\ln c \\approx 1.074$, or $\\int_1^c \\ln x\\,dx + \\int_c^4 (4 - x)\\,dx$ with $c \\approx 2.926$",
+     "accept": [
+      "either form, with correct limits found from $\\ln x = 4 - x$",
+      "one integral in $x$ from 1 to 4 of a single integrand does not earn this point"
+     ]
+    },
+    {
+     "point": "Answer: $1.792$",
+     "accept": [
+      "$1.792$, correct to three decimal places",
+      "requires the integral point"
+     ]
+    }
+   ],
+   "sample": "$\\ln x = 4 - x$ at $x = c = 2.926271$, so $d = \\ln c = 4 - c = 1.073729$. In $y$, each horizontal strip runs from $x = e^y$ (left) to $x = 4 - y$ (right). Area $= \\int_0^{d} \\left(4 - y - e^y\\right)\\,dy = 1.792$."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "<b>Find</b> the volume of the solid generated when $R$ is revolved about the vertical line $x = 5$.",
+   "rubric": [
+    {
+     "point": "Constant and limits: $\\pi\\int_0^{d} \\ldots\\,dy$",
+     "accept": [
+      "$\\pi$ and limits $0$ to $1.074$ in $dy$"
+     ]
+    },
+    {
+     "point": "Integrand: $\\left(5 - e^y\\right)^2 - \\left(5 - (4 - y)\\right)^2 = \\left(5 - e^y\\right)^2 - (1 + y)^2$",
+     "accept": [
+      "outer radius $5 - e^y$ (to the far, left edge), inner radius $1 + y$ (to the line)",
+      "radii in terms of $x$, or the square of the difference, do not earn this point"
+     ]
+    },
+    {
+     "point": "Answer: $27.403$",
+     "accept": [
+      "$27.403$ (rounded or truncated)",
+      "requires the integrand point"
+     ]
+    }
+   ],
+   "sample": "Horizontal washers for $0 \\le y \\le d$. The axis $x = 5$ is to the right of $R$, so the far edge is the curve $x = e^y$: $R_{\\text{out}} = 5 - e^y$, and the near edge is the line $x = 4 - y$: $r_{\\text{in}} = 5 - (4 - y) = 1 + y$. Volume $= \\pi\\int_0^{d} \\left[\\left(5 - e^y\\right)^2 - (1 + y)^2\\right]\\,dy = 27.403$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "Region $R$ is the base of a solid. For this solid, each cross section perpendicular to the $x$-axis is a semicircle whose diameter lies in $R$. <b>Find</b> the volume of the solid.",
+   "rubric": [
+    {
+     "point": "Setup: $\\frac{\\pi}{8}\\left[\\int_1^c (\\ln x)^2\\,dx + \\int_c^4 (4 - x)^2\\,dx\\right]$",
+     "accept": [
+      "the area $\\frac{1}{2}\\pi\\left(\\frac{s}{2}\\right)^2$ with $s = \\ln x$ on $[1, c]$ and $s = 4 - x$ on $[c, 4]$",
+      "the integral must be split at $x = c$; a radius of $s$ instead of $\\frac{s}{2}$ does not earn this point"
+     ]
+    },
+    {
+     "point": "Answer: $0.532$",
+     "accept": [
+      "$0.532$",
+      "requires the setup point"
+     ]
+    }
+   ],
+   "sample": "Across $R$ at $x$, the diameter is $s = \\ln x$ for $1 \\le x \\le c$ and $s = 4 - x$ for $c \\le x \\le 4$. A semicircle of diameter $s$ has area $\\frac{1}{2}\\pi\\left(\\frac{s}{2}\\right)^2 = \\frac{\\pi}{8}s^2$. Volume $= \\frac{\\pi}{8}\\left[\\int_1^c (\\ln x)^2\\,dx + \\int_c^4 (4 - x)^2\\,dx\\right] = 0.532$."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "The horizontal line $y = k$ divides $R$ into two regions of equal area. <b>Write</b>, but do not solve, an equation involving one or more integrals whose solution gives $k$.",
+   "rubric": [
+    {
+     "point": "An integral of $4 - y - e^y$ in $dy$ with $k$ as a limit",
+     "accept": [
+      "$\\int_0^k \\left(4 - y - e^y\\right)\\,dy$ or $\\int_k^{d} \\left(4 - y - e^y\\right)\\,dy$"
+     ]
+    },
+    {
+     "point": "A correct equation",
+     "accept": [
+      "$\\int_0^k \\left(4 - y - e^y\\right)\\,dy = \\frac{1}{2}(1.792)$",
+      "$\\int_0^k \\left(4 - y - e^y\\right)\\,dy = \\int_k^{d} \\left(4 - y - e^y\\right)\\,dy$"
+     ]
+    }
+   ],
+   "sample": "Below the line $y = k$ the area of $R$ is $\\int_0^k \\left(4 - y - e^y\\right)\\,dy$, so $k$ solves $\\int_0^k \\left(4 - y - e^y\\right)\\,dy = \\frac{1}{2}\\int_0^{d} \\left(4 - y - e^y\\right)\\,dy$, that is, $\\int_0^k \\left(4 - y - e^y\\right)\\,dy = 0.896$."
+  }
+ ]
+}

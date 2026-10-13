@@ -1,0 +1,549 @@
+{
+ "stimuli": {
+  "change-at-an-instant-s1": {
+   "kind": "table",
+   "title": "A cooling cup of coffee",
+   "table": {
+    "caption": "Temperature $T(t)$ of a cup of coffee, in degrees Fahrenheit, $t$ minutes after it is poured",
+    "cols": [
+     "$t$ (minutes)",
+     "0",
+     "2",
+     "5",
+     "9",
+     "10"
+    ],
+    "rows": [
+     [
+      "$T(t)$ (°F)",
+      "180",
+      "168",
+      "153",
+      "137",
+      "134"
+     ]
+    ]
+   }
+  },
+  "change-at-an-instant-s2": {
+   "kind": "graph",
+   "title": "A cyclist on a training ride",
+   "text": "A cyclist has ridden $d(t)$ miles after $t$ hours, where $d(t) = 0.5t^2 + t$ for $0 \\le t \\le 4$. Points on the graph are marked at whole hours.",
+   "plot": {
+    "label": "Graph of distance d(t) = 0.5t squared + t in miles against time t in hours, from t = 0 to t = 4, with points marked at each whole hour",
+    "width": 380,
+    "height": 300,
+    "x": [
+     0,
+     4.4
+    ],
+    "y": [
+     0,
+     13
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "t (hours)",
+    "yLabel": "d (miles)",
+    "curves": [
+     {
+      "fn": "0.5x^2 + x",
+      "domain": [
+       0,
+       4
+      ],
+      "label": "d",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       1.5
+      ],
+      "label": "(1, 1.5)"
+     },
+     {
+      "at": [
+       2,
+       4
+      ],
+      "label": "(2, 4)"
+     },
+     {
+      "at": [
+       3,
+       7.5
+      ],
+      "label": "(3, 7.5)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-change-at-an-instant-1",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "change-at-an-instant-s1",
+   "q": "Find the average rate of change of $T$ over $0 \\le t \\le 5$. Include units.",
+   "numeric": {
+    "answer": "-27/5",
+    "unit": "°F per minute",
+    "askUnit": true,
+    "units": [
+     "degrees Fahrenheit per minute",
+     "°F/min",
+     "degrees per minute",
+     "deg/min",
+     "F/min",
+     "degrees F per minute"
+    ],
+    "mistakes": [
+     {
+      "value": "27/5",
+      "why": "Subtract in time order: $\\frac{T(5) - T(0)}{5 - 0} = \\frac{153 - 180}{5}$. The coffee cools, so the rate is negative."
+     },
+     {
+      "value": "-5/27",
+      "why": "A rate of change is change in output over change in input: degrees divided by minutes, not minutes divided by degrees."
+     },
+     {
+      "value": -27,
+      "why": "That is the total change in temperature. Divide by the 5 minutes it took."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{T(5) - T(0)}{5 - 0} = \\frac{153 - 180}{5} = -\\frac{27}{5} = -5.4$ °F per minute."
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-2",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "change-at-an-instant-s1",
+   "q": "Which sentence correctly interprets the value $\\frac{T(5) - T(0)}{5 - 0} = -5.4$?",
+   "options": [
+    "Over the first 5 minutes, the temperature fell by an average of 5.4 °F per minute.",
+    "At exactly 5 minutes, the temperature is falling at 5.4 °F per minute.",
+    "After 5 minutes, the coffee is 5.4 °F cooler than when it was poured.",
+    "The temperature fell 5.4 °F in each of the first 5 minutes, minute by minute."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An average rate describes a whole interval: from $t = 0$ to $t = 5$ the coffee lost 27 °F, which is 5.4 °F per minute on average. It does not say how fast it cooled at any one moment.",
+    "options": [
+     "It names the interval, the quantity, the units and \"on average\".",
+     "That describes one instant. An average over an interval does not tell the rate at its end.",
+     "The total drop is 27 °F; 5.4 is the drop per minute.",
+     "An average does not say the cooling was steady; the table shows it slowed down."
+    ]
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-3",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "change-at-an-instant-s1",
+   "q": "Using the table, which is the best estimate of the rate at which the temperature is changing at $t = 9.5$ minutes?",
+   "options": [
+    "−3 °F per minute, from the interval [9, 10]",
+    "−3.8 °F per minute, from the interval [5, 10]",
+    "−4 °F per minute, from the interval [5, 9]",
+    "137 °F, the temperature at t = 9"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The narrowest interval in the table that contains $t = 9.5$ is $[9, 10]$: $\\frac{134 - 137}{10 - 9} = -3$ °F per minute. Shorter intervals give averages closer to the rate at an instant.",
+    "options": [
+     "$[9, 10]$ is the shortest interval around 9.5.",
+     "$[5, 10]$ contains 9.5 but is five times longer, so its average blends in the faster cooling from earlier.",
+     "$[5, 9]$ does not contain $t = 9.5$.",
+     "That is a temperature, not a rate of change; a rate has units of °F per minute."
+    ]
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-4",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "change-at-an-instant-s1",
+   "q": "What do the average rates of change over $[0, 2]$, $[2, 5]$, $[5, 9]$ and $[9, 10]$ show about the coffee?",
+   "options": [
+    "It cools more and more slowly: the averages are −6, −5, −4 and −3 °F per minute.",
+    "It cools faster and faster: the averages are −3, −4, −5 and −6 °F per minute.",
+    "It cools at a steady rate, because the temperature falls on each interval.",
+    "It warms up at the end, because −3 is greater than −6."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The averages are $\\frac{168 - 180}{2} = -6$, $\\frac{153 - 168}{3} = -5$, $\\frac{137 - 153}{4} = -4$ and $\\frac{134 - 137}{1} = -3$. They are all negative (cooling) and shrink in size, so the cooling slows down.",
+    "options": [
+     "The averages go −6, −5, −4, −3: still cooling, but more slowly.",
+     "That lists them in reverse time order.",
+     "Falling on every interval does not mean falling at the same rate; the averages differ.",
+     "A rate of −3 still means the temperature is going down, just more slowly."
+    ]
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-5",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "change-at-an-instant-s2",
+   "q": "Find the cyclist's average speed over the whole ride, $0 \\le t \\le 4$. Include units.",
+   "numeric": {
+    "answer": 3,
+    "unit": "miles per hour",
+    "askUnit": true,
+    "units": [
+     "mph",
+     "mi/hr",
+     "mi/h",
+     "miles/hour"
+    ],
+    "mistakes": [
+     {
+      "value": "1/3",
+      "why": "Average speed is distance over time: $\\frac{12}{4}$ miles per hour, not $\\frac{4}{12}$."
+     },
+     {
+      "value": 12,
+      "why": "12 miles is the distance ridden. Divide by the 4 hours."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d(4) - d(0)}{4 - 0} = \\frac{12 - 0}{4} = 3$ miles per hour."
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-6",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "change-at-an-instant-s2",
+   "q": "How does the cyclist's average speed over $[0, 2]$ compare with the average speed over $[2, 4]$?",
+   "options": [
+    "It is 2 mph on [0, 2] and 4 mph on [2, 4]: the cyclist sped up.",
+    "It is 4 mph on [0, 2] and 8 mph on [2, 4]: the cyclist sped up.",
+    "Both are 3 mph, the average over the whole ride.",
+    "It is 2 mph on [0, 2] and 6 mph on [2, 4]: the cyclist sped up."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{d(2) - d(0)}{2} = \\frac{4}{2} = 2$ and $\\frac{d(4) - d(2)}{2} = \\frac{12 - 4}{2} = 4$ miles per hour. The graph gets steeper, so the later average is larger.",
+    "options": [
+     "$\\frac{4 - 0}{2} = 2$ and $\\frac{12 - 4}{2} = 4$.",
+     "Those are the distances ridden, 4 and 8 miles; divide each by 2 hours.",
+     "The overall average is 3, but the two halves differ: the graph is steeper later.",
+     "For $[2, 4]$, subtract the starting distance: $\\frac{12 - 4}{2} = 4$, not $\\frac{12}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-7",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "numeric",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "change-at-an-instant-s2",
+   "q": "The average speeds over $[1, 2]$ and $[2, 3]$ bracket the speed at $t = 2$. Average those two values to estimate the cyclist's speed at $t = 2$, in miles per hour.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": "5/2",
+      "why": "That is only the average over $[1, 2]$, which sits just before $t = 2$. Average it with the one after: $\\frac{2.5 + 3.5}{2}$."
+     },
+     {
+      "value": "7/2",
+      "why": "That is only the average over $[2, 3]$. Average it with $[1, 2]$'s 2.5."
+     },
+     {
+      "value": 4,
+      "why": "4 is $d(2)$, the distance ridden by $t = 2$, not a speed."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Over $[1, 2]$: $\\frac{4 - 1.5}{1} = 2.5$ mph. Over $[2, 3]$: $\\frac{7.5 - 4}{1} = 3.5$ mph. The speed at $t = 2$ is between them; their average, 3 mph, is the estimate."
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-8",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "change-at-an-instant-s2",
+   "q": "Why can't the cyclist's speed at the instant $t = 2$ be found by computing $\\frac{d(2) - d(2)}{2 - 2}$?",
+   "options": [
+    "The interval has length 0, so the quotient is zero divided by zero, which has no value.",
+    "The cyclist is not moving at t = 2, so the speed is 0.",
+    "The quotient equals 1, because the top and bottom are the same.",
+    "Distance and time have different units, so their quotient has no meaning."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An average rate needs an interval of positive length. Over a zero-length interval both the change in distance and the change in time are 0, and zero divided by zero is not a number. That is exactly why calculus needs a new idea for the rate at an instant.",
+    "options": [
+     "Both changes are 0, and zero over zero is undefined.",
+     "The graph is rising at t = 2, so the cyclist is moving.",
+     "A number over itself is 1 only when it is not 0.",
+     "Dividing distance by time is exactly how a speed is made."
+    ]
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-9",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the average rate of change of $f(x) = x^2 - 4x$ over the interval $[1, 5]$?",
+   "options": [
+    "$2$",
+    "$8$",
+    "$-2$",
+    "$\\frac{1}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f(5) = 25 - 20 = 5$ and $f(1) = 1 - 4 = -3$. Average rate $= \\frac{5 - (-3)}{5 - 1} = \\frac{8}{4} = 2$.",
+    "options": [
+     "$\\frac{f(5) - f(1)}{5 - 1} = \\frac{8}{4}$.",
+     "8 is the change in $f$; divide by the change in $x$, 4.",
+     "Keep the order the same on top and bottom: $f(5) - f(1)$ over $5 - 1$.",
+     "That is the change in $x$ over the change in $f$, upside down."
+    ]
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-10",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A stone dropped from a bridge falls $s(t) = 16t^2$ feet in $t$ seconds. Write its average speed over the interval from $t = 2$ to $t = 2 + h$, for $h > 0$, as a simplified expression in $h$.",
+   "expr": {
+    "answer": "64+16h",
+    "vars": [
+     "h"
+    ],
+    "domain": [
+     0.1,
+     2
+    ],
+    "mode": "exact",
+    "lhs": "\\text{average speed} =",
+    "mistakes": [
+     {
+      "expr": "16h",
+      "why": "$(2 + h)^2$ is $4 + 4h + h^2$, not $4 + h^2$. With the middle term, $16(2 + h)^2 - 64 = 64h + 16h^2$."
+     },
+     {
+      "expr": "(16(2+h)^2)/h",
+      "why": "Subtract the starting distance first: the stone had already fallen $s(2) = 64$ feet at $t = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{s(2 + h) - s(2)}{h} = \\frac{16(4 + 4h + h^2) - 64}{h} = \\frac{64h + 16h^2}{h} = 64 + 16h$ feet per second, for $h > 0$."
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-11",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For the stone above, the average speed over $[2, 2 + h]$ is $64 + 16h$ feet per second. As $h$ shrinks toward 0, what value do these average speeds close in on, and what does it represent?",
+   "options": [
+    "64 feet per second, the speed at the instant t = 2",
+    "80 feet per second, the speed at the instant t = 2",
+    "0 feet per second, because the interval disappears",
+    "64 feet, the distance fallen by t = 2"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As $h$ gets closer to 0, $16h$ gets closer to 0, so $64 + 16h$ closes in on 64. That number is the instantaneous rate of change: the stone's speed at $t = 2$, 64 feet per second.",
+    "options": [
+     "$64 + 16h$ heads to 64 as $h$ heads to 0.",
+     "80 is the average over $[2, 3]$ ($h = 1$), not what the averages approach.",
+     "The averages never get near 0; they get near 64.",
+     "$s(2) = 64$ feet happens to have the same number, but a speed has units of feet per second."
+    ]
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-12",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "The depth $W(t)$ of water in a reservoir is measured in feet, and $t$ is measured in days. In what units is the average rate of change of $W$ over an interval?",
+   "options": [
+    "feet per day",
+    "days per foot",
+    "feet",
+    "feet per day per day"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An average rate of change is $\\frac{\\text{change in } W}{\\text{change in } t}$: feet divided by days.",
+    "options": [
+     "Output units over input units.",
+     "That is upside down: input over output.",
+     "Feet measure the change in $W$ alone; a rate divides by time.",
+     "That would be a rate of change of a rate; this is a single rate."
+    ]
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-13",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $f(x) = x^3$, on which interval is the average rate of change of $f$ equal to 7?",
+   "options": [
+    "$[1, 2]$",
+    "$[0, 2]$",
+    "$[-1, 1]$",
+    "$[2, 3]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{2^3 - 1^3}{2 - 1} = \\frac{7}{1} = 7$.",
+    "options": [
+     "$\\frac{8 - 1}{1} = 7$.",
+     "$\\frac{8 - 0}{2} = 4$.",
+     "$\\frac{1 - (-1)}{2} = 1$.",
+     "$\\frac{27 - 8}{1} = 19$."
+    ]
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-14",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A train passes mile marker 40 at 1:00 p.m. and mile marker 100 at 2:00 p.m. on a straight track. Which statement must be true?",
+   "options": [
+    "Its average speed from 1:00 to 2:00 was 60 miles per hour.",
+    "At 1:30 p.m. it was traveling at 60 miles per hour.",
+    "It traveled at 60 miles per hour for the entire hour.",
+    "At 2:00 p.m. it was traveling at 100 miles per hour."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The data give an average over the interval: $\\frac{100 - 40}{1} = 60$ miles per hour. They say nothing certain about the speed at any single instant, such as 1:30.",
+    "options": [
+     "$\\frac{60 \\text{ miles}}{1 \\text{ hour}}$.",
+     "The train could have sped up and slowed down; the average says nothing sure about one moment.",
+     "An average does not mean a steady speed.",
+     "The mile marker 100 is a position, not a speed."
+    ]
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-15",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the average rate of change of $g(x) = \\sqrt{x}$ over $[4, 9]$.",
+   "numeric": {
+    "answer": "1/5",
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "Change in output over change in input: $\\frac{1}{5}$, not $\\frac{5}{1}$."
+     },
+     {
+      "value": 1,
+      "why": "1 is the change in $g$. Divide by the change in $x$, $9 - 4 = 5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{\\sqrt{9} - \\sqrt{4}}{9 - 4} = \\frac{3 - 2}{5} = \\frac{1}{5}$."
+   }
+  },
+  {
+   "id": "calc-change-at-an-instant-16",
+   "unit": "unit-1",
+   "topic": "change-at-an-instant",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The average rate of change of a function $p$ over $[3, 3 + h]$ is 6.1 for $h = 0.1$, 6.01 for $h = 0.01$ and 6.001 for $h = 0.001$. The averages over $[3 - h, 3]$ are 5.9, 5.99 and 5.999. What is the best value for the instantaneous rate of change of $p$ at $x = 3$?",
+   "options": [
+    "6",
+    "6.001",
+    "5.999",
+    "6.1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From both sides, the averages over shrinking intervals close in on 6. The rate at the instant is the number they approach, not any one of the averages.",
+    "options": [
+     "Both sequences of averages close in on 6.",
+     "That is one average, over the shortest right-hand interval; the averages are still moving toward 6.",
+     "That is one average, over the shortest left-hand interval.",
+     "That is the average over the widest interval, the least accurate."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "long-division-asymptote": {
+  "file": "figures/long-division-asymptote.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 480,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of y = (x squared + 3x + 5)/(x + 1) in two branches on either side of the vertical asymptote x = -1, with the dashed line y = x + 2. The curve hugs the line far from x = -1; at x = 3 a vertical segment marks the gap 3/(x + 1). Long division gives x + 2 + 3/(x + 1)."
+ }
+}

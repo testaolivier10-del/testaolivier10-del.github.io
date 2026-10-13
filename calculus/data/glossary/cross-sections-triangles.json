@@ -1,0 +1,5 @@
+{
+ "triangle-cross-section": {
+  "def": "A slice of a solid shaped like a triangle or a semicircle, standing on a segment of length $s$ across the base. Areas: equilateral triangle $\\frac{\\sqrt{3}}{4}s^2$; isosceles right triangle with a leg in the base $\\frac{1}{2}s^2$, with the hypotenuse in the base $\\frac{1}{4}s^2$; semicircle with diameter $s$, $\\frac{\\pi}{8}s^2$."
+ }
+}

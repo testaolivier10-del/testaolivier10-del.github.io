@@ -1,0 +1,46 @@
+<p>One differential equation appears in more places than any other: $\frac{dy}{dt} = ky$. It says the rate of change is proportional to the amount present. Bacteria with room to grow, an account earning continuous interest, a medicine cleared by the kidneys, a radioactive sample: each changes faster when there is more of it. This page solves the equation once, so you can quote the result, and shows how to read and fit the model.</p>
+
+<h2>The solution, once and for all</h2>
+<p>Separate: $\frac{dy}{y} = k\,dt$. Integrate: $\ln|y| = kt + C$. Exponentiate: $y = Ae^{kt}$. At $t = 0$, $y = Ae^0 = A$, so the constant $A$ is the starting amount $y_0 = y(0)$:</p>
+<p>$$\frac{dy}{dt} = ky, \quad y(0) = y_0 \qquad \text{gives} \qquad y = y_0e^{kt}.$$</p>
+<p>This is the <b>exponential model</b>. You may quote it on the exam when a problem says the rate of change is proportional to the amount.</p>
+<figure id="fig-expo" data-fig="exponential-growth-decay"><figcaption>Growth with $k = 0.2$ and decay with $k = -0.3$. Each doubling (or halving) takes the same time, whatever the starting amount.</figcaption></figure>
+
+<h2>What $k$ means</h2>
+<p>Rearrange the equation: $k = \frac{dy/dt}{y}$. So $k$ is the rate of change <i>as a fraction of the current amount</i>. If $k = 0.05$ per year, the quantity grows at 5% of its current size per year, at every moment. If $k = -0.12$ per hour, it shrinks at 12% of its current size per hour. That is why $k$ is called the growth constant ($k > 0$) or the decay constant ($k < 0$).</p>
+<p>Units follow from the fraction: $\frac{dy}{dt}$ is in "amount per hour" and $y$ in "amount", so $k$ is in "per hour". The product $kt$ has no units, as an exponent must.</p>
+<table>
+<thead><tr><th></th><th>Growth, $k > 0$</th><th>Decay, $k < 0$</th></tr></thead>
+<tbody>
+<tr><td>Graph</td><td>rises ever faster</td><td>falls ever more slowly toward 0, never reaching it</td></tr>
+<tr><td>Rate of change</td><td>$\frac{dy}{dt} = ky$ grows with $y$</td><td>$\frac{dy}{dt} = ky$ shrinks in size with $y$</td></tr>
+<tr><td>Fixed time to</td><td>double: $\frac{\ln 2}{k}$</td><td>halve (half-life): $\frac{\ln 2}{|k|}$</td></tr>
+</tbody>
+</table>
+
+<h2>Finding $k$ from data</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> A culture grows at a rate proportional to its size. There are 400 bacteria at $t = 0$ and 1200 at $t = 3$ hours. Find $k$, the model, and the population at $t = 6$.</p>
+<p>The model is $P = 400e^{kt}$. Use the second count: $1200 = 400e^{3k}$.</p>
+<p>Divide first: $e^{3k} = 3$. Take natural logs: $3k = \ln 3$, so $k = \frac{\ln 3}{3} \approx 0.366$ per hour.</p>
+<p>Model: $P(t) = 400e^{\frac{\ln 3}{3}t}$. Then $P(6) = 400e^{2\ln 3} = 400 \cdot 9 = 3600$ bacteria.</p>
+<p>Notice the pattern: 3 hours multiplies the population by 3, so 6 hours multiplies it by 9. A linear guess (add 800 every 3 hours, giving 2000) is the trap.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2 (calculator).</b> A medicine leaves the blood by $\frac{dA}{dt} = -0.12A$, with $A(0) = 250$ mg and $t$ in hours. Find the half-life and the time when 50 mg remain.</p>
+<p>The model is $A = 250e^{-0.12t}$. Half-life: $125 = 250e^{-0.12t}$, so $e^{-0.12t} = \frac{1}{2}$ and $t = \frac{\ln 2}{0.12} \approx 5.776$ hours.</p>
+<p>50 mg: $50 = 250e^{-0.12t}$, so $e^{-0.12t} = 0.2$ and $t = \frac{\ln 5}{0.12} \approx 13.412$ hours.</p>
+<p>Keep full precision in the calculator and round to three decimal places only at the end.</p>
+</div>
+
+<h2>Cooling and warming</h2>
+<p>Newton's law of cooling, $\frac{dT}{dt} = k(T - T_r)$ with room temperature $T_r$, is an exponential model for the <i>difference</i> $T - T_r$, not for $T$. So $T - T_r = (T_0 - T_r)e^{kt}$, or $T = T_r + (T_0 - T_r)e^{kt}$. A pie at 90 °F in a 20 °F freezer has $T - 20 = 70e^{kt}$; if it is at 55 °F after 10 minutes, then $35 = 70e^{10k}$ and $k = -\frac{\ln 2}{10}$ per minute.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Thinking linearly: an exponential multiplies by the same factor in equal times; it does not add the same amount.</li>
+<li>Taking the log before dividing: from $1200 = 400e^{3k}$, divide by 400 first.</li>
+<li>Losing the sign of $k$ for decay, or using the rate at $t = 0$ when a later rate is asked: $\frac{dA}{dt} = kA(t)$ changes with time.</li>
+<li>Applying the model to $T$ instead of $T - T_r$ in a cooling problem.</li>
+</ul>

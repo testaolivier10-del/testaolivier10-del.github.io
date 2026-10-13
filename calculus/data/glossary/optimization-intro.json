@@ -1,0 +1,5 @@
+{
+ "optimization": {
+  "def": "Finding the absolute maximum or minimum value of a quantity in context. The quantity is written as an objective function of one variable on a sensible domain, and its absolute extremum is found and justified with derivatives."
+ }
+}

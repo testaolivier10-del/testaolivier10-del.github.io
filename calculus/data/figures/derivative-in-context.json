@@ -1,0 +1,12 @@
+{
+ "cooling-tangent-units": {
+  "file": "figures/cooling-tangent-units.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The temperature T(t) = 20 + 60e^(−t/20) of a cooling drink, in °C, for t from 0 to 60 minutes, with the tangent line at (10, 56.4). A slope triangle runs 10 minutes and drops 18.2 °C, so T′(10) ≈ −1.82 °C per minute."
+ }
+}

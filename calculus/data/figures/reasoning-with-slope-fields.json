@@ -1,0 +1,12 @@
+{
+ "slope-field-solutions": {
+  "file": "figures/slope-field-solutions.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 500,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph, drawn from its function by scripts/apcalc-figures/unit-7-8a.mjs",
+  "alt": "The slope field of dy/dx = (3 − y)/2 drawn every half unit. The dashed green line y = 3 has slope 0 everywhere. A crimson curve through (0, 1) rises and flattens toward y = 3; a blue curve through (0, 5.5) falls and flattens toward y = 3. Neither crosses the line."
+ }
+}

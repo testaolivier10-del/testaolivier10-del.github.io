@@ -1,0 +1,5 @@
+{
+ "continuity-on-interval": {
+  "def": "A function is continuous on an open interval when it is continuous at every point of it. On a closed interval $[a, b]$ it must also be continuous from the inside at each endpoint: $\\lim_{x \\to a^+} f(x) = f(a)$ and $\\lim_{x \\to b^-} f(x) = f(b)$."
+ }
+}

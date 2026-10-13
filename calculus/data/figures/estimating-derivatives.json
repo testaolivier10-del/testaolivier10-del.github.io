@@ -1,0 +1,12 @@
+{
+ "table-difference-quotient": {
+  "file": "figures/table-difference-quotient.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Five measured temperatures B(t) of a cooling loaf of bread, in degrees Fahrenheit, at t = 0, 4, 10, 14 and 20 minutes: 180, 152, 121, 105 and 88. A dashed secant line joins the points at t = 10 and t = 14, on either side of t = 12. Its slope, (105 minus 121) over (14 minus 10), is minus 4 degrees Fahrenheit per minute, the estimate of B prime of 12."
+ }
+}

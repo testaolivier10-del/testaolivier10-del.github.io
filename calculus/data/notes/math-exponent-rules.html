@@ -1,0 +1,64 @@
+<p>Calculus has one short rule that handles every power of $x$: $x^2$, $x^{10}$, $\frac{1}{x^3}$, $\sqrt{x}$, $\sqrt[3]{x^2}$. The catch is that the rule only sees powers. So before you use it, you rewrite fractions and roots as exponents. This page is the toolkit for that rewrite, and a list of the slips that cost the most points.</p>
+
+<h2>The rules, and why they hold</h2>
+<p>An exponent counts repeated multiplication: $x^3 = x \cdot x \cdot x$. Every rule follows from counting factors. Multiply $x^3$ by $x^2$ and you have $3 + 2 = 5$ factors of $x$. Divide $x^5$ by $x^2$ and two factors cancel, leaving three.</p>
+<table class="compare">
+<thead><tr><th>Rule</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>$x^m \cdot x^n = x^{m+n}$</td><td>$x^4 \cdot x^{-1} = x^3$</td></tr>
+<tr><td>$\frac{x^m}{x^n} = x^{m-n}$</td><td>$\frac{x^2}{x^5} = x^{-3}$</td></tr>
+<tr><td>$(x^m)^n = x^{mn}$</td><td>$(x^3)^2 = x^6$</td></tr>
+<tr><td>$(ab)^n = a^n b^n$</td><td>$(2x)^3 = 8x^3$</td></tr>
+<tr><td>$x^0 = 1$ (for $x \ne 0$)</td><td>$5^0 = 1$</td></tr>
+<tr><td>$x^{-n} = \frac{1}{x^n}$</td><td>$x^{-2} = \frac{1}{x^2}$</td></tr>
+<tr><td>$x^{m/n} = \left(\sqrt[n]{x}\right)^m = \sqrt[n]{x^m}$</td><td>$x^{2/3} = \sqrt[3]{x^2}$</td></tr>
+</tbody>
+</table>
+<p>The last two rows are the ones calculus leans on, so let us slow down on them.</p>
+
+<h2>Negative exponents mean "one over"</h2>
+<p>Why should $x^{-2}$ be $\frac{1}{x^2}$? Use the division rule on a fraction you already know: $\frac{x^3}{x^5} = \frac{1}{x^2}$ by canceling, and $\frac{x^3}{x^5} = x^{3 - 5} = x^{-2}$ by the rule. Both are right, so $x^{-2} = \frac{1}{x^2}$.</p>
+<p>A <b>negative exponent</b> never makes a number negative. $2^{-3} = \frac{1}{8}$, a small positive number.</p>
+<p>The most common slip is moving too much. An exponent applies only to the base it touches:</p>
+<ul>
+<li>$3x^{-2} = \frac{3}{x^2}$. Only $x$ carries the exponent; the 3 stays on top.</li>
+<li>$(3x)^{-2} = \frac{1}{(3x)^2} = \frac{1}{9x^2}$. Now the parentheses put the 3 under the exponent too.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> Write $f(x) = \frac{5}{x^3} - \frac{1}{2x}$ as a sum of powers of $x$.</p>
+<p>First term: $\frac{5}{x^3} = 5x^{-3}$.</p>
+<p>Second term: $\frac{1}{2x} = \frac{1}{2} \cdot \frac{1}{x} = \frac{1}{2}x^{-1}$. The 2 is a number in the denominator, so it stays as $\frac{1}{2}$; it does not get an exponent.</p>
+<p>So $f(x) = 5x^{-3} - \frac{1}{2}x^{-1}$.</p>
+</div>
+
+<h2>Fractional exponents mean roots</h2>
+<p>What number should $x^{1/2}$ be? Square it: $\left(x^{1/2}\right)^2 = x^{1/2 \cdot 2} = x^1$. So $x^{1/2}$ is the number whose square is $x$, which is $\sqrt{x}$. In the same way, $x^{1/3} = \sqrt[3]{x}$.</p>
+<p>A <b>fractional exponent</b> $\frac{m}{n}$ does two things: the denominator $n$ is a root, the numerator $m$ is a power. Take the root first; the numbers stay small.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Evaluate $8^{2/3}$ and $16^{-3/4}$.</p>
+<p>$8^{2/3} = \left(\sqrt[3]{8}\right)^2 = 2^2 = 4$.</p>
+<p>$16^{-3/4} = \frac{1}{16^{3/4}} = \frac{1}{\left(\sqrt[4]{16}\right)^3} = \frac{1}{2^3} = \frac{1}{8}$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Write $g(x) = \frac{x^2 + 1}{\sqrt{x}}$ and $h(x) = x\sqrt{x}$ as sums of powers.</p>
+<p>A fraction with a single term on the bottom splits over the top: $g(x) = \frac{x^2}{x^{1/2}} + \frac{1}{x^{1/2}} = x^{3/2} + x^{-1/2}$.</p>
+<p>$h(x) = x^1 \cdot x^{1/2} = x^{3/2}$.</p>
+<p>These are exactly the rewrites you will do before using the Unit 2 rules.</p>
+</div>
+
+<h2>The slips that cost points</h2>
+<p>Exponent rules work on <i>products</i> of a single base. They do not work across a plus sign. Here are the classic wrong moves; each one can be caught by testing a number.</p>
+<table class="compare">
+<thead><tr><th>Wrong</th><th>Right</th><th>Test with a number</th></tr></thead>
+<tbody>
+<tr><td>$(x + y)^2 = x^2 + y^2$</td><td>$x^2 + 2xy + y^2$</td><td>$(1 + 2)^2 = 9$, not 5</td></tr>
+<tr><td>$\sqrt{x^2 + 9} = x + 3$</td><td>does not simplify</td><td>$x = 4$: $\sqrt{25} = 5$, not 7</td></tr>
+<tr><td>$\frac{1}{x + 3} = x^{-1} + 3^{-1}$</td><td>$(x + 3)^{-1}$</td><td>$x = 1$: $\frac{1}{4}$, not $\frac{4}{3}$</td></tr>
+<tr><td>$-3^2 = 9$</td><td>$-3^2 = -9$; $(-3)^2 = 9$</td><td>the square applies to 3 only</td></tr>
+<tr><td>$(x^3)^2 = x^5$</td><td>$x^6$</td><td>$x = 2$: $8^2 = 64 = 2^6$</td></tr>
+</tbody>
+</table>
+<p>Testing with a number is a habit worth building. It takes ten seconds and catches most algebra errors before they spread through a problem.</p>
+
+<h2>Which form to give as an answer</h2>
+<p>Write powers when you are about to do calculus on an expression. For a final answer, either form is fine on the exam: $x^{-1/2}$ and $\frac{1}{\sqrt{x}}$ are equally correct. Do not spend time simplifying further than the question asks; the scoring guidelines reward the correct value, and extra simplifying is where new errors appear.</p>

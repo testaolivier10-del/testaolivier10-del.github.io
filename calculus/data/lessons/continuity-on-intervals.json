@@ -1,0 +1,84 @@
+{
+ "topic": "continuity-on-intervals",
+ "hook": "A hiking trail is only usable if every step of it is passable, not just the start and the finish. Calculus asks the same of a function on an interval: it must be continuous at every point along the way. Luckily, most functions you know come with that guarantee on their whole domain.",
+ "prereq": [
+  {
+   "q": "$f$ is continuous at $c$ when",
+   "options": [
+    "$f(c)$ is defined, $\\lim_{x \\to c} f(x)$ exists, and they are equal",
+    "$f(c)$ is defined",
+    "$\\lim_{x \\to c} f(x)$ exists",
+    "$f(c) = 0$"
+   ],
+   "correct": 0,
+   "why": "All three conditions are needed.",
+   "review": "continuity-at-a-point"
+  },
+  {
+   "q": "What is the domain of $\\ln x$?",
+   "options": [
+    "$x > 0$",
+    "$x \\ge 0$",
+    "every real number",
+    "$x \\ge 1$"
+   ],
+   "correct": 0,
+   "why": "A logarithm is defined only for positive inputs.",
+   "review": "math-exp-log"
+  },
+  {
+   "q": "Where is $\\frac{1}{x - 4}$ undefined?",
+   "options": [
+    "$x = 4$",
+    "$x = -4$",
+    "$x = 0$",
+    "$x = 1$"
+   ],
+   "correct": 0,
+   "why": "The denominator is 0 at x = 4.",
+   "review": "discontinuity-types"
+  }
+ ],
+ "figure": {
+  "figure": "continuity-intervals",
+  "caption": "A function and the intervals on which it is continuous."
+ },
+ "chain": [
+  {
+   "cause": "A function is continuous at every point of an open interval",
+   "effect": "it is continuous on that interval: its graph has no break there"
+  },
+  {
+   "cause": "The interval is closed, $[a, b]$",
+   "effect": "at the endpoints only the one-sided limit from inside counts: $\\lim_{x \\to a^+} f(x) = f(a)$ and $\\lim_{x \\to b^-} f(x) = f(b)$"
+  },
+  {
+   "cause": "Polynomial, rational, root, exponential, logarithmic and trigonometric functions",
+   "effect": "are continuous on their domains, so you only check where they are undefined"
+  },
+  {
+   "cause": "Continuous functions are combined by sums, products, quotients or composition",
+   "effect": "the result is continuous wherever it is defined; only break points of piecewise rules need a separate check"
+  }
+ ],
+ "ideas": [
+  "<b>Continuous on an interval</b>: continuous at every point of it. At a closed endpoint, only the one-sided limit from inside must match the value.",
+  "Polynomials, $e^x$, $\\sin x$ and $\\cos x$ are continuous on $(-\\infty, \\infty)$.",
+  "Rational functions, roots, $\\ln x$ and $\\tan x$ are continuous on their domains: avoid zeros of denominators, negative inputs to even roots, inputs to $\\ln$ that are not positive, and zeros of $\\cos x$ for $\\tan x$.",
+  "Sums, products, quotients (denominator not 0) and compositions of continuous functions are continuous.",
+  "For a piecewise function, each piece is handled by the rules above; check each break point with the three conditions."
+ ],
+ "misconception": {
+  "wrong": "If $f$ is continuous on $(1, 5)$ and on $[5, 8]$, it is continuous on $(1, 8]$.",
+  "right": "Continuity on $[5, 8]$ only guarantees continuity from the right at 5. The left-hand limit at 5 can still differ from $f(5)$, so $f$ may jump there. Check the shared point with all three conditions."
+ },
+ "check": [
+  "calc-continuity-on-intervals-1",
+  "calc-continuity-on-intervals-2",
+  "calc-continuity-on-intervals-5",
+  "calc-continuity-on-intervals-11",
+  "calc-continuity-on-intervals-13",
+  "calc-continuity-on-intervals-16"
+ ],
+ "summary": "A function is continuous on an interval when it is continuous at every point of it, with one-sided continuity at closed endpoints. The familiar function families are continuous on their domains, and sums, products, quotients and compositions keep that. So you only need to check where a function is undefined and where a piecewise rule switches."
+}

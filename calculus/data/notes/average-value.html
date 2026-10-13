@@ -1,0 +1,49 @@
+<p>You know how to average a list: add the numbers and divide by how many there are. A function on an interval has infinitely many values, so "add them up" becomes an integral and "how many" becomes the length of the interval. The result is the <b>average value of a function</b>, and it answers questions like "what was the average temperature this afternoon?" or "what was the average flow through this pipe during the storm?"</p>
+
+<h2>From a list to an integral</h2>
+<p>Split $[a, b]$ into $n$ equal subintervals of width $\Delta x = \frac{b - a}{n}$ and sample $f$ once in each. The average of the samples is</p>
+<p>$$\frac{f(x_1) + f(x_2) + \cdots + f(x_n)}{n} = \frac{1}{b - a}\sum_{i=1}^{n} f(x_i)\,\Delta x,$$</p>
+<p>because $\frac{1}{n} = \frac{\Delta x}{b - a}$. As $n$ grows, the sum becomes a Riemann sum for the definite integral, so the average of more and more samples settles on</p>
+<p>$$f_{\text{avg}} = \frac{1}{b - a}\int_a^b f(x)\,dx.$$</p>
+<p>The integrand is $f$ itself. Not $f'$, not $|f|$: just $f$.</p>
+
+<h2>The picture: an equal-area rectangle</h2>
+<p>Multiply both sides by $b - a$: $(b - a) \cdot f_{\text{avg}} = \int_a^b f(x)\,dx$. The left side is the area of a rectangle with base $b - a$ and height $f_{\text{avg}}$. So the average value is the height of the rectangle that has the same (signed) area as the region under $f$.</p>
+<figure id="fig-avg" data-fig="average-value-rectangle"><figcaption>For $f(x) = 6x - x^2$ on $[0, 6]$, the area under the curve is 36 and the rectangle of height 6 has the same area: $f_{\text{avg}} = 6$. The curve crosses height 6 at $x = 3 \pm \sqrt{3}$.</figcaption></figure>
+<p>If $f$ is continuous on $[a, b]$, it reaches its average value somewhere: the average lies between the minimum and maximum of $f$ (the Extreme Value Theorem gives them), and the Intermediate Value Theorem says a continuous $f$ takes every value in between. In the figure, that happens twice.</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Find the average value of $f(x) = 6x - x^2$ on $[0, 6]$, and every $c$ where $f(c)$ equals it.</p>
+<p>Integrate: $\int_0^6 (6x - x^2)\,dx = \left[3x^2 - \frac{x^3}{3}\right]_0^6 = 108 - 72 = 36$.</p>
+<p>Divide by the length: $f_{\text{avg}} = \frac{36}{6 - 0} = 6$.</p>
+<p>Solve $6c - c^2 = 6$: $c^2 - 6c + 6 = 0$, so $c = 3 \pm \sqrt{3}$, both inside $[0, 6]$.</p>
+</div>
+
+<h2>Average value or average rate of change?</h2>
+<p>These two sound alike and are different numbers with different units. Keep them apart:</p>
+<table>
+<thead><tr><th></th><th>Average value of $f$</th><th>Average rate of change of $f$</th></tr></thead>
+<tbody>
+<tr><td>Formula</td><td>$\frac{1}{b - a}\int_a^b f(x)\,dx$</td><td>$\frac{f(b) - f(a)}{b - a}$</td></tr>
+<tr><td>Picture</td><td>height of the equal-area rectangle</td><td>slope of the secant line</td></tr>
+<tr><td>Uses</td><td>every value of $f$ on the interval</td><td>two values of $f$</td></tr>
+<tr><td>Units (temperature in °C, time in hours)</td><td>°C</td><td>°C per hour</td></tr>
+</tbody>
+</table>
+<p>There is a neat link between them. The average value of $f'$ is $\frac{1}{b - a}\int_a^b f'(x)\,dx = \frac{f(b) - f(a)}{b - a}$ by the Fundamental Theorem. So the average rate of change of $f$ is the average value of its derivative. If a question says "average value of $f'$", that is the formula to use.</p>
+
+<h2>Averages from graphs, tables and calculators</h2>
+<div class="worked">
+<p><b>Worked example 2 (graph).</b> $f$ is made of line segments through $(0, 2)$, $(2, 6)$, $(4, 6)$, $(6, 0)$ and $(8, -2)$. Find its average value on $[0, 8]$.</p>
+<p>Use geometry: a trapezoid of area 8 on $[0, 2]$, a rectangle of area 12 on $[2, 4]$, a triangle of area 6 on $[4, 6]$, and a triangle of area 2 <i>below</i> the axis on $[6, 8]$, which counts as $-2$.</p>
+<p>$\int_0^8 f(x)\,dx = 8 + 12 + 6 - 2 = 24$, so $f_{\text{avg}} = \frac{24}{8} = 3$.</p>
+</div>
+<p>From a table, estimate the integral with a Riemann or trapezoidal sum using the table's own widths, then divide by the length of the interval. With a formula that has no easy antiderivative, use the calculator's numerical integral and write the setup: "$\frac{1}{8}\int_6^{14} T(t)\,dt \approx 19.297$ °C". Interpret the answer with the quantity, its units and the interval: "From 6 a.m. to 2 p.m. the average temperature was about 19.297 °C."</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Averaging two endpoint values, $\frac{f(a) + f(b)}{2}$, instead of integrating.</li>
+<li>Forgetting to divide by $b - a$, or dividing by $b$ when $a \ne 0$.</li>
+<li>Counting area below the axis as positive.</li>
+<li>Integrating $f'$ when the question asks for the average value of $f$.</li>
+</ul>

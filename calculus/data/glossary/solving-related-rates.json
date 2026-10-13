@@ -1,0 +1,5 @@
+{
+ "related-rates-problem": {
+  "def": "A problem that asks how fast one quantity changes, given how fast related quantities change: write an equation linking them, differentiate with respect to time, then substitute the values at the instant in question."
+ }
+}

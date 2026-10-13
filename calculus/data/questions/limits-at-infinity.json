@@ -1,0 +1,516 @@
+{
+ "stimuli": {
+  "limits-at-infinity-s1": {
+   "kind": "table",
+   "title": "Four rational functions",
+   "table": {
+    "caption": "Four rational functions, to be studied as x grows without bound in either direction",
+    "cols": [
+     "Function",
+     "Formula"
+    ],
+    "rows": [
+     [
+      "$f_1$",
+      "$f_1(x) = \\frac{3x^2 - x}{2x^2 + 5}$"
+     ],
+     [
+      "$f_2$",
+      "$f_2(x) = \\frac{4x + 1}{x^2 - 3}$"
+     ],
+     [
+      "$f_3$",
+      "$f_3(x) = \\frac{x^3 + 2}{5x^2 + x}$"
+     ],
+     [
+      "$f_4$",
+      "$f_4(x) = \\frac{6x^2 - 1}{1 - 3x^2}$"
+     ]
+    ]
+   }
+  },
+  "limits-at-infinity-s2": {
+   "kind": "graph",
+   "title": "The graph of $h(x) = \\frac{4x}{\\sqrt{x^2 + 1}}$",
+   "plot": {
+    "label": "Graph of h(x) = 4x divided by the square root of x^2 + 1, for x from -10 to 10, rising through the origin and leveling off toward the dashed horizontal lines y = 4 on the right and y = -4 on the left",
+    "x": [
+     -10,
+     10
+    ],
+    "y": [
+     -5,
+     5
+    ],
+    "xStep": 2,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "4x/sqrt(x^2 + 1)",
+      "domain": [
+       -10,
+       10
+      ],
+      "label": "h"
+     }
+    ],
+    "asymptotes": [
+     {
+      "y": 4
+     },
+     {
+      "y": -4
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-limits-at-infinity-1",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limits-at-infinity-s1",
+   "q": "Divide by the highest power of $x$ to find $\\lim_{x \\to \\infty} f_1(x)$.",
+   "numeric": {
+    "answer": "3/2",
+    "mistakes": [
+     {
+      "value": "2/3",
+      "why": "That is upside down. Divide top and bottom by $x^2$: $\\frac{3 - \\frac{1}{x}}{2 + \\frac{5}{x^2}} \\to \\frac{3}{2}$."
+     },
+     {
+      "value": 0,
+      "why": "The degrees are equal (both 2), so the limit is the ratio of the leading coefficients, $\\frac{3}{2}$, not 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide every term by $x^2$: $f_1(x) = \\frac{3 - \\frac{1}{x}}{2 + \\frac{5}{x^2}}$. As $x \\to \\infty$, $\\frac{1}{x} \\to 0$ and $\\frac{5}{x^2} \\to 0$, so the limit is $\\frac{3}{2}$."
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-2",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limits-at-infinity-s1",
+   "q": "Which function has the horizontal asymptote $y = 0$?",
+   "options": [
+    "$f_2$",
+    "$f_1$",
+    "$f_3$",
+    "$f_4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In $f_2$ the denominator has the higher degree. Dividing by $x^2$: $\\frac{\\frac{4}{x} + \\frac{1}{x^2}}{1 - \\frac{3}{x^2}} \\to \\frac{0}{1} = 0$.",
+    "options": [
+     "Degree 1 over degree 2: the denominator dominates, so the quotient approaches 0.",
+     "Equal degrees give $y = \\frac{3}{2}$.",
+     "The numerator has the higher degree, so $f_3$ is unbounded.",
+     "Equal degrees give $y = \\frac{6}{-3} = -2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-3",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limits-at-infinity-s1",
+   "q": "What is true about $\\lim_{x \\to \\infty} f_3(x)$?",
+   "options": [
+    "It is $\\frac{1}{5}$, the ratio of the leading coefficients",
+    "It is $\\infty$, so $f_3$ has no horizontal asymptote to the right",
+    "It is $0$, because the denominator has an extra term",
+    "It is $\\frac{2}{5}$, from the constant term and the $x^2$ term"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Divide by $x^2$: $f_3(x) = \\frac{x + \\frac{2}{x^2}}{5 + \\frac{1}{x}}$. The top grows without bound while the bottom approaches 5, so $f_3(x) \\to \\infty$.",
+    "options": [
+     "Leading coefficients decide the limit only when the degrees are equal.",
+     "Degree 3 over degree 2: the numerator dominates and the quotient grows like $\\frac{x}{5}$.",
+     "The extra term does not matter; the degrees do.",
+     "Constant terms fade compared with the leading terms."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-4",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limits-at-infinity-s1",
+   "q": "Find $\\lim_{x \\to -\\infty} f_4(x)$.",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "The leading term of the denominator is $-3x^2$, negative. The ratio is $\\frac{6}{-3} = -2$."
+     },
+     {
+      "value": -1,
+      "why": "Use the leading terms, not the constants: $\\frac{6x^2}{-3x^2} = -2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide by $x^2$: $\\frac{6 - \\frac{1}{x^2}}{\\frac{1}{x^2} - 3} \\to \\frac{6}{-3} = -2$. Since $x^2$ is positive whether $x$ is large positive or large negative, the limit at $-\\infty$ is the same as at $\\infty$."
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-5",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limits-at-infinity-s2",
+   "q": "Find $\\lim_{x \\to \\infty} h(x)$.",
+   "options": [
+    "$0$",
+    "$\\infty$",
+    "$4$",
+    "$-4$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For $x > 0$, $\\sqrt{x^2 + 1}$ is close to $x$, so $h(x) \\approx \\frac{4x}{x} = 4$. The graph levels off at $y = 4$ on the right.",
+    "options": [
+     "The top and bottom grow at the same rate, so the quotient does not shrink to 0.",
+     "$h$ stays below 4; it does not grow without bound.",
+     "The graph approaches the line $y = 4$ as $x$ grows.",
+     "That is the limit at $-\\infty$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-6",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "single",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "limits-at-infinity-s2",
+   "q": "Why is $\\lim_{x \\to -\\infty} h(x) = -4$ rather than $4$?",
+   "options": [
+    "For $x < 0$, $\\sqrt{x^2 + 1}$ is negative, so the quotient changes sign",
+    "The constant 1 under the root becomes $-1$ when $x$ is negative",
+    "Limits at $-\\infty$ are the negatives of limits at $\\infty$",
+    "For $x < 0$, $\\sqrt{x^2} = -x$, so $h(x) \\approx \\frac{4x}{-x} = -4$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\sqrt{x^2} = |x|$. When $x$ is negative, $|x| = -x$, so for large negative $x$, $\\frac{4x}{\\sqrt{x^2 + 1}} \\approx \\frac{4x}{-x} = -4$.",
+    "options": [
+     "A square root is never negative; it is the numerator $4x$ that is negative.",
+     "The 1 stays 1; it just becomes small next to $x^2$.",
+     "Not in general: $f_1$ above has the same limit $\\frac{3}{2}$ in both directions.",
+     "The root is $|x|$, which equals $-x$ for negative $x$, while the numerator $4x$ is negative."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-7",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limits-at-infinity-s2",
+   "q": "How many horizontal asymptotes does the graph of $h$ have?",
+   "options": [
+    "Two: $y = 4$ and $y = -4$",
+    "One: $y = 4$",
+    "One: $y = 0$",
+    "Zero, since $h$ is defined everywhere"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A horizontal asymptote comes from a finite limit at $\\infty$ or at $-\\infty$. Here they differ, 4 and $-4$, so there are two.",
+    "options": [
+     "Each direction gives its own finite limit.",
+     "The left side levels off at $-4$, a second asymptote.",
+     "$h(0) = 0$, but asymptotes describe behavior far out, not at the origin.",
+     "Being defined everywhere does not stop a graph from leveling off."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-8",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "limits-at-infinity-s2",
+   "q": "A student divides the top and bottom of $h$ by $x$ and writes $h(x) = \\frac{4}{\\sqrt{1 + \\frac{1}{x^2}}}$ for each $x \\ne 0$, then says both limits at infinity are 4. What went wrong?",
+   "options": [
+    "Dividing by $x$ is not allowed in a limit at infinity",
+    "Moving $x$ inside the root as $\\sqrt{x^2}$ is valid for $x > 0$ alone",
+    "$\\frac{1}{x^2}$ does not approach 0 as $x$ grows",
+    "The student should have divided by $x^2$, not by $x$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Writing $\\frac{\\sqrt{x^2 + 1}}{x} = \\sqrt{\\frac{x^2 + 1}{x^2}}$ assumes $x = \\sqrt{x^2}$, true for $x > 0$. For $x < 0$, $x = -\\sqrt{x^2}$, which brings in a minus sign and gives $-4$.",
+    "options": [
+     "Dividing top and bottom by the same nonzero expression is fine.",
+     "For negative $x$ the step loses a minus sign; the correct form there is $-\\frac{4}{\\sqrt{1 + \\frac{1}{x^2}}}$.",
+     "$\\frac{1}{x^2} \\to 0$ in both directions.",
+     "Dividing by $x$ is the right idea; the sign is the problem."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-9",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\lim_{x \\to \\infty} \\left(5 - 2e^{-x}\\right)$.",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$e^{-x} = \\frac{1}{e^x}$ shrinks to 0 as $x \\to \\infty$, so the term $2e^{-x}$ vanishes; it does not become 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "As $x \\to \\infty$, $e^{-x} = \\frac{1}{e^x} \\to 0$, so $5 - 2e^{-x} \\to 5$. The graph has the horizontal asymptote $y = 5$."
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-10",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to \\infty} \\frac{x^3}{e^x}$.",
+   "options": [
+    "$\\infty$",
+    "$1$",
+    "$0$",
+    "$3$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An exponential with base greater than 1 eventually grows faster than any power of $x$. So $e^x$ dominates $x^3$ and the quotient approaches 0.",
+    "options": [
+     "$x^3$ is larger only for moderate $x$; in the long run $e^x$ wins.",
+     "The two do not grow at the same rate.",
+     "$e^x$ passes $x^3$ (near $x \\approx 4.5$) and then leaves it far behind.",
+     "The exponent 3 does not appear in the limit."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-11",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which list orders the functions from slowest to fastest growth as $x \\to \\infty$?",
+   "options": [
+    "$\\sqrt{x}$, $\\ln x$, $x^3$, $e^x$",
+    "$\\ln x$, $\\sqrt{x}$, $e^x$, $x^3$",
+    "$\\ln x$, $x^3$, $\\sqrt{x}$, $e^x$",
+    "$\\ln x$, $\\sqrt{x}$, $x^3$, $e^x$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Logarithms grow slower than any positive power, powers grow in order of their exponents, and exponentials grow faster than any power.",
+    "options": [
+     "$\\ln x$ grows slower than $\\sqrt{x}$: $\\frac{\\ln x}{\\sqrt{x}} \\to 0$.",
+     "$e^x$ eventually passes every power, including $x^3$.",
+     "$x^3$ grows faster than $\\sqrt{x} = x^{1/2}$.",
+     "In the long run each one grows slower than the next: $\\ln x$, $x^{1/2}$, $x^3$, $e^x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-12",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to \\infty} \\frac{\\sin x}{x}$.",
+   "numeric": {
+    "answer": 0,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$\\frac{\\sin x}{x} \\to 1$ as $x \\to 0$. As $x \\to \\infty$, the top stays between $-1$ and $1$ while the bottom grows, so the quotient shrinks to 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x > 0$, $-\\frac{1}{x} \\le \\frac{\\sin x}{x} \\le \\frac{1}{x}$, and both bounds approach 0 as $x \\to \\infty$. By the squeeze theorem the limit is 0."
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-13",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\lim_{x \\to \\infty} \\left(\\sqrt{x^2 + 6x} - x\\right)$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$\\infty - \\infty$ is not 0. Multiply by the conjugate: $\\frac{6x}{\\sqrt{x^2 + 6x} + x}$, which approaches $\\frac{6}{2} = 3$."
+     },
+     {
+      "value": 6,
+      "why": "After the conjugate, the denominator $\\sqrt{x^2 + 6x} + x$ is about $2x$, so $\\frac{6x}{2x} = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Multiply by $\\frac{\\sqrt{x^2 + 6x} + x}{\\sqrt{x^2 + 6x} + x}$: the expression becomes $\\frac{6x}{\\sqrt{x^2 + 6x} + x}$. Divide by $x$ (positive): $\\frac{6}{\\sqrt{1 + \\frac{6}{x}} + 1} \\to \\frac{6}{2} = 3$."
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-14",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which function has the horizontal asymptote $y = 2$?",
+   "options": [
+    "$\\frac{2x + 1}{x - 3}$",
+    "$\\frac{2x^2 + 1}{x - 3}$",
+    "$\\frac{2}{x - 3}$",
+    "$\\frac{x + 1}{2x - 3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equal degrees: the limit at $\\pm\\infty$ is the ratio of the leading coefficients, $\\frac{2}{1} = 2$.",
+    "options": [
+     "$\\frac{2x}{x} = 2$ for the leading terms.",
+     "The numerator has the higher degree, so there is no horizontal asymptote.",
+     "The denominator has the higher degree, so the asymptote is $y = 0$.",
+     "The ratio is $\\frac{1}{2}$, not 2."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-15",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Can a graph cross its own horizontal asymptote? Consider $f(x) = \\frac{2x^2 + x}{x^2 + 1}$, whose horizontal asymptote is $y = 2$.",
+   "options": [
+    "No: a graph stays off its asymptote",
+    "Yes: $f(2) = 2$, yet $f(x) \\to 2$ as $x \\to \\infty$",
+    "No: $f(x) > 2$ for each $x$, so it stays above",
+    "Yes, but then $y = 2$ is no longer an asymptote"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f(x) = 2$ when $2x^2 + x = 2x^2 + 2$, so at $x = 2$. A horizontal asymptote describes behavior far out, as $x \\to \\pm\\infty$, and says nothing about the middle of the graph.",
+    "options": [
+     "Vertical asymptotes cannot be crossed (the function is unbounded there), but horizontal ones can.",
+     "$f(2) = \\frac{8 + 2}{5} = 2$: the graph crosses $y = 2$, and still approaches it far out.",
+     "$f(0) = 0 < 2$, so the graph is sometimes below.",
+     "The asymptote is defined by the limit at infinity, which is still 2."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-16",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "numeric",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\lim_{x \\to \\infty} \\frac{3e^{2x} + x}{e^{2x} - 5}$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": "-1/5",
+      "why": "The constants do not decide the limit. Divide by the dominant term $e^{2x}$: $\\frac{3 + xe^{-2x}}{1 - 5e^{-2x}} \\to \\frac{3}{1}$."
+     },
+     {
+      "value": 0,
+      "why": "The exponential in the numerator grows just as fast as the one in the denominator, so the quotient does not shrink to 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The dominant term on each side is $e^{2x}$. Divide by it: $\\frac{3 + \\frac{x}{e^{2x}}}{1 - \\frac{5}{e^{2x}}}$. Since $e^{2x}$ beats $x$, $\\frac{x}{e^{2x}} \\to 0$, and $\\frac{5}{e^{2x}} \\to 0$. The limit is 3."
+   }
+  },
+  {
+   "id": "calc-limits-at-infinity-17",
+   "unit": "unit-1",
+   "topic": "limits-at-infinity",
+   "type": "multi",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statements about $f(x) = e^x$ are true?",
+   "options": [
+    "$\\lim_{x \\to -\\infty} e^x = 0$",
+    "$\\lim_{x \\to \\infty} e^x = 0$",
+    "The graph of $e^x$ has a vertical asymptote",
+    "$\\lim_{x \\to \\infty} \\frac{e^x}{x^2} = 0$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "$e^x$ levels off at 0 on the left and grows faster than any power on the right.",
+    "options": [
+     "For large negative $x$, $e^x = \\frac{1}{e^{-x}}$ is tiny and positive; $y = 0$ is a horizontal asymptote on the left.",
+     "To the right, $e^x$ grows without bound.",
+     "$e^x$ is defined and continuous everywhere, so it has none.",
+     "$e^x$ dominates $x^2$, so this quotient grows without bound."
+    ]
+   }
+  }
+ ]
+}

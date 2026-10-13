@@ -1,0 +1,12 @@
+{
+ "exp-log-mirror": {
+  "file": "figures/exp-log-mirror.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 500,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The curve y = e to the x passes through (0, 1) and (1, e) and stays above the x-axis; the curve y = ln x passes through (1, 0) and (e, 1) and exists only for x greater than 0. They are mirror images across the dashed line y = x."
+ }
+}

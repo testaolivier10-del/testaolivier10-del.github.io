@@ -1,0 +1,71 @@
+{
+ "topic": "chain-rule",
+ "hook": "Turn the pedals of a bike and the back wheel spins faster than your feet, because the gears multiply the rate. Many functions work the same way: one function feeds its output into another. The chain rule says the rates multiply, and it is the rule you will use most often for the rest of the course.",
+ "prereq": [
+  {
+   "q": "What is the derivative of $\\sin x$?",
+   "options": [
+    "$\\cos x$",
+    "$-\\cos x$",
+    "$-\\sin x$",
+    "$\\sec^2 x$"
+   ],
+   "correct": 0,
+   "why": "The derivative of $\\sin x$ is $\\cos x$.",
+   "review": "derivatives-sin-cos-exp-ln"
+  },
+  {
+   "q": "What is the derivative of $x^5$?",
+   "options": [
+    "$5x^4$",
+    "$x^4$",
+    "$5x^5$",
+    "$\\frac{x^6}{6}$"
+   ],
+   "correct": 0,
+   "why": "The power rule: bring the 5 down and lower the power by one.",
+   "review": "power-rule"
+  }
+ ],
+ "figure": {
+  "figure": "chain-sin-squeeze",
+  "caption": "The inside function $2x$ squeezes $\\sin x$ sideways by a factor of 2, so every slope doubles: at the origin the slope of $\\sin(2x)$ is $2$, not $1$."
+ },
+ "chain": [
+  {
+   "cause": "A function is built in layers, $h(x) = f(g(x))$",
+   "effect": "$x$ feeds the inside function $g$, and $g(x)$ feeds the outside function $f$"
+  },
+  {
+   "cause": "When $x$ changes a little, $g$ changes $g'(x)$ times as much",
+   "effect": "and $f$ changes $f'(g(x))$ times as much as its input $g$ does"
+  },
+  {
+   "cause": "The two rates multiply, like gears",
+   "effect": "$h'(x) = f'(g(x)) \\cdot g'(x)$"
+  },
+  {
+   "cause": "In Leibniz form, with $u = g(x)$",
+   "effect": "$\\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}$"
+  }
+ ],
+ "ideas": [
+  "Spot the layers first: name the outside function and the inside function before you differentiate.",
+  "Differentiate the outside function and leave the inside alone: $f'(g(x))$, not $f'(x)$ and not $f'(g'(x))$.",
+  "Then multiply by the derivative of the inside, $g'(x)$. Forgetting this factor is the most common lost point.",
+  "From a table, read $f'$ at the inside value $g(a)$, then multiply by $g'(a)$."
+ ],
+ "misconception": {
+  "wrong": "The derivative of $\\sin(x^2)$ is $\\cos(x^2)$.",
+  "right": "That is only the outside derivative. The inside function $x^2$ changes too, at rate $2x$, so $\\frac{d}{dx}\\sin(x^2) = \\cos(x^2) \\cdot 2x$."
+ },
+ "check": [
+  "calc-chain-rule-1",
+  "calc-chain-rule-2",
+  "calc-chain-rule-3",
+  "calc-chain-rule-4",
+  "calc-chain-rule-11",
+  "calc-chain-rule-16"
+ ],
+ "summary": "For a composite function $f(g(x))$, differentiate the outside function at the unchanged inside, then multiply by the derivative of the inside: $\\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x)$. Name the layers before you start, and never drop the inside derivative."
+}

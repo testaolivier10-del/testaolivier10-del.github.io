@@ -1,0 +1,5 @@
+{
+ "signed-area": {
+  "def": "The value of a definite integral read from a graph: areas of regions above the x-axis count as positive and areas below count as negative, so $\\int_a^b f(x)\\,dx$ = (area above) minus (area below)."
+ }
+}

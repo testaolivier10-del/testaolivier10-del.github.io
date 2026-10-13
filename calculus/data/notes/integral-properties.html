@@ -1,0 +1,45 @@
+<p>A definite integral is the limit of Riemann sums, and sums obey simple rules: you can split them, reorder them and pull out common factors. Those rules carry over to integrals. They let you compute new integrals from ones you already know, without ever finding a formula.</p>
+
+<h2>Adjacent intervals add</h2>
+<figure id="fig-add" data-fig="integral-additivity"><figcaption>The area from a to c is the area from a to b plus the area from b to c.</figcaption></figure>
+<p>If you accumulate from $a$ to $b$ and then from $b$ to $c$, you have accumulated from $a$ to $c$:</p>
+<p>$$\int_a^b f(x)\,dx + \int_b^c f(x)\,dx = \int_a^c f(x)\,dx.$$</p>
+<p>This <b>additivity</b> is the property used most. It works in reverse too: $\int_3^7 f = \int_0^7 f - \int_0^3 f$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Given $\int_0^3 f(x)\,dx = 5$ and $\int_0^7 f(x)\,dx = 12$, find $\int_3^7 f(x)\,dx$.</p>
+<p>$\int_0^3 f + \int_3^7 f = \int_0^7 f$, so $5 + \int_3^7 f = 12$ and $\int_3^7 f(x)\,dx = 7$.</p>
+</div>
+
+<h2>Reversed limits and equal limits</h2>
+<p>$\int_a^b$ runs from $a$ to $b$. Writing the limits the other way runs the interval backward, so every width $\Delta x$ is negative and the value changes sign:</p>
+<p>$$\int_b^a f(x)\,dx = -\int_a^b f(x)\,dx, \qquad \int_a^a f(x)\,dx = 0.$$</p>
+<p>With reversal, additivity holds for <i>any</i> order of $a$, $b$ and $c$. This matters for accumulation functions. If $g(x) = \int_2^x f(t)\,dt$ and $x = 0$ is to the left of the lower limit, then $g(0) = \int_2^0 f(t)\,dt = -\int_0^2 f(t)\,dt$. A positive $f$ there gives a <i>negative</i> $g(0)$. The exam tests this every few years.</p>
+
+<h2>Constants and sums</h2>
+<p>A constant factor and a sum pass through every Riemann sum, so they pass through the integral:</p>
+<p>$$\int_a^b \left(kf(x) + g(x)\right)dx = k\int_a^b f(x)\,dx + \int_a^b g(x)\,dx.$$</p>
+<p>A constant by itself is a rectangle: $\int_a^b k\,dx = k(b - a)$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Also given $\int_3^7 g(x)\,dx = -2$. Find $\int_7^3 \left(2f(x) - g(x)\right)dx$ and $\int_3^7 \left(f(x) + 4\right)dx$.</p>
+<p>First, the integral from 3 to 7: $2(7) - (-2) = 16$. The limits are reversed, so $\int_7^3 (2f - g)\,dx = -16$.</p>
+<p>Second: $\int_3^7 f(x)\,dx + \int_3^7 4\,dx = 7 + 4 \cdot 4 = 23$. The constant is integrated over the interval of width 4; writing $7 + 4 = 11$ is the classic slip.</p>
+</div>
+<p>Products do <b>not</b> split: $\int_a^b f(x)g(x)\,dx$ is not the product of the two integrals. Try $f = g = 1$ on $[0, 2]$: the integral of the product is 2, the product of the integrals is 4.</p>
+
+<h2>Integrals from geometry, including breaks</h2>
+<p>When the graph is made of segments and circular arcs, split the interval where the pieces change, find each signed area, and add. Half a disc of radius $r$ has area $\frac{1}{2}\pi r^2$; a quarter disc, $\frac{1}{4}\pi r^2$.</p>
+<p>A function with a jump or a removable discontinuity can still be integrated, as long as it stays bounded: split at the break. A single point has no width, so the value of the function at the jump does not change the integral. For $p(x) = x$ when $x < 2$ and $p(x) = 5$ when $x \ge 2$:</p>
+<p>$$\int_0^4 p(x)\,dx = \int_0^2 x\,dx + \int_2^4 5\,dx = 2 + 10 = 12.$$</p>
+
+<h2>The rules at a glance</h2>
+<table class="compare">
+<thead><tr><th>Rule</th><th>Formula</th></tr></thead>
+<tbody>
+<tr><td>zero width</td><td>$\int_a^a f(x)\,dx = 0$</td></tr>
+<tr><td>reversed limits</td><td>$\int_b^a f(x)\,dx = -\int_a^b f(x)\,dx$</td></tr>
+<tr><td>additivity</td><td>$\int_a^b f(x)\,dx + \int_b^c f(x)\,dx = \int_a^c f(x)\,dx$</td></tr>
+<tr><td>constant multiple</td><td>$\int_a^b kf(x)\,dx = k\int_a^b f(x)\,dx$</td></tr>
+<tr><td>sum</td><td>$\int_a^b (f(x) + g(x))\,dx = \int_a^b f(x)\,dx + \int_a^b g(x)\,dx$</td></tr>
+<tr><td>constant</td><td>$\int_a^b k\,dx = k(b - a)$</td></tr>
+</tbody>
+</table>

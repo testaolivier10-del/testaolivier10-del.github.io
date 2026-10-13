@@ -1,0 +1,12 @@
+{
+ "riemann-limit": {
+  "file": "figures/riemann-limit.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels show right Riemann sums for f(x) = 0.25x squared + 1 on [0, 4] with n = 4, 8 and 32 rectangles: 11.5, 10.375 and about 9.586. The rectangles hug the curve more closely each time and the sums approach the definite integral, 28/3, about 9.333."
+ }
+}

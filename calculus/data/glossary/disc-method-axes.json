@@ -1,0 +1,5 @@
+{
+ "disc-method": {
+  "def": "A way to find the volume of a solid of revolution whose slices are solid discs: $V = \\pi\\int_a^b r(x)^2\\,dx$, where $r$ is the distance from the axis of rotation to the curve. About the $y$-axis, the discs are horizontal and $V = \\pi\\int_c^d r(y)^2\\,dy$."
+ }
+}

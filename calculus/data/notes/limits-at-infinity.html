@@ -1,0 +1,56 @@
+<p>Every limit so far asked what happens as $x$ approaches a number. Now let $x$ run off forever, to the right or to the left. Where does $f(x)$ head? The answer describes the far ends of a graph, and it settles which of two growing quantities wins in the long run.</p>
+
+<h2>Limits at infinity and horizontal asymptotes</h2>
+<p>$\lim_{x \to \infty} f(x) = L$ means that as $x$ grows without bound, $f(x)$ gets as close to $L$ as you like. $\lim_{x \to -\infty} f(x) = L$ means the same as $x$ decreases without bound. When either limit is a finite number $L$, the line $y = L$ is a <b>horizontal asymptote</b>: the graph levels off toward it.</p>
+<p>The basic fact behind everything here: as $x \to \infty$, $\frac{1}{x} \to 0$, and so do $\frac{5}{x^2}$, $\frac{1}{\sqrt{x}}$ and $e^{-x} = \frac{1}{e^x}$. A fixed number divided by something growing without bound shrinks to 0.</p>
+<figure id="fig-end" data-fig="end-behavior-growth"><figcaption>Left: a graph leveling off at $y = 2$ (after crossing it). Right: which grows faster.</figcaption></figure>
+<p>A horizontal asymptote is about the far ends only. In the middle the graph may cross it: $\frac{2x^2 + x}{x^2 + 1}$ equals 2 at $x = 2$ and still approaches 2 as $x \to \infty$. Vertical asymptotes are different: a function is unbounded next to one, so its graph cannot cross it.</p>
+<table>
+<thead><tr><th></th><th>Vertical asymptote $x = c$</th><th>Horizontal asymptote $y = L$</th></tr></thead>
+<tbody>
+<tr><td>Limit</td><td>$\lim_{x \to c^\pm} f(x) = \pm\infty$</td><td>$\lim_{x \to \pm\infty} f(x) = L$</td></tr>
+<tr><td>$x$ is</td><td>approaching a number</td><td>growing without bound</td></tr>
+<tr><td>$f(x)$ is</td><td>growing without bound</td><td>approaching a number</td></tr>
+<tr><td>Can the graph cross it?</td><td>no</td><td>yes</td></tr>
+</tbody>
+</table>
+
+<h2>Rational functions: divide by the dominant power</h2>
+<p>For large $x$, only the highest-power terms matter. To make that precise, divide the top and the bottom by the highest power of $x$ in the denominator.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\lim_{x \to \infty} \frac{3x^2 - x}{2x^2 + 5}$.</p>
+<p>Divide every term by $x^2$: $\frac{3 - \frac{1}{x}}{2 + \frac{5}{x^2}}$.</p>
+<p>As $x \to \infty$, $\frac{1}{x} \to 0$ and $\frac{5}{x^2} \to 0$, so the limit is $\frac{3}{2}$. The graph has the horizontal asymptote $y = \frac{3}{2}$.</p>
+</div>
+<p>The same steps give three cases:</p>
+<table>
+<thead><tr><th>Degrees</th><th>Limit at $\pm\infty$</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>top = bottom</td><td>ratio of leading coefficients</td><td>$\frac{6x^2 - 1}{1 - 3x^2} \to -2$</td></tr>
+<tr><td>top &lt; bottom</td><td>$0$</td><td>$\frac{4x + 1}{x^2 - 3} \to 0$</td></tr>
+<tr><td>top &gt; bottom</td><td>unbounded; no horizontal asymptote</td><td>$\frac{x^3 + 2}{5x^2 + x}$</td></tr>
+</tbody>
+</table>
+
+<h2>Square roots: watch the sign</h2>
+<p>$\sqrt{x^2}$ is $|x|$, not $x$. For positive $x$ that makes no difference. For negative $x$ it does: $\sqrt{x^2} = -x$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find both limits at infinity of $h(x) = \frac{4x}{\sqrt{x^2 + 1}}$.</p>
+<p>For large $|x|$, $\sqrt{x^2 + 1} \approx \sqrt{x^2} = |x|$.</p>
+<p>As $x \to \infty$: $|x| = x$, so $h(x) \approx \frac{4x}{x} = 4$.</p>
+<p>As $x \to -\infty$: $|x| = -x$, so $h(x) \approx \frac{4x}{-x} = -4$.</p>
+<p>Two horizontal asymptotes: $y = 4$ and $y = -4$.</p>
+</div>
+<p>A related trick handles $\infty - \infty$ forms such as $\sqrt{x^2 + 6x} - x$: multiply by the conjugate to get $\frac{6x}{\sqrt{x^2 + 6x} + x}$, then divide by $x$. The limit is $\frac{6}{1 + 1} = 3$.</p>
+
+<h2>Exponentials, logarithms and the race to infinity</h2>
+<p>Some functions grow without bound, but at very different speeds. In the long run:</p>
+<p style="text-align:center"><b>slowest</b> $\ln x$, then $\sqrt{x}$, then $x$, then $x^3$, then $e^x$ <b>fastest</b></p>
+<p>"Slower" means the quotient of the slower function over the faster one approaches 0: $\lim_{x \to \infty} \frac{\ln x}{\sqrt{x}} = 0$ and $\lim_{x \to \infty} \frac{x^3}{e^x} = 0$. A logarithm loses to every positive power of $x$, a lower power loses to a higher one, and an exponential like $e^x$ beats every power. "Eventually" matters: $x^3$ is bigger than $e^x$ until about $x = 4.5$, then falls hopelessly behind.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $\lim_{x \to \infty} \frac{3e^{2x} + x}{e^{2x} - 5}$.</p>
+<p>The <b>dominant term</b> in both the top and the bottom is $e^{2x}$. Divide everything by it:</p>
+<p>$$\frac{3 + \frac{x}{e^{2x}}}{1 - \frac{5}{e^{2x}}}$$</p>
+<p>The exponential beats $x$, so $\frac{x}{e^{2x}} \to 0$; and $\frac{5}{e^{2x}} \to 0$. The limit is 3.</p>
+</div>
+<p>On the left the story changes: $\lim_{x \to -\infty} e^x = 0$, so $y = 0$ is a horizontal asymptote of $e^x$ on that side only. Bounded oscillations also fade when divided by something growing: $-\frac{1}{x} \le \frac{\sin x}{x} \le \frac{1}{x}$ for $x > 0$, so by the squeeze theorem $\lim_{x \to \infty} \frac{\sin x}{x} = 0$.</p>

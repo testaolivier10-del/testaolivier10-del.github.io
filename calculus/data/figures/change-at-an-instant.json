@@ -1,0 +1,12 @@
+{
+ "instant-chords": {
+  "file": "figures/instant-chords.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 450,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A stone falls s(t) = 16t squared feet. Lines join the point (1, 16) on the curve to points at t = 2, 1.5 and 1.2, with slopes 48, 40 and 35.2; a dashed line through (1, 16) has slope 32. A table lists the average speeds from t = 1 over [1, 2], [1, 1.5], [1, 1.2], [1, 1.1], [1, 1.01] and [1, 1.001]: 48, 40, 35.2, 33.6, 32.16 and 32.016 feet per second, closing in on 32."
+ }
+}

@@ -1,0 +1,529 @@
+{
+ "stimuli": {
+  "particular-solutions-s1": {
+   "kind": "table",
+   "title": "A student solves an initial value problem",
+   "table": {
+    "caption": "A student's four steps for $\\frac{dy}{dx} = \\frac{2x}{y}$ with $y(1) = -3$",
+    "cols": [
+     "Step",
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "rows": [
+     [
+      "Work",
+      "$y\\,dy = 2x\\,dx$",
+      "$\\frac{y^2}{2} = x^2 + C$",
+      "$\\frac{9}{2} = 1 + C$, so $C = \\frac{7}{2}$",
+      "$y = \\sqrt{2x^2 + 7}$"
+     ]
+    ]
+   }
+  },
+  "particular-solutions-s2": {
+   "kind": "graph",
+   "title": "A solution of $\\frac{dy}{dx} = 2y^2$ through $\\left(0, \\frac{1}{2}\\right)$",
+   "plot": {
+    "label": "Graph of y = 1/(2 - 2x) for x below 1, through the point (0, 1/2), rising toward the dashed vertical asymptote x = 1",
+    "x": [
+     -3,
+     2
+    ],
+    "y": [
+     -1,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "1/(2 - 2x)",
+      "domain": [
+       -3,
+       0.999
+      ],
+      "cls": "s1"
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": 1
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       0.5
+      ],
+      "label": "(0, 1/2)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-particular-solutions-1",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "particular-solutions-s1",
+   "q": "Which step contains an error?",
+   "options": [
+    "Step 4: since $y(1) = -3$, the root must be negative.",
+    "Step 3: $(-3)^2$ should be $-9$.",
+    "Step 2: the constant belongs on the left side.",
+    "Step 1: $y$ should be in the denominator."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$y^2 = 2x^2 + 7$ has two roots. The initial condition $y(1) = -3$ picks the negative one: $y = -\\sqrt{2x^2 + 7}$.",
+    "options": [
+     "$y = \\sqrt{2x^2 + 7}$ gives $y(1) = 3$, not $-3$.",
+     "$(-3)^2 = 9$; step 3 is right.",
+     "One constant on either side is fine.",
+     "Multiplying by $y\\,dx$ gives $y\\,dy = 2x\\,dx$; step 1 is right."
+    ]
+   }
+  },
+  {
+   "id": "calc-particular-solutions-2",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "particular-solutions-s1",
+   "q": "Write the correct particular solution for $\\frac{dy}{dx} = \\frac{2x}{y}$ with $y(1) = -3$.",
+   "expr": {
+    "answer": "-sqrt(2x^2 + 7)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "sqrt(2x^2 + 7)",
+      "why": "This passes through $(1, 3)$. The condition $y(1) = -3$ needs the negative root."
+     },
+     {
+      "expr": "-sqrt(x^2 + 7/2)",
+      "why": "Multiply both sides of $\\frac{y^2}{2} = x^2 + \\frac{7}{2}$ by 2: $y^2 = 2x^2 + 7$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{y^2}{2} = x^2 + \\frac{7}{2}$, so $y^2 = 2x^2 + 7$ and, since $y(1) < 0$, $y = -\\sqrt{2x^2 + 7}$."
+   }
+  },
+  {
+   "id": "calc-particular-solutions-3",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "particular-solutions-s1",
+   "q": "In step 3, find the constant $C$ in $\\frac{y^2}{2} = x^2 + C$.",
+   "numeric": {
+    "answer": "7/2",
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That is $C$ for $y^2 = x^2 + C$. Here the left side is $\\frac{y^2}{2} = \\frac{9}{2}$."
+     },
+     {
+      "value": "-5/2",
+      "why": "Square $y = -3$: $\\frac{(-3)^2}{2} = \\frac{9}{2}$, not $-\\frac{3}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{(-3)^2}{2} = 1^2 + C$, so $C = \\frac{9}{2} - 1 = \\frac{7}{2}$."
+   }
+  },
+  {
+   "id": "calc-particular-solutions-4",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "particular-solutions-s1",
+   "q": "What is the domain of the particular solution $y = -\\sqrt{2x^2 + 7}$?",
+   "options": [
+    "$x \\ge 1$",
+    "All real numbers",
+    "$x > -\\frac{7}{2}$",
+    "$|x| \\le \\sqrt{\\frac{7}{2}}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$2x^2 + 7$ is never below 7, so $y$ is defined and never 0, and $\\frac{dy}{dx} = \\frac{2x}{y}$ exists for every real $x$.",
+    "options": [
+     "The initial point is inside the domain; the domain is not cut off there.",
+     "$2x^2 + 7 \\ge 7 > 0$, so the root is defined and $y \\ne 0$ for every $x$.",
+     "$2x^2 + 7$ is positive for every $x$, so nothing is cut off.",
+     "That would need $7 - 2x^2 \\ge 0$; here the sign is $+$."
+    ]
+   }
+  },
+  {
+   "id": "calc-particular-solutions-5",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "particular-solutions-s1",
+   "q": "Using the correct particular solution, find $y(2)$.",
+   "numeric": {
+    "answer": "-sqrt(15)",
+    "mistakes": [
+     {
+      "value": "sqrt(15)",
+      "why": "The solution through $(1, -3)$ is the negative root."
+     },
+     {
+      "value": "-sqrt(11)",
+      "why": "$2x^2$ at $x = 2$ is $2 \\cdot 4 = 8$, not $4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y(2) = -\\sqrt{2(4) + 7} = -\\sqrt{15}$."
+   }
+  },
+  {
+   "id": "calc-particular-solutions-6",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "particular-solutions-s2",
+   "q": "Which is the particular solution of $\\frac{dy}{dx} = 2y^2$ with $y(0) = \\frac{1}{2}$?",
+   "options": [
+    "$y = \\frac{1}{2 + 2x}$",
+    "$y = -\\frac{1}{2x} + \\frac{1}{2}$",
+    "$y = \\frac{2}{1 - x}$",
+    "$y = \\frac{1}{2 - 2x}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$y^{-2}\\,dy = 2\\,dx$, so $-\\frac{1}{y} = 2x + C$. At $(0, \\frac{1}{2})$: $-2 = C$. Then $\\frac{1}{y} = 2 - 2x$.",
+    "options": [
+     "$\\int y^{-2}\\,dy = -\\frac{1}{y}$: the minus sign flips the $2x$.",
+     "The constant was added after solving for $y$.",
+     "At $x = 0$ this is 2, not $\\frac{1}{2}$.",
+     "$-\\frac{1}{y} = 2x + C$; at $(0, \\frac{1}{2})$, $C = -2$, so $y = \\frac{1}{2 - 2x}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-particular-solutions-7",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "particular-solutions-s2",
+   "q": "What is the domain of this particular solution?",
+   "options": [
+    "$x \\ne 1$",
+    "$x > 1$",
+    "$x < 1$",
+    "$(-\\infty, \\infty)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$y = \\frac{1}{2 - 2x}$ is undefined at $x = 1$. The largest open interval containing $x = 0$ is $x < 1$.",
+    "options": [
+     "A solution's domain is one interval; the piece with $x > 1$ is not connected to $(0, \\frac{1}{2})$.",
+     "The initial point $x = 0$ must be in the domain.",
+     "The formula breaks at $x = 1$; the solution lives on the interval containing $x = 0$.",
+     "At $x = 1$ the formula divides by 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-particular-solutions-8",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "particular-solutions-s2",
+   "q": "For this particular solution, find $y\\left(\\frac{1}{2}\\right)$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": "1/3",
+      "why": "$2 - 2\\left(\\frac{1}{2}\\right) = 1$, so $y = 1$; the sign in front of $2x$ is minus."
+     },
+     {
+      "value": "1/2",
+      "why": "That is the value at x = 0. Substitute x = 1/2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y\\left(\\frac{1}{2}\\right) = \\frac{1}{2 - 1} = 1$."
+   }
+  },
+  {
+   "id": "calc-particular-solutions-9",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "particular-solutions-s2",
+   "q": "What happens to this solution as $x \\to 1^-$?",
+   "options": [
+    "$y$ increases without bound.",
+    "$y$ approaches $\\frac{1}{2}$.",
+    "$y$ approaches 0.",
+    "$y$ decreases without bound."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As $x \\to 1^-$, $2 - 2x \\to 0$ through positive values, so $y \\to \\infty$: a vertical asymptote ends the solution.",
+    "options": [
+     "$2 - 2x \\to 0^+$, so $\\frac{1}{2 - 2x} \\to \\infty$.",
+     "$\\frac{1}{2}$ is the value at $x = 0$, not near $x = 1$.",
+     "The denominator shrinks to 0, so the fraction grows.",
+     "For $x < 1$ the denominator is positive."
+    ]
+   }
+  },
+  {
+   "id": "calc-particular-solutions-10",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "When is the best moment to use the initial condition in separation of variables?",
+   "options": [
+    "Before integrating, to choose which antiderivative to use.",
+    "At the end, after solving for $y$ and then adding $C$.",
+    "It is not needed for a separable equation.",
+    "As soon as $C$ appears: substitute the point, find $C$, then solve for $y$."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Substituting right after integrating finds $C$ in the simplest form and avoids sign and algebra slips.",
+    "options": [
+     "You cannot find C before it exists.",
+     "A $C$ added after solving gives the wrong family.",
+     "Without it you have a family, not one solution.",
+     "$C$ is found in the simplest equation, before rearranging."
+    ]
+   }
+  },
+  {
+   "id": "calc-particular-solutions-11",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the particular solution of $\\frac{dy}{dx} = y\\cos x$ with $y(0) = 2$.",
+   "expr": {
+    "answer": "2e^(sin(x))",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "e^(sin(x)) + 1",
+      "why": "From $\\ln|y| = \\sin x + C$, exponentiating gives $y = Ae^{\\sin x}$, a multiple, not $e^{\\sin x} + C$."
+     },
+     {
+      "expr": "e^(sin(x) + 2)",
+      "why": "$y(0) = 2$ gives $\\ln 2 = C$, not $C = 2$."
+     },
+     {
+      "expr": "2e^(cos(x))",
+      "why": "An antiderivative of $\\cos x$ is $\\sin x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\ln|y| = \\sin x + C$; at $(0, 2)$, $C = \\ln 2$. So $y = e^{\\sin x + \\ln 2} = 2e^{\\sin x}$."
+   }
+  },
+  {
+   "id": "calc-particular-solutions-12",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Coffee cools by $\\frac{dT}{dt} = -0.05(T - 20)$, with $T(0) = 90$. Find $T(t)$.",
+   "expr": {
+    "answer": "20 + 70e^(-0.05t)",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     0,
+     60
+    ],
+    "lhs": "T(t) =",
+    "mistakes": [
+     {
+      "expr": "90e^(-0.05t)",
+      "why": "$\\ln|T - 20| = -0.05t + C$ gives $T - 20 = Ae^{-0.05t}$: add the 20 back."
+     },
+     {
+      "expr": "20 + 90e^(-0.05t)",
+      "why": "At $t = 0$ this is 110. $A = T(0) - 20 = 70$."
+     },
+     {
+      "expr": "70e^(-0.05t)",
+      "why": "That is $T - 20$; the temperature itself is $20 + 70e^{-0.05t}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\ln|T - 20| = -0.05t + C$; at $t = 0$, $C = \\ln 70$. So $T - 20 = 70e^{-0.05t}$ and $T = 20 + 70e^{-0.05t}$."
+   }
+  },
+  {
+   "id": "calc-particular-solutions-13",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The particular solution of $\\frac{dy}{dx} = -\\frac{x}{y}$ with $y(0) = 3$ is $y = \\sqrt{9 - x^2}$. What is its domain?",
+   "options": [
+    "$-3 < x < 3$",
+    "$-3 \\le x \\le 3$",
+    "$x \\ge 0$",
+    "$(-\\infty, \\infty)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$9 - x^2 > 0$ and $y \\ne 0$ require $-3 < x < 3$, an open interval containing $x = 0$.",
+    "options": [
+     "At $x = \\pm 3$, $y = 0$ and $-\\frac{x}{y}$ is undefined, so the endpoints are out.",
+     "At $x = \\pm 3$, $y = 0$ and the differential equation divides by 0.",
+     "The solution is defined for negative $x$ too, back to $-3$.",
+     "For $|x| > 3$ the root is not real."
+    ]
+   }
+  },
+  {
+   "id": "calc-particular-solutions-14",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A curve has slope $\\frac{dy}{dx} = 4x^3$ at each point and satisfies the initial condition $y(1) = 5$. What is the height of the curve at $x = 2$?",
+   "numeric": {
+    "answer": 20,
+    "mistakes": [
+     {
+      "value": 16,
+      "why": "The constant is missing: $y = x^4 + C$ with $5 = 1 + C$, so $C = 4$."
+     },
+     {
+      "value": 21,
+      "why": "$C$ is not 5: $y(1) = 1^4 + C = 5$ gives $C = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y = x^4 + C$; $5 = 1 + C$, so $C = 4$ and $y(2) = 16 + 4 = 20$."
+   }
+  },
+  {
+   "id": "calc-particular-solutions-15",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $\\frac{dy}{dx} = y^2$ with $y(0) = 1$, the formula $y = \\frac{1}{1 - x}$ is defined for every $x \\ne 1$. Why is the domain of the particular solution $x < 1$?",
+   "options": [
+    "Because $y$ has to stay positive.",
+    "Because $y^2$ is undefined for $x > 1$.",
+    "A solution is differentiable on one interval containing $x = 0$; $x = 1$ breaks the graph.",
+    "Because the graph is decreasing for $x > 1$."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The particular solution is the piece through $(0, 1)$, on the largest open interval where it is differentiable: $x < 1$.",
+    "options": [
+     "Positivity is not the reason; the break at $x = 1$ is.",
+     "$y^2$ is defined wherever $y$ is.",
+     "The branch with $x > 1$ is not connected to the initial point.",
+     "For $x > 1$, $\\frac{dy}{dx} = y^2 > 0$: that branch increases too."
+    ]
+   }
+  },
+  {
+   "id": "calc-particular-solutions-16",
+   "unit": "unit-7",
+   "topic": "particular-solutions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "$\\frac{dy}{dx} = e^{x - y}$ with $y(0) = 0$. Find $y(\\ln 3)$.",
+   "numeric": {
+    "answer": "ln(3)",
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$e^{y} = e^{x}$ gives $y = x$, so $y(\\ln 3) = \\ln 3$; there is no exponential left."
+     },
+     {
+      "value": "ln(4)",
+      "why": "$e^{y} = e^{x} + C$ and $e^0 = e^0 + C$ give $C = 0$, not 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$e^{y}\\,dy = e^{x}\\,dx$ gives $e^{y} = e^{x} + C$; $y(0) = 0$ gives $C = 0$. So $y = x$ and $y(\\ln 3) = \\ln 3$."
+   }
+  }
+ ]
+}

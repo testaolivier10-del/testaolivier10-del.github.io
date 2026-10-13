@@ -1,0 +1,12 @@
+{
+ "evt-extrema": {
+  "file": "figures/evt-extrema.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Left: f(x) = x cubed minus 3x on the closed interval from -1.8 to 2.3, with a relative maximum at (-1, 2), a relative and absolute minimum at (1, -2), and the absolute maximum, about 5.27, at the right endpoint. Right: g(x) = x for 0 ≤ x < 2 with g(2) = 0; the graph climbs toward an open circle at (2, 2) and never reaches 2, so g has no maximum value."
+ }
+}

@@ -1,0 +1,5 @@
+{
+ "washer-other-axis": {
+  "def": "The washer method with the axis of rotation on a line $y = k$ or $x = h$. Both radii are distances from that line: $R$ to the edge of the region farther from the line, $r$ to the nearer edge, and $V = \\pi\\int \\left(R^2 - r^2\\right)$."
+ }
+}

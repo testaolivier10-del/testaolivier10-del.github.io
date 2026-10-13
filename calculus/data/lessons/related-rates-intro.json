@@ -1,0 +1,71 @@
+{
+ "topic": "related-rates-intro",
+ "hook": "Drop a stone in a pond and a ring of ripples spreads. The radius grows, so the area inside grows too, and their rates are linked: knowing one tells you the other. Whenever two changing quantities are tied by an equation, their rates of change are tied by the derivative of that equation.",
+ "prereq": [
+  {
+   "q": "If $y$ depends on $x$, what is $\\frac{d}{dx}\\left(y^3\\right)$?",
+   "options": [
+    "$3y^2\\frac{dy}{dx}$",
+    "$3y^2$",
+    "$3x^2$",
+    "$y^3\\frac{dy}{dx}$"
+   ],
+   "correct": 0,
+   "why": "The chain rule, as in implicit differentiation.",
+   "review": "implicit-differentiation"
+  },
+  {
+   "q": "If $g$ is a differentiable function of $t$, what is $\\frac{d}{dt}[g(t)]^2$?",
+   "options": [
+    "$2g(t)g'(t)$",
+    "$2g(t)$",
+    "$2g'(t)$",
+    "$[g'(t)]^2$"
+   ],
+   "correct": 0,
+   "why": "The chain rule: outside derivative $2u$ at $u = g(t)$, times $g'(t)$.",
+   "review": "chain-rule"
+  }
+ ],
+ "figure": {
+  "figure": "ripple-related-rates",
+  "caption": "An expanding ripple: $A = \\pi r^2$ with both $A$ and $r$ depending on time, so $\\frac{dA}{dt} = 2\\pi r\\frac{dr}{dt}$."
+ },
+ "chain": [
+  {
+   "cause": "Two or more quantities change with time and are linked by an equation",
+   "effect": "each one is a function of $t$, even if the equation shows no $t$"
+  },
+  {
+   "cause": "Differentiate both sides of the equation with respect to $t$",
+   "effect": "the chain rule attaches a rate to each variable: $\\frac{d}{dt}r^2 = 2r\\frac{dr}{dt}$"
+  },
+  {
+   "cause": "The result is an equation among the rates",
+   "effect": "known rates and values give the unknown rate"
+  },
+  {
+   "cause": "Substitute the values of one instant only after differentiating",
+   "effect": "the rates are not lost to derivatives of constants"
+  }
+ ],
+ "ideas": [
+  "Related rates: differentiate an equation linking quantities with respect to time $t$.",
+  "Each variable that changes gets its own rate, $\\frac{dx}{dt}$, $\\frac{dr}{dt}$, from the chain rule. Constants get none.",
+  "A decreasing quantity has a negative rate: shrinking at 2 cm/s means $\\frac{dr}{dt} = -2$.",
+  "Products need the product rule: $\\frac{d}{dt}(xy) = \\frac{dx}{dt}y + x\\frac{dy}{dt}$."
+ ],
+ "misconception": {
+  "wrong": "For $V = \\frac{4}{3}\\pi r^3$, $\\frac{dV}{dt} = 4\\pi r^2$.",
+  "right": "$4\\pi r^2$ is $\\frac{dV}{dr}$. With respect to time, the chain rule adds the factor $\\frac{dr}{dt}$: $\\frac{dV}{dt} = 4\\pi r^2\\frac{dr}{dt}$."
+ },
+ "check": [
+  "calc-related-rates-intro-1",
+  "calc-related-rates-intro-2",
+  "calc-related-rates-intro-3",
+  "calc-related-rates-intro-4",
+  "calc-related-rates-intro-9",
+  "calc-related-rates-intro-15"
+ ],
+ "summary": "When quantities linked by an equation change with time, differentiate the equation with respect to $t$. The chain rule gives every changing variable its rate, producing an equation among the rates. Substitute the values of one instant afterward, with signs that match increasing or decreasing."
+}

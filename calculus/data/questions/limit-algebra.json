@@ -1,0 +1,519 @@
+{
+ "stimuli": {
+  "limit-algebra-s1": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = \\frac{x^2 + x - 6}{x^2 - 4}$",
+   "text": "The graph has a vertical asymptote at $x = -2$ (dashed) and an open circle at $\\left(2, \\frac{5}{4}\\right)$, where $f$ is not defined.",
+   "plot": {
+    "label": "Graph of f(x) = (x squared + x - 6) over (x squared - 4), with a vertical asymptote at x = -2 and a hole at x = 2",
+    "width": 400,
+    "height": 320,
+    "x": [
+     -6,
+     6
+    ],
+    "y": [
+     -4,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "cls": "s1",
+      "fn": "(x + 3)/(x + 2)",
+      "domain": [
+       -6,
+       -2
+      ]
+     },
+     {
+      "cls": "s1",
+      "fn": "(x + 3)/(x + 2)",
+      "domain": [
+       -2,
+       2
+      ],
+      "ends": [
+       null,
+       "open"
+      ]
+     },
+     {
+      "cls": "s1",
+      "fn": "(x + 3)/(x + 2)",
+      "domain": [
+       2,
+       6
+      ],
+      "label": "f",
+      "ends": [
+       "open",
+       null
+      ]
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": -2
+     }
+    ]
+   }
+  },
+  "limit-algebra-s2": {
+   "kind": "table",
+   "title": "Values of $g(x) = \\frac{\\sqrt{x + 8} - 3}{x - 1}$",
+   "table": {
+    "caption": "Values of $g(x) = \\frac{\\sqrt{x + 8} - 3}{x - 1}$ for $x$ near 1, rounded to six decimal places",
+    "cols": [
+     "$x$",
+     "0.9",
+     "0.99",
+     "0.999",
+     "1.001",
+     "1.01",
+     "1.1"
+    ],
+    "rows": [
+     [
+      "$g(x)$",
+      "0.167132",
+      "0.166713",
+      "0.166671",
+      "0.166662",
+      "0.166620",
+      "0.166206"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-limit-algebra-1",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-algebra-s1",
+   "q": "Factor to find the exact value of $\\lim_{x \\to 2} f(x)$.",
+   "numeric": {
+    "answer": "5/4",
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "Substitution gives $\\frac{0}{0}$, which is not 0; it means \"rewrite first\". Factor: $\\frac{(x + 3)(x - 2)}{(x + 2)(x - 2)}$."
+     },
+     {
+      "value": "3/2",
+      "why": "That cancels the $x^2$ terms, $\\frac{-6}{-4}$. Only factors cancel: the common factor is $x - 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{x \\to 2} \\frac{(x + 3)(x - 2)}{(x + 2)(x - 2)} = \\lim_{x \\to 2} \\frac{x + 3}{x + 2} = \\frac{5}{4}$. This matches the height of the hole on the graph."
+   }
+  },
+  {
+   "id": "calc-limit-algebra-2",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-algebra-s1",
+   "q": "Substituting $x = 2$ into $f(x)$ gives $\\frac{0}{0}$. What does that tell you?",
+   "options": [
+    "Not yet determined; rewrite $f$ and try again.",
+    "The limit is 0, because the numerator is 0.",
+    "The limit does not exist, because the denominator is 0.",
+    "The limit is 1, because the top and bottom are equal."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{0}{0}$ is an indeterminate form: the limit could be any number or might not exist. It is a signal to factor, rationalize or simplify. Here factoring gives $\\frac{5}{4}$.",
+    "options": [
+     "Not yet determined; rewrite.",
+     "A zero numerator alone settles nothing when the denominator also heads to 0.",
+     "A zero denominator alone settles nothing when the numerator also heads to 0.",
+     "$\\frac{0}{0}$ is not 1; zero over zero has no value."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-algebra-3",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limit-algebra-s1",
+   "q": "What can you conclude about $\\lim_{x \\to -2} f(x)$?",
+   "options": [
+    "No finite limit: the top heads to $-4$, the bottom to 0.",
+    "It equals $\\frac{1}{4}$, found by factoring and then substituting $x = -2$.",
+    "It equals 0, because $x = -2$ makes the denominator of $f$ equal to 0.",
+    "It equals $-\\frac{3}{2}$, the value of $\\frac{x + 3}{x}$ at $x = -2$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = -2$ the numerator is $4 - 2 - 6 = -4$, not 0, while the denominator heads to 0. A nonzero number over a number near 0 is unbounded, as the vertical asymptote shows.",
+    "options": [
+     "$-4$ over a quantity near 0 is unbounded.",
+     "After canceling, $\\frac{x + 3}{x + 2}$ still has a zero denominator at $-2$.",
+     "A denominator near 0 makes the quotient large in size, not 0.",
+     "The simplified form is $\\frac{x + 3}{x + 2}$, not $\\frac{x + 3}{x}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-algebra-4",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limit-algebra-s1",
+   "q": "Which line of work is written correctly?",
+   "options": [
+    "$\\lim_{x \\to 2} \\frac{(x + 3)(x - 2)}{(x + 2)(x - 2)} = \\lim_{x \\to 2} \\frac{x + 3}{x + 2} = \\frac{5}{4}$",
+    "$\\frac{x^2 + x - 6}{x^2 - 4} = \\frac{0}{0} = \\frac{5}{4}$",
+    "$\\lim_{x \\to 2} \\frac{(x + 3)(x - 2)}{(x + 2)(x - 2)} = \\frac{(x + 3)}{(x + 2)} = \\frac{2 + 3}{2 + 2} = \\frac{5}{4}$",
+    "$\\lim_{x \\to 2} \\frac{x^2 + x - 6}{x^2 - 4} = \\frac{x + 6}{4} = 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each \"=\" joins equal things, and \"lim\" stays on every line until the number appears.",
+    "options": [
+     "Every equals sign is true.",
+     "$\\frac{0}{0} = \\frac{5}{4}$ is false: \"=\" links unequal things.",
+     "The limit (a number) is set equal to an expression in $x$ in the middle step; keep \"lim\" until you substitute.",
+     "The $x^2$ terms were canceled; only factors can cancel."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-algebra-5",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limit-algebra-s2",
+   "q": "To find $\\lim_{x \\to 1} g(x)$ exactly, what should you multiply the top and bottom of $g(x)$ by?",
+   "options": [
+    "$\\sqrt{x + 8} + 3$",
+    "$\\sqrt{x + 8} - 3$",
+    "$x + 1$",
+    "$\\sqrt{x + 8}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The conjugate of $\\sqrt{x + 8} - 3$ is $\\sqrt{x + 8} + 3$; their product is $(x + 8) - 9 = x - 1$, which cancels with the bottom.",
+    "options": [
+     "The conjugate flips the middle sign.",
+     "Multiplying by the same expression gives $(\\sqrt{x + 8} - 3)^2$, which keeps the square root.",
+     "$x + 1$ does not remove the square root.",
+     "This gives $x + 8 - 3\\sqrt{x + 8}$, which still has a square root."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-algebra-6",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-algebra-s2",
+   "q": "Find $\\lim_{x \\to 1} g(x)$ exactly.",
+   "numeric": {
+    "answer": "1/6",
+    "mistakes": [
+     {
+      "value": "1/3",
+      "why": "After rationalizing, the bottom is $\\sqrt{x + 8} + 3 \\to 3 + 3 = 6$; the $+3$ was dropped."
+     },
+     {
+      "value": 6,
+      "why": "The simplified form is $\\frac{1}{\\sqrt{x + 8} + 3}$: one over 6, not 6."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{x \\to 1} \\frac{(x + 8) - 9}{(x - 1)(\\sqrt{x + 8} + 3)} = \\lim_{x \\to 1} \\frac{1}{\\sqrt{x + 8} + 3} = \\frac{1}{6}$."
+   }
+  },
+  {
+   "id": "calc-limit-algebra-7",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limit-algebra-s2",
+   "q": "How does the table compare with the exact limit?",
+   "options": [
+    "They agree: both sides close in on $\\frac{1}{6} = 0.1666\\ldots$",
+    "They disagree: the table suggests 0.17, the largest value shown.",
+    "The table shows the limit does not exist, because the values differ on each side.",
+    "The table shows $g(1) = \\frac{1}{6}$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Left values (0.167132, 0.166713, 0.166671) fall toward $0.1666\\ldots$ and right values (0.166662, 0.166620, 0.166206) rise toward it. The algebra gives exactly $\\frac{1}{6}$: two representations of the same limit.",
+    "options": [
+     "Both sides head to $\\frac{1}{6}$.",
+     "The trend matters, not one value: the values keep closing in on $0.1666\\ldots$.",
+     "Values on each side differ slightly but head to the same number.",
+     "The table does not include $x = 1$, where $g$ is undefined."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-algebra-8",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limit-algebra-s2",
+   "q": "Why does the table have no entry for $x = 1$?",
+   "options": [
+    "$g(1)$ is not defined: substituting gives $\\frac{0}{0}$.",
+    "$g(1) = 0$, which is not interesting.",
+    "$g(1)$ equals the limit, so the table does not need to show it.",
+    "Tables of values skip whole-number inputs."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = 1$ the top is $\\sqrt{9} - 3 = 0$ and the bottom is 0, so the formula has no value there. A limit does not need one.",
+    "options": [
+     "Zero over zero has no value.",
+     "The formula does not give 0 at $x = 1$; it gives no value at all.",
+     "$g(1)$ does not exist, so it cannot equal the limit.",
+     "Any input near the target can appear; the target itself is skipped."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-algebra-9",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\lim_{x \\to -3} \\frac{x^2 + 5x + 6}{x + 3}$.",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$\\frac{0}{0}$ means rewrite, not 0: $\\frac{(x + 2)(x + 3)}{x + 3} = x + 2 \\to -1$."
+     },
+     {
+      "value": 5,
+      "why": "$x^2 + 5x + 6 = (x + 2)(x + 3)$; after canceling, evaluate $x + 2$ at $x = -3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{x \\to -3} \\frac{(x + 2)(x + 3)}{x + 3} = \\lim_{x \\to -3} (x + 2) = -1$."
+   }
+  },
+  {
+   "id": "calc-limit-algebra-10",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the sum-of-cubes pattern to evaluate $\\lim_{x \\to -1} \\frac{x^3 + 1}{x + 1}$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "The sum of cubes factors as $(x + 1)(x^2 - x + 1)$, with a minus in the middle. At $x = -1$: $1 + 1 + 1 = 3$."
+     },
+     {
+      "value": 0,
+      "why": "$\\frac{0}{0}$ means rewrite, not 0: cancel $x + 1$ and evaluate $x^2 - x + 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Sum of cubes: $\\lim_{x \\to -1} \\frac{(x + 1)(x^2 - x + 1)}{x + 1} = \\lim_{x \\to -1} (x^2 - x + 1) = 1 + 1 + 1 = 3$."
+   }
+  },
+  {
+   "id": "calc-limit-algebra-11",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{h \\to 0} \\frac{(4 + h)^2 - 16}{h}$.",
+   "numeric": {
+    "answer": 8,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$(4 + h)^2 = 16 + 8h + h^2$, not $16 + h^2$. With the middle term the quotient is $8 + h$."
+     },
+     {
+      "value": 4,
+      "why": "Expand fully: $\\frac{8h + h^2}{h} = 8 + h \\to 8$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{16 + 8h + h^2 - 16}{h} = \\frac{h(8 + h)}{h} = 8 + h$ for $h \\ne 0$, so the limit is 8."
+   }
+  },
+  {
+   "id": "calc-limit-algebra-12",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Combine the fractions in the numerator to evaluate $\\lim_{x \\to 3} \\frac{\\frac{1}{x} - \\frac{1}{3}}{x - 3}$.",
+   "numeric": {
+    "answer": "-1/9",
+    "mistakes": [
+     {
+      "value": "1/9",
+      "why": "$3 - x = -(x - 3)$, so the result is negative: $-\\frac{1}{9}$."
+     },
+     {
+      "value": "-1/3",
+      "why": "The common denominator is $3x$, which heads to 9, not 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Top: $\\frac{3 - x}{3x} = \\frac{-(x - 3)}{3x}$. Divide by $x - 3$: $\\frac{-1}{3x} \\to -\\frac{1}{9}$."
+   }
+  },
+  {
+   "id": "calc-limit-algebra-13",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "What is $\\lim_{x \\to 5} \\frac{x^2 - 25}{x^2 - 10x + 25}$?",
+   "options": [
+    "It does not exist: $\\frac{x + 5}{x - 5}$ is unbounded near 5.",
+    "$1$, because the top and bottom both become 0 when $x = 5$.",
+    "$0$, because the top becomes 0.",
+    "$\\frac{10}{0}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{(x - 5)(x + 5)}{(x - 5)^2} = \\frac{x + 5}{x - 5}$ for $x \\ne 5$. Now the top heads to 10 and the bottom to 0, so the outputs are unbounded (negative on the left, positive on the right). No limit.",
+    "options": [
+     "Factor, cancel once, then look again.",
+     "$\\frac{0}{0}$ is not 1.",
+     "The bottom also heads to 0, so the top alone decides nothing.",
+     "$\\frac{10}{0}$ is not a number; say the limit does not exist."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-algebra-14",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is $\\lim_{x \\to 3} \\frac{|x - 3|}{x - 3}$?",
+   "options": [
+    "It does not exist: $-1$ from the left, $1$ from the right.",
+    "$1$, because near $x = 3$ the top and bottom have equal sizes, so they cancel.",
+    "$0$, because the top becomes 0.",
+    "$-1$, because $x - 3$ is negative."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $x > 3$, $|x - 3| = x - 3$, so the quotient is 1. For $x < 3$, $|x - 3| = -(x - 3)$, so the quotient is $-1$. The one-sided limits differ.",
+    "options": [
+     "Left $-1$, right $1$.",
+     "Only for $x > 3$; to the left the quotient is $-1$.",
+     "The bottom also heads to 0.",
+     "Only for $x < 3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-algebra-15",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rationalize the denominator to evaluate $\\lim_{x \\to 4} \\frac{x - 4}{\\sqrt{x} - 2}$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": "1/4",
+      "why": "Here the square root is on the bottom: $\\frac{(x - 4)(\\sqrt{x} + 2)}{x - 4} = \\sqrt{x} + 2 \\to 4$, not its reciprocal."
+     },
+     {
+      "value": 2,
+      "why": "$\\sqrt{x} + 2$ at $x = 4$ is $2 + 2 = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Multiply by $\\frac{\\sqrt{x} + 2}{\\sqrt{x} + 2}$: the bottom becomes $x - 4$, which cancels. $\\lim_{x \\to 4} (\\sqrt{x} + 2) = 4$. (Or factor $x - 4 = (\\sqrt{x} - 2)(\\sqrt{x} + 2)$.)"
+   }
+  },
+  {
+   "id": "calc-limit-algebra-16",
+   "unit": "unit-1",
+   "topic": "limit-algebra",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $\\lim_{x \\to 1} \\frac{2x^2 - x - 1}{x - 1}$?",
+   "options": [
+    "$3$",
+    "$1$",
+    "$0$",
+    "It does not exist."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$2x^2 - x - 1 = (2x + 1)(x - 1)$. Cancel $x - 1$: $\\lim_{x \\to 1} (2x + 1) = 3$.",
+    "options": [
+     "$(2x + 1)$ at $x = 1$.",
+     "That uses $(x + 1)(x - 1)$ and loses the leading coefficient: $(2x + 1)(x - 1)$ is the factorization.",
+     "$\\frac{0}{0}$ is not 0.",
+     "After canceling, the expression has a limit: 3."
+    ]
+   }
+  }
+ ]
+}

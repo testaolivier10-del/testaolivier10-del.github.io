@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430" width="800" height="430" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">The derivative of temperature has units of degrees per minute</title>
+<desc id="d">The temperature T(t) = 20 + 60 e to the minus t/20 of a cooling drink, in degrees Celsius, for t from 0 to 60 minutes (crimson curve). A blue tangent line touches the curve at (10, 56.4). A slope triangle on the line runs 10 minutes and drops 18.2 degrees, so the slope T prime of 10 is about minus 1.82 degrees Celsius per minute: units of the output per unit of the input.</desc>
+<rect width="800" height="430" fill="#FFFFFF"/>
+<clipPath id="clip70x40"><rect x="70" y="40" width="460" height="330"/></clipPath>
+<line x1="70" y1="40" x2="70" y2="370" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="144.19" y1="40" x2="144.19" y2="370" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="218.39" y1="40" x2="218.39" y2="370" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="292.58" y1="40" x2="292.58" y2="370" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="366.77" y1="40" x2="366.77" y2="370" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="440.97" y1="40" x2="440.97" y2="370" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="515.16" y1="40" x2="515.16" y2="370" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="370" x2="530" y2="370" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="333.33" x2="530" y2="333.33" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="296.67" x2="530" y2="296.67" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="260" x2="530" y2="260" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="223.33" x2="530" y2="223.33" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="186.67" x2="530" y2="186.67" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="150" x2="530" y2="150" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="113.33" x2="530" y2="113.33" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="76.67" x2="530" y2="76.67" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="40" x2="530" y2="40" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="370" x2="538" y2="370" stroke="#1F2A28" stroke-width="1.4"/>
+<path d="M538 370 l-7 -3.5 v7 z" fill="#1F2A28"/>
+<line x1="70" y1="370" x2="70" y2="32" stroke="#1F2A28" stroke-width="1.4"/>
+<path d="M70 32 l-3.5 7 h7 z" fill="#1F2A28"/>
+<line x1="70" y1="366" x2="70" y2="374" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="70" y="388" font-size="13" text-anchor="middle" fill="#1F2A28">0</text>
+<line x1="144.19" y1="366" x2="144.19" y2="374" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="144.19" y="388" font-size="13" text-anchor="middle" fill="#1F2A28">10</text>
+<line x1="218.39" y1="366" x2="218.39" y2="374" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="218.39" y="388" font-size="13" text-anchor="middle" fill="#1F2A28">20</text>
+<line x1="292.58" y1="366" x2="292.58" y2="374" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="292.58" y="388" font-size="13" text-anchor="middle" fill="#1F2A28">30</text>
+<line x1="366.77" y1="366" x2="366.77" y2="374" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="366.77" y="388" font-size="13" text-anchor="middle" fill="#1F2A28">40</text>
+<line x1="440.97" y1="366" x2="440.97" y2="374" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="440.97" y="388" font-size="13" text-anchor="middle" fill="#1F2A28">50</text>
+<line x1="515.16" y1="366" x2="515.16" y2="374" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="515.16" y="388" font-size="13" text-anchor="middle" fill="#1F2A28">60</text>
+<line x1="66" y1="370" x2="74" y2="370" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="374.5" font-size="13" text-anchor="end" fill="#1F2A28">0</text>
+<line x1="66" y1="333.33" x2="74" y2="333.33" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="337.83" font-size="13" text-anchor="end" fill="#1F2A28">10</text>
+<line x1="66" y1="296.67" x2="74" y2="296.67" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="301.17" font-size="13" text-anchor="end" fill="#1F2A28">20</text>
+<line x1="66" y1="260" x2="74" y2="260" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="264.5" font-size="13" text-anchor="end" fill="#1F2A28">30</text>
+<line x1="66" y1="223.33" x2="74" y2="223.33" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="227.83" font-size="13" text-anchor="end" fill="#1F2A28">40</text>
+<line x1="66" y1="186.67" x2="74" y2="186.67" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="191.17" font-size="13" text-anchor="end" fill="#1F2A28">50</text>
+<line x1="66" y1="150" x2="74" y2="150" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="154.5" font-size="13" text-anchor="end" fill="#1F2A28">60</text>
+<line x1="66" y1="113.33" x2="74" y2="113.33" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="117.83" font-size="13" text-anchor="end" fill="#1F2A28">70</text>
+<line x1="66" y1="76.67" x2="74" y2="76.67" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="81.17" font-size="13" text-anchor="end" fill="#1F2A28">80</text>
+<line x1="66" y1="40" x2="74" y2="40" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="44.5" font-size="13" text-anchor="end" fill="#1F2A28">90</text>
+<text x="542" y="375" font-size="15" font-style="italic" fill="#1F2A28">t</text>
+<text x="78" y="36" font-size="15" font-style="italic" fill="#1F2A28">T</text>
+<path d="M70 76.67L71.15 78.37L72.3 80.05L73.45 81.72L74.6 83.38L75.75 85.03L76.9 86.66L78.05 88.28L79.2 89.89L80.35 91.49L81.5 93.07L82.65 94.64L83.8 96.2L84.95 97.75L86.1 99.29L87.25 100.81L88.4 102.32L89.55 103.82L90.7 105.31L91.85 106.79L93 108.26L94.15 109.71L95.3 111.15L96.45 112.59L97.6 114.01L98.75 115.42L99.9 116.82L101.05 118.2L102.2 119.58L103.35 120.95L104.5 122.31L105.65 123.65L106.8 124.99L107.95 126.31L109.1 127.63L110.25 128.93L111.4 130.23L112.55 131.51L113.7 132.79L114.85 134.05L116 135.31L117.15 136.55L118.3 137.79L119.45 139.02L120.6 140.23L121.75 141.44L122.9 142.64L124.05 143.83L125.2 145.01L126.35 146.18L127.5 147.34L128.65 148.49L129.8 149.64L130.95 150.77L132.1 151.9L133.25 153.02L134.4 154.13L135.55 155.23L136.7 156.32L137.85 157.4L139 158.48L140.15 159.54L141.3 160.6L142.45 161.65L143.6 162.7L144.75 163.73L145.9 164.76L147.05 165.77L148.2 166.78L149.35 167.79L150.5 168.78L151.65 169.77L152.8 170.75L153.95 171.72L155.1 172.69L156.25 173.64L157.4 174.59L158.55 175.54L159.7 176.47L160.85 177.4L162 178.32L163.15 179.23L164.3 180.14L165.45 181.04L166.6 181.93L167.75 182.82L168.9 183.7L170.05 184.57L171.2 185.43L172.35 186.29L173.5 187.14L174.65 187.99L175.8 188.83L176.95 189.66L178.1 190.49L179.25 191.31L180.4 192.12L181.55 192.93L182.7 193.73L183.85 194.52L185 195.31L186.15 196.09L187.3 196.87L188.45 197.64L189.6 198.41L190.75 199.16L191.9 199.92L193.05 200.66L194.2 201.4L195.35 202.14L196.5 202.87L197.65 203.59L198.8 204.31L199.95 205.03L201.1 205.73L202.25 206.44L203.4 207.13L204.55 207.82L205.7 208.51L206.85 209.19L208 209.86L209.15 210.53L210.3 211.2L211.45 211.86L212.6 212.51L213.75 213.16L214.9 213.81L216.05 214.45L217.2 215.08L218.35 215.71L219.5 216.34L220.65 216.96L221.8 217.57L222.95 218.18L224.1 218.79L225.25 219.39L226.4 219.99L227.55 220.58L228.7 221.17L229.85 221.75L231 222.33L232.15 222.9L233.3 223.47L234.45 224.04L235.6 224.6L236.75 225.15L237.9 225.71L239.05 226.25L240.2 226.8L241.35 227.34L242.5 227.87L243.65 228.4L244.8 228.93L245.95 229.45L247.1 229.97L248.25 230.49L249.4 231L250.55 231.5L251.7 232.01L252.85 232.51L254 233L255.15 233.49L256.3 233.98L257.45 234.47L258.6 234.95L259.75 235.42L260.9 235.89L262.05 236.36L263.2 236.83L264.35 237.29L265.5 237.75L266.65 238.2L267.8 238.66L268.95 239.1L270.1 239.55L271.25 239.99L272.4 240.43L273.55 240.86L274.7 241.29L275.85 241.72L277 242.14L278.15 242.56L279.3 242.98L280.45 243.4L281.6 243.81L282.75 244.22L283.9 244.62L285.05 245.02L286.2 245.42L287.35 245.82L288.5 246.21L289.65 246.6L290.8 246.99L291.95 247.37L293.1 247.75L294.25 248.13L295.4 248.5L296.55 248.87L297.7 249.24L298.85 249.61L300 249.97L301.15 250.33L302.3 250.69L303.45 251.05L304.6 251.4L305.75 251.75L306.9 252.09L308.05 252.44L309.2 252.78L310.35 253.12L311.5 253.45L312.65 253.79L313.8 254.12L314.95 254.45L316.1 254.77L317.25 255.1L318.4 255.42L319.55 255.74L320.7 256.05L321.85 256.37L323 256.68L324.15 256.99L325.3 257.29L326.45 257.6L327.6 257.9L328.75 258.2L329.9 258.49L331.05 258.79L332.2 259.08L333.35 259.37L334.5 259.66L335.65 259.94L336.8 260.23L337.95 260.51L339.1 260.79L340.25 261.07L341.4 261.34L342.55 261.61L343.7 261.88L344.85 262.15L346 262.42L347.15 262.68L348.3 262.95L349.45 263.21L350.6 263.46L351.75 263.72L352.9 263.97L354.05 264.23L355.2 264.48L356.35 264.73L357.5 264.97L358.65 265.22L359.8 265.46L360.95 265.7L362.1 265.94L363.25 266.18L364.4 266.41L365.55 266.65L366.7 266.88L367.85 267.11L369 267.34L370.15 267.56L371.3 267.79L372.45 268.01L373.6 268.23L374.75 268.45L375.9 268.67L377.05 268.88L378.2 269.1L379.35 269.31L380.5 269.52L381.65 269.73L382.8 269.94L383.95 270.15L385.1 270.35L386.25 270.56L387.4 270.76L388.55 270.96L389.7 271.16L390.85 271.35L392 271.55L393.15 271.74L394.3 271.93L395.45 272.12L396.6 272.31L397.75 272.5L398.9 272.69L400.05 272.87L401.2 273.06L402.35 273.24L403.5 273.42L404.65 273.6L405.8 273.78L406.95 273.96L408.1 274.13L409.25 274.3L410.4 274.48L411.55 274.65L412.7 274.82L413.85 274.99L415 275.15L416.15 275.32L417.3 275.49L418.45 275.65L419.6 275.81L420.75 275.97L421.9 276.13L423.05 276.29L424.2 276.45L425.35 276.6L426.5 276.76L427.65 276.91L428.8 277.06L429.95 277.22L431.1 277.37L432.25 277.52L433.4 277.66L434.55 277.81L435.7 277.96L436.85 278.1L438 278.24L439.15 278.39L440.3 278.53L441.45 278.67L442.6 278.81L443.75 278.94L444.9 279.08L446.05 279.22L447.2 279.35L448.35 279.48L449.5 279.62L450.65 279.75L451.8 279.88L452.95 280.01L454.1 280.14L455.25 280.27L456.4 280.39L457.55 280.52L458.7 280.64L459.85 280.77L461 280.89L462.15 281.01L463.3 281.13L464.45 281.25L465.6 281.37L466.75 281.49L467.9 281.61L469.05 281.72L470.2 281.84L471.35 281.95L472.5 282.07L473.65 282.18L474.8 282.29L475.95 282.4L477.1 282.51L478.25 282.62L479.4 282.73L480.55 282.84L481.7 282.94L482.85 283.05L484 283.15L485.15 283.26L486.3 283.36L487.45 283.46L488.6 283.57L489.75 283.67L490.9 283.77L492.05 283.87L493.2 283.97L494.35 284.06L495.5 284.16L496.65 284.26L497.8 284.35L498.95 284.45L500.1 284.54L501.25 284.64L502.4 284.73L503.55 284.82L504.7 284.91L505.85 285L507 285.09L508.15 285.18L509.3 285.27L510.45 285.36L511.6 285.45L512.75 285.53L513.9 285.62L515.05 285.71L516.2 285.79L517.35 285.87L518.5 285.96L519.65 286.04L520.8 286.12L521.95 286.2L523.1 286.28L524.25 286.36L525.4 286.44L526.55 286.52L527.7 286.6L528.85 286.68L530 286.76" fill="none" stroke="#8C1036" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round" clip-path="url(#clip70x40)"/>
+<line x1="70" y1="96.51" x2="322.26" y2="323.35" stroke="#0072B2" stroke-width="2.2" stroke-linecap="round" clip-path="url(#clip70x40)"/>
+<line x1="144.19" y1="163.23" x2="218.39" y2="163.23" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="5 4"/>
+<line x1="218.39" y1="163.23" x2="218.39" y2="229.95" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="5 4"/>
+<circle cx="144.19" cy="163.23" r="5" fill="#1F2A28" stroke="#1F2A28" stroke-width="2"/>
+<text x="181.29" y="155.23" font-size="13" text-anchor="middle" fill="#1F2A28">run: 10 minutes</text>
+<text x="226.39" y="200.59" font-size="13" text-anchor="start" fill="#1F2A28">drop: 18.2 °C</text>
+<text x="134.19" y="189.23" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold">(10, 56.4)</text>
+<text x="560" y="70" font-size="16" text-anchor="start" fill="#1F2A28" font-weight="bold">A drink cooling in a room</text><text x="560" y="96" font-size="13" text-anchor="start" fill="#5A6563"><tspan font-style="italic">T</tspan>(<tspan font-style="italic">t</tspan>) in °C, <tspan font-style="italic">t</tspan> in minutes</text><text x="560" y="140" font-size="14" text-anchor="start" fill="#0072B2" font-weight="bold">Slope of the tangent line:</text><text x="560" y="164" font-size="14" text-anchor="start" fill="#0072B2">−18.2 °C / 10 minutes</text><text x="560" y="186" font-size="14" text-anchor="start" fill="#0072B2" font-weight="bold"><tspan font-style="italic">T</tspan>′(10) ≈ −1.82 °C per minute</text><text x="560" y="228" font-size="14" text-anchor="start" fill="#1F2A28" font-weight="bold">Units of a derivative:</text><text x="560" y="250" font-size="13" text-anchor="start" fill="#5A6563">units of the output per</text><text x="560" y="268" font-size="13" text-anchor="start" fill="#5A6563">one unit of the input</text><text x="560" y="310" font-size="13" text-anchor="start" fill="#1F2A28">At 10 minutes the drink is</text><text x="560" y="328" font-size="13" text-anchor="start" fill="#1F2A28">cooling at about 1.82 °C</text><text x="560" y="346" font-size="13" text-anchor="start" fill="#1F2A28">per minute.</text><text x="300" y="410" font-size="13" text-anchor="middle" fill="#5A6563">time (minutes)</text><text transform="translate(24 205) rotate(-90)" font-size="13" text-anchor="middle" fill="#5A6563">temperature (°C)</text>
+</svg>

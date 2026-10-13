@@ -1,0 +1,61 @@
+<p>So far you have estimated limits by looking: at a graph, at a table. Now you will find them exactly, with rules. The good news is that the rules are the ones you would guess. Limits respect ordinary arithmetic. If you know where $f(x)$ and $g(x)$ are heading, you know where $f(x) + g(x)$, $f(x)g(x)$ and many other combinations are heading. For most functions in this course, the rules boil down to one step: substitute.</p>
+
+<h2>The limit laws</h2>
+<p>Suppose $\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} g(x) = M$, and both of these limits exist. Then:</p>
+<table class="compare">
+<thead><tr><th>Law</th><th>In symbols</th><th>Condition</th></tr></thead>
+<tbody>
+<tr><td>Sum and difference</td><td>$\lim_{x \to a} \left[f(x) \pm g(x)\right] = L \pm M$</td><td></td></tr>
+<tr><td>Constant multiple</td><td>$\lim_{x \to a} k f(x) = kL$</td><td></td></tr>
+<tr><td>Product</td><td>$\lim_{x \to a} f(x) g(x) = LM$</td><td></td></tr>
+<tr><td>Quotient</td><td>$\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{L}{M}$</td><td>$M \ne 0$</td></tr>
+<tr><td>Power</td><td>$\lim_{x \to a} \left[f(x)\right]^n = L^n$</td><td>$n$ a positive integer</td></tr>
+<tr><td>Root</td><td>$\lim_{x \to a} \sqrt{f(x)} = \sqrt{L}$</td><td>$L > 0$ for even roots</td></tr>
+</tbody>
+</table>
+<p>Two simple limits start everything off: $\lim_{x \to a} k = k$ for a constant $k$, and $\lim_{x \to a} x = a$. Both are obvious from their graphs, a flat line and the line $y = x$.</p>
+<figure id="fig-laws" data-fig="limit-laws-sum"><figcaption>Near $x = 2$ the curve $f + g$ heads to $3 + (-1) = 2$, the sum of the two limits.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> Given $\lim_{x \to 4} f(x) = 3$ and $\lim_{x \to 4} g(x) = -1$, find $\lim_{x \to 4} \frac{2f(x) - [g(x)]^2}{f(x) + g(x)}$.</p>
+<p>Numerator: $2(3) - (-1)^2 = 6 - 1 = 5$, by the constant multiple, power and difference laws.</p>
+<p>Denominator: $3 + (-1) = 2$, which is not 0, so the quotient law applies.</p>
+<p>So the limit is $\frac{5}{2}$.</p>
+</div>
+
+<h2>Direct substitution</h2>
+<p>Every polynomial is built from constants and $x$ using sums, products and constant multiples. The laws therefore give, for any polynomial $p$,
+$$\lim_{x \to a} p(x) = p(a)$$
+The same holds for a rational function $\frac{p(x)}{q(x)}$ as long as $q(a) \ne 0$, and for roots of these where the expression is defined. Finding a limit by evaluating at $a$ is called <b>direct substitution</b>. It is the first thing to try on every limit.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\lim_{x \to 2} \frac{x^3 - 4x + 1}{x + 3}$.</p>
+<p>This is a rational function, and the denominator at $x = 2$ is $5 \ne 0$. Substitute:</p>
+<p>$$\lim_{x \to 2} \frac{x^3 - 4x + 1}{x + 3} = \frac{8 - 8 + 1}{2 + 3} = \frac{1}{5}$$</p>
+</div>
+<p>Why does this not contradict the idea that a limit ignores $f(a)$? It doesn't. For these well-behaved functions the limit and the value simply happen to agree. The laws prove they agree; the value is not being used as the definition.</p>
+
+<h2>When the laws are silent</h2>
+<p>The laws come with conditions, and the conditions are where exam questions live.</p>
+<ul>
+<li><b>Denominator heading to 0, numerator not.</b> For $\lim_{x \to 2} \frac{x + 1}{x - 2}$, the top heads to 3 and the bottom to 0. Numbers near 3 divided by numbers near 0 are huge in size, so there is no finite limit. Writing $\frac{3}{0}$ is never a value; say it in words.</li>
+<li><b>Both top and bottom heading to 0.</b> For $\lim_{x \to 3} \frac{x^2 - 9}{x - 3}$, substitution gives a zero in both places, which tells you nothing yet. The limit might be any number, or might not exist. Topic 1.6 shows the algebra that settles it.</li>
+<li><b>One of the limits does not exist.</b> The laws need both limits to exist. If they do not, the laws do not apply, but the combination might still have a limit. Two jumps can cancel each other in a sum.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 3.</b> $f$ jumps at $x = 1$: it heads to 2 from the left and 0 from the right. $g$ heads to 1 from the left and 3 from the right. Find $\lim_{x \to 1} [f(x) + g(x)]$ and $\lim_{x \to 1} f(x)g(x)$.</p>
+<p>Neither $f$ nor $g$ has a limit at 1, so use one side at a time.</p>
+<p>Sum: from the left $2 + 1 = 3$; from the right $0 + 3 = 3$. So $\lim_{x \to 1} [f(x) + g(x)] = 3$.</p>
+<p>Product: from the left $2 \cdot 1 = 2$; from the right $0 \cdot 3 = 0$. They differ, so $\lim_{x \to 1} f(x)g(x)$ does not exist.</p>
+</div>
+
+<h2>One-sided limits from formulas</h2>
+<p>The laws work for one-sided limits too. For a piecewise function, each one-sided limit uses the formula for that side.</p>
+<div class="worked">
+<p><b>Worked example 4.</b> Let $f(x) = \begin{cases} x^2 - 1 & x < 3 \\ 2x + 2 & x \ge 3 \end{cases}$. Find $\lim_{x \to 3} f(x)$.</p>
+<p>Left: $\lim_{x \to 3^-} (x^2 - 1) = 9 - 1 = 8$. Right: $\lim_{x \to 3^+} (2x + 2) = 8$.</p>
+<p>Both are 8, so $\lim_{x \to 3} f(x) = 8$.</p>
+</div>
+
+<h2>Limits of compositions</h2>
+<p>For $\lim_{x \to a} f(g(x))$, work from the inside out. First find $b = \lim_{x \to a} g(x)$. If $f$ is continuous at $b$ (its graph is unbroken there), then $f(g(x))$ heads to $f(b)$:
+$$\lim_{x \to a} f(g(x)) = f\left(\lim_{x \to a} g(x)\right) = f(b)$$
+For example, $\lim_{x \to 3} \sqrt{x^2 + 7} = \sqrt{16} = 4$. With graphs, read the inside limit from the graph of $g$, then read $f$ near that number from the graph of $f$. If $f$ jumps at $b$, check which side the inside values approach from.</p>

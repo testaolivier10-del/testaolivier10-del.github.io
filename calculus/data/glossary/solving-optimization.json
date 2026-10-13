@@ -1,0 +1,5 @@
+{
+ "constraint": {
+  "def": "In an optimization problem, a fixed condition that links the variables, such as a given perimeter, volume or budget. It is used to write the objective function in terms of one variable."
+ }
+}

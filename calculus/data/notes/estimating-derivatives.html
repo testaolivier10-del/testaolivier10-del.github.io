@@ -1,0 +1,64 @@
+<p>The definition of the derivative needs a formula: you substitute $a + h$, simplify and take a limit. Real data rarely comes with a formula. A thermometer gives readings every few minutes; a graph gives a picture. This page shows how to estimate $f'(a)$ from a table, from a graph and with a calculator, and how to say what the estimate means.</p>
+
+<h2>From a table: a difference quotient you can compute</h2>
+<p>The derivative is the limit of difference quotients as the interval shrinks. With a table, you cannot shrink the interval past the data, so you stop at the best interval the table offers and use that quotient as the estimate.</p>
+<p>To estimate $f'(a)$ from a table:</p>
+<ol>
+<li><b>Pick two inputs on either side of $a$</b>, as close to $a$ as the table allows: $c < a < b$. If $a$ itself is in the table, the closest inputs just before and just after it are a good choice.</li>
+<li><b>Compute</b> $\frac{f(b) - f(c)}{b - c}$, subtracting in the same order on top and bottom.</li>
+<li><b>Attach units</b>: output units per input unit.</li>
+</ol>
+<p>The interval must contain $a$. A quotient from data far away describes a different stretch of the function. At the first or last entry of a table there is only one side, so use the closest one-sided quotient.</p>
+<figure id="fig-bread" data-fig="table-difference-quotient"><figcaption>Temperature of a cooling loaf of bread. The secant line through the data at $t = 10$ and $t = 14$ gives the estimate of $B'(12)$.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1.</b> A loaf of bread cools on a rack. Its temperature $B(t)$, in degrees Fahrenheit, is recorded at $t$ minutes.</p>
+<table class="compare">
+<thead><tr><th>$t$ (minutes)</th><th>0</th><th>4</th><th>10</th><th>14</th><th>20</th></tr></thead>
+<tbody><tr><td>$B(t)$ (degrees Fahrenheit)</td><td>180</td><td>152</td><td>121</td><td>105</td><td>88</td></tr></tbody>
+</table>
+<p>Estimate $B'(12)$ and interpret it.</p>
+<p>Inputs on either side of 12: $t = 10$ and $t = 14$.</p>
+<p>Quotient: $B'(12) \approx \frac{B(14) - B(10)}{14 - 10} = \frac{105 - 121}{4} = -4$ degrees Fahrenheit per minute.</p>
+<p>Meaning: at $t = 12$ minutes, the bread's temperature is decreasing at about 4 degrees Fahrenheit per minute.</p>
+</div>
+<p>Notice what the answer is: a rate, with "per minute" in its units. A frequent slip is to give a temperature instead, such as averaging $B(10)$ and $B(14)$ to get 113. That estimates $B(12)$, the value, not $B'(12)$, the rate.</p>
+<p>Notice, too, how the sentence is built. It names the time ($t = 12$), the quantity (the bread's temperature), the direction (decreasing, from the negative sign) and the units. A sentence that says only "the slope is $-4$" leaves out everything a reader needs.</p>
+
+<h2>Uneven spacing is fine</h2>
+<p>Tables on the exam often have unequal gaps. Use the actual widths. With data at $t = 9$ and $t = 12$, the width is 3, whatever the other gaps are. In Worked example 1, the intervals are 4, 6, 4 and 6 minutes wide; each quotient divides by its own width.</p>
+
+<h2>The symmetric difference quotient</h2>
+<p>If you know $f$ at $a - h$ and $a + h$, the quotient across the point,</p>
+<p>$$\frac{f(a + h) - f(a - h)}{2h},$$</p>
+<p>is the <b>symmetric difference quotient</b>. Its denominator is the full width $2h$. It equals the average of the left quotient $\frac{f(a) - f(a - h)}{h}$ and the right quotient $\frac{f(a + h) - f(a)}{h}$, and their errors partly cancel, so it is usually much closer to $f'(a)$ than either one.</p>
+
+<div class="worked">
+<p><b>Worked example 2.</b> A function has $f(2.9) = 24.389$, $f(3) = 27$ and $f(3.1) = 29.791$. Estimate $f'(3)$.</p>
+<p>Left: $\frac{27 - 24.389}{0.1} = 26.11$. Right: $\frac{29.791 - 27}{0.1} = 27.91$.</p>
+<p>Symmetric: $\frac{29.791 - 24.389}{0.2} = \frac{5.402}{0.2} = 27.01$, the average of the two. (These are values of $x^3$, whose derivative at 3 turns out to be exactly 27.)</p>
+</div>
+
+<h2>From a graph</h2>
+<p>When you have a graph, the derivative at $a$ is the slope of the tangent line at $(a, f(a))$. If the tangent line is drawn, read two points on it where it crosses grid lines and compute rise over run. If it is not drawn, lay a ruler along the curve so that it just touches at the point, then read two points on the ruler. Choose points far apart on the line: small reading errors matter less over a long run.</p>
+<p>A graph also tells you the sign of $f'(a)$ at a glance: positive where the graph rises, negative where it falls, zero where its tangent line is level.</p>
+
+<h2>With a calculator</h2>
+<p>A graphing calculator has a <b>numerical derivative</b> command. Give it the function and the input, and it returns a decimal estimate of $f'(a)$, computed from a symmetric difference quotient with a very small $h$. On calculator questions:</p>
+<ul>
+<li>Write the setup, such as $\left.\frac{d}{dx}\left( \frac{e^x}{1 + x^2} \right)\right|_{x=2}$, then the value. A bare number earns little.</li>
+<li>Give three decimal places: $0.296$. Store intermediate values instead of rounding them.</li>
+<li>Use radian mode whenever a trigonometric function appears.</li>
+</ul>
+
+<h2>Which estimate to trust</h2>
+<table class="compare">
+<thead><tr><th>Method</th><th>Uses</th><th>When</th></tr></thead>
+<tbody>
+<tr><td>Quotient across $a$ from a table</td><td>the closest data on each side</td><td>data only; the usual exam method</td></tr>
+<tr><td>One-sided quotient</td><td>$a$ and its nearest neighbor</td><td>$a$ is the first or last entry</td></tr>
+<tr><td>Tangent line on a graph</td><td>two points on the line</td><td>a graph with the line drawn</td></tr>
+<tr><td>Numerical derivative</td><td>the calculator</td><td>a formula on a calculator question</td></tr>
+</tbody>
+</table>
+<p>Every one of these is an approximation of a limit. The exam asks for the estimate, its setup and its units; it does not expect the exact value. The next topic asks when a derivative exists at all.</p>

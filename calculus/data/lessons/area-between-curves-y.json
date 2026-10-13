@@ -1,0 +1,51 @@
+{
+ "topic": "area-between-curves-y",
+ "hook": "Some regions are awkward to slice top to bottom. A pond whose banks are a parabola opening sideways and a straight wall has a bottom edge that switches curves halfway across. Turn your knife sideways: every horizontal strip runs from the same left bank to the same right bank, and one integral does the job.",
+ "prereq": [
+  {
+   "q": "Solve $y = x^3$ for $x$.",
+   "options": ["$x = y^{1/3}$", "$x = y^3$", "$x = \\frac{y}{3}$", "$x = 3y$"],
+   "correct": 0,
+   "why": "Take the cube root of both sides: $x = \\sqrt[3]{y} = y^{1/3}$. This is the inverse function.",
+   "review": "math-inverse-functions"
+  },
+  {
+   "q": "Where does the parabola $y = 6 - x^2$ meet the line $y = x$?",
+   "options": ["$x = -3$ and $x = 2$", "$x = 3$ and $x = -2$", "$x = \\pm\\sqrt{6}$", "$x = 0$ and $x = 6$"],
+   "correct": 0,
+   "why": "$6 - x^2 = x$ gives $x^2 + x - 6 = (x + 3)(x - 2) = 0$.",
+   "review": "area-between-curves-x"
+  }
+ ],
+ "figure": { "figure": "area-between-y-strip", "caption": "A horizontal strip between $x = y^2$ and $x = y + 2$: its length is right minus left, and the limits are $y$-values." },
+ "chain": [
+  { "cause": "Write each edge of the region as $x$ in terms of $y$", "effect": "a horizontal strip at height $y$ runs from $x_{\\text{left}}(y)$ to $x_{\\text{right}}(y)$" },
+  { "cause": "The strip has length right minus left and thickness $\\Delta y$", "effect": "its area is $\\left(x_{\\text{right}} - x_{\\text{left}}\\right)\\Delta y$" },
+  { "cause": "Stack the strips from the bottom of the region to the top", "effect": "the sum becomes $\\int_c^d \\left(x_{\\text{right}} - x_{\\text{left}}\\right)\\,dy$" },
+  { "cause": "The integral is in $dy$", "effect": "the limits $c$ and $d$ are the $y$-values where the region starts and ends" }
+ ],
+ "ideas": [
+  "<b>Integrating with respect to $y$</b>: area $= \\int_c^d \\left(x_{\\text{right}}(y) - x_{\\text{left}}(y)\\right)\\,dy$, right minus left.",
+  "Rewrite each curve as $x = $ (something in $y$) first: $y = \\sqrt{x}$ becomes $x = y^2$, $y = \\ln x$ becomes $x = e^y$.",
+  "Limits are $y$-values. Find them by setting the two $x$-expressions equal and solving for $y$.",
+  "Choose $y$ when each side edge is one formula but the top or bottom edge changes partway across; slicing in $x$ would take two integrals.",
+  "Both ways give the same area when done correctly."
+ ],
+ "misconception": {
+  "wrong": "For an integral in $dy$, you can keep the $x$-values of the crossing points as the limits.",
+  "right": "The limits belong to the variable of integration. With $dy$, use the $y$-coordinates of the crossings: for $x = y^2$ and $x = y + 2$ that is $y = -1$ to $y = 2$, not $x = 1$ to $x = 4$."
+ },
+ "check": [
+  "calc-area-between-curves-y-1",
+  "calc-area-between-curves-y-2",
+  "calc-area-between-curves-y-3",
+  "calc-area-between-curves-y-4",
+  "calc-area-between-curves-y-11",
+  "calc-area-between-curves-y-13"
+ ],
+ "summary": "When a region is easier to cut sideways, write its edges as $x$ in terms of $y$ and integrate right minus left from the lowest $y$ to the highest: $A = \\int_c^d \\left(x_{\\text{right}} - x_{\\text{left}}\\right)\\,dy$. The limits are $y$-values, found by setting the two edges equal.",
+ "connections": [
+  { "href": "../notes/area-between-curves-x.html", "label": "Back: area with functions of x (8.4)" },
+  { "href": "../notes/area-multiple-crossings.html", "label": "Next: 8.6" }
+ ]
+}

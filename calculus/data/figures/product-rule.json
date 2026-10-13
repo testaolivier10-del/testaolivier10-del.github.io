@@ -1,0 +1,12 @@
+{
+ "product-rule-area": {
+  "file": "figures/product-rule-area.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A rectangle with width f and height g has area f times g. When x changes a little, the width grows by delta f and the height by delta g. The new area adds a strip g delta f on the right, a strip f delta g along the bottom, and a tiny corner delta f delta g. Dividing by delta x and letting delta x go to 0 makes the corner vanish, which gives (fg) prime = f prime g + f g prime."
+ }
+}

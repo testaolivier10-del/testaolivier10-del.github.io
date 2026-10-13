@@ -1,0 +1,53 @@
+<p>The derivative $f'$ of a function is a new function. Nothing stops us from differentiating it again. The result, the second derivative $f''$, tells how fast the rate of change is itself changing. It is the key to motion problems in the next unit and to the shape of graphs after that, so it is worth getting the mechanics and the meaning right now.</p>
+
+<h2>Notation</h2>
+<p>All of these mean the same second derivative:</p>
+<p>$$f''(x) = y'' = \frac{d^2y}{dx^2} = \frac{d}{dx}\left(\frac{dy}{dx}\right)$$</p>
+<p>Read $\frac{d^2y}{dx^2}$ as "d two y, d x squared". The 2s sit where they do because the operation $\frac{d}{dx}$ is applied twice to $y$. It is not $\left(\frac{dy}{dx}\right)^2$, the square of the slope, and not the derivative of $y^2$. Higher derivatives follow the same pattern: $f'''(x)$ for the third, then $f^{(4)}(x)$, $f^{(5)}(x)$ and in general $f^{(n)}(x)$, with the number in brackets so it is not mistaken for a power.</p>
+
+<h2>Computing higher derivatives</h2>
+<p>Differentiate, then differentiate the result. Every rule still applies at every step.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $f''(x)$ and $f'''(x)$ for $f(x) = x^3 - 3x$.</p>
+<p>$f'(x) = 3x^2 - 3$, then $f''(x) = 6x$, then $f'''(x) = 6$, and $f^{(4)}(x) = 0$.</p>
+<p>A polynomial of degree $n$ has $f^{(n+1)} = 0$: every derivative lowers the degree by one.</p>
+</div>
+<figure id="fig-derivs" data-fig="f-first-second-derivatives"><figcaption>$f(x) = x^3 - 3x$, $f'(x) = 3x^2 - 3$ and $f''(x) = 6x$. Each graph records the slopes of the one above it.</figcaption></figure>
+<p>Look at the figure from bottom to top. Where $f''$ is negative ($x < 0$), the graph of $f'$ is falling. Where $f''$ is positive, $f'$ is rising. And where $f'$ is 0, at $x = \pm 1$, the graph of $f$ levels off. Each function describes the slope of the one above it.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\frac{d^2y}{dx^2}$ for $y = e^{x^2}$.</p>
+<p>First derivative, by the chain rule: $\frac{dy}{dx} = 2xe^{x^2}$.</p>
+<p>This is a product of $2x$ and $e^{x^2}$, so the second derivative needs the product rule (and the chain rule again inside it):</p>
+<p>$\frac{d^2y}{dx^2} = 2 \cdot e^{x^2} + 2x \cdot 2xe^{x^2} = (2 + 4x^2)e^{x^2}$.</p>
+<p>The most common slip is to differentiate only one factor of $2xe^{x^2}$.</p>
+</div>
+<p>Patterns are worth spotting. For $f(x) = \sin(3x)$: $f' = 3\cos(3x)$, $f'' = -9\sin(3x)$, $f''' = -27\cos(3x)$, and every two derivatives multiply by $-9$. For $f(x) = e^{-2x}$, each derivative multiplies by $-2$, so $f^{(n)}(x) = (-2)^n e^{-2x}$.</p>
+
+<h2>Reading $f''$ from a graph of $f'$</h2>
+<p>When the exam shows the graph of $f'$, the second derivative is the <b>slope</b> of that graph, not its height. If the graph of $f'$ is a line segment from $(0, 2)$ to $(2, -2)$, then $f''(1) = \frac{-2 - 2}{2 - 0} = -2$, while $f'(1) = 0$ is the height. At a sharp corner of the graph of $f'$, the slopes from the two sides differ, so $f''$ does not exist there.</p>
+<table class="compare">
+<tr><th>On the graph of $f'$</th><th>What it tells</th></tr>
+<tr><td>height at $x = a$</td><td>$f'(a)$, the slope of $f$</td></tr>
+<tr><td>slope at $x = a$</td><td>$f''(a)$</td></tr>
+<tr><td>graph rising</td><td>$f'' > 0$</td></tr>
+<tr><td>graph falling</td><td>$f'' < 0$</td></tr>
+<tr><td>sharp corner</td><td>$f''$ does not exist there</td></tr>
+</table>
+
+<h2>Second derivatives of implicit curves</h2>
+<p>For a curve given implicitly, differentiate the expression for $\frac{dy}{dx}$ again, remembering that $y$ still depends on $x$. Then substitute the expression for $\frac{dy}{dx}$ wherever it appears.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> For $x^2 + 4y^2 = 8$, find $\frac{d^2y}{dx^2}$ at $(2, 1)$.</p>
+<p>First: $2x + 8y\frac{dy}{dx} = 0$, so $\frac{dy}{dx} = -\frac{x}{4y}$. At $(2, 1)$, $\frac{dy}{dx} = -\frac{1}{2}$.</p>
+<p>Second, by the quotient rule: $\frac{d^2y}{dx^2} = -\frac{(1)(4y) - x\left(4\frac{dy}{dx}\right)}{(4y)^2}$.</p>
+<p>At $(2, 1)$ with $\frac{dy}{dx} = -\frac{1}{2}$: $-\frac{4 - 2 \cdot 4 \cdot \left(-\frac{1}{2}\right)}{16} = -\frac{4 + 4}{16} = -\frac{1}{2}$.</p>
+<p>In general, substituting $\frac{dy}{dx} = -\frac{x}{4y}$ and using $x^2 + 4y^2 = 8$ gives $\frac{d^2y}{dx^2} = -\frac{x^2 + 4y^2}{16y^3} = -\frac{1}{2y^3}$.</p>
+</div>
+
+<h2>Slips that cost points</h2>
+<ul>
+<li>Writing $\frac{dy^2}{dx}$ or $\left(\frac{dy}{dx}\right)^2$ for the second derivative.</li>
+<li>Forgetting that a first derivative such as $2xe^{x^2}$ is a product.</li>
+<li>Treating $y$ as a constant when differentiating $\frac{dy}{dx}$ for an implicit curve.</li>
+<li>Reading the height of a graph of $f'$ when the question asks for $f''$.</li>
+</ul>

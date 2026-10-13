@@ -1,0 +1,72 @@
+{
+ "topic": "limits-from-tables",
+ "hook": "Sometimes you have no graph and no simple algebra, just a function you can evaluate, or a set of measurements. Then you test: plug in inputs closer and closer to the point, from both sides, and watch the outputs. A well-chosen table can reveal a limit in seconds, and a badly read one can mislead. This topic shows both.",
+ "prereq": [
+  {
+   "q": "When does $\\lim_{x \\to a} f(x)$ exist?",
+   "options": [
+    "When both one-sided limits exist and are equal",
+    "When $f(a)$ is defined",
+    "When the graph has no holes",
+    "When the left-hand limit exists"
+   ],
+   "correct": 0,
+   "why": "Both sides must exist and agree.",
+   "review": "limits-from-plots"
+  },
+  {
+   "q": "Which inputs approach 4 from the left?",
+   "options": [
+    "3.9, 3.99, 3.999",
+    "4.1, 4.01, 4.001",
+    "4, 4, 4",
+    "0, 1, 2"
+   ],
+   "correct": 0,
+   "why": "From the left means below 4, getting closer.",
+   "review": "limits-from-plots"
+  }
+ ],
+ "figure": {
+  "figure": "table-zoom",
+  "caption": "A table of values closing in on $x = 2$ from both sides, and the same points on a zoomed-in graph: the outputs settle on 0.25."
+ },
+ "chain": [
+  {
+   "cause": "Choose inputs closer and closer to $a$ from the left, and from the right (never $a$ itself)",
+   "effect": "the outputs show each one-sided trend"
+  },
+  {
+   "cause": "Both sides settle on the same number",
+   "effect": "that number is a numerical estimate of the limit"
+  },
+  {
+   "cause": "The sides settle on different numbers, grow without bound, or keep jumping around",
+   "effect": "the table suggests the limit does not exist"
+  },
+  {
+   "cause": "A table checks only finitely many inputs",
+   "effect": "it suggests a limit but cannot prove it; confirm with a graph or algebra"
+  }
+ ],
+ "ideas": [
+  "To estimate $\\lim_{x \\to a} f(x)$, evaluate $f$ at inputs like $a - 0.1, a - 0.01, a - 0.001$ and $a + 0.001, a + 0.01, a + 0.1$.",
+  "Read each side separately, exactly as on a graph: the left-hand limit uses inputs below $a$, the right-hand limit inputs above $a$.",
+  "The estimate is the number the outputs approach, not the last value in the table. A value $f(a)$ in the table never decides the limit.",
+  "A table can mislead if it stops too early. If the values have not settled, test inputs even closer to $a$."
+ ],
+ "misconception": {
+  "wrong": "The limit is the table value at the input closest to $a$.",
+  "right": "The limit is the number the values approach. The closest value, such as 27.009001, is only an approximation of the limit, 27."
+ },
+ "check": [
+  "calc-limits-from-tables-1",
+  "calc-limits-from-tables-2",
+  "calc-limits-from-tables-3",
+  "calc-limits-from-tables-4",
+  "calc-limits-from-tables-7",
+  "calc-limits-from-tables-9",
+  "calc-limits-from-tables-10"
+ ],
+ "summary": "A table estimates a limit when it lists outputs for inputs closing in on $a$ from both sides. If both sides settle on the same number, that is the estimate; if they differ, grow without bound or never settle, the limit appears not to exist. A table suggests; it does not prove, so check closer inputs or use algebra when in doubt."
+}

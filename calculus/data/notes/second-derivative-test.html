@@ -1,0 +1,50 @@
+<p>The First Derivative Test needs the sign of $f'$ on both sides of a critical point. Often there is a quicker way: look at the concavity right at the point. A flat spot at the bottom of a cup is a valley; a flat spot at the top of a cap is a peak. That is the Second Derivative Test.</p>
+
+<h2>The test</h2>
+<p>Suppose $f'(c) = 0$ and $f''(c)$ exists.</p>
+<ul>
+<li>If $f''(c) > 0$, the graph is concave up at $c$, and $f$ has a <b>relative minimum</b> at $c$.</li>
+<li>If $f''(c) < 0$, the graph is concave down at $c$, and $f$ has a <b>relative maximum</b> at $c$.</li>
+<li>If $f''(c) = 0$, the test gives <b>no conclusion</b>.</li>
+</ul>
+<p>Why it works: if $f''(c) > 0$, then $f'$ is increasing near $c$. Since $f'(c) = 0$, $f'$ must be negative just before $c$ and positive just after. That is the First Derivative Test's condition for a minimum.</p>
+<figure id="fig-sdt" data-fig="sdt-cases"><figcaption>Concave up at a flat point is a valley; concave down is a peak; when $f''(c) = 0$, any of the three outcomes can happen.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Find and classify the critical points of $f(x) = 2x^3 + 3x^2 - 12x + 1$.</p>
+<p>$f'(x) = 6x^2 + 6x - 12 = 6(x + 2)(x - 1)$, zero at $x = -2$ and $x = 1$.</p>
+<p>$f''(x) = 12x + 6$.</p>
+<p>$f''(-2) = -18 < 0$: relative maximum, $f(-2) = -16 + 12 + 24 + 1 = 21$.</p>
+<p>$f''(1) = 18 > 0$: relative minimum, $f(1) = 2 + 3 - 12 + 1 = -10$.</p>
+</div>
+<p>The justification needs both facts: "$f'(1) = 0$ and $f''(1) > 0$, so $f$ has a relative minimum at $x = 1$." Saying only "$f''(1) > 0$" is not enough: a graph can be concave up at a point where it is still rising.</p>
+
+<h2>When the test is silent</h2>
+<p>If $f''(c) = 0$, anything can happen. At $x = 0$, the functions $x^4$, $-x^4$ and $x^3$ all have $f'(0) = 0$ and $f''(0) = 0$, yet the first has a minimum, the second a maximum and the third neither. The test also does not apply where $f'(c)$ does not exist (a corner or cusp). In those cases, go back to the First Derivative Test.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> $f(x) = x^4 - 4x^3$. Classify the critical point $x = 0$.</p>
+<p>$f'(x) = 4x^2(x - 3)$ and $f''(x) = 12x^2 - 24x$, so $f'(0) = 0$ and $f''(0) = 0$: the Second Derivative Test gives no conclusion.</p>
+<p>First Derivative Test: $f'(x) < 0$ just left and just right of 0 (the factor $4x^2$ is positive, $x - 3$ is negative). No sign change: no extremum at $x = 0$.</p>
+</div>
+
+<h2>Tables of $f'$ and $f''$</h2>
+<p>The test is ideal when you are given a table, because it needs only values at the point:</p>
+<table class="compare">
+<thead><tr><th scope="col">$f'(c)$</th><th scope="col">$f''(c)$</th><th scope="col">Conclusion</th></tr></thead>
+<tbody>
+<tr><td>$0$</td><td>positive</td><td>relative minimum</td></tr>
+<tr><td>$0$</td><td>negative</td><td>relative maximum</td></tr>
+<tr><td>$0$</td><td>$0$</td><td>no conclusion from this test</td></tr>
+<tr><td>not $0$</td><td>anything</td><td>not a critical point (if $f$ is differentiable): no extremum</td></tr>
+</tbody>
+</table>
+
+<h2>One critical point on an interval</h2>
+<p>The Second Derivative Test finds relative extrema. But there is a useful case where a relative extremum is also absolute. If a continuous function has <b>exactly one critical point</b> on an interval, and it is a relative minimum (or maximum), then it is the absolute minimum (or maximum) on that interval. The graph cannot turn around again to go lower, because turning around would need another critical point.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the absolute minimum of $f(x) = x + \frac{1}{x}$ on $(0, \infty)$.</p>
+<p>$f'(x) = 1 - \frac{1}{x^2} = 0$ at $x = 1$, the only critical point in $(0, \infty)$.</p>
+<p>$f''(x) = \frac{2}{x^3}$, so $f''(1) = 2 > 0$: a relative minimum.</p>
+<p>One critical point, and it is a relative minimum, so $f(1) = 2$ is the absolute minimum on $(0, \infty)$, even though the interval has no endpoints to compare with.</p>
+</div>
+<p>This argument is the second way, besides the Candidates Test, to justify an absolute extremum. It is the one you will use most when a later problem asks for the best value on an open interval.</p>

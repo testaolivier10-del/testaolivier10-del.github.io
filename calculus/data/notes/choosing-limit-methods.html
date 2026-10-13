@@ -1,0 +1,70 @@
+<p>By now you have several tools for limits: reading a graph, building a table, the limit laws, factoring and rationalizing. A real question does not say which one to use. This page gives you a plan. One substitution, read carefully, tells you which tool comes next.</p>
+
+<h2>Substitute first</h2>
+<p>Start every limit $\lim_{x \to c} f(x)$ by putting $x = c$ into the expression. This is fast, and it is often the whole job. The limit laws say that for a polynomial, or a quotient of polynomials whose denominator is not 0 at $c$, the limit equals the value: $\lim_{x \to c} f(x) = f(c)$. The same holds for roots, as long as the expression is defined on both sides of $c$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\lim_{x \to 2} \frac{x^2 + 1}{x + 3}$.</p>
+<p>Substitute: the denominator is $2 + 3 = 5$, not 0. So the limit is the value.</p>
+<p>$$\lim_{x \to 2} \frac{x^2 + 1}{x + 3} = \frac{4 + 1}{5} = 1$$</p>
+</div>
+
+<h2>Read the result</h2>
+<p>Substitution can come out three ways. Each one sends you somewhere different.</p>
+<figure id="fig-map" data-fig="limit-method-map"><figcaption>A decision map: the result of substituting picks the next step.</figcaption></figure>
+<table>
+<thead><tr><th>Substituting gives</th><th>What it means</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>a number, like $7$</td><td>the expression is defined near $c$</td><td>that number is the limit</td></tr>
+<tr><td>$\frac{0}{0}$</td><td>top and bottom share a zero factor</td><td>rewrite, then substitute again</td></tr>
+<tr><td>nonzero over 0, like $\frac{6}{0}$</td><td>the bottom shrinks, the top does not</td><td>the function is unbounded; check each side's sign</td></tr>
+</tbody>
+</table>
+<p>One more case sits beside the table. If the function changes formula at $c$ (a piecewise function, or an absolute value), the two sides follow different rules. Then find the left-hand and right-hand limits separately and compare them.</p>
+
+<h2>Zero over zero: rewrite</h2>
+<p>$\frac{0}{0}$ is called an <b>indeterminate form</b>. It is not a number and it is not an answer. It says the numerator and the denominator both reach 0 at $c$, which usually means they share a factor that is 0 there. Remove that factor and the rest of the expression tells you the limit. Three moves cover almost every case.</p>
+<p><b>Factor and cancel</b> when you see polynomials.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\lim_{x \to 3} \frac{x^2 - x - 6}{x - 3}$.</p>
+<p>Substitute: $\frac{9 - 3 - 6}{0} = \frac{0}{0}$. Rewrite.</p>
+<p>Factor the top: $x^2 - x - 6 = (x - 3)(x + 2)$. For every $x \ne 3$,</p>
+<p>$$\frac{(x - 3)(x + 2)}{x - 3} = x + 2$$</p>
+<p>A limit never looks at $x = 3$ itself, so the two expressions have the same limit: $\lim_{x \to 3} (x + 2) = 5$.</p>
+</div>
+<p><b>Multiply by the conjugate</b> when a square root sits next to a subtraction.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $\lim_{x \to 0} \frac{\sqrt{x + 4} - 2}{x}$.</p>
+<p>Substitute: $\frac{2 - 2}{0} = \frac{0}{0}$. Multiply top and bottom by the conjugate $\sqrt{x + 4} + 2$:</p>
+<p>$$\frac{(\sqrt{x + 4} - 2)(\sqrt{x + 4} + 2)}{x(\sqrt{x + 4} + 2)} = \frac{x + 4 - 4}{x(\sqrt{x + 4} + 2)} = \frac{1}{\sqrt{x + 4} + 2}$$</p>
+<p>Now substitute: $\frac{1}{2 + 2} = \frac{1}{4}$.</p>
+</div>
+<p><b>Combine fractions</b> when small fractions sit inside a big one.</p>
+<div class="worked">
+<p><b>Worked example 4.</b> Find $\lim_{x \to 3} \frac{\frac{1}{x} - \frac{1}{3}}{x - 3}$.</p>
+<p>Substitute: $\frac{0}{0}$. Put the top over one denominator: $\frac{1}{x} - \frac{1}{3} = \frac{3 - x}{3x}$. Then</p>
+<p>$$\frac{3 - x}{3x(x - 3)} = \frac{-(x - 3)}{3x(x - 3)} = -\frac{1}{3x} \quad (x \ne 3)$$</p>
+<p>Substitute: $-\frac{1}{9}$.</p>
+</div>
+<p>Keep the limit symbol on every line until the final substitution. The rewritten expression equals the original only for $x \ne c$, and the limit symbol is what makes that enough. Never write $\frac{0}{0} = 5$: the 5 comes from the rewritten expression, not from $\frac{0}{0}$.</p>
+
+<h2>Nonzero over zero: unbounded</h2>
+<p>Suppose substitution gives $\frac{6}{0}$. Near $c$ the numerator stays close to 6 while the denominator gets as small as you like. Dividing 6 by a tiny number gives a huge number. So the function is unbounded near $c$, and the limit does not exist. No rewriting changes this, because there is no common zero factor to cancel.</p>
+<p>The sign on each side tells the shape. For $h(x) = \frac{x + 3}{x - 3}$ near 3: just left of 3, $x - 3$ is a tiny negative number, so $h$ is a huge negative number. Just right of 3, $h$ is a huge positive number. The graph has a vertical asymptote at $x = 3$. A later topic gives this behavior its own notation.</p>
+
+<h2>Break points: one side at a time</h2>
+<p>For a piecewise function, use the formula that applies on each side. For an absolute value, remember $|u| = u$ when $u \ge 0$ and $|u| = -u$ when $u < 0$, so it is a piecewise function in disguise.</p>
+<div class="worked">
+<p><b>Worked example 5.</b> Let $p(x) = 2x + 1$ for $x < 2$ and $p(x) = x^2 + 1$ for $x \ge 2$. Find $\lim_{x \to 2} p(x)$.</p>
+<p>From the left, use $2x + 1$: $\lim_{x \to 2^-} p(x) = 5$. From the right, use $x^2 + 1$: $\lim_{x \to 2^+} p(x) = 5$.</p>
+<p>The one-sided limits are equal, so $\lim_{x \to 2} p(x) = 5$. Had they differed, the limit would not exist.</p>
+</div>
+
+<h2>A checklist</h2>
+<ol>
+<li>Substitute $x = c$.</li>
+<li>A number? That is the limit.</li>
+<li>$\frac{0}{0}$? Factor, use a conjugate, or combine fractions. Then substitute again.</li>
+<li>Nonzero over 0? The function is unbounded near $c$; the limit does not exist. Check the sign on each side.</li>
+<li>A formula change at $c$? Find both one-sided limits and compare.</li>
+<li>Still stuck, or no formula at all? Use a graph or a table of values.</li>
+</ol>

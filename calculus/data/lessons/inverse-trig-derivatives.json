@@ -1,0 +1,71 @@
+{
+ "topic": "inverse-trig-derivatives",
+ "hook": "A ramp rises 1 meter for every 2 meters forward: its angle is the arctangent of one half. When the rise changes, how fast does the angle change? Inverse trigonometric functions turn ratios into angles, and their derivatives answer exactly that kind of question.",
+ "prereq": [
+  {
+   "q": "What is $\\arcsin\\frac{1}{2}$?",
+   "options": [
+    "$\\frac{\\pi}{6}$",
+    "$\\frac{\\pi}{3}$",
+    "$\\frac{1}{2}$",
+    "$30$"
+   ],
+   "correct": 0,
+   "why": "$\\sin\\frac{\\pi}{6} = \\frac{1}{2}$, and $\\frac{\\pi}{6}$ is in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$.",
+   "review": "inverse-function-derivatives"
+  },
+  {
+   "q": "If $g$ is the inverse of $f$, then $g'(x)$ equals",
+   "options": [
+    "$\\frac{1}{f'(g(x))}$",
+    "$\\frac{1}{f'(x)}$",
+    "$f'(g(x))$",
+    "$-f'(x)$"
+   ],
+   "correct": 0,
+   "why": "Reciprocal of the slope of $f$ at the matching point.",
+   "review": "inverse-function-derivatives"
+  }
+ ],
+ "figure": {
+  "figure": "arcsin-steepening",
+  "caption": "$y = \\arcsin x$ has slope 1 at the origin and $\\frac{5}{3}$ at $x = 0.8$. Near $x = \\pm 1$ the slope $\\frac{1}{\\sqrt{1 - x^2}}$ grows without bound."
+ },
+ "chain": [
+  {
+   "cause": "$y = \\arcsin x$ means $\\sin y = x$ with $-\\frac{\\pi}{2} \\le y \\le \\frac{\\pi}{2}$",
+   "effect": "differentiate implicitly: $\\cos y \\cdot \\frac{dy}{dx} = 1$"
+  },
+  {
+   "cause": "On that interval $\\cos y \\ge 0$, so $\\cos y = \\sqrt{1 - \\sin^2 y} = \\sqrt{1 - x^2}$",
+   "effect": "$\\frac{d}{dx}\\arcsin x = \\frac{1}{\\sqrt{1 - x^2}}$"
+  },
+  {
+   "cause": "The same steps on $\\tan y = x$ use $\\sec^2 y = 1 + x^2$",
+   "effect": "$\\frac{d}{dx}\\arctan x = \\frac{1}{1 + x^2}$"
+  },
+  {
+   "cause": "With an inside function $u = g(x)$",
+   "effect": "multiply by $u'$: $\\frac{d}{dx}\\arctan u = \\frac{u'}{1 + u^2}$"
+  }
+ ],
+ "ideas": [
+  "$\\frac{d}{dx}\\arcsin x = \\frac{1}{\\sqrt{1 - x^2}}$ and $\\frac{d}{dx}\\arccos x = -\\frac{1}{\\sqrt{1 - x^2}}$, for $-1 < x < 1$.",
+  "$\\frac{d}{dx}\\arctan x = \\frac{1}{1 + x^2}$ for every $x$.",
+  "With an inside function, square the whole inside in the formula and multiply by its derivative.",
+  "The results come from implicit differentiation or from the inverse rule $\\frac{1}{f'(g(x))}$."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{d}{dx}\\arctan(3x) = \\frac{1}{1 + 3x^2}$.",
+  "right": "The whole inside is squared and its derivative multiplies: $\\frac{1}{1 + (3x)^2} \\cdot 3 = \\frac{3}{1 + 9x^2}$."
+ },
+ "check": [
+  "calc-inverse-trig-derivatives-1",
+  "calc-inverse-trig-derivatives-2",
+  "calc-inverse-trig-derivatives-3",
+  "calc-inverse-trig-derivatives-5",
+  "calc-inverse-trig-derivatives-6",
+  "calc-inverse-trig-derivatives-12"
+ ],
+ "summary": "The derivatives of the inverse trigonometric functions are algebraic: $\\frac{d}{dx}\\arcsin x = \\frac{1}{\\sqrt{1 - x^2}}$, $\\frac{d}{dx}\\arccos x = -\\frac{1}{\\sqrt{1 - x^2}}$ and $\\frac{d}{dx}\\arctan x = \\frac{1}{1 + x^2}$. With an inside function, square the whole inside and multiply by its derivative."
+}

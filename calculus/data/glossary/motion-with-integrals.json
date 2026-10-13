@@ -1,0 +1,8 @@
+{
+ "displacement": {
+  "def": "The change in position of a particle over a time interval: $x(b) - x(a) = \\int_a^b v(t)\\,dt$. It can be positive, negative or zero."
+ },
+ "total-distance": {
+  "def": "The length of the path a particle travels over a time interval, counting motion in both directions as positive: $\\int_a^b |v(t)|\\,dt$, the integral of speed."
+ }
+}

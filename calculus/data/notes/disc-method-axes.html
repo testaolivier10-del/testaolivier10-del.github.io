@@ -1,0 +1,48 @@
+<h2>Spinning a region</h2>
+<p>Take a flat region, such as the area under $y = \sqrt{x}$ from $x = 0$ to $x = 4$, and spin it all the way around the $x$-axis. It sweeps out a solid shaped like a horn. A solid made this way is called a <b>solid of revolution</b>, and the line it spins around is the <b>axis of rotation</b>.</p>
+<p>Now slice that solid perpendicular to the axis. Every slice is a circle filled in: a disc. That is the key fact. You already know how to find a volume from slices, $V = \int_a^b A(x)\,dx$, and you know the area of a disc, $\pi r^2$. All that is left is to find the radius.</p>
+<figure id="fig-disc" data-fig="disc-solid-x-axis"><figcaption>The rectangle at $x$ reaches from the $x$-axis up to $\sqrt{x}$. Spun around the axis, it sweeps out a disc of radius $\sqrt{x}$.</figcaption></figure>
+
+<h2>The radius is a distance from the axis</h2>
+<p>Picture one thin vertical rectangle in the region, standing on the axis and reaching up to the curve. When the region spins, that rectangle sweeps out a thin disc. The disc's radius is the rectangle's height: the distance from the axis to the curve. About the $x$-axis, that is just $f(x)$. So</p>
+$$V = \int_a^b \pi\, r(x)^2\,dx = \pi\int_a^b f(x)^2\,dx.$$
+<p>This is the <b>disc method</b>. It works whenever the region touches the axis all along its length, so that every slice is solid all the way to the center.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> The region under $y = \sqrt{x}$ for $0 \le x \le 4$ is revolved about the $x$-axis. Find the volume.</p>
+<p><b>Radius.</b> From the axis up to the curve: $r(x) = \sqrt{x}$.</p>
+<p><b>Disc area.</b> $\pi r^2 = \pi(\sqrt{x})^2 = \pi x$.</p>
+<p><b>Volume.</b> $V = \pi\int_0^4 x\,dx = \pi \cdot \frac{x^2}{2}\Big|_0^4 = 8\pi$.</p>
+</div>
+
+<h2>About the $y$-axis</h2>
+<p>When the axis of rotation is the $y$-axis, the slices perpendicular to it are horizontal. Each one sits at a height $y$, has thickness $\Delta y$, and reaches from the $y$-axis out to the curve. So the radius is a horizontal distance, the curve's $x$-value written in terms of $y$, and the integral is in $dy$:</p>
+$$V = \pi\int_c^d r(y)^2\,dy.$$
+
+<div class="worked">
+<p><b>Worked example.</b> The region bounded by $y = x^2$, $y = 4$ and the $y$-axis is revolved about the $y$-axis. Find the volume.</p>
+<p><b>Slices.</b> Horizontal, from $y = 0$ up to $y = 4$.</p>
+<p><b>Radius.</b> At height $y$ the region reaches from $x = 0$ to the curve. Solve $y = x^2$ for $x$: $r(y) = \sqrt{y}$.</p>
+<p><b>Volume.</b> $V = \pi\int_0^4 (\sqrt{y})^2\,dy = \pi\int_0^4 y\,dy = 8\pi$.</p>
+<p>Writing $\pi\int_0^2 x^4\,dx$ instead would spin a different region (the one under the parabola) about a different axis.</p>
+</div>
+
+<h2>Checking with shapes you know</h2>
+<table>
+<thead><tr><th>Region revolved about the $x$-axis</th><th>Solid</th><th>Disc method</th><th>Geometry</th></tr></thead>
+<tbody>
+<tr><td>Under $y = 2$, $0 \le x \le 3$</td><td>cylinder</td><td>$\pi\int_0^3 4\,dx = 12\pi$</td><td>$\pi r^2 h = 12\pi$</td></tr>
+<tr><td>Under $y = \frac{x}{2}$, $0 \le x \le 6$</td><td>cone</td><td>$\pi\int_0^6 \frac{x^2}{4}\,dx = 18\pi$</td><td>$\frac{1}{3}\pi r^2 h = 18\pi$</td></tr>
+<tr><td>Under $y = \sqrt{9 - x^2}$</td><td>ball</td><td>$\pi\int_{-3}^{3} (9 - x^2)\,dx = 36\pi$</td><td>$\frac{4}{3}\pi r^3 = 36\pi$</td></tr>
+</tbody>
+</table>
+<p>The cone formula's $\frac{1}{3}$ comes straight out of $\int x^2\,dx = \frac{x^3}{3}$.</p>
+
+<h2>Where points are lost</h2>
+<ul>
+<li><b>Missing $\pi$.</b> Every disc has area $\pi r^2$. Write the $\pi$ in your setup, not just in your answer.</li>
+<li><b>Radius not squared.</b> $\pi\int r\,dx$ adds up lengths, not areas.</li>
+<li><b>Squaring term by term.</b> $\left(4 + \sin x\right)^2 = 16 + 8\sin x + \sin^2 x$, not $16 + \sin^2 x$. On a calculator, type the whole radius in parentheses and square it.</li>
+<li><b>Wrong variable about the $y$-axis.</b> Horizontal discs need $r$ in terms of $y$ and limits in $y$.</li>
+</ul>
+<p>With a calculator, write the setup first, for example $\pi\int_0^{12} \left(4 + \sin\left(\frac{x}{2}\right)\right)^2\,dx$, then evaluate it in radian mode and report three decimal places with units of volume.</p>

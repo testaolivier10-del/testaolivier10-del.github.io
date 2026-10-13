@@ -1,0 +1,61 @@
+<p>In the last topic, the average speeds of a falling stone over shorter and shorter intervals closed in on 32 feet per second: 48, 40, 33.6, 32.16, 32.016. We kept saying "closes in on." Calculus gives that phrase a name, the <b>limit</b>, and a notation that you will write thousands of times this year. This page is about what a limit means and how to write it so that it earns credit.</p>
+
+<h2>What a limit says</h2>
+<p>Take a function $f$ and a number $a$. Let $x$ get closer and closer to $a$, from both sides, without ever being equal to $a$. Watch the outputs $f(x)$. If they close in on one number $L$, as close as you like, then $L$ is the limit of $f(x)$ as $x$ approaches $a$. We write
+$$\lim_{x \to a} f(x) = L$$
+and read it as "the limit of $f$ of $x$, as $x$ approaches $a$, equals $L$."</p>
+<p>Three parts, each with a job:</p>
+<ul>
+<li>"lim" says we are asking about a trend, not a single value.</li>
+<li>"$x \to a$" underneath says where the input is heading.</li>
+<li>"$= L$" says where the outputs are heading.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> Write the falling-stone result from Topic 1.1 in limit notation.</p>
+<p>The average speed over $[1, 1 + h]$ was $32 + 16h$ feet per second, and we let $h$ shrink toward 0. So the input is $h$, heading to 0:</p>
+<p>$$\lim_{h \to 0} (32 + 16h) = 32$$</p>
+<p>In words: as the interval length $h$ approaches 0, the average speed approaches 32 feet per second. That limit is the speed at the instant $t = 1$.</p>
+</div>
+
+<h2>The value at the point does not matter</h2>
+<p>This is the most important fact about limits, and the most surprising. The definition never lets $x$ equal $a$. So the limit cannot depend on $f(a)$.</p>
+<figure id="fig-lv" data-fig="limit-vs-value"><figcaption>The heights of $g$ head to 4 as $x \to 2$, but $g(2) = 1$. Limit and value are different numbers.</figcaption></figure>
+<p>In <a class="figref" href="#fig-lv">the figure</a>, the curve heads to the open circle at $(2, 4)$ from both sides, so $\lim_{x \to 2} g(x) = 4$. The function's actual value at 2 is the filled dot: $g(2) = 1$. Both statements are true at once. Three situations come up again and again:</p>
+<table class="compare">
+<thead><tr><th>At $x = a$ the graph has</th><th>$\lim_{x \to a} f(x)$</th><th>$f(a)$</th></tr></thead>
+<tbody>
+<tr><td>an unbroken curve through $(a, L)$</td><td>$L$</td><td>$L$ (they agree)</td></tr>
+<tr><td>a hole at $(a, L)$ and a dot at $(a, M)$</td><td>$L$</td><td>$M$</td></tr>
+<tr><td>a hole at $(a, L)$ and no dot</td><td>$L$</td><td>not defined</td></tr>
+</tbody>
+</table>
+<p>Why build calculus on an idea that ignores the point itself? Because of Topic 1.1. At the instant $t = 1$, the average-speed formula is zero divided by zero: it has no value at all. The limit is exactly the tool that looks at nearby inputs and never at the problem point.</p>
+
+<h2>Three ways to find a limit</h2>
+<p>A limit can be read from three kinds of information, and the next topics teach each one:</p>
+<ul>
+<li><b>A graph</b> (Topic 1.3): follow the heights as $x$ slides toward $a$ from the left and from the right.</li>
+<li><b>A table</b> (Topic 1.4): look at outputs for inputs like 1.9, 1.99, 1.999 and 2.1, 2.01, 2.001.</li>
+<li><b>A formula</b> (Topics 1.5 and 1.6): use rules and algebra to find the limit exactly.</li>
+</ul>
+<p>Sometimes the outputs do not close in on a single number. The two sides might head to different heights, or the outputs might grow without stopping. Then there is no limit; Topic 1.3 shows how to recognize each case.</p>
+
+<h2>Reading limits in context</h2>
+<p>When the function describes something real, a limit statement becomes a sentence about a trend. If $V(t)$ is the volume of water in a tank, in liters, $t$ hours after noon, then
+$$\lim_{t \to 3} V(t) = 12$$
+means: as the time gets closer and closer to 3 p.m., the volume of water gets closer and closer to 12 liters. A careful interpretation names the quantity, its units and the input it approaches. It does not claim that $V(3) = 12$, because the limit statement alone does not say that.</p>
+
+<h2>Writing limits the way readers expect</h2>
+<p>On free-response questions, the notation is part of the answer. Habits that keep your work correct:</p>
+<ul>
+<li>Keep "$\lim_{x \to a}$" in front of the expression on every line until the line where you actually get a number. Then drop it.</li>
+<li>Never attach a limit to something that is already a number; "$\lim_{x \to 2} 5 + x$" is ambiguous, while "$\lim_{x \to 2} (5 + x) = 7$" is clear.</li>
+<li>Use the equals sign only between things that are equal. Writing $f(2) = 4$ when you mean $\lim_{x \to 2} f(x) = 4$ is a different, and often false, statement.</li>
+<li>Name the function: "$\lim_{x \to 2} g(x) = 4$", not "the limit is 4."</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> A graph of $f$ heads to height 6 from both sides as $x$ approaches 3, and has a filled dot at $(3, 8)$. Write what you know.</p>
+<p>Limit: $\lim_{x \to 3} f(x) = 6$. Value: $f(3) = 8$.</p>
+<p>So $\lim_{x \to 3} f(x) \ne f(3)$. Writing "$f(3) = 6$" would be wrong.</p>
+</div>
+<aside class="going-further"><p><b>Going further.</b> Mathematicians make "as close as we like" exact with two small numbers, $\varepsilon$ and $\delta$: for every $\varepsilon > 0$ there is a $\delta > 0$ such that $|f(x) - L| < \varepsilon$ whenever $0 < |x - a| < \delta$. The exam does not test this definition, but it is the idea behind every limit in the course.</p></aside>

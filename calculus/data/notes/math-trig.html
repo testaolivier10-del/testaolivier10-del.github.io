@@ -1,0 +1,63 @@
+<p>Trigonometry returns in nearly every unit of calculus: the rates of change of sine and cosine in Unit 2, oscillating motion in Unit 4, areas under waves in Unit 6. You do not need every identity from precalculus. You need radians, the unit circle, the exact values at a handful of angles, the graphs, and three identities. All of it grows from one picture.</p>
+
+<h2>Radians</h2>
+<p>A <b>radian</b> measures an angle by the length of the arc it cuts on a circle of radius 1. Going all the way around a unit circle covers its circumference, $2\pi$, so a full turn is $2\pi$ radians. A half turn is $\pi$ radians, which is $180^{\circ}$. To convert:</p>
+<ul>
+<li>degrees to radians: multiply by $\frac{\pi}{180}$, so $135^{\circ} = \frac{135\pi}{180} = \frac{3\pi}{4}$;</li>
+<li>radians to degrees: multiply by $\frac{180}{\pi}$, so $\frac{\pi}{6} = 30^{\circ}$.</li>
+</ul>
+<p>Why does calculus insist on radians? Because its formulas are simplest there. For example, in Topic 1.8 you will meet $\lim_{x \to 0} \frac{\sin x}{x} = 1$; that limit is 1 only when $x$ is in radians. In degrees, it would be the awkward number $\frac{\pi}{180}$. So every formula in this course assumes radians, and so must your calculator. Checking the mode is worth a point on the exam.</p>
+
+<h2>The unit circle</h2>
+<p>The <b>unit circle</b> is $x^2 + y^2 = 1$. Start at $(1, 0)$ and walk counterclockwise through an angle $\theta$. The point you reach defines cosine and sine:
+$$(\cos\theta, \sin\theta)$$
+Cosine is the $x$-coordinate and sine is the $y$-coordinate. Negative angles go clockwise; adding $2\pi$ brings you back to the same point.</p>
+<figure id="fig-uc" data-fig="unit-circle"><figcaption>The first-quadrant special angles and the signs of sine and cosine in each quadrant.</figcaption></figure>
+<table class="compare">
+<thead><tr><th>$\theta$</th><th>$0$</th><th>$\frac{\pi}{6}$</th><th>$\frac{\pi}{4}$</th><th>$\frac{\pi}{3}$</th><th>$\frac{\pi}{2}$</th></tr></thead>
+<tbody>
+<tr><td>$\sin\theta$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$\frac{\sqrt{2}}{2}$</td><td>$\frac{\sqrt{3}}{2}$</td><td>$1$</td></tr>
+<tr><td>$\cos\theta$</td><td>$1$</td><td>$\frac{\sqrt{3}}{2}$</td><td>$\frac{\sqrt{2}}{2}$</td><td>$\frac{1}{2}$</td><td>$0$</td></tr>
+<tr><td>$\tan\theta$</td><td>$0$</td><td>$\frac{\sqrt{3}}{3}$</td><td>$1$</td><td>$\sqrt{3}$</td><td>undefined</td></tr>
+</tbody>
+</table>
+<p>A memory aid: the sines go $\frac{\sqrt{0}}{2}, \frac{\sqrt{1}}{2}, \frac{\sqrt{2}}{2}, \frac{\sqrt{3}}{2}, \frac{\sqrt{4}}{2}$, and the cosines are the same list backward.</p>
+
+<h2>Any special angle: reference angle plus sign</h2>
+<p>Every other special angle is a mirror image of one in the first quadrant. Find the <b>reference angle</b> (the acute angle to the $x$-axis), take its value from the table, then attach the sign for the quadrant. Sine is positive in quadrants I and II (upper half); cosine is positive in I and IV (right half).</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\sin\frac{5\pi}{6}$, $\cos\frac{4\pi}{3}$ and $\tan\frac{7\pi}{4}$.</p>
+<p>$\frac{5\pi}{6}$: reference angle $\frac{\pi}{6}$, quadrant II, sine positive. $\sin\frac{5\pi}{6} = \frac{1}{2}$.</p>
+<p>$\frac{4\pi}{3} = \pi + \frac{\pi}{3}$: reference angle $\frac{\pi}{3}$, quadrant III, cosine negative. $\cos\frac{4\pi}{3} = -\frac{1}{2}$.</p>
+<p>$\frac{7\pi}{4}$: reference angle $\frac{\pi}{4}$, quadrant IV, sine negative and cosine positive. $\tan\frac{7\pi}{4} = \frac{-\sqrt{2}/2}{\sqrt{2}/2} = -1$.</p>
+</div>
+
+<h2>The six functions</h2>
+<p>Tangent and the three reciprocal functions are all built from sine and cosine:
+$$\tan x = \frac{\sin x}{\cos x}, \quad \sec x = \frac{1}{\cos x}, \quad \csc x = \frac{1}{\sin x}, \quad \cot x = \frac{\cos x}{\sin x}$$
+Each is undefined where its denominator is 0. For example, $\tan x$ and $\sec x$ are undefined at $x = \frac{\pi}{2}$, where $\cos x = 0$, and their graphs have vertical asymptotes there. One notation to know cold: $\sin^2 x$ means $(\sin x)^2$, not $\sin(x^2)$.</p>
+
+<h2>The graphs</h2>
+<figure id="fig-waves" data-fig="sin-cos-graphs"><figcaption>Sine and cosine: waves of height 1 that repeat every $2\pi$.</figcaption></figure>
+<p>Both $y = \sin x$ and $y = \cos x$ are waves between $-1$ and $1$ that repeat every $2\pi$ (the period). Sine starts at 0 and rises; cosine starts at its peak, 1. Cosine is sine shifted left by $\frac{\pi}{2}$. Sine is 0 at multiples of $\pi$; cosine is 0 at odd multiples of $\frac{\pi}{2}$. The graph of $\tan x$ repeats every $\pi$ and has vertical asymptotes wherever $\cos x = 0$.</p>
+
+<h2>Identities you will use</h2>
+<p>A <b>trig identity</b> is an equation true for every angle. Three cover almost everything in AB:</p>
+<ul>
+<li>The <b>Pythagorean identity</b> $\sin^2 x + \cos^2 x = 1$. It is just $x^2 + y^2 = 1$ for the point on the unit circle. Dividing by $\cos^2 x$ gives $\tan^2 x + 1 = \sec^2 x$.</li>
+<li>Double angle: $\sin 2x = 2\sin x \cos x$.</li>
+<li>Double angle: $\cos 2x = \cos^2 x - \sin^2 x = 1 - 2\sin^2 x = 2\cos^2 x - 1$.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> $\theta$ is in quadrant II and $\sin\theta = \frac{3}{5}$. Find $\cos\theta$ and $\tan\theta$.</p>
+<p>$\cos^2\theta = 1 - \frac{9}{25} = \frac{16}{25}$, so $\cos\theta = \pm\frac{4}{5}$. In quadrant II cosine is negative: $\cos\theta = -\frac{4}{5}$.</p>
+<p>$\tan\theta = \frac{3/5}{-4/5} = -\frac{3}{4}$.</p>
+</div>
+
+<h2>Solving a trig equation</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> Solve $2\sin x = 1$ for $0 \le x < 2\pi$.</p>
+<p>$\sin x = \frac{1}{2}$. The reference angle is $\frac{\pi}{6}$. Sine is positive in quadrants I and II.</p>
+<p>So $x = \frac{\pi}{6}$ or $x = \pi - \frac{\pi}{6} = \frac{5\pi}{6}$.</p>
+<p>Always look for the second solution: on $[0, 2\pi)$, $\sin x = k$ has two solutions for $-1 < k < 1$.</p>
+</div>

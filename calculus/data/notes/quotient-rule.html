@@ -1,0 +1,63 @@
+<p>Many quantities are ratios: miles per gallon, concentration, average cost per item. When both the top and the bottom of a fraction change, how fast does the fraction change? The product rule turns out to hold the answer. This page derives the quotient rule from it, shows how to use it without sign slips, and shows when a quick rewrite makes it unnecessary.</p>
+
+<h2>The guess that fails, again</h2>
+<p>As with products, dividing the derivatives does not work. Take $\frac{x^2}{x}$, which is just $x$ for $x \ne 0$, with derivative 1. The quotient of the derivatives is $\frac{2x}{1} = 2x$. Wrong.</p>
+
+<h2>Deriving the rule from the product rule</h2>
+<p>Let $q(x) = \frac{f(x)}{g(x)}$. Then $f = q \cdot g$, a product. Assuming $q$ is differentiable, the product rule gives</p>
+<p>$$f' = q'g + qg'.$$</p>
+<p>Solve for $q'$: $q' = \frac{f' - qg'}{g}$. Replace $q$ with $\frac{f}{g}$ and multiply the top and bottom by $g$:</p>
+<p>$$q' = \frac{f' - \frac{f}{g}g'}{g} = \frac{f'g - fg'}{g^2}.$$</p>
+
+<h2>The quotient rule</h2>
+<p>If $f$ and $g$ are differentiable at $x$ and $g(x) \ne 0$,</p>
+<p>$$\frac{d}{dx}\left( \frac{f(x)}{g(x)} \right) = \frac{f'(x)g(x) - f(x)g'(x)}{\left( g(x) \right)^2}.$$</p>
+<p>A rhyme many students use: <b>"low d-high minus high d-low, over low squared."</b> "Low" is the denominator, "high" is the numerator, and "d" means "the derivative of". Two things make this rule different from the product rule: the numerator is a <i>difference</i>, so its order matters, and the bottom is <i>squared</i>.</p>
+<table class="compare">
+<thead><tr><th></th><th>Product rule</th><th>Quotient rule</th></tr></thead>
+<tbody>
+<tr><td>Formula</td><td>$f'g + fg'$</td><td>$\frac{f'g - fg'}{g^2}$</td></tr>
+<tr><td>Middle sign</td><td>plus</td><td>minus</td></tr>
+<tr><td>Order matters?</td><td>no</td><td>yes: $f'g$ first</td></tr>
+<tr><td>Denominator</td><td>none</td><td>$g^2$</td></tr>
+</tbody>
+</table>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Differentiate $f(x) = \frac{x}{x^2 + 1}$.</p>
+<p>High $= x$, d-high $= 1$. Low $= x^2 + 1$, d-low $= 2x$.</p>
+<p>$f'(x) = \frac{(1)(x^2 + 1) - (x)(2x)}{(x^2 + 1)^2} = \frac{1 - x^2}{(x^2 + 1)^2}$.</p>
+<p>Check with the graph: the numerator is 0 at $x = \pm 1$, where the graph turns, and $f'(0) = 1$, where the graph rises through the origin.</p>
+</div>
+<figure id="fig-quot" data-fig="quotient-graph"><figcaption>The graph of $\frac{x}{x^2 + 1}$ and of its derivative. The derivative is 0 where the tangent lines are level.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Differentiate $y = \frac{\sin x}{x}$ for $x > 0$.</p>
+<p>$y' = \frac{(\cos x)(x) - (\sin x)(1)}{x^2} = \frac{x\cos x - \sin x}{x^2}$.</p>
+<p>If you had written $\sin x - x\cos x$ on top, every slope would have the wrong sign.</p>
+</div>
+
+<h2>From a table</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> A table gives $f(2) = 4$, $f'(2) = 1$, $g(2) = 2$, $g'(2) = -3$. Find $q'(2)$ for $q = \frac{f}{g}$, then the tangent line.</p>
+<p>$q'(2) = \frac{f'(2)g(2) - f(2)g'(2)}{\left( g(2) \right)^2} = \frac{(1)(2) - (4)(-3)}{4} = \frac{14}{4} = \frac{7}{2}$.</p>
+<p>Height: $q(2) = \frac{4}{2} = 2$. Tangent line: $y = 2 + \frac{7}{2}(x - 2)$.</p>
+<p>Notice the double negative: $-(4)(-3) = +12$. Write every substituted value in parentheses so signs cannot hide.</p>
+</div>
+
+<h2>A constant on top</h2>
+<p>When the numerator is a constant $c$, its derivative is 0 and the rule shortens to</p>
+<p>$$\frac{d}{dx}\left( \frac{c}{g(x)} \right) = \frac{-c\,g'(x)}{\left( g(x) \right)^2}.$$</p>
+<p>For example, $\frac{d}{dx}\left( \frac{1}{x^2 + 1} \right) = \frac{-2x}{(x^2 + 1)^2}$, which is $-\frac{1}{2}$ at $x = 1$.</p>
+
+<h2>Rewrite when you can</h2>
+<p>When the denominator is a single term, divide first. $\frac{3x^2 - 5}{x} = 3x - 5x^{-1}$, so its derivative is $3 + 5x^{-2}$, with no quotient rule needed. The quotient rule gives the same answer, $\frac{6x \cdot x - (3x^2 - 5)}{x^2} = \frac{3x^2 + 5}{x^2}$, with more chances for a slip. Answers may look different and still be equal; that is fine on the exam.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Reversing the numerator: $fg' - f'g$ gives the negative of the answer.</li>
+<li>Forgetting to square the denominator.</li>
+<li>Dividing the derivatives: $\frac{f'}{g'}$ is not the derivative of $\frac{f}{g}$.</li>
+<li>Simplifying more than needed. A correct, unsimplified answer earns full credit; a simplification error can lose it.</li>
+</ul>
+<p>With the quotient rule, the next topic finds the derivatives of the remaining trigonometric functions.</p>

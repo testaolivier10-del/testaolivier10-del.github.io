@@ -1,0 +1,12 @@
+{
+ "ladder-and-cone": {
+  "file": "figures/ladder-and-cone.svg",
+  "ext": "svg",
+  "w": 830,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a 10-foot ladder leans against a wall with its foot 6 feet out and its top 8 feet up, a right triangle with x squared + y squared = 10 squared. Right: a cone-shaped tank, point down, 10 feet tall with top radius 4 feet, holding water of depth h and surface radius r; similar triangles give r over h = 4 over 10."
+ }
+}

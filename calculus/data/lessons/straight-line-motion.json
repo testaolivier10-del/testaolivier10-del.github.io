@@ -1,0 +1,71 @@
+{
+ "topic": "straight-line-motion",
+ "hook": "A runner jogs east, slows, turns around and sprints back. Her position, velocity and acceleration are a function and its first two derivatives. The exam asks about this kind of motion every year: which way is the particle going, is it speeding up, when does it turn around. Each answer comes from a sign.",
+ "prereq": [
+  {
+   "q": "If $f(x) = x^3 - 2x$, what is $f''(x)$?",
+   "options": [
+    "$6x$",
+    "$3x^2 - 2$",
+    "$6$",
+    "$6x - 2$"
+   ],
+   "correct": 0,
+   "why": "$f'(x) = 3x^2 - 2$, then $f''(x) = 6x$.",
+   "review": "higher-order-derivatives"
+  },
+  {
+   "q": "$D'(4) = -3$ for a depth $D$ in meters and $t$ in hours means",
+   "options": [
+    "at 4 hours the depth is decreasing at 3 meters per hour",
+    "the depth is 3 meters at 4 hours",
+    "the depth fell 3 meters in 4 hours",
+    "the depth is increasing at 3 meters per hour"
+   ],
+   "correct": 0,
+   "why": "A negative derivative is a decreasing quantity, at that rate.",
+   "review": "derivative-in-context"
+  }
+ ],
+ "figure": {
+  "figure": "motion-speeding-up",
+  "caption": "For $x(t) = t^3 - 6t^2 + 9t$: velocity and acceleration, with shading where they share a sign (speeding up), and the path the particle traces on the line."
+ },
+ "chain": [
+  {
+   "cause": "Position $x(t)$ changes with time",
+   "effect": "its rate of change is the velocity, $v(t) = x'(t)$"
+  },
+  {
+   "cause": "Velocity changes with time",
+   "effect": "its rate of change is the acceleration, $a(t) = v'(t) = x''(t)$"
+  },
+  {
+   "cause": "The sign of $v$",
+   "effect": "gives the direction: right (or up) when $v > 0$, left when $v < 0$; a direction change needs $v$ to change sign"
+  },
+  {
+   "cause": "Compare the signs of $v$ and $a$",
+   "effect": "same sign: speeding up; opposite signs: slowing down"
+  }
+ ],
+ "ideas": [
+  "Velocity has a sign; speed is $|v(t)|$ and is never negative.",
+  "The particle is at rest when $v(t) = 0$, and changes direction only where $v$ changes sign.",
+  "Speeding up when $v$ and $a$ have the same sign. State both signs in a justification.",
+  "Units: position in meters gives velocity in meters per second and acceleration in meters per second per second."
+ ],
+ "misconception": {
+  "wrong": "Negative acceleration means the particle is slowing down.",
+  "right": "It depends on the velocity too. With $v < 0$ and $a < 0$, the particle moves left faster and faster: it is speeding up. Slowing down needs $v$ and $a$ with opposite signs."
+ },
+ "check": [
+  "calc-straight-line-motion-1",
+  "calc-straight-line-motion-2",
+  "calc-straight-line-motion-3",
+  "calc-straight-line-motion-4",
+  "calc-straight-line-motion-5",
+  "calc-straight-line-motion-14"
+ ],
+ "summary": "For a particle on a line, $v(t) = x'(t)$ and $a(t) = v'(t) = x''(t)$. The sign of $v$ gives the direction, and the direction changes only where $v$ changes sign. Speed is $|v|$; it increases when $v$ and $a$ have the same sign and decreases when their signs differ."
+}

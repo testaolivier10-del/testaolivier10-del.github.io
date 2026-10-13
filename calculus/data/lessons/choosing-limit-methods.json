@@ -1,0 +1,84 @@
+{
+ "topic": "choosing-limit-methods",
+ "hook": "Type $\\frac{x^2 - 9}{x - 3}$ into a calculator at $x = 3$ and it shows an error. Yet the values near 3 settle down on 6. The error is a message, not an answer: it tells you which tool to pick next. This lesson turns the result of one substitution into a plan.",
+ "prereq": [
+  {
+   "q": "Which is the factored form of $x^2 - 5x + 6$?",
+   "options": [
+    "$(x - 2)(x - 3)$",
+    "$(x + 2)(x - 3)$",
+    "$(x - 1)(x - 6)$",
+    "$(x + 2)(x + 3)$"
+   ],
+   "correct": 0,
+   "why": "$(x - 2)(x - 3) = x^2 - 5x + 6$: the numbers multiply to 6 and add to $-5$.",
+   "review": "limit-algebra"
+  },
+  {
+   "q": "If $\\lim_{x \\to 2^-} f(x) = 5$ and $\\lim_{x \\to 2^+} f(x) = 1$, then $\\lim_{x \\to 2} f(x)$",
+   "options": [
+    "does not exist",
+    "equals 3",
+    "equals 5",
+    "equals 1"
+   ],
+   "correct": 0,
+   "why": "A two-sided limit exists only when the one-sided limits are equal.",
+   "review": "limits-from-plots"
+  },
+  {
+   "q": "For a polynomial $P$, $\\lim_{x \\to c} P(x)$ is",
+   "options": [
+    "$P(c)$",
+    "$0$",
+    "$P(0)$",
+    "not known without a graph"
+   ],
+   "correct": 0,
+   "why": "The limit laws give direct substitution for polynomials.",
+   "review": "limit-laws"
+  }
+ ],
+ "figure": {
+  "figure": "limit-method-map",
+  "caption": "Substitute first; the result picks the next step."
+ },
+ "chain": [
+  {
+   "cause": "You substitute $x = c$ and get a number",
+   "effect": "that number is the limit, as long as the expression is defined near $c$"
+  },
+  {
+   "cause": "You get $\\frac{0}{0}$",
+   "effect": "the numerator and denominator share a hidden zero factor, so rewrite (factor, conjugate, common denominator) and substitute again"
+  },
+  {
+   "cause": "You get a nonzero number over 0",
+   "effect": "the denominator shrinks while the numerator does not, so the function is unbounded near $c$ and the limit does not exist"
+  },
+  {
+   "cause": "The function changes formula at $x = c$ (piecewise or absolute value)",
+   "effect": "find the left-hand and right-hand limits separately; equal means the limit exists"
+  }
+ ],
+ "ideas": [
+  "<b>Substitute first.</b> It is the fastest test, and its result tells you what to do next.",
+  "$\\frac{0}{0}$ is an <b>indeterminate form</b>: not an answer, a signal to rewrite.",
+  "A <b>nonzero number over 0</b> means the function is unbounded near $c$; no algebra will make the limit a number.",
+  "At a <b>break point</b>, the two sides can follow different rules. Find both one-sided limits.",
+  "Write the limit symbol on every line until you substitute: the simplified expression equals the original only for $x \\ne c$."
+ ],
+ "misconception": {
+  "wrong": "Substituting gives $\\frac{0}{0}$, so the limit does not exist.",
+  "right": "$\\frac{0}{0}$ is indeterminate: the limit may be any number or may not exist. Rewrite the expression and substitute again. For $\\frac{x^2 - 9}{x - 3}$ the limit is 6."
+ },
+ "check": [
+  "calc-choosing-limit-methods-1",
+  "calc-choosing-limit-methods-2",
+  "calc-choosing-limit-methods-4",
+  "calc-choosing-limit-methods-13",
+  "calc-choosing-limit-methods-14",
+  "calc-choosing-limit-methods-16"
+ ],
+ "summary": "Substitute first and read the result. A number is the limit. $\\frac{0}{0}$ means rewrite: factor and cancel, multiply by a conjugate, or combine fractions, then substitute again. A nonzero number over 0 means the function is unbounded there. At a break point, compare the one-sided limits."
+}

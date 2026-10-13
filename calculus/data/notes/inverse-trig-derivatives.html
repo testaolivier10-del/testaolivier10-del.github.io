@@ -1,0 +1,51 @@
+<p>The inverse trigonometric functions turn a ratio back into an angle: $\arcsin\frac{1}{2} = \frac{\pi}{6}$, $\arctan 1 = \frac{\pi}{4}$. Their derivatives are a pleasant surprise. Although the functions are about angles, their derivatives contain no trigonometry at all, only square roots and fractions. This page derives the three you need, shows why they have those shapes, and practises them with the chain rule.</p>
+
+<h2>A quick reminder of the functions</h2>
+<p>Sine is not one-to-one, so we invert it only on $\left[-\frac{\pi}{2}, \frac{\pi}{2}\right]$. That gives $y = \arcsin x$, defined for $-1 \le x \le 1$, with outputs from $-\frac{\pi}{2}$ to $\frac{\pi}{2}$. In the same way $\arccos x$ has outputs in $[0, \pi]$, and $\arctan x$ is defined for every $x$, with outputs strictly between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$. You may also see $\sin^{-1} x$ for $\arcsin x$; the $-1$ means inverse, not a reciprocal.</p>
+
+<h2>Deriving the arcsine derivative</h2>
+<p>We do not need a new idea, only implicit differentiation. Let $y = \arcsin x$. Then $\sin y = x$, with $y$ between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$. Differentiate both sides with respect to $x$:</p>
+<p>$$\cos y \cdot \frac{dy}{dx} = 1, \quad\text{so}\quad \frac{dy}{dx} = \frac{1}{\cos y}$$</p>
+<p>The answer should be in terms of $x$. Since $\sin^2 y + \cos^2 y = 1$, we have $\cos y = \pm\sqrt{1 - \sin^2 y}$. On $\left[-\frac{\pi}{2}, \frac{\pi}{2}\right]$ cosine is never negative, so we take the plus sign, and $\sin y = x$ gives</p>
+<p>$$\frac{d}{dx}\arcsin x = \frac{1}{\sqrt{1 - x^2}}, \quad -1 < x < 1$$</p>
+<figure id="fig-arcsin" data-fig="arcsin-steepening"><figcaption>The graph of $\arcsin x$ steepens toward its ends: slope 1 at the origin, $\frac{5}{3}$ at $x = 0.8$, and no finite slope at $x = \pm 1$.</figcaption></figure>
+<p>The formula matches the picture. At $x = 0$ the slope is 1. At $x = 0.8$ it is $\frac{1}{\sqrt{0.36}} = \frac{1}{0.6} = \frac{5}{3}$. As $x$ approaches $\pm 1$ the denominator approaches 0 and the slope grows without bound: the tangent lines at the endpoints are vertical, so the derivative exists only on the open interval.</p>
+
+<h2>Arctangent and arccosine</h2>
+<p>For $y = \arctan x$, write $\tan y = x$ and differentiate: $\sec^2 y \cdot \frac{dy}{dx} = 1$. The identity $\sec^2 y = 1 + \tan^2 y = 1 + x^2$ gives</p>
+<p>$$\frac{d}{dx}\arctan x = \frac{1}{1 + x^2}$$</p>
+<p>This works for every $x$, and it is never larger than 1: the arctangent graph is steepest at the origin and flattens as it levels toward its horizontal asymptotes. Arccosine is the mirror image of arcsine (in fact $\arccos x = \frac{\pi}{2} - \arcsin x$), so its derivative is the negative of the arcsine derivative.</p>
+<table class="compare">
+<tr><th>Function</th><th>Derivative</th><th>Where it exists</th></tr>
+<tr><td>$\arcsin x$</td><td>$\frac{1}{\sqrt{1 - x^2}}$</td><td>$-1 < x < 1$</td></tr>
+<tr><td>$\arccos x$</td><td>$-\frac{1}{\sqrt{1 - x^2}}$</td><td>$-1 < x < 1$</td></tr>
+<tr><td>$\arctan x$</td><td>$\frac{1}{1 + x^2}$</td><td>every $x$</td></tr>
+</table>
+<p>The other three (arccotangent, arcsecant, arccosecant) follow from the same method and appear rarely; if one comes up, derive it the same way instead of memorizing it.</p>
+
+<h2>With the chain rule</h2>
+<p>Most exam questions put an inside function into the formula. The pattern is always the same: square the whole inside function in the denominator, and multiply by its derivative.</p>
+<p>$$\frac{d}{dx}\arcsin u = \frac{u'}{\sqrt{1 - u^2}}, \qquad \frac{d}{dx}\arctan u = \frac{u'}{1 + u^2}$$</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Differentiate $y = \arctan(3x)$.</p>
+<p>Inside $u = 3x$, so $u^2 = 9x^2$ and $u' = 3$.</p>
+<p>$\frac{dy}{dx} = \frac{3}{1 + 9x^2}$. A common slip is $\frac{1}{1 + 3x^2}$: the square must cover the 3, and the factor 3 must multiply.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Differentiate $y = \arcsin(x^2)$ for $-1 < x < 1$, and find the slope at $x = \frac{1}{2}$.</p>
+<p>Inside $u = x^2$, so $u^2 = x^4$ and $u' = 2x$: $\frac{dy}{dx} = \frac{2x}{\sqrt{1 - x^4}}$.</p>
+<p>At $x = \frac{1}{2}$: $\frac{1}{\sqrt{1 - \frac{1}{16}}} = \frac{1}{\sqrt{15}/4} = \frac{4}{\sqrt{15}}$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Values from a table: $g(1) = \frac{1}{2}$ and $g'(1) = 3$. Find the derivative of $h(x) = \arcsin(g(x))$ at $x = 1$.</p>
+<p>$h'(1) = \frac{g'(1)}{\sqrt{1 - [g(1)]^2}} = \frac{3}{\sqrt{1 - \frac{1}{4}}} = \frac{3}{\sqrt{3}/2} = 2\sqrt{3}$.</p>
+</div>
+
+<h2>Slips that cost points</h2>
+<ul>
+<li><b>Mixing up the patterns.</b> Arcsine and arccosine have $\sqrt{1 - u^2}$; arctangent has $1 + u^2$ with no root.</li>
+<li><b>Losing the minus sign</b> of the arccosine derivative.</li>
+<li><b>Squaring only part of the inside</b>: $(3x)^2 = 9x^2$, $(e^x)^2 = e^{2x}$.</li>
+<li><b>Forgetting the inside derivative</b>, exactly as with any chain rule.</li>
+<li><b>Using the formula at $u = \pm 1$</b> for arcsine or arccosine, where it divides by 0.</li>
+</ul>

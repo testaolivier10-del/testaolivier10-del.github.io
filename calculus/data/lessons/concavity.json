@@ -1,0 +1,93 @@
+{
+ "topic": "concavity",
+ "hook": "News reports say \"cases are still rising, but more slowly.\" That sentence is about concavity: the count is increasing, but its rate of increase is falling. The moment the rate stops speeding up and starts slowing down is a point of inflection, and it is often the most watched point on a graph.",
+ "prereq": [
+  {
+   "q": "A graph that is concave up lies",
+   "options": [
+    "above its tangent lines",
+    "below its tangent lines",
+    "on its tangent lines",
+    "above the $x$-axis"
+   ],
+   "correct": 0,
+   "why": "Concave up: the curve bends upward away from each tangent line.",
+   "review": "local-linearity"
+  },
+  {
+   "q": "If $f(x) = x^3$, then $f''(x) =$",
+   "options": [
+    "$6x$",
+    "$3x^2$",
+    "$6$",
+    "$x$"
+   ],
+   "correct": 0,
+   "why": "$f'(x) = 3x^2$, and $f''(x) = 6x$.",
+   "review": "higher-order-derivatives"
+  },
+  {
+   "q": "If $f'(x) > 0$ on an interval, then $f$ is",
+   "options": [
+    "increasing there",
+    "concave up there",
+    "decreasing there",
+    "concave down there"
+   ],
+   "correct": 0,
+   "why": "The sign of $f'$ gives direction.",
+   "review": "increasing-decreasing"
+  }
+ ],
+ "figure": {
+  "figure": "concavity-tangents",
+  "caption": "Concave down: tangent lines above the curve and $f'$ decreasing. Concave up: tangent lines below and $f'$ increasing. The change happens at the point of inflection, where $f'$ is lowest."
+ },
+ "chain": [
+  {
+   "cause": "$f''(x) > 0$ on an interval",
+   "effect": "$f'$ is increasing there, the slopes grow, and the graph of $f$ is concave up"
+  },
+  {
+   "cause": "$f''(x) < 0$ on an interval",
+   "effect": "$f'$ is decreasing, the slopes shrink, and the graph is concave down"
+  },
+  {
+   "cause": "$f''$ changes sign at $x = c$ (and $f$ is continuous there)",
+   "effect": "the concavity changes, so $(c, f(c))$ is a point of inflection"
+  },
+  {
+   "cause": "$f''(c) = 0$ but $f''$ keeps its sign (as for $x^4$)",
+   "effect": "no change of concavity, so no point of inflection"
+  }
+ ],
+ "ideas": [
+  "<b>Concave up</b> on an interval: $f'$ is increasing there ($f'' > 0$). <b>Concave down</b>: $f'$ is decreasing ($f'' < 0$).",
+  "<b>Point of inflection</b>: a point on the graph where the concavity changes, that is, where $f''$ changes sign, or where $f'$ changes from increasing to decreasing or back.",
+  "On a graph of $f'$: inflection points of $f$ are at the high and low points of $f'$, not at its zeros.",
+  "Candidates are where $f'' = 0$ or $f''$ does not exist; then check the sign of $f''$ on each side."
+ ],
+ "misconception": {
+  "wrong": "$f''(c) = 0$, so the graph of $f$ has a point of inflection at $x = c$.",
+  "right": "$f''(c) = 0$ only makes $c$ a candidate. The concavity must actually change: $f''$ must change sign. $f(x) = x^4$ has $f''(0) = 0$ but is concave up on both sides. On a graph of $f'$, also do not confuse zeros of $f'$ (extrema of $f$) with turns of $f'$ (inflection points)."
+ },
+ "check": [
+  "calc-concavity-1",
+  "calc-concavity-2",
+  "calc-concavity-3",
+  "calc-concavity-4",
+  "calc-concavity-10",
+  "calc-concavity-15"
+ ],
+ "summary": "The sign of $f''$ gives the concavity: $f'' > 0$ (equivalently $f'$ increasing) means concave up, $f'' < 0$ means concave down. A point of inflection is where the concavity changes, so $f''$ must change sign; $f''(c) = 0$ alone is not enough. On a graph of $f'$, look at where $f'$ turns.",
+ "connections": [
+  {
+   "href": "../notes/candidates-test.html",
+   "label": "Back: the Candidates Test (5.5)"
+  },
+  {
+   "href": "../notes/second-derivative-test.html",
+   "label": "Next: 5.7"
+  }
+ ]
+}

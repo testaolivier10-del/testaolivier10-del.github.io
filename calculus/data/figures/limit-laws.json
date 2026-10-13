@@ -1,0 +1,12 @@
+{
+ "limit-laws-sum": {
+  "file": "figures/limit-laws-sum.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three curves near x = 2: f approaching 3, g approaching -1, and f + g approaching 2. A panel lists: as x approaches 2, f(x) approaches 3, g(x) approaches -1, f(x) + g(x) approaches 2, f(x) times g(x) approaches -3, and 5f(x) approaches 15."
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "basic-transcendental-derivative": {
+  "def": "The four basic derivatives: $\\frac{d}{dx}(\\sin x) = \\cos x$ and $\\frac{d}{dx}(\\cos x) = -\\sin x$ (in radians), $\\frac{d}{dx}\\left( e^x \\right) = e^x$, and $\\frac{d}{dx}(\\ln x) = \\frac{1}{x}$ for $x > 0$."
+ },
+ "limit-as-derivative": {
+  "def": "Reading a limit of the form $\\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}$ or $\\lim_{x \\to a} \\frac{f(x) - f(a)}{x - a}$ as the derivative $f'(a)$, and evaluating it with a derivative rule."
+ }
+}

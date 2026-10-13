@@ -1,0 +1,5 @@
+{
+ "accumulated-change": {
+  "def": "The total change in an amount over an interval of time, built up from its rate of change. On a graph of the rate, it is the area between the graph and the horizontal axis: area above the axis adds, area below subtracts. Its units are the rate's units times the input's units."
+ }
+}

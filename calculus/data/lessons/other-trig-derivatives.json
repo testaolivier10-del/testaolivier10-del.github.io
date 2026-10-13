@@ -1,0 +1,84 @@
+{
+ "topic": "other-trig-derivatives",
+ "hook": "A surveyor tilts a sight toward a mountaintop, and the height she reads grows with the tangent of the angle. Near flat angles the height barely changes; near straight up it explodes. How fast it changes is the derivative of $\\tan x$, and the quotient rule finds it, along with the other three trigonometric derivatives, from sine and cosine alone.",
+ "prereq": [
+  {
+   "q": "$\\frac{d}{dx}\\left( \\frac{f(x)}{g(x)} \\right)$ is",
+   "options": [
+    "$\\frac{f'(x)g(x) - f(x)g'(x)}{\\left( g(x) \\right)^2}$",
+    "$\\frac{f'(x)}{g'(x)}$",
+    "$\\frac{f(x)g'(x) - f'(x)g(x)}{\\left( g(x) \\right)^2}$",
+    "$f'(x)g(x) + f(x)g'(x)$"
+   ],
+   "correct": 0,
+   "why": "Low d-high minus high d-low, over low squared.",
+   "review": "quotient-rule"
+  },
+  {
+   "q": "$\\sin^2 x + \\cos^2 x$ equals",
+   "options": [
+    "$1$",
+    "$0$",
+    "$2\\sin x\\cos x$",
+    "$\\tan^2 x$"
+   ],
+   "correct": 0,
+   "why": "The Pythagorean identity, from the unit circle.",
+   "review": "math-trig"
+  },
+  {
+   "q": "$\\frac{d}{dx}(\\cos x)$ is",
+   "options": [
+    "$-\\sin x$",
+    "$\\sin x$",
+    "$\\cos x$",
+    "$-\\cos x$"
+   ],
+   "correct": 0,
+   "why": "Cosine falls where sine is positive.",
+   "review": "derivatives-sin-cos-exp-ln"
+  }
+ ],
+ "figure": {
+  "figure": "tangent-sec-squared",
+  "caption": "The graph of $\\tan x$ (top) has slope 1 at $x = 0$ and 2 at $x = \\frac{\\pi}{4}$. Its derivative, $\\sec^2 x$ (bottom), is never below 1."
+ },
+ "chain": [
+  {
+   "cause": "$\\tan x = \\frac{\\sin x}{\\cos x}$",
+   "effect": "the quotient rule gives $\\frac{\\cos x \\cos x - \\sin x(-\\sin x)}{\\cos^2 x}$"
+  },
+  {
+   "cause": "The numerator is $\\cos^2 x + \\sin^2 x = 1$",
+   "effect": "$\\frac{d}{dx}(\\tan x) = \\frac{1}{\\cos^2 x} = \\sec^2 x$"
+  },
+  {
+   "cause": "$\\sec x = \\frac{1}{\\cos x}$ and $\\csc x = \\frac{1}{\\sin x}$",
+   "effect": "the quotient rule with a constant top gives $\\sec x\\tan x$ and $-\\csc x\\cot x$"
+  },
+  {
+   "cause": "Each \"co-\" function is built from cosine where its partner uses sine",
+   "effect": "its derivative carries a minus sign: $-\\csc^2 x$, $-\\csc x\\cot x$"
+  }
+ ],
+ "ideas": [
+  "$\\frac{d}{dx}(\\tan x) = \\sec^2 x$ and $\\frac{d}{dx}(\\cot x) = -\\csc^2 x$.",
+  "$\\frac{d}{dx}(\\sec x) = \\sec x\\tan x$ and $\\frac{d}{dx}(\\csc x) = -\\csc x\\cot x$.",
+  "Every one comes from writing the function with $\\sin x$ and $\\cos x$, using the quotient rule and the identity $\\sin^2 x + \\cos^2 x = 1$.",
+  "The three \"co-\" functions (cosine, cotangent, cosecant) have derivatives with a minus sign.",
+  "All of these hold in radians, wherever the function is defined."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{d}{dx}(\\sec x) = \\tan^2 x$, or $\\frac{d}{dx}(\\cot x) = \\csc^2 x$.",
+  "right": "Rebuild them instead of guessing: $\\sec x = \\frac{1}{\\cos x}$, so its derivative is $\\frac{0 - 1(-\\sin x)}{\\cos^2 x} = \\frac{\\sin x}{\\cos^2 x} = \\sec x\\tan x$. For $\\cot x = \\frac{\\cos x}{\\sin x}$, the numerator is $-\\sin^2 x - \\cos^2 x = -1$, so the derivative is $-\\csc^2 x$, negative like every \"co-\" derivative."
+ },
+ "check": [
+  "calc-other-trig-derivatives-1",
+  "calc-other-trig-derivatives-2",
+  "calc-other-trig-derivatives-3",
+  "calc-other-trig-derivatives-4",
+  "calc-other-trig-derivatives-9",
+  "calc-other-trig-derivatives-13"
+ ],
+ "summary": "Write tangent, cotangent, secant and cosecant in terms of sine and cosine, apply the quotient rule, and simplify with $\\sin^2 x + \\cos^2 x = 1$. The results: $(\\tan x)' = \\sec^2 x$, $(\\cot x)' = -\\csc^2 x$, $(\\sec x)' = \\sec x\\tan x$, $(\\csc x)' = -\\csc x\\cot x$. The \"co-\" functions get the minus signs."
+}

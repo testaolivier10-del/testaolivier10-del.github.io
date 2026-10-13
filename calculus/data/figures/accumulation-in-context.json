@@ -1,0 +1,12 @@
+{
+ "rate-in-out": {
+  "file": "figures/rate-in-out.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 450,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph, drawn from its function by scripts/apcalc-figures/unit-7-8a.mjs",
+  "alt": "Two rates on 0 ≤ t ≤ 12 minutes: water flows in at R(t) = 10 + 3 sin(πt/6) liters per minute (blue) and out at D(t) = 4 + t liters per minute (crimson). From t = 0 to 6 the rate in is larger and the gap is shaded green: the amount rises. The curves cross at t = 6, where both rates are 10. After that the rate out is larger and the gap is shaded vermillion: the amount falls. The amount is greatest at t = 6."
+ }
+}

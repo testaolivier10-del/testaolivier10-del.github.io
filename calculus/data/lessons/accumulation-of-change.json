@@ -1,0 +1,93 @@
+{
+ "topic": "accumulation-of-change",
+ "hook": "A fitness watch never measures how far you ran. It measures how fast you are going, many times a second, and adds up speed times time. Every running app, water meter and electricity bill works the same way: it knows a rate, and it builds up the total. That building up is called accumulation, and on a graph it is an area.",
+ "prereq": [
+  {
+   "q": "Water flows into a tank at 12 liters per minute. What are the units of the rate of change of the rate, if it changes?",
+   "options": [
+    "liters per minute per minute",
+    "liters per minute",
+    "liters",
+    "minutes per liter"
+   ],
+   "correct": 0,
+   "why": "A rate of a rate divides by time twice: liters per minute, per minute.",
+   "review": "rates-in-context"
+  },
+  {
+   "q": "A trapezoid has parallel sides of lengths 3 and 7 and a width of 4 between them. What is its area?",
+   "options": [
+    "20",
+    "40",
+    "28",
+    "12"
+   ],
+   "correct": 0,
+   "why": "Average of the parallel sides times the width: $\\frac{3 + 7}{2} \\cdot 4 = 20$.",
+   "review": "math-geometry"
+  },
+  {
+   "q": "A car's position is $s(t)$ meters. What is $s'(t)$?",
+   "options": [
+    "its velocity, in meters per second",
+    "its acceleration",
+    "its distance from home",
+    "its average speed over the trip"
+   ],
+   "correct": 0,
+   "why": "The derivative of position is velocity, the rate of change of position.",
+   "review": "straight-line-motion"
+  }
+ ],
+ "figure": {
+  "figure": "acc-rate-area",
+  "caption": "Water flows into a tank at rate r(t). The area above the t-axis is water added; the area below is water drained. The net change is the difference."
+ },
+ "chain": [
+  {
+   "cause": "A rate is constant over a stretch of time",
+   "effect": "the change in the amount is rate times time, the area of a rectangle under the rate graph"
+  },
+  {
+   "cause": "The rate changes from moment to moment",
+   "effect": "the change is still the area under the rate graph, now a triangle, a trapezoid or a curved region"
+  },
+  {
+   "cause": "The rate is negative over part of the time",
+   "effect": "that region lies below the axis and its area is subtracted: the amount decreases there"
+  },
+  {
+   "cause": "You know the starting amount and the net change",
+   "effect": "the amount at the end is the starting amount plus the net change"
+  }
+ ],
+ "ideas": [
+  "The area between a rate graph and the horizontal axis is the <b>accumulated change</b> in the amount.",
+  "Units of the area = units of the rate times units of the input: (liters per minute) times (minutes) = liters.",
+  "Area above the axis adds to the amount; area below the axis subtracts. The result is the <b>net change</b>.",
+  "Amount at the end = starting amount + net change."
+ ],
+ "misconception": {
+  "wrong": "Area is always positive, so the area under a rate graph always means the amount went up.",
+  "right": "A region below the axis comes from a negative rate: the amount goes down by that area. Add the areas above the axis and subtract the areas below to get the net change."
+ },
+ "check": [
+  "calc-accumulation-of-change-1",
+  "calc-accumulation-of-change-3",
+  "calc-accumulation-of-change-4",
+  "calc-accumulation-of-change-11",
+  "calc-accumulation-of-change-12",
+  "calc-accumulation-of-change-14"
+ ],
+ "summary": "When you know a rate, the change in the amount is the area between the rate graph and the horizontal axis. Its units are the rate's units times the input's units. Area above the axis adds and area below subtracts, giving the net change; add it to the starting amount to get the amount at the end.",
+ "connections": [
+  {
+   "href": "../notes/implicit-relations.html",
+   "label": "Back: implicit relations (5.12)"
+  },
+  {
+   "href": "../notes/riemann-sums.html",
+   "label": "Next: Riemann sums (6.2)"
+  }
+ ]
+}

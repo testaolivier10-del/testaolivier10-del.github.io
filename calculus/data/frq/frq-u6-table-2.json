@@ -1,0 +1,145 @@
+{
+ "id": "frq-u6-table-2",
+ "type": "table",
+ "points": 9,
+ "calc": true,
+ "title": "Sand delivered to a construction site",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "riemann-sums",
+  "ftc-accumulation",
+  "ftc-definite-integrals"
+ ],
+ "practices": [
+  "1.E",
+  "3.C",
+  "3.D",
+  "3.F",
+  "4.B",
+  "4.E"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Sand delivered to a construction site",
+  "text": "Sand is delivered to a construction site at a rate $S(t)$ tons per hour, where $t$ is measured in hours and $0 \\le t \\le 8$. $S$ is differentiable. Selected values of $S(t)$ are shown in the table. For parts (d) and (e), the rate is modeled by $M(t) = 4 + 3.2\\sin\\left(\\frac{t}{3}\\right)$ tons per hour.",
+  "table": {
+   "caption": "Rate S(t), in tons per hour, at selected times t, in hours",
+   "cols": [
+    "$t$ (hours)",
+    "0",
+    "1",
+    "4",
+    "6",
+    "8"
+   ],
+   "rows": [
+    [
+     "$S(t)$ (tons per hour)",
+     "4.0",
+     "5.1",
+     "7.1",
+     "6.9",
+     "5.4"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "Use a right Riemann sum with the four subintervals indicated by the table to <b>approximate</b> $\\int_0^8 S(t)\\,dt$. <b>Show</b> the computations that lead to your answer, and indicate units of measure.",
+   "rubric": [
+    {
+     "point": "A right Riemann sum with widths 1, 3, 2 and 2",
+     "accept": [
+      "$1(5.1) + 3(7.1) + 2(6.9) + 2(5.4)$"
+     ]
+    },
+    {
+     "point": "Answer 51.0 tons (units required)",
+     "accept": [
+      "51 tons"
+     ]
+    }
+   ],
+   "sample": "$\\int_0^8 S(t)\\,dt \\approx 1(5.1) + 3(7.1) + 2(6.9) + 2(5.4) = 5.1 + 21.3 + 13.8 + 10.8 = 51.0$ tons."
+  },
+  {
+   "label": "b",
+   "points": 1,
+   "prompt": "<b>Explain</b> the meaning of $\\int_0^8 S(t)\\,dt$ in the context of the problem.",
+   "rubric": [
+    {
+     "point": "The total tons of sand delivered to the site from $t = 0$ to $t = 8$ hours",
+     "accept": [
+      "must name the quantity, the units (tons) and the interval"
+     ]
+    }
+   ],
+   "sample": "$\\int_0^8 S(t)\\,dt$ is the total amount of sand, in tons, delivered to the construction site from $t = 0$ to $t = 8$ hours."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "Must there be a time $t$, $1 < t < 4$, at which $S(t) = 6$? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "States $S(1) = 5.1 < 6 < 7.1 = S(4)$",
+     "accept": [
+      "6 lies between S(1) and S(4)"
+     ]
+    },
+    {
+     "point": "Concludes yes by the Intermediate Value Theorem, stating that $S$ is continuous because it is differentiable",
+     "accept": [
+      "\"$S$ is differentiable, so it is continuous on $[1, 4]$; by the IVT ...\""
+     ]
+    }
+   ],
+   "sample": "$S$ is differentiable, so it is continuous on $[1, 4]$. $S(1) = 5.1 < 6 < 7.1 = S(4)$. By the Intermediate Value Theorem, there is a time $t$ with $1 < t < 4$ at which $S(t) = 6$."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "Using the model $M$, <b>find</b> the total amount of sand delivered from $t = 0$ to $t = 8$ hours.",
+   "rubric": [
+    {
+     "point": "The integral $\\int_0^8 M(t)\\,dt$",
+     "accept": [
+      "$\\int_0^8 \\left(4 + 3.2\\sin\\frac{t}{3}\\right)dt$"
+     ]
+    },
+    {
+     "point": "Answer 50.138 tons (to three decimal places)",
+     "accept": [
+      "50.138 or 50.137"
+     ]
+    }
+   ],
+   "sample": "$\\int_0^8 M(t)\\,dt \\approx 50.138$ tons (calculator, radian mode)."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "Using the model $M$, <b>find</b> the time $T$ at which the total amount of sand delivered since $t = 0$ reaches 25 tons.",
+   "rubric": [
+    {
+     "point": "An equation: $\\int_0^T M(t)\\,dt = 25$",
+     "accept": [
+      "$\\int_0^T \\left(4 + 3.2\\sin\\frac{t}{3}\\right)dt = 25$"
+     ]
+    },
+    {
+     "point": "Answer T = 4.232 hours",
+     "accept": [
+      "4.232 or 4.232"
+     ]
+    }
+   ],
+   "sample": "Solve $\\int_0^T M(t)\\,dt = 25$ with the calculator: $T \\approx 4.232$ hours. (Since $M(t) > 0$, the total delivered increases, so this is the only such time.)"
+  }
+ ]
+}

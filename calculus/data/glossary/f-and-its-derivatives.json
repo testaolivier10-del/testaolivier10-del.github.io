@@ -1,0 +1,5 @@
+{
+ "graphical-analysis": {
+  "def": "Reading the behavior of a function from any representation of $f$, $f'$ or $f''$: the sign of $f'$ gives where $f$ increases or decreases, the sign of $f''$ (or whether $f'$ rises or falls) gives concavity, and sign changes locate relative extrema and points of inflection."
+ }
+}

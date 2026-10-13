@@ -1,0 +1,8 @@
+{
+ "differentiable": {
+  "def": "A function is differentiable at $x = a$ when $f'(a) = \\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}$ exists as a finite number, and differentiable on an interval when it is differentiable at every point of it. Differentiable implies continuous; the converse is false."
+ },
+ "corner": {
+  "def": "A point where a continuous graph has no derivative: a corner (the left and right slopes are different numbers, as for $|x|$ at 0), a cusp (the slopes grow without bound in opposite directions, as for $x^{2/3}$ at 0) or a vertical tangent line (as for $\\sqrt[3]{x}$ at 0)."
+ }
+}

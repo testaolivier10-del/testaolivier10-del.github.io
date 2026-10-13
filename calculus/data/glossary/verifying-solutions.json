@@ -1,0 +1,5 @@
+{
+ "de-solution": {
+  "def": "A function that makes a differential equation true for every $x$ in an interval: substitute it and its derivatives, and the two sides are equal. To verify a solution, differentiate, substitute and compare."
+ }
+}

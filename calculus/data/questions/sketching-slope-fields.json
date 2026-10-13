@@ -1,0 +1,486 @@
+{
+ "stimuli": {
+  "sketching-slope-fields-s1": {
+   "kind": "graph",
+   "title": "A slope field",
+   "plot": {
+    "label": "Slope field on -2 to 2 by -2 to 2 for one of the differential equations in the question, with segments drawn every half unit",
+    "x": [
+     -2,
+     2
+    ],
+    "y": [
+     -2,
+     2
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "field": {
+     "dydx": "2x - y",
+     "step": 0.5
+    }
+   }
+  },
+  "sketching-slope-fields-s2": {
+   "kind": "table",
+   "title": "Sketching $\\frac{dy}{dx} = x^2(y - 2)$",
+   "table": {
+    "caption": "Points where a student must draw segments for the differential equation in the title",
+    "cols": [
+     "Point $(x, y)$",
+     "$(-1, 1)$",
+     "$(0, 1)$",
+     "$(1, 1)$",
+     "$(-1, 3)$",
+     "$(1, 3)$"
+    ],
+    "rows": [
+     [
+      "Slope",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-sketching-slope-fields-1",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sketching-slope-fields-s1",
+   "q": "Which differential equation has this slope field?",
+   "options": [
+    "$\\frac{dy}{dx} = 2x - y$",
+    "$\\frac{dy}{dx} = 2x + y$",
+    "$\\frac{dy}{dx} = y - 2x$",
+    "$\\frac{dy}{dx} = x - 2y$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Test easy points: at $(0, 1)$ the segment falls with slope $-1$, at $(1, 0)$ it rises with slope 2. Only $2x - y$ gives both.",
+    "options": [
+     "It gives slope $-1$ at $(0, 1)$ and $2$ at $(1, 0)$, as drawn, and 0 along $y = 2x$.",
+     "At $(0, 1)$ this gives slope $+1$, but the segment there falls.",
+     "At $(1, 0)$ this gives $-2$, but the segment there rises steeply.",
+     "At $(1, 0)$ this gives 1, but the drawn slope is steeper; its zero line is $y = \\frac{x}{2}$, not $y = 2x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-2",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sketching-slope-fields-s1",
+   "q": "The field is drawn for $\\frac{dy}{dx} = 2x - y$. Find the slope of the segment at $(1, 3)$.",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "That is $2x + y$. The equation subtracts $y$: $2(1) - 3 = -1$."
+     },
+     {
+      "value": 1,
+      "why": "That is $y - 2x$, the sign reversed."
+     },
+     {
+      "value": -4,
+      "why": "The coordinates were swapped: use $x = 1$ and $y = 3$, so $2(1) - 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dx} = 2(1) - 3 = -1$."
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-3",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sketching-slope-fields-s1",
+   "q": "For $\\frac{dy}{dx} = 2x - y$, where are the segments of the slope field horizontal?",
+   "options": [
+    "Along the line $y = \\frac{x}{2}$",
+    "Along the $y$-axis",
+    "Along the line $y = 2x$",
+    "Along the $x$-axis"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Horizontal means slope 0: $2x - y = 0$ on the line $y = 2x$.",
+    "options": [
+     "On $y = \\frac{x}{2}$, $2x - y = \\frac{3x}{2}$, which is 0 at the origin alone.",
+     "At $(0, 1)$ the slope is $-1$.",
+     "Slope 0 means $2x - y = 0$, so $y = 2x$.",
+     "At $(1, 0)$ the slope is 2."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-4",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sketching-slope-fields-s1",
+   "q": "Along the vertical line $x = 1$, how do the slopes of $\\frac{dy}{dx} = 2x - y$ change as $y$ increases?",
+   "options": [
+    "They stay the same.",
+    "They decrease.",
+    "They increase.",
+    "They are zero."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With $x = 1$, $\\frac{dy}{dx} = 2 - y$: slope 2 at $y = 0$, 0 at $y = 2$, $-1$ at $y = 3$.",
+    "options": [
+     "The slope depends on $y$ too, so segments in a column differ.",
+     "On $x = 1$ the slope is $2 - y$, which falls as $y$ grows.",
+     "The equation subtracts $y$; a larger $y$ lowers the slope.",
+     "The slope is 0 on $x = 1$ at $y = 2$ alone."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-5",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sketching-slope-fields-s1",
+   "q": "Which describes the segment at $(-1, 0)$ in the field of $\\frac{dy}{dx} = 2x - y$?",
+   "options": [
+    "Slope −2: it falls steeply to the right",
+    "Slope 2: it rises steeply to the right",
+    "Slope 0: it is horizontal",
+    "Slope −1/2: it falls gently"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = 2(-1) - 0 = -2$, a steep fall.",
+    "options": [
+     "$2(-1) - 0 = -2$.",
+     "The x-coordinate is negative, so 2x is −2.",
+     "$(-1, 0)$ is not on the line $y = 2x$.",
+     "$2x - y$ at $(-1, 0)$ is $-2$, not $-\\frac{1}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-6",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sketching-slope-fields-s2",
+   "q": "Find the slope at $(-1, 1)$ for $\\frac{dy}{dx} = x^2(y - 2)$.",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That uses $x$ instead of $x^2$: $(-1)^2 = 1$, so the slope is $1 \\cdot (1 - 2) = -1$."
+     },
+     {
+      "value": -3,
+      "why": "$x^2(y - 2)$ is a product, not a sum: $1 \\cdot (-1) = -1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(-1)^2(1 - 2) = 1 \\cdot (-1) = -1$."
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-7",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sketching-slope-fields-s2",
+   "q": "Find the slope at $(1, 3)$ for $\\frac{dy}{dx} = x^2(y - 2)$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "$y - 2 = 3 - 2 = 1$, positive."
+     },
+     {
+      "value": 3,
+      "why": "Subtract 2 from $y$ first: $1^2(3 - 2) = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$1^2(3 - 2) = 1$."
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-8",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sketching-slope-fields-s2",
+   "q": "For $\\frac{dy}{dx} = x^2(y - 2)$, what do the segments look like at points with $y = 2$?",
+   "options": [
+    "Vertical",
+    "Horizontal",
+    "Slope 2",
+    "Slope $x^2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At $y = 2$, $\\frac{dy}{dx} = x^2 \\cdot 0 = 0$: a row of horizontal segments.",
+    "options": [
+     "A vertical segment needs an undefined slope; here the slope is 0.",
+     "$y - 2 = 0$, so the slope is 0 whatever $x$ is.",
+     "The slope is $x^2 \\cdot 0 = 0$, not 2.",
+     "The factor $y - 2$ is 0, so the product is 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-9",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sketching-slope-fields-s2",
+   "q": "For $\\frac{dy}{dx} = x^2(y - 2)$, what do the segments look like along the $y$-axis?",
+   "options": [
+    "Horizontal, because $x^2 = 0$ there",
+    "Slope $y - 2$, different at each point",
+    "Vertical, because x = 0",
+    "Rising above y = 2 and falling below it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = 0$, $\\frac{dy}{dx} = 0 \\cdot (y - 2) = 0$.",
+    "options": [
+     "On the $y$-axis $x = 0$, so the product is 0.",
+     "The factor $x^2$ is 0 on the $y$-axis.",
+     "Nothing is divided by $x$; the slope is 0, not undefined.",
+     "That describes the points with $x \\ne 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-10",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The slope field of $\\frac{dy}{dx} = \\cos x$ has which feature?",
+   "options": [
+    "The segments in each horizontal row are parallel.",
+    "The segments share one slope everywhere.",
+    "The segments are horizontal on the x-axis.",
+    "The segments in each vertical column are parallel."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When $\\frac{dy}{dx}$ depends on $x$ alone, moving up or down a column does not change the slope.",
+    "options": [
+     "Along a row $x$ changes, so $\\cos x$ changes.",
+     "$\\cos x$ varies from $-1$ to $1$.",
+     "On the $x$-axis the slope is $\\cos x$, 0 at $x = \\frac{\\pi}{2}$ but 1 at $x = 0$.",
+     "The slope depends on $x$ alone, so it is the same for every $y$ in a column."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-11",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Where are the segments of the slope field for $\\frac{dy}{dx} = y^2 - 1$ horizontal?",
+   "options": [
+    "On the line $y = 1$ alone",
+    "On the lines $x = 1$ and $x = -1$",
+    "On the lines $y = 1$ and $y = -1$",
+    "On the $x$-axis"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Horizontal segments have slope 0: $y^2 - 1 = 0$ gives $y = 1$ or $y = -1$, for every $x$.",
+    "options": [
+     "$(-1)^2 - 1 = 0$ as well.",
+     "The slope depends on $y$, not $x$.",
+     "$y^2 - 1 = 0$ when $y = \\pm 1$.",
+     "At $y = 0$ the slope is $-1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-12",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "multi",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statements about the slope field of $\\frac{dy}{dx} = \\frac{x}{y}$ are true? Select all that apply.",
+   "options": [
+    "Segments are vertical at points on the $x$-axis with $x \\ne 0$.",
+    "Segments are horizontal at points on the $y$-axis with $y \\ne 0$.",
+    "Slopes are positive at points with $x < 0$ and $y > 0$.",
+    "The slope at $(2, 4)$ is 2."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Zero numerator gives slope 0; zero denominator gives an undefined, vertical slope.",
+    "options": [
+     "There $y = 0$ and the slope $\\frac{x}{0}$ is undefined.",
+     "There the slope is $\\frac{0}{y} = 0$.",
+     "A negative over a positive is negative.",
+     "$\\frac{2}{4} = \\frac{1}{2}$; the fraction was flipped."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-13",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which differential equation has a slope field whose segments on the line $y = x$ are all horizontal?",
+   "options": [
+    "$\\frac{dy}{dx} = y - x$",
+    "$\\frac{dy}{dx} = x + y$",
+    "$\\frac{dy}{dx} = xy$",
+    "$\\frac{dy}{dx} = \\frac{y}{x}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Slope 0 on $y = x$ needs a right side that vanishes whenever $y = x$: $y - x$.",
+    "options": [
+     "On $y = x$, $y - x = 0$.",
+     "On $y = x$, $x + y = 2x$, zero at the origin alone.",
+     "On $y = x$, $xy = x^2$, zero at the origin alone.",
+     "On $y = x$ (with $x \\ne 0$), $\\frac{y}{x} = 1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-14",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the slope of the segment at $(3, 4)$ in the slope field of $\\frac{dy}{dx} = \\frac{x + 1}{y - 2}$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "The fraction is upside down: numerator $x + 1 = 4$, denominator $y - 2 = 2$."
+     },
+     {
+      "value": "5/2",
+      "why": "The point is $(x, y) = (3, 4)$: $x + 1 = 4$, not $5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{3 + 1}{4 - 2} = \\frac{4}{2} = 2$."
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-15",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In the slope field of $\\frac{dy}{dx} = 2y$, how do the segments at $(0, 1)$ and $(5, 1)$ compare?",
+   "options": [
+    "The one at $(5, 1)$ is steeper.",
+    "The one at $(0, 1)$ is steeper.",
+    "They have the same slope, 2.",
+    "They have opposite signs."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = 2y = 2$ at both points: rows of parallel segments.",
+    "options": [
+     "$x$ does not appear in $2y$.",
+     "$x$ does not appear in $2y$.",
+     "The slope depends on $y$ alone, and both points have $y = 1$.",
+     "Both slopes are $2(1) = 2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-slope-fields-16",
+   "unit": "unit-7",
+   "topic": "sketching-slope-fields",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $\\frac{dy}{dx} = x - y^2$, a student draws a segment rising with slope 3 at $(1, 2)$. What is wrong?",
+   "options": [
+    "The slope there is $1 - 2 = -1$, so the segment should fall gently.",
+    "The slope there is $1 - 4 = -3$, so the segment should fall.",
+    "Nothing: $1 + 2 = 3$.",
+    "The slope there is $2 - 1 = 1$."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At $(1, 2)$: $1 - 2^2 = -3$. The student added instead of subtracting $y^2$.",
+    "options": [
+     "$y$ is squared: $2^2 = 4$.",
+     "$x - y^2 = 1 - 2^2 = -3$.",
+     "The equation subtracts $y^2$; it does not add $y$.",
+     "The coordinates were swapped and $y$ was not squared."
+    ]
+   }
+  }
+ ]
+}

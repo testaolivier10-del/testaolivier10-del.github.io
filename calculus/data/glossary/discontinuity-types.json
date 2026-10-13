@@ -1,0 +1,14 @@
+{
+ "discontinuity": {
+  "def": "A point where a function is not continuous: its graph breaks there. At $x = c$ this happens when $f(c)$ is undefined, when $\\lim_{x \\to c} f(x)$ does not exist, or when the two are not equal."
+ },
+ "removable-discontinuity": {
+  "def": "A discontinuity at $x = c$ where $\\lim_{x \\to c} f(x)$ exists, but $f(c)$ is undefined or not equal to it. The graph has a hole, possibly with a dot elsewhere above or below it."
+ },
+ "jump-discontinuity": {
+  "def": "A discontinuity at $x = c$ where both one-sided limits exist as finite numbers but are not equal, so the graph jumps from one height to another."
+ },
+ "infinite-discontinuity": {
+  "def": "A discontinuity at $x = c$ where the function is unbounded on at least one side of $c$. The graph has a vertical asymptote $x = c$."
+ }
+}

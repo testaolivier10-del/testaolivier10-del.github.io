@@ -1,0 +1,528 @@
+{
+ "stimuli": {
+  "inverse-trig-derivatives-s1": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = \\arctan(2x)$",
+   "plot": {
+    "label": "Graph of f(x) = arctan(2x) for x from -3 to 3, rising through the origin and leveling toward heights of about plus and minus 1.57",
+    "x": [
+     -3,
+     3
+    ],
+    "y": [
+     -2,
+     2
+    ],
+    "xStep": 1,
+    "yStep": 0.5,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "arctan(2x)",
+      "domain": [
+       -3,
+       3
+      ],
+      "label": "f"
+     }
+    ],
+    "asymptotes": [
+     {
+      "y": 1.5707963267948966
+     },
+     {
+      "y": -1.5707963267948966
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       0
+      ]
+     },
+     {
+      "at": [
+       0.5,
+       0.7853981633974483
+      ],
+      "label": "(1/2, π/4)"
+     }
+    ]
+   }
+  },
+  "inverse-trig-derivatives-s2": {
+   "kind": "table",
+   "title": "Values of $g$ and $g'$",
+   "table": {
+    "caption": "Selected values of a differentiable function g and its derivative",
+    "cols": [
+     "$x$",
+     "$1$",
+     "$2$",
+     "$3$",
+     "$4$"
+    ],
+    "rows": [
+     [
+      "$g(x)$",
+      "$\\frac{1}{2}$",
+      "$0$",
+      "$1$",
+      "$-\\frac{1}{2}$"
+     ],
+     [
+      "$g'(x)$",
+      "$3$",
+      "$-4$",
+      "$2$",
+      "$6$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-inverse-trig-derivatives-1",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $f'(x)$ for the function in the graph, $f(x) = \\arctan(2x)$.",
+   "stimulus": "inverse-trig-derivatives-s1",
+   "expr": {
+    "answer": "2/(1 + 4x^2)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "f'(x) =",
+    "mistakes": [
+     {
+      "expr": "1/(1 + 4x^2)",
+      "why": "The inside function $2x$ has derivative 2; the chain rule multiplies by it."
+     },
+     {
+      "expr": "2/(1 + 2x^2)",
+      "why": "Square the whole inside function: $(2x)^2 = 4x^2$, not $2x^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d}{dx}\\arctan u = \\frac{1}{1 + u^2} \\cdot u'$ with $u = 2x$: $\\frac{1}{1 + (2x)^2} \\cdot 2 = \\frac{2}{1 + 4x^2}$."
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-2",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the slope of the graph of $f$ at the origin?",
+   "stimulus": "inverse-trig-derivatives-s1",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is the slope of $\\arctan x$ at 0. The inside function $2x$ doubles it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(0) = \\frac{2}{1 + 0} = 2$. The graph is steepest at the origin."
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-3",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "At which $x$-values does the graph of $f$ have slope 1?",
+   "stimulus": "inverse-trig-derivatives-s1",
+   "options": [
+    "$x = \\pm\\frac{1}{2}$",
+    "$x = \\pm 1$",
+    "$x = 0$",
+    "$x = \\pm\\frac{1}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Solve $\\frac{2}{1 + 4x^2} = 1$: $1 + 4x^2 = 2$, so $x^2 = \\frac{1}{4}$ and $x = \\pm\\frac{1}{2}$.",
+    "options": [
+     "$\\frac{2}{1 + 4x^2} = 1$ gives $4x^2 = 1$.",
+     "There the slope is $\\frac{2}{5}$.",
+     "There the slope is 2, its largest value.",
+     "There the slope is $\\frac{2}{1.25} = \\frac{8}{5}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-4",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "expr",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "The point $\\left(\\frac{1}{2}, \\frac{\\pi}{4}\\right)$ is on the graph of $f(x) = \\arctan(2x)$. Write the tangent line there, in the form $y = \\ldots$",
+   "stimulus": "inverse-trig-derivatives-s1",
+   "expr": {
+    "answer": "pi/4 + (x - 1/2)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "pi/4 + 2(x - 1/2)",
+      "why": "The slope is $f'\\left(\\frac{1}{2}\\right) = \\frac{2}{1 + 4\\left(\\frac{1}{2}\\right)^2} = 1$, not 2."
+     },
+     {
+      "expr": "pi/4 + (x - 1/2)/2",
+      "why": "That slope is $\\frac{1}{1 + 1}$, without the inside derivative 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f\\left(\\frac{1}{2}\\right) = \\arctan 1 = \\frac{\\pi}{4}$ and $f'\\left(\\frac{1}{2}\\right) = \\frac{2}{1 + 1} = 1$, so $y = \\frac{\\pi}{4} + \\left(x - \\frac{1}{2}\\right)$."
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-5",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the table, find the derivative of the composite function $h(x) = \\arcsin(g(x))$ at $x = 1$.",
+   "stimulus": "inverse-trig-derivatives-s2",
+   "numeric": {
+    "answer": "2*sqrt(3)",
+    "mistakes": [
+     {
+      "value": "2/sqrt(3)",
+      "why": "That is $\\frac{1}{\\sqrt{1 - \\frac{1}{4}}}$ with no inside derivative. Multiply by $g'(1) = 3$."
+     },
+     {
+      "value": "3*sqrt(2)",
+      "why": "Square the inside value: $1 - \\left(\\frac{1}{2}\\right)^2 = \\frac{3}{4}$, not $1 - \\frac{1}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h'(x) = \\frac{g'(x)}{\\sqrt{1 - [g(x)]^2}}$, so $h'(1) = \\frac{3}{\\sqrt{1 - \\frac{1}{4}}} = \\frac{3}{\\frac{\\sqrt{3}}{2}} = 2\\sqrt{3}$."
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-6",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $k(x) = \\arctan(g(x))$. What is $k'(2)$?",
+   "stimulus": "inverse-trig-derivatives-s2",
+   "options": [
+    "$1$",
+    "$-4$",
+    "$-\\frac{4}{17}$",
+    "$4$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$k'(x) = \\frac{g'(x)}{1 + [g(x)]^2}$, so $k'(2) = \\frac{-4}{1 + 0} = -4$.",
+    "options": [
+     "This is $\\frac{1}{1 + [g(2)]^2}$ without the inside derivative $g'(2) = -4$.",
+     "$\\frac{g'(2)}{1 + [g(2)]^2} = \\frac{-4}{1}$.",
+     "This puts $g'(2)$ in the denominator. The denominator uses the value $g(2) = 0$.",
+     "The sign of $g'(2) = -4$ carries through."
+    ]
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-7",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Let $m(x) = \\arccos(g(x))$. What is $m'(4)$?",
+   "stimulus": "inverse-trig-derivatives-s2",
+   "options": [
+    "$4\\sqrt{3}$",
+    "$-\\frac{2\\sqrt{3}}{3}$",
+    "$-4\\sqrt{3}$",
+    "$-\\frac{24}{5}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$m'(x) = -\\frac{g'(x)}{\\sqrt{1 - [g(x)]^2}}$, so $m'(4) = -\\frac{6}{\\sqrt{1 - \\frac{1}{4}}} = -\\frac{6}{\\sqrt{3}/2} = -4\\sqrt{3}$.",
+    "options": [
+     "The derivative of $\\arccos u$ carries a minus sign.",
+     "This is $-\\frac{1}{\\sqrt{3}/2}$ without the inside derivative $g'(4) = 6$.",
+     "$-\\frac{6}{\\sqrt{3}/2} = -\\frac{12}{\\sqrt{3}} = -4\\sqrt{3}$.",
+     "This uses $1 + u^2$ in the denominator, the arctangent pattern, instead of $\\sqrt{1 - u^2}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-8",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why does the chain rule give no value for the derivative of $\\arcsin(g(x))$ at $x = 3$?",
+   "stimulus": "inverse-trig-derivatives-s2",
+   "options": [
+    "$g'(3) = 2$ is greater than 1, outside the domain of arcsine",
+    "$\\arcsin 1$ is not defined",
+    "The table gives no value of $g$ near 3",
+    "$g(3) = 1$, so $\\sqrt{1 - [g(3)]^2} = 0$ and the formula divides by 0"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The derivative of $\\arcsin u$ is $\\frac{1}{\\sqrt{1 - u^2}}$, defined for $-1 < u < 1$. At $x = 3$, $u = g(3) = 1$ and the denominator is 0.",
+    "options": [
+     "The domain condition is on the inside value $g(3)$, not on $g'(3)$.",
+     "$\\arcsin 1 = \\frac{\\pi}{2}$ is defined; it is the derivative that fails at $u = 1$.",
+     "The formula itself breaks: its denominator $\\sqrt{1 - [g(3)]^2}$ is 0.",
+     "The derivative of $\\arcsin u$ exists only for $-1 < u < 1$; here $u = 1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-9",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\frac{d}{dx}\\arcsin(x^2)$ for $-1 < x < 1$.",
+   "expr": {
+    "answer": "2x/sqrt(1 - x^4)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -0.9,
+     0.9
+    ],
+    "lhs": "\\frac{d}{dx}\\arcsin(x^2) =",
+    "mistakes": [
+     {
+      "expr": "1/sqrt(1 - x^4)",
+      "why": "Multiply by the derivative of the inside function $x^2$, which is $2x$."
+     },
+     {
+      "expr": "2x/sqrt(1 - x^2)",
+      "why": "The square in the formula applies to the whole inside: $(x^2)^2 = x^4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{\\sqrt{1 - (x^2)^2}} \\cdot 2x = \\frac{2x}{\\sqrt{1 - x^4}}$."
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-10",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the derivative of $y = \\arctan(e^x)$.",
+   "expr": {
+    "answer": "e^x/(1 + e^(2x))",
+    "vars": [
+     "x"
+    ],
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "1/(1 + e^(2x))",
+      "why": "The inside function $e^x$ has derivative $e^x$, which multiplies the result."
+     },
+     {
+      "expr": "e^x/(1 + e^x)",
+      "why": "Square the inside: $(e^x)^2 = e^{2x}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{1 + (e^x)^2} \\cdot e^x = \\frac{e^x}{1 + e^{2x}}$."
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-11",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = x\\arctan x$. Find $f'(1)$.",
+   "numeric": {
+    "answer": "pi/4 + 1/2",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "That is only $x \\cdot \\frac{1}{1 + x^2}$. The product rule also has the term $1 \\cdot \\arctan x = \\frac{\\pi}{4}$."
+     },
+     {
+      "value": "pi/4",
+      "why": "That is only $\\arctan 1$. Add $x \\cdot \\frac{1}{1 + x^2} = \\frac{1}{2}$ from the product rule."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product rule: $f'(x) = \\arctan x + \\frac{x}{1 + x^2}$, so $f'(1) = \\frac{\\pi}{4} + \\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-12",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "single",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which is $\\frac{d}{dx}\\arccos x$ for $-1 < x < 1$?",
+   "options": [
+    "$-\\frac{1}{\\sqrt{1 - x^2}}$",
+    "$\\frac{1}{\\sqrt{1 - x^2}}$",
+    "$-\\frac{1}{1 + x^2}$",
+    "$\\frac{1}{\\sqrt{1 + x^2}}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{d}{dx}\\arccos x = -\\frac{1}{\\sqrt{1 - x^2}}$, the negative of the arcsine derivative.",
+    "options": [
+     "Arccosine falls as $x$ grows, so its slope is negative.",
+     "This is the derivative of $\\arcsin x$.",
+     "The $1 + x^2$ belongs to arctangent.",
+     "The expression under the root is $1 - x^2$, which keeps $x$ between $-1$ and $1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-13",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\arcsin\\left(\\frac{x}{2}\\right)$. Find $f'(1)$.",
+   "numeric": {
+    "answer": "sqrt(3)/3",
+    "mistakes": [
+     {
+      "value": "2/sqrt(3)",
+      "why": "The inside function $\\frac{x}{2}$ has derivative $\\frac{1}{2}$; multiply by it."
+     },
+     {
+      "value": "2/5",
+      "why": "That uses $1 + u^2$, the arctangent pattern. Arcsine has $\\sqrt{1 - u^2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = \\frac{1}{\\sqrt{1 - \\frac{x^2}{4}}} \\cdot \\frac{1}{2}$. At $x = 1$: $\\frac{1}{2} \\cdot \\frac{1}{\\sqrt{3}/2} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$."
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-14",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "To find $\\frac{d}{dx}\\arctan x$, write $\\tan y = x$ and differentiate: $\\sec^2 y \\cdot \\frac{dy}{dx} = 1$. Which identity turns $\\frac{1}{\\sec^2 y}$ into $\\frac{1}{1 + x^2}$?",
+   "options": [
+    "$\\sin^2 y + \\cos^2 y = 1$",
+    "$\\sec^2 y = 1 + \\tan^2 y$",
+    "$\\sec y = \\frac{1}{\\cos y}$",
+    "$\\tan y = \\frac{\\sin y}{\\cos y}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = \\frac{1}{\\sec^2 y} = \\frac{1}{1 + \\tan^2 y} = \\frac{1}{1 + x^2}$.",
+    "options": [
+     "That identity rewrites $\\cos y$ in the arcsine derivation.",
+     "With $\\tan y = x$ this gives $\\sec^2 y = 1 + x^2$.",
+     "True, but it leaves $\\cos y$, not an expression in $x$.",
+     "True, but it does not connect $\\sec^2 y$ to $x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-15",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "For which $x$ does $\\frac{d}{dx}\\arcsin x$ exist?",
+   "options": [
+    "$-1 \\le x \\le 1$",
+    "any real number $x$",
+    "$-1 < x < 1$",
+    "$-\\frac{\\pi}{2} < x < \\frac{\\pi}{2}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{1}{\\sqrt{1 - x^2}}$ needs $1 - x^2 > 0$, so $-1 < x < 1$.",
+    "options": [
+     "At $x = \\pm 1$ the denominator is 0 and the tangent line is vertical.",
+     "$\\arcsin x$ itself is defined only for $-1 \\le x \\le 1$.",
+     "The denominator $\\sqrt{1 - x^2}$ must be a positive real number.",
+     "Those are the outputs of arcsine, not its inputs."
+    ]
+   }
+  },
+  {
+   "id": "calc-inverse-trig-derivatives-16",
+   "unit": "unit-3",
+   "topic": "inverse-trig-derivatives",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is $\\frac{d}{dx}\\left(\\arcsin x + \\arccos x\\right)$ for $-1 < x < 1$, and what does it say?",
+   "options": [
+    "$\\frac{2}{\\sqrt{1 - x^2}}$, so the sum grows",
+    "$\\frac{1}{\\sqrt{1 - x^2}}$, the arcsine part",
+    "$\\frac{1}{1 + x^2}$, since the sum is an angle",
+    "$0$, so $\\arcsin x + \\arccos x$ is a constant"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{1}{\\sqrt{1 - x^2}} - \\frac{1}{\\sqrt{1 - x^2}} = 0$. A function with derivative 0 on an interval is constant; here $\\arcsin x + \\arccos x = \\frac{\\pi}{2}$.",
+    "options": [
+     "The arccosine derivative is negative, so the two terms cancel.",
+     "The arccosine part is not zero; it is $-\\frac{1}{\\sqrt{1 - x^2}}$.",
+     "That is the derivative of arctangent.",
+     "The two derivatives are opposites; indeed the sum is $\\frac{\\pi}{2}$."
+    ]
+   }
+  }
+ ]
+}

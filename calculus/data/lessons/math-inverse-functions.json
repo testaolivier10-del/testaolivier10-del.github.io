@@ -1,0 +1,73 @@
+{
+ "topic": "math-inverse-functions",
+ "hook": "A function turns inputs into outputs. Often you know the output and need the input: what time gave this temperature, what angle has this sine. That is the job of an inverse function. In Unit 3 you will find how fast an inverse changes, using one fact you can see in a picture: reflecting a graph across $y = x$ flips its slopes.",
+ "prereq": [
+  {
+   "q": "If $f(x) = x^2$ and $g(x) = x + 1$, what is $f(g(x))$?",
+   "options": [
+    "$(x + 1)^2$",
+    "$x^2 + 1$",
+    "$x^2(x + 1)$",
+    "$2x + 1$"
+   ],
+   "correct": 0,
+   "why": "g first, then f.",
+   "review": "math-functions"
+  },
+  {
+   "q": "What is $\\sin\\frac{\\pi}{6}$?",
+   "options": [
+    "$\\frac{1}{2}$",
+    "$\\frac{\\sqrt{3}}{2}$",
+    "$\\frac{\\sqrt{2}}{2}$",
+    "$1$"
+   ],
+   "correct": 0,
+   "why": "A first-quadrant special value.",
+   "review": "math-trig"
+  }
+ ],
+ "figure": {
+  "figure": "inverse-reflect",
+  "caption": "$f$ and $f^{-1}$ are mirror images across $y = x$. The point $(1, 3)$ on $f$ becomes $(3, 1)$ on $f^{-1}$, and the slope 2 there becomes $\\frac{1}{2}$."
+ },
+ "chain": [
+  {
+   "cause": "$f$ sends each input $a$ to an output $b$, and no two inputs share an output (one-to-one)",
+   "effect": "the inverse function $f^{-1}$ sends $b$ back to $a$: $f^{-1}(b) = a$ exactly when $f(a) = b$"
+  },
+  {
+   "cause": "Swapping inputs and outputs",
+   "effect": "swaps the coordinates of every point, reflecting the graph across $y = x$"
+  },
+  {
+   "cause": "Swapping coordinates swaps rise and run",
+   "effect": "slopes at matching points are reciprocals"
+  },
+  {
+   "cause": "Sine, cosine and tangent repeat, so they are not one-to-one",
+   "effect": "their inverses use restricted ranges: arcsine and arctangent give angles from −π/2 to π/2, arccosine from 0 to π"
+  }
+ ],
+ "ideas": [
+  "$f^{-1}(b) = a$ means $f(a) = b$. So $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$ on the right domains.",
+  "$f^{-1}(x)$ is not $\\frac{1}{f(x)}$. The $-1$ means \"undo\", not \"reciprocal\".",
+  "Only a <b>one-to-one</b> function (each output from one input; passes the horizontal line test) has an inverse. Restrict the domain if needed.",
+  "To find a formula: write $x = f(y)$ and solve for $y$.",
+  "$\\arcsin x$ and $\\arctan x$ return angles in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$; $\\arccos x$ returns angles in $[0, \\pi]$."
+ ],
+ "misconception": {
+  "wrong": "$f^{-1}(x) = \\frac{1}{f(x)}$, and $\\sin^{-1} x = \\frac{1}{\\sin x}$.",
+  "right": "$f^{-1}$ undoes $f$: if $f(2) = 7$ then $f^{-1}(7) = 2$. The reciprocal $\\frac{1}{f(x)}$ is a different function. $\\sin^{-1} x$ is $\\arcsin x$; $\\frac{1}{\\sin x}$ is $\\csc x$."
+ },
+ "check": [
+  "calc-math-inverse-functions-1",
+  "calc-math-inverse-functions-2",
+  "calc-math-inverse-functions-4",
+  "calc-math-inverse-functions-5",
+  "calc-math-inverse-functions-8",
+  "calc-math-inverse-functions-10",
+  "calc-math-inverse-functions-12"
+ ],
+ "summary": "An inverse function runs a one-to-one function backward: $f^{-1}(b) = a$ exactly when $f(a) = b$. Its graph is the reflection of $f$ across $y = x$, so points swap coordinates and slopes become reciprocals. Find a formula by solving $x = f(y)$ for $y$. The inverse trig functions use restricted ranges, and $f^{-1}$ never means $\\frac{1}{f}$."
+}

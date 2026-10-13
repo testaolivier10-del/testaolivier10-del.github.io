@@ -1,0 +1,11 @@
+{
+ "riemann-sum": {
+  "def": "An estimate of the accumulated change (the area under a graph) built from rectangles: split the interval into subintervals and add up (width) times (a height of the function on that subinterval). A left sum uses each subinterval's left end, a right sum its right end, a midpoint sum its middle."
+ },
+ "trapezoidal-sum": {
+  "def": "An estimate of the area under a graph built from trapezoids: on each subinterval, the width times the average of the function's values at the two ends. It equals the average of the left and right Riemann sums that use the same subintervals."
+ },
+ "partition": {
+  "def": "One of the pieces an interval is split into for a Riemann or trapezoidal sum. Subintervals may have equal widths (from a formula) or unequal widths (from the times in a table); each width is the difference of its two ends."
+ }
+}

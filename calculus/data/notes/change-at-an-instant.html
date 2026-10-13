@@ -1,0 +1,65 @@
+<p>Look at a car's speedometer and it shows one number, say 64 miles per hour, at this very moment. That seems ordinary until you try to say what it means. Speed is distance divided by time. At a single instant, no time passes and the car covers no distance, so the quotient would be zero divided by zero, which is not a number at all. Yet the car clearly has a speed. This page shows how to make sense of that, and the idea it leads to is the foundation of all of calculus.</p>
+
+<h2>Average rate of change</h2>
+<p>Start with what we can compute. Over an interval of time, divide the change in a quantity by the change in time. For any function $f$ on an interval $[a, b]$:
+$$\text{average rate of change} = \frac{f(b) - f(a)}{b - a}$$
+This is the <b>average rate of change</b> of $f$ over $[a, b]$. On a graph, it is the slope of the line through the two points $(a, f(a))$ and $(b, f(b))$. Its units are the output's units per the input's units: miles per hour, degrees per minute, dollars per item.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A stone dropped from a bridge falls $s(t) = 16t^2$ feet in $t$ seconds. Find its average speed from $t = 1$ to $t = 3$.</p>
+<p>$s(3) = 16 \cdot 9 = 144$ feet and $s(1) = 16$ feet.</p>
+<p>Average speed $= \frac{s(3) - s(1)}{3 - 1} = \frac{144 - 16}{2} = 64$ feet per second.</p>
+<p>Notice what this does not say. The stone was not moving at 64 feet per second the whole time; it fell faster and faster. The average describes the interval as a whole.</p>
+</div>
+<p>A negative average rate means the quantity went down over the interval. If a cup of coffee goes from 180 °F to 153 °F in 5 minutes, its average rate of change is $\frac{153 - 180}{5} = -5.4$ °F per minute. A good interpretation names the quantity, the interval, the units and the words "on average": over the first 5 minutes, the temperature fell by an average of 5.4 °F per minute.</p>
+
+<h2>Shrinking the interval</h2>
+<p>We want the stone's speed at the single instant $t = 1$. We cannot use an interval of length 0. So use short intervals that start at $t = 1$, and watch what happens as they get shorter.</p>
+<figure id="fig-chords" data-fig="instant-chords"><figcaption>Lines from $P(1, 16)$ to nearby points on the curve. As the second point slides toward $P$, the slopes close in on 32.</figcaption></figure>
+<table class="compare">
+<thead><tr><th>Interval</th><th>Average speed (ft/s)</th></tr></thead>
+<tbody>
+<tr><td>$[1, 2]$</td><td>$\frac{64 - 16}{1} = 48$</td></tr>
+<tr><td>$[1, 1.5]$</td><td>$\frac{36 - 16}{0.5} = 40$</td></tr>
+<tr><td>$[1, 1.1]$</td><td>$\frac{19.36 - 16}{0.1} = 33.6$</td></tr>
+<tr><td>$[1, 1.01]$</td><td>$32.16$</td></tr>
+<tr><td>$[1, 1.001]$</td><td>$32.016$</td></tr>
+</tbody>
+</table>
+<p>The averages are not random. They settle down toward 32. Intervals that end at $t = 1$ instead, such as $[0.99, 1]$, give 31.84, 31.984, and so on: closing in on 32 from below. Both sides agree.</p>
+<p>That number, 32 feet per second, is the stone's speed at the instant $t = 1$. In general, the <b>instantaneous rate of change</b> of a quantity at a moment is the single number that its average rates of change close in on as the intervals around that moment shrink toward length 0.</p>
+
+<h2>Seeing it with algebra</h2>
+<p>A table suggests the answer. Algebra can show it. Let $h$ be the length of the interval, so it runs from $t = 1$ to $t = 1 + h$, with $h > 0$:
+$$\frac{s(1 + h) - s(1)}{h} = \frac{16(1 + h)^2 - 16}{h} = \frac{16 + 32h + 16h^2 - 16}{h} = \frac{32h + 16h^2}{h} = 32 + 16h$$
+The last step divides by $h$, which is allowed because $h$ is not 0. Now the pattern in the table is plain: every average is $32 + 16h$. As $h$ shrinks toward 0, $16h$ shrinks toward 0, and the average closes in on 32.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the stone's speed at $t = 2$.</p>
+<p>Average over $[2, 2 + h]$: $\frac{16(2 + h)^2 - 64}{h} = \frac{64 + 64h + 16h^2 - 64}{h} = 64 + 16h$ feet per second.</p>
+<p>As $h$ shrinks toward 0, this closes in on 64. The speed at $t = 2$ is 64 feet per second.</p>
+<p>Watch the expansion: $(2 + h)^2 = 4 + 4h + h^2$. Dropping the middle term $4h$ is the most common slip here.</p>
+</div>
+
+<h2>Rates from tables and graphs</h2>
+<p>Often you have only measurements. Then you cannot shrink the interval forever, so you estimate.</p>
+<ul>
+<li>Use the <b>shortest interval</b> in the table that contains the moment. Its average rate is the best single estimate.</li>
+<li>If the moment is a table entry, the averages on the intervals just before and just after it bracket the rate. Their average is a good estimate.</li>
+<li>On a graph, the steeper the graph near a point, the larger the rate there. A graph that gets steeper means the rate is increasing.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 3.</b> The coffee's temperature is 168 °F at $t = 2$ minutes, 153 °F at $t = 5$, 137 °F at $t = 9$ and 134 °F at $t = 10$. Estimate how fast it is cooling at $t = 9.5$.</p>
+<p>The shortest interval containing 9.5 is $[9, 10]$: $\frac{134 - 137}{10 - 9} = -3$ °F per minute.</p>
+<p>So at about $t = 9.5$, the temperature is falling at roughly 3 °F per minute.</p>
+</div>
+
+<h2>Average and instantaneous, side by side</h2>
+<table class="compare">
+<thead><tr><th></th><th>Average rate of change</th><th>Instantaneous rate of change</th></tr></thead>
+<tbody>
+<tr><td>Describes</td><td>an interval $[a, b]$</td><td>one moment $a$</td></tr>
+<tr><td>Computed by</td><td>$\frac{f(b) - f(a)}{b - a}$</td><td>the value the averages close in on</td></tr>
+<tr><td>On the graph</td><td>slope through two points</td><td>steepness at one point</td></tr>
+<tr><td>From a table</td><td>exact</td><td>estimated</td></tr>
+</tbody>
+</table>
+<p>The phrase "close in on" has done a lot of work on this page. It deserves a precise name and a notation, because the whole course is built on it. The next topic gives it both.</p>

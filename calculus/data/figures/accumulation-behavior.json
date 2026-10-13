@@ -1,0 +1,12 @@
+{
+ "g-from-f": {
+  "file": "figures/g-from-f.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 640,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Top: the graph of f on [0, 8]: a line from (0, 2) to (2, 0), a semicircle of radius 2 below the axis from x = 2 to 6, and a line from (6, 0) to (8, 2); the triangles have area 2 each and the half-disc area 2 pi. Bottom: g(x), the integral of f from 0 to x, rises to a relative maximum of 2 at x = 2, falls to a relative minimum of 2 - 2 pi at x = 6, and has an inflection point at x = 4, where f changes from decreasing to increasing."
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "box-from-sheet": {
+  "file": "figures/box-from-sheet.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram and graph",
+  "alt": "Left: a 12-inch square sheet with a square of side x at each corner and dashed fold lines; folding gives an open box of height x and base 12 - 2x by 12 - 2x. Right: the graph of V(x) = x(12 - 2x) squared for 0 ≤ x ≤ 6, zero at both ends, highest at (2, 128)."
+ },
+ "box-sheet-16x10": {
+  "file": "figures/box-sheet-16x10.svg",
+  "ext": "svg",
+  "w": 420,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A sheet 16 inches wide and 10 inches tall with a square of side x cut from each corner; the sides fold up along dashed lines into an open box of height x and base 16 - 2x by 10 - 2x inches."
+ }
+}

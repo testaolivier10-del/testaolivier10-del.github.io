@@ -1,0 +1,22 @@
+{
+  "slug": "area-volume",
+  "kind": "simulator",
+  "topic": "area-between-curves-x",
+  "intro": "<p>Every area and volume in Unit 8 is built the same way: cut the shape into thin slices, find the area of one slice, and add them up with an integral. Drag the slice across the region and watch the integral collect it; then spin the region into a solid, or stand squares, triangles or semicircles on it, and turn the solid in 3D.</p>",
+  "howItWorks": "<p>The region lies between two curves. Where they meet is found numerically (bisection), so the limits are right even when you could not solve for them by hand. Area: a thin rectangle of height top minus bottom (or, in $y$, right minus left), split wherever the curves cross. Discs and washers: slices perpendicular to the axis of rotation, with $R$ and $r$ measured from that axis, so $V = \\pi\\int_a^b \\left(R^2 - r^2\\right)dx$. Known cross sections: the slice's side $s$ is the region's width, and its area is $s^2$ (square), $\\frac{\\sqrt{3}}{4}s^2$ (equilateral triangle) or $\\frac{\\pi}{8}s^2$ (semicircle on a diameter $s$).</p><p>Every number is an adaptive Simpson integral of the same functions the picture is drawn from. The 3D solid is drawn from the same radii, slice by slice. A horizontal axis slices a region given in $x$; a vertical axis needs the region in $y$ (the shell method is not part of AB).</p>",
+  "partTopics": {
+    "setup": "area-multiple-crossings",
+    "Ax": "cross-sections-squares"
+  },
+  "contexts": [
+    { "id": "area-x", "kind": "areaX", "topic": "area-between-curves-x" },
+    { "id": "area-y", "kind": "areaY", "topic": "area-between-curves-y" },
+    { "id": "area-cross", "kind": "areaCross", "topic": "area-multiple-crossings" },
+    { "id": "cross-squares", "kind": "crossSq", "topic": "cross-sections-squares" },
+    { "id": "cross-triangles", "kind": "crossTri", "topic": "cross-sections-triangles" },
+    { "id": "disc-axes", "kind": "discAxes", "topic": "disc-method-axes" },
+    { "id": "disc-other", "kind": "discOther", "topic": "disc-method-other-axes" },
+    { "id": "washer-axes", "kind": "washerAxes", "topic": "washer-method-axes" },
+    { "id": "washer-other", "kind": "washerOther", "topic": "washer-method-other-axes" }
+  ]
+}

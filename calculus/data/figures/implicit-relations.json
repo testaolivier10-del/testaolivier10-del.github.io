@@ -1,0 +1,12 @@
+{
+ "implicit-tangents": {
+  "file": "figures/implicit-tangents.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 500,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The tilted oval x squared plus xy plus y squared = 3, with dy/dx = -(2x + y)/(x + 2y). Horizontal tangent lines touch it at (-1, 2) and (1, -2), where the numerator 2x + y is zero; vertical tangent lines touch it at (-2, 1) and (2, -1), where the denominator x + 2y is zero and the numerator is not."
+ }
+}

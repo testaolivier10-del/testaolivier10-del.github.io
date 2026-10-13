@@ -1,0 +1,85 @@
+{
+ "topic": "limit-algebra",
+ "hook": "Substitute $x = 3$ into $\\frac{x^2 - 9}{x - 3}$ and you get $\\frac{0}{0}$. It looks like a dead end, but it is the most common limit in calculus: every rate at an instant in Unit 2 starts out this way. Zero over zero is not an answer. It is a signal to do some algebra, and this topic shows exactly which algebra.",
+ "prereq": [
+  {
+   "q": "Which is the factored form of $x^2 - 9$?",
+   "options": [
+    "$(x - 3)(x + 3)$",
+    "$(x - 3)^2$",
+    "$(x - 9)(x + 1)$",
+    "$x(x - 9)$"
+   ],
+   "correct": 0,
+   "why": "A difference of squares.",
+   "review": "math-limit-algebra"
+  },
+  {
+   "q": "When can $\\lim_{x \\to a} \\frac{p(x)}{q(x)}$ (polynomials) be found by direct substitution?",
+   "options": [
+    "When $q(a) \\ne 0$",
+    "When $p(a) \\ne 0$",
+    "Always",
+    "When $p(a) = q(a)$"
+   ],
+   "correct": 0,
+   "why": "The quotient law needs a nonzero denominator.",
+   "review": "limit-laws"
+  },
+  {
+   "q": "What is $(\\sqrt{x} - 2)(\\sqrt{x} + 2)$?",
+   "options": [
+    "$x - 4$",
+    "$x - 2$",
+    "$x + 4$",
+    "$x - 4\\sqrt{x} + 4$"
+   ],
+   "correct": 0,
+   "why": "A conjugate pair: $(\\sqrt{x})^2 - 4$.",
+   "review": "math-limit-algebra"
+  }
+ ],
+ "figure": {
+  "figure": "factor-hole",
+  "caption": "$\\frac{x^2 - 9}{x - 3}$ is the line $y = x + 3$ with one point missing. Factoring and canceling finds the height of the hole: the limit at $x = 3$ is 6."
+ },
+ "chain": [
+  {
+   "cause": "Direct substitution gives $\\frac{0}{0}$",
+   "effect": "an indeterminate form: the limit is not yet known"
+  },
+  {
+   "cause": "Top and bottom are both 0 at $x = a$",
+   "effect": "they share a factor $x - a$ (for polynomials), possibly hidden behind a square root or a fraction"
+  },
+  {
+   "cause": "Factor, rationalize or combine fractions, then cancel the shared factor",
+   "effect": "the new expression equals the old one for every $x \\ne a$, so it has the same limit"
+  },
+  {
+   "cause": "Substitute into the simplified expression",
+   "effect": "the limit appears (or a nonzero over zero shows there is no finite limit)"
+  }
+ ],
+ "ideas": [
+  "$\\frac{0}{0}$ is an <b>indeterminate form</b>: it means \"rewrite first\", never 0, 1 or \"does not exist\".",
+  "Canceling is legal in a limit because the limit never uses $x = a$, and for $x \\ne a$ the canceled factor is not 0.",
+  "Toolkit: factor and cancel; multiply by a conjugate to clear a square root; combine a complex fraction; expand powers completely.",
+  "After simplifying, a nonzero number over 0 means no finite limit (unbounded); check one-sided signs if asked.",
+  "Keep \"$\\lim_{x \\to a}$\" on every line until you substitute; never write $\\frac{0}{0} = \\ldots$."
+ ],
+ "misconception": {
+  "wrong": "Substitution gives $\\frac{0}{0}$, so the limit is 0 (or does not exist).",
+  "right": "$\\frac{0}{0}$ is indeterminate: it gives no information about the limit. Rewrite the expression; $\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3} = \\lim_{x \\to 3} (x + 3) = 6$."
+ },
+ "check": [
+  "calc-limit-algebra-1",
+  "calc-limit-algebra-2",
+  "calc-limit-algebra-3",
+  "calc-limit-algebra-4",
+  "calc-limit-algebra-9",
+  "calc-limit-algebra-11",
+  "calc-limit-algebra-14"
+ ],
+ "summary": "When direct substitution gives the indeterminate form $\\frac{0}{0}$, rewrite: factor and cancel, multiply by a conjugate, or simplify a complex fraction. The simplified expression matches the original except at $x = a$, so it has the same limit, which substitution now finds. Write every step with \"lim\" and true equals signs."
+}

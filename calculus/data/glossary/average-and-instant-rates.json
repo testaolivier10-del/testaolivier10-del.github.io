@@ -1,0 +1,8 @@
+{
+ "difference-quotient": {
+  "def": "The average rate of change of $f$ between $x = a$ and $x = a + h$: $\\frac{f(a + h) - f(a)}{h}$ for $h \\ne 0$. Its limit as $h \\to 0$ is the instantaneous rate of change at $a$."
+ },
+ "secant-line": {
+  "def": "A line through two points of a graph. Its slope is the average rate of change of the function between those two inputs."
+ }
+}

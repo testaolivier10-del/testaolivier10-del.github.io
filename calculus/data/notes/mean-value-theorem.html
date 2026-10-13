@@ -1,0 +1,55 @@
+<p>Suppose you drive 130 miles in exactly 2 hours. Your average speed was 65 miles per hour. Was your speedometer ever exactly at 65? You may have sped up and slowed down many times, but if your speed changed smoothly, it must have passed through 65 at least once. The Mean Value Theorem is the precise version of that idea, and it is the first of the big theorems in Unit 5.</p>
+
+<h2>Average rate and instant rate on one picture</h2>
+<p>On the graph of a function $f$, the <b>average rate of change</b> on $[a, b]$ is the slope of the secant line through the two endpoints:</p>
+<p>$$\frac{f(b) - f(a)}{b - a}$$</p>
+<p>The <b>instantaneous rate of change</b> at a point $c$ is $f'(c)$, the slope of the tangent line there. The theorem says that, under the right conditions, these two slopes match somewhere: some tangent line inside the interval is parallel to the secant line.</p>
+<figure id="fig-mvt" data-fig="mvt-parallel-tangents"><figcaption>The secant line from $(0, 1)$ to $(4, 5)$ has slope 1. The tangent lines at $c_1$ and $c_2$ are parallel to it.</figcaption></figure>
+<p>Picture sliding a ruler, held parallel to the secant line, across the curve. As it moves away from the secant line, the last spot where it still touches the curve is a point of tangency, and there the tangent line has the secant's slope. That picture only works if the curve is unbroken and smooth.</p>
+
+<h2>The theorem and its two hypotheses</h2>
+<p><b>Mean Value Theorem.</b> If $f$ is continuous on the closed interval $[a, b]$ and differentiable on the open interval $(a, b)$, then there is at least one number $c$ in $(a, b)$ with</p>
+<p>$$f'(c) = \frac{f(b) - f(a)}{b - a}$$</p>
+<p>Read it as an if-then statement. The "if" part has two hypotheses, and both matter:</p>
+<ul>
+<li><b>Continuous on $[a, b]$</b>: no jumps, holes or asymptotes anywhere in the interval, including at the endpoints.</li>
+<li><b>Differentiable on $(a, b)$</b>: no corners, cusps or vertical tangent lines strictly inside. A corner at an endpoint is allowed.</li>
+</ul>
+<p>Because a differentiable function is always continuous, "$f$ is differentiable on $[a, b]$" covers both at once. Say it anyway: the scoring guidelines want to see continuity named, and "$f$ is differentiable, so it is continuous" is the safest sentence you can write.</p>
+<p>The conclusion says <i>at least one</i> $c$ exists. It does not say where, and it does not say there is only one. In the figure there are two.</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Find every $c$ that satisfies the Mean Value Theorem for $f(x) = x^3 - 6x^2 + 9x + 1$ on $[0, 4]$.</p>
+<p>Check the hypotheses: $f$ is a polynomial, so it is continuous on $[0, 4]$ and differentiable on $(0, 4)$.</p>
+<p>Average rate: $\frac{f(4) - f(0)}{4 - 0} = \frac{5 - 1}{4} = 1$.</p>
+<p>Solve $f'(c) = 1$: $3c^2 - 12c + 9 = 1$, so $3c^2 - 12c + 8 = 0$ and $c = 2 \pm \frac{2}{\sqrt{3}}$.</p>
+<p>Both $c \approx 0.845$ and $c \approx 3.155$ lie in $(0, 4)$, so both work.</p>
+</div>
+
+<h2>When a hypothesis fails</h2>
+<p>If a hypothesis fails, the theorem promises nothing. The conclusion might still happen by luck, or it might be false. Two classic failures:</p>
+<table class="compare">
+<thead><tr><th scope="col">Function and interval</th><th scope="col">Average rate</th><th scope="col">What goes wrong</th></tr></thead>
+<tbody>
+<tr><td>$f(x) = |x|$ on $[-1, 1]$</td><td>$0$</td><td>Corner at $x = 0$: not differentiable there. The slope is $-1$ or $1$, never $0$.</td></tr>
+<tr><td>$f(x) = \frac{1}{x - 2}$ on $[0, 4]$</td><td>$\frac{1}{4}$</td><td>Asymptote at $x = 2$: not continuous. $f'(x) < 0$ wherever it exists, never $\frac{1}{4}$.</td></tr>
+</tbody>
+</table>
+<p>These examples are why a justification must check the hypotheses before using the conclusion.</p>
+
+<h2>Using the theorem with a table</h2>
+<p>On the exam the function is often given only by a table, with a sentence such as "$h$ is differentiable." You cannot find $c$, but you can show it exists.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> The water level $h(t)$ in a reservoir, in feet, is differentiable, with $h(3) = 46$ and $h(7) = 38$ ($t$ in days). Must there be a time in $(3, 7)$ when the level was falling at 2 feet per day?</p>
+<p>Average rate: $\frac{h(7) - h(3)}{7 - 3} = \frac{38 - 46}{4} = -2$ feet per day.</p>
+<p>Justification: "$h$ is differentiable, so it is continuous on $[3, 7]$ and differentiable on $(3, 7)$. By the Mean Value Theorem, there is a time $c$ in $(3, 7)$ with $h'(c) = -2$." Yes: at that time the level was falling at 2 feet per day.</p>
+</div>
+<p>A special case comes up often: if $f(a) = f(b)$, the average rate is $0$, so somewhere $f'(c) = 0$, a flat tangent line. (This case has its own name, Rolle's theorem, but naming the Mean Value Theorem is enough.)</p>
+
+<h2>Mean Value Theorem or Intermediate Value Theorem?</h2>
+<p>Students lose points by using the wrong theorem. Ask what the question wants a value of:</p>
+<ul>
+<li>A value of <b>$f$</b> itself, between two known values ("is there a $c$ with $f(c) = 5$?"): the <b>Intermediate Value Theorem</b>, which needs continuity on $[a, b]$.</li>
+<li>A value of the <b>derivative</b> $f'$ equal to an average rate ("is there a $c$ with $f'(c) = 2$?"): the <b>Mean Value Theorem</b>, which needs continuity and differentiability.</li>
+</ul>
+<p>Either way, the justification has the same three parts: name the theorem, check its hypotheses on the specific interval, and state the conclusion with the interval. "By the MVT, $f'(c) = 2$" with no hypotheses earns no credit.</p>

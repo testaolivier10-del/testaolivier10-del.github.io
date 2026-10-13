@@ -1,0 +1,12 @@
+{
+ "accumulation-sweep": {
+  "file": "figures/accumulation-sweep.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 600,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Top: the graph of f(t) = 0.5t + 1 on [0, 6], with the area under it from 0 to x = 3 shaded; that area is g(3) = 5.25 and the height f(3) is 2.5. Bottom: the accumulation function g(x) = x squared over 4 + x, with the point (3, 5.25) and a dashed tangent line there of slope g prime of 3 = f(3) = 2.5."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "incdec-sign-of-fprime": {
+  "file": "figures/incdec-sign-of-fprime.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 530,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Top: f(x) = x cubed minus 3x. Bottom, on the same x-scale: f'(x) = 3x squared minus 3. Where f' is above the x-axis (x < -1 and x > 1) f is increasing; where f' is below the axis (-1 < x < 1) f is decreasing. Dashed lines at x = -1 and 1 join the zeros of f' to the turning points of f."
+ }
+}

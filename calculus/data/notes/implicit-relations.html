@@ -1,0 +1,48 @@
+<p>A circle, an oval or a looping curve fails the vertical line test, so it is not the graph of a function $y = f(x)$. You already know how to find its slope with implicit differentiation. This topic asks what that slope formula tells you about the shape: where the curve is flat, where it stands straight up, and where it has a local high or low point.</p>
+
+<h2>The slope formula as a fraction</h2>
+<p>Differentiate both sides of the curve's equation with respect to $x$, write "$= 0$" (or the derivative of the right side), and solve. The result usually looks like a fraction in both $x$ and $y$:</p>
+<p>$$\frac{dy}{dx} = \frac{N(x, y)}{D(x, y)}$$</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\frac{dy}{dx}$ for $x^2 - xy + y^2 = 12$.</p>
+<p>$\frac{d}{dx}$ of both sides: $2x - \left(y + x\frac{dy}{dx}\right) + 2y\frac{dy}{dx} = 0$. (The product rule on $xy$ gives two terms.)</p>
+<p>Collect the $\frac{dy}{dx}$ terms: $\frac{dy}{dx}(2y - x) = y - 2x$, so $\frac{dy}{dx} = \frac{y - 2x}{2y - x}$.</p>
+</div>
+
+<h2>Horizontal and vertical tangent lines</h2>
+<p>A <b>horizontal tangent</b> needs slope 0, so the numerator must be 0 while the denominator is not. A vertical tangent line needs the slope to be undefined because the denominator is 0 while the numerator is not. In both cases the point must actually be on the curve.</p>
+<table class="compare">
+<thead><tr><th scope="col">Tangent line</th><th scope="col">Numerator $N$</th><th scope="col">Denominator $D$</th><th scope="col">Also</th></tr></thead>
+<tbody>
+<tr><td>horizontal</td><td>$0$</td><td>not $0$</td><td>point on the curve</td></tr>
+<tr><td>vertical</td><td>not $0$</td><td>$0$</td><td>point on the curve</td></tr>
+<tr><td>no conclusion</td><td>$0$</td><td>$0$</td><td>the formula gives $\frac{0}{0}$</td></tr>
+</tbody>
+</table>
+<figure id="fig-implicit" data-fig="implicit-tangents"><figcaption>On $x^2 + xy + y^2 = 3$, each condition picks out a line through the origin; where that line meets the curve, the tangent line is horizontal (blue) or vertical (green).</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the points of $x^2 - xy + y^2 = 12$ with horizontal and with vertical tangent lines.</p>
+<p><i>Horizontal:</i> $y - 2x = 0$, so $y = 2x$. Substitute into the curve: $x^2 - 2x^2 + 4x^2 = 12$, so $3x^2 = 12$ and $x = \pm 2$. Points $(2, 4)$ and $(-2, -4)$; the denominator there is $6$ and $-6$, not 0.</p>
+<p><i>Vertical:</i> $2y - x = 0$, so $x = 2y$. Substitute: $4y^2 - 2y^2 + y^2 = 12$, so $y = \pm 2$. Points $(4, 2)$ and $(-4, -2)$; the numerator there is $-6$ and $6$, not 0.</p>
+</div>
+<p>The substitution step is the one students skip. The point $(1, 2)$ makes the numerator $y - 2x$ zero, but $1 - 2 + 4 = 3 \ne 12$, so it is not on the curve, and its "slope" means nothing.</p>
+
+<h2>When both parts are zero</h2>
+<p>For the curve $x^3 + y^3 = 6xy$, implicit differentiation gives $\frac{dy}{dx} = \frac{2y - x^2}{y^2 - 2x}$. At the origin, which is on the curve, both the numerator and the denominator are 0. The formula is undefined and decides nothing; this curve actually crosses itself there. Never write "$\frac{0}{0} = 0$" or "$\frac{0}{0} = 1$": that is a notation error.</p>
+
+<h2>High and low points of a curve</h2>
+<p>Near a point with a horizontal tangent, the curve is the graph of a function of $x$, so the Second Derivative Test still works. Find $\frac{d^2y}{dx^2}$ by differentiating the fraction for $\frac{dy}{dx}$ (quotient rule, treating $y$ as a function of $x$), then substitute the point and the value $\frac{dy}{dx} = 0$.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> For $x^2 - xy + y^2 = 12$, find $\frac{d^2y}{dx^2}$ at $(2, 4)$.</p>
+<p>$\frac{d^2y}{dx^2} = \frac{\left(\frac{dy}{dx} - 2\right)(2y - x) - (y - 2x)\left(2\frac{dy}{dx} - 1\right)}{(2y - x)^2}$.</p>
+<p>At $(2, 4)$, $\frac{dy}{dx} = 0$ and $y - 2x = 0$: $\frac{(-2)(6) - 0}{36} = -\frac{1}{3}$.</p>
+<p>A horizontal tangent where the curve is concave down: $(2, 4)$ is a local high point of the curve, and in fact its highest point.</p>
+</div>
+
+<h2>What earns the points</h2>
+<ul>
+<li>Apply $\frac{d}{dx}$ to both sides and keep "$= 0$" on the right.</li>
+<li>Use the product rule on every $xy$-type term and the chain rule on every power of $y$.</li>
+<li>For a vertical tangent, say "the denominator is 0 and the numerator is not," never "$\frac{dy}{dx} = 0$."</li>
+<li>Substitute candidate points back into the curve's equation.</li>
+</ul>

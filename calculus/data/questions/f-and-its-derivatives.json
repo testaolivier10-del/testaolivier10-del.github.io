@@ -1,0 +1,542 @@
+{
+ "stimuli": {
+  "f-and-its-derivatives-s1": {
+   "kind": "graph",
+   "title": "The graph of $f'(x) = x^3 - 3x^2 + 2$",
+   "text": "The graph shows the derivative of $f$ for $-1 \\le x \\le 3.2$. It crosses the $x$-axis at $x = 1 - \\sqrt{3} \\approx -0.73$, $x = 1$ and $x = 1 + \\sqrt{3} \\approx 2.73$. Also, $f(0) = 4$.",
+   "plot": {
+    "label": "Graph of f prime from -1 to 3.2: rising from (-1, -2) to a high point at (0, 2), falling through (1, 0) to a low point at (2, -2), then rising to about (3.2, 4)",
+    "x": [
+     -1.5,
+     3.5
+    ],
+    "y": [
+     -3,
+     4.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^3 - 3x^2 + 2",
+      "domain": [
+       -1,
+       3.2
+      ],
+      "cls": "s2",
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "label": "f'"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       2
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       1,
+       0
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       2,
+       -2
+      ],
+      "cls": "s2"
+     }
+    ]
+   }
+  },
+  "f-and-its-derivatives-s2": {
+   "kind": "table",
+   "title": "Values of $f$, $f'$ and $f''$",
+   "text": "$f$ is twice differentiable for all $x$, and $f''$ is continuous.",
+   "table": {
+    "caption": "Values of $f(x)$, $f'(x)$ and $f''(x)$ at selected $x$",
+    "cols": [
+     "$x$",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "rows": [
+     [
+      "$f(x)$",
+      "3",
+      "1",
+      "2",
+      "4",
+      "2"
+     ],
+     [
+      "$f'(x)$",
+      "-2",
+      "0",
+      "1",
+      "0",
+      "-4"
+     ],
+     [
+      "$f''(x)$",
+      "1",
+      "2",
+      "0",
+      "-3",
+      "-1"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-f-and-its-derivatives-1",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "f-and-its-derivatives-s1",
+   "q": "At which value of $x$ does $f$ have a relative maximum?",
+   "options": [
+    "$x = 1$",
+    "$x = 0$, where $f'$ is highest",
+    "$x = 2$, where $f'$ is lowest",
+    "$x \\approx -0.73$, where $f' = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f'$ crosses the axis going down at $x = 1$ (positive before, negative after), so $f$ has a relative maximum there.",
+    "options": [
+     "$f'$ changes from positive to negative at $x = 1$.",
+     "A high point of $f'$ is an inflection point of $f$.",
+     "A low point of $f'$ is an inflection point of $f$.",
+     "$f'$ changes from negative to positive there: a relative minimum."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-2",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "f-and-its-derivatives-s1",
+   "q": "On which intervals is the graph of $f$ concave up?",
+   "options": [
+    "$(0, 2)$",
+    "$(-0.73, 1)$ and $(2.73, 3.2)$",
+    "$(-1, -0.73)$ and $(1, 2.73)$",
+    "$(-1, 0)$ and $(2, 3.2)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f$ is concave up where $f'$ is increasing: from $x = -1$ up to its high point at 0, and after its low point at 2.",
+    "options": [
+     "$f'$ is decreasing there: concave down.",
+     "There $f' > 0$: $f$ is increasing. That is direction, not concavity.",
+     "There $f' < 0$: $f$ is decreasing.",
+     "$f'$ is increasing there."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-3",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "f-and-its-derivatives-s1",
+   "q": "Use the graph and the formula to find the slope of the graph of $f'$ at $x = 1$, which is $f''(1)$.",
+   "numeric": {
+    "answer": -3,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$f'(1) = 0$. $f''(1)$ is the slope of the graph of $f'$ at $x = 1$."
+     },
+     {
+      "value": 3,
+      "why": "Check the sign: the graph of $f'$ is falling at $x = 1$. $f''(x) = 3x^2 - 6x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f''(x) = 3x^2 - 6x$, so $f''(1) = -3$: the graph of $f'$ is falling at $x = 1$, and $f$ is concave down there."
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-4",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "f-and-its-derivatives-s1",
+   "q": "Which is true of the graph of $f$ at $x = 2$?",
+   "options": [
+    "It has a relative minimum",
+    "It is decreasing and has a point of inflection",
+    "It is increasing and concave up",
+    "It has a point of inflection and a relative minimum"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f'(2) = 8 - 12 + 2 = -2 < 0$, so $f$ is decreasing. $f'$ has a low point at 2 ($f''$ changes from negative to positive), so the concavity of $f$ changes: a point of inflection.",
+    "options": [
+     "$f'(2) = -2 \\ne 0$: not a critical point.",
+     "$f'(2) = -2 < 0$, and $f'$ changes from decreasing to increasing at 2.",
+     "$f'(2) < 0$ means decreasing.",
+     "A relative minimum would need $f'$ to change sign at 2."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-5",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "f-and-its-derivatives-s1",
+   "q": "Write an equation for the line tangent to the graph of $f$ at $x = 0$. Enter the right side.",
+   "expr": {
+    "answer": "4 + 2x",
+    "vars": [
+     "x"
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "2 + 4x",
+      "why": "The slope is $f'(0) = 2$ and the point is $(0, f(0)) = (0, 4)$. You swapped them."
+     },
+     {
+      "expr": "4",
+      "why": "The tangent line is not flat at 0: its slope is $f'(0) = 2$, read from the graph of $f'$."
+     },
+     {
+      "expr": "4 - 2x",
+      "why": "$f'(0) = 0 - 0 + 2 = 2$, positive."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Point $(0, 4)$, slope $f'(0) = 2$: $y = 4 + 2(x - 0) = 4 + 2x$."
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-6",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "f-and-its-derivatives-s2",
+   "q": "Which justification earns credit for \"$f$ has a relative minimum at $x = 1$\"?",
+   "options": [
+    "\"$f(1) = 1$ is the smallest value in the table.\"",
+    "\"$f'(0) < 0$ and $f'(2) > 0$.\"",
+    "\"$f''(1) > 0$, so $f$ is concave up there.\"",
+    "\"$f'(1) = 0$ and $f''(1) = 2 > 0$, so by the Second Derivative Test $f$ has a relative minimum.\""
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f'(1) = 0$ and $f''(1) = 2 > 0$: by the Second Derivative Test, $f$ has a relative minimum at $x = 1$.",
+    "options": [
+     "The table shows a few values only; nothing says $f(1)$ is smallest nearby.",
+     "Values two units apart do not show the sign change at $x = 1$.",
+     "Concave up alone is not a minimum; $f'(1) = 0$ is needed too.",
+     "Both conditions of the Second Derivative Test."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-7",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "f-and-its-derivatives-s2",
+   "q": "Use the line tangent to the graph of $f$ at $x = 4$ to approximate $f(4.2)$.",
+   "numeric": {
+    "answer": 1.2,
+    "mistakes": [
+     {
+      "value": 2.8,
+      "why": "$f'(4) = -4$ is negative: the tangent line goes down. $2 + (-4)(0.2) = 1.2$."
+     },
+     {
+      "value": 1.6,
+      "why": "The step is $4.2 - 4 = 0.2$, and $f'(4) = -4$: $-4 \\times 0.2 = -0.8$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y = f(4) + f'(4)(x - 4) = 2 - 4(x - 4)$, so $f(4.2) \\approx 2 - 4(0.2) = 1.2$."
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-8",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "f-and-its-derivatives-s2",
+   "q": "Is the tangent-line approximation $f(4.2) \\approx 1.2$ an overestimate or an underestimate?",
+   "options": [
+    "An underestimate, because $f'(4) < 0$",
+    "An overestimate: $f''(4) < 0$ and $f''$ is continuous, so $f$ is concave down near $x = 4$",
+    "An overestimate, because $f'(4) < 0$",
+    "An underestimate: $f''(3) < 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f''(4) = -1 < 0$ and $f''$ is continuous, so $f'' < 0$ near $x = 4$: the graph is concave down and lies below its tangent line. The approximation is an overestimate.",
+    "options": [
+     "The sign of $f'$ does not decide; concavity does.",
+     "Concave down means the graph lies below its tangent lines.",
+     "Right answer, wrong reason: the sign of $f'$ is not what decides.",
+     "Concavity at $x = 3$ is not near $4.2$, and concave down would give an overestimate anyway."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-9",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "f-and-its-derivatives-s2",
+   "q": "Must the graph of $f$ have a point of inflection for some $x$ in $(1, 3)$?",
+   "options": [
+    "Yes: $f''$ is continuous, $f''(1) > 0$ and $f''(3) < 0$, so $f''$ changes sign in $(1, 3)$",
+    "Yes, at $x = 2$, because $f''(2) = 0$",
+    "No, because $f'(1) = f'(3) = 0$",
+    "No, because the table does not show $f''$ changing sign"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f''$ is continuous with $f''(1) = 2 > 0$ and $f''(3) = -3 < 0$. So $f''$ changes from positive to negative somewhere in $(1, 3)$, and there the concavity of $f$ changes.",
+    "options": [
+     "A continuous function that is positive at 1 and negative at 3 changes sign somewhere between (IVT).",
+     "$f''(2) = 0$ alone does not show a sign change at $x = 2$; the reason must be the change from positive to negative.",
+     "Zeros of $f'$ are about extrema.",
+     "It does: from $f''(1) = 2$ to $f''(3) = -3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-10",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "On $(a, b)$, $f'(x) > 0$ and $f''(x) < 0$. Which describes $f$ there?",
+   "options": [
+    "Increasing, at an increasing rate",
+    "Decreasing, at a decreasing rate",
+    "Decreasing, and concave down",
+    "Increasing, at a decreasing rate"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f' > 0$ means $f$ increases; $f'' < 0$ means $f'$ decreases, so the increase slows down: concave down.",
+    "options": [
+     "That would need $f'' > 0$.",
+     "$f' > 0$ means increasing.",
+     "$f' > 0$ means increasing.",
+     "$f' > 0$: increasing. $f'' < 0$: the rate $f'$ is falling."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-11",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A car's position on a straight road is $s(t)$, with $s'(t) > 0$ and $s''(t) < 0$ on $(0, 5)$. What is the car doing?",
+   "options": [
+    "Moving forward and speeding up",
+    "Moving backward and slowing down",
+    "Moving forward and slowing down",
+    "Moving backward and speeding up"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Velocity $s' > 0$: moving forward. Acceleration $s'' < 0$, opposite in sign to the velocity: slowing down. The graph of $s$ is increasing and concave down.",
+    "options": [
+     "Speeding up needs velocity and acceleration with the same sign.",
+     "$s' > 0$ means moving forward.",
+     "Velocity $s' > 0$ and acceleration $s'' < 0$ have opposite signs.",
+     "$s' > 0$ means moving forward."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-12",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "$f$ is twice differentiable, $f''(x) < 0$ for all $x$, and $f'(2) = 0$. Which is true?",
+   "options": [
+    "$f(2)$ is the absolute minimum of $f$",
+    "$f(2)$ is the absolute maximum of $f$",
+    "$f(2)$ is a relative maximum, but there may be a larger value elsewhere",
+    "$f$ has a point of inflection at $x = 2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Since $f'' < 0$, $f'$ is decreasing on the whole line and is zero only at $x = 2$. So $f$ increases on $(-\\infty, 2)$ and decreases on $(2, \\infty)$: $f(2)$ is the absolute maximum.",
+    "options": [
+     "Concave down at a flat point is a peak.",
+     "$f'$ is decreasing everywhere, so $f' > 0$ for $x < 2$ and $f' < 0$ for $x > 2$: $f$ rises to $x = 2$ and falls after.",
+     "$f'$ is positive left of 2 and negative right of 2 on the whole line, so nothing exceeds $f(2)$.",
+     "$f'' < 0$ everywhere; the concavity never changes."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-13",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "numeric",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 3,
+   "calc": true,
+   "q": "$f'(x) = 2\\sin(x^2)$ for $0 < x < 2.5$. How many points of inflection does the graph of $f$ have on this interval?",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "Graph $f''(x) = 4x\\cos(x^2)$, or look for the turns of $f'$: there is one near $x = 1.253$ and another near $x = 2.171$."
+     },
+     {
+      "value": 3,
+      "why": "You may have counted the zero of $f'$ at $x = \\sqrt{\\pi} \\approx 1.772$ too. Zeros of $f'$ are extrema of $f$; count only the turns of $f'$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Inflection points of $f$ are where $f'$ changes from increasing to decreasing or back. Graph $y = 2\\sin(x^2)$ (radian mode): it turns at $x \\approx 1.253$ (a high point) and $x \\approx 2.171$ (a low point). Two inflection points."
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-14",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "At $x = 2$: $f(2) = 0$, $f'(2) > 0$ and $f''(2) < 0$. Which describes the graph of $f$ near $(2, 0)$?",
+   "options": [
+    "It crosses the $x$-axis going up, bending upward",
+    "It crosses the $x$-axis going down, bending downward",
+    "It touches the $x$-axis at a peak",
+    "It crosses the $x$-axis going up, bending downward"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f(2) = 0$: on the axis. $f'(2) > 0$: rising through it. $f''(2) < 0$: bending down.",
+    "options": [
+     "$f''(2) < 0$ means concave down.",
+     "$f'(2) > 0$ means rising.",
+     "A peak would need $f'(2) = 0$.",
+     "Value 0, positive slope, concave down."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-15",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "multi",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$f''(x) > 0$ for $x < 1$ and $f''(x) < 0$ for $x > 1$, and $f$ is continuous. Which statements must be true? Select each one.",
+   "options": [
+    "The graph of $f$ has a point of inflection at $x = 1$",
+    "$f$ has a relative maximum at $x = 1$",
+    "$f'$ has a relative minimum at $x = 1$",
+    "$f$ is decreasing for $x > 1$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "$f''$ changes from positive to negative at $x = 1$, so $f$ has a point of inflection there, and $f'$ has a relative maximum there. The signs of $f'$, and so the direction of $f$, are not given.",
+    "options": [
+     "$f''$ changes sign at 1: the concavity changes.",
+     "Nothing is known about the sign of $f'$; $f'(1)$ need not be 0.",
+     "$f'$ increases then decreases: a relative maximum of $f'$, not a minimum.",
+     "$f' $ is decreasing for $x > 1$, but it may still be positive."
+    ]
+   }
+  },
+  {
+   "id": "calc-f-and-its-derivatives-16",
+   "unit": "unit-5",
+   "topic": "f-and-its-derivatives",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "At $x = a$, $f$ has a relative maximum. Which pair of values could be $f'(a)$ and $f''(a)$?",
+   "options": [
+    "$f'(a) = 0$, $f''(a) = 2$",
+    "$f'(a) = 0$, $f''(a) = -2$",
+    "$f'(a) = -2$, $f''(a) = 0$",
+    "$f'(a) = 2$, $f''(a) = -2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At a relative maximum of a differentiable $f$, $f'(a) = 0$; and $f''(a) = -2 < 0$ is consistent with a peak (the Second Derivative Test).",
+    "options": [
+     "Concave up at a flat point is a valley.",
+     "A flat point where the graph is concave down: a peak.",
+     "$f'(a) \\ne 0$: the graph is still falling at $a$, so no extremum (where $f$ is differentiable).",
+     "$f'(a) \\ne 0$: still rising."
+    ]
+   }
+  }
+ ]
+}

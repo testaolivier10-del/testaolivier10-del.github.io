@@ -1,0 +1,513 @@
+{
+ "stimuli": {
+  "lhospitals-rule-s1": {
+   "kind": "table",
+   "title": "Values of $f$, $g$ and their derivatives",
+   "table": {
+    "caption": "Selected values of the twice-differentiable functions f and g and their derivatives",
+    "cols": [
+     "$x$",
+     "$f(x)$",
+     "$f'(x)$",
+     "$g(x)$",
+     "$g'(x)$"
+    ],
+    "rows": [
+     [
+      "1",
+      "3",
+      "1",
+      "-2",
+      "4"
+     ],
+     [
+      "2",
+      "0",
+      "5",
+      "0",
+      "-2"
+     ],
+     [
+      "3",
+      "-1",
+      "2",
+      "6",
+      "3"
+     ]
+    ]
+   }
+  },
+  "lhospitals-rule-s2": {
+   "kind": "graph",
+   "title": "The graph of $y = \\frac{1 - \\cos x}{x^2}$",
+   "plot": {
+    "label": "Graph of y = (1 - cos x) / x squared for x from -8 to 8, x not 0: a bump that approaches height 1/2 near x = 0, marked with an open circle at (0, 0.5), and small waves decaying toward 0",
+    "x": [
+     -8,
+     8
+    ],
+    "y": [
+     -0.2,
+     0.7
+    ],
+    "xStep": 2,
+    "yStep": 0.1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(1 - cos(x))/x^2",
+      "domain": [
+       -8,
+       -0.001
+      ]
+     },
+     {
+      "fn": "(1 - cos(x))/x^2",
+      "domain": [
+       0.001,
+       8
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       0.5
+      ],
+      "open": true,
+      "label": "(0, 1/2)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-lhospitals-rule-1",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $\\lim_{x \\to 2} \\frac{f(x)}{g(x)}$?",
+   "stimulus": "lhospitals-rule-s1",
+   "options": [
+    "$-\\frac{5}{2}$",
+    "$0$",
+    "$-\\frac{2}{5}$",
+    "The limit does not exist"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f$ and $g$ are differentiable, so continuous: $\\lim_{x \\to 2} f(x) = 0$ and $\\lim_{x \\to 2} g(x) = 0$. By L'Hospital's rule the limit is $\\frac{f'(2)}{g'(2)} = -\\frac{5}{2}$.",
+    "options": [
+     "Both limits are 0, so the limit is $\\frac{f'(2)}{g'(2)} = \\frac{5}{-2}$.",
+     "$\\frac{0}{0}$ is not 0; it is an indeterminate form that needs more work.",
+     "The derivatives go in the same places as the functions: $f'$ on top.",
+     "A $\\frac{0}{0}$ form can have a limit; L'Hospital's rule finds it."
+    ]
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-2",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to 2} \\frac{f(x)}{x^2 - 4}$.",
+   "stimulus": "lhospitals-rule-s1",
+   "numeric": {
+    "answer": "5/4",
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$\\frac{0}{0}$ is an indeterminate form, not 0. Differentiate the top and the bottom separately."
+     },
+     {
+      "value": 5,
+      "why": "The bottom's derivative is $2x$, which is 4 at $x = 2$: divide $f'(2) = 5$ by it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Both the top and the bottom approach 0 (form $\\frac{0}{0}$). L'Hospital's rule: $\\lim_{x \\to 2}\\frac{f'(x)}{2x} = \\frac{5}{4}$."
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-3",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is $\\lim_{x \\to 1} \\frac{f(x)}{g(x)}$?",
+   "stimulus": "lhospitals-rule-s1",
+   "options": [
+    "$\\frac{1}{4}$",
+    "$-\\frac{3}{2}$",
+    "$-\\frac{2}{3}$",
+    "The limit does not exist"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Check the form first: $f(1) = 3$ and $g(1) = -2$, so the quotient is continuous at 1 and the limit is $\\frac{3}{-2}$. L'Hospital's rule does not apply.",
+    "options": [
+     "That is $\\frac{f'(1)}{g'(1)}$. L'Hospital's rule needs a $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$ form, which this is not.",
+     "The form is $\\frac{3}{-2}$, not indeterminate, so substitute.",
+     "That is $\\frac{g(1)}{f(1)}$, the quotient upside down.",
+     "Both functions are continuous and $g(1) \\ne 0$, so the quotient is continuous at 1."
+    ]
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-4",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "To use L'Hospital's rule for $\\lim_{x \\to 2} \\frac{f(x)}{g(x)}$, what must be shown first?",
+   "stimulus": "lhospitals-rule-s1",
+   "options": [
+    "$f'(2)$ and $g'(2)$ are both nonzero",
+    "$\\frac{f(x)}{g(x)}$ is differentiable at $x = 2$",
+    "$\\lim_{x \\to 2} f(x) = 0$ and $\\lim_{x \\to 2} g(x) = 0$",
+    "$f(2) > g(2)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "L'Hospital's rule applies to a limit of the form $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$. Write both limits: $\\lim_{x \\to 2} f(x) = 0$ and $\\lim_{x \\to 2} g(x) = 0$.",
+    "options": [
+     "$f'(2)$ may be 0; the rule needs $g'$ nonzero near 2, and the indeterminate form.",
+     "The quotient is not even defined at 2.",
+     "The hypothesis: both limits are 0 (or both infinite). Here continuity gives $f(2) = g(2) = 0$.",
+     "Comparing the values says nothing about the form of the limit."
+    ]
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-5",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\lim_{x \\to 2} \\frac{g(x)}{e^{x - 2} - 1}$.",
+   "stimulus": "lhospitals-rule-s1",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "The form $\\frac{0}{0}$ is indeterminate; it does not equal 0."
+     },
+     {
+      "value": "-1/2",
+      "why": "Keep the order: the derivative of the top over the derivative of the bottom, $\\frac{g'(2)}{1}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Top and bottom both approach 0. L'Hospital's rule: $\\lim_{x \\to 2}\\frac{g'(x)}{e^{x - 2}} = \\frac{-2}{e^0} = -2$."
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-6",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What form does $\\frac{1 - \\cos x}{x^2}$ take as $x \\to 0$?",
+   "stimulus": "lhospitals-rule-s2",
+   "options": [
+    "$\\frac{1}{0}$",
+    "$\\frac{\\infty}{\\infty}$",
+    "$\\frac{2}{0}$",
+    "$\\frac{0}{0}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "As $x \\to 0$, $1 - \\cos x \\to 0$ and $x^2 \\to 0$: the indeterminate form $\\frac{0}{0}$.",
+    "options": [
+     "$\\cos 0 = 1$, so the top is $1 - 1 = 0$.",
+     "Neither part grows without bound near 0.",
+     "$1 - \\cos 0 = 0$, not 2.",
+     "$1 - \\cos 0 = 0$ and $0^2 = 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-7",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "One application of L'Hospital's rule gives $\\lim_{x \\to 0}\\frac{\\sin x}{2x}$. What should come next?",
+   "stimulus": "lhospitals-rule-s2",
+   "options": [
+    "Still $\\frac{0}{0}$: apply the rule again to get $\\frac{1}{2}$",
+    "It equals 0, because $\\sin 0 = 0$",
+    "It does not exist, because the bottom is 0 at $x = 0$",
+    "Use the quotient rule on $\\frac{\\sin x}{2x}$, then substitute 0"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\sin 0 = 0$ and $2(0) = 0$: still $\\frac{0}{0}$. Apply the rule again (both limits are 0): $\\lim_{x \\to 0}\\frac{\\cos x}{2} = \\frac{1}{2}$.",
+    "options": [
+     "Check the form at every round; a second application finishes it.",
+     "The bottom is also 0, so the form is still indeterminate.",
+     "A zero bottom with a zero top is indeterminate, not a missing limit.",
+     "L'Hospital's rule differentiates top and bottom separately; the quotient rule is not part of it."
+    ]
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-8",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to 0}\\frac{1 - \\cos x}{x^2}$. The graph supports your answer.",
+   "stimulus": "lhospitals-rule-s2",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$\\frac{0}{0}$ is not 0. The graph shows the values approaching $\\frac{1}{2}$."
+     },
+     {
+      "value": 1,
+      "why": "The second application gives $\\frac{\\cos x}{2}$; the 2 from the derivative of $2x$ stays."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Two applications of L'Hospital's rule, each on a $\\frac{0}{0}$ form: $\\frac{\\sin x}{2x}$, then $\\frac{\\cos x}{2} \\to \\frac{1}{2}$. The open circle at $(0, \\frac{1}{2})$ agrees."
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-9",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "L'Hospital's rule replaces $\\lim \\frac{f(x)}{g(x)}$ by which limit?",
+   "stimulus": "lhospitals-rule-s2",
+   "options": [
+    "$\\lim \\left(\\frac{f(x)}{g(x)}\\right)'$",
+    "$\\lim \\frac{f'(x)}{g'(x)}$",
+    "$\\lim \\frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}$",
+    "$\\lim \\frac{g'(x)}{f'(x)}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For a $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$ form, $\\lim\\frac{f(x)}{g(x)} = \\lim\\frac{f'(x)}{g'(x)}$, when the second limit exists.",
+    "options": [
+     "That is the derivative of the quotient, a different function.",
+     "Differentiate the top and the bottom separately.",
+     "That is the quotient rule, which is not part of L'Hospital's rule.",
+     "The derivatives keep their places: $f'$ on top."
+    ]
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-10",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\lim_{x \\to 0}\\frac{e^{3x} - 1}{x}$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "The derivative of $e^{3x}$ is $3e^{3x}$ by the chain rule."
+     },
+     {
+      "value": 0,
+      "why": "$\\frac{0}{0}$ is indeterminate, not 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Form $\\frac{0}{0}$. L'Hospital's rule: $\\lim_{x \\to 0}\\frac{3e^{3x}}{1} = 3$."
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-11",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Evaluate $\\lim_{x \\to 0}\\frac{\\sin(5x)}{2x}$ with L'Hospital's rule, after checking the form.",
+   "numeric": {
+    "answer": "5/2",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "The derivative of $\\sin(5x)$ is $5\\cos(5x)$; the chain rule factor 5 is missing."
+     },
+     {
+      "value": 5,
+      "why": "The bottom's derivative is 2, so divide by it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Form $\\frac{0}{0}$. L'Hospital's rule: $\\lim_{x \\to 0}\\frac{5\\cos(5x)}{2} = \\frac{5}{2}$."
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-12",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $\\lim_{x \\to \\infty}\\frac{x^2}{e^x}$?",
+   "options": [
+    "It grows without bound",
+    "$1$",
+    "$0$",
+    "$2$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{\\infty}{\\infty}$: apply the rule twice. $\\lim\\frac{x^2}{e^x} = \\lim\\frac{2x}{e^x} = \\lim\\frac{2}{e^x} = 0$.",
+    "options": [
+     "$e^x$ outgrows any power of $x$.",
+     "Both grow without bound, but at very different speeds.",
+     "Form $\\frac{\\infty}{\\infty}$ twice: $\\frac{2x}{e^x}$, then $\\frac{2}{e^x} \\to 0$.",
+     "After two applications the top is 2 but the bottom $e^x$ still grows without bound."
+    ]
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-13",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $\\lim_{x \\to \\infty}\\frac{\\ln x}{x}$?",
+   "options": [
+    "$1$",
+    "It grows without bound",
+    "The limit does not exist",
+    "$0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Both grow without bound. L'Hospital's rule: $\\lim_{x \\to \\infty}\\frac{1/x}{1} = 0$, so $x$ outgrows $\\ln x$.",
+    "options": [
+     "The top and bottom grow at very different speeds.",
+     "$\\ln x$ grows far more slowly than $x$.",
+     "The rule gives the limit, 0.",
+     "Form $\\frac{\\infty}{\\infty}$: $\\lim\\frac{1/x}{1} = 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-14",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $\\lim_{x \\to \\infty}\\frac{3x^2 + 1}{5x^2 - x}$?",
+   "options": [
+    "$\\frac{3}{5}$",
+    "$0$",
+    "$1$",
+    "$-6$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Form $\\frac{\\infty}{\\infty}$: $\\lim\\frac{6x}{10x - 1}$, still $\\frac{\\infty}{\\infty}$, so again: $\\frac{6}{10} = \\frac{3}{5}$, matching the ratio of leading coefficients.",
+    "options": [
+     "$\\frac{6x}{10x - 1}$, then $\\frac{6}{10}$.",
+     "The top and bottom have the same degree, so their ratio does not shrink to 0.",
+     "The leading coefficients 3 and 5 decide the limit.",
+     "Differentiate the bottom correctly: $10x - 1$, then 10."
+    ]
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-15",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement correctly justifies using L'Hospital's rule for $\\lim_{x \\to 0}\\frac{e^x - 1 - x}{x^2}$?",
+   "options": [
+    "$\\frac{e^x - 1 - x}{x^2}$ equals $\\frac{0}{0}$ at $x = 0$",
+    "$\\lim_{x \\to 0}(e^x - 1 - x) = 0$ and $\\lim_{x \\to 0}x^2 = 0$",
+    "The derivatives of the top and bottom exist",
+    "The function is continuous at $x = 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The rule's hypothesis is a $\\frac{0}{0}$ (or $\\frac{\\infty}{\\infty}$) form, shown by writing both limits. Avoid writing an equals sign before $\\frac{0}{0}$, as if it were a number.",
+    "options": [
+     "Never write $\\frac{0}{0}$ as a value; state the two limits.",
+     "Both limits are shown to be 0: the form $\\frac{0}{0}$.",
+     "Differentiability is needed, but so is the indeterminate form.",
+     "It is not even defined at 0; the form of the limit is what matters."
+    ]
+   }
+  },
+  {
+   "id": "calc-lhospitals-rule-16",
+   "unit": "unit-4",
+   "topic": "lhospitals-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Check the form, then use L'Hospital's rule to evaluate $\\lim_{x \\to 1}\\frac{\\ln x}{x^2 - 1}$.",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "The quotient is upside down: the derivative of the top, $\\frac{1}{x}$, goes on top."
+     },
+     {
+      "value": 0,
+      "why": "$\\frac{0}{0}$ is indeterminate, not 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\ln 1 = 0$ and $1 - 1 = 0$. L'Hospital's rule: $\\lim_{x \\to 1}\\frac{1/x}{2x} = \\frac{1}{2}$."
+   }
+  }
+ ]
+}

@@ -1,0 +1,176 @@
+{
+ "id": "frq-u6-graph-2",
+ "type": "graph",
+ "points": 9,
+ "calc": false,
+ "title": "Graphical FTC with a lower limit inside the interval",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "definite-integral-notation",
+  "ftc-accumulation",
+  "accumulation-behavior",
+  "integral-properties"
+ ],
+ "practices": [
+  "1.E",
+  "2.C",
+  "3.D",
+  "3.E",
+  "4.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The graph of $f$ on $[-2, 6]$",
+  "text": "The continuous function $f$ is defined on $[-2, 6]$. Its graph is a semicircle of radius 2 above the x-axis from $x = -2$ to $x = 2$, a segment from $(2, 0)$ to $(4, -2)$, and a segment from $(4, -2)$ to $(6, 2)$. Let $g(x) = \\int_2^x f(t)\\,dt$ for $-2 \\le x \\le 6$.",
+  "plot": {
+   "label": "Graph of f on [-2, 6]: an upper semicircle of radius 2 centered at the origin from -2 to 2, a segment from (2, 0) to (4, -2), and a segment from (4, -2) to (6, 2)",
+   "width": 420,
+   "height": 270,
+   "x": [
+    -2.5,
+    6.5
+   ],
+   "y": [
+    -2.5,
+    2.6
+   ],
+   "xStep": 1,
+   "yStep": 1,
+   "xLabel": "x",
+   "yLabel": "y",
+   "curves": [
+    {
+     "fn": "sqrt(4 - x^2)",
+     "domain": [
+      -2,
+      2
+     ],
+     "cls": "s1",
+     "label": "f"
+    },
+    {
+     "fn": "2 - x",
+     "domain": [
+      2,
+      4
+     ],
+     "cls": "s1"
+    },
+    {
+     "fn": "2x - 10",
+     "domain": [
+      4,
+      6
+     ],
+     "cls": "s1"
+    }
+   ],
+   "points": [
+    {
+     "at": [
+      -2,
+      0
+     ]
+    },
+    {
+     "at": [
+      6,
+      2
+     ]
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Find</b> $g(0)$ and $g(6)$.",
+   "rubric": [
+    {
+     "point": "$g(0) = -\\pi$",
+     "accept": [
+      "$g(0) = \\int_2^0 f(t)\\,dt = -\\int_0^2 f(t)\\,dt = -\\pi$",
+      "the quarter disc of area pi taken with a negative sign"
+     ]
+    },
+    {
+     "point": "$g(6) = -2$",
+     "accept": [
+      "$g(6) = -2 + (-1) + 1 = -2$",
+      "$\\int_2^4 f(t)\\,dt + \\int_4^6 f(t)\\,dt = -2 + 0$"
+     ]
+    }
+   ],
+   "sample": "$g(0) = \\int_2^0 f(t)\\,dt = -\\int_0^2 f(t)\\,dt = -\\frac{1}{4}\\pi(2)^2 = -\\pi$. $g(6) = \\int_2^4 f(t)\\,dt + \\int_4^6 f(t)\\,dt = -2 + (-1 + 1) = -2$."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "<b>Find</b> the absolute minimum value of $g$ on the closed interval $[-2, 6]$. <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Identifies the critical points from $g'(x) = f(x)$: $x = 2$ and $x = 5$ (where $f$ changes sign)",
+     "accept": [
+      "\"$g'(x) = f(x) = 0$ at $x = 2$ and $x = 5$\""
+     ]
+    },
+    {
+     "point": "Candidates test with the endpoints: $g(-2) = -2\\pi$, $g(2) = 0$, $g(5) = -3$, $g(6) = -2$",
+     "accept": [
+      "a table of the four values"
+     ]
+    },
+    {
+     "point": "Answer: the absolute minimum value is $-2\\pi$, at $x = -2$",
+     "accept": [
+      "$-2\\pi$ with the candidates comparison"
+     ]
+    }
+   ],
+   "sample": "$g'(x) = f(x) = 0$ at $x = 2$ and $x = 5$ in $(-2, 6)$. Candidates: $g(-2) = -\\int_{-2}^2 f(t)\\,dt = -2\\pi$, $g(2) = 0$, $g(5) = -2 - 1 = -3$, $g(6) = -2$. The least value is $-2\\pi \\approx -6.28$, so the absolute minimum of $g$ on $[-2, 6]$ is $-2\\pi$, at $x = -2$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "Let $k(x) = \\int_2^{3x} f(t)\\,dt$. <b>Find</b> $k'(1)$.",
+   "rubric": [
+    {
+     "point": "Uses the chain rule: $k'(x) = f(3x) \\cdot 3$",
+     "accept": [
+      "$k'(x) = 3f(3x)$"
+     ]
+    },
+    {
+     "point": "Answer $k'(1) = 3f(3) = -3$",
+     "accept": [
+      "-3"
+     ]
+    }
+   ],
+   "sample": "By the Fundamental Theorem and the chain rule, $k'(x) = f(3x) \\cdot 3$. So $k'(1) = 3f(3) = 3(-1) = -3$."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Find</b> the value of $\\lim_{n \\to \\infty} \\sum_{i=1}^{n} f\\left(-2 + \\frac{4i}{n}\\right)\\frac{4}{n}$.",
+   "rubric": [
+    {
+     "point": "Identifies the limit as $\\int_{-2}^{2} f(x)\\,dx$",
+     "accept": [
+      "$\\int_{-2}^{2} f(x)\\,dx$ (or $g(2) - g(-2)$)"
+     ]
+    },
+    {
+     "point": "Answer $2\\pi$",
+     "accept": [
+      "the half-disc area $\\frac{1}{2}\\pi(2)^2 = 2\\pi$"
+     ]
+    }
+   ],
+   "sample": "This is a limit of right Riemann sums with $\\Delta x = \\frac{4}{n}$ and $x_i = -2 + \\frac{4i}{n}$ on $[-2, 2]$, so it equals $\\int_{-2}^{2} f(x)\\,dx$, the area of the half-disc of radius 2: $\\frac{1}{2}\\pi(2)^2 = 2\\pi$."
+  }
+ ]
+}

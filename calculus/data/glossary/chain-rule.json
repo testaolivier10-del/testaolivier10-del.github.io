@@ -1,0 +1,5 @@
+{
+ "chain-rule": {
+  "def": "The rule for differentiating a composite function: $\\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x)$. The derivative of the outside function $f$, evaluated at the inside function $g(x)$, times the derivative of the inside function."
+ }
+}

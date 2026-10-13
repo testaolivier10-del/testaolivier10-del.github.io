@@ -1,0 +1,351 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "calc-math-exp-log-1",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Evaluate $e^{3\\ln 2}$ exactly.",
+   "numeric": {
+    "answer": 8,
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "$3\\ln 2 = \\ln(2^3)$, so $e^{3\\ln 2} = e^{\\ln 8} = 8$; the 3 is an exponent on 2, not a multiplier."
+     },
+     {
+      "value": "3ln(2)",
+      "why": "$e$ and $\\ln$ cancel only when $\\ln$ is the whole exponent. Move the 3 inside first: $e^{\\ln 8} = 8$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The log of a power: $3\\ln 2 = \\ln 2^3 = \\ln 8$. Then $e^{\\ln 8} = 8$."
+   }
+  },
+  {
+   "id": "calc-math-exp-log-2",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "For $x > 0$ and $y > 0$, which expression equals $\\ln\\left(\\frac{x^3}{y}\\right)$?",
+   "options": [
+    "$3\\ln x - \\ln y$",
+    "$\\frac{3\\ln x}{\\ln y}$",
+    "$\\ln(3x) - \\ln y$",
+    "$(\\ln x)^3 - \\ln y$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Log of a quotient, then log of a power: $\\ln x^3 - \\ln y = 3\\ln x - \\ln y$.",
+    "options": [
+     "$\\ln\\frac{a}{b} = \\ln a - \\ln b$ and $\\ln a^3 = 3\\ln a$.",
+     "The log of a quotient is a difference of logs, not a quotient of logs.",
+     "$\\ln(x^3) = 3\\ln x$, not $\\ln(3x)$.",
+     "$\\ln(x^3) = 3\\ln x$; $(\\ln x)^3$ is something else."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exp-log-3",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve $e^{2x} = 9$ for $x$. Give the exact value.",
+   "numeric": {
+    "answer": "ln(3)",
+    "mistakes": [
+     {
+      "value": "ln(9)",
+      "why": "Taking $\\ln$ gives $2x = \\ln 9$; divide by 2: $x = \\frac{\\ln 9}{2} = \\ln 3$."
+     },
+     {
+      "value": "9/2",
+      "why": "Undo $e$ with $\\ln$, not by dividing: $2x = \\ln 9$."
+     },
+     {
+      "value": "ln(4.5)",
+      "why": "Take the log first, then divide: $x = \\frac{\\ln 9}{2}$, which is not $\\ln\\frac{9}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Take $\\ln$ of both sides: $2x = \\ln 9$, so $x = \\frac{\\ln 9}{2} = \\frac{2\\ln 3}{2} = \\ln 3$."
+   }
+  },
+  {
+   "id": "calc-math-exp-log-4",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve $\\ln(x + 2) = 1$ for $x$. Give the exact value.",
+   "numeric": {
+    "answer": "e-2",
+    "mistakes": [
+     {
+      "value": "e+2",
+      "why": "$x + 2 = e$, so subtract 2: $x = e - 2$."
+     },
+     {
+      "value": -1,
+      "why": "$\\ln(x + 2) = 1$ means $x + 2 = e^1$, not $x + 2 = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Exponentiate both sides: $x + 2 = e^1 = e$, so $x = e - 2 \\approx 0.718$. Check: $x + 2 = e > 0$, inside the domain."
+   }
+  },
+  {
+   "id": "calc-math-exp-log-5",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the domain of $f(x) = \\ln(4 - x)$?",
+   "options": [
+    "$x < 4$",
+    "$x > 4$",
+    "$x \\le 4$",
+    "$x > 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A logarithm needs a positive input: $4 - x > 0$, so $x < 4$.",
+    "options": [
+     "$4 - x > 0$.",
+     "For $x > 4$, $4 - x$ is negative.",
+     "At $x = 4$ the input is 0, and $\\ln 0$ is not defined.",
+     "The input of $\\ln$ is $4 - x$, not $x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exp-log-6",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which expression equals $\\ln 12$?",
+   "options": [
+    "$\\ln 3 + \\ln 4$",
+    "$\\ln 3 \\cdot \\ln 4$",
+    "$\\ln 10 + \\ln 2$",
+    "$2\\ln 6$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$12 = 3 \\cdot 4$, and the log of a product is the sum of the logs.",
+    "options": [
+     "$\\ln(3 \\cdot 4)$.",
+     "Logs turn products into sums, not products.",
+     "$\\ln 10 + \\ln 2 = \\ln 20$.",
+     "$2\\ln 6 = \\ln 36$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exp-log-7",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which describes the graph of $y = e^{-x}$?",
+   "options": [
+    "It passes through $(0, 1)$, stays above the $x$-axis, and falls from left to right.",
+    "It passes through $(0, 1)$ and rises from left to right.",
+    "It passes through $(0, -1)$ and stays below the $x$-axis.",
+    "It passes through $(1, 0)$ and falls from left to right."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$e^{-x} = \\frac{1}{e^x}$: positive for every $x$, equal to 1 at $x = 0$, and smaller as $x$ grows. It is $y = e^x$ reflected over the $y$-axis.",
+    "options": [
+     "Positive, through $(0, 1)$, decreasing.",
+     "That describes $y = e^x$.",
+     "That describes $y = -e^x$; the minus here is in the exponent.",
+     "$e^{-1} \\ne 0$; an exponential is never 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exp-log-8",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "A town's population is $P(t) = 500e^{0.04t}$ people, $t$ years from now. Use a calculator to find when the population reaches 800. Give $t$ to three decimal places, with units.",
+   "numeric": {
+    "answer": 11.75009073114339,
+    "unit": "years",
+    "askUnit": true,
+    "units": [
+     "yr",
+     "yrs",
+     "year"
+    ],
+    "mistakes": [
+     {
+      "value": 167.11529319169819,
+      "why": "Divide by 500 before taking the log: $e^{0.04t} = 1.6$, so $t = \\frac{\\ln 1.6}{0.04}$."
+     },
+     {
+      "value": 142.59456186640503,
+      "why": "Divide by 500 instead of subtracting it: $500e^{0.04t} = 800$ gives $e^{0.04t} = \\frac{800}{500}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$500e^{0.04t} = 800 \\Rightarrow e^{0.04t} = 1.6 \\Rightarrow 0.04t = \\ln 1.6 \\Rightarrow t = \\frac{\\ln 1.6}{0.04} \\approx 11.750$ years."
+   }
+  },
+  {
+   "id": "calc-math-exp-log-9",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "For $x > 0$, which expression equals $\\ln(x^2)$?",
+   "options": [
+    "$2\\ln x$",
+    "$(\\ln x)^2$",
+    "$\\ln 2 + \\ln x$",
+    "$\\ln x + 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The log of a power: $\\ln(x^p) = p\\ln x$.",
+    "options": [
+     "The exponent comes out front as a multiplier.",
+     "$(\\ln x)^2$ squares the log, a different function: at $x = e$ it is 1, but $\\ln(e^2) = 2$.",
+     "$\\ln 2 + \\ln x = \\ln(2x)$.",
+     "Adding 2 is not the same as multiplying by 2."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exp-log-10",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Evaluate $e^{\\ln 5 + \\ln 2}$ exactly.",
+   "numeric": {
+    "answer": 10,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "$\\ln 5 + \\ln 2 = \\ln(5 \\cdot 2)$: a sum of logs is the log of a product, so the result is 10."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\ln 5 + \\ln 2 = \\ln 10$, so $e^{\\ln 10} = 10$. (Or: $e^{\\ln 5}e^{\\ln 2} = 5 \\cdot 2$.)"
+   }
+  },
+  {
+   "id": "calc-math-exp-log-11",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $x > 0$, which expression equals $e^{-\\ln x}$?",
+   "options": [
+    "$\\frac{1}{x}$",
+    "$-x$",
+    "$x$",
+    "$\\frac{1}{\\ln x}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$-\\ln x = \\ln x^{-1} = \\ln\\frac{1}{x}$, so $e^{-\\ln x} = \\frac{1}{x}$.",
+    "options": [
+     "$e^{\\ln(1/x)} = \\frac{1}{x}$.",
+     "The minus sign becomes an exponent of $-1$, not a negative output; $e$ to any power is positive.",
+     "That ignores the minus sign.",
+     "$e^{-\\ln x} = \\frac{1}{e^{\\ln x}} = \\frac{1}{x}$, not $\\frac{1}{\\ln x}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exp-log-12",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which equation is true for every $x > 0$ and $y > 0$?",
+   "options": [
+    "$\\ln(xy) = \\ln x + \\ln y$",
+    "$\\ln(x + y) = \\ln x + \\ln y$",
+    "$\\frac{\\ln x}{\\ln y} = \\ln(x - y)$",
+    "$(\\ln x)^2 = 2\\ln x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Logs turn products into sums. Test the others with $x = y = e$: $\\ln(2e) \\approx 1.69$, not 2; $\\frac{1}{1} = 1$, but $\\ln 0$ is undefined; $1^2 = 1$, not 2.",
+    "options": [
+     "The log of a product is a sum of logs.",
+     "At $x = y = e$: $\\ln(2e) \\approx 1.69$, but $\\ln e + \\ln e = 2$.",
+     "There is no rule for a quotient of logs; at $x = y$ the right side is $\\ln 0$.",
+     "At $x = e^3$: $(\\ln x)^2 = 9$, but $2\\ln x = 6$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exp-log-13",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "single",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A substance decays so that $A(t) = 80e^{kt}$ grams after $t$ hours, and half of it remains after 5 hours. What is $k$?",
+   "options": [
+    "$k = -\\frac{\\ln 2}{5}$",
+    "$k = \\frac{\\ln 2}{5}$",
+    "$k = -\\frac{1}{10}$",
+    "$k = \\ln\\left(\\frac{1}{2}\\right) \\cdot 5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$80e^{5k} = 40$, so $e^{5k} = \\frac{1}{2}$ and $5k = \\ln\\frac{1}{2} = -\\ln 2$. Then $k = -\\frac{\\ln 2}{5} \\approx -0.139$.",
+    "options": [
+     "$5k = -\\ln 2$.",
+     "A positive $k$ means growth, not decay; $\\ln\\frac{1}{2}$ is negative.",
+     "Halving is not losing a tenth per hour; solve $e^{5k} = \\frac{1}{2}$ with logs.",
+     "Divide by 5 to solve $5k = \\ln\\frac{1}{2}$; do not multiply."
+    ]
+   }
+  }
+ ]
+}

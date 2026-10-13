@@ -1,0 +1,521 @@
+{
+ "stimuli": {
+  "first-derivative-test-s1": {
+   "kind": "graph",
+   "title": "The graph of $f'$, the derivative of $f$",
+   "text": "The graph shows $f'(x) = \\frac{x(x + 3)(x - 2)^2}{20}$ for $-3.8 \\le x \\le 3.2$. Its zeros are $x = -3$, $x = 0$ and $x = 2$, where the graph touches the axis without crossing.",
+   "plot": {
+    "label": "Graph of f prime from -3.8 to 3.2: positive until x = -3, negative between -3 and 0, positive from 0 to 2, touching zero at x = 2, then positive again",
+    "x": [
+     -4,
+     3.5
+    ],
+    "y": [
+     -2,
+     5.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x(x + 3)(x - 2)^2/20",
+      "domain": [
+       -3.8,
+       3.2
+      ],
+      "cls": "s2",
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "label": "f'"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -3,
+       0
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       0,
+       0
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       2,
+       0
+      ],
+      "cls": "s2"
+     }
+    ]
+   }
+  },
+  "first-derivative-test-s2": {
+   "kind": "table",
+   "title": "Signs of $g'$",
+   "text": "The function $g$ is continuous for all real numbers. The table describes $g'$.",
+   "table": {
+    "caption": "The sign of $g'(x)$ on intervals and its value at three points",
+    "cols": [
+     "$x$",
+     "$x < -1$",
+     "$-1$",
+     "$-1 < x < 2$",
+     "$2$",
+     "$2 < x < 5$",
+     "$5$",
+     "$x > 5$"
+    ],
+    "rows": [
+     [
+      "$g'(x)$",
+      "positive",
+      "0",
+      "negative",
+      "undefined",
+      "negative",
+      "0",
+      "positive"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-first-derivative-test-1",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "first-derivative-test-s1",
+   "q": "At what value of $x$ does $f$ have a relative maximum?",
+   "numeric": {
+    "answer": -3,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "At $x = 0$, $f'$ changes from negative to positive: that is a relative minimum."
+     },
+     {
+      "value": 2,
+      "why": "At $x = 2$, $f'$ touches 0 but stays positive on both sides, so there is no extremum."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'$ changes from positive to negative at $x = -3$, so $f$ has a relative maximum there."
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-2",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "first-derivative-test-s1",
+   "q": "What happens to $f$ at $x = 2$?",
+   "options": [
+    "A relative minimum, because $f'(2) = 0$",
+    "A relative maximum, because $f'$ decreases down to 0 just before $x = 2$",
+    "A relative minimum, because $f'$ has a low point at $x = 2$",
+    "No relative extremum, because $f'$ does not change sign at $x = 2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f'(x) > 0$ on both sides of $x = 2$ (the graph touches the axis there), so $f$ is increasing through $x = 2$ and has no relative extremum.",
+    "options": [
+     "$f'(2) = 0$ makes 2 a critical point, not an extremum.",
+     "$f'$ is positive on both sides; $f$ rises through $x = 2$.",
+     "A low point of $f'$ says something about concavity, and $f'$ never goes negative here.",
+     "$f' > 0$ just left and just right of 2: $f$ keeps rising."
+    ]
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-3",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "first-derivative-test-s1",
+   "q": "Which justification earns credit for \"$f$ has a relative minimum at $x = 0$\"?",
+   "options": [
+    "\"$f'(0) = 0$.\"",
+    "\"$f'(x) < 0$ for $-3 < x < 0$.\"",
+    "\"$f'$ changes from negative to positive at $x = 0$.\"",
+    "\"The graph crosses the $x$-axis at $x = 0$.\""
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "First Derivative Test: $f'$ changes from negative to positive at $x = 0$, so $f$ has a relative minimum there.",
+    "options": [
+     "A zero of $f'$ alone does not decide: see $x = 2$.",
+     "Half the story: $f'$ must also be positive just after 0.",
+     "It names $f'$ and the direction of the sign change.",
+     "Which graph, and crossing in which direction? Name $f'$ and the signs."
+    ]
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-4",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "multi",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "first-derivative-test-s1",
+   "q": "At which values of $x$ does $f$ have a relative minimum? Select each one.",
+   "options": [
+    "$x = -3$",
+    "$x = 0$",
+    "$x = 2$",
+    "$x \\approx -1.7$, where $f'$ is lowest"
+   ],
+   "correct": [
+    1
+   ],
+   "why": {
+    "correct": "Only at $x = 0$ does $f'$ change from negative to positive.",
+    "options": [
+     "$f'$ goes from positive to negative there: a relative maximum.",
+     "$f'$ goes from negative to positive.",
+     "$f'$ does not change sign.",
+     "$f'$ is negative on both sides of $-1.7$; $f$ is still falling."
+    ]
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-5",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "first-derivative-test-s2",
+   "q": "Where does $g$ have a relative maximum?",
+   "options": [
+    "At $x = -1$",
+    "At $x = 2$",
+    "At $x = 5$",
+    "At $x = -1$ and $x = 5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g'$ changes from positive to negative at $x = -1$, so $g$ has a relative maximum there.",
+    "options": [
+     "$g'$ changes from positive to negative at $x = -1$.",
+     "$g'$ is negative on both sides of 2.",
+     "$g'$ changes from negative to positive at 5: a minimum.",
+     "At $x = 5$ the change is from negative to positive."
+    ]
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-6",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "first-derivative-test-s2",
+   "q": "$g'(2)$ is undefined. What does $g$ have at $x = 2$?",
+   "options": [
+    "A relative minimum, because the derivative $g'(2)$ does not exist",
+    "A relative maximum, because $g$ has a corner there",
+    "A point where $g$ is not continuous",
+    "No relative extremum: $g'$ is negative on both sides"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$x = 2$ is a critical point because $g'(2)$ does not exist, but $g' < 0$ on $(-1, 2)$ and on $(2, 5)$, so $g$ is decreasing through $x = 2$: no extremum.",
+    "options": [
+     "An undefined derivative only makes a critical point.",
+     "A corner can be a peak only if $g'$ changes from positive to negative.",
+     "The problem says $g$ is continuous everywhere.",
+     "$x = 2$ is a critical point, but $g$ keeps decreasing through it."
+    ]
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-7",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "first-derivative-test-s2",
+   "q": "At what value of $x$ does $g$ have a relative minimum?",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "At $x = 2$, $g'$ is negative on both sides: no extremum."
+     },
+     {
+      "value": -1,
+      "why": "At $x = -1$, $g'$ changes from positive to negative: a maximum."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g'$ changes from negative to positive at $x = 5$, so $g$ has a relative minimum there."
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-8",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "first-derivative-test-s2",
+   "q": "A student answers \"relative minimum at $x = 5$\" and shows only a sign chart for $g'$. Why can this lose the justification point?",
+   "options": [
+    "The sign chart should be for $g$, not $g'$",
+    "A sign chart alone is not a justification; it must be explained in words, such as \"$g'$ changes from negative to positive at $x = 5$\"",
+    "A relative minimum needs $g''(5) > 0$ as well",
+    "The student also had to find the value $g(5)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Scoring rewards a sentence that names the function and what it does: \"$g'$ changes from negative to positive at $x = 5$, so $g$ has a relative minimum there.\" A sign chart can support that sentence but not replace it.",
+    "options": [
+     "The signs of $g'$ are what decide; a chart of $g$ would show nothing about slope.",
+     "Readers score sentences that name the function and the sign change, not a chart by itself.",
+     "The First Derivative Test is enough; $g''$ is not needed.",
+     "The question asks where, not the value."
+    ]
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-9",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the relative maximum value of $f(x) = x^3 - 3x^2 - 9x + 4$.",
+   "numeric": {
+    "answer": 9,
+    "mistakes": [
+     {
+      "value": -23,
+      "why": "$f(3) = -23$ is the relative minimum value: $f'$ changes from negative to positive at $x = 3$."
+     },
+     {
+      "value": -1,
+      "why": "$x = -1$ is where the maximum happens. The question asks for the value, $f(-1)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 3x^2 - 6x - 9 = 3(x - 3)(x + 1)$. $f'$ changes from positive to negative at $x = -1$, so the relative maximum value is $f(-1) = -1 - 3 + 9 + 4 = 9$."
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-10",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the relative minimum value of $f(x) = x e^x$. Give an exact answer.",
+   "numeric": {
+    "answer": "-1/e",
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "$x = -1$ is where the minimum happens. The value is $f(-1) = -1 \\cdot e^{-1}$."
+     },
+     {
+      "value": "-e",
+      "why": "$e^{-1} = \\frac{1}{e}$, so $f(-1) = -\\frac{1}{e}$, not $-e$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = e^x + xe^x = (1 + x)e^x$, which changes from negative to positive at $x = -1$. The relative minimum value is $f(-1) = -e^{-1} = -\\frac{1}{e}$."
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-11",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "$f(x) = x^{5/3} - 5x^{2/3}$ has $f'(x) = \\frac{5(x - 2)}{3x^{1/3}}$. Where does $f$ have a relative maximum?",
+   "options": [
+    "At $x = 2$, where $f'(x) = 0$",
+    "Nowhere: $f'$ is undefined at $x = 0$, so the test fails there",
+    "At $x = 0$, where $f'$ does not exist",
+    "At $x = 0$, because $f(0) = 0$ is the largest value of $f$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Critical points: $x = 0$ ($f'$ undefined) and $x = 2$ ($f' = 0$). $f' > 0$ for $x < 0$ and $f' < 0$ for $0 < x < 2$, so $f$ has a relative maximum at $x = 0$ (a cusp).",
+    "options": [
+     "At $x = 2$, $f'$ goes from negative to positive: a relative minimum.",
+     "The First Derivative Test works at points where $f'$ is undefined too, as long as $f$ is continuous there.",
+     "For $x < 0$, both $x - 2$ and $x^{1/3}$ are negative, so $f' > 0$; for $0 < x < 2$, $f' < 0$. Positive to negative.",
+     "$f(0) = 0$ is not the largest value: $f(10) > 0$, for instance. Use the sign change of $f'$."
+    ]
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-12",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "calc": true,
+   "q": "The derivative of $f$ is $f'(x) = e^{\\sin x} - 1.5$. On $0 < x < 4$, at what value of $x$ does $f$ have a relative maximum?",
+   "numeric": {
+    "answer": 2.724105070861771,
+    "mistakes": [
+     {
+      "value": 0.41748758272802217,
+      "why": "At $x \\approx 0.417$, $f'$ changes from negative to positive: that is a relative minimum."
+     },
+     {
+      "value": 156.07913338208567,
+      "why": "That is in degrees. Use radian mode."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Graph $y = e^{\\sin x} - 1.5$ (radian mode). Zeros on $(0, 4)$: $x \\approx 0.417$ and $x \\approx 2.724$. $f'$ changes from positive to negative at $x \\approx 2.724$, so $f$ has a relative maximum there."
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-13",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "$g'(x) = (x - 1)(x + 2)^2$. Which describes the relative extrema of $g$?",
+   "options": [
+    "A relative minimum at $x = 1$ and no extremum at $x = -2$",
+    "A relative maximum at $x = -2$ and a relative minimum at $x = 1$",
+    "A relative minimum at $x = -2$ and at $x = 1$",
+    "A relative maximum at $x = 1$ and no extremum at $x = -2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The squared factor never changes sign. $g' < 0$ for $x < 1$ (except $g'(-2) = 0$) and $g' > 0$ for $x > 1$: a relative minimum at $x = 1$ only.",
+    "options": [
+     "$(x + 2)^2 \\ge 0$, so $g'$ has the sign of $x - 1$: negative, then positive at 1.",
+     "$g' < 0$ on both sides of $-2$, so $g$ keeps falling there.",
+     "At $x = -2$, $g'$ does not change sign.",
+     "$g'$ goes from negative to positive at 1: a minimum."
+    ]
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-14",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $f(x) = x^4 - 4x^3$, which is true?",
+   "options": [
+    "$f$ has a relative maximum at $x = 0$ and a relative minimum at $x = 3$",
+    "$f$ has relative minima at $x = 0$ and $x = 3$",
+    "$f$ has no relative extrema",
+    "$f$ has a relative minimum at $x = 3$ and no extremum at $x = 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f'(x) = 4x^3 - 12x^2 = 4x^2(x - 3)$. The factor $4x^2$ is never negative, so the sign of $f'$ is that of $x - 3$: a relative minimum at $x = 3$ and nothing at $x = 0$.",
+    "options": [
+     "$f' < 0$ on both sides of 0, so $f$ falls through 0.",
+     "No sign change at 0.",
+     "$f'$ changes from negative to positive at 3.",
+     "$f'(x) = 4x^2(x - 3)$: negative for $x < 3$ (zero at 0), positive for $x > 3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-15",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which function has $f'(0) = 0$ but no relative extremum at $x = 0$?",
+   "options": [
+    "$f(x) = x^2$",
+    "$f(x) = x^4 - 1$",
+    "$f(x) = x^3$",
+    "$f(x) = 3 - x^2$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For $x^3$, $f'(x) = 3x^2 \\ge 0$ on both sides of 0, so $f$ rises through 0. A zero of $f'$ without a sign change is not an extremum.",
+    "options": [
+     "$f'(x) = 2x$ changes from negative to positive: a minimum.",
+     "$f'(x) = 4x^3$ changes from negative to positive: a minimum.",
+     "$f'(x) = 3x^2$ is positive on both sides of 0: no sign change.",
+     "$f'(x) = -2x$ changes from positive to negative: a maximum."
+    ]
+   }
+  },
+  {
+   "id": "calc-first-derivative-test-16",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $f(x) = |x - 2| + 1$, what does $f$ have at $x = 2$?",
+   "options": [
+    "No extremum, because $f'(2)$ does not exist",
+    "A relative minimum, because $f'$ changes from $-1$ to $1$ there",
+    "A relative maximum, because the graph has a corner",
+    "A relative minimum, because $f'(2) = 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f'(x) = -1$ for $x < 2$ and $1$ for $x > 2$, and $f$ is continuous at 2. $f'$ changes from negative to positive, so $f(2) = 1$ is a relative minimum.",
+    "options": [
+     "An undefined derivative makes a critical point; the sign change decides.",
+     "$f$ falls with slope $-1$ then rises with slope $1$: negative to positive.",
+     "The corner is a valley, not a peak: $f'$ goes from negative to positive.",
+     "$f'(2)$ does not exist; it is not 0."
+    ]
+   }
+  }
+ ]
+}

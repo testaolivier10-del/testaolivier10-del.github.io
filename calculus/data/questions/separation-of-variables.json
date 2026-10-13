@@ -1,0 +1,518 @@
+{
+ "stimuli": {
+  "separation-of-variables-s1": {
+   "kind": "table",
+   "title": "Four differential equations",
+   "table": {
+    "caption": "Four differential equations, labeled I to IV",
+    "cols": [
+     "Label",
+     "I",
+     "II",
+     "III",
+     "IV"
+    ],
+    "rows": [
+     [
+      "Equation",
+      "$\\frac{dy}{dx} = 2xy^2$",
+      "$\\frac{dy}{dx} = x + y$",
+      "$\\frac{dy}{dx} = e^{x - y}$",
+      "$\\frac{dy}{dx} = x^2 - y^2$"
+     ]
+    ]
+   }
+  },
+  "separation-of-variables-s2": {
+   "kind": "graph",
+   "title": "Curves $y = Ae^{-x^2}$ for $\\frac{dy}{dx} = -2xy$",
+   "plot": {
+    "label": "Graphs of y = A e to the minus x squared for A = 2, 1 and -1 on -2.5 to 2.5, bell-shaped curves above and below the x-axis",
+    "x": [
+     -2.5,
+     2.5
+    ],
+    "y": [
+     -1.5,
+     2.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2e^(-x^2)",
+      "label": "A = 2",
+      "cls": "s1"
+     },
+     {
+      "fn": "e^(-x^2)",
+      "label": "A = 1",
+      "cls": "s2"
+     },
+     {
+      "fn": "-e^(-x^2)",
+      "label": "A = -1",
+      "cls": "s3"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-separation-of-variables-1",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "multi",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "separation-of-variables-s1",
+   "q": "Which equations in the table are separable? Select all that apply.",
+   "options": [
+    "I",
+    "II",
+    "III",
+    "IV"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Separable means the right side is $g(x)h(y)$. I and III factor that way; II and IV do not.",
+    "options": [
+     "$2xy^2 = (2x)(y^2)$, a product of a function of $x$ and a function of $y$.",
+     "$x + y$ is a sum; it cannot be written as $g(x)h(y)$.",
+     "$e^{x - y} = e^{x} \\cdot e^{-y}$, a product.",
+     "$x^2 - y^2$ is a difference of a function of $x$ and a function of $y$, not a product of one with the other."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-2",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "separation-of-variables-s1",
+   "q": "Which is a correct separation of equation III?",
+   "options": [
+    "$e^{-y}\\,dy = e^{x}\\,dx$",
+    "$dy = e^{x - y}\\,dx$",
+    "$e^{y}\\,dy = e^{-x}\\,dx$",
+    "$e^{y}\\,dy = e^{x}\\,dx$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$e^{x - y} = \\frac{e^{x}}{e^{y}}$, so $e^{y}\\,dy = e^{x}\\,dx$.",
+    "options": [
+     "$e^{-y}$ is on the right side of the equation; moving it to the left divides by it, giving $e^{y}$.",
+     "$y$ is still on the $dx$ side: not separated.",
+     "The $x$ factor $e^{x}$ stays as it is; only the $y$ factor moves.",
+     "$\\frac{dy}{dx} = \\frac{e^{x}}{e^{y}}$; multiply both sides by $e^{y}\\,dx$."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-3",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "separation-of-variables-s1",
+   "q": "Separating equation I gives $y^{-2}\\,dy = 2x\\,dx$. Find $\\int y^{-2}\\,dy$.",
+   "expr": {
+    "answer": "-1/y",
+    "vars": [
+     "y"
+    ],
+    "domain": [
+     0.5,
+     3
+    ],
+    "mode": "constant",
+    "lhs": "\\int y^{-2}\\,dy =",
+    "mistakes": [
+     {
+      "expr": "1/y",
+      "why": "Raise the power by one: $\\frac{y^{-1}}{-1} = -\\frac{1}{y}$. The minus sign comes from dividing by $-1$."
+     },
+     {
+      "expr": "-1/(3y^3)",
+      "why": "That lowers the power, as a derivative would. An antiderivative raises it: $y^{-2} \\to \\frac{y^{-1}}{-1}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int y^{-2}\\,dy = \\frac{y^{-1}}{-1} + C = -\\frac{1}{y} + C$."
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-4",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "separation-of-variables-s1",
+   "q": "What is the general solution of equation I?",
+   "options": [
+    "$y = -\\frac{1}{x^2} + C$",
+    "$y = -\\frac{1}{x^2 + C}$",
+    "$y = \\frac{1}{x^2 + C}$",
+    "$y = -(x^2 + C)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\int y^{-2}\\,dy = \\int 2x\\,dx$ gives $-\\frac{1}{y} = x^2 + C$, so $y = -\\frac{1}{x^2 + C}$.",
+    "options": [
+     "The constant was added after solving for $y$; it belongs right after integrating.",
+     "$-\\frac{1}{y} = x^2 + C$, then take reciprocals and change the sign.",
+     "$\\int y^{-2}\\,dy = -\\frac{1}{y}$; the minus sign was lost.",
+     "From $-\\frac{1}{y} = x^2 + C$, $y$ is the reciprocal, not the negative."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-5",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "separation-of-variables-s1",
+   "q": "What is the general solution of equation III?",
+   "options": [
+    "$y = \\ln\\left(e^{x} + C\\right)$",
+    "$y = x + C$",
+    "$y = \\ln\\left(e^{x}\\right) + C$",
+    "$y = e^{x} + C$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$e^{y} = e^{x} + C$, so $y = \\ln\\left(e^{x} + C\\right)$ wherever $e^{x} + C > 0$.",
+    "options": [
+     "$\\int e^{y}\\,dy = \\int e^{x}\\,dx$ gives $e^{y} = e^{x} + C$; take $\\ln$.",
+     "From $e^{y} = e^{x} + C$, $\\ln$ of a sum is not $x + C$.",
+     "The constant must be inside the logarithm, where it appeared.",
+     "That is $e^{y}$, not $y$. Take the natural log."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-6",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "separation-of-variables-s2",
+   "q": "Separating $\\frac{dy}{dx} = -2xy$ and integrating gives which equation?",
+   "options": [
+    "$\\ln y = -x^2$",
+    "$\\frac{1}{y} = -x^2 + C$",
+    "$\\frac{y^2}{2} = -x^2 + C$",
+    "$\\ln|y| = -x^2 + C$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{dy}{y} = -2x\\,dx$, then $\\ln|y| = -x^2 + C$.",
+    "options": [
+     "The constant is missing, and so is the absolute value.",
+     "An antiderivative of $\\frac{1}{y}$ is $\\ln|y|$, not $\\frac{1}{y}$.",
+     "That integrates $y$, but after separating the left side is $\\frac{1}{y}$.",
+     "$\\int \\frac{dy}{y} = \\int -2x\\,dx$."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-7",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "separation-of-variables-s2",
+   "q": "Why may the constant $A$ in $y = Ae^{-x^2}$ be negative, as for the lowest curve?",
+   "options": [
+    "Because $e^{-x^2}$ can be negative.",
+    "Because $C$ can be negative, so $e^{C}$ can be negative.",
+    "From $\\ln|y| = -x^2 + C$, $y = \\pm e^{C}e^{-x^2}$; $A = \\pm e^{C}$ takes either sign.",
+    "It may not: negative curves do not satisfy the equation."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$|y| = e^{C}e^{-x^2}$, so $y = \\pm e^{C}e^{-x^2}$. Writing $A = \\pm e^{C}$ covers positive and negative curves.",
+    "options": [
+     "$e^{-x^2} > 0$ for every $x$.",
+     "$e^{C} > 0$ for any $C$; the sign comes from the absolute value.",
+     "Keeping the absolute value keeps the negative solutions.",
+     "$y = -e^{-x^2}$ gives $\\frac{dy}{dx} = 2xe^{-x^2} = -2xy$. It works."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-8",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "separation-of-variables-s2",
+   "q": "The top curve is $y = 2e^{-x^2}$. Find $y$ at $x = 1$.",
+   "numeric": {
+    "answer": "2/e",
+    "mistakes": [
+     {
+      "value": "2e",
+      "why": "The exponent is $-x^2 = -1$, so the value is $2e^{-1} = \\frac{2}{e}$."
+     },
+     {
+      "value": "2",
+      "why": "$e^{-1}$ is not 1: $y(1) = 2e^{-1}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y(1) = 2e^{-1} = \\frac{2}{e}$."
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-9",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "separation-of-variables-s2",
+   "q": "The $x$-axis, $y = 0$, also satisfies $\\frac{dy}{dx} = -2xy$. What happened to it during separation?",
+   "options": [
+    "Dividing by $y$ assumed $y \\ne 0$; the family $y = Ae^{-x^2}$ recovers it with $A = 0$.",
+    "It is not a solution, since $\\ln 0$ is undefined.",
+    "It is the curve with $C = 0$ in $\\ln|y| = -x^2 + C$.",
+    "It appears when $x = 0$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dividing by $y$ hides the solution $y = 0$; the form $y = Ae^{-x^2}$ brings it back with $A = 0$.",
+    "options": [
+     "Separation divides by $y$, so $y = 0$ is checked separately; here $A = 0$ includes it.",
+     "$y = 0$ gives $\\frac{dy}{dx} = 0 = -2x \\cdot 0$: it is a solution.",
+     "$C = 0$ gives $|y| = e^{-x^2}$, the curves with $A = \\pm 1$.",
+     "At $x = 0$ the curves are at $y = A$, not on the $x$-axis."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-10",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is a correct first step in separating $\\frac{dy}{dx} = \\frac{x^2}{y}$?",
+   "options": [
+    "$\\frac{dy}{y} = x^2\\,dx$",
+    "$y\\,dy = \\frac{dx}{x^2}$",
+    "$dy = \\frac{x^2}{y}\\,dx$",
+    "$y\\,dy = x^2\\,dx$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$y\\,dy = x^2\\,dx$ has only $y$ with $dy$ and only $x$ with $dx$.",
+    "options": [
+     "$y$ is in the denominator on the right; moving it multiplies, giving $y\\,dy$.",
+     "$x^2$ is in the numerator; it stays there.",
+     "$y$ is still on the $dx$ side: not separated.",
+     "Multiply both sides by $y\\,dx$."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-11",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A separation ends with $\\ln|y| = 2x + 5$, and $y > 0$. Solve for $y$.",
+   "expr": {
+    "answer": "e^(2x+5)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     0
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "e^(2x)+5",
+      "why": "Exponentiate the whole right side: $y = e^{2x + 5} = e^5e^{2x}$, not $e^{2x} + 5$."
+     },
+     {
+      "expr": "2x+5",
+      "why": "$\\ln y = 2x + 5$ means $y = e^{2x + 5}$; undo the logarithm."
+     },
+     {
+      "expr": "e^(2x)+e^5",
+      "why": "$e^{a + b} = e^{a}e^{b}$, a product, not a sum."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y = e^{2x + 5} = e^5e^{2x}$ (with $y > 0$ the absolute value drops)."
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-12",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Separate and integrate $\\frac{dy}{dx} = y\\cos x$.",
+   "options": [
+    "$y = \\sin x + C$",
+    "$\\ln|y| = \\sin x + C$",
+    "$\\ln|y| = -\\sin x + C$",
+    "$\\ln|y| = \\sin x$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{dy}{y} = \\cos x\\,dx$, so $\\ln|y| = \\sin x + C$, and $y = Ae^{\\sin x}$.",
+    "options": [
+     "$y$ multiplies $\\cos x$; it must be divided across before integrating.",
+     "$\\int \\frac{dy}{y} = \\int \\cos x\\,dx$.",
+     "An antiderivative of $\\cos x$ is $+\\sin x$.",
+     "The constant of integration is missing."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-13",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes: \"$\\frac{dy}{dx} = x + y$, so $\\frac{dy}{y} = x\\,dx$.\" What is wrong?",
+   "options": [
+    "$x + y$ is a sum, so dividing by $y$ leaves $\\frac{x}{y} + 1$: the equation is not separable.",
+    "Nothing: dividing by $y$ is allowed when $y \\ne 0$.",
+    "The student should have written $y\\,dy = x\\,dx$.",
+    "The student forgot $+ C$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Separation needs $g(x)h(y)$. A sum such as $x + y$ cannot be split that way.",
+    "options": [
+     "Dividing $x + y$ by $y$ does not leave $x$.",
+     "$\\frac{x + y}{y} = \\frac{x}{y} + 1$, not $x$.",
+     "That would also be wrong: the right side is not a product.",
+     "No integration has happened yet; the separation itself is wrong."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-14",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Separate and integrate $\\frac{dT}{dt} = -0.05(T - 20)$.",
+   "options": [
+    "$\\ln|T| - 20 = -0.05t + C$",
+    "$\\ln|T - 20| = -0.05t$",
+    "$T - 20 = -0.05t + C$",
+    "$\\ln|T - 20| = -0.05t + C$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{dT}{T - 20} = -0.05\\,dt$, so $\\ln|T - 20| = -0.05t + C$.",
+    "options": [
+     "The whole $T - 20$ is in the denominator: $\\int \\frac{dT}{T - 20} = \\ln|T - 20|$.",
+     "The constant of integration is missing.",
+     "An antiderivative of $\\frac{1}{T - 20}$ is a logarithm.",
+     "$\\int \\frac{dT}{T - 20} = \\int -0.05\\,dt$."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-15",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "After separating, a student writes $\\ln|y| + C_1 = x^3 + C_2$. Why is it enough to write a single $+ C$?",
+   "options": [
+    "Because the two constants are equal and cancel.",
+    "Because $C$ belongs on the $y$ side.",
+    "$C_2 - C_1$ is just another constant, so one $C$ on one side covers every case.",
+    "Because the constant is added at the end, after solving."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\ln|y| = x^3 + (C_2 - C_1)$, and $C_2 - C_1$ is one arbitrary constant $C$.",
+    "options": [
+     "They need not be equal; their difference is what remains.",
+     "Either side works; the $x$ side is usual.",
+     "Two arbitrary constants combine into one.",
+     "Adding it at the end is the classic mistake; it goes in when you integrate."
+    ]
+   }
+  },
+  {
+   "id": "calc-separation-of-variables-16",
+   "unit": "unit-7",
+   "topic": "separation-of-variables",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Separating $\\frac{dy}{dx} = \\frac{x}{y}$ gives $y^2 = x^2 + C$. Find $C$ for the solution curve through $(1, 3)$.",
+   "numeric": {
+    "answer": 8,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "Square the coordinates: $9 = 1 + C$."
+     },
+     {
+      "value": 10,
+      "why": "$C = y^2 - x^2 = 9 - 1$, not $9 + 1$."
+     },
+     {
+      "value": -8,
+      "why": "$9 = 1 + C$ gives $C = +8$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$3^2 = 1^2 + C$, so $C = 8$."
+   }
+  }
+ ]
+}

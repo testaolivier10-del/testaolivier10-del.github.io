@@ -1,0 +1,5 @@
+{
+ "trig-derivative": {
+  "def": "The derivatives of the other four trigonometric functions: $\\frac{d}{dx}(\\tan x) = \\sec^2 x$, $\\frac{d}{dx}(\\cot x) = -\\csc^2 x$, $\\frac{d}{dx}(\\sec x) = \\sec x\\tan x$ and $\\frac{d}{dx}(\\csc x) = -\\csc x\\cot x$, each found with the quotient rule from sine and cosine."
+ }
+}

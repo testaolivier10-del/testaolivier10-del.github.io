@@ -1,0 +1,5 @@
+{
+ "net-change-theorem": {
+  "def": "The Fundamental Theorem read in context: the integral of a rate of change is the net change, $\\int_a^b f'(x)\\,dx = f(b) - f(a)$. So $f(b) = f(a) + \\int_a^b f'(x)\\,dx$: the value at the end is the starting value plus the accumulated change."
+ }
+}

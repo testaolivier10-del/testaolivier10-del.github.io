@@ -1,0 +1,5 @@
+{
+ "increasing": {
+  "def": "$f$ is increasing on an interval if $f(x_1) < f(x_2)$ whenever $x_1 < x_2$ in the interval, and decreasing if $f(x_1) > f(x_2)$. If $f'(x) > 0$ on an interval, $f$ is increasing there; if $f'(x) < 0$, it is decreasing."
+ }
+}

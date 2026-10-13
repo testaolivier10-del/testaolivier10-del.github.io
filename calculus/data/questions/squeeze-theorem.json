@@ -1,0 +1,523 @@
+{
+ "stimuli": {
+  "squeeze-theorem-s1": {
+   "kind": "graph",
+   "title": "Three functions near $x = 2$",
+   "plot": {
+    "label": "Graphs of g(x) = 3 - (x - 2)^2 (dashed), h(x) = 3 + (x - 2)^2, and f, which wiggles between them and is undefined at x = 2, shown with an open circle at (2, 3)",
+    "x": [
+     0,
+     4
+    ],
+    "y": [
+     0,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "3 + (x - 2)^2",
+      "domain": [
+       0.4,
+       3.6
+      ],
+      "cls": "s2",
+      "label": "h"
+     },
+     {
+      "fn": "3 - (x - 2)^2",
+      "domain": [
+       0.4,
+       3.6
+      ],
+      "cls": "s2",
+      "dashed": true,
+      "label": "g"
+     },
+     {
+      "fn": "3 + (x - 2)^2*sin(1/(x - 2))",
+      "domain": [
+       0.4,
+       3.6
+      ],
+      "cls": "s1",
+      "label": "f",
+      "samples": 2000
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       3
+      ],
+      "open": true
+     }
+    ]
+   }
+  },
+  "squeeze-theorem-s2": {
+   "kind": "table",
+   "title": "Bounds on an unknown function $f$",
+   "table": {
+    "caption": "Two facts about a function f, valid for every real x",
+    "cols": [
+     "Fact",
+     "Statement"
+    ],
+    "rows": [
+     [
+      "Lower bound",
+      "$4x - 4 \\le f(x)$"
+     ],
+     [
+      "Upper bound",
+      "$f(x) \\le x^2$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-squeeze-theorem-1",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "squeeze-theorem-s1",
+   "q": "The graph shows $g(x) = 3 - (x - 2)^2$ and $h(x) = 3 + (x - 2)^2$, with $g(x) \\le f(x) \\le h(x)$ for every $x \\ne 2$. Find $\\lim_{x \\to 2} f(x)$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$f$ is not defined at 2, but that does not make its limit 0. Both bounds approach 3, so $f$ is squeezed to 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{x \\to 2} g(x) = 3$ and $\\lim_{x \\to 2} h(x) = 3$. Since $g \\le f \\le h$ near 2, the squeeze theorem gives $\\lim_{x \\to 2} f(x) = 3$."
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-2",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "squeeze-theorem-s1",
+   "q": "Which pair of facts is exactly what the squeeze theorem needs to conclude $\\lim_{x \\to 2} f(x) = 3$?",
+   "options": [
+    "$g \\le f \\le h$ near 2, and both $g$ and $h$ have limit 3 there",
+    "$f(2) = 3$, and $f(2)$ lies between $g(2)$ and $h(2)$ at $x = 2$",
+    "$g(2) = h(2)$, and $f$ wiggles faster and faster as $x$ nears 2",
+    "$g(x) \\le h(x)$ near 2, and $h$ has limit 3 as $x$ approaches 2"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The theorem has two parts: the inequality $g \\le f \\le h$ for $x$ near 2 (not at 2), and equal limits $L$ for the two bounds. Then $f$ has limit $L$ too.",
+    "options": [
+     "These are the two conditions: $f$ is trapped, and the trap closes at the single value 3.",
+     "$f(2)$ does not exist here, and the theorem never uses the value at the point.",
+     "Wiggling is not a condition, and equal values at 2 are not the same as equal limits.",
+     "$f$ must be trapped between the bounds, and both bounds need limit 3; one bound is not enough."
+    ]
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-3",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "squeeze-theorem-s1",
+   "q": "Suppose the upper bound were $k(x) = 4 + (x - 2)^2$ instead of $h$, still with $g(x) \\le f(x) \\le k(x)$ near 2. What does the squeeze theorem say about $\\lim_{x \\to 2} f(x)$?",
+   "options": [
+    "The limit is 3.5, halfway between the limits of the bounds",
+    "Nothing: the bounds approach different values, 3 and 4",
+    "The limit is 4, the larger of the two bounds",
+    "The limit does not exist, since the bounds differ"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The squeeze theorem applies only when both bounds have the same limit. With limits 3 and 4 it gives no conclusion; $f$ might have a limit, or might not.",
+    "options": [
+     "Nothing in the theorem averages the bounds.",
+     "Unequal bound limits leave a gap from 3 to 4, so $f$ is not pinned to one value.",
+     "The upper bound does not decide the limit by itself.",
+     "Unequal bounds do not prove the limit fails to exist; the theorem simply gives no answer."
+    ]
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-4",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "multi",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "squeeze-theorem-s1",
+   "q": "Which statements are true about using the squeeze theorem with these graphs?",
+   "options": [
+    "$f(2)$ does not need to be defined",
+    "The inequality $g \\le f \\le h$ is needed on the whole real line",
+    "$g$ and $h$ need the same limit at $x = 2$",
+    "$f(2)$ has to lie between $g(2)$ and $h(2)$"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "The theorem needs the inequality near the point and bounds with equal limits; the value at the point plays no part.",
+    "options": [
+     "A limit describes values near 2, so the value at 2 is never used.",
+     "It is needed only on an open interval around 2 (except possibly at 2).",
+     "That shared limit is what $f$ is squeezed to.",
+     "$f(2)$ does not exist here, and the theorem works anyway."
+    ]
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-5",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "squeeze-theorem-s2",
+   "q": "Use the two bounds in the table to find $\\lim_{x \\to 2} f(x)$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "2 is where $x$ goes. Evaluate the bounds as $x \\to 2$: $4(2) - 4 = 4$ and $2^2 = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{x \\to 2} (4x - 4) = 4$ and $\\lim_{x \\to 2} x^2 = 4$. Since $4x - 4 \\le f(x) \\le x^2$, the squeeze theorem gives $\\lim_{x \\to 2} f(x) = 4$."
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-6",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "squeeze-theorem-s2",
+   "q": "Which value is NOT possible for $f(3)$?",
+   "options": [
+    "$8$",
+    "$8.5$",
+    "$10$",
+    "$9$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At $x = 3$ the bounds give $4(3) - 4 \\le f(3) \\le 3^2$, so $8 \\le f(3) \\le 9$. The value 10 is outside.",
+    "options": [
+     "$8$ equals the lower bound $4(3) - 4$, which the inequality allows.",
+     "$8.5$ lies between 8 and 9.",
+     "$10 > 9 = 3^2$, so it breaks the upper bound.",
+     "$9$ equals the upper bound $3^2$, which the inequality allows."
+    ]
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-7",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "squeeze-theorem-s2",
+   "q": "Can these bounds find $\\lim_{x \\to 0} f(x)$?",
+   "options": [
+    "Yes: the limit is $0$, the value of the upper bound",
+    "Yes: the limit is $-4$, the value of the lower bound",
+    "Yes: the limit is $-2$, halfway between the bounds",
+    "No: as $x \\to 0$ the bounds approach $-4$ and $0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At 0 the lower bound approaches $-4$ and the upper bound approaches $0$. The squeeze needs equal limits, so it says only that $f$ stays between them near 0.",
+    "options": [
+     "One bound alone does not decide the limit.",
+     "One bound alone does not decide the limit.",
+     "The theorem never averages; with a gap between the bounds it gives no value.",
+     "Unequal bound limits, $-4$ and $0$, do not pin $f$ to one value."
+    ]
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-8",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "squeeze-theorem-s2",
+   "q": "Which is a complete justification that $\\lim_{x \\to 2} f(x) = 4$?",
+   "options": [
+    "$4x - 4 \\le f(x) \\le x^2$ and both bounds have limit 4 at 2, so by the squeeze theorem the limit is 4",
+    "$f(2) = 4$, because $4(2) - 4 = 4$ and $2^2 = 4$, so the limit of $f$ at 2 is the value 4",
+    "$\\lim_{x \\to 2} x^2 = 4$ and $f(x) \\le x^2$ for each real $x$, so the limit of $f(x)$ as $x$ approaches 2 is 4",
+    "$4x - 4 \\le f(x)$ near 2 and $\\lim_{x \\to 2} (4x - 4) = 4$, so the limit of $f(x)$ as $x \\to 2$ is 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A full justification states the inequality, shows both bounds have the same limit, and names the squeeze theorem.",
+    "options": [
+     "All three pieces are present: the inequality, the equal limits of both bounds, and the theorem.",
+     "This finds $f(2)$, not the limit, and leans on a value of $f$ the theorem never needs.",
+     "An upper bound alone allows any limit at or below 4. Both bounds are needed.",
+     "A lower bound alone allows any limit at or above 4. Both bounds are needed."
+    ]
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-9",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to 0} x^2 \\cos\\left(\\frac{1}{x}\\right)$.",
+   "numeric": {
+    "answer": 0,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$\\cos\\left(\\frac{1}{x}\\right)$ has no limit at 0; it swings between $-1$ and $1$. Use $-x^2 \\le x^2 \\cos\\left(\\frac{1}{x}\\right) \\le x^2$ and squeeze."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Since $-1 \\le \\cos\\left(\\frac{1}{x}\\right) \\le 1$ and $x^2 \\ge 0$, we get $-x^2 \\le x^2 \\cos\\left(\\frac{1}{x}\\right) \\le x^2$ for $x \\ne 0$. Both bounds approach 0, so the limit is 0 by the squeeze theorem."
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-10",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to 0} \\frac{\\sin(5x)}{x}$.",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "The special limit needs the same expression inside the sine and underneath. Write $\\frac{\\sin(5x)}{x} = 5 \\cdot \\frac{\\sin(5x)}{5x}$; the fraction approaches 1, leaving 5."
+     },
+     {
+      "value": "1/5",
+      "why": "Multiply, do not divide: $\\frac{\\sin(5x)}{x} = 5 \\cdot \\frac{\\sin(5x)}{5x} \\to 5 \\cdot 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{\\sin(5x)}{x} = 5 \\cdot \\frac{\\sin(5x)}{5x}$. As $x \\to 0$, $5x \\to 0$, so $\\frac{\\sin(5x)}{5x} \\to 1$. The limit is 5."
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-11",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\lim_{x \\to 0} \\frac{\\sin(2x)}{\\sin(3x)}$.",
+   "numeric": {
+    "answer": "2/3",
+    "mistakes": [
+     {
+      "value": "3/2",
+      "why": "The 2 comes from the top and the 3 from the bottom: $\\frac{\\sin(2x)}{\\sin(3x)} = \\frac{2}{3} \\cdot \\frac{\\sin(2x)}{2x} \\cdot \\frac{3x}{\\sin(3x)} \\to \\frac{2}{3}$."
+     },
+     {
+      "value": 1,
+      "why": "Both sines approach 0, so this is $\\frac{0}{0}$, not 1. Build two copies of the special limit and the constants $\\frac{2}{3}$ remain."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Write $\\frac{\\sin(2x)}{\\sin(3x)} = \\frac{2}{3} \\cdot \\frac{\\sin(2x)}{2x} \\cdot \\frac{3x}{\\sin(3x)}$. Each fraction approaches 1, so the limit is $\\frac{2}{3}$."
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-12",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to 0} \\frac{\\tan x}{x}$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$\\frac{0}{0}$ is not 0. Write $\\frac{\\tan x}{x} = \\frac{\\sin x}{x} \\cdot \\frac{1}{\\cos x}$; the factors approach 1 and 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{\\tan x}{x} = \\frac{\\sin x}{x} \\cdot \\frac{1}{\\cos x}$. As $x \\to 0$, $\\frac{\\sin x}{x} \\to 1$ and $\\cos x \\to 1$, so the limit is $1 \\cdot 1 = 1$."
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-13",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "To squeeze $x \\sin\\left(\\frac{1}{x}\\right)$ as $x \\to 0$, which pair of bounds is valid on both sides of 0?",
+   "options": [
+    "$-x$ and $x$",
+    "$-|x|$ and $|x|$",
+    "$-1$ and $1$",
+    "$0$ and $x^2 + |x|$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\left|x \\sin\\left(\\frac{1}{x}\\right)\\right| \\le |x|$, so $-|x| \\le x \\sin\\left(\\frac{1}{x}\\right) \\le |x|$ for all $x \\ne 0$. Both bounds approach 0, so the limit is 0.",
+    "options": [
+     "For $x < 0$, multiplying by $x$ flips the inequalities, so $-x \\le x\\sin\\left(\\frac{1}{x}\\right) \\le x$ fails there.",
+     "Multiplying $-1 \\le \\sin\\left(\\frac{1}{x}\\right) \\le 1$ by $|x| \\ge 0$ keeps the direction, and both bounds go to 0.",
+     "These are true bounds, but their limits are $-1$ and $1$, which are not equal.",
+     "The function is negative for many $x$, so 0 is not a lower bound."
+    ]
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-14",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $x$ near 0 (not 0), which inequality, together with the squeeze theorem, shows that $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$?",
+   "options": [
+    "$0 \\le \\frac{\\sin x}{x} \\le 1$",
+    "$-1 \\le \\frac{\\sin x}{x} \\le 1$",
+    "$\\cos x \\le \\frac{\\sin x}{x} \\le 1$",
+    "$\\frac{\\sin x}{x} \\le 1 \\le \\cos x$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Both $\\cos x$ and $1$ approach 1 as $x \\to 0$, and the geometry of the unit circle gives $\\cos x \\le \\frac{\\sin x}{x} \\le 1$ near 0. So the limit is 1.",
+    "options": [
+     "True near 0, but the bounds approach 0 and 1, which differ.",
+     "True near 0, but the bounds approach $-1$ and $1$, which differ.",
+     "Both bounds approach 1, so the squeeze gives 1.",
+     "$1 \\le \\cos x$ is false for $x$ near 0 but not 0, since $\\cos x < 1$ there."
+    ]
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-15",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A function satisfies $3 - x^2 \\le f(x) \\le 3 + x^2$ for every $x$. Find $\\lim_{x \\to 0} \\left(2f(x) + 1\\right)$.",
+   "numeric": {
+    "answer": 7,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That is $\\lim_{x \\to 0} f(x)$. The question asks for $2f(x) + 1$, so apply the limit laws: $2(3) + 1 = 7$."
+     },
+     {
+      "value": 6,
+      "why": "Include the $+1$: $2 \\cdot 3 + 1 = 7$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Both bounds approach 3 at 0, so $\\lim_{x \\to 0} f(x) = 3$ by the squeeze theorem. By the limit laws, $\\lim_{x \\to 0} (2f(x) + 1) = 2(3) + 1 = 7$."
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-16",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student writes: \"$-1 \\le \\sin\\left(\\frac{1}{x}\\right) \\le 1$, so by the squeeze theorem $\\lim_{x \\to 0} \\sin\\left(\\frac{1}{x}\\right)$ exists and is between $-1$ and $1$.\" What is wrong?",
+   "options": [
+    "Nothing; the limit exists and is $0$, the midpoint of the two bounds $-1$ and $1$",
+    "The inequality is false near 0, since $\\sin\\left(\\frac{1}{x}\\right)$ can be larger than 1 there",
+    "The theorem requires the function to be defined at $x = 0$, and $\\frac{1}{x}$ is not defined at 0",
+    "The bounds $-1$ and $1$ have different limits, so the theorem says nothing; this limit does not exist"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The squeeze theorem needs the two bounds to share a limit. Here they are the constants $-1$ and $1$. In fact $\\sin\\left(\\frac{1}{x}\\right)$ swings between $-1$ and $1$ infinitely often near 0, so the limit does not exist.",
+    "options": [
+     "Being bounded does not make a limit exist, and the theorem never averages bounds.",
+     "Sine never exceeds 1, so the inequality is true; it just does not help.",
+     "The theorem never needs the value at the point.",
+     "Unequal bounds give no conclusion, and the oscillation shows the limit does not exist."
+    ]
+   }
+  },
+  {
+   "id": "calc-squeeze-theorem-17",
+   "unit": "unit-1",
+   "topic": "squeeze-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\lim_{x \\to \\pi} \\frac{\\sin x}{x - \\pi}$.",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "Let $u = x - \\pi$. Then $\\sin x = \\sin(u + \\pi) = -\\sin u$, so the expression is $-\\frac{\\sin u}{u} \\to -1$. The sign matters."
+     },
+     {
+      "value": 0,
+      "why": "Both parts approach 0: this is $\\frac{0}{0}$, not 0. Shift with $u = x - \\pi$ to reach the special limit."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Let $u = x - \\pi$, so $u \\to 0$. Since $\\sin(u + \\pi) = -\\sin u$, the expression is $\\frac{-\\sin u}{u} \\to -1$."
+   }
+  }
+ ]
+}

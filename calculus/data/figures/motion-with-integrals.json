@@ -1,0 +1,12 @@
+{
+ "velocity-areas": {
+  "file": "figures/velocity-areas.svg",
+  "ext": "svg",
+  "w": 660,
+  "h": 450,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph, drawn from its function by scripts/apcalc-figures/unit-7-8a.mjs",
+  "alt": "The velocity v(t) = t² − 4t + 3 m/s for 0 ≤ t ≤ 4 s. It is positive on (0, 1) and (3, 4), where the region between the graph and the t-axis is shaded crimson with area 4/3 each, and negative on (1, 3), where the region below the axis is shaded blue with area 4/3. Displacement adds signed areas: 4/3 m. Total distance adds the areas: 4 m."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "acc-rate-area": {
+  "file": "figures/acc-rate-area.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of the rate r(t) at which water flows into a tank, in liters per minute, for t from 0 to 12 minutes. The region above the t-axis from 0 to 8 has area 34 (34 liters flow in); the region below the axis from 8 to 12 has area 9 (9 liters drain out). The net change is 25 liters."
+ }
+}

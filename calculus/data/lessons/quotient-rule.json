@@ -1,0 +1,72 @@
+{
+ "topic": "quotient-rule",
+ "hook": "Fuel economy is distance divided by fuel; a medicine's concentration is the amount of drug divided by the volume of blood it spreads through. When the top and the bottom of a fraction both change, the fraction changes in a way neither part shows alone. The quotient rule gives that rate.",
+ "prereq": [
+  {
+   "q": "$\\frac{d}{dx}\\left( f(x)g(x) \\right)$ is",
+   "options": [
+    "$f'(x)g(x) + f(x)g'(x)$",
+    "$f'(x)g'(x)$",
+    "$f'(x)g(x) - f(x)g'(x)$",
+    "$f(x)g'(x)$"
+   ],
+   "correct": 0,
+   "why": "The product rule: each factor takes a turn being differentiated, and the terms add.",
+   "review": "product-rule"
+  },
+  {
+   "q": "$\\frac{d}{dx}\\left( x^2 + 1 \\right)$ is",
+   "options": [
+    "$2x$",
+    "$2x + 1$",
+    "$x^2$",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": "Power rule on $x^2$; the constant has derivative 0.",
+   "review": "basic-derivative-rules"
+  }
+ ],
+ "figure": {
+  "figure": "quotient-graph",
+  "caption": "The quotient $f(x) = \\frac{x}{x^2 + 1}$ (top) and its derivative from the quotient rule, $\\frac{1 - x^2}{(x^2 + 1)^2}$ (bottom): zero where the tangent lines are level, at $x = \\pm 1$, and 1 at $x = 0$."
+ },
+ "chain": [
+  {
+   "cause": "Write $q = \\frac{f}{g}$ as $f = q\\,g$",
+   "effect": "the product rule gives $f' = q'g + qg'$"
+  },
+  {
+   "cause": "Solve for $q'$ and replace $q$ with $\\frac{f}{g}$",
+   "effect": "$q' = \\frac{f'g - fg'}{g^2}$"
+  },
+  {
+   "cause": "The numerator is a difference",
+   "effect": "the order matters: derivative of the top times the bottom comes first"
+  },
+  {
+   "cause": "The denominator is a single power of $x$",
+   "effect": "rewriting as a sum of powers is often faster than the quotient rule"
+  }
+ ],
+ "ideas": [
+  "The <b>quotient rule</b>: $\\frac{d}{dx}\\left( \\frac{f(x)}{g(x)} \\right) = \\frac{f'(x)g(x) - f(x)g'(x)}{\\left( g(x) \\right)^2}$, where $g(x) \\ne 0$.",
+  "Memory aid: \"low d-high minus high d-low, over low squared.\"",
+  "The order in the numerator matters: swapping it flips the sign of the answer.",
+  "The derivative of a quotient is NOT the quotient of the derivatives.",
+  "For $\\frac{3x^2 - 5}{x}$, divide first: $3x - 5x^{-1}$, then use the power rule."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{d}{dx}\\left( \\frac{f}{g} \\right) = \\frac{fg' - f'g}{g^2}$, or $\\frac{f'}{g'}$.",
+  "right": "The numerator starts with the derivative of the top: $f'g - fg'$. Reversing it gives the negative of the right answer. And $\\frac{f'}{g'}$ ignores how each part's size affects the other: $\\frac{x^2}{x} = x$ has derivative 1, but $\\frac{2x}{1} = 2x$."
+ },
+ "check": [
+  "calc-quotient-rule-1",
+  "calc-quotient-rule-2",
+  "calc-quotient-rule-3",
+  "calc-quotient-rule-4",
+  "calc-quotient-rule-14",
+  "calc-quotient-rule-15"
+ ],
+ "summary": "The derivative of $\\frac{f}{g}$ is $\\frac{f'g - fg'}{g^2}$, derived from the product rule by writing $f = \\frac{f}{g} \\cdot g$. Keep the numerator in order and square the denominator. When the denominator is a single term, dividing first and using the power rule is often simpler."
+}

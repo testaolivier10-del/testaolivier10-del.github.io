@@ -1,0 +1,325 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "calc-math-exponent-rules-1",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which expression equals $\\frac{3}{x^2}$ written as a power of $x$?",
+   "options": [
+    "$3x^{-2}$",
+    "$(3x)^{-2}$",
+    "$\\frac{1}{3}x^{-2}$",
+    "$3x^{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only $x^2$ is in the denominator, so only it moves up: $\\frac{3}{x^2} = 3 \\cdot \\frac{1}{x^2} = 3x^{-2}$.",
+    "options": [
+     "The 3 stays where it is; $\\frac{1}{x^2} = x^{-2}$.",
+     "$(3x)^{-2} = \\frac{1}{9x^2}$: the exponent would apply to the 3 as well.",
+     "That is $\\frac{1}{3x^2}$. The 3 was in the numerator, so it stays a multiplier of 3.",
+     "Moving a power out of the denominator flips the sign of its exponent: $x^{-2}$, not $x^2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-2",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which expression equals $\\frac{1}{\\sqrt{x}}$?",
+   "options": [
+    "$x^{-1/2}$",
+    "$x^{1/2}$",
+    "$-x^{1/2}$",
+    "$x^{-2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\sqrt{x} = x^{1/2}$, and one over a power is the power with the opposite sign: $\\frac{1}{x^{1/2}} = x^{-1/2}$.",
+    "options": [
+     "Root means exponent $\\frac{1}{2}$; in the denominator it becomes $-\\frac{1}{2}$.",
+     "That is $\\sqrt{x}$ itself. Being in the denominator makes the exponent negative.",
+     "A negative exponent is not a negative number: $x^{-1/2}$ is positive for $x > 0$.",
+     "A square root is the power $\\frac{1}{2}$, not 2."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-3",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Evaluate $8^{2/3}$ exactly.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": "16/3",
+      "why": "$8^{2/3}$ is not $8 \\cdot \\frac{2}{3}$. The denominator 3 means a cube root, the numerator 2 a square: $(\\sqrt[3]{8})^2 = 2^2 = 4$."
+     },
+     {
+      "value": 2,
+      "why": "That is only the cube root, $8^{1/3}$. Square it as well: $2^2 = 4$."
+     },
+     {
+      "value": "64/3",
+      "why": "$8^{2/3}$ means take the cube root, then square: $(\\sqrt[3]{8})^2 = 4$. It is not $\\frac{8^2}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$8^{2/3} = \\left(8^{1/3}\\right)^2 = 2^2 = 4$. Take the root first: the numbers stay small."
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-4",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Evaluate $16^{-3/4}$ exactly.",
+   "numeric": {
+    "answer": "1/8",
+    "mistakes": [
+     {
+      "value": -8,
+      "why": "A negative exponent means a reciprocal, not a negative number: $16^{-3/4} = \\frac{1}{16^{3/4}} = \\frac{1}{8}$."
+     },
+     {
+      "value": 8,
+      "why": "$16^{3/4} = 8$, but the exponent is $-\\frac{3}{4}$: take the reciprocal, $\\frac{1}{8}$."
+     },
+     {
+      "value": -12,
+      "why": "An exponent is not a multiplier. $16^{-3/4} = \\frac{1}{(\\sqrt[4]{16})^3} = \\frac{1}{2^3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$16^{-3/4} = \\frac{1}{16^{3/4}} = \\frac{1}{\\left(\\sqrt[4]{16}\\right)^3} = \\frac{1}{2^3} = \\frac{1}{8}$."
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-5",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Simplify $\\frac{(x^3)^2 \\cdot x^{-4}}{x}$ for $x \\ne 0$.",
+   "options": [
+    "$x$",
+    "$1$",
+    "$x^{2}$",
+    "$x^{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Power of a power multiplies: $(x^3)^2 = x^6$. Product adds: $x^6 \\cdot x^{-4} = x^2$. Quotient subtracts: $\\frac{x^2}{x} = x^{1} = x$.",
+    "options": [
+     "$x^{6 - 4 - 1} = x^1$.",
+     "That comes from adding $3 + 2$ for $(x^3)^2$. A power of a power multiplies exponents: $x^6$.",
+     "That forgets to divide by the $x$ in the denominator: $\\frac{x^2}{x} = x$.",
+     "That squares the exponent, $x^9$. A power of a power multiplies: $(x^3)^2 = x^{3 \\cdot 2} = x^6$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-6",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which expression equals $\\frac{x^2 + 1}{\\sqrt{x}}$ for $x > 0$, written as a sum of powers of $x$?",
+   "options": [
+    "$x^{3/2} + x^{-1/2}$",
+    "$x^{3/2} + 1$",
+    "$x^{4} + x^{-1/2}$",
+    "$x^{2} + x^{-1/2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Split the fraction so each term is divided by $\\sqrt{x} = x^{1/2}$: $\\frac{x^2}{x^{1/2}} + \\frac{1}{x^{1/2}} = x^{3/2} + x^{-1/2}$.",
+    "options": [
+     "$x^{2 - 1/2} + x^{-1/2}$.",
+     "Both terms are divided by $\\sqrt{x}$, including the 1: $\\frac{1}{\\sqrt{x}} = x^{-1/2}$.",
+     "Dividing by $x^{1/2}$ subtracts $\\frac{1}{2}$ from the exponent; it does not multiply it by 2.",
+     "The $x^2$ term is divided by $\\sqrt{x}$ too: $x^{2 - 1/2} = x^{3/2}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-7",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which expression is NOT equal to $\\frac{1}{(2x)^3}$ for $x \\ne 0$?",
+   "options": [
+    "$2x^{-3}$",
+    "$(2x)^{-3}$",
+    "$\\frac{1}{8x^3}$",
+    "$\\frac{1}{8}x^{-3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$(2x)^3 = 8x^3$, so the expression is $\\frac{1}{8x^3} = \\frac{1}{8}x^{-3}$. But $2x^{-3} = \\frac{2}{x^3}$: the exponent there applies only to $x$, so it is 16 times too big.",
+    "options": [
+     "$2x^{-3} = \\frac{2}{x^3}$, which is not $\\frac{1}{8x^3}$.",
+     "A negative exponent on the whole base $(2x)$ is one over $(2x)^3$: equal.",
+     "$(2x)^3 = 2^3x^3 = 8x^3$: equal.",
+     "$\\frac{1}{8} \\cdot \\frac{1}{x^3} = \\frac{1}{8x^3}$: equal."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-8",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which expression equals $x^{1/2} \\cdot x^{1/3}$?",
+   "options": [
+    "$x^{5/6}$",
+    "$x^{1/6}$",
+    "$x^{2/5}$",
+    "$x^{1/5}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Same base, multiplied: add the exponents. $\\frac{1}{2} + \\frac{1}{3} = \\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}$.",
+    "options": [
+     "$\\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6}$.",
+     "That multiplies the exponents. Multiplying powers of the same base adds them.",
+     "Fractions add with a common denominator: $\\frac{1}{2} + \\frac{1}{3} \\ne \\frac{2}{5}$.",
+     "That adds the denominators. Use a common denominator: $\\frac{3}{6} + \\frac{2}{6}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-9",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = 6x^{-1/2} + x^{3/2}$. Find $f(4)$.",
+   "numeric": {
+    "answer": 11,
+    "mistakes": [
+     {
+      "value": -4,
+      "why": "$6x^{-1/2}$ is $\\frac{6}{\\sqrt{x}}$, not $-6\\sqrt{x}$. A negative exponent means a reciprocal."
+     },
+     {
+      "value": 35,
+      "why": "$x^{3/2}$ is $(\\sqrt{x})^3 = 8$ at $x = 4$, not $\\frac{x^3}{2} = 32$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$4^{-1/2} = \\frac{1}{\\sqrt{4}} = \\frac{1}{2}$, so $6 \\cdot \\frac{1}{2} = 3$. $4^{3/2} = (\\sqrt{4})^3 = 8$. Total: $3 + 8 = 11$."
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-10",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Simplify $\\left(2x^{-1}\\right)^{-2}$ for $x \\ne 0$.",
+   "options": [
+    "$\\frac{x^2}{4}$",
+    "$4x^2$",
+    "$\\frac{1}{4x^2}$",
+    "$-4x^{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Raise each factor to the $-2$: $2^{-2}\\left(x^{-1}\\right)^{-2} = \\frac{1}{4}x^{2} = \\frac{x^2}{4}$.",
+    "options": [
+     "$2^{-2} = \\frac{1}{4}$ and $(x^{-1})^{-2} = x^2$.",
+     "The 2 is raised to the $-2$ as well: $2^{-2} = \\frac{1}{4}$, not 4.",
+     "$(x^{-1})^{-2} = x^{(-1)(-2)} = x^2$, which goes in the numerator.",
+     "A negative exponent never makes the result negative; $2^{-2} = \\frac{1}{4}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-11",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which expression equals $(x + 3)^{-1}$ for $x \\ne -3$?",
+   "options": [
+    "$\\frac{1}{x + 3}$",
+    "$\\frac{1}{x} + \\frac{1}{3}$",
+    "$-x - 3$",
+    "$\\frac{1}{x} + 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The exponent $-1$ applies to the whole sum: $(x + 3)^{-1} = \\frac{1}{x + 3}$. It cannot be split into separate terms.",
+    "options": [
+     "One over the whole base $x + 3$.",
+     "Exponents do not distribute over a sum. Test $x = 1$: $\\frac{1}{4}$, but $\\frac{1}{1} + \\frac{1}{3} = \\frac{4}{3}$.",
+     "The exponent $-1$ means reciprocal, not negative.",
+     "The exponent applies to the whole base $x + 3$, not only to $x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-exponent-rules-12",
+   "unit": "skills-math",
+   "topic": "math-exponent-rules",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Evaluate $27^{-1/3} + 4^{1/2}$ exactly.",
+   "numeric": {
+    "answer": "7/3",
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "$27^{-1/3}$ is $\\frac{1}{3}$, a reciprocal, not $-3$."
+     },
+     {
+      "value": 5,
+      "why": "$27^{-1/3} = \\frac{1}{27^{1/3}} = \\frac{1}{3}$, not 3. The negative exponent flips it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$27^{-1/3} = \\frac{1}{\\sqrt[3]{27}} = \\frac{1}{3}$ and $4^{1/2} = 2$. Sum: $\\frac{1}{3} + 2 = \\frac{7}{3}$."
+   }
+  }
+ ]
+}

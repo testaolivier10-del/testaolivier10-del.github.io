@@ -1,0 +1,81 @@
+{
+ "topic": "definite-integral-notation",
+ "hook": "A Riemann sum with four rectangles is a rough guess. With forty it is good; with four thousand, a computer cannot tell it from the true area. Mathematicians asked what happens when the number of rectangles goes to infinity, and the answer has its own name and its own symbol: the definite integral.",
+ "prereq": [
+  {
+   "q": "What is the width of each subinterval when $[1, 4]$ is split into 6 equal pieces?",
+   "options": [
+    "0.5",
+    "6",
+    "4/6",
+    "3"
+   ],
+   "correct": 0,
+   "why": "Width $= \\frac{4 - 1}{6} = 0.5$.",
+   "review": "riemann-sums"
+  },
+  {
+   "q": "What is $\\lim_{n \\to \\infty} \\frac{3}{n}$?",
+   "options": [
+    "0",
+    "3",
+    "it does not exist",
+    "1"
+   ],
+   "correct": 0,
+   "why": "As n grows without bound, 3/n shrinks toward 0.",
+   "review": "limits-at-infinity"
+  }
+ ],
+ "figure": {
+  "figure": "riemann-limit",
+  "caption": "Right Riemann sums with 4, 8 and 32 rectangles close in on the definite integral."
+ },
+ "chain": [
+  {
+   "cause": "Use $n$ equal subintervals of $[a, b]$",
+   "effect": "each is $\\Delta x = \\frac{b - a}{n}$ wide, with right ends $x_i = a + i\\,\\Delta x$"
+  },
+  {
+   "cause": "Write the Riemann sum in sigma notation",
+   "effect": "it becomes $\\sum_{i=1}^{n} f(x_i)\\,\\Delta x$"
+  },
+  {
+   "cause": "Let $n \\to \\infty$",
+   "effect": "the sums approach one number, the definite integral $\\int_a^b f(x)\\,dx$"
+  },
+  {
+   "cause": "Read a limit of sums",
+   "effect": "the width gives $b - a$, the points give $a$, and the height gives $f$"
+  }
+ ],
+ "ideas": [
+  "$\\int_a^b f(x)\\,dx = \\lim_{n \\to \\infty} \\sum_{i=1}^{n} f(x_i)\\,\\Delta x$ with $\\Delta x = \\frac{b - a}{n}$ and $x_i = a + i\\,\\Delta x$.",
+  "In $\\int_a^b f(x)\\,dx$, $f(x)$ is the integrand, $a$ and $b$ are the limits of integration, and $dx$ names the variable.",
+  "For a positive function, the definite integral is the area under the graph; for a rate, the accumulated change, in the accumulated units.",
+  "A calculator finds definite integrals numerically: write the integral as your setup, then the value to three decimal places."
+ ],
+ "misconception": {
+  "wrong": "In $\\lim_{n \\to \\infty} \\sum \\frac{3}{n}\\left(2 + \\frac{3i}{n}\\right)$, the function is $f(x) = 2 + x$.",
+  "right": "The points $x_i = 2 + \\frac{3i}{n}$ already include the 2: they run over $[2, 5]$, and the height at $x_i$ is $x_i$. So the limit is $\\int_2^5 x\\,dx$. (It also equals $\\int_0^3 (2 + x)\\,dx$, where $x$ runs over $[0, 3]$: the interval and the function must be read together.)"
+ },
+ "check": [
+  "calc-definite-integral-notation-1",
+  "calc-definite-integral-notation-2",
+  "calc-definite-integral-notation-3",
+  "calc-definite-integral-notation-4",
+  "calc-definite-integral-notation-9",
+  "calc-definite-integral-notation-13"
+ ],
+ "summary": "The definite integral $\\int_a^b f(x)\\,dx$ is the limit of Riemann sums $\\sum f(x_i)\\,\\Delta x$ as $n \\to \\infty$, with $\\Delta x = \\frac{b - a}{n}$ and $x_i = a + i\\,\\Delta x$. Translate both ways by matching the width, the points and the height. For a rate, the integral is the accumulated change.",
+ "connections": [
+  {
+   "href": "../notes/riemann-sums.html",
+   "label": "Back: Riemann sums (6.2)"
+  },
+  {
+   "href": "../notes/ftc-accumulation.html",
+   "label": "Next: the Fundamental Theorem and accumulation functions (6.4)"
+  }
+ ]
+}

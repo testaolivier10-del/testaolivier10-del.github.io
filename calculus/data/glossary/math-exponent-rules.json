@@ -1,0 +1,5 @@
+{
+ "exponent-rules": {
+  "def": "The laws for powers of one base: $x^m x^n = x^{m+n}$, $\\frac{x^m}{x^n} = x^{m-n}$, $(x^m)^n = x^{mn}$, $x^0 = 1$. A negative exponent is a reciprocal ($x^{-n} = \\frac{1}{x^n}$); a fractional exponent is a root ($x^{m/n} = (\\sqrt[n]{x})^m$)."
+ }
+}

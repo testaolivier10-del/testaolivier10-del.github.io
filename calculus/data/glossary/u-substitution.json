@@ -1,0 +1,5 @@
+{
+ "u-substitution": {
+  "def": "Undoing the chain rule: when an integrand has the form $f(g(x))\\,g'(x)$, let $u = g(x)$ and $du = g'(x)\\,dx$, so $\\int f(g(x))g'(x)\\,dx = \\int f(u)\\,du$. In a definite integral the limits change to $u = g(a)$ and $u = g(b)$."
+ }
+}

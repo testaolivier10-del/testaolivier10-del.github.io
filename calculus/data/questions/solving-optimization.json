@@ -1,0 +1,508 @@
+{
+ "stimuli": {
+  "solving-optimization-s1": {
+   "kind": "diagram",
+   "title": "An open box from a 16 by 10 sheet",
+   "text": "A sheet of cardboard is 16 inches by 10 inches. A square of side $x$ inches is cut from each corner, and the sides are folded up to make an open box.",
+   "figure": "box-sheet-16x10"
+  },
+  "solving-optimization-s2": {
+   "kind": "graph",
+   "title": "Cost of a cable across a river",
+   "text": "A power station sits on one bank of a straight river 2 km wide. A factory is on the other bank, 8 km downstream. A cable runs underwater straight to a point $x$ km downstream on the far bank, then along that bank to the factory. Cable costs 5 thousand dollars per km underwater and 3.5 thousand dollars per km on land, so the total cost is $C(x) = 5\\sqrt{x^2 + 4} + 3.5(8 - x)$ thousand dollars, $0 \\le x \\le 8$. Use a graphing calculator.",
+   "plot": {
+    "label": "Graph of the cable cost C(x) for x from 0 to 8 km: it starts at 38, dips to a low point near x = 2, then rises to about 41.2 at x = 8",
+    "x": [
+     -0.5,
+     8.5
+    ],
+    "y": [
+     33,
+     43
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "x",
+    "yLabel": "C",
+    "curves": [
+     {
+      "fn": "5sqrt(x^2 + 4) + 3.5(8 - x)",
+      "domain": [
+       0,
+       8
+      ],
+      "cls": "s1",
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "label": "C"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-solving-optimization-1",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "expr",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solving-optimization-s1",
+   "q": "Write the volume $V$ of the box, in cubic inches, as a function of $x$.",
+   "expr": {
+    "answer": "x(16 - 2x)(10 - 2x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0,
+     5
+    ],
+    "lhs": "V(x) =",
+    "mistakes": [
+     {
+      "expr": "x(16 - x)(10 - x)",
+      "why": "A square is cut from both ends of each side, so each side loses $2x$: the base is $(16 - 2x)$ by $(10 - 2x)$."
+     },
+     {
+      "expr": "(16 - 2x)(10 - 2x)",
+      "why": "That is the area of the base. Multiply by the height $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Height $x$, base $(16 - 2x)$ by $(10 - 2x)$: $V(x) = x(16 - 2x)(10 - 2x) = 4x^3 - 52x^2 + 160x$."
+   }
+  },
+  {
+   "id": "calc-solving-optimization-2",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "single",
+   "practice": "3.G",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solving-optimization-s1",
+   "q": "Which domain for $x$ makes sense?",
+   "options": [
+    "$0 \\le x \\le 8$",
+    "$0 \\le x \\le 10$",
+    "$0 \\le x \\le 5$",
+    "$x \\ge 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Each dimension must be at least 0: $x \\ge 0$ and $10 - 2x \\ge 0$, so $0 \\le x \\le 5$. (The ends give zero volume.)",
+    "options": [
+     "At $x = 6$, the side $10 - 2x$ is negative.",
+     "Both sides would be negative long before $x = 10$.",
+     "The short side $10 - 2x$ must not be negative.",
+     "A cut larger than half the short side is impossible."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-optimization-3",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solving-optimization-s1",
+   "q": "How large a square should be cut from each corner to make the box's volume as large as possible? Include units.",
+   "numeric": {
+    "answer": 2,
+    "unit": "inches",
+    "askUnit": true,
+    "units": [
+     "in",
+     "inch"
+    ],
+    "mistakes": [
+     {
+      "value": "20/3",
+      "why": "$\\frac{20}{3}$ also solves $V'(x) = 0$, but it is outside $[0, 5]$: the short side would be negative."
+     },
+     {
+      "value": 144,
+      "why": "144 is the largest volume. The question asks for $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V'(x) = 12x^2 - 104x + 160 = 4(3x - 20)(x - 2) = 0$ at $x = 2$ or $x = \\frac{20}{3}$. Only $x = 2$ inches is in $[0, 5]$."
+   }
+  },
+  {
+   "id": "calc-solving-optimization-4",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solving-optimization-s1",
+   "q": "Find the largest possible volume of the box. Include units.",
+   "numeric": {
+    "answer": 144,
+    "unit": "cubic inches",
+    "askUnit": true,
+    "units": [
+     "in^3",
+     "cubic in",
+     "cu in",
+     "inches^3"
+    ],
+    "mistakes": [
+     {
+      "value": 224,
+      "why": "$2 \\cdot 14 \\cdot 8 = 224$ uses a base of $(16 - x)$ by $(10 - x)$. Each side loses $2x$: the base is $12$ by $6$."
+     },
+     {
+      "value": 2,
+      "why": "2 inches is the cut. The volume is $V(2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V(2) = 2 \\cdot 12 \\cdot 6 = 144$ cubic inches."
+   }
+  },
+  {
+   "id": "calc-solving-optimization-5",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solving-optimization-s1",
+   "q": "Which justification shows that $x = 2$ gives the absolute maximum on $[0, 5]$?",
+   "options": [
+    "$V'(2) = 0$, so $V(2)$ is the largest volume",
+    "$x = 2$ is the smaller solution of $V'(x) = 0$",
+    "$V(2) = 144$ is a positive volume",
+    "$V$ is continuous on $[0, 5]$; $V(0) = 0$, $V(2) = 144$, $V(5) = 0$, so the largest candidate is $V(2)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "On the closed interval $[0, 5]$, compare the candidates $V(0) = 0$, $V(2) = 144$ and $V(5) = 0$. The absolute maximum is 144 cubic inches at $x = 2$.",
+    "options": [
+     "A critical point is only a candidate.",
+     "Being the smaller root proves nothing about size.",
+     "Positive does not mean largest.",
+     "The Candidates Test: endpoints and the critical point in the domain."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-optimization-6",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solving-optimization-s2",
+   "calc": true,
+   "q": "Which equation locates the critical point of $C$?",
+   "options": [
+    "$\\frac{5}{2\\sqrt{x^2 + 4}} - 3.5 = 0$",
+    "$5\\sqrt{x^2 + 4} = 3.5(8 - x)$",
+    "$\\frac{5x}{\\sqrt{x^2 + 4}} - 3.5 = 0$",
+    "$\\frac{5x}{\\sqrt{x^2 + 4}} + 3.5 = 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$C'(x) = 5 \\cdot \\frac{2x}{2\\sqrt{x^2 + 4}} - 3.5 = \\frac{5x}{\\sqrt{x^2 + 4}} - 3.5$. Set it equal to 0.",
+    "options": [
+     "The chain rule's inside factor $2x$ is missing.",
+     "That sets the two costs equal; it is not $C'(x) = 0$.",
+     "Chain rule on $\\sqrt{x^2 + 4}$ gives $\\frac{x}{\\sqrt{x^2 + 4}}$; $\\frac{d}{dx}3.5(8 - x) = -3.5$.",
+     "The derivative of $3.5(8 - x)$ is $-3.5$."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-optimization-7",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solving-optimization-s2",
+   "calc": true,
+   "q": "Find the value of $x$, in km, that minimizes the cost.",
+   "numeric": {
+    "answer": 1.9603921176392138,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "1.5 km would be right if land cable cost 3 thousand dollars per km. Here it costs 3.5."
+     },
+     {
+      "value": 35.14142842854285,
+      "why": "That is the minimum cost. The question asks for $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Solve $C'(x) = \\frac{5x}{\\sqrt{x^2 + 4}} - 3.5 = 0$ with the calculator: $x \\approx 1.960$ km."
+   }
+  },
+  {
+   "id": "calc-solving-optimization-8",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solving-optimization-s2",
+   "calc": true,
+   "q": "Find the minimum cost, in thousands of dollars.",
+   "numeric": {
+    "answer": 35.14142842854285,
+    "mistakes": [
+     {
+      "value": 38,
+      "why": "$C(0) = 38$: cable straight across, then all the way along the bank. The critical point does better."
+     },
+     {
+      "value": 41.23105625617661,
+      "why": "$C(8) \\approx 41.231$: the whole cable underwater, the most expensive choice."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Candidates: $C(0) = 38$, $C(1.960) \\approx 35.141$, $C(8) = 5\\sqrt{68} \\approx 41.231$. Minimum about 35.141 thousand dollars. Store $x$ before evaluating $C$."
+   }
+  },
+  {
+   "id": "calc-solving-optimization-9",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solving-optimization-s2",
+   "calc": true,
+   "q": "Which statement justifies that $x \\approx 1.960$ gives the minimum cost on $[0, 8]$?",
+   "options": [
+    "$C'(1.960) = 0$",
+    "The calculator graph of $C$ shows its lowest point near $x = 1.960$, so that is the minimum cost",
+    "$1.960$ is less than 8",
+    "$C(0) = 38$ and $C(8) \\approx 41.231$ are both larger than $C(1.960) \\approx 35.141$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$C$ is continuous on $[0, 8]$, and its only critical point is $x \\approx 1.960$. Comparing with the endpoint values shows $C(1.960)$ is the smallest.",
+    "options": [
+     "A zero of $C'$ alone does not show a minimum.",
+     "A graph suggests the answer, but scoring wants the mathematical reason.",
+     "Irrelevant to which cost is smallest.",
+     "The Candidates Test with the only critical point."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-optimization-10",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "calc": true,
+   "q": "A closed cylindrical can must hold 500 cubic centimeters. Find the radius that uses the least metal (smallest surface area). Include units.",
+   "numeric": {
+    "answer": 4.301270069140498,
+    "unit": "cm",
+    "askUnit": true,
+    "units": [
+     "centimeters",
+     "centimeter"
+    ],
+    "mistakes": [
+     {
+      "value": 5.41926070139289,
+      "why": "That is the best radius for a can with no top. A closed can has two circular ends: $S = 2\\pi r^2 + 2\\pi r h$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Constraint: $\\pi r^2 h = 500$, so $h = \\frac{500}{\\pi r^2}$. Surface: $S(r) = 2\\pi r^2 + 2\\pi r h = 2\\pi r^2 + \\frac{1000}{r}$. $S'(r) = 4\\pi r - \\frac{1000}{r^2} = 0$ gives $r = \\sqrt[3]{\\frac{250}{\\pi}} \\approx 4.301$ cm. It is the only critical point for $r > 0$ and $S'' > 0$, so it is the minimum."
+   }
+  },
+  {
+   "id": "calc-solving-optimization-11",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "A rectangle has its base on the diameter of a semicircle of radius 5 and its top corners on the semicircle. Find the largest possible area of the rectangle.",
+   "numeric": {
+    "answer": 25,
+    "mistakes": [
+     {
+      "value": 50,
+      "why": "The width is $2x$ and the height is $\\sqrt{25 - x^2}$; $50$ doubles the area. Check: at $x = \\frac{5}{\\sqrt{2}}$, $2x \\cdot \\sqrt{25 - x^2} = 25$."
+     },
+     {
+      "value": "5/sqrt(2)",
+      "why": "That is the half-width $x$. The area is $2x\\sqrt{25 - x^2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Corner at $(x, \\sqrt{25 - x^2})$: $A(x) = 2x\\sqrt{25 - x^2}$, $0 \\le x \\le 5$. $A'(x) = 2\\sqrt{25 - x^2} - \\frac{2x^2}{\\sqrt{25 - x^2}} = \\frac{2(25 - 2x^2)}{\\sqrt{25 - x^2}} = 0$ at $x = \\frac{5}{\\sqrt{2}}$. $A(0) = A(5) = 0$, and $A\\left(\\frac{5}{\\sqrt{2}}\\right) = 2 \\cdot \\frac{5}{\\sqrt{2}} \\cdot \\frac{5}{\\sqrt{2}} = 25$."
+   }
+  },
+  {
+   "id": "calc-solving-optimization-12",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Positive numbers $x$ and $y$ satisfy $x + 2y = 20$. Find the largest possible value of $xy^2$.",
+   "numeric": {
+    "answer": "8000/27",
+    "mistakes": [
+     {
+      "value": "20/3",
+      "why": "$y = \\frac{20}{3}$ (and $x = \\frac{20}{3}$) is where the maximum happens. Evaluate $xy^2$."
+     },
+     {
+      "value": "32000/27",
+      "why": "That comes from $x = 20 - y$. The constraint $x + 2y = 20$ gives $x = 20 - 2y$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Constraint: $x = 20 - 2y$, with $0 < y < 10$. $P(y) = (20 - 2y)y^2 = 20y^2 - 2y^3$, $P'(y) = 40y - 6y^2 = 0$ at $y = \\frac{20}{3}$. $P''\\left(\\frac{20}{3}\\right) = 40 - 80 < 0$, the only critical point in the interval, so the maximum is $P = \\frac{20}{3} \\cdot \\frac{400}{9} = \\frac{8000}{27}$."
+   }
+  },
+  {
+   "id": "calc-solving-optimization-13",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "An open box with a square base of side $x$ and height $h$ must hold 32 cubic feet. You want to use the least material. Which is the constraint?",
+   "options": [
+    "$S = x^2 + 4xh$",
+    "$x^2 + 4xh = 32$",
+    "$4x + h = 32$",
+    "$x^2 h = 32$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The constraint is the fixed fact, the volume $x^2 h = 32$; it lets you write $h = \\frac{32}{x^2}$ and the objective $S = x^2 + 4xh$ in one variable.",
+    "options": [
+     "That is the objective function, the amount of material to minimize.",
+     "32 is a volume, not a surface area.",
+     "That mixes lengths; 32 is a volume.",
+     "The fixed volume links $x$ and $h$."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-optimization-14",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "For that open box (square base, volume 32 cubic feet), find the least possible surface area. Include units.",
+   "numeric": {
+    "answer": 48,
+    "unit": "square feet",
+    "askUnit": true,
+    "units": [
+     "ft^2",
+     "sq ft",
+     "feet^2"
+    ],
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "$x = 4$ feet is the side of the base. The surface area is $S(4) = 16 + \\frac{128}{4}$."
+     },
+     {
+      "value": "3*32^(2/3)",
+      "why": "You counted two sides. The box has four: $S = x^2 + 4xh$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h = \\frac{32}{x^2}$, so $S(x) = x^2 + \\frac{128}{x}$, $x > 0$. $S'(x) = 2x - \\frac{128}{x^2} = 0$ at $x = 4$; $S''(x) = 2 + \\frac{256}{x^3} > 0$, one critical point, so it is the minimum: $S(4) = 16 + 32 = 48$ square feet."
+   }
+  },
+  {
+   "id": "calc-solving-optimization-15",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student solves $A'(x) = 0$, gets $x = 4$, and writes \"the maximum is at $x = 4$.\" What is missing?",
+   "options": [
+    "Nothing; $A'(4) = 0$ is the justification",
+    "A reason that $x = 4$ gives the absolute maximum: the candidates or one-critical-point reasoning",
+    "The value of $A''(4)$, written down by itself, with no conclusion drawn from it about the maximum",
+    "A graph of $A'$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Scoring wants the reason the critical point is the absolute extremum: compare the candidates on a closed domain, or note it is the only critical point and a relative maximum.",
+    "options": [
+     "$A'(4) = 0$ could be a minimum or neither.",
+     "A critical point is only a candidate; the justification shows it is the largest value.",
+     "$A''(4) < 0$ gives a relative maximum, but it must be connected to the conclusion (one critical point, or candidates).",
+     "A graph is not a justification by itself."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-optimization-16",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A rectangle has perimeter 40 cm. Which dimensions give the largest area?",
+   "options": [
+    "10 cm by 10 cm",
+    "5 cm by 15 cm",
+    "20 cm by 20 cm",
+    "8 cm by 12 cm"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Constraint $2x + 2y = 40$ gives $y = 20 - x$. $A(x) = x(20 - x)$, $A'(x) = 20 - 2x = 0$ at $x = 10$, and $A(0) = A(20) = 0$. The best rectangle is a 10 cm square.",
+    "options": [
+     "$A(x) = x(20 - x)$ is largest at $x = 10$: a square.",
+     "Area 75, less than 100.",
+     "Perimeter 80, not 40.",
+     "Area 96, less than 100."
+    ]
+   }
+  }
+ ]
+}

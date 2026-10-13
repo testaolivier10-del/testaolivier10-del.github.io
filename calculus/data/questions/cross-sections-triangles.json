@@ -1,0 +1,269 @@
+{
+ "stimuli": {
+  "cross-sections-triangles-s1": {
+   "kind": "graph",
+   "title": "The base: the region between $y = 2x$ and $y = x^2$",
+   "plot": {
+    "label": "The line y = 2x and the parabola y = x², which meet at (0, 0) and (2, 4). The region between them, the base of a solid, is shaded with the line on top.",
+    "x": [-0.4, 2.6], "y": [-0.5, 5], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
+    "curves": [
+     { "fn": "2x", "domain": [-0.2, 2.45], "cls": "s2", "label": "y = 2x" },
+     { "fn": "x^2", "domain": [-0.4, 2.2], "cls": "s1", "label": "y = x²" }
+    ],
+    "shade": [ { "fn": "2x", "fn2": "x^2", "domain": [0, 2] } ],
+    "points": [ { "at": [0, 0] }, { "at": [2, 4], "label": "(2, 4)" } ]
+   }
+  },
+  "cross-sections-triangles-s2": {
+   "kind": "graph",
+   "title": "The base: the region between $y = 4\\sin x$ and $y = x^2$",
+   "plot": {
+    "label": "The curves y = 4 sin x and y = x² for x from 0 to about 2.3. They meet at the origin and again near x = 1.93; the region between them, the base of a solid, is shaded with the sine curve on top.",
+    "x": [-0.3, 2.4], "y": [-0.5, 4.5], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
+    "curves": [
+     { "fn": "4sin(x)", "domain": [-0.1, 2.4], "cls": "s2", "label": "y = 4 sin x" },
+     { "fn": "x^2", "domain": [-0.3, 2.1], "cls": "s1", "label": "y = x²" }
+    ],
+    "shade": [ { "fn": "4sin(x)", "fn2": "x^2", "domain": [0, 1.9337537628270214] } ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-cross-sections-triangles-1", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "stimulus": "cross-sections-triangles-s1",
+   "q": "The shaded region is the base of a solid whose cross sections perpendicular to the $x$-axis are equilateral triangles. Given $\\int_0^2 (2x - x^2)^2\\,dx = \\frac{16}{15}$, find the volume.",
+   "numeric": {
+    "answer": "4*sqrt(3)/15",
+    "mistakes": [
+     { "value": "16/15", "why": "That is the volume with squares. An equilateral triangle of side $s$ has area $\\frac{\\sqrt{3}}{4}s^2$." },
+     { "value": "8*sqrt(3)/15", "why": "You used $\\frac{\\sqrt{3}}{2}s^2$. $\\frac{\\sqrt{3}}{2}s$ is the triangle's height; the area is half of base times height, $\\frac{\\sqrt{3}}{4}s^2$." }
+    ]
+   },
+   "why": { "correct": "$s = 2x - x^2$ and $A(x) = \\frac{\\sqrt{3}}{4}s^2$, so $V = \\frac{\\sqrt{3}}{4}\\int_0^2 (2x - x^2)^2\\,dx = \\frac{\\sqrt{3}}{4} \\cdot \\frac{16}{15} = \\frac{4\\sqrt{3}}{15}$." }
+  },
+  {
+   "id": "calc-cross-sections-triangles-2", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "stimulus": "cross-sections-triangles-s1",
+   "q": "A solid on the same base has semicircular cross sections perpendicular to the $x$-axis, each with its diameter in the base. Find the volume.",
+   "numeric": {
+    "answer": "2*pi/15",
+    "mistakes": [
+     { "value": "8*pi/15", "why": "You used $s$ as the radius. The diameter is $s$, so the radius is $\\frac{s}{2}$ and the area is $\\frac{1}{2}\\pi\\left(\\frac{s}{2}\\right)^2 = \\frac{\\pi}{8}s^2$." },
+     { "value": "4*pi/15", "why": "That is a full circle of diameter $s$. A semicircle is half of it: $\\frac{\\pi}{8}s^2$." }
+    ]
+   },
+   "why": { "correct": "$A(x) = \\frac{1}{2}\\pi\\left(\\frac{s}{2}\\right)^2 = \\frac{\\pi}{8}(2x - x^2)^2$, so $V = \\frac{\\pi}{8} \\cdot \\frac{16}{15} = \\frac{2\\pi}{15}$." }
+  },
+  {
+   "id": "calc-cross-sections-triangles-3", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "single", "practice": "1.E", "level": "apply", "diff": 2,
+   "stimulus": "cross-sections-triangles-s1",
+   "q": "A solid on the same base has cross sections perpendicular to the $x$-axis that are isosceles right triangles with one leg in the base. What is its volume?",
+   "options": ["$\\frac{8}{15}$", "$\\frac{4}{15}$", "$\\frac{16}{15}$", "$\\frac{32}{15}$"],
+   "correct": 0,
+   "why": {
+    "correct": "Both legs have length $s$, so $A = \\frac{1}{2}s \\cdot s = \\frac{s^2}{2}$ and $V = \\frac{1}{2} \\cdot \\frac{16}{15} = \\frac{8}{15}$.",
+    "options": [
+     "Half of $\\int s^2\\,dx$.",
+     "$\\frac{s^2}{4}$ is the area when the hypotenuse, not a leg, lies in the base.",
+     "That is the volume with squares; a right triangle with legs $s$ is half a square.",
+     "That doubles the square's area instead of halving it."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-triangles-4", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "expr", "practice": "1.E", "level": "apply", "diff": 2,
+   "stimulus": "cross-sections-triangles-s1",
+   "q": "For the solid with equilateral triangle cross sections, write the area $A(x)$ of the cross section at $x$.",
+   "expr": {
+    "answer": "sqrt(3)/4*(2x - x^2)^2", "vars": ["x"], "domain": [0, 2], "lhs": "A(x) =",
+    "mistakes": [
+     { "expr": "sqrt(3)/2*(2x - x^2)^2", "why": "$\\frac{\\sqrt{3}}{2}s$ is the height. The area is $\\frac{1}{2} \\cdot s \\cdot \\frac{\\sqrt{3}}{2}s = \\frac{\\sqrt{3}}{4}s^2$." },
+     { "expr": "(2x - x^2)^2/2", "why": "That is $\\frac{1}{2}s^2$, as if the height were $s$. An equilateral triangle's height is $\\frac{\\sqrt{3}}{2}s$." },
+     { "expr": "sqrt(3)/4*(4x^2 - x^4)", "why": "Square the side $2x - x^2$ as a whole: $(2x - x^2)^2$, not $(2x)^2 - (x^2)^2$." }
+    ]
+   },
+   "why": { "correct": "$s = 2x - x^2$ and $A = \\frac{\\sqrt{3}}{4}s^2 = \\frac{\\sqrt{3}}{4}(2x - x^2)^2$." }
+  },
+  {
+   "id": "calc-cross-sections-triangles-5", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "single", "practice": "2.D", "level": "analyze", "diff": 2,
+   "stimulus": "cross-sections-triangles-s1",
+   "q": "On this base, which gives the larger volume: equilateral triangle cross sections or semicircle cross sections (diameter in the base)?",
+   "options": [
+    "Equilateral triangles, because $\\frac{\\sqrt{3}}{4} > \\frac{\\pi}{8}$",
+    "Semicircles, because their area has $\\pi$ in it",
+    "They are equal, since both areas are a number times $s^2$",
+    "It depends on how the triangles are turned"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both volumes are a constant times $\\int s^2\\,dx$: $\\frac{\\sqrt{3}}{4} \\approx 0.433$ for triangles and $\\frac{\\pi}{8} \\approx 0.393$ for semicircles.",
+    "options": [
+     "Compare the constants in front of $s^2$.",
+     "$\\pi$ is about 3.14, but it is divided by 8: $\\frac{\\pi}{8} \\approx 0.393$.",
+     "Different constants give different volumes.",
+     "Each triangle stands with a side in the base, as stated; its area is $\\frac{\\sqrt{3}}{4}s^2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-triangles-6", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 1, "calc": true,
+   "stimulus": "cross-sections-triangles-s2",
+   "q": "The curves meet at $x = 0$ and at $x = b > 0$. Use a calculator to find $b$.",
+   "numeric": {
+    "answer": 1.9337537628270214,
+    "mistakes": [
+     { "value": 0.06981315280488223, "why": "Your calculator is in degree mode. Switch to radians and solve $4\\sin x = x^2$ again." }
+    ]
+   },
+   "why": { "correct": "Solve $4\\sin x = x^2$ for $x > 0$ in radian mode: $b = 1.93375\\ldots$, so $1.933$ (or $1.934$ rounded). Store it." }
+  },
+  {
+   "id": "calc-cross-sections-triangles-7", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "cross-sections-triangles-s2",
+   "q": "The shaded region is the base of a solid whose cross sections perpendicular to the $x$-axis are semicircles with diameters in the base. Find the volume.",
+   "numeric": {
+    "answer": 2.2260092014616157,
+    "mistakes": [
+     { "value": 8.904036805846463, "why": "You used the side $s$ as the radius. The radius is $\\frac{s}{2}$, so $A = \\frac{\\pi}{8}s^2$." },
+     { "value": 4.452018402923231, "why": "That is a whole circle of diameter $s$. Take half: $\\frac{\\pi}{8}s^2$." }
+    ]
+   },
+   "why": { "correct": "$V = \\frac{\\pi}{8}\\int_0^b \\left(4\\sin x - x^2\\right)^2\\,dx = 2.22600\\ldots$, so $2.226$." }
+  },
+  {
+   "id": "calc-cross-sections-triangles-8", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "cross-sections-triangles-s2",
+   "q": "A solid on the same base has cross sections perpendicular to the $x$-axis that are isosceles right triangles with the hypotenuse in the base. Find the volume.",
+   "numeric": {
+    "answer": 1.4171214711226354,
+    "mistakes": [
+     { "value": 2.834242942245271, "why": "That puts a leg in the base ($A = \\frac{s^2}{2}$). With the hypotenuse $s$ in the base, each leg is $\\frac{s}{\\sqrt{2}}$ and $A = \\frac{1}{2}\\left(\\frac{s}{\\sqrt{2}}\\right)^2 = \\frac{s^2}{4}$." }
+    ]
+   },
+   "why": { "correct": "$A = \\frac{s^2}{4}$, so $V = \\frac{1}{4}\\int_0^b \\left(4\\sin x - x^2\\right)^2\\,dx = 1.41712\\ldots$, so $1.417$." }
+  },
+  {
+   "id": "calc-cross-sections-triangles-9", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "single", "practice": "1.C", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "cross-sections-triangles-s2",
+   "q": "Which expression gives the volume of the solid on this base whose cross sections perpendicular to the $x$-axis are equilateral triangles?",
+   "options": [
+    "$\\frac{\\sqrt{3}}{4}\\int_0^b \\left(4\\sin x - x^2\\right)^2\\,dx$",
+    "$\\frac{\\sqrt{3}}{2}\\int_0^b \\left(4\\sin x - x^2\\right)^2\\,dx$",
+    "$\\frac{\\sqrt{3}}{4}\\int_0^b \\left(16\\sin^2 x - x^4\\right)\\,dx$",
+    "$\\frac{1}{2}\\int_0^b \\left(4\\sin x - x^2\\right)^2\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$A = \\frac{\\sqrt{3}}{4}s^2$ with $s = 4\\sin x - x^2$.",
+    "options": [
+     "The equilateral area formula with the side squared.",
+     "$\\frac{\\sqrt{3}}{2}$ belongs to the height, not the area.",
+     "This squares each curve separately instead of the side.",
+     "$\\frac{1}{2}s^2$ is a right triangle with legs $s$, not an equilateral one."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-triangles-10", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "single", "practice": "1.C", "level": "recall", "diff": 1,
+   "q": "What is the area of an equilateral triangle with side $s$?",
+   "options": ["$\\frac{\\sqrt{3}}{4}s^2$", "$\\frac{\\sqrt{3}}{2}s^2$", "$\\frac{1}{2}s^2$", "$\\frac{\\sqrt{3}}{4}s$"],
+   "correct": 0,
+   "why": {
+    "correct": "Its height is $\\frac{\\sqrt{3}}{2}s$ (from the Pythagorean theorem with half the base, $\\frac{s}{2}$), so its area is $\\frac{1}{2} \\cdot s \\cdot \\frac{\\sqrt{3}}{2}s$.",
+    "options": [
+     "Half of base times height.",
+     "That forgets the $\\frac{1}{2}$ in a triangle's area.",
+     "That uses $s$ as the height; the height is shorter, $\\frac{\\sqrt{3}}{2}s$.",
+     "An area needs $s^2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-triangles-11", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "single", "practice": "1.C", "level": "recall", "diff": 1,
+   "q": "A semicircle has its diameter $s$ in the base. What is its area?",
+   "options": ["$\\frac{\\pi}{8}s^2$", "$\\frac{\\pi}{2}s^2$", "$\\frac{\\pi}{4}s^2$", "$\\pi s^2$"],
+   "correct": 0,
+   "why": {
+    "correct": "The radius is $\\frac{s}{2}$: $\\frac{1}{2}\\pi\\left(\\frac{s}{2}\\right)^2 = \\frac{\\pi}{8}s^2$.",
+    "options": [
+     "Half a circle of radius $\\frac{s}{2}$.",
+     "That uses $s$ as the radius.",
+     "That is a full circle of diameter $s$.",
+     "That is a full circle of radius $s$."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-triangles-12", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 3,
+   "q": "The base of a solid is the disk $x^2 + y^2 \\le 9$. Cross sections perpendicular to the $x$-axis are equilateral triangles. Find the volume.",
+   "numeric": {
+    "answer": "36*sqrt(3)",
+    "mistakes": [
+     { "value": "9*sqrt(3)", "why": "The side spans the whole disk, from $-\\sqrt{9 - x^2}$ to $\\sqrt{9 - x^2}$: $s = 2\\sqrt{9 - x^2}$, not $\\sqrt{9 - x^2}$." },
+     { "value": 144, "why": "That is the volume with squares. Multiply by $\\frac{\\sqrt{3}}{4}$ for equilateral triangles." }
+    ]
+   },
+   "why": { "correct": "$s = 2\\sqrt{9 - x^2}$, so $A = \\frac{\\sqrt{3}}{4} \\cdot 4(9 - x^2) = \\sqrt{3}(9 - x^2)$ and $V = \\sqrt{3}\\int_{-3}^{3} (9 - x^2)\\,dx = \\sqrt{3} \\cdot 36 = 36\\sqrt{3}$." }
+  },
+  {
+   "id": "calc-cross-sections-triangles-13", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "The base of a solid is the triangle bounded by $y = 1 - \\frac{x}{2}$ and the coordinate axes. Cross sections perpendicular to the $x$-axis are semicircles with diameters in the base. Find the volume.",
+   "numeric": {
+    "answer": "pi/12",
+    "mistakes": [
+     { "value": "pi/3", "why": "You used the diameter as the radius. With radius $\\frac{s}{2}$ the area is $\\frac{\\pi}{8}s^2$." },
+     { "value": "2/3", "why": "That is $\\int_0^2 s^2\\,dx$, the volume with squares. Multiply by $\\frac{\\pi}{8}$." }
+    ]
+   },
+   "why": { "correct": "$s = 1 - \\frac{x}{2}$ for $0 \\le x \\le 2$, and $\\int_0^2 \\left(1 - \\frac{x}{2}\\right)^2\\,dx = \\frac{2}{3}$. So $V = \\frac{\\pi}{8} \\cdot \\frac{2}{3} = \\frac{\\pi}{12}$." }
+  },
+  {
+   "id": "calc-cross-sections-triangles-14", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "numeric", "practice": "1.E", "level": "analyze", "diff": 3,
+   "q": "The base of a solid is the region bounded by $x = y^2$ and $x = 4$. Cross sections perpendicular to the $y$-axis are semicircles with diameters in the base. Find the volume.",
+   "numeric": {
+    "answer": "64*pi/15",
+    "mistakes": [
+     { "value": "256*pi/15", "why": "You used the diameter as the radius: the radius is $\\frac{s}{2}$." },
+     { "value": "512/15", "why": "That is $\\int s^2\\,dy$, the volume with squares. Multiply by $\\frac{\\pi}{8}$." }
+    ]
+   },
+   "why": { "correct": "A slice at height $y$ runs from $x = y^2$ to $x = 4$: $s = 4 - y^2$, for $-2 \\le y \\le 2$. $\\int_{-2}^{2} (4 - y^2)^2\\,dy = \\frac{512}{15}$, so $V = \\frac{\\pi}{8} \\cdot \\frac{512}{15} = \\frac{64\\pi}{15}$." }
+  },
+  {
+   "id": "calc-cross-sections-triangles-15", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "single", "practice": "2.D", "level": "analyze", "diff": 2,
+   "q": "On a given base, the cross sections are right triangles with one leg $s$ in the base and the other leg $2s$. Compared with square cross sections on the same base, the volume is",
+   "options": ["the same", "half as large", "twice as large", "four times as large"],
+   "correct": 0,
+   "why": {
+    "correct": "$A = \\frac{1}{2} \\cdot s \\cdot 2s = s^2$, exactly a square's area.",
+    "options": [
+     "$\\frac{1}{2} \\cdot s \\cdot 2s = s^2$.",
+     "Half would be legs $s$ and $s$; the second leg here is $2s$.",
+     "The $\\frac{1}{2}$ for a triangle cancels the 2.",
+     "That would be a square of side $2s$."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-triangles-16", "unit": "unit-8", "topic": "cross-sections-triangles", "type": "multi", "practice": "2.D", "level": "analyze", "diff": 2,
+   "q": "A semicircular cross section has its diameter $s$ in the base. Which statements are true? Select all that apply.",
+   "options": [
+    "Its radius is $\\frac{s}{2}$",
+    "Its area is $\\frac{\\pi}{8}s^2$",
+    "Its area is $\\frac{\\pi}{2}s^2$",
+    "On a given base, semicircles give more volume than squares"
+   ],
+   "correct": [0, 1],
+   "why": {
+    "correct": "The diameter is $s$, so the radius is $\\frac{s}{2}$ and the area is $\\frac{1}{2}\\pi\\left(\\frac{s}{2}\\right)^2 = \\frac{\\pi}{8}s^2$.",
+    "options": [
+     "True: half the diameter.",
+     "True: half of $\\pi r^2$ with $r = \\frac{s}{2}$.",
+     "False: that uses $s$ as the radius.",
+     "False: $\\frac{\\pi}{8} \\approx 0.39$, so semicircles hold less than squares ($s^2$)."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+<p>The area under a rate graph is the accumulated change. When the graph is made of straight pieces, geometry gives that area exactly. When the graph curves, or when you only have a table of values, you estimate it. This page shows the four estimates the exam uses and how to tell whether each one is too high or too low.</p>
+
+<h2>Rectangles: left, right and midpoint sums</h2>
+<p>Split the interval $[a, b]$ into <b>subintervals</b>. On each one, pretend the function is constant, so the region becomes a rectangle: (width) times (one height of the function). Add the rectangles. That total is a <b>Riemann sum</b>. Which height you pick names the sum:</p>
+<table class="compare">
+<thead><tr><th>Sum</th><th>Height on each subinterval</th></tr></thead>
+<tbody>
+<tr><td>Left Riemann sum</td><td>the value at the left end</td></tr>
+<tr><td>Right Riemann sum</td><td>the value at the right end</td></tr>
+<tr><td>Midpoint Riemann sum</td><td>the value at the middle</td></tr>
+<tr><td>Trapezoidal sum</td><td>the average of the left and right values (a trapezoid, not a rectangle)</td></tr>
+</tbody>
+</table>
+<figure id="fig-four" data-fig="riemann-four-sums"><figcaption>Four estimates of the same area. The function increases and is concave up.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> Estimate the area under $f(x) = 9 - x^2$ on $[0, 3]$ with three subintervals of equal width.</p>
+<p>Width: $\frac{3 - 0}{3} = 1$. The ends are $0, 1, 2, 3$, with $f(0) = 9$, $f(1) = 8$, $f(2) = 5$, $f(3) = 0$.</p>
+<p>Left: $1(9) + 1(8) + 1(5) = 22$. Right: $1(8) + 1(5) + 1(0) = 13$.</p>
+<p>Midpoint: the middles are $0.5, 1.5, 2.5$, with $f$ values $8.75, 6.75, 2.75$. Sum: $18.25$.</p>
+<p>Trapezoidal: $1 \cdot \frac{9 + 8}{2} + 1 \cdot \frac{8 + 5}{2} + 1 \cdot \frac{5 + 0}{2} = 8.5 + 6.5 + 2.5 = 17.5$. (Check: $\frac{22 + 13}{2} = 17.5$.)</p>
+<p>The true area turns out to be 18, so each estimate is off a little, in a direction you can predict.</p>
+</div>
+
+<h2>Tables with unequal widths</h2>
+<p>Real data rarely comes at even spacing. On the exam, a table usually has gaps of different sizes, and the question says "using the subintervals indicated by the table." Then <b>each width is the difference of two neighboring times</b>, and each product uses its own width. The most common lost point is dividing the whole interval by the number of subintervals as if they were equal.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Rainwater flows into a tank at rate $R(t)$ gallons per hour. $R(0) = 20$, $R(1) = 26$, $R(3) = 30$, $R(4) = 35$, $R(7) = 41$. Estimate the water collected from $t = 0$ to $t = 7$ with a left sum, a right sum and a trapezoidal sum.</p>
+<p>Widths: $1, 2, 1, 3$ hours (they add to 7, a good check).</p>
+<p>Left: $1(20) + 2(26) + 1(30) + 3(35) = 207$ gallons.</p>
+<p>Right: $1(26) + 2(30) + 1(35) + 3(41) = 244$ gallons.</p>
+<p>Trapezoidal: $1 \cdot \frac{20 + 26}{2} + 2 \cdot \frac{26 + 30}{2} + 1 \cdot \frac{30 + 35}{2} + 3 \cdot \frac{35 + 41}{2} = 225.5$ gallons.</p>
+<p>Write the sum with every product showing, as above. A list of numbers or a bare total does not show the method, and the exam awards a point for the setup.</p>
+</div>
+<p>A midpoint sum from a table needs the value at the middle of each subinterval, so it only works when the table has those middle values. With readings at $t = 0, 2, 4, 6, 8$ you can make a midpoint sum with two subintervals of width 4, using the values at $t = 2$ and $t = 6$.</p>
+
+<h2>Too high or too low? Monotonicity decides left and right</h2>
+<p>If $f$ is <b>increasing</b> on the interval, then on every subinterval the left end has the smallest value and the right end the largest. So every left rectangle sits under the graph and every right rectangle pokes above it:</p>
+<ul>
+<li>$f$ increasing: left sum is an <b>underestimate</b>, right sum an <b>overestimate</b>.</li>
+<li>$f$ decreasing: left sum is an <b>overestimate</b>, right sum an <b>underestimate</b>.</li>
+</ul>
+<p>When you explain this on a free-response question, name the function and the property: "The left Riemann sum is an underestimate because $R$ is increasing on $[0, 7]$." Saying "because the graph goes up" without naming $R$ does not earn the point. If the function increases on part of the interval and decreases on another part, no conclusion follows from this test: some rectangles are too tall and some too short.</p>
+
+<h2>Concavity decides trapezoids and midpoints</h2>
+<p>A trapezoid's slanted top is a chord joining two points of the graph. If the graph is <b>concave up</b>, chords lie above it, so the trapezoidal sum is an <b>overestimate</b>; if it is <b>concave down</b>, chords lie below it and the trapezoidal sum is an <b>underestimate</b>. A midpoint rectangle goes the other way: under for concave up, over for concave down. In the worked example, $9 - x^2$ is concave down: the trapezoidal sum 17.5 is below the true 18, and the midpoint sum 18.25 is above it.</p>
+
+<h2>What the sum means</h2>
+<p>A Riemann sum built from a rate is an estimate of an accumulated change, with the accumulated units: gallons per hour times hours gives gallons. "The right Riemann sum, 244 gallons, estimates the amount of rainwater that flows into the tank from $t = 0$ to $t = 7$ hours." Name the quantity, its units and the time interval.</p>

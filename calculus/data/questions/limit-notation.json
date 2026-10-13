@@ -1,0 +1,536 @@
+{
+ "stimuli": {
+  "limit-notation-s1": {
+   "kind": "graph",
+   "title": "The graph of $f$",
+   "text": "The graph of $f$ on $-1 \\le x \\le 4$ follows a curve with an open circle at $(1, 1)$. The function's value at $x = 1$ is the separate filled dot at $(1, 3)$.",
+   "plot": {
+    "label": "Graph of f: a U-shaped curve from x = -1 to x = 4 with an open circle at (1, 1) and a filled dot at (1, 3)",
+    "width": 380,
+    "height": 300,
+    "x": [
+     -1.5,
+     4.5
+    ],
+    "y": [
+     -0.5,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "cls": "s1",
+      "fn": "0.5(x - 1)^2 + 1",
+      "domain": [
+       -1,
+       1
+      ],
+      "ends": [
+       "closed",
+       "open"
+      ]
+     },
+     {
+      "cls": "s1",
+      "fn": "0.5(x - 1)^2 + 1",
+      "domain": [
+       1,
+       4
+      ],
+      "label": "f",
+      "ends": [
+       "open",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       3
+      ]
+     }
+    ]
+   }
+  },
+  "limit-notation-s2": {
+   "kind": "graph",
+   "title": "The graph of $g$",
+   "text": "The graph of $g$ is part of the line $y = -x + 1$ for $-4 \\le x \\le 3$, with an open circle at $(-2, 3)$. There is no filled dot above or below $x = -2$.",
+   "plot": {
+    "label": "Graph of g: a falling line from (-4, 5) to (3, -2) with an open circle at (-2, 3)",
+    "width": 380,
+    "height": 300,
+    "x": [
+     -4.5,
+     3.5
+    ],
+    "y": [
+     -2.5,
+     5.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "cls": "s1",
+      "fn": "-x + 1",
+      "domain": [
+       -4,
+       -2
+      ],
+      "ends": [
+       "closed",
+       "open"
+      ]
+     },
+     {
+      "cls": "s1",
+      "fn": "-x + 1",
+      "domain": [
+       -2,
+       3
+      ],
+      "label": "g",
+      "ends": [
+       "open",
+       "closed"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-limit-notation-1",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limit-notation-s1",
+   "q": "What is $\\lim_{x \\to 1} f(x)$?",
+   "options": [
+    "$1$",
+    "$3$",
+    "$2$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As $x$ gets close to 1 from either side, the heights of the graph get close to 1, the height of the open circle. The filled dot at $(1, 3)$ is the value $f(1)$, which the limit ignores.",
+    "options": [
+     "The curve heads to height 1 from both sides.",
+     "3 is $f(1)$, the value at $x = 1$. A limit is about where the heights head as $x$ approaches 1.",
+     "No part of the graph near $x = 1$ heads to 2.",
+     "The graph near $x = 1$ stays at heights near 1, not 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-2",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "limit-notation-s1",
+   "q": "What is $f(1)$?",
+   "options": [
+    "$3$",
+    "$1$",
+    "$f(1)$ is not defined",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f(1)$ is the height of the filled dot above $x = 1$: 3.",
+    "options": [
+     "The filled dot is at $(1, 3)$.",
+     "The open circle at $(1, 1)$ is not on the graph; 1 is the limit, not the value.",
+     "There is a filled dot at $x = 1$, so $f(1)$ is defined.",
+     "No point of the graph is at $(1, 2)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-3",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limit-notation-s1",
+   "q": "What is $\\lim_{x \\to 3} f(x)$?",
+   "options": [
+    "$3$",
+    "$1$",
+    "$5.5$",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Near $x = 3$ the graph is an ordinary unbroken curve through $(3, 3)$, so the heights close in on 3. Here the limit and the value $f(3) = 3$ agree.",
+    "options": [
+     "The curve passes through $(3, 3)$ with no gap.",
+     "1 is the limit at $x = 1$, not at $x = 3$.",
+     "5.5 is the height at $x = 4$.",
+     "Read the height above $x = 3$: it is 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-4",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limit-notation-s1",
+   "q": "Which statement about $f$ is true?",
+   "options": [
+    "$\\lim_{x \\to 1} f(x) \\ne f(1)$",
+    "$\\lim_{x \\to 1} f(x) = f(1)$",
+    "$\\lim_{x \\to 3} f(x) \\ne f(3)$",
+    "$\\lim_{x \\to 4} f(x) = 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = 1$ the limit is 1 but the value is 3, so they are not equal.",
+    "options": [
+     "1 and 3 differ.",
+     "The limit is 1 and $f(1) = 3$.",
+     "At $x = 3$ both the limit and the value are 3.",
+     "Near $x = 4$ the curve is at height about 5.5, not 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-5",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limit-notation-s2",
+   "q": "What is $\\lim_{x \\to -2} g(x)$?",
+   "options": [
+    "$3$",
+    "$-2$",
+    "$1$",
+    "There is no number, because $g(-2)$ is not defined."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From both sides, the line's heights close in on 3 as $x$ approaches $-2$. It does not matter that $g(-2)$ itself is not defined: a limit never uses the value at the point.",
+    "options": [
+     "The heights near $x = -2$ approach 3.",
+     "$-2$ is the $x$-value being approached, not the height.",
+     "1 is the height at $x = 0$.",
+     "A limit does not need $g(-2)$ to exist; it only looks at $x$ near $-2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-6",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limit-notation-s2",
+   "q": "What is $g(-2)$?",
+   "options": [
+    "$g(-2)$ is not defined.",
+    "$3$",
+    "$-2$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "There is an open circle at $(-2, 3)$ and no filled dot above or below $x = -2$, so $-2$ is not in the domain of $g$.",
+    "options": [
+     "No filled dot sits above or below x = −2.",
+     "3 is the limit as $x \\to -2$, not a value of $g$: the open circle is not on the graph.",
+     "$-2$ is the input, not the output.",
+     "There is no point of the graph at $(-2, 0)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-7",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-notation-s2",
+   "q": "Find $\\lim_{x \\to 0} g(x) + \\lim_{x \\to -2} g(x)$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "The second limit exists even though $g(-2)$ does not: the heights near $x = -2$ approach 3. So the sum is $1 + 3$."
+     },
+     {
+      "value": 3,
+      "why": "$\\lim_{x \\to 0} g(x)$ is the height of the line at $x = 0$, which is 1, not 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Near $x = 0$ the line is at height 1, so the first limit is 1. Near $x = -2$ the heights approach 3. Sum: $1 + 3 = 4$."
+   }
+  },
+  {
+   "id": "calc-limit-notation-8",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limit-notation-s2",
+   "q": "Which statement best describes $g$ near $x = -2$?",
+   "options": [
+    "As $x$ approaches $-2$ from either side, $g(x)$ approaches 3, even though $g(-2)$ is not defined.",
+    "Because $g(-2)$ is not defined, $g(x)$ approaches no number as $x$ approaches $-2$.",
+    "$g(x)$ approaches 3 from the left of $-2$ but approaches 1 from the right.",
+    "$g(-2) = 3$, because the line passes through height 3 there."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The limit describes the heights for $x$ near $-2$, not at $-2$. Both sides close in on 3. The value $g(-2)$ is a separate question, and here it does not exist.",
+    "options": [
+     "Limit 3 from both sides; no value at $-2$.",
+     "A missing value does not stop the heights from closing in on 3.",
+     "The line is unbroken on both sides of $-2$ and both sides head to 3.",
+     "An open circle is not on the graph, so $g(-2)$ is not 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-9",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "2.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which sentence reads $\\lim_{x \\to 4} f(x) = 7$ correctly?",
+   "options": [
+    "As $x$ approaches 4, $f(x)$ approaches 7.",
+    "As $x$ approaches 7, $f(x)$ approaches 4.",
+    "$f(4) = 7$.",
+    "As $f(x)$ approaches 4, $x$ approaches 7."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The number under \"lim\" is where the input goes ($x \\to 4$); the number after the equals sign is where the output goes (7).",
+    "options": [
+     "Input heads to 4, output heads to 7.",
+     "The input and output numbers are swapped.",
+     "A limit statement says nothing certain about the value at $x = 4$.",
+     "The roles of $x$ and $f(x)$ are swapped."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-10",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which statement says \"as $x$ approaches 5, the values of $3x - 1$ approach 14\"?",
+   "options": [
+    "$\\lim_{x \\to 5} (3x - 1) = 14$",
+    "$\\lim_{x \\to 14} (3x - 1) = 5$",
+    "$\\lim_{x \\to 5} 14 = 3x - 1$",
+    "$\\lim_{x \\to 5} = 3x - 1 = 14$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Write \"lim\", put $x \\to 5$ under it, then the expression, then \"$= 14$\".",
+    "options": [
+     "The approach goes under \"lim\" and the target after the equals sign.",
+     "This swaps the input target and the output target.",
+     "The expression whose values change goes after \"lim\", not the number.",
+     "\"lim\" is followed by the expression, not an equals sign; this chains unequal things with \"=\"."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-11",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "$P(t)$ is the number of people in a stadium $t$ minutes after the gates open. What does $\\lim_{t \\to 30} P(t) = 18{,}000$ mean?",
+   "options": [
+    "As the time gets closer and closer to 30 minutes, the number of people in the stadium gets closer and closer to 18,000.",
+    "Exactly 18,000 people are in the stadium at 30 minutes.",
+    "The stadium holds 18,000 people more after 30 minutes than at the start.",
+    "People enter at 18,000 per minute at 30 minutes."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A limit statement describes the trend for times near 30 minutes: the count closes in on 18,000. It says nothing certain about the exact count at $t = 30$.",
+    "options": [
+     "It describes what the count approaches as t nears 30.",
+     "That is the value P(30), which the limit statement does not state.",
+     "The limit is about the count itself, not a change in the count.",
+     "A rate would be people per minute; 18,000 is a number of people."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-12",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says: \"$\\lim_{x \\to 2} h(x) = 5$, so $h(2) = 5$.\" Is the student right?",
+   "options": [
+    "Not necessarily: $h(2)$ could be a different number or not defined at all.",
+    "Yes: a limit is the value of the function at the point.",
+    "No: if the limit is 5, then $h(2)$ is some other number.",
+    "Yes: whenever a limit exists, the function is defined there."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The limit is about inputs near 2, never at 2. $h(2)$ might be 5, might be another number, or might not exist. The graph of $f$ in this topic, with limit 1 and value 3 at $x = 1$, is an example.",
+    "options": [
+     "The limit ignores $x = 2$ itself.",
+     "The limit and the value are different ideas; they agree only for some functions.",
+     "They can be equal; for many functions they are.",
+     "A function with a hole has a limit at the hole but no value there."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-13",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "In Topic 1.1, the average speed of a falling stone over $[2, 2 + h]$ was $64 + 16h$ feet per second. Find $\\lim_{h \\to 0} (64 + 16h)$.",
+   "numeric": {
+    "answer": 64,
+    "mistakes": [
+     {
+      "value": 80,
+      "why": "That is the average for $h = 1$. The limit asks where $64 + 16h$ heads as $h$ gets close to 0."
+     },
+     {
+      "value": 16,
+      "why": "As $h$ approaches 0, the term $16h$ approaches 0; what remains is 64."
+     }
+    ]
+   },
+   "why": {
+    "correct": "As $h$ approaches 0, $16h$ approaches 0, so $64 + 16h$ approaches 64: $\\lim_{h \\to 0} (64 + 16h) = 64$, the stone's speed at $t = 2$ in feet per second."
+   }
+  },
+  {
+   "id": "calc-limit-notation-14",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "On a graph of $y = f(x)$, what does $\\lim_{x \\to a} f(x) = L$ look like?",
+   "options": [
+    "The heights of the graph close in on $L$ as $x$ gets close to $a$ from both sides.",
+    "The graph has a filled dot at $(a, L)$.",
+    "The graph crosses the $x$-axis at $x = a$.",
+    "The graph reaches its highest point, $L$, at $x = a$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A limit is read from the heights near $x = a$, on both sides; what happens exactly at $x = a$ does not matter.",
+    "options": [
+     "Heights near $x = a$, on both sides, head to $L$.",
+     "A filled dot shows the value $f(a)$; the limit can differ or exist without it.",
+     "Crossing the $x$-axis means $f(a) = 0$; that is unrelated.",
+     "A limit has nothing to do with the highest point."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-15",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A function $k$ has $k(3) = 8$, and as $x$ approaches 3 from either side, the values $k(x)$ close in on 6. Which is correct?",
+   "options": [
+    "$\\lim_{x \\to 3} k(x) = 6$ and $k(3) = 8$",
+    "$\\lim_{x \\to 3} k(x) = 8$ and $k(3) = 6$",
+    "$\\lim_{x \\to 3} k(x) = 8$ and $k(3) = 8$",
+    "$\\lim_{x \\to 6} k(x) = 3$ and $k(3) = 8$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The limit is where the values head (6); the value at 3 is what $k$ actually gives there (8).",
+    "options": [
+     "Limit 6 from the trend, value 8 at the point.",
+     "The two numbers are swapped.",
+     "The value at the point does not set the limit.",
+     "The input target is 3, not 6."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-notation-16",
+   "unit": "unit-1",
+   "topic": "limit-notation",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "As $x$ gets closer and closer to 0, $x^2$ gets closer and closer to 0. What is $\\lim_{x \\to 0} (x^2 + 2)$?",
+   "options": [
+    "$2$",
+    "$0$",
+    "$4$",
+    "$1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x^2$ closes in on 0, so $x^2 + 2$ closes in on $0 + 2 = 2$.",
+    "options": [
+     "$x^2 + 2$ heads to $0 + 2$.",
+     "That is where $x^2$ heads; the expression adds 2.",
+     "$x^2$ heads to 0, not 2, so the sum heads to 2.",
+     "No part of $x^2 + 2$ heads to 1."
+    ]
+   }
+  }
+ ]
+}

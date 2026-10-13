@@ -1,0 +1,562 @@
+{
+ "stimuli": {
+  "sketching-derivatives-s1": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = \\frac{x^4}{4} - 2x^2$",
+   "plot": {
+    "label": "Graph of f(x) = x to the fourth over 4 minus 2x squared from -3 to 3: a W shape with low points at (-2, -4) and (2, -4) and a high point at (0, 0)",
+    "x": [
+     -3.2,
+     3.2
+    ],
+    "y": [
+     -5,
+     4.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^4/4 - 2x^2",
+      "domain": [
+       -3,
+       3
+      ],
+      "cls": "s1",
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "label": "f"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -2,
+       -4
+      ]
+     },
+     {
+      "at": [
+       0,
+       0
+      ]
+     },
+     {
+      "at": [
+       2,
+       -4
+      ]
+     }
+    ]
+   }
+  },
+  "sketching-derivatives-s2": {
+   "kind": "graph",
+   "title": "The graph of $f'$, made of three line segments",
+   "text": "The graph of $f'$ on $[-2, 4]$ joins the points $(-2, -2)$, $(0, 2)$, $(2, 2)$ and $(4, -2)$ with line segments. $f$ is continuous on $[-2, 4]$.",
+   "plot": {
+    "label": "Graph of f prime on the closed interval from -2 to 4: a segment rising from (-2, -2) to (0, 2), a level segment from (0, 2) to (2, 2), and a segment falling from (2, 2) to (4, -2)",
+    "x": [
+     -2.5,
+     4.5
+    ],
+    "y": [
+     -3,
+     3
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2x + 2",
+      "domain": [
+       -2,
+       0
+      ],
+      "cls": "s2",
+      "ends": [
+       "closed",
+       null
+      ]
+     },
+     {
+      "fn": "2",
+      "domain": [
+       0,
+       2
+      ],
+      "cls": "s2"
+     },
+     {
+      "fn": "6 - 2x",
+      "domain": [
+       2,
+       4
+      ],
+      "cls": "s2",
+      "ends": [
+       null,
+       "closed"
+      ],
+      "label": "f'"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       2
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       2,
+       2
+      ],
+      "cls": "s2"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-sketching-derivatives-1",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sketching-derivatives-s1",
+   "q": "Where does the graph of $f'$ cross or touch the $x$-axis?",
+   "options": [
+    "At $x = -2$, $x = 0$ and $x = 2$",
+    "At $x = -2\\sqrt{2}$, $x = 0$ and $x = 2\\sqrt{2}$",
+    "At $x \\approx -1.15$ and $x \\approx 1.15$",
+    "At $x = -3$ and $x = 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f'(x) = 0$ where the graph of $f$ has a flat tangent line: at its turning points $x = -2$, $0$, $2$. Check: $f'(x) = x^3 - 4x = x(x - 2)(x + 2)$.",
+    "options": [
+     "The peaks and valleys of $f$, where its tangent lines are flat.",
+     "Those are the zeros of $f$, where the graph of $f$ crosses the axis.",
+     "Those are the inflection points of $f$, where $f'$ turns.",
+     "The ends of the graph are not where $f$ is flat."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-2",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sketching-derivatives-s1",
+   "q": "On which intervals is the graph of $f'$ above the $x$-axis?",
+   "options": [
+    "$(-3, -2)$ and $(0, 2)$",
+    "$(-1.15, 1.15)$",
+    "$(-3, -2)$ and $(2, 3)$",
+    "$(-2, 0)$ and $(2, 3)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f' > 0$ exactly where $f$ is increasing: on $(-2, 0)$ and $(2, 3)$.",
+    "options": [
+     "Here $f$ falls, so $f' < 0$.",
+     "There $f$ is concave down, which is about the slope of $f'$, not its sign.",
+     "$f$ falls on $(-3, -2)$, so $f'$ is negative there.",
+     "Where $f$ rises, its derivative is positive."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-3",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sketching-derivatives-s1",
+   "q": "Where does the graph of $f'$ have its relative maximum and minimum?",
+   "options": [
+    "At the relative extrema of $f$, $x = -2$, $0$, $2$",
+    "At the endpoints $x = -3$ and $x = 3$",
+    "At the inflection points of $f$, $x = \\pm\\frac{2}{\\sqrt{3}} \\approx \\pm 1.15$",
+    "At the zeros of $f$, $x = 0$ and $x = \\pm 2\\sqrt{2}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$f''(x) = 3x^2 - 4$ changes sign at $x = \\pm\\frac{2}{\\sqrt{3}}$, where $f$ changes concavity. There $f'$ changes from increasing to decreasing or back, so the graph of $f'$ peaks at $x \\approx -1.15$ and bottoms out at $x \\approx 1.15$.",
+    "options": [
+     "There $f' = 0$; those are zeros of the graph of the derivative, not its turns.",
+     "An endpoint is not a relative extremum.",
+     "$f'$ turns where its own slope $f''$ changes sign, which is where $f$ changes concavity.",
+     "The zeros of $f$ say nothing about $f'$."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-4",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sketching-derivatives-s1",
+   "q": "At $x = 1$, what does the graph of $f'$ look like?",
+   "options": [
+    "Below the $x$-axis and rising",
+    "Below the $x$-axis and falling",
+    "Above the $x$-axis and falling",
+    "Above the $x$-axis and rising"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At $x = 1$ the graph of $f$ is going down and bending down. So $f'(1) < 0$ ($f'(1) = 1 - 4 = -3$) and $f'$ is decreasing ($f''(1) = -1 < 0$).",
+    "options": [
+     "$f$ is concave down at $x = 1$, so $f'$ is falling.",
+     "$f$ is falling ($f' < 0$) and concave down ($f'$ decreasing) at $x = 1$.",
+     "$f$ is decreasing at $x = 1$, so $f'$ is negative.",
+     "Both features are reversed."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-5",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sketching-derivatives-s2",
+   "q": "What does the graph of $f$ look like on $0 < x < 2$?",
+   "options": [
+    "A line segment with slope 2",
+    "A horizontal line segment at height 2",
+    "A curve that is concave up",
+    "A curve that is concave down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On $(0, 2)$, $f'(x) = 2$, a constant. A function with constant slope 2 is a line segment with slope 2 (and $f'' = 0$ there).",
+    "options": [
+     "$f'(x) = 2$ on $(0, 2)$: a constant slope gives a straight line.",
+     "Height 2 is the slope of $f$, not its value.",
+     "$f'$ is constant, not increasing, so $f$ does not bend.",
+     "$f'$ is constant, not decreasing."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-6",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sketching-derivatives-s2",
+   "q": "At what value of $x$ does $f$ have a relative minimum?",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "At $x = 3$, $f'$ changes from positive to negative: a relative maximum."
+     },
+     {
+      "value": -2,
+      "why": "$x = -2$ is an endpoint; a relative extremum is an interior point where $f'$ changes sign."
+     }
+    ]
+   },
+   "why": {
+    "correct": "On $(-2, 0)$, $f'(x) = 2x + 2$, zero at $x = -1$. $f'$ changes from negative to positive there, so $f$ has a relative minimum at $x = -1$."
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-7",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sketching-derivatives-s2",
+   "q": "Find $f''(3)$.",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$f'(3) = 0$. $f''(3)$ is the slope of the graph of $f'$ at $x = 3$."
+     },
+     {
+      "value": 2,
+      "why": "The segment from $(2, 2)$ to $(4, -2)$ falls: its slope is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f''(3)$ is the slope of the graph of $f'$ at $x = 3$: the segment from $(2, 2)$ to $(4, -2)$ has slope $\\frac{-2 - 2}{4 - 2} = -2$."
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-8",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "sketching-derivatives-s2",
+   "q": "Which describes the graph of $f''$ on $(-2, 4)$?",
+   "options": [
+    "$-2$ on $(-2, 0)$, $2$ on $(0, 2)$, $-2$ on $(2, 4)$",
+    "$2$ on $(-2, 0)$, $0$ on $(0, 2)$, $-2$ on $(2, 4)$, undefined at $x = 0$ and $x = 2$",
+    "Positive on $(-1, 3)$ and negative elsewhere",
+    "A smooth curve with zeros at $x = -1$ and $x = 3$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f''$ is the slope of the graph of $f'$: $2$, then $0$, then $-2$. At the corners $x = 0$ and $x = 2$, the slope of $f'$ jumps, so $f''$ is undefined there.",
+    "options": [
+     "Those are values read from the graph of $f'$, not its slopes.",
+     "The slopes of the three segments; at the corners of $f'$ the slope jumps, so $f''$ does not exist there.",
+     "That describes the sign of $f'$, not of $f''$.",
+     "$-1$ and $3$ are zeros of $f'$; $f''$ is piecewise constant."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-9",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph of $f'$ is a line with positive slope that crosses the $x$-axis at $x = 1$. Which describes the graph of $f$?",
+   "options": [
+    "A parabola opening upward with its vertex at $x = 1$",
+    "A parabola opening downward with its vertex at $x = 1$",
+    "A line with positive slope through $(1, 0)$",
+    "A cubic with a point of inflection at $x = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f'(x) = m(x - 1)$ with $m > 0$, so $f(x) = \\frac{m}{2}(x - 1)^2 + k$ for some constant $k$: decreasing then increasing, concave up, vertex at $x = 1$.",
+    "options": [
+     "$f' < 0$ before 1 and $f' > 0$ after (a minimum at 1), and $f'$ increasing means concave up.",
+     "That would need $f'$ to go from positive to negative.",
+     "A line is $f'$ here; $f$ is one degree higher.",
+     "$f'' $ is a positive constant, so the concavity never changes."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-10",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "The graph of $f$ is concave down on $(a, b)$. What must be true of the graph of $f'$ there?",
+   "options": [
+    "It is below the $x$-axis",
+    "It is concave down",
+    "It is increasing",
+    "It is decreasing"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Concave down on $(a, b)$ means the slopes of $f$ decrease there: the graph of the derivative is decreasing.",
+    "options": [
+     "The sign of $f'$ gives the direction of $f$, not its concavity.",
+     "The concavity of $f'$ is about $f'''$.",
+     "That would be concave up.",
+     "Concave down means $f'' < 0$, so $f'$ is decreasing."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-11",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph of $f$ is continuous and has a corner at $x = a$. What does the graph of $f'$ show at $x = a$?",
+   "options": [
+    "A zero: $f'(a) = 0$",
+    "A vertical asymptote",
+    "A jump: $f'(a)$ does not exist",
+    "Nothing special: $f'$ is continuous at $a$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At a corner the slope from the left differs from the slope from the right. The graph of $f'$ jumps there, with no value at $x = a$.",
+    "options": [
+     "A corner is a point where $f'$ is undefined, not zero.",
+     "At a corner the slopes stay finite; a vertical tangent line would give an asymptote-like spike.",
+     "The slopes on the two sides differ, so the derivative jumps from one value to another.",
+     "$f'$ cannot be continuous where its left and right values differ."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-12",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "$f(x) = x^2 + \\cos x$ is even: $f(-x) = f(x)$, so its graph is symmetric about the $y$-axis. What symmetry does the graph of $f'$ have?",
+   "options": [
+    "$f'(-x) = f'(x)$: symmetric about the $y$-axis",
+    "$f'(-x) = -f'(x)$: symmetric about the origin",
+    "$f'(-x) = f'(x) + 1$",
+    "No symmetry"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Reflecting the graph of $f$ across the $y$-axis reverses every slope. So $f'(-x) = -f'(x)$: the graph of $f'$ is symmetric about the origin. Directly: $f'(x) = 2x - \\sin x$ is odd.",
+    "options": [
+     "Mirror the graph of $f$: a rising piece on the right becomes a falling piece on the left, so slopes change sign.",
+     "$f'(x) = 2x - \\sin x$, and $f'(-x) = -2x + \\sin x = -f'(x)$.",
+     "Symmetry does not add constants.",
+     "Check $f'(x) = 2x - \\sin x$ directly: it is odd."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-13",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "On $(a, b)$, the graph of $f$ is increasing and concave up. Which describes the graph of $f'$ there?",
+   "options": [
+    "Above the $x$-axis and increasing",
+    "Above the $x$-axis and decreasing",
+    "Below the $x$-axis and increasing",
+    "Increasing and concave up"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f$ increasing gives $f' > 0$ (above the axis); $f$ concave up gives $f'$ increasing.",
+    "options": [
+     "Increasing $f$: $f' > 0$. Concave up: $f'$ increasing.",
+     "Concave up means $f'$ is increasing, not decreasing.",
+     "Increasing $f$ means $f' > 0$.",
+     "Concave up describes $f$; the concavity of $f'$ is not given."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-14",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "multi",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$f$ is increasing on $(0, 4)$ and has a point of inflection at $x = 2$, where it changes from concave up to concave down. Which statements about $f'$ on $(0, 4)$ are true? Select each one.",
+   "options": [
+    "$f'$ is positive on $(0, 4)$",
+    "$f'$ has a relative maximum at $x = 2$",
+    "$f'$ is increasing on $(0, 4)$",
+    "$f'(2) = 0$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Increasing means $f' > 0$. The change from concave up to concave down means $f'$ changes from increasing to decreasing at $x = 2$: a relative maximum of $f'$ (the steepest point of $f$).",
+    "options": [
+     "$f$ is increasing.",
+     "$f'$ increases (concave up) and then decreases (concave down).",
+     "$f'$ decreases on $(2, 4)$, where $f$ is concave down.",
+     "$f'(2)$ is the largest slope, and it is positive."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-15",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "The graph of $f$ has a peak at $x = 2$ (a relative maximum where $f$ is differentiable). What does the graph of $f'$ do at $x = 2$?",
+   "options": [
+    "It crosses the $x$-axis from below to above",
+    "It has a peak",
+    "It crosses the $x$-axis from above to below",
+    "It touches the $x$-axis without crossing"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At a relative maximum where $f$ is differentiable, $f'(2) = 0$ and $f'$ changes from positive to negative: the graph of $f'$ crosses the axis going down.",
+    "options": [
+     "That would be a valley of $f$.",
+     "A peak of $f'$ is an inflection point of $f$.",
+     "$f' = 0$ at the peak, positive before and negative after.",
+     "Then $f$ would keep the same direction: no peak."
+    ]
+   }
+  },
+  {
+   "id": "calc-sketching-derivatives-16",
+   "unit": "unit-5",
+   "topic": "sketching-derivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "Find $f'(x)$ for $f(x) = (x - 1)^3$, and picture its graph: a parabola that touches the $x$-axis at $x = 1$.",
+   "expr": {
+    "answer": "3(x - 1)^2",
+    "vars": [
+     "x"
+    ],
+    "lhs": "f'(x) =",
+    "mistakes": [
+     {
+      "expr": "3(x - 1)",
+      "why": "The power drops by one: the exponent 3 becomes 2, not 1."
+     },
+     {
+      "expr": "(x - 1)^2",
+      "why": "Bring the power 3 down as a factor."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 3(x - 1)^2 \\ge 0$: the graph of $f$ rises everywhere and flattens at $x = 1$, where $f'$ touches 0 without changing sign."
+   }
+  }
+ ]
+}

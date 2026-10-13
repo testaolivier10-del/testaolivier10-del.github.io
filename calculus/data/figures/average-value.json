@@ -1,0 +1,12 @@
+{
+ "average-value-rectangle": {
+  "file": "figures/average-value-rectangle.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph, drawn from its function by scripts/apcalc-figures/unit-7-8a.mjs",
+  "alt": "The parabola f(x) = 6x − x² on 0 ≤ x ≤ 6 with the area under it shaded in crimson, 36 square units. A dashed blue rectangle of width 6 and height 6 has the same area, so the average value of f on [0, 6] is 6. The curve meets the line y = 6 at x = 3 − √3 and x = 3 + √3, marked with blue points."
+ }
+}

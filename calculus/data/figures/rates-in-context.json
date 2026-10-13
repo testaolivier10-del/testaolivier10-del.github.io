@@ -1,0 +1,12 @@
+{
+ "warming-rate-panels": {
+  "file": "figures/warming-rate-panels.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 490,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Top: temperature H(t) = 70 − 50e^(−0.1t) of a drink in °F for t from 0 to 40 minutes, about 51.6 °F at t = 10. Bottom: its rate H′(t) = 5e^(−0.1t) in °F per minute, about 1.84 at t = 10 and shrinking."
+ }
+}

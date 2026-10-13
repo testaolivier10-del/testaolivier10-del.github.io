@@ -1,0 +1,12 @@
+{
+ "sqrt-tangent-overestimate": {
+  "file": "figures/sqrt-tangent-overestimate.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The graph of y = √x (crimson) and its tangent line at (4, 2), L(x) = 2 + (x − 4)/4 (blue). At x = 7 the line gives 2.75 while √7 ≈ 2.646; a zoomed panel shows the line above the concave down curve, so the estimate is an overestimate."
+ }
+}

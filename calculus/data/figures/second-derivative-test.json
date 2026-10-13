@@ -1,0 +1,12 @@
+{
+ "sdt-cases": {
+  "file": "figures/sdt-cases.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Three panels with a flat tangent line at x = c where f'(c) = 0. Left: concave up, f''(c) > 0, a relative minimum. Middle: concave down, f''(c) < 0, a relative maximum. Right: f''(c) = 0, and x to the fourth (a minimum), negative x to the fourth (a maximum) and x cubed (neither) show that the test says nothing."
+ }
+}

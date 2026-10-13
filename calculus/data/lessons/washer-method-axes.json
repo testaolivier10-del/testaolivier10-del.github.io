@@ -1,0 +1,52 @@
+{
+ "topic": "washer-method-axes",
+ "hook": "A bagel, a pipe, a bundt cake: each is a solid of revolution with a hole down the middle. Slice one and you get a ring, a disc with a smaller disc cut out. That ring, called a washer after the metal ring under a bolt, is the slice you get whenever the spinning region does not reach the axis.",
+ "prereq": [
+  {
+   "q": "The region under $y = 2x$ for $0 \\le x \\le 2$ is revolved about the $x$-axis. What is its volume?",
+   "options": ["$\\frac{32\\pi}{3}$", "$4\\pi$", "$\\frac{32}{3}$", "$8\\pi$"],
+   "correct": 0,
+   "why": "Discs of radius $2x$: $\\pi\\int_0^2 4x^2\\,dx = \\frac{32\\pi}{3}$.",
+   "review": "disc-method-axes"
+  },
+  {
+   "q": "On $(0, 2)$, which is larger, $2x$ or $x^2$?",
+   "options": ["$2x$", "$x^2$", "They are equal", "It changes at $x = 1$"],
+   "correct": 0,
+   "why": "$2x - x^2 = x(2 - x) > 0$ for $0 < x < 2$. Test $x = 1$: $2 > 1$.",
+   "review": "area-between-curves-x"
+  }
+ ],
+ "figure": { "figure": "washer-solid-x-axis", "caption": "Revolving the region between $y = \\sqrt{x}$ and $y = 1$ about the $x$-axis. Each slice is a washer: outer radius $\\sqrt{x}$, inner radius 1." },
+ "chain": [
+  { "cause": "The region does not touch the axis along its length", "effect": "each rectangle starts above the axis and sweeps out a ring, a washer" },
+  { "cause": "The far edge of the rectangle is on one curve, the near edge on the other", "effect": "outer radius $R$ = axis to the far curve; inner radius $r$ = axis to the near curve" },
+  { "cause": "A washer is a big disc minus a small disc", "effect": "its area is $\\pi R^2 - \\pi r^2 = \\pi\\left(R^2 - r^2\\right)$" },
+  { "cause": "Integrate the washer areas along the axis", "effect": "$V = \\pi\\int_a^b \\left(R(x)^2 - r(x)^2\\right)\\,dx$" }
+ ],
+ "ideas": [
+  "<b>Washer method</b>: $V = \\pi\\int_a^b \\left(R^2 - r^2\\right)\\,dx$, outer radius squared minus inner radius squared.",
+  "Both radii are measured from the axis: $R$ to the far curve, $r$ to the near one. About the $x$-axis, $R = f(x)$ (top) and $r = g(x)$ (bottom).",
+  "Square each radius, then subtract: $R^2 - r^2$, not $(R - r)^2$.",
+  "About the $y$-axis, the washers are horizontal: write each curve as $x$ in terms of $y$, and the farther curve from the $y$-axis is the outer radius.",
+  "Discs are washers with $r = 0$: use washers whenever the region leaves a gap at the axis."
+ ],
+ "misconception": {
+  "wrong": "A washer's area is $\\pi(R - r)^2$, since $R - r$ is the width of the region.",
+  "right": "The washer is a big disc with a small disc removed, so its area is $\\pi R^2 - \\pi r^2$. With $R = 3$ and $r = 2$ that is $5\\pi$, while $\\pi(3 - 2)^2 = \\pi$ is far too small: the ring sits far from the axis, where it sweeps out a lot of area."
+ },
+ "check": [
+  "calc-washer-method-axes-1",
+  "calc-washer-method-axes-2",
+  "calc-washer-method-axes-3",
+  "calc-washer-method-axes-4",
+  "calc-washer-method-axes-5",
+  "calc-washer-method-axes-11",
+  "calc-washer-method-axes-13"
+ ],
+ "summary": "When the region does not touch the axis, each slice is a washer. Measure both radii from the axis: the outer radius $R$ to the far curve and the inner radius $r$ to the near one. Then $V = \\pi\\int_a^b \\left(R^2 - r^2\\right)\\,dx$: the difference of squares, never the square of the difference.",
+ "connections": [
+  { "href": "../notes/disc-method-other-axes.html", "label": "Back: discs about other lines (8.10)" },
+  { "href": "../notes/washer-method-other-axes.html", "label": "Next: 8.12" }
+ ]
+}

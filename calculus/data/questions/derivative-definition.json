@@ -1,0 +1,574 @@
+{
+ "stimuli": {
+  "derivative-definition-s1": {
+   "kind": "graph",
+   "title": "A curve and one of its tangent lines",
+   "text": "The graph shows $y = f(x)$, where $f(x) = 4 - \\frac{(x - 1)^2}{2}$, and the line tangent to it at $x = 3$.",
+   "plot": {
+    "label": "Graph of f(x) = 4 minus (x minus 1) squared over 2, a downward parabola with high point (1, 4), and the dashed line tangent to it at (3, 2), which also passes through (2, 4) and (4, 0)",
+    "x": [
+     -2,
+     5
+    ],
+    "y": [
+     -1.5,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "4 - (x - 1)^2/2",
+      "domain": [
+       -2,
+       5
+      ],
+      "label": "f"
+     }
+    ],
+    "lines": [
+     {
+      "point": [
+       3,
+       2
+      ],
+      "slope": -2,
+      "cls": "s2",
+      "dashed": true
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       3,
+       2
+      ],
+      "label": "(3, 2)"
+     },
+     {
+      "at": [
+       2,
+       4
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       4,
+       0
+      ],
+      "cls": "s2"
+     }
+    ]
+   }
+  },
+  "derivative-definition-s2": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = \\sqrt{x}$ and a tangent line",
+   "plot": {
+    "label": "Graph of f(x) = square root of x from x = 0 to 9, with the dashed line tangent to it at (4, 2), which crosses the y-axis at 1",
+    "x": [
+     -0.5,
+     9
+    ],
+    "y": [
+     -0.5,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "sqrt(x)",
+      "domain": [
+       0,
+       9
+      ],
+      "label": "f",
+      "ends": [
+       "closed",
+       null
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "point": [
+       4,
+       2
+      ],
+      "slope": 0.25,
+      "cls": "s2",
+      "dashed": true
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       4,
+       2
+      ],
+      "label": "(4, 2)"
+     },
+     {
+      "at": [
+       0,
+       1
+      ],
+      "cls": "s2"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-derivative-definition-1",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "derivative-definition-s1",
+   "q": "Use the tangent line in the graph to find $f'(3)$.",
+   "options": [
+    "$-2$",
+    "$2$",
+    "$-\\frac{1}{2}$",
+    "$8$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f'(3)$ is the slope of the tangent line at $x = 3$. It passes through $(2, 4)$ and $(4, 0)$: slope $\\frac{0 - 4}{4 - 2} = -2$.",
+    "options": [
+     "Rise $-4$ over run 2 on the tangent line.",
+     "That is $f(3)$, the height of the point. The derivative is a slope, and this line falls.",
+     "That is run over rise, upside down.",
+     "That is where the tangent line crosses the $y$-axis, not its slope."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-2",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "derivative-definition-s1",
+   "q": "Which is an equation of the line tangent to the graph of $f$ at $x = 3$?",
+   "options": [
+    "$y = 2 - 2(x - 3)$",
+    "$y = -2 + 2(x - 3)$",
+    "$y = 2 - 2(x + 3)$",
+    "$y = 2 - 2x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Point $(3, f(3)) = (3, 2)$ and slope $f'(3) = -2$: $y = f(3) + f'(3)(x - 3)$.",
+    "options": [
+     "It uses the point $(3, 2)$ and the slope $-2$.",
+     "The value and the slope are swapped: $f(3) = 2$ is the height and $f'(3) = -2$ the slope.",
+     "Point-slope form subtracts the $x$-coordinate: $x - 3$, not $x + 3$.",
+     "At $x = 3$ this line gives $-4$, not 2: it misses the point of tangency."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-3",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "derivative-definition-s1",
+   "q": "Which limit equals the slope of the tangent line shown?",
+   "options": [
+    "$\\lim_{x \\to 3} \\frac{f(x) - 2}{x - 3}$",
+    "$\\lim_{x \\to 3} \\left( f(x) - 2 \\right)$",
+    "$\\lim_{x \\to 3} \\frac{f(x)}{x}$",
+    "$\\lim_{h \\to 0} \\frac{f(3 + h) - f(h)}{h}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Since $f(3) = 2$, this is $\\lim_{x \\to 3} \\frac{f(x) - f(3)}{x - 3} = f'(3)$, the second form of the definition.",
+    "options": [
+     "Secant slopes from $(3, 2)$ to $(x, f(x))$, with $x \\to 3$.",
+     "Without dividing by $x - 3$ this is a change in height; its limit is 0.",
+     "A height over an input is the slope of a line through the origin, not a tangent slope.",
+     "Both points must be near $x = 3$: the numerator needs $f(3)$, not $f(h)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-4",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "derivative-definition-s1",
+   "q": "Which correctly orders $f'(-1)$, $f'(1)$ and $f'(3)$?",
+   "options": [
+    "$f'(3) < f'(1) < f'(-1)$",
+    "$f'(-1) < f'(1) < f'(3)$",
+    "$f'(-1) = f'(3) < f'(1)$",
+    "$f'(1) < f'(3) < f'(-1)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = -1$ the graph rises (slope 2), at $x = 1$ its tangent line is level (slope 0), and at $x = 3$ it falls (slope $-2$).",
+    "options": [
+     "Falling, level, rising: $-2 < 0 < 2$.",
+     "This orders them backward; the graph rises on the left and falls on the right.",
+     "This compares heights: $f(-1) = f(3) = 2 < f(1) = 4$. Derivatives compare slopes.",
+     "At the top of the graph the slope is 0, which is greater than the negative slope at $x = 3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-5",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "derivative-definition-s2",
+   "q": "Which limit equals $f'(4)$ for $f(x) = \\sqrt{x}$?",
+   "options": [
+    "$\\lim_{x \\to 4} \\frac{\\sqrt{x} - 2}{x - 4}$",
+    "$\\lim_{x \\to 4} \\left( \\sqrt{x} - 2 \\right)$",
+    "$\\lim_{x \\to 4} \\frac{\\sqrt{x}}{x - 4}$",
+    "$\\lim_{h \\to 0} \\frac{\\sqrt{4 + h} - 2}{4 + h}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With $f(4) = 2$, the definition $\\lim_{x \\to 4} \\frac{f(x) - f(4)}{x - 4}$ becomes this limit.",
+    "options": [
+     "The difference quotient in its $x \\to a$ form.",
+     "The change in height is not divided by the change in $x$; this limit is 0.",
+     "The numerator needs the change $\\sqrt{x} - 2$, not the height $\\sqrt{x}$; this limit does not exist.",
+     "The denominator must be the change in input, $h$, not the input $4 + h$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-6",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "derivative-definition-s2",
+   "q": "Evaluate $f'(4) = \\lim_{x \\to 4} \\frac{\\sqrt{x} - 2}{x - 4}$.",
+   "numeric": {
+    "answer": "1/4",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "That is $\\frac{2}{4}$, the slope from the origin to $(4, 2)$. Rationalize: $\\frac{\\sqrt{x} - 2}{x - 4} = \\frac{1}{\\sqrt{x} + 2}$, which tends to $\\frac{1}{4}$."
+     },
+     {
+      "value": 4,
+      "why": "The fraction is upside down. After cancelling, $\\frac{1}{\\sqrt{x} + 2} \\to \\frac{1}{2 + 2}$."
+     },
+     {
+      "value": 0,
+      "why": "Substituting $x = 4$ first gives $\\frac{0}{0}$, which is not 0. Factor $x - 4 = (\\sqrt{x} - 2)(\\sqrt{x} + 2)$ and cancel."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{\\sqrt{x} - 2}{x - 4} = \\frac{\\sqrt{x} - 2}{(\\sqrt{x} - 2)(\\sqrt{x} + 2)} = \\frac{1}{\\sqrt{x} + 2} \\to \\frac{1}{4}$ as $x \\to 4$. The tangent line in the graph rises 1 for every 4 to the right."
+   }
+  },
+  {
+   "id": "calc-derivative-definition-7",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "derivative-definition-s2",
+   "q": "Which is an equation of the line tangent to $f(x) = \\sqrt{x}$ at $x = 4$?",
+   "options": [
+    "$y = 2 + \\frac{1}{4}(x - 4)$",
+    "$y = \\frac{1}{4} + 2(x - 4)$",
+    "$y = 2 + \\frac{1}{4}(x + 4)$",
+    "$y = 2 + 4(x - 4)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Point $(4, 2)$, slope $f'(4) = \\frac{1}{4}$. At $x = 0$ it gives $y = 1$, matching the graph.",
+    "options": [
+     "Height $f(4) = 2$ and slope $f'(4) = \\frac{1}{4}$.",
+     "The height and the slope are swapped.",
+     "Point-slope form uses $x - 4$.",
+     "The slope is $\\frac{1}{4}$, not 4; the line in the graph is gentle."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-8",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "derivative-definition-s2",
+   "q": "You zoom in on the graph of $f$ closer and closer around the point $(4, 2)$. What does the graph look like?",
+   "options": [
+    "More and more like the tangent line $y = 2 + \\frac{1}{4}(x - 4)$",
+    "More and more curved, like a sharper bend",
+    "More and more like the level line $y = 2$",
+    "More and more like the line through the origin and $(4, 2)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Near the point of tangency the curve and its tangent line become hard to tell apart; that is why the tangent slope is the rate of change at that point.",
+    "options": [
+     "The tangent line is the line the graph looks like up close.",
+     "Zooming in straightens a smooth curve; it does not bend it more.",
+     "The graph rises with slope $\\frac{1}{4}$ there, so it does not look level.",
+     "That line has slope $\\frac{1}{2}$; the curve near $(4, 2)$ has slope $\\frac{1}{4}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-9",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the definition of the derivative to find $f'(x)$ for $f(x) = 3x^2 - x$.",
+   "expr": {
+    "answer": "6x - 1",
+    "vars": [
+     "x"
+    ],
+    "lhs": "f'(x) =",
+    "mistakes": [
+     {
+      "expr": "3x - 1",
+      "why": "Expand $3(x + h)^2 = 3x^2 + 6xh + 3h^2$; the middle term is $6xh$, not $3xh$."
+     },
+     {
+      "expr": "6x",
+      "why": "The $-x$ term contributes too: $-(x + h) - (-x) = -h$, which gives $-1$ after dividing by $h$."
+     },
+     {
+      "expr": "3x^2 - x",
+      "why": "That is $f(x)$ itself. Form $\\frac{f(x + h) - f(x)}{h}$, simplify and take the limit."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{f(x + h) - f(x)}{h} = \\frac{3x^2 + 6xh + 3h^2 - x - h - 3x^2 + x}{h} = 6x + 3h - 1 \\to 6x - 1$."
+   }
+  },
+  {
+   "id": "calc-derivative-definition-10",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Use the definition of the derivative to find $\\frac{d}{dx}\\left( \\frac{1}{x} \\right)$ for $x > 0$.",
+   "expr": {
+    "answer": "-1/x^2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     3
+    ],
+    "lhs": "\\frac{d}{dx}\\left( \\frac{1}{x} \\right) =",
+    "mistakes": [
+     {
+      "expr": "1/x^2",
+      "why": "Check the sign: $\\frac{1}{x + h} - \\frac{1}{x} = \\frac{x - (x + h)}{x(x + h)} = \\frac{-h}{x(x + h)}$."
+     },
+     {
+      "expr": "-1/x",
+      "why": "After cancelling $h$ the quotient is $\\frac{-1}{x(x + h)}$, which tends to $\\frac{-1}{x \\cdot x}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{h}\\left( \\frac{1}{x + h} - \\frac{1}{x} \\right) = \\frac{-1}{x(x + h)} \\to -\\frac{1}{x^2}$. The graph of $\\frac{1}{x}$ falls everywhere, so its slopes are negative."
+   }
+  },
+  {
+   "id": "calc-derivative-definition-11",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Let $y = f(x)$. Which of these does NOT mean the derivative of $f$?",
+   "options": [
+    "$\\frac{\\Delta y}{\\Delta x}$",
+    "$\\frac{dy}{dx}$",
+    "$y'$",
+    "$f'(x)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{\\Delta y}{\\Delta x}$ is a quotient of two actual changes: an average rate, the slope of a secant line.",
+    "options": [
+     "An average rate over an interval, before any limit.",
+     "Leibniz notation for the derivative.",
+     "Prime notation for the derivative of $y$.",
+     "The derivative function of $f$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-12",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "On the graph of $y = f(x)$, the number $f'(a)$ is",
+   "options": [
+    "the slope of the tangent line at $(a, f(a))$",
+    "the height of the graph at $x = a$",
+    "the slope of the line through the origin and $(a, f(a))$",
+    "the $y$-intercept of the tangent line at $(a, f(a))$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The derivative at $a$ is the limit of secant slopes, which is the tangent slope.",
+    "options": [
+     "A slope, at the point where $x = a$.",
+     "That is $f(a)$, a value of the function.",
+     "That slope is $\\frac{f(a)}{a}$, a height over an input, not a rate of change.",
+     "A tangent line has a slope and an intercept; $f'(a)$ is its slope."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-13",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "What does $\\lim_{h \\to 0} \\frac{(3 + h)^2 - 9}{h}$ represent?",
+   "options": [
+    "$f'(3)$ for $f(x) = x^2$, which equals 6",
+    "$f(3)$ for $f(x) = x^2$, which equals 9",
+    "$f'(9)$ for $f(x) = x^2$, which equals 18",
+    "The average rate of change of $x^2$ on $[3, 3 + h]$, which equals $6 + h$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Since $9 = 3^2$, the limit is $\\lim_{h \\to 0} \\frac{f(3 + h) - f(3)}{h}$ with $f(x) = x^2$: the derivative at 3. It equals $\\lim_{h \\to 0} (6 + h) = 6$.",
+    "options": [
+     "The limit of the difference quotient of $x^2$ at $a = 3$.",
+     "The 9 is $f(3)$, subtracted inside the quotient; the whole limit is a slope.",
+     "The point is $a = 3$, from $3 + h$; the 9 is the output $f(3)$.",
+     "That is the quotient before the limit; the limit sends $h$ to 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-14",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A function $f$ has $f(5) = 2$ and $f'(5) = -3$. At what $x$ does the line tangent to the graph of $f$ at $x = 5$ cross the $x$-axis?",
+   "numeric": {
+    "answer": "17/3",
+    "mistakes": [
+     {
+      "value": "13/3",
+      "why": "Solve $0 = 2 - 3(x - 5)$: $3(x - 5) = 2$, so $x = 5 + \\frac{2}{3}$. The tangent line falls, so it reaches 0 to the right of $x = 5$."
+     },
+     {
+      "value": "2/3",
+      "why": "That is $x - 5$. Add 5: $x = 5 + \\frac{2}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Tangent line: $y = 2 - 3(x - 5)$. Setting $y = 0$: $x - 5 = \\frac{2}{3}$, so $x = \\frac{17}{3}$."
+   }
+  },
+  {
+   "id": "calc-derivative-definition-15",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The line $y = 4x - 7$ is tangent to the graph of $g$ at $x = 3$. What are $g(3)$ and $g'(3)$?",
+   "options": [
+    "$g(3) = 5$ and $g'(3) = 4$",
+    "$g(3) = 4$ and $g'(3) = 5$",
+    "$g(3) = -7$ and $g'(3) = 4$",
+    "$g(3) = 5$ and $g'(3) = 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The tangent line touches the graph at $x = 3$, so $g(3) = 4(3) - 7 = 5$, and its slope is $g'(3) = 4$.",
+    "options": [
+     "The point of tangency and the slope of the line.",
+     "The value and the slope are swapped.",
+     "That is the line's $y$-intercept; the graph meets the line at $x = 3$, not $x = 0$.",
+     "The 3 is the input; the slope is the coefficient of $x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-definition-16",
+   "unit": "unit-2",
+   "topic": "derivative-definition",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Let $y = f(x)$. Which statement says the same thing as $\\left.\\frac{dy}{dx}\\right|_{x=10} = 0.6$?",
+   "options": [
+    "$f'(10) = 0.6$",
+    "$f(10) = 0.6$",
+    "$f'(0.6) = 10$",
+    "$\\frac{f(10) - f(0)}{10} = 0.6$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The bar notation means the derivative evaluated at $x = 10$.",
+    "options": [
+     "Leibniz and prime notation for the same derivative.",
+     "That is a value of $f$, not of its derivative.",
+     "The input is 10 and the output 0.6; this swaps them.",
+     "That is an average rate on $[0, 10]$, not the rate at $x = 10$."
+    ]
+   }
+  }
+ ]
+}

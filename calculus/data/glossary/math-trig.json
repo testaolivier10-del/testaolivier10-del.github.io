@@ -1,0 +1,14 @@
+{
+ "radian": {
+  "def": "A measure of angle: the length of the arc the angle cuts on a circle of radius 1. A full turn is $2\\pi$ radians, so $\\pi$ radians $= 180^{\\circ}$."
+ },
+ "unit-circle": {
+  "def": "The circle of radius 1 centered at the origin, $x^2 + y^2 = 1$. The point at angle $\\theta$ (measured counterclockwise from $(1, 0)$) is $(\\cos\\theta, \\sin\\theta)$."
+ },
+ "trig-function": {
+  "def": "Sine and cosine give the coordinates of the point at angle $\\theta$ on the unit circle: $(\\cos\\theta, \\sin\\theta)$. The others are ratios: $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$, $\\sec\\theta = \\frac{1}{\\cos\\theta}$, $\\csc\\theta = \\frac{1}{\\sin\\theta}$, $\\cot\\theta = \\frac{\\cos\\theta}{\\sin\\theta}$."
+ },
+ "trig-identity": {
+  "def": "An equation true for every angle. The Pythagorean identity $\\sin^2\\theta + \\cos^2\\theta = 1$ comes from the unit circle; dividing by $\\cos^2\\theta$ gives $\\tan^2\\theta + 1 = \\sec^2\\theta$."
+ }
+}

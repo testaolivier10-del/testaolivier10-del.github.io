@@ -1,0 +1,8 @@
+{
+ "limit-at-infinity": {
+  "def": "The value $f(x)$ approaches as $x$ grows without bound: $\\lim_{x \\to \\infty} f(x) = L$ (or as $x \\to -\\infty$). A finite limit at infinity gives the horizontal asymptote $y = L$; these limits describe the end behavior of a function."
+ },
+ "dominant-term": {
+  "def": "The term that grows fastest as $x \\to \\infty$ and so decides a limit at infinity. In the long run $\\ln x$ grows slower than any positive power of $x$, a higher power beats a lower one, and $e^x$ beats every power."
+ }
+}

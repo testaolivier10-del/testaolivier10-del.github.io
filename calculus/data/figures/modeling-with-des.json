@@ -1,0 +1,12 @@
+{
+ "cooling-rate-slopes": {
+  "file": "figures/cooling-rate-slopes.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph, drawn from its function by scripts/apcalc-figures/unit-7-8a.mjs",
+  "alt": "The graph of T = 20 + 70e^(−0.05t) for t from 0 to 60 minutes falls from 90 °C toward the dashed room-temperature line at 20 °C. Tangent segments at T = 90, 55 and 30 have slopes −3.5, −1.75 and −0.5 °C per minute, each equal to −0.05 times (T − 20)."
+ }
+}

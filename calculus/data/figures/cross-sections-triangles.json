@@ -1,0 +1,12 @@
+{
+ "triangle-sections-solid": {
+  "file": "figures/triangle-sections-solid.svg", "ext": "svg", "w": 760, "h": 460,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "A 3D view of a solid on the region under y = √x from x = 0 to 4, lying flat on the floor. Equilateral triangles stand on the base, each perpendicular to the x-axis with one side across the base, so the triangle at x has side s = √x; one is highlighted in blue. A side panel shows the triangle with side s and height (√3/2)s, its area (√3/4)s², and the volume, the integral from 0 to 4 of (√3/4)(√x)² dx = 2√3, compared with 8 for squares on the same base."
+ },
+ "semicircle-sections-solid": {
+  "file": "figures/semicircle-sections-solid.svg", "ext": "svg", "w": 760, "h": 460,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "A 3D view of the same base, the region under y = √x from x = 0 to 4, with semicircles standing on it, each perpendicular to the x-axis with its diameter across the base, so the diameter at x is s = √x; one is highlighted in green. A side panel shows the semicircle with diameter s and radius s/2, its area (π/8)s², and the volume, the integral from 0 to 4 of (π/8)(√x)² dx = π. Using s as the radius would make the answer 4 times too big."
+ }
+}

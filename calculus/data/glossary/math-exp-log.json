@@ -1,0 +1,8 @@
+{
+ "exponential-function": {
+  "def": "A function $b^x$ with a fixed positive base $b \\ne 1$; it changes by the same factor over equal steps in $x$. The natural exponential $e^x$ uses $e \\approx 2.71828$. $A e^{kt}$ shows exponential growth when $k > 0$ and exponential decay when $k < 0$."
+ },
+ "natural-log": {
+  "def": "$\\ln x$ is the power of $e$ that gives $x$: $\\ln x = y$ means $e^y = x$. It is defined for $x > 0$. Log rules: $\\ln(ab) = \\ln a + \\ln b$, $\\ln\\frac{a}{b} = \\ln a - \\ln b$, $\\ln a^p = p\\ln a$."
+ }
+}

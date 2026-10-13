@@ -1,0 +1,5 @@
+{
+ "particular-solution": {
+  "def": "The one member of a general solution that satisfies an initial condition such as $y(0) = 1$ (a point the curve must pass through), together with its domain: the largest open interval containing the initial $x$ on which the solution is defined and differentiable."
+ }
+}

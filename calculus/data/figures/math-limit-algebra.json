@@ -1,0 +1,12 @@
+{
+ "rationalize-hole": {
+  "file": "figures/rationalize-hole.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of y = (square root of x minus 2) divided by (x minus 4) for x from 0 to 12: it starts at (0, 0.5), falls slowly, and has an open circle at (4, 1/4). A panel shows the algebra: multiplying by the conjugate gives 1 over (square root of x plus 2), which is 1/4 at x = 4."
+ }
+}

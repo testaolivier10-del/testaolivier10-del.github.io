@@ -1,0 +1,72 @@
+{
+ "topic": "accumulation-in-context",
+ "hook": "A bathtub fills from the tap while the drain is open. Whether the water rises or falls at any moment depends on one comparison: is more coming in than going out? How much water is in the tub at 7:10 depends on how much was there at 7:00, plus everything that came in, minus everything that drained, in between. That bookkeeping is one integral.",
+ "prereq": [
+  {
+   "q": "If $W'(t)$ is continuous, $\\int_2^5 W'(t)\\,dt =$",
+   "options": [
+    "$W(5) - W(2)$",
+    "$W(5)$",
+    "$W'(5) - W'(2)$",
+    "$W(2) - W(5)$"
+   ],
+   "correct": 0,
+   "why": "The integral of a rate of change is the net change.",
+   "review": "ftc-definite-integrals"
+  },
+  {
+   "q": "A trapezoidal sum on a subinterval of width 3 with endpoint values 4 and 10 adds",
+   "options": [
+    "21",
+    "42",
+    "30",
+    "14"
+   ],
+   "correct": 0,
+   "why": "$3 \\cdot \\frac{4 + 10}{2} = 21$.",
+   "review": "riemann-sums"
+  }
+ ],
+ "figure": {
+  "figure": "rate-in-out",
+  "caption": "Water flows in at R(t) and out at D(t). The amount rises while R > D, falls while D > R, and peaks where the rates cross at t = 6."
+ },
+ "chain": [
+  {
+   "cause": "A quantity gains at a rate in and loses at a rate out",
+   "effect": "its net rate of change is $A'(t) = R(t) - D(t)$"
+  },
+  {
+   "cause": "Integrate the net rate over an interval",
+   "effect": "the net change in the amount: $\\int_a^b (R(t) - D(t))\\,dt$"
+  },
+  {
+   "cause": "Add the amount at the start",
+   "effect": "$A(t) = A(a) + \\int_a^t (R(s) - D(s))\\,ds$"
+  },
+  {
+   "cause": "$R - D$ changes sign",
+   "effect": "the amount has a relative extremum there; compare it with the endpoints to find the absolute one"
+  }
+ ],
+ "ideas": [
+  "Amount now = amount at the start + $\\int$ (<b>rate in</b> − <b>rate out</b>). The initial amount is part of the answer.",
+  "$A'(t) = R(t) - D(t)$: the amount increases when the rate in is larger and decreases when the rate out is larger.",
+  "An integral of a rate has the accumulated unit: gallons per hour integrated over hours gives gallons.",
+  "An interpretation names the quantity, its units and the time interval.",
+  "For the greatest or least amount on a closed interval: find where R − D changes sign, then compare with the endpoints (candidates test)."
+ ],
+ "misconception": {
+  "wrong": "The tank holds 50 L at $t = 0$, so at $t = 9$ it holds $\\int_0^9 (R(t) - D(t))\\,dt$ liters.",
+  "right": "That integral is the <i>change</i> in the amount. The amount itself is $50 + \\int_0^9 (R(t) - D(t))\\,dt$."
+ },
+ "check": [
+  "calc-accumulation-in-context-6",
+  "calc-accumulation-in-context-7",
+  "calc-accumulation-in-context-8",
+  "calc-accumulation-in-context-10",
+  "calc-accumulation-in-context-11",
+  "calc-accumulation-in-context-14"
+ ],
+ "summary": "With a rate in $R$ and a rate out $D$, the amount satisfies $A'(t) = R(t) - D(t)$ and $A(t) = A(a) + \\int_a^t (R - D)$. Integrals of rates carry accumulated units and need an interpretation with quantity, units and interval. The amount peaks or bottoms out where $R - D$ changes sign or at an endpoint."
+}

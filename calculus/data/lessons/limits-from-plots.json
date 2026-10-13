@@ -1,0 +1,73 @@
+{
+ "topic": "limits-from-plots",
+ "hook": "Graphs on the exam are rarely smooth curves. They come with holes, jumps, filled and open dots, and asymptotes, and most limit questions are about exactly those places. Reading a graph's limits is a skill of looking at each side separately. Once you can do that, every limit question on a graph takes seconds.",
+ "prereq": [
+  {
+   "q": "What does $\\lim_{x \\to 2} f(x) = 6$ mean?",
+   "options": [
+    "As $x$ approaches 2, $f(x)$ approaches 6",
+    "$f(2) = 6$",
+    "As $x$ approaches 6, $f(x)$ approaches 2",
+    "$f(6) = 2$"
+   ],
+   "correct": 0,
+   "why": "Input heads to 2, outputs head to 6; the value $f(2)$ is not involved.",
+   "review": "limit-notation"
+  },
+  {
+   "q": "A graph has a filled dot at $(3, 1)$ and an open circle at $(3, 4)$. What is $f(3)$?",
+   "options": [
+    "$1$",
+    "$4$",
+    "not defined",
+    "$3$"
+   ],
+   "correct": 0,
+   "why": "The filled dot is on the graph.",
+   "review": "math-functions"
+  }
+ ],
+ "figure": {
+  "figure": "limit-four-cases",
+  "caption": "Four behaviors as $x$ approaches 1: a hole (limit 2), a jump (no limit), unbounded outputs (no limit), oscillation (no limit)."
+ },
+ "chain": [
+  {
+   "cause": "Slide $x$ toward $a$ from the left only",
+   "effect": "the heights give the left-hand limit, $\\lim_{x \\to a^-} f(x)$"
+  },
+  {
+   "cause": "Slide $x$ toward $a$ from the right only",
+   "effect": "the heights give the right-hand limit, $\\lim_{x \\to a^+} f(x)$"
+  },
+  {
+   "cause": "Both one-sided limits exist and are equal",
+   "effect": "the two-sided limit exists and equals that number"
+  },
+  {
+   "cause": "The sides disagree, the outputs are unbounded, or they oscillate",
+   "effect": "the limit does not exist"
+  }
+ ],
+ "ideas": [
+  "$\\lim_{x \\to a^-} f(x)$ uses only $x < a$; $\\lim_{x \\to a^+} f(x)$ uses only $x > a$. Follow the graph's heights on that side to the edge at $x = a$.",
+  "$\\lim_{x \\to a} f(x) = L$ exactly when both one-sided limits equal $L$.",
+  "A limit fails to exist when the one-sided limits differ (a jump), when the outputs grow without bound, or when they oscillate.",
+  "Filled and open dots tell you $f(a)$; they never decide the limit.",
+  "A justification names both one-sided limits: \"From the left $f(x) \\to 3$; from the right $f(x) \\to 1$; since $3 \\ne 1$, the limit does not exist.\""
+ ],
+ "misconception": {
+  "wrong": "If $f(a)$ is not defined, then $\\lim_{x \\to a} f(x)$ does not exist.",
+  "right": "A missing value never decides a limit. A hole has a limit (the height it sits at) and no value. Decide existence only from the two one-sided limits."
+ },
+ "check": [
+  "calc-limits-from-plots-1",
+  "calc-limits-from-plots-2",
+  "calc-limits-from-plots-3",
+  "calc-limits-from-plots-4",
+  "calc-limits-from-plots-5",
+  "calc-limits-from-plots-10",
+  "calc-limits-from-plots-12"
+ ],
+ "summary": "Read a graph's limit one side at a time. The left-hand and right-hand limits are the heights the graph heads to from each side. If they exist and agree, that is the limit; if they differ, or the outputs are unbounded or oscillate, the limit does not exist. Dots give the value $f(a)$, which never affects the limit."
+}

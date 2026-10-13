@@ -1,0 +1,54 @@
+<h2>From area under a curve to area between curves</h2>
+<p>You already know that $\int_a^b f(x)\,dx$ adds up thin rectangles that stand on the $x$-axis and reach up to the graph of $f$. Now the region you care about has a curve on top and a different curve on the bottom. The $x$-axis is not part of the story at all.</p>
+<p>The idea is the same as before. Cut the region into thin vertical rectangles. Each rectangle stands at some $x$, has a small width $\Delta x$, and reaches from the bottom curve up to the top curve. If $f$ is the top and $g$ is the bottom, the rectangle's height is</p>
+$$\text{height} = f(x) - g(x).$$
+<p>So one rectangle has area $\left(f(x) - g(x)\right)\Delta x$. Adding all of them is a Riemann sum for the function $f - g$, and letting the rectangles get thinner turns the sum into a definite integral.</p>
+<figure id="fig-strip" data-fig="area-between-x-strip"><figcaption>One thin rectangle between $y = 6 - x^2$ and $y = x$. Its height is top minus bottom, and the region runs between the two crossings.</figcaption></figure>
+<p><b>The area between curves.</b> If $f(x) \ge g(x)$ for every $x$ in $[a, b]$, the area of the region between their graphs from $x = a$ to $x = b$ is</p>
+$$A = \int_a^b \left(f(x) - g(x)\right)\,dx.$$
+<p>Read it as "top minus bottom, from left to right." The formula does not care whether the curves are above or below the $x$-axis. Move both graphs down 10 units and every height $f(x) - g(x)$ stays the same, so the area stays the same.</p>
+
+<h2>The three steps</h2>
+<ol>
+<li><b>Find the limits.</b> When a region is "bounded by" two curves, it starts and ends where they meet. Solve $f(x) = g(x)$. The solutions are $x$-values, which is what an integral in $dx$ needs.</li>
+<li><b>Decide which curve is on top.</b> Pick any $x$ between the limits and evaluate both functions. The larger value is the top.</li>
+<li><b>Set up and integrate top minus bottom.</b> Put the bottom function in parentheses before subtracting, so every one of its terms changes sign.</li>
+</ol>
+
+<div class="worked">
+<p><b>Worked example.</b> Find the area of the region bounded by $y = 6 - x^2$ and $y = x$ (the figure above).</p>
+<p><b>Limits.</b> Set the functions equal: $6 - x^2 = x$, so $x^2 + x - 6 = 0$, which factors as $(x + 3)(x - 2) = 0$. The curves meet at $x = -3$ and $x = 2$.</p>
+<p><b>Top.</b> Test $x = 0$: the parabola gives 6 and the line gives 0. The parabola is on top.</p>
+<p><b>Integral.</b> Top minus bottom is $(6 - x^2) - x$:</p>
+$$A = \int_{-3}^{2} \left(6 - x^2 - x\right)\,dx = \left[6x - \frac{x^3}{3} - \frac{x^2}{2}\right]_{-3}^{2}.$$
+<p>At $x = 2$: $12 - \frac{8}{3} - 2 = \frac{22}{3}$. At $x = -3$: $-18 + 9 - \frac{9}{2} = -\frac{27}{2}$. So $A = \frac{22}{3} + \frac{27}{2} = \frac{44 + 81}{6} = \frac{125}{6}$.</p>
+<p>The region dips below the $x$-axis on the left, but nothing special happens there: the height $(6 - x^2) - x$ is still positive.</p>
+</div>
+
+<h2>Parentheses and other places points go missing</h2>
+<p>The most common algebra slip is dropping parentheses. With top $y = x + 1$ and bottom $y = x^2 - 1$, the height is</p>
+$$(x + 1) - (x^2 - 1) = x + 1 - x^2 + 1 = x + 2 - x^2.$$
+<p>Writing $x + 1 - x^2 - 1$ forgets that subtracting $-1$ adds 1, and every number after that is wrong.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> Find the area of the region bounded by $y = e^x$, $y = 1$ and $x = \ln 3$.</p>
+<p><b>Limits.</b> This time one boundary is a vertical line, so one limit is given: $x = \ln 3$. The other is where $e^x = 1$, which is $x = 0$.</p>
+<p><b>Top.</b> For $x > 0$, $e^x > 1$, so $e^x$ is on top and the line $y = 1$ is the bottom (not the $x$-axis).</p>
+<p><b>Integral.</b></p>
+$$A = \int_0^{\ln 3} \left(e^x - 1\right)\,dx = \Big[e^x - x\Big]_0^{\ln 3} = (3 - \ln 3) - (1 - 0) = 2 - \ln 3.$$
+</div>
+
+<h2>How to check an answer</h2>
+<table>
+<thead><tr><th>What you see</th><th>What it usually means</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>A negative area</td><td>You subtracted bottom minus top</td><td>Test a point between the limits to find the top curve</td></tr>
+<tr><td>An answer that matches the area under the top curve</td><td>The bottom curve was left out</td><td>Subtract the bottom function, even when it is a line like $y = 1$</td></tr>
+<tr><td>Limits like the $y$-values where the curves meet</td><td>Limits in the wrong variable</td><td>With $dx$, use $x$-values</td></tr>
+<tr><td>Limits where one curve meets the $x$-axis</td><td>The $x$-axis is not a boundary here</td><td>Solve $f(x) = g(x)$</td></tr>
+</tbody>
+</table>
+<p>A quick size check helps too. The region is never taller than the largest gap between the curves and never wider than $b - a$, so the area is less than that height times that width.</p>
+
+<h2>With a calculator</h2>
+<p>When $f(x) = g(x)$ cannot be solved by algebra, as with $2\cos x = x^2 - 1$, use the calculator to find the crossings (intersect or a solver, in radian mode). Store each crossing in the calculator instead of retyping a rounded value. Then write the setup, for example $\int_{-a}^{a} \left(2\cos x - (x^2 - 1)\right)\,dx$, and let the calculator evaluate it. Report the answer correct to three decimal places, and round only at the end.</p>

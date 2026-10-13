@@ -1,0 +1,12 @@
+{
+ "limit-vs-value": {
+  "file": "figures/limit-vs-value.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A curve y = g(x) rises toward an open circle at (2, 4) from both sides, with arrows showing the heights heading to 4. The value g(2) is a separate filled dot at (2, 1). Panels state that the limit of g(x) as x approaches 2 is 4 and the value g(2) is 1."
+ }
+}

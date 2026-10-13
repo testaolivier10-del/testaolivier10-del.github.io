@@ -1,0 +1,83 @@
+{
+ "topic": "derivatives-sin-cos-exp-ln",
+ "hook": "Tides, sound waves and the swing of a pendulum follow sine curves; populations and savings accounts grow along $e^x$; earthquake and decibel scales are built on logarithms. The rates of change of these four functions are themselves simple functions, and once you know them, you can differentiate much of the natural world.",
+ "prereq": [
+  {
+   "q": "What is $\\cos\\left( \\frac{\\pi}{3} \\right)$?",
+   "options": [
+    "$\\frac{1}{2}$",
+    "$\\frac{\\sqrt{3}}{2}$",
+    "$0$",
+    "$\\frac{\\sqrt{2}}{2}$"
+   ],
+   "correct": 0,
+   "why": "On the unit circle at $\\frac{\\pi}{3}$, the point is $\\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right)$; cosine is the first coordinate.",
+   "review": "math-trig"
+  },
+  {
+   "q": "$\\lim_{x \\to 0} \\frac{\\sin x}{x}$ equals",
+   "options": [
+    "$1$",
+    "$0$",
+    "It does not exist",
+    "$\\infty$"
+   ],
+   "correct": 0,
+   "why": "A key limit from Unit 1, proved with the squeeze theorem (in radians).",
+   "review": "squeeze-theorem"
+  },
+  {
+   "q": "$\\frac{d}{dx}\\left( 5x^2 - 3 \\right)$ is",
+   "options": [
+    "$10x$",
+    "$10x - 3$",
+    "$5x$",
+    "$10x^2$"
+   ],
+   "correct": 0,
+   "why": "Constant multiple and power rule on $5x^2$; the constant $-3$ has derivative 0.",
+   "review": "basic-derivative-rules"
+  }
+ ],
+ "figure": {
+  "figure": "sine-slopes-cosine",
+  "caption": "The slopes of $y = \\sin x$ at $0, \\frac{\\pi}{2}, \\pi, \\frac{3\\pi}{2}, 2\\pi$ are $1, 0, -1, 0, 1$: exactly the heights of $y = \\cos x$ at the same inputs."
+ },
+ "chain": [
+  {
+   "cause": "The graph of $\\sin x$ is steepest upward at 0, level at $\\frac{\\pi}{2}$ and steepest downward at $\\pi$",
+   "effect": "its slopes trace out the cosine curve: $\\frac{d}{dx}(\\sin x) = \\cos x$"
+  },
+  {
+   "cause": "Cosine is sine shifted left by $\\frac{\\pi}{2}$",
+   "effect": "its slopes are sine shifted the same way, which is $-\\sin x$"
+  },
+  {
+   "cause": "$e$ is the base whose graph has slope 1 at $x = 0$",
+   "effect": "the slope of $e^x$ at every point equals its height: $\\frac{d}{dx}\\left( e^x \\right) = e^x$"
+  },
+  {
+   "cause": "Each formula is a derivative",
+   "effect": "a limit like $\\lim_{h \\to 0} \\frac{\\sin(a + h) - \\sin a}{h}$ can be evaluated as $\\cos a$"
+  }
+ ],
+ "ideas": [
+  "Learn the four: $\\frac{d}{dx}(\\sin x) = \\cos x$, $\\frac{d}{dx}(\\cos x) = -\\sin x$, $\\frac{d}{dx}\\left( e^x \\right) = e^x$, $\\frac{d}{dx}(\\ln x) = \\frac{1}{x}$ for $x > 0$.",
+  "The trigonometric formulas hold only in <b>radians</b>.",
+  "The power rule does not apply to $e^x$: the variable is in the exponent.",
+  "A <b>limit as a derivative</b>: $\\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}$ is $f'(a)$. Name $f$ and $a$, then use the derivative formula."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{d}{dx}(\\cos x) = \\sin x$.",
+  "right": "Look at the graph of $\\cos x$ just to the right of 0: it is falling, so its slope there is negative, while $\\sin x$ is positive. The derivative is $-\\sin x$. Sine to cosine has no sign change; cosine to sine does."
+ },
+ "check": [
+  "calc-derivatives-sin-cos-exp-ln-1",
+  "calc-derivatives-sin-cos-exp-ln-2",
+  "calc-derivatives-sin-cos-exp-ln-3",
+  "calc-derivatives-sin-cos-exp-ln-4",
+  "calc-derivatives-sin-cos-exp-ln-14",
+  "calc-derivatives-sin-cos-exp-ln-15"
+ ],
+ "summary": "The derivatives of sine and cosine are cosine and negative sine (in radians); $e^x$ is its own derivative; and $\\ln x$ has derivative $\\frac{1}{x}$ for $x > 0$. With the sum and constant multiple rules they combine freely, and any limit of the form $\\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}$ can be read as $f'(a)$ and evaluated with them."
+}

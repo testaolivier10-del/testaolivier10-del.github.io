@@ -1,0 +1,5 @@
+{
+ "numerical-derivative": {
+  "def": "An estimate of $f'(a)$ computed from values of $f$ instead of a formula for $f'$: a difference quotient from a table, or a graphing calculator's built-in derivative, which uses $\\frac{f(a + h) - f(a - h)}{2h}$ with a very small $h$."
+ }
+}

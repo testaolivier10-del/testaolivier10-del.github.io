@@ -1,0 +1,57 @@
+<p>The First Derivative Test finds peaks and valleys, but only compared with their neighbors. Many real questions want more: the hottest moment of the whole day, the lowest level the reservoir reaches all month. That is an absolute extremum, and on a closed interval there is a short, reliable way to find it without any sign analysis at all.</p>
+
+<h2>Why a short list is enough</h2>
+<p>Put together what you already know. If $f$ is continuous on $[a, b]$:</p>
+<ol>
+<li>The Extreme Value Theorem says an absolute maximum and an absolute minimum exist.</li>
+<li>Each one is either at an endpoint, or inside the interval.</li>
+<li>If it is inside, it is also a relative extremum, so it is at a critical point.</li>
+</ol>
+<p>So the absolute extrema are among a short list of <b>candidates</b>: the two endpoints and the critical points in between. Evaluate $f$ at each candidate, and the largest value is the absolute maximum; the smallest is the absolute minimum.</p>
+<figure id="fig-cand" data-fig="candidates-check"><figcaption>Four candidates, four values. The absolute maximum is at an endpoint; the relative maximum inside loses.</figcaption></figure>
+
+<h2>The Candidates Test, step by step</h2>
+<p>The <b>Candidates Test</b> (also called the closed interval method) for $f$ continuous on $[a, b]$:</p>
+<ol>
+<li>Find $f'(x)$.</li>
+<li>Find the critical points in the open interval $(a, b)$: where $f'(x) = 0$ or $f'(x)$ does not exist. Throw away any outside the interval.</li>
+<li>Make a table of $x$ and $f(x)$ for the endpoints and each critical point.</li>
+<li>The largest $f(x)$ in the table is the absolute maximum value; the smallest is the absolute minimum value.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the absolute extrema of $f(x) = 2x^3 - 9x^2 + 12x$ on $[0, 3]$.</p>
+<p>$f'(x) = 6x^2 - 18x + 12 = 6(x - 1)(x - 2)$, zero at $x = 1$ and $x = 2$, both in $(0, 3)$.</p>
+<table class="compare">
+<thead><tr><th scope="col">$x$</th><th scope="col">$0$</th><th scope="col">$1$</th><th scope="col">$2$</th><th scope="col">$3$</th></tr></thead>
+<tbody><tr><td>$f(x)$</td><td>$0$</td><td>$5$</td><td>$4$</td><td>$9$</td></tr></tbody>
+</table>
+<p>Absolute maximum: $9$, at $x = 3$. Absolute minimum: $0$, at $x = 0$. Both are at endpoints; the relative maximum $f(1) = 5$ and relative minimum $f(2) = 4$ are not the absolute ones.</p>
+</div>
+<p>No signs of $f'$ are needed, and nothing has to be said about which critical points are peaks. The comparison does all the work.</p>
+
+<h2>Exact answers without a calculator</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the absolute minimum of $f(x) = x + 2\cos x$ on $[0, \pi]$.</p>
+<p>$f'(x) = 1 - 2\sin x = 0$ when $\sin x = \frac{1}{2}$: $x = \frac{\pi}{6}$ and $x = \frac{5\pi}{6}$.</p>
+<p>Candidates: $f(0) = 2$; $f\left(\frac{\pi}{6}\right) = \frac{\pi}{6} + \sqrt{3} \approx 2.256$; $f\left(\frac{5\pi}{6}\right) = \frac{5\pi}{6} - \sqrt{3} \approx 0.886$; $f(\pi) = \pi - 2 \approx 1.142$.</p>
+<p>Absolute minimum: $\frac{5\pi}{6} - \sqrt{3}$, at $x = \frac{5\pi}{6}$. Keep it exact; the decimals are only for comparing.</p>
+</div>
+
+<h2>With a calculator</h2>
+<p>On a calculator question the critical points may not have a formula. Graph $f'$ or use the solver to find its zeros, store each one, and evaluate $f$ at the stored values. Then compare with the endpoints.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A reservoir holds $V(t) = 40 + 12\sin\left(\frac{t}{2}\right) - 0.5t$ thousand gallons, $0 \le t \le 10$ days. Find the least volume.</p>
+<p>$V'(t) = 6\cos\left(\frac{t}{2}\right) - 0.5 = 0$ at $t \approx 2.975$ and $t \approx 9.592$ (radian mode).</p>
+<p>Candidates: $V(0) = 40$, $V(2.975) \approx 50.471$, $V(9.592) \approx 23.246$, $V(10) \approx 23.493$.</p>
+<p>The least volume is about $23.246$ thousand gallons, at $t \approx 9.592$ days. The endpoint value $23.493$ was close: only the comparison shows which is smaller.</p>
+</div>
+
+<h2>Local versus global: the point readers take away</h2>
+<p>A justification like "$V'$ changes from negative to positive at $t = 9.592$, so this is the absolute minimum" earns no credit. A sign change is a local fact: it compares $V(9.592)$ with nearby values only. An endpoint, or another critical point far away, could be lower. For an absolute extremum you need a global argument. On a closed interval, the Candidates Test is the simplest one: show the table of candidates and values, then name the largest or smallest.</p>
+<table class="compare">
+<thead><tr><th scope="col">Question asks for</th><th scope="col">Tool</th><th scope="col">Justification</th></tr></thead>
+<tbody>
+<tr><td>A relative extremum</td><td>First Derivative Test</td><td>"$f'$ changes from $+$ to $-$ at $x = c$"</td></tr>
+<tr><td>An absolute extremum on $[a, b]$</td><td>Candidates Test</td><td>A table of endpoints and critical points with their values</td></tr>
+</tbody>
+</table>

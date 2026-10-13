@@ -1,0 +1,81 @@
+{
+ "topic": "solving-optimization",
+ "hook": "Packaging engineers squeeze the most volume out of a sheet of cardboard; utility planners route cable to spend the least money. Both run the same five-step routine: draw it, name the quantity, use the constraint, differentiate, and prove the answer is the best one.",
+ "prereq": [
+  {
+   "q": "The objective function in an optimization problem is",
+   "options": [
+    "the quantity to maximize or minimize, in one variable",
+    "the derivative set equal to zero",
+    "the domain of the problem",
+    "the second derivative"
+   ],
+   "correct": 0,
+   "why": "You optimize that function.",
+   "review": "optimization-intro"
+  },
+  {
+   "q": "$\\frac{d}{dx}\\sqrt{x^2 + 4} =$",
+   "options": [
+    "$\\frac{x}{\\sqrt{x^2 + 4}}$",
+    "$\\frac{1}{2\\sqrt{x^2 + 4}}$",
+    "$2x\\sqrt{x^2 + 4}$",
+    "$\\frac{2x}{\\sqrt{x^2 + 4}}$"
+   ],
+   "correct": 0,
+   "why": "Chain rule: $\\frac{1}{2\\sqrt{x^2 + 4}} \\cdot 2x$.",
+   "review": "chain-rule"
+  }
+ ],
+ "figure": {
+  "figure": "box-from-sheet",
+  "caption": "Cutting squares of side $x$ from a 12-inch square sheet: $V(x) = x(12 - 2x)^2$ on $[0, 6]$, largest at $x = 2$, 128 cubic inches."
+ },
+ "chain": [
+  {
+   "cause": "Draw the situation and label the variables",
+   "effect": "you can see which quantities are fixed and which change"
+  },
+  {
+   "cause": "Write the objective function and the constraint",
+   "effect": "the constraint lets you eliminate a variable: the objective becomes a function of one variable"
+  },
+  {
+   "cause": "Find the domain from the physical limits",
+   "effect": "you know the endpoints and which critical points count"
+  },
+  {
+   "cause": "Differentiate, solve, and compare candidates (or use one-critical-point reasoning)",
+   "effect": "the absolute extremum, justified, stated in context with units"
+  }
+ ],
+ "ideas": [
+  "<b>Constraint</b>: a fixed condition (a perimeter, a volume, a budget) that links the variables. Use it to write the objective in one variable.",
+  "Steps: draw, label, objective, constraint, one variable, domain, critical points, justify, answer in context.",
+  "Reject critical points outside the domain (the cut $x = \\frac{20}{3}$ inches on a 10-inch side).",
+  "Calculator problems: solve $C'(x) = 0$ with the solver or a graph, store the value, and compare candidates."
+ ],
+ "misconception": {
+  "wrong": "The objective function and the constraint are the same equation.",
+  "right": "The constraint is the fixed fact (volume $= 32$); the objective is what you optimize (surface area). Using the constraint as if it were the objective, or forgetting to substitute it, is the most common setup error."
+ },
+ "check": [
+  "calc-solving-optimization-1",
+  "calc-solving-optimization-2",
+  "calc-solving-optimization-3",
+  "calc-solving-optimization-4",
+  "calc-solving-optimization-5",
+  "calc-solving-optimization-13"
+ ],
+ "summary": "Solve an optimization problem in a fixed order: draw and label, write the objective function, use the constraint to reduce it to one variable, find the domain, find the critical points, justify the absolute extremum with candidates or one-critical-point reasoning, and answer in context with units.",
+ "connections": [
+  {
+   "href": "../notes/optimization-intro.html",
+   "label": "Back: introduction to optimization (5.10)"
+  },
+  {
+   "href": "../notes/implicit-relations.html",
+   "label": "Next: 5.12"
+  }
+ ]
+}

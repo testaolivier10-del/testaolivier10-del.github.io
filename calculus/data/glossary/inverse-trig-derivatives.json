@@ -1,0 +1,5 @@
+{
+ "inverse-trig-derivative": {
+  "def": "The derivatives of the inverse trigonometric functions: $\\frac{d}{dx}\\arcsin x = \\frac{1}{\\sqrt{1 - x^2}}$ and $\\frac{d}{dx}\\arccos x = -\\frac{1}{\\sqrt{1 - x^2}}$ for $-1 < x < 1$, and $\\frac{d}{dx}\\arctan x = \\frac{1}{1 + x^2}$."
+ }
+}

@@ -1,0 +1,548 @@
+{
+ "stimuli": {
+  "increasing-decreasing-s1": {
+   "kind": "graph",
+   "title": "The graph of $f'$, the derivative of $f$",
+   "text": "The graph shows $f'(x) = \\frac{(x + 2)(x - 1)(x - 4)}{5}$ for $-3 \\le x \\le 5$. The function $f$ is differentiable on this interval.",
+   "plot": {
+    "label": "Graph of f prime on the closed interval from -3 to 5: below the x-axis until x = -2, above it from -2 to 1, below it from 1 to 4, above it after 4",
+    "x": [
+     -3.5,
+     5.5
+    ],
+    "y": [
+     -6,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(x + 2)(x - 1)(x - 4)/5",
+      "domain": [
+       -3,
+       5
+      ],
+      "cls": "s2",
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "label": "f'"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -2,
+       0
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       1,
+       0
+      ],
+      "cls": "s2"
+     },
+     {
+      "at": [
+       4,
+       0
+      ],
+      "cls": "s2"
+     }
+    ]
+   }
+  },
+  "increasing-decreasing-s2": {
+   "kind": "table",
+   "title": "Depth of water in a tank",
+   "text": "The depth of water in a tank is $D(t)$ feet at time $t$ hours. $D$ is twice differentiable, so $D'$ is continuous. The table gives selected values of $D'(t)$.",
+   "table": {
+    "caption": "Rate of change of depth $D'(t)$, in feet per hour, at selected times $t$, in hours",
+    "cols": [
+     "$t$ (hours)",
+     "0",
+     "2",
+     "5",
+     "8",
+     "10"
+    ],
+    "rows": [
+     [
+      "$D'(t)$ (feet per hour)",
+      "1.4",
+      "0.6",
+      "-0.3",
+      "-1.1",
+      "0.2"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-increasing-decreasing-1",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "increasing-decreasing-s1",
+   "q": "On which intervals is $f$ increasing?",
+   "options": [
+    "$(-2, 1)$ and $(4, 5)$",
+    "$(-3, -2)$ and $(1, 4)$",
+    "$(-3, -0.73)$ and $(2.73, 5)$, where $f'$ rises",
+    "$(-2, 4)$, between the outer zeros of $f'$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f$ is increasing where $f'(x) > 0$: on $(-2, 1)$ and on $(4, 5)$, where the graph of $f'$ lies above the $x$-axis.",
+    "options": [
+     "$f' > 0$ exactly there: the graph of $f'$ is above the $x$-axis.",
+     "Here $f' < 0$: these are where $f$ is decreasing.",
+     "That is where $f'$ is increasing. The sign of $f'$, not its direction, tells whether $f$ increases.",
+     "$f' < 0$ on $(1, 4)$, so $f$ decreases on part of this interval."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-2",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "increasing-decreasing-s1",
+   "q": "At $x = 3$, is $f$ increasing or decreasing, and why?",
+   "options": [
+    "Increasing, because $f'$ is increasing at $x = 3$",
+    "Increasing, because $f'(3) \\ne 0$",
+    "Decreasing, because $f'(3)$ is less than $f'(1)$",
+    "Decreasing, because $f'(3) < 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f'(3) = -2 < 0$, so $f$ is decreasing at $x = 3$. The graph of $f'$ is below the $x$-axis there.",
+    "options": [
+     "$f'$ is rising there, but it is still negative. The sign of $f'$ decides.",
+     "Nonzero does not tell the direction; negative means decreasing.",
+     "Comparing values of $f'$ is about whether $f'$ rises or falls, not about the sign of $f'(3)$.",
+     "$f'(3) = \\frac{(5)(2)(-1)}{5} = -2 < 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-3",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "multi",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "increasing-decreasing-s1",
+   "q": "On which of these intervals is $f$ increasing at each point? Select each one.",
+   "options": [
+    "$(-2, 0)$",
+    "$(1, 3)$",
+    "$(-3, -2)$",
+    "$(3, 5)$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Only $(-2, 0)$ lies inside a stretch where $f' > 0$. The interval $(3, 5)$ crosses the zero of $f'$ at $x = 4$.",
+    "options": [
+     "$f' > 0$ on $(-2, 1)$, which contains $(-2, 0)$.",
+     "$f' < 0$ on $(1, 4)$.",
+     "$f' < 0$ for $x < -2$.",
+     "$f' < 0$ on $(3, 4)$, so $f$ decreases on part of $(3, 5)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-4",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "increasing-decreasing-s1",
+   "q": "Which is true about the values of $f$?",
+   "options": [
+    "$f(1) < f(4)$, because $f'(4) > f'(1)$",
+    "$f(1) > f(4)$, because $f' < 0$ on $(1, 4)$",
+    "$f(1) = f(4)$, because $f'(1) = f'(4) = 0$",
+    "The graph of $f'$ gives no way to compare them"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f'(x) < 0$ for $1 < x < 4$, so $f$ is decreasing on $[1, 4]$ and $f(4) < f(1)$.",
+    "options": [
+     "$f'(1) = f'(4) = 0$; and comparing $f'$ values does not compare $f$ values.",
+     "$f$ is decreasing on $(1, 4)$ and continuous, so it ends lower than it starts.",
+     "Equal slopes at two points say nothing about equal heights.",
+     "The sign of $f'$ between them does compare them."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-5",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "increasing-decreasing-s1",
+   "q": "Which justification earns credit for \"$f$ is increasing on $(-2, 1)$\"?",
+   "options": [
+    "\"$f'(x) > 0$ for $-2 < x < 1$.\"",
+    "\"$f'$ is increasing on $(-2, 1)$.\"",
+    "\"The graph goes up on $(-2, 1)$.\"",
+    "\"$f'(-2) = 0$ and $f'(1) = 0$.\""
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A justification names the function and the condition: $f'(x) > 0$ on $(-2, 1)$, so $f$ is increasing there.",
+    "options": [
+     "It names $f'$ and gives its sign on the interval.",
+     "False ($f'$ rises then falls there), and the direction of $f'$ is about concavity, not about $f$ increasing.",
+     "Which graph? This is the graph of $f'$, and \"goes up\" names no function.",
+     "Zeros at the ends do not tell the sign in between."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-6",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "increasing-decreasing-s2",
+   "q": "At $t = 5$ hours, is the depth of water increasing or decreasing?",
+   "options": [
+    "Increasing, because $D(5) > 0$",
+    "Increasing, because $D'(5) > D'(8)$",
+    "Decreasing, because $D'(5) < D'(2)$",
+    "Decreasing, because $D'(5) = -0.3 < 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$D'(5) = -0.3$ feet per hour, negative, so $D$ is decreasing at $t = 5$.",
+    "options": [
+     "The table gives $D'$, not $D$; and the size of $D$ does not tell its direction.",
+     "Comparing two rates is not the sign of the rate at $t = 5$.",
+     "The conclusion is right, but the reason compares rates; the sign of $D'(5)$ is what matters.",
+     "A negative rate of change means the depth is going down."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-7",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "increasing-decreasing-s2",
+   "q": "Must there be a time $t$ in $(2, 5)$ at which the depth stops increasing for an instant, $D'(t) = 0$?",
+   "options": [
+    "Yes, by the Mean Value Theorem applied to $D$ on $[2, 5]$",
+    "No, because the table does not show a zero of $D'$",
+    "Yes: $D'$ is continuous and $D'(2) > 0 > D'(5)$, so by the IVT $D'(t) = 0$ for some $t$ there",
+    "No, because $D$ is increasing at $t = 2$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$D'$ is continuous on $[2, 5]$, $D'(2) = 0.6 > 0$ and $D'(5) = -0.3 < 0$. By the Intermediate Value Theorem, $D'(t) = 0$ for some $t$ in $(2, 5)$.",
+    "options": [
+     "The Mean Value Theorem gives $D'(c)$ equal to the average rate of $D$, which needs values of $D$ that the table does not give.",
+     "A zero need not be in the table; the IVT finds it between readings.",
+     "The IVT applies to the continuous function $D'$, whose values change sign.",
+     "$D$ increasing at 2 and decreasing at 5 is exactly why $D'$ crosses 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-8",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "increasing-decreasing-s2",
+   "q": "What are the units of $D'(t)$?",
+   "options": [
+    "Feet",
+    "Feet per hour",
+    "Hours per foot",
+    "Feet per hour per hour"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A derivative has the output's units per input unit: feet per hour.",
+    "options": [
+     "Feet are the units of $D$ itself.",
+     "Output units (feet) per input unit (hours).",
+     "Upside down: the change in depth is divided by the change in time.",
+     "That is the unit of $D''$, a rate of a rate."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-9",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "increasing-decreasing-s2",
+   "q": "Is $D$ decreasing on the whole interval $5 < t < 8$?",
+   "options": [
+    "Not necessarily: the table gives $D'$ only at $t = 5$ and $t = 8$",
+    "Yes, because $D'(5) < 0$ and $D'(8) < 0$",
+    "Yes, because $D'$ is decreasing from $-0.3$ to $-1.1$",
+    "No, because $D'(10) > 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two values of $D'$ at the ends of $(5, 8)$ do not control its sign in between. To say $D$ decreases on the whole interval you would need $D'(t) < 0$ for each $t$ in it.",
+    "options": [
+     "$D'$ is negative at both readings, but between them it could rise above 0 and fall back.",
+     "Two negative values do not fix the sign in between. The IVT gives zeros only between values of opposite sign.",
+     "The table cannot show that $D'$ decreases between the readings.",
+     "$t = 10$ is outside $(5, 8)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-10",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "On which intervals is $f(x) = x^3 - 12x$ increasing?",
+   "options": [
+    "$(-2, 2)$",
+    "$(0, \\infty)$",
+    "$(-\\infty, -2\\sqrt{3})$ and $(2\\sqrt{3}, \\infty)$",
+    "$(-\\infty, -2)$ and $(2, \\infty)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f'(x) = 3x^2 - 12 = 3(x - 2)(x + 2)$. It is positive for $x < -2$ and for $x > 2$, so $f$ increases on $(-\\infty, -2)$ and $(2, \\infty)$.",
+    "options": [
+     "$f' < 0$ there: $f$ decreases.",
+     "$f'(1) = -9 < 0$, so $f$ decreases on part of $(0, \\infty)$.",
+     "$\\pm 2\\sqrt{3}$ are the zeros of $f$, not of $f'$.",
+     "$f'(x) = 3(x - 2)(x + 2) > 0$ outside $[-2, 2]$."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-11",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "On which interval is $f(x) = x e^{-x}$ increasing?",
+   "options": [
+    "$(1, \\infty)$",
+    "$(0, \\infty)$",
+    "$(-\\infty, 1)$",
+    "$(-1, \\infty)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$f'(x) = e^{-x} - xe^{-x} = (1 - x)e^{-x}$. Since $e^{-x} > 0$, the sign of $f'$ is the sign of $1 - x$: positive for $x < 1$.",
+    "options": [
+     "There $1 - x < 0$, so $f' < 0$.",
+     "Where $f > 0$ is not where $f' > 0$.",
+     "$f'(x) = (1 - x)e^{-x} > 0$ when $x < 1$.",
+     "A sign slip: the factor is $1 - x$, from $e^{-x} - xe^{-x}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-12",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "On $(0, 2\\pi)$, where is $g(x) = x - 2\\sin x$ increasing?",
+   "options": [
+    "$\\left(0, \\frac{\\pi}{3}\\right)$ and $\\left(\\frac{5\\pi}{3}, 2\\pi\\right)$",
+    "$\\left(\\frac{\\pi}{3}, \\frac{5\\pi}{3}\\right)$",
+    "$(0, \\pi)$",
+    "$\\left(\\frac{\\pi}{6}, \\frac{5\\pi}{6}\\right)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$g'(x) = 1 - 2\\cos x$. It is positive when $\\cos x < \\frac{1}{2}$, which on $(0, 2\\pi)$ is $\\frac{\\pi}{3} < x < \\frac{5\\pi}{3}$.",
+    "options": [
+     "There $\\cos x > \\frac{1}{2}$, so $g' < 0$.",
+     "$g'(x) = 1 - 2\\cos x > 0$ when $\\cos x < \\frac{1}{2}$.",
+     "$g'(0.5) = 1 - 2\\cos 0.5 < 0$, so $g$ decreases near 0.",
+     "Those come from $\\sin x = \\frac{1}{2}$; the derivative of $\\sin x$ is $\\cos x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-13",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "On which interval is $f(x) = \\ln(x^2 + 1)$ decreasing?",
+   "options": [
+    "$(-\\infty, 0)$",
+    "$(0, \\infty)$",
+    "$(-1, 1)$",
+    "$f$ is not decreasing anywhere"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "By the chain rule, $f'(x) = \\frac{2x}{x^2 + 1}$. The denominator is positive, so $f' < 0$ exactly when $x < 0$.",
+    "options": [
+     "$f'(x) = \\frac{2x}{x^2 + 1} < 0$ for $x < 0$.",
+     "There $f' > 0$: $f$ increases.",
+     "$f'$ changes sign at 0 inside $(-1, 1)$.",
+     "$f'(x) < 0$ for each negative $x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-14",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $f'(x)$ for $f(x) = x^2 e^x$. (You will use its sign to find where $f$ increases.)",
+   "expr": {
+    "answer": "(x^2 + 2x)e^x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     2
+    ],
+    "lhs": "f'(x) =",
+    "mistakes": [
+     {
+      "expr": "2x e^x",
+      "why": "You differentiated only the $x^2$. Product rule: $f'(x) = 2x \\cdot e^x + x^2 \\cdot e^x$."
+     },
+     {
+      "expr": "x^2 e^x",
+      "why": "You differentiated only the $e^x$. Product rule: add $2x \\cdot e^x$ too."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product rule: $f'(x) = 2x e^x + x^2 e^x = x(x + 2)e^x$. Its sign is the sign of $x(x + 2)$, so $f$ increases on $(-\\infty, -2)$ and $(0, \\infty)$."
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-15",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "calc": true,
+   "q": "$f'(x) = \\cos(x^2) - 0.3$. On $(0, 3)$, $f$ is decreasing on exactly one interval $(a, b)$. Find $b$.",
+   "numeric": {
+    "answer": 2.239884290404325,
+    "mistakes": [
+     {
+      "value": 1.125212723345901,
+      "why": "That is $a$, where $f'$ first becomes negative. $b$ is where $f'$ returns to 0 from below."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Graph $y = \\cos(x^2) - 0.3$ (radian mode) and find its zeros on $(0, 3)$: $x \\approx 1.125$ and $x \\approx 2.240$. $f' < 0$ between them, so $b \\approx 2.240$."
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-16",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$f'(x) = (x - 3)^2 (x + 1)$. On which interval is $f$ decreasing?",
+   "options": [
+    "$(-1, 3)$",
+    "$(-\\infty, -1)$",
+    "$(3, \\infty)$",
+    "$(-\\infty, -1)$ and $(-1, 3)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The squared factor is never negative, so $f'(x) < 0$ exactly when $x + 1 < 0$: $f$ decreases on $(-\\infty, -1)$.",
+    "options": [
+     "For $-1 < x < 3$, both factors give $f' > 0$.",
+     "$(x - 3)^2 \\ge 0$, so the sign of $f'$ is the sign of $x + 1$.",
+     "For $x > 3$, $f' > 0$.",
+     "$f' > 0$ on $(-1, 3)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-increasing-decreasing-17",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A company's monthly profit $P(t)$, in thousands of dollars, has $P'(t) = 120 - 18t$, where $t$ is in months. $P$ is increasing for $0 \\le t < a$. Find $a$.",
+   "numeric": {
+    "answer": "20/3",
+    "mistakes": [
+     {
+      "value": 120,
+      "why": "120 is $P'(0)$, the starting rate. Solve $120 - 18t = 0$ for $t$."
+     },
+     {
+      "value": "3/20",
+      "why": "Upside down: $18t = 120$ gives $t = \\frac{120}{18}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P'(t) > 0$ when $120 - 18t > 0$, that is $t < \\frac{120}{18} = \\frac{20}{3} \\approx 6.67$ months."
+   }
+  }
+ ]
+}

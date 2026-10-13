@@ -1,0 +1,12 @@
+{
+ "arcsin-steepening": {
+  "file": "figures/arcsin-steepening.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The graph of y = arcsin x for x from −1 to 1, from (−1, −π/2) to (1, π/2) with closed endpoints. Tangent lines at x = 0 (slope 1) and at x = 0.8 (slope 5/3) show the slope growing toward the ends."
+ }
+}

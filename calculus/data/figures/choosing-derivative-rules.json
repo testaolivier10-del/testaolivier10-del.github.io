@@ -1,0 +1,12 @@
+{
+ "derivative-rule-chooser": {
+  "file": "figures/derivative-rule-chooser.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Decision diagram: what is the last operation? A sum or difference: differentiate term by term. A product: product rule u′v + uv′. A quotient: quotient rule or rewrite with a power. A function of a function: chain rule f′(g(x))·g′(x). Then repeat inside each piece."
+ }
+}

@@ -1,0 +1,520 @@
+{
+ "stimuli": {
+  "verifying-solutions-s1": {
+   "kind": "table",
+   "title": "Four candidate functions",
+   "table": {
+    "caption": "Four functions of x, to test against differential equations",
+    "cols": [
+     "Name",
+     "$y_1$",
+     "$y_2$",
+     "$y_3$",
+     "$y_4$"
+    ],
+    "rows": [
+     [
+      "Formula",
+      "$e^{3x}$",
+      "$5e^{3x}$",
+      "$e^{3x} + 2$",
+      "$3e^{x}$"
+     ]
+    ]
+   }
+  },
+  "verifying-solutions-s2": {
+   "kind": "graph",
+   "title": "Three curves $y = x + 1 + Ce^x$",
+   "plot": {
+    "label": "Graphs of y = x + 1 + C e to the x for C = -1, 0 and 2, on -3 to 2; the C = 0 curve is a straight line",
+    "x": [
+     -3,
+     2
+    ],
+    "y": [
+     -3,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x + 1 + 2e^x",
+      "label": "C = 2",
+      "cls": "s1"
+     },
+     {
+      "fn": "x + 1",
+      "label": "C = 0",
+      "cls": "s2"
+     },
+     {
+      "fn": "x + 1 - e^x",
+      "label": "C = -1",
+      "cls": "s3"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       3
+      ],
+      "label": "(0, 3)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-verifying-solutions-1",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "multi",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "verifying-solutions-s1",
+   "q": "Which functions in the table satisfy $\\frac{dy}{dx} = 3y$? Select all that apply.",
+   "options": [
+    "$y_1$",
+    "$y_2$",
+    "$y_3$",
+    "$y_4$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Differentiate each function and compare with $3y$; only $y_1$ and $y_2$ match for every $x$.",
+    "options": [
+     "$\\frac{dy}{dx} = 3e^{3x}$ and $3y = 3e^{3x}$: equal.",
+     "$\\frac{dy}{dx} = 15e^{3x}$ and $3y = 15e^{3x}$: equal.",
+     "$\\frac{dy}{dx} = 3e^{3x}$ but $3y = 3e^{3x} + 6$: not equal.",
+     "$\\frac{dy}{dx} = 3e^{x}$ but $3y = 9e^{x}$: not equal."
+    ]
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-2",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "verifying-solutions-s1",
+   "q": "Why does $y_3$ fail to satisfy $\\frac{dy}{dx} = 3y$?",
+   "options": [
+    "Its derivative is $3e^{3x} + 2$, which is not $3y_3$.",
+    "At $x = 0$, $y_3 = 3$, and 3 is not a rate.",
+    "It has the same derivative as $y_1$, so it is the same function.",
+    "Its derivative is $3e^{3x}$, but $3y_3 = 3e^{3x} + 6$."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{dy_3}{dx} = 3e^{3x}$ while $3y_3 = 3e^{3x} + 6$; the sides differ by 6 for every $x$.",
+    "options": [
+     "The derivative of the constant 2 is 0, not 2.",
+     "Values and rates are both numbers; the test is whether the two sides agree.",
+     "Equal derivatives mean the functions differ by a constant, here 2.",
+     "The constant 2 drops out of the derivative but is tripled on the right side."
+    ]
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-3",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "verifying-solutions-s1",
+   "q": "Which differential equation does $y_4 = 3e^{x}$ satisfy?",
+   "options": [
+    "$\\frac{dy}{dx} = 3y$",
+    "$\\frac{dy}{dx} = 3$",
+    "$\\frac{dy}{dx} = y$",
+    "$\\frac{dy}{dx} = \\frac{y}{3}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The derivative of $3e^{x}$ is $3e^{x}$ itself, so $\\frac{dy}{dx} = y$.",
+    "options": [
+     "$3y = 9e^{x}$, three times the derivative.",
+     "The derivative is $3e^{x}$, not the constant 3.",
+     "$\\frac{dy}{dx} = 3e^{x} = y$.",
+     "$\\frac{y}{3} = e^{x}$, a third of the derivative."
+    ]
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-4",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "verifying-solutions-s1",
+   "q": "$y_2 = 5e^{3x}$ satisfies $\\frac{d^2y}{dx^2} = ky$ for a constant $k$. Find $k$.",
+   "numeric": {
+    "answer": 9,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That is the factor from one derivative. Differentiate twice: $y'' = 45e^{3x} = 9y$."
+     },
+     {
+      "value": 45,
+      "why": "$45$ is the coefficient of $y''$; divide by $y$'s coefficient 5 to get $k$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y' = 15e^{3x}$, $y'' = 45e^{3x} = 9 \\cdot 5e^{3x} = 9y$, so $k = 9$."
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-5",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "verifying-solutions-s1",
+   "q": "$y_1$ and $y_2$ suggest a pattern. Which other function also satisfies $\\frac{dy}{dx} = 3y$?",
+   "options": [
+    "$-2e^{3x}$",
+    "$e^{-3x}$",
+    "$3xe^{3x}$",
+    "$e^{x^3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $y = Ce^{3x}$, $\\frac{dy}{dx} = 3Ce^{3x} = 3y$, so every constant multiple of $e^{3x}$ is a solution.",
+    "options": [
+     "$\\frac{dy}{dx} = -6e^{3x} = 3(-2e^{3x})$: any constant times $e^{3x}$ works.",
+     "$\\frac{dy}{dx} = -3e^{-3x} = -3y$: the sign is wrong.",
+     "By the product rule, $\\frac{dy}{dx} = 3e^{3x} + 9xe^{3x}$, which is $3y + 3e^{3x}$.",
+     "$\\frac{dy}{dx} = 3x^2e^{x^3}$, which is $3y$ times $x^2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-6",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "verifying-solutions-s2",
+   "q": "Which work verifies that every curve $y = x + 1 + Ce^x$ satisfies $\\frac{dy}{dx} = y - x$?",
+   "options": [
+    "At $x = 0$, $\\frac{dy}{dx} = 1 + C$ and $y - x = 1 + C$.",
+    "$\\frac{dy}{dx} = 1 + Ce^x = x + 1 + Ce^x = y$.",
+    "$\\frac{dy}{dx} = Ce^x$ and $y - x = 1 + Ce^x$, so they differ by 1.",
+    "$\\frac{dy}{dx} = 1 + Ce^x$ and $y - x = 1 + Ce^x$, equal for every $x$."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Differentiate: $\\frac{dy}{dx} = 1 + Ce^x$. Substitute: $y - x = (x + 1 + Ce^x) - x = 1 + Ce^x$. The sides agree for every $x$.",
+    "options": [
+     "Agreement at one point does not show agreement for every x.",
+     "This chain writes $=$ between unequal things: $1 + Ce^x \\ne x + 1 + Ce^x$.",
+     "The derivative of $x$ is 1, which was dropped.",
+     "Both sides are computed separately and agree as functions."
+    ]
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-7",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "verifying-solutions-s2",
+   "q": "The curve through $(0, 3)$ is $y = x + 1 + 2e^x$. Find $\\frac{dy}{dx}$ at $(0, 3)$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "The derivative of $x$ is 1: $\\frac{dy}{dx} = 1 + 2e^x = 3$ at $x = 0$."
+     },
+     {
+      "value": -3,
+      "why": "The equation is $y - x$, not $x - y$: $3 - 0 = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the differential equation, $\\frac{dy}{dx} = y - x = 3 - 0 = 3$; from the formula, $1 + 2e^0 = 3$. They agree."
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-8",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "verifying-solutions-s2",
+   "q": "The member of the family with $C = 0$ is a straight line. Which line?",
+   "options": [
+    "$y = x$",
+    "$y = x + 1$",
+    "$y = 1$",
+    "$y = x - 1$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$C = 0$ leaves $y = x + 1$. Check: $\\frac{dy}{dx} = 1$ and $y - x = 1$.",
+    "options": [
+     "The $+1$ stays when $C = 0$.",
+     "With $C = 0$ the term $Ce^x$ vanishes.",
+     "The $x$ term stays; only $Ce^x$ vanishes.",
+     "The family has $+1$, not $-1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-9",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "verifying-solutions-s2",
+   "q": "For the curve $y = x + 1 + 2e^x$, find $\\frac{d^2y}{dx^2}$.",
+   "expr": {
+    "answer": "2e^x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "lhs": "\\frac{d^2y}{dx^2} =",
+    "mistakes": [
+     {
+      "expr": "1 + 2e^x",
+      "why": "That is the first derivative. Differentiate once more: the 1 becomes 0."
+     },
+     {
+      "expr": "x + 1 + 2e^x",
+      "why": "That is y itself. Differentiate twice."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dx} = 1 + 2e^x$, so $\\frac{d^2y}{dx^2} = 2e^x$."
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-10",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Is $y = x^2$ a solution to $x\\frac{dy}{dx} = 2y$ for $x > 0$?",
+   "options": [
+    "No: $\\frac{dy}{dx} = 2x$, which is not $2y$.",
+    "Yes: at $x = 1$ both sides equal 2.",
+    "No: an $x$ on the left side is not allowed.",
+    "Yes: $x \\cdot 2x = 2x^2$ and $2y = 2x^2$."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Left: $x \\cdot 2x = 2x^2$. Right: $2x^2$. They agree for every $x > 0$, so $y = x^2$ is a solution.",
+    "options": [
+     "The left side is $x\\frac{dy}{dx}$, not $\\frac{dy}{dx}$.",
+     "The conclusion is right, but one point does not verify it.",
+     "A differential equation may contain x anywhere.",
+     "Both sides simplify to the same function."
+    ]
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-11",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which differential equation does $y = \\sin(2x)$ satisfy?",
+   "options": [
+    "$\\frac{d^2y}{dx^2} = 4y$",
+    "$\\frac{d^2y}{dx^2} = -2y$",
+    "$\\frac{d^2y}{dx^2} = -4y$",
+    "$\\frac{dy}{dx} = 2y$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$y' = 2\\cos(2x)$, $y'' = -4\\sin(2x) = -4y$.",
+    "options": [
+     "The second derivative of sine brings a minus sign.",
+     "The chain rule gives a factor 2 twice: $2 \\cdot 2 = 4$.",
+     "$y'' = -4\\sin(2x) = -4y$.",
+     "$\\frac{dy}{dx} = 2\\cos(2x)$, not $2\\sin(2x)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-12",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "numeric",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For which positive constant $k$ does $y = e^{kx}$ satisfy $y'' - y' - 6y = 0$?",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": -2,
+      "why": "$k = -2$ also solves $k^2 - k - 6 = 0$, but the question asks for the positive value."
+     },
+     {
+      "value": 6,
+      "why": "Substitute: $k^2e^{kx} - ke^{kx} - 6e^{kx} = 0$ gives $k^2 - k - 6 = 0$, so $k = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y' = ke^{kx}$, $y'' = k^2e^{kx}$. Then $e^{kx}(k^2 - k - 6) = 0$, and $e^{kx} \\ne 0$, so $(k - 3)(k + 2) = 0$: $k = 3$."
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-13",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "$y = \\frac{1}{x}$ satisfies $\\frac{dy}{dx} = -y^2$ wherever it is defined. On which intervals is it a solution?",
+   "options": [
+    "On $x < 0$ and on $x > 0$, separately",
+    "On $(-\\infty, \\infty)$",
+    "On $x > 0$, but not on $x < 0$",
+    "On no interval, since $\\frac{dy}{dx} < 0$ and $y^2 > 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = -\\frac{1}{x^2}$ and $-y^2 = -\\frac{1}{x^2}$ for every $x \\ne 0$. The function is defined on two intervals, so it is a solution on each.",
+    "options": [
+     "$\\frac{dy}{dx} = -\\frac{1}{x^2} = -y^2$ for $x \\ne 0$; a solution lives on an interval, and $x = 0$ splits the domain.",
+     "$y = \\frac{1}{x}$ is not defined at $x = 0$.",
+     "For $x < 0$ the check works too: $-\\frac{1}{x^2} = -\\left(\\frac{1}{x}\\right)^2$.",
+     "The equation has $-y^2$, which is negative too."
+    ]
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-14",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $y = 5e^{-0.2t}$. Write $\\frac{dy}{dt}$ in terms of $y$ to show that $y$ satisfies $\\frac{dy}{dt} = ky$.",
+   "expr": {
+    "answer": "-0.2y",
+    "vars": [
+     "y"
+    ],
+    "domain": [
+     0.5,
+     5
+    ],
+    "lhs": "\\frac{dy}{dt} =",
+    "mistakes": [
+     {
+      "expr": "-y",
+      "why": "$\\frac{dy}{dt} = -e^{-0.2t}$, and $5e^{-0.2t}$ is $y$, so $\\frac{dy}{dt} = -0.2y$; the 5 is already inside $y$."
+     },
+     {
+      "expr": "0.2y",
+      "why": "The exponent is negative, so the derivative carries a minus sign."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dt} = 5(-0.2)e^{-0.2t} = -0.2\\left(5e^{-0.2t}\\right) = -0.2y$, so $k = -0.2$."
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-15",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "multi",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which functions satisfy $\\frac{dy}{dx} = \\frac{2y}{x}$ for $x > 0$? Select all that apply.",
+   "options": [
+    "$y = 3x^2$",
+    "$y = x^2 + 1$",
+    "$y = 2x$",
+    "$y = x^3$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Differentiate each and compare with $\\frac{2y}{x}$; only $3x^2$ matches.",
+    "options": [
+     "$\\frac{dy}{dx} = 6x$ and $\\frac{2y}{x} = 6x$.",
+     "$\\frac{dy}{dx} = 2x$ but $\\frac{2y}{x} = 2x + \\frac{2}{x}$.",
+     "$\\frac{dy}{dx} = 2$ but $\\frac{2y}{x} = 4$.",
+     "$\\frac{dy}{dx} = 3x^2$ but $\\frac{2y}{x} = 2x^2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-verifying-solutions-16",
+   "unit": "unit-7",
+   "topic": "verifying-solutions",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does $\\frac{dy}{dx} = 2x$ have infinitely many solutions?",
+   "options": [
+    "Any function with an $x^2$ term in it works.",
+    "Adding a constant to $x^2$ does not change its derivative, so every $x^2 + C$ works.",
+    "The equation can be multiplied by any number.",
+    "Each value of $x$ gives a different solution."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{d}{dx}\\left(x^2 + C\\right) = 2x$ for every constant $C$, so there is a solution for each $C$.",
+    "options": [
+     "$x^2 + x$ has derivative $2x + 1$, which is not $2x$.",
+     "An added constant has derivative 0.",
+     "Multiplying gives new equations; it does not create solutions of this one.",
+     "A solution is a whole function, not one value of x."
+    ]
+   }
+  }
+ ]
+}

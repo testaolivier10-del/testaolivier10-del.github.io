@@ -1,0 +1,63 @@
+{
+ "about": "Curve analyzer (docs/apcalc-spec.md section 6). The curves, scenes and every number live in calculus/assets/tools/math/curve-analyzer.js; contexts unlock with their topics. Checked by scripts/lib/apcalc-tool-checks/curve-analyzer.mjs.",
+ "slug": "curve-analyzer",
+ "kind": "simulator",
+ "topic": "f-and-its-derivatives",
+ "intro": "<p>The graphs of $f$, $f'$ and $f''$, stacked on one $x$-axis and always in the same colours: crimson, blue, green. Drag across them and one cursor reads all three. The sign charts of $f'$ and $f''$ build themselves; critical points and points of inflection are marked on $f$, each with the sentence that justifies it. In Optimize, choose the size of a box, a field or a can and watch the quantity and its derivative.</p>",
+ "howItWorksTitle": "How the features are found",
+ "howItWorks": "<ul><li><b>Critical points</b> are the interior $x$ where $f'(x) = 0$ or $f'(x)$ is undefined (with $f$ defined). Each curve's $f'$ and $f''$ are exact formulas, listed under Formulas &amp; numbers.</li><li><b>First derivative test:</b> a relative maximum where $f'$ changes from positive to negative, a relative minimum where it changes from negative to positive, neither where it keeps its sign (try the quartic at $x = 0$).</li><li><b>Inflection</b> where $f''$ changes sign, that is, where $f'$ changes from increasing to decreasing or back.</li><li><b>Candidates test</b> on the closed interval: compare $f$ at the endpoints and the critical points; the largest and smallest values are the absolute extrema.</li><li><b>Keyboard:</b> on the graphs, the arrow keys move the cursor (Shift for bigger steps) and Page Up / Page Down jump to the next marked feature.</li><li><b>Optimize:</b> the box is cut from a 12 in sheet, $V(x) = x(12 - 2x)^2$; the field uses 240 m of fence on three sides, $A(x) = x(240 - 2x)$; the can holds 355 cm³, $S(r) = 2\\pi r^2 + \\frac{710}{r}$.</li></ul>",
+ "curves": [
+  "cubic",
+  "quartic",
+  "expo",
+  "cusp",
+  "trig",
+  "rational"
+ ],
+ "optimize": [
+  {
+   "id": "box",
+   "topic": "optimization-intro"
+  },
+  {
+   "id": "fence",
+   "topic": "optimization-intro"
+  },
+  {
+   "id": "can",
+   "topic": "solving-optimization"
+  }
+ ],
+ "contexts": [
+  {
+   "id": "incdec",
+   "topic": "increasing-decreasing",
+   "kind": "incdec"
+  },
+  {
+   "id": "extrema",
+   "topic": "first-derivative-test",
+   "kind": "extrema"
+  },
+  {
+   "id": "candidates",
+   "topic": "candidates-test",
+   "kind": "candidates"
+  },
+  {
+   "id": "concavity",
+   "topic": "concavity",
+   "kind": "concavity"
+  },
+  {
+   "id": "fgraph",
+   "topic": "f-and-its-derivatives",
+   "kind": "fgraph"
+  },
+  {
+   "id": "optimize",
+   "topic": "solving-optimization",
+   "kind": "optimize"
+  }
+ ]
+}

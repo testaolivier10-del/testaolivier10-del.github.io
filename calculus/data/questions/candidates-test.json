@@ -1,0 +1,514 @@
+{
+ "stimuli": {
+  "candidates-test-s1": {
+   "kind": "table",
+   "title": "Values of $f$ and $f'$",
+   "text": "$f$ is continuous on $[0, 6]$. Its only critical points in $(0, 6)$ are $x = 1$, $x = 3$ and $x = 5$.",
+   "table": {
+    "caption": "Values of $f(x)$ and $f'(x)$ at selected $x$",
+    "cols": [
+     "$x$",
+     "0",
+     "1",
+     "3",
+     "5",
+     "6"
+    ],
+    "rows": [
+     [
+      "$f(x)$",
+      "4",
+      "7",
+      "-2",
+      "1",
+      "5"
+     ],
+     [
+      "$f'(x)$",
+      "3",
+      "0",
+      "undefined",
+      "0",
+      "2"
+     ]
+    ]
+   }
+  },
+  "candidates-test-s2": {
+   "kind": "graph",
+   "title": "Water in a reservoir",
+   "text": "The volume of water in a reservoir is modeled by $V(t) = 40 + 12\\sin\\left(\\frac{t}{2}\\right) - 0.5t$ thousand gallons, for $0 \\le t \\le 10$ days. Use a graphing calculator (radian mode).",
+   "plot": {
+    "label": "Graph of V(t) for t from 0 to 10 days: it rises from 40 to a peak near t = 3, then falls to a low near t = 9.6 and ends slightly higher at t = 10",
+    "x": [
+     -0.5,
+     10.5
+    ],
+    "y": [
+     15,
+     55
+    ],
+    "xStep": 1,
+    "yStep": 5,
+    "xLabel": "t",
+    "yLabel": "V",
+    "curves": [
+     {
+      "fn": "40 + 12 sin(x/2) - 0.5x",
+      "domain": [
+       0,
+       10
+      ],
+      "cls": "s1",
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "label": "V"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-candidates-test-1",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "candidates-test-s1",
+   "q": "What is the absolute maximum value of $f$ on $[0, 6]$?",
+   "numeric": {
+    "answer": 7,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "$f(6) = 5$ is the right endpoint value, but the candidate $x = 1$ gives more."
+     },
+     {
+      "value": 1,
+      "why": "$x = 1$ is where it happens; the value is $f(1) = 7$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Candidates: endpoints $x = 0, 6$ and critical points $x = 1, 3, 5$. Values: $4, 7, -2, 1, 5$. The largest is $f(1) = 7$."
+   }
+  },
+  {
+   "id": "calc-candidates-test-2",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "candidates-test-s1",
+   "q": "Where does $f$ have its absolute minimum on $[0, 6]$?",
+   "options": [
+    "At $x = 0$, the left endpoint",
+    "At $x = 3$",
+    "At $x = 5$, where $f'(x) = 0$",
+    "Nowhere, because $f'(3)$ is undefined"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Of the candidate values $4, 7, -2, 1, 5$, the smallest is $f(3) = -2$, so the absolute minimum is at $x = 3$.",
+    "options": [
+     "$f(0) = 4$ is not the smallest.",
+     "$f(3) = -2$ is the smallest of the five candidate values.",
+     "$f(5) = 1$ is larger than $f(3) = -2$.",
+     "A critical point where $f'$ is undefined is still a candidate, and here it wins."
+    ]
+   }
+  },
+  {
+   "id": "calc-candidates-test-3",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "candidates-test-s1",
+   "q": "Which list is the complete set of candidates for the absolute extrema of $f$ on $[0, 6]$?",
+   "options": [
+    "$x = 0, 1, 3, 5, 6$",
+    "$x = 1, 3, 5$, the critical points",
+    "$x = 0$ and $x = 6$, the endpoints",
+    "$x = 1$ and $x = 5$, where $f'(x) = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On a closed interval, the candidates are the endpoints and the critical points (where $f'$ is 0 or undefined): $x = 0, 1, 3, 5, 6$.",
+    "options": [
+     "Both endpoints and every critical point, including where $f'$ is undefined.",
+     "The endpoints are missing; an absolute extremum can sit at an end.",
+     "The critical points are missing.",
+     "$x = 3$, where $f'$ is undefined, and both endpoints are missing."
+    ]
+   }
+  },
+  {
+   "id": "calc-candidates-test-4",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "candidates-test-s1",
+   "q": "Which justification earns credit for \"the absolute maximum of $f$ on $[0, 6]$ is 7\"?",
+   "options": [
+    "\"$f'$ changes from positive to negative at $x = 1$, so $f(1) = 7$ is the absolute maximum.\"",
+    "\"$f'(1) = 0$, so $f(1) = 7$ is the absolute maximum on $[0, 6]$.\"",
+    "\"$f(1) = 7$ is greater than both endpoint values, $f(0) = 4$ and $f(6) = 5$.\"",
+    "\"The candidates $x = 0, 1, 3, 5, 6$ give $f = 4, 7, -2, 1, 5$. The largest is 7, at $x = 1$.\""
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An absolute extremum needs a global argument. The Candidates Test lists every endpoint and critical point with its value and picks the largest.",
+    "options": [
+     "A sign change gives a relative maximum, a local fact. It does not compare $f(1)$ with far-away values.",
+     "A zero of $f'$ is only a candidate.",
+     "Close, but the other critical points must be compared too.",
+     "A candidates test: every endpoint and critical point, with values, compared."
+    ]
+   }
+  },
+  {
+   "id": "calc-candidates-test-5",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "candidates-test-s2",
+   "calc": true,
+   "q": "Find the first time $t$ in $(0, 10)$ at which $V'(t) = 0$.",
+   "numeric": {
+    "answer": 2.974732480368563,
+    "mistakes": [
+     {
+      "value": 9.59163813399061,
+      "why": "That is the second zero of $V'$. The question asks for the first one."
+     },
+     {
+      "value": 1.4873662401842815,
+      "why": "That is $\\frac{t}{2}$. Solve $\\cos\\left(\\frac{t}{2}\\right) = \\frac{1}{12}$ for $t$: double it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V'(t) = 6\\cos\\left(\\frac{t}{2}\\right) - 0.5$. Setting $V'(t) = 0$ (graph it, radian mode) gives $t \\approx 2.975$ and $t \\approx 9.592$ on $(0, 10)$. The first is $t \\approx 2.975$ days."
+   }
+  },
+  {
+   "id": "calc-candidates-test-6",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "candidates-test-s2",
+   "calc": true,
+   "q": "Find the absolute minimum volume of water on $0 \\le t \\le 10$, in thousand gallons.",
+   "numeric": {
+    "answer": 23.245920189903295,
+    "mistakes": [
+     {
+      "value": 23.49290870404234,
+      "why": "$V(10) \\approx 23.493$ is the endpoint value. The critical point $t \\approx 9.592$ gives a slightly smaller value."
+     },
+     {
+      "value": 40,
+      "why": "$V(0) = 40$ is the starting volume; the volume falls well below it."
+     },
+     {
+      "value": 9.59163813399061,
+      "why": "$9.592$ is the time of the minimum. The question asks for the volume $V(9.592)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Candidates: $V(0) = 40$, $V(2.975) \\approx 50.471$, $V(9.592) \\approx 23.246$, $V(10) \\approx 23.493$. The smallest is $V(9.592) \\approx 23.246$ thousand gallons. Store $t$ in the calculator before evaluating $V$."
+   }
+  },
+  {
+   "id": "calc-candidates-test-7",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "candidates-test-s2",
+   "calc": true,
+   "q": "What is the absolute maximum volume on $0 \\le t \\le 10$?",
+   "options": [
+    "About $50.471$ thousand gallons, at $t \\approx 2.975$",
+    "$52$ thousand gallons, since $\\sin$ is at most 1",
+    "$40$ thousand gallons, at $t = 0$",
+    "About $23.493$ thousand gallons, at the endpoint $t = 10$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare the candidates $V(0) = 40$, $V(2.975) \\approx 50.471$, $V(9.592) \\approx 23.246$, $V(10) \\approx 23.493$: the absolute maximum is about $50.471$ thousand gallons at $t \\approx 2.975$ days.",
+    "options": [
+     "The largest candidate value.",
+     "$40 + 12$ ignores the $-0.5t$ term, which is not 0 when $\\sin\\frac{t}{2} = 1$.",
+     "$V(0) = 40 < V(2.975)$.",
+     "That is close to the smallest value, not the largest."
+    ]
+   }
+  },
+  {
+   "id": "calc-candidates-test-8",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "candidates-test-s2",
+   "calc": true,
+   "q": "A student writes: \"$V'$ changes from negative to positive at $t \\approx 9.592$, so the absolute minimum is $V(9.592)$.\" What is wrong?",
+   "options": [
+    "Nothing: a sign change of $V'$ proves an absolute minimum",
+    "$V'$ actually changes from positive to negative at $9.592$",
+    "The minimum of a model on an interval is at an endpoint",
+    "A sign change shows a relative minimum; to call it absolute, the student must also compare $V(0)$ and $V(10)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The First Derivative Test gives a relative minimum. For the absolute minimum, compare that value with the endpoint values (Candidates Test). The conclusion happens to be right here, but the argument earns no credit without the comparison.",
+    "options": [
+     "A sign change is a local fact. An endpoint value could be lower.",
+     "The graph falls before $9.592$ and rises after it: negative to positive is right.",
+     "Extrema can be at endpoints or at critical points; you have to check both.",
+     "Here $V(10) \\approx 23.493$ is very close; only the comparison shows which is smaller."
+    ]
+   }
+  },
+  {
+   "id": "calc-candidates-test-9",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the absolute maximum value of $f(x) = x^3 - 3x$ on $[0, 3]$.",
+   "numeric": {
+    "answer": 18,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$f(-1) = 2$, but $x = -1$ is not in $[0, 3]$. Check the endpoint $x = 3$."
+     },
+     {
+      "value": -2,
+      "why": "$-2 = f(1)$ is the smallest value, the absolute minimum."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 3x^2 - 3 = 0$ at $x = \\pm 1$; only $x = 1$ is in $[0, 3]$. Candidates: $f(0) = 0$, $f(1) = -2$, $f(3) = 18$. Maximum: 18."
+   }
+  },
+  {
+   "id": "calc-candidates-test-10",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find the absolute minimum value of $f(x) = x + 2\\cos x$ on $[0, \\pi]$. Give an exact answer.",
+   "numeric": {
+    "answer": "5pi/6 - sqrt(3)",
+    "mistakes": [
+     {
+      "value": "pi - 2",
+      "why": "$f(\\pi) = \\pi - 2$ is the endpoint value. The critical point $x = \\frac{5\\pi}{6}$ gives less."
+     },
+     {
+      "value": "5pi/6",
+      "why": "$\\frac{5\\pi}{6}$ is where the minimum happens. Evaluate $f\\left(\\frac{5\\pi}{6}\\right) = \\frac{5\\pi}{6} + 2\\cos\\frac{5\\pi}{6}$."
+     },
+     {
+      "value": "pi/6 + sqrt(3)",
+      "why": "$f\\left(\\frac{\\pi}{6}\\right)$ is the largest candidate, the absolute maximum."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 1 - 2\\sin x = 0$ at $x = \\frac{\\pi}{6}, \\frac{5\\pi}{6}$. Candidates: $f(0) = 2$, $f\\left(\\frac{\\pi}{6}\\right) = \\frac{\\pi}{6} + \\sqrt{3} \\approx 2.256$, $f\\left(\\frac{5\\pi}{6}\\right) = \\frac{5\\pi}{6} - \\sqrt{3} \\approx 0.886$, $f(\\pi) = \\pi - 2 \\approx 1.142$. Minimum: $\\frac{5\\pi}{6} - \\sqrt{3}$."
+   }
+  },
+  {
+   "id": "calc-candidates-test-11",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the absolute minimum of $f(x) = x^{2/3}$ on $[-1, 8]$?",
+   "options": [
+    "$0$, at $x = 0$, where $f'$ does not exist",
+    "$1$, at the endpoint $x = -1$",
+    "$4$, at the endpoint $x = 8$",
+    "No minimum, because $f'(x) = 0$ has no solution"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Candidates: $f(-1) = 1$, $f(0) = 0$ ($f'$ undefined), $f(8) = 4$. The absolute minimum is 0 at $x = 0$; the maximum is 4 at $x = 8$.",
+    "options": [
+     "$f'(x) = \\frac{2}{3}x^{-1/3}$ is undefined at 0, an interior critical point, and $f(0) = 0$ is the smallest candidate.",
+     "$f(-1) = 1 > f(0)$.",
+     "$f(8) = 4$ is the maximum.",
+     "Critical points include where $f'$ is undefined; and the Extreme Value Theorem guarantees a minimum."
+    ]
+   }
+  },
+  {
+   "id": "calc-candidates-test-12",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the absolute maximum value of $f(x) = x e^{-x}$ on $[0, 3]$. Give an exact answer.",
+   "numeric": {
+    "answer": "1/e",
+    "mistakes": [
+     {
+      "value": "3e^(-3)",
+      "why": "$f(3) = 3e^{-3} \\approx 0.149$ is the endpoint value; $f(1) = e^{-1} \\approx 0.368$ is larger."
+     },
+     {
+      "value": 1,
+      "why": "$x = 1$ is where the maximum happens. The value is $f(1) = e^{-1}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = (1 - x)e^{-x} = 0$ at $x = 1$. Candidates: $f(0) = 0$, $f(1) = \\frac{1}{e}$, $f(3) = \\frac{3}{e^3}$. Maximum: $\\frac{1}{e}$."
+   }
+  },
+  {
+   "id": "calc-candidates-test-13",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find the absolute maximum value of $f(x) = x - \\ln x$ on $\\left[\\frac{1}{2}, 3\\right]$. Give an exact answer.",
+   "numeric": {
+    "answer": "3 - ln(3)",
+    "mistakes": [
+     {
+      "value": "1/2 + ln(2)",
+      "why": "$f\\left(\\frac{1}{2}\\right) = \\frac{1}{2} - \\ln\\frac{1}{2} = \\frac{1}{2} + \\ln 2 \\approx 1.193$, but $f(3) \\approx 1.901$ is larger."
+     },
+     {
+      "value": 1,
+      "why": "$f(1) = 1$ is the absolute minimum, at the critical point."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 1 - \\frac{1}{x} = 0$ at $x = 1$. Candidates: $f\\left(\\frac{1}{2}\\right) = \\frac{1}{2} + \\ln 2 \\approx 1.193$, $f(1) = 1$, $f(3) = 3 - \\ln 3 \\approx 1.901$. Maximum: $3 - \\ln 3$."
+   }
+  },
+  {
+   "id": "calc-candidates-test-14",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$f$ is continuous on $[0, 6]$, and its only critical point is $x = 2$, a relative maximum with $f(2) = 5$. Also $f(0) = 1$ and $f(6) = 8$. What is the absolute maximum of $f$ on $[0, 6]$?",
+   "options": [
+    "$5$, at the relative maximum $x = 2$",
+    "$8$, at the endpoint $x = 6$",
+    "$1$, at the endpoint $x = 0$",
+    "It is impossible to find without a formula"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Candidates: $f(0) = 1$, $f(2) = 5$, $f(6) = 8$. The largest is $f(6) = 8$, at an endpoint.",
+    "options": [
+     "A relative maximum is not the absolute maximum when an endpoint is higher.",
+     "$f(6) = 8$ is the largest of the three candidate values.",
+     "$f(0) = 1$ is the smallest candidate.",
+     "The candidate values are enough: endpoints and critical points."
+    ]
+   }
+  },
+  {
+   "id": "calc-candidates-test-15",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "multi",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "To find the absolute maximum of a continuous $f$ on $[a, b]$ with the Candidates Test, which values of $f$ do you compare? Select each one.",
+   "options": [
+    "$f(a)$ and $f(b)$, at the endpoints",
+    "$f(c)$ at each $c$ in $(a, b)$ where $f'(c) = 0$ or $f'(c)$ does not exist",
+    "$f(c)$ at each $c$ where $f(c) = 0$",
+    "$f(c)$ at each $c$ where $f''(c) = 0$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The candidates are the endpoints and the interior critical points. Evaluate $f$ at each and compare.",
+    "options": [
+     "Endpoints are candidates.",
+     "Critical points are candidates.",
+     "Zeros of $f$ are where $f$ crosses the axis; they are not candidates.",
+     "Zeros of $f''$ relate to concavity, not to extrema of $f$."
+    ]
+   }
+  },
+  {
+   "id": "calc-candidates-test-16",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the absolute maximum and minimum values of $f(x) = x^3 - 6x^2$ on $[-1, 5]$?",
+   "options": [
+    "Maximum $-7$, minimum $-32$",
+    "Maximum $0$, minimum $-25$",
+    "Maximum $-25$, minimum $-7$",
+    "Maximum $0$, minimum $-32$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f'(x) = 3x^2 - 12x = 3x(x - 4) = 0$ at $x = 0, 4$. Candidates: $f(-1) = -7$, $f(0) = 0$, $f(4) = -32$, $f(5) = -25$. Maximum $0$, minimum $-32$.",
+    "options": [
+     "$f(0) = 0$ is larger than $-7$: the critical point $x = 0$ was left out.",
+     "$f(4) = -32$ is smaller than $f(5) = -25$: the critical point $x = 4$ was left out.",
+     "Only the endpoints were compared, and in the wrong order.",
+     "Candidates: $f(-1) = -7$, $f(0) = 0$, $f(4) = -32$, $f(5) = -25$."
+    ]
+   }
+  }
+ ]
+}

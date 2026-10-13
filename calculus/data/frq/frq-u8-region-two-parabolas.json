@@ -1,0 +1,121 @@
+{
+ "id": "frq-u8-region-two-parabolas",
+ "type": "area",
+ "title": "A region between two parabolas",
+ "calc": false,
+ "points": 9,
+ "units": ["unit-8"],
+ "topics": ["area-between-curves-x", "cross-sections-triangles", "washer-method-other-axes"],
+ "practices": ["1.C", "1.E", "2.C", "4.C", "4.E"],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The region $R$ between $y = 6x - x^2$ and $y = x^2$",
+  "text": "Let $f(x) = 6x - x^2$ and $g(x) = x^2$. Let $R$ be the region enclosed by the graphs of $f$ and $g$, as shown. No calculator is allowed on this question.",
+  "plot": {
+   "label": "The parabola f(x) = 6x − x², opening down, and the parabola g(x) = x², opening up. They meet at (0, 0) and (3, 9). The region R between them, with f on top, is shaded.",
+   "x": [-0.5, 3.8], "y": [-0.8, 10.5], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
+   "curves": [
+    { "fn": "6x - x^2", "domain": [-0.12, 3.8], "cls": "s1", "label": "f" },
+    { "fn": "x^2", "domain": [-0.5, 3.24], "cls": "s2", "label": "g" }
+   ],
+   "shade": [ { "fn": "6x - x^2", "fn2": "x^2", "domain": [0, 3] } ],
+   "points": [ { "at": [0, 0] }, { "at": [3, 9], "label": "(3, 9)" } ],
+   "labels": [ { "at": [1.4, 4.4], "text": "R" } ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Find</b> the area of $R$.",
+   "rubric": [
+    {
+     "point": "Integral: $\\int_0^3 \\left(6x - 2x^2\\right)\\,dx$, with limits from $f(x) = g(x)$",
+     "accept": [
+      "$\\int_0^3 \\left[(6x - x^2) - x^2\\right]\\,dx$",
+      "the limits 0 and 3 must come from solving $6x - x^2 = x^2$"
+     ]
+    },
+    {
+     "point": "Answer: $9$",
+     "accept": [
+      "$9$",
+      "requires the integral point"
+     ]
+    }
+   ],
+   "sample": "$6x - x^2 = x^2$ gives $2x^2 - 6x = 2x(x - 3) = 0$, so $x = 0$ or $x = 3$. At $x = 1$, $f = 5 > 1 = g$, so $f$ is on top. Area $= \\int_0^3 \\left(6x - 2x^2\\right)\\,dx = \\left[3x^2 - \\frac{2x^3}{3}\\right]_0^3 = 27 - 18 = 9$."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "<b>Find</b> the volume of the solid generated when $R$ is revolved about the horizontal line $y = -1$.",
+   "rubric": [
+    {
+     "point": "Constant and limits: $\\pi\\int_0^3 \\ldots\\,dx$",
+     "accept": [
+      "$\\pi$ in front of an integral from 0 to 3"
+     ]
+    },
+    {
+     "point": "Integrand: $\\left(6x - x^2 + 1\\right)^2 - \\left(x^2 + 1\\right)^2$",
+     "accept": [
+      "$\\left(f(x) + 1\\right)^2 - \\left(g(x) + 1\\right)^2$",
+      "radii measured from $y = 0$, or $(f - g)^2$, do not earn this point"
+     ]
+    },
+    {
+     "point": "Answer: $99\\pi$",
+     "accept": [
+      "$99\\pi$",
+      "requires the integrand point"
+     ]
+    }
+   ],
+   "sample": "From $y = -1$, the outer radius is $f(x) + 1 = 6x - x^2 + 1$ and the inner radius is $g(x) + 1 = x^2 + 1$. As a difference of squares, $(6x - x^2 + 1)^2 - (x^2 + 1)^2 = (6x - 2x^2)(6x + 2) = -12x^3 + 32x^2 + 12x$. Volume $= \\pi\\int_0^3 \\left(-12x^3 + 32x^2 + 12x\\right)\\,dx = \\pi\\left[-3x^4 + \\frac{32x^3}{3} + 6x^2\\right]_0^3 = \\pi(-243 + 288 + 54) = 99\\pi$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "Region $R$ is the base of a solid. For this solid, each cross section perpendicular to the $x$-axis is a semicircle whose diameter lies in $R$. <b>Write</b>, but do not evaluate, an integral expression for the volume of the solid.",
+   "rubric": [
+    {
+     "point": "Integrand: $\\frac{\\pi}{8}\\left(6x - 2x^2\\right)^2$",
+     "accept": [
+      "$\\frac{\\pi}{2}\\left(\\frac{6x - 2x^2}{2}\\right)^2$",
+      "a radius of $6x - 2x^2$, or a full circle, does not earn this point"
+     ]
+    },
+    {
+     "point": "Limits and the integral: $\\int_0^3 \\ldots\\,dx$",
+     "accept": [
+      "$\\frac{\\pi}{8}\\int_0^3 \\left(6x - 2x^2\\right)^2\\,dx$"
+     ]
+    }
+   ],
+   "sample": "The diameter at $x$ is $f(x) - g(x) = 6x - 2x^2$, so the radius is $3x - x^2$ and the semicircle's area is $\\frac{1}{2}\\pi\\left(3x - x^2\\right)^2$. Volume $= \\int_0^3 \\frac{\\pi}{2}\\left(3x - x^2\\right)^2\\,dx$."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Write</b>, but do not evaluate, an integral expression for the volume of the solid generated when $R$ is revolved about the vertical line $x = -1$.",
+   "rubric": [
+    {
+     "point": "Radii in terms of $y$: outer $\\sqrt{y} + 1$, inner $4 - \\sqrt{9 - y}$",
+     "accept": [
+      "the right edge $x = \\sqrt{y}$ and the left edge $x = 3 - \\sqrt{9 - y}$, each plus 1",
+      "edges written in terms of $x$ do not earn this point"
+     ]
+    },
+    {
+     "point": "Integral expression: $\\pi\\int_0^9 \\left[\\left(\\sqrt{y} + 1\\right)^2 - \\left(4 - \\sqrt{9 - y}\\right)^2\\right]\\,dy$",
+     "accept": [
+      "the constant $\\pi$, limits 0 and 9 in $dy$, and outer squared minus inner squared",
+      "requires the radii point"
+     ]
+    }
+   ],
+   "sample": "Horizontal washers for $0 \\le y \\le 9$. The right edge of $R$ is $g$: $x = \\sqrt{y}$. The left edge is $f$: $y = 9 - (x - 3)^2$ gives $x = 3 - \\sqrt{9 - y}$ on $0 \\le x \\le 3$. From the axis $x = -1$, the outer radius is $\\sqrt{y} + 1$ and the inner radius is $3 - \\sqrt{9 - y} + 1 = 4 - \\sqrt{9 - y}$. Volume $= \\pi\\int_0^9 \\left[\\left(\\sqrt{y} + 1\\right)^2 - \\left(4 - \\sqrt{9 - y}\\right)^2\\right]\\,dy$."
+  }
+ ]
+}

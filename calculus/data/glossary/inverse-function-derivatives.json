@@ -1,0 +1,5 @@
+{
+ "inverse-derivative": {
+  "def": "The derivative of the inverse of $f$: $\\left(f^{-1}\\right)'(a) = \\frac{1}{f'\\left(f^{-1}(a)\\right)}$, provided $f'\\left(f^{-1}(a)\\right) \\ne 0$. The slope of the inverse at a point is the reciprocal of the slope of $f$ at the reflected point."
+ }
+}

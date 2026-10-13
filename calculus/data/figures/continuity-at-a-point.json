@@ -1,0 +1,12 @@
+{
+ "continuity-three-conditions": {
+  "file": "figures/continuity-three-conditions.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Four graphs near x = c. First: an open circle and no closed dot, so f(c) is not defined and condition 1 fails. Second: a jump, so the limit at c does not exist and condition 2 fails. Third: a hole with the closed dot f(c) placed above it, so the limit exists but does not equal f(c) and condition 3 fails. Fourth: an unbroken curve through a closed dot, where all three conditions hold."
+ }
+}

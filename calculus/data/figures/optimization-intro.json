@@ -1,0 +1,22 @@
+{
+ "pen-river-area": {
+  "file": "figures/pen-river-area.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram and graph",
+  "alt": "Left: a rectangular pen against a river, split by a middle fence; the three fences perpendicular to the river have length x, the far side has length y, and 3x + y = 600 feet. Right: the graph of A(x) = x(600 - 3x) for 0 ≤ x ≤ 200, zero at both ends, highest at (100, 30000)."
+ },
+ "pen-river-diagram": {
+  "file": "figures/pen-river-diagram.svg",
+  "ext": "svg",
+  "w": 420,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A rectangular pen against a straight river, divided in two by a middle fence parallel to the ends. The two ends and the divider each have length x; the side opposite the river has length y. No fence along the river. Total fence: 600 feet."
+ }
+}

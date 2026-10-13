@@ -1,0 +1,71 @@
+{
+ "topic": "rates-in-context",
+ "hook": "Doctors track how fast a medicine's concentration falls, economists how fast cost grows with each extra unit, ecologists how fast a population spreads. The derivative is the same in all of them; what changes is the story and the units. This topic practises reading rates, and rates of rates, in many settings.",
+ "prereq": [
+  {
+   "q": "The units of $f'(t)$, when $f$ is in liters and $t$ in minutes, are",
+   "options": [
+    "liters per minute",
+    "liters",
+    "minutes per liter",
+    "liters times minutes"
+   ],
+   "correct": 0,
+   "why": "Output units per input unit.",
+   "review": "derivative-in-context"
+  },
+  {
+   "q": "For a particle, $v(3) = -2$ and $a(3) = -1$. At $t = 3$ the particle is",
+   "options": [
+    "speeding up",
+    "slowing down",
+    "at rest",
+    "changing direction"
+   ],
+   "correct": 0,
+   "why": "$v$ and $a$ have the same sign.",
+   "review": "straight-line-motion"
+  }
+ ],
+ "figure": {
+  "figure": "warming-rate-panels",
+  "caption": "A drink's temperature $H(t)$ in °F (top) and its rate of change $H'(t)$ in °F per minute (bottom). At 10 minutes, $H'(10) \\approx 1.84$ °F per minute, the slope of the tangent line above."
+ },
+ "chain": [
+  {
+   "cause": "Any quantity $Q$ that depends on an input",
+   "effect": "has a rate of change $Q'$ in units of $Q$ per unit of input"
+  },
+  {
+   "cause": "The sign of $Q'$",
+   "effect": "says whether the quantity is increasing or decreasing"
+  },
+  {
+   "cause": "$Q'$ is itself a function, so $Q''$ is the rate of change of the rate",
+   "effect": "measured in units of Q per input unit per input unit"
+  },
+  {
+   "cause": "The sign of $Q''$",
+   "effect": "says whether the rate $Q'$ is increasing or decreasing"
+  }
+ ],
+ "ideas": [
+  "An interpretation names the input value, the quantity, increasing or decreasing, and the rate with units.",
+  "When the function is itself a rate (liters per hour), its derivative is a rate of a rate (liters per hour per hour).",
+  "$Q' < 0$ with $Q'' > 0$: decreasing, but more slowly. $Q' > 0$ with $Q'' < 0$: increasing, but more slowly.",
+  "Chained quantities multiply rates, and their units cancel: (°F per foot)(feet per minute) = °F per minute."
+ ],
+ "misconception": {
+  "wrong": "If $H''(t) > 0$, the temperature is going up.",
+  "right": "$H''$ describes the rate $H'$, not the temperature. With $H' < 0$ and $H'' > 0$ the temperature is still falling, just more slowly."
+ },
+ "check": [
+  "calc-rates-in-context-1",
+  "calc-rates-in-context-2",
+  "calc-rates-in-context-3",
+  "calc-rates-in-context-4",
+  "calc-rates-in-context-10",
+  "calc-rates-in-context-13"
+ ],
+ "summary": "In any context, $Q'$ is the rate of change of $Q$ in units of $Q$ per input unit, and $Q''$ is the rate of change of that rate. Read the sign of $Q'$ for increasing or decreasing and the sign of $Q''$ for whether that rate grows or shrinks. Always state units."
+}

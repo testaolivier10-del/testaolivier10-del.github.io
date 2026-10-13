@@ -1,0 +1,12 @@
+{
+ "integration-flowchart": {
+  "file": "figures/integration-flowchart.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 560,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A flowchart of four questions in order, each with a yes arrow to a technique: basic form after rewriting? basic rules. Inside function whose derivative is a factor? substitution, with new limits. Rational with top degree at least bottom degree? long division first. Quadratic on the bottom with no real zeros? complete the square, then arctan. If none fits, rewrite and start again."
+ }
+}

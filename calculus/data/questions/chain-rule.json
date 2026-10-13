@@ -1,0 +1,593 @@
+{
+ "stimuli": {
+  "chain-rule-s1": {
+   "kind": "table",
+   "title": "Values of $f$, $f'$, $g$ and $g'$",
+   "table": {
+    "caption": "Selected values of the differentiable functions f and g and their derivatives",
+    "cols": [
+     "$x$",
+     "$f(x)$",
+     "$f'(x)$",
+     "$g(x)$",
+     "$g'(x)$"
+    ],
+    "rows": [
+     [
+      "1",
+      "3",
+      "-2",
+      "2",
+      "5"
+     ],
+     [
+      "2",
+      "4",
+      "6",
+      "3",
+      "-1"
+     ],
+     [
+      "3",
+      "1",
+      "4",
+      "4",
+      "2"
+     ],
+     [
+      "4",
+      "2",
+      "-3",
+      "1",
+      "7"
+     ]
+    ]
+   }
+  },
+  "chain-rule-s2": {
+   "kind": "graph",
+   "title": "The graph of $g$",
+   "plot": {
+    "label": "Graph of the piecewise linear function g on 0 to 6: segments from (0, 1) to (2, 5), from (2, 5) to (4, 3), and from (4, 3) to (6, 4)",
+    "x": [
+     -0.5,
+     6.5
+    ],
+    "y": [
+     -0.5,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2x + 1",
+      "domain": [
+       0,
+       2
+      ],
+      "label": "g",
+      "ends": [
+       "closed",
+       null
+      ]
+     },
+     {
+      "fn": "7 - x",
+      "domain": [
+       2,
+       4
+      ]
+     },
+     {
+      "fn": "x/2 + 1",
+      "domain": [
+       4,
+       6
+      ],
+      "ends": [
+       null,
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       5
+      ]
+     },
+     {
+      "at": [
+       4,
+       3
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-chain-rule-1",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $h(x) = f(g(x))$. What is $h'(1)$?",
+   "stimulus": "chain-rule-s1",
+   "options": [
+    "$30$",
+    "$-10$",
+    "$6$",
+    "$12$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The chain rule: $h'(x) = f'(g(x)) \\cdot g'(x)$. The outside derivative is read at the inside value $g(1) = 2$, so $h'(1) = f'(2) \\cdot g'(1) = 6 \\cdot 5 = 30$.",
+    "options": [
+     "$h'(1) = f'(g(1)) \\cdot g'(1) = f'(2) \\cdot 5 = 6 \\cdot 5 = 30$.",
+     "This is $f'(1) \\cdot g'(1)$: the outside derivative was evaluated at $x = 1$ instead of at the inside value $g(1) = 2$.",
+     "This is $f'(g(1))$ alone: the inside derivative $g'(1) = 5$ was dropped.",
+     "This multiplies by $g(1) = 2$, the inside value, instead of by its derivative $g'(1) = 5$."
+    ]
+   }
+  },
+  {
+   "id": "calc-chain-rule-2",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $k(x) = g(f(x))$, a composition with $f$ on the inside. Use the table to find $k'(3)$.",
+   "stimulus": "chain-rule-s1",
+   "numeric": {
+    "answer": 20,
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That is $g'(3) \\cdot f'(3)$. Evaluate the outside derivative at the inside value: $g'(f(3)) = g'(1) = 5$, not $g'(3)$."
+     },
+     {
+      "value": 5,
+      "why": "That is $g'(f(3))$ alone. Multiply by the derivative of the inside function, $f'(3) = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$k'(3) = g'(f(3)) \\cdot f'(3) = g'(1) \\cdot 4 = 5 \\cdot 4 = 20$. Here $g$ is the outside function, so its derivative is read at $f(3) = 1$."
+   }
+  },
+  {
+   "id": "calc-chain-rule-3",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $m(x) = [g(x)]^3$. What is $m'(2)$?",
+   "stimulus": "chain-rule-s1",
+   "options": [
+    "$27$",
+    "$-27$",
+    "$-9$",
+    "$-81$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The outside function is the cube: $m'(x) = 3[g(x)]^2 \\cdot g'(x)$, so $m'(2) = 3(3)^2(-1) = -27$.",
+    "options": [
+     "This is $3[g(2)]^2$ with no inside derivative. The inside function is $g$, and $g'(2) = -1$ changes the sign.",
+     "$3[g(2)]^2 g'(2) = 3 \\cdot 9 \\cdot (-1) = -27$.",
+     "This is $[g(2)]^2 g'(2)$: the power rule's factor 3 is missing.",
+     "This is $3[g(2)]^3 g'(2)$: the power rule lowers the power by one, so the outside derivative is $3u^2$, not $3u^3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-chain-rule-4",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Let $p(x) = f(x^2)$. What is $p'(2)$?",
+   "stimulus": "chain-rule-s1",
+   "options": [
+    "$-3$",
+    "$-6$",
+    "$-12$",
+    "$24$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$p'(x) = f'(x^2) \\cdot 2x$. At $x = 2$ the inside value is $4$: $p'(2) = f'(4) \\cdot 4 = -3 \\cdot 4 = -12$.",
+    "options": [
+     "This is $f'(4)$ alone: the derivative of the inside function $x^2$, which is $2x = 4$, is missing.",
+     "This multiplies by 2 instead of by $2x = 4$. The inside derivative is evaluated at $x = 2$.",
+     "$f'(4) \\cdot 2(2) = -3 \\cdot 4 = -12$.",
+     "This is $f'(2) \\cdot 4$: the outside derivative was read at $x = 2$, not at the inside value $2^2 = 4$."
+    ]
+   }
+  },
+  {
+   "id": "calc-chain-rule-5",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which is an equation of the line tangent to the graph of $y = f(g(x))$ at $x = 4$?",
+   "stimulus": "chain-rule-s1",
+   "options": [
+    "$y - 2 = -14(x - 4)$",
+    "$y - 3 = -21(x - 4)$",
+    "$y - 3 = 7(x - 4)$",
+    "$y - 3 = -14(x - 4)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At $x = 4$: $g(4) = 1$, so the point is $(4, f(1)) = (4, 3)$. The slope is $f'(g(4)) \\cdot g'(4) = f'(1) \\cdot 7 = -14$. The line is $y - 3 = -14(x - 4)$.",
+    "options": [
+     "The $y$-value $2$ is $f(4)$. On the graph of $f(g(x))$ the value at $x = 4$ is $f(g(4)) = f(1) = 3$.",
+     "The slope $-21$ is $f'(4) \\cdot g'(4)$. Read $f'$ at the inside value $g(4) = 1$: $f'(1) = -2$.",
+     "The slope $7$ is $g'(4)$ alone. The chain rule also needs the outside factor $f'(g(4)) = -2$.",
+     "The point is $(4, f(g(4))) = (4, 3)$ and the slope is $f'(1) \\cdot g'(4) = -14$."
+    ]
+   }
+  },
+  {
+   "id": "calc-chain-rule-6",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph of $g$ is made of line segments. Let $h(x) = [g(x)]^2$. Find $h'(3)$.",
+   "stimulus": "chain-rule-s2",
+   "numeric": {
+    "answer": -8,
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That is $2g(3)$ with no inside derivative. Multiply by $g'(3)$, the slope of the segment through $x = 3$, which is $-1$."
+     },
+     {
+      "value": -2,
+      "why": "That is $2g'(3)$: the outside derivative $2u$ must be evaluated at $u = g(3) = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h'(x) = 2g(x) \\cdot g'(x)$. From the graph, $g(3) = 4$ and $g'(3) = -1$ (the slope of the middle segment), so $h'(3) = 2(4)(-1) = -8$."
+   }
+  },
+  {
+   "id": "calc-chain-rule-7",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $k(x) = \\ln(g(x))$. Find $k'(1)$.",
+   "stimulus": "chain-rule-s2",
+   "numeric": {
+    "answer": "2/3",
+    "mistakes": [
+     {
+      "value": "1/3",
+      "why": "That is $\\frac{1}{g(1)}$ with no inside derivative. Multiply by $g'(1) = 2$, the slope of the first segment."
+     },
+     {
+      "value": "1/2",
+      "why": "That is $\\frac{1}{g'(1)}$. The derivative of $\\ln u$ is $\\frac{1}{u}$ at $u = g(1) = 3$, times $g'(1)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$k'(x) = \\frac{1}{g(x)} \\cdot g'(x)$. From the graph, $g(1) = 3$ and $g'(1) = 2$, so $k'(1) = \\frac{2}{3}$."
+   }
+  },
+  {
+   "id": "calc-chain-rule-8",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $m(x) = g(2x)$. What is $m'(1.5)$?",
+   "stimulus": "chain-rule-s2",
+   "options": [
+    "$-2$",
+    "$-1$",
+    "$4$",
+    "$8$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$m'(x) = g'(2x) \\cdot 2$. At $x = 1.5$ the inside value is $3$, on the middle segment of slope $-1$: $m'(1.5) = -1 \\cdot 2 = -2$.",
+    "options": [
+     "$g'(3) \\cdot 2 = -1 \\cdot 2 = -2$.",
+     "This is $g'(3)$ alone: the inside function $2x$ has derivative $2$, which multiplies the result.",
+     "This is $g'(1.5) \\cdot 2$: the outside derivative was read at $x = 1.5$ instead of at the inside value $2(1.5) = 3$.",
+     "This is $g(3) \\cdot 2$: it uses the value of $g$ where the chain rule needs the slope $g'(3)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-chain-rule-9",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Let $f(x) = x^2 + 1$ and $q(x) = f(g(x))$, with $g$ the function in the graph. Find $q'(5)$.",
+   "stimulus": "chain-rule-s2",
+   "numeric": {
+    "answer": "7/2",
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "That is $f'(g(5))$ alone. Multiply by $g'(5) = \\frac{1}{2}$, the slope of the last segment."
+     },
+     {
+      "value": 5,
+      "why": "That is $f'(5) \\cdot g'(5) = 10 \\cdot \\frac{1}{2}$. Evaluate $f'$ at the inside value $g(5) = 3.5$, not at $5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$q'(5) = f'(g(5)) \\cdot g'(5)$. From the graph, $g(5) = 3.5$ and $g'(5) = \\frac{1}{2}$. Since $f'(x) = 2x$, $f'(3.5) = 7$, so $q'(5) = 7 \\cdot \\frac{1}{2} = \\frac{7}{2}$."
+   }
+  },
+  {
+   "id": "calc-chain-rule-10",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the derivative of $y = (3x^2 - 5)^4$.",
+   "expr": {
+    "answer": "24x(3x^2 - 5)^3",
+    "vars": [
+     "x"
+    ],
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "4(3x^2 - 5)^3",
+      "why": "You differentiated the outside only. Multiply by the derivative of the inside, $6x$."
+     },
+     {
+      "expr": "4(6x)^3",
+      "why": "The outside derivative $4u^3$ keeps the inside function $u = 3x^2 - 5$ unchanged; only then multiply by $6x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Outside: $u^4$, derivative $4u^3$. Inside: $u = 3x^2 - 5$, derivative $6x$. So $\\frac{dy}{dx} = 4(3x^2 - 5)^3 \\cdot 6x = 24x(3x^2 - 5)^3$."
+   }
+  },
+  {
+   "id": "calc-chain-rule-11",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $f'(x)$ for $f(x) = \\sin(x^3)$.",
+   "expr": {
+    "answer": "3x^2*cos(x^3)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "f'(x) =",
+    "mistakes": [
+     {
+      "expr": "cos(x^3)",
+      "why": "The inside derivative is missing. Multiply $\\cos(x^3)$ by the derivative of $x^3$, which is $3x^2$."
+     },
+     {
+      "expr": "cos(3x^2)",
+      "why": "Keep the inside function as it is: the outside derivative is $\\cos(x^3)$. The inside derivative $3x^2$ is a separate factor."
+     },
+     {
+      "expr": "3x^2*cos(3x^2)",
+      "why": "The cosine should still contain $x^3$, the original inside function, not its derivative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Outside: $\\sin u$, derivative $\\cos u$, evaluated at the same inside $u = x^3$. Inside derivative: $3x^2$. So $f'(x) = \\cos(x^3) \\cdot 3x^2$."
+   }
+  },
+  {
+   "id": "calc-chain-rule-12",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the derivative of $y = e^{-x^2/2}$.",
+   "expr": {
+    "answer": "-x*e^(-x^2/2)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "e^(-x^2/2)",
+      "why": "The derivative of $e^u$ is $e^u$ times the derivative of $u$. Here $u = -\\frac{x^2}{2}$, so multiply by $-x$."
+     },
+     {
+      "expr": "(-x^2/2)*e^(-x^2/2 - 1)",
+      "why": "The power rule does not apply to $e^u$: the variable is in the exponent. The derivative of $e^u$ is $e^u \\cdot u'$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The outside is $e^u$, whose derivative is $e^u$ itself. The inside $u = -\\frac{x^2}{2}$ has derivative $-x$. So $\\frac{dy}{dx} = e^{-x^2/2} \\cdot (-x)$."
+   }
+  },
+  {
+   "id": "calc-chain-rule-13",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\frac{d}{dx}\\ln(\\cos x)$ on $-\\frac{\\pi}{2} < x < \\frac{\\pi}{2}$.",
+   "expr": {
+    "answer": "-tan(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1.4,
+     1.4
+    ],
+    "lhs": "\\frac{d}{dx}\\ln(\\cos x) =",
+    "mistakes": [
+     {
+      "expr": "1/cos(x)",
+      "why": "The inside derivative is missing: multiply $\\frac{1}{\\cos x}$ by the derivative of $\\cos x$, which is $-\\sin x$."
+     },
+     {
+      "expr": "tan(x)",
+      "why": "The derivative of $\\cos x$ is $-\\sin x$, so the result carries a minus sign."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d}{dx}\\ln u = \\frac{1}{u} \\cdot u'$ with $u = \\cos x$ and $u' = -\\sin x$: $\\frac{-\\sin x}{\\cos x} = -\\tan x$."
+   }
+  },
+  {
+   "id": "calc-chain-rule-14",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\sqrt{1 + 4x}$. Find $f'(2)$.",
+   "numeric": {
+    "answer": "2/3",
+    "mistakes": [
+     {
+      "value": "1/6",
+      "why": "That is $\\frac{1}{2\\sqrt{9}}$: the inside derivative 4 is missing."
+     },
+     {
+      "value": "4/3",
+      "why": "The power rule on $u^{1/2}$ brings down a factor $\\frac{1}{2}$: $\\frac{1}{2} \\cdot \\frac{1}{3} \\cdot 4 = \\frac{2}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = \\frac{1}{2}(1 + 4x)^{-1/2} \\cdot 4 = \\frac{2}{\\sqrt{1 + 4x}}$, so $f'(2) = \\frac{2}{\\sqrt{9}} = \\frac{2}{3}$."
+   }
+  },
+  {
+   "id": "calc-chain-rule-15",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The function $f$ is differentiable with $f'(2) = -1$ and $f'(6) = 4$. If $h(x) = f(3x)$, what is $h'(2)$?",
+   "options": [
+    "$4$",
+    "$12$",
+    "$-3$",
+    "$-1$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$h'(x) = f'(3x) \\cdot 3$. At $x = 2$ the inside value is $6$, so $h'(2) = f'(6) \\cdot 3 = 4 \\cdot 3 = 12$.",
+    "options": [
+     "This is $f'(6)$ alone; the inside function $3x$ contributes a factor 3.",
+     "$h'(2) = f'(6) \\cdot 3 = 12$.",
+     "This is $3f'(2)$: the outside derivative is read at the inside value $3 \\cdot 2 = 6$, not at $2$.",
+     "This is $f'(2)$, the slope of $f$ at $x = 2$, not of $h$."
+    ]
+   }
+  },
+  {
+   "id": "calc-chain-rule-16",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "multi",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which of these functions need the chain rule to be differentiated? Select all that apply.",
+   "options": [
+    "$e^{3x}$",
+    "$(x^2 + 1)^{10}$",
+    "$x^2 e^x$",
+    "$\\frac{\\cos x}{x}$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The chain rule is needed when a function is applied to another function: $e^{3x}$ and $(x^2 + 1)^{10}$.",
+    "options": [
+     "The exponent $3x$ is an inside function: the derivative is $3e^{3x}$.",
+     "The tenth power acts on the inside function $x^2 + 1$.",
+     "This is a product of $x^2$ and $e^x$, neither with an inside function: the product rule is enough.",
+     "This is a quotient of two basic functions: the quotient rule is enough."
+    ]
+   }
+  },
+  {
+   "id": "calc-chain-rule-17",
+   "unit": "unit-3",
+   "topic": "chain-rule",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes $\\frac{d}{dx}\\cos(5x) = -\\sin(5)$. Which statement describes the error?",
+   "options": [
+    "The sign is wrong because the derivative of cosine is sine",
+    "The answer needs the product rule because $5x$ is a product",
+    "The sine should keep $5x$ inside, and the result needs a factor of $5$",
+    "Nothing is wrong: the derivative of $5x$ is $5$, and cosine turns into negative sine"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The chain rule keeps the inside function inside the outside derivative and multiplies by the inside derivative: $\\frac{d}{dx}\\cos(5x) = -\\sin(5x) \\cdot 5$.",
+    "options": [
+     "The derivative of $\\cos u$ is $-\\sin u$; the student's sign is right.",
+     "A constant times $x$ is differentiated directly: its derivative is $5$.",
+     "Right: $-\\sin u$ must be read at $u = 5x$, then multiplied by $5$.",
+     "The result should depend on $x$: the correct derivative is $-5\\sin(5x)$."
+    ]
+   }
+  }
+ ]
+}

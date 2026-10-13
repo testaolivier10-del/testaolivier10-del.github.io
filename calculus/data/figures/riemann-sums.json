@@ -1,0 +1,12 @@
+{
+ "riemann-four-sums": {
+  "file": "figures/riemann-four-sums.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 650,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four panels show f(x) = 0.25x squared + 1 on [0, 4], increasing and concave up, with four subintervals of width 1: a left sum of 7.5 (an underestimate), a right sum of 11.5 (an overestimate), a midpoint sum of 9.25 (an underestimate) and a trapezoidal sum of 9.5 (an overestimate). The true area is 28/3, about 9.33."
+ }
+}

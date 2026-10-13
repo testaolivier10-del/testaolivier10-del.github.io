@@ -1,0 +1,86 @@
+/* Rule drills (calculus/assets/tools/rule-drills.js). OWNED BY THIS TOOL.
+   Piece colours: purple for u, the top or the outer function; green for v,
+   the bottom or the inner function. f stays crimson and f' blue on the
+   graphs, as on every calculus plot. */
+:root{--rd-a:#7A4F9E;--rd-b:#00805C;--rd-at:rgba(122,79,158,.09);--rd-bt:rgba(0,128,92,.09);}
+:root[data-theme="dark"]{--rd-a:#C3A3E0;--rd-b:#52CFA6;--rd-at:rgba(195,163,224,.12);--rd-bt:rgba(82,207,166,.12);}
+/* The course crumb is not in the Tool Studio's hidden list yet (shared fix
+   reported); hide it here so the studio is exactly one screen. */
+body.ls-on .calc-crumb{display:none;}
+
+.rd-ca{color:var(--rd-a);} .rd-cb{color:var(--rd-b);}
+.rd-stage{display:flex;flex-direction:column;gap:12px;flex:1;min-height:0;overflow:auto;}
+.rd-stage.rd-wide{flex-direction:row;gap:20px;}
+.rd-main{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:10px;}
+.rd-side{flex:none;display:flex;flex-direction:column;gap:10px;min-width:0;}
+.rd-wide .rd-side{width:min(380px,40%);}
+.rd-head{font-size:clamp(20px,3vw,28px);overflow-x:auto;overflow-y:hidden;padding:2px 0;}
+.rd-head math{font-size:inherit;}
+.rd-wide .rd-dnarrow,.rd-stage:not(.rd-wide) .rd-side .rd-dbox{display:none;}
+.rd-stage:not(.rd-wide) .rd-side{display:none;}
+.rd-dbox{padding:10px 14px;border-radius:14px;background:var(--ctint);overflow-x:auto;}
+.rd-dk{margin:0 0 2px;font:800 12px var(--font-ui);color:var(--cink);}
+.rd-plot{flex:1;min-height:0;display:none;}
+.rd-wide .rd-plot{display:flex;min-height:200px;}
+.rd-plot svg,.rd-plot2 svg{width:100%;height:auto;max-height:100%;}
+.rd-plot2{max-width:520px;}
+
+/* The tree: a card per piece, children under their parent with connectors. */
+.rd-tree{overflow-x:auto;padding-bottom:4px;}
+.rd-branch{display:flex;flex-direction:column;align-items:center;min-width:0;}
+.rd-kids{display:flex;gap:0;justify-content:center;position:relative;padding-top:16px;margin-top:2px;}
+.rd-kids::before{content:"";position:absolute;top:-2px;left:50%;width:2px;height:18px;background:var(--line);}
+.rd-kids > .rd-branch{position:relative;padding:8px 4px 0;}
+.rd-kids > .rd-branch::before{content:'';position:absolute;top:0;left:50%;width:2px;height:8px;background:var(--line);}
+.rd-kids{padding-top:16px;}
+.rd-kids > .rd-branch{margin-top:0;}
+.rd-kids > .rd-branch::after{content:'';position:absolute;top:-1px;height:2px;background:var(--line);left:0;right:0;}
+.rd-kids > .rd-branch:first-child::after{left:50%;}
+.rd-kids > .rd-branch:last-child::after{right:50%;}
+.rd-kids > .rd-branch:only-child::after{display:none;}
+.rd-node{display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 12px;border-radius:12px;background:var(--surface2,var(--paper));box-shadow:inset 0 0 0 1.5px var(--line);text-align:center;max-width:100%;}
+.rd-root{box-shadow:inset 0 0 0 2px var(--cink);background:var(--white);}
+.rd-ca.rd-node{box-shadow:inset 0 0 0 2px var(--rd-a);background:var(--rd-at);color:var(--ink);}
+.rd-cb.rd-node{box-shadow:inset 0 0 0 2px var(--rd-b);background:var(--rd-bt);color:var(--ink);}
+.rd-role{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;}
+.rd-ca .rd-role{color:var(--rd-a);} .rd-cb .rd-role{color:var(--rd-b);} .rd-ct .rd-role{color:var(--muted);}
+.rd-rule{font:800 12.5px var(--font-ui);color:var(--muted);}
+.rd-root > .rd-rule{color:var(--cink);font-size:13.5px;}
+.rd-slim{padding:4px 14px;}
+.rd-rule.is-hidden{color:var(--muted);font-style:italic;}
+.rd-expr{font-size:17px;}
+.rd-d{font-size:15px;padding-top:3px;margin-top:2px;border-top:1.5px dashed var(--line);}
+.rd-d[hidden]{display:none;}
+.rd-tree.is-folded .rd-node{padding:12px 20px;}
+.rd-wait{margin:0;text-align:center;font:700 13px var(--font-ui);color:var(--muted);}
+.rd-steps{margin:0;padding-left:20px;display:grid;gap:8px;}
+
+/* The dock */
+.rd-lbl{margin:0 0 6px;font:800 var(--ls-s,13px) var(--font-ui);color:var(--muted);}
+.rd-irow{display:flex;align-items:center;gap:8px;}
+.rd-fx{flex:none;font-size:18px;}
+.rd-irow input{flex:1;min-width:0;min-height:48px;padding:0 14px;border:0;border-radius:14px;background:var(--white);box-shadow:inset 0 0 0 2px var(--line);color:var(--ink);font:600 18px var(--font-mono);}
+.rd-irow input:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+.rd-read{margin:6px 0 0;min-height:1.4em;font-size:16px;overflow-x:auto;}
+.rd-chip{font-size:15px;}
+.rd-chip[aria-pressed="true"]{background:var(--ctint);box-shadow:inset 0 0 0 2px var(--cink);}
+.rd-typed code{font:600 15px var(--font-mono);word-break:break-all;}
+.rd-opt{display:inline;}
+
+/* Drill figures */
+.ls-root .ls-drill-stage .rd-fig{align-items:center;justify-content:center;gap:12px;overflow:auto;}
+.rd-fig .rd-head{text-align:center;}
+.rd-pow{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:24px;}
+.rd-pow-eq{color:var(--cink);}
+.rd-pow-d{color:var(--ink);padding-top:6px;border-top:1.5px dashed var(--line);}
+.ls-root .ls-drill-stage .rd-fig > svg{flex:1;min-height:0;}
+
+@media (max-width:699.98px){
+  .rd-head{font-size:20px;}
+  .rd-dbox{padding:4px 10px;} .rd-dbox .rd-dk{display:none;} .rd-dbox math[display=block]{margin:4px 0;}
+  .rd-read:empty{display:none;}
+  .rd-expr{font-size:15px;} .rd-d{font-size:13px;}
+  .rd-node{padding:5px 8px;}
+  .rd-pow{font-size:19px;}
+  .rd-examples .rd-lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+}

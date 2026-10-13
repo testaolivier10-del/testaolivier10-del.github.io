@@ -1,0 +1,161 @@
+{
+ "id": "frq-u7-equilibrium-cosine",
+ "type": "de",
+ "title": "Solution curves on a slope field with an equilibrium line",
+ "calc": false,
+ "points": 9,
+ "units": [
+  "unit-7"
+ ],
+ "topics": [
+  "reasoning-with-slope-fields",
+  "separation-of-variables",
+  "particular-solutions"
+ ],
+ "practices": [
+  "1.E",
+  "2.C",
+  "3.B",
+  "3.E"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The slope field of $\\frac{dy}{dx} = (y - 2)\\cos x$",
+  "plot": {
+   "label": "Slope field of dy/dx = (y - 2) cos x for x from -3 to 3 and y from 0 to 4, with flat segments along y = 2 and along x = plus or minus pi/2",
+   "x": [
+    -3,
+    3
+   ],
+   "y": [
+    0,
+    4
+   ],
+   "xStep": 1,
+   "yStep": 1,
+   "xLabel": "x",
+   "yLabel": "y",
+   "field": {
+    "dydx": "(y - 2)*cos(x)",
+    "step": 0.5
+   },
+   "points": [
+    {
+     "at": [
+      0,
+      3
+     ],
+     "label": "(0, 3)"
+    },
+    {
+     "at": [
+      0,
+      1
+     ],
+     "label": "(0, 1)"
+    }
+   ]
+  }
+ },
+ "graphSpec": {
+  "x": {
+   "label": "x",
+   "min": -3,
+   "max": 3
+  },
+  "y": {
+   "label": "y",
+   "min": 0,
+   "max": 4
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "space": "graph",
+   "prompt": "On the slope field, <b>sketch</b> the solution curve through $(0, 3)$ and the solution curve through $(0, 1)$.",
+   "rubric": [
+    {
+     "point": "Curve through $(0, 3)$: passes through the point, follows the segments and stays above $y = 2$; rising to the right of 0 (leaving the window near $x = \\frac{\\pi}{2}$) and falling to the left of 0 toward a low point near $\\left(-\\frac{\\pi}{2}, 2.4\\right)$; drawn across the field.",
+     "accept": [
+      "a curve through (0, 3) consistent with the slope field, extending across the window"
+     ]
+    },
+    {
+     "point": "Curve through $(0, 1)$: passes through the point, follows the segments and stays below $y = 2$; the mirror image of the first curve in the line $y = 2$.",
+     "accept": [
+      "a curve through (0, 1) consistent with the slope field that does not cross y = 2"
+     ]
+    }
+   ],
+   "sample": "Through $(0, 3)$: above $y = 2$; to the right it climbs steeply and leaves the top of the window before $x = \\frac{\\pi}{2}$, then comes back down to about 3.2 at $x = 3$; to the left it falls to a low point near $\\left(-\\frac{\\pi}{2}, 2.4\\right)$ and rises a little toward $x = -3$. Through $(0, 1)$: the mirror image below $y = 2$, highest near $\\left(-\\frac{\\pi}{2}, 1.6\\right)$. Neither crosses the horizontal line $y = 2$."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Write</b> the equation of the constant solution to the differential equation. <b>Explain</b> why the solution curve through $(0, 1)$ stays below it.",
+   "rubric": [
+    {
+     "point": "Constant (equilibrium) solution $y = 2$, because $\\frac{dy}{dx} = 0 \\cdot \\cos x = 0$ for every $x$.",
+     "accept": [
+      "y = 2"
+     ]
+    },
+    {
+     "point": "Reason: $y = 2$ is itself a solution and solution curves of this equation do not cross, so a curve starting at $y = 1 < 2$ stays below $y = 2$.",
+     "accept": [
+      "curves cannot cross the equilibrium solution y = 2"
+     ]
+    }
+   ],
+   "sample": "If $y = 2$, then $\\frac{dy}{dx} = (2 - 2)\\cos x = 0$ for every $x$, and the derivative of the constant 2 is 0, so $y = 2$ is a solution. Solution curves of this equation do not cross, so the curve through $(0, 1)$, which starts below 2, stays below $y = 2$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "Let $y = f(x)$ be the solution through $(0, 3)$. <b>Find</b> the value of $x$ in $(0, \\pi)$ at which $f$ has a relative maximum. <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "$x = \\frac{\\pi}{2}$, where $\\frac{dy}{dx} = (y - 2)\\cos x = 0$.",
+     "accept": [
+      "x = pi/2"
+     ]
+    },
+    {
+     "point": "Justification: $f(x) > 2$, so $\\frac{dy}{dx}$ has the sign of $\\cos x$: positive on $\\left(0, \\frac{\\pi}{2}\\right)$ and negative on $\\left(\\frac{\\pi}{2}, \\pi\\right)$. So $f'$ changes from positive to negative at $x = \\frac{\\pi}{2}$.",
+     "accept": [
+      "dy/dx changes from positive to negative at x = pi/2 because y - 2 > 0"
+     ]
+    }
+   ],
+   "sample": "On the curve through $(0, 3)$, $y - 2 > 0$, so $f'(x) = (y - 2)\\cos x$ has the sign of $\\cos x$. It is positive for $0 < x < \\frac{\\pi}{2}$ and negative for $\\frac{\\pi}{2} < x < \\pi$. Since $f'$ changes from positive to negative at $x = \\frac{\\pi}{2}$, $f$ has a relative maximum there."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "<b>Find</b> $y = f(x)$, the particular solution with $f(0) = 3$.",
+   "rubric": [
+    {
+     "point": "Separates variables: $\\frac{dy}{y - 2} = \\cos x\\,dx$.",
+     "accept": [
+      "dy/(y - 2) = cos x dx"
+     ]
+    },
+    {
+     "point": "Antiderivatives with a constant: $\\ln|y - 2| = \\sin x + C$.",
+     "accept": [
+      "ln|y - 2| = sin x + C"
+     ]
+    },
+    {
+     "point": "Uses $f(0) = 3$ and solves: $\\ln 1 = 0 + C$, so $C = 0$, and $f(x) = 2 + e^{\\sin x}$.",
+     "accept": [
+      "y = 2 + e^(sin x)"
+     ]
+    }
+   ],
+   "sample": "$\\frac{dy}{y - 2} = \\cos x\\,dx$, so $\\ln|y - 2| = \\sin x + C$. At $(0, 3)$: $\\ln 1 = 0 + C$, so $C = 0$. Then $|y - 2| = e^{\\sin x}$, and since $y - 2 = 1 > 0$ at the initial point, $f(x) = 2 + e^{\\sin x}$."
+  }
+ ]
+}

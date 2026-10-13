@@ -1,0 +1,499 @@
+{
+ "stimuli": {
+  "reasoning-with-slope-fields-s1": {
+   "kind": "graph",
+   "title": "The slope field of $\\frac{dy}{dx} = \\frac{y - 1}{2}$",
+   "plot": {
+    "label": "Slope field of dy/dx = (y - 1)/2 on -2 to 3 by -2 to 4, segments every half unit, flat along y = 1 and steeper farther from it",
+    "x": [
+     -2,
+     3
+    ],
+    "y": [
+     -2,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "field": {
+     "dydx": "(y - 1)/2",
+     "step": 0.5
+    }
+   }
+  },
+  "reasoning-with-slope-fields-s2": {
+   "kind": "graph",
+   "title": "The slope field of $\\frac{dy}{dx} = x(2 - y)$",
+   "plot": {
+    "label": "Slope field of dy/dx = x(2 - y) on -2 to 2 by -1 to 4, flat along y = 2 and along the y-axis",
+    "x": [
+     -2,
+     2
+    ],
+    "y": [
+     -1,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "field": {
+     "dydx": "x*(2 - y)",
+     "step": 0.5
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-reasoning-with-slope-fields-1",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "reasoning-with-slope-fields-s1",
+   "q": "Which is an equilibrium solution of the differential equation?",
+   "options": [
+    "$y = 1$",
+    "$y = 0$",
+    "$x = 1$",
+    "$y = 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Set the right side to 0: $\\frac{y - 1}{2} = 0$ gives $y = 1$.",
+    "options": [
+     "On $y = 1$, $\\frac{y - 1}{2} = 0$ for every $x$: a row of flat segments.",
+     "At $y = 0$ the slope is $-\\frac{1}{2}$, not 0.",
+     "An equilibrium solution is a horizontal line y = c; on x = 1 the slopes vary.",
+     "At $y = 2$ the slope is $\\frac{1}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-2",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reasoning-with-slope-fields-s1",
+   "q": "Describe the solution curve through $(0, 2)$ as $x$ increases.",
+   "options": [
+    "It falls and approaches $y = 1$.",
+    "It levels off at $y = 2$.",
+    "It rises and approaches $y = 3$.",
+    "It rises ever more steeply, moving away from $y = 1$."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For $y > 1$, $\\frac{dy}{dx} = \\frac{y - 1}{2} > 0$ and grows as $y$ grows, so the curve climbs faster and faster.",
+    "options": [
+     "Above $y = 1$, $\\frac{dy}{dx} > 0$: the curve rises.",
+     "At $y = 2$ the slope is $\\frac{1}{2}$, not 0.",
+     "Nothing is flat at $y = 3$; the slope there is 1.",
+     "Above $y = 1$ the slopes are positive and grow with $y$."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-3",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reasoning-with-slope-fields-s1",
+   "q": "For the solution curve through $(0, 0)$, what happens to $y$ as $x$ increases without bound?",
+   "options": [
+    "$y$ approaches 1.",
+    "$y$ approaches 0.",
+    "$y$ decreases without bound.",
+    "$y$ increases toward 1."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At $(0, 0)$, $\\frac{dy}{dx} = -\\frac{1}{2}$; as $y$ drops, $\\frac{y - 1}{2}$ becomes more negative, so $y \\to -\\infty$.",
+    "options": [
+     "Below $y = 1$, $\\frac{dy}{dx} < 0$: the curve moves down, away from 1.",
+     "At $y = 0$ the slope is $-\\frac{1}{2}$, so the curve does not level off there.",
+     "Below $y = 1$ the slope is negative and grows steeper as $y$ falls.",
+     "The slopes below $y = 1$ are negative."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-4",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "reasoning-with-slope-fields-s1",
+   "q": "Is the solution curve through $(0, 2)$ concave up or concave down there, and why?",
+   "options": [
+    "Concave up, because $\\frac{dy}{dx} > 0$ at $(0, 2)$.",
+    "Concave up, because $\\frac{d^2y}{dx^2} = \\frac{y - 1}{4} > 0$ at $y = 2$.",
+    "Concave down, because $\\frac{d^2y}{dx^2} = -\\frac{1}{4}$ there.",
+    "Neither, because $\\frac{d^2y}{dx^2} = 0$: there is no $x$ in $\\frac{y - 1}{2}$."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "By the chain rule, $\\frac{d^2y}{dx^2} = \\frac{1}{2}\\frac{dy}{dx} = \\frac{y - 1}{4}$. At $(0, 2)$ it is $\\frac{1}{4} > 0$: concave up.",
+    "options": [
+     "A positive first derivative means increasing; concavity comes from $\\frac{d^2y}{dx^2}$.",
+     "$\\frac{d^2y}{dx^2} = \\frac{1}{2}\\frac{dy}{dx} = \\frac{y - 1}{4} = \\frac{1}{4}$ at $(0, 2)$.",
+     "$\\frac{d}{dx}\\left(\\frac{y - 1}{2}\\right) = \\frac{1}{2}\\frac{dy}{dx}$, which is positive at $(0, 2)$.",
+     "$y$ depends on $x$, so its derivative is $\\frac{dy}{dx}$, not 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-5",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reasoning-with-slope-fields-s1",
+   "q": "Find $\\frac{d^2y}{dx^2}$ at the point $(0, 3)$ for $\\frac{dy}{dx} = \\frac{y - 1}{2}$.",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is $\\frac{dy}{dx}$ at $(0, 3)$. Differentiate again: $\\frac{d^2y}{dx^2} = \\frac{1}{2}\\frac{dy}{dx} = \\frac{1}{2}(1)$."
+     },
+     {
+      "value": 0,
+      "why": "$y$ is a function of $x$, so $\\frac{d}{dx}\\left(\\frac{y - 1}{2}\\right) = \\frac{1}{2}\\frac{dy}{dx}$, not 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dx} = \\frac{3 - 1}{2} = 1$, so $\\frac{d^2y}{dx^2} = \\frac{1}{2}(1) = \\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-6",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reasoning-with-slope-fields-s2",
+   "q": "A solution curve passes through $(1, 0)$. Near that point, the solution is",
+   "options": [
+    "decreasing",
+    "constant",
+    "at a relative maximum",
+    "increasing"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = x(2 - y) = 2$ at $(1, 0)$, so the solution is increasing there.",
+    "options": [
+     "At $(1, 0)$ both factors are positive.",
+     "The slope is 2, not 0; constant solutions sit on $y = 2$.",
+     "A relative maximum needs $\\frac{dy}{dx} = 0$ there.",
+     "$\\frac{dy}{dx} = 1(2 - 0) = 2 > 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-7",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reasoning-with-slope-fields-s2",
+   "q": "The solution curve through $(0, 0)$ has $\\frac{dy}{dx} = 0$ at $x = 0$. What happens there?",
+   "options": [
+    "A relative maximum: $\\frac{dy}{dx}$ changes from positive to negative at $x = 0$.",
+    "Neither: $\\frac{dy}{dx} = 0$ but does not change sign.",
+    "A relative minimum: $\\frac{dy}{dx}$ changes from negative to positive at $x = 0$.",
+    "An equilibrium solution, since the slope is 0"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Near $(0, 0)$, $y < 2$, so $\\frac{dy}{dx} = x(2 - y)$ is negative for $x < 0$ and positive for $x > 0$: a relative minimum.",
+    "options": [
+     "Left of the $y$-axis $x < 0$ makes the slope negative, not positive.",
+     "It does change sign, with $x$.",
+     "For $y < 2$, $2 - y > 0$, so $\\frac{dy}{dx}$ has the sign of $x$.",
+     "The slope is 0 at one point of the curve, not along a whole horizontal line."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-8",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reasoning-with-slope-fields-s2",
+   "q": "For the solution curve through $(0, 0)$, what happens to $y$ as $x$ increases without bound?",
+   "options": [
+    "$y$ increases without bound.",
+    "$y$ approaches 2.",
+    "$y$ approaches 0.",
+    "$y$ decreases without bound."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Below $y = 2$ with $x > 0$, $\\frac{dy}{dx} > 0$, and $y = 2$ is an equilibrium solution the curve cannot cross, so $y \\to 2$.",
+    "options": [
+     "The curve cannot cross the equilibrium solution $y = 2$.",
+     "For $x > 0$ and $y < 2$ the curve rises, and the slopes flatten near the equilibrium $y = 2$, which it cannot cross.",
+     "For $x > 0$, $\\frac{dy}{dx} > 0$ below $y = 2$: the curve rises away from 0.",
+     "For $x > 0$ and $y < 2$ the slopes are positive."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-9",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "reasoning-with-slope-fields-s2",
+   "q": "For $\\frac{dy}{dx} = x(2 - y)$, find $\\frac{d^2y}{dx^2}$ in terms of $x$ and $y$.",
+   "expr": {
+    "answer": "(2 - y)*(1 - x^2)",
+    "vars": [
+     "x",
+     "y"
+    ],
+    "domain": {
+     "x": [
+      -2,
+      2
+     ],
+     "y": [
+      -1,
+      4
+     ]
+    },
+    "lhs": "\\frac{d^2y}{dx^2} =",
+    "mistakes": [
+     {
+      "expr": "2 - y",
+      "why": "Product rule: $\\frac{d}{dx}[x(2 - y)] = (2 - y) + x\\left(-\\frac{dy}{dx}\\right)$; the second term is missing."
+     },
+     {
+      "expr": "2 - y - x",
+      "why": "The derivative of $-y$ is $-\\frac{dy}{dx} = -x(2 - y)$, not $-1$. Substitute the equation."
+     },
+     {
+      "expr": "(2 - y) - x*(2 - y)",
+      "why": "The second term is $-x\\frac{dy}{dx} = -x \\cdot x(2 - y)$: a factor $x$ is missing."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product rule and chain rule: $\\frac{d^2y}{dx^2} = (2 - y) - x\\frac{dy}{dx} = (2 - y) - x^2(2 - y) = (2 - y)(1 - x^2)$."
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-10",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "multi",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which are equilibrium solutions of $\\frac{dy}{dx} = x^2(y - 3)(y + 1)$? Select all that apply.",
+   "options": [
+    "$y = 3$",
+    "$y = -1$",
+    "$x = 0$",
+    "$y = 0$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "An equilibrium solution is a constant $y = c$ with $\\frac{dy}{dx} = 0$ for every $x$: $y = 3$ and $y = -1$.",
+    "options": [
+     "The factor $y - 3$ makes the slope 0 for every $x$.",
+     "The factor $y + 1$ makes the slope 0 for every $x$.",
+     "The slope is 0 along $x = 0$, but a vertical line is not a function $y$ of $x$.",
+     "At $y = 0$, $\\frac{dy}{dx} = -3x^2$, not 0 for every $x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-11",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $\\frac{dy}{dx} = \\frac{3 - y}{2}$, why does the solution curve through $(0, 1)$ stay below $y = 3$ for every $x$?",
+   "options": [
+    "Because $\\frac{dy}{dx} < 0$ below $y = 3$.",
+    "Because the curve starts at $y = 1$, which is below 3.",
+    "$y = 3$ is itself a solution, and solution curves of this equation do not cross.",
+    "Because $\\frac{d^2y}{dx^2} > 0$ below $y = 3$."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The constant $y = 3$ solves the equation, and two solution curves of this equation never meet, so the curve rises toward 3 without reaching it.",
+    "options": [
+     "Below $y = 3$, $\\frac{3 - y}{2} > 0$: the curve rises.",
+     "Starting below a level does not by itself keep a curve below it.",
+     "Two solution curves cannot share a point here, so the curve stays below the equilibrium line.",
+     "$\\frac{d^2y}{dx^2} = -\\frac{1}{2}\\frac{dy}{dx} < 0$ there, and concavity alone would not settle it."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-12",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which differential equation has $y = 4$ as an equilibrium solution?",
+   "options": [
+    "$\\frac{dy}{dx} = y - 4x$",
+    "$\\frac{dy}{dx} = x(y - 4)$",
+    "$\\frac{dy}{dx} = (x - 4)y$",
+    "$\\frac{dy}{dx} = 4y$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$y = 4$ is an equilibrium solution when the right side is 0 at $y = 4$ for every $x$.",
+    "options": [
+     "At $y = 4$ this is $4 - 4x$, zero at $x = 1$ alone.",
+     "At $y = 4$ the right side is 0 for every $x$.",
+     "At $y = 4$ this is $4(x - 4)$, not 0 for every $x$.",
+     "At $y = 4$ the slope is 16."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-13",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $\\frac{dy}{dx} = y^2 - x$, find $\\frac{d^2y}{dx^2}$ at the point $(1, 2)$.",
+   "numeric": {
+    "answer": 11,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That is $\\frac{dy}{dx}$ at $(1, 2)$, or $2y - 1$ without the factor $\\frac{dy}{dx}$. Chain rule: $\\frac{d}{dx}(y^2) = 2y\\frac{dy}{dx}$."
+     },
+     {
+      "value": -1,
+      "why": "$y^2$ is not a constant: its derivative is $2y\\frac{dy}{dx} = 2(2)(3) = 12$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = 2y\\frac{dy}{dx} - 1$. At $(1, 2)$: $\\frac{dy}{dx} = 4 - 1 = 3$, so $\\frac{d^2y}{dx^2} = 2(2)(3) - 1 = 11$."
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-14",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A solution curve of $\\frac{dy}{dx} = y - x^2$ passes through $(0, 1)$. Near $x = 0$ the curve is",
+   "options": [
+    "increasing and concave down",
+    "decreasing and concave up",
+    "decreasing and concave down",
+    "increasing and concave up"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{dy}{dx} = 1 - 0 = 1$; $\\frac{d^2y}{dx^2} = \\frac{dy}{dx} - 2x = 1 - 0 = 1$. Both positive.",
+    "options": [
+     "$\\frac{d^2y}{dx^2} = \\frac{dy}{dx} - 2x = 1$ at $(0, 1)$, positive.",
+     "$\\frac{dy}{dx} = 1 - 0 = 1 > 0$.",
+     "Both derivatives are positive at $(0, 1)$.",
+     "$\\frac{dy}{dx} = 1 > 0$ and $\\frac{d^2y}{dx^2} = \\frac{dy}{dx} - 2x = 1 > 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-15",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A drink's temperature $T$, in °F, satisfies $\\frac{dT}{dt} = -0.1(T - 65)$. A drink starts at 40 °F. What happens to its temperature over a long time?",
+   "options": [
+    "It falls toward 0 °F.",
+    "It rises without bound.",
+    "It rises toward 65 °F.",
+    "It stays at 40 °F."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For $T < 65$, $\\frac{dT}{dt} > 0$, and the rate shrinks near the equilibrium $T = 65$: the drink warms toward room temperature.",
+    "options": [
+     "At 40 °F, $\\frac{dT}{dt} = 2.5 > 0$: it warms.",
+     "The rate shrinks to 0 as $T$ nears 65.",
+     "Below 65, $\\frac{dT}{dt} > 0$; $T = 65$ is an equilibrium the temperature approaches.",
+     "$\\frac{dT}{dt} \\ne 0$ at 40 °F."
+    ]
+   }
+  },
+  {
+   "id": "calc-reasoning-with-slope-fields-16",
+   "unit": "unit-7",
+   "topic": "reasoning-with-slope-fields",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the value $c$ for which $y = c$ is an equilibrium solution of $\\frac{dy}{dx} = 6 - 2y$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "Set the right side to 0: $6 - 2y = 0$ gives $y = 3$."
+     },
+     {
+      "value": -3,
+      "why": "$6 - 2y = 0$ means $2y = 6$, so $y = +3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$6 - 2c = 0$, so $c = 3$; along $y = 3$ every slope is 0."
+   }
+  }
+ ]
+}

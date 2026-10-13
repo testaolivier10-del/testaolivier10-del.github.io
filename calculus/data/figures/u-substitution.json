@@ -1,0 +1,12 @@
+{
+ "u-sub-areas": {
+  "file": "figures/u-sub-areas.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: the graph of y = 2x cos(x squared) from x = 0 to the square root of pi/2, about 1.25, with the region under it shaded; its area is 1. Right: the graph of y = cos u from u = 0 to pi/2, with the region under it shaded; its area is also 1. With u = x squared, the x-limits become the u-limits."
+ }
+}

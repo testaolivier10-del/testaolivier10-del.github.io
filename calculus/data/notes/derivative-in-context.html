@@ -1,0 +1,58 @@
+<p>Unit 2 treated the derivative as a slope. Out in the world it is a rate: kilometers per hour, dollars per item, degrees per minute. Every free-response question set in a real situation asks you to find such a rate, give its units, and say what it means in a sentence. The mathematics is the derivative you already know; the new skill is reading it, and writing about it, precisely.</p>
+
+<h2>Units: output per input</h2>
+<p>The derivative $f'(a)$ is the limit of difference quotients $\frac{f(a + h) - f(a)}{h}$. The top is a change in the output; the bottom is a change in the input. So the units of a derivative are always</p>
+<p>$$\text{units of } f'(a) = \frac{\text{units of the output}}{\text{units of the input}}$$</p>
+<table class="compare">
+<tr><th>Function</th><th>Output</th><th>Input</th><th>Units of the derivative</th></tr>
+<tr><td>$D(t)$, depth of snow</td><td>centimeters</td><td>hours</td><td>centimeters per hour</td></tr>
+<tr><td>$C(x)$, cost of $x$ bicycles</td><td>dollars</td><td>bicycles</td><td>dollars per bicycle</td></tr>
+<tr><td>$T(t)$, temperature</td><td>°C</td><td>minutes</td><td>°C per minute</td></tr>
+<tr><td>$V(r)$, volume of a balloon</td><td>cm³</td><td>cm of radius</td><td>cm³ per cm</td></tr>
+</table>
+<p>The input is not always time. For the balloon, $V'(r)$ tells how fast the volume grows per extra centimeter of radius.</p>
+<figure id="fig-units" data-fig="cooling-tangent-units"><figcaption>The tangent line to a cooling curve drops 18.2 °C over 10 minutes, so its slope is about $-1.82$ °C per minute: that is $T'(10)$.</figcaption></figure>
+
+<h2>Interpreting a derivative in a sentence</h2>
+<p>A full interpretation of $f'(a)$ names four things:</p>
+<ol>
+<li>the <b>instant</b> (the value of the input, with its units),</li>
+<li>the <b>quantity</b>, by its name in the problem,</li>
+<li>whether it is <b>increasing or decreasing</b> (from the sign),</li>
+<li><b>how fast</b>, with units.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> $W(t)$ is the number of liters of water in a tank $t$ minutes after noon, and $W'(20) = -4$. Interpret.</p>
+<p>"At 12:20 (that is, $t = 20$ minutes), the amount of water in the tank is decreasing at 4 liters per minute."</p>
+<p>Notice the sign became the word "decreasing", and the number became its size, 4. Writing "changing at $-4$ liters per minute" is also correct.</p>
+</div>
+<p>Two sentences that lose the point: "At 20 minutes there are 4 liters" (that would be $W(20) = 4$, an amount, not a rate) and "In 20 minutes the tank lost 4 liters" (a change over an interval, not a rate at an instant).</p>
+
+<h2>Estimating a derivative from a table</h2>
+<p>Real data come as tables. To estimate $f'(a)$, use the two inputs closest to $a$ on either side, and divide by their actual difference:</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Snow depth $D(t)$, in centimeters, after $t$ hours:</p>
+<table class="compare">
+<tr><th>$t$ (hours)</th><td>$0$</td><td>$2$</td><td>$5$</td><td>$6$</td><td>$10$</td></tr>
+<tr><th>$D(t)$ (cm)</th><td>$12.0$</td><td>$15.2$</td><td>$20.0$</td><td>$21.1$</td><td>$24.0$</td></tr>
+</table>
+<p>Estimate $D'(8)$: the closest times around 8 are 6 and 10.</p>
+<p>$D'(8) \approx \frac{D(10) - D(6)}{10 - 6} = \frac{24.0 - 21.1}{4} = 0.725$ centimeters per hour.</p>
+<p>At $t = 8$ hours the snow is getting deeper at about 0.725 centimeters per hour.</p>
+</div>
+<p>The widths in a table are often unequal, on purpose. Dividing by 2 out of habit here would give 1.45, which is wrong. Also show the difference quotient itself; a bare number does not earn the setup point.</p>
+
+<h2>A rate times a short time is a change</h2>
+<p>Because a derivative is a rate, it lets you estimate small changes: change $\approx$ rate $\times$ time. If a calf gains weight at $W'(10) = 0.8$ kilograms per day, then over the next 2 days it gains about $0.8 \times 2 = 1.6$ kilograms. This works only over short stretches, where the rate stays nearly the same.</p>
+
+<h2>Comparing rates</h2>
+<p>A statement such as $H'(4) > H'(8)$, where $H$ is a tree's height, compares speeds of growth: the tree was growing faster at 4 years than at 8 years. It says nothing about which height was larger. Keep amounts ($H(4)$) and rates ($H'(4)$) separate in every sentence.</p>
+
+<h2>Slips that cost points</h2>
+<ul>
+<li>Units of the function instead of units of the rate ("centimeters" for $D'(t)$).</li>
+<li>Upside-down units ("hours per centimeter").</li>
+<li>Describing an amount or a total change when the question asks about a rate.</li>
+<li>Leaving out the instant ("is increasing at 1.1 cm per hour", but when?).</li>
+<li>Using the wrong width from a table with unequal spacing.</li>
+</ul>

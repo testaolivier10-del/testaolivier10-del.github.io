@@ -1,0 +1,12 @@
+{
+ "motion-speeding-up": {
+  "file": "figures/motion-speeding-up.svg",
+  "ext": "svg",
+  "w": 880,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Velocity v(t) = 3t² − 12t + 9 and acceleration a(t) = 6t − 12 for 0 ≤ t ≤ 4.3, shaded where they share a sign (speeding up: 1 < t < 2 and t > 3). Below, the particle's path on a number line: right from 0 to 4, left back to 0, right to 4 again."
+ }
+}

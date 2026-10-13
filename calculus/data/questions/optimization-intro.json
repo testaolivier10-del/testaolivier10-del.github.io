@@ -1,0 +1,501 @@
+{
+ "stimuli": {
+  "optimization-intro-s1": {
+   "kind": "diagram",
+   "title": "A two-part pen against a river",
+   "text": "A farmer has 600 feet of fence to build a rectangular pen against a straight river, split in two by a middle fence parallel to the ends. No fence is needed along the river. Each end and the divider has length $x$ feet; the side opposite the river has length $y$ feet.",
+   "figure": "pen-river-diagram"
+  },
+  "optimization-intro-s2": {
+   "kind": "graph",
+   "title": "Ticket price and revenue",
+   "text": "At a price of $p$ dollars per ticket, a theater sells $1200 - 40p$ tickets, for $0 \\le p \\le 30$. The graph shows the revenue $R(p)$, in dollars.",
+   "plot": {
+    "label": "Graph of revenue R(p) = p(1200 - 40p) for p from 0 to 30 dollars: zero at both ends with a highest point at p = 15, R = 9000",
+    "x": [
+     -1,
+     32
+    ],
+    "y": [
+     -500,
+     10000
+    ],
+    "xStep": 5,
+    "yStep": 2000,
+    "xLabel": "p",
+    "yLabel": "R",
+    "curves": [
+     {
+      "fn": "x(1200 - 40x)",
+      "domain": [
+       0,
+       30
+      ],
+      "cls": "s1",
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "label": "R"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-optimization-intro-1",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "optimization-intro-s1",
+   "q": "Which function gives the area of the pen in terms of $x$ alone?",
+   "options": [
+    "$A(x) = x(600 - 2x)$",
+    "$A(x) = x(600 - 3x)$",
+    "$A(x) = x\\left(300 - \\frac{3x}{2}\\right)$",
+    "$A(x) = 3x + y$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Fence: two ends and a divider ($3x$) plus one long side ($y$): $3x + y = 600$, so $y = 600 - 3x$. Area $A = xy = x(600 - 3x)$.",
+    "options": [
+     "That forgets the middle fence: there are three pieces of length $x$.",
+     "The fence is $3x + y = 600$, so $y = 600 - 3x$ and $A = xy$.",
+     "That fences the river side too ($3x + 2y = 600$).",
+     "$3x + y$ is the length of fence, and it still has two variables."
+    ]
+   }
+  },
+  {
+   "id": "calc-optimization-intro-2",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "single",
+   "practice": "3.G",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "optimization-intro-s1",
+   "q": "What is the domain of $A(x)$ that makes sense for the pen?",
+   "options": [
+    "$0 \\le x \\le 200$",
+    "$0 \\le x \\le 600$",
+    "$0 \\le x \\le 300$",
+    "$x \\ge 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both $x \\ge 0$ and $y = 600 - 3x \\ge 0$, so $0 \\le x \\le 200$. (The ends give zero area, so the maximum is inside.)",
+    "options": [
+     "$y = 600 - 3x \\ge 0$ needs $x \\le 200$; lengths cannot be negative.",
+     "At $x = 600$, $y = 600 - 1800 < 0$.",
+     "At $x = 300$, $y = -300$.",
+     "For $x > 200$, $y$ would be negative."
+    ]
+   }
+  },
+  {
+   "id": "calc-optimization-intro-3",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "optimization-intro-s1",
+   "q": "Find the value of $x$ that gives the largest area. Include units.",
+   "numeric": {
+    "answer": 100,
+    "unit": "feet",
+    "askUnit": true,
+    "units": [
+     "ft",
+     "foot"
+    ],
+    "mistakes": [
+     {
+      "value": 150,
+      "why": "150 maximizes $x(600 - 2x)$, which forgets the middle fence."
+     },
+     {
+      "value": 300,
+      "why": "300 is $y$ when $x = 100$. The question asks for $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$A'(x) = 600 - 6x = 0$ gives $x = 100$ feet. $A''(x) = -6 < 0$, and $A(0) = A(200) = 0$ are smaller, so $x = 100$ gives the largest area."
+   }
+  },
+  {
+   "id": "calc-optimization-intro-4",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "optimization-intro-s1",
+   "q": "Find the largest possible area of the pen. Include units.",
+   "numeric": {
+    "answer": 30000,
+    "unit": "square feet",
+    "askUnit": true,
+    "units": [
+     "ft^2",
+     "sq ft",
+     "square foot",
+     "feet^2"
+    ],
+    "mistakes": [
+     {
+      "value": 45000,
+      "why": "That is the maximum of $x(600 - 2x)$, which forgets the middle fence."
+     },
+     {
+      "value": 100,
+      "why": "100 feet is the best $x$. The area is $A(100) = 100 \\cdot 300$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$A(100) = 100(600 - 300) = 30{,}000$ square feet, with $y = 300$ feet."
+   }
+  },
+  {
+   "id": "calc-optimization-intro-5",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "optimization-intro-s1",
+   "q": "Which argument shows that $x = 100$ gives the absolute maximum area on $[0, 200]$?",
+   "options": [
+    "$A'(100) = 0$, so $A(100)$ is the largest area",
+    "$A$ is continuous on $[0, 200]$, and $A(0) = 0$, $A(100) = 30{,}000$, $A(200) = 0$: the largest candidate is $A(100)$",
+    "$A(100) > 0$, so it is the maximum",
+    "$x = 100$ is the midpoint of $[0, 200]$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The candidates are $x = 0$, $x = 200$ (endpoints) and $x = 100$ (the critical point). $A(100) = 30{,}000$ is the largest, so it is the absolute maximum.",
+    "options": [
+     "A critical point alone could be a minimum or neither.",
+     "A Candidates Test: endpoints and the one critical point.",
+     "Many areas are positive; being positive does not make one largest.",
+     "The midpoint has no special meaning; it happens to work here."
+    ]
+   }
+  },
+  {
+   "id": "calc-optimization-intro-6",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "optimization-intro-s2",
+   "q": "Which is the objective function, the quantity to maximize, written in terms of $p$?",
+   "options": [
+    "$R(p) = p(1200 - 40p)$",
+    "$N(p) = 1200 - 40p$",
+    "$R(p) = 1200p - 40$",
+    "$R(p) = 40p(1200 - p)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Revenue is price times quantity: $R(p) = p(1200 - 40p) = 1200p - 40p^2$ dollars.",
+    "options": [
+     "Revenue = price times tickets sold.",
+     "That counts tickets; revenue also multiplies by the price.",
+     "Distribute carefully: $p(1200 - 40p) = 1200p - 40p^2$.",
+     "The 40 multiplies $p$ inside the tickets, not the whole product."
+    ]
+   }
+  },
+  {
+   "id": "calc-optimization-intro-7",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "optimization-intro-s2",
+   "q": "Find the ticket price that maximizes revenue. Include units.",
+   "numeric": {
+    "answer": 15,
+    "unit": "dollars",
+    "askUnit": true,
+    "units": [
+     "dollar",
+     "dollars per ticket"
+    ],
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "At $p = 30$ no tickets sell: revenue is 0."
+     },
+     {
+      "value": 600,
+      "why": "600 is the number of tickets sold at the best price."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$R'(p) = 1200 - 80p = 0$ gives $p = 15$ dollars. $R(0) = R(30) = 0$, so the maximum is at $p = 15$."
+   }
+  },
+  {
+   "id": "calc-optimization-intro-8",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "optimization-intro-s2",
+   "q": "Find the maximum revenue. Include units.",
+   "numeric": {
+    "answer": 9000,
+    "unit": "dollars",
+    "askUnit": true,
+    "units": [
+     "dollar"
+    ],
+    "mistakes": [
+     {
+      "value": 600,
+      "why": "600 is the number of tickets at $p = 15$. Multiply by the price."
+     },
+     {
+      "value": 18000,
+      "why": "$1200 \\cdot 15 = 18{,}000$ ignores the $-40p^2$ term."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$R(15) = 15(1200 - 600) = 15 \\cdot 600 = 9000$ dollars."
+   }
+  },
+  {
+   "id": "calc-optimization-intro-9",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "optimization-intro-s2",
+   "q": "$R'(10) = 400$. What does this mean?",
+   "options": [
+    "At a price of 10 dollars, revenue is 400 dollars",
+    "At a price of 10 dollars, revenue increases by about 400 dollars per 1-dollar increase in price",
+    "At a price of 10 dollars, 400 tickets are sold",
+    "At a price of 10 dollars, revenue is at its maximum"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$R'(10) = 1200 - 800 = 400$ dollars per dollar: near $p = 10$, each 1-dollar price increase raises revenue by about 400 dollars. Since $R'(10) > 0$, the best price is higher.",
+    "options": [
+     "$R(10) = 8000$; $R'$ is a rate, not an amount.",
+     "$R'$ is a rate: dollars of revenue per dollar of price.",
+     "$1200 - 400 = 800$ tickets are sold at 10 dollars.",
+     "At the maximum, $R' = 0$; here it is positive, so raising the price still helps."
+    ]
+   }
+  },
+  {
+   "id": "calc-optimization-intro-10",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Two positive numbers add to 20. What is the largest possible value of their product?",
+   "numeric": {
+    "answer": 100,
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "10 is each number; the product is $10 \\cdot 10$."
+     },
+     {
+      "value": 99,
+      "why": "$9 \\cdot 11 = 99$ is close but smaller: solve $P'(x) = 20 - 2x = 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P(x) = x(20 - x)$, $P'(x) = 20 - 2x = 0$ at $x = 10$, and $P''(x) = -2 < 0$. The only critical point is a maximum, so the largest product is $10 \\cdot 10 = 100$."
+   }
+  },
+  {
+   "id": "calc-optimization-intro-11",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two positive numbers have product 36. What is the smallest possible value of their sum?",
+   "numeric": {
+    "answer": 12,
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "6 is each number; the sum is $6 + 6$."
+     },
+     {
+      "value": 37,
+      "why": "$1 + 36$ is a large sum. Minimize $S(x) = x + \\frac{36}{x}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$S(x) = x + \\frac{36}{x}$ for $x > 0$. $S'(x) = 1 - \\frac{36}{x^2} = 0$ at $x = 6$, and $S''(x) = \\frac{72}{x^3} > 0$. One critical point, a minimum: the smallest sum is $6 + 6 = 12$."
+   }
+  },
+  {
+   "id": "calc-optimization-intro-12",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the first step in an optimization problem?",
+   "options": [
+    "Set the derivative of each expression in the problem equal to 0 and solve for each variable",
+    "Find the endpoints of the interval",
+    "Name the quantity to maximize or minimize and write it as a function of one variable",
+    "Draw a sign chart for the second derivative"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Optimization starts with modeling: decide what is being optimized, express it as a function, and use the given facts to reduce it to one variable with a domain.",
+    "options": [
+     "Differentiate the objective function, once it is written in one variable.",
+     "You need the function before its domain.",
+     "You can differentiate only once you have that objective function.",
+     "Concavity is a later check, if at all."
+    ]
+   }
+  },
+  {
+   "id": "calc-optimization-intro-13",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student finds that a cost function $C(x)$ on $(0, \\infty)$ has one critical point, $x = 4$, and that $C''(x) > 0$ for all $x > 0$. What can she conclude?",
+   "options": [
+    "$C(4)$ is a relative minimum, but a lower cost may exist",
+    "$C(4)$ is the absolute minimum cost",
+    "$C(4)$ is the absolute maximum cost",
+    "Nothing, because the interval has no endpoints"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$C''(4) > 0$ makes $x = 4$ a relative minimum, and it is the only critical point on the interval, so $C(4)$ is the absolute minimum.",
+    "options": [
+     "With one critical point and concave up everywhere, nothing can be lower.",
+     "One critical point that is a relative minimum on an interval gives the absolute minimum there.",
+     "Concave up at a flat point is a minimum.",
+     "The one-critical-point argument works on open intervals."
+    ]
+   }
+  },
+  {
+   "id": "calc-optimization-intro-14",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find the shortest distance from the point $(3, 0)$ to the curve $y = \\sqrt{x}$. Give an exact answer.",
+   "numeric": {
+    "answer": "sqrt(11)/2",
+    "mistakes": [
+     {
+      "value": "11/4",
+      "why": "$\\frac{11}{4}$ is the smallest squared distance. Take its square root: $\\frac{\\sqrt{11}}{2}$."
+     },
+     {
+      "value": "5/2",
+      "why": "$x = \\frac{5}{2}$ is where the closest point is. Find the distance from $\\left(\\frac{5}{2}, \\sqrt{\\frac{5}{2}}\\right)$ to $(3, 0)$."
+     },
+     {
+      "value": 3,
+      "why": "3 is the distance from $(3, 0)$ to the point $(0, 0)$ of the curve, but a closer point exists. Minimize $D(x) = (x - 3)^2 + x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Squared distance from $(x, \\sqrt{x})$ to $(3, 0)$: $D(x) = (x - 3)^2 + x$. $D'(x) = 2(x - 3) + 1 = 0$ at $x = \\frac{5}{2}$, a minimum ($D'' = 2 > 0$). Distance: $\\sqrt{D\\left(\\frac{5}{2}\\right)} = \\sqrt{\\frac{1}{4} + \\frac{5}{2}} = \\frac{\\sqrt{11}}{2}$."
+   }
+  },
+  {
+   "id": "calc-optimization-intro-15",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A shipping cost per item is $C(x) = x + \\frac{16}{x}$ dollars for orders of $x$ hundred items, $1 \\le x \\le 8$. What is the largest cost per item?",
+   "options": [
+    "$8$ dollars, at $x = 4$",
+    "$10$ dollars, at $x = 8$",
+    "$10$ dollars, at $x = 2$",
+    "$17$ dollars, at $x = 1$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$C'(x) = 1 - \\frac{16}{x^2} = 0$ at $x = 4$. Candidates: $C(1) = 17$, $C(4) = 8$, $C(8) = 10$. The maximum cost is 17 dollars at $x = 1$; the critical point gives the minimum.",
+    "options": [
+     "$x = 4$ is the critical point, but it gives the smallest cost.",
+     "$C(8) = 10 < C(1) = 17$.",
+     "$C(2) = 2 + 8 = 10$, and $x = 2$ is not a candidate.",
+     "Candidates: $C(1) = 17$, $C(4) = 8$, $C(8) = 10$. The largest is at the left endpoint."
+    ]
+   }
+  },
+  {
+   "id": "calc-optimization-intro-16",
+   "unit": "unit-5",
+   "topic": "optimization-intro",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "An optimization problem asks: \"What dimensions give the largest area?\" Which answer is complete?",
+   "options": [
+    "\"$x = 100$\"",
+    "\"30,000\"",
+    "\"100 feet by 300 feet, for an area of 30,000 square feet\"",
+    "\"Build it with $x = 100$, because $A'(100) = 0$ gives the largest area\""
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Answer the question that was asked, in its context and units: the dimensions (both of them), plus the area if useful.",
+    "options": [
+     "Only one dimension, with no units or context.",
+     "An area without units, and the question asked for dimensions.",
+     "It answers the question asked, in context, with units.",
+     "A step of the work, not the answer."
+    ]
+   }
+  }
+ ]
+}

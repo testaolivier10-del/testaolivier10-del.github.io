@@ -1,0 +1,66 @@
+<p>So far every derivative has come from the limit definition: expand, cancel $h$, take the limit. That always works, but it is slow, and the algebra grows fast with bigger exponents. This page finds the pattern hiding in the answers you already have and turns it into the first shortcut, the power rule.</p>
+
+<h2>The pattern</h2>
+<p>Here is what the definition gave on earlier pages, with each function written as a power of $x$:</p>
+<table class="compare">
+<thead><tr><th>$f(x)$</th><th>as a power</th><th>$f'(x)$ from the definition</th><th>as a power</th></tr></thead>
+<tbody>
+<tr><td>$x$</td><td>$x^1$</td><td>$1$</td><td>$1x^0$</td></tr>
+<tr><td>$x^2$</td><td>$x^2$</td><td>$2x$</td><td>$2x^1$</td></tr>
+<tr><td>$x^3$</td><td>$x^3$</td><td>$3x^2$</td><td>$3x^2$</td></tr>
+<tr><td>$\frac{1}{x}$</td><td>$x^{-1}$</td><td>$-\frac{1}{x^2}$</td><td>$-1x^{-2}$</td></tr>
+<tr><td>$\sqrt{x}$</td><td>$x^{1/2}$</td><td>$\frac{1}{2\sqrt{x}}$</td><td>$\frac{1}{2}x^{-1/2}$</td></tr>
+</tbody>
+</table>
+<p>Look down the last column. Each time, the old exponent has come down in front as a coefficient, and the new exponent is one less than the old one.</p>
+<p>Where does the pattern come from? For $x^3$, expand $(x + h)^3 = x^3 + 3x^2h + 3xh^2 + h^3$. In the difference quotient the $x^3$ cancels, and dividing by $h$ leaves $3x^2 + 3xh + h^2$. As $h \to 0$, every term with an $h$ vanishes, leaving $3x^2$. For $x^n$ the same thing happens: only the term $nx^{n - 1}h$ survives the limit.</p>
+
+<h2>The power rule</h2>
+<p>For any real number $r$,</p>
+<p>$$\frac{d}{dx}\left( x^r \right) = r x^{r - 1}.$$</p>
+<p>In words: bring the exponent down, then lower the exponent by one. It works for whole numbers, negative numbers and fractions alike. Two quick cases: $\frac{d}{dx}(x) = 1$, because a line $y = x$ has slope 1, and $\frac{d}{dx}\left( x^2 \right) = 2x$.</p>
+<figure id="fig-power" data-fig="power-rule-slopes"><figcaption>Tangent lines on $y = x^3$, and the graph of $3x^2$ below them. Each dot on the lower graph is the slope of the tangent line above it.</figcaption></figure>
+<p>The figure shows what the rule means. The graph of $x^3$ is flat at the origin, where $3x^2 = 0$, and equally steep at $x$ and $-x$, because $3x^2$ does not care about the sign of $x$.</p>
+
+<h2>Rewrite before you differentiate</h2>
+<p>The power rule only reads exponents, so first write every root and every power in a denominator as a power of $x$:</p>
+<ul>
+<li>$\sqrt{x} = x^{1/2}$ and $\sqrt[3]{x^2} = x^{2/3}$: the root becomes the denominator of the exponent.</li>
+<li>$\frac{1}{x^4} = x^{-4}$: a power in a denominator moves up with its sign changed.</li>
+<li>$\frac{1}{\sqrt{x}} = x^{-1/2}$: both at once.</li>
+</ul>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Differentiate $y = \frac{1}{x^4}$.</p>
+<p>Rewrite: $y = x^{-4}$.</p>
+<p>Power rule: $y' = -4x^{-4 - 1} = -4x^{-5}$.</p>
+<p>Rewrite back if you like: $y' = -\frac{4}{x^5}$. Watch the subtraction: $-4 - 1 = -5$. With negative exponents, "one less" means more negative. And do not differentiate the denominator: $\frac{1}{4x^3}$ is not the answer.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Differentiate $y = \sqrt[3]{x^2}$ and find the slope at $x = 8$.</p>
+<p>Rewrite: $y = x^{2/3}$.</p>
+<p>Power rule: $y' = \frac{2}{3}x^{2/3 - 1} = \frac{2}{3}x^{-1/3}$. To subtract, write $1 = \frac{3}{3}$: $\frac{2}{3} - \frac{3}{3} = -\frac{1}{3}$.</p>
+<p>At $x = 8$: $\sqrt[3]{8} = 2$, so $y' = \frac{2}{3} \cdot \frac{1}{2} = \frac{1}{3}$.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 3.</b> Write the line tangent to $y = \frac{1}{x}$ at $x = 2$.</p>
+<p>Point: $y = \frac{1}{2}$, so $\left( 2, \frac{1}{2} \right)$.</p>
+<p>Slope: $y = x^{-1}$ gives $y' = -x^{-2} = -\frac{1}{x^2}$, which is $-\frac{1}{4}$ at $x = 2$.</p>
+<p>Line: $y = \frac{1}{2} - \frac{1}{4}(x - 2)$.</p>
+</div>
+
+<h2>Simplify first when you can</h2>
+<p>Exponent rules can turn a product or quotient of powers into one power. $\frac{x^3 \cdot x^4}{x^2} = x^5$, so its derivative is $5x^4$. Differentiating each piece and putting them back together ($\frac{3x^2 \cdot 4x^3}{2x} = 6x^4$) gives the wrong answer: derivatives do not pass through multiplication and division that way. Rules for real products and quotients come later in this unit.</p>
+
+<h2>What the power rule does not cover</h2>
+<p>The rule needs the variable in the base and a fixed number in the exponent. In $2^x$ the variable is the exponent, so $2^x$ is not a power of $x$, and $x \cdot 2^{x - 1}$ is not its derivative. Functions like $e^x$ get their own rule in topic 2.7.</p>
+
+<h2>Checklist</h2>
+<ul>
+<li>Rewrite roots and reciprocals as powers of $x$.</li>
+<li>Bring the exponent down; lower it by one, carefully with fractions and negatives.</li>
+<li>Evaluate at a point only after differentiating.</li>
+<li>Simplify to a single power first when exponent rules allow.</li>
+</ul>

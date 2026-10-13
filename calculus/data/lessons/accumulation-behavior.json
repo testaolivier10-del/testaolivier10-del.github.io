@@ -1,0 +1,93 @@
+{
+ "topic": "accumulation-behavior",
+ "hook": "On a free-response question you are handed a graph of $f$ made of lines and half-circles, and asked about a function $g$ you never see. Where does $g$ peak? Where does it bend? How big does it get? Everything is in the graph of $f$, once you know that $g$'s slope is $f$ and $g$'s value is the area so far.",
+ "prereq": [
+  {
+   "q": "If $g(x) = \\int_0^x f(t)\\,dt$ and $f$ is continuous, then $g'(x)$ is",
+   "options": [
+    "$f(x)$",
+    "$f'(x)$",
+    "$f(x) - f(0)$",
+    "$g(x)$"
+   ],
+   "correct": 0,
+   "why": "The Fundamental Theorem of Calculus.",
+   "review": "ftc-accumulation"
+  },
+  {
+   "q": "$h'$ changes from positive to negative at $x = 2$. What happens to $h$ at $x = 2$?",
+   "options": [
+    "a relative maximum",
+    "a relative minimum",
+    "a point of inflection",
+    "nothing can be said"
+   ],
+   "correct": 0,
+   "why": "The First Derivative Test: h rises, then falls.",
+   "review": "first-derivative-test"
+  },
+  {
+   "q": "On a closed interval, where can a continuous function have its absolute maximum?",
+   "options": [
+    "at a critical point or an endpoint",
+    "only where the derivative is 0",
+    "only at an endpoint",
+    "only at a point of inflection"
+   ],
+   "correct": 0,
+   "why": "The candidates test compares the endpoints and the critical points.",
+   "review": "candidates-test"
+  }
+ ],
+ "figure": {
+  "figure": "g-from-f",
+  "caption": "Area above the axis adds to g; area below subtracts. g peaks where f changes from + to -, and bends where f turns around."
+ },
+ "chain": [
+  {
+   "cause": "$g(x) = \\int_a^x f(t)\\,dt$",
+   "effect": "$g'(x) = f(x)$ and $g''(x) = f'(x)$"
+  },
+  {
+   "cause": "$f > 0$ (graph of $f$ above the axis)",
+   "effect": "$g$ is increasing; where $f$ changes sign, $g$ has a relative extremum"
+  },
+  {
+   "cause": "$f$ is increasing (graph of $f$ rising)",
+   "effect": "$g$ is concave up; where $f$ turns around, $g$ has a point of inflection"
+  },
+  {
+   "cause": "Regions below the axis count as negative",
+   "effect": "values of $g$ are signed areas: add what is above, subtract what is below"
+  }
+ ],
+ "ideas": [
+  "<b>Signed area</b>: $\\int_a^b f(x)\\,dx$ = (area above the axis) minus (area below).",
+  "$g' = f$: $g$ increases where $f > 0$, decreases where $f < 0$, and has a relative extremum where $f$ changes sign.",
+  "$g'' = f'$: $g$ is concave up where $f$ increases and concave down where $f$ decreases; inflection points sit where $f$ changes direction.",
+  "For an absolute extremum of g, compare g at the endpoints and at the sign changes of f (the candidates test)."
+ ],
+ "misconception": {
+  "wrong": "$g$ has its inflection points where $f(x) = 0$.",
+  "right": "Where $f = 0$ and changes sign, $g$ has a relative extremum. Inflection points of $g$ are where $f' = g''$ changes sign: where the graph of $f$ turns from rising to falling or back."
+ },
+ "check": [
+  "calc-accumulation-behavior-1",
+  "calc-accumulation-behavior-2",
+  "calc-accumulation-behavior-3",
+  "calc-accumulation-behavior-4",
+  "calc-accumulation-behavior-12",
+  "calc-accumulation-behavior-14"
+ ],
+ "summary": "A definite integral is a signed area: regions below the axis subtract. For $g(x) = \\int_a^x f(t)\\,dt$, read $g$'s values from signed areas, its direction from the sign of $f$, and its concavity from whether $f$ rises or falls. Justify with $g' = f$ named, and use the candidates test for absolute extrema.",
+ "connections": [
+  {
+   "href": "../notes/ftc-accumulation.html",
+   "label": "Back: the Fundamental Theorem and accumulation functions (6.4)"
+  },
+  {
+   "href": "../notes/integral-properties.html",
+   "label": "Next: properties of definite integrals (6.6)"
+  }
+ ]
+}

@@ -1,0 +1,69 @@
+<p>Try direct substitution on $\lim_{x \to 3} \frac{x^2 - 9}{x - 3}$ and you get $\frac{0}{0}$. This is not a broken problem. It is the most important kind of limit in the course, because every rate at an instant in Unit 2 begins exactly this way: a change in output over a change in input, both shrinking to 0. This page shows what $\frac{0}{0}$ means and the algebra that gets past it.</p>
+
+<h2>What $\frac{0}{0}$ means</h2>
+<p>When substitution makes both the numerator and the denominator 0, the result $\frac{0}{0}$ is called an <b>indeterminate form</b>. "Indeterminate" means the limit is not determined yet. Depending on the function, the true limit could be 6, or $-\frac{1}{16}$, or it might not exist. These three limits all start as $\frac{0}{0}$:</p>
+<table class="compare">
+<thead><tr><th>Limit</th><th>Substitution gives</th><th>Actual limit</th></tr></thead>
+<tbody>
+<tr><td>$\lim_{x \to 3} \frac{x^2 - 9}{x - 3}$</td><td>$\frac{0}{0}$</td><td>6</td></tr>
+<tr><td>$\lim_{x \to 0} \frac{x^2}{x}$</td><td>$\frac{0}{0}$</td><td>0</td></tr>
+<tr><td>$\lim_{x \to 0} \frac{x}{x^2}$</td><td>$\frac{0}{0}$</td><td>does not exist</td></tr>
+</tbody>
+</table>
+<p>So $\frac{0}{0}$ is never an answer: not 0, not 1, not "does not exist." It is an instruction: rewrite the expression and try again.</p>
+<p>Compare a different result: substitution gives a nonzero number over 0, such as $\frac{-4}{0}$. That one is not indeterminate. The outputs are unbounded, and there is no finite limit.</p>
+
+<h2>Why canceling is allowed</h2>
+<figure id="fig-hole" data-fig="factor-hole"><figcaption>$\frac{x^2 - 9}{x - 3}$ and $x + 3$ have the same graph, except that the first has a hole at $x = 3$.</figcaption></figure>
+<p>For every $x \ne 3$, $\frac{x^2 - 9}{x - 3} = \frac{(x - 3)(x + 3)}{x - 3} = x + 3$, because the factor $x - 3$ is not zero and can be divided out. The two functions differ only at $x = 3$, where the first is undefined. A limit never looks at $x = 3$ itself, so the two functions have the same limit there:
+$$\lim_{x \to 3} \frac{x^2 - 9}{x - 3} = \lim_{x \to 3} (x + 3) = 6$$
+That is the whole strategy: rewrite into a function that agrees everywhere except at $a$, then substitute.</p>
+
+<h2>Strategy 1: factor and cancel</h2>
+<p>If a polynomial is 0 at $x = a$, it has a factor $x - a$. So when both top and bottom are 0 at $a$, they share that factor.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\lim_{x \to 2} \frac{x^2 + x - 6}{x^2 - 4}$.</p>
+<p>Substitution: $\frac{4 + 2 - 6}{4 - 4} = \frac{0}{0}$. Indeterminate, so factor.</p>
+<p>$$\lim_{x \to 2} \frac{x^2 + x - 6}{x^2 - 4} = \lim_{x \to 2} \frac{(x + 3)(x - 2)}{(x + 2)(x - 2)} = \lim_{x \to 2} \frac{x + 3}{x + 2} = \frac{5}{4}$$</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\lim_{x \to 2} \frac{x^3 - 8}{x - 2}$.</p>
+<p>Difference of cubes: $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$.</p>
+<p>$$\lim_{x \to 2} \frac{(x - 2)(x^2 + 2x + 4)}{x - 2} = \lim_{x \to 2} (x^2 + 2x + 4) = 4 + 4 + 4 = 12$$</p>
+</div>
+
+<h2>Strategy 2: rationalize</h2>
+<p>When a square root is involved, multiply the top and bottom by the conjugate. The square root disappears and a common factor appears.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $\lim_{x \to 0} \frac{\sqrt{x + 9} - 3}{x}$.</p>
+<p>Substitution gives $\frac{0}{0}$. Multiply by $\frac{\sqrt{x + 9} + 3}{\sqrt{x + 9} + 3}$:</p>
+<p>$$\lim_{x \to 0} \frac{(x + 9) - 9}{x(\sqrt{x + 9} + 3)} = \lim_{x \to 0} \frac{x}{x(\sqrt{x + 9} + 3)} = \lim_{x \to 0} \frac{1}{\sqrt{x + 9} + 3} = \frac{1}{6}$$</p>
+<p>Leave the denominator in factored form; multiplying it out hides the $x$ you need to cancel.</p>
+</div>
+
+<h2>Strategy 3: combine fractions, or expand</h2>
+<div class="worked">
+<p><b>Worked example 4.</b> Find $\lim_{h \to 0} \frac{\frac{1}{2 + h} - \frac{1}{2}}{h}$.</p>
+<p>Combine the top over $2(2 + h)$: $\frac{2 - (2 + h)}{2(2 + h)} = \frac{-h}{2(2 + h)}$.</p>
+<p>$$\lim_{h \to 0} \frac{-h}{2(2 + h)} \cdot \frac{1}{h} = \lim_{h \to 0} \frac{-1}{2(2 + h)} = -\frac{1}{4}$$</p>
+</div>
+<div class="worked">
+<p><b>Worked example 5.</b> Find $\lim_{h \to 0} \frac{(3 + h)^2 - 9}{h}$.</p>
+<p>Expand: $(3 + h)^2 - 9 = 6h + h^2 = h(6 + h)$.</p>
+<p>$$\lim_{h \to 0} \frac{h(6 + h)}{h} = \lim_{h \to 0} (6 + h) = 6$$</p>
+<p>This is the same calculation as the falling stone in Topic 1.1, now in limit notation.</p>
+</div>
+
+<h2>When the simplified form still has a zero denominator</h2>
+<p>After canceling, substitute again. If the denominator is still 0 but the numerator is not, there is no finite limit. For example, $\frac{x^2 - 25}{x^2 - 10x + 25} = \frac{(x - 5)(x + 5)}{(x - 5)^2} = \frac{x + 5}{x - 5}$, and at $x = 5$ that is $\frac{10}{0}$: unbounded, so the limit does not exist.</p>
+<p>Absolute values call for one-sided limits. $\frac{|x - 3|}{x - 3}$ equals 1 for $x > 3$ and $-1$ for $x < 3$, so $\lim_{x \to 3} \frac{|x - 3|}{x - 3}$ does not exist.</p>
+
+<h2>Writing the work</h2>
+<table class="compare">
+<thead><tr><th>Loses credit</th><th>Earns credit</th></tr></thead>
+<tbody>
+<tr><td>$\frac{x^2 - 9}{x - 3} = \frac{0}{0} = 6$</td><td>$\lim_{x \to 3} \frac{x^2 - 9}{x - 3} = \lim_{x \to 3} (x + 3) = 6$</td></tr>
+<tr><td>$\lim_{x \to 3} \frac{x^2 - 9}{x - 3} = x + 3 = 6$</td><td>keep "$\lim_{x \to 3}$" until the line where you substitute</td></tr>
+</tbody>
+</table>
+<p>The equals sign may only join things that are equal. A limit is a number, $x + 3$ is an expression, and $\frac{0}{0}$ is not a number at all, so none of them can be chained with the others.</p>

@@ -1,0 +1,59 @@
+<p>Most functions you meet in calculus are built in layers: $\sin(x^2)$, $e^{-3x}$, $(4x + 1)^{10}$, $\sqrt{1 + \cos x}$. None of them is a plain power, sine or exponential, so the rules you know so far cannot finish the job alone. The chain rule handles every one of them, and the idea behind it fits in one sentence: when one function feeds another, their rates of change multiply.</p>
+
+<h2>Layers: the inside and the outside function</h2>
+<p>A <b>composite function</b> $h(x) = f(g(x))$ works like an assembly line. First the <b>inside function</b> $g$ acts on $x$. Then the <b>outside function</b> $f$ acts on whatever $g$ produced. To see the layers, ask how you would compute the value with a calculator. For $\sin(x^2)$ you square first, then take the sine: the inside is $x^2$ and the outside is $\sin u$.</p>
+<table class="compare">
+<tr><th>Function</th><th>Inside $u = g(x)$</th><th>Outside $f(u)$</th></tr>
+<tr><td>$\sin(x^2)$</td><td>$x^2$</td><td>$\sin u$</td></tr>
+<tr><td>$e^{-3x}$</td><td>$-3x$</td><td>$e^u$</td></tr>
+<tr><td>$(4x + 1)^{10}$</td><td>$4x + 1$</td><td>$u^{10}$</td></tr>
+<tr><td>$\ln(\cos x)$</td><td>$\cos x$</td><td>$\ln u$</td></tr>
+<tr><td>$\sqrt{1 + x^3}$</td><td>$1 + x^3$</td><td>$\sqrt{u}$</td></tr>
+</table>
+
+<h2>Why the rates multiply</h2>
+<p>Think of two gears. If the small gear turns 3 times for every turn of the pedal, and the wheel turns 2 times for every turn of the small gear, the wheel turns $3 \cdot 2 = 6$ times per pedal turn. Rates of change pass through a chain in the same way. Suppose $x$ changes by a tiny amount. The inside function changes about $g'(x)$ times as much. The outside function then changes about $f'(u)$ times as much as its own input $u = g(x)$ did. So $h$ changes about $f'(g(x)) \cdot g'(x)$ times as much as $x$:</p>
+<p>$$\frac{d}{dx} f(g(x)) = f'(g(x)) \cdot g'(x)$$</p>
+<p>In Leibniz notation, with $y = f(u)$ and $u = g(x)$, the same rule reads $\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}$. It looks like fractions cancelling. They are not really fractions, but the picture is a good memory aid.</p>
+<figure id="fig-chain" data-fig="chain-sin-squeeze"><figcaption>The inside function $2x$ squeezes $\sin x$ sideways by a factor of 2, so the slope at the origin doubles from 1 to 2.</figcaption></figure>
+<p>The figure shows the rule at work. The graph of $\sin(2x)$ is the graph of $\sin x$ squeezed sideways by a factor of 2, so every slope is twice as steep. The chain rule says the same thing: $\frac{d}{dx}\sin(2x) = \cos(2x) \cdot 2$.</p>
+
+<h2>The two-step routine</h2>
+<ol>
+<li><b>Differentiate the outside function and leave the inside alone.</b> Write $f'$ with the original inside function still in it: $f'(g(x))$.</li>
+<li><b>Multiply by the derivative of the inside function</b>, $g'(x)$.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Differentiate $y = (4x + 1)^{10}$.</p>
+<p>Outside: $u^{10}$, whose derivative is $10u^9$. Keep the inside: $10(4x + 1)^9$.</p>
+<p>Inside: $4x + 1$, whose derivative is $4$.</p>
+<p>So $\frac{dy}{dx} = 10(4x + 1)^9 \cdot 4 = 40(4x + 1)^9$. Expanding $(4x + 1)^{10}$ first would take pages; the chain rule takes one line.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Differentiate $y = e^{-3x}$ and $y = \ln(\cos x)$.</p>
+<p>For $e^{-3x}$: the outside $e^u$ is its own derivative, so we keep $e^{-3x}$, then multiply by the inside derivative $-3$: $\frac{dy}{dx} = -3e^{-3x}$. The power rule does not apply here, because the variable is in the exponent.</p>
+<p>For $\ln(\cos x)$: the outside derivative is $\frac{1}{u}$, giving $\frac{1}{\cos x}$; the inside derivative is $-\sin x$. So $\frac{dy}{dx} = \frac{-\sin x}{\cos x} = -\tan x$.</p>
+</div>
+
+<h2>More than two layers</h2>
+<p>Some functions have three layers, such as $\sin^3(2x) = \left(\sin(2x)\right)^3$. Peel them from the outside in, multiplying one derivative for each layer: the cube, then the sine, then $2x$.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Differentiate $y = \sin^3(2x)$.</p>
+<p>Layer 1, the cube: $3\sin^2(2x)$. Layer 2, the sine: $\cos(2x)$. Layer 3, the inside $2x$: $2$.</p>
+<p>So $\frac{dy}{dx} = 3\sin^2(2x) \cdot \cos(2x) \cdot 2 = 6\sin^2(2x)\cos(2x)$.</p>
+</div>
+
+<h2>The chain rule from a table</h2>
+<p>The exam often gives values of $f$, $g$ and their derivatives in a table instead of formulas. The rule is the same, but you must read each value at the right input. Suppose $g(1) = 2$, $g'(1) = 5$ and $f'(2) = 6$. For $h(x) = f(g(x))$:</p>
+<p>$$h'(1) = f'(g(1)) \cdot g'(1) = f'(2) \cdot 5 = 30$$</p>
+<p>The outside derivative is read at the inside <i>value</i> $g(1) = 2$, not at $x = 1$. Write the middle step, $f'(g(1))$, every time; it keeps you from grabbing $f'(1)$ by mistake.</p>
+
+<h2>The slips that cost points</h2>
+<table class="compare">
+<tr><th>Slip</th><th>Wrong</th><th>Right</th></tr>
+<tr><td>Dropping the inside derivative</td><td>$\frac{d}{dx}\sin(x^2) = \cos(x^2)$</td><td>$\cos(x^2) \cdot 2x$</td></tr>
+<tr><td>Changing the inside function</td><td>$\frac{d}{dx}\sin(x^2) = \cos(2x)$</td><td>$\cos(x^2) \cdot 2x$</td></tr>
+<tr><td>Power rule on $e^u$</td><td>$\frac{d}{dx}e^{x^2} = x^2 e^{x^2 - 1}$</td><td>$e^{x^2} \cdot 2x$</td></tr>
+<tr><td>Wrong input in a table</td><td>$f'(1) \cdot g'(1)$</td><td>$f'(g(1)) \cdot g'(1)$</td></tr>
+</table>
+<p>A quick check catches most of them: count the layers, and make sure your answer has one factor for each.</p>

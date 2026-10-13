@@ -1,0 +1,40 @@
+<p>When substitution gives a nonzero number over 0, you already know the function is unbounded near that point. This topic gives that behavior its notation, shows how to find which way the function heads on each side, and connects it to vertical asymptotes.</p>
+
+<h2>What an infinite limit says</h2>
+<p>Look at $f(x) = \frac{1}{(x - 2)^2}$ near 2. At $x = 2.1$ it is 100; at $x = 2.01$ it is 10,000; at $x = 2.001$ it is 1,000,000. The same happens from the left. The values do not settle on any number. They grow beyond every bound. We write</p>
+<p>$$\lim_{x \to 2} \frac{1}{(x - 2)^2} = \infty$$</p>
+<p>Read it as "$f(x)$ increases without bound as $x$ approaches 2." This is an <b>infinite limit</b>. Be careful about what it means: $\infty$ is not a number, so the limit does not exist. The notation tells you how it fails to exist. In the same way, $\lim_{x \to c} f(x) = -\infty$ means the values decrease without bound.</p>
+<figure id="fig-inf" data-fig="infinite-limits-two-cases"><figcaption>Left: both sides go up. Right: the sides go opposite ways.</figcaption></figure>
+
+<h2>Finding the sign on each side</h2>
+<p>When substitution gives a nonzero number over 0, the size of the quotient blows up. Its sign on each side decides between $\infty$ and $-\infty$. Work it out from the signs of the pieces.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\lim_{x \to 3^-} \frac{x + 1}{x - 3}$ and $\lim_{x \to 3^+} \frac{x + 1}{x - 3}$.</p>
+<p>Near 3 the numerator is close to 4, which is positive.</p>
+<p>Left of 3 (say $x = 2.99$): $x - 3$ is a tiny negative number. Positive over tiny negative is hugely negative, so $\lim_{x \to 3^-} \frac{x + 1}{x - 3} = -\infty$.</p>
+<p>Right of 3 (say $x = 3.01$): $x - 3$ is a tiny positive number, so $\lim_{x \to 3^+} \frac{x + 1}{x - 3} = \infty$.</p>
+<p>The sides disagree, so the two-sided limit does not exist and is not $\infty$ or $-\infty$ either. Report the one-sided limits.</p>
+</div>
+<p>A squared factor such as $(x - 4)^2$ is positive on both sides, so it never changes sign. That is why $\frac{1}{(x - 2)^2}$ goes up on both sides.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\lim_{x \to 4} \frac{x - 6}{(x - 4)^2}$.</p>
+<p>The numerator approaches $-2$. The denominator is a tiny positive number on both sides. Negative over tiny positive is hugely negative on both sides, so the limit is $-\infty$.</p>
+</div>
+
+<h2>Vertical asymptotes</h2>
+<p>The line $x = c$ is a <b>vertical asymptote</b> of the graph of $f$ when at least one of $\lim_{x \to c^-} f(x)$ and $\lim_{x \to c^+} f(x)$ is $\infty$ or $-\infty$. One side is enough. The graph of $\ln x$, for instance, has the asymptote $x = 0$ with only a right side: $\lim_{x \to 0^+} \ln x = -\infty$.</p>
+<p>For a rational function, factor and cancel first. A factor that cancels gives a hole; a factor that stays in the denominator gives an asymptote.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the vertical asymptotes of $f(x) = \frac{x^2 - 9}{x^2 - 2x - 3}$.</p>
+<p>Factor: $f(x) = \frac{(x - 3)(x + 3)}{(x - 3)(x + 1)}$.</p>
+<p>At $x = 3$ the factor cancels: $f(x) = \frac{x + 3}{x + 1} \to \frac{6}{4} = \frac{3}{2}$. A hole, not an asymptote.</p>
+<p>At $x = -1$ the numerator approaches 2 and the denominator approaches 0, so $f$ is unbounded. The only vertical asymptote is $x = -1$.</p>
+</div>
+<p>Other functions have asymptotes too. $\tan x = \frac{\sin x}{\cos x}$ has one wherever $\cos x = 0$, such as $x = \frac{\pi}{2}$, with $\lim_{x \to \frac{\pi}{2}^-} \tan x = \infty$ and $\lim_{x \to \frac{\pi}{2}^+} \tan x = -\infty$.</p>
+
+<h2>Writing it correctly</h2>
+<ul>
+<li>Write $\lim_{x \to c^+} f(x) = \infty$, never $f(c) = \infty$. A function's value is a number or undefined.</li>
+<li>Write $\lim_{x \to c} f(x) = \infty$ only when both sides go to $\infty$. If the sides differ, give them separately.</li>
+<li>To justify an asymptote, show an infinite one-sided limit. "The denominator is 0" is not enough, because a hole also has a zero denominator.</li>
+</ul>

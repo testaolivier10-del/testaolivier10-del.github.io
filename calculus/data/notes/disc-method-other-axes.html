@@ -1,0 +1,43 @@
+<h2>Same discs, a different center</h2>
+<p>In the last topic every solid spun around the $x$-axis or the $y$-axis. Nothing in the disc method needs the axis of rotation to be one of the coordinate axes. A region can be revolved about the line $y = 1$, or $y = -2$, or $x = 3$. The slices perpendicular to that line are still discs, as long as the region touches the line all the way across. What changes is the radius.</p>
+<p>The radius of a disc is the distance from its center, on the axis, to its edge, on the curve. When the axis was the $x$-axis, that distance happened to be $f(x)$, the curve's height. When the axis is the line $y = k$, the distance is the gap between the heights $k$ and $f(x)$:</p>
+$$r = k - f(x) \text{ if the line is above the curve}, \qquad r = f(x) - k \text{ if it is below.}$$
+<p>Always subtract the smaller height from the larger, so the radius is positive. (Since the radius is squared, a sign slip does not change the volume, but it is a sign you have lost track of the picture.)</p>
+<figure id="fig-discline" data-fig="disc-solid-line"><figcaption>Revolving about $y = 1$. Each rectangle runs from the parabola up to the axis, so the radius is $1 - x^2$, not $x^2$.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example.</b> The region between $y = x^2$ and $y = 1$ is revolved about the line $y = 1$. Find the volume.</p>
+<p><b>Limits.</b> $x^2 = 1$ at $x = \pm 1$.</p>
+<p><b>Radius.</b> The axis $y = 1$ is above the parabola, so $r = 1 - x^2$.</p>
+<p><b>Volume.</b></p>
+$$V = \pi\int_{-1}^{1} \left(1 - x^2\right)^2\,dx = \pi\int_{-1}^{1} \left(1 - 2x^2 + x^4\right)\,dx = \pi\left(2 - \frac{4}{3} + \frac{2}{5}\right) = \frac{16\pi}{15}.$$
+</div>
+
+<h2>Two ways to get it wrong</h2>
+<p><b>Measuring from the wrong place.</b> Using $r = x^2$ in the example measures from the $x$-axis. That would spin the region under the parabola about the $x$-axis, a different solid ($\frac{2\pi}{5}$).</p>
+<p><b>Squaring each term.</b> $\pi\int (1^2 - (x^2)^2)\,dx$ is not the same as $\pi\int (1 - x^2)^2\,dx$. The first gives $\frac{8\pi}{5}$. It looks tempting because it resembles a formula you will meet next topic, but for a solid disc the radius is one quantity: square the whole difference.</p>
+<p><b>Negative $k$.</b> About $y = -2$, the radius to the curve $y = 2 - x^2$ is $(2 - x^2) - (-2) = 4 - x^2$. Write the subtraction with parentheses before simplifying.</p>
+
+<h2>Vertical lines</h2>
+<p>When the axis is a vertical line $x = h$, the slices perpendicular to it are horizontal, stacked in $y$. Write the curve as $x$ in terms of $y$; the radius is the horizontal gap between $h$ and $x(y)$.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> The region bounded by $y = x$, $y = 0$ and $x = 3$ is revolved about the line $x = 3$. Find the volume.</p>
+<p><b>Slices.</b> Horizontal, from $y = 0$ to $y = 3$. At height $y$ the region runs from the line $x = y$ to the axis $x = 3$.</p>
+<p><b>Radius.</b> $r = 3 - y$.</p>
+<p><b>Volume.</b> $V = \pi\int_0^3 (3 - y)^2\,dy = \pi\left[-\frac{(3 - y)^3}{3}\right]_0^3 = \pi \cdot \frac{27}{3} = 9\pi$.</p>
+<p>The solid is a cone with radius 3 and height 3, and $\frac{1}{3}\pi(3)^2(3) = 9\pi$ agrees.</p>
+</div>
+
+<h2>The radius at a glance</h2>
+<table>
+<thead><tr><th>Axis</th><th>Where it is</th><th>Radius</th><th>Integrate in</th></tr></thead>
+<tbody>
+<tr><td>$y = k$</td><td>above the curve $y = f(x)$</td><td>$k - f(x)$</td><td>$dx$</td></tr>
+<tr><td>$y = k$</td><td>below the curve</td><td>$f(x) - k$</td><td>$dx$</td></tr>
+<tr><td>$x = h$</td><td>right of the curve $x = g(y)$</td><td>$h - g(y)$</td><td>$dy$</td></tr>
+<tr><td>$x = h$</td><td>left of the curve</td><td>$g(y) - h$</td><td>$dy$</td></tr>
+</tbody>
+</table>
+<p>A quick check: the radius is 0 where the curve meets the axis, and largest where the curve is farthest from it. If your formula says otherwise, you are measuring from the wrong line.</p>
+<p>With a calculator, find any crossing with the axis line numerically, store it, write the setup with the radius in parentheses, for example $\pi\int_0^c \left(4 - e^{x/2}\right)^2\,dx$, and report three decimal places.</p>

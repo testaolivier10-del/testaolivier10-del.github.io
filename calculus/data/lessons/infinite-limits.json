@@ -1,0 +1,73 @@
+{
+ "topic": "infinite-limits",
+ "hook": "Squeeze the denominator of a fraction toward zero while the top stays put, and the fraction explodes. Lenses do this near their focal point: move an object toward it and the image size grows beyond every bound. Calculus has a compact way to say \"grows beyond every bound\" and to record which way it goes on each side.",
+ "prereq": [
+  {
+   "q": "Substituting $x = 4$ into $\\frac{x + 1}{x - 4}$ gives $\\frac{5}{0}$. Near 4, the expression",
+   "options": [
+    "is unbounded",
+    "is close to 5",
+    "is close to 0",
+    "is close to 1"
+   ],
+   "correct": 0,
+   "why": "A nonzero number over a shrinking denominator grows without bound.",
+   "review": "choosing-limit-methods"
+  },
+  {
+   "q": "An infinite discontinuity at $x = c$ means the graph has",
+   "options": [
+    "a vertical asymptote $x = c$",
+    "a hole at $x = c$",
+    "a jump at $x = c$",
+    "a horizontal asymptote"
+   ],
+   "correct": 0,
+   "why": "An infinite discontinuity is unbounded behavior near c.",
+   "review": "discontinuity-types"
+  }
+ ],
+ "figure": {
+  "figure": "infinite-limits-two-cases",
+  "caption": "At a vertical asymptote the two sides can go the same way or opposite ways."
+ },
+ "chain": [
+  {
+   "cause": "As $x \\to c$, the denominator shrinks to 0 while the numerator approaches a nonzero number",
+   "effect": "the quotient grows without bound in size"
+  },
+  {
+   "cause": "The sign of the quotient on each side of $c$ is found from the signs of its factors",
+   "effect": "each one-sided limit is $\\infty$ or $-\\infty$"
+  },
+  {
+   "cause": "At least one one-sided limit at $c$ is infinite",
+   "effect": "the line $x = c$ is a vertical asymptote"
+  },
+  {
+   "cause": "$\\infty$ is not a number",
+   "effect": "$\\lim_{x \\to c} f(x) = \\infty$ describes how the limit fails to exist; never write $f(c) = \\infty$"
+  }
+ ],
+ "ideas": [
+  "$\\lim_{x \\to c} f(x) = \\infty$ means $f(x)$ grows beyond every bound as $x$ nears $c$. It is an <b>infinite limit</b>: the limit does not exist, and this says how.",
+  "Find each side by signs: a nonzero numerator over a denominator approaching 0 from the positive or negative side.",
+  "If the two sides agree, write $\\lim_{x \\to c} f(x) = \\infty$ (or $-\\infty$). If they disagree, give each one-sided limit.",
+  "$x = c$ is a <b>vertical asymptote</b> when at least one one-sided limit at $c$ is $\\infty$ or $-\\infty$.",
+  "For a rational function, cancel common factors first: a cancelled factor gives a hole, a factor left in the denominator gives an asymptote."
+ ],
+ "misconception": {
+  "wrong": "$\\lim_{x \\to 2} \\frac{1}{(x - 2)^2} = \\infty$, so the limit exists and its value is $\\infty$.",
+  "right": "$\\infty$ is not a number. An infinite limit is a limit that does not exist, described precisely: the values grow without bound. On a justification, say \"unbounded\" or \"grows without bound\", and never write $f(2) = \\infty$."
+ },
+ "check": [
+  "calc-infinite-limits-1",
+  "calc-infinite-limits-2",
+  "calc-infinite-limits-4",
+  "calc-infinite-limits-9",
+  "calc-infinite-limits-13",
+  "calc-infinite-limits-15",
+  "calc-infinite-limits-16"
+ ],
+ "summary": "An infinite limit, $\\lim_{x \\to c} f(x) = \\pm\\infty$, says $f$ grows without bound near $c$; the limit does not exist as a number. Find each side's sign from the signs of the numerator and the shrinking denominator. Any infinite one-sided limit at $c$ makes $x = c$ a vertical asymptote; a cancelled factor makes a hole instead."
+}

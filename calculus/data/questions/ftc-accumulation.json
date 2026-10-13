@@ -1,0 +1,602 @@
+{
+ "stimuli": {
+  "ftc-accumulation-s1": {
+   "kind": "graph",
+   "title": "The graph of $f$ and $g(x) = \\int_0^x f(t)\\,dt$",
+   "text": "The graph of the continuous function $f$ on $[0, 6]$ is made of three line segments. Let $g(x) = \\int_0^x f(t)\\,dt$ for $0 \\le x \\le 6$.",
+   "plot": {
+    "label": "Graph of f on [0, 6]: segments from (0, 1) to (2, 3), from (2, 3) to (4, 3), and from (4, 3) to (6, 0)",
+    "width": 380,
+    "height": 240,
+    "x": [
+     -0.4,
+     6.5
+    ],
+    "y": [
+     -0.5,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "t",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "1 + x",
+      "domain": [
+       0,
+       2
+      ],
+      "cls": "s1",
+      "label": "f"
+     },
+     {
+      "fn": "3",
+      "domain": [
+       2,
+       4
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "3 - 1.5(x - 4)",
+      "domain": [
+       4,
+       6
+      ],
+      "cls": "s1"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       1
+      ]
+     },
+     {
+      "at": [
+       2,
+       3
+      ]
+     },
+     {
+      "at": [
+       4,
+       3
+      ]
+     },
+     {
+      "at": [
+       6,
+       0
+      ]
+     }
+    ]
+   }
+  },
+  "ftc-accumulation-s2": {
+   "kind": "table",
+   "title": "An accumulation function with a variable upper limit",
+   "text": "Let $h(x) = \\int_0^{x^3} e^{-t^2}\\,dt$ for all real $x$. The table lists the pieces you need.",
+   "table": {
+    "caption": "The pieces of h",
+    "cols": [
+     "Piece",
+     "Here"
+    ],
+    "rows": [
+     [
+      "integrand",
+      "$f(t) = e^{-t^2}$"
+     ],
+     [
+      "lower limit",
+      "$0$"
+     ],
+     [
+      "upper limit",
+      "$u(x) = x^3$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-ftc-accumulation-1",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ftc-accumulation-s1",
+   "q": "Find $g(4)$.",
+   "numeric": {
+    "answer": 10,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That is $f(4)$, the height of the graph. $g(4)$ is the area under $f$ from 0 to 4."
+     },
+     {
+      "value": 6,
+      "why": "That is only the rectangle from 2 to 4. Add the trapezoid from 0 to 2, of area 4."
+     },
+     {
+      "value": 12,
+      "why": "That uses height 3 across the whole interval $[0, 4]$. From 0 to 2 the graph rises from 1 to 3, a trapezoid of area 4, not 6."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g(4) = \\int_0^4 f(t)\\,dt$: trapezoid from 0 to 2, $\\frac{1 + 3}{2} \\cdot 2 = 4$, plus rectangle from 2 to 4, $3 \\cdot 2 = 6$. So $g(4) = 10$."
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-2",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ftc-accumulation-s1",
+   "q": "Find $g'(1)$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "That is $g(1)$, the area from 0 to 1. The Fundamental Theorem gives the rate: $g'(1) = f(1)$."
+     },
+     {
+      "value": 1,
+      "why": "That is $f'(1)$, the slope of $f$. The derivative of $g$ is $f$ itself: $g'(1) = f(1)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "By the Fundamental Theorem of Calculus, $g'(x) = f(x)$ because $f$ is continuous. So $g'(1) = f(1) = 2$."
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-3",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ftc-accumulation-s1",
+   "q": "Find $g''(3)$.",
+   "options": [
+    "7",
+    "$-1.5$",
+    "0",
+    "3"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$g'(x) = f(x)$, so $g''(x) = f'(x)$. On $(2, 4)$ the graph of $f$ is horizontal, so $g''(3) = f'(3) = 0$.",
+    "options": [
+     "That is $g(3)$, the area from 0 to 3. Two derivatives of $g$ give the slope of $f$.",
+     "That is the slope of $f$ on $(4, 6)$. At $x = 3$ the graph of $f$ is flat.",
+     "Correct: $g'' = f'$, and $f$ is constant on $(2, 4)$, so $f'(3) = 0$.",
+     "That is $f(3) = g'(3)$. One more derivative gives $f'(3)$, the slope of $f$ at 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-4",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ftc-accumulation-s1",
+   "q": "On which interval is the graph of $g$ concave down?",
+   "options": [
+    "$(0, 6)$",
+    "$(4, 6)$",
+    "$(0, 2)$",
+    "$(2, 4)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$g'' = f'$. The graph of $g$ is concave down where $f$ is decreasing: on $(4, 6)$.",
+    "options": [
+     "$f$ is positive on all of $(0, 6)$, which makes $g$ increasing, not concave down. Concavity follows whether $f$ increases or decreases.",
+     "Correct: there $f$ is decreasing, so $g'' = f' < 0$.",
+     "On $(0, 2)$, $f$ is increasing, so $g'' = f' > 0$: $g$ is concave up there.",
+     "On $(2, 4)$, $f$ is constant, so $g'' = 0$: $g$ is a line there, neither concave up nor down."
+    ]
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-5",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ftc-accumulation-s2",
+   "q": "Find $h'(x)$.",
+   "expr": {
+    "answer": "3x^2*e^(-x^6)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1.2,
+     1.2
+    ],
+    "mode": "exact",
+    "lhs": "h'(x) =",
+    "mistakes": [
+     {
+      "expr": "e^(-x^6)",
+      "why": "That is $f(x^3)$ without the chain rule factor. The upper limit is $x^3$, so multiply by its derivative, $3x^2$."
+     },
+     {
+      "expr": "e^(-x^2)",
+      "why": "That is $f(x)$. Substitute the upper limit into the integrand, $f(x^3) = e^{-x^6}$, and multiply by $3x^2$."
+     },
+     {
+      "expr": "3x^2*e^(-x^2)",
+      "why": "The chain factor is right, but the integrand must be evaluated at the upper limit: $e^{-(x^3)^2} = e^{-x^6}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $u = x^3$: $h'(x) = f(u)\\,u' = e^{-(x^3)^2} \\cdot 3x^2 = 3x^2 e^{-x^6}$."
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-6",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ftc-accumulation-s2",
+   "q": "Find $h(0)$.",
+   "numeric": {
+    "answer": 0,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is $e^{-0^2}$, the integrand at 0. $h(0) = \\int_0^0 e^{-t^2}\\,dt$, an integral over an interval of width 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h(0) = \\int_0^{0} e^{-t^2}\\,dt$: the upper and lower limits are equal, so there is no width and the value is 0."
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-7",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ftc-accumulation-s2",
+   "q": "Find $h'(1)$.",
+   "numeric": {
+    "answer": "3/e",
+    "mistakes": [
+     {
+      "value": "1/e",
+      "why": "That is $f(1^3)$ without the chain factor $3x^2 = 3$ at $x = 1$."
+     },
+     {
+      "value": "3",
+      "why": "That is the chain factor alone. Multiply by $f(1^3) = e^{-1}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h'(1) = 3(1)^2 e^{-1^6} = \\frac{3}{e}$."
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-8",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ftc-accumulation-s2",
+   "q": "Is $h$ increasing for $x > 0$? Why?",
+   "options": [
+    "No, because $h'(x) = e^{-x^6}$ gets close to 0",
+    "Yes, because $h'(x) = 3x^2 e^{-x^6} > 0$ for $x > 0$",
+    "Yes, because $h(0) = 0$ and $h$ is continuous",
+    "No, because $e^{-t^2}$ decreases for $t > 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$h'(x) = 3x^2 e^{-x^6}$. For $x > 0$, $3x^2 > 0$ and $e^{-x^6} > 0$, so $h'(x) > 0$ and $h$ is increasing.",
+    "options": [
+     "$h'$ is small for large $x$ but still positive, so $h$ keeps increasing. (Also, the chain factor $3x^2$ is missing.)",
+     "Correct: both factors are positive for $x > 0$, so $h' > 0$.",
+     "A starting value says nothing about direction. Use the sign of $h'$.",
+     "A decreasing integrand that stays positive still adds area: $h$ grows, just more slowly."
+    ]
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-9",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\frac{d}{dx}\\int_1^x \\sqrt{1 + t^3}\\,dt$.",
+   "expr": {
+    "answer": "sqrt(1 + x^3)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0,
+     3
+    ],
+    "mode": "exact",
+    "lhs": "\\frac{d}{dx}\\int_1^x \\sqrt{1 + t^3}\\,dt =",
+    "mistakes": [
+     {
+      "expr": "sqrt(1 + x^3) - sqrt(2)",
+      "why": "The lower limit is a constant, so it adds nothing to the derivative. The Fundamental Theorem gives just the integrand at $x$."
+     },
+     {
+      "expr": "3x^2/(2sqrt(1 + x^3))",
+      "why": "That differentiates the integrand. The derivative of the accumulation function is the integrand itself, evaluated at $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "By the Fundamental Theorem of Calculus, with a continuous integrand and upper limit $x$: $\\frac{d}{dx}\\int_1^x \\sqrt{1 + t^3}\\,dt = \\sqrt{1 + x^3}$."
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-10",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\frac{d}{dx}\\int_2^{5x} \\cos(t^2)\\,dt$.",
+   "expr": {
+    "answer": "5cos(25x^2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1,
+     1
+    ],
+    "mode": "exact",
+    "lhs": "\\frac{d}{dx}\\int_2^{5x} \\cos(t^2)\\,dt =",
+    "mistakes": [
+     {
+      "expr": "cos(25x^2)",
+      "why": "The upper limit is $5x$, so the chain rule multiplies by its derivative, 5."
+     },
+     {
+      "expr": "5cos(x^2)",
+      "why": "Substitute the upper limit into the integrand: $\\cos\\left((5x)^2\\right) = \\cos(25x^2)$."
+     },
+     {
+      "expr": "5cos(5x^2)",
+      "why": "Square all of $5x$: $(5x)^2 = 25x^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $u = 5x$: $\\frac{d}{dx}\\int_2^{u} \\cos(t^2)\\,dt = \\cos(u^2)\\cdot u' = 5\\cos(25x^2)$."
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-11",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $F(x) = \\int_3^x (t^2 + 1)\\,dt$. Which statement is true?",
+   "options": [
+    "$F(3) = 0$ and $F'(x) = 2x$",
+    "$F(3) = 10$ and $F'(x) = x^2 + 1$",
+    "$F(3) = 0$ and $F'(x) = x^2 + 1$",
+    "$F(0) = 0$ and $F'(x) = x^2 + 1$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$F(3) = \\int_3^3 (t^2 + 1)\\,dt = 0$, and since $t^2 + 1$ is continuous, $F'(x) = x^2 + 1$: $F$ is the antiderivative of $x^2 + 1$ that is 0 at $x = 3$.",
+    "options": [
+     "$2x$ is the derivative of the integrand. $F'$ is the integrand itself.",
+     "10 is the integrand at 3. $F(3) = \\int_3^3 (t^2 + 1)\\,dt = 0$.",
+     "Correct: equal limits give 0, and the Fundamental Theorem gives the integrand at $x$.",
+     "$F$ is 0 where the limits match, at $x = 3$, not at 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-12",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Let $g(x) = \\int_0^x \\sqrt{1 + t^3}\\,dt$. Use a calculator to find $g(2)$.",
+   "numeric": {
+    "answer": 3.2413092631952747,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That is $g'(2) = \\sqrt{1 + 8} = 3$, the rate. The question asks for $g(2)$, the area accumulated from 0 to 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g(2) = \\int_0^2 \\sqrt{1 + t^3}\\,dt \\approx 3.241$ by the calculator's numerical integration (no closed form is needed). And $g'(2) = \\sqrt{1 + 2^3} = 3$."
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-13",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "single",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Let $G(x) = \\int_1^x \\sqrt{t + 3}\\,dt$. Which is an equation of the line tangent to the graph of $G$ at $x = 1$?",
+   "options": [
+    "$y = 2(x - 1)$",
+    "$y - 2 = 2(x - 1)$",
+    "$y = \\frac{1}{4}(x - 1)$",
+    "$y - 2 = \\frac{1}{4}(x - 1)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Point: $G(1) = \\int_1^1 \\sqrt{t + 3}\\,dt = 0$. Slope: $G'(1) = \\sqrt{1 + 3} = 2$. Tangent line: $y - 0 = 2(x - 1)$.",
+    "options": [
+     "Correct: $G(1) = 0$ and $G'(1) = \\sqrt{4} = 2$.",
+     "The point is $(1, G(1))$, and $G(1) = 0$ because the limits are equal. 2 is the slope, not the height.",
+     "$\\frac{1}{4}$ is the derivative of $\\sqrt{t + 3}$ at 1. The slope of $G$ is the integrand itself, 2.",
+     "Both numbers are off: $G(1) = 0$, and $G'(1) = \\sqrt{1 + 3} = 2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-14",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "single",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which function is an antiderivative of $f(x) = 2x$?",
+   "options": [
+    "$F(x) = 2$",
+    "$F(x) = \\frac{x^2}{2}$",
+    "$F(x) = 2x^2$",
+    "$F(x) = x^2 + 5$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An antiderivative of $f$ is a function $F$ with $F' = f$. Since $\\frac{d}{dx}(x^2 + 5) = 2x$, $x^2 + 5$ is one.",
+    "options": [
+     "That is the derivative of $2x$, not a function whose derivative is $2x$.",
+     "Its derivative is $x$, half of $2x$.",
+     "Its derivative is $4x$, twice $2x$.",
+     "Correct: $F'(x) = 2x = f(x)$; the 5 has derivative 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-15",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\frac{d}{dx}\\int_0^{\\sin x} (1 + t^2)\\,dt$.",
+   "expr": {
+    "answer": "(1 + sin(x)^2)*cos(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "exact",
+    "lhs": "\\frac{d}{dx}\\int_0^{\\sin x} (1 + t^2)\\,dt =",
+    "mistakes": [
+     {
+      "expr": "1 + sin(x)^2",
+      "why": "The upper limit is $\\sin x$, so multiply by its derivative, $\\cos x$."
+     },
+     {
+      "expr": "(1 + x^2)*cos(x)",
+      "why": "Evaluate the integrand at the upper limit: $1 + (\\sin x)^2$, not $1 + x^2$."
+     },
+     {
+      "expr": "(1 + sin(x)^2)*(-cos(x))",
+      "why": "The derivative of $\\sin x$ is $+\\cos x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $u = \\sin x$: $\\frac{d}{dx}\\int_0^{u} (1 + t^2)\\,dt = (1 + u^2)\\,u' = (1 + \\sin^2 x)\\cos x$."
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-16",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$f$ is continuous and $g(x) = \\int_2^x f(t)\\,dt$. Which is $g'(x)$?",
+   "options": [
+    "$f(x) - 2$",
+    "$f(x)$",
+    "$f(x) - f(2)$",
+    "$f'(x)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For continuous $f$ and constant $a$, $\\frac{d}{dx}\\int_a^x f(t)\\,dt = f(x)$. The lower limit only fixes where $g = 0$.",
+    "options": [
+     "The 2 is a limit of integration, not something subtracted from $f$.",
+     "Correct: the Fundamental Theorem gives the integrand at the upper limit; the constant lower limit drops out.",
+     "The lower limit is a constant. It shifts the value of $g$ but not its derivative: no $f(2)$ term.",
+     "That is $g''(x)$. One derivative of $g$ gives $f$ itself."
+    ]
+   }
+  },
+  {
+   "id": "calc-ftc-accumulation-17",
+   "unit": "unit-6",
+   "topic": "ftc-accumulation",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Water flows into a tank at $r(t)$ liters per minute. The tank holds $W(t) = 200 + \\int_0^t r(s)\\,ds$ liters at time $t$ minutes. Which statement is true?",
+   "options": [
+    "$W(0) = 200$ and $W'(t) = r(t)$",
+    "$W(0) = 0$ and $W'(t) = r(t)$",
+    "$W(0) = 200$ and $W'(t) = 200 + r(t)$",
+    "$W(0) = 200$ and $W'(t) = r'(t)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$W(0) = 200 + \\int_0^0 r(s)\\,ds = 200$. By the Fundamental Theorem, $W'(t) = 0 + r(t) = r(t)$ liters per minute.",
+    "options": [
+     "Correct: the integral is 0 at $t = 0$, and its derivative is the rate.",
+     "At $t = 0$ the integral is 0, but the 200 liters already there remain: $W(0) = 200$.",
+     "The constant 200 has derivative 0.",
+     "The derivative of an accumulated rate is the rate itself, $r(t)$, not its derivative."
+    ]
+   }
+  }
+ ]
+}

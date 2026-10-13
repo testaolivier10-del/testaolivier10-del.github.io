@@ -1,0 +1,57 @@
+<p>Some limits resist every tool from the last few topics. Substitution gives nonsense, there is nothing to factor, and a table jumps around. The squeeze theorem handles many of these. Instead of finding the function's limit directly, you trap the function between two simpler functions and let them do the work.</p>
+
+<h2>Trapped between two functions</h2>
+<p>Look at $f(x) = x \sin\left(\frac{1}{x}\right)$ near 0. As $x$ shrinks, $\frac{1}{x}$ grows, so the sine swings between $-1$ and $1$ faster and faster. You cannot substitute $x = 0$, and the graph has infinitely many wiggles near 0.</p>
+<figure id="fig-squeeze" data-fig="squeeze-x-sin"><figcaption>$x \sin\left(\frac{1}{x}\right)$ stays between $-|x|$ and $|x|$, which both close in on 0.</figcaption></figure>
+<p>But every wiggle stays inside the lines $y = |x|$ and $y = -|x|$. Those two lines meet at the origin. However wildly $f$ swings, it is pinned between two graphs that both approach 0. So $f(x)$ must approach 0 too.</p>
+
+<h2>The squeeze theorem</h2>
+<p>Here is the statement. Suppose that for every $x$ near $c$ (except possibly at $c$ itself)</p>
+<p>$$g(x) \le f(x) \le h(x)$$</p>
+<p>and that $\lim_{x \to c} g(x) = L$ and $\lim_{x \to c} h(x) = L$. Then $\lim_{x \to c} f(x) = L$.</p>
+<p>Notice what the theorem needs and what it does not.</p>
+<ul>
+<li>It needs the inequality only <b>near</b> $c$, on some open interval around it.</li>
+<li>It needs the two bounds to have the <b>same</b> limit. If they approach different numbers, the theorem gives no conclusion at all.</li>
+<li>It does not need $f(c)$. The function may be undefined at $c$, as $x \sin\left(\frac{1}{x}\right)$ is.</li>
+<li>It does not need a formula for $f$. Facts about its bounds are enough.</li>
+</ul>
+
+<h2>Building the bounds</h2>
+<p>Most bounds start from what you know about sine and cosine: for every real $\theta$, $-1 \le \sin\theta \le 1$ and $-1 \le \cos\theta \le 1$. Multiply through by a factor that is never negative and the inequality keeps its direction.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\lim_{x \to 0} x^2 \sin\left(\frac{1}{x}\right)$.</p>
+<p>Start with $-1 \le \sin\left(\frac{1}{x}\right) \le 1$ for $x \ne 0$.</p>
+<p>Multiply by $x^2$, which is not negative, so the inequalities keep their direction: $-x^2 \le x^2 \sin\left(\frac{1}{x}\right) \le x^2$.</p>
+<p>Both bounds approach 0: $\lim_{x \to 0} (-x^2) = 0$ and $\lim_{x \to 0} x^2 = 0$.</p>
+<p>By the squeeze theorem, $\lim_{x \to 0} x^2 \sin\left(\frac{1}{x}\right) = 0$.</p>
+</div>
+<p>Be careful with a factor of $x$. If $x < 0$, multiplying by $x$ flips the inequalities. That is why the figure uses $|x|$: since $|x| \ge 0$, we get $-|x| \le x \sin\left(\frac{1}{x}\right) \le |x|$ on both sides of 0.</p>
+
+<h2>The special limit of sine over its input</h2>
+<p>A table suggests that $\frac{\sin x}{x}$ approaches 1 as $x \to 0$: at $x = 0.1$ it is about $0.9983$, at $x = 0.01$ about $0.99998$. The squeeze theorem proves it. Comparing two triangles and a sector of the unit circle shows that, for $x$ near 0 but not 0,</p>
+<p>$$\cos x \le \frac{\sin x}{x} \le 1$$</p>
+<p>As $x \to 0$, $\cos x \to 1$, and the upper bound is the constant 1. Both bounds approach 1, so</p>
+<p>$$\lim_{x \to 0} \frac{\sin x}{x} = 1$$</p>
+<p>Two warnings. First, this uses radians. In degrees the limit would be $\frac{\pi}{180}$, which is one reason calculus always works in radians. Second, the input of the sine must match the denominator.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\lim_{x \to 0} \frac{\sin(4x)}{x}$.</p>
+<p>The sine's input is $4x$, so build $4x$ underneath: $\frac{\sin(4x)}{x} = 4 \cdot \frac{\sin(4x)}{4x}$.</p>
+<p>As $x \to 0$, $4x \to 0$, so $\frac{\sin(4x)}{4x} \to 1$.</p>
+<p>The limit is $4 \cdot 1 = 4$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $\lim_{x \to 0} \frac{1 - \cos x}{x}$.</p>
+<p>Multiply top and bottom by $1 + \cos x$ and use $1 - \cos^2 x = \sin^2 x$:</p>
+<p>$$\frac{1 - \cos x}{x} = \frac{\sin^2 x}{x(1 + \cos x)} = \frac{\sin x}{x} \cdot \frac{\sin x}{1 + \cos x}$$</p>
+<p>The first factor approaches 1 and the second approaches $\frac{0}{2} = 0$. The limit is $1 \cdot 0 = 0$.</p>
+</div>
+
+<h2>Writing the justification</h2>
+<p>When a question says "justify", give all three pieces in words and symbols:</p>
+<ol>
+<li>The inequality, and where it holds: "For $x \ne 0$, $-x^2 \le x^2 \sin\left(\frac{1}{x}\right) \le x^2$."</li>
+<li>The limits of both bounds: "$\lim_{x \to 0} (-x^2) = 0$ and $\lim_{x \to 0} x^2 = 0$."</li>
+<li>The conclusion with the theorem's name: "Therefore, by the squeeze theorem, $\lim_{x \to 0} x^2 \sin\left(\frac{1}{x}\right) = 0$."</li>
+</ol>
+<p>A justification that gives only one bound, or that finds the value of the function at the point, misses the idea. One bound allows many limits; the value at the point plays no part in a limit.</p>

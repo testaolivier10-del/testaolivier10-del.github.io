@@ -1,0 +1,97 @@
+{
+ "topic": "implicit-relations",
+ "hook": "A race track is not the graph of a function: it loops back, and at some points it runs straight up the page. Designers still need to know where the track runs exactly east-west or north-south. Implicit differentiation gives the slope at every point of such a curve, and the slope formula shows where it is flat or vertical.",
+ "prereq": [
+  {
+   "q": "Differentiating $y^2$ with respect to $x$ gives",
+   "options": [
+    "$2y\\frac{dy}{dx}$",
+    "$2y$",
+    "$2x$",
+    "$y\\frac{dy}{dx}$"
+   ],
+   "correct": 0,
+   "why": "Chain rule: $y$ depends on $x$.",
+   "review": "implicit-differentiation"
+  },
+  {
+   "q": "A critical point of a function $f$ is an interior point where",
+   "options": [
+    "$f'(x) = 0$ or $f'(x)$ does not exist",
+    "$f(x) = 0$",
+    "$f''(x) = 0$",
+    "$f$ is largest"
+   ],
+   "correct": 0,
+   "why": "The same idea, for curves, uses $\\frac{dy}{dx}$.",
+   "review": "extreme-value-theorem"
+  },
+  {
+   "q": "If $f'(c) = 0$ and $f''(c) < 0$, $f$ has",
+   "options": [
+    "a relative maximum at $c$",
+    "a relative minimum at $c$",
+    "a point of inflection at $c$",
+    "no conclusion"
+   ],
+   "correct": 0,
+   "why": "The Second Derivative Test.",
+   "review": "second-derivative-test"
+  }
+ ],
+ "figure": {
+  "figure": "implicit-tangents",
+  "caption": "On $x^2 + xy + y^2 = 3$, the numerator of $\\frac{dy}{dx}$ vanishes at the blue points (horizontal tangent lines) and the denominator at the green ones (vertical tangent lines)."
+ },
+ "chain": [
+  {
+   "cause": "Differentiate both sides of the curve's equation with respect to $x$, then solve",
+   "effect": "$\\frac{dy}{dx} = \\frac{N(x, y)}{D(x, y)}$, a slope at each point $(x, y)$ of the curve"
+  },
+  {
+   "cause": "$N = 0$, $D \\ne 0$, and the point is on the curve",
+   "effect": "the tangent line is horizontal there"
+  },
+  {
+   "cause": "$D = 0$, $N \\ne 0$, and the point is on the curve",
+   "effect": "the tangent line is vertical there"
+  },
+  {
+   "cause": "$N = 0$ and $D = 0$ at once",
+   "effect": "the formula decides nothing at that point"
+  },
+  {
+   "cause": "$\\frac{dy}{dx} = 0$ and the sign of $\\frac{d^2y}{dx^2}$ is known",
+   "effect": "the curve has a local high point ($< 0$) or low point ($> 0$)"
+  }
+ ],
+ "ideas": [
+  "<b>Horizontal tangent</b>: numerator of $\\frac{dy}{dx}$ is 0, denominator is not, point is on the curve. <b>Vertical tangent</b>: denominator 0, numerator not 0, point on the curve.",
+  "To find the points: set the numerator (or denominator) to 0, solve for one variable, substitute into the curve's equation, then check the other part is not 0.",
+  "$\\frac{d^2y}{dx^2}$: differentiate $\\frac{dy}{dx}$ (quotient rule), then substitute the point and the value of $\\frac{dy}{dx}$ there.",
+  "Write \"$= 0$\" after differentiating, and apply $\\frac{d}{dx}$ to both sides."
+ ],
+ "misconception": {
+  "wrong": "The tangent line is vertical where $\\frac{dy}{dx} = 0$.",
+  "right": "$\\frac{dy}{dx} = 0$ means a horizontal tangent. A vertical tangent is where the slope is undefined because the denominator is 0 and the numerator is not. And every candidate point must satisfy the curve's equation; a point that only makes the numerator zero may not be on the curve at all."
+ },
+ "check": [
+  "calc-implicit-relations-1",
+  "calc-implicit-relations-2",
+  "calc-implicit-relations-3",
+  "calc-implicit-relations-4",
+  "calc-implicit-relations-5",
+  "calc-implicit-relations-13"
+ ],
+ "summary": "For an implicit curve, $\\frac{dy}{dx} = \\frac{N}{D}$. Horizontal tangents: $N = 0$, $D \\ne 0$, on the curve. Vertical tangents: $D = 0$, $N \\ne 0$, on the curve. Both zero: no conclusion. At a horizontal tangent, the sign of $\\frac{d^2y}{dx^2}$ tells whether the curve has a local high or low point.",
+ "connections": [
+  {
+   "href": "../notes/solving-optimization.html",
+   "label": "Back: solving optimization problems (5.11)"
+  },
+  {
+   "href": "../notes/accumulation-of-change.html",
+   "label": "Next: Unit 6"
+  }
+ ]
+}

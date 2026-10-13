@@ -1,0 +1,11 @@
+{
+ "derivative": {
+  "def": "The instantaneous rate of change of a function. At $x = a$, $f'(a) = \\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}$ when the limit exists; found at every $x$, it is the derivative function $f'(x)$."
+ },
+ "tangent-line": {
+  "def": "The line through $(a, f(a))$ whose slope is $f'(a)$: $y = f(a) + f'(a)(x - a)$. It is the limit of secant lines through that point."
+ },
+ "leibniz": {
+  "def": "Writing the derivative of $y = f(x)$ as $\\frac{dy}{dx}$, and \"the derivative of\" as $\\frac{d}{dx}$. Its value at $x = a$ is written $\\left.\\frac{dy}{dx}\\right|_{x=a}$."
+ }
+}

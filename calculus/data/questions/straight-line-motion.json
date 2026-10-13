@@ -1,0 +1,579 @@
+{
+ "stimuli": {
+  "straight-line-motion-s1": {
+   "kind": "graph",
+   "title": "Position of a particle: $x(t) = t^3 - 6t^2 + 9t$",
+   "plot": {
+    "label": "Graph of the position x(t) = t cubed - 6 t squared + 9 t, in meters, for t from 0 to 4 seconds: it rises to 4 at t = 1, falls to 0 at t = 3, and rises to 4 at t = 4",
+    "x": [
+     -0.3,
+     4.3
+    ],
+    "y": [
+     -1,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "t",
+    "yLabel": "x",
+    "curves": [
+     {
+      "fn": "x^3 - 6x^2 + 9x",
+      "domain": [
+       0,
+       4
+      ],
+      "label": "x(t)",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       4
+      ],
+      "label": "(1, 4)"
+     },
+     {
+      "at": [
+       3,
+       0
+      ],
+      "label": "(3, 0)"
+     }
+    ]
+   }
+  },
+  "straight-line-motion-s2": {
+   "kind": "graph",
+   "title": "The graph of $v$",
+   "plot": {
+    "label": "Graph of the velocity v(t), in meters per second, for t from 0 to 7 seconds: a segment from (0, -2) up to (2, 4), a horizontal segment to (5, 4), and a segment down to (7, -2)",
+    "x": [
+     -0.5,
+     7.5
+    ],
+    "y": [
+     -3,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "t",
+    "yLabel": "v",
+    "curves": [
+     {
+      "fn": "3x - 2",
+      "domain": [
+       0,
+       2
+      ],
+      "label": "v",
+      "ends": [
+       "closed",
+       null
+      ]
+     },
+     {
+      "fn": "4",
+      "domain": [
+       2,
+       5
+      ]
+     },
+     {
+      "fn": "19 - 3x",
+      "domain": [
+       5,
+       7
+      ],
+      "ends": [
+       null,
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       4
+      ]
+     },
+     {
+      "at": [
+       5,
+       4
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-straight-line-motion-1",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A particle moves along the $x$-axis with position $x(t) = t^3 - 6t^2 + 9t$ meters at time $t$ seconds, as graphed. Find its velocity at $t = 2$, with units.",
+   "stimulus": "straight-line-motion-s1",
+   "numeric": {
+    "answer": -3,
+    "unit": "meters per second",
+    "askUnit": true,
+    "units": [
+     "m/s",
+     "meters/second",
+     "meter per second",
+     "m per s"
+    ],
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is $x(2)$, the position. Velocity is the derivative of position."
+     },
+     {
+      "value": 3,
+      "why": "The sign matters for velocity: $v(2) = -3$ means the particle moves left. 3 is the speed."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$v(t) = x'(t) = 3t^2 - 12t + 9$, so $v(2) = 12 - 24 + 9 = -3$ meters per second."
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-2",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the acceleration of the particle at $t = 3$, with units.",
+   "stimulus": "straight-line-motion-s1",
+   "numeric": {
+    "answer": 6,
+    "unit": "meters per second per second",
+    "askUnit": true,
+    "units": [
+     "m/s^2",
+     "m/s/s",
+     "meters per second squared",
+     "m/s²",
+     "meters/second^2"
+    ],
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "That is $v(3)$. The acceleration is the derivative of velocity, $a(t) = 6t - 12$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a(t) = v'(t) = 6t - 12$, so $a(3) = 6$ meters per second per second."
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-3",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At $t = 2.5$ seconds, is the particle speeding up or slowing down?",
+   "stimulus": "straight-line-motion-s1",
+   "options": [
+    "Slowing down, because $v(2.5) < 0$ and $a(2.5) > 0$",
+    "Speeding up, because $a(2.5) > 0$",
+    "Speeding up, because $v(2.5)$ and $a(2.5)$ are both negative",
+    "Slowing down, because $v(2.5) < 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$v(2.5) = 3(2.5)^2 - 12(2.5) + 9 = -2.25$ and $a(2.5) = 3$. They have opposite signs, so the speed is decreasing: slowing down.",
+    "options": [
+     "$v(2.5) = -2.25$ and $a(2.5) = 3$: opposite signs.",
+     "A positive acceleration speeds the particle up only if it is moving in the positive direction.",
+     "$a(2.5) = 6(2.5) - 12 = 3$ is positive.",
+     "The sign of $v$ alone gives the direction of motion, not whether speed grows."
+    ]
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-4",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "On which interval is the particle moving to the left?",
+   "stimulus": "straight-line-motion-s1",
+   "options": [
+    "$2 < t < 4$",
+    "$1 < t < 3$",
+    "$0 < t < 2$",
+    "$3 < t < 4$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Moving left means $v(t) < 0$. Since $v(t) = 3(t - 1)(t - 3)$, that is $1 < t < 3$, where the graph of $x$ falls.",
+    "options": [
+     "$v$ is positive for $t > 3$; the acceleration is positive on $2 < t < 4$.",
+     "$v(t) = 3(t - 1)(t - 3) < 0$ there, and the graph of $x$ falls.",
+     "The particle moves right until $t = 1$.",
+     "$v > 0$ there: the position increases."
+    ]
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-5",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At which times does the particle change direction, and why?",
+   "stimulus": "straight-line-motion-s1",
+   "options": [
+    "$t = 2$, because $a(2) = 0$",
+    "$t = 0$ and $t = 3$, because $x = 0$ there",
+    "$t = 1$ and $t = 3$, because $v$ changes sign there",
+    "$t = 1$ and $t = 3$, because $x(t) = 4$ or $x(t) = 0$ there"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The direction changes where $v$ changes sign. $v(t) = 3(t - 1)(t - 3)$ changes sign at $t = 1$ (positive to negative) and $t = 3$ (negative to positive).",
+    "options": [
+     "A zero of $a$ is where the velocity stops falling; the particle still moves left.",
+     "Being at the origin says nothing about the direction of motion.",
+     "$v$ goes from positive to negative at 1 and from negative to positive at 3.",
+     "The right times, but the reason must be about $v$: it changes sign."
+    ]
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-6",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "The graph shows the velocity $v(t)$ of a particle moving along a line, in meters per second. Find the acceleration at $t = 1$, with units.",
+   "stimulus": "straight-line-motion-s2",
+   "numeric": {
+    "answer": 3,
+    "unit": "meters per second per second",
+    "askUnit": true,
+    "units": [
+     "m/s^2",
+     "m/s/s",
+     "meters per second squared",
+     "m/s²",
+     "meters/second^2"
+    ],
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is $v(1)$, the height of the graph. Acceleration is its slope."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$a(1) = v'(1)$, the slope of the first segment: $\\frac{4 - (-2)}{2 - 0} = 3$ meters per second per second."
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-7",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Is the particle speeding up or slowing down at $t = 6.5$?",
+   "stimulus": "straight-line-motion-s2",
+   "options": [
+    "Slowing down, because the acceleration is negative",
+    "Slowing down, because the velocity is negative",
+    "Neither, because the velocity is close to 0",
+    "Speeding up, because $v(6.5)$ and $a(6.5)$ are both negative"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$v(6.5) = 19 - 19.5 = -0.5$ and $a(6.5) = -3$. Same signs mean the speed $|v|$ is increasing: speeding up.",
+    "options": [
+     "Negative acceleration slows the particle only while it moves in the positive direction.",
+     "The sign of $v$ alone gives the direction, not the change in speed.",
+     "A small speed can still be growing; compare the signs of $v$ and $a$.",
+     "$v(6.5) = -0.5$ and $a(6.5) = -3$: the same sign."
+    ]
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-8",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At which times does the particle change direction?",
+   "stimulus": "straight-line-motion-s2",
+   "options": [
+    "$t = \\frac{2}{3}$ and $t = \\frac{19}{3}$",
+    "$t = 2$ and $t = 5$",
+    "$t = 0$ and $t = 7$",
+    "Just $t = \\frac{19}{3}$, where $v$ turns negative"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Solve $v = 0$: $3t - 2 = 0$ gives $t = \\frac{2}{3}$, and $19 - 3t = 0$ gives $t = \\frac{19}{3}$. $v$ changes sign at both.",
+    "options": [
+     "$v$ crosses the axis there, changing sign each time.",
+     "There the acceleration changes, but $v = 4 > 0$: the particle keeps moving right.",
+     "Those are the ends of the interval, not sign changes of $v$.",
+     "$v$ also changes sign at $t = \\frac{2}{3}$, from negative to positive."
+    ]
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-9",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which describes the motion of the particle on $2 < t < 5$?",
+   "stimulus": "straight-line-motion-s2",
+   "options": [
+    "At rest, because the acceleration is 0",
+    "Moving right at a constant speed of 4 meters per second",
+    "Speeding up, because the velocity is at its largest",
+    "Moving left, because the graph of $v$ is flat"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "On $2 < t < 5$, $v(t) = 4 > 0$ and $a(t) = 0$: the particle moves right at a steady 4 meters per second.",
+    "options": [
+     "Zero acceleration means constant velocity, here 4 m/s, not zero velocity.",
+     "$v = 4$ throughout, and $a = 0$.",
+     "The velocity is constant there, so the speed does not change.",
+     "A flat graph of $v$ above the axis means steady motion to the right."
+    ]
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-10",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the speed of the particle at $t = 7$, in meters per second?",
+   "stimulus": "straight-line-motion-s2",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": -2,
+      "why": "That is the velocity. Speed is its absolute value, never negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$v(7) = -2$, so the speed is $|v(7)| = 2$ meters per second (moving left)."
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-11",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A particle has position $x(t) = te^{-t}$. Find its velocity $v(t)$.",
+   "expr": {
+    "answer": "e^(-t) - t*e^(-t)",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     0,
+     4
+    ],
+    "lhs": "v(t) =",
+    "mistakes": [
+     {
+      "expr": "-e^(-t)",
+      "why": "That multiplies the two derivatives. Use the product rule on $t \\cdot e^{-t}$."
+     },
+     {
+      "expr": "e^(-t) + t*e^(-t)",
+      "why": "The derivative of $e^{-t}$ is $-e^{-t}$ by the chain rule."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product rule: $v(t) = 1 \\cdot e^{-t} + t \\cdot \\left(-e^{-t}\\right) = (1 - t)e^{-t}$."
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-12",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "For the position $x(t) = te^{-t}$, find the acceleration $a(t)$.",
+   "expr": {
+    "answer": "(t - 2)e^(-t)",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     0,
+     4
+    ],
+    "lhs": "a(t) =",
+    "mistakes": [
+     {
+      "expr": "(1 - t)e^(-t)",
+      "why": "That is $v(t)$. Differentiate once more to get $a(t)$."
+     },
+     {
+      "expr": "(2 - t)e^(-t)",
+      "why": "Check the sign: $-e^{-t} - (1 - t)e^{-t} = (t - 2)e^{-t}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$v(t) = (1 - t)e^{-t}$. Product rule again: $a(t) = -e^{-t} + (1 - t)\\left(-e^{-t}\\right) = (t - 2)e^{-t}$."
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-13",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A particle has velocity $v(4) = -5$ meters per second. Which is true at $t = 4$?",
+   "options": [
+    "It is moving right at a speed of 5 meters per second",
+    "It is moving left at a speed of $-5$ meters per second",
+    "It is moving left at a speed of 5 meters per second",
+    "It is slowing down, because the velocity is negative"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The sign of the velocity gives the direction (left), and its absolute value gives the speed (5 m/s).",
+    "options": [
+     "A negative velocity means motion in the negative direction.",
+     "Speed is never negative; the sign belongs to the velocity.",
+     "Negative velocity means leftward; speed is $|-5| = 5$.",
+     "Slowing down depends on the signs of both $v$ and $a$."
+    ]
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-14",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At $t = 3$, a particle has $v(3) = -4$ and $a(3) = -2$. The particle is",
+   "options": [
+    "slowing down, because $a(3)$ is negative",
+    "slowing down, because $v(3)$ is negative",
+    "at rest, because $v(3)$ and $a(3)$ are both negative",
+    "speeding up: $v(3)$ and $a(3)$ share a sign"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Speeding up when $v$ and $a$ share a sign; slowing down when they differ. Here both are negative: speeding up while moving left.",
+    "options": [
+     "A negative acceleration speeds up a particle moving in the negative direction.",
+     "The sign of $v$ alone gives direction only.",
+     "At rest means $v = 0$; here the particle moves left.",
+     "Both negative: the acceleration points the way the particle moves."
+    ]
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-15",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A particle moves with position $x(t) = 2\\cos(\\pi t)$. Find $v\\left(\\frac{1}{2}\\right)$.",
+   "numeric": {
+    "answer": "-2*pi",
+    "mistakes": [
+     {
+      "value": -2,
+      "why": "The chain rule factor $\\pi$ from the inside $\\pi t$ is missing."
+     },
+     {
+      "value": 0,
+      "why": "That is $x\\left(\\frac{1}{2}\\right) = 2\\cos\\frac{\\pi}{2}$, the position."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$v(t) = -2\\pi\\sin(\\pi t)$ by the chain rule, so $v\\left(\\frac{1}{2}\\right) = -2\\pi\\sin\\frac{\\pi}{2} = -2\\pi$."
+   }
+  },
+  {
+   "id": "calc-straight-line-motion-16",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "type": "multi",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A particle's velocity satisfies $v(4) = 0$, and $v$ changes from positive to negative at $t = 4$. Which must be true? Select all that apply.",
+   "options": [
+    "The particle is at rest at $t = 4$",
+    "The particle changes direction at $t = 4$",
+    "$a(4) = 0$",
+    "The particle is at the origin at $t = 4$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$v(4) = 0$ means at rest; the sign change means a change of direction. Neither fixes $a(4)$ or $x(4)$.",
+    "options": [
+     "$v(4) = 0$ means the particle is momentarily at rest.",
+     "$v$ changes sign there: from moving right to moving left.",
+     "Nothing forces $a(4) = 0$: as $v$ falls through 0, $a(4)$ is usually negative.",
+     "$v = 0$ says nothing about the position $x(4)$."
+    ]
+   }
+  }
+ ]
+}

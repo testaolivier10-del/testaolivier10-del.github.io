@@ -1,0 +1,71 @@
+{
+ "topic": "separation-of-variables",
+ "hook": "Checking that $y = Ce^{x^2/2}$ solves $\\frac{dy}{dx} = xy$ takes one line. Finding it in the first place takes a trick: put all the $y$'s on one side with $dy$, all the $x$'s on the other with $dx$, and integrate. When an equation lets you do that, it is separable, and you can solve it with the antiderivatives you already know.",
+ "prereq": [
+  {
+   "q": "$\\int \\frac{1}{x}\\,dx =$",
+   "options": [
+    "$\\ln|x| + C$",
+    "$-\\frac{1}{x^2} + C$",
+    "$\\ln x$",
+    "$\\frac{x^0}{0} + C$"
+   ],
+   "correct": 0,
+   "why": "The derivative of $\\ln|x|$ is $\\frac{1}{x}$ for $x \\ne 0$; the absolute value keeps negative $x$ allowed.",
+   "review": "antiderivatives"
+  },
+  {
+   "q": "$\\int 2xe^{x^2}\\,dx =$",
+   "options": [
+    "$e^{x^2} + C$",
+    "$x^2e^{x^2} + C$",
+    "$2e^{x^2} + C$",
+    "$\\frac{e^{x^3}}{3} + C$"
+   ],
+   "correct": 0,
+   "why": "With $u = x^2$, $du = 2x\\,dx$: $\\int e^u\\,du = e^u + C$.",
+   "review": "u-substitution"
+  }
+ ],
+ "figure": {
+  "figure": "separation-family",
+  "caption": "Separating $\\frac{dy}{dx} = xy$ gives $y = Ce^{x^2/2}$. Each curve is one value of $C$; $C = 0$ is the $x$-axis."
+ },
+ "chain": [
+  {
+   "cause": "The right side factors as $g(x)h(y)$",
+   "effect": "the equation is separable: $\\frac{1}{h(y)}\\,dy = g(x)\\,dx$"
+  },
+  {
+   "cause": "Integrate both sides",
+   "effect": "each side becomes an antiderivative; the two constants combine into one C"
+  },
+  {
+   "cause": "An antiderivative of $\\frac{1}{y}$ is $\\ln|y|$",
+   "effect": "keep the absolute value; exponentiating gives $|y| = e^{C}e^{G(x)}$, so $y = Ae^{G(x)}$ with $A$ any constant"
+  },
+  {
+   "cause": "Solve for $y$ when you can",
+   "effect": "the general solution: a family of curves, one for each constant"
+  }
+ ],
+ "ideas": [
+  "Separable means the right side is a product (or quotient) of a function of $x$ and a function of $y$. $\\frac{dy}{dx} = x + y$ is not separable.",
+  "Separate completely: only $y$ and $dy$ on one side, only $x$ and $dx$ on the other. $dy$ and $dx$ stay in the numerators.",
+  "Integrate both sides and write $+ C$ once, right away. Adding it after solving for $y$ gives a different, wrong family.",
+  "$\\int \\frac{dy}{y} = \\ln|y|$. Then $|y| = e^{C}e^{\\dots}$, and $\\pm e^{C}$ becomes a constant $A$ that may be any sign."
+ ],
+ "misconception": {
+  "wrong": "Solve $\\frac{dy}{dx} = 2xy^2$: $-\\frac{1}{y} = x^2$, so $y = -\\frac{1}{x^2} + C$.",
+  "right": "The constant belongs in the integration step: $-\\frac{1}{y} = x^2 + C$, so $y = -\\frac{1}{x^2 + C}$. Adding $C$ at the end gives functions that do not satisfy the equation."
+ },
+ "check": [
+  "calc-separation-of-variables-1",
+  "calc-separation-of-variables-2",
+  "calc-separation-of-variables-4",
+  "calc-separation-of-variables-10",
+  "calc-separation-of-variables-12",
+  "calc-separation-of-variables-13"
+ ],
+ "summary": "For a separable equation, put $y$ with $dy$ and $x$ with $dx$, integrate both sides, and add one constant immediately. Keep $\\ln|y|$; when you exponentiate, the constant absorbs the sign. The general solution is a family of curves, one for each constant."
+}

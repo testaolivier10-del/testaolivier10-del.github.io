@@ -1,0 +1,71 @@
+{
+ "topic": "derivative-in-context",
+ "hook": "A weather report says the snow is getting deeper at 2 centimeters per hour. A store says sales are dropping by 30 dollars a day. Both are derivatives, read in words. This topic teaches you to say exactly what a derivative means in a real situation, with the right units, which is worth points on every free-response question in context.",
+ "prereq": [
+  {
+   "q": "The derivative $f'(a)$ is",
+   "options": [
+    "the slope of the line tangent to the graph of $f$ at $x = a$",
+    "the value of $f$ at $x = a$",
+    "the slope of a secant line over $[0, a]$",
+    "the area under $f$ up to $a$"
+   ],
+   "correct": 0,
+   "why": "The derivative is the instantaneous rate of change, the slope of the tangent line.",
+   "review": "derivative-definition"
+  },
+  {
+   "q": "From a table, $f(2) = 10$ and $f(5) = 19$. What is the average rate of change of $f$ on $[2, 5]$?",
+   "options": [
+    "$3$",
+    "$9$",
+    "$\\frac{19}{5}$",
+    "$\\frac{29}{7}$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{19 - 10}{5 - 2} = 3$.",
+   "review": "average-and-instant-rates"
+  }
+ ],
+ "figure": {
+  "figure": "cooling-tangent-units",
+  "caption": "The slope of the tangent line carries units: a drop of 18.2 °C over a run of 10 minutes gives $T'(10) \\approx -1.82$ °C per minute."
+ },
+ "chain": [
+  {
+   "cause": "$f'(a)$ is a change in output divided by a change in input, as the input change shrinks",
+   "effect": "its units are output units per input unit"
+  },
+  {
+   "cause": "The sign of the derivative",
+   "effect": "says whether the quantity is increasing (positive) or decreasing (negative) at that instant"
+  },
+  {
+   "cause": "Its size",
+   "effect": "says how fast, in those units"
+  },
+  {
+   "cause": "Put together in one sentence",
+   "effect": "at this instant, this quantity is increasing (or decreasing) at this many units of output per unit of input"
+  }
+ ],
+ "ideas": [
+  "Units of $f'$: units of $f$ divided by units of the input (liters per minute, dollars per item).",
+  "Interpret with four parts: the instant, the quantity by name, increasing or decreasing, and the rate with units.",
+  "$f(a)$ is an amount; $f'(a)$ is a rate. Do not mix them in a sentence.",
+  "From a table, estimate $f'(a)$ with the two closest inputs on either side of $a$, using the table's actual widths."
+ ],
+ "misconception": {
+  "wrong": "$D'(3) = 1.6$ means the snow grew 1.6 centimeters in 3 hours.",
+  "right": "$D'(3)$ is a rate at the single instant $t = 3$: the depth is increasing at 1.6 centimeters per hour then. A change over an interval is a different quantity, in centimeters."
+ },
+ "check": [
+  "calc-derivative-in-context-1",
+  "calc-derivative-in-context-2",
+  "calc-derivative-in-context-3",
+  "calc-derivative-in-context-4",
+  "calc-derivative-in-context-10",
+  "calc-derivative-in-context-13"
+ ],
+ "summary": "In context, a derivative is a rate with units of output per unit of input. Interpret $f'(a)$ by naming the instant, the quantity, whether it is increasing or decreasing, and how fast, with units. Keep amounts, $f(a)$, and rates, $f'(a)$, apart."
+}

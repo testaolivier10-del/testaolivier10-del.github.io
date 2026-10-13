@@ -1,0 +1,48 @@
+<p>A function takes an input and produces an output. Very often, though, the question runs the other way: the thermometer reads 70 °F, so what time is it? The sine of an angle is 0.8, so what is the angle? Running a function backward is the job of an <b>inverse function</b>. Unit 3 asks how fast an inverse changes, and the answer comes straight out of one picture on this page.</p>
+
+<h2>What an inverse does</h2>
+<p>If $f$ sends $a$ to $b$, its inverse $f^{-1}$ sends $b$ back to $a$:
+$$f^{-1}(b) = a \quad \text{exactly when} \quad f(a) = b$$
+Doing one and then the other gets you back where you started: $f^{-1}(f(x)) = x$ and $f(f^{-1}(x)) = x$.</p>
+<p>From a table, read an inverse backward: find the output in the output row and read the input above it. If $f(3) = 9$, then $f^{-1}(9) = 3$.</p>
+<p>One warning, repeated because it costs so many points: $f^{-1}(x)$ is <i>not</i> $\frac{1}{f(x)}$. The $-1$ here means "undo," not "reciprocal." If you mean the reciprocal, write $\frac{1}{f(x)}$ or $[f(x)]^{-1}$.</p>
+
+<h2>When an inverse exists</h2>
+<p>An inverse must send each output back to exactly one input. So $f$ needs to be <b>one-to-one</b>: no two inputs share an output. On a graph, that is the horizontal line test: every horizontal line meets the graph at most once. Functions that only increase, or only decrease, are one-to-one.</p>
+<p>$f(x) = x^2$ fails, since $f(2) = f(-2) = 4$. The fix is to restrict the domain. On $x \ge 0$, $x^2$ is one-to-one and its inverse is $\sqrt{x}$. That is why $\sqrt{9}$ is 3 and not $-3$.</p>
+
+<h2>Finding a formula</h2>
+<p>To find $f^{-1}$, write the equation $x = f(y)$ (inputs and outputs swapped) and solve for $y$.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the inverse of $f(x) = \frac{2x + 1}{x - 3}$.</p>
+<p>Swap: $x = \frac{2y + 1}{y - 3}$. Clear the fraction: $x(y - 3) = 2y + 1$, so $xy - 3x = 2y + 1$.</p>
+<p>Collect the $y$ terms: $xy - 2y = 3x + 1$, so $y(x - 2) = 3x + 1$, and $f^{-1}(x) = \frac{3x + 1}{x - 2}$.</p>
+<p>Check with a number: $f(0) = -\frac{1}{3}$, and $f^{-1}\left(-\frac{1}{3}\right) = \frac{-1 + 1}{-\frac{1}{3} - 2} = 0$. It undoes $f$.</p>
+</div>
+
+<h2>The graph of an inverse</h2>
+<p>Every point $(a, b)$ on the graph of $f$ becomes the point $(b, a)$ on the graph of $f^{-1}$. Swapping coordinates is a reflection across the line $y = x$.</p>
+<figure id="fig-inv" data-fig="inverse-reflect"><figcaption>Reflection across $y = x$: points swap coordinates and slopes become reciprocals.</figcaption></figure>
+<p>Look at the slopes in <a class="figref" href="#fig-inv">the figure</a>. Reflecting swaps the roles of rise and run, so a line of slope 2 through $(1, 3)$ reflects to a line of slope $\frac{1}{2}$ through $(3, 1)$. In general, at matching points the slopes of $f$ and $f^{-1}$ are reciprocals. You can see it in a table too: if $f$ rises 3 while $x$ moves 1, then $f^{-1}$ rises 1 while its input moves 3.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> $f(2) = 7$, and the graph of $f$ has slope 4 at $(2, 7)$. Describe $f^{-1}$ there.</p>
+<p>The graph of $f^{-1}$ passes through $(7, 2)$, so $f^{-1}(7) = 2$.</p>
+<p>Its slope at $(7, 2)$ is $\frac{1}{4}$. Topic 3.3 turns exactly this into a formula.</p>
+</div>
+
+<h2>Inverse trig functions</h2>
+<p>Sine, cosine and tangent repeat forever, so none of them is one-to-one. Each gets an inverse by restricting to one stretch where it is one-to-one and covers all its outputs:</p>
+<table class="compare">
+<thead><tr><th>Inverse</th><th>Input</th><th>Output (an angle)</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>$\arcsin x$</td><td>$-1 \le x \le 1$</td><td>$-\frac{\pi}{2} \le \theta \le \frac{\pi}{2}$</td><td>$\arcsin\frac{1}{2} = \frac{\pi}{6}$</td></tr>
+<tr><td>$\arccos x$</td><td>$-1 \le x \le 1$</td><td>$0 \le \theta \le \pi$</td><td>$\arccos\left(-\frac{1}{2}\right) = \frac{2\pi}{3}$</td></tr>
+<tr><td>$\arctan x$</td><td>every real number</td><td>$-\frac{\pi}{2} < \theta < \frac{\pi}{2}$</td><td>$\arctan(-1) = -\frac{\pi}{4}$</td></tr>
+</tbody>
+</table>
+<p>They are also written $\sin^{-1} x$, $\cos^{-1} x$ and $\tan^{-1} x$, with the same warning: $\sin^{-1} x$ is not $\frac{1}{\sin x}$.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $\arcsin\left(\sin\frac{5\pi}{6}\right)$.</p>
+<p>It is tempting to say the functions cancel and answer $\frac{5\pi}{6}$. But arcsine only returns angles between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$.</p>
+<p>Work inside out: $\sin\frac{5\pi}{6} = \frac{1}{2}$, and $\arcsin\frac{1}{2} = \frac{\pi}{6}$.</p>
+</div>

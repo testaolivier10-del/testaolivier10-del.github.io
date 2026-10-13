@@ -1,0 +1,71 @@
+{
+ "topic": "inverse-function-derivatives",
+ "hook": "If you know how fast a function climbs, you also know how fast its inverse climbs: undo the function and the steepness flips. A thermometer that converts a voltage to a temperature, or a calculator's square root key, is an inverse function, and this topic finds its slope without a formula for it.",
+ "prereq": [
+  {
+   "q": "If $f(2) = 7$ and $g$ is the inverse of $f$, what is $g(7)$?",
+   "options": [
+    "$2$",
+    "$7$",
+    "$\\frac{1}{7}$",
+    "$\\frac{1}{2}$"
+   ],
+   "correct": 0,
+   "why": "An inverse swaps inputs and outputs: $f(2) = 7$ means $g(7) = 2$.",
+   "review": "chain-rule"
+  },
+  {
+   "q": "By the chain rule, $\\frac{d}{dx}f(g(x))$ is",
+   "options": [
+    "$f'(g(x)) \\cdot g'(x)$",
+    "$f'(x) \\cdot g'(x)$",
+    "$f'(g'(x))$",
+    "$f(g'(x))$"
+   ],
+   "correct": 0,
+   "why": "The outside derivative at the inside function, times the inside derivative.",
+   "review": "chain-rule"
+  }
+ ],
+ "figure": {
+  "figure": "inverse-reciprocal-slopes",
+  "caption": "Reflecting $f(x) = x^3 + x$ in the line $y = x$ gives its inverse $g$. The tangent line at $(1, 2)$ has slope 4; its mirror image at $(2, 1)$ has slope $\\frac{1}{4}$."
+ },
+ "chain": [
+  {
+   "cause": "The graph of $g = f^{-1}$ is the graph of $f$ reflected in $y = x$",
+   "effect": "the point $(a, b)$ on $f$ becomes $(b, a)$ on $g$"
+  },
+  {
+   "cause": "Reflection in $y = x$ swaps rise and run",
+   "effect": "a tangent line of slope $m$ becomes one of slope $\\frac{1}{m}$"
+  },
+  {
+   "cause": "So the slope of $g$ at $b$ is the reciprocal of the slope of $f$ at $a = g(b)$",
+   "effect": "$g'(b) = \\frac{1}{f'(g(b))}$"
+  },
+  {
+   "cause": "Where $f'(a) = 0$",
+   "effect": "the tangent line of $g$ at $b$ is vertical and $g'(b)$ does not exist"
+  }
+ ],
+ "ideas": [
+  "The rule: $g'(x) = \\frac{1}{f'(g(x))}$ when $g$ is the inverse of $f$ and $f'(g(x)) \\ne 0$.",
+  "Two steps: first find $g(x)$, the input of $f$ that gives $x$; then take the reciprocal of $f'$ there.",
+  "From a table, find the given number in the $f(x)$ row, read its $x$, then read $f'$ in that column.",
+  "It comes from the chain rule: differentiate $f(g(x)) = x$ to get $f'(g(x)) \\cdot g'(x) = 1$."
+ ],
+ "misconception": {
+  "wrong": "If $f(2) = 4$ and $g = f^{-1}$, then $g'(4) = \\frac{1}{f'(4)}$.",
+  "right": "The input of $f'$ must be $g(4) = 2$, the $x$ where $f$ gives 4: $g'(4) = \\frac{1}{f'(2)}$. Reading $f'$ at 4 uses the wrong point of the graph."
+ },
+ "check": [
+  "calc-inverse-function-derivatives-1",
+  "calc-inverse-function-derivatives-2",
+  "calc-inverse-function-derivatives-3",
+  "calc-inverse-function-derivatives-4",
+  "calc-inverse-function-derivatives-10",
+  "calc-inverse-function-derivatives-12"
+ ],
+ "summary": "The graph of an inverse is a reflection in $y = x$, which swaps rise and run, so slopes become reciprocals at matching points: $\\left(f^{-1}\\right)'(a) = \\frac{1}{f'\\left(f^{-1}(a)\\right)}$. Find $f^{-1}(a)$ first, then take the reciprocal of $f'$ at that input."
+}

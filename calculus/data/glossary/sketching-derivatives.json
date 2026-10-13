@@ -1,0 +1,5 @@
+{
+ "derivative-sketch": {
+  "def": "The graph of $y = f'(x)$, whose height at each $x$ is the slope of $f$ there. It is above the axis where $f$ rises, crosses zero at the flat peaks and valleys of $f$, rises where $f$ is concave up, and turns at the inflection points of $f$."
+ }
+}

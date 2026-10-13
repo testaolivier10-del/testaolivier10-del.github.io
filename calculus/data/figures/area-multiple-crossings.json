@@ -1,0 +1,7 @@
+{
+ "area-three-crossings": {
+  "file": "figures/area-three-crossings.svg", "ext": "svg", "w": 760, "h": 440,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "The cubic f(x) = x³ − 3x and the line g(x) = x cross at (−2, −2), (0, 0) and (2, 2). From −2 to 0 the cubic is on top (pink piece, rectangle height f − g); from 0 to 2 the line is on top (blue piece, rectangle height g − f). The side panel adds the pieces, 4 + 4 = 8, and warns that one integral of f − g from −2 to 2 is 0 because the pieces cancel."
+ }
+}

@@ -1,0 +1,553 @@
+{
+ "stimuli": {
+  "higher-order-derivatives-s1": {
+   "kind": "graph",
+   "title": "The graph of $f'$",
+   "plot": {
+    "label": "Graph of f prime, the derivative of f, on 0 to 5: a segment from (0, 2) down to (2, -2), then a segment up to (5, 4)",
+    "x": [
+     -0.5,
+     5.5
+    ],
+    "y": [
+     -3,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2 - 2x",
+      "domain": [
+       0,
+       2
+      ],
+      "label": "f'",
+      "ends": [
+       "closed",
+       null
+      ]
+     },
+     {
+      "fn": "2x - 6",
+      "domain": [
+       2,
+       5
+      ],
+      "ends": [
+       null,
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       -2
+      ]
+     }
+    ]
+   }
+  },
+  "higher-order-derivatives-s2": {
+   "kind": "graph",
+   "title": "The curve $x^2 + 4y^2 = 8$",
+   "plot": {
+    "label": "The ellipse x squared plus 4 y squared equals 8, crossing the x-axis near plus and minus 2.83 and the y-axis near plus and minus 1.41, with the point (2, 1) marked",
+    "x": [
+     -3.5,
+     3.5
+    ],
+    "y": [
+     -2,
+     2
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "sqrt(8 - x^2)/2",
+      "domain": [
+       -2.8284,
+       2.8284
+      ]
+     },
+     {
+      "fn": "-sqrt(8 - x^2)/2",
+      "domain": [
+       -2.8284,
+       2.8284
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       1
+      ],
+      "label": "(2, 1)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-higher-order-derivatives-1",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph shows $f'$, the derivative of $f$. Find $f''(1)$.",
+   "stimulus": "higher-order-derivatives-s1",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "That is $f'(1)$, the height of the graph. $f''(1)$ is its slope there."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f''$ is the slope of the graph of $f'$. On $0 < x < 2$ the graph of $f'$ is a segment of slope $\\frac{-2 - 2}{2 - 0} = -2$, so $f''(1) = -2$."
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-2",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "On which interval is $f''(x) < 0$?",
+   "stimulus": "higher-order-derivatives-s1",
+   "options": [
+    "$0 < x < 2$",
+    "$1 < x < 3$",
+    "$0 < x < 1$",
+    "$2 < x < 5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f'' < 0$ where the graph of $f'$ is falling: on $0 < x < 2$, where its slope is $-2$.",
+    "options": [
+     "The graph of $f'$ falls there, so its slope $f''$ is negative.",
+     "There $f'$ itself is negative; the sign of $f''$ comes from the slope of $f'$.",
+     "There $f'$ is positive, but $f''$ is negative on all of $0 < x < 2$.",
+     "The graph of $f'$ rises there, so $f'' = 2 > 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-3",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What can be said about $f''(2)$?",
+   "stimulus": "higher-order-derivatives-s1",
+   "options": [
+    "It equals $-2$, the value of $f'(2)$",
+    "It does not exist, because the graph of $f'$ has a corner at $x = 2$",
+    "It equals 0, because the graph of $f'$ turns around",
+    "It equals 2, the slope just to the right of $x = 2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f''(2)$ is the derivative of $f'$ at 2. The one-sided slopes, $-2$ and $2$, differ, so $f'$ is not differentiable at 2.",
+    "options": [
+     "That is the height of the graph of $f'$, not its slope.",
+     "The slope of $f'$ is $-2$ just left of 2 and $2$ just right of it.",
+     "A sharp corner has no single slope, so there is no derivative of $f'$ there.",
+     "A derivative needs the slopes from both sides to agree; they are $-2$ and $2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-4",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Let $h(x) = x f'(x)$. Find $h'(4)$.",
+   "stimulus": "higher-order-derivatives-s1",
+   "numeric": {
+    "answer": 10,
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "The product rule has two terms; the first, $1 \\cdot f'(4) = 2$, is missing."
+     },
+     {
+      "value": 2,
+      "why": "That is only $f'(4)$. Add $x f''(x) = 4 \\cdot 2$ from the product rule."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product rule: $h'(x) = f'(x) + x f''(x)$. From the graph, $f'(4) = 2$ and $f''(4) = 2$ (the slope of the second segment). So $h'(4) = 2 + 4(2) = 10$."
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-5",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Differentiate $x^2 + 4y^2 = 8$ implicitly to get the first derivative $\\frac{dy}{dx}$, which the second derivative will need.",
+   "stimulus": "higher-order-derivatives-s2",
+   "expr": {
+    "answer": "-x/(4y)",
+    "vars": [
+     "x",
+     "y"
+    ],
+    "domain": {
+     "x": [
+      0.5,
+      2
+     ],
+     "y": [
+      0.5,
+      1.5
+     ]
+    },
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "-x/y",
+      "why": "The derivative of $4y^2$ is $8y\\frac{dy}{dx}$; the factor 4 stays."
+     },
+     {
+      "expr": "x/(4y)",
+      "why": "Moving $2x$ across the equals sign makes it negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2x + 8y\\frac{dy}{dx} = 0$, so $\\frac{dy}{dx} = -\\frac{2x}{8y} = -\\frac{x}{4y}$."
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-6",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\frac{d^2y}{dx^2}$ at the point $(2, 1)$.",
+   "stimulus": "higher-order-derivatives-s2",
+   "numeric": {
+    "answer": "-1/2",
+    "mistakes": [
+     {
+      "value": "-1/4",
+      "why": "That treats $y$ as a constant when differentiating $-\\frac{x}{4y}$. The quotient rule needs $\\frac{d}{dx}(4y) = 4\\frac{dy}{dx}$."
+     },
+     {
+      "value": 0,
+      "why": "The quotient rule's numerator is $(4y)(1) - x\\left(4\\frac{dy}{dx}\\right)$, and $\\frac{dy}{dx} = -\\frac{1}{2}$ makes the second term $+4$, not $-4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left(-\\frac{x}{4y}\\right) = -\\frac{4y - 4x\\frac{dy}{dx}}{16y^2}$. At $(2, 1)$, $\\frac{dy}{dx} = -\\frac{1}{2}$, so $-\\frac{4 + 4}{16} = -\\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-7",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Using $\\frac{dy}{dx} = -\\frac{x}{4y}$ and the equation of the curve, which expression equals $\\frac{d^2y}{dx^2}$?",
+   "stimulus": "higher-order-derivatives-s2",
+   "options": [
+    "$-\\frac{1}{4y}$",
+    "$-\\frac{1}{2y^2}$",
+    "$-\\frac{1}{2y^3}$",
+    "$\\frac{1}{2y^3}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = -\\frac{4y - 4x\\left(-\\frac{x}{4y}\\right)}{16y^2} = -\\frac{4y^2 + x^2}{16y^3} = -\\frac{8}{16y^3} = -\\frac{1}{2y^3}$.",
+    "options": [
+     "This treats $y$ as a constant in the quotient rule.",
+     "After substituting $\\frac{dy}{dx}$ the denominator is $16y^3$, not $16y^2$.",
+     "$-\\frac{4y^2 + x^2}{16y^3}$, and $x^2 + 4y^2 = 8$ on the curve.",
+     "The sign is lost: the second derivative is $-\\frac{8}{16y^3}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-8",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "After differentiating $\\frac{dy}{dx} = -\\frac{x}{4y}$ with the quotient rule, a $\\frac{dy}{dx}$ appears in the result. What is the next step?",
+   "stimulus": "higher-order-derivatives-s2",
+   "options": [
+    "Replace it with 0, since it is a first derivative",
+    "Replace it with 1, since $\\frac{d}{dx}x = 1$",
+    "Differentiate the result a third time",
+    "Replace it with $-\\frac{x}{4y}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Substitute $\\frac{dy}{dx} = -\\frac{x}{4y}$ so the second derivative is in terms of $x$ and $y$; then the curve's equation may simplify it.",
+    "options": [
+     "$\\frac{dy}{dx}$ is not 0 in general; substitute its expression.",
+     "That holds for $x$, not for $y$.",
+     "The goal is the second derivative; substitution, not another derivative, comes next.",
+     "The second derivative should be written in $x$ and $y$ alone."
+    ]
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-9",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Let $f(x) = x^4 - 2x^3 + x$. Find $f''(x)$.",
+   "expr": {
+    "answer": "12x^2 - 12x",
+    "vars": [
+     "x"
+    ],
+    "lhs": "f''(x) =",
+    "mistakes": [
+     {
+      "expr": "4x^3 - 6x^2 + 1",
+      "why": "That is $f'(x)$. Differentiate once more."
+     },
+     {
+      "expr": "24x - 12",
+      "why": "That is $f'''(x)$, one derivative too many."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 4x^3 - 6x^2 + 1$, then $f''(x) = 12x^2 - 12x$."
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-10",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\sin(3x)$. Find $f''(x)$.",
+   "expr": {
+    "answer": "-9sin(3x)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "f''(x) =",
+    "mistakes": [
+     {
+      "expr": "-3sin(3x)",
+      "why": "Both derivatives need the chain rule factor 3: $3 \\cdot 3 = 9$."
+     },
+     {
+      "expr": "9sin(3x)",
+      "why": "The derivative of $\\cos(3x)$ is $-3\\sin(3x)$, so the sign is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 3\\cos(3x)$ and $f''(x) = -9\\sin(3x)$: each derivative brings a factor 3 from the chain rule."
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-11",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Let $y = e^{x^2}$. Find $\\frac{d^2y}{dx^2}$.",
+   "expr": {
+    "answer": "(2 + 4x^2)e^(x^2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1.5,
+     1.5
+    ],
+    "lhs": "\\frac{d^2y}{dx^2} =",
+    "mistakes": [
+     {
+      "expr": "4x^2*e^(x^2)",
+      "why": "$\\frac{dy}{dx} = 2x \\cdot e^{x^2}$ is a product; the term from differentiating $2x$, which is $2e^{x^2}$, is missing."
+     },
+     {
+      "expr": "2e^(x^2)",
+      "why": "The product rule has a second term: $2x$ times the derivative of $e^{x^2}$, which is $4x^2e^{x^2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dx} = 2xe^{x^2}$. This is a product, so $\\frac{d^2y}{dx^2} = 2e^{x^2} + 2x \\cdot 2xe^{x^2} = (2 + 4x^2)e^{x^2}$."
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-12",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\ln x$. Find $f'''(2)$.",
+   "numeric": {
+    "answer": "1/4",
+    "mistakes": [
+     {
+      "value": "1/8",
+      "why": "The power rule on $-x^{-2}$ brings down $-2$: the third derivative is $2x^{-3}$, not $x^{-3}$."
+     },
+     {
+      "value": "-1/4",
+      "why": "That is $f''(2)$. Differentiate once more: $\\frac{d}{dx}(-x^{-2}) = 2x^{-3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = x^{-1}$, $f''(x) = -x^{-2}$, $f'''(x) = 2x^{-3}$. So $f'''(2) = \\frac{2}{8} = \\frac{1}{4}$."
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-13",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "single",
+   "practice": "2.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which expression means the second derivative of $y$ with respect to $x$?",
+   "options": [
+    "$\\frac{d^2y}{dx^2}$",
+    "$\\left(\\frac{dy}{dx}\\right)^2$",
+    "$\\frac{dy^2}{dx}$",
+    "$2\\frac{dy}{dx}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left(\\frac{dy}{dx}\\right)$, also written $y''$ or $f''(x)$.",
+    "options": [
+     "Leibniz notation for differentiating $y$ twice with respect to $x$.",
+     "This is the square of the first derivative, a different quantity.",
+     "This would be the derivative of $y^2$.",
+     "Twice the first derivative is not a second derivative."
+    ]
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-14",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = e^{-2x}$. Find $f^{(5)}(0)$, the fifth derivative at 0.",
+   "numeric": {
+    "answer": -32,
+    "mistakes": [
+     {
+      "value": 32,
+      "why": "Five factors of $-2$ give a negative number: $(-2)^5 = -32$."
+     },
+     {
+      "value": -10,
+      "why": "The factors multiply, not add: $(-2)^5$, not $5(-2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each derivative multiplies by $-2$: $f^{(n)}(x) = (-2)^n e^{-2x}$. So $f^{(5)}(0) = (-2)^5 = -32$."
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-15",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "If $f'(x) = x^2e^x$, find $f''(1)$.",
+   "numeric": {
+    "answer": "3e",
+    "mistakes": [
+     {
+      "value": "2e",
+      "why": "That is only $2xe^x$; the product rule adds $x^2e^x = e$ at $x = 1$."
+     },
+     {
+      "value": "e",
+      "why": "That is $f'(1)$. Differentiate $f'$ once to get $f''$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f''(x) = 2xe^x + x^2e^x$ by the product rule. So $f''(1) = 2e + e = 3e$."
+   }
+  },
+  {
+   "id": "calc-higher-order-derivatives-16",
+   "unit": "unit-3",
+   "topic": "higher-order-derivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "For $p(x) = 4x^3 - x + 7$, what is $p'''(x)$?",
+   "options": [
+    "$0$",
+    "$24$",
+    "$24x$",
+    "$12x^2 - 1$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Differentiate three times: $12x^2 - 1$, then $24x$, then $24$.",
+    "options": [
+     "That is $p^{(4)}$; a cubic reaches 0 at the fourth derivative.",
+     "$p' = 12x^2 - 1$, $p'' = 24x$, $p''' = 24$.",
+     "That is $p''(x)$.",
+     "That is $p'(x)$."
+    ]
+   }
+  }
+ ]
+}

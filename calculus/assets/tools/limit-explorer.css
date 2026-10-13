@@ -1,0 +1,132 @@
+/* Limit explorer (calculus/assets/tools/limit-explorer.js). OWNED BY THIS TOOL.
+   The left tracer and its column are purple, the right ones orange, the
+   curve is f's crimson (s1) as on every calculus plot. */
+.le-stage{--le-l:#7A4F9E;--le-r:#A84400;--le-f:#B0123A;--le-grid:var(--line);display:flex;flex-direction:column;gap:10px;min-height:0;flex:1;}
+:root[data-theme="dark"] .le-stage{--le-l:#C3A3E0;--le-r:#F29A5C;--le-f:#F590AC;}
+.le-graph{position:relative;flex:1 1 auto;min-height:200px;touch-action:none;user-select:none;-webkit-user-select:none;}
+.le-graph svg{position:absolute;inset:0;width:100%;height:100%;display:block;font:700 12px var(--font-ui);font-variant-numeric:tabular-nums;}
+.le-grid line{stroke:var(--line);stroke-width:1;}
+.le-frame{fill:none;stroke:var(--line);stroke-width:1.2;}
+.le-axis line{stroke:var(--ink);stroke-width:1.3;}
+.le-ticks text{fill:var(--muted);}
+.le-axlabel{fill:var(--ink);font-weight:800;font-style:italic;}
+.le-guide{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:3 4;}
+.le-guide.h{stroke-opacity:.7;}
+.le-asym{stroke:var(--ink);stroke-opacity:.55;stroke-width:1.4;stroke-dasharray:7 5;}
+.le-bound{fill:none;stroke:#009E73;stroke-width:2;stroke-dasharray:6 5;}
+:root[data-theme="dark"] .le-bound{stroke:#52CFA6;}
+.le-blabel{fill:var(--ink);font-weight:800;}
+.le-band{fill:var(--le-f);fill-opacity:.4;stroke:none;}
+.le-bandlabel{fill:var(--ink);font-weight:800;paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.le-curve{fill:none;stroke:var(--le-f);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.le-trail{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.45;}
+.le-trail.l{stroke:var(--le-l);} .le-trail.r{stroke:var(--le-r);}
+.le-trail.flat{stroke-opacity:.8;stroke-width:4;}
+.le-drop{stroke-width:1.5;stroke-dasharray:2 3;} .le-drop.l{stroke:var(--le-l);} .le-drop.r{stroke:var(--le-r);}
+.le-ah.l{fill:var(--le-l);} .le-ah.r{fill:var(--le-r);}
+.le-pt{fill:var(--le-f);stroke:var(--white);stroke-width:2;}
+.le-pt.is-open{fill:var(--white);stroke:var(--le-f);stroke-width:2.4;}
+.le-tracer{stroke:var(--white);stroke-width:2.5;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));}
+.le-tracer.l{fill:var(--le-l);} .le-tracer.r{fill:var(--le-r);}
+.le-off path{fill:none;stroke:var(--le-f);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+.le-off text{fill:var(--le-f);font-weight:800;}
+
+/* The course crumb is not in the Tool Studio's hidden list yet (shared fix
+   reported); hide it here so the studio is exactly one screen. */
+body.ls-on .calc-crumb{display:none;}
+
+/* The table and the checklist */
+.le-side{flex:none;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:10px 14px;align-items:start;}
+.le-th{display:flex;justify-content:space-between;margin:0 0 2px;font:800 12px var(--font-ui);color:var(--muted);}
+.le-th-r{display:inline-flex;align-items:center;gap:6px;}
+.le-pdot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;}
+.le-pdot.l{background:var(--le-l,#7A4F9E);} .le-pdot.r{background:var(--le-r,#C24E00);}
+.ls-pill .le-pdot.l{background:#7A4F9E;} .ls-pill .le-pdot.r{background:#A84400;}
+:root[data-theme="dark"] .ls-pill .le-pdot.l{background:#C3A3E0;} :root[data-theme="dark"] .ls-pill .le-pdot.r{background:#F29A5C;}
+.le-tab{width:100%;border-collapse:collapse;font:600 12.5px var(--font-mono);font-variant-numeric:tabular-nums;}
+.le-tab th{font:800 11.5px var(--font-ui);color:var(--muted);text-align:right;padding:2px 6px;border-bottom:1.5px solid var(--line);}
+.le-tab td{text-align:right;padding:3px 6px;white-space:nowrap;border-bottom:1px solid var(--line);}
+.le-tab td.v.l{color:var(--le-l,#7A4F9E);font-weight:800;} .le-tab td.v.r{color:var(--le-r,#C24E00);font-weight:800;}
+.le-tab th.r,.le-tab td.r:not(.v){border-left:2px solid var(--line);}
+.le-tab td.r:not(.v){padding-left:10px;}
+.le-tab tr.is-now td{background:var(--ctint);}
+.le-ch-h{margin:0 0 4px;font:800 12px var(--font-ui);color:var(--muted);}
+.le-check{list-style:none;margin:0;padding:0;display:grid;gap:4px;font:700 13px/1.35 var(--font-ui);}
+.le-check li{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:6px;align-items:center;}
+.le-check b{font-family:var(--font-mono);font-weight:800;white-space:nowrap;}
+.le-tk{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font:900 12px/1 var(--font-ui);box-shadow:inset 0 0 0 2px var(--line);color:var(--white);}
+.le-check li.yes .le-tk{background:var(--good-text);box-shadow:none;}
+.le-check li.yes .le-tk::after{content:'✓';}
+.le-check li.no .le-tk{background:var(--bad-text);box-shadow:none;}
+.le-check li.no .le-tk::after{content:'✕';}
+.le-check li.wait .le-tk::after{content:'?';color:var(--muted);}
+.le-check li.wait b,.le-check li.skip b{color:var(--muted);font-family:var(--font-ui);font-weight:700;}
+.le-check li.skip{opacity:.55;}
+.le-verdict{margin:6px 0 0;padding:6px 10px;border-radius:10px;font:800 13px var(--font-ui);color:var(--muted);background:var(--paper);}
+.le-verdict.is-on.good{color:var(--good-text);background:color-mix(in srgb,var(--good-text) 12%,transparent);}
+.le-verdict.is-on.bad,.le-verdict.is-on:not(.good){color:var(--cink);background:var(--ctint);}
+
+/* The dock */
+.le-lbl{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 6px;font:800 var(--ls-s,13px) var(--font-ui);color:var(--muted);}
+.le-zv{font:800 var(--ls-m,16px) var(--font-mono);color:var(--ink);}
+.le-zrow{display:flex;align-items:center;gap:8px;}
+.le-zrow input[type=range]{flex:1;min-width:0;height:44px;accent-color:var(--cink);}
+.le-play{flex:none;padding:0 16px;}
+.le-play svg{fill:currentColor;}
+.le-play .le-ic-pause,.le-play.is-on .le-ic-play{display:none;}
+.le-play.is-on .le-ic-pause{display:inline;}
+.le-fill{justify-self:start;margin-top:2px;min-height:40px;padding:0 16px;font-size:14px;}
+.le-fill[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--cink);color:var(--cink);}
+.le-chip[aria-pressed="true"]{background:var(--ctint);box-shadow:inset 0 0 0 2px var(--cink);color:var(--cink);}
+.le-short{display:none;}
+.le-formula{overflow-x:auto;padding:4px 0 10px;}
+.le-lims td{text-align:right;font-family:var(--font-mono);}
+.le-just{margin:0;padding:10px 12px;border-radius:12px;background:var(--ctint);font-weight:700;line-height:1.5;}
+.le-dtab{overflow-x:auto;}
+
+/* Phones: the gallery label is for screen readers, Play is an icon. A
+   compact stage (under 520 px, set by the script from the stage's own
+   width) keeps the table's current row and puts the checklist on one line. */
+@media (max-width:699.98px){
+  .le-gallery .le-lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  .le-play .le-play-t{display:none;}
+  .le-play{padding:0;width:48px;}
+}
+.le-stage.le-compact{position:relative;gap:6px;}
+.le-compact .le-side{grid-template-columns:minmax(0,1fr);gap:6px;}
+.le-compact .le-tablebox .le-tab tbody tr:not(.is-now){display:none;}
+.le-compact .le-th,.le-compact .le-ch-h{display:none;}
+.le-compact .le-tab{font-size:11.5px;}
+.le-compact .le-tab td{padding:2px 3px;}
+.le-compact .le-tab td.r:not(.v){padding-left:5px;}
+.le-compact .le-checkbox{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.le-compact .le-check{display:flex;gap:10px;font-size:12px;}
+.le-compact .le-check li{display:flex;gap:4px;}
+.le-compact .le-check li:has(.le-short) .le-full,.le-compact .le-check li:has(.le-short) b{display:none;}
+.le-compact .le-check li .le-short{display:inline;}
+.le-compact .le-verdict{margin:0;font-size:12px;padding:3px 8px;}
+.le-compact .le-fill{min-height:38px;padding:0 12px;font-size:13px;margin:0;}
+.le-compact .le-graph{min-height:150px;}
+/* A wide stage: the graph on the left, the table and checklist in a column on the right. */
+.le-stage.le-wide{flex-direction:row;}
+.le-wide .le-side{width:min(310px,36%);grid-template-columns:minmax(0,1fr);align-content:start;gap:16px;}
+.le-wide .le-tab{font-size:13px;}
+/* Drill figures: a table of values in two halves. */
+.le-opt{display:inline;}
+.ls-root .ls-drill-stage .le-fig2{flex-direction:row;align-items:stretch !important;gap:16px;}
+.le-fig2 .le-vtabs{align-self:center;flex:none;}
+.le-fig2-plot{flex:1;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;}
+.ls-root .ls-drill-stage .le-fig2-plot > svg{flex:none;width:auto;height:auto;max-width:100%;max-height:100%;}
+@media (max-width:699.98px){ .le-fig2-plot{display:none;} }
+.le-tfig{align-items:center !important;justify-content:center;}
+.le-vtabs{display:flex;gap:18px;justify-content:center;align-items:flex-start;max-width:100%;}
+.le-vtab{border-collapse:collapse;font:600 16px var(--font-mono);font-variant-numeric:tabular-nums;color:var(--ink);}
+.le-vtab caption{font:800 14px var(--font-ui);padding:0 0 4px;}
+.le-vtab caption.l{color:#7A4F9E;} .le-vtab caption.r{color:#A84400;}
+.le-vtab th,.le-vtab td{padding:6px 14px;text-align:right;border-bottom:1px solid var(--line);}
+.le-vtab thead th{font:800 15px var(--font-ui);color:var(--muted);border-bottom:2px solid var(--line);}
+.le-vtab tbody th{font-weight:700;border-right:2px solid var(--line);}
+.le-vtab.l td{color:#7A4F9E;font-weight:800;} .le-vtab.r td{color:#A84400;font-weight:800;}
+:root[data-theme="dark"] .le-vtab.l td,:root[data-theme="dark"] .le-vtab caption.l{color:#C3A3E0;}
+:root[data-theme="dark"] .le-vtab.r td,:root[data-theme="dark"] .le-vtab caption.r{color:#F29A5C;}
+@media (max-width:699.98px){ .le-vtabs{gap:8px;} .le-vtab{font-size:13px;} .le-vtab th,.le-vtab td{padding:3px 7px;} .le-vtab thead th{font-size:13px;} }

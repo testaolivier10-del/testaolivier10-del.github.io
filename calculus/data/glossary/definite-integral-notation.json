@@ -1,0 +1,8 @@
+{
+ "definite-integral": {
+  "def": "The limit of Riemann sums of a function $f$ on $[a, b]$ as the widths of the subintervals shrink to 0, written $\\int_a^b f(x)\\,dx$. The function $f(x)$ is the integrand; $a$ and $b$ are the limits of integration. For a positive $f$ it is the area under the graph; for a rate, the accumulated change."
+ },
+ "sigma-notation": {
+  "def": "Shorthand for a sum: $\\sum_{i=1}^{n} a_i$ means $a_1 + a_2 + \\cdots + a_n$. A Riemann sum with right ends is $\\sum_{i=1}^{n} f(x_i)\\,\\Delta x$, with $\\Delta x = \\frac{b - a}{n}$ and $x_i = a + i\\,\\Delta x$."
+ }
+}

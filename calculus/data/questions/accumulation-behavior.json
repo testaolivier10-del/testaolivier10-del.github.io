@@ -1,0 +1,552 @@
+{
+ "stimuli": {
+  "accumulation-behavior-s1": {
+   "kind": "graph",
+   "title": "The graph of $f$, with $g(x) = \\int_0^x f(t)\\,dt$",
+   "text": "The graph of the continuous function $f$ on $[0, 8]$ is made of a line segment from $(0, -2)$ to $(1, 0)$, a semicircle above the axis from $x = 1$ to $x = 5$, a segment from $(5, 0)$ to $(7, -2)$, and a segment from $(7, -2)$ to $(8, -2)$. Let $g(x) = \\int_0^x f(t)\\,dt$.",
+   "plot": {
+    "label": "Graph of f on [0, 8]: a segment from (0, -2) to (1, 0), a semicircle of radius 2 above the axis centered at (3, 0), a segment from (5, 0) to (7, -2), and a horizontal segment to (8, -2)",
+    "width": 420,
+    "height": 260,
+    "x": [
+     -0.4,
+     8.5
+    ],
+    "y": [
+     -2.6,
+     2.6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "t",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2x - 2",
+      "domain": [
+       0,
+       1
+      ],
+      "cls": "s1",
+      "label": "f"
+     },
+     {
+      "fn": "sqrt(4 - (x - 3)^2)",
+      "domain": [
+       1,
+       5
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "5 - x",
+      "domain": [
+       5,
+       7
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "-2",
+      "domain": [
+       7,
+       8
+      ],
+      "cls": "s1"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       -2
+      ]
+     },
+     {
+      "at": [
+       8,
+       -2
+      ]
+     }
+    ]
+   }
+  },
+  "accumulation-behavior-s2": {
+   "kind": "graph",
+   "title": "The graph of $f(t) = t^2 - 4t$, with $g(x) = \\int_0^x f(t)\\,dt$",
+   "text": "Let $f(t) = t^2 - 4t$ and $g(x) = \\int_0^x f(t)\\,dt$ for $0 \\le x \\le 6$.",
+   "plot": {
+    "label": "Graph of f(t) = t squared minus 4t for t from 0 to 6: below the axis between 0 and 4 with its lowest point at (2, -4), above the axis from 4 to 6",
+    "width": 380,
+    "height": 260,
+    "x": [
+     -0.4,
+     6.4
+    ],
+    "y": [
+     -5,
+     13
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "t",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^2 - 4x",
+      "domain": [
+       0,
+       6
+      ],
+      "label": "f",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       -4
+      ]
+     },
+     {
+      "at": [
+       4,
+       0
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-accumulation-behavior-1",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "accumulation-behavior-s1",
+   "q": "Find $g(5)$.",
+   "numeric": {
+    "answer": "2*pi - 1",
+    "mistakes": [
+     {
+      "value": "2*pi + 1",
+      "why": "The triangle from 0 to 1 lies below the axis, so it subtracts: $-1$, not $+1$."
+     },
+     {
+      "value": "2*pi",
+      "why": "That is only the semicircle. The integral starts at 0, and the triangle from 0 to 1, below the axis, contributes $-1$."
+     },
+     {
+      "value": "4*pi - 1",
+      "why": "The region from 1 to 5 is half of a disc of radius 2: $\\frac{1}{2}\\pi(2)^2 = 2\\pi$, not $4\\pi$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From 0 to 1: a triangle below the axis, $-\\frac{1}{2}(1)(2) = -1$. From 1 to 5: a half-disc above, $\\frac{1}{2}\\pi(2)^2 = 2\\pi$. So $g(5) = 2\\pi - 1$."
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-2",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "accumulation-behavior-s1",
+   "q": "At what value of $x$ in $(0, 8)$ does $g$ have a relative maximum? Why?",
+   "options": [
+    "$x = 3$, because $f$ has its largest value on $[0, 8]$ there",
+    "$x = 1$, because $g' = f$ changes sign from $-$ to $+$ there",
+    "$x = 7$, because $f$ stops decreasing there",
+    "$x = 5$: there $g' = f$ changes from positive to negative"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$g'(x) = f(x)$. $f > 0$ on $(1, 5)$ and $f < 0$ on $(5, 8)$, so $g'$ changes from positive to negative at $x = 5$: a relative maximum.",
+    "options": [
+     "At $x = 3$, $g' = f$ is largest, so $g$ is rising fastest. $g$ keeps rising until $f$ turns negative.",
+     "At $x = 1$, $f$ changes from negative to positive, so $g$ stops falling and starts rising: a relative minimum.",
+     "Where $f$ changes direction tells about the concavity of $g$, not its extrema. $f$ is negative on both sides of 7.",
+     "Correct: area stops adding and starts subtracting at $x = 5$."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-3",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "accumulation-behavior-s1",
+   "q": "At what value of $x$ in $(0, 8)$ does the graph of $g$ have a point of inflection?",
+   "options": [
+    "$x = 5$, where $f$ changes from positive to negative",
+    "$x = 7$, where $f$ stops decreasing and becomes constant",
+    "$x = 3$, where $f$ changes from increasing to decreasing",
+    "$x = 1$, where $f$ changes from negative to positive"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$g'' = f'$. $f$ increases on $(0, 3)$ and decreases on $(3, 7)$, so $g$ changes from concave up to concave down at $x = 3$.",
+    "options": [
+     "That is where $g$ has its relative maximum. $f$ is decreasing on both sides of 5, so $g$ stays concave down there.",
+     "On $(5, 7)$, $f$ decreases so $g$ is concave down; on $(7, 8)$, $f$ is constant so $g'' = 0$. Concavity does not change from down to up.",
+     "Correct: $g'' = f'$ changes from positive to negative at 3.",
+     "A sign change of $f = g'$ makes an extremum of $g$. An inflection point needs $g'' = f'$ to change sign."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-4",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "accumulation-behavior-s1",
+   "q": "Where on $[0, 8]$ does $g$ reach its absolute minimum value?",
+   "options": [
+    "$x = 7$, where $f$ has its lowest value",
+    "$x = 1$, where $g(1) = -1$",
+    "$x = 0$, where $g(0) = 0$",
+    "$x = 8$, where $g(8) = 2\\pi - 5$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Candidates: endpoints and where $g' = f$ changes sign. $g(0) = 0$, $g(1) = -1$, $g(5) = 2\\pi - 1 \\approx 5.28$, $g(8) = 2\\pi - 1 - 2 - 2 = 2\\pi - 5 \\approx 1.28$. The minimum is $-1$, at $x = 1$.",
+    "options": [
+     "$f$ is least on $[7, 8]$, but $f$ is the rate. The value of $g$ keeps dropping until 8, and stays above $-1$.",
+     "Correct: the candidates are $g(0) = 0$, $g(1) = -1$, $g(5) = 2\\pi - 1$ and $g(8) = 2\\pi - 5$; the least is $-1$.",
+     "$g$ decreases right after 0 (because $f < 0$ there), so values just past 0 are less than $g(0)$.",
+     "$g$ does fall after 5, but $g(8) = 2\\pi - 5 \\approx 1.28$ is still above $g(1) = -1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-5",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "accumulation-behavior-s2",
+   "q": "On which interval is $g$ decreasing?",
+   "options": [
+    "$(0, 4)$",
+    "$(0, 2)$",
+    "$(4, 6)$",
+    "$(2, 6)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g'(x) = f(x) = x(x - 4)$, which is negative for $0 < x < 4$. So $g$ decreases on $(0, 4)$.",
+    "options": [
+     "Correct: $g' = f < 0$ on $(0, 4)$.",
+     "On $(0, 2)$, $f$ is decreasing, which makes $g$ concave down. $g$ decreases wherever $f$ is negative: all of $(0, 4)$.",
+     "There $f > 0$, so $g$ increases.",
+     "On $(2, 6)$, $f$ is increasing; that is where $g$ is concave up, not where it decreases."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-6",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "accumulation-behavior-s2",
+   "q": "At which $x$ does $g$ have a relative minimum, and why?",
+   "options": [
+    "$x = 2$, because $f$ reaches its minimum value at $x = 2$",
+    "$x = 0$, because $g(0) = 0$ at the start of the interval",
+    "$x = 4$, because $f(4) = 0$ and so $g'(4) = 0$",
+    "$x = 4$: $g' = f$ changes from negative to positive"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$g' = f$ is negative on $(0, 4)$ and positive on $(4, 6)$, so $g$ has a relative minimum at $x = 4$. A zero of $g'$ is not enough; the change of sign is the reason.",
+    "options": [
+     "At $x = 2$, $g' = f$ is most negative, so $g$ is falling fastest; $g$ keeps falling until $x = 4$.",
+     "$g(0) = 0$ is just the starting value; $g$ is decreasing right after 0.",
+     "The location is right, but $f(4) = 0$ alone is not a reason: $g'$ must change sign there, from negative to positive.",
+     "Correct: $g$ stops falling and starts rising at $x = 4$."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-7",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "accumulation-behavior-s2",
+   "q": "Where is $g'' = f'$ positive, so that the graph of $g$ bends upward?",
+   "options": [
+    "$(0, 2)$",
+    "$(0, 4)$",
+    "$(2, 6)$",
+    "$(4, 6)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$g''(x) = f'(x) = 2x - 4$, positive for $x > 2$. So $g$ is concave up on $(2, 6)$.",
+    "options": [
+     "On $(0, 2)$, $f$ is decreasing, so $g$ is concave down.",
+     "On $(0, 4)$, $f < 0$, which makes $g$ decrease; concavity is a different question.",
+     "Correct: $f$ is increasing there, so $g'' = f' > 0$.",
+     "$f > 0$ on $(4, 6)$ makes $g$ increase. Concavity of $g$ follows whether $f$ increases: from $x = 2$ on."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-8",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "accumulation-behavior-s2",
+   "q": "Is $g(4)$ positive, negative or zero?",
+   "options": [
+    "zero, because $f$ has the same value 0 at both ends",
+    "negative: on $(0, 4)$ the graph of $f$ is below the axis",
+    "positive, because an area is a positive number",
+    "zero, because $f(4) = 0$ at the right end of $[0, 4]$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "On $(0, 4)$, $f(t) = t(t - 4) < 0$, so the region lies below the axis and $g(4) = \\int_0^4 f(t)\\,dt < 0$.",
+    "options": [
+     "Equal heights at the ends do not make the integral 0. The region in between lies below the axis.",
+     "Correct: $f < 0$ on $(0, 4)$, so the integral from 0 to 4 is negative.",
+     "The size of the region is positive, but it lies below the axis, so it counts as negative in $\\int_0^4 f(t)\\,dt$.",
+     "$f(4) = 0$ is the height at one point. $g(4)$ adds up $f$ over all of $[0, 4]$."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-9",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Between the graph of a function $p$ and the x-axis on $[0, 6]$, the regions above the axis have total area 7 and the regions below have total area 3. Find $\\int_0^6 p(x)\\,dx$.",
+   "options": [
+    "4",
+    "10",
+    "-4",
+    "7"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\int_0^6 p(x)\\,dx$ is a signed area: $7 - 3 = 4$.",
+    "options": [
+     "Correct: the integral adds the area above and subtracts the area below: 7 - 3.",
+     "That is the total area of the regions, 7 + 3. The integral counts area below the axis as negative.",
+     "The larger area is above the axis, so the integral is positive.",
+     "This ignores the regions below the axis; they subtract 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-10",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "numeric",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the graph of $y = \\sin x$ to find $\\int_0^{2\\pi} \\sin x\\,dx$.",
+   "numeric": {
+    "answer": 0,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "4 is the total area of the two arches. The arch from $\\pi$ to $2\\pi$ lies below the axis, so it subtracts."
+     },
+     {
+      "value": 2,
+      "why": "2 is one arch, from 0 to $\\pi$. The second arch, below the axis, cancels it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The arch from 0 to $\\pi$ lies above the axis and the arch from $\\pi$ to $2\\pi$ is the same shape below it. Their signed areas cancel: the integral is 0."
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-11",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$f$ is continuous, $f > 0$ on $(0, 3)$ and $f < 0$ on $(3, 5)$. The region between the graph and the x-axis has area 6 on $[0, 3]$ and area 8 on $[3, 5]$. Let $g(x) = \\int_0^x f(t)\\,dt$. Which is true?",
+   "options": [
+    "$g(3) = 0$ and $g(5) = -8$",
+    "$g(3) = 6$ and $g(5) = 2$",
+    "$g(3) = 6$ and $g(5) = -2$",
+    "$g(3) = 6$ and $g(5) = 14$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$g(3) = 6$. $g(5) = 6 + (-8) = -2$: after $x = 3$ the accumulated value falls, because $f < 0$.",
+    "options": [
+     "$g(3)$ is the area accumulated from 0 to 3, which is 6. $g$ is 0 only at $x = 0$ here.",
+     "$6 - 8 = -2$, not 2. More area lies below the axis than above it.",
+     "Correct: $g(3) = 6$, then the region below the axis subtracts 8.",
+     "The region on $[3, 5]$ lies below the axis, so it subtracts."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-12",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Let $g(x) = \\int_0^x (t - 2)^2\\,dt$. Does $g$ have a relative extremum at $x = 2$?",
+   "options": [
+    "No, because $g(2)$ is not 0",
+    "No: $g'(x) = (x - 2)^2$ is 0 at 2 but does not change sign",
+    "Yes, a relative minimum, because $g'(2) = 0$",
+    "Yes, a relative maximum, because $(t - 2)^2$ is least at 2"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$g'(x) = (x - 2)^2 \\ge 0$, and it is positive on both sides of $x = 2$. $g$ is increasing through 2, so there is no relative extremum. A critical point is a candidate, not a guarantee.",
+    "options": [
+     "The value of $g(2)$ does not decide extrema. Look at whether $g'$ changes sign.",
+     "Correct: $g' \\ge 0$ on both sides, so $g$ keeps increasing through $x = 2$.",
+     "$g'(2) = 0$ is not enough. $g' = (x - 2)^2$ is positive on both sides of 2, so there is no extremum.",
+     "The integrand is smallest at 2, so $g$ rises most slowly there, but it still rises: no maximum."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-13",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int_1^6 (3 - t)\\,dt$ using the regions between the graph of $y = 3 - t$ and the t-axis.",
+   "numeric": {
+    "answer": "-5/2",
+    "mistakes": [
+     {
+      "value": 6.5,
+      "why": "That adds the two triangles' areas, 2 + 4.5. The triangle from 3 to 6 lies below the axis and subtracts."
+     },
+     {
+      "value": 2.5,
+      "why": "The sign is reversed: the larger triangle, area 4.5, is below the axis, so the result is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From 1 to 3: a triangle above the axis, $\\frac{1}{2}(2)(2) = 2$. From 3 to 6: a triangle below, $\\frac{1}{2}(3)(3) = 4.5$. Signed area: $2 - 4.5 = -2.5$."
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-14",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For the function $g$ in a free-response question, $g(x) = \\int_0^x f(t)\\,dt$ and $f$ is graphed. Which sentence earns the point for \"$g$ has a relative maximum at $x = 5$\"?",
+   "options": [
+    "$f(5) = 0$, so $g'(5) = 0$.",
+    "$f$ is decreasing at $x = 5$, so $g$ is concave down.",
+    "The graph changes from going up to going down at $x = 5$.",
+    "$g'(x) = f(x)$ changes from positive to negative at $x = 5$."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A relative maximum of $g$ needs $g'$ to change from positive to negative, said in words and tied to the given function: \"$g'(x) = f(x)$ changes from positive to negative at $x = 5$.\"",
+    "options": [
+     "A zero of the derivative only makes x = 5 a candidate; the sign change is the reason.",
+     "Concave down at a point does not make it a maximum unless g prime is also 0 there, and this sentence does not connect the two.",
+     "This does not say which graph. The scoring guidelines need the function named: g prime, which equals f.",
+     "Correct: it names g prime, says what changes sign and in which direction."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-15",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Let $g(x) = \\int_0^x \\cos(t^2)\\,dt$ for $0 \\le x \\le 2$. At what value of $x$ does $g$ have a relative maximum?",
+   "numeric": {
+    "answer": "sqrt(pi/2)",
+    "mistakes": [
+     {
+      "value": "pi/2",
+      "why": "$\\cos(t^2) = 0$ when $t^2 = \\frac{\\pi}{2}$, so take the square root: $t = \\sqrt{\\pi/2}$."
+     },
+     {
+      "value": "sqrt(pi)",
+      "why": "At $t = \\sqrt{\\pi}$, $\\cos(t^2) = \\cos \\pi = -1$, not 0. The first zero is $t^2 = \\frac{\\pi}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g'(x) = \\cos(x^2)$. It is positive for $0 \\le x < \\sqrt{\\pi/2}$ and negative for $\\sqrt{\\pi/2} < x \\le 2$ (since $x^2$ runs from $\\frac{\\pi}{2}$ to $4 < \\frac{3\\pi}{2}$). So $g'$ changes from positive to negative at $x = \\sqrt{\\pi/2}$."
+   }
+  },
+  {
+   "id": "calc-accumulation-behavior-16",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "calc": true,
+   "q": "Let $g(x) = \\int_0^x \\left(e^{\\sin t} - 1.5\\right)dt$ for $0 \\le x \\le 3$. Use a calculator to find the value of $x$ at which $g$ has a relative maximum.",
+   "numeric": {
+    "answer": 2.724105070861771,
+    "mistakes": [
+     {
+      "value": 0.41748758272802217,
+      "why": "At this zero of $g'$, $e^{\\sin x} - 1.5$ changes from negative to positive: that is a relative minimum. The maximum is at the other zero in $[0, 3]$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g'(x) = e^{\\sin x} - 1.5$. Solve $e^{\\sin x} - 1.5 = 0$ on $[0, 3]$ with the calculator: $x \\approx 0.417$ and $x \\approx 2.724$. $g'$ is positive between them and negative after 2.724, so $g$ has a relative maximum at $x \\approx 2.724$ (radians)."
+   }
+  }
+ ]
+}

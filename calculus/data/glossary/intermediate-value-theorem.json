@@ -1,0 +1,8 @@
+{
+ "hypothesis": {
+  "def": "A condition a theorem needs before its conclusion can be used. For the Intermediate Value Theorem the hypotheses are that f is continuous on the closed interval [a, b] and that d is between f(a) and f(b). If a hypothesis fails, the theorem promises nothing."
+ },
+ "ivt": {
+  "def": "The Intermediate Value Theorem: if $f$ is continuous on $[a, b]$ and $d$ is a number between $f(a)$ and $f(b)$, then $f(c) = d$ for at least one $c$ in $(a, b)$."
+ }
+}

@@ -1,0 +1,274 @@
+{
+ "stimuli": {
+  "washer-method-axes-s1": {
+   "kind": "graph",
+   "title": "The region $R$ between $y = 2x$ and $y = x^2$",
+   "plot": {
+    "label": "The line y = 2x and the parabola y = x², which meet at (0, 0) and (2, 4). The region R between them is shaded, with the line on top; it touches the x-axis only at the origin.",
+    "x": [-0.4, 2.6], "y": [-0.5, 5], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
+    "curves": [
+     { "fn": "2x", "domain": [-0.2, 2.45], "cls": "s2", "label": "y = 2x" },
+     { "fn": "x^2", "domain": [-0.4, 2.2], "cls": "s1", "label": "y = x²" }
+    ],
+    "shade": [ { "fn": "2x", "fn2": "x^2", "domain": [0, 2] } ],
+    "points": [ { "at": [0, 0] }, { "at": [2, 4], "label": "(2, 4)" } ],
+    "labels": [ { "at": [1.3, 2.1], "text": "R" } ]
+   }
+  },
+  "washer-method-axes-s2": {
+   "kind": "graph",
+   "title": "The region $Q$ between $y = 2 + \\cos x$ and $y = x^2$",
+   "plot": {
+    "label": "The curve y = 2 + cos x and the parabola y = x². They cross near x = −1.45 and x = 1.45; the region Q between them is shaded, with the cosine curve on top. Q lies above the x-axis except where the parabola touches it at the origin.",
+    "x": [-2, 2], "y": [-0.4, 3.6], "xStep": 0.5, "yStep": 0.5, "xLabel": "x", "yLabel": "y",
+    "curves": [
+     { "fn": "2 + cos(x)", "domain": [-2, 2], "cls": "s2", "label": "y = 2 + cos x" },
+     { "fn": "x^2", "domain": [-1.85, 1.85], "cls": "s1", "label": "y = x²" }
+    ],
+    "shade": [ { "fn": "2 + cos(x)", "fn2": "x^2", "domain": [-1.4546189292081113, 1.4546189292081113] } ],
+    "labels": [ { "at": [0, 1.5], "text": "Q" } ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-washer-method-axes-1", "unit": "unit-8", "topic": "washer-method-axes", "type": "single", "practice": "2.B", "level": "apply", "diff": 1,
+   "stimulus": "washer-method-axes-s1",
+   "q": "$R$ is revolved about the $x$-axis. What are the outer radius $R(x)$ and the inner radius $r(x)$ of the washer at $x$?",
+   "options": [
+    "$R(x) = 2x$ and $r(x) = x^2$",
+    "$R(x) = x^2$ and $r(x) = 2x$",
+    "$R(x) = 2x - x^2$ and $r(x) = 0$",
+    "$R(x) = 2x$ and $r(x) = 2x - x^2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both radii start at the $x$-axis. The far edge of the region is the line ($2x$); the near edge is the parabola ($x^2$), which leaves a hole.",
+    "options": [
+     "Outer to the far curve, inner to the near curve.",
+     "On $(0, 2)$, $2x > x^2$: the line is farther from the axis, so it gives the outer radius.",
+     "That treats the region's height as a solid disc. The region does not reach the axis, so each slice has a hole of radius $x^2$.",
+     "The inner radius runs from the axis to the near curve, $x^2$, not across the region."
+    ]
+   }
+  },
+  {
+   "id": "calc-washer-method-axes-2", "unit": "unit-8", "topic": "washer-method-axes", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "stimulus": "washer-method-axes-s1",
+   "q": "Find the volume of the solid formed when $R$ is revolved about the $x$-axis.",
+   "numeric": {
+    "answer": "64*pi/15",
+    "mistakes": [
+     { "value": "16*pi/15", "why": "That is $\\pi\\int_0^2 (2x - x^2)^2\\,dx$: you squared the difference of the radii. A washer's area is $\\pi(R^2 - r^2)$, the difference of the squares." },
+     { "value": "64/15", "why": "The $\\pi$ is missing. Each washer has area $\\pi R^2 - \\pi r^2$." },
+     { "value": "-64*pi/15", "why": "Outer minus inner: $R^2 - r^2$ with $R = 2x$, the radius to the far curve." }
+    ]
+   },
+   "why": { "correct": "$V = \\pi\\int_0^2 \\left[(2x)^2 - (x^2)^2\\right]\\,dx = \\pi\\left[\\frac{4x^3}{3} - \\frac{x^5}{5}\\right]_0^2 = \\pi\\left(\\frac{32}{3} - \\frac{32}{5}\\right) = \\frac{64\\pi}{15}$." }
+  },
+  {
+   "id": "calc-washer-method-axes-3", "unit": "unit-8", "topic": "washer-method-axes", "type": "expr", "practice": "1.E", "level": "apply", "diff": 2,
+   "stimulus": "washer-method-axes-s1",
+   "q": "The volume of the solid formed by revolving $R$ about the $x$-axis is $\\pi\\int_0^2 g(x)\\,dx$. Write $g(x)$.",
+   "expr": {
+    "answer": "4x^2 - x^4", "vars": ["x"], "domain": [0, 2], "lhs": "g(x) =",
+    "mistakes": [
+     { "expr": "(2x - x^2)^2", "why": "That squares the difference of the radii. A washer is a big disc minus a small one: $R^2 - r^2$." },
+     { "expr": "x^4 - 4x^2", "why": "Inner squared minus outer squared is negative. The outer radius is $2x$." },
+     { "expr": "2x - x^2", "why": "The radii are not squared. A washer's area is $\\pi(R^2 - r^2)$." }
+    ]
+   },
+   "why": { "correct": "$g(x) = R^2 - r^2 = (2x)^2 - (x^2)^2 = 4x^2 - x^4$." }
+  },
+  {
+   "id": "calc-washer-method-axes-4", "unit": "unit-8", "topic": "washer-method-axes", "type": "numeric", "practice": "1.E", "level": "analyze", "diff": 3,
+   "stimulus": "washer-method-axes-s1",
+   "q": "Instead, $R$ is revolved about the $y$-axis. Find the volume.",
+   "numeric": {
+    "answer": "8*pi/3",
+    "mistakes": [
+     { "value": "8*pi/15", "why": "That squares the difference $\\sqrt{y} - \\frac{y}{2}$. Use $R^2 - r^2$ with $R = \\sqrt{y}$ and $r = \\frac{y}{2}$." },
+     { "value": "-8*pi/3", "why": "The parabola $x = \\sqrt{y}$ is farther from the $y$-axis than the line $x = \\frac{y}{2}$ for $0 < y < 4$, so it gives the outer radius." }
+    ]
+   },
+   "why": { "correct": "Horizontal washers, $0 \\le y \\le 4$. The line is $x = \\frac{y}{2}$ and the parabola is $x = \\sqrt{y}$; at $y = 1$, $\\sqrt{1} > \\frac{1}{2}$. $V = \\pi\\int_0^4 \\left(y - \\frac{y^2}{4}\\right)\\,dy = \\pi\\left(8 - \\frac{16}{3}\\right) = \\frac{8\\pi}{3}$." }
+  },
+  {
+   "id": "calc-washer-method-axes-5", "unit": "unit-8", "topic": "washer-method-axes", "type": "single", "practice": "2.B", "level": "apply", "diff": 2,
+   "stimulus": "washer-method-axes-s1",
+   "q": "When $R$ is revolved about the $y$-axis, what are the radii of the washer at height $y$?",
+   "options": [
+    "$R = \\sqrt{y}$ and $r = \\frac{y}{2}$",
+    "$R = \\frac{y}{2}$ and $r = \\sqrt{y}$",
+    "$R = 2x$ and $r = x^2$",
+    "$R = \\sqrt{y} - \\frac{y}{2}$ and $r = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Horizontal slices: write each curve as $x$ in terms of $y$. The parabola $x = \\sqrt{y}$ is farther from the $y$-axis than the line $x = \\frac{y}{2}$.",
+    "options": [
+     "Outer to the far curve, inner to the near one, both in $y$.",
+     "At $y = 1$, $\\frac{y}{2} = 0.5 < 1 = \\sqrt{y}$: the line is the nearer curve.",
+     "Those are the radii about the $x$-axis, in $x$.",
+     "That is the width of the region, not a radius from the $y$-axis."
+    ]
+   }
+  },
+  {
+   "id": "calc-washer-method-axes-6", "unit": "unit-8", "topic": "washer-method-axes", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 1, "calc": true,
+   "stimulus": "washer-method-axes-s2",
+   "q": "The curves cross at $x = -b$ and $x = b$. Use a calculator to find $b > 0$.",
+   "numeric": {
+    "answer": 1.4546189292081113,
+    "mistakes": [
+     { "value": 1.7319189294633603, "why": "Your calculator is in degree mode. Switch to radians and solve $2 + \\cos x = x^2$." }
+    ]
+   },
+   "why": { "correct": "Solve $2 + \\cos x = x^2$ (radians): $b = 1.45461\\ldots$, so $1.455$ (or $1.454$ truncated). Store it." }
+  },
+  {
+   "id": "calc-washer-method-axes-7", "unit": "unit-8", "topic": "washer-method-axes", "type": "single", "practice": "2.B", "level": "apply", "diff": 1, "calc": true,
+   "stimulus": "washer-method-axes-s2",
+   "q": "$Q$ is revolved about the $x$-axis. What is the outer radius of the washer at $x$?",
+   "options": ["$2 + \\cos x$", "$x^2$", "$2 + \\cos x - x^2$", "$(2 + \\cos x)^2$"],
+   "correct": 0,
+   "why": {
+    "correct": "The outer radius reaches from the $x$-axis to the farther curve, the top one: $2 + \\cos x$.",
+    "options": [
+     "Distance from the axis to the far edge.",
+     "$x^2$ is the inner radius, to the near edge.",
+     "That is the height of the region, not a distance from the axis.",
+     "That is $R^2$, not $R$."
+    ]
+   }
+  },
+  {
+   "id": "calc-washer-method-axes-8", "unit": "unit-8", "topic": "washer-method-axes", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "washer-method-axes-s2",
+   "q": "Find the volume of the solid formed when $Q$ is revolved about the $x$-axis.",
+   "numeric": {
+    "answer": 58.26958986206558,
+    "mistakes": [
+     { "value": 43.167720184922544, "why": "That squares the difference $(2 + \\cos x - x^2)^2$. Use $R^2 - r^2$." },
+     { "value": 18.54778651697026, "why": "The $\\pi$ is missing." }
+    ]
+   },
+   "why": { "correct": "$V = \\pi\\int_{-b}^{b} \\left[(2 + \\cos x)^2 - (x^2)^2\\right]\\,dx = 58.26958\\ldots$, so $58.270$ (or $58.269$ truncated)." }
+  },
+  {
+   "id": "calc-washer-method-axes-9", "unit": "unit-8", "topic": "washer-method-axes", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "washer-method-axes-s2",
+   "q": "Find the area of the washer-shaped cross section of this solid at $x = 1$.",
+   "numeric": {
+    "answer": 17.131531384640603,
+    "mistakes": [
+     { "value": 7.453526567795069, "why": "That is $\\pi(R - r)^2$. A washer's area is $\\pi R^2 - \\pi r^2$." },
+     { "value": 25.129870422926405, "why": "$\\cos(1)$ was taken in degrees. Use radian mode." }
+    ]
+   },
+   "why": { "correct": "At $x = 1$: $R = 2 + \\cos 1$ and $r = 1$, so the area is $\\pi\\left[(2 + \\cos 1)^2 - 1^2\\right] = 17.13153\\ldots$, so $17.132$ (or $17.131$)." }
+  },
+  {
+   "id": "calc-washer-method-axes-10", "unit": "unit-8", "topic": "washer-method-axes", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "The region in the first quadrant between $y = x$ and $y = x^3$ is revolved about the $x$-axis. Find the volume.",
+   "numeric": {
+    "answer": "4*pi/21",
+    "mistakes": [
+     { "value": "8*pi/105", "why": "That squares the difference $(x - x^3)^2$. Use $R^2 - r^2 = x^2 - x^6$." },
+     { "value": "4/21", "why": "The $\\pi$ is missing." }
+    ]
+   },
+   "why": { "correct": "On $(0, 1)$, $x > x^3$, so $R = x$ and $r = x^3$: $V = \\pi\\int_0^1 (x^2 - x^6)\\,dx = \\pi\\left(\\frac{1}{3} - \\frac{1}{7}\\right) = \\frac{4\\pi}{21}$." }
+  },
+  {
+   "id": "calc-washer-method-axes-11", "unit": "unit-8", "topic": "washer-method-axes", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "The region bounded by $y = \\sqrt{x}$, $y = 1$ and $x = 4$ is revolved about the $x$-axis. Find the volume.",
+   "numeric": {
+    "answer": "9*pi/2",
+    "mistakes": [
+     { "value": "7*pi/6", "why": "That is $\\pi\\int_1^4 (\\sqrt{x} - 1)^2\\,dx$, a solid disc of the region's height. The region does not touch the axis: use $R = \\sqrt{x}$ and $r = 1$." },
+     { "value": "9/2", "why": "The $\\pi$ is missing." }
+    ]
+   },
+   "why": { "correct": "From $x = 1$ (where $\\sqrt{x} = 1$) to $x = 4$: $R = \\sqrt{x}$, $r = 1$, so $V = \\pi\\int_1^4 (x - 1)\\,dx = \\pi\\left(\\frac{15}{2} - 3\\right) = \\frac{9\\pi}{2}$." }
+  },
+  {
+   "id": "calc-washer-method-axes-12", "unit": "unit-8", "topic": "washer-method-axes", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "The region bounded by $x = y^2$ and $x = 1$ is revolved about the $y$-axis. Find the volume.",
+   "numeric": {
+    "answer": "8*pi/5",
+    "mistakes": [
+     { "value": "16*pi/15", "why": "That is $\\pi\\int_{-1}^{1} (1 - y^2)^2\\,dy$. The region does not touch the $y$-axis except at the origin: use $R = 1$ and $r = y^2$." }
+    ]
+   },
+   "why": { "correct": "Horizontal washers for $-1 \\le y \\le 1$: $R = 1$ (the line) and $r = y^2$ (the parabola). $V = \\pi\\int_{-1}^{1} (1 - y^4)\\,dy = \\pi\\left(2 - \\frac{2}{5}\\right) = \\frac{8\\pi}{5}$." }
+  },
+  {
+   "id": "calc-washer-method-axes-13", "unit": "unit-8", "topic": "washer-method-axes", "type": "single", "practice": "1.E", "level": "recall", "diff": 1,
+   "q": "A washer has outer radius 3 and inner radius 2. What is the area of its face?",
+   "options": ["$5\\pi$", "$\\pi$", "$25\\pi$", "$13\\pi$"],
+   "correct": 0,
+   "why": {
+    "correct": "Big disc minus small disc: $\\pi(3)^2 - \\pi(2)^2 = 9\\pi - 4\\pi = 5\\pi$.",
+    "options": [
+     "$\\pi(R^2 - r^2)$.",
+     "$\\pi(3 - 2)^2$ squares the difference; the ring is wider than that.",
+     "$\\pi(3 + 2)^2$ is a disc of radius 5.",
+     "$\\pi(3^2 + 2^2)$ adds the hole instead of removing it."
+    ]
+   }
+  },
+  {
+   "id": "calc-washer-method-axes-14", "unit": "unit-8", "topic": "washer-method-axes", "type": "multi", "practice": "2.D", "level": "analyze", "diff": 2,
+   "q": "A region between $y = f(x)$ and $y = g(x)$, with $f(x) \\ge g(x) \\ge 0$, is revolved about the $x$-axis. Which statements are true? Select all that apply.",
+   "options": [
+    "The volume is $\\pi\\int_a^b \\left(f(x)^2 - g(x)^2\\right)\\,dx$",
+    "Both radii are measured from the $x$-axis",
+    "The volume is $\\pi\\int_a^b \\left(f(x) - g(x)\\right)^2\\,dx$",
+    "The inner radius goes to the curve farther from the axis"
+   ],
+   "correct": [0, 1],
+   "why": {
+    "correct": "Each slice is a disc of radius $f$ with a hole of radius $g$, both centered on the axis.",
+    "options": [
+     "True: outer squared minus inner squared.",
+     "True: a radius always starts at the axis.",
+     "False: $(f - g)^2 \\ne f^2 - g^2$.",
+     "False: the inner radius goes to the nearer curve, $g$."
+    ]
+   }
+  },
+  {
+   "id": "calc-washer-method-axes-15", "unit": "unit-8", "topic": "washer-method-axes", "type": "single", "practice": "2.D", "level": "analyze", "diff": 2,
+   "q": "The region between $y = x^2$ and $y = 4$ is revolved about the $x$-axis. How are its slices described?",
+   "options": [
+    "Washers with $R = 4$ and $r = x^2$",
+    "Discs with radius $4 - x^2$",
+    "Discs with radius $4$",
+    "Washers with $R = 4 - x^2$ and $r = x^2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The region sits above the parabola, away from the $x$-axis (it touches the axis only at the origin). Each slice reaches out to $y = 4$ with a hole up to $y = x^2$.",
+    "options": [
+     "Far edge $y = 4$, near edge $y = x^2$, both measured from the axis.",
+     "$4 - x^2$ is the region's height; a disc of that radius would be a solid with no hole, centered on the axis.",
+     "That leaves out the hole: the region does not fill the space below the parabola.",
+     "The outer radius goes from the axis all the way to $y = 4$."
+    ]
+   }
+  },
+  {
+   "id": "calc-washer-method-axes-16", "unit": "unit-8", "topic": "washer-method-axes", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "Find the volume of the solid formed when the region between $y = x^2$ and $y = 4$ is revolved about the $x$-axis.",
+   "numeric": {
+    "answer": "256*pi/5",
+    "mistakes": [
+     { "value": "512*pi/15", "why": "That is $\\pi\\int_{-2}^{2} (4 - x^2)^2\\,dx$, a solid disc of the region's height. Use washers: $R = 4$, $r = x^2$." },
+     { "value": "64*pi", "why": "That is the cylinder $\\pi\\int_{-2}^{2} 16\\,dx$, with no hole. Subtract $\\pi\\int_{-2}^{2} x^4\\,dx$." }
+    ]
+   },
+   "why": { "correct": "$V = \\pi\\int_{-2}^{2} \\left(16 - x^4\\right)\\,dx = \\pi\\left(64 - \\frac{64}{5}\\right) = \\frac{256\\pi}{5}$." }
+  }
+ ]
+}

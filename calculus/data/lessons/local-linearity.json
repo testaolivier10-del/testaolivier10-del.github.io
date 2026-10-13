@@ -1,0 +1,71 @@
+{
+ "topic": "local-linearity",
+ "hook": "Zoom in far enough on a smooth curve and it looks straight. That is why the ground looks flat even though Earth is round. Near a point, a differentiable function is almost its tangent line, and that line gives quick, good estimates. Knowing whether such an estimate is too high or too low is a classic free-response point.",
+ "prereq": [
+  {
+   "q": "The line tangent to $y = x^2$ at $x = 3$ is",
+   "options": [
+    "$y = 9 + 6(x - 3)$",
+    "$y = 6 + 9(x - 3)$",
+    "$y = 9 + 3(x - 3)$",
+    "$y = 6x$"
+   ],
+   "correct": 0,
+   "why": "Point $(3, 9)$, slope $f'(3) = 6$.",
+   "review": "derivative-definition"
+  },
+  {
+   "q": "If $f(x) = \\sqrt{x}$, then $f''(x)$ is",
+   "options": [
+    "$-\\frac{1}{4}x^{-3/2}$",
+    "$\\frac{1}{2}x^{-1/2}$",
+    "$\\frac{1}{4}x^{-3/2}$",
+    "$-\\frac{1}{2}x^{-3/2}$"
+   ],
+   "correct": 0,
+   "why": "$f'(x) = \\frac{1}{2}x^{-1/2}$, then $f''(x) = -\\frac{1}{4}x^{-3/2}$.",
+   "review": "higher-order-derivatives"
+  }
+ ],
+ "figure": {
+  "figure": "sqrt-tangent-overestimate",
+  "caption": "The tangent line to $\\sqrt{x}$ at $x = 4$ gives $L(7) = 2.75$, slightly above $\\sqrt{7}$: the graph is concave down, so the line lies above it."
+ },
+ "chain": [
+  {
+   "cause": "Near $x = a$, a differentiable graph is nearly straight",
+   "effect": "it is close to its tangent line $L(x) = f(a) + f'(a)(x - a)$"
+  },
+  {
+   "cause": "So for $x$ near $a$",
+   "effect": "$f(x) \\approx f(a) + f'(a)(x - a)$, the tangent line approximation"
+  },
+  {
+   "cause": "If $f'' > 0$ between $a$ and $x$, the graph is concave up and lies above the line",
+   "effect": "the approximation is an underestimate"
+  },
+  {
+   "cause": "If $f'' < 0$ there, the graph is concave down and lies below the line",
+   "effect": "the approximation is an overestimate"
+  }
+ ],
+ "ideas": [
+  "The linearization at $a$: $L(x) = f(a) + f'(a)(x - a)$. Use the point closest to where you estimate.",
+  "Concave up ($f'' > 0$): tangent line below the graph, underestimate. Concave down ($f'' < 0$): overestimate.",
+  "Justify with the concavity on the interval between $a$ and $x$, not with the sign of $f'$.",
+  "The closer $x$ is to $a$, the better the approximation."
+ ],
+ "misconception": {
+  "wrong": "The tangent line approximation overestimates because $f$ is increasing.",
+  "right": "Whether $f$ increases decides which way the line slopes, not which side of the graph it is on. Concavity decides: concave down means overestimate, concave up means underestimate."
+ },
+ "check": [
+  "calc-local-linearity-1",
+  "calc-local-linearity-2",
+  "calc-local-linearity-3",
+  "calc-local-linearity-4",
+  "calc-local-linearity-5",
+  "calc-local-linearity-15"
+ ],
+ "summary": "Near $x = a$, $f(x) \\approx L(x) = f(a) + f'(a)(x - a)$. The tangent line lies below a concave up graph ($f'' > 0$), giving an underestimate, and above a concave down graph ($f'' < 0$), giving an overestimate. The estimate is best close to $a$."
+}

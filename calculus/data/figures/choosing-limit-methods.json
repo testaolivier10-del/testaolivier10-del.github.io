@@ -1,0 +1,12 @@
+{
+ "limit-method-map": {
+  "file": "figures/limit-method-map.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "A decision map for limits. Start by substituting x = c. A number means that is the limit. Zero over zero means rewrite by factoring, using a conjugate or combining fractions, then substitute again. A nonzero number over zero means the function is unbounded near c, so check the sign on each side. At a break point of a piecewise or absolute value function, find both one-sided limits and compare them."
+ }
+}
