@@ -101,7 +101,7 @@ One branch, `claude/apphys`, one PR at the end.
 | 0 | Fork AP® Chemistry: map (43 topics + math chapter), dependency map, generator, runtime `physics/assets/`, checks, tests, fixture, registration (registry, Premium pass, Worker, SQL migration, hub/pricing hidden until published, search, sitemap, OG card, budgets, theme colour, sw.js), tool scaffolding for every trainer, docs (architecture, authoring guide, phase0, needs-author) | **done 2026-10-12** (decisions 6-9): `docs/apphys-ced-map.json`, `docs/apphys-dependency-map.json` (48 topics, 203 concepts; `docs/apphys-phase0.md`), `scripts/build-apphys.mjs`, `check-apphys-map.mjs`, `check-apphys-content.mjs`, runtime `physics/assets/`, 11 tools pre-registered with per-tool files, formats in `docs/apphys-architecture.md`, rules in `docs/apphys-authoring-guide.md` |
 | 1 | Content: every unit's lessons, notes, banks, FRQs (all four types), glossary, figures | planned |
 | 2 | Trainers (section 6) | planned |
-| 3 | Justification trainer, two fixed practice exams, equations sheet, score calculator, unit tests, cram kit | planned |
+| 3 | Justification trainer, two fixed practice exams, equations sheet, score calculator, unit tests, cram kit | **done 2026-10-12** (decision 10): 2 forms (42 MCQ + mr/tbr/lab/qqt each, 25 exam-only items), 33 prompts, 53 equation rows, estimated cut-offs 70/55/41/31; accuracy review of exams and prompts still due in Phase 4 |
 | 4 | Independent accuracy checks per unit and for tools/exams; fixes | planned |
 | Launch | Publish, generators, continuity pass, homepage and Premium-rules fixes, full CI with browser checks, PR | planned |
 
@@ -178,6 +178,34 @@ Owner to confirm (needs-author `tools-premium`).
    vectors, register); `phys-scene.js` (`ApPhysScene`) draws labeled force arrows and runs an
    animation loop that shows the end state under reduced motion. A tool is built only when its data
    file exists and its topic is published.
+
+10. (2026-10-12, Phase 3) **Exams, trainer and entry pages**, as apchem decision 17 with the 2027 format.
+   - Two **fixed practice exams** (`physics/data/exams/forms.json`): 42 four-option MCQ each, every unit
+     inside its CED range (form 1: U1 5, U2 7, U3 9, U4 5, U5 6, U6 3, U7 3, U8 4; form 2: U1 6, U2 8,
+     U3 9, U4 5, U5 5, U6 3, U7 2, U8 4), 7-9 stimulus sets of 3-5, bank items none of which is a
+     lesson-check item, plus 13 (form 1) and 12 (form 2) **exam-only items** (`items.json`: a spring
+     launcher set and a narrowing pipe set in form 1, a force-position graph set and a two-cart
+     collision table in form 2, plus discrete calculations). Section II one of each type in order:
+     form 1 `frq-u4-sticky-blocks-ramp`, `frq-u2-hill-crest`, `frq-u5-platform-inertia-lab`,
+     `frq-u8-floating-coin`; form 2 `frq-u1-stopping-distance`, `frq-u2-ramp-slide`, `frq-u7-pendulum-g`,
+     `frq-u6-two-turntables`. No question or FRQ in both. Every keyed number is recomputed in
+     `EXAM_NUMBERS` and every exam-only item is graded through `ApPhysQuestions.grade` in the test.
+   - **Justification trainer**: 33 prompts (`physics/data/justify/<unit>.json`, 4-5 per unit) on the
+     reader-report misses: FBDs and third-law pairs, normal force on a ramp, net force vs motion, energy
+     with the system named, momentum before energy in sticky collisions, friction as an internal force,
+     torque with the axis chosen, rotational inertia from mass distribution, angular momentum vs kinetic
+     energy, SHM period and energy, buoyancy with both forces, Bernoulli, and lab procedures/graphs.
+     Skill tags are the physics `JUSTIFY_SKILLS` (forces, conservation, energy-momentum,
+     functional-dependence, graphs, procedure, fluids); every number in a prompt is in `JUSTIFY_NUMBERS`.
+   - **Equations sheet page** (`EQ` in `scripts/lib/apphys-entry.mjs`): all 53 equations, constants and
+     conventions of the official sheet in nine groups of our own, each with what it is, when to use it,
+     the topic that teaches it and the live trainers that practise it; "not on the sheet" adds the
+     oscillator's greatest speed. A test lists the sheet's equations and fails if one goes missing.
+   - **Score estimate**: 50 × MCQ/42 + 50 × FRQ/40; **estimated cut-offs 70/55/41/31**, fitted to the
+     published 2025 and 2026 distributions (needs-author `score-cutoffs` has the method), labelled
+     estimates, shared with the readiness band (test).
+   - Cram kit: timed sets at the exam pace (85/42 min a question, was chemistry's 1.5), justification
+     prompts on study days as well as weak-spot days, exam day n opens practice exam n.
 
 ## 8. Open items for the owner
 

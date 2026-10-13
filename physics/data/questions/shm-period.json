@@ -81,28 +81,28 @@
    "level": "apply",
    "diff": 1,
    "stimulus": "shm-period-s1",
-   "q": "What is the period of the 0.40 kg block? Give the value and its unit.",
+   "q": "What is the period of the 0.20 kg block? Give the value and its unit.",
    "numeric": {
-    "answer": 0.99,
+    "answer": 0.705,
     "tol": 0.001,
     "unit": "s",
     "sigfigs": 3,
     "askUnit": true,
     "mistakes": [
      {
-      "value": 9.9,
+      "value": 7.05,
       "rel": 0.02,
       "why": "Value: that is the time for 10 oscillations. The period is the time for one: divide by 10."
      },
      {
-      "value": 1.01,
+      "value": 1.42,
       "rel": 0.02,
-      "why": "Value: that is the frequency (oscillations per second). The period is its reciprocal, T = 1/f."
+      "why": "Value: that is the frequency (oscillations per second), 10/7.05 s. The period is its reciprocal, T = 1/f."
      }
     ]
    },
    "why": {
-    "correct": "T = (time for 10 oscillations)/10 = 9.90 s / 10 = 0.990 s. Timing many oscillations and dividing shrinks the effect of your reaction time."
+    "correct": "T = (time for 10 oscillations)/10 = 7.05 s / 10 = 0.705 s. Timing many oscillations and dividing shrinks the effect of your reaction time."
    }
   },
   {
@@ -144,7 +144,7 @@
    "q": "Use the 0.80 kg trial to find the spring constant of the spring. Give the value and its unit.",
    "numeric": {
     "answer": 16,
-    "tol": 1,
+    "tol": 0.6,
     "unit": "N/m",
     "sigfigs": 2,
     "askUnit": true,

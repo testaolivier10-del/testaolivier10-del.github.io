@@ -31,7 +31,7 @@
   "fluid-flow-s2": {
    "kind": "diagram",
    "title": "A tank with a hole",
-   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 300\" role=\"img\" aria-label=\"A wide open tank of water with a small hole in its side wall 1.8 m below the water surface. A jet of water leaves the hole horizontally with speed v.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"420\" height=\"300\" fill=\"#FFFFFF\"/><rect x=\"40\" y=\"60\" width=\"220\" height=\"220\" fill=\"#D7EBF4\"/><path d=\"M40,30 L40,280 L260,280 L260,30\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><line x1=\"40\" y1=\"60\" x2=\"260\" y2=\"60\" stroke=\"#7FB6CF\" stroke-width=\"2\"/><rect x=\"257\" y=\"205\" width=\"6\" height=\"10\" fill=\"#D7EBF4\"/><path d=\"M263,210 Q330,214 380,280\" fill=\"none\" stroke=\"#7FB6CF\" stroke-width=\"5\"/><line x1=\"268\" y1=\"210\" x2=\"311\" y2=\"210\" stroke=\"#B07A00\" stroke-width=\"2.5\" stroke-linecap=\"butt\"/><polygon points=\"320,210 311,215 311,205\" fill=\"#B07A00\"/><text x=\"300\" y=\"198\" font-size=\"15\" fill=\"#B07A00\" font-weight=\"bold\" font-style=\"italic\">v</text><line x1=\"20\" y1=\"135\" x2=\"20\" y2=\"68\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"20,60 24,68 16,68\" fill=\"#5A6268\"/><line x1=\"20\" y1=\"135\" x2=\"20\" y2=\"202\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"20,210 16,202 24,202\" fill=\"#5A6268\"/><text x=\"26\" y=\"140\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\">1.8 m</text><line x1=\"40\" y1=\"210\" x2=\"260\" y2=\"210\" stroke=\"#C9CFCC\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><text x=\"150\" y=\"52\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">open to the air</text><text x=\"275\" y=\"236\" font-size=\"12\" fill=\"#1F2A28\">small hole</text></svg><p>The tank is much wider than the hole, and the water is an ideal fluid. Use g = 9.8 m/s².</p>"
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 300\" role=\"img\" aria-label=\"A wide open tank of water with a small hole in its side wall 1.8 m below the water surface. A jet of water leaves the hole horizontally with speed v.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"420\" height=\"300\" fill=\"#FFFFFF\"/><rect x=\"40\" y=\"60\" width=\"220\" height=\"220\" fill=\"#D7EBF4\"/><path d=\"M40,30 L40,280 L260,280 L260,30\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><line x1=\"40\" y1=\"60\" x2=\"260\" y2=\"60\" stroke=\"#7FB6CF\" stroke-width=\"2\"/><rect x=\"257\" y=\"205\" width=\"6\" height=\"10\" fill=\"#D7EBF4\"/><path d=\"M263,210 Q330,214 380,280\" fill=\"none\" stroke=\"#7FB6CF\" stroke-width=\"5\"/><line x1=\"268\" y1=\"210\" x2=\"311\" y2=\"210\" stroke=\"#B07A00\" stroke-width=\"2.5\" stroke-linecap=\"butt\"/><polygon points=\"320,210 311,215 311,205\" fill=\"#B07A00\"/><text x=\"300\" y=\"198\" font-size=\"15\" fill=\"#B07A00\" font-weight=\"bold\" font-style=\"italic\">v</text><line x1=\"20\" y1=\"135\" x2=\"20\" y2=\"68\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"20,60 24,68 16,68\" fill=\"#5A6268\"/><line x1=\"20\" y1=\"135\" x2=\"20\" y2=\"202\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"20,210 16,202 24,202\" fill=\"#5A6268\"/><text x=\"48\" y=\"140\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\">1.8 m</text><line x1=\"40\" y1=\"210\" x2=\"260\" y2=\"210\" stroke=\"#C9CFCC\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><text x=\"150\" y=\"52\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">open to the air</text><text x=\"275\" y=\"236\" font-size=\"12\" fill=\"#1F2A28\">small hole</text></svg><p>The tank is much wider than the hole, and the water is an ideal fluid. Use g = 9.8 m/s².</p>"
   }
  },
  "items": [
@@ -145,7 +145,7 @@
    "stimulus": "fluid-flow-s1",
    "q": "A student predicts that the pressure is higher at section 2 because the water is squeezed into a narrower pipe. Which response is correct?",
    "options": [
-    "Lower at section 2: the water speeds up there, so it is pushed from behind",
+    "The pressure is lower at section 2, because the water speeds up and is pushed from behind",
     "The pressure is higher at section 2, because the narrow walls push in on the water",
     "The pressure is the same at both sections, because the water is incompressible",
     "The pressure is higher at section 2, because the same flow rate passes through less area"
@@ -314,7 +314,7 @@
    "q": "The hole has an area of 2.0 × 10⁻⁴ m². What is the volume flow rate out of it? Give the value and its unit.",
    "numeric": {
     "answer": 0.0012,
-    "tol": 0.0001,
+    "tol": 0.00005,
     "unit": "m^3/s",
     "sigfigs": 2,
     "askUnit": true,
@@ -342,7 +342,7 @@
    "options": [
     "The same volume per second leaves through a smaller area",
     "Your thumb adds energy to the water as it squeezes past",
-    "The pressure at the end rises, which slows the water inside the hose",
+    "The pressure in the jet rises under your thumb, which pushes the water out faster",
     "Water is compressed under your thumb and expands as it leaves"
    ],
    "correct": 0,
@@ -351,7 +351,7 @@
     "options": [
      "Right: continuity.",
      "Your thumb is at rest, so it does no work on the water.",
-     "Inside the hose the water slows slightly; the faster jet is outside, at lower pressure.",
+     "This is the \"squeezed water has higher pressure\" error. Once it leaves, the jet is at atmospheric pressure; it is faster because the same flow passes a smaller opening.",
      "Water is nearly incompressible; continuity, not compression, explains the jet."
     ]
    }

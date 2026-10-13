@@ -3,7 +3,7 @@
   "fluid-pressure-s1": {
    "kind": "diagram",
    "title": "Three points in a tank",
-   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 300\" role=\"img\" aria-label=\"An open tank of water with three points marked: J and K at the same depth of 1.5 m below the surface, on opposite sides, and L at a depth of 4.5 m near the bottom.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"460\" height=\"300\" fill=\"#FFFFFF\"/><rect x=\"40\" y=\"60\" width=\"280\" height=\"220\" fill=\"#D7EBF4\"/><path d=\"M40,30 L40,280 L320,280 L320,30\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><line x1=\"40\" y1=\"60\" x2=\"320\" y2=\"60\" stroke=\"#7FB6CF\" stroke-width=\"2\"/><circle cx=\"110\" cy=\"120\" r=\"5\" fill=\"#1F2A28\"/><text x=\"120\" y=\"114\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">J</text><circle cx=\"250\" cy=\"120\" r=\"5\" fill=\"#1F2A28\"/><text x=\"260\" y=\"114\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">K</text><circle cx=\"180\" cy=\"240\" r=\"5\" fill=\"#1F2A28\"/><text x=\"190\" y=\"234\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">L</text><line x1=\"340\" y1=\"90\" x2=\"340\" y2=\"68\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"340,60 344,68 336,68\" fill=\"#5A6268\"/><line x1=\"340\" y1=\"90\" x2=\"340\" y2=\"112\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"340,120 336,112 344,112\" fill=\"#5A6268\"/><text x=\"348\" y=\"95\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\">1.5 m</text><line x1=\"380\" y1=\"150\" x2=\"380\" y2=\"68\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"380,60 384,68 376,68\" fill=\"#5A6268\"/><line x1=\"380\" y1=\"150\" x2=\"380\" y2=\"232\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"380,240 376,232 384,232\" fill=\"#5A6268\"/><text x=\"388\" y=\"155\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\">4.5 m</text><line x1=\"40\" y1=\"120\" x2=\"320\" y2=\"120\" stroke=\"#C9CFCC\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><line x1=\"40\" y1=\"240\" x2=\"320\" y2=\"240\" stroke=\"#C9CFCC\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><text x=\"180\" y=\"50\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">open to the air</text></svg><p>The water has density 1000 kg/m³. Atmospheric pressure at the surface is 1.0 × 10⁵ Pa.</p>"
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 300\" role=\"img\" aria-label=\"An open tank of water with three points marked: J and K at the same depth of 1.5 m below the surface, on opposite sides, and L at a depth of 4.5 m near the bottom.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"460\" height=\"300\" fill=\"#FFFFFF\"/><rect x=\"40\" y=\"60\" width=\"280\" height=\"220\" fill=\"#D7EBF4\"/><path d=\"M40,30 L40,280 L320,280 L320,30\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><line x1=\"40\" y1=\"60\" x2=\"320\" y2=\"60\" stroke=\"#7FB6CF\" stroke-width=\"2\"/><circle cx=\"110\" cy=\"120\" r=\"5\" fill=\"#1F2A28\"/><text x=\"120\" y=\"114\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">J</text><circle cx=\"250\" cy=\"120\" r=\"5\" fill=\"#1F2A28\"/><text x=\"260\" y=\"114\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">K</text><circle cx=\"180\" cy=\"240\" r=\"5\" fill=\"#1F2A28\"/><text x=\"190\" y=\"234\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">L</text><line x1=\"340\" y1=\"90\" x2=\"340\" y2=\"68\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"340,60 344,68 336,68\" fill=\"#5A6268\"/><line x1=\"340\" y1=\"90\" x2=\"340\" y2=\"112\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"340,120 336,112 344,112\" fill=\"#5A6268\"/><text x=\"348\" y=\"95\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\">1.5 m</text><line x1=\"405\" y1=\"150\" x2=\"405\" y2=\"68\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"405,60 409,68 401,68\" fill=\"#5A6268\"/><line x1=\"405\" y1=\"150\" x2=\"405\" y2=\"232\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"405,240 401,232 409,232\" fill=\"#5A6268\"/><text x=\"413\" y=\"155\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\">4.5 m</text><line x1=\"40\" y1=\"120\" x2=\"320\" y2=\"120\" stroke=\"#C9CFCC\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><line x1=\"40\" y1=\"240\" x2=\"320\" y2=\"240\" stroke=\"#C9CFCC\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><text x=\"180\" y=\"50\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">open to the air</text></svg><p>The water has density 1000 kg/m³. Atmospheric pressure at the surface is 1.0 × 10⁵ Pa.</p>"
   },
   "fluid-pressure-s2": {
    "kind": "graph",
@@ -99,7 +99,7 @@
    "q": "What is the absolute pressure at L? Use g = 9.8 m/s². Give the value and its unit.",
    "numeric": {
     "answer": 140000,
-    "tol": 10000,
+    "tol": 5000,
     "unit": "Pa",
     "sigfigs": 2,
     "askUnit": true,
@@ -110,9 +110,9 @@
       "why": "Value: that is the gauge pressure, ρgh. Absolute pressure adds the air pressing on the surface: P = P₀ + ρgh."
      },
      {
-      "value": 110000,
-      "rel": 0.02,
-      "why": "Value: you used the depth of J and K. L is 4.5 m below the surface."
+      "value": 115000,
+      "rel": 0.05,
+      "why": "Value: you used the depth of J and K (1.5 m). L is 4.5 m below the surface."
      }
     ]
    },

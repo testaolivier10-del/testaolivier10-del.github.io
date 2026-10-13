@@ -121,7 +121,7 @@
   {
    "label": "d",
    "points": 3,
-   "prompt": "A student repeats the experiment with a block of twice the mass, made of the same material. <b>Explain</b> how the free-body diagram, your expression in part (b), and the graph in part (c) together show how the new block's speed-time graph compares with the original one.",
+   "prompt": "A student repeats the experiment with a block of twice the mass, made of the same material and given the same initial speed v<sub>0</sub>. <b>Explain</b> how the free-body diagram, your expression in part (b), and the graph in part (c) together show how the new block's speed-time graph compares with the original one.",
    "rubric": [
     {
      "point": "Free-body diagram: every force doubles (F_g = mg, F_N = mg cos θ, f_k = μ_k F_N all proportional to m), so the arrows keep the same proportions",

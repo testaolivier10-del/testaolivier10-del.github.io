@@ -211,8 +211,8 @@
         { value: (mb + m) * g, why: 'That is the whole weight. The two supports share it: F_left + F_right = total weight.' },
         { value: FR, why: 'That is the right support\'s force. The supports share the weight equally only when the load is at the middle.' }] }),
       choice('which', 'Which support pushes up harder, and why?', ['The left support: the load is closer to it', 'The right support: the load is closer to it', 'Both push equally: the plank is uniform'], closer,
-        [closer === 0 ? 'Right. Taking torques about the right support, the load\'s lever arm is longer, so the left support must supply the larger torque, and the forces add to the weight.' : 'Not this one. The load is nearer the right end, so the right support carries more.',
-         closer === 1 ? 'Right. Taking torques about the left support, the load\'s lever arm is longer, so the right support must supply the larger torque.' : 'Not this one. The load is nearer the left end, so the left support carries more.',
+        [closer === 0 ? 'Right. Take torques about the right support: the load sits far from it, so its torque is large, and the left support (lever arm L) must balance it. The two forces still add up to the total weight.' : 'Not this one. The load is nearer the right end, so the right support carries more.',
+         closer === 1 ? 'Right. Take torques about the left support: the load sits far from it, so its torque is large, and the right support (lever arm L) must balance it. The two forces still add up to the total weight.' : 'Not this one. The load is nearer the left end, so the left support carries more.',
          'The plank alone would split equally, but the load is off-center, so the support nearer to it carries more.'], '3.C')
     ];
     return { type: 'support', text: text, steps: steps, values: { L: L, mb: mb, m: m, x: x, g: g },
@@ -280,7 +280,7 @@
         { value: g, why: 'The weight does not fall freely: the string pulls up on it with tension while it turns the wheel.' },
         { value: m * g / (m + (aWins ? IA : IB)), why: 'The wheel\'s inertia enters as I / r², not I, because a = r α and τ = T r.' }] }),
       choice('win', 'Which weight reaches the floor first?', ['The one on wheel A', 'The one on wheel B', 'They land together: same masses'], aWins ? 0 : 1,
-        [aWins ? 'Right. Wheel A\'s mass is closer to the axle, so its I is smaller; the same torque gives it a larger α, and the weight falls faster.' : 'Not this one. Wheel A\'s sliders are farther out, so its I is larger and it turns up more slowly.',
+        [aWins ? 'Right. Wheel A\'s mass is closer to the axle, so its I is smaller; the same torque gives it a larger α, and the weight falls faster.' : 'Not this one. Wheel A\'s sliders are farther out, so its I is larger and it spins up more slowly.',
          aWins ? 'Not this one. Wheel B\'s sliders are farther out, so its I is larger and it spins up more slowly.' : 'Right. Wheel B\'s mass is closer to the axle, so its I is smaller and the same torque gives a larger α.',
          'Same mass does not mean same rotational inertia: I depends on how far the mass is from the axis.'], '3.C')
     ];

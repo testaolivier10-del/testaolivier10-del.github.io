@@ -99,7 +99,7 @@
 
     /* The left slope of a track: from x = 0 down to the first low point. */
     function leftSlope(Pth){ var i = 1; while(i < Pth.n && Pth.y[i] <= Pth.y[i - 1] + 1e-12) i++; return { i: i - 1, ymin: Pth.y[i - 1], ytop: Pth.y[0] }; }
-    function sAtHeight(Pth, lo, h){ var a = 0, b = lo.i; while(b - a > 1){ var m = (a + b) >> 1; if(Pth.y[m] > h) a = m; else b = m; } return Pth.s[a]; }
+    function sAtHeight(Pth, lo, h){ var a = 0, b = lo.i; while(b - a > 1){ var m = (a + b) >> 1; if(Pth.y[m] > h) a = m; else b = m; } var dy = Pth.y[a] - Pth.y[b]; return dy > 1e-12 ? Pth.s[a] + (Pth.s[b] - Pth.s[a]) * (Pth.y[a] - h) / dy : Pth.s[a]; }
     function agentsOf(sc){ return sc === 'skater' ? (P.skater.mu > 0 ? ['earth', 'surface'] : ['earth']) : sc === 'launcher' ? ['earth', 'spring'] : sc === 'ramp' ? ['earth', 'surface'] : ['earth']; }
     function agLabel(a){ return a === 'earth' ? 'Earth' : a === 'spring' ? 'Spring' : cap(SCENE_UI[scene].surf); }
     function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
@@ -349,7 +349,7 @@
     function draw(){
       if(!trace.length) return;
       var st = trace[idx], L = barsAt(idx).L;
-      var big = narrow(), lh = big ? 34 : 22, rx = scene === 'launcher' ? 96 : VW - 12, an = scene === 'launcher' ? 'start' : 'end';
+      var big = narrow(), lh = big ? 34 : 22, rx = scene === 'launcher' ? 96 : scene === 'skater' ? VW / 2 : VW - 12, an = scene === 'launcher' ? 'start' : scene === 'skater' ? 'middle' : 'end';
       var lines = ['v = ' + F1(st.speed, 1) + ' m/s', 'h = ' + F1(st.y, 2) + ' m'].concat(scene === 'lift' ? ['P = ' + M.fmt(st.P, 3) + ' W'] : []);
       var rd = '<g class="eb-read' + (big ? ' is-big' : '') + '" aria-hidden="true">' + lines.map(function(t, k){ return '<text x="' + rx + '" y="' + ((big ? 30 : 24) + k * lh) + '" text-anchor="' + an + '">' + t + '</text>'; }).join('') +
         (big ? '' : '<text class="eb-read-t" x="' + rx + '" y="' + (24 + lines.length * lh) + '" text-anchor="' + an + '">t = ' + F1(st.t, 1) + ' s</text>') + '</g>';

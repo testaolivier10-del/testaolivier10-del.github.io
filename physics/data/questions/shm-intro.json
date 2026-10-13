@@ -63,7 +63,7 @@
     "options": [
      "Right: this is the definition of the restoring force in SHM, F = −kx.",
      "A zero force at equilibrium is true of any oscillation; it does not show the force grows in proportion to the displacement.",
-     "The force gets more negative to the right, but the size of the force, not its growth in one direction, is what matters, and the sign must be opposite to x.",
+     "True of the data, but it says nothing about proportion or about the left side: a force that pointed left everywhere would never pull the glider back from the left. SHM needs F proportional to x and opposite to it.",
      "Symmetry alone allows forces that are not proportional to x (for example a force that grows as x²)."
     ]
    }
@@ -332,7 +332,7 @@
    "q": "A block on a spring slides back and forth on a frictionless table. A meterstick beside it shows that its front edge moves between the 0.12 m mark and the 0.38 m mark. What is the amplitude of the motion? Give the value and its unit.",
    "numeric": {
     "answer": 0.13,
-    "tol": 0.01,
+    "tol": 0.005,
     "unit": "m",
     "sigfigs": 2,
     "askUnit": true,
@@ -364,7 +364,7 @@
    "q": "A 0.50 kg block hangs at rest from a vertical spring with spring constant 40 N/m. How far is the spring stretched from its relaxed length at the block's equilibrium position? Use g = 9.8 m/s². Give the value and its unit.",
    "numeric": {
     "answer": 0.12,
-    "tol": 0.01,
+    "tol": 0.005,
     "unit": "m",
     "sigfigs": 2,
     "askUnit": true,

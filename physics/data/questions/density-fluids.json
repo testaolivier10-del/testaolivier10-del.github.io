@@ -225,7 +225,7 @@
    "level": "recall",
    "diff": 2,
    "stimulus": "density-fluids-s2",
-   "q": "When fluids are treated as ideal on the exam, which property is assumed?",
+   "q": "When a fluid is treated as ideal on the exam, which property is it assumed to have?",
    "options": [
     "Its density stays the same as it flows and is squeezed",
     "The fluid sticks to the walls of its container",
@@ -307,7 +307,7 @@
    "q": "A rectangular swimming pool is 10.0 m long, 5.0 m wide and filled to a depth of 2.0 m with water of density 1000 kg/m³. What is the mass of the water? Give the value and its unit.",
    "numeric": {
     "answer": 100000,
-    "tol": 10000,
+    "tol": 5000,
     "unit": "kg",
     "sigfigs": 2,
     "askUnit": true,

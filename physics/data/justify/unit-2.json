@@ -1,0 +1,120 @@
+{
+ "about": "Justification trainer prompts for Unit 2 (docs/apphys-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u2-third-law-car-truck",
+   "unit": "unit-2",
+   "topic": "third-law",
+   "practice": "3.C",
+   "skill": "forces",
+   "title": "Who pushes harder in a crash",
+   "context": "<p>A small car runs head-on into a large truck. A student says the truck exerts a larger force on the car than the car exerts on the truck, because the car is damaged more and slows down more.</p>",
+   "prompt": "<b>Evaluate</b> the student's claim and <b>justify</b> your answer.",
+   "checklist": [
+    "States the claim is wrong: the two forces are equal in size and opposite in direction",
+    "Names them as a Newton's third law pair: the force of the truck on the car and the force of the car on the truck, from one interaction",
+    "Explains the different effects with a = F/m: the same size of force gives the smaller-mass car the larger acceleration"
+   ],
+   "earns": {
+    "answer": "The claim is wrong. The force of the truck on the car and the force of the car on the truck are the two forces of one interaction, so by Newton's third law they are equal in size and opposite in direction. The car changes velocity more because of Newton's second law: the same size of force on a smaller mass gives a larger acceleration, a = F/m.",
+    "why": "It names the third-law pair (who exerts each force on whom) and explains the different outcomes with the second law instead of with different forces."
+   },
+   "misses": {
+    "answer": "The truck pushes harder because it is heavier, so the car is pushed back more.",
+    "why": "Mass does not change the size of the forces in an interaction pair. This answer mixes up the size of the force with the size of its effect."
+   }
+  },
+  {
+   "id": "u2-normal-force-on-ramp",
+   "unit": "unit-2",
+   "topic": "friction",
+   "practice": "3.C",
+   "skill": "forces",
+   "title": "Is the normal force equal to the weight?",
+   "context": "<p>A 5.0 kg box rests on a ramp tilted 30° above the horizontal. Static friction keeps it from sliding. Use g = 9.8 m/s².</p>",
+   "prompt": "<b>Compare</b> the normal force of the ramp on the box with the box's weight, and <b>justify</b> your answer.",
+   "checklist": [
+    "Claims the normal force is smaller than the weight: F_N = mg cos 30° = 42 N, while mg = 49 N",
+    "Says the normal force is perpendicular to the ramp surface, so only forces perpendicular to the surface balance it",
+    "Says the box is at rest, so forces balance along each axis: perpendicular, F_N balances the part of the gravitational force into the ramp; along it, static friction balances the part down the slope"
+   ],
+   "earns": {
+    "answer": "The normal force is smaller than the weight. The box is at rest, so the net force on it is zero along each axis. Take axes along and perpendicular to the ramp. The normal force of the ramp on the box is perpendicular to the surface, so it balances only the part of the gravitational force pressing into the ramp: F_N = mg cos 30° = (5.0 kg)(9.8 m/s²)(0.866) = 42 N, less than mg = 49 N. The part of the gravitational force down the slope is balanced by static friction.",
+    "why": "It uses the direction of the normal force and the equilibrium condition along each axis, and gets a number to back the comparison."
+   },
+   "misses": {
+    "answer": "The normal force equals the weight, 49 N, because the box is not moving.",
+    "why": "Being at rest means all the forces balance, not that the normal force alone balances the weight. On a slope, friction does part of the job, so the normal force is smaller."
+   }
+  },
+  {
+   "id": "u2-elevator-slowing",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "practice": "3.C",
+   "skill": "forces",
+   "title": "Tension in an elevator that slows down",
+   "context": "<p>An elevator car is moving upward and slowing down as it approaches a floor. A student says the cable's tension must be larger than the car's weight, since the car is going up.</p>",
+   "prompt": "<b>Evaluate</b> the student's claim using the forces on the car, and <b>justify</b> your answer.",
+   "checklist": [
+    "States the claim is wrong: the tension is smaller than the weight",
+    "Says the car moves up but slows down, so its acceleration points down",
+    "Uses Newton's second law: the net force points the same way as the acceleration, so the downward gravitational force is larger than the upward tension"
+   ],
+   "earns": {
+    "answer": "The claim is wrong; the tension is smaller than the car's weight. Two forces act on the car: the cable's tension up and the gravitational force of Earth down. The car moves upward but is slowing down, so its acceleration points down. By Newton's second law the net force points the same way as the acceleration, down, so the downward gravitational force is larger than the upward tension.",
+    "why": "It separates velocity (up) from acceleration (down) and links the direction of the net force to the acceleration, not to the motion."
+   },
+   "misses": {
+    "answer": "The tension is bigger than the weight, because the elevator is still moving up and something has to keep it moving.",
+    "why": "This links the forces to the direction of motion. The net force sets the acceleration; an object moving up can have a net force down while it slows."
+   }
+  },
+  {
+   "id": "u2-hanging-mass-doubled",
+   "unit": "unit-2",
+   "topic": "second-law",
+   "practice": "2.D",
+   "skill": "functional-dependence",
+   "title": "Double the hanging mass",
+   "context": "<p>A 2.0 kg cart on a level, frictionless track is pulled by a light string over an ideal pulley to a hanging 0.50 kg block. A student doubles the hanging mass to 1.0 kg and predicts the acceleration will double. Use g = 9.8 m/s².</p>",
+   "prompt": "<b>Derive</b> an expression for the acceleration, and use it to <b>evaluate</b> the student's prediction.",
+   "checklist": [
+    "Takes the cart, string and block as one system: the unbalanced external force is the hanging block's weight, mg",
+    "Writes a = mg/(M + m), with M the cart's mass and m the hanging mass",
+    "Shows the acceleration rises from 1.96 m/s² to 3.27 m/s², less than double, because the total mass being accelerated also grows"
+   ],
+   "earns": {
+    "answer": "Take the cart, the string and the hanging block as the system. The only unbalanced external force along the motion is the block's weight, mg, and it accelerates the whole mass M + m, so a = mg/(M + m). With m = 0.50 kg, a = (0.50)(9.8)/(2.50) = 1.96 m/s². With m = 1.0 kg, a = (1.0)(9.8)/(3.0) = 3.27 m/s². The acceleration does not double: doubling m doubles the pulling force, but it also increases the total mass the force must accelerate.",
+    "why": "It derives the dependence from Newton's second law for a named system and reads it correctly: m appears on the top and the bottom."
+   },
+   "misses": {
+    "answer": "Yes, it doubles. F = ma, so twice the hanging weight gives twice the acceleration.",
+    "why": "The doubled force acts on a larger total mass. Reading \"twice the force, twice the acceleration\" holds only when the mass stays the same."
+   }
+  },
+  {
+   "id": "u2-top-of-loop",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "practice": "3.B",
+   "skill": "forces",
+   "title": "The forces at the top of a loop",
+   "context": "<p>A roller-coaster car moves along the inside of a vertical circular loop. At the very top it is upside down and moving fast enough to stay on the track.</p>",
+   "prompt": "<b>Identify</b> every force on the car at the top, and <b>explain</b> why no separate centripetal force belongs on its free-body diagram.",
+   "checklist": [
+    "Names two forces, both pointing down: the gravitational force of Earth on the car and the normal force of the track on the car",
+    "Says the track is above the car at the top, so its push points down, toward the center",
+    "Says the centripetal net force is the sum of these real forces (F_g + F_N = mv²/r), not an extra force, so drawing it would count it twice"
+   ],
+   "earns": {
+    "answer": "Two forces act on the car at the top: the gravitational force of Earth on the car, down, and the normal force of the track on the car, also down, because the track is above the car and pushes it toward the center of the loop. Their sum is the centripetal net force, F_g + F_N = mv²/r, pointing to the center. \"Centripetal force\" is a name for that net force, not a separate push or pull from some object, so drawing it as an extra arrow would count the same forces twice.",
+    "why": "It names each real force with its agent and direction and explains what \"centripetal\" means: the net force, not a new force."
+   },
+   "misses": {
+    "answer": "Gravity pulls down, the normal force pushes up, and the centripetal force points down toward the center.",
+    "why": "At the top of the inside of a loop, the track pushes down, not up. And the centripetal force is not a third force: the readers mark an extra centripetal arrow as wrong."
+   }
+  }
+ ]
+}

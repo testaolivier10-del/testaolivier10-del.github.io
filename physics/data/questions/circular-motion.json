@@ -10,7 +10,7 @@
    "kind": "diagram",
    "title": "A car over a hill",
    "text": "<p>A 1200 kg car drives over the crest of a rounded hill at a constant speed of 12 m/s. Near the crest the road follows a vertical circle of radius 45 m. Use g = 9.8 m/s².</p>",
-   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 480 230\" role=\"img\" aria-label=\"A car drives over the top of a rounded hill whose crest is part of a vertical circle of radius r.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"480\" height=\"230\" fill=\"#FFFFFF\"/><path d=\"M10,190 Q240,40 470,190 L470,220 L10,220 Z\" fill=\"#CFE3D3\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><rect x=\"212\" y=\"92\" width=\"56\" height=\"22\" rx=\"6\" fill=\"#C0392B\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"225\" cy=\"117\" r=\"7\" fill=\"#1F2A28\"/><circle cx=\"255\" cy=\"117\" r=\"7\" fill=\"#1F2A28\"/><polygon points=\"280,103.5 336,103.5 336,109 350,100 336,91 336,96.5 280,96.5\" fill=\"#FFFFFF\" stroke=\"#B07A00\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><text x=\"358\" y=\"105\" font-size=\"14\" fill=\"#B07A00\" font-weight=\"bold\" font-style=\"italic\">v</text><text x=\"240\" y=\"175\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\">crest: part of a vertical circle of radius r</text></svg>"
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 480 230\" role=\"img\" aria-label=\"A car drives over the top of a rounded hill whose crest is part of a vertical circle.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"480\" height=\"230\" fill=\"#FFFFFF\"/><path d=\"M10,190 Q240,40 470,190 L470,220 L10,220 Z\" fill=\"#CFE3D3\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><rect x=\"212\" y=\"92\" width=\"56\" height=\"22\" rx=\"6\" fill=\"#C0392B\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"225\" cy=\"117\" r=\"7\" fill=\"#1F2A28\"/><circle cx=\"255\" cy=\"117\" r=\"7\" fill=\"#1F2A28\"/><polygon points=\"280,103.5 336,103.5 336,109 350,100 336,91 336,96.5 280,96.5\" fill=\"#FFFFFF\" stroke=\"#B07A00\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><text x=\"358\" y=\"105\" font-size=\"14\" fill=\"#B07A00\" font-weight=\"bold\" font-style=\"italic\">v</text><text x=\"240\" y=\"175\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\">crest: part of a vertical circle</text></svg>"
   }
  },
  "items": [
@@ -172,12 +172,14 @@
     "sigfigs": 2,
     "mistakes": [
      {
-      "value": 16000,
-      "why": "Value: that adds the centripetal term. At the top of a hill the center is below the car, so the net force points down and F_N is less than mg."
+      "value": 15600,
+      "why": "Value: that adds the centripetal term. At the top of a hill the center is below the car, so the net force points down and F_N is less than mg.",
+      "rel": 0.03
      },
      {
-      "value": 12000,
-      "why": "Value: that is the weight. The car is accelerating toward the center (down), so F_N is less than mg."
+      "value": 11800,
+      "why": "Value: that is the weight. The car is accelerating toward the center (down), so F_N is less than mg.",
+      "rel": 0.03
      }
     ]
    },

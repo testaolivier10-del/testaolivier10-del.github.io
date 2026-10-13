@@ -103,7 +103,8 @@
     {
      "point": "States the slope relation from T = 2π√(ℓ/g): slope = 4π²/g so g = 4π²/slope (or g = 4π² × slope for ℓ against T²)",
      "accept": [
-      "T² = (4π²/g)ℓ"
+      "T² = (4π²/g)ℓ",
+      "for T against √ℓ: slope = 2π/√g, so g = 4π²/slope²"
      ]
     }
    ],

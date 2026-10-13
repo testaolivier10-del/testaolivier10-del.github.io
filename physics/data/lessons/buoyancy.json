@@ -1,6 +1,6 @@
 {
  "topic": "buoyancy",
- "hook": "A cruise ship weighs more than 100,000 tonnes and floats; a pebble sinks. A lump of clay sinks, but shape the same clay into a bowl and it floats. The difference is not how heavy the object is, but how much water it pushes aside. This lesson shows where that upward push comes from and how to calculate it.",
+ "hook": "A large cruise ship has a mass of about 100,000 tonnes and floats; a pebble sinks. A lump of clay sinks, but shape the same clay into a bowl and it floats. The difference is not how heavy the object is, but how much water it pushes aside. This lesson shows where that upward push comes from and how to calculate it.",
  "prereq": [
   {
    "q": "In a fluid at rest, how does the pressure at the bottom of a block compare with the pressure at its top?",

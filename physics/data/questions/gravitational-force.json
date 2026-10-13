@@ -54,7 +54,7 @@
    "level": "apply",
    "diff": 2,
    "stimulus": "gravitational-force-s1",
-   "q": "Between 1.0 s and 3.0 s the scale reads 660 N. What is the elevator doing then?",
+   "q": "At 2.0 s the scale reads 660 N. What is the elevator doing then?",
    "options": [
     "Speeding up while moving upward",
     "Moving upward at a constant speed",
@@ -162,7 +162,6 @@
    "practice": "3.C",
    "level": "analyze",
    "diff": 2,
-   "stimulus": "gravitational-force-s1",
    "q": "A student says: \"Astronauts in the space station are weightless because there is no gravity up there.\" Which evidence best contradicts this?",
    "options": [
     "Earth's field there is about 90% of its surface value",
@@ -202,8 +201,9 @@
     ],
     "mistakes": [
      {
-      "value": 13000000,
-      "why": "Value: the radius must be squared. Gravity weakens with the square of the distance."
+      "value": 12600000,
+      "why": "Value: the radius must be squared. Gravity weakens with the square of the distance.",
+      "rel": 0.04
      }
     ]
    },

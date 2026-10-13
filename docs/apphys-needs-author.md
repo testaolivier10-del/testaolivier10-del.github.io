@@ -13,6 +13,11 @@ against the CED PDF (https://apcentral.collegeboard.org/media/pdf/ap-physics-1-c
 - 3.2 / 3.4: only mechanical energy analyzed; thermal energy and sound qualitative only.
 - 4.2: no quantitative analysis of variable-mass systems.
 - 4.3: no simultaneous equations; 1D quantitative, 2D semiquantitative only.
+
+Partial evidence for Unit 3 (reviewer, 2026-10-12, `docs/apphys-reviews/u3-4.md`): the CED PDF still could not be
+read past the Unit 3 opener (proxy refused the download; the web fetch truncates at 2.6). U_G = −Gm₁m₂/r is on the
+2025 equations sheet and two review sites file it under 3.3, so it stays in 3.3 (one item, `phys-potential-energy-12`,
+plus a notes section). Nothing in the Unit 3-4 banks depends on an unverified boundary being looser than listed.
 - 5.1 / 5.2 / 5.3: rotation described as clockwise or counterclockwise; torque vector direction out.
 - 5.4: I computed for at most five objects; I of extended bodies given, not memorized.
 - 5.5: no rotation in multiple planes.
@@ -51,13 +56,29 @@ the other value) so both are graded right; worked examples use 9.8. The grader n
 when the item stated g. Owner to confirm 9.8 as the default (vs 10, which makes mental arithmetic
 easier and is what the CED calls the course value).
 
-## score-cutoffs: the score calculator's bands (open, 2026-10-12)
+## score-cutoffs: the score calculator's bands (estimated 2026-10-12, Phase 3)
 
-`physics/assets/pages/score.js` and the practice exam's readiness band use 72/58/42/27 out of 100,
-copied from AP® Chemistry as placeholders. No cut-offs are published for the redesigned Physics 1
-exam, whose 2025 distribution (19.8% fives, 67% 3+) is far more generous than before. Phase 3 sets
-better estimates (and keeps the "estimate, not calibrated" label); a test keeps the calculator and
-the band equal.
+The College Board publishes no raw-to-score conversion for the redesigned exam, and no scoring
+worksheet with cut-offs has been released for any Physics 1 form we could find (third-party
+calculators use unsourced tables: test-ninjas 56/43/32/20 of 80, num8ers 70/54/40/25 of 100).
+So the bands are **estimates**, now **70 / 55 / 41 / 31** (composite out of 100 for a 5 / 4 / 3 / 2),
+in `physics/assets/pages/score.js` and the readiness band in `pages/exams.js` (a test keeps them
+equal); the calculator page says they are estimates, not official.
+
+Method (script kept out of the repo; rerun when 2026 statistics appear):
+1. Composite = 50 × MCQ/42 + 50 × FRQ/40, as the exam weights the sections.
+2. Free-response mean and spread from the 2025 scoring statistics (ap25-physics-1-scoring-statistics.pdf:
+   means 4.74/10, 6.09/12, 4.93/10, 4.65/8, SDs 2.96, 3.69, 3.11, 2.84), so the FRQ section averages 51%;
+   its SD assumes the four questions correlate 0.5-0.7.
+3. Multiple choice has no published statistics: mean taken as 46-56% and SD 18-22 points, correlation
+   with FRQ 0.7-0.8; composite treated as normal.
+4. Each cut is the composite at which the share at or above it matches the published distribution
+   (2025: 19.8% fives, 44.5% 4+, 67.4% 3+, 80.8% 2+; 2026: 19%, 43%, 68%, 83%). The median over the 108
+   model choices is 69.7 / 54.5 / 41.1 / 31.3 (ranges 65-74, 51-58, 38-45, 26-36), rounded to 70/55/41/31.
+
+Limits: a model of the distribution, not an equating; the spread is about ±4 points, which the page
+states ("within about 5 points of a cut-off, treat it as either score"). Replace with released
+cut-offs if the College Board ever publishes a scoring worksheet for the current format.
 
 ## tools-premium: which trainers are free (open, 2026-10-12)
 

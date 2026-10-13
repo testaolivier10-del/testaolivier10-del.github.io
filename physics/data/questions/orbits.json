@@ -3,7 +3,7 @@
   "orbits-s1": {
    "kind": "diagram",
    "title": "A satellite on an elliptical orbit",
-   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 250\" role=\"img\" aria-label=\"A satellite on an elliptical orbit around Earth. Point A, the closest point, is 7.0 × 10⁶ m from Earth’s center, where the satellite moves at 8.7 × 10³ m/s; point B, the farthest point, is 1.4 × 10⁷ m from Earth’s center\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"250\" fill=\"#FFFFFF\"/><ellipse cx=\"240\" cy=\"125\" rx=\"180\" ry=\"100\" fill=\"none\" stroke=\"#5A6268\" stroke-width=\"1.8\" stroke-dasharray=\"7 5\"/><circle cx=\"90.3\" cy=\"125\" r=\"22\" fill=\"#6FA3C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"90.3\" y=\"130\" font-size=\"10.5\" fill=\"#FFFFFF\" text-anchor=\"middle\" font-weight=\"bold\">Earth</text><circle cx=\"60\" cy=\"125\" r=\"7\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"50\" y=\"130\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"end\" font-weight=\"bold\">A</text><circle cx=\"420\" cy=\"125\" r=\"7\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"430\" y=\"130\" font-size=\"14\" fill=\"#1F2A28\" font-weight=\"bold\">B</text><line x1=\"60\" y1=\"134\" x2=\"60\" y2=\"184\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"60,195 54,184 66,184\" fill=\"#B07A00\"/><text x=\"20\" y=\"240\" font-size=\"12\" fill=\"#1F2A28\">A: 7.0 × 10⁶ m from Earth’s center, speed 8.7 × 10³ m/s. B: 1.4 × 10⁷ m from Earth’s center.</text></svg>"
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 420\" role=\"img\" aria-label=\"A satellite on an elliptical orbit around Earth. Point A, the closest point, is 7.0 × 10⁶ m from Earth’s center, where the satellite moves at 8.7 × 10³ m/s; point B, the farthest point, is 1.4 × 10⁷ m from Earth’s center\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"420\" fill=\"#FFFFFF\"/><ellipse cx=\"260\" cy=\"195\" rx=\"180\" ry=\"169.7056274847714\" fill=\"none\" stroke=\"#5A6268\" stroke-width=\"1.8\" stroke-dasharray=\"7 5\"/><circle cx=\"200\" cy=\"195\" r=\"22\" fill=\"#6FA3C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"200\" y=\"200\" font-size=\"10.5\" fill=\"#FFFFFF\" text-anchor=\"middle\" font-weight=\"bold\">Earth</text><circle cx=\"80\" cy=\"195\" r=\"7\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"70\" y=\"200\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"end\" font-weight=\"bold\">A</text><circle cx=\"440\" cy=\"195\" r=\"7\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"450\" y=\"200\" font-size=\"14\" fill=\"#1F2A28\" font-weight=\"bold\">B</text><line x1=\"80\" y1=\"204\" x2=\"80\" y2=\"254\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"80,265 74,254 86,254\" fill=\"#B07A00\"/><text x=\"20\" y=\"410\" font-size=\"12\" fill=\"#1F2A28\">A: 7.0 × 10⁶ m from Earth’s center, speed 8.7 × 10³ m/s. B: 1.4 × 10⁷ m from Earth’s center.</text></svg>"
   },
   "orbits-s2": {
    "kind": "setup",
@@ -36,7 +36,7 @@
      {
       "value": 6200,
       "rel": 0.015,
-      "why": "Value: that is the speed of a circular orbit at B. On an ellipse, use angular momentum: at A and B the velocity is perpendicular to r."
+      "why": "Value: that scales v_A by √(r_A/r_B), the rule for circular orbits (v ∝ 1/√r). On an ellipse, use angular momentum: at A and B the velocity is perpendicular to r."
      }
     ]
    },
@@ -186,7 +186,7 @@
     ]
    },
    "why": {
-    "correct": "K = ½mv² = ½(200 kg)(1.07 × 10⁷ m²/s²) = 1.07 × 10⁹ J. U = −GMm/r = -2.13 × 10⁹ J. E = K + U = -1.1 × 10⁹ J, which equals −K."
+    "correct": "K = ½mv² = ½(200 kg)(1.07 × 10⁷ m²/s²) = 1.07 × 10⁹ J. U = −GMm/r = −2.13 × 10⁹ J. E = K + U = −1.1 × 10⁹ J, which equals −K."
    }
   },
   {

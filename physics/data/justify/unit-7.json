@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 7 (docs/apphys-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u7-amplitude-and-period",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "3.C",
+   "skill": "functional-dependence",
+   "title": "A bigger swing, the same period",
+   "context": "<p>A block on a horizontal spring is pulled 4.0 cm from equilibrium and released; it oscillates with period T. It is then pulled 8.0 cm and released.</p>",
+   "prompt": "<b>Predict</b> the new period, and <b>justify</b> your prediction.",
+   "checklist": [
+    "Claims the period stays T",
+    "Uses T = 2π√(m/k), which contains neither the amplitude nor any distance",
+    "Explains physically: at twice the amplitude the block travels twice as far, but the restoring force, and so the acceleration, is twice as large at each point, so it moves faster and the time is the same"
+   ],
+   "earns": {
+    "answer": "The period stays T. For a block on a spring, T = 2π√(m/k), which depends only on the mass and the spring constant, not on the amplitude. Physically, at twice the amplitude the block has twice as far to go, but the restoring force F = −kx is twice as large at each corresponding point, so its acceleration and its speed are twice as large too. The two effects cancel, and each cycle takes the same time; only the greatest speed doubles.",
+    "why": "It uses the period equation correctly and explains why the amplitude cancels, which is what \"justify\" asks for."
+   },
+   "misses": {
+    "answer": "The period doubles, because the block has to travel twice as far each cycle.",
+    "why": "Twice the distance does not mean twice the time here, because the block also moves faster. Amplitude changing the period is a common misconception the course tests for."
+   }
+  },
+  {
+   "id": "u7-pendulum-not-spring",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.D",
+   "skill": "functional-dependence",
+   "title": "A heavier bob on a pendulum",
+   "context": "<p>A student replaces a pendulum's 0.10 kg bob with a 0.40 kg bob of the same size, keeping the string length the same. She predicts the period will double, using T = 2π√(m/k).</p>",
+   "prompt": "<b>Evaluate</b> her prediction, and <b>justify</b> your answer.",
+   "checklist": [
+    "Says the prediction is wrong: the period stays the same",
+    "Says T = 2π√(m/k) is for a block on a spring; a simple pendulum has T = 2π√(ℓ/g), which has no mass in it",
+    "Explains why: the restoring force on the bob (part of its weight, mg) grows with m, but so does the bob's inertia, so the acceleration does not depend on m"
+   ],
+   "earns": {
+    "answer": "Her prediction is wrong; the period stays the same. T = 2π√(m/k) is the period of a block on a spring. For a simple pendulum, T = 2π√(ℓ/g), which depends on the length and on g, not on the mass. The restoring force on the bob comes from its weight, mg, so a heavier bob has a larger restoring force, but it also has more mass to accelerate; the two cancel, and the bob's motion is the same.",
+    "why": "It names the right model for the system and explains why mass drops out, rather than only quoting the formula."
+   },
+   "misses": {
+    "answer": "The heavier bob is four times the mass, so with T = 2π√(m/k) the period becomes √4 = 2 times as long.",
+    "why": "This uses the spring formula for a pendulum, an error the readers report. A pendulum has no spring constant; its restoring force comes from gravity, which also grows with the mass."
+   }
+  },
+  {
+   "id": "u7-where-fastest",
+   "unit": "unit-7",
+   "topic": "shm-energy",
+   "practice": "3.C",
+   "skill": "conservation",
+   "title": "Where the block moves fastest",
+   "context": "<p>A block oscillates on a horizontal spring with amplitude A on a frictionless surface. A student says the block moves fastest at the turning points, because that is where the spring force is largest.</p>",
+   "prompt": "<b>Evaluate</b> the claim using the energy of the block-spring system.",
+   "checklist": [
+    "Says the claim is wrong: the block moves fastest at equilibrium (x = 0) and is at rest at the turning points",
+    "Says the block-spring system has no friction and no external work, so its total energy ½kA² is constant",
+    "Says at x = 0 the spring's potential energy is zero, so all of the energy is kinetic; at x = ±A it is all potential, so K = 0; a large force means a large acceleration, not a large speed"
+   ],
+   "earns": {
+    "answer": "The claim is wrong. Take the block and the spring as the system: the surface is frictionless and no external force does work, so the total energy ½kA² is constant. At the turning points, x = ±A, all of that energy is the spring's potential energy ½kA², so the block's kinetic energy is zero and it is momentarily at rest. At equilibrium, x = 0, the spring's potential energy is zero, so all of the energy is kinetic and the speed is greatest. The large spring force at the turning points gives the largest acceleration there, not the largest speed.",
+    "why": "It names the system and condition, tracks how the energy is shared, and separates acceleration from speed."
+   },
+   "misses": {
+    "answer": "The block is fastest at the ends, because the spring force is biggest there and pushes it hardest.",
+    "why": "This confuses acceleration with speed. Where the force is largest, the block is at rest and just turning around."
+   }
+  },
+  {
+   "id": "u7-pendulum-finds-g",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "3.A",
+   "skill": "procedure",
+   "title": "Find g with a pendulum",
+   "context": "<p>You have a string, a small heavy bob, a meterstick, a stopwatch and a clamp stand. You want to measure g from the period of a pendulum.</p>",
+   "prompt": "<b>Describe</b> a procedure, what you would graph to get a straight line, and how you would find g from it.",
+   "checklist": [
+    "Measures the length ℓ from the pivot to the center of the bob with the meterstick, for at least five different lengths",
+    "For each length, releases the bob at a small angle and times 10 full oscillations with the stopwatch, then divides by 10 (repeating to average), so a period is not mistaken for half a swing",
+    "Graphs T² against ℓ: from T = 2π√(ℓ/g), T² = (4π²/g)ℓ, so the best-fit line's slope is 4π²/g and g = 4π²/slope (for example, a slope of 4.0 s²/m gives g = 9.87 m/s²)"
+   ],
+   "earns": {
+    "answer": "Set up five pendulums of different lengths, measuring each length ℓ from the pivot to the center of the bob with the meterstick. For each, pull the bob aside to a small angle (under about 15°), release it, and time 10 complete back-and-forth oscillations with the stopwatch; divide by 10 to get the period T, and repeat three times to average. Since T = 2π√(ℓ/g), T² = (4π²/g)ℓ, so a graph of T² against ℓ is a straight line through the origin with slope 4π²/g. Draw the best-fit line and use g = 4π²/slope; for example, a slope of 4.0 s²/m gives g = 9.87 m/s².",
+    "why": "It names the instruments and measured quantities, reduces timing uncertainty, chooses a linear graph and says how the slope gives g."
+   },
+   "misses": {
+    "answer": "Time one swing of the pendulum and measure the string. Then g = 4π²ℓ/T².",
+    "why": "One timing of one swing has a large uncertainty, and \"one swing\" is often half a period. With no graph and no repeats, this does not earn the procedure or the analysis points."
+   }
+  }
+ ]
+}

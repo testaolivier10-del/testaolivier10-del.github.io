@@ -90,8 +90,9 @@
     "sigfigs": 2,
     "mistakes": [
      {
-      "value": 10.0,
-      "why": "Value: 12 m is the distance, the length of her path. Displacement only compares where she ended (0 m) with where she started (+2 m)."
+      "value": 12.0,
+      "why": "Value: 12 m is the distance, the length of her path. Displacement only compares where she ended (0 m) with where she started (+2 m).",
+      "tol": 0.5
      },
      {
       "value": -7.0,
@@ -227,8 +228,9 @@
     "sigfigs": 2,
     "mistakes": [
      {
-      "value": 40.0,
-      "why": "Value: 40.5 m is the distance. A displacement adds the legs as vectors, so the westward legs are negative."
+      "value": 40.5,
+      "why": "Value: 40.5 m is the distance. A displacement adds the legs as vectors, so the westward legs are negative.",
+      "tol": 0.5
      },
      {
       "value": 21.0,

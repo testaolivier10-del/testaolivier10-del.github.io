@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 1 (docs/apphys-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u1-slope-of-position-graph",
+   "unit": "unit-1",
+   "topic": "motion-representations",
+   "practice": "3.C",
+   "skill": "graphs",
+   "title": "What a straight position graph says",
+   "context": "<p>A cart moves along a straight track. Its position-time graph is a straight line from x = 2.0 m at t = 0 to x = 10.0 m at t = 4.0 s.</p>",
+   "prompt": "<b>Determine</b> the cart's velocity, and <b>justify</b> whether the cart is speeding up.",
+   "checklist": [
+    "Uses the slope of the position-time graph as the velocity: (10.0 m − 2.0 m) / 4.0 s = 2.0 m/s",
+    "Says the slope is the same everywhere because the graph is a straight line",
+    "Concludes the velocity is constant, so the acceleration is zero and the cart is not speeding up"
+   ],
+   "earns": {
+    "answer": "The velocity is the slope of the position-time graph: (10.0 m − 2.0 m) / (4.0 s − 0) = 2.0 m/s. The graph is a straight line, so its slope, and with it the velocity, is the same at every instant. A constant velocity means zero acceleration, so the cart is not speeding up even though its position keeps increasing.",
+    "why": "It reads the right feature of the graph (the slope, not the height), gives the value with its unit, and links a constant slope to a constant velocity."
+   },
+   "misses": {
+    "answer": "The cart is speeding up, because its position keeps getting larger as time goes on.",
+    "why": "A growing position only means the cart moves forward. Speeding up would need a slope that gets steeper; this answer reads the height of the graph instead of its slope."
+   }
+  },
+  {
+   "id": "u1-area-under-velocity-graph",
+   "unit": "unit-1",
+   "topic": "motion-representations",
+   "practice": "2.B",
+   "skill": "graphs",
+   "title": "Displacement from a velocity graph",
+   "context": "<p>A runner starts from rest. Her velocity-time graph rises in a straight line from 0 to 6.0 m/s over the first 3.0 s, then stays flat at 6.0 m/s from 3.0 s to 6.0 s.</p>",
+   "prompt": "<b>Calculate</b> her displacement from t = 0 to t = 6.0 s, and <b>explain</b> how you used the graph.",
+   "checklist": [
+    "Uses the area between the velocity-time graph and the time axis as the displacement",
+    "Splits the area into a triangle, ½(3.0 s)(6.0 m/s) = 9.0 m, and a rectangle, (3.0 s)(6.0 m/s) = 18 m",
+    "Adds them: 27 m, with the unit"
+   ],
+   "earns": {
+    "answer": "The displacement is the area between the velocity-time graph and the time axis. From 0 to 3.0 s the area is a triangle, ½(3.0 s)(6.0 m/s) = 9.0 m. From 3.0 s to 6.0 s it is a rectangle, (3.0 s)(6.0 m/s) = 18 m. The displacement is 9.0 m + 18 m = 27 m.",
+    "why": "It names the graph feature (area), handles the part where the velocity is changing, and gives a value with its unit."
+   },
+   "misses": {
+    "answer": "Displacement = velocity × time = (6.0 m/s)(6.0 s) = 36 m.",
+    "why": "This treats the velocity as 6.0 m/s the whole time. During the first 3.0 s she is slower than that, so the area under the rising part is a triangle, not a rectangle."
+   }
+  },
+  {
+   "id": "u1-dropped-and-launched",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "3.C",
+   "skill": "functional-dependence",
+   "title": "Which ball lands first",
+   "context": "<p>From the same height above level ground, at the same instant, one ball is dropped from rest and an identical ball is launched horizontally at 8.0 m/s. Air resistance is negligible.</p>",
+   "prompt": "<b>Predict</b> which ball reaches the ground first, and <b>justify</b> your prediction.",
+   "checklist": [
+    "Claims they land at the same time",
+    "Says the horizontal and vertical motions are independent, so the horizontal speed does not change the vertical motion",
+    "Both start with zero vertical velocity, have the same downward acceleration g and fall the same height, so h = ½gt² gives the same t = √(2h/g) for both"
+   ],
+   "earns": {
+    "answer": "They land at the same time. The horizontal and vertical motions of a projectile are independent. Vertically, both balls start with zero velocity, both have the same downward acceleration g, and both fall the same height h, so h = ½gt² gives the same time t = √(2h/g) for each. The launched ball's 8.0 m/s horizontal velocity does not appear in this equation; it only carries that ball farther from the starting point.",
+    "why": "It makes the claim, names the independence of the two motions, and shows from the vertical equation that the horizontal speed cannot change the time."
+   },
+   "misses": {
+    "answer": "The dropped ball lands first, because it travels a shorter distance than the ball that moves sideways.",
+    "why": "The time to land depends only on the vertical motion. The launched ball does go farther, but sideways, and that does not slow its fall."
+   }
+  },
+  {
+   "id": "u1-ramp-acceleration-procedure",
+   "unit": "unit-1",
+   "topic": "motion-representations",
+   "practice": "3.A",
+   "skill": "procedure",
+   "title": "Measure a cart's acceleration",
+   "context": "<p>You have a cart, a long ramp, a meterstick, a stopwatch and tape for marking the ramp. The cart is released from rest and speeds up with constant acceleration down the ramp.</p>",
+   "prompt": "<b>Describe</b> a procedure to find the cart's acceleration, including what you would graph and how you would use the graph.",
+   "checklist": [
+    "Releases the cart from rest at a marked start, with the meterstick measuring the distance d to several finish marks",
+    "Times each run with the stopwatch, repeating each distance several times and averaging to reduce uncertainty",
+    "Graphs d against t² (from d = ½at² for a start from rest), draws a best-fit straight line, and uses a = 2 × slope"
+   ],
+   "earns": {
+    "answer": "Mark a start line and five finish lines at different distances d down the ramp, measuring each d with the meterstick. Release the cart from rest at the start line and time how long it takes to reach a finish line with the stopwatch; do three trials for each distance and average the times. Because the cart starts from rest with constant acceleration, d = ½at². So graph d (vertical) against t² (horizontal), draw the best-fit straight line, and find its slope: the slope is a/2, so a = 2 × slope.",
+    "why": "It names each measured quantity with its instrument, repeats trials, chooses a graph that is a straight line, and says how its slope gives the acceleration."
+   },
+   "misses": {
+    "answer": "Roll the cart down the ramp and time it with the stopwatch. Then the acceleration is a = v/t.",
+    "why": "It never says what distance is measured or how, uses one run, and v is not measured at all. The readers want measured quantities, instruments, repeats and how the graph gives the answer."
+   }
+  }
+ ]
+}

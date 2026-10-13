@@ -284,7 +284,7 @@
       else if(!fit) box.innerHTML = '<p class="ld-empty">' + (pts.length < 2 ? 'Take at least two readings for a line.' : 'Press <b>Best-fit line</b> for the least-squares line.') + '</p>';
       else box.innerHTML = '<p class="ld-fitline">slope = <b>' + fm(fit.f.m) + '</b> ' + slopeUnit(p) + ' &nbsp; intercept = <b>' + fm(fit.f.b) + '</b> ' + p.yu + ' &nbsp; r² = ' + F(fit.f.r2, 4) + '</p>';
     }
-    function slopeUnit(p){ return st.iv ? p.yu + '/' + p.xu : p.id === exp.best ? exp.slopeUnit : '(' + p.yu + ')/(' + p.xu + ')'; }
+    function slopeUnit(p){ return st.iv ? p.yu + '/' + p.xu : p.id === exp.best ? exp.slopeUnit : (/[/·]/.test(p.yu) ? '(' + p.yu + ')' : p.yu) + '/' + (/[/·]/.test(p.xu) ? '(' + p.xu + ')' : p.xu); }
     function meaning(){
       var p = plotOf(), fit = fitNow(), n = st.rows.length, v = ivDef();
       if(st.iv){
@@ -318,7 +318,7 @@
         var pills = [];
         if(lastReading == null) pills.push({ k: 'Readings', html: String(st.rows.length), tone: 'readout' });
         if(lastReading != null) pills.push({ k: exp.dv.sym, html: F(lastReading, exp.dv.d) + ' ' + exp.dv.unit, tone: 'readout' });
-        if(fit && !st.iv) pills.push({ k: 'slope', html: fm(fit.f.m), tone: plotOf().id === exp.best ? 'good' : 'warn' });
+        if(fit && !st.iv) pills.push({ k: 'slope', html: fm(fit.f.m) + ' <small>' + slopeUnit(plotOf()) + '</small>', tone: plotOf().id === exp.best ? 'good' : 'warn' });
         LS.pills(pills, 'left', 'explore');
         LS.caption(m.head, 'explore');
         if(LSP) LSP.setup(exp.name + (st.iv ? ' (' + (st.iv === 'mass' ? 'bob mass' : 'release angle') + ')' : ''));

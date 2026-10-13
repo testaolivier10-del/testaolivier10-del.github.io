@@ -42,8 +42,9 @@
     "sigfigs": 2,
     "mistakes": [
      {
-      "value": 97.0,
-      "why": "Value: you multiplied by 3.6. A meter is smaller than a kilometer but a second is much shorter than an hour, so the number in m/s is smaller: divide by 3.6."
+      "value": 97.2,
+      "why": "Value: you multiplied by 3.6. A meter is smaller than a kilometer but a second is much shorter than an hour, so the number in m/s is smaller: divide by 3.6.",
+      "tol": 0.3
      },
      {
       "value": 450.0,

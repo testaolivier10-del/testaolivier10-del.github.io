@@ -46,7 +46,7 @@
     power: { topic: 'power', Y: { sym: 'P', name: 'average power' }, vars: [V('Δt', 'time taken', -1, 'time'), V('W', 'work done', 1, 'energy')], formula: 'P = W / Δt', pic: 'generic', say: 'a motor lifting a load' },
     momentum: { topic: 'linear-momentum', Y: { sym: 'p', name: 'momentum' }, vars: [V('v', 'speed', 1, 'speed'), V('m', 'mass', 1, 'mass')], formula: 'p = mv', pic: 'car', say: 'a moving cart' },
     impulse: { topic: 'impulse', Y: { sym: 'F_avg', name: 'average force on it' }, vars: [V('Δt', 'collision time', -1, 'time')], formula: 'F_avg = Δp / Δt (same Δp)', pic: 'generic', say: 'an egg stopped by a soft cushion instead of a hard floor, with the same change in momentum' },
-    torque: { topic: 'torque', Y: { sym: 'τ', name: 'torque' }, vars: [V('r', 'distance from the hinge', 1, 'length'), V('F', 'force (perpendicular)', 1, 'force')], formula: 'τ = rF sin θ', pic: 'generic', say: 'a push on a door' },
+    torque: { topic: 'torque', Y: { sym: 'τ', name: 'torque' }, vars: [V('r', 'distance from the hinge', 1, 'length'), V('F', 'perpendicular force', 1, 'force')], formula: 'τ = rF sin θ', pic: 'generic', say: 'a push on a door' },
     inertia: { topic: 'rotational-inertia', Y: { sym: 'I', name: 'rotational inertia' }, vars: [V('r', 'distance from the axis', 2, 'length'), V('m', 'mass', 1, 'mass')], formula: 'I = mr² (a small mass)', pic: 'generic', say: 'a small mass on a light rod spinning about an axis' },
     rotke: { topic: 'rotational-kinetic-energy', Y: { sym: 'K_rot', name: 'rotational kinetic energy' }, vars: [V('ω', 'angular speed', 2, 'speed'), V('I', 'rotational inertia', 1, 'inertia')], formula: 'K = ½Iω²', pic: 'generic', say: 'a spinning flywheel' },
     orbitv: { topic: 'orbits', Y: { sym: 'v', name: 'orbital speed' }, vars: [V('r', 'orbit radius', -0.5, 'distance'), V('M', 'mass of the planet', 0.5, 'mass')], formula: 'v = √(GM / r)', pic: 'orbit', say: 'a satellite in a circular orbit' },
@@ -158,7 +158,7 @@
     if(p === 0.5 || p === -0.5) out.push({ value: Math.pow(k, 4 * p), why: 'You squared the factor, but the formula has a square ROOT: raise the factor to the power ½' + (p < 0 ? ' and take the reciprocal.' : ' (4 times as much gives twice as much).') });
     if(p !== 0){
       out.push({ value: Math.pow(k, -p), why: 'Upside down: check whether the variable is in the numerator or the denominator.' });
-      out.push({ value: Math.pow(k, 2 * p), why: 'You squared once too often. Use the power in the formula: ' + (p === 0.5 || p === -0.5 ? 'a square root is a power of ½.' : 'only one square.') });
+      out.push({ value: Math.pow(k, 2 * p), why: Math.abs(p) === 0.5 ? 'You left out the square root: the formula has √, a power of ½' + (p < 0 ? ', in the denominator.' : '.') : Math.abs(p) === 1 ? 'You squared the factor, but the formula has no square: the power is ' + (p < 0 ? '−1 (divide by the factor).' : '1.') : 'That doubles the power in the formula. Raise the factor to the power the formula has, once.' });
       if(Math.abs(p) >= 1) out.push({ value: Math.pow(k, p / 2), why: 'You took a square root that is not in the formula.' });
       out.push({ value: k * Math.abs(p), why: 'Multiply the factor by itself (a power), do not multiply it by the exponent.' });
     }

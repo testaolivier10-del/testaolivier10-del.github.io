@@ -393,7 +393,7 @@
       start.done();
       var s0 = state(0);
       if(s0.res.amag < 1e-9 && sc !== 'elevator' && !(sc === 'rough' && P.rough.start === 'up') && sc !== 'spring' && sc !== 'car'){
-        draw(); if(LS) LS.pills([{ html: 'Nothing moves: the forces balance', tone: 'ghost' }], 'right', 'explore'); live('Nothing moves: the forces on the ' + FB.SCENES[sc].obj + ' balance.', true); return;
+        draw(); if(LS) LS.pills([{ html: 'Forces balance', tone: 'ghost' }], 'right', 'explore'); live('Nothing moves: the forces on the ' + FB.SCENES[sc].obj + ' balance.', true); return;
       }
       carCache = null;
       run = A.loop(function(dt, t){ motion.t = t; return draw(); }, { duration: DUR[sc], still: function(t){ motion.t = t; draw(); }, onEnd: function(){ runB.setAttribute('aria-pressed', 'false'); runB.textContent = '↺ Reset'; } });
@@ -735,7 +735,7 @@
       doneEl.hidden = false;
       doneEl.innerHTML = results.map(function(r, k){ return '<span class="fb-dchip ' + (r.correct ? 'ok' : 'no') + '">' + (r.correct ? '✓ ' : '✗ ') + chips[k] + '</span>'; }).join('');
       var fbStep = stepEl.querySelector('.fb-fb'), acts = stepEl.querySelector('.bt-actions.fb-acts, .bt-actions');
-      if(acts && i === 0){ acts.innerHTML = '<button type="button" class="btn-press sm fb-go">Next: Newton\'s second law</button>'; acts.querySelector('.fb-go').addEventListener('click', function(){ stepChoice(); }); acts.querySelector('.fb-go').focus(); stepEl.querySelector('.fb-palw').hidden = true; stepEl.querySelector('.fb-edit').hidden = true; caption((right ? '<b>Right the first time.</b> ' : '<b>Compare with the diagram on the picture.</b> ') + p.text); if(LS) LS.pills([{ html: right ? 'Diagram right' : 'Diagram shown', tone: right ? 'good' : 'warn' }], 'left', 'quiz'); return; }
+      if(acts && i === 0){ acts.innerHTML = '<button type="button" class="btn-press sm fb-go">Next: Newton\'s second law</button>'; acts.querySelector('.fb-go').addEventListener('click', function(){ stepChoice(); }); acts.querySelector('.fb-go').focus(); stepEl.querySelector('.fb-palw').hidden = true; stepEl.querySelector('.fb-edit').hidden = true; caption((right ? '<b>Right the first time.</b> ' : '<b>Compare with the diagram on the picture.</b> ') + p.text); if(LS) LS.pills([{ html: right ? 'Diagram right' : arrows.some(function(a){ return a.mark && a.mark.st === 'ok'; }) && !stepEl.querySelector('.fb-list') ? 'Diagram fixed' : 'Diagram shown', tone: right ? 'good' : 'warn' }], 'left', 'quiz'); return; }
       if(i === 1) return stepNum();
       finish();
     }

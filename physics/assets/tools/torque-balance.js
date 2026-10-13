@@ -54,12 +54,15 @@
   function gLabel(m){ return m < 1 ? Math.round(m * 1000) + ' g' : F(m, 1) + ' kg'; }
   /* A slotted brass weight hanging from a hook clamp at (x, y): string, hook, body. */
   function massArt(id, x, y, m, label){
-    var z = massSize(m), top = y + 18, l = x - z.w / 2;
+    // The body is at least as wide as its label (about 7.4 px a character at 12 px, bold).
+    var z = massSize(m), lab = label || gLabel(m), top = y + 18;
+    z = { w: Math.max(z.w, Math.ceil(lab.length * 7.4 * Z + 10)), h: z.h };
+    var l = x - z.w / 2;
     return '<line class="tb-string" x1="' + n1(x) + '" y1="' + n1(y) + '" x2="' + n1(x) + '" y2="' + n1(top - 4) + '"/>' +
       '<path class="tb-metal" fill="none" stroke-width="2" d="M' + n1(x) + ' ' + n1(top - 6) + 'q0 4 0 6"/>' +
       '<rect class="tb-body" x="' + n1(l) + '" y="' + n1(top) + '" width="' + z.w + '" height="' + z.h + '" rx="5" fill="url(#' + id + 'b)" stroke="#6B4E12" stroke-width="1.2"/>' +
       '<rect x="' + n1(l + 3) + '" y="' + n1(top + 3) + '" width="' + (z.w - 6) + '" height="3" rx="1.5" fill="#fff" opacity=".35"/>' +
-      '<text class="tb-label" x="' + n1(x) + '" y="' + n1(top + z.h / 2 + 4.5 * Z) + '" text-anchor="middle"' + (Z !== 1 ? ' font-size="' + n1(12 * Z) + '"' : '') + '>' + esc(label || gLabel(m)) + '</text>';
+      '<text class="tb-label" x="' + n1(x) + '" y="' + n1(top + z.h / 2 + 4.5 * Z) + '" text-anchor="middle"' + (Z !== 1 ? ' font-size="' + n1(12 * Z) + '"' : '') + '>' + esc(lab) + '</text>';
   }
   /* The meter stick, level, from x0 (px) with ppm, centred on y; ticks every
      cm, numbers every 10 cm. */
@@ -382,6 +385,9 @@
     function raceReset(){ race.stop(); rt = 0; rdone = false; raceGo.disabled = false; drawRace(); }
     function announceRace(){ var a = TB.race.at(wheel(dA), 0), b = TB.race.at(wheel(dB), 0); say(Math.abs(a.tEnd - b.tEnd) < 1e-6 ? 'A tie: both weights land after ' + F(a.tEnd, 2) + ' seconds.' : 'Wheel ' + (a.tEnd < b.tEnd ? 'A' : 'B') + '\'s weight lands first, after ' + F(Math.min(a.tEnd, b.tEnd), 2) + ' seconds; the other after ' + F(Math.max(a.tEnd, b.tEnd), 2) + ' seconds.', true); }
     var RW = 640, RH = 360, RP = 300, AY = 92, W0 = AY + 30, FALL = 180, FLOOR = W0 + FALL + 40;
+    /* Phone (Z > 1): a shorter drawn drop and the wheels closer together, so the
+       picture is limited by the stage's width, not its small height. */
+    function raceGeo(){ var ph = Z > 1, fall = ph ? 100 : 180; FALL = fall; FLOOR = W0 + fall + massSize(0.45).h; /* a landed weight rests on the floor */ return { xs: ph ? [190, 430] : [RW * 0.27, RW * 0.73], dim: ph ? 106 : 34, vb: ph ? '94 18 462 ' + (FLOOR + 12 - 18) : '0 0 ' + RW + ' ' + RH }; }
     /* A rotational-inertia apparatus: a grooved hub on an axle, a cross-bar
        with two brass sliders, hung from a bracket under the ceiling beam. */
     function wheelArt(id, cx, cy, d, ang, name){
@@ -399,15 +405,15 @@
     function drawRace(){
       if(scene !== 'race') return;
       var A = wheel(dA), B = wheel(dB), a = TB.race.at(A, rt), b = TB.race.at(B, rt), id = did;
-      var xs = [RW * 0.27, RW * 0.73], fs = FALL / RA.h;
-      var html = '<svg viewBox="' + (Z > 1 ? '60 22 540 ' + (FLOOR - 10) : '0 0 ' + RW + ' ' + RH) + '" class="phys-scene tb-svg" role="img" aria-label="' + esc('Two wheels with the same mass. Wheel A has its sliders ' + F(dA, 2) + ' m from the axle (I = ' + F(A.I, 4) + ' kg·m²), wheel B ' + F(dB, 2) + ' m (I = ' + F(B.I, 4) + ' kg·m²). After ' + F(rt, 2) + ' s the weights have fallen ' + F(a.y, 2) + ' m and ' + F(b.y, 2) + ' m.') + '">' + defs(id) +
+      var geo = raceGeo(), xs = geo.xs, fs = FALL / RA.h, dl = geo.dim;
+      var html = '<svg viewBox="' + geo.vb + '" class="phys-scene tb-svg" role="img" aria-label="' + esc('Two wheels with the same mass. Wheel A has its sliders ' + F(dA, 2) + ' m from the axle (I = ' + F(A.I, 4) + ' kg·m²), wheel B ' + F(dB, 2) + ' m (I = ' + F(B.I, 4) + ' kg·m²). After ' + F(rt, 2) + ' s the weights have fallen ' + F(a.y, 2) + ' m and ' + F(b.y, 2) + ' m.') + '">' + defs(id) +
         '<rect class="tb-metal" x="16" y="' + (AY - 72) + '" width="' + (RW - 32) + '" height="10" rx="3" fill="url(#' + id + 'm)"/>';
       [[A, a, dA, 'A'], [B, b, dB, 'B']].forEach(function(w, i){
         var cx = xs[i], cy = AY, st2 = w[1], rh = RA.r * RP, sx = cx + rh, wy = W0 + st2.y * fs;
         html += wheelArt(id, cx, cy, w[2], st2.theta, w[3]) +
           '<line class="tb-string" x1="' + n1(sx) + '" y1="' + cy + '" x2="' + n1(sx) + '" y2="' + n1(wy) + '"/>' + massArt(id, sx, wy - 18, 0.45, '200 g') +
           '<text class="tb-bar-t" x="' + cx + '" y="' + (AY - 46) + '" text-anchor="middle">' + w[3] + '</text>';
-        if(st2.done) html += '<text class="tb-bar-t tb-good" x="' + n1(sx - 30) + '" y="' + n1(FLOOR - 10) + '" text-anchor="end">' + F(st2.tEnd, 2) + ' s</text>';
+        if(st2.done) html += '<text class="tb-bar-t tb-good" x="' + n1(sx - 40 * Z) + '" y="' + n1(FLOOR - 10) + '" text-anchor="end"' + (Z > 1 ? ' font-size="16"' : '') + '>' + F(st2.tEnd, 2) + ' s</text>';
         // This wheel's energy column: the weight's K under the wheel's K_rot,
         // as shares of the m g h it gives up by the floor.
         var bx = cx + 0.215 * RP + 26, top = AY - 20, bh = FLOOR - 14 - top, tot = RA.m * G * RA.h, hk = st2.K / tot * bh, hr = st2.Krot / tot * bh;
@@ -418,9 +424,9 @@
       });
       html += '<rect class="tb-bench" x="0" y="' + n1(FLOOR) + '" width="' + RW + '" height="12"/><rect class="tb-bench-e" x="0" y="' + n1(FLOOR + 8) + '" width="' + RW + '" height="4"/>' +
         // The drop, as a dimension line at the left.
-        '<g class="tb-dimv"><line x1="' + (Z > 1 ? 76 : 34) + '" x2="' + (Z > 1 ? 76 : 34) + '" y1="' + W0 + '" y2="' + FLOOR + '" stroke="var(--muted)" stroke-width="1.4"/><path d="M' + (Z > 1 ? 70 : 28) + ' ' + W0 + 'h12M' + (Z > 1 ? 70 : 28) + ' ' + FLOOR + 'h12" stroke="var(--muted)" stroke-width="1.4"/>' +
-        '<text class="tb-hint" transform="translate(' + (Z > 1 ? 70 : 28) + ' ' + n1((W0 + FLOOR) / 2) + ') rotate(-90)" text-anchor="middle"' + (Z > 1 ? ' font-size="16"' : '') + '>drop ' + F(RA.h, 2) + ' m</text></g>' +
-        (Z > 1 ? '<g class="tb-key-svg" font-size="15"><rect class="tb-c0" x="300" y="' + (AY - 52) + '" width="13" height="13" rx="3"/><text class="tb-bar-k" font-size="15" x="318" y="' + (AY - 41) + '">K</text><rect class="tb-c1" x="345" y="' + (AY - 52) + '" width="13" height="13" rx="3"/><text class="tb-bar-k" font-size="15" x="363" y="' + (AY - 41) + '">K<tspan dy="4" font-size="11">rot</tspan></text></g>' : '') + '</svg>';
+        '<g class="tb-dimv"><line x1="' + dl + '" x2="' + dl + '" y1="' + (FLOOR - FALL) + '" y2="' + FLOOR + '" stroke="var(--muted)" stroke-width="1.4"/><path d="M' + (dl - 6) + ' ' + (FLOOR - FALL) + 'h12M' + (dl - 6) + ' ' + FLOOR + 'h12" stroke="var(--muted)" stroke-width="1.4"/>' +
+        '<text class="tb-hint" transform="translate(' + (dl - 6) + ' ' + n1(FLOOR - FALL / 2) + ') rotate(-90)" text-anchor="middle"' + (Z > 1 ? ' font-size="16"' : '') + '>drop ' + F(RA.h, 2) + ' m</text></g>' +
+        (Z > 1 ? '<g class="tb-key-svg" font-size="15"><rect class="tb-c0" x="288" y="' + (AY - 62) + '" width="13" height="13" rx="3"/><text class="tb-bar-k" font-size="15" x="306" y="' + (AY - 51) + '">K</text><rect class="tb-c1" x="326" y="' + (AY - 62) + '" width="13" height="13" rx="3"/><text class="tb-bar-k" font-size="15" x="344" y="' + (AY - 51) + '">K<tspan dy="4" font-size="11">rot</tspan></text></g>' : '') + '</svg>';
       sceneEl.innerHTML = html;
       // Energy split: the weight's K against the wheel's K_rot, as shares of m g h.
       var tot = RA.m * G * RA.h;

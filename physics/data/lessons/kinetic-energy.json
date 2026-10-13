@@ -74,7 +74,7 @@
  ],
  "misconception": {
   "wrong": "A cart that speeds up from 1.5 m/s to 2.5 m/s gains ½m(1.0 m/s)² of kinetic energy.",
-  "right": "The change is ½m(2.5 m/s)² − ½m(1.5 m/s)² = ½m(4.0 m²/s²), four times more than ½m(Δv)². Square each speed before you subtract."
+  "right": "The change is ½m(2.5 m/s)² − ½m(1.5 m/s)² = ½m(4.0 m²/s²), four times ½m(Δv)² = ½m(1.0 m²/s²). Square each speed before you subtract."
  },
  "check": [
   "phys-kinetic-energy-1",

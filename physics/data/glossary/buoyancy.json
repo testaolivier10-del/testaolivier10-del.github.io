@@ -9,6 +9,6 @@
   "def": "The buoyant force equals the weight of the fluid the object displaces: F_b = ρ_fluid V_displaced g. It does not depend on the object's own density."
  },
  "neutral-buoyancy": {
-  "def": "The condition in which the buoyant force on an object equals its weight, so it neither rises nor sinks; a floating object is in this balance."
+  "def": "The condition in which the buoyant force on an object equals its weight, so it neither rises nor sinks. A fully submerged object is neutrally buoyant when its average density equals the fluid's; a floating object reaches the same balance with only part of it under the surface."
  }
 }

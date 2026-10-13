@@ -391,7 +391,7 @@
   function num(o){ var c = M.cell(o.answer, o.rel || 0.02, o.mistakes || []); return STEP({ kind: 'num', key: o.key, label: o.label, unit: o.unit, cell: c, practice: o.practice || '2.B', hint: o.hint }); }
 
   function genSpeed(r, ctx, g){
-    var m = r.pick([40, 45, 50, 55, 60, 65, 70]), h1 = r.between(3.0, 8.0, 2), h2 = r.between(0.5, h1 - 1.2, 2), dh = h1 - h2;
+    var m = r.pick([40, 45, 50, 55, 60, 65, 70]), h1 = r.between(3.0, 8.0, 2), h2 = M.round(r.between(0.5, h1 - 1.2, 2), 1), dh = h1 - h2; // h2 to 0.1 m, as printed
     var dU = m * g * dh, v = Math.sqrt(2 * g * dh);
     var text = '<p>A ' + m + ' kg skater starts from rest ' + F(h1, 1) + ' m above the ground on a frictionless track and rolls down to a point ' + F(h2, 1) + ' m above the ground. Use g = ' + F(g, 1) + ' m/s².</p>';
     var steps = [
@@ -452,7 +452,7 @@
       sol = ['K = ½mv² = ' + fmt(K, 3) + ' J.', 'System: block and spring, frictionless floor. At the greatest compression the block is at rest, so all K is U<sub>s</sub>: ½mv² = ½kx².', 'x = v√(m/k) = ' + fmt(v, 2) + ' × √(' + fmt(m, 2) + '/' + k + ') = ' + fmt(x, 3) + ' m.', 'x ∝ 1/√k: 4k gives half the compression.'];
       vals = { m: m, v: v, k: k, out: true };
     } else {
-      var xc = r.between(0.05, 0.30, 2), U = 0.5 * k * xc * xc, v2 = xc * Math.sqrt(k / m);
+      var xc = r.int(5, 30) / 100, U = 0.5 * k * xc * xc, v2 = xc * Math.sqrt(k / m);
       text = '<p>A spring (k = ' + k + ' N/m) is compressed ' + F(xc * 100, 0) + ' cm and launches a ' + fmt(m, 2) + ' kg block from rest along a frictionless floor.</p>';
       steps = [
         num({ key: 'U', label: 'How much elastic potential energy does the compressed spring store?', unit: 'J', answer: U, mistakes: [

@@ -94,3 +94,10 @@
   .ol-graph svg{max-height:84px;}
   .ol-top{min-height:70px;}
 }
+/* Phones (review, tools-b): the stage is short (the dock takes most of the
+   height), so the picture gets the larger share and the one graph shown is
+   kept compact. */
+@media (max-width:999.98px){
+  .ol-top{min-height:104px;}
+  .ol-graph svg{max-height:68px;}
+}

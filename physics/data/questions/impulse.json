@@ -328,7 +328,8 @@
     "mistakes": [
      {
       "value": 42000,
-      "why": "Value: impulse is force times time, not force divided by time."
+      "why": "Value: impulse is force times time, not force divided by time.",
+      "tol": 500
      }
     ]
    },

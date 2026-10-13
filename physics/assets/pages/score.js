@@ -6,11 +6,13 @@
 
    Each section is half the exam score (docs/apphys-research/framework.md,
    section 5): 42 four-option questions, then 4 free-response questions worth
-   10 + 12 + 10 + 8 = 40 points. The bands below are the practice exam's
-   (72, 58, 42 and 27 out of 100), carried over from AP® Chemistry as
-   PLACEHOLDERS: the College Board publishes no cut-offs for the current
-   physics exam (needs-author score-cutoffs). Phase 3 sets them; a test holds
-   this file and the readiness band in pages/exams.js equal.
+   10 + 12 + 10 + 8 = 40 points. The bands (70, 55, 41 and 31 out of 100)
+   are ESTIMATES: the College Board publishes no cut-offs for the current
+   physics exam, so they are the composites that reproduce the published
+   2025 and 2026 score distributions under a model of the composite built
+   from the 2025 free-response statistics (needs-author score-cutoffs has
+   the method). A test holds this file and the readiness band in
+   pages/exams.js equal.
 
      ApPhysScore.composite(mcq, frq, opts)  { mcqPct, frqPct, composite, band, next }
      ApPhysScore.band(composite)            1-5
@@ -18,7 +20,7 @@
 (function(){
   var MCQ = 42, FRQ = [10, 12, 10, 8];   // mr, tbr, lab, qqt, in exam order
   var FRQ_TOTAL = FRQ.reduce(function(a, b){ return a + b; }, 0);
-  var CUTS = [72, 58, 42, 27];   // band 5, 4, 3, 2 from these composites up; below is 1
+  var CUTS = [70, 55, 41, 31];   // band 5, 4, 3, 2 from these composites up; below is 1
 
   function clamp(x, lo, hi){ x = Number(x); if(!isFinite(x)) x = 0; return Math.max(lo, Math.min(hi, x)); }
   function band(c){ return c >= CUTS[0] ? 5 : c >= CUTS[1] ? 4 : c >= CUTS[2] ? 3 : c >= CUTS[3] ? 2 : 1; }

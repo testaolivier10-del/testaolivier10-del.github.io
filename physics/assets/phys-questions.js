@@ -162,12 +162,14 @@
     var accepted = [N.unit].concat(N.units || []).filter(function(u){ return u; });
     // The value is right within the tolerance, or when it is the key rounded
     // to the student's own precision: a rounding choice is a significant-figures
-    // matter, reported once, under significant figures.
-    var own = N.places != null || (N.sigfigs == null && N.decimals != null) ? +Number(N.answer).toFixed(places(p.digits)) : +Number(N.answer).toPrecision(Math.min(21, Math.max(1, sigFigs(p.digits))));
+    // matter, reported once, under significant figures. An ambiguous whole
+    // number ("90") is read at its most precise (two figures), so 90 is not
+    // the key 85 rounded; "20" for a key of 20 still is.
+    var own = N.places != null || (N.sigfigs == null && N.decimals != null) ? +Number(N.answer).toFixed(places(p.digits)) : +Number(N.answer).toPrecision(Math.min(21, Math.max(1, sigRange(p.digits).max)));
     var valueOk = near(p.num, N.answer, N) || ((N.sigfigs != null || N.places != null) && Math.abs(p.num - own) <= slack(own));
     var notes = [], parts = { value: valueOk, unit: null, sig: null }, mistake = null, gNote = false;
     if(!valueOk && N.gAlt != null){
-      var ownAlt = N.sigfigs != null ? +Number(N.gAlt).toPrecision(Math.min(21, Math.max(1, sigFigs(p.digits)))) : N.gAlt;
+      var ownAlt = N.sigfigs != null ? +Number(N.gAlt).toPrecision(Math.min(21, Math.max(1, sigRange(p.digits).max))) : N.gAlt;
       if(near(p.num, N.gAlt, N) || (N.sigfigs != null && Math.abs(p.num - ownAlt) <= slack(ownAlt))){ valueOk = parts.value = true; gNote = true; }
     }
     if(N.askUnit && accepted.length){

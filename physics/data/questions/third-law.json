@@ -293,7 +293,7 @@
    "practice": "2.C",
    "level": "apply",
    "diff": 2,
-   "q": "A 1000 kg car hits a 0.10 kg bug. How does the force of the car on the bug compare with the force of the bug on the car?",
+   "q": "A 1000 kg car hits a 0.10 g bug. How does the force of the car on the bug compare with the force of the bug on the car?",
    "options": [
     "They are equal in size",
     "The car exerts the larger force",

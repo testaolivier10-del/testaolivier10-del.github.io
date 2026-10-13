@@ -63,6 +63,15 @@ test('significant figures are counted as written', () => {
   assert.equal(JSON.stringify(Q.sigRange('20')), '{"min":1,"max":2}');
   assert.equal(JSON.stringify(Q.sigRange('20.')), '{"min":2,"max":2}');
   assert.equal(JSON.stringify(Q.sigRange('0.0450')), '{"min":3,"max":3}');
+  // An ambiguous round number is not the key rounded: 90 for 85, 4000 for 3600.
+  const k85 = { type: 'numeric', numeric: { answer: 85, tol: 1, unit: 'N', sigfigs: 2 } };
+  assert.equal(Q.grade(k85, '90').correct, false);
+  assert.equal(Q.grade(k85, '85').correct, true);
+  const k3600 = { type: 'numeric', numeric: { answer: 3600, rel: 0.01, unit: 'N', sigfigs: 2 } };
+  assert.equal(Q.grade(k3600, '4000').correct, false);
+  assert.equal(Q.grade(k3600, '3600').correct, true);
+  const k20 = { type: 'numeric', numeric: { answer: 20, tol: 0.5, unit: 'm/s', sigfigs: 2 } };
+  assert.equal(Q.grade(k20, '20').correct, true);
 });
 
 test('units: physics units normalize to SI base units, the unit is graded on its own, and a prefix slip is named', () => {

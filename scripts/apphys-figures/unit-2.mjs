@@ -231,7 +231,7 @@ FIGS['fbd-tossed-ball'] = () => {
   let s = text(W / 2, 28, 'A ball tossed straight up, on its way up', { anchor: 'middle', size: 18, weight: 'bold' });
   // scene
   s += panel(20, 46, 220, 294, 'The scene');
-  s += path('M80,300 Q90,180 130,110', { stroke: C.light, width: 2, dash: '5 5' });
+  s += line(130, 270, 130, 130, C.light, 2, '5 5');
   s += `<circle cx="130" cy="110" r="16" fill="#E9A23B" stroke="${C.ink}" stroke-width="2"/>`;
   s += kinArrow(160, 140, 160, 80, C.velocity);
   s += text(172, 114, 'v', { size: 15, color: C.velocity, weight: 'bold', italic: true });
@@ -248,13 +248,13 @@ FIGS['fbd-tossed-ball'] = () => {
   s += cross(712, 70);
   const cx = 610, cy = 170;
   s += arrow(cx, cy, cx, cy - 80, C.grey, { dash: '7 5' }) + text(cx + 8, cy - 70, '"force of the throw"', { size: 12.5, color: C.wrong });
-  s += arrow(cx, cy, cx - 70, cy, C.grey, { dash: '7 5' }) + text(cx - 72, cy - 10, '"v"', { size: 12.5, color: C.wrong });
+  s += arrow(cx, cy, cx - 50, cy - 60, C.grey, { dash: '7 5' }) + text(cx - 76, cy - 66, '"v"', { size: 12.5, color: C.wrong });
   s += arrow(cx, cy, cx + 60, cy + 40, C.grey, { dash: '7 5' }) + text(cx + 26, cy + 64, '"F_net"'.replace('F_net', 'F<tspan baseline-shift="sub" font-size="9">net</tspan>'), { size: 12.5, color: C.wrong });
   s += fbd(cx, cy, [{ dx: 0, dy: 80, color: C.gravity }]);
   s += text(620, 292, 'No agent pushes up once the ball', { anchor: 'middle', size: 12.5, color: C.grey });
   s += text(620, 308, 'leaves the hand. Velocity and net', { anchor: 'middle', size: 12.5, color: C.grey });
   s += text(620, 324, 'force are not forces on the object.', { anchor: 'middle', size: 12.5, color: C.grey });
-  return svgDoc(W, H, 'Free-body diagram of a ball tossed upward', 'Left: a ball moving upward after leaving a hand, with an outlined velocity arrow pointing up. Middle, marked right: its free-body diagram is a dot with one arrow down, F_g, Earth on ball, because air resistance is negligible. Right, marked wrong: a diagram that adds dashed arrows labelled force of the throw, v and F_net. None of these is a force exerted on the ball by another object, so none belongs on a free-body diagram.', s);
+  return svgDoc(W, H, 'Free-body diagram of a ball tossed upward', 'Left: a ball moving straight up after leaving a hand, with an outlined velocity arrow pointing up. Middle, marked right: its free-body diagram is a dot with one arrow down, F_g, Earth on ball, because air resistance is negligible. Right, marked wrong: a diagram that adds dashed arrows labelled force of the throw, v and F_net. None of these is a force exerted on the ball by another object, so none belongs on a free-body diagram.', s);
 };
 
 /* ------------------------------------------------------------------ 2.3 */
@@ -276,7 +276,7 @@ FIGS['third-law-book-table'] = () => {
   s += panel(340, 46, 400, 374, 'Pulled apart: each pair');
   const tick = (x, y, n, col) => { let o = ''; for (let i = 0; i < n; i++) o += line(x - 7, y + i * 5, x + 7, y + i * 5, col, 2); return o; };
   // book
-  s += rect(432, 130, 96, 26, { fill: '#B5533C', stroke: C.ink, rx: 2 }) + text(446, 148, 'book', { size: 12, weight: 'bold', color: '#FFFFFF' });
+  s += rect(432, 130, 96, 26, { fill: '#B5533C', stroke: C.ink, rx: 2 }) + text(449, 148, 'book', { size: 12, weight: 'bold', color: '#FFFFFF', anchor: 'middle' });
   s += arrow(468, 143, 468, 88, C.normal) + tick(468, 110, 1, C.normal) + flabel(458, 98, 'F', 'N', ', table on book', C.normal, { anchor: 'end', size: 13 });
   s += arrow(506, 143, 506, 200, C.gravity) + tick(506, 172, 2, C.gravity) + flabel(516, 196, 'F', 'g', ', Earth on book', C.gravity, { size: 13 });
   // table
@@ -345,7 +345,7 @@ FIGS['second-law-cart-hanging'] = () => {
   s += line(60, g + 16, 60, 360, C.grey, 5) + line(280, g + 16, 280, 360, C.grey, 5);
   s += cart(70, g, 100, 32, 'cart, M');
   s += pulley(306, g - 10, 14);
-  s += line(170, g - 30, 306, g - 30 + 6, C.ink, 1.8);  // string to top of pulley
+  s += line(170, g - 24, 306, g - 24, C.ink, 1.8);  // string level, to the top of the pulley
   s += line(320, g - 10, 320, 250, C.ink, 1.8);
   s += hanger(320, 250, 40, 38, 'm');
   s += kinArrow(80, 96, 150, 96, C.accel) + text(160, 101, 'a', { size: 15, color: C.accel, weight: 'bold', italic: true });
@@ -358,14 +358,14 @@ FIGS['second-law-cart-hanging'] = () => {
   s += fbd(450, 180, [
     { dx: 0, dy: -72, color: C.normal, main: 'F', sub: 'N', rest: ', track on cart', lx: 8, ly: -60 },
     { dx: 0, dy: 72, color: C.gravity, main: 'F', sub: 'g', rest: ', Earth on cart', lx: 8, ly: 68 },
-    { dx: 54, dy: 0, color: C.tension, main: 'F', sub: 'T', rest: ', string', lx: 14, ly: -12 },
+    { dx: 32, dy: 0, color: C.tension, main: 'F', sub: 'T', rest: ', string', lx: 10, ly: -12 },
   ], { size: 12.5 });
   s += kinArrow(420, 300, 480, 300, C.accel) + text(490, 305, 'a (not a force)', { size: 12.5, color: C.accel });
   // block FBD
   s += text(640, 84, 'Hanging block', { anchor: 'middle', size: 14, weight: 'bold' });
   s += fbd(615, 190, [
-    { dx: 0, dy: -50, color: C.tension, main: 'F', sub: 'T', rest: ', string on block', lx: 8, ly: -42 },
-    { dx: 0, dy: 80, color: C.gravity, main: 'F', sub: 'g', rest: ', Earth on block', lx: 8, ly: 74 },
+    { dx: 0, dy: -32, color: C.tension, main: 'F', sub: 'T', rest: ', string on block', lx: 8, ly: -22 },
+    { dx: 0, dy: 56, color: C.gravity, main: 'F', sub: 'g', rest: ', Earth on block', lx: 8, ly: 52 },
   ], { size: 12.5 });
   s += kinArrow(600, 296, 600, 346, C.accel) + text(612, 330, 'a (not a force)', { size: 12.5, color: C.accel });
   s += text(560, 384, `Block: ${sym('F', 'g', 12.5)} longer than ${sym('F', 'T', 12.5)}, so it speeds up downward.`, { anchor: 'middle', size: 12.5, color: C.grey });
@@ -487,7 +487,7 @@ FIGS['spring-hooke'] = () => {
   // Δx brackets
   const br = (x, y1, y2, lab) => line(x, y1, x, y2, C.amber, 2) + line(x - 5, y1, x + 5, y1, C.amber, 2) + line(x - 5, y2, x + 5, y2, C.amber, 2) + text(x + 8, (y1 + y2) / 2 + 5, lab, { size: 13, color: C.amber, weight: 'bold' });
   s += br(238, top + L0, top + L0 + d, 'Δx');
-  s += br(354, top + L0, top + L0 + 2 * d, '2Δx');
+  s += line(354, top + L0, 354, top + L0 + 2 * d, C.amber, 2) + line(349, top + L0, 359, top + L0, C.amber, 2) + line(349, top + L0 + 2 * d, 359, top + L0 + 2 * d, C.amber, 2) + text(312, top + L0 + d + 5, '2Δx', { size: 13, color: C.amber, weight: 'bold', anchor: 'end' });
   s += text(220, 384, 'Double the hanging weight, double the stretch.', { anchor: 'middle', size: 12.5, color: C.grey });
   // graph
   s += panel(436, 46, 304, 354, 'Force against stretch');
@@ -513,22 +513,23 @@ FIGS['circular-flat-curve'] = () => {
   s += path(`M${cx + R},${cy} A${R},${R} 0 0,0 ${cx},${cy - R}`, { stroke: '#FFFFFF', width: 2, dash: '10 8' });
   s += dot(cx, cy, 4) + text(cx + 8, cy + 16, 'center', { size: 12.5, color: C.grey });
   const th = -Math.PI / 4, px = cx + R * Math.cos(th), py = cy + R * Math.sin(th);
-  s += `<g transform="translate(${r1(px)} ${r1(py)}) rotate(45)"><rect x="-12" y="-22" width="24" height="44" rx="6" fill="#C0392B" stroke="${C.ink}" stroke-width="1.6"/><rect x="-9" y="-12" width="18" height="10" rx="2" fill="#DDE7EE"/></g>`;
+  s += `<g transform="translate(${r1(px)} ${r1(py)}) rotate(-45)"><rect x="-12" y="-22" width="24" height="44" rx="6" fill="#C0392B" stroke="${C.ink}" stroke-width="1.6"/><rect x="-9" y="-16" width="18" height="10" rx="2" fill="#DDE7EE"/></g>`;
   s += line(px, py, cx, cy, C.grey, 1, '4 4');
-  s += kinArrow(px + 18, py + 18, px + 78, py - 42, C.velocity) + text(px + 84, py - 44, 'v', { size: 15, color: C.velocity, weight: 'bold', italic: true });
-  s += kinArrow(px - 22, py + 22, px - 72, py + 72, C.accel) + text(px - 78, py + 90, 'a toward center', { size: 13, color: C.accel, weight: 'bold' });
+  // the car drives clockwise (up the right side, toward the top): v is tangent, perpendicular to the radius
+  s += kinArrow(px - 26, py - 26, px - 80, py - 80, C.velocity) + text(px - 92, py - 82, 'v', { size: 15, color: C.velocity, weight: 'bold', italic: true });
+  s += kinArrow(px - 24, py + 24, px - 70, py + 70, C.accel) + text(px - 100, py + 92, 'a toward center', { size: 13, color: C.accel, weight: 'bold' });
   s += text(200, 360, 'Velocity is tangent; acceleration points in.', { anchor: 'middle', size: 12.5, color: C.grey });
   s += panel(396, 46, 344, 334, 'Free-body diagram (car seen from behind)');
   const fx = 580, fy = 210;
   s += fbd(fx, fy, [
     { dx: 0, dy: -84, color: C.normal, main: 'F', sub: 'N', rest: ', road on car', lx: 8, ly: -72 },
     { dx: 0, dy: 84, color: C.gravity, main: 'F', sub: 'g', rest: ', Earth on car', lx: 8, ly: 80 },
-    { dx: -110, dy: 0, color: C.friction, main: 'F', sub: 'f', rest: ', road on tires', lx: -150, ly: -12, anchor: 'start' },
+    { dx: -62, dy: 0, color: C.friction, main: 'F', sub: 'f', rest: ', road on tires', lx: -150, ly: -14, anchor: 'start' },
   ]);
-  s += text(fx - 70, fy + 30, '(toward the center)', { anchor: 'middle', size: 12, color: C.grey });
+  s += text(fx - 62, fy + 30, '(toward the center)', { anchor: 'middle', size: 12, color: C.grey });
   s += text(568, 340, 'Static friction is the only horizontal force,', { anchor: 'middle', size: 12.5, color: C.grey });
   s += text(568, 358, `so it supplies the centripetal net force: ${sym('F', 'f', 12.5)} = mv²/r.`, { anchor: 'middle', size: 12.5, color: C.grey });
-  return svgDoc(W, H, 'A car on a flat curve: top view and free-body diagram', 'Left: a car on a curved road seen from above, a quarter circle around a marked center. An outlined velocity arrow points along the road, tangent to the circle; an outlined acceleration arrow points from the car toward the center. Right: the free-body diagram of the car seen from behind: F_N, road on car, up and F_g, Earth on car, down, equal, and F_f, road on tires, horizontal toward the center of the curve. Static friction is the only horizontal force, so it supplies the centripetal net force, F_f = mv²/r. There is no separate centripetal force arrow.', s);
+  return svgDoc(W, H, 'A car on a flat curve: top view and free-body diagram', 'Left: a car on a curved road seen from above, a quarter circle around a marked center. An outlined velocity arrow points along the road, tangent to the circle; an outlined acceleration arrow points from the car toward the center. Right: the free-body diagram of the car seen from behind: F_N, road on car, up and F_g, Earth on car, down, equal, and F_f, road on tires, horizontal toward the center of the curve, shorter than the weight. Static friction is the only horizontal force, so it supplies the centripetal net force, F_f = mv²/r. There is no separate centripetal force arrow.', s);
 };
 
 FIGS['vertical-loop-fbd'] = () => {
@@ -593,10 +594,12 @@ export const STIM = {
   // 2.2: a bucket raised on a rope
   liftedBucket: () => {
     let s = ceiling(40, 260, 30);
-    s += line(150, 30, 150, 110, C.ink, 2);
+    s += line(170, 30, 170, 36, C.grey, 3) + `<circle cx="170" cy="56" r="20" fill="${C.metal}" stroke="${C.ink}" stroke-width="2"/><circle cx="170" cy="56" r="3" fill="${C.ink}"/>`;
+    s += line(150, 56, 150, 96, C.ink, 2) + line(190, 56, 190, 118, C.ink, 2);
+    s += `<rect x="182" y="118" width="16" height="22" rx="6" fill="${C.skin}" stroke="${C.ink}" stroke-width="1.6"/>` + text(206, 134, 'hand pulls down', { size: 12, color: C.grey });
     s += path('M120,110 L180,110 L172,170 L128,170 Z', { fill: C.metal, stroke: C.ink, width: 2 }) + path('M124,110 Q150,82 176,110', { stroke: C.ink, width: 2 });
-    s += kinArrow(210, 160, 210, 100, C.velocity) + text(220, 135, 'v (constant)', { size: 13, color: C.velocity, weight: 'bold' });
-    return svgInline(340, 190, 'A bucket hangs from a single rope and is raised straight up at a constant speed.', s);
+    s += kinArrow(92, 170, 92, 110, C.velocity) + text(84, 145, 'v (constant)', { size: 13, color: C.velocity, weight: 'bold', anchor: 'end' });
+    return svgInline(340, 190, 'A bucket hangs from a single rope that runs up over a pulley on the ceiling and down to a person\'s hand. Pulling the rope raises the bucket straight up at a constant speed.', s);
   },
   // 2.3: two blocks pushed together on a frictionless floor
   twoBlocksPushed: () => {
@@ -670,7 +673,7 @@ export const STIM = {
   elevatorScale: () => {
     let s = rect(40, 20, 110, 220, { fill: '#F7F7F4', stroke: C.ink, width: 2.4, rx: 4 }) + line(95, 4, 95, 20, C.ink, 2);
     s += rect(65, 224, 60, 12, { fill: C.metal, rx: 2 }) + person(95, 224, 120);
-    s += text(170, 120, 'scale under', { size: 12.5, color: C.grey }) + text(170, 136, 'the rider', { size: 12.5, color: C.grey });
+    s += line(128, 230, 166, 230, C.grey, 1.2) + text(170, 228, 'bathroom scale', { size: 12.5, color: C.grey }) + text(170, 244, 'under the rider', { size: 12.5, color: C.grey });
     return svgInline(260, 250, 'A rider stands on a bathroom scale on the floor of an elevator.', s);
   },
   // 2.7: crate on a ramp at rest
@@ -708,8 +711,8 @@ export const STIM = {
     let s = path('M10,190 Q240,40 470,190 L470,220 L10,220 Z', { fill: C.earth, stroke: C.ink, width: 2.5 });
     s += rect(212, 92, 56, 22, { fill: '#C0392B', rx: 6 }) + `<circle cx="225" cy="117" r="7" fill="${C.ink}"/><circle cx="255" cy="117" r="7" fill="${C.ink}"/>`;
     s += kinArrow(280, 100, 350, 100, C.velocity) + text(358, 105, 'v', { size: 14, color: C.velocity, weight: 'bold', italic: true });
-    s += text(240, 175, 'crest: part of a vertical circle of radius r', { anchor: 'middle', size: 13, color: C.ink });
-    return svgInline(480, 230, 'A car drives over the top of a rounded hill whose crest is part of a vertical circle of radius r.', s);
+    s += text(240, 175, 'crest: part of a vertical circle', { anchor: 'middle', size: 13, color: C.ink });
+    return svgInline(480, 230, 'A car drives over the top of a rounded hill whose crest is part of a vertical circle.', s);
   },
 };
 

@@ -178,8 +178,16 @@
       values: { m1: m1, m2: m2, v2f: v2f } };
   }
   function genKE(r, ctx){
-    var m1 = mass(r), m2 = mass(r), v1 = speed(r, 0.8, 2.5), v2 = r() < 0.5 ? 0 : -speed(r, 0.3, 1.2), e = r.pick([0, 0.4, 0.6, 1, 1]);
-    var f = outcome(m1, m2, v1, v2, e), a1 = M.sig(f.v1, 3), a2 = M.sig(f.v2, 3);
+    // The final velocities are printed to 3 figures; a setup where that
+    // rounding visibly changes the total momentum (more than 0.5%, as when
+    // the total is near zero) is drawn again, so "conserved" reads true.
+    var m1, m2, v1, v2, e, f, a1, a2;
+    for(var tries = 0; tries < 60; tries++){
+      m1 = mass(r); m2 = mass(r); v1 = speed(r, 0.8, 2.5); v2 = r() < 0.5 ? 0 : -speed(r, 0.3, 1.2); e = r.pick([0, 0.4, 0.6, 1, 1]);
+      f = outcome(m1, m2, v1, v2, e); a1 = M.sig(f.v1, 3); a2 = M.sig(f.v2, 3);
+      var P0 = m1 * v1 + m2 * v2;
+      if(Math.abs(P0) >= 0.1 && Math.abs(m1 * a1 + m2 * a2 - P0) <= 0.005 * Math.abs(P0)) break;
+    }
     var K0 = energy(m1, m2, v1, v2), K1 = energy(m1, m2, a1, a2), cons = Math.abs(K1 - K0) <= 0.01 * K0;
     var text = '<p>' + cartText(m1, v1, m2, v2) + ' After they collide, cart A moves at ' + F(a1, 3) + ' m/s and cart B at ' + F(a2, 3) + ' m/s.</p>' + DIR;
     var steps = [
@@ -286,10 +294,10 @@
       }
     }
     var vA = pA * u / m1, vB = pB * u / m2, wA = fA * u / m1, wB = fB * u / m2;
-    var d = function(v){ return v === 0 ? 'at rest' : (v > 0 ? 'right' : 'left') + ' at ' + fmt(Math.abs(v), 3) + ' m/s'; };
+    var d = function(v){ return v === 0 ? 'at rest' : 'moving ' + (v > 0 ? 'right' : 'left') + ' at ' + fmt(Math.abs(v), 3) + ' m/s'; };
     var text = '<p>Cart A (' + fmt(m1, 2) + ' kg) and cart B (' + fmt(m2, 2) + ' kg) are on a level, low-friction track. ' +
-      (kind === 'explode' ? 'They start at rest; a spring between them pushes them apart, and cart B moves ' + d(wB) + '.' :
-        'Before: A moves ' + d(vA) + ', B is ' + d(vB) + '. ' + (kind === 'sticky' ? 'They stick together.' : 'After the collision, A moves ' + d(wA) + '.')) +
+      (kind === 'explode' ? 'They start at rest; a spring between them pushes them apart, and cart B ends up ' + d(wB) + '.' :
+        'Before: A is ' + d(vA) + ', B is ' + d(vB) + '. ' + (kind === 'sticky' ? 'They stick together.' : 'After the collision, A is ' + d(wA) + '.')) +
       '</p><p>One unit of momentum = <b>' + fmt(u, 2) + ' kg·m/s</b>. Take right as positive.</p>';
     var cells = [
       { key: 'pA', label: 'Cart A before', ans: pA, ms: pA ? [{ value: -pA, why: 'Sign: right is positive.' }] : [] },

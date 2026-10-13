@@ -186,7 +186,8 @@
     var built = false, gEls = {};
     function geom(){
       var nar = (sceneEl.clientWidth || 500) < 420;
-      if(sys.type === 'spring') return { W: 520, H: 200, nar: nar, vb: '6 30 500 160' };
+      // Phone: crop the track to the wall and the cart's farthest reach (+A), so the cart reads larger.
+      if(sys.type === 'spring') return { W: 520, H: 200, nar: nar, vb: nar ? '8 36 ' + Math.round(300 + sys.A * 600 + (64 + 18 * Math.sqrt(sys.m)) / 2 + 14 - 8) + ' 156' : '6 30 500 160' };
       if(sys.type === 'vspring') return { W: 380, H: 360, nar: nar };
       return { W: 420, H: 360, nar: nar };
     }
@@ -200,7 +201,7 @@
           [-1, 1].map(function(sg){ return '<line class="ol-amp" x1="' + n1(eqX + sg * sys.A * ppm) + '" x2="' + n1(eqX + sg * sys.A * ppm) + '" y1="52" y2="' + (y + 18) + '"/><text class="ol-tm" x="' + n1(eqX + sg * sys.A * ppm) + '" y="48" text-anchor="middle">' + (sg < 0 ? '−A' : '+A') + '</text>'; }).join('') +
           coil(36, y - 26, cx - cw / 2, y - 26, 11, 22) + '<g class="ol-mass ol-drag" tabindex="0" role="slider" aria-label="Cart: drag it to stretch or squash the spring" aria-valuemin="-20" aria-valuemax="20" aria-valuenow="' + Math.round(x * 100) + '" aria-valuetext="' + F(x * 100, 0) + ' centimeters from equilibrium">' +
           '<rect class="ol-hit" x="' + n1(cx - cw / 2 - 10) + '" y="' + (y - 64) + '" width="' + n1(cw + 20) + '" height="70"/>' + cartArt(did, cx, y, cw, 46) +
-          '<text x="' + n1(cx) + '" y="' + (y - 22) + '" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">' + kgTxt(sys.m) + '</text></g>';
+          '<text x="' + n1(cx) + '" y="' + (y - 22 + (g.nar ? 2 : 0)) + '" text-anchor="middle" font-size="' + (g.nar ? 16 : 12) + '" font-weight="900" fill="#fff">' + kgTxt(sys.m) + '</text></g>';
         label = 'A ' + kgTxt(sys.m) + ' cart on a spring of k = ' + F(sys.k, 0) + ' N/m, ' + F(x * 100, 1) + ' cm from equilibrium, amplitude ' + F(sys.A * 100, 0) + ' cm.';
       } else if(sys.type === 'vspring'){
         var L0 = 0.20, x0 = sys.m * sys.g / sys.k, mh = 0.06, tot = L0 + x0 + sys.A + mh, ppm2 = Math.min(600, (H - 70) / tot), top = 30, cx2 = W / 2;
@@ -227,13 +228,14 @@
       }
       var pl = PL.filter(function(p){ return Math.abs(p.g - sys.g) < 1e-9; })[0];
       if(sys.type !== 'spring') out += '<text class="ol-tm" x="' + (W - 10) + '" y="' + (H - 8) + '" text-anchor="end">' + (pl ? (pl.name === 'Earth' ? 'On Earth' : 'On ' + pl.name) : '') + ', g = ' + sys.g + ' m/s²</text>';
-      if(g.nar && sys.type === 'spring') out = out.replace(/class="ol-tm"/g, 'class="ol-tm" font-size="16"');
+      // Phone: the scene is drawn small, so its labels are set larger (a style, which beats the class's size).
+      if(g.nar) out = out.replace(/class="ol-tm"/g, 'class="ol-tm" style="font-size:' + (sys.type === 'spring' ? 18 : 24) + 'px"');
       if(g.nar && sys.type === 'pendulum'){ var Lq = sys.L * (H - 80) / Math.max(1, sys.L) * Math.min(1, 0.55 + 0.45 * sys.L / 2), hw = Math.max(120, Lq * Math.sin(M.rad(Math.max(sys.A, 8))) + 50); g.vb = n1(W / 2 - hw) + ' 6 ' + n1(2 * hw) + ' ' + n1(Lq + 60); }
       sceneEl.innerHTML = '<svg viewBox="' + (g.vb || '0 0 ' + W + ' ' + H) + '" class="phys-scene" role="group" aria-label="' + esc(NAMES[sysKey]) + '">' + defs(did) + '<title>' + esc(label) + '</title>' + out + '</svg>';
       dragWire();
     }
     function drawBars(){
-      var e = OL.energy(sys, st), E = e.E || 1, Hb = 200, top = 26, bw = 18, col = function(i, v, cls, t){ var h = Math.max(0, v / E * Hb); return '<rect class="ol-e-bg" x="' + (6 + i * 26) + '" y="' + top + '" width="' + bw + '" height="' + Hb + '" rx="4"/><rect class="' + cls + '" x="' + (6 + i * 26) + '" y="' + n1(top + Hb - h) + '" width="' + bw + '" height="' + n1(h) + '" rx="3"/><text class="ol-e-t" x="' + (15 + i * 26) + '" y="' + (top + Hb + 16) + '" text-anchor="middle">' + t + '</text>'; };
+      var nar = (sceneEl.clientWidth || 500) < 420, e = OL.energy(sys, st), E = e.E || 1, Hb = nar ? 110 : 200, top = nar ? 22 : 26, bw = 18, col = function(i, v, cls, t){ var h = Math.max(0, v / E * Hb); return '<rect class="ol-e-bg" x="' + (6 + i * 26) + '" y="' + top + '" width="' + bw + '" height="' + Hb + '" rx="4"/><rect class="' + cls + '" x="' + (6 + i * 26) + '" y="' + n1(top + Hb - h) + '" width="' + bw + '" height="' + n1(h) + '" rx="3"/><text class="ol-e-t" x="' + (15 + i * 26) + '" y="' + (top + Hb + 16) + '" text-anchor="middle">' + t + '</text>'; };
       var cols = sys.type === 'pendulum' ? [[e.K, 'ol-e-k', 'K'], [e.Ug, 'ol-e-ug', 'U<tspan dy="3" font-size="9">g</tspan>']] : sys.type === 'vspring' ? [[e.K, 'ol-e-k', 'K'], [e.Us, 'ol-e-us', 'U<tspan dy="3" font-size="9">s</tspan>'], [e.Ug, 'ol-e-ug', 'U<tspan dy="3" font-size="9">g</tspan>']] : [[e.K, 'ol-e-k', 'K'], [e.Us, 'ol-e-us', 'U<tspan dy="3" font-size="9">s</tspan>']];
       var Wd = 10 + cols.length * 26;
       barsEl.innerHTML = '<svg viewBox="0 0 ' + Wd + ' ' + (top + Hb + 22) + '" role="img" aria-label="' + esc('Energy now: K ' + F(e.K, 3) + ' J' + (sys.type !== 'pendulum' ? ', spring U ' + F(e.Us, 3) + ' J' : '') + (sys.type !== 'spring' ? ', gravitational U ' + F(e.Ug, 3) + ' J' : '') + '; total ' + F(e.E, 3) + ' J, constant.') + '">' +
@@ -374,7 +376,8 @@
   function figure(p){
     var f = p.fig, id = nid('olq'), W = 520, H = 200, out = '', label = '';
     if(f.kind === 'spring'){
-      var ppm = 1100, eqX = 300, y = 150, A = f.A, cx = eqX + (f.x != null ? f.x : A) * ppm;
+      var A = f.A, ppm = Math.min(1100, 160 / A), eqX = 300, y = 150,   // +A and the cart stay inside the frame up to A = 0.20 m
+        cx = eqX + (f.x != null ? f.x : A) * ppm;
       out += '<rect class="ol-wood" x="20" y="' + y + '" width="' + (W - 30) + '" height="14" rx="3" fill="url(#' + id + 'w)"/><rect class="ol-wall" x="14" y="40" width="22" height="' + (y - 40) + '"/><rect x="14" y="40" width="22" height="' + (y - 40) + '" fill="url(#' + id + 'h)"/>' +
         '<line class="ol-eq" x1="' + eqX + '" x2="' + eqX + '" y1="40" y2="' + (y + 22) + '"/><text class="ol-tm" x="' + eqX + '" y="' + (y + 36) + '" text-anchor="middle">x = 0</text>' +
         [-1, 1].map(function(sg){ return '<line class="ol-amp" x1="' + n1(eqX + sg * A * ppm) + '" x2="' + n1(eqX + sg * A * ppm) + '" y1="52" y2="' + (y + 18) + '"/><text class="ol-tm" x="' + n1(eqX + sg * A * ppm) + '" y="48" text-anchor="middle">' + (sg < 0 ? '−A' : '+A') + '</text>'; }).join('') +

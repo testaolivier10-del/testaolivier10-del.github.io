@@ -89,7 +89,7 @@ FIGS['buoyancy-forces'] = () => {
     s += arrow(bx + bw + len + 2, yy, bx + bw + 2, yy, C.amber, { width: 1.8, head: 6, headWidth: 3.5 });
   }
   s += text(bx + bw / 2, by - 36, 'smaller push on top', { anchor: 'middle', size: 13 });
-  s += text(bx - 8, by + bh + 26, 'larger push on', { anchor: 'end', size: 13 }) + text(bx - 8, by + bh + 42, 'the bottom (deeper)', { anchor: 'end', size: 13 });
+  s += text(bx - 8, by + bh + 18, 'larger push', { anchor: 'end', size: 13 }) + text(bx - 8, by + bh + 34, 'on the bottom', { anchor: 'end', size: 13 }) + text(bx - 8, by + bh + 50, '(deeper)', { anchor: 'end', size: 13 });
   s += text(x + w - 8, by + 4, 'side pushes', { anchor: 'end', size: 12, color: C.grey });
   s += text(x + w - 8, by + 20, 'cancel', { anchor: 'end', size: 12, color: C.grey });
   // FBD panel
@@ -134,10 +134,10 @@ FIGS['fluid-flow-pipe'] = () => {
   s += dim(735, 120, 735, 160, '', {});
   s += text(741, 145, 'A₂', { size: 13, italic: true });
   // heights relative to a reference line
-  s += dashed(40, 380, 720, 380, C.grey, 1.2) + text(720, 374, 'y = 0', { anchor: 'end', size: 12, color: C.grey });
+  s += dashed(40, 380, 720, 380, C.grey, 1.2) + text(46, 374, 'y = 0', { anchor: 'start', size: 12, color: C.grey });
   s += dim(220, 380, 220, 250, 'y₁', { lx: 228, ly: 320, anchor: 'start', italic: true });
   s += dim(690, 380, 690, 140, 'y₂', { lx: 682, ly: 300, anchor: 'end', italic: true });
-  s += `<rect x="30" y="40" width="380" height="92" rx="8" fill="#FFFFFF" stroke="${C.light}"/>`;
+  s += `<rect x="30" y="40" width="300" height="92" rx="8" fill="#FFFFFF" stroke="${C.light}"/>`;
   s += text(46, 64, 'Continuity (mass): A₁v₁ = A₂v₂', { size: 15, weight: 'bold', color: C.amber });
   s += text(46, 90, 'Bernoulli (energy):', { size: 15, weight: 'bold', color: C.amber });
   s += text(46, 116, 'P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂²', { size: 15, weight: 'bold', color: C.amber });

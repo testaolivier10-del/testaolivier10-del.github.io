@@ -552,7 +552,7 @@
       var heavy = mine > other, am = Math.abs(m2 - m1) * g / (m1 + m2), T = 2 * m1 * m2 * g / (m1 + m2), ask = r() < 0.5 ? 'a' : 'T';
       var mn = 'm_' + which, on = 'm_' + (3 - which);
       return { p: { m1: m1, m2: m2, which: which }, ask: ask,
-        text: 'Two blocks hang from a light rope over an ideal pulley: m<sub>1</sub> = ' + f2(m1) + ' kg on the left and m<sub>2</sub> = ' + f2(m2) + ' kg on the right. They are released from rest. Draw the forces on block ' + which + ' (the ' + (which === 1 ? 'left' : 'right') + ' block). ' + GW(g),
+        text: 'Two blocks hang from a light rope over an ideal pulley: m<sub>1</sub> = ' + String(m1) + ' kg on the left and m<sub>2</sub> = ' + String(m2) + ' kg on the right. They are released from rest. Draw the forces on block ' + which + ' (the ' + (which === 1 ? 'left' : 'right') + ' block). ' + GW(g),
         law: { label: 'Take the direction block ' + which + ' accelerates (' + (heavy ? 'down' : 'up') + ') as positive. Which equation is Newton\'s second law for block ' + which + '?', opts: heavy ? [
           L(mn + 'g − F_T = ' + mn + 'a', 'Right: its weight wins over the rope\'s pull, and the difference gives it its acceleration.'),
           L('F_T − ' + mn + 'g = ' + mn + 'a', 'Down is positive here, so gravity is + and the rope\'s upward pull is −.'),

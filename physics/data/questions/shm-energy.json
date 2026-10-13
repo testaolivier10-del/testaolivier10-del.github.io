@@ -87,7 +87,7 @@
    "q": "What is the glider's speed as it passes x = 0? Give the value and its unit.",
    "numeric": {
     "answer": 1.2,
-    "tol": 0.1,
+    "tol": 0.05,
     "unit": "m/s",
     "sigfigs": 2,
     "askUnit": true,
@@ -454,7 +454,7 @@
    "q": "A 0.30 kg pendulum bob is released from rest 0.080 m above its lowest point. What is its speed at the lowest point? Use g = 9.8 m/s². Give the value and its unit.",
    "numeric": {
     "answer": 1.3,
-    "tol": 0.1,
+    "tol": 0.06,
     "unit": "m/s",
     "sigfigs": 2,
     "askUnit": true,

@@ -56,8 +56,8 @@
   "A <b>best-fit line</b> passes between scattered points, never dot to dot. If the relationship is curved, <b>linearize</b>: for d = ½at², plot d against t², and the slope is ½a."
  ],
  "misconception": {
-  "wrong": "To find a slope, divide the y-value of a point by its x-value, for example 6.2 m ÷ 10 s.",
-  "right": "A slope uses changes between two points on the line: (6.2 m − 1.2 m) ÷ (10 s − 0 s) = 0.50 m/s. Dividing one point's values works only when the line passes through the origin."
+  "wrong": "To find a slope, divide the y-value of a point by its x-value, for example 9.0 m ÷ 10 s for a line through (0 s, 2.0 m) and (10 s, 9.0 m).",
+  "right": "A slope uses changes between two points on the line: (9.0 m − 2.0 m) ÷ (10 s − 0 s) = 0.70 m/s. Dividing one point's values works only when the line passes through the origin."
  },
  "check": [
   "phys-math-slopes-areas-1",

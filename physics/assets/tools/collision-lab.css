@@ -28,7 +28,7 @@
 .phys-scene .cl-a .cl-body{fill:var(--cl-a);} .phys-scene .cl-b .cl-body{fill:var(--cl-b);}
 .phys-scene .cl-stripe{fill:#fff;opacity:.35;}
 .phys-scene .cl-name{fill:#fff;font:900 14px var(--font-ui);}
-.phys-scene .cl-mass{fill:#fff;font:800 11px var(--font-ui);}
+.phys-scene .cl-mass{fill:var(--ink);font:800 11px var(--font-ui);}
 .phys-scene .cl-wheel{fill:#22292F;stroke:#9AA5AE;stroke-width:2;}
 .phys-scene .cl-hub{fill:#C9D1D6;}
 .phys-scene .cl-coil{fill:none;stroke:var(--ink);stroke-width:2;stroke-linejoin:round;}

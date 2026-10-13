@@ -129,7 +129,7 @@
     "1.4 rev",
     "9.0 rev",
     "2.9 rev",
-    "0.70 rev"
+    "0.72 rev"
    ],
    "correct": 0,
    "why": {
@@ -304,7 +304,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "α is the slope of the ω-t graph. From 10.0 s to 16.0 s it is (0 − 12.0 rad/s)/(6.0 s) = -2.0 rad/s², the same at every instant in that interval.",
+    "correct": "α is the slope of the ω-t graph. From 10.0 s to 16.0 s it is (0 − 12.0 rad/s)/(6.0 s) = −2.0 rad/s², the same at every instant in that interval.",
     "options": [
      "Right: the slope from 10.0 s to 16.0 s is −12.0 rad/s ÷ 6.0 s.",
      "The size is right, but ω is falling, so the slope is negative.",
@@ -423,7 +423,7 @@
     ]
    },
    "why": {
-    "correct": "α = Δω/Δt = (0 − 8.0 rad/s)/(5.0 s) = -1.6 rad/s². It is negative because the wheel turns counterclockwise and slows."
+    "correct": "α = Δω/Δt = (0 − 8.0 rad/s)/(5.0 s) = −1.6 rad/s². It is negative because the wheel turns counterclockwise and slows."
    }
   },
   {

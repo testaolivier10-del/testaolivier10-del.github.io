@@ -221,9 +221,9 @@
    "q": "Why can the spring's push be treated with the explosion model?",
    "options": [
     "The spring's forces are external, so they do not change the momentum",
-    "The spring's forces on the carts are internal and much larger than any outside force during the push",
-    "The spring does no work on the carts",
-    "The carts have equal masses"
+    "Its forces are internal and briefly far larger than outside forces",
+    "The spring does no work on the carts, so the energy is unchanged",
+    "The carts have equal masses, so their speeds are equal and opposite"
    ],
    "correct": 1,
    "why": {
@@ -248,7 +248,7 @@
    "options": [
     "The car has far more momentum, because of its mass",
     "The ball has far more momentum, because it is faster",
-    "Their momenta have the same size and opposite directions",
+    "Same size of momentum, opposite directions",
     "Their momenta are equal, including direction"
    ],
    "correct": 2,
@@ -374,7 +374,7 @@
    "options": [
     "Both objects move at constant velocity",
     "The net external force on the system is zero",
-    "The objects do not interact with each other",
+    "The two objects exert no forces on each other",
     "The system has no kinetic energy"
    ],
    "correct": 1,
@@ -396,26 +396,26 @@
    "practice": "2.C",
    "level": "analyze",
    "diff": 2,
-   "q": "A cart moving right is given a push that reverses it, so it moves left at the same speed. Predict how each quantity changes, with right as positive.",
+   "q": "Cart 1 (mass m) moves right at speed v. Cart 2 (mass 2m) moves right at speed v/2. Predict how each quantity for cart 2 compares with cart 1.",
    "variables": [
     {
-     "name": "The cart's momentum (x-component)",
+     "name": "Momentum",
+     "answer": "none",
+     "why": "p = (2m)(v/2) = mv to the right, the same as cart 1's mv."
+    },
+    {
+     "name": "Kinetic energy",
      "answer": "down",
-     "why": "It goes from +mv to −mv."
+     "why": "K = ½(2m)(v/2)² = ¼mv², half of cart 1's ½mv², because the speed counts squared."
     },
     {
-     "name": "The cart's kinetic energy",
-     "answer": "none",
-     "why": "The speed is the same, so ½mv² is the same."
-    },
-    {
-     "name": "The cart's mass",
-     "answer": "none",
-     "why": "Pushing does not change the cart's mass."
+     "name": "Speed",
+     "answer": "down",
+     "why": "Cart 2 moves at v/2, half of cart 1's speed v."
     }
    ],
    "why": {
-    "correct": "Momentum is a vector and reverses; kinetic energy depends only on speed."
+    "correct": "Equal momenta do not mean equal kinetic energies: K = p²/(2m), so the heavier cart with the same momentum has less kinetic energy."
    }
   },
   {

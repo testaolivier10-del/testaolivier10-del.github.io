@@ -108,7 +108,7 @@
         '<div class="pl-stage"><svg class="phys-scene pl-scene" role="img" aria-label="A cannon ready to launch a ball"></svg><p class="sr-only pl-sr" aria-live="polite"></p></div>' +
         '<div class="pl-ctl">' +
           '<div class="pl-views ls-seg" role="group" aria-label="What to explore">' +
-            '<button type="button" class="bt-mode on" data-v="launch" aria-pressed="true">Launch</button>' +
+            '<button type="button" class="bt-mode on" data-v="launch" aria-pressed="true">One ball</button>' +
             '<button type="button" class="bt-mode" data-v="compare" aria-pressed="false">Compare</button>' +
             '<button type="button" class="bt-mode" data-v="cart" aria-pressed="false">Moving cart</button>' +
           '</div>' +

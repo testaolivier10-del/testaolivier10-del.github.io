@@ -28,7 +28,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems } from './lib/apphys-build.mjs';
-import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers } from './lib/apphys-exams.mjs';
+import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, JUSTIFY_SKILLS } from './lib/apphys-exams.mjs';
 import { scanPage } from './lib/apphys-map.mjs';
 export { trademarkProblems };
 
@@ -575,8 +575,19 @@ if (isMain) {
     const bank = new Map(allItems.map(q => [q.id, q]));
     for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id] })) bad2(e);
     for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
-    if (prompts.length < 30) bad2(`the justification trainer has ${prompts.length} prompts; it needs at least 30`);
-    for (const u of map.chapters.filter(c => c.part === 'course')) if (!prompts.some(p => p.unit === u.id)) bad2(`no justification prompt for ${u.id}`);
+    if (prompts.length < 32) bad2(`the justification trainer has ${prompts.length} prompts; it needs at least 32`);
+    for (const u of map.chapters.filter(c => c.part === 'course')) { const n = prompts.filter(p => p.unit === u.id).length; if (n < 3 || n > 5) bad2(`${u.id} has ${n} justification prompts (3 to 5)`); }
+    for (const k of Object.keys(JUSTIFY_SKILLS)) if (prompts.length && !prompts.some(p => p.skill === k)) bad2(`no justification prompt practises "${k}"`);
+    // Each form: mostly bank items that are not lesson-check items (those are on
+    // the free lessons), plus 12-14 exam-only items of its own.
+    const lessonChecks = new Set();
+    for (const t of map.topics) { const p = join(DATA, 'lessons', `${t.id}.json`); if (exists(p)) for (const id of readJson(p).check || []) lessonChecks.add(id); }
+    for (const f of ex.forms) {
+      const ids = (f.mcq || []).flat(), own = ids.filter(id => examItems.has(id)).length;
+      if (own < 12 || own > 14) bad2(`${f.id}: ${own} exam-only items (12 to 14)`);
+      for (const id of ids.filter(id => lessonChecks.has(id))) bad2(`${f.id}: ${id} is a lesson check item; use one a student has not met on a free lesson`);
+    }
+    for (const q of ex.items) if (!ex.forms.some(f => (f.mcq || []).flat().includes(q.id))) bad2(`${q.id}: an exam-only item in no form`);
     for (const e of checkNumbers(examItems, prompts)) bad2(e);
     console.log(`AP Physics 1 exams: ${ex.forms.length} practice exams, ${ex.items.length} exam-only items, ${prompts.length} justification prompts, ${examFails} failing.`);
   }

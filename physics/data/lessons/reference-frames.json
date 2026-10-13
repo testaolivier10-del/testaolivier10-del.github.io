@@ -1,6 +1,6 @@
 {
  "topic": "reference-frames",
- "hook": "Sit still on a plane cruising at 250 m/s and the drink on your tray does not move. To someone on the ground, you and the drink are crossing the sky faster than a bullet. Neither of you is wrong. A velocity is always measured by someone, and different observers get different numbers.",
+ "hook": "Sit still on a plane cruising at 250 m/s and the drink on your tray does not move. To someone on the ground, you and the drink are crossing the sky at about 900 km/h. Neither of you is wrong. A velocity is always measured by someone, and different observers get different numbers.",
  "prereq": [
   {
    "q": "Taking east as positive, which is the velocity of a car moving west at 15 m/s?",
@@ -68,8 +68,8 @@
   "Frames moving at a constant velocity relative to each other measure the same acceleration, because the added velocity cancels in Δv."
  ],
  "misconception": {
-  "wrong": "The velocity of the walkway only matters to people standing on the floor; a person walking on it has her own speed of 1.8 m/s, period.",
-  "right": "Her velocity depends on who measures it: 1.8 m/s relative to the walkway, 3.0 m/s relative to the floor. Every velocity needs a frame, and the frames are linked by adding velocities."
+  "wrong": "The train's velocity only matters to people on the platform; a passenger walking in the aisle has her own speed of 1.5 m/s, period.",
+  "right": "Her velocity depends on who measures it: 1.5 m/s relative to the train, 21.5 m/s relative to the ground when the train moves at 20.0 m/s. Every velocity needs a frame, and the frames are linked by adding velocities."
  },
  "check": [
   "phys-reference-frames-1",

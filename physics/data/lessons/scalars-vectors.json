@@ -54,7 +54,7 @@
   "Choose a <b>coordinate system</b>: an origin and a positive direction. Then a position is one signed number, x.",
   "<b>Displacement</b> = final position − starting position. <b>Distance</b> = the total length of the path. They match only for a trip in one direction.",
   "<b>Speed</b> is how fast; <b>velocity</b> is how fast and which way. Along a line the sign of the velocity is the direction of motion.",
-  "Add vectors on a line by adding signed values: +235 m and −410 m give −175 m."
+  "Add vectors on a line by adding signed values: +320 m and −485 m give −165 m."
  ],
  "misconception": {
   "wrong": "A negative velocity means the object is slowing down, and a negative position means it is moving backward.",

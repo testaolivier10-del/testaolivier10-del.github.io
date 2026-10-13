@@ -170,7 +170,7 @@
    "q": "Which free-body diagram is correct for the sign?",
    "options": [
     "Three arrows: two cord tensions up and outward, and F_g down",
-    "Five arrows: two tensions plus their horizontal and vertical parts",
+    "Seven arrows: two tensions, their four parts, and F_g down",
     "Two arrows: one total tension up and F_g down",
     "Three arrows: two tensions and a net force arrow down"
    ],

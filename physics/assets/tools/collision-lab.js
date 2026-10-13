@@ -44,8 +44,8 @@
     var h = 34 + Math.min(16, mass * 6), x = cx - w / 2, top = y - 16 - h;
     var out = '<g class="cl-cart ' + cls + '"><rect class="cl-body" x="' + n(x) + '" y="' + n(top) + '" width="' + n(w) + '" height="' + n(h) + '" rx="6"/>' +
       '<rect class="cl-stripe" x="' + n(x + 6) + '" y="' + n(top + 6) + '" width="' + n(w - 12) + '" height="5" rx="2"/>' +
-      '<text class="cl-name" x="' + n(cx) + '" y="' + n(top + h * 0.52) + '" text-anchor="middle">' + label + '</text>' +
-      '<text class="cl-mass" x="' + n(cx) + '" y="' + n(top + h * 0.52 + 13) + '" text-anchor="middle">' + F(mass, 2) + ' kg</text>' +
+      '<text class="cl-name" x="' + n(cx) + '" y="' + n(top + h * 0.5 + 6) + '" text-anchor="middle">' + label + '</text>' +
+      '<text class="cl-mass" x="' + n(cx) + '" y="' + n(top - 6) + '" text-anchor="middle">' + M.fmt(mass, 2) + ' kg</text>' +
       '<circle class="cl-wheel" cx="' + n(x + w * 0.22) + '" cy="' + n(y - 8) + '" r="8"/><circle class="cl-hub" cx="' + n(x + w * 0.22) + '" cy="' + n(y - 8) + '" r="2.5"/>' +
       '<circle class="cl-wheel" cx="' + n(x + w * 0.78) + '" cy="' + n(y - 8) + '" r="8"/><circle class="cl-hub" cx="' + n(x + w * 0.78) + '" cy="' + n(y - 8) + '" r="2.5"/>';
     if(side){
@@ -122,7 +122,7 @@
     function boxOf(sel, w0, h0, wmin, wmax){ var e = $(sel), r = e && e.getBoundingClientRect(); return r && r.width > 20 && r.height > 20 ? { w: Math.max(wmin, Math.min(wmax, h0 * r.width / r.height)), h: h0 } : { w: w0, h: h0 }; }
     function narrow(){ try{ return window.matchMedia('(max-width: 760px)').matches; }catch(e){ return false; } }
     function trackSvg(s){
-      H = narrow() ? 160 : 210; TR.y = H - 52; var bx = boxOf('.cl-track', 640, H, narrow() ? 300 : 420, 900); W = bx.w; TR.ppm = (W - 50) / 5.8; TR.x0 = 26;
+      H = narrow() ? 196 : 220; TR.y = H - 52; var bx = boxOf('.cl-track', 640, H, narrow() ? 300 : 420, 900); W = bx.w; TR.ppm = (W - 50) / 5.8; TR.x0 = 26;
       var y = TR.y, px = function(x){ return TR.x0 + x * TR.ppm; }, out = '';
       out += '<rect class="cl-bg" width="' + W + '" height="' + H + '"/>';
       out += '<rect class="cl-rail" x="10" y="' + y + '" width="' + (W - 20) + '" height="10" rx="3"/><rect class="cl-leg" x="22" y="' + (y + 10) + '" width="8" height="30"/><rect class="cl-leg" x="' + (W - 30) + '" y="' + (y + 10) + '" width="8" height="30"/>';
@@ -131,13 +131,15 @@
       var x1 = px(s.x1), x2 = px(s.x2);
       out += cart(x1, y, w, st.m1, 'cl-a', 1, bump, comp / 2, 'A') + cart(x2, y, w, st.m2, 'cl-b', 0, bump, comp / 2, 'B');
       // Velocity arrows (30 px per m/s) above each cart.
-      var ay = y - 84;
+      // Above the tallest cart (66 px) and its mass label: v_A, then v_B one
+      // row higher, each starting over its own cart; the CM marker on top.
+      var ay = y - 88;
       // 30 px per m/s; an arrow that would leave the picture starts further in.
       var va = function(x, v, yy, lab){ var len = v * 30, x0 = Math.max(12 - Math.min(0, len) + 18, Math.min(W - 30 - Math.max(0, len), x)); return S.arrow(x0, yy, len, 0, { cls: 'vel', label: Math.abs(v) > 0.2 ? lab : '' }); };
       out += va(x1, s.v1, ay, 'v_A') + va(x2, s.v2, ay - 22, 'v_B');
-      // Center of mass: a marker on the rail that glides at constant velocity.
-      var cx = px(s.xcm);
-      out += '<g class="cl-cm"><line x1="' + n(cx) + '" x2="' + n(cx) + '" y1="' + (y - 92) + '" y2="' + (y + 10) + '"/><circle cx="' + n(cx) + '" cy="' + (y - 96) + '" r="9"/><path d="M' + n(cx) + ' ' + (y - 105) + 'v18M' + n(cx - 9) + ' ' + (y - 96) + 'h18"/><text x="' + n(cx + 13) + '" y="' + (y - 92) + '">CM</text></g>';
+      // Center of mass: a marker over the rail that glides at constant velocity.
+      var cx = px(s.xcm), cy = ay - 44;
+      out += '<g class="cl-cm"><line x1="' + n(cx) + '" x2="' + n(cx) + '" y1="' + (cy + 8) + '" y2="' + (y + 10) + '"/><circle cx="' + n(cx) + '" cy="' + cy + '" r="8"/><path d="M' + n(cx) + ' ' + (cy - 8) + 'v16M' + n(cx - 8) + ' ' + cy + 'h16"/><text x="' + n(cx + 12) + '" y="' + (cy + 4) + '">CM</text></g>';
       if(s.contact) out += '<g class="cl-flash"><circle cx="' + n((x1 + x2) / 2) + '" cy="' + (y - 40) + '" r="16"/></g>';
       var lab = 'Track: cart A (' + F(st.m1, 2) + ' kg) at ' + F(s.x1, 2) + ' m moving ' + F(s.v1, 2) + ' m/s, cart B (' + F(st.m2, 2) + ' kg) at ' + F(s.x2, 2) + ' m moving ' + F(s.v2, 2) + ' m/s; center of mass at ' + F(s.xcm, 2) + ' m moving ' + F(s.vcm, 2) + ' m/s' + (s.contact ? '; the bumper is squeezed, force ' + M.fmt(s.F, 3) + ' N.' : '.');
       return S.svg(W, H, lab, out);
@@ -156,13 +158,14 @@
       };
       // Momentum, a signed axis.
       var half2 = BW / 2, gap = (half2 - 20) / 3, bw2 = Math.min(34, gap * 0.6);
-      out += '<text class="cl-h" x="10" y="16">Momentum (kg·m/s)</text><line class="cl-zero" x1="10" x2="' + n(half2 - 8) + '" y1="' + n(mid) + '" y2="' + n(mid) + '"/>';
+      var tight = BW < 460;
+      out += '<text class="cl-h" x="10" y="16">' + (tight ? 'p (kg·m/s)' : 'Momentum (kg·m/s)') + '</text><line class="cl-zero" x1="10" x2="' + n(half2 - 8) + '" y1="' + n(mid) + '" y2="' + n(mid) + '"/>';
       [['A', p[0], p0[0], 'cl-a'], ['B', p[1], p0[1], 'cl-b'], ['Total', p[0] + p[1], p0[0] + p0[1], 'cl-tot']].forEach(function(b, i){
         var x = 14 + gap * (i + 0.5) - bw2 / 2; col(i, x, b[1], b[2], pmax, b[3], mid, half);
         out += '<text class="cl-bl" x="' + (x + bw2 / 2) + '" y="' + (BH - 6) + '" text-anchor="middle">' + b[0] + '</text><text class="cl-bv" x="' + (x + bw2 / 2) + '" y="' + n(b[1] >= 0 ? mid - b[1] / pmax * half - 5 : mid - b[1] / pmax * half + 13) + '" text-anchor="middle">' + F(b[1], 2) + '</text>';
       });
       // Kinetic energy, from zero.
-      out += '<text class="cl-h" x="' + n(half2 + 10) + '" y="16">Kinetic energy (J)</text><line class="cl-zero" x1="' + n(half2 + 4) + '" x2="' + (BW - 6) + '" y1="' + bot + '" y2="' + bot + '"/><line class="cl-div" x1="' + n(half2) + '" x2="' + n(half2) + '" y1="24" y2="' + (BH - 4) + '"/>';
+      out += '<text class="cl-h" x="' + n(half2 + 10) + '" y="16">' + (tight ? 'K (J)' : 'Kinetic energy (J)') + '</text><line class="cl-zero" x1="' + n(half2 + 4) + '" x2="' + (BW - 6) + '" y1="' + bot + '" y2="' + bot + '"/><line class="cl-div" x1="' + n(half2) + '" x2="' + n(half2) + '" y1="24" y2="' + (BH - 4) + '"/>';
       [['A', K[0], K0[0], 'cl-a'], ['B', K[1], K0[1], 'cl-b'], ['Total', K[0] + K[1], K0[0] + K0[1], 'cl-tot']].forEach(function(b, i){
         var x = half2 + 10 + gap * (i + 0.5) - bw2 / 2; col(i, x, b[1], b[2], Kmax, b[3], bot, bot - top);
         out += '<text class="cl-bl" x="' + (x + bw2 / 2) + '" y="' + (BH - 6) + '" text-anchor="middle">' + b[0] + '</text><text class="cl-bv" x="' + (x + bw2 / 2) + '" y="' + n(bot - b[1] / Kmax * (bot - top) - 5) + '" text-anchor="middle">' + F(b[1], 2) + '</text>';
@@ -264,10 +267,13 @@
     { value: 'ke', label: 'Is KE conserved?' }, { value: 'impulse', label: 'Impulse from a graph' }, { value: 'cm', label: 'Center of mass' },
     { value: 'choose', label: 'Momentum or energy?' }, { value: 'bars', label: 'Momentum bar charts' }
   ];
+  // On a phone the problem text over the picture leaves the picture too little
+  // height: there it is the caption instead, and the picture fills the stage.
+  function narrowQ(){ try{ return window.matchMedia('(max-width: 760px)').matches; }catch(e){ return false; } }
   function quiz(pane, data){
     // A bar chart to build is the stage; its problem text is the caption.
     var opts = {
-      slug: 'collision-lab', generate: function(r, c, t){ var p = C.generate(r, c, t); opts.textOnStage = !(p.figure && /bars/.test(p.figure.kind)); return p; }, types: TYPES, typeLabel: 'Kind of problem', newLabel: 'New problem', textOnStage: true,
+      slug: 'collision-lab', generate: function(r, c, t){ var p = C.generate(r, c, t); opts.textOnStage = !(p.figure && /bars/.test(p.figure.kind)) && !narrowQ(); return p; }, types: TYPES, typeLabel: 'Kind of problem', newLabel: 'New problem', textOnStage: true,
       title: function(p){ var t = TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Momentum problem'; },
       extra: function(host, p){
         var f = p.figure;
@@ -279,13 +285,13 @@
     T.drill(pane, data, opts);
   }
   function cartsFigure(f){
-    var w = 420, h = 130, y = 104, out = '<rect class="cl-bg" width="' + w + '" height="' + h + '"/><rect class="cl-rail" x="6" y="' + y + '" width="' + (w - 12) + '" height="8" rx="3"/>';
+    var w = 420, h = 150, y = 124, out = '<rect class="cl-bg" width="' + w + '" height="' + h + '"/><rect class="cl-rail" x="6" y="' + y + '" width="' + (w - 12) + '" height="8" rx="3"/>';
     var bump = f.bumper === 'velcro' ? 'velcro' : 'spring', ax = f.bumper === 'loaded' ? 168 : 120, bx = f.bumper === 'loaded' ? 252 : 300;
     out += cart(ax, y, 70, f.m1, 'cl-a', 1, bump, f.bumper === 'loaded' ? 10 : 0, 'A') + cart(bx, y, 70, f.m2, 'cl-b', 0, bump, f.bumper === 'loaded' ? 10 : 0, 'B');
     var sc = 26;
-    if(f.v1) out += S.arrow(ax, 30, f.v1 * sc, 0, { cls: 'vel', label: 'v_A' });
-    if(f.v2) out += S.arrow(bx, 30, f.v2 * sc, 0, { cls: 'vel', label: 'v_B' });
-    if(f.cm){ var xc = (f.m1 * ax + f.m2 * bx) / (f.m1 + f.m2); out += '<g class="cl-cm"><line x1="' + n(xc) + '" x2="' + n(xc) + '" y1="18" y2="' + y + '"/><circle cx="' + n(xc) + '" cy="14" r="7"/><text x="' + n(xc + 10) + '" y="18">CM</text></g>'; }
+    if(f.v1) out += S.arrow(ax, 36, f.v1 * sc, 0, { cls: 'vel', label: 'v_A' });
+    if(f.v2) out += S.arrow(bx, 36, f.v2 * sc, 0, { cls: 'vel', label: 'v_B' });
+    if(f.cm){ var xc = (f.m1 * ax + f.m2 * bx) / (f.m1 + f.m2); out += '<g class="cl-cm"><line x1="' + n(xc) + '" x2="' + n(xc) + '" y1="20" y2="' + y + '"/><circle cx="' + n(xc) + '" cy="13" r="7"/><text x="' + n(xc + 10) + '" y="17">CM</text></g>'; }
     return S.svg(w, h, 'Two carts on a track: A ' + F(f.m1, 2) + ' kg, B ' + F(f.m2, 2) + ' kg' + (f.bumper === 'velcro' ? ', with Velcro bumpers.' : f.bumper === 'loaded' ? ', touching, a compressed spring between them.' : ', with spring bumpers.'), out);
   }
   function ftFigure(f){

@@ -112,7 +112,7 @@
      {
       "value": 18.7,
       "rel": 0.015,
-      "why": "Value: that divides by 2π, as if the 25.0 rad were degrees or revolutions. W = τΔθ with Δθ in radians."
+      "why": "Value: that multiplies the torque by the angle in revolutions (25.0 rad ÷ 2π = 3.98 rev). W = τΔθ needs the angle in radians."
      },
      {
       "value": 6740,

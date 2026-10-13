@@ -23,11 +23,11 @@
       "points": [
        [
         0,
-        1.2
+        1.1
        ],
        [
         2,
-        2.1
+        2.4
        ],
        [
         4,
@@ -35,17 +35,18 @@
        ],
        [
         6,
-        4.1
+        4.0
        ],
        [
         8,
-        5.3
+        5.0
        ],
        [
         10,
-        6.2
+        6.4
        ]
-      ]
+      ],
+      "line": false
      },
      {
       "name": "Best-fit line",
@@ -58,7 +59,8 @@
         10,
         6.2
        ]
-      ]
+      ],
+      "markers": false
      }
     ]
    }
@@ -84,16 +86,21 @@
     "mistakes": [
      {
       "value": 0.62,
-      "why": "Value: 0.62 divides a height by a time without subtracting the starting height. Slope uses changes: (6.2 − 1.2) ÷ (10 − 0)."
+      "why": "Value: 0.62 divides a height on the line by a time without subtracting the starting height. Slope uses changes: (6.2 − 1.2) ÷ (10 − 0)."
      },
      {
       "value": 2.0,
       "why": "Value: the fraction is upside down. Slope is rise (vertical change) over run (horizontal change)."
+     },
+     {
+      "value": 0.53,
+      "tol": 0.005,
+      "why": "Value: 0.53 m/s is the slope between the first and last data points. Those two points carry their own scatter; use two points on the best-fit line, (0 s, 1.2 m) and (10 s, 6.2 m)."
      }
     ]
    },
    "why": {
-    "correct": "Pick two points on the line, not data points: (0 s, 1.2 m) and (10 s, 6.2 m). Slope = rise/run = (6.2 m − 1.2 m) ÷ (10 s − 0 s) = 0.50 m/s."
+    "correct": "Pick two points on the best-fit line, far apart, not data points: (0 s, 1.2 m) and (10 s, 6.2 m). Slope = rise/run = (6.2 m − 1.2 m) ÷ (10 s − 0 s) = 0.50 m/s."
    }
   },
   {
@@ -168,7 +175,7 @@
    ],
    "correct": 2,
    "why": {
-    "correct": "Real data scatter. A best-fit line balances points above and below it, so its slope uses every measurement, not just two.",
+    "correct": "Real data scatter. The first and last points here give (6.4 − 1.1) ÷ 10 = 0.53 m/s, while the best-fit line, which balances points above and below it, gives 0.50 m/s from all six measurements.",
     "options": [
      "They are plotted; the issue is that each one carries some random error.",
      "Any two points give a slope, but two scattered points give a less reliable one than a line fit to all six.",

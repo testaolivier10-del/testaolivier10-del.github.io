@@ -356,8 +356,9 @@
       "why": "Value: that multiplies mass by velocity. The second law uses the acceleration, Δv/Δt = 3.0 m/s²."
      },
      {
-      "value": 12000,
-      "why": "Value: that is the car's weight. The net force along the road comes from its acceleration."
+      "value": 11800,
+      "why": "Value: that is the car's weight. The net force along the road comes from its acceleration.",
+      "rel": 0.03
      }
     ]
    },
@@ -388,8 +389,9 @@
       "why": "Value: that uses the 15 N pull alone. Friction pulls back, so subtract it to get the net force."
      },
      {
-      "value": 11,
-      "why": "Value: friction opposes the pull, so subtract it rather than add it."
+      "value": 10.5,
+      "why": "Value: friction opposes the pull, so subtract it rather than add it.",
+      "tol": 0.5
      }
     ]
    },

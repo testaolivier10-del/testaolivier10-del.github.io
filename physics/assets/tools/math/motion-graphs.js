@@ -231,12 +231,13 @@
       var line = ts.map(function(tt, j){ return [tt, vs[j]]; });
       var disp = plArea(line, t0, t1), dist = plArea(line, t0, t1, true);
       if(Math.abs(disp) < 0.5) continue;
-      var v0 = vs[i0], v1 = vs[i1], cross = Math.abs(dist - disp) > 1e-9;
+      var v0 = vs[i0], v1 = vs[i1], cross = Math.abs(dist - Math.abs(disp)) > 1e-9;
       var dm = [
         { value: v1 * (t1 - t0), why: 'That is the final velocity times the time, one rectangle. The area under a sloped line is a triangle or a trapezoid.' },
         { value: (v1 - v0) / (t1 - t0), why: 'That is the slope of the graph, which gives acceleration. Displacement is the area under the graph.' }
       ].filter(function(m){ return m.value !== 0; });
       if(cross) dm.unshift({ value: dist, why: 'That counts the area below the axis as positive, which gives the distance. For displacement, area below the axis is negative.' });
+      else if(disp < 0) dm.unshift({ value: -disp, why: 'The whole graph is below the axis, so the cart moves in the − direction the whole time: area below the axis counts as negative, and the displacement is negative.' });
       var steps = [num('dx', 'Displacement from t = ' + t0 + ' s to t = ' + t1 + ' s', disp, 'm', dm, '2.B', 'Area between the graph and the t-axis; area below the axis counts as negative.')];
       var sol = ['Split the region from t = ' + t0 + ' s to t = ' + t1 + ' s into triangles and rectangles along the segments.'];
       // One piece per segment, split where the line crosses v = 0, so each piece is
@@ -262,7 +263,7 @@
       }
       return {
         type: 'area', fig: fig('v', line, { ymin: -3.5, ymax: 3.5, step: 1, shade: [t0, t1] }),
-        text: '<p>A cart moves along a straight track (positive to the right). The velocity-time graph shows its velocity v. Find how far it moves between t = ' + t0 + ' s and t = ' + t1 + ' s.</p>',
+        text: '<p>A cart moves along a straight track (positive to the right). The velocity-time graph shows its velocity v. Use the area under the graph between t = ' + t0 + ' s and t = ' + t1 + ' s.</p>',
         steps: steps, solution: sol, values: { ts: ts, vs: vs, t0: t0, t1: t1, disp: disp, dist: dist }
       };
     }

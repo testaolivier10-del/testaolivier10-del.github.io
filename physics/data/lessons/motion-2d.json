@@ -1,6 +1,6 @@
 {
  "topic": "motion-2d",
- "hook": "Fire a bullet horizontally and drop another from the same height at the same instant: on flat ground they land at the same time. It sounds wrong until you split the motion in two. Sideways speed does nothing to how fast something falls, and that one idea solves every projectile problem.",
+ "hook": "Fire a bullet horizontally and drop another from the same height at the same instant: on flat ground, with air resistance negligible, they land at the same time. It sounds wrong until you split the motion in two. Sideways speed does nothing to how fast something falls, and that one idea solves every projectile problem.",
  "prereq": [
   {
    "q": "A velocity of 10. m/s at 30.° above the horizontal has a vertical component of",

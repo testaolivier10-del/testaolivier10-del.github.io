@@ -59,21 +59,92 @@ export function unitSample(ch, ctx) {
 }
 
 /* The equations-sheet walkthrough. Our own words; the equations are the
-   standard ones; the grouping and order are ours, not the sheet's. A row's
-   sixth field lists the trainers (tools/<slug>.html) that practice it; only
-   live ones are linked. */
-const EQ = [
-  // Phase 3 writes the rows, grouped as the sheet is (constants and
-  // conventions; translational mechanics; rotation; oscillations; fluids):
-  // { h, id, rows: [[equation, what it is, when you use it, 'Unit N', topic id, [trainer slugs]?]] }.
+   standard ones; the grouping and order are ours, not the sheet's. Each row
+   is [equation, what it is, when you use it, 'Unit N', topic id, trainers?];
+   the trainers (tools/<slug>.html) that practice it are linked only when
+   live. Every equation and constant on the official sheet appears once
+   (docs/apphys-research/framework.md, section 5; a test holds the list). */
+export const EQ = [
+  { h: 'Constants and conventions', id: 'constants', rows: [
+    ['g = 9.8 m/s² = 9.8 N/kg', 'The size of the acceleration of a freely falling object near Earth\'s surface, and the strength of Earth\'s gravitational field there (the same number in two units).', 'Weight (F_g = mg), free fall, projectiles, U_g = mgΔy, pendulums, pressure with depth. Use the value the question gives; 10 m/s² is accepted when it does not. Say which you use.', 'Units 1, 2', 'gravitational-force', ['projectile-lab', 'free-body-diagrams']],
+    ['G = 6.67 × 10⁻¹¹ N·m²/kg²', 'The universal gravitational constant.', 'Only with the full law of gravitation, F_g = Gm₁m₂/r², and U_G = −Gm₁m₂/r: planets, moons, satellites. Near Earth\'s surface use g instead.', 'Unit 2', 'gravitational-force'],
+    ['1 atm = 1.0 × 10⁵ Pa', 'Atmospheric pressure at sea level, in pascals (1 Pa = 1 N/m²).', 'The P₀ in P = P₀ + ρgh, the absolute pressure at the surface of a liquid open to the air.', 'Unit 8', 'fluid-pressure'],
+    ['Conventions', 'Unless the question says otherwise: the frame of reference is inertial, air resistance is negligible, springs and strings are ideal, and fluids are ideal with pipes completely full.', 'Read them as permission to simplify. If a question adds friction, a massive pulley or drag, it says so; then the convention no longer holds.', 'Units 1, 2, 8', 'third-law'],
+  ] },
+  { h: 'Motion', id: 'motion', rows: [
+    ['v_x = v_x0 + a_x t', 'Velocity after a time t, for constant acceleration.', 'Constant acceleration along one axis (including free fall) when the displacement is not given or not wanted. For a projectile, use it on each axis separately (a_x = 0, a_y = −g).', 'Unit 1', 'motion-representations', ['motion-graphs', 'projectile-lab']],
+    ['x = x₀ + v_x0 t + ½a_x t²', 'Position after a time t, for constant acceleration.', 'Finding where an object is, or how long it takes to get there, without its final velocity: a dropped object, a projectile\'s fall time, a car braking for a given time.', 'Unit 1', 'motion-representations', ['motion-graphs', 'projectile-lab']],
+    ['v_x² = v_x0² + 2a_x(x − x₀)', 'Velocity and displacement linked with no time in it.', 'Stopping distances, the height a ball rises, any constant-acceleration problem where the time is neither given nor asked.', 'Unit 1', 'motion-representations', ['motion-graphs']],
+    ['x_cm = Σm_i x_i / Σm_i', 'The position of a system\'s center of mass: the mass-weighted average position.', 'Where a system balances or acts as one object; locating the center of mass of up to five objects. The center of mass moves only when there is a net external force.', 'Unit 2', 'systems-center-of-mass'],
+  ] },
+  { h: 'Forces', id: 'forces', rows: [
+    ['a_sys = ΣF / m_sys = F_net / m_sys', 'Newton\'s second law for a system: the net external force sets the acceleration.', 'Every force problem with an acceleration (or with zero acceleration, where ΣF = 0). Draw the free-body diagram first, choose axes, and sum forces along each axis.', 'Unit 2', 'second-law', ['free-body-diagrams', 'scaling-drills']],
+    ['|F_g| = G m₁m₂ / r²', 'The gravitational force between two masses, with r measured between their centers.', 'Planets, moons, satellites and how the force scales: twice the distance gives a quarter of the force. Near the surface it becomes mg.', 'Unit 2', 'gravitational-force', ['scaling-drills']],
+    ['|F_f| ≤ |μ F_N|', 'Friction: kinetic friction equals μ_k F_N; static friction is as large as needed, up to μ_s F_N.', 'Sliding objects (kinetic friction, the equal sign) and objects about to slip (static friction at its maximum). A box at rest with a small push has static friction equal to the push, not μ_s F_N.', 'Unit 2', 'friction', ['free-body-diagrams']],
+    ['F_s = −k Δx', 'Hooke\'s law: an ideal spring pulls or pushes back toward its relaxed length, in proportion to how far it is stretched or compressed.', 'Spring scales, springs holding a mass at rest (kΔx = mg), finding k from a force-stretch graph (the slope). The minus sign says the force points opposite the displacement.', 'Unit 2', 'spring-forces', ['free-body-diagrams', 'oscillator-lab']],
+    ['a_c = v² / r', 'The size of the centripetal acceleration of an object moving in a circle, pointing to the center.', 'Cars on curves, loops, orbits, balls on strings. Set the sum of the real forces toward the center equal to mv²/r; never add a separate "centripetal force" to a free-body diagram.', 'Unit 2', 'circular-motion', ['free-body-diagrams']],
+  ] },
+  { h: 'Energy, work and power', id: 'energy', rows: [
+    ['K = ½mv²', 'Translational kinetic energy.', 'Speed from energy, and energy from speed. It depends on v², so twice the speed gives four times the kinetic energy; ΔK is not ½m(Δv)².', 'Unit 3', 'kinetic-energy', ['energy-bar-charts', 'collision-lab']],
+    ['W = F_∥ d = F d cos θ', 'The work done by a constant force: the part of the force along the displacement, times the distance.', 'How much energy a force transfers. Positive when the force has a part along the motion, negative against it, zero when it is perpendicular (a normal force on a level floor, the string on a ball in a circle). For a changing force, use the area under the force-position graph.', 'Unit 3', 'work-by-forces', ['energy-bar-charts']],
+    ['ΔK = ΣW_i = F_net,∥ d', 'The work-energy theorem: the net work on an object equals its change in kinetic energy.', 'Speeds after a push, stopping distances with friction, and anything with a force-position graph.', 'Unit 3', 'work-by-forces', ['energy-bar-charts']],
+    ['U_s = ½k(Δx)²', 'The elastic potential energy stored in an ideal spring.', 'Spring launchers and bumpers, and oscillators. It depends on (Δx)², so twice the compression stores four times the energy.', 'Unit 3', 'potential-energy', ['energy-bar-charts', 'oscillator-lab']],
+    ['U_G = −G m₁m₂ / r', 'The gravitational potential energy of two masses, zero when they are infinitely far apart.', 'Satellites and orbits far from a surface, and escape. It is negative and rises toward zero as the masses separate.', 'Unit 3', 'potential-energy', ['rotation-lab']],
+    ['ΔU_g = m g Δy', 'The change in gravitational potential energy near Earth\'s surface.', 'Anything that rises or falls a height Δy near the ground: ramps, hills, pendulums. Only changes matter, so choose the zero height that makes the problem simplest.', 'Unit 3', 'potential-energy', ['energy-bar-charts']],
+    ['P_avg = W / Δt = ΔE / Δt', 'Average power: how fast energy is transferred.', 'Motors, people climbing stairs, lifting loads. The same work done in half the time takes twice the power.', 'Unit 3', 'power', ['energy-bar-charts']],
+    ['P_inst = F_∥ v = F v cos θ', 'Instantaneous power: the part of a force along the velocity, times the speed.', 'The power a force delivers at one moment, such as a car\'s engine at a given speed. At constant power, the driving force falls as the speed rises.', 'Unit 3', 'power'],
+  ] },
+  { h: 'Momentum', id: 'momentum', rows: [
+    ['p = m v', 'Momentum, a vector in the direction of the velocity.', 'Every collision and explosion. Keep the sign: a ball that bounces back changes its momentum by more than one that stops.', 'Unit 4', 'linear-momentum', ['collision-lab']],
+    ['F_net = Δp / Δt = m Δv / Δt', 'Newton\'s second law in terms of momentum: the net force is the rate of change of momentum.', 'Average forces in collisions, catches and landings; why a longer stopping time means a smaller force.', 'Unit 4', 'impulse', ['collision-lab']],
+    ['J = F_avg Δt = Δp', 'Impulse, and the impulse-momentum theorem.', 'Finding a change in momentum from a force and a time, or from the area under a force-time graph.', 'Unit 4', 'impulse', ['collision-lab']],
+    ['v_cm = Σp_i / Σm_i = Σm_i v_i / Σm_i', 'The velocity of a system\'s center of mass.', 'It stays constant whenever the net external force on the system is zero, even through a collision or explosion; the velocity of two objects that stick together.', 'Unit 4', 'linear-momentum', ['collision-lab']],
+  ] },
+  { h: 'Rotation', id: 'rotation', rows: [
+    ['ω = ω₀ + α t', 'Angular velocity after a time t, for constant angular acceleration.', 'Wheels and fans speeding up or slowing down. The rotational partner of v = v₀ + at.', 'Unit 5', 'rotational-kinematics', ['rotation-lab']],
+    ['θ = θ₀ + ω₀ t + ½α t²', 'Angular position after a time t, for constant angular acceleration.', 'The angle (in radians) or number of turns a wheel makes while it speeds up. Divide by 2π to get revolutions.', 'Unit 5', 'rotational-kinematics'],
+    ['ω² = ω₀² + 2α(θ − θ₀)', 'Angular velocity and angle linked with no time in it.', 'How many turns a wheel makes while it stops, when the time is not given.', 'Unit 5', 'rotational-kinematics'],
+    ['v = r ω;  a_T = r α', 'The link between a point\'s linear motion and the object\'s rotation, at a distance r from the axis.', 'Strings unwinding from pulleys, points on a wheel, rolling without slipping (v_cm = Rω). ω and α must be in rad/s and rad/s².', 'Unit 5', 'linear-rotational-link', ['rotation-lab']],
+    ['τ = r_⊥ F = r F sin θ', 'Torque: how strongly a force turns an object about an axis, set by the force and its lever arm.', 'Balanced beams and seesaws, wrenches, hinged rods. Choose the axis where an unknown force acts to remove it from the sum.', 'Unit 5', 'torque', ['torque-balance']],
+    ['I = Σm_i r_i²', 'The rotational inertia of a set of point masses about an axis.', 'Comparing how hard objects are to spin up: mass farther from the axis counts more (r²). For a disk, rod, hoop or sphere the question gives I.', 'Unit 5', 'rotational-inertia', ['torque-balance', 'rotation-lab']],
+    ['I\' = I_cm + M d²', 'The parallel-axis theorem: the rotational inertia about an axis a distance d from a parallel axis through the center of mass.', 'A rod turning about its end instead of its center, a disk pivoted at its rim.', 'Unit 5', 'rotational-inertia'],
+    ['α_sys = Στ / I_sys = τ_net / I_sys', 'Newton\'s second law in rotational form.', 'Pulleys with mass, wheels driven by a torque, rods falling about a pivot. Write it alongside ΣF = ma for any object that also moves.', 'Unit 5', 'rotational-second-law', ['torque-balance', 'rotation-lab']],
+    ['K = ½ I ω²', 'Rotational kinetic energy.', 'Spinning objects, and rolling objects, whose total kinetic energy is ½Mv² + ½Iω².', 'Unit 6', 'rotational-kinetic-energy', ['rotation-lab']],
+    ['W = τ Δθ', 'The work done by a constant torque turning through an angle Δθ (in radians).', 'Motors and brakes on wheels; the rotational work-energy theorem, τΔθ = ΔK.', 'Unit 6', 'torque-work'],
+    ['L = I ω', 'The angular momentum of a rotating object.', 'Spinning skaters and divers, turntables that catch a falling lump, merry-go-rounds. It stays constant when the net external torque is zero.', 'Unit 6', 'angular-momentum', ['rotation-lab']],
+    ['L = r m v sin θ', 'The angular momentum of a point object about an axis.', 'A child jumping onto a merry-go-round, a ball on a string, a satellite (constant because gravity points at the planet).', 'Unit 6', 'angular-momentum'],
+    ['ΔL = τ Δt', 'Angular impulse: a torque acting for a time changes the angular momentum.', 'Spinning a wheel up or down with a known torque for a known time.', 'Unit 6', 'angular-momentum'],
+    ['Δx_cm = r Δθ', 'For an object rolling without slipping, the distance its center moves is the radius times the angle it turns.', 'Rolling without slipping; with v = rω it gives v_cm = Rω.', 'Unit 6', 'rolling', ['rotation-lab']],
+  ] },
+  { h: 'Oscillations', id: 'oscillations', rows: [
+    ['T = 1 / f', 'The period (time for one cycle) and the frequency (cycles per second, Hz) are reciprocals.', 'Every oscillation and circular motion. Time ten cycles and divide by ten for an accurate period.', 'Units 2, 7', 'shm-period', ['oscillator-lab']],
+    ['T_s = 2π √(m / k)', 'The period of a mass on an ideal spring.', 'Spring oscillators, horizontal or hanging. It does not depend on the amplitude or on g. Graph T² against m for a straight line with slope 4π²/k.', 'Unit 7', 'shm-period', ['oscillator-lab', 'scaling-drills']],
+    ['T_p = 2π √(ℓ / g)', 'The period of a simple pendulum swinging through small angles.', 'Pendulums only (not springs). It does not depend on the bob\'s mass or the amplitude. Graph T² against ℓ for a line with slope 4π²/g.', 'Unit 7', 'shm-period', ['oscillator-lab', 'scaling-drills', 'lab-design']],
+    ['x = A cos(2π f t)  or  x = A sin(2π f t)', 'Position against time in simple harmonic motion, with amplitude A and frequency f.', 'Cosine when the object starts at x = A (released from rest), sine when it starts at x = 0 moving in the positive direction. Calculator in radian mode.', 'Unit 7', 'shm-representations', ['oscillator-lab']],
+  ] },
+  { h: 'Fluids', id: 'fluids', rows: [
+    ['ρ = m / V', 'Density: mass per unit volume, in kg/m³.', 'Whether something floats, the mass of a displaced fluid, and every fluid equation.', 'Unit 8', 'density-fluids', ['fluids-tank']],
+    ['P = F_⊥ / A', 'Pressure: the perpendicular force per unit area, in pascals.', 'Forces on surfaces such as a window in a tank, a piston or a diver\'s mask. Pressure is not a force; multiply by the area to get one.', 'Unit 8', 'fluid-pressure', ['fluids-tank']],
+    ['P = P₀ + ρ g h', 'Absolute pressure at a depth h below the surface of a fluid at rest.', 'Pressure at the bottom of a pool or a lake. It depends on depth, not on the container\'s shape. A graph of P against h has intercept P₀ and slope ρg.', 'Unit 8', 'fluid-pressure', ['fluids-tank']],
+    ['P_gauge = ρ g h', 'Gauge pressure: the pressure above atmospheric.', 'What a tire or diving gauge reads; zero at the surface of an open liquid.', 'Unit 8', 'fluid-pressure', ['fluids-tank']],
+    ['F_b = ρ V g', 'The buoyant force: the weight of the fluid displaced. ρ is the fluid\'s density and V the submerged volume.', 'Floating and sinking. A floating object at rest has F_b equal to its weight. Draw F_b and the gravitational force as two separate forces in opposite directions.', 'Unit 8', 'buoyancy', ['fluids-tank']],
+    ['A₁v₁ = A₂v₂', 'The continuity equation: an ideal fluid in a full pipe has the same volume flow rate everywhere.', 'Pipes that narrow or widen, nozzles, a falling stream that thins. Half the area means twice the speed.', 'Unit 8', 'fluid-flow', ['fluids-tank']],
+    ['P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂²', 'Bernoulli\'s equation: energy conservation per unit volume along a flow of ideal fluid.', 'Pressure differences in pipes, water leaving a hole in a tank (it gives Torricelli\'s result), why faster flow means lower pressure in a level pipe.', 'Unit 8', 'fluid-flow', ['fluids-tank']],
+  ] },
+  { h: 'Geometry and trigonometry', id: 'geometry', rows: [
+    ['sin θ = a/c;  cos θ = b/c;  tan θ = a/b;  c² = a² + b²', 'Right-triangle trigonometry and the Pythagorean theorem. The sheet also lists sin, cos and tan of 0°, 30°, 37°, 45°, 53°, 60° and 90° (37° and 53° are the 3-4-5 triangle).', 'Components of forces and velocities, heights from ramp lengths (h = d sin θ), torques at an angle. Check the calculator is in degree mode.', 'Math you need', 'math-trig-components', ['projectile-lab', 'scaling-drills']],
+    ['s = r θ;  C = 2πr;  A = πr²', 'Arc length (θ in radians), circumference and area of a circle.', 'Distance around a wheel, the period of circular motion (v = 2πr/T), pipe cross-sections for continuity.', 'Units 2, 5', 'linear-rotational-link'],
+    ['A = bh;  A = ½bh;  V = ℓwh;  V = πr²ℓ;  V = 4/3 πr³;  S = 4πr²', 'Areas of a rectangle and triangle; volumes of a rectangular solid, cylinder and sphere; surface area of a sphere.', 'Areas under graphs (displacement, work, impulse) and volumes for density and buoyancy.', 'Math you need', 'math-slopes-areas'],
+  ] },
 ];
 // What the sheet leaves out (docs/apphys-research/framework.md, section 5).
-const NOT_ON = [
+export const NOT_ON = [
   ['Rotational inertia of a disk, rod, hoop or sphere', 'The question gives it when it is needed. Know that I = Σmr² for point masses, and that mass farther from the axis means a larger I.', 'rotational-inertia'],
   ['Escape speed', 'Derive it: set the total energy ½mv² − GMm/r to zero and solve for v.', 'orbits'],
   ['Torricelli\'s result', 'Derive it from Bernoulli\'s equation: water leaving a hole a depth h below the surface moves at √(2gh).', 'fluid-flow'],
   ['Kepler\'s third law', 'Derive it: set the gravitational force equal to m·v²/r for a circular orbit, with v = 2πr/T.', 'circular-motion'],
   ['The minimum speed at the top of a loop', 'Derive it: at the slowest speed, gravity alone supplies the centripetal force, so mg = mv²/r and v = √(gr).', 'circular-motion'],
+  ['The greatest speed of an oscillator', 'Derive it from energy: all of ½kA² becomes ½mv² at equilibrium, so v_max = A√(k/m) = 2πfA.', 'shm-energy'],
 ];
 
 export function entryPages(ctx) {
@@ -157,8 +228,8 @@ ${bodyOpen(' data-app="score-calculator"')}
     <p>Use the questions you got right and the points on each free-response question from a practice exam, or from a released one you scored with its rubric.</p>
     <p>The exam has two sections worth half the score each: 42 multiple-choice questions, and 4 free-response questions worth 40 points (Mathematical Routines 10, Translation Between Representations 12, Experimental Design and Analysis 10, Qualitative/Quantitative Translation 8). So the calculator turns each section into a score out of 50 and adds them:</p>
     <p class="phys-sc-formula"><b>composite = 50 &times; (multiple-choice right &divide; 42) + 50 &times; (free-response points &divide; 40)</b></p>
-    <p>A composite of 72 or more is shown as a 5, 58 or more as a 4, 42 or more as a 3, 27 or more as a 2, and anything lower as a 1. There is no penalty for a wrong multiple-choice answer, so a blank and a wrong answer count the same.</p>
-    <p class="phys-ex-band-warn"><b>This is an estimate, not a predicted score.</b> The College Board sets the real cut-offs after each exam, from how that year's students did, and does not publish them for recent years. The bands here are provisional: no cut-offs have been published for the current physics exam, which since 2025 gives far more 5s (about 19%) and 3s or better (about 67%) than before. Use the estimate to see which section has the most room to grow.</p>
+    <p>A composite of 70 or more is shown as a 5, 55 or more as a 4, 41 or more as a 3, 31 or more as a 2, and anything lower as a 1. There is no penalty for a wrong multiple-choice answer, so a blank and a wrong answer count the same.</p>
+    <p class="phys-ex-band-warn"><b>These cut-offs are estimates, not official.</b> The College Board sets the real cut-offs after each exam, from how that year's students did, and has published none for the current physics exam. We chose ours so that, with the average free-response scores the College Board published for 2025, they give about the share of 5s (19 to 20%), 4s or better (about 44%) and 3s or better (about 68%) reported for 2025 and 2026. Treat a result within about 5 points of a cut-off as either score. Use the estimate to see which section has the most room to grow.</p>
   </section>
   <section class="xsection" aria-labelledby="sc-next"><h2 id="sc-next">Raise your score</h2>
     <ul class="phys-links">

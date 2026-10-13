@@ -244,7 +244,7 @@ FIGS['dumbbell-inertia'] = () => {
   const px = 450, py = 80;
   s += panel(px, py, 290, 300);
   s += text(px + 16, py + 32, 'I = Σ m r²', { size: 20, weight: 'bold', color: C.amber });
-  s += text(px + 16, py + 58, 'r is each mass’s distance from', { size: 13 }) + text(px + 16, py + 76, 'the axis, so distance counts twice.', { size: 13 });
+  s += text(px + 16, py + 58, 'r is each mass’s distance from', { size: 13 }) + text(px + 16, py + 76, 'the axis, and it is squared.', { size: 13 });
   s += text(px + 16, py + 110, 'Doubling r: 4 times the I.', { size: 14, weight: 'bold' });
   s += text(px + 16, py + 136, 'Shapes (given on the exam):', { size: 13, weight: 'bold' });
   const shapes = [['hoop about its center', 'MR²'], ['solid disk or cylinder', '½MR²'], ['solid sphere', '⅖MR²'], ['rod about its center', '¹⁄₁₂ML²'], ['rod about one end', '⅓ML²']];
@@ -263,7 +263,7 @@ FIGS['seesaw-torques'] = () => {
   s += rect(cx - plank, py - 10, 2 * plank, 12, C.wood, { rx: 2 });
   const kid = (x, lab, big) => { const h = big ? 92 : 78; return `<rect x="${x - 16}" y="${py - 10 - h * 0.62}" width="32" height="${h * 0.62}" rx="10" fill="${C.shirt}" stroke="${C.ink}" stroke-width="2"/>` + circle(x, py - 10 - h * 0.62 - 15, 14, C.skin, C.ink, 2) + text(x, py - 10 - h * 0.62 - 38, lab, { anchor: 'middle', size: 13, weight: 'bold' }); };
   const xA = cx - 1.6 * sc, xB = cx + 1.2 * sc;
-  s += kid(xA, 'A: 30 kg', false) + kid(xB, 'B: 40 kg', true) + text(cx + 120, py - 18, 'uniform plank, 20 kg', { size: 12, color: C.grey });
+  s += kid(xA, 'A: 30 kg', false) + kid(xB, 'B: 40 kg', true) + text(xA + 30, py - 18, 'uniform plank, 20 kg (center at the pivot)', { size: 12, color: C.grey });
   s += dim(xA, py + 20, cx - 6, py + 20, '', {}) + text((xA + cx) / 2, py + 38, '1.6 m', { anchor: 'middle', size: 13 });
   s += dim(cx + 6, py + 20, xB, py + 20, '', {}) + text((xB + cx) / 2, py + 38, '1.2 m', { anchor: 'middle', size: 13 });
   const fy = 400;
@@ -552,10 +552,10 @@ STIMS['door-pushes'] = () => {
   s += arrow(mx, hy - 9 - 70, mx, hy - 9, C.applied, { width: 3 }) + text(mx + 6, hy - 70, '2', { size: 15, weight: 'bold' });
   s += arrow(ex - 6, hy - 9 - 70, ex - 6, hy - 9, C.applied, { width: 3 }) + text(ex - 30, hy - 70, '1', { size: 15, weight: 'bold' });
   const d = [Math.cos(150 * Math.PI / 180), -Math.sin(150 * Math.PI / 180)]; // pointing up-left onto the door? use from above at 30° to the door
-  const tip = [ex - 2, hy + 9], tail = [tip[0] + 80 * Math.cos(Math.PI / 6), tip[1] + 80 * Math.sin(Math.PI / 6)];
+  const tip = [ex - 2, hy + 9], tail = [tip[0] + 70 * Math.cos(Math.PI / 6), tip[1] + 70 * Math.sin(Math.PI / 6)];
   s += arrow(tail[0], tail[1], tip[0], tip[1], C.applied, { width: 3 }) + text(tail[0] + 4, tail[1] + 14, '3', { size: 15, weight: 'bold' });
   s += dashed(ex - 2, hy + 9, ex + 60, hy + 9, C.light, 1.2) + text(ex + 26, hy + 26, '30°', { size: 12 });
-  s += arrow(ex + 85, hy - 2, ex + 4, hy - 2, C.applied, { width: 3 }) + text(ex + 70, hy - 12, '4', { size: 15, weight: 'bold' });
+  s += arrow(ex + 74, hy - 2, ex + 4, hy - 2, C.applied, { width: 3 }) + text(ex + 60, hy - 12, '4', { size: 15, weight: 'bold' });
   s += dim(hx, hy + 56, mx, hy + 56, '', {}) + text((hx + mx) / 2, hy + 74, '0.40 m', { anchor: 'middle', size: 12 });
   s += dim(hx, hy + 92, ex, hy + 92, '', {}) + text((hx + ex) / 2, hy + 110, '0.80 m', { anchor: 'middle', size: 12 });
   void d;
@@ -604,17 +604,17 @@ STIMS['meterstick-pivot'] = () => {
 };
 
 STIMS['beam-cable-lamp'] = () => {
-  const W = 560, H = 260, wx = 60, y = 190, L = 380;
-  let s = wallV(wx, 20, 240);
+  const W = 560, H = 320, wx = 60, y = 240, L = 360;
+  let s = wallV(wx, 15, 285);
   s += rect(wx, y - 8, L, 16, C.wood, { rx: 2 }) + circle(wx + 6, y, 7, C.metal, C.ink, 2) + dot(wx + 6, y, 2.5);
   const top = y - L * Math.tan(Math.PI / 6);
   s += line(wx, top, wx + L - 4, y - 8, C.ink, 2) + circle(wx, top, 4, C.ink, C.ink, 1);
-  s += text(wx + L - 70, y - 30, '30.0°', { size: 12 });
+  s += text(wx + L - 84, y - 14, '30.0°', { size: 12 });
   s += line(wx + L - 6, y + 8, wx + L - 6, y + 34, C.ink, 1.5) + `<path d="M${wx + L - 22},${y + 34} h32 l-8,18 h-16 z" fill="#F5CF8A" stroke="${C.ink}" stroke-width="1.5"/>`;
   s += text(wx + L + 14, y + 50, 'lamp', { size: 12 });
   s += text(wx + 14, y + 30, 'hinge', { size: 12, color: C.grey });
   s += dim(wx, y + 64, wx + L, y + 64, '', {}) + text(wx + L / 2, y + 60, '2.00 m', { anchor: 'middle', size: 12 });
-  s += text(wx + 120, 80, 'cable', { size: 12, color: C.grey });
+  s += text(wx + 120, 125, 'cable', { size: 12, color: C.grey });
   return { label: 'A uniform horizontal beam 2.00 m long hinged to a wall at its left end, held by a cable from its right end to the wall at 30.0 degrees above the beam, with a lamp hanging from the right end', s, W, H };
 };
 
@@ -711,13 +711,14 @@ STIMS['ramp-three-shapes'] = () => {
 };
 
 STIMS['orbit-ellipse'] = () => {
-  const W = 560, H = 250, cx = 240, cy = 125, a = 180, b = 100, c = Math.sqrt(a * a - b * b);
+  // To scale: r_B = 2 r_A, so the focus sits a/3 from the center (e = 1/3).
+  const W = 560, H = 420, cx = 260, cy = 195, a = 180, c = a / 3, b = Math.sqrt(a * a - c * c);
   let s = `<ellipse cx="${cx}" cy="${cy}" rx="${a}" ry="${b}" fill="none" stroke="${C.grey}" stroke-width="1.8" stroke-dasharray="7 5"/>`;
   s += circle(cx - c, cy, 22, C.planet, C.ink, 2) + text(cx - c, cy + 5, 'Earth', { anchor: 'middle', size: 10.5, weight: 'bold', color: '#FFFFFF' });
   s += circle(cx - a, cy, 7, C.metalDark, C.ink, 1.5) + text(cx - a - 10, cy + 5, 'A', { anchor: 'end', size: 14, weight: 'bold' });
   s += circle(cx + a, cy, 7, C.metalDark, C.ink, 1.5) + text(cx + a + 10, cy + 5, 'B', { size: 14, weight: 'bold' });
   s += arrow(cx - a, cy + 9, cx - a, cy + 70, C.velocity, { width: 3 });
-  s += text(20, 240, 'A: 7.0 × 10⁶ m from Earth’s center, speed 8.7 × 10³ m/s. B: 1.4 × 10⁷ m from Earth’s center.', { size: 12 });
+  s += text(20, 410, 'A: 7.0 × 10⁶ m from Earth’s center, speed 8.7 × 10³ m/s. B: 1.4 × 10⁷ m from Earth’s center.', { size: 12 });
   return { label: 'A satellite on an elliptical orbit around Earth. Point A, the closest point, is 7.0 × 10⁶ m from Earth’s center, where the satellite moves at 8.7 × 10³ m/s; point B, the farthest point, is 1.4 × 10⁷ m from Earth’s center', s, W, H };
 };
 

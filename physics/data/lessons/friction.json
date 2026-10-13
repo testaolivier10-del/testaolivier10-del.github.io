@@ -69,7 +69,7 @@
  ],
  "misconception": {
   "wrong": "Static friction on a resting object is always μ_s F_N.",
-  "right": "Static friction is only as large as it needs to be. A crate pushed with 60 N that does not move has 60 N of friction, even if μ_s F_N is 147 N."
+  "right": "Static friction is only as large as it needs to be. A crate pushed with 60 N that does not move has 60 N of friction, even if μ_s F_N is 206 N."
  },
  "check": [
   "phys-friction-1",

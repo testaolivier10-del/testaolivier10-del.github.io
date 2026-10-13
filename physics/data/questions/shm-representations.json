@@ -328,9 +328,9 @@
     "askUnit": true,
     "mistakes": [
      {
-      "value": 0.00017,
+      "value": 0.00055,
       "rel": 0.02,
-      "why": "Value: your calculator was in degree mode. The angle 2π(2.5)(0.050) = 0.785 is in radians."
+      "why": "Value: your calculator was in degree mode, so it took sin(0.785°). The angle 2π(2.5)(0.050) = 0.785 is in radians."
      }
     ]
    },
@@ -424,23 +424,23 @@
    "unit": "unit-7",
    "topic": "shm-representations",
    "practice": "2.C",
-   "level": "recall",
+   "level": "apply",
    "diff": 1,
-   "q": "For an object in simple harmonic motion, at which point is its speed zero and the size of its acceleration greatest?",
+   "q": "An object in simple harmonic motion is at x = +A/2 and moving toward equilibrium. Which describes its velocity and acceleration?",
    "options": [
-    "At either turning point, x = ±A",
-    "At the equilibrium position, x = 0",
-    "Halfway between equilibrium and a turning point",
-    "At x = 0 for speed and x = ±A for acceleration"
+    "Velocity −, acceleration −, so it is speeding up",
+    "Velocity −, acceleration +, so it is slowing down",
+    "Velocity +, acceleration −, so it is slowing down",
+    "Velocity −, acceleration zero, so its speed is constant"
    ],
    "correct": 0,
    "why": {
-    "correct": "At the turning points the object stops for an instant and the restoring force, −kx, has its largest size because |x| = A.",
+    "correct": "Moving from +A/2 toward x = 0 means moving in −x, so v is −. The acceleration points toward equilibrium, opposite to x; x is +, so a is −. Velocity and acceleration in the same direction means the object is speeding up, as it should on its way to equilibrium.",
     "options": [
-     "Right: speed zero and acceleration largest happen together, at the ends.",
-     "At x = 0 the speed is greatest and the acceleration is zero: the opposite.",
-     "At x = ±A/2 the object is still moving and the force is half its largest value.",
-     "At x = 0 the speed is largest, not zero."
+     "Right: v and a both point toward x = 0, so the object speeds up.",
+     "The acceleration is opposite to the displacement, not to the velocity. With x positive, a is negative.",
+     "Moving from +A/2 toward x = 0 is moving in the − direction, so v is negative.",
+     "The acceleration is zero only at x = 0. At x = +A/2 the restoring force is −kA/2, half its largest value."
     ]
    }
   },

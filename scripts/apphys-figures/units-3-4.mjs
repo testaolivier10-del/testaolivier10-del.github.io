@@ -185,11 +185,15 @@ FIGURES['work-pulled-crate'] = () => {
   // rope to a hand off to the upper right, 30 degrees
   const a = Math.PI / 6, rl = 200;
   s += line(mx, my, mx + rl * Math.cos(a), my - rl * Math.sin(a), { color: '#8B6B3E', width: 3 });
-  // forces from the center of mass (lengths: Fg 92, FN 58, FT 70, f 40)
-  s += arrow(mx, my, 0, 92, C.grav, { label: STIM ? 'F_g, Earth on crate (196 N)' : 'F_g, Earth on crate', lx: 4, lanchor: 'start' });
-  s += arrow(mx, my, 0, -58, C.normal, { label: STIM ? 'F_N, floor on crate (174 N)' : 'F_N, floor on crate', lanchor: 'end', lx: -6, ly: -2 });
-  s += arrow(mx, my, 70 * Math.cos(a), -70 * Math.sin(a), C.tension, { label: STIM ? 'F_T, rope on crate (45.0 N)' : 'F_T, rope on crate', lx: 40, ly: -6 });
-  s += arrow(mx, my, -40, 0, C.friction) + text(cx - 8, my + 26, STIM ? 'f_k, floor on crate (28.0 N)' : 'f_k, floor on crate', { size: 13, color: C.friction, anchor: 'end', weight: 'bold' }) + line(cx - 6, my + 18, mx - 30, my + 4, { color: C.friction, width: 1 });
+  // forces from the center of mass. Figure (no values): Fg 92, FN 58, FT 70, f 40,
+  // so FN + FT sin 30° balances Fg. Stimulus (196, 174, 45.0, 28.0 N): FN nearly
+  // as long as Fg and longer than FT, FT longer than f; FT and f are drawn above
+  // scale so they stay readable (reviewer fix, 2026-10-12).
+  const L = STIM ? { g: 92, n: 82, t: 40, f: 25 } : { g: 92, n: 58, t: 70, f: 40 };
+  s += arrow(mx, my, 0, L.g, C.grav, { label: STIM ? 'F_g, Earth on crate (196 N)' : 'F_g, Earth on crate', lx: 4, lanchor: 'start' });
+  s += arrow(mx, my, 0, -L.n, C.normal, { label: STIM ? 'F_N, floor on crate (174 N)' : 'F_N, floor on crate', lanchor: 'end', lx: -6, ly: -2 });
+  s += arrow(mx, my, L.t * Math.cos(a), -L.t * Math.sin(a), C.tension, { label: STIM ? 'F_T, rope on crate (45.0 N)' : 'F_T, rope on crate', lx: 40 + (70 - L.t) * Math.cos(a), ly: -6 - (70 - L.t) * Math.sin(a) });
+  s += arrow(mx, my, -L.f, 0, C.friction) + text(cx - 8, my + 26, STIM ? 'f_k, floor on crate (28.0 N)' : 'f_k, floor on crate', { size: 13, color: C.friction, anchor: 'end', weight: 'bold' }) + line(cx - 6, my + 18, mx - L.f + 10, my + 4, { color: C.friction, width: 1 });
   s += dot(mx, my, 4.5);
   // angle mark
   s += `<path d="M${mx + 34},${my} A34,34 0 0 0 ${(mx + 34 * Math.cos(a)).toFixed(1)},${(my - 34 * Math.sin(a)).toFixed(1)}" fill="none" stroke="${INK}" stroke-width="1.5"/>`;
@@ -445,7 +449,7 @@ export function sceneShelf(label) {
   return sceneSvg(580, 330, label, s);
 }
 
-/* Two carts before and after a collision on a level track. o = { mA, mB, before: [vA, vB], after: [vA, vB] | null, latched } */
+/* Two carts before and after a collision on a level track. o = { mA, mB, before: [vA, vB], after: [vA, vB] | null, latched, unknownB, ppv, over } */
 export function sceneCarts(label, o) {
   const H = o.after ? 300 : 170;
   let s = '';
@@ -455,7 +459,14 @@ export function sceneCarts(label, o) {
     const ax = latched ? 230 : 120, bx = latched ? 330 : 360;
     r += cart(ax, y, 100, { label: 'A', sub: o.mA }) + cart(bx, y, 120, { label: 'B', sub: o.mB });
     const ty = cartTop(y), ay = ty - 14;
-    const v = (x, val, lbl) => val === 0 ? text(x, ay, 'at rest', { size: 13, anchor: 'middle', color: MUTED }) : arrow(x, ay, Math.sign(val) * Math.max(30, Math.abs(val) * 60), 0, C.vel, { label: lbl });
+    // o.ppv: arrow pixels per m/s (default 60). o.over: labels centred above the
+    // arrows, for carts moving toward each other (their labels would collide).
+    const ppv = o.ppv || 60;
+    const v = (x, val, lbl) => {
+      if (val === 0) return text(x, ay, 'at rest', { size: 13, anchor: 'middle', color: MUTED });
+      const len = Math.sign(val) * Math.max(30, Math.abs(val) * ppv);
+      return o.over ? arrow(x, ay, len, 0, C.vel) + text(x + len / 2, ay - 10, lbl, { size: 13, anchor: 'middle', color: C.vel, weight: 'bold' }) : arrow(x, ay, len, 0, C.vel, { label: lbl });
+    };
     if (latched) r += unknownB ? text(bx, ay, 'stuck together: v_f = ?', { size: 14, anchor: 'middle', weight: 'bold', color: C.vel }) : v(bx, vs[0], `${vs[0] > 0 ? '+' : '−'}${Math.abs(vs[0]).toFixed(2)} m/s together`);
     else {
       r += v(ax + 50, vs[0], `${vs[0] > 0 ? '+' : '−'}${Math.abs(vs[0]).toFixed(2)} m/s`);

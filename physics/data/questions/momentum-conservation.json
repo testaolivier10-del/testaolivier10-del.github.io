@@ -172,7 +172,8 @@
      },
      {
       "value": 13,
-      "why": "Value: that sets kinetic energies equal. The dart sticks, so kinetic energy is not conserved; use momentum."
+      "why": "Value: that sets kinetic energies equal. The dart sticks, so kinetic energy is not conserved; use momentum.",
+      "tol": 0.5
      }
     ]
    },
@@ -224,8 +225,9 @@
     "sigfigs": 2,
     "mistakes": [
      {
-      "value": 200,
-      "why": "Value: that uses the dart's speed. On the patch the dart and block move together at 4.0 m/s."
+      "value": 204,
+      "why": "Value: that uses the dart's speed. On the patch the dart and block move together at 4.0 m/s.",
+      "tol": 5
      }
     ]
    },

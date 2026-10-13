@@ -226,7 +226,7 @@ FIGS['shm-energy-position'] = () => {
   for (const [x, l] of [[-1, '−A'], [-0.5, '−A/2'], [0, '0'], [0.5, '+A/2'], [1, '+A']]) s += text(sx(x), base + 22, l, { anchor: 'middle', size: 13 });
   s += text((L + R) / 2, base + 44, 'position x', { anchor: 'middle', size: 14, color: C.grey });
   s += text(sx(1) + 6, sy(1) - 8, 'total E = ½kA²', { size: 13, color: C.amber, weight: 'bold', anchor: 'end' });
-  s += text(sx(0.14), sy(0.16), 'U_s = ½kx²'.replace('U_s', 'U<tspan baseline-shift="sub" font-size="10">s</tspan>'), { size: 13, color: C.spring, weight: 'bold', anchor: 'start' });
+  s += text(sx(0.3), sy(0.03), 'U_s = ½kx²'.replace('U_s', 'U<tspan baseline-shift="sub" font-size="10">s</tspan>'), { size: 13, color: C.spring, weight: 'bold', anchor: 'start' });
   s += text(sx(-0.2), sy(0.84), 'K', { size: 15, color: C.velocity, weight: 'bold', anchor: 'end' });
   // bar charts at -A? use +A/2, 0, +A
   const bars = [[1, 'x = +A'], [0.5, 'x = +A/2'], [0, 'x = 0']];

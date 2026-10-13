@@ -74,8 +74,8 @@ Forked from `chem/assets/` with the names changed. Differences:
 | `phys-questions.js` | Numeric grading as AP® Chemistry (value, units, sig figs, each a mark) with **physics units**: `normUnit` reduces to SI base units, so N = kg·m/s², J = N·m = kg·m²/s², W = J/s, Pa = N/m², Hz = 1/s, rad is dimensionless (rad/s = 1/s), and words (newtons, meters, joules, degrees) are read. A prefixed unit stays itself (cm is not m), so `scaleTo` names a cm-for-m or kJ-for-J slip. An angle asked in rad needs "rad". **`gAlt`** (below). Targeted feedback, in this order after authored `mistakes`: g = 9.8 vs 10 (the key times 10/9.8, its square or square root, within 0.4%), factor of 100 (cm and m), 1000 (kilo, milli), sign, factor of 2 (½mv², ½kx²), a missing square, a missing square root, degrees vs radians. |
 | `pages/exams.js` | Section I 42 MCQ in 85 min (`MCQ_SEC` = 85·60/42); Section II 4 FRQs in 95 min, one of each type in the order mr, tbr, lab, qqt, with suggested times in proportion to points (23.75, 28.5, 23.75, 19 min); readiness band 50% MCQ + 50% FRQ, "Not calibrated". |
 | `pages/frq-kit.js`, `frq.js`, `dashboard.js`, `search.js` | The four FRQ types (`ApPhysFrq.TYPES`, `ORDER`); drawing parts (`drawSpec`) as well as graph parts. |
-| `pages/cram.js` | Default exam date 2027-05-05; 42 + 4 format text. |
-| `pages/score.js` | `ApPhysScore`: composite = 50 × (MCQ ÷ 42) + 50 × (FRQ points ÷ 40); bands 72/58/42/27 carried over from AP® Chemistry as **placeholders** (needs-author `score-cutoffs`); a test holds them equal to the practice exam's band. |
+| `pages/cram.js` | Default exam date 2027-05-05; 42 + 4 format text; timed sets at the exam pace (85/42 min a question); justification prompts on study and weak-spot days. |
+| `pages/score.js` | `ApPhysScore`: composite = 50 × (MCQ ÷ 42) + 50 × (FRQ points ÷ 40); bands **70/55/41/31**, estimates fitted to the 2025-2026 score distributions (needs-author `score-cutoffs`); a test holds them equal to the practice exam's band. |
 | `tools/phys-tools.js` | `ApPhysTools`, forked from `ApChemTools` (frame, `modes` Explore / Test yourself, `studioPane`, `drill`, `keepGoing`, `cue`, `moreHtml`, `explain`, `plot`, `slider`, `questions`, `frq`); no ICE rows or live beaker. The Details tab title comes from `#app[data-details-title]`. |
 | `phys.css` | The amber tint (`--ctint` `#FBEED5`, `--cink` `#734200`; dark `rgba(235,165,50,0.10)` / `#F5CF8A`), the same values as `body[data-course="apphys"]` in `assets/theme.css`. |
 
@@ -212,21 +212,28 @@ and type; every key graded right, no mistake graded right, no NaN in any text).
 As AP® Chemistry with the 2027 format: Section I exactly **42** four-option single-answer items,
 each unit inside `unitRange` of 42 (5-8% → 2-4, 10-15% → 4-7, 18-23% → 7-10); no practice-1 item;
 Section II is exactly `["mr", "tbr", "lab", "qqt"]` in that order, none a placeholder, none in
-both forms. Exam-only item ids `phys-exam-<form>-<nn>`; every number they key goes in
-`EXAM_NUMBERS` (`scripts/lib/apphys-exams.mjs`, empty until Phase 3).
+both forms. Exam-only item ids `phys-exam-<form>-<nn>`, 12 to 14 per form, stimuli `exam-<form>-s<n>`;
+every number they key goes in `EXAM_NUMBERS` (`scripts/lib/apphys-exams.mjs`), and the test grades
+each one through `ApPhysQuestions.grade`. Bank items in a form are never lesson-check items (the
+content check). Phase 3 forms: spec decision 10.
 
 ## Justification trainer: `data/justify/<unit>.json`
 
 As AP® Chemistry with `practice` a physics skill id and `skill` one of `JUSTIFY_SKILLS`: `forces`,
-`conservation`, `energy-momentum`, `functional-dependence`, `graphs`, `procedure`, `fluids`. The
-check refuses a circular model answer ("conserved because of conservation").
+`conservation`, `energy-momentum`, `functional-dependence`, `graphs`, `procedure`, `fluids` (the
+runtime reads their names from `assets/justify.json`). 3 to 5 prompts per unit, 32 or more in all,
+every skill used; every number in a prompt is listed in `JUSTIFY_NUMBERS`. The check refuses a
+circular model answer ("conserved because of conservation").
 
 ## Exams and entry pages
 
-As AP® Chemistry. The equations sheet page's rows (`EQ` in `scripts/lib/apphys-entry.mjs`) are
-empty until Phase 3; until then the page shows the three habits (state g, SI units, degree mode)
-and what the sheet leaves out (I of shapes, escape speed, Torricelli, Kepler's third law, minimum
-loop speed). The score calculator explains that the bands are provisional.
+As AP® Chemistry. The equations sheet page (`EQ` in `scripts/lib/apphys-entry.mjs`): groups
+`{ h, id, rows }`, each row `[equation, what it is, when you use it, 'Unit N', topic id,
+[trainer slugs]?]`; a trainer is linked only when live. Every equation, constant and the
+conventions of the official sheet appear (the exams test lists them). Then the three habits (state
+g, SI units, degree mode) and `NOT_ON`, what the sheet leaves out (I of shapes, escape speed,
+Torricelli, Kepler's third law, minimum loop speed, the oscillator's greatest speed). The score
+calculator states that its cut-offs are estimates and how they were chosen.
 
 ## Publishing a unit
 

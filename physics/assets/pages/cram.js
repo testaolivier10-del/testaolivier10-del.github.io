@@ -185,7 +185,7 @@
   function unitLabel(id){ var u = UNIT[id]; return u ? 'Unit ' + u.n + ': ' + u.title : id; }
   function unitShort(id){ var u = UNIT[id]; return u ? 'Unit ' + u.n : id; }
   function allowed(){ return !Core || !Core.allowed || Core.allowed('cram'); }
-  function mins(n){ return Math.round(n * 1.5) + ' min'; }
+  function mins(n){ return Math.round(n * 85 / 42) + ' min'; }   // the exam's pace: 42 questions in 85 min
 
   var state = load();
   if(state.weeks !== 2 && state.weeks !== 3) state.weeks = 3;
@@ -214,6 +214,9 @@
   function setLink(n){ return link('exams.html?mode=mixed&n=' + n, 'Timed mixed set: ' + n + ' questions in ' + mins(n)) + (allowed() ? '' : ' <span class="phys-small">(Premium)</span>'); }
   function frqLink(id){ var f = id && FRQ[id]; return f ? link('frq/' + id + '.html', 'One free-response question: ' + esc(f.title)) : link('frq.html', 'One free-response question of your choice'); }
 
+  // The justification trainer (justify.html), filtered to the day's first unit.
+  function justifyLink(d){ return link('justify.html' + (d.units[0] ? '?unit=' + d.units[0] : ''), 'Two justification prompts'); }
+
   var TITLE = { study: 'Study', weak: 'Weak spots', exam: 'Practice exam', review: 'Go through the exam', rest: 'Rest', eve: 'The day before' };
   function dayBody(d, p){
     var li = [];
@@ -222,12 +225,13 @@
       var ts = topicLinks(d.topics, d.weak);
       if(ts) li.push('<li>Notes, then the lesson where a topic is shaky:<ul class="phys-cr-topics">' + ts + '</ul></li>');
       li.push('<li>' + setLink(d.set) + '</li>', '<li>' + frqLink(d.frq) + '</li>');
+      li.push('<li>' + justifyLink(d) + ': write, then check against the rubric.</li>');
     } else if(d.kind === 'weak'){
       li.push('<li>' + d.units.map(sheet).join(' &middot; ') + '</li>');
       li.push(d.topics.length ? '<li>Your weakest topics here:<ul class="phys-cr-topics">' + topicLinks(d.topics, d.topics) + '</ul></li>'
         : '<li>' + (p.personal ? 'The topics you missed in the practice exams' : 'The units worth the most on the exam') + ': ' + link('practice.html?mode=missed', 'practice your misses') + ' or ' + link('practice.html?mode=weak', 'your weakest topics') + '</li>');
       li.push('<li>' + setLink(d.set) + '</li>', '<li>' + frqLink(d.frq) + '</li>');
-      li.push('<li>' + link('justify.html' + (d.units[0] ? '?unit=' + d.units[0] : ''), 'Two justification prompts') + ': write, then check against the rubric.</li>');
+      li.push('<li>' + justifyLink(d) + ': write, then check against the rubric.</li>');
     } else if(d.kind === 'exam'){
       // The two fixed practice exams (assets/exams/forms.json): exam day 1 takes form 1, day 2 form 2.
       li.push('<li>' + link('exams.html?mode=full&form=' + d.exam, 'Practice exam ' + d.exam + ': 42 multiple-choice questions in 85 min, then 4 free-response questions in 95 min') + '</li>');

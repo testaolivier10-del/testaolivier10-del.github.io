@@ -325,7 +325,7 @@
     function newSim(y0){ stopLoop(); sim = FT.sim(obj(), rhoF(), TK.depth, y0); }
     function drop(y0){
       touched(); newSim(y0 == null ? -0.10 : y0);
-      loop = S.loop(function(dt){ if(paused) return; sim.step(dt); draw(); return !sim.state.still; }, { duration: 9, still: function(){ sim.end(); draw(); }, onEnd: function(){ loop = null; if(!sim.state.still){ sim.end(); } draw(); } });
+      loop = S.loop(function(dt){ if(paused) return; sim.step(dt); if(sim.state.still) sim.end(); /* settled: snap to the exact rest state, so F_b = F_g on a floater */ draw(); return !sim.state.still; }, { duration: 9, still: function(){ sim.end(); draw(); }, onEnd: function(){ loop = null; if(!sim.state.still){ sim.end(); } draw(); } });
       loop.start();
     }
     function stopLoop(){ if(loop){ loop.stop(); loop = null; } }
@@ -580,12 +580,12 @@
       var dm = (p.text.match(/(\d+) cm × (\d+) cm × (\d+) cm/) || []).slice(1).map(Number), id = 'ft' + (++gid), a = dm[0], b = dm[1], c = dm[2], k = Math.min(16, 200 / (a + b * 0.5), 110 / (c + b * 0.5));
       var W = a * k, Hh = c * k, D = b * k * 0.5, x0 = 200 - (W + D) / 2, y0 = 222, light = v.rho < 1000;
       var top = light ? '#E7C28A' : '#D5DBDF', front = light ? 'url(#' + id + 'wd)' : 'url(#' + id + 'al)', side = light ? '#A87438' : '#8D979E', st2 = light ? '#7A4E1C' : '#59636B';
-      var inner = defs(id) + '<rect x="90" y="226" width="220" height="16" rx="5" class="ft-steel"/><rect x="70" y="242" width="260" height="56" rx="10" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/><rect x="150" y="256" width="100" height="30" rx="5" fill="#1F2A28"/><text x="200" y="278" text-anchor="middle" style="fill:#9FF2C6;font:700 18px var(--font-mono)">' + F(v.m * 1000, 0) + ' g</text>';
+      var inner = defs(id) + '<rect x="90" y="226" width="220" height="16" rx="5" class="ft-steel"/><rect x="70" y="242" width="260" height="56" rx="10" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/><rect x="150" y="256" width="100" height="30" rx="5" fill="#1F2A28"/><text x="200" y="278" text-anchor="middle" style="fill:#9FF2C6;font:700 18px var(--font-mono)">' + M.fmt(v.m * 1000, 3) + ' g</text>';
       inner += '<path d="M' + x0 + ' ' + (y0 - Hh) + 'l' + D + ' ' + (-D * 0.6) + 'h' + W + 'l' + (-D) + ' ' + (D * 0.6) + 'z" fill="' + top + '" stroke="' + st2 + '" stroke-width="2"/>' +
         '<path d="M' + (x0 + W) + ' ' + y0 + 'v' + (-Hh) + 'l' + D + ' ' + (-D * 0.6) + 'v' + Hh + 'z" fill="' + side + '" stroke="' + st2 + '" stroke-width="2"/>' +
         '<rect x="' + x0 + '" y="' + (y0 - Hh) + '" width="' + W + '" height="' + Hh + '" fill="' + front + '" stroke="' + st2 + '" stroke-width="2"/>';
       inner += '<text x="' + (x0 + W / 2) + '" y="' + (y0 - Hh - D * 0.6 - 10) + '" text-anchor="middle" class="ft-mut" style="font-size:14px">' + a + ' cm</text><text x="' + (x0 - 8) + '" y="' + (y0 - Hh / 2 + 5) + '" text-anchor="end" class="ft-mut" style="font-size:14px">' + c + ' cm</text><text x="' + (x0 + W + D + 8) + '" y="' + (y0 - Hh - D * 0.3 + 5) + '" class="ft-mut" style="font-size:14px">' + b + ' cm</text>';
-      return S.svg(400, 310, 'A rectangular block, ' + a + ' cm by ' + b + ' cm by ' + c + ' cm, on an electronic balance reading ' + F(v.m * 1000, 0) + ' grams.', inner).replace('class="phys-scene"', 'class="phys-scene ft-svg"');
+      return S.svg(400, 310, 'A rectangular block, ' + a + ' cm by ' + b + ' cm by ' + c + ' cm, on an electronic balance reading ' + M.fmt(v.m * 1000, 3) + ' grams.', inner).replace('class="phys-scene"', 'class="phys-scene ft-svg"');
     }
     if(p.type === 'buoyant'){ var c = cube(v.rhoO, 0.08); return floatSvg({ fluid: fl, obj: c, y: TK.depth, label: 'A cube resting on the bottom of a tank, fully under the fluid.' }); }
     if(p.type === 'float'){ var o = cube(v.rhoO, 0.10); return floatSvg({ fluid: fl, obj: o, y: v.frac * 0.10, dims: 'depth?', label: 'A cube floating upright in a tank, part of it under the surface.' }); }

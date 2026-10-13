@@ -6,25 +6,25 @@
    the weakest units. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { createBrowser } from './harness.mjs';
 
 const W = (lo, hi) => [lo, hi];
 const UNITS = [
-  { id: 'unit-1', n: 1, part: 'course', title: 'Atomic Structure', weight: W(7, 9) },
-  { id: 'unit-2', n: 2, part: 'course', title: 'Compound Structure', weight: W(7, 9) },
-  { id: 'unit-3', n: 3, part: 'course', title: 'Substances and Mixtures', weight: W(18, 22) },
-  { id: 'unit-4', n: 4, part: 'course', title: 'Reactions', weight: W(7, 9) },
-  { id: 'unit-5', n: 5, part: 'course', title: 'Kinetics', weight: W(7, 9) },
-  { id: 'unit-6', n: 6, part: 'course', title: 'Thermophysics', weight: W(7, 9) },
-  { id: 'unit-7', n: 7, part: 'course', title: 'Equilibrium', weight: W(7, 9) },
-  { id: 'unit-8', n: 8, part: 'course', title: 'Acids and Bases', weight: W(11, 15) },
-  { id: 'unit-9', n: 9, part: 'course', title: 'Thermodynamics and Electrophysics', weight: W(7, 9) },
+  { id: 'unit-1', n: 1, part: 'course', title: 'Kinematics', weight: W(10, 15) },
+  { id: 'unit-2', n: 2, part: 'course', title: 'Force and Translational Dynamics', weight: W(18, 23) },
+  { id: 'unit-3', n: 3, part: 'course', title: 'Work, Energy, and Power', weight: W(18, 23) },
+  { id: 'unit-4', n: 4, part: 'course', title: 'Linear Momentum', weight: W(10, 15) },
+  { id: 'unit-5', n: 5, part: 'course', title: 'Torque and Rotational Dynamics', weight: W(10, 15) },
+  { id: 'unit-6', n: 6, part: 'course', title: 'Energy and Momentum of Rotating Systems', weight: W(5, 8) },
+  { id: 'unit-7', n: 7, part: 'course', title: 'Oscillations', weight: W(5, 8) },
+  { id: 'unit-8', n: 8, part: 'course', title: 'Fluids', weight: W(10, 15) },
   { id: 'skills-math', n: null, part: 'skills', title: 'Math you need', weight: null },
 ];
 const TOPICS = [];
 UNITS.filter(u => u.part === 'course').forEach(u => { for (let i = 1; i <= 5 + u.n % 3; i++) TOPICS.push({ id: `${u.id}-t${i}`, unit: u.id, title: `T${i}`, built: true }); });
 const FRQS = [
-  { id: 'f-a', type: 'long', units: ['unit-1'] }, { id: 'f-b', type: 'short', units: ['unit-7'] }, { id: 'f-c', type: 'short', units: ['unit-3'] },
+  { id: 'f-a', type: 'mr', units: ['unit-1'] }, { id: 'f-b', type: 'tbr', units: ['unit-7'] }, { id: 'f-c', type: 'qqt', units: ['unit-3'] },
 ];
 
 function Plan() { const b = createBrowser(); b.load('physics/assets/pages/cram.js'); return b.window.ApPhysCramPlan; }
@@ -36,7 +36,7 @@ test('unit shares sum to 1 and follow exam weight without data', () => {
     const p = build({ weeks });
     const sum = Object.values(p.shares).reduce((a, b) => a + b, 0);
     assert.ok(Math.abs(sum - 1) < 1e-9, `shares sum ${sum}`);
-    assert.equal(Object.keys(p.shares).length, 9, 'course units only, the math skills left out');
+    assert.equal(Object.keys(p.shares).length, 8, 'course units only, the math skills left out');
     assert.ok(p.shares['unit-3'] > p.shares['unit-1'], 'heavier unit, larger share');
     assert.equal(p.personal, false);
   }
@@ -55,7 +55,7 @@ test('study sessions: every slot used, every unit at least one, every topic once
     const order = p.days.filter(d => d.kind === 'study').flatMap(d => d.units).map(u => +u.split('-')[1]);
     for (let i = 1; i < order.length; i++) assert.ok(order[i] >= order[i - 1], 'units in course order');
   }
-  assert.ok(build().slots['unit-3'] > build().slots['unit-1'], 'Unit 3 (18-22%) gets more sessions than Unit 1 (7-9%)');
+  assert.ok(build().slots['unit-3'] > build().slots['unit-6'], 'Unit 3 (18-23%) gets more sessions than Unit 6 (5-8%)');
 });
 
 test('dates count back from the exam: 21 or 14 consecutive days ending the day before', () => {
@@ -139,4 +139,21 @@ test('FRQs prefer the day\'s units and do not repeat until all are used', () => 
   const firstThree = p.days.filter(d => d.frq).slice(0, 3).map(d => d.frq);
   assert.equal(new Set(firstThree).size, 3);
   assert.equal(build({ frqs: [] }).days.find(d => d.kind === 'study').frq, null);
+});
+
+/* The day texts (physics/assets/pages/cram.js, dayBody): the exam's format,
+   pace and the links each kind of day carries. */
+test('day texts: exam day n opens practice exam n in the 2027 format; study days carry justification prompts', () => {
+  const src = readFileSync('physics/assets/pages/cram.js', 'utf8');
+  assert.match(src, /link\('exams\.html\?mode=full&form=' \+ d\.exam, 'Practice exam ' \+ d\.exam \+ ': 42 multiple-choice questions in 85 min, then 4 free-response questions in 95 min'\)/);
+  assert.match(src, /function mins\(n\)\{ return Math\.round\(n \* 85 \/ 42\) \+ ' min'; \}/, 'timed sets at the exam pace');
+  const body = src.slice(src.indexOf('function dayBody'), src.indexOf('return \'<ul class="phys-cr-todo">'));
+  const study = body.slice(body.indexOf("d.kind === 'study'"), body.indexOf("d.kind === 'weak'"));
+  const weak = body.slice(body.indexOf("d.kind === 'weak'"), body.indexOf("d.kind === 'exam'"));
+  assert.match(study, /justifyLink\(d\)/, 'study days have justification prompts');
+  assert.match(weak, /justifyLink\(d\)/, 'weak-spot days too');
+  assert.match(src, /function justifyLink\(d\)\{ return link\('justify\.html' \+ \(d\.units\[0\] \? '\?unit=' \+ d\.units\[0\] : ''\)/);
+  assert.doesNotMatch(src, /1\.5 minutes|60 multiple-choice|7 free-response|105 min/);
+  // The practice exam page opens form n from ?form=n.
+  assert.match(readFileSync('physics/assets/pages/exams.js', 'utf8'), /formById\('form-' \+ p\.get\('form'\)\)/);
 });

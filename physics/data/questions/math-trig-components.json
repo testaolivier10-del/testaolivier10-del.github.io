@@ -199,7 +199,7 @@
    "practice": "2.B",
    "level": "analyze",
    "diff": 3,
-   "q": "A plane flies 240 km at 37.0° south of west, then 100. km due south. How far south of its start does it end? (Degree mode.)",
+   "q": "A plane flies 240. km at 37.0° south of west, then 100. km due south. How far south of its start does it end? (Degree mode.)",
    "numeric": {
     "answer": 244.0,
     "tol": 1.0,

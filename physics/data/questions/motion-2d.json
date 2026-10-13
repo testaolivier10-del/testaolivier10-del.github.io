@@ -111,7 +111,7 @@
      },
      {
       "value": 0.8,
-      "why": "Value: use the fall time from the vertical motion, 0.40 s, not 0.80 m ÷ 2.4 m/s."
+      "why": "Value: 0.80 m is the height of the table, not the horizontal distance. Find the fall time from the height (0.40 s), then d = vₓt."
      }
     ]
    },

@@ -617,7 +617,7 @@
 
   /* ------------------------------------------------------ results */
 
-  function band(p){ return p >= 72 ? 5 : p >= 58 ? 4 : p >= 42 ? 3 : p >= 27 ? 2 : 1; }
+  function band(p){ return p >= 70 ? 5 : p >= 55 ? 4 : p >= 41 ? 3 : p >= 31 ? 2 : 1; }
   function finish(){
     if(!run || run.done) return;
     run.done = true;
@@ -674,7 +674,7 @@
       (fo ? '<div class="phys-pr-score phys-ex-fsum"><span class="phys-pr-score-big">' + fg + '<small>/' + fo + '</small></span><span><b>Free response (your self-score): ' + pctOf(fg, fo) + '%</b><span class="phys-small">' + plural(run.frqs.length, 'question') + ' scored with the rubrics' + (run.timeUp2 ? ' · time ran out in Section II' : '') + '</span></span></div>' : '') +
       (k === 'full' ? '<section class="phys-ex-band" aria-labelledby="phys-ex-band-h"><h2 id="phys-ex-band-h">Readiness estimate: band ' + b + ' of 5</h2>' +
         '<p class="phys-ex-band-warn"><b>' + NOT_CALIBRATED + '</b></p>' +
-        '<p class="phys-small">How it is worked out: multiple choice and free response count half each, as the two sections do on the exam, giving ' + composite + '%; then 72% and up is band 5, 58% band 4, 42% band 3, 27% band 2, below that band 1. These cut-offs are the ones reported for the 2014 exam, an estimate: each year\'s real scale differs a little' +
+        '<p class="phys-small">How it is worked out: multiple choice and free response count half each, as the two sections do on the exam, giving ' + composite + '%; then 70% and up is band 5, 55% band 4, 41% band 3, 31% band 2, below that band 1. These cut-offs are our estimate, fitted to the published 2025 and 2026 score distributions; the real ones are not published and change a little each year' +
         (run.meta.partial ? ', and this was a shorter exam that leaves out units with no questions yet' : '') + '. The <a href="' + BASE + 'score-calculator.html">score calculator</a> explains the method.</p></section>' : '') +
       (missedN ? '<p>' + plural(rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>' + (rows.some(function(x){ return !x.r.correct && x.q.own; }) ? ' (questions written only for this exam stay here, in the review below)' : '') + '.</p>' : '<p>Every multiple-choice question right.</p>') +
       (weak.length ? '<h2>Study next</h2><ul class="phys-pr-next-list">' + weak.map(function(x){

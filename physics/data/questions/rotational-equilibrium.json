@@ -9,7 +9,7 @@
    "kind": "diagram",
    "title": "A beam held by a hinge and a cable",
    "text": "<p>The uniform beam has a mass of 12.0 kg and the lamp a mass of 8.00 kg. The beam is at rest. Use g = 9.8 m/s².</p>",
-   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 260\" role=\"img\" aria-label=\"A uniform horizontal beam 2.00 m long hinged to a wall at its left end, held by a cable from its right end to the wall at 30.0 degrees above the beam, with a lamp hanging from the right end\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"260\" fill=\"#FFFFFF\"/><rect x=\"48\" y=\"20\" width=\"12\" height=\"220\" fill=\"#EEF1EF\"/><line x1=\"60\" y1=\"20\" x2=\"60\" y2=\"240\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"60\" y1=\"24\" x2=\"50\" y2=\"32\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"34\" x2=\"50\" y2=\"42\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"44\" x2=\"50\" y2=\"52\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"54\" x2=\"50\" y2=\"62\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"64\" x2=\"50\" y2=\"72\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"74\" x2=\"50\" y2=\"82\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"84\" x2=\"50\" y2=\"92\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"94\" x2=\"50\" y2=\"102\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"104\" x2=\"50\" y2=\"112\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"114\" x2=\"50\" y2=\"122\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"124\" x2=\"50\" y2=\"132\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"134\" x2=\"50\" y2=\"142\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"144\" x2=\"50\" y2=\"152\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"154\" x2=\"50\" y2=\"162\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"164\" x2=\"50\" y2=\"172\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"174\" x2=\"50\" y2=\"182\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"184\" x2=\"50\" y2=\"192\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"194\" x2=\"50\" y2=\"202\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"204\" x2=\"50\" y2=\"212\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"214\" x2=\"50\" y2=\"222\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"224\" x2=\"50\" y2=\"232\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"234\" x2=\"50\" y2=\"242\" stroke=\"#5A6268\" stroke-width=\"1\"/><rect x=\"60\" y=\"182\" width=\"380\" height=\"16\" rx=\"2\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"66\" cy=\"190\" r=\"7\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"66\" cy=\"190\" r=\"2.5\" fill=\"#1F2A28\"/><line x1=\"60\" y1=\"-29.4\" x2=\"436\" y2=\"182\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"60\" cy=\"-29.4\" r=\"4\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"370\" y=\"160\" font-size=\"12\" fill=\"#1F2A28\">30.0°</text><line x1=\"434\" y1=\"198\" x2=\"434\" y2=\"224\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><path d=\"M418,224 h32 l-8,18 h-16 z\" fill=\"#F5CF8A\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"454\" y=\"240\" font-size=\"12\" fill=\"#1F2A28\">lamp</text><text x=\"74\" y=\"220\" font-size=\"12\" fill=\"#5A6268\">hinge</text><line x1=\"250\" y1=\"254\" x2=\"68\" y2=\"254\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"60,254 68,250 68,258\" fill=\"#5A6268\"/><line x1=\"250\" y1=\"254\" x2=\"432\" y2=\"254\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"440,254 432,258 432,250\" fill=\"#5A6268\"/><text x=\"250\" y=\"250\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">2.00 m</text><text x=\"180\" y=\"80\" font-size=\"12\" fill=\"#5A6268\">cable</text></svg>"
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 320\" role=\"img\" aria-label=\"A uniform horizontal beam 2.00 m long hinged to a wall at its left end, held by a cable from its right end to the wall at 30.0 degrees above the beam, with a lamp hanging from the right end\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"320\" fill=\"#FFFFFF\"/><rect x=\"48\" y=\"15\" width=\"12\" height=\"270\" fill=\"#EEF1EF\"/><line x1=\"60\" y1=\"15\" x2=\"60\" y2=\"285\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"60\" y1=\"19\" x2=\"50\" y2=\"27\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"29\" x2=\"50\" y2=\"37\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"39\" x2=\"50\" y2=\"47\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"49\" x2=\"50\" y2=\"57\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"59\" x2=\"50\" y2=\"67\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"69\" x2=\"50\" y2=\"77\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"79\" x2=\"50\" y2=\"87\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"89\" x2=\"50\" y2=\"97\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"99\" x2=\"50\" y2=\"107\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"109\" x2=\"50\" y2=\"117\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"119\" x2=\"50\" y2=\"127\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"129\" x2=\"50\" y2=\"137\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"139\" x2=\"50\" y2=\"147\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"149\" x2=\"50\" y2=\"157\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"159\" x2=\"50\" y2=\"167\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"169\" x2=\"50\" y2=\"177\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"179\" x2=\"50\" y2=\"187\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"189\" x2=\"50\" y2=\"197\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"199\" x2=\"50\" y2=\"207\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"209\" x2=\"50\" y2=\"217\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"219\" x2=\"50\" y2=\"227\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"229\" x2=\"50\" y2=\"237\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"239\" x2=\"50\" y2=\"247\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"249\" x2=\"50\" y2=\"257\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"259\" x2=\"50\" y2=\"267\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"269\" x2=\"50\" y2=\"277\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"279\" x2=\"50\" y2=\"287\" stroke=\"#5A6268\" stroke-width=\"1\"/><rect x=\"60\" y=\"232\" width=\"360\" height=\"16\" rx=\"2\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"66\" cy=\"240\" r=\"7\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"66\" cy=\"240\" r=\"2.5\" fill=\"#1F2A28\"/><line x1=\"60\" y1=\"32.2\" x2=\"416\" y2=\"232\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"60\" cy=\"32.2\" r=\"4\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"336\" y=\"226\" font-size=\"12\" fill=\"#1F2A28\">30.0°</text><line x1=\"414\" y1=\"248\" x2=\"414\" y2=\"274\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><path d=\"M398,274 h32 l-8,18 h-16 z\" fill=\"#F5CF8A\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"434\" y=\"290\" font-size=\"12\" fill=\"#1F2A28\">lamp</text><text x=\"74\" y=\"270\" font-size=\"12\" fill=\"#5A6268\">hinge</text><line x1=\"240\" y1=\"304\" x2=\"68\" y2=\"304\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"60,304 68,300 68,308\" fill=\"#5A6268\"/><line x1=\"240\" y1=\"304\" x2=\"412\" y2=\"304\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"420,304 412,308 412,300\" fill=\"#5A6268\"/><text x=\"240\" y=\"300\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">2.00 m</text><text x=\"180\" y=\"125\" font-size=\"12\" fill=\"#5A6268\">cable</text></svg>"
   }
  },
  "items": [
@@ -223,25 +223,25 @@
    "stimulus": "rotational-equilibrium-s2",
    "q": "What is the vertical component of the force the hinge exerts on the beam?",
    "numeric": {
-    "answer": 59,
-    "tol": 1,
+    "answer": 58.8,
+    "tol": 0.2,
     "unit": "N",
-    "sigfigs": 2,
+    "sigfigs": 3,
     "mistakes": [
      {
-      "value": 200,
+      "value": 196,
       "rel": 0.015,
       "why": "Value: that is the total weight. The cable holds up part of it: subtract F_T sin 30°."
      },
      {
-      "value": 140,
+      "value": 137,
       "rel": 0.015,
       "why": "Value: that is the cable’s vertical pull. The hinge supplies what is left of the 196 N."
      }
     ]
    },
    "why": {
-    "correct": "Vertical forces add to zero: F_hinge,y + F_T sin 30° = (20.0 kg)(9.8 m/s²) = 196 N, so F_hinge,y = 196 − 137.2 = 58.8 N, about 59 N, upward."
+    "correct": "Vertical forces add to zero: F_hinge,y + F_T sin 30.0° = (20.0 kg)(9.8 m/s²) = 196 N, so F_hinge,y = 196 N − 137.2 N = 58.8 N, upward."
    }
   },
   {
@@ -422,9 +422,9 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Torques about the string: left (0.20 kg)g(0.15 m) = 0.030g N·m; right (0.10 kg)g(0.25 m) = 0.025g N·m. The left side wins, so the left end goes down.",
+    "correct": "Torques about the string (use g = 9.8 m/s²): left (0.20 kg)(9.8 m/s²)(0.15 m) = 0.29 N·m counterclockwise; right (0.10 kg)(9.8 m/s²)(0.25 m) = 0.25 N·m clockwise. The left side wins, so the left end goes down.",
     "options": [
-     "Right: 0.030 N·m/g counterclockwise beats 0.025 N·m/g clockwise.",
+     "Right: 0.29 N·m counterclockwise beats 0.25 N·m clockwise.",
      "Distance counts, but so does weight: 0.10 × 0.25 is less than 0.20 × 0.15.",
      "Closer, but not close enough: the torques are not equal.",
      "The string force acts at the axis and gives no torque."

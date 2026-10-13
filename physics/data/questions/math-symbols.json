@@ -127,8 +127,9 @@
     "sigfigs": 2,
     "mistakes": [
      {
-      "value": 130.0,
-      "why": "Value: you multiplied. Solving d = vt for t gives t = d/v: divide the distance by the speed."
+      "value": 127.0,
+      "why": "Value: you multiplied. Solving d = vt for t gives t = d/v: divide the distance by the speed.",
+      "tol": 3.0
      },
      {
       "value": 0.015,
@@ -153,7 +154,7 @@
     "Its units are (m/s) ÷ m = 1/s, not seconds",
     "It contains two symbols instead of one number",
     "It does not include the starting position x₀",
-    "It gives a larger time for a faster speed, which is fine"
+    "It does not depend on the distance d at all"
    ],
    "correct": 0,
    "why": {
@@ -162,7 +163,7 @@
      "Right: a correct expression for a time must come out in seconds. Checking units catches upside-down fractions.",
      "A symbolic answer is supposed to contain symbols; that is not the problem.",
      "The question asks only for a time over a distance; x₀ is not needed.",
-     "A faster walker should take less time; this expression gives more, which is exactly what shows it is wrong."
+     "d is in the expression; the time does depend on it, but upside down, which is the real problem."
     ]
    }
   },
@@ -202,10 +203,10 @@
    "diff": 1,
    "q": "In the symbol v₀, what does the subscript 0 tell you?",
    "options": [
-    "The velocity is zero",
-    "v is multiplied by zero",
-    "It is the value at the starting time, t = 0",
-    "v is raised to the power 0"
+    "It says the velocity has the value zero",
+    "It says v is multiplied by the number zero",
+    "It labels the value at the start, t = 0",
+    "It says v is raised to the power zero"
    ],
    "correct": 2,
    "why": {

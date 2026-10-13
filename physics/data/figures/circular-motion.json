@@ -7,7 +7,7 @@
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "A car on a flat curve seen from above, with velocity tangent to the road and acceleration toward the center of the curve. Beside it, the free-body diagram seen from behind: F_N, road on car, up and F_g, Earth on car, down, equal; F_f, road on tires, horizontal toward the center. Static friction supplies the centripetal net force; no separate centripetal arrow is drawn."
+  "alt": "A car on a flat curve seen from above, driving along the road, with velocity tangent to the road and acceleration toward the center of the curve. Beside it, the free-body diagram seen from behind: F_N, road on car, up and F_g, Earth on car, down, equal; F_f, road on tires, horizontal toward the center and shorter than the weight. Static friction supplies the centripetal net force; no separate centripetal arrow is drawn."
  },
  "vertical-loop-fbd": {
   "file": "figures/vertical-loop-fbd.svg",

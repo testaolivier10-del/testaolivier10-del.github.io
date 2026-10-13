@@ -281,17 +281,22 @@
     function orbitReset(){ oloop.stop(); orun = false; oGo.setAttribute('aria-pressed', 'false'); oGo.textContent = 'Launch'; os = RL.orbit.start({ r0: R0o, k: kO, GM: GM }); otrail = []; otime = 0; drawOrbit(); }
     var lastOrbitFull = 0;
     /* The K, U, E columns inside the space scene (phones), bottom right. */
-    function inset(en, rp){
-      var Up = GM * mSat / rp, sc = 52 / Up, x0 = 300, z = 290, cw = 26;
-      function c(i, v, cls, t){ var h = v * sc, x = x0 + i * (cw + 10); return '<rect class="' + cls + '" x="' + x + '" y="' + n1(h >= 0 ? z - h : z) + '" width="' + cw + '" height="' + n1(Math.abs(h)) + '" rx="3"/><text class="rl-st" x="' + (x + cw / 2) + '" y="' + (z + 72) + '" text-anchor="middle" font-size="15">' + t + '</text>'; }
-      return '<g aria-hidden="true">' + c(0, en.K, 'rl-col-k', 'K') + c(1, en.U, 'rl-col-u', 'U') + c(2, en.E, 'rl-col-e', 'E') + '<line x1="' + (x0 - 6) + '" x2="' + (x0 + 3 * cw + 26) + '" y1="' + z + '" y2="' + z + '" stroke="#E6EDF5" stroke-width="1.4"/></g>';
+    /* On a phone the columns get their own strip at the right of the space
+       scene (x0 onward), clear of the orbit, scaled to the closest point's |U|. */
+    function inset(en, rp, x0, H){
+      var Up = GM * mSat / rp, z = H * 0.42, sc = (H * 0.40) / Up, cw = 18, gap = 6;
+      function c(i, v, cls, t){ var h = v * sc, x = x0 + i * (cw + gap); return '<rect class="' + cls + '" x="' + n1(x) + '" y="' + n1(h >= 0 ? z - h : z) + '" width="' + cw + '" height="' + n1(Math.abs(h)) + '" rx="3"/><text class="rl-st" x="' + n1(x + cw / 2) + '" y="' + n1(H - 12) + '" text-anchor="middle" font-size="17">' + t + '</text>'; }
+      return '<g aria-hidden="true"><rect x="' + n1(x0 - 8) + '" y="10" width="' + n1(3 * cw + 2 * gap + 16) + '" height="' + n1(H - 20) + '" rx="10" fill="#fff" opacity=".06"/>' + c(0, en.K, 'rl-col-k', 'K') + c(1, en.U, 'rl-col-u', 'U') + c(2, en.E, 'rl-col-e', 'E') + '<line x1="' + n1(x0 - 4) + '" x2="' + n1(x0 + 3 * cw + 2 * gap + 4) + '" y1="' + n1(z) + '" y2="' + n1(z) + '" stroke="#E6EDF5" stroke-width="1.4"/></g>';
     }
     function drawOrbit(fast){
       if(scene !== 'orbit') return;
-      var nar = narrow(), W = nar ? 420 : 640, H = nar ? 380 : 400;
+      var nar = narrow(), W = nar ? 440 : 640, H = nar ? 320 : 400, side = nar ? 92 : 0, pad = nar ? 14 : 20;
       var far = RL.orbit.farPoint(R0o, kO), rp = Math.min(R0o, far), ra = Math.max(R0o, far), a = (rp + ra) / 2, b = Math.sqrt(rp * ra);
-      // Fixed frame (fits the widest orbit, k = 1.2), so the picture does not jump.
-      var fa = RL.orbit.farPoint(R0o, 1.2), span = R0o + fa, ppm = Math.min((W - 40) / span, (H - 40) / (2 * Math.sqrt(R0o * fa))), ox = 20 + fa * ppm + (W - 40 - span * ppm) / 2, oy = H / 2;
+      // Desktop: a fixed frame (fits the widest orbit, k = 1.2), so the picture
+      // does not jump. Phone: the frame fits this orbit's own turning points
+      // (it changes only when the launch speed does), so it fills the stage.
+      var fa = nar ? far : RL.orbit.farPoint(R0o, 1.2), span = R0o + fa, tall = 2 * Math.sqrt(R0o * fa), Wo = W - side;
+      var ppm = Math.min((Wo - 2 * pad) / span, (H - 2 * pad) / tall), ox = pad + fa * ppm + (Wo - 2 * pad - span * ppm) / 2, oy = H / 2;
       function X(x){ return ox + x * ppm; } function Y(y){ return oy - y * ppm; }
       var centerX = (R0o - far) / 2;   // midway between the launch point (+x) and the other turning point (−x)
       var en = RL.orbit.energy(os, GM, mSat), v = en.v, r = en.r;
@@ -305,15 +310,17 @@
       var arrows = S.arrow(sxp, syp, os.vx * vs, -os.vy * vs, { cls: 'vel', label: 'v', width: 3, head: 10 }) + S.arrow(sxp, syp, ux * Fg * fs, -uy * Fg * fs, { cls: 'f-grav', label: 'F_g', width: 3, head: 10 });
       var marks = '';
       if(Math.abs(kO - 1) > 0.004){
-        var pX = kO >= 1 ? R0o : -ra, qX = kO >= 1 ? -ra : R0o;
-        marks = '<circle cx="' + n1(X(kO >= 1 ? R0o : -far)) + '" cy="' + oy + '" r="4" fill="#F5CF8A"/><text class="rl-st" x="' + n1(X(kO >= 1 ? R0o : -far) + (kO >= 1 ? 10 : -10)) + '" y="' + (oy + 18) + '" text-anchor="' + (kO >= 1 ? 'start' : 'end') + '">closest</text>' +
-          '<circle cx="' + n1(X(kO >= 1 ? -far : R0o)) + '" cy="' + oy + '" r="4" fill="#8FB3D9"/><text class="rl-st" x="' + n1(X(kO >= 1 ? -far : R0o) + (kO >= 1 ? -10 : 10)) + '" y="' + (oy + 18) + '" text-anchor="' + (kO >= 1 ? 'end' : 'start') + '">farthest</text>';
+        // Turning points: the launch point (+x, right) and the other (−far, left).
+        // Labels sit outside the orbit on a wide stage, inside it on a phone.
+        var ptR = kO >= 1 ? 'closest' : 'farthest', ptL = kO >= 1 ? 'farthest' : 'closest', io = nar ? -1 : 1;
+        marks = '<circle cx="' + n1(X(R0o)) + '" cy="' + oy + '" r="4" fill="' + (kO >= 1 ? '#F5CF8A' : '#8FB3D9') + '"/><text class="rl-st" x="' + n1(X(R0o) + 10 * io) + '" y="' + (oy + 18) + '" text-anchor="' + (nar ? 'end' : 'start') + '">' + ptR + '</text>' +
+          '<circle cx="' + n1(X(-far)) + '" cy="' + oy + '" r="4" fill="' + (kO >= 1 ? '#8FB3D9' : '#F5CF8A') + '"/><text class="rl-st" x="' + n1(X(-far) - 10 * io) + '" y="' + (oy + 18) + '" text-anchor="' + (nar ? 'start' : 'end') + '">' + ptL + '</text>';
       }
       var desc = 'A satellite orbiting Earth: ' + (Math.abs(kO - 1) < 0.004 ? 'a circle' : 'an ellipse with Earth at one focus') + '. Now ' + M.fmt(r, 3) + ' m from Earth\'s center, moving at ' + M.fmt(v, 3) + ' m/s.';
       sceneEl.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="phys-scene rl-space-g" role="img" aria-label="' + esc(desc) + '">' + defs(did) + '<rect class="rl-space" x="0" y="0" width="' + W + '" height="' + H + '" rx="14"/>' + stars + path + trail +
         '<circle cx="' + n1(X(0)) + '" cy="' + oy + '" r="' + n1(RE * ppm + 4) + '" fill="#5FA8E8" opacity=".18"/><circle cx="' + n1(X(0)) + '" cy="' + oy + '" r="' + n1(RE * ppm) + '" fill="url(#' + did + 'e)"/>' +
         '<path d="M' + n1(X(0) - RE * ppm * 0.5) + ' ' + n1(oy - RE * ppm * 0.35) + 'q' + n1(RE * ppm * 0.3) + ' ' + n1(-RE * ppm * 0.2) + ' ' + n1(RE * ppm * 0.55) + ' ' + n1(RE * ppm * 0.05) + 'q' + n1(-RE * ppm * 0.1) + ' ' + n1(RE * ppm * 0.3) + ' ' + n1(-RE * ppm * 0.35) + ' ' + n1(RE * ppm * 0.2) + 'z" fill="#4FA36A" opacity=".75"/>' +
-        '<text class="rl-st" x="' + n1(X(0)) + '" y="' + n1(oy + 4) + '" text-anchor="middle">Earth</text>' + marks + arrows + sat + (nar ? inset(en, rp) : '') + '</svg>';
+        '<text class="rl-st" x="' + n1(X(0)) + '" y="' + n1(oy + 4) + '" text-anchor="middle">Earth</text>' + marks + arrows + sat + (nar ? inset(en, rp, W - side + 14, H) : '') + '</svg>';
       if(fast && Date.now() - lastOrbitFull < 120) return;
       lastOrbitFull = Date.now();
       // K, U, E columns with a zero line, L beside them.

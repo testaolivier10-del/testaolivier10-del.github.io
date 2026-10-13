@@ -37,7 +37,7 @@
   "friction-s2": {
    "kind": "diagram",
    "title": "A crate resting on a ramp",
-   "text": "<p>A 20 kg wooden crate rests without sliding on a ramp tilted at θ = 25° above the horizontal. Use g = 9.8 m/s².</p>",
+   "text": "<p>A 20.0 kg wooden crate rests without sliding on a ramp tilted at θ = 25.0° above the horizontal. Use g = 9.8 m/s².</p>",
    "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 220\" role=\"img\" aria-label=\"A wooden crate rests without sliding on a ramp tilted at angle θ above the horizontal.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"460\" height=\"220\" fill=\"#FFFFFF\"/><path d=\"M30,200 L430,200 L430,70 Z\" fill=\"#EEF1EF\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><g transform=\"translate(250 128.5) rotate(-18)\"><rect x=\"-40\" y=\"-60\" width=\"80\" height=\"60\" rx=\"2\" fill=\"#E3C99A\" stroke=\"#9C7A44\" stroke-width=\"2.5\"/><rect x=\"-35\" y=\"-55\" width=\"70\" height=\"50\" rx=\"1\" fill=\"none\" stroke=\"#9C7A44\" stroke-width=\"1.4\"/><line x1=\"-34\" y1=\"-6\" x2=\"34\" y2=\"-54\" stroke=\"#9C7A44\" stroke-width=\"1.4\"/></g><path d=\"M90,200 A60,60 0 0,0 87.1,181.5\" fill=\"none\" stroke=\"#734200\" stroke-width=\"1.6\"/><text x=\"100\" y=\"190\" font-size=\"15\" fill=\"#734200\" font-weight=\"bold\">θ</text></svg>"
   }
  },
@@ -59,8 +59,9 @@
     "sigfigs": 2,
     "mistakes": [
      {
-      "value": 150,
-      "why": "Value: 147 N is the maximum static friction. Below that, static friction is only as large as it needs to be to stop sliding: here, 75 N."
+      "value": 147,
+      "why": "Value: 147 N is the maximum static friction. Below that, static friction is only as large as it needs to be to stop sliding: here, 75 N.",
+      "tol": 3
      },
      {
       "value": 98,
@@ -89,8 +90,9 @@
     "sigfigs": 2,
     "mistakes": [
      {
-      "value": 5.9,
-      "why": "Value: that divides by the mass. μ is a ratio of two forces: the friction over the normal force, mg = 245 N."
+      "value": 5.88,
+      "why": "Value: that divides by the mass. μ is a ratio of two forces: the friction over the normal force, mg = 245 N.",
+      "tol": 0.03
      },
      {
       "value": 0.4,
@@ -119,8 +121,9 @@
     "sigfigs": 2,
     "mistakes": [
      {
-      "value": 3.9,
-      "why": "Value: divide by the normal force (245 N), not by the mass."
+      "value": 3.92,
+      "why": "Value: divide by the normal force (245 N), not by the mass.",
+      "tol": 0.03
      }
     ]
    },
@@ -193,23 +196,23 @@
    "stimulus": "friction-s2",
    "q": "What is the size of the static friction force on the crate on the ramp, in newtons?",
    "numeric": {
-    "answer": 83,
-    "tol": 1,
+    "answer": 82.8,
+    "tol": 0.2,
     "unit": "N",
-    "sigfigs": 2,
+    "sigfigs": 3,
     "mistakes": [
      {
-      "value": 180,
+      "value": 178,
       "why": "Value: that uses cos θ, which gives the part of gravity into the ramp. The part along the ramp is mg sin θ."
      },
      {
-      "value": 200,
+      "value": 196,
       "why": "Value: that is the whole weight. Only the part along the slope, mg sin θ, tends to slide the crate."
      }
     ]
    },
    "why": {
-    "correct": "Take axes along and perpendicular to the ramp. Along the ramp, gravity's part is mg sin θ, down the slope; the crate is at rest, so static friction balances it: f_s = mg sin 25° = 20 kg × 9.8 m/s² × 0.423 = 83 N, up the slope."
+    "correct": "Take axes along and perpendicular to the ramp. Along the ramp, gravity's part is mg sin θ, down the slope; the crate is at rest, so static friction balances it: f_s = mg sin 25.0° = 20.0 kg × 9.8 m/s² × 0.4226 = 82.8 N, up the slope."
    }
   },
   {
@@ -223,23 +226,23 @@
    "stimulus": "friction-s2",
    "q": "What is the size of the normal force of the ramp on the crate, in newtons?",
    "numeric": {
-    "answer": 180,
-    "tol": 10,
+    "answer": 178,
+    "tol": 1,
     "unit": "N",
-    "sigfigs": 2,
+    "sigfigs": 3,
     "mistakes": [
      {
-      "value": 200,
+      "value": 196,
       "why": "Value: on a ramp the normal force is not mg. Only the part of gravity perpendicular to the surface, mg cos θ, presses into it."
      },
      {
-      "value": 83,
+      "value": 82.8,
       "why": "Value: that uses sin θ, the part along the ramp. Perpendicular to the ramp the part is mg cos θ."
      }
     ]
    },
    "why": {
-    "correct": "Perpendicular to the ramp nothing accelerates, so F_N balances gravity's part into the ramp: F_N = mg cos 25° = 20 kg × 9.8 m/s² × 0.906 = 180 N (178 N rounded to two significant figures)."
+    "correct": "Perpendicular to the ramp nothing accelerates, so F_N balances gravity's part into the ramp: F_N = mg cos 25.0° = 20.0 kg × 9.8 m/s² × 0.9063 = 178 N, less than the weight, 196 N."
    }
   },
   {
@@ -367,8 +370,9 @@
     ],
     "mistakes": [
      {
-      "value": 12,
-      "why": "Value: that is the friction force in newtons. Divide by the mass to get the acceleration."
+      "value": 11.8,
+      "why": "Value: that is the friction force in newtons. Divide by the mass to get the acceleration.",
+      "tol": 0.25
      }
     ]
    },
@@ -396,8 +400,9 @@
       "why": "Value: that uses F_N = mg. The rope's upward pull lifts part of the sled's weight, so the normal force is mg − F_T sin 30°."
      },
      {
-      "value": 12,
-      "why": "Value: the rope pulls up on the sled, which reduces the normal force; it does not add to it."
+      "value": 12.3,
+      "why": "Value: the rope pulls up on the sled, which reduces the normal force; it does not add to it.",
+      "tol": 0.35
      }
     ]
    },

@@ -155,7 +155,7 @@
     var why = [
       ratio !== 1 && right === 0 ? 'Right. ' + rule + ': the period goes as the square root of the change.' : ratio === 1 ? 'The period does not depend on ' + thing + '.' : 'Check which side of the fraction it is on: ' + rule + '.',
       ratio !== 1 && right === 1 ? 'Right. ' + rule + ': it sits under the square root in the denominator.' : ratio === 1 ? 'The period does not depend on ' + thing + '.' : 'Check which side of the fraction it is on: ' + rule + '.',
-      ratio === 1 ? 'The period does not depend on ' + thing + '.' : 'The square root: the period changes by √' + (k < 1 ? '(1/4)' : k) + ', not ' + ftxt(k) + '.',
+      ratio === 1 ? 'The period does not depend on ' + thing + '.' : 'The period goes as a square root: it changes by × ' + (ratio > 1 ? Math.round(ratio) : '1/' + Math.round(1 / ratio)) + ', not by the same factor as ' + thing + '.',
       ratio === 1 ? 'Right. ' + rule + ' has no ' + (which === 'A' ? 'amplitude' : 'mass') + ' in it.' : 'It does change: ' + thing + ' is in ' + rule + '.'
     ];
     var T1 = T0 * ratio;

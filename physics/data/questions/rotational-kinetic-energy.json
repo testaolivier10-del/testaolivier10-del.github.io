@@ -48,10 +48,10 @@
    "stimulus": "rotational-kinetic-energy-s1",
    "q": "What is the rotational inertia of the turntable and clay together about the axle?",
    "numeric": {
-    "answer": 0.0623,
-    "tol": 0.0001,
+    "answer": 0.062,
+    "tol": 0.001,
     "unit": "kg·m^2",
-    "sigfigs": 3,
+    "sigfigs": 2,
     "units": [
      "kg m^2",
      "kg·m²"
@@ -63,14 +63,14 @@
       "why": "Value: that is the disk alone. Add the clay as a point object, mr²."
      },
      {
-      "value": 0.122,
+      "value": 0.12,
       "rel": 0.015,
       "why": "Value: that uses MR² for the disk. A solid disk has I = ½MR² (given)."
      }
     ]
    },
    "why": {
-    "correct": "I = ½MR² + mr² = ½(3.0 kg)(0.20 m)² + (0.10 kg)(0.15 m)² = 0.0600 + 0.00225 = 0.0623 kg·m², about 0.0623 kg·m²."
+    "correct": "I = ½MR² + mr² = ½(3.0 kg)(0.20 m)² + (0.10 kg)(0.15 m)² = 0.0600 + 0.00225 = 0.06225 kg·m², about 0.062 kg·m² (the data have two significant figures)."
    }
   },
   {
@@ -181,7 +181,7 @@
     "correct": "Every part shares ω, so each part’s share of ½Iω² is its share of I: 0.00225/0.06225 = 3.6%.",
     "options": [
      "Right: the clay’s I is 0.00225 of 0.06225 kg·m², and they share ω.",
-     "That compares the clay’s mass with the disk’s mass; energy depends on I, not mass alone.",
+     "That is the clay’s share of the total mass (0.10 of 3.1 kg); energy depends on I, not mass alone.",
      "That compares the distances 0.15 m and 0.20 m; I also depends on mass.",
      "The clay and the disk do not share the energy equally; they have different I."
     ]

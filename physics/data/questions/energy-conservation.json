@@ -89,8 +89,9 @@
       "why": "Value: 2.0 m is C's height above B. The block has dropped 6.0 m − 2.0 m = 4.0 m from A."
      },
      {
-      "value": 13,
-      "why": "Value: you added the heights. The drop from A to C is 6.0 m − 2.0 m = 4.0 m."
+      "value": 12.5,
+      "why": "Value: you added the heights. The drop from A to C is 6.0 m − 2.0 m = 4.0 m.",
+      "tol": 0.5
      }
     ]
    },
@@ -284,7 +285,8 @@
     "mistakes": [
      {
       "value": 173,
-      "why": "Value: that divides the final kinetic energy by the distance. Use the energy turned into thermal energy, 3090 J."
+      "why": "Value: that divides the final kinetic energy by the distance. Use the energy turned into thermal energy, 3090 J.",
+      "tol": 0.5
      }
     ]
    },
@@ -303,9 +305,9 @@
    "stimulus": "energy-conservation-s3",
    "q": "Which bar chart matches the cart-spring system at the instant of greatest compression?",
    "options": [
-    "The energy is entirely U_s; K is zero",
+    "The U_s bar holds the energy; K is zero",
     "K and U_s are equal",
-    "The energy is entirely K; U_s is zero",
+    "The K bar holds the energy; U_s is zero",
     "Both K and U_s are zero, because the cart has stopped"
    ],
    "correct": 0,

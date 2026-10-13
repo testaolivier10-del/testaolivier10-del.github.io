@@ -159,14 +159,53 @@ export function checkJustify(prompts, ctx) {
 }
 
 /* Every number in an exam-only item or a prompt, recomputed: the value, and
-   where it must appear (an item's keyed option, or a prompt's text). Empty
-   until Phase 3 writes the practice exams and prompts; each entry is
-   { id, key, starts?, check? } for an item and { id, has: [...] } for a
-   prompt. g follows the item: 9.8 m/s² unless it says 10. */
+   where it must appear (an item's keyed option, or a prompt's text). Each
+   entry is { id, key, starts?, check? } for an item and { id, has: [...] }
+   for a prompt. g follows the item: 9.8 m/s² unless it says 10. */
+const G = 9.8;
 const fix = (x, d) => (x < 0 ? '−' : '') + Math.abs(x).toFixed(d);
-export const EXAM_NUMBERS = [];
-export const JUSTIFY_NUMBERS = [];
-void fix;
+const sup = n => String(n).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
+const sci = (x, n) => { const e = Math.floor(Math.log10(Math.abs(x))); return `${(x / 10 ** e).toFixed(n - 1)} × 10${sup(e)}`; };
+export const EXAM_NUMBERS = [
+  // form 1
+  { id: 'phys-exam-1-01', key: `${fix(2 * 14.7 / G, 1)} s` },                                   // up and down: 2v₀/g
+  { id: 'phys-exam-1-02', key: `${fix(1.0 * G / (3.9 + 1.0), 1)} m/s²` },                       // a = m_b g / (m_c + m_b)
+  { id: 'phys-exam-1-03', key: '40 N, static friction', check: () => 40 < 0.50 * 12 * G },      // push below μ_s mg, so static friction = push
+  { id: 'phys-exam-1-04', key: `${fix(0.5 * 250 * 0.12 ** 2, 1)} J` },                          // ½k(Δx)²
+  { id: 'phys-exam-1-05', key: `${fix(Math.sqrt(2 * (0.5 * 250 * 0.12 ** 2) / 0.40), 1)} m/s` },
+  { id: 'phys-exam-1-06', key: `${fix(0.5 * 250 * 0.12 ** 2 / (0.40 * G), 2)} m` },             // mgh = ½k(Δx)²
+  { id: 'phys-exam-1-07', key: `${(0.24 / 0.12) ** 2} times as high` },                          // h ∝ (Δx)²
+  { id: 'phys-exam-1-08', key: `${fix(0.50 * (4.0 - -6.0) / 0.020, 0)} N` },                    // F = mΔv/Δt, velocity reverses
+  { id: 'phys-exam-1-09', key: `${fix(30 * 1.5 / 45, 1)} m right of the pivot`, check: () => 30 * 1.5 / 45 <= 5.0 / 2 },
+  { id: 'phys-exam-1-10', key: `${fix(0.020 * 3.0 / (0.020 + 0.10 * 0.20 ** 2), 1)} rad/s` },   // Iω constant, clay adds mr²
+  { id: 'phys-exam-1-11', key: `${fix(1.2e-3 * 1.5 / 4.0e-4, 1)} m/s` },                        // A₁v₁ = A₂v₂
+  { id: 'phys-exam-1-12', key: `${sci(0.5 * 1000 * ((1.2e-3 * 1.5 / 4.0e-4) ** 2 - 1.5 ** 2), 2)} Pa` }, // ½ρ(v₂² − v₁²)
+  // form 2
+  { id: 'phys-exam-2-01', key: `${fix(3.0 * Math.sqrt(2 * 1.2 / G), 1)} m` },                   // x = v_x √(2h/g)
+  { id: 'phys-exam-2-02', key: `${sci(1200 * 12 ** 2 / 40, 2)} N` },                            // mv²/r
+  { id: 'phys-exam-2-03', key: `${fix(6 * 2.0 + 0.5 * 6 * 2.0, 0)} J` },                        // area: rectangle + triangle
+  { id: 'phys-exam-2-04', key: `${fix(Math.sqrt(2 * (6 * 2.0 + 0.5 * 6 * 2.0) / 2.0), 1)} m/s` },
+  { id: 'phys-exam-2-06', key: `+${fix((0.50 * 0.80 - 0.30 * 0.75) / 0.50, 2)} m/s` },          // momentum before = after
+  { id: 'phys-exam-2-07', key: `${fix(0.5 * 0.50 * 0.80 ** 2 - (0.5 * 0.50 * ((0.50 * 0.80 - 0.30 * 0.75) / 0.50) ** 2 + 0.5 * 0.30 * 0.75 ** 2), 3)} J`, check: () => 0.5 * 0.50 * 0.35 ** 2 + 0.5 * 0.30 * 0.75 ** 2 < 0.5 * 0.50 * 0.80 ** 2 },
+  { id: 'phys-exam-2-09', key: `${fix(0.5 * 30 * 5.0, 0)} rad` },                               // average ω times t
+  { id: 'phys-exam-2-10', key: `${fix(0.50 / 0.25 * 3.0, 1)} rad/s` },                          // α = τ/I, ω = αt
+  { id: 'phys-exam-2-11', key: `${fix(1.0e5 / (1000 * G), 1)} m` },                             // P_gauge = ρgh
+  { id: 'phys-exam-2-12', key: `${fix(600 / 1000 * 100, 0)}%` },                                // fraction under = ρ_obj/ρ_fluid
+];
+export const JUSTIFY_NUMBERS = [
+  { id: 'u1-slope-of-position-graph', has: [fix((10.0 - 2.0) / 4.0, 1) + ' m/s'] },
+  { id: 'u1-area-under-velocity-graph', has: [fix(0.5 * 3.0 * 6.0, 1) + ' m', `${0.5 * 3.0 * 6.0 + 3.0 * 6.0} m`] },
+  { id: 'u2-normal-force-on-ramp', has: [fix(5.0 * G * Math.cos(Math.PI / 6), 0) + ' N', fix(5.0 * G, 0) + ' N'] },
+  { id: 'u2-hanging-mass-doubled', has: [fix(0.50 * G / 2.50, 2) + ' m/s²', fix(1.0 * G / 3.0, 2) + ' m/s²'] },
+  { id: 'u3-power-same-lift', has: [fix(20 * G * 3.0, 0) + ' J', fix(20 * G * 3.0 / 3.0, 0) + ' W', fix(20 * G * 3.0 / 6.0, 0) + ' W'] },
+  { id: 'u4-sticky-collision-start', has: [fix(0.20 * 5.0 / 1.00, 1) + ' m/s', fix(0.5 * 0.20 * 5.0 ** 2, 1) + ' J', fix(0.5 * 1.00 * (0.20 * 5.0 / 1.00) ** 2, 2) + ' J'] },
+  { id: 'u4-impulse-from-graph', has: [fix(0.5 * 400 * 0.010, 1) + ' N·s', fix(0.5 * 400 * 0.010 / 0.050, 0) + ' m/s'] },
+  { id: 'u5-wheelbarrow-lift', has: [fix((420 * 0.50 + 140 * 0.60) / 1.40, 0) + ' N', fix(420 * 0.50 + 140 * 0.60, 0) + ' N·m', fix(420 + 140 - (420 * 0.50 + 140 * 0.60) / 1.40, 0) + ' N'] },
+  { id: 'u5-slope-gives-inertia', has: [fix((1.20 - 0.40) / (6.0 - 2.0), 2) + ' kg·m²'] },
+  { id: 'u7-pendulum-finds-g', has: [fix(4 * Math.PI ** 2 / 4.0, 2) + ' m/s²'] },
+  { id: 'u8-sinking-stone', has: [fix(G * (1 - 1000 / 2700), 1) + ' m/s²'] },
+  { id: 'u8-pressure-depth-graph', has: [sci(1.0e4 / G, 2) + ' kg/m³', String(Math.round(1.0e4 / G / 10) * 10) + ' kg/m³'] },
+];
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {
   const errs = [];
@@ -176,7 +215,7 @@ export function checkNumbers(items, prompts) {
     const key = strip(q.options[q.correct]);
     const ok = n.starts ? key.startsWith(n.key) : key === n.key;
     if (!ok) errs.push(`numbers: ${n.id} keys "${key}", the recomputed value is "${n.key}"`);
-    if (n.check && !n.check()) errs.push(`numbers: ${n.id} fails its side condition (limiting reactant or the 5% rule)`);
+    if (n.check && !n.check()) errs.push(`numbers: ${n.id} fails its side condition (static friction holds, the seat fits on the plank, kinetic energy falls)`);
     if (q.options.filter(o => strip(o) === key).length !== 1) errs.push(`numbers: ${n.id} has its key twice`);
   }
   const byId = new Map(prompts.map(p => [p.id, p]));

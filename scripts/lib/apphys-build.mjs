@@ -397,7 +397,7 @@ export function renderFigures(C, html, depth) {
 /* A small, accessible chart drawn at build time from data, so a graph
    stimulus is authored as numbers, not as a picture:
    { type: "line"|"bar", x: { label, unit?, categories? }, y: { label, unit?, min?, max?, step? },
-     series: [{ name, points: [[x, y, err?], ...] }] }
+     series: [{ name, points: [[x, y, err?], ...], line?: false, markers?: false }] }
    err draws an error bar (±err). The SVG is role="img" with a label; the
    data table follows in a <details> for screen readers and for checking. */
 const SERIES_CLASS = ['s1', 's2', 's3', 's4', 's5'];
@@ -441,8 +441,11 @@ export function chartSvg(spec, title = '') {
     for (const v of xs) parts.push(`<text class="tick" x="${sx(v).toFixed(1)}" y="${T + ph + 18}" text-anchor="middle">${fmt(v)}</text>`);
     series.forEach((s, si) => {
       const cls = SERIES_CLASS[si % SERIES_CLASS.length];
-      parts.push(`<polyline class="series ${cls}" points="${s.points.map(p => `${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join(' ')}"/>`);
+      // A series may set line: false (measured data: points only, never dot to dot)
+      // or markers: false (a fitted line: no points that look like data).
+      if (s.line !== false) parts.push(`<polyline class="series ${cls}" points="${s.points.map(p => `${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join(' ')}"/>`);
       for (const p of s.points) {
+        if (s.markers === false && !p[2]) continue;
         parts.push(si % 2 ? `<rect class="pt ${cls}" x="${(sx(p[0]) - 4).toFixed(1)}" y="${(sy(p[1]) - 4).toFixed(1)}" width="8" height="8"/>` : `<circle class="pt ${cls}" cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="4.5"/>`);
         if (p[2]) parts.push(errBar(sx(p[0]), sy(p[1] + p[2]), sy(p[1] - p[2])));
       }

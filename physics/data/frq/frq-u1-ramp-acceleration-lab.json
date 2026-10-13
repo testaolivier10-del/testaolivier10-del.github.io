@@ -106,7 +106,7 @@
      ]
     }
    ],
-   "sample": "Mark a finish point near the bottom of the ramp and place a photogate there. Use the meterstick to measure a release distance d along the ramp from the finish, and release the cart from rest at that mark (let go without pushing). Record the time t from release to the photogate (or start a stopwatch on release and stop it at the finish). Repeat three times for each distance and average the times. Do this for five distances, from 0.20 m to 1.00 m."
+   "sample": "Mark a finish point near the bottom of the ramp and place a photogate there. Use the meterstick to measure a release distance d along the ramp from the finish, and release the cart from rest at that mark (let go without pushing). Record the time t from release to the finish: start a stopwatch as you let go and stop it as the cart reaches the mark, or use a photogate timer started at release and stopped at the finish. Repeat three times for each distance and average the times. Do this for five distances, from 0.20 m to 1.00 m."
   },
   {
    "label": "b",
@@ -176,7 +176,7 @@
      ]
     }
    ],
-   "sample": "Two points on my line: (0.00 s², 0.00 m) and (2.40 s², 1.00 m). Slope = 1.00 m ÷ 2.40 s² = 0.42 m/s². Since the slope is ½a, a = 2 × 0.42 m/s² = 0.84 m/s²."
+   "sample": "Two points on my line: (0.00 s², 0.00 m) and (2.40 s², 1.00 m). Slope = 1.00 m ÷ 2.40 s² = 0.417 m/s². Since the slope is ½a, a = 2 × 0.417 m/s² = 0.83 m/s² (a least-squares fit gives 0.84 m/s²; any value from a reasonable line earns the point)."
   }
  ]
 }

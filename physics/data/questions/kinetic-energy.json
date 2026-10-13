@@ -245,7 +245,7 @@
    "stimulus": "kinetic-energy-s2",
    "q": "Which comparison of the sprinter and the cyclist is correct?",
    "options": [
-    "The sprinter has about twice the cyclist's kinetic energy",
+    "The sprinter has about twice as much",
     "The cyclist has more, because the cyclist has more mass",
     "They have about the same kinetic energy",
     "The sprinter has about 1.5 times as much"
@@ -279,7 +279,8 @@
     "mistakes": [
      {
       "value": 35,
-      "why": "Value: that divides K by m. Solve K = ½mv² for v: v = √(2K/m)."
+      "why": "Value: that divides K by m. Solve K = ½mv² for v: v = √(2K/m).",
+      "tol": 0.5
      },
      {
       "value": 6,
@@ -329,7 +330,7 @@
    "options": [
     "Nothing: leftward motion has negative kinetic energy",
     "The ½ was left out; it should be −4.5 J",
-    "The velocity is squared, so K cannot be negative; it is +9.0 J",
+    "K cannot be negative; it is +9.0 J",
     "The speed should not be squared; it is −3.0 J"
    ],
    "correct": 2,
@@ -356,7 +357,7 @@
     "It is the same measured from the train and from the ground",
     "It is zero in both frames because the passenger is sitting still",
     "It is large in both frames because the train is moving",
-    "It is zero measured from the train and large measured from the ground"
+    "Zero in the train's frame, large in the ground's"
    ],
    "correct": 3,
    "why": {
@@ -389,8 +390,9 @@
       "why": "Value: that is ½m(Δv)². Compute ½mv² at each speed, then subtract."
      },
      {
-      "value": 1.3,
-      "why": "Value: that is the final kinetic energy. Subtract the starting kinetic energy."
+      "value": 1.25,
+      "why": "Value: that is the final kinetic energy. Subtract the starting kinetic energy.",
+      "tol": 0.05
      }
     ]
    },
@@ -501,7 +503,7 @@
      "Velocities in opposite directions cancel as vectors, but kinetic energies are scalars and add.",
      "Right: each cart has ½(1.0)(2.0)² = 2.0 J, and the scalars add.",
      "That is one cart's kinetic energy. The system has both carts.",
-     "This uses the combined mass with the speed of each cart counted twice."
+     "This treats one cart as moving at the carts' relative speed, 4.0 m/s: ½(1.0)(4.0)² = 8.0 J. Each cart's K comes from its own speed relative to the ground."
     ]
    }
   }

@@ -204,8 +204,9 @@
       "why": "Value: the size is right but the direction is not. A compressed spring pushes the cart away from the wall: positive."
      },
      {
-      "value": 530,
-      "why": "Value: that divides k by the compression. The force is k times the compression."
+      "value": 533,
+      "why": "Value: that divides k by the compression. The force is k times the compression.",
+      "rel": 0.03
      }
     ]
    },
@@ -376,7 +377,7 @@
     "correct": "Hooke's law: stretch ∝ force. 5.0 N is 2.5 times 2.0 N, so the stretch is 2.5 × 3.0 cm = 7.5 cm.",
     "options": [
      "Right: the stretch scales with the force.",
-     "That adds the extra 3.0 N as if each newton added 1 cm; the spring gives 1.5 cm per newton.",
+     "That writes the stretch in centimeters as the same number as the force in newtons. This spring stretches 1.5 cm per newton, so 5.0 N gives 7.5 cm.",
      "That doubles the stretch; the force grew by 2.5 times, not 2.",
      "That multiplies the stretch by 5, using the new force alone instead of the ratio of forces."
     ]

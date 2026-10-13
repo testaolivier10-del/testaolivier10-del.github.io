@@ -87,7 +87,8 @@
     "mistakes": [
      {
       "value": 7060,
-      "why": "Value: power is work divided by time, not multiplied."
+      "why": "Value: power is work divided by time, not multiplied.",
+      "tol": 10
      },
      {
       "value": 98,
