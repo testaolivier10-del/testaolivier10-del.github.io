@@ -170,6 +170,9 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.urlKey('apchem'), 'chem');
   eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem']);
   eq(A.scopeKeys('ochem'), ['ochem']);
+  // AP® Physics 1 is registered hidden until its first unit is published:
+  // ?course=physics means all courses, and its URL key is its folder.
+  assert.equal(A.urlKey('apphys'), 'physics');
 });
 
 test('HTML becomes plain text: tags out, entities decoded, blocks spaced', () => {

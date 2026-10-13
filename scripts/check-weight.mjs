@@ -120,7 +120,11 @@ const SHELL_BUDGETS = [
      premium.js pending-buy resume and courseOfPass) and video link tracking (analytics.js attributedRef,
      account.js trackRef, premium.js crediting each funnel step). Measured 286.5 KB; 0 sales on 1,150
      paywall views made the checkout path worth the bytes. */
-  ['site', 287],
+  /* 287 -> 288 for registering AP® Physics 1 (docs/apphys-spec.md, Phase 0):
+     the sixth course in every generated course list, its premium.js entry,
+     ranks, tutor starters, search source and the theme tint. Measured 287.0 KB
+     (from 286.6). */
+  ['site', 288],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -291,6 +295,9 @@ const SHELL_BUDGETS = [
      topic as live and the exams page's shell measured 50.2 KB; the extra is
      course data, not code. */
   ['chem', 52],
+  /* AP® Physics 1 (physics/, a fork of the AP® Chemistry runtime). Before
+     any unit is published; Chemistry's 52 is the reference. */
+  ['physics', 52],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -488,6 +495,13 @@ const BUDGETS = [
   ['chem/frq.html', 3],
   ['chem/glossary.html', 30],
   ['chem/tools.html', 5],
+  /* AP® Physics 1: the same (PHYS pages below once a unit is published). */
+  ['physics/index.html', 7],
+  ['physics/practice.html', 3],
+  ['physics/exams.html', 3],
+  ['physics/frq.html', 3],
+  ['physics/glossary.html', 30],
+  ['physics/tools.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -851,6 +865,18 @@ function weigh(pageRel) {
     if (sheet) BUDGETS.push([`chem/unit-sheets/${sheet}`, 12]);
   }
 }
+/* The same for AP® Physics 1 (physics/assets/notes-index.json, build-apphys.mjs). */
+{
+  const idx = join(ROOT, 'physics', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    BUDGETS.push([`physics/lessons/${id}.html`, 13], [`physics/notes/${id}.html`, 19.5]);
+    const sheets = join(ROOT, 'physics', 'unit-sheets');
+    const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
+    if (sheet) BUDGETS.push([`physics/unit-sheets/${sheet}`, 12]);
+  }
+}
 
 const rows = [];
 const shellSizes = {};
@@ -911,6 +937,14 @@ if (existsSync(CHEM_BANK_DIR)) {
   }
 }
 DATA_BUDGETS.push(['chem/assets/glossary.json', 150], ['chem/assets/notes-index.json', 4], ['chem/assets/summaries.json', 40]);
+/* AP® Physics 1's, the same. */
+const PHYS_BANK_DIR = join(ROOT, 'physics', 'assets', 'bank');
+if (existsSync(PHYS_BANK_DIR)) {
+  for (const f of readdirSync(PHYS_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`physics/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+DATA_BUDGETS.push(['physics/assets/glossary.json', 150], ['physics/assets/notes-index.json', 4], ['physics/assets/summaries.json', 40]);
 
 const dataRows = [];
 for (const [rel, budgetKb] of DATA_BUDGETS) {

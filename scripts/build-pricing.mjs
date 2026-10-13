@@ -25,7 +25,10 @@
       manifest, bio/manifest.json, which never carries the mark.
    7. AP® Chemistry's the same way (<!-- hub-chem:start/end -->,
       <!-- nf-chem:start/end -->, chem/manifest.json), hidden until its first
-      unit is published (docs/apchem-spec.md). */
+      unit is published (docs/apchem-spec.md).
+   8. AP® Physics 1's the same way (<!-- hub-phys:start/end -->,
+      <!-- nf-phys:start/end -->, physics/manifest.json), hidden until its
+      first unit is published (docs/apphys-spec.md). */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText } from './lib/premium-data.mjs';
@@ -70,11 +73,13 @@ const HOURS = (n) => { const h = Math.max(1, Math.round(n / TUTOR_HOUR.rate)); r
 const tutorSpan = HOURS(LOW) === HOURS(HIGH) ? HOURS(LOW) : HOURS(LOW).replace(/ hours?$/, '') + ' or ' + HOURS(HIGH);
 const BIO = ORDER.includes('apbio');
 const CHEM = ORDER.includes('apchem');
+const PHYS = ORDER.includes('apphys');
 /* Once every topic in the map is published the card stops promising more.
    "N published topics" keeps clear of check-site's ochem topic-count claim. */
 const CHEM_ALL = N.apchemTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apchem-dependency-map.json'), 'utf8')).topics.length;
-// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry).
-const MARK = BIO || CHEM;
+const PHYS_ALL = N.apphysTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apphys-dependency-map.json'), 'utf8')).topics.length;
+// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1).
+const MARK = BIO || CHEM || PHYS;
 // The College Board sentence, on every page that uses the mark (docs/apbio-spec.md).
 const TM_HTML = `<p class="tm-note">${esc(DISCLAIMER)}</p>`;
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
@@ -382,6 +387,29 @@ function hubChemCard() {
         </a>`;
 }
 
+/* AP® Physics 1's hub card, the same way: the pendulum icon (docs/apphys-spec.md
+   decision 3), counted, never typed. */
+function hubPhysCard() {
+  const topics = N.apphysTopics;
+  return `        <a class="featured-card" href="physics/">
+          <div class="featured-top">
+            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16"/><path d="M12 3v11.5"/><circle cx="12" cy="17.5" r="3"/><path d="M6.5 15.5a7 7 0 0 0 11 0" stroke-dasharray="1.5 2.5"/></svg></div>
+            <span class="status-badge">Beta</span>
+          </div>
+          <div>
+            <p class="featured-name">AP® Physics 1</p>
+            <p class="featured-desc">Built on the 2024-25 course framework, in its order: lessons from scratch, free-body diagrams graded force by force, and trainers that are also tests. ${PHYS_ALL ? `All ${fmt(topics)} published topics, from the math you need to fluids.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
+          </div>
+          <div class="featured-tags">
+            <span>Beta</span>
+            <span>Free notes</span>
+            <span>Free-body diagrams</span>
+            <span>Lab design</span>
+          </div>
+          <span class="featured-cta">Start learning &rarr;</span>
+        </a>`;
+}
+
 {
   const rel = 'index.html';
   let src = readFileSync(join(ROOT, rel), 'utf8');
@@ -389,6 +417,7 @@ function hubChemCard() {
   src = between(src, '<!-- faq:start -->', '<!-- faq:end -->', hubFaq(), rel);
   src = between(src, '<!-- hub-bio:start -->', '<!-- hub-bio:end -->', BIO ? hubBioCard() : '', rel);
   src = between(src, '<!-- hub-chem:start -->', '<!-- hub-chem:end -->', CHEM ? hubChemCard() : '', rel);
+  src = between(src, '<!-- hub-phys:start -->', '<!-- hub-phys:end -->', PHYS ? hubPhysCard() : '', rel);
   const m = src.indexOf('<!-- levlprep-structured-data -->');
   if (m === -1) throw new Error('index.html: no <!-- levlprep-structured-data --> marker');
   const s0 = src.indexOf('<script type="application/ld+json">', m);
@@ -405,7 +434,7 @@ function hubChemCard() {
   const out = src.replace(/(The full )[\d,]+(-question bank[^\n]*\/\/ count:)(nremt|ochem|anp)/g,
     (_, a, b, k) => `${a}${fmt(N[k])}${b}${k}`);
   // AP® Biology and AP® Chemistry state no count while their banks grow unit by unit.
-  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
+  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
   put(rel, out);
 }
 
@@ -414,7 +443,7 @@ function hubChemCard() {
 /* Manifests never carry the AP® mark (docs/apbio-spec.md, "Trademark": no
    "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
    app is "Biology". */
-const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry' };
+const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics' };
 const listWords = (a) => (a.length < 2 ? a.join('') : `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`);
 const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
 const MANIFESTS = {
@@ -432,6 +461,11 @@ const MANIFESTS = {
     name: 'LevlPrep — Chemistry',
     short_name: 'LevlPrep Chem',
     description: `Chemistry on the 2024 course framework, in its order, for the May exam: every notes page is free forever and Units 1 and 2 are fully interactive, with the math refresher; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
+  },
+  'physics/manifest.json': {
+    name: 'LevlPrep — Physics',
+    short_name: 'LevlPrep Physics',
+    description: `Physics 1 on the 2024-25 course framework, in its order, for the May exam: every notes page is free forever and Units 1 and 2 are fully interactive, with the math you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
   },
   'nremt/manifest.json': {
     name: 'LevlPrep — NREMT-EMT Practice Exam & Study Tools',
@@ -481,6 +515,11 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
       <p>${CHEM_ALL ? `All ${fmt(N.apchemTopics)} published topics` : `${fmt(N.apchemTopics)} published topic${N.apchemTopics === 1 ? '' : 's'} so far`}, in the order of the 2024 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
     </a>`;
   out = between(out, '<!-- nf-chem:start -->', '<!-- nf-chem:end -->', CHEM ? chem : '', rel);
+  const phys = `    <a class="card nf-card" href="/physics/">
+      <h2>AP® Physics 1 (Beta) &rarr;</h2>
+      <p>${PHYS_ALL ? `All ${fmt(N.apphysTopics)} published topics` : `${fmt(N.apphysTopics)} published topic${N.apphysTopics === 1 ? '' : 's'} so far`}, in the order of the 2024-25 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+    </a>`;
+  out = between(out, '<!-- nf-phys:start -->', '<!-- nf-phys:end -->', PHYS ? phys : '', rel);
   put(rel, out);
 }
 

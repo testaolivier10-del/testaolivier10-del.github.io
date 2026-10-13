@@ -20,6 +20,7 @@
     { key: 'anp', paid: true },
     { key: 'apbio', paid: true },
     { key: 'apchem', paid: true },
+    { key: 'apphys', paid: true },
   ];
   // courses:end
   var COURSE_ORDER = COURSE_LIST.filter(function (c) { return c.paid; }).map(function (c) { return c.key; });
@@ -149,7 +150,12 @@
 
   function renderCourses() {
     var now = Date.now();
-    $('acctCourses').innerHTML = COURSE_ORDER.map(function (course) {
+    // A course registered but not on sale yet (premium.js onSale: false, e.g.
+    // AP® Physics 1 before launch) is listed only if this account holds a pass.
+    $('acctCourses').innerHTML = COURSE_ORDER.filter(function (course) {
+      var c = P && P.COURSES[course];
+      return !(c && c.onSale === false) || rows.some(function (r) { return r.course === course; });
+    }).map(function (course) {
       var live = rows.filter(function (r) {
         return r.course === course && !r.refunded_at && Date.parse(r.expires_at) > now;
       });

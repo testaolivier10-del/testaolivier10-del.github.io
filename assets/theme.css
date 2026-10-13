@@ -226,6 +226,11 @@ body[data-course="bio"]{--ctint:#E4F1DD;--cink:#2D6A1F;}
    or NREMT's mint). --cink on --ctint: 7.2:1 light, 8.7:1 dark. */
 body[data-course="apchem"]{--ctint:#E3EAFA;--cink:#1D44A6;}
 :root[data-theme="dark"] body[data-course="apchem"]{--ctint:rgba(90,130,230,0.12);--cink:#B3C8F7;}
+/* AP Physics 1: amber (not ochem's lilac, Biology's green, A&P's coral,
+   NREMT's mint or Chemistry's cobalt). --cink on --ctint: 7.3:1 light, about
+   10:1 dark (docs/apphys-spec.md decision 6). */
+body[data-course="apphys"]{--ctint:#FBEED5;--cink:#734200;}
+:root[data-theme="dark"] body[data-course="apphys"]{--ctint:rgba(235,165,50,0.10);--cink:#F5CF8A;}
 
 /* ==========================================================================
    2. Base

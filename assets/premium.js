@@ -188,6 +188,35 @@
         'The full dashboard: mastery by unit, topic and science practice',
       ],
     },
+    apphys: {
+      name: 'AP® Physics 1',
+      dailyFree: 15,
+      // As AP® Chemistry (docs/apphys-spec.md decision 3): Units 1 and 2 open,
+      // and every "Math you need" lesson (isFreeTopic in scripts/lib/apphys-build.mjs).
+      freeChapters: ['unit-1', 'unit-2'],
+      // Not on sale until the owner checklist is done (docs/apphys-spec.md,
+      // section 8): nothing locks and the dialog says "Coming soon".
+      onSale: false,
+      passes: [
+        { id: 'phys-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The cram-kit study plan outline, printable',
+        'Every lesson in Units 1 and 2, and every "Math you need" lesson',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'The first trainer of each unit, and the scaling drills',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every trainer: free-body diagrams, motion graphs, energy bar charts, collisions, lab design and more',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
+        'The full dashboard: mastery by unit, topic and science practice',
+      ],
+    },
   };
 
   // Which course a page belongs to, for returnCourse().
@@ -198,6 +227,7 @@
     { key: 'anp', path: '/anatomy-physiology/' },
     { key: 'apbio', path: '/bio/' },
     { key: 'apchem', path: '/chem/' },
+    { key: 'apphys', path: '/physics/' },
   ];
   // courses:end
 
@@ -672,7 +702,7 @@
         'Full refund within 7 days of buying, once per account and email address. Sold by Polar, our merchant of record. ' +
         'Under 18? You need a parent or guardian’s permission, and they accept the terms for you; under 16, they should make the purchase. ' +
         (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '') +
-        (course === 'apbio' || course === 'apchem' ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
+        (course === 'apbio' || course === 'apchem' || course === 'apphys' ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
         '<a href="/premium.html" target="_blank" rel="noopener">Free vs Premium</a> &middot; ' +
         '<a href="/terms.html#premium" target="_blank" rel="noopener">Terms and refunds</a>';
     } else {
@@ -718,8 +748,8 @@
      brings them back to this page. Signed in → the Worker makes a Polar
      checkout and it opens over the page. */
   /* The course a pass belongs to. Not the part before the dash: the AP®
-     passes are bio-2027 and chem-2027 while their courses are apbio and
-     apchem, so splitting sent "bio" to the funnel counter, which drops any
+     passes are bio-2027, chem-2027 and phys-2027 while their courses are
+     apbio, apchem and apphys, so splitting sent "bio" to the funnel counter, which drops any
      course it does not know (AP® checkout starts were never counted). */
   function courseOfPass(passId) {
     for (var k in COURSES) {
@@ -923,8 +953,8 @@
     if (q.premium !== 'success' && !Object.prototype.hasOwnProperty.call(q, 'customer_session_token')) return null;
     var course = q.course;
     if (course && Object.prototype.hasOwnProperty.call(COURSES, course)) return course;
-    // A course whose key may not appear in a URL (apbio, apchem;
-    // docs/apbio-spec.md decision 2) comes back named by its folder ("bio", "chem").
+    // A course whose key may not appear in a URL (apbio, apchem, apphys;
+    // docs/apbio-spec.md decision 2) comes back named by its folder ("bio", "chem", "physics").
     for (var j = 0; course && j < COURSE_LIST.length; j++) {
       if (COURSE_LIST[j].path === '/' + course + '/') return COURSE_LIST[j].key;
     }

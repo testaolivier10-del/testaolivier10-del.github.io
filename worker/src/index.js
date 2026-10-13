@@ -138,6 +138,17 @@ const COURSE_RULES = {
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning (claim, evidence, reasoning) rather than writing a finished answer to hand in.',
   ].join('\n'),
+  apphys: [
+    '',
+    'This student is a high-school student preparing for the AP® Physics 1 exam. Additional guidance:',
+    '- Explain at a high-school level, from the basics up, as cause and effect: name the forces, the system and the interaction. Never explain by purpose ("the ball wants to fall").',
+    '- Show calculations in SI units carried through every step, start from a named principle (Newton\'s second law, conservation of energy or momentum), and say which value of g you use (9.8 or 10 m/s²).',
+    '- Free-body diagrams show only real forces, each from the object, labeled with its type and the object exerting it; never draw a net force, a "centripetal force" or a component as an extra force.',
+    '- Justify conservation by its condition (zero net external force, torque or work), never "it is conserved because of conservation".',
+    '- Do not state a constant or value that is not in the passages or the official equations sheet; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning (claim, evidence, reasoning) rather than writing a finished answer to hand in.',
+  ].join('\n'),
 };
 
 function systemPrompt(course){

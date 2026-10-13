@@ -40,6 +40,7 @@
     { key: 'anp', dir: 'anatomy-physiology' },
     { key: 'apbio', dir: 'bio' },
     { key: 'apchem', dir: 'chem' },
+    { key: 'apphys', dir: 'physics' },
   ];
   // courses:end
   function courseKey(){
@@ -118,12 +119,21 @@
       .catch(function(){ return []; });
   }
 
+  // AP® Physics 1's, the same way (scripts/build-apphys.mjs).
+  function physPages(){
+    return fetch('/physics/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(list){ return list.length ? list.concat([{ file: '/physics/glossary.html', title: 'Glossary', data: '/physics/assets/glossary.json' }]) : list; })
+      .catch(function(){ return []; });
+  }
+
   function resolvePages(){
     var k = courseKey();
     if(k === 'ochem') return ochemPages();
     if(k === 'anp') return anpPages();
     if(k === 'apbio') return bioPages();
     if(k === 'apchem') return chemPages();
+    if(k === 'apphys') return physPages();
     return Promise.resolve(NREMT_PAGES);
   }
 
@@ -134,6 +144,7 @@
     if(k === 'anp') return '<a href="/anatomy-physiology/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apbio') return '<a href="/bio/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apchem') return '<a href="/chem/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    if(k === 'apphys') return '<a href="/physics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
@@ -1034,6 +1045,12 @@
       'How do I know which way an equilibrium shifts?',
       'When is pH equal to pKa on a titration curve?',
       'Explain entropy without saying disorder'
+    ],
+    apphys: [
+      'Which forces go on a free-body diagram?',
+      'When is momentum conserved but kinetic energy not?',
+      'What does the slope of a velocity-time graph mean?',
+      'If the length doubles, what happens to a pendulum\'s period?'
     ]
   };
 
@@ -1042,7 +1059,8 @@
     ochem: 'Ask me anything from this course — the textbook section for all 123 topics is indexed. I can define a term, explain a mechanism another way, or point you at the section it came from.',
     anp: 'Ask me anything from this course — every Anatomy & Physiology notes page is indexed. I can define a term, explain a mechanism step by step, or point you at the page it came from.',
     apbio: 'Ask me anything from this course — every published Biology notes page and the glossary are indexed. I can define a term, explain a process step by step, or point you at the page it came from.',
-    apchem: 'Ask me anything from this course — every published Chemistry notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.'
+    apchem: 'Ask me anything from this course — every published Chemistry notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.',
+    apphys: 'Ask me anything from this course — every published Physics notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.'
   };
 
   function Tutor(mount, opts){

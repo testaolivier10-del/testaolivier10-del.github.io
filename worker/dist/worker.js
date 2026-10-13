@@ -806,6 +806,8 @@ const PASSES = {
   'bio-2027':       { course: 'apbio', until: '2027-06-30T23:59:59-10:00' },
   // AP® Chemistry mirrors AP® Biology (docs/apchem-spec.md decision 3).
   'chem-2027':      { course: 'apchem', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Physics 1 mirrors AP® Chemistry (docs/apphys-spec.md decision 3).
+  'phys-2027':      { course: 'apphys', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -825,7 +827,7 @@ function passTerms(pass) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1464,7 +1466,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -1805,6 +1807,17 @@ const COURSE_RULES = {
     '- Show calculations with units carried through every step and the answer rounded to the significant figures the data support. Say which logarithm (log or ln) an equation uses.',
     '- Justify with comparisons of both species, Coulomb\'s law, Q versus K, and particle-level entropy (dispersal of matter and energy), never "disorder" or "K changes with concentration".',
     '- Do not state a constant, value or reduction potential that is not in the passages or the official equations sheet; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning (claim, evidence, reasoning) rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  apphys: [
+    '',
+    'This student is a high-school student preparing for the AP® Physics 1 exam. Additional guidance:',
+    '- Explain at a high-school level, from the basics up, as cause and effect: name the forces, the system and the interaction. Never explain by purpose ("the ball wants to fall").',
+    '- Show calculations in SI units carried through every step, start from a named principle (Newton\'s second law, conservation of energy or momentum), and say which value of g you use (9.8 or 10 m/s²).',
+    '- Free-body diagrams show only real forces, each from the object, labeled with its type and the object exerting it; never draw a net force, a "centripetal force" or a component as an extra force.',
+    '- Justify conservation by its condition (zero net external force, torque or work), never "it is conserved because of conservation".',
+    '- Do not state a constant or value that is not in the passages or the official equations sheet; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning (claim, evidence, reasoning) rather than writing a finished answer to hand in.',
   ].join('\n'),
