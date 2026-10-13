@@ -31,6 +31,13 @@ AP® Physics 1 work and update it in the same commit. Research with sources: `do
 tool layout (one set of files per trainer, so authors work in parallel): `docs/apphys-architecture.md`; writing rules:
 `docs/apphys-authoring-guide.md`; map: `docs/apphys-phase0.md`; open points: `docs/apphys-needs-author.md`.
 
+## AP® Calculus AB course
+
+`docs/apcalc-spec.md` is the source of truth (owner brief, research summary, build plan, decisions); read it before
+AP® Calculus AB work and update it in the same commit. Research: `docs/apcalc-research/`. Formats, math syntax,
+`expr` items and tool layout: `docs/apcalc-architecture.md`; writing rules: `docs/apcalc-authoring-guide.md`; map:
+`docs/apcalc-phase0.md`; open points: `docs/apcalc-needs-author.md`. Registered `hidden` until launch.
+
 ## Ochem readability and diagram pass
 
 `docs/ochem-readability-audit.md` lists every notes and lesson page's findings, worst first, and

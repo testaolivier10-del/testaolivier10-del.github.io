@@ -1,0 +1,155 @@
+# AP® Calculus AB course: spec and status
+
+The source of truth for LevlPrep's seventh course. A fresh session reads this file, `CLAUDE.md`,
+`docs/apcalc-research/framework.md` and `docs/apcalc-research/market.md`, not the chat history. When the
+plan changes, update this file in the same commit. Open points for a person go in
+`docs/apcalc-needs-author.md`. Formats: `docs/apcalc-architecture.md`; writing rules:
+`docs/apcalc-authoring-guide.md`; map: `docs/apcalc-phase0.md`.
+
+Course key `apcalc` (storage, analytics, registry, SQL). URL path `/calculus/`. Every new browser global
+starts with `ApCalc`. Question ids start `calc-`, CSS classes `calc-`. Template: the AP® Physics 1 course
+(`docs/apphys-spec.md`, `docs/apphys-architecture.md`, `docs/apphys-authoring-guide.md`), the newest fork
+and the one whose tool layout lets builders work in parallel.
+
+## 1. Owner brief (2026-10-13), condensed
+
+- Seventh course, chosen by the owner from a short list (Calculus AB, Statistics, Psychology): a large
+  audience and, like physics, content whose every answer can be checked by code, which keeps risk low while
+  no course has had an expert review.
+- Build it the same way as AP® Physics 1: research, build everything, independent accuracy reviews, one PR
+  the owner reviews.
+- Tools at the bar of the NREMT body map and the AP® Physics 1 free-body diagram trainer or better:
+  interactive, visual, simple on landing with depth revealed progressively, never a dead end, professional
+  illustration quality.
+- Continuity with the other six courses; own identity.
+- Pricing as the other AP® passes: $25 one-time through 30 June 2027 ($17.50 founding price).
+
+## 2. What the research says (details and URLs in `docs/apcalc-research/`)
+
+**Framework.** CED (2019 framework, 2020 update; content unchanged since). 8 units; AB has 81 topics:
+1.1-1.16, 2.1-2.10, 3.1-3.6, 4.1-4.7 (L'Hospital's rule is AB), 5.1-5.12, 6.1-6.10 and 6.14, 7.1-7.4 and
+7.6-7.8, 8.1-8.12. BC-only and excluded: 6.11-6.13 (parts, partial fractions, improper integrals), the BC
+techniques in 6.14, 7.5 Euler's method, 7.9 logistic, 8.13 arc length, Units 9-10. Weights (current course
+page): U1 10-15%, U2 10-15%, U3 5-10%, U4 10-15%, U5 15-20%, U6 15-20%, U7 5-10%, U8 10-15%. Practices:
+1 Implementing Mathematical Processes, 2 Connecting Representations, 3 Justification, 4 Communication and
+Notation (FRQ only). Units 3-8 learning objectives were not text-verified against the PDF (needs-author).
+
+**Exam (Mon 10 May 2027, morning).** New 2027 timing: Section I Part A 29 MCQ without calculator, 62 min;
+Part B 13 MCQ with graphing calculator, 38 min (42 MCQ, 50%). Section II Part A 2 FRQs with calculator,
+30 min; Part B 4 FRQs without, 60 min (6 FRQs × 9 points = 54, 50%). MCQ on screen in Bluebook, FRQs
+handwritten. Calculator answers to three decimal places with the setup shown; the four required calculator
+capabilities: graph, zeros, numerical derivative, numerical definite integral. Recurring FRQ types: rate in
+context from a table, modeling with a given function, particle motion, area and volume, differential
+equation with slope field, graph of f′ / graphical FTC, implicit differentiation and related rates, table of
+f, g, f′, g′.
+
+**Scores.** About 286,000 takers in 2025; 3+ rate 64% (2025), 65% (2026), about 20% fives. No published
+cut scores.
+
+**Where students lose points.** Justifications that do not name the theorem and check its hypotheses (IVT,
+MVT, EVT), "f′ = 0 so max" without a sign change, global vs local extrema (candidates test), missing units,
+Riemann sums with unequal widths, chain rule slips, equals-sign linkage errors, accumulation functions without
+the initial condition, volumes missing π, separation of variables without the constant or with the wrong
+domain. Full list in the framework file.
+
+**Market.** Fiveable $79/yr; UWorld about $149; Albert $79/subject; books about $28-30; Krista King
+$39/mo; free Khan, Professor Leonard, Organic Chemistry Tutor, Paul's Online Notes, Desmos. Gap: practice
+with feedback on justifications and multi-representation (graph/table/formula) reasoning, and interactive
+visual tools tied to exam-style items.
+
+## 3. Positioning and what makes it better
+
+Free forever: notes and textbook pages, glossary, flashcards, unit sheets, formula page, score calculator,
+unit practice tests. Premium ($25 one-time, through 30 June 2027): unlimited practice, exams, every lesson,
+analytics, every trainer.
+
+1. **Tangent tracer (flagship).** Drag a point along a curve; the secant becomes the tangent as h → 0, the
+   derivative graph draws itself live beneath, and the student predicts and sketches f′ from f (graded).
+2. **Every representation linked.** Graph, table, formula and words for the same function, as the exam asks.
+3. **Justification trainer** built on the scoring guidelines: name the theorem, check its hypotheses, state
+   the conclusion; an answer that earns the point and one that loses it.
+4. **Expression answers graded properly.** Students type an expression (a derivative, an antiderivative, a
+   tangent line); it is graded by evaluating against the key at many points (`expr` items), not by string
+   matching.
+5. **Calculator and no-calculator practice** exactly as the exam splits them, with the three-decimal rule.
+6. **Exam-faithful practice**: 4-option MCQ in stimulus sets (graphs, tables), the 6 FRQs with 9-point
+   rubrics and full-credit samples, full-length timed exams in the 2027 split.
+7. **From zero, in CED order, nothing used before it is taught**, with a "Math you need" chapter
+   (functions and graphs, exponentials and logs, trigonometry and the unit circle, inverse functions,
+   algebra skills for limits).
+
+## 4. Continuity with the other courses
+
+Built exactly like AP® Physics 1 (decision 1), so every shared page type matches: home, units, lessons,
+notes, unit sheets, glossary, flashcards, practice, review, exams, FRQ, justify, dashboard, search, tools,
+cram, teachers, formula sheet page, score calculator, unit tests. Same shared layer, Tool Studio, item
+formats (plus `expr`), Beta badge, "not yet reviewed by an AP® teacher" note and trademark rules. Identity:
+own accent colour, icon, headline and rank names.
+
+## 5. Build plan
+
+One branch, `claude/apcalc`, one PR at the end.
+
+| Phase | What | Status |
+|---|---|---|
+| R | Research: `docs/apcalc-research/framework.md`, `market.md` | **done 2026-10-13** |
+| 0 | Fork AP® Physics 1: map (81 topics + math chapter), dependency map, generator, runtime `calculus/assets/`, math expression parser and `expr` items, plots, checks, tests, fixture, registration hidden until published (registry, Premium pass, Worker, SQL migration, hub/pricing, search, sitemap, OG, budgets, theme, sw.js), tool scaffolding, docs | **done 2026-10-13** (`docs/apcalc-phase0.md`, `docs/apcalc-architecture.md`) |
+| 1 | Content: every unit's lessons, notes, banks, FRQs, glossary, figures | planned |
+| 2 | Trainers (section 6) | planned |
+| 3 | Justification trainer, two fixed practice exams, formula page, score calculator, unit tests, cram kit | planned |
+| 4 | Independent accuracy checks per unit and for tools/exams; fixes | planned |
+| Launch | Publish, generators, continuity pass, seven-course wording, full CI with browser checks, PR | planned |
+
+Quality bar: AP® Physics 1 authoring rules; every numeric key and expression key checked by code; every
+graph drawn from the function it claims to show; independent accuracy review.
+
+## 6. Trainers
+
+| Slug | Unit | What |
+|---|---|---|
+| `limit-explorer` | 1 | Zoom into a graph near a point; one-sided limits, holes, jumps, asymptotes, continuity types, squeeze; table of values closing in |
+| `tangent-tracer` | 2 | Flagship. Secant to tangent as h → 0, live f′ graph, sketch f′ from f and be graded |
+| `rule-drills` | math chapter then 2-3 | Step-by-step derivative builder: power, product, quotient, chain, implicit, inverse; expression steps graded by evaluation |
+| `related-rates` | 4 | Animated scenes (sliding ladder, filling cone, shadow, expanding circle) with live rates and the chain of equations |
+| `motion-lab` | 4, 8 | Particle on a line: position, velocity, acceleration graphs; speeding up/slowing down; displacement vs total distance |
+| `curve-analyzer` | 5 | f, f′, f″ linked; sign charts; extrema and inflection with justification; candidates test; optimization scenes |
+| `riemann-sums` | 6 | Left, right, midpoint, trapezoid on functions and on tables with unequal widths; over/under estimates |
+| `accumulation` | 6, 8 | g(x) = ∫ f from a graph of f; area accumulating; FTC both parts; net change |
+| `slope-fields` | 7 | Draw slope fields, trace solution curves through a point, separation of variables, exponential models |
+| `area-volume` | 8 | Area between curves; volumes by discs/washers about a line and by cross sections, in 3D |
+
+Free: `tangent-tracer` (flagship), `limit-explorer`, `rule-drills`; the rest Premium. Owner to confirm.
+Scaffolded in Phase 0 (four files per slug, `docs/apcalc-architecture.md`, "Tools"); nothing builds until
+a tool's data file exists and its topic is published.
+
+## 7. Decisions log
+
+1. (2026-10-13) **Fork the AP® Physics 1 runtime**, as physics forked chemistry.
+2. (2026-10-13) **No "ap" in any served path.** Folder `/calculus/`, files `calc-*.js`, ids `calc-`.
+   Registry/storage key `apcalc`.
+3. (2026-10-13) **Pass and price mirror the other AP® courses:** `calc-2027`, $25 one-time, through
+   30 June 2027, registered `onSale: false` until the owner checklist is done.
+4. (2026-10-13) **Sources:** College Board CED, scoring guidelines and Chief Reader Reports for scope and
+   common errors only, in our own words. No released exam questions reproduced or adapted.
+5. (2026-10-13) **Exam format is the May 2027 one** (29/62 + 13/38 MCQ; 2/30 + 4/60 FRQ, 9 points each).
+   Default exam date Mon 2027-05-10.
+6. (2026-10-13) **Identity and registration.** Crimson accent (`--cink` `#8C1036`, 9.4:1 on white; dark
+   `#F7B8CA`), integral icon, headline "AP® Calculus AB, one idea at a time.", ranks Limit Seeker, Slope
+   Finder, Chain Linker, Rate Relater, Curve Sketcher, Area Builder, Calculus Legend; manifest and OG
+   "Calculus". Registered `hidden` (order 7) with every AP® Physics 1 registration point twinned; the hub
+   keeps "Six courses" until launch. SQL migration `2026-10g-apcalc.sql` written, not applied.
+7. (2026-10-13) **Math is TeX rendered to MathML at build time** by our own subset renderer
+   (`calc-math.js`), no third-party library, so pages work offline; the TeX stays in an annotation and
+   the ordering check scans it through each concept's `notation` patterns.
+8. (2026-10-13) **Expression answers by evaluation.** `expr` items are graded by our own parser
+   (`calc-expr.js`, no eval) at 40 seeded points; antiderivatives compare up to a constant and require
+   `+ C`. Numeric answers: three-decimal rule on calculator items, exact forms otherwise, units only when
+   `askUnit`.
+9. (2026-10-13) **Calculator parts link out, never embed.** Each calculator part links to the free Desmos
+   graphing calculator in a new tab.
+10. (2026-10-13) **Score cut-offs 64/48/37/27 are placeholders**, labelled "Not calibrated" (needs-author
+    `score-cutoffs`).
+
+## 8. Open items for the owner
+
+To be filled at launch (same checklist as AP® Physics 1).
