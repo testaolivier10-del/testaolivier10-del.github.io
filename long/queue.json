@@ -36,11 +36,11 @@
       "captions": "long/yt-nremt-01-captions.srt",
       "playlist": "NREMT Prep | LevlPrep",
       "date": "2026-10-12",
-      "status": "approved",
+      "status": "posted",
       "approved_on": "2026-10-12",
-      "youtube_id": "",
-      "thumbnail_set": false,
-      "playlist_added": false,
+      "youtube_id": "lqxfWZZtRgE",
+      "thumbnail_set": true,
+      "playlist_added": true,
       "pr_url": "",
       "captions_set": false
     }
