@@ -1,6 +1,8 @@
 // node render_long.js <dir> stills t1 t2 ...   -> still_<t>.png
 // node render_long.js <dir> seg <f0> <f1> <out.mp4>  -> video-only segment frames [f0,f1)
 // node render_long.js <dir> thumb <t>  -> thumb_raw.png (header/progress hidden)
+// Frames are captured with the Chrome DevTools screenshot call directly (faster than page.screenshot), and every seek
+// also runs window.__onSeek (used by chem.mol3d 3D molecules) so non-GSAP elements are exact on every frame.
 const { chromium } = require('playwright-core');
 const { spawn } = require('child_process');
 const path = require('path');
@@ -11,7 +13,8 @@ const path = require('path');
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   await page.goto('file://' + path.resolve(dir, 'index.html'));
   await page.evaluate(() => document.fonts.ready.then(() => 1));
-  const seek = (t) => page.evaluate((t) => { window.__timelines.main.time(t, false); return 1; }, t);
+  const cdp = await page.context().newCDPSession(page);
+  const seek = (t) => page.evaluate(async (t) => { window.__timelines.main.time(t, false); if (window.__onSeek) await window.__onSeek(t); return 1; }, t);
   if (mode === 'stills') {
     for (const t of rest.map(Number)) { await seek(t); await page.screenshot({ path: path.join(dir, `still_${t}.png`) }); }
   } else if (mode === 'thumb') {
@@ -30,7 +33,11 @@ const path = require('path');
       const t = i / FPS;
       let buf;
       if (last && !busy(lastT, t)) { buf = last; }
-      else { await seek(t); buf = await page.screenshot({ type: 'jpeg', quality: 92 }); last = buf; shots++; }
+      else {
+        await seek(t);
+        const r = await cdp.send('Page.captureScreenshot', { format: 'jpeg', quality: 92, optimizeForSpeed: true });
+        buf = Buffer.from(r.data, 'base64'); last = buf; shots++;
+      }
       lastT = t;
       if (!ff.stdin.write(buf)) await new Promise((r) => ff.stdin.once('drain', r));
     }

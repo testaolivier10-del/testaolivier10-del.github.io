@@ -78,7 +78,9 @@ def reaction(rxn_smarts, out, prefix, x=0, y=0, w=900, h=360, bond_px=4):
     return _wrap(d.GetDrawingText(), prefix, x, y, w, h)
 
 
-def mol3d(smiles, out, prefix, x=0, y=0, w=700, h=700, start=0.0, turns=1.0, dur=6.0, style="ballstick", spin_axis="y", zoom=2.0):
+def mol3d(smiles, out, prefix, x=0, y=0, w=700, h=700, start=0.0, turns=1.0, dur=6.0, style="ballstick", spin_axis="y", zoom=2.0, in_svg=False):
+    """in_svg=True returns markup that goes INSIDE the scene <svg> (needed for engine_long, whose whole stage is one svg);
+    the default goes in the HTML stage outside the <svg> (engine2 Shorts)."""
     os.makedirs(out, exist_ok=True)
     src = "/home/claude/lp/node_modules/3dmol/build/3Dmol-min.js"
     if not os.path.exists(f"{out}/3Dmol-min.js"):
@@ -88,19 +90,31 @@ def mol3d(smiles, out, prefix, x=0, y=0, w=700, h=700, start=0.0, turns=1.0, dur
     sdf = Chem.MolToMolBlock(m)
     st = {"ballstick": "{stick:{radius:0.16,colorscheme:'Jmol'},sphere:{scale:0.28,colorscheme:'Jmol'}}",
           "space": "{sphere:{colorscheme:'Jmol'}}"}[style]
-    cfg = json.dumps(dict(start=start, turns=turns, dur=dur, axis=spin_axis, zoom=zoom))
-    return f'''<div id="{prefix}" style="position:absolute;left:{x}px;top:{y}px;width:{w}px;height:{h}px;opacity:0"></div>
-<script src="3Dmol-min.js"></script>
-<script>(function(){{
-  const el=document.getElementById("{prefix}"), cfg={cfg};
-  const v=$3Dmol.createViewer(el,{{backgroundAlpha:0,antialias:true}});
-  v.addModel({json.dumps(sdf)},"sdf"); v.setStyle({{}},{st}); v.zoomTo(); v.zoom(cfg.zoom); v.render();
-  const base=v.getView(); let last=null;
-  const prev=window.__onSeek;
-  window.__onSeek=async function(t){{
-    if(prev) await prev(t);
-    const p=Math.max(0,Math.min(1,(t-cfg.start)/cfg.dur));
-    const ang=p*360*cfg.turns; if(ang===last) return; last=ang;
-    v.setView(base); v.rotate(ang,cfg.axis); v.render();
-  }};
-}})();</script>'''
+    cfg = json.dumps(dict(start=start, turns=turns, dur=dur, axis=spin_axis, zoom=zoom, id=prefix))
+    # The script loads 3Dmol itself (works in HTML and inside inline SVG), registers a seek hook for the renderers,
+    # and adds an empty GSAP tween over the spin so renderers that skip idle frames still capture every spin frame.
+    js = f'''(function(){{
+  const cfg={cfg};
+  function init(){{
+    const el=document.getElementById(cfg.id+"_box");
+    const v=$3Dmol.createViewer(el,{{backgroundAlpha:0,antialias:true}});
+    v.addModel({json.dumps(sdf)},"sdf"); v.setStyle({{}},{st}); v.zoomTo(); v.zoom(cfg.zoom); v.render();
+    const base=v.getView(); let last=null;
+    const prev=window.__onSeek;
+    window.__onSeek=async function(t){{
+      if(prev) await prev(t);
+      const p=Math.max(0,Math.min(1,(t-cfg.start)/cfg.dur));
+      const ang=p*360*cfg.turns; if(ang===last) return; last=ang;
+      v.setView(base); v.rotate(ang,cfg.axis); v.render();
+    }};
+  }}
+  function go(){{ if(window.$3Dmol) init(); else {{ const s=document.createElement("script"); s.src="3Dmol-min.js"; s.onload=init; document.head.appendChild(s); }} }}
+  go();
+  window.addEventListener("load",function(){{ try{{ window.__timelines.main.to({{}},{{duration:cfg.dur}},cfg.start); }}catch(e){{}} }});
+}})();'''
+    if in_svg:
+        return (f'<foreignObject id="{prefix}" x="{x}" y="{y}" width="{w}" height="{h}" opacity="0">'
+                f'<div xmlns="http://www.w3.org/1999/xhtml" id="{prefix}_box" style="position:relative;width:{w}px;height:{h}px"></div>'
+                f'</foreignObject><script>{js}</script>')
+    return (f'<div id="{prefix}" style="position:absolute;left:{x}px;top:{y}px;width:{w}px;height:{h}px;opacity:0">'
+            f'<div id="{prefix}_box" style="position:relative;width:{w}px;height:{h}px"></div></div><script>{js}</script>')
