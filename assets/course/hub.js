@@ -1,7 +1,7 @@
 /* Shared hub components (docs/course-shell.md, W-D): window.LevlHub.
 
    Every course's dashboard, search page, tools hub and home "now" row draws
-   its markup from here, styled by assets/course/hub.css, so the four courses
+   its markup from here, styled by assets/course/hub.css, so every course
    cannot drift apart again. Each course keeps its own data and engine (the
    A&P/Bio cores, ochem's mastery engine, NREMT's practice-engine records)
    and only hands this module plain values. Nothing here reads or writes

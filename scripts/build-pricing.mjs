@@ -26,6 +26,7 @@
    7. AP® Chemistry's the same way (<!-- hub-chem:start/end -->,
       <!-- nf-chem:start/end -->, chem/manifest.json), hidden until its first
       unit is published (docs/apchem-spec.md).
+   9. The hub hero's course count and terms.html#fixed-date (the dated passes).
    8. AP® Physics 1's the same way (<!-- hub-phys:start/end -->,
       <!-- nf-phys:start/end -->, physics/manifest.json), hidden until its
       first unit is published (docs/apphys-spec.md). */
@@ -33,7 +34,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText } from './lib/premium-data.mjs';
 import { CSP } from './lib/site-config.mjs';
-import { PAID, isOpen } from './lib/courses.mjs';
+import { PAID, OPEN, isOpen } from './lib/courses.mjs';
 import { DISCLAIMER } from './lib/apbio-build.mjs';
 
 const check = process.argv.includes('--check');
@@ -86,6 +87,10 @@ const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
 /* The address terms.html and privacy.html publish. When hello@levlprep.com
    is set up (owner checklist), change it here and on those two pages. */
 const CONTACT_EMAIL = 'hello@levlprep.com';
+const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+const listWords = (a) => (a.length < 2 ? a.join('') : `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`);
+// The courses whose pass runs through a date (the AP® passes), for the rules and terms.html#fixed-date.
+const DATED = ORDER.filter((k) => COURSES[k].passes.some((p) => p.until));
 const lowest = (c) => c.passes.reduce((a, b) => (b.price < a.price ? b : a));
 
 /* ---- 1. premium.html ----------------------------------------------------- */
@@ -216,7 +221,7 @@ ${ORDER.map(courseSection).join('\n')}
           <li><strong>One-time, never a subscription.</strong> Prices are in US dollars; sales tax or VAT is added at checkout and shown before you pay. Polar, our merchant of record, sells the pass and sends the receipt.</li>
           <li><strong>Buying needs a free account</strong>, so the pass follows you to every device. Everything free works without one.</li>
           <li><strong>Refunds:</strong> refund a pass yourself, in full, from your <a href="account.html">Account</a> page within 7 days of buying it. Once per account and email address.</li>
-          <li><strong>When a pass ends</strong>, your progress, XP and streaks stay; only the Premium parts lock again. Buying another pass adds its days after the current one.${ORDER.some((k) => COURSES[k].passes.some((p) => p.until)) ? ' A pass with an end date (AP® Biology) runs through that date <a href="terms.html#fixed-date">whenever it is bought</a>.' : ''}</li>
+          <li><strong>When a pass ends</strong>, your progress, XP and streaks stay; only the Premium parts lock again. Buying another pass adds its days after the current one.${DATED.length ? ` A pass with an end date (${esc(listWords(DATED.map((k) => COURSES[k].name)))}) runs through that date <a href="terms.html#fixed-date">whenever it is bought</a>.` : ''}</li>
         </ul>
         <p>The details are in the <a href="terms.html#premium">terms</a>.</p>
         <p><strong>Under 18?</strong> You need a parent or guardian&rsquo;s permission, and they accept the <a href="terms.html#premium">terms</a> for you; under 16, they should make the purchase.</p>
@@ -418,12 +423,37 @@ function hubPhysCard() {
   src = between(src, '<!-- hub-bio:start -->', '<!-- hub-bio:end -->', BIO ? hubBioCard() : '', rel);
   src = between(src, '<!-- hub-chem:start -->', '<!-- hub-chem:end -->', CHEM ? hubChemCard() : '', rel);
   src = between(src, '<!-- hub-phys:start -->', '<!-- hub-phys:end -->', PHYS ? hubPhysCard() : '', rel);
+  /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
+     five live): every open course, from the registry. */
+  const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
+  for (const [re, txt] of [
+    [/(<div class="eyebrow">)\w+ courses( &middot; free to start<\/div>)/, `$1${word} courses$2`],
+    [/(<a class="link-quiet" href="#subjects">See all )\w+( courses<\/a>)/, `$1${word.toLowerCase()}$2`],
+  ]) {
+    if (!re.test(src)) throw new Error(`${rel}: the hero no longer matches ${re}`);
+    src = src.replace(re, txt);
+  }
   const m = src.indexOf('<!-- levlprep-structured-data -->');
   if (m === -1) throw new Error('index.html: no <!-- levlprep-structured-data --> marker');
   const s0 = src.indexOf('<script type="application/ld+json">', m);
   const s1 = src.indexOf('</script>', s0) + '</script>'.length;
   src = src.slice(0, s0) + hubLd() + src.slice(s1);
   put(rel, src);
+}
+
+/* ---- 2b. terms.html#fixed-date: every pass that runs through a date ------- */
+
+{
+  const rel = 'terms.html';
+  const src = readFileSync(join(ROOT, rel), 'utf8');
+  const until = DATED.length ? COURSES[DATED[0]].passes.find((p) => p.until).until : null;
+  if (DATED.some((k) => COURSES[k].passes.find((p) => p.until).until !== until)) throw new Error('terms.html#fixed-date: the dated passes end on different days; write the paragraph per course');
+  const names = listWords(DATED.map((k) => COURSES[k].name));
+  const one = DATED.length === 1;
+  const para = DATED.length
+    ? `        <p id="fixed-date"><strong>Passes with an end date:</strong> most passes run for a number of days from when they start. ${one ? `The ${esc(names)} pass instead runs` : `The ${esc(names)} passes instead run`} through a date (${new Date(until + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}, the end of the 2027 exam season) whenever you buy ${one ? 'it' : 'one'}, never ending sooner; bought while another pass for the same course or a free month is running, it starts when that one ends and still runs through the date (at least a day). ${one ? 'It is' : 'They are'} not sold after that date.</p>`
+    : '';
+  put(rel, between(src, '<!-- fixed-date:start -->', '<!-- fixed-date:end -->', para, rel));
 }
 
 /* ---- 3. counts in premium.js ------------------------------------------------ */
@@ -444,8 +474,6 @@ function hubPhysCard() {
    "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
    app is "Biology". */
 const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics' };
-const listWords = (a) => (a.length < 2 ? a.join('') : `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`);
-const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
 const MANIFESTS = {
   'manifest.json': {
     name: 'LevlPrep — NREMT-EMT, Organic Chemistry and A&P study tools',
