@@ -9,7 +9,8 @@
     "2026-10-12 long build: yt-nremt-01-ems-system script written and audited (saved in project as claude/levlprep-pipeline/long/01_nremt_script.py, '# audited, not voiced'). Stopped before voice: Downloads folder not attached to the task, so the ElevenLabs key could not be read. Resume at step 6.",
     "2026-10-12 daily run: refired LevlPrep long video build from pending_reruns; the scheduler said the refire runs cloud only (no signed laptop approval), so it may again be unable to read the ElevenLabs key. Buffer top-up of w1007-02-jaw-thrust (one free slot per channel, for 2026-10-22) was blocked by this session's permission check; nothing was posted.",
     "2026-10-12 long build refire (cloud only, 18:16 PT): did not build. No laptop access, so no ElevenLabs key. Also the project's 01_nremt_script.py header says it was already voiced, built and rendered on 2026-10-12 by another session (spec saved 18:08 PT), but no video is on the media branch yet. Left yt-nremt-01-ems-system as building and did not add a rerun, to avoid voicing it twice; waiting for Olivier.",
-    "2026-10-12 long build: yt-nremt-01-ems-system finished in the same chat after Olivier attached Downloads; status pending review."
+    "2026-10-12 long build: yt-nremt-01-ems-system finished in the same chat after Olivier attached Downloads; status pending review.",
+    "2026-10-12 7:35pm PT: yt-nremt-01-ems-system upload via Zapier failed: Zapier task limit reached for the billing period. Item stays approved (date 2026-10-12); the daily run retries. Olivier may upload by hand in Studio; then the next run only needs youtube_id plus thumbnail, playlist and captions."
   ],
   "pending_reruns": []
 }
