@@ -24,6 +24,13 @@ read it before AP® Chemistry work and update it in the same commit. Research wi
 Formats: `docs/apchem-architecture.md`; writing rules: `docs/apchem-authoring-guide.md`; map: `docs/apchem-phase0.md`;
 contested science: `docs/apchem-needs-author.md`.
 
+## AP® Physics 1 course
+
+`docs/apphys-spec.md` is the source of truth (owner brief, research summary, build plan, decisions); read it before
+AP® Physics 1 work and update it in the same commit. Research with sources: `docs/apphys-research/`. Formats and the
+tool layout (one set of files per trainer, so authors work in parallel): `docs/apphys-architecture.md`; writing rules:
+`docs/apphys-authoring-guide.md`; map: `docs/apphys-phase0.md`; open points: `docs/apphys-needs-author.md`.
+
 ## Ochem readability and diagram pass
 
 `docs/ochem-readability-audit.md` lists every notes and lesson page's findings, worst first, and
