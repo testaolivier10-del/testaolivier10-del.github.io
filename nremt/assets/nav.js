@@ -38,7 +38,11 @@
     'tools.html': ['body-map.html', 'sound-trainer.html', 'scenario-sim.html', 'skillsheets.html', 'flowcharts.html', 'formulary.html', 'reference-cards.html']
   };
 
+  // nremt/notes/ pages set NREMT_BASE '../' and NREMT_PAGE (their tab).
+  var BASE = window.NREMT_BASE || '';
+
   function currentFile(){
+    if(window.NREMT_PAGE) return window.NREMT_PAGE;
     var p = location.pathname.split('/').pop();
     return p || 'index.html';
   }
@@ -100,11 +104,11 @@
     window.LevlChrome.render({
       subject: 'nremt',
       course: 'NREMT-EMT Prep',
-      courseHref: 'index.html',
-      progressHref: 'dashboard.html',
+      courseHref: BASE + 'index.html',
+      progressHref: BASE + 'dashboard.html',
       items: NAV_ITEMS.map(function(item){
         return {
-          href: item.href,
+          href: BASE + item.href,
           label: item.label,
           active: item.href === cur || (SUBPAGES[item.href] || []).indexOf(cur) !== -1
         };

@@ -182,6 +182,12 @@ jobs:
       # not empty before they do.
       - name: the static contents in the NREMT notes match their data file
         run: node scripts/build-nremt-notes-toc.mjs --check
+      # And a page per chapter under nremt/notes/, generated from the same data
+      # file, so the chapter text is readable without JavaScript and by a
+      # crawler. A chapter edited or renamed without rebuilding would leave a
+      # page saying something the reader no longer says.
+      - name: the NREMT chapter pages match their data file
+        run: node scripts/build-nremt-notes-pages.mjs --check
       # The generated textbook figures. These are drawn from coordinates, so a
       # stale one is not a broken build — it is a diagram that quietly says
       # something the prose next to it no longer says.

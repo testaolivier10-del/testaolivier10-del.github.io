@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patients with Special Challenges: NREMT-EMT Notes | LevlPrep</title>
+<meta name="description" content="Some patients arrive with a disability, a chronic condition or a piece of medical technology that changes how they must be assessed and moved.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/emergencies-for-patients-with-special-challenges.html">
+<meta property="og:title" content="Patients with Special Challenges: NREMT-EMT Notes | LevlPrep">
+<meta property="og:description" content="Some patients arrive with a disability, a chronic condition or a piece of medical technology that changes how they must be assessed and moved.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/emergencies-for-patients-with-special-challenges.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/emergencies-for-patients-with-special-challenges.html#notes","name":"Emergencies for Patients with Special Challenges: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/emergencies-for-patients-with-special-challenges.html","description":"Some patients arrive with a disability, a chronic condition or a piece of medical technology that changes how they must be assessed and moved.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":37},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Emergencies for Patients with Special Challenges","item":"https://levlprep.com/nremt/notes/emergencies-for-patients-with-special-challenges.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="obstetric-and-gynecologic-emergencies.html"><span class="bk-toc-n">36</span>Obstetric and Gynecologic Emergencies</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">37</span><span><b>Emergencies for Patients with Special Challenges</b><small>3 sections</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch37-special-challenges"><span class="bk-toc-n">37.1</span>Disabilities, Devices & Approach</a></li><li><a href="#ch37-devices"><span class="bk-toc-n">37.2</span>Advanced Medical Devices</a></li><li><a href="#ch37-abuse"><span class="bk-toc-n">37.3</span>Abuse, Neglect & Trafficking</a></li></ol></nav>
+    <a class="bk-toc-other" href="ems-operations.html"><span class="bk-toc-n">38</span>EMS Operations</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Emergencies for Patients with Special Challenges</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-37"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html?domain=OB%2FPeds%20%26%20Special%20Populations">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="37">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 37 of 40</p>
+      <h1 class="tb-chapter-title">Emergencies for Patients with Special Challenges</h1>
+      <div class="tb-chapter-meta">
+        <span>3 sections · 12 topics · about 10 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/emergencies-for-patients-with-special-challenges.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">Some patients arrive with a disability, a chronic condition or a piece of medical technology that changes how they must be assessed and moved. This chapter covers the general approach to patients with special challenges, including autism, the advanced medical devices you will meet in the home from ventilators to central lines, and the recognition and reporting of abuse, neglect and human trafficking.</p>
+    </header>
+<section class="section bk-sec" id="ch37-special-challenges" data-num="37.1" data-title="Disabilities, Devices &amp; Approach">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">37.1</span>Disabilities, Devices & Approach</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch37-special-challenges--1" data-heading="Foundational concepts">
+      <h3>Foundational concepts</h3>
+      <p>A <strong>disability</strong> is a condition — physical, emotional, behavioral or cognitive — that interferes with a person's everyday activities. Diseases that leave a patient disabled are described by when they began. A <strong>congenital disease</strong> is present at birth, while an <strong>acquired disease</strong> develops afterward, whether from an infection, another medical condition or trauma.</p><p>A chronic disease complicates the picture in two different ways, and you should be prepared for either. The chronic condition itself can worsen acutely, or the patient can develop an entirely unrelated acute illness that hits harder than it otherwise would because of the coexisting chronic condition. The same illness is simply a larger insult to a patient who has less reserve to absorb it.</p>
+    </div>
+<div class="topic" id="ch37-special-challenges--2" data-heading="Common chronic conditions">
+      <h3>Common chronic conditions</h3>
+      <p>A handful of chronic conditions turn up often enough in the field that you should know in advance what each one changes about your assessment, your equipment and the way you communicate. The table below sets out those conditions and the points that matter most.</p><p class="tb-caption"><b>Table 37.1</b>Common chronic conditions</p><div class="table-wrap"><table><thead><tr><th>Condition</th><th>Key points</th></tr></thead><tbody>
+            <tr><td>Autism</td><td>Impaired social function/communication; spectrum from normal language/intellect to language delay</td></tr>
+            <tr><td>Cerebral palsy</td><td>Permanent motor control impairment; don't assume cognitive impairment</td></tr>
+            <tr><td>Hearing impairment</td><td>Face the patient directly (lip-reading); some use hearing aids/sign language</td></tr>
+            <tr><td>Kidney failure</td><td>Never take BP on the dialysis access arm; access devices can bleed</td></tr>
+            <tr><td>Neuromuscular disorders (MD, MS, ALS)</td><td>Risk: pain, communication difficulty, UTI, respiratory paralysis</td></tr>
+            <tr><td>Spinal cord injury</td><td>No sensation/function below the injury level; high injuries → ventilator-dependent, pneumonia risk</td></tr>
+            <tr><td>Vision impairment</td><td>Ask how to help; explain actions before doing them; bring cane/service animal</td></tr>
+            </tbody></table></div>
+    </div>
+<div class="topic" id="ch37-special-challenges--3" data-heading="Autism — the ABCS approach">
+      <h3>Autism — the ABCS approach</h3>
+      <p>Patients with <strong>autism spectrum disorder (ASD)</strong> are encountered often enough that a structured approach is worth committing to memory. The ABCS approach gives you four things to attend to on every such call:</p><ul>
+            <li><strong>Awareness.</strong> Patients with ASD react differently from what you may expect, and stress narrows their range further. Even a patient who normally speaks may go silent when frightened or in pain, so consider picture cards when speech fails.</li>
+            <li><strong>Basic.</strong> Keep everything simple. Give direct instructions, ask closed-ended questions, and minimize sensory stimulation by turning down radios, reducing lights and shutting off sirens wherever you can.</li>
+            <li><strong>Calm.</strong> Calm creates calm. Avoid anything that looks like a show of force, designate one primary contact person to speak with the patient, keep a familiar caregiver alongside you, and allow extra time.</li>
+            <li><strong>Safety.</strong> A familiar environment is a source of security, so preserve as much of it as the situation allows. Narrate each step before you carry it out. Restraint is a last resort, used only when there is imminent danger.</li>
+            </ul><p>Overstimulation can produce an escalation, or meltdown: involuntary, tantrum-like behavior that is not defiance and must not be treated as misbehavior. Assessment calls for the same patience, because patients with ASD may voice atypical complaints and may have a high tolerance for pain. A careful, unhurried examination is what keeps a serious condition from being missed in a patient who is not able to report it in the usual way.</p>
+    </div>
+<div class="topic" id="ch37-special-challenges--4" data-heading="General approach principles">
+      <h3>General approach principles</h3>
+      <p>Establishing a baseline comes first. What counts as normal is specific to the patient, so the most useful question is the one put directly to the patient or the family: what is different today. The answer is often the most efficient path to the real problem, and it keeps you from mistaking a long-standing deficit for an acute change.</p><p>Routine care still applies. Patients with special challenges get the same everyday illnesses as everyone else, and the priorities of the primary assessment are universal, whatever diagnosis or device you find in front of you.</p><p>Finally, follow your protocols. If the care a patient needs falls outside your training or your scope of practice, confer with medical direction rather than improvising.</p>
+    </div></div>
+  </section>
+<section class="section bk-sec" id="ch37-devices" data-num="37.2" data-title="Advanced Medical Devices">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">37.2</span>Advanced Medical Devices</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch37-devices--1" data-heading="Respiratory devices">
+      <h3>Respiratory devices</h3>
+      <p>Respiratory technology in the home ranges from a mask the patient wears at night to a machine that breathes for the patient entirely. The table below lists the devices you are most likely to meet and what each one means for your care.</p><p class="tb-caption"><b>Table 37.2</b>Respiratory devices</p><div class="table-wrap"><table><thead><tr><th>Device</th><th>Purpose</th><th>Notes</th></tr></thead><tbody>
+            <tr><td>CPAP/BiPAP (NIPPV)</td><td>Keeps airway open</td><td>Unlikely device-related emergency; bring the device even if not used during transport</td></tr>
+            <tr><td>Tracheostomy tube</td><td>Surgical airway via stoma</td><td>Displacement (rare) vs. obstruction (mucus — most common)</td></tr>
+            <tr><td>Home ventilator</td><td>Breathes for the patient</td><td>DOPE mnemonic for problems (see below); battery backup ~1hr+</td></tr>
+            </tbody></table></div><p>When a ventilated patient deteriorates, the causes to work through are recalled with the mnemonic <strong>DOPE</strong>: displacement of the tube, obstruction of the tube, pneumothorax or pneumonia, and equipment failure. Your first action tests several of them at once. Remove the ventilator circuit and ventilate the patient with a bag-valve mask (BVM), which rules out equipment failure while checking for displacement and obstruction at the same time.</p>
+    </div>
+<div class="topic" id="ch37-devices--2" data-heading="Cardiac devices">
+      <h3>Cardiac devices</h3>
+      <p>Implanted and wearable cardiac devices are common in the community, and each one changes something about your assessment or your resuscitation. The table below summarizes the four you are most likely to encounter.</p><p class="tb-caption"><b>Table 37.3</b>Cardiac devices</p><div class="table-wrap"><table><thead><tr><th>Device</th><th>Function</th><th>Key points</th></tr></thead><tbody>
+            <tr><td>Pacemaker</td><td>Prevents HR from going too slow</td><td>Felt as a lump under the skin, usually below the left collarbone; the pulse should still be palpable. Place AED pads about an inch away from it, not over it</td></tr>
+            <tr><td>AICD</td><td>Detects V-fib/V-tach, delivers a shock</td><td>Energy far less than an AED — safe to touch the patient during discharge</td></tr>
+            <tr><td>WCD (LifeVest)</td><td>External vest version of an AICD</td><td>Alerts before shocking; CPR OK unless a voice command says otherwise</td></tr>
+            <tr><td>VAD</td><td>Implanted pump for a failing ventricle</td><td>Pulse may be absent/unusual even with the device working — assess via pump sound, mental status, skin color</td></tr>
+            </tbody></table></div><p class="sub">When you apply AED pads to a patient with an implanted pacemaker or AICD, or with a central line, offset the pads away from the device rather than placing them directly over it.</p>
+    </div>
+<div class="topic" id="ch37-devices--3" data-heading="Gastrointestinal &amp; urinary devices &amp; dialysis">
+      <h3>Gastrointestinal & urinary devices & dialysis</h3>
+      <p>A patient who cannot take food by mouth may be fed through a nasogastric, gastrostomy or jejunostomy tube (NG/G/J-tube). Dislodgement of the tube, infection at the site and clogging of the tube all warrant evaluation at the hospital. Do not attempt to replace a tube that has come out; cover the opening with an occlusive dressing and transport the patient.</p><p>An indwelling urinary catheter, or Foley, asks only one thing of you: keep the drainage bag below the level of the patient at all times, including while you move the patient to the stretcher.</p><p>Patients in kidney failure are maintained on one of two forms of dialysis, and each brings its own concern. In hemodialysis, the blood is filtered through a surgically created fistula, most often in an arm. Never take a blood pressure (BP) on the fistula arm. A fistula that bleeds can bleed massively, so apply direct pressure and do not release it until a physician advises you to.</p><p>In peritoneal dialysis, fluid is exchanged through a catheter in the abdomen, and the two problems to watch for are dislodgement of the catheter and peritonitis. Fluid that drains cloudy suggests infection, so bring the bag with you to the hospital for testing.</p>
+    </div>
+<div class="topic" id="ch37-devices--4" data-heading="Central IV catheters &amp; VP shunts">
+      <h3>Central IV catheters & VP shunts</h3>
+      <p>A central intravenous catheter — a peripherally inserted central catheter (PICC), a Groshong catheter or an implanted port — delivers medication into a large vein. EMTs generally do not access these lines. Handle them gently, avoid tugging on the catheter or contaminating the site, and hold a high suspicion for sepsis in any patient who has one, since a central line is a direct route for infection into the bloodstream.</p><p>A ventriculoperitoneal (VP) shunt drains excess cerebrospinal fluid (CSF) from the brain to the abdomen. When the shunt malfunctions, the fluid accumulates, intracranial pressure (ICP) rises, and the patient presents with altered mental status, seizures or respiratory compromise. Management is supportive: standard airway care and prevention of hypoxia, transport, and consultation with medical control.</p>
+    </div></div>
+  </section>
+<section class="section bk-sec" id="ch37-abuse" data-num="37.3" data-title="Abuse, Neglect &amp; Trafficking">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">37.3</span>Abuse, Neglect & Trafficking</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch37-abuse--1" data-heading="General principle &amp; child abuse">
+      <h3>General principle & child abuse</h3>
+      <p>Patients with special needs, at any age, are more vulnerable to abuse than the population at large, for the plain reason that they depend on other people for their daily care. Certain findings raise suspicion whatever the patient's age: a story that is inconsistent with the injury you are looking at, multiple injuries at different stages of healing, a pattern of repeated injury, and a caregiver who is indifferent to what has happened. Suspicion is not accusation. You never accuse anyone at the scene; you report according to the rules of your jurisdiction.</p><p>In children, the physical findings have a characteristic look. Patterned marks may match the shape of the weapon that made them, and fractures may be found at various stages of healing. Head injury is among the most lethal of abuse injuries, and in shaken baby syndrome it shows itself as a bulging fontanelle and unconsciousness. Burns with a specific line of demarcation, such as a cigarette burn or a glove or stocking pattern, point the same way.</p><p>Behavior tells you as much as the injuries. Be alert to a caregiver who will not leave you alone with the child, to a story that conflicts between tellers or changes in the retelling, to a child who is afraid to explain what happened, and to injuries found both front and back or on both sides of the body.</p>
+    </div>
+<div class="topic" id="ch37-abuse--2" data-heading="Elder &amp; dependent adult abuse">
+      <h3>Elder & dependent adult abuse</h3>
+      <p>Elder abuse is conventionally divided into 3 types — physical, psychological and financial — with physical neglect standing alongside them as a further form of harm. Falls are genuinely common in the frail elderly, which is exactly what makes them convenient cover, so do not assume that an injury is a simple fall merely because a fall would explain it.</p><p>Dependent adults face the same risks. These are adults whose developmental or physical disability leaves them reliant on a caregiver, and the red flags cluster around that caregiver: an unexplained absence, a patient who is malnourished, and interference with the care you are trying to provide.</p>
+    </div>
+<div class="topic" id="ch37-abuse--3" data-heading="The EMT's role in suspected abuse">
+      <h3>The EMT's role in suspected abuse</h3>
+      <p>Your role is a bounded one. The EMT is not the police, not an investigator, not a social worker and not a judge. Where the scene allows it, interview the caregiver and the patient separately, and conduct both interviews without judgment. Control your own emotions while you do it: make no accusations, and let nothing in your face or your voice show suspicion.</p><p>In many states the EMT is a mandated reporter, and you should know whether yours is one of them. Report and document in the language of possibility, describing the abuse as suspected or possible. Record the facts you observed and the statements you heard, and leave the conclusions to the agencies whose job it is to draw them.</p>
+    </div>
+<div class="topic" id="ch37-abuse--4" data-heading="Intimate partner violence &amp; human trafficking">
+      <h3>Intimate partner violence & human trafficking</h3>
+      <p>Intimate partner violence (IPV) follows a pattern the EMT needs to understand rather than judge. The moment of greatest risk to a victim is the moment of leaving, which is much of the reason a patient may stay in the relationship or refuse your help even when the injuries are plain. Assess the patient away from the partner, and away from the children, whenever the scene allows it. Offer advocacy and hotline information every time, including on repeat calls to the same address.</p><p>Human trafficking is exploitation through force, fraud or coercion, and it is present in every U.S. state. The warning signs are found in the scene as much as in the patient: a companion who controls the encounter, a companion who insists on speaking for the patient, ID documents held by someone other than the patient, and a submissive or fearful affect.</p><p>Treat the medical problem first. Never disclose your suspicion to the victim or to anyone else on the scene, and report immediately to law enforcement instead. The National Human Trafficking Hotline is 1 (888) 373-7888.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 37.3</div>
+      <ul><li>Never take a BP on the dialysis access (fistula) arm.</li><li>DOPE mnemonic for a home ventilator emergency: Displacement, Obstruction, Pneumothorax/Pneumonia, Equipment.</li><li>AICD/pacemaker shocks are safe to touch — energy is far less than an AED's.</li><li>AED pads should be offset away from any implanted device or central line.</li><li>Bulging fontanelle + unconsciousness in an infant strongly suggests shaken baby syndrome.</li><li>Never disclose suspicion of trafficking to the victim or anyone on scene — it escalates danger.</li><li>The highest-risk moment for an intimate partner violence victim is when they try to leave.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-acute">Acute</a></dt><dd>Having a sudden onset and typically a short, intense course — contrast with chronic.</dd></div><div><dt><a href="../glossary.html#t-chronic">Chronic</a></dt><dd>Persisting over a long period of time — contrast with acute.</dd></div><div><dt><a href="../glossary.html#t-hypoxia">Hypoxia</a></dt><dd>A deficiency of oxygen reaching the body's tissues.</dd></div><div><dt><a href="../glossary.html#t-pneumothorax">Pneumothorax</a></dt><dd>A collection of air in the pleural space, causing partial or complete lung collapse.</dd></div><div><dt><a href="../glossary.html#t-sepsis">Sepsis</a></dt><dd>A life-threatening, dysregulated body response to infection that can lead to organ dysfunction and shock.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html?domain=OB%2FPeds%20%26%20Special%20Populations">Practice this domain &rarr;</a> <a href="../study-notes.html#chapter-37">Open in the reader &rarr;</a></p>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="obstetric-and-gynecologic-emergencies.html"><span>&larr; Chapter 36</span><b>Obstetric and Gynecologic Emergencies</b></a>
+      <a class="tb-chapter-link next" href="ems-operations.html"><span>Chapter 38 &rarr;</span><b>EMS Operations</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

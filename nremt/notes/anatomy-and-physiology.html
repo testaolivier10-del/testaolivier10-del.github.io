@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anatomy and Physiology: NREMT-EMT Study Notes | LevlPrep</title>
+<meta name="description" content="Assessment is only as good as your picture of what lies beneath the skin.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/anatomy-and-physiology.html">
+<meta property="og:title" content="Anatomy and Physiology: NREMT-EMT Study Notes | LevlPrep">
+<meta property="og:description" content="Assessment is only as good as your picture of what lies beneath the skin.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/anatomy-and-physiology.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/anatomy-and-physiology.html#notes","name":"Anatomy and Physiology: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/anatomy-and-physiology.html","description":"Assessment is only as good as your picture of what lies beneath the skin.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":6},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Anatomy and Physiology","item":"https://levlprep.com/nremt/notes/anatomy-and-physiology.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="medical-terminology.html"><span class="bk-toc-n">5</span>Medical Terminology</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">6</span><span><b>Anatomy and Physiology</b><small>1 section</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch6-anatomy"><span class="bk-toc-n">6.1</span>Musculoskeletal, Respiratory & Cardiovascular Systems</a></li></ol></nav>
+    <a class="bk-toc-other" href="principles-of-pathophysiology.html"><span class="bk-toc-n">7</span>Principles of Pathophysiology</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Anatomy and Physiology</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-6"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="6">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 6 of 40</p>
+      <h1 class="tb-chapter-title">Anatomy and Physiology</h1>
+      <div class="tb-chapter-meta">
+        <span>1 section · 4 topics · about 11 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/anatomy-and-physiology.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">Assessment is only as good as your picture of what lies beneath the skin. This chapter surveys the body systems an EMT works with most: the musculoskeletal system that shapes and moves the body, the respiratory system that moves air, the cardiovascular system that moves blood, and the nervous, lymphatic and other systems that regulate the rest.</p>
+    </header>
+<section class="section bk-sec" id="ch6-anatomy" data-num="6.1" data-title="Musculoskeletal, Respiratory &amp; Cardiovascular Systems">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">6.1</span>Musculoskeletal, Respiratory & Cardiovascular Systems</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch6-anatomy--1" data-heading="Musculoskeletal system">
+      <h3>Musculoskeletal system</h3>
+      <p>The musculoskeletal system has 3 functions: it gives the body its shape, it protects the vital organs, and it makes movement possible. The bones do more than provide structure, however. Bone marrow also produces blood cells and stores nutrients.</p>
+            <p>The <strong>skull</strong> has two parts. The cranium forms the top, back and sides of the head, and the face is made up of the mandible, the maxillae, the nasal bones, the orbits and the zygomatic arches.</p>
+            <p>The <strong>spine</strong> consists of 33 vertebrae, and its hollow center houses the spinal cord. From the top down, the vertebrae fall into five regions: 7 cervical vertebrae in the neck, 12 thoracic vertebrae in the upper back where the ribs attach, 5 lumbar vertebrae in the lower back, 5 sacral vertebrae that form the back wall of the pelvis, and 4 vertebrae in the coccyx, or tailbone. The cervical spine is injured easily, because a heavy head sits on a slender neck, and a cervical injury can be fatal because this part of the cord controls the muscles of breathing. The lumbar spine is also vulnerable, since it is not supported by any other part of the skeleton.</p>
+            <p>The <strong>thorax</strong> is formed by 12 pairs of ribs and the 12 thoracic vertebrae. 10 pairs of ribs attach to the sternum; the remaining 2 pairs do not, and these are the "floating ribs." The sternum itself has three parts: the manubrium at the top, the body in the center, and the xiphoid process at the bottom tip.</p>
+            <p>The <strong>pelvis</strong> is made up of three bones: the ilium, which is superior and whose upper rim is the iliac crest; the ischium, which is inferior and posterior; and the pubis, which is anterior. The hip joint is formed where the head of the femur, the ball, sits in the acetabulum, the socket.</p>
+            <p>In the lower extremity, the femur is the largest bone in the body, and a fracture of the femur near the pelvis is what is commonly called a "broken hip." Below the femur lies the patella, or kneecap, and then the two bones of the lower leg: the tibia, the larger, medial bone that forms the shin, and the fibula, the smaller, lateral bone. Each of these ends at the ankle in a bony knob called a malleolus; the lateral malleolus belongs to the fibula and the medial malleolus to the tibia. The foot is built from the tarsals at the ankle, the metatarsals in the foot itself, the calcaneus at the heel, and the phalanges of the toes.</p>
+            <p>The upper extremity begins at the shoulder, where the clavicle, or collarbone, lies anteriorly and the scapula, or shoulder blade, lies posteriorly; the acromion process forms the top of the shoulder. The humerus is the bone of the upper arm. The forearm has two bones: the radius on the lateral, thumb side, where the radial pulse is felt, and the ulna on the medial side. The wrist is made up of the carpals, the hand of the metacarpals, and the fingers of the phalanges.</p>
+            <p>Joints are classified by the kind of movement they allow. The hip is a ball-and-socket joint, while the elbow is a hinge joint.</p>
+            <p>Muscle comes in three types, which differ in how they are controlled and where they are found. The table below sets them out.</p>
+            <p class="tb-caption"><b>Table 6.1</b>Musculoskeletal system</p><div class="table-wrap"><table><thead><tr><th>Muscle type</th><th>Control</th><th>Location</th></tr></thead><tbody>
+            <tr><td>Voluntary (skeletal)</td><td>Conscious</td><td>Attached to bones, movement</td></tr>
+            <tr><td>Involuntary (smooth)</td><td>Automatic</td><td>GI tract, lungs, blood vessels, urinary system</td></tr>
+            <tr><td>Cardiac</td><td>Automatic, has automaticity</td><td>Heart only; very O2-sensitive</td></tr>
+            </tbody></table></div>
+    </div>
+<div class="topic" id="ch6-anatomy--2" data-heading="Respiratory system">
+      <h3>Respiratory system</h3>
+      <p>Air follows a fixed path into the lungs. It enters through the mouth or nose and passes into the pharynx, which has two parts, the oropharynx behind the mouth and the nasopharynx behind the nose. At the bottom of the pharynx sits the epiglottis, a flap that blocks food from entering the trachea. Below it lies the larynx, or voice box, which contains the vocal cords, and beneath that the cricoid cartilage. Air then travels down the trachea, which is held open by 16 C-shaped rings of cartilage, and divides into two bronchi, one for each lung. The bronchi branch into progressively smaller bronchioles, which end in the alveoli, the tiny sacs where gas exchange takes place.</p>
+            <p>The <strong>diaphragm</strong> is the muscle that divides the chest from the abdomen, and it is the main muscle of breathing; it is driven by the phrenic nerve. Inhalation is an active process. The diaphragm and the intercostal muscles contract, the chest expands, and the negative pressure this creates inside the chest pulls air in. Exhalation, by contrast, is passive. The muscles relax, the chest shrinks, and the resulting positive pressure pushes air out. Two terms that are easily confused describe different parts of this process: <strong>ventilation</strong> is the movement of gas into and out of the alveoli, while <strong>respiration</strong> is the exchange of gases between the blood and the cells.</p>
+            <p class="sub">Children differ from adults in ways that matter for airway management. A child's tongue is larger relative to the mouth, and the trachea and cricoid cartilage are narrower and softer, so the airway is more easily obstructed and more easily injured. The rib cage is flatter, and a child in respiratory distress may show a "seesaw" breathing pattern.</p>
+    </div>
+<div class="topic" id="ch6-anatomy--3" data-heading="Cardiovascular system">
+      <h3>Cardiovascular system</h3>
+      <p>The heart has four chambers: 2 atria on top and 2 ventricles below. Blood returns from the body through the venae cavae into the right atrium, passes to the right ventricle, and is pumped through the pulmonary artery to the lungs, where gas exchange takes place. Oxygenated blood returns through the pulmonary vein to the left atrium, moves into the left ventricle, the strongest of the four chambers, and is pumped out through the aorta to the body. One-way valves prevent blood from flowing backward. The heart also has its own electrical system, the cardiac conduction system, which acts as a built-in pacemaker; this ability to generate its own impulses is called <strong>automaticity</strong>.</p>
+            <p>The arteries an EMT needs to know, and where each is found or used, are listed in the table below.</p>
+            <p class="tb-caption"><b>Table 6.2</b>Cardiovascular system</p><div class="table-wrap"><table><thead><tr><th>Artery</th><th>Location/Use</th></tr></thead><tbody>
+            <tr><td>Coronary</td><td>Supplies heart muscle itself</td></tr>
+            <tr><td>Aorta</td><td>Largest artery, body</td></tr>
+            <tr><td>Pulmonary</td><td>Exception — carries O2-poor blood to the lungs</td></tr>
+            <tr><td>Carotid</td><td>Neck — CPR pulse check (adult/child); never palpate both sides at once</td></tr>
+            <tr><td>Femoral</td><td>Thigh/groin crease</td></tr>
+            <tr><td>Brachial</td><td>Upper arm — infant CPR pulse, BP measurement</td></tr>
+            <tr><td>Radial</td><td>Wrist (thumb side)</td></tr>
+            <tr><td>Posterior tibial</td><td>Behind medial ankle</td></tr>
+            <tr><td>Dorsalis pedis</td><td>Top of foot</td></tr>
+            </tbody></table></div>
+            <p>Blood leaves the heart through the arteries, which branch into smaller arterioles and then into the capillaries, where the exchange of oxygen, nutrients and waste with the cells takes place. From the capillaries, blood collects into venules, then veins, and finally the venae cavae that return it to the heart. Just as the pulmonary artery is the one artery that carries oxygen-poor blood, the pulmonary vein is the one vein that carries oxygen-rich blood. The carotid and femoral pulses are the central pulses, and they remain palpable even when the peripheral pulses have weakened.</p>
+            <p>Blood itself has four components, each with its own function, as the table below shows.</p>
+            <p class="tb-caption"><b>Table 6.3</b>Cardiovascular system</p><div class="table-wrap"><table><thead><tr><th>Blood component</th><th>Function</th></tr></thead><tbody>
+            <tr><td>Plasma</td><td>Watery fluid, carries cells/CO2</td></tr>
+            <tr><td>RBCs (erythrocytes)</td><td>Carry O2 (hemoglobin)</td></tr>
+            <tr><td>WBCs (leukocytes)</td><td>Fight infection</td></tr>
+            <tr><td>Platelets</td><td>Clotting</td></tr>
+            </tbody></table></div>
+            <p><strong>Blood pressure</strong> is recorded as two numbers. The systolic pressure is the pressure in the arteries while the ventricle contracts and pumps; the diastolic pressure is the pressure while the ventricle refills. A reading is written with the systolic over the diastolic, as in "120/80." <strong>Perfusion</strong> is the adequate delivery of oxygen and nutrients to the cells, together with the removal of their wastes. <strong>Hypoperfusion</strong>, or shock, is perfusion that is inadequate to meet the cells' needs, and it is life-threatening.</p>
+            <p>The cells produce their energy through <strong>metabolism</strong>, which takes one of two forms depending on whether oxygen is available. Aerobic metabolism, which takes place when oxygen is present, is efficient and produces little waste, only carbon dioxide (CO2) and water. Anaerobic metabolism, which the cells fall back on when oxygen is lacking, is inefficient and produces lactic acid. The lactic acid leads to acidosis, which injures cells and impairs the blood's ability to carry oxygen. For gas exchange to work at all, there must be both enough air and enough blood at the alveoli at the same time; this is called V/Q match.</p>
+    </div>
+<div class="topic" id="ch6-anatomy--4" data-heading="Lymphatic, nervous &amp; other systems">
+      <h3>Lymphatic, nervous & other systems</h3>
+      <p>The <strong>lymphatic system</strong> captures fluid that has escaped from the bloodstream, called lymph, and returns it to the circulation. It also has an immune function, producing the lymphocytes, a type of white blood cell. Its organs are the tonsils and adenoids, the spleen, the thymus and, by some accounts, the appendix. One clinical rule follows directly from this anatomy: never take a blood pressure (BP) on the affected arm of a patient who has had a mastectomy, because lymphatic tissue has been removed from the armpit and the pressure of the cuff is a risk.</p>
+            <p>The <strong>nervous system</strong> has two divisions. The central nervous system (CNS) is the brain and spinal cord. The peripheral nervous system (PNS) is made up of the sensory nerves, which carry information from the body to the brain, and the motor nerves, which carry commands from the brain to the body. Within the PNS, the autonomic nervous system (ANS) controls involuntary functions, and it in turn has two branches. The sympathetic branch produces the fight-or-flight response: heart rate rises, breathing deepens and the blood vessels constrict. The parasympathetic branch, sometimes called feed-or-breed or rest, does the opposite: it increases blood flow to the digestive and reproductive organs, slows the heart rate and dilates the vessels. A separate structure, the reticular activating system, keeps a person awake and conscious.</p>
+            <p>Recognizing sympathetic discharge is a useful assessment skill. A patient who is pale and diaphoretic with an elevated heart rate (HR) and respiratory rate (RR) is showing the body's response to a serious problem, and this can flag serious illness even when the classic symptoms are absent, as in the "silent" myocardial infarction (MI) that older women sometimes experience.</p>
+            <p>The <strong>digestive system</strong> is a single passage with supporting organs along it. Food travels from the mouth down the esophagus to the stomach, where acid begins breaking it down, then into the small intestine, whose three parts are the duodenum, jejunum and ileum and where nutrients are absorbed, and finally into the large intestine, or colon, which removes water and forms waste. The liver produces bile, detoxifies the blood, stores sugar and synthesizes blood products. The gallbladder stores bile. The pancreas produces insulin and digestive enzymes. The spleen filters old blood cells and serves as a reservoir of blood; it lies in the left upper quadrant (LUQ) and is at risk in trauma. The appendix, in the right lower quadrant (RLQ), is lymphatic tissue whose function is unclear.</p>
+            <p>The <strong>integumentary system</strong>, the skin, provides protection, maintains water balance, regulates temperature, excretes wastes and absorbs shock. It has three layers. The outer layer, the epidermis, contains no blood vessels or nerves. Beneath it, the dermis holds the blood vessels, nerves, glands and hair follicles, which is why an injury that reaches the dermis bleeds, hurts and carries a risk of infection. The deepest layer, the subcutaneous tissue, is fat and soft tissue that insulates the body and absorbs shock.</p>
+            <p>The <strong>endocrine system</strong> produces hormones. The pancreas secretes insulin, which regulates glucose. The adrenal glands secrete epinephrine and norepinephrine, the hormones of sympathetic activation; acting on beta-2 receptors they dilate the bronchioles, and acting on beta-1 receptors they increase the rate and force of the heartbeat.</p>
+            <p>The <strong>renal system</strong>, or urinary system, regulates fluid balance, filters the blood and adjusts its pH. The kidneys filter urea from the blood, regulate sodium and fluid, and produce bicarbonate. Urine passes from the kidneys through the ureters to the bladder, which serves as a reservoir, and leaves the body through the urethra.</p>
+            <p>The <strong>reproductive system</strong> differs by sex. In the male, the testes produce sperm and are connected to the urethra by way of the epididymis and vas deferens. In the female, the ovaries, which lie on either side of the lower abdomen, release eggs into the fallopian tubes, where fertilization takes place. A fertilized egg passes to the uterus, a highly vascular organ in the midline of the lower abdomen that houses the fetus, and the vagina serves as the birth canal.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 6.1</div>
+      <ul><li>Perfusion / hypoperfusion (shock) – adequate vs. inadequate cellular O2/waste exchange.</li><li>Automaticity – the heart's self-generated electrical impulses.</li><li>Buffer system – the body's pH regulation.</li><li>Central vs. peripheral pulses – carotid/femoral vs. radial/brachial/posterior tibial/dorsalis pedis.</li><li>Arteriole/venule – smallest artery/vein branches.</li><li>Never take a BP on a mastectomy patient's affected arm.</li><li>Cervical spine injury can be fatal because it can affect the muscles that control breathing.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-diaphragm">Diaphragm</a></dt><dd>The dome-shaped muscle beneath the lungs that is the primary muscle of breathing.</dd></div><div><dt><a href="../glossary.html#t-hypoperfusion">Hypoperfusion</a></dt><dd>Inadequate blood flow to the body's tissues and organs — another term for shock.</dd></div><div><dt><a href="../glossary.html#t-infarction">Infarction</a></dt><dd>Tissue death caused by an inadequate blood supply, as in a myocardial infarction.</dd></div><div><dt><a href="../glossary.html#t-perfusion">Perfusion</a></dt><dd>The flow of blood through blood vessels to an organ or tissue, delivering oxygen and nutrients.</dd></div><div><dt><a href="../glossary.html#t-peripheral">Peripheral</a></dt><dd>Relating to the outer parts of the body, away from the center, such as the peripheral pulses in the wrists and feet.</dd></div><div><dt><a href="../glossary.html#t-symptom">Symptom</a></dt><dd>A subjective sensation reported by the patient, such as pain or nausea, that can't be directly observed by someone else — contrast with a sign.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html">Practice the bank &rarr;</a> <a href="../study-notes.html#chapter-6">Open in the reader &rarr;</a></p>
+    </section>
+    <section class="book-tools" aria-label="Practice this">
+      <div class="chapter-tools">
+        <span class="chapter-tools__k">Practice this</span>
+        <a href="../body-map.html">Body Map <small>find these structures on a 3D model</small></a>
+      </div>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="medical-terminology.html"><span>&larr; Chapter 5</span><b>Medical Terminology</b></a>
+      <a class="tb-chapter-link next" href="principles-of-pathophysiology.html"><span>Chapter 7 &rarr;</span><b>Principles of Pathophysiology</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

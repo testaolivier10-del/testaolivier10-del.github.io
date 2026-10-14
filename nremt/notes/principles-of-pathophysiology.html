@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Principles of Pathophysiology: NREMT-EMT Notes | LevlPrep</title>
+<meta name="description" content="Pathophysiology is the study of what goes wrong when the body's compensating mechanisms fail.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/principles-of-pathophysiology.html">
+<meta property="og:title" content="Principles of Pathophysiology: NREMT-EMT Notes | LevlPrep">
+<meta property="og:description" content="Pathophysiology is the study of what goes wrong when the body's compensating mechanisms fail.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/principles-of-pathophysiology.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/principles-of-pathophysiology.html#notes","name":"Principles of Pathophysiology: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/principles-of-pathophysiology.html","description":"Pathophysiology is the study of what goes wrong when the body's compensating mechanisms fail.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":7},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Principles of Pathophysiology","item":"https://levlprep.com/nremt/notes/principles-of-pathophysiology.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="anatomy-and-physiology.html"><span class="bk-toc-n">6</span>Anatomy and Physiology</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">7</span><span><b>Principles of Pathophysiology</b><small>1 section</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch7-pathophysiology"><span class="bk-toc-n">7.1</span>Cellular Metabolism, the Cardiopulmonary System & Shock</a></li></ol></nav>
+    <a class="bk-toc-other" href="life-span-development.html"><span class="bk-toc-n">8</span>Life Span Development</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Principles of Pathophysiology</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-7"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="7">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 7 of 40</p>
+      <h1 class="tb-chapter-title">Principles of Pathophysiology</h1>
+      <div class="tb-chapter-meta">
+        <span>1 section · 11 topics · about 10 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/principles-of-pathophysiology.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">Pathophysiology is the study of what goes wrong when the body's compensating mechanisms fail. This chapter starts at the cell and its need for oxygen and glucose, builds up through the cardiopulmonary system and the volumes and pressures that keep it working, and arrives at shock, the common endpoint of many emergencies, where the supply of oxygenated blood no longer meets demand.</p>
+    </header>
+<section class="section bk-sec" id="ch7-pathophysiology" data-num="7.1" data-title="Cellular Metabolism, the Cardiopulmonary System &amp; Shock">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">7.1</span>Cellular Metabolism, the Cardiopulmonary System & Shock</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch7-pathophysiology--1" data-heading="Pathophysiology is the study of what happens when compensation fails">
+      <h3>Pathophysiology is the study of what happens when compensation fails</h3>
+      <p>The body maintains a stable internal state, called <strong>homeostasis</strong>, through constant small adjustments known as <strong>compensation</strong>. Pathophysiology is what you are studying whenever a disease process pushes hard enough that those adjustments are no longer enough.</p>
+    </div>
+<div class="topic" id="ch7-pathophysiology--2" data-heading="The cell">
+      <h3>The cell</h3>
+      <p>The <strong>cell</strong> is the basic building block of the body. Its membrane is selective, controlling what enters and what leaves. Inside, the nucleus holds the cell's DNA, the endoplasmic reticulum synthesizes proteins, and the mitochondria convert glucose into adenosine triphosphate (ATP). ATP is the cell's fuel; it powers every cellular function, including the sodium-potassium pump that moves ions across the membrane. That ion movement creates the electrical charge that allows muscle, including the heart muscle, to contract. To do all this, a cell has three core requirements: water, glucose and oxygen.</p>
+            <p>Water must be present in the right amount. Too little and the cell dehydrates and dies; too much and its function is disrupted. Dissolved in the water are the electrolytes, among them potassium, sodium and magnesium, which make the cell's electrical functions possible, from nerve transmission to the depolarization of the heart. Glucose is the raw fuel that is broken down to produce ATP, but most cells cannot take it up on their own: they need insulin to move glucose from the blood into the cell.</p>
+    </div>
+<div class="topic" id="ch7-pathophysiology--3" data-heading="Oxygen &amp; metabolism">
+      <h3>Oxygen & metabolism</h3>
+      <p>Cells can produce energy with oxygen or without it, and the difference between the two is enormous. The table below compares the two forms of metabolism.</p>
+            <p class="tb-caption"><b>Table 7.1</b>Oxygen &amp; metabolism</p><div class="table-wrap"><table><thead><tr><th>Type</th><th>Condition</th><th>Energy output</th><th>Waste products</th></tr></thead><tbody>
+            <tr><td>Aerobic</td><td>O2 present</td><td>High (~16× more efficient)</td><td>CO2, water (manageable)</td></tr>
+            <tr><td>Anaerobic</td><td>O2 absent/insufficient</td><td>Low</td><td>CO2, lactic acid → acidosis</td></tr>
+            </tbody></table></div>
+            <p>Anaerobic metabolism sets off a downward spiral. The lactic acid it produces causes acidosis, and in an acidotic environment hemoglobin carries less oxygen. Less oxygen means worsening hypoxia, and the spiral continues downward.</p>
+    </div>
+<div class="topic" id="ch7-pathophysiology--4" data-heading="Homeostasis &amp; the fight-or-flight response">
+      <h3>Homeostasis & the fight-or-flight response</h3>
+      <p>Homeostasis is regulated by the hypothalamus and the medulla oblongata. When the body is threatened, the sympathetic nervous system produces the fight-or-flight response. The adrenal glands release epinephrine and norepinephrine, which act on beta-2 receptors to dilate the bronchioles and on beta-1 receptors to increase the heart rate and the force of contraction; at the same time the blood vessels constrict, and blood pressure (BP) rises. At rest the parasympathetic nervous system, the feed-or-breed system, dominates instead.</p>
+            <p>Two situations blunt this response. Beta blockers reduce the effects of epinephrine and norepinephrine, so a patient who takes them may be unable to compensate normally during an emergency. In adrenal insufficiency, as in Addison's disease, the stress hormones the body needs to maintain blood volume and vessel tone are missing, so the normal compensatory response fails; the vessels dilate and the patient goes into shock.</p>
+    </div>
+<div class="topic" id="ch7-pathophysiology--5" data-heading="The cardiopulmonary system">
+      <h3>The cardiopulmonary system</h3>
+      <p>The lungs and the heart work as one system, with three jobs: to move oxygen (O2) in, to move carbon dioxide (CO2) out, and to deliver oxygen to the cells. The air we inhale is roughly 79% nitrogen and 21% oxygen; the proportion of oxygen in inhaled air is called the fraction of inspired oxygen, or FiO2. None of this works unless the airway is <strong>patent</strong>, that is, open and unobstructed.</p>
+    </div>
+<div class="topic" id="ch7-pathophysiology--6" data-heading="Lung volumes &amp; respiratory dysfunction">
+      <h3>Lung volumes & respiratory dysfunction</h3>
+      <p>Two measurements describe how much air a patient is moving. <strong>Tidal volume</strong> is the amount of air moved in one breath, and <strong>minute volume</strong> is the tidal volume multiplied by the respiratory rate. Not all of each breath reaches the alveoli: about 150 mL of every breath, the <strong>dead air space</strong>, fills the airway and never takes part in gas exchange. Because minute volume depends on both rate and depth, it can fall in two ways. A heroin overdose (OD) lowers the rate, while an asthma attack lowers the tidal volume; either one reduces the minute volume.</p>
+            <p>Respiratory dysfunction takes 3 forms:</p>
+            <ol>
+            <li>Disruption of respiratory control. Stroke, drugs such as narcotics, brain trauma and spinal cord injury can all impair the control of breathing.</li>
+            <li>Disruption of pressure. A hole in the chest wall or the pleural space lets air or blood accumulate, and the lung collapses.</li>
+            <li>Disruption of lung tissue. Trauma, congestive heart failure (CHF) and sepsis damage the alveoli so that they can no longer exchange gas.</li>
+            </ol>
+            <p>The body has sensors that trigger compensation. Chemoreceptors detect rising CO2 and falling O2 and prompt the brain to increase both the rate and the depth of breathing. Stretch receptors in the blood vessels detect falling pressure and trigger sympathetic activation.</p>
+    </div>
+<div class="topic" id="ch7-pathophysiology--7" data-heading="The blood &amp; blood vessels">
+      <h3>The blood & blood vessels</h3>
+      <p>Two opposing pressures govern the movement of water across the walls of the blood vessels. <strong>Plasma oncotic pressure</strong> is the pull exerted by large proteins in the plasma, which draws water into the bloodstream. <strong>Hydrostatic pressure</strong> is the pumping force of the heart, which pushes water out of the vessels. If either pressure is disrupted, the result is edema or dehydration. Liver failure is one example: the failing liver produces too little albumin, oncotic pressure falls, fluid leaks out of the vessels, and the patient develops edema while the blood itself becomes dehydrated. The blood can also fail in its oxygen-carrying role. <strong>Anemia</strong>, too few red blood cells, reduces the blood's capacity to carry oxygen.</p>
+            <p>Arteries carry blood away from the heart, and that blood is oxygenated, except in the pulmonary artery. Veins carry blood toward the heart, and that blood is deoxygenated, except in the pulmonary vein. The capillaries between them are the site of exchange.</p>
+            <p>The vessels themselves can fail in several ways. The table below sets out the main problems, their causes and their results.</p>
+            <p class="tb-caption"><b>Table 7.2</b>The blood &amp; blood vessels</p><div class="table-wrap"><table><thead><tr><th>Problem</th><th>Cause</th><th>Result</th></tr></thead><tbody>
+            <tr><td>Loss of tone (vasodilation)</td><td>Spinal injury, sepsis, anaphylaxis</td><td>↓pressure → ↓perfusion</td></tr>
+            <tr><td>Excessive permeability ("leaky" capillaries)</td><td>Sepsis, high altitude, disease</td><td>Fluid leaks out → volume loss, pulmonary edema</td></tr>
+            <tr><td>Hypertension (high SVR)</td><td>Smoking, cocaine, genetics</td><td>Abnormal constriction → ↑pressure → heart disease/stroke risk</td></tr>
+            <tr><td>Loss of regulation</td><td>Spinal injury</td><td>Blocked compensation signals → vasodilation + shock</td></tr>
+            </tbody></table></div>
+            <p class="sub">Children vasoconstrict powerfully, so a child's blood pressure can remain normal even after massive volume loss. Capillary refill is a better indicator in a child; a refill time of less than 2 seconds is normal.</p>
+    </div>
+<div class="topic" id="ch7-pathophysiology--8" data-heading="The heart">
+      <h3>The heart</h3>
+      <p><strong>Stroke volume</strong> is the amount of blood the heart ejects with each beat, about 70 mL. It rises when preload or contractility increases and falls when afterload increases. <strong>Cardiac output</strong> is the stroke volume multiplied by the heart rate, and it can fall for three reasons: bradycardia, a low stroke volume as in blood loss, or a rate so fast that the ventricles do not have time to fill, which happens above 180 beats per minute (bpm).</p>
+            <p class="sub">A young heart cannot increase its contractility much, so a child compensates mainly by raising the heart rate (HR). Tachycardia in a child is therefore a serious red flag.</p>
+            <p>The heart can fail mechanically or electrically. Mechanical dysfunction, from trauma, compression of the heart by the pericardium, or a myocardial infarction (MI), can occur even while the electrical system remains intact. Electrical dysfunction takes the form of dysrhythmias, such as ventricular fibrillation (V-fib), bradycardia and tachycardia, and it results from hypoxia, toxins or medications. In infants, bradycardia is often a sign of hypoxia, a ventilation problem, rather than a cardiac problem.</p>
+    </div>
+<div class="topic" id="ch7-pathophysiology--9" data-heading="Shock is fundamentally a supply problem, but the cause varies">
+      <h3>Shock is fundamentally a supply problem, but the cause varies</h3>
+      <p>Shock is defined as inadequate perfusion. The cells do not receive enough oxygen (O2) and nutrients and cannot get rid of their waste, so they shift to anaerobic metabolism, acidosis develops, and cells and then organs die. Whatever its cause, shock is fundamentally a problem of supply. The cause itself varies, however, and the table below sets out the four types of shock by mechanism.</p>
+            <p class="tb-caption"><b>Table 7.3</b>Shock is fundamentally a supply problem, but the cause varies</p><div class="table-wrap"><table><thead><tr><th>Type</th><th>Mechanism</th><th>Common cause</th></tr></thead><tbody>
+            <tr><td>Hypovolemic</td><td>Too little blood volume → ↓pressure</td><td>Hemorrhage, dehydration</td></tr>
+            <tr><td>Distributive</td><td>Vessels dilate → ↓pressure despite normal volume</td><td>Anaphylaxis, sepsis</td></tr>
+            <tr><td>Cardiogenic</td><td>Heart pump fails → ↓cardiac output</td><td>MI, dysrhythmia, trauma</td></tr>
+            <tr><td>Obstructive</td><td>Blood physically blocked</td><td>Tension pneumothorax, pericardial tamponade, pulmonary embolism</td></tr>
+            </tbody></table></div>
+            <p>Shock progresses through stages. In <strong>compensated shock</strong> the body is still managing: the heart rate and respiratory rate rise, the vessels constrict, the skin becomes pale, cool and diaphoretic, the patient is mildly anxious and capillary refill is delayed, but the blood pressure may still be normal. In <strong>decompensated shock</strong> compensation has failed: the blood pressure falls and the mental status is altered. If decompensated shock is not reversed, it becomes irreversible shock, and the patient dies. Two exceptions are worth remembering. A patient in cardiogenic shock may not be able to raise the heart rate, and a patient in septic shock may not be able to vasoconstrict, so the usual compensatory signs can be missing.</p>
+    </div>
+<div class="topic" id="ch7-pathophysiology--10" data-heading="Fluid balance">
+      <h3>Fluid balance</h3>
+      <p>About 60% of the body is water, distributed among 3 spaces. Roughly 70% of it is intracellular, inside the cells; 25% is interstitial, between the cells and the vessels; and 5% is intravascular, in the bloodstream. Three mechanisms regulate this balance: the brain and the kidneys, through thirst and urine output; the plasma proteins, through their oncotic pull; and the permeability of the cell and capillary membranes. <strong>Dehydration</strong> is a loss of fluid, whether from reduced intake, vomiting, diarrhea, rapid breathing, sweating or burns. <strong>Edema</strong> is a shift of fluid into the interstitial space, as occurs in liver failure, sepsis, high blood pressure (BP) and injury.</p>
+    </div>
+<div class="topic" id="ch7-pathophysiology--11" data-heading="Other system dysfunction">
+      <h3>Other system dysfunction</h3>
+      <p>The other body systems fail in their own characteristic ways. The brain is protected by the skull, the meninges and the cerebrospinal fluid (CSF), but that protection has a cost: when trauma causes bleeding or swelling inside a closed skull, there is nowhere for the extra volume to go, and intracranial pressure rises. Medical causes of nervous system dysfunction include stroke, meningitis, encephalitis, multiple sclerosis (MS) and hypoglycemia.</p>
+            <p>The endocrine system fails when a gland produces too much of a hormone, as in Graves' disease, or too little, as in Type 1 diabetes, where the absence of insulin leaves the cells unable to take up glucose and starving. Adrenal insufficiency, with too little cortisol and aldosterone to support the stress response, leads to shock.</p>
+            <p>Gastrointestinal (GI) bleeding may be chronic or acute; an acute, massive bleed leads to hypovolemic shock. Dark or black stools indicate blood from the upper GI tract. Vomiting and diarrhea, whether viral or bacterial in origin, have dehydration, malnutrition and shock as their complications.</p>
+            <p>Finally, the immune system can overreact. In <strong>hypersensitivity</strong>, an exaggerated immune response releases excess histamine. Histamine increases capillary permeability, producing edema and narrowing of the airway, and dilates the blood vessels, so the blood pressure falls. The result is the distributive shock of anaphylaxis.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 7.1</div>
+      <ul><li>Metabolism – converting nutrients into energy; aerobic/anaerobic = with/without O2.</li><li>Tidal volume – air per breath; minute volume – tidal × rate; dead air space – ~150 mL that never reaches alveoli.</li><li>FiO2 – fraction of inspired oxygen (~21% in room air). Patent – open/unobstructed (airway).</li><li>Stroke volume – blood per heartbeat; cardiac output – stroke volume × HR.</li><li>Chemoreceptors sense O2/CO2 changes; stretch receptors sense vessel pressure.</li><li>SVR (systemic vascular resistance) – pressure the heart pumps against.</li><li>V/Q match – alveolar air matched with pulmonary capillary blood.</li><li>Diaphoresis – profuse sweating (in shock, typically with cool, pale skin).</li><li>Edema – swelling from fluid moving into the interstitial space; dehydration – abnormally low total body water.</li><li>Electrolyte – charged particles dissolved in water.</li><li>Plasma oncotic pressure – proteins pull water into the bloodstream; hydrostatic pressure – heart's force pushes water out.</li><li>Hypersensitivity – an exaggerated immune/allergic response.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-acute">Acute</a></dt><dd>Having a sudden onset and typically a short, intense course — contrast with chronic.</dd></div><div><dt><a href="../glossary.html#t-anaphylaxis">Anaphylaxis</a></dt><dd>A severe, systemic allergic reaction involving multiple body systems, potentially life-threatening.</dd></div><div><dt><a href="../glossary.html#t-bradycardia">Bradycardia</a></dt><dd>An abnormally slow heart rate.</dd></div><div><dt><a href="../glossary.html#t-cardiogenic">Cardiogenic</a></dt><dd>Originating from or caused by the heart, as in cardiogenic shock.</dd></div><div><dt><a href="../glossary.html#t-chronic">Chronic</a></dt><dd>Persisting over a long period of time — contrast with acute.</dd></div><div><dt><a href="../glossary.html#t-compensated-shock">Compensated shock</a></dt><dd>An early stage of shock in which the body's mechanisms (increased heart rate, vasoconstriction) are still maintaining an adequate blood pressure.</dd></div><div><dt><a href="../glossary.html#t-decompensated-shock">Decompensated shock</a></dt><dd>A later stage of shock in which the body's compensatory mechanisms fail, and blood pressure drops — a medical emergency.</dd></div><div><dt><a href="../glossary.html#t-diaphoresis">Diaphoresis</a></dt><dd>Excessive or profuse sweating.</dd></div><div><dt><a href="../glossary.html#t-dysrhythmia">Dysrhythmia</a></dt><dd>An abnormal heart rhythm; often used interchangeably with arrhythmia.</dd></div><div><dt><a href="../glossary.html#t-edema">Edema</a></dt><dd>Swelling caused by excess fluid trapped in body tissues.</dd></div><div><dt><a href="../glossary.html#t-embolism">Embolism</a></dt><dd>A blockage in a blood vessel caused by a clot or other material that traveled there from elsewhere in the body.</dd></div><div><dt><a href="../glossary.html#t-hemorrhage">Hemorrhage</a></dt><dd>Heavy or uncontrolled bleeding.</dd></div><div><dt><a href="../glossary.html#t-homeostasis">Homeostasis</a></dt><dd>The body's tendency to maintain a stable, balanced internal environment.</dd></div><div><dt><a href="../glossary.html#t-hypoxia">Hypoxia</a></dt><dd>A deficiency of oxygen reaching the body's tissues.</dd></div><div><dt><a href="../glossary.html#t-infarction">Infarction</a></dt><dd>Tissue death caused by an inadequate blood supply, as in a myocardial infarction.</dd></div><div><dt><a href="../glossary.html#t-perfusion">Perfusion</a></dt><dd>The flow of blood through blood vessels to an organ or tissue, delivering oxygen and nutrients.</dd></div><div><dt><a href="../glossary.html#t-pneumothorax">Pneumothorax</a></dt><dd>A collection of air in the pleural space, causing partial or complete lung collapse.</dd></div><div><dt><a href="../glossary.html#t-pulmonary-edema">Pulmonary edema</a></dt><dd>A buildup of fluid in the lungs, often caused by heart failure, that impairs oxygen exchange.</dd></div><div><dt><a href="../glossary.html#t-sepsis">Sepsis</a></dt><dd>A life-threatening, dysregulated body response to infection that can lead to organ dysfunction and shock.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div><div><dt><a href="../glossary.html#t-tachycardia">Tachycardia</a></dt><dd>An abnormally fast heart rate.</dd></div><div><dt><a href="../glossary.html#t-vasodilation">Vasodilation</a></dt><dd>The widening of blood vessels, which decreases blood pressure and increases blood flow to an area.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html">Practice the bank &rarr;</a> <a href="../study-notes.html#chapter-7">Open in the reader &rarr;</a></p>
+    </section>
+    <section class="book-tools" aria-label="Practice this">
+      <div class="chapter-tools">
+        <span class="chapter-tools__k">Practice this</span>
+        <a href="../body-map.html">Body Map <small>find these structures on a 3D model</small></a>
+      </div>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="anatomy-and-physiology.html"><span>&larr; Chapter 6</span><b>Anatomy and Physiology</b></a>
+      <a class="tb-chapter-link next" href="life-span-development.html"><span>Chapter 8 &rarr;</span><b>Life Span Development</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

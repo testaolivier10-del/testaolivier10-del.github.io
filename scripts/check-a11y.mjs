@@ -51,6 +51,9 @@ const PAGES = [
   ['/nremt/practice.html', 'the question bank'],
   ['/nremt/dashboard.html', 'a dashboard with charts'],
   ['/nremt/study-notes.html', 'a long reading page'],
+  // One page per study-notes chapter (build-nremt-notes-pages.mjs): the
+  // reader's chapter as static HTML, with tables and the key terms list.
+  ['/nremt/notes/airway-management.html', 'an NREMT chapter page'],
   ['/nremt/search.html', 'a search page'],
   ['/ochem/', 'the other course home'],
   ['/ochem/learn.html', 'the textbook'],

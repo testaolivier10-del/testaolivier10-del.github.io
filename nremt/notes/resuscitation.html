@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resuscitation: NREMT-EMT Study Notes | LevlPrep</title>
+<meta name="description" content="Cardiac arrest is the emergency the EMT owns, because high-quality CPR and early defibrillation do more for survival than anything that happens later.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/resuscitation.html">
+<meta property="og:title" content="Resuscitation: NREMT-EMT Study Notes | LevlPrep">
+<meta property="og:description" content="Cardiac arrest is the emergency the EMT owns, because high-quality CPR and early defibrillation do more for survival than anything that happens later.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/resuscitation.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/resuscitation.html#notes","name":"Resuscitation: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/resuscitation.html","description":"Cardiac arrest is the emergency the EMT owns, because high-quality CPR and early defibrillation do more for survival than anything that happens later.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":21},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Resuscitation","item":"https://levlprep.com/nremt/notes/resuscitation.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="cardiac-emergencies.html"><span class="bk-toc-n">20</span>Cardiac Emergencies</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">21</span><span><b>Resuscitation</b><small>3 sections</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch21-arrest-pathophys"><span class="bk-toc-n">21.1</span>Cardiac Arrest Pathophysiology & the Chain of Survival</a></li><li><a href="#ch21-steps"><span class="bk-toc-n">21.2</span>Assessment & the Steps of Resuscitation</a></li><li><a href="#ch21-special"><span class="bk-toc-n">21.3</span>Special Resuscitation Considerations</a></li></ol></nav>
+    <a class="bk-toc-other" href="diabetic-emergencies-and-altered-mental-status.html"><span class="bk-toc-n">22</span>Diabetic Emergencies and Altered Mental Status</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Resuscitation</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-21"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html?domain=Cardiac%20%26%20Medical">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="21">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 21 of 40 · Cardiac &amp; Medical domain</p>
+      <h1 class="tb-chapter-title">Resuscitation</h1>
+      <div class="tb-chapter-meta">
+        <span>3 sections · 15 topics · about 15 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/resuscitation.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">Cardiac arrest is the emergency the EMT owns, because high-quality CPR and early defibrillation do more for survival than anything that happens later. This chapter presents the chain of survival, the difference between a mechanical and an electrical cause of arrest, recognition, the four steps of a coordinated resuscitation from first compressions through return of spontaneous circulation, and the special cases of hypothermia, submersion, implanted devices and infants.</p>
+    </header>
+<section class="section bk-sec" id="ch21-arrest-pathophys" data-num="21.1" data-title="Cardiac Arrest Pathophysiology &amp; the Chain of Survival">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">21.1</span>Cardiac Arrest Pathophysiology & the Chain of Survival</h2>
+      <span class="domain-tag">Cardiac & Medical domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch21-arrest-pathophys--1" data-heading="EMTs own CPR">
+      <h3>EMTs own CPR</h3>
+      <p>Cardiac arrest has attracted more advanced medications and technology than almost any other emergency, yet research shows that only two interventions reliably alter its outcome: quality chest compressions and early defibrillation. Both sit squarely within the EMT's scope of practice, and that is why cardiac arrest is the emergency the EMT owns.</p>
+            <p>The systems that do best treat resuscitation as a discipline. <strong>High-performance CPR</strong> means systems planning, regimented training with feedback, incident command, and a laser focus on compressions and defibrillation. Systems that practice it can push survival from witnessed arrest above 50%, against a national average under 15%.</p>
+    </div>
+<div class="topic" id="ch21-arrest-pathophys--2" data-heading="The chain of survival (6 links)">
+      <h3>The chain of survival (6 links)</h3>
+      <p>The chain of survival describes, in order, the six links a cardiac arrest patient must pass through, each of which depends on the one before it. The 2025 AHA guidelines went back to a <strong>single chain</strong> covering every cardiac arrest &mdash; adult or pediatric, in hospital or out of it &mdash; where there had previously been separate chains for each. The six links are:</p>
+            <ol>
+            <li><strong>Recognition and emergency activation.</strong> Somebody identifies the arrest and calls for help.</li>
+            <li><strong>High-quality CPR.</strong></li>
+            <li><strong>Defibrillation.</strong></li>
+            <li><strong>Advanced resuscitation.</strong> Medications, advanced airways, and where available extracorporeal CPR.</li>
+            <li><strong>Post&ndash;cardiac arrest care.</strong></li>
+            <li><strong>Recovery and survivorship.</strong> Rehabilitation, follow-up, and psychological support, which continue for months to years.</li>
+            </ol><!-- fig:ch21-chain:start --><figure class="notes-figure notes-figure--wide" style="--vb:700"><svg viewBox="0 0 700 268" role="img" aria-label="The six links of the 2025 AHA chain of survival in order, with high-quality CPR and defibrillation marked as the EMT’s two"><text class="fg-tag" x="350" y="22" text-anchor="middle" font-size="11.5">ONE CHAIN — ADULT OR PEDIATRIC, IN HOSPITAL OR OUT</text><rect class="fg-panel" x="22" y="46" width="196" height="80" rx="10"></rect><text class="fg-tag" x="38" y="72" text-anchor="start" font-size="14">1</text><text class="fg-lbl" x="120" y="92" text-anchor="middle" font-size="12.5">Recognition &amp;</text><text class="fg-lbl" x="120" y="109" text-anchor="middle" font-size="12.5">emergency activation</text><line class="fg-arrow" x1="220" y1="86" x2="232" y2="86"></line><path class="fg-head" d="M240 86 L232 90.16 L232 81.84 Z"></path><rect class="fg-panel-hi" x="242" y="46" width="196" height="80" rx="10"></rect><rect class="fg-fill-hi" x="242" y="46" width="196" height="80" rx="7" opacity="0.14"></rect><text class="fg-tag" x="258" y="72" text-anchor="start" font-size="14">2</text><text class="fg-lbl" x="340" y="92" text-anchor="middle" font-size="12.5">High-quality</text><text class="fg-lbl" x="340" y="109" text-anchor="middle" font-size="12.5">CPR</text><line class="fg-arrow" x1="440" y1="86" x2="452" y2="86"></line><path class="fg-head" d="M460 86 L452 90.16 L452 81.84 Z"></path><rect class="fg-panel-hi" x="462" y="46" width="196" height="80" rx="10"></rect><rect class="fg-fill-hi" x="462" y="46" width="196" height="80" rx="7" opacity="0.14"></rect><text class="fg-tag" x="478" y="72" text-anchor="start" font-size="14">3</text><text class="fg-lbl" x="560" y="92" text-anchor="middle" font-size="12.5">Defibrillation</text><rect class="fg-panel" x="22" y="158" width="196" height="80" rx="10"></rect><text class="fg-tag" x="38" y="184" text-anchor="start" font-size="14">4</text><text class="fg-lbl" x="120" y="204" text-anchor="middle" font-size="12.5">Advanced</text><text class="fg-lbl" x="120" y="221" text-anchor="middle" font-size="12.5">resuscitation</text><line class="fg-arrow" x1="220" y1="198" x2="232" y2="198"></line><path class="fg-head" d="M240 198 L232 202.16 L232 193.84 Z"></path><rect class="fg-panel" x="242" y="158" width="196" height="80" rx="10"></rect><text class="fg-tag" x="258" y="184" text-anchor="start" font-size="14">5</text><text class="fg-lbl" x="340" y="204" text-anchor="middle" font-size="12.5">Post–cardiac</text><text class="fg-lbl" x="340" y="221" text-anchor="middle" font-size="12.5">arrest care</text><line class="fg-arrow" x1="440" y1="198" x2="452" y2="198"></line><path class="fg-head" d="M460 198 L452 202.16 L452 193.84 Z"></path><rect class="fg-panel" x="462" y="158" width="196" height="80" rx="10"></rect><text class="fg-tag" x="478" y="184" text-anchor="start" font-size="14">6</text><text class="fg-lbl" x="560" y="204" text-anchor="middle" font-size="12.5">Recovery &amp;</text><text class="fg-lbl" x="560" y="221" text-anchor="middle" font-size="12.5">survivorship</text><line class="fg-arrow" x1="560" y1="128" x2="127.98" y2="155.49"></line><path class="fg-head" d="M120 156 L127.72 151.34 L128.25 159.64 Z"></path></svg><figcaption>The 2025 chain of survival. The 2020 guidelines ran separate chains for adults and children and for in-hospital and out-of-hospital arrest; 2025 went back to <b>one chain for all of them</b>.<span class="notes-figure-note">Links 2 and 3 are shaded because they are the EMT’s. High-quality CPR and defibrillation are the two interventions research shows reliably change the outcome, and both sit inside an EMT’s scope of practice. Everything left of them is somebody noticing in time; everything right of them needs a hospital.</span></figcaption></figure><!-- fig:ch21-chain:end -->
+            <p>The second and third links, high-quality CPR and defibrillation, are the two interventions that research shows reliably change outcomes, and they belong to the EMT.</p>
+            <p class="sub">Two details of the 2025 revision are worth knowing. The symbol for the CPR link now shows <em>compressions and breaths</em> rather than compressions alone, because ventilation matters in pediatric arrest and in the substantial minority of adult arrests caused by drowning or opioid poisoning. And the single chain covers adult and pediatric arrest only &mdash; a newborn at delivery follows a separate Newborn Chain of Care.</p>
+    </div>
+<div class="topic" id="ch21-arrest-pathophys--3" data-heading="Mechanical failure vs. electrical dysfunction">
+      <h3>Mechanical failure vs. electrical dysfunction</h3>
+      <p>An arrest has one of two underlying causes. In <strong>mechanical failure</strong>, the heart stops pumping effectively because of a structural problem: loss of normal myocardial structure, as after a myocardial infarction (MI) or with chronic hypertension; loss of valve function; or direct trauma, including pericardial tamponade. Mechanical failure can occur even while the heart's electrical function is normal. When the monitor shows an organized rhythm but the patient has no pulse, the condition is called <strong>pulseless electrical activity (PEA)</strong>.</p>
+            <p><strong>Electrical dysfunction</strong> is the more common cause. When the supply of oxygen to the heart is interrupted, the sodium-potassium pump on which its electrical activity depends is disrupted. If that disruption is complete, the result is asystole. If it is partial or chaotic, the result is a dysrhythmia such as ventricular tachycardia (V-tach) or ventricular fibrillation (V-fib), and these can often be corrected rapidly by defibrillation.</p>
+    </div>
+<div class="topic" id="ch21-arrest-pathophys--4" data-heading="Sudden vs. asphyxial cardiac arrest">
+      <h3>Sudden vs. asphyxial cardiac arrest</h3>
+      <p>Cardiac arrest can also be classified by how it begins. Sudden cardiac arrest is the abrupt collapse caused by a dysrhythmia, and asphyxial cardiac arrest is the end point of systemic hypoxia from a respiratory problem or from shock. The distinction matters because it changes what the patient needs most. The table below sets out the differences.</p>
+            <p class="tb-caption"><b>Table 21.1</b>Sudden vs. asphyxial cardiac arrest</p><div class="table-wrap"><table><thead><tr><th></th><th>Sudden cardiac arrest</th><th>Asphyxial cardiac arrest</th></tr></thead><tbody>
+            <tr><td>Cause</td><td>Abrupt-onset dysrhythmia (VF/V-tach)</td><td>Systemic hypoxia (respiratory problems, shock)</td></tr>
+            <tr><td>% of all arrests</td><td>&gt;85%</td><td>Remainder</td></tr>
+            <tr><td>Warning</td><td>Little to none — abrupt collapse</td><td>More warning — gradual decompensation</td></tr>
+            <tr><td>Ventilation priority</td><td>Compressions primary</td><td>Quality ventilations especially important</td></tr>
+            </tbody></table></div>
+            <p class="sub">Pediatric cardiac arrest follows the opposite pattern from the adult one. It is overwhelmingly asphyxial; only about 20% of pediatric arrests result from a sudden dysrhythmia.</p>
+    </div>
+<div class="topic" id="ch21-arrest-pathophys--5" data-heading="Agonal respirations">
+      <h3>Agonal respirations</h3>
+      <p><strong>Agonal respirations</strong> occur when the heart stops suddenly while residual oxygen remains in the blood. The medulla continues to send occasional impulses, and the result is intermittent gasping. These gasps actually help circulation slightly, and can be thought of as the body's attempt to resuscitate itself, but they cannot sustain themselves and they cannot sustain the patient.</p>
+            <p>Because they indicate that residual oxygen is still present, agonal respirations are a good prognostic sign. They must not confuse you, however. Gasping is not breathing. If there is no pulse, or you are uncertain whether there is one, start compressions regardless.</p>
+    </div></div>
+  </section>
+<section class="section bk-sec" id="ch21-steps" data-num="21.2" data-title="Assessment &amp; the Steps of Resuscitation">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">21.2</span>Assessment & the Steps of Resuscitation</h2>
+      <span class="domain-tag">Cardiac & Medical domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch21-steps--1" data-heading="Recognizing cardiac arrest">
+      <h3>Recognizing cardiac arrest</h3>
+      <p>Recognizing an arrest sounds simple, but the stress of the moment triggers your own fight-or-flight response, and tunnel vision is a real hazard. Three features, assessed rapidly, confirm cardiac arrest: the patient is unresponsive; the patient is apneic, remembering that agonal breathing must not be mistaken for real breathing; and the patient has no pulse, checked at the carotid artery for no more than 10 seconds. Once arrest is confirmed, the primary assessment stops and compressions begin immediately.</p>
+            <p class="sub">In pediatric patients, check the brachial or femoral pulse instead of the carotid. The threshold for compressions also differs. An infant or child with a heart rate below 60 bpm and signs of poor perfusion, despite adequate oxygenation and ventilation, is treated as nonperfusing, and compressions begin.</p>
+    </div>
+<div class="topic" id="ch21-steps--2" data-heading="Coordinated resuscitation team">
+      <h3>Coordinated resuscitation team</h3>
+      <p>A resuscitation runs best when the first three providers on scene already know their jobs. This arrangement, sometimes called the <strong>"triangle of life,"</strong> assigns predetermined roles: one provider performs compressions, one operates the AED, and one takes the head to manage the airway and ventilations. Additional providers who arrive later rotate in to relieve a fatiguing compressor or to carry out ALS interventions.</p>
+    </div>
+<div class="topic" id="ch21-steps--3" data-heading="Step 1 — identify arrest &amp; begin">
+      <h3>Step 1 — identify arrest & begin</h3>
+      <p>The first step is to identify the arrest and begin compressions where the patient is found. Moving the patient before starting delays compressions, and it is a common and avoidable error. Once compressions have started, they must continue without pause for as much of the resuscitation as possible. The proportion of the resuscitation during which compressions are actually being delivered is the <strong>compression fraction</strong>, and the goal is to keep it high. Because the quality of compressions falls as the compressor tires, switch compressors at least every 2 minutes.</p>
+            <p>High-quality compressions are defined by five numbers, and they are the most examinable figures in the whole chapter:</p>
+            <p class="tb-caption"><b>Table 21.2</b>Step 1 — identify arrest &amp; begin</p><div class="table-wrap"><table><thead><tr><th></th><th>Adult</th><th>Child (1 year to puberty)</th><th>Infant (under 1 year)</th></tr></thead><tbody>
+            <tr><td><strong>Rate</strong></td><td colspan="3">100&ndash;120 compressions per minute, at every age</td></tr>
+            <tr><td><strong>Depth</strong></td><td>2 to 2.4 inches (5&ndash;6 cm)</td><td>About 2 inches &mdash; one third of the chest depth</td><td>About 1.5 inches &mdash; one third of the chest depth</td></tr>
+            <tr><td><strong>Ratio, one rescuer</strong></td><td>30:2</td><td>30:2</td><td>30:2</td></tr>
+            <tr><td><strong>Ratio, two rescuers</strong></td><td>30:2</td><td>15:2</td><td>15:2</td></tr>
+            <tr><td><strong>Hands</strong></td><td>Two hands, heel on the lower half of the sternum</td><td>One or two hands, depending on the child's size</td><td>Two thumbs encircling the chest, or the heel of one hand</td></tr>
+            </tbody></table></div>
+            <p class="sub">The infant row changed in 2025. The <strong>two-finger technique was eliminated</strong>: it did not reliably reach a third of the chest's depth. Two techniques replace it &mdash; two thumbs encircling the chest, and the heel of one hand &mdash; and when a rescuer's hands cannot physically reach around the infant's chest, the heel of one hand is the one to use.</p>
+            <p><strong>Full recoil</strong> is the fifth, and it is the one most often lost. Let the chest come all the way back up between compressions and keep your weight off it at the top: the heart refills during the recoil, so leaning on the chest quietly reduces the blood flow from every compression that follows. Depth has an upper limit for the same reason it has a lower one &mdash; deeper than about 2.4 inches in an adult causes injury without improving flow.</p><!-- fig:ch21-depth:start --><figure class="notes-figure notes-figure--wide" style="--vb:700"><svg viewBox="0 0 700 272" role="img" aria-label="Compression depth drawn as a fraction of chest depth for adult, child and infant, showing that all three are about one third"><text class="fg-tag" x="20" y="28" text-anchor="start" font-size="11">DEPTH AGAINST THE CHEST IT IS MEASURED IN</text><rect class="fg-panel" x="48" y="42" width="120" height="144" rx="8"></rect><rect class="fg-fill-hi" x="48" y="42" width="120" height="48" rx="8" opacity="0.3"></rect><line class="fg-rule" x1="42" y1="90" x2="174" y2="90"></line><text class="fg-lbl" x="108" y="71" text-anchor="middle" font-size="12">2 to 2.4 in</text><text class="fg-tag" x="108" y="208" text-anchor="middle" font-size="11.5">Adult</text><text class="fg-sm" x="108" y="226" text-anchor="middle" font-size="10">5–6 cm</text><text class="fg-tag" x="180" y="56" text-anchor="start" font-size="11.5">33%</text><rect class="fg-panel" x="260" y="54" width="120" height="132" rx="8"></rect><rect class="fg-fill-hi" x="260" y="54" width="120" height="48" rx="8" opacity="0.3"></rect><line class="fg-rule" x1="254" y1="102" x2="386" y2="102"></line><text class="fg-lbl" x="320" y="83" text-anchor="middle" font-size="12">about 2 in</text><text class="fg-tag" x="320" y="208" text-anchor="middle" font-size="11.5">Child</text><text class="fg-sm" x="320" y="226" text-anchor="middle" font-size="10">one third</text><text class="fg-tag" x="392" y="68" text-anchor="start" font-size="11.5">36%</text><rect class="fg-panel" x="472" y="90" width="120" height="96" rx="8"></rect><rect class="fg-fill-hi" x="472" y="90" width="120" height="36" rx="8" opacity="0.3"></rect><line class="fg-rule" x1="466" y1="126" x2="598" y2="126"></line><text class="fg-lbl" x="532" y="113" text-anchor="middle" font-size="12">about 1.5 in</text><text class="fg-tag" x="532" y="208" text-anchor="middle" font-size="11.5">Infant</text><text class="fg-sm" x="532" y="226" text-anchor="middle" font-size="10">one third</text><text class="fg-tag" x="604" y="104" text-anchor="start" font-size="11.5">38%</text><text class="fg-sm" x="20" y="262" text-anchor="start" font-size="10.5">Three numbers, one rule: about a third of the way through the chest in front of you.</text></svg><figcaption>Why the three depths are not three rules. <b>2 inches, 2 inches and 1.5 inches</b> are all roughly one third of the chest they are measured in.<span class="notes-figure-note">This is also why depth has an upper limit for the same reason it has a lower one. Too shallow and the heart is not squeezed; deeper than about a third and you are past the point where more depth adds flow, and into the range that breaks things. The adult figure is the only one given as a range — 2 to 2.4 inches — because for adults the guidelines set an explicit upper limit as well as a minimum.</span></figcaption></figure><!-- fig:ch21-depth:end -->
+            <p>Once an advanced airway is in place the ratio stops applying: compressions run continuously at 100&ndash;120 while ventilations are given about once every 6 seconds, roughly 10 per minute, in an adult (every 2&ndash;3 seconds, 20&ndash;30 per minute, in an infant or child).</p>
+    </div>
+<div class="topic" id="ch21-steps--4" data-heading="Step 2 — integrate the AED">
+      <h3>Step 2 — integrate the AED</h3>
+      <p>The second step is to integrate the AED. There is no benefit to delaying its application, but the order in which CPR and the AED come depends on the patient, as the table below shows.</p>
+            <p class="tb-caption"><b>Table 21.3</b>Step 2 — integrate the AED</p><div class="table-wrap"><table><thead><tr><th>Patient</th><th>Priority sequence</th><th>Why</th></tr></thead><tbody>
+            <tr><td>Any patient, AED to hand</td><td>Attach and use it as soon as it arrives</td><td>Defibrillation is time-critical, and nothing is gained by holding the AED back</td></tr>
+            <tr><td>Lone rescuer, child or infant, arrest not witnessed</td><td>About 2 minutes of CPR first, then fetch the AED</td><td>Pediatric arrests are usually asphyxial, so oxygenation matters most &mdash; and a lone rescuer leaving to find an AED is time with no compressions at all</td></tr>
+            <tr><td>Lone rescuer, adult, or any witnessed sudden collapse</td><td>Get the AED first</td><td>A sudden dysrhythmia is the likely cause, and a shock is the treatment</td></tr>
+            </tbody></table></div>
+            <p class="sub">The old shorthand &mdash; &ldquo;adults AED first, children CPR first&rdquo; &mdash; gets this wrong. The two-minutes-of-CPR rule is about a <em>lone</em> rescuer having to leave an unwitnessed pediatric arrest to go and find an AED. A crew does not face that choice: one provider compresses while the other fetches and attaches the AED, at any age.</p>
+            <p>Turn the AED on first, so that it can guide you. The pads go on bare skin: remove clothing, jewelry and medication patches, shave excess hair, and offset the pads around a visible pacemaker. Do not interrupt compressions to place the pads. The analysis phase usually requires about 15 to 20 seconds during which no one touches the patient. Clear the patient before delivering a shock, and resume compressions immediately afterward without waiting for the device to prompt you. The AED reanalyzes the rhythm every 2 minutes.</p>
+    </div>
+<div class="topic" id="ch21-steps--5" data-heading="Step 3 — continue the resuscitation">
+      <h3>Step 3 — continue the resuscitation</h3>
+      <p>The third step is to continue the resuscitation through repeated cycles of compressions, analysis and shocks. In a pediatric patient, deploy the AED regardless of age; roughly 20% of pediatric arrests involve a shockable rhythm. For a child under 8 years of age, use pediatric pads if they are available, typically in an anterior-posterior placement. If no pediatric pads are available, use the adult AED anyway. It is better to over-defibrillate than not to defibrillate at all.</p>
+            <p>Return of spontaneous circulation (ROSC) often does not occur until the second, third or fourth shock, so stay ready for a rhythm change on any given analysis. Family presence during the resuscitation is a genuinely complicated question. The potential benefit, closure for the family, must be weighed against the risk that they interfere. Offer the option, and be ready to relocate the family if it becomes necessary.</p>
+    </div>
+<div class="topic" id="ch21-steps--6" data-heading="Step 4 — transitioning after ROSC">
+      <h3>Step 4 — transitioning after ROSC</h3>
+      <p>The fourth step is the transition to postarrest care once ROSC occurs. There is no single reliable sign of it. A palpable pulse is the definition, but pulse checks are notoriously unreliable in this setting; spontaneous breathing, movement or a return of consciousness all suggest it, and where waveform capnography is in use a sudden sustained rise in end-tidal CO2 is the earliest and most objective clue. If you are in doubt, err on the side of continuing the resuscitation.</p>
+            <p>Once ROSC is confirmed, care shifts to the postarrest priorities: rapid transport, airway management that avoids hyperventilation, and oxygen <strong>titrated to a saturation of 92–98%</strong>. The target is a window, not a floor. Both ends of it matter: hypoxia after an arrest worsens the brain injury that has already happened, and so does hyperoxia, which is why the instruction is no longer to push the saturation as high as it will go. A 12-lead ECG belongs in the postarrest sequence too, if your service carries one and you are permitted to acquire it.</p>
+            <p>The resuscitated patient is at high risk of re-arrest. Recheck the pulse roughly every 30 seconds in a patient who has ROSC but remains unconscious. If the pulse is lost again, stop the vehicle if you are en route, resume CPR, analyze the rhythm, shock if indicated, and continue according to local protocol.</p>
+    </div>
+<div class="topic" id="ch21-steps--7" data-heading="Terminating resuscitation &amp; death notification">
+      <h3>Terminating resuscitation & death notification</h3>
+      <p>Once begun, CPR and defibrillation continue until one of four things happens:</p>
+            <ul>
+            <li>Spontaneous circulation returns.</li>
+            <li>Care is transferred to a provider with a higher level of training.</li>
+            <li>You are too exhausted to continue.</li>
+            <li>A physician or other authority issues an order to cease resuscitation.</li>
+            </ul>
+            <p>When resuscitation fails, the EMT is often the one who tells the family. Be straightforward and direct: "I'm very sorry, but your father has died." Allow the family privacy, be patient, and be genuine. Do not claim to know how they feel.</p>
+    </div></div>
+  </section>
+<section class="section bk-sec" id="ch21-special" data-num="21.3" data-title="Special Resuscitation Considerations">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">21.3</span>Special Resuscitation Considerations</h2>
+      <span class="domain-tag">Cardiac & Medical domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch21-special--1" data-heading="Hypothermia, submersion &amp; moving ambulances">
+      <h3>Hypothermia, submersion & moving ambulances</h3>
+      <p>Several situations change the standard approach. In hypothermic cardiac arrest, defibrillate as you would for any other patient and follow the standard BLS algorithm while rewarming. The older teaching — one shock, then nothing further until the core reached 86°F (30°C) — has been dropped; withholding shocks by temperature is no longer advised. Handle the patient gently, get wet clothing off, prevent further heat loss, and transport to a facility that can rewarm actively. The window of survivability is longer in the cold patient, which is what “not dead until warm and dead” means, so do not terminate resuscitation in the field for a hypothermic patient.</p>
+            <p>Most arrests from submersion, or drowning, are asphyxial, so be aggressive with airway management and rescue breathing. Never defibrillate a soaking-wet patient. Dry the chest, or move the patient out of the wet environment, first.</p>
+            <p>Resuscitation in a moving ambulance is generally avoided. Motion reduces the quality of compressions, and some AEDs cannot analyze a rhythm while the vehicle is moving. If arrest occurs during transport, stop the vehicle to perform CPR and use the AED.</p>
+    </div>
+<div class="topic" id="ch21-special--2" data-heading="Implants &amp; prior surgeries">
+      <h3>Implants & prior surgeries</h3>
+      <p>Patients with implanted cardiac devices or a history of cardiac surgery are resuscitated in the same way as anyone else, with a few adjustments. The table below sets out the considerations for each.</p>
+            <p class="tb-caption"><b>Table 21.4</b>Implants &amp; prior surgeries</p><div class="table-wrap"><table><thead><tr><th>Device</th><th>Considerations</th></tr></thead><tbody>
+            <tr><td>Cardiac pacemaker</td><td>Offset defibrillation pads several inches away, stay in the general target area</td></tr>
+            <tr><td>Implanted defibrillator</td><td>A firing device is a likely lifesaving sign — transport immediately; offset AED pads away from it</td></tr>
+            <tr><td>VAD/LVAD</td><td>No palpable pulse/BP may be possible even while alive — rely on LOC/breathing; if unconscious with poor perfusion, assume malfunction and begin compressions</td></tr>
+            <tr><td>Cardiac bypass surgery</td><td>Provide the same standard emergency care as any other patient</td></tr>
+            </tbody></table></div>
+    </div>
+<div class="topic" id="ch21-special--3" data-heading="Sudden unexpected infant death syndrome (SUIDS)">
+      <h3>Sudden unexpected infant death syndrome (SUIDS)</h3>
+      <p><strong>Sudden unexpected infant death (SUID)</strong> is the death of an infant under 1 year of age with no immediately obvious cause. It is an umbrella term covering three things: <strong>SIDS</strong>, accidental <strong>suffocation or strangulation in bed</strong>, and deaths that remain undetermined after investigation. So accidental suffocation is part of the SUID category, not something ruled out of it.</p>
+            <p><strong>SIDS</strong> is the narrower term, and it is a diagnosis of exclusion: it is what a death is called after a full investigation, autopsy and scene review have failed to find a cause — including failing to find suffocation. None of that can be determined in the field, which is why what you are looking at on scene is a SUID until somebody else decides otherwise.</p>
+            <p>The EMT's role is to resuscitate unless rigor mortis or dependent lividity is present. As the saying goes, it is better to resuscitate when it isn't necessary than to fail to resuscitate when it is.</p>
+            <p>Support for the family is critical. Remind the parents that SUIDS happens to well-cared-for babies, and never speak to them in a suspicious tone.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 21.3</div>
+      <ul><li>Only quality compressions and early defibrillation reliably change cardiac arrest outcomes.</li><li>Use the AED as soon as it is to hand, at any age. The “2 minutes of CPR first” rule is only for a LONE rescuer at an unwitnessed child or infant arrest who must leave to fetch one.</li><li>Compressions: 100–120/min at every age. Depth 2–2.4 in (adult), ~2 in (child), ~1.5 in (infant). 30:2, or 15:2 for two rescuers on a child or infant. Full recoil every time — do not lean.</li><li>Agonal respirations are a good sign but don't delay compressions if there's no pulse.</li><li>PEA – organized electrical rhythm without effective mechanical pumping.</li><li>After ROSC, titrate oxygen to 92–98% — a window, not a floor; hyperoxia harms the post-arrest brain too. ROSC often doesn't happen until the 2nd–4th shock — stay ready.</li><li>Never defibrillate a soaking-wet patient — dry the chest first.</li><li>Hypothermic arrest: don't terminate resuscitation in the field. Defibrillate by the standard algorithm while rewarming — the old “one shock, then wait for 86°F” rule has been dropped.</li><li>VAD/LVAD patients may have no palpable pulse even while alive.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-chronic">Chronic</a></dt><dd>Persisting over a long period of time — contrast with acute.</dd></div><div><dt><a href="../glossary.html#t-dysrhythmia">Dysrhythmia</a></dt><dd>An abnormal heart rhythm; often used interchangeably with arrhythmia.</dd></div><div><dt><a href="../glossary.html#t-hypothermia">Hypothermia</a></dt><dd>An abnormally low body temperature.</dd></div><div><dt><a href="../glossary.html#t-hypoxia">Hypoxia</a></dt><dd>A deficiency of oxygen reaching the body's tissues.</dd></div><div><dt><a href="../glossary.html#t-infarction">Infarction</a></dt><dd>Tissue death caused by an inadequate blood supply, as in a myocardial infarction.</dd></div><div><dt><a href="../glossary.html#t-pediatric">Pediatric</a></dt><dd>Relating to infants, children, and adolescents — generally patients under 18 years of age.</dd></div><div><dt><a href="../glossary.html#t-perfusion">Perfusion</a></dt><dd>The flow of blood through blood vessels to an organ or tissue, delivering oxygen and nutrients.</dd></div><div><dt><a href="../glossary.html#t-rigor-mortis">Rigor mortis</a></dt><dd>The stiffening of the body's muscles after death — one of several presumptive/definitive signs used to identify obvious death.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div><div><dt><a href="../glossary.html#t-tachycardia">Tachycardia</a></dt><dd>An abnormally fast heart rate.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html?domain=Cardiac%20%26%20Medical">Practice this domain &rarr;</a> <a href="../study-notes.html#chapter-21">Open in the reader &rarr;</a></p>
+    </section>
+    <section class="book-tools" aria-label="Practice this">
+      <div class="chapter-tools">
+        <span class="chapter-tools__k">Practice this</span>
+        <a href="../sound-trainer.html">Sound Trainer <small>heart sounds and murmur timing</small></a><a href="../scenario-sim.html">Scenarios <small>run a cardiac arrest or bleeding call</small></a>
+      </div>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="cardiac-emergencies.html"><span>&larr; Chapter 20</span><b>Cardiac Emergencies</b></a>
+      <a class="tb-chapter-link next" href="diabetic-emergencies-and-altered-mental-status.html"><span>Chapter 22 &rarr;</span><b>Diabetic Emergencies and Altered Mental Status</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

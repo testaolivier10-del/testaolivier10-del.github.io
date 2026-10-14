@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical, Legal &amp; Ethical Issues: NREMT-EMT Notes | LevlPrep</title>
+<meta name="description" content="Two ideas are easy to confuse and are tested precisely because of it. Scope of practice is the legal boundary of what an EMT may do.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/medical-legal-and-ethical-issues.html">
+<meta property="og:title" content="Medical, Legal &amp; Ethical Issues: NREMT-EMT Notes | LevlPrep">
+<meta property="og:description" content="Two ideas are easy to confuse and are tested precisely because of it. Scope of practice is the legal boundary of what an EMT may do.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/medical-legal-and-ethical-issues.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/medical-legal-and-ethical-issues.html#notes","name":"Medical, Legal, and Ethical Issues: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/medical-legal-and-ethical-issues.html","description":"Two ideas are easy to confuse and are tested precisely because of it. Scope of practice is the legal boundary of what an EMT may do.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":4},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Medical, Legal, and Ethical Issues","item":"https://levlprep.com/nremt/notes/medical-legal-and-ethical-issues.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="lifting-and-moving-patients.html"><span class="bk-toc-n">3</span>Lifting and Moving Patients</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">4</span><span><b>Medical, Legal, and Ethical Issues</b><small>3 sections</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch4-scope-consent"><span class="bk-toc-n">4.1</span>Scope, Consent & Refusal</a></li><li><a href="#ch4-dnr-ethics"><span class="bk-toc-n">4.2</span>DNR, POLST & Ethical Dilemmas</a></li><li><a href="#ch4-negligence-confidentiality"><span class="bk-toc-n">4.3</span>Torts, Negligence & Confidentiality</a></li></ol></nav>
+    <a class="bk-toc-other" href="medical-terminology.html"><span class="bk-toc-n">5</span>Medical Terminology</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Medical, Legal, and Ethical Issues</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-4"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html?domain=EMS%20Operations">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="4">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 4 of 40 · EMS Operations domain</p>
+      <h1 class="tb-chapter-title">Medical, Legal, and Ethical Issues</h1>
+      <div class="tb-chapter-meta">
+        <span>3 sections · 11 topics · about 10 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/medical-legal-and-ethical-issues.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">Every call carries legal weight: the patient's right to consent or refuse, the EMT's duty to act, the limits of scope of practice and the standard of care you will be measured against. This chapter works through consent and refusal, advance directives such as DNR orders and POLST forms, a framework for ethical dilemmas, and the legal concepts of negligence, abandonment, confidentiality and Good Samaritan protection.</p>
+    </header>
+<section class="section bk-sec" id="ch4-scope-consent" data-num="4.1" data-title="Scope, Consent &amp; Refusal">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">4.1</span>Scope, Consent & Refusal</h2>
+      <span class="domain-tag">EMS Operations domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch4-scope-consent--1" data-heading="Scope of practice vs. standard of care">
+      <h3>Scope of practice vs. standard of care</h3>
+      <p>Two ideas are easy to confuse and are tested precisely because of it. <strong>Scope of practice</strong> is the legal boundary of what an EMT may do. It is defined by state and regional legislation and varies from one location to another, so the same skill may be within scope in one state and outside it in the next. <strong>Standard of care</strong> is what a reasonably trained EMT would do in a similar situation, and it is the benchmark used in negligence claims. The distinction is worth fixing in your mind now: scope of practice is what you are allowed to do, while standard of care is what you should do, and how well you should do it.</p>
+            <p>Both have to be maintained after certification. You keep your skills by practicing them to mastery, and you keep your knowledge current through continuing education and recertification. Quality improvement is the other half of that work. After a call, critique your own performance and your crew's, and accept feedback as a way to improve the care you give. The spirit to bring to it is simple: hold yourself to the standard you would want for a member of your own family.</p>
+    </div>
+<div class="topic" id="ch4-scope-consent--2" data-heading="Consent">
+      <h3>Consent</h3>
+      <p>No competent patient can be treated without permission, and the form that permission takes depends on the patient's condition. The three types you will meet are set out below.</p>
+            <p class="tb-caption"><b>Table 4.1</b>Consent</p><div class="table-wrap"><table><thead><tr><th>Type</th><th>Applies to</th><th>Description</th></tr></thead><tbody>
+            <tr><td>Expressed consent</td><td>Competent adult</td><td>Patient directly agrees to care (verbal/gesture), after understanding risks/benefits/alternatives</td></tr>
+            <tr><td>Implied consent</td><td>Unresponsive/incapacitated patient</td><td>Law assumes a reasonable person would consent to lifesaving care</td></tr>
+            <tr><td>Consent for minors</td><td>Children</td><td>Parent/guardian normally consents; in loco parentis = a responsible adult temporarily standing in for the parent (teacher, camp counselor) can consent in an emergency if the parent is unavailable</td></tr>
+            </tbody></table></div>
+            <p class="sub">Capacity to consent, or to refuse, requires that the patient be an adult or an emancipated minor, mentally competent and not impaired by injury, illness or substances, and fully informed of the risks of refusing.</p>
+    </div>
+<div class="topic" id="ch4-scope-consent--3" data-heading="Refusal of care">
+      <h3>Refusal of care</h3>
+      <p>A competent adult has the right to refuse care, even care you are certain they need. For that refusal to be valid, four conditions must all be met:</p>
+            <ul>
+            <li>The patient is a legal adult, or is otherwise legally authorized to refuse.</li>
+            <li>The patient is mentally competent and oriented.</li>
+            <li>The patient has been fully informed of the risks of refusing, in terms they understand.</li>
+            <li>The patient makes the refusal without coercion.</li>
+            </ul>
+            <p>The competence requirement carries a firm consequence: <strong>a patient intoxicated by alcohol or drugs cannot give a valid informed refusal.</strong></p>
+            <p>When a patient does refuse, work through the situation rather than simply leaving. Try again to persuade them to accept transport, explaining the risks clearly, and consult medical direction. Satisfy yourself that the patient genuinely understands the consequences of the decision, then document thoroughly: your assessment findings, the exact risks you explained, and the patient's own words where you can capture them. Have the patient sign a refusal form and obtain a witness signature if one is available. Finally, leave the door open by encouraging them to call back if they change their mind or if their condition worsens.</p>
+    </div></div>
+  </section>
+<section class="section bk-sec" id="ch4-dnr-ethics" data-num="4.2" data-title="DNR, POLST &amp; Ethical Dilemmas">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">4.2</span>DNR, POLST & Ethical Dilemmas</h2>
+      <span class="domain-tag">EMS Operations domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch4-dnr-ethics--1" data-heading="DNR orders &amp; POLST">
+      <h3>DNR orders & POLST</h3>
+      <p>A <strong>do not resuscitate (DNR) order</strong> is a legal document, typically signed by both the patient and a physician, stating that the patient has a terminal illness and does not want resuscitative efforts. It is one form of advance directive, meaning it is written and signed in advance of the event it governs. DNR orders vary in how specific they are. One might direct that resuscitation be attempted only if the arrest is witnessed and not if the patient is found already in arrest, which avoids resuscitating someone who may have sustained brain damage during an unwitnessed period of downtime.</p>
+            <p>Several related documents serve different purposes. <strong>Physician's Orders for Life-Sustaining Treatment (POLST)</strong> is broader than a DNR: it covers resuscitation together with other end-of-life preferences, such as artificial feeding and antibiotics, for use if the patient later cannot express their wishes. Some states allow physician assistants and advanced practice registered nurses to validate these forms rather than physicians alone, so check the rules where you work. A <strong>living will</strong> is a signed statement of preferences about long-term life support and comfort measures, and it typically applies to in-hospital situations rather than prehospital care. A <strong>health care proxy</strong> is a person the patient has named to make decisions on their behalf should they become unable to.</p>
+    </div>
+<div class="topic" id="ch4-dnr-ethics--2" data-heading="The critical decision rule">
+      <h3>The critical decision rule</h3>
+      <p>The rule to carry into a resuscitation decision is this: a family member's oral request alone, without a legal DNR document present, is not sufficient grounds to withhold resuscitation. It is better to be criticized or sued for attempting to save a life than for letting a patient die. Without an actual legal document in hand, provide care.</p>
+            <p>The reverse situation also occurs. If the family is under duress and wants a valid DNR ignored, so that they are asking for resuscitation despite a DNR on file, contact medical direction. The physician may need to speak with the family directly.</p>
+    </div>
+<div class="topic" id="ch4-dnr-ethics--3" data-heading="Ethical dilemmas — framework">
+      <h3>Ethical dilemmas — framework</h3>
+      <p>Not every hard call is a clinical one. A colleague who hides a medication error, coming upon a crash after you have been drinking, a patient who confides involvement in a crime: these are genuine tests of judgment, and none of them has a protocol.</p>
+            <p>The general approach is to identify your options, weigh patient welfare, safety and legal obligation against the competing pressures, and choose the course that best protects the patient and upholds your professional and legal duty, even when that course is uncomfortable. Reporting a colleague's serious medication error is the clearest example. Patient safety, and honesty about the care actually given, supersede loyalty to a colleague.</p>
+    </div></div>
+  </section>
+<section class="section bk-sec" id="ch4-negligence-confidentiality" data-num="4.3" data-title="Torts, Negligence &amp; Confidentiality">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">4.3</span>Torts, Negligence & Confidentiality</h2>
+      <span class="domain-tag">EMS Operations domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch4-negligence-confidentiality--1" data-heading="Torts, negligence &amp; legal concepts">
+      <h3>Torts, negligence & legal concepts</h3>
+      <p>A <strong>tort</strong> is a civil wrong, as opposed to a criminal act. One party's action causes harm to another, and the matter is resolved through civil liability and a lawsuit rather than criminal prosecution.</p>
+            <p>Negligence is the tort an EMT is most likely to face, and it has 4 required elements. All of them must be present for a claim to succeed:</p>
+            <ol>
+            <li><strong>Duty to act.</strong> You had an obligation to provide care.</li>
+            <li><strong>Breach of duty.</strong> You failed to provide the expected standard of care.</li>
+            <li><strong>Damages.</strong> The patient suffered actual harm.</li>
+            <li><strong>Causation.</strong> Your breach of duty directly caused that harm.</li>
+            </ol>
+            <p class="sub">Duty to act exists once you are on duty and dispatched, or in some jurisdictions once you have begun patient contact even while off duty. It varies by state and by employment status.</p>
+            <p>One doctrine sidesteps that four-part proof. <em>Res ipsa loquitur</em>, meaning "the thing speaks for itself," presumes negligence from the very nature of the injury or circumstance, without each element having to be proved individually. A surgical instrument left inside a patient is the classic example.</p>
+            <p>Three further terms describe specific wrongs. <strong>Abandonment</strong> is terminating care without ensuring that an equal or higher level of care continues, and without the patient's consent. <strong>Assault</strong> is placing a patient in fear of imminent harmful or unwanted contact. <strong>Battery</strong> is the actual unwanted physical contact, or care performed without consent.</p>
+    </div>
+<div class="topic" id="ch4-negligence-confidentiality--2" data-heading="Good Samaritan laws">
+      <h3>Good Samaritan laws</h3>
+      <p>Good Samaritan laws protect providers who voluntarily render emergency care in good faith and without expectation of payment, shielding them from liability for ordinary negligence. That protection does not extend to gross negligence or willful misconduct, and it is not total immunity: you can still be held liable for reckless or grossly negligent care.</p>
+    </div>
+<div class="topic" id="ch4-negligence-confidentiality--3" data-heading="Confidentiality &amp; HIPAA">
+      <h3>Confidentiality & HIPAA</h3>
+      <p><strong>Confidentiality</strong> is the protection of patient information from unauthorized disclosure, and EMTs breach it more often by carelessness than by intent. The common ways are discussing patients in public spaces such as elevators, restaurants and social media; sharing patient information with unauthorized bystanders or the media; and leaving patient care reports or other patient information visible or accessible.</p>
+            <p>The Health Insurance Portability and Accountability Act (HIPAA) governs how patient health information may be shared. Information can generally be shared for treatment, payment and healthcare operations, which is what allows you to hand off to receiving hospital staff, but not for unrelated purposes without authorization.</p>
+            <p>Two related risks concern what you say about a patient rather than what you disclose. <strong>Slander</strong> is a spoken false statement that damages someone's reputation, and <strong>libel</strong> is the same thing in writing. Both are real legal risks if an EMT makes inaccurate, damaging statements about a patient that turn out to be false.</p>
+    </div>
+<div class="topic" id="ch4-negligence-confidentiality--4" data-heading="Special situations">
+      <h3>Special situations</h3>
+      <p>Three situations come with their own rules, and each turns up regularly on calls.</p>
+            <ul>
+            <li><strong>Medical identification devices.</strong> Bracelets, necklaces and wallet cards can inform your treatment decisions by revealing allergies, DNR status or chronic conditions. Use the information when it is present and relevant.</li>
+            <li><strong>Organ donor status.</strong> This does not change your resuscitation efforts for a living patient. It becomes relevant only after death has been determined.</li>
+            <li><strong>Safe haven laws.</strong> These allow a parent to surrender an unharmed newborn anonymously and legally, usually within a set number of days, at a designated safe location, without facing prosecution for abandonment.</li>
+            </ul>
+    </div>
+<div class="topic" id="ch4-negligence-confidentiality--5" data-heading="Crime scenes">
+      <h3>Crime scenes</h3>
+      <p>At a crime scene you have two jobs that can pull against each other, and the order between them is fixed: patient care always takes priority over evidence preservation. Scene safety comes before both, so do not enter until law enforcement confirms the scene is safe.</p>
+            <p>Within those limits, minimize disturbance to the scene wherever you can do so without compromising care. Avoid unnecessary movement of items, do not cut through bullet or knife holes in clothing but cut around them instead, and preserve footprints and other physical evidence where that is feasible.</p>
+            <p>Your observations matter as much as your care. Observe and document anything you see or hear, including what patients and bystanders say, because these observations can have real evidentiary value. Do not discuss the case with unauthorized parties such as the media or bystanders, and be prepared to appear as a witness in legal proceedings, where accurate and objective documentation will be what you rely on.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 4.3</div>
+      <ul><li>Scope of practice = legal boundary of what your certification allows; standard of care = whether you did it the way a reasonably prudent EMT would have.</li><li>Expressed / implied / minor consent — each applies to a different patient condition; minors need guardian consent except for emancipated minors and true emergencies.</li><li>Valid refusal requires: competent adult + fully informed of risks + demonstrates understanding + thorough documentation + told to call back if anything changes.</li><li>A family's oral request alone can't override the need for a real DNR document — without one, provide care.</li><li>POLST = signed physician's order for specific life-sustaining treatment; broader than a DNR, unlike a living will.</li><li>Negligence = duty to act + breach of duty + damages + causation, all four required together.</li><li>Tort = civil wrong (can be sued); crime = offense against the state (prosecuted) — the same act can sometimes be both.</li><li>Good Samaritan laws protect good-faith, in-training acts — not gross negligence, not abandonment.</li><li>Abandonment = stopping care without an equal-or-higher-trained provider taking over, or without patient consent to stop.</li><li>Assault = fear of unwanted contact; battery = actual unwanted contact/care without consent.</li><li>Confidentiality/HIPAA allows sharing info with those directly involved in care — not family, bystanders, or the public.</li><li>Slander = spoken defamation; libel = written defamation.</li><li>Safe haven laws let a parent anonymously surrender an unharmed newborn without prosecution.</li><li>At a crime scene: patient care first, minimize disturbance without compromising care, document what you observe.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-chronic">Chronic</a></dt><dd>Persisting over a long period of time — contrast with acute.</dd></div><div><dt><a href="../glossary.html#t-prehospital">Prehospital</a></dt><dd>Occurring or provided before a patient reaches the hospital, i.e. EMS care in the field.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html?domain=EMS%20Operations">Practice this domain &rarr;</a> <a href="../study-notes.html#chapter-4">Open in the reader &rarr;</a></p>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="lifting-and-moving-patients.html"><span>&larr; Chapter 3</span><b>Lifting and Moving Patients</b></a>
+      <a class="tb-chapter-link next" href="medical-terminology.html"><span>Chapter 5 &rarr;</span><b>Medical Terminology</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

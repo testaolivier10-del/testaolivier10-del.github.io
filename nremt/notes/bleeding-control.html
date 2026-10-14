@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bleeding Control: NREMT-EMT Study Notes | LevlPrep</title>
+<meta name="description" content="Uncontrolled external bleeding is one of the most preventable causes of death from trauma, and direct pressure stops most of it.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/bleeding-control.html">
+<meta property="og:title" content="Bleeding Control: NREMT-EMT Study Notes | LevlPrep">
+<meta property="og:description" content="Uncontrolled external bleeding is one of the most preventable causes of death from trauma, and direct pressure stops most of it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/bleeding-control.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/bleeding-control.html#notes","name":"Bleeding Control: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/bleeding-control.html","description":"Uncontrolled external bleeding is one of the most preventable causes of death from trauma, and direct pressure stops most of it.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":29},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Bleeding Control","item":"https://levlprep.com/nremt/notes/bleeding-control.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="hematologic-and-renal-emergencies.html"><span class="bk-toc-n">28</span>Hematologic and Renal Emergencies</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">29</span><span><b>Bleeding Control</b><small>3 sections</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch29-bleeding-control"><span class="bk-toc-n">29.1</span>External Bleeding Control — Direct Pressure</a></li><li><a href="#ch29-tourniquets"><span class="bk-toc-n">29.2</span>Tourniquets & Wound Packing</a></li><li><a href="#ch29-internal-bleeding"><span class="bk-toc-n">29.3</span>Internal Bleeding & Hemorrhagic Shock</a></li></ol></nav>
+    <a class="bk-toc-other" href="soft-tissue-trauma.html"><span class="bk-toc-n">30</span>Soft-Tissue Trauma</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Bleeding Control</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-29"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html?domain=Trauma">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="29">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 29 of 40</p>
+      <h1 class="tb-chapter-title">Bleeding Control</h1>
+      <div class="tb-chapter-meta">
+        <span>3 sections · 10 topics · about 12 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/bleeding-control.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">Uncontrolled external bleeding is one of the most preventable causes of death from trauma, and direct pressure stops most of it. This chapter presents the escalating framework from direct pressure to tourniquet and hemostatic dressing, explains why pressure works, walks through the procedure step by step — including the case that does not escalate at all, because life-threatening extremity bleeding gets a tourniquet immediately — and then covers the two things pressure cannot help with: the bleeding you cannot see, and the shock it produces.</p>
+    </header>
+<section class="section bk-sec" id="ch29-bleeding-control" data-num="29.1" data-title="External Bleeding Control — Direct Pressure">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">29.1</span>External Bleeding Control — Direct Pressure</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch29-bleeding-control--1" data-heading="The escalating framework">
+      <h3>The escalating framework</h3>
+      <p>Bleeding control is not a single technique. It is a sequence of escalating steps, and which of them you use depends on how severe the bleeding is and on how it responds to what you have already done. Direct pressure is almost always step one, and for most wounds it is also the last step, because the bleeding stops there.</p>
+            <p>The table below pairs the situation you find with the intervention it calls for.</p>
+            <p class="tb-caption"><b>Table 29.1</b>The escalating framework</p><div class="table-wrap"><table><thead><tr><th>Situation</th><th>Intervention</th></tr></thead><tbody>
+            <tr><td>Wound already clotted/stopped</td><td>Gauze + bandage (protect from contamination), monitor for bleed-through</td></tr>
+            <tr><td>Active bleeding</td><td>Direct pressure → wound packing/hemostatics → tourniquet (extremity) or junctional device</td></tr>
+            </tbody></table></div>
+    </div>
+<div class="topic" id="ch29-bleeding-control--2" data-heading="Three kinds of bleeding, and the one that kills quickly">
+      <h3>Three kinds of bleeding, and the one that kills quickly</h3>
+      <p>The appearance of the blood tells you which vessel is open, and that predicts how fast the patient is losing volume and how hard it will be to stop.</p><p><strong>Arterial</strong> bleeding is bright red — it is fully oxygenated — and it spurts in time with the pulse, because it is under the pressure the heart generates. It is the hardest to control and the fastest to kill. <strong>Venous</strong> bleeding is darker red and flows steadily rather than spurting, because venous pressure is low and constant; it can still be heavy from a large vein. <strong>Capillary</strong> bleeding oozes from the surface, is dark red, and usually stops on its own.</p><p>Volume gives the urgency its scale. An adult holds roughly <strong>5 liters</strong> of blood. Sudden loss of about <strong>1 liter in an adult</strong> is serious; in a child the figure is around <strong>500 mL</strong>, and in an infant as little as <strong>100–200 mL</strong>. The same puddle on the floor means something very different depending on who is lying next to it, and a volume that an adult tolerates can be most of a small child's circulating blood.</p>
+    </div>
+<div class="topic" id="ch29-bleeding-control--3" data-heading="Why direct pressure works">
+      <h3>Why direct pressure works</h3>
+      <p>Pressure applied over a wound compresses the tissue around it, which diverts blood flow away from the damaged vessels and slows what still passes through them. Pressure from the outside also reduces the force of the bleeding from inside the vessel, and that gives the body's own clotting mechanism the time it needs to plug the holes in the vessel wall. In most cases this alone controls the bleeding.</p>
+            <p>Three methods deliver that pressure, and they differ mainly in how much of it you have to supply with your own hands: a gloved hand alone, a dressing held in place with a gloved hand, or a pressure dressing secured with a bandage.</p>
+    </div>
+<div class="topic" id="ch29-bleeding-control--4" data-heading="Step-by-step procedure">
+      <h3>Step-by-step procedure</h3>
+      <p>The procedure runs in five steps, from the moment your hand reaches the wound to the point at which you decide that pressure is not working.</p>
+            <ol>
+            <li><strong>Apply firm pressure.</strong> Use the palm of your hand for larger wounds and your fingers for smaller ones, and direct the pressure toward an underlying bone wherever one is available. If the bleeding is severe or spurting, place a gloved hand directly on the wound immediately rather than spending time hunting for a dressing.</li>
+            <li><strong>Hold the pressure firmly.</strong> For massive bleeding, maintain that pressure all the way to the hospital. For bleeding that is not massive, it is reasonable to check the wound after 5 to 10 minutes to see whether it has stopped.</li>
+            <li><strong>Do not over-layer the wound with absorbent dressings.</strong> Piling on gauze soaks up blood without stopping the bleeding, and the extra layers cushion your hand away from the wound, which weakens the pressure you are trying to apply.</li>
+            <li><strong>Convert to a pressure dressing once the bleeding is controlled.</strong> Bandage the dressing firmly in place so that the pressure is maintained without your hands.</li>
+            <li><strong>Never remove a dressing once it has been placed.</strong> Taking it off can disrupt the clots that are forming under it. If blood soaks through, treat that as your signal to escalate, either to wound packing with a hemostatic agent or, for a wound on an extremity, to a tourniquet.</li>
+            </ol>
+            <p>Taken as a whole, direct pressure is four ideas in order: compress the wound, hold the compression, leave what you have applied undisturbed, and escalate if it fails.</p>
+    </div>
+<div class="topic" id="ch29-bleeding-control--5" data-heading="Nosebleeds are the common exception where position does most of the work">
+      <h3>Nosebleeds are the common exception where position does most of the work</h3>
+      <p>Epistaxis is managed by sitting the patient <strong>upright and leaning forward</strong>, then pinching the soft fleshy part of the nostrils together. Leaning the patient back, which is the instinct and the folk remedy, sends blood down the throat, where it is swallowed, irritates the stomach, and produces vomiting in a patient who is already bleeding. Forward and pinched is the whole technique.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 29.1</div>
+      <ul><li>Direct pressure is almost always the first step in bleeding control.</li><li>For severe/spurting bleeding, put a gloved hand directly on the wound immediately — don't hunt for a dressing first.</li><li>Piling on absorbent gauze soaks up blood but doesn't stop bleeding, and can weaken your hand pressure.</li><li>Never remove a placed dressing — blood soaking through means escalate, not swap the dressing.</li><li>Escalation order for bleeding that is NOT immediately life-threatening: direct pressure → wound packing/hemostatics → tourniquet (extremity) or junctional device. Life-threatening extremity bleeding skips the ladder: tourniquet first, straight away.</li><li>Arterial: bright red, spurting with the pulse, hardest to control. Venous: dark red, steady flow. Capillary: dark red ooze, usually self-limiting.</li><li>An adult holds about 5 liters of blood. Sudden loss of about 1 L (adult), 500 mL (child), or 100–200 mL (infant) is serious.</li><li>Nosebleed: sit the patient upright, lean them FORWARD, pinch the soft part of the nostrils. Leaning back sends blood into the stomach and causes vomiting.</li></ul>
+    </div>
+  </section>
+<section class="section bk-sec" id="ch29-tourniquets" data-num="29.2" data-title="Tourniquets &amp; Wound Packing">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">29.2</span>Tourniquets & Wound Packing</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch29-tourniquets--1" data-heading="The tourniquet stopped being a last resort, and the change is the point of this section">
+      <h3>The tourniquet stopped being a last resort, and the change is the point of this section</h3>
+      <p>For decades a tourniquet was taught as the thing you tried when everything else had failed, on the belief that it cost the patient the limb. Military experience over the last two decades changed that. A correctly applied tourniquet left in place for the duration of a prehospital transport rarely costs a limb, and hesitation costs lives. Current civilian practice, reflected in the American College of Surgeons' Stop the Bleed program, is that <strong>life-threatening bleeding from an extremity gets a tourniquet immediately</strong> — not after the ladder of lesser measures has been climbed and failed.</p><p>A <strong>commercial windlass tourniquet</strong> is the device to use. Improvised tourniquets — a belt, a cravat and a stick — are a fallback when nothing else exists, and they fail more often, usually because they are too narrow to occlude the artery and merely occlude the veins, which makes the bleeding worse rather than better.</p>
+    </div>
+<div class="topic" id="ch29-tourniquets--2" data-heading="Applying it: where, how tight, and the two things you write down">
+      <h3>Applying it: where, how tight, and the two things you write down</h3>
+      <p><strong>Placement:</strong> about <strong>2 to 3 inches proximal to the wound</strong> — between the wound and the heart — and <strong>never over a joint</strong>, because there is no single bone there to compress the artery against. If the wound is an amputation, if there are multiple wounds, or if you cannot see where the bleeding is coming from in a mangled limb, place it <strong>high and tight</strong> on the limb instead.</p><p><strong>Tightness:</strong> tighten the windlass until <strong>the bleeding stops</strong> and <strong>the distal pulse is gone</strong>. Both endpoints matter. A tourniquet tight enough to occlude the veins but not tight enough to occlude the artery is the failure mode that makes bleeding worse: arterial blood still enters the limb while venous return out of it is blocked.</p><p><strong>It will hurt</strong>, often badly, and the pain is not a reason to loosen it. Tell the patient that in advance.</p><p><strong>Write down the time of application</strong>, on the tourniquet itself and in your report, and hand it off verbally. <strong>Leave it visible</strong> — never cover a tourniquet with a blanket or a dressing, because the next person needs to see it without hunting for it. And <strong>do not loosen or remove it in the field</strong> once bleeding is controlled.</p><p>If one tourniquet does not control the bleeding, apply a <strong>second one just proximal to the first</strong> rather than tightening the first past its limit.</p>
+    </div>
+<div class="topic" id="ch29-tourniquets--3" data-heading="Wound packing, and the places you must not pack">
+      <h3>Wound packing, and the places you must not pack</h3>
+      <p>Some wounds cannot take a tourniquet because there is no limb to put it around. The <strong>junctional</strong> areas — the groin, the armpit, the base of the neck — are where a limb meets the trunk, and bleeding there is controlled by packing the wound and holding pressure, or with a purpose-built junctional device.</p><p>To pack: push gauze, plain or hemostatic, <strong>directly into the wound, down to the source of the bleeding</strong>, filling the cavity tightly, and then hold firm direct pressure over the packed wound for at least <strong>3 minutes</strong>. Packing that is laid on top of a wound is a dressing, not packing, and it will not work. The pressure held afterward is not optional; hemostatic gauze works by accelerating clotting at the point of contact, and it needs the contact and the time.</p><p><strong>Do not pack the chest or the abdomen.</strong> There is no cavity floor to pack against, the gauze goes somewhere you cannot control, and neither site can be compressed. Neck wounds are also not packed in the usual sense, because the packing can compress the airway; an occlusive dressing and direct pressure that does not obstruct breathing is the approach there.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 29.2</div>
+      <ul><li>Life-threatening extremity bleeding gets a tourniquet immediately — it is not a last resort.</li><li>Use a commercial windlass tourniquet. Improvised ones fail more often, usually by being too narrow to occlude the artery.</li><li>Place it 2–3 inches proximal to the wound and never over a joint. Amputation, multiple wounds, or an unclear source: go high and tight.</li><li>Tighten until the bleeding stops AND the distal pulse is gone. Occluding veins without occluding the artery makes bleeding worse.</li><li>It will hurt. Pain is not a reason to loosen it.</li><li>Write the time of application on the tourniquet and in the report, and say it at handoff.</li><li>Leave a tourniquet visible — never cover it. Do not loosen or remove it in the field.</li><li>If one tourniquet does not control the bleeding, add a second just proximal to the first.</li><li>Junctional bleeding (groin, axilla, base of neck) takes wound packing or a junctional device, not a tourniquet.</li><li>Pack gauze INTO the wound down to the bleeding source, fill the cavity tightly, then hold firm pressure for at least 3 minutes.</li><li>Never pack the chest or abdomen. Neck wounds get an occlusive dressing and pressure that does not obstruct the airway.</li></ul>
+    </div>
+  </section>
+<section class="section bk-sec" id="ch29-internal-bleeding" data-num="29.3" data-title="Internal Bleeding &amp; Hemorrhagic Shock">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">29.3</span>Internal Bleeding & Hemorrhagic Shock</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch29-internal-bleeding--1" data-heading="The bleeding you cannot see is the bleeding you cannot compress">
+      <h3>The bleeding you cannot see is the bleeding you cannot compress</h3>
+      <p>Internal bleeding has no puddle to point at, and the patient can lose a large fraction of their blood volume into the abdomen, the chest, the pelvis, or the tissue around a femur without a drop reaching the outside. You recognize it from mechanism and from signs rather than from blood.</p><p>Look for bruising and discoloration over the trunk, an abdomen that is <strong>distended, rigid, or tender</strong>, <strong>hematemesis</strong> (vomited blood, which may look like coffee grounds), <strong>melena</strong> (black tarry stool), <strong>hemoptysis</strong> (coughed blood), pain, swelling or deformity over a long bone, and — the finding that ties them together — <strong>signs of shock with no external bleeding to explain them</strong>. A femur fracture alone can hold well over a liter; a pelvic fracture can hold far more.</p><p>There is no field intervention that stops internal bleeding. The treatment is oxygen if indicated, keeping the patient warm, handling them gently, and <strong>rapid transport to a facility that can operate</strong>. Recognizing it early and shortening the time to that facility is the whole of the EMT's contribution, and it is a large contribution.</p>
+    </div>
+<div class="topic" id="ch29-internal-bleeding--2" data-heading="Shock is recognized before the blood pressure falls, because by then it is late">
+      <h3>Shock is recognized before the blood pressure falls, because by then it is late</h3>
+      <p>Hemorrhagic shock progresses in a way that is worth knowing as a sequence rather than a list, because the sequence is what lets you catch it early.</p><p>In <strong>compensated shock</strong>, the body is successfully defending its blood pressure. The heart rate rises, the vessels in the skin and gut constrict to shunt blood to the brain and heart, and the patient looks <strong>pale, cool and clammy</strong>, feels <strong>anxious or restless</strong>, and is <strong>thirsty</strong>. Respirations rise. The pulse pressure — the gap between systolic and diastolic — <strong>narrows</strong>, because the diastolic rises with vasoconstriction while the systolic does not. <strong>And the blood pressure is still normal.</strong> This is the stage at which recognition changes the outcome.</p><p>In <strong>decompensated shock</strong>, the compensation has run out. The <strong>blood pressure falls</strong>, mental status deteriorates, peripheral pulses become weak or absent, and the skin may become mottled or cyanotic. <strong>Hypotension is a late sign of shock, not an early one</strong>, and waiting for it in a patient who is pale, tachycardic and anxious means waiting for the patient to get worse before acting.</p><p>Two populations distort the picture. <strong>Children</strong> compensate extremely well and then crash abruptly, so a normal blood pressure in an injured child is not reassurance. And a patient on a <strong>beta blocker</strong> may not be able to mount the tachycardia that is the earliest sign, so their heart rate stays deceptively normal while they bleed.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 29.3</div>
+      <ul><li>Internal bleeding is recognized from mechanism and signs, not from visible blood.</li><li>Signs: bruising over the trunk; distended, rigid or tender abdomen; hematemesis (may look like coffee grounds); melena (black tarry stool); hemoptysis; pain or deformity over a long bone.</li><li>Shock with no external bleeding to explain it IS the finding.</li><li>A femur fracture can hold over a liter of blood; a pelvic fracture far more.</li><li>There is no field fix for internal bleeding: oxygen if indicated, keep the patient warm, handle gently, transport rapidly to surgical care.</li><li>Compensated shock: rising heart rate, pale/cool/clammy skin, anxiety and restlessness, thirst, rising respirations, NARROWING pulse pressure — with a still-normal blood pressure.</li><li>Decompensated shock: falling blood pressure, deteriorating mental status, weak or absent peripheral pulses, mottled skin.</li><li>Hypotension is a LATE sign of shock. Recognize it at the compensated stage.</li><li>Children compensate well and then crash suddenly — a normal BP in an injured child is not reassurance.</li><li>A patient on a beta blocker may not be able to become tachycardic, hiding the earliest sign.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-clammy">Clammy</a></dt><dd>Skin that is cool and moist to the touch, often a sign of shock or poor perfusion.</dd></div><div><dt><a href="../glossary.html#t-compensated-shock">Compensated shock</a></dt><dd>An early stage of shock in which the body's mechanisms (increased heart rate, vasoconstriction) are still maintaining an adequate blood pressure.</dd></div><div><dt><a href="../glossary.html#t-decompensated-shock">Decompensated shock</a></dt><dd>A later stage of shock in which the body's compensatory mechanisms fail, and blood pressure drops — a medical emergency.</dd></div><div><dt><a href="../glossary.html#t-distal">Distal</a></dt><dd>Farther from the point of attachment or the trunk of the body.</dd></div><div><dt><a href="../glossary.html#t-epistaxis">Epistaxis</a></dt><dd>A nosebleed.</dd></div><div><dt><a href="../glossary.html#t-hematemesis">Hematemesis</a></dt><dd>Vomiting blood.</dd></div><div><dt><a href="../glossary.html#t-hemoptysis">Hemoptysis</a></dt><dd>Coughing up blood, typically from the respiratory tract.</dd></div><div><dt><a href="../glossary.html#t-melena">Melena</a></dt><dd>Dark, tarry stool, often indicating upper gastrointestinal bleeding.</dd></div><div><dt><a href="../glossary.html#t-peripheral">Peripheral</a></dt><dd>Relating to the outer parts of the body, away from the center, such as the peripheral pulses in the wrists and feet.</dd></div><div><dt><a href="../glossary.html#t-prehospital">Prehospital</a></dt><dd>Occurring or provided before a patient reaches the hospital, i.e. EMS care in the field.</dd></div><div><dt><a href="../glossary.html#t-proximal">Proximal</a></dt><dd>Closer to the point of attachment or the trunk of the body.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div><div><dt><a href="../glossary.html#t-tachycardia">Tachycardia</a></dt><dd>An abnormally fast heart rate.</dd></div><div><dt><a href="../glossary.html#t-vasoconstriction">Vasoconstriction</a></dt><dd>The narrowing of blood vessels, which increases blood pressure and diverts blood flow.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html?domain=Trauma">Practice this domain &rarr;</a> <a href="../study-notes.html#chapter-29">Open in the reader &rarr;</a></p>
+    </section>
+    <section class="book-tools" aria-label="Practice this">
+      <div class="chapter-tools">
+        <span class="chapter-tools__k">Practice this</span>
+        <a href="../scenario-sim.html">Scenarios <small>run a trauma call end to end</small></a>
+      </div>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="hematologic-and-renal-emergencies.html"><span>&larr; Chapter 28</span><b>Hematologic and Renal Emergencies</b></a>
+      <a class="tb-chapter-link next" href="soft-tissue-trauma.html"><span>Chapter 30 &rarr;</span><b>Soft-Tissue Trauma</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>
