@@ -94,14 +94,16 @@
       p.push('<text class="sk-critl" x="' + (cX + (right ? -5 : 5)).toFixed(1) + '" y="' + (CT + 22) + '" text-anchor="' + (right ? 'end' : 'start') + '">' + (v.crit == null ? 'your ' : '') + 'critical ' + F(crit, 2) + '</text>');
       if(df) p.push('<text class="sk-ph sk-dim" x="' + (cX + (right ? -5 : 5)).toFixed(1) + '" y="' + (base - 6) + '" text-anchor="' + (right ? 'end' : 'start') + '">5% tail</text>');
     }
+    // A phone draws larger tick labels, so the χ² marker labels sit a little lower.
+    var narrow = !!document.querySelector('.ls-root.ls-phone');
     function marker(x, cls, label, dy){
       var X = sx(x), off = x > xmax;
       p.push('<line class="sk-mark ' + cls + '" x1="' + X.toFixed(1) + '" x2="' + X.toFixed(1) + '" y1="' + (MY - 3) + '" y2="' + base + '"/>');
-      p.push('<text class="sk-markl ' + cls + '" x="' + X.toFixed(1) + '" y="' + (base + 31 + (dy || 0)) + '" text-anchor="' + (X > W - 70 ? 'end' : X < L + 40 ? 'start' : 'middle') + '">' + label + (off ? ' →' : '') + '</text>');
+      p.push('<text class="sk-markl ' + cls + '" x="' + X.toFixed(1) + '" y="' + (base + (narrow ? 35 : 31) + (dy || 0)) + '" text-anchor="' + (X > W - 70 ? 'end' : X < L + 40 ? 'start' : 'middle') + '">' + label + (off ? ' →' : '') + '</text>');
     }
     if(v.chi2Mine != null && (v.chi2 == null || Math.abs(v.chi2Mine - v.chi2) > 0.005)) marker(v.chi2Mine, 'mine', 'your χ² ' + F(v.chi2Mine, 2), v.chi2 != null ? 16 : 0);
     if(v.chi2 != null) marker(v.chi2, 'real', 'χ² = ' + F(v.chi2, 2));
-    return '<svg class="bio-svg sk-chi" viewBox="0 0 ' + W + ' ' + (H + (v.chi2Mine != null && v.chi2 != null ? 14 : 0)) + '" role="' + (v.drag ? 'group' : 'img') + '" aria-label="' + esc(v.label) + '">' + p.join('') + '</svg>';
+    return '<svg class="bio-svg sk-chi" viewBox="0 0 ' + W + ' ' + (H + (v.chi2Mine != null && v.chi2 != null ? 14 : 0) + (narrow ? 4 : 0)) + '" role="' + (v.drag ? 'group' : 'img') + '" aria-label="' + esc(v.label) + '">' + p.join('') + '</svg>';
   }
   function verdict(rej){ return rej ? '<span class="sk-verdict rej">Reject the null</span>' : '<span class="sk-verdict keep">Fail to reject the null</span>'; }
 

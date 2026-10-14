@@ -1,0 +1,81 @@
+{
+ "topic": "integral-properties",
+ "hook": "A free-response question gives you three integrals in a table and asks for a fourth you were never told. No formula for $f$, no graph, just numbers. The properties of definite integrals let you build the answer the way you would piece together a trip from its legs: adding, subtracting and reversing.",
+ "prereq": [
+  {
+   "q": "The region between $y = -3$ and the x-axis on $[0, 2]$ gives $\\int_0^2 (-3)\\,dx = $",
+   "options": [
+    "$-6$",
+    "6",
+    "$-3$",
+    "0"
+   ],
+   "correct": 0,
+   "why": "Signed area: the rectangle of area 6 lies below the axis.",
+   "review": "accumulation-behavior"
+  },
+  {
+   "q": "Which limit of sums is $\\int_0^2 x\\,dx$?",
+   "options": [
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} \\frac{2i}{n} \\cdot \\frac{2}{n}$",
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} \\frac{i}{n} \\cdot \\frac{2}{n}$",
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} \\frac{2i}{n}$",
+    "$\\sum_{i=1}^{2} i$"
+   ],
+   "correct": 0,
+   "why": "$\\Delta x = \\frac{2}{n}$ and $x_i = \\frac{2i}{n}$.",
+   "review": "definite-integral-notation"
+  }
+ ],
+ "figure": {
+  "figure": "integral-additivity",
+  "caption": "Additivity: the integral from a to c is the integral from a to b plus the integral from b to c."
+ },
+ "chain": [
+  {
+   "cause": "Riemann sums are built by adding width times height",
+   "effect": "anything true of sums (splitting a sum, pulling out a constant) is true of integrals"
+  },
+  {
+   "cause": "Two intervals meet end to end",
+   "effect": "their integrals add: $\\int_a^b f + \\int_b^c f = \\int_a^c f$"
+  },
+  {
+   "cause": "An interval is run backward",
+   "effect": "every width is negative, so $\\int_b^a f = -\\int_a^b f$, and $\\int_a^a f = 0$"
+  },
+  {
+   "cause": "A constant k is integrated",
+   "effect": "the result is k times the width: $\\int_a^b k\\,dx = k(b - a)$"
+  }
+ ],
+ "ideas": [
+  "<b>Additivity</b>: $\\int_a^b f(x)\\,dx + \\int_b^c f(x)\\,dx = \\int_a^c f(x)\\,dx$, for any order of $a$, $b$, $c$.",
+  "Reversed limits: $\\int_b^a f(x)\\,dx = -\\int_a^b f(x)\\,dx$, and $\\int_a^a f(x)\\,dx = 0$.",
+  "Linearity: $\\int_a^b (kf(x) + g(x))\\,dx = k\\int_a^b f(x)\\,dx + \\int_a^b g(x)\\,dx$, and $\\int_a^b k\\,dx = k(b - a)$.",
+  "A bounded function with a jump or a hole can still be integrated: split at the break and use geometry on each piece."
+ ],
+ "misconception": {
+  "wrong": "$\\int_3^7 (f(x) + 4)\\,dx = \\int_3^7 f(x)\\,dx + 4$.",
+  "right": "The constant 4 is a height, so it is integrated over the interval too: $\\int_3^7 4\\,dx = 4 \\cdot (7 - 3) = 16$."
+ },
+ "check": [
+  "calc-integral-properties-1",
+  "calc-integral-properties-2",
+  "calc-integral-properties-3",
+  "calc-integral-properties-4",
+  "calc-integral-properties-12",
+  "calc-integral-properties-14"
+ ],
+ "summary": "Definite integrals add over adjacent intervals, change sign when the limits are reversed, are 0 over a single point, and split over sums and constant multiples (but not products). Use these with geometry, splitting at jumps, to find integrals from tables and graphs.",
+ "connections": [
+  {
+   "href": "../notes/accumulation-behavior.html",
+   "label": "Back: behavior of accumulation functions (6.5)"
+  },
+  {
+   "href": "../notes/ftc-definite-integrals.html",
+   "label": "Next: the Fundamental Theorem and definite integrals (6.7)"
+  }
+ ]
+}

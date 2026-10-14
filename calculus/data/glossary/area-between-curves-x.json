@@ -1,0 +1,5 @@
+{
+ "area-between-curves": {
+  "def": "The area of the region bounded by two graphs: on an interval where $f(x) \\ge g(x)$, it is $\\int_a^b \\left(f(x) - g(x)\\right)\\,dx$, top minus bottom, with limits where the region starts and ends (often where the curves meet)."
+ }
+}

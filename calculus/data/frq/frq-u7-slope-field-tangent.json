@@ -1,0 +1,207 @@
+{
+ "id": "frq-u7-slope-field-tangent",
+ "type": "de",
+ "title": "Slope field, tangent line and separation for dy/dx = x(4 - y)",
+ "calc": false,
+ "points": 9,
+ "units": [
+  "unit-7"
+ ],
+ "topics": [
+  "sketching-slope-fields",
+  "reasoning-with-slope-fields",
+  "separation-of-variables",
+  "particular-solutions",
+  "local-linearity"
+ ],
+ "practices": [
+  "1.E",
+  "2.C",
+  "3.E",
+  "4.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Nine points for the slope field of $\\frac{dy}{dx} = x(4 - y)$",
+  "plot": {
+   "label": "Nine grid points at x = -1, 0, 1 and y = 2, 3, 4, where the slope field is to be sketched",
+   "x": [
+    -1.5,
+    1.5
+   ],
+   "y": [
+    1.5,
+    4.5
+   ],
+   "xStep": 1,
+   "yStep": 1,
+   "xLabel": "x",
+   "yLabel": "y",
+   "points": [
+    {
+     "at": [
+      -1,
+      2
+     ]
+    },
+    {
+     "at": [
+      -1,
+      3
+     ]
+    },
+    {
+     "at": [
+      -1,
+      4
+     ]
+    },
+    {
+     "at": [
+      0,
+      2
+     ]
+    },
+    {
+     "at": [
+      0,
+      3
+     ]
+    },
+    {
+     "at": [
+      0,
+      4
+     ]
+    },
+    {
+     "at": [
+      1,
+      2
+     ]
+    },
+    {
+     "at": [
+      1,
+      3
+     ]
+    },
+    {
+     "at": [
+      1,
+      4
+     ]
+    }
+   ]
+  }
+ },
+ "graphSpec": {
+  "x": {
+   "label": "x",
+   "min": -1.5,
+   "max": 1.5
+  },
+  "y": {
+   "label": "y",
+   "min": 1.5,
+   "max": 4.5
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "space": "graph",
+   "prompt": "Consider the differential equation $\\frac{dy}{dx} = x(4 - y)$. On the axes provided, <b>sketch</b> a slope field for the equation at the nine points shown.",
+   "rubric": [
+    {
+     "point": "Slope field: zero slopes at the five points with $x = 0$ or $y = 4$; at $y = 2$ slopes $-2$ and $2$ for $x = -1, 1$; at $y = 3$ slopes $-1$ and $1$ for $x = -1, 1$, drawn steeper at $y = 2$ than at $y = 3$.",
+     "accept": [
+      "segments whose signs and relative steepness match at all nine points"
+     ]
+    }
+   ],
+   "sample": "Slopes: at $y = 4$: 0, 0, 0. At $y = 3$: $-1$, 0, 1. At $y = 2$: $-2$, 0, 2 (for $x = -1, 0, 1$). Horizontal segments along $x = 0$ and $y = 4$; segments falling to the right at $x = -1$ and rising at $x = 1$, steeper on the row $y = 2$."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "Let $y = f(x)$ be the particular solution to the differential equation with $f(2) = 3$. <b>Write</b> an equation for the line tangent to the graph of $f$ at $x = 2$, and <b>use</b> it to approximate $f(2.1)$.",
+   "rubric": [
+    {
+     "point": "Tangent line: slope $\\left.\\frac{dy}{dx}\\right|_{(2, 3)} = 2(4 - 3) = 2$, so $y = 3 + 2(x - 2)$.",
+     "accept": [
+      "y - 3 = 2(x - 2)",
+      "y = 2x - 1"
+     ]
+    },
+    {
+     "point": "Approximation: $f(2.1) \\approx 3 + 2(0.1) = 3.2$.",
+     "accept": [
+      "3.2 with the tangent line shown",
+      "16/5"
+     ]
+    }
+   ],
+   "sample": "$\\left.\\frac{dy}{dx}\\right|_{(2, 3)} = 2(4 - 3) = 2$. Tangent line: $y = 3 + 2(x - 2)$. Then $f(2.1) \\approx 3 + 2(0.1) = 3.2$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Find</b> $\\frac{d^2y}{dx^2}$ in terms of $x$ and $y$. <b>Determine</b> whether the approximation in part (b) is an overestimate or an underestimate of $f(2.1)$. <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "$\\frac{d^2y}{dx^2} = (4 - y) + x\\left(-\\frac{dy}{dx}\\right) = (4 - y) - x^2(4 - y) = (4 - y)(1 - x^2)$.",
+     "accept": [
+      "(4 - y) - x(dy/dx), with dy/dx replaced by x(4 - y)",
+      "the unsimplified product-rule form with dy/dx substituted"
+     ]
+    },
+    {
+     "point": "Overestimate, with reason: at $(2, 3)$, $\\frac{d^2y}{dx^2} = (1)(1 - 4) = -3 < 0$, so the graph of $f$ is concave down near $x = 2$ and lies below its tangent line.",
+     "accept": [
+      "overestimate because f is concave down on [2, 2.1]",
+      "overestimate because the second derivative is negative there"
+     ]
+    }
+   ],
+   "sample": "$\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left[x(4 - y)\\right] = (4 - y) - x\\frac{dy}{dx} = (4 - y) - x^2(4 - y) = (4 - y)(1 - x^2)$. At $(2, 3)$ this is $(1)(-3) = -3 < 0$. The graph of $f$ is concave down there, so it lies below the tangent line, and $3.2$ is an overestimate of $f(2.1)$."
+  },
+  {
+   "label": "d",
+   "points": 4,
+   "prompt": "<b>Find</b> $y = f(x)$, the particular solution to the differential equation with the initial condition $f(2) = 3$.",
+   "rubric": [
+    {
+     "point": "Separates variables: $\\frac{dy}{4 - y} = x\\,dx$.",
+     "accept": [
+      "dy/(4 - y) = x dx",
+      "dy/(y - 4) = -x dx"
+     ]
+    },
+    {
+     "point": "Antiderivatives: $-\\ln|4 - y| = \\frac{x^2}{2}$ (both sides correct).",
+     "accept": [
+      "ln|4 - y| = -x^2/2 + C",
+      "ln|y - 4| = -x^2/2 + C"
+     ]
+    },
+    {
+     "point": "Constant of integration and uses the initial condition: $-\\ln|4 - 3| = 2 + C$, so $C = -2$.",
+     "accept": [
+      "C found from f(2) = 3, consistent with the student's antiderivatives",
+      "A = e^2 in 4 - y = Ae^(-x^2/2)"
+     ]
+    },
+    {
+     "point": "Solves for $y$: $f(x) = 4 - e^{2 - x^2/2}$.",
+     "accept": [
+      "y = 4 - e^2 e^(-x^2/2)",
+      "y = 4 - e^((4 - x^2)/2)"
+     ]
+    }
+   ],
+   "sample": "$\\frac{dy}{4 - y} = x\\,dx$, so $-\\ln|4 - y| = \\frac{x^2}{2} + C$. At $(2, 3)$: $-\\ln 1 = 2 + C$, so $C = -2$. Then $\\ln|4 - y| = 2 - \\frac{x^2}{2}$ and $|4 - y| = e^{2 - x^2/2}$. Since $4 - y = 1 > 0$ at the initial point, $4 - y = e^{2 - x^2/2}$, and $f(x) = 4 - e^{2 - x^2/2}$ for all real $x$."
+  }
+ ]
+}

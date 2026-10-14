@@ -1,0 +1,551 @@
+{
+ "stimuli": {
+  "average-and-instant-rates-s1": {
+   "kind": "table",
+   "title": "A drone climbing after takeoff",
+   "text": "A delivery drone takes off from a rooftop. Its altitude above the street is measured at a few times.",
+   "table": {
+    "caption": "Altitude $A(t)$ of a drone, in meters, at selected times $t$, in seconds",
+    "cols": [
+     "$t$ (seconds)",
+     "0",
+     "2",
+     "5",
+     "6",
+     "9"
+    ],
+    "rows": [
+     [
+      "$A(t)$ (meters)",
+      "6",
+      "14",
+      "41",
+      "47",
+      "62"
+     ]
+    ]
+   }
+  },
+  "average-and-instant-rates-s2": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = \\frac{x^2}{2} - x + 2$ with a secant line",
+   "plot": {
+    "label": "Graph of f(x) = x squared over 2, minus x, plus 2, from x = -1 to 4, with the secant line through the points at x = 1 and x = 3",
+    "x": [
+     -1,
+     4.5
+    ],
+    "y": [
+     -0.5,
+     6.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^2/2 - x + 2",
+      "domain": [
+       -1,
+       4.5
+      ],
+      "label": "f"
+     }
+    ],
+    "lines": [
+     {
+      "through": [
+       [
+        1,
+        1.5
+       ],
+       [
+        3,
+        3.5
+       ]
+      ],
+      "cls": "s2",
+      "dashed": true
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       1.5
+      ],
+      "label": "(1, 1.5)"
+     },
+     {
+      "at": [
+       3,
+       3.5
+      ],
+      "label": "(3, 3.5)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-average-and-instant-rates-1",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "average-and-instant-rates-s1",
+   "q": "Find the average rate of change of the drone's altitude from $t = 2$ to $t = 6$ seconds. Include units.",
+   "numeric": {
+    "answer": "33/4",
+    "unit": "meters per second",
+    "askUnit": true,
+    "units": [
+     "m/s",
+     "m/sec",
+     "meters/second"
+    ],
+    "mistakes": [
+     {
+      "value": "4/33",
+      "why": "The quotient is upside down. A rate of change is change in altitude over change in time: $\\frac{47 - 14}{6 - 2}$."
+     },
+     {
+      "value": 33,
+      "why": "That is the change in altitude, 33 meters. Divide by the change in time, 4 seconds, to get a rate."
+     },
+     {
+      "value": "41/4",
+      "why": "That starts from $A(0) = 6$ instead of $A(2) = 14$: $\\frac{47 - 6}{4}$. Both the change in altitude and the change in time must use $t = 2$ and $t = 6$: $\\frac{47 - 14}{6 - 2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{A(6) - A(2)}{6 - 2} = \\frac{47 - 14}{4} = \\frac{33}{4} = 8.25$ meters per second."
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-2",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "average-and-instant-rates-s1",
+   "q": "Which sentence correctly interprets $\\frac{A(6) - A(2)}{6 - 2} = 8.25$?",
+   "options": [
+    "Between $t = 2$ and $t = 6$ seconds, the altitude rose 8.25 meters per second on average.",
+    "At $t = 4$ seconds, the drone was rising at exactly 8.25 meters per second.",
+    "The drone climbed a total of 8.25 meters between $t = 2$ and $t = 6$ seconds.",
+    "Between $t = 2$ and $t = 6$ seconds, the drone was 8.25 meters above the street."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An average rate describes a whole interval: the total climb, 33 meters, spread over 4 seconds.",
+    "options": [
+     "It names the interval, the units and the word \"average\".",
+     "An average over an interval says nothing exact about one instant, even the midpoint; the climb may have been uneven.",
+     "The total climb was $47 - 14 = 33$ meters; 8.25 is that climb per second.",
+     "8.25 is measured in meters per second, a rate, not an altitude in meters."
+    ]
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-3",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "average-and-instant-rates-s1",
+   "q": "Over which interval of the table was the average rate of change of $A$ greatest?",
+   "options": [
+    "$[2, 5]$",
+    "$[6, 9]$",
+    "$[0, 2]$",
+    "$[5, 6]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Average rates: $[0, 2]$: $\\frac{8}{2} = 4$; $[2, 5]$: $\\frac{27}{3} = 9$; $[5, 6]$: $\\frac{6}{1} = 6$; $[6, 9]$: $\\frac{15}{3} = 5$ meters per second. The greatest is 9, on $[2, 5]$.",
+    "options": [
+     "The climb of 27 meters over 3 seconds gives 9 meters per second, the largest.",
+     "The altitude is highest here, but the climb is only 15 meters in 3 seconds, 5 meters per second.",
+     "The climb is 8 meters in 2 seconds, 4 meters per second.",
+     "The climb is 6 meters in 1 second, 6 meters per second: a short interval is not a fast one."
+    ]
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-4",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "average-and-instant-rates-s1",
+   "q": "A student says the drone was rising at $\\frac{A(5)}{5} = \\frac{41}{5} = 8.2$ meters per second at $t = 5$. What is wrong with this reasoning?",
+   "options": [
+    "It divides an altitude by a time instead of dividing a change in altitude by a change in time.",
+    "It should divide by 6 seconds, the next time in the table.",
+    "Nothing; an altitude divided by its time is the rate at that time.",
+    "It should use $A(9)$, the last altitude, because more data gives a better rate."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rate of change compares two changes. The drone started 6 meters up, so even the average from $t = 0$ is $\\frac{41 - 6}{5} = 7$ meters per second, not 8.2.",
+    "options": [
+     "Value over time ignores where the altitude started; rates use differences.",
+     "Dividing by a different time still divides a value, not a change.",
+     "$A(5) \\div 5$ is not a rate of change; it would be the average from $t = 0$ only if the drone started at altitude 0.",
+     "Data far from $t = 5$ describes other moments; a rate at $t = 5$ needs times close to 5."
+    ]
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-5",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "average-and-instant-rates-s2",
+   "q": "What is the slope of the secant line shown, through the points of the graph at $x = 1$ and $x = 3$?",
+   "options": [
+    "$1$",
+    "$2$",
+    "$\\frac{1}{2}$",
+    "$\\frac{7}{6}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{f(3) - f(1)}{3 - 1} = \\frac{3.5 - 1.5}{2} = 1$.",
+    "options": [
+     "Change in $y$, 2, over change in $x$, 2.",
+     "That is the change in $y$ alone; divide by the change in $x$.",
+     "That is run over rise, upside down.",
+     "That is $\\frac{3.5}{3}$, a height over an input, not a change over a change."
+    ]
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-6",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "average-and-instant-rates-s2",
+   "q": "For the function in the graph, simplify the difference quotient $\\frac{f(1 + h) - f(1)}{h}$ for $h \\ne 0$. Type an expression in $h$.",
+   "expr": {
+    "answer": "h/2",
+    "vars": [
+     "h"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "lhs": "\\frac{f(1 + h) - f(1)}{h} =",
+    "mistakes": [
+     {
+      "expr": "h/2 + 1",
+      "why": "Check the expansion: $f(1 + h) = \\frac{(1 + h)^2}{2} - (1 + h) + 2 = 1.5 + \\frac{h^2}{2}$. The $+h$ from $\\frac{2h}{2}$ cancels the $-h$."
+     },
+     {
+      "expr": "h^2/2",
+      "why": "That is $f(1 + h) - f(1)$, the numerator. Divide it by $h$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(1 + h) = \\frac{1 + 2h + h^2}{2} - 1 - h + 2 = 1.5 + \\frac{h^2}{2}$ and $f(1) = 1.5$, so the quotient is $\\frac{h^2/2}{h} = \\frac{h}{2}$."
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-7",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "average-and-instant-rates-s2",
+   "q": "The second point of the secant line slides along the graph toward the point at $x = 1$. What value do the slopes of the secant lines approach?",
+   "options": [
+    "$0$",
+    "$1$",
+    "$1.5$",
+    "They approach no value, because $h = 0$ gives $\\frac{0}{0}$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slopes are $\\frac{h}{2}$, and $\\lim_{h \\to 0} \\frac{h}{2} = 0$. The graph is at its lowest point at $x = 1$, where it is momentarily level.",
+    "options": [
+     "The limit of $\\frac{h}{2}$ as $h \\to 0$.",
+     "That is the slope of the drawn secant line, with $h = 2$; the slopes change as $h$ shrinks.",
+     "That is $f(1)$, the height of the point, not a rate.",
+     "$\\frac{0}{0}$ appears only if you substitute before simplifying; the simplified quotient has a limit."
+    ]
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-8",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "average-and-instant-rates-s2",
+   "q": "Which expression gives the instantaneous rate of change of $f$ at $x = 3$?",
+   "options": [
+    "$\\lim_{h \\to 0} \\frac{f(3 + h) - f(3)}{h}$",
+    "$\\lim_{h \\to 0} \\left( f(3 + h) - f(3) \\right)$",
+    "$\\frac{f(3 + h) - f(3)}{h}$ with $h = 0$",
+    "$\\lim_{h \\to 0} \\frac{f(3 + h)}{h}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The instantaneous rate is the limit of average rates on $[3, 3 + h]$ as $h \\to 0$.",
+    "options": [
+     "The limit of the difference quotient at $a = 3$.",
+     "Without dividing by $h$ this is a change in $f$, and its limit is 0 for a continuous $f$.",
+     "Setting $h = 0$ divides by zero; the rate is a limit, not a value at $h = 0$.",
+     "The numerator must be a change in $f$, $f(3 + h) - f(3)$, not a single value."
+    ]
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-9",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $g(x) = x^2 + 3x$. Simplify $\\frac{g(2 + h) - g(2)}{h}$ for $h \\ne 0$. Type an expression in $h$.",
+   "expr": {
+    "answer": "7 + h",
+    "vars": [
+     "h"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "lhs": "\\frac{g(2 + h) - g(2)}{h} =",
+    "mistakes": [
+     {
+      "expr": "h + 3",
+      "why": "$(2 + h)^2 = 4 + 4h + h^2$, not $4 + h^2$. With the middle term, the numerator is $h^2 + 7h$."
+     },
+     {
+      "expr": "7",
+      "why": "That is the limit as $h \\to 0$. The quotient itself still contains $h$: $\\frac{h^2 + 7h}{h} = 7 + h$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$g(2 + h) = (2 + h)^2 + 3(2 + h) = 10 + 7h + h^2$ and $g(2) = 10$, so the quotient is $\\frac{7h + h^2}{h} = 7 + h$."
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-10",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $g(x) = x^2 + 3x$, find the instantaneous rate of change of $g$ at $x = 2$.",
+   "numeric": {
+    "answer": 7,
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "That is $g(2)$, the value of the function. The rate is $\\lim_{h \\to 0} \\frac{g(2 + h) - g(2)}{h} = \\lim_{h \\to 0} (7 + h)$."
+     },
+     {
+      "value": 3,
+      "why": "Expand $(2 + h)^2 = 4 + 4h + h^2$ with its middle term $4h$; then the quotient is $7 + h$, not $3 + h$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{h \\to 0} \\frac{g(2 + h) - g(2)}{h} = \\lim_{h \\to 0} (7 + h) = 7$."
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-11",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "The volume of water in a tank is $V(t)$ gallons, where $t$ is in minutes. What are the units of $\\frac{V(8) - V(3)}{8 - 3}$?",
+   "options": [
+    "gallons per minute",
+    "gallons",
+    "minutes per gallon",
+    "gallons per minute per minute"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A change in gallons divided by a change in minutes: gallons per minute.",
+    "options": [
+     "Output units over input units.",
+     "The numerator alone is in gallons; dividing by minutes makes a rate.",
+     "That would be time over volume, the quotient upside down.",
+     "That unit belongs to a rate of a rate; this is a single rate."
+    ]
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-12",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The average rate of change of a function $p$ on $[1, 5]$ is 0. Which statement must be true?",
+   "options": [
+    "$p(1) = p(5)$",
+    "$p$ is constant on $[1, 5]$",
+    "$p(1) = p(5) = 0$",
+    "$p$ does not change anywhere on $[1, 5]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{p(5) - p(1)}{5 - 1} = 0$ means only that the numerator is 0: the start and end values are equal.",
+    "options": [
+     "The numerator $p(5) - p(1)$ is 0.",
+     "The function may rise and then fall back, like a ball thrown up and caught at the same height.",
+     "The two values are equal, but they can be any number, not just 0.",
+     "Only the net result is zero; in between, $p$ may change a great deal."
+    ]
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-13",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cart rolls down a ramp so that it has traveled $s(t) = 5t^2$ meters after $t$ seconds. Find its average velocity from $t = 2$ to $t = 2.1$ seconds. Include units.",
+   "numeric": {
+    "answer": 20.5,
+    "unit": "meters per second",
+    "askUnit": true,
+    "units": [
+     "m/s",
+     "m/sec",
+     "meters/second"
+    ],
+    "mistakes": [
+     {
+      "value": 2.05,
+      "why": "That is the distance rolled, $s(2.1) - s(2) = 22.05 - 20 = 2.05$ meters. Divide by the time, 0.1 second."
+     },
+     {
+      "value": 20,
+      "why": "That is the limit as the interval shrinks. Over $[2, 2.1]$ the average is $\\frac{2.05}{0.1} = 20.5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{s(2.1) - s(2)}{2.1 - 2} = \\frac{5(4.41) - 5(4)}{0.1} = \\frac{2.05}{0.1} = 20.5$ meters per second."
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-14",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For the cart with $s(t) = 5t^2$, the average velocities on $[2, 2 + h]$ for $h = 0.1$, $0.01$ and $0.001$ are 20.5, 20.05 and 20.005 meters per second. What do these suggest?",
+   "options": [
+    "At the instant $t = 2$, the cart is moving at 20 meters per second.",
+    "The cart moves at a constant 20 meters per second after $t = 2$.",
+    "The cart's velocity at $t = 2$ is undefined, because $h = 0$ is not allowed.",
+    "At the instant $t = 2$, the cart is moving at 20.005 meters per second."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The average velocities are $20 + 5h$, which close in on 20 as $h \\to 0$. That limit is the rate at the instant $t = 2$.",
+    "options": [
+     "The limit of the averages as the interval shrinks.",
+     "The averages change with $h$, so the motion is not constant; they only approach 20.",
+     "A limit never sets $h = 0$; it describes where the quotients are heading, which is 20.",
+     "That is one average on a short interval; the rate at the instant is its limit, 20."
+    ]
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-15",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "On the graph of $y = f(x)$, the average rate of change of $f$ on $[a, b]$ equals",
+   "options": [
+    "the slope of the secant line through $(a, f(a))$ and $(b, f(b))$",
+    "the height of the graph at the midpoint of $[a, b]$",
+    "the difference $f(b) - f(a)$",
+    "the slope of the line through the origin and $(b, f(b))$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both are $\\frac{f(b) - f(a)}{b - a}$: rise over run between the two points.",
+    "options": [
+     "Rise over run between the endpoints.",
+     "A height is a value of $f$, not a rate.",
+     "That is the change in $f$; the rate divides it by $b - a$.",
+     "That line uses the origin, which is not a point of the interval unless $a = 0$ and $f(0) = 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-average-and-instant-rates-16",
+   "unit": "unit-2",
+   "topic": "average-and-instant-rates",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the average rate of change of $k(x) = \\frac{1}{x}$ on $[1, 4]$?",
+   "options": [
+    "$-\\frac{1}{4}$",
+    "$-\\frac{3}{4}$",
+    "$\\frac{1}{4}$",
+    "$-4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{k(4) - k(1)}{4 - 1} = \\frac{\\frac{1}{4} - 1}{3} = \\frac{-\\frac{3}{4}}{3} = -\\frac{1}{4}$.",
+    "options": [
+     "The change $-\\frac{3}{4}$ divided by 3.",
+     "That is the change in $k$; divide by the change in $x$, 3.",
+     "The sign: $k$ falls from 1 to $\\frac{1}{4}$, so the rate is negative.",
+     "That is $\\frac{4 - 1}{\\frac{1}{4} - 1} = \\frac{3}{-\\frac{3}{4}}$, run over rise, upside down."
+    ]
+   }
+  }
+ ]
+}

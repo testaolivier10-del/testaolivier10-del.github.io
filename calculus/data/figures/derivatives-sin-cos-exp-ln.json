@@ -1,0 +1,12 @@
+{
+ "sine-slopes-cosine": {
+  "file": "figures/sine-slopes-cosine.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 510,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Top: y = sin x from 0 to 2 pi with short tangent segments at 0, pi/2, pi, 3pi/2 and 2pi, whose slopes are 1, 0, minus 1, 0 and 1. Bottom, on the same scale: y = cos x, whose heights at those x values are 1, 0, minus 1, 0 and 1. The derivative of sin x is cos x."
+ }
+}

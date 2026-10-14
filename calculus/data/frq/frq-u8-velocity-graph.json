@@ -1,0 +1,177 @@
+{
+ "id": "frq-u8-velocity-graph",
+ "type": "motion",
+ "title": "A particle whose velocity is given by a graph",
+ "calc": false,
+ "points": 9,
+ "units": [
+  "unit-8"
+ ],
+ "topics": [
+  "straight-line-motion",
+  "motion-with-integrals"
+ ],
+ "practices": [
+  "2.B",
+  "1.E",
+  "3.E",
+  "4.B"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The graph of the velocity $v(t)$",
+  "plot": {
+   "label": "Graph of the velocity v(t) in meters per second for t from 0 to 12 seconds, made of segments through (0, 4), (2, 4), (6, -4), (8, -4), (10, 0) and (12, 2)",
+   "x": [
+    -0.5,
+    12.5
+   ],
+   "y": [
+    -5,
+    5
+   ],
+   "xStep": 1,
+   "yStep": 1,
+   "xLabel": "t (seconds)",
+   "yLabel": "v(t) (m/s)",
+   "curves": [
+    {
+     "fn": "4",
+     "domain": [
+      0,
+      2
+     ],
+     "ends": [
+      "closed",
+      null
+     ],
+     "cls": "s1"
+    },
+    {
+     "fn": "8 - 2x",
+     "domain": [
+      2,
+      6
+     ],
+     "cls": "s1"
+    },
+    {
+     "fn": "-4",
+     "domain": [
+      6,
+      8
+     ],
+     "cls": "s1"
+    },
+    {
+     "fn": "2x - 20",
+     "domain": [
+      8,
+      10
+     ],
+     "cls": "s1"
+    },
+    {
+     "fn": "x - 10",
+     "domain": [
+      10,
+      12
+     ],
+     "ends": [
+      null,
+      "closed"
+     ],
+     "cls": "s1"
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "A particle moves along the $x$-axis with velocity $v(t)$ shown in the graph, for $0 \\le t \\le 12$ seconds. <b>Find</b> the acceleration of the particle at $t = 5$. Is the particle speeding up or slowing down at $t = 5$? <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "$a(5) = v'(5) = -2$ meters per second per second (the slope of the segment from $(2, 4)$ to $(6, -4)$).",
+     "accept": [
+      "-2 m/s^2"
+     ]
+    },
+    {
+     "point": "Speeding up, because $v(5) = -2 < 0$ and $a(5) = -2 < 0$ have the same sign.",
+     "accept": [
+      "speeding up: velocity and acceleration are both negative at t = 5"
+     ]
+    }
+   ],
+   "sample": "$a(5) = v'(5) = \\frac{-4 - 4}{6 - 2} = -2$ m/s². Since $v(5) = -2 < 0$ and $a(5) < 0$, velocity and acceleration have the same sign, so the particle is speeding up."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "At what times $t$ in $0 < t < 12$ does the particle change direction? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "$t = 4$ and $t = 10$.",
+     "accept": [
+      "t = 4 and t = 10"
+     ]
+    },
+    {
+     "point": "Justification: $v$ changes sign at each time (positive to negative at $t = 4$, negative to positive at $t = 10$).",
+     "accept": [
+      "v changes sign at t = 4 and at t = 10"
+     ]
+    }
+   ],
+   "sample": "$v(t)$ changes from positive to negative at $t = 4$ and from negative to positive at $t = 10$, so the particle changes direction at $t = 4$ and $t = 10$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "The particle is at $x = 5$ at time $t = 0$. <b>Find</b> its position at $t = 12$.",
+   "rubric": [
+    {
+     "point": "Setup: $x(12) = 5 + \\int_0^{12} v(t)\\,dt$.",
+     "accept": [
+      "x(0) plus the integral of v from 0 to 12"
+     ]
+    },
+    {
+     "point": "Areas: $8 + 4 - 4 - 8 - 4 + 2 = -2$, so $x(12) = 3$ meters.",
+     "accept": [
+      "x(12) = 3"
+     ]
+    }
+   ],
+   "sample": "$\\int_0^{12} v(t)\\,dt = 8 + 4 - 4 - 8 - 4 + 2 = -2$ (a rectangle, two triangles on $[2, 6]$, a rectangle, a triangle below the axis, a triangle above). So $x(12) = 5 + (-2) = 3$ meters."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "<b>Find</b> the total distance the particle travels over $0 \\le t \\le 12$. At what time is the particle farthest to the left? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Total distance $= \\int_0^{12} |v(t)|\\,dt = 8 + 4 + 4 + 8 + 4 + 2 = 30$ meters.",
+     "accept": [
+      "30 meters"
+     ]
+    },
+    {
+     "point": "Candidates: $x(0) = 5$, $x(4) = 17$, $x(10) = 1$, $x(12) = 3$.",
+     "accept": [
+      "positions at the endpoints and at the direction changes"
+     ]
+    },
+    {
+     "point": "Farthest left at $t = 10$, where $x(10) = 1$ is the least of the candidates.",
+     "accept": [
+      "t = 10 with x = 1 and a candidates comparison"
+     ]
+    }
+   ],
+   "sample": "Total distance $= \\int_0^{12} |v(t)|\\,dt = 8 + 4 + 4 + 8 + 4 + 2 = 30$ meters. The particle can be farthest left only at an endpoint or where $v$ changes sign: $x(0) = 5$, $x(4) = 5 + 12 = 17$, $x(10) = 17 - 16 = 1$, $x(12) = 1 + 2 = 3$. The least is $x(10) = 1$, so it is farthest left at $t = 10$."
+  }
+ ]
+}

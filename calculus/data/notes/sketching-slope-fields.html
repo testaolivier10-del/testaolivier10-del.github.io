@@ -1,0 +1,51 @@
+<p>A differential equation such as $\frac{dy}{dx} = x + y$ does something remarkable: it tells you the slope of a solution curve at <i>every</i> point of the plane, before you know a single solution. Pick the point $(1, 2)$ and the equation says any solution passing there has slope $1 + 2 = 3$. A <b>slope field</b> turns that information into a picture.</p>
+
+<h2>What a slope field is</h2>
+<p>At each point of a grid, draw a short segment centered on the point, tilted to the slope the differential equation gives there. That is all. The collection of segments is the slope field (also called a direction field). It is a map of directions: a solution curve passing through a point must run along the little segment there.</p>
+<figure id="fig-grid" data-fig="slope-field-grid"><figcaption>The slope field of $\frac{dy}{dx} = x + y$ at the 25 integer points from $-2$ to 2. The crimson numbers are the slopes at the nine boxed points.</figcaption></figure>
+
+<h2>How to sketch one</h2>
+<ol>
+<li>List the points you are asked about. A point is $(x, y)$: the first number is $x$.</li>
+<li>Substitute each point into the right side to get a number, the slope there.</li>
+<li>Draw a short segment through the point with that slope. Positive slopes rise to the right, negative slopes fall, slope 0 is horizontal. If the slope is undefined (a division by 0), draw a vertical segment.</li>
+<li>Make the size of the slope visible: a slope of 3 looks steeper than a slope of 1, and a slope of $\frac{1}{2}$ looks gentle. Exact angles are not needed; the sign and the rough steepness are.</li>
+</ol>
+
+<div class="worked">
+<p><b>Worked example.</b> Sketch the slope field of $\frac{dy}{dx} = x + y$ at the nine points with $x$ and $y$ in $\{-1, 0, 1\}$.</p>
+<p>Compute $x + y$ at each point and organize the results in a grid, with $y$ going up the page:</p>
+<table>
+<thead><tr><th></th><th>$x = -1$</th><th>$x = 0$</th><th>$x = 1$</th></tr></thead>
+<tbody>
+<tr><td>$y = 1$</td><td>0</td><td>1</td><td>2</td></tr>
+<tr><td>$y = 0$</td><td>$-1$</td><td>0</td><td>1</td></tr>
+<tr><td>$y = -1$</td><td>$-2$</td><td>$-1$</td><td>0</td></tr>
+</tbody>
+</table>
+<p>Now draw: flat segments on the diagonal from $(-1, 1)$ to $(1, -1)$, gentle rises of slope 1 at $(0, 1)$ and $(1, 0)$, a steeper rise of slope 2 at $(1, 1)$, and the mirror-image falls below the diagonal. The figure above shows the result.</p>
+</div>
+
+<h2>Shortcuts that save time</h2>
+<p>Before computing 9 or 25 slopes, look at the equation's form. Three patterns cover most exam questions.</p>
+<table>
+<thead><tr><th>If $\frac{dy}{dx}$ depends on</th><th>then</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>$x$ alone</td><td>segments in each vertical column are parallel</td><td>$\frac{dy}{dx} = \cos x$</td></tr>
+<tr><td>$y$ alone</td><td>segments in each horizontal row are parallel</td><td>$\frac{dy}{dx} = y^2 - 1$</td></tr>
+<tr><td>both</td><td>look for lines where the slope is 0 or constant</td><td>$\frac{dy}{dx} = 2x - y$</td></tr>
+</tbody>
+</table>
+<p>Find where the slope is 0 first. For $\frac{dy}{dx} = y^2 - 1$ that is the rows $y = 1$ and $y = -1$: every segment there is flat. For $\frac{dy}{dx} = 2x - y$ it is the slanted line $y = 2x$. For $\frac{dy}{dx} = x^2(y - 2)$ it is both the row $y = 2$ and the column $x = 0$, because a product is 0 when either factor is.</p>
+<p>Then look for undefined slopes. In $\frac{dy}{dx} = \frac{x}{y}$, every point on the $x$-axis (except the origin) has $y = 0$ in the denominator, so the segments there are vertical.</p>
+
+<h2>Matching an equation to a field</h2>
+<p>To decide which equation produced a given field, test a few easy points. Points on the axes make the arithmetic quick: at $(0, 1)$ and $(1, 0)$ most expressions are one short computation. Check the sign first, then the steepness. Also check where the field is flat: if the flat segments lie on $y = 2x$, the right side must be 0 whenever $y = 2x$.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Swapping coordinates: at $(0, 2)$ the value of $x$ is 0, not 2.</li>
+<li>Drawing a segment that is not centered on its point, or that runs into the next one: keep segments short.</li>
+<li>Getting the sign right but ignoring steepness, so slopes of 0.5 and 4 look the same.</li>
+<li>Forgetting that a factor of 0 makes the whole slope 0.</li>
+</ul>

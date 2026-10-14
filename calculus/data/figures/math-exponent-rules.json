@@ -1,0 +1,12 @@
+{
+ "powers-of-x": {
+  "file": "figures/powers-of-x.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "For x greater than 0, three curves through the point (1, 1): y = x squared rising steeply, y = x to the one-half (the square root of x) rising slowly, and y = x to the negative one (1 over x) falling toward the x-axis."
+ }
+}

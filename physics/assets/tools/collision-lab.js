@@ -28,6 +28,23 @@
   function F(x, d){ return T.F(x, d == null ? 2 : d); }
   function n(x){ return Math.round(x * 10) / 10; }
   function sub(t){ return String(t).replace(/_(\w+)/, '<tspan dy="4" font-size="0.72em">$1</tspan>'); }
+  /* Phones (docs/tools-phone-pass.md): every picture here draws in viewBox
+     units, so a picture squeezed below its natural size shrinks its text. On a
+     phone (.ls-phone) each svg gets --cl-k = viewBox units per CSS px (1 to
+     1.8) and collision-lab.css multiplies its phone font sizes by it, so the
+     labels keep their size on screen. */
+  function kfit(root){
+    if(!root) return;
+    var ph = !!(root.closest && root.closest('.ls-phone'));
+    (root.matches && root.matches('svg.phys-scene') ? [root] : [].slice.call(root.querySelectorAll('svg.phys-scene'))).forEach(function(svg){
+      var vb = svg.viewBox && svg.viewBox.baseVal, r = svg.getBoundingClientRect();
+      if(!ph || !vb || !vb.width || r.width < 20 || r.height < 20){ svg.style.removeProperty('--cl-k'); return; }
+      var k = 1 / Math.min(r.width / vb.width, r.height / vb.height);
+      svg.style.setProperty('--cl-k', String(Math.round(Math.max(1, Math.min(1.8, k)) * 100) / 100));
+    });
+  }
+  // Is the root a phone (either way up)? Falls back to the width rule before the studio mounts.
+  function phoneOf(el){ var r = el && el.closest && el.closest('.ls-root'); if(r) return r.classList.contains('ls-phone'); try{ return window.matchMedia('(max-width: 640px), (max-width: 999.98px) and (max-height: 540px)').matches; }catch(e){ return false; } }
 
   T.mount('collision-lab', function(app, data){
     var ex = null;
@@ -122,7 +139,7 @@
     function boxOf(sel, w0, h0, wmin, wmax){ var e = $(sel), r = e && e.getBoundingClientRect(); return r && r.width > 20 && r.height > 20 ? { w: Math.max(wmin, Math.min(wmax, h0 * r.width / r.height)), h: h0 } : { w: w0, h: h0 }; }
     function narrow(){ try{ return window.matchMedia('(max-width: 760px)').matches; }catch(e){ return false; } }
     function trackSvg(s){
-      H = narrow() ? 196 : 220; TR.y = H - 52; var bx = boxOf('.cl-track', 640, H, narrow() ? 300 : 420, 900); W = bx.w; TR.ppm = (W - 50) / 5.8; TR.x0 = 26;
+      var tph = phoneOf($('.cl-track')), rowv = tph ? 26 : 22; H = tph ? 206 : narrow() ? 196 : 220; TR.y = H - 52; var bx = boxOf('.cl-track', 640, H, narrow() ? 300 : 420, 900); W = bx.w; TR.ppm = (W - 50) / 5.8; TR.x0 = 26;
       var y = TR.y, px = function(x){ return TR.x0 + x * TR.ppm; }, out = '';
       out += '<rect class="cl-bg" width="' + W + '" height="' + H + '"/>';
       out += '<rect class="cl-rail" x="10" y="' + y + '" width="' + (W - 20) + '" height="10" rx="3"/><rect class="cl-leg" x="22" y="' + (y + 10) + '" width="8" height="30"/><rect class="cl-leg" x="' + (W - 30) + '" y="' + (y + 10) + '" width="8" height="30"/>';
@@ -135,10 +152,10 @@
       // row higher, each starting over its own cart; the CM marker on top.
       var ay = y - 88;
       // 30 px per m/s; an arrow that would leave the picture starts further in.
-      var va = function(x, v, yy, lab){ var len = v * 30, x0 = Math.max(12 - Math.min(0, len) + 18, Math.min(W - 30 - Math.max(0, len), x)); return S.arrow(x0, yy, len, 0, { cls: 'vel', label: Math.abs(v) > 0.2 ? lab : '' }); };
-      out += va(x1, s.v1, ay, 'v_A') + va(x2, s.v2, ay - 22, 'v_B');
+      var va = function(x, v, yy, lab){ var len = v * 30, x0 = Math.max(12 - Math.min(0, len) + 18, Math.min(W - (tph ? 30 + 24 * (H / Math.max(1, ($('.cl-track').getBoundingClientRect().height || H))) : 30) - Math.max(0, len), x)); return S.arrow(x0, yy, len, 0, { cls: 'vel', label: Math.abs(v) > 0.2 ? lab : '' }); };
+      out += va(x1, s.v1, ay, 'v_A') + va(x2, s.v2, ay - rowv, 'v_B');
       // Center of mass: a marker over the rail that glides at constant velocity.
-      var cx = px(s.xcm), cy = ay - 44;
+      var cx = px(s.xcm), cy = ay - 2 * rowv;
       out += '<g class="cl-cm"><line x1="' + n(cx) + '" x2="' + n(cx) + '" y1="' + (cy + 8) + '" y2="' + (y + 10) + '"/><circle cx="' + n(cx) + '" cy="' + cy + '" r="8"/><path d="M' + n(cx) + ' ' + (cy - 8) + 'v16M' + n(cx - 8) + ' ' + cy + 'h16"/><text x="' + n(cx + 12) + '" y="' + (cy + 4) + '">CM</text></g>';
       if(s.contact) out += '<g class="cl-flash"><circle cx="' + n((x1 + x2) / 2) + '" cy="' + (y - 40) + '" r="16"/></g>';
       var lab = 'Track: cart A (' + F(st.m1, 2) + ' kg) at ' + F(s.x1, 2) + ' m moving ' + F(s.v1, 2) + ' m/s, cart B (' + F(st.m2, 2) + ' kg) at ' + F(s.x2, 2) + ' m moving ' + F(s.v2, 2) + ' m/s; center of mass at ' + F(s.xcm, 2) + ' m moving ' + F(s.vcm, 2) + ' m/s' + (s.contact ? '; the bumper is squeezed, force ' + M.fmt(s.F, 3) + ' N.' : '.');
@@ -146,11 +163,12 @@
     }
     /* Momentum and kinetic energy bars: before (outline) and now (filled). */
     function barsSvg(s){
-      var bb = boxOf('.cl-bars', 360, narrow() ? 150 : 210, narrow() ? 220 : 300, 640), BW = bb.w, BH = bb.h, p0 = [st.m1 * R.v1i, st.m2 * R.v2i], p = [st.m1 * s.v1, st.m2 * s.v2], K0 = [0.5 * st.m1 * R.v1i * R.v1i, 0.5 * st.m2 * R.v2i * R.v2i], K = [0.5 * st.m1 * s.v1 * s.v1, 0.5 * st.m2 * s.v2 * s.v2];
+      var bb = boxOf('.cl-bars', 360, hOf('.cl-bars', narrow() ? 150 : 210, 112, 210), narrow() ? 220 : 300, 640), BW = bb.w, BH = bb.h, p0 = [st.m1 * R.v1i, st.m2 * R.v2i], p = [st.m1 * s.v1, st.m2 * s.v2], K0 = [0.5 * st.m1 * R.v1i * R.v1i, 0.5 * st.m2 * R.v2i * R.v2i], K = [0.5 * st.m1 * s.v1 * s.v1, 0.5 * st.m2 * s.v2 * s.v2];
       var pf = [st.m1 * R.v1f, st.m2 * R.v2f], Kf = [0.5 * st.m1 * R.v1f * R.v1f, 0.5 * st.m2 * R.v2f * R.v2f];
       var pmax = Math.max(0.5, Math.abs(p0[0]), Math.abs(p0[1]), Math.abs(pf[0]), Math.abs(pf[1]), Math.abs(p0[0] + p0[1])) * 1.1;
       var Kmax = Math.max(0.2, K0[0] + K0[1], Kf[0] + Kf[1], K0[0], K0[1], Kf[0], Kf[1]) * 1.1;
-      var out = '', top = 30, bot = BH - 24, mid = (top + bot) / 2, half = (bot - top) / 2;
+      var out = '', top = phoneOf($('.cl-bars')) ? 38 : 30, bot = BH - 24, mid = (top + bot) / 2, half = (bot - top) / 2, rp = $('.cl-lower').getAttribute('data-show') === 'bars' ? rpad('.cl-bars', BW) : 0;
+      BW -= rp;
       var col = function(i, x, v, v0, sc, cls, zero, hgt){
         var hh = v / sc * hgt, h0 = v0 / sc * hgt;
         out += '<rect class="cl-bar ' + cls + '" x="' + n(x) + '" y="' + n(hh >= 0 ? zero - hh : zero) + '" width="' + n(bw2) + '" height="' + n(Math.abs(hh)) + '"/>';
@@ -171,37 +189,55 @@
         out += '<text class="cl-bl" x="' + (x + bw2 / 2) + '" y="' + (BH - 6) + '" text-anchor="middle">' + b[0] + '</text><text class="cl-bv" x="' + (x + bw2 / 2) + '" y="' + n(bot - b[1] / Kmax * (bot - top) - 5) + '" text-anchor="middle">' + F(b[1], 2) + '</text>';
       });
       var lab = 'Bars now (dashed outlines: before). Momentum: A ' + F(p[0], 2) + ', B ' + F(p[1], 2) + ', total ' + F(p[0] + p[1], 2) + ' kg·m/s, was ' + F(p0[0] + p0[1], 2) + '. Kinetic energy: total ' + F(K[0] + K[1], 2) + ' J, was ' + F(K0[0] + K0[1], 2) + ' J. The bumper\'s stored energy and the energy lost to heating are not shown as bars.';
-      return S.svg(BW, BH, lab, out);
+      return S.svg(BW + rp, BH, lab, out);
     }
     /* Force-time graph of the contact, impulse shaded as the area. */
     function ftSvg(s){
-      var fb = boxOf('.cl-ft', 280, narrow() ? 160 : 210, 220, 640), FW = fb.w, FH = fb.h, l = 46, r = 10, tp = 26, b = 34, pw = FW - l - r, ph = FH - tp - b;
-      if(!R.Tc){ return S.svg(FW, FH, 'Force-time graph: the carts never touch, so there is no contact force and no impulse.', '<text class="cl-h" x="10" y="16">Force on B during contact</text><text class="cl-note" x="' + (FW / 2) + '" y="' + (FH / 2) + '" text-anchor="middle">They never touch.</text><text class="cl-note" x="' + (FW / 2) + '" y="' + (FH / 2 + 18) + '" text-anchor="middle">Set B slower than A.</text>'); }
+      var fph = phoneOf($('.cl-ft')), fb = boxOf('.cl-ft', 280, hOf('.cl-ft', narrow() ? 160 : 210, 112, 210), 220, 640), FW = fb.w, FH = fb.h, l = fph ? 56 : 46, r = 10 + rpad('.cl-ft', FW), tp = 26, b = fph ? 36 : 34, pw = FW - l - r, ph = FH - tp - b;
+      var fhead = fph ? 'Force on B (impulse J = shaded area)' : 'Force on B during contact';
+      if(!R.Tc){ return S.svg(FW, FH, 'Force-time graph: the carts never touch, so there is no contact force and no impulse.', '<text class="cl-h" x="10" y="16">' + fhead + '</text><text class="cl-note" x="' + (FW / 2) + '" y="' + (FH / 2) + '" text-anchor="middle">They never touch.</text><text class="cl-note" x="' + (FW / 2) + '" y="' + (FH / 2 + 18) + '" text-anchor="middle">Set B slower than A.</text>'); }
       // A fixed time window (60 ms) and force scale, so a stiffer bumper is visibly narrower and taller.
       var win = Math.max(0.06, R.Tc * 1.25), fmax = Math.max(20, R.Fmax * 1.15), fsc = M.fmt(fmax, 2);
       var X = function(tt){ return l + tt / win * pw; }, Y = function(f){ return tp + ph - f / fmax * ph; };
-      var out = '<text class="cl-h" x="10" y="16">Force on B during contact</text>';
+      var out = '<text class="cl-h" x="10" y="16">' + fhead + '</text>';
       out += '<line class="cl-axis" x1="' + l + '" x2="' + (l + pw) + '" y1="' + (tp + ph) + '" y2="' + (tp + ph) + '"/><line class="cl-axis" x1="' + l + '" x2="' + l + '" y1="' + tp + '" y2="' + (tp + ph) + '"/>';
       var tstep = win > 0.12 ? 0.05 : win > 0.06 ? 0.02 : 0.01;
       for(var tt = 0; tt <= win + 1e-9; tt += tstep){ out += '<text class="cl-tickt" x="' + n(X(tt)) + '" y="' + (tp + ph + 14) + '" text-anchor="middle">' + Math.round(tt * 1000) + '</text>'; }
       var fst = T.niceStep(fmax, 4);
       for(var f = 0; f <= fmax + 1e-9; f += fst){ out += '<line class="cl-grid" x1="' + l + '" x2="' + (l + pw) + '" y1="' + n(Y(f)) + '" y2="' + n(Y(f)) + '"/><text class="cl-tickt" x="' + (l - 5) + '" y="' + n(Y(f) + 4) + '" text-anchor="end">' + M.fmt(f, 3) + '</text>'; }
-      out += '<text class="cl-ax" x="' + (l + pw / 2) + '" y="' + (FH - 4) + '" text-anchor="middle">time since contact (ms)</text><text class="cl-ax" x="12" y="' + (tp + ph / 2) + '" transform="rotate(-90 12 ' + (tp + ph / 2) + ')" text-anchor="middle">F (N)</text>';
+      out += '<text class="cl-ax" x="' + (l + pw / 2) + '" y="' + (FH - 4) + '" text-anchor="middle">time since contact (ms)</text><text class="cl-ax" x="' + (fph ? 14 : 12) + '" y="' + (tp + ph / 2) + '" transform="rotate(-90 ' + (fph ? 14 : 12) + ' ' + (tp + ph / 2) + ')" text-anchor="middle">F (N)</text>';
       var N = 120, pts = [], now = s.contact || t >= R.T1 ? Math.min(R.Tc, t - R.T0) : t >= R.T0 ? 0 : -1;
       for(var i = 0; i <= N; i++){ var u = R.Tc * i / N; pts.push(n(X(u)) + ',' + n(Y(R.pulse(u)))); }
       var shade = [];
       if(now > 0){ for(i = 0; i <= N; i++){ var u2 = now * i / N; shade.push(n(X(u2)) + ',' + n(Y(R.pulse(u2)))); } out += '<polygon class="cl-area" points="' + n(X(0)) + ',' + (tp + ph) + ' ' + shade.join(' ') + ' ' + n(X(now)) + ',' + (tp + ph) + '"/>'; }
       out += '<polyline class="cl-curve" points="' + pts.join(' ') + '"/>';
       var Jnow = now > 0 ? C.area(R.pulse, 0, now, 200) : 0;
-      out += '<text class="cl-j" x="' + (l + pw - 4) + '" y="' + (tp + 14) + '" text-anchor="end">J = area = ' + F(Jnow, 3) + ' N·s</text>';
+      out += '<text class="cl-j" x="' + (l + pw - 4) + '" y="' + (tp + 14) + '" text-anchor="end">' + (fph ? 'J = ' : 'J = area = ') + F(Jnow, 3) + ' N·s</text>';
       var lab = 'Force-time graph of the bumper force on cart B: a pulse ' + Math.round(R.Tc * 1000) + ' ms long with a peak of ' + M.fmt(R.Fmax, 3) + ' N. Shaded area so far, the impulse: ' + F(Jnow, 3) + ' N·s of ' + F(R.J, 3) + ' N·s.';
       return S.svg(FW, FH, lab, out);
     }
+    /* A portrait phone's stage is tall enough for all three pictures at once
+       (track, bars, force-time graph); a short stage (a phone on its side)
+       keeps the switch between bars and the graph. */
+    function layout(){
+      var stg = $('.cl-stage'), lw = $('.cl-lower'), tabs = $('.cl-tabs'); if(!stg || !lw) return;
+      var all = narrow() && phoneOf(stg) && stg.getBoundingClientRect().height >= 400;
+      stg.classList.toggle('cl-all', all);
+      if(tabs) tabs.hidden = all;
+      if(all) lw.setAttribute('data-show', 'all');
+      else if(lw.getAttribute('data-show') === 'all'){ var on = tabs && tabs.querySelector('[aria-pressed="true"]'); lw.setAttribute('data-show', on ? on.getAttribute('data-p') : 'bars'); }
+    }
+    // Room kept clear at the right for the stage's Enlarge button (bottom right) on a phone, in viewBox units.
+    function rpad(sel, w){ var e = $(sel), r = e && e.getBoundingClientRect(); return e && phoneOf(e) && r.width > 20 ? Math.round(48 * Math.max(1, w / r.width)) : 0; }
+    // On a phone a panel draws at its box's own height (1 unit = 1 px), so its text is its CSS size.
+    function hOf(sel, h0, hmin, hmax){ var e = $(sel), r = e && e.getBoundingClientRect(); return e && phoneOf(e) && r.height > 20 ? Math.max(hmin, Math.min(hmax, Math.round(r.height))) : h0; }
     function draw(){
       var s = R.at(t);
+      layout();
       $('.cl-track').innerHTML = trackSvg(s);
       $('.cl-bars').innerHTML = barsSvg(s);
       $('.cl-ft').innerHTML = ftSvg(s);
+      kfit($('.cl-stage'));
       scrub.set(t);
       var p = st.m1 * s.v1 + st.m2 * s.v2, K = 0.5 * st.m1 * s.v1 * s.v1 + 0.5 * st.m2 * s.v2 * s.v2, K0 = 0.5 * st.m1 * R.v1i * R.v1i + 0.5 * st.m2 * R.v2i * R.v2i;
       var phase = !R.hits && R.mode !== 'explode' ? 'none' : t < R.T0 ? 'before' : t < R.T1 ? 'contact' : 'after', head, short, body;
@@ -255,6 +291,8 @@
       LS = s;
       T.studioPane(pane, s, { stage: [$('.cl-stage')], dock: [ctl], moreLabel: 'Velocities, masses, stiffness and time', why: [start.el, $('.cl-say')], details: [$('.cl-nums')] });
       draw();
+      // Redraw at the new box shape when the window turns or Enlarge opens or zooms.
+      var rq = 0; window.addEventListener('resize', function(){ if(rq || playing) return; rq = requestAnimationFrame(function(){ rq = 0; if(R) draw(); }); });
       if(s.mode() === 'explore') s.hint({ target: btns.querySelector('.cl-play'), text: 'Press Crash' });
     }
     rebuild();
@@ -280,9 +318,11 @@
         if(!f) return;
         if(f.kind === 'pbars') return pbuilder(host, p);
         host.innerHTML = '<figure class="cd-fig cl-qfig">' + (f.kind === 'ft' ? ftFigure(f) : cartsFigure(f)) + '</figure>';
+        requestAnimationFrame(function(){ kfit(host); });
       }
     };
     T.drill(pane, data, opts);
+    var rq = 0; window.addEventListener('resize', function(){ if(rq) return; rq = requestAnimationFrame(function(){ rq = 0; kfit(document.querySelector('.ls-root') || pane); }); });
   }
   function cartsFigure(f){
     var w = 420, h = 150, y = 124, out = '<rect class="cl-bg" width="' + w + '" height="' + h + '"/><rect class="cl-rail" x="6" y="' + y + '" width="' + (w - 12) + '" height="8" rx="3"/>';
@@ -295,7 +335,7 @@
     return S.svg(w, h, 'Two carts on a track: A ' + F(f.m1, 2) + ' kg, B ' + F(f.m2, 2) + ' kg' + (f.bumper === 'velcro' ? ', with Velcro bumpers.' : f.bumper === 'loaded' ? ', touching, a compressed spring between them.' : ', with spring bumpers.'), out);
   }
   function ftFigure(f){
-    var W = 420, H = 230, l = 56, r = 14, tp = 18, b = 40, pw = W - l - r, ph = H - tp - b, tmax = f.dt * 1.25, fmax = f.Fm * 1.25;
+    var W = 420, H = 230, l = 56, r = 26, tp = 18, b = 40, pw = W - l - r, ph = H - tp - b, tmax = f.dt * 1.25, fmax = f.Fm * 1.25;
     var X = function(t){ return l + t / tmax * pw; }, Y = function(F2){ return tp + ph - F2 / fmax * ph; }, out = '';
     var tst = T.niceStep(tmax, 5), fst = T.niceStep(fmax, 5);
     for(var t = 0; t <= tmax + 1e-9; t += tst){ out += '<line class="cl-grid" x1="' + n(X(t)) + '" x2="' + n(X(t)) + '" y1="' + tp + '" y2="' + (tp + ph) + '"/><text class="cl-tickt" x="' + n(X(t)) + '" y="' + (tp + ph + 15) + '" text-anchor="middle">' + M.fmt(t, 2).replace(/^0$/, '0') + '</text>'; }
@@ -330,6 +370,7 @@
         out += '<text class="cl-bl" x="' + n(x + cw / 2) + '" y="' + (H - 6) + '" text-anchor="middle">' + (c.key.slice(1) === 'T' ? 'Total' : c.key.slice(1)) + '</text><rect class="cl-hit" data-c="' + i + '" x="' + n(x) + '" y="' + Tp + '" width="' + n(cw) + '" height="' + (H - Tp - B) + '"/>';
       });
       chart.innerHTML = S.svg(W, H, 'Momentum bar chart to build, in units of ' + M.fmt(f.unit, 2) + ' kg·m/s. ' + cells.map(function(c, i){ var v = val(I[i]); return c.label + ' ' + (v == null ? 'empty' : M.minus(String(v))); }).join(', ') + '.', out);
+      kfit(host);
     }
     function setFrom(ev, svg, i){
       var inp = ins()[i]; if(!inp || inp.readOnly) return;

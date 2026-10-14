@@ -1,0 +1,71 @@
+{
+ "topic": "lhospitals-rule",
+ "hook": "Some limits look like $\\frac{0}{0}$: both the top and the bottom vanish at the same point. Who wins? Near that point each function behaves like its tangent line, so the race is decided by their slopes. L'Hospital's rule turns that idea into a one-line method, and the exam rewards it when you first show the form.",
+ "prereq": [
+  {
+   "q": "Which limit has an indeterminate form?",
+   "options": [
+    "$\\lim_{x \\to 0}\\frac{\\sin x}{x}$",
+    "$\\lim_{x \\to 0}\\frac{x + 1}{x + 2}$",
+    "$\\lim_{x \\to 1}\\frac{x^2}{x}$",
+    "$\\lim_{x \\to 2}\\frac{1}{x}$"
+   ],
+   "correct": 0,
+   "why": "$\\sin 0 = 0$ and the bottom is 0: the form $\\frac{0}{0}$.",
+   "review": "limit-algebra"
+  },
+  {
+   "q": "What is $\\frac{d}{dx}e^{3x}$?",
+   "options": [
+    "$3e^{3x}$",
+    "$e^{3x}$",
+    "$3xe^{3x - 1}$",
+    "$e^3$"
+   ],
+   "correct": 0,
+   "why": "The chain rule: $e^{3x} \\cdot 3$.",
+   "review": "chain-rule"
+  }
+ ],
+ "figure": {
+  "figure": "lhospital-tangent-ratio",
+  "caption": "Near 0, $e^x - 1$ looks like $y = x$ and $\\sin(2x)$ looks like $y = 2x$, so their quotient approaches $\\frac{1}{2}$, the ratio of the slopes."
+ },
+ "chain": [
+  {
+   "cause": "$\\lim\\frac{f(x)}{g(x)}$ has the form $\\frac{0}{0}$ (or $\\frac{\\infty}{\\infty}$)",
+   "effect": "plugging in tells nothing: the answer could be any number, or no limit at all"
+  },
+  {
+   "cause": "Near $a$, with $f(a) = g(a) = 0$, each function is close to its tangent line",
+   "effect": "$\\frac{f(x)}{g(x)} \\approx \\frac{f'(a)(x - a)}{g'(a)(x - a)} = \\frac{f'(a)}{g'(a)}$"
+  },
+  {
+   "cause": "L'Hospital's rule makes this exact",
+   "effect": "$\\lim\\frac{f(x)}{g(x)} = \\lim\\frac{f'(x)}{g'(x)}$ when the second limit exists"
+  },
+  {
+   "cause": "If the new limit is still indeterminate",
+   "effect": "check the form again and apply the rule again"
+  }
+ ],
+ "ideas": [
+  "First show the form: write $\\lim f(x) = 0$ and $\\lim g(x) = 0$ (or both infinite). Without it the rule does not apply.",
+  "Differentiate the top and the bottom separately. It is not the quotient rule.",
+  "If the form is not indeterminate, just evaluate: L'Hospital's rule would give a wrong answer.",
+  "Never write $\\frac{0}{0}$ as a value with an equals sign; describe the form in words or with two limits."
+ ],
+ "misconception": {
+  "wrong": "$\\lim_{x \\to 1}\\frac{x^2 + 1}{x + 1} = \\lim_{x \\to 1}\\frac{2x}{1} = 2$.",
+  "right": "The form is $\\frac{2}{2}$, not indeterminate, so the rule does not apply. The limit is just $\\frac{2}{2} = 1$. Always check the form first."
+ },
+ "check": [
+  "calc-lhospitals-rule-1",
+  "calc-lhospitals-rule-2",
+  "calc-lhospitals-rule-3",
+  "calc-lhospitals-rule-4",
+  "calc-lhospitals-rule-10",
+  "calc-lhospitals-rule-15"
+ ],
+ "summary": "For a limit of the form $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$, L'Hospital's rule gives $\\lim\\frac{f(x)}{g(x)} = \\lim\\frac{f'(x)}{g'(x)}$, derivatives taken separately. Show both limits first; repeat if the new limit is still indeterminate; and evaluate directly when the form is not indeterminate."
+}

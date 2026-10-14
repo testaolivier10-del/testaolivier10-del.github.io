@@ -1,0 +1,508 @@
+{
+ "stimuli": {
+  "definite-integral-notation-s2": {
+   "kind": "graph",
+   "title": "The graph of $f$, a semicircle",
+   "text": "The graph of $f$ on $[0, 4]$ is the upper half of the circle of radius 2 centered at $(2, 0)$: $f(x) = \\sqrt{4 - (x - 2)^2}$.",
+   "plot": {
+    "label": "Graph of f, the upper half of a circle of radius 2 centered at (2, 0), from x = 0 to x = 4",
+    "width": 380,
+    "height": 230,
+    "x": [
+     -0.4,
+     4.4
+    ],
+    "y": [
+     -0.4,
+     2.6
+    ],
+    "xStep": 0.5,
+    "yStep": 0.5,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "sqrt(4 - (x - 2)^2)",
+      "domain": [
+       0,
+       4
+      ],
+      "label": "f",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ]
+   }
+  },
+  "definite-integral-notation-s1": {
+   "kind": "table",
+   "title": "A limit of Riemann sums",
+   "text": "Let $S_n = \\sum_{i=1}^{n} \\frac{3}{n}\\left(2 + \\frac{3i}{n}\\right)$ and $L = \\lim_{n \\to \\infty} S_n$. The table shows $S_n$ for a few values of $n$.",
+   "table": {
+    "caption": "The sum S_n for growing n",
+    "cols": [
+     "$n$",
+     "1",
+     "10",
+     "100",
+     "1000"
+    ],
+    "rows": [
+     [
+      "$S_n$",
+      "15",
+      "10.95",
+      "10.545",
+      "10.5045"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-definite-integral-notation-1",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "definite-integral-notation-s1",
+   "q": "In the sum, what interval is being split up, and into how many subintervals?",
+   "options": [
+    "$[2, 5]$, into $n$ subintervals of width $\\frac{3}{n}$",
+    "$[0, 3]$, into $n$ subintervals of width $\\frac{3}{n}$",
+    "$[2, 5]$, into 3 subintervals of width $\\frac{1}{n}$",
+    "$[0, 1]$, into $n$ subintervals of width $\\frac{1}{n}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\Delta x = \\frac{3}{n}$ means the interval has length 3. The points are $x_i = 2 + i\\Delta x$, so the interval starts at 2 and ends at $2 + 3 = 5$.",
+    "options": [
+     "Correct: the points $2 + \\frac{3i}{n}$ run from just above 2 (at $i = 1$) up to 5 (at $i = n$), and each step is $\\frac{3}{n}$.",
+     "The points start at 2, not 0: $x_i = 2 + \\frac{3i}{n}$. The width 3 is right, but the interval is shifted.",
+     "The number of terms is $n$ (the sum runs $i = 1$ to $n$), and the factor $\\frac{3}{n}$ is the width.",
+     "The width is $\\frac{3}{n}$, so the interval is 3 long, and the points start at 2."
+    ]
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-2",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "definite-integral-notation-s1",
+   "q": "Which definite integral equals $L$?",
+   "options": [
+    "$\\int_2^5 (2 + x)\\,dx$",
+    "$\\int_0^1 (2 + 3x)\\,dx$",
+    "$\\int_0^3 x\\,dx$",
+    "$\\int_2^5 x\\,dx$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Match the pattern $\\sum f(x_i)\\,\\Delta x$: $\\Delta x = \\frac{3}{n}$ and $x_i = 2 + \\frac{3i}{n}$ run over $[2, 5]$, and $f(x_i) = x_i$. So $L = \\int_2^5 x\\,dx$.",
+    "options": [
+     "The 2 is already inside $x_i = 2 + \\frac{3i}{n}$. With $x$ running from 2 to 5, the height is just $x$; adding 2 counts it twice.",
+     "This matches the heights with $x = \\frac{i}{n}$, but then the width would be $\\frac{1}{n}$. The factor $\\frac{3}{n}$ makes this integral 3 times too small.",
+     "If $x$ ran from 0 to 3, the heights would be $\\frac{3i}{n}$. Here they are $2 + \\frac{3i}{n}$.",
+     "Correct: $\\Delta x = \\frac{3}{n}$, $x_i = 2 + \\frac{3i}{n}$, and the height $f(x_i)$ is $x_i$ itself, so $f(x) = x$ on $[2, 5]$."
+    ]
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-3",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "definite-integral-notation-s1",
+   "q": "Which kind of Riemann sum is inside the limit?",
+   "options": [
+    "a midpoint Riemann sum",
+    "a trapezoidal sum",
+    "a right Riemann sum",
+    "a left Riemann sum"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$x_i = 2 + i\\cdot\\frac{3}{n}$ for $i = 1, \\ldots, n$ are the right ends of the subintervals $[x_{i-1}, x_i]$. In the limit, left and right sums give the same value.",
+    "options": [
+     "Midpoints would be $2 + \\frac{3(i - 1/2)}{n}$. These points are whole steps from 2.",
+     "A trapezoidal sum averages two heights on each subinterval; each term here has a single height.",
+     "Correct: at $i = n$ the point is $2 + 3 = 5$, the right end; at $i = 1$ it is the right end of the first subinterval.",
+     "A left sum would start at $x_0 = 2$ (from $i = 0$) and stop before 5. This sum reaches 5 at $i = n$."
+    ]
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-4",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "definite-integral-notation-s1",
+   "q": "The table suggests $L = 10.5$. Which region has area $L$?",
+   "options": [
+    "the rectangle 3 wide and 5 tall over $[2, 5]$",
+    "the trapezoid under $y = x$ from $x = 2$ to $x = 5$",
+    "the triangle under $y = x$ from $x = 0$ to $x = 3$",
+    "the region under $y = 2 + x$ from $x = 2$ to $x = 5$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$L = \\int_2^5 x\\,dx$, the area under $y = x$ between 2 and 5: a trapezoid with parallel sides 2 and 5 and width 3, area $\\frac{21}{2} = 10.5$, matching the table.",
+    "options": [
+     "That rectangle (area 15) is the single right rectangle $S_1$. The limit fills only the region under the line.",
+     "Correct: $L = \\int_2^5 x\\,dx$, and that trapezoid has area $\\frac{2 + 5}{2} \\cdot 3 = 10.5$.",
+     "That region has area 4.5. The points $x_i$ run over $[2, 5]$, not $[0, 3]$.",
+     "That counts the 2 twice: its area is $\\frac{4 + 7}{2} \\cdot 3 = 16.5$."
+    ]
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-5",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "definite-integral-notation-s2",
+   "q": "Using the area of the half-disc under the semicircle, find $\\int_0^4 f(x)\\,dx$.",
+   "numeric": {
+    "answer": "2*pi",
+    "mistakes": [
+     {
+      "value": "4*pi",
+      "why": "$4\\pi$ is the area of the whole circle, $\\pi r^2$ with $r = 2$. The graph of $f$ is only the upper half."
+     },
+     {
+      "value": "pi",
+      "why": "$\\pi$ is a quarter of the circle, the area from 0 to 2 only. The interval $[0, 4]$ covers the whole half."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The region under the graph is a half-disc of radius 2: $\\frac{1}{2}\\pi(2)^2 = 2\\pi$."
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-6",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "definite-integral-notation-s2",
+   "q": "The region under the semicircle from its center to its right end is a quarter-disc. Find $\\int_2^4 f(x)\\,dx$.",
+   "numeric": {
+    "answer": "pi",
+    "mistakes": [
+     {
+      "value": "2*pi",
+      "why": "That is the whole half-disc, from 0 to 4. From 2 to 4 the region is a quarter of the disc."
+     },
+     {
+      "value": 4,
+      "why": "That treats the region as a 2 by 2 square. The curved edge cuts it off: a quarter-disc has area $\\frac{1}{4}\\pi r^2 = \\pi$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From $x = 2$ to $x = 4$ the region is a quarter of a disc of radius 2: $\\frac{1}{4}\\pi(2)^2 = \\pi$."
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-7",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "definite-integral-notation-s2",
+   "q": "Which limit of Riemann sums equals $\\int_0^4 f(x)\\,dx$?",
+   "options": [
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} f\\left(\\frac{i}{n}\\right)\\frac{4}{n}$",
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} f\\left(\\frac{4}{n}\\right)\\frac{4}{n}$",
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} f\\left(\\frac{4i}{n}\\right)\\frac{4}{n}$",
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} f\\left(\\frac{4i}{n}\\right)\\frac{1}{n}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For $\\int_a^b f(x)\\,dx$ with right ends: $\\Delta x = \\frac{b - a}{n}$ and $x_i = a + i\\Delta x$. Here $\\Delta x = \\frac{4}{n}$ and $x_i = \\frac{4i}{n}$.",
+    "options": [
+     "The points $\\frac{i}{n}$ only cover $[0, 1]$. On $[0, 4]$ the $i$th right end is $\\frac{4i}{n}$.",
+     "Without $i$ every term uses the same point, $\\frac{4}{n}$, near 0. Each term must use its own subinterval.",
+     "Correct: $\\Delta x = \\frac{4}{n}$ and the right ends of the subintervals of $[0, 4]$ are $\\frac{4i}{n}$.",
+     "The points are right, but the width of each subinterval of $[0, 4]$ is $\\frac{4}{n}$, not $\\frac{1}{n}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-8",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "definite-integral-notation-s2",
+   "q": "Find the right Riemann sum for $f$ on $[0, 4]$ with two subintervals of equal width, and compare it with $\\int_0^4 f(x)\\,dx$.",
+   "options": [
+    "It is $2\\pi$, equal to the integral",
+    "It is 4, less than the integral, $2\\pi$",
+    "It is 4, greater than the integral, $2\\pi$",
+    "It is 8, greater than the integral, $2\\pi$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Width 2; right ends 2 and 4. Sum $= 2f(2) + 2f(4) = 2 \\cdot 2 + 2 \\cdot 0 = 4$, an underestimate of $2\\pi \\approx 6.283$.",
+    "options": [
+     "Rectangles with flat tops cannot match a curved region exactly with two subintervals; only the limit as $n \\to \\infty$ gives $2\\pi$.",
+     "Correct: $2f(2) + 2f(4) = 2(2) + 2(0) = 4$, and $2\\pi \\approx 6.28$.",
+     "$2\\pi \\approx 6.28$ is larger than 4: two rectangles leave most of the half-disc uncovered on the right.",
+     "$f(4) = 0$, not 2: the semicircle comes back down to the axis at $x = 4$."
+    ]
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-9",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which limit equals $\\int_1^3 x^3\\,dx$?",
+   "options": [
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} \\left(1 + \\frac{2i}{n}\\right)^3 \\frac{2}{n}$",
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} \\left(\\frac{2i}{n}\\right)^3 \\frac{2}{n}$",
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} \\left(1 + \\frac{3i}{n}\\right)^3 \\frac{3}{n}$",
+    "$\\lim_{n \\to \\infty} \\sum_{i=1}^{n} \\left(1 + \\frac{2i}{n}\\right)^3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $\\int_a^b f(x)\\,dx$: $\\Delta x = \\frac{b - a}{n} = \\frac{2}{n}$ and $x_i = a + i\\Delta x = 1 + \\frac{2i}{n}$, so the sum is $\\sum f(x_i)\\Delta x$ with $f(x) = x^3$.",
+    "options": [
+     "Correct: $\\Delta x = \\frac{3 - 1}{n} = \\frac{2}{n}$ and $x_i = 1 + \\frac{2i}{n}$.",
+     "These points run over $[0, 2]$. The interval starts at 1, so $x_i = 1 + \\frac{2i}{n}$.",
+     "The width uses the upper limit alone. $\\Delta x = \\frac{b - a}{n} = \\frac{2}{n}$.",
+     "Each term needs its width $\\Delta x = \\frac{2}{n}$; without it the sum grows without bound."
+    ]
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-10",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A home uses electric power at a rate $P(t)$ kilowatts, where $t$ is in hours. What does $\\int_0^{24} P(t)\\,dt$ mean?",
+   "options": [
+    "the power, in kilowatts, that the home is using at t = 24 hours",
+    "the average power of the home over the day, in kilowatts",
+    "how fast the power changes during the 24 hours, in kilowatts per hour",
+    "the kilowatt-hours of energy the home uses during the 24 hours"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\int_0^{24} P(t)\\,dt$ is the limit of sums of (kilowatts) $\\times$ (hours): the energy, in kilowatt-hours, used from $t = 0$ to $t = 24$.",
+    "options": [
+     "That is $P(24)$, one value of the rate. The integral accumulates the rate over the day.",
+     "An average would divide the accumulated energy by 24 hours. The integral is the accumulated energy itself.",
+     "That would be a rate of change of $P$, its derivative. The integral of $P$ adds up $P$ times time.",
+     "Correct: kilowatts times hours is kilowatt-hours, the energy used over the day."
+    ]
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-11",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\int_0^6 \\left(\\frac{x}{2} + 1\\right)dx$ from the region under the graph.",
+   "numeric": {
+    "answer": 15,
+    "mistakes": [
+     {
+      "value": 24,
+      "why": "That uses the height at $x = 6$, which is 4, across the whole interval. The region is a trapezoid with heights 1 and 4."
+     },
+     {
+      "value": 9,
+      "why": "That is the triangle under $\\frac{x}{2}$ alone. Add the 6 by 1 rectangle under the \"+ 1\"."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The graph is a line from $(0, 1)$ to $(6, 4)$. Trapezoid: $\\frac{1 + 4}{2} \\cdot 6 = 15$."
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-12",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "expr",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A right Riemann sum for $\\int_1^5 \\sqrt{x}\\,dx$ uses $n$ subintervals of equal width. Write the $i$th right end, $x_i$, in terms of $i$ and $n$.",
+   "expr": {
+    "answer": "1 + 4i/n",
+    "vars": [
+     "i",
+     "n"
+    ],
+    "domain": {
+     "i": [
+      1,
+      9
+     ],
+     "n": [
+      10,
+      30
+     ]
+    },
+    "mode": "exact",
+    "lhs": "x_i =",
+    "answerTex": "1 + \\frac{4i}{n}",
+    "mistakes": [
+     {
+      "expr": "4i/n",
+      "why": "That starts the count at 0. The interval starts at $x = 1$, so add 1: $x_i = 1 + \\frac{4i}{n}$."
+     },
+     {
+      "expr": "1 + i/n",
+      "why": "Each step is $\\Delta x = \\frac{5 - 1}{n} = \\frac{4}{n}$, not $\\frac{1}{n}$."
+     },
+     {
+      "expr": "1 + 5i/n",
+      "why": "The width is $\\frac{b - a}{n} = \\frac{4}{n}$; using the upper limit 5 alone gives too wide a step."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\Delta x = \\frac{5 - 1}{n} = \\frac{4}{n}$, and the $i$th right end is $x_i = a + i\\,\\Delta x = 1 + \\frac{4i}{n}$."
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-13",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Let $h(x) = -2$ for all $x$. What is $\\int_1^4 h(x)\\,dx$?",
+   "options": [
+    "$-6$",
+    "$6$",
+    "$-8$",
+    "$-2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Any Riemann sum is $\\sum (-2)\\Delta x_i = -2 \\cdot (4 - 1) = -6$, so the limit is $-6$. A definite integral of a negative function is negative.",
+    "options": [
+     "Correct: every Riemann sum on [1, 4] is the sum of (negative 2) times widths that add to 3.",
+     "The size of the rectangle is 6, but each product in a Riemann sum is a width times a height of negative 2: each one is negative.",
+     "The width of the interval is 4 - 1 = 3, not 4.",
+     "That is the height. The integral is height times width, (negative 2) times 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-14",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement about $\\int_2^7 g(t)\\,dt$ is correct?",
+   "options": [
+    "It is a function of $t$",
+    "Its integrand is $g(7) - g(2)$",
+    "It equals $\\int_2^7 g(t)\\,dx$",
+    "It equals $\\int_2^7 g(u)\\,du$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In $\\int_a^b g(t)\\,dt$, $g(t)$ is the integrand, $a$ and $b$ are the limits of integration, and $t$ is a placeholder variable: $\\int_2^7 g(t)\\,dt = \\int_2^7 g(u)\\,du$.",
+    "options": [
+     "The limits 2 and 7 are numbers, so the integral is one number; $t$ only names the input inside it.",
+     "The integrand is the function being summed, $g(t)$. The 2 and 7 are the limits of integration.",
+     "The differential must match the variable of the integrand: $dt$ with $g(t)$.",
+     "Correct: the letter $t$ is only a placeholder for the input; renaming it does not change the number."
+    ]
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-15",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Use your calculator to find $\\int_0^2 e^{-x^2}\\,dx$.",
+   "numeric": {
+    "answer": 0.8820813907624215,
+    "mistakes": [
+     {
+      "value": 1.7641627815,
+      "why": "That is twice the value: check the limits. The integral runs from 0 to 2, not from $-2$ to 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Enter the definite integral $\\int_0^2 e^{-x^2}\\,dx$ in the calculator's numerical integration: $0.882$ (to three decimal places). Write the integral as your setup; a bare number does not show the work."
+   }
+  },
+  {
+   "id": "calc-definite-integral-notation-16",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\sum_{i=1}^{4} (2i + 1)$.",
+   "options": [
+    "9",
+    "24",
+    "20",
+    "21"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Substitute $i = 1, 2, 3, 4$ and add: $3 + 5 + 7 + 9 = 24$.",
+    "options": [
+     "That is only the last term, at $i = 4$. Sigma notation adds every term from $i = 1$ to $i = 4$.",
+     "Correct: 3 + 5 + 7 + 9.",
+     "That is $\\sum_{i=1}^{4} 2i$ alone; the $+1$ is added once for each of the 4 terms.",
+     "This adds 1 only once. Each of the 4 terms has its own $+1$."
+    ]
+   }
+  }
+ ]
+}

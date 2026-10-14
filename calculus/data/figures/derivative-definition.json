@@ -1,0 +1,12 @@
+{
+ "secant-to-tangent": {
+  "file": "figures/secant-to-tangent.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The curve y = f(x) with a point at x = a and a second point at x = a + h. A dashed secant line joins them; the run h and the rise f(a + h) minus f(a) are marked. A solid tangent line touches the curve at x = a. The secant slope is the average rate on [a, a + h]; as h shrinks to 0 it approaches the tangent slope f prime of a."
+ }
+}

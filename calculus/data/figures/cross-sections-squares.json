@@ -1,0 +1,7 @@
+{
+ "square-sections-solid": {
+  "file": "figures/square-sections-solid.svg", "ext": "svg", "w": 760, "h": 460,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "A 3D view of a solid built on the region under y = 4 − x² from x = −2 to 2, lying flat on the floor. Square slices stand on the base, each perpendicular to the x-axis with one side across the base, so the slice at x has side s = 4 − x². One thin slice is highlighted in blue with its side s marked; dashed curves trace the top edges of the solid. A side panel shows a flat square of side s, its area A(x) = (4 − x²)², and the volume, the integral from −2 to 2 of A(x) dx = 512/15."
+ }
+}

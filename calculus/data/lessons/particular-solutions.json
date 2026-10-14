@@ -1,0 +1,71 @@
+{
+ "topic": "particular-solutions",
+ "hook": "Separation of variables gives a family of curves, one for each constant. A real problem wants one curve: the temperature of this coffee, which was 90 °C at noon. That one fact, an initial condition, picks out a single member of the family. Use it the moment the constant appears, and watch the domain: some solutions shoot off to infinity and simply stop.",
+ "prereq": [
+  {
+   "q": "The general solution of $\\frac{dy}{dx} = xy$ is",
+   "options": [
+    "$y = Ae^{x^2/2}$",
+    "$y = e^{x^2/2} + C$",
+    "$y = \\frac{x^2}{2} + C$",
+    "$y = Ae^{x}$"
+   ],
+   "correct": 0,
+   "why": "$\\ln|y| = \\frac{x^2}{2} + C$, so $y = Ae^{x^2/2}$.",
+   "review": "separation-of-variables"
+  },
+  {
+   "q": "$\\int 3x^2\\,dx =$",
+   "options": [
+    "$x^3 + C$",
+    "$6x + C$",
+    "$x^3$",
+    "$3x^3 + C$"
+   ],
+   "correct": 0,
+   "why": "Raise the power by one and divide by the new power; add C.",
+   "review": "antiderivatives"
+  }
+ ],
+ "figure": {
+  "figure": "particular-domain",
+  "caption": "$\\frac{dy}{dx} = y^2$ with $y(0) = 1$ gives $y = \\frac{1}{1 - x}$. The particular solution is the crimson branch, on $x < 1$; the other branch is not connected to $(0, 1)$."
+ },
+ "chain": [
+  {
+   "cause": "Separate and integrate",
+   "effect": "an equation with one constant $C$"
+  },
+  {
+   "cause": "Substitute the initial condition right away",
+   "effect": "a number for $C$, before any rearranging"
+  },
+  {
+   "cause": "Solve for $y$, choosing the sign or branch that passes through the given point",
+   "effect": "one function, the particular solution"
+  },
+  {
+   "cause": "The formula breaks somewhere (division by 0, a negative under a root, a log of 0)",
+   "effect": "the domain is the largest open interval around the initial x where the solution is defined and differentiable"
+  }
+ ],
+ "ideas": [
+  "An <b>initial condition</b> $y(x_0) = y_0$ says the solution passes through $(x_0, y_0)$. Put $x_0$ in for $x$ and $y_0$ in for $y$.",
+  "Use it as soon as $C$ appears. Solving for $y$ first invites algebra slips and wrong constants.",
+  "After a square root, keep the sign that matches $y_0$: $y(1) = -3$ needs the negative root.",
+  "State the domain: an open interval containing $x_0$ on which the formula is defined and its derivative exists."
+ ],
+ "misconception": {
+  "wrong": "From $\\ln|y| = \\sin x + C$: $y = e^{\\sin x} + C$, and $y(0) = 2$ gives $C = 1$, so $y = e^{\\sin x} + 1$.",
+  "right": "Exponentiating gives $y = Ae^{\\sin x}$, not $e^{\\sin x} + C$. Better, use the condition first: $\\ln 2 = \\sin 0 + C$, so $C = \\ln 2$ and $y = e^{\\sin x + \\ln 2} = 2e^{\\sin x}$."
+ },
+ "check": [
+  "calc-particular-solutions-1",
+  "calc-particular-solutions-2",
+  "calc-particular-solutions-4",
+  "calc-particular-solutions-10",
+  "calc-particular-solutions-11",
+  "calc-particular-solutions-13"
+ ],
+ "summary": "A particular solution satisfies the differential equation and an initial condition. Separate, integrate, add $C$, substitute the initial point immediately, then solve for $y$ with the sign that fits. Give its domain: the open interval around the initial $x$ where it is defined and differentiable."
+}

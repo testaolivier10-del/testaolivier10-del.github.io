@@ -122,3 +122,11 @@ body.ls-on .phys-crumb{display:none;}
    fill the letterbox instead of leaving blank bands. */
 .ls-root .ls-drill-stage .pl-qfig svg,.pl-qfig svg{overflow:visible;}
 .pl-qfig{overflow:hidden;border-radius:12px;}
+
+/* Phones (docs/tools-phone-pass.md). The scene and the quiz figure draw at
+   their box's size on a phone, so these are on-screen sizes. The cliff
+   handle has an invisible 48 x 44 touch target (.pl-hgt-hit). */
+.pl-hgt-hit{fill:transparent;stroke:none;cursor:grab;}
+.ls-phone .pl-tl,.ls-phone .pl-note,.ls-phone .pl-scale-t{font-size:12.5px;}
+.ls-phone .pl-qfig .pl-mk{font-size:13.5px;}
+.ls-phone .pl-qfig .phys-arrow text{font-size:13px;}

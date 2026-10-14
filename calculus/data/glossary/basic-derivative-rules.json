@@ -1,0 +1,5 @@
+{
+ "sum-rule": {
+  "def": "The basic derivative rules: the constant rule $\\frac{d}{dx}(c) = 0$; the constant multiple rule $\\frac{d}{dx}\\left( kf(x) \\right) = kf'(x)$; and the sum and difference rules $\\frac{d}{dx}\\left( f(x) \\pm g(x) \\right) = f'(x) \\pm g'(x)$."
+ }
+}

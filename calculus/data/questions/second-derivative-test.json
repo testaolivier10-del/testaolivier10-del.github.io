@@ -1,0 +1,511 @@
+{
+ "stimuli": {
+  "second-derivative-test-s1": {
+   "kind": "table",
+   "title": "Values of $f'$ and $f''$",
+   "text": "$f$ is twice differentiable for all real numbers. The table gives values of its first and second derivatives.",
+   "table": {
+    "caption": "Values of $f'(x)$ and $f''(x)$ at selected $x$",
+    "cols": [
+     "$x$",
+     "-2",
+     "0",
+     "1",
+     "3",
+     "4"
+    ],
+    "rows": [
+     [
+      "$f'(x)$",
+      "0",
+      "-2",
+      "0",
+      "2",
+      "0"
+     ],
+     [
+      "$f''(x)$",
+      "-3",
+      "2",
+      "4",
+      "-1",
+      "0"
+     ]
+    ]
+   }
+  },
+  "second-derivative-test-s2": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = 2x^3 + 3x^2 - 12x + 1$",
+   "plot": {
+    "label": "Graph of f(x) = 2x cubed + 3x squared - 12x + 1 from -3.5 to 2.5: a high point at (-2, 21) and a low point at (1, -6)",
+    "x": [
+     -3.5,
+     2.5
+    ],
+    "y": [
+     -15,
+     27
+    ],
+    "xStep": 1,
+    "yStep": 5,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2x^3 + 3x^2 - 12x + 1",
+      "domain": [
+       -3.5,
+       2.5
+      ],
+      "cls": "s1",
+      "label": "f"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -2,
+       21
+      ],
+      "label": "(-2, 21)"
+     },
+     {
+      "at": [
+       1,
+       -6
+      ],
+      "label": "(1, -6)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-second-derivative-test-1",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "second-derivative-test-s1",
+   "q": "At which value of $x$ in the table does $f$ have a relative maximum?",
+   "options": [
+    "$x = 1$",
+    "$x = -2$",
+    "$x = 4$",
+    "$x = 3$, where $f''(3) < 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Second Derivative Test: $f'(-2) = 0$ and $f''(-2) < 0$, so $f$ has a relative maximum at $x = -2$.",
+    "options": [
+     "$f'(1) = 0$ and $f''(1) > 0$: a relative minimum.",
+     "$f'(-2) = 0$ and $f''(-2) = -3 < 0$: concave down at a flat point.",
+     "$f''(4) = 0$: the test gives no answer at $x = 4$.",
+     "$f'(3) = 2 \\ne 0$, so $x = 3$ is not a critical point."
+    ]
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-2",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "second-derivative-test-s1",
+   "q": "Which justification earns credit for \"$f$ has a relative minimum at $x = 1$\"?",
+   "options": [
+    "\"$f'(1) = 0$ and $f''(1) > 0$.\"",
+    "\"$f''(1) > 0$.\"",
+    "\"$f'(1) = 0$.\"",
+    "\"$f'(0) < 0$ and $f'(3) > 0$, so $f'$ changes sign.\""
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Second Derivative Test needs both: $f'(1) = 0$ (critical point) and $f''(1) = 4 > 0$ (concave up there), so $f$ has a relative minimum at $x = 1$.",
+    "options": [
+     "Both conditions of the Second Derivative Test.",
+     "Concave up alone is not a minimum; $f$ must also have a flat tangent line there.",
+     "A critical point alone is only a candidate.",
+     "Values of $f'$ at two separate points do not show a sign change at $x = 1$; $f'$ might change sign more than once."
+    ]
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-3",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "second-derivative-test-s1",
+   "q": "What does the Second Derivative Test say about $f$ at $x = 4$?",
+   "options": [
+    "A relative maximum, because $f''(4) \\le 0$",
+    "A point of inflection, because $f''(4) = 0$ and $f''$ is continuous",
+    "A relative minimum, because $f'(4) = 0$",
+    "Nothing, because $f''(4) = 0$ makes the test inconclusive"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The Second Derivative Test needs $f''(c) \\ne 0$. Here $f''(4) = 0$, so it gives no conclusion; check the sign of $f'$ on each side instead.",
+    "options": [
+     "The test needs $f''(4) < 0$ strictly.",
+     "$f''(4) = 0$ does not show a sign change of $f''$.",
+     "$f'(4) = 0$ only makes 4 a critical point.",
+     "With $f''(4) = 0$, the point could be a maximum, a minimum or neither. Use the First Derivative Test."
+    ]
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-4",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "second-derivative-test-s1",
+   "q": "Which describes the graph of $f$ at $x = 3$?",
+   "options": [
+    "Increasing and concave up",
+    "Decreasing and concave down",
+    "Increasing and concave down",
+    "A relative maximum, because $f''(3) < 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$f'(3) = 2 > 0$, so $f$ is increasing; $f''(3) = -1 < 0$, so it is concave down.",
+    "options": [
+     "$f''(3) < 0$ means concave down.",
+     "$f'(3) > 0$ means increasing.",
+     "$f'(3) = 2 > 0$ and $f''(3) = -1 < 0$.",
+     "$x = 3$ is not a critical point, so the test does not apply."
+    ]
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-5",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "second-derivative-test-s2",
+   "q": "Evaluate the second derivative of $f$ at the critical point $x = 1$.",
+   "numeric": {
+    "answer": 18,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$f'(1) = 0$. Differentiate again: $f''(x) = 12x + 6$."
+     },
+     {
+      "value": 12,
+      "why": "$f''(x) = 12x + 6$; you dropped the constant 6."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 6x^2 + 6x - 12$ and $f''(x) = 12x + 6$, so $f''(1) = 18 > 0$: $f$ has a relative minimum at the critical point $x = 1$."
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-6",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "second-derivative-test-s2",
+   "q": "Find the relative maximum value of $f$.",
+   "numeric": {
+    "answer": 21,
+    "mistakes": [
+     {
+      "value": -6,
+      "why": "$f(1) = -6$ is the relative minimum: $f''(1) = 18 > 0$."
+     },
+     {
+      "value": -2,
+      "why": "$x = -2$ is where the maximum happens; the value is $f(-2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 6(x + 2)(x - 1) = 0$ at $x = -2, 1$. $f''(-2) = -18 < 0$, so the relative maximum is $f(-2) = -16 + 12 + 24 + 1 = 21$."
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-7",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "second-derivative-test-s2",
+   "q": "At what $x$-value does the concavity of $f$ change?",
+   "numeric": {
+    "answer": "-1/2",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "Solve $12x + 6 = 0$: $x = -\\frac{6}{12}$, negative."
+     },
+     {
+      "value": -2,
+      "why": "$x = -2$ is the relative maximum, where $f' = 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f''(x) = 12x + 6$ changes sign at $x = -\\frac{1}{2}$, halfway between the relative maximum and minimum."
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-8",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "second-derivative-test-s2",
+   "q": "On the interval $(0, \\infty)$, which statement is true and fully justified?",
+   "options": [
+    "$f$ has no absolute minimum on $(0, \\infty)$, because the interval is open",
+    "The absolute minimum is $1 = f(0)$, at the left end",
+    "The absolute minimum of $f$ on $(0, \\infty)$ is $-6$, because $x = 1$ is the one critical point there and it is a relative minimum",
+    "$-6$ is a relative minimum, which on any interval is also the absolute minimum"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "On $(0, \\infty)$, $f'(x) = 6(x + 2)(x - 1)$ is zero only at $x = 1$, and $f''(1) = 18 > 0$. With one critical point and it a relative minimum, $f(1) = -6$ is the absolute minimum on that interval.",
+    "options": [
+     "An open interval can still have an absolute minimum; the one-critical-point argument shows it.",
+     "$x = 0$ is not in $(0, \\infty)$, and $f(1) = -6 < 1$.",
+     "A continuous function with exactly one critical point on an interval, where it has a relative minimum, has its absolute minimum there.",
+     "In general a relative minimum is not the absolute one; here it is because $x = 1$ is the one critical point."
+    ]
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-9",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the absolute minimum value of $f(x) = x + \\frac{1}{x}$ on $(0, \\infty)$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$x = 1$ is where the minimum happens. The value is $f(1) = 1 + 1$."
+     },
+     {
+      "value": -2,
+      "why": "$x = -1$ is not in $(0, \\infty)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 1 - \\frac{1}{x^2} = 0$ at $x = 1$ (the one critical point in $(0, \\infty)$). $f''(x) = \\frac{2}{x^3}$, so $f''(1) = 2 > 0$: a relative minimum, and as the only critical point it is the absolute minimum, $f(1) = 2$."
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-10",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $f(x) = \\sin x + \\cos x$, what does $f$ have at $x = \\frac{\\pi}{4}$?",
+   "options": [
+    "A relative maximum: $f'\\left(\\frac{\\pi}{4}\\right) = 0$ and $f''\\left(\\frac{\\pi}{4}\\right) = -\\sqrt{2}$",
+    "A relative minimum: $f'\\left(\\frac{\\pi}{4}\\right) = 0$ and $f''\\left(\\frac{\\pi}{4}\\right) = \\sqrt{2}$",
+    "A point of inflection: $f'\\left(\\frac{\\pi}{4}\\right) = 0$ and $f''\\left(\\frac{\\pi}{4}\\right) = -\\sqrt{2}$",
+    "No extremum: $f'\\left(\\frac{\\pi}{4}\\right) = 0$ and $f''\\left(\\frac{\\pi}{4}\\right) = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f'\\left(\\frac{\\pi}{4}\\right) = \\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2} = 0$ and $f''\\left(\\frac{\\pi}{4}\\right) = -\\sqrt{2} < 0$: a relative maximum, $f\\left(\\frac{\\pi}{4}\\right) = \\sqrt{2}$.",
+    "options": [
+     "$f'(x) = \\cos x - \\sin x$ and $f''(x) = -\\sin x - \\cos x$.",
+     "A sign slip: $f''\\left(\\frac{\\pi}{4}\\right) = -\\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2} = -\\sqrt{2}$.",
+     "$f' = 0$ is about extrema, not inflection.",
+     "$f''\\left(\\frac{\\pi}{4}\\right) = -\\sqrt{2}$, not 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-11",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $f(x) = x^4 - 4x^3$, $f'(0) = 0$ and $f''(0) = 0$. What does $f$ have at $x = 0$?",
+   "options": [
+    "A relative minimum, because $f''(0) \\ge 0$",
+    "A relative maximum, because the Second Derivative Test is inconclusive",
+    "A relative minimum, because $f(0) = 0$",
+    "No extremum, because $f'(x) = 4x^2(x - 3) < 0$ on both sides of 0"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The Second Derivative Test fails ($f''(0) = 0$). By the First Derivative Test, $f'(x) = 4x^2(x - 3)$ is negative on both sides of 0, so $f$ has no extremum there.",
+    "options": [
+     "The test needs $f''(0) > 0$ strictly.",
+     "An inconclusive test is not evidence for a maximum.",
+     "The value of $f$ does not decide.",
+     "The Second Derivative Test is silent, so use the First: $f'$ does not change sign."
+    ]
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-12",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "$f(x) = x^2 e^x$ has critical points at $x = 0$ and $x = -2$. Find $f''(-2)$. Give an exact answer.",
+   "numeric": {
+    "answer": "-2e^(-2)",
+    "mistakes": [
+     {
+      "value": "2e^(-2)",
+      "why": "$f''(x) = (x^2 + 4x + 2)e^x$; at $x = -2$, $4 - 8 + 2 = -2$, so the value is negative."
+     },
+     {
+      "value": 0,
+      "why": "$f'(-2) = 0$. The question asks for $f''(-2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = (x^2 + 2x)e^x$. Product rule again: $f''(x) = (2x + 2)e^x + (x^2 + 2x)e^x = (x^2 + 4x + 2)e^x$. So $f''(-2) = -2e^{-2} < 0$: a relative maximum at $x = -2$."
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-13",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "calc": true,
+   "q": "Let $f(x) = x^2 + 3\\cos x$. Find the positive value of $x$ at which $f$ has a relative minimum.",
+   "numeric": {
+    "answer": 1.4957815682220996,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "At $x = 0$, $f''(0) = 2 - 3 = -1 < 0$: a relative maximum, and not positive."
+     },
+     {
+      "value": 1.7751667269549625,
+      "why": "That is $f''$ at the critical point. The question asks for the $x$-value."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 2x - 3\\sin x = 0$: graphing (radian mode) gives $x = 0$ and $x \\approx 1.496$. $f''(x) = 2 - 3\\cos x$, and $f''(1.496) \\approx 1.775 > 0$, so $f$ has a relative minimum at $x \\approx 1.496$."
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-14",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A company's profit is $P(x)$ dollars when it makes $x$ units. $P'(50) = 0$ and $P''(50) = -0.4$. What can you conclude?",
+   "options": [
+    "Making 50 units gives a relative maximum of profit",
+    "Making 50 units gives a relative minimum of profit",
+    "Profit is increasing at a decreasing rate at 50 units",
+    "At 50 units, profit is $-0.4$ dollars"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$P'(50) = 0$ and $P''(50) < 0$: by the Second Derivative Test, $P$ has a relative maximum at $x = 50$.",
+    "options": [
+     "A flat point where the graph is concave down: a peak.",
+     "$P'' < 0$ means concave down: a maximum, not a minimum.",
+     "$P'(50) = 0$, so profit is not increasing at 50 units.",
+     "$-0.4$ is the value of $P''$, not of $P$."
+    ]
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-15",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "$f'(c) = 0$ and $f''(c) = 0$. What can you conclude about $f$ at $x = c$?",
+   "options": [
+    "$f$ has a point of inflection at $c$, since $f''(c) = 0$",
+    "$f$ has no relative extremum at $c$",
+    "$f$ has a relative minimum at $c$",
+    "No conclusion yet; check the sign of $f'$ around $c$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When $f''(c) = 0$, the Second Derivative Test is inconclusive. Use the First Derivative Test instead.",
+    "options": [
+     "$x^4$ meets both conditions and has no inflection point at 0.",
+     "$x^4$ has a minimum at 0.",
+     "$-x^4$ has a maximum at 0.",
+     "$x^4$, $-x^4$ and $x^3$ all meet both conditions at 0 and give a minimum, a maximum and neither."
+    ]
+   }
+  },
+  {
+   "id": "calc-second-derivative-test-16",
+   "unit": "unit-5",
+   "topic": "second-derivative-test",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Use the Second Derivative Test to find the relative minimum value of $f(x) = x^3 - 12x$.",
+   "numeric": {
+    "answer": -16,
+    "mistakes": [
+     {
+      "value": 16,
+      "why": "$f(-2) = 16$ is the relative maximum: $f''(-2) = -12 < 0$."
+     },
+     {
+      "value": 2,
+      "why": "$x = 2$ is where the minimum happens; the value is $f(2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 3x^2 - 12 = 0$ at $x = \\pm 2$; $f''(x) = 6x$. $f''(2) = 12 > 0$, so the relative minimum is $f(2) = 8 - 24 = -16$."
+   }
+  }
+ ]
+}

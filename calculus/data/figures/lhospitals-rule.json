@@ -1,0 +1,12 @@
+{
+ "lhospital-tangent-ratio": {
+  "file": "figures/lhospital-tangent-ratio.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Graphs of f(x) = e^x − 1 (crimson) and g(x) = sin(2x) (blue) near 0, both through the origin, with their dashed tangent lines y = x and y = 2x. Near 0 the quotient f(x)/g(x) is close to x/(2x) = 1/2 = f′(0)/g′(0)."
+ }
+}

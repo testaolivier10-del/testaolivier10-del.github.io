@@ -1,0 +1,52 @@
+{
+ "topic": "washer-method-other-axes",
+ "hook": "Spin the same flat region about the $x$-axis, then about a line one unit below it, and you get two different hollow solids: the second has a wider hole and more material. The washer method handles both. The whole difference is in measuring each radius from the right line.",
+ "prereq": [
+  {
+   "q": "The region between $y = \\sqrt{x}$ and $y = 1$ for $1 \\le x \\le 4$ is revolved about the $x$-axis. Which integral gives the volume?",
+   "options": ["$\\pi\\int_1^4 (x - 1)\\,dx$", "$\\pi\\int_1^4 (\\sqrt{x} - 1)^2\\,dx$", "$\\pi\\int_1^4 x\\,dx$", "$\\pi\\int_1^4 (1 - x)\\,dx$"],
+   "correct": 0,
+   "why": "Washers with $R = \\sqrt{x}$ and $r = 1$: $\\pi\\int_1^4 \\left[(\\sqrt{x})^2 - 1^2\\right]\\,dx$.",
+   "review": "washer-method-axes"
+  },
+  {
+   "q": "The region between $y = x^2$ and $y = 1$ is revolved about the line $y = 1$. What is the radius of the disc at $x$?",
+   "options": ["$1 - x^2$", "$x^2$", "$x^2 - 1$", "$1 + x^2$"],
+   "correct": 0,
+   "why": "The axis is above the curve: $r = 1 - x^2$.",
+   "review": "disc-method-other-axes"
+  }
+ ],
+ "figure": { "figure": "washer-solid-line", "caption": "The region between $y = \\sqrt{x}$ and $y = 1$ revolved about $y = -1$. Both radii grow by 1: $R = \\sqrt{x} + 1$ and $r = 2$." },
+ "chain": [
+  { "cause": "The axis is the line $y = k$ and the region does not touch it", "effect": "each slice is a washer centered on that line" },
+  { "cause": "Draw a rectangle perpendicular to the axis", "effect": "its far end gives $R$ and its near end gives $r$, both measured from $y = k$" },
+  { "cause": "The axis is below the region", "effect": "$R = (\\text{top}) - k$ and $r = (\\text{bottom}) - k$" },
+  { "cause": "The axis is above the region", "effect": "the bottom curve is now the far edge: $R = k - (\\text{bottom})$ and $r = k - (\\text{top})$" },
+  { "cause": "Square each radius and subtract", "effect": "$V = \\pi\\int_a^b \\left(R^2 - r^2\\right)\\,dx$" }
+ ],
+ "ideas": [
+  "<b>Washers about a line</b>: $V = \\pi\\int \\left(R^2 - r^2\\right)$ with both radii measured from the line $y = k$ or $x = h$.",
+  "Axis below the region ($y = k$, $k$ small): $R = f(x) - k$, $r = g(x) - k$. With $k = -1$, add 1 to each height.",
+  "Axis above the region: the far edge is the bottom curve, so $R = k - g(x)$ and $r = k - f(x)$.",
+  "Vertical axis $x = h$: horizontal washers in $dy$; the far edge may be the left curve if the axis is on the right.",
+  "Square each radius separately; $(R - r)^2$ is the region's height squared, not a washer's area."
+ ],
+ "misconception": {
+  "wrong": "To revolve about $y = -1$, subtract 1 from each radius, since $-1$ is one unit away.",
+  "right": "A radius is (larger height) minus (smaller height). From $y = -1$ up to the curve is $f(x) - (-1) = f(x) + 1$: both radii grow by 1. Subtracting 1 instead measures toward the wrong side of the $x$-axis."
+ },
+ "check": [
+  "calc-washer-method-other-axes-1",
+  "calc-washer-method-other-axes-2",
+  "calc-washer-method-other-axes-3",
+  "calc-washer-method-other-axes-4",
+  "calc-washer-method-other-axes-10",
+  "calc-washer-method-other-axes-12",
+  "calc-washer-method-other-axes-13"
+ ],
+ "summary": "Revolving about a line other than an axis uses the same washer integral, $V = \\pi\\int (R^2 - r^2)$. Draw one rectangle perpendicular to the axis; $R$ is the distance from the axis to its far end and $r$ to its near end. When the axis is above (or to the right of) the region, the far end is the bottom (or left) curve.",
+ "connections": [
+  { "href": "../notes/washer-method-axes.html", "label": "Back: washers about the axes (8.11)" }
+ ]
+}

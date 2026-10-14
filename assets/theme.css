@@ -231,6 +231,11 @@ body[data-course="apchem"]{--ctint:#E3EAFA;--cink:#1D44A6;}
    10:1 dark (docs/apphys-spec.md decision 6). */
 body[data-course="apphys"]{--ctint:#FBEED5;--cink:#734200;}
 :root[data-theme="dark"] body[data-course="apphys"]{--ctint:rgba(235,165,50,0.10);--cink:#F5CF8A;}
+/* AP Calculus AB: crimson (not ochem's lilac, Biology's green, A&P's coral,
+   NREMT's mint, Chemistry's cobalt or Physics' amber). --cink on --ctint:
+   8.0:1 light, about 9.8:1 dark (docs/apcalc-spec.md decision 6). */
+body[data-course="apcalc"]{--ctint:#FCE8EE;--cink:#8C1036;}
+:root[data-theme="dark"] body[data-course="apcalc"]{--ctint:rgba(232,80,122,0.10);--cink:#F7B8CA;}
 
 /* ==========================================================================
    2. Base

@@ -1,0 +1,5 @@
+{
+ "implicit-differentiation": {
+  "def": "Finding $\\frac{dy}{dx}$ from an equation in $x$ and $y$ without solving for $y$: differentiate both sides with respect to $x$, using the chain rule on every term that holds $y$, then solve for $\\frac{dy}{dx}$."
+ }
+}

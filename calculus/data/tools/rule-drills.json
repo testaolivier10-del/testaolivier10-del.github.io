@@ -1,0 +1,100 @@
+{
+ "slug": "rule-drills",
+ "kind": "drill",
+ "topic": "power-rule",
+ "intro": "<p>Every derivative on the exam is built from a handful of rules. This drill takes one function at a time and builds its derivative piece by piece: you name the rule, differentiate each piece, then put them together. Each typed answer is checked by evaluating it, so any correct form counts.</p><p>The rule picker in Explore takes any function you type and shows its structure (which rule comes first, what is inside what) and its derivative.</p>",
+ "howItWorks": "<p>The function is drawn as a tree: a product splits into its two factors $u$ and $v$, a quotient into its top and bottom, a composition into its outer function and the inner function $u$. Each piece lights up with its derivative as you get it right.</p><ul><li><b>Power rule</b> $\\frac{d}{dx}x^n = nx^{n-1}$; rewrite roots and fractions as powers first.</li><li><b>Product rule</b> $(uv)′ = u′v + uv′$.</li><li><b>Quotient rule</b> $\\left(\\frac{u}{v}\\right)′ = \\frac{u′v - uv′}{v^2}$.</li><li><b>Chain rule</b> $\\frac{d}{dx}f(g(x)) = f′(g(x))\\,g′(x)$: the outer derivative at the inside, times the inside′s derivative.</li><li><b>Implicit</b>: differentiate both sides; every $y$ term gets a factor $\\frac{dy}{dx}$.</li></ul><p>Type answers like <code>3x^2 + 2cos(2x)</code>, <code>e^(3x)</code>, <code>1/sqrt(x)</code> or <code>sec(x)^2</code>; the line under the box shows how your answer was read. A wrong answer gets the name of the slip it matches: a forgotten inner derivative, the product rule taken as a product of derivatives, the quotient rule upside down, a missing dy/dx. New kinds appear as you reach the lessons that teach them.</p>",
+ "contexts": [
+  {
+   "id": "rewrite",
+   "topic": "math-exponent-rules",
+   "types": [
+    "rewrite"
+   ]
+  },
+  {
+   "id": "power",
+   "topic": "power-rule",
+   "types": [
+    "power"
+   ]
+  },
+  {
+   "id": "sum",
+   "topic": "basic-derivative-rules",
+   "types": [
+    "sum"
+   ]
+  },
+  {
+   "id": "trigexp",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "types": [
+    "trigexp"
+   ]
+  },
+  {
+   "id": "product",
+   "topic": "product-rule",
+   "types": [
+    "product"
+   ]
+  },
+  {
+   "id": "quotient",
+   "topic": "quotient-rule",
+   "types": [
+    "quotient"
+   ]
+  },
+  {
+   "id": "trig",
+   "topic": "other-trig-derivatives",
+   "types": [
+    "trig"
+   ]
+  },
+  {
+   "id": "chain",
+   "topic": "chain-rule",
+   "types": [
+    "chain"
+   ]
+  },
+  {
+   "id": "implicit",
+   "topic": "implicit-differentiation",
+   "types": [
+    "implicit"
+   ]
+  },
+  {
+   "id": "inverse",
+   "topic": "inverse-function-derivatives",
+   "types": [
+    "inverse"
+   ]
+  },
+  {
+   "id": "invtrig",
+   "topic": "inverse-trig-derivatives",
+   "types": [
+    "invtrig"
+   ]
+  },
+  {
+   "id": "mixed",
+   "topic": "choosing-derivative-rules",
+   "types": [
+    "mixed"
+   ]
+  },
+  {
+   "id": "higher",
+   "topic": "higher-order-derivatives",
+   "types": [
+    "higher"
+   ]
+  }
+ ]
+}

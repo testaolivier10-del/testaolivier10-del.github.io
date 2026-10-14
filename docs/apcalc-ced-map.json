@@ -1,0 +1,1776 @@
+{
+ "about": "Topic map of the AP Calculus AB part of the AP Calculus AB and BC Course and Exam Description, written in LevlPrep's own words from docs/apcalc-research/framework.md. No CED text is reproduced. Units 1-2 objectives and the epsilon-delta exclusion were read in the CED; Units 3-8 summaries come from knowledge of the CED and must be verified (docs/apcalc-needs-author.md, units3to8-objectives). BC-only topics are listed as excluded.",
+ "ced": {
+  "title": "AP Calculus AB and BC Course and Exam Description",
+  "edition": "2019 framework, reissued effective fall 2020 (content unchanged since)",
+  "effective": "Fall 2020; May 2027 MCQ timing per the fall 2026 clarifications",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-bc-course-and-exam-description-clarifications.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-calculus-ab/exam"
+  ],
+  "verification": "CED PDF text read through the Unit 3 opener; topic names for Units 3-8 from the partial extraction plus a third-party CED alignment list.",
+  "bcOnlyInUnits1to8": [
+   "6.11",
+   "6.12",
+   "6.13",
+   "7.5",
+   "7.9",
+   "8.13"
+  ],
+  "bcOnlyUnits": [
+   9,
+   10
+  ]
+ },
+ "mathematicalPractices": [
+  {
+   "id": 1,
+   "name": "Implementing Mathematical Processes",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C",
+    "1.D",
+    "1.E",
+    "1.F"
+   ],
+   "mcqWeight": [
+    50,
+    70
+   ],
+   "frqWeight": [
+    35,
+    60
+   ],
+   "skillNames": {
+    "1.A": "Identify the question to be answered (not assessed)",
+    "1.B": "Identify key information (not assessed)",
+    "1.C": "Choose a rule or procedure from the form of an expression",
+    "1.D": "Choose a rule or procedure from relationships between concepts",
+    "1.E": "Apply rules or procedures, with and without technology",
+    "1.F": "Explain how an approximation relates to the actual value"
+   }
+  },
+  {
+   "id": 2,
+   "name": "Connecting Representations",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D",
+    "2.E"
+   ],
+   "mcqWeight": [
+    15,
+    30
+   ],
+   "frqWeight": [
+    10,
+    20
+   ],
+   "skillNames": {
+    "2.A": "See common structure across contexts",
+    "2.B": "Read information from graphs, tables, formulas and words",
+    "2.C": "Re-express information in another representation",
+    "2.D": "Relate properties of a function across representations",
+    "2.E": "Relate representations of a function and its derivatives"
+   }
+  },
+  {
+   "id": 3,
+   "name": "Justification",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C",
+    "3.D",
+    "3.E",
+    "3.F",
+    "3.G"
+   ],
+   "mcqWeight": [
+    10,
+    20
+   ],
+   "frqWeight": [
+    35,
+    60
+   ],
+   "skillNames": {
+    "3.A": "Use technology to form conjectures (not assessed)",
+    "3.B": "Pick the right definition, theorem or test",
+    "3.C": "Confirm its hypotheses hold",
+    "3.D": "Apply it",
+    "3.E": "Give reasons for solutions and conclusions",
+    "3.F": "Explain meaning in context",
+    "3.G": "Confirm a solution is accurate and appropriate"
+   }
+  },
+  {
+   "id": 4,
+   "name": "Communication and Notation",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "4.D",
+    "4.E"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ],
+   "frqWeight": [
+    10,
+    25
+   ],
+   "skillNames": {
+    "4.A": "Use precise mathematical language",
+    "4.B": "Use units of measure",
+    "4.C": "Use symbols and notation correctly",
+    "4.D": "Use graphing conventions",
+    "4.E": "Round correctly (three decimal places)"
+   }
+  }
+ ],
+ "mathematicalPracticesNote": "Weights from the current course page (verbatim ranges). Practice 4 (Communication and Notation) is not assessed in multiple choice, so it is free response only here; skills 1.A, 1.B and 3.A are not assessed.",
+ "units": [
+  {
+   "n": 1,
+   "id": "unit-1",
+   "title": "Limits and Continuity",
+   "weight": "10-15%",
+   "classPeriods": "22-23",
+   "topics": [
+    {
+     "id": "1.1",
+     "slug": "change-at-an-instant",
+     "title": "Can Change Happen at an Instant?",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Explain why a rate at one instant has to be found as a limit of average rates."
+     ],
+     "knowledge": [
+      "An average rate of change is measured over an interval; over an interval of length zero it is undefined.",
+      "Shrinking the interval and watching the average rates settle is what calculus calls a limit."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.2",
+     "slug": "limit-notation",
+     "title": "What a Limit Is and How to Write It",
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Write and read limit notation."
+     ],
+     "knowledge": [
+      "The limit of f(x) as x approaches c is the value f(x) gets close to as x gets close to c, whatever happens at c itself.",
+      "A limit can be shown with a graph, a table or a formula."
+     ],
+     "exclusions": [
+      "The epsilon-delta definition of a limit is not assessed."
+     ],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.3",
+     "slug": "limits-from-plots",
+     "title": "Reading Limits from a Graph",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Estimate limits, including one-sided limits, from a graph."
+     ],
+     "knowledge": [
+      "A two-sided limit exists only when the left and right limits exist and are equal.",
+      "A limit can fail to exist because of a jump, unbounded growth or oscillation.",
+      "A graph drawn at the wrong scale can hide what a function does near a point."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.4",
+     "slug": "limits-from-tables",
+     "title": "Estimating Limits from Tables",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Estimate a limit from a table of values."
+     ],
+     "knowledge": [
+      "Read the outputs as the inputs close in from both sides; agreement suggests the limit."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.5",
+     "slug": "limit-laws",
+     "title": "Limit Laws",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find limits with the algebraic properties of limits."
+     ],
+     "knowledge": [
+      "Limits of sums, differences, products, quotients (nonzero denominator) and compositions follow from the limits of the parts."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.6",
+     "slug": "limit-algebra",
+     "title": "Limits by Algebra: Factor, Rationalize, Simplify",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Rewrite an expression into an equivalent form to find a limit."
+     ],
+     "knowledge": [
+      "When substitution gives 0/0, factor, rationalize or simplify first, then substitute."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.7",
+     "slug": "choosing-limit-methods",
+     "title": "Choosing a Way to Find a Limit",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Pick a procedure for a limit from the form of the expression."
+     ],
+     "knowledge": [
+      "Try substitution first; the form of the result tells you what to do next."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.8",
+     "slug": "squeeze-theorem",
+     "title": "The Squeeze Theorem",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Find a limit with the squeeze theorem."
+     ],
+     "knowledge": [
+      "If g(x) <= f(x) <= h(x) near c and g and h have the same limit L at c, then f has limit L there too."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.9",
+     "slug": "limit-representations",
+     "title": "Limits Across Graphs, Tables and Formulas",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Connect a limit across graphs, tables and formulas."
+     ],
+     "knowledge": [
+      "The same limit can be read from each representation; move between them to answer a question."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.10",
+     "slug": "discontinuity-types",
+     "title": "Types of Discontinuity",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Name the kind of discontinuity a function has."
+     ],
+     "knowledge": [
+      "Removable discontinuities, jump discontinuities and discontinuities from vertical asymptotes are the three kinds."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.11",
+     "slug": "continuity-at-a-point",
+     "title": "Continuity at a Point",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Decide whether a function is continuous at a point, with the definition."
+     ],
+     "knowledge": [
+      "f is continuous at c when f(c) is defined, the limit at c exists, and the two are equal."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.12",
+     "slug": "continuity-on-intervals",
+     "title": "Continuity on an Interval",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Decide where a function is continuous."
+     ],
+     "knowledge": [
+      "Continuous on an interval means continuous at every point of it.",
+      "Polynomial, rational, power, exponential, logarithmic and trigonometric functions are continuous on their domains."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.13",
+     "slug": "removing-discontinuities",
+     "title": "Removing a Discontinuity",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Choose a value or a parameter that makes a function continuous."
+     ],
+     "knowledge": [
+      "A removable discontinuity is removed by defining the function at the point to equal its limit.",
+      "At a break in a piecewise function, both pieces and the value must agree."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.14",
+     "slug": "infinite-limits",
+     "title": "Infinite Limits and Vertical Asymptotes",
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Describe a vertical asymptote with limits."
+     ],
+     "knowledge": [
+      "An infinite limit says the function grows without bound; it is a way of saying the limit does not exist."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.15",
+     "slug": "limits-at-infinity",
+     "title": "Limits at Infinity and Horizontal Asymptotes",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Find limits at infinity and describe end behavior."
+     ],
+     "knowledge": [
+      "A finite limit at infinity gives a horizontal asymptote.",
+      "Comparing how fast functions grow tells which term dominates."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.16",
+     "slug": "intermediate-value-theorem",
+     "title": "The Intermediate Value Theorem",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Justify that a value is reached with the Intermediate Value Theorem."
+     ],
+     "knowledge": [
+      "If f is continuous on [a, b] and d is between f(a) and f(b), some c in (a, b) has f(c) = d.",
+      "A justification states continuity on the closed interval and the value being between."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "id": "unit-2",
+   "title": "Differentiation: Definition and Fundamental Properties",
+   "weight": "10-15%",
+   "classPeriods": "13-14",
+   "topics": [
+    {
+     "id": "2.1",
+     "slug": "average-and-instant-rates",
+     "title": "Average and Instantaneous Rates of Change",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Find average rates of change and describe an instantaneous rate as a limit of difference quotients."
+     ],
+     "knowledge": [
+      "The average rate of change on [a, b] is (f(b) - f(a))/(b - a), the slope of the secant line."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.2",
+     "slug": "derivative-definition",
+     "title": "The Derivative and Its Notation",
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Define the derivative, use its notations and write a tangent line."
+     ],
+     "knowledge": [
+      "The derivative f'(a) is the limit of the difference quotient as h approaches 0.",
+      "Notations: f'(x), dy/dx, y'.",
+      "The derivative at a point is the slope of the tangent line there."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.3",
+     "slug": "estimating-derivatives",
+     "title": "Estimating a Derivative at a Point",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Estimate a derivative from a graph or a table."
+     ],
+     "knowledge": [
+      "Use the values on both sides of the point; technology can also estimate a derivative."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.4",
+     "slug": "differentiability",
+     "title": "Differentiability and Continuity",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Explain where a function is or is not differentiable."
+     ],
+     "knowledge": [
+      "Differentiable implies continuous; continuous does not imply differentiable.",
+      "Corners, cusps, vertical tangents and discontinuities are where derivatives fail to exist."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.5",
+     "slug": "power-rule",
+     "title": "The Power Rule",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Differentiate powers of x."
+     ],
+     "knowledge": [
+      "The derivative of x to the n is n times x to the n - 1, for any real n."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.6",
+     "slug": "basic-derivative-rules",
+     "title": "Constant, Sum, Difference and Constant Multiple Rules",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Differentiate sums, differences and constant multiples; differentiate polynomials."
+     ],
+     "knowledge": [
+      "The derivative of a constant is 0; derivatives pass through sums and constant factors."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.7",
+     "slug": "derivatives-sin-cos-exp-ln",
+     "title": "Derivatives of sin x, cos x, e to the x and ln x",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Differentiate the four basic transcendental functions and recognize a limit as a derivative."
+     ],
+     "knowledge": [
+      "sin becomes cos, cos becomes -sin, e to the x is its own derivative, ln x becomes 1/x.",
+      "Some limits of difference quotients are a known derivative in disguise."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.8",
+     "slug": "product-rule",
+     "title": "The Product Rule",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Differentiate a product."
+     ],
+     "knowledge": [
+      "(fg)' = f'g + fg'."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.9",
+     "slug": "quotient-rule",
+     "title": "The Quotient Rule",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Differentiate a quotient."
+     ],
+     "knowledge": [
+      "(f/g)' = (f'g - fg')/g squared, where g is not 0."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.10",
+     "slug": "other-trig-derivatives",
+     "title": "Derivatives of tan, cot, sec and csc",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Differentiate the other four trigonometric functions."
+     ],
+     "knowledge": [
+      "Rewrite each with sine and cosine and use the quotient rule."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "id": "unit-3",
+   "title": "Differentiation: Composite, Implicit, and Inverse Functions",
+   "weight": "5-10%",
+   "classPeriods": "10-11",
+   "topics": [
+    {
+     "id": "3.1",
+     "slug": "chain-rule",
+     "title": "The Chain Rule",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Differentiate a composite function."
+     ],
+     "knowledge": [
+      "The derivative of f(g(x)) is f'(g(x)) times g'(x)."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "3.2",
+     "slug": "implicit-differentiation",
+     "title": "Implicit Differentiation",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find dy/dx from an equation that relates x and y."
+     ],
+     "knowledge": [
+      "Differentiate both sides with respect to x, using the chain rule on every y term; dy/dx may depend on x and y."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "3.3",
+     "slug": "inverse-function-derivatives",
+     "title": "Derivatives of Inverse Functions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Find the derivative of an inverse function at a point."
+     ],
+     "knowledge": [
+      "If g is the inverse of f, g'(a) = 1/f'(g(a)); tables and graphs of f are enough."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "3.4",
+     "slug": "inverse-trig-derivatives",
+     "title": "Derivatives of Inverse Trigonometric Functions",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Differentiate inverse trigonometric functions."
+     ],
+     "knowledge": [
+      "arcsin, arccos and arctan have derivatives built from 1 - x squared and 1 + x squared."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "3.5",
+     "slug": "choosing-derivative-rules",
+     "title": "Choosing a Differentiation Rule",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Choose and combine derivative rules for an expression."
+     ],
+     "knowledge": [
+      "The outermost operation decides the first rule to use."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "3.6",
+     "slug": "higher-order-derivatives",
+     "title": "Second and Higher Derivatives",
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Find second and higher derivatives, including of implicit relations."
+     ],
+     "knowledge": [
+      "f'' is the derivative of f'; notations f''(x), d2y/dx2, y''."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "id": "unit-4",
+   "title": "Contextual Applications of Differentiation",
+   "weight": "10-15%",
+   "classPeriods": "10-11",
+   "topics": [
+    {
+     "id": "4.1",
+     "slug": "derivative-in-context",
+     "title": "The Derivative in Context",
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Interpret a derivative in context, with units."
+     ],
+     "knowledge": [
+      "A derivative has units of output per unit of input."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "4.2",
+     "slug": "straight-line-motion",
+     "title": "Straight-Line Motion: Position, Velocity, Acceleration",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Relate position, velocity and acceleration of a particle on a line."
+     ],
+     "knowledge": [
+      "v = x', a = v' = x''.",
+      "Speed is the absolute value of velocity; a particle speeds up when velocity and acceleration have the same sign."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "4.3",
+     "slug": "rates-in-context",
+     "title": "Rates of Change in Other Contexts",
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Interpret rates of change outside motion."
+     ],
+     "knowledge": [
+      "Population, temperature, volume and cost all have rates read the same way."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "4.4",
+     "slug": "related-rates-intro",
+     "title": "Introduction to Related Rates",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Differentiate a relation between quantities with respect to time."
+     ],
+     "knowledge": [
+      "Every quantity that changes is a function of t; the chain rule links their rates."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "4.5",
+     "slug": "solving-related-rates",
+     "title": "Solving Related Rates Problems",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Solve and interpret related rates problems."
+     ],
+     "knowledge": [
+      "Differentiate first, then substitute the values at the instant asked about."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "4.6",
+     "slug": "local-linearity",
+     "title": "Local Linearity and Linearization",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Estimate values with the tangent line and say whether the estimate is over or under."
+     ],
+     "knowledge": [
+      "Near a point, a differentiable function is close to its tangent line.",
+      "The sign of the second derivative tells whether the tangent line is above or below the curve."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "4.7",
+     "slug": "lhospitals-rule",
+     "title": "L'Hospital's Rule",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Find limits of 0/0 and infinity/infinity forms with L'Hospital's rule."
+     ],
+     "knowledge": [
+      "Show both limits are 0 (or both infinite) before using the rule."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "id": "unit-5",
+   "title": "Analytical Applications of Differentiation",
+   "weight": "15-20%",
+   "classPeriods": "15-16",
+   "topics": [
+    {
+     "id": "5.1",
+     "slug": "mean-value-theorem",
+     "title": "The Mean Value Theorem",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Justify a conclusion with the Mean Value Theorem."
+     ],
+     "knowledge": [
+      "If f is continuous on [a, b] and differentiable on (a, b), some c in (a, b) has f'(c) equal to the average rate of change."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.2",
+     "slug": "extreme-value-theorem",
+     "title": "Extreme Value Theorem, Global and Local Extrema, Critical Points",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Use the Extreme Value Theorem and find critical points."
+     ],
+     "knowledge": [
+      "A function continuous on [a, b] has at least one minimum value and at least one maximum value there.",
+      "A critical point is an interior point where f' is 0 or undefined."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.3",
+     "slug": "increasing-decreasing",
+     "title": "Where a Function Increases or Decreases",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Find intervals of increase and decrease from the derivative."
+     ],
+     "knowledge": [
+      "f is increasing where f' > 0 and decreasing where f' < 0."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.4",
+     "slug": "first-derivative-test",
+     "title": "The First Derivative Test",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Find relative extrema with the first derivative test."
+     ],
+     "knowledge": [
+      "A relative extremum needs f' to change sign, not just to equal 0."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.5",
+     "slug": "candidates-test",
+     "title": "The Candidates Test",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Find absolute extrema on a closed interval."
+     ],
+     "knowledge": [
+      "Compare f at every critical point and both endpoints."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.6",
+     "slug": "concavity",
+     "title": "Concavity and Points of Inflection",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Find intervals of concavity and points of inflection."
+     ],
+     "knowledge": [
+      "Concave up where f' increases (f'' > 0), down where f' decreases (f'' < 0); an inflection point needs a change of concavity."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.7",
+     "slug": "second-derivative-test",
+     "title": "The Second Derivative Test",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Classify critical points with the second derivative."
+     ],
+     "knowledge": [
+      "f'(c) = 0 and f''(c) > 0 gives a relative minimum; f''(c) < 0 a relative maximum.",
+      "A continuous function with exactly one critical point on an interval, a relative extremum, has its absolute extremum there."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.8",
+     "slug": "sketching-derivatives",
+     "title": "Sketching f, f' and f''",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Sketch a function or its derivatives from one another."
+     ],
+     "knowledge": [
+      "Key features of f come from the signs of f' and f''."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.9",
+     "slug": "f-and-its-derivatives",
+     "title": "Connecting f, f' and f''",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Connect features of f, f' and f'' in any representation."
+     ],
+     "knowledge": [
+      "A graph of f' is read for where f increases, has extrema and changes concavity."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.10",
+     "slug": "optimization-intro",
+     "title": "Introduction to Optimization",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Set up an optimization problem in context."
+     ],
+     "knowledge": [
+      "Write the quantity to optimize as a function of one variable on an interval."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.11",
+     "slug": "solving-optimization",
+     "title": "Solving Optimization Problems",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Solve an optimization problem and justify the absolute extremum."
+     ],
+     "knowledge": [
+      "Find critical points, then justify the absolute extremum with the candidates test or a global argument."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "5.12",
+     "slug": "implicit-relations",
+     "title": "Behavior of Implicit Relations",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Find horizontal and vertical tangents and extrema of implicit relations."
+     ],
+     "knowledge": [
+      "Horizontal tangent: the numerator of dy/dx is 0 and the denominator is not, at a point on the curve.",
+      "Vertical tangent: the denominator is 0 and the numerator is not."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "id": "unit-6",
+   "title": "Integration and Accumulation of Change",
+   "weight": "15-20%",
+   "classPeriods": "18-20",
+   "topics": [
+    {
+     "id": "6.1",
+     "slug": "accumulation-of-change",
+     "title": "Accumulating Change",
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Read accumulated change as the area under a rate graph."
+     ],
+     "knowledge": [
+      "The area under a rate-of-change graph is the accumulated change; its units are rate units times input units."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "6.2",
+     "slug": "riemann-sums",
+     "title": "Estimating Area with Riemann Sums",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Find left, right, midpoint and trapezoidal sums from graphs, tables or formulas."
+     ],
+     "knowledge": [
+      "Subintervals may have equal or unequal widths; tables usually have unequal widths.",
+      "For an increasing function a left sum underestimates and a right sum overestimates."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "6.3",
+     "slug": "definite-integral-notation",
+     "title": "Riemann Sums, Sigma Notation and the Definite Integral",
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Write a definite integral as the limit of Riemann sums and back."
+     ],
+     "knowledge": [
+      "The definite integral is the limit of Riemann sums as the widths shrink to 0."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "6.4",
+     "slug": "ftc-accumulation",
+     "title": "The Fundamental Theorem and Accumulation Functions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Differentiate an accumulation function."
+     ],
+     "knowledge": [
+      "The derivative of the integral from a to x of f(t) dt is f(x); with a function as the upper limit, use the chain rule."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "6.5",
+     "slug": "accumulation-behavior",
+     "title": "Behavior of Accumulation Functions",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Analyze an accumulation function from the graph of its integrand."
+     ],
+     "knowledge": [
+      "g(x) = integral from a to x of f increases where f > 0 and has extrema where f changes sign."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "6.6",
+     "slug": "integral-properties",
+     "title": "Properties of Definite Integrals",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Use properties of definite integrals and geometry to evaluate integrals."
+     ],
+     "knowledge": [
+      "Reversing the limits changes the sign; integrals over adjacent intervals add; areas of triangles and semicircles give exact values."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "6.7",
+     "slug": "ftc-definite-integrals",
+     "title": "The Fundamental Theorem and Definite Integrals",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Evaluate definite integrals with antiderivatives."
+     ],
+     "knowledge": [
+      "The integral of f from a to b is F(b) - F(a) when F' = f; the integral of a rate is the net change."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "6.8",
+     "slug": "antiderivatives",
+     "title": "Antiderivatives and Indefinite Integrals",
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Find antiderivatives with the basic rules and write indefinite integrals with + C."
+     ],
+     "knowledge": [
+      "Every derivative rule read backward is an antiderivative rule; some functions have no closed-form antiderivative."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "6.9",
+     "slug": "u-substitution",
+     "title": "Integrating by Substitution",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Integrate by substitution, changing the limits of a definite integral."
+     ],
+     "knowledge": [
+      "Choose u so that du appears in the integrand, up to a constant factor."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "6.10",
+     "slug": "rewriting-integrands",
+     "title": "Integrating by Long Division and Completing the Square",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Rewrite an integrand by long division or completing the square before integrating."
+     ],
+     "knowledge": [
+      "Completing the square leads to arctangent forms."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "6.14",
+     "slug": "choosing-integration-methods",
+     "title": "Choosing an Antidifferentiation Technique",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Choose a technique for an antiderivative."
+     ],
+     "knowledge": [
+      "AB scope: basic rules, substitution and rewriting."
+     ],
+     "exclusions": [
+      "Integration by parts, partial fractions and improper integrals are BC only (6.11-6.13)."
+     ],
+     "source": "CED, not text-verified"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "id": "unit-7",
+   "title": "Differential Equations",
+   "weight": "5-10%",
+   "classPeriods": "8-9",
+   "topics": [
+    {
+     "id": "7.1",
+     "slug": "modeling-with-des",
+     "title": "Writing Differential Equations",
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Write a differential equation from a description."
+     ],
+     "knowledge": [
+      "\"The rate of change of y is proportional to y\" becomes dy/dt = ky."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "7.2",
+     "slug": "verifying-solutions",
+     "title": "Verifying Solutions to Differential Equations",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Check whether a function solves a differential equation."
+     ],
+     "knowledge": [
+      "Differentiate and substitute; a differential equation may have infinitely many solutions."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "7.3",
+     "slug": "sketching-slope-fields",
+     "title": "Sketching Slope Fields",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Sketch a slope field at given points."
+     ],
+     "knowledge": [
+      "At each point draw a short segment with slope given by the differential equation."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "7.4",
+     "slug": "reasoning-with-slope-fields",
+     "title": "Reasoning with Slope Fields",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Sketch a solution curve through a point and reason from a slope field."
+     ],
+     "knowledge": [
+      "A solution curve follows the segments; equilibrium solutions are horizontal lines it never crosses."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "7.6",
+     "slug": "separation-of-variables",
+     "title": "General Solutions by Separation of Variables",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find the general solution of a separable differential equation."
+     ],
+     "knowledge": [
+      "Separate, integrate both sides, add the constant."
+     ],
+     "exclusions": [
+      "Euler's method (7.5) is BC only."
+     ],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "7.7",
+     "slug": "particular-solutions",
+     "title": "Particular Solutions from Initial Conditions",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Find a particular solution from an initial condition and state its domain."
+     ],
+     "knowledge": [
+      "Use the initial condition as soon as the constant appears; solutions may have a restricted domain."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "7.8",
+     "slug": "exponential-models",
+     "title": "Exponential Models",
+     "practices": [
+      1,
+      3,
+      4
+     ],
+     "objectives": [
+      "Solve and interpret exponential models."
+     ],
+     "knowledge": [
+      "dy/dt = ky gives y = y0 times e to the kt."
+     ],
+     "exclusions": [
+      "Logistic models (7.9) are BC only."
+     ],
+     "source": "CED, not text-verified"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "id": "unit-8",
+   "title": "Applications of Integration",
+   "weight": "10-15%",
+   "classPeriods": "19-20",
+   "topics": [
+    {
+     "id": "8.1",
+     "slug": "average-value",
+     "title": "Average Value of a Function",
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Find the average value of a function on an interval."
+     ],
+     "knowledge": [
+      "Average value = 1/(b - a) times the integral of f from a to b; the integrand is f itself."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.2",
+     "slug": "motion-with-integrals",
+     "title": "Motion with Integrals",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Find displacement, total distance and position from velocity."
+     ],
+     "knowledge": [
+      "Displacement is the integral of v; total distance is the integral of |v|; position is the starting position plus the integral of v."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.3",
+     "slug": "accumulation-in-context",
+     "title": "Accumulation in Context",
+     "practices": [
+      1,
+      3,
+      4
+     ],
+     "objectives": [
+      "Model an amount as a starting value plus the integral of a rate."
+     ],
+     "knowledge": [
+      "Amount = initial amount + integral of (rate in - rate out); interpret with units and the interval."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.4",
+     "slug": "area-between-curves-x",
+     "title": "Area Between Curves (Functions of x)",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find the area between curves written as functions of x."
+     ],
+     "knowledge": [
+      "Integrate top minus bottom between the intersections."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.5",
+     "slug": "area-between-curves-y",
+     "title": "Area Between Curves (Functions of y)",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find the area between curves written as functions of y."
+     ],
+     "knowledge": [
+      "Integrate right minus left with respect to y."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.6",
+     "slug": "area-multiple-crossings",
+     "title": "Area Between Curves That Cross More Than Twice",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find the area between curves that intersect at more than two points."
+     ],
+     "knowledge": [
+      "Split the integral at each crossing, or integrate the absolute value of the difference."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.7",
+     "slug": "cross-sections-squares",
+     "title": "Volumes with Square and Rectangle Cross Sections",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find volumes with square or rectangular cross sections."
+     ],
+     "knowledge": [
+      "Volume is the integral of the cross-section area."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.8",
+     "slug": "cross-sections-triangles",
+     "title": "Volumes with Triangle and Semicircle Cross Sections",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find volumes with triangular or semicircular cross sections."
+     ],
+     "knowledge": [
+      "Write the area of one cross section from the side length, then integrate."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.9",
+     "slug": "disc-method-axes",
+     "title": "Disc Method About the Axes",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find volumes of solids of revolution about an axis with discs."
+     ],
+     "knowledge": [
+      "Volume = pi times the integral of the radius squared."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.10",
+     "slug": "disc-method-other-axes",
+     "title": "Disc Method About Other Lines",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find volumes with discs about a horizontal or vertical line other than an axis."
+     ],
+     "knowledge": [
+      "Measure the radius from the axis of rotation."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.11",
+     "slug": "washer-method-axes",
+     "title": "Washer Method About the Axes",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find volumes with washers about an axis."
+     ],
+     "knowledge": [
+      "Volume = pi times the integral of (outer radius squared - inner radius squared)."
+     ],
+     "exclusions": [],
+     "source": "CED, not text-verified"
+    },
+    {
+     "id": "8.12",
+     "slug": "washer-method-other-axes",
+     "title": "Washer Method About Other Lines",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find volumes with washers about another horizontal or vertical line."
+     ],
+     "knowledge": [
+      "Both radii are distances from the axis of rotation."
+     ],
+     "exclusions": [
+      "Arc length (8.13) is BC only; the shell method is not a CED topic."
+     ],
+     "source": "CED, not text-verified"
+    }
+   ]
+  }
+ ],
+ "skillsTopics": [
+  {
+   "slug": "math-functions",
+   "title": "Functions and Their Graphs",
+   "before": "change-at-an-instant",
+   "practices": [
+    2
+   ],
+   "objectives": [
+    "Read and use function notation, domains, graphs, piecewise functions, composition and lines."
+   ],
+   "knowledge": [
+    "A function gives one output for each input in its domain.",
+    "Slope is rise over run; point-slope form writes a line through a point.",
+    "Piecewise functions use different rules on different intervals."
+   ]
+  },
+  {
+   "slug": "math-exponent-rules",
+   "title": "Exponent Rules and Rewriting Powers",
+   "before": "change-at-an-instant",
+   "practices": [
+    1
+   ],
+   "objectives": [
+    "Rewrite roots and reciprocals as powers and back."
+   ],
+   "knowledge": [
+    "A negative exponent is a reciprocal; a fractional exponent is a root."
+   ]
+  },
+  {
+   "slug": "math-limit-algebra",
+   "title": "Algebra for Limits: Factoring and Rationalizing",
+   "before": "limit-algebra",
+   "practices": [
+    1
+   ],
+   "objectives": [
+    "Factor, rationalize and simplify complex fractions."
+   ],
+   "knowledge": [
+    "Difference of squares and trinomial factoring cancel common factors.",
+    "Multiplying by the conjugate rationalizes a numerator or denominator."
+   ]
+  },
+  {
+   "slug": "math-trig",
+   "title": "Trigonometry and the Unit Circle",
+   "before": "squeeze-theorem",
+   "practices": [
+    1
+   ],
+   "objectives": [
+    "Use radians, the unit circle, the six trigonometric functions and the Pythagorean identity."
+   ],
+   "knowledge": [
+    "Calculus measures angles in radians.",
+    "The unit circle gives exact sine and cosine values at the special angles."
+   ]
+  },
+  {
+   "slug": "math-exp-log",
+   "title": "Exponentials and Logarithms",
+   "before": "continuity-on-intervals",
+   "practices": [
+    1
+   ],
+   "objectives": [
+    "Use exponential functions, the natural logarithm and the log rules."
+   ],
+   "knowledge": [
+    "ln x and e to the x undo each other.",
+    "Log rules turn products into sums and powers into factors."
+   ]
+  },
+  {
+   "slug": "math-inverse-functions",
+   "title": "Inverse Functions",
+   "before": "inverse-function-derivatives",
+   "practices": [
+    2
+   ],
+   "objectives": [
+    "Find and read inverse functions, including the inverse trigonometric functions."
+   ],
+   "knowledge": [
+    "An inverse swaps inputs and outputs; its graph is the reflection in y = x.",
+    "arcsin, arccos and arctan have restricted ranges."
+   ]
+  },
+  {
+   "slug": "math-geometry",
+   "title": "Geometry for Calculus",
+   "before": "related-rates-intro",
+   "practices": [
+    1
+   ],
+   "objectives": [
+    "Use similar triangles, the Pythagorean theorem and area and volume formulas."
+   ],
+   "knowledge": [
+    "Similar triangles have proportional sides.",
+    "Know the area of a circle, triangle and trapezoid and the volume of a cone, cylinder and sphere."
+   ]
+  }
+ ],
+ "topicCount": 81,
+ "topicCountByUnit": {
+  "1": 16,
+  "2": 10,
+  "3": 6,
+  "4": 7,
+  "5": 12,
+  "6": 11,
+  "7": 7,
+  "8": 12
+ },
+ "exclusionsSummary": {
+  "verified": [
+   "1.2 the epsilon-delta definition of a limit"
+  ],
+  "bcOnly": [
+   "6.11 integration by parts",
+   "6.12 linear partial fractions",
+   "6.13 improper integrals",
+   "BC techniques inside 6.14",
+   "7.5 Euler's method",
+   "7.9 logistic models",
+   "8.13 arc length",
+   "Unit 9 parametric, polar and vector-valued functions",
+   "Unit 10 sequences and series"
+  ],
+  "notInCed": [
+   "the shell method",
+   "non-separable differential equations",
+   "indeterminate forms other than 0/0 and infinity/infinity (0 times infinity, 1 to the infinity, infinity minus infinity)"
+  ],
+  "unverifiedUnits3to8": "No exclusion statement in Units 3-8 could be read; a person checks the PDF (needs-author units3to8-objectives)."
+ },
+ "exam": {
+  "date2027": "2027-05-10",
+  "day": "Monday",
+  "session": "morning",
+  "totalTime": "3 h 10 min (plus a break)",
+  "delivery": "Hybrid digital in Bluebook: multiple choice on screen; free-response questions read on screen and handwritten in paper booklets.",
+  "mcq": {
+   "questions": 42,
+   "minutes": 100,
+   "weight": "50%",
+   "options": 4,
+   "format": "Single-select only; discrete items and sets that share a graph or a table.",
+   "partA": {
+    "questions": 29,
+    "minutes": 62,
+    "calculator": false
+   },
+   "partB": {
+    "questions": 13,
+    "minutes": 38,
+    "calculator": true
+   }
+  },
+  "frq": {
+   "questions": 6,
+   "minutes": 90,
+   "weight": "50%",
+   "pointsEach": 9,
+   "rawPoints": 54,
+   "partA": {
+    "questions": 2,
+    "minutes": 30,
+    "calculator": true
+   },
+   "partB": {
+    "questions": 4,
+    "minutes": 60,
+    "calculator": false
+   },
+   "types": {
+    "table": "Rate in context from a table",
+    "model": "Modeling with a given function",
+    "motion": "Particle motion",
+    "area": "Area and volume",
+    "de": "Differential equation and slope field",
+    "graph": "Graph of f′ or graphical FTC",
+    "implicit": "Implicit differentiation and related rates",
+    "fg": "Table of f, g, f′ and g′"
+   },
+   "note": "Types recur but are not fixed to a slot; at least two questions are in a real-world context."
+  },
+  "calculator": "Graphing calculator required in MCQ Part B and FRQ Part A, not allowed in the other parts (Bluebook has Desmos built in). Four required capabilities: graph in a window, find zeros, numerical derivative, numerical definite integral. Show the setup; decimal answers correct to three places (rounded or truncated); radian mode.",
+  "reference": "No formula sheet is given.",
+  "previousFormat": "2025 and 2026: MCQ Part A 30 in 60 min, Part B 15 in 45 min; FRQ unchanged."
+ }
+}

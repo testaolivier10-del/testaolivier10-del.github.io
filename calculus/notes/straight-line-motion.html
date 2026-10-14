@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Straight-Line Motion: Position… — AP® Calculus AB Notes</title>
+<meta name="description" content="Picture a bead sliding back and forth on a straight wire. Its location on the wire, measured from a fixed origin, is its position x(t) at time t .">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/straight-line-motion.html">
+<meta property="og:title" content="Straight-Line Motion: Position… — AP® Calculus AB Notes">
+<meta property="og:description" content="Picture a bead sliding back and forth on a straight wire. Its location on the wire, measured from a fixed origin, is its position x(t) at time t .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/straight-line-motion.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/straight-line-motion.html#reading",
+      "name": "Straight-Line Motion: Position, Velocity, Acceleration",
+      "url": "https://levlprep.com/calculus/notes/straight-line-motion.html",
+      "description": "Picture a bead sliding back and forth on a straight wire. Its location on the wire, measured from a fixed origin, is its position x(t) at time t .",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "straight-line motion: position, velocity, acceleration ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contextual Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Straight-Line Motion: Position, Velocity, Acceleration: notes",
+          "item": "https://levlprep.com/calculus/notes/straight-line-motion.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="straight-line-motion" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Contextual Applications of Differentiation</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="derivative-in-context"><a href="derivative-in-context.html"><span class="bk-toc-n">4.1</span>The Derivative in Context</a></li><li class="current" data-toc-t="straight-line-motion"><a href="#main" aria-current="page"><span class="bk-toc-n">4.2</span>Straight-Line Motion: Position, Velocity, Acceleration</a><div class="bk-toc-onpage"><p>On this page</p><a href="#position-velocity-acceleration">Position, velocity, acceleration</a><a href="#direction-rest-and-turning-around">Direction, rest and turning around</a><a href="#speed-and-speeding-up">Speed, and speeding up</a><a href="#reading-a-velocity-graph">Reading a velocity graph</a><a href="#slips-that-cost-points">Slips that cost points</a></div></li><li data-toc-t="rates-in-context"><a href="rates-in-context.html"><span class="bk-toc-n">4.3</span>Rates of Change in Other Contexts</a></li><li data-toc-t="related-rates-intro"><a href="related-rates-intro.html"><span class="bk-toc-n">4.4</span>Introduction to Related Rates</a></li><li data-toc-t="solving-related-rates"><a href="solving-related-rates.html"><span class="bk-toc-n">4.5</span>Solving Related Rates Problems</a></li><li data-toc-t="local-linearity"><a href="local-linearity.html"><span class="bk-toc-n">4.6</span>Local Linearity and Linearization</a></li><li data-toc-t="lhospitals-rule"><a href="lhospitals-rule.html"><span class="bk-toc-n">4.7</span>L'Hospital's Rule</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Analytical Applications of Differentiation</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Contextual Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Straight-Line Motion: Position, Velocity, Acceleration: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/straight-line-motion.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.2 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Straight-Line Motion: Position, Velocity, Acceleration</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="straight-line-motion">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fstraight-line-motion.html&amp;title=Straight-Line%20Motion%3A%20Position%2C%20Velocity%2C%20Acceleration%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/straight-line-motion.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Picture a bead sliding back and forth on a straight wire. Its location on the wire, measured from a fixed origin, is its <b>position</b> <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math> at time <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>. <span class="gl" tabindex="0" data-c="position-function">Particle motion</span> questions appear on the free-response section of nearly every exam, and they all rest on three <a class="gl" href="../notes/math-functions.html" data-c="function">functions</a> and the signs they take. This page builds them one at a time.</p>
+
+<h2 id="position-velocity-acceleration">Position, velocity, acceleration</h2>
+<p>Choose a positive direction, usually right (or up). The <b>position function</b> <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math> is positive to the right of the origin and negative to the left. Then:</p>
+<ul>
+<li>The <b><span class="gl" tabindex="0" data-c="velocity">velocity</span></b> is the rate of change of position: <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v(t) = x'(t)</annotation></semantics></math>.</li>
+<li>The <b><span class="gl" tabindex="0" data-c="acceleration">acceleration</span></b> is the rate of change of velocity: <math class="calc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mi>v</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mi>x</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a(t) = v'(t) = x''(t)</annotation></semantics></math>.</li>
+</ul>
+<p>Units follow the rule from the last topic, output per input. With position in meters and time in seconds, velocity is in meters per second, and acceleration is in meters per second per second (written m/s²).</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A particle has position <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>t</mi><mn>3</mn></msup><mo>−</mo><mn>6</mn><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">x(t) = t^3 - 6t^2 + 9t</annotation></semantics></math> meters, for <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">0 \le t \le 4</annotation></semantics></math> seconds. Find <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v(t)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a(t)</annotation></semantics></math>, and describe the motion at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v(t)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>3</mn><msup><mi>t</mi><mn>2</mn></msup><mo>−</mo><mn>12</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">= 3t^2 - 12t</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">+ 9</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>3</mn><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 3(t - 1)(t - 3)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>6</mn><mi>t</mi><mo>−</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">a(t) = 6t - 12</annotation></semantics></math>.</p>
+<p>At <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x(2) = 2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">v(2) = -3</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a(2) = 0</annotation></semantics></math>. The particle is 2 meters right of the origin, moving left at 3 meters per second.</p>
+</div>
+
+<h2 id="direction-rest-and-turning-around">Direction, rest and turning around</h2>
+<p>The sign of the velocity tells the direction: <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v(t) &gt; 0</annotation></semantics></math> means moving right, <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v(t) &lt; 0</annotation></semantics></math> means moving left. The particle is <b>at rest</b> when <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v(t) = 0</annotation></semantics></math>.</p>
+<p>A particle <b>changes direction</b> only where <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> <i>changes sign</i>. Being at rest for an instant is not enough. For <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">v(t) = (t - 2)^2</annotation></semantics></math>, the particle stops at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math>, but <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> is positive on both sides, so it keeps moving right. On the exam, "the particle changes direction at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math> because <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v(3) = 0</annotation></semantics></math>" does not earn the point; "because <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> changes from negative to positive at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math>" does.</p>
+<p>In Worked example 1, <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v(t) = 3(t - 1)(t - 3)</annotation></semantics></math> is positive on <math class="calc-m"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>t</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 &lt; t &lt; 1</annotation></semantics></math>, negative on <math class="calc-m"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>t</mi><mo>&lt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">1 &lt; t &lt; 3</annotation></semantics></math>, and positive on <math class="calc-m"><semantics><mrow><mn>3</mn><mo>&lt;</mo><mi>t</mi><mo>&lt;</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">3 &lt; t &lt; 4</annotation></semantics></math>. The particle moves right, then left, then right again, turning around at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math>.</p>
+
+<h2 id="speed-and-speeding-up">Speed, and speeding up</h2>
+<p><b><span class="gl" tabindex="0" data-c="speed">Speed</span></b> is the size of the velocity: <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|v(t)|</annotation></semantics></math>. A velocity of <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">-5</annotation></semantics></math> m/s and a velocity of <math class="calc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math> m/s have the same speed, 5 m/s. Speed is never negative.</p>
+<p>When is the speed increasing? Think of pushing a moving cart. Push in the direction it is going and it speeds up; push against it and it slows down. Acceleration is the push. So:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<tr><th><math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v(t)</annotation></semantics></math></th><th><math class="calc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a(t)</annotation></semantics></math></th><th>The particle is</th></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></td><td>moving right, <span class="gl" tabindex="0" data-c="speeding-up">speeding up</span></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math></td><td>moving right, slowing down</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math></td><td>moving left, speeding up</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></td><td>moving left, slowing down</td></tr>
+</table></div>
+<p><b>Speeding up when <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> have the same sign; slowing down when their signs are opposite.</b> A negative acceleration alone does not mean slowing down.</p>
+<figure id="fig-motion"  class="calc-figure"><div class="calc-figimg" data-fig="motion-speeding-up"><img src="../figures/motion-speeding-up.svg" alt="Velocity v(t) = 3t² − 12t + 9 and acceleration a(t) = 6t − 12 for 0 ≤ t ≤ 4.3, shaded where they share a sign (speeding up: 1 &lt; t &lt; 2 and t &gt; 3). Below, the particle's path on a number line: right from 0 to 4, left back to 0, right to 4 again." width="880" height="520" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Velocity and acceleration for <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>t</mi><mn>3</mn></msup><mo>−</mo><mn>6</mn><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">x(t) = t^3 - 6t^2 + 9t</annotation></semantics></math>. Shaded bands: same signs, speeding up. Below: the path on the line. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> For the same particle, is it speeding up or slowing down at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1.5</mn></mrow><annotation encoding="application/x-tex">t = 1.5</annotation></semantics></math> and at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">t = 2.5</annotation></semantics></math>?</p>
+<p>At <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1.5</mn></mrow><annotation encoding="application/x-tex">t = 1.5</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mn>1.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v(1.5)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>3</mn><mo stretchy="false">(</mo><mn>0.5</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 3(0.5)(-1.5)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.25</mn><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= -2.25 &lt; 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mn>1.5</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a(1.5) = -3 &lt; 0</annotation></semantics></math>. Same sign, so the particle is speeding up (moving left faster).</p>
+<p>At <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">t = 2.5</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mn>2.5</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.25</mn><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v(2.5) = -2.25 &lt; 0</annotation></semantics></math> but <math class="calc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mn>2.5</mn><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a(2.5) = 3 &gt; 0</annotation></semantics></math>. Opposite signs, so it is slowing down as it approaches its stop at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="reading-a-velocity-graph">Reading a velocity graph</h2>
+<p>Often you get the graph of <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> instead of a formula. Then:</p>
+<ul>
+<li>The <b>height</b> of the graph is the velocity; above the axis means moving right.</li>
+<li>Where the graph <b>crosses</b> the <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>-axis, the particle changes direction.</li>
+<li>The <b><a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a></b> of the graph is the acceleration.</li>
+<li>Speeding up: the graph is moving away from the <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>-axis. Slowing down: moving toward it.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 3.</b> A graph of <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> is a segment from <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(5, 4)</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>7</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(7, -2)</annotation></semantics></math>. Describe the motion at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>6.5</mn></mrow><annotation encoding="application/x-tex">t = 6.5</annotation></semantics></math>.</p>
+<p>The segment has slope <math class="calc-m"><semantics><mrow><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>−</mo><mn>4</mn></mrow><mrow><mn>7</mn><mo>−</mo><mn>5</mn></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\frac{-2 - 4}{7 - 5} = -3</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mn>6.5</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">a(6.5) = -3</annotation></semantics></math>. Its height there is <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mn>6.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v(6.5)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn><mo>−</mo><mn>3</mn><mo stretchy="false">(</mo><mn>1.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 4 - 3(1.5)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">= -0.5</annotation></semantics></math>.</p>
+<p>Both negative: the particle is moving left and speeding up. The graph is below the axis and moving away from it, which agrees.</p>
+</div>
+
+<h2 id="slips-that-cost-points">Slips that cost points</h2>
+<ul>
+<li>Claiming a direction change where <math class="calc-m"><semantics><mrow><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v = 0</annotation></semantics></math> without a sign change.</li>
+<li>"Slowing down because <math class="calc-m"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a &lt; 0</annotation></semantics></math>" without checking the sign of <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math>.</li>
+<li>Giving a negative speed, or calling velocity and speed the same thing.</li>
+<li>Wrong units: acceleration is distance per time per time.</li>
+<li>Product and <a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a> slips when <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math> is something like <math class="calc-m"><semantics><mrow><mi>t</mi><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">te^{-t}</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">v(t) = (1 - t)e^{-t}</annotation></semantics></math>.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:straight-line-motion">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="derivative-in-context.html"><span>&larr; Previous</span><b>The Derivative in Context</b></a><a class="tb-chapter-link next" href="rates-in-context.html"><span>Next &rarr;</span><b>Rates of Change in Other Contexts</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:straight-line-motion">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

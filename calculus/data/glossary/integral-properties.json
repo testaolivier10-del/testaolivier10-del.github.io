@@ -1,0 +1,5 @@
+{
+ "integral-properties": {
+  "def": "Rules for definite integrals: $\\int_a^a f = 0$; $\\int_b^a f = -\\int_a^b f$; additivity, $\\int_a^b f + \\int_b^c f = \\int_a^c f$; and linearity, $\\int_a^b (kf + g) = k\\int_a^b f + \\int_a^b g$. Integrals split over sums and constant multiples, never over products."
+ }
+}

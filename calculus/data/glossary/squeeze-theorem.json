@@ -1,0 +1,5 @@
+{
+ "squeeze-theorem": {
+  "def": "If $g(x) \\le f(x) \\le h(x)$ for every $x$ near $c$ (except possibly at $c$), and $\\lim_{x \\to c} g(x) = \\lim_{x \\to c} h(x) = L$, then $\\lim_{x \\to c} f(x) = L$. Also called the sandwich theorem."
+ }
+}

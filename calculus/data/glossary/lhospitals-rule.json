@@ -1,0 +1,5 @@
+{
+ "lhospital": {
+  "def": "If $\\lim f(x) = 0$ and $\\lim g(x) = 0$, or both limits are infinite, then $\\lim\\frac{f(x)}{g(x)} = \\lim\\frac{f'(x)}{g'(x)}$, provided the limit on the right exists (or is infinite). The derivatives of the top and bottom are taken separately."
+ }
+}

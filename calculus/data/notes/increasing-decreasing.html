@@ -1,0 +1,56 @@
+<p>Walk along the graph of a function from left to right. Sometimes you climb, sometimes you descend. The derivative is the slope under your feet, so its sign tells you which. This page turns that picture into a method you can use with a formula, a graph of $f'$ or a table, and into a justification that earns credit.</p>
+
+<h2>What increasing means</h2>
+<p>A function $f$ is <b>increasing on an interval</b> if, whenever $x_1 < x_2$ in the interval, $f(x_1) < f(x_2)$: larger inputs give larger outputs. It is <b>decreasing on an interval</b> if $f(x_1) > f(x_2)$ whenever $x_1 < x_2$.</p>
+<p>The derivative connects to this through the tangent lines. If every tangent line on an interval slopes upward, the graph can only go up there.</p>
+<ul>
+<li>If $f'(x) > 0$ for every $x$ in an interval, then $f$ is increasing on that interval.</li>
+<li>If $f'(x) < 0$ for every $x$ in an interval, then $f$ is decreasing on that interval.</li>
+</ul>
+<p>(The Mean Value Theorem is the reason: between any two points, the average rate equals some $f'(c)$, which has the sign of $f'$.)</p>
+<figure id="fig-incdec" data-fig="incdec-sign-of-fprime"><figcaption>Where the graph of $f'$ is above the axis, $f$ rises; where it is below, $f$ falls.</figcaption></figure>
+
+<h2>The method with a formula</h2>
+<p>The sign of $f'$ can change only where $f'$ is zero or does not exist (for the functions in this course, $f'$ does not jump around otherwise). So:</p>
+<ol>
+<li>Find $f'(x)$ and factor it if you can.</li>
+<li>Find the critical points: where $f'(x) = 0$ or $f'(x)$ does not exist. Also note points outside the domain.</li>
+<li>These points cut the number line into intervals. Pick one test value in each interval and find the sign of $f'$ there.</li>
+<li>$f$ increases where $f' > 0$ and decreases where $f' < 0$.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Where is $f(x) = x^3 - 12x$ increasing and where is it decreasing?</p>
+<p>$f'(x) = 3x^2 - 12 = 3(x - 2)(x + 2)$, zero at $x = -2$ and $x = 2$.</p>
+<table class="compare">
+<thead><tr><th scope="col">Interval</th><th scope="col">Test value</th><th scope="col">Sign of $f'$</th><th scope="col">$f$ is</th></tr></thead>
+<tbody>
+<tr><td>$x < -2$</td><td>$f'(-3) = 15$</td><td>positive</td><td>increasing</td></tr>
+<tr><td>$-2 < x < 2$</td><td>$f'(0) = -12$</td><td>negative</td><td>decreasing</td></tr>
+<tr><td>$x > 2$</td><td>$f'(3) = 15$</td><td>positive</td><td>increasing</td></tr>
+</tbody>
+</table>
+<p>So $f$ increases on $(-\infty, -2)$ and $(2, \infty)$ and decreases on $(-2, 2)$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Where is $f(x) = x e^{-x}$ increasing?</p>
+<p>Product rule: $f'(x) = e^{-x} + x(-e^{-x}) = (1 - x)e^{-x}$.</p>
+<p>The factor $e^{-x}$ is always positive, so the sign of $f'$ is the sign of $1 - x$: positive for $x < 1$. $f$ is increasing on $(-\infty, 1)$.</p>
+</div>
+<p>Factoring out a positive factor like $e^{-x}$ or a square like $(x - 3)^2$ is the fastest way to read signs. A squared factor never changes sign, so it never flips the direction of $f$.</p>
+
+<h2>Reading a graph of $f'$</h2>
+<p>The exam often gives the graph of $f'$, not $f$. Then the question "where is $f$ increasing?" becomes "where is this graph above the $x$-axis?"</p>
+<ul>
+<li>Graph of $f'$ <b>above</b> the axis: $f$ increasing.</li>
+<li>Graph of $f'$ <b>below</b> the axis: $f$ decreasing.</li>
+</ul>
+<p>Do not read the direction of the graph of $f'$ (rising or falling) for this question. A graph of $f'$ that is falling but still above the axis means $f$ is still increasing, just more slowly. Whether $f'$ rises or falls is about concavity, a later topic.</p>
+<p>The same reading lets you compare values of $f$: if $f' < 0$ on $(1, 4)$, then $f(4) < f(1)$, because $f$ went down the whole way.</p>
+
+<h2>Tables of $f'$ values</h2>
+<p>A table gives $f'$ at a few points only. A negative value at $t = 5$ tells you $f$ is decreasing at $t = 5$. It does not tell you what happens between readings: two negative readings do not prove $f'$ stays negative between them. But if $f'$ is continuous and changes from positive to negative between two readings, the Intermediate Value Theorem gives a time when $f' = 0$.</p>
+
+<h2>Writing the justification</h2>
+<p>A justification names the function and the condition on the interval:</p>
+<p style="text-align:center">"$f'(x) > 0$ for $-2 < x < 1$, so $f$ is increasing on that interval."</p>
+<p>Answers that lose the point: "the graph goes up" (which graph?), "$f'$ is increasing" (wrong condition), or a number line of signs with no sentence. Name $f'$, give its sign, give the interval.</p>

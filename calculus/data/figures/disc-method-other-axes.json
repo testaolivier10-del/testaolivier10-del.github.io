@@ -1,0 +1,7 @@
+{
+ "disc-solid-line": {
+  "file": "figures/disc-solid-line.svg", "ext": "svg", "w": 760, "h": 440,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Left: the region between the parabola y = x² and the line y = 1, from x = −1 to 1, shaded, with y = 1 dashed as the axis of rotation and one thin vertical rectangle from the parabola up to the axis, of length 1 − x². Right: the solid made by revolving the region about y = 1, shaped like a lemon, with the axis through its center and one disc highlighted in blue whose radius is r = 1 − x². Below: V = the integral from −1 to 1 of π(1 − x²)² dx = 16π/15."
+ }
+}

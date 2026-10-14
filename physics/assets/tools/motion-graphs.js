@@ -233,6 +233,8 @@
 
     /* ================================================ drawing: the scene */
     var geo = null, cartG = null, vecG = null, pingG = null;
+    // A phone in either orientation (Tool Studio's .ls-phone; docs/tools-phone-pass.md).
+    function onPhone(){ return !!(sceneSvg.closest && sceneSvg.closest('.ls-phone')); }
     function sceneLayout(){
       var w = Math.max(300, Math.round(sceneSvg.clientWidth || sceneSvg.parentNode.clientWidth || 600));
       var h = Math.round(clamp(w * 0.2, w < 480 ? 92 : 104, 132));
@@ -240,7 +242,9 @@
       var cw0 = clamp(ppm * 0.95, 44, 86), ch0 = cw0 * 0.42, wr0 = Math.max(6, cw0 * 0.12);
       // Room above the cart for the v and a arrows and their labels.
       var railY = Math.max(h - 40, Math.round(ch0 + wr0 * 2 + 50));
-      h = railY + 40;
+      // A phone gives the axis name its own row under the ruler's numbers.
+      var axisRow = onPhone();
+      h = railY + (axisRow ? 54 : 40);
       geo = { w: w, h: h, L: L, R: R, ppm: ppm, railY: railY, cw: cw0, ch: ch0, wr: wr0 };
       var X = function(x){ return L + (x - TR.min) * ppm; };
       var p = [];
@@ -254,7 +258,7 @@
         p.push('<line class="mg-tick' + (major ? ' major' : '') + '" x1="' + X1.toFixed(1) + '" x2="' + X1.toFixed(1) + '" y1="' + (railY + 8) + '" y2="' + (railY + (major ? 16 : 12)) + '"/>');
         if(major && (ppm > 34 || x % 2 === 0)) p.push('<text class="mg-tl' + (x === 0 ? ' zero' : '') + '" x="' + X1.toFixed(1) + '" y="' + (railY + 29) + '" text-anchor="middle">' + M.minus(String(x)) + '</text>');
       }
-      p.push('<text class="mg-axis-l" x="' + (R) + '" y="' + (h - 2) + '" text-anchor="end">' + (w < 480 ? 'x (m) →' : 'x (m), + to the right →') + '</text>');
+      p.push('<text class="mg-axis-l" x="' + (R) + '" y="' + (h - (axisRow ? 4 : 2)) + '" text-anchor="end">' + (w < 480 ? 'x (m) →' : 'x (m), + to the right →') + '</text>');
       // The motion detector on its stand.
       var dx = X(TR.min) - 30, dy = railY - 46;
       p.push('<g class="mg-det" aria-hidden="true"><rect class="mg-stand" x="' + (dx + 9) + '" y="' + (dy + 26) + '" width="6" height="' + (railY - dy - 20) + '"/>' +
@@ -346,7 +350,7 @@
       var h = LS && hAvail >= 90 ? hAvail : hAvail > 150 ? hAvail : Math.round(clamp(w * 0.62, 300, 460));
       var L = w < 420 ? 44 : 58, R = 12, T0 = 8, B = 30, gap = w < 420 ? 10 : 14;
       var ph = (h - T0 - B - gap * 2) / 3;
-      gl = { w: w, h: h, L: L, R: R, pw: w - L - R, ph: ph, top: { x: T0, v: T0 + ph + gap, a: T0 + 2 * (ph + gap) }, B: B };
+      gl = { w: w, h: h, L: L, R: R, pw: w - L - R, ph: ph, top: { x: T0, v: T0 + ph + gap, a: T0 + 2 * (ph + gap) }, B: B, phone: onPhone() };
       graphsSvg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
     }
     function gx(t){ return gl.L + t / WIN * gl.pw; }
@@ -360,24 +364,28 @@
         for(var t = 0; t <= WIN; t += 1) p.push('<line class="grid" x1="' + gx(t).toFixed(1) + '" x2="' + gx(t).toFixed(1) + '" y1="' + top.toFixed(1) + '" y2="' + (top + ph).toFixed(1) + '"/>');
         for(var y = r[0]; y <= r[1] + 1e-9; y += r[2]){
           p.push('<line class="grid" x1="' + gl.L + '" x2="' + (gl.L + gl.pw) + '" y1="' + gy(k, y).toFixed(1) + '" y2="' + gy(k, y).toFixed(1) + '"/>');
-          if(Math.abs(y) < 1e-9 || (Math.abs(y - r[1]) < 1e-9) || (Math.abs(y - r[0]) < 1e-9 && gl.ph > 90)) p.push('<text class="tick" x="' + (gl.L - 5) + '" y="' + (gy(k, y) + 4).toFixed(1) + '" text-anchor="end">' + M.minus(String(y)) + '</text>');
+          // A panel too short for three numbers (a phone on its side) labels only 0.
+          if(Math.abs(y) < 1e-9 || (Math.abs(y - r[1]) < 1e-9 && gl.ph >= 44) || (Math.abs(y - r[0]) < 1e-9 && !gl.phone && gl.ph > 90)) p.push('<text class="tick" x="' + (gl.L - 5) + '" y="' + (gy(k, y) + 4).toFixed(1) + '" text-anchor="end">' + M.minus(String(y)) + '</text>');
         }
         p.push('<line class="zero" x1="' + gl.L + '" x2="' + (gl.L + gl.pw) + '" y1="' + gy(k, 0).toFixed(1) + '" y2="' + gy(k, 0).toFixed(1) + '"/>');
         p.push('<line class="axis" x1="' + gl.L + '" x2="' + gl.L + '" y1="' + top.toFixed(1) + '" y2="' + (top + ph).toFixed(1) + '"/>');
         p.push('<text class="lbl mg-glbl" x="' + (gl.L + 6) + '" y="' + (top + 14).toFixed(1) + '">' + k + ' (' + UNIT[k] + ')</text>');
       });
       p.push('<line class="axis" x1="' + gl.L + '" x2="' + (gl.L + gl.pw) + '" y1="' + (gl.top.a + gl.ph).toFixed(1) + '" y2="' + (gl.top.a + gl.ph).toFixed(1) + '"/>');
-      for(var t = 0; t <= WIN; t += (gl.pw < 300 ? 2 : 1)) p.push('<text class="tick" x="' + gx(t).toFixed(1) + '" y="' + (gl.top.a + gl.ph + 16).toFixed(1) + '" text-anchor="middle">' + t + '</text>');
-      p.push('<text class="lbl" x="' + (gl.L + gl.pw) + '" y="' + (gl.h - 2) + '" text-anchor="end">t (s)</text>');
+      // On a phone the Enlarge button sits over the bottom-right corner: the
+      // last time number is left out there and "t (s)" moves to the left.
+      for(var t = 0; t <= WIN; t += (gl.pw < 300 ? 2 : 1)) if(!(gl.phone && gx(t) > gl.w - 58)) p.push('<text class="tick" x="' + gx(t).toFixed(1) + '" y="' + (gl.top.a + gl.ph + 16).toFixed(1) + '" text-anchor="middle">' + t + '</text>');
+      p.push(gl.phone ? '<text class="lbl" x="2" y="' + (gl.h - 2) + '">t (s)</text>' : '<text class="lbl" x="' + (gl.L + gl.pw) + '" y="' + (gl.h - 2) + '" text-anchor="end">t (s)</text>');
       // Before any motion: a faint example run and a hint, so the first screen
       // shows what the graphs will do (Drag), or the run that Run will make (Set).
       var ghost = !m.t.length && !st.running ? ghostRun() : null;
       if(ghost){
         var gcls = { x: 's1', v: 's2', a: 's3' };
         ['x', 'v', 'a'].forEach(function(k){ p.push('<polyline class="series mg-ghost ' + gcls[k] + '" points="' + ghost.m.t.map(function(t, i){ return gx(t).toFixed(1) + ',' + gy(k, ghost.m[k][i]).toFixed(1); }).join(' ') + '"/>'); });
-        if(ghost.notes) ghost.notes.forEach(function(n){ p.push('<text class="mg-ghost-n" x="' + gx(n[0]).toFixed(1) + '" y="' + (gy(n[1], n[2]) + n[3]).toFixed(1) + '" text-anchor="middle">' + n[4] + '</text>'); });
+        // Panels too short for notes (a phone on its side) skip them; on a phone a note near the panel's name goes under the line.
+        if(ghost.notes && gl.ph >= 44) ghost.notes.forEach(function(n){ var under = gl.phone && gx(n[0]) - gl.L < 90 && n[3] < 0; p.push('<text class="mg-ghost-n" x="' + gx(n[0]).toFixed(1) + '" y="' + (gy(n[1], n[2]) + (under ? 18 : n[3])).toFixed(1) + '" text-anchor="middle">' + n[4] + '</text>'); });
         var hx = gl.L + gl.pw - 8, hy = gl.top.x + 16;
-        p.push('<g class="mg-ghost-hint"><text x="' + hx + '" y="' + hy + '" text-anchor="end">' + ghost.title + '</text>' + (ghost.sub && gl.pw > 300 ? '<text class="sub" x="' + hx + '" y="' + (hy + 16) + '" text-anchor="end">' + ghost.sub + '</text>' : '') + '</g>');
+        p.push('<g class="mg-ghost-hint"><text x="' + hx + '" y="' + hy + '" text-anchor="end">' + ghost.title + '</text>' + (ghost.sub && gl.pw > 300 && gl.ph >= 44 ? '<text class="sub" x="' + hx + '" y="' + (hy + 16) + '" text-anchor="end">' + ghost.sub + '</text>' : '') + '</g>');
       }
       // Target (Match).
       if(tg) p.push('<polyline class="mg-target-l" points="' + tg.pts.map(function(q){ return gx(q[0]).toFixed(1) + ',' + gy(tg.kind, q[1]).toFixed(1); }).join(' ') + '"/>');
@@ -596,13 +604,15 @@
      marked moment. Drawn in a fixed viewBox like ApPhysTools.plot. */
   function graphSvg(f, o){
     o = o || {};
-    var W = o.w || 520, H = o.h || 260, L = o.small ? 30 : 52, R = o.small ? 8 : 14, T0 = o.small ? 8 : 14, B = o.small ? 20 : 40, pw = W - L - R, ph = H - T0 - B;
+    var W = o.w || 520, H = o.h || 260, L = o.small ? 30 : 52, R = o.R || (o.small ? 8 : 14), T0 = o.small ? 8 : 14, B = o.small ? 20 : 40, pw = W - L - R, ph = H - T0 - B;
     var ymin = f.ymin, ymax = f.ymax, step = f.step || 1, tmax = f.tmax;
     var sx = function(t){ return L + t / tmax * pw; }, sy = function(y){ return T0 + ph - (y - ymin) / (ymax - ymin) * ph; };
     var p = [], k = f.kind, cls = { x: 's1', v: 's2', a: 's3' }[k];
     for(var t = 0; t <= tmax + 1e-9; t += 1){ p.push('<line class="grid" x1="' + sx(t).toFixed(1) + '" x2="' + sx(t).toFixed(1) + '" y1="' + T0 + '" y2="' + (T0 + ph) + '"/>'); if(o.small ? t % 2 === 0 : true) p.push('<text class="tick" x="' + sx(t).toFixed(1) + '" y="' + (T0 + ph + 16) + '" text-anchor="middle">' + t + '</text>'); }
     var ys = Math.ceil(ymin / step) * step;
-    for(var y = ys; y <= ymax + 1e-9; y += step){ y = M.round(y, 6); p.push('<line class="grid" x1="' + L + '" x2="' + (L + pw) + '" y1="' + sy(y).toFixed(1) + '" y2="' + sy(y).toFixed(1) + '"/><text class="tick" x="' + (L - 6) + '" y="' + (sy(y) + 4).toFixed(1) + '" text-anchor="end">' + M.minus(String(y)) + '</text>'); }
+    // Gridlines closer than 18 units (a short phone drawing) get every other number, 0 always.
+    var every = ph / ((ymax - ymin) / step) < 18 ? 2 : 1;
+    for(var y = ys; y <= ymax + 1e-9; y += step){ y = M.round(y, 6); p.push('<line class="grid" x1="' + L + '" x2="' + (L + pw) + '" y1="' + sy(y).toFixed(1) + '" y2="' + sy(y).toFixed(1) + '"/>' + (every === 1 || Math.round(y / step) % 2 === 0 ? '<text class="tick" x="' + (L - 6) + '" y="' + (sy(y) + 4).toFixed(1) + '" text-anchor="end">' + M.minus(String(y)) + '</text>' : '')); }
     p.push('<line class="zero" x1="' + L + '" x2="' + (L + pw) + '" y1="' + sy(0).toFixed(1) + '" y2="' + sy(0).toFixed(1) + '"/>');
     p.push('<line class="axis" x1="' + L + '" y1="' + T0 + '" x2="' + L + '" y2="' + (T0 + ph) + '"/><line class="axis" x1="' + L + '" y1="' + (T0 + ph) + '" x2="' + (L + pw) + '" y2="' + (T0 + ph) + '"/>');
     if(f.shade){
@@ -664,8 +674,24 @@
       extra: function(el, p){
         // A phone gets a narrower drawing, so its labels stay readable.
         var narrow = false; try{ narrow = matchMedia('(max-width: 599.98px)').matches; }catch(e){}
-        if(p.fig) el.innerHTML = '<figure class="cd-fig mg-qfig">' + graphSvg(p.fig, narrow ? { w: 340, h: 230 } : null) + '</figure>';
+        if(p.fig){ el.innerHTML = '<figure class="cd-fig mg-qfig">' + graphSvg(p.fig, narrow ? { w: 340, h: 230 } : null) + '</figure>'; qfig = { el: el, fig: p.fig }; requestAnimationFrame(fitQ); }
+        else qfig = null;
       }
     });
+    /* On a phone (either way up) the graph is redrawn at its box's own size
+       (1 unit = 1 px), so its numbers are their CSS size and it fills the box. */
+    var qfig = null, rq = 0;
+    function fitQ(){
+      if(!qfig || !qfig.el.isConnected || !qfig.el.closest('.ls-phone')) return;
+      var svg = qfig.el.querySelector('.mg-qfig svg'); if(!svg) return;
+      var r = svg.getBoundingClientRect(), ms = getComputedStyle(svg).maxHeight, mh = /px$/.test(ms) ? parseFloat(ms) : Infinity;
+      if(r.width < 120) return;
+      var w = Math.round(r.width), h = Math.round(Math.max(100, Math.min(isFinite(mh) ? mh : r.height, r.height, w * 0.8)));
+      // A graph at the bottom of the stage keeps its right end clear of the Enlarge button.
+      var stg = svg.closest('.ls-stage'), low = stg && stg.getBoundingClientRect().bottom - r.bottom < 56;
+      if(svg.getAttribute('data-fit') === w + 'x' + h + low) return;
+      svg.outerHTML = graphSvg(qfig.fig, { w: w, h: h, R: low ? 62 : 0 }).replace('<svg ', '<svg data-fit="' + w + 'x' + h + low + '" ');
+    }
+    window.addEventListener('resize', function(){ if(rq) return; rq = requestAnimationFrame(function(){ rq = 0; fitQ(); }); });
   }
 })();

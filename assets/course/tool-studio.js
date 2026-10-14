@@ -61,6 +61,10 @@
      s.open(tab, focusEl?)          open the sheet on 'why' | 'details' | 'about'
      s.detailsTitle(t)              rename the second tab and its dock button
      s.close()
+     s.enlarge(on?)                 the stage full screen (zoom, pinch); no arg -> state.
+                                    opts.enlarge false hides the button. Hooks for tool
+                                    CSS: .ls-phone (root), --ls-scale / --ls-zoom and
+                                    .is-big (stage); docs/tools-calm.md "Phones"
      s.hint({ target, text, key })  pulse + tooltip on target, once per tool
                                     per device; gone on first interaction
      s.suspend(on)                  hide the studio and give the page its
@@ -116,8 +120,15 @@
     atom: '<circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',
     sliders: '<path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>',
     chev: '<path d="M9 6l6 6-6 6"/>',
-    star: '<path d="M12 4l2.4 5 5.4.6-4 3.7 1.1 5.3L12 16l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z"/>'
+    star: '<path d="M12 4l2.4 5 5.4.6-4 3.7 1.1 5.3L12 16l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z"/>',
+    expand: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    minus: '<path d="M5 12h14"/>',
+    rotate: '<rect x="3" y="8" width="13" height="12" rx="2"/><path d="M14 3a7 7 0 0 1 7 7M18.5 7.5L21 10l2.5-2.5"/>'
   };
+  function mq(q){ try{ return matchMedia(q); }catch(e){ return null; } }
+  // A phone in either orientation (the .ls-phone hook; docs/tools-calm.md).
+  var PHONE = '(max-width: 640px), (max-width: 999.98px) and (max-height: 540px)';
   function icon(n, cls){ return '<svg class="ls-i' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + ICON[n] + '</svg>'; }
 
   var current = null;
@@ -145,8 +156,15 @@
       '</header>' +
       '<div class="ls-main"' + (slim ? ' hidden' : '') + '>' +
         '<section class="ls-stage" aria-label="' + esc((opts.title || 'Tool') + ': the picture') + '">' +
+          '<div class="ls-zbar" role="group" aria-label="Zoom" hidden><span class="ls-zbar-t">' + esc(opts.title || '') + '</span>' +
+            '<button type="button" class="ls-ib" data-z="-1" aria-label="Zoom out">' + icon('minus') + '</button>' +
+            '<output class="ls-zval" aria-live="polite">100%</output>' +
+            '<button type="button" class="ls-ib" data-z="1" aria-label="Zoom in">' + icon('plus') + '</button>' +
+            '<button type="button" class="ls-ib ls-rot" aria-label="Rotate the view" hidden>' + icon('rotate') + '</button>' +
+            '<button type="button" class="ls-ib ls-enl-x" aria-label="Close the enlarged picture">' + icon('close') + '</button></div>' +
           '<div class="ls-pills"><div class="ls-pills-l"></div><div class="ls-pills-r"></div></div>' +
           '<div class="ls-stage-body"></div>' +
+          '<button type="button" class="ls-ib ls-enl" aria-label="Enlarge the picture" hidden>' + icon('expand') + '</button>' +
         '</section>' +
         '<section class="ls-dock" aria-label="Controls">' +
           '<div class="ls-modes"></div>' +
@@ -274,7 +292,9 @@
        showing now (or to the page when there are no modes). */
     var capBy = {}, pillBy = {};
     function key(m){ return m || mode || '*'; }
-    function showCap(){ var h = capBy[key()]; if(h == null) h = capBy['*'] || ''; capEl.innerHTML = h; q('.ls-cap').classList.toggle('is-empty', !h); }
+    function showCap(){ var h = capBy[key()]; if(h == null) h = capBy['*'] || ''; capEl.innerHTML = h; q('.ls-cap').classList.toggle('is-empty', !h); capEl.classList.remove('is-full'); }
+    // A phone shows three lines of the caption; a tap shows the rest (screen readers get it all).
+    capEl.addEventListener('click', function(){ capEl.classList.toggle('is-full'); });
     function showPills(){
       ['left', 'right'].forEach(function(side){
         var p = pillBy[key() + '|' + side]; if(p == null) p = pillBy['*|' + side] || '';
@@ -380,6 +400,143 @@
       document.documentElement.classList.toggle('ls-lock', modal);
     });
 
+    /* ---------------- phone hook, Enlarge, zoom */
+    /* .ls-phone on the root (a phone, either way up) and --ls-scale / --ls-zoom
+       on the stage are the hooks a tool's CSS uses for on-stage text that is
+       not inside a scaling svg. Enlarge puts the same stage (the same nodes,
+       so drags and listeners keep working) over the whole screen: page
+       fullscreen where the browser has it, a fixed overlay always; zoom is a
+       real layout size (pinch, ctrl+wheel, + / -, the buttons), and every
+       change sends the window 'resize' event tools already redraw on. */
+    var stg = s.stageEl, big = false, zoom = 1, enlBtn = q('.ls-enl'), zbar = q('.ls-zbar'), zval = q('.ls-zval'),
+      rotBtn = q('.ls-rot'), enlOff = opts.enlarge === false, phoneQ = mq(PHONE), preFocus = null, sizing = false;
+    function paintScale(){
+      var ph = !!(phoneQ && phoneQ.matches);
+      root.classList.toggle('ls-phone', ph);
+      stg.style.setProperty('--ls-zoom', String(zoom));
+      stg.style.setProperty('--ls-scale', String(Math.round((ph ? 1.15 : 1) * zoom * 100) / 100));
+    }
+    if(phoneQ){ if(phoneQ.addEventListener) phoneQ.addEventListener('change', paintScale); else if(phoneQ.addListener) phoneQ.addListener(paintScale); }
+    function remeasure(){
+      requestAnimationFrame(function(){
+        sizing = true;
+        try{ window.dispatchEvent(new Event('resize')); stg.dispatchEvent(new CustomEvent('ls-stage', { detail: { big: big, zoom: zoom } })); }catch(e){}
+        sizing = false;
+      });
+    }
+    function hasPic(){
+      return Array.prototype.some.call(stageBody.querySelectorAll('svg:not(.ls-i), canvas, img'), function(e){ return e.getBoundingClientRect().width >= 120; });
+    }
+    var picQ = 0;
+    function paintEnl(){ picQ = 0; enlBtn.hidden = enlOff || big || !hasPic(); }
+    if(window.MutationObserver) new MutationObserver(function(){ if(!picQ) picQ = requestAnimationFrame(paintEnl); }).observe(stageBody, { childList: true, subtree: true });
+    function setZoom(z, cx, cy){
+      z = Math.max(1, Math.min(4, Math.round(z * 100) / 100));
+      var b = stageBody, r = b.getBoundingClientRect(), fx = cx == null ? r.width / 2 : cx - r.left, fy = cy == null ? r.height / 2 : cy - r.top;
+      var px = (b.scrollLeft + fx) / zoom, py = (b.scrollTop + fy) / zoom;
+      if(z === zoom && cx == null) return;
+      var cs = getComputedStyle(b), w = b.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight),
+        h = b.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+      zoom = z;
+      b.classList.toggle('is-z', z > 1);
+      b.style.setProperty('--ls-zw', Math.round(w * z) + 'px');
+      b.style.setProperty('--ls-zh', Math.round(h * z) + 'px');
+      b.scrollLeft = px * z - fx; b.scrollTop = py * z - fy;
+      zval.textContent = Math.round(z * 100) + '%';
+      paintScale();
+    }
+    function zoomBy(d){ setZoom(zoom * (d > 0 ? 1.5 : 1 / 1.5)); remeasure(); }
+    function inert(on){ [q('.ls-bar'), s.dockEl, sheet].forEach(function(el){ if(on) el.setAttribute('inert', ''); else el.removeAttribute('inert'); }); }
+    function fsEl(){ return document.fullscreenElement || document.webkitFullscreenElement || null; }
+    function paintRot(){ rotBtn.hidden = !(big && fsEl() && screen.orientation && screen.orientation.lock); }
+    s.enlarge = function(on){
+      if(on === undefined) return big;
+      if(!!on === big) return s;
+      big = !!on;
+      if(big){
+        preFocus = document.activeElement;
+        s.close(); setMenu(false);
+        stg.classList.add('is-big'); root.classList.add('ls-big');
+        stg.setAttribute('role', 'dialog'); stg.setAttribute('aria-modal', 'true');
+        document.documentElement.classList.add('ls-lock');
+        inert(true);
+        zbar.hidden = false; enlBtn.hidden = true;
+        var d = document.documentElement, rq = d.requestFullscreen || d.webkitRequestFullscreen;
+        if(rq && !fsEl()){ try{ var p = rq.call(d); if(p && p.then) p.then(paintRot, function(){}); }catch(e){} }
+        if(phoneQ && phoneQ.matches && innerHeight > innerWidth) say('Turn your phone sideways to see it wider.');
+        q('.ls-enl-x').focus();
+      } else {
+        setZoom(1);
+        stg.classList.remove('is-big'); root.classList.remove('ls-big');
+        stg.removeAttribute('role'); stg.removeAttribute('aria-modal');
+        if(!sheetOpen) document.documentElement.classList.remove('ls-lock');
+        inert(false);
+        zbar.hidden = true;
+        try{ if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); }catch(e){}
+        if(fsEl()){ try{ var x = (document.exitFullscreen || document.webkitExitFullscreen).call(document); if(x && x.catch) x.catch(function(){}); }catch(e){} }
+        paintEnl();
+        var f = enlBtn.hidden ? preFocus : enlBtn;
+        if(f && f.focus && document.contains(f)){ try{ f.focus({ preventScroll: true }); }catch(e){ f.focus(); } }
+      }
+      paintRot(); paintScale(); remeasure();
+      return s;
+    };
+    enlBtn.addEventListener('click', function(){ s.enlarge(true); });
+    q('.ls-enl-x').addEventListener('click', function(){ s.enlarge(false); });
+    zbar.addEventListener('click', function(e){ var b = e.target.closest('[data-z]'); if(b) zoomBy(+b.getAttribute('data-z')); });
+    rotBtn.addEventListener('click', function(){
+      var o = screen.orientation, t = /landscape/.test(o.type) ? 'portrait' : 'landscape';
+      o.lock(t).catch(function(){ say('Turn your phone to rotate the view.'); });
+    });
+    ['fullscreenchange', 'webkitfullscreenchange'].forEach(function(t){
+      document.addEventListener(t, function(){ if(!fsEl() && big) s.enlarge(false); else { paintRot(); remeasure(); } });
+    });
+    stg.addEventListener('keydown', function(e){
+      if(!big) return;
+      if(e.key === 'Escape'){ e.preventDefault(); e.stopPropagation(); s.enlarge(false); return; }
+      var typing = e.target.matches && e.target.matches('input, select, textarea, [contenteditable]');
+      if(!typing && (e.key === '+' || e.key === '=' || e.key === '-')){ e.preventDefault(); zoomBy(e.key === '-' ? -1 : 1); return; }
+      if(e.key !== 'Tab') return;
+      var f = Array.prototype.filter.call(stg.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])'), function(el){ return el.offsetParent !== null || el === document.activeElement; });
+      if(!f.length) return;
+      if(e.shiftKey && document.activeElement === f[0]){ e.preventDefault(); f[f.length - 1].focus(); }
+      else if(!e.shiftKey && document.activeElement === f[f.length - 1]){ e.preventDefault(); f[0].focus(); }
+    });
+    stageBody.addEventListener('wheel', function(e){
+      if(!big || !e.ctrlKey) return;
+      e.preventDefault(); setZoom(zoom * (e.deltaY < 0 ? 1.1 : 1 / 1.1), e.clientX, e.clientY); remeasure();
+    }, { passive: false });
+    // Two fingers: pinch to zoom, move to pan (one finger stays with the tool).
+    (function(){
+      var g = null, raf = 0, last = null;
+      function mid(t){ return { x: (t[0].clientX + t[1].clientX) / 2, y: (t[0].clientY + t[1].clientY) / 2, d: Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY) || 1 }; }
+      stageBody.addEventListener('touchstart', function(e){
+        if(!big || e.touches.length !== 2) return;
+        var m = mid(e.touches), r = stageBody.getBoundingClientRect();
+        g = { z: zoom, d: m.d, px: (stageBody.scrollLeft + m.x - r.left) / zoom, py: (stageBody.scrollTop + m.y - r.top) / zoom };
+      }, { passive: true });
+      stageBody.addEventListener('touchmove', function(e){
+        if(!g || e.touches.length !== 2) return;
+        e.preventDefault();
+        last = mid(e.touches);
+        if(raf) return;
+        raf = requestAnimationFrame(function(){
+          raf = 0;
+          var z = Math.max(1, Math.min(4, g.z * last.d / g.d)), r = stageBody.getBoundingClientRect();
+          setZoom(z);
+          stageBody.scrollLeft = g.px * zoom - (last.x - r.left); stageBody.scrollTop = g.py * zoom - (last.y - r.top);
+        });
+      }, { passive: false });
+      function end(e){ if(g && e.touches.length < 2){ g = null; remeasure(); } }
+      stageBody.addEventListener('touchend', end); stageBody.addEventListener('touchcancel', end);
+    })();
+    window.addEventListener('resize', function(){
+      if(sizing) return;
+      paintScale();
+      if(big && zoom > 1) setZoom(zoom, 0, 0);
+    });
+    paintScale();
+
     /* ---------------- menu */
     function say(t){ toast.textContent = t; toast.classList.add('show'); clearTimeout(say.t); say.t = setTimeout(function(){ toast.classList.remove('show'); toast.textContent = ''; }, 3200); }
     s.say = say;
@@ -479,7 +636,7 @@
       f.parentNode.replaceChild(d, f);
       return d;
     }
-    list(opts.footer || (slim ? null : 'body > footer, body > .xshell > footer, body > .bio-foot, body > .chem-foot, body > .phys-foot')).forEach(function(f){
+    list(opts.footer || (slim ? null : 'body > footer, body > .xshell > footer, body > .bio-foot, body > .chem-foot, body > .phys-foot, body > .calc-foot')).forEach(function(f){
       if(!f.parentNode || root.contains(f)) return;
       var wrap = f.parentNode !== document.body && f.parentNode.children.length === 1 ? f.parentNode : f;
       aboutB.appendChild(wrap);

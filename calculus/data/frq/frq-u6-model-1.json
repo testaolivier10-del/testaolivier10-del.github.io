@@ -1,0 +1,154 @@
+{
+ "id": "frq-u6-model-1",
+ "type": "model",
+ "points": 9,
+ "calc": true,
+ "title": "Water pumped into and drained from a tank",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "ftc-accumulation",
+  "accumulation-behavior",
+  "ftc-definite-integrals"
+ ],
+ "practices": [
+  "1.E",
+  "2.B",
+  "3.D",
+  "3.F",
+  "4.E"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Water pumped into and drained from a tank",
+  "text": "Water is pumped into a tank at a rate modeled by $E(t) = 50 + 30\\sin\\left(\\frac{t^2}{40}\\right)$ liters per hour, and water drains from the tank at a rate modeled by $D(t) = 15 + 9t$ liters per hour, for $0 \\le t \\le 10$ hours. At time $t = 0$ the tank holds 200 liters. The graph shows both rates.",
+  "plot": {
+   "label": "Graphs of the pumping rate E(t) and the draining rate D(t), in liters per hour, for t from 0 to 10 hours; the curves cross once near t = 7",
+   "width": 420,
+   "height": 270,
+   "x": [
+    -0.4,
+    10.5
+   ],
+   "y": [
+    0,
+    110
+   ],
+   "xStep": 1,
+   "yStep": 10,
+   "xLabel": "t (hours)",
+   "yLabel": "liters per hour",
+   "curves": [
+    {
+     "fn": "50 + 30sin(x^2/40)",
+     "domain": [
+      0,
+      10
+     ],
+     "label": "E"
+    },
+    {
+     "fn": "15 + 9x",
+     "domain": [
+      0,
+      10
+     ],
+     "cls": "s2",
+     "dashed": true,
+     "label": "D"
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "How many liters of water are pumped into the tank from $t = 0$ to $t = 10$ hours?",
+   "rubric": [
+    {
+     "point": "The integral $\\int_0^{10} E(t)\\,dt$",
+     "accept": [
+      "$\\int_0^{10} \\left(50 + 30\\sin\\frac{t^2}{40}\\right)dt$"
+     ]
+    },
+    {
+     "point": "Answer 658.324 liters",
+     "accept": [
+      "658.324 or 658.323"
+     ]
+    }
+   ],
+   "sample": "$\\int_0^{10} E(t)\\,dt \\approx 658.324$ liters."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "Is the amount of water in the tank increasing or decreasing at time $t = 6$ hours? <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "Compares $E(6)$ and $D(6)$ (or finds the sign of $E(6) - D(6)$)",
+     "accept": [
+      "$E(6) \\approx 73.500$ and $D(6) = 69$",
+      "$E(6) - D(6) \\approx 4.500$"
+     ]
+    },
+    {
+     "point": "Increasing, because $E(6) > D(6)$: water enters faster than it drains",
+     "accept": [
+      "\"$A'(6) = E(6) - D(6) > 0$, so the amount is increasing\""
+     ]
+    }
+   ],
+   "sample": "$E(6) - D(6) \\approx 73.500 - 69 = 4.500 > 0$. Water is pumped in faster than it drains at $t = 6$, so the amount of water in the tank is increasing."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Write</b> an expression involving one or more integrals that gives the amount of water $A(t)$, in liters, in the tank at time $t$.",
+   "rubric": [
+    {
+     "point": "An integral of $E - D$ from 0 to $t$",
+     "accept": [
+      "$\\int_0^t (E(s) - D(s))\\,ds$",
+      "$\\int_0^t E(s)\\,ds - \\int_0^t D(s)\\,ds$"
+     ]
+    },
+    {
+     "point": "The starting amount 200 added: $A(t) = 200 + \\int_0^t (E(s) - D(s))\\,ds$",
+     "accept": [
+      "an expression with 200 + ... and the correct integral"
+     ]
+    }
+   ],
+   "sample": "$A(t) = 200 + \\int_0^t \\left(E(s) - D(s)\\right)ds$."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "<b>Find</b> the absolute maximum amount of water in the tank for $0 \\le t \\le 10$. <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Sets $A'(t) = E(t) - D(t) = 0$ and finds $t \\approx 7.041$",
+     "accept": [
+      "$E(t) = D(t)$ at $t \\approx 7.041$"
+     ]
+    },
+    {
+     "point": "Candidates test: $A(0) = 200$, $A(7.041) \\approx 301.491$, $A(10) \\approx 258.324$",
+     "accept": [
+      "a table of the three candidates (endpoints and the critical point)"
+     ]
+    },
+    {
+     "point": "Answer: about 301.491 liters, at $t \\approx 7.041$ hours",
+     "accept": [
+      "301.491 liters with the candidates comparison"
+     ]
+    }
+   ],
+   "sample": "$A'(t) = E(t) - D(t) = 0$ when $t = c \\approx 7.041$ (calculator). $A(0) = 200$; $A(c) = 200 + \\int_0^c (E(t) - D(t))\\,dt \\approx 301.491$; $A(10) = 200 + \\int_0^{10} (E(t) - D(t))\\,dt \\approx 258.324$. The absolute maximum amount of water is about 301.491 liters, at $t \\approx 7.041$ hours."
+  }
+ ]
+}

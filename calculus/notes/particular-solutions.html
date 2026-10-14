@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Particular Solutions from Initial… — AP® Calculus AB Notes</title>
+<meta name="description" content="Separation of variables hands you a general solution: a family of curves with a constant C in it. A real question usually wants one curve.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/particular-solutions.html">
+<meta property="og:title" content="Particular Solutions from Initial… — AP® Calculus AB Notes">
+<meta property="og:description" content="Separation of variables hands you a general solution: a family of curves with a constant C in it. A real question usually wants one curve.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/particular-solutions.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/particular-solutions.html#reading",
+      "name": "Particular Solutions from Initial Conditions",
+      "url": "https://levlprep.com/calculus/notes/particular-solutions.html",
+      "description": "Separation of variables hands you a general solution: a family of curves with a constant C in it. A real question usually wants one curve.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "particular solutions from initial conditions ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differential Equations",
+          "item": "https://levlprep.com/calculus/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Particular Solutions from Initial Conditions: notes",
+          "item": "https://levlprep.com/calculus/notes/particular-solutions.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="particular-solutions" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 7 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+    <a class="bk-toc-chap" href="../units/unit-7.html"><span class="bk-toc-chap-n">7</span><span><b>Differential Equations</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-7"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="modeling-with-des"><a href="modeling-with-des.html"><span class="bk-toc-n">7.1</span>Writing Differential Equations</a></li><li data-toc-t="verifying-solutions"><a href="verifying-solutions.html"><span class="bk-toc-n">7.2</span>Verifying Solutions to Differential Equations</a></li><li data-toc-t="sketching-slope-fields"><a href="sketching-slope-fields.html"><span class="bk-toc-n">7.3</span>Sketching Slope Fields</a></li><li data-toc-t="reasoning-with-slope-fields"><a href="reasoning-with-slope-fields.html"><span class="bk-toc-n">7.4</span>Reasoning with Slope Fields</a></li><li data-toc-t="separation-of-variables"><a href="separation-of-variables.html"><span class="bk-toc-n">7.6</span>General Solutions by Separation of Variables</a></li><li class="current" data-toc-t="particular-solutions"><a href="#main" aria-current="page"><span class="bk-toc-n">7.7</span>Particular Solutions from Initial Conditions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-procedure">The procedure</a><a href="#the-domain-of-a-particular-solution">The domain of a particular solution</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="exponential-models"><a href="exponential-models.html"><span class="bk-toc-n">7.8</span>Exponential Models</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Differential Equations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Particular Solutions from Initial Conditions: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/particular-solutions.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 7 &middot; Topic 7.7 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Particular Solutions from Initial Conditions</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="particular-solutions">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fparticular-solutions.html&amp;title=Particular%20Solutions%20from%20Initial%20Conditions%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/particular-solutions.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p><a class="gl" href="../notes/separation-of-variables.html" data-c="separation-of-variables">Separation of variables</a> hands you a general solution: a family of curves with a constant <math class="calc-m"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math> in it. A real question usually wants one curve. The coffee was 90 °C at noon; the population was 200 at the start; the curve passes through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, -3)</annotation></semantics></math>. That one fact is an <b><span class="gl" tabindex="0" data-c="particular-solution">initial condition</span></b>, and the single curve it selects is a <b>particular solution</b>. A <a class="gl" href="../notes/modeling-with-des.html" data-c="differential-equation">differential equation</a> together with an initial condition is called an initial value problem.</p>
+
+<h2 id="the-procedure">The procedure</h2>
+<ol>
+<li>Separate and integrate, adding <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">+ C</annotation></semantics></math> (exactly as before).</li>
+<li><b>Substitute the initial condition immediately.</b> An initial condition <math class="calc-m"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">y(x_0) = y_0</annotation></semantics></math> means: replace <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> by <math class="calc-m"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x_0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> by <math class="calc-m"><semantics><mrow><msub><mi>y</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">y_0</annotation></semantics></math>. Solve for <math class="calc-m"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math>.</li>
+<li>Put the value of <math class="calc-m"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math> back and solve for <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>. If a square root or an absolute value appears, keep the sign that matches <math class="calc-m"><semantics><mrow><msub><mi>y</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">y_0</annotation></semantics></math>.</li>
+<li>State the <a class="gl" href="../notes/math-functions.html" data-c="domain">domain</a> of the solution (below).</li>
+</ol>
+<p>Why substitute before solving for <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>? Because the equation right after integrating is the simplest place to find <math class="calc-m"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math>. Solving for <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> first means exponentiating or taking roots with <math class="calc-m"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math> still unknown, where most sign and algebra slips happen.</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Solve <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>x</mi></mrow><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{2x}{y}</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y(1) = -3</annotation></semantics></math>.</p>
+<p>Separate and integrate: <math class="calc-m"><semantics><mrow><mi>y</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mn>2</mn><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">y\,dy = 2x\,dx</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mfrac><msup><mi>y</mi><mn>2</mn></msup><mn>2</mn></mfrac><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\frac{y^2}{2} = x^2 + C</annotation></semantics></math>.</p>
+<p>Use the condition now: <math class="calc-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mo>=</mo><msup><mn>1</mn><mn>2</mn></msup><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\frac{(-3)^2}{2} = 1^2 + C</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>C</mi><mo>=</mo><mfrac><mn>9</mn><mn>2</mn></mfrac><mo>−</mo><mn>1</mn><mo>=</mo><mfrac><mn>7</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">C = \frac{9}{2} - 1 = \frac{7}{2}</annotation></semantics></math>.</p>
+<p>Solve: <math class="calc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">y^2 = 2x^2 + 7</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><msqrt><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>7</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">y = \pm\sqrt{2x^2 + 7}</annotation></semantics></math>. The point <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, -3)</annotation></semantics></math> has a negative <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, so take the negative root: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msqrt><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>7</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">y = -\sqrt{2x^2 + 7}</annotation></semantics></math>.</p>
+<p>Check: at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msqrt><mn>9</mn></msqrt><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = -\sqrt{9} = -3</annotation></semantics></math>. Good.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Coffee cools by <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><mn>20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dT}{dt} = -0.05(T - 20)</annotation></semantics></math>, with <math class="calc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>90</mn></mrow><annotation encoding="application/x-tex">T(0) = 90</annotation></semantics></math>. Find <math class="calc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(t)</annotation></semantics></math>.</p>
+<p>Separate and integrate: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>T</mi><mo>−</mo><mn>20</mn></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\frac{dT}{T - 20} = -0.05\,dt</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>T</mi><mo>−</mo><mn>20</mn><mo stretchy="false">|</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mi>t</mi><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\ln|T - 20| = -0.05t + C</annotation></semantics></math>.</p>
+<p>Use the condition: <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mn>90</mn><mo>−</mo><mn>20</mn><mo stretchy="false">|</mo><mo>=</mo><mn>0</mn><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\ln|90 - 20| = 0 + C</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>C</mi><mo>=</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>70</mn></mrow><annotation encoding="application/x-tex">C = \ln 70</annotation></semantics></math>.</p>
+<p>Solve: <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>T</mi><mo>−</mo><mn>20</mn><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|T - 20|</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mi>t</mi><mo>+</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>70</mn></mrow></msup></mrow><annotation encoding="application/x-tex">= e^{-0.05t + \ln 70}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>70</mn><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">= 70e^{-0.05t}</annotation></semantics></math>. At <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>T</mi><mo>−</mo><mn>20</mn><mo>=</mo><mn>70</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T - 20 = 70 &gt; 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>T</mi><mo>−</mo><mn>20</mn><mo>=</mo><mn>70</mn><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">T - 20 = 70e^{-0.05t}</annotation></semantics></math> and</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>20</mn><mo>+</mo><mn>70</mn><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mi>t</mi></mrow></msup><mo>.</mo></mrow><annotation encoding="application/x-tex">T(t) = 20 + 70e^{-0.05t}.</annotation></semantics></math></p>
+</div>
+
+<h2 id="the-domain-of-a-particular-solution">The domain of a particular solution</h2>
+<p>A solution must be <a class="gl" href="../notes/differentiability.html" data-c="differentiable">differentiable</a> at every point where you claim it works, and it must be one connected piece. So the <b>domain</b> of a particular solution is the largest open interval that contains <math class="calc-m"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x_0</annotation></semantics></math> and on which the formula is defined and differentiable (and makes the differential equation meaningful).</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Solve <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = y^2</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y(0) = 1</annotation></semantics></math>, and give the domain.</p>
+<p>Separate and integrate: <math class="calc-m"><semantics><mrow><msup><mi>y</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">y^{-2}\,dy = dx</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mi>y</mi></mfrac><mo>=</mo><mi>x</mi><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">-\frac{1}{y} = x + C</annotation></semantics></math>.</p>
+<p>Condition: <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>=</mo><mn>0</mn><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">-1 = 0 + C</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>C</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">C = -1</annotation></semantics></math>. Then <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mi>y</mi></mfrac><mo>=</mo><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-\frac{1}{y} = x - 1</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>−</mo><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">y = \frac{1}{1 - x}</annotation></semantics></math>.</p>
+<p>The formula breaks at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>. The interval containing <math class="calc-m"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_0 = 0</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x &lt; 1</annotation></semantics></math>, so the particular solution is <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>−</mo><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">y = \frac{1}{1 - x}</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x &lt; 1</annotation></semantics></math>.</p>
+</div>
+<figure id="fig-domain"  class="calc-figure"><div class="calc-figimg" data-fig="particular-domain"><img src="../figures/particular-domain.svg" alt="The slope field of dy/dx = y² with the curve y = 1/(1 − x). The crimson branch through the closed point (0, 1) rises without bound as x approaches the dashed vertical asymptote x = 1; it is the solution, with domain x &lt; 1. The gray dashed branch for x &gt; 1, below the x-axis, also fits the equation but is not connected to (0, 1), so it is not part of this solution." width="600" height="500" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The particular solution of worked example 3 is the crimson branch. The gray branch for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x &gt; 1</annotation></semantics></math> fits the differential equation too, but it is a different solution, not connected to <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Notice what happened. The equation <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = y^2</annotation></semantics></math> looks harmless, yet the solution through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math> shoots to infinity at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>. You could not have seen that from the equation alone; the formula shows it.</p>
+<p>Watch for three ways a formula breaks: a division by 0, an even root of a negative number, and a <a class="gl" href="../notes/math-exp-log.html" data-c="natural-log">logarithm</a> of a number that is not positive. Also look at the differential equation itself: for <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mi>x</mi><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = -\frac{x}{y}</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y(0) = 3</annotation></semantics></math>, the solution <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mrow><mn>9</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">y = \sqrt{9 - x^2}</annotation></semantics></math> reaches <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = \pm 3</annotation></semantics></math>, where <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mi>x</mi><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">-\frac{x}{y}</annotation></semantics></math> divides by 0. So the domain is the open interval <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">-3 &lt; x &lt; 3</annotation></semantics></math>.</p>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Adding the constant after solving: from <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>y</mi><mo stretchy="false">|</mo><mo>=</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\ln|y| = \sin x + C</annotation></semantics></math>, writing <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>e</mi><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow></msup><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">y = e^{\sin x} + C</annotation></semantics></math>. Exponentiating gives <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>A</mi><msup><mi>e</mi><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">y = Ae^{\sin x}</annotation></semantics></math>.</li>
+<li>Substituting the condition the wrong way round: <math class="calc-m"><semantics><mrow><mi>y</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y(0) = 2</annotation></semantics></math> means <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 2</annotation></semantics></math>.</li>
+<li>Keeping the wrong sign after a square root.</li>
+<li>Giving the formula without its domain, or a domain that does not contain <math class="calc-m"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x_0</annotation></semantics></math>.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:particular-solutions">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="separation-of-variables.html"><span>&larr; Previous</span><b>General Solutions by Separation of Variables</b></a><a class="tb-chapter-link next" href="exponential-models.html"><span>Next &rarr;</span><b>Exponential Models</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:particular-solutions">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<p>The graphical FTC question is a free-response regular: a graph of $f$ built from lines and semicircles, and a function $g(x) = \int_a^x f(t)\,dt$. You never see $g$, yet you can find its values, where it rises and falls, its extrema, its concavity and its inflection points. This page shows how to read each one, and how to write the justification.</p>
+
+<h2>Signed area</h2>
+<p>A Riemann sum multiplies each width by a height. Where $f$ is negative, the heights are negative, so those products are negative. In the limit, a definite integral counts regions below the axis as negative:</p>
+<p style="text-align:center"><b>$\int_a^b f(x)\,dx$ = (area above the x-axis) minus (area below the x-axis)</b></p>
+<p>This is the <b>signed area</b>. On $[0, 2\pi]$ the graph of $\sin x$ has one arch above the axis and an identical arch below, so $\int_0^{2\pi} \sin x\,dx = 0$, even though the total area of the two arches is 4.</p>
+
+<h2>Values of g from areas</h2>
+<figure id="fig-gf" data-fig="g-from-f"><figcaption>Top: f, with the regions that add (crimson) and subtract (blue). Bottom: the function g they build.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> In <a class="figref" href="#fig-gf">the figure</a>, $f$ is a segment from $(0, 2)$ to $(2, 0)$, a semicircle of radius 2 below the axis from 2 to 6, and a segment from $(6, 0)$ to $(8, 2)$. Let $g(x) = \int_0^x f(t)\,dt$. Find $g(2)$, $g(6)$ and $g(8)$.</p>
+<p>$g(2)$: triangle above, $\frac{1}{2}(2)(2) = 2$.</p>
+<p>$g(6)$: add the half-disc below, $-\frac{1}{2}\pi(2)^2 = -2\pi$. So $g(6) = 2 - 2\pi$.</p>
+<p>$g(8)$: add the triangle above, $+2$. So $g(8) = 4 - 2\pi$.</p>
+<p>Two classic slips: using the area of the whole disc ($\pi r^2$) for a half, and adding a region below the axis instead of subtracting it.</p>
+</div>
+
+<h2>Where g increases, decreases and has extrema</h2>
+<p>Because $g'(x) = f(x)$, read the <b>sign of f</b>:</p>
+<ul>
+<li>$f > 0$: $g$ is increasing (area is being added).</li>
+<li>$f < 0$: $g$ is decreasing (area is being subtracted).</li>
+<li>$f$ changes from positive to negative at $c$: $g$ has a relative maximum at $c$. From negative to positive: a relative minimum.</li>
+</ul>
+<p>In the figure, $f$ changes from positive to negative at $x = 2$ (relative maximum of $g$) and from negative to positive at $x = 6$ (relative minimum). A zero of $f$ without a sign change, like $(t - 2)^2$ at $t = 2$, gives no extremum: $g$ just pauses and keeps going.</p>
+
+<h2>Concavity and inflection points</h2>
+<p>Because $g''(x) = f'(x)$, read whether <b>f is rising or falling</b>:</p>
+<ul>
+<li>$f$ increasing: $g$ concave up. $f$ decreasing: $g$ concave down.</li>
+<li>$f$ changes from increasing to decreasing (or back) at $c$: $g$ has a point of inflection at $c$.</li>
+</ul>
+<p>In the figure, $f$ decreases on $(0, 4)$ and increases on $(4, 8)$, so $g$ has its inflection point at $x = 4$, the bottom of the semicircle. Not at 2 or 6, where $f = 0$: those are the extrema. Mixing up the two is the most common error on this question.</p>
+<table class="compare">
+<thead><tr><th>On the graph of f</th><th>Means for g</th></tr></thead>
+<tbody>
+<tr><td>above the axis</td><td>g increasing</td></tr>
+<tr><td>crosses from above to below at c</td><td>relative maximum at c</td></tr>
+<tr><td>rising</td><td>g concave up</td></tr>
+<tr><td>turns from rising to falling at c</td><td>inflection point at c</td></tr>
+<tr><td>signed area from a to x</td><td>the value g(x)</td></tr>
+</tbody>
+</table>
+
+<h2>Absolute extrema: the candidates test</h2>
+<p>A relative maximum need not be the largest value on the whole interval. To find the absolute maximum or minimum of $g$ on $[a, b]$, list the candidates: both endpoints and every place $g' = f$ changes sign. Compute $g$ at each and compare.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> For the $g$ in the figure, on $[0, 8]$: $g(0) = 0$, $g(2) = 2$, $g(6) = 2 - 2\pi \approx -4.28$, $g(8) = 4 - 2\pi \approx -2.28$.</p>
+<p>Absolute maximum: 2, at $x = 2$. Absolute minimum: $2 - 2\pi$, at $x = 6$.</p>
+</div>
+
+<h2>Writing the justification</h2>
+<p>Name the function and the change: "$g'(x) = f(x)$ changes from positive to negative at $x = 2$, so $g$ has a relative maximum there." Sentences such as "it goes up then down" or "the slope changes sign" do not say which function and earn nothing. For an inflection point: "$g'' = f'$ changes sign at $x = 4$ because $f$ changes from decreasing to increasing there."</p>

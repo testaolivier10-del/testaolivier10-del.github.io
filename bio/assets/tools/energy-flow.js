@@ -141,7 +141,8 @@
     /* ------------------------------------------------------- the flow */
     var pickLevel = null;
     function flow(s){
-      var L = s.levels, n = L.length, rowH = 66, H = 40 + n * rowH, Wd = 400, cx = 170, p = [];
+      // On a phone the labels are larger, so the levels move right to leave the heat labels room.
+      var L = s.levels, n = L.length, rowH = 66, H = 40 + n * rowH, Wd = 400, cx = document.querySelector('.ls-root.ls-phone') ? 188 : 170, p = [];
       var lmax = Math.log10(Math.max.apply(null, L.map(function(x){ return x.inE; }))), lmin = Math.log10(Math.max(1e-3, Math.min.apply(null, L.map(function(x){ return x.inE; }))));
       var bw = function(v){ var span = Math.max(1, lmax - lmin); return 112 + 92 * Math.max(0, (Math.log10(Math.max(v, 1e-3)) - lmin) / span); };
       var aw = function(v){ return Math.max(1.5, Math.min(18, 2 + 3 * Math.log10(Math.max(1, v)))); };

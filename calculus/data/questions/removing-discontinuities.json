@@ -1,0 +1,493 @@
+{
+ "stimuli": {
+  "removing-discontinuities-s1": {
+   "kind": "table",
+   "title": "A piecewise function with a constant $k$",
+   "table": {
+    "caption": "The function f, where k is a constant",
+    "cols": [
+     "Where",
+     "Rule for $f(x)$"
+    ],
+    "rows": [
+     [
+      "$x < 2$",
+      "$kx^2 - 3$"
+     ],
+     [
+      "$x \\ge 2$",
+      "$2x + k$"
+     ]
+    ]
+   }
+  },
+  "removing-discontinuities-s2": {
+   "kind": "table",
+   "title": "Four functions, each undefined at one point",
+   "table": {
+    "caption": "Four functions, each with a removable discontinuity at the point shown",
+    "cols": [
+     "Function",
+     "Formula",
+     "Undefined at"
+    ],
+    "rows": [
+     [
+      "$a$",
+      "$a(x) = \\frac{x^2 - 5x + 6}{x - 2}$",
+      "$x = 2$"
+     ],
+     [
+      "$b$",
+      "$b(x) = \\frac{\\sqrt{x + 9} - 3}{x}$",
+      "$x = 0$"
+     ],
+     [
+      "$c$",
+      "$c(x) = \\frac{\\sin(4x)}{x}$",
+      "$x = 0$"
+     ],
+     [
+      "$d$",
+      "$d(x) = \\frac{e^{2x} - 1}{e^x - 1}$",
+      "$x = 0$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-removing-discontinuities-1",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "removing-discontinuities-s1",
+   "q": "Find the value of $k$ that makes $f$ continuous at $x = 2$.",
+   "numeric": {
+    "answer": "7/3",
+    "mistakes": [
+     {
+      "value": "7/4",
+      "why": "The right-hand rule contains $k$ too: at $x = 2$ it is $4 + k$, not 4. Solve $4k - 3 = 4 + k$."
+     },
+     {
+      "value": "1/3",
+      "why": "Check the left rule at 2: $k(2)^2 - 3 = 4k - 3$. Then $4k - 3 = 4 + k$ gives $3k = 7$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Continuity at 2 needs $\\lim_{x \\to 2^-} f(x) = \\lim_{x \\to 2^+} f(x) = f(2)$. The left rule gives $4k - 3$; the right rule (which also gives $f(2)$) gives $4 + k$. So $4k - 3 = 4 + k$, $3k = 7$, $k = \\frac{7}{3}$."
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-2",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "removing-discontinuities-s1",
+   "q": "With the value of $k$ that makes $f$ continuous at 2, find $f(2)$.",
+   "numeric": {
+    "answer": "19/3",
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "$f(2) = 2(2) + k$; include $k = \\frac{7}{3}$: $4 + \\frac{7}{3} = \\frac{19}{3}$."
+     },
+     {
+      "value": "7/3",
+      "why": "That is $k$. The value is $f(2) = 4 + k = \\frac{19}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(2) = 2(2) + \\frac{7}{3} = \\frac{19}{3}$. Check with the left rule: $4 \\cdot \\frac{7}{3} - 3 = \\frac{28}{3} - \\frac{9}{3} = \\frac{19}{3}$. The pieces meet."
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-3",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "removing-discontinuities-s1",
+   "q": "Why is the equation $4k - 3 = 4 + k$ the right condition for continuity at $x = 2$?",
+   "options": [
+    "It sets the left-hand limit equal to the right-hand limit and $f(2)$",
+    "It makes $f(2)$ defined, which is the condition that was failing at $x = 2$",
+    "It makes both rules give 0 at $x = 2$, so $f$ has a zero there and no break",
+    "It sets the two rules equal at each $x$, so that the pieces become one rule"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$4k - 3$ is $\\lim_{x \\to 2^-} f(x)$ from the left rule. The right rule gives both $\\lim_{x \\to 2^+} f(x)$ and $f(2)$, namely $4 + k$. Setting them equal makes the limit exist and equal $f(2)$.",
+    "options": [
+     "One equation covers all three conditions, because the value at 2 comes from the right rule.",
+     "$f(2) = 2(2) + k$ is defined for every $k$.",
+     "Nothing needs to be 0; the two sides just need to match.",
+     "The rules are compared only at $x = 2$, where the pieces meet."
+    ]
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-4",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "removing-discontinuities-s1",
+   "q": "If $k = 1$, what happens at $x = 2$?",
+   "options": [
+    "A removable discontinuity, a hole at height 1",
+    "A jump; the sides approach 1 and 5",
+    "An infinite discontinuity at $x = 2$",
+    "Nothing; $f$ is continuous at $x = 2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With $k = 1$: $\\lim_{x \\to 2^-} f(x) = 1 \\cdot 4 - 3 = 1$ and $\\lim_{x \\to 2^+} f(x) = 4 + 1 = 5$. Finite one-sided limits that differ make a jump.",
+    "options": [
+     "A removable discontinuity needs the two sides to agree; here they are 1 and 5.",
+     "Left rule $x^2 - 3 \\to 1$, right rule $2x + 1 \\to 5$: they differ.",
+     "Both rules are polynomials, so nothing is unbounded.",
+     "Only $k = \\frac{7}{3}$ makes the pieces meet."
+    ]
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-5",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "removing-discontinuities-s2",
+   "q": "What value should $a(2)$ be given so that $a$ is continuous at $x = 2$?",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$x^2 - 5x + 6 = (x - 2)(x - 3)$, so $a(x) = x - 3$ near 2, which is $2 - 3 = -1$."
+     },
+     {
+      "value": 0,
+      "why": "Substituting gives $\\frac{0}{0}$, not 0. Cancel the factor $x - 2$ first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x \\ne 2$, $a(x) = \\frac{(x - 2)(x - 3)}{x - 2} = x - 3$, so $\\lim_{x \\to 2} a(x) = -1$. Defining $a(2) = -1$ makes the value equal the limit."
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-6",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "removing-discontinuities-s2",
+   "q": "What value should $b(0)$ be given so that $b$ is continuous at $x = 0$?",
+   "numeric": {
+    "answer": "1/6",
+    "mistakes": [
+     {
+      "value": "1/3",
+      "why": "After the conjugate, the expression is $\\frac{1}{\\sqrt{x + 9} + 3}$; at 0 the denominator is $3 + 3 = 6$."
+     },
+     {
+      "value": 6,
+      "why": "That is the reciprocal: the limit is $\\frac{1}{6}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Multiply by the conjugate: $\\frac{(x + 9) - 9}{x(\\sqrt{x + 9} + 3)} = \\frac{1}{\\sqrt{x + 9} + 3}$ for $x \\ne 0$. The limit is $\\frac{1}{6}$, so define $b(0) = \\frac{1}{6}$."
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-7",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "removing-discontinuities-s2",
+   "q": "What value should $c(0)$ be given so that $c$ is continuous at $x = 0$?",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "Match the inside: $\\frac{\\sin(4x)}{x} = 4 \\cdot \\frac{\\sin(4x)}{4x} \\to 4$."
+     },
+     {
+      "value": "1/4",
+      "why": "Multiply by 4, do not divide: $\\frac{\\sin(4x)}{x} = 4 \\cdot \\frac{\\sin(4x)}{4x}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\lim_{x \\to 0} \\frac{\\sin(4x)}{x} = 4 \\cdot \\lim_{x \\to 0} \\frac{\\sin(4x)}{4x} = 4$. Define $c(0) = 4$."
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-8",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "removing-discontinuities-s2",
+   "q": "What value should $d(0)$ be given so that $d$ is continuous at $x = 0$?",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "Factor the top as a difference of squares: $e^{2x} - 1 = (e^x - 1)(e^x + 1)$. Then $d(x) = e^x + 1 \\to 1 + 1 = 2$."
+     },
+     {
+      "value": 0,
+      "why": "Substituting gives $\\frac{0}{0}$, not 0. Factor $e^{2x} - 1 = (e^x - 1)(e^x + 1)$ and cancel."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Since $e^{2x} = (e^x)^2$, $e^{2x} - 1 = (e^x - 1)(e^x + 1)$. For $x \\ne 0$, $d(x) = e^x + 1$, which approaches 2. Define $d(0) = 2$."
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-9",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "$f(x) = \\frac{x^2 - 9}{x + 3}$ is undefined at $x = -3$. Write a formula for the function $g$ that equals $f$ for every $x \\ne -3$ and is continuous on $(-\\infty, \\infty)$.",
+   "expr": {
+    "answer": "x - 3",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "lhs": "g(x) =",
+    "mistakes": [
+     {
+      "expr": "x + 3",
+      "why": "Factor: $x^2 - 9 = (x - 3)(x + 3)$. The factor that cancels is $x + 3$, leaving $x - 3$."
+     },
+     {
+      "expr": "x^2 - 3",
+      "why": "Cancel whole factors, not terms: $\\frac{(x - 3)(x + 3)}{x + 3} = x - 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x \\ne -3$, $f(x) = \\frac{(x - 3)(x + 3)}{x + 3} = x - 3$. The line $g(x) = x - 3$ fills the hole with $g(-3) = -6$, and a polynomial is continuous everywhere."
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-10",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which discontinuity can be removed by defining or changing a single value of the function?",
+   "options": [
+    "$\\frac{|x - 1|}{x - 1}$ at $x = 1$",
+    "$\\frac{x + 1}{x - 1}$ at $x = 1$",
+    "$\\frac{x^2 - 1}{x - 1}$ at $x = 1$",
+    "$\\frac{1}{(x - 1)^2}$ at $x = 1$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A single value can fix a discontinuity only when the limit exists. $\\frac{x^2 - 1}{x - 1} = x + 1$ near 1, so its limit is 2; defining the value 2 there removes the break.",
+    "options": [
+     "The one-sided limits are $-1$ and $1$: a jump. No single value makes them agree.",
+     "It is unbounded near 1; no value can fix that.",
+     "The limit exists (2), so the hole can be filled.",
+     "It is unbounded near 1; no value can fix that."
+    ]
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-11",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Let $f(x) = x + 2$ for $x < 0$, $f(x) = ax + b$ for $0 \\le x \\le 2$, and $f(x) = 3x^2 - 2$ for $x > 2$. Find the value of $a$ that, together with the right $b$, makes $f$ continuous on $(-\\infty, \\infty)$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "At $x = 2$ the middle rule is $2a + b$, and $b = 2$ from the break at 0. So $2a + 2 = 10$, not $2a = 10$."
+     },
+     {
+      "value": 6,
+      "why": "At $x = 2$ the right rule gives $3(2)^2 - 2 = 10$, not 14. Then $2a + 2 = 10$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $x = 0$: the left rule approaches 2 and the middle rule gives $b$, so $b = 2$. At $x = 2$: the middle rule gives $2a + b = 2a + 2$ and the right rule approaches $3(4) - 2 = 10$. So $2a + 2 = 10$ and $a = 4$."
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-12",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "$f(x) = \\frac{x^2 - 4}{x - 2}$ for $x \\ne 2$ and $f(2) = 1$. Which change makes $f$ continuous at $x = 2$?",
+   "options": [
+    "Change the rule at 2 to $f(2) = 0$",
+    "Change the rule at 2 to $f(2) = 2$",
+    "Leave it; $f$ is already continuous",
+    "Change the rule at 2 to $f(2) = 4$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\lim_{x \\to 2} f(x) = \\lim_{x \\to 2} (x + 2) = 4$. Continuity needs $f(2)$ to equal the limit, so $f(2) = 4$.",
+    "options": [
+     "0 is where $\\frac{0}{0}$ might tempt you; the limit is 4.",
+     "2 is the input; the limit there is 4.",
+     "$f(2) = 1$ but the limit is 4, so the third condition fails.",
+     "The value must equal the limit, 4."
+    ]
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-13",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Is there a value $f(5)$ that would make $f(x) = \\frac{1}{x - 5}$ continuous at $x = 5$?",
+   "options": [
+    "No; $f$ is unbounded near 5, so it has no limit",
+    "Yes; define $f(5) = 0$, the value the formula suggests",
+    "Yes; define $f(5) = 1$, the value of the numerator",
+    "Yes; any value works, because $f(5)$ is undefined now"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Continuity needs $\\lim_{x \\to 5} f(x)$ to exist. Near 5, $\\frac{1}{x - 5}$ grows without bound (negative on the left, positive on the right), so no value can match a limit that does not exist.",
+    "options": [
+     "An infinite discontinuity cannot be removed by choosing a value.",
+     "The formula gives $\\frac{1}{0}$ at 5, which suggests no value at all.",
+     "The numerator alone does not set the limit.",
+     "The value must equal the limit, and here there is no limit."
+    ]
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-14",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = e^x + k$ for $x \\le 0$ and $f(x) = 3\\cos x$ for $x > 0$. Find the value of $k$ that makes $f$ continuous at $x = 0$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$e^0 = 1$, not 0. The left rule at 0 is $1 + k$, so $1 + k = 3$."
+     },
+     {
+      "value": -1,
+      "why": "$\\cos 0 = 1$, so the right side approaches $3 \\cdot 1 = 3$, not 0. Then $1 + k = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(0) = e^0 + k = 1 + k$, and $\\lim_{x \\to 0^-} f(x) = 1 + k$ too. $\\lim_{x \\to 0^+} 3\\cos x = 3$. Continuity needs $1 + k = 3$, so $k = 2$."
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-15",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Let $f(x) = x^2 + k$ for $x < 3$, $f(3) = 5$, and $f(x) = 2x + 1$ for $x > 3$. Which value of $k$ makes $f$ continuous at $x = 3$?",
+   "options": [
+    "$k = -2$, so the left side approaches 7, like the right side",
+    "No value of $k$; the right side approaches 7, but $f(3) = 5$",
+    "$k = -4$, so the left side approaches $f(3) = 5$",
+    "$k = 2$, the difference between 7 and $f(3) = 5$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Continuity needs the left limit, the right limit and $f(3)$ all equal. The right limit is $2(3) + 1 = 7$, which differs from $f(3) = 5$ whatever $k$ is. So no $k$ works.",
+    "options": [
+     "The limit would then be 7, but $f(3) = 5$, so the third condition fails.",
+     "$k$ only moves the left piece; the mismatch between 7 and 5 stays.",
+     "The left side would approach 5, but the right side approaches 7: a jump.",
+     "Subtracting values does not fix a mismatch between the right side and $f(3)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-removing-discontinuities-16",
+   "unit": "unit-1",
+   "topic": "removing-discontinuities",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $g(x) = \\frac{x^3 - 1}{x - 1}$ for $x \\ne 1$ and $g(1) = c$. What value of $c$ makes $g$ continuous on $(-\\infty, \\infty)$?",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$x^3 - 1 = (x - 1)(x^2 + x + 1)$, so near 1, $g(x) = x^2 + x + 1 \\to 3$."
+     },
+     {
+      "value": 2,
+      "why": "The quotient is $x^2 + x + 1$, three terms: $1 + 1 + 1 = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x \\ne 1$, $g(x) = x^2 + x + 1$, a polynomial, continuous everywhere. Its limit at 1 is 3, so $c = 3$ makes $g$ continuous at 1 too, and so on $(-\\infty, \\infty)$."
+   }
+  }
+ ]
+}

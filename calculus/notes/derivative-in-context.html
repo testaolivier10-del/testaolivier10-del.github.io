@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Derivative in Context — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="Unit 2 treated the derivative as a slope. Out in the world it is a rate: kilometers per hour, dollars per item, degrees per minute.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/derivative-in-context.html">
+<meta property="og:title" content="The Derivative in Context — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="Unit 2 treated the derivative as a slope. Out in the world it is a rate: kilometers per hour, dollars per item, degrees per minute.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/derivative-in-context.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/derivative-in-context.html#reading",
+      "name": "The Derivative in Context",
+      "url": "https://levlprep.com/calculus/notes/derivative-in-context.html",
+      "description": "Unit 2 treated the derivative as a slope. Out in the world it is a rate: kilometers per hour, dollars per item, degrees per minute.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "the derivative in context ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contextual Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Derivative in Context: notes",
+          "item": "https://levlprep.com/calculus/notes/derivative-in-context.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="derivative-in-context" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Contextual Applications of Differentiation</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="derivative-in-context"><a href="#main" aria-current="page"><span class="bk-toc-n">4.1</span>The Derivative in Context</a><div class="bk-toc-onpage"><p>On this page</p><a href="#units-output-per-input">Units: output per input</a><a href="#interpreting-a-derivative-in-a-sentence">Interpreting a derivative in a sentence</a><a href="#estimating-a-derivative-from-a-table">Estimating a derivative from a table</a><a href="#a-rate-times-a-short-time">A rate times a short time is a change</a><a href="#comparing-rates">Comparing rates</a><a href="#slips-that-cost-points">Slips that cost points</a></div></li><li data-toc-t="straight-line-motion"><a href="straight-line-motion.html"><span class="bk-toc-n">4.2</span>Straight-Line Motion: Position, Velocity, Acceleration</a></li><li data-toc-t="rates-in-context"><a href="rates-in-context.html"><span class="bk-toc-n">4.3</span>Rates of Change in Other Contexts</a></li><li data-toc-t="related-rates-intro"><a href="related-rates-intro.html"><span class="bk-toc-n">4.4</span>Introduction to Related Rates</a></li><li data-toc-t="solving-related-rates"><a href="solving-related-rates.html"><span class="bk-toc-n">4.5</span>Solving Related Rates Problems</a></li><li data-toc-t="local-linearity"><a href="local-linearity.html"><span class="bk-toc-n">4.6</span>Local Linearity and Linearization</a></li><li data-toc-t="lhospitals-rule"><a href="lhospitals-rule.html"><span class="bk-toc-n">4.7</span>L'Hospital's Rule</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Analytical Applications of Differentiation</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Contextual Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Derivative in Context: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/derivative-in-context.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.1 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">The Derivative in Context</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="derivative-in-context">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fderivative-in-context.html&amp;title=The%20Derivative%20in%20Context%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/derivative-in-context.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Unit 2 treated the <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> as a <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a>. Out in the world it is a rate: kilometers per hour, dollars per item, degrees per minute. Every free-response question set in a real situation asks you to find such a rate, give its units, and say what it means in a sentence. The mathematics is the derivative you already know; the new skill is reading it, and writing about it, precisely.</p>
+
+<h2 id="units-output-per-input">Units: output per input</h2>
+<p>The derivative <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> is the <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a> of <a class="gl" href="../notes/average-and-instant-rates.html" data-c="difference-quotient">difference quotients</a> <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{f(a + h) - f(a)}{h}</annotation></semantics></math>. The top is a change in the <a class="gl" href="../notes/math-functions.html" data-c="function">output</a>; the bottom is a change in the input. So the <span class="gl" tabindex="0" data-c="derivative-in-context">units of a derivative</span> are always</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mtext>units of </mtext><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mtext>units of the output</mtext><mtext>units of the input</mtext></mfrac></mrow><annotation encoding="application/x-tex">\text{units of } f'(a) = \frac{\text{units of the output}}{\text{units of the input}}</annotation></semantics></math></p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<tr><th>Function</th><th>Output</th><th>Input</th><th>Units of the derivative</th></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(t)</annotation></semantics></math>, depth of snow</td><td>centimeters</td><td>hours</td><td>centimeters per hour</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(x)</annotation></semantics></math>, cost of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> bicycles</td><td>dollars</td><td>bicycles</td><td>dollars per bicycle</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(t)</annotation></semantics></math>, temperature</td><td>°C</td><td>minutes</td><td>°C per minute</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V(r)</annotation></semantics></math>, volume of a balloon</td><td>cm³</td><td>cm of radius</td><td>cm³ per cm</td></tr>
+</table></div>
+<p>The input is not always time. For the balloon, <math class="calc-m"><semantics><mrow><mrow><mi>V</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V'(r)</annotation></semantics></math> tells how fast the volume grows per extra centimeter of radius.</p>
+<figure id="fig-units"  class="calc-figure"><div class="calc-figimg" data-fig="cooling-tangent-units"><img src="../figures/cooling-tangent-units.svg" alt="The temperature T(t) = 20 + 60e^(−t/20) of a cooling drink, in °C, for t from 0 to 60 minutes, with the tangent line at (10, 56.4). A slope triangle runs 10 minutes and drops 18.2 °C, so T′(10) ≈ −1.82 °C per minute." width="800" height="430" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The tangent line to a cooling curve drops 18.2 °C over 10 minutes, so its slope is about <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1.82</mn></mrow><annotation encoding="application/x-tex">-1.82</annotation></semantics></math> °C per minute: that is <math class="calc-m"><semantics><mrow><mrow><mi>T</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T'(10)</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="interpreting-a-derivative-in-a-sentence">Interpreting a derivative in a sentence</h2>
+<p>A full interpretation of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> names four things:</p>
+<ol>
+<li>the <b>instant</b> (the value of the input, with its units),</li>
+<li>the <b>quantity</b>, by its name in the problem,</li>
+<li>whether it is <b>increasing or decreasing</b> (from the sign),</li>
+<li><b>how fast</b>, with units.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> <math class="calc-m"><semantics><mrow><mi>W</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">W(t)</annotation></semantics></math> is the number of liters of water in a tank <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> minutes after noon, and <math class="calc-m"><semantics><mrow><mrow><mi>W</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>20</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">W'(20) = -4</annotation></semantics></math>. Interpret.</p>
+<p>"At 12:20 (that is, <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">t = 20</annotation></semantics></math> minutes), the amount of water in the tank is decreasing at 4 liters per minute."</p>
+<p>Notice the sign became the word "decreasing", and the number became its size, 4. Writing "changing at <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">-4</annotation></semantics></math> liters per minute" is also correct.</p>
+</div>
+<p>Two sentences that lose the point: "At 20 minutes there are 4 liters" (that would be <math class="calc-m"><semantics><mrow><mi>W</mi><mo stretchy="false">(</mo><mn>20</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">W(20) = 4</annotation></semantics></math>, an amount, not a rate) and "In 20 minutes the tank lost 4 liters" (a change over an interval, not a rate at an instant).</p>
+
+<h2 id="estimating-a-derivative-from-a-table">Estimating a derivative from a table</h2>
+<p>Real data come as tables. To estimate <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math>, use the two inputs closest to <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> on either side, and divide by their actual difference:</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Snow depth <math class="calc-m"><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(t)</annotation></semantics></math>, in centimeters, after <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> hours:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<tr><th><math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> (hours)</th><td><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></td></tr>
+<tr><th><math class="calc-m"><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(t)</annotation></semantics></math> (cm)</th><td><math class="calc-m"><semantics><mrow><mn>12.0</mn></mrow><annotation encoding="application/x-tex">12.0</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>15.2</mn></mrow><annotation encoding="application/x-tex">15.2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>20.0</mn></mrow><annotation encoding="application/x-tex">20.0</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>21.1</mn></mrow><annotation encoding="application/x-tex">21.1</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>24.0</mn></mrow><annotation encoding="application/x-tex">24.0</annotation></semantics></math></td></tr>
+</table></div>
+<p>Estimate <math class="calc-m"><semantics><mrow><mrow><mi>D</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D'(8)</annotation></semantics></math>: the closest times around 8 are 6 and 10.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>D</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D'(8)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">≈</mo><mfrac><mrow><mi>D</mi><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><mrow><mn>10</mn><mo>−</mo><mn>6</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\approx \frac{D(10) - D(6)}{10 - 6}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>24.0</mn><mo>−</mo><mn>21.1</mn></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{24.0 - 21.1}{4}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0.725</mn></mrow><annotation encoding="application/x-tex">= 0.725</annotation></semantics></math> centimeters per hour.</p>
+<p>At <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">t = 8</annotation></semantics></math> hours the snow is getting deeper at about 0.725 centimeters per hour.</p>
+</div>
+<p>The widths in a table are often unequal, on purpose. Dividing by 2 out of habit here would give 1.45, which is wrong. Also show the difference quotient itself; a bare number does not earn the setup point.</p>
+
+<h2 id="a-rate-times-a-short-time">A rate times a short time is a change</h2>
+<p>Because a derivative is a rate, it lets you estimate small changes: change <math class="calc-m"><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math> rate <math class="calc-m"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math> time. If a calf gains weight at <math class="calc-m"><semantics><mrow><mrow><mi>W</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.8</mn></mrow><annotation encoding="application/x-tex">W'(10) = 0.8</annotation></semantics></math> kilograms per day, then over the next 2 days it gains about <math class="calc-m"><semantics><mrow><mn>0.8</mn><mo>×</mo><mn>2</mn><mo>=</mo><mn>1.6</mn></mrow><annotation encoding="application/x-tex">0.8 \times 2 = 1.6</annotation></semantics></math> kilograms. This works only over short stretches, where the rate stays nearly the same.</p>
+
+<h2 id="comparing-rates">Comparing rates</h2>
+<p>A statement such as <math class="calc-m"><semantics><mrow><mrow><mi>H</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>&gt;</mo><mrow><mi>H</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H'(4) &gt; H'(8)</annotation></semantics></math>, where <math class="calc-m"><semantics><mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">H</annotation></semantics></math> is a tree's height, compares <a class="gl" href="../notes/straight-line-motion.html" data-c="speed">speeds</a> of growth: the tree was growing faster at 4 years than at 8 years. It says nothing about which height was larger. Keep amounts (<math class="calc-m"><semantics><mrow><mi>H</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H(4)</annotation></semantics></math>) and rates (<math class="calc-m"><semantics><mrow><mrow><mi>H</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H'(4)</annotation></semantics></math>) separate in every sentence.</p>
+
+<h2 id="slips-that-cost-points">Slips that cost points</h2>
+<ul>
+<li>Units of the function instead of units of the rate ("centimeters" for <math class="calc-m"><semantics><mrow><mrow><mi>D</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D'(t)</annotation></semantics></math>).</li>
+<li>Upside-down units ("hours per centimeter").</li>
+<li>Describing an amount or a total change when the question asks about a rate.</li>
+<li>Leaving out the instant ("is increasing at 1.1 cm per hour", but when?).</li>
+<li>Using the wrong width from a table with unequal spacing.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:derivative-in-context">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="higher-order-derivatives.html"><span>&larr; Previous</span><b>Second and Higher Derivatives</b></a><a class="tb-chapter-link next" href="straight-line-motion.html"><span>Next &rarr;</span><b>Straight-Line Motion: Position, Velocity, Acceleration</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:derivative-in-context">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

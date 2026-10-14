@@ -1,0 +1,547 @@
+{
+ "stimuli": {
+  "accumulation-in-context-s1": {
+   "kind": "graph",
+   "title": "Water flowing into and out of a tank",
+   "plot": {
+    "label": "Graphs of the rate in R(t) = 10 + 3 sin(pi t/6) and the rate out D(t) = 4 + t, in liters per minute, for t from 0 to 12 minutes; they cross at t = 6",
+    "x": [
+     0,
+     12
+    ],
+    "y": [
+     0,
+     18
+    ],
+    "xStep": 2,
+    "yStep": 2,
+    "xLabel": "t (minutes)",
+    "yLabel": "liters per minute",
+    "curves": [
+     {
+      "fn": "10 + 3sin(pi*x/6)",
+      "domain": [
+       0,
+       12
+      ],
+      "label": "R",
+      "cls": "s1"
+     },
+     {
+      "fn": "4 + x",
+      "domain": [
+       0,
+       12
+      ],
+      "label": "D",
+      "cls": "s2"
+     }
+    ]
+   }
+  },
+  "accumulation-in-context-s2": {
+   "kind": "table",
+   "title": "Visitors entering a museum",
+   "table": {
+    "caption": "The rate E(t) at which visitors enter a museum, in people per hour, t hours after opening",
+    "cols": [
+     "$t$ (hours)",
+     "0",
+     "2",
+     "3",
+     "5",
+     "8"
+    ],
+    "rows": [
+     [
+      "$E(t)$ (people per hour)",
+      "60",
+      "110",
+      "150",
+      "90",
+      "30"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-accumulation-in-context-1",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "accumulation-in-context-s1",
+   "calc": true,
+   "q": "Water enters a tank at $R(t) = 10 + 3\\sin\\left(\\frac{\\pi t}{6}\\right)$ liters per minute and leaves at $D(t) = 4 + t$ liters per minute. The tank holds 50 liters at $t = 0$. How much water is in the tank at $t = 9$ minutes? Include units.",
+   "numeric": {
+    "answer": 69.22957795130824,
+    "unit": "liters",
+    "askUnit": true,
+    "units": [
+     "L",
+     "liter",
+     "litres"
+    ],
+    "mistakes": [
+     {
+      "value": 19.22957795130823,
+      "why": "That is the change in the amount. Add the 50 liters already in the tank."
+     },
+     {
+      "value": 222.22957795130824,
+      "why": "Water leaving is subtracted: $\\int_0^9 (R(t) - D(t))\\,dt$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$50 + \\int_0^9 (R(t) - D(t))\\,dt \\approx 50 + 19.230 = 69.230$ liters."
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-2",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "accumulation-in-context-s1",
+   "calc": true,
+   "q": "At what rate is the amount of water in the tank changing at $t = 9$ minutes? Include units.",
+   "numeric": {
+    "answer": -6,
+    "unit": "liters per minute",
+    "askUnit": true,
+    "units": [
+     "L/min",
+     "liters/minute",
+     "L per minute",
+     "litres per minute",
+     "L/minute"
+    ],
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "That is $R(9)$ alone. The amount changes at $R(9) - D(9)$."
+     },
+     {
+      "value": 6,
+      "why": "$R(9) - D(9) = 7 - 13 = -6$: the amount is decreasing."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$A'(9) = R(9) - D(9) = 7 - 13 = -6$ liters per minute: the water is going down at 6 liters per minute."
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-3",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "accumulation-in-context-s1",
+   "calc": true,
+   "q": "Find the greatest amount of water in the tank on $0 \\le t \\le 12$. Include units.",
+   "numeric": {
+    "answer": 79.45915590261646,
+    "unit": "liters",
+    "askUnit": true,
+    "units": [
+     "L",
+     "liter",
+     "litres"
+    ],
+    "mistakes": [
+     {
+      "value": 50,
+      "why": "50 liters is the amount at both endpoints. The amount rises until $R - D$ changes sign at $t = 6$."
+     },
+     {
+      "value": 29.459155902616466,
+      "why": "That is the gain on $[0, 6]$; add the 50 liters at the start."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$A' = R - D$ changes from positive to negative at $t = 6$ only. Candidates: $A(0) = 50$, $A(6) = 50 + \\int_0^6 (R - D)\\,dt \\approx 79.459$, $A(12) \\approx 50$. The greatest is about 79.459 liters."
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-4",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "accumulation-in-context-s1",
+   "calc": true,
+   "q": "Which is a complete justification that the amount is greatest at $t = 6$?",
+   "options": [
+    "The graphs of $R$ and $D$ cross at $t = 6$.",
+    "$A'(t) = R(t) - D(t)$ is 0 only at $t = 6$ in $(0, 12)$, and $A(6) \\approx 79.459$ exceeds $A(0) = 50$ and $A(12) \\approx 50$.",
+    "$R(t)$ is greatest at $t = 3$, so the tank fills fastest then.",
+    "$A'(6) = 0$, so the amount has a maximum at $t = 6$."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For an absolute maximum on a closed interval, compare $A$ at the critical point and the endpoints: $A(6) \\approx 79.459$ is the largest.",
+    "options": [
+     "Crossing marks a critical point; it does not show the amount there beats the endpoints.",
+     "The candidates test: every critical point and both endpoints are compared.",
+     "The fastest filling time is not the time of the greatest amount.",
+     "$A' = 0$ alone does not give a maximum; a sign change or the candidates test is needed."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-5",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "accumulation-in-context-s1",
+   "calc": true,
+   "q": "$\\int_0^6 D(t)\\,dt = 42$. What does this mean in context?",
+   "options": [
+    "During the first 6 minutes, 42 liters of water leave the tank.",
+    "At t = 6 minutes, the tank holds 42 liters.",
+    "At t = 6 minutes, water leaves at 42 liters per minute.",
+    "During the first 6 minutes, the amount in the tank falls by 42 liters."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\int_0^6 D(t)\\,dt$ adds up the outflow: 42 liters drain from $t = 0$ to $t = 6$ minutes.",
+    "options": [
+     "The integral of the rate out is the amount removed over the interval.",
+     "It is an amount removed, not the amount in the tank.",
+     "That would be $D(6) = 10$; the integral is in liters, not liters per minute.",
+     "Water also flows in, so the net change is not −42."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-6",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "accumulation-in-context-s2",
+   "q": "Use a right Riemann sum with the table's subintervals to estimate $\\int_0^8 E(t)\\,dt$.",
+   "numeric": {
+    "answer": 640,
+    "unit": "people",
+    "mistakes": [
+     {
+      "value": 800,
+      "why": "That is the left Riemann sum. A right sum uses the value at the right end of each subinterval."
+     },
+     {
+      "value": 760,
+      "why": "The subintervals have widths 2, 1, 2 and 3, not 2 each."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2(110) + 1(150) + 2(90) + 3(30) = 220 + 150 + 180 + 90 = 640$ people."
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-7",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "accumulation-in-context-s2",
+   "q": "Use a trapezoidal sum with the table's subintervals to estimate $\\int_0^8 E(t)\\,dt$.",
+   "numeric": {
+    "answer": 720,
+    "unit": "people",
+    "mistakes": [
+     {
+      "value": 640,
+      "why": "That is the right Riemann sum. A trapezoid averages the two ends of each subinterval."
+     },
+     {
+      "value": 1440,
+      "why": "Each trapezoid is width times the <i>average</i> of the two heights: divide each sum of heights by 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2 \\cdot \\frac{60 + 110}{2} + 1 \\cdot \\frac{110 + 150}{2} + 2 \\cdot \\frac{150 + 90}{2} + 3 \\cdot \\frac{90 + 30}{2} = 170 + 130 + 240 + 180 = 720$ people."
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-8",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "accumulation-in-context-s2",
+   "q": "What does $\\int_0^8 E(t)\\,dt$ mean in this context?",
+   "options": [
+    "The number of visitors inside the museum at t = 8 hours",
+    "The number of visitors who enter the museum in the first 8 hours after opening",
+    "The average rate at which visitors enter during the 8 hours",
+    "The rate at which visitors enter at t = 8 hours"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$E$ is a rate in people per hour, so $\\int_0^8 E(t)\\,dt$ is the number of people who enter from $t = 0$ to $t = 8$.",
+    "options": [
+     "Visitors also leave, and some may have been there before.",
+     "The integral of the rate in is the number who came in over the interval.",
+     "That would be the integral divided by 8.",
+     "That is $E(8) = 30$ people per hour."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-9",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "accumulation-in-context-s2",
+   "q": "At opening, $t = 0$, 25 visitors are already inside. Visitors leave at a constant 70 people per hour. Using the trapezoidal estimate of 720 people for $\\int_0^8 E(t)\\,dt$, estimate the number of visitors inside at $t = 8$.",
+   "numeric": {
+    "answer": 185,
+    "unit": "people",
+    "mistakes": [
+     {
+      "value": 745,
+      "why": "Visitors also leave: subtract $\\int_0^8 70\\,dt = 560$."
+     },
+     {
+      "value": 160,
+      "why": "Add the 25 visitors inside at the start."
+     },
+     {
+      "value": 1305,
+      "why": "The leaving visitors are subtracted, not added."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$25 + \\int_0^8 (E(t) - 70)\\,dt \\approx 25 + 720 - 560 = 185$ people."
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-10",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A pond holds $P_0$ gallons at $t = 0$. Water enters at $R(t)$ and leaves at $D(t)$ gallons per day. Which gives the amount at time $t$?",
+   "options": [
+    "$\\int_0^t (R(s) - D(s))\\,ds$",
+    "$P_0 + R(t) - D(t)$",
+    "$P_0 + \\int_0^t (R(s) + D(s))\\,ds$",
+    "$P_0 + \\int_0^t (R(s) - D(s))\\,ds$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$P(t) = P(0) + \\int_0^t P'(s)\\,ds$ with $P' = R - D$.",
+    "options": [
+     "The starting amount is missing.",
+     "Rates are added to an amount without integrating; the units do not match.",
+     "Water leaving is subtracted.",
+     "Start amount plus net change."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-11",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Snow falls on a driveway at $2t$ cm per hour while melting removes it at 3 cm per hour, for $0 \\le t \\le 5$. At $t = 0$ the snow is 10 cm deep. Find the depth $H(t)$.",
+   "expr": {
+    "answer": "t^2 - 3t + 10",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     0,
+     5
+    ],
+    "lhs": "H(t) =",
+    "mistakes": [
+     {
+      "expr": "t^2 - 3t",
+      "why": "Add the 10 cm that were there at t = 0."
+     },
+     {
+      "expr": "2t - 3",
+      "why": "That is $H'(t)$, the net rate. Integrate it and add 10."
+     },
+     {
+      "expr": "t^2 + 3t + 10",
+      "why": "Melting removes snow: subtract 3t."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$H(t) = 10 + \\int_0^t (2s - 3)\\,ds = 10 + t^2 - 3t$."
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-12",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For the driveway, $H(t) = t^2 - 3t + 10$ cm on $0 \\le t \\le 5$. Find the least depth of snow on the interval.",
+   "numeric": {
+    "answer": "31/4",
+    "unit": "cm",
+    "mistakes": [
+     {
+      "value": "3/2",
+      "why": "That is the time, $t = 1.5$ hours, when the least depth occurs. The question asks for the depth $H(1.5)$."
+     },
+     {
+      "value": 10,
+      "why": "$H(0) = 10$, but the depth first drops while melting outpaces snowfall ($2t < 3$)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$H'(t) = 2t - 3$ changes from negative to positive at $t = 1.5$. Candidates: $H(0) = 10$, $H(1.5) = 7.75$, $H(5) = 20$. Least depth: $7.75 = \\frac{31}{4}$ cm."
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-13",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "$R(t)$ is the rate, in gallons per hour, at which oil leaks from a tanker. What are the units of $\\int_2^5 R(t)\\,dt$?",
+   "options": [
+    "gallons",
+    "gallons per hour",
+    "gallons per hour per hour",
+    "hours"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An integral of a rate has the accumulated unit: (gallons/hour) × hours = gallons.",
+    "options": [
+     "Gallons per hour times hours gives gallons.",
+     "That is the unit of $R(t)$ itself.",
+     "That is the unit of $R'(t)$.",
+     "The integral accumulates the gallons, not the time."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-14",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Water enters a tank at $R(t)$ and leaves at $D(t)$. When is the amount of water increasing at $t = 4$?",
+   "options": [
+    "When $R'(4) > 0$",
+    "When $R(4) > 0$",
+    "When $\\int_0^4 R(t)\\,dt > \\int_0^4 D(t)\\,dt$",
+    "When $R(4) > D(4)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The amount's rate of change is $R(t) - D(t)$; it is increasing at $t = 4$ when $R(4) - D(4) > 0$.",
+    "options": [
+     "The rate in growing does not mean it beats the rate out.",
+     "The rate out might be larger than $R(4)$.",
+     "That says the amount is larger than at the start, not that it is rising at t = 4.",
+     "$A'(4) = R(4) - D(4) > 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-15",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Oil leaks at $r(t) = 6e^{-0.5t}$ gallons per hour. How many gallons leak during the first 2 hours? Give the exact value.",
+   "numeric": {
+    "answer": "12 - 12/e",
+    "unit": "gallons",
+    "mistakes": [
+     {
+      "value": "6 - 6/e",
+      "why": "An antiderivative of $e^{-0.5t}$ is $-2e^{-0.5t}$: the factor 2 from the chain rule."
+     },
+     {
+      "value": 12,
+      "why": "$\\left[-12e^{-0.5t}\\right]_0^2 = -12e^{-1} + 12$; the upper limit term was dropped."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^2 6e^{-0.5t}\\,dt = \\left[-12e^{-0.5t}\\right]_0^2 = 12 - \\frac{12}{e} \\approx 7.585$ gallons."
+   }
+  },
+  {
+   "id": "calc-accumulation-in-context-16",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "type": "multi",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a reservoir, $\\int_0^{30} (R(t) - D(t))\\,dt = -400$, where $R$ and $D$ are the rates in and out in cubic meters per day. Which statements are true? Select all that apply.",
+   "options": [
+    "On day 30 the reservoir holds 400 cubic meters less than on day 0.",
+    "More water flowed out than in during those 30 days.",
+    "On day 30 the reservoir holds 400 cubic meters.",
+    "The water level fell on each of the 30 days."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$\\int_0^{30} (R - D)\\,dt = A(30) - A(0) = -400$: a net loss of 400 cubic meters over the 30 days.",
+    "options": [
+     "The integral of the net rate is the net change.",
+     "$\\int R - \\int D = -400 < 0$.",
+     "The integral gives a change, not the amount.",
+     "Only the total change is negative; some days may have gained."
+    ]
+   }
+  }
+ ]
+}

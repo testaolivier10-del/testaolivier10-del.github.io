@@ -1,0 +1,77 @@
+{
+ "topic": "choosing-integration-methods",
+ "hook": "On the exam, nobody tells you which method to use. A page of integrals looks like a page of puzzles until you learn to ask a few questions in the same order every time. Then most integrals sort themselves in seconds, and the rest yield to one more rewrite.",
+ "prereq": [
+  {
+   "q": "With $u = x^2 + 1$, $\\int x(x^2 + 1)^4\\,dx$ becomes",
+   "options": [
+    "$\\frac{1}{2}\\int u^4\\,du$",
+    "$\\int u^4\\,du$",
+    "$2\\int u^4\\,du$",
+    "$\\int x u^4\\,du$"
+   ],
+   "correct": 0,
+   "why": "$du = 2x\\,dx$, so $x\\,dx = \\frac{1}{2}du$.",
+   "review": "u-substitution"
+  },
+  {
+   "q": "$x^2 + 6x + 10 =$",
+   "options": [
+    "$(x + 3)^2 + 1$",
+    "$(x + 6)^2 + 10$",
+    "$(x + 3)^2 + 10$",
+    "$(x - 3)^2 + 1$"
+   ],
+   "correct": 0,
+   "why": "Half of 6 is 3; $9 + 1 = 10$.",
+   "review": "rewriting-integrands"
+  }
+ ],
+ "figure": {
+  "figure": "integration-flowchart",
+  "caption": "Ask the questions in order: basic form, substitution, long division, completing the square."
+ },
+ "chain": [
+  {
+   "cause": "The integrand is a sum of powers, exponentials or trig functions",
+   "effect": "use the basic rules, after rewriting roots as powers and splitting fractions over one term"
+  },
+  {
+   "cause": "An inside function appears with its derivative as a factor",
+   "effect": "substitute $u$ for the inside and change any limits"
+  },
+  {
+   "cause": "A fraction has a top of degree at least the bottom",
+   "effect": "divide first, then integrate the pieces"
+  },
+  {
+   "cause": "A constant sits over a quadratic with no real zeros",
+   "effect": "complete the square and use the arctan form"
+  }
+ ],
+ "ideas": [
+  "Rewrite first: roots as powers, products expanded, fractions over one term split.",
+  "Substitution needs the inside's derivative as a factor (up to a constant). $\\int x e^{x^2}\\,dx$ yes; $\\int e^{x^2}\\,dx$ no.",
+  "For fractions, compare: top is a multiple of the bottom's derivative ($\\ln$); top degree too high (divide); constant over an irreducible quadratic (arctan).",
+  "Always check by differentiating. If no method works, the definite integral may be a calculator question."
+ ],
+ "misconception": {
+  "wrong": "$\\int \\frac{6x}{x^2 + 1}\\,dx = 6\\arctan x + C$, since there is $x^2 + 1$ on the bottom.",
+  "right": "The $x$ on top changes everything: it is a multiple of the bottom's derivative, so substitute $u = x^2 + 1$ and get $3\\ln(x^2 + 1) + C$. Arctan is for a constant on top."
+ },
+ "check": [
+  "calc-choosing-integration-methods-1",
+  "calc-choosing-integration-methods-2",
+  "calc-choosing-integration-methods-3",
+  "calc-choosing-integration-methods-4",
+  "calc-choosing-integration-methods-9",
+  "calc-choosing-integration-methods-16"
+ ],
+ "summary": "To choose a technique, ask in order: is it a basic form after rewriting? Is there an inside function with its derivative as a factor? Is it a fraction to divide? Is it a constant over an irreducible quadratic? Then integrate, check by differentiating, and change the limits whenever you substitute in a definite integral.",
+ "connections": [
+  {
+   "href": "../notes/rewriting-integrands.html",
+   "label": "Back: long division and completing the square (6.10)"
+  }
+ ]
+}

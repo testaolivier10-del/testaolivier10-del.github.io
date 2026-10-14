@@ -1,0 +1,81 @@
+{
+ "topic": "ftc-accumulation",
+ "hook": "Picture a paint roller moving along a wall, painting everything below a curve. Stop it at any position $x$ and you can measure the painted area so far. Now ask how fast that area grows as the roller moves. The answer is startlingly simple, and it ties the two halves of calculus together: the area grows at a rate equal to the height of the curve.",
+ "prereq": [
+  {
+   "q": "$\\int_0^3 2\\,dx$ equals",
+   "options": [
+    "6",
+    "2",
+    "3",
+    "0"
+   ],
+   "correct": 0,
+   "why": "The region is a rectangle of width 3 and height 2.",
+   "review": "definite-integral-notation"
+  },
+  {
+   "q": "If $y = \\sin(x^2)$, then $\\frac{dy}{dx} =$",
+   "options": [
+    "$2x\\cos(x^2)$",
+    "$\\cos(x^2)$",
+    "$\\cos(2x)$",
+    "$2x\\sin(x^2)$"
+   ],
+   "correct": 0,
+   "why": "Chain rule: the derivative of the outside at the inside, times the derivative of the inside.",
+   "review": "chain-rule"
+  }
+ ],
+ "figure": {
+  "figure": "accumulation-sweep",
+  "caption": "Top: the area under f from 0 to x is g(x). Bottom: the slope of g at x is the height of f at x."
+ },
+ "chain": [
+  {
+   "cause": "Define $g(x) = \\int_a^x f(t)\\,dt$",
+   "effect": "$g(x)$ is the area accumulated under $f$ from $a$ up to $x$, and $g(a) = 0$"
+  },
+  {
+   "cause": "Move $x$ a tiny step $h$ to the right",
+   "effect": "the area grows by a thin strip about $f(x)$ tall and $h$ wide, so $\\frac{g(x + h) - g(x)}{h} \\approx f(x)$"
+  },
+  {
+   "cause": "Let $h \\to 0$",
+   "effect": "$g'(x) = f(x)$: the Fundamental Theorem of Calculus, so $g$ is an antiderivative of $f$"
+  },
+  {
+   "cause": "The upper limit is a function $u(x)$",
+   "effect": "the chain rule adds a factor: $\\frac{d}{dx}\\int_a^{u(x)} f(t)\\,dt = f(u(x))\\,u'(x)$"
+  }
+ ],
+ "ideas": [
+  "An <b>accumulation function</b> $g(x) = \\int_a^x f(t)\\,dt$ is the area so far; $g(a) = 0$.",
+  "<b>Fundamental Theorem of Calculus</b>: if $f$ is continuous, $g'(x) = f(x)$. The constant lower limit drops out.",
+  "An <b>antiderivative</b> of $f$ is any $F$ with $F' = f$. Every accumulation function of $f$ is one.",
+  "Upper limit $u(x)$: $\\frac{d}{dx}\\int_a^{u(x)} f(t)\\,dt = f(u(x)) \\cdot u'(x)$. Forgetting $u'(x)$ is the classic slip."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{d}{dx}\\int_2^x f(t)\\,dt = f(x) - f(2)$, because the lower limit must be subtracted.",
+  "right": "The lower limit is a constant: it decides where the accumulation starts, not how fast it grows. The derivative is just $f(x)$."
+ },
+ "check": [
+  "calc-ftc-accumulation-1",
+  "calc-ftc-accumulation-2",
+  "calc-ftc-accumulation-3",
+  "calc-ftc-accumulation-9",
+  "calc-ftc-accumulation-10",
+  "calc-ftc-accumulation-16"
+ ],
+ "summary": "An accumulation function $g(x) = \\int_a^x f(t)\\,dt$ starts at 0 and grows at the rate $f(x)$: for continuous $f$, $g'(x) = f(x)$, so $g$ is an antiderivative of $f$. With an upper limit $u(x)$, the derivative is $f(u(x))\\,u'(x)$.",
+ "connections": [
+  {
+   "href": "../notes/definite-integral-notation.html",
+   "label": "Back: the definite integral (6.3)"
+  },
+  {
+   "href": "../notes/accumulation-behavior.html",
+   "label": "Next: behavior of accumulation functions (6.5)"
+  }
+ ]
+}

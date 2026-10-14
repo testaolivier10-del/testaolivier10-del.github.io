@@ -38,6 +38,11 @@
 <link rel="stylesheet" href="../assets/periodic-table.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <style>
+/* phone pass 2026-10-13: wider drawing, small labels 12 px+ */
+@media (max-width:640px){
+  .lesson-card .scene{margin-left:-14px;margin-right:-14px;padding-left:2px;padding-right:2px;}
+  .lesson-card .scene .atom text[font-size="11"],.lesson-card .scene .atom text[font-size="12.5"]{font-size:13.5px;}
+}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">

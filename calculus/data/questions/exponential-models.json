@@ -1,0 +1,522 @@
+{
+ "stimuli": {
+  "exponential-models-s1": {
+   "kind": "table",
+   "title": "A bacteria culture",
+   "table": {
+    "caption": "A culture grows at a rate proportional to its size; two counts",
+    "cols": [
+     "$t$ (hours)",
+     "0",
+     "3"
+    ],
+    "rows": [
+     [
+      "$P(t)$ (bacteria)",
+      "400",
+      "1200"
+     ]
+    ]
+   }
+  },
+  "exponential-models-s2": {
+   "kind": "table",
+   "title": "A medicine leaving the bloodstream",
+   "table": {
+    "caption": "The amount A, in mg, of a medicine in the blood satisfies dA/dt = -0.12A, with t in hours",
+    "cols": [
+     "Quantity",
+     "Value"
+    ],
+    "rows": [
+     [
+      "$\\frac{dA}{dt}$",
+      "$-0.12A$"
+     ],
+     [
+      "$A(0)$",
+      "250 mg"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-exponential-models-1",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-models-s1",
+   "q": "$\\frac{dP}{dt} = kP$. Find the growth constant $k$, exactly.",
+   "numeric": {
+    "answer": "ln(3)/3",
+    "mistakes": [
+     {
+      "value": "2/3",
+      "why": "That is the fraction gained per hour on average, a linear idea. Solve $1200 = 400e^{3k}$: $k = \\frac{\\ln 3}{3}$."
+     },
+     {
+      "value": "ln(1200)/3",
+      "why": "Divide by the starting amount first: $e^{3k} = \\frac{1200}{400} = 3$."
+     },
+     {
+      "value": "ln(3)",
+      "why": "$e^{3k} = 3$ gives $3k = \\ln 3$; divide by 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$1200 = 400e^{3k}$, so $e^{3k} = 3$, $3k = \\ln 3$ and $k = \\frac{\\ln 3}{3} \\approx 0.366$ per hour."
+   }
+  },
+  {
+   "id": "calc-exponential-models-2",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-models-s1",
+   "q": "Write $P(t)$ for the culture.",
+   "expr": {
+    "answer": "400*3^(t/3)",
+    "vars": [
+     "t"
+    ],
+    "domain": [
+     0,
+     6
+    ],
+    "lhs": "P(t) =",
+    "answerTex": "400e^{\\frac{\\ln 3}{3}t} = 400 \\cdot 3^{t/3}",
+    "mistakes": [
+     {
+      "expr": "400e^(t/3)",
+      "why": "$k$ is $\\frac{\\ln 3}{3}$, not $\\frac{1}{3}$: the culture triples, not multiplies by $e$, in 3 hours."
+     },
+     {
+      "expr": "1200e^(ln(3)t/3)",
+      "why": "At $t = 0$ the model must give 400: $y_0 = 400$."
+     },
+     {
+      "expr": "400 + 800t/3",
+      "why": "That is a linear model. A rate proportional to the size gives an exponential."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P(t) = 400e^{\\frac{\\ln 3}{3}t}$, which can also be written $400 \\cdot 3^{t/3}$."
+   }
+  },
+  {
+   "id": "calc-exponential-models-3",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-models-s1",
+   "q": "Use the model to find $P(6)$.",
+   "numeric": {
+    "answer": 3600,
+    "mistakes": [
+     {
+      "value": 2000,
+      "why": "That continues the straight-line pattern (+800 every 3 hours). Exponential growth multiplies: ×3 every 3 hours."
+     },
+     {
+      "value": 2400,
+      "why": "Doubling 1200 is not the pattern; the culture triples every 3 hours."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P(6) = 400e^{2\\ln 3} = 400 \\cdot 9 = 3600$ bacteria: three hours triples, six hours multiplies by 9."
+   }
+  },
+  {
+   "id": "calc-exponential-models-4",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "exponential-models-s1",
+   "q": "How many hours does the culture take to double? Give the exact value.",
+   "numeric": {
+    "answer": "3ln(2)/ln(3)",
+    "mistakes": [
+     {
+      "value": "3/2",
+      "why": "Doubling is not half of tripling time: solve 2 = e^{kt}."
+     },
+     {
+      "value": "ln(2)/3",
+      "why": "Divide $\\ln 2$ by $k = \\frac{\\ln 3}{3}$, not by 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2 = e^{kt}$ gives $t = \\frac{\\ln 2}{k} = \\frac{3\\ln 2}{\\ln 3} \\approx 1.89$ hours."
+   }
+  },
+  {
+   "id": "calc-exponential-models-5",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "exponential-models-s1",
+   "q": "What does $k = \\frac{\\ln 3}{3} \\approx 0.366$ per hour mean for this culture?",
+   "options": [
+    "At each moment, the population grows at about 36.6% of its current size per hour.",
+    "The population grows by about 0.366 bacteria each hour.",
+    "The population triples each hour.",
+    "It is the starting population, in hundreds."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{dP}{dt} = kP$ means the growth rate is $k$ times the current size: about 0.366 of the population per hour.",
+    "options": [
+     "$k = \\frac{dP/dt}{P}$, the rate as a fraction of the amount.",
+     "$k$ is a fraction of the amount, not a count of bacteria.",
+     "It triples every 3 hours.",
+     "The starting population is $P(0) = 400$."
+    ]
+   }
+  },
+  {
+   "id": "calc-exponential-models-6",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-models-s2",
+   "calc": true,
+   "q": "How much medicine remains after 5 hours? Include units.",
+   "numeric": {
+    "answer": 137.20290902350663,
+    "unit": "mg",
+    "askUnit": true,
+    "units": [
+     "milligrams",
+     "milligram"
+    ],
+    "mistakes": [
+     {
+      "value": 455.5297000976272,
+      "why": "The amount is decaying: the exponent is $-0.12 \\cdot 5 = -0.6$."
+     },
+     {
+      "value": 100,
+      "why": "That removes 12% of 250 each hour, a linear model. Use $A = 250e^{-0.12t}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$A(5) = 250e^{-0.12(5)} = 250e^{-0.6} \\approx 137.203$ mg."
+   }
+  },
+  {
+   "id": "calc-exponential-models-7",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-models-s2",
+   "calc": true,
+   "q": "Find the half-life of the medicine. Include units.",
+   "numeric": {
+    "answer": 5.776226504666211,
+    "unit": "hours",
+    "askUnit": true,
+    "units": [
+     "hour",
+     "h",
+     "hr",
+     "hrs"
+    ],
+    "mistakes": [
+     {
+      "value": 4.166666666666667,
+      "why": "Half the amount is not a rate of $0.12$ for half a unit: solve $\\frac{1}{2} = e^{-0.12t}$."
+     },
+     {
+      "value": 0.08317766166719343,
+      "why": "Divide by $k$: $t = \\frac{\\ln 2}{0.12}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$125 = 250e^{-0.12t}$ gives $e^{-0.12t} = \\frac{1}{2}$, so $t = \\frac{\\ln 2}{0.12} \\approx 5.776$ hours."
+   }
+  },
+  {
+   "id": "calc-exponential-models-8",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-models-s2",
+   "calc": true,
+   "q": "When will 50 mg remain? Include units.",
+   "numeric": {
+    "answer": 13.411982603617503,
+    "unit": "hours",
+    "askUnit": true,
+    "units": [
+     "hour",
+     "h",
+     "hr",
+     "hrs"
+    ],
+    "mistakes": [
+     {
+      "value": 32.60019171190122,
+      "why": "Divide by 250 first: $e^{-0.12t} = \\frac{50}{250} = \\frac{1}{5}$."
+     },
+     {
+      "value": 6.666666666666667,
+      "why": "That assumes the medicine leaves at a constant 30 mg per hour. The rate shrinks as A shrinks."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$50 = 250e^{-0.12t}$, so $e^{-0.12t} = 0.2$ and $t = \\frac{\\ln 5}{0.12} \\approx 13.412$ hours."
+   }
+  },
+  {
+   "id": "calc-exponential-models-9",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exponential-models-s2",
+   "calc": true,
+   "q": "Find $\\frac{dA}{dt}$ at $t = 5$ hours. Include units.",
+   "numeric": {
+    "answer": -16.464349082820796,
+    "unit": "mg per hour",
+    "askUnit": true,
+    "units": [
+     "mg/hour",
+     "mg/hr",
+     "mg/h",
+     "milligrams per hour",
+     "mg per hr"
+    ],
+    "mistakes": [
+     {
+      "value": -30,
+      "why": "That is the rate at $t = 0$. Use the amount at $t = 5$: $-0.12 \\cdot A(5)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dA}{dt} = -0.12A(5) = -0.12(137.203\\ldots) \\approx -16.464$ mg per hour: the amount falls by about 16.464 mg per hour at that moment."
+   }
+  },
+  {
+   "id": "calc-exponential-models-10",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which differential equation has the solution $y = 7e^{-2t}$?",
+   "options": [
+    "$\\frac{dy}{dt} = 7y$",
+    "$\\frac{dy}{dt} = -2t$",
+    "$\\frac{dy}{dt} = -14y$",
+    "$\\frac{dy}{dt} = -2y$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For $y = y_0e^{kt}$, $\\frac{dy}{dt} = ky$; here $k = -2$.",
+    "options": [
+     "7 is the starting amount, not the constant k.",
+     "The rate is proportional to y, not to t.",
+     "$-14y = -98e^{-2t}$, seven times too big.",
+     "$\\frac{dy}{dt} = -14e^{-2t} = -2y$."
+    ]
+   }
+  },
+  {
+   "id": "calc-exponential-models-11",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A quantity satisfies $\\frac{dy}{dt} = 0.08y$ and $y(0) = 50$. Which is $y(t)$?",
+   "options": [
+    "$y = 0.08e^{50t}$",
+    "$y = 50 + e^{0.08t}$",
+    "$y = 50e^{0.08t}$",
+    "$y = 50e^{-0.08t}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{dy}{dt} = ky$ with $y(0) = y_0$ gives $y = y_0e^{kt} = 50e^{0.08t}$.",
+    "options": [
+     "The starting value and the constant are swapped.",
+     "At $t = 0$ this is 51, and its rate is not $0.08y$.",
+     "$y = y_0e^{kt}$ with $y_0 = 50$, $k = 0.08$.",
+     "$k = +0.08$: growth, not decay."
+    ]
+   }
+  },
+  {
+   "id": "calc-exponential-models-12",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town's population $P$ satisfies $\\frac{dP}{dt} = kP$, with $t$ in years. What are the units of $k$?",
+   "options": [
+    "people per year",
+    "per year",
+    "years",
+    "people"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$k = \\frac{dP/dt}{P}$: (people per year) ÷ people = per year.",
+    "options": [
+     "That is the unit of $\\frac{dP}{dt}$; dividing by $P$ removes \"people\".",
+     "$\\frac{dP}{dt}$ is people per year and $P$ is people, so $k$ is $\\frac{1}{\\text{year}}$.",
+     "$k \\cdot t$ must have no units, so $k$ is per year.",
+     "k multiplies P to give a rate, so it carries \"per year\"."
+    ]
+   }
+  },
+  {
+   "id": "calc-exponential-models-13",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A pie at 90 °F cools in a 20 °F freezer: $T - 20 = 70e^{kt}$, $t$ in minutes. After 10 minutes it is at 55 °F. Find $k$ exactly.",
+   "numeric": {
+    "answer": "-ln(2)/10",
+    "mistakes": [
+     {
+      "value": "ln(55/90)/10",
+      "why": "The model is exponential in $T - 20$: use $55 - 20 = 35$ and $70$, not 55 and 90."
+     },
+     {
+      "value": "ln(2)/10",
+      "why": "$e^{10k} = \\frac{1}{2}$, so $k$ is negative: the pie cools."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$35 = 70e^{10k}$, so $e^{10k} = \\frac{1}{2}$ and $k = \\frac{\\ln(1/2)}{10} = -\\frac{\\ln 2}{10}$ per minute."
+   }
+  },
+  {
+   "id": "calc-exponential-models-14",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$\\frac{dy}{dt} = ky$ with $k < 0$ and $y(0) = 40$. Which describes $y$ for $t > 0$?",
+   "options": [
+    "It reaches 0 at $t = -\\frac{1}{k}$.",
+    "It decreases by the same amount each hour.",
+    "It becomes negative after one half-life.",
+    "It decreases toward 0 and stays positive."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$y = 40e^{kt}$ with $k < 0$: positive, decreasing, approaching 0.",
+    "options": [
+     "An exponential is never 0.",
+     "It loses the same <i>fraction</i>, so the amount lost shrinks.",
+     "After one half-life it is 20.",
+     "$y = 40e^{kt} > 0$, and $e^{kt} \\to 0$ as $t \\to \\infty$."
+    ]
+   }
+  },
+  {
+   "id": "calc-exponential-models-15",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A culture doubles every 5 hours and grows at a rate proportional to its size. Find $k$, exactly, in $\\frac{dP}{dt} = kP$.",
+   "numeric": {
+    "answer": "ln(2)/5",
+    "mistakes": [
+     {
+      "value": "2/5",
+      "why": "$e^{5k} = 2$ means $5k = \\ln 2$, not $2$."
+     },
+     {
+      "value": "5/ln(2)",
+      "why": "That is upside down: $k = \\frac{\\ln 2}{5}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2P_0 = P_0e^{5k}$, so $5k = \\ln 2$ and $k = \\frac{\\ln 2}{5} \\approx 0.139$ per hour."
+   }
+  },
+  {
+   "id": "calc-exponential-models-16",
+   "unit": "unit-7",
+   "topic": "exponential-models",
+   "type": "multi",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statements about $y = 300e^{-0.2t}$ are true? Select all that apply.",
+   "options": [
+    "$y(0) = 300$",
+    "$\\frac{dy}{dt} = -0.2y$",
+    "$y$ halves each 0.2 time units.",
+    "The rate of change at $t = 5$ is $-60$."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "$y_0 = 300$ and $k = -0.2$; the rate is $-0.2y$, which shrinks as $y$ shrinks.",
+    "options": [
+     "$e^0 = 1$.",
+     "$\\frac{dy}{dt} = -60e^{-0.2t} = -0.2y$.",
+     "The half-life is $\\frac{\\ln 2}{0.2} \\approx 3.47$.",
+     "$-60$ is the rate at $t = 0$; at $t = 5$ it is $-60e^{-1} \\approx -22.07$."
+    ]
+   }
+  }
+ ]
+}

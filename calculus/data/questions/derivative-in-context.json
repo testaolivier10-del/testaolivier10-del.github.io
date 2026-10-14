@@ -1,0 +1,538 @@
+{
+ "stimuli": {
+  "derivative-in-context-s1": {
+   "kind": "table",
+   "title": "Depth of snow on a deck",
+   "table": {
+    "caption": "Depth D(t) of snow on a deck, in centimeters, at selected times t, in hours after the snow began",
+    "cols": [
+     "$t$ (hours)",
+     "$0$",
+     "$2$",
+     "$5$",
+     "$6$",
+     "$10$"
+    ],
+    "rows": [
+     [
+      "$D(t)$ (centimeters)",
+      "$12.0$",
+      "$15.2$",
+      "$20.0$",
+      "$21.1$",
+      "$24.0$"
+     ]
+    ]
+   }
+  },
+  "derivative-in-context-s2": {
+   "kind": "graph",
+   "title": "A growing population of bacteria",
+   "plot": {
+    "label": "Graph of P(t) = 0.5 t squared + 1, the number of bacteria in thousands, for t from 0 to 6 hours, with the tangent line at t = 3 passing through (3, 5.5) and (5, 11.5)",
+    "x": [
+     -0.5,
+     6.5
+    ],
+    "y": [
+     -1,
+     16
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "t (hours)",
+    "yLabel": "P (thousands)",
+    "curves": [
+     {
+      "fn": "0.5x^2 + 1",
+      "domain": [
+       0,
+       5.5
+      ],
+      "label": "P"
+     }
+    ],
+    "lines": [
+     {
+      "through": [
+       [
+        3,
+        5.5
+       ],
+       [
+        5,
+        11.5
+       ]
+      ],
+      "cls": "s2",
+      "dashed": true
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       3,
+       5.5
+      ],
+      "label": "(3, 5.5)"
+     },
+     {
+      "at": [
+       5,
+       11.5
+      ],
+      "label": "(5, 11.5)"
+     },
+     {
+      "at": [
+       1,
+       1.5
+      ],
+      "label": "(1, 1.5)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-derivative-in-context-1",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "$D$ is differentiable. Use the data in the table to estimate $D'(5.5)$. Include units.",
+   "stimulus": "derivative-in-context-s1",
+   "numeric": {
+    "answer": 1.1,
+    "unit": "centimeters per hour",
+    "askUnit": true,
+    "units": [
+     "cm/hr",
+     "cm/h",
+     "centimeters per hour",
+     "cm per hr"
+    ],
+    "mistakes": [
+     {
+      "value": -1.1,
+      "why": "The subtraction is reversed. Later minus earlier, over later minus earlier: $\\frac{21.1 - 20.0}{6 - 5}$."
+     },
+     {
+      "value": 1.2,
+      "why": "That is the average rate over the whole table, $\\frac{24 - 12}{10}$. Use the closest times on each side of 5.5."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Use the two times that straddle 5.5: $D'(5.5) \\approx \\frac{D(6) - D(5)}{6 - 5} = \\frac{21.1 - 20.0}{1} = 1.1$ centimeters per hour."
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-2",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What are the units of $D'(t)$?",
+   "stimulus": "derivative-in-context-s1",
+   "options": [
+    "centimeters per hour",
+    "centimeters",
+    "hours per centimeter",
+    "centimeters times hours"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A derivative is a change in output over a change in input: $\\frac{\\text{cm}}{\\text{hr}}$, centimeters per hour.",
+    "options": [
+     "Output units (centimeters) per input unit (hours).",
+     "Those are the units of $D(t)$, the depth itself.",
+     "The ratio is upside down: the output change goes on top.",
+     "A rate divides the output units by the input units."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-3",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Estimate $D'(8)$ using the table. Include units.",
+   "stimulus": "derivative-in-context-s1",
+   "numeric": {
+    "answer": 0.725,
+    "unit": "centimeters per hour",
+    "askUnit": true,
+    "units": [
+     "cm/hr",
+     "cm/h",
+     "centimeters per hour",
+     "cm per hr"
+    ],
+    "mistakes": [
+     {
+      "value": 2.9,
+      "why": "That is the change in depth, $24.0 - 21.1$. Divide by the change in time, $10 - 6 = 4$ hours."
+     },
+     {
+      "value": 1.45,
+      "why": "The interval from $t = 6$ to $t = 10$ is 4 hours wide, not 2; the table's widths are unequal."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$D'(8) \\approx \\frac{D(10) - D(6)}{10 - 6} = \\frac{24.0 - 21.1}{4} = \\frac{2.9}{4} = 0.725$ centimeters per hour."
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-4",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "From the table, $D'(3) \\approx 1.6$. Which is the best interpretation?",
+   "stimulus": "derivative-in-context-s1",
+   "options": [
+    "In the first 3 hours, the depth of the snow increased by about 1.6 centimeters",
+    "At 3 hours, the depth of the snow is increasing at about 1.6 centimeters per hour",
+    "At 3 hours, the snow on the deck is about 1.6 centimeters deep",
+    "Over the first 3 hours, the snow fell at an average of 1.6 centimeters per hour"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An interpretation names the instant, the quantity, whether it increases or decreases, and the units: at $t = 3$ hours the depth is increasing at about 1.6 cm per hour.",
+    "options": [
+     "That describes a change over an interval, in centimeters; $D'(3)$ is a rate at $t = 3$.",
+     "A derivative is a rate at one instant, with units of depth per time.",
+     "That would be $D(3)$, a depth; the table puts the depth between 15.2 and 20 centimeters then.",
+     "$D'(3)$ is the rate at the instant $t = 3$, not an average from 0 to 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-5",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph shows the number of bacteria $P(t)$, in thousands, $t$ hours after a culture started, and the line tangent to the graph at $t = 3$. Find $P'(3)$ with units.",
+   "stimulus": "derivative-in-context-s2",
+   "numeric": {
+    "answer": 3,
+    "unit": "thousand bacteria per hour",
+    "askUnit": true,
+    "units": [
+     "thousand bacteria/hr",
+     "thousand bacteria per hr",
+     "thousands of bacteria per hour",
+     "thousand per hour",
+     "thousand/hr"
+    ],
+    "mistakes": [
+     {
+      "value": 5.5,
+      "why": "That is $P(3)$, the height of the graph. $P'(3)$ is the slope of the tangent line."
+     },
+     {
+      "value": 2,
+      "why": "That is the average rate from $t = 1$ to $t = 3$, the slope of a secant line, not of the tangent line."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P'(3)$ is the slope of the tangent line: $\\frac{11.5 - 5.5}{5 - 3} = 3$ thousand bacteria per hour."
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-6",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does $P'(3)$ compare with the average rate of change of $P$ from $t = 1$ to $t = 3$?",
+   "stimulus": "derivative-in-context-s2",
+   "options": [
+    "$P'(3)$ equals the average rate, since both use $t = 3$",
+    "$P'(3)$ is less than the average rate, which is $4$",
+    "$P'(3)$ is greater: 3 versus an average of 2",
+    "They are not comparable, because their units differ"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The slope of the tangent line is 3; the secant from $(1, 1.5)$ to $(3, 5.5)$ has slope 2. The population grows faster at $t = 3$ than on average before it.",
+    "options": [
+     "The average rate is the slope of a secant line through two points; it is 2, not 3.",
+     "That divides $5.5 - 1.5 = 4$ by 1 instead of by 2 hours.",
+     "The average rate is $\\frac{5.5 - 1.5}{3 - 1} = 2$.",
+     "Both are in thousand bacteria per hour."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-7",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement interprets $P'(3) = 3$ correctly?",
+   "stimulus": "derivative-in-context-s2",
+   "options": [
+    "After 3 hours, there are 3 thousand bacteria",
+    "Each hour, the population triples",
+    "During the first 3 hours, a total of 3 thousand bacteria were added to the culture",
+    "At 3 hours, the population is growing at 3 thousand bacteria per hour"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$P'(3) = 3$ means that at $t = 3$ hours the number of bacteria is increasing at 3 thousand bacteria per hour.",
+    "options": [
+     "That would mean $P(3) = 3$; the graph shows $P(3) = 5.5$.",
+     "The derivative measures a rate of change in thousands per hour, not a growth factor.",
+     "That is a total change over an interval; $P'(3)$ is a rate at one instant.",
+     "Instant, quantity, direction and units are all named."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-8",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which of these quantities has units of thousands of bacteria, not thousands of bacteria per hour?",
+   "stimulus": "derivative-in-context-s2",
+   "options": [
+    "$P(3)$",
+    "$P'(3)$",
+    "The slope of the tangent line at $t = 3$",
+    "$\\frac{P(5) - P(3)}{5 - 3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Values of $P$ are counts (thousands); slopes, derivatives and difference quotients are rates (thousands per hour).",
+    "options": [
+     "A value of $P$ is a number of bacteria, in thousands.",
+     "A derivative of $P$ is a rate, in thousands per hour.",
+     "A slope on this graph is thousands per hour.",
+     "A change in $P$ divided by a time is a rate."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-9",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The volume of a balloon is $V(r)$ cubic centimeters when its radius is $r$ centimeters. What are the units of $V'(r)$?",
+   "options": [
+    "cubic centimeters",
+    "cubic centimeters per centimeter",
+    "centimeters per cubic centimeter",
+    "cubic centimeters per second"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$V'(r) = \\frac{dV}{dr}$ has units of $V$ over units of $r$: cubic centimeters per centimeter.",
+    "options": [
+     "Those are the units of $V(r)$.",
+     "Output units (cm³) per input unit (cm).",
+     "That is the reciprocal: the output change goes on top.",
+     "The input here is the radius, not time."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-10",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "$W(t)$ is the number of liters of water in a tank $t$ minutes after noon. What does $W'(20) = -4$ mean?",
+   "options": [
+    "At 12:20 there are 4 liters of water in the tank",
+    "In the first 20 minutes the tank lost 4 liters",
+    "At 12:20 the volume is decreasing at 4 liters per minute",
+    "At 12:20 the amount of water is decreasing at 4 minutes per liter"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$W'(20) = -4$ liters per minute: at $t = 20$ minutes the volume is decreasing at 4 liters per minute.",
+    "options": [
+     "That would be $W(20) = 4$.",
+     "That is a change over an interval; $W'(20)$ is a rate at one instant.",
+     "A negative rate means the amount is going down.",
+     "The units are upside down: liters per minute."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-11",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$C(x)$ is the cost, in dollars, of producing $x$ bicycles. What does $C'(100) = 85$ tell you?",
+   "options": [
+    "Producing 100 bicycles costs 85 dollars",
+    "Each of the first 100 bicycles cost 85 dollars",
+    "The cost goes up by 85 dollars for each 100 bicycles",
+    "Producing one more bicycle after the 100th costs about 85 dollars"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$C'(100)$ is in dollars per bicycle. Near $x = 100$, one more bicycle adds about 85 dollars to the cost.",
+    "options": [
+     "That would be $C(100) = 85$.",
+     "That is an average over 100 bicycles, not the rate at $x = 100$.",
+     "The rate is per one bicycle, the input unit.",
+     "A rate of 85 dollars per bicycle near $x = 100$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-12",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A ball is thrown upward. Its height is $h(t) = 40t - 5t^2$ meters, $t$ seconds after the throw. Find $h'(2)$ with units.",
+   "numeric": {
+    "answer": 20,
+    "unit": "meters per second",
+    "askUnit": true,
+    "units": [
+     "m/s",
+     "meters/second",
+     "meter per second",
+     "m per s"
+    ],
+    "mistakes": [
+     {
+      "value": 60,
+      "why": "That is $h(2) = 80 - 20$, the height. The question asks for the rate of change."
+     },
+     {
+      "value": 30,
+      "why": "The derivative of $5t^2$ is $10t$, which is 20 at $t = 2$: $40 - 20 = 20$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h'(t) = 40 - 10t$, so $h'(2) = 20$ meters per second: at $t = 2$ the ball is rising at 20 meters per second."
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-13",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A square has side $s$ centimeters and area $A(s) = s^2$ square centimeters. Find $A'(5)$ with units.",
+   "numeric": {
+    "answer": 10,
+    "unit": "square centimeters per centimeter",
+    "askUnit": true,
+    "units": [
+     "cm",
+     "square centimeters per centimeter",
+     "cm^2/cm",
+     "centimeters"
+    ],
+    "mistakes": [
+     {
+      "value": 25,
+      "why": "That is $A(5)$, the area. The derivative is $A'(5) = 2(5)$."
+     },
+     {
+      "value": 5,
+      "why": "The derivative of $s^2$ is $2s$, not $s$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$A'(s) = 2s$, so $A'(5) = 10$ square centimeters per centimeter: near $s = 5$, the area grows about 10 cm² for each extra centimeter of side."
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-14",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$H(t)$ is the height, in feet, of a tree $t$ years after it was planted. Which statement means the same as $H'(4) > H'(8)$?",
+   "options": [
+    "The tree was growing faster at 4 years than at 8 years",
+    "The tree was taller at 4 years than at 8 years",
+    "The tree grew more from year 4 to year 8 than before year 4",
+    "The tree was shrinking between 4 and 8 years"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$H'(t)$ is a growth rate, measured in feet per year. $H'(4) > H'(8)$ says the tree grew faster at 4 years than at 8 years.",
+    "options": [
+     "Derivatives compare rates of growth, in feet per year.",
+     "That compares heights, $H(4) > H(8)$.",
+     "That compares changes over intervals, not rates at two instants.",
+     "Both rates may be positive; one is just smaller."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivative-in-context-15",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "$W(t)$ is the weight, in kilograms, of a calf $t$ days after birth, and $W'(10) = 0.8$. About how much weight does the calf gain from day 10 to day 12?",
+   "options": [
+    "About 0.8 kilograms",
+    "About 1.6 kilograms",
+    "About 8 kilograms",
+    "About 9.6 kilograms"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Over a short time, change $\\approx$ rate $\\times$ time: $0.8 \\text{ kg per day} \\times 2 \\text{ days} = 1.6$ kg.",
+    "options": [
+     "That is one day's worth at this rate; the interval is 2 days.",
+     "0.8 kilograms per day for 2 days.",
+     "That multiplies by 10, the day number, instead of by the 2 days that pass.",
+     "That multiplies by 12 instead of by the 2-day change in time."
+    ]
+   }
+  }
+ ]
+}

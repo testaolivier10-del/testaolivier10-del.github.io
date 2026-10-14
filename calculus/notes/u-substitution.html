@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrating by Substitution — AP® Calculus AB Notes</title>
+<meta name="description" content="The basic rules handle cos x and x⁵ , but not 2xcos (x²) or x(1 + x²)³ .">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/u-substitution.html">
+<meta property="og:title" content="Integrating by Substitution — AP® Calculus AB Notes">
+<meta property="og:description" content="The basic rules handle cos x and x⁵ , but not 2xcos (x²) or x(1 + x²)³ .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/u-substitution.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/u-substitution.html#reading",
+      "name": "Integrating by Substitution",
+      "url": "https://levlprep.com/calculus/notes/u-substitution.html",
+      "description": "The basic rules handle cos x and x⁵ , but not 2xcos (x²) or x(1 + x²)³ .",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "integrating by substitution ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Integration and Accumulation of Change",
+          "item": "https://levlprep.com/calculus/units/unit-6.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Integrating by Substitution: notes",
+          "item": "https://levlprep.com/calculus/notes/u-substitution.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="u-substitution" data-unit="unit-6">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 6 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Analytical Applications of Differentiation</a>
+    <a class="bk-toc-chap" href="../units/unit-6.html"><span class="bk-toc-chap-n">6</span><span><b>Integration and Accumulation of Change</b><small>11 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-6"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="accumulation-of-change"><a href="accumulation-of-change.html"><span class="bk-toc-n">6.1</span>Accumulating Change</a></li><li data-toc-t="riemann-sums"><a href="riemann-sums.html"><span class="bk-toc-n">6.2</span>Estimating Area with Riemann Sums</a></li><li data-toc-t="definite-integral-notation"><a href="definite-integral-notation.html"><span class="bk-toc-n">6.3</span>Riemann Sums, Sigma Notation and the Definite Integral</a></li><li data-toc-t="ftc-accumulation"><a href="ftc-accumulation.html"><span class="bk-toc-n">6.4</span>The Fundamental Theorem and Accumulation Functions</a></li><li data-toc-t="accumulation-behavior"><a href="accumulation-behavior.html"><span class="bk-toc-n">6.5</span>Behavior of Accumulation Functions</a></li><li data-toc-t="integral-properties"><a href="integral-properties.html"><span class="bk-toc-n">6.6</span>Properties of Definite Integrals</a></li><li data-toc-t="ftc-definite-integrals"><a href="ftc-definite-integrals.html"><span class="bk-toc-n">6.7</span>The Fundamental Theorem and Definite Integrals</a></li><li data-toc-t="antiderivatives"><a href="antiderivatives.html"><span class="bk-toc-n">6.8</span>Antiderivatives and Indefinite Integrals</a></li><li class="current" data-toc-t="u-substitution"><a href="#main" aria-current="page"><span class="bk-toc-n">6.9</span>Integrating by Substitution</a><div class="bk-toc-onpage"><p>On this page</p><a href="#spotting-the-chain-rule-in-an">Spotting the chain rule in an integrand</a><a href="#the-method">The method</a><a href="#linear-inside-functions">Linear inside functions</a><a href="#definite-integrals-change-the-limits">Definite integrals: change the limits</a><a href="#substitution-with-tables">Substitution with tables</a><a href="#choosing-u">Choosing u</a></div></li><li data-toc-t="rewriting-integrands"><a href="rewriting-integrands.html"><span class="bk-toc-n">6.10</span>Integrating by Long Division and Completing the Square</a></li><li data-toc-t="choosing-integration-methods"><a href="choosing-integration-methods.html"><span class="bk-toc-n">6.14</span>Choosing an Antidifferentiation Technique</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Differential Equations</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-6.html">Integration and Accumulation of Change</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Integrating by Substitution: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/u-substitution.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 6 &middot; Topic 6.9 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Integrating by Substitution</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="u-substitution">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fu-substitution.html&amp;title=Integrating%20by%20Substitution%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/u-substitution.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>The basic rules handle <math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\cos x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">x^5</annotation></semantics></math>, but not <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2x\cos(x^2)</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo stretchy="false">)</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">x(1 + x^2)^3</annotation></semantics></math>. Those integrands came from the <a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a>, and <b><span class="gl" tabindex="0" data-c="u-substitution">u-substitution</span></b> is the chain rule run backward.</p>
+
+<h2 id="spotting-the-chain-rule-in-an">Spotting the chain rule in an integrand</h2>
+<p>By the chain rule, <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\sin(x^2)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>⋅</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">= \cos(x^2) \cdot 2x</annotation></semantics></math>. So</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mn>2</mn><mi>x</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>+</mo><mi>C</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">\int 2x\cos(x^2)\,dx = \sin(x^2) + C.</annotation></semantics></math></p>
+<p>The pattern: an <i>inside <a class="gl" href="../notes/math-functions.html" data-c="function">function</a></i> <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">g(x) = x^2</annotation></semantics></math>, an outside function applied to it, and the inside's <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> <math class="calc-m"><semantics><mrow><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">g'(x) = 2x</annotation></semantics></math> as a factor. Whenever you see <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(g(x))\,g'(x)</annotation></semantics></math>, the answer is <math class="calc-m"><semantics><mrow><mi>F</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">F(g(x)) + C</annotation></semantics></math>, where <math class="calc-m"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math> is an <a class="gl" href="../notes/ftc-accumulation.html" data-c="antiderivative">antiderivative</a> of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math>.</p>
+
+<h2 id="the-method">The method</h2>
+<ol>
+<li>Choose <math class="calc-m"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math>: an inside function whose derivative is also in the <a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">integrand</a> (up to a constant factor).</li>
+<li>Find <math class="calc-m"><semantics><mrow><mi>d</mi><mi>u</mi><mo>=</mo><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">du = g'(x)\,dx</annotation></semantics></math>.</li>
+<li>Rewrite the <i>whole</i> integral in <math class="calc-m"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math>. No <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> may remain.</li>
+<li>Integrate in <math class="calc-m"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math>, then substitute <math class="calc-m"><semantics><mrow><mi>u</mi><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u = g(x)</annotation></semantics></math> back.</li>
+<li>Check by differentiating.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Find <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mfrac><mi>x</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow></mfrac><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int \frac{x}{x^2 + 4}\,dx</annotation></semantics></math>.</p>
+<p>Inside: <math class="calc-m"><semantics><mrow><mi>u</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">u = x^2 + 4</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>d</mi><mi>u</mi><mo>=</mo><mn>2</mn><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">du = 2x\,dx</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>d</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">x\,dx = \frac{1}{2}du</annotation></semantics></math>.</p>
+<p>Rewrite: <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mfrac><mn>1</mn><mi>u</mi></mfrac><mo>⋅</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mspace width="0.1667em"></mspace><mi>d</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\int \frac{1}{u}\cdot\frac{1}{2}\,du</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>u</mi><mo stretchy="false">|</mo><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">= \frac{1}{2}\ln|u| + C</annotation></semantics></math>.</p>
+<p>Back to <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\frac{1}{2}\ln(x^2 + 4) + C</annotation></semantics></math> (no absolute value needed: <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x^2 + 4 &gt; 0</annotation></semantics></math>).</p>
+<p>Check: <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><mo fence="true" stretchy="true">[</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\left[\frac{1}{2}\ln(x^2 + 4)\right]</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⋅</mo><mfrac><mrow><mn>2</mn><mi>x</mi></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{2}\cdot\frac{2x}{x^2 + 4}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mi>x</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{x}{x^2 + 4}</annotation></semantics></math>.</p>
+</div>
+<p>A missing constant factor is fine: multiply and divide by it, as with the <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math> above. A missing <i>variable</i> factor is not: <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>5</mn></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int (x^2 + 1)^5\,dx</annotation></semantics></math> has no <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> to match <math class="calc-m"><semantics><mrow><mi>d</mi><mi>u</mi><mo>=</mo><mn>2</mn><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">du = 2x\,dx</annotation></semantics></math>, so substitution fails (expand the power instead).</p>
+
+<h2 id="linear-inside-functions">Linear inside functions</h2>
+<p>When the inside is <math class="calc-m"><semantics><mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">kx</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mi>k</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">kx + b</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>d</mi><mi>u</mi><mo>=</mo><mi>k</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">du = k\,dx</annotation></semantics></math>, so the rule is just "divide by <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math>":</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><msup><mi>e</mi><mrow><mn>3</mn><mi>x</mi></mrow></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><msup><mi>e</mi><mrow><mn>3</mn><mi>x</mi></mrow></msup><mo>+</mo><mi>C</mi><mo>,</mo><mspace width="2em"></mspace><mo largeop="true" movablelimits="false">∫</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>5</mn><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mfrac><mn>1</mn><mn>5</mn></mfrac><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>5</mn><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><mi>C</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">\int e^{3x}\,dx = \frac{1}{3}e^{3x} + C, \qquad \int \cos(5x)\,dx = \frac{1}{5}\sin(5x) + C.</annotation></semantics></math></p>
+<p>Check by differentiating: the chain rule puts the <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> back.</p>
+
+<h2 id="definite-integrals-change-the-limits">Definite integrals: change the limits</h2>
+<figure id="fig-usub"  class="calc-figure"><div class="calc-figimg" data-fig="u-sub-areas"><img src="../figures/u-sub-areas.svg" alt="Left: the graph of y = 2x cos(x squared) from x = 0 to the square root of pi/2, about 1.25, with the region under it shaded; its area is 1. Right: the graph of y = cos u from u = 0 to pi/2, with the region under it shaded; its area is also 1. With u = x squared, the x-limits become the u-limits." width="760" height="380" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Same area, new variable, new limits. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>In a definite integral, the <a class="gl" href="../notes/limit-notation.html" data-c="limit">limits</a> are values of the variable. When the variable changes from <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math>, the limits must change too: <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math> becomes <math class="calc-m"><semantics><mrow><mi>u</mi><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u = g(a)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">x = b</annotation></semantics></math> becomes <math class="calc-m"><semantics><mrow><mi>u</mi><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u = g(b)</annotation></semantics></math>. <a class="figref" href="#fig-usub">The figure</a> shows the idea: the region under <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2x\cos(x^2)</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><msqrt><mrow><mi>π</mi><mo>/</mo><mn>2</mn></mrow></msqrt><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, \sqrt{\pi/2}]</annotation></semantics></math> and the region under <math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">\cos u</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, \frac{\pi}{2}]</annotation></semantics></math> have the same area.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Evaluate <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>1</mn></msubsup><mi>x</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo stretchy="false">)</mo><mn>3</mn></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_0^1 x(1 + x^2)^3\,dx</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>u</mi><mo>=</mo><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">u = 1 + x^2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>d</mi><mi>u</mi><mo>=</mo><mn>2</mn><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">du = 2x\,dx</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>d</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">x\,dx = \frac{1}{2}du</annotation></semantics></math>.</p>
+<p>Limits: <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>→</mo><mi>u</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 0 \to u = 1</annotation></semantics></math>; <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn><mo>→</mo><mi>u</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 1 \to u = 2</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>1</mn><mn>2</mn></msubsup><msup><mi>u</mi><mn>3</mn></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\frac{1}{2}\int_1^2 u^3\,du</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⋅</mo><mfrac><msup><mi>u</mi><mn>4</mn></msup><mn>4</mn></mfrac><msubsup><mo stretchy="true" symmetric="true" minsize="1.8em" maxsize="1.8em">|</mo><mn>1</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">= \frac{1}{2}\cdot\frac{u^4}{4}\Big|_1^2</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>8</mn></mfrac><mo stretchy="false">(</mo><mn>16</mn><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= \frac{1}{8}(16 - 1)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>15</mn><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{15}{8}</annotation></semantics></math>.</p>
+<p>The common wrong answer, <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{8}</annotation></semantics></math>, comes from evaluating <math class="calc-m"><semantics><mrow><mfrac><msup><mi>u</mi><mn>4</mn></msup><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{u^4}{8}</annotation></semantics></math> at the old limits 0 and 1.</p>
+</div>
+<p>Write the <math class="calc-m"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math>-limits on the integral sign as soon as you change variables. Mixing a <math class="calc-m"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math>-integrand with <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-limits is a linkage error the scoring guidelines penalize.</p>
+
+<h2 id="substitution-with-tables">Substitution with tables</h2>
+<p>The same idea works with functions given only by values. Since <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{d}{dx}f(g(x))</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= f'(g(x))g'(x)</annotation></semantics></math>,</p>
+<p><math class="calc-m" display="block"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>1</mn><mn>3</mn></msubsup><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">\int_1^3 f'(g(x))\,g'(x)\,dx = f(g(3)) - f(g(1)).</annotation></semantics></math></p>
+<p>Read <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(3)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(1)</annotation></semantics></math> from the table first, then <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> at those inputs.</p>
+
+<h2 id="choosing-u">Choosing u</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Integrand</th><th>Choose u</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2x\cos(x^2)</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\sin(x^2) + C</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>sin</mi><mn>3</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin^3 x\cos x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>sin</mi><mn>4</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mn>4</mn></mfrac><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\frac{\sin^4 x}{4} + C</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{\ln x}{x}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\ln x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\frac{(\ln x)^2}{2} + C</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><msup><mi>e</mi><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">g'(x)e^{g(x)}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(x)</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></msup><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">e^{g(x)} + C</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:u-substitution">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="antiderivatives.html"><span>&larr; Previous</span><b>Antiderivatives and Indefinite Integrals</b></a><a class="tb-chapter-link next" href="rewriting-integrands.html"><span>Next &rarr;</span><b>Integrating by Long Division and Completing the Square</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:u-substitution">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

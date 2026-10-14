@@ -1,0 +1,7 @@
+{
+ "washer-solid-line": {
+  "file": "figures/washer-solid-line.svg", "ext": "svg", "w": 760, "h": 440,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Left: the region between y = √x and y = 1 from x = 1 to 4, with the line y = −1 dashed below it as the axis of rotation, and arrows from the axis to the thin rectangle: the outer radius R up to the curve and the inner radius r up to the line y = 1. Right: the solid made by revolving the region about y = −1, a flared horn with a hole of radius 2 around the axis, with one washer highlighted in blue: R = √x + 1 and r = 2. Below: V = the integral from 1 to 4 of π[(√x + 1)² − 2²] dx = 47π/6."
+ }
+}

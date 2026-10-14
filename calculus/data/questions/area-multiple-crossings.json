@@ -1,0 +1,583 @@
+{
+ "stimuli": {
+  "area-multiple-crossings-s1": {
+   "kind": "graph",
+   "title": "The graphs of $f(x) = x^3 - 3x^2$ and $g(x) = -2x$ for $0 \\le x \\le 3$",
+   "plot": {
+    "label": "The cubic f(x) = x³ − 3x² and the line g(x) = −2x for x from 0 to 3. They cross at (0, 0), (1, −2) and (2, −4). The region between them from x = 0 to x = 3 is shaded in three pieces.",
+    "x": [
+     -0.4,
+     3.4
+    ],
+    "y": [
+     -7,
+     1.5
+    ],
+    "xStep": 0.5,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^3 - 3x^2",
+      "domain": [
+       -0.4,
+       3.25
+      ],
+      "cls": "s1",
+      "label": "f"
+     },
+     {
+      "fn": "-2x",
+      "domain": [
+       -0.4,
+       3.4
+      ],
+      "cls": "s2",
+      "label": "g"
+     }
+    ],
+    "shade": [
+     {
+      "fn": "x^3 - 3x^2",
+      "fn2": "-2x",
+      "domain": [
+       0,
+       3
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       0
+      ]
+     },
+     {
+      "at": [
+       1,
+       -2
+      ],
+      "label": "(1, −2)"
+     },
+     {
+      "at": [
+       2,
+       -4
+      ],
+      "label": "(2, −4)"
+     }
+    ],
+    "lines": [
+     {
+      "through": [
+       [
+        3,
+        -7
+       ],
+       [
+        3,
+        1.5
+       ]
+      ],
+      "dashed": true,
+      "cls": "s3",
+      "label": "x = 3"
+     }
+    ]
+   }
+  },
+  "area-multiple-crossings-s2": {
+   "kind": "graph",
+   "title": "The graphs of $f(x) = x^3 - 2x$ and $g(x) = \\cos x$",
+   "plot": {
+    "label": "The cubic f(x) = x³ − 2x and the curve g(x) = cos x for x from −2 to 2. They cross three times, near x = −1.36, x = −0.50 and x = 1.44. The region between the first and last crossings is shaded: f is on top in the left piece and g is on top in the right piece.",
+    "x": [
+     -2,
+     2
+    ],
+    "y": [
+     -3,
+     3
+    ],
+    "xStep": 0.5,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^3 - 2x",
+      "domain": [
+       -1.8932891963044978,
+       1.8932891963044978
+      ],
+      "cls": "s1",
+      "label": "f"
+     },
+     {
+      "fn": "cos(x)",
+      "domain": [
+       -2,
+       2
+      ],
+      "cls": "s2",
+      "label": "g"
+     }
+    ],
+    "shade": [
+     {
+      "fn": "x^3 - 2x",
+      "fn2": "cos(x)",
+      "domain": [
+       -1.358168763828611,
+       -0.5014946791573105
+      ]
+     },
+     {
+      "fn": "cos(x)",
+      "fn2": "x^3 - 2x",
+      "domain": [
+       -0.5014946791573105,
+       1.44467052169187
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-area-multiple-crossings-1",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "area-multiple-crossings-s1",
+   "q": "Solve $f(x) = g(x)$ to find where the graphs cross on $[0, 3]$.",
+   "options": [
+    "$x = 0$, $x = 1$ and $x = 2$",
+    "$x = 0$ and $x = 3$",
+    "$x = 0$ and $x = 2$",
+    "$x = 1$, $x = 2$ and $x = 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x^3 - 3x^2 = -2x$ gives $x^3 - 3x^2 + 2x = x(x - 1)(x - 2) = 0$.",
+    "options": [
+     "All three roots of $x(x - 1)(x - 2)$ lie in $[0, 3]$.",
+     "At $x = 3$, $f(3) = 0$ and $g(3) = -6$: the graphs do not meet there. $x = 3$ is a boundary of the region, not a crossing.",
+     "This misses $x = 1$, where $f(1) = -2 = g(1)$.",
+     "$x = 3$ is not a crossing, and $x = 0$ is: $f(0) = g(0) = 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-2",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "area-multiple-crossings-s1",
+   "q": "On which interval is $g(x) \\ge f(x)$?",
+   "options": [
+    "$[1, 2]$",
+    "$[0, 1]$",
+    "$[2, 3]$",
+    "$[0, 2]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Test $x = 1.5$: $f(1.5) = 3.375 - 6.75 = -3.375$ and $g(1.5) = -3$, so $g$ is on top between the crossings at 1 and 2.",
+    "options": [
+     "Between 1 and 2 the line is above the cubic.",
+     "At $x = 0.5$, $f = -0.625$ and $g = -1$, so $f$ is on top there.",
+     "At $x = 2.5$, $f = -3.125$ and $g = -5$, so $f$ is on top there.",
+     "The graphs swap at $x = 1$, so $g$ is not on top over all of $[0, 2]$."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-3",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "area-multiple-crossings-s1",
+   "q": "Which expression gives the area of the region between the graphs for $0 \\le x \\le 3$?",
+   "options": [
+    "$\\int_0^1 (f - g)\\,dx + \\int_1^2 (g - f)\\,dx + \\int_2^3 (f - g)\\,dx$",
+    "$\\int_0^3 \\left(f(x) - g(x)\\right)\\,dx$",
+    "$\\left|\\int_0^3 \\left(f(x) - g(x)\\right)\\,dx\\right|$",
+    "$\\int_0^1 (f - g)\\,dx - \\int_1^2 (g - f)\\,dx + \\int_2^3 (f - g)\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Split at each crossing and use top minus bottom on each piece, so every piece adds a positive amount.",
+    "options": [
+     "Top minus bottom on each piece: $f$ on top, then $g$, then $f$.",
+     "One integral counts the middle piece, where $g$ is on top, as negative.",
+     "The absolute value is taken after the pieces have already canceled.",
+     "$\\int_1^2 (g - f)\\,dx$ is already positive; subtracting it removes that area."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-4",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "area-multiple-crossings-s1",
+   "q": "Find the area of the region between the graphs for $0 \\le x \\le 3$.",
+   "numeric": {
+    "answer": "11/4",
+    "mistakes": [
+     {
+      "value": "9/4",
+      "why": "That is $\\int_0^3 (f - g)\\,dx$, where the middle piece counts as $-\\frac{1}{4}$. Split at $x = 1$ and $x = 2$ and add three positive pieces."
+     },
+     {
+      "value": "5/2",
+      "why": "The middle piece, from $x = 1$ to $2$ where $g$ is on top, is missing. Add $\\int_1^2 (g - f)\\,dx = \\frac{1}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $f - g = x^3 - 3x^2 + 2x$ and antiderivative $F(x) = \\frac{x^4}{4} - x^3 + x^2$: $\\int_0^1 = \\frac{1}{4}$, $\\int_1^2 (g - f)\\,dx = \\frac{1}{4}$, $\\int_2^3 = \\frac{9}{4}$. The area is $\\frac{1}{4} + \\frac{1}{4} + \\frac{9}{4} = \\frac{11}{4}$."
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-5",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "area-multiple-crossings-s1",
+   "q": "A student finds $\\int_0^3 \\left(f(x) - g(x)\\right)\\,dx = \\frac{9}{4}$ and calls it the area. What went wrong?",
+   "options": [
+    "On $[1, 2]$, $f - g < 0$, so that piece was subtracted instead of added",
+    "The limits should be the crossings 0 and 2, not 0 and 3",
+    "The integrand should be $g - f$ throughout",
+    "Nothing; the area is $\\frac{9}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\int_0^3 (f - g)\\,dx = \\frac{1}{4} - \\frac{1}{4} + \\frac{9}{4}$. The middle piece is area too, so it must be added: $\\frac{11}{4}$.",
+    "options": [
+     "Where $g$ is on top, $f - g$ is negative and cancels area.",
+     "The region asked for runs to $x = 3$; it is closed there by the line $x = 3$.",
+     "$g$ is on top only on $[1, 2]$; using $g - f$ everywhere makes the other two pieces negative.",
+     "$\\frac{9}{4}$ is a net value. The area is $\\frac{11}{4}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-6",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "numeric",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "area-multiple-crossings-s2",
+   "q": "The graphs cross at $x = a$, $x = b$ and $x = c$, with $a < b < c$. Use a calculator to find $b$.",
+   "numeric": {
+    "answer": -0.5014946791573105,
+    "mistakes": [
+     {
+      "value": -0.6179658999555326,
+      "why": "Your calculator is in degree mode. Use radians and solve $x^3 - 2x = \\cos x$ again."
+     },
+     {
+      "value": -1.358168763828611,
+      "why": "That is $a$, the leftmost crossing. $b$ is the middle one."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Solve $x^3 - 2x - \\cos x = 0$ in radian mode: $a = -1.35816\\ldots$, $b = -0.50149\\ldots$, $c = 1.44467\\ldots$. So $b = -0.501$. Store all three."
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-7",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "area-multiple-crossings-s2",
+   "q": "Which expression gives the area of the shaded region?",
+   "options": [
+    "$\\int_a^b (f - g)\\,dx + \\int_b^c (g - f)\\,dx$",
+    "$\\int_a^c \\left(f(x) - g(x)\\right)\\,dx$",
+    "$\\int_a^b (g - f)\\,dx + \\int_b^c (f - g)\\,dx$",
+    "$\\int_a^c \\left(g(x) - f(x)\\right)\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f$ is on top from $a$ to $b$ (at $x = -1$: $f = 1 > 0.54$) and $g$ is on top from $b$ to $c$ (at $x = 0$: $1 > 0$). Split at $b$.",
+    "options": [
+     "Top minus bottom on each piece.",
+     "One integral lets the two pieces cancel.",
+     "Each piece is bottom minus top, so both are negative.",
+     "One integral again: the left piece counts as negative."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-8",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "numeric",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "area-multiple-crossings-s2",
+   "q": "Find the area of the shaded region.",
+   "numeric": {
+    "answer": 2.496750843994176,
+    "mistakes": [
+     {
+      "value": -1.973676603827835,
+      "why": "That is $\\int_a^c (f - g)\\,dx$, a net value. Split at $b$, or integrate $|f(x) - g(x)|$ from $a$ to $c$."
+     },
+     {
+      "value": 1.973676603827835,
+      "why": "That is $\\int_a^c (g - f)\\,dx$: the left piece, where $f$ is on top, was subtracted. Add the two pieces."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_a^b (f - g)\\,dx + \\int_b^c (g - f)\\,dx = 0.26153\\ldots + 2.23521\\ldots = 2.49675\\ldots$, so $2.497$ (or $2.496$ truncated). The same value comes from $\\int_a^c |f(x) - g(x)|\\,dx$."
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-9",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "numeric",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 3,
+   "calc": true,
+   "stimulus": "area-multiple-crossings-s2",
+   "q": "By how much does the area of the piece where $g$ is on top exceed the area of the piece where $f$ is on top?",
+   "numeric": {
+    "answer": 1.973676603827835,
+    "mistakes": [
+     {
+      "value": 2.496750843994176,
+      "why": "That is the sum of the two pieces. The question asks for their difference."
+     },
+     {
+      "value": -1.973676603827835,
+      "why": "Subtract in the order asked: the $g$-on-top piece minus the $f$-on-top piece is positive."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_b^c (g - f)\\,dx - \\int_a^b (f - g)\\,dx = 2.23521\\ldots - 0.26153\\ldots = 1.97367\\ldots$, so $1.974$ (or $1.973$). This equals $\\int_a^c (g - f)\\,dx$: a single integral gives a difference of areas, not a sum."
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-10",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the area of the region between $y = 2\\sin x$ and $y = 1$ for $0 \\le x \\le \\pi$.",
+   "numeric": {
+    "answer": "4*sqrt(3) - 4 - pi/3",
+    "mistakes": [
+     {
+      "value": "4 - pi",
+      "why": "That is $\\int_0^\\pi (2\\sin x - 1)\\,dx$, a net value. The curves cross at $x = \\frac{\\pi}{6}$ and $x = \\frac{5\\pi}{6}$: split there and add three positive pieces."
+     },
+     {
+      "value": "2*sqrt(3) - 2*pi/3",
+      "why": "That is only the middle piece, where $2\\sin x$ is on top. The line $y = 1$ is on top on $\\left[0, \\frac{\\pi}{6}\\right]$ and $\\left[\\frac{5\\pi}{6}, \\pi\\right]$; add those pieces too."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2\\sin x = 1$ at $x = \\frac{\\pi}{6}$ and $\\frac{5\\pi}{6}$. Pieces: $\\int_0^{\\pi/6} (1 - 2\\sin x)\\,dx = \\frac{\\pi}{6} + \\sqrt{3} - 2$, $\\int_{\\pi/6}^{5\\pi/6} (2\\sin x - 1)\\,dx = 2\\sqrt{3} - \\frac{2\\pi}{3}$, $\\int_{5\\pi/6}^{\\pi} (1 - 2\\sin x)\\,dx = \\frac{\\pi}{6} + \\sqrt{3} - 2$. Area $= 4\\sqrt{3} - 4 - \\frac{\\pi}{3}$."
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-11",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the total area of the region between $y = x^3$ and $y = x$.",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$\\int_{-1}^{1} (x^3 - x)\\,dx = 0$ because the two pieces cancel. Split at $x = 0$ and add them."
+     },
+     {
+      "value": "1/4",
+      "why": "That is one piece. The curves also enclose a piece on $[-1, 0]$, of the same size."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x^3 = x$ at $x = -1, 0, 1$. On $[-1, 0]$ the cubic is on top; on $[0, 1]$ the line is. Area $= \\int_{-1}^{0} (x^3 - x)\\,dx + \\int_0^1 (x - x^3)\\,dx = \\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-12",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find the area of the region between $f(x) = x^2 - 2$ and $g(x) = x$ for $0 \\le x \\le 3$.",
+   "numeric": {
+    "answer": "31/6",
+    "mistakes": [
+     {
+      "value": "3/2",
+      "why": "That is $\\int_0^3 (g - f)\\,dx$, a net value. The graphs cross at $x = 2$, inside $[0, 3]$: split there."
+     },
+     {
+      "value": "10/3",
+      "why": "That is the area only up to the crossing at $x = 2$. The region runs to $x = 3$, where $f$ is on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x^2 - 2 = x$ at $x = 2$ (and $-1$, outside). $\\int_0^2 (x - x^2 + 2)\\,dx = \\frac{10}{3}$ and $\\int_2^3 (x^2 - 2 - x)\\,dx = \\frac{11}{6}$, so the area is $\\frac{20}{6} + \\frac{11}{6} = \\frac{31}{6}$."
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-13",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "multi",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "On $[a, c]$ the graphs of $f$ and $g$ cross once, at $x = b$, with $f$ on top on $[a, b]$. Which expressions give the area between them on $[a, c]$? Select all that apply.",
+   "options": [
+    "$\\int_a^c \\left|f(x) - g(x)\\right|\\,dx$",
+    "$\\int_a^b (f - g)\\,dx + \\int_b^c (g - f)\\,dx$",
+    "$\\left|\\int_a^c \\left(f(x) - g(x)\\right)\\,dx\\right|$",
+    "$\\int_a^c \\left(f(x) - g(x)\\right)\\,dx$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The absolute value inside the integral makes every height positive, which is what splitting at $b$ does by hand.",
+    "options": [
+     "True: $|f - g|$ is the height of every strip, whichever curve is on top.",
+     "True: top minus bottom on each side of the crossing.",
+     "False: the pieces cancel before the absolute value is taken.",
+     "False: the piece where $g$ is on top counts as negative."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-14",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The graphs of $f$ and $g$ cross twice on $[-1, 2]$, and $\\int_{-1}^{2} \\left(f(x) - g(x)\\right)\\,dx = 0$. What can you conclude?",
+   "options": [
+    "The area where $f$ is on top equals the area where $g$ is on top",
+    "The graphs of $f$ and $g$ are the same on $[-1, 2]$",
+    "The graphs do not enclose any region on $[-1, 2]$",
+    "The area between the graphs on $[-1, 2]$ is 0"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A single integral of $f - g$ adds the pieces where $f$ is on top and subtracts the pieces where $g$ is on top. A result of 0 means those totals are equal.",
+    "options": [
+     "Positive pieces and negative pieces cancel exactly.",
+     "They cross twice, so they are different functions; equal areas cancel in the integral.",
+     "Between crossings the graphs enclose regions; their signed areas cancel.",
+     "The area is the sum of positive pieces, which is more than 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-15",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the area between $y = \\sin x$ and the $x$-axis for $0 \\le x \\le 2\\pi$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$\\int_0^{2\\pi} \\sin x\\,dx = 0$: the arch below the axis cancels the arch above. Split at $x = \\pi$ and add $2 + 2$."
+     },
+     {
+      "value": 2,
+      "why": "That is one arch. The region also has an arch below the axis, from $\\pi$ to $2\\pi$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_0^\\pi \\sin x\\,dx + \\int_\\pi^{2\\pi} (0 - \\sin x)\\,dx = 2 + 2 = 4$."
+   }
+  },
+  {
+   "id": "calc-area-multiple-crossings-16",
+   "unit": "unit-8",
+   "topic": "area-multiple-crossings",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "To find the area between $y = x^3$ and $y = 4x$ for $-1 \\le x \\le 3$ without absolute values, how many integrals do you need?",
+   "options": [
+    "3",
+    "2",
+    "4",
+    "1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x^3 = 4x$ at $x = -2, 0, 2$. Only 0 and 2 lie inside $(-1, 3)$, so the interval breaks into $[-1, 0]$, $[0, 2]$ and $[2, 3]$.",
+    "options": [
+     "Two crossings inside the interval make three pieces.",
+     "That counts the crossings, not the pieces between them.",
+     "$x = -2$ is outside $[-1, 3]$, so it does not make a piece.",
+     "One integral works only if the same curve is on top across the whole interval."
+    ]
+   }
+  }
+ ]
+}

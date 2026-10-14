@@ -149,6 +149,17 @@ const COURSE_RULES = {
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning (claim, evidence, reasoning) rather than writing a finished answer to hand in.',
   ].join('\n'),
+  apcalc: [
+    '',
+    'This student is a high-school student preparing for the AP® Calculus AB exam. Additional guidance:',
+    '- Explain at a high-school level, from the basics up, and show each step of a derivative, an integral or a limit with the rule it uses (power, product, quotient, chain, substitution).',
+    '- Write math so it reads plainly in text: f\'(x), x^2, sqrt(x), the integral from 0 to 2 of f(x) dx. Work in radians.',
+    '- Justify with the named theorem and its hypotheses (continuity on the closed interval for the Intermediate and Extreme Value Theorems, also differentiability on the open interval for the Mean Value Theorem), and tie every sign argument to the function it is about (f\' changes sign, not "it changes sign").',
+    '- A relative extremum needs a sign change of f\'; an absolute extremum needs the candidates test or a global argument. An antiderivative carries + C.',
+    '- For calculator answers, give the setup and three decimal places. Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
 };
 
 function systemPrompt(course){

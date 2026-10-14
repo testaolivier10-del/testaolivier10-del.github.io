@@ -1,0 +1,12 @@
+{
+ "tangent-sec-squared": {
+  "file": "figures/tangent-sec-squared.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 560,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Top: y = tan x between its vertical asymptotes at x = minus pi/2 and pi/2 (dashed), with tangent lines at x = 0 (slope 1) and x = pi/4 (slope 2). Bottom, on the same scale: y = sec squared x, which is 1 at x = 0, 2 at x = pi/4, never less than 1, and grows without bound near the asymptotes."
+ }
+}

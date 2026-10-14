@@ -250,3 +250,20 @@
 .calc-ls .ls-stage-body > .calc-pic{padding:0;border:0;background:none;border-radius:0;}
 @media (min-width:1000px){ .calc-ls .ls-stage-body > .calc-pic .calc-svg{max-width:560px;} }
 @media (max-width:599.98px){ .calc-ls .ls-stage-body > .calc-prompt{font-size:var(--ls-m);} }
+
+/* Phone legibility pass (docs/tools-phone-pass.md; docs/tools-phone-pass/chem-anp.md). Every picture is
+   360 units wide and drawn about 352 px wide on a 360 px phone, so these sizes are close to what a student
+   sees. The answer cards under the picture end above the stage's Enlarge button (bottom right). */
+.ls-root.ls-phone .calc-svg .cp-t{font-size:12.5px;}
+.ls-root.ls-phone .calc-svg .cp-tick{font-size:13px;}
+.ls-root.ls-phone .calc-svg .cp-v{font-size:13px;}
+.ls-root.ls-phone .calc-svg .cp-big{font-size:15px;}
+.ls-root.ls-phone .calc-svg .cp-pill-t{font-size:12.5px;}
+.ls-root.ls-phone.calc-ls .ls-stage-body > .calc-out{margin-bottom:52px;}
+.ls-root.ls-phone .calc-svg .cp-in-t{font-size:12.5px;}
+.ls-root.ls-phone .calc-svg .cp-in-t.cp-in-fit{font-size:11px;}
+/* A phone on its side: the answer card keeps its text left of the Enlarge button (the card is wide there,
+   and the stage scrolls past the bottom margin otherwise). */
+@media (orientation:landscape){
+  .ls-root.ls-phone.calc-ls .ls-stage-body > .calc-out{padding-right:52px;}
+}

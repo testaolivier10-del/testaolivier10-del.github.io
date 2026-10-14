@@ -187,6 +187,8 @@
       var d = hexD(cx - 5, cy, 6), p = ''; for(var i = 0; i < 5; i++){ var a = i / 5 * Math.PI * 2 + Math.PI; p += (i ? 'L' : 'M') + (cx + 4.2 + 5.2 * Math.cos(a)).toFixed(1) + ' ' + (cy + 5.2 * Math.sin(a)).toFixed(1); }
       return d + p + 'Z';
     }
+    // On a phone the strip scrolls sideways, so a released repressor waits above lacI (the first screen), not past the operator.
+    function phoneFig(){ try{ return !!document.querySelector('.ls-root.ls-phone'); }catch(e){ return false; } }
     function rowSvg(s, c, ci, y0){
       var p = [], y = y0 + 112, trp = c.mode === 'trp', k = c.copies[ci], x = s.copies[ci];
       var box = function(x1, x2, cls, label, dashed, gene){
@@ -221,15 +223,15 @@
         if(extra) r += '<path class="op-small" d="' + (extra === 'Trp' ? trpD(cx + 40, cy - 14) : hexD(cx + 36, cy - 16, 6) + hexD(cx + 47, cy - 10, 6)) + '"/><text class="op-note" x="' + (cx + 58) + '" y="' + (cy - 8) + '">' + extra + '</text>';
         return r;
       };
-      var floatX = op1 + 40, fy = y0 + 46, onOp = x.rep === 'bound' || x.rep === 'super';
+      var narrow = phoneFig(), floatX = narrow ? 60 : op1 + 40, fy = y0 + (narrow ? 42 : 46), onOp = x.rep === 'bound' || x.rep === 'super';
       // the repressor slides between the operator and its floating spot
       var prevOn = prevRep[ci], dxy = prevOn == null || prevOn === onOp || x.rep === 'none' ? null : onOp ? [floatX - ocx, fy - (y - 30)] : [ocx - floatX, (y - 30) - fy];
       prevRep[ci] = x.rep === 'none' ? null : onOp;
       var wrapRep = function(inner){ return '<g class="op-repg' + (dxy ? ' op-slide' : '') + '"' + (dxy ? ' style="--dx:' + dxy[0].toFixed(0) + 'px;--dy:' + dxy[1].toFixed(0) + 'px"' : '') + '>' + inner + '</g>'; };
       if(onOp) p.push(wrapRep(repShape(ocx, y - 30, 'Repressor', trp ? 'Trp' : '')) + (x.rep === 'super' ? '<text class="op-note" x="' + (op1 + 6) + '" y="' + (y - 26) + '">super-repressor: ignores allolactose</text>' : ''));
       else if(x.rep === 'released') p.push(wrapRep(repShape(floatX, fy, 'Repressor', 'allolactose')));
-      else if(x.rep === 'inactive') p.push(wrapRep(repShape(floatX, fy, 'Repressor', '')) + '<text class="op-note" x="' + (floatX + 40) + '" y="' + (fy + 4) + '">no Trp: cannot bind</text>');
-      else if(x.rep === 'cantbind') p.push(wrapRep(repShape(floatX, fy, 'Repressor', '')) + '<text class="op-note" x="' + (floatX + 40) + '" y="' + (fy + 4) + '">cannot bind Oᶜ</text>');
+      else if(x.rep === 'inactive') p.push(wrapRep(repShape(floatX, fy, 'Repressor', '')) + '<text class="op-note" x="' + (floatX + (narrow ? 48 : 40)) + '" y="' + (fy + 4) + '">no Trp: cannot bind</text>');
+      else if(x.rep === 'cantbind') p.push(wrapRep(repShape(floatX, fy, 'Repressor', '')) + '<text class="op-note" x="' + (floatX + (narrow ? 48 : 40)) + '" y="' + (fy + 4) + '">cannot bind Oᶜ</text>');
       else p.push('<text class="op-note" x="' + ocx + '" y="' + (y - 26) + '" text-anchor="middle">no repressor</text>');
       // mRNA
       var mx0 = op1, mx1 = gx;

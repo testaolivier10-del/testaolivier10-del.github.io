@@ -1,0 +1,12 @@
+{
+ "net-change": {
+  "file": "figures/net-change.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 610,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Top: the graph of f prime of x = 1 - x/4 on [0, 6], with a triangle of area 2 above the axis from 0 to 4 and a triangle of area 0.5 below from 4 to 6. Bottom: f(x) = 1 + x - x squared over 8 rises from (0, 1) to a maximum at x = 4 and falls to (6, 2.5); a bracket shows f(6) - f(0) = 2 - 0.5 = 1.5."
+ }
+}

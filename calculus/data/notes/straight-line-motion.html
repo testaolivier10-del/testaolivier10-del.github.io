@@ -1,0 +1,60 @@
+<p>Picture a bead sliding back and forth on a straight wire. Its location on the wire, measured from a fixed origin, is its <b>position</b> $x(t)$ at time $t$. Particle motion questions appear on the free-response section of nearly every exam, and they all rest on three functions and the signs they take. This page builds them one at a time.</p>
+
+<h2>Position, velocity, acceleration</h2>
+<p>Choose a positive direction, usually right (or up). The <b>position function</b> $x(t)$ is positive to the right of the origin and negative to the left. Then:</p>
+<ul>
+<li>The <b>velocity</b> is the rate of change of position: $v(t) = x'(t)$.</li>
+<li>The <b>acceleration</b> is the rate of change of velocity: $a(t) = v'(t) = x''(t)$.</li>
+</ul>
+<p>Units follow the rule from the last topic, output per input. With position in meters and time in seconds, velocity is in meters per second, and acceleration is in meters per second per second (written m/s²).</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A particle has position $x(t) = t^3 - 6t^2 + 9t$ meters, for $0 \le t \le 4$ seconds. Find $v(t)$ and $a(t)$, and describe the motion at $t = 2$.</p>
+<p>$v(t) = 3t^2 - 12t + 9 = 3(t - 1)(t - 3)$ and $a(t) = 6t - 12$.</p>
+<p>At $t = 2$: $x(2) = 2$, $v(2) = -3$, $a(2) = 0$. The particle is 2 meters right of the origin, moving left at 3 meters per second.</p>
+</div>
+
+<h2>Direction, rest and turning around</h2>
+<p>The sign of the velocity tells the direction: $v(t) > 0$ means moving right, $v(t) < 0$ means moving left. The particle is <b>at rest</b> when $v(t) = 0$.</p>
+<p>A particle <b>changes direction</b> only where $v$ <i>changes sign</i>. Being at rest for an instant is not enough. For $v(t) = (t - 2)^2$, the particle stops at $t = 2$, but $v$ is positive on both sides, so it keeps moving right. On the exam, "the particle changes direction at $t = 3$ because $v(3) = 0$" does not earn the point; "because $v$ changes from negative to positive at $t = 3$" does.</p>
+<p>In Worked example 1, $v(t) = 3(t - 1)(t - 3)$ is positive on $0 < t < 1$, negative on $1 < t < 3$, and positive on $3 < t < 4$. The particle moves right, then left, then right again, turning around at $t = 1$ and $t = 3$.</p>
+
+<h2>Speed, and speeding up</h2>
+<p><b>Speed</b> is the size of the velocity: $|v(t)|$. A velocity of $-5$ m/s and a velocity of $5$ m/s have the same speed, 5 m/s. Speed is never negative.</p>
+<p>When is the speed increasing? Think of pushing a moving cart. Push in the direction it is going and it speeds up; push against it and it slows down. Acceleration is the push. So:</p>
+<table class="compare">
+<tr><th>$v(t)$</th><th>$a(t)$</th><th>The particle is</th></tr>
+<tr><td>$+$</td><td>$+$</td><td>moving right, speeding up</td></tr>
+<tr><td>$+$</td><td>$-$</td><td>moving right, slowing down</td></tr>
+<tr><td>$-$</td><td>$-$</td><td>moving left, speeding up</td></tr>
+<tr><td>$-$</td><td>$+$</td><td>moving left, slowing down</td></tr>
+</table>
+<p><b>Speeding up when $v$ and $a$ have the same sign; slowing down when their signs are opposite.</b> A negative acceleration alone does not mean slowing down.</p>
+<figure id="fig-motion" data-fig="motion-speeding-up"><figcaption>Velocity and acceleration for $x(t) = t^3 - 6t^2 + 9t$. Shaded bands: same signs, speeding up. Below: the path on the line.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> For the same particle, is it speeding up or slowing down at $t = 1.5$ and at $t = 2.5$?</p>
+<p>At $t = 1.5$: $v(1.5) = 3(0.5)(-1.5) = -2.25 < 0$ and $a(1.5) = -3 < 0$. Same sign, so the particle is speeding up (moving left faster).</p>
+<p>At $t = 2.5$: $v(2.5) = -2.25 < 0$ but $a(2.5) = 3 > 0$. Opposite signs, so it is slowing down as it approaches its stop at $t = 3$.</p>
+</div>
+
+<h2>Reading a velocity graph</h2>
+<p>Often you get the graph of $v$ instead of a formula. Then:</p>
+<ul>
+<li>The <b>height</b> of the graph is the velocity; above the axis means moving right.</li>
+<li>Where the graph <b>crosses</b> the $t$-axis, the particle changes direction.</li>
+<li>The <b>slope</b> of the graph is the acceleration.</li>
+<li>Speeding up: the graph is moving away from the $t$-axis. Slowing down: moving toward it.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 3.</b> A graph of $v$ is a segment from $(5, 4)$ to $(7, -2)$. Describe the motion at $t = 6.5$.</p>
+<p>The segment has slope $\frac{-2 - 4}{7 - 5} = -3$, so $a(6.5) = -3$. Its height there is $v(6.5) = 4 - 3(1.5) = -0.5$.</p>
+<p>Both negative: the particle is moving left and speeding up. The graph is below the axis and moving away from it, which agrees.</p>
+</div>
+
+<h2>Slips that cost points</h2>
+<ul>
+<li>Claiming a direction change where $v = 0$ without a sign change.</li>
+<li>"Slowing down because $a < 0$" without checking the sign of $v$.</li>
+<li>Giving a negative speed, or calling velocity and speed the same thing.</li>
+<li>Wrong units: acceleration is distance per time per time.</li>
+<li>Product and chain rule slips when $x(t)$ is something like $te^{-t}$: $v(t) = (1 - t)e^{-t}$.</li>
+</ul>

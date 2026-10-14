@@ -1,0 +1,165 @@
+{
+ "id": "frq-u2-fg-table-rules",
+ "type": "fg",
+ "points": 9,
+ "calc": false,
+ "title": "Two functions from a table: product, quotient, tangent line and a limit",
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "product-rule",
+  "quotient-rule",
+  "derivatives-sin-cos-exp-ln",
+  "basic-derivative-rules",
+  "derivative-definition",
+  "differentiability"
+ ],
+ "practices": [
+  "1.E",
+  "2.B",
+  "2.C",
+  "3.B",
+  "3.C",
+  "3.E",
+  "4.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Values of f, g and their derivatives",
+  "text": "<p>The functions $f$ and $g$ are differentiable for all real numbers. The table gives values of the functions and their derivatives at selected values of $x$. No calculator is allowed.</p>",
+  "table": {
+   "caption": "Values of $f(x)$, $f'(x)$, $g(x)$ and $g'(x)$",
+   "cols": [
+    "$x$",
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "rows": [
+    [
+     "$f(x)$",
+     "4",
+     "1",
+     "3",
+     "6"
+    ],
+    [
+     "$f'(x)$",
+     "$-2$",
+     "3",
+     "5",
+     "1"
+    ],
+    [
+     "$g(x)$",
+     "1",
+     "3",
+     "2",
+     "$-1$"
+    ],
+    [
+     "$g'(x)$",
+     "4",
+     "$-2$",
+     "3",
+     "$-4$"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "Let $h(x) = f(x)g(x)$. <b>Find</b> $h'(2)$. Show the work that leads to your answer.",
+   "rubric": [
+    {
+     "point": "Product rule with the table values: $h'(2) = f'(2)g(2) + f(2)g'(2)$. Not earned by $f'(2)g'(2)$, the product of the derivatives.",
+     "accept": [
+      "(3)(3) + (1)(-2)",
+      "the two terms in either order, with table values substituted"
+     ]
+    },
+    {
+     "point": "Answer: $h'(2) = 7$, with the product-rule setup",
+     "accept": [
+      "9 - 2 = 7"
+     ]
+    }
+   ],
+   "sample": "By the product rule, $h'(x) = f'(x)g(x) + f(x)g'(x)$. So $h'(2) = f'(2)g(2) + f(2)g'(2) = (3)(3) + (1)(-2) = 9 - 2 = 7$."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "Let $k(x) = \\frac{f(x)}{g(x)}$. <b>Find</b> $k'(3)$. Show the work that leads to your answer.",
+   "rubric": [
+    {
+     "point": "Quotient rule with the table values: $k'(3) = \\frac{f'(3)g(3) - f(3)g'(3)}{\\left( g(3) \\right)^2}$. Not earned with the numerator reversed or the denominator not squared.",
+     "accept": [
+      "((5)(2) - (3)(3)) / 2^2"
+     ]
+    },
+    {
+     "point": "Answer: $k'(3) = \\frac{1}{4}$, with the quotient-rule setup",
+     "accept": [
+      "0.25",
+      "(10 - 9)/4"
+     ]
+    }
+   ],
+   "sample": "By the quotient rule, $k'(x) = \\frac{f'(x)g(x) - f(x)g'(x)}{\\left( g(x) \\right)^2}$. So $k'(3) = \\frac{(5)(2) - (3)(3)}{(2)^2} = \\frac{10 - 9}{4} = \\frac{1}{4}$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "Let $m(x) = 4f(x) - \\ln x$ for $x > 0$. <b>Write</b> an equation for the line tangent to the graph of $m$ at $x = 1$.",
+   "rubric": [
+    {
+     "point": "Slope: $m'(1) = 4f'(1) - \\frac{1}{1} = -9$",
+     "accept": [
+      "4(-2) - 1 = -9",
+      "the derivative 4f'(x) - 1/x evaluated at x = 1"
+     ]
+    },
+    {
+     "point": "Tangent line through $(1, m(1)) = (1, 16)$ with the slope found: $y = 16 - 9(x - 1)$. The height needs $m(1) = 4(4) - \\ln 1 = 16$.",
+     "accept": [
+      "y - 16 = -9(x - 1)",
+      "y = -9x + 25"
+     ]
+    }
+   ],
+   "sample": "$m(1) = 4f(1) - \\ln 1 = 4(4) - 0 = 16$. $m'(x) = 4f'(x) - \\frac{1}{x}$, so $m'(1) = 4(-2) - 1 = -9$. The tangent line is $y = 16 - 9(x - 1)$."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "(i) <b>Find</b> $\\lim_{x \\to 4} \\frac{f(x) - 6}{x - 4}$. <b>Explain</b> your reasoning.<br>(ii) <b>Explain</b> why there must be a value $c$, with $1 < c < 4$, such that $g(c) = 0$.",
+   "rubric": [
+    {
+     "point": "(i) The limit is $f'(4) = 1$, because $f(4) = 6$ makes it the definition of the derivative of $f$ at $x = 4$. The bare answer 1, with no link to $f'(4)$, does not earn the point; neither does writing $\\frac{0}{0} = 1$.",
+     "accept": [
+      "lim (f(x) - f(4))/(x - 4) = f'(4) = 1"
+     ]
+    },
+    {
+     "point": "(ii) Continuity with its reason: $g$ is differentiable, so $g$ is continuous on $[1, 4]$. Not earned by \"$g$ is continuous\" with no reason.",
+     "accept": [
+      "g is differentiable, therefore continuous on the interval"
+     ]
+    },
+    {
+     "point": "(ii) Conclusion, with the continuity point: $g(1) = 1 > 0 > -1 = g(4)$, so by the Intermediate Value Theorem there is a $c$ in $(1, 4)$ with $g(c) = 0$",
+     "accept": [
+      "IVT for Intermediate Value Theorem",
+      "g(4) < 0 < g(1)"
+     ]
+    }
+   ],
+   "sample": "(i) Since $f(4) = 6$, $\\frac{f(x) - 6}{x - 4} = \\frac{f(x) - f(4)}{x - 4}$, so the limit is the definition of $f'(4)$. From the table, $\\lim_{x \\to 4} \\frac{f(x) - 6}{x - 4} = f'(4) = 1$.<br>(ii) $g$ is differentiable, so $g$ is continuous on $[1, 4]$. Also $g(1) = 1$ and $g(4) = -1$, so 0 is between $g(4)$ and $g(1)$. By the Intermediate Value Theorem, there is a value $c$ with $1 < c < 4$ such that $g(c) = 0$."
+  }
+ ]
+}

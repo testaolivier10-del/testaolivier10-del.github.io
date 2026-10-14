@@ -1,0 +1,71 @@
+{
+ "topic": "higher-order-derivatives",
+ "hook": "A car's speedometer shows how fast the position changes. But you also feel how fast the speed itself changes when you are pressed back into your seat. That is a derivative of a derivative. Second derivatives describe how a rate changes, and they show up all over Units 4 and 5.",
+ "prereq": [
+  {
+   "q": "What is the derivative of $3x^2 - 5x$?",
+   "options": [
+    "$6x - 5$",
+    "$6x$",
+    "$3x - 5$",
+    "$x^3 - \\frac{5}{2}x^2$"
+   ],
+   "correct": 0,
+   "why": "Power rule on each term.",
+   "review": "power-rule"
+  },
+  {
+   "q": "For $x^2 + y^2 = 25$, $\\frac{dy}{dx}$ is",
+   "options": [
+    "$-\\frac{x}{y}$",
+    "$\\frac{x}{y}$",
+    "$-\\frac{y}{x}$",
+    "$-x$"
+   ],
+   "correct": 0,
+   "why": "$2x + 2y\\frac{dy}{dx} = 0$.",
+   "review": "implicit-differentiation"
+  }
+ ],
+ "figure": {
+  "figure": "f-first-second-derivatives",
+  "caption": "$f(x) = x^3 - 3x$, its derivative $f'(x) = 3x^2 - 3$ and its second derivative $f''(x) = 6x$. Each graph shows the slopes of the one above it."
+ },
+ "chain": [
+  {
+   "cause": "$f'$ is itself a function",
+   "effect": "it can be differentiated: $f'' = (f')'$"
+  },
+  {
+   "cause": "$f''$ is the slope of the graph of $f'$",
+   "effect": "$f'' > 0$ where $f'$ rises, $f'' < 0$ where $f'$ falls"
+  },
+  {
+   "cause": "Keep differentiating",
+   "effect": "$f'''$, $f^{(4)}$, ..., $f^{(n)}$; for a polynomial of degree $n$, $f^{(n+1)} = 0$"
+  },
+  {
+   "cause": "For an implicit curve, differentiate $\\frac{dy}{dx}$ again",
+   "effect": "then substitute the expression for $\\frac{dy}{dx}$ wherever it appears"
+  }
+ ],
+ "ideas": [
+  "Notation: $f''(x)$, $y''$, $\\frac{d^2y}{dx^2}$; higher ones are $f'''(x)$ and $f^{(n)}(x)$.",
+  "Read $f''$ from a graph of $f'$ as its slope, not its height.",
+  "If $f'$ is a product or composition, differentiating again needs the product or chain rule again.",
+  "Implicit second derivative: differentiate $\\frac{dy}{dx}$ (quotient rule, $y$ still depends on $x$), then substitute $\\frac{dy}{dx}$."
+ ],
+ "misconception": {
+  "wrong": "From a graph of $f'$, $f''(a)$ is the height of the graph at $x = a$.",
+  "right": "The height of the graph of $f'$ is $f'(a)$. The second derivative is the slope of that graph at $x = a$."
+ },
+ "check": [
+  "calc-higher-order-derivatives-1",
+  "calc-higher-order-derivatives-2",
+  "calc-higher-order-derivatives-3",
+  "calc-higher-order-derivatives-4",
+  "calc-higher-order-derivatives-10",
+  "calc-higher-order-derivatives-14"
+ ],
+ "summary": "The second derivative $f''$ is the derivative of $f'$: it tells how fast the rate of change is changing. Find it by differentiating again, with the product and chain rules as needed; from a graph of $f'$, read it as a slope. For implicit curves, substitute $\\frac{dy}{dx}$ after the second differentiation."
+}

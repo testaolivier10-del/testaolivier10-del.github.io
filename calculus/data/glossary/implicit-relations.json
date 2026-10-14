@@ -1,0 +1,5 @@
+{
+ "horizontal-tangent": {
+  "def": "A point of a curve where the tangent line is horizontal: $\\frac{dy}{dx} = 0$. For an implicit curve with $\\frac{dy}{dx} = \\frac{N}{D}$, the numerator $N$ is 0, the denominator $D$ is not, and the point lies on the curve. (Where $D = 0$ and $N \\ne 0$, the tangent line is vertical instead.)"
+ }
+}

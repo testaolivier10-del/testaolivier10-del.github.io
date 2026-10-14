@@ -1,0 +1,12 @@
+{
+ "separation-family": {
+  "file": "figures/separation-family.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 500,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph, drawn from its function by scripts/apcalc-figures/unit-7-8a.mjs",
+  "alt": "The slope field of dy/dx = xy on −2.5 ≤ x ≤ 2.5 and −4 ≤ y ≤ 4, with the curves y = Ce^(x²/2) for C = 0.25, 0.5, 1, 2 in crimson above the x-axis, for C = −0.25, −0.5, −1, −2 in blue below it, and C = 0, the x-axis itself, in green. Each curve is flattest at x = 0 and follows the segments."
+ }
+}

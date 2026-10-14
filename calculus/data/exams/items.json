@@ -1,0 +1,787 @@
+{
+ "about": "Exam-only questions of the two fixed practice exams (docs/apcalc-architecture.md, \"Practice exams\"): calculator items for Section I Part B, ids calc-exam-<form>-<nn>, keys recomputed in scripts/lib/apcalc-exams.mjs (EXAM_NUMBERS). Stimulus ids exam-<form>-s<n>.",
+ "stimuli": {
+  "exam-1-s1": {
+   "kind": "graph",
+   "title": "Water in a storage tank",
+   "text": "Water flows into a storage tank at the rate $r(t) = 6 + 4\\sin\\left(\\frac{t^2}{8}\\right)$ liters per minute and drains out at a constant 7 liters per minute, for $0 \\le t \\le 6$, with $t$ in minutes. At $t = 0$ the tank holds 50 liters. The graph shows $r$ (solid) and the drain rate (dashed).",
+   "plot": {
+    "label": "Graph of the inflow rate r(t) = 6 + 4 sin(t squared over 8) for t from 0 to 6 minutes, with a dashed horizontal line at 7 liters per minute for the drain",
+    "x": [
+     0,
+     6
+    ],
+    "y": [
+     0,
+     12
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "t (minutes)",
+    "yLabel": "liters per minute",
+    "curves": [
+     {
+      "fn": "6 + 4sin(x^2/8)",
+      "domain": [
+       0,
+       6
+      ],
+      "label": "r",
+      "cls": "s1"
+     },
+     {
+      "fn": "7",
+      "domain": [
+       0,
+       6
+      ],
+      "label": "drain",
+      "cls": "s2",
+      "dashed": true
+     }
+    ]
+   }
+  },
+  "exam-2-s1": {
+   "kind": "graph",
+   "title": "A particle on the x-axis",
+   "text": "A particle moves along the x-axis with velocity $v(t) = e^{\\sin t} - 1.2$ for $0 \\le t \\le 4$, with $t$ in seconds and $v(t)$ in meters per second. At $t = 0$ the particle is at $x = 1$. The graph shows $v$.",
+   "plot": {
+    "label": "Graph of the velocity v(t) = e to the sin t minus 1.2 for t from 0 to 4 seconds; it is negative near t = 0, positive in the middle and negative again near t = 4",
+    "x": [
+     0,
+     4
+    ],
+    "y": [
+     -1,
+     2
+    ],
+    "xStep": 0.5,
+    "yStep": 0.5,
+    "xLabel": "t (seconds)",
+    "yLabel": "v(t) (m/s)",
+    "curves": [
+     {
+      "fn": "e^(sin(x)) - 1.2",
+      "domain": [
+       0,
+       4
+      ],
+      "label": "v",
+      "cls": "s1"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-01",
+   "unit": "unit-8",
+   "topic": "accumulation-in-context",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-1-s1",
+   "q": "How many liters of water are in the tank at $t = 6$ minutes?",
+   "options": [
+    "$51.891$",
+    "$1.891$",
+    "$93.891$",
+    "$55.212$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The amount is the starting amount plus the net change: $50 + \\int_0^6 \\left(r(t) - 7\\right)dt \\approx 51.891$ liters. Store the integral in the calculator and round only at the end.",
+    "options": [
+     "The 50 liters at the start plus the net change, the integral of the rate in minus the rate out.",
+     "This is the net change alone; the 50 liters already in the tank at $t = 0$ are left out.",
+     "This adds all the water that flowed in but never subtracts the 7 liters per minute that drain out.",
+     "This is the amount at $t \\approx 4.807$, where $r(t) = 7$, not at $t = 6$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-02",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-1-s1",
+   "q": "At what time $t$, for $0 \\le t \\le 6$, is the amount of water in the tank greatest?",
+   "options": [
+    "$0$",
+    "$1.422$",
+    "$4.807$",
+    "$6$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The amount $A(t)$ has $A'(t) = r(t) - 7$, which is 0 at $t \\approx 1.422$ and $t \\approx 4.807$. Compare $A$ at these and the endpoints: $A(0) = 50$, $A(1.422) \\approx 49.055$, $A(4.807) \\approx 55.212$ and $A(6) \\approx 51.891$. The greatest is at $t \\approx 4.807$.",
+    "options": [
+     "At $t = 0$ the tank holds 50 liters, but the amount later climbs above that.",
+     "Here $r(t) - 7$ changes from negative to positive, so the amount has its least value near this time, not its greatest.",
+     "Here $r(t) - 7$ changes from positive to negative, and the candidates test shows $A \\approx 55.212$ liters beats both endpoints.",
+     "At $t = 6$ the tank holds about 51.891 liters, less than at $t \\approx 4.807$, because water drains out faster than it flows in after that time."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-03",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-1-s1",
+   "q": "What is $r'(4)$, with its units?",
+   "options": [
+    "$-1.665$ liters per minute per minute",
+    "$-1.665$ liters per minute",
+    "$9.637$ liters per minute per minute",
+    "$0.909$ liters per minute per minute"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With the calculator's numerical derivative, $r'(4) \\approx -1.665$. The rate $r$ is in liters per minute, so its rate of change is in liters per minute per minute: at $t = 4$ the inflow rate is falling.",
+    "options": [
+     "The numerical derivative at $t = 4$, in the units of a rate of a rate.",
+     "The value is right, but a derivative of a rate in liters per minute has units of liters per minute per minute.",
+     "This is $r(4)$, the inflow rate itself, not how fast it is changing.",
+     "This is the average rate of change of $r$ from $t = 0$ to $t = 4$, not the rate at $t = 4$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-04",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = e^x - x^2$. At what value of $x$ in the interval $(0, 2)$ is the instantaneous rate of change of $f$ equal to the average rate of change of $f$ on $[0, 2]$?",
+   "options": [
+    "$1.370$",
+    "$1.195$",
+    "$0.693$",
+    "$1.000$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The average rate of change is $\\frac{f(2) - f(0)}{2 - 0} = \\frac{e^2 - 5}{2} \\approx 1.195$. Solve $f'(x) = e^x - 2x = \\frac{e^2 - 5}{2}$ with the calculator: $x \\approx 1.370$.",
+    "options": [
+     "The solution of $e^x - 2x = \\frac{e^2 - 5}{2}$ in $(0, 2)$.",
+     "This is the average rate of change itself, a slope, not the $x$ where the slope of $f$ matches it.",
+     "This is where $f'(x) = e^x - 2x$ is least, not where it equals the average rate of change.",
+     "This is the midpoint of the interval; the derivative there is $e - 2$, not the average rate of change."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-05",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A particle moves along a line with velocity $v(t) = 2\\cos(0.8t) - 0.3t$. Is the particle speeding up or slowing down at $t = 3$, and why?",
+   "options": [
+    "Speeding up, because $v(3) \\approx -2.375$ and $a(3) \\approx -1.381$ have the same sign",
+    "Slowing down, because $a(3) \\approx -1.381$ is negative",
+    "Slowing down, because $v(3) \\approx -2.375$ is negative",
+    "Speeding up, because $v$ is decreasing at $t = 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$v(3) = 2\\cos(2.4) - 0.9 \\approx -2.375$ and $a(3) = v'(3) \\approx -1.381$ (radian mode). Both are negative, so the speed is increasing: the particle moves left faster and faster.",
+    "options": [
+     "Speeding up needs the signs of both $v$ and $a$, and here they agree.",
+     "A negative acceleration alone does not mean slowing down; with a negative velocity it means speeding up.",
+     "A negative velocity tells the direction (left), not whether the speed grows.",
+     "The conclusion is right, but the reason is not: a decreasing velocity is a negative acceleration, which says nothing about speed until it is compared with the sign of $v$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-06",
+   "unit": "unit-5",
+   "topic": "first-derivative-test",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The derivative of a function $f$ is $f'(x) = e^{\\sin x} - 1.5$. At what value of $x$ in the interval $(0, 4)$ does $f$ have a relative maximum?",
+   "options": [
+    "$0.417$",
+    "$2.724$",
+    "$1.571$",
+    "$3.142$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f'(x) = 0$ where $\\sin x = \\ln 1.5$: $x \\approx 0.417$ and $x \\approx 2.724$. Between them $f' > 0$, and after $x \\approx 2.724$ it is negative, so $f'$ changes from positive to negative there: a relative maximum.",
+    "options": [
+     "Here $f'$ changes from negative to positive, so $f$ has a relative minimum.",
+     "$f'$ changes from positive to negative here, the first derivative test for a relative maximum.",
+     "Here $f'$ is greatest; that is a point of inflection of $f$, not an extremum.",
+     "At $x = \\pi$ the derivative is $e^0 - 1.5 = -0.5$, not 0, so this is not a critical point."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-07",
+   "unit": "unit-5",
+   "topic": "solving-optimization",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "What is the least distance between the point $(2, 0)$ and a point on the graph of $y = e^x$?",
+   "options": [
+    "$2.170$",
+    "$4.709$",
+    "$0.273$",
+    "$2.236$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The squared distance is $D(x) = (x - 2)^2 + e^{2x}$. $D'(x) = 2(x - 2) + 2e^{2x} = 0$ at $x \\approx 0.273$, the only critical point, where $D'$ changes from negative to positive. The least distance is $\\sqrt{D(0.273)} \\approx 2.170$.",
+    "options": [
+     "The square root of the least squared distance, at the one critical point.",
+     "This is the least value of the squared distance; take its square root.",
+     "This is the $x$-coordinate of the closest point, not the distance.",
+     "This is the distance to $(0, 1)$, a point on the graph, but not the closest one."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-08",
+   "unit": "unit-6",
+   "topic": "ftc-definite-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The function $F$ is an antiderivative of $f(x) = \\sqrt{1 + x^3}$, and $F(1) = 2$. What is $F(3)$?",
+   "options": [
+    "$8.230$",
+    "$6.230$",
+    "$7.292$",
+    "$9.341$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "By the Fundamental Theorem, $F(3) = F(1) + \\int_1^3 \\sqrt{1 + x^3}\\,dx$, which is about $2 + 6.230 = 8.230$.",
+    "options": [
+     "The starting value plus the integral of $F' = f$ from 1 to 3.",
+     "This is $F(3) - F(1)$; the value $F(1) = 2$ still has to be added.",
+     "This adds $f(3)$, a rate at one point, instead of the integral of $f$ from 1 to 3.",
+     "This integrates from 0 instead of from 1, where the value of $F$ is known."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-09",
+   "unit": "unit-6",
+   "topic": "accumulation-behavior",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Let $g(x) = \\int_0^x \\sin(t^2)\\,dt$. What is the absolute maximum value of $g$ on $[0, 3]$?",
+   "options": [
+    "$0.895$",
+    "$0.774$",
+    "$1.772$",
+    "$0.430$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g'(x) = \\sin(x^2)$ changes sign at $x = \\sqrt{\\pi} \\approx 1.772$ and $x = \\sqrt{2\\pi} \\approx 2.507$. Candidates: $g(0) = 0$, $g(1.772) \\approx 0.895$, $g(2.507) \\approx 0.430$, $g(3) \\approx 0.774$. The greatest is $0.895$.",
+    "options": [
+     "The largest of $g$ at the endpoints and at the critical points.",
+     "This is $g(3)$, the right endpoint, which is smaller than $g(\\sqrt{\\pi})$.",
+     "This is where the maximum occurs, $x = \\sqrt{\\pi}$, not the maximum value.",
+     "This is $g(\\sqrt{2\\pi})$, a relative minimum of $g$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-10",
+   "unit": "unit-6",
+   "topic": "definite-integral-notation",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 3,
+   "q": "What is $\\lim_{n \\to \\infty} \\sum_{i=1}^{n} \\frac{3}{n}\\ln\\left(1 + \\frac{3i}{n}\\right)$?",
+   "options": [
+    "$2.545$",
+    "$0.848$",
+    "$4.159$",
+    "$1.386$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "This is a right Riemann sum with $\\Delta x = \\frac{3}{n}$ and $x_i = \\frac{3i}{n}$ on $[0, 3]$, so the limit is $\\int_0^3 \\ln(1 + x)\\,dx \\approx 2.545$.",
+    "options": [
+     "The definite integral the sum approaches: width $\\frac{3}{n}$, points $\\frac{3i}{n}$ from 0 to 3.",
+     "This is $\\int_0^1 \\ln(1 + 3x)\\,dx$; with $\\Delta x = \\frac{3}{n}$ the interval has length 3, so this misses a factor of 3.",
+     "This is the width times the height at the right end, one rectangle, not the limit of the sums.",
+     "This is $\\ln 4$, the height at $x = 3$, not the integral."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-11",
+   "unit": "unit-8",
+   "topic": "area-between-curves-x",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the area of the region enclosed by the graphs of $y = 4 - x^2$ and $y = e^x$?",
+   "options": [
+    "$6.428$",
+    "$1.957$",
+    "$9.168$",
+    "$16.353$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The graphs meet at $x = a \\approx -1.965$ and $x = b \\approx 1.058$ (store them). On $(a, b)$ the parabola is on top, so the area is $\\int_a^b \\left(4 - x^2 - e^x\\right)dx \\approx 6.428$.",
+    "options": [
+     "Top minus bottom, from one intersection to the other.",
+     "This starts at $x = 0$; the region reaches left to the other intersection.",
+     "This is the area under the parabola alone; the area under $y = e^x$ has to be subtracted.",
+     "This squares the difference of the two functions; an area integrates the difference itself."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-12",
+   "unit": "unit-8",
+   "topic": "washer-method-other-axes",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "The region bounded by $y = \\ln(x + 1)$, the $x$-axis and the line $x = 3$ is revolved about the line $y = -1$. What is the volume of the solid?",
+   "options": [
+    "$24.150$",
+    "$8.158$",
+    "$7.687$",
+    "$33.575$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Washers about $y = -1$: outer radius $\\ln(x + 1) + 1$, inner radius $0 - (-1) = 1$. The volume is $\\pi\\int_0^3 \\left[\\left(\\ln(x + 1) + 1\\right)^2 - 1^2\\right]dx$, about $24.150$.",
+    "options": [
+     "Outer radius $\\ln(x + 1) + 1$ and inner radius 1, both measured from $y = -1$.",
+     "This revolves the region about the $x$-axis, not about $y = -1$.",
+     "The washer integral without its factor of $\\pi$.",
+     "This uses the outer radius alone; the hole of radius 1 has to be taken out."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-1-13",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A particle moves along a line with velocity $v(t) = (t + 1)\\cos t$. What is the total distance the particle travels from $t = 0$ to $t = 4$?",
+   "options": [
+    "$8.579$",
+    "$-5.438$",
+    "$5.438$",
+    "$1.571$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Total distance is $\\int_0^4 |v(t)|\\,dt \\approx 8.579$. The particle turns at $t = \\frac{\\pi}{2}$, where $v$ changes sign, so the motion forward and back both count.",
+    "options": [
+     "The integral of the speed $|v(t)|$, which counts motion both ways.",
+     "This is the displacement, $\\int_0^4 v(t)\\,dt$, where motion back cancels motion forward.",
+     "This is the size of the displacement; it still lets the two directions cancel.",
+     "This is the distance traveled before the particle turns at $t = \\frac{\\pi}{2}$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-01",
+   "unit": "unit-4",
+   "topic": "straight-line-motion",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-2-s1",
+   "q": "At what time $t$ does the particle change from moving right to moving left?",
+   "options": [
+    "$0.183$",
+    "$1.571$",
+    "$2.958$",
+    "$3.142$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$v(t) = 0$ where $\\sin t = \\ln 1.2$: $t \\approx 0.183$ and $t \\approx 2.958$. At $t \\approx 2.958$, $v$ changes from positive to negative, so the particle turns from moving right to moving left.",
+    "options": [
+     "Here $v$ changes from negative to positive: the particle turns from moving left to moving right.",
+     "Here $v$ is greatest, so the particle moves right fastest; it does not turn.",
+     "Here $v$ changes from positive to negative, the turn from right to left.",
+     "Here $v(\\pi) = e^0 - 1.2 = -0.2$, so the particle is already moving left."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-02",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-2-s1",
+   "q": "What is the position of the particle at $t = 4$?",
+   "options": [
+    "$2.996$",
+    "$1.996$",
+    "$2.957$",
+    "$3.957$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Position is the starting position plus the displacement: $x(4) = 1 + \\int_0^4 v(t)\\,dt \\approx 2.996$.",
+    "options": [
+     "The starting position $x = 1$ plus the integral of $v$ from 0 to 4.",
+     "This is the displacement; the starting position $x = 1$ is left out.",
+     "This is the total distance traveled, not a position.",
+     "This adds the total distance to the start, as if the particle never moved left."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-03",
+   "unit": "unit-8",
+   "topic": "motion-with-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-2-s1",
+   "q": "What is the total distance the particle travels from $t = 0$ to $t = 4$?",
+   "options": [
+    "$2.957$",
+    "$1.996$",
+    "$2.996$",
+    "$2.477$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Total distance is $\\int_0^4 |v(t)|\\,dt \\approx 2.957$: the particle moves left, then right, then left again, and every stretch counts.",
+    "options": [
+     "The integral of the speed, so motion left and right both add.",
+     "This is the displacement; the stretches of motion to the left cancel some of the motion to the right.",
+     "This is the position at $t = 4$, not a distance.",
+     "This is the distance moved right, between $t \\approx 0.183$ and $t \\approx 2.958$; the stretches to the left are missing."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-04",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = 3x^2 - e^x$. At what value of $x$ in the interval $(1, 4)$ does the graph of $f$ have a horizontal tangent line?",
+   "options": [
+    "$2.833$",
+    "$0.204$",
+    "$3.733$",
+    "$1.792$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A horizontal tangent needs $f'(x) = 6x - e^x = 0$. The calculator gives $x \\approx 0.204$ and $x \\approx 2.833$; only $x \\approx 2.833$ lies in $(1, 4)$.",
+    "options": [
+     "The zero of $f'(x) = 6x - e^x$ between 1 and 4.",
+     "This zero of $f'$ is not in the interval $(1, 4)$.",
+     "This is a zero of $f$, where the graph crosses the $x$-axis, not where its slope is 0.",
+     "This is where $f''(x) = 6 - e^x$ is 0, where the slope of $f$ is greatest."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-05",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Water is poured into a cone-shaped cup, vertex down, at 5 cubic inches per second. At depth $h$ the radius of the water's surface is $\\frac{h}{2}$, so the volume is $V = \\frac{\\pi h^3}{12}$. How fast is the depth rising when $h = 3.2$ inches?",
+   "options": [
+    "$0.622$ inches per second",
+    "$0.155$ inches per second",
+    "$1.865$ inches per second",
+    "$40.212$ inches per second"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Differentiate with respect to $t$: $\\frac{dV}{dt} = \\frac{\\pi h^2}{4}\\frac{dh}{dt}$. So $5 = \\frac{\\pi (3.2)^2}{4}\\frac{dh}{dt}$ and $\\frac{dh}{dt} = \\frac{20}{\\pi (3.2)^2} \\approx 0.622$ inches per second.",
+    "options": [
+     "$\\frac{dh}{dt} = \\frac{dV/dt}{\\pi h^2 / 4}$ at $h = 3.2$.",
+     "This uses $\\frac{dV}{dt} = \\pi h^2\\frac{dh}{dt}$, as if the radius were $h$, not $\\frac{h}{2}$.",
+     "This differentiates $\\frac{\\pi h^3}{12}$ to $\\frac{\\pi h^2}{12}$, leaving out the factor 3 from the power rule.",
+     "This multiplies by $\\frac{\\pi h^2}{4}$ instead of dividing by it."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-06",
+   "unit": "unit-5",
+   "topic": "candidates-test",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "What is the absolute minimum value of $f(x) = x^2 - 3\\sin(2x)$ on the closed interval $[-1, 3]$?",
+   "options": [
+    "$-2.472$",
+    "$0.672$",
+    "$3.728$",
+    "$-3.000$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f'(x) = 2x - 6\\cos(2x) = 0$ at $x \\approx -0.946$ and $x \\approx 0.672$. Candidates: $f(-1) \\approx 3.728$, $f(-0.946) \\approx 3.741$, $f(0.672) \\approx -2.472$, $f(3) \\approx 9.838$. The least is $-2.472$.",
+    "options": [
+     "The smallest value of $f$ among the endpoints and the critical points.",
+     "This is where the minimum occurs, not the minimum value.",
+     "This is $f(-1)$, the value at the left endpoint, which is greater than $f$ at the critical point near 0.672.",
+     "This is the least value of $-3\\sin(2x)$ alone; the $x^2$ term changes where and how low $f$ goes."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-07",
+   "unit": "unit-5",
+   "topic": "concavity",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "The derivative of a function $f$ is $f'(x) = x\\cos x$. At what value of $x$ in the interval $(0, 2)$ does the graph of $f$ have a point of inflection?",
+   "options": [
+    "$0.860$",
+    "$1.571$",
+    "$0.785$",
+    "$1.000$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f''(x) = \\cos x - x\\sin x$, which is 0 at $x \\approx 0.860$ in $(0, 2)$ and changes from positive to negative there, so $f$ changes from concave up to concave down.",
+    "options": [
+     "The zero of $f''(x) = \\cos x - x\\sin x$, where $f''$ changes sign.",
+     "This is a zero of $f'$, where $f$ has a critical point (here a relative maximum), not an inflection point.",
+     "This is where $\\cos x = \\sin x$, from dropping the factor $x$ in the product rule.",
+     "At $x = 1$, $f''(1) = \\cos 1 - \\sin 1 < 0$; the sign change of $f''$ is before 1."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-08",
+   "unit": "unit-5",
+   "topic": "increasing-decreasing",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "The derivative of a function $g$ is $g'(x) = e^{x/2} - 2x$. On which interval is $g$ decreasing?",
+   "options": [
+    "$(0.715, 4.307)$",
+    "$(0, 0.715)$",
+    "$(4.307, \\infty)$",
+    "$(-\\infty, 0.715)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$g'(x) = 0$ at $x \\approx 0.715$ and $x \\approx 4.307$; between them $e^{x/2} < 2x$, so $g' < 0$ and $g$ is decreasing.",
+    "options": [
+     "$g' < 0$ between its two zeros.",
+     "Here $g' > 0$ (for example $g'(0) = 1$), so $g$ is increasing.",
+     "Here $e^{x/2}$ has passed $2x$ again, so $g' > 0$ and $g$ is increasing.",
+     "For negative $x$, $e^{x/2} > 0 > 2x$, and up to the first zero $e^{x/2}$ stays above $2x$, so $g' > 0$ and $g$ is increasing."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-09",
+   "unit": "unit-6",
+   "topic": "ftc-definite-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A function $f$ has $f'(x) = \\ln(x^2 + 2)$ and $f(1) = 3$. What is $f(4)$?",
+   "options": [
+    "$9.204$",
+    "$6.204$",
+    "$11.671$",
+    "$10.043$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f(4) = f(1) + \\int_1^4 \\ln(x^2 + 2)\\,dx$, which is about $3 + 6.204 = 9.204$.",
+    "options": [
+     "The known value plus the integral of $f'$ from 1 to 4.",
+     "This is the change $f(4) - f(1)$; add $f(1) = 3$.",
+     "This multiplies the rate at $x = 4$ by the width 3, as if the rate were constant.",
+     "This integrates from 0, but the known value is at $x = 1$."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-10",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the midpoint Riemann sum for $\\int_0^2 e^{x^2}\\,dx$ with two subintervals of equal width?",
+   "options": [
+    "$10.772$",
+    "$30.517$",
+    "$16.453$",
+    "$3.718$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The subintervals are $[0, 1]$ and $[1, 2]$, with midpoints 0.5 and 1.5: $1 \\cdot e^{0.25} + 1 \\cdot e^{2.25} \\approx 10.772$.",
+    "options": [
+     "Width 1 times the heights at the midpoints 0.5 and 1.5.",
+     "This is the trapezoidal sum with the same two subintervals.",
+     "This is the value of the integral itself, not the midpoint sum.",
+     "This is the left Riemann sum, with heights at 0 and 1."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-11",
+   "unit": "unit-6",
+   "topic": "accumulation-of-change",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "People enter a park at the rate $E(t) = 1200e^{-(t - 3)^2/2}$ people per hour, for $0 \\le t \\le 8$ hours. To the nearest whole person, how many people enter the park over the 8 hours?",
+   "options": [
+    "3004",
+    "375",
+    "1200",
+    "9600"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The number entering is $\\int_0^8 E(t)\\,dt \\approx 3003.893$, about 3004 people.",
+    "options": [
+     "The integral of the rate over the 8 hours.",
+     "This is the average rate, $\\frac{1}{8}\\int_0^8 E(t)\\,dt$, in people per hour, not a number of people.",
+     "This is the greatest rate, at $t = 3$, not an amount.",
+     "This multiplies the greatest rate by 8 hours, as if the rate stayed at its peak."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-12",
+   "unit": "unit-8",
+   "topic": "cross-sections-squares",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The base of a solid is the region bounded by $y = 2e^{-x^2}$, the $x$-axis, the $y$-axis and the line $x = 1.2$. Cross sections perpendicular to the $x$-axis are squares. What is the volume of the solid?",
+   "options": [
+    "$2.466$",
+    "$1.613$",
+    "$7.746$",
+    "$1.233$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A square with side $2e^{-x^2}$ has area $\\left(2e^{-x^2}\\right)^2 = 4e^{-2x^2}$, so the volume is $\\int_0^{1.2} 4e^{-2x^2}\\,dx \\approx 2.466$.",
+    "options": [
+     "The integral of the square's area, side squared.",
+     "This integrates the side length, the area of the base, not the area of each square.",
+     "This puts in a factor of $\\pi$; a square cross section has no $\\pi$.",
+     "This is the volume for isosceles right triangles with a leg on the base, half of each square."
+    ]
+   }
+  },
+  {
+   "type": "single",
+   "calc": true,
+   "id": "calc-exam-2-13",
+   "unit": "unit-8",
+   "topic": "average-value",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The temperature of a room is $T(t) = 20 + 10e^{-0.1t}\\cos\\left(\\frac{t}{3}\\right)$ degrees Celsius, $t$ hours after midnight. What is the average temperature of the room from $t = 0$ to $t = 10$?",
+   "options": [
+    "$20.931$ degrees Celsius",
+    "$209.309$ degrees Celsius",
+    "$23.194$ degrees Celsius",
+    "$-1.361$ degrees Celsius"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Average value: $\\frac{1}{10 - 0}\\int_0^{10} T(t)\\,dt \\approx 20.931$ degrees Celsius.",
+    "options": [
+     "The integral divided by the length of the interval.",
+     "This is the integral without dividing by the 10 hours.",
+     "This averages the two endpoint temperatures, which ignores everything in between.",
+     "This is the average rate of change of $T$, in degrees per hour, not its average value."
+    ]
+   }
+  }
+ ]
+}

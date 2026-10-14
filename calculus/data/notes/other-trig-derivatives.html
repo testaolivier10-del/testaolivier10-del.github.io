@@ -1,0 +1,72 @@
+<p>You know the derivatives of $\sin x$ and $\cos x$. The other four trigonometric functions, $\tan x$, $\cot x$, $\sec x$ and $\csc x$, are all fractions built from those two. So the quotient rule, plus one identity, gives every one of their derivatives. This page works them out, shows a pattern that makes the signs easy to remember, and practices them on exact values.</p>
+
+<h2>Rewrite with sine and cosine</h2>
+<table class="compare">
+<thead><tr><th>Function</th><th>In terms of sine and cosine</th></tr></thead>
+<tbody>
+<tr><td>$\tan x$</td><td>$\frac{\sin x}{\cos x}$</td></tr>
+<tr><td>$\cot x$</td><td>$\frac{\cos x}{\sin x}$</td></tr>
+<tr><td>$\sec x$</td><td>$\frac{1}{\cos x}$</td></tr>
+<tr><td>$\csc x$</td><td>$\frac{1}{\sin x}$</td></tr>
+</tbody>
+</table>
+<p>Every function in the table is a quotient, defined where its denominator is not 0. The one identity you need is the Pythagorean identity, $\sin^2 x + \cos^2 x = 1$.</p>
+
+<h2>The derivative of tangent</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\frac{d}{dx}(\tan x)$.</p>
+<p>High $= \sin x$, d-high $= \cos x$. Low $= \cos x$, d-low $= -\sin x$.</p>
+<p>Quotient rule: $\frac{(\cos x)(\cos x) - (\sin x)(-\sin x)}{\cos^2 x} = \frac{\cos^2 x + \sin^2 x}{\cos^2 x}$.</p>
+<p>Identity: the numerator is 1, so the derivative is $\frac{1}{\cos^2 x} = \sec^2 x$.</p>
+</div>
+<figure id="fig-tan" data-fig="tangent-sec-squared"><figcaption>$\tan x$ and its derivative $\sec^2 x$. The slope of tangent is 1 at the origin and grows toward the asymptotes.</figcaption></figure>
+<p>The picture agrees. The graph of $\tan x$ always rises on $\left( -\frac{\pi}{2}, \frac{\pi}{2} \right)$, gently through the origin with slope $\sec^2 0 = 1$, then more and more steeply near the asymptotes, where $\cos x \to 0$ and $\sec^2 x$ grows without bound. Since $\cos^2 x \le 1$, $\sec^2 x = \frac{1}{\cos^2 x} \ge 1$: no slope of $\tan x$ is ever less than 1.</p>
+
+<h2>The derivative of cotangent</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\frac{d}{dx}(\cot x)$.</p>
+<p>$\frac{(-\sin x)(\sin x) - (\cos x)(\cos x)}{\sin^2 x} = \frac{-\left( \sin^2 x + \cos^2 x \right)}{\sin^2 x} = \frac{-1}{\sin^2 x} = -\csc^2 x$.</p>
+</div>
+
+<h2>Secant and cosecant: a constant on top</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $\frac{d}{dx}(\sec x)$.</p>
+<p>High $= 1$, d-high $= 0$. Low $= \cos x$, d-low $= -\sin x$.</p>
+<p>$\frac{(0)(\cos x) - (1)(-\sin x)}{\cos^2 x} = \frac{\sin x}{\cos^2 x} = \frac{1}{\cos x} \cdot \frac{\sin x}{\cos x} = \sec x\tan x$.</p>
+</div>
+<p>The same steps with $\csc x = \frac{1}{\sin x}$ give $\frac{0 - \cos x}{\sin^2 x} = -\csc x\cot x$.</p>
+
+<h2>All six, and the "co-" pattern</h2>
+<table class="compare">
+<thead><tr><th>$f(x)$</th><th>$f'(x)$</th><th>Partner</th><th>Partner's derivative</th></tr></thead>
+<tbody>
+<tr><td>$\sin x$</td><td>$\cos x$</td><td>$\cos x$</td><td>$-\sin x$</td></tr>
+<tr><td>$\tan x$</td><td>$\sec^2 x$</td><td>$\cot x$</td><td>$-\csc^2 x$</td></tr>
+<tr><td>$\sec x$</td><td>$\sec x\tan x$</td><td>$\csc x$</td><td>$-\csc x\cot x$</td></tr>
+</tbody>
+</table>
+<p>Read across each row. The partner on the right is the "co-" function: cosine, cotangent, cosecant. Its derivative is the left-hand derivative with every function swapped for its co-function and a minus sign in front. So you only need to learn the left column; the right column follows.</p>
+
+<h2>Exact values</h2>
+<p>On no-calculator questions, evaluate these derivatives at the standard angles by first writing each piece in terms of sine and cosine.</p>
+<div class="worked">
+<p><b>Worked example 4.</b> Find the slope of $y = \sec x$ at $x = \frac{\pi}{3}$.</p>
+<p>$\cos \frac{\pi}{3} = \frac{1}{2}$ and $\sin \frac{\pi}{3} = \frac{\sqrt{3}}{2}$, so $\sec \frac{\pi}{3} = 2$ and $\tan \frac{\pi}{3} = \sqrt{3}$.</p>
+<p>Slope: $\sec x\tan x = 2\sqrt{3}$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 5.</b> Write the line tangent to $y = \tan x$ at $x = \frac{\pi}{4}$.</p>
+<p>Point: $\tan \frac{\pi}{4} = 1$. Slope: $\sec^2 \frac{\pi}{4} = \frac{1}{\left( \sqrt{2}/2 \right)^2} = 2$.</p>
+<p>Line: $y = 1 + 2\left( x - \frac{\pi}{4} \right)$.</p>
+</div>
+
+<h2>Combining with the other rules</h2>
+<p>These derivatives work with every rule so far. For $y = x\tan x$, the product rule gives $\tan x + x\sec^2 x$. For $y = \sec x - 2\cot x$, the difference and constant multiple rules give $\sec x\tan x + 2\csc^2 x$; note the double negative.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Signs: only the "co-" derivatives are negative.</li>
+<li>Squares: $(\tan x)' = \sec^2 x$, not $\sec x$; $(\sec x)' = \sec x\tan x$, not $\tan^2 x$.</li>
+<li>Degrees: all of these formulas are for radians.</li>
+</ul>
+<p>That completes the basic derivatives of Unit 2. Unit 3 handles functions placed inside other functions, such as $\sin\left( x^2 \right)$.</p>

@@ -1,0 +1,5 @@
+{
+ "exponential-model": {
+  "def": "A quantity whose rate of change is proportional to its size, $\\frac{dy}{dt} = ky$, so that $y = y_0e^{kt}$ with $y_0 = y(0)$. The constant $k$ is the growth constant ($k > 0$) or decay constant ($k < 0$): the rate of change as a fraction of the current amount, per unit of time."
+ }
+}

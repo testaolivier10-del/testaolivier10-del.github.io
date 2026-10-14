@@ -1,0 +1,70 @@
+<p>Unit 1 asked whether change can happen at an instant and built the tool to answer it: the limit. This page puts that tool to work. You will measure change over an interval, shrink the interval, and let a limit finish the job. Everything in Unit 2 grows out of the one formula you meet here.</p>
+
+<h2>Average rate of change: a change over a change</h2>
+<p>Suppose a delivery drone is 14 meters above the street at $t = 2$ seconds and 47 meters up at $t = 6$ seconds. It climbed $47 - 14 = 33$ meters in $6 - 2 = 4$ seconds, so on average it climbed $\frac{33}{4} = 8.25$ meters per second. That number is an <b>average rate of change</b>.</p>
+<p>For any function $f$ on an interval $[a, b]$:</p>
+<p>$$\text{average rate of change} = \frac{f(b) - f(a)}{b - a}.$$</p>
+<p>Three habits keep this right every time:</p>
+<ul>
+<li><b>Subtract in the same order on top and bottom.</b> Later value minus earlier value, over later time minus earlier time.</li>
+<li><b>Divide by the change in input.</b> The difference $f(b) - f(a)$ is how much $f$ changed; it is not yet a rate.</li>
+<li><b>Name the units.</b> The units are output units per input unit: meters per second, gallons per minute, dollars per item.</li>
+</ul>
+<p>An average describes a whole interval. The drone might have climbed fast at first and slowly later; 8.25 meters per second hides that. It also does not tell you how high the drone was. A sentence that interprets an average rate names the quantity, its units and the interval: "Between $t = 2$ and $t = 6$ seconds, the drone's altitude increased by an average of 8.25 meters per second."</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> The volume of water in a tank is $V(t)$ gallons after $t$ minutes, with $V(3) = 120$ and $V(8) = 95$. Find the average rate of change of $V$ on $[3, 8]$ and interpret it.</p>
+<p>Change in volume: $V(8) - V(3) = 95 - 120 = -25$ gallons. Change in time: $8 - 3 = 5$ minutes.</p>
+<p>Average rate: $\frac{-25}{5} = -5$ gallons per minute.</p>
+<p>Meaning: between $t = 3$ and $t = 8$ minutes, the volume of water decreased by an average of 5 gallons per minute. The negative sign means the tank was losing water.</p>
+</div>
+
+<h2>The picture: a secant line</h2>
+<p>Plot the two points $(a, f(a))$ and $(b, f(b))$ on the graph of $f$ and draw the line through them. That line is a <b>secant line</b>. Its slope is rise over run, $\frac{f(b) - f(a)}{b - a}$, which is exactly the average rate of change. So every average rate you compute is the slope of a secant line, and every secant slope you read from a graph is an average rate.</p>
+<figure id="fig-secants" data-fig="secants-closing-in"><figcaption>Secant lines from $P$ on the graph of $f(x) = \frac{x^2}{4} + 1$, with their slopes. As $Q$ moves toward $P$, the slopes close in on 0.5.</figcaption></figure>
+
+<h2>Shrinking the interval: the difference quotient</h2>
+<p>To learn how fast $f$ changes at one input $x = a$, look at shorter and shorter intervals that start at $a$. Write the far end as $a + h$, where $h$ is the width of the interval. The average rate on that interval is the <b>difference quotient</b>:</p>
+<p>$$\frac{f(a + h) - f(a)}{h}.$$</p>
+<p>The number $h$ can be positive (an interval to the right of $a$) or negative (an interval to the left). Look at <a class="figref" href="#fig-secants">the figure</a>: for $f(x) = \frac{x^2}{4} + 1$ and $a = 1$, the secant slopes for $h = 3, 2, 1, 0.4$ are $1.25, 1, 0.75, 0.6$. As $h$ shrinks, the second point slides toward $P$ and the secant lines pivot toward one line. Their slopes close in on a single number.</p>
+
+<h2>The instantaneous rate of change is a limit</h2>
+<p>You cannot simply put $h = 0$ into the difference quotient: that gives $\frac{f(a) - f(a)}{0} = \frac{0}{0}$, an indeterminate form. Instead, take the limit. The <b>instantaneous rate of change</b> of $f$ at $x = a$ is</p>
+<p>$$\lim_{h \to 0} \frac{f(a + h) - f(a)}{h},$$</p>
+<p>when that limit exists. The method is the limit algebra of Unit 1: expand, simplify until the factor $h$ cancels, then let $h \to 0$.</p>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Find the instantaneous rate of change of $f(x) = \frac{x^2}{4} + 1$ at $x = 1$.</p>
+<p>Values: $f(1) = \frac{1}{4} + 1 = \frac{5}{4}$ and $f(1 + h) = \frac{(1 + h)^2}{4} + 1 = \frac{1 + 2h + h^2}{4} + 1$.</p>
+<p>Difference: $f(1 + h) - f(1) = \frac{2h + h^2}{4}$. Keep the middle term $2h$ when you square $1 + h$; dropping it is the most common slip.</p>
+<p>Quotient, for $h \ne 0$: $\frac{2h + h^2}{4h} = \frac{h(2 + h)}{4h} = \frac{2 + h}{4}$.</p>
+<p>Limit: $\lim_{h \to 0} \frac{2 + h}{4} = \frac{2}{4} = \frac{1}{2}$. The rate of change of $f$ at $x = 1$ is $\frac{1}{2}$, the number the secant slopes in the figure were closing in on.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 3.</b> A cart rolls so that it has traveled $s(t) = 5t^2$ meters after $t$ seconds. How fast is it moving at $t = 2$?</p>
+<p>Difference quotient: $\frac{s(2 + h) - s(2)}{h} = \frac{5(4 + 4h + h^2) - 20}{h} = \frac{20h + 5h^2}{h} = 20 + 5h$.</p>
+<p>For $h = 0.1$ the average is 20.5 meters per second; for $h = 0.01$ it is 20.05. The limit is $\lim_{h \to 0} (20 + 5h) = 20$, so at the instant $t = 2$ the cart is moving at 20 meters per second.</p>
+</div>
+
+<h2>Average versus instantaneous</h2>
+<table class="compare">
+<thead><tr><th></th><th>Average rate of change</th><th>Instantaneous rate of change</th></tr></thead>
+<tbody>
+<tr><td>Describes</td><td>an interval $[a, b]$</td><td>one input $x = a$</td></tr>
+<tr><td>Formula</td><td>$\frac{f(b) - f(a)}{b - a}$</td><td>$\lim_{h \to 0} \frac{f(a + h) - f(a)}{h}$</td></tr>
+<tr><td>On the graph</td><td>slope of a secant line</td><td>the limit of secant slopes</td></tr>
+<tr><td>Needs</td><td>two values of $f$</td><td>a limit</td></tr>
+<tr><td>Units</td><td>output per input</td><td>output per input</td></tr>
+</tbody>
+</table>
+<p>Both rates have the same units. The difference is what they describe: a stretch of time, or one moment.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><b>A value over a time is not a rate.</b> The drone's altitude at $t = 5$ divided by 5 ignores where it started. A rate always compares two changes.</li>
+<li><b>Substituting $h = 0$ too early.</b> That gives $\frac{0}{0}$, which says only that more algebra is needed.</li>
+<li><b>Losing the middle term.</b> $(a + h)^2 = a^2 + 2ah + h^2$.</li>
+<li><b>Treating an average as an instant.</b> An average on $[2, 6]$ is not the rate at $t = 4$.</li>
+</ul>
+<p>The next topic gives the instantaneous rate its own name and notation, and turns it into a whole new function.</p>

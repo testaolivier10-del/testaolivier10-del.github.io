@@ -146,7 +146,7 @@
     }
     function figure(glide){
       // Drawn at the space it has (down to 320 units) so a phone sees the whole tree, tip names included, without scrolling sideways.
-      var fwW = fw0() ? fw0().clientWidth : 0;
+      var fwW = fw0() ? fw0().clientWidth : 0; if(fwW) lastW = fwW; watchW();
       var t = tree(), s = st.show, o = { marks: marks(), sel: st.sel, drop: !!t.characters && !st.checked[t.id], hot: dragHot, w: fwW && fwW < 600 ? Math.max(320, Math.round(fwW)) : 600 };
       if(s){ var m = P.find(st.root, s.mrca); o.mrca = s.kind === 'mrca' ? m : null; o.bracket = s.bracket; o.miss = s.miss; }
       else if(st.sel.length >= 2){ var lm = P.mrca(st.root, st.sel); o.mrca = lm; o.bracket = lm.tips; }
@@ -176,7 +176,11 @@
       figure();
     }
     var refocus = null, dragHot = null, lastW = 0;
-    window.addEventListener('resize', function(){ var w = fw0() ? fw0().clientWidth : 0; if(w && Math.abs(w - lastW) > 30 && w < 640){ lastW = w; figure(); } });
+    function onW(){ var w = fw0() ? fw0().clientWidth : 0; if(w && Math.abs(w - lastW) > 30 && (w < 640 || lastW < 600)){ lastW = w; figure(); } }
+    window.addEventListener('resize', onW);
+    // The stage can change width without a window resize (the Tool Studio moves the figure in after the first draw).
+    var watched = null;
+    function watchW(){ var el = fw0(); if(el && el !== watched && window.ResizeObserver){ watched = el; new ResizeObserver(function(){ requestAnimationFrame(onW); }).observe(el); } }
     function fw0(){ return rc.querySelector('.tr-figwrap'); }
     function reducedM(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
     function toggleTip(id){

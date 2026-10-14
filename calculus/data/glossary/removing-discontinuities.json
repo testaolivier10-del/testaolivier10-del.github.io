@@ -1,0 +1,5 @@
+{
+ "removing-discontinuity": {
+  "def": "Making a function continuous at a point by choosing its value there, or a constant in its formula. A removable discontinuity is removed by defining $f(c) = \\lim_{x \\to c} f(x)$; a piecewise function is made continuous at a break point by choosing constants so both pieces and the value agree. Jump and infinite discontinuities cannot be removed this way."
+ }
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Differential Equations — AP® Calculus AB Notes</title>
+<meta name="description" content="So far you have been handed a function and asked for its derivative. Many real questions run the other way.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/modeling-with-des.html">
+<meta property="og:title" content="Writing Differential Equations — AP® Calculus AB Notes">
+<meta property="og:description" content="So far you have been handed a function and asked for its derivative. Many real questions run the other way.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/modeling-with-des.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/modeling-with-des.html#reading",
+      "name": "Writing Differential Equations",
+      "url": "https://levlprep.com/calculus/notes/modeling-with-des.html",
+      "description": "So far you have been handed a function and asked for its derivative. Many real questions run the other way.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "writing differential equations ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differential Equations",
+          "item": "https://levlprep.com/calculus/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Writing Differential Equations: notes",
+          "item": "https://levlprep.com/calculus/notes/modeling-with-des.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="modeling-with-des" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 7 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+    <a class="bk-toc-chap" href="../units/unit-7.html"><span class="bk-toc-chap-n">7</span><span><b>Differential Equations</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-7"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="modeling-with-des"><a href="#main" aria-current="page"><span class="bk-toc-n">7.1</span>Writing Differential Equations</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-a-differential-equation-is">What a differential equation is</a><a href="#translating-proportional-to">Translating &quot;proportional to&quot;</a><a href="#the-sign-of-the-rate">The sign of the rate</a><a href="#finding-the-constant">Finding the constant</a><a href="#reading-a-model-from-data">Reading a model from data</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="verifying-solutions"><a href="verifying-solutions.html"><span class="bk-toc-n">7.2</span>Verifying Solutions to Differential Equations</a></li><li data-toc-t="sketching-slope-fields"><a href="sketching-slope-fields.html"><span class="bk-toc-n">7.3</span>Sketching Slope Fields</a></li><li data-toc-t="reasoning-with-slope-fields"><a href="reasoning-with-slope-fields.html"><span class="bk-toc-n">7.4</span>Reasoning with Slope Fields</a></li><li data-toc-t="separation-of-variables"><a href="separation-of-variables.html"><span class="bk-toc-n">7.6</span>General Solutions by Separation of Variables</a></li><li data-toc-t="particular-solutions"><a href="particular-solutions.html"><span class="bk-toc-n">7.7</span>Particular Solutions from Initial Conditions</a></li><li data-toc-t="exponential-models"><a href="exponential-models.html"><span class="bk-toc-n">7.8</span>Exponential Models</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Differential Equations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Writing Differential Equations: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/modeling-with-des.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 7 &middot; Topic 7.1 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Writing Differential Equations</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="modeling-with-des">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fmodeling-with-des.html&amp;title=Writing%20Differential%20Equations%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/modeling-with-des.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>So far you have been handed a <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> and asked for its <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a>. Many real questions run the other way. A biologist cannot write down the size of a bacteria culture for every hour, but she can say how fast it grows: the bigger the culture, the faster it grows. A cook cannot predict the temperature of soup minute by minute, but he knows hot soup cools faster than warm soup. Each of these is a statement about a <b>rate</b>. Written with a derivative, it becomes a <b><span class="gl" tabindex="0" data-c="differential-equation">differential equation</span></b>. This page is about writing and reading them; later topics solve them.</p>
+
+<h2 id="what-a-differential-equation-is">What a differential equation is</h2>
+<p>A differential equation is an equation that contains the derivative of an unknown function. Here are three:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>P</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0.26</mn><mi>P</mi><mspace width="2em"></mspace><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><mn>20</mn><mo stretchy="false">)</mo><mspace width="2em"></mspace><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>x</mi><mo>+</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dP}{dt} = 0.26P \qquad \frac{dT}{dt} = -0.05(T - 20) \qquad \frac{dy}{dx} = x + y</annotation></semantics></math></p>
+<p>Read the first one aloud: "the rate of change of <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math> with respect to <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> equals 0.26 times <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math>." It does not tell you what <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math> is at any time. It tells you how fast <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math> changes <i>once you know</i> <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math>. If <math class="calc-m"><semantics><mrow><mi>P</mi><mo>=</mo><mn>500</mn></mrow><annotation encoding="application/x-tex">P = 500</annotation></semantics></math> cells, then <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math> is growing at <math class="calc-m"><semantics><mrow><mn>0.26</mn><mo>⋅</mo><mn>500</mn><mo>=</mo><mn>130</mn></mrow><annotation encoding="application/x-tex">0.26 \cdot 500 = 130</annotation></semantics></math> cells per hour. If <math class="calc-m"><semantics><mrow><mi>P</mi><mo>=</mo><mn>800</mn></mrow><annotation encoding="application/x-tex">P = 800</annotation></semantics></math>, it is growing at 208 cells per hour.</p>
+<p>That is the big shift. An ordinary equation such as <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y = x^2</annotation></semantics></math> gives values. A differential equation gives <b>rates</b>, and the rate usually depends on the current value.</p>
+
+<h2 id="translating-proportional-to">Translating "proportional to"</h2>
+<p>Most word problems use one phrase: <b><span class="gl" tabindex="0" data-c="proportional">proportional to</span></b>. "<math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> is proportional to <math class="calc-m"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math>" means <math class="calc-m"><semantics><mrow><mi>A</mi><mo>=</mo><mi>k</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">A = kB</annotation></semantics></math> for some constant <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math>, called the constant of proportionality. When <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> is a rate, it goes on the left as a derivative.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Words</th><th>Differential equation</th></tr></thead>
+<tbody>
+<tr><td>The rate of change of <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> is proportional to <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>.</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = ky</annotation></semantics></math></td></tr>
+<tr><td>The rate of change of <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> is proportional to the square root of <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>.</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><msqrt><mi>y</mi></msqrt></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = k\sqrt{y}</annotation></semantics></math></td></tr>
+<tr><td>The rate of change of <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> is inversely proportional to <math class="calc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y^2</annotation></semantics></math>.</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mi>k</mi><msup><mi>y</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = \frac{k}{y^2}</annotation></semantics></math></td></tr>
+<tr><td>The temperature changes at a rate proportional to the difference between <math class="calc-m"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math> and 20.</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><mn>20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dT}{dt} = k(T - 20)</annotation></semantics></math></td></tr>
+<tr><td>The rate of change of <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> with respect to <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is proportional to the product of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>.</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = kxy</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>Two checks catch most mistakes. First, the sentence talks about a <i>rate</i>, so a derivative must appear. "Grows proportionally to its size" is <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>P</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">\frac{dP}{dt} = kP</annotation></semantics></math>, never <math class="calc-m"><semantics><mrow><mi>P</mi><mo>=</mo><mi>k</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">P = kt</annotation></semantics></math>. Second, look at the variable after "proportional to". If it says the population, the right side uses <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math>, not <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>.</p>
+
+<h2 id="the-sign-of-the-rate">The sign of the rate</h2>
+<p>Words like "decreases" or "decays" fix a sign. "The amount of medicine decreases at a rate proportional to the amount present" is <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>A</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi>k</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\frac{dA}{dt} = -kA</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &gt; 0</annotation></semantics></math>. You could also write <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>A</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\frac{dA}{dt} = kA</annotation></semantics></math> and say <math class="calc-m"><semantics><mrow><mi>k</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &lt; 0</annotation></semantics></math>; both are correct if you state the sign.</p>
+<p>The sign of the right side tells you where the function rises or falls, before you know any formula. For <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0.4</mn><mo stretchy="false">(</mo><mn>50</mn><mo>−</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = 0.4(50 - y)</annotation></semantics></math>, the rate is positive when <math class="calc-m"><semantics><mrow><mi>y</mi><mo>&lt;</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">y &lt; 50</annotation></semantics></math> and negative when <math class="calc-m"><semantics><mrow><mi>y</mi><mo>&gt;</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">y &gt; 50</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> climbs toward 50 from below and falls toward 50 from above. That is a lot of information from one line.</p>
+
+<h2 id="finding-the-constant">Finding the constant</h2>
+<div class="worked">
+<p><b>Worked example.</b> Coffee at 90 °C sits in a 20 °C room. It cools at a rate proportional to the difference between its temperature and the room's. At 90 °C it is cooling at 3.5 °C per minute. Write the differential equation, then find the rate when the coffee is at 55 °C.</p>
+<p>Name the quantity: <math class="calc-m"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math>, the temperature in °C, at time <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> in minutes. "Proportional to the difference" gives <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><mn>20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dT}{dt} = k(T - 20)</annotation></semantics></math>.</p>
+<p>Use the known rate. Cooling means <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3.5</mn></mrow><annotation encoding="application/x-tex">\frac{dT}{dt} = -3.5</annotation></semantics></math> when <math class="calc-m"><semantics><mrow><mi>T</mi><mo>=</mo><mn>90</mn></mrow><annotation encoding="application/x-tex">T = 90</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3.5</mn><mo>=</mo><mi>k</mi><mo stretchy="false">(</mo><mn>90</mn><mo>−</mo><mn>20</mn><mo stretchy="false">)</mo><mo>=</mo><mn>70</mn><mi>k</mi></mrow><annotation encoding="application/x-tex">-3.5 = k(90 - 20) = 70k</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">k = -0.05</annotation></semantics></math> per minute.</p>
+<p>Now predict: at <math class="calc-m"><semantics><mrow><mi>T</mi><mo>=</mo><mn>55</mn></mrow><annotation encoding="application/x-tex">T = 55</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dT}{dt}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mo stretchy="false">(</mo><mn>55</mn><mo>−</mo><mn>20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= -0.05(55 - 20)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1.75</mn></mrow><annotation encoding="application/x-tex">= -1.75</annotation></semantics></math> °C per minute. The coffee still cools, at half the <a class="gl" href="../notes/straight-line-motion.html" data-c="speed">speed</a>, because it is half as far above room temperature.</p>
+</div>
+<figure id="fig-cooling"  class="calc-figure"><div class="calc-figimg" data-fig="cooling-rate-slopes"><img src="../figures/cooling-rate-slopes.svg" alt="The graph of T = 20 + 70e^(−0.05t) for t from 0 to 60 minutes falls from 90 °C toward the dashed room-temperature line at 20 °C. Tangent segments at T = 90, 55 and 30 have slopes −3.5, −1.75 and −0.5 °C per minute, each equal to −0.05 times (T − 20)." width="680" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The temperature of the coffee in the worked example. Each tangent segment has slope <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><mn>20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-0.05(T - 20)</annotation></semantics></math>, so the graph flattens as <math class="calc-m"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math> nears 20 °C. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Notice the units of <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math>. The left side is in °C per minute and <math class="calc-m"><semantics><mrow><mi>T</mi><mo>−</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">T - 20</annotation></semantics></math> is in °C, so <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> is in "per minute". In <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>P</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0.26</mn><mi>P</mi></mrow><annotation encoding="application/x-tex">\frac{dP}{dt} = 0.26P</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> in hours, <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0.26</mn></mrow><annotation encoding="application/x-tex">k = 0.26</annotation></semantics></math> per hour.</p>
+
+<h2 id="reading-a-model-from-data">Reading a model from data</h2>
+<p>A table can tell you which model fits. If a table lists <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>P</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dP}{dt}</annotation></semantics></math> and the ratio <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>P</mi><mo>/</mo><mi>d</mi><mi>t</mi></mrow><mi>P</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{dP/dt}{P}</annotation></semantics></math> is the same in every column, the rate is proportional to <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math>, and that ratio is <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math>. If the rate were the same in every column, the model would be <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>P</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">\frac{dP}{dt} = c</annotation></semantics></math>, a constant rate, and the graph would be a line.</p>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Writing the quantity instead of its rate: <math class="calc-m"><semantics><mrow><mi>P</mi><mo>=</mo><mi>k</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">P = kP</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mi>P</mi><mo>=</mo><mi>k</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">P = kt</annotation></semantics></math> for "grows at a rate proportional to its size".</li>
+<li>Using <math class="calc-m"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math> instead of <math class="calc-m"><semantics><mrow><mi>T</mi><mo>−</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">T - 20</annotation></semantics></math> in a cooling problem: the coffee cools toward room temperature, not toward 0 °C.</li>
+<li>Losing the sign: "decreases" needs a negative rate.</li>
+<li>Mixing up "proportional" (<math class="calc-m"><semantics><mrow><mi>k</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">ky</annotation></semantics></math>) and "inversely proportional" (<math class="calc-m"><semantics><mrow><mfrac><mi>k</mi><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{k}{y}</annotation></semantics></math>).</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:modeling-with-des">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="choosing-integration-methods.html"><span>&larr; Previous</span><b>Choosing an Antidifferentiation Technique</b></a><a class="tb-chapter-link next" href="verifying-solutions.html"><span>Next &rarr;</span><b>Verifying Solutions to Differential Equations</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:modeling-with-des">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

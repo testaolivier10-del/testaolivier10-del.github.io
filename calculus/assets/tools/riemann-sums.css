@@ -1,0 +1,77 @@
+/* Riemann sums trainer (calculus/assets/tools/riemann-sums.js). OWNED BY THIS
+   TOOL ONLY. Strip tones from the Okabe-Ito set the plots use: area above the
+   axis blue, below it vermillion (and a different outline, so colour is not
+   the only cue: the table in Details lists each term's sign). */
+.rs-card{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.rs-fig{display:flex;gap:12px;align-items:stretch;min-width:0;}
+.rs-plot{flex:1 1 auto;min-width:0;}
+.rs-plot svg{display:block;width:100%;height:auto;}
+.ls-root .rs-fig{flex:1;min-height:0;}
+.ls-root .rs-plot{position:relative;min-height:120px;}
+.ls-root .rs-plot svg{position:absolute;inset:0;width:100%;height:100%;max-height:none;}
+.rs-tank{flex:0 0 150px;display:flex;align-items:center;}
+.rs-tank[hidden]{display:none;}
+.rs-tank svg{display:block;width:100%;height:auto;max-height:100%;}
+@media (max-width:640px){.rs-tank{flex-basis:88px;}}
+
+.calc-plot .rs-strip{stroke-width:1.3;stroke-linejoin:round;cursor:pointer;}
+.calc-plot .rs-strip.is-pos{fill:rgba(0,114,178,.18);stroke:#0072B2;}
+.calc-plot .rs-strip.is-neg{fill:rgba(213,94,0,.20);stroke:#B34E00;stroke-dasharray:5 3;}
+.calc-plot .rs-strip.is-sel{stroke-width:2.6;fill-opacity:.9;}
+.calc-plot .rs-strip.is-pos.is-sel{fill:rgba(0,114,178,.34);}
+.calc-plot .rs-strip.is-neg.is-sel{fill:rgba(213,94,0,.36);}
+.calc-plot .rs-dot{fill:var(--ink);stroke:var(--white);stroke-width:1;}
+.calc-plot .rs-at{stroke:var(--ink-3,#777);stroke-width:1;stroke-dasharray:2 3;}
+:root[data-theme="dark"] .calc-plot .rs-strip.is-pos{fill:rgba(107,180,232,.22);stroke:#6BB4E8;}
+:root[data-theme="dark"] .calc-plot .rs-strip.is-neg{fill:rgba(242,154,92,.22);stroke:#F29A5C;}
+:root[data-theme="dark"] .calc-plot .rs-strip.is-pos.is-sel{fill:rgba(107,180,232,.40);}
+:root[data-theme="dark"] .calc-plot .rs-strip.is-neg.is-sel{fill:rgba(242,154,92,.40);}
+
+/* The kind-of-sum switch: four words on one line, even at 360 px. */
+.rs-seg{display:flex;padding:3px;border-radius:999px;background:var(--track,var(--paper));}
+.rs-seg > button{flex:1;min-width:0;min-height:40px;padding:0 4px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:800 13.5px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.rs-seg > button[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+.rs-seg > button:disabled{opacity:.45;cursor:not-allowed;}
+.ls-root .rs-seg.ls-seg > button{padding:0 4px;font-size:13.5px;}
+.rs-ctl{display:flex;flex-direction:column;gap:10px;}
+.rs-ctl .bt-ctl label{font-size:13px;}
+.rs-tablenote{margin:0;}
+
+/* The tank */
+.rs-tank-svg .rs-tank{fill:none;stroke:var(--ink-2,var(--ink));stroke-width:2.5;}
+.rs-tank-svg .rs-water{fill:#56B4E9;fill-opacity:.55;}
+.rs-tank-svg .rs-wave{fill:none;stroke:#0072B2;stroke-width:1.6;}
+.rs-tank-svg .rs-pipe{fill:none;stroke:var(--ink-3,#888);stroke-width:9;stroke-linecap:round;stroke-linejoin:round;}
+.rs-tank-svg .rs-pour{fill:none;stroke:#56B4E9;stroke-width:5;stroke-linecap:round;stroke-dasharray:7 5;animation:rs-pour .5s linear infinite;}
+.rs-tank-svg .rs-tk{stroke:var(--ink-3,#888);stroke-width:1.2;}
+.rs-tank-svg .rs-tkt{fill:var(--muted);font:700 10px var(--font-ui);}
+.rs-tank-svg .rs-tank-v{fill:var(--ink);font:900 13px var(--font-ui);}
+:root[data-theme="dark"] .rs-tank-svg .rs-water{fill:#3B8FC4;fill-opacity:.6;}
+:root[data-theme="dark"] .rs-tank-svg .rs-wave{stroke:#8FD0F5;}
+@keyframes rs-pour{to{stroke-dashoffset:-12;}}
+@media (prefers-reduced-motion: reduce){.rs-tank-svg .rs-pour{animation:none;}}
+
+/* Numbers in Details */
+.rs-tbl td.r,.ls-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;}
+.rs-tbl tr.hl,.ls-root .rs-cmp tr.hl{background:var(--ctint);}
+.rs-tbl tr.rs-later{opacity:.45;}
+.rs-nums math,.rs-cmp math{font-size:1.05em;}
+
+/* Test yourself: the figure and the table on the stage */
+.rs-qfig{margin:0;display:flex;flex-direction:column;gap:4px;min-height:0;}
+.rs-qfig svg{display:block;width:100%;height:auto;max-height:46vh;}
+.rs-qtable{overflow-x:auto;}
+.rs-qtable table{border-collapse:collapse;font:700 14px var(--font-ui);margin:6px auto;}
+.rs-qtable th,.rs-qtable td{border:1px solid var(--line);padding:6px 10px;text-align:center;font-variant-numeric:tabular-nums;}
+.rs-qtable caption{font:800 13px var(--font-ui);padding-bottom:4px;}
+.cd-o{display:inline;}
+
+/* Phones (docs/tools-phone-pass.md): labels at least 12 px. */
+.ls-root.ls-phone .rs-plot .calc-plot,.ls-root.ls-phone .rs-qfig .calc-plot{font-size:12.5px;}
+.ls-root.ls-phone .rs-qfig svg{max-height:none;}
+.ls-root.ls-phone .rs-fig.has-tank .rs-tank{flex-basis:112px;}
+.ls-root.ls-phone .rs-tank-svg .rs-tkt{font-size:20.5px;}
+.ls-root.ls-phone .rs-tank-svg .rs-tk-minor{display:none;}
+.ls-root.ls-phone .rs-tank-svg .rs-tank-v{font-size:21px;}
+/* keep the plot's right end clear of the Enlarge button */
+@media (max-width:640px){ .ls-root.ls-phone .rs-fig{padding-bottom:40px;} }

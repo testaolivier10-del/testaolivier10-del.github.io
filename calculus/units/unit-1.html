@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1: Limits and Continuity — AP® Calculus AB | LevlPrep</title>
+<meta name="description" content="Limits and Continuity: calculus lessons, free notes and exam-style practice, in course order.">
+<link rel="canonical" href="https://levlprep.com/calculus/units/unit-1.html">
+<meta property="og:title" content="Unit 1: Limits and Continuity — AP® Calculus AB | LevlPrep">
+<meta property="og:description" content="Limits and Continuity: calculus lessons, free notes and exam-style practice, in course order.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/calculus/units/unit-1.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://levlprep.com/calculus/units/unit-1.html#unit",
+      "name": "Limits and Continuity",
+      "url": "https://levlprep.com/calculus/units/unit-1.html",
+      "description": "Limits and Continuity: calculus lessons, free notes and exam-style practice, in course order.",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Limits and Continuity",
+          "item": "https://levlprep.com/calculus/units/unit-1.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-chapter">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail calc-nav-ref" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <div class="calc-toc-prog" data-toc-prog=""><div class="tb-progress-row"><span><b>0</b> of 88 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <form class="bk-toc-search" action="../search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search the notes&hellip;" aria-label="Search the notes"></form>
+    <nav class="tb-contents" aria-label="Course contents"><p class="bk-toc-group">Units</p><div class="tb-toc-mod open"><a class="tb-toc-modhead" href="#main" aria-current="page"><span class="tb-toc-num">1</span><span class="tb-toc-modtitle">Limits and Continuity</span><span class="tb-toc-count" data-toc-ch="unit-1">0/16</span></a><div class="tb-toc-topics"><a class="tb-toc-topic" href="../lessons/change-at-an-instant.html" data-toc-t="change-at-an-instant"><span class="tb-toc-tick"></span>Can Change Happen at an Instant?</a><a class="tb-toc-topic" href="../lessons/limit-notation.html" data-toc-t="limit-notation"><span class="tb-toc-tick"></span>What a Limit Is and How to Write It</a><a class="tb-toc-topic" href="../lessons/limits-from-plots.html" data-toc-t="limits-from-plots"><span class="tb-toc-tick"></span>Reading Limits from a Graph</a><a class="tb-toc-topic" href="../lessons/limits-from-tables.html" data-toc-t="limits-from-tables"><span class="tb-toc-tick"></span>Estimating Limits from Tables</a><a class="tb-toc-topic" href="../lessons/limit-laws.html" data-toc-t="limit-laws"><span class="tb-toc-tick"></span>Limit Laws</a><a class="tb-toc-topic" href="../lessons/limit-algebra.html" data-toc-t="limit-algebra"><span class="tb-toc-tick"></span>Limits by Algebra: Factor, Rationalize, Simplify</a><a class="tb-toc-topic" href="../lessons/choosing-limit-methods.html" data-toc-t="choosing-limit-methods"><span class="tb-toc-tick"></span>Choosing a Way to Find a Limit</a><a class="tb-toc-topic" href="../lessons/squeeze-theorem.html" data-toc-t="squeeze-theorem"><span class="tb-toc-tick"></span>The Squeeze Theorem</a><a class="tb-toc-topic" href="../lessons/limit-representations.html" data-toc-t="limit-representations"><span class="tb-toc-tick"></span>Limits Across Graphs, Tables and Formulas</a><a class="tb-toc-topic" href="../lessons/discontinuity-types.html" data-toc-t="discontinuity-types"><span class="tb-toc-tick"></span>Types of Discontinuity</a><a class="tb-toc-topic" href="../lessons/continuity-at-a-point.html" data-toc-t="continuity-at-a-point"><span class="tb-toc-tick"></span>Continuity at a Point</a><a class="tb-toc-topic" href="../lessons/continuity-on-intervals.html" data-toc-t="continuity-on-intervals"><span class="tb-toc-tick"></span>Continuity on an Interval</a><a class="tb-toc-topic" href="../lessons/removing-discontinuities.html" data-toc-t="removing-discontinuities"><span class="tb-toc-tick"></span>Removing a Discontinuity</a><a class="tb-toc-topic" href="../lessons/infinite-limits.html" data-toc-t="infinite-limits"><span class="tb-toc-tick"></span>Infinite Limits and Vertical Asymptotes</a><a class="tb-toc-topic" href="../lessons/limits-at-infinity.html" data-toc-t="limits-at-infinity"><span class="tb-toc-tick"></span>Limits at Infinity and Horizontal Asymptotes</a><a class="tb-toc-topic" href="../lessons/intermediate-value-theorem.html" data-toc-t="intermediate-value-theorem"><span class="tb-toc-tick"></span>The Intermediate Value Theorem</a></div></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-2.html"><span class="tb-toc-num">2</span><span class="tb-toc-modtitle">Differentiation: Definition and Fundamental Properties</span><span class="tb-toc-count" data-toc-ch="unit-2">0/10</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-3.html"><span class="tb-toc-num">3</span><span class="tb-toc-modtitle">Differentiation: Composite, Implicit, and Inverse Functions</span><span class="tb-toc-count" data-toc-ch="unit-3">0/6</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-4.html"><span class="tb-toc-num">4</span><span class="tb-toc-modtitle">Contextual Applications of Differentiation</span><span class="tb-toc-count" data-toc-ch="unit-4">0/7</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-5.html"><span class="tb-toc-num">5</span><span class="tb-toc-modtitle">Analytical Applications of Differentiation</span><span class="tb-toc-count" data-toc-ch="unit-5">0/12</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-6.html"><span class="tb-toc-num">6</span><span class="tb-toc-modtitle">Integration and Accumulation of Change</span><span class="tb-toc-count" data-toc-ch="unit-6">0/11</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-7.html"><span class="tb-toc-num">7</span><span class="tb-toc-modtitle">Differential Equations</span><span class="tb-toc-count" data-toc-ch="unit-7">0/7</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-8.html"><span class="tb-toc-num">8</span><span class="tb-toc-modtitle">Applications of Integration</span><span class="tb-toc-count" data-toc-ch="unit-8">0/12</span></a></div><p class="bk-toc-group">Skills</p><div class="tb-toc-mod"><a class="tb-toc-modhead" href="skills-math.html"><span class="tb-toc-num">S</span><span class="tb-toc-modtitle">Math you need</span><span class="tb-toc-count" data-toc-ch="skills-math">0/7</span></a></div></nav>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Limits and Continuity</span></nav>
+    <header class="tb-chapter-head bk-chap-head">
+      <div>
+        <p class="tb-chapter-eyebrow">Unit 1 &middot; 10&ndash;15% of the exam <span class="calc-beta calc-nav-ref">Beta</span></p>
+        <h1 class="tb-chapter-title">Limits and Continuity</h1>
+        <p class="tb-chapter-meta">16 topics &middot; <span data-unit-meta="unit-1">not practiced yet</span></p>
+      </div>
+      <p class="bk-chap-acts"><a class="bk-btn solid" href="../practice.html?unit=unit-1">Practice this unit</a><a class="bk-btn ghost" href="../unit-sheets/unit-1.html">Unit sheet</a></p>
+    </header>
+    <h2 class="bk-h" id="h-topics">Topics, in course order</h2>
+    <ol class="bk-list" aria-labelledby="h-topics"><li class="bk-row" data-topic="change-at-an-instant"><span class="bk-row-n">1.1</span><a class="bk-row-title" href="../lessons/change-at-an-instant.html">Can Change Happen at an Instant?</a><span class="bk-chip" data-chip-topic="change-at-an-instant">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/change-at-an-instant.html" aria-label="Lesson: Can Change Happen at an Instant?">Lesson</a><a class="bk-btn ghost" href="../notes/change-at-an-instant.html" aria-label="Notes: Can Change Happen at an Instant?">Notes</a></span></li><li class="bk-row" data-topic="limit-notation"><span class="bk-row-n">1.2</span><a class="bk-row-title" href="../lessons/limit-notation.html">What a Limit Is and How to Write It</a><span class="bk-chip" data-chip-topic="limit-notation">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/limit-notation.html" aria-label="Lesson: What a Limit Is and How to Write It">Lesson</a><a class="bk-btn ghost" href="../notes/limit-notation.html" aria-label="Notes: What a Limit Is and How to Write It">Notes</a></span></li><li class="bk-row" data-topic="limits-from-plots"><span class="bk-row-n">1.3</span><a class="bk-row-title" href="../lessons/limits-from-plots.html">Reading Limits from a Graph</a><span class="bk-chip" data-chip-topic="limits-from-plots">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/limits-from-plots.html" aria-label="Lesson: Reading Limits from a Graph">Lesson</a><a class="bk-btn ghost" href="../notes/limits-from-plots.html" aria-label="Notes: Reading Limits from a Graph">Notes</a></span></li><li class="bk-row" data-topic="limits-from-tables"><span class="bk-row-n">1.4</span><a class="bk-row-title" href="../lessons/limits-from-tables.html">Estimating Limits from Tables</a><span class="bk-chip" data-chip-topic="limits-from-tables">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/limits-from-tables.html" aria-label="Lesson: Estimating Limits from Tables">Lesson</a><a class="bk-btn ghost" href="../notes/limits-from-tables.html" aria-label="Notes: Estimating Limits from Tables">Notes</a></span></li><li class="bk-row" data-topic="limit-laws"><span class="bk-row-n">1.5</span><a class="bk-row-title" href="../lessons/limit-laws.html">Limit Laws</a><span class="bk-chip" data-chip-topic="limit-laws">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/limit-laws.html" aria-label="Lesson: Limit Laws">Lesson</a><a class="bk-btn ghost" href="../notes/limit-laws.html" aria-label="Notes: Limit Laws">Notes</a></span></li><li class="bk-row" data-topic="limit-algebra"><span class="bk-row-n">1.6</span><a class="bk-row-title" href="../lessons/limit-algebra.html">Limits by Algebra: Factor, Rationalize, Simplify</a><span class="bk-chip" data-chip-topic="limit-algebra">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/limit-algebra.html" aria-label="Lesson: Limits by Algebra: Factor, Rationalize, Simplify">Lesson</a><a class="bk-btn ghost" href="../notes/limit-algebra.html" aria-label="Notes: Limits by Algebra: Factor, Rationalize, Simplify">Notes</a></span></li><li class="bk-row" data-topic="choosing-limit-methods"><span class="bk-row-n">1.7</span><a class="bk-row-title" href="../lessons/choosing-limit-methods.html">Choosing a Way to Find a Limit</a><span class="bk-chip" data-chip-topic="choosing-limit-methods">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/choosing-limit-methods.html" aria-label="Lesson: Choosing a Way to Find a Limit">Lesson</a><a class="bk-btn ghost" href="../notes/choosing-limit-methods.html" aria-label="Notes: Choosing a Way to Find a Limit">Notes</a></span></li><li class="bk-row" data-topic="squeeze-theorem"><span class="bk-row-n">1.8</span><a class="bk-row-title" href="../lessons/squeeze-theorem.html">The Squeeze Theorem</a><span class="bk-chip" data-chip-topic="squeeze-theorem">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/squeeze-theorem.html" aria-label="Lesson: The Squeeze Theorem">Lesson</a><a class="bk-btn ghost" href="../notes/squeeze-theorem.html" aria-label="Notes: The Squeeze Theorem">Notes</a></span></li><li class="bk-row" data-topic="limit-representations"><span class="bk-row-n">1.9</span><a class="bk-row-title" href="../lessons/limit-representations.html">Limits Across Graphs, Tables and Formulas</a><span class="bk-chip" data-chip-topic="limit-representations">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/limit-representations.html" aria-label="Lesson: Limits Across Graphs, Tables and Formulas">Lesson</a><a class="bk-btn ghost" href="../notes/limit-representations.html" aria-label="Notes: Limits Across Graphs, Tables and Formulas">Notes</a></span></li><li class="bk-row" data-topic="discontinuity-types"><span class="bk-row-n">1.10</span><a class="bk-row-title" href="../lessons/discontinuity-types.html">Types of Discontinuity</a><span class="bk-chip" data-chip-topic="discontinuity-types">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/discontinuity-types.html" aria-label="Lesson: Types of Discontinuity">Lesson</a><a class="bk-btn ghost" href="../notes/discontinuity-types.html" aria-label="Notes: Types of Discontinuity">Notes</a></span></li><li class="bk-row" data-topic="continuity-at-a-point"><span class="bk-row-n">1.11</span><a class="bk-row-title" href="../lessons/continuity-at-a-point.html">Continuity at a Point</a><span class="bk-chip" data-chip-topic="continuity-at-a-point">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/continuity-at-a-point.html" aria-label="Lesson: Continuity at a Point">Lesson</a><a class="bk-btn ghost" href="../notes/continuity-at-a-point.html" aria-label="Notes: Continuity at a Point">Notes</a></span></li><li class="bk-row" data-topic="continuity-on-intervals"><span class="bk-row-n">1.12</span><a class="bk-row-title" href="../lessons/continuity-on-intervals.html">Continuity on an Interval</a><span class="bk-chip" data-chip-topic="continuity-on-intervals">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/continuity-on-intervals.html" aria-label="Lesson: Continuity on an Interval">Lesson</a><a class="bk-btn ghost" href="../notes/continuity-on-intervals.html" aria-label="Notes: Continuity on an Interval">Notes</a></span></li><li class="bk-row" data-topic="removing-discontinuities"><span class="bk-row-n">1.13</span><a class="bk-row-title" href="../lessons/removing-discontinuities.html">Removing a Discontinuity</a><span class="bk-chip" data-chip-topic="removing-discontinuities">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/removing-discontinuities.html" aria-label="Lesson: Removing a Discontinuity">Lesson</a><a class="bk-btn ghost" href="../notes/removing-discontinuities.html" aria-label="Notes: Removing a Discontinuity">Notes</a></span></li><li class="bk-row" data-topic="infinite-limits"><span class="bk-row-n">1.14</span><a class="bk-row-title" href="../lessons/infinite-limits.html">Infinite Limits and Vertical Asymptotes</a><span class="bk-chip" data-chip-topic="infinite-limits">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/infinite-limits.html" aria-label="Lesson: Infinite Limits and Vertical Asymptotes">Lesson</a><a class="bk-btn ghost" href="../notes/infinite-limits.html" aria-label="Notes: Infinite Limits and Vertical Asymptotes">Notes</a></span></li><li class="bk-row" data-topic="limits-at-infinity"><span class="bk-row-n">1.15</span><a class="bk-row-title" href="../lessons/limits-at-infinity.html">Limits at Infinity and Horizontal Asymptotes</a><span class="bk-chip" data-chip-topic="limits-at-infinity">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/limits-at-infinity.html" aria-label="Lesson: Limits at Infinity and Horizontal Asymptotes">Lesson</a><a class="bk-btn ghost" href="../notes/limits-at-infinity.html" aria-label="Notes: Limits at Infinity and Horizontal Asymptotes">Notes</a></span></li><li class="bk-row" data-topic="intermediate-value-theorem"><span class="bk-row-n">1.16</span><a class="bk-row-title" href="../lessons/intermediate-value-theorem.html">The Intermediate Value Theorem</a><span class="bk-chip" data-chip-topic="intermediate-value-theorem">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/intermediate-value-theorem.html" aria-label="Lesson: The Intermediate Value Theorem">Lesson</a><a class="bk-btn ghost" href="../notes/intermediate-value-theorem.html" aria-label="Notes: The Intermediate Value Theorem">Notes</a></span></li></ol>
+    <h2 class="bk-h" id="h-practice">Practice this unit</h2>
+    <div class="bk-cards">
+      <a class="bk-card" href="../practice.html?unit=unit-1"><b>Question set</b><span>Exam-style questions from this unit's 16 topics, with an explanation for every option.</span></a>
+      <a class="bk-card" href="../exams.html?unit=unit-1"><b>Unit test</b><span>A timed test on the whole unit, every topic weighted equally.</span></a>
+      <a class="bk-card" href="../tools.html"><b>Tools for this unit</b><span>1 trainer.</span></a>
+    </div>
+    <h2 class="bk-h" id="h-tools">In this unit's tools</h2>
+    <div class="bk-tools"><section class="bk-toolset"><h3>Trainers <small>1</small></h3><ul><li><a href="../tools/limit-explorer.html">Limit explorer</a></li></ul></section></div>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Unit navigation"><a class="tb-chapter-link next" href="unit-2.html"><span>Unit 2 &rarr;</span><b>Differentiation: Definition and Fundamental Properties</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="unit:unit-1">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

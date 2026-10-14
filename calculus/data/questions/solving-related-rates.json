@@ -1,0 +1,509 @@
+{
+ "stimuli": {
+  "solving-related-rates-s1": {
+   "kind": "diagram",
+   "title": "A ladder sliding down a wall",
+   "figure": "ladder-sliding-question"
+  },
+  "solving-related-rates-s2": {
+   "kind": "diagram",
+   "title": "Water filling an inverted cone",
+   "figure": "cone-tank-question"
+  }
+ },
+ "items": [
+  {
+   "id": "calc-solving-related-rates-1",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The foot of the 10-foot ladder slides away from the wall at 2 feet per second. How fast is the top moving when the foot is 6 feet from the wall? Include units.",
+   "stimulus": "solving-related-rates-s1",
+   "numeric": {
+    "answer": "-3/2",
+    "unit": "feet per second",
+    "askUnit": true,
+    "units": [
+     "ft/s",
+     "ft/sec",
+     "feet/second",
+     "foot per second",
+     "ft per s"
+    ],
+    "mistakes": [
+     {
+      "value": "3/2",
+      "why": "The top moves down, so $\\frac{dy}{dt}$ is negative: $\\frac{dy}{dt} = -\\frac{x}{y}\\frac{dx}{dt}$."
+     },
+     {
+      "value": -2,
+      "why": "The top and foot do not move at equal speeds; their rates are linked by $x\\frac{dx}{dt} + y\\frac{dy}{dt} = 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x^2 + y^2 = 100$ gives $2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0$. At $x = 6$, $y = 8$: $2(6)(2) + 2(8)\\frac{dy}{dt} = 0$, so $\\frac{dy}{dt} = -\\frac{3}{2}$ feet per second. The top slides down at 1.5 ft/s."
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-2",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "How fast is the top of the ladder moving when the foot is 8 feet from the wall? Include units.",
+   "stimulus": "solving-related-rates-s1",
+   "numeric": {
+    "answer": "-8/3",
+    "unit": "feet per second",
+    "askUnit": true,
+    "units": [
+     "ft/s",
+     "ft/sec",
+     "feet/second",
+     "foot per second",
+     "ft per s"
+    ],
+    "mistakes": [
+     {
+      "value": "-3/2",
+      "why": "Check which length goes where: $\\frac{dy}{dt} = -\\frac{x}{y}\\frac{dx}{dt} = -\\frac{8}{6} \\cdot 2$, with $x = 8$ on top."
+     },
+     {
+      "value": "8/3",
+      "why": "The top is sliding down, so its rate is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $x = 8$, $y = \\sqrt{100 - 64} = 6$. Then $2(8)(2) + 2(6)\\frac{dy}{dt} = 0$, so $\\frac{dy}{dt} = -\\frac{32}{12} = -\\frac{8}{3}$ feet per second."
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-3",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes $6^2 + y^2 = 100$ first and then differentiates. Why does that lose the answer?",
+   "stimulus": "solving-related-rates-s1",
+   "options": [
+    "$6^2$ is a constant, so the term with $\\frac{dx}{dt} = 2$ disappears",
+    "$y$ is a constant, so $\\frac{dy}{dt} = 0$",
+    "The equation $6^2 + y^2 = 100$ is false at this instant",
+    "The derivative of 100 should be 10"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The relation $x^2 + y^2 = 100$ holds at every instant; $x = 6$ holds at one. Differentiate the general relation, then substitute the instant.",
+    "options": [
+     "The foot's motion is what drives the top; substituting $x = 6$ first throws it away.",
+     "$y$ still changes; it is $x$ that was frozen.",
+     "It is true at this instant ($y = 8$); it is just not true at other instants.",
+     "100 is a constant, so its derivative is 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-4",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Let $\\theta$ be the angle between the ladder and the floor, so $\\cos\\theta = \\frac{x}{10}$. How fast is $\\theta$ changing when $x = 6$? Include units.",
+   "stimulus": "solving-related-rates-s1",
+   "numeric": {
+    "answer": "-1/4",
+    "unit": "radians per second",
+    "askUnit": true,
+    "units": [
+     "rad/s",
+     "radians/second",
+     "radian per second",
+     "rad per s"
+    ],
+    "mistakes": [
+     {
+      "value": "1/4",
+      "why": "The derivative of $\\cos\\theta$ is $-\\sin\\theta$; the angle is shrinking as the ladder slides, so the rate is negative."
+     },
+     {
+      "value": "-1/3",
+      "why": "$\\sin\\theta$ is the opposite side over the hypotenuse, $\\frac{y}{10} = 0.8$, not $\\frac{x}{10} = 0.6$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Differentiate: $-\\sin\\theta\\frac{d\\theta}{dt} = \\frac{1}{10}\\frac{dx}{dt}$. At $x = 6$, $\\sin\\theta = \\frac{y}{10} = 0.8$, so $-0.8\\frac{d\\theta}{dt} = 0.2$ and $\\frac{d\\theta}{dt} = -\\frac{1}{4}$ radian per second."
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-5",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The foot keeps sliding at 2 feet per second. What happens to the speed of the top as the top gets close to the floor?",
+   "stimulus": "solving-related-rates-s1",
+   "options": [
+    "It stays at 2 feet per second",
+    "It grows without bound",
+    "It shrinks toward 0",
+    "It levels off at 1.5 feet per second"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{dy}{dt} = -\\frac{x}{y}\\frac{dx}{dt} = -\\frac{2x}{y}$. As $y$ approaches 0 the fraction grows without bound. (A real ladder leaves the wall before then; the model breaks down.)",
+    "options": [
+     "The speeds of the top and foot are equal only when $x = y$.",
+     "$\\frac{dy}{dt} = -\\frac{2x}{y}$, and $y$ approaches 0 while $x$ approaches 10.",
+     "The top's speed is $\\frac{2x}{y}$, which grows as $y$ shrinks.",
+     "1.5 ft/s is the speed at $x = 6$; it keeps changing."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-6",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which relation between the water's radius $r$ and depth $h$ holds at every instant?",
+   "stimulus": "solving-related-rates-s2",
+   "options": [
+    "$h = \\frac{r}{2}$",
+    "$r = h - 3$",
+    "$r = \\frac{h}{2}$",
+    "$r = 3$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The water is a cone similar to the tank: $\\frac{r}{h} = \\frac{3}{6}$, so $r = \\frac{h}{2}$ at every depth.",
+    "options": [
+     "The ratio is upside down: the depth is twice the radius, not half of it.",
+     "Similar triangles give a ratio, not a difference.",
+     "Similar triangles: $\\frac{r}{h} = \\frac{3}{6}$.",
+     "3 ft is the radius of the full tank; the water's radius changes with $h$."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-7",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which expresses the volume of water in terms of $h$ alone?",
+   "stimulus": "solving-related-rates-s2",
+   "options": [
+    "$V = \\frac{\\pi h^3}{6}$",
+    "$V = \\frac{1}{3}\\pi(3)^2 h$",
+    "$V = \\frac{\\pi h^3}{3}$",
+    "$V = \\frac{\\pi h^3}{12}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Substitute $r = \\frac{h}{2}$ before differentiating: $V = \\frac{1}{3}\\pi\\left(\\frac{h}{2}\\right)^2 h = \\frac{\\pi h^3}{12}$, a function of one changing length.",
+    "options": [
+     "Square the whole radius: $\\left(\\frac{h}{2}\\right)^2 = \\frac{h^2}{4}$.",
+     "This uses the tank's radius 3 for the water; the water's radius is $\\frac{h}{2}$.",
+     "The radius is $\\frac{h}{2}$, not $h$.",
+     "$\\frac{1}{3}\\pi\\left(\\frac{h}{2}\\right)^2 h = \\frac{\\pi h^3}{12}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-8",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Water is poured in at 4 cubic feet per minute. How fast is the water level rising when the water is 2 feet deep? Include units.",
+   "stimulus": "solving-related-rates-s2",
+   "numeric": {
+    "answer": "4/pi",
+    "unit": "feet per minute",
+    "askUnit": true,
+    "units": [
+     "ft/min",
+     "feet/minute",
+     "foot per minute",
+     "ft per min"
+    ],
+    "mistakes": [
+     {
+      "value": "4/(3pi)",
+      "why": "That treats the water's radius as the tank's 3 ft ($V = 3\\pi h$). Use $r = \\frac{h}{2}$."
+     },
+     {
+      "value": "2/pi",
+      "why": "That comes from $V = \\frac{\\pi h^3}{6}$: square the whole radius, $\\left(\\frac{h}{2}\\right)^2 = \\frac{h^2}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V = \\frac{\\pi h^3}{12}$, so $\\frac{dV}{dt} = \\frac{\\pi h^2}{4}\\frac{dh}{dt}$. At $h = 2$: $4 = \\pi\\frac{dh}{dt}$, so $\\frac{dh}{dt} = \\frac{4}{\\pi} \\approx 1.27$ feet per minute."
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-9",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "At the same instant ($h = 2$), how fast is the radius of the water's surface growing? Include units.",
+   "stimulus": "solving-related-rates-s2",
+   "numeric": {
+    "answer": "2/pi",
+    "unit": "feet per minute",
+    "askUnit": true,
+    "units": [
+     "ft/min",
+     "feet/minute",
+     "foot per minute",
+     "ft per min"
+    ],
+    "mistakes": [
+     {
+      "value": "4/pi",
+      "why": "That is $\\frac{dh}{dt}$. Differentiate $r = \\frac{h}{2}$: $\\frac{dr}{dt} = \\frac{1}{2}\\frac{dh}{dt}$."
+     },
+     {
+      "value": "8/pi",
+      "why": "$r$ is half of $h$, so its rate is half of $\\frac{dh}{dt}$, not double."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$r = \\frac{h}{2}$ at every instant, so $\\frac{dr}{dt} = \\frac{1}{2}\\frac{dh}{dt} = \\frac{1}{2} \\cdot \\frac{4}{\\pi} = \\frac{2}{\\pi}$ feet per minute."
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-10",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Water keeps pouring in at 4 cubic feet per minute. As the tank fills, the water level",
+   "stimulus": "solving-related-rates-s2",
+   "options": [
+    "rises more and more slowly",
+    "rises at a steady rate",
+    "rises faster and faster as it fills",
+    "stops rising halfway up"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From $4 = \\frac{\\pi h^2}{4}\\frac{dh}{dt}$, $\\frac{dh}{dt} = \\frac{16}{\\pi h^2}$: at $h = 2$ it is $\\frac{4}{\\pi}$, at $h = 4$ only $\\frac{1}{\\pi}$.",
+    "options": [
+     "$\\frac{dh}{dt} = \\frac{16}{\\pi h^2}$ shrinks as $h$ grows.",
+     "The inflow is steady, but each foot of depth near the top holds more water.",
+     "The cone widens upward, so more water is needed per foot of depth.",
+     "$\\frac{dh}{dt}$ stays positive while water flows in."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-11",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "A person 6 feet tall walks away from a 15-foot lamppost at 5 feet per second. How fast is the tip of the person's shadow moving along the ground? Include units.",
+   "numeric": {
+    "answer": "25/3",
+    "unit": "feet per second",
+    "askUnit": true,
+    "units": [
+     "ft/s",
+     "ft/sec",
+     "feet/second",
+     "foot per second",
+     "ft per s"
+    ],
+    "mistakes": [
+     {
+      "value": "10/3",
+      "why": "That is how fast the shadow's length grows. The tip is at distance $x + s$ from the post, which also moves with the person."
+     },
+     {
+      "value": 5,
+      "why": "That is the person's own speed; the tip of the shadow moves faster."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Let $x$ be the person's distance from the post and $s$ the shadow's length. Similar triangles: $\\frac{s}{6} = \\frac{x + s}{15}$, so $s = \\frac{2x}{3}$. The tip is at $x + s = \\frac{5x}{3}$, which changes at $\\frac{5}{3} \\cdot 5 = \\frac{25}{3}$ feet per second."
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-12",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "single",
+   "practice": "1.D",
+   "level": "recall",
+   "diff": 1,
+   "q": "In a related rates problem, which step comes right after writing an equation that links the changing quantities?",
+   "options": [
+    "Substitute the values given for that instant first",
+    "Differentiate both sides with respect to time",
+    "Solve the equation for one variable and stop",
+    "Set each rate equal to 0"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Draw and label, write the relation, differentiate with respect to $t$, substitute the instant, solve, and answer with units.",
+    "options": [
+     "Substituting first turns changing quantities into constants.",
+     "Then substitute the values of the instant.",
+     "The question asks for a rate, which needs a derivative.",
+     "Rates are what the problem is about; they are rarely 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-13",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A plane flies horizontally at 400 miles per hour at an altitude of 3 miles, directly away from a radar station on the ground. How fast is its distance from the station increasing when that distance is 5 miles? Include units.",
+   "numeric": {
+    "answer": 320,
+    "unit": "miles per hour",
+    "askUnit": true,
+    "units": [
+     "mph",
+     "mi/hr",
+     "mi/h",
+     "miles/hour"
+    ],
+    "mistakes": [
+     {
+      "value": 400,
+      "why": "That is the plane's ground speed. The distance to the station grows more slowly, by the factor $\\frac{x}{z}$."
+     },
+     {
+      "value": 240,
+      "why": "Use the horizontal distance $x = 4$, not the altitude 3: $\\frac{dz}{dt} = \\frac{x}{z}\\frac{dx}{dt}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With horizontal distance $x$ and straight-line distance $z$: $x^2 + 9 = z^2$, so $x\\frac{dx}{dt} = z\\frac{dz}{dt}$. At $z = 5$, $x = 4$: $4(400) = 5\\frac{dz}{dt}$, so $\\frac{dz}{dt} = 320$ miles per hour."
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-14",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Sand falls onto a conical pile whose height always equals its radius. Which equation should be differentiated to find $\\frac{dh}{dt}$ from $\\frac{dV}{dt}$?",
+   "options": [
+    "$V = \\frac{1}{3}\\pi r^2 h$, keeping $r$ and $h$",
+    "$V = \\pi h^2$",
+    "$V = \\frac{1}{3}\\pi h^3$",
+    "$V = \\frac{1}{3}\\pi h$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With $r = h$, $V = \\frac{1}{3}\\pi h^2 \\cdot h = \\frac{1}{3}\\pi h^3$, so $\\frac{dV}{dt} = \\pi h^2\\frac{dh}{dt}$.",
+    "options": [
+     "This leaves two unknown rates, $\\frac{dr}{dt}$ and $\\frac{dh}{dt}$; use $r = h$ first.",
+     "A cone's volume has the factor $\\frac{1}{3}$ and a third power of length.",
+     "Replace $r$ by $h$ first, so one rate is left.",
+     "With $r = h$, $r^2h = h^3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-15",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A spherical snowball melts so that its volume decreases at 10 cubic centimeters per minute. Find $\\frac{dr}{dt}$ when the radius is 5 cm, with units (the sign matters).",
+   "numeric": {
+    "answer": "-1/(10pi)",
+    "unit": "centimeters per minute",
+    "askUnit": true,
+    "units": [
+     "cm/min",
+     "centimeters/minute",
+     "centimeter per minute",
+     "cm per min"
+    ],
+    "mistakes": [
+     {
+      "value": "1/(10pi)",
+      "why": "The volume is decreasing, so $\\frac{dV}{dt} = -10$ and the radius shrinks: $\\frac{dr}{dt} < 0$."
+     },
+     {
+      "value": "-3/(50pi)",
+      "why": "That divides by the volume formula $\\frac{4}{3}\\pi r^3$. Use its derivative, $4\\pi r^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dV}{dt} = 4\\pi r^2\\frac{dr}{dt}$ with $\\frac{dV}{dt} = -10$: $-10 = 100\\pi\\frac{dr}{dt}$, so $\\frac{dr}{dt} = -\\frac{1}{10\\pi} \\approx -0.032$ centimeters per minute."
+   }
+  },
+  {
+   "id": "calc-solving-related-rates-16",
+   "unit": "unit-4",
+   "topic": "solving-related-rates",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A point moves along the curve $y = x^2$ with $\\frac{dx}{dt} = 3$. What is $\\frac{dy}{dt}$ when $x = 2$?",
+   "options": [
+    "$4$",
+    "$6$",
+    "$9$",
+    "$12$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Differentiate $y = x^2$ with respect to $t$: $\\frac{dy}{dt} = 2x\\frac{dx}{dt} = 2(2)(3) = 12$.",
+    "options": [
+     "That is $\\frac{dy}{dx}$ at $x = 2$; multiply by $\\frac{dx}{dt}$.",
+     "That is $2 \\cdot 3$: the factor $x = 2$ from $2x$ is missing.",
+     "That is $\\left(\\frac{dx}{dt}\\right)^2$; differentiate $x^2$ with respect to $t$ instead.",
+     "$\\frac{dy}{dt} = 2x\\frac{dx}{dt} = 2(2)(3)$."
+    ]
+   }
+  }
+ ]
+}

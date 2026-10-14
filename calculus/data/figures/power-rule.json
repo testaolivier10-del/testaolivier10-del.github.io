@@ -1,0 +1,12 @@
+{
+ "power-rule-slopes": {
+  "file": "figures/power-rule-slopes.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 560,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Top: the graph of f(x) = x cubed with short tangent segments at x = minus 1.4, minus 0.7, 0, 0.7 and 1.4. Bottom, on the same x scale: the graph of f prime of x = 3x squared, with dots at heights 5.88, 1.47, 0, 1.47 and 5.88, the slopes of those tangent lines. The slope is 0 at x = 0 and the same at x and minus x."
+ }
+}

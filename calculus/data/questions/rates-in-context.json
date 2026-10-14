@@ -1,0 +1,538 @@
+{
+ "stimuli": {
+  "rates-in-context-s1": {
+   "kind": "graph",
+   "title": "A bowl of soup cooling: $H(t) = 20 + 70e^{-0.04t}$",
+   "plot": {
+    "label": "Graph of the soup temperature H(t) = 20 + 70 e to the -0.04 t, in degrees Celsius, for t from 0 to 60 minutes, falling from 90 toward 20",
+    "x": [
+     -2,
+     62
+    ],
+    "y": [
+     0,
+     100
+    ],
+    "xStep": 10,
+    "yStep": 10,
+    "xLabel": "t (minutes)",
+    "yLabel": "H (°C)",
+    "curves": [
+     {
+      "fn": "20 + 70e^(-0.04x)",
+      "domain": [
+       0,
+       60
+      ],
+      "label": "H",
+      "ends": [
+       "closed",
+       null
+      ]
+     }
+    ],
+    "asymptotes": [
+     {
+      "y": 20
+     }
+    ]
+   }
+  },
+  "rates-in-context-s2": {
+   "kind": "table",
+   "title": "The cost of roasting coffee",
+   "table": {
+    "caption": "Total cost C(x), in dollars, of roasting x kilograms of coffee in a week",
+    "cols": [
+     "$x$ (kilograms)",
+     "$100$",
+     "$150$",
+     "$200$",
+     "$300$"
+    ],
+    "rows": [
+     [
+      "$C(x)$ (dollars)",
+      "$820$",
+      "$1050$",
+      "$1260$",
+      "$1660$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-rates-in-context-1",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The temperature of a bowl of soup is $H(t) = 20 + 70e^{-0.04t}$ degrees Celsius, $t$ minutes after it is served. Find $H'(10)$, with units.",
+   "stimulus": "rates-in-context-s1",
+   "calc": true,
+   "numeric": {
+    "answer": -1.87689612889979,
+    "unit": "degrees Celsius per minute",
+    "askUnit": true,
+    "units": [
+     "°C per minute",
+     "°C/min",
+     "degrees C per minute",
+     "degrees Celsius/minute",
+     "degrees per minute",
+     "degree per minute",
+     "deg/min"
+    ],
+    "mistakes": [
+     {
+      "value": 66.92240322249475,
+      "why": "That is $H(10)$, the temperature. The question asks for its rate of change, $H'(10)$."
+     },
+     {
+      "value": 1.87689612889979,
+      "why": "The soup is cooling, so $H'(10)$ is negative: the chain rule brings down $-0.04$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$H'(t) = 70(-0.04)e^{-0.04t} = -2.8e^{-0.04t}$, so $H'(10) = -2.8e^{-0.4} \\approx -1.877$ °C per minute. (A calculator's numerical derivative at $t = 10$ gives the same value.)"
+   }
+  },
+  {
+   "id": "calc-rates-in-context-2",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What are the units of $H''(t)$?",
+   "stimulus": "rates-in-context-s1",
+   "calc": true,
+   "options": [
+    "degrees Celsius per minute per minute",
+    "degrees Celsius per minute",
+    "degrees Celsius",
+    "minutes per degree Celsius"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each derivative with respect to $t$ divides by minutes once more: $H''(t)$ is in degrees Celsius per minute per minute.",
+    "options": [
+     "$H''$ is the rate of change of $H'$, which is in °C per minute.",
+     "Those are the units of $H'(t)$.",
+     "Those are the units of $H(t)$.",
+     "Rates put the output on top: °C per minute, then per minute again."
+    ]
+   }
+  },
+  {
+   "id": "calc-rates-in-context-3",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $H''(10)$, with units.",
+   "stimulus": "rates-in-context-s1",
+   "calc": true,
+   "numeric": {
+    "answer": 0.07507584515599161,
+    "unit": "degrees Celsius per minute per minute",
+    "askUnit": true,
+    "units": [
+     "°C per minute per minute",
+     "°C/min/min",
+     "°C/min^2",
+     "degrees Celsius per minute squared",
+     "degrees per minute per minute",
+     "deg/min^2"
+    ],
+    "mistakes": [
+     {
+      "value": -0.07507584515599161,
+      "why": "Differentiating $-2.8e^{-0.04t}$ multiplies by $-0.04$ again, and two negatives make a positive."
+     },
+     {
+      "value": -1.87689612889979,
+      "why": "That is $H'(10)$. Differentiate once more for $H''(10)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$H''(t) = (-2.8)(-0.04)e^{-0.04t} = 0.112e^{-0.04t}$, so $H''(10) = 0.112e^{-0.4} \\approx 0.075$ °C per minute per minute."
+   }
+  },
+  {
+   "id": "calc-rates-in-context-4",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "At $t = 10$, $H'(10) < 0$ and $H''(10) > 0$. What does this say about the soup?",
+   "stimulus": "rates-in-context-s1",
+   "calc": true,
+   "options": [
+    "It is warming, because $H''(10)$ is positive",
+    "It is cooling, and its rate of cooling is slowing down",
+    "It is cooling faster and faster",
+    "Its temperature is about to stop falling and start rising"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$H'(10) < 0$ means the temperature is decreasing at $t = 10$. $H''(10) > 0$ means $H'$ is increasing, toward 0: the soup cools more and more slowly.",
+    "options": [
+     "The sign of $H'$, not of $H''$, says whether the temperature rises or falls.",
+     "$H' < 0$: cooling. $H'' > 0$: $H'$ is rising toward 0, so the cooling gets gentler.",
+     "Cooling faster would need $H'$ to become more negative, that is $H'' < 0$.",
+     "$H'(t) = -2.8e^{-0.04t}$ is negative for every $t$: the soup keeps cooling, more and more slowly."
+    ]
+   }
+  },
+  {
+   "id": "calc-rates-in-context-5",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "$C$ is differentiable. Use the table to estimate $C'(175)$, with units.",
+   "stimulus": "rates-in-context-s2",
+   "numeric": {
+    "answer": 4.2,
+    "unit": "dollars per kilogram",
+    "askUnit": true,
+    "units": [
+     "dollars/kg",
+     "dollars per kg",
+     "dollar per kilogram",
+     "dollars/kilogram"
+    ],
+    "mistakes": [
+     {
+      "value": 210,
+      "why": "That is the change in cost. Divide by the change in kilograms, 50."
+     },
+     {
+      "value": 4.6,
+      "why": "That uses $x = 100$ and $x = 150$, an interval that does not contain 175."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$C'(175) \\approx \\frac{C(200) - C(150)}{200 - 150} = \\frac{1260 - 1050}{50} = 4.2$ dollars per kilogram."
+   }
+  },
+  {
+   "id": "calc-rates-in-context-6",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the best interpretation of $C'(175) \\approx 4.2$?",
+   "stimulus": "rates-in-context-s2",
+   "options": [
+    "Roasting 175 kilograms costs about 4.20 dollars",
+    "The average cost of the first 175 kilograms is about 4.20 dollars per kilogram",
+    "Near 175 kg, each extra kilogram adds about 4.20 dollars to the cost",
+    "The cost rises by about 4.20 dollars from 150 to 200 kilograms"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$C'(175)$ is in dollars per kilogram: near 175 kg, one more kilogram costs about 4.20 dollars more.",
+    "options": [
+     "That would be $C(175)$; the table shows the cost is over 1000 dollars.",
+     "An average over the first 175 kg would be $\\frac{C(175)}{175}$, more than 6 dollars, since $C(175) > 1050$.",
+     "A rate of dollars per kilogram at $x = 175$.",
+     "From 150 to 200 kg the cost rises 210 dollars; 4.2 is a rate per kilogram."
+    ]
+   }
+  },
+  {
+   "id": "calc-rates-in-context-7",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Estimate $C'(250)$ using the table, with units.",
+   "stimulus": "rates-in-context-s2",
+   "numeric": {
+    "answer": 4,
+    "unit": "dollars per kilogram",
+    "askUnit": true,
+    "units": [
+     "dollars/kg",
+     "dollars per kg",
+     "dollar per kilogram",
+     "dollars/kilogram"
+    ],
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "The table jumps from 200 to 300: the width is 100 kilograms, not 50."
+     },
+     {
+      "value": 400,
+      "why": "That is the change in cost; divide it by the 100-kilogram change in $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$C'(250) \\approx \\frac{C(300) - C(200)}{300 - 200} = \\frac{400}{100} = 4$ dollars per kilogram."
+   }
+  },
+  {
+   "id": "calc-rates-in-context-8",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The estimates $C'(125) \\approx 4.6$, $C'(175) \\approx 4.2$ and $C'(250) \\approx 4$ come from the table. What do they suggest?",
+   "stimulus": "rates-in-context-s2",
+   "options": [
+    "The total cost goes down as more coffee is roasted",
+    "Roasting 250 kilograms is cheaper than roasting 125 kilograms",
+    "The cost of each kilogram is about 4 dollars at each level of production",
+    "Each extra kilogram costs a little less as the amount roasted grows"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$C'$ is positive (cost rises) but getting smaller: each additional kilogram adds a bit less to the cost at higher production.",
+    "options": [
+     "The rates are positive, so the total cost is going up.",
+     "That compares costs, and the table shows $C$ increasing.",
+     "The estimates change, from 4.6 down to 4.",
+     "The rate of change of cost is going down as $x$ grows."
+    ]
+   }
+  },
+  {
+   "id": "calc-rates-in-context-9",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town's population is $P(t) = 500e^{0.02t}$ people, $t$ years after 2020. Find $P'(10)$ exactly, with units.",
+   "numeric": {
+    "answer": "10*e^(0.2)",
+    "unit": "people per year",
+    "askUnit": true,
+    "units": [
+     "people/yr",
+     "people per yr",
+     "persons per year",
+     "people/year"
+    ],
+    "mistakes": [
+     {
+      "value": "500*e^(0.2)",
+      "why": "That is $P(10)$, the population. Differentiate: the chain rule brings down 0.02."
+     },
+     {
+      "value": 10,
+      "why": "That is $P'(0)$. Evaluate $10e^{0.02t}$ at $t = 10$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$P'(t) = 500(0.02)e^{0.02t} = 10e^{0.02t}$, so $P'(10) = 10e^{0.2}$ people per year, about 12.2 people per year."
+   }
+  },
+  {
+   "id": "calc-rates-in-context-10",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "$W(t)$ is the number of gallons of water in a pool $t$ hours after filling starts. What are the units of $W''(t)$?",
+   "options": [
+    "gallons per hour per hour",
+    "gallons per hour",
+    "gallons squared per hour",
+    "hours per gallon per gallon"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$W''(t) = \\frac{d}{dt}W'(t)$: (gallons per hour) per hour.",
+    "options": [
+     "$W'$ is in gallons per hour; its rate of change adds another per hour.",
+     "Those are the units of $W'(t)$.",
+     "Differentiating twice divides by hours twice; it does not square the gallons.",
+     "Rates put the output on top."
+    ]
+   }
+  },
+  {
+   "id": "calc-rates-in-context-11",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "A balloon rises; $h(t)$ is its altitude in feet after $t$ minutes, and $T(h)$ is the air temperature in °F at altitude $h$. At $t = 5$, $h(5) = 2000$ and $h'(5) = 400$, and $T'(2000) = -0.003$. Find the rate of change of the temperature the balloon meets, $\\frac{d}{dt}T(h(t))$, at $t = 5$, with units.",
+   "numeric": {
+    "answer": -1.2,
+    "unit": "degrees Fahrenheit per minute",
+    "askUnit": true,
+    "units": [
+     "degrees Fahrenheit/minute",
+     "°F per minute",
+     "°F/min",
+     "degrees F per minute",
+     "degrees per minute",
+     "deg/min"
+    ],
+    "mistakes": [
+     {
+      "value": -0.003,
+      "why": "That is $T'(2000)$, in °F per foot. Multiply by $h'(5)$, in feet per minute, to get °F per minute."
+     },
+     {
+      "value": 400,
+      "why": "That is $h'(5)$, the climb rate. The chain rule multiplies it by $T'(h(5))$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Chain rule: $T'(h(5)) \\cdot h'(5) = (-0.003)(400) = -1.2$. Units: (°F per foot)(feet per minute) = °F per minute."
+   }
+  },
+  {
+   "id": "calc-rates-in-context-12",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Water leaks from a tank at $L(t)$ liters per hour, $t$ hours after noon. What does $L'(3) = -2$ mean?",
+   "options": [
+    "At 3 p.m. the amount of water in the tank is decreasing at 2 liters per hour",
+    "At 3 p.m. the leak rate is decreasing at 2 liters per hour per hour",
+    "At 3 p.m. water is leaking out at 2 liters per hour",
+    "From noon to 3 p.m. the tank lost 2 liters"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$L$ is in liters per hour, so $L'(3)$ is in liters per hour per hour: at 3 p.m. the leak rate is decreasing by 2 liters per hour each hour.",
+    "options": [
+     "$L$ is the leak rate, so a statement about the amount of water changing at 2 liters per hour is about $L(3)$, not $L'(3)$.",
+     "$L$ is itself a rate, so $L'$ is a rate of change of a rate.",
+     "That would be $L(3) = 2$.",
+     "That is a total over an interval; $L'(3)$ is a rate at one instant."
+    ]
+   }
+  },
+  {
+   "id": "calc-rates-in-context-13",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The area $A(t)$ of an oil slick satisfies $A'(t) > 0$ and $A''(t) < 0$ on an interval. What is happening to the slick?",
+   "options": [
+    "It is shrinking, but more and more slowly",
+    "It is spreading faster and faster",
+    "It is spreading, but more and more slowly",
+    "It is shrinking faster and faster"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The sign of $A'$ says the area is growing; the sign of $A''$ says that growth rate is falling.",
+    "options": [
+     "A positive $A'$ means the area is growing.",
+     "That would need $A'' > 0$.",
+     "$A' > 0$: area increasing. $A'' < 0$: the rate of increase is decreasing.",
+     "With $A' > 0$ the slick is not shrinking."
+    ]
+   }
+  },
+  {
+   "id": "calc-rates-in-context-14",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "The concentration of a medicine in the blood is $C(t) = \\frac{8t}{t^2 + 4}$ milligrams per liter, $t$ hours after a dose. Find $C'(1)$, with units.",
+   "numeric": {
+    "answer": "24/25",
+    "unit": "mg/L per hour",
+    "askUnit": true,
+    "units": [
+     "mg/L per hr",
+     "mg/L/hr",
+     "milligrams per liter per hour",
+     "mg/L/h"
+    ],
+    "mistakes": [
+     {
+      "value": "8/5",
+      "why": "That is $C(1)$, the concentration. The question asks for its rate of change."
+     },
+     {
+      "value": 4,
+      "why": "That is $\\frac{8}{2t}$ at $t = 1$, the derivative of the top over the derivative of the bottom. Use the quotient rule."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Quotient rule: $C'(t) = \\frac{8(t^2 + 4) - 8t(2t)}{(t^2 + 4)^2}$. At $t = 1$: $\\frac{40 - 16}{25} = \\frac{24}{25}$ milligrams per liter per hour."
+   }
+  },
+  {
+   "id": "calc-rates-in-context-15",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A theater's revenue from selling $x$ tickets is $R(x) = 40x - 0.1x^2$ dollars. Find $R'(150)$, with units.",
+   "numeric": {
+    "answer": 10,
+    "unit": "dollars per ticket",
+    "askUnit": true,
+    "units": [
+     "dollars/ticket",
+     "dollar per ticket"
+    ],
+    "mistakes": [
+     {
+      "value": 3750,
+      "why": "That is $R(150)$, the revenue. $R'(150)$ is its rate of change per ticket."
+     },
+     {
+      "value": 25,
+      "why": "The derivative of $0.1x^2$ is $0.2x$, not $0.1x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$R'(x) = 40 - 0.2x$, so $R'(150) = 40 - 30 = 10$ dollars per ticket: near 150 tickets, one more ticket adds about 10 dollars of revenue."
+   }
+  }
+ ]
+}

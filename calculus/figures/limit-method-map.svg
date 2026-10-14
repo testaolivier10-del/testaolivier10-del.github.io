@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" role="img" aria-labelledby="limit-method-map-t limit-method-map-d" font-family="Arial, Helvetica, sans-serif">
+<title id="limit-method-map-t">Choosing a way to find a limit</title>
+<desc id="limit-method-map-d">A decision map. Start by substituting x = c. If you get a number, that is the limit. If you get a nonzero number over 0, the function is unbounded near c: check the sign on each side. If you get 0 over 0, rewrite by factoring, rationalizing or combining fractions, then substitute again. For a piecewise or absolute value function at a break point, find both one-sided limits and compare them.</desc>
+<defs></defs>
+<rect width="760" height="470" fill="#FFFFFF"/>
+<rect x="250" y="18" width="260" height="54" rx="8" fill="#FCE8EE" stroke="#8C1036" stroke-width="2.4"/>
+<text x="380" y="41" font-size="14" fill="#8C1036" text-anchor="middle" font-weight="bold">Start: substitute <tspan font-style="italic">x</tspan> = <tspan font-style="italic">c</tspan></text>
+<text x="380" y="59" font-size="14" fill="#8C1036" text-anchor="middle">into the expression</text>
+<line x1="330" y1="72" x2="125.8" y2="126.5" stroke="#1F2A28" stroke-width="2"/><polygon points="120,128 126.7,122 128.8,129.9" fill="#1F2A28"/>
+<line x1="380" y1="72" x2="380" y2="122" stroke="#1F2A28" stroke-width="2"/><polygon points="380,128 375.9,120 384.1,120" fill="#1F2A28"/>
+<line x1="430" y1="72" x2="634.2" y2="126.5" stroke="#1F2A28" stroke-width="2"/><polygon points="640,128 631.2,129.9 633.3,122" fill="#1F2A28"/>
+<rect x="30" y="130" width="180" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="120" y="154" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="bold">A number <tspan font-style="italic">L</tspan></text>
+<text x="120" y="172" font-size="14" fill="#1F2A28" text-anchor="middle">(like 7 or −2)</text>
+<rect x="290" y="130" width="180" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="380" y="154" font-size="14" fill="#1F2A28" text-anchor="middle"><tspan font-weight="bold">0</tspan> over <tspan font-weight="bold">0</tspan></text>
+<text x="380" y="172" font-size="14" fill="#1F2A28" text-anchor="middle">an indeterminate form</text>
+<rect x="550" y="130" width="180" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="640" y="154" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="bold">Nonzero over 0</text>
+<text x="640" y="172" font-size="14" fill="#1F2A28" text-anchor="middle">(like 5 over 0)</text>
+<line x1="120" y1="186" x2="120" y2="230" stroke="#1F2A28" stroke-width="2"/><polygon points="120,236 115.9,228 124.1,228" fill="#1F2A28"/>
+<line x1="380" y1="186" x2="380" y2="230" stroke="#1F2A28" stroke-width="2"/><polygon points="380,236 375.9,228 384.1,228" fill="#1F2A28"/>
+<line x1="640" y1="186" x2="640" y2="230" stroke="#1F2A28" stroke-width="2"/><polygon points="640,236 635.9,228 644.1,228" fill="#1F2A28"/>
+<rect x="20" y="238" width="200" height="76" rx="8" fill="#E6F5EF" stroke="#009E73" stroke-width="1.8"/>
+<text x="120" y="263" font-size="14" fill="#00603F" text-anchor="middle" font-weight="bold">The limit is <tspan font-style="italic">L</tspan></text>
+<text x="120" y="281" font-size="14" fill="#00603F" text-anchor="middle">when the expression is</text>
+<text x="120" y="299" font-size="14" fill="#00603F" text-anchor="middle">defined near <tspan font-style="italic">c</tspan></text>
+<rect x="270" y="238" width="220" height="104" rx="8" fill="#E3F0F8" stroke="#0072B2" stroke-width="1.8"/>
+<text x="380" y="268" font-size="14" fill="#00507E" text-anchor="middle" font-weight="bold">Rewrite, then substitute again</text>
+<text x="380" y="286" font-size="14" fill="#00507E" text-anchor="middle">• factor and cancel</text>
+<text x="380" y="304" font-size="14" fill="#00507E" text-anchor="middle">• multiply by the conjugate</text>
+<text x="380" y="322" font-size="14" fill="#00507E" text-anchor="middle">• combine the fractions</text>
+<rect x="540" y="238" width="200" height="104" rx="8" fill="#FBEDE4" stroke="#D55E00" stroke-width="1.8"/>
+<text x="640" y="268" font-size="14" fill="#9A3D00" text-anchor="middle" font-weight="bold">Unbounded near <tspan font-style="italic">c</tspan></text>
+<text x="640" y="286" font-size="14" fill="#9A3D00" text-anchor="middle">check the sign of the</text>
+<text x="640" y="304" font-size="14" fill="#9A3D00" text-anchor="middle">expression on each side</text>
+<text x="640" y="322" font-size="14" fill="#9A3D00" text-anchor="middle">(a vertical asymptote)</text>
+<path d="M270 300 C 236 300, 236 104, 250 64" fill="none" stroke="#0072B2" stroke-width="2" stroke-dasharray="6 4"/><polygon points="251,58 251.9,67 244.3,64" fill="#0072B2"/>
+<text x="232" y="205" font-size="12" fill="#0072B2" text-anchor="end" font-style="italic">try again</text>
+<rect x="120" y="372" width="520" height="78" rx="8" fill="#FFFFFF" stroke="#8C1036" stroke-width="1.8"/>
+<text x="380" y="398" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="bold">A piecewise or absolute value function, at a break point?</text>
+<text x="380" y="416" font-size="14" fill="#1F2A28" text-anchor="middle">Find the left-hand and right-hand limits separately.</text>
+<text x="380" y="434" font-size="14" fill="#1F2A28" text-anchor="middle">Equal one-sided limits: the limit is that value. Unequal: it does not exist.</text>
+</svg>

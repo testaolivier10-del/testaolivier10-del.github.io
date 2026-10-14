@@ -1,0 +1,152 @@
+{
+ "id": "frq-u5-model-greenhouse",
+ "type": "model",
+ "title": "Greenhouse temperature: average rate, Mean Value Theorem and extremes",
+ "calc": true,
+ "points": 9,
+ "units": [
+  "unit-5"
+ ],
+ "topics": [
+  "mean-value-theorem",
+  "candidates-test",
+  "extreme-value-theorem"
+ ],
+ "practices": [
+  "1.E",
+  "3.C",
+  "3.D",
+  "3.F",
+  "4.B",
+  "4.E"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Temperature in a greenhouse",
+  "text": "The temperature inside a greenhouse, in degrees Fahrenheit ($^\\circ$F), is modeled by $H(t) = 62 + 3te^{-0.15t} + 4\\sin\\left(\\frac{t}{2}\\right)$ for $0 \\le t \\le 14$, where $t$ is measured in hours after 6 a.m. A graphing calculator is required; use radian mode.",
+  "plot": {
+   "label": "Graph of the greenhouse temperature H(t) for t from 0 to 14 hours: it rises from 62 to a high near t = 3.9, falls to a low near t = 9.7, then rises to about 69.8 at t = 14",
+   "x": [
+    -0.5,
+    14.5
+   ],
+   "y": [
+    58,
+    76
+   ],
+   "xStep": 2,
+   "yStep": 2,
+   "xLabel": "t",
+   "yLabel": "H",
+   "curves": [
+    {
+     "fn": "62 + 3x e^(-0.15x) + 4sin(x/2)",
+     "domain": [
+      0,
+      14
+     ],
+     "cls": "s1",
+     "ends": [
+      "closed",
+      "closed"
+     ],
+     "label": "H"
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Find</b> the average rate of change of $H(t)$ over the interval $0 \\le t \\le 14$. Indicate units of measure.",
+   "rubric": [
+    {
+     "point": "Setup: $\\frac{H(14) - H(0)}{14 - 0}$",
+     "accept": [
+      "the difference quotient with the values $H(14) \\approx 69.771$ and $H(0) = 62$"
+     ]
+    },
+    {
+     "point": "Answer $0.555$ degrees Fahrenheit per hour",
+     "accept": [
+      "$0.555$ (rounded or truncated; the value is $0.55508\\ldots$) with units $^\\circ$F per hour",
+      "the units point needs \"per hour\""
+     ]
+    }
+   ],
+   "sample": "$\\frac{H(14) - H(0)}{14 - 0} = \\frac{69.771 - 62}{14} \\approx 0.555$ degrees Fahrenheit per hour."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Find</b> $H'(5)$. Using correct units, <b>interpret</b> the meaning of $H'(5)$ in the context of the problem.",
+   "rubric": [
+    {
+     "point": "$H'(5) \\approx -1.248$",
+     "accept": [
+      "$-1.248$ (rounded or truncated; the value is $-1.24801\\ldots$), from a numerical derivative"
+     ]
+    },
+    {
+     "point": "Interpretation: at 11 a.m. ($t = 5$), the temperature in the greenhouse is decreasing at a rate of 1.248 degrees Fahrenheit per hour",
+     "accept": [
+      "\"changing at $-1.248$ $^\\circ$F per hour at $t = 5$ hours\"",
+      "must name the temperature, the time and the units"
+     ]
+    }
+   ],
+   "sample": "$H'(5) \\approx -1.248$. At time $t = 5$ hours (11 a.m.), the temperature in the greenhouse is decreasing at a rate of 1.248 degrees Fahrenheit per hour."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "Is there a time $t$, for $0 < t < 14$, at which $H'(t)$ is equal to the average rate of change found in part (a)? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "States that $H$ is continuous on $[0, 14]$ and differentiable on $(0, 14)$",
+     "accept": [
+      "\"$H$ is differentiable, so it is continuous\" or \"$H$ is a sum of continuous, differentiable functions\"",
+      "continuity must be stated"
+     ]
+    },
+    {
+     "point": "Answer yes, by the Mean Value Theorem, with the conclusion $H'(c) = 0.555$ for some $c$ in $(0, 14)$",
+     "accept": [
+      "\"by the MVT\"",
+      "requires the hypothesis point or an equivalent statement of the hypotheses"
+     ]
+    }
+   ],
+   "sample": "Yes. $H$ is differentiable on $(0, 14)$ and continuous on $[0, 14]$ (it is built from exponential, polynomial and sine functions). By the Mean Value Theorem, there is a time $c$ with $0 < c < 14$ at which $H'(c) = \\frac{H(14) - H(0)}{14} \\approx 0.555$ degrees Fahrenheit per hour."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "<b>Find</b> the absolute maximum temperature and the absolute minimum temperature of the greenhouse for $0 \\le t \\le 14$. <b>Justify</b> your answers.",
+   "rubric": [
+    {
+     "point": "Considers $H'(t) = 0$: $t \\approx 3.864$ and $t \\approx 9.747$",
+     "accept": [
+      "both critical points found with the calculator"
+     ]
+    },
+    {
+     "point": "Candidates Test: $H(0) = 62$, $H(3.864) \\approx 72.235$, $H(9.747) \\approx 64.829$, $H(14) \\approx 69.771$",
+     "accept": [
+      "a table or list of the endpoints and both critical points with their values",
+      "not earned by a sign change of $H'$ alone"
+     ]
+    },
+    {
+     "point": "Answers: absolute maximum $72.235$ $^\\circ$F (at $t \\approx 3.864$) and absolute minimum $62$ $^\\circ$F (at $t = 0$)",
+     "accept": [
+      "$72.234$ or $72.235$ for the maximum",
+      "the minimum is at the endpoint $t = 0$, not at the relative minimum $t \\approx 9.747$"
+     ]
+    }
+   ],
+   "sample": "$H'(t) = 0$ at $t \\approx 3.864$ and $t \\approx 9.747$. Candidates: $H(0) = 62$, $H(3.864) \\approx 72.235$, $H(9.747) \\approx 64.829$, $H(14) \\approx 69.771$. The absolute maximum temperature is about $72.235$ degrees Fahrenheit, at $t \\approx 3.864$ hours; the absolute minimum is $62$ degrees Fahrenheit, at $t = 0$ (6 a.m.)."
+  }
+ ]
+}

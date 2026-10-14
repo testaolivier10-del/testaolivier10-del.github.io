@@ -1,0 +1,46 @@
+<p>Most functions you meet are unbroken over long stretches: you could trace their graphs without lifting your pencil. The interesting places are where that fails. This page names the three kinds of breaks the exam asks about and shows how to tell them apart from a graph, a table or a formula.</p>
+
+<h2>Continuous, and what breaks it</h2>
+<p>A function is <b>continuous</b> at $x = c$ when its graph passes through $x = c$ with no break: the values near $c$ head to a single height, and the point at $c$ sits exactly at that height. In symbols, $\lim_{x \to c} f(x)$ exists and equals $f(c)$. The next topic turns this into a careful three-part check.</p>
+<p>A <b>discontinuity</b> is a point where this fails. There are three common ways it can fail.</p>
+<figure id="fig-types" data-fig="discontinuity-types"><figcaption>Removable, jump and infinite discontinuities at $x = 2$.</figcaption></figure>
+<table>
+<thead><tr><th>Kind</th><th>One-sided limits</th><th>What the graph shows</th></tr></thead>
+<tbody>
+<tr><td>Removable</td><td>equal, so the limit exists</td><td>a hole; the point is missing or sits somewhere else</td></tr>
+<tr><td>Jump</td><td>both finite, but different</td><td>a step from one height to another</td></tr>
+<tr><td>Infinite</td><td>at least one side is unbounded</td><td>a vertical asymptote</td></tr>
+</tbody>
+</table>
+
+<h2>Removable discontinuities</h2>
+<p>At a <b>removable discontinuity</b> the limit exists. The graph heads to one height from both sides, but at $x = c$ the point is missing (an open circle) or is plotted at a different height (an open circle with a closed dot above or below it). It is called removable because changing a single value would repair it, which a later topic does.</p>
+<p>Formulas produce removable discontinuities when a zero factor cancels.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Classify the discontinuities of $d(x) = \frac{x^2 + x - 2}{x^2 - 1}$.</p>
+<p>The denominator is 0 at $x = 1$ and $x = -1$. Factor everything: $d(x) = \frac{(x + 2)(x - 1)}{(x + 1)(x - 1)}$.</p>
+<p>At $x = 1$: the factor $x - 1$ cancels, so for $x$ near 1, $d(x) = \frac{x + 2}{x + 1} \to \frac{3}{2}$. The limit exists, but $d(1)$ is undefined. Removable: a hole at $\left(1, \frac{3}{2}\right)$.</p>
+<p>At $x = -1$: the numerator is $(1)(-2) = -2$, not 0, while the denominator approaches 0. So $d$ is unbounded near $-1$. Infinite.</p>
+</div>
+
+<h2>Jump discontinuities</h2>
+<p>At a <b>jump discontinuity</b> both one-sided limits exist as finite numbers, but they are not equal. The graph reaches one height from the left and a different height from the right. The value $f(c)$ may match one side, the other, or neither; it is still a jump.</p>
+<p>Jumps come from piecewise functions whose pieces do not meet, and from absolute values divided by what is inside them.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Classify the discontinuity of $c(x) = \frac{|x - 1|}{x - 1}$ at $x = 1$.</p>
+<p>For $x > 1$, $|x - 1| = x - 1$, so $c(x) = 1$. For $x < 1$, $|x - 1| = -(x - 1)$, so $c(x) = -1$.</p>
+<p>$\lim_{x \to 1^-} c(x) = -1$ and $\lim_{x \to 1^+} c(x) = 1$: finite and different. A jump.</p>
+</div>
+
+<h2>Infinite discontinuities</h2>
+<p>At an <b>infinite discontinuity</b> the function is unbounded near $c$, on one side or both. The graph runs along a vertical asymptote $x = c$. Formulas produce these when substitution gives a nonzero number over 0.</p>
+<p>One warning: $\frac{0}{0}$ does not always mean a hole. For $\frac{x - 1}{(x - 1)^2}$, one factor of $x - 1$ cancels but another stays in the denominator: the expression equals $\frac{1}{x - 1}$, which is unbounded near 1. Always simplify fully before you classify.</p>
+
+<h2>Classifying, step by step</h2>
+<ol>
+<li>Find where trouble can happen: zeros of a denominator, break points of a piecewise formula, inputs inside an absolute value that make it 0.</li>
+<li>Find the left-hand and right-hand limits there (from the graph, a table or the formula).</li>
+<li>Unbounded on either side? Infinite. Finite but different? Jump. Equal? Then compare the limit with $f(c)$: equal means no discontinuity at all; missing or different means removable.</li>
+</ol>
+<p>When a question asks you to justify a classification, write the limits. "$\lim_{x \to 1} a(x) = 2$, but $a(1)$ is undefined, so $a$ has a removable discontinuity at $x = 1$" earns credit. "It has a hole" alone does not.</p>
+<p>Other kinds exist. $\sin\left(\frac{1}{x}\right)$ oscillates near 0 and has no limit there, but it is neither a jump nor unbounded. The exam names the three kinds above.</p>

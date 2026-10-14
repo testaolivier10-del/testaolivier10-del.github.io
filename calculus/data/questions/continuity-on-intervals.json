@@ -1,0 +1,511 @@
+{
+ "stimuli": {
+  "continuity-on-intervals-s1": {
+   "kind": "graph",
+   "title": "The graph of $f$ on $[-3, 5]$",
+   "plot": {
+    "label": "Graph of f on [-3, 5]: the line y = x + 2 from a closed dot at (-3, -1) to an open circle at (0, 2); then the curve y = (x - 2)^2/2 + 1 from a closed dot at (0, 3) to a closed dot at (5, 5.5), with an open circle at (2, 1) and no point above x = 2",
+    "x": [
+     -3.5,
+     5.5
+    ],
+    "y": [
+     -1.5,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x + 2",
+      "domain": [
+       -3,
+       0
+      ],
+      "ends": [
+       "closed",
+       "open"
+      ],
+      "label": "f"
+     },
+     {
+      "fn": "(x - 2)^2/2 + 1",
+      "domain": [
+       0,
+       5
+      ],
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "cls": "s1"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       1
+      ],
+      "open": true
+     }
+    ]
+   }
+  },
+  "continuity-on-intervals-s2": {
+   "kind": "table",
+   "title": "Four functions",
+   "table": {
+    "caption": "Four functions, each continuous on its domain",
+    "cols": [
+     "Function",
+     "Formula"
+    ],
+    "rows": [
+     [
+      "$p$",
+      "$p(x) = \\sqrt{x - 1}$"
+     ],
+     [
+      "$q$",
+      "$q(x) = \\ln(x + 2)$"
+     ],
+     [
+      "$r$",
+      "$r(x) = \\frac{x + 1}{x^2 - 4}$"
+     ],
+     [
+      "$t$",
+      "$t(x) = \\tan x$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-continuity-on-intervals-1",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "continuity-on-intervals-s1",
+   "q": "On which of these intervals is $f$ continuous?",
+   "options": [
+    "$[0, 2)$",
+    "$[-3, 0]$",
+    "$[-3, 2)$",
+    "$(0, 5]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On $(0, 2)$ the curve is unbroken. At the left endpoint 0, the right-hand limit is 3 and $f(0) = 3$, so $f$ is continuous from the right there. That is all a closed left endpoint needs.",
+    "options": [
+     "Unbroken inside, and $\\lim_{x \\to 0^+} f(x) = 3 = f(0)$ at the closed endpoint.",
+     "At the right endpoint 0, the left-hand limit is 2 but $f(0) = 3$, so $f$ is not continuous from the left there.",
+     "This interval contains the jump at $x = 0$ in its interior.",
+     "$f(2)$ is undefined, and 2 is inside this interval."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-2",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "continuity-on-intervals-s1",
+   "q": "At $x = 0$, the function $f$ is continuous",
+   "options": [
+    "from the left, but not from the right",
+    "from the right, but not from the left",
+    "from both the left and the right",
+    "from neither the left nor the right"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\lim_{x \\to 0^+} f(x) = 3 = f(0)$, so $f$ is continuous from the right. $\\lim_{x \\to 0^-} f(x) = 2 \\ne f(0)$, so it is not continuous from the left.",
+    "options": [
+     "The left piece heads to the open circle at height 2, not to $f(0) = 3$.",
+     "The closed dot $(0, 3)$ sits where the right piece starts.",
+     "The left side arrives at 2, not at $f(0) = 3$.",
+     "From the right, the curve arrives exactly at $f(0) = 3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-3",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "multi",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "continuity-on-intervals-s1",
+   "q": "On which intervals is $f$ continuous?",
+   "options": [
+    "$[2, 5]$",
+    "$[-3, -1]$",
+    "$[1, 3]$",
+    "$[-1, 1]$"
+   ],
+   "correct": [
+    1
+   ],
+   "why": {
+    "correct": "A function is continuous on an interval when it is continuous at every point of it, with one-sided continuity at closed endpoints.",
+    "options": [
+     "$f(2)$ is undefined, and 2 is in this interval.",
+     "Part of the line $y = x + 2$, with no break.",
+     "It contains $x = 2$, where $f$ is undefined.",
+     "It contains the jump at $x = 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-4",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "continuity-on-intervals-s1",
+   "q": "At how many points in the open interval $(-3, 5)$ is $f$ not continuous?",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "Count both breaks: the jump at $x = 0$ and the missing point at $x = 2$. A hole is a discontinuity too."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f$ is not continuous at $x = 0$ (the one-sided limits 2 and 3 differ) and at $x = 2$ ($f(2)$ is undefined). Everywhere else in $(-3, 5)$ the graph is unbroken."
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-5",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "continuity-on-intervals-s2",
+   "q": "Which is the largest interval on which $p$ is continuous?",
+   "options": [
+    "$(1, \\infty)$",
+    "$[0, \\infty)$",
+    "$[1, \\infty)$",
+    "$(-\\infty, \\infty)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\sqrt{x - 1}$ is defined for $x \\ge 1$. At the endpoint 1, $\\lim_{x \\to 1^+} p(x) = 0 = p(1)$, so it is continuous from the right, and the interval includes 1.",
+    "options": [
+     "This leaves out 1, where $p$ is continuous from the right. It is not the largest.",
+     "$p(0) = \\sqrt{-1}$ is not a real number.",
+     "Defined and continuous for $x \\ge 1$, with one-sided continuity at 1.",
+     "$p$ is undefined for $x < 1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-6",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "continuity-on-intervals-s2",
+   "q": "Which is the largest interval on which $q$ is continuous?",
+   "options": [
+    "$[-2, \\infty)$",
+    "$(0, \\infty)$",
+    "$(-1, \\infty)$",
+    "$(-2, \\infty)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\ln u$ needs $u > 0$, so $x + 2 > 0$, or $x > -2$. A logarithm is continuous on its domain.",
+    "options": [
+     "$\\ln 0$ is undefined, so $-2$ is not included.",
+     "That is the domain of $\\ln x$; here the input is $x + 2$.",
+     "$q(-1) = \\ln 1 = 0$ is defined; the domain starts at $-2$.",
+     "The domain is $x > -2$, and $q$ is continuous on all of it."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-7",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "continuity-on-intervals-s2",
+   "q": "On which interval is $r$ continuous?",
+   "options": [
+    "$(-2, 2)$",
+    "$[-2, 2]$",
+    "$(0, 3)$",
+    "$(-3, 0)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rational function is continuous wherever its denominator is not 0. $x^2 - 4 = 0$ at $x = \\pm 2$, and $(-2, 2)$ avoids both.",
+    "options": [
+     "Neither $-2$ nor $2$ is in this open interval.",
+     "It includes $x = \\pm 2$, where $r$ is undefined.",
+     "It contains $x = 2$.",
+     "It contains $x = -2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-8",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "continuity-on-intervals-s2",
+   "q": "Which of the four functions is continuous on the closed interval $[0, 3]$?",
+   "options": [
+    "$p$",
+    "$q$",
+    "$r$",
+    "$t$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$q$ is continuous for $x > -2$, which includes all of $[0, 3]$.",
+    "options": [
+     "$p(0) = \\sqrt{-1}$ is undefined.",
+     "$[0, 3]$ lies inside the domain $x > -2$.",
+     "$r$ is undefined at $x = 2$, which is in $[0, 3]$.",
+     "$\\tan x$ is undefined at $x = \\frac{\\pi}{2} \\approx 1.57$, which is in $[0, 3]$."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-9",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "Where is $f(x) = \\frac{e^x}{x^2 + 1}$ continuous?",
+   "options": [
+    "$(0, \\infty)$",
+    "Everywhere except $x = \\pm 1$",
+    "$(-\\infty, \\infty)$",
+    "Everywhere except $x = 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$e^x$ and $x^2 + 1$ are continuous everywhere, and $x^2 + 1 \\ge 1$ is never 0. A quotient of continuous functions is continuous where the denominator is not 0: here, everywhere.",
+    "options": [
+     "$e^x$ is defined for negative $x$ too.",
+     "$x^2 + 1 = 0$ has no real solutions; $x^2 - 1$ would vanish at $\\pm 1$.",
+     "The denominator $x^2 + 1$ has no real zeros.",
+     "At $x = 0$ the value is $\\frac{1}{1} = 1$; nothing breaks."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-10",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "On which interval is $g(x) = \\sqrt{9 - x^2}$ continuous?",
+   "options": [
+    "$(-3, 3)$",
+    "$[0, 3]$",
+    "$(-\\infty, 3]$",
+    "$[-3, 3]$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$9 - x^2 \\ge 0$ when $-3 \\le x \\le 3$. A root of a continuous function is continuous where it is defined, with one-sided continuity at the endpoints $\\pm 3$.",
+    "options": [
+     "$g(\\pm 3) = 0$, and $g$ is continuous from inside at each endpoint, so they belong.",
+     "$g$ is also defined and continuous for $-3 \\le x < 0$.",
+     "For $x < -3$, $9 - x^2 < 0$, so $g$ is undefined.",
+     "The domain is $[-3, 3]$, and $g$ is continuous on all of it."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-11",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Let $f(x) = e^x$ for $x < 0$ and $f(x) = x + 1$ for $x \\ge 0$. Where is $f$ continuous?",
+   "options": [
+    "On $(-\\infty, \\infty)$",
+    "On $(-\\infty, 0)$ and $(0, \\infty)$, not at 0",
+    "On $[0, \\infty)$, and nowhere to the left of 0",
+    "On $(-\\infty, 0]$, and nowhere to the right of 0"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each piece is continuous on its own interval. At 0: $\\lim_{x \\to 0^-} e^x = 1$, $\\lim_{x \\to 0^+} (x + 1) = 1$, and $f(0) = 1$. So $f$ is continuous at 0 as well.",
+    "options": [
+     "Both pieces are continuous, and they meet at $(0, 1)$, which is $f(0)$.",
+     "$e^0 = 1$ and $0 + 1 = 1$: the pieces meet, so 0 is not a break.",
+     "$e^x$ is continuous for $x < 0$.",
+     "$x + 1$ is continuous for $x > 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-12",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which reason best explains why $h(x) = x^2 \\sin x + 3$ is continuous on $(-\\infty, \\infty)$?",
+   "options": [
+    "The graph of $h$ looks smooth on a calculator screen, so there are no breaks in it anywhere",
+    "Polynomials and sine are continuous everywhere, and products and sums of continuous functions are continuous",
+    "The value $h(0) = 3$ is defined, so $h$ is continuous at 0 and therefore on the whole line",
+    "Sine is bounded between $-1$ and $1$, so the squeeze theorem shows that $h$ has no breaks"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x^2$, $\\sin x$ and $3$ are continuous on $(-\\infty, \\infty)$. Products and sums of continuous functions are continuous, so $h$ is too.",
+    "options": [
+     "A screen can hide a hole; a reason must come from the functions themselves.",
+     "This builds $h$ from known continuous pieces using the rules for combining them.",
+     "Continuity at one point says nothing about other points.",
+     "Bounded is not the same as continuous, and the squeeze theorem finds limits, not continuity everywhere."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-13",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "numeric",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "At how many real numbers is $f(x) = \\frac{x - 1}{x^3 - x}$ not continuous?",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$x^3 - x = x(x - 1)(x + 1)$ is 0 at three inputs. At $x = 1$ the factor cancels, but $f(1)$ is still undefined: a removable discontinuity is still a discontinuity."
+     },
+     {
+      "value": 1,
+      "why": "Factor the whole denominator: $x^3 - x = x(x - 1)(x + 1)$, which is 0 at $x = -1, 0, 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f$ is a rational function, so it is continuous except where $x^3 - x = x(x - 1)(x + 1) = 0$: at $x = -1$, $0$ and $1$. That is 3 points (removable at 1, infinite at 0 and $-1$)."
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-14",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is $f(x) = \\sqrt{x}$ continuous on $[0, 4]$, even though $\\lim_{x \\to 0^-} \\sqrt{x}$ does not exist?",
+   "options": [
+    "Each function is continuous on a closed interval, since its endpoints are included",
+    "The value $f(0) = 0$ is defined, and a defined value is enough at an endpoint",
+    "At a closed endpoint, continuity needs only the one-sided limit from inside the interval",
+    "Square roots have no limits from the left, so that limit is not checked at any point"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "On $[a, b]$, continuity at $a$ means $\\lim_{x \\to a^+} f(x) = f(a)$, and at $b$ it means $\\lim_{x \\to b^-} f(x) = f(b)$. Here $\\lim_{x \\to 0^+} \\sqrt{x} = 0 = f(0)$.",
+    "options": [
+     "Many functions are not; a jump inside $[a, b]$ breaks continuity.",
+     "A defined value is not enough; the one-sided limit from inside must equal it.",
+     "At 0 only the right-hand limit matters, and it equals $f(0) = 0$.",
+     "At $x = 4$, $\\sqrt{x}$ has a left-hand limit, and it is checked."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-15",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "On which interval is $\\tan x$ continuous?",
+   "options": [
+    "$[0, \\pi]$",
+    "$\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$",
+    "$(0, 2\\pi)$",
+    "$\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\tan x = \\frac{\\sin x}{\\cos x}$ is continuous wherever $\\cos x \\ne 0$. Cosine is 0 at $\\pm\\frac{\\pi}{2}$, and the open interval between them avoids every zero of cosine.",
+    "options": [
+     "It contains $\\frac{\\pi}{2}$, where $\\tan x$ is undefined.",
+     "$\\tan x$ is undefined at both endpoints.",
+     "It contains $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$.",
+     "$\\cos x > 0$ on this whole open interval."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-on-intervals-16",
+   "unit": "unit-1",
+   "topic": "continuity-on-intervals",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A function $f$ is continuous on $(1, 5)$ and on $[5, 8]$. Is $f$ continuous on $(1, 8]$?",
+   "options": [
+    "Not necessarily: $\\lim_{x \\to 5^-} f(x)$ might differ from $f(5)$",
+    "Yes: together the two intervals cover $(1, 8]$",
+    "Yes: $f(5)$ is defined because $5$ is in $[5, 8]$",
+    "No: two touching intervals of continuity force a break at 5"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Continuity on $[5, 8]$ only says $f$ is continuous from the right at 5. Continuity at 5 also needs $\\lim_{x \\to 5^-} f(x) = f(5)$, which nothing guarantees; $f$ could jump at 5.",
+    "options": [
+     "The left side at 5 is not covered by either fact, so a jump at 5 is possible.",
+     "Covering the points is not enough; the left-hand limit at 5 must match $f(5)$.",
+     "A defined value is one condition; the two-sided limit at 5 must equal it.",
+     "Two such intervals need not break; for example, $f(x) = x$ is continuous on both intervals and on $(1, 8]$."
+    ]
+   }
+  }
+ ]
+}

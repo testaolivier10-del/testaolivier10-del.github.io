@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implicit Differentiation — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="So far every function came as y = a formula in x . Many curves do not.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/implicit-differentiation.html">
+<meta property="og:title" content="Implicit Differentiation — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="So far every function came as y = a formula in x . Many curves do not.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/implicit-differentiation.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/implicit-differentiation.html#reading",
+      "name": "Implicit Differentiation",
+      "url": "https://levlprep.com/calculus/notes/implicit-differentiation.html",
+      "description": "So far every function came as y = a formula in x . Many curves do not.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "implicit differentiation ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differentiation: Composite, Implicit, and Inverse Functions",
+          "item": "https://levlprep.com/calculus/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Implicit Differentiation: notes",
+          "item": "https://levlprep.com/calculus/notes/implicit-differentiation.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="implicit-differentiation" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Differentiation: Definition and Fundamental Properties</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Differentiation: Composite, Implicit, and Inverse Functions</b><small>6 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 6 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="chain-rule"><a href="chain-rule.html"><span class="bk-toc-n">3.1</span>The Chain Rule</a></li><li class="current" data-toc-t="implicit-differentiation"><a href="#main" aria-current="page"><span class="bk-toc-n">3.2</span>Implicit Differentiation</a><div class="bk-toc-onpage"><p>On this page</p><a href="#explicit-and-implicit">Explicit and implicit</a><a href="#the-key-step-the-chain-rule">The key step: the chain rule on y</a><a href="#the-routine">The routine</a><a href="#reading-the-answer">Reading the answer</a><a href="#slips-that-cost-points">Slips that cost points</a></div></li><li data-toc-t="inverse-function-derivatives"><a href="inverse-function-derivatives.html"><span class="bk-toc-n">3.3</span>Derivatives of Inverse Functions</a></li><li data-toc-t="inverse-trig-derivatives"><a href="inverse-trig-derivatives.html"><span class="bk-toc-n">3.4</span>Derivatives of Inverse Trigonometric Functions</a></li><li data-toc-t="choosing-derivative-rules"><a href="choosing-derivative-rules.html"><span class="bk-toc-n">3.5</span>Choosing a Differentiation Rule</a></li><li data-toc-t="higher-order-derivatives"><a href="higher-order-derivatives.html"><span class="bk-toc-n">3.6</span>Second and Higher Derivatives</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Contextual Applications of Differentiation</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Differentiation: Composite, Implicit, and Inverse Functions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Implicit Differentiation: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/implicit-differentiation.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 3 &middot; Topic 3.2 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Implicit Differentiation</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="implicit-differentiation">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fimplicit-differentiation.html&amp;title=Implicit%20Differentiation%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/implicit-differentiation.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>So far every <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> came as <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">y =</annotation></semantics></math> a formula in <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. Many curves do not. The circle <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 = 25</annotation></semantics></math> and the tilted oval <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">x^2 + xy + y^2 = 7</annotation></semantics></math> mix <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> in one equation, and solving for <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> is either messy or gives two formulas. <span class="gl" tabindex="0" data-c="implicit-differentiation">Implicit differentiation</span> finds the <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> at a point straight from the equation, with no solving for <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> first.</p>
+
+<h2 id="explicit-and-implicit">Explicit and implicit</h2>
+<p>A function is given <b>explicitly</b> when <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> stands alone: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mrow><mn>25</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">y = \sqrt{25 - x^2}</annotation></semantics></math>. It is given <b>implicitly</b> when an equation links <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, such as <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 = 25</annotation></semantics></math>. The whole circle fails the vertical line test, so it is not the graph of one function. But zoom in near the point <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 4)</annotation></semantics></math> and you see a small arc that does pass the test. On that arc, <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> is a function of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, even if we never write its formula, and its slope is what we want.</p>
+<figure id="fig-implicit"  class="calc-figure"><div class="calc-figimg" data-fig="implicit-tilted-ellipse"><img src="../figures/implicit-tilted-ellipse.svg" alt="The tilted ellipse x² + xy + y² = 7 in crimson on axes from −4 to 4. A dashed vertical line x = 1 meets it at (1, 2) and (1, −3), so y is not a function of x. A blue tangent line at (1, 2) has slope −4/5." width="740" height="480" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The curve <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">x^2 + xy + y^2 = 7</annotation></semantics></math>. The line <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math> meets it twice, yet near <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math> the curve has one tangent line, with slope <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>4</mn><mn>5</mn></mfrac></mrow><annotation encoding="application/x-tex">-\frac{4}{5}</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="the-key-step-the-chain-rule">The key step: the chain rule on <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></h2>
+<p>Treat <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> as an unknown function of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. Then a term like <math class="calc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y^2</annotation></semantics></math> is a <a class="gl" href="../notes/math-functions.html" data-c="composition">composite function</a>: the inside is <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, the outside is the square. By the <a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a>,</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><mo fence="true" stretchy="true">(</mo><msup><mi>y</mi><mn>2</mn></msup><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mn>2</mn><mi>y</mi><mo>⋅</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\left(y^2\right) = 2y \cdot \frac{dy}{dx}</annotation></semantics></math></p>
+<p>The factor <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> is the derivative of the inside function. It appears every time you <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">differentiate</a> a term that holds <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, and never for a term that holds only <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<tr><th>Term</th><th>Derivative with respect to <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></th><th>Why</th></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">x^3</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">3x^2</annotation></semantics></math></td><td>only <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>: no extra factor</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>y</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">y^3</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>3</mn><msup><mi>y</mi><mn>2</mn></msup><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">3y^2\frac{dy}{dx}</annotation></semantics></math></td><td>chain rule, inside <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">\sin y</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>y</mi><mo>⋅</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\cos y \cdot \frac{dy}{dx}</annotation></semantics></math></td><td>chain rule, inside <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>e</mi><mi>y</mi></msup></mrow><annotation encoding="application/x-tex">e^y</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>e</mi><mi>y</mi></msup><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">e^y\frac{dy}{dx}</annotation></semantics></math></td><td>chain rule, inside <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">xy</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>y</mi><mo>+</mo><mi>x</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">y + x\frac{dy}{dx}</annotation></semantics></math></td><td><a class="gl" href="../notes/product-rule.html" data-c="product-rule">product rule</a>; the <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> factor gives <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td>a constant</td></tr>
+</table></div>
+
+<h2 id="the-routine">The routine</h2>
+<ol>
+<li>Apply <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d}{dx}</annotation></semantics></math> to <b>both sides</b> of the equation and write the new equation in full, with its right side (often <math class="calc-m"><semantics><mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>).</li>
+<li>Move every term that holds <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> to one side and everything else to the other.</li>
+<li>Factor out <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> and divide.</li>
+<li>For a slope at a point, substitute both coordinates <b>after</b> differentiating.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the slope of the circle <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 = 25</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 4)</annotation></semantics></math>.</p>
+<p>Differentiate both sides: <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>2</mn><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">2x + 2y\frac{dy}{dx} = 0</annotation></semantics></math>.</p>
+<p>Solve: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mrow><mn>2</mn><mi>x</mi></mrow><mrow><mn>2</mn><mi>y</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mi>x</mi><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = -\frac{2x}{2y} = -\frac{x}{y}</annotation></semantics></math>.</p>
+<p>At <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 4)</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>3</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = -\frac{3}{4}</annotation></semantics></math>. Check with the picture: at the upper right of the circle the curve falls as <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> grows, so a negative slope makes sense.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Find <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">x^2 + xy + y^2 = 7</annotation></semantics></math>, and the slope at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math>.</p>
+<p>Check the point first: <math class="calc-m"><semantics><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">1 + 2 + 4 = 7</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math> is on the curve.</p>
+<p>Differentiate both sides, using the product rule on <math class="calc-m"><semantics><mrow><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">xy</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>y</mi><mo>+</mo><mi>x</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>+</mo><mn>2</mn><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">2x + \left(y + x\frac{dy}{dx}\right) + 2y\frac{dy}{dx}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>.</p>
+<p>Collect: <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mi>y</mi><mo stretchy="false">)</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">(x + 2y)\frac{dy}{dx}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= -(2x + y)</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mrow><mi>x</mi><mo>+</mo><mn>2</mn><mi>y</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">= -\frac{2x + y}{x + 2y}</annotation></semantics></math>.</p>
+<p>At <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow><mrow><mn>1</mn><mo>+</mo><mn>4</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= -\frac{2 + 2}{1 + 4}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>4</mn><mn>5</mn></mfrac></mrow><annotation encoding="application/x-tex">= -\frac{4}{5}</annotation></semantics></math>. The <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">tangent line</a> is <math class="calc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mn>2</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>4</mn><mn>5</mn></mfrac><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y - 2 = -\frac{4}{5}(x - 1)</annotation></semantics></math>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Find <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mi>y</mi></msup><mo>+</mo><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">e^y + y = x^2</annotation></semantics></math>.</p>
+<p>Differentiate: <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mi>y</mi></msup><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">e^y\frac{dy}{dx} + \frac{dy}{dx} = 2x</annotation></semantics></math>. Both terms on the left hold <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, so both get <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math>.</p>
+<p>Factor: <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>e</mi><mi>y</mi></msup><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">(e^y + 1)\frac{dy}{dx} = 2x</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>x</mi></mrow><mrow><msup><mi>e</mi><mi>y</mi></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{2x}{e^y + 1}</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="reading-the-answer">Reading the answer</h2>
+<p>The formula for <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> usually holds both <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>. That is not a flaw: on the circle, the points <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 4)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, -4)</annotation></semantics></math> share <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math> but have slopes <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>3</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">-\frac{3}{4}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mn>3</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{3}{4}</annotation></semantics></math>. You need both coordinates to know which point you mean, and the point must lie on the curve.</p>
+<p>A fraction for <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> also shows special points. Where the numerator is 0 and the denominator is not, the slope is 0 and the tangent line is flat. Where the denominator is 0 and the numerator is not, the slope is undefined and the tangent line is vertical, as at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-5, 0)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(5, 0)</annotation></semantics></math> on the circle. Always check that such a point is actually on the curve.</p>
+
+<h2 id="slips-that-cost-points">Slips that cost points</h2>
+<ul>
+<li><b>Forgetting <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> on a <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-term.</b> Writing <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>2</mn><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">2x + 2y = 0</annotation></semantics></math> for the circle loses the whole problem.</li>
+<li><b>Skipping the product rule.</b> <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="false">(</mo><mi>x</mi><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{d}{dx}(xy)</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><mi>y</mi><mo>+</mo><mi>x</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">y + x\frac{dy}{dx}</annotation></semantics></math>, two terms, not <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> alone.</li>
+<li><b>Differentiating one side only.</b> Apply <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d}{dx}</annotation></semantics></math> to both sides, and keep the "<math class="calc-m"><semantics><mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>".</li>
+<li><b>Substituting too early.</b> Put in the point's coordinates only after differentiating; a number has derivative 0.</li>
+<li><b>Mixing notations.</b> Keep <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> (or <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">y'</annotation></semantics></math>) separate from <math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math> and from <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dt}</annotation></semantics></math>.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:implicit-differentiation">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="chain-rule.html"><span>&larr; Previous</span><b>The Chain Rule</b></a><a class="tb-chapter-link next" href="math-inverse-functions.html"><span>Next &rarr;</span><b>Inverse Functions</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:implicit-differentiation">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+/* Motion lab (calculus/assets/tools/motion-lab.js). OWNED BY THIS TOOL ONLY.
+   Loaded by the generator after calc-tools.css when this file exists.
+   The road and the car, the stacked x, v, a graphs (x crimson, v blue,
+   a green: the plots' s1, s2, s3 everywhere), light and dark. */
+.ml-card,.ls-root{--ml-x:#B0123A;--ml-v:#0072B2;--ml-a:#007A5A;--ml-up:rgba(230,159,0,.20);--ml-dn:#8A9A95;--ml-pos:rgba(0,114,178,.22);--ml-neg:rgba(213,94,0,.24);}
+:root[data-theme="dark"] .ml-card,:root[data-theme="dark"] .ls-root{--ml-x:#F590AC;--ml-v:#6BB4E8;--ml-a:#52CFA6;--ml-up:rgba(240,190,80,.09);--ml-dn:#6F807A;--ml-pos:rgba(107,180,232,.24);--ml-neg:rgba(242,154,92,.26);}
+
+.ml-stage{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;}
+.ml-track-wrap{flex:none;}
+.ml-track{display:block;width:100%;height:auto;border-radius:12px;}
+.ml-graphs-wrap{position:relative;flex:1 1 0;min-height:230px;border-radius:12px;}
+.ml-graphs-wrap:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.ml-graphs{display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;user-select:none;-webkit-user-select:none;}
+.ml-card:not(.ls-root *) .ml-graphs-wrap{height:340px;flex:none;}
+.ml-legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font:700 12.5px var(--font-ui);color:var(--muted);}
+.ml-lg{display:inline-flex;align-items:center;gap:6px;}
+.ml-lg::before{content:"";display:inline-block;width:14px;height:4px;border-radius:2px;background:currentColor;}
+.ml-lg-x{color:var(--ml-x);} .ml-lg-v{color:var(--ml-v);} .ml-lg-a{color:var(--ml-a);}
+.ml-lg-up::before{height:12px;background:var(--ml-up);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);}
+.ml-lg-dn::before{height:12px;background:repeating-linear-gradient(45deg,var(--ml-dn) 0 1.5px,transparent 1.5px 5px);opacity:.8;}
+.ml-lg-turn::before{width:2px;height:12px;background:var(--ink);opacity:.6;}
+
+/* the road */
+.ml-sky{fill:#EEF5F8;}
+.ml-road{fill:#5B636B;}
+.ml-lane{stroke:#F2F4F5;stroke-width:1.4;stroke-dasharray:10 8;opacity:.8;}
+.ml-ticks line{stroke:var(--muted);stroke-width:1.2;}
+.ml-ticks text{fill:var(--muted);font:700 11px var(--font-ui);font-variant-numeric:tabular-nums;}
+.ml-trail circle{fill:var(--ml-x);opacity:.75;}
+.ml-body{fill:#B0123A;stroke:#7D0C29;stroke-width:1.2;}
+.ml-glass{fill:#CFE6F5;stroke:#7D0C29;stroke-width:1;}
+.ml-tyre{fill:#20262A;stroke:#9AA5AA;stroke-width:1.5;}
+.ml-spoke{stroke:#9AA5AA;stroke-width:1.5;}
+.ml-head{fill:#FFE38A;}
+.ml-brake{fill:#7A2A2A;}
+.ml-brake.is-on{fill:#FF3B3B;filter:drop-shadow(0 0 4px #FF3B3B);}
+.ml-speed line{stroke:var(--muted);stroke-width:2;stroke-linecap:round;opacity:.7;}
+.ml-av line{stroke:var(--ml-v);stroke-width:3;} .ml-av path{fill:var(--ml-v);} .ml-av circle{fill:var(--ml-v);}
+.ml-aa line{stroke:var(--ml-a);stroke-width:3;} .ml-aa path{fill:var(--ml-a);} .ml-aa circle{fill:var(--ml-a);}
+.ml-av text,.ml-aa text{font:900 12px var(--font-ui);font-style:italic;}
+.ml-av text{fill:var(--ml-v);} .ml-aa text{fill:var(--ml-a);}
+:root[data-theme="dark"] .ml-sky{fill:#17232A;}
+:root[data-theme="dark"] .ml-road{fill:#3E464D;}
+:root[data-theme="dark"] .ml-body{fill:#D9466E;stroke:#F7B8CA;}
+
+/* the graphs */
+.ml-panel{fill:var(--white);stroke:var(--line);stroke-width:1;}
+.ml-band.is-up{fill:var(--ml-up);}
+.ml-hatch-l{stroke:var(--ml-dn);stroke-width:1.2;opacity:.55;}
+.ml-grid{stroke:var(--line);stroke-width:1;}
+.ml-grid.ml-zero{stroke:var(--ink);stroke-width:1.2;opacity:.6;}
+.ml-tk{fill:var(--muted);font:700 10.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.ml-pl{font:900 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ml-pl.s1{fill:var(--ml-x);} .ml-pl.s2{fill:var(--ml-v);} .ml-pl.s3{fill:var(--ml-a);}
+.ml-curve{fill:none;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.ml-curve.s1{stroke:var(--ml-x);} .ml-curve.s2{stroke:var(--ml-v);} .ml-curve.s3{stroke:var(--ml-a);}
+.ml-area.is-pos{fill:var(--ml-pos);} .ml-area.is-neg{fill:var(--ml-neg);}
+.ml-note{fill:var(--muted);font:700 11px var(--font-ui);}
+.ml-turn{stroke:var(--ink);stroke-width:1.3;stroke-dasharray:3 4;opacity:.6;}
+.ml-turn-pt{fill:var(--white);stroke:var(--ml-v);stroke-width:2.4;}
+.ml-turn-pt.is-x{stroke:var(--ml-x);}
+.ml-taxis text{fill:var(--muted);font:700 10.5px var(--font-ui);}
+.ml-taxis .ml-tl{font-weight:900;fill:var(--ink);}
+.ml-cur{stroke:var(--ink);stroke-width:1.4;}
+.ml-cur-pt{stroke:var(--white);stroke-width:2;}
+.ml-cur-pt.s1{fill:var(--ml-x);} .ml-cur-pt.s2{fill:var(--ml-v);} .ml-cur-pt.s3{fill:var(--ml-a);}
+
+/* dock */
+.ml-chips .bt-btn{min-height:40px;padding:0 14px;border-radius:999px;font-size:14px;}
+.ml-card:not(.ls-root *) .ml-chips{display:flex;flex-wrap:wrap;gap:8px;-webkit-mask-image:none;mask-image:none;}
+.ml-modes{display:flex;}
+.ml-time{display:flex;align-items:flex-end;gap:10px;}
+.ml-time .ml-play{flex:none;min-width:84px;}
+.ml-slot{flex:1;min-width:0;}
+.ml-slot .bt-out{min-width:4.6em;white-space:nowrap;text-align:right;}
+.ml-pk{font-weight:900;font-style:italic;}
+.ml-pk.s1{color:var(--ml-x);} .ml-pk.s2{color:var(--ml-v);} .ml-pk.s3{color:var(--ml-a);}
+
+/* Why and Details */
+.ml-why{margin:8px 0 0;padding-left:1.2em;display:grid;gap:8px;}
+.ml-ftbl td{font-weight:600;}
+
+/* Test yourself figure */
+.ml-figwrap .calc-plot{width:100%;height:auto;max-height:100%;}
+.ls-root .ls-drill-stage .ml-figwrap{height:100%;display:flex;align-items:center;justify-content:center;}
+.ls-root .ls-drill-stage .ml-figwrap .calc-plot{height:100%;width:auto;max-width:100%;}
+.ml-slot .bt-step{display:none;}
+.ml-slot .bt-slider-row{gap:10px;}
+.ml-slot label{font-size:13px;}
+@media (max-width:599.98px){
+  .ml-ctl .ml-modes{display:none;}
+  .ml-legend{font-size:11.5px;gap:2px 10px;}
+  .ml-graphs-wrap{min-height:150px;}
+}
+
+/* Phones (docs/tools-phone-pass.md): labels at least 12 px, the graphs one at
+   a time when asked (the switch in the dock), nothing under Enlarge. */
+.ml-view,.ls-root:not(.ls-phone) .ml-view.ls-seg,.ml-card:not(.ls-root *) .ml-view.ls-seg{display:none;}
+.ls-root.ls-phone .ml-view{display:flex;}
+.ls-root.ls-phone .ml-view > .bt-mode{flex:1;min-width:0;padding:0 4px;font-size:13.5px;}
+.ls-root.ls-phone .ml-tk,.ls-root.ls-phone .ml-taxis text,.ls-root.ls-phone .ml-ticks text,.ls-root.ls-phone .ml-note{font-size:12px;}
+.ls-root.ls-phone .ml-pl{font-size:13.5px;}
+.ls-root.ls-phone .ml-av text,.ls-root.ls-phone .ml-aa text{font-size:13.5px;}
+.ls-root.ls-phone .ml-legend{font-size:12px;padding-right:56px;min-height:46px;align-content:center;}
+.ls-root.ls-phone .ml-figwrap .calc-plot{font-size:13px;}
+.ls-root.ls-phone .ml-graphs-wrap{min-height:110px;}

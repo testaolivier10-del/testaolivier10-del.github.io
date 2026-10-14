@@ -1,0 +1,11 @@
+{
+ "factoring": {
+  "def": "Writing an expression as a product, such as $x^2 - 9 = (x - 3)(x + 3)$ (a difference of squares). A factored form shows which factors can cancel."
+ },
+ "rationalizing": {
+  "def": "Removing a square root from part of a fraction by multiplying top and bottom by the conjugate: $\\sqrt{A} - B$ and $\\sqrt{A} + B$ are conjugates, and $(\\sqrt{A} - B)(\\sqrt{A} + B) = A - B^2$."
+ },
+ "complex-fraction": {
+  "def": "A fraction whose top or bottom contains fractions, such as $\\frac{\\frac{1}{x + 2} - \\frac{1}{2}}{x}$. Combine the inner fractions over a common denominator to simplify it."
+ }
+}

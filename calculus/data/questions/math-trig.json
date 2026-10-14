@@ -1,0 +1,340 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "calc-math-trig-1",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\cos\\left(\\frac{2\\pi}{3}\\right)$ exactly.",
+   "numeric": {
+    "answer": "-1/2",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "$\\frac{2\\pi}{3}$ is in the second quadrant, where cosine (the $x$-coordinate) is negative."
+     },
+     {
+      "value": "-sqrt(3)/2",
+      "why": "The reference angle is $\\frac{\\pi}{3}$, and $\\cos\\frac{\\pi}{3} = \\frac{1}{2}$; $\\frac{\\sqrt{3}}{2}$ is its sine."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reference angle $\\pi - \\frac{2\\pi}{3} = \\frac{\\pi}{3}$, with $\\cos\\frac{\\pi}{3} = \\frac{1}{2}$. In the second quadrant cosine is negative: $-\\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "calc-math-trig-2",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\sin\\left(\\frac{7\\pi}{6}\\right)$ exactly.",
+   "numeric": {
+    "answer": "-1/2",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "$\\frac{7\\pi}{6}$ is just past $\\pi$, in the third quadrant, where sine (the $y$-coordinate) is negative."
+     },
+     {
+      "value": "-sqrt(3)/2",
+      "why": "The reference angle is $\\frac{\\pi}{6}$, whose sine is $\\frac{1}{2}$, not $\\frac{\\sqrt{3}}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{7\\pi}{6} = \\pi + \\frac{\\pi}{6}$: reference angle $\\frac{\\pi}{6}$, third quadrant, so $\\sin\\frac{7\\pi}{6} = -\\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "calc-math-trig-3",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\tan\\left(\\frac{3\\pi}{4}\\right)$ exactly.",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "At $\\frac{3\\pi}{4}$, sine is positive and cosine is negative, so $\\tan = \\frac{\\sin}{\\cos}$ is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\tan\\frac{3\\pi}{4} = \\frac{\\sin(3\\pi/4)}{\\cos(3\\pi/4)} = \\frac{\\sqrt{2}/2}{-\\sqrt{2}/2} = -1$."
+   }
+  },
+  {
+   "id": "calc-math-trig-4",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\sec\\left(\\frac{\\pi}{4}\\right)$ exactly.",
+   "numeric": {
+    "answer": "sqrt(2)",
+    "mistakes": [
+     {
+      "value": "sqrt(2)/2",
+      "why": "That is $\\cos\\frac{\\pi}{4}$. Secant is its reciprocal: $\\frac{1}{\\sqrt{2}/2} = \\frac{2}{\\sqrt{2}} = \\sqrt{2}$."
+     },
+     {
+      "value": 2,
+      "why": "$\\frac{1}{\\sqrt{2}/2} = \\frac{2}{\\sqrt{2}}$, which simplifies to $\\sqrt{2}$, not 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sec\\frac{\\pi}{4} = \\frac{1}{\\cos(\\pi/4)} = \\frac{1}{\\sqrt{2}/2} = \\frac{2}{\\sqrt{2}} = \\sqrt{2}$."
+   }
+  },
+  {
+   "id": "calc-math-trig-5",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is $135^{\\circ}$ in radians?",
+   "options": [
+    "$\\frac{3\\pi}{4}$",
+    "$\\frac{4\\pi}{3}$",
+    "$\\frac{2\\pi}{3}$",
+    "$\\frac{3\\pi}{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Multiply by $\\frac{\\pi}{180}$: $135 \\cdot \\frac{\\pi}{180} = \\frac{3\\pi}{4}$.",
+    "options": [
+     "$\\frac{135}{180} = \\frac{3}{4}$.",
+     "That is $240^{\\circ}$; the fraction is upside down.",
+     "That is $120^{\\circ}$.",
+     "That is $270^{\\circ}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-trig-6",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which values of $x$ in $[0, 2\\pi)$ solve $2\\sin x = -\\sqrt{3}$?",
+   "options": [
+    "$\\frac{4\\pi}{3}$ and $\\frac{5\\pi}{3}$",
+    "$\\frac{\\pi}{3}$ and $\\frac{2\\pi}{3}$",
+    "$\\frac{7\\pi}{6}$ and $\\frac{11\\pi}{6}$",
+    "$\\frac{2\\pi}{3}$ and $\\frac{4\\pi}{3}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\sin x = -\\frac{\\sqrt{3}}{2}$. The reference angle with sine $\\frac{\\sqrt{3}}{2}$ is $\\frac{\\pi}{3}$; sine is negative in quadrants III and IV: $\\pi + \\frac{\\pi}{3} = \\frac{4\\pi}{3}$ and $2\\pi - \\frac{\\pi}{3} = \\frac{5\\pi}{3}$.",
+    "options": [
+     "Quadrants III and IV with reference angle $\\frac{\\pi}{3}$.",
+     "Those give $\\sin x = +\\frac{\\sqrt{3}}{2}$.",
+     "Those give $\\sin x = -\\frac{1}{2}$; the reference angle should be $\\frac{\\pi}{3}$, not $\\frac{\\pi}{6}$.",
+     "Those give $\\cos x = -\\frac{1}{2}$; sine at $\\frac{2\\pi}{3}$ is positive."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-trig-7",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which expression equals $1 - \\cos^2 x$ for every $x$?",
+   "options": [
+    "$\\sin^2 x$",
+    "$\\tan^2 x$",
+    "$-\\sin^2 x$",
+    "$\\sin x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From the Pythagorean identity $\\sin^2 x + \\cos^2 x = 1$, subtract $\\cos^2 x$ from both sides.",
+    "options": [
+     "$\\sin^2 x = 1 - \\cos^2 x$.",
+     "$\\tan^2 x = \\sec^2 x - 1$, a different identity.",
+     "The sign is positive: $1 - \\cos^2 x = \\sin^2 x \\ge 0$.",
+     "The identity involves squares: $\\sin^2 x$, not $\\sin x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-trig-8",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "What does $\\sin^2 x$ mean?",
+   "options": [
+    "$(\\sin x)^2$",
+    "$\\sin(x^2)$",
+    "$\\sin(\\sin x)$",
+    "$2\\sin x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An exponent written right after a trig name squares the whole output: $\\sin^2 x = (\\sin x)^2$.",
+    "options": [
+     "Square the value of $\\sin x$.",
+     "That would be written $\\sin(x^2)$, a different function.",
+     "That is a composition, not a square.",
+     "Squaring is not doubling."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-trig-9",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which expression equals $\\sin(2x)$ for every $x$?",
+   "options": [
+    "$2\\sin x \\cos x$",
+    "$2\\sin x$",
+    "$\\sin^2 x + \\cos^2 x$",
+    "$\\sin x \\cos x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The double-angle identity: $\\sin(2x) = 2\\sin x \\cos x$. Check at $x = \\frac{\\pi}{4}$: $\\sin\\frac{\\pi}{2} = 1$ and $2 \\cdot \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{2}}{2} = 1$.",
+    "options": [
+     "The double-angle identity.",
+     "At $x = \\frac{\\pi}{2}$: $\\sin\\pi = 0$, but $2\\sin\\frac{\\pi}{2} = 2$.",
+     "That always equals 1, but $\\sin(2x)$ varies.",
+     "Missing the factor 2: at $x = \\frac{\\pi}{4}$ it gives $\\frac{1}{2}$, not 1."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-trig-10",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "On the interval $0 < x < \\pi$, where does the graph of $y = \\cos x$ cross the $x$-axis?",
+   "options": [
+    "$x = \\frac{\\pi}{2}$",
+    "$x = \\frac{\\pi}{4}$",
+    "$x = \\frac{\\pi}{3}$",
+    "It does not cross the axis there."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\cos x = 0$ where the unit-circle point has $x$-coordinate 0: at $\\frac{\\pi}{2}$ (the point $(0, 1)$).",
+    "options": [
+     "The point $(0, 1)$ on the unit circle.",
+     "$\\cos\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2} \\ne 0$.",
+     "$\\cos\\frac{\\pi}{3} = \\frac{1}{2} \\ne 0$.",
+     "Cosine goes from 1 at $x = 0$ to $-1$ at $x = \\pi$, so it crosses 0 in between."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-trig-11",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "calc": true,
+   "q": "Use a calculator to find $\\cos(1)$, where the angle is in radians. Give your answer to three decimal places.",
+   "numeric": {
+    "answer": 0.5403023058681398,
+    "mistakes": [
+     {
+      "value": 0.9998476951563913,
+      "why": "That is $\\cos(1^{\\circ})$: the calculator is in degree mode. Calculus always uses radians; switch the mode and recompute."
+     },
+     {
+      "value": 0.8414709848078965,
+      "why": "That is $\\sin(1)$, not $\\cos(1)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "In radian mode, $\\cos(1) \\approx 0.540$. Calculus formulas assume radians, so check the mode before every trig calculation."
+   }
+  },
+  {
+   "id": "calc-math-trig-12",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "For which value of $x$ is $\\tan x$ not defined?",
+   "options": [
+    "$x = \\frac{\\pi}{2}$",
+    "$x = 0$",
+    "$x = \\pi$",
+    "$x = \\frac{\\pi}{4}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\tan x = \\frac{\\sin x}{\\cos x}$ is undefined where $\\cos x = 0$, as at $x = \\frac{\\pi}{2}$. The graph of $\\tan$ has vertical asymptotes there.",
+    "options": [
+     "$\\cos\\frac{\\pi}{2} = 0$.",
+     "$\\tan 0 = \\frac{0}{1} = 0$.",
+     "$\\tan\\pi = \\frac{0}{-1} = 0$.",
+     "$\\tan\\frac{\\pi}{4} = 1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-trig-13",
+   "unit": "skills-math",
+   "topic": "math-trig",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "An angle $\\theta$ is in the second quadrant and $\\sin\\theta = \\frac{3}{5}$. Find $\\cos\\theta$ exactly.",
+   "numeric": {
+    "answer": "-4/5",
+    "mistakes": [
+     {
+      "value": "4/5",
+      "why": "$\\sin^2\\theta + \\cos^2\\theta = 1$ gives $\\cos\\theta = \\pm\\frac{4}{5}$; in the second quadrant cosine is negative."
+     },
+     {
+      "value": "2/5",
+      "why": "Use squares: $\\cos^2\\theta = 1 - \\frac{9}{25} = \\frac{16}{25}$, not $1 - \\frac{3}{5}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\cos^2\\theta = 1 - \\left(\\frac{3}{5}\\right)^2 = \\frac{16}{25}$, so $\\cos\\theta = \\pm\\frac{4}{5}$. In quadrant II, $\\cos\\theta = -\\frac{4}{5}$."
+   }
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "topic": "area-between-curves-x",
+ "hook": "A landscaper wants to know how much sod to buy for a curved lawn that sits between a winding path and a straight fence. Neither edge is the x-axis, so the area under one curve is not the answer. Slice the lawn into thin vertical strips, measure each from the lower edge to the upper edge, and add them up: that is one integral.",
+ "prereq": [
+  {
+   "q": "What is $\\int_0^2 3x^2\\,dx$?",
+   "options": ["$8$", "$12$", "$6$", "$24$"],
+   "correct": 0,
+   "why": "An antiderivative is $x^3$, so the integral is $2^3 - 0^3 = 8$.",
+   "review": "ftc-definite-integrals"
+  },
+  {
+   "q": "On $[0, 3]$, $f(x) < 0$. What sign does $\\int_0^3 f(x)\\,dx$ have?",
+   "options": ["Negative", "Positive", "Zero", "It depends on the length of the interval"],
+   "correct": 0,
+   "why": "Every rectangle in a Riemann sum has a negative height, so the definite integral is negative: it counts area below the axis as negative.",
+   "review": "accumulation-behavior"
+  }
+ ],
+ "figure": { "figure": "area-between-x-strip", "caption": "One thin rectangle between $y = 6 - x^2$ and $y = x$: its height is top minus bottom, and the region runs between the crossings at $x = -3$ and $x = 2$." },
+ "chain": [
+  { "cause": "Slice the region into thin vertical rectangles of width $\\Delta x$", "effect": "each one reaches from the bottom curve $g$ up to the top curve $f$, so its height is $f(x) - g(x)$" },
+  { "cause": "Each rectangle has area $\\left(f(x) - g(x)\\right)\\Delta x$", "effect": "adding them is a Riemann sum for $f - g$" },
+  { "cause": "Let the rectangles get thinner and thinner", "effect": "the sum becomes $\\int_a^b \\left(f(x) - g(x)\\right)\\,dx$" },
+  { "cause": "The region starts and ends where the curves meet", "effect": "the limits $a$ and $b$ are the solutions of $f(x) = g(x)$" },
+  { "cause": "Top minus bottom is never negative on $[a, b]$", "effect": "the integral is positive, so a negative answer means the subtraction is backward" }
+ ],
+ "ideas": [
+  "<b>Area between curves</b>: if $f(x) \\ge g(x)$ on $[a, b]$, the area is $\\int_a^b \\left(f(x) - g(x)\\right)\\,dx$, top minus bottom.",
+  "Find the limits by solving $f(x) = g(x)$. They are $x$-values, because the integral is in $dx$.",
+  "Put the bottom function in parentheses before you subtract: $(x + 1) - (x^2 - 1) = x + 2 - x^2$.",
+  "To tell which curve is on top, test one $x$ between the crossings in both functions.",
+  "The formula works wherever the curves are, above or below the $x$-axis: only the difference matters."
+ ],
+ "misconception": {
+  "wrong": "The area between two curves is the area under the top curve, or the integral in whatever order you subtract.",
+  "right": "Each strip runs from the bottom curve to the top curve, so the integrand is top minus bottom. The area under the top curve alone counts space below the region. Subtracting bottom minus top gives a negative number, and an area is never negative."
+ },
+ "check": [
+  "calc-area-between-curves-x-1",
+  "calc-area-between-curves-x-2",
+  "calc-area-between-curves-x-3",
+  "calc-area-between-curves-x-11",
+  "calc-area-between-curves-x-13",
+  "calc-area-between-curves-x-15"
+ ],
+ "summary": "The area between two curves is a sum of thin vertical rectangles whose heights are top minus bottom. Find where the curves meet for the limits, check which function is on top, put the bottom function in parentheses, and integrate: $A = \\int_a^b \\left(f(x) - g(x)\\right)\\,dx$.",
+ "connections": [
+  { "href": "../notes/accumulation-in-context.html", "label": "Back: accumulation in context (8.3)" },
+  { "href": "../notes/area-between-curves-y.html", "label": "Next: 8.5" }
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "topic": "optimization-intro",
+ "hook": "A farmer with a fixed roll of fence wants the biggest pen; a theater wants the ticket price that brings in the most money. Both are asking for the absolute maximum of a function. The calculus is the tools you already have; the new skill is turning the words into that function.",
+ "prereq": [
+  {
+   "q": "On a closed interval, where can the absolute maximum of a continuous function occur?",
+   "options": [
+    "At an endpoint or a critical point",
+    "Only where $f' = 0$",
+    "Only at an endpoint",
+    "Where $f'' = 0$"
+   ],
+   "correct": 0,
+   "why": "The Candidates Test checks both.",
+   "review": "candidates-test"
+  },
+  {
+   "q": "$f'(c) = 0$ and $f''(c) < 0$ mean",
+   "options": [
+    "a relative maximum at $c$",
+    "a relative minimum at $c$",
+    "a point of inflection at $c$",
+    "nothing"
+   ],
+   "correct": 0,
+   "why": "The Second Derivative Test.",
+   "review": "second-derivative-test"
+  }
+ ],
+ "figure": {
+  "figure": "pen-river-area",
+  "caption": "The fence fixes $3x + y = 600$; the area becomes a function of $x$ alone, $A(x) = x(600 - 3x)$ on $[0, 200]$, with its highest point at $x = 100$."
+ },
+ "chain": [
+  {
+   "cause": "A problem asks for the largest or smallest of something",
+   "effect": "name that quantity and write the objective function for it"
+  },
+  {
+   "cause": "The objective function has two variables",
+   "effect": "use the given fact (a fixed perimeter, a fixed product) to write one variable in terms of the other"
+  },
+  {
+   "cause": "The variable must make physical sense",
+   "effect": "find the domain: lengths and amounts are not negative"
+  },
+  {
+   "cause": "Find the critical points and compare (or use one-critical-point reasoning)",
+   "effect": "the absolute extremum, justified, answered in context with units"
+  }
+ ],
+ "ideas": [
+  "<b>Optimization</b>: finding the absolute maximum or minimum of a quantity in context.",
+  "The <b>objective function</b> is the quantity to optimize, written in one variable with a domain.",
+  "Justify the absolute extremum: Candidates Test on a closed interval, or one critical point that is a relative extremum.",
+  "Answer the question asked: the dimensions or the price, with units, not just $x$."
+ ],
+ "misconception": {
+  "wrong": "Find where the derivative is zero, and that is the answer.",
+  "right": "A critical point is only a candidate. It could be a minimum when you want a maximum (the shipping cost above), or an endpoint could win. Justify that it is the absolute extremum, and answer in context."
+ },
+ "check": [
+  "calc-optimization-intro-1",
+  "calc-optimization-intro-2",
+  "calc-optimization-intro-3",
+  "calc-optimization-intro-4",
+  "calc-optimization-intro-5",
+  "calc-optimization-intro-13"
+ ],
+ "summary": "Optimization finds the absolute maximum or minimum of a quantity in context. Write the objective function, reduce it to one variable using the given facts, find its domain, find the critical points, and justify the absolute extremum with candidates or one-critical-point reasoning. Answer in context, with units.",
+ "connections": [
+  {
+   "href": "../notes/f-and-its-derivatives.html",
+   "label": "Back: f, f′ and f″ (5.9)"
+  },
+  {
+   "href": "../notes/solving-optimization.html",
+   "label": "Next: 5.11"
+  }
+ ]
+}

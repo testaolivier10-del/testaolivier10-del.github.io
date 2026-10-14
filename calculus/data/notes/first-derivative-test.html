@@ -1,0 +1,52 @@
+<p>You now know where a function rises and where it falls. Put two intervals side by side and a peak or valley appears between them. The First Derivative Test is that observation, stated carefully enough to use as a justification. It is one of the most scored sentences on the whole exam.</p>
+
+<h2>The test</h2>
+<p>Let $c$ be a critical point of $f$, and let $f$ be continuous at $c$.</p>
+<ul>
+<li>If $f'$ changes from <b>positive to negative</b> at $c$, then $f$ has a <b>relative maximum</b> at $c$. The graph rises up to $c$, then falls.</li>
+<li>If $f'$ changes from <b>negative to positive</b> at $c$, then $f$ has a <b>relative minimum</b> at $c$. The graph falls, then rises.</li>
+<li>If $f'$ <b>does not change sign</b> at $c$, then $f$ has <b>no relative extremum</b> at $c$. The graph keeps going the same way.</li>
+</ul>
+<figure id="fig-fdt" data-fig="fdt-three-cases"><figcaption>Only the change in the sign of $f'$ decides. A flat point with the same sign on both sides is not an extremum.</figcaption></figure>
+<p>Notice what the test does not use: the value $f'(c)$. It works the same at a point where $f'(c) = 0$ and at a corner or cusp where $f'(c)$ does not exist. What matters is the sign just before and just after.</p>
+
+<h2>Sign charts</h2>
+<p>A <b>sign chart</b> is a number line marked with the critical points and the sign of $f'$ on each interval between them. It is a good way to organize the work:</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the relative extrema of $f(x) = x^3 - 3x^2 - 9x + 4$.</p>
+<p>$f'(x) = 3x^2 - 6x - 9 = 3(x - 3)(x + 1)$, zero at $x = -1$ and $x = 3$.</p>
+<p>Test values: $f'(-2) = 15 > 0$, $f'(0) = -9 < 0$, $f'(4) = 15 > 0$. Sign chart: $+$, then $-$ after $-1$, then $+$ after $3$.</p>
+<p>At $x = -1$, $f'$ changes from positive to negative: relative maximum, $f(-1) = -1 - 3 + 9 + 4 = 9$.</p>
+<p>At $x = 3$, $f'$ changes from negative to positive: relative minimum, $f(3) = 27 - 27 - 27 + 4 = -23$.</p>
+</div>
+<p>But the chart is scratch work. The scoring guidelines do not accept a sign chart by itself as a justification. Write the sentence: "$f'$ changes from positive to negative at $x = -1$, so $f$ has a relative maximum there."</p>
+
+<h2>Points where $f'$ does not exist</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> $f(x) = x^{5/3} - 5x^{2/3}$. Find its relative extrema.</p>
+<p>$f'(x) = \frac{5}{3}x^{2/3} - \frac{10}{3}x^{-1/3} = \frac{5x - 10}{3x^{1/3}} = \frac{5(x - 2)}{3x^{1/3}}$.</p>
+<p>Critical points: $x = 2$ (numerator zero) and $x = 0$ ($f'$ undefined; $f$ is defined and continuous there).</p>
+<p>Signs: for $x < 0$, both $x - 2$ and $x^{1/3}$ are negative, so $f' > 0$. For $0 < x < 2$, $f' < 0$. For $x > 2$, $f' > 0$.</p>
+<p>So $f$ has a relative maximum at $x = 0$ ($f'$ changes from positive to negative at a cusp) and a relative minimum at $x = 2$.</p>
+</div>
+
+<h2>Zeros that are not extrema</h2>
+<p>A squared factor in $f'$ is the usual reason a critical point is not an extremum. For $f(x) = x^4 - 4x^3$:</p>
+<p>$$f'(x) = 4x^3 - 12x^2 = 4x^2(x - 3)$$</p>
+<p>The factor $4x^2$ is never negative, so the sign of $f'$ is the sign of $x - 3$. At $x = 0$, $f'$ is negative on both sides: no extremum, even though $f'(0) = 0$. At $x = 3$, $f'$ changes from negative to positive: a relative minimum.</p>
+
+<h2>Reading the test from a graph of $f'$</h2>
+<table class="compare">
+<thead><tr><th scope="col">What the graph of $f'$ does at $x = c$</th><th scope="col">What $f$ has at $x = c$</th></tr></thead>
+<tbody>
+<tr><td>Crosses the axis going down ($+$ to $-$)</td><td>relative maximum</td></tr>
+<tr><td>Crosses the axis going up ($-$ to $+$)</td><td>relative minimum</td></tr>
+<tr><td>Touches the axis and turns back (no sign change)</td><td>no extremum</td></tr>
+<tr><td>Has a peak or valley above or below the axis</td><td>no extremum (that is about concavity)</td></tr>
+</tbody>
+</table>
+
+<h2>The sentence to write</h2>
+<p>Name the function, name the point, give the direction of the change:</p>
+<p style="text-align:center">"$f'$ changes from negative to positive at $x = 5$, so $f$ has a relative minimum at $x = 5$."</p>
+<p>Answers that lose the point: "$f'(5) = 0$" (no sign change), "it changes sign" (which function? which direction?), or "the graph crosses the axis" (which graph?). And remember this test is local: it finds relative extrema, not absolute ones. For the absolute maximum on an interval, you need the next topic.</p>

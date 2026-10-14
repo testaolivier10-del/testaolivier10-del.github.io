@@ -1,0 +1,12 @@
+{
+ "area-between-y-strip": {
+  "file": "figures/area-between-y-strip.svg", "ext": "svg", "w": 760, "h": 440,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "The region between the parabola x = y² (left) and the line x = y + 2 (right), shaded from y = −1 to y = 2, where they meet at (1, −1) and (4, 2). One thin horizontal rectangle of thickness Δy has length right minus left, (y + 2) − y². A side panel gives the limits from y² = y + 2 and the area, the integral from −1 to 2 of [(y + 2) − y²] dy = 9/2."
+ },
+ "area-y-sine-region": {
+  "file": "figures/area-y-sine-region.svg", "ext": "svg", "w": 520, "h": 400,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "The parabola x = y² opening to the right and the wavy curve x = 2 + sin 2y, which swings between x = 1 and x = 3 as y changes. The region Q between them is shaded, with the wave on the right, from their lower crossing near y = −1.08 to their upper crossing near y = 1.48."
+ }
+}

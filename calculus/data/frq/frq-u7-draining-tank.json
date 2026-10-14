@@ -1,0 +1,135 @@
+{
+ "id": "frq-u7-draining-tank",
+ "type": "de",
+ "title": "Water draining from a tank",
+ "calc": false,
+ "points": 9,
+ "units": [
+  "unit-7"
+ ],
+ "topics": [
+  "modeling-with-des",
+  "reasoning-with-slope-fields",
+  "separation-of-variables",
+  "particular-solutions",
+  "local-linearity"
+ ],
+ "practices": [
+  "1.E",
+  "3.E",
+  "3.F",
+  "4.B"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "A tank drains through a hole in its base",
+  "table": {
+   "caption": "The depth h of water in the tank, in feet, t minutes after the hole is opened, satisfies the differential equation in the table",
+   "cols": [
+    "Quantity",
+    "Value"
+   ],
+   "rows": [
+    [
+     "$\\frac{dh}{dt}$",
+     "$-\\frac{1}{5}\\sqrt{h}$ feet per minute"
+    ],
+    [
+     "$h(0)$",
+     "16 feet"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Use</b> the line tangent to the graph of $h$ at $t = 0$ to approximate the depth of the water at $t = 1$ minute.",
+   "rubric": [
+    {
+     "point": "Slope at $t = 0$: $\\left.\\frac{dh}{dt}\\right|_{h = 16} = -\\frac{1}{5}\\sqrt{16} = -\\frac{4}{5}$, and the tangent line $h = 16 - \\frac{4}{5}t$.",
+     "accept": [
+      "h - 16 = -0.8(t - 0)",
+      "dh/dt = -0.8 at t = 0 used in a linear approximation"
+     ]
+    },
+    {
+     "point": "Approximation: $h(1) \\approx 16 - \\frac{4}{5} = 15.2$ feet.",
+     "accept": [
+      "76/5 feet"
+     ]
+    }
+   ],
+   "sample": "At $t = 0$, $\\frac{dh}{dt} = -\\frac{1}{5}\\sqrt{16} = -0.8$. The tangent line is $h = 16 - 0.8t$, so $h(1) \\approx 16 - 0.8 = 15.2$ feet."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Find</b> $\\frac{d^2h}{dt^2}$ in terms of $h$. <b>Determine</b> whether the approximation in part (a) is an overestimate or an underestimate. <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "$\\frac{d^2h}{dt^2} = -\\frac{1}{5} \\cdot \\frac{1}{2\\sqrt{h}} \\cdot \\frac{dh}{dt} = -\\frac{1}{10\\sqrt{h}} \\cdot \\left(-\\frac{1}{5}\\sqrt{h}\\right) = \\frac{1}{50}$.",
+     "accept": [
+      "1/50, with the chain rule factor dh/dt shown"
+     ]
+    },
+    {
+     "point": "Underestimate: $\\frac{d^2h}{dt^2} = \\frac{1}{50} > 0$, so the graph of $h$ is concave up and lies above its tangent line.",
+     "accept": [
+      "underestimate because h is concave up on [0, 1]"
+     ]
+    }
+   ],
+   "sample": "By the chain rule, $\\frac{d^2h}{dt^2} = -\\frac{1}{5} \\cdot \\frac{1}{2\\sqrt{h}}\\frac{dh}{dt} = -\\frac{1}{10\\sqrt{h}}\\left(-\\frac{1}{5}\\sqrt{h}\\right) = \\frac{1}{50}$. Since $\\frac{d^2h}{dt^2} > 0$, the graph of $h$ is concave up, lies above its tangent line, and 15.2 feet is an underestimate."
+  },
+  {
+   "label": "c",
+   "points": 1,
+   "prompt": "<b>Find</b> the rate at which the depth is changing when the water is 9 feet deep. <b>Indicate</b> units of measure.",
+   "rubric": [
+    {
+     "point": "$\\frac{dh}{dt} = -\\frac{1}{5}\\sqrt{9} = -\\frac{3}{5}$ feet per minute.",
+     "accept": [
+      "-0.6 feet per minute",
+      "decreasing at 0.6 ft/min"
+     ]
+    }
+   ],
+   "sample": "$\\frac{dh}{dt} = -\\frac{1}{5}\\sqrt{9} = -0.6$ feet per minute: the depth is decreasing at 0.6 feet per minute."
+  },
+  {
+   "label": "d",
+   "points": 4,
+   "prompt": "<b>Find</b> $h(t)$, the particular solution to the differential equation with $h(0) = 16$. At what time is the tank empty?",
+   "rubric": [
+    {
+     "point": "Separates variables: $h^{-1/2}\\,dh = -\\frac{1}{5}\\,dt$.",
+     "accept": [
+      "dh/sqrt(h) = -(1/5) dt"
+     ]
+    },
+    {
+     "point": "Antiderivatives: $2\\sqrt{h} = -\\frac{t}{5} + C$.",
+     "accept": [
+      "2h^(1/2) = -t/5 + C"
+     ]
+    },
+    {
+     "point": "Uses the initial condition: $2\\sqrt{16} = 0 + C$, so $C = 8$, and solves: $h(t) = \\left(4 - \\frac{t}{10}\\right)^2$.",
+     "accept": [
+      "h = (8 - t/5)^2 / 4",
+      "sqrt(h) = 4 - t/10 solved for h"
+     ]
+    },
+    {
+     "point": "Empty when $4 - \\frac{t}{10} = 0$: $t = 40$ minutes (the solution holds for $0 \\le t \\le 40$).",
+     "accept": [
+      "t = 40 minutes"
+     ]
+    }
+   ],
+   "sample": "$\\frac{dh}{\\sqrt{h}} = -\\frac{1}{5}\\,dt$, so $2\\sqrt{h} = -\\frac{t}{5} + C$. At $t = 0$: $2\\sqrt{16} = C$, so $C = 8$. Then $\\sqrt{h} = 4 - \\frac{t}{10}$ and $h(t) = \\left(4 - \\frac{t}{10}\\right)^2$, valid while $4 - \\frac{t}{10} \\ge 0$. The tank is empty when $4 - \\frac{t}{10} = 0$, at $t = 40$ minutes."
+  }
+ ]
+}

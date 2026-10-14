@@ -1,0 +1,5 @@
+{
+ "split-integral": {
+  "def": "Breaking an area integral at every point where the curves cross, so each piece uses top minus bottom (or right minus left) and every piece adds a positive area. Equivalent to integrating $|f(x) - g(x)|$."
+ }
+}

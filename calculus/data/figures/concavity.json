@@ -1,0 +1,12 @@
+{
+ "concavity-tangents": {
+  "file": "figures/concavity-tangents.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 550,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Top: f(x) = x cubed minus 3x squared plus 2 with short tangent lines; for x < 1 the graph is concave down and its tangent lines lie above it, for x > 1 it is concave up and its tangent lines lie below it; the point of inflection is (1, 0). Bottom: f'(x) = 3x squared minus 6x, decreasing for x < 1 and increasing for x > 1, lowest at x = 1, where f''(x) = 6x - 6 changes sign."
+ }
+}

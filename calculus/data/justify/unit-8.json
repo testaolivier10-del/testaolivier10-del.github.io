@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 8 (docs/apcalc-architecture.md, \"Justification trainer\"). Every number is recomputed in scripts/lib/apcalc-exams.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "unit": "unit-8",
+   "id": "u8-distance-vs-displacement",
+   "topic": "motion-with-integrals",
+   "practice": "3.D",
+   "skill": "motion",
+   "title": "Total distance with a turn",
+   "context": "<p>A particle moves along a line with velocity $v(t) = 4 - 2t$ meters per second for $0 \\le t \\le 3$.</p>",
+   "prompt": "<b>Find</b> the total distance the particle travels from $t = 0$ to $t = 3$. Show the work that leads to your answer.",
+   "checklist": [
+    "Finds where $v$ changes sign: $t = 2$",
+    "Splits the integral there: $\\int_0^2 (4 - 2t)\\,dt = 4$ and $\\int_2^3 (4 - 2t)\\,dt = -1$",
+    "Adds the sizes: $4 + 1 = 5$ meters, which is $\\int_0^3 |v(t)|\\,dt$"
+   ],
+   "earns": {
+    "answer": "$v(t) = 0$ at $t = 2$, with $v > 0$ before and $v < 0$ after. Total distance $= \\int_0^3 |v(t)|\\,dt = \\int_0^2 (4 - 2t)\\,dt - \\int_2^3 (4 - 2t)\\,dt = 4 - (-1) = 5$ meters.",
+    "why": "It splits where the velocity changes sign so the motion back adds to the distance instead of cancelling."
+   },
+   "misses": {
+    "answer": "$\\int_0^3 (4 - 2t)\\,dt = \\left[4t - t^2\\right]_0^3 = 3$ meters.",
+    "why": "That is the displacement. The particle turns at $t = 2$ and moves back 1 meter, which the total distance counts and the displacement cancels."
+   }
+  },
+  {
+   "unit": "unit-8",
+   "id": "u8-position-from-later-start",
+   "topic": "motion-with-integrals",
+   "practice": "1.E",
+   "skill": "motion",
+   "title": "Position from a known later time",
+   "context": "<p>A particle's position at $t = 2$ is $x(2) = 5$, and $\\int_2^6 v(t)\\,dt = -7$.</p>",
+   "prompt": "<b>Find</b> the position of the particle at $t = 6$.",
+   "checklist": [
+    "Starts from the known position: $x(6) = x(2) + \\int_2^6 v(t)\\,dt$",
+    "Uses the lower limit of the known time, 2, not 0",
+    "Gets $x(6) = 5 + (-7) = -2$"
+   ],
+   "earns": {
+    "answer": "$x(6) = x(2) + \\int_2^6 v(t)\\,dt = 5 + (-7) = -2$.",
+    "why": "Position at a time is the known position plus the displacement since then."
+   },
+   "misses": {
+    "answer": "The position at $t = 6$ is $x(6) = \\int_2^6 v(t)\\,dt = -7$.",
+    "why": "The integral is the displacement from $t = 2$ to $t = 6$, not the position. The starting position $x(2) = 5$ has to be added."
+   }
+  },
+  {
+   "unit": "unit-8",
+   "id": "u8-washer-about-line",
+   "topic": "washer-method-other-axes",
+   "practice": "3.D",
+   "skill": "setup",
+   "title": "Washers about a line above the region",
+   "context": "<p>The region $R$ is bounded by $y = x^2$ and $y = 4$. It is revolved about the line $y = 5$.</p>",
+   "prompt": "<b>Write</b>, but do not evaluate, an integral expression for the volume of the solid. Name the outer and inner radii.",
+   "checklist": [
+    "Outer radius from $y = 5$ to the far curve $y = x^2$: $5 - x^2$",
+    "Inner radius from $y = 5$ to the near curve $y = 4$: $5 - 4 = 1$",
+    "Writes $\\pi\\int_{-2}^{2} \\left[(5 - x^2)^2 - 1^2\\right]dx$, with $\\pi$, the limits from $x^2 = 4$, and $dx$"
+   ],
+   "earns": {
+    "answer": "The region runs from $x = -2$ to $x = 2$. Measured from $y = 5$, the outer radius is $5 - x^2$ and the inner radius is $5 - 4 = 1$. Volume $= \\pi\\int_{-2}^{2} \\left[(5 - x^2)^2 - 1^2\\right]dx$ (which equals $\\frac{832\\pi}{15}$).",
+    "why": "Both radii are measured from the axis of revolution, squared separately, and the integral has its $\\pi$, limits and $dx$."
+   },
+   "misses": {
+    "answer": "Volume $= \\pi\\int_{-2}^{2} (4 - x^2)^2\\,dx$.",
+    "why": "This revolves the region about the line $y = 4$, its own edge, using $4 - x^2$ as a radius. About $y = 5$ there is a hole of radius 1, and the outer radius is $5 - x^2$."
+   }
+  },
+  {
+   "unit": "unit-8",
+   "id": "u8-average-value-meaning",
+   "topic": "average-value",
+   "practice": "3.F",
+   "skill": "context",
+   "title": "Average value, not average rate",
+   "context": "<p>The temperature outside is $T(t)$ degrees Fahrenheit, $t$ hours after midnight, for $0 \\le t \\le 12$, and $\\int_0^{12} T(t)\\,dt = 840$.</p>",
+   "prompt": "<b>Find</b> the average temperature from $t = 0$ to $t = 12$, and <b>explain</b> what it means, with units.",
+   "checklist": [
+    "Uses the average value formula: $\\frac{1}{12 - 0}\\int_0^{12} T(t)\\,dt$",
+    "Gets $\\frac{840}{12} = 70$ degrees Fahrenheit",
+    "Says it is the average of the temperature over the 12 hours after midnight, in degrees Fahrenheit (not a rate)"
+   ],
+   "earns": {
+    "answer": "Average temperature $= \\frac{1}{12 - 0}\\int_0^{12} T(t)\\,dt = \\frac{840}{12} = 70$ degrees Fahrenheit: over the 12 hours after midnight, the temperature averaged 70 degrees Fahrenheit.",
+    "why": "It divides the integral by the length of the interval and states the meaning with the interval and units."
+   },
+   "misses": {
+    "answer": "The average is $\\frac{T(12) - T(0)}{12}$ degrees per hour.",
+    "why": "That is the average rate of change of $T$, how fast the temperature changed on average. The average value of $T$ is $\\frac{1}{12}\\int_0^{12} T(t)\\,dt$."
+   }
+  }
+ ]
+}

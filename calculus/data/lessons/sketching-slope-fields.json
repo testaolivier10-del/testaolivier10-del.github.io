@@ -1,0 +1,72 @@
+{
+ "topic": "sketching-slope-fields",
+ "hook": "A differential equation such as $\\frac{dy}{dx} = x + y$ hands you a slope at every point of the plane, even before you know any solution. Draw a short dash with that slope at many points and a picture appears: a slope field. It shows the shape of every solution at once, the way iron filings show a magnet's field.",
+ "prereq": [
+  {
+   "q": "At a point where $\\frac{dy}{dx} = -2$, the tangent line to the graph",
+   "options": [
+    "falls 2 units for each unit to the right",
+    "rises 2 units for each unit to the right",
+    "is horizontal",
+    "falls 1 unit for each 2 units to the right"
+   ],
+   "correct": 0,
+   "why": "The derivative is the slope of the tangent line: rise over run is -2.",
+   "review": "derivative-definition"
+  },
+  {
+   "q": "Which function satisfies $\\frac{dy}{dx} = 2x$?",
+   "options": [
+    "$y = x^2 + 4$",
+    "$y = 2x^2$",
+    "$y = 2$",
+    "$y = x^2 + x$"
+   ],
+   "correct": 0,
+   "why": "The derivative of $x^2 + 4$ is $2x$.",
+   "review": "verifying-solutions"
+  }
+ ],
+ "figure": {
+  "figure": "slope-field-grid",
+  "caption": "The slope field of $\\frac{dy}{dx} = x + y$ at the integer points. Each segment's slope is $x + y$; the nine boxed points show the values."
+ },
+ "chain": [
+  {
+   "cause": "A differential equation gives $\\frac{dy}{dx}$ in terms of $x$ and $y$",
+   "effect": "each point of the plane gets a slope"
+  },
+  {
+   "cause": "Substitute the coordinates of a point",
+   "effect": "you get the number the segment through that point must have as its slope"
+  },
+  {
+   "cause": "Draw a short segment with that slope, centered on the point",
+   "effect": "positive slopes rise to the right, negative ones fall, zero is flat"
+  },
+  {
+   "cause": "Repeat at every grid point",
+   "effect": "the field shows how every solution curve bends"
+  }
+ ],
+ "ideas": [
+  "At each point, compute $\\frac{dy}{dx}$ and draw a short segment with that slope, centered on the point.",
+  "Slope 0 gives a horizontal segment; a slope that is undefined (division by 0) gives a vertical one.",
+  "If $\\frac{dy}{dx}$ depends only on $x$, segments in each vertical column are parallel. If it depends only on $y$, segments in each horizontal row are parallel.",
+  "Find where the slope is 0 first: those lines organize the whole field.",
+  "Make steep slopes look steep and gentle ones gentle; the sign matters most."
+ ],
+ "misconception": {
+  "wrong": "At the point $(0, 2)$, use $x = 2$ and $y = 0$.",
+  "right": "A point is written $(x, y)$: $(0, 2)$ means $x = 0$, $y = 2$. For $\\frac{dy}{dx} = 2x - y$ the slope there is $2(0) - 2 = -2$, not $4$."
+ },
+ "check": [
+  "calc-sketching-slope-fields-1",
+  "calc-sketching-slope-fields-2",
+  "calc-sketching-slope-fields-3",
+  "calc-sketching-slope-fields-10",
+  "calc-sketching-slope-fields-12",
+  "calc-sketching-slope-fields-16"
+ ],
+ "summary": "A slope field draws $\\frac{dy}{dx}$ as a short segment at each point. Substitute the point's coordinates, get the slope, draw the segment. Look for where the slope is 0 or undefined, and for rows or columns of parallel segments."
+}

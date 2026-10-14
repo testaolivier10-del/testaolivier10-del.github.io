@@ -1,0 +1,32 @@
+{
+ "function": {
+  "def": "A rule that assigns exactly one output to each input. $f(3)$ is the output when the input is 3."
+ },
+ "domain": {
+  "def": "The set of inputs a function accepts. The range is the set of outputs it produces."
+ },
+ "function-graph": {
+  "def": "All points $(x, f(x))$ for $x$ in the domain. The height of the graph above $x = a$ is $f(a)$; a filled dot is on the graph, an open circle is not."
+ },
+ "slope": {
+  "def": "Rise over run: for a line through $(x_1, y_1)$ and $(x_2, y_2)$, $m = \\frac{y_2 - y_1}{x_2 - x_1}$."
+ },
+ "line-equation": {
+  "def": "The point-slope form of a line with slope $m$ through $(x_1, y_1)$: $y - y_1 = m(x - x_1)$. Slope-intercept form is $y = mx + b$."
+ },
+ "piecewise-function": {
+  "def": "A function defined by different formulas on different parts of its domain, such as $f(x) = x^2$ for $x < 2$ and $f(x) = 3x - 1$ for $x \\ge 2$."
+ },
+ "composition": {
+  "def": "A composite function feeds one output into another function: $f(g(x))$ applies $g$ first, then $f$."
+ },
+ "transformation": {
+  "def": "A change that moves or reshapes a graph: $f(x - h) + k$ shifts it $h$ right and $k$ up; $-f(x)$ flips it over the $x$-axis; $a f(x)$ stretches it vertically."
+ },
+ "rational-function": {
+  "def": "A quotient of two polynomials, such as $\\frac{2x + 1}{x - 4}$. A polynomial is a sum of terms $a x^n$ with whole-number powers $n$."
+ },
+ "asymptote": {
+  "def": "A line the graph approaches. A rational function has a vertical asymptote $x = a$ where its denominator is 0 and its numerator is not; a horizontal asymptote is a height the outputs settle toward as $|x|$ grows large."
+ }
+}

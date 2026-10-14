@@ -1,0 +1,73 @@
+{
+ "topic": "math-trig",
+ "hook": "Calculus measures angles in radians, and the six trig functions show up in every unit: as rates of change, as areas, as models for anything that repeats. Most trig mistakes on the exam are precalculus slips: a wrong sign in a quadrant, a degree-mode calculator, $\\sin^2 x$ misread. This page rebuilds trig from one picture, the unit circle.",
+ "prereq": [
+  {
+   "q": "Which expression is $\\frac{1}{x}$ written with an exponent?",
+   "options": [
+    "$x^{-1}$",
+    "$x^{1}$",
+    "$-x$",
+    "$x^{1/2}$"
+   ],
+   "correct": 0,
+   "why": "A negative exponent is a reciprocal.",
+   "review": "math-exponent-rules"
+  },
+  {
+   "q": "The graph of $y = f(x - 2)$ is the graph of $y = f(x)$ moved",
+   "options": [
+    "2 units right",
+    "2 units left",
+    "2 units up",
+    "2 units down"
+   ],
+   "correct": 0,
+   "why": "Replacing $x$ by $x - 2$ shifts right by 2.",
+   "review": "math-functions"
+  }
+ ],
+ "figure": {
+  "figure": "unit-circle",
+  "caption": "The unit circle: the point at angle $\\theta$ is $(\\cos\\theta, \\sin\\theta)$. The special angles in the first quadrant and the signs in each quadrant give every exact value you need."
+ },
+ "chain": [
+  {
+   "cause": "Measure an angle by the arc it cuts on a circle of radius 1",
+   "effect": "radians: a half turn is $\\pi$, a full turn $2\\pi$"
+  },
+  {
+   "cause": "Walk an angle $\\theta$ around the unit circle from $(1, 0)$",
+   "effect": "the point reached is $(\\cos\\theta, \\sin\\theta)$, and $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$"
+  },
+  {
+   "cause": "The point lies on $x^2 + y^2 = 1$",
+   "effect": "$\\sin^2\\theta + \\cos^2\\theta = 1$, the Pythagorean identity"
+  },
+  {
+   "cause": "A reference angle in the first quadrant plus the quadrant signs",
+   "effect": "gives the exact value at any special angle"
+  }
+ ],
+ "ideas": [
+  "<b>Radians</b>: $\\pi$ radians $= 180^{\\circ}$. To convert degrees to radians, multiply by $\\frac{\\pi}{180}$. Calculus always uses radians, including on the calculator.",
+  "On the <b>unit circle</b>, the point at angle $\\theta$ is $(\\cos\\theta, \\sin\\theta)$: cosine is the $x$-coordinate, sine the $y$-coordinate.",
+  "Know the first-quadrant values at $\\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}$: $\\frac{1}{2}, \\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{3}}{2}$. Other quadrants use a reference angle and a sign.",
+  "$\\sec = \\frac{1}{\\cos}$, $\\csc = \\frac{1}{\\sin}$, $\\cot = \\frac{\\cos}{\\sin}$. $\\sin^2 x$ means $(\\sin x)^2$.",
+  "<b>Pythagorean identity</b>: $\\sin^2 x + \\cos^2 x = 1$; also $1 + \\tan^2 x = \\sec^2 x$ and $\\sin 2x = 2\\sin x\\cos x$."
+ ],
+ "misconception": {
+  "wrong": "$\\sin(2x) = 2\\sin x$, and $\\sin^2 x = \\sin(x^2)$.",
+  "right": "Trig functions are not multiplied through: $\\sin(2x) = 2\\sin x\\cos x$. And $\\sin^2 x$ means $(\\sin x)^2$. Test with $x = \\frac{\\pi}{2}$: $\\sin\\pi = 0$, but $2\\sin\\frac{\\pi}{2} = 2$."
+ },
+ "check": [
+  "calc-math-trig-1",
+  "calc-math-trig-2",
+  "calc-math-trig-3",
+  "calc-math-trig-6",
+  "calc-math-trig-7",
+  "calc-math-trig-9",
+  "calc-math-trig-11"
+ ],
+ "summary": "Radians measure angles by arc length on the unit circle, where the point at angle $\\theta$ is $(\\cos\\theta, \\sin\\theta)$. Exact values come from the first-quadrant special angles plus the quadrant signs. Tangent, secant, cosecant and cotangent are ratios of sine and cosine, and $\\sin^2 x + \\cos^2 x = 1$ links them. Keep calculators in radian mode."
+}

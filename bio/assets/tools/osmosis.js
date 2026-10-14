@@ -280,8 +280,11 @@
       p.push('<text class="os-tag" x="' + (BX + 10) + '" y="' + (BY - 8) + '">' + esc(F(c.outC, 2) + ' M ' + solute(s.solute).name) + '</text>');
       var stateTxt = hide ? 'Predict first' : now.lysed ? short('lysed') : short(M.osmosis.simulate(sy, Object.assign({}, c, { t: now.t })).state);
       p.push('<text class="os-state" x="' + (BX + BW - 10) + '" y="' + (BY - 8) + '" text-anchor="end">' + esc(stateTxt) + '</text>');
-      var LBY = BY + BH + 16;
-      p.push('<text class="os-lab" x="' + CX + '" y="' + LBY + '" text-anchor="middle">' + (sy.kind === 'plant' ? 'one potato cell: wall, membrane, vacuole, starch grains' : sy.kind === 'animal' ? (now.lysed ? 'burst: membrane torn, contents spilled' : 'red blood cell (no wall)') : 'dialysis bag, ' + F(c.inC, 2) + ' M sucrose inside') + '</text>');
+      var LBY = BY + BH + 16, narrow = !!document.querySelector('.ls-root.ls-phone');
+      var labTxt = sy.kind === 'plant' ? 'one potato cell: wall, membrane, vacuole, starch grains' : sy.kind === 'animal' ? (now.lysed ? 'burst: membrane torn, contents spilled' : 'red blood cell (no wall)') : 'dialysis bag, ' + F(c.inC, 2) + ' M sucrose inside';
+      // On a phone the labels are larger, so a long label takes two lines (split after its first colon or comma).
+      var cut = narrow && labTxt.length > 30 ? labTxt.search(/[:,] /) : -1;
+      p.push('<text class="os-lab" x="' + CX + '" y="' + LBY + '" text-anchor="middle">' + (cut > 0 ? esc(labTxt.slice(0, cut + 1)) + '<tspan x="' + CX + '" dy="15">' + esc(labTxt.slice(cut + 2)) + '</tspan>' : esc(labTxt)) + '</text>');
       // the ψ ladder
       var lo = Math.min(-10, Math.floor(Math.min(psiO, s.res.start.psi, pp.psi) / 10) * 10), LX = 318, LT = BY - 4, LB = BY + BH - 22;
       var ly = function(v){ return LT + (v / lo) * (LB - LT); };
@@ -296,7 +299,7 @@
       } else p.push('<text class="os-q" x="' + LX + '" y="' + ((LT + LB) / 2) + '" text-anchor="middle">?</text>');
       var lab = hide ? sy.name + ' about to go into ' + F(c.outC, 2) + ' M ' + solute(s.solute).name + '. Make your prediction, then run it.'
         : sy.name + ' in ' + F(c.outC, 2) + ' M ' + solute(s.solute).name + ', at ' + td(sy, now.t) + ' minutes: ' + stateTxt + '. ψ outside ' + F(psiO, 2) + ' bar, ψ inside ' + F(pp.psi, 2) + ' bar, so net water movement is ' + (dir > 0 ? 'into it' : dir < 0 ? 'out of it' : 'zero') + '.';
-      host.innerHTML = '<svg class="os-fig" viewBox="0 0 400 276" role="img" aria-label="' + esc(lab) + '">' + p.join('') + '</svg>';
+      host.innerHTML = '<svg class="os-fig" viewBox="0 0 400 ' + (narrow ? 292 : 276) + '" role="img" aria-label="' + esc(lab) + '">' + p.join('') + '</svg>';
       clock.textContent = hide ? '' : 't = ' + td(sy, now.t) + ' of ' + td(sy, c.t) + ' min';
     }
     var cur = null; // the last computed { sys, c, tr, res, solute }

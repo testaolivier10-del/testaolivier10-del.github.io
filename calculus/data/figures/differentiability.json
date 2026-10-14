@@ -1,0 +1,12 @@
+{
+ "where-derivatives-fail": {
+  "file": "figures/where-derivatives-fail.svg",
+  "ext": "svg",
+  "w": 700,
+  "h": 590,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graphs",
+  "alt": "Four small graphs. A corner: y = |x| + 0.5, a V shape with slope minus 1 on the left of 0 and 1 on the right. A cusp: y = x to the two-thirds, a sharp point at the origin where the slopes become infinitely steep in opposite directions. A vertical tangent: y = cube root of (x minus 1), with a vertical tangent line x = 1 drawn dashed. A jump: a line ending with a closed dot at (1, 1.5) and restarting with an open dot at (1, 0). The first three are continuous but not differentiable at the marked point; the jump is not continuous, so not differentiable."
+ }
+}

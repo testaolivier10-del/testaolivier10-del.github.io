@@ -42,6 +42,7 @@
     { key: 'apbio', dir: 'bio' },
     { key: 'apchem', dir: 'chem' },
     { key: 'apphys', dir: 'physics' },
+    { key: 'apcalc', dir: 'calculus' },
   ];
   // courses:end
 

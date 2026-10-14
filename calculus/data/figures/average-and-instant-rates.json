@@ -1,0 +1,12 @@
+{
+ "secants-closing-in": {
+  "file": "figures/secants-closing-in.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 410,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The parabola f(x) = x squared over 4, plus 1, with the point P at x = 1. Four secant lines join P to points Q at x = 4, 3, 2 and 1.4, with slopes 1.25, 1, 0.75 and 0.6; a table adds h = 0.01 with slope 0.5025. As Q moves toward P, the secant slopes approach 0.5, the instantaneous rate of change of f at x = 1."
+ }
+}

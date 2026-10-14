@@ -1,0 +1,36 @@
+<p>Topic 6.4 showed that an accumulation function $\int_a^x f(t)\,dt$ is an antiderivative of $f$. This page turns that around into a way to compute definite integrals exactly, and into the idea the exam uses most: the integral of a rate is the net change.</p>
+
+<h2>From one antiderivative to the integral</h2>
+<p>Let $F$ be any antiderivative of a continuous $f$, so $F' = f$. The accumulation function $g(x) = \int_a^x f(t)\,dt$ is another one. Two functions with the same derivative on an interval differ by a constant (a consequence of the Mean Value Theorem), so</p>
+<p>$$g(x) = F(x) + k.$$</p>
+<p>At $x = a$: $g(a) = 0$, so $k = -F(a)$. Now put $x = b$:</p>
+<p style="text-align:center"><b>$\int_a^b f(x)\,dx = F(b) - F(a)$ (the Fundamental Theorem of Calculus, part 2).</b></p>
+<p>The shorthand $F(x)\Big|_a^b$ means $F(b) - F(a)$. Any antiderivative works; a constant added to $F$ cancels in the subtraction.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\int_1^3 (3x^2 - 2)\,dx$.</p>
+<p>Find a function whose derivative is $3x^2 - 2$: $F(x) = x^3 - 2x$ (check: $F'(x) = 3x^2 - 2$).</p>
+<p>$F(3) = 27 - 6 = 21$ and $F(1) = 1 - 2 = -1$.</p>
+<p>$\int_1^3 (3x^2 - 2)\,dx = 21 - (-1) = 22$. Keep the parentheses: subtracting a negative is where most slips happen.</p>
+</div>
+<p>Antiderivatives come from reading derivative rules backward: $\sin x$ for $\cos x$, $\ln x$ for $\frac{1}{x}$ (with $x > 0$), $e^x$ for $e^x$, $\arctan x$ for $\frac{1}{1 + x^2}$. The next topic organizes these rules.</p>
+
+<h2>The integral of a rate is the net change</h2>
+<figure id="fig-net" data-fig="net-change"><figcaption>The signed area under f prime equals the change in f.</figcaption></figure>
+<p>Apply part 2 to $f'$, whose antiderivative is $f$ itself:</p>
+<p>$$\int_a^b f'(x)\,dx = f(b) - f(a).$$</p>
+<p>This is the <b>net change theorem</b>: the integral of a rate of change is the total change. If $P(t)$ is a population and $\int_0^{30} P'(t)\,dt = 12$ thousand, the population grew by 12 thousand over those 30 years, whatever it did in between. Rearranged:</p>
+<p style="text-align:center"><b>$f(b) = f(a) + \int_a^b f'(x)\,dx$: value at the end = value at the start + accumulated change.</b></p>
+<div class="worked">
+<p><b>Worked example 2.</b> The graph of $f'$ is constant 2 on $[0, 3]$, falls in a straight line from $(3, 2)$ to $(5, -2)$, and is constant $-2$ on $[5, 8]$. $f(2) = 5$. Find $f(5)$, $f(0)$ and the absolute maximum of $f$.</p>
+<p>$f(5) = f(2) + \int_2^5 f'(x)\,dx = 5 + (2 + 1 - 1) = 7$.</p>
+<p>$f(0)$: going backward, $f(0) = f(2) - \int_0^2 f'(x)\,dx = 5 - 4 = 1$.</p>
+<p>Maximum: $f'$ changes from positive to negative at $x = 4$. Candidates: $f(0) = 1$, $f(4) = 5 + 3 = 8$, $f(8) = 5 + (2 + 1 - 1 - 6) = 1$. The absolute maximum is 8, at $x = 4$.</p>
+</div>
+
+<h2>When there is no formula: the calculator</h2>
+<p>Some rates, such as $2.5\sin\left(\frac{t^2}{10}\right) - 0.5$, have no antiderivative made of familiar functions. The net change idea still works; the calculator evaluates the integral. Write the full setup:</p>
+<p>$$D(8) = D(0) + \int_0^8 D'(t)\,dt = 10 + \int_0^8 \left(2.5\sin\left(\frac{t^2}{10}\right) - 0.5\right)dt \approx 9.413 \text{ inches}.$$</p>
+<p>Use radian mode, keep full precision until the end, and give three decimal places.</p>
+
+<h2>Interpreting in context</h2>
+<p>A complete interpretation of $\int_a^b r(t)\,dt$ names the quantity, its units and the interval: "$\int_2^6 D'(t)\,dt$ is the change in the depth of the snow, in inches, from $t = 2$ to $t = 6$ hours." Three things to avoid: calling it a rate (inches per hour), calling it the amount at the end (that also needs the starting value), and leaving out the time interval.</p>

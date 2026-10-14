@@ -1,0 +1,280 @@
+{
+ "stimuli": {
+  "disc-method-other-axes-s1": {
+   "kind": "graph",
+   "title": "The region $R$ bounded by $y = \\sqrt{x}$, $y = 2$ and the $y$-axis",
+   "plot": {
+    "label": "The curve y = √x and the horizontal line y = 2, which meet at (4, 2). The region R between the y-axis, the line y = 2 and the curve is shaded; it sits above the curve and below the line.",
+    "x": [-0.5, 5], "y": [-0.5, 3], "xStep": 1, "yStep": 0.5, "xLabel": "x", "yLabel": "y",
+    "curves": [
+     { "fn": "sqrt(x)", "domain": [0, 5], "cls": "s1", "label": "y = √x" },
+     { "fn": "2", "domain": [-0.5, 5], "cls": "s2", "dashed": true, "label": "y = 2" }
+    ],
+    "shade": [ { "fn": "2", "fn2": "sqrt(x)", "domain": [0, 4] } ],
+    "points": [ { "at": [4, 2], "label": "(4, 2)" } ],
+    "labels": [ { "at": [0.9, 1.55], "text": "R" } ]
+   }
+  },
+  "disc-method-other-axes-s2": {
+   "kind": "graph",
+   "title": "The region $Q$ bounded by $y = e^{x/2}$, $y = 4$ and the $y$-axis",
+   "plot": {
+    "label": "The curve y = e^(x/2) rising from (0, 1) and the horizontal line y = 4. The region Q between the y-axis, the line y = 4 and the curve is shaded; the curve meets the line near x = 2.77.",
+    "x": [-0.4, 3.4], "y": [-0.3, 4.8], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
+    "curves": [
+     { "fn": "e^(x/2)", "domain": [-0.4, 3.1], "cls": "s1", "label": "y = e^(x/2)" },
+     { "fn": "4", "domain": [-0.4, 3.4], "cls": "s2", "dashed": true, "label": "y = 4" }
+    ],
+    "shade": [ { "fn": "4", "fn2": "e^(x/2)", "domain": [0, 2.772588722239781] } ],
+    "labels": [ { "at": [0.8, 2.8], "text": "Q" } ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-disc-method-other-axes-1", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "expr", "practice": "2.B", "level": "apply", "diff": 1,
+   "stimulus": "disc-method-other-axes-s1",
+   "q": "$R$ is revolved about the line $y = 2$. Write the radius $r(x)$ of the disc at $x$, for $0 \\le x \\le 4$.",
+   "expr": {
+    "answer": "2 - sqrt(x)", "vars": ["x"], "domain": [0, 4], "lhs": "r(x) =",
+    "mistakes": [
+     { "expr": "sqrt(x)", "why": "That is the distance from the $x$-axis to the curve. Here the axis is $y = 2$: measure from $y = 2$ down to the curve." },
+     { "expr": "sqrt(x) - 2", "why": "That is negative for $x < 4$. A radius is a distance: the axis $y = 2$ is above the curve, so $r = 2 - \\sqrt{x}$." }
+    ]
+   },
+   "why": { "correct": "The axis $y = 2$ is above the curve, so the radius is (axis) minus (curve): $r(x) = 2 - \\sqrt{x}$." }
+  },
+  {
+   "id": "calc-disc-method-other-axes-2", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "single", "practice": "1.C", "level": "apply", "diff": 2,
+   "stimulus": "disc-method-other-axes-s1",
+   "q": "Which integral gives the volume of the solid formed when $R$ is revolved about the line $y = 2$?",
+   "options": [
+    "$\\pi\\int_0^4 \\left(2 - \\sqrt{x}\\right)^2\\,dx$",
+    "$\\pi\\int_0^4 \\left(2^2 - (\\sqrt{x})^2\\right)\\,dx$",
+    "$\\pi\\int_0^4 \\left(\\sqrt{x}\\right)^2\\,dx$",
+    "$\\pi\\int_0^2 \\left(2 - \\sqrt{x}\\right)^2\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$R$ touches the line $y = 2$ all the way across, so the slices are discs of radius $2 - \\sqrt{x}$, for $0 \\le x \\le 4$.",
+    "options": [
+     "Square the distance from the axis to the curve.",
+     "This squares each height separately. It measures from the $x$-axis, which is not the axis here.",
+     "That radius is measured from the $x$-axis.",
+     "The disc's thickness is $dx$, so the limits are $x$-values, 0 to 4."
+    ]
+   }
+  },
+  {
+   "id": "calc-disc-method-other-axes-3", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "stimulus": "disc-method-other-axes-s1",
+   "q": "Find the volume of the solid formed when $R$ is revolved about the line $y = 2$.",
+   "numeric": {
+    "answer": "8*pi/3",
+    "mistakes": [
+     { "value": "8*pi", "why": "That is $\\pi\\int_0^4 (4 - x)\\,dx$: you squared $2$ and $\\sqrt{x}$ separately. Square the radius $2 - \\sqrt{x}$ as a whole." },
+     { "value": "8/3", "why": "The $\\pi$ from the disc's area is missing." }
+    ]
+   },
+   "why": { "correct": "$(2 - \\sqrt{x})^2 = 4 - 4\\sqrt{x} + x$, so $V = \\pi\\left[4x - \\frac{8}{3}x^{3/2} + \\frac{x^2}{2}\\right]_0^4 = \\pi\\left(16 - \\frac{64}{3} + 8\\right) = \\frac{8\\pi}{3}$." }
+  },
+  {
+   "id": "calc-disc-method-other-axes-4", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "numeric", "practice": "1.E", "level": "analyze", "diff": 3,
+   "stimulus": "disc-method-other-axes-s1",
+   "q": "Instead, $R$ is revolved about the $y$-axis. Find the volume.",
+   "numeric": {
+    "answer": "32*pi/5",
+    "mistakes": [
+     { "value": "8*pi/3", "why": "That is $\\pi\\int_0^2 y^2\\,dy$: the radius $y^2$ was not squared." },
+     { "value": "32/5", "why": "The $\\pi$ from the disc's area is missing." }
+    ]
+   },
+   "why": { "correct": "About the $y$-axis the discs are horizontal. At height $y$ the region reaches from $x = 0$ to $x = y^2$, so $V = \\pi\\int_0^2 (y^2)^2\\,dy = \\pi \\cdot \\frac{32}{5}$." }
+  },
+  {
+   "id": "calc-disc-method-other-axes-5", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "single", "practice": "2.D", "level": "analyze", "diff": 2,
+   "stimulus": "disc-method-other-axes-s1",
+   "q": "When $R$ is revolved about the line $y = 2$, where is the largest disc?",
+   "options": [
+    "At $x = 0$, where the radius is 2",
+    "At $x = 4$, where $\\sqrt{x} = 2$",
+    "At $x = 1$, where $\\sqrt{x} = 1$",
+    "At $x = 2$, halfway across $R$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The radius $2 - \\sqrt{x}$ is largest where $\\sqrt{x}$ is smallest, at $x = 0$: $r = 2$.",
+    "options": [
+     "$2 - \\sqrt{0} = 2$, the farthest the curve gets from the axis.",
+     "At $x = 4$ the curve meets the axis, so the radius there is 0.",
+     "There the radius is $2 - 1 = 1$, smaller than at $x = 0$.",
+     "There the radius is $2 - \\sqrt{2} \\approx 0.59$."
+    ]
+   }
+  },
+  {
+   "id": "calc-disc-method-other-axes-6", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 1, "calc": true,
+   "stimulus": "disc-method-other-axes-s2",
+   "q": "The curve meets the line $y = 4$ at $x = c$. Find $c$.",
+   "numeric": {
+    "answer": 2.772588722239781,
+    "mistakes": [
+     { "value": 1.3862943611198906, "why": "That solves $e^x = 4$. Here $e^{x/2} = 4$, so $\\frac{x}{2} = \\ln 4$ and $x = 2\\ln 4$." },
+     { "value": 8, "why": "Undo the exponential with a logarithm: $\\frac{x}{2} = \\ln 4$, not $\\frac{x}{2} = 4$." }
+    ]
+   },
+   "why": { "correct": "$e^{x/2} = 4$ gives $\\frac{x}{2} = \\ln 4$, so $c = 2\\ln 4 = 4\\ln 2 = 2.77258\\ldots$, which is $2.773$ (or $2.772$ truncated)." }
+  },
+  {
+   "id": "calc-disc-method-other-axes-7", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "single", "practice": "1.C", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "disc-method-other-axes-s2",
+   "q": "Which expression gives the volume of the solid formed when $Q$ is revolved about the line $y = 4$?",
+   "options": [
+    "$\\pi\\int_0^c \\left(4 - e^{x/2}\\right)^2\\,dx$",
+    "$\\pi\\int_0^c \\left(16 - e^{x}\\right)\\,dx$",
+    "$\\pi\\int_0^c e^{x}\\,dx$",
+    "$\\pi\\int_1^4 \\left(4 - e^{x/2}\\right)^2\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$Q$ touches $y = 4$ all the way across, so the discs have radius from the line down to the curve, $4 - e^{x/2}$.",
+    "options": [
+     "Distance from the axis to the curve, squared, times $\\pi$.",
+     "That squares $4$ and $e^{x/2}$ separately; it measures from the $x$-axis instead of from $y = 4$.",
+     "That uses the radius $e^{x/2}$, measured from the $x$-axis.",
+     "1 and 4 are $y$-values. The slices are vertical, so the limits are $x = 0$ to $x = c$."
+    ]
+   }
+  },
+  {
+   "id": "calc-disc-method-other-axes-8", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "disc-method-other-axes-s2",
+   "q": "Find the volume of the solid formed when $Q$ is revolved about the line $y = 4$.",
+   "numeric": {
+    "answer": 35.692952210967256,
+    "mistakes": [
+     { "value": 92.24161997558434, "why": "That is $\\pi\\int_0^c (16 - e^x)\\,dx$. Square the whole radius $4 - e^{x/2}$." },
+     { "value": 47.12388980384689, "why": "That uses the radius $e^{x/2}$, measured from the $x$-axis. Measure from the line $y = 4$." }
+    ]
+   },
+   "why": { "correct": "$V = \\pi\\int_0^c \\left(4 - e^{x/2}\\right)^2\\,dx = 35.69295\\ldots$, so $35.693$ (or $35.692$ truncated), with $c$ stored." }
+  },
+  {
+   "id": "calc-disc-method-other-axes-9", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "numeric", "practice": "1.D", "level": "analyze", "diff": 3, "calc": true,
+   "stimulus": "disc-method-other-axes-s2",
+   "q": "Instead, $Q$ is revolved about the $y$-axis. Find the volume.",
+   "numeric": {
+    "answer": 32.63352407763626,
+    "mistakes": [
+     { "value": 15.991821523318954, "why": "The radius $2\\ln y$ was not squared." }
+    ]
+   },
+   "why": { "correct": "Horizontal discs: at height $y$, $Q$ runs from the $y$-axis to $x = 2\\ln y$, for $1 \\le y \\le 4$. $V = \\pi\\int_1^4 (2\\ln y)^2\\,dy = 32.63352\\ldots$, so $32.634$ (or $32.633$)." }
+  },
+  {
+   "id": "calc-disc-method-other-axes-10", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "The region bounded by $y = x^2$ and $y = 1$ is revolved about the line $y = 1$. Find the volume.",
+   "numeric": {
+    "answer": "16*pi/15",
+    "mistakes": [
+     { "value": "8*pi/5", "why": "That is $\\pi\\int_{-1}^{1} (1 - x^4)\\,dx$, which squares $1$ and $x^2$ separately. The radius is $1 - x^2$; square it as a whole." },
+     { "value": "2*pi/5", "why": "That uses the radius $x^2$, measured from the $x$-axis. The axis is $y = 1$." }
+    ]
+   },
+   "why": { "correct": "Radius $1 - x^2$ for $-1 \\le x \\le 1$: $V = \\pi\\int_{-1}^{1} (1 - 2x^2 + x^4)\\,dx = \\pi\\left(2 - \\frac{4}{3} + \\frac{2}{5}\\right) = \\frac{16\\pi}{15}$." }
+  },
+  {
+   "id": "calc-disc-method-other-axes-11", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 3,
+   "q": "The region bounded by $x = y^2$ and $x = 9$ is revolved about the line $x = 9$. Find the volume.",
+   "numeric": {
+    "answer": "1296*pi/5",
+    "mistakes": [
+     { "value": "1944*pi/5", "why": "That is $\\pi\\int_{-3}^{3} (81 - y^4)\\,dy$: $9^2 - (y^2)^2$ is not $(9 - y^2)^2$." }
+    ]
+   },
+   "why": { "correct": "The axis is vertical, so the discs are horizontal, with radius $9 - y^2$ for $-3 \\le y \\le 3$: $V = \\pi\\int_{-3}^{3} (9 - y^2)^2\\,dy = 2\\pi\\left(243 - 162 + \\frac{243}{5}\\right) = \\frac{1296\\pi}{5}$." }
+  },
+  {
+   "id": "calc-disc-method-other-axes-12", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "single", "practice": "2.B", "level": "apply", "diff": 2,
+   "q": "The region between $y = 2 - x^2$ and the line $y = -2$ is revolved about the line $y = -2$. What is the radius of the disc at $x$?",
+   "options": ["$4 - x^2$", "$-x^2$", "$2 - x^2$", "$x^2 - 4$"],
+   "correct": 0,
+   "why": {
+    "correct": "The curve is above the axis: radius $= (2 - x^2) - (-2) = 4 - x^2$.",
+    "options": [
+     "Curve minus axis, with the minus sign on $-2$ handled.",
+     "That is $(2 - x^2) - 2$: subtracting $-2$ adds 2.",
+     "That is measured from the $x$-axis, not from $y = -2$.",
+     "That is axis minus curve, which is negative here."
+    ]
+   }
+  },
+  {
+   "id": "calc-disc-method-other-axes-13", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "The region bounded by $y = x$, $y = 0$ and $x = 3$ is revolved about the line $x = 3$. Find the volume.",
+   "numeric": {
+    "answer": "9*pi",
+    "mistakes": [
+     { "value": "18*pi", "why": "That is $\\pi\\int_0^3 (9 - y^2)\\,dy$, which squares $3$ and $y$ separately. Square the radius $3 - y$." },
+     { "value": 9, "why": "The $\\pi$ from the disc's area is missing." }
+    ]
+   },
+   "why": { "correct": "Horizontal discs: at height $y$ the region runs from $x = y$ to the axis $x = 3$, so $r = 3 - y$ and $V = \\pi\\int_0^3 (3 - y)^2\\,dy = 9\\pi$. It is a cone of radius 3 and height 3: $\\frac{1}{3}\\pi(9)(3) = 9\\pi$." }
+  },
+  {
+   "id": "calc-disc-method-other-axes-14", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "single", "practice": "2.B", "level": "apply", "diff": 1,
+   "q": "A region lies between $y = f(x)$ and the line $y = 5$, with $f(x) \\le 5$, and is revolved about the line $y = 5$. The radius of the disc at $x$ is",
+   "options": ["$5 - f(x)$", "$f(x)$", "$f(x) - 5$", "$5 + f(x)$"],
+   "correct": 0,
+   "why": {
+    "correct": "The axis is above the curve, so the distance from the axis down to the curve is $5 - f(x)$.",
+    "options": [
+     "Axis minus curve, since the axis is on top.",
+     "$f(x)$ is the distance from the $x$-axis.",
+     "That is negative, because $f(x) \\le 5$.",
+     "Distances between heights are differences, not sums."
+    ]
+   }
+  },
+  {
+   "id": "calc-disc-method-other-axes-15", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "single", "practice": "2.D", "level": "analyze", "diff": 2,
+   "q": "The region between $y = x^2$ and $y = 1$ is revolved about the line $y = 1$. Why are its slices solid discs, with no hole?",
+   "options": [
+    "The region touches $y = 1$ all the way across, so each rectangle starts at the axis",
+    "The parabola $y = x^2$ opens upward",
+    "The region is symmetric about the $y$-axis",
+    "The axis $y = 1$ is a horizontal line"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A slice is a solid disc when its rectangle reaches all the way to the axis. Here every vertical rectangle runs from the parabola up to $y = 1$, the axis itself.",
+    "options": [
+     "Rectangles that start at the axis sweep out solid discs.",
+     "The direction the parabola opens does not decide whether a slice has a hole.",
+     "Symmetry about the $y$-axis does not decide it either.",
+     "A horizontal axis can still give slices with holes, when the region does not touch it."
+    ]
+   }
+  },
+  {
+   "id": "calc-disc-method-other-axes-16", "unit": "unit-8", "topic": "disc-method-other-axes", "type": "multi", "practice": "2.B", "level": "analyze", "diff": 2,
+   "q": "Each region below touches its axis all the way across and is revolved about that axis. Which radii are correct? Select all that apply.",
+   "options": [
+    "Between $y = \\sqrt{x}$ and $y = 3$, about $y = 3$: $r = 3 - \\sqrt{x}$",
+    "Between $y = x^2 + 1$ and $y = 1$, about $y = 1$: $r = x^2$",
+    "Between $y = 4 - x^2$ and $y = 4$, about $y = 4$: $r = 4 - x^2$",
+    "Between $y = e^x$ and $y = 1$, about $y = 1$: $r = e^x$"
+   ],
+   "correct": [0, 1],
+   "why": {
+    "correct": "Each radius is the distance from the axis to the curve: the larger height minus the smaller one.",
+    "options": [
+     "True: the axis is above the curve.",
+     "True: $(x^2 + 1) - 1 = x^2$.",
+     "False: $4 - (4 - x^2) = x^2$; $4 - x^2$ is the curve's height above the $x$-axis.",
+     "False: $e^x - 1$; $e^x$ is measured from the $x$-axis."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Types of Discontinuity — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="Most functions you meet are unbroken over long stretches: you could trace their graphs without lifting your pencil.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/discontinuity-types.html">
+<meta property="og:title" content="Types of Discontinuity — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="Most functions you meet are unbroken over long stretches: you could trace their graphs without lifting your pencil.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/discontinuity-types.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/discontinuity-types.html#reading",
+      "name": "Types of Discontinuity",
+      "url": "https://levlprep.com/calculus/notes/discontinuity-types.html",
+      "description": "Most functions you meet are unbroken over long stretches: you could trace their graphs without lifting your pencil.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "types of discontinuity ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Limits and Continuity",
+          "item": "https://levlprep.com/calculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Types of Discontinuity: notes",
+          "item": "https://levlprep.com/calculus/notes/discontinuity-types.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="discontinuity-types" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Limits and Continuity</b><small>16 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 16 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-at-an-instant"><a href="change-at-an-instant.html"><span class="bk-toc-n">1.1</span>Can Change Happen at an Instant?</a></li><li data-toc-t="limit-notation"><a href="limit-notation.html"><span class="bk-toc-n">1.2</span>What a Limit Is and How to Write It</a></li><li data-toc-t="limits-from-plots"><a href="limits-from-plots.html"><span class="bk-toc-n">1.3</span>Reading Limits from a Graph</a></li><li data-toc-t="limits-from-tables"><a href="limits-from-tables.html"><span class="bk-toc-n">1.4</span>Estimating Limits from Tables</a></li><li data-toc-t="limit-laws"><a href="limit-laws.html"><span class="bk-toc-n">1.5</span>Limit Laws</a></li><li data-toc-t="limit-algebra"><a href="limit-algebra.html"><span class="bk-toc-n">1.6</span>Limits by Algebra: Factor, Rationalize, Simplify</a></li><li data-toc-t="choosing-limit-methods"><a href="choosing-limit-methods.html"><span class="bk-toc-n">1.7</span>Choosing a Way to Find a Limit</a></li><li data-toc-t="squeeze-theorem"><a href="squeeze-theorem.html"><span class="bk-toc-n">1.8</span>The Squeeze Theorem</a></li><li data-toc-t="limit-representations"><a href="limit-representations.html"><span class="bk-toc-n">1.9</span>Limits Across Graphs, Tables and Formulas</a></li><li class="current" data-toc-t="discontinuity-types"><a href="#main" aria-current="page"><span class="bk-toc-n">1.10</span>Types of Discontinuity</a><div class="bk-toc-onpage"><p>On this page</p><a href="#continuous-and-what-breaks-it">Continuous, and what breaks it</a><a href="#removable-discontinuities">Removable discontinuities</a><a href="#jump-discontinuities">Jump discontinuities</a><a href="#infinite-discontinuities">Infinite discontinuities</a><a href="#classifying-step-by-step">Classifying, step by step</a></div></li><li data-toc-t="continuity-at-a-point"><a href="continuity-at-a-point.html"><span class="bk-toc-n">1.11</span>Continuity at a Point</a></li><li data-toc-t="continuity-on-intervals"><a href="continuity-on-intervals.html"><span class="bk-toc-n">1.12</span>Continuity on an Interval</a></li><li data-toc-t="removing-discontinuities"><a href="removing-discontinuities.html"><span class="bk-toc-n">1.13</span>Removing a Discontinuity</a></li><li data-toc-t="infinite-limits"><a href="infinite-limits.html"><span class="bk-toc-n">1.14</span>Infinite Limits and Vertical Asymptotes</a></li><li data-toc-t="limits-at-infinity"><a href="limits-at-infinity.html"><span class="bk-toc-n">1.15</span>Limits at Infinity and Horizontal Asymptotes</a></li><li data-toc-t="intermediate-value-theorem"><a href="intermediate-value-theorem.html"><span class="bk-toc-n">1.16</span>The Intermediate Value Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Differentiation: Definition and Fundamental Properties</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Limits and Continuity</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Types of Discontinuity: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/discontinuity-types.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.10 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Types of Discontinuity</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="discontinuity-types">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fdiscontinuity-types.html&amp;title=Types%20of%20Discontinuity%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/discontinuity-types.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Most <a class="gl" href="../notes/math-functions.html" data-c="function">functions</a> you meet are unbroken over long stretches: you could trace their graphs without lifting your pencil. The interesting places are where that fails. This page names the three kinds of breaks the exam asks about and shows how to tell them apart from a graph, a table or a formula.</p>
+
+<h2 id="continuous-and-what-breaks-it">Continuous, and what breaks it</h2>
+<p>A function is <b><span class="gl" tabindex="0" data-c="discontinuity">continuous</span></b> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math> when its graph passes through <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math> with no break: the values near <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> head to a single height, and the point at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> sits exactly at that height. In symbols, <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to c} f(x)</annotation></semantics></math> exists and equals <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(c)</annotation></semantics></math>. The next topic turns this into a careful three-part check.</p>
+<p>A <b>discontinuity</b> is a point where this fails. There are three common ways it can fail.</p>
+<figure id="fig-types"  class="calc-figure"><div class="calc-figimg" data-fig="discontinuity-types"><img src="../figures/discontinuity-types.svg" alt="Three graphs, each with a break at x = 2. Removable: the curve has a hole at (2, 3), an open circle, while f(2) = 1 is a closed dot below it; the limit exists. Jump: the left piece ends at a closed dot at (2, 1) and the right piece starts at an open circle at (2, 3); the one-sided limits differ. Infinite: the curve rises without bound on both sides of the dashed vertical asymptote x = 2." width="780" height="330" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Removable, jump and infinite discontinuities at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Kind</th><th>One-sided limits</th><th>What the graph shows</th></tr></thead>
+<tbody>
+<tr><td>Removable</td><td>equal, so the <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a> exists</td><td>a hole; the point is missing or sits somewhere else</td></tr>
+<tr><td>Jump</td><td>both finite, but different</td><td>a step from one height to another</td></tr>
+<tr><td>Infinite</td><td>at least one side is <a class="gl" href="../notes/limits-from-plots.html" data-c="unbounded">unbounded</a></td><td>a <a class="gl" href="../notes/math-functions.html" data-c="asymptote">vertical asymptote</a></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="removable-discontinuities">Removable discontinuities</h2>
+<p>At a <b><span class="gl" tabindex="0" data-c="removable-discontinuity">removable discontinuity</span></b> the limit exists. The graph heads to one height from both sides, but at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math> the point is missing (an open circle) or is plotted at a different height (an open circle with a closed dot above or below it). It is called removable because changing a single value would repair it, which a later topic does.</p>
+<p>Formulas produce removable discontinuities when a zero factor cancels.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Classify the discontinuities of <math class="calc-m"><semantics><mrow><mi>d</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mo>−</mo><mn>2</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{x^2 + x - 2}{x^2 - 1}</annotation></semantics></math>.</p>
+<p>The denominator is 0 at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = -1</annotation></semantics></math>. Factor everything: <math class="calc-m"><semantics><mrow><mi>d</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{(x + 2)(x - 1)}{(x + 1)(x - 1)}</annotation></semantics></math>.</p>
+<p>At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>: the factor <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x - 1</annotation></semantics></math> cancels, so for <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> near 1, <math class="calc-m"><semantics><mrow><mi>d</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo>→</mo><mfrac><mn>3</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{x + 2}{x + 1} \to \frac{3}{2}</annotation></semantics></math>. The limit exists, but <math class="calc-m"><semantics><mrow><mi>d</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d(1)</annotation></semantics></math> is undefined. Removable: a hole at <math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>1</mn><mo>,</mo><mfrac><mn>3</mn><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(1, \frac{3}{2}\right)</annotation></semantics></math>.</p>
+<p>At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = -1</annotation></semantics></math>: the numerator is <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">(1)(-2) = -2</annotation></semantics></math>, not 0, while the denominator approaches 0. So <math class="calc-m"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math> is unbounded near <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>. Infinite.</p>
+</div>
+
+<h2 id="jump-discontinuities">Jump discontinuities</h2>
+<p>At a <b><span class="gl" tabindex="0" data-c="jump-discontinuity">jump discontinuity</span></b> both <a class="gl" href="../notes/limits-from-plots.html" data-c="one-sided-limit">one-sided limits</a> exist as finite numbers, but they are not equal. The graph reaches one height from the left and a different height from the right. The value <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(c)</annotation></semantics></math> may match one side, the other, or neither; it is still a jump.</p>
+<p>Jumps come from <a class="gl" href="../notes/math-functions.html" data-c="piecewise-function">piecewise functions</a> whose pieces do not meet, and from absolute values divided by what is inside them.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Classify the discontinuity of <math class="calc-m"><semantics><mrow><mi>c</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mo stretchy="false">|</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">|</mo></mrow><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">c(x) = \frac{|x - 1|}{x - 1}</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>.</p>
+<p>For <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x &gt; 1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">|</mo><mo>=</mo><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|x - 1| = x - 1</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>c</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c(x) = 1</annotation></semantics></math>. For <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x &lt; 1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">|</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">|x - 1| = -(x - 1)</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>c</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c(x) = -1</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>−</mo></msup></mrow></munder><mi>c</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^-} c(x) = -1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>+</mo></msup></mrow></munder><mi>c</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^+} c(x) = 1</annotation></semantics></math>: finite and different. A jump.</p>
+</div>
+
+<h2 id="infinite-discontinuities">Infinite discontinuities</h2>
+<p>At an <b><span class="gl" tabindex="0" data-c="infinite-discontinuity">infinite discontinuity</span></b> the function is unbounded near <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>, on one side or both. The graph runs along a vertical asymptote <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math>. Formulas produce these when substitution gives a nonzero number over 0.</p>
+<p>One warning: <math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{0}{0}</annotation></semantics></math> does not always mean a hole. For <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{x - 1}{(x - 1)^2}</annotation></semantics></math>, one factor of <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x - 1</annotation></semantics></math> cancels but another stays in the denominator: the expression equals <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{x - 1}</annotation></semantics></math>, which is unbounded near 1. Always simplify fully before you classify.</p>
+
+<h2 id="classifying-step-by-step">Classifying, step by step</h2>
+<ol>
+<li>Find where trouble can happen: zeros of a denominator, break points of a piecewise formula, inputs inside an absolute value that make it 0.</li>
+<li>Find the left-hand and right-hand limits there (from the graph, a table or the formula).</li>
+<li>Unbounded on either side? Infinite. Finite but different? Jump. Equal? Then compare the limit with <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(c)</annotation></semantics></math>: equal means no discontinuity at all; missing or different means removable.</li>
+</ol>
+<p>When a question asks you to justify a classification, write the limits. "<math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mi>a</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 1} a(x) = 2</annotation></semantics></math>, but <math class="calc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a(1)</annotation></semantics></math> is undefined, so <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> has a removable discontinuity at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>" earns credit. "It has a hole" alone does not.</p>
+<p>Other kinds exist. <math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\sin\left(\frac{1}{x}\right)</annotation></semantics></math> oscillates near 0 and has no limit there, but it is neither a jump nor unbounded. The exam names the three kinds above.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:discontinuity-types">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="limit-representations.html"><span>&larr; Previous</span><b>Limits Across Graphs, Tables and Formulas</b></a><a class="tb-chapter-link next" href="continuity-at-a-point.html"><span>Next &rarr;</span><b>Continuity at a Point</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:discontinuity-types">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

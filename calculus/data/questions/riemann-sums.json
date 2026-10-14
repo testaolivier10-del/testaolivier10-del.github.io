@@ -1,0 +1,523 @@
+{
+ "stimuli": {
+  "riemann-sums-s1": {
+   "kind": "table",
+   "title": "Rainwater flowing into a tank",
+   "text": "Rainwater flows into a storage tank at a rate $R(t)$ gallons per hour, where $t$ is measured in hours. $R$ is increasing on $0 \\le t \\le 7$. Selected values are in the table.",
+   "table": {
+    "caption": "Rate R(t), in gallons per hour, at selected times t, in hours",
+    "cols": [
+     "$t$ (hours)",
+     "0",
+     "1",
+     "3",
+     "4",
+     "7"
+    ],
+    "rows": [
+     [
+      "$R(t)$ (gallons per hour)",
+      "20",
+      "26",
+      "30",
+      "35",
+      "41"
+     ]
+    ]
+   }
+  },
+  "riemann-sums-s2": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = 9 - x^2$ on $[0, 3]$",
+   "text": "The function $f(x) = 9 - x^2$ is decreasing and concave down on $[0, 3]$. Use three subintervals of equal width.",
+   "plot": {
+    "label": "Graph of f(x) = 9 minus x squared for x from 0 to 3, falling from (0, 9) to (3, 0)",
+    "width": 360,
+    "height": 280,
+    "x": [
+     -0.3,
+     3.4
+    ],
+    "y": [
+     -0.8,
+     10
+    ],
+    "xStep": 0.5,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "9 - x^2",
+      "domain": [
+       0,
+       3
+      ],
+      "label": "f",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       8
+      ]
+     },
+     {
+      "at": [
+       2,
+       5
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-riemann-sums-1",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "riemann-sums-s1",
+   "q": "Use a left Riemann sum with the four subintervals indicated by the table to estimate the gallons of rainwater that flow into the tank from $t = 0$ to $t = 7$.",
+   "numeric": {
+    "answer": 207,
+    "unit": "gallons",
+    "askUnit": true,
+    "units": [
+     "gal",
+     "gallon"
+    ],
+    "mistakes": [
+     {
+      "value": 194.25,
+      "why": "That treats the four subintervals as equal, each $\\frac{7}{4} = 1.75$ hours wide. The table's widths are 1, 2, 1 and 3 hours: use each one."
+     },
+     {
+      "value": 244,
+      "why": "That is the right Riemann sum: it uses the rate at the right end of each subinterval. A left sum uses 20, 26, 30 and 35."
+     },
+     {
+      "value": 111,
+      "why": "That adds the four left-end rates without multiplying by the widths. Each rectangle is width times height."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Left sum: $1(20) + 2(26) + 1(30) + 3(35) = 20 + 52 + 30 + 105 = 207$ gallons."
+   }
+  },
+  {
+   "id": "calc-riemann-sums-2",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "riemann-sums-s1",
+   "q": "Which expression is the right Riemann sum with the four subintervals indicated by the table?",
+   "options": [
+    "$1(20) + 2(26) + 1(30) + 3(35)$",
+    "$1.75(26) + 1.75(30) + 1.75(35) + 1.75(41)$",
+    "$1(26) + 3(30) + 4(35) + 7(41)$",
+    "$1(26) + 2(30) + 1(35) + 3(41)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Widths: $1 - 0 = 1$, $3 - 1 = 2$, $4 - 3 = 1$, $7 - 4 = 3$. Right ends: $R(1) = 26$, $R(3) = 30$, $R(4) = 35$, $R(7) = 41$. Right sum $= 26 + 60 + 35 + 123 = 244$ gallons.",
+    "options": [
+     "These heights are the rates at the left ends, so this is the left Riemann sum.",
+     "The widths are not equal. Using 7/4 for every width ignores the table: the widths are 1, 2, 1 and 3.",
+     "These multipliers are the times t, not the widths of the subintervals. A width is a difference of two times.",
+     "Correct: each width times the rate at the right end of that subinterval."
+    ]
+   }
+  },
+  {
+   "id": "calc-riemann-sums-3",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "riemann-sums-s1",
+   "q": "Use a trapezoidal sum with the four subintervals indicated by the table to estimate the gallons of rainwater that flow into the tank from $t = 0$ to $t = 7$.",
+   "numeric": {
+    "answer": 225.5,
+    "unit": "gallons",
+    "askUnit": true,
+    "units": [
+     "gal",
+     "gallon"
+    ],
+    "mistakes": [
+     {
+      "value": 451,
+      "why": "You forgot the $\\frac{1}{2}$: a trapezoid's area is the width times the average of its two heights."
+     },
+     {
+      "value": 212.625,
+      "why": "That uses the equal-width trapezoidal rule with width 1.75. With unequal widths, find each trapezoid separately."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$1 \\cdot \\frac{20 + 26}{2} + 2 \\cdot \\frac{26 + 30}{2} + 1 \\cdot \\frac{30 + 35}{2} + 3 \\cdot \\frac{35 + 41}{2} = 23 + 56 + 32.5 + 114 = 225.5$ gallons. It is also the average of the left and right sums: $\\frac{207 + 244}{2}$."
+   }
+  },
+  {
+   "id": "calc-riemann-sums-4",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "riemann-sums-s1",
+   "q": "Is the left Riemann sum of 207 gallons an overestimate or an underestimate of the water that flows in, and why?",
+   "options": [
+    "An overestimate, because the rates in the table are positive",
+    "An underestimate, because R is increasing on each subinterval",
+    "An overestimate, because R is increasing on each subinterval",
+    "An underestimate, because the subintervals have unequal widths"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Because $R$ is increasing, on each subinterval $R$ is smallest at the left end. Every left rectangle lies below the graph, so the left sum underestimates.",
+    "options": [
+     "Positive rates make the amount grow, but they say nothing about whether rectangles are too tall or too short.",
+     "Correct: the left end has the smallest rate on each subinterval, so each rectangle is too short.",
+     "For an increasing rate the left end has the smallest value on each subinterval, so the rectangles fall short.",
+     "Unequal widths do not decide the direction; the monotonicity of R does."
+    ]
+   }
+  },
+  {
+   "id": "calc-riemann-sums-5",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "riemann-sums-s2",
+   "q": "Find the left Riemann sum for $f$ on $[0, 3]$ with three subintervals of equal width.",
+   "numeric": {
+    "answer": 22,
+    "mistakes": [
+     {
+      "value": 13,
+      "why": "That is the right sum, $f(1) + f(2) + f(3)$. The left sum uses $f(0)$, $f(1)$ and $f(2)$."
+     },
+     {
+      "value": 66,
+      "why": "Each width is $\\frac{3 - 0}{3} = 1$, not 3. Multiply each height by 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Width $= \\frac{3 - 0}{3} = 1$. Left sum $= 1 \\cdot f(0) + 1 \\cdot f(1) + 1 \\cdot f(2) = 9 + 8 + 5 = 22$."
+   }
+  },
+  {
+   "id": "calc-riemann-sums-6",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "riemann-sums-s2",
+   "q": "Find the midpoint Riemann sum for $f$ on $[0, 3]$ with three subintervals of equal width.",
+   "numeric": {
+    "answer": 18.25,
+    "mistakes": [
+     {
+      "value": 17.5,
+      "why": "That is the trapezoidal sum. A midpoint sum uses the heights at $x = 0.5$, $1.5$ and $2.5$."
+     },
+     {
+      "value": 22,
+      "why": "That is the left sum. A midpoint sum uses the middle of each subinterval: $f(0.5)$, $f(1.5)$, $f(2.5)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(0.5) = 8.75$, $f(1.5) = 6.75$, $f(2.5) = 2.75$. Midpoint sum $= 1(8.75 + 6.75 + 2.75) = 18.25$."
+   }
+  },
+  {
+   "id": "calc-riemann-sums-7",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "riemann-sums-s2",
+   "q": "The right Riemann sum for $f$ with three subintervals is 13. How does it compare with the area of the region under the graph of $f$ on $[0, 3]$?",
+   "options": [
+    "It is less, because f is concave down",
+    "It is equal, because three subintervals cover [0, 3]",
+    "It is less, because f is decreasing",
+    "It is greater, because f is decreasing"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$f$ is decreasing on $[0, 3]$, so on each subinterval its smallest value is at the right end. Every right rectangle lies under the graph, so 13 is an underestimate (the area is 18).",
+    "options": [
+     "The conclusion is right but the reason is not: for left and right sums the deciding fact is that f is decreasing.",
+     "Covering the interval is not enough; the flat tops of rectangles miss part of the curved region.",
+     "Correct: each right end has the smallest value on its subinterval, so each rectangle is too short.",
+     "For a decreasing function the right end gives the smallest height on each subinterval, so the rectangles fall short."
+    ]
+   }
+  },
+  {
+   "id": "calc-riemann-sums-8",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "riemann-sums-s2",
+   "q": "The trapezoidal sum for $f$ with three subintervals is 17.5. Is it an overestimate or an underestimate of the area under the graph, and why?",
+   "options": [
+    "An underestimate, because trapezoidal sums fall below the area whatever the function",
+    "An underestimate, because f is concave down, so each chord lies below the graph",
+    "An overestimate, because f is decreasing, so each chord lies above the graph",
+    "An overestimate, because f is concave down, so each chord lies above the graph"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The slanted top of each trapezoid joins two points on the graph. Because $f$ is concave down, the graph lies above each chord, so each trapezoid misses a little area: 17.5 is an underestimate.",
+    "options": [
+     "Trapezoids overestimate when the graph is concave up. The direction comes from the concavity of f.",
+     "Correct: the top of each trapezoid is a chord, and on a concave down graph chords lie below the curve.",
+     "Whether chords lie above or below the graph depends on concavity, not on whether f increases or decreases.",
+     "On a concave down graph the curve bulges above its chords, so trapezoids leave a sliver uncovered."
+    ]
+   }
+  },
+  {
+   "id": "calc-riemann-sums-9",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "single",
+   "practice": "1.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For which function is a right Riemann sum on $[1, 4]$ sure to be an overestimate of the area under its graph?",
+   "options": [
+    "a positive function that is increasing on [1, 4]",
+    "a positive function that is decreasing on [1, 4]",
+    "a positive function that is concave down on [1, 4]",
+    "a positive function with a maximum at x = 2.5"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "If $f$ is increasing, the right end of each subinterval gives the largest value of $f$ on it. Each rectangle covers its piece of the region and more, so the right sum is an overestimate.",
+    "options": [
+     "Correct: the right end has the largest value on each subinterval, so every rectangle is too tall.",
+     "Then the right end has the smallest value on each subinterval: a right sum underestimates.",
+     "Concavity decides trapezoids and midpoints. For right sums the deciding fact is whether f increases or decreases.",
+     "Such a function rises and then falls, so some right rectangles are too tall and some too short: no conclusion."
+    ]
+   }
+  },
+  {
+   "id": "calc-riemann-sums-10",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the right Riemann sum for $g(x) = x^2$ on $[0, 2]$ with four subintervals of equal width.",
+   "numeric": {
+    "answer": 3.75,
+    "mistakes": [
+     {
+      "value": 1.75,
+      "why": "That is the left sum: it uses $g(0)$, $g(0.5)$, $g(1)$ and $g(1.5)$. A right sum starts at $g(0.5)$ and ends at $g(2)$."
+     },
+     {
+      "value": 7.5,
+      "why": "The width is $\\frac{2 - 0}{4} = 0.5$. Multiply the sum of heights, 7.5, by 0.5."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Width $0.5$. Right ends: $0.5, 1, 1.5, 2$. Sum $= 0.5(0.25 + 1 + 2.25 + 4) = 0.5(7.5) = 3.75$."
+   }
+  },
+  {
+   "id": "calc-riemann-sums-11",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A runner's velocity $v(t)$, in meters per second, is measured at $t = 0, 2, 4, 6, 8$ seconds: 3, 7, 10, 12, 13. Using a midpoint Riemann sum with two subintervals of equal width, estimate how far she runs from $t = 0$ to $t = 8$.",
+   "options": [
+    "38 meters",
+    "64 meters",
+    "76 meters",
+    "52 meters"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Two equal subintervals: $[0, 4]$ and $[4, 8]$, width 4. Midpoints: $t = 2$ and $t = 6$. Estimate $= 4 \\cdot v(2) + 4 \\cdot v(6) = 28 + 48 = 76$ meters.",
+    "options": [
+     "The midpoint heights are right, but each subinterval is 4 seconds wide, not 2.",
+     "This is a left sum with four subintervals of width 2. The question asks for two subintervals.",
+     "Correct: two subintervals of width 4 with midpoints t = 2 and t = 6: 4(7) + 4(12).",
+     "This uses the left ends of the two subintervals, v(0) and v(4). The midpoints are t = 2 and t = 6."
+    ]
+   }
+  },
+  {
+   "id": "calc-riemann-sums-12",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A function $h$ has $h(0) = 4$, $h(2) = 6$ and $h(5) = 9$. What is the trapezoidal sum for $h$ on $[0, 5]$ with the subintervals $[0, 2]$ and $[2, 5]$?",
+   "options": [
+    "39",
+    "32.5",
+    "31.25",
+    "65"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$2 \\cdot \\frac{4 + 6}{2} + 3 \\cdot \\frac{6 + 9}{2} = 10 + 22.5 = 32.5$.",
+    "options": [
+     "This is the right Riemann sum, 2(6) + 3(9).",
+     "Correct: 2 times 5 plus 3 times 7.5.",
+     "This uses the equal-width rule with width 2.5. The subintervals here have widths 2 and 3.",
+     "This forgets to halve: a trapezoid uses the average of its two heights."
+    ]
+   }
+  },
+  {
+   "id": "calc-riemann-sums-13",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Use a right Riemann sum with four subintervals of equal width to estimate the area under the graph of $f(x) = \\sqrt{1 + x^3}$ on $[0, 2]$.",
+   "numeric": {
+    "answer": 3.7832619002440526,
+    "mistakes": [
+     {
+      "value": 2.783261900244052,
+      "why": "That is the left sum: it starts at $f(0)$. A right sum uses $f(0.5)$, $f(1)$, $f(1.5)$ and $f(2)$."
+     },
+     {
+      "value": 7.566523800488105,
+      "why": "You added the heights but did not multiply by the width, $\\frac{2 - 0}{4} = 0.5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Width $0.5$. Right sum $= 0.5\\left(\\sqrt{1.125} + \\sqrt{2} + \\sqrt{4.375} + \\sqrt{9}\\right) \\approx 0.5(1.06066 + 1.41421 + 2.09165 + 3) \\approx 3.783$. Keep all digits until the end, then round to three decimal places."
+   }
+  },
+  {
+   "id": "calc-riemann-sums-14",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "single",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a function $g$ on $[1, 5]$, the left and right Riemann sums with the same four subintervals are 10.2 and 12.6. What is the trapezoidal sum with those subintervals?",
+   "options": [
+    "22.8",
+    "2.4",
+    "12.6",
+    "11.4"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "On each subinterval, width $\\times \\frac{g(\\text{left}) + g(\\text{right})}{2}$ is the average of the left and right rectangles. Adding up, the trapezoidal sum is $\\frac{10.2 + 12.6}{2} = 11.4$.",
+    "options": [
+     "That is the left sum plus the right sum. Each trapezoid averages the two, so halve it.",
+     "That is the difference between the two sums, not their average.",
+     "That is the right sum. A trapezoid uses both ends of each subinterval.",
+     "Correct: each trapezoid is the average of its left and right rectangles, so the trapezoidal sum is (10.2 + 12.6)/2."
+    ]
+   }
+  },
+  {
+   "id": "calc-riemann-sums-15",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Water's temperature changes at a rate $W(t)$ degrees Celsius per minute, measured at a few times $t$ in minutes. A right Riemann sum with the table's subintervals from $t = 0$ to $t = 10$ equals 18. What does 18 estimate?",
+   "options": [
+    "the rate of change of the temperature at t = 10, in degrees Celsius per minute",
+    "the average rate of change of the temperature, in degrees per minute",
+    "the change in the temperature, in degrees Celsius, from t = 0 to t = 10 minutes",
+    "the temperature of the water, in degrees Celsius, at time t = 10 minutes"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Each term is (degrees Celsius per minute) $\\times$ (minutes), so the sum estimates the change in temperature, in degrees Celsius, over the 10 minutes.",
+    "options": [
+     "That is W(10), one value from the table, not a sum of products.",
+     "An average rate would divide a change by 10 minutes; this sum is the change itself.",
+     "Correct: rate (degrees per minute) times time (minutes) gives a change in degrees.",
+     "A sum of rate times time gives a change. The temperature at 10 also needs the starting temperature."
+    ]
+   }
+  },
+  {
+   "id": "calc-riemann-sums-16",
+   "unit": "unit-6",
+   "topic": "riemann-sums",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A positive function $p$ increases on $[0, 2]$ and decreases on $[2, 4]$. A left Riemann sum for $p$ on $[0, 4]$ uses the subintervals $[0, 2]$ and $[2, 4]$. What can you conclude?",
+   "options": [
+    "The sum is exact, since the subintervals meet at the maximum",
+    "Nothing about over or under: the first rectangle is too short and the second is too tall",
+    "The sum is an underestimate, since p increases on the first subinterval",
+    "The sum is an overestimate, since p(2) is the largest value of p"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Left sums underestimate where the function increases and overestimate where it decreases. Here one rectangle is too short and the other too tall, so the direction of the total error cannot be decided from this information.",
+    "options": [
+     "The rectangles have flat tops; they miss part of the curved region on [0, 2] and overshoot on [2, 4].",
+     "Correct: p increases on [0, 2], so the left rectangle there is short; on [2, 4] the left end p(2) is the largest, so that rectangle is tall.",
+     "True for [0, 2] alone. On [2, 4] the left rectangle overshoots, and the two errors may balance either way.",
+     "The second rectangle is too tall, but the first is too short; the result could go either way."
+    ]
+   }
+  }
+ ]
+}

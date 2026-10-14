@@ -1,0 +1,127 @@
+{
+ "id": "frq-placeholder-fg",
+ "type": "fg",
+ "points": 9,
+ "calc": false,
+ "placeholder": true,
+ "title": "Placeholder: table of f, g and their derivatives",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "antiderivatives"
+ ],
+ "practices": [
+  "1.E",
+  "3.D"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Placeholder: table of f, g and their derivatives",
+  "table": {
+   "caption": "Placeholder values of a function at selected inputs",
+   "cols": [
+    "$x$",
+    "0",
+    "1",
+    "2"
+   ],
+   "rows": [
+    [
+     "$f(x)$",
+     "1",
+     "3",
+     "7"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Find</b> placeholder part (a) of this question.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (a), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (a), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (a), written to test the page."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Find</b> placeholder part (b) of this question.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (b), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (b), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (b), written to test the page."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Find</b> placeholder part (c) of this question.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (c), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (c), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (c), written to test the page."
+  },
+  {
+   "label": "d",
+   "prompt": "<b>Justify</b> placeholder part (d) of this question.",
+   "points": 3,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (d), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (d), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 3 for part (d), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (d), written to test the page."
+  }
+ ]
+}

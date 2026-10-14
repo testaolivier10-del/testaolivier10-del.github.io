@@ -1,0 +1,522 @@
+{
+ "stimuli": {
+  "intermediate-value-theorem-s1": {
+   "kind": "table",
+   "title": "Temperature of a liquid",
+   "table": {
+    "caption": "The temperature T(t) of a liquid, in degrees Celsius, at selected times t, in minutes. T is a continuous function of t.",
+    "cols": [
+     "$t$ (minutes)",
+     "0",
+     "2",
+     "5",
+     "7",
+     "10"
+    ],
+    "rows": [
+     [
+      "$T(t)$ (degrees Celsius)",
+      "20",
+      "35",
+      "31",
+      "44",
+      "40"
+     ]
+    ]
+   }
+  },
+  "intermediate-value-theorem-s2": {
+   "kind": "graph",
+   "title": "The graph of $g$ on $[0, 4]$",
+   "plot": {
+    "label": "Graph of g on [0, 4]: the line y = -1 + 0.75x from a closed dot at (0, -1) to an open circle at (2, 0.5), then the line y = 2 + 0.5(x - 2) from a closed dot at (2, 2) to a closed dot at (4, 3)",
+    "x": [
+     -0.5,
+     4.5
+    ],
+    "y": [
+     -1.5,
+     3.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "-1 + 0.75x",
+      "domain": [
+       0,
+       2
+      ],
+      "ends": [
+       "closed",
+       "open"
+      ],
+      "label": "g"
+     },
+     {
+      "fn": "2 + 0.5(x - 2)",
+      "domain": [
+       2,
+       4
+      ],
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "cls": "s1"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-intermediate-value-theorem-1",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "intermediate-value-theorem-s1",
+   "q": "Must there be a time $t$ with $2 < t < 5$ at which $T(t) = 33$?",
+   "options": [
+    "Yes: $T$ is continuous on $[2, 5]$ and $31 < 33 < 35$",
+    "No: $T$ decreases from 35 to 31 on that interval, so it skips 33",
+    "No: 33 is not one of the values in the table",
+    "Yes, at $t = 3.5$, halfway between 2 and 5"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$T$ is continuous on $[2, 5]$, $T(2) = 35$ and $T(5) = 31$, and 33 is between 31 and 35. By the Intermediate Value Theorem, $T(c) = 33$ for some $c$ in $(2, 5)$.",
+    "options": [
+     "Continuity on the closed interval plus a value between the endpoint values: the theorem applies.",
+     "Decreasing or not, a continuous function passes through every value between its endpoint values.",
+     "The table lists a few times only; the theorem is about all the times in between.",
+     "The theorem says such a time exists, not where it is."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-2",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "intermediate-value-theorem-s1",
+   "q": "What is the least number of times $t$ in $0 < t < 10$ at which $T(t) = 33$?",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "Check each pair of neighboring times. 33 lies between the values on $[0, 2]$ (20 and 35), on $[2, 5]$ (35 and 31) and on $[5, 7]$ (31 and 44): three separate intervals."
+     },
+     {
+      "value": 2,
+      "why": "Do not skip the decrease from 35 to 31: 33 is between them, so $[2, 5]$ gives another time."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Apply the theorem on each interval between table times. 33 is between 20 and 35 on $[0, 2]$, between 35 and 31 on $[2, 5]$, and between 31 and 44 on $[5, 7]$, but not between 44 and 40 on $[7, 10]$. The three open intervals do not overlap, so $T(t) = 33$ at least 3 times."
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-3",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "intermediate-value-theorem-s1",
+   "q": "On which interval does the Intermediate Value Theorem guarantee a time with $T(t) = 38$?",
+   "options": [
+    "$(0, 2)$",
+    "$(5, 7)$",
+    "$(2, 5)$",
+    "$(7, 10)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$T(5) = 31$ and $T(7) = 44$, and $31 < 38 < 44$. $T$ is continuous on $[5, 7]$, so $T(c) = 38$ for some $c$ in $(5, 7)$.",
+    "options": [
+     "On $[0, 2]$ the values are 20 and 35; 38 is not between them.",
+     "38 lies between 31 and 44.",
+     "On $[2, 5]$ the values are 35 and 31; 38 is not between them.",
+     "On $[7, 10]$ the values are 44 and 40; 38 is not between them."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-4",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "intermediate-value-theorem-s1",
+   "q": "Which is a complete justification that $T(c) = 30$ for some $c$ in $(0, 2)$?",
+   "options": [
+    "$T(0) = 20$ and $T(2) = 35$, and 30 is between 20 and 35, so by the IVT, $T(c) = 30$ for some $c$ in $(0, 2)$",
+    "$T$ is continuous on $[0, 2]$, so by the Intermediate Value Theorem, $T(c) = 30$ for some value $c$ in $(0, 2)$",
+    "$T$ is continuous on $[0, 2]$ and $T(0) = 20 < 30 < 35 = T(2)$, so by the IVT, $T(c) = 30$ for some $c$ in $(0, 2)$",
+    "$T$ is continuous on $[0, 2]$ and $20 < 30 < 35$, so by the Intermediate Value Theorem, $T(1) = 30$ at $t = 1$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A full justification states both conditions, continuity on the closed interval and the value between $T(0)$ and $T(2)$, names the theorem, and concludes that some $c$ in the open interval works.",
+    "options": [
+     "It never says $T$ is continuous on $[0, 2]$; without that the theorem cannot be used.",
+     "It never shows that 30 is between $T(0)$ and $T(2)$.",
+     "Both conditions, the theorem's name, and the correct conclusion.",
+     "The theorem gives some $c$, not a particular one such as $t = 1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-5",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "intermediate-value-theorem-s2",
+   "q": "$g(0) = -1$ and $g(4) = 3$. Does the Intermediate Value Theorem guarantee some $c$ in $(0, 4)$ with $g(c) = 1$?",
+   "options": [
+    "Yes: 1 is between $g(0) = -1$ and $g(4) = 3$",
+    "Yes: $g$ is defined at each single point of the interval $[0, 4]$",
+    "No: 1 is not between $g(0) = -1$ and $g(4) = 3$",
+    "No: $g$ is not continuous on $[0, 4]$, since it jumps at $x = 2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The theorem needs $g$ continuous on $[0, 4]$. At $x = 2$ the one-sided limits are 0.5 and 2, so $g$ is not continuous there, and the theorem does not apply.",
+    "options": [
+     "Being between the endpoint values is only one of the two hypotheses.",
+     "Defined is not the same as continuous.",
+     "1 is between $-1$ and 3; the problem is continuity.",
+     "The continuity hypothesis fails at the jump, so no guarantee."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-6",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "intermediate-value-theorem-s2",
+   "q": "Does $g$ actually take the value 1 anywhere in $(0, 4)$?",
+   "options": [
+    "No: the graph jumps over $y = 1$ at $x = 2$",
+    "Yes: at $x = 2$, exactly where the graph jumps",
+    "Yes: at some $x$ between 0 and 2",
+    "Yes: at some $x$ between 2 and 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On $[0, 2)$, $g$ runs from $-1$ up to just below 0.5; on $[2, 4]$ it runs from 2 to 3. The value 1 is never reached, which shows why the theorem needs continuity.",
+    "options": [
+     "Left piece below 0.5, right piece 2 and above: 1 is skipped.",
+     "$g(2) = 2$, the closed dot, not 1.",
+     "The left piece stays below 0.5.",
+     "The right piece stays at 2 or above."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-7",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "intermediate-value-theorem-s2",
+   "q": "On which interval does the Intermediate Value Theorem guarantee some $c$ with $g(c) = 2.5$?",
+   "options": [
+    "$[0, 4]$",
+    "$[2, 4]$",
+    "$[1, 2]$",
+    "$[0, 1]$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "On $[2, 4]$, $g$ is a single line piece, continuous on the closed interval ($g(2) = 2$ is on the right piece). $g(2) = 2 < 2.5 < 3 = g(4)$, so some $c$ in $(2, 4)$ has $g(c) = 2.5$.",
+    "options": [
+     "$g$ is not continuous on $[0, 4]$ because of the jump at 2.",
+     "Continuous on $[2, 4]$, and 2.5 is between 2 and 3.",
+     "On $[1, 2]$, $g$ is not continuous from the left at 2: the left piece heads to 0.5 but $g(2) = 2$.",
+     "$g(0) = -1$ and $g(1) = -0.25$; 2.5 is not between them."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-8",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "intermediate-value-theorem-s2",
+   "q": "Suppose $g$ is changed between $x = 0$ and $x = 4$ so that it is continuous on $[0, 4]$, still with $g(0) = -1$ and $g(4) = 3$. What does the Intermediate Value Theorem now say?",
+   "options": [
+    "$g(c) = 1$ for exactly one $c$ in $(0, 4)$",
+    "$g(2) = 1$, at the midpoint of the interval",
+    "$g(c) = 1$ for at least one $c$ in $(0, 4)$",
+    "$g(c) = 4$ for at least one $c$ in $(0, 4)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With continuity on $[0, 4]$ and $-1 < 1 < 3$, the theorem guarantees at least one $c$ in $(0, 4)$ with $g(c) = 1$. It says nothing about how many or where.",
+    "options": [
+     "The graph could cross $y = 1$ several times.",
+     "The theorem gives no location.",
+     "The theorem guarantees existence: one or more such $c$.",
+     "4 is not between $-1$ and 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-9",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = x^3 - 4x + 1$. Then $f(0) = 1$ and $f(1) = -2$. Which statement justifies that $f$ has a zero in $(0, 1)$?",
+   "options": [
+    "$f(0) = 1$ is positive and $f(1) = -2$ is negative, so the graph of $f$ crosses the $x$-axis at $x = 0.5$",
+    "$f$ is a polynomial, so it has a zero; since $f(0)$ and $f(1)$ differ, that zero lies between 0 and 1",
+    "$f$ is continuous on $[0, 1]$, so by the Intermediate Value Theorem it equals 0 somewhere in $(0, 1)$",
+    "$f$ is a polynomial, so it is continuous on $[0, 1]$; since $-2 < 0 < 1$, the IVT gives $f(c) = 0$ for some $c$ in $(0, 1)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Name why $f$ is continuous on the closed interval (polynomial), show 0 is between $f(0)$ and $f(1)$, name the theorem, and conclude with some $c$ in $(0, 1)$.",
+    "options": [
+     "It never mentions continuity, and the theorem does not give the location 0.5.",
+     "Not every polynomial has a real zero, and \"differ\" is not enough; 0 must lie between the values.",
+     "It never shows that 0 is between $f(0) = 1$ and $f(1) = -2$.",
+     "Reason for continuity, the value between the endpoint values, the theorem, and the conclusion."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-10",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "$f(x) = x^3 + x - 5$ is continuous, with $f(1) = -3$ and $f(2) = 5$, so it has a zero in $(1, 2)$. Use a graphing calculator to find that zero.",
+   "numeric": {
+    "answer": 1.5159802276928205,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "Report three decimal places: the zero is $1.5159\\ldots$, so $1.516$ (or $1.515$ truncated)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Solve $x^3 + x - 5 = 0$ on the calculator (graph and find the zero): $x \\approx 1.515980$, so $1.516$. The IVT guaranteed the zero exists; the calculator locates it."
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-11",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "The equation $\\cos x = x$ has a solution in $(0, 1)$, because $h(x) = \\cos x - x$ is continuous with $h(0) = 1$ and $h(1) \\approx -0.46$. Use a graphing calculator to find it.",
+   "numeric": {
+    "answer": 0.7390851332151607,
+    "mistakes": [
+     {
+      "value": 0.999847741531088,
+      "why": "That solves the equation in degree mode. Calculus uses radians: set the calculator to radians and solve $\\cos x - x = 0$ again."
+     }
+    ]
+   },
+   "why": {
+    "correct": "In radian mode, solve $\\cos x - x = 0$ (or intersect $y = \\cos x$ with $y = x$): $x \\approx 0.739085$, so $0.739$."
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-12",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "$f$ is continuous on $[1, 5]$, with $f(1) = 4$ and $f(5) = -2$. Which statement follows from the Intermediate Value Theorem?",
+   "options": [
+    "$f(c) = 0$ for some $c$ in $(1, 5)$",
+    "$f(3) = 1$, halfway between 4 and $-2$",
+    "$f(c) = 5$ for some $c$ in $(1, 5)$",
+    "$f$ decreases on the interval $[1, 5]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "0 is between $-2$ and 4 and $f$ is continuous on $[1, 5]$, so some $c$ in $(1, 5)$ has $f(c) = 0$.",
+    "options": [
+     "$-2 < 0 < 4$ with continuity on $[1, 5]$.",
+     "The theorem gives no particular input or value at the midpoint.",
+     "5 is not between $-2$ and 4, so it is not guaranteed.",
+     "The theorem says nothing about increasing or decreasing; $f$ may wiggle."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-13",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$f(x) = \\frac{1}{x}$ has $f(-1) = -1$ and $f(1) = 1$, yet $f(x) = 0$ has no solution. Why does this not contradict the Intermediate Value Theorem?",
+   "options": [
+    "0 is not between $f(-1) = -1$ and $f(1) = 1$",
+    "$f$ is not continuous on $[-1, 1]$; it is undefined at $x = 0$",
+    "The theorem applies to polynomials, and $\\frac{1}{x}$ is not one",
+    "The theorem needs $f(-1)$ and $f(1)$ to have the same sign"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The theorem's hypothesis is continuity on the closed interval $[-1, 1]$. $\\frac{1}{x}$ has an infinite discontinuity at 0, so the hypothesis fails and the theorem promises nothing.",
+    "options": [
+     "0 is between $-1$ and $1$; that hypothesis holds.",
+     "A failed hypothesis means no conclusion, so no contradiction.",
+     "The theorem applies to every function continuous on $[a, b]$, polynomial or not.",
+     "Opposite signs are what put 0 between them."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-14",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "multi",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$f$ is continuous on $[2, 6]$, with $f(2) = 5$ and $f(6) = 1$. Which values is $f$ guaranteed to take at some $x$ in $(2, 6)$?",
+   "options": [
+    "$3$",
+    "$6$",
+    "$0$",
+    "$5.5$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "The theorem guarantees every value between $f(6) = 1$ and $f(2) = 5$. Values outside that range may or may not be taken.",
+    "options": [
+     "$1 < 3 < 5$, so the theorem guarantees it.",
+     "6 is not between 1 and 5.",
+     "0 is not between 1 and 5; $f$ might stay above 1.",
+     "5.5 is not between 1 and 5."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-15",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which of these is NOT a hypothesis of the Intermediate Value Theorem for $f$ on $[a, b]$ and a number $d$?",
+   "options": [
+    "$f$ is continuous on $[a, b]$",
+    "$d$ is between $f(a)$ and $f(b)$",
+    "$f$ is increasing on $[a, b]$",
+    "$f$ is defined on the closed interval"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The hypotheses are continuity on the closed interval $[a, b]$ (which includes being defined there) and $d$ between $f(a)$ and $f(b)$. Monotonicity is not needed.",
+    "options": [
+     "This is the key hypothesis.",
+     "This is the second hypothesis.",
+     "The theorem works for functions that go up and down.",
+     "Continuity on $[a, b]$ includes being defined at every point of it."
+    ]
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-16",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$g$ is continuous on $[0, 4]$ with $g(0) = 3$, $g(1) = -1$, $g(2) = 2$, $g(3) = -2$ and $g(4) = 1$. What is the least number of zeros $g$ must have in $(0, 4)$?",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "Count every sign change between neighboring inputs: $3 \\to -1$, $-1 \\to 2$, $2 \\to -2$, $-2 \\to 1$. That is four."
+     },
+     {
+      "value": 3,
+      "why": "The last pair counts too: $g(3) = -2$ and $g(4) = 1$ have opposite signs."
+     }
+    ]
+   },
+   "why": {
+    "correct": "On each of $[0, 1]$, $[1, 2]$, $[2, 3]$ and $[3, 4]$, $g$ is continuous and changes sign, so 0 lies between the endpoint values. The theorem gives a zero in each of the four open intervals, which do not overlap."
+   }
+  },
+  {
+   "id": "calc-intermediate-value-theorem-17",
+   "unit": "unit-1",
+   "topic": "intermediate-value-theorem",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Let $f(x) = x^3 - 3x + 1$, with $f(0) = 1$ and $f(1) = -1$. Which statement goes beyond what the Intermediate Value Theorem guarantees?",
+   "options": [
+    "$f$ has at least one zero in $(0, 1)$",
+    "$f(c) = 0.5$ for some $c$ in $(0, 1)$",
+    "$f(c) = -0.5$ for some $c$ in $(0, 1)$",
+    "$f$ has exactly one zero in $(0, 1)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The theorem guarantees existence (at least one), never uniqueness. Counting zeros exactly needs more information about $f$.",
+    "options": [
+     "That is what the theorem gives.",
+     "0.5 is between $-1$ and $1$, so it is guaranteed.",
+     "$-0.5$ is between $-1$ and $1$, so it is guaranteed.",
+     "\"Exactly one\" claims more than the theorem gives."
+    ]
+   }
+  }
+ ]
+}

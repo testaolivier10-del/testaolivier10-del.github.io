@@ -1,0 +1,480 @@
+{
+ "stimuli": {
+  "limits-from-tables-s1": {
+   "kind": "table",
+   "title": "Values of $f$ near $x = 3$",
+   "table": {
+    "caption": "Selected values of a function $f$ for $x$ near 3; $f$ is not defined at $x = 3$",
+    "cols": [
+     "$x$",
+     "2.9",
+     "2.99",
+     "2.999",
+     "3.001",
+     "3.01",
+     "3.1"
+    ],
+    "rows": [
+     [
+      "$f(x)$",
+      "26.11",
+      "26.9101",
+      "26.991001",
+      "27.009001",
+      "27.0901",
+      "27.91"
+     ]
+    ]
+   }
+  },
+  "limits-from-tables-s2": {
+   "kind": "table",
+   "title": "Shipping cost by weight",
+   "table": {
+    "caption": "Cost $C(w)$, in dollars, to ship a package that weighs $w$ pounds",
+    "cols": [
+     "$w$ (pounds)",
+     "1.9",
+     "1.99",
+     "1.999",
+     "2",
+     "2.001",
+     "2.01",
+     "2.1"
+    ],
+    "rows": [
+     [
+      "$C(w)$ (dollars)",
+      "5.25",
+      "5.25",
+      "5.25",
+      "5.25",
+      "7.40",
+      "7.40",
+      "7.40"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-limits-from-tables-1",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limits-from-tables-s1",
+   "q": "Use the table to estimate $\\lim_{x \\to 3} f(x)$.",
+   "numeric": {
+    "answer": 27,
+    "mistakes": [
+     {
+      "value": 27.009001,
+      "why": "That is one table value, $f(3.001)$. The limit is the number the values close in on from both sides: 27."
+     },
+     {
+      "value": 26.991001,
+      "why": "That is $f(2.999)$, one value from the left. The values on both sides close in on 27."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the left, 26.11, 26.9101, 26.991001 rise toward 27. From the right, 27.91, 27.0901, 27.009001 fall toward 27. Both sides suggest $\\lim_{x \\to 3} f(x) = 27$."
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-2",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limits-from-tables-s1",
+   "q": "Which table values are evidence for the estimate of $\\lim_{x \\to 3^-} f(x)$?",
+   "options": [
+    "26.11, 26.9101 and 26.991001",
+    "27.91, 27.0901 and 27.009001",
+    "26.991001 and 27.009001, the two closest values",
+    "The value of $f(3)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A left-hand limit uses only $x < 3$: the inputs 2.9, 2.99 and 2.999, whose outputs are 26.11, 26.9101 and 26.991001.",
+    "options": [
+     "Inputs below 3.",
+     "Those come from $x > 3$: evidence for the right-hand limit.",
+     "One value from each side cannot show a left-hand trend.",
+     "$f(3)$ is not defined, and a limit never uses it."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-3",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limits-from-tables-s1",
+   "q": "What does the table tell you about $f(3)$?",
+   "options": [
+    "Nothing; it shows only the trend near 3.",
+    "$f(3) = 27$, because the values close in on 27.",
+    "$f(3)$ is about 27.009, the closest value in the table.",
+    "$f(3) = 0$, because 3 is not in the table."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A table near $x = 3$ shows a trend, which estimates the limit. It does not give the value at 3; the caption says $f$ is not defined there.",
+    "options": [
+     "Trend near 3 versus value at 3.",
+     "A limit and a value can differ; here the value does not exist.",
+     "$f(3.001)$ is a value at 3.001, not at 3.",
+     "A missing table entry is not a zero."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-4",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limits-from-tables-s1",
+   "q": "Which additional input would best strengthen the estimate of $\\lim_{x \\to 3^+} f(x)$?",
+   "options": [
+    "3.0001",
+    "3.5",
+    "2.9999",
+    "4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A right-hand limit needs inputs above 3, closer than any already in the table. 3.0001 is the closest such input.",
+    "options": [
+     "Above 3, and closer than 3.001.",
+     "3.5 is farther from 3 than the table's values; it adds little.",
+     "2.9999 is below 3: it helps the left-hand limit, not the right-hand one.",
+     "4 is far from 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-5",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limits-from-tables-s2",
+   "q": "Estimate $\\lim_{w \\to 2^-} C(w)$, in dollars.",
+   "numeric": {
+    "answer": "5.25",
+    "mistakes": [
+     {
+      "value": "7.4",
+      "why": "7.40 comes from weights above 2 pounds: that is the right-hand side. From the left, the cost stays at 5.25."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For weights just under 2 pounds (1.9, 1.99, 1.999), the cost is 5.25. So $\\lim_{w \\to 2^-} C(w) = 5.25$ dollars."
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-6",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limits-from-tables-s2",
+   "q": "Estimate $\\lim_{w \\to 2^+} C(w)$, in dollars.",
+   "numeric": {
+    "answer": "7.4",
+    "mistakes": [
+     {
+      "value": "5.25",
+      "why": "5.25 is the cost at and below 2 pounds. From the right (2.001, 2.01, 2.1), the cost is 7.40."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For weights just over 2 pounds (2.001, 2.01, 2.1), the cost is 7.40. So $\\lim_{w \\to 2^+} C(w) = 7.40$ dollars."
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-7",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limits-from-tables-s2",
+   "q": "What does the table suggest about $\\lim_{w \\to 2} C(w)$?",
+   "options": [
+    "It does not exist: 5.25 from the left, 7.40 from the right.",
+    "It is 5.25, because the table gives $C(2) = 5.25$ exactly.",
+    "It is 6.325, the average of the left and right values.",
+    "It is 7.40, because the cost goes up once a package passes 2 pounds."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The two one-sided limits differ, 5.25 versus 7.40, so the two-sided limit does not exist. The cost jumps at 2 pounds.",
+    "options": [
+     "Unequal one-sided limits.",
+     "$C(2)$ is a value; the right side still heads to 7.40.",
+     "A limit is never an average of two different sides.",
+     "That is only the right-hand limit."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-8",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limits-from-tables-s2",
+   "q": "In context, what does $\\lim_{w \\to 2^+} C(w) = 7.40$ mean?",
+   "options": [
+    "Packages weighing just over 2 pounds cost \\$7.40 to ship.",
+    "A package weighing exactly 2 pounds costs \\$7.40 to ship.",
+    "Shipping cost rises by \\$7.40 per pound after 2 pounds.",
+    "Packages over 2 pounds cost \\$2.15 more than lighter ones, at any weight."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A right-hand limit at 2 describes weights slightly above 2 pounds: their cost is \\$7.40.",
+    "options": [
+     "Weights just above 2 pounds.",
+     "At exactly 2 pounds the table gives \\$5.25.",
+     "The limit is a cost, not a cost per pound.",
+     "The table only shows weights up to 2.1 pounds; it says nothing about heavier packages."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-9",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $x = 0.9, 0.99, 0.999$ the values of $g(x)$ are 100, 10,000 and 1,000,000. For $x = 1.1, 1.01, 1.001$ they are also 100, 10,000 and 1,000,000. What does the table suggest about $\\lim_{x \\to 1} g(x)$?",
+   "options": [
+    "It does not exist: the values grow without bound from both sides.",
+    "1,000,000, the largest value in the table",
+    "1, the input being approached",
+    "It exists, because both sides show exactly the same values at matching distances."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each step closer to 1 multiplies the output by 100. The outputs are unbounded, so they approach no number and the limit does not exist.",
+    "options": [
+     "Unbounded outputs approach no number.",
+     "The values keep growing past any number, including 1,000,000.",
+     "1 is the input, not a value the outputs approach.",
+     "Matching sides only help when they close in on a number; these grow without bound."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-10",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $x = 1.1, 1.01$ and $1.001$, a function $k$ gives 2.0001, 2.0099 and 2.5. A student says, \"The first two values show the limit as $x \\to 1^+$ is 2.\" Which response is best?",
+   "options": [
+    "The values have not settled; the third moved away from 2, so test closer inputs.",
+    "The student is right: two values that agree are enough evidence to decide a limit like this one.",
+    "The limit is 2.5, because that is the value at the input closest to 1.",
+    "The limit is 2.17, the average of the three values in the table."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A table only suggests a limit, and it can mislead if you stop too early. Here the values jump from about 2.01 to 2.5 at the closest input, so the trend has not settled. Try 1.0001, 1.00001 and so on.",
+    "options": [
+     "A trend must hold as the inputs get closer, not just at the start.",
+     "The values closest to 1 matter most, and they have not settled yet.",
+     "One value is not a trend either; check closer inputs.",
+     "Averaging table values does not give a limit."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-11",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Use a calculator to make a table of values of $f(x) = \\frac{\\sqrt{x + 7} - 3}{x - 2}$ for $x$ near 2, from both sides. Estimate $\\lim_{x \\to 2} f(x)$, correct to three decimal places.",
+   "numeric": {
+    "answer": 0.16666666666666666,
+    "answerTex": "\\frac{1}{6}",
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "That is the reciprocal of the limit. The values near $x = 2$ are about 0.1667, not 6."
+     },
+     {
+      "value": 0.3333333333333333,
+      "why": "Check a value: $f(2.001) \\approx 0.16666$, not 0.333. Recompute $\\sqrt{9.001} - 3$ carefully."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Values such as $f(1.999) \\approx 0.166671$ and $f(2.001) \\approx 0.166662$ close in on $0.16666\\ldots$. To three decimal places, the limit is 0.167 (the exact value is $\\frac{1}{6}$). Keep full precision until the end."
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-12",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which set of inputs is best for estimating $\\lim_{x \\to 5} f(x)$ with a table?",
+   "options": [
+    "4.9, 4.99, 4.999, 5.001, 5.01, 5.1",
+    "4.99, 4.999, 5, 5.001, 5.01, 5.1, 5.2",
+    "5.1, 5.01, 5.001, 5.0001",
+    "0, 1, 2, 3, 4, 5"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Use inputs on both sides of 5 that get closer and closer to it, and skip 5 itself.",
+    "options": [
+     "Both sides, closing in on 5.",
+     "It includes $x = 5$, which says nothing about the limit, and wastes inputs far from 5.",
+     "Only the right side: that estimates the right-hand limit.",
+     "Only the left side, far from 5, and it includes 5."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-13",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "1.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "As $x$ approaches 0 from both sides, a table shows $h(x)$ = 0.33337, 0.3333337, 0.333333337 on the left and 0.33333, 0.3333333, 0.333333333 on the right. What is the best estimate of $\\lim_{x \\to 0} h(x)$?",
+   "options": [
+    "$\\frac{1}{3}$",
+    "$0.333333337$",
+    "$0.3$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both sides settle on $0.3333\\ldots$, so the limit appears to be $\\frac{1}{3}$.",
+    "options": [
+     "The repeating 3s point to $\\frac{1}{3}$.",
+     "That is one table value; the limit is the number the values approach, $\\frac{1}{3}$.",
+     "The values agree with $\\frac{1}{3}$ to many more places than 0.3.",
+     "0 is the input approached, not the output."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-14",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A table of $f(x)$ shows values 3.9, 3.99, 3.999 for $x$ = 1.9, 1.99, 1.999, values 4.1, 4.01, 4.001 for $x$ = 2.1, 2.01, 2.001, and $f(2) = 9$. What is the best estimate of $\\lim_{x \\to 2} f(x)$?",
+   "options": [
+    "$4$",
+    "$9$",
+    "$6.5$",
+    "$3.999$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both sides close in on 4. The value $f(2) = 9$ does not affect the limit.",
+    "options": [
+     "Both sides head to 4.",
+     "9 is $f(2)$, not where nearby values head.",
+     "Never average the value and the trend.",
+     "One table entry; the trend continues to 4."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-15",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A table of $g(x) = \\frac{\\sqrt{1 + x} - 1}{x}$ gives 0.5132, 0.5013, 0.50013 for $x = -0.1, -0.01, -0.001$ and 0.49988, 0.4988, 0.4881 for $x = 0.001, 0.01, 0.1$. Estimate $\\lim_{x \\to 0} g(x)$ as an exact fraction.",
+   "numeric": {
+    "answer": "1/2",
+    "mistakes": [
+     {
+      "value": 0.4881,
+      "why": "That is $g(0.1)$, the value farthest from 0. The values from both sides close in on 0.5, which is $\\frac{1}{2}$."
+     },
+     {
+      "value": 0,
+      "why": "0 is the input approached. The outputs approach 0.5."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the left the values fall toward 0.5; from the right they rise toward 0.5. The estimate is $\\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "calc-limits-from-tables-16",
+   "unit": "unit-1",
+   "topic": "limits-from-tables",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $x = 0.1, 0.01, 0.001$, a function $m$ gives 1.1, 1.01 and 1.001. No values with $x < 0$ are given. Which conclusion is justified?",
+   "options": [
+    "The right-hand limit appears to be 1; the two-sided limit is unknown.",
+    "$\\lim_{x \\to 0} m(x) = 1$, because the values on the right close in on 1.",
+    "$m(0) = 1$, because the values close in on 1 as $x$ shrinks.",
+    "$\\lim_{x \\to 0^-} m(x) = 1$, because the values close in on 1."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The inputs are all to the right of 0, so they estimate the right-hand limit only. A two-sided limit also needs the left side.",
+    "options": [
+     "Right side only.",
+     "The left side has not been checked.",
+     "A trend near 0 is not the value at 0.",
+     "The table gives no inputs to the left of 0, so it says nothing about the left-hand limit."
+    ]
+   }
+  }
+ ]
+}

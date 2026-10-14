@@ -1,0 +1,93 @@
+{
+ "slug": "limit-explorer",
+ "kind": "simulator",
+ "topic": "limits-from-plots",
+ "intro": "<p>A limit asks one question: as $x$ gets close to $a$, what number does $f(x)$ get close to? Here you zoom in on the graph around $x = a$ while a table of values closes in from both sides, and you watch the two one-sided limits arrive.</p><p>The gallery holds every way a limit can behave: a hole, a jump, a vertical asymptote, an oscillation that never settles, a point out of place that you can move back, limits at infinity and the squeeze theorem. The continuity checklist ticks as you zoom.</p>",
+ "howItWorks": "<p>Each zoom step is ten times closer. The two tracers sit at $x = a - h$ (from the left) and $x = a + h$ (from the right), with $h = 1, 0.1, 0.01, \\ldots$; the table adds a row each time, and those rows are exactly where the tracers pass. Every curve, value and table cell comes from the same formula shown under Numbers &amp; setup.</p><ul><li><b>Limit from the left</b> $\\lim_{x \\to a^-} f(x)$: where $f(x)$ heads as $x$ comes up to $a$ from below.</li><li><b>Limit from the right</b> $\\lim_{x \\to a^+} f(x)$: from above.</li><li>The <b>limit</b> $\\lim_{x \\to a} f(x)$ exists only when both one-sided limits exist and are equal. It never depends on $f(a)$.</li><li><b>Continuous at</b> $a$: $f(a)$ is defined, the limit exists, and they are equal.</li></ul><p>Test yourself has twelve kinds of problem; each unlocks with the lesson that teaches it. A first try counts toward your progress, and a miss goes to your review queue.</p>",
+ "contexts": [
+  {
+   "id": "graph",
+   "topic": "limits-from-plots",
+   "types": [
+    "graph"
+   ]
+  },
+  {
+   "id": "table",
+   "topic": "limits-from-tables",
+   "types": [
+    "table"
+   ]
+  },
+  {
+   "id": "onesided",
+   "topic": "limit-laws",
+   "types": [
+    "onesided"
+   ]
+  },
+  {
+   "id": "laws",
+   "topic": "limit-laws",
+   "types": [
+    "laws"
+   ]
+  },
+  {
+   "id": "algebra",
+   "topic": "limit-algebra",
+   "types": [
+    "algebra"
+   ]
+  },
+  {
+   "id": "squeeze",
+   "topic": "squeeze-theorem",
+   "types": [
+    "squeeze"
+   ]
+  },
+  {
+   "id": "classify",
+   "topic": "discontinuity-types",
+   "types": [
+    "classify"
+   ]
+  },
+  {
+   "id": "continuity",
+   "topic": "continuity-at-a-point",
+   "types": [
+    "continuity"
+   ]
+  },
+  {
+   "id": "remove",
+   "topic": "removing-discontinuities",
+   "types": [
+    "remove"
+   ]
+  },
+  {
+   "id": "vertical",
+   "topic": "infinite-limits",
+   "types": [
+    "vertical"
+   ]
+  },
+  {
+   "id": "infinity",
+   "topic": "limits-at-infinity",
+   "types": [
+    "infinity"
+   ]
+  },
+  {
+   "id": "ivt",
+   "topic": "intermediate-value-theorem",
+   "types": [
+    "ivt"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+<p>To use the Fundamental Theorem you need antiderivatives, and lots of them. This page collects the basic rules, introduces the notation for "all the antiderivatives at once," and shows how a single known point picks out the function you want.</p>
+
+<h2>A family, not a single function</h2>
+<figure id="fig-family" data-fig="antiderivative-family"><figcaption>y = x³/3 - x + C for five values of C. Same slope at every x; different heights.</figcaption></figure>
+<p>$x^3/3 - x$ has derivative $x^2 - 1$. So does $x^3/3 - x + 5$, and $x^3/3 - x - 2$: a constant has derivative 0. On an interval, these are the <i>only</i> antiderivatives; two functions with the same derivative differ by a constant. Graphically they are vertical shifts of one curve, as <a class="figref" href="#fig-family">the figure</a> shows.</p>
+<p>The <b>indefinite integral</b> names the whole family:</p>
+<p>$$\int (x^2 - 1)\,dx = \frac{x^3}{3} - x + C.$$</p>
+<p>$C$ is the <b>constant of integration</b>. Leaving it off says "this one function," which is wrong: the scoring guidelines take a point for a missing $+ C$.</p>
+
+<h2>Three objects with the same sign</h2>
+<table class="compare">
+<thead><tr><th>Written</th><th>Name</th><th>What it is</th><th>Example with $2x$</th></tr></thead>
+<tbody>
+<tr><td>$\int_a^b f(x)\,dx$</td><td>definite integral</td><td>a number</td><td>$\int_0^3 2x\,dx = 9$</td></tr>
+<tr><td>$\int f(x)\,dx$</td><td>indefinite integral</td><td>a family of functions</td><td>$\int 2x\,dx = x^2 + C$</td></tr>
+<tr><td>$\int_a^x f(t)\,dt$</td><td>accumulation function</td><td>one function of $x$, 0 at $x = a$</td><td>$\int_1^x 2t\,dt = x^2 - 1$</td></tr>
+</tbody>
+</table>
+
+<h2>The basic rules</h2>
+<p>Each rule is a derivative rule read backward. Differentiate the right side and you get the integrand.</p>
+<table class="compare">
+<thead><tr><th>Integrand</th><th>Antiderivative (add $+ C$)</th><th>Because</th></tr></thead>
+<tbody>
+<tr><td>$x^n$, $n \ne -1$</td><td>$\frac{x^{n+1}}{n+1}$</td><td>power rule</td></tr>
+<tr><td>$\frac{1}{x}$</td><td>$\ln|x|$</td><td>$\frac{d}{dx}\ln|x| = \frac{1}{x}$</td></tr>
+<tr><td>$e^x$</td><td>$e^x$</td><td>$e^x$ is its own derivative</td></tr>
+<tr><td>$\cos x$</td><td>$\sin x$</td><td>$\frac{d}{dx}\sin x = \cos x$</td></tr>
+<tr><td>$\sin x$</td><td>$-\cos x$</td><td>$\frac{d}{dx}\cos x = -\sin x$</td></tr>
+<tr><td>$\sec^2 x$</td><td>$\tan x$</td><td>$\frac{d}{dx}\tan x = \sec^2 x$</td></tr>
+<tr><td>$\sec x \tan x$</td><td>$\sec x$</td><td>$\frac{d}{dx}\sec x = \sec x\tan x$</td></tr>
+<tr><td>$\csc^2 x$</td><td>$-\cot x$</td><td>$\frac{d}{dx}\cot x = -\csc^2 x$</td></tr>
+<tr><td>$\frac{1}{1 + x^2}$</td><td>$\arctan x$</td><td>inverse tangent derivative</td></tr>
+<tr><td>$\frac{1}{\sqrt{1 - x^2}}$</td><td>$\arcsin x$</td><td>inverse sine derivative</td></tr>
+</tbody>
+</table>
+<p>Constant factors come out and sums split: $\int (kf + g)\,dx = k\int f\,dx + \int g\,dx$. Products and quotients do not split, so rewrite them first.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\int \left(\sqrt{x} + \frac{4}{x^3} - 2\cos x\right)dx$.</p>
+<p>Rewrite as powers: $\sqrt{x} = x^{1/2}$ and $\frac{4}{x^3} = 4x^{-3}$.</p>
+<p>$\int x^{1/2}\,dx = \frac{x^{3/2}}{3/2} = \frac{2}{3}x^{3/2}$. $\int 4x^{-3}\,dx = 4\cdot\frac{x^{-2}}{-2} = -\frac{2}{x^2}$. $\int 2\cos x\,dx = 2\sin x$.</p>
+<p>Answer: $\frac{2}{3}x^{3/2} - \frac{2}{x^2} - 2\sin x + C$. Check: differentiating gives back $x^{1/2} + 4x^{-3} - 2\cos x$.</p>
+</div>
+<p>Two more rewrites: expand a power of a sum, $(x^2 + 1)^2 = x^4 + 2x^2 + 1$, and split a fraction over a single term, $\frac{x^3 - 2x}{x} = x^2 - 2$. Never integrate the top and bottom of a fraction separately.</p>
+
+<h2>Picking one function: use a known point</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> $f'(x) = 3x^2 - 4x + 1$ and $f(2) = 5$. Find $f(x)$.</p>
+<p>Antidifferentiate: $f(x) = x^3 - 2x^2 + x + C$.</p>
+<p>Substitute the point right away: $f(2) = 8 - 8 + 2 + C = 2 + C = 5$, so $C = 3$.</p>
+<p>$f(x) = x^3 - 2x^2 + x + 3$.</p>
+</div>
+<p>With a second derivative, antidifferentiate twice; each step brings its own constant, and each needs its own piece of information, such as $f'(0)$ and then $f(0)$.</p>
+
+<h2>Some functions have no formula for an antiderivative</h2>
+<p>Every continuous function has antiderivatives (the accumulation function $\int_a^x f(t)\,dt$ is one), but some cannot be written with familiar functions: $e^{-x^2}$ and $\sin(x^2)$ are examples. On the exam, integrals of such functions appear on calculator questions, and the calculator evaluates them numerically.</p>

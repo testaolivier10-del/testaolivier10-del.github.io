@@ -1,0 +1,84 @@
+{
+ "topic": "squeeze-theorem",
+ "hook": "Some functions are too wild to handle directly. Near 0, $x \\sin\\left(\\frac{1}{x}\\right)$ wiggles infinitely often, so no table or factoring will tame it. But you can trap it between two simple functions that close in on the same value. When the trap closes, the wild function has nowhere else to go.",
+ "prereq": [
+  {
+   "q": "For every real $\\theta$, the values of $\\sin\\theta$ lie",
+   "options": [
+    "between $-1$ and $1$",
+    "between $0$ and $1$",
+    "between $-\\pi$ and $\\pi$",
+    "anywhere on the number line"
+   ],
+   "correct": 0,
+   "why": "On the unit circle, $\\sin\\theta$ is a $y$-coordinate, so $-1 \\le \\sin\\theta \\le 1$.",
+   "review": "math-trig"
+  },
+  {
+   "q": "If $\\lim_{x \\to c} f(x) = 3$, then $\\lim_{x \\to c} (2f(x) - 1)$ is",
+   "options": [
+    "$5$",
+    "$6$",
+    "$3$",
+    "not known"
+   ],
+   "correct": 0,
+   "why": "By the limit laws: 2(3) − 1 = 5.",
+   "review": "limit-laws"
+  },
+  {
+   "q": "Which is $\\lim_{x \\to 1} \\frac{x^2 - 1}{x - 1}$?",
+   "options": [
+    "$2$",
+    "$0$",
+    "$1$",
+    "It does not exist"
+   ],
+   "correct": 0,
+   "why": "Cancel $x - 1$: the expression is $x + 1$ for $x \\ne 1$, which approaches 2.",
+   "review": "choosing-limit-methods"
+  }
+ ],
+ "figure": {
+  "figure": "squeeze-x-sin",
+  "caption": "$x \\sin\\left(\\frac{1}{x}\\right)$ is trapped between $-|x|$ and $|x|$, which both approach 0."
+ },
+ "chain": [
+  {
+   "cause": "A function $f$ is hard to evaluate near $c$, but $g(x) \\le f(x) \\le h(x)$ there",
+   "effect": "every value of $f$ near $c$ lies between the values of $g$ and $h$"
+  },
+  {
+   "cause": "$g$ and $h$ have the same limit $L$ at $c$",
+   "effect": "the gap between them shrinks to nothing near $c$"
+  },
+  {
+   "cause": "$f$ is trapped in a gap that closes at $L$",
+   "effect": "$\\lim_{x \\to c} f(x) = L$: the squeeze theorem"
+  },
+  {
+   "cause": "Near 0, $\\cos x \\le \\frac{\\sin x}{x} \\le 1$ and both bounds approach 1",
+   "effect": "$\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$ (with $x$ in radians)"
+  }
+ ],
+ "ideas": [
+  "<b>Squeeze theorem:</b> a function trapped between two functions with the same limit $L$ at $c$ also has limit $L$ at $c$.",
+  "Both bounds must approach the <b>same</b> value. Bounds with different limits give no conclusion.",
+  "Build bounds from $-1 \\le \\sin\\theta \\le 1$ and $-1 \\le \\cos\\theta \\le 1$, multiplied by a factor that is not negative (use $|x|$, not $x$).",
+  "The special limit $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$ comes from the squeeze. Match the inside: $\\frac{\\sin(kx)}{x} = k \\cdot \\frac{\\sin(kx)}{kx} \\to k$.",
+  "A justification states the inequality, shows the two bounds have the same limit, and names the squeeze theorem."
+ ],
+ "misconception": {
+  "wrong": "$-1 \\le \\sin\\left(\\frac{1}{x}\\right) \\le 1$, so the squeeze theorem shows $\\sin\\left(\\frac{1}{x}\\right)$ has a limit at 0.",
+  "right": "The bounds $-1$ and $1$ have different limits, so the squeeze theorem says nothing. In fact $\\sin\\left(\\frac{1}{x}\\right)$ oscillates and has no limit at 0. Multiply by $x^2$ and the bounds $\\pm x^2$ both approach 0; then the squeeze works."
+ },
+ "check": [
+  "calc-squeeze-theorem-1",
+  "calc-squeeze-theorem-2",
+  "calc-squeeze-theorem-3",
+  "calc-squeeze-theorem-10",
+  "calc-squeeze-theorem-13",
+  "calc-squeeze-theorem-16"
+ ],
+ "summary": "If $g(x) \\le f(x) \\le h(x)$ near $c$ and $g$ and $h$ have the same limit $L$ at $c$, then $f$ has limit $L$ too. Bounds usually come from $-1 \\le \\sin \\le 1$. The squeeze gives $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$ in radians, and $\\frac{\\sin(kx)}{x} \\to k$."
+}

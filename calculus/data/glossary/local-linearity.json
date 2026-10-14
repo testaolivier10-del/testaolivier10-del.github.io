@@ -1,0 +1,11 @@
+{
+ "estimate-bias": {
+  "def": "Whether an approximation is too large (an overestimate) or too small (an underestimate) compared with the true value. For a tangent line approximation it follows from concavity."
+ },
+ "linearization": {
+  "def": "The tangent line used to approximate a function near a point: $L(x) = f(a) + f'(a)(x - a)$, so $f(x) \\approx L(x)$ for $x$ near $a$. Also called local linear approximation or tangent line approximation."
+ },
+ "concave": {
+  "def": "A graph is concave up on an interval where $f'' > 0$ (it bends upward and lies above its tangent lines) and concave down where $f'' < 0$ (it bends downward and lies below them)."
+ }
+}

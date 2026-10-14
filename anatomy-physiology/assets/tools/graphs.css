@@ -219,7 +219,7 @@
 .gr-ls .ls-dock .gr-ex,.gr-ls .ls-dock .gr-q{padding:0;background:none;box-shadow:none;border-radius:0;min-height:0;}
 .gr-ls .ls-dock .gr-ex{display:flex;flex-direction:column;gap:10px;}
 .gr-ls .ls-dock .gr-ex-h{margin:0 !important;font:800 var(--ls-s) var(--font-ui) !important;color:var(--muted);}
-.gr-ls .ls-dock .gr-conds{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-16px;padding:2px 16px 2px 0;}
+.gr-ls .ls-dock .gr-conds{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-12px;padding:2px 12px 2px 0;}
 .gr-ls .ls-dock .gr-conds::-webkit-scrollbar{display:none;}
 .gr-ls .ls-dock .gr-cond-b{flex:none;min-height:44px;}
 .gr-ls .ls-dock .gr-ex-go{margin:0;}
@@ -251,3 +251,13 @@
 .gr-ls .gr-ls-det .kt-more > summary{display:none;}
 .gr-ls .gr-ls-det .kt-more-b{padding:0;}
 .gr-ls .gr-ls-det .kt-more:not([open]) > .kt-more-b{display:block;}
+
+/* Phone legibility pass (docs/tools-phone-pass.md; docs/tools-phone-pass/chem-anp.md). On a phone the chart
+   is drawn about the stage's size (graphs.js phoneShape, class gr-ph), so these sizes are close to what a
+   student sees. The "What if" row bled 4 px past a 360 px screen (sideways page scroll): its negative
+   margin now matches the dock's 12 px padding. */
+.gr-fig .gr-ph .gr-cur-pillt{font-size:12px;}
+.gr-fig .gr-ph .gr-vlabel{font-size:11.5px;}
+.gr-fig .gr-ph .gr-tick{font-size:12.5px;}
+/* The reading under the chart: its right end stays clear of the stage's Enlarge button. */
+.ls-root.ls-phone.gr-ls .ls-stage-body > .gr-read{padding-right:56px;max-height:112px;overflow-y:auto;}

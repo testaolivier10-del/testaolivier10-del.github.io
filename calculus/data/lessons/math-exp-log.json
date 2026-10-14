@@ -1,0 +1,73 @@
+{
+ "topic": "math-exp-log",
+ "hook": "Money that earns interest continuously, a cooling drink, a population, a drug leaving the bloodstream: they all change by the same percentage over equal times, and they are all modeled with $e^x$. Its partner, $\\ln x$, is how you solve for the time. Calculus uses both constantly, so this is a page worth knowing by heart.",
+ "prereq": [
+  {
+   "q": "Which expression equals $x^a \\cdot x^b$?",
+   "options": [
+    "$x^{a + b}$",
+    "$x^{ab}$",
+    "$x^{a - b}$",
+    "$2x^{a + b}$"
+   ],
+   "correct": 0,
+   "why": "Multiplying powers of one base adds the exponents.",
+   "review": "math-exponent-rules"
+  },
+  {
+   "q": "What is $2^{-3}$?",
+   "options": [
+    "$\\frac{1}{8}$",
+    "$-8$",
+    "$-6$",
+    "$\\frac{1}{6}$"
+   ],
+   "correct": 0,
+   "why": "A negative exponent is a reciprocal.",
+   "review": "math-exponent-rules"
+  }
+ ],
+ "figure": {
+  "figure": "exp-log-mirror",
+  "caption": "$y = e^x$ and $y = \\ln x$ are mirror images across $y = x$: the point $(1, e)$ on one matches $(e, 1)$ on the other."
+ },
+ "chain": [
+  {
+   "cause": "An exponential function $b^x$ multiplies by the same factor $b$ for each unit step in $x$",
+   "effect": "it models growth by a fixed percentage; the base $e \\approx 2.718$ is the one calculus prefers"
+  },
+  {
+   "cause": "$\\ln x$ answers \"what power of $e$ gives $x$?\"",
+   "effect": "$e^{\\ln x} = x$ for $x > 0$ and $\\ln(e^x) = x$ for every $x$"
+  },
+  {
+   "cause": "Exponent rules read in reverse",
+   "effect": "give the log rules: $\\ln(ab) = \\ln a + \\ln b$, $\\ln\\frac{a}{b} = \\ln a - \\ln b$, $\\ln a^p = p\\ln a$"
+  },
+  {
+   "cause": "A variable in an exponent, as in $e^{2x} = 9$",
+   "effect": "take $\\ln$ of both sides to bring it down: $2x = \\ln 9$"
+  }
+ ],
+ "ideas": [
+  "$e^x > 0$ for every $x$; $e^0 = 1$. The graph rises steeply to the right and approaches the $x$-axis to the left.",
+  "$\\ln x$ is defined only for $x > 0$; $\\ln 1 = 0$, $\\ln e = 1$. Its graph is the graph of $e^x$ reflected across $y = x$.",
+  "<b>Log rules</b>: $\\ln(ab) = \\ln a + \\ln b$, $\\ln\\frac{a}{b} = \\ln a - \\ln b$, $\\ln(a^p) = p\\ln a$. There is no rule for $\\ln(a + b)$.",
+  "$e$ and $\\ln$ cancel: $e^{\\ln x} = x$ ($x > 0$) and $\\ln(e^x) = x$. Use them to solve equations.",
+  "$A e^{kt}$ grows when $k > 0$ and decays when $k < 0$; the time to double is $\\frac{\\ln 2}{k}$."
+ ],
+ "misconception": {
+  "wrong": "$\\ln(x + 3) = \\ln x + \\ln 3$.",
+  "right": "The log of a sum does not split. $\\ln x + \\ln 3 = \\ln(3x)$, a product. Test $x = 1$: $\\ln 4 \\approx 1.39$, but $\\ln 1 + \\ln 3 \\approx 1.10$."
+ },
+ "check": [
+  "calc-math-exp-log-1",
+  "calc-math-exp-log-2",
+  "calc-math-exp-log-3",
+  "calc-math-exp-log-4",
+  "calc-math-exp-log-9",
+  "calc-math-exp-log-12",
+  "calc-math-exp-log-13"
+ ],
+ "summary": "$e^x$ is the exponential function calculus uses; it is always positive and passes through $(0, 1)$. $\\ln x$, defined for $x > 0$, undoes it: $e^{\\ln x} = x$ and $\\ln(e^x) = x$. Logs turn products into sums, quotients into differences and powers into multipliers, which is how you solve for a variable in an exponent."
+}

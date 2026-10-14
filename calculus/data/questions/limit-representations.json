@@ -1,0 +1,510 @@
+{
+ "stimuli": {
+  "limit-representations-s1": {
+   "kind": "graph",
+   "title": "The graph of $f$",
+   "plot": {
+    "label": "Graph of f on [-3, 4]: the line y = x + 3 up to an open circle at (-1, 2); a closed dot at (-1, 4); the line y = 1 - x from an open circle at (-1, 2) to an open circle at (2, -1); the line y = x - 1 from a closed dot at (2, 1) to (4, 3)",
+    "x": [
+     -3.5,
+     4.5
+    ],
+    "y": [
+     -2,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x + 3",
+      "domain": [
+       -3,
+       -1
+      ],
+      "ends": [
+       "closed",
+       "open"
+      ],
+      "label": "f"
+     },
+     {
+      "fn": "1 - x",
+      "domain": [
+       -1,
+       2
+      ],
+      "ends": [
+       "open",
+       "open"
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "x - 1",
+      "domain": [
+       2,
+       4
+      ],
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "cls": "s1"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -1,
+       4
+      ]
+     }
+    ]
+   }
+  },
+  "limit-representations-s2": {
+   "kind": "table",
+   "title": "Values of $g(x)$ near $x = 2$",
+   "table": {
+    "caption": "Values of a function g at inputs on both sides of x = 2, rounded to five decimal places",
+    "cols": [
+     "$x$",
+     "1.9",
+     "1.99",
+     "1.999",
+     "2.001",
+     "2.01",
+     "2.1"
+    ],
+    "rows": [
+     [
+      "$g(x)$",
+      "2.92564",
+      "2.99251",
+      "2.99925",
+      "3.00075",
+      "3.00751",
+      "3.07561"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-limit-representations-1",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limit-representations-s1",
+   "q": "Use the graph to find $\\lim_{x \\to -1} f(x)$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "4 is $f(-1)$, the closed dot. The limit follows the curve: from both sides the graph heads to the open circle at height 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the left, $y = x + 3$ approaches 2; from the right, $y = 1 - x$ approaches 2. Both sides agree, so the limit is 2, even though $f(-1) = 4$."
+   }
+  },
+  {
+   "id": "calc-limit-representations-2",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-representations-s1",
+   "q": "Which is true about $\\lim_{x \\to 2} f(x)$?",
+   "options": [
+    "It does not exist; the sides head to $-1$ and $1$",
+    "It equals $1$, the height of the closed dot at $x = 2$",
+    "It equals $-1$, the height of the open circle at $x = 2$",
+    "It equals $0$, halfway between the two one-sided limits"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\lim_{x \\to 2^-} f(x) = -1$ and $\\lim_{x \\to 2^+} f(x) = 1$. The one-sided limits differ, so the two-sided limit does not exist.",
+    "options": [
+     "Left of 2 the graph follows $1 - x$ down to $-1$; right of 2 it starts at 1. Different, so no limit.",
+     "The closed dot is $f(2)$ and the right-hand limit, but the left side does not head there.",
+     "That is the left-hand limit; the right side heads to 1.",
+     "One-sided limits are compared, never averaged."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-representations-3",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limit-representations-s1",
+   "q": "Read the graph of $f$ to find the right-hand limit $\\lim_{x \\to 2^+} f(x)$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "That is the limit from the left. The plus sign means $x$ approaches 2 from values greater than 2, along $y = x - 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x > 2$ the graph is $y = x - 1$, which approaches $2 - 1 = 1$."
+   }
+  },
+  {
+   "id": "calc-limit-representations-4",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "numeric",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "limit-representations-s1",
+   "q": "Find $\\lim_{x \\to 0} f(f(x))$.",
+   "numeric": {
+    "answer": 0,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "1 is the inner limit, $\\lim_{x \\to 0} f(x)$. Then apply $f$ again: near an input of 1 the graph is $y = 1 - x$, which is near 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Inside: near $x = 0$, $f(x) = 1 - x$, which approaches 1. Outside: for inputs near 1 (on both sides), $f(u) = 1 - u$, which approaches 0. So $\\lim_{x \\to 0} f(f(x)) = 0$."
+   }
+  },
+  {
+   "id": "calc-limit-representations-5",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-representations-s1",
+   "q": "Find $\\lim_{x \\to 3} \\left(2f(x) - x\\right)$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "Subtract the $x$ term too: $2 \\cdot 2 - 3 = 1$."
+     },
+     {
+      "value": -1,
+      "why": "Near 3 the graph is $y = x - 1$, so $f(x) \\to 2$, not 1. Then $2(2) - 3 = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Near $x = 3$ the graph is $y = x - 1$, so $\\lim_{x \\to 3} f(x) = 2$. By the limit laws, $\\lim_{x \\to 3} (2f(x) - x) = 2(2) - 3 = 1$."
+   }
+  },
+  {
+   "id": "calc-limit-representations-6",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limit-representations-s2",
+   "q": "Based on the table, what is the best estimate of $\\lim_{x \\to 2} g(x)$?",
+   "options": [
+    "$2$",
+    "$3$",
+    "$2.99925$",
+    "$3.07561$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "From the left the values climb toward 3; from the right they fall toward 3. Both sides close in on 3.",
+    "options": [
+     "2 is where $x$ goes, not where $g(x)$ goes.",
+     "Both sides approach 3, so 3 is the estimate.",
+     "That is one value, $g(1.999)$. The limit is the number the values approach.",
+     "That is $g(2.1)$, the value farthest from 2 on the right."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-representations-7",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "limit-representations-s2",
+   "q": "Which formula could produce the table?",
+   "options": [
+    "$g(x) = \\frac{x^2 - 4}{x - 2}$",
+    "$g(x) = \\frac{x^3 - 8}{x^2 - 2x}$",
+    "$g(x) = \\frac{x^3 - 8}{x^2 - 4}$",
+    "$g(x) = x + 1$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{x^3 - 8}{x^2 - 4} = \\frac{(x - 2)(x^2 + 2x + 4)}{(x - 2)(x + 2)} = \\frac{x^2 + 2x + 4}{x + 2}$. At $x = 1.9$ this is $\\frac{11.41}{3.9} \\approx 2.92564$, matching the table.",
+    "options": [
+     "This simplifies to $x + 2$, which is 3.9 at $x = 1.9$ and approaches 4.",
+     "This simplifies to $\\frac{x^2 + 2x + 4}{x}$, which approaches 6.",
+     "It simplifies to $\\frac{x^2 + 2x + 4}{x + 2}$, which gives 2.92564 at 1.9 and approaches 3.",
+     "It approaches 3, but gives exactly 2.9 at $x = 1.9$, not 2.92564."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-representations-8",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-representations-s2",
+   "q": "The table comes from $g(x) = \\frac{x^3 - 8}{x^2 - 4}$. Find $\\lim_{x \\to 2} g(x)$ exactly.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "That cancels only the top: the bottom also has a factor $x - 2$, since $x^2 - 4 = (x - 2)(x + 2)$. The limit is $\\frac{12}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Factor both parts: $\\frac{(x - 2)(x^2 + 2x + 4)}{(x - 2)(x + 2)} = \\frac{x^2 + 2x + 4}{x + 2}$ for $x \\ne 2$. Substitute: $\\frac{4 + 4 + 4}{4} = 3$. The formula confirms the table's estimate."
+   }
+  },
+  {
+   "id": "calc-limit-representations-9",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limit-representations-s2",
+   "q": "Does the table by itself prove that $\\lim_{x \\to 2} g(x) = 3$?",
+   "options": [
+    "Yes; six values that approach 3 settle the question",
+    "Yes; it would prove it if it also listed $g(2)$",
+    "No; a limit can be found from a graph and not a table",
+    "No; it suggests 3, and the formula confirms it"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A table shows finitely many values. The function could do something else between or closer than the listed inputs. A formula (or a trusted graph) confirms the estimate.",
+    "options": [
+     "Finitely many values cannot rule out other behavior closer to 2.",
+     "$g(2)$ is undefined here, and the value at 2 plays no part in the limit anyway.",
+     "Tables are a fine way to estimate a limit; they just do not prove one.",
+     "A table gives strong evidence; the algebra makes it certain."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-representations-10",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "\"As $x$ gets close to 4 through values less than 4, the values of $p(x)$ get close to 7.\" Which notation says this?",
+   "options": [
+    "$\\lim_{x \\to 4^-} p(x) = 7$",
+    "$\\lim_{x \\to 4^+} p(x) = 7$",
+    "$\\lim_{x \\to 7^-} p(x) = 4$",
+    "$p(4) = 7$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "\"Values less than 4\" is the left side, written $x \\to 4^-$. The number the outputs approach goes after the equals sign.",
+    "options": [
+     "Left side of 4, outputs approaching 7.",
+     "The plus sign means values greater than 4.",
+     "The input and output are swapped.",
+     "That is the value at 4, which the sentence never mentions."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-representations-11",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A table gives $\\sin\\left(\\frac{\\pi}{x}\\right) = 0$ at $x = 1, 0.1, 0.01$ and $0.001$. What is true about $\\lim_{x \\to 0^+} \\sin\\left(\\frac{\\pi}{x}\\right)$?",
+   "options": [
+    "It equals 0, since each value in the table is 0",
+    "It does not exist; the values swing between $-1$ and $1$",
+    "It equals 1, the largest value the sine function reaches",
+    "It equals 0, but from the right side of 0 alone"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The chosen inputs make $\\frac{\\pi}{x}$ a multiple of $\\pi$, where sine is 0. Other inputs, such as $x = \\frac{2}{5}$, give $\\sin\\left(\\frac{5\\pi}{2}\\right) = 1$. Near 0 the function hits $-1$ and $1$ again and again, so it has no limit.",
+    "options": [
+     "The table's inputs were unlucky: they all land on zeros of sine. A table can mislead.",
+     "Inputs like $\\frac{2}{5}, \\frac{2}{9}, \\frac{2}{13}, \\ldots$ give 1, and others give $-1$, arbitrarily close to 0.",
+     "The function reaches 1 near 0 but does not settle there.",
+     "The table is from the right side already, and the values there oscillate."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-representations-12",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Let $g(x) = x^2 + 1$. Suppose $\\lim_{u \\to 1^-} f(u) = 2$ and $\\lim_{u \\to 1^+} f(u) = 5$. What is $\\lim_{x \\to 0} f(g(x))$?",
+   "options": [
+    "$2$",
+    "$3.5$",
+    "$5$",
+    "It does not exist"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "As $x \\to 0$, $g(x) = x^2 + 1 \\to 1$, and $g(x) > 1$ for every $x \\ne 0$. So the inputs of $f$ approach 1 from the right, and $f(g(x)) \\to 5$.",
+    "options": [
+     "That would need $g(x)$ to approach 1 from below, but $x^2 + 1 \\ge 1$.",
+     "Limits are not averaged.",
+     "$x^2 + 1$ is above 1 on both sides of $x = 0$, so only the right-hand limit of $f$ matters.",
+     "Both sides of $x = 0$ send $g(x)$ to 1 from above, so the limit exists and is 5."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-representations-13",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A function has $f(3) = 1$ and $\\lim_{x \\to 3} f(x) = 4$. What does its graph show at $x = 3$?",
+   "options": [
+    "A closed dot at $(3, 4)$ and an open circle at $(3, 1)$",
+    "A closed dot at $(3, 1)$ and a vertical asymptote",
+    "Two closed dots, one at $(3, 1)$ and one at $(3, 4)$",
+    "An open circle at $(3, 4)$ and a closed dot at $(3, 1)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The curve heads to height 4 from both sides but the point there is missing (open circle). The function's value, 1, sits elsewhere as a closed dot.",
+    "options": [
+     "That would make $f(3) = 4$, and the curve would head toward 1.",
+     "An asymptote means unbounded behavior, but the limit is the number 4.",
+     "A function has one value at $x = 3$, so there is one closed dot.",
+     "The curve approaches $(3, 4)$, which is not on the graph, and the actual point is $(3, 1)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-representations-14",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "At $x = 0.9, 0.99, 0.999$ the values of $k(x)$ are $5.1, 5.01, 5.001$. At $x = 1.1, 1.01, 1.001$ they are $2.9, 2.99, 2.999$. Which conclusion fits the data best?",
+   "options": [
+    "$\\lim_{x \\to 1^-} k(x) = 5$, and $\\lim_{x \\to 1} k(x)$ does not exist",
+    "$\\lim_{x \\to 1^-} k(x) = 3$, and $\\lim_{x \\to 1} k(x)$ does not exist",
+    "$\\lim_{x \\to 1} k(x) = 4$, halfway between the two sides",
+    "$\\lim_{x \\to 1} k(x) = 5$, from the values closest to 1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Inputs below 1 give values approaching 5; inputs above 1 give values approaching 3. Different one-sided limits, so no two-sided limit.",
+    "options": [
+     "Left side to 5, right side to 3: they disagree.",
+     "The values near 3 come from inputs greater than 1, which is the right side.",
+     "One-sided limits are compared, not averaged.",
+     "The right side approaches 3, so the two-sided limit fails."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-representations-15",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "numeric",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph of $y = \\frac{x^2 - 9}{x + 3}$ is a line with one point missing. Find the $y$-coordinate of the hole.",
+   "numeric": {
+    "answer": -6,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "Substituting $x = -3$ gives $\\frac{0}{0}$, not 0. Simplify first: $\\frac{(x - 3)(x + 3)}{x + 3} = x - 3$, which is $-6$ at $x = -3$."
+     },
+     {
+      "value": 6,
+      "why": "After cancelling, the line is $y = x - 3$, and $-3 - 3 = -6$. Check the sign of each factor."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The expression is undefined at $x = -3$. For $x \\ne -3$ it equals $x - 3$, so the graph is the line $y = x - 3$ with a hole where $x = -3$: at height $\\lim_{x \\to -3} (x - 3) = -6$."
+   }
+  },
+  {
+   "id": "calc-limit-representations-16",
+   "unit": "unit-1",
+   "topic": "limit-representations",
+   "type": "multi",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which pieces of information, each on its own, show that $\\lim_{x \\to 2} f(x) = 5$?",
+   "options": [
+    "$f(x) = \\frac{x^2 + x - 6}{x - 2}$ for $x \\ne 2$",
+    "A graph that is one unbroken line through an open circle at $(2, 5)$",
+    "A table with $f(1.99) = 4.99$ and $f(2.01) = 3.01$",
+    "The single fact $f(2) = 5$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A limit is about the values near 2 from both sides. The formula and the graph both show those values approaching 5.",
+    "options": [
+     "It equals $x + 3$ for $x \\ne 2$, which approaches 5.",
+     "From both sides the graph heads to height 5.",
+     "The sides disagree: the right side is near 3.",
+     "A value at 2 says nothing about the values near 2."
+    ]
+   }
+  }
+ ]
+}

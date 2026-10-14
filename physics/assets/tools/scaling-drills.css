@@ -141,3 +141,22 @@
   .sd-pic[hidden] + .sd-bar{flex:1 1 auto;}
   .sd-pic[hidden] + .sd-bar svg{max-height:420px;}
 }
+
+/* Phones (docs/tools-phone-pass.md): the picture is a 480-unit drawing, about
+   0.73 of a 360 px screen, so its text is set in larger units to read at 12 px
+   or more there; the second foot caption moves down (into the letterbox
+   margin) to make room. */
+.ls-phone .sd-pic .sd-cap,.ls-phone .sd-pic .sd-cap2,.ls-phone .sd-pic .sd-h,.ls-phone .sd-pic .sd-tl,.ls-phone .sd-pic .sd-mut{font-size:16.5px;}
+.ls-phone .sd-pic .sd-dl,.ls-phone .sd-pic .sd-al{font-size:17.5px;}
+.ls-phone .sd-pic .sd-ml,.ls-phone .sd-pic .sd-cl{font-size:15px;}
+.ls-phone .sd-pic .sd-cap2{transform:translateY(6px);}
+.ls-phone .sd-pic svg{overflow:visible;}
+/* A phone on its side: the picture fills the stage's height, so its right
+   edge stays clear of the Enlarge button. On any phone the Bars view's
+   Picture/Bars switch sits in the pill row as in the Picture view, instead of
+   over the first bar. */
+@media (max-height:540px){ .ls-root.ls-phone .sd-view .sd-pic{padding-right:48px;} }
+.ls-root.ls-phone .ls-stage-body:has(.sd-view.show-bar){position:static;}
+/* Enlarge: the switch goes under the zoom bar (it covered zoom and Close). */
+.ls-root .ls-stage.is-big .sd-view > .sd-vtoggle.tseg{top:calc(env(safe-area-inset-top, 0px) + 56px);}
+.ls-phone .sd-pic .sd-cap,.ls-phone .sd-pic .sd-cap2,.ls-phone .sd-pic .sd-h,.ls-phone .sd-pic .sd-tl,.ls-phone .sd-pic .sd-mut{font-size:17px;}

@@ -1,0 +1,84 @@
+{
+ "topic": "average-and-instant-rates",
+ "hook": "A weather balloon climbs 600 meters in its first 2 minutes. That tells you its average climb, 300 meters per minute, but not how fast it was rising at the moment a gust hit it. Calculus begins by turning an average over a stretch of time into a rate at a single instant, and the tool that does it is a limit.",
+ "prereq": [
+  {
+   "q": "What is $\\lim_{h \\to 0} (6 + h)$?",
+   "options": [
+    "$6$",
+    "$0$",
+    "$6 + h$",
+    "It does not exist"
+   ],
+   "correct": 0,
+   "why": "The expression is continuous in $h$, so substitute $h = 0$.",
+   "review": "limit-laws"
+  },
+  {
+   "q": "For $h \\ne 0$, $\\frac{h^2 + 5h}{h}$ simplifies to",
+   "options": [
+    "$h + 5$",
+    "$h^2 + 5$",
+    "$5$",
+    "$h + 5h$"
+   ],
+   "correct": 0,
+   "why": "Factor $h$ from the numerator and cancel it: $\\frac{h(h + 5)}{h} = h + 5$.",
+   "review": "limit-algebra"
+  },
+  {
+   "q": "A quantity changes from 20 to 50 while time goes from 3 hours to 9 hours. Its average rate of change is",
+   "options": [
+    "5 per hour",
+    "30 per hour",
+    "10 per hour",
+    "6 per hour"
+   ],
+   "correct": 0,
+   "why": "Change in quantity over change in time: $\\frac{50 - 20}{9 - 3} = 5$ per hour.",
+   "review": "change-at-an-instant"
+  }
+ ],
+ "figure": {
+  "figure": "secants-closing-in",
+  "caption": "Secant lines from $P$ on the graph of $f(x) = \\frac{x^2}{4} + 1$. As the second point $Q$ moves toward $P$, the secant slopes close in on 0.5, the rate of change of $f$ at $P$."
+ },
+ "chain": [
+  {
+   "cause": "Two points on a graph, at $x = a$ and $x = b$",
+   "effect": "give a secant line whose slope is the average rate of change $\\frac{f(b) - f(a)}{b - a}$"
+  },
+  {
+   "cause": "The second point is written $a + h$",
+   "effect": "the average rate becomes the difference quotient $\\frac{f(a + h) - f(a)}{h}$"
+  },
+  {
+   "cause": "$h$ shrinks toward 0",
+   "effect": "the interval shrinks to the single instant $x = a$ and the secant lines pivot toward one limiting line"
+  },
+  {
+   "cause": "The limit $\\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}$ exists",
+   "effect": "its value is the instantaneous rate of change of $f$ at $x = a$"
+  }
+ ],
+ "ideas": [
+  "The <b>average rate of change</b> of $f$ on $[a, b]$ is $\\frac{f(b) - f(a)}{b - a}$: the change in output over the change in input, with units of output per input.",
+  "A <b>secant line</b> joins two points of a graph. Its slope is the average rate of change between them.",
+  "The <b>difference quotient</b> $\\frac{f(a + h) - f(a)}{h}$ is the average rate on the interval from $a$ to $a + h$; $h$ can be negative.",
+  "The <b>instantaneous rate of change</b> at $x = a$ is $\\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}$, when that limit exists. Simplify the quotient first; substituting $h = 0$ at the start gives $\\frac{0}{0}$."
+ ],
+ "misconception": {
+  "wrong": "To find how fast something is changing at $t = 5$, divide its value by 5.",
+  "right": "A rate of change compares two changes: a change in the quantity over a change in time. $A(5) \\div 5$ is a value over a time, not a change over a change. Use $\\frac{A(b) - A(a)}{b - a}$ for an average rate, and a limit of such quotients for the rate at one instant."
+ },
+ "check": [
+  "calc-average-and-instant-rates-1",
+  "calc-average-and-instant-rates-2",
+  "calc-average-and-instant-rates-3",
+  "calc-average-and-instant-rates-4",
+  "calc-average-and-instant-rates-9",
+  "calc-average-and-instant-rates-10",
+  "calc-average-and-instant-rates-16"
+ ],
+ "summary": "An average rate of change is a change in output over a change in input, the slope of a secant line. Writing the second input as $a + h$ gives the difference quotient. Letting $h \\to 0$ shrinks the interval to one instant, and the limit of the difference quotient, when it exists, is the instantaneous rate of change."
+}

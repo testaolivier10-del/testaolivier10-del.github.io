@@ -1,0 +1,209 @@
+/* Related rates (calculus/assets/tools/related-rates.js). OWNED BY THIS TOOL
+   ONLY. Loaded by the generator after calc-tools.css when this file exists.
+   The illustrated scenes, the live readouts and the small graph, light and
+   dark. Given rate: blue (the plots' s2); the rate it causes: crimson (s1). */
+.rr-card{--rr-given:#0072B2;--rr-watch:#B0123A;--rr-ink:#1E2B28;--rr-soft:#5C6B67;}
+:root[data-theme="dark"] .ls-root,:root[data-theme="dark"] .rr-card,:root[data-theme="dark"] .rr-ls-stage,:root[data-theme="dark"] .rr-ls-why,:root[data-theme="dark"] .rr-ls-det,:root[data-theme="dark"] .rr-figwrap{--rr-given:#6BB4E8;--rr-watch:#F590AC;--rr-ink:#E6EEEB;--rr-soft:#A9BAB4;}
+.ls-root,.rr-ls-stage,.rr-ls-why,.rr-ls-det,.rr-figwrap{--rr-given:#0072B2;--rr-watch:#B0123A;--rr-ink:#1E2B28;--rr-soft:#5C6B67;}
+
+/* layout: the scene, then the readouts; side by side when there is room */
+.rr-stage{display:flex;flex-direction:column;gap:8px;min-height:0;flex:1;container-type:inline-size;}
+.rr-scene-wrap{flex:1 1 0;min-height:120px;display:flex;align-items:center;justify-content:center;}
+.rr-scene{display:block;width:100%;height:100%;max-height:420px;touch-action:none;user-select:none;-webkit-user-select:none;border-radius:14px;overflow:hidden;}
+.rr-side{flex:none;display:flex;flex-direction:column;gap:8px;min-width:0;}
+.rr-graph-stage{display:none;}
+.rr-graph .calc-plot{width:100%;height:auto;}
+.rr-graph .calc-plot-line.rr-ucur{stroke:var(--ink);stroke-width:1.2;opacity:.55;}
+@media (min-width:1000px){
+  .rr-scene-wrap{min-height:0;}
+  .rr-scene{max-height:none;}
+  .rr-side{flex-direction:row;align-items:center;gap:20px;}
+  .rr-read{flex:1;min-width:0;}
+  .rr-graph-stage{display:block;flex:none;width:300px;}
+}
+.ls-root .rr-ls-stage{display:flex;flex-direction:column;}
+.ls-root .rr-ls-stage .rr-stage{flex:1;min-height:0;}
+
+/* readouts */
+.rr-read table.rr-tbl{font-size:13.5px;}
+.rr-read table.rr-tbl th,.rr-read table.rr-tbl td{padding:5px 6px;}
+.rr-read table.rr-tbl thead th{font-size:12px;}
+.rr-read table.rr-tbl tbody th{font-weight:700;white-space:nowrap;}
+.rr-read table.rr-tbl td{white-space:nowrap;}
+.rr-read table.rr-tbl .calc-m{font-size:1.05em;}
+.rr-qn{color:var(--muted);font-weight:700;font-size:12.5px;}
+.rr-u{color:var(--muted);font-weight:700;font-size:12px;}
+.rr-key{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px;background:var(--line);vertical-align:1px;}
+.rr-read table.rr-tbl tr.is-given .rr-key{background:var(--rr-given);}
+.rr-read table.rr-tbl tr.is-watch .rr-key{background:var(--rr-watch);}
+.rr-read table.rr-tbl tr.is-given td:last-child{color:var(--rr-given);}
+.rr-read table.rr-tbl tr.is-watch td:last-child{color:var(--rr-watch);}
+@media (max-width:999.98px){
+  .rr-read table.rr-tbl thead{display:none;}
+  .rr-read table.rr-tbl tbody{display:flex;flex-direction:column;}
+  .rr-read table.rr-tbl tbody tr{display:flex;align-items:baseline;gap:8px;border-bottom:1px solid var(--line-soft);}
+  .rr-read table.rr-tbl tbody tr:last-child{border-bottom:0;}
+  .rr-read table.rr-tbl th,.rr-read table.rr-tbl td{border:0;padding:2px 0;font-size:13px;}
+  .rr-read table.rr-tbl tbody th{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;}
+  .rr-read table.rr-tbl td{width:6.6em;}
+  .rr-read table.rr-tbl td:last-child{width:7.6em;}
+}
+@media (max-width:420px){ .rr-qn{display:none;} }
+@media (max-width:599.98px){
+  .rr-read table.rr-tbl tbody tr:not(.is-given):not(.is-watch){display:none;}
+  .rr-read table.rr-tbl th,.rr-read table.rr-tbl td{padding:1px 0;font-size:12.5px;}
+}
+@container (max-width:680px){ .rr-graph-stage{display:none !important;} }
+.rr-slot .bt-out{min-width:6.2em;white-space:nowrap;text-align:right;}
+
+/* dock */
+.rr-scenes .bt-btn{min-height:40px;padding:0 14px;border-radius:999px;font-size:14px;}
+.rr-btns{flex-wrap:nowrap;}
+.rr-btns .ls-btn{flex:1;}
+.rr-card:not(.ls-root *) .rr-scenes{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 4px;-webkit-mask-image:none;mask-image:none;}
+
+/* Why: the chain of equations */
+.rr-chain{margin:8px 0 0;padding-left:1.4em;display:grid;gap:10px;}
+.rr-chain li p{margin:0 0 4px;}
+.rr-eq{overflow-x:auto;max-width:100%;padding:2px 0;}
+.rr-eq math{font-size:1.08em;}
+.rr-rule{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:var(--ctint);color:var(--ink);}
+
+/* ------------------------------------------------------------ the scenes */
+.rr-scene .rr-t{font:800 13px var(--font-ui);fill:var(--rr-ink);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
+.rr-scene .rr-t.is-given,.rr-scene .rr-dl.is-given{fill:var(--rr-given);}
+.rr-scene .rr-t.is-watch,.rr-scene .rr-dl.is-watch{fill:var(--rr-watch);}
+.rr-scene .rr-len{font-weight:700;fill:var(--rr-soft);}
+.rr-scene .rr-th{font-size:15px;font-style:italic;}
+.rr-dim line{stroke:var(--rr-soft);stroke-width:1.4;}
+.rr-dim.is-given line{stroke:var(--rr-given);stroke-width:2;}
+.rr-dim.is-watch line{stroke:var(--rr-watch);stroke-width:2;}
+.rr-arrow line{stroke-width:3.4;stroke-linecap:round;}
+.rr-arrow.is-given line{stroke:var(--rr-given);} .rr-arrow.is-given path{fill:var(--rr-given);}
+.rr-arrow.is-watch line{stroke:var(--rr-watch);} .rr-arrow.is-watch path{fill:var(--rr-watch);}
+.rr-arc{fill:none;stroke:var(--rr-soft);stroke-width:1.6;}
+.rr-arc.is-watch{stroke:var(--rr-watch);stroke-width:2.2;}
+
+.rr-sky{fill:#EAF3F8;}
+.rr-floor{fill:#D9CDB8;}
+.rr-floor-l{stroke:#8C7B62;stroke-width:2;}
+.rr-wall{fill:#C9785B;}
+.rr-brick{stroke:#E9C3AE;stroke-width:1.2;}
+.rr-rail{stroke:#9A6A33;stroke-width:5;stroke-linecap:round;}
+.rr-rung{stroke:#B7844A;stroke-width:3;stroke-linecap:round;}
+
+.rr-stand{fill:none;stroke:#7F8C91;stroke-width:5;stroke-linecap:round;}
+.rr-tank{fill:rgba(200,214,220,.35);stroke:#6E7C82;stroke-width:3;stroke-linejoin:round;}
+.rr-rim-b{fill:none;stroke:#93A1A7;stroke-width:2;}
+.rr-rim{fill:none;stroke:#6E7C82;stroke-width:3;}
+.rr-water{fill:#3D8FCB;fill-opacity:.78;}
+.rr-surface{fill:#8CC4EA;stroke:#2E7DB8;stroke-width:1.5;}
+.rr-pipe{fill:none;stroke:#6E7C82;stroke-width:8;stroke-linejoin:round;}
+.rr-stream{fill:none;stroke:#3D8FCB;stroke-width:4;stroke-dasharray:7 5;animation:rr-flow .6s linear infinite;}
+.rr-valve{fill:#55636A;}
+.rr-rad{stroke:var(--rr-ink);stroke-width:2;stroke-dasharray:4 3;}
+.rr-rad.is-watch{stroke:var(--rr-watch);}
+.rr-rad.is-given{stroke:var(--rr-given);stroke-width:2.4;stroke-dasharray:none;}
+@keyframes rr-flow{to{stroke-dashoffset:-12;}}
+
+.rr-night{fill:#1E2A44;}
+.rr-street{fill:#5B626B;}
+.rr-light{fill:#FFE9A3;fill-opacity:.2;}
+.rr-shadow{stroke:#0D0F12;stroke-width:6;stroke-linecap:round;}
+.rr-shade{fill:#0D0F12;opacity:.5;}
+.rr-ray{stroke:#FFD766;stroke-width:1.6;stroke-dasharray:5 4;opacity:.9;}
+.rr-post{fill:#8E99A3;stroke:#8E99A3;}
+.rr-glow{fill:#FFE27A;opacity:.35;}
+.rr-lamp{fill:#FFD54D;}
+.rr-person line{stroke:#F1E3D3;stroke-width:4;stroke-linecap:round;}
+.rr-person circle{fill:#F1E3D3;}
+.rr-scene:has(.rr-night) .rr-t{fill:#F4F6F8;stroke:#1E2A44;}
+.rr-scene:has(.rr-night) .rr-t.is-given{fill:#8FD0FF;}
+.rr-scene:has(.rr-night) .rr-t.is-watch{fill:#FFA8C0;}
+.rr-scene:has(.rr-night) .rr-len{fill:#C9D2DC;}
+.rr-scene:has(.rr-night) .rr-dim line{stroke:#C9D2DC;}
+.rr-scene:has(.rr-night) .rr-dim.is-given line{stroke:#8FD0FF;}
+.rr-scene:has(.rr-night) .rr-dim.is-watch line{stroke:#FFA8C0;}
+.rr-scene:has(.rr-night) .rr-arrow.is-given line{stroke:#8FD0FF;} .rr-scene:has(.rr-night) .rr-arrow.is-given path{fill:#8FD0FF;}
+.rr-scene:has(.rr-night) .rr-arrow.is-watch line{stroke:#FFA8C0;} .rr-scene:has(.rr-night) .rr-arrow.is-watch path{fill:#FFA8C0;}
+
+.rr-pond{fill:#7FB7D6;}
+.rr-reeds path{fill:none;stroke:#4F7F48;stroke-width:3;stroke-linecap:round;}
+.rr-area{fill:#FFFFFF;fill-opacity:.16;}
+.rr-area.is-watch{fill:var(--rr-watch);fill-opacity:.16;}
+.rr-wave{fill:none;stroke:#FFFFFF;stroke-width:3.5;}
+.rr-wave-in{fill:none;stroke:#FFFFFF;stroke-width:2;}
+.rr-stone{fill:#5B5148;}
+
+.rr-cloud ellipse{fill:#FFFFFF;opacity:.9;}
+.rr-grass{fill:#8DBE6E;}
+.rr-sight{stroke:var(--rr-watch);stroke-width:1.6;stroke-dasharray:6 4;}
+.rr-plumb{stroke:var(--rr-soft);stroke-width:1.2;stroke-dasharray:3 4;}
+.rr-env{fill:#E2574C;stroke:#A63A31;stroke-width:1.5;}
+.rr-gore{fill:#F6C343;stroke:#A63A31;stroke-width:1;}
+.rr-rope{stroke:#6B5137;stroke-width:1.4;}
+.rr-basket{fill:#9C7140;stroke:#6B5137;stroke-width:1.2;}
+.rr-obs line{stroke:#2C3A36;stroke-width:3;stroke-linecap:round;} .rr-obs circle{fill:#2C3A36;}
+.rr-pads path{fill:#4E8F4A;stroke:#3A6E37;stroke-width:1;} .rr-bloom{fill:#F4A7C0;}
+
+/* the handle */
+.rr-handle{cursor:grab;outline:none;}
+.rr-handle .rr-halo{fill:var(--cink);fill-opacity:.16;stroke:var(--cink);stroke-opacity:.5;stroke-width:1.5;}
+.rr-handle .rr-dot{fill:var(--white);stroke:var(--cink);stroke-width:3;}
+.rr-handle:focus-visible .rr-halo{fill-opacity:.34;stroke-width:3;stroke-opacity:1;}
+.rr-handle.is-drag{cursor:grabbing;}
+.rr-scene:has(.rr-night) .rr-handle .rr-halo{fill:#FFFFFF;stroke:#FFFFFF;}
+
+/* dark theme: the same scenes, at night-time contrast */
+:root[data-theme="dark"] .rr-sky{fill:#1D2A30;}
+:root[data-theme="dark"] .rr-floor{fill:#4A4236;} :root[data-theme="dark"] .rr-floor-l{stroke:#A8977C;}
+:root[data-theme="dark"] .rr-wall{fill:#8E4F3A;} :root[data-theme="dark"] .rr-brick{stroke:#B57B63;}
+:root[data-theme="dark"] .rr-rail{stroke:#C9934F;} :root[data-theme="dark"] .rr-rung{stroke:#DDAA66;}
+:root[data-theme="dark"] .rr-tank{fill:rgba(120,140,150,.18);stroke:#A9B7BD;} :root[data-theme="dark"] .rr-rim{stroke:#A9B7BD;} :root[data-theme="dark"] .rr-rim-b{stroke:#7C8A90;}
+:root[data-theme="dark"] .rr-scene .rr-t{stroke:#14201D;}
+:root[data-theme="dark"] .rr-pond{fill:#2C5A74;}
+:root[data-theme="dark"] .rr-grass{fill:#3F6B35;} :root[data-theme="dark"] .rr-cloud ellipse{opacity:.25;}
+:root[data-theme="dark"] .rr-obs line,:root[data-theme="dark"] .rr-person line{stroke:#E8EEF0;} :root[data-theme="dark"] .rr-obs circle{fill:#E8EEF0;}
+:root[data-theme="dark"] .rr-person circle{fill:#E8EEF0;}
+:root[data-theme="dark"] .rr-plumb{stroke:#A9BAB4;}
+
+/* Test yourself: the problem's picture */
+.rr-figwrap{max-width:520px;margin:0 auto;}
+.rr-fig{width:100%;height:auto;max-height:100%;}
+.ls-root .ls-drill-stage .rr-figwrap{height:100%;display:flex;align-items:center;justify-content:center;}
+.ls-root .ls-drill-stage .rr-fig{height:100%;width:auto;max-width:100%;}
+
+@media (prefers-reduced-motion: reduce){.rr-stream{animation:none;}}
+.rr-pk{font-weight:900;}
+.rr-pk.is-given{color:var(--rr-given);} .rr-pk.is-watch{color:var(--rr-watch);}
+.ls-root .ls-pill .rr-pv-w{color:var(--rr-watch);}
+.rr-scene .rr-leg{font-size:13px;}
+.rr-scene .rr-leg-k{font-weight:700;fill:var(--rr-soft);}
+.rr-scene tspan.is-given{fill:var(--rr-given);font-weight:900;}
+.rr-scene tspan.is-watch{fill:var(--rr-watch);font-weight:900;}
+.rr-scene:has(.rr-night) tspan.is-given{fill:#8FD0FF;} .rr-scene:has(.rr-night) tspan.is-watch{fill:#FFA8C0;} .rr-scene:has(.rr-night) .rr-leg-k{fill:#C9D2DC;}
+
+/* Phones (docs/tools-phone-pass.md): the scene is 420 units wide, drawn at
+   about 350 px, so its text is set larger in scene units (labels >= 12 px,
+   the moment's values >= 14 px); the readouts stay clear of Enlarge. */
+.ls-root.ls-phone .rr-scene .rr-t{font-size:15.5px;}
+.ls-root.ls-phone .rr-scene .rr-dl{font-size:17px;}
+.ls-root.ls-phone .rr-scene .rr-th{font-size:18px;}
+.ls-root.ls-phone .rr-scene .rr-leg{font-size:16px;}
+.ls-root.ls-phone .rr-side{padding-right:52px;}
+/* the drill legend sits above the scene, on the page: page colours even over the night scene */
+.rr-scene:has(.rr-night) .rr-legend .rr-t{fill:var(--rr-ink);stroke:var(--white);}
+.rr-scene:has(.rr-night) .rr-legend .rr-leg-k{fill:var(--rr-soft);}
+.rr-scene:has(.rr-night) .rr-legend tspan.is-given{fill:var(--rr-given);}
+.rr-scene:has(.rr-night) .rr-legend tspan.is-watch{fill:var(--rr-watch);}
+.rr-handle .rr-hit{fill:transparent;stroke:none;pointer-events:all;}
+/* a phone on its side: only the given and the watched rows, so the scene keeps the height */
+.ls-root.ls-phone .rr-read table.rr-tbl tbody tr:not(.is-given):not(.is-watch){display:none;}
+.ls-root.ls-phone .rr-read table.rr-tbl thead{display:none;}
+/* a phone on its side: the scene takes the whole stage (the two rates are in the
+   pills, the values on the scene, every number in "Graph & numbers") */
+@media (orientation:landscape){
+  .ls-root.ls-phone .rr-ls-stage .rr-side{display:none;}
+  .ls-root.ls-phone .rr-scene .rr-t{font-size:16.5px;}
+  .ls-root.ls-phone .rr-scene .rr-dl{font-size:18px;}
+}

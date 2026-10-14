@@ -1,0 +1,94 @@
+{
+ "topic": "mean-value-theorem",
+ "hook": "On some toll roads, a ticket stamped at the entrance and the exit gives your average speed. If it says 75 miles per hour, the police know more than that: at some instant your speedometer read exactly 75. The Mean Value Theorem is the reason.",
+ "prereq": [
+  {
+   "q": "The average rate of change of $f$ on $[a, b]$ is",
+   "options": [
+    "$\\frac{f(b) - f(a)}{b - a}$",
+    "$\\frac{f(a) + f(b)}{2}$",
+    "$f'(b) - f'(a)$",
+    "$\\frac{b - a}{f(b) - f(a)}$"
+   ],
+   "correct": 0,
+   "why": "It is the slope of the secant line through the endpoints: change in output over change in input.",
+   "review": "average-and-instant-rates"
+  },
+  {
+   "q": "If $f$ is differentiable at $x = a$, then",
+   "options": [
+    "$f$ is continuous at $x = a$",
+    "$f$ has a corner at $x = a$",
+    "$f'(a) = 0$",
+    "$f$ is not continuous at $x = a$"
+   ],
+   "correct": 0,
+   "why": "Differentiability implies continuity, not the other way round.",
+   "review": "differentiability"
+  },
+  {
+   "q": "The Intermediate Value Theorem needs which hypothesis on $[a, b]$?",
+   "options": [
+    "$f$ is continuous on $[a, b]$",
+    "$f$ is differentiable on $(a, b)$",
+    "$f(a) = f(b)$",
+    "$f$ is increasing"
+   ],
+   "correct": 0,
+   "why": "Continuity on the closed interval is the hypothesis of the IVT.",
+   "review": "intermediate-value-theorem"
+  }
+ ],
+ "figure": {
+  "figure": "mvt-parallel-tangents",
+  "caption": "The secant line through the endpoints has slope 1. At $c_1$ and $c_2$ the tangent lines have the same slope: $f'(c) = 1$."
+ },
+ "chain": [
+  {
+   "cause": "$f$ is continuous on $[a, b]$ and differentiable on $(a, b)$",
+   "effect": "the graph is one unbroken, smooth curve from $(a, f(a))$ to $(b, f(b))$, with a tangent line at each inside point"
+  },
+  {
+   "cause": "Slide a line parallel to the secant line across the curve",
+   "effect": "the last place it touches the curve is a point where the tangent line is parallel to the secant line"
+  },
+  {
+   "cause": "Parallel lines have equal slopes",
+   "effect": "some $c$ in $(a, b)$ has $f'(c) = \\frac{f(b) - f(a)}{b - a}$"
+  },
+  {
+   "cause": "A hypothesis fails (a jump, an asymptote, a corner or cusp inside)",
+   "effect": "the theorem promises nothing, and the conclusion may be false"
+  }
+ ],
+ "ideas": [
+  "<b>Mean Value Theorem</b>: if $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$, then $f'(c) = \\frac{f(b) - f(a)}{b - a}$ for at least one $c$ in $(a, b)$.",
+  "In words: somewhere inside, the instantaneous rate of change equals the average rate of change.",
+  "\"$f$ is differentiable\" covers both hypotheses, because differentiable implies continuous. Say it.",
+  "The theorem says a $c$ exists. It does not say where, and there may be more than one.",
+  "A corner at an endpoint is fine: differentiability is needed only on the open interval."
+ ],
+ "misconception": {
+  "wrong": "The Mean Value Theorem works whenever the average rate of change can be computed.",
+  "right": "It needs both hypotheses: continuous on $[a, b]$ and differentiable on $(a, b)$. For $|x|$ on $[-1, 1]$ the average rate is $0$, but the slope is $\\pm 1$ everywhere it exists. A justification must state the hypotheses before the conclusion."
+ },
+ "check": [
+  "calc-mean-value-theorem-1",
+  "calc-mean-value-theorem-2",
+  "calc-mean-value-theorem-3",
+  "calc-mean-value-theorem-4",
+  "calc-mean-value-theorem-10",
+  "calc-mean-value-theorem-15"
+ ],
+ "summary": "If $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$, some $c$ inside has $f'(c)$ equal to the average rate of change: a tangent line parallel to the secant line. Check the hypotheses every time (\"$f$ is differentiable, so it is continuous\") and name the theorem.",
+ "connections": [
+  {
+   "href": "../notes/lhospitals-rule.html",
+   "label": "Back: L'Hospital's rule (4.7)"
+  },
+  {
+   "href": "../notes/extreme-value-theorem.html",
+   "label": "Next: 5.2"
+  }
+ ]
+}

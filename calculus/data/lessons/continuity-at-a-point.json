@@ -1,0 +1,72 @@
+{
+ "topic": "continuity-at-a-point",
+ "hook": "An engineer signing off a bridge checks every joint, not just most of them. Continuity at a point is a three-joint inspection: the point must be there, the curve must arrive from both sides at one height, and that height must be where the point is. Skip one joint and the conclusion can fail.",
+ "prereq": [
+  {
+   "q": "A removable discontinuity at $x = c$ means",
+   "options": [
+    "the limit at $c$ exists, but the value is missing or different",
+    "the one-sided limits at $c$ differ",
+    "the function is unbounded near $c$",
+    "the function is defined at $c$"
+   ],
+   "correct": 0,
+   "why": "Removable: a hole, possibly with the point elsewhere.",
+   "review": "discontinuity-types"
+  },
+  {
+   "q": "If $\\lim_{x \\to 1^-} f(x) = 2$ and $\\lim_{x \\to 1^+} f(x) = 2$, then $\\lim_{x \\to 1} f(x)$",
+   "options": [
+    "equals 2",
+    "does not exist",
+    "equals $f(1)$",
+    "equals 4"
+   ],
+   "correct": 0,
+   "why": "Equal one-sided limits give the two-sided limit.",
+   "review": "limits-from-plots"
+  }
+ ],
+ "figure": {
+  "figure": "continuity-three-conditions",
+  "caption": "Each of the three conditions can fail on its own."
+ },
+ "chain": [
+  {
+   "cause": "$f(c)$ is undefined",
+   "effect": "condition 1 fails: there is no point on the graph at $x = c$"
+  },
+  {
+   "cause": "$f(c)$ is defined, but the one-sided limits differ or are unbounded",
+   "effect": "condition 2 fails: $\\lim_{x \\to c} f(x)$ does not exist"
+  },
+  {
+   "cause": "The value and the limit both exist but are different numbers",
+   "effect": "condition 3 fails: the point is not where the curve arrives"
+  },
+  {
+   "cause": "All three conditions hold",
+   "effect": "$f$ is continuous at $c$, and $\\lim_{x \\to c} f(x) = f(c)$, so the limit can be found by substitution"
+  }
+ ],
+ "ideas": [
+  "<b>Continuous at $c$</b> means: (1) $f(c)$ is defined, (2) $\\lim_{x \\to c} f(x)$ exists, (3) $\\lim_{x \\to c} f(x) = f(c)$.",
+  "Check the conditions in order. The first one that fails tells you the reason, and the kind of discontinuity.",
+  "At the break point of a piecewise function, find both one-sided limits from the pieces, then compare with the value the function is given there.",
+  "A justification shows all three conditions with numbers: \"$f(2) = 3$, $\\lim_{x \\to 2} f(x) = 3$, so $\\lim_{x \\to 2} f(x) = f(2)$.\"",
+  "If $f$ is continuous at $c$, its limit at $c$ is just $f(c)$. That is why direct substitution works."
+ ],
+ "misconception": {
+  "wrong": "$f(2)$ is defined, so $f$ is continuous at $x = 2$.",
+  "right": "A defined value is only the first condition. The limit must exist and equal it. A function can be defined at a jump (the value sits on one side) or at a misplaced point above a hole."
+ },
+ "check": [
+  "calc-continuity-at-a-point-3",
+  "calc-continuity-at-a-point-4",
+  "calc-continuity-at-a-point-6",
+  "calc-continuity-at-a-point-7",
+  "calc-continuity-at-a-point-10",
+  "calc-continuity-at-a-point-15"
+ ],
+ "summary": "$f$ is continuous at $c$ when $f(c)$ is defined, $\\lim_{x \\to c} f(x)$ exists, and the two are equal. Check the three conditions in order and state each one with its number. Continuity at $c$ is exactly what makes $\\lim_{x \\to c} f(x) = f(c)$."
+}

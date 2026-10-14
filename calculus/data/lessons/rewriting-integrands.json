@@ -1,0 +1,81 @@
+{
+ "topic": "rewriting-integrands",
+ "hook": "Some integrands look hopeless only because they are written badly. $\\frac{x^2 + 3x + 5}{x + 1}$ is really a straight line plus a small correction; $\\frac{1}{x^2 - 2x + 10}$ is an arctangent in disguise. Two pieces of algebra you already know, long division and completing the square, uncover them.",
+ "prereq": [
+  {
+   "q": "$\\frac{d}{dx}\\arctan x =$",
+   "options": [
+    "$\\frac{1}{1 + x^2}$",
+    "$\\frac{1}{\\sqrt{1 - x^2}}$",
+    "$\\sec^2 x$",
+    "$\\frac{-1}{1 + x^2}$"
+   ],
+   "correct": 0,
+   "why": "The inverse tangent derivative.",
+   "review": "inverse-trig-derivatives"
+  },
+  {
+   "q": "$\\int \\frac{1}{x + 1}\\,dx =$",
+   "options": [
+    "$\\ln|x + 1| + C$",
+    "$\\frac{-1}{(x + 1)^2} + C$",
+    "$\\ln|x| + 1 + C$",
+    "$\\frac{x}{x + 1} + C$"
+   ],
+   "correct": 0,
+   "why": "With $u = x + 1$, $du = dx$: $\\int \\frac{du}{u} = \\ln|u|$.",
+   "review": "u-substitution"
+  }
+ ],
+ "figure": {
+  "figure": "long-division-asymptote",
+  "caption": "Long division splits (x² + 3x + 5)/(x + 1) into the line x + 2 and the small piece 3/(x + 1)."
+ },
+ "chain": [
+  {
+   "cause": "The top of a fraction has degree at least the bottom",
+   "effect": "divide: a polynomial plus a remainder over the bottom"
+  },
+  {
+   "cause": "The remainder sits over a linear factor such as $x + 1$",
+   "effect": "it integrates to a logarithm, $k\\ln|x + 1|$"
+  },
+  {
+   "cause": "The bottom is a quadratic with no real zeros and the top is a constant",
+   "effect": "complete the square: $(x - h)^2 + a^2$"
+  },
+  {
+   "cause": "Substitute $u = x - h$",
+   "effect": "$\\int \\frac{du}{u^2 + a^2} = \\frac{1}{a}\\arctan\\frac{u}{a} + C$"
+  }
+ ],
+ "ideas": [
+  "<b>Long division</b> first when the top's degree is at least the bottom's: $\\frac{x^2 + 3x + 5}{x + 1} = x + 2 + \\frac{3}{x + 1}$.",
+  "<b>Completing the square</b>: $x^2 + bx + c = \\left(x + \\frac{b}{2}\\right)^2 + \\left(c - \\frac{b^2}{4}\\right)$.",
+  "$\\int \\frac{1}{u^2 + a^2}\\,du = \\frac{1}{a}\\arctan\\frac{u}{a} + C$: the factor $\\frac{1}{a}$ is easy to drop.",
+  "If the top is the derivative of the bottom, skip both: substitute and get $\\ln$."
+ ],
+ "misconception": {
+  "wrong": "$\\int \\frac{1}{x^2 + 9}\\,dx = \\arctan\\frac{x}{3} + C$.",
+  "right": "With $x = 3u$, $dx = 3\\,du$ and $x^2 + 9 = 9(u^2 + 1)$, so a factor $\\frac{3}{9} = \\frac{1}{3}$ remains: $\\frac{1}{3}\\arctan\\frac{x}{3} + C$. Differentiate to check."
+ },
+ "check": [
+  "calc-rewriting-integrands-1",
+  "calc-rewriting-integrands-2",
+  "calc-rewriting-integrands-3",
+  "calc-rewriting-integrands-4",
+  "calc-rewriting-integrands-12",
+  "calc-rewriting-integrands-13"
+ ],
+ "summary": "Rewrite before integrating. When the top's degree is at least the bottom's, divide to get a polynomial plus a remainder fraction. When the bottom is a quadratic with no real zeros and the top is constant, complete the square and use $\\int \\frac{du}{u^2 + a^2} = \\frac{1}{a}\\arctan\\frac{u}{a} + C$.",
+ "connections": [
+  {
+   "href": "../notes/u-substitution.html",
+   "label": "Back: integrating by substitution (6.9)"
+  },
+  {
+   "href": "../notes/choosing-integration-methods.html",
+   "label": "Next: choosing a technique (6.14)"
+  }
+ ]
+}

@@ -1,0 +1,517 @@
+{
+ "stimuli": {
+  "continuity-at-a-point-s1": {
+   "kind": "table",
+   "title": "A function defined in three parts",
+   "table": {
+    "caption": "The function g is given by a different rule left of 2, at 2, and right of 2",
+    "cols": [
+     "Where",
+     "Rule for $g(x)$"
+    ],
+    "rows": [
+     [
+      "$x < 2$",
+      "$x^2 - 1$"
+     ],
+     [
+      "$x = 2$",
+      "$3$"
+     ],
+     [
+      "$x > 2$",
+      "$4x - 5$"
+     ]
+    ]
+   }
+  },
+  "continuity-at-a-point-s2": {
+   "kind": "graph",
+   "title": "The graph of $h$",
+   "plot": {
+    "label": "Graph of h on [0, 6]: the line y = 0.5x + 1 from (0, 1) to a closed dot at (3, 2.5) with an open circle at (1, 1.5); then the curve y = 4 - 0.5(x - 4)^2 from an open circle at (3, 3.5) through (4, 4) to (6, 2), with an open circle at (5, 3.5) and a closed dot at (5, 1)",
+    "x": [
+     -0.5,
+     6.5
+    ],
+    "y": [
+     -0.5,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "0.5x + 1",
+      "domain": [
+       0,
+       3
+      ],
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "label": "h"
+     },
+     {
+      "fn": "4 - 0.5(x - 4)^2",
+      "domain": [
+       3,
+       6
+      ],
+      "ends": [
+       "open",
+       "closed"
+      ],
+      "cls": "s1"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       1.5
+      ],
+      "open": true
+     },
+     {
+      "at": [
+       5,
+       3.5
+      ],
+      "open": true
+     },
+     {
+      "at": [
+       5,
+       1
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-continuity-at-a-point-1",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "continuity-at-a-point-s1",
+   "q": "Use the rule for $x < 2$ to find the left-hand limit $\\lim_{x \\to 2^-} g(x)$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is $x^2$ at 2. The rule left of 2 is $x^2 - 1$, which approaches $4 - 1 = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x < 2$, $g(x) = x^2 - 1$, a polynomial, so $\\lim_{x \\to 2^-} g(x) = 2^2 - 1 = 3$."
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-2",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "continuity-at-a-point-s1",
+   "q": "Use the rule for $x > 2$ to find the right-hand limit $\\lim_{x \\to 2^+} g(x)$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 13,
+      "why": "That adds the 5. The rule right of 2 is $4x - 5$, so the limit is $8 - 5 = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x > 2$, $g(x) = 4x - 5$, which approaches $4(2) - 5 = 3$."
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-3",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "continuity-at-a-point-s1",
+   "q": "Which is a complete justification that $g$ is continuous at $x = 2$?",
+   "options": [
+    "$g(2) = 3$, and both one-sided limits are 3, so $\\lim_{x \\to 2} g(x) = g(2)$",
+    "Both one-sided limits at 2 equal 3, so the limit $\\lim_{x \\to 2} g(x)$ exists",
+    "$g(2) = 3$ is defined, and each piece of $g$ is a polynomial on its interval",
+    "$g$ is defined at $x = 2$, so the graph of $g$ can have no break at $x = 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "All three conditions must be shown: $g(2)$ exists, $\\lim_{x \\to 2} g(x)$ exists, and they are equal.",
+    "options": [
+     "Defined value, existing limit, and the two equal: all three conditions.",
+     "This shows the limit exists but never compares it with $g(2)$.",
+     "Polynomial pieces can still fail to meet at the break point; the limits must be checked.",
+     "A defined value is the first condition only; a function can be defined at a jump."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-4",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "continuity-at-a-point-s1",
+   "q": "Suppose the rule at $x = 2$ were changed to $g(2) = 5$. Which condition for continuity at 2 would fail?",
+   "options": [
+    "$g(2)$ is defined; changing it leaves $g(2)$ undefined",
+    "$\\lim_{x \\to 2} g(x) = g(2)$; the limit is 3 but the value is 5",
+    "$\\lim_{x \\to 2} g(x)$ exists; the one-sided limits would differ",
+    "No condition; $g$ would still be continuous at $x = 2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The one-sided limits come from the rules left and right of 2, which do not change. The limit is still 3, but now $g(2) = 5$, so the third condition fails: a removable discontinuity.",
+    "options": [
+     "$g(2) = 5$ is defined.",
+     "Value 5, limit 3: the third condition fails.",
+     "The pieces left and right of 2 are unchanged, so both one-sided limits are still 3.",
+     "A value different from the limit breaks the graph."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-5",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "continuity-at-a-point-s2",
+   "q": "At which of these $x$-values is $h$ continuous?",
+   "options": [
+    "$x = 1$",
+    "$x = 3$",
+    "$x = 4$",
+    "$x = 5$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At $x = 4$ the curve passes through $(4, 4)$ with no break: $h(4) = 4$ and $\\lim_{x \\to 4} h(x) = 4$.",
+    "options": [
+     "There is a hole at $x = 1$ and no point: $h(1)$ is undefined.",
+     "The graph jumps at 3: the left side reaches 2.5, the right side 3.5.",
+     "Defined, the limit exists, and they are equal.",
+     "$h(5) = 1$, but the curve heads to 3.5."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-6",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "continuity-at-a-point-s2",
+   "q": "Why is $h$ not continuous at $x = 1$?",
+   "options": [
+    "$\\lim_{x \\to 1} h(x)$ does not exist",
+    "$\\lim_{x \\to 1} h(x)$ is not equal to $h(1) = 1.5$",
+    "$h$ is unbounded near $x = 1$",
+    "$h(1)$ is not defined"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The graph has an open circle at $(1, 1.5)$ and no closed dot above $x = 1$, so $h(1)$ does not exist. The first condition fails, even though $\\lim_{x \\to 1} h(x) = 1.5$.",
+    "options": [
+     "From both sides the line heads to 1.5, so the limit exists.",
+     "1.5 is the limit, not a value: the point is missing.",
+     "The line stays near 1.5; nothing grows without bound.",
+     "An open circle with no closed dot means there is no value at 1."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-7",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "continuity-at-a-point-s2",
+   "q": "$h(3) = 2.5$ is defined. Why is $h$ still not continuous at $x = 3$?",
+   "options": [
+    "$\\lim_{x \\to 3} h(x)$ does not exist: the sides approach 2.5 and 3.5",
+    "$h(3)$ is not defined because there is an open circle at $x = 3$",
+    "$\\lim_{x \\to 3} h(x)$ exists but equals 3.5, which is not $h(3)$",
+    "$h$ is unbounded near $x = 3$, so there is a vertical asymptote"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\lim_{x \\to 3^-} h(x) = 2.5$ and $\\lim_{x \\to 3^+} h(x) = 3.5$. Unequal one-sided limits mean the limit does not exist, so the second condition fails: a jump.",
+    "options": [
+     "The second condition fails: the one-sided limits differ.",
+     "The closed dot at $(3, 2.5)$ gives $h(3) = 2.5$.",
+     "3.5 is only the right-hand limit; the left side heads to 2.5.",
+     "Both one-sided limits are finite."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-8",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "multi",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "continuity-at-a-point-s2",
+   "q": "Which statements about $h$ at $x = 5$ are true?",
+   "options": [
+    "$h(5)$ is defined",
+    "$\\lim_{x \\to 5} h(x)$ exists",
+    "$\\lim_{x \\to 5} h(x) = h(5)$",
+    "$h$ is continuous at $x = 5$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "At $x = 5$ the first two conditions hold and the third fails.",
+    "options": [
+     "The closed dot gives $h(5) = 1$.",
+     "Both sides approach 3.5.",
+     "The limit is 3.5 but $h(5) = 1$.",
+     "The third condition fails, so $h$ is not continuous at 5 (a removable discontinuity)."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-9",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\frac{x^2 - 9}{x - 3}$ for $x \\ne 3$ and $f(3) = 6$. Is $f$ continuous at $x = 3$?",
+   "options": [
+    "No: the formula gives $\\frac{0}{0}$ at $x = 3$",
+    "Yes: $\\lim_{x \\to 3} f(x) = 6 = f(3)$",
+    "No: $f(3)$ is defined by a separate rule",
+    "Yes: $f(3)$ is defined, which is enough"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$f(3) = 6$ is defined. For $x \\ne 3$, $f(x) = x + 3$, so $\\lim_{x \\to 3} f(x) = 6$. The limit equals the value, so $f$ is continuous at 3.",
+    "options": [
+     "The formula is not used at $x = 3$; the separate rule gives $f(3) = 6$.",
+     "All three conditions hold.",
+     "A separate rule is fine when its value equals the limit.",
+     "A defined value is one of three conditions; the limit must exist and match it."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-10",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\frac{x^2 - 9}{x - 3}$ for $x \\ne 3$ and $f(3) = 3$. Which describes $f$ at $x = 3$?",
+   "options": [
+    "Not continuous: $f(3)$ is not defined",
+    "Not continuous: the limit at 3 does not exist",
+    "Not continuous: the limit is 6 but $f(3) = 3$",
+    "Continuous: $f(3)$ and the limit both exist"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\lim_{x \\to 3} f(x) = \\lim_{x \\to 3} (x + 3) = 6$, which is not $f(3) = 3$. The third condition fails.",
+    "options": [
+     "The second rule defines $f(3) = 3$.",
+     "$f(x) = x + 3$ near 3, so the limit is 6.",
+     "Value 3, limit 6: they must be equal.",
+     "Both exist, but they are not equal."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-11",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Let $s(x) = \\frac{x}{|x|}$ for $x \\ne 0$ and $s(0) = 0$. Which condition for continuity at $x = 0$ fails?",
+   "options": [
+    "$s(0)$ is defined",
+    "$\\lim_{x \\to 0} s(x) = s(0)$, though the limit exists",
+    "No condition fails; $s$ is continuous at 0",
+    "$\\lim_{x \\to 0} s(x)$ exists"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$s(x) = -1$ for $x < 0$ and $s(x) = 1$ for $x > 0$. The one-sided limits differ, so the limit does not exist. (The value $s(0) = 0$ is defined.)",
+    "options": [
+     "The rule $s(0) = 0$ defines it.",
+     "The limit does not exist, so it cannot equal anything.",
+     "The graph jumps from $-1$ to $1$ at 0.",
+     "Left side $-1$, right side 1: no two-sided limit."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-12",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Let $f(x) = \\frac{\\sin(3x)}{x}$ for $x \\ne 0$ and $f(0) = 3$. Which statement shows $f$ is continuous at $x = 0$?",
+   "options": [
+    "$\\lim_{x \\to 0} \\frac{\\sin(3x)}{x} = 3$, and this equals $f(0) = 3$",
+    "$\\sin(3 \\cdot 0) = 0$, so the formula and the rule agree at 0",
+    "$f(0) = 3$ is defined, and sine is defined at each input",
+    "$\\frac{\\sin(3x)}{x}$ gives $\\frac{0}{0}$ at 0, which equals 3"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{\\sin(3x)}{x} = 3 \\cdot \\frac{\\sin(3x)}{3x} \\to 3$. The limit exists and equals $f(0) = 3$, and $f(0)$ is defined: continuous.",
+    "options": [
+     "Limit 3, value 3: continuous.",
+     "The formula is $\\frac{0}{0}$ at 0, not 0; and agreement must be with the limit.",
+     "A defined value is not enough; the limit must equal it.",
+     "$\\frac{0}{0}$ is not a number. The limit is 3; never write $\\frac{0}{0} = 3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-13",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "You know that $f(c)$ is defined and that $\\lim_{x \\to c} f(x)$ exists. What else must you check to conclude that $f$ is continuous at $c$?",
+   "options": [
+    "That $f(c) \\ne 0$",
+    "That $\\lim_{x \\to c} f(x) = f(c)$",
+    "That $f$ has the same formula on both sides of $c$",
+    "That the one-sided limits are both positive"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Continuity at $c$ has three conditions; the third is that the limit equals the value.",
+    "options": [
+     "A value of 0 is fine.",
+     "The third condition: the limit and the value are the same number.",
+     "Piecewise functions can be continuous at a break point.",
+     "Signs do not matter; only equality with $f(c)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-14",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A function $f$ is continuous at $x = c$. Which statement follows?",
+   "options": [
+    "$f(c) = 0$",
+    "$\\lim_{x \\to c^-} f(x) \\ne \\lim_{x \\to c^+} f(x)$",
+    "$\\lim_{x \\to c} f(x) = f(c)$",
+    "$f(c + 1) = f(c)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Continuity at $c$ means exactly that the limit at $c$ exists and equals $f(c)$.",
+    "options": [
+     "The value can be any number.",
+     "Unequal one-sided limits would mean the limit does not exist.",
+     "That is the definition, and it lets you find the limit by substitution.",
+     "Continuity at $c$ says nothing about other inputs."
+    ]
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-15",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "$f$ is continuous at $x = 4$, and $\\lim_{x \\to 4} \\left(f(x) + 2x\\right) = 13$. Find $f(4)$.",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": 13,
+      "why": "13 is the limit of $f(x) + 2x$. Subtract the limit of $2x$, which is 8: $\\lim_{x \\to 4} f(x) = 5$."
+     },
+     {
+      "value": 21,
+      "why": "Subtract, do not add: $\\lim f(x) = 13 - 8 = 5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "By the limit laws, $\\lim_{x \\to 4} f(x) = 13 - \\lim_{x \\to 4} 2x = 13 - 8 = 5$. Since $f$ is continuous at 4, $f(4) = \\lim_{x \\to 4} f(x) = 5$."
+   }
+  },
+  {
+   "id": "calc-continuity-at-a-point-16",
+   "unit": "unit-1",
+   "topic": "continuity-at-a-point",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "For $f(x) = \\frac{1}{(x - 2)^2}$, which condition for continuity at $x = 2$ fails first?",
+   "options": [
+    "$\\lim_{x \\to 2} f(x) = f(2)$, with both existing",
+    "$f(x)$ is positive near $x = 2$",
+    "The one-sided limits have different signs",
+    "$f(2)$ is defined"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At $x = 2$ the denominator is 0, so $f(2)$ is not defined. The first condition already fails (and $f$ is unbounded near 2 as well).",
+    "options": [
+     "The first condition already failed; there is no value to compare.",
+     "Being positive is not a condition for continuity.",
+     "Both sides grow without bound in the positive direction, and signs are not a condition.",
+     "$\\frac{1}{0}$ is undefined, so the check stops at the first condition."
+    ]
+   }
+  }
+ ]
+}

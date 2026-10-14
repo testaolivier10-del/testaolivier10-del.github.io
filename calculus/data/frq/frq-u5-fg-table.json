@@ -1,0 +1,144 @@
+{
+ "id": "frq-u5-fg-table",
+ "type": "fg",
+ "title": "A table of f and its derivative: the theorems and a tangent line",
+ "calc": false,
+ "points": 9,
+ "units": [
+  "unit-5"
+ ],
+ "topics": [
+  "mean-value-theorem",
+  "f-and-its-derivatives"
+ ],
+ "practices": [
+  "3.B",
+  "3.C",
+  "3.D",
+  "1.E",
+  "4.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Values of $f$ and $f'$",
+  "text": "The function $f$ is twice differentiable for all real numbers. The table gives values of $f$ and its derivative $f'$ at selected values of $x$.",
+  "table": {
+   "caption": "Values of $f(x)$ and $f'(x)$ at selected $x$",
+   "cols": [
+    "$x$",
+    "0",
+    "1",
+    "3",
+    "4",
+    "6"
+   ],
+   "rows": [
+    [
+     "$f(x)$",
+     "2",
+     "5",
+     "5",
+     "2",
+     "3"
+    ],
+    [
+     "$f'(x)$",
+     "4",
+     "1",
+     "-2",
+     "-3",
+     "2"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "Must there be a value $c$, for $1 < c < 3$, such that $f'(c) = 0$? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "States that $f$ is continuous on $[1, 3]$ and differentiable on $(1, 3)$ because $f$ is (twice) differentiable",
+     "accept": [
+      "\"$f$ is differentiable, so it is continuous\""
+     ]
+    },
+    {
+     "point": "Yes, by the Mean Value Theorem (or Rolle's theorem), since $\\frac{f(3) - f(1)}{3 - 1} = 0$",
+     "accept": [
+      "\"$f(1) = f(3) = 5$, so by the MVT $f'(c) = 0$\""
+     ]
+    }
+   ],
+   "sample": "Yes. $f$ is differentiable, so it is continuous on $[1, 3]$ and differentiable on $(1, 3)$. Since $\\frac{f(3) - f(1)}{3 - 1} = \\frac{5 - 5}{2} = 0$, the Mean Value Theorem guarantees a $c$ in $(1, 3)$ with $f'(c) = 0$."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "Must there be a value $c$, for $0 < c < 6$, such that $f(c) = 4$? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "States that $f$ is continuous (because it is differentiable) on an interval whose endpoint values bracket 4, such as $[3, 4]$ with $f(4) = 2 < 4 < 5 = f(3)$",
+     "accept": [
+      "$[0, 1]$ with $f(0) = 2 < 4 < 5 = f(1)$"
+     ]
+    },
+    {
+     "point": "Yes, by the Intermediate Value Theorem",
+     "accept": [
+      "\"by the IVT\", with the hypothesis point"
+     ]
+    }
+   ],
+   "sample": "Yes. $f$ is differentiable, so it is continuous on $[3, 4]$, and $f(4) = 2 < 4 < 5 = f(3)$. By the Intermediate Value Theorem, $f(c) = 4$ for some $c$ in $(3, 4)$, which lies in $(0, 6)$."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Write</b> an equation for the line tangent to the graph of $f$ at $x = 4$, and use it to approximate $f(4.2)$.",
+   "rubric": [
+    {
+     "point": "Tangent line $y = 2 - 3(x - 4)$",
+     "accept": [
+      "$y - 2 = -3(x - 4)$",
+      "$y = -3x + 14$"
+     ]
+    },
+    {
+     "point": "$f(4.2) \\approx 2 - 3(0.2) = 1.4$",
+     "accept": [
+      "$1.4$ with the tangent line shown"
+     ]
+    }
+   ],
+   "sample": "$f(4) = 2$ and $f'(4) = -3$, so the tangent line is $y = 2 - 3(x - 4)$. Then $f(4.2) \\approx 2 - 3(0.2) = 1.4$."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "Must there be a value $c$, for $4 < c < 6$, such that $f''(c) = \\frac{5}{2}$? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "States that $f'$ is differentiable (because $f$ is twice differentiable), so $f'$ is continuous on $[4, 6]$ and differentiable on $(4, 6)$",
+     "accept": [
+      "the hypotheses applied to $f'$, not to $f$"
+     ]
+    },
+    {
+     "point": "Average rate of change of $f'$: $\\frac{f'(6) - f'(4)}{6 - 4} = \\frac{2 - (-3)}{2} = \\frac{5}{2}$",
+     "accept": [
+      "the difference quotient with the table's values of $f'$"
+     ]
+    },
+    {
+     "point": "Yes, by the Mean Value Theorem applied to $f'$: $f''(c) = \\frac{5}{2}$ for some $c$ in $(4, 6)$",
+     "accept": [
+      "\"by the MVT\", with the conclusion stated for $f''$"
+     ]
+    }
+   ],
+   "sample": "Yes. Because $f$ is twice differentiable, $f'$ is differentiable, so $f'$ is continuous on $[4, 6]$ and differentiable on $(4, 6)$. $\\frac{f'(6) - f'(4)}{6 - 4} = \\frac{2 - (-3)}{2} = \\frac{5}{2}$. By the Mean Value Theorem applied to $f'$, there is a $c$ in $(4, 6)$ with $f''(c) = \\frac{5}{2}$."
+  }
+ ]
+}

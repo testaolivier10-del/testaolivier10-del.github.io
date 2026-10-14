@@ -1,0 +1,52 @@
+<p>A differential equation is a rule about rates. A <b>solution to a differential equation</b> is a function that obeys the rule. Before you learn to find solutions, you need to be able to <i>check</i> one. The good news: checking uses nothing new. You differentiate, substitute and compare.</p>
+
+<h2>What "solution" means here</h2>
+<p>In algebra, a solution of $x^2 = 9$ is a number. Here a solution is a whole <b>function</b>. The function $y = 3e^{2x}$ is a solution of $\frac{dy}{dx} = 2y$ because, for every $x$, its slope equals twice its height:</p>
+<p>$$\frac{dy}{dx} = 6e^{2x} \qquad \text{and} \qquad 2y = 2\left(3e^{2x}\right) = 6e^{2x}.$$</p>
+<p>The two sides are the same function of $x$. That is what you must show: equality for every $x$ in an interval, not at one lucky point.</p>
+
+<h2>The three-step check</h2>
+<ol>
+<li><b>Differentiate.</b> Find every derivative the equation uses: $y'$, and $y''$ if it appears.</li>
+<li><b>Substitute.</b> Put the function and its derivatives into the left side and into the right side. Work on each side separately.</li>
+<li><b>Compare.</b> Simplify both sides. If they are identical on an interval, the function is a solution there. If they differ anywhere in the interval, it is not.</li>
+</ol>
+<p>Keep the two sides apart while you simplify. Writing a long chain like $\frac{dy}{dx} = 1 + Ce^x = x + 1 + Ce^x$ puts an equals sign between things that are not equal, a linkage error that costs points on the exam. Write "left side $= \dots$" and "right side $= \dots$", then compare.</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Show that $y = x + 1 + 2e^x$ is a solution of $\frac{dy}{dx} = y - x$.</p>
+<p>Differentiate: $\frac{dy}{dx} = 1 + 2e^x$. (The derivative of $x$ is 1, of the constant 1 is 0.)</p>
+<p>Right side: $y - x = (x + 1 + 2e^x) - x = 1 + 2e^x$.</p>
+<p>Compare: both sides are $1 + 2e^x$ for every $x$. So the function is a solution on $(-\infty, \infty)$.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Is $y = x^2 + 1$ a solution of $\frac{dy}{dx} = \frac{2y}{x}$ for $x > 0$?</p>
+<p>Left side: $\frac{dy}{dx} = 2x$. Right side: $\frac{2(x^2 + 1)}{x} = 2x + \frac{2}{x}$.</p>
+<p>These differ by $\frac{2}{x}$, which is never 0. So $y = x^2 + 1$ is <b>not</b> a solution. (Try $y = x^2$ instead: then the right side is $\frac{2x^2}{x} = 2x$, and it works.)</p>
+</div>
+
+<h2>Equations with a second derivative</h2>
+<p>The same check works when $y''$ appears. For $y = \sin(2x)$: $y' = 2\cos(2x)$ and $y'' = -4\sin(2x) = -4y$. So $y = \sin(2x)$ is a solution of $y'' = -4y$.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the positive constant $k$ for which $y = e^{kx}$ satisfies $y'' - y' - 6y = 0$.</p>
+<p>Differentiate: $y' = ke^{kx}$ and $y'' = k^2e^{kx}$.</p>
+<p>Substitute: $k^2e^{kx} - ke^{kx} - 6e^{kx} = e^{kx}\left(k^2 - k - 6\right)$.</p>
+<p>Since $e^{kx}$ is never 0, the left side is 0 for every $x$ exactly when $k^2 - k - 6 = 0$, that is $(k - 3)(k + 2) = 0$. The positive value is $k = 3$.</p>
+</div>
+
+<h2>Many solutions, not one</h2>
+<p>An added constant has derivative 0. So if $y = x^2$ solves $\frac{dy}{dx} = 2x$, so do $x^2 + 5$ and $x^2 - \pi$: a differential equation usually has infinitely many solutions. The same happens with multiplied constants: every $y = Ce^{3x}$ satisfies $\frac{dy}{dx} = 3y$, because $\frac{dy}{dx} = 3Ce^{3x} = 3y$.</p>
+<figure id="fig-family" data-fig="solution-family-check"><figcaption>Five members of the family $y = x + 1 + Ce^x$. All of them satisfy $\frac{dy}{dx} = y - x$; at $x = 0.5$ each one's slope equals $y - x$ at that point.</figcaption></figure>
+<p>Picking one member of the family needs one more fact, such as a point the graph passes through. That comes in a later topic.</p>
+
+<h2>Solutions live on intervals</h2>
+<p>A solution must be differentiable wherever you claim it works. The function $y = \frac{1}{x}$ satisfies $\frac{dy}{dx} = -y^2$, since $-\frac{1}{x^2} = -\left(\frac{1}{x}\right)^2$. But it is undefined at $x = 0$, so it is a solution on $x > 0$ and, separately, on $x < 0$. When you state that a function is a solution, name the interval.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Checking only one value of $x$. Agreement at one point proves nothing.</li>
+<li>Dropping a derivative: the derivative of $x$ is 1, and the chain rule factor in $e^{3x}$ is 3.</li>
+<li>Comparing with the wrong side: in $x\frac{dy}{dx} = 2y$ the left side includes the factor $x$.</li>
+<li>Chaining unequal expressions with $=$ instead of simplifying each side on its own.</li>
+</ul>

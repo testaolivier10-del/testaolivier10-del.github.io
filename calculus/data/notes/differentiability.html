@@ -1,0 +1,62 @@
+<p>A derivative is a limit, and limits can fail to exist. This page asks where $f'(a)$ exists, how that connects to continuity from Unit 1, and how to justify your answer the way the exam expects. The key fact runs in one direction only, and most lost points come from running it backward.</p>
+
+<h2>Differentiable at a point</h2>
+<p>A function $f$ is <b>differentiable</b> at $x = a$ when its derivative there exists:</p>
+<p>$$f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h} \text{ is a finite number.}$$</p>
+<p>It is differentiable on an interval when it is differentiable at every point of the interval. For the limit to exist, the difference quotients from the left ($h < 0$) and from the right ($h > 0$) must approach the same finite number. On the graph, that means one well-defined, non-vertical tangent line at the point.</p>
+
+<h2>Differentiable implies continuous</h2>
+<p>Suppose $f'(a)$ exists. For $h \ne 0$, multiply and divide by $h$:</p>
+<p>$$f(a + h) - f(a) = \frac{f(a + h) - f(a)}{h} \cdot h.$$</p>
+<p>As $h \to 0$, the first factor goes to $f'(a)$, a finite number, and the second goes to 0. So $f(a + h) - f(a) \to f'(a) \cdot 0 = 0$, which says $\lim_{x \to a} f(x) = f(a)$. That is continuity at $a$.</p>
+<p><b>If $f$ is differentiable at $a$, then $f$ is continuous at $a$.</b> The exam uses this constantly. When a problem says "$f$ is differentiable" and you need continuity, for the Intermediate Value Theorem for example, write the reason in words: "$f$ is differentiable, so $f$ is continuous on $[1, 4]$." Asserting continuity with no reason does not earn the point.</p>
+<p>Read the theorem the other way and you get its contrapositive, which is also true: <b>if $f$ is not continuous at $a$, then $f$ is not differentiable at $a$.</b> Jumps, holes and vertical asymptotes all rule out a derivative.</p>
+
+<h2>Continuous does not imply differentiable</h2>
+<p>The converse is false. A graph can be connected at a point and still have no single slope there. There are three ways it happens.</p>
+<figure id="fig-fail" data-fig="where-derivatives-fail"><figcaption>A corner, a cusp and a vertical tangent (continuous, not differentiable) and a jump (neither).</figcaption></figure>
+<ul>
+<li><b>Corner.</b> The left and right slopes are two different finite numbers. For $|x|$ at 0, the difference quotient is $\frac{|h|}{h}$, which is $-1$ for $h < 0$ and 1 for $h > 0$. No two-sided limit, no derivative.</li>
+<li><b>Cusp.</b> The slopes grow without bound, toward $-\infty$ on one side and $+\infty$ on the other. For $x^{2/3}$ at 0, the quotient is $\frac{h^{2/3}}{h} = \frac{1}{\sqrt[3]{h}}$.</li>
+<li><b>Vertical tangent.</b> The slopes grow without bound in the same direction and the tangent line is vertical. For $\sqrt[3]{x}$ at 0, the quotient is $\frac{1}{h^{2/3}} \to +\infty$ from both sides. A vertical line has no slope, so there is no derivative.</li>
+</ul>
+<table class="compare">
+<thead><tr><th>At $x = a$ the graph has</th><th>Continuous?</th><th>Differentiable?</th><th>Example at 0</th></tr></thead>
+<tbody>
+<tr><td>a smooth, non-vertical tangent line</td><td>yes</td><td>yes</td><td>$x^2$</td></tr>
+<tr><td>a corner</td><td>yes</td><td>no</td><td>$|x|$</td></tr>
+<tr><td>a cusp</td><td>yes</td><td>no</td><td>$x^{2/3}$</td></tr>
+<tr><td>a vertical tangent</td><td>yes</td><td>no</td><td>$\sqrt[3]{x}$</td></tr>
+<tr><td>a jump, hole or asymptote</td><td>no</td><td>no</td><td>$\frac{|x|}{x}$, $\frac{1}{x}$</td></tr>
+</tbody>
+</table>
+<p>The last row is the only one where continuity fails. The first column is the one to look at on a graph.</p>
+
+<h2>Piecewise functions at the break</h2>
+<p>At the input where a piecewise function changes formula, check two things in order.</p>
+<ol>
+<li><b>Continuity.</b> Do both pieces approach the value of the function there? If not, stop: not differentiable.</li>
+<li><b>Matching slopes.</b> Find the slope of each piece at the break. If they are equal, the function is differentiable there and $f'(a)$ is that common slope. If not, there is a corner.</li>
+</ol>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Is $p(x) = \begin{cases} x^2 & x \le 1 \\ 2x - 1 & x > 1 \end{cases}$ differentiable at $x = 1$?</p>
+<p>Continuity: $\lim_{x \to 1^-} x^2 = 1$, $\lim_{x \to 1^+} (2x - 1) = 1$, and $p(1) = 1$. Continuous.</p>
+<p>Slopes: on the left, $x^2$ has derivative $2x$, which is 2 at $x = 1$. On the right, the line $2x - 1$ has slope 2. They match.</p>
+<p>Conclusion: $p$ is differentiable at $x = 1$ and $p'(1) = 2$. The line continues the parabola smoothly; it is the parabola's own tangent line at $(1, 1)$.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Find $m$ and $b$ so that $f(x) = \begin{cases} x^2 & x \le 2 \\ mx + b & x > 2 \end{cases}$ is differentiable at $x = 2$.</p>
+<p>Slopes must match: the slope of $x^2$ at 2 is $2(2) = 4$, so $m = 4$.</p>
+<p>The pieces must meet: $m(2) + b = 2^2$, so $8 + b = 4$ and $b = -4$.</p>
+<p>Check: the line $y = 4x - 4$ passes through $(2, 4)$ with slope 4. Both conditions are needed. Matching slopes without meeting gives a jump; meeting without matching slopes gives a corner.</p>
+</div>
+
+<h2>Writing it up</h2>
+<ul>
+<li>To use continuity from differentiability: "Because $f$ is differentiable at $x = a$, $f$ is continuous at $x = a$."</li>
+<li>To show a function is not differentiable at a continuous point, name the feature and give the evidence: "The one-sided limits of the difference quotient at $x = 0$ are $-1$ and 1, so $g'(0)$ does not exist."</li>
+<li>Never argue from "not differentiable" to "not continuous". That reverses the theorem.</li>
+</ul>
+<p>From the next topic on, you will find derivatives with rules instead of limits. Every rule assumes the functions involved are differentiable where you use them.</p>

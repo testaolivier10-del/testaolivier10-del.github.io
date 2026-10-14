@@ -118,10 +118,13 @@
       var u = size / 10, lim = 16 * u, seen = hist.map(function(h){ return Math.round(h / step()); });
       var lo = Math.min.apply(null, seen), hi = Math.max.apply(null, seen), path = [], water = [];
       for(var k = lo * 4; k <= hi * 4; k++){ var q = st(k * step() / 4); path.push([k * u / 4, q.pH]); water.push([k * u / 4, q.water]); }
-      var now = b * 1000;
-      var svg = T.plot({ w: 420, h: 250, title: 'pH against mmol of strong base added (negative: strong acid). Buffer pH now ' + F(s.pH, 2) + '; pure water with the same additions ' + F(s.water, 2) + '.',
+      var now = b * 1000, box = $('.bf-plot'), key = box.querySelector('.bf-key');
+      // On a phone the graph is drawn at the size of its box (T.fitBox), less the key line under it.
+      var kh = key ? key.getBoundingClientRect().height + 2 : 22, gs = T.fitBox(box, 420, 250, { w: 180, h: 140 });
+      if(gs.fit) gs.h = Math.max(140, Math.round(gs.h - kh));
+      var svg = T.plot({ w: gs.w, h: gs.h, title: 'pH against mmol of strong base added (negative: strong acid). Buffer pH now ' + F(s.pH, 2) + '; pure water with the same additions ' + F(s.water, 2) + '.',
         x: { label: 'mmol added (− acid, + base)', min: -lim, max: lim, step: T.niceStep(2 * lim, 5) },
-        y: { label: 'pH', min: 0, max: 14, step: 2 },
+        y: { label: 'pH', min: 0, max: 14, step: gs.h - 72 < 140 && gs.fit ? 4 : 2 },
         curves: [{ cls: 's3', points: water, dashed: true }, { cls: 's1', points: path }],
         points: [{ x: now, y: s.pH, cls: 's2' }], vline: { x: 0 } });
       $('.bf-plot').innerHTML = svg + '<p class="bt-small bf-key"><span class="bf-k1"></span>this buffer <span class="bf-k2"></span>pure water, same additions</p>';
@@ -163,6 +166,7 @@
       SP = T.studioPane(pane, s, { stage: [$('.bf-beaker'), $('.bf-plot')], dock: [$('.bf-btns'), resetBtn], setup: 'Buffer', moreLabel: 'Another buffer, amounts',
         why: [$('.bf-why')], details: [nums, parts] });
       draw(false);
+      T.watchBox($('.bf-plot'), function(){ plot(st(b)); });
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.bf-oh'), text: 'Tap to add a little strong base' });
     }
     reset();

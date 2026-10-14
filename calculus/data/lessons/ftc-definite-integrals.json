@@ -1,0 +1,93 @@
+{
+ "topic": "ftc-definite-integrals",
+ "hook": "Finding an area by stacking millions of thin rectangles sounds hopeless by hand. Yet $\\int_1^3 (3x^2 - 2)\\,dx$ takes four lines: find a function whose derivative is $3x^2 - 2$, plug in 3 and 1, subtract. That shortcut, the second half of the Fundamental Theorem, is why calculus can compute areas, distances and totals at all.",
+ "prereq": [
+  {
+   "q": "If $g(x) = \\int_a^x f(t)\\,dt$ and $f$ is continuous, which is true?",
+   "options": [
+    "$g$ is an antiderivative of $f$",
+    "$f$ is an antiderivative of $g$",
+    "$g = f'$",
+    "$g(a) = f(a)$"
+   ],
+   "correct": 0,
+   "why": "$g'(x) = f(x)$, so $g$ is an antiderivative of $f$.",
+   "review": "ftc-accumulation"
+  },
+  {
+   "q": "If $\\int_0^2 f(x)\\,dx = 3$, what is $\\int_2^0 f(x)\\,dx$?",
+   "options": [
+    "$-3$",
+    "3",
+    "0",
+    "6"
+   ],
+   "correct": 0,
+   "why": "Reversing the limits changes the sign.",
+   "review": "integral-properties"
+  },
+  {
+   "q": "What is the derivative of $\\arctan x$?",
+   "options": [
+    "$\\frac{1}{1 + x^2}$",
+    "$\\sec^2 x$",
+    "$\\frac{1}{\\sqrt{1 - x^2}}$",
+    "$\\frac{-1}{1 + x^2}$"
+   ],
+   "correct": 0,
+   "why": "The inverse tangent derivative.",
+   "review": "inverse-trig-derivatives"
+  }
+ ],
+ "figure": {
+  "figure": "net-change",
+  "caption": "The area under f prime from 0 to 6 (2 above, 0.5 below) equals f(6) - f(0) = 1.5."
+ },
+ "chain": [
+  {
+   "cause": "$g(x) = \\int_a^x f(t)\\,dt$ and any $F$ are both antiderivatives of $f$",
+   "effect": "they differ by a constant: $g(x) = F(x) - F(a)$, since $g(a) = 0$"
+  },
+  {
+   "cause": "Put $x = b$",
+   "effect": "$\\int_a^b f(x)\\,dx = F(b) - F(a)$, the Fundamental Theorem, part 2"
+  },
+  {
+   "cause": "Apply it to a rate $f'$",
+   "effect": "$\\int_a^b f'(x)\\,dx = f(b) - f(a)$: the integral of a rate is the net change"
+  },
+  {
+   "cause": "You know $f(a)$ and the graph of $f'$",
+   "effect": "$f(b) = f(a) + \\int_a^b f'(x)\\,dx$, with signed areas from the graph"
+  }
+ ],
+ "ideas": [
+  "<b>FTC, part 2</b>: if $F' = f$ and $f$ is continuous on $[a, b]$, then $\\int_a^b f(x)\\,dx = F(b) - F(a) = F(x)\\Big|_a^b$.",
+  "<b>Net change</b>: $\\int_a^b f'(x)\\,dx = f(b) - f(a)$, so $f(b) = f(a) + \\int_a^b f'(x)\\,dx$.",
+  "Going backward from a known value: $f(0) = f(2) - \\int_0^2 f'(x)\\,dx$.",
+  "With no elementary antiderivative, a calculator evaluates the integral; write the integral as the setup."
+ ],
+ "misconception": {
+  "wrong": "$f(5) = \\int_2^5 f'(x)\\,dx$: the integral of the derivative gives the function.",
+  "right": "The integral of $f'$ gives the <i>change</i> in $f$. Add the known starting value: $f(5) = f(2) + \\int_2^5 f'(x)\\,dx$."
+ },
+ "check": [
+  "calc-ftc-definite-integrals-1",
+  "calc-ftc-definite-integrals-2",
+  "calc-ftc-definite-integrals-3",
+  "calc-ftc-definite-integrals-4",
+  "calc-ftc-definite-integrals-9",
+  "calc-ftc-definite-integrals-14"
+ ],
+ "summary": "To evaluate $\\int_a^b f(x)\\,dx$, find an antiderivative $F$ and compute $F(b) - F(a)$. Read in context, the integral of a rate of change is the net change: $f(b) = f(a) + \\int_a^b f'(x)\\,dx$. Use signed areas from a graph of $f'$, an antiderivative from a formula, or a calculator when no formula exists.",
+ "connections": [
+  {
+   "href": "../notes/integral-properties.html",
+   "label": "Back: properties of definite integrals (6.6)"
+  },
+  {
+   "href": "../notes/antiderivatives.html",
+   "label": "Next: antiderivatives and indefinite integrals (6.8)"
+  }
+ ]
+}

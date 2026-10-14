@@ -1,0 +1,12 @@
+{
+ "f-fp-fpp-sine": {
+  "file": "figures/f-fp-fpp-sine.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 545,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Three stacked graphs on the same x-axis from 0 to 2 pi: f(x) = sin x, f'(x) = cos x and f''(x) = -sin x. Dashed lines at pi/2, pi, 3pi/2 and 2pi line up the features: f peaks at pi/2 where f' is zero and changes from positive to negative; f has an inflection point at pi where f' is lowest and f'' changes sign; f'' is negative on (0, pi), where f is concave down."
+ }
+}

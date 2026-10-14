@@ -1,0 +1,514 @@
+{
+ "stimuli": {
+  "choosing-limit-methods-s1": {
+   "kind": "table",
+   "title": "Four functions near $x = 3$",
+   "table": {
+    "caption": "Four functions, each to be studied as x approaches 3",
+    "cols": [
+     "Function",
+     "Formula"
+    ],
+    "rows": [
+     [
+      "$f$",
+      "$f(x) = \\frac{x^2 - 5x + 6}{x - 3}$"
+     ],
+     [
+      "$g$",
+      "$g(x) = \\frac{\\sqrt{x + 1} - 2}{x - 3}$"
+     ],
+     [
+      "$h$",
+      "$h(x) = \\frac{x + 3}{x - 3}$"
+     ],
+     [
+      "$k$",
+      "$k(x) = \\frac{x^2 + 1}{x + 3}$"
+     ]
+    ]
+   }
+  },
+  "choosing-limit-methods-s2": {
+   "kind": "table",
+   "title": "A function defined in two pieces",
+   "table": {
+    "caption": "The function p is defined by one formula left of x = 1 and another from x = 1 on",
+    "cols": [
+     "Where",
+     "Formula for $p(x)$"
+    ],
+    "rows": [
+     [
+      "$x < 1$",
+      "$\\frac{x^2 + 2x - 3}{x - 1}$"
+     ],
+     [
+      "$x \\ge 1$",
+      "$x^2 + 1$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-choosing-limit-methods-1",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "choosing-limit-methods-s1",
+   "q": "Substituting $x = 3$ into which function gives a nonzero number divided by $0$?",
+   "options": [
+    "$h$",
+    "$f$",
+    "$g$",
+    "$k$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = 3$, $h$ gives $\\frac{6}{0}$: a nonzero numerator over a zero denominator.",
+    "options": [
+     "$h(3)$ would be $\\frac{3 + 3}{3 - 3} = \\frac{6}{0}$, so $h$ is unbounded near 3.",
+     "$f$ gives $\\frac{9 - 15 + 6}{0} = \\frac{0}{0}$, an indeterminate form, not a nonzero number over 0.",
+     "$g$ gives $\\frac{\\sqrt{4} - 2}{0} = \\frac{0}{0}$, an indeterminate form.",
+     "$k$ gives $\\frac{10}{6}$; its denominator is not 0 at $x = 3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-2",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "choosing-limit-methods-s1",
+   "q": "Find $\\lim_{x \\to 3} f(x)$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "That comes from factoring the numerator as $(x + 2)(x - 3)$, which multiplies out to $x^2 - x - 6$. The right factors are $(x - 2)(x - 3)$."
+     },
+     {
+      "value": 0,
+      "why": "Substituting gives $\\frac{0}{0}$, which is not the value 0. It says to rewrite: cancel the common factor $x - 3$ and substitute again."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Substitution gives $\\frac{0}{0}$, so factor: $\\frac{(x - 2)(x - 3)}{x - 3} = x - 2$ for $x \\ne 3$. Then $\\lim_{x \\to 3} (x - 2) = 1$."
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-3",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "choosing-limit-methods-s1",
+   "q": "Find $\\lim_{x \\to 3} g(x)$.",
+   "numeric": {
+    "answer": "1/4",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "After multiplying by the conjugate, the denominator is $\\sqrt{x + 1} + 2$, which is $2 + 2 = 4$ at $x = 3$, not 2."
+     },
+     {
+      "value": 4,
+      "why": "That is the reciprocal. The simplified expression is $\\frac{1}{\\sqrt{x + 1} + 2}$, so the limit is $\\frac{1}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Multiply by the conjugate: $\\frac{(\\sqrt{x + 1} - 2)(\\sqrt{x + 1} + 2)}{(x - 3)(\\sqrt{x + 1} + 2)} = \\frac{x - 3}{(x - 3)(\\sqrt{x + 1} + 2)} = \\frac{1}{\\sqrt{x + 1} + 2}$ for $x \\ne 3$. Substituting gives $\\frac{1}{4}$."
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-4",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "single",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "choosing-limit-methods-s1",
+   "q": "What can you conclude about $\\lim_{x \\to 3} h(x)$?",
+   "options": [
+    "It equals $6$, the value of the numerator at $x = 3$",
+    "It does not exist; $h$ is unbounded near $x = 3$",
+    "It equals $1$, after the $x - 3$ terms cancel",
+    "It can be found by factoring and cancelling first"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A nonzero number over 0 means the denominator shrinks while the numerator stays near 6, so $|h(x)|$ grows without bound. Left of 3, $h$ is very negative; right of 3, very positive. The limit does not exist.",
+    "options": [
+     "The numerator's value alone ignores the denominator, which is heading to 0.",
+     "Near 3 the numerator is about 6 and the denominator is tiny, so $h$ is unbounded and the limit does not exist.",
+     "Nothing cancels: $x + 3$ and $x - 3$ are different factors.",
+     "Factoring helps with $\\frac{0}{0}$. Here the numerator is not 0 at $x = 3$, so there is no common factor to cancel."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-5",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "multi",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "choosing-limit-methods-s1",
+   "q": "Which functions must be rewritten (factored, rationalized or simplified) before their limit at $x = 3$ can be found by substitution?",
+   "options": [
+    "$f$",
+    "$g$",
+    "$h$",
+    "$k$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Rewriting is the tool for the indeterminate form $\\frac{0}{0}$. Only $f$ and $g$ give it.",
+    "options": [
+     "$f$ gives $\\frac{0}{0}$; factoring the numerator removes the zero factor.",
+     "$g$ gives $\\frac{0}{0}$; multiplying by the conjugate $\\sqrt{x + 1} + 2$ removes it.",
+     "$h$ gives $\\frac{6}{0}$. No rewriting helps: $h$ is unbounded near 3.",
+     "$k$ gives $\\frac{10}{6} = \\frac{5}{3}$ directly; substitution already works."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-6",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "choosing-limit-methods-s2",
+   "q": "Find $\\lim_{x \\to 1^-} p(x)$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That uses $x^2 + 1$, the formula for $x \\ge 1$. Approaching from the left, $x < 1$, so use the first piece."
+     },
+     {
+      "value": 0,
+      "why": "Substituting into the first piece gives $\\frac{0}{0}$, not 0. Factor: $\\frac{(x + 3)(x - 1)}{x - 1} = x + 3$, which is 4 at $x = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x < 1$, $p(x) = \\frac{(x + 3)(x - 1)}{x - 1} = x + 3$. So $\\lim_{x \\to 1^-} p(x) = 1 + 3 = 4$."
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-7",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "choosing-limit-methods-s2",
+   "q": "Find $\\lim_{x \\to 1^+} p(x)$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is the left-hand limit. From the right, $x > 1$, so $p(x) = x^2 + 1$, which approaches 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x > 1$, $p(x) = x^2 + 1$, a polynomial, so substitute: $1^2 + 1 = 2$."
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-8",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "single",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "choosing-limit-methods-s2",
+   "q": "Which statement about $\\lim_{x \\to 1} p(x)$ is true?",
+   "options": [
+    "It equals 2, because the value of the function $p(1)$ is 2",
+    "It equals 3, the average of the two one-sided limits",
+    "It does not exist: the one-sided limits are 4 and 2",
+    "It equals 4, the limit of the factored left-hand piece"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A two-sided limit exists when the left-hand and right-hand limits are equal. Here they are 4 and 2, so the limit does not exist.",
+    "options": [
+     "$p(1)$ is a value of the function. A limit describes the values near 1, from both sides.",
+     "Limits are never averaged. Unequal one-sided limits mean the limit does not exist.",
+     "The left-hand limit is 4 and the right-hand limit is 2. They differ, so there is no two-sided limit.",
+     "That is the left-hand limit. The right side heads to 2, so the two sides disagree."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-9",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "choosing-limit-methods-s2",
+   "q": "Find $\\lim_{x \\to -2} p(x)$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "That uses $x^2 + 1$. Near $x = -2$ the input is less than 1, so the first piece applies: $\\frac{4 - 4 - 3}{-3} = 1$."
+     },
+     {
+      "value": -1,
+      "why": "Check the signs: the numerator is $(-2)^2 + 2(-2) - 3 = -3$ and the denominator is $-2 - 1 = -3$, so the quotient is $+1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Near $-2$, $p(x) = \\frac{x^2 + 2x - 3}{x - 1}$, whose denominator is $-3$, not 0, at $x = -2$. Direct substitution works: $\\frac{-3}{-3} = 1$."
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-10",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "The expression $\\frac{x^2 - 16}{x - 4}$ equals a simpler expression at every $x \\ne 4$. Write that simpler expression (no fraction bar).",
+   "expr": {
+    "answer": "x + 4",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "lhs": "\\frac{x^2 - 16}{x - 4} =",
+    "mistakes": [
+     {
+      "expr": "x - 4",
+      "why": "Factor the difference of squares: $x^2 - 16 = (x - 4)(x + 4)$. Cancelling $x - 4$ leaves $x + 4$."
+     },
+     {
+      "expr": "x^2 - 4",
+      "why": "You cannot cancel a term from part of the numerator. Factor first: $(x - 4)(x + 4)$, then cancel the whole factor $x - 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{x^2 - 16}{x - 4} = \\frac{(x - 4)(x + 4)}{x - 4} = x + 4$ for $x \\ne 4$. So $\\lim_{x \\to 4} \\frac{x^2 - 16}{x - 4} = 8$."
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-11",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\lim_{x \\to 0} \\frac{\\frac{1}{x + 2} - \\frac{1}{2}}{x}$.",
+   "numeric": {
+    "answer": "-1/4",
+    "mistakes": [
+     {
+      "value": "1/4",
+      "why": "Watch the sign: $\\frac{1}{x + 2} - \\frac{1}{2} = \\frac{2 - (x + 2)}{2(x + 2)} = \\frac{-x}{2(x + 2)}$. The numerator is $-x$."
+     },
+     {
+      "value": "-1/2",
+      "why": "After cancelling $x$, the expression is $\\frac{-1}{2(x + 2)}$. At $x = 0$ the denominator is $2 \\cdot 2 = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Combine the small fractions over $2(x + 2)$: $\\frac{2 - (x + 2)}{2(x + 2)} = \\frac{-x}{2(x + 2)}$. Dividing by $x$ gives $\\frac{-1}{2(x + 2)}$ for $x \\ne 0$. Substitute: $-\\frac{1}{4}$."
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-12",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to 9} \\frac{x - 9}{\\sqrt{x} - 3}$.",
+   "numeric": {
+    "answer": 6,
+    "mistakes": [
+     {
+      "value": "1/6",
+      "why": "That is the reciprocal. Here the root is in the denominator: $\\frac{x - 9}{\\sqrt{x} - 3} = \\sqrt{x} + 3$, which is 6 at $x = 9$."
+     },
+     {
+      "value": 3,
+      "why": "The simplified expression is $\\sqrt{x} + 3$, and $\\sqrt{9} + 3 = 6$; both terms count."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Substitution gives $\\frac{0}{0}$. Since $x - 9 = (\\sqrt{x} - 3)(\\sqrt{x} + 3)$ for $x \\ge 0$, the expression equals $\\sqrt{x} + 3$ for $x \\ne 9$, which approaches $3 + 3 = 6$."
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-13",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "single",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Let $q(x) = \\frac{|x - 5|}{x - 5}$. Which is true about $\\lim_{x \\to 5} q(x)$?",
+   "options": [
+    "It equals $1$, because $|x - 5|$ is not negative for any $x$",
+    "It equals $0$, because the numerator approaches $0$",
+    "It does not exist, because $q$ grows without bound near $x = 5$",
+    "It does not exist; $q$ is $-1$ on the left, $1$ on the right"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For $x > 5$, $|x - 5| = x - 5$ and $q(x) = 1$. For $x < 5$, $|x - 5| = -(x - 5)$ and $q(x) = -1$. The one-sided limits, $-1$ and $1$, differ, so the limit does not exist.",
+    "options": [
+     "The numerator is not negative, but the denominator $x - 5$ is negative left of 5, which makes $q = -1$ there.",
+     "Both numerator and denominator approach 0; that is $\\frac{0}{0}$, which needs more work, not the answer 0.",
+     "The limit does fail to exist, but not by growing: $q$ only takes the values $-1$ and $1$.",
+     "Split at the break: $q = -1$ for $x < 5$ and $q = 1$ for $x > 5$. Unequal one-sided limits, so no limit."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-14",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes: \"$\\lim_{x \\to 1} \\frac{x^2 - 1}{x - 1}$: substituting gives $\\frac{0}{0}$, so the limit does not exist.\" Which correction is right?",
+   "options": [
+    "Rewrite: $\\frac{x^2 - 1}{x - 1} = x + 1$, so the limit is 2",
+    "$\\frac{0}{0}$ equals 1, so the limit of the quotient is 1",
+    "$\\frac{0}{0}$ equals 0, so the limit of the quotient is 0",
+    "It does not exist, but because of a jump at $x = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{0}{0}$ is an indeterminate form: it tells you nothing yet. Here $\\frac{(x - 1)(x + 1)}{x - 1} = x + 1$ for $x \\ne 1$, so the limit is 2.",
+    "options": [
+     "Factor and cancel: $x + 1 \\to 2$. Writing \"$\\frac{0}{0} = 2$\" would be wrong too; the 2 comes from the rewritten expression.",
+     "$\\frac{0}{0}$ is not a number. Treating it as 1 skips the rewriting step.",
+     "$\\frac{0}{0}$ is not 0. A zero numerator only gives 0 when the denominator is not also 0.",
+     "The expression equals $x + 1$ on both sides of 1, so there is no jump and the limit exists."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-15",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to 2} \\frac{x^3 - 8}{x - 2}$.",
+   "numeric": {
+    "answer": 12,
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "The difference of cubes factors as $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$, not $(x - 2)(x^2 + 4)$. Check by multiplying out."
+     },
+     {
+      "value": 4,
+      "why": "After cancelling, every term of $x^2 + 2x + 4$ counts: $4 + 4 + 4 = 12$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{x^3 - 8}{x - 2} = \\frac{(x - 2)(x^2 + 2x + 4)}{x - 2} = x^2 + 2x + 4$ for $x \\ne 2$. Substitute: $4 + 4 + 4 = 12$."
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-16",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to -1} \\frac{x^2 + 3x + 2}{x^2 - 1}$.",
+   "numeric": {
+    "answer": "-1/2",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "After cancelling $x + 1$ the expression is $\\frac{x + 2}{x - 1}$. At $x = -1$ the denominator is $-2$, so the value is negative."
+     },
+     {
+      "value": -1,
+      "why": "The numerator factors as $(x + 1)(x + 2)$: the numbers multiply to 2 and add to 3. That leaves $x + 2 = 1$ on top at $x = -1$, not $x + 3 = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Both parts are 0 at $x = -1$. Factor: $\\frac{(x + 1)(x + 2)}{(x + 1)(x - 1)} = \\frac{x + 2}{x - 1}$ for $x \\ne -1$. Substitute: $\\frac{1}{-2} = -\\frac{1}{2}$."
+   }
+  },
+  {
+   "id": "calc-choosing-limit-methods-17",
+   "unit": "unit-1",
+   "topic": "choosing-limit-methods",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the best first move for $\\lim_{x \\to 4} \\frac{x^2 + 9}{x + 4}$?",
+   "options": [
+    "Factor the numerator and cancel a common factor",
+    "Substitute $x = 4$: the denominator is 8, not 0",
+    "Multiply the top and bottom by a conjugate",
+    "Find the one-sided limits at $x = 4$ separately"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Always try substitution first. At $x = 4$ the denominator is $8 \\ne 0$, so the limit is $\\frac{25}{8}$ with no rewriting.",
+    "options": [
+     "$x^2 + 9$ does not factor over the real numbers, and there is no $\\frac{0}{0}$ to fix.",
+     "The expression is defined at and near 4, so substitution gives the limit: $\\frac{16 + 9}{8} = \\frac{25}{8}$.",
+     "A conjugate helps with a root in a $\\frac{0}{0}$ form; there is no root and no $\\frac{0}{0}$ here.",
+     "One-sided limits matter at a break or where the denominator is 0. Neither happens at $x = 4$."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,390 @@
+{
+ "stimuli": {
+  "math-functions-s1": {
+   "kind": "graph",
+   "title": "The graph of $g$",
+   "text": "The function $g$ is defined on $-3 \\le x \\le 4$. Its graph is a line segment from $(-3, 2)$ toward an open circle at $(1, -2)$, then a curved piece from the filled point $(1, 2)$ through $(3, 0)$ to $(4, 0.5)$.",
+   "plot": {
+    "label": "Graph of a piecewise function g on the interval from x = -3 to x = 4",
+    "width": 380,
+    "height": 300,
+    "x": [
+     -3.5,
+     4.5
+    ],
+    "y": [
+     -3,
+     3
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "cls": "s1",
+      "fn": "-x - 1",
+      "domain": [
+       -3,
+       1
+      ],
+      "label": "",
+      "ends": [
+       "closed",
+       "open"
+      ]
+     },
+     {
+      "cls": "s1",
+      "fn": "(x - 3)^2/2",
+      "domain": [
+       1,
+       4
+      ],
+      "label": "g",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-math-functions-1",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "math-functions-s1",
+   "q": "What is $g(1)$?",
+   "options": [
+    "$2$",
+    "$-2$",
+    "$0$",
+    "$g(1)$ is not defined"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = 1$ the filled dot is at height 2, so $g(1) = 2$. The open circle at $(1, -2)$ marks a point that is not on the graph.",
+    "options": [
+     "The filled dot at $x = 1$ sits at height 2.",
+     "That height belongs to the open circle, which is not part of the graph.",
+     "The curved piece reaches 0 at $x = 3$, not at $x = 1$.",
+     "There is a filled dot at $x = 1$, so $g(1)$ is defined."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-functions-2",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "math-functions-s1",
+   "q": "For how many values of $x$ in the domain is $g(x) = 0$?",
+   "options": [
+    "Two",
+    "One",
+    "Three",
+    "Four"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The graph meets the $x$-axis twice: on the line at $x = -1$ and on the curve at $x = 3$.",
+    "options": [
+     "The line crosses at $x = -1$ and the curve touches at $x = 3$.",
+     "Count the line's crossing at $x = -1$ as well as the curve's at $x = 3$.",
+     "Only two points of the graph have height 0; the open circle is at height $-2$.",
+     "The graph meets height 0 only twice; the open circle at $(1, -2)$ is not a crossing."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-functions-3",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "math-functions-s1",
+   "q": "What is the range of $g$?",
+   "options": [
+    "$-2 < y \\le 2$",
+    "$-2 \\le y \\le 2$",
+    "$0 \\le y \\le 2$",
+    "$-3 \\le y \\le 4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The line takes every height from 2 down toward $-2$, but $-2$ itself is the open circle, so it is left out. The curve's heights, from 0 to 2, are already inside. Range: $-2 < y \\le 2$.",
+    "options": [
+     "The line covers $(-2, 2]$; the curve's heights $[0, 2]$ add nothing new.",
+     "The height $-2$ occurs only at the open circle, which is not on the graph.",
+     "The line piece also gives every negative height down toward $-2$.",
+     "Those are the domain's endpoints; the range is about outputs (heights)."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-functions-4",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "math-functions-s1",
+   "q": "What is $g(g(4))$?",
+   "options": [
+    "$-1.5$",
+    "$0.5$",
+    "$0.25$",
+    "$3.125$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Work from the inside out. $g(4) = 0.5$. Then $g(0.5)$ uses the line, because $0.5 < 1$: $g(0.5) = -0.5 - 1 = -1.5$.",
+    "options": [
+     "$g(4) = 0.5$, and $g(0.5) = -0.5 - 1 = -1.5$ on the line.",
+     "That is only the inside step, $g(4)$. Feed 0.5 back into $g$.",
+     "That is $g(4) \\cdot g(4)$. A composition feeds one output into the function again; it does not multiply.",
+     "That uses the curved piece's formula at $x = 0.5$, but the curve only covers $1 \\le x \\le 4$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-functions-5",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = x^2 + 1$ and $g(x) = 2x - 3$. Find $f(g(x))$.",
+   "expr": {
+    "answer": "(2x-3)^2+1",
+    "vars": [
+     "x"
+    ],
+    "mode": "exact",
+    "lhs": "f(g(x)) =",
+    "mistakes": [
+     {
+      "expr": "2x^2-1",
+      "why": "That is $g(f(x)) = 2(x^2 + 1) - 3$. In $f(g(x))$, $g$ acts first: put $2x - 3$ into $f$."
+     },
+     {
+      "expr": "4x^2+10",
+      "why": "$(2x - 3)^2$ is not $4x^2 + 9$. Square the whole binomial: $(2x - 3)^2 = 4x^2 - 12x + 9$."
+     },
+     {
+      "expr": "2x^2-2",
+      "why": "Replace every $x$ in $f$ by the whole expression $(2x - 3)$, with parentheses: $f(g(x)) = (2x - 3)^2 + 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Replace $x$ in $f$ by $(2x - 3)$: $f(g(x)) = (2x - 3)^2 + 1$, which expands to $4x^2 - 12x + 10$. Either form is right."
+   }
+  },
+  {
+   "id": "calc-math-functions-6",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find an equation of the line through $(-1, 5)$ and $(3, -3)$. Write $y$ in terms of $x$.",
+   "expr": {
+    "answer": "-2x+3",
+    "vars": [
+     "x"
+    ],
+    "mode": "exact",
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "-x/2+9/2",
+      "why": "The slope is rise over run: $\\frac{-3 - 5}{3 - (-1)} = \\frac{-8}{4} = -2$, not run over rise."
+     },
+     {
+      "expr": "2x+7",
+      "why": "Check the sign of the slope: from $(-1, 5)$ to $(3, -3)$ the line goes down, so the slope is negative, $-2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Slope: $m = \\frac{-3 - 5}{3 - (-1)} = -2$. Point-slope form with $(-1, 5)$: $y - 5 = -2(x + 1)$, so $y = -2x + 3$. Check with $(3, -3)$: $-6 + 3 = -3$."
+   }
+  },
+  {
+   "id": "calc-math-functions-7",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the domain of $h(x) = \\frac{\\sqrt{x + 4}}{x - 1}$?",
+   "options": [
+    "$x \\ge -4$ and $x \\ne 1$",
+    "$x \\ge -4$",
+    "$x > -4$ and $x \\ne 1$",
+    "$x \\ne 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two rules: the square root needs $x + 4 \\ge 0$, so $x \\ge -4$; the denominator cannot be 0, so $x \\ne 1$.",
+    "options": [
+     "Both conditions: $x + 4 \\ge 0$ and $x - 1 \\ne 0$.",
+     "At $x = 1$ the denominator is 0, so 1 must be removed.",
+     "$x = -4$ is allowed: $\\sqrt{0} = 0$ and the denominator is $-5$.",
+     "For $x < -4$ the square root of a negative number is not a real number."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-functions-8",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The graph of $y = |x|$ is moved 3 units left and 2 units down. Which equation describes the new graph?",
+   "options": [
+    "$y = |x + 3| - 2$",
+    "$y = |x - 3| - 2$",
+    "$y = |x + 3| + 2$",
+    "$y = |x - 2| + 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Replacing $x$ by $x + 3$ moves a graph 3 units left; subtracting 2 outside moves it 2 units down. The point of the V moves from $(0, 0)$ to $(-3, -2)$.",
+    "options": [
+     "Left 3 is $x + 3$ inside; down 2 is $-2$ outside.",
+     "$x - 3$ inside moves the graph right, not left.",
+     "$+2$ outside moves the graph up, not down.",
+     "This mixes up which number goes inside and the directions: it moves the graph right 2 and up 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-functions-9",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which lines are the vertical and horizontal asymptotes of $r(x) = \\frac{2x + 1}{x - 4}$?",
+   "options": [
+    "$x = 4$ and $y = 2$",
+    "$x = -4$ and $y = 2$",
+    "$x = 4$ and $y = 0$",
+    "$x = -\\frac{1}{2}$ and $y = 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The denominator is 0 at $x = 4$ while the numerator is 9 there, so $x = 4$ is a vertical asymptote. Top and bottom have the same degree, so for large $|x|$ the outputs settle near the ratio of leading coefficients, $\\frac{2}{1} = 2$.",
+    "options": [
+     "Denominator 0 at $x = 4$ (numerator 9), and equal degrees give $y = \\frac{2}{1}$.",
+     "Solve $x - 4 = 0$: the vertical asymptote is at $x = 4$, not $-4$.",
+     "$y = 0$ happens when the top has lower degree than the bottom. Here the degrees are equal.",
+     "$x = -\\frac{1}{2}$ makes the numerator 0: that is where the graph crosses the $x$-axis."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-functions-10",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\begin{cases} x^2 & x < 2 \\\\ 3x - 1 & x \\ge 2 \\end{cases}$. What is $f(2) + f(-1)$?",
+   "options": [
+    "$6$",
+    "$5$",
+    "$1$",
+    "$4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x = 2$ satisfies $x \\ge 2$, so $f(2) = 3(2) - 1 = 5$. $x = -1$ satisfies $x < 2$, so $f(-1) = (-1)^2 = 1$. The sum is 6.",
+    "options": [
+     "$f(2) = 5$ from the second piece and $f(-1) = 1$ from the first.",
+     "That uses $x^2$ at $x = 2$, giving $4 + 1$. The boundary point 2 belongs to the piece with $x \\ge 2$.",
+     "That uses $3x - 1$ at $x = -1$, giving $5 + (-4)$. Since $-1 < 2$, use $x^2$.",
+     "$(-1)^2 = 1$, not $-1$: the parentheses keep the sign inside the square."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-functions-11",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the slope of the line through the points of the graph of $f(x) = x^2 - 3x$ where $x = 1$ and $x = 4$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "Slope is rise over run: change in $y$ divided by change in $x$, $\\frac{4 - (-2)}{4 - 1} = 2$."
+     },
+     {
+      "value": -2,
+      "why": "Subtract in the same order on top and bottom: $\\frac{f(4) - f(1)}{4 - 1}$, not $\\frac{f(1) - f(4)}{4 - 1}$."
+     },
+     {
+      "value": 6,
+      "why": "That is the rise only. Divide by the run, $4 - 1 = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(1) = 1 - 3 = -2$ and $f(4) = 16 - 12 = 4$. Slope $= \\frac{4 - (-2)}{4 - 1} = \\frac{6}{3} = 2$."
+   }
+  },
+  {
+   "id": "calc-math-functions-12",
+   "unit": "skills-math",
+   "topic": "math-functions",
+   "type": "single",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The function $h(x) = (x^2 + 5)^3$ can be written as $h(x) = f(g(x))$. Which choice of $f$ and $g$ works?",
+   "options": [
+    "$f(x) = x^3$ and $g(x) = x^2 + 5$",
+    "$f(x) = x^2 + 5$ and $g(x) = x^3$",
+    "$f(x) = x^3 + 5$ and $g(x) = x^2$",
+    "$f(x) = 3x$ and $g(x) = x^2 + 5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The inside step is $x^2 + 5$; the outside step cubes the result. So $g(x) = x^2 + 5$ and $f(x) = x^3$: $f(g(x)) = (x^2 + 5)^3$.",
+    "options": [
+     "$f(g(x)) = (x^2 + 5)^3$: inside $x^2 + 5$, outside cube.",
+     "This is the reverse order: $f(g(x)) = (x^3)^2 + 5 = x^6 + 5$.",
+     "$f(g(x)) = (x^2)^3 + 5 = x^6 + 5$, which adds 5 after cubing.",
+     "$f(g(x)) = 3(x^2 + 5)$ multiplies by 3 instead of cubing."
+    ]
+   }
+  }
+ ]
+}

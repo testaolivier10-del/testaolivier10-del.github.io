@@ -1,0 +1,17 @@
+{
+ "about": "Related rates trainer (docs/apcalc-spec.md section 6). The scenes and every number live in calculus/assets/tools/math/related-rates.js; contexts unlock with their topics. Checked by scripts/lib/apcalc-tool-checks/related-rates.mjs.",
+ "slug": "related-rates",
+ "kind": "simulator",
+ "topic": "related-rates-intro",
+ "intro": "<p>Five real scenes: a ladder sliding down a wall, a cone tank filling, a shadow under a streetlight, a ripple spreading on a pond and a balloon rising in front of an observer. One quantity changes at the rate you set. Drag the moving part to pick a moment, or press Play, and read every quantity and its rate change together. The blue arrow is the rate you set; the crimson one is the rate it causes.</p>",
+ "howItWorksTitle": "How the rates are computed",
+ "howItWorks": "<ul><li><b>One relation, true at every moment.</b> Each scene has an equation that holds the whole time: $x^2 + y^2 = 169$ for the ladder, $V = \\frac{1}{3}\\pi r^2 h$ with $r = 0.4h$ for the cone, $\\frac{15}{x+s} = \\frac{6}{s}$ for the shadow, $A = \\pi r^2$ for the ripple, $\\tan\\theta = \\frac{h}{500}$ for the balloon.</li><li><b>Differentiate with respect to time.</b> Every letter that changes brings its own rate through the chain rule: $\\frac{d}{dt}\\left(y^2\\right) = 2y\\frac{dy}{dt}$.</li><li><b>Then substitute.</b> Put in this moment's values only after differentiating, and solve for the rate you want. Its sign says which way the quantity is moving; its unit is the quantity's unit per unit of time.</li><li>The readouts use the exact formulas from the chain rule at every frame, so they agree with the equations under Why. Play moves time forward exactly (the cone adds volume at the set rate and finds the depth from it).</li><li>Graph &amp; numbers shows the watched rate at every position of the moving part, with the given rate held fixed: the ladder's top speeds up as it falls, the cone's level slows as it rises, and the shadow grows at one steady rate.</li></ul>",
+ "partTopics": { "rel": "related-rates-intro", "diff": "related-rates-intro", "mean": "solving-related-rates" },
+ "contexts": [
+  { "id": "ladder", "topic": "related-rates-intro", "kind": "ladder" },
+  { "id": "ripple", "topic": "related-rates-intro", "kind": "ripple" },
+  { "id": "shadow", "topic": "solving-related-rates", "kind": "shadow" },
+  { "id": "cone", "topic": "solving-related-rates", "kind": "cone" },
+  { "id": "balloon", "topic": "solving-related-rates", "kind": "balloon" }
+ ]
+}

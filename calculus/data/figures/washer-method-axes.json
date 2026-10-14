@@ -1,0 +1,7 @@
+{
+ "washer-solid-x-axis": {
+  "file": "figures/washer-solid-x-axis.svg", "ext": "svg", "w": 760, "h": 440,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Left: the region between y = √x (top) and y = 1 (bottom) from x = 1 to 4, shaded, with a thin vertical rectangle and arrows from the x-axis to the curve (outer radius R) and to the line (inner radius r). Right: the solid made by revolving the region about the x-axis, a flared horn with a round hole of radius 1 along the axis, with one washer highlighted in blue: R = √x reaches the curve and r = 1 reaches the line, both from the axis. Below: V = the integral from 1 to 4 of π[(√x)² − 1²] dx = 9π/2."
+ }
+}

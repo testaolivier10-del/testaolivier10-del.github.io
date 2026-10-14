@@ -1,0 +1,55 @@
+<p>Motion is one story the derivative tells. It tells many others: how fast a medicine leaves the blood, how fast a town grows, how much one more kilogram of coffee adds to a roaster's cost. The calculus is identical in every case. What you must get right is the language: which quantity, increasing or decreasing, how fast, and in what units. This page also handles the second derivative in context, the rate at which a rate changes.</p>
+
+<h2>One pattern, many settings</h2>
+<table class="compare">
+<tr><th>Quantity</th><th>Its derivative means</th><th>Units of the derivative</th></tr>
+<tr><td>temperature $H(t)$, °C, $t$ in minutes</td><td>how fast it warms or cools</td><td>°C per minute</td></tr>
+<tr><td>population $P(t)$, people, $t$ in years</td><td>how fast the town grows</td><td>people per year</td></tr>
+<tr><td>cost $C(x)$, dollars, $x$ in kilograms</td><td>cost of one more kilogram (approximately)</td><td>dollars per kilogram</td></tr>
+<tr><td>concentration $C(t)$, mg/L, $t$ in hours</td><td>how fast the medicine level changes</td><td>mg/L per hour</td></tr>
+</table>
+<p>The sentence is always built the same way: "At [input value], [the quantity] is increasing (or decreasing) at [the size of the derivative] [units]."</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A town's population is $P(t) = 500e^{0.02t}$ people, $t$ years after 2020. Find and interpret $P'(10)$.</p>
+<p>By the chain rule, $P'(t) = 500 \cdot 0.02\,e^{0.02t} = 10e^{0.02t}$, so $P'(10) = 10e^{0.2} \approx 12.2$.</p>
+<p>In 2030 the population is increasing at about 12.2 people per year.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> The concentration of a medicine is $C(t) = \frac{8t}{t^2 + 4}$ mg/L, $t$ hours after a dose. Find and interpret $C'(1)$ and $C'(3)$.</p>
+<p>Quotient rule: $C'(t) = \frac{8(t^2 + 4) - 8t \cdot 2t}{(t^2 + 4)^2} = \frac{32 - 8t^2}{(t^2 + 4)^2}$.</p>
+<p>$C'(1) = \frac{24}{25} = 0.96$: one hour after the dose, the concentration is increasing at 0.96 mg/L per hour.</p>
+<p>$C'(3) = \frac{32 - 72}{169} = -\frac{40}{169} \approx -0.24$: after three hours it is decreasing at about 0.24 mg/L per hour.</p>
+</div>
+
+<h2>Rates of rates</h2>
+<p>A derivative is a function, so it has its own rate of change, the second derivative. In context, its units carry the input unit twice: if $H$ is in °C and $t$ in minutes, then $H''(t)$ is in °C per minute per minute.</p>
+<figure id="fig-rates" data-fig="warming-rate-panels"><figcaption>Top: a warming drink, $H(t)$ in °F. Bottom: its rate of change $H'(t)$, measured in °F per minute, positive but shrinking, so $H''(t) < 0$.</figcaption></figure>
+<p>Read the two signs separately. The sign of $H'$ says whether the temperature rises or falls. The sign of $H''$ says whether that rate is growing or shrinking:</p>
+<table class="compare">
+<tr><th>$Q'$</th><th>$Q''$</th><th>In words</th></tr>
+<tr><td>$+$</td><td>$+$</td><td>increasing, faster and faster</td></tr>
+<tr><td>$+$</td><td>$-$</td><td>increasing, more and more slowly</td></tr>
+<tr><td>$-$</td><td>$-$</td><td>decreasing, faster and faster</td></tr>
+<tr><td>$-$</td><td>$+$</td><td>decreasing, more and more slowly</td></tr>
+</table>
+<div class="worked">
+<p><b>Worked example 3.</b> Soup cools by $H(t) = 20 + 70e^{-0.04t}$ °C. Describe the cooling at $t = 10$.</p>
+<p>$H'(t) = -2.8e^{-0.04t}$, so $H'(10) \approx -1.877$ °C per minute: the soup is cooling.</p>
+<p>$H''(t) = 0.112e^{-0.04t}$, so $H''(10) \approx 0.075$ °C per minute per minute: positive, so the rate of cooling is easing off.</p>
+<p>Together: at 10 minutes the soup is cooling at about 1.88 °C per minute, and the cooling is slowing down.</p>
+</div>
+<p>Watch for a function that is <i>already</i> a rate. If water leaks out of a tank at $L(t)$ liters per hour, then $L'(3) = -2$ means the leak <i>rate</i> is decreasing at 2 liters per hour per hour. It says nothing directly about the amount of water left.</p>
+
+<h2>Chained quantities</h2>
+<p>Sometimes one quantity depends on another that depends on time. A balloon's temperature reading depends on its altitude, and its altitude depends on time. The chain rule multiplies the rates, and the units cancel the same way:</p>
+<p>$$\frac{d}{dt}T(h(t)) = T'(h(t)) \cdot h'(t), \qquad \frac{\text{°F}}{\text{foot}} \cdot \frac{\text{feet}}{\text{minute}} = \frac{\text{°F}}{\text{minute}}$$</p>
+<p>Checking that the units cancel is a fast way to catch a setup error.</p>
+
+<h2>Slips that cost points</h2>
+<ul>
+<li>Reporting the amount ($H(10)$) when the question asks for its rate ($H'(10)$).</li>
+<li>Giving a second derivative the units of the first ("°C per minute" for $H''$).</li>
+<li>Reading the sign of $Q''$ as whether $Q$ itself increases.</li>
+<li>Dropping the chain rule factor in models like $e^{-0.04t}$, which also flips the sign.</li>
+<li>On a calculator question, rounding before the end, or giving fewer than three decimal places.</li>
+</ul>

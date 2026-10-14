@@ -1,0 +1,73 @@
+{
+ "topic": "change-at-an-instant",
+ "hook": "A speedometer shows 64 miles per hour at this very instant. But a speed is distance divided by time, and in an instant no time passes and no distance is covered. Zero divided by zero is not a number. So what does the speedometer mean? Answering that question is where calculus begins.",
+ "prereq": [
+  {
+   "q": "What is the slope of the line through $(1, 4)$ and $(3, 10)$?",
+   "options": [
+    "$3$",
+    "$\\frac{1}{3}$",
+    "$6$",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{10 - 4}{3 - 1} = \\frac{6}{2} = 3$.",
+   "review": "math-functions"
+  },
+  {
+   "q": "If $s(t) = 16t^2$, what is $s(1.5)$?",
+   "options": [
+    "$36$",
+    "$24$",
+    "$48$",
+    "$12$"
+   ],
+   "correct": 0,
+   "why": "$16(1.5)^2 = 16(2.25) = 36$.",
+   "review": "math-functions"
+  }
+ ],
+ "figure": {
+  "figure": "instant-chords",
+  "caption": "A falling stone, $s(t) = 16t^2$: the average speed from $t = 1$ over shorter and shorter intervals closes in on 32 feet per second."
+ },
+ "chain": [
+  {
+   "cause": "Over an interval [a, b], divide the change in a quantity by the change in time",
+   "effect": "the average rate of change $\\frac{f(b) - f(a)}{b - a}$, the slope of the line through two points of the graph"
+  },
+  {
+   "cause": "At a single instant the interval has length 0",
+   "effect": "the quotient becomes zero divided by zero, which has no value"
+  },
+  {
+   "cause": "Shrink the interval around the instant instead",
+   "effect": "the average rates close in on one number"
+  },
+  {
+   "cause": "That number is what the average rates approach",
+   "effect": "it is the instantaneous rate of change: the speed the speedometer shows"
+  }
+ ],
+ "ideas": [
+  "The <b>average rate of change</b> of $f$ over $[a, b]$ is $\\frac{f(b) - f(a)}{b - a}$: the slope of the line through $(a, f(a))$ and $(b, f(b))$. Its units are output units per input unit.",
+  "A rate of change at one instant cannot be computed as a quotient, because the interval would have length 0.",
+  "The <b>instantaneous rate of change</b> at $t = a$ is the number the average rates over shorter and shorter intervals around $a$ close in on.",
+  "From a table, estimate the rate at an instant with the shortest interval that contains it; from both sides, average the two closest rates.",
+  "A negative rate means the quantity is decreasing; its size tells how fast."
+ ],
+ "misconception": {
+  "wrong": "The average rate over $[0, 5]$ tells how fast the quantity is changing at $t = 5$.",
+  "right": "An average rate describes a whole interval. The rate at one instant can be very different; estimate it from the shortest interval around that instant, and interpret averages with the words \"on average over the interval\"."
+ },
+ "check": [
+  "calc-change-at-an-instant-1",
+  "calc-change-at-an-instant-2",
+  "calc-change-at-an-instant-3",
+  "calc-change-at-an-instant-4",
+  "calc-change-at-an-instant-10",
+  "calc-change-at-an-instant-11",
+  "calc-change-at-an-instant-14"
+ ],
+ "summary": "An average rate of change, $\\frac{f(b) - f(a)}{b - a}$, is a slope over an interval, with units of output per input. A rate at one instant cannot be a quotient, since nothing changes in zero time; instead, the averages over shrinking intervals close in on one number, the instantaneous rate of change. The next topic gives that closing in a name and a notation."
+}

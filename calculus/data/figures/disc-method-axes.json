@@ -1,0 +1,7 @@
+{
+ "disc-solid-x-axis": {
+  "file": "figures/disc-solid-x-axis.svg", "ext": "svg", "w": 760, "h": 440,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Left: the region under y = √x from x = 0 to 4, shaded, with one thin vertical rectangle whose height is √x. Right: the solid made by revolving the region about the x-axis, a rounded horn drawn in 3D with the x-axis through its center. The rectangle sweeps out one thin disc, highlighted in blue, with radius r = √x. Below: V = the integral from 0 to 4 of π(√x)² dx = 8π."
+ }
+}

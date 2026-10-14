@@ -1,0 +1,598 @@
+{
+ "stimuli": {
+  "rewriting-integrands-s1": {
+   "kind": "graph",
+   "title": "The integrand $\\frac{x^2 + 3x + 5}{x + 1}$",
+   "text": "Consider $\\int \\frac{x^2 + 3x + 5}{x + 1}\\,dx$ for $x > -1$. The graph shows the integrand and the line $y = x + 2$.",
+   "plot": {
+    "label": "Graph of y = (x squared + 3x + 5)/(x + 1) for x from -0.8 to 5, with the dashed line y = x + 2 below it",
+    "width": 380,
+    "height": 260,
+    "x": [
+     -1.2,
+     5.2
+    ],
+    "y": [
+     -1,
+     12
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(x^2 + 3x + 5)/(x + 1)",
+      "domain": [
+       -0.75,
+       5
+      ]
+     },
+     {
+      "fn": "x + 2",
+      "domain": [
+       -1.2,
+       5.2
+      ],
+      "cls": "s2",
+      "dashed": true
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": -1
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       3.3,
+       7.1
+      ],
+      "text": "integrand",
+      "anchor": "middle"
+     },
+     {
+      "at": [
+       4.3,
+       4.7
+      ],
+      "text": "y = x + 2",
+      "anchor": "middle"
+     }
+    ]
+   }
+  },
+  "rewriting-integrands-s2": {
+   "kind": "graph",
+   "title": "The integrand $\\frac{1}{x^2 - 2x + 10}$",
+   "text": "Consider $\\int \\frac{1}{x^2 - 2x + 10}\\,dx$. The denominator has no real zeros, so the integrand is defined for every $x$.",
+   "plot": {
+    "label": "Graph of y = 1/(x squared - 2x + 10), a low bell-shaped curve with its peak 1/9 at x = 1",
+    "width": 380,
+    "height": 220,
+    "x": [
+     -5,
+     7
+    ],
+    "y": [
+     -0.02,
+     0.13
+    ],
+    "xStep": 1,
+    "yStep": 0.02,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "1/(x^2 - 2x + 10)",
+      "domain": [
+       -5,
+       7
+      ],
+      "label": "integrand"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       0.1111111111111111
+      ],
+      "label": "(1, 1/9)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-rewriting-integrands-1",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rewriting-integrands-s1",
+   "q": "Which is $\\frac{x^2 + 3x + 5}{x + 1}$ after long division?",
+   "options": [
+    "$x + 2 + \\frac{3}{x + 1}$",
+    "$x + 4 + \\frac{1}{x + 1}$",
+    "$x + 2 + \\frac{5}{x + 1}$",
+    "$x + 3 + \\frac{5}{x}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x^2 + 3x + 5 = (x + 1)(x + 2) + 3$, so $\\frac{x^2 + 3x + 5}{x + 1} = x + 2 + \\frac{3}{x + 1}$. The graph shows it: the curve approaches the line $y = x + 2$.",
+    "options": [
+     "Correct: $(x + 1)(x + 2) = x^2 + 3x + 2$, which leaves a remainder of 3.",
+     "A sign slip: subtracting $x(x + 1) = x^2 + x$ from $x^2 + 3x$ leaves $2x$, not $4x$.",
+     "The constant 5 is not the remainder: $5 - 2 = 3$ is left after subtracting $2(x + 1)$.",
+     "That divides each term by $x$, not by $x + 1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-2",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rewriting-integrands-s1",
+   "q": "Find $\\int \\frac{x^2 + 3x + 5}{x + 1}\\,dx$ for $x > -1$. Include $+ C$.",
+   "expr": {
+    "answer": "x^2/2 + 2x + 3ln(abs(x + 1))",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0,
+     4
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{x^2 + 3x + 5}{x + 1}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "x^2/2 + 2x + 3ln(abs(x))",
+      "why": "$\\int \\frac{3}{x + 1}\\,dx = 3\\ln|x + 1|$; the inside is $x + 1$, not $x$."
+     },
+     {
+      "expr": "(x^3/3 + 3x^2/2 + 5x)/(x^2/2 + x)",
+      "why": "The top and the bottom cannot be integrated separately. Divide first: $x + 2 + \\frac{3}{x + 1}$."
+     },
+     {
+      "expr": "x^2/2 + 2x",
+      "why": "The remainder term $\\frac{3}{x + 1}$ is missing; it integrates to $3\\ln|x + 1|$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int \\left(x + 2 + \\frac{3}{x + 1}\\right)dx = \\frac{x^2}{2} + 2x + 3\\ln|x + 1| + C$."
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-3",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rewriting-integrands-s1",
+   "q": "Using the division above, evaluate the definite integral $\\int_0^2 \\frac{x^2 + 3x + 5}{x + 1}\\,dx$.",
+   "numeric": {
+    "answer": "6 + 3*ln(3)",
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "The remainder term contributes $3\\ln|x + 1|\\Big|_0^2 = 3\\ln 3$."
+     },
+     {
+      "value": "6 + 3*ln(2)",
+      "why": "At $x = 2$, $x + 1 = 3$: the log term is $3\\ln 3 - 3\\ln 1 = 3\\ln 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left(\\frac{x^2}{2} + 2x + 3\\ln(x + 1)\\right)\\Big|_0^2 = (2 + 4 + 3\\ln 3) - (0 + 0 + 3\\ln 1) = 6 + 3\\ln 3$."
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-4",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rewriting-integrands-s1",
+   "q": "Why is long division the right first step for this integrand?",
+   "options": [
+    "The top and bottom can each be integrated on their own",
+    "The top's degree, 2, is at least the bottom's, 1",
+    "The top is the derivative of the bottom",
+    "The bottom has no real zeros, so arctan applies"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When the numerator's degree is at least the denominator's, divide first. Here $\\frac{x^2 + 3x + 5}{x + 1} = x + 2 + \\frac{3}{x + 1}$, whose pieces are a polynomial and $\\frac{3}{x + 1}$.",
+    "options": [
+     "A quotient never splits that way; the integral of a quotient is not the quotient of the integrals.",
+     "Correct: division leaves a polynomial plus a remainder over $x + 1$, and both pieces are basic forms.",
+     "The derivative of $x + 1$ is 1, not $x^2 + 3x + 5$. That pattern calls for $\\ln|u|$, and it does not occur here.",
+     "$x + 1$ is zero at $x = -1$. Arctan forms need an irreducible quadratic on the bottom."
+    ]
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-5",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rewriting-integrands-s2",
+   "q": "Complete the square in the denominator: $x^2 - 2x + 10 =$",
+   "options": [
+    "$(x - 1)^2 + 9$",
+    "$(x - 2)^2 + 6$",
+    "$(x + 1)^2 + 9$",
+    "$(x - 1)^2 + 10$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Half of $-2$ is $-1$, and $(-1)^2 = 1$: $x^2 - 2x + 10 = (x^2 - 2x + 1) + 9 = (x - 1)^2 + 9$. The peak of the graph at $x = 1$ matches.",
+    "options": [
+     "Correct: $(x - 1)^2 = x^2 - 2x + 1$, and $10 - 1 = 9$.",
+     "Use half the coefficient of $x$: half of $-2$ is $-1$, so $(x - 1)^2$.",
+     "$(x + 1)^2 = x^2 + 2x + 1$ has the wrong sign of the middle term.",
+     "$(x - 1)^2$ already contains a 1, so only 9 is left over: $10 - 1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-6",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "rewriting-integrands-s2",
+   "q": "Find $\\int \\frac{1}{x^2 - 2x + 10}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "(1/3)arctan((x - 1)/3)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     5
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{1}{x^2 - 2x + 10}\\,dx =",
+    "answerTex": "\\frac{1}{3}\\arctan\\left(\\frac{x - 1}{3}\\right)",
+    "mistakes": [
+     {
+      "expr": "arctan((x - 1)/3)",
+      "why": "With $u = \\frac{x - 1}{3}$, $dx = 3\\,du$ and $(x - 1)^2 + 9 = 9(u^2 + 1)$: the result has a factor $\\frac{3}{9} = \\frac{1}{3}$."
+     },
+     {
+      "expr": "arctan(x - 1)",
+      "why": "That would fit $\\frac{1}{(x - 1)^2 + 1}$. Here the constant is 9, so scale by 3: $\\frac{1}{3}\\arctan\\left(\\frac{x - 1}{3}\\right)$."
+     },
+     {
+      "expr": "ln(x^2 - 2x + 10)",
+      "why": "The $\\ln$ form needs the derivative of the bottom, $2x - 2$, on top. With 1 on top, complete the square and use arctan."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int \\frac{dx}{(x - 1)^2 + 9}$. Let $u = \\frac{x - 1}{3}$, so $x - 1 = 3u$ and $dx = 3\\,du$: $\\int \\frac{3\\,du}{9u^2 + 9} = \\frac{1}{3}\\int \\frac{du}{u^2 + 1} = \\frac{1}{3}\\arctan\\left(\\frac{x - 1}{3}\\right) + C$."
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-7",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "rewriting-integrands-s2",
+   "q": "Find $\\int_1^4 \\frac{1}{x^2 - 2x + 10}\\,dx$.",
+   "numeric": {
+    "answer": "pi/12",
+    "mistakes": [
+     {
+      "value": "pi/4",
+      "why": "That is $\\arctan 1 - \\arctan 0$ without the factor $\\frac{1}{3}$."
+     },
+     {
+      "value": "atan(3)/3",
+      "why": "At $x = 4$, $\\frac{x - 1}{3} = 1$, not 3: substitute into $\\frac{x - 1}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{3}\\arctan\\left(\\frac{x - 1}{3}\\right)\\Big|_1^4 = \\frac{1}{3}(\\arctan 1 - \\arctan 0) = \\frac{1}{3}\\cdot\\frac{\\pi}{4} = \\frac{\\pi}{12}$."
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-8",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rewriting-integrands-s2",
+   "q": "Why does this integrand lead to arctan rather than to a logarithm?",
+   "options": [
+    "Any fraction with a quadratic on the bottom gives arctan",
+    "The bottom has no real zeros and the top is a constant",
+    "The top is the derivative of the bottom",
+    "The degree of the top is at least the degree of the bottom"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x^2 - 2x + 10$ has discriminant $4 - 40 < 0$, so it is $(x - 1)^2 + 9$, a sum of squares. With a constant on top, $\\int \\frac{du}{u^2 + a^2} = \\frac{1}{a}\\arctan\\frac{u}{a}$ applies.",
+    "options": [
+     "Not if the top is the bottom's derivative ($\\ln$) or the bottom factors; arctan needs a sum of squares.",
+     "Correct: completing the square gives $(x - 1)^2 + 9$, a shifted and scaled $u^2 + 1$.",
+     "The derivative of $x^2 - 2x + 10$ is $2x - 2$, not 1; that pattern would give $\\ln$.",
+     "That calls for long division. Here the top has degree 0, less than 2."
+    ]
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-9",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Write the top as $(x^2 + 1) - 1$, then antidifferentiate $\\int \\frac{x^2}{x^2 + 1}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "x - arctan(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{x^2}{x^2 + 1}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "x - ln(x^2 + 1)",
+      "why": "$\\int \\frac{1}{x^2 + 1}\\,dx = \\arctan x$; the $\\ln$ form needs $2x$ on top."
+     },
+     {
+      "expr": "x + arctan(x)",
+      "why": "$\\frac{x^2}{x^2 + 1} = 1 - \\frac{1}{x^2 + 1}$: the arctan term is subtracted."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide: $\\frac{x^2}{x^2 + 1} = \\frac{(x^2 + 1) - 1}{x^2 + 1} = 1 - \\frac{1}{x^2 + 1}$. Integrate: $x - \\arctan x + C$."
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-10",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Split off the quotient, then antidifferentiate $\\int \\frac{2x + 3}{x + 1}\\,dx$ for $x > -1$. Include $+ C$.",
+   "expr": {
+    "answer": "2x + ln(abs(x + 1))",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0,
+     4
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{2x + 3}{x + 1}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "2x + 3ln(abs(x + 1))",
+      "why": "$2x + 3 = 2(x + 1) + 1$: the remainder is 1, not 3."
+     },
+     {
+      "expr": "(x^2 + 3x)/(x^2/2 + x)",
+      "why": "Integrate after dividing, not the top and bottom separately."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{2x + 3}{x + 1} = 2 + \\frac{1}{x + 1}$, so the integral is $2x + \\ln|x + 1| + C$."
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-11",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\frac{1}{x^2 + 4x + 5}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "arctan(x + 2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -4,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{1}{x^2 + 4x + 5}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "arctan(x + 4)",
+      "why": "Half of 4 is 2: $x^2 + 4x + 5 = (x + 2)^2 + 1$."
+     },
+     {
+      "expr": "ln(x^2 + 4x + 5)",
+      "why": "The top would have to be $2x + 4$ for the $\\ln$ form. With 1 on top, complete the square."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x^2 + 4x + 5 = (x + 2)^2 + 1$. With $u = x + 2$: $\\int \\frac{du}{u^2 + 1} = \\arctan(x + 2) + C$."
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-12",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\frac{1}{x^2 + 9}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "(1/3)arctan(x/3)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -4,
+     4
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{1}{x^2 + 9}\\,dx =",
+    "answerTex": "\\frac{1}{3}\\arctan\\frac{x}{3}",
+    "mistakes": [
+     {
+      "expr": "arctan(x/3)",
+      "why": "$\\frac{1}{x^2 + 9} = \\frac{1}{9}\\cdot\\frac{1}{(x/3)^2 + 1}$; with $u = \\frac{x}{3}$, $dx = 3\\,du$, which leaves $\\frac{1}{3}$."
+     },
+     {
+      "expr": "(1/9)arctan(x/3)",
+      "why": "The $\\frac{1}{9}$ is offset by $dx = 3\\,du$: $\\frac{3}{9} = \\frac{1}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int \\frac{dx}{x^2 + 9}$: let $x = 3u$, $dx = 3\\,du$: $\\int \\frac{3\\,du}{9u^2 + 9} = \\frac{1}{3}\\arctan u + C = \\frac{1}{3}\\arctan\\frac{x}{3} + C$."
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-13",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which integral is best started by completing the square?",
+   "options": [
+    "$\\int \\frac{1}{x^2 + 6x + 13}\\,dx$",
+    "$\\int \\frac{2x + 6}{x^2 + 6x + 13}\\,dx$",
+    "$\\int \\frac{x^2}{x + 3}\\,dx$",
+    "$\\int \\frac{1}{(x + 3)^2}\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Complete the square when the bottom is a quadratic with no real zeros and the top is a constant: $x^2 + 6x + 13 = (x + 3)^2 + 4$, giving $\\frac{1}{2}\\arctan\\frac{x + 3}{2} + C$.",
+    "options": [
+     "Correct: the quadratic has no real zeros and the top is constant: $(x + 3)^2 + 4$.",
+     "The top is exactly the derivative of the bottom: substitute $u = x^2 + 6x + 13$ to get $\\ln$.",
+     "The top's degree is higher than the bottom's: long division comes first.",
+     "This is already a power of $x + 3$: $-(x + 3)^{-1} + C$ by substitution."
+    ]
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-14",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Divide the top by $x^2 + 1$ first, then evaluate $\\int_0^1 \\frac{x^3 + x + 1}{x^2 + 1}\\,dx$.",
+   "numeric": {
+    "answer": "1/2 + pi/4",
+    "mistakes": [
+     {
+      "value": "1/2 + ln(2)/2",
+      "why": "$\\int_0^1 \\frac{1}{x^2 + 1}\\,dx = \\arctan 1 = \\frac{\\pi}{4}$. The $\\ln$ form needs $2x$ on top."
+     },
+     {
+      "value": "1/2",
+      "why": "The remainder term $\\frac{1}{x^2 + 1}$ adds $\\frac{\\pi}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x^3 + x + 1 = x(x^2 + 1) + 1$, so the integrand is $x + \\frac{1}{x^2 + 1}$. Then $\\left(\\frac{x^2}{2} + \\arctan x\\right)\\Big|_0^1 = \\frac{1}{2} + \\frac{\\pi}{4}$."
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-15",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\frac{x^3 - 1}{x - 1}\\,dx$ for $x \\ne 1$.",
+   "options": [
+    "$\\frac{x^4/4 - x}{x^2/2 - x} + C$",
+    "$\\frac{x^3}{3} - \\frac{x^2}{2} + x + C$",
+    "$\\frac{x^3}{3} + \\frac{x^2}{2} + x + C$",
+    "$\\frac{x^3}{3} - \\ln|x - 1| + C$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Divide (or factor a difference of cubes): $\\frac{x^3 - 1}{x - 1} = x^2 + x + 1$. Integrate: $\\frac{x^3}{3} + \\frac{x^2}{2} + x + C$.",
+    "options": [
+     "The top and the bottom cannot be integrated separately.",
+     "A sign slip in the factoring: $x^3 - 1 = (x - 1)(x^2 + x + 1)$, with $+x$ in the middle.",
+     "Correct: $x^3 - 1 = (x - 1)(x^2 + x + 1)$, so the integrand is $x^2 + x + 1$.",
+     "The fraction does not split into $x^3$ minus a piece over $x - 1$; divide or factor first."
+    ]
+   }
+  },
+  {
+   "id": "calc-rewriting-integrands-16",
+   "unit": "unit-6",
+   "topic": "rewriting-integrands",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\int \\frac{1}{x^2 + 8x + 20}\\,dx$.",
+   "options": [
+    "$\\frac{1}{2}\\arctan\\left(\\frac{x + 8}{2}\\right) + C$",
+    "$\\frac{1}{2}\\arctan\\left(\\frac{x + 4}{2}\\right) + C$",
+    "$\\arctan\\left(\\frac{x + 4}{2}\\right) + C$",
+    "$\\frac{1}{4}\\arctan\\left(\\frac{x + 4}{2}\\right) + C$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x^2 + 8x + 20 = (x + 4)^2 + 4$. With $u = x + 4$: $\\int \\frac{du}{u^2 + 2^2} = \\frac{1}{2}\\arctan\\frac{x + 4}{2} + C$.",
+    "options": [
+     "Half of 8 is 4: complete the square as $(x + 4)^2 + 4$.",
+     "Correct: $(x + 4)^2 + 4$, with $a = 2$.",
+     "With $a = 2$, the formula $\\int \\frac{du}{u^2 + a^2} = \\frac{1}{a}\\arctan\\frac{u}{a}$ has the factor $\\frac{1}{2}$.",
+     "The factor is $\\frac{1}{a} = \\frac{1}{2}$, not $\\frac{1}{a^2}$."
+    ]
+   }
+  }
+ ]
+}

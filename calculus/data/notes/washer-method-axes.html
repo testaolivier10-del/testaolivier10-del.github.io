@@ -1,0 +1,51 @@
+<h2>Slices with a hole</h2>
+<p>The disc method worked because every rectangle in the region stood on the axis. Spin it, and it sweeps out a solid disc. Now take a region that does not reach the axis, such as the area between $y = \sqrt{x}$ and $y = 1$ for $1 \le x \le 4$. Every vertical rectangle starts at height 1 and goes up to $\sqrt{x}$. Spin that rectangle about the $x$-axis and it sweeps out a ring: a disc of radius $\sqrt{x}$ with a hole of radius 1 cut out of the middle. That ring is a <b>washer</b>.</p>
+<figure id="fig-washer" data-fig="washer-solid-x-axis"><figcaption>Each rectangle between $y = 1$ and $y = \sqrt{x}$ sweeps out a washer. Both radii start at the axis: $R = \sqrt{x}$ to the far edge, $r = 1$ to the near edge.</figcaption></figure>
+
+<h2>Two radii, both from the axis</h2>
+<p>A washer has two radii, and both start at the axis of rotation:</p>
+<ul>
+<li>the <b>outer radius</b> $R$ reaches the edge of the region farther from the axis;</li>
+<li>the <b>inner radius</b> $r$ reaches the edge nearer to the axis, where the hole ends.</li>
+</ul>
+<p>The washer's area is the big disc minus the hole: $\pi R^2 - \pi r^2$. So the <b>washer method</b> says</p>
+$$V = \pi\int_a^b \left(R(x)^2 - r(x)^2\right)\,dx.$$
+<p>About the $x$-axis, with $f$ on top and $g$ on the bottom (both nonnegative), $R = f(x)$ and $r = g(x)$. A disc is just a washer with $r = 0$.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> The region bounded by $y = \sqrt{x}$, $y = 1$ and $x = 4$ is revolved about the $x$-axis. Find the volume.</p>
+<p><b>Limits.</b> $\sqrt{x} = 1$ at $x = 1$; the line $x = 4$ closes the region. So $1 \le x \le 4$.</p>
+<p><b>Radii.</b> The curve is farther from the axis: $R = \sqrt{x}$. The line is nearer: $r = 1$.</p>
+<p><b>Volume.</b></p>
+$$V = \pi\int_1^4 \left[(\sqrt{x})^2 - 1^2\right]\,dx = \pi\int_1^4 (x - 1)\,dx = \pi\left[\frac{x^2}{2} - x\right]_1^4 = \pi\left(4 + \frac{1}{2}\right) = \frac{9\pi}{2}.$$
+</div>
+
+<h2>Difference of squares, not square of the difference</h2>
+<p>The most common washer error is writing $\pi\int (R - r)^2\,dx$. It treats the region's height as the radius of a solid disc, as if the region had been slid down to the axis. In the example it gives $\pi\int_1^4 (\sqrt{x} - 1)^2\,dx = \frac{7\pi}{6}$, about a quarter of the true volume. The ring is far from the axis, so it sweeps out much more than a disc of the same width would.</p>
+<table>
+<thead><tr><th>Ring with $R = 3$, $r = 2$</th><th>Expression</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Correct area</td><td>$\pi R^2 - \pi r^2$</td><td>$5\pi$</td></tr>
+<tr><td>Square of the difference</td><td>$\pi(R - r)^2$</td><td>$\pi$</td></tr>
+<tr><td>Hole added instead of removed</td><td>$\pi(R^2 + r^2)$</td><td>$13\pi$</td></tr>
+</tbody>
+</table>
+
+<h2>About the $y$-axis</h2>
+<p>Revolving about the $y$-axis gives horizontal washers stacked in $y$. Write each curve as $x$ in terms of $y$. The curve farther from the $y$-axis (larger $x$) gives $R$, the nearer one gives $r$, and the limits are $y$-values.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> The region between $y = 2x$ and $y = x^2$ is revolved about the $y$-axis. Find the volume.</p>
+<p><b>Rewrite.</b> $y = 2x$ becomes $x = \frac{y}{2}$; $y = x^2$ becomes $x = \sqrt{y}$. They meet at $y = 0$ and $y = 4$.</p>
+<p><b>Radii.</b> At $y = 1$: $\sqrt{1} = 1$ and $\frac{1}{2} = 0.5$. The parabola is farther from the $y$-axis, so $R = \sqrt{y}$ and $r = \frac{y}{2}$. (About the $x$-axis it was the other way round: the line was farther. Which curve is "outer" depends on the axis.)</p>
+<p><b>Volume.</b> $V = \pi\int_0^4 \left(y - \frac{y^2}{4}\right)\,dy = \pi\left(8 - \frac{16}{3}\right) = \frac{8\pi}{3}$.</p>
+</div>
+
+<h2>Checklist</h2>
+<ol>
+<li>Sketch the region and the axis. Does the region touch the axis all along? If not, use washers.</li>
+<li>Draw one rectangle perpendicular to the axis. Label its far end and near end.</li>
+<li>$R$ = distance from the axis to the far end; $r$ = distance to the near end.</li>
+<li>Write $\pi\int (R^2 - r^2)$ with the right variable and limits, then integrate.</li>
+</ol>
+<p>On a calculator, type $R$ and $r$ in parentheses, square each, subtract, and multiply by $\pi$, for example $\pi\int_{-b}^{b} \left[(2 + \cos x)^2 - (x^2)^2\right]\,dx$. Store the crossings and give three decimal places.</p>

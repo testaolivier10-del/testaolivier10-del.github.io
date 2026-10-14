@@ -1,0 +1,55 @@
+<p>By now you know every differentiation rule on the AP® Calculus AB exam: the power rule, the derivatives of sine, cosine, $e^x$ and $\ln x$, the product, quotient and chain rules, implicit differentiation and the inverse rules. The hard part is no longer a rule. It is deciding, in front of a long expression, which rule goes first. This page gives one question that always answers that, and practices it on the kinds of expressions the exam likes.</p>
+
+<h2>The one question: what is the last operation?</h2>
+<p>Imagine evaluating the expression at a number with a calculator. The operation you would do <b>last</b> is the outermost layer, and it names the first rule.</p>
+<figure id="fig-rules" data-fig="derivative-rule-chooser"><figcaption>The last operation names the first rule; then ask the same question of each piece.</figcaption></figure>
+<table class="compare">
+<tr><th>Expression</th><th>Last operation</th><th>First rule</th></tr>
+<tr><td>$x^4 - 3\cos x + e^x$</td><td>adding and subtracting</td><td>term by term</td></tr>
+<tr><td>$x^2\sin(3x)$</td><td>multiplying $x^2$ by $\sin(3x)$</td><td>product rule</td></tr>
+<tr><td>$\frac{e^{2x}}{x + 1}$</td><td>dividing</td><td>quotient rule</td></tr>
+<tr><td>$\left(xe^x\right)^3$</td><td>cubing</td><td>chain rule</td></tr>
+<tr><td>$\sin^2\left(x^3\right)$</td><td>squaring</td><td>chain rule</td></tr>
+<tr><td>$\ln\left(x^2 + 1\right)$</td><td>taking the log</td><td>chain rule</td></tr>
+</table>
+<p>After the first rule, each piece is a smaller expression. Ask the same question of each piece. Keep going until only basic derivatives remain. Each layer gets exactly one rule.</p>
+
+<h2>Worked examples</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Differentiate $y = x^2\sin(3x)$.</p>
+<p>Last operation: a product. Product rule: $y' = (x^2)'\sin(3x) + x^2\left(\sin(3x)\right)'$.</p>
+<p>The piece $\sin(3x)$ is a composition: chain rule, $\left(\sin(3x)\right)' = 3\cos(3x)$.</p>
+<p>So $y' = 2x\sin(3x) + 3x^2\cos(3x)$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Differentiate $y = \left(xe^x\right)^3$.</p>
+<p>Last operation: cubing. Chain rule: $y' = 3\left(xe^x\right)^2 \cdot \left(xe^x\right)'$.</p>
+<p>The inside $xe^x$ is a product: $\left(xe^x\right)' = e^x + xe^x$.</p>
+<p>So $y' = 3\left(xe^x\right)^2\left(e^x + xe^x\right)$. There is no need to simplify further; the exam accepts this form, and extra algebra only adds risk.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Values from a table: $f(1) = 2$, $f'(1) = 3$. Find $D'(1)$ for $D(x) = x \cdot f(x^2)$.</p>
+<p>Last operation: multiplying $x$ by $f(x^2)$. Product rule: $D'(x) = 1 \cdot f(x^2) + x \cdot \left(f(x^2)\right)'$.</p>
+<p>The piece $f(x^2)$ is a composition: $\left(f(x^2)\right)' = f'(x^2) \cdot 2x$.</p>
+<p>At $x = 1$: $D'(1) = f(1) + 1 \cdot f'(1) \cdot 2 = 2 + 6 = 8$.</p>
+</div>
+
+<h2>Rewrite first, when it removes a rule</h2>
+<p>Some quotients are really sums of powers in disguise. Before reaching for the quotient rule, check whether the bottom is a single power of $x$ or a constant:</p>
+<ul>
+<li>$\frac{5}{x^3} = 5x^{-3}$, so its derivative is $-15x^{-4}$. No quotient rule.</li>
+<li>$\frac{x^2 + 3}{\sqrt{x}} = x^{3/2} + 3x^{-1/2}$, so its derivative is $\frac{3}{2}x^{1/2} - \frac{3}{2}x^{-3/2}$.</li>
+<li>$\frac{\sin x}{4} = \frac{1}{4}\sin x$, so its derivative is $\frac{1}{4}\cos x$.</li>
+</ul>
+<p>Logarithm rules can help too: $\ln\left(x^3\right) = 3\ln x$. But do not rewrite just to rewrite. If the quotient rule is quick, use it.</p>
+
+<h2>Beyond formulas</h2>
+<p>Two more situations name their own method. An equation that mixes $x$ and $y$, such as $x^2 + xy + y^2 = 7$, calls for implicit differentiation. A question about the slope of an inverse, $\left(f^{-1}\right)'(a)$, calls for $\frac{1}{f'\left(f^{-1}(a)\right)}$. And when the functions come as a table or a graph, the rules are the same; you simply read each value at the right input. A corner on a graph (where the function has no derivative) means a rule that needs $f'$ there cannot be used.</p>
+
+<h2>Slips that cost points</h2>
+<ul>
+<li><b>Multiplying derivatives.</b> $(fg)' \ne f'g'$ and $\left(\frac{f}{g}\right)' \ne \frac{f'}{g'}$.</li>
+<li><b>Reversing the quotient rule's numerator.</b> It is $f'g - fg'$; the derivative of the top comes first.</li>
+<li><b>Missing a layer.</b> Count the layers and check that your answer has one factor or term for each.</li>
+<li><b>Three-factor products.</b> $(fgh)' = f'gh + fg'h + fgh'$: each factor takes a turn being differentiated.</li>
+</ul>

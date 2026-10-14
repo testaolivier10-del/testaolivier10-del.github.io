@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Squeeze Theorem — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="Some limits resist every tool from the last few topics. Substitution gives nonsense, there is nothing to factor, and a table jumps around.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/squeeze-theorem.html">
+<meta property="og:title" content="The Squeeze Theorem — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="Some limits resist every tool from the last few topics. Substitution gives nonsense, there is nothing to factor, and a table jumps around.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/squeeze-theorem.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/squeeze-theorem.html#reading",
+      "name": "The Squeeze Theorem",
+      "url": "https://levlprep.com/calculus/notes/squeeze-theorem.html",
+      "description": "Some limits resist every tool from the last few topics. Substitution gives nonsense, there is nothing to factor, and a table jumps around.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "the squeeze theorem ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Limits and Continuity",
+          "item": "https://levlprep.com/calculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Squeeze Theorem: notes",
+          "item": "https://levlprep.com/calculus/notes/squeeze-theorem.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="squeeze-theorem" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Limits and Continuity</b><small>16 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 16 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-at-an-instant"><a href="change-at-an-instant.html"><span class="bk-toc-n">1.1</span>Can Change Happen at an Instant?</a></li><li data-toc-t="limit-notation"><a href="limit-notation.html"><span class="bk-toc-n">1.2</span>What a Limit Is and How to Write It</a></li><li data-toc-t="limits-from-plots"><a href="limits-from-plots.html"><span class="bk-toc-n">1.3</span>Reading Limits from a Graph</a></li><li data-toc-t="limits-from-tables"><a href="limits-from-tables.html"><span class="bk-toc-n">1.4</span>Estimating Limits from Tables</a></li><li data-toc-t="limit-laws"><a href="limit-laws.html"><span class="bk-toc-n">1.5</span>Limit Laws</a></li><li data-toc-t="limit-algebra"><a href="limit-algebra.html"><span class="bk-toc-n">1.6</span>Limits by Algebra: Factor, Rationalize, Simplify</a></li><li data-toc-t="choosing-limit-methods"><a href="choosing-limit-methods.html"><span class="bk-toc-n">1.7</span>Choosing a Way to Find a Limit</a></li><li class="current" data-toc-t="squeeze-theorem"><a href="#main" aria-current="page"><span class="bk-toc-n">1.8</span>The Squeeze Theorem</a><div class="bk-toc-onpage"><p>On this page</p><a href="#trapped-between-two-functions">Trapped between two functions</a><a href="#the-squeeze-theorem">The squeeze theorem</a><a href="#building-the-bounds">Building the bounds</a><a href="#the-special-limit-of-sine-over">The special limit of sine over its input</a><a href="#writing-the-justification">Writing the justification</a></div></li><li data-toc-t="limit-representations"><a href="limit-representations.html"><span class="bk-toc-n">1.9</span>Limits Across Graphs, Tables and Formulas</a></li><li data-toc-t="discontinuity-types"><a href="discontinuity-types.html"><span class="bk-toc-n">1.10</span>Types of Discontinuity</a></li><li data-toc-t="continuity-at-a-point"><a href="continuity-at-a-point.html"><span class="bk-toc-n">1.11</span>Continuity at a Point</a></li><li data-toc-t="continuity-on-intervals"><a href="continuity-on-intervals.html"><span class="bk-toc-n">1.12</span>Continuity on an Interval</a></li><li data-toc-t="removing-discontinuities"><a href="removing-discontinuities.html"><span class="bk-toc-n">1.13</span>Removing a Discontinuity</a></li><li data-toc-t="infinite-limits"><a href="infinite-limits.html"><span class="bk-toc-n">1.14</span>Infinite Limits and Vertical Asymptotes</a></li><li data-toc-t="limits-at-infinity"><a href="limits-at-infinity.html"><span class="bk-toc-n">1.15</span>Limits at Infinity and Horizontal Asymptotes</a></li><li data-toc-t="intermediate-value-theorem"><a href="intermediate-value-theorem.html"><span class="bk-toc-n">1.16</span>The Intermediate Value Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Differentiation: Definition and Fundamental Properties</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Limits and Continuity</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Squeeze Theorem: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/squeeze-theorem.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.8 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">The Squeeze Theorem</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="squeeze-theorem">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fsqueeze-theorem.html&amp;title=The%20Squeeze%20Theorem%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/squeeze-theorem.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Some <a class="gl" href="../notes/limit-notation.html" data-c="limit">limits</a> resist every tool from the last few topics. Substitution gives nonsense, there is nothing to factor, and a table jumps around. The <span class="gl" tabindex="0" data-c="squeeze-theorem">squeeze theorem</span> handles many of these. Instead of finding the function's limit directly, you trap the function between two simpler <a class="gl" href="../notes/math-functions.html" data-c="function">functions</a> and let them do the work.</p>
+
+<h2 id="trapped-between-two-functions">Trapped between two functions</h2>
+<p>Look at <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(x) = x \sin\left(\frac{1}{x}\right)</annotation></semantics></math> near 0. As <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> shrinks, <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{x}</annotation></semantics></math> grows, so the <a class="gl" href="../notes/math-trig.html" data-c="trig-function">sine</a> swings between <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math> faster and faster. You cannot substitute <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>, and the graph has infinitely many wiggles near 0.</p>
+<figure id="fig-squeeze"  class="calc-figure"><div class="calc-figimg" data-fig="squeeze-x-sin"><img src="../figures/squeeze-x-sin.svg" alt="The graph of f(x) = x sin(1/x) for x between −0.4 and 0.4, x not 0. It wiggles faster and faster near 0 but stays between the lines y = |x| and y = −|x|. Both bounds reach 0 at x = 0, so f is squeezed to 0: its limit at 0 is 0. An open circle at the origin marks that f(0) is not defined." width="760" height="440" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> <math class="calc-m"><semantics><mrow><mi>x</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">x \sin\left(\frac{1}{x}\right)</annotation></semantics></math> stays between <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">-|x|</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|x|</annotation></semantics></math>, which both close in on 0. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>But every wiggle stays inside the lines <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">y = |x|</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">y = -|x|</annotation></semantics></math>. Those two lines meet at the origin. However wildly <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> swings, it is pinned between two graphs that both approach 0. So <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> must approach 0 too.</p>
+
+<h2 id="the-squeeze-theorem">The squeeze theorem</h2>
+<p>Here is the statement. Suppose that for every <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> near <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> (except possibly at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> itself)</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>≤</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>≤</mo><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(x) \le f(x) \le h(x)</annotation></semantics></math></p>
+<p>and that <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to c} g(x) = L</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to c} h(x) = L</annotation></semantics></math>. Then <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to c} f(x) = L</annotation></semantics></math>.</p>
+<p>Notice what the theorem needs and what it does not.</p>
+<ul>
+<li>It needs the inequality only <b>near</b> <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>, on some open interval around it.</li>
+<li>It needs the two bounds to have the <b>same</b> limit. If they approach different numbers, the theorem gives no conclusion at all.</li>
+<li>It does not need <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(c)</annotation></semantics></math>. The function may be undefined at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>, as <math class="calc-m"><semantics><mrow><mi>x</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">x \sin\left(\frac{1}{x}\right)</annotation></semantics></math> is.</li>
+<li>It does not need a formula for <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math>. Facts about its bounds are enough.</li>
+</ul>
+
+<h2 id="building-the-bounds">Building the bounds</h2>
+<p>Most bounds start from what you know about sine and cosine: for every real <math class="calc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>≤</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1 \le \sin\theta \le 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>≤</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1 \le \cos\theta \le 1</annotation></semantics></math>. Multiply through by a factor that is never negative and the inequality keeps its direction.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><msup><mi>x</mi><mn>2</mn></msup><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} x^2 \sin\left(\frac{1}{x}\right)</annotation></semantics></math>.</p>
+<p>Start with <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>≤</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1 \le \sin\left(\frac{1}{x}\right) \le 1</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \ne 0</annotation></semantics></math>.</p>
+<p>Multiply by <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math>, which is not negative, so the inequalities keep their direction: <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>≤</mo><msup><mi>x</mi><mn>2</mn></msup><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>≤</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">-x^2 \le x^2 \sin\left(\frac{1}{x}\right) \le x^2</annotation></semantics></math>.</p>
+<p>Both bounds approach 0: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} (-x^2) = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} x^2 = 0</annotation></semantics></math>.</p>
+<p>By the squeeze theorem, <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><msup><mi>x</mi><mn>2</mn></msup><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} x^2 \sin\left(\frac{1}{x}\right)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>.</p>
+</div>
+<p>Be careful with a factor of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. If <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &lt; 0</annotation></semantics></math>, multiplying by <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> flips the inequalities. That is why the figure uses <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|x|</annotation></semantics></math>: since <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">|x| \ge 0</annotation></semantics></math>, we get <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo><mo>≤</mo><mi>x</mi><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>≤</mo><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">-|x| \le x \sin\left(\frac{1}{x}\right) \le |x|</annotation></semantics></math> on both sides of 0.</p>
+
+<h2 id="the-special-limit-of-sine-over">The special limit of sine over its input</h2>
+<p>A table suggests that <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sin x}{x}</annotation></semantics></math> approaches 1 as <math class="calc-m"><semantics><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \to 0</annotation></semantics></math>: at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">x = 0.1</annotation></semantics></math> it is about <math class="calc-m"><semantics><mrow><mn>0.9983</mn></mrow><annotation encoding="application/x-tex">0.9983</annotation></semantics></math>, at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">x = 0.01</annotation></semantics></math> about <math class="calc-m"><semantics><mrow><mn>0.99998</mn></mrow><annotation encoding="application/x-tex">0.99998</annotation></semantics></math>. The squeeze theorem proves it. Comparing two triangles and a sector of the <a class="gl" href="../notes/math-trig.html" data-c="unit-circle">unit circle</a> shows that, for <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> near 0 but not 0,</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>≤</mo><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mi>x</mi></mfrac><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\cos x \le \frac{\sin x}{x} \le 1</annotation></semantics></math></p>
+<p>As <math class="calc-m"><semantics><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \to 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\cos x \to 1</annotation></semantics></math>, and the upper bound is the constant 1. Both bounds approach 1, so</p>
+<p><math class="calc-m" display="block"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mi>x</mi></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} \frac{\sin x}{x} = 1</annotation></semantics></math></p>
+<p>Two warnings. First, this uses <a class="gl" href="../notes/math-trig.html" data-c="radian">radians</a>. In degrees the limit would be <math class="calc-m"><semantics><mrow><mfrac><mi>π</mi><mn>180</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\pi}{180}</annotation></semantics></math>, which is one reason calculus always works in radians. Second, the input of the sine must match the denominator.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>4</mn><mi>x</mi><mo stretchy="false">)</mo></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} \frac{\sin(4x)}{x}</annotation></semantics></math>.</p>
+<p>The sine's input is <math class="calc-m"><semantics><mrow><mn>4</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">4x</annotation></semantics></math>, so build <math class="calc-m"><semantics><mrow><mn>4</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">4x</annotation></semantics></math> underneath: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>4</mn><mi>x</mi><mo stretchy="false">)</mo></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sin(4x)}{x}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn><mo>⋅</mo><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>4</mn><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mn>4</mn><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">= 4 \cdot \frac{\sin(4x)}{4x}</annotation></semantics></math>.</p>
+<p>As <math class="calc-m"><semantics><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \to 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mn>4</mn><mi>x</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">4x \to 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>4</mn><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mn>4</mn><mi>x</mi></mrow></mfrac><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{\sin(4x)}{4x} \to 1</annotation></semantics></math>.</p>
+<p>The limit is <math class="calc-m"><semantics><mrow><mn>4</mn><mo>⋅</mo><mn>1</mn><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">4 \cdot 1 = 4</annotation></semantics></math>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mn>1</mn><mo>−</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} \frac{1 - \cos x}{x}</annotation></semantics></math>.</p>
+<p>Multiply top and bottom by <math class="calc-m"><semantics><mrow><mn>1</mn><mo>+</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">1 + \cos x</annotation></semantics></math> and use <math class="calc-m"><semantics><mrow><mn>1</mn><mo>−</mo><msup><mi>cos</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><msup><mi>sin</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">1 - \cos^2 x = \sin^2 x</annotation></semantics></math>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mn>1</mn><mo>−</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mi>x</mi></mfrac><mo>=</mo><mfrac><mrow><msup><mi>sin</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mrow><mi>x</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mi>x</mi></mfrac><mo>⋅</mo><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1 - \cos x}{x} = \frac{\sin^2 x}{x(1 + \cos x)} = \frac{\sin x}{x} \cdot \frac{\sin x}{1 + \cos x}</annotation></semantics></math></p>
+<p>The first factor approaches 1 and the second approaches <math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>2</mn></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{0}{2} = 0</annotation></semantics></math>. The limit is <math class="calc-m"><semantics><mrow><mn>1</mn><mo>⋅</mo><mn>0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">1 \cdot 0 = 0</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="writing-the-justification">Writing the justification</h2>
+<p>When a question says "justify", give all three pieces in words and symbols:</p>
+<ol>
+<li>The inequality, and where it holds: "For <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \ne 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>≤</mo><msup><mi>x</mi><mn>2</mn></msup><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>≤</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">-x^2 \le x^2 \sin\left(\frac{1}{x}\right) \le x^2</annotation></semantics></math>."</li>
+<li>The limits of both bounds: "<math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} (-x^2) = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} x^2 = 0</annotation></semantics></math>."</li>
+<li>The conclusion with the theorem's name: "Therefore, by the squeeze theorem, <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><msup><mi>x</mi><mn>2</mn></msup><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} x^2 \sin\left(\frac{1}{x}\right)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>."</li>
+</ol>
+<p>A justification that gives only one bound, or that finds the value of the function at the point, misses the idea. One bound allows many limits; the value at the point plays no part in a limit.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:squeeze-theorem">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="math-trig.html"><span>&larr; Previous</span><b>Trigonometry and the Unit Circle</b></a><a class="tb-chapter-link next" href="limit-representations.html"><span>Next &rarr;</span><b>Limits Across Graphs, Tables and Formulas</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:squeeze-theorem">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

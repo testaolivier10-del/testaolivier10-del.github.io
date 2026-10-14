@@ -1,0 +1,5 @@
+{
+ "infinite-limit": {
+  "def": "A limit in which the values of $f(x)$ grow without bound as $x$ approaches $c$: $\\lim_{x \\to c} f(x) = \\infty$ (or $-\\infty$). It is a way of describing a limit that does not exist; it gives the graph a vertical asymptote $x = c$."
+ }
+}

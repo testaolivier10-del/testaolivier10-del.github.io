@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 6 (docs/apcalc-architecture.md, \"Justification trainer\"). Every number is recomputed in scripts/lib/apcalc-exams.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "unit": "unit-6",
+   "id": "u6-left-sum-underestimate",
+   "topic": "riemann-sums",
+   "practice": "1.F",
+   "skill": "behavior",
+   "title": "A left sum with unequal widths",
+   "context": "<p>Water flows into a tank at an increasing rate $r(t)$ liters per minute. Selected values are in the table.</p><table class=\"calc-data\"><tr><th scope=\"row\">$t$ (minutes)</th><td>0</td><td>2</td><td>5</td><td>9</td></tr><tr><th scope=\"row\">$r(t)$ (L/min)</th><td>4</td><td>7</td><td>9</td><td>12</td></tr></table>",
+   "prompt": "<b>Approximate</b> $\\int_0^9 r(t)\\,dt$ with a left Riemann sum using the three subintervals in the table. Is it an overestimate or an underestimate? <b>Explain</b>.",
+   "checklist": [
+    "Uses each subinterval's own width: $2 \\cdot 4 + 3 \\cdot 7 + 4 \\cdot 9$",
+    "Gets $2(4) + 3(7) + 4(9) = 65$ liters, with the unit of the accumulated amount",
+    "Says it is an underestimate because $r$ is increasing, so each left height is the smallest on its subinterval"
+   ],
+   "earns": {
+    "answer": "$\\int_0^9 r(t)\\,dt \\approx 2 \\cdot r(0) + 3 \\cdot r(2) + 4 \\cdot r(5) = 2(4) + 3(7) + 4(9) = 65$ liters. Since $r$ is increasing, the value at the left end of each subinterval is the least on that subinterval, so each rectangle lies under the graph and 65 is an underestimate.",
+    "why": "It uses the unequal widths, writes the sum before the number, and ties the conclusion to $r$ increasing."
+   },
+   "misses": {
+    "answer": "$3(4 + 7 + 9) = 60$ liters, an underestimate because it is a left sum.",
+    "why": "The widths are 2, 3 and 4, not 3 each. And \"left sum\" is not a reason: a left sum overestimates a decreasing function. The reason is that $r$ is increasing."
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-integral-meaning",
+   "topic": "definite-integral-notation",
+   "practice": "3.F",
+   "skill": "context",
+   "title": "What an integral of a rate means",
+   "context": "<p>Cars pass a toll booth at the rate $R(t)$ cars per minute, $t$ minutes after 8 a.m. $\\int_2^8 R(t)\\,dt = 45$.</p>",
+   "prompt": "<b>Interpret</b> $\\int_2^8 R(t)\\,dt = 45$ in the context of the problem, with units.",
+   "checklist": [
+    "Names the quantity: the number of cars that pass the booth",
+    "Names the time interval: from $t = 2$ to $t = 8$ minutes (8:02 to 8:08 a.m.)",
+    "Gives the unit of the accumulated amount, cars, not cars per minute"
+   ],
+   "earns": {
+    "answer": "45 cars pass the toll booth between $t = 2$ and $t = 8$ minutes after 8 a.m., that is, from 8:02 to 8:08.",
+    "why": "Quantity, interval and units are all there; the integral of a rate is the amount that builds up."
+   },
+   "misses": {
+    "answer": "The rate of cars passing the booth is 45 cars per minute.",
+    "why": "The integral of a rate is not a rate. It is the number of cars over an interval, and the answer names no interval."
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-accumulation-relative-max",
+   "topic": "accumulation-behavior",
+   "practice": "3.E",
+   "skill": "accumulation",
+   "title": "An extremum of an accumulation function",
+   "context": "<p>The function $f$ is continuous, with $f(t) > 0$ on $(0, 3)$ and $f(t) < 0$ on $(3, 7)$. Let $g(x) = \\int_0^x f(t)\\,dt$.</p>",
+   "prompt": "Does $g$ have a relative maximum, a relative minimum, or neither at $x = 3$? <b>Justify</b> your answer.",
+   "checklist": [
+    "Uses the Fundamental Theorem: $g'(x) = f(x)$",
+    "Says $g' = f$ changes from positive to negative at $x = 3$",
+    "Concludes $g$ has a relative maximum at $x = 3$"
+   ],
+   "earns": {
+    "answer": "By the Fundamental Theorem of Calculus, $g'(x) = f(x)$. $g' = f$ changes from positive to negative at $x = 3$, so $g$ has a relative maximum at $x = 3$.",
+    "why": "It names the function that changes sign ($g'$, which is $f$) and the direction of the change."
+   },
+   "misses": {
+    "answer": "$g$ has a relative maximum at $x = 3$ because $f(3) = 0$ and the graph of $f$ crosses the axis there.",
+    "why": "The reason is the sign change of $g'$; \"$f(3) = 0$\" alone fits a minimum too, and \"the graph crosses\" does not say which function or in which direction."
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-lower-limit-above",
+   "topic": "ftc-definite-integrals",
+   "practice": "1.E",
+   "skill": "accumulation",
+   "title": "When the upper limit is below the lower",
+   "context": "<p>Let $g(x) = 5 + \\int_4^x f(t)\\,dt$, where $f$ is continuous and $\\int_1^4 f(t)\\,dt = 6$.</p>",
+   "prompt": "<b>Find</b> $g(1)$. Show the work that leads to your answer.",
+   "checklist": [
+    "Writes $g(1) = 5 + \\int_4^1 f(t)\\,dt$",
+    "Reverses the limits: $\\int_4^1 f(t)\\,dt = -\\int_1^4 f(t)\\,dt = -6$",
+    "Keeps the starting value 5 and gets $g(1) = 5 - 6 = -1$"
+   ],
+   "earns": {
+    "answer": "$g(1) = 5 + \\int_4^1 f(t)\\,dt = 5 - \\int_1^4 f(t)\\,dt = 5 - 6 = -1$.",
+    "why": "It keeps the starting value 5 and changes the sign when the limits are reversed."
+   },
+   "misses": {
+    "answer": "$g(1) = 5 + \\int_1^4 f(t)\\,dt = 5 + 6 = 11$.",
+    "why": "The integral in $g(1)$ runs from 4 down to 1, so it is the negative of $\\int_1^4 f(t)\\,dt$. Swapping the limits without changing the sign gives the wrong value."
+   }
+  }
+ ]
+}

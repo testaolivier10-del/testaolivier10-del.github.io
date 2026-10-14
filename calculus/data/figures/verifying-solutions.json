@@ -1,0 +1,12 @@
+{
+ "solution-family-check": {
+  "file": "figures/solution-family-check.svg",
+  "ext": "svg",
+  "w": 620,
+  "h": 480,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph, drawn from its function by scripts/apcalc-figures/unit-7-8a.mjs",
+  "alt": "Five curves y = x + 1 + Ce^x for C = −1, −0.5, 0, 0.5 and 1 on −3 ≤ x ≤ 2. The C = 0 curve is the line y = x + 1, drawn in crimson. At x = 0.5 each curve carries a short black segment whose slope is y − 0.5, the value of y − x there, showing that every curve satisfies dy/dx = y − x."
+ }
+}

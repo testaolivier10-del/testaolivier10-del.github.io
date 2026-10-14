@@ -124,7 +124,11 @@ const SHELL_BUDGETS = [
      the sixth course in every generated course list, its premium.js entry,
      ranks, tutor starters, search source and the theme tint. Measured 287.0 KB
      (from 286.6). */
-  ['site', 288],
+  /* 288 -> 288.5 for registering AP® Calculus AB (docs/apcalc-spec.md, Phase 0):
+     the seventh course in every generated course list, its premium.js entry,
+     ranks, tutor starters, search source and the theme tint. Measured 287.9 KB
+     (from 287.0 with the AP® Physics 1 launch changes). */
+  ['site', 288.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -140,7 +144,8 @@ const SHELL_BUDGETS = [
      primary row, the stepper's Next tone and focus rules, one-line pills, segment contrast. Only tool pages
      load tool-studio.*; other course pages do not pay for it. Measured 21.2 KB. */
   /* 21.5 -> 22 (honest labels, docs/tools-calm.md): the named second-tab button in the dock. */
-  ['assets/course', 22],
+  // 22 -> 25.5 (2026-10-13): Tool Studio phone layout and the Enlarge view (docs/tools-calm.md, "Phones").
+  ['assets/course', 25.5],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -298,6 +303,16 @@ const SHELL_BUDGETS = [
   /* AP® Physics 1 (physics/, a fork of the AP® Chemistry runtime). Before
      any unit is published; Chemistry's 52 is the reference. */
   ['physics', 52],
+  /* AP® Calculus AB (calculus/, a fork of the AP® Physics 1 runtime), plus
+     the math layer every question page loads: the expression parser
+     (calc-expr.js) and the TeX-to-MathML renderer (calc-math.js), 13.8 KB
+     gzipped together, which replace a math library several times their
+     size; tool pages add the plot helper (6.5 KB). Physics' 52 is the
+     reference; measured 66.0 KB on the exams page before any unit is
+     published. 67 -> 68 at launch (docs/apcalc-spec.md decision 12): the
+     curriculum with every topic live and calc-math.js breaking long inline
+     chains at "=" for phones; measured 67.5 KB. */
+  ['calculus', 68],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -326,7 +341,9 @@ const BUDGETS = [
      sentence (build-pricing.mjs). Measured 8.1 KB with Unit 1 published. */
   /* 8.5 -> 8.8 for AP® Physics 1's launch (docs/apphys-spec.md decision 11):
      its hub card, its pass in the FAQ and the offers. Measured 8.6 KB. */
-  ['index.html', 8.8],
+  /* 8.8 -> 9.0 for AP® Calculus AB's launch (docs/apcalc-spec.md decision 12):
+     its hub card, its pass in the FAQ and the offers. Measured 8.9 KB. */
+  ['index.html', 9.0],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */
@@ -504,6 +521,12 @@ const BUDGETS = [
   ['physics/frq.html', 3],
   ['physics/glossary.html', 30],
   ['physics/tools.html', 5],
+  ['calculus/index.html', 7],
+  ['calculus/practice.html', 3],
+  ['calculus/exams.html', 3],
+  ['calculus/frq.html', 3],
+  ['calculus/glossary.html', 30],
+  ['calculus/tools.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -879,6 +902,22 @@ function weigh(pageRel) {
     if (sheet) BUDGETS.push([`physics/unit-sheets/${sheet}`, 12]);
   }
 }
+/* The same for AP® Calculus AB (calculus/assets/notes-index.json, build-apcalc.mjs).
+   Math is MathML on the page, so a calculus page is heavier than its text. */
+{
+  const idx = join(ROOT, 'calculus', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    /* Lesson 15 -> 22 at launch (docs/apcalc-spec.md decision 12): the first lesson, math-functions,
+       measured 21.6 KB, of which the MathML of its text and of its check questions (in the page data)
+       is most; the median calculus lesson is 15.9 KB. */
+    BUDGETS.push([`calculus/lessons/${id}.html`, 22], [`calculus/notes/${id}.html`, 22]);
+    const sheets = join(ROOT, 'calculus', 'unit-sheets');
+    const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
+    if (sheet) BUDGETS.push([`calculus/unit-sheets/${sheet}`, 14]);
+  }
+}
 
 const rows = [];
 const shellSizes = {};
@@ -947,6 +986,15 @@ if (existsSync(PHYS_BANK_DIR)) {
   }
 }
 DATA_BUDGETS.push(['physics/assets/glossary.json', 150], ['physics/assets/notes-index.json', 4], ['physics/assets/summaries.json', 40]);
+/* AP® Calculus AB's, the same; units of more than ten topics are split in
+   two files (build-apcalc.mjs BANK_SPLIT), so no file outgrows its budget. */
+const CALC_BANK_DIR = join(ROOT, 'calculus', 'assets', 'bank');
+if (existsSync(CALC_BANK_DIR)) {
+  for (const f of readdirSync(CALC_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`calculus/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+DATA_BUDGETS.push(['calculus/assets/glossary.json', 150], ['calculus/assets/notes-index.json', 4], ['calculus/assets/summaries.json', 40]);
 
 const dataRows = [];
 for (const [rel, budgetKb] of DATA_BUDGETS) {

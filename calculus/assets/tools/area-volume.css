@@ -1,0 +1,88 @@
+/* Area and volume trainer (calculus/assets/tools/area-volume.js). OWNED BY
+   THIS TOOL ONLY. The region is crimson-tinted between its two curves (f
+   crimson, g blue, from the plot set), the axis of rotation purple dashed,
+   the slice amber in 2D and in 3D, R solid and r dashed. The solid is a
+   canvas the renderer lights and sorts; colours follow the theme. */
+.av-card{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.av-fig{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;min-width:0;}
+.av-fig.is-area{grid-template-columns:minmax(0,1fr);}
+.av-2d,.av-3d{position:relative;min-width:0;}
+.av-3d[hidden]{display:none;}
+.av-plot svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none;}
+.av-solid{position:relative;width:100%;aspect-ratio:1/0.85;}
+.av-canvas{display:block;width:100%;height:100%;border-radius:12px;background:var(--paper);cursor:grab;touch-action:none;outline:none;}
+.av-canvas.is-drag{cursor:grabbing;}
+.av-canvas:focus-visible{box-shadow:0 0 0 3px var(--cink);}
+.av-turn{position:absolute;left:8px;bottom:6px;margin:0;font:700 12px var(--font-ui);color:var(--muted);pointer-events:none;}
+@media (max-width:640px){.av-fig{grid-template-columns:minmax(0,1fr);}}
+.ls-root .av-fig{flex:1;min-height:0;}
+.ls-root .av-2d .av-plot,.ls-root .av-solid{position:absolute;inset:0;aspect-ratio:auto;}
+.ls-root .av-2d .av-plot svg{position:absolute;inset:0;width:100%;height:100%;}
+/* a phone held upright: the region above, the solid below, each the full width */
+@media (max-width:640px){.ls-root .av-fig{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1.1fr);gap:4px;}.ls-root .av-fig.is-area{grid-template-rows:minmax(0,1fr);}.av-turn{font-size:12px;}}
+
+.av-ctl{display:flex;flex-direction:column;gap:10px;}
+.av-sub[hidden]{display:none;}
+.av-seg > button,.ls-root .av-seg.ls-seg > button{font-size:13.5px;padding:0 4px;white-space:nowrap;}
+.av-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.av-chip{min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.av-chip[aria-pressed="true"]{border-color:var(--cink);background:var(--cink);color:#fff;}
+.av-chip:disabled{opacity:.45;cursor:not-allowed;}
+:root[data-theme="dark"] .av-chip[aria-pressed="true"]{background:#F7B8CA;border-color:#F7B8CA;color:#1a1015;}
+@media (max-width:640px){.ls-root .av-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}.ls-root .av-chips::-webkit-scrollbar{display:none;}}
+.av-line[hidden]{display:none;}
+.av-note{margin:0;}
+
+/* phones: tick numbers at least 12 px (the SVGs are drawn 1:1) */
+.ls-phone .av-plot .calc-plot,.ls-phone .av-q2d .calc-plot{font-size:12.5px;}
+.ls-phone .av-plot .calc-plot .calc-plot-axlabel,.ls-phone .av-q2d .calc-plot .calc-plot-axlabel{font-size:14px;}
+
+/* the 2D region */
+.calc-plot .av-region{fill:#B0123A;fill-opacity:.13;stroke:none;}
+.calc-plot .av-curve{fill:none;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.calc-plot .av-f{stroke:#B0123A;} .calc-plot .av-g{stroke:#0072B2;}
+.calc-plot text.av-f{fill:#B0123A;stroke:none;} .calc-plot text.av-g{fill:#0072B2;stroke:none;}
+.calc-plot .av-clab{font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white) !important;stroke-width:4px;}
+.calc-plot .av-cross{fill:var(--ink);stroke:var(--white);stroke-width:1.5;}
+.calc-plot .av-axis{stroke:#5B3A86;stroke-width:2.2;stroke-dasharray:9 5;}
+.calc-plot .av-axlab{fill:#5B3A86;font:800 12px var(--font-ui);}
+.calc-plot .av-strip{fill:#F0AD00;fill-opacity:.85;stroke:#7A5200;stroke-width:1.2;}
+.calc-plot .av-R,.calc-plot .av-r{stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;}
+.calc-plot .av-r{stroke-dasharray:5 4;}
+.calc-plot .av-Rl,.calc-plot .av-rl{fill:var(--ink);font:900 14px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;}
+.calc-plot .av-lim{stroke:var(--ink-2,#555);stroke-width:1.6;stroke-dasharray:4 4;}
+.calc-plot .av-limlab{fill:var(--ink);font:800 12px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;}
+:root[data-theme="dark"] .calc-plot .av-region{fill:#F590AC;fill-opacity:.16;}
+:root[data-theme="dark"] .calc-plot .av-f{stroke:#F590AC;} :root[data-theme="dark"] .calc-plot .av-g{stroke:#6BB4E8;}
+:root[data-theme="dark"] .calc-plot text.av-f{fill:#F590AC;} :root[data-theme="dark"] .calc-plot text.av-g{fill:#6BB4E8;}
+:root[data-theme="dark"] .calc-plot .av-axis{stroke:#C3A3E0;} :root[data-theme="dark"] .calc-plot .av-axlab{fill:#C3A3E0;}
+:root[data-theme="dark"] .calc-plot .av-strip{fill:#FFD666;stroke:#FFE08A;}
+
+/* the slice handle */
+.av-handle{cursor:ew-resize;outline:none;touch-action:none;}
+.av-handle .av-hitc{fill:transparent;stroke:none;pointer-events:all;}
+.av-handle .av-halo{fill:#F0AD00;fill-opacity:.22;}
+.av-handle .av-dot{fill:#F0AD00;stroke:#7A5200;stroke-width:2.5;}
+.av-handle:focus-visible .av-halo{fill-opacity:.45;stroke:var(--cink);stroke-width:2;}
+.av-handle.is-drag .av-halo{fill-opacity:.4;}
+
+/* Test yourself: the region, and the solid once the volume is answered */
+.av-qfig{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;width:100%;}
+.av-qfig.has-3d{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+.av-q3d{position:relative;min-width:0;}
+.av-q3d[hidden]{display:none;}
+.av-q2d{margin:0;}
+.ls-root .ls-drill-stage .av-qfig{flex:1;min-height:0;}
+.ls-root .ls-drill-stage .av-q2d{display:flex;min-height:0;}
+.ls-root .ls-drill-stage .av-q2d svg{flex:1;min-height:0;width:100%;height:100%;}
+.ls-root .ls-drill-stage .av-q3d .av-solid{position:absolute;inset:0;aspect-ratio:auto;}
+.ls-root .ls-drill-stage .bt-context.ls-drill-text{flex:none;margin:0;font:600 var(--ls-m)/1.45 var(--font-ui);}
+.ls-root .ls-drill-stage .bt-context.ls-drill-text p{margin:0;}
+@media (max-width:640px){
+  /* the finished solid gets the larger share of the stage, under the region */
+  .av-qfig.has-3d{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1.1fr);gap:4px;}
+  .ls-root .ls-drill-stage .bt-context.ls-drill-text{font-size:14.5px;line-height:1.4;}
+}
+@media (max-width:640px){.ls-root .ls-drill-stage .av-turn{display:none;}}
+/* A long formula in the caption scrolls inside its line instead of pushing past the dock. */
+body[data-app="tool-area-volume"] .ls-caption math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;}

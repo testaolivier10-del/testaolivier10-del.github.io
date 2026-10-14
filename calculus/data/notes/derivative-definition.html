@@ -1,0 +1,62 @@
+<p>The last topic found the instantaneous rate of change of a function as a limit of average rates. That limit is so important that it gets its own name, its own notation and its own picture. This page introduces all three, and then turns the rate at one point into a rate at every point.</p>
+
+<h2>The derivative at a point</h2>
+<p>Let $f$ be a function and $a$ an input. The <b>derivative</b> of $f$ at $a$ is</p>
+<p>$$f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h},$$</p>
+<p>provided this limit exists. Read $f'(a)$ as "f prime of a". It is the instantaneous rate of change of $f$ at $a$, nothing more and nothing less.</p>
+<p>The same limit can be written with the second input called $x$ instead of $a + h$. As $h \to 0$, $x = a + h$ goes to $a$, and $h = x - a$:</p>
+<p>$$f'(a) = \lim_{x \to a} \frac{f(x) - f(a)}{x - a}.$$</p>
+<p>Both forms are secant slopes between $(a, f(a))$ and a nearby point, with the nearby point closing in. Learn to recognize both shapes, because the exam often hands you one of these limits and asks what it is.</p>
+
+<h2>The picture: the tangent line</h2>
+<figure id="fig-tangent" data-fig="secant-to-tangent"><figcaption>As $h \to 0$, the secant line through $(a, f(a))$ and $(a + h, f(a + h))$ turns into the tangent line at $x = a$.</figcaption></figure>
+<p>Each difference quotient is the slope of a secant line through $(a, f(a))$. As $h \to 0$, those secant lines pivot around the fixed point and settle on one line: the <b>tangent line</b> at $x = a$. Its slope is the limit of the secant slopes, which is $f'(a)$. So</p>
+<ul>
+<li>$f'(a)$ is the slope of the tangent line at $(a, f(a))$, and</li>
+<li>the tangent line passes through $(a, f(a))$ with that slope.</li>
+</ul>
+<p>Point-slope form gives its equation:</p>
+<p>$$y = f(a) + f'(a)(x - a).$$</p>
+<p>Two different numbers go into it: the height $f(a)$ and the slope $f'(a)$. Mixing them up is a common slip. If you zoom in on a smooth graph near the point of tangency, the curve looks more and more like its tangent line. That is why the slope of the tangent line deserves to be called the rate of change of the curve at that point.</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Find $f'(3)$ for $f(x) = x^2$ and write the tangent line at $x = 3$.</p>
+<p>Difference quotient: $\frac{(3 + h)^2 - 9}{h} = \frac{9 + 6h + h^2 - 9}{h} = \frac{6h + h^2}{h} = 6 + h$ for $h \ne 0$.</p>
+<p>Limit: $f'(3) = \lim_{h \to 0} (6 + h) = 6$.</p>
+<p>Tangent line: the point is $(3, f(3)) = (3, 9)$ and the slope is 6, so $y = 9 + 6(x - 3)$.</p>
+</div>
+
+<h2>The derivative as a function</h2>
+<p>Nothing stops you from doing the same limit at a general input $x$. The result is a new function, the <b>derivative function</b>:</p>
+<p>$$f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}.$$</p>
+<p>Its input is a point of the graph and its output is the slope there. Where the graph of $f$ rises, $f'(x)$ is positive; where it falls, $f'(x)$ is negative; where its tangent line is level, $f'(x) = 0$.</p>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Find $f'(x)$ for $f(x) = x^2$.</p>
+<p>$\frac{f(x + h) - f(x)}{h} = \frac{x^2 + 2xh + h^2 - x^2}{h} = \frac{2xh + h^2}{h} = 2x + h$.</p>
+<p>So $f'(x) = \lim_{h \to 0} (2x + h) = 2x$. Check: $f'(3) = 6$, as in the first example. One limit now gives every slope of the parabola at once: $-4$ at $x = -2$, 0 at $x = 0$, 2 at $x = 1$.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 3.</b> Find $f'(x)$ for $f(x) = \frac{1}{x}$.</p>
+<p>Combine the fractions in the numerator: $\frac{1}{x + h} - \frac{1}{x} = \frac{x - (x + h)}{x(x + h)} = \frac{-h}{x(x + h)}$.</p>
+<p>Divide by $h$: $\frac{-1}{x(x + h)}$. Let $h \to 0$: $f'(x) = -\frac{1}{x^2}$. The answer is negative for every $x \ne 0$, and indeed the graph of $\frac{1}{x}$ falls everywhere it is defined.</p>
+</div>
+
+<h2>Notation</h2>
+<p>Several notations name the same derivative. You must read all of them.</p>
+<table class="compare">
+<thead><tr><th>Notation</th><th>Read as</th><th>Value at $x = a$</th></tr></thead>
+<tbody>
+<tr><td>$f'(x)$</td><td>f prime of x</td><td>$f'(a)$</td></tr>
+<tr><td>$y'$</td><td>y prime</td><td>$y'(a)$</td></tr>
+<tr><td>$\frac{dy}{dx}$</td><td>dy dx, the derivative of y with respect to x</td><td>$\left.\frac{dy}{dx}\right|_{x=a}$</td></tr>
+<tr><td>$\frac{d}{dx}\left( x^2 \right)$</td><td>the derivative of $x^2$</td><td>evaluate the result at $a$</td></tr>
+</tbody>
+</table>
+<p>The fraction-like form is <b>Leibniz notation</b>. It reminds you that a derivative is a limit of $\frac{\Delta y}{\Delta x}$, a change in output over a change in input. But $\frac{\Delta y}{\Delta x}$ itself, with real changes, is only an average rate. Keep $\frac{dy}{dx}$ (a derivative) and $\frac{\Delta y}{\Delta x}$ (a secant slope) apart.</p>
+<p>A derivative has the units of a rate. If $V(t)$ is a volume in liters and $t$ is in minutes, then $V'(t)$ is in liters per minute.</p>
+
+<h2>Spotting the definition inside a limit</h2>
+<p>When a limit has the shape $\lim_{h \to 0} \frac{\text{something}(a + h) - \text{something}(a)}{h}$, it is a derivative at a point. For example, $\lim_{h \to 0} \frac{(3 + h)^2 - 9}{h}$ is $f'(3)$ for $f(x) = x^2$, because $9 = f(3)$. It is not "$\frac{0}{0}$, undefined": $\frac{0}{0}$ is only what you see if you substitute before simplifying. Its value is 6.</p>
+<p>The next topic estimates derivatives when you have only a table of values or a graph, with no formula to put in the limit.</p>

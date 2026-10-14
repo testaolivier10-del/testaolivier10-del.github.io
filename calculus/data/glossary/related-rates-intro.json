@@ -1,0 +1,5 @@
+{
+ "related-rates": {
+  "def": "Rates of change of quantities that are linked by an equation. Differentiating the equation with respect to time $t$ (chain rule on every changing variable) gives an equation linking their rates, such as $\\frac{dA}{dt} = 2\\pi r\\frac{dr}{dt}$."
+ }
+}

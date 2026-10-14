@@ -1,0 +1,101 @@
+/* Slope fields trainer (calculus/assets/tools/slope-fields.js). OWNED BY THIS
+   TOOL ONLY. Colours from the plot set (calc.css, Okabe-Ito based): the
+   field in a quiet ink, the traced solution in the course crimson, the
+   exact formula dashed blue over it, equilibria green dashed, a tapped
+   point's slope in orange; lighter in dark mode. Shape and dash carry the
+   meaning too, so colour is never the only cue. */
+.sf-card{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.sf-fig{display:flex;flex-direction:column;gap:4px;min-width:0;}
+.sf-eq{margin:0;font:700 17px var(--font-ui);color:var(--ink);text-align:center;}
+.sf-plot{min-width:0;}
+.sf-plot svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none;}
+.ls-root .sf-fig{flex:1;min-height:0;}
+.ls-root .sf-plot{position:relative;flex:1;min-height:200px;}
+.ls-root .sf-plot svg{position:absolute;inset:0;width:100%;height:100%;max-height:none;}
+
+.sf-ctl{display:flex;flex-direction:column;gap:10px;}
+.sf-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.sf-chip{min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.sf-chip[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.ls-root .sf-chip[aria-pressed="true"]{background:var(--cink);border-color:var(--cink);color:#fff;}
+:root[data-theme="dark"] .ls-root .sf-chip[aria-pressed="true"],:root[data-theme="dark"] .sf-chip[aria-pressed="true"]{background:#F7B8CA;border-color:#F7B8CA;color:#1a1015;}
+@media (max-width:640px){.ls-root .sf-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}.ls-root .sf-chips::-webkit-scrollbar{display:none;}}
+.sf-btns{gap:8px;}
+.sf-k .bt-ctl label{font-size:13px;}
+
+/* the field and its curves */
+.calc-plot .sf-field line{stroke:var(--ink-2,#555);stroke-opacity:.55;stroke-width:1.4;stroke-linecap:round;}
+.calc-plot .sf-field line.is-vert{stroke-dasharray:2 2;}
+.calc-plot .sf-sol{fill:none;stroke:#B0123A;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.calc-plot .sf-exactc{fill:none;stroke:#0072B2;stroke-width:2;stroke-dasharray:7 6;stroke-linecap:round;}
+.calc-plot .sf-eqline{stroke:#009E73;stroke-width:2;stroke-dasharray:9 5;}
+.calc-plot .sf-eqlab{fill:#00805C;font:800 11.5px var(--font-ui);}
+.calc-plot .sf-end{fill:var(--white);stroke:#B0123A;stroke-width:2.5;}
+.calc-plot .sf-mark{fill:#0072B2;stroke:var(--white);stroke-width:1.5;}
+.calc-plot .sf-marklab{fill:#0072B2;font:800 12px var(--font-ui);}
+.calc-plot .sf-selseg{stroke:#D55E00;stroke-width:4;stroke-linecap:round;}
+.calc-plot .sf-seldot{fill:#D55E00;}
+.calc-plot .sf-sellab{fill:#B34E00;font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.calc-plot .sf-hit{fill:transparent;cursor:crosshair;}
+.calc-plot .sf-zero{fill:none;stroke:#D55E00;stroke-width:2.5;stroke-dasharray:8 5;}
+.calc-plot .sf-tan{stroke:#0072B2;stroke-width:2;stroke-dasharray:6 4;}
+.calc-plot .sf-truth{fill:none;stroke:#0072B2;stroke-width:2.4;stroke-dasharray:7 5;}
+.calc-plot .sf-mine{fill:none;stroke:#B0123A;stroke-width:3;stroke-linecap:round;}
+.calc-plot .sf-start{fill:#B0123A;stroke:var(--white);stroke-width:2;}
+.calc-plot .sf-qmark{fill:#D55E00;stroke:var(--white);stroke-width:2;}
+.calc-plot .sf-qlab{fill:var(--ink);font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+:root[data-theme="dark"] .calc-plot .sf-field line{stroke:#C9C9C9;stroke-opacity:.5;}
+:root[data-theme="dark"] .calc-plot .sf-sol,:root[data-theme="dark"] .calc-plot .sf-mine{stroke:#F590AC;}
+:root[data-theme="dark"] .calc-plot .sf-end{stroke:#F590AC;}
+:root[data-theme="dark"] .calc-plot .sf-start{fill:#F590AC;}
+:root[data-theme="dark"] .calc-plot .sf-exactc,:root[data-theme="dark"] .calc-plot .sf-truth,:root[data-theme="dark"] .calc-plot .sf-tan{stroke:#6BB4E8;}
+:root[data-theme="dark"] .calc-plot .sf-mark{fill:#6BB4E8;} :root[data-theme="dark"] .calc-plot .sf-marklab{fill:#6BB4E8;}
+:root[data-theme="dark"] .calc-plot .sf-eqline{stroke:#52CFA6;} :root[data-theme="dark"] .calc-plot .sf-eqlab{fill:#52CFA6;}
+:root[data-theme="dark"] .calc-plot .sf-selseg,:root[data-theme="dark"] .calc-plot .sf-zero{stroke:#F29A5C;}
+:root[data-theme="dark"] .calc-plot .sf-seldot,:root[data-theme="dark"] .calc-plot .sf-qmark{fill:#F29A5C;}
+:root[data-theme="dark"] .calc-plot .sf-sellab{fill:#F29A5C;}
+
+/* drag handles: a 44 px target around a visible dot */
+.sf-handle{cursor:grab;outline:none;touch-action:none;}
+.sf-handle .sf-hitc{fill:transparent;stroke:none;pointer-events:all;}
+.sf-handle .sf-halo{fill:var(--cink);fill-opacity:.14;}
+.sf-handle .sf-dot{fill:var(--cink);stroke:var(--white);stroke-width:2.5;}
+.sf-handle:hover .sf-halo{fill-opacity:.24;}
+.sf-handle:focus-visible .sf-halo{fill-opacity:.32;stroke:var(--cink);stroke-width:2;}
+.sf-handle.is-drag{cursor:grabbing;}
+.sf-handle.is-drag .sf-halo{fill-opacity:.3;}
+.sf-handle.sf-qh .sf-dot{fill:var(--white);stroke:var(--cink);stroke-width:3;}
+.sf-handle.is-locked{cursor:default;}
+.sf-handle.is-locked .sf-halo{fill-opacity:0;}
+:root[data-theme="dark"] .sf-handle .sf-dot{fill:#F7B8CA;stroke:#1c1c1e;}
+:root[data-theme="dark"] .sf-handle.sf-qh .sf-dot{fill:#1c1c1e;stroke:#F7B8CA;}
+:root[data-theme="dark"] .sf-handle .sf-halo{fill:#F7B8CA;}
+
+/* Details: the separation, one step a row */
+.sf-sep{margin:0;padding-left:20px;display:grid;gap:10px;}
+.sf-sepi{display:flex;flex-direction:column;gap:4px;line-height:1.5;min-width:0;}
+.sf-sepm{display:block;overflow-x:auto;max-width:100%;}
+
+/* Test yourself: four small fields; the sketch step's options are set by the drag */
+.sf-qfig{width:100%;}
+.sf-match{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;}
+.sf-mfig{margin:0;display:flex;flex-direction:column;align-items:center;gap:2px;border:2px solid var(--line);border-radius:12px;padding:4px;background:var(--white);min-width:0;}
+.sf-mfig figcaption{font:800 13px var(--font-ui);color:var(--ink);}
+.sf-thumb .calc-plot-axis line{stroke-width:1.1;}
+.sf-mfig svg{width:100%;height:auto;display:block;}
+.sf-mfig.is-key{border-color:var(--good-text);box-shadow:0 0 0 2px var(--good-text) inset;}
+.sf-match{justify-content:center;align-content:start;}
+.ls-root .ls-drill-stage .sf-qfig.is-clear{padding-bottom:40px;}
+.sf-mfig svg{width:100%;height:auto;}
+.calc-plot.sf-thumb .sf-field line{stroke-width:1.7;stroke-opacity:.78;}
+:root[data-theme="dark"] .calc-plot.sf-thumb .sf-field line{stroke-opacity:.72;}
+.ls-root .ls-drill-stage .bt-context.ls-drill-text{flex:none;margin:0;font:600 var(--ls-m)/1.45 var(--font-ui);}
+.ls-root .ls-drill-stage .bt-context.ls-drill-text p{margin:0;}
+.sf-skstep .cd-opts{display:none;}
+@media (max-width:640px){.sf-eq{font-size:15px;}}
+/* phones: tick numbers at least 12 px (the SVGs are drawn 1:1) */
+.ls-phone .sf-plot .calc-plot,.ls-phone .sf-qfig .calc-plot{font-size:12.5px;}
+.ls-phone .sf-plot .calc-plot .calc-plot-axlabel,.ls-phone .sf-qfig .calc-plot .calc-plot-axlabel{font-size:14px;}
+@media (max-width:640px){.ls-root .ls-drill-stage .bt-context.ls-drill-text{font-size:14.5px;line-height:1.4;}}
+/* A long formula in the caption scrolls inside its line instead of pushing past the dock. */
+body[data-app="tool-slope-fields"] .ls-caption math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;}

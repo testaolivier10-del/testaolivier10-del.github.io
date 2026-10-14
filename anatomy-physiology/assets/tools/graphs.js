@@ -133,7 +133,7 @@
   var GM = window.AnpGraphMath;
   var BASE = window.ANP_BASE || '../';
   var NS = 'http://www.w3.org/2000/svg';
-  var W = 420, ML = 60, MR = 16, MT = 16, PANEL = 210, GAP = 18;
+  var W = 420, ML = 60, MR = 16, MT = 16, PANEL = 210, GAP = 18, shapeKey = '';   // W, ML and MT are set per chart (phoneShape)
   var DATA = null, booted = false, listFilter = null;
   var scored = {};
   /* Tool Studio (docs/tools-calm.md): with the page's studio flag a graph is
@@ -320,20 +320,44 @@
     return d;
   }
 
+  /* Phone shape (docs/tools-phone-pass.md): on a phone the chart is drawn
+     about the size of the stage it sits on (330 wide upright, 440 wide and
+     short on its side, the panels sharing the height), so its labels render
+     at their CSS size instead of shrinking with a 420 x 270-per-panel chart.
+     null off a phone. The shape is fixed when the chart is drawn; turning the
+     phone redraws it (see route()). */
+  var PHONE_Q = '(max-width:640px), (max-width:999.98px) and (max-height:540px)';
+  function phoneShape(g, cats){
+    try{ if(!window.matchMedia(PHONE_Q).matches) return null; }catch(e){ return null; }
+    var side = window.innerWidth > window.innerHeight, w = side ? 440 : 330;
+    // Upright: the stage is 62% of the screen, less the graph's name (one or
+    // two lines) and the reading under it (at most 112 px, graphs.css).
+    var vw = Math.max(280, window.innerWidth - 8), lines = Math.ceil(String(g.title || '').length * 9.6 / vw) || 1;
+    var ratio = side ? 0.41 : Math.max(0.6, Math.min(1, (Math.max(300, window.innerHeight * 0.62) - 20 - lines * 24 - 124) / vw));
+    var total = Math.round(w * ratio) - 26 - (cats ? 78 : 44) - GAP * (g.panels.length - 1);
+    var units = g.panels.reduce(function(a, p){ return a + (p.h || 1); }, 0);
+    return { W: w, panel: total / units, key: w + 'x' + (side ? 's' : 'u') };
+  }
   /* Build the chart. Returns { svg, layers, sx, sy(panel, y) }. */
   function chart(g){
     var X = g.x, cats = X.cats;
     var xmin = cats ? -0.5 : X.min, xmax = cats ? cats.length - 0.5 : X.max;
+    var ps = phoneShape(g, cats), panel = ps ? ps.panel : PANEL;
+    W = ps ? ps.W : 420; shapeKey = ps ? ps.key : '';
+    // Phone: each y-axis title sits level above its panel (rotated, it ran
+    // past a short panel), so the left margin only holds the tick numbers.
+    ML = ps ? 44 : 60; MT = ps ? 26 : 16;
     var PW = W - ML - MR;
     var tops = [], hs = [], y = MT;
-    g.panels.forEach(function(p, k){ var h = Math.round(PANEL * (p.h || 1)); tops.push(y); hs.push(h); y += h + GAP; });
+    // A phone panel keeps 16 px between its tick labels (and at least 36 px), even if the chart then runs taller than the stage.
+    g.panels.forEach(function(p, k){ var h = Math.round(panel * (p.h || 1)); if(ps) h = Math.max(h, 16 * Math.max(0, (p.y.ticks || []).length - 1) + 8, 36); tops.push(y); hs.push(h); y += h + GAP; });
     var plotBottom = y - GAP;
     var MB = cats ? 78 : 44;
     var H = plotBottom + MB;
     function sx(x){ return ML + (x - xmin) / (xmax - xmin) * PW; }
     // y.reverse draws the axis top-down (min at the top), as on a clinical audiogram.
     function sy(k, v){ var p = g.panels[k].y; return p.reverse ? tops[k] + (v - p.min) / (p.max - p.min) * hs[k] : tops[k] + hs[k] - (v - p.min) / (p.max - p.min) * hs[k]; }
-    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'aria-label': g.alt, 'class': 'gr-svg' });
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'aria-label': g.alt, 'class': 'gr-svg' + (ps ? ' gr-ph' : '') });
     var L = {};
     ['bg', 'regions', 'hl', 'axes', 'series', 'overlay', 'labels', 'marks', 'cursor'].forEach(function(n){ L[n] = el('g', { 'class': 'gr-' + n }); svg.appendChild(L[n]); });
     var clipId = 'grclip-' + g.id;
@@ -374,7 +398,8 @@
         L.axes.appendChild(el('text', { x: ML - 7, y: sy(k, t) + 4, 'text-anchor': 'end', 'class': 'gr-tick' }, yf(t)));
       });
       var yt = ya.label + (ya.unit ? ' (' + ya.unit + ')' : '');
-      L.axes.appendChild(el('text', { x: 14, y: top + h / 2, 'text-anchor': 'middle', transform: 'rotate(-90 14 ' + (top + h / 2) + ')', 'class': 'gr-axis-title' }, yt));
+      if(ps) L.axes.appendChild(el('text', { x: 4, y: top - (k ? 6 : 10), 'class': 'gr-axis-title' }, yt));
+      else L.axes.appendChild(el('text', { x: 14, y: top + h / 2, 'text-anchor': 'middle', transform: 'rotate(-90 14 ' + (top + h / 2) + ')', 'class': 'gr-axis-title' }, yt));
       (p.hlines || []).forEach(function(l){ hline(L.series, L.labels, k, l); });
       (p.bursts || []).forEach(function(b){
         var n = 14, d = '', mid = (ya.min + ya.max) / 2, amp = (ya.max - ya.min) * 0.36;
@@ -562,7 +587,7 @@
       pts.sort(function(a, b){ return a.cy - b.cy; });
       var lastY = -1e9;
       pts.forEach(function(q){
-        var txt = fmt(q.y) + unitText(unitY(q.k)), w = txt.length * 6.6 + 12, y = Math.max(q.cy, lastY + 20); lastY = y;
+        var txt = fmt(q.y) + unitText(unitY(q.k)), w = txt.length * (shapeKey ? 7.3 : 6.6) + 12, y = Math.max(q.cy, lastY + 20); lastY = y;
         var x = right ? px + 12 : px - 12 - w;
         L.appendChild(el('rect', { x: x, y: y - 9, width: w, height: 18, rx: 9, 'class': 'gr-cur-pill gr-pill-' + q.s.cls }));
         L.appendChild(el('text', { x: x + w / 2, y: y + 4, 'text-anchor': 'middle', 'class': 'gr-cur-pillt' }, txt));
@@ -697,6 +722,8 @@
         '<p class="gr-ex-go"><button type="button" class="btn-press sm gr-to-quiz">Quiz me on this graph →</button></p>' +
         '</div>';
       var readEl = panelEl.querySelector('.gr-read'), whyEl = panelEl.querySelector('.gr-cond-why'), timer = 0;
+      // On a phone the reading scrolls past 112 px (graphs.css), so it takes focus to scroll by keyboard.
+      if(shapeKey){ readEl.setAttribute('tabindex', '0'); readEl.setAttribute('role', 'region'); readEl.setAttribute('aria-label', 'Reading at the cursor'); }
       if(S){
         // The live reading sits under the chart; a condition's reason goes to Why.
         S.root.querySelectorAll('.ls-stage .gr-read, .ls-sheet .gr-cond-why').forEach(function(x){ x.parentNode.removeChild(x); });
@@ -1060,6 +1087,16 @@
     DATA.graphs = (DATA.graphs || []).filter(function(g){ return g && g.panels && g.questions && g.questions.length; });
     if(window.AnpCore && window.AnpCore.allowed && !window.AnpCore.allowed('graphs')){ fail('This tool is not available right now.'); return; }
     window.addEventListener('hashchange', route);
+    // A graph drawn for a phone held upright is redrawn when it turns (and back).
+    var rt = 0;
+    window.addEventListener('resize', function(){
+      clearTimeout(rt);
+      rt = setTimeout(function(){
+        if(!app.querySelector('.gr-view') || document.querySelector('.ls-big')) return;
+        var ps = phoneShape({ panels: [{}] }, null), k = ps ? ps.key : '';
+        if(k !== shapeKey) route();
+      }, 250);
+    });
     route();
     booted = true;
     app.classList.add('is-ready');

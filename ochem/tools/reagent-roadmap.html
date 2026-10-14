@@ -189,6 +189,12 @@
   font:900 10px var(--font-mono);background:var(--accent);color:var(--on-accent-fill);
 }
 
+/* Phone pass (2026-10-13): the map's small print (formulas, step numbers, legend, level notes) reads at least 12 px. */
+.ls-root.ls-phone .rr-node__name{font-size:13.5px;}
+.ls-root.ls-phone .rr-node__f,.ls-root.ls-phone .rr-legend,.ls-root.ls-phone .rr-band__k small{font-size:12px;}
+.ls-root.ls-phone .rr-node__n,.ls-root.ls-phone .rr-dot{font-size:12px;min-width:21px;height:21px;}
+.ls-root.ls-phone .rr-dot{width:21px;border-radius:11px;}
+
 /* Routes */
 .rr-found{margin:0 0 12px;font-size:14px;font-weight:700;color:var(--ink);line-height:1.55;}
 .rr-route{

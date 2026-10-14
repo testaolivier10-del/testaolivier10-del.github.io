@@ -347,7 +347,9 @@
       var Lb = Ls[Ls.length - 1].L, ax = X(0) + Math.cos(M.rad(Lb.angle)) * cs * 1.2, ay = Y(Lb.h) - Math.sin(M.rad(Lb.angle)) * cs * 1.2;
       p.push('<circle class="pl-grab pl-aim" cx="' + ax.toFixed(1) + '" cy="' + ay.toFixed(1) + '" r="22" tabindex="0" role="slider" aria-label="Aim: drag to set the launch angle, or use the arrow keys" aria-valuemin="-30" aria-valuemax="90" aria-valuenow="' + st.angle + '" aria-valuetext="' + st.angle + ' degrees"/>');
       if(st.view === 'launch' || st.view === 'compare') p.push('<rect class="pl-grab pl-hgt" x="' + Math.max(2, X(0) - cs * 0.6 - 44).toFixed(1) + '" y="' + (Y(Lb.h) - 6).toFixed(1) + '" width="40" height="16" rx="6" tabindex="0" role="slider" aria-label="Cliff height: drag up or down, or use the arrow keys" aria-valuemin="0" aria-valuemax="50" aria-valuenow="' + st.h + '" aria-valuetext="' + st.h + ' meters"/>' +
-        '<path class="pl-hgt-i" d="M' + (X(0) - cs * 0.6 - 30).toFixed(1) + ' ' + (Y(Lb.h) - 1).toFixed(1) + 'l6 -5 6 5M' + (X(0) - cs * 0.6 - 30).toFixed(1) + ' ' + (Y(Lb.h) + 5).toFixed(1) + 'l6 5 6 -5"/>');
+        '<path class="pl-hgt-i" d="M' + (X(0) - cs * 0.6 - 30).toFixed(1) + ' ' + (Y(Lb.h) - 1).toFixed(1) + 'l6 -5 6 5M' + (X(0) - cs * 0.6 - 30).toFixed(1) + ' ' + (Y(Lb.h) + 5).toFixed(1) + 'l6 5 6 -5"/>' +
+        // An invisible 48 x 44 touch target over the 40 x 16 cliff handle (docs/tools-phone-pass.md).
+        '<rect class="pl-hgt-hit" x="' + Math.max(0, X(0) - cs * 0.6 - 48).toFixed(1) + '" y="' + (Y(Lb.h) - 20).toFixed(1) + '" width="48" height="44" aria-hidden="true"/>');
       var keepFocus = document.activeElement && document.activeElement.classList && document.activeElement.classList.contains('pl-grab') ? document.activeElement.getAttribute('class') : null;
       svg.innerHTML = p.join('');
       svg.setAttribute('aria-label', sceneLabel());
@@ -411,7 +413,8 @@
       }
       var oy = function(){ return Y(st.h); };
       drag(aim, function(q){ var a = Math.round(M.deg(Math.atan2(oy() - q.y, q.x - X(0)))); sAng.set(clamp(a, -30, 90), true); });
-      drag(hg, function(q){ var h = Math.round((geo.ground - q.y) / geo.ppm); sH.set(clamp(h, 0, 50), true); });
+      var dragH = function(q){ var h = Math.round((geo.ground - q.y) / geo.ppm); sH.set(clamp(h, 0, 50), true); };
+      drag(hg, dragH); drag(svg.querySelector('.pl-hgt-hit'), dragH);
       [[aim, sAng], [hg, sH]].forEach(function(pair){
         if(!pair[0]) return;
         pair[0].addEventListener('keydown', function(e){
@@ -506,17 +509,19 @@
 
   /* ============================================================ quiz figures */
   /* The setup only (the problem's givens), never an answer. */
-  function figure(f){
-    var w = 520, h = 250, p = [], ground = h - 30;
+  // w, h: a phone draws the figure at its box's own size (1 unit = 1 px).
+  function figure(f, w, h){
+    var fit = !!w; w = w || 520; h = h || 250;
+    var p = [], ground = h - 30;
     // Sky and ground run past the viewBox, so a stage that letterboxes the
     // figure shows more of the same scene, not a blank band.
     p.push('<rect class="pl-sky" x="-600" y="-600" width="' + (w + 1200) + '" height="' + (ground + 600) + '"/>');
     p.push(grass(-600, w + 600, ground));
     if(f.cart){
-      var cx = 150;
+      var cx = Math.min(150, Math.round(w * 0.3));
       p.push(cartArt(cx, ground, 90));
       p.push(PS.arrow(cx, ground - 64, 70, 0, { cls: 'pl-cartv', width: 3, label: 'v_cart' }));
-      p.push(label(cx + 80, ground - 74, F(f.u, 1) + ' m/s', 'start', 'pl-mk'));
+      p.push(label(cx + 80, ground - 80, F(f.u, 1) + ' m/s', 'start', 'pl-mk'));
       p.push(ball(cx, ground - 66, 7));
       p.push(PS.arrow(cx, ground - 76, 0, -80, { cls: 'vel', width: 3 }));
       p.push(label(cx + 10, ground - 140, F(f.w, 1) + ' m/s up (seen from the cart)', 'start', 'pl-mk'));
@@ -533,11 +538,12 @@
     if(Lo) p.push(path(Lo, 'pl-guide pl-a'));
     if(f.show === 'top' && L.tTop > 0){ var tp = L.at(L.tTop); p.push('<line class="pl-mark" x1="' + Xf(tp.x).toFixed(1) + '" x2="' + Xf(tp.x).toFixed(1) + '" y1="' + Yf(tp.y).toFixed(1) + '" y2="' + ground + '"/>' + label(Xf(tp.x) + 6, Yf(tp.y) - 6, 'highest point?', 'start', 'pl-mk')); }
     p.push(cannon(Xf(0) - 6, Yf(f.h) - 12, f.angle, 34, 'is-live'));
-    var ox = Xf(0), oy = Yf(f.h), al = 70;
+    // On a phone the components triangle is drawn larger, so v, vx and vy stay apart.
+    var ox = Xf(0), oy = Yf(f.h), al = fit && f.show === 'components' ? Math.round(Math.min(130, w * 0.32)) : 70;
     p.push(arc(ox, oy, 34, f.angle));
     if(f.v > 0) p.push(PS.arrow(ox, oy, Math.cos(M.rad(f.angle)) * al, -Math.sin(M.rad(f.angle)) * al, { cls: 'vel', width: 3 }));
     if(f.angle) p.push(label(ox + 40, oy + (f.angle > 0 ? -6 : 18), M.minus(String(f.angle)) + '°', 'start', 'pl-mk'));
-    if(f.v > 0) p.push(label(ox + Math.cos(M.rad(f.angle)) * al + 10, oy - Math.sin(M.rad(f.angle)) * al - (f.angle > 30 ? 8 : -4), 'v = ' + F(f.v, 1) + ' m/s', 'start', 'pl-mk'));
+    if(f.v > 0) p.push(label(ox + Math.cos(M.rad(f.angle)) * al + 10, oy - Math.sin(M.rad(f.angle)) * al - (f.angle > 30 || f.show === 'components' ? 8 : -4), 'v = ' + F(f.v, 1) + ' m/s', 'start', 'pl-mk'));
     if(f.show === 'components'){
       p.push('<line class="pl-help" x1="' + ox + '" y1="' + oy + '" x2="' + (ox + Math.cos(M.rad(f.angle)) * al).toFixed(1) + '" y2="' + oy + '"/><line class="pl-help" x1="' + (ox + Math.cos(M.rad(f.angle)) * al).toFixed(1) + '" y1="' + oy + '" x2="' + (ox + Math.cos(M.rad(f.angle)) * al).toFixed(1) + '" y2="' + (oy - Math.sin(M.rad(f.angle)) * al).toFixed(1) + '"/>');
       p.push(label(ox + Math.cos(M.rad(f.angle)) * al / 2, oy + 16, 'v<tspan dy="4" font-size="0.75em">x</tspan>', 'middle', 'pl-mk') + label(ox + Math.cos(M.rad(f.angle)) * al + 8, oy - Math.sin(M.rad(f.angle)) * al / 2, 'v<tspan dy="4" font-size="0.75em">y</tspan>', 'start', 'pl-mk'));
@@ -563,7 +569,20 @@
       slug: 'projectile-lab', types: TYPES, typeLabel: 'Kind of problem',
       title: function(p){ var t = TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice problem'; },
       generate: function(r, ctx, type){ return P.generate(r, ctx, type); },
-      extra: function(el, p){ if(p.fig) el.innerHTML = '<figure class="cd-fig pl-qfig">' + figure(p.fig) + '</figure>'; }
+      extra: function(el, p){ if(p.fig){ el.innerHTML = '<figure class="cd-fig pl-qfig">' + figure(p.fig) + '</figure>'; qf = { el: el, fig: p.fig }; requestAnimationFrame(fitQ); } else qf = null; }
     });
+    /* On a phone (either way up) the figure is redrawn at its box's size, so
+       its labels keep their CSS size instead of shrinking with a 520-unit
+       drawing (docs/tools-phone-pass.md). */
+    var qf = null, rq = 0;
+    function fitQ(){
+      if(!qf || !qf.el.isConnected || !qf.el.closest('.ls-phone')) return;
+      var svg = qf.el.querySelector('.pl-qfig svg'); if(!svg) return;
+      var r = svg.getBoundingClientRect(); if(r.width < 200 || r.height < 120) return;
+      var w = Math.round(r.width), h = Math.round(Math.max(200, Math.min(r.height, w * 0.95)));
+      if(svg.getAttribute('data-fit') === w + 'x' + h) return;
+      svg.outerHTML = figure(qf.fig, w, h).replace('<svg ', '<svg data-fit="' + w + 'x' + h + '" ');
+    }
+    window.addEventListener('resize', function(){ if(rq) return; rq = requestAnimationFrame(function(){ rq = 0; fitQ(); }); });
   }
 })();

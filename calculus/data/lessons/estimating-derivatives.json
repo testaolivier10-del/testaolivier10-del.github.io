@@ -1,0 +1,72 @@
+{
+ "topic": "estimating-derivatives",
+ "hook": "A nurse records a patient's temperature every few hours, and a lab logs a reaction's concentration every few seconds. Nobody hands you a formula. Yet the question is still \"how fast is it changing right now?\" With a table, a graph or a calculator, you can estimate a derivative from the data you actually have.",
+ "prereq": [
+  {
+   "q": "The derivative $f'(a)$ is the limit of",
+   "options": [
+    "$\\frac{f(a + h) - f(a)}{h}$ as $h \\to 0$",
+    "$f(a + h)$ as $h \\to 0$",
+    "$\\frac{f(a)}{a}$ as $a \\to 0$",
+    "$f(a + h) - f(a)$ as $h \\to 0$"
+   ],
+   "correct": 0,
+   "why": "A derivative is a limit of difference quotients: average rates on shrinking intervals.",
+   "review": "derivative-definition"
+  },
+  {
+   "q": "If $T(t)$ is a temperature in degrees Celsius and $t$ is in minutes, the units of $\\frac{T(9) - T(5)}{9 - 5}$ are",
+   "options": [
+    "degrees Celsius per minute",
+    "degrees Celsius",
+    "minutes per degree Celsius",
+    "degrees Celsius per minute per minute"
+   ],
+   "correct": 0,
+   "why": "A change in temperature over a change in time.",
+   "review": "average-and-instant-rates"
+  }
+ ],
+ "figure": {
+  "figure": "table-difference-quotient",
+  "caption": "From a table: the secant line through the data at $t = 10$ and $t = 14$ estimates $B'(12)$ as $\\frac{105 - 121}{14 - 10} = -4$ degrees Fahrenheit per minute."
+ },
+ "chain": [
+  {
+   "cause": "Only a table of values is known",
+   "effect": "the limit in the definition cannot be taken, so use a difference quotient with the data"
+  },
+  {
+   "cause": "The two table inputs sit on either side of $a$ and close to it",
+   "effect": "their difference quotient is a good estimate of $f'(a)$"
+  },
+  {
+   "cause": "The quotient divides output units by input units",
+   "effect": "the estimate is a rate with units, such as degrees per minute"
+  },
+  {
+   "cause": "A formula is known but hard to work with by hand",
+   "effect": "a calculator's numerical derivative estimates $f'(a)$ with a tiny symmetric difference quotient"
+  }
+ ],
+ "ideas": [
+  "From a table, estimate $f'(a)$ by $\\frac{f(b) - f(c)}{b - c}$ with $c < a < b$: the two closest data points on either side of $a$.",
+  "At the end of a table, only one side exists: use the closest one-sided quotient.",
+  "The <b>symmetric difference quotient</b> $\\frac{f(a + h) - f(a - h)}{2h}$ averages the left and right quotients and is usually the most accurate.",
+  "A <b>numerical derivative</b> on a graphing calculator gives a decimal estimate of $f'(a)$; report it to three decimal places.",
+  "From a graph, read the slope of the tangent line from two points on it."
+ ],
+ "misconception": {
+  "wrong": "To estimate $P'(4)$ from $P(3) = 20$ and $P(5) = 34$, average the values: $P'(4) \\approx 27$.",
+  "right": "Averaging values estimates $P(4)$, a value. A derivative is a rate: $P'(4) \\approx \\frac{34 - 20}{5 - 3} = 7$, in output units per input unit."
+ },
+ "check": [
+  "calc-estimating-derivatives-1",
+  "calc-estimating-derivatives-2",
+  "calc-estimating-derivatives-3",
+  "calc-estimating-derivatives-4",
+  "calc-estimating-derivatives-11",
+  "calc-estimating-derivatives-12"
+ ],
+ "summary": "With data instead of a formula, estimate $f'(a)$ with a difference quotient from two table inputs on either side of $a$, as close as possible, and give the units. A symmetric quotient is the best simple estimate; a calculator's numerical derivative does the same with a tiny $h$, reported to three decimal places."
+}

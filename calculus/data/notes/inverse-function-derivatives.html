@@ -1,0 +1,52 @@
+<p>An inverse function undoes a function: if $f(2) = 7$, then $f^{-1}(7) = 2$. Often we have no formula for $f^{-1}$ at all. The function $f(x) = x^3 + x$ is one-to-one, but solving $y = x^3 + x$ for $x$ is hard. Still, we can find the slope of its inverse at any point, using only $f$ and its derivative.</p>
+
+<h2>The picture: reflection swaps rise and run</h2>
+<p>The graph of $g = f^{-1}$ is the graph of $f$ reflected in the line $y = x$. Every point $(a, b)$ of $f$ becomes the point $(b, a)$ of $g$. Reflection also carries tangent lines along. Take a tangent line to $f$ at $(a, b)$ with slope $m$: it rises $m$ units for every 1 unit it runs. After the reflection, the roles of rise and run swap, so the reflected line rises 1 unit for every $m$ units it runs. Its slope is $\frac{1}{m}$.</p>
+<figure id="fig-inverse" data-fig="inverse-reciprocal-slopes"><figcaption>$f(x) = x^3 + x$ and its inverse $g$. At $(1, 2)$ the slope of $f$ is 4; at the mirror point $(2, 1)$ the slope of $g$ is $\frac{1}{4}$.</figcaption></figure>
+<p>So slopes at matching points are reciprocals. The only care needed is "matching": the slope of $g$ at the input $b$ goes with the slope of $f$ at the input $a = g(b)$, not at $b$.</p>
+
+<h2>The rule</h2>
+<p>If $g$ is the inverse of a differentiable function $f$, and $f'(g(x)) \ne 0$, then</p>
+<p>$$g'(x) = \frac{1}{f'(g(x))}$$</p>
+<p>The rule comes straight from the chain rule. Since $g$ undoes $f$, $f(g(x)) = x$ for every $x$ in the domain of $g$. Differentiate both sides: $f'(g(x)) \cdot g'(x) = 1$. Divide by $f'(g(x))$ and the rule appears.</p>
+
+<h2>Using it: find the matching input first</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Let $f(x) = x^3 + x$ and $g = f^{-1}$. Find $g'(2)$.</p>
+<p>Step 1, find $g(2)$: which $x$ gives $f(x) = 2$? Try small numbers: $f(1) = 1 + 1 = 2$. So $g(2) = 1$.</p>
+<p>Step 2, the slope of $f$ there: $f'(x) = 3x^2 + 1$, so $f'(1) = 4$.</p>
+<p>Step 3, take the reciprocal: $g'(2) = \frac{1}{f'(1)} = \frac{1}{4}$.</p>
+<p>A common slip is to compute $\frac{1}{f'(2)} = \frac{1}{13}$. That is the slope of $f$ at the wrong point.</p>
+</div>
+<p>On the exam the function often comes as a table. Then step 1 means finding the given number in the row of $f$ values and reading the $x$ above it.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A one-to-one function has these values. Find $\left(f^{-1}\right)'(7)$.</p>
+<table class="compare">
+<tr><th>$x$</th><th>$1$</th><th>$2$</th><th>$3$</th></tr>
+<tr><td>$f(x)$</td><td>$4$</td><td>$7$</td><td>$9$</td></tr>
+<tr><td>$f'(x)$</td><td>$5$</td><td>$2$</td><td>$6$</td></tr>
+</table>
+<p>The value 7 sits in the $f(x)$ row under $x = 2$, so $f^{-1}(7) = 2$.</p>
+<p>Read $f'(2) = 2$. Then $\left(f^{-1}\right)'(7) = \frac{1}{2}$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Let $f(x) = e^{2x} + x$ and $g = f^{-1}$. Write the line tangent to the graph of $g$ at $x = 1$.</p>
+<p>$f(0) = 1 + 0 = 1$, so $g(1) = 0$ and the point is $(1, 0)$.</p>
+<p>$f'(x) = 2e^{2x} + 1$, so $f'(0) = 3$ and $g'(1) = \frac{1}{3}$.</p>
+<p>The tangent line is $y = \frac{1}{3}(x - 1)$.</p>
+</div>
+
+<h2>When the rule fails</h2>
+<p>If $f'(a) = 0$, the tangent line to $f$ at $(a, b)$ is flat. Its mirror image is a vertical line, which has no slope, so $g$ is not differentiable at $b$. The formula agrees: $\frac{1}{f'(a)} = \frac{1}{0}$ has no value. For example, $f(x) = x^3$ has $f'(0) = 0$, and its inverse $\sqrt[3]{x}$ has a vertical tangent line at the origin.</p>
+
+<h2>A check you can always do</h2>
+<p>When you do know a formula for the inverse, the rule must agree with differentiating it directly. Take $f(x) = x^3$ for $x > 0$, so $g(x) = x^{1/3}$. The rule gives $g'(x) = \frac{1}{3\left(x^{1/3}\right)^2} = \frac{1}{3x^{2/3}}$. The power rule on $x^{1/3}$ gives $\frac{1}{3}x^{-2/3}$, the same function.</p>
+
+<h2>Slips that cost points</h2>
+<table class="compare">
+<tr><th>Slip</th><th>Wrong</th><th>Right</th></tr>
+<tr><td>Reading $f'$ at the given number</td><td>$\left(f^{-1}\right)'(7) = \frac{1}{f'(7)}$</td><td>$\frac{1}{f'(2)}$, since $f(2) = 7$</td></tr>
+<tr><td>Forgetting the reciprocal</td><td>$\left(f^{-1}\right)'(7) = f'(2)$</td><td>$\frac{1}{f'(2)}$</td></tr>
+<tr><td>Reciprocal of a value</td><td>$\frac{1}{f(2)}$ or $\frac{1}{f^{-1}(7)}$</td><td>the reciprocal of a slope, $\frac{1}{f'(2)}$</td></tr>
+<tr><td>Point of the wrong graph</td><td>tangent to $f^{-1}$ through $(2, 7)$</td><td>through $(7, 2)$</td></tr>
+</table>

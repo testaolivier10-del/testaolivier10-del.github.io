@@ -1,0 +1,121 @@
+/* Curve analyzer (calculus/assets/tools/curve-analyzer.js). OWNED BY THIS
+   TOOL ONLY. Loaded by the generator after calc-tools.css when this file
+   exists. f, f′ and f″ are always crimson, blue and green (the plots' s1,
+   s2, s3); sign charts, feature marks, optimization scenes; light and dark. */
+.ca-card,.ls-root{--ca-f:#B0123A;--ca-fp:#0072B2;--ca-fpp:#007A5A;--ca-pos:rgba(0,158,115,.16);--ca-neg:rgba(213,94,0,.16);}
+:root[data-theme="dark"] .ca-card,:root[data-theme="dark"] .ls-root{--ca-f:#F590AC;--ca-fp:#6BB4E8;--ca-fpp:#52CFA6;--ca-pos:rgba(82,207,166,.16);--ca-neg:rgba(242,154,92,.18);}
+
+.ca-stage{display:flex;flex-direction:column;min-height:0;flex:1;}
+.ca-curves,.ca-opt{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;}
+.ca-curves[hidden],.ca-opt[hidden]{display:none;}
+.ca-graphs-wrap{position:relative;flex:1 1 0;min-height:250px;border-radius:12px;}
+.ca-card:not(.ls-root *) .ca-graphs-wrap{height:440px;flex:none;}
+.ca-graphs-wrap:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.ca-graphs{display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;user-select:none;-webkit-user-select:none;}
+.ca-legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font:700 12.5px var(--font-ui);color:var(--muted);}
+.ca-lg{display:inline-flex;align-items:center;gap:6px;}
+.ca-lg::before{content:"";display:inline-block;width:14px;height:4px;border-radius:2px;background:currentColor;}
+.ca-lg.s1{color:var(--ca-f);} .ca-lg.s2{color:var(--ca-fp);} .ca-lg.s3{color:var(--ca-fpp);}
+.ca-lg-crit::before{width:10px;height:10px;border-radius:50%;background:var(--ca-f);}
+.ca-lg-poi::before{width:8px;height:8px;border-radius:1px;transform:rotate(45deg);background:var(--white);box-shadow:inset 0 0 0 2px var(--ca-f);}
+
+.ca-panel{fill:var(--white);stroke:var(--line);stroke-width:1;}
+.ca-grid{stroke:var(--line);stroke-width:1;}
+.ca-grid.ca-zero{stroke:var(--ink);stroke-width:1.2;opacity:.6;}
+.ca-tk{fill:var(--muted);font:700 10.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.ca-pl{font:900 13px var(--font-ui);font-style:italic;paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ca-pl.s1{fill:var(--ca-f);} .ca-pl.s2{fill:var(--ca-fp);} .ca-pl.s3{fill:var(--ca-fpp);}
+.ca-curve{fill:none;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.ca-curve.s1{stroke:var(--ca-f);} .ca-curve.s2{stroke:var(--ca-fp);} .ca-curve.s3{stroke:var(--ca-fpp);}
+.ca-end{fill:var(--ca-f);stroke:var(--white);stroke-width:1.5;}
+.ca-rowk{fill:var(--ink);font:900 12px var(--font-ui);font-style:italic;}
+.ca-sg.is-pos{fill:var(--ca-pos);} .ca-sg.is-neg{fill:var(--ca-neg);}
+.ca-sg.is-fp.is-pos{stroke:var(--ca-fp);stroke-width:1;stroke-opacity:.35;}
+.ca-sg.is-fp.is-neg{stroke:var(--ca-fp);stroke-width:1;stroke-opacity:.35;stroke-dasharray:3 3;}
+.ca-sg.is-fpp{stroke:var(--ca-fpp);stroke-width:1;stroke-opacity:.35;}
+.ca-sgt{fill:var(--ink);font:800 11.5px var(--font-ui);}
+.ca-fline{stroke:var(--ink);stroke-width:1.1;stroke-dasharray:3 4;opacity:.45;}
+.ca-crit{stroke:var(--white);stroke-width:2;fill:var(--ca-f);}
+.ca-crit.is-none{fill:var(--white);stroke:var(--ca-f);stroke-width:2.4;}
+.ca-poi{fill:var(--white);stroke:var(--ca-f);stroke-width:2.4;}
+.ca-flab{fill:var(--ink);font:800 11px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ca-abs{fill:var(--cink);font:900 11px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ca-z{stroke:var(--white);stroke-width:1.5;}
+.ca-z.s2{fill:var(--ca-fp);} .ca-z.s3{fill:var(--ca-fpp);}
+.ca-xaxis text{fill:var(--muted);font:700 10.5px var(--font-ui);}
+.ca-xaxis .ca-xl{fill:var(--ink);font-weight:900;font-style:italic;}
+.ca-cur{stroke:var(--ink);stroke-width:1.5;}
+.ca-cur-pt{stroke:var(--white);stroke-width:2;}
+.ca-cur-pt.s1{fill:var(--ca-f);} .ca-cur-pt.s2{fill:var(--ca-fp);} .ca-cur-pt.s3{fill:var(--ca-fpp);}
+
+/* optimization */
+.ca-scene-wrap{flex:1 1 0;min-height:120px;display:flex;align-items:center;justify-content:center;}
+.ca-scene{display:block;width:100%;height:100%;max-height:340px;border-radius:12px;}
+.ca-ograph-wrap{flex:1 1 0;min-height:160px;}
+.ca-card:not(.ls-root *) .ca-ograph-wrap{height:220px;flex:none;}
+.ca-ograph{display:block;width:100%;height:100%;}
+.ca-bg{fill:#F3F7F5;}
+.ca-st{fill:var(--ink);font:800 12.5px var(--font-ui);paint-order:stroke;stroke:#F3F7F5;stroke-width:3px;}
+.ca-st.is-x{fill:var(--ca-f);}
+.ca-st.ca-sub{font-weight:700;fill:var(--muted);}
+.ca-sheet{fill:#D9B98C;stroke:#9C7A4C;stroke-width:1.5;}
+.ca-cut{fill:#F3F7F5;stroke:var(--ca-f);stroke-width:1.5;stroke-dasharray:4 3;}
+.ca-fold{fill:none;stroke:#7C5C33;stroke-width:1.2;stroke-dasharray:5 4;}
+.ca-box-in{fill:#B8975F;} .ca-box-floor{fill:#C9A56E;} .ca-box-side{fill:#D4B27B;stroke:#8A6A3E;stroke-width:1.2;} .ca-box-front{fill:#E2C18A;stroke:#8A6A3E;stroke-width:1.4;}
+.ca-river{fill:#5FA8D3;} .ca-wave{fill:none;stroke:#D8EEFA;stroke-width:2;stroke-linecap:round;}
+.ca-bank{fill:#BFD9A8;} .ca-field{fill:#9CCB74;}
+.ca-fence{fill:none;stroke:#6B4A2B;stroke-width:3;stroke-linejoin:round;}
+.ca-posts circle{fill:#4A3220;}
+.ca-st.ca-area{fill:#2E4A1F;stroke:#9CCB74;}
+.ca-st.ca-rl{fill:#0E3A57;stroke:#5FA8D3;}
+.ca-table{stroke:#8A979C;stroke-width:3;stroke-linecap:round;}
+.ca-can{fill:#C9D1D6;stroke:#6E7C82;stroke-width:1.6;}
+.ca-can-top{fill:#E6EBEE;stroke:#6E7C82;stroke-width:1.6;}
+.ca-can-band{fill:var(--ca-f);opacity:.85;}
+.ca-rad{stroke:var(--ca-f);stroke-width:2;}
+:root[data-theme="dark"] .ca-bg{fill:#17232A;}
+:root[data-theme="dark"] .ca-st{stroke:#17232A;}
+:root[data-theme="dark"] .ca-cut{fill:#17232A;}
+:root[data-theme="dark"] .ca-bank{fill:#3F6B35;} :root[data-theme="dark"] .ca-field{fill:#5E8F3E;}
+:root[data-theme="dark"] .ca-river{fill:#2C5A74;}
+
+/* dock */
+.ca-chips .bt-btn{min-height:40px;padding:0 14px;border-radius:999px;font-size:14px;}
+.ca-card:not(.ls-root *) .ca-chips{display:flex;flex-wrap:wrap;gap:8px;-webkit-mask-image:none;mask-image:none;}
+.ca-views{display:flex;}
+.ca-slot .bt-out{min-width:5.2em;white-space:nowrap;text-align:right;}
+.ca-pk{font-weight:900;font-style:italic;}
+.ca-pk.s1,.ca-pv.s1{color:var(--ca-f);} .ca-pk.s2,.ca-pv.s2{color:var(--ca-fp);} .ca-pk.s3,.ca-pv.s3{color:var(--ca-fpp);}
+
+/* Why and Details */
+.ca-feats{margin:8px 0 0;padding-left:1.3em;display:grid;gap:8px;}
+.ca-feats li.is-on{background:var(--ctint);border-radius:8px;padding:4px 8px;margin-left:-8px;}
+.ca-rule{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);}
+.ca-tag{color:var(--cink);font-weight:900;}
+.ca-ftbl td{font-weight:600;}
+
+/* Test yourself figure */
+.ca-figwrap .calc-plot{width:100%;height:auto;max-height:100%;}
+.ls-root .ls-drill-stage .ca-figwrap{height:100%;display:flex;align-items:center;justify-content:center;}
+.ls-root .ls-drill-stage .ca-figwrap .calc-plot{height:100%;width:auto;max-width:100%;}
+@media (max-width:599.98px){
+  .ca-legend{display:none;}
+  .ca-graphs-wrap{min-height:200px;}
+  .ca-ograph-wrap{min-height:130px;}
+}
+
+/* Phones (docs/tools-phone-pass.md): labels at least 12 px, one graph at a
+   time when asked (the switch in the dock), the legend back and clear of
+   the Enlarge button. */
+.ca-gview,.ls-root:not(.ls-phone) .ca-gview.ls-seg,.ca-card:not(.ls-root *) .ca-gview.ls-seg{display:none;}
+.ls-root.ls-phone .ca-gview:not([hidden]){display:flex;}
+.ls-root.ls-phone .ca-gview > .bt-mode{flex:1;min-width:0;padding:0 4px;font-size:13.5px;}
+.ls-root.ls-phone .ca-tk,.ls-root.ls-phone .ca-xaxis text{font-size:12px;}
+.ls-root.ls-phone .ca-flab,.ls-root.ls-phone .ca-abs,.ls-root.ls-phone .ca-sgt,.ls-root.ls-phone .ca-rowk{font-size:12px;}
+.ls-root.ls-phone .ca-pl{font-size:14px;}
+.ls-root.ls-phone .ca-st{font-size:15px;}
+.ls-root.ls-phone .ca-legend{display:flex;font-size:12px;gap:2px 10px;padding-right:56px;min-height:46px;align-content:center;}
+.ls-root.ls-phone .ca-figwrap .calc-plot{font-size:13px;}
+.ls-root.ls-phone .ca-graphs-wrap{min-height:120px;}
+.ls-root.ls-phone .ca-scene-wrap{min-height:90px;}
+.ls-root.ls-phone .ca-ograph-wrap{min-height:110px;}

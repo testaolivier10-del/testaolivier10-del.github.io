@@ -1,0 +1,5 @@
+{
+ "indeterminate-form": {
+  "def": "A result like $\\frac{0}{0}$ from substituting into a limit. It does not determine the limit; the expression must be rewritten (factored, rationalized, simplified) first."
+ }
+}

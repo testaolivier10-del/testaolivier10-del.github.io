@@ -1,0 +1,93 @@
+{
+ "topic": "antiderivatives",
+ "hook": "Tell someone a car's speed at every moment and ask where it is. They cannot say, not without knowing where it started. Knowing a derivative pins a function down only up to a starting value, and that missing piece is the $+ C$ that students lose points for forgetting.",
+ "prereq": [
+  {
+   "q": "What is the derivative of $\\tan x$?",
+   "options": [
+    "$\\sec^2 x$",
+    "$\\sec x \\tan x$",
+    "$-\\csc^2 x$",
+    "$\\cot x$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{d}{dx}\\tan x = \\sec^2 x$.",
+   "review": "other-trig-derivatives"
+  },
+  {
+   "q": "Write $\\frac{1}{\\sqrt{x}}$ as a power of $x$.",
+   "options": [
+    "$x^{-1/2}$",
+    "$x^{1/2}$",
+    "$x^{-2}$",
+    "$-x^{1/2}$"
+   ],
+   "correct": 0,
+   "why": "$\\sqrt{x} = x^{1/2}$, and $\\frac{1}{x^a} = x^{-a}$.",
+   "review": "math-exponent-rules"
+  },
+  {
+   "q": "If $F' = f$, what is $\\int_1^4 f(x)\\,dx$?",
+   "options": [
+    "$F(4) - F(1)$",
+    "$F(1) - F(4)$",
+    "$f(4) - f(1)$",
+    "$F(4)$"
+   ],
+   "correct": 0,
+   "why": "The Fundamental Theorem, part 2.",
+   "review": "ftc-definite-integrals"
+  }
+ ],
+ "figure": {
+  "figure": "antiderivative-family",
+  "caption": "The curves y = x³/3 - x + C: vertical shifts of one another, with the same slope at every x."
+ },
+ "chain": [
+  {
+   "cause": "A constant has derivative 0",
+   "effect": "if $F' = f$, then $(F + C)' = f$ for every constant $C$"
+  },
+  {
+   "cause": "Two antiderivatives of f on an interval",
+   "effect": "differ by a constant, so the whole family is F(x) + C"
+  },
+  {
+   "cause": "Write the family as $\\int f(x)\\,dx$",
+   "effect": "$\\int f(x)\\,dx = F(x) + C$: an indefinite integral always ends in $+ C$"
+  },
+  {
+   "cause": "You also know one point on the graph",
+   "effect": "substitute it to find $C$ and pick out the one function"
+  }
+ ],
+ "ideas": [
+  "<b>Indefinite integral</b>: $\\int f(x)\\,dx = F(x) + C$, the family of all antiderivatives. No limits, a family, never a number.",
+  "Power rule backward: $\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C$ for $n \\ne -1$; and $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$.",
+  "Rewrite before integrating: roots as powers, products expanded, a fraction over a single term split up.",
+  "Check every answer by differentiating it. Find $C$ from a known point by substituting it."
+ ],
+ "misconception": {
+  "wrong": "$\\int \\sin x\\,dx = \\cos x + C$, because sine and cosine go together.",
+  "right": "$\\frac{d}{dx}\\cos x = -\\sin x$, so $\\int \\sin x\\,dx = -\\cos x + C$. Differentiate your answer to check the sign."
+ },
+ "check": [
+  "calc-antiderivatives-1",
+  "calc-antiderivatives-2",
+  "calc-antiderivatives-3",
+  "calc-antiderivatives-4",
+  "calc-antiderivatives-12",
+  "calc-antiderivatives-13"
+ ],
+ "summary": "Every derivative rule read backward gives an antidifferentiation rule. The indefinite integral $\\int f(x)\\,dx = F(x) + C$ is the whole family of antiderivatives, so it always carries $+ C$. Rewrite the integrand into basic forms first, check by differentiating, and use a known point to find $C$.",
+ "connections": [
+  {
+   "href": "../notes/ftc-definite-integrals.html",
+   "label": "Back: the Fundamental Theorem and definite integrals (6.7)"
+  },
+  {
+   "href": "../notes/u-substitution.html",
+   "label": "Next: integrating by substitution (6.9)"
+  }
+ ]
+}

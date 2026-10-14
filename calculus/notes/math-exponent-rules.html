@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exponent Rules and Rewriting Powers — AP® Calculus AB Notes</title>
+<meta name="description" content="Calculus has one short rule that handles every power of x : x² , x¹⁰ , 1/x³ , √x , 3√x² . The catch is that the rule only sees powers.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/math-exponent-rules.html">
+<meta property="og:title" content="Exponent Rules and Rewriting Powers — AP® Calculus AB Notes">
+<meta property="og:description" content="Calculus has one short rule that handles every power of x : x² , x¹⁰ , 1/x³ , √x , 3√x² . The catch is that the rule only sees powers.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/math-exponent-rules.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/math-exponent-rules.html#reading",
+      "name": "Exponent Rules and Rewriting Powers",
+      "url": "https://levlprep.com/calculus/notes/math-exponent-rules.html",
+      "description": "Calculus has one short rule that handles every power of x : x² , x¹⁰ , 1/x³ , √x , 3√x² . The catch is that the rule only sees powers.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "exponent rules negative and fractional exponents",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/calculus/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Exponent Rules and Rewriting Powers: notes",
+          "item": "https://levlprep.com/calculus/notes/math-exponent-rules.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="math-exponent-rules" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+    <a class="bk-toc-chap" href="../units/skills-math.html"><span class="bk-toc-chap-n">S</span><span><b>Math you need</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="skills-math"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="math-functions"><a href="math-functions.html"><span class="bk-toc-n">S</span>Functions and Their Graphs</a></li><li class="current" data-toc-t="math-exponent-rules"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Exponent Rules and Rewriting Powers</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-rules-and-why-they-hold">The rules, and why they hold</a><a href="#negative-exponents-mean-one-over">Negative exponents mean &quot;one over&quot;</a><a href="#fractional-exponents-mean-roots">Fractional exponents mean roots</a><a href="#the-slips-that-cost-points">The slips that cost points</a><a href="#which-form-to-give-as-an">Which form to give as an answer</a></div></li><li data-toc-t="math-limit-algebra"><a href="math-limit-algebra.html"><span class="bk-toc-n">S</span>Algebra for Limits: Factoring and Rationalizing</a></li><li data-toc-t="math-trig"><a href="math-trig.html"><span class="bk-toc-n">S</span>Trigonometry and the Unit Circle</a></li><li data-toc-t="math-exp-log"><a href="math-exp-log.html"><span class="bk-toc-n">S</span>Exponentials and Logarithms</a></li><li data-toc-t="math-inverse-functions"><a href="math-inverse-functions.html"><span class="bk-toc-n">S</span>Inverse Functions</a></li><li data-toc-t="math-geometry"><a href="math-geometry.html"><span class="bk-toc-n">S</span>Geometry for Calculus</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exponent Rules and Rewriting Powers: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/math-exponent-rules.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Skills <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Exponent Rules and Rewriting Powers</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="math-exponent-rules">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fmath-exponent-rules.html&amp;title=Exponent%20Rules%20and%20Rewriting%20Powers%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/math-exponent-rules.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Calculus has one short rule that handles every power of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>10</mn></msup></mrow><annotation encoding="application/x-tex">x^{10}</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mi>x</mi><mn>3</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{x^3}</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mroot><msup><mi>x</mi><mn>2</mn></msup><mn>3</mn></mroot></mrow><annotation encoding="application/x-tex">\sqrt[3]{x^2}</annotation></semantics></math>. The catch is that the rule only sees powers. So before you use it, you rewrite fractions and roots as exponents. This page is the toolkit for that rewrite, and a list of the slips that cost the most points.</p>
+
+<h2 id="the-rules-and-why-they-hold">The rules, and why they hold</h2>
+<p>An exponent counts repeated multiplication: <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>=</mo><mi>x</mi><mo>⋅</mo><mi>x</mi><mo>⋅</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">x^3 = x \cdot x \cdot x</annotation></semantics></math>. Every rule follows from counting factors. Multiply <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">x^3</annotation></semantics></math> by <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math> and you have <math class="calc-m"><semantics><mrow><mn>3</mn><mo>+</mo><mn>2</mn><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">3 + 2 = 5</annotation></semantics></math> factors of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. Divide <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">x^5</annotation></semantics></math> by <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math> and two factors cancel, leaving three.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Rule</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mi>m</mi></msup><mo>⋅</mo><msup><mi>x</mi><mi>n</mi></msup><mo>=</mo><msup><mi>x</mi><mrow><mi>m</mi><mo>+</mo><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">x^m \cdot x^n = x^{m+n}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>4</mn></msup><mo>⋅</mo><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></msup><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">x^4 \cdot x^{-1} = x^3</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><msup><mi>x</mi><mi>m</mi></msup><msup><mi>x</mi><mi>n</mi></msup></mfrac><mo>=</mo><msup><mi>x</mi><mrow><mi>m</mi><mo>−</mo><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\frac{x^m}{x^n} = x^{m-n}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><msup><mi>x</mi><mn>2</mn></msup><msup><mi>x</mi><mn>5</mn></msup></mfrac><mo>=</mo><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\frac{x^2}{x^5} = x^{-3}</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mi>m</mi></msup><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mo>=</mo><msup><mi>x</mi><mrow><mi>m</mi><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(x^m)^n = x^{mn}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>3</mn></msup><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msup><mi>x</mi><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">(x^3)^2 = x^6</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mi>b</mi><msup><mo stretchy="false">)</mo><mi>n</mi></msup><mo>=</mo><msup><mi>a</mi><mi>n</mi></msup><msup><mi>b</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">(ab)^n = a^n b^n</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup><mo>=</mo><mn>8</mn><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">(2x)^3 = 8x^3</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>0</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x^0 = 1</annotation></semantics></math> (for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \ne 0</annotation></semantics></math>)</td><td><math class="calc-m"><semantics><mrow><msup><mn>5</mn><mn>0</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">5^0 = 1</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>n</mi></mrow></msup><mo>=</mo><mfrac><mn>1</mn><msup><mi>x</mi><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">x^{-n} = \frac{1}{x^n}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup><mo>=</mo><mfrac><mn>1</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">x^{-2} = \frac{1}{x^2}</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mi>m</mi><mo>/</mo><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">x^{m/n}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mrow><mo fence="true" stretchy="true">(</mo><mroot><mi>x</mi><mi>n</mi></mroot><mo fence="true" stretchy="true">)</mo></mrow><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">= \left(\sqrt[n]{x}\right)^m</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mroot><msup><mi>x</mi><mi>m</mi></msup><mi>n</mi></mroot></mrow><annotation encoding="application/x-tex">= \sqrt[n]{x^m}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow></msup><mo>=</mo><mroot><msup><mi>x</mi><mn>2</mn></msup><mn>3</mn></mroot></mrow><annotation encoding="application/x-tex">x^{2/3} = \sqrt[3]{x^2}</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>The last two rows are the ones calculus leans on, so let us slow down on them.</p>
+
+<h2 id="negative-exponents-mean-one-over">Negative exponents mean "one over"</h2>
+<p>Why should <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">x^{-2}</annotation></semantics></math> be <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{x^2}</annotation></semantics></math>? Use the division rule on a fraction you already know: <math class="calc-m"><semantics><mrow><mfrac><msup><mi>x</mi><mn>3</mn></msup><msup><mi>x</mi><mn>5</mn></msup></mfrac><mo>=</mo><mfrac><mn>1</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{x^3}{x^5} = \frac{1}{x^2}</annotation></semantics></math> by canceling, and <math class="calc-m"><semantics><mrow><mfrac><msup><mi>x</mi><mn>3</mn></msup><msup><mi>x</mi><mn>5</mn></msup></mfrac><mo>=</mo><msup><mi>x</mi><mrow><mn>3</mn><mo>−</mo><mn>5</mn></mrow></msup><mo>=</mo><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\frac{x^3}{x^5} = x^{3 - 5} = x^{-2}</annotation></semantics></math> by the rule. Both are right, so <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup><mo>=</mo><mfrac><mn>1</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">x^{-2} = \frac{1}{x^2}</annotation></semantics></math>.</p>
+<p>A <b><span class="gl" tabindex="0" data-c="exponent-rules">negative exponent</span></b> never makes a number negative. <math class="calc-m"><semantics><mrow><msup><mn>2</mn><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow></msup><mo>=</mo><mfrac><mn>1</mn><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">2^{-3} = \frac{1}{8}</annotation></semantics></math>, a small positive number.</p>
+<p>The most common slip is moving too much. An exponent applies only to the base it touches:</p>
+<ul>
+<li><math class="calc-m"><semantics><mrow><mn>3</mn><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup><mo>=</mo><mfrac><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">3x^{-2} = \frac{3}{x^2}</annotation></semantics></math>. Only <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> carries the exponent; the 3 stays on top.</li>
+<li><math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mi>x</mi><msup><mo stretchy="false">)</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(3x)^{-2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>3</mn><mi>x</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{(3x)^2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mrow><mn>9</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{9x^2}</annotation></semantics></math>. Now the parentheses put the 3 under the exponent too.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> Write <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>5</mn><msup><mi>x</mi><mn>3</mn></msup></mfrac><mo>−</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{5}{x^3} - \frac{1}{2x}</annotation></semantics></math> as a sum of powers of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>.</p>
+<p>First term: <math class="calc-m"><semantics><mrow><mfrac><mn>5</mn><msup><mi>x</mi><mn>3</mn></msup></mfrac><mo>=</mo><mn>5</mn><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\frac{5}{x^3} = 5x^{-3}</annotation></semantics></math>.</p>
+<p>Second term: <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mn>2</mn><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2x}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⋅</mo><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{2} \cdot \frac{1}{x}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">= \frac{1}{2}x^{-1}</annotation></semantics></math>. The 2 is a number in the denominator, so it stays as <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math>; it does not get an exponent.</p>
+<p>So <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow></msup><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">f(x) = 5x^{-3} - \frac{1}{2}x^{-1}</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="fractional-exponents-mean-roots">Fractional exponents mean roots</h2>
+<p>What number should <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">x^{1/2}</annotation></semantics></math> be? Square it: <math class="calc-m"><semantics><mrow><msup><mrow><mo fence="true" stretchy="true">(</mo><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\left(x^{1/2}\right)^2</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn><mo>⋅</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">= x^{1/2 \cdot 2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mi>x</mi><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">= x^1</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">x^{1/2}</annotation></semantics></math> is the number whose square is <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, which is <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math>. In the same way, <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow></msup><mo>=</mo><mroot><mi>x</mi><mn>3</mn></mroot></mrow><annotation encoding="application/x-tex">x^{1/3} = \sqrt[3]{x}</annotation></semantics></math>.</p>
+<p>A <b>fractional exponent</b> <math class="calc-m"><semantics><mrow><mfrac><mi>m</mi><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{m}{n}</annotation></semantics></math> does two things: the denominator <math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> is a root, the numerator <math class="calc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math> is a power. Take the root first; the numbers stay small.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Evaluate <math class="calc-m"><semantics><mrow><msup><mn>8</mn><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">8^{2/3}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><msup><mn>16</mn><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>/</mo><mn>4</mn></mrow></msup></mrow><annotation encoding="application/x-tex">16^{-3/4}</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><msup><mn>8</mn><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">8^{2/3}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mrow><mo fence="true" stretchy="true">(</mo><mroot><mn>8</mn><mn>3</mn></mroot><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">= \left(\sqrt[3]{8}\right)^2</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mn>2</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">= 2^2</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">= 4</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><msup><mn>16</mn><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>/</mo><mn>4</mn></mrow></msup></mrow><annotation encoding="application/x-tex">16^{-3/4}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><msup><mn>16</mn><mrow><mn>3</mn><mo>/</mo><mn>4</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{16^{3/4}}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><msup><mrow><mo fence="true" stretchy="true">(</mo><mroot><mn>16</mn><mn>4</mn></mroot><mo fence="true" stretchy="true">)</mo></mrow><mn>3</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{\left(\sqrt[4]{16}\right)^3}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><msup><mn>2</mn><mn>3</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{2^3}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{8}</annotation></semantics></math>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Write <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><msqrt><mi>x</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">g(x) = \frac{x^2 + 1}{\sqrt{x}}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">h(x) = x\sqrt{x}</annotation></semantics></math> as sums of powers.</p>
+<p>A fraction with a single term on the bottom splits over the top: <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">= \frac{x^2}{x^{1/2}}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mfrac><mn>1</mn><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mfrac></mrow><annotation encoding="application/x-tex">+ \frac{1}{x^{1/2}}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mi>x</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">= x^{3/2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">+ x^{-1/2}</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mi>x</mi><mn>1</mn></msup><mo>⋅</mo><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">= x^1 \cdot x^{1/2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mi>x</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">= x^{3/2}</annotation></semantics></math>.</p>
+<p>These are exactly the rewrites you will do before using the Unit 2 rules.</p>
+</div>
+
+<h2 id="the-slips-that-cost-points">The slips that cost points</h2>
+<p>Exponent rules work on <i>products</i> of a single base. They do not work across a plus sign. Here are the classic wrong moves; each one can be caught by testing a number.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Wrong</th><th>Right</th><th>Test with a number</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(x + y)^2 = x^2 + y^2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2 + 2xy + y^2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">(1 + 2)^2 = 9</annotation></semantics></math>, not 5</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn></mrow></msqrt><mo>=</mo><mi>x</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\sqrt{x^2 + 9} = x + 3</annotation></semantics></math></td><td>does not simplify</td><td><math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><msqrt><mn>25</mn></msqrt><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\sqrt{25} = 5</annotation></semantics></math>, not 7</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac><mo>=</mo><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></msup><mo>+</mo><msup><mn>3</mn><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\frac{1}{x + 3} = x^{-1} + 3^{-1}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(x + 3)^{-1}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{4}</annotation></semantics></math>, not <math class="calc-m"><semantics><mrow><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{4}{3}</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mn>3</mn><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">-3^2 = 9</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mn>3</mn><mn>2</mn></msup><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">-3^2 = -9</annotation></semantics></math>; <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">(-3)^2 = 9</annotation></semantics></math></td><td>the square applies to 3 only</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>3</mn></msup><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msup><mi>x</mi><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">(x^3)^2 = x^5</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">x^6</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><msup><mn>8</mn><mn>2</mn></msup><mo>=</mo><mn>64</mn><mo>=</mo><msup><mn>2</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">8^2 = 64 = 2^6</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>Testing with a number is a habit worth building. It takes ten seconds and catches most algebra errors before they spread through a problem.</p>
+
+<h2 id="which-form-to-give-as-an">Which form to give as an answer</h2>
+<p>Write powers when you are about to do calculus on an expression. For a final answer, either form is fine on the exam: <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">x^{-1/2}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msqrt><mi>x</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{x}}</annotation></semantics></math> are equally correct. Do not spend time simplifying further than the question asks; the scoring guidelines reward the correct value, and extra simplifying is where new errors appear.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:math-exponent-rules">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="math-functions.html"><span>&larr; Previous</span><b>Functions and Their Graphs</b></a><a class="tb-chapter-link next" href="change-at-an-instant.html"><span>Next &rarr;</span><b>Can Change Happen at an Instant?</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:math-exponent-rules">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

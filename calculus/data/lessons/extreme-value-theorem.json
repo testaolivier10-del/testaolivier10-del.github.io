@@ -1,0 +1,94 @@
+{
+ "topic": "extreme-value-theorem",
+ "hook": "A hiker walks a trail from the trailhead to a lookout. Somewhere on the way she is at her highest elevation and somewhere at her lowest. That sounds obvious, but it needs the trail to be unbroken. Calculus makes the idea exact and then shows where to look: at the ends of the trail and at points where the slope is zero or does not exist.",
+ "prereq": [
+  {
+   "q": "$f$ is continuous on $[a, b]$ when",
+   "options": [
+    "it is continuous at each point of $(a, b)$ and one-sided continuous at $a$ and $b$",
+    "it is defined at $a$ and $b$",
+    "it is differentiable at each point of $[a, b]$",
+    "$f(a) = f(b)$"
+   ],
+   "correct": 0,
+   "why": "Continuity on a closed interval: no breaks inside, and the one-sided limits at the ends match the endpoint values.",
+   "review": "continuity-on-intervals"
+  },
+  {
+   "q": "For $f(x) = |x|$, what is $f'(0)$?",
+   "options": [
+    "It does not exist",
+    "$0$",
+    "$1$",
+    "$-1$"
+   ],
+   "correct": 0,
+   "why": "The graph has a corner at 0: slopes $-1$ on the left and $1$ on the right.",
+   "review": "differentiability"
+  },
+  {
+   "q": "The Mean Value Theorem needs $f$",
+   "options": [
+    "continuous on $[a, b]$ and differentiable on $(a, b)$",
+    "differentiable on $[a, b]$ and $f(a) = f(b)$",
+    "continuous on $(a, b)$ only",
+    "increasing on $[a, b]$"
+   ],
+   "correct": 0,
+   "why": "Both hypotheses, every time.",
+   "review": "mean-value-theorem"
+  }
+ ],
+ "figure": {
+  "figure": "evt-extrema",
+  "caption": "Left: continuous on a closed interval, so both extremes are reached; the absolute maximum is at an endpoint. Right: with a jump, the values climb toward 2 but never reach it."
+ },
+ "chain": [
+  {
+   "cause": "$f$ is continuous on a closed interval $[a, b]$",
+   "effect": "the Extreme Value Theorem guarantees an absolute maximum value and an absolute minimum value on $[a, b]$"
+  },
+  {
+   "cause": "An absolute extremum occurs inside the interval",
+   "effect": "it is also a relative extremum, where the tangent line is flat or does not exist"
+  },
+  {
+   "cause": "So it happens where $f'(x) = 0$ or $f'(x)$ does not exist",
+   "effect": "those interior points, the critical points, plus the endpoints, are the only places to look"
+  },
+  {
+   "cause": "A critical point is only a candidate",
+   "effect": "some critical points ($x^3$ at 0, a corner on a rising graph) are not extrema at all"
+  }
+ ],
+ "ideas": [
+  "<b>Extreme Value Theorem</b>: if $f$ is continuous on $[a, b]$, then $f$ has at least one absolute maximum value and at least one absolute minimum value on $[a, b]$.",
+  "<b>Absolute (global) maximum</b>: $f(c) \\ge f(x)$ for every $x$ in the domain or interval. <b>Relative (local) maximum</b>: $f(c) \\ge f(x)$ for every $x$ near $c$, on an open interval around $c$. Minimums the same way.",
+  "<b>Critical point</b>: an interior point $c$ of the domain where $f'(c) = 0$ or $f'(c)$ does not exist.",
+  "Relative extrema happen only at critical points. Absolute extrema on $[a, b]$ happen at critical points or at endpoints.",
+  "If a hypothesis fails (a jump, an open interval), the theorem promises nothing; extrema may or may not exist."
+ ],
+ "misconception": {
+  "wrong": "If $f'(c) = 0$, then $f$ has a maximum or minimum at $c$.",
+  "right": "$f'(c) = 0$ only makes $c$ a critical point, a candidate. For $f(x) = x^3$, $f'(0) = 0$ but the graph rises straight through. A corner can also be a critical point without an extremum. You must check what $f$ does around $c$."
+ },
+ "check": [
+  "calc-extreme-value-theorem-1",
+  "calc-extreme-value-theorem-2",
+  "calc-extreme-value-theorem-3",
+  "calc-extreme-value-theorem-4",
+  "calc-extreme-value-theorem-5",
+  "calc-extreme-value-theorem-11"
+ ],
+ "summary": "A function continuous on a closed interval reaches an absolute maximum and minimum there (Extreme Value Theorem). Look for them at the endpoints and at critical points, interior points where $f'$ is 0 or does not exist. A critical point is a candidate, not a guarantee of an extremum.",
+ "connections": [
+  {
+   "href": "../notes/mean-value-theorem.html",
+   "label": "Back: the Mean Value Theorem (5.1)"
+  },
+  {
+   "href": "../notes/increasing-decreasing.html",
+   "label": "Next: 5.3"
+  }
+ ]
+}

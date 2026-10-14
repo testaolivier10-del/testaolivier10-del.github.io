@@ -1,0 +1,49 @@
+{
+ "topic": "math-functions",
+ "hook": "Every question in calculus is a question about a function: how fast a tank fills, where a ball is at time $t$, how much a quantity has piled up. Before calculus asks how a function changes, you need to read one fluently, from its formula, its graph, a table or a sentence. This page is a fast, friendly tune-up of the function skills the course leans on most.",
+ "prereq": [],
+ "figure": {
+  "figure": "fn-reading-graph",
+  "caption": "Reading a graph: $f(1)$ is the height of the filled dot, an open circle is a point left out, and the domain and range come from the graph's left-right and up-down extent."
+ },
+ "chain": [
+  {
+   "cause": "A function assigns exactly one output to each input",
+   "effect": "$f(3)$ names one number: the height of the graph above $x = 3$"
+  },
+  {
+   "cause": "Some inputs break a formula (a zero denominator, the square root of a negative)",
+   "effect": "those inputs are left out of the domain"
+  },
+  {
+   "cause": "Feeding one function's output into another builds a composite function",
+   "effect": "$f(g(x))$ means: do $g$ first, then $f$"
+  },
+  {
+   "cause": "Replacing $x$ by $x - h$ and adding $k$ to the output",
+   "effect": "moves the whole graph $h$ units right and $k$ units up"
+  }
+ ],
+ "ideas": [
+  "A <b>function</b> gives one output for each input. Substitute with parentheses: if $f(x) = x^2 - 3x$, then $f(a + 1) = (a + 1)^2 - 3(a + 1)$.",
+  "The <b>domain</b> is every input the rule accepts; the range is every output it produces. Rule out zero denominators and square roots of negatives.",
+  "On a graph, a <b>filled dot</b> is on the graph and an <b>open circle</b> is not. $f(a)$ is the height of the graph at $x = a$.",
+  "A line through $(x_1, y_1)$ with slope $m$ is $y - y_1 = m(x - x_1)$ (point-slope form). Slope is rise over run.",
+  "$f(g(x))$ means $g$ first, then $f$. Order matters: usually $f(g(x)) \\ne g(f(x))$.",
+  "A rational function has a vertical asymptote where the denominator is 0 and the numerator is not."
+ ],
+ "misconception": {
+  "wrong": "$f(g(x))$ means $f(x)$ times $g(x)$.",
+  "right": "$f(g(x))$ is a composition: the output of $g$ becomes the input of $f$. With $f(x) = x^2$ and $g(x) = x + 1$, $f(g(x)) = (x + 1)^2$, while $f(x)g(x) = x^2(x + 1)$."
+ },
+ "check": [
+  "calc-math-functions-1",
+  "calc-math-functions-3",
+  "calc-math-functions-4",
+  "calc-math-functions-5",
+  "calc-math-functions-6",
+  "calc-math-functions-8",
+  "calc-math-functions-10"
+ ],
+ "summary": "A function sends each input to one output. Read it from a formula (substitute with parentheses), a graph (heights, filled and open dots) or a table. Know the domain, write lines in point-slope form, compose functions inside first, move graphs with $f(x - h) + k$, and find vertical asymptotes where a denominator is 0."
+}

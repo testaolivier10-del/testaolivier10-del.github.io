@@ -1,0 +1,85 @@
+{
+ "topic": "limit-representations",
+ "hook": "A doctor reads a heartbeat as a trace on a screen, as numbers on a chart, and as a written note. All three describe the same heart. A limit works the same way: one function can come as a graph, a table, a formula or a sentence, and you should be able to read the limit from any of them.",
+ "prereq": [
+  {
+   "q": "On a graph, an open circle at $(2, 3)$ means",
+   "options": [
+    "the point $(2, 3)$ is not on the graph",
+    "the function equals 3 at $x = 2$",
+    "the graph has a vertical asymptote at $x = 2$",
+    "the limit at 2 does not exist"
+   ],
+   "correct": 0,
+   "why": "An open circle marks a missing point; a closed dot marks a point that is there.",
+   "review": "limits-from-plots"
+  },
+  {
+   "q": "To estimate $\\lim_{x \\to 2} f(x)$ from a table, you should use inputs",
+   "options": [
+    "on both sides of 2, closer and closer to it",
+    "equal to 2",
+    "far from 2, so the pattern is clear",
+    "greater than 2 only"
+   ],
+   "correct": 0,
+   "why": "A two-sided limit needs values from both sides, approaching 2.",
+   "review": "limits-from-tables"
+  },
+  {
+   "q": "$\\frac{x^2 - 9}{x - 3}$ equals which expression for $x \\ne 3$?",
+   "options": [
+    "$x + 3$",
+    "$x - 3$",
+    "$x^2 - 3$",
+    "$x + 9$"
+   ],
+   "correct": 0,
+   "why": "$x^2 - 9 = (x - 3)(x + 3)$, and the $x - 3$ cancels.",
+   "review": "limit-algebra"
+  }
+ ],
+ "figure": {
+  "figure": "limit-three-views",
+  "caption": "The same limit, read from a graph, a table and a formula."
+ },
+ "chain": [
+  {
+   "cause": "A graph shows the function near $c$",
+   "effect": "follow the curve toward $x = c$ from each side and read the height it approaches; ignore any dot exactly at $c$"
+  },
+  {
+   "cause": "A table lists values at inputs closing in on $c$ from both sides",
+   "effect": "the values suggest the limit, but a table cannot prove it"
+  },
+  {
+   "cause": "A formula is available",
+   "effect": "algebra (substitute, factor, rationalize) gives the exact limit and confirms the estimate"
+  },
+  {
+   "cause": "A limit involves a composition $f(g(x))$",
+   "effect": "find where $g(x)$ goes and from which side, then read $f$ near that input"
+  }
+ ],
+ "ideas": [
+  "The same limit can be read from a <b>graph</b>, a <b>table</b>, a <b>formula</b> or <b>words</b>. Each answer must agree.",
+  "On a graph, the limit is the height the curve approaches, not the closed dot at the point.",
+  "A table <b>suggests</b> a limit; a formula <b>confirms</b> it. Cleverly chosen inputs can make a table mislead, as with $\\sin\\left(\\frac{\\pi}{x}\\right)$.",
+  "Translate words exactly: \"from values less than 4\" is $x \\to 4^-$; the number the outputs approach goes after the equals sign.",
+  "For $f(g(x))$, find the inner limit first and note the side it comes from."
+ ],
+ "misconception": {
+  "wrong": "If every value in a table is close to 3, the limit is 3.",
+  "right": "A table shows finitely many inputs. The function can behave differently between them; $\\sin\\left(\\frac{\\pi}{x}\\right)$ is 0 at $x = 1, 0.1, 0.01$ but has no limit at 0. Use the table to estimate and a formula or a graph to confirm."
+ },
+ "check": [
+  "calc-limit-representations-1",
+  "calc-limit-representations-2",
+  "calc-limit-representations-4",
+  "calc-limit-representations-7",
+  "calc-limit-representations-11",
+  "calc-limit-representations-12",
+  "calc-limit-representations-13"
+ ],
+ "summary": "A limit can be read from a graph (the height the curve approaches), estimated from a table (values on both sides), found exactly from a formula (algebra), and stated in words or notation. Move between them: estimate with a table, confirm with a formula, and check the sides when one function sits inside another."
+}

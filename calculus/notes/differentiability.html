@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Differentiability and Continuity — AP® Calculus AB Notes</title>
+<meta name="description" content="The key fact runs in one direction only, and most lost points come from running it backward.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/differentiability.html">
+<meta property="og:title" content="Differentiability and Continuity — AP® Calculus AB Notes">
+<meta property="og:description" content="The key fact runs in one direction only, and most lost points come from running it backward.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/differentiability.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/differentiability.html#reading",
+      "name": "Differentiability and Continuity",
+      "url": "https://levlprep.com/calculus/notes/differentiability.html",
+      "description": "The key fact runs in one direction only, and most lost points come from running it backward.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "differentiability and continuity ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differentiation: Definition and Fundamental Properties",
+          "item": "https://levlprep.com/calculus/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Differentiability and Continuity: notes",
+          "item": "https://levlprep.com/calculus/notes/differentiability.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="differentiability" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Limits and Continuity</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Differentiation: Definition and Fundamental Properties</b><small>10 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 10 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="average-and-instant-rates"><a href="average-and-instant-rates.html"><span class="bk-toc-n">2.1</span>Average and Instantaneous Rates of Change</a></li><li data-toc-t="derivative-definition"><a href="derivative-definition.html"><span class="bk-toc-n">2.2</span>The Derivative and Its Notation</a></li><li data-toc-t="estimating-derivatives"><a href="estimating-derivatives.html"><span class="bk-toc-n">2.3</span>Estimating a Derivative at a Point</a></li><li class="current" data-toc-t="differentiability"><a href="#main" aria-current="page"><span class="bk-toc-n">2.4</span>Differentiability and Continuity</a><div class="bk-toc-onpage"><p>On this page</p><a href="#differentiable-at-a-point">Differentiable at a point</a><a href="#differentiable-implies-continuous">Differentiable implies continuous</a><a href="#continuous-does-not-imply-differentiable">Continuous does not imply differentiable</a><a href="#piecewise-functions-at-the-break">Piecewise functions at the break</a><a href="#writing-it-up">Writing it up</a></div></li><li data-toc-t="power-rule"><a href="power-rule.html"><span class="bk-toc-n">2.5</span>The Power Rule</a></li><li data-toc-t="basic-derivative-rules"><a href="basic-derivative-rules.html"><span class="bk-toc-n">2.6</span>Constant, Sum, Difference and Constant Multiple Rules</a></li><li data-toc-t="derivatives-sin-cos-exp-ln"><a href="derivatives-sin-cos-exp-ln.html"><span class="bk-toc-n">2.7</span>Derivatives of sin x, cos x, e to the x and ln x</a></li><li data-toc-t="product-rule"><a href="product-rule.html"><span class="bk-toc-n">2.8</span>The Product Rule</a></li><li data-toc-t="quotient-rule"><a href="quotient-rule.html"><span class="bk-toc-n">2.9</span>The Quotient Rule</a></li><li data-toc-t="other-trig-derivatives"><a href="other-trig-derivatives.html"><span class="bk-toc-n">2.10</span>Derivatives of tan, cot, sec and csc</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Differentiation: Definition and Fundamental Properties</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Differentiability and Continuity: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/differentiability.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 2 &middot; Topic 2.4 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Differentiability and Continuity</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="differentiability">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fdifferentiability.html&amp;title=Differentiability%20and%20Continuity%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/differentiability.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>A <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> is a limit, and <a class="gl" href="../notes/limit-notation.html" data-c="limit">limits</a> can fail to exist. This page asks where <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> exists, how that connects to <a class="gl" href="../notes/discontinuity-types.html" data-c="discontinuity">continuity</a> from Unit 1, and how to justify your answer the way the exam expects. The key fact runs in one direction only, and most lost points come from running it backward.</p>
+
+<h2 id="differentiable-at-a-point">Differentiable at a point</h2>
+<p>A <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is <b><span class="gl" tabindex="0" data-c="differentiable">differentiable</span></b> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math> when its derivative there exists:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mo movablelimits="false">lim</mo><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac><mtext> is a finite number.</mtext></mrow><annotation encoding="application/x-tex">f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h} \text{ is a finite number.}</annotation></semantics></math></p>
+<p>It is differentiable on an interval when it is differentiable at every point of the interval. For the limit to exist, the <a class="gl" href="../notes/average-and-instant-rates.html" data-c="difference-quotient">difference quotients</a> from the left (<math class="calc-m"><semantics><mrow><mi>h</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h &lt; 0</annotation></semantics></math>) and from the right (<math class="calc-m"><semantics><mrow><mi>h</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h &gt; 0</annotation></semantics></math>) must approach the same finite number. On the graph, that means one well-defined, non-vertical <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">tangent line</a> at the point.</p>
+
+<h2 id="differentiable-implies-continuous">Differentiable implies continuous</h2>
+<p>Suppose <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> exists. For <math class="calc-m"><semantics><mrow><mi>h</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h \ne 0</annotation></semantics></math>, multiply and divide by <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac><mo>⋅</mo><mi>h</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">f(a + h) - f(a) = \frac{f(a + h) - f(a)}{h} \cdot h.</annotation></semantics></math></p>
+<p>As <math class="calc-m"><semantics><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h \to 0</annotation></semantics></math>, the first factor goes to <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math>, a finite number, and the second goes to 0. So <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>→</mo><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>⋅</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(a + h) - f(a) \to f'(a) \cdot 0</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>, which says <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to a} f(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= f(a)</annotation></semantics></math>. That is continuity at <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>.</p>
+<p><b>If <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is differentiable at <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>, then <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is continuous at <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>.</b> The exam uses this constantly. When a problem says "<math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is differentiable" and you need continuity, for the <a class="gl" href="../notes/intermediate-value-theorem.html" data-c="ivt">Intermediate Value Theorem</a> for example, write the reason in words: "<math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is differentiable, so <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is continuous on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 4]</annotation></semantics></math>." Asserting continuity with no reason does not earn the point.</p>
+<p>Read the theorem the other way and you get its contrapositive, which is also true: <b>if <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is not continuous at <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>, then <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is not differentiable at <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>.</b> Jumps, holes and <a class="gl" href="../notes/math-functions.html" data-c="asymptote">vertical asymptotes</a> all rule out a derivative.</p>
+
+<h2 id="continuous-does-not-imply-differentiable">Continuous does not imply differentiable</h2>
+<p>The converse is false. A graph can be connected at a point and still have no single <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> there. There are three ways it happens.</p>
+<figure id="fig-fail"  class="calc-figure"><div class="calc-figimg" data-fig="where-derivatives-fail"><img src="../figures/where-derivatives-fail.svg" alt="Four small graphs. A corner: y = |x| + 0.5, a V shape with slope minus 1 on the left of 0 and 1 on the right. A cusp: y = x to the two-thirds, a sharp point at the origin where the slopes become infinitely steep in opposite directions. A vertical tangent: y = cube root of (x minus 1), with a vertical tangent line x = 1 drawn dashed. A jump: a line ending with a closed dot at (1, 1.5) and restarting with an open dot at (1, 0). The first three are continuous but not differentiable at the marked point; the jump is not continuous, so not differentiable." width="700" height="590" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A corner, a cusp and a vertical tangent (continuous, not differentiable) and a jump (neither). <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<ul>
+<li><b><span class="gl" tabindex="0" data-c="corner">Corner</span>.</b> The left and right slopes are two different finite numbers. For <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|x|</annotation></semantics></math> at 0, the difference quotient is <math class="calc-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">|</mo><mi>h</mi><mo stretchy="false">|</mo></mrow><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{|h|}{h}</annotation></semantics></math>, which is <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>h</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h &lt; 0</annotation></semantics></math> and 1 for <math class="calc-m"><semantics><mrow><mi>h</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h &gt; 0</annotation></semantics></math>. No two-sided limit, no derivative.</li>
+<li><b>Cusp.</b> The slopes grow without bound, toward <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math> on one side and <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">+\infty</annotation></semantics></math> on the other. For <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">x^{2/3}</annotation></semantics></math> at 0, the quotient is <math class="calc-m"><semantics><mrow><mfrac><msup><mi>h</mi><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow></msup><mi>h</mi></mfrac><mo>=</mo><mfrac><mn>1</mn><mroot><mi>h</mi><mn>3</mn></mroot></mfrac></mrow><annotation encoding="application/x-tex">\frac{h^{2/3}}{h} = \frac{1}{\sqrt[3]{h}}</annotation></semantics></math>.</li>
+<li><b>Vertical tangent.</b> The slopes grow without bound in the same direction and the tangent line is vertical. For <math class="calc-m"><semantics><mrow><mroot><mi>x</mi><mn>3</mn></mroot></mrow><annotation encoding="application/x-tex">\sqrt[3]{x}</annotation></semantics></math> at 0, the quotient is <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msup><mi>h</mi><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow></msup></mfrac><mo>→</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\frac{1}{h^{2/3}} \to +\infty</annotation></semantics></math> from both sides. A vertical line has no slope, so there is no derivative.</li>
+</ul>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math> the graph has</th><th>Continuous?</th><th>Differentiable?</th><th>Example at 0</th></tr></thead>
+<tbody>
+<tr><td>a smooth, non-vertical tangent line</td><td>yes</td><td>yes</td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math></td></tr>
+<tr><td>a corner</td><td>yes</td><td>no</td><td><math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|x|</annotation></semantics></math></td></tr>
+<tr><td>a cusp</td><td>yes</td><td>no</td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">x^{2/3}</annotation></semantics></math></td></tr>
+<tr><td>a vertical tangent</td><td>yes</td><td>no</td><td><math class="calc-m"><semantics><mrow><mroot><mi>x</mi><mn>3</mn></mroot></mrow><annotation encoding="application/x-tex">\sqrt[3]{x}</annotation></semantics></math></td></tr>
+<tr><td>a jump, hole or asymptote</td><td>no</td><td>no</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{|x|}{x}</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{x}</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>The last row is the only one where continuity fails. The first column is the one to look at on a graph.</p>
+
+<h2 id="piecewise-functions-at-the-break">Piecewise functions at the break</h2>
+<p>At the input where a <a class="gl" href="../notes/math-functions.html" data-c="piecewise-function">piecewise function</a> changes formula, check two things in order.</p>
+<ol>
+<li><b>Continuity.</b> Do both pieces approach the value of the function there? If not, stop: not differentiable.</li>
+<li><b>Matching slopes.</b> Find the slope of each piece at the break. If they are equal, the function is differentiable there and <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> is that common slope. If not, there is a corner.</li>
+</ol>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Is <math class="calc-m"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo stretchy="true">{</mo><mtable columnalign="left left" columnspacing="1em"><mtr><mtd><msup><mi>x</mi><mn>2</mn></msup></mtd><mtd><mrow><mi>x</mi><mo>≤</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mtd><mtd><mrow><mi>x</mi><mo>&gt;</mo><mn>1</mn></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">= \begin{cases} x^2 &amp; x \le 1 \\ 2x - 1 &amp; x &gt; 1 \end{cases}</annotation></semantics></math> differentiable at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>?</p>
+<p>Continuity: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>−</mo></msup></mrow></munder><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^-} x^2 = 1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>1</mn><mo>+</mo></msup></mrow></munder><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 1^+} (2x - 1)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= 1</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p(1) = 1</annotation></semantics></math>. Continuous.</p>
+<p>Slopes: on the left, <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math> has derivative <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">2x</annotation></semantics></math>, which is 2 at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>. On the right, the line <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2x - 1</annotation></semantics></math> has slope 2. They match.</p>
+<p>Conclusion: <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> is differentiable at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mrow><mi>p</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">p'(1) = 2</annotation></semantics></math>. The line continues the parabola smoothly; it is the parabola's own tangent line at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 1)</annotation></semantics></math>.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Find <math class="calc-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> so that <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mrow><mo stretchy="true">{</mo><mtable columnalign="left left" columnspacing="1em"><mtr><mtd><msup><mi>x</mi><mn>2</mn></msup></mtd><mtd><mrow><mi>x</mi><mo>≤</mo><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mrow><mi>m</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow></mtd><mtd><mrow><mi>x</mi><mo>&gt;</mo><mn>2</mn></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">= \begin{cases} x^2 &amp; x \le 2 \\ mx + b &amp; x &gt; 2 \end{cases}</annotation></semantics></math> is differentiable at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>.</p>
+<p>Slopes must match: the slope of <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math> at 2 is <math class="calc-m"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">2(2) = 4</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>m</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">m = 4</annotation></semantics></math>.</p>
+<p>The pieces must meet: <math class="calc-m"><semantics><mrow><mi>m</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mi>b</mi><mo>=</mo><msup><mn>2</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">m(2) + b = 2^2</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mn>8</mn><mo>+</mo><mi>b</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">8 + b = 4</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">b = -4</annotation></semantics></math>.</p>
+<p>Check: the line <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>4</mn><mi>x</mi><mo>−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">y = 4x - 4</annotation></semantics></math> passes through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 4)</annotation></semantics></math> with slope 4. Both conditions are needed. Matching slopes without meeting gives a jump; meeting without matching slopes gives a corner.</p>
+</div>
+
+<h2 id="writing-it-up">Writing it up</h2>
+<ul>
+<li>To use continuity from differentiability: "Because <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is differentiable at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is continuous at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>."</li>
+<li>To show a function is not differentiable at a continuous point, name the feature and give the evidence: "The <a class="gl" href="../notes/limits-from-plots.html" data-c="one-sided-limit">one-sided limits</a> of the difference quotient at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> are <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> and 1, so <math class="calc-m"><semantics><mrow><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g'(0)</annotation></semantics></math> does not exist."</li>
+<li>Never argue from "not differentiable" to "not continuous". That reverses the theorem.</li>
+</ul>
+<p>From the next topic on, you will find derivatives with rules instead of limits. Every rule assumes the functions involved are differentiable where you use them.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:differentiability">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="estimating-derivatives.html"><span>&larr; Previous</span><b>Estimating a Derivative at a Point</b></a><a class="tb-chapter-link next" href="power-rule.html"><span>Next &rarr;</span><b>The Power Rule</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:differentiability">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

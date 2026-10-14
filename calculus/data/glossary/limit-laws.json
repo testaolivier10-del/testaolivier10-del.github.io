@@ -1,0 +1,8 @@
+{
+ "limit-laws": {
+  "def": "Rules that combine limits that exist: the limit of a sum, difference, constant multiple, product or power is the same combination of the limits; a quotient's limit is the quotient of the limits when the denominator's limit is not 0."
+ },
+ "direct-substitution": {
+  "def": "Finding $\\lim_{x \\to a} f(x)$ by evaluating $f(a)$. It is justified for polynomials, and for rational, root and similar functions at points where the formula is defined (no zero denominator)."
+ }
+}

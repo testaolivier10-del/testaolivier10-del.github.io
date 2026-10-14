@@ -1,0 +1,7 @@
+{
+ "area-between-x-strip": {
+  "file": "figures/area-between-x-strip.svg", "ext": "svg", "w": 760, "h": 440,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "The region between the parabola y = 6 − x² (on top) and the line y = x (on the bottom), shaded from x = −3 to x = 2, where they meet at (−3, −3) and (2, 2). One thin vertical rectangle of width Δx has height (6 − x²) − x. A side panel shows the limits from 6 − x² = x and the area, the integral from −3 to 2 of [(6 − x²) − x] dx = 125/6."
+ }
+}

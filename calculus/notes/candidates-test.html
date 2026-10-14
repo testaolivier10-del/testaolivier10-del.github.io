@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Candidates Test — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="The First Derivative Test finds peaks and valleys, but only compared with their neighbors.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/candidates-test.html">
+<meta property="og:title" content="The Candidates Test — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="The First Derivative Test finds peaks and valleys, but only compared with their neighbors.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/candidates-test.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/candidates-test.html#reading",
+      "name": "The Candidates Test",
+      "url": "https://levlprep.com/calculus/notes/candidates-test.html",
+      "description": "The First Derivative Test finds peaks and valleys, but only compared with their neighbors.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "the candidates test ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Analytical Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Candidates Test: notes",
+          "item": "https://levlprep.com/calculus/notes/candidates-test.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="candidates-test" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Contextual Applications of Differentiation</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Analytical Applications of Differentiation</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="mean-value-theorem"><a href="mean-value-theorem.html"><span class="bk-toc-n">5.1</span>The Mean Value Theorem</a></li><li data-toc-t="extreme-value-theorem"><a href="extreme-value-theorem.html"><span class="bk-toc-n">5.2</span>Extreme Value Theorem, Global and Local Extrema, Critical Points</a></li><li data-toc-t="increasing-decreasing"><a href="increasing-decreasing.html"><span class="bk-toc-n">5.3</span>Where a Function Increases or Decreases</a></li><li data-toc-t="first-derivative-test"><a href="first-derivative-test.html"><span class="bk-toc-n">5.4</span>The First Derivative Test</a></li><li class="current" data-toc-t="candidates-test"><a href="#main" aria-current="page"><span class="bk-toc-n">5.5</span>The Candidates Test</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-a-short-list-is-enough">Why a short list is enough</a><a href="#the-candidates-test-step-by-step">The Candidates Test, step by step</a><a href="#exact-answers-without-a-calculator">Exact answers without a calculator</a><a href="#with-a-calculator">With a calculator</a><a href="#local-versus-global-the-point-readers">Local versus global: the point readers take away</a></div></li><li data-toc-t="concavity"><a href="concavity.html"><span class="bk-toc-n">5.6</span>Concavity and Points of Inflection</a></li><li data-toc-t="second-derivative-test"><a href="second-derivative-test.html"><span class="bk-toc-n">5.7</span>The Second Derivative Test</a></li><li data-toc-t="sketching-derivatives"><a href="sketching-derivatives.html"><span class="bk-toc-n">5.8</span>Sketching f, f' and f''</a></li><li data-toc-t="f-and-its-derivatives"><a href="f-and-its-derivatives.html"><span class="bk-toc-n">5.9</span>Connecting f, f' and f''</a></li><li data-toc-t="optimization-intro"><a href="optimization-intro.html"><span class="bk-toc-n">5.10</span>Introduction to Optimization</a></li><li data-toc-t="solving-optimization"><a href="solving-optimization.html"><span class="bk-toc-n">5.11</span>Solving Optimization Problems</a></li><li data-toc-t="implicit-relations"><a href="implicit-relations.html"><span class="bk-toc-n">5.12</span>Behavior of Implicit Relations</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Analytical Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Candidates Test: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/candidates-test.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.5 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">The Candidates Test</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="candidates-test">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fcandidates-test.html&amp;title=The%20Candidates%20Test%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/candidates-test.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>The <a class="gl" href="../notes/first-derivative-test.html" data-c="first-derivative-test">First Derivative Test</a> finds peaks and valleys, but only compared with their neighbors. Many real questions want more: the hottest moment of the whole day, the lowest level the reservoir reaches all month. That is an <a class="gl" href="../notes/extreme-value-theorem.html" data-c="absolute-extremum">absolute extremum</a>, and on a closed interval there is a short, reliable way to find it without any sign analysis at all.</p>
+
+<h2 id="why-a-short-list-is-enough">Why a short list is enough</h2>
+<p>Put together what you already know. If <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is <a class="gl" href="../notes/discontinuity-types.html" data-c="discontinuity">continuous</a> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>:</p>
+<ol>
+<li>The <a class="gl" href="../notes/extreme-value-theorem.html" data-c="evt">Extreme Value Theorem</a> says an absolute maximum and an absolute minimum exist.</li>
+<li>Each one is either at an endpoint, or inside the interval.</li>
+<li>If it is inside, it is also a <a class="gl" href="../notes/extreme-value-theorem.html" data-c="relative-extremum">relative extremum</a>, so it is at a <a class="gl" href="../notes/extreme-value-theorem.html" data-c="critical-point">critical point</a>.</li>
+</ol>
+<p>So the absolute extrema are among a short list of <b>candidates</b>: the two endpoints and the critical points in between. Evaluate <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> at each candidate, and the largest value is the absolute maximum; the smallest is the absolute minimum.</p>
+<figure id="fig-cand"  class="calc-figure"><div class="calc-figimg" data-fig="candidates-check"><img src="../figures/candidates-check.svg" alt="The graph of f(x) = 2x cubed minus 9x squared plus 12x on the closed interval from 0 to 3, with four candidates: endpoints (0, 0) and (3, 9), critical points (1, 5) and (2, 4). A table lists the values; the absolute maximum is 9 at x = 3 and the absolute minimum is 0 at x = 0. The relative maximum (1, 5) and relative minimum (2, 4) are not absolute." width="900" height="400" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Four candidates, four values. The absolute maximum is at an endpoint; the relative maximum inside loses. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="the-candidates-test-step-by-step">The Candidates Test, step by step</h2>
+<p>The <b><span class="gl" tabindex="0" data-c="candidates-test">Candidates Test</span></b> (also called the closed interval method) for <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> continuous on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>:</p>
+<ol>
+<li>Find <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(x)</annotation></semantics></math>.</li>
+<li>Find the critical points in the open interval <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b)</annotation></semantics></math>: where <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(x) = 0</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(x)</annotation></semantics></math> does not exist. Throw away any outside the interval.</li>
+<li>Make a table of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> for the endpoints and each critical point.</li>
+<li>The largest <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> in the table is the absolute maximum value; the smallest is the absolute minimum value.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the absolute extrema of <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>9</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>12</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x) = 2x^3 - 9x^2 + 12x</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 3]</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>6</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>18</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">= 6x^2 - 18x</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">+ 12</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>6</mn><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 6(x - 1)(x - 2)</annotation></semantics></math>, zero at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>, both in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 3)</annotation></semantics></math>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: x, 0, 1, 2"><table class="compare">
+<thead><tr><th scope="col"><math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></th><th scope="col"><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></th><th scope="col"><math class="calc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></th><th scope="col"><math class="calc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></th><th scope="col"><math class="calc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></th></tr></thead>
+<tbody><tr><td><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math></td></tr></tbody>
+</table></div>
+<p>Absolute maximum: <math class="calc-m"><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math>, at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>. Absolute minimum: <math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>, at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>. Both are at endpoints; the relative maximum <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(1) = 5</annotation></semantics></math> and relative minimum <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">f(2) = 4</annotation></semantics></math> are not the absolute ones.</p>
+</div>
+<p>No signs of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> are needed, and nothing has to be said about which critical points are peaks. The comparison does all the work.</p>
+
+<h2 id="exact-answers-without-a-calculator">Exact answers without a calculator</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the absolute minimum of <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x) = x + 2\cos x</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>π</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, \pi]</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mn>2</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(x) = 1 - 2\sin x = 0</annotation></semantics></math> when <math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\sin x = \frac{1}{2}</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mi>π</mi><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{\pi}{6}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{5\pi}{6}</annotation></semantics></math>.</p>
+<p>Candidates: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f(0) = 2</annotation></semantics></math>; <math class="calc-m"><semantics><mrow><mi>f</mi><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mi>π</mi><mn>6</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">f\left(\frac{\pi}{6}\right)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mi>π</mi><mn>6</mn></mfrac><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">= \frac{\pi}{6} + \sqrt{3}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">≈</mo><mn>2.256</mn></mrow><annotation encoding="application/x-tex">\approx 2.256</annotation></semantics></math>; <math class="calc-m"><semantics><mrow><mi>f</mi><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mn>6</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">f\left(\frac{5\pi}{6}\right)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mn>6</mn></mfrac><mo>−</mo><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">= \frac{5\pi}{6} - \sqrt{3}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">≈</mo><mn>0.886</mn></mrow><annotation encoding="application/x-tex">\approx 0.886</annotation></semantics></math>; <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>π</mi><mo stretchy="false">)</mo><mo>=</mo><mi>π</mi><mo>−</mo><mn>2</mn><mo>≈</mo><mn>1.142</mn></mrow><annotation encoding="application/x-tex">f(\pi) = \pi - 2 \approx 1.142</annotation></semantics></math>.</p>
+<p>Absolute minimum: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mn>6</mn></mfrac><mo>−</mo><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">\frac{5\pi}{6} - \sqrt{3}</annotation></semantics></math>, at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{5\pi}{6}</annotation></semantics></math>. Keep it exact; the decimals are only for comparing.</p>
+</div>
+
+<h2 id="with-a-calculator">With a calculator</h2>
+<p>On a calculator question the critical points may not have a formula. Graph <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> or use the solver to find its zeros, store each one, and evaluate <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> at the stored values. Then compare with the endpoints.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A reservoir holds <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V(t)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>40</mn><mo>+</mo><mn>12</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mi>t</mi><mn>2</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>−</mo><mn>0.5</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">= 40 + 12\sin\left(\frac{t}{2}\right) - 0.5t</annotation></semantics></math> thousand gallons, <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">0 \le t \le 10</annotation></semantics></math> days. Find the least volume.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>V</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V'(t)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>6</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mi>t</mi><mn>2</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>−</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">= 6\cos\left(\frac{t}{2}\right) - 0.5</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>≈</mo><mn>2.975</mn></mrow><annotation encoding="application/x-tex">t \approx 2.975</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>t</mi><mo>≈</mo><mn>9.592</mn></mrow><annotation encoding="application/x-tex">t \approx 9.592</annotation></semantics></math> (<a class="gl" href="../notes/math-trig.html" data-c="radian">radian</a> mode).</p>
+<p>Candidates: <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">V(0) = 40</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>2.975</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>50.471</mn></mrow><annotation encoding="application/x-tex">V(2.975) \approx 50.471</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>9.592</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>23.246</mn></mrow><annotation encoding="application/x-tex">V(9.592) \approx 23.246</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>23.493</mn></mrow><annotation encoding="application/x-tex">V(10) \approx 23.493</annotation></semantics></math>.</p>
+<p>The least volume is about <math class="calc-m"><semantics><mrow><mn>23.246</mn></mrow><annotation encoding="application/x-tex">23.246</annotation></semantics></math> thousand gallons, at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>≈</mo><mn>9.592</mn></mrow><annotation encoding="application/x-tex">t \approx 9.592</annotation></semantics></math> days. The endpoint value <math class="calc-m"><semantics><mrow><mn>23.493</mn></mrow><annotation encoding="application/x-tex">23.493</annotation></semantics></math> was close: only the comparison shows which is smaller.</p>
+</div>
+
+<h2 id="local-versus-global-the-point-readers">Local versus global: the point readers take away</h2>
+<p>A justification like "<math class="calc-m"><semantics><mrow><mrow><mi>V</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">V'</annotation></semantics></math> changes from negative to positive at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>9.592</mn></mrow><annotation encoding="application/x-tex">t = 9.592</annotation></semantics></math>, so this is the absolute minimum" earns no credit. A sign change is a local fact: it compares <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>9.592</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V(9.592)</annotation></semantics></math> with nearby values only. An endpoint, or another critical point far away, could be lower. For an absolute extremum you need a global argument. On a closed interval, the Candidates Test is the simplest one: show the table of candidates and values, then name the largest or smallest.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Question asks for, Tool, Justification"><table class="compare">
+<thead><tr><th scope="col">Question asks for</th><th scope="col">Tool</th><th scope="col">Justification</th></tr></thead>
+<tbody>
+<tr><td>A relative extremum</td><td>First <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">Derivative</a> Test</td><td>"<math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> changes from <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math>"</td></tr>
+<tr><td>An absolute extremum on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math></td><td>Candidates Test</td><td>A table of endpoints and critical points with their values</td></tr>
+</tbody>
+</table></div>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:candidates-test">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="first-derivative-test.html"><span>&larr; Previous</span><b>The First Derivative Test</b></a><a class="tb-chapter-link next" href="concavity.html"><span>Next &rarr;</span><b>Concavity and Points of Inflection</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:candidates-test">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

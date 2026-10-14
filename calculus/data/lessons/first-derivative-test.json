@@ -1,0 +1,81 @@
+{
+ "topic": "first-derivative-test",
+ "hook": "A cyclist on a hilly road knows she has reached the top of a climb when the road stops going up and starts going down. A flat stretch alone does not prove it: the road may level off and keep climbing. The First Derivative Test turns that common sense into a rule you can state and justify.",
+ "prereq": [
+  {
+   "q": "If $f'(x) > 0$ on an interval, then on that interval $f$ is",
+   "options": [
+    "increasing",
+    "decreasing",
+    "concave up",
+    "constant"
+   ],
+   "correct": 0,
+   "why": "A positive derivative means rising tangent lines.",
+   "review": "increasing-decreasing"
+  },
+  {
+   "q": "Which points are critical points of $f$?",
+   "options": [
+    "Interior points where $f' = 0$ or $f'$ does not exist",
+    "Points where $f = 0$",
+    "The endpoints only",
+    "Points where $f$ is largest"
+   ],
+   "correct": 0,
+   "why": "Relative extrema can occur only at critical points.",
+   "review": "extreme-value-theorem"
+  }
+ ],
+ "figure": {
+  "figure": "fdt-three-cases",
+  "caption": "At a critical point $c$, the change in the sign of $f'$ decides: $+$ to $-$ is a peak, $-$ to $+$ a valley, and no change means no extremum."
+ },
+ "chain": [
+  {
+   "cause": "$f'$ changes from positive to negative at a critical point $c$ (and $f$ is continuous at $c$)",
+   "effect": "$f$ rises up to $c$ and falls after it, so $f(c)$ is a relative maximum"
+  },
+  {
+   "cause": "$f'$ changes from negative to positive at $c$",
+   "effect": "$f$ falls then rises, so $f(c)$ is a relative minimum"
+  },
+  {
+   "cause": "$f'$ has the same sign on both sides of $c$",
+   "effect": "$f$ keeps rising (or falling) through $c$: no relative extremum, even if $f'(c) = 0$"
+  },
+  {
+   "cause": "You state the result",
+   "effect": "write the sentence: \"$f'$ changes from negative to positive at $x = c$, so $f$ has a relative minimum there\""
+  }
+ ],
+ "ideas": [
+  "<b>First Derivative Test</b>: at a critical point $c$ where $f$ is continuous, if $f'$ changes from $+$ to $-$, $f(c)$ is a relative maximum; from $-$ to $+$, a relative minimum; no change, neither.",
+  "It works where $f'$ does not exist (corners, cusps) as well as where $f' = 0$.",
+  "A <b>sign chart</b> of $f'$ organizes the work, but it is not a justification by itself: write the sentence.",
+  "On a graph of $f'$: a relative maximum of $f$ is where the graph of $f'$ crosses the axis going down; a minimum, crossing going up. Touching without crossing gives nothing."
+ ],
+ "misconception": {
+  "wrong": "$f'(c) = 0$, so $f$ has a relative maximum or minimum at $c$.",
+  "right": "The scoring guidelines give no credit for \"$f'(c) = 0$\" alone. The point needs a sign change, stated with its direction: \"$f'$ changes from positive to negative at $x = c$.\" For $x^3$ at 0, $f' = 0$ but there is no extremum."
+ },
+ "check": [
+  "calc-first-derivative-test-1",
+  "calc-first-derivative-test-2",
+  "calc-first-derivative-test-3",
+  "calc-first-derivative-test-4",
+  "calc-first-derivative-test-9",
+  "calc-first-derivative-test-15"
+ ],
+ "summary": "At a critical point, look at the sign of $f'$ on each side. $+$ to $-$: relative maximum. $-$ to $+$: relative minimum. No change: no extremum. The test works where $f'$ is undefined too. Justify in words that name $f'$ and the direction of its sign change; a sign chart alone does not earn the point.",
+ "connections": [
+  {
+   "href": "../notes/increasing-decreasing.html",
+   "label": "Back: increasing and decreasing (5.3)"
+  },
+  {
+   "href": "../notes/candidates-test.html",
+   "label": "Next: 5.5"
+  }
+ ]
+}

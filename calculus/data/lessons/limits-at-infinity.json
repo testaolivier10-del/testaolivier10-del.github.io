@@ -1,0 +1,84 @@
+{
+ "topic": "limits-at-infinity",
+ "hook": "A cup of hot coffee cools quickly at first, then more and more slowly, settling toward room temperature but never quite reaching it. Questions about the long run, where a quantity heads as time goes on and on, are limits at infinity. They describe where a graph levels off, and which of two growing quantities wins.",
+ "prereq": [
+  {
+   "q": "For large $x$, which term of $3x^2 - 5x + 7$ matters most?",
+   "options": [
+    "$3x^2$",
+    "$-5x$",
+    "$7$",
+    "They matter equally"
+   ],
+   "correct": 0,
+   "why": "The highest power grows fastest.",
+   "review": "math-functions"
+  },
+  {
+   "q": "What is $\\lim_{x \\to 2^+} \\frac{1}{x - 2}$?",
+   "options": [
+    "$\\infty$",
+    "$-\\infty$",
+    "$0$",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": "One over a tiny positive number grows without bound.",
+   "review": "infinite-limits"
+  },
+  {
+   "q": "$e^{-x}$ equals",
+   "options": [
+    "$\\frac{1}{e^x}$",
+    "$-e^x$",
+    "$e^{1/x}$",
+    "$\\frac{1}{e^{-x}}$"
+   ],
+   "correct": 0,
+   "why": "A negative exponent means a reciprocal.",
+   "review": "math-exp-log"
+  }
+ ],
+ "figure": {
+  "figure": "end-behavior-growth",
+  "caption": "A horizontal asymptote, and the race between ln x, a power and an exponential."
+ },
+ "chain": [
+  {
+   "cause": "$x$ grows without bound",
+   "effect": "terms like $\\frac{1}{x}$, $\\frac{5}{x^2}$ and $e^{-x}$ shrink to 0"
+  },
+  {
+   "cause": "You divide the top and bottom of a quotient by the dominant term",
+   "effect": "every other term becomes one of those shrinking terms, and the limit can be read off"
+  },
+  {
+   "cause": "$\\lim_{x \\to \\infty} f(x) = L$ or $\\lim_{x \\to -\\infty} f(x) = L$ is finite",
+   "effect": "$y = L$ is a horizontal asymptote; the graph levels off there (and may cross it in the middle)"
+  },
+  {
+   "cause": "Two functions both grow without bound",
+   "effect": "the faster one dominates: as $x \\to \\infty$, $\\ln x$ loses to any power $x^p$ ($p > 0$), and $x^p$ loses to $e^x$"
+  }
+ ],
+ "ideas": [
+  "$\\lim_{x \\to \\infty} f(x) = L$ means $f(x)$ approaches $L$ as $x$ grows without bound. A finite limit at $\\infty$ or $-\\infty$ gives a <b>horizontal asymptote</b> $y = L$.",
+  "For a rational function, divide by the highest power of $x$ in the denominator. Equal degrees: ratio of leading coefficients. Bottom higher: 0. Top higher: no horizontal asymptote.",
+  "$\\sqrt{x^2} = |x|$. As $x \\to -\\infty$, $\\sqrt{x^2} = -x$, which can flip the sign of the answer.",
+  "<b>Dominant terms</b>: in the long run $\\ln x$ loses to every positive power, and $e^x$ beats every power.",
+  "Vertical asymptote: $\\lim_{x \\to c} f(x) = \\pm\\infty$. Horizontal asymptote: $\\lim_{x \\to \\pm\\infty} f(x) = L$. Do not mix them up."
+ ],
+ "misconception": {
+  "wrong": "A graph never crosses its horizontal asymptote, and the limit at $-\\infty$ is the same as at $\\infty$.",
+  "right": "A horizontal asymptote only describes the far ends: $\\frac{2x^2 + x}{x^2 + 1}$ crosses $y = 2$ at $x = 2$. And the two ends can differ: $\\frac{4x}{\\sqrt{x^2 + 1}}$ approaches 4 on the right and $-4$ on the left."
+ },
+ "check": [
+  "calc-limits-at-infinity-1",
+  "calc-limits-at-infinity-2",
+  "calc-limits-at-infinity-6",
+  "calc-limits-at-infinity-7",
+  "calc-limits-at-infinity-10",
+  "calc-limits-at-infinity-15"
+ ],
+ "summary": "A limit at infinity describes where $f(x)$ heads as $x \\to \\infty$ or $x \\to -\\infty$; a finite one gives a horizontal asymptote. Divide by the dominant term: for rational functions compare degrees. Watch $\\sqrt{x^2} = |x|$ on the left. In the long run $\\ln x$ grows slower than any power and $e^x$ faster than any power."
+}

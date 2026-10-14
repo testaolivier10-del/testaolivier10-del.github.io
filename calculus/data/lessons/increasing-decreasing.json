@@ -1,0 +1,93 @@
+{
+ "topic": "increasing-decreasing",
+ "hook": "A doctor reads a heart monitor by its slope: a line climbing means the signal is rising, a line falling means it is dropping. Calculus reads every graph that way. The derivative is the slope, so its sign tells you where the function rises and where it falls, even when you cannot see the function itself.",
+ "prereq": [
+  {
+   "q": "If $f'(2) = -3$, the tangent line to $f$ at $x = 2$",
+   "options": [
+    "slopes downward",
+    "slopes upward",
+    "is horizontal",
+    "is vertical"
+   ],
+   "correct": 0,
+   "why": "A negative slope falls from left to right.",
+   "review": "derivative-definition"
+  },
+  {
+   "q": "Where is $f'(x) = 3x^2 - 12$ equal to 0?",
+   "options": [
+    "$x = \\pm 2$",
+    "$x = 4$",
+    "$x = \\pm 4$",
+    "$x = 0$"
+   ],
+   "correct": 0,
+   "why": "$3x^2 = 12$, so $x^2 = 4$.",
+   "review": "power-rule"
+  },
+  {
+   "q": "The critical points of $f$ are interior points where",
+   "options": [
+    "$f'(x) = 0$ or $f'(x)$ does not exist",
+    "$f(x) = 0$",
+    "$f''(x) = 0$",
+    "$f$ is not continuous"
+   ],
+   "correct": 0,
+   "why": "They split the domain into pieces where $f'$ keeps one sign.",
+   "review": "extreme-value-theorem"
+  }
+ ],
+ "figure": {
+  "figure": "incdec-sign-of-fprime",
+  "caption": "Read the sign of $f'$ straight up to $f$: above the axis, $f$ rises; below it, $f$ falls."
+ },
+ "chain": [
+  {
+   "cause": "$f'(x) > 0$ at each point of an interval",
+   "effect": "each tangent line slopes up, so $f$ is increasing on that interval"
+  },
+  {
+   "cause": "$f'(x) < 0$ at each point of an interval",
+   "effect": "$f$ is decreasing on that interval"
+  },
+  {
+   "cause": "$f'$ can change sign only at a zero or where $f'$ does not exist (if $f'$ has no jumps)",
+   "effect": "the critical points split the line into intervals, and one test value per interval gives the sign"
+  },
+  {
+   "cause": "You are given the graph of $f'$",
+   "effect": "read the sign (above or below the axis), not whether the graph of $f'$ goes up or down"
+  }
+ ],
+ "ideas": [
+  "<b>Increasing on an interval</b>: $f(x_1) < f(x_2)$ whenever $x_1 < x_2$ in the interval. If $f'(x) > 0$ on the interval, $f$ is increasing there; if $f'(x) < 0$, decreasing.",
+  "Method: find $f'$, find where it is 0 or undefined, test the sign of $f'$ on each interval between those points.",
+  "On a graph of $f'$: above the $x$-axis means $f$ increasing; below means $f$ decreasing.",
+  "Justify with the sign of $f'$ by name: \"$f'(x) > 0$ for $-2 < x < 1$, so $f$ is increasing there.\""
+ ],
+ "misconception": {
+  "wrong": "On a graph of $f'$, $f$ is increasing wherever the graph of $f'$ is going up.",
+  "right": "The direction of $f$ comes from the sign of $f'$: above the axis, $f$ increases, even where the graph of $f'$ is falling. Whether $f'$ itself rises or falls tells you about the concavity of $f$, a later topic."
+ },
+ "check": [
+  "calc-increasing-decreasing-1",
+  "calc-increasing-decreasing-2",
+  "calc-increasing-decreasing-3",
+  "calc-increasing-decreasing-4",
+  "calc-increasing-decreasing-5",
+  "calc-increasing-decreasing-16"
+ ],
+ "summary": "The sign of the derivative gives the direction of a function: $f' > 0$ on an interval means $f$ is increasing there, $f' < 0$ means decreasing. Split the domain at the critical points, test each piece, and justify with the sign of $f'$ by name. On a graph of $f'$, read the sign, not the slope.",
+ "connections": [
+  {
+   "href": "../notes/extreme-value-theorem.html",
+   "label": "Back: critical points (5.2)"
+  },
+  {
+   "href": "../notes/first-derivative-test.html",
+   "label": "Next: 5.4"
+  }
+ ]
+}

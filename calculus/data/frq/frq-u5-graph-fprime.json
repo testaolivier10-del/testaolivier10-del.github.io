@@ -1,0 +1,201 @@
+{
+ "id": "frq-u5-graph-fprime",
+ "type": "graph",
+ "title": "Graph of the derivative: extrema, concavity and a tangent line",
+ "calc": false,
+ "points": 9,
+ "units": [
+  "unit-5"
+ ],
+ "topics": [
+  "first-derivative-test",
+  "concavity",
+  "f-and-its-derivatives",
+  "sketching-derivatives"
+ ],
+ "practices": [
+  "2.B",
+  "3.D",
+  "3.E",
+  "1.E",
+  "1.F",
+  "4.C"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "The graph of $f'$, the derivative of $f$",
+  "text": "The function $f$ is defined and differentiable on the closed interval $[-4, 5]$. The graph of $f'$, the derivative of $f$, consists of a semicircle below the $x$-axis from $x = -4$ to $x = 0$ and two line segments, from $(0, 0)$ to $(2, 3)$ and from $(2, 3)$ to $(5, -3)$. It is given that $f(2) = 5$.",
+  "plot": {
+   "label": "Graph of f prime on the closed interval from -4 to 5: a semicircle of radius 2 below the x-axis from (-4, 0) to (0, 0) with lowest point (-2, -2), a segment from (0, 0) up to (2, 3), and a segment from (2, 3) down through (3.5, 0) to (5, -3)",
+   "x": [
+    -4.5,
+    5.5
+   ],
+   "y": [
+    -3.5,
+    3.5
+   ],
+   "xStep": 1,
+   "yStep": 1,
+   "xLabel": "x",
+   "yLabel": "y",
+   "width": 380,
+   "height": 280,
+   "curves": [
+    {
+     "fn": "-sqrt(4 - (x + 2)^2)",
+     "domain": [
+      -4,
+      0
+     ],
+     "cls": "s2",
+     "ends": [
+      "closed",
+      null
+     ],
+     "samples": 600
+    },
+    {
+     "fn": "1.5x",
+     "domain": [
+      0,
+      2
+     ],
+     "cls": "s2"
+    },
+    {
+     "fn": "7 - 2x",
+     "domain": [
+      2,
+      5
+     ],
+     "cls": "s2",
+     "ends": [
+      null,
+      "closed"
+     ],
+     "label": "f'"
+    }
+   ],
+   "points": [
+    {
+     "at": [
+      -2,
+      -2
+     ],
+     "cls": "s2",
+     "label": "(-2, -2)"
+    },
+    {
+     "at": [
+      2,
+      3
+     ],
+     "cls": "s2",
+     "label": "(2, 3)"
+    },
+    {
+     "at": [
+      0,
+      0
+     ],
+     "cls": "s2"
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Find</b> the $x$-coordinate of each point at which $f$ has a relative minimum and each point at which $f$ has a relative maximum on the open interval $-4 < x < 5$. <b>Justify</b> your answers.",
+   "rubric": [
+    {
+     "point": "Relative minimum at $x = 0$, with the reason: $f'$ changes from negative to positive at $x = 0$",
+     "accept": [
+      "\"$f' < 0$ for $-4 < x < 0$ and $f' > 0$ for $0 < x < 3.5$\"",
+      "the reason must name $f'$ and the direction of its sign change; \"$f'(0) = 0$\" alone earns nothing"
+     ]
+    },
+    {
+     "point": "Relative maximum at $x = 3.5$, with the reason: $f'$ changes from positive to negative at $x = 3.5$",
+     "accept": [
+      "$x = \\frac{7}{2}$",
+      "\"$f' > 0$ for $0 < x < 3.5$ and $f' < 0$ for $3.5 < x < 5$\""
+     ]
+    }
+   ],
+   "sample": "$f$ has a relative minimum at $x = 0$, because $f'$ changes from negative to positive there. $f$ has a relative maximum at $x = \\frac{7}{2}$, because $f'$ changes from positive to negative there. (On $[2, 5]$, $f'(x) = 7 - 2x$, which is zero at $x = 3.5$.)"
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Find</b> the open intervals on which the graph of $f$ is concave down. <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "The intervals $(-4, -2)$ and $(2, 5)$",
+     "accept": [
+      "$-4 < x < -2$ and $2 < x < 5$"
+     ]
+    },
+    {
+     "point": "Reason: $f'$ is decreasing on those intervals",
+     "accept": [
+      "\"$f''(x) < 0$ there\" when tied to the graph of $f'$ falling",
+      "the reason must be about $f'$ decreasing, not about $f'$ being negative"
+     ]
+    }
+   ],
+   "sample": "The graph of $f$ is concave down on $(-4, -2)$ and on $(2, 5)$, because $f'$ is decreasing on those intervals."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Find</b> the $x$-coordinate of each point of inflection of the graph of $f$ on $-4 < x < 5$. <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "$x = -2$ and $x = 2$ (and no others)",
+     "accept": [
+      "both values with no extra values such as $x = 0$ or the zeros of $f'$"
+     ]
+    },
+    {
+     "point": "Justification: $f'$ changes from decreasing to increasing at $x = -2$ and from increasing to decreasing at $x = 2$",
+     "accept": [
+      "\"$f''$ changes sign at $x = -2$ and at $x = 2$\"",
+      "not earned by \"$f'$ changes sign\" or by zeros of $f'$"
+     ]
+    }
+   ],
+   "sample": "The graph of $f$ has points of inflection at $x = -2$ and $x = 2$. At $x = -2$, $f'$ changes from decreasing to increasing, and at $x = 2$, $f'$ changes from increasing to decreasing, so the concavity of $f$ changes at both. ($f'$ is increasing on both sides of $x = 0$, so there is no inflection point there.)"
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "<b>Write</b> an equation for the line tangent to the graph of $f$ at $x = 2$. Use it to approximate $f(2.2)$. Is this approximation an overestimate or an underestimate of $f(2.2)$? <b>Explain</b> your reasoning.",
+   "rubric": [
+    {
+     "point": "Tangent line $y = 5 + 3(x - 2)$",
+     "accept": [
+      "$y - 5 = 3(x - 2)$",
+      "$y = 3x - 1$"
+     ]
+    },
+    {
+     "point": "Approximation $f(2.2) \\approx 5 + 3(0.2) = 5.6$",
+     "accept": [
+      "$5.6$ with the tangent line shown"
+     ]
+    },
+    {
+     "point": "Overestimate, because the graph of $f$ is concave down on $(2, 2.2)$ ($f'$ is decreasing there), so it lies below its tangent line",
+     "accept": [
+      "\"$f'' < 0$ on $(2, 5)$\" tied to $f'$ decreasing",
+      "the reason must use concavity on the interval to the right of $x = 2$"
+     ]
+    }
+   ],
+   "sample": "$f'(2) = 3$ from the graph, so the tangent line is $y = 5 + 3(x - 2)$. Then $f(2.2) \\approx 5 + 3(0.2) = 5.6$. On $(2, 5)$, $f'$ is decreasing, so the graph of $f$ is concave down there and lies below its tangent line. The approximation $5.6$ is an overestimate."
+  }
+ ]
+}

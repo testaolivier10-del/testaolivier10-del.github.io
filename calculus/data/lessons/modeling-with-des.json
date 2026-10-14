@@ -1,0 +1,72 @@
+{
+ "topic": "modeling-with-des",
+ "hook": "A hot cup of coffee cools fast at first, then more and more slowly as it nears room temperature. Nobody hands you a formula for its temperature. What you can say is how fast it cools: the hotter it is compared with the room, the faster it drops. That sentence, written with a derivative, is a differential equation.",
+ "prereq": [
+  {
+   "q": "$P(t)$ is a number of cells and $t$ is in hours. In what units is $P'(t)$ measured?",
+   "options": [
+    "cells per hour",
+    "cells",
+    "hours per cell",
+    "cells per hour per hour"
+   ],
+   "correct": 0,
+   "why": "A derivative is a rate: the units of the output per unit of the input.",
+   "review": "derivative-in-context"
+  },
+  {
+   "q": "A function is increasing on an interval where its derivative is",
+   "options": [
+    "positive",
+    "negative",
+    "zero",
+    "increasing"
+   ],
+   "correct": 0,
+   "why": "If $f'(x) > 0$ on an interval, $f$ is increasing there.",
+   "review": "increasing-decreasing"
+  }
+ ],
+ "figure": {
+  "figure": "cooling-rate-slopes",
+  "caption": "Coffee cooling in a 20 °C room. Each tangent segment has slope $-0.05(T - 20)$: the farther $T$ is from 20, the steeper the graph."
+ },
+ "chain": [
+  {
+   "cause": "A quantity changes at a rate that depends on its current value",
+   "effect": "write the rate as a derivative and the dependence as a formula: $\\frac{dP}{dt} = kP$"
+  },
+  {
+   "cause": "\"Proportional to\" means \"a constant times\"",
+   "effect": "$\\frac{dy}{dt} = k \\cdot (\\text{that quantity})$; \"inversely proportional\" puts the quantity in the denominator"
+  },
+  {
+   "cause": "The signs of $k$ and of the other factor are known",
+   "effect": "the sign of $\\frac{dy}{dt}$ is known, so you know where the quantity grows and where it shrinks"
+  },
+  {
+   "cause": "One rate and the matching value are given",
+   "effect": "solve for $k$, then predict the rate at any other value"
+  }
+ ],
+ "ideas": [
+  "A <b>differential equation</b> relates a derivative to the variables: $\\frac{dy}{dt} = 0.4(50 - y)$.",
+  "\"The rate of change of $y$ is proportional to $y$\" is $\\frac{dy}{dt} = ky$. The derivative is on the left; the quantity is on the right.",
+  "\"Proportional to the difference between $T$ and 20\" is $\\frac{dT}{dt} = k(T - 20)$.",
+  "The sign of $\\frac{dy}{dt}$ says where $y$ increases or decreases; you can read it before knowing any formula for $y$.",
+  "$k$ has units: for $\\frac{dP}{dt} = kP$ with $t$ in hours, $k$ is \"per hour\"."
+ ],
+ "misconception": {
+  "wrong": "\"A population grows at a rate proportional to its size\" means $P = kt$.",
+  "right": "The <b>rate</b> is proportional: $\\frac{dP}{dt} = kP$. The sentence is about $\\frac{dP}{dt}$, and the size it mentions is $P$, not $t$."
+ },
+ "check": [
+  "calc-modeling-with-des-1",
+  "calc-modeling-with-des-2",
+  "calc-modeling-with-des-4",
+  "calc-modeling-with-des-10",
+  "calc-modeling-with-des-13",
+  "calc-modeling-with-des-16"
+ ],
+ "summary": "A differential equation states how fast a quantity changes. Translate words carefully: \"the rate of change of $y$\" is $\\frac{dy}{dt}$, \"proportional to\" is \"$k$ times\", and the sign of the right side tells you where $y$ rises or falls. One known rate fixes $k$."
+}

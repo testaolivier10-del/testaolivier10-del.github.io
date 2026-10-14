@@ -1,0 +1,43 @@
+<h2>Washers around any line</h2>
+<p>You now have both tools this topic needs. From the disc method about other lines you know that a radius is a distance from the axis of rotation, whatever line that is. From the washer method you know that a slice with a hole has area $\pi(R^2 - r^2)$. Put them together: when a region is revolved about a line $y = k$ or $x = h$ that it does not touch, each slice is a washer centered on that line, and both radii are measured from it.</p>
+$$V = \pi\int_a^b \left(R^2 - r^2\right)\,dx, \qquad R = \text{axis to far edge}, \quad r = \text{axis to near edge}.$$
+<figure id="fig-washerline" data-fig="washer-solid-line"><figcaption>The same region as in the last topic, now revolved about $y = -1$. Measured from the new axis, the outer radius is $\sqrt{x} + 1$ and the inner radius is $2$.</figcaption></figure>
+
+<h2>Axis below the region</h2>
+<p>If the axis $y = k$ is below the region, the top curve is the far edge and the bottom curve is the near edge. Each radius is a curve's height minus $k$. With $k$ negative, that means adding: about $y = -1$, a height $f(x)$ becomes the radius $f(x) - (-1) = f(x) + 1$.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> The region between $y = \sqrt{x}$ and $y = 1$ for $1 \le x \le 4$ is revolved about the line $y = -1$. Find the volume.</p>
+<p><b>Radii.</b> Far edge, the curve: $R = \sqrt{x} - (-1) = \sqrt{x} + 1$. Near edge, the line $y = 1$: $r = 1 - (-1) = 2$.</p>
+<p><b>Integrand.</b> $R^2 - r^2 = (x + 2\sqrt{x} + 1) - 4 = x + 2\sqrt{x} - 3$.</p>
+<p><b>Volume.</b></p>
+$$V = \pi\int_1^4 \left(x + 2\sqrt{x} - 3\right)\,dx = \pi\left[\frac{x^2}{2} + \frac{4}{3}x^{3/2} - 3x\right]_1^4 = \pi\left(\frac{20}{3} - \left(-\frac{7}{6}\right)\right) = \frac{47\pi}{6}.$$
+<p>About the $x$-axis the same region gave $\frac{9\pi}{2} = \frac{27\pi}{6}$. Moving the axis down puts every washer farther out, where it sweeps a wider ring.</p>
+</div>
+
+<h2>Axis above the region: the edges trade roles</h2>
+<p>If the axis $y = k$ is above the region, the far edge is the <b>bottom</b> curve, because it is farther from a line overhead. So $R = k - g(x)$ (bottom) and $r = k - f(x)$ (top). This is the step students most often miss: "top curve is the outer radius" is only true when the axis is below.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> The region between $y = x$ and $y = x^2$ is revolved about the line $y = 1$. Find the volume.</p>
+<p><b>Picture.</b> On $(0, 1)$ the line $y = x$ is on top and the parabola below. The axis $y = 1$ is above both.</p>
+<p><b>Radii.</b> Far edge, the parabola: $R = 1 - x^2$. Near edge, the line: $r = 1 - x$.</p>
+<p><b>Volume.</b></p>
+$$V = \pi\int_0^1 \left[(1 - x^2)^2 - (1 - x)^2\right]\,dx = \pi\int_0^1 \left(x^4 - 3x^2 + 2x\right)\,dx = \pi\left(\frac{1}{5} - 1 + 1\right) = \frac{\pi}{5}.$$
+</div>
+
+<h2>Vertical lines</h2>
+<p>For an axis $x = h$, the washers are horizontal: write the curves as $x$ in terms of $y$ and integrate in $dy$. If the axis is to the left of the region, the right curve is the far edge, and each radius is $x(y) - h$. If the axis is to the right, the left curve is the far edge, and each radius is $h - x(y)$. About $x = -1$, the region between $x = y$ and $x = \sqrt{y}$ gives $R = \sqrt{y} + 1$ and $r = y + 1$, and $V = \frac{\pi}{2}$.</p>
+
+<h2>Radii for every position of the axis</h2>
+<table>
+<thead><tr><th>Axis</th><th>Outer radius $R$</th><th>Inner radius $r$</th></tr></thead>
+<tbody>
+<tr><td>$y = k$ below the region (top $f$, bottom $g$)</td><td>$f(x) - k$</td><td>$g(x) - k$</td></tr>
+<tr><td>$y = k$ above the region</td><td>$k - g(x)$</td><td>$k - f(x)$</td></tr>
+<tr><td>$x = h$ left of the region (right $q$, left $p$)</td><td>$q(y) - h$</td><td>$p(y) - h$</td></tr>
+<tr><td>$x = h$ right of the region</td><td>$h - p(y)$</td><td>$h - q(y)$</td></tr>
+</tbody>
+</table>
+<p>Three checks catch most errors: both radii are positive, $R > r$ between the limits, and $R - r$ equals the region's height (or width). If the last check fails, you measured one radius from the wrong place.</p>
+<p>With a calculator, find the crossings, store them, and write the setup with each radius in parentheses, for example $\pi\int_a^b \left[(4 - e^x)^2 - (2 - x)^2\right]\,dx$. Report three decimal places.</p>

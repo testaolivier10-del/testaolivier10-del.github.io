@@ -1,0 +1,55 @@
+<p>Up to now you have gone from an amount to its rate: from position to velocity, from water in a tank to how fast it flows. Unit 6 turns that around. Given the rate, how much has built up? The answer is a single idea that the rest of the course leans on: <b>the change in an amount is the area under its rate graph.</b></p>
+
+<h2>Constant rates: rate times time</h2>
+<p>Start with what you already know. A car that drives at 60 miles per hour for 2 hours goes 120 miles. Draw that rate as a graph against time: a flat line at height 60 from $t = 0$ to $t = 2$. The region under it is a rectangle 2 wide and 60 tall. Its area is 120, the same multiplication.</p>
+<p>That is not a coincidence. Height times width is rate times time, and rate times time is the change in the amount. The units agree: (miles per hour) times (hours) = miles. <b>Area under a rate graph has the units of the rate times the units of the input.</b></p>
+<table class="compare">
+<thead><tr><th>Rate (height)</th><th>Input (width)</th><th>Area means</th></tr></thead>
+<tbody>
+<tr><td>velocity, feet per second</td><td>seconds</td><td>change in position, feet</td></tr>
+<tr><td>flow, liters per minute</td><td>minutes</td><td>change in water, liters</td></tr>
+<tr><td>temperature change, degrees per hour</td><td>hours</td><td>change in temperature, degrees</td></tr>
+<tr><td>people entering, people per hour</td><td>hours</td><td>number of people who enter</td></tr>
+</tbody>
+</table>
+
+<h2>Changing rates: the area still works</h2>
+<p>Rates rarely stay constant. Suppose a cart's velocity grows steadily, $v(t) = 3t$ meters per second. Over a tiny stretch of time the velocity is almost constant, so the cart moves almost (velocity) times (that tiny time): a thin rectangle under the graph. Put all the thin rectangles side by side and they fill the region under the graph. So the change in position is still the area under the velocity graph, even though the velocity keeps changing.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A cart has velocity $v(t) = 3t$ meters per second for $0 \le t \le 6$. How far forward does it move?</p>
+<p>The graph of $v$ is a line from $(0, 0)$ to $(6, 18)$. The region under it is a triangle with base 6 seconds and height 18 meters per second.</p>
+<p>Area $= \frac{1}{2}(6)(18) = 54$. Units: (meters per second) times (seconds) = meters. The cart moves 54 meters forward.</p>
+<p>Notice what would go wrong with "rate times time" using one rate: $18 \cdot 6 = 108$ is far too big, because the cart only reaches 18 meters per second at the very end.</p>
+</div>
+<p>When a rate graph is made of line segments, the region splits into rectangles, triangles and trapezoids, and geometry gives the exact answer. When the graph curves, you will estimate the area in the next topic and find it exactly later in this unit.</p>
+
+<h2>Negative rates: area below the axis</h2>
+<figure id="fig-tank" data-fig="acc-rate-area"><figcaption>Water flows into a tank at rate r(t). Area above the axis is water added; area below is water drained.</figcaption></figure>
+<p>A rate can be negative: water draining out, a car backing up, a cooling oven. Then the graph lies below the horizontal axis. The region still has an area (a positive size), but it stands for a <i>decrease</i>. So:</p>
+<ul>
+<li>Area above the axis adds to the amount.</li>
+<li>Area below the axis subtracts from the amount.</li>
+<li><b>Net change</b> = (area above) minus (area below).</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> In <a class="figref" href="#fig-tank">the figure</a>, water flows at rate $r(t)$ liters per minute. The tank holds 50 liters at $t = 0$. How much does it hold at $t = 12$?</p>
+<p>Above the axis, from 0 to 8: a trapezoid from 0 to 4, $\frac{2 + 6}{2} \cdot 4 = 16$; a rectangle from 4 to 6, $6 \cdot 2 = 12$; a triangle from 6 to 8, $\frac{1}{2}(2)(6) = 6$. That is 34 liters in.</p>
+<p>Below the axis, from 8 to 12: a triangle from 8 to 10, $\frac{1}{2}(2)(3) = 3$, and a rectangle from 10 to 12, $3 \cdot 2 = 6$. That is 9 liters out.</p>
+<p>Net change $= 34 - 9 = 25$ liters. Amount at 12 $= 50 + 25 = 75$ liters.</p>
+</div>
+
+<h2>Starting amount plus change</h2>
+<p>The area tells you how much the amount <i>changed</i>, not how much there is. To know the amount at the end, you need where it started:</p>
+<p style="text-align:center"><b>amount at the end = starting amount + net change</b></p>
+<p>Forgetting the starting amount is one of the most common lost points on free-response questions. If a question says the tank held 50 liters at the start, that 50 belongs in your answer.</p>
+
+<h2>Reading the graph for behavior</h2>
+<p>You can also read <i>when</i> the amount grows. While the rate is positive the amount increases; while it is negative the amount decreases. So the amount is largest at a time where the rate changes from positive to negative. In the tank example the water is highest at $t = 8$ minutes: before that, water was still coming in; after it, water drains. A smaller positive rate (from 6 to 8) still adds water. Only the sign of the rate decides whether the amount goes up.</p>
+
+<h2>How the exam asks it</h2>
+<ul>
+<li>"What are the units of ...?" Multiply the rate's units by the input's units.</li>
+<li>"How much ... from $t = a$ to $t = b$?" Find the area, with regions below the axis subtracted.</li>
+<li>"How much is in the tank at $t = b$?" Starting amount plus net change.</li>
+<li>"When is the amount greatest?" Where the rate changes from positive to negative, or at an end of the interval: compare them.</li>
+</ul>

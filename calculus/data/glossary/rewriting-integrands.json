@@ -1,0 +1,5 @@
+{
+ "long-division": {
+  "def": "Rewriting an integrand so a basic rule applies. Polynomial long division turns a fraction whose top has degree at least the bottom's into a polynomial plus a remainder fraction. Completing the square turns a quadratic with no real zeros into $(x - h)^2 + a^2$, which leads to an arctan form."
+ }
+}

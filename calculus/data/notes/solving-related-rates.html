@@ -1,0 +1,51 @@
+<p>The last topic showed the key move: differentiate an equation with respect to time, and the chain rule links the rates. A full related rates problem wraps that move in a story. You must turn the story into a picture, the picture into an equation, and the answer back into words. The same five steps handle ladders, tanks, shadows and planes.</p>
+
+<h2>The five steps</h2>
+<ol>
+<li><b>Draw and label.</b> Sketch the situation at a general moment. Give a letter to every quantity that changes; write numbers only on lengths that stay fixed.</li>
+<li><b>Relate.</b> Write an equation that links the quantities at <i>every</i> instant: Pythagoras, similar triangles, an area or volume formula. If it has more changing quantities than you have rates for, use a second relation to remove one.</li>
+<li><b>Differentiate</b> both sides with respect to $t$.</li>
+<li><b>Substitute</b> the values at the instant asked about, with signs: shrinking or approaching means a negative rate.</li>
+<li><b>Solve and answer</b> with units, in a sentence.</li>
+</ol>
+
+<h2>The sliding ladder</h2>
+<figure id="fig-ladder" data-fig="ladder-sliding-wall"><figcaption>A 10-foot ladder whose foot slides away at 2 ft/s. Relate, differentiate, then substitute the instant.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A 10-foot ladder leans against a wall. Its foot slides away from the wall at 2 feet per second. How fast does the top slide down when the foot is 6 feet from the wall?</p>
+<p><b>Draw:</b> $x$ = distance from wall to foot, $y$ = height of the top. The ladder's 10 feet never changes, so it stays a number.</p>
+<p><b>Relate:</b> $x^2 + y^2 = 100$.</p>
+<p><b>Differentiate:</b> $2x\frac{dx}{dt} + 2y\frac{dy}{dt} = 0$.</p>
+<p><b>Substitute:</b> at this instant $x = 6$, so $y = \sqrt{100 - 36} = 8$, and $\frac{dx}{dt} = 2$: $2(6)(2) + 2(8)\frac{dy}{dt} = 0$.</p>
+<p><b>Solve:</b> $\frac{dy}{dt} = -\frac{24}{16} = -\frac{3}{2}$. The top slides down the wall at 1.5 feet per second.</p>
+</div>
+<p>The rates are not equal: the foot moves at 2 ft/s, the top at 1.5 ft/s. And they change with time. When the foot is 8 feet out, $y = 6$ and $\frac{dy}{dt} = -\frac{8}{3}$; the closer the top gets to the floor, the faster it falls.</p>
+<p>Angles work too. With $\theta$ the angle between the ladder and the floor, $\cos\theta = \frac{x}{10}$. Differentiating gives $-\sin\theta\frac{d\theta}{dt} = \frac{1}{10}\frac{dx}{dt}$. At $x = 6$, $\sin\theta = \frac{8}{10}$, so $\frac{d\theta}{dt} = -\frac{1}{4}$ radian per second: the ladder flattens.</p>
+
+<h2>The cone tank: remove a variable first</h2>
+<figure id="fig-cone" data-fig="cone-tank-similar"><figcaption>An inverted cone 6 ft deep with a top radius of 3 ft. Similar triangles give $r = \frac{h}{2}$ for the water at every depth.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> Water pours into this tank at 4 cubic feet per minute. How fast is the water level rising when the water is 2 feet deep?</p>
+<p><b>Draw:</b> the water is a cone of depth $h$ and surface radius $r$, both changing.</p>
+<p><b>Relate:</b> $V = \frac{1}{3}\pi r^2 h$. That has two changing lengths, but we know only $\frac{dV}{dt}$. Similar triangles fix the shape: $\frac{r}{h} = \frac{3}{6}$, so $r = \frac{h}{2}$ at every instant. Substitute it now, because it is always true: $V = \frac{1}{3}\pi\left(\frac{h}{2}\right)^2 h = \frac{\pi h^3}{12}$.</p>
+<p><b>Differentiate:</b> $\frac{dV}{dt} = \frac{\pi h^2}{4}\frac{dh}{dt}$.</p>
+<p><b>Substitute and solve:</b> $4 = \frac{\pi(4)}{4}\frac{dh}{dt}$, so $\frac{dh}{dt} = \frac{4}{\pi} \approx 1.27$ feet per minute.</p>
+</div>
+<p>Notice the difference between the two substitutions. $r = \frac{h}{2}$ holds at every instant, so it may go in before differentiating. $h = 2$ holds at one instant, so it must wait until after.</p>
+
+<h2>Shadows</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> A 6-foot person walks away from a 15-foot lamppost at 5 ft/s. How fast does the tip of the shadow move?</p>
+<p>Let $x$ be the distance from the post to the person and $s$ the shadow's length. The light ray makes two similar right triangles: $\frac{s}{6} = \frac{x + s}{15}$, so $9s = 6x$ and $s = \frac{2x}{3}$.</p>
+<p>The tip is at distance $x + s = \frac{5x}{3}$ from the post. Differentiate: $\frac{d}{dt}(x + s) = \frac{5}{3}\frac{dx}{dt} = \frac{25}{3}$ ft/s, faster than the person walks.</p>
+</div>
+
+<h2>Slips that cost points</h2>
+<table class="compare">
+<tr><th>Slip</th><th>Fix</th></tr>
+<tr><td>Substituting $x = 6$ before differentiating</td><td>Differentiate the general relation first</td></tr>
+<tr><td>Keeping two unknown rates</td><td>Use similar triangles or a given condition to remove one</td></tr>
+<tr><td>"Decreasing at 10" entered as $+10$</td><td>Decreasing means a negative rate</td></tr>
+<tr><td>Labeling a fixed length with a variable</td><td>Constants of the problem stay numbers</td></tr>
+<tr><td>A bare number</td><td>Units and a sentence: "the top slides down at 1.5 ft/s"</td></tr>
+</table>

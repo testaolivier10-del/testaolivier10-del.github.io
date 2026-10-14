@@ -1,0 +1,553 @@
+{
+ "stimuli": {
+  "differentiability-s1": {
+   "kind": "graph",
+   "title": "The graph of a function $g$ on $[-3, 4]$",
+   "text": "The graph of $g$ is made of a line segment on $[-3, 0]$, part of the parabola $y = \\frac{x^2}{2}$ on $[0, 2]$, and part of the curve $y = 1 + \\sqrt[3]{x - 3}$ on $(2, 4]$.",
+   "plot": {
+    "label": "Graph of g: a line falling from (-3, 3) to (0, 0), a parabola rising from (0, 0) to a closed dot at (2, 2), then an open dot at (2, 0) where a cube-root curve begins, rising steeply through (3, 1) to (4, 2)",
+    "x": [
+     -3.5,
+     4.5
+    ],
+    "y": [
+     -0.8,
+     3.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "-x",
+      "domain": [
+       -3,
+       0
+      ],
+      "cls": "s1",
+      "ends": [
+       "closed",
+       null
+      ]
+     },
+     {
+      "fn": "x^2/2",
+      "domain": [
+       0,
+       2
+      ],
+      "cls": "s1",
+      "ends": [
+       null,
+       "closed"
+      ]
+     },
+     {
+      "fn": "1 + (x - 3)^(1/3)",
+      "domain": [
+       2,
+       4
+      ],
+      "cls": "s1",
+      "ends": [
+       "open",
+       "closed"
+      ],
+      "label": "g"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       3,
+       1
+      ]
+     }
+    ]
+   }
+  },
+  "differentiability-s2": {
+   "kind": "graph",
+   "title": "A piecewise function that joins smoothly",
+   "text": "$p(x) = \\begin{cases} x^2 & x \\le 1 \\\\ 2x - 1 & x > 1 \\end{cases}$",
+   "plot": {
+    "label": "Graph of p: the parabola y = x squared for x up to 1, joined at (1, 1) by the line y = 2x minus 1 for x greater than 1",
+    "x": [
+     -2,
+     3
+    ],
+    "y": [
+     -0.5,
+     5.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^2",
+      "domain": [
+       -2,
+       1
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "2x - 1",
+      "domain": [
+       1,
+       3
+      ],
+      "cls": "s1",
+      "label": "p"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       1
+      ],
+      "label": "(1, 1)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-differentiability-1",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "multi",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "differentiability-s1",
+   "q": "At which values of $x$ in the open interval $(-3, 4)$ is $g$ not differentiable? Select every one.",
+   "options": [
+    "$x = -2$",
+    "$x = 0$",
+    "$x = 1$",
+    "$x = 2$",
+    "$x = 3$",
+    "$x = 3.5$"
+   ],
+   "correct": [
+    1,
+    3,
+    4
+   ],
+   "why": {
+    "correct": "A corner at $x = 0$, a jump at $x = 2$ and a vertical tangent at $x = 3$. Everywhere else the graph is smooth.",
+    "options": [
+     "The graph is a straight line here, with slope $-1$.",
+     "A corner: slope $-1$ on the left, 0 on the right.",
+     "The parabola is smooth here, with slope 1.",
+     "A jump: $g$ is not continuous at 2, so it is not differentiable there.",
+     "The curve is vertical at $(3, 1)$: the difference quotients grow without bound.",
+     "The curve is smooth here, with a finite slope."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-2",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "differentiability-s1",
+   "q": "Which is true of $g$ at $x = 2$?",
+   "options": [
+    "It is neither continuous nor differentiable.",
+    "It is continuous but not differentiable.",
+    "It is differentiable at 2 but not continuous at 2.",
+    "It is both continuous and differentiable."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\lim_{x \\to 2^-} g(x) = 2$ and $\\lim_{x \\to 2^+} g(x) = 0$, so $g$ is not continuous at 2, and a function that is not continuous cannot be differentiable.",
+    "options": [
+     "A jump breaks continuity, and with it differentiability.",
+     "The one-sided limits are 2 and 0, so $g$ is not continuous at 2.",
+     "Differentiable implies continuous, so this combination is impossible.",
+     "There is a jump at $x = 2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-3",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "differentiability-s1",
+   "q": "Why is $g$ not differentiable at $x = 3$?",
+   "options": [
+    "The tangent line at $(3, 1)$ is vertical: the slopes grow without bound.",
+    "$g(3)$ is not defined, so there is no point to take a slope at.",
+    "$g$ is not continuous at $x = 3$.",
+    "The graph has a corner at $x = 3$, with two different finite slopes."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Near $x = 3$ the curve $1 + \\sqrt[3]{x - 3}$ is steeper and steeper; the slopes have no finite limit.",
+    "options": [
+     "A vertical tangent line has no finite slope.",
+     "$g(3) = 1$; the point is on the graph.",
+     "The curve passes through $(3, 1)$ without a break, so $g$ is continuous there.",
+     "Both sides become infinitely steep in the same direction; there are no two finite slopes."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-4",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "differentiability-s1",
+   "q": "Which statement best explains why $g$ is not differentiable at $x = 0$?",
+   "options": [
+    "$g$ is continuous at 0, but the difference quotient approaches $-1$ from the left and 0 from the right.",
+    "$g$ is not continuous at 0, because two different formulas meet there.",
+    "$g(0) = 0$, and a function has no derivative where its value is 0.",
+    "The graph is level at $x = 0$, so $g'(0)$ does not exist."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On the left the graph is the line $y = -x$ (slope $-1$); on the right the parabola $\\frac{x^2}{2}$ has slope $x$, which is 0 at $x = 0$. Two different one-sided slopes make a corner.",
+    "options": [
+     "Continuous, but the one-sided slopes differ: a corner.",
+     "Both formulas give 0 at $x = 0$, so $g$ is continuous; a change of formula alone breaks nothing.",
+     "A function can be 0 and still have a derivative; $x^2$ does at $x = 0$.",
+     "A level tangent line would mean $g'(0) = 0$, which exists; here no single tangent line exists."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-5",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "differentiability-s2",
+   "q": "Is $p$ continuous at $x = 1$?",
+   "options": [
+    "Yes: both pieces approach 1 and $p(1) = 1$.",
+    "No: $p$ is defined by two different formulas.",
+    "No: $\\lim_{x \\to 1^+} p(x) = 2$.",
+    "Yes, because the graph has no sharp point there."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\lim_{x \\to 1^-} x^2 = 1$, $\\lim_{x \\to 1^+} (2x - 1) = 1$ and $p(1) = 1^2 = 1$.",
+    "options": [
+     "The one-sided limits and the value agree.",
+     "Two formulas can still join without a break.",
+     "$2(1) - 1 = 1$, not 2.",
+     "Continuity depends on the limits and the value, not on whether the graph is smooth."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-6",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "differentiability-s2",
+   "q": "What is $p'(1)$?",
+   "options": [
+    "$2$",
+    "$1$",
+    "It does not exist, because $p$ changes formula at $x = 1$.",
+    "$4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From the left, $x^2$ has slope $2x = 2$ at $x = 1$; from the right, the line $2x - 1$ has slope 2. Equal one-sided slopes and continuity give $p'(1) = 2$.",
+    "options": [
+     "The left slope 2 matches the right slope 2.",
+     "That is $p(1)$, the height, not the slope.",
+     "A change of formula does not by itself prevent a derivative; the slopes here match.",
+     "That adds the two one-sided slopes; they must be equal, and then $p'(1)$ is their common value."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-7",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "differentiability-s2",
+   "q": "Suppose the second piece of $p$ is changed to $3x - 2$ for $x > 1$. Which is true at $x = 1$?",
+   "options": [
+    "$p$ is continuous but not differentiable.",
+    "$p$ is differentiable, with $p'(1) = 3$.",
+    "$p$ is neither continuous nor differentiable.",
+    "$p$ is differentiable, with $p'(1) = 2.5$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$3(1) - 2 = 1$, so the pieces still meet: continuous. But the slopes are 2 on the left and 3 on the right, a corner.",
+    "options": [
+     "The pieces meet, but the slopes 2 and 3 differ.",
+     "The slope is 3 only on the right; on the left it is 2.",
+     "Both pieces give 1 at $x = 1$, so there is no break.",
+     "Averaging two one-sided slopes does not make a derivative; they must be equal."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-8",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "differentiability-s2",
+   "q": "Suppose instead the second piece of $p$ is changed to $2x + 1$ for $x > 1$. Which is true at $x = 1$?",
+   "options": [
+    "$p$ is not continuous, so it is not differentiable.",
+    "$p$ is differentiable, because both pieces have slope 2.",
+    "$p$ is continuous but not differentiable.",
+    "$p$ is continuous and differentiable."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From the right $2x + 1 \\to 3$, but $p(1) = 1$: a jump. A function that is not continuous at a point has no derivative there.",
+    "options": [
+     "The jump from 1 to 3 breaks continuity, and differentiability needs continuity.",
+     "Equal slopes on the two sides are not enough; the pieces must also meet.",
+     "The right-hand limit is 3 and $p(1) = 1$, so $p$ is not continuous.",
+     "There is a jump at $x = 1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-9",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement is true for every function $f$?",
+   "options": [
+    "If $f$ is differentiable at $a$, then $f$ is continuous at $a$.",
+    "If $f$ is continuous at $a$, then $f$ is differentiable at $a$.",
+    "If $f$ is not differentiable at $a$, then $f$ is not continuous at $a$.",
+    "If $f(a)$ is defined, then $f$ is differentiable at $a$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Differentiability implies continuity.",
+    "options": [
+     "The theorem: a derivative at $a$ forces continuity at $a$.",
+     "The converse is false: $|x|$ is continuous at 0 but not differentiable there.",
+     "False: $|x|$ is not differentiable at 0 yet is continuous there.",
+     "A value at $a$ does not even guarantee continuity, let alone a derivative."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-10",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A function $f$ is continuous at $x = a$. What can you conclude about $f'(a)$?",
+   "options": [
+    "$f'(a)$ may or may not exist.",
+    "$f'(a)$ exists, because continuity guarantees a slope.",
+    "$f'(a)$ does not exist.",
+    "$f'(a) = f(a)$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Continuity is necessary for a derivative but not sufficient: $x^2$ (differentiable at 0) and $|x|$ (not differentiable at 0) are both continuous at 0.",
+    "options": [
+     "Continuity alone does not decide it.",
+     "A corner, cusp or vertical tangent can be continuous with no derivative.",
+     "Many continuous functions, such as $x^2$, do have derivatives.",
+     "A slope and a height are different quantities."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-11",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "Let $f(x) = |x - 3|$. Which is true at $x = 3$?",
+   "options": [
+    "$f$ is continuous but not differentiable.",
+    "$f$ is differentiable, with $f'(3) = 0$.",
+    "$f$ is neither continuous nor differentiable.",
+    "$f$ is differentiable, with $f'(3) = 1$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The graph is a V with its point at $(3, 0)$: no break, but slope $-1$ on the left and 1 on the right.",
+    "options": [
+     "A corner: continuous, one-sided slopes $-1$ and 1.",
+     "The lowest point is a corner, not a smooth bottom with a level tangent line.",
+     "Both sides approach $f(3) = 0$, so $f$ is continuous.",
+     "The slope is 1 only to the right of 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-12",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = x^{2/3}$. Which describes the graph of $f$ at $x = 0$?",
+   "options": [
+    "A cusp: $f$ is continuous, and the slopes become infinitely steep in opposite directions.",
+    "A corner: $f$ is continuous, and the slopes are $-1$ on the left and 1 on the right.",
+    "A jump: $f$ is not continuous at 0.",
+    "A smooth bottom: $f'(0) = 0$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The difference quotient $\\frac{h^{2/3}}{h} = \\frac{1}{\\sqrt[3]{h}}$ goes to $-\\infty$ from the left and $+\\infty$ from the right.",
+    "options": [
+     "Infinite slopes of opposite signs make a cusp.",
+     "The slopes are not finite numbers here; they grow without bound.",
+     "$h^{2/3} \\to 0 = f(0)$ from both sides, so $f$ is continuous.",
+     "The quotient $\\frac{1}{\\sqrt[3]{h}}$ does not approach 0; it grows without bound."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-13",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\sqrt[3]{x}$. Which is true at $x = 0$?",
+   "options": [
+    "$f$ is continuous, but not differentiable, because the tangent line is vertical.",
+    "$f$ is differentiable, because the graph has no corner.",
+    "$f$ is not continuous, because $\\sqrt[3]{0} = 0$.",
+    "$f$ is differentiable, with $f'(0) = 0$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{\\sqrt[3]{h} - 0}{h} = \\frac{1}{h^{2/3}} \\to +\\infty$ from both sides: the graph passes through the origin with a vertical tangent line.",
+    "options": [
+     "A vertical tangent line means an infinite slope: no derivative.",
+     "No corner is not enough; the slope here is infinite.",
+     "A value of 0 has nothing to do with continuity; $\\sqrt[3]{x}$ is continuous everywhere.",
+     "The graph is as steep as possible at 0, not level."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-14",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes: \"$f$ is not differentiable at $x = 2$, so $f$ is not continuous at $x = 2$.\" Which response is correct?",
+   "options": [
+    "The reasoning is wrong: $f(x) = |x - 2|$ is continuous at 2 but not differentiable there.",
+    "The reasoning is right: differentiability and continuity mean the same thing.",
+    "The reasoning is right: it is the theorem that differentiable functions are continuous.",
+    "The reasoning is wrong: a function that is not differentiable is continuous."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The theorem runs one way: differentiable implies continuous. Its converse, and the student's statement, can fail.",
+    "options": [
+     "One counterexample shows the claim is false.",
+     "They differ: corners, cusps and vertical tangents are continuous points with no derivative.",
+     "The student reversed the theorem; \"not differentiable\" says nothing about continuity.",
+     "A jump is not differentiable and not continuous either; no conclusion either way."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-15",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a continuous function $f$, $\\lim_{h \\to 0^-} \\frac{f(5 + h) - f(5)}{h} = 2$ and $\\lim_{h \\to 0^+} \\frac{f(5 + h) - f(5)}{h} = -1$. What is $f'(5)$?",
+   "options": [
+    "It does not exist.",
+    "$\\frac{1}{2}$, the average of the one-sided limits",
+    "$2$",
+    "$-1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The two-sided limit exists only when the one-sided limits are equal. Here they differ, so the graph has a corner at $x = 5$.",
+    "options": [
+     "Different one-sided limits: no two-sided limit.",
+     "Averaging the one-sided slopes does not give a derivative.",
+     "That is only the slope from the left.",
+     "That is only the slope from the right."
+    ]
+   }
+  },
+  {
+   "id": "calc-differentiability-16",
+   "unit": "unit-2",
+   "topic": "differentiability",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Let $f(x) = \\begin{cases} x^2 & x \\le 2 \\\\ mx + b & x > 2 \\end{cases}$, where $m$ and $b$ are constants. If $f$ is differentiable at $x = 2$, what is $b$?",
+   "numeric": {
+    "answer": -4,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is $m$, the slope: $m$ must match the slope of $x^2$ at 2, which is $2(2) = 4$. Then use continuity, $2m + b = 4$, to find $b$."
+     },
+     {
+      "value": 0,
+      "why": "The slope of $x^2$ at $x = 2$ is $2x = 4$, not 2. With $m = 4$, continuity gives $8 + b = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Differentiable at 2 means continuous at 2 and equal one-sided slopes. Slopes: $m = 2(2) = 4$. Continuity: $2m + b = 2^2$, so $8 + b = 4$ and $b = -4$."
+   }
+  }
+ ]
+}

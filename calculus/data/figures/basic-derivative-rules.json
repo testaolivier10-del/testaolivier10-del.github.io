@@ -1,0 +1,12 @@
+{
+ "shift-same-slope": {
+  "file": "figures/shift-same-slope.svg",
+  "ext": "svg",
+  "w": 740,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The parabola y = f(x) = 0.5x squared minus x, and the same curve shifted up 3 units, y = f(x) + 3. At x = 2.5 each curve has a dashed tangent line; the two tangent lines are parallel, both with slope 1.5. Adding a constant changes heights but no slopes."
+ }
+}

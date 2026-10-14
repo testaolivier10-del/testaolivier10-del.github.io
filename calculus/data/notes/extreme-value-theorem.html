@@ -1,0 +1,50 @@
+<p>Many calculus questions ask for "the largest" or "the smallest": the highest temperature of the day, the lowest price, the biggest box. Before searching, it helps to know two things: whether a largest value must exist at all, and where it could be hiding. This page answers both, and introduces the words the rest of Unit 5 uses.</p>
+
+<h2>Absolute and relative extrema</h2>
+<p>Two kinds of "highest point" matter, and the exam keeps them apart.</p>
+<ul>
+<li>An <b>absolute maximum</b> (or global maximum) of $f$ on an interval is a value $f(c)$ with $f(c) \ge f(x)$ for every $x$ in the interval. It is the highest point of the whole graph there. An <b>absolute minimum</b> is the lowest.</li>
+<li>A <b>relative maximum</b> (or local maximum) is a value $f(c)$ with $f(c) \ge f(x)$ for every $x$ near $c$, on some open interval around $c$. It is a peak compared with its neighbors only. A <b>relative minimum</b> is a valley.</li>
+</ul>
+<p>"Extremum" (plural "extrema") means a maximum or a minimum. Because a relative extremum needs points on both sides, this course treats it as an interior point; an absolute extremum can sit at an endpoint.</p>
+<figure id="fig-evt" data-fig="evt-extrema"><figcaption>Left: a relative maximum, a relative minimum that is also the absolute minimum, and an absolute maximum at an endpoint. Right: a jump destroys the maximum.</figcaption></figure>
+
+<h2>The Extreme Value Theorem</h2>
+<p><b>Extreme Value Theorem.</b> If $f$ is continuous on a closed interval $[a, b]$, then $f$ has at least one absolute maximum value and at least one absolute minimum value on $[a, b]$.</p>
+<p>Both parts of the hypothesis are needed:</p>
+<table class="compare">
+<thead><tr><th scope="col">Situation</th><th scope="col">Example</th><th scope="col">What happens</th></tr></thead>
+<tbody>
+<tr><td>Continuous, closed interval</td><td>$x^3 - 3x$ on $[-1.8, 2.3]$</td><td>Both extremes exist (guaranteed)</td></tr>
+<tr><td>Not continuous</td><td>$g(x) = x$ on $[0, 2)$, $g(2) = 0$</td><td>Values climb toward 2 but never reach it: no maximum</td></tr>
+<tr><td>Open interval</td><td>$x^2$ on $(-1, 2)$</td><td>Values approach 4 at the excluded end: no maximum</td></tr>
+</tbody>
+</table>
+<p>When a hypothesis fails, the theorem simply says nothing. Extrema may still exist (the function in the second row still has a minimum, 0), but nothing guarantees them. To use the theorem in a justification, state the hypothesis: "$f$ is continuous on the closed interval $[1, 5]$, so by the Extreme Value Theorem $f$ has an absolute maximum there."</p>
+
+<h2>Critical points: where to look</h2>
+<p>The theorem says a maximum exists; it does not say where. Here is the key observation. At an interior peak or valley, the graph cannot be climbing or falling steeply in one direction: either the tangent line is flat, or there is no tangent line at all (a corner or cusp).</p>
+<p>A <b>critical point</b> of $f$ is an interior point $c$ of the domain where $f'(c) = 0$ or $f'(c)$ does not exist.</p>
+<ul>
+<li>Relative extrema can happen only at critical points.</li>
+<li>Absolute extrema on $[a, b]$ can happen only at critical points or at the endpoints $a$ and $b$.</li>
+</ul>
+<p>An endpoint is never a critical point (it is not interior), but it is always a place to check for an absolute extremum.</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Find the critical points of $f(x) = x^3 - 12x + 1$.</p>
+<p>$f'(x) = 3x^2 - 12 = 3(x - 2)(x + 2)$. It exists for every $x$.</p>
+<p>$f'(x) = 0$ at $x = -2$ and $x = 2$. Those are the critical points.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the critical points of $f(x) = (x - 3)^{2/3}$.</p>
+<p>$f'(x) = \frac{2}{3}(x - 3)^{-1/3} = \frac{2}{3\sqrt[3]{x - 3}}$.</p>
+<p>The numerator is never 0, so $f'(x) = 0$ has no solution. But $f'(3)$ does not exist (division by zero), and $x = 3$ is in the domain of $f$. So $x = 3$ is a critical point: the graph has a cusp there.</p>
+</div>
+
+<h2>A critical point is only a candidate</h2>
+<p>Not every critical point is an extremum. For $f(x) = x^3$, $f'(0) = 0$, yet the graph rises straight through the origin: values to the left are negative and values to the right are positive. A corner can do the same: if a graph rises steeply, then rises gently, the corner is a critical point with no peak or valley.</p>
+<p>So the logic runs one way only. An extremum (inside the interval, where things are smooth) forces a critical point; a critical point does not force an extremum. The next topics give the tests that decide: the sign of $f'$ (5.3 and 5.4), a comparison of candidate values (5.5), and the second derivative (5.7).</p>
+
+<h2>Reading extrema from a graph</h2>
+<p>On a graph, look for three things: flat tangent lines (where $f' = 0$), sharp corners or cusps (where $f'$ does not exist), and the endpoints. Peaks and valleys among the first two are relative extrema. The highest and lowest of all the candidates, endpoints included, are the absolute extrema. Watch for open circles: a point that is not on the graph cannot be a maximum, however high it looks.</p>

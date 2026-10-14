@@ -1,0 +1,8 @@
+{
+ "inverse-function": {
+  "def": "For a one-to-one function $f$, the function $f^{-1}$ that undoes it: $f^{-1}(b) = a$ exactly when $f(a) = b$. Its graph is the reflection of the graph of $f$ across $y = x$. A function is one-to-one when no two inputs share an output."
+ },
+ "inverse-trig": {
+  "def": "$\\arcsin x$, $\\arccos x$ and $\\arctan x$ (also written $\\sin^{-1} x$, ...) give the angle with a given sine, cosine or tangent, from a restricted range: $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ for arcsine, $[0, \\pi]$ for arccosine, $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ for arctangent."
+ }
+}

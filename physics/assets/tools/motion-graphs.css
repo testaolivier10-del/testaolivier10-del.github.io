@@ -153,3 +153,21 @@ body.ls-on .phys-crumb{display:none;}
 .mg-drag-cue text{fill:var(--cink);font:900 12px var(--font-ui);}
 @media (prefers-reduced-motion: no-preference){ .mg-drag-cue{animation:mg-nudge 1.6s ease-in-out infinite;} }
 @keyframes mg-nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(5px);}}
+
+/* Phones (docs/tools-phone-pass.md): numbers and labels on the pictures at
+   12.5 px or more; the graphs draw at their box's size, so these are on-screen
+   sizes. A phone on its side has no room for 200 px of graphs under the
+   track: they take what is left (each panel then labels only 0). */
+.ls-phone .mg-graphs .tick,.ls-phone .mg-fig .tick{font-size:13px;}
+.ls-phone .mg-tl,.ls-phone .mg-axis-l{font-size:12.5px;}
+.ls-phone .mg-ghost-n,.ls-phone .mg-ghost-hint text.sub{font-size:12.5px;}
+.ls-phone .mg-graphs .lbl,.ls-phone .mg-fig .lbl{font-size:13.5px;}
+@media (max-height:540px){ .ls-root.ls-phone .mg-ls-stage .mg-graphs-wrap{min-height:0;} }
+/* Pick the a-t graph on a phone: each choice uses its card's full width
+   (the radio sits in the corner), about 160 px at 360 px, with 14.5-unit
+   numbers (about 12 px on screen). */
+.ls-phone .cd-pics:has(.mg-fig) .bt-radio{position:relative;padding:4px;}
+.ls-phone .cd-pics:has(.mg-fig) .bt-radio input{position:absolute;left:6px;top:6px;margin:0;}
+.ls-phone .cd-pics:has(.mg-fig) label{width:100%;}
+.ls-phone .cd-pics:has(.mg-fig) .cd-pic-n{padding-left:26px;min-height:20px;font-size:12px;line-height:20px;}
+.ls-phone .cd-pics .mg-fig .tick,.ls-phone .cd-pics .mg-fig .mg-sm-l{font-size:14.5px;}

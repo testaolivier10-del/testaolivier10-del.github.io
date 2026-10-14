@@ -1,0 +1,576 @@
+{
+ "stimuli": {
+  "product-rule-s1": {
+   "kind": "table",
+   "title": "Values of $f$, $g$ and their derivatives",
+   "text": "The functions $f$ and $g$ have derivatives for all $x$.",
+   "table": {
+    "caption": "Selected values of $f$, $f'$, $g$ and $g'$",
+    "cols": [
+     "$x$",
+     "$f(x)$",
+     "$f'(x)$",
+     "$g(x)$",
+     "$g'(x)$"
+    ],
+    "rows": [
+     [
+      "0",
+      "2",
+      "3",
+      "5",
+      "$-1$"
+     ],
+     [
+      "1",
+      "$-1$",
+      "2",
+      "3",
+      "4"
+     ],
+     [
+      "3",
+      "4",
+      "$-2$",
+      "1",
+      "2"
+     ]
+    ]
+   }
+  },
+  "product-rule-s2": {
+   "kind": "graph",
+   "title": "Graphs of $f$ and $g$ made of line segments",
+   "text": "The graphs of $f$ and $g$ consist of line segments. Let $u(x) = f(x)g(x)$.",
+   "plot": {
+    "label": "Graphs of f and g on [0, 5]. f is a segment from (0, 1) up to (2, 5), then a segment down to (5, 2). g is a segment from (0, 4) down to (3, 1), then a segment up to (5, 7).",
+    "x": [
+     -0.3,
+     5.3
+    ],
+    "y": [
+     -0.5,
+     7.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2x + 1",
+      "domain": [
+       0,
+       2
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "7 - x",
+      "domain": [
+       2,
+       5
+      ],
+      "cls": "s1",
+      "label": "f"
+     },
+     {
+      "fn": "4 - x",
+      "domain": [
+       0,
+       3
+      ],
+      "cls": "s2"
+     },
+     {
+      "fn": "3x - 8",
+      "domain": [
+       3,
+       5
+      ],
+      "cls": "s2",
+      "label": "g"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       5
+      ],
+      "cls": "s1"
+     },
+     {
+      "at": [
+       3,
+       1
+      ],
+      "cls": "s2"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-product-rule-1",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "product-rule-s1",
+   "q": "Let $h(x) = f(x)g(x)$. Find $h'(1)$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That is $f'(1)g'(1) = 2 \\cdot 4$, the product of the derivatives. The product rule adds two terms: $f'(1)g(1) + f(1)g'(1)$."
+     },
+     {
+      "value": -3,
+      "why": "That is $h(1) = f(1)g(1)$, a value. The slope needs the product rule."
+     },
+     {
+      "value": 10,
+      "why": "$f(1) = -1$, so the second term is $(-1)(4) = -4$: $6 - 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$h'(1) = f'(1)g(1) + f(1)g'(1) = (2)(3) + (-1)(4) = 6 - 4 = 2$."
+   }
+  },
+  {
+   "id": "calc-product-rule-2",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "product-rule-s1",
+   "q": "Let $k(x) = x^2 f(x)$. Find $k'(3)$.",
+   "numeric": {
+    "answer": 6,
+    "mistakes": [
+     {
+      "value": -12,
+      "why": "That multiplies the derivatives, $2x \\cdot f'(x) = 6(-2)$. Use $2x\\,f(x) + x^2 f'(x)$."
+     },
+     {
+      "value": 24,
+      "why": "That is only the first term, $2(3)f(3)$. Add $x^2 f'(x) = 9(-2)$."
+     },
+     {
+      "value": 36,
+      "why": "That is $k(3) = 9 \\cdot 4$, a value, not a slope."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$k'(x) = 2x\\,f(x) + x^2 f'(x)$, so $k'(3) = 6(4) + 9(-2) = 24 - 18 = 6$."
+   }
+  },
+  {
+   "id": "calc-product-rule-3",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "product-rule-s1",
+   "q": "Which is an equation of the line tangent to the graph of $h(x) = f(x)g(x)$ at $x = 0$?",
+   "options": [
+    "$y = 10 + 13x$",
+    "$y = 10 - 3x$",
+    "$y = 13 + 10x$",
+    "$y = 10 + 15x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$h(0) = (2)(5) = 10$ and $h'(0) = f'(0)g(0) + f(0)g'(0) = (3)(5) + (2)(-1) = 13$.",
+    "options": [
+     "Height 10, slope 13.",
+     "Slope $-3$ is $f'(0)g'(0)$, the product of the derivatives.",
+     "The height and the slope are swapped.",
+     "Slope 15 is only the first term of the product rule."
+    ]
+   }
+  },
+  {
+   "id": "calc-product-rule-4",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "product-rule-s1",
+   "q": "Let $q(x) = e^x g(x)$. Find $q'(0)$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "That is $e^0 \\cdot g'(0)$, the product of the two derivatives. Add the other term: $e^0 g(0)$."
+     },
+     {
+      "value": 5,
+      "why": "That is $q(0) = e^0 g(0)$, or the first term alone. Add $e^0 g'(0) = -1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$q'(x) = e^x g(x) + e^x g'(x)$, so $q'(0) = (1)(5) + (1)(-1) = 4$."
+   }
+  },
+  {
+   "id": "calc-product-rule-5",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "product-rule-s2",
+   "q": "Find $u'(1)$, where $u(x) = f(x)g(x)$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": -2,
+      "why": "That is $f'(1)g'(1) = (2)(-1)$. The product rule needs the values too: $f'(1)g(1) + f(1)g'(1)$."
+     },
+     {
+      "value": 9,
+      "why": "That is $u(1) = f(1)g(1) = 3 \\cdot 3$, the value."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the graph: $f(1) = 3$, $f'(1) = 2$, $g(1) = 3$, $g'(1) = -1$. So $u'(1) = (2)(3) + (3)(-1) = 3$."
+   }
+  },
+  {
+   "id": "calc-product-rule-6",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "product-rule-s2",
+   "q": "Find $u'(4)$.",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": -3,
+      "why": "That is $f'(4)g'(4) = (-1)(3)$. Use $f'(4)g(4) + f(4)g'(4)$."
+     },
+     {
+      "value": 12,
+      "why": "That is $u(4) = 3 \\cdot 4$, the value."
+     },
+     {
+      "value": 13,
+      "why": "The slope of $f$ at 4 is $-1$ (it falls from 5 to 2 over 3 units), so the first term is $(-1)(4)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(4) = 3$, $f'(4) = -1$, $g(4) = 4$, $g'(4) = 3$. So $u'(4) = (-1)(4) + (3)(3) = 5$."
+   }
+  },
+  {
+   "id": "calc-product-rule-7",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "product-rule-s2",
+   "q": "What is $u'(2)$?",
+   "options": [
+    "It does not exist: the one-sided slopes of $u$ at 2, $-1$ and $-7$, differ.",
+    "$-1$, using the slopes of $f$ and $g$ just to the left of $x = 2$",
+    "$-7$, using the slopes of $f$ and $g$ just to the right of $x = 2$",
+    "$-4$, the average of the two one-sided slopes of $u$ at $x = 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f(2) = 5$, $g(2) = 2$, $g' = -1$ near 2. From the left, $f' = 2$: $(2)(2) + (5)(-1) = -1$. From the right, $f' = -1$: $(-1)(2) + (5)(-1) = -7$. Different one-sided slopes: no derivative.",
+    "options": [
+     "The one-sided slopes of the product disagree.",
+     "That is only the slope from the left.",
+     "That is only the slope from the right.",
+     "Averaging one-sided slopes does not produce a derivative."
+    ]
+   }
+  },
+  {
+   "id": "calc-product-rule-8",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "product-rule-s2",
+   "q": "Let $v(x) = x\\,g(x)$. Find $v'(1)$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "That is $1 \\cdot g'(1)$, the product of the derivatives of $x$ and $g$. Add $g(1)$: $v' = 1 \\cdot g(x) + x\\,g'(x)$."
+     },
+     {
+      "value": 3,
+      "why": "That is $v(1) = 1 \\cdot g(1)$, or the first term alone."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$v'(x) = g(x) + x\\,g'(x)$, so $v'(1) = 3 + (1)(-1) = 2$."
+   }
+  },
+  {
+   "id": "calc-product-rule-9",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Use the product rule to differentiate $x^2 \\sin x$, a power of $x$ times a sine.",
+   "expr": {
+    "answer": "2x*sin(x) + x^2*cos(x)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "\\frac{d}{dx}\\left( x^2 \\sin x \\right) =",
+    "mistakes": [
+     {
+      "expr": "2x*cos(x)",
+      "why": "That is the product of the derivatives. The product rule has two terms: $2x \\sin x + x^2 \\cos x$."
+     },
+     {
+      "expr": "2x*sin(x) - x^2*cos(x)",
+      "why": "The product rule adds the two terms; the minus sign belongs to a different rule."
+     }
+    ]
+   },
+   "why": {
+    "correct": "First $x^2$, second $\\sin x$: $(2x)(\\sin x) + (x^2)(\\cos x)$."
+   }
+  },
+  {
+   "id": "calc-product-rule-10",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Differentiate the product $xe^x$, treating $x$ and $e^x$ as the two factors.",
+   "expr": {
+    "answer": "e^x(x + 1)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "\\frac{d}{dx}\\left( xe^x \\right) =",
+    "mistakes": [
+     {
+      "expr": "e^x",
+      "why": "That is $(1)(e^x)$, the product of the derivatives, or one term. Add $x \\cdot e^x$."
+     },
+     {
+      "expr": "x*e^x",
+      "why": "That is one term, $x \\cdot (e^x)'$. The derivative of the factor $x$ gives a second term, $1 \\cdot e^x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(1)e^x + x e^x = e^x(x + 1)$."
+   }
+  },
+  {
+   "id": "calc-product-rule-11",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\frac{d}{dx}\\left( \\sqrt{x}\\,\\ln x \\right)$ for $x > 0$.",
+   "expr": {
+    "answer": "ln(x)/(2sqrt(x)) + 1/sqrt(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     4
+    ],
+    "lhs": "\\frac{d}{dx}\\left( \\sqrt{x}\\,\\ln x \\right) =",
+    "mistakes": [
+     {
+      "expr": "1/(2x^(3/2))",
+      "why": "That is $\\frac{1}{2\\sqrt{x}} \\cdot \\frac{1}{x}$, the product of the derivatives. The product rule adds two terms."
+     },
+     {
+      "expr": "ln(x)/(2sqrt(x))",
+      "why": "That is only the first term. Add $\\sqrt{x} \\cdot \\frac{1}{x} = \\frac{1}{\\sqrt{x}}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{2\\sqrt{x}}\\ln x + \\sqrt{x} \\cdot \\frac{1}{x} = \\frac{\\ln x}{2\\sqrt{x}} + \\frac{1}{\\sqrt{x}}$."
+   }
+  },
+  {
+   "id": "calc-product-rule-12",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find $\\frac{d}{dx}\\left( xe^x \\sin x \\right)$.",
+   "expr": {
+    "answer": "e^x*sin(x) + x*e^x*sin(x) + x*e^x*cos(x)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "\\frac{d}{dx}\\left( xe^x \\sin x \\right) =",
+    "mistakes": [
+     {
+      "expr": "e^x*sin(x) + x*e^x*cos(x)",
+      "why": "Three factors give three terms: differentiate $x$, then $e^x$, then $\\sin x$, keeping the other two each time. The term $x e^x \\sin x$ is missing."
+     },
+     {
+      "expr": "e^x*cos(x)",
+      "why": "That multiplies the three derivatives. Differentiate one factor at a time and add."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(1)e^x\\sin x + x(e^x)\\sin x + xe^x(\\cos x)$."
+   }
+  },
+  {
+   "id": "calc-product-rule-13",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the slope of the graph of $y = x^3 e^x$ at $x = 1$.",
+   "numeric": {
+    "answer": "4e",
+    "mistakes": [
+     {
+      "value": "3e",
+      "why": "That is $3x^2 \\cdot e^x$ at 1, the product of the derivatives or the first term alone. Add $x^3 e^x = e$."
+     },
+     {
+      "value": "e",
+      "why": "That is $y(1) = e$, the height."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y' = 3x^2 e^x + x^3 e^x$, so at $x = 1$: $3e + e = 4e$."
+   }
+  },
+  {
+   "id": "calc-product-rule-14",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Let $f(x) = x$ and $g(x) = x$. Which comparison of $\\left( f(x)g(x) \\right)'$ and $f'(x)g'(x)$ is correct?",
+   "options": [
+    "$(fg)' = 2x$ and $f'g' = 1$; they differ, so $(fg)' \\ne f'g'$",
+    "Both equal $2x$, so $(fg)' = f'g'$ for these two functions",
+    "Both equal $1$, because $f' = 1$ and $g' = 1$ for these functions",
+    "$(fg)' = 1$ and $f'g' = 2x$; they differ, so $(fg)' \\ne f'g'$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$fg = x^2$, whose derivative is $2x$; $f'g' = 1 \\cdot 1 = 1$. By the product rule, $(fg)' = 1 \\cdot x + x \\cdot 1 = 2x$.",
+    "options": [
+     "One counterexample is enough.",
+     "$f'g' = 1 \\cdot 1 = 1$, not $2x$.",
+     "$(fg)' = (x^2)' = 2x$, not 1.",
+     "That swaps the two results."
+    ]
+   }
+  },
+  {
+   "id": "calc-product-rule-15",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $y = (2x + 1)(x^2 - 3)$. Use the product rule to find $\\frac{dy}{dx}$ at $x = 1$.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is $(2)(2x)$ at $x = 1$, the product of the derivatives. Use $2(x^2 - 3) + (2x + 1)(2x)$."
+     },
+     {
+      "value": -6,
+      "why": "That is $y(1) = 3 \\cdot (-2)$, the value."
+     },
+     {
+      "value": -4,
+      "why": "That is only the first term, $2(x^2 - 3)$. Add $(2x + 1)(2x) = 6$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dx} = 2(x^2 - 3) + (2x + 1)(2x)$; at $x = 1$: $2(-2) + (3)(2) = 2$. Check by expanding: $y = 2x^3 + x^2 - 6x - 3$, $y' = 6x^2 + 2x - 6 = 2$ at 1."
+   }
+  },
+  {
+   "id": "calc-product-rule-16",
+   "unit": "unit-2",
+   "topic": "product-rule",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Apply the product rule to $y = \\sin x \\cos x$. What is $y'$?",
+   "options": [
+    "$\\cos^2 x - \\sin^2 x$",
+    "$-\\sin x \\cos x$",
+    "$\\cos^2 x + \\sin^2 x$",
+    "$2\\sin x \\cos x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$(\\cos x)(\\cos x) + (\\sin x)(-\\sin x) = \\cos^2 x - \\sin^2 x$.",
+    "options": [
+     "First term $\\cos x \\cdot \\cos x$, second $\\sin x \\cdot (-\\sin x)$.",
+     "That is $\\cos x \\cdot (-\\sin x)$, the product of the derivatives.",
+     "The derivative of $\\cos x$ is $-\\sin x$, which makes the second term negative.",
+     "That doubles the function itself; it is not its derivative."
+    ]
+   }
+  }
+ ]
+}

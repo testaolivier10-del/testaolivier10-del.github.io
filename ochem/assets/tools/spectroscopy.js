@@ -872,7 +872,8 @@
   // The chart's real width in pixels, measured when the Reference view is drawn (phones are ~300px, not 900).
   var refW = 900;
   function labelSpan(leftPct, widthPct, label){
-    var estPct = (label.length * 6.4 + 14) / refW * 100;
+    // labels are 12 px on a phone stage (10 px elsewhere), so the width estimate scales with them
+    var estPct = (label.length * 6.4 * (document.querySelector('.ls-root.ls-phone') ? 1.2 : 1) + 14) / refW * 100;
     // A label that would run past the right end of the axis hangs left from its bar's end instead.
     if(leftPct + Math.max(widthPct, estPct) > 100 && estPct > widthPct){
       return { left: Math.max(0, leftPct + widthPct - estPct), right: leftPct + widthPct + 1, flip: true };

@@ -1,0 +1,5 @@
+{
+ "limit": {
+  "def": "$\\lim_{x \\to a} f(x) = L$ means the values $f(x)$ get as close to $L$ as we like when $x$ is close enough to $a$ (but not equal to $a$). The value $f(a)$ plays no part."
+ }
+}

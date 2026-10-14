@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 2 (docs/apcalc-architecture.md, \"Justification trainer\"). Every number is recomputed in scripts/lib/apcalc-exams.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "unit": "unit-2",
+   "id": "u2-estimate-rate-with-units",
+   "topic": "estimating-derivatives",
+   "practice": "2.B",
+   "skill": "context",
+   "title": "A rate from a table, with units",
+   "context": "<p>The temperature of a cup of tea, $T(t)$ degrees Celsius, is measured at selected times $t$ minutes.</p><table class=\"calc-data\"><tr><th scope=\"row\">$t$ (minutes)</th><td>0</td><td>2</td><td>5</td><td>9</td></tr><tr><th scope=\"row\">$T(t)$ (°C)</th><td>20</td><td>26</td><td>35</td><td>41</td></tr></table>",
+   "prompt": "<b>Estimate</b> $T'(4)$ using the data, and <b>explain</b> what it means. Show the computation and give units.",
+   "checklist": [
+    "Uses the two times closest to $t = 4$ on either side, 2 and 5: $\\frac{T(5) - T(2)}{5 - 2}$",
+    "Gets $\\frac{35 - 26}{3} = 3$ degrees Celsius per minute (units of a rate)",
+    "Says what it means: at $t = 4$ minutes the temperature is rising at about 3 degrees Celsius per minute"
+   ],
+   "earns": {
+    "answer": "$T'(4) \\approx \\frac{T(5) - T(2)}{5 - 2} = \\frac{35 - 26}{3} = 3$ degrees Celsius per minute. At time $t = 4$ minutes, the temperature of the tea is increasing at about 3 degrees Celsius per minute.",
+    "why": "It uses an interval that contains $t = 4$, shows the difference quotient, and gives the answer as a rate with rate units and a time."
+   },
+   "misses": {
+    "answer": "$T'(4) \\approx \\frac{41 - 35}{9 - 5} = 1.5$ degrees.",
+    "why": "The interval $[5, 9]$ does not contain $t = 4$, so it estimates the rate at a later time; and \"degrees\" is the unit of $T$, not of its rate of change."
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-differentiable-piecewise",
+   "topic": "differentiability",
+   "practice": "3.C",
+   "skill": "limits",
+   "title": "Differentiable where two pieces meet",
+   "context": "<p>Let $p(x) = \\begin{cases} x^2 & x \\le 1 \\\\ 2x - 1 & x > 1 \\end{cases}$</p>",
+   "prompt": "Is $p$ differentiable at $x = 1$? <b>Justify</b> your answer with limits.",
+   "checklist": [
+    "Shows $p$ is continuous at 1: both one-sided limits equal $1 = p(1)$",
+    "Finds the left difference quotient limit: $\\lim_{h \\to 0^-} \\frac{(1 + h)^2 - 1}{h} = \\lim_{h \\to 0^-} (2 + h) = 2$",
+    "Finds the right one: $\\lim_{h \\to 0^+} \\frac{2(1 + h) - 1 - 1}{h} = 2$, and concludes $p'(1) = 2$"
+   ],
+   "earns": {
+    "answer": "$\\lim_{x \\to 1^-} p(x) = 1$, $\\lim_{x \\to 1^+} p(x) = 2(1) - 1 = 1$ and $p(1) = 1$, so $p$ is continuous at 1. From the left, $\\lim_{h \\to 0^-} \\frac{(1 + h)^2 - 1}{h} = \\lim_{h \\to 0^-} (2 + h) = 2$. From the right, $\\lim_{h \\to 0^+} \\frac{\\left(2(1 + h) - 1\\right) - 1}{h} = \\lim_{h \\to 0^+} \\frac{2h}{h} = 2$. The one-sided limits of the difference quotient agree, so $p$ is differentiable at 1 and $p'(1) = 2$.",
+    "why": "It shows continuity first and then that both one-sided limits of the difference quotient exist and are equal."
+   },
+   "misses": {
+    "answer": "The derivative of $x^2$ is $2x$, which is 2 at $x = 1$, so $p$ is differentiable there.",
+    "why": "It looks at one piece only. Differentiability at a joining point needs the pieces to meet and the slopes from both sides to agree; with $2x + 1$ as the right piece, this argument would still say yes, wrongly."
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-corner-not-differentiable",
+   "topic": "differentiability",
+   "practice": "3.E",
+   "skill": "limits",
+   "title": "Continuous with a corner",
+   "context": "<p>Let $f(x) = |x - 3|$.</p>",
+   "prompt": "<b>Explain</b> why $f$ is continuous at $x = 3$ but not differentiable there.",
+   "checklist": [
+    "Shows continuity: $\\lim_{x \\to 3} |x - 3| = 0 = f(3)$",
+    "Finds the one-sided limits of $\\frac{f(3 + h) - f(3)}{h} = \\frac{|h|}{h}$: $-1$ from the left and 1 from the right",
+    "Concludes the derivative does not exist because the one-sided limits differ (a corner)"
+   ],
+   "earns": {
+    "answer": "$\\lim_{x \\to 3} |x - 3| = 0 = f(3)$, so $f$ is continuous at 3. The difference quotient is $\\frac{f(3 + h) - f(3)}{h} = \\frac{|h|}{h}$, which is $-1$ for $h < 0$ and 1 for $h > 0$. So $\\lim_{h \\to 0^-} \\frac{|h|}{h} = -1$ and $\\lim_{h \\to 0^+} \\frac{|h|}{h} = 1$. They are not equal, so $f'(3)$ does not exist: the graph has a corner at $x = 3$.",
+    "why": "It shows each claim separately, the continuity with a limit and the failure of differentiability with the two one-sided limits of the difference quotient."
+   },
+   "misses": {
+    "answer": "$f$ is continuous because there is no hole or jump, and it is not differentiable because the graph has a sharp point.",
+    "why": "It describes a picture but shows no limits. The scoring guidelines want the reason in terms of the function: the one-sided limits of the difference quotient differ."
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-differentiable-so-continuous",
+   "topic": "differentiability",
+   "practice": "3.B",
+   "skill": "theorems",
+   "title": "What differentiable gives you",
+   "context": "<p>The function $g$ is differentiable at $x = 4$, with $g(4) = 7$ and $g'(4) = -2$.</p>",
+   "prompt": "<b>Find</b> $\\lim_{x \\to 4} g(x)$ and <b>justify</b> your answer.",
+   "checklist": [
+    "States that a function differentiable at a point is continuous there",
+    "Uses continuity: $\\lim_{x \\to 4} g(x) = g(4)$",
+    "Gives the value 7, and does not use $g'(4)$ for the limit of $g$"
+   ],
+   "earns": {
+    "answer": "Because $g$ is differentiable at $x = 4$, it is continuous at $x = 4$. So $\\lim_{x \\to 4} g(x) = g(4) = 7$.",
+    "why": "It names the fact that links the two ideas (differentiable implies continuous) and then uses the definition of continuity."
+   },
+   "misses": {
+    "answer": "$\\lim_{x \\to 4} g(x) = 7$ because you can plug in $x = 4$.",
+    "why": "Plugging in is allowed only for a function known to be continuous at 4. The answer has to say why $g$ is continuous: it is differentiable there."
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "table-zoom": {
+  "file": "figures/table-zoom.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 450,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: the graph of f(x) = (square root of (x + 2) minus 2) over (x - 2), falling slowly, with an open circle at (2, 0.25). Right: a zoom near x = 2 showing points at x = 1.9, 1.99, 2.01 and 2.1 close to the open circle. Below: a table of x = 1.9, 1.99, 1.999, 2, 2.001, 2.01, 2.1 with f(x) = 0.251582, 0.250156, 0.250016, undefined, 0.249984, 0.249844, 0.248457."
+ }
+}

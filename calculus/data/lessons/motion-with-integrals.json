@@ -1,0 +1,72 @@
+{
+ "topic": "motion-with-integrals",
+ "hook": "A runner jogs 3 km out along a trail and 3 km back. Her watch says she ran 6 km; her displacement is zero, because she ended where she started. Both numbers come from the same velocity graph. Integrate velocity and you get the change in position; integrate speed and you get the distance covered.",
+ "prereq": [
+  {
+   "q": "A particle has velocity $v(t)$. Its speed is",
+   "options": [
+    "$|v(t)|$",
+    "$v'(t)$",
+    "$-v(t)$",
+    "$v(t)^2$"
+   ],
+   "correct": 0,
+   "why": "Speed is the size of the velocity, without its direction.",
+   "review": "straight-line-motion"
+  },
+  {
+   "q": "If $F' = f$ is continuous, then $\\int_a^b f(t)\\,dt =$",
+   "options": [
+    "$F(b) - F(a)$",
+    "$F(a) - F(b)$",
+    "$f(b) - f(a)$",
+    "$F(b)$"
+   ],
+   "correct": 0,
+   "why": "The integral of a rate of change is the net change.",
+   "review": "ftc-definite-integrals"
+  }
+ ],
+ "figure": {
+  "figure": "velocity-areas",
+  "caption": "$v(t) = t^2 - 4t + 3$ on $[0, 4]$. Signed areas give the displacement, $\\frac{4}{3}$ m; the areas themselves give the total distance, 4 m."
+ },
+ "chain": [
+  {
+   "cause": "$v(t) = x'(t)$",
+   "effect": "$\\int_a^b v(t)\\,dt = x(b) - x(a)$, the displacement"
+  },
+  {
+   "cause": "Area below the t-axis counts as negative in that integral",
+   "effect": "motion to the left cancels motion to the right"
+  },
+  {
+   "cause": "Speed is $|v(t)|$",
+   "effect": "$\\int_a^b |v(t)|\\,dt$ counts every stretch as positive: the total distance"
+  },
+  {
+   "cause": "The position at one time $x(a)$ is known",
+   "effect": "$x(t) = x(a) + \\int_a^t v(s)\\,ds$ gives the position at any time"
+  }
+ ],
+ "ideas": [
+  "<b>Displacement</b> on $[a, b]$: $\\int_a^b v(t)\\,dt = x(b) - x(a)$. Its sign gives the direction of the net change.",
+  "<b>Total distance</b> traveled: $\\int_a^b |v(t)|\\,dt$. Without a calculator, split at the zeros of $v$ and add the sizes of the pieces.",
+  "Position: $x(t) = x(t_0) + \\int_{t_0}^{t} v(s)\\,ds$. The initial position is not optional.",
+  "Velocity from acceleration works the same way: $v(t) = v(t_0) + \\int_{t_0}^{t} a(s)\\,ds$.",
+  "Units: integrating meters per second over seconds gives meters."
+ ],
+ "misconception": {
+  "wrong": "The total distance on $[0, 4]$ for $v(t) = t^2 - 4t + 3$ is $\\int_0^4 v(t)\\,dt = \\frac{4}{3}$ m.",
+  "right": "That is the displacement. $v < 0$ on $(1, 3)$, so the particle moves left and that stretch subtracts. Total distance: $\\int_0^4 |v(t)|\\,dt = \\frac{4}{3} + \\frac{4}{3} + \\frac{4}{3} = 4$ m."
+ },
+ "check": [
+  "calc-motion-with-integrals-1",
+  "calc-motion-with-integrals-2",
+  "calc-motion-with-integrals-3",
+  "calc-motion-with-integrals-10",
+  "calc-motion-with-integrals-11",
+  "calc-motion-with-integrals-12"
+ ],
+ "summary": "Integrate velocity for displacement, $x(b) - x(a)$; integrate speed $|v|$ for total distance. To find a position, start from a known position and add the integral of velocity. Split at the zeros of $v$ when working by hand, and always state units."
+}

@@ -5,7 +5,7 @@
 /* ------------------------------------------------------------ chrome diet */
 body.ls-on #site-header, body.ls-on .course-nav, body.ls-on .bottom-nav, body.ls-on .bottom-sheet,
 body.ls-on .bottom-scrim, body.ls-on .site-crumb, body.ls-on [data-crumb], body.ls-on .cx-crumb,
-body.ls-on .bio-crumb, body.ls-on .chem-crumb, body.ls-on .phys-crumb, body.ls-on main > .hero, body.ls-on .tool-top,
+body.ls-on .bio-crumb, body.ls-on .chem-crumb, body.ls-on .phys-crumb, body.ls-on .calc-crumb, body.ls-on main > .hero, body.ls-on .tool-top,
 body.ls-on .lp-launch, body.ls-on .lp-tip, body.ls-on .pt-fab{display:none !important;}
 body.ls-on{padding-bottom:0 !important;}
 body.ls-on .ls-host{max-width:none;padding:0;margin:0;}
@@ -339,3 +339,56 @@ html.ls-lock{overflow:hidden;}
 .ls-detbtn .ls-detbtn-c{color:var(--muted);}
 .ls-detbtn:hover{background:var(--ctint);}
 .ls-detbtn:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+
+/* ---------------------------------------------- Enlarge (every size) */
+.ls-enl{position:absolute;right:8px;bottom:8px;z-index:3;background:color-mix(in srgb, var(--white) 88%, transparent);box-shadow:var(--elev-1);color:var(--ink);}
+.ls-enl[hidden],.ls-zbar[hidden],.ls-rot[hidden]{display:none;}
+.ls-zbar{flex:none;display:flex;align-items:center;gap:2px;padding:4px max(8px, env(safe-area-inset-right)) 0 max(14px, env(safe-area-inset-left));}
+.ls-zbar-t{flex:1;min-width:0;font:800 var(--ls-m)/1.2 var(--font-ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ls-zval{min-width:48px;text-align:center;font:800 var(--ls-s) var(--font-ui);color:var(--muted);font-variant-numeric:tabular-nums;}
+.ls-stage.is-big{position:fixed;inset:0;z-index:85;margin:0;height:auto;min-height:0;border-radius:0;box-shadow:none;
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);}
+.ls-stage.is-big .ls-stage-body{padding:8px max(8px, env(safe-area-inset-right)) 12px max(8px, env(safe-area-inset-left));touch-action:pan-x pan-y;}
+/* zoomed: the picture is laid out bigger and the stage scrolls (pans) */
+.ls-stage-body.is-z{display:block;overflow:auto;}
+.ls-stage-body.is-z > *{width:var(--ls-zw);max-width:none;}
+.ls-stage-body.is-z > .ls-fit,.ls-stage-body.is-z > :only-child{min-height:var(--ls-zh);}
+.ls-stage-body.is-z .ls-fit > svg{height:var(--ls-zh);}
+.ls-caption{cursor:default;}
+
+/* ---------------------------------------------- phone (portrait): the picture first.
+   The stage is most of the screen and the full width; the dock is compact and
+   the page scrolls under it for long drill text, so the picture never shrinks. */
+@media (max-width:640px){
+  .ls-root{height:auto;min-height:100vh;min-height:100dvh;}
+  .ls-main{flex:none;}
+  .ls-bar{height:52px;padding:0 4px;}
+  .ls-stage{flex:none;height:62vh;height:62svh;min-height:300px;margin:0 0 8px;border-radius:0;box-shadow:0 1px 0 var(--line-soft);}
+  .ls-stage.is-big{height:auto;}
+  .ls-pills{padding:8px 8px 0;}
+  .ls-stage-body{padding:4px 4px 8px;}
+  .ls-dock{max-height:none;overflow:visible;gap:10px;padding:12px 12px calc(16px + env(safe-area-inset-bottom));border-radius:var(--ls-r) var(--ls-r) 0 0;}
+  .ls-dock-body{gap:12px;}
+  .ls-seg{padding:2px;}
+  .ls-seg > button,.ls-seg > .bt-mode{min-height:44px;}
+  .ls-why{height:44px;}
+  .ls-caption{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;cursor:pointer;}
+  .ls-caption.is-full{display:block;}
+  .ls-cap.is-empty .ls-caption{display:none;}
+  .ls-scroll{margin-right:-12px;padding-right:12px;}
+}
+/* ---------------------------------------------- phone on its side: picture | dock */
+@media (max-width:999.98px) and (max-height:540px) and (orientation:landscape){
+  .ls-root{height:100vh;height:100dvh;min-height:0;}
+  .ls-bar{height:44px;padding:0 max(8px, env(safe-area-inset-right)) 0 max(8px, env(safe-area-inset-left));}
+  .ls-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,36%);grid-template-rows:minmax(0,1fr);gap:8px;
+    padding:0 max(8px, env(safe-area-inset-right)) 8px max(8px, env(safe-area-inset-left));}
+  .ls-stage{margin:0;min-height:0;height:100%;}
+  .ls-stage.is-big{height:auto;}
+  .ls-pills{padding:8px 10px 0;}
+  .ls-stage-body{padding:4px 6px 8px;}
+  .ls-dock{margin:0;height:100%;max-height:none;overflow:auto;border-radius:var(--ls-r);box-shadow:var(--elev-1);padding:12px;gap:10px;}
+  .ls-seg > button,.ls-seg > .bt-mode{min-height:44px;}
+  .ls-why{height:44px;}
+  .ls-scroll{margin-right:0;}
+}

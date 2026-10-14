@@ -1,0 +1,144 @@
+{
+ "id": "frq-u6-table-1",
+ "type": "table",
+ "points": 9,
+ "calc": false,
+ "title": "Oil pumped into a tanker truck",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "riemann-sums",
+  "definite-integral-notation"
+ ],
+ "practices": [
+  "1.E",
+  "1.F",
+  "3.C",
+  "3.F",
+  "4.B"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Oil pumped into a tanker truck",
+  "text": "Oil is pumped into a tanker truck at a rate $R(t)$ gallons per minute, where $t$ is measured in minutes. $R$ is differentiable and increasing on $0 \\le t \\le 12$. Selected values of $R(t)$ are shown in the table.",
+  "table": {
+   "caption": "Rate R(t), in gallons per minute, at selected times t, in minutes",
+   "cols": [
+    "$t$ (minutes)",
+    "0",
+    "3",
+    "5",
+    "9",
+    "12"
+   ],
+   "rows": [
+    [
+     "$R(t)$ (gallons per minute)",
+     "12",
+     "18",
+     "21",
+     "29",
+     "30"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "Use the data in the table to <b>estimate</b> $R'(4)$. <b>Show</b> the computations that lead to your answer. Indicate units of measure.",
+   "rubric": [
+    {
+     "point": "A difference quotient using $t = 3$ and $t = 5$",
+     "accept": [
+      "$\\frac{R(5) - R(3)}{5 - 3} = \\frac{21 - 18}{2}$"
+     ]
+    },
+    {
+     "point": "Answer $\\frac{3}{2}$ gallons per minute per minute",
+     "accept": [
+      "1.5 gallons per minute per minute",
+      "gal/min²"
+     ]
+    }
+   ],
+   "sample": "$R'(4) \\approx \\frac{R(5) - R(3)}{5 - 3} = \\frac{21 - 18}{2} = 1.5$ gallons per minute per minute."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "Use a trapezoidal sum with the four subintervals indicated by the data in the table to <b>approximate</b> $\\int_0^{12} R(t)\\,dt$. <b>Show</b> the computations that lead to your answer.",
+   "rubric": [
+    {
+     "point": "A trapezoidal sum with the table's four widths 3, 2, 4 and 3",
+     "accept": [
+      "$3 \\cdot \\frac{12 + 18}{2} + 2 \\cdot \\frac{18 + 21}{2} + 4 \\cdot \\frac{21 + 29}{2} + 3 \\cdot \\frac{29 + 30}{2}$"
+     ]
+    },
+    {
+     "point": "Answer 272.5",
+     "accept": [
+      "545/2"
+     ]
+    }
+   ],
+   "sample": "$\\int_0^{12} R(t)\\,dt \\approx 3 \\cdot \\frac{12 + 18}{2} + 2 \\cdot \\frac{18 + 21}{2} + 4 \\cdot \\frac{21 + 29}{2} + 3 \\cdot \\frac{29 + 30}{2} = 45 + 39 + 100 + 88.5 = 272.5$."
+  },
+  {
+   "label": "c",
+   "points": 1,
+   "prompt": "Using correct units, <b>explain</b> the meaning of $\\int_0^{12} R(t)\\,dt$ in the context of the problem.",
+   "rubric": [
+    {
+     "point": "The number of gallons of oil pumped into the truck from $t = 0$ to $t = 12$ minutes",
+     "accept": [
+      "must name the quantity (gallons of oil pumped in), the units (gallons) and the interval (0 to 12 minutes)"
+     ]
+    }
+   ],
+   "sample": "$\\int_0^{12} R(t)\\,dt$ is the total number of gallons of oil pumped into the tanker truck from $t = 0$ to $t = 12$ minutes."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "A left Riemann sum with the four subintervals indicated by the table is used to approximate $\\int_0^{12} R(t)\\,dt$. <b>Find</b> its value, and <b>explain</b> whether it is an overestimate or an underestimate.",
+   "rubric": [
+    {
+     "point": "Left Riemann sum = 243",
+     "accept": [
+      "$3(12) + 2(18) + 4(21) + 3(29) = 243$"
+     ]
+    },
+    {
+     "point": "Underestimate, because $R$ is increasing on $[0, 12]$",
+     "accept": [
+      "must name R (or the rate) as increasing; \"the graph goes up\" alone earns nothing"
+     ]
+    }
+   ],
+   "sample": "Left sum $= 3(12) + 2(18) + 4(21) + 3(29) = 243$. Because $R$ is increasing on $[0, 12]$, on each subinterval $R$ is least at the left end, so each rectangle lies under the graph: 243 is an underestimate."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "Must there be a value $t$, with $5 < t < 9$, for which $R'(t) = 2$? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Computes $\\frac{R(9) - R(5)}{9 - 5} = \\frac{29 - 21}{4} = 2$",
+     "accept": [
+      "the average rate of change over [5, 9] equals 2"
+     ]
+    },
+    {
+     "point": "Concludes yes by the Mean Value Theorem, stating that $R$ is differentiable (so continuous) on the interval",
+     "accept": [
+      "\"$R$ is differentiable, so it is continuous on $[5, 9]$ and differentiable on $(5, 9)$; by the MVT ...\""
+     ]
+    }
+   ],
+   "sample": "$R$ is differentiable, so $R$ is continuous on $[5, 9]$ and differentiable on $(5, 9)$. $\\frac{R(9) - R(5)}{9 - 5} = \\frac{29 - 21}{4} = 2$. By the Mean Value Theorem, there is a value $t$ with $5 < t < 9$ such that $R'(t) = 2$."
+  }
+ ]
+}

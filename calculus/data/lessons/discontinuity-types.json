@@ -1,0 +1,73 @@
+{
+ "topic": "discontinuity-types",
+ "hook": "A road can be broken in different ways: a single missing paving stone, a step where one side is higher than the other, or a cliff with no bottom in sight. Graphs break in the same three ways, and calculus names each one. Knowing which break you face tells you whether it can be repaired.",
+ "prereq": [
+  {
+   "q": "If $\\lim_{x \\to 2^-} f(x) = 3$ and $\\lim_{x \\to 2^+} f(x) = 3$, then",
+   "options": [
+    "$\\lim_{x \\to 2} f(x) = 3$",
+    "$f(2) = 3$",
+    "$\\lim_{x \\to 2} f(x)$ does not exist",
+    "$f(2)$ is undefined"
+   ],
+   "correct": 0,
+   "why": "Equal one-sided limits give the two-sided limit. They say nothing about f(2).",
+   "review": "limits-from-plots"
+  },
+  {
+   "q": "Substituting $x = 4$ into $\\frac{x + 1}{x - 4}$ gives $\\frac{5}{0}$. Near $x = 4$, the expression is",
+   "options": [
+    "unbounded",
+    "close to 5",
+    "close to 0",
+    "close to 1"
+   ],
+   "correct": 0,
+   "why": "A nonzero number over a shrinking denominator grows without bound.",
+   "review": "choosing-limit-methods"
+  }
+ ],
+ "figure": {
+  "figure": "discontinuity-types",
+  "caption": "The three kinds of discontinuity: removable, jump and infinite."
+ },
+ "chain": [
+  {
+   "cause": "$\\lim_{x \\to c} f(x)$ exists, but $f(c)$ is missing or different",
+   "effect": "the graph has a hole: a removable discontinuity"
+  },
+  {
+   "cause": "Both one-sided limits are finite but not equal",
+   "effect": "the graph steps from one height to another: a jump discontinuity"
+  },
+  {
+   "cause": "$f$ is unbounded on at least one side of $c$",
+   "effect": "the graph has a vertical asymptote $x = c$: an infinite discontinuity"
+  },
+  {
+   "cause": "A formula gives $\\frac{0}{0}$ at $c$ and the zero factor cancels",
+   "effect": "expect a hole; a factor that stays in the denominator gives an asymptote"
+  }
+ ],
+ "ideas": [
+  "A function is continuous at $x = c$ when $\\lim_{x \\to c} f(x)$ exists and equals $f(c)$; its graph has no break there. A <b>discontinuity</b> is a point where this fails.",
+  "<b>Removable:</b> the limit exists, but the point is missing or misplaced (a hole).",
+  "<b>Jump:</b> both one-sided limits are finite and different.",
+  "<b>Infinite:</b> the function is unbounded near $c$ (a vertical asymptote).",
+  "To classify, find the one-sided limits first, then compare them with $f(c)$."
+ ],
+ "misconception": {
+  "wrong": "If a function is undefined at a point, its graph has a vertical asymptote there.",
+  "right": "Undefined is not the same as unbounded. $\\frac{x^2 - 4}{x - 2}$ is undefined at 2 but equals $x + 2$ nearby, so its graph has a hole at $(2, 4)$, a removable discontinuity. An asymptote needs the values to grow without bound."
+ },
+ "check": [
+  "calc-discontinuity-types-1",
+  "calc-discontinuity-types-2",
+  "calc-discontinuity-types-3",
+  "calc-discontinuity-types-6",
+  "calc-discontinuity-types-10",
+  "calc-discontinuity-types-11",
+  "calc-discontinuity-types-16"
+ ],
+ "summary": "A discontinuity is a point where the graph breaks. Removable: the limit exists but the value is missing or different (a hole). Jump: finite one-sided limits that differ. Infinite: unbounded near the point (a vertical asymptote). Classify by finding the one-sided limits and comparing them with $f(c)$."
+}

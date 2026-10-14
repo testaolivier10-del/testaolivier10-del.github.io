@@ -1,0 +1,51 @@
+<p>Checking three conditions at one point is fine for one point. But the big theorems ahead ask whether a function is continuous on a whole interval, which contains infinitely many points. This page shows how to answer that quickly: know which functions are continuous where, and check only the few places where something can go wrong.</p>
+
+<h2>Continuous on an interval</h2>
+<p>A function is <b>continuous on an open interval</b> $(a, b)$ when it is continuous at every point of it. On a <b>closed interval</b> $[a, b]$ there is one extra detail. At the endpoints, the function may not even be defined outside the interval, so we ask only about the side inside it:</p>
+<ul>
+<li>at the left endpoint $a$: $\lim_{x \to a^+} f(x) = f(a)$ (continuous from the right);</li>
+<li>at the right endpoint $b$: $\lim_{x \to b^-} f(x) = f(b)$ (continuous from the left).</li>
+</ul>
+<p>So $\sqrt{x}$ is continuous on $[0, 4]$: there is nothing to the left of 0, but $\lim_{x \to 0^+} \sqrt{x} = 0 = \sqrt{0}$.</p>
+<figure id="fig-intervals" data-fig="continuity-intervals"><figcaption>This function is continuous on $(-\infty, 1)$, on $[1, 3)$ and on $(3, \infty)$.</figcaption></figure>
+<p>In the figure, $f$ jumps at $x = 1$, but the closed dot belongs to the right piece. So $f$ is continuous from the right at 1, and the middle interval can include 1: it is $[1, 3)$. It cannot include 3, where $f$ is undefined.</p>
+
+<h2>Functions that are continuous on their domains</h2>
+<p>You do not have to check every point by hand. These families are continuous at every point where they are defined:</p>
+<table>
+<thead><tr><th>Family</th><th>Example</th><th>Continuous on</th></tr></thead>
+<tbody>
+<tr><td>polynomials</td><td>$x^3 - 2x + 7$</td><td>$(-\infty, \infty)$</td></tr>
+<tr><td>rational functions</td><td>$\frac{x + 1}{x^2 - 4}$</td><td>every $x$ where the denominator is not 0</td></tr>
+<tr><td>roots</td><td>$\sqrt{x - 1}$</td><td>where the radicand is $\ge 0$ (even roots)</td></tr>
+<tr><td>exponentials</td><td>$e^x$, $2^x$</td><td>$(-\infty, \infty)$</td></tr>
+<tr><td>logarithms</td><td>$\ln x$</td><td>$(0, \infty)$</td></tr>
+<tr><td>sine and cosine</td><td>$\sin x$, $\cos x$</td><td>$(-\infty, \infty)$</td></tr>
+<tr><td>tangent</td><td>$\tan x$</td><td>wherever $\cos x \ne 0$, such as $\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$</td></tr>
+</tbody>
+</table>
+<p>Combinations keep continuity. Sums, differences and products of continuous functions are continuous. A quotient is continuous wherever its denominator is not 0. A composition $f(g(x))$ is continuous wherever $g$ is continuous and $f$ is continuous at the value $g(x)$.</p>
+
+<h2>Finding where a function is continuous</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Where is $q(x) = \ln(x + 2) + \frac{1}{x - 3}$ continuous?</p>
+<p>$\ln(x + 2)$ needs $x + 2 > 0$, so $x > -2$; there it is continuous.</p>
+<p>$\frac{1}{x - 3}$ is continuous except at $x = 3$.</p>
+<p>The sum is continuous where both parts are: on $(-2, 3)$ and on $(3, \infty)$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Let $f(x) = e^x$ for $x < 0$ and $f(x) = x + 1$ for $x \ge 0$. Where is $f$ continuous?</p>
+<p>Each piece is continuous on its own interval ($e^x$ and $x + 1$ are continuous everywhere). The only question is the break point $x = 0$.</p>
+<p>$f(0) = 0 + 1 = 1$. $\lim_{x \to 0^-} e^x = e^0 = 1$ and $\lim_{x \to 0^+} (x + 1) = 1$. So $\lim_{x \to 0} f(x) = 1 = f(0)$.</p>
+<p>All three conditions hold at 0, so $f$ is continuous on $(-\infty, \infty)$.</p>
+</div>
+
+<h2>A short procedure</h2>
+<ol>
+<li>Identify each part of the function and its family.</li>
+<li>List the trouble spots: zeros of denominators, inputs where an even root or a logarithm is undefined, zeros of $\cos x$ under a $\tan x$, and break points of piecewise rules.</li>
+<li>Away from the trouble spots, the function is continuous by the families and the combination rules.</li>
+<li>At each break point of a piecewise rule, check the three conditions.</li>
+<li>Write the answer as intervals, with a bracket at an endpoint only when the function is defined there and continuous from inside.</li>
+</ol>
+<p>Why does this matter so much? The Unit 1 finale, and several theorems in later units, start with "if $f$ is continuous on $[a, b]$". To use them, you will name the reason $f$ is continuous on that closed interval, usually with a sentence from this page: "$f$ is a polynomial, so it is continuous on $[1, 4]$."</p>

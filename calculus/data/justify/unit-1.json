@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 1 (docs/apcalc-architecture.md, \"Justification trainer\"). Every number is recomputed in scripts/lib/apcalc-exams.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "unit": "unit-1",
+   "id": "u1-ivt-two-solutions",
+   "topic": "intermediate-value-theorem",
+   "practice": "3.C",
+   "skill": "theorems",
+   "title": "Two solutions from a table",
+   "context": "<p>The function $h$ is continuous on $[0, 6]$. The table gives selected values.</p><table class=\"calc-data\"><tr><th scope=\"row\">$x$</th><td>0</td><td>2</td><td>4</td><td>6</td></tr><tr><th scope=\"row\">$h(x)$</th><td>5</td><td>$-1$</td><td>3</td><td>8</td></tr></table>",
+   "prompt": "<b>Justify</b> that the equation $h(x) = 2$ has at least two solutions in the interval $(0, 6)$.",
+   "checklist": [
+    "States that $h$ is continuous on $[0, 2]$ and on $[2, 4]$ (it is continuous on $[0, 6]$)",
+    "Shows that 2 lies between the endpoint values on each interval: $h(2) = -1 < 2 < 5 = h(0)$ and $h(2) = -1 < 2 < 3 = h(4)$",
+    "Names the Intermediate Value Theorem and concludes one solution in $(0, 2)$ and another in $(2, 4)$"
+   ],
+   "earns": {
+    "answer": "$h$ is continuous on $[0, 6]$, so it is continuous on $[0, 2]$ and on $[2, 4]$. On $[0, 2]$, $h(2) = -1 < 2 < 5 = h(0)$, so by the Intermediate Value Theorem there is a $c_1$ in $(0, 2)$ with $h(c_1) = 2$. On $[2, 4]$, $h(2) = -1 < 2 < 3 = h(4)$, so there is a $c_2$ in $(2, 4)$ with $h(c_2) = 2$. The intervals do not overlap, so these are two different solutions.",
+    "why": "It checks the hypothesis (continuity) on each interval, shows the value 2 is trapped between the endpoint values, names the theorem, and explains why the two solutions are different."
+   },
+   "misses": {
+    "answer": "$h$ goes from 5 down to $-1$ and back up to 3, so it must cross 2 twice by the Intermediate Value Theorem.",
+    "why": "It never says $h$ is continuous, never names the two intervals, and never compares 2 with the endpoint values on each one. A theorem named without its hypotheses earns nothing."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-continuity-three-checks",
+   "topic": "continuity-at-a-point",
+   "practice": "3.C",
+   "skill": "limits",
+   "title": "Continuity of a piecewise function",
+   "context": "<p>Let $f(x) = \\begin{cases} x^2 + 1 & x < 2 \\\\ 5 & x = 2 \\\\ 3x - 1 & x > 2 \\end{cases}$</p>",
+   "prompt": "Is $f$ continuous at $x = 2$? <b>Justify</b> your answer.",
+   "checklist": [
+    "Finds both one-sided limits: $\\lim_{x \\to 2^-} f(x) = 2^2 + 1 = 5$ and $\\lim_{x \\to 2^+} f(x) = 3(2) - 1 = 5$",
+    "Concludes that $\\lim_{x \\to 2} f(x) = 5$ because the one-sided limits are equal",
+    "Compares the limit with $f(2) = 5$ and concludes $f$ is continuous at $x = 2$"
+   ],
+   "earns": {
+    "answer": "$\\lim_{x \\to 2^-} f(x) = \\lim_{x \\to 2^-} (x^2 + 1) = 5$ and $\\lim_{x \\to 2^+} f(x) = \\lim_{x \\to 2^+} (3x - 1) = 5$. The one-sided limits agree, so $\\lim_{x \\to 2} f(x) = 5$. Also $f(2) = 5$. Since $\\lim_{x \\to 2} f(x) = f(2)$, $f$ is continuous at $x = 2$.",
+    "why": "It checks all three conditions: $f(2)$ is defined, the limit exists (both sides agree), and the limit equals the value."
+   },
+   "misses": {
+    "answer": "Yes, because $2^2 + 1 = 5$ and $3(2) - 1 = 5$, so the pieces meet.",
+    "why": "It plugs 2 into each piece but never writes the one-sided limits and never compares the limit with $f(2)$. If $f(2)$ had been 4, the pieces would still meet and $f$ would not be continuous."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-removable-hole",
+   "topic": "removing-discontinuities",
+   "practice": "3.E",
+   "skill": "limits",
+   "title": "Filling a hole",
+   "context": "<p>Let $g(x) = \\frac{x^2 - 9}{x - 3}$ for $x \\ne 3$.</p>",
+   "prompt": "<b>Find</b> the value $g(3)$ must have for $g$ to be continuous at $x = 3$, and <b>justify</b> that this value works.",
+   "checklist": [
+    "Factors and cancels for $x \\ne 3$: $\\frac{(x - 3)(x + 3)}{x - 3} = x + 3$",
+    "Finds $\\lim_{x \\to 3} g(x) = 6$ from the simplified form",
+    "Defines $g(3) = 6$ and says continuity needs $g(3)$ to equal the limit"
+   ],
+   "earns": {
+    "answer": "For $x \\ne 3$, $g(x) = \\frac{(x - 3)(x + 3)}{x - 3} = x + 3$, so $\\lim_{x \\to 3} g(x) = \\lim_{x \\to 3} (x + 3) = 6$. Defining $g(3) = 6$ makes $g(3)$ defined and equal to $\\lim_{x \\to 3} g(x)$, which is what continuity at $x = 3$ requires.",
+    "why": "It finds the limit with algebra that is valid near 3, then ties the chosen value to the definition of continuity."
+   },
+   "misses": {
+    "answer": "$g(3) = \\frac{0}{0} = 6$, so $g$ is continuous with $g(3) = 6$.",
+    "why": "Writing $\\frac{0}{0} = 6$ is a false statement (an equals sign between unequal things) and the readers take the point for it. The value 6 comes from the limit, which this answer never shows."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-ivt-needs-continuity",
+   "topic": "intermediate-value-theorem",
+   "practice": "3.C",
+   "skill": "theorems",
+   "title": "When the theorem does not apply",
+   "context": "<p>Let $f(x) = \\frac{1}{x - 2}$. Then $f(0) = -\\frac{1}{2}$ and $f(4) = \\frac{1}{2}$.</p>",
+   "prompt": "Does the Intermediate Value Theorem guarantee a value $c$ in $(0, 4)$ with $f(c) = 0$? <b>Explain</b>.",
+   "checklist": [
+    "Says the theorem needs $f$ continuous on the closed interval $[0, 4]$",
+    "Shows the hypothesis fails: $f$ is not defined at $x = 2$, which lies in $[0, 4]$",
+    "Concludes the theorem guarantees nothing here (and in fact $\\frac{1}{x - 2}$ is never 0)"
+   ],
+   "earns": {
+    "answer": "No. The Intermediate Value Theorem needs $f$ to be continuous on $[0, 4]$, but $f(x) = \\frac{1}{x - 2}$ is not defined at $x = 2$, so it is not continuous on $[0, 4]$. The theorem does not apply, even though $f(0) < 0 < f(4)$. In fact there is no such $c$: a fraction with numerator 1 is never 0.",
+    "why": "It checks the hypothesis before using the theorem and shows exactly where it fails."
+   },
+   "misses": {
+    "answer": "Yes. $f(0)$ is negative and $f(4)$ is positive, so by the Intermediate Value Theorem $f$ crosses 0 somewhere between 0 and 4.",
+    "why": "It uses the theorem without checking that $f$ is continuous on $[0, 4]$. The graph jumps from $-\\infty$ to $\\infty$ at $x = 2$ and never reaches 0."
+   }
+  }
+ ]
+}

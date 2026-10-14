@@ -41,6 +41,7 @@
     { key: 'apbio', dir: 'bio' },
     { key: 'apchem', dir: 'chem' },
     { key: 'apphys', dir: 'physics' },
+    { key: 'apcalc', dir: 'calculus' },
   ];
   // courses:end
   function courseKey(){
@@ -127,6 +128,14 @@
       .catch(function(){ return []; });
   }
 
+  // AP® Calculus AB's, the same way (scripts/build-apcalc.mjs).
+  function calcPages(){
+    return fetch('/calculus/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(list){ return list.length ? list.concat([{ file: '/calculus/glossary.html', title: 'Glossary', data: '/calculus/assets/glossary.json' }]) : list; })
+      .catch(function(){ return []; });
+  }
+
   function resolvePages(){
     var k = courseKey();
     if(k === 'ochem') return ochemPages();
@@ -134,6 +143,7 @@
     if(k === 'apbio') return bioPages();
     if(k === 'apchem') return chemPages();
     if(k === 'apphys') return physPages();
+    if(k === 'apcalc') return calcPages();
     return Promise.resolve(NREMT_PAGES);
   }
 
@@ -145,6 +155,7 @@
     if(k === 'apbio') return '<a href="/bio/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apchem') return '<a href="/chem/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apphys') return '<a href="/physics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    if(k === 'apcalc') return '<a href="/calculus/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
@@ -408,6 +419,7 @@
     var doc = new DOMParser().parseFromString(
       '<!doctype html><body>' + raw.replace(/<br\s*\/?>/gi, ' '), 'text/html');
 
+    doc.body.querySelectorAll('annotation').forEach(function(n){ n.remove(); });
     var tables = doc.body.querySelectorAll('table');
     for(var i = 0; i < tables.length; i++){
       tables[i].replaceWith(doc.createTextNode(' ' + tableText(tables[i]) + ' '));
@@ -499,7 +511,8 @@
   function extractChunks(html, page){
     var chunks = [];
     var doc = new DOMParser().parseFromString(html.replace(/<br\s*\/?>/gi, ' '), 'text/html');
-    doc.querySelectorAll('script,style,noscript').forEach(function(n){ n.remove(); });
+    // annotation: the TeX kept inside each AP® Calculus AB formula, not text to quote.
+    doc.querySelectorAll('script,style,noscript,annotation').forEach(function(n){ n.remove(); });
     extractFromDom(doc, page, chunks);
     extractFromScripts(html, page, chunks);
     return dedupe(chunks);
@@ -1051,6 +1064,12 @@
       'When is momentum conserved but kinetic energy not?',
       'What does the slope of a velocity-time graph mean?',
       'If the length doubles, what happens to a pendulum\'s period?'
+    ],
+    apcalc: [
+      'When do I need the chain rule?',
+      'How do I justify a relative maximum?',
+      'What is the difference between a definite and an indefinite integral?',
+      'Which hypotheses does the Mean Value Theorem need?'
     ]
   };
 
@@ -1060,7 +1079,8 @@
     anp: 'Ask me anything from this course — every Anatomy & Physiology notes page is indexed. I can define a term, explain a mechanism step by step, or point you at the page it came from.',
     apbio: 'Ask me anything from this course — every published Biology notes page and the glossary are indexed. I can define a term, explain a process step by step, or point you at the page it came from.',
     apchem: 'Ask me anything from this course — every published Chemistry notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.',
-    apphys: 'Ask me anything from this course — every published Physics notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.'
+    apphys: 'Ask me anything from this course — every published Physics notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.',
+    apcalc: 'Ask me anything from this course — every published Calculus notes page and the glossary are indexed. I can define a term, explain a derivative or an integral step by step, or point you at the page it came from.'
   };
 
   function Tutor(mount, opts){

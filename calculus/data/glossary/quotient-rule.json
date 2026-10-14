@@ -1,0 +1,5 @@
+{
+ "quotient-rule": {
+  "def": "$\\frac{d}{dx}\\left( \\frac{f(x)}{g(x)} \\right) = \\frac{f'(x)g(x) - f(x)g'(x)}{\\left( g(x) \\right)^2}$ wherever $g(x) \\ne 0$: derivative of the top times the bottom, minus the top times the derivative of the bottom, over the bottom squared."
+ }
+}

@@ -1,0 +1,5 @@
+{
+ "washer-method": {
+  "def": "The volume of a solid of revolution whose slices have a hole: each slice is a washer with outer radius $R$ (axis to the far edge of the region) and inner radius $r$ (axis to the near edge), so $V = \\pi\\int_a^b \\left(R^2 - r^2\\right)\\,dx$."
+ }
+}

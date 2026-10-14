@@ -1,0 +1,516 @@
+{
+ "stimuli": {
+  "local-linearity-s1": {
+   "kind": "table",
+   "title": "Values of $f$, $f'$ and $f''$",
+   "table": {
+    "caption": "Selected values of a twice-differentiable function f. Also, f''(x) > 0 for 1.5 ≤ x ≤ 2.5 and f''(x) < 0 for 4.5 ≤ x ≤ 5.5.",
+    "cols": [
+     "$x$",
+     "$f(x)$",
+     "$f'(x)$",
+     "$f''(x)$"
+    ],
+    "rows": [
+     [
+      "$2$",
+      "$5$",
+      "$-3$",
+      "$4$"
+     ],
+     [
+      "$5$",
+      "$1$",
+      "$2$",
+      "$-1$"
+     ]
+    ]
+   }
+  },
+  "local-linearity-s2": {
+   "kind": "graph",
+   "title": "The graph of $y = \\ln x$ and its tangent line at $x = 1$",
+   "plot": {
+    "label": "Graph of y = ln x for x from 0.2 to 4, with the dashed tangent line y = x - 1 touching it at (1, 0) and lying above it elsewhere",
+    "x": [
+     -0.2,
+     4.2
+    ],
+    "y": [
+     -2,
+     3.8
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "ln(x)",
+      "domain": [
+       0.15,
+       4
+      ],
+      "label": "y = ln x"
+     }
+    ],
+    "lines": [
+     {
+      "point": [
+       1,
+       0
+      ],
+      "slope": 1,
+      "cls": "s2",
+      "dashed": true,
+      "label": "y = x - 1"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       0
+      ],
+      "label": "(1, 0)"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-local-linearity-1",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Using the table, write the linearization $L(x)$ of $f$ at $x = 2$, in the form $y = \\ldots$",
+   "stimulus": "local-linearity-s1",
+   "expr": {
+    "answer": "5 - 3(x - 2)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "-3 + 5(x - 2)",
+      "why": "The value $f(2) = 5$ is the starting height and $f'(2) = -3$ is the slope; they are swapped."
+     },
+     {
+      "expr": "5 + 3(x - 2)",
+      "why": "The slope is $f'(2) = -3$, so the term is $-3(x - 2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The point is $(2, f(2)) = (2, 5)$ and the slope is $f'(2) = -3$: $L(x) = 5 - 3(x - 2)$."
+   }
+  },
+  {
+   "id": "calc-local-linearity-2",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Use the tangent line at $x = 2$ to approximate $f(2.1)$.",
+   "stimulus": "local-linearity-s1",
+   "numeric": {
+    "answer": "47/10",
+    "mistakes": [
+     {
+      "value": "53/10",
+      "why": "The slope is negative: $5 + (-3)(0.1) = 4.7$."
+     },
+     {
+      "value": "-13/10",
+      "why": "Multiply the slope by the change $x - 2 = 0.1$, not by $x = 2.1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(2.1) \\approx L(2.1) = 5 - 3(0.1) = 4.7$."
+   }
+  },
+  {
+   "id": "calc-local-linearity-3",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Is the approximation of $f(2.1)$ from the tangent line an overestimate or an underestimate?",
+   "stimulus": "local-linearity-s1",
+   "options": [
+    "An underestimate, because $f'' > 0$ makes $f$ concave up there",
+    "An overestimate, because $f'(2) < 0$",
+    "An overestimate, because $f'' > 0$ there",
+    "Neither: the tangent line gives the exact value of $f(2.1)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On $1.5 \\le x \\le 2.5$, $f'' > 0$, so the graph is concave up and lies above the tangent line. $L(2.1)$ is below $f(2.1)$: an underestimate.",
+    "options": [
+     "A concave up graph lies above its tangent lines.",
+     "The sign of $f'$ says which way the line slopes, not which side of the graph it lies on.",
+     "Concave up puts the tangent line below the graph, giving an underestimate.",
+     "The line matches $f$ only at $x = 2$; elsewhere the graph bends away from it."
+    ]
+   }
+  },
+  {
+   "id": "calc-local-linearity-4",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the line tangent to the graph of $f$ at $x = 5$ to approximate $f(4.8)$.",
+   "stimulus": "local-linearity-s1",
+   "numeric": {
+    "answer": "3/5",
+    "mistakes": [
+     {
+      "value": "7/5",
+      "why": "$4.8 - 5 = -0.2$ is negative: $1 + 2(-0.2) = 0.6$."
+     },
+     {
+      "value": "-17/5",
+      "why": "That uses the tangent line at $x = 2$: $5 - 3(2.8) = -3.4$. That point is far from 4.8; use the closest one, $x = 5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$L(x) = 1 + 2(x - 5)$, so $f(4.8) \\approx 1 + 2(-0.2) = 0.6$."
+   }
+  },
+  {
+   "id": "calc-local-linearity-5",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Is the approximation of $f(4.8)$ an overestimate or an underestimate?",
+   "stimulus": "local-linearity-s1",
+   "options": [
+    "An underestimate, because $f'' < 0$ there",
+    "An overestimate, because $f'' < 0$ makes $f$ concave down there",
+    "An underestimate, because 4.8 lies to the left of the point $x = 5$",
+    "An overestimate, because $f'(5) > 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "On $4.5 \\le x \\le 5.5$, $f'' < 0$: concave down, so the tangent line lies above the graph and $L(4.8)$ overestimates $f(4.8)$.",
+    "options": [
+     "Concave down puts the tangent line above the graph.",
+     "A concave down graph lies below its tangent lines.",
+     "The side of the point does not matter; the concavity does.",
+     "The sign of $f'$ does not decide; the reason must be about $f''$."
+    ]
+   }
+  },
+  {
+   "id": "calc-local-linearity-6",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Use the tangent line shown to approximate $\\ln(1.2)$.",
+   "stimulus": "local-linearity-s2",
+   "numeric": {
+    "answer": "1/5",
+    "mistakes": [
+     {
+      "value": "6/5",
+      "why": "The line is $y = x - 1$, not $y = x$: $L(1.2) = 1.2 - 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The tangent line at $(1, 0)$ has slope $\\frac{1}{1} = 1$: $L(x) = x - 1$, so $\\ln(1.2) \\approx 0.2$."
+   }
+  },
+  {
+   "id": "calc-local-linearity-7",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Is $0.2$ an overestimate or an underestimate of $\\ln(1.2)$?",
+   "stimulus": "local-linearity-s2",
+   "options": [
+    "An underestimate, because $\\ln x$ is increasing on its whole domain",
+    "An underestimate, because $\\ln(1.2) > 0$",
+    "An overestimate, because the graph of $\\ln x$ is concave down",
+    "An overestimate, because $1.2 > 1$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The second derivative of $\\ln x$ is $-\\frac{1}{x^2} < 0$: the graph is concave down and lies below its tangent line, so $L(1.2) = 0.2$ is too large.",
+    "options": [
+     "Increasing does not decide which side the tangent line is on.",
+     "Both numbers are positive; compare them using concavity.",
+     "Concave down: the tangent line lies above the curve, as the graph shows.",
+     "Points on either side of 1 give overestimates here; the reason is the concavity."
+    ]
+   }
+  },
+  {
+   "id": "calc-local-linearity-8",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The same tangent line is used to approximate $\\ln(1.2)$ and $\\ln(3)$. Which approximation is more accurate?",
+   "stimulus": "local-linearity-s2",
+   "options": [
+    "$\\ln(3)$, because the line and the curve both grow",
+    "They are equally accurate, since the same line is used",
+    "Neither, since a tangent line gives no information away from $x = 1$",
+    "$\\ln(1.2)$, because 1.2 is closer to the point of tangency"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Local linearity: close to the point of tangency the graph looks like the line. $L(1.2) = 0.2$ versus $\\ln 1.2 \\approx 0.182$; $L(3) = 2$ versus $\\ln 3 \\approx 1.099$.",
+    "options": [
+     "The graph shows the gap widening as $x$ moves away from 1.",
+     "The error depends on how far $x$ is from the point of tangency.",
+     "Close to $x = 1$ it gives good estimates.",
+     "Near $x = 1$ the curve and the line almost coincide; at $x = 3$ they are far apart."
+    ]
+   }
+  },
+  {
+   "id": "calc-local-linearity-9",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the linear approximation of $\\ln x$ at $x = e$, in the form $y = \\ldots$",
+   "stimulus": "local-linearity-s2",
+   "expr": {
+    "answer": "1 + (x - e)/e",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     1,
+     4
+    ],
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "1 + e(x - e)",
+      "why": "The slope of $\\ln x$ at $x = e$ is $\\frac{1}{e}$, not $e$."
+     },
+     {
+      "expr": "(x - e)/e",
+      "why": "Start from the height $\\ln e = 1$ at the point of tangency."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\ln e = 1$ and the slope is $\\frac{1}{e}$: $L(x) = 1 + \\frac{1}{e}(x - e)$."
+   }
+  },
+  {
+   "id": "calc-local-linearity-10",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use a tangent line approximation of $\\sqrt{x}$ at $x = 25$ to estimate $\\sqrt{26}$.",
+   "numeric": {
+    "answer": "51/10",
+    "mistakes": [
+     {
+      "value": "26/5",
+      "why": "The derivative of $\\sqrt{x}$ is $\\frac{1}{2\\sqrt{x}}$: at 25 that is $\\frac{1}{10}$, not $\\frac{1}{5}$."
+     },
+     {
+      "value": 6,
+      "why": "The slope multiplies the change in $x$, which is 1, and the slope is $\\frac{1}{10}$, not 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = \\frac{1}{2\\sqrt{x}}$, so $f'(25) = \\frac{1}{10}$. $\\sqrt{26} \\approx 5 + \\frac{1}{10}(1) = 5.1$."
+   }
+  },
+  {
+   "id": "calc-local-linearity-11",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Is the estimate $\\sqrt{26} \\approx 5.1$ too large or too small, and why?",
+   "options": [
+    "Too large, because $\\sqrt{x}$ is concave down",
+    "Too small, because $\\sqrt{x}$ is increasing",
+    "Too small, because 26 is greater than 25",
+    "Too small, because the slope $\\frac{1}{10}$ is positive"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{d^2}{dx^2}\\sqrt{x} = -\\frac{1}{4}x^{-3/2} < 0$: concave down, tangent line above the graph, so 5.1 is an overestimate.",
+    "options": [
+     "The second derivative $-\\frac{1}{4}x^{-3/2}$ is negative.",
+     "Increasing does not decide; concavity does.",
+     "The direction of the step does not decide; concavity does.",
+     "A positive slope tells which way the line rises, not which side of the graph it is on."
+    ]
+   }
+  },
+  {
+   "id": "calc-local-linearity-12",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the tangent line to $f(x) = x^{10}$ at $x = 1$ to approximate $(1.02)^{10}$.",
+   "numeric": {
+    "answer": "6/5",
+    "mistakes": [
+     {
+      "value": "1/5",
+      "why": "Start from the height $f(1) = 1$: $L(1.02) = 1 + 0.2$."
+     },
+     {
+      "value": "51/50",
+      "why": "The slope is $f'(1) = 10$; the step 0.02 is multiplied by 10."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(1) = 1$ and $f'(1) = 10$, so $(1.02)^{10} \\approx 1 + 10(0.02) = 1.2$."
+   }
+  },
+  {
+   "id": "calc-local-linearity-13",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The tangent line to $y = \\sin x$ at $x = 0$ gives $\\sin(0.1) \\approx 0.1$. Which is true?",
+   "options": [
+    "$0.1$ is an underestimate, because $\\sin x$ is concave up near 0",
+    "$0.1$ is an overestimate, because $\\sin x$ is concave down on $(0, \\pi)$",
+    "$0.1$ is exact, because the tangent line is $y = x$",
+    "$0.1$ is an overestimate, because $\\cos 0 = 1$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$L(x) = x$ at 0. On $(0, \\pi)$, $\\sin x$ is concave down, so the line lies above it and $0.1 > \\sin 0.1$.",
+    "options": [
+     "For $0 < x < \\pi$, $\\frac{d^2}{dx^2}\\sin x = -\\sin x < 0$.",
+     "The second derivative $-\\sin x$ is negative there.",
+     "$\\sin x$ and $x$ agree only at 0; $\\sin 0.1 \\approx 0.0998$.",
+     "The slope at 0 gives the line; whether it is above the curve depends on concavity."
+    ]
+   }
+  },
+  {
+   "id": "calc-local-linearity-14",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Use the tangent line to $y = e^x$ at $x = 0$ to approximate $e^{0.1}$.",
+   "numeric": {
+    "answer": "11/10",
+    "mistakes": [
+     {
+      "value": "1/10",
+      "why": "Start from the height $e^0 = 1$: $L(0.1) = 1 + 0.1$."
+     },
+     {
+      "value": 1,
+      "why": "That is the value at $x = 0$; add the slope times the step, $1 \\times 0.1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$e^0 = 1$ and the slope is $e^0 = 1$: $L(x) = 1 + x$, so $e^{0.1} \\approx 1.1$."
+   }
+  },
+  {
+   "id": "calc-local-linearity-15",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "single",
+   "practice": "2.D",
+   "level": "recall",
+   "diff": 1,
+   "q": "If the graph of $f$ is concave up on an interval containing $x = a$, the line tangent to the graph at $x = a$",
+   "options": [
+    "lies above the graph near $a$, so it overestimates $f(x)$",
+    "crosses the graph at $x = a$",
+    "lies below the graph near $a$, so it underestimates $f$",
+    "gives exact values near $a$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Concave up: the graph bends upward, away from the tangent line, so the line lies below it and tangent line approximations are underestimates.",
+    "options": [
+     "That happens when the graph is concave down.",
+     "With constant concavity, the graph stays on one side of its tangent line near $a$.",
+     "Concave up graphs bend up away from their tangent lines.",
+     "It matches $f$ exactly only at $x = a$."
+    ]
+   }
+  },
+  {
+   "id": "calc-local-linearity-16",
+   "unit": "unit-4",
+   "topic": "local-linearity",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A function has $f(3) = 2$, $f'(3) = 0.5$ and $f''(x) < 0$ for all $x$. Which is true about the tangent line approximation of $f(3.4)$?",
+   "options": [
+    "It is $2.2$, an underestimate",
+    "It is $2.5$, an overestimate",
+    "It is $1.8$, an overestimate",
+    "It is $2.2$, an overestimate"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$L(3.4) = 2 + 0.5(0.4) = 2.2$. Since $f'' < 0$, the graph is concave down and below the tangent line, so 2.2 is too large.",
+    "options": [
+     "With $f'' < 0$ the graph lies below its tangent lines.",
+     "Multiply the slope by the step $0.4$: $0.5(0.4) = 0.2$.",
+     "The slope is positive, so the estimate rises from 2.",
+     "$2 + 0.5(0.4) = 2.2$; concave down puts the line above the graph."
+    ]
+   }
+  }
+ ]
+}

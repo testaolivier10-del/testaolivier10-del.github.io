@@ -1,0 +1,47 @@
+{
+  "slug": "riemann-sums",
+  "kind": "simulator",
+  "topic": "riemann-sums",
+  "intro": "<p>A Riemann sum estimates the area under a curve with strips: each strip is a width times a height. Pick the kind of sum, change the number of strips, and watch how close the sum gets to the exact area, and from which side.</p>",
+  "howItWorksTitle": "How the sums are built and checked",
+  "howItWorks": "<p>Every strip on the picture is the exact shape the sum adds up: a rectangle of width $\\Delta x$ and height $f$ at the left end, the right end or the middle, or a trapezoid whose top joins the two end heights. Strips below the axis are drawn in the second tone and count as negative. The exact value is computed to many decimal places by adaptive Simpson's rule, so the error you see is the sum's own.</p><ul><li><b>Over or under.</b> Left and right sums are decided by whether $f$ increases or decreases; midpoint and trapezoidal sums by concavity. When neither holds on the whole interval, the tool says so.</li><li><b>Tables.</b> A table fixes the subintervals, and on the exam their widths are often unequal: each term uses its own width. A midpoint sum from a table needs the subintervals in pairs, with the middle value given.</li><li><b>Units.</b> Width times rate is an amount: minutes times liters per minute is liters.</li></ul><p>Test yourself makes new problems from a seed (the problem code), checks every step against a key the validator recomputes independently, and names the usual slip when an answer misses.</p>",
+  "partTopics": {
+    "units": "accumulation-of-change",
+    "area": "accumulation-of-change",
+    "total": "accumulation-of-change",
+    "width": "definite-integral-notation",
+    "upper": "definite-integral-notation",
+    "integrand": "definite-integral-notation",
+    "pick": "definite-integral-notation",
+    "value": "riemann-sums"
+  },
+  "explore": {
+    "functions": [
+      { "id": "grow", "topic": "riemann-sums", "name": "Increasing, concave up", "tex": "f(x) = \\frac{x^2}{4} + 1", "fn": "x^2/4 + 1", "a": 0, "b": 4 },
+      { "id": "root", "topic": "riemann-sums", "name": "Increasing, concave down", "tex": "f(x) = 2\\sqrt{x}", "fn": "2sqrt(x)", "a": 0, "b": 4 },
+      { "id": "decay", "topic": "riemann-sums", "name": "Decreasing, concave up", "tex": "f(x) = 4e^{-x/2}", "fn": "4e^(-x/2)", "a": 0, "b": 4 },
+      { "id": "dome", "topic": "riemann-sums", "name": "Decreasing, concave down", "tex": "f(x) = 4 - \\frac{x^2}{4}", "fn": "4 - x^2/4", "a": 0, "b": 4 },
+      { "id": "wave", "topic": "riemann-sums", "name": "Above and below the axis", "tex": "f(x) = 2\\sin x", "fn": "2sin(x)", "a": 0, "b": 6.283185307179586, "piX": true },
+      { "id": "cubic", "topic": "riemann-sums", "name": "A cubic that changes sign", "tex": "f(x) = \\frac{x^3}{4} - x", "fn": "x^3/4 - x", "a": -2, "b": 3 }
+    ],
+    "flows": [
+      { "id": "morning", "topic": "accumulation-of-change", "name": "Water into a tank", "tex": "r(t) = 30 + 20\\sin\\left(\\frac{\\pi t}{12}\\right)", "fn": "30 + 20sin(pi*x/12)", "a": 0, "b": 12, "rate": "r", "var": "t", "varUnit": "minutes", "rateUnit": "liters per minute", "amtUnit": "liters", "amtAbbr": "L" },
+      { "id": "pump", "topic": "accumulation-of-change", "name": "A pump speeding up", "tex": "r(t) = 8 + \\frac{t^2}{4}", "fn": "8 + x^2/4", "a": 0, "b": 10, "rate": "r", "var": "t", "varUnit": "minutes", "rateUnit": "liters per minute", "amtUnit": "liters", "amtAbbr": "L" }
+    ],
+    "tables": [
+      { "id": "inflow", "topic": "riemann-sums", "name": "Inflow, unequal widths", "rate": "r", "var": "t", "xs": [0, 2, 5, 7, 12], "ys": [12, 20.5, 25.4, 27.9, 32.8], "trend": "12 + 6sqrt(x)", "decimals": 1, "varUnit": "minutes", "rateUnit": "liters per minute", "amtUnit": "liters" },
+      { "id": "coast", "topic": "riemann-sums", "name": "A cyclist slowing down", "rate": "v", "var": "t", "xs": [0, 1, 3, 4, 6, 9], "ys": [24, 19.6, 13.2, 10.8, 7.2, 4], "trend": "24e^(-x/5)", "decimals": 1, "varUnit": "seconds", "rateUnit": "meters per second", "amtUnit": "meters" }
+    ]
+  },
+  "contexts": [
+    { "id": "tank", "topic": "riemann-sums", "types": ["table", "overunder"], "lead": "Water flows into a tank.", "rate": "r", "var": "t", "rateUnit": "liters per minute", "varUnit": "minutes", "varUnitOne": "minute", "amtUnit": "liters", "amount": "the total amount of water that flows into the tank", "have": "in the tank", "lo": 10, "hi": 60, "spans": [10, 12] },
+    { "id": "oil", "topic": "riemann-sums", "types": ["table", "overunder"], "lead": "Oil leaks from a damaged tanker.", "rate": "R", "var": "t", "rateUnit": "gallons per hour", "varUnit": "hours", "varUnitOne": "hour", "amtUnit": "gallons", "amount": "the total amount of oil that leaks out", "have": "spilled", "lo": 20, "hi": 90, "spans": [8, 10, 12] },
+    { "id": "stadium", "topic": "riemann-sums", "types": ["table"], "lead": "Fans enter a stadium before a game.", "rate": "E", "var": "t", "rateUnit": "people per minute", "varUnit": "minutes", "varUnitOne": "minute", "amtUnit": "people", "amount": "the number of people who enter the stadium", "have": "inside", "lo": 40, "hi": 160, "spans": [10, 12] },
+    { "id": "cyclist", "topic": "riemann-sums", "types": ["table", "overunder"], "lead": "A cyclist rides along a straight road and never turns back.", "rate": "v", "var": "t", "rateUnit": "meters per second", "varUnit": "seconds", "varUnitOne": "second", "amtUnit": "meters", "amount": "the distance the cyclist travels", "have": "from the start line", "lo": 3, "hi": 15, "spans": [10, 12] },
+    { "id": "snow", "topic": "accumulation-of-change", "types": ["context"], "lead": "Snow falls on a town during a storm.", "rate": "s", "var": "t", "rateUnit": "inches per hour", "varUnit": "hours", "varUnitOne": "hour", "amtUnit": "inches", "amount": "the depth of new snow", "have": "of snow on the ground", "lo": 1, "hi": 4, "initStep": 1 },
+    { "id": "reservoir", "topic": "accumulation-of-change", "types": ["context"], "lead": "A pump fills a reservoir.", "rate": "r", "var": "t", "rateUnit": "cubic meters per hour", "varUnit": "hours", "varUnitOne": "hour", "amtUnit": "cubic meters", "amount": "the volume of water pumped in", "have": "of water in the reservoir", "lo": 10, "hi": 40, "initStep": 10 },
+    { "id": "bakery", "topic": "accumulation-of-change", "types": ["context"], "lead": "A bakery's oven turns out bread through the morning.", "rate": "B", "var": "t", "rateUnit": "loaves per hour", "varUnit": "hours", "varUnitOne": "hour", "amtUnit": "loaves", "amount": "the number of loaves baked", "have": "on the shelves", "lo": 20, "hi": 80, "initStep": 10 },
+    { "id": "limit-sum", "topic": "definite-integral-notation", "types": ["sigma"] },
+    { "id": "right-sum", "topic": "definite-integral-notation", "types": ["tosum"] }
+  ]
+}

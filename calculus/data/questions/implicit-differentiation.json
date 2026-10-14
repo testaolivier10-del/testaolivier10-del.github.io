@@ -1,0 +1,607 @@
+{
+ "stimuli": {
+  "implicit-differentiation-s1": {
+   "kind": "graph",
+   "title": "The curve $x^2 + xy + y^2 = 7$",
+   "plot": {
+    "label": "The tilted ellipse x squared plus x y plus y squared equals 7, passing through (1, 2), (1, -3) and (-1, 3)",
+    "x": [
+     -4,
+     4
+    ],
+    "y": [
+     -4,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(-x + sqrt(28 - 3x^2))/2",
+      "domain": [
+       -3.055,
+       3.055
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "(-x - sqrt(28 - 3x^2))/2",
+      "domain": [
+       -3.055,
+       3.055
+      ],
+      "cls": "s1"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       2
+      ],
+      "label": "(1, 2)"
+     },
+     {
+      "at": [
+       -1,
+       3
+      ],
+      "label": "(-1, 3)"
+     }
+    ],
+    "width": 360,
+    "height": 352
+   }
+  },
+  "implicit-differentiation-s2": {
+   "kind": "graph",
+   "title": "The circle $x^2 + y^2 = 25$",
+   "plot": {
+    "label": "The circle x squared plus y squared equals 25, with the points (3, 4), (4, -3), (-5, 0) and (0, 5) marked",
+    "x": [
+     -6,
+     6
+    ],
+    "y": [
+     -6,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "sqrt(25 - x^2)",
+      "domain": [
+       -5,
+       5
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "-sqrt(25 - x^2)",
+      "domain": [
+       -5,
+       5
+      ],
+      "cls": "s1"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       3,
+       4
+      ],
+      "label": "(3, 4)"
+     },
+     {
+      "at": [
+       4,
+       -3
+      ],
+      "label": "(4, -3)"
+     },
+     {
+      "at": [
+       -5,
+       0
+      ],
+      "label": "(-5, 0)"
+     },
+     {
+      "at": [
+       0,
+       5
+      ],
+      "label": "(0, 5)"
+     }
+    ],
+    "width": 360,
+    "height": 352
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-implicit-differentiation-1",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the curve in the graph, find $\\frac{dy}{dx}$ in terms of $x$ and $y$.",
+   "stimulus": "implicit-differentiation-s1",
+   "expr": {
+    "answer": "-(2x + y)/(x + 2y)",
+    "vars": [
+     "x",
+     "y"
+    ],
+    "domain": {
+     "x": [
+      0.5,
+      1.5
+     ],
+     "y": [
+      1,
+      2.5
+     ]
+    },
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "-(2x + y)/(2y)",
+      "why": "The product rule on $xy$ gives two terms, $y + x\\frac{dy}{dx}$. The second one also holds $\\frac{dy}{dx}$, so $x$ belongs in the denominator."
+     },
+     {
+      "expr": "(2x + y)/(x + 2y)",
+      "why": "Moving $2x + y$ to the other side makes it negative: $\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}$."
+     },
+     {
+      "expr": "-x/y",
+      "why": "The term $xy$ cannot be skipped; differentiate it with the product rule."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Apply $\\frac{d}{dx}$ to both sides: $2x + \\left(y + x\\frac{dy}{dx}\\right) + 2y\\frac{dy}{dx} = 0$. Collect: $(x + 2y)\\frac{dy}{dx} = -(2x + y)$, so $\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}$."
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-2",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the slope of the curve at the point $(1, 2)$.",
+   "stimulus": "implicit-differentiation-s1",
+   "numeric": {
+    "answer": "-4/5",
+    "mistakes": [
+     {
+      "value": "-1",
+      "why": "That uses $-\\frac{2x + y}{2y}$, which skips the $x\\frac{dy}{dx}$ term from the product rule on $xy$."
+     },
+     {
+      "value": "-1/2",
+      "why": "That is $-\\frac{x}{y}$, the slope of a circle. The $xy$ term changes the derivative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Substitute after differentiating: $\\frac{dy}{dx} = -\\frac{2(1) + 2}{1 + 2(2)} = -\\frac{4}{5}$."
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-3",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an equation of the line tangent to the curve at $(-1, 3)$?",
+   "stimulus": "implicit-differentiation-s1",
+   "options": [
+    "$y - 3 = -\\frac{1}{5}(x + 1)$",
+    "$y - 3 = -\\frac{1}{5}(x - 1)$",
+    "$y - 3 = \\frac{1}{3}(x + 1)$",
+    "$y - 3 = -5(x + 1)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At $(-1, 3)$: $\\frac{dy}{dx} = -\\frac{-2 + 3}{-1 + 6} = -\\frac{1}{5}$. Point-slope form: $y - 3 = -\\frac{1}{5}(x + 1)$.",
+    "options": [
+     "The slope is $-\\frac{2(-1) + 3}{-1 + 2(3)} = -\\frac{1}{5}$ and the line passes through $(-1, 3)$.",
+     "The slope is right, but the point has $x = -1$, so the factor is $x - (-1) = x + 1$.",
+     "This slope is $-\\frac{x}{y}$ at $(-1, 3)$, the slope of a circle; the $xy$ term changes it.",
+     "This flips the fraction: the slope is $-\\frac{2x + y}{x + 2y}$, numerator $1$ and denominator $5$."
+    ]
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-4",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "At which points of the curve is $\\frac{dy}{dx} = 0$?",
+   "stimulus": "implicit-differentiation-s1",
+   "options": [
+    "Where the curve meets the line $x = -2y$",
+    "Where the curve meets the line $y = -2x$",
+    "Where the curve meets the line $y = 2x$",
+    "Where the curve meets the $x$-axis"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A fraction is 0 when its numerator is 0 and its denominator is not: $2x + y = 0$, so $y = -2x$. Substituting gives $3x^2 = 7$, two points of the curve.",
+    "options": [
+     "On $x = -2y$ the denominator $x + 2y$ is 0, so the slope is undefined there, not 0.",
+     "$\\frac{dy}{dx} = 0$ when the numerator $2x + y$ is 0 (and the denominator is not), that is on the line $y = -2x$.",
+     "Check a point: on $y = 2x$ the numerator is $4x$, which is 0 only at the origin, and the origin is not on the curve.",
+     "At $y = 0$ the slope is $-\\frac{2x}{x} = -2$, not 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-5",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says the graph is not the graph of a function of $x$, so $\\frac{dy}{dx}$ cannot exist. Which response is correct?",
+   "stimulus": "implicit-differentiation-s1",
+   "options": [
+    "The student is right: $\\frac{dy}{dx}$ needs $y$ written as one formula in $x$",
+    "$\\frac{dy}{dx}$ exists, but it takes two values at each point of the curve",
+    "Near $(1, 2)$ the curve is the graph of a function, so $\\frac{dy}{dx}$ exists there",
+    "$\\frac{dy}{dx}$ exists just where the curve crosses an axis"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The whole curve fails the vertical line test, but near $(1, 2)$ the upper part is the graph of a differentiable function of $x$. Implicit differentiation gives its slope there, $-\\frac{4}{5}$.",
+    "options": [
+     "No formula for $y$ is needed. Implicit differentiation finds the slope without solving for $y$.",
+     "At a single point the tangent line has one slope; the two values belong to two different points, such as $(1, 2)$ and $(1, -3)$.",
+     "Near most points a piece of the curve passes the vertical line test; implicit differentiation gives the slope of that piece.",
+     "Implicit differentiation gives the slope at every point where $x + 2y \\ne 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-6",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "single",
+   "practice": "1.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "A student differentiates the circle in the graph and writes $2x + 2y = 0$. What went wrong?",
+   "stimulus": "implicit-differentiation-s2",
+   "options": [
+    "The derivative of $25$ should be $25$",
+    "The derivative of $x^2$ should be $2x\\frac{dy}{dx}$",
+    "Both sides should be divided by $2$ before differentiating",
+    "$y$ depends on $x$, so $\\frac{d}{dx}y^2 = 2y\\frac{dy}{dx}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Treat $y$ as a function of $x$. Then $\\frac{d}{dx}\\left(x^2 + y^2\\right) = 2x + 2y\\frac{dy}{dx} = 0$, so $\\frac{dy}{dx} = -\\frac{x}{y}$.",
+    "options": [
+     "25 is a constant, so its derivative is 0; that part was right.",
+     "Differentiating with respect to $x$, the derivative of $x^2$ is just $2x$.",
+     "Dividing by 2 changes nothing important; the missing $\\frac{dy}{dx}$ is the error.",
+     "The chain rule applies to every term that holds $y$; the student dropped the factor $\\frac{dy}{dx}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-7",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\frac{dy}{dx}$ at the point $(4, -3)$ of the circle.",
+   "stimulus": "implicit-differentiation-s2",
+   "numeric": {
+    "answer": "4/3",
+    "mistakes": [
+     {
+      "value": "-4/3",
+      "why": "Watch the signs: $-\\frac{x}{y}$ with $y = -3$ is $-\\frac{4}{-3} = +\\frac{4}{3}$."
+     },
+     {
+      "value": "3/4",
+      "why": "The slope is $-\\frac{x}{y}$, with $x$ on top: $-\\frac{4}{-3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dy}{dx} = -\\frac{x}{y} = -\\frac{4}{-3} = \\frac{4}{3}$."
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-8",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What happens to $\\frac{dy}{dx}$ at the point $(-5, 0)$ of the circle?",
+   "stimulus": "implicit-differentiation-s2",
+   "options": [
+    "It is undefined, because $y = 0$ makes the denominator 0",
+    "It equals 0, because $y = 0$",
+    "It equals $-5$, the value of $x$",
+    "It equals 1, because the circle is round"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With $\\frac{dy}{dx} = -\\frac{x}{y}$, a zero denominator and a nonzero numerator mean no slope: the tangent line at $(-5, 0)$ is vertical, as the graph shows.",
+    "options": [
+     "$-\\frac{x}{y} = -\\frac{-5}{0}$ has no value; the tangent line there is vertical.",
+     "A zero denominator does not make a fraction 0. The slope is 0 where the numerator $x$ is 0, at $(0, \\pm 5)$.",
+     "The slope is $-\\frac{x}{y}$, not $x$.",
+     "The slope changes from point to point; at $(-5, 0)$ the formula gives a zero denominator."
+    ]
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-9",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At which point of the circle is the slope of the tangent line $\\frac{3}{4}$?",
+   "stimulus": "implicit-differentiation-s2",
+   "options": [
+    "$(3, 4)$",
+    "$(3, -4)$",
+    "$(4, 3)$",
+    "$(-4, -3)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Solve $-\\frac{x}{y} = \\frac{3}{4}$ on the circle: $(3, -4)$ works, since $-\\frac{3}{-4} = \\frac{3}{4}$ and $9 + 16 = 25$.",
+    "options": [
+     "$-\\frac{3}{4}$: the sign is wrong.",
+     "$-\\frac{3}{-4} = \\frac{3}{4}$.",
+     "$-\\frac{4}{3}$ at this point.",
+     "$-\\frac{-4}{-3} = -\\frac{4}{3}$ at this point."
+    ]
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-10",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\frac{dy}{dx}$ for the curve $x^3 + y^3 = 6xy$.",
+   "expr": {
+    "answer": "(2y - x^2)/(y^2 - 2x)",
+    "vars": [
+     "x",
+     "y"
+    ],
+    "domain": {
+     "x": [
+      0.5,
+      1
+     ],
+     "y": [
+      2,
+      3
+     ]
+    },
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "(6y - 3x^2)/(3y^2)",
+      "why": "The right side $6xy$ needs the product rule: $6y + 6x\\frac{dy}{dx}$. Move the $6x\\frac{dy}{dx}$ term to the left before factoring."
+     },
+     {
+      "expr": "-x^2/y^2",
+      "why": "The right side $6xy$ is not a constant; its derivative is $6y + 6x\\frac{dy}{dx}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$3x^2 + 3y^2\\frac{dy}{dx} = 6y + 6x\\frac{dy}{dx}$. Collect: $(3y^2 - 6x)\\frac{dy}{dx} = 6y - 3x^2$, so $\\frac{dy}{dx} = \\frac{2y - x^2}{y^2 - 2x}$."
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-11",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\frac{dy}{dx}$ for the curve $e^y + y = x^2$.",
+   "expr": {
+    "answer": "2x/(e^y + 1)",
+    "vars": [
+     "x",
+     "y"
+    ],
+    "domain": {
+     "x": [
+      -2,
+      2
+     ],
+     "y": [
+      -1,
+      1
+     ]
+    },
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "(2x - 1)/e^y",
+      "why": "The derivative of $y$ with respect to $x$ is $\\frac{dy}{dx}$, not 1. Both $y$-terms carry $\\frac{dy}{dx}$."
+     },
+     {
+      "expr": "2x/(y*e^(y - 1) + 1)",
+      "why": "The power rule does not apply to $e^y$; by the chain rule its derivative is $e^y\\frac{dy}{dx}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$e^y\\frac{dy}{dx} + \\frac{dy}{dx} = 2x$, so $(e^y + 1)\\frac{dy}{dx} = 2x$ and $\\frac{dy}{dx} = \\frac{2x}{e^y + 1}$."
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-12",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The point $(9, 1)$ is on the curve $xy + y^3 = 10$. Find $\\frac{dy}{dx}$ there.",
+   "numeric": {
+    "answer": "-1/12",
+    "mistakes": [
+     {
+      "value": "-1/3",
+      "why": "The product rule on $xy$ gives $y + x\\frac{dy}{dx}$; the term $x\\frac{dy}{dx}$ was dropped."
+     },
+     {
+      "value": "-4/9",
+      "why": "The derivative of $y^3$ is $3y^2\\frac{dy}{dx}$, not $3y^2$: every $y$-term carries $\\frac{dy}{dx}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y + x\\frac{dy}{dx} + 3y^2\\frac{dy}{dx} = 0$, so $\\frac{dy}{dx} = -\\frac{y}{x + 3y^2} = -\\frac{1}{9 + 3} = -\\frac{1}{12}$."
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-13",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "single",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "If $y$ is a differentiable function of $x$, what is $\\frac{d}{dx}\\left(y^4\\right)$?",
+   "options": [
+    "$4y^3$",
+    "$4x^3$",
+    "$4y^3\\frac{dy}{dx}$",
+    "$4y^3\\frac{dx}{dy}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "By the chain rule, $\\frac{d}{dx}\\left(y^4\\right) = 4y^3 \\cdot \\frac{dy}{dx}$.",
+    "options": [
+     "$y$ changes with $x$, so the chain rule adds the factor $\\frac{dy}{dx}$.",
+     "The variable is $y$, not $x$.",
+     "Power rule on the outside, times the inside derivative $\\frac{dy}{dx}$.",
+     "The inside function is $y$ as a function of $x$; its derivative is $\\frac{dy}{dx}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-14",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an equation of the line tangent to $x^2 + 3y^2 = 13$ at $(1, 2)$?",
+   "options": [
+    "$y - 2 = -\\frac{1}{2}(x - 1)$",
+    "$y - 2 = -\\frac{1}{3}(x - 1)$",
+    "$y - 2 = 6(x - 1)$",
+    "$y - 2 = -\\frac{1}{6}(x - 1)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$2x + 6y\\frac{dy}{dx} = 0$ gives $\\frac{dy}{dx} = -\\frac{x}{3y}$, which is $-\\frac{1}{6}$ at $(1, 2)$.",
+    "options": [
+     "This is $-\\frac{x}{y}$: the coefficient 3 on $y^2$ was lost.",
+     "This is $-\\frac{x}{3}$ without the $y$: substitute $y = 2$ in $-\\frac{x}{3y}$.",
+     "This is the reciprocal of the slope with the sign flipped (the normal line), not the tangent.",
+     "$\\frac{dy}{dx} = -\\frac{x}{3y} = -\\frac{1}{6}$ at $(1, 2)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-15",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For the curve $x^2 - 2xy + 4y^2 = 12$, $\\frac{dy}{dx} = \\frac{y - x}{4y - x}$. At which point of the curve is $\\frac{dy}{dx}$ undefined?",
+   "options": [
+    "$(4, 1)$",
+    "$(2, 2)$",
+    "$(2, -1)$",
+    "$(0, 0)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slope is undefined where $4y - x = 0$ and $y - x \\ne 0$, at a point of the curve. With $x = 4y$: $16y^2 - 8y^2 + 4y^2 = 12$, so $y = \\pm 1$; $(4, 1)$ is one such point.",
+    "options": [
+     "It is on the curve ($16 - 8 + 4 = 12$) and the denominator is $4 - 4 = 0$ while the numerator is $-3$.",
+     "On the curve, but here the numerator is 0 and the denominator is 6, so the slope is 0.",
+     "On the curve, with slope $\\frac{-3}{-6} = \\frac{1}{2}$.",
+     "Both parts of the fraction are 0, but $(0, 0)$ is not on the curve: $0 \\ne 12$."
+    ]
+   }
+  },
+  {
+   "id": "calc-implicit-differentiation-16",
+   "unit": "unit-3",
+   "topic": "implicit-differentiation",
+   "type": "multi",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Here $y$ is a differentiable function of $x$. Which derivatives are written correctly? Select all that apply.",
+   "options": [
+    "$\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}$",
+    "$\\frac{d}{dx}\\left(y^3\\right) = 3y^2$",
+    "$\\frac{d}{dx}\\left(e^y\\right) = e^y\\frac{dy}{dx}$",
+    "$\\frac{d}{dx}(\\sin x) = \\cos x\\frac{dy}{dx}$"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Terms with $y$ get a factor $\\frac{dy}{dx}$ from the chain rule; terms with only $x$ do not.",
+    "options": [
+     "The product rule, with $\\frac{d}{dx}y = \\frac{dy}{dx}$.",
+     "The factor $\\frac{dy}{dx}$ is missing: $3y^2\\frac{dy}{dx}$.",
+     "The chain rule on $e^u$ with $u = y$.",
+     "This term holds only $x$, so its derivative is just $\\cos x$."
+    ]
+   }
+  }
+ ]
+}

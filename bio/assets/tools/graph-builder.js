@@ -154,6 +154,9 @@
     /* The grid. Plot area L..L+pw, T..T+ph. */
     var W = 560, H = 380, L = 70, R = 16, TOP = 16, B = 62, pw = W - L - R, ph = H - TOP - B;
     function drawGrid(){
+      // A phone draws the grid on a smaller canvas (400 x 330) so ticks and labels read at least 12 px; taps map through W and H.
+      var nar = !!document.querySelector('.ls-root.ls-phone');
+      W = nar ? 400 : 560; H = nar ? 330 : 380; L = nar ? 58 : 70; pw = W - L - R; ph = H - TOP - B;
       var host = body.querySelector('.gb-grid'), ys = scaleOf('ys'), xs = scaleOf('xs');
       var why = !st.y ? 'Choose the y-axis variable.' : !isNum(st.y) ? 'The y-axis variable has categories, not numbers. Put a number variable on the y-axis.' :
         !ys.ok ? 'Enter a y-axis minimum, maximum and interval: the grid redraws as you type.' :

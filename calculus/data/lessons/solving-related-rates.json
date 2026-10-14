@@ -1,0 +1,71 @@
+{
+ "topic": "solving-related-rates",
+ "hook": "Firefighters raise ladders, tanks fill and drain, shadows stretch as you walk away from a streetlight. In each case one rate is easy to measure and another is the one you care about. A related rates problem connects them with geometry and the chain rule, and the same five steps solve every one.",
+ "prereq": [
+  {
+   "q": "Differentiating $x^2 + y^2 = 100$ with respect to $t$ gives",
+   "options": [
+    "$2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0$",
+    "$2x + 2y = 0$",
+    "$2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 100$",
+    "$2x + 2y\\frac{dy}{dx} = 0$"
+   ],
+   "correct": 0,
+   "why": "Each variable depends on $t$; the constant's derivative is 0.",
+   "review": "related-rates-intro"
+  },
+  {
+   "q": "Similar triangles have legs 3 and 6 and $r$ and $h$. Which is true?",
+   "options": [
+    "$\\frac{r}{h} = \\frac{3}{6}$",
+    "$r + h = 9$",
+    "$r \\cdot h = 18$",
+    "$r - h = 3$"
+   ],
+   "correct": 0,
+   "why": "Corresponding sides are proportional.",
+   "review": "related-rates-intro"
+  }
+ ],
+ "figure": {
+  "figure": "ladder-sliding-wall",
+  "caption": "The sliding ladder: write $x^2 + y^2 = 100$, differentiate with respect to $t$, and only then substitute $x = 6$, $y = 8$ and $\\frac{dx}{dt} = 2$."
+ },
+ "chain": [
+  {
+   "cause": "Draw the situation and name every changing quantity",
+   "effect": "each named quantity is a function of time $t$; fixed lengths stay numbers"
+  },
+  {
+   "cause": "Find an equation linking the quantities at every instant (Pythagoras, similar triangles, a volume formula)",
+   "effect": "eliminate any extra variable with a second relation first, such as r = h/2"
+  },
+  {
+   "cause": "Differentiate both sides with respect to $t$",
+   "effect": "the chain rule gives an equation among the rates"
+  },
+  {
+   "cause": "Substitute the values of the instant, with signs for increasing or decreasing",
+   "effect": "solve for the unknown rate and state it with units"
+  }
+ ],
+ "ideas": [
+  "The five steps: draw and label, relate, differentiate with respect to $t$, substitute, answer with units.",
+  "Constants of the problem (a 10-foot ladder, a 6-foot person) stay numbers; quantities that change get letters.",
+  "Use similar triangles to remove an extra variable before differentiating, so only one unknown rate remains.",
+  "Shrinking or approaching means a negative rate. Report the answer in words too: \"the top slides down at 1.5 ft/s\"."
+ ],
+ "misconception": {
+  "wrong": "Substitute the given values first, to make the equation simpler, then differentiate.",
+  "right": "The values hold at one instant only. Substituted early they become constants with derivative 0, and the rates disappear. Differentiate the general relation first."
+ },
+ "check": [
+  "calc-solving-related-rates-1",
+  "calc-solving-related-rates-2",
+  "calc-solving-related-rates-3",
+  "calc-solving-related-rates-6",
+  "calc-solving-related-rates-8",
+  "calc-solving-related-rates-12"
+ ],
+ "summary": "To solve a related rates problem: draw and label, write an equation linking the quantities at every instant, differentiate it with respect to time, then substitute the instant's values and solve for the unknown rate. Use geometry to reduce to one changing quantity, and give the answer with its sign and units."
+}

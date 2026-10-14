@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Can Change Happen at an Instant? — AP® Calculus AB Notes</title>
+<meta name="description" content="Look at a car's speedometer and it shows one number, say 64 miles per hour, at this very moment. That seems ordinary until you try to say what it means.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/change-at-an-instant.html">
+<meta property="og:title" content="Can Change Happen at an Instant? — AP® Calculus AB Notes">
+<meta property="og:description" content="Look at a car's speedometer and it shows one number, say 64 miles per hour, at this very moment. That seems ordinary until you try to say what it means.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/change-at-an-instant.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/change-at-an-instant.html#reading",
+      "name": "Can Change Happen at an Instant?",
+      "url": "https://levlprep.com/calculus/notes/change-at-an-instant.html",
+      "description": "Look at a car's speedometer and it shows one number, say 64 miles per hour, at this very moment. That seems ordinary until you try to say what it means.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "can change happen at an instant? ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Limits and Continuity",
+          "item": "https://levlprep.com/calculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Can Change Happen at an Instant?: notes",
+          "item": "https://levlprep.com/calculus/notes/change-at-an-instant.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="change-at-an-instant" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Limits and Continuity</b><small>16 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 16 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="change-at-an-instant"><a href="#main" aria-current="page"><span class="bk-toc-n">1.1</span>Can Change Happen at an Instant?</a><div class="bk-toc-onpage"><p>On this page</p><a href="#average-rate-of-change">Average rate of change</a><a href="#shrinking-the-interval">Shrinking the interval</a><a href="#seeing-it-with-algebra">Seeing it with algebra</a><a href="#rates-from-tables-and-graphs">Rates from tables and graphs</a><a href="#average-and-instantaneous-side-by-side">Average and instantaneous, side by side</a></div></li><li data-toc-t="limit-notation"><a href="limit-notation.html"><span class="bk-toc-n">1.2</span>What a Limit Is and How to Write It</a></li><li data-toc-t="limits-from-plots"><a href="limits-from-plots.html"><span class="bk-toc-n">1.3</span>Reading Limits from a Graph</a></li><li data-toc-t="limits-from-tables"><a href="limits-from-tables.html"><span class="bk-toc-n">1.4</span>Estimating Limits from Tables</a></li><li data-toc-t="limit-laws"><a href="limit-laws.html"><span class="bk-toc-n">1.5</span>Limit Laws</a></li><li data-toc-t="limit-algebra"><a href="limit-algebra.html"><span class="bk-toc-n">1.6</span>Limits by Algebra: Factor, Rationalize, Simplify</a></li><li data-toc-t="choosing-limit-methods"><a href="choosing-limit-methods.html"><span class="bk-toc-n">1.7</span>Choosing a Way to Find a Limit</a></li><li data-toc-t="squeeze-theorem"><a href="squeeze-theorem.html"><span class="bk-toc-n">1.8</span>The Squeeze Theorem</a></li><li data-toc-t="limit-representations"><a href="limit-representations.html"><span class="bk-toc-n">1.9</span>Limits Across Graphs, Tables and Formulas</a></li><li data-toc-t="discontinuity-types"><a href="discontinuity-types.html"><span class="bk-toc-n">1.10</span>Types of Discontinuity</a></li><li data-toc-t="continuity-at-a-point"><a href="continuity-at-a-point.html"><span class="bk-toc-n">1.11</span>Continuity at a Point</a></li><li data-toc-t="continuity-on-intervals"><a href="continuity-on-intervals.html"><span class="bk-toc-n">1.12</span>Continuity on an Interval</a></li><li data-toc-t="removing-discontinuities"><a href="removing-discontinuities.html"><span class="bk-toc-n">1.13</span>Removing a Discontinuity</a></li><li data-toc-t="infinite-limits"><a href="infinite-limits.html"><span class="bk-toc-n">1.14</span>Infinite Limits and Vertical Asymptotes</a></li><li data-toc-t="limits-at-infinity"><a href="limits-at-infinity.html"><span class="bk-toc-n">1.15</span>Limits at Infinity and Horizontal Asymptotes</a></li><li data-toc-t="intermediate-value-theorem"><a href="intermediate-value-theorem.html"><span class="bk-toc-n">1.16</span>The Intermediate Value Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Differentiation: Definition and Fundamental Properties</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Limits and Continuity</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Can Change Happen at an Instant?: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/change-at-an-instant.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.1 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Can Change Happen at an Instant?</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="change-at-an-instant">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fchange-at-an-instant.html&amp;title=Can%20Change%20Happen%20at%20an%20Instant%3F%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/change-at-an-instant.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Look at a car's speedometer and it shows one number, say 64 miles per hour, at this very moment. That seems ordinary until you try to say what it means. <a class="gl" href="../notes/straight-line-motion.html" data-c="speed">Speed</a> is distance divided by time. At a single instant, no time passes and the car covers no distance, so the quotient would be zero divided by zero, which is not a number at all. Yet the car clearly has a speed. This page shows how to make sense of that, and the idea it leads to is the foundation of all of calculus.</p>
+
+<h2 id="average-rate-of-change">Average rate of change</h2>
+<p>Start with what we can compute. Over an interval of time, divide the change in a quantity by the change in time. For any <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> on an interval <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>:
+<math class="calc-m" display="block"><semantics><mrow><mtext>average rate of change</mtext><mo>=</mo><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{average rate of change} = \frac{f(b) - f(a)}{b - a}</annotation></semantics></math>
+This is the <b><span class="gl" tabindex="0" data-c="average-rate">average rate of change</span></b> of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> over <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>. On a graph, it is the <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> of the line through the two points <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, f(a))</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b, f(b))</annotation></semantics></math>. Its units are the output's units per the input's units: miles per hour, degrees per minute, dollars per item.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A stone dropped from a bridge falls <math class="calc-m"><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>16</mn><msup><mi>t</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">s(t) = 16t^2</annotation></semantics></math> feet in <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> seconds. Find its average speed from <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>16</mn><mo>⋅</mo><mn>9</mn><mo>=</mo><mn>144</mn></mrow><annotation encoding="application/x-tex">s(3) = 16 \cdot 9 = 144</annotation></semantics></math> feet and <math class="calc-m"><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">s(1) = 16</annotation></semantics></math> feet.</p>
+<p>Average speed <math class="calc-m"><semantics><mrow><mo>=</mo><mfrac><mrow><mi>s</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>−</mo><mi>s</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mrow><mn>3</mn><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{s(3) - s(1)}{3 - 1}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>144</mn><mo>−</mo><mn>16</mn></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{144 - 16}{2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>64</mn></mrow><annotation encoding="application/x-tex">= 64</annotation></semantics></math> feet per second.</p>
+<p>Notice what this does not say. The stone was not moving at 64 feet per second the whole time; it fell faster and faster. The average describes the interval as a whole.</p>
+</div>
+<p>A negative average rate means the quantity went down over the interval. If a cup of coffee goes from 180 °F to 153 °F in 5 minutes, its average rate of change is <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>153</mn><mo>−</mo><mn>180</mn></mrow><mn>5</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>5.4</mn></mrow><annotation encoding="application/x-tex">\frac{153 - 180}{5} = -5.4</annotation></semantics></math> °F per minute. A good interpretation names the quantity, the interval, the units and the words "on average": over the first 5 minutes, the temperature fell by an average of 5.4 °F per minute.</p>
+
+<h2 id="shrinking-the-interval">Shrinking the interval</h2>
+<p>We want the stone's speed at the single instant <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math>. We cannot use an interval of length 0. So use short intervals that start at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math>, and watch what happens as they get shorter.</p>
+<figure id="fig-chords"  class="calc-figure"><div class="calc-figimg" data-fig="instant-chords"><img src="../figures/instant-chords.svg" alt="A stone falls s(t) = 16t squared feet. Lines join the point (1, 16) on the curve to points at t = 2, 1.5 and 1.2, with slopes 48, 40 and 35.2; a dashed line through (1, 16) has slope 32. A table lists the average speeds from t = 1 over [1, 2], [1, 1.5], [1, 1.2], [1, 1.1], [1, 1.01] and [1, 1.001]: 48, 40, 35.2, 33.6, 32.16 and 32.016 feet per second, closing in on 32." width="800" height="450" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Lines from <math class="calc-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>16</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(1, 16)</annotation></semantics></math> to nearby points on the curve. As the second point slides toward <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math>, the slopes close in on 32. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Interval</th><th>Average speed (ft/s)</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 2]</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mn>64</mn><mo>−</mo><mn>16</mn></mrow><mn>1</mn></mfrac><mo>=</mo><mn>48</mn></mrow><annotation encoding="application/x-tex">\frac{64 - 16}{1} = 48</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>1.5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 1.5]</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mn>36</mn><mo>−</mo><mn>16</mn></mrow><mn>0.5</mn></mfrac><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">\frac{36 - 16}{0.5} = 40</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>1.1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 1.1]</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mn>19.36</mn><mo>−</mo><mn>16</mn></mrow><mn>0.1</mn></mfrac><mo>=</mo><mn>33.6</mn></mrow><annotation encoding="application/x-tex">\frac{19.36 - 16}{0.1} = 33.6</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>1.01</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 1.01]</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>32.16</mn></mrow><annotation encoding="application/x-tex">32.16</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>1.001</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 1.001]</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>32.016</mn></mrow><annotation encoding="application/x-tex">32.016</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>The averages are not random. They settle down toward 32. Intervals that end at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math> instead, such as <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0.99</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0.99, 1]</annotation></semantics></math>, give 31.84, 31.984, and so on: closing in on 32 from below. Both sides agree.</p>
+<p>That number, 32 feet per second, is the stone's speed at the instant <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math>. In general, the <b><span class="gl" tabindex="0" data-c="instantaneous-rate">instantaneous rate of change</span></b> of a quantity at a moment is the single number that its average rates of change close in on as the intervals around that moment shrink toward length 0.</p>
+
+<h2 id="seeing-it-with-algebra">Seeing it with algebra</h2>
+<p>A table suggests the answer. Algebra can show it. Let <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> be the length of the interval, so it runs from <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn><mo>+</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">t = 1 + h</annotation></semantics></math>, with <math class="calc-m"><semantics><mrow><mi>h</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h &gt; 0</annotation></semantics></math>:
+<math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>s</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>s</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac><mo>=</mo><mfrac><mrow><mn>16</mn><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>16</mn></mrow><mi>h</mi></mfrac><mo>=</mo><mfrac><mrow><mn>16</mn><mo>+</mo><mn>32</mn><mi>h</mi><mo>+</mo><mn>16</mn><msup><mi>h</mi><mn>2</mn></msup><mo>−</mo><mn>16</mn></mrow><mi>h</mi></mfrac><mo>=</mo><mfrac><mrow><mn>32</mn><mi>h</mi><mo>+</mo><mn>16</mn><msup><mi>h</mi><mn>2</mn></msup></mrow><mi>h</mi></mfrac><mo>=</mo><mn>32</mn><mo>+</mo><mn>16</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">\frac{s(1 + h) - s(1)}{h} = \frac{16(1 + h)^2 - 16}{h} = \frac{16 + 32h + 16h^2 - 16}{h} = \frac{32h + 16h^2}{h} = 32 + 16h</annotation></semantics></math>
+The last step divides by <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math>, which is allowed because <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is not 0. Now the pattern in the table is plain: every average is <math class="calc-m"><semantics><mrow><mn>32</mn><mo>+</mo><mn>16</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">32 + 16h</annotation></semantics></math>. As <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> shrinks toward 0, <math class="calc-m"><semantics><mrow><mn>16</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">16h</annotation></semantics></math> shrinks toward 0, and the average closes in on 32.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the stone's speed at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math>.</p>
+<p>Average over <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo>+</mo><mi>h</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[2, 2 + h]</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>16</mn><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>64</mn></mrow><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{16(2 + h)^2 - 64}{h}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>64</mn><mo>+</mo><mn>64</mn><mi>h</mi><mo>+</mo><mn>16</mn><msup><mi>h</mi><mn>2</mn></msup><mo>−</mo><mn>64</mn></mrow><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">= \frac{64 + 64h + 16h^2 - 64}{h}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>64</mn></mrow><annotation encoding="application/x-tex">= 64</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mn>16</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">+ 16h</annotation></semantics></math> feet per second.</p>
+<p>As <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> shrinks toward 0, this closes in on 64. The speed at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math> is 64 feet per second.</p>
+<p>Watch the expansion: <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>4</mn><mo>+</mo><mn>4</mn><mi>h</mi><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(2 + h)^2 = 4 + 4h + h^2</annotation></semantics></math>. Dropping the middle term <math class="calc-m"><semantics><mrow><mn>4</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">4h</annotation></semantics></math> is the most common slip here.</p>
+</div>
+
+<h2 id="rates-from-tables-and-graphs">Rates from tables and graphs</h2>
+<p>Often you have only measurements. Then you cannot shrink the interval forever, so you estimate.</p>
+<ul>
+<li>Use the <b>shortest interval</b> in the table that contains the moment. Its average rate is the best single estimate.</li>
+<li>If the moment is a table entry, the averages on the intervals just before and just after it bracket the rate. Their average is a good estimate.</li>
+<li>On a graph, the steeper the graph near a point, the larger the rate there. A graph that gets steeper means the rate is increasing.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 3.</b> The coffee's temperature is 168 °F at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math> minutes, 153 °F at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">t = 5</annotation></semantics></math>, 137 °F at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">t = 9</annotation></semantics></math> and 134 °F at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">t = 10</annotation></semantics></math>. Estimate how fast it is cooling at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>9.5</mn></mrow><annotation encoding="application/x-tex">t = 9.5</annotation></semantics></math>.</p>
+<p>The shortest interval containing 9.5 is <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>9</mn><mo>,</mo><mn>10</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[9, 10]</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>134</mn><mo>−</mo><mn>137</mn></mrow><mrow><mn>10</mn><mo>−</mo><mn>9</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{134 - 137}{10 - 9}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">= -3</annotation></semantics></math> °F per minute.</p>
+<p>So at about <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>9.5</mn></mrow><annotation encoding="application/x-tex">t = 9.5</annotation></semantics></math>, the temperature is falling at roughly 3 °F per minute.</p>
+</div>
+
+<h2 id="average-and-instantaneous-side-by-side">Average and instantaneous, side by side</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th></th><th>Average rate of change</th><th>Instantaneous rate of change</th></tr></thead>
+<tbody>
+<tr><td>Describes</td><td>an interval <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math></td><td>one moment <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></td></tr>
+<tr><td>Computed by</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{f(b) - f(a)}{b - a}</annotation></semantics></math></td><td>the value the averages close in on</td></tr>
+<tr><td>On the graph</td><td>slope through two points</td><td>steepness at one point</td></tr>
+<tr><td>From a table</td><td>exact</td><td>estimated</td></tr>
+</tbody>
+</table></div>
+<p>The phrase "close in on" has done a lot of work on this page. It deserves a precise name and a notation, because the whole course is built on it. The next topic gives it both.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:change-at-an-instant">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="math-exponent-rules.html"><span>&larr; Previous</span><b>Exponent Rules and Rewriting Powers</b></a><a class="tb-chapter-link next" href="limit-notation.html"><span>Next &rarr;</span><b>What a Limit Is and How to Write It</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:change-at-an-instant">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

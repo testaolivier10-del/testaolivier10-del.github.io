@@ -1,0 +1,56 @@
+<p>You can now write a differential equation, check a proposed solution and sketch solutions from a slope field. This page finds solutions by formula. The method, <b>separation of variables</b>, works whenever the variables can be pulled apart. On the AP® Calculus AB exam it is the only solving method you need.</p>
+
+<h2>When an equation is separable</h2>
+<p>A differential equation $\frac{dy}{dx} = F(x, y)$ is <b>separable</b> when the right side is a product of a function of $x$ alone and a function of $y$ alone:</p>
+<p>$$\frac{dy}{dx} = g(x)\,h(y).$$</p>
+<table>
+<thead><tr><th>Equation</th><th>Separable?</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>$\frac{dy}{dx} = 2xy^2$</td><td>yes</td><td>$(2x)(y^2)$</td></tr>
+<tr><td>$\frac{dy}{dx} = e^{x - y}$</td><td>yes</td><td>$e^{x}e^{-y}$, by an exponent rule</td></tr>
+<tr><td>$\frac{dy}{dx} = \frac{x^2}{y}$</td><td>yes</td><td>$x^2 \cdot \frac{1}{y}$</td></tr>
+<tr><td>$\frac{dy}{dx} = x + y$</td><td>no</td><td>a sum cannot be written as $g(x)h(y)$</td></tr>
+</tbody>
+</table>
+
+<h2>The method in four steps</h2>
+<ol>
+<li><b>Separate.</b> Multiply and divide so that every $y$ is on the side with $dy$ and every $x$ is on the side with $dx$: $\frac{1}{h(y)}\,dy = g(x)\,dx$. Both $dy$ and $dx$ stay in numerators.</li>
+<li><b>Integrate both sides.</b> $\int \frac{1}{h(y)}\,dy = \int g(x)\,dx$.</li>
+<li><b>Add the constant now.</b> Each side has its own constant, but $C_2 - C_1$ is just one constant, so write a single $+ C$, usually on the $x$ side. Do it in this step, not later.</li>
+<li><b>Solve for $y$</b> if you can. The result, with $C$ still in it, is the <b>general solution</b>: a whole family of curves.</li>
+</ol>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Find the general solution of $\frac{dy}{dx} = 2xy^2$.</p>
+<p>Separate: divide by $y^2$ and multiply by $dx$: $y^{-2}\,dy = 2x\,dx$.</p>
+<p>Integrate: $\int y^{-2}\,dy = \int 2x\,dx$, so $-\frac{1}{y} = x^2 + C$.</p>
+<p>Solve: take reciprocals and change the sign: $y = -\frac{1}{x^2 + C}$.</p>
+<p>Check one case: with $C = 1$, $y = -(x^2 + 1)^{-1}$ and $\frac{dy}{dx} = 2x(x^2 + 1)^{-2} = 2xy^2$. It works.</p>
+</div>
+<p>Look at what would happen if you waited to add the constant: $-\frac{1}{y} = x^2$ gives $y = -\frac{1}{x^2}$, and then "$+ C$" gives $y = -\frac{1}{x^2} + C$. That family is different, and for $C \ne 0$ it does not satisfy the equation. The constant must go in when you integrate.</p>
+
+<h2>Logarithms and the absolute value</h2>
+<p>Many separable equations put $\frac{1}{y}$ on the left. Its antiderivative is $\ln|y|$, with the absolute value. Keep it; it decides which solutions you find.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the general solution of $\frac{dy}{dx} = xy$.</p>
+<p>Separate: $\frac{dy}{y} = x\,dx$ (this assumes $y \ne 0$; see below).</p>
+<p>Integrate: $\ln|y| = \frac{x^2}{2} + C$.</p>
+<p>Exponentiate both sides: $|y| = e^{x^2/2 + C} = e^{C}e^{x^2/2}$.</p>
+<p>Remove the absolute value: $y = \pm e^{C}e^{x^2/2}$. The number $\pm e^{C}$ can be any nonzero constant; call it $A$. So $y = Ae^{x^2/2}$.</p>
+<p>Finally, $y = 0$ also satisfies $\frac{dy}{dx} = xy$ (both sides are 0), but dividing by $y$ hid it. Allowing $A = 0$ brings it back. General solution: $y = Ae^{x^2/2}$ for any constant $A$.</p>
+</div>
+<figure id="fig-family" data-fig="separation-family"><figcaption>The general solution $y = Ae^{x^2/2}$ of $\frac{dy}{dx} = xy$ drawn on its slope field: $A > 0$ above the axis, $A < 0$ below, $A = 0$ on it.</figcaption></figure>
+<p>Two algebra facts do most of the work here. First, $e^{a + b} = e^{a}e^{b}$, which turns $e^{x^2/2 + C}$ into a constant times $e^{x^2/2}$; it is not $e^{x^2/2} + C$. Second, $\ln|y| = u$ means $|y| = e^{u}$; you undo a logarithm by exponentiating the <i>whole</i> other side.</p>
+
+<h2>Shifted variables</h2>
+<p>The cooling equation $\frac{dT}{dt} = -0.05(T - 20)$ separates as $\frac{dT}{T - 20} = -0.05\,dt$. The whole quantity $T - 20$ stays together in the denominator, and its antiderivative is $\ln|T - 20|$:</p>
+<p>$$\ln|T - 20| = -0.05t + C, \qquad T = 20 + Ae^{-0.05t}.$$</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Leaving an $x$ on the $dy$ side or a $y$ on the $dx$ side. If the variables will not separate, the method does not apply.</li>
+<li>Missing $+ C$, or adding it only after solving for $y$.</li>
+<li>Writing $\ln y$ instead of $\ln|y|$, which loses the negative solutions.</li>
+<li>Writing $e^{u + C} = e^{u} + C$. It is $e^{C}e^{u}$, a constant <i>times</i> $e^{u}$.</li>
+</ul>

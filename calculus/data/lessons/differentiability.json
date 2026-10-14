@@ -1,0 +1,85 @@
+{
+ "topic": "differentiability",
+ "hook": "A ramp that meets the floor at a sharp angle jolts a skateboard; a ramp that curves smoothly into the floor does not. Both are connected, with no gap to jump. Calculus draws the same line: a graph can be connected, continuous, and still have a point where no single slope exists.",
+ "prereq": [
+  {
+   "q": "A function $f$ is continuous at $x = a$ when",
+   "options": [
+    "$\\lim_{x \\to a} f(x) = f(a)$",
+    "$f(a)$ is defined",
+    "$\\lim_{x \\to a} f(x)$ exists",
+    "$f(a) = 0$"
+   ],
+   "correct": 0,
+   "why": "All three conditions at once: $f(a)$ is defined, the limit exists, and they are equal.",
+   "review": "continuity-at-a-point"
+  },
+  {
+   "q": "For $f(x) = x^2$, the definition of the derivative gives",
+   "options": [
+    "$f'(x) = 2x$",
+    "$f'(x) = x$",
+    "$f'(x) = 2x + h$",
+    "$f'(x) = x^2$"
+   ],
+   "correct": 0,
+   "why": "The difference quotient simplifies to $2x + h$, whose limit as $h \\to 0$ is $2x$.",
+   "review": "derivative-definition"
+  },
+  {
+   "q": "If $\\lim_{x \\to 1^-} f(x) = 3$ and $\\lim_{x \\to 1^+} f(x) = 5$, then $\\lim_{x \\to 1} f(x)$",
+   "options": [
+    "does not exist",
+    "is 4",
+    "is 3",
+    "is 5"
+   ],
+   "correct": 0,
+   "why": "A two-sided limit exists only when the one-sided limits are equal.",
+   "review": "limits-from-plots"
+  }
+ ],
+ "figure": {
+  "figure": "where-derivatives-fail",
+  "caption": "Three continuous graphs that are not differentiable at one point (a corner, a cusp, a vertical tangent) and a jump, which is not continuous and so not differentiable."
+ },
+ "chain": [
+  {
+   "cause": "$f'(a)$ exists",
+   "effect": "$f(a + h) - f(a) = \\frac{f(a + h) - f(a)}{h} \\cdot h$ tends to $f'(a) \\cdot 0 = 0$"
+  },
+  {
+   "cause": "$f(a + h) - f(a) \\to 0$ as $h \\to 0$",
+   "effect": "$\\lim_{x \\to a} f(x) = f(a)$: $f$ is continuous at $a$"
+  },
+  {
+   "cause": "The left and right difference quotients approach different numbers (a corner)",
+   "effect": "the two-sided limit does not exist and $f'(a)$ does not exist, even though $f$ may be continuous"
+  },
+  {
+   "cause": "The difference quotients grow without bound (a cusp or a vertical tangent)",
+   "effect": "there is no finite slope, so $f'(a)$ does not exist"
+  }
+ ],
+ "ideas": [
+  "$f$ is <b>differentiable</b> at $a$ when $f'(a)$ exists: the limit of the difference quotient is a finite number.",
+  "Differentiable implies continuous. In a justification, say it: \"$f$ is differentiable at $a$, so $f$ is continuous at $a$.\"",
+  "Continuous does NOT imply differentiable. A continuous graph fails to have a derivative at a <b>corner</b> (one-sided slopes differ), a <b>cusp</b> (slopes become infinite in opposite directions) or a <b>vertical tangent</b> line.",
+  "Not continuous implies not differentiable: a jump, hole or asymptote rules out a derivative.",
+  "For a piecewise function at the break: check continuity first, then compare the left and right slopes."
+ ],
+ "misconception": {
+  "wrong": "The graph of $|x - 3|$ has no break at $x = 3$, so it has a derivative there.",
+  "right": "No break means continuous, which is necessary but not enough. At $x = 3$ the slope is $-1$ from the left and 1 from the right, so the difference quotient has no limit: $|x - 3|$ is continuous but not differentiable at 3."
+ },
+ "check": [
+  "calc-differentiability-1",
+  "calc-differentiability-2",
+  "calc-differentiability-3",
+  "calc-differentiability-4",
+  "calc-differentiability-9",
+  "calc-differentiability-10",
+  "calc-differentiability-14"
+ ],
+ "summary": "A function is differentiable at $a$ when $f'(a)$ exists. Differentiability implies continuity, but not the other way round: corners, cusps and vertical tangents are continuous points with no derivative, and any discontinuity also rules a derivative out. At a break in a piecewise function, check continuity, then compare the one-sided slopes."
+}

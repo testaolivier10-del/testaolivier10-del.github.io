@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exponential Models — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="One differential equation appears in more places than any other: dy/dt = ky . It says the rate of change is proportional to the amount present.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/exponential-models.html">
+<meta property="og:title" content="Exponential Models — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="One differential equation appears in more places than any other: dy/dt = ky . It says the rate of change is proportional to the amount present.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/exponential-models.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/exponential-models.html#reading",
+      "name": "Exponential Models",
+      "url": "https://levlprep.com/calculus/notes/exponential-models.html",
+      "description": "One differential equation appears in more places than any other: dy/dt = ky . It says the rate of change is proportional to the amount present.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "exponential models ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differential Equations",
+          "item": "https://levlprep.com/calculus/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Exponential Models: notes",
+          "item": "https://levlprep.com/calculus/notes/exponential-models.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="exponential-models" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 7 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+    <a class="bk-toc-chap" href="../units/unit-7.html"><span class="bk-toc-chap-n">7</span><span><b>Differential Equations</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-7"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="modeling-with-des"><a href="modeling-with-des.html"><span class="bk-toc-n">7.1</span>Writing Differential Equations</a></li><li data-toc-t="verifying-solutions"><a href="verifying-solutions.html"><span class="bk-toc-n">7.2</span>Verifying Solutions to Differential Equations</a></li><li data-toc-t="sketching-slope-fields"><a href="sketching-slope-fields.html"><span class="bk-toc-n">7.3</span>Sketching Slope Fields</a></li><li data-toc-t="reasoning-with-slope-fields"><a href="reasoning-with-slope-fields.html"><span class="bk-toc-n">7.4</span>Reasoning with Slope Fields</a></li><li data-toc-t="separation-of-variables"><a href="separation-of-variables.html"><span class="bk-toc-n">7.6</span>General Solutions by Separation of Variables</a></li><li data-toc-t="particular-solutions"><a href="particular-solutions.html"><span class="bk-toc-n">7.7</span>Particular Solutions from Initial Conditions</a></li><li class="current" data-toc-t="exponential-models"><a href="#main" aria-current="page"><span class="bk-toc-n">7.8</span>Exponential Models</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-solution-once-and-for-all">The solution, once and for all</a><a href="#what-k-means">What k means</a><a href="#finding-k-from-data">Finding k from data</a><a href="#cooling-and-warming">Cooling and warming</a><a href="#common-slips">Common slips</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Differential Equations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exponential Models: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/exponential-models.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 7 &middot; Topic 7.8 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Exponential Models</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="exponential-models">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fexponential-models.html&amp;title=Exponential%20Models%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/exponential-models.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>One <a class="gl" href="../notes/modeling-with-des.html" data-c="differential-equation">differential equation</a> appears in more places than any other: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = ky</annotation></semantics></math>. It says the rate of change is <a class="gl" href="../notes/modeling-with-des.html" data-c="proportional">proportional to</a> the amount present. Bacteria with room to grow, an account earning <a class="gl" href="../notes/discontinuity-types.html" data-c="discontinuity">continuous</a> interest, a medicine cleared by the kidneys, a radioactive sample: each changes faster when there is more of it. This page solves the equation once, so you can quote the result, and shows how to read and fit the model.</p>
+
+<h2 id="the-solution-once-and-for-all">The solution, once and for all</h2>
+<p>Separate: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mi>y</mi></mfrac><mo>=</mo><mi>k</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{y} = k\,dt</annotation></semantics></math>. Integrate: <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>y</mi><mo stretchy="false">|</mo><mo>=</mo><mi>k</mi><mi>t</mi><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\ln|y| = kt + C</annotation></semantics></math>. Exponentiate: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>A</mi><msup><mi>e</mi><mrow><mi>k</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">y = Ae^{kt}</annotation></semantics></math>. At <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>A</mi><msup><mi>e</mi><mn>0</mn></msup><mo>=</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">y = Ae^0 = A</annotation></semantics></math>, so the constant <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> is the starting amount <math class="calc-m"><semantics><mrow><msub><mi>y</mi><mn>0</mn></msub><mo>=</mo><mi>y</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y_0 = y(0)</annotation></semantics></math>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>y</mi><mo>,</mo><mspace width="1em"></mspace><mi>y</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub><mspace width="2em"></mspace><mtext>gives</mtext><mspace width="2em"></mspace><mi>y</mi><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>k</mi><mi>t</mi></mrow></msup><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = ky, \quad y(0) = y_0 \qquad \text{gives} \qquad y = y_0e^{kt}.</annotation></semantics></math></p>
+<p>This is the <b><span class="gl" tabindex="0" data-c="exponential-model">exponential model</span></b>. You may quote it on the exam when a problem says the rate of change is proportional to the amount.</p>
+<figure id="fig-expo"  class="calc-figure"><div class="calc-figimg" data-fig="exponential-growth-decay"><img src="../figures/exponential-growth-decay.svg" alt="Left: P = 50e^(0.2t) for t from 0 to 10, starting at 50 and doubling to 100 at t ≈ 3.47 and to 200 at t ≈ 6.93. Right: A = 80e^(−0.3t), starting at 80 and halving to 40 at t ≈ 2.31 and to 20 at t ≈ 4.62." width="800" height="400" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Growth with <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0.2</mn></mrow><annotation encoding="application/x-tex">k = 0.2</annotation></semantics></math> and decay with <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.3</mn></mrow><annotation encoding="application/x-tex">k = -0.3</annotation></semantics></math>. Each doubling (or halving) takes the same time, whatever the starting amount. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="what-k-means">What <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> means</h2>
+<p>Rearrange the equation: <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mfrac><mrow><mi>d</mi><mi>y</mi><mo>/</mo><mi>d</mi><mi>t</mi></mrow><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">k = \frac{dy/dt}{y}</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> is the rate of change <i>as a fraction of the current amount</i>. If <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">k = 0.05</annotation></semantics></math> per year, the quantity grows at 5% of its current size per year, at every moment. If <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.12</mn></mrow><annotation encoding="application/x-tex">k = -0.12</annotation></semantics></math> per hour, it shrinks at 12% of its current size per hour. That is why <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> is called the growth constant (<math class="calc-m"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &gt; 0</annotation></semantics></math>) or the decay constant (<math class="calc-m"><semantics><mrow><mi>k</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &lt; 0</annotation></semantics></math>).</p>
+<p>Units follow from the fraction: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dt}</annotation></semantics></math> is in "amount per hour" and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> in "amount", so <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> is in "per hour". The product <math class="calc-m"><semantics><mrow><mi>k</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">kt</annotation></semantics></math> has no units, as an exponent must.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th></th><th>Growth, <math class="calc-m"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &gt; 0</annotation></semantics></math></th><th>Decay, <math class="calc-m"><semantics><mrow><mi>k</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &lt; 0</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td>Graph</td><td>rises ever faster</td><td>falls ever more slowly toward 0, never reaching it</td></tr>
+<tr><td>Rate of change</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = ky</annotation></semantics></math> grows with <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = ky</annotation></semantics></math> shrinks in size with <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></td></tr>
+<tr><td>Fixed time to</td><td>double: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>2</mn></mrow><mi>k</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{\ln 2}{k}</annotation></semantics></math></td><td>halve (half-life): <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>2</mn></mrow><mrow><mo stretchy="false">|</mo><mi>k</mi><mo stretchy="false">|</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\ln 2}{|k|}</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="finding-k-from-data">Finding <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> from data</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> A culture grows at a rate proportional to its size. There are 400 bacteria at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math> and 1200 at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math> hours. Find <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math>, the model, and the population at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">t = 6</annotation></semantics></math>.</p>
+<p>The model is <math class="calc-m"><semantics><mrow><mi>P</mi><mo>=</mo><mn>400</mn><msup><mi>e</mi><mrow><mi>k</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">P = 400e^{kt}</annotation></semantics></math>. Use the second count: <math class="calc-m"><semantics><mrow><mn>1200</mn><mo>=</mo><mn>400</mn><msup><mi>e</mi><mrow><mn>3</mn><mi>k</mi></mrow></msup></mrow><annotation encoding="application/x-tex">1200 = 400e^{3k}</annotation></semantics></math>.</p>
+<p>Divide first: <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mn>3</mn><mi>k</mi></mrow></msup><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">e^{3k} = 3</annotation></semantics></math>. Take natural logs: <math class="calc-m"><semantics><mrow><mn>3</mn><mi>k</mi><mo>=</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">3k = \ln 3</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>3</mn></mrow><mn>3</mn></mfrac><mo>≈</mo><mn>0.366</mn></mrow><annotation encoding="application/x-tex">k = \frac{\ln 3}{3} \approx 0.366</annotation></semantics></math> per hour.</p>
+<p>Model: <math class="calc-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>400</mn><msup><mi>e</mi><mrow><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>3</mn></mrow><mn>3</mn></mfrac><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">P(t) = 400e^{\frac{\ln 3}{3}t}</annotation></semantics></math>. Then <math class="calc-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(6)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>400</mn><msup><mi>e</mi><mrow><mn>2</mn><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">= 400e^{2\ln 3}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>400</mn><mo>⋅</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">= 400 \cdot 9</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>3600</mn></mrow><annotation encoding="application/x-tex">= 3600</annotation></semantics></math> bacteria.</p>
+<p>Notice the pattern: 3 hours multiplies the population by 3, so 6 hours multiplies it by 9. A linear guess (add 800 every 3 hours, giving 2000) is the trap.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2 (calculator).</b> A medicine leaves the blood by <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>A</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.12</mn><mi>A</mi></mrow><annotation encoding="application/x-tex">\frac{dA}{dt} = -0.12A</annotation></semantics></math>, with <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>250</mn></mrow><annotation encoding="application/x-tex">A(0) = 250</annotation></semantics></math> mg and <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> in hours. Find the half-life and the time when 50 mg remain.</p>
+<p>The model is <math class="calc-m"><semantics><mrow><mi>A</mi><mo>=</mo><mn>250</mn><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.12</mn><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">A = 250e^{-0.12t}</annotation></semantics></math>. Half-life: <math class="calc-m"><semantics><mrow><mn>125</mn><mo>=</mo><mn>250</mn><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.12</mn><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">125 = 250e^{-0.12t}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.12</mn><mi>t</mi></mrow></msup><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">e^{-0.12t} = \frac{1}{2}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>2</mn></mrow><mn>0.12</mn></mfrac><mo>≈</mo><mn>5.776</mn></mrow><annotation encoding="application/x-tex">t = \frac{\ln 2}{0.12} \approx 5.776</annotation></semantics></math> hours.</p>
+<p>50 mg: <math class="calc-m"><semantics><mrow><mn>50</mn><mo>=</mo><mn>250</mn><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.12</mn><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">50 = 250e^{-0.12t}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.12</mn><mi>t</mi></mrow></msup><mo>=</mo><mn>0.2</mn></mrow><annotation encoding="application/x-tex">e^{-0.12t} = 0.2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>5</mn></mrow><mn>0.12</mn></mfrac><mo>≈</mo><mn>13.412</mn></mrow><annotation encoding="application/x-tex">t = \frac{\ln 5}{0.12} \approx 13.412</annotation></semantics></math> hours.</p>
+<p>Keep full precision in the calculator and round to three decimal places only at the end.</p>
+</div>
+
+<h2 id="cooling-and-warming">Cooling and warming</h2>
+<p>Newton's law of cooling, <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><msub><mi>T</mi><mi>r</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dT}{dt} = k(T - T_r)</annotation></semantics></math> with room temperature <math class="calc-m"><semantics><mrow><msub><mi>T</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">T_r</annotation></semantics></math>, is an exponential model for the <i>difference</i> <math class="calc-m"><semantics><mrow><mi>T</mi><mo>−</mo><msub><mi>T</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">T - T_r</annotation></semantics></math>, not for <math class="calc-m"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><mi>T</mi><mo>−</mo><msub><mi>T</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">T - T_r</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><msub><mi>T</mi><mn>0</mn></msub><mo>−</mo><msub><mi>T</mi><mi>r</mi></msub><mo stretchy="false">)</mo><msup><mi>e</mi><mrow><mi>k</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">= (T_0 - T_r)e^{kt}</annotation></semantics></math>, or <math class="calc-m"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msub><mi>T</mi><mi>r</mi></msub><mo>+</mo><mo stretchy="false">(</mo><msub><mi>T</mi><mn>0</mn></msub><mo>−</mo><msub><mi>T</mi><mi>r</mi></msub><mo stretchy="false">)</mo><msup><mi>e</mi><mrow><mi>k</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">= T_r + (T_0 - T_r)e^{kt}</annotation></semantics></math>. A pie at 90 °F in a 20 °F freezer has <math class="calc-m"><semantics><mrow><mi>T</mi><mo>−</mo><mn>20</mn><mo>=</mo><mn>70</mn><msup><mi>e</mi><mrow><mi>k</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">T - 20 = 70e^{kt}</annotation></semantics></math>; if it is at 55 °F after 10 minutes, then <math class="calc-m"><semantics><mrow><mn>35</mn><mo>=</mo><mn>70</mn><msup><mi>e</mi><mrow><mn>10</mn><mi>k</mi></mrow></msup></mrow><annotation encoding="application/x-tex">35 = 70e^{10k}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>2</mn></mrow><mn>10</mn></mfrac></mrow><annotation encoding="application/x-tex">k = -\frac{\ln 2}{10}</annotation></semantics></math> per minute.</p>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Thinking linearly: an exponential multiplies by the same factor in equal times; it does not add the same amount.</li>
+<li>Taking the log before dividing: from <math class="calc-m"><semantics><mrow><mn>1200</mn><mo>=</mo><mn>400</mn><msup><mi>e</mi><mrow><mn>3</mn><mi>k</mi></mrow></msup></mrow><annotation encoding="application/x-tex">1200 = 400e^{3k}</annotation></semantics></math>, divide by 400 first.</li>
+<li>Losing the sign of <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> for decay, or using the rate at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math> when a later rate is asked: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>A</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>k</mi><mi>A</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dA}{dt} = kA(t)</annotation></semantics></math> changes with time.</li>
+<li>Applying the model to <math class="calc-m"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math> instead of <math class="calc-m"><semantics><mrow><mi>T</mi><mo>−</mo><msub><mi>T</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">T - T_r</annotation></semantics></math> in a cooling problem.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:exponential-models">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="particular-solutions.html"><span>&larr; Previous</span><b>Particular Solutions from Initial Conditions</b></a><a class="tb-chapter-link next" href="average-value.html"><span>Next &rarr;</span><b>Average Value of a Function</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:exponential-models">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

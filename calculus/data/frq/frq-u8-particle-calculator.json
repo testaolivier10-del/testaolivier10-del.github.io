@@ -1,0 +1,131 @@
+{
+ "id": "frq-u8-particle-calculator",
+ "type": "motion",
+ "title": "A particle with velocity 4cos(0.9t) - 0.2t",
+ "calc": true,
+ "points": 9,
+ "units": [
+  "unit-8"
+ ],
+ "topics": [
+  "straight-line-motion",
+  "motion-with-integrals",
+  "average-value"
+ ],
+ "practices": [
+  "1.D",
+  "1.E",
+  "3.E",
+  "4.B"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "A particle moving along the x-axis",
+  "table": {
+   "caption": "The velocity of a particle, in meters per second, for 0 ≤ t ≤ 6 seconds, and its position at t = 0",
+   "cols": [
+    "Quantity",
+    "Value"
+   ],
+   "rows": [
+    [
+     "$v(t)$",
+     "$4\\cos(0.9t) - 0.2t$ meters per second, $0 \\le t \\le 6$"
+    ],
+    [
+     "$x(0)$",
+     "3 meters"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "Is the speed of the particle increasing or decreasing at time $t = 2$? <b>Give a reason</b> for your answer.",
+   "rubric": [
+    {
+     "point": "Finds $v(2) \\approx -1.309$ and $a(2) = v'(2) \\approx -3.706$ (calculator).",
+     "accept": [
+      "v(2) < 0 and a(2) < 0, with values or signs from the calculator"
+     ]
+    },
+    {
+     "point": "Increasing, because $v(2)$ and $a(2)$ have the same sign (both negative).",
+     "accept": [
+      "speeding up because velocity and acceleration are both negative"
+     ]
+    }
+   ],
+   "sample": "$v(2) = 4\\cos(1.8) - 0.4 \\approx -1.309$ and $a(2) = v'(2) \\approx -3.706$. Both are negative, so the speed is increasing at $t = 2$."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Find</b> all times $t$ in $0 < t < 6$ at which the particle changes direction. <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "$v(t) = 0$ at $t \\approx 1.653$ and $t \\approx 5.548$.",
+     "accept": [
+      "t = 1.653 and t = 5.548 (correct to three decimal places)"
+     ]
+    },
+    {
+     "point": "Justification: $v$ changes sign at each of these times (positive to negative at 1.653, negative to positive at 5.548).",
+     "accept": [
+      "v changes sign at both times"
+     ]
+    }
+   ],
+   "sample": "Solving $4\\cos(0.9t) - 0.2t = 0$ on the calculator gives $t \\approx 1.653$ and $t \\approx 5.548$. $v$ changes from positive to negative at $t \\approx 1.653$ and from negative to positive at $t \\approx 5.548$, so the particle changes direction at both times."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Find</b> the position of the particle at time $t = 6$.",
+   "rubric": [
+    {
+     "point": "Setup: $x(6) = 3 + \\int_0^6 v(t)\\,dt$.",
+     "accept": [
+      "x(0) plus the definite integral of v from 0 to 6"
+     ]
+    },
+    {
+     "point": "Answer: $x(6) \\approx -4.035$ meters (or $-4.034$).",
+     "accept": [
+      "-4.034",
+      "-4.035"
+     ]
+    }
+   ],
+   "sample": "$x(6) = x(0) + \\int_0^6 v(t)\\,dt = 3 + (-7.0345\\ldots) \\approx -4.035$ meters."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "<b>Find</b> the total distance traveled by the particle over $0 \\le t \\le 6$. <b>Find</b> the average velocity of the particle over the same interval. <b>Indicate</b> units of measure.",
+   "rubric": [
+    {
+     "point": "Setup for distance: $\\int_0^6 |v(t)|\\,dt$.",
+     "accept": [
+      "the sum of the absolute values of the integrals of v over [0, 1.653], [1.653, 5.548] and [5.548, 6]"
+     ]
+    },
+    {
+     "point": "Total distance $\\approx 15.974$ meters.",
+     "accept": [
+      "15.974 meters"
+     ]
+    },
+    {
+     "point": "Average velocity: $\\frac{1}{6}\\int_0^6 v(t)\\,dt \\approx -1.172$ meters per second, with units.",
+     "accept": [
+      "(x(6) - x(0))/6 = -1.172 m/s"
+     ]
+    }
+   ],
+   "sample": "Total distance $= \\int_0^6 |v(t)|\\,dt \\approx 15.974$ meters. Average velocity $= \\frac{1}{6 - 0}\\int_0^6 v(t)\\,dt \\approx \\frac{-7.035}{6} \\approx -1.172$ meters per second."
+  }
+ ]
+}

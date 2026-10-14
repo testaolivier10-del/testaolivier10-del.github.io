@@ -585,7 +585,8 @@
           A.arrow(a.tx, a.ty, v.x, v.y, { cls: T0.cls + ' fb-a', width: 4, head: 11 }) +
           '<text class="fb-ulab" x="' + n1(t.x + Math.cos(rad(a.ang)) * 14 + (Math.abs(Math.sin(rad(a.ang))) > 0.7 ? 10 : 0)) + '" y="' + n1(t.y - Math.sin(rad(a.ang)) * 14 + 5) + '" text-anchor="' + (Math.cos(rad(a.ang)) < -0.3 ? 'end' : 'start') + '">' + svgSub(lab) + '</text>' +
           (a.mark ? '<g class="fb-badge"><circle cx="' + n1(t.x - v.x * 0.45) + '" cy="' + n1(t.y - v.y * 0.45) + '" r="10"/><text x="' + n1(t.x - v.x * 0.45) + '" y="' + n1(t.y - v.y * 0.45 + 4) + '" text-anchor="middle">' + (a.mark.st === 'ok' ? '✓' : a.mark.n) + '</text></g>' : '') +
-          (locked ? '' : '<circle class="fb-handle" cx="' + n1(t.x) + '" cy="' + n1(t.y) + '" r="15" data-h="tip"/>') + '</g>';
+          // An invisible 26-unit hit circle under the tip: about 46 px across on a 360 px phone.
+          (locked ? '' : '<circle class="fb-tiphit" cx="' + n1(t.x) + '" cy="' + n1(t.y) + '" r="26" data-h="tip"/><circle class="fb-handle" cx="' + n1(t.x) + '" cy="' + n1(t.y) + '" r="15" data-h="tip"/>') + '</g>';
       }).join('') + (p && p.shown ? '' : '');
       if(fid != null){ var n = layer.querySelector('[data-a="' + fid + '"]'); if(n) n.focus(); }
       edit();

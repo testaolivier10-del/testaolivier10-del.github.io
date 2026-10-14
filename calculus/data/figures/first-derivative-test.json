@@ -1,0 +1,12 @@
+{
+ "fdt-three-cases": {
+  "file": "figures/fdt-three-cases.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 370,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Three graphs, each with a critical point at x = c. Left: f' changes from positive to negative, the graph rises then falls, a relative maximum. Middle: f' changes from negative to positive, a relative minimum. Right: f' is positive on both sides, the graph rises through a flat point, no relative extremum."
+ }
+}

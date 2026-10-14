@@ -1,0 +1,12 @@
+{
+ "end-behavior-growth": {
+  "file": "figures/end-behavior-growth.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Left: the graph of f(x) = (2x² + x)/(x² + 1) for x from −10 to 10 with the dashed horizontal asymptote y = 2. The graph crosses the asymptote at x = 2 and then approaches it from above. Right: ln x, x³ and eˣ for x from 0 to 6. At first x³ is above eˣ, but eˣ passes it near x = 4.54 and stays ahead; ln x grows slowest."
+ }
+}

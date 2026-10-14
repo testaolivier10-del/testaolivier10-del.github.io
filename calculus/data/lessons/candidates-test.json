@@ -1,0 +1,81 @@
+{
+ "topic": "candidates-test",
+ "hook": "A water company must know the lowest level its reservoir will reach this month, not just a dip that looks low. A relative minimum answers \"lower than nearby\"; the company needs \"lowest of all\". On a closed interval there is a short, sure way to find it: list a few candidates and compare.",
+ "prereq": [
+  {
+   "q": "The Extreme Value Theorem guarantees an absolute maximum when $f$ is",
+   "options": [
+    "continuous on a closed interval",
+    "differentiable on an open interval",
+    "increasing",
+    "defined at both endpoints"
+   ],
+   "correct": 0,
+   "why": "Continuity on $[a, b]$ is the hypothesis.",
+   "review": "extreme-value-theorem"
+  },
+  {
+   "q": "$f'$ changes from positive to negative at $x = 2$. Then $f(2)$ is",
+   "options": [
+    "a relative maximum",
+    "a relative minimum",
+    "the absolute maximum",
+    "not an extremum"
+   ],
+   "correct": 0,
+   "why": "The First Derivative Test gives a relative (local) maximum.",
+   "review": "first-derivative-test"
+  }
+ ],
+ "figure": {
+  "figure": "candidates-check",
+  "caption": "Four candidates: two endpoints and two critical points. The largest value, at an endpoint, is the absolute maximum; the relative maximum at $x = 1$ is not."
+ },
+ "chain": [
+  {
+   "cause": "$f$ is continuous on $[a, b]$",
+   "effect": "by the Extreme Value Theorem, an absolute maximum and minimum exist"
+  },
+  {
+   "cause": "An absolute extremum is either at an endpoint or inside",
+   "effect": "if inside, it is at a critical point, where $f'$ is 0 or undefined"
+  },
+  {
+   "cause": "So the endpoints and critical points are the only candidates",
+   "effect": "evaluate $f$ at each one and compare: the largest value is the absolute maximum, the smallest the absolute minimum"
+  },
+  {
+   "cause": "You only showed a sign change of $f'$",
+   "effect": "that proves a relative extremum, a local fact, not an absolute one"
+  }
+ ],
+ "ideas": [
+  "<b>Candidates Test</b> (closed interval method): for $f$ continuous on $[a, b]$, list the endpoints and the critical points in $(a, b)$, compute $f$ at each, and compare.",
+  "No derivative signs needed: just values. Show the table of candidates and values in your answer.",
+  "The absolute extrema can be at endpoints. A relative maximum can lose to an endpoint.",
+  "On a calculator problem, find critical points with the graph or solver, store them, and evaluate the model at each candidate."
+ ],
+ "misconception": {
+  "wrong": "\"$f'$ changes from positive to negative at $x = c$, so $f(c)$ is the absolute maximum.\"",
+  "right": "A sign change is a local argument: it only compares $f(c)$ with nearby values. For an absolute extremum on a closed interval, compare the values at the endpoints and every critical point. Chief readers see this lost point every year."
+ },
+ "check": [
+  "calc-candidates-test-1",
+  "calc-candidates-test-2",
+  "calc-candidates-test-3",
+  "calc-candidates-test-4",
+  "calc-candidates-test-9",
+  "calc-candidates-test-13"
+ ],
+ "summary": "On a closed interval, a continuous function has absolute extrema, and they sit at endpoints or critical points. The Candidates Test evaluates $f$ at each of those and compares. A sign change of $f'$ shows only a relative extremum; an absolute one needs the comparison.",
+ "connections": [
+  {
+   "href": "../notes/first-derivative-test.html",
+   "label": "Back: the First Derivative Test (5.4)"
+  },
+  {
+   "href": "../notes/concavity.html",
+   "label": "Next: 5.6"
+  }
+ ]
+}

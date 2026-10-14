@@ -1,0 +1,12 @@
+{
+ "factor-hole": {
+  "file": "figures/factor-hole.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graph of y = (x squared minus 9) over (x minus 3) is the line y = x + 3 with an open circle at (3, 6). A panel shows the algebra: factor x squared minus 9 as (x - 3)(x + 3), cancel x - 3 for x not equal to 3, and get x + 3, so the limit at x = 3 is 6."
+ }
+}

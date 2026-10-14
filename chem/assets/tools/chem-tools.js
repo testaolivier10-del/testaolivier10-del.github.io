@@ -164,6 +164,32 @@
     p.push('<text class="lbl" transform="translate(15 ' + (T + ph / 2) + ') rotate(-90)" text-anchor="middle">' + lab(s.y) + '</text>');
     return '<svg class="chem-svg bt-plot" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(s.title || 'Graph') + '">' + p.join('') + '</svg>';
   }
+  /* Phone pictures (docs/tools-phone-pass.md): fitBox(host, w, h) is the
+     viewBox size to draw in. Off a phone it is w x h unchanged. On a phone
+     (.ls-root.ls-phone) it is the host's own box in CSS px (divided by the
+     Enlarge zoom), so a chart's text renders at its CSS size instead of
+     shrinking with a wide picture. watchBox(host, redraw) calls redraw when
+     that box changes size (rotation, Enlarge, zoom). */
+  function phoneOf(el){ var r = el && el.closest ? el.closest('.ls-root') : null; return !!(r && r.classList.contains('ls-phone')); }
+  function fitBox(host, w, h, min){
+    if(!phoneOf(host)) return { w: w, h: h, fit: false };
+    var b = host.getBoundingClientRect(), m = min || {};
+    if(b.width < 120 || b.height < 60) return { w: w, h: h, fit: false };
+    var z = parseFloat(getComputedStyle(host).getPropertyValue('--ls-zoom')) || 1;
+    return { w: Math.round(Math.max(m.w || 260, b.width / z)), h: Math.round(Math.max(m.h || 150, b.height / z)), fit: true };
+  }
+  function watchBox(host, redraw){
+    if(!host || !window.ResizeObserver) return null;
+    var last = '', raf = 0, ro = new ResizeObserver(function(){
+      if(!phoneOf(host)) { last = ''; return; }
+      var b = host.getBoundingClientRect(), k = Math.round(b.width / 4) + 'x' + Math.round(b.height / 4);
+      if(k === last || b.width < 120) return;
+      last = k;
+      cancelAnimationFrame(raf); raf = requestAnimationFrame(redraw);
+    });
+    ro.observe(host);
+    return ro;
+  }
   function errBar(x, y1, y2){ return '<path class="err" d="M' + x.toFixed(1) + ' ' + y1.toFixed(1) + 'V' + y2.toFixed(1) + 'M' + (x - 6).toFixed(1) + ' ' + y1.toFixed(1) + 'h12M' + (x - 6).toFixed(1) + ' ' + y2.toFixed(1) + 'h12"/>'; }
   function niceMax(v){ if(v <= 0) return 1; var p = Math.pow(10, Math.floor(Math.log10(v))); var ms = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]; for(var i = 0; i < ms.length; i++) if(v <= ms[i] * p + 1e-9) return ms[i] * p; return 10 * p; }
   function niceStep(span, n){ var raw = span / (n || 5), p = Math.pow(10, Math.floor(Math.log10(raw))); var ms = [1, 2, 2.5, 5, 10]; for(var i = 0; i < ms.length; i++) if(raw <= ms[i] * p + 1e-9) return ms[i] * p; return 10 * p; }
@@ -851,7 +877,7 @@
     studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
-    plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
+    plot: plot, fitBox: fitBox, watchBox: watchBox, phone: phoneOf, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
     record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,
     gradePart: gradePart, partHtml: partHtml, unitOf: unitOf,
     drill: drill, parseCoef: parseCoef, coefText: coefText

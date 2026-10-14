@@ -1,0 +1,127 @@
+/* Accumulation trainer (calculus/assets/tools/accumulation.js). OWNED BY THIS
+   TOOL ONLY. f is crimson (s1), g purple (s5), in the tank R blue (s2) and D
+   orange (s4); area that adds is blue, area that subtracts vermillion with a
+   dashed edge (the same tones as the Riemann sums trainer). */
+.ac-card{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.ac-fig{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;min-width:0;}
+@media (min-width:760px){.ac-fig{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .ac-fig.has-tank{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 150px;}}
+.ac-pane{margin:0;display:flex;flex-direction:column;gap:2px;min-width:0;min-height:0;}
+.ac-cap{font:700 13px var(--font-ui);color:var(--ink-2,var(--ink));min-height:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ac-cap math{font-size:1.02em;}
+.ac-sep{color:var(--muted);font-weight:600;}
+.ac-plot{position:relative;min-width:0;}
+.ac-plot svg{display:block;width:100%;height:auto;}
+.ac-tank{display:flex;align-items:center;justify-content:center;min-height:0;}
+.ac-tank[hidden]{display:none;}
+.ac-tank svg{display:block;width:100%;height:auto;max-height:100%;}
+/* On the Tool Studio stage the graph of g sits under the graph of f, at
+   every size, so the two x-axes line up (and a phone gets two full-width
+   graphs instead of two thin ones); the tank, for Unit 8, is a column on the
+   right beside both. Each SVG is drawn at its box's size. */
+.ls-root .ac-fig{flex:1;min-height:0;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:4px;}
+.ls-root .ac-fig.has-tank{grid-template-columns:minmax(0,1fr) 104px;}
+.ls-root .ac-pf{grid-column:1;grid-row:1;} .ls-root .ac-pg{grid-column:1;grid-row:2;}
+.ls-root .ac-fig .ac-tank{grid-column:2;grid-row:1 / span 2;}
+@media (min-width:760px){.ls-root .ac-fig{gap:8px;} .ls-root .ac-fig.has-tank{grid-template-columns:minmax(0,1fr) 150px;}}
+@media (max-width:640px){.ls-root .ac-cap{display:none;}}
+.ls-phone .ac-cap{display:none;}
+.ls-root .ac-pane{height:100%;}
+.ls-root .ac-plot{flex:1;min-height:90px;}
+.ls-root .ac-plot svg{position:absolute;inset:0;width:100%;height:100%;}
+/* phones: tick numbers at least 12 px (the SVGs are drawn 1:1) */
+.ls-phone .ac-fig .calc-plot,.ls-phone .ac-qfig .calc-plot{font-size:12.5px;}
+.ls-phone .ac-fig .calc-plot .calc-plot-axlabel,.ls-phone .ac-qfig .calc-plot .calc-plot-axlabel{font-size:14px;}
+.calc-plot .ac-hit{fill:transparent;stroke:none;pointer-events:all;}
+.ls-phone .ls-drill-stage .ac-qfig figcaption{padding-right:46px;}
+
+.calc-plot .ac-area{stroke-width:1;}
+.calc-plot .ac-area.is-pos{fill:rgba(0,114,178,.22);stroke:rgba(0,114,178,.55);}
+.calc-plot .ac-area.is-neg{fill:rgba(213,94,0,.22);stroke:#B34E00;stroke-dasharray:4 3;}
+:root[data-theme="dark"] .calc-plot .ac-area.is-pos{fill:rgba(107,180,232,.26);stroke:rgba(107,180,232,.6);}
+:root[data-theme="dark"] .calc-plot .ac-area.is-neg{fill:rgba(242,154,92,.24);stroke:#F29A5C;}
+.calc-plot .ac-vl{stroke:var(--ink-3,#888);stroke-width:1.2;stroke-dasharray:3 4;}
+.calc-plot .ac-vlab{fill:var(--muted);font:800 12px var(--font-ui);}
+.calc-plot .ac-hgt{stroke:#B0123A;stroke-width:1.6;stroke-dasharray:2 3;}
+.calc-plot .ac-fpt{fill:#B0123A;stroke:var(--white);stroke-width:1.5;}
+.calc-plot .ac-fpt.is-in{fill:#0072B2;} .calc-plot .ac-fpt.is-out{fill:#D55E00;}
+:root[data-theme="dark"] .calc-plot .ac-hgt{stroke:#F590AC;} :root[data-theme="dark"] .calc-plot .ac-fpt{fill:#F590AC;}
+:root[data-theme="dark"] .calc-plot .ac-fpt.is-in{fill:#6BB4E8;} :root[data-theme="dark"] .calc-plot .ac-fpt.is-out{fill:#F29A5C;}
+.calc-plot .ac-gcurve{fill:none;stroke:#7A4F9E;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.calc-plot .ac-gpt{fill:#7A4F9E;stroke:var(--white);stroke-width:1.5;}
+.calc-plot .ac-gpt.is-a{fill:var(--white);stroke:#7A4F9E;stroke-width:2;}
+.calc-plot .ac-tan{stroke:#B0123A;stroke-width:2;stroke-dasharray:6 4;}
+.calc-plot .ac-tanlab{fill:#B0123A;font:800 11.5px var(--font-ui);}
+.calc-plot .ac-run{stroke:var(--ink-3,#888);stroke-width:1.2;stroke-dasharray:3 3;}
+.calc-plot .ac-bar{stroke-width:6;stroke-linecap:butt;}
+.calc-plot .ac-bar.is-pos{stroke:rgba(0,114,178,.75);} .calc-plot .ac-bar.is-neg{stroke:rgba(213,94,0,.8);}
+.calc-plot .ac-barlab{fill:var(--ink);font:900 12.5px var(--font-ui);}
+:root[data-theme="dark"] .calc-plot .ac-gcurve{stroke:#C3A3E0;} :root[data-theme="dark"] .calc-plot .ac-gpt{fill:#C3A3E0;}
+:root[data-theme="dark"] .calc-plot .ac-gpt.is-a{fill:var(--white);stroke:#C3A3E0;}
+:root[data-theme="dark"] .calc-plot .ac-tan{stroke:#F590AC;} :root[data-theme="dark"] .calc-plot .ac-tanlab{fill:#F590AC;}
+:root[data-theme="dark"] .calc-plot .ac-bar.is-pos{stroke:rgba(107,180,232,.85);} :root[data-theme="dark"] .calc-plot .ac-bar.is-neg{stroke:rgba(242,154,92,.85);}
+.calc-plot .calc-plot-curve.s5{stroke:#7A4F9E;}
+:root[data-theme="dark"] .calc-plot .calc-plot-curve.s5{stroke:#C3A3E0;}
+.calc-plot .calc-plot-curve.s5.is-dashed{opacity:.55;}
+/* the handle on the axis */
+.calc-plot .ac-handle{cursor:ew-resize;}
+.calc-plot .ac-handle circle:not(.calc-plot-halo):not(.ac-hit){fill:#B0123A;stroke:var(--white);stroke-width:2;}
+.calc-plot .ac-handle.is-from circle:not(.calc-plot-halo):not(.ac-hit){fill:var(--ink-2,#555);}
+.calc-plot .ac-handle .calc-plot-halo{fill:rgba(176,18,58,.14);}
+.calc-plot .ac-handle:focus{outline:none;}
+.calc-plot .ac-handle:focus-visible .calc-plot-halo{fill:rgba(176,18,58,.3);stroke:var(--cink);stroke-width:2;}
+:root[data-theme="dark"] .calc-plot .ac-handle circle:not(.calc-plot-halo):not(.ac-hit){fill:#F590AC;stroke:#1d2321;}
+
+.ac-seg{display:flex;padding:3px;border-radius:999px;background:var(--track,var(--paper));}
+.ac-seg[hidden]{display:none;}
+.ac-seg > button{flex:1;min-width:0;min-height:40px;padding:0 6px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:800 13.5px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.ac-seg > button[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+.ac-ctl{display:flex;flex-direction:column;gap:10px;}
+.ac-ctl .bt-ctl label{font-size:13px;}
+.ac-s2:empty,.ac-s1:empty{display:none;}
+.ac-ctl > .bt-cue{order:-2;} .ac-ctl > .ac-seg{order:-1;} .ac-ctl > .ac-s2{order:1;} .ac-ctl > .ac-s1{order:2;} .ac-ctl > .ac-btns{order:3;}
+.ac-own .bt-num-row{display:flex;gap:8px;}
+.ac-own input{flex:1;min-width:0;min-height:44px;padding:6px 10px;border:2px solid var(--line);border-radius:12px;background:var(--white);color:var(--ink);font:600 15px var(--font-ui);}
+.ac-read{margin:4px 0 8px;padding-left:20px;font:600 14px/1.5 var(--font-ui);}
+.ls-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;}
+.ac-nums tr.hl{background:var(--ctint);}
+
+/* the tank */
+.ac-tank-svg .ac-tank{fill:none;stroke:var(--ink-2,var(--ink));stroke-width:2.5;}
+.ac-tank-svg .ac-water{fill:#56B4E9;fill-opacity:.55;}
+.ac-tank-svg .ac-wave{fill:none;stroke:#0072B2;stroke-width:1.6;}
+.ac-tank-svg .ac-pipe{fill:none;stroke:var(--ink-3,#888);stroke-width:9;stroke-linecap:round;stroke-linejoin:round;}
+.ac-tank-svg .ac-pour{fill:none;stroke:#56B4E9;stroke-linecap:round;stroke-dasharray:7 5;}
+.ac-tank-svg .ac-drain{fill:none;stroke:#56B4E9;stroke-linecap:round;stroke-dasharray:7 5;}
+.ac-tank-svg .is-on{animation:ac-flow .5s linear infinite;}
+.ac-tank-svg .ac-tk{stroke:var(--ink-3,#888);stroke-width:1.2;}
+.ac-tank-svg .ac-tkt{fill:var(--muted);font:700 10px var(--font-ui);}
+.ac-tank-svg .ac-tank-v{fill:var(--ink);font:900 13px var(--font-ui);}
+.ac-tank-svg.is-small .ac-tkt{font-size:12px;} .ac-tank-svg.is-small .ac-tank-v{font-size:16px;}
+.ac-tank-svg .ac-tank-u{fill:var(--ink);font:700 12px var(--font-ui);}
+:root[data-theme="dark"] .ac-tank-svg .ac-water{fill:#3B8FC4;fill-opacity:.6;}
+:root[data-theme="dark"] .ac-tank-svg .ac-wave{stroke:#8FD0F5;}
+@keyframes ac-flow{to{stroke-dashoffset:-12;}}
+@media (prefers-reduced-motion: reduce){.ac-tank-svg .is-on{animation:none;}}
+
+/* Test yourself: the graph on the stage, drawn to scale at its box's size */
+.ac-qfig{margin:0;display:flex;flex-direction:column;gap:4px;min-height:0;}
+.ac-qplot{position:relative;min-width:0;}
+.ac-qplot svg{display:block;width:100%;height:auto;}
+.ac-qrow{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:10px;align-items:center;}
+.ac-qtk svg{display:block;width:100%;height:auto;}
+@media (max-width:640px){.ac-qrow{grid-template-columns:minmax(0,1fr) 92px;gap:6px;}}
+.ls-root .ls-drill-stage .ac-qfig{flex:1;}
+.ls-root .ls-drill-stage .ac-qfig > .ac-qplot,.ls-root .ls-drill-stage .ac-qrow{flex:1;min-height:0;}
+.ls-root .ls-drill-stage .ac-qrow .ac-qplot{height:100%;}
+.ls-root .ls-drill-stage .ac-qplot svg{position:absolute;inset:0;width:100%;height:100%;}
+.ls-root .ls-drill-stage .ac-qfig figcaption{flex:none;}
+.calc-plot .ac-fname{fill:#B0123A;font-size:15px;}
+:root[data-theme="dark"] .calc-plot .ac-fname{fill:#F590AC;}
+.ls-drill-text math[display="block"]{margin:8px 0;}
+.cd-o{display:inline;}
+/* a phone on its side: the stage is short, so the figure keeps every pixel (the caption repeats the text) */
+.ls-root .ls-drill-stage .ac-qrow{grid-template-rows:minmax(0,1fr);align-items:stretch;}
+.ls-root .ls-drill-stage .ac-qtk{position:relative;height:100%;min-height:0;}
+.ls-root .ls-drill-stage .ac-qtk svg{position:absolute;inset:0;width:100%;height:100%;}
+@media (max-height:540px) and (orientation:landscape){.ls-phone .ls-drill-stage .ac-qfig figcaption{display:none;}}

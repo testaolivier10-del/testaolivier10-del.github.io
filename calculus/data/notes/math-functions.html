@@ -1,0 +1,85 @@
+<p>Calculus is the study of how functions change and how they add up. Every exam question hands you a function in some form: a formula, a graph, a table of values or a sentence about a real situation. If you are a little rusty from precalculus, this page is for you. It covers exactly the function skills the course uses, with the habits that save points later.</p>
+
+<h2>A function is a rule with one output per input</h2>
+<p>A <b>function</b> takes an input and gives back exactly one output. We write $f(x)$ for the output when the input is $x$. The letter $x$ is just a placeholder: $f(x) = x^2 - 3x$ means "square the input, then subtract three times the input."</p>
+<p>To evaluate, replace <i>every</i> $x$ with the input, <b>in parentheses</b>. The parentheses matter most when the input is negative or is itself an expression. That habit, kept all year, prevents a whole family of sign mistakes.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Let $f(x) = x^2 - 3x$. Find $f(-2)$ and $f(a + 1)$.</p>
+<p>$f(-2) = (-2)^2 - 3(-2) = 4 + 6 = 10$. Without parentheses, $-2^2$ would read as $-4$, which is wrong.</p>
+<p>$f(a + 1) = (a + 1)^2 - 3(a + 1) = a^2 + 2a + 1 - 3a - 3 = a^2 - a - 2$.</p>
+<p>Notice that $f(a + 1)$ is not $f(a) + 1$. A function acts on the whole input at once.</p>
+</div>
+
+<h2>Domain and range</h2>
+<p>The <b>domain</b> is the set of inputs the rule accepts. The range is the set of outputs it actually produces. For the functions in this course, two things shrink a domain:</p>
+<ul>
+<li>A denominator can never be 0.</li>
+<li>A square root (or any even root) needs a number that is 0 or more.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the domain of $h(x) = \frac{\sqrt{x + 4}}{x - 1}$.</p>
+<p>The root needs $x + 4 \ge 0$, so $x \ge -4$. The denominator needs $x - 1 \ne 0$, so $x \ne 1$.</p>
+<p>Domain: $x \ge -4$ and $x \ne 1$. Notice that $x = -4$ is allowed: $\sqrt{0} = 0$ is fine on top.</p>
+</div>
+
+<h2>Reading a graph</h2>
+<p>The graph of $f$ is every point $(x, f(x))$. So $f(a)$ is a <b>height</b>: go to $x = a$ on the horizontal axis and read how high the graph is there.</p>
+<figure id="fig-read" data-fig="fn-reading-graph"><figcaption>One graph, four readings: a value, an open circle, the range, and the solutions of an equation.</figcaption></figure>
+<p>Graphs in calculus often have pieces, so learn the two kinds of dot. A <b>filled dot</b> is a point on the graph. An <b>open circle</b> marks a point the graph comes close to but does not include. In <a class="figref" href="#fig-read">the figure</a>, the open circle at $(1, 3.5)$ is not on the graph; the filled dot at $(1, 5)$ is, so $f(1) = 5$.</p>
+<p>Three more readings you will use constantly:</p>
+<ul>
+<li><b>Solve $f(x) = k$:</b> draw the horizontal line $y = k$ and read the $x$-values where it meets the graph.</li>
+<li><b>Where is $f$ positive?</b> Where the graph is above the $x$-axis.</li>
+<li><b>Range:</b> the lowest and highest heights, minding open circles at the ends.</li>
+</ul>
+
+<h2>Piecewise functions</h2>
+<p>A <b>piecewise function</b> uses different formulas on different parts of its domain:
+$$f(x) = \begin{cases} x^2 & x < 2 \\ 3x - 1 & x \ge 2 \end{cases}$$
+To evaluate, first decide which piece the input belongs to, then use only that formula. The boundary value goes wherever the "or equal to" sign is. Here $f(2)$ uses $3x - 1$, so $f(2) = 5$, while $f(1.9) = 3.61$ uses $x^2$. Calculus cares a lot about what happens at boundaries like $x = 2$, so slow down there.</p>
+
+<h2>Lines and slope</h2>
+<p>The <b>slope</b> of a line is rise over run. Through $(x_1, y_1)$ and $(x_2, y_2)$:
+$$m = \frac{y_2 - y_1}{x_2 - x_1}$$
+Subtract in the same order on top and bottom. A positive slope means the line goes up to the right; a negative slope, down.</p>
+<p>Calculus writes lines in <b>point-slope form</b>, because it usually knows one point and the slope there:
+$$y - y_1 = m(x - x_1)$$
+You do not need to rearrange it into $y = mx + b$ unless a question asks; the exam accepts point-slope form.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the line through $(1, 4)$ and $(3, -2)$.</p>
+<p>Slope: $m = \frac{-2 - 4}{3 - 1} = \frac{-6}{2} = -3$.</p>
+<p>Point-slope form with $(1, 4)$: $y - 4 = -3(x - 1)$. If you want it: $y = -3x + 7$.</p>
+<p>Check with the other point: $-3(3) + 7 = -2$. Correct.</p>
+</div>
+
+<h2>Composite functions</h2>
+<p>A <b>composite function</b> feeds the output of one function into another. $f(g(x))$ means: apply $g$ first, then apply $f$ to the result. Work from the inside out.</p>
+<div class="worked">
+<p><b>Worked example 4.</b> Let $f(x) = x^2$ and $g(x) = 3x - 1$. Find $f(g(x))$ and $g(f(x))$.</p>
+<p>$f(g(x)) = f(3x - 1) = (3x - 1)^2$. Square the whole input.</p>
+<p>$g(f(x)) = g(x^2) = 3x^2 - 1$. Different! The order of composition matters.</p>
+<p>Going backward is just as useful. $h(x) = \sqrt{x^2 + 1}$ is $f(g(x))$ with inside $g(x) = x^2 + 1$ and outside $f(x) = \sqrt{x}$. In Unit 3 you will split functions this way all the time.</p>
+</div>
+
+<h2>Moving graphs</h2>
+<p>A <b>graph transformation</b> changes a known graph in a predictable way:</p>
+<table class="compare">
+<thead><tr><th>Formula</th><th>What happens to the graph of $f$</th></tr></thead>
+<tbody>
+<tr><td>$f(x) + k$</td><td>moves up $k$ (down if $k < 0$): a vertical shift</td></tr>
+<tr><td>$f(x - h)$</td><td>moves right $h$ (left if $h < 0$): a horizontal shift</td></tr>
+<tr><td>$-f(x)$</td><td>flips over the $x$-axis</td></tr>
+<tr><td>$a f(x)$</td><td>stretches vertically by the factor $a$</td></tr>
+</tbody>
+</table>
+<figure id="fig-shift" data-fig="fn-shifts"><figcaption>$y = (x - 2)^2 + 1$ is $y = x^2$ moved right 2 and up 1.</figcaption></figure>
+<p>The horizontal shift feels backward: $x - 2$ moves the graph <i>right</i>. Here is why. The new graph reaches the old graph's lowest point when $x - 2 = 0$, that is, at $x = 2$.</p>
+
+<h2>Polynomials, rational functions and asymptotes</h2>
+<p>A <b>polynomial</b> is a sum of terms like $5x^3$ or $-2x$, with whole-number powers. Its domain is every real number. A <b>rational function</b> is one polynomial divided by another, such as $r(x) = \frac{2x + 1}{x - 4}$. Its domain leaves out every zero of the denominator.</p>
+<p>An <b>asymptote</b> is a line the graph approaches. For a rational function:</p>
+<ul>
+<li>Where the denominator is 0 and the numerator is <i>not</i>, there is a <b>vertical asymptote</b>. For $r$, that is $x = 4$ (the numerator is 9 there).</li>
+<li>When top and bottom have the same degree, the outputs settle near the ratio of the leading coefficients as $|x|$ grows large: a <b>horizontal asymptote</b>. For $r$, that is $y = \frac{2}{1} = 2$. When the top has lower degree, the horizontal asymptote is $y = 0$.</li>
+</ul>
+<p>When the top and bottom are <i>both</i> 0 at the same $x$, something more interesting happens. Unit 1 is largely about that case.</p>

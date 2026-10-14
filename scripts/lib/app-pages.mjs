@@ -28,6 +28,9 @@ export const APP_STATE_PAGES = [
   'physics/dashboard.html',
   'physics/review.html',
   'physics/search.html',
+  'calculus/dashboard.html',
+  'calculus/review.html',
+  'calculus/search.html',
 ];
 
 export const NOINDEX = '<meta name="robots" content="noindex, follow">';

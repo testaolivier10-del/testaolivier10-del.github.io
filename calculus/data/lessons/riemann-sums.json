@@ -1,0 +1,93 @@
+{
+ "topic": "riemann-sums",
+ "hook": "A rain gauge logs the flow into a tank only every hour or two, and some readings are three hours apart. Nobody knows how fast it flowed between readings, yet the city still needs to know how much water was collected. Rectangles and trapezoids built on the readings give an honest estimate, and the shape of the data tells you whether that estimate is too high or too low.",
+ "prereq": [
+  {
+   "q": "Water flows at a constant 30 liters per minute for 4 minutes. How much water flows?",
+   "options": [
+    "120 liters",
+    "34 liters",
+    "7.5 liters",
+    "30 liters"
+   ],
+   "correct": 0,
+   "why": "Rate times time is the area of a rectangle under the rate graph: 30 times 4.",
+   "review": "accumulation-of-change"
+  },
+  {
+   "q": "If $f'(x) > 0$ on $[a, b]$, where on $[a, b]$ is $f$ smallest?",
+   "options": [
+    "at $x = a$",
+    "at $x = b$",
+    "in the middle",
+    "it depends on the concavity"
+   ],
+   "correct": 0,
+   "why": "$f' > 0$ means $f$ is increasing, so its smallest value on the interval is at the left end.",
+   "review": "increasing-decreasing"
+  },
+  {
+   "q": "The graph of $f$ is concave down. Where does a chord between two points of the graph lie?",
+   "options": [
+    "below the graph",
+    "above the graph",
+    "on the graph",
+    "it depends on the slope"
+   ],
+   "correct": 0,
+   "why": "A concave down graph bends downward, so it bulges above every chord.",
+   "review": "concavity"
+  }
+ ],
+ "figure": {
+  "figure": "riemann-four-sums",
+  "caption": "Left, right, midpoint and trapezoidal sums on the same increasing, concave up function, with four subintervals of width 1."
+ },
+ "chain": [
+  {
+   "cause": "You only know a rate at a few times",
+   "effect": "treat it as roughly constant on each subinterval and add up width times height"
+  },
+  {
+   "cause": "The table has times 0, 1, 3, 4, 7",
+   "effect": "the widths are 1, 2, 1 and 3; each product uses its own width"
+  },
+  {
+   "cause": "The function is increasing on the interval",
+   "effect": "left ends give the smallest heights, so a left sum underestimates and a right sum overestimates"
+  },
+  {
+   "cause": "The graph is concave up",
+   "effect": "chords lie above the graph, so a trapezoidal sum overestimates"
+  }
+ ],
+ "ideas": [
+  "A <b>Riemann sum</b> adds (width) times (height) over the subintervals: left, right or midpoint heights.",
+  "A <b>trapezoidal sum</b> uses width times the average of the two end heights; it equals (left + right) / 2.",
+  "From a table, each width is the difference of two times. Never assume equal widths.",
+  "Increasing function: left sum under, right sum over. Decreasing: the reverse. Concave up: trapezoid over, midpoint under."
+ ],
+ "misconception": {
+  "wrong": "With 4 subintervals on $[0, 7]$, every width is $\\frac{7}{4}$.",
+  "right": "Only when the subintervals are equal. A table with times 0, 1, 3, 4, 7 has widths 1, 2, 1 and 3, and each product must use its own width."
+ },
+ "check": [
+  "calc-riemann-sums-1",
+  "calc-riemann-sums-2",
+  "calc-riemann-sums-3",
+  "calc-riemann-sums-4",
+  "calc-riemann-sums-9",
+  "calc-riemann-sums-12"
+ ],
+ "summary": "A Riemann sum estimates accumulated change by adding width times height over subintervals; a trapezoidal sum averages the two end heights. Take every width from the table. Left and right sums under- or overestimate according to whether the function increases or decreases; trapezoids and midpoints according to its concavity.",
+ "connections": [
+  {
+   "href": "../notes/accumulation-of-change.html",
+   "label": "Back: accumulating change (6.1)"
+  },
+  {
+   "href": "../notes/definite-integral-notation.html",
+   "label": "Next: the definite integral (6.3)"
+  }
+ ]
+}

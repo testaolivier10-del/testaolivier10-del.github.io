@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reasoning with Slope Fields — AP® Calculus AB Notes</title>
+<meta name="description" content="Reasoning with Slope Fields explained from scratch: free calculus study notes with figures and worked examples.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/reasoning-with-slope-fields.html">
+<meta property="og:title" content="Reasoning with Slope Fields — AP® Calculus AB Notes">
+<meta property="og:description" content="Reasoning with Slope Fields explained from scratch: free calculus study notes with figures and worked examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/reasoning-with-slope-fields.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/reasoning-with-slope-fields.html#reading",
+      "name": "Reasoning with Slope Fields",
+      "url": "https://levlprep.com/calculus/notes/reasoning-with-slope-fields.html",
+      "description": "Reasoning with Slope Fields explained from scratch: free calculus study notes with figures and worked examples.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "reasoning with slope fields ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differential Equations",
+          "item": "https://levlprep.com/calculus/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Reasoning with Slope Fields: notes",
+          "item": "https://levlprep.com/calculus/notes/reasoning-with-slope-fields.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="reasoning-with-slope-fields" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 7 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+    <a class="bk-toc-chap" href="../units/unit-7.html"><span class="bk-toc-chap-n">7</span><span><b>Differential Equations</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-7"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="modeling-with-des"><a href="modeling-with-des.html"><span class="bk-toc-n">7.1</span>Writing Differential Equations</a></li><li data-toc-t="verifying-solutions"><a href="verifying-solutions.html"><span class="bk-toc-n">7.2</span>Verifying Solutions to Differential Equations</a></li><li data-toc-t="sketching-slope-fields"><a href="sketching-slope-fields.html"><span class="bk-toc-n">7.3</span>Sketching Slope Fields</a></li><li class="current" data-toc-t="reasoning-with-slope-fields"><a href="#main" aria-current="page"><span class="bk-toc-n">7.4</span>Reasoning with Slope Fields</a><div class="bk-toc-onpage"><p>On this page</p><a href="#sketching-the-solution-through-a-point">Sketching the solution through a point</a><a href="#equilibrium-solutions">Equilibrium solutions</a><a href="#increasing-decreasing-and-extrema">Increasing, decreasing and extrema</a><a href="#concavity-the-second-derivative-by-the">Concavity: the second derivative by the chain rule</a><a href="#long-run-behavior">Long-run behavior</a></div></li><li data-toc-t="separation-of-variables"><a href="separation-of-variables.html"><span class="bk-toc-n">7.6</span>General Solutions by Separation of Variables</a></li><li data-toc-t="particular-solutions"><a href="particular-solutions.html"><span class="bk-toc-n">7.7</span>Particular Solutions from Initial Conditions</a></li><li data-toc-t="exponential-models"><a href="exponential-models.html"><span class="bk-toc-n">7.8</span>Exponential Models</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Differential Equations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Reasoning with Slope Fields: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/reasoning-with-slope-fields.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 7 &middot; Topic 7.4 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Reasoning with Slope Fields</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="reasoning-with-slope-fields">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Freasoning-with-slope-fields.html&amp;title=Reasoning%20with%20Slope%20Fields%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/reasoning-with-slope-fields.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Once a <a class="gl" href="../notes/sketching-slope-fields.html" data-c="slope-field">slope field</a> is drawn, you can read it like a weather map. It shows where solutions rise and fall, where they level off, and where they head in the long run, all without a formula. This page shows how to sketch the solution curve through a point, how to spot <span class="gl" tabindex="0" data-c="equilibrium">equilibrium solutions</span>, and how to find the <a class="gl" href="../notes/local-linearity.html" data-c="concave">concavity</a> of a solution from the <a class="gl" href="../notes/modeling-with-des.html" data-c="differential-equation">differential equation</a> itself.</p>
+
+<h2 id="sketching-the-solution-through-a-point">Sketching the solution through a point</h2>
+<p>Put your pencil on the given point. The segment there shows which way to go. Move a little, look at the nearby segments, adjust, and keep going. Then go back to the point and do the same in the other direction. Rules that keep the sketch honest:</p>
+<ul>
+<li>Pass exactly through the given point. The point <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 5)</annotation></semantics></math> has <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">y = 5</annotation></semantics></math>; do not start at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(5, 0)</annotation></semantics></math>.</li>
+<li>Follow the segments: the curve should be tangent to the segments it passes, never cutting across them.</li>
+<li>Extend the curve across the whole field shown, to the left and to the right of the point.</li>
+<li>Do not cross a row of horizontal segments that forms an equilibrium solution (next section).</li>
+</ul>
+<figure id="fig-solutions"  class="calc-figure"><div class="calc-figimg" data-fig="slope-field-solutions"><img src="../figures/slope-field-solutions.svg" alt="The slope field of dy/dx = (3 − y)/2 drawn every half unit. The dashed green line y = 3 has slope 0 everywhere. A crimson curve through (0, 1) rises and flattens toward y = 3; a blue curve through (0, 5.5) falls and flattens toward y = 3. Neither crosses the line." width="640" height="500" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The slope field of <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>3</mn><mo>−</mo><mi>y</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{3 - y}{2}</annotation></semantics></math> with the solutions through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>5.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 5.5)</annotation></semantics></math>. Both approach the line <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math> without crossing it. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="equilibrium-solutions">Equilibrium solutions</h2>
+<p>Sometimes a whole horizontal line is made of flat segments. For <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>3</mn><mo>−</mo><mi>y</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{3 - y}{2}</annotation></semantics></math>, every point with <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math> has <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> 0. Then the constant <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math> is itself a solution: its <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> is 0, and the right side is 0 too. A constant solution like this is an <b>equilibrium solution</b>.</p>
+<p>To find them, set the right side equal to 0 and solve for <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>. The answer must work <i>for every</i> <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. For <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>y</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = x^2(y - 3)(y + 1)</annotation></semantics></math> the equilibrium solutions are <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = -1</annotation></semantics></math>. The factor <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math> also makes the slope 0 along <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>, but a vertical line is not a function of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, so it is not a solution.</p>
+<p>Equilibrium solutions organize everything else. When the right side of the equation is a smooth formula in <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, as in every slope field on this page, two solution curves never cross or touch. (A right side with <math class="calc-m"><semantics><mrow><msqrt><mi>y</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{y}</annotation></semantics></math>, such as a draining tank's <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>h</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>5</mn></mfrac><msqrt><mi>h</mi></msqrt></mrow><annotation encoding="application/x-tex">\frac{dh}{dt} = -\frac{1}{5}\sqrt{h}</annotation></semantics></math>, is the exception at <math class="calc-m"><semantics><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h = 0</annotation></semantics></math>: the tank empties and the depth stays at 0.) So a solution that starts below <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math> stays below it. In the figure, slopes below 3 are positive and get gentler near 3, so the curve through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math> rises and flattens toward 3. Above 3 the slopes are negative, so the curve through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>5.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 5.5)</annotation></semantics></math> falls toward 3. Both approach 3 as <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> grows.</p>
+<p>Not every equilibrium attracts. For <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>y</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{y - 1}{2}</annotation></semantics></math>, slopes are positive above <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = 1</annotation></semantics></math> and negative below it, so solutions move <i>away</i> from <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = 1</annotation></semantics></math> on both sides. A solution through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 2)</annotation></semantics></math> rises faster and faster; one through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 0)</annotation></semantics></math> falls without bound.</p>
+
+<h2 id="increasing-decreasing-and-extrema">Increasing, decreasing and extrema</h2>
+<p>The sign of <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> says where a solution rises or falls, exactly as for any function. For <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = x(2 - y)</annotation></semantics></math> and points below <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 2</annotation></semantics></math>, the factor <math class="calc-m"><semantics><mrow><mn>2</mn><mo>−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">2 - y</annotation></semantics></math> is positive, so the slope has the sign of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>: negative left of the <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis, positive right of it. A solution crossing the <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis below <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 2</annotation></semantics></math> therefore has a <a class="gl" href="../notes/extreme-value-theorem.html" data-c="relative-extremum">relative minimum</a> there, because <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> changes from negative to positive.</p>
+
+<h2 id="concavity-the-second-derivative-by-the">Concavity: the second derivative by the chain rule</h2>
+<p>To decide whether a solution curve is concave up or down, you need <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d^2y}{dx^2}</annotation></semantics></math>. Differentiate the right side of the equation with respect to <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, remembering that <b><math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> is a function of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></b>. So every <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> you differentiate brings a factor <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math>, and then you replace <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> by the right side of the equation.</p>
+<div class="worked">
+<p><b>Worked example.</b> A solution of <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = y^2 - x</annotation></semantics></math> passes through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math>. Is it concave up or down there?</p>
+<p>Differentiate both sides with respect to <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mn>2</mn><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{d^2y}{dx^2} = 2y\frac{dy}{dx} - 1</annotation></semantics></math>. The <math class="calc-m"><semantics><mrow><mn>2</mn><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">2y\frac{dy}{dx}</annotation></semantics></math> comes from the <a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a> on <math class="calc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y^2</annotation></semantics></math>.</p>
+<p>At <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><msup><mn>2</mn><mn>2</mn></msup><mo>−</mo><mn>1</mn><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 2^2 - 1 = 3</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d^2y}{dx^2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>2</mn><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= 2(2)(3) - 1</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">= 11</annotation></semantics></math>.</p>
+<p>Since <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mn>11</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{d^2y}{dx^2} = 11 &gt; 0</annotation></semantics></math>, the solution curve is concave up at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math>.</p>
+</div>
+<p>The classic slip is to write <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="false">(</mo><msup><mi>y</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{d}{dx}(y^2) = 2y</annotation></semantics></math>, or even 0 "because there is no <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>". Both forget that <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> changes as <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> changes. For <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>y</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{y - 1}{2}</annotation></semantics></math> the correct <a class="gl" href="../notes/higher-order-derivatives.html" data-c="second-derivative">second derivative</a> is <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>y</mi><mo>−</mo><mn>1</mn></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}\frac{dy}{dx} = \frac{y - 1}{4}</annotation></semantics></math>, not 0.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> For <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = x(2 - y)</annotation></semantics></math>, find <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d^2y}{dx^2}</annotation></semantics></math> in terms of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>.</p>
+<p><a class="gl" href="../notes/product-rule.html" data-c="product-rule">Product rule</a>: <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d^2y}{dx^2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>1</mn><mo>⋅</mo><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mi>y</mi><mo stretchy="false">)</mo><mo>+</mo><mi>x</mi><mo>⋅</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">= 1 \cdot (2 - y) + x \cdot \left(-\frac{dy}{dx}\right)</annotation></semantics></math>.</p>
+<p>Substitute <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = x(2 - y)</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d^2y}{dx^2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mi>y</mi><mo stretchy="false">)</mo><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (2 - y) - x^2(2 - y)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mi>y</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (2 - y)(1 - x^2)</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="long-run-behavior">Long-run behavior</h2>
+<p>In context, an equilibrium solution is often a value the quantity settles at. A drink with <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.1</mn><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><mn>65</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dT}{dt} = -0.1(T - 65)</annotation></semantics></math> warms or cools toward 65 °F, the room temperature. Read the long run from the signs: below the equilibrium the rate is positive, above it negative, so the temperature approaches 65 from either side.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:reasoning-with-slope-fields">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="sketching-slope-fields.html"><span>&larr; Previous</span><b>Sketching Slope Fields</b></a><a class="tb-chapter-link next" href="separation-of-variables.html"><span>Next &rarr;</span><b>General Solutions by Separation of Variables</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:reasoning-with-slope-fields">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

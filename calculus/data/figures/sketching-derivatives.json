@@ -1,0 +1,12 @@
+{
+ "sketch-f-fprime": {
+  "file": "figures/sketch-f-fprime.svg",
+  "ext": "svg",
+  "w": 880,
+  "h": 550,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Top: f(x) = x cubed over 3 minus x squared minus 3x plus 2, with a peak at x = -1, a valley at x = 3 and an inflection point at x = 1. Bottom: f'(x) = x squared minus 2x minus 3. f' is zero at x = -1 and x = 3, where f turns, and lowest at x = 1, where f changes concavity; f' is positive where f rises and negative where f falls."
+ }
+}

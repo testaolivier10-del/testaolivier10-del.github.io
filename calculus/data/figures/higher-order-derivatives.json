@@ -1,0 +1,12 @@
+{
+ "f-first-second-derivatives": {
+  "file": "figures/f-first-second-derivatives.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 620,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Three stacked graphs on the same x-axis: f(x) = x³ − 3x (crimson) with level points at x = −1 and 1; f′(x) = 3x² − 3 (blue), zero at x = ±1; and f″(x) = 6x (green), the slope of f′, negative left of 0 and positive right of 0."
+ }
+}

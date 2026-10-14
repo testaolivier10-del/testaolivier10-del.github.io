@@ -1,0 +1,58 @@
+<p>So far every function came as $y = $ a formula in $x$. Many curves do not. The circle $x^2 + y^2 = 25$ and the tilted oval $x^2 + xy + y^2 = 7$ mix $x$ and $y$ in one equation, and solving for $y$ is either messy or gives two formulas. Implicit differentiation finds the slope at a point straight from the equation, with no solving for $y$ first.</p>
+
+<h2>Explicit and implicit</h2>
+<p>A function is given <b>explicitly</b> when $y$ stands alone: $y = \sqrt{25 - x^2}$. It is given <b>implicitly</b> when an equation links $x$ and $y$, such as $x^2 + y^2 = 25$. The whole circle fails the vertical line test, so it is not the graph of one function. But zoom in near the point $(3, 4)$ and you see a small arc that does pass the test. On that arc, $y$ is a function of $x$, even if we never write its formula, and its slope is what we want.</p>
+<figure id="fig-implicit" data-fig="implicit-tilted-ellipse"><figcaption>The curve $x^2 + xy + y^2 = 7$. The line $x = 1$ meets it twice, yet near $(1, 2)$ the curve has one tangent line, with slope $-\frac{4}{5}$.</figcaption></figure>
+
+<h2>The key step: the chain rule on $y$</h2>
+<p>Treat $y$ as an unknown function of $x$. Then a term like $y^2$ is a composite function: the inside is $y$, the outside is the square. By the chain rule,</p>
+<p>$$\frac{d}{dx}\left(y^2\right) = 2y \cdot \frac{dy}{dx}$$</p>
+<p>The factor $\frac{dy}{dx}$ is the derivative of the inside function. It appears every time you differentiate a term that holds $y$, and never for a term that holds only $x$:</p>
+<table class="compare">
+<tr><th>Term</th><th>Derivative with respect to $x$</th><th>Why</th></tr>
+<tr><td>$x^3$</td><td>$3x^2$</td><td>only $x$: no extra factor</td></tr>
+<tr><td>$y^3$</td><td>$3y^2\frac{dy}{dx}$</td><td>chain rule, inside $y$</td></tr>
+<tr><td>$\sin y$</td><td>$\cos y \cdot \frac{dy}{dx}$</td><td>chain rule, inside $y$</td></tr>
+<tr><td>$e^y$</td><td>$e^y\frac{dy}{dx}$</td><td>chain rule, inside $y$</td></tr>
+<tr><td>$xy$</td><td>$y + x\frac{dy}{dx}$</td><td>product rule; the $y$ factor gives $\frac{dy}{dx}$</td></tr>
+<tr><td>$7$</td><td>$0$</td><td>a constant</td></tr>
+</table>
+
+<h2>The routine</h2>
+<ol>
+<li>Apply $\frac{d}{dx}$ to <b>both sides</b> of the equation and write the new equation in full, with its right side (often $= 0$).</li>
+<li>Move every term that holds $\frac{dy}{dx}$ to one side and everything else to the other.</li>
+<li>Factor out $\frac{dy}{dx}$ and divide.</li>
+<li>For a slope at a point, substitute both coordinates <b>after</b> differentiating.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the slope of the circle $x^2 + y^2 = 25$ at $(3, 4)$.</p>
+<p>Differentiate both sides: $2x + 2y\frac{dy}{dx} = 0$.</p>
+<p>Solve: $\frac{dy}{dx} = -\frac{2x}{2y} = -\frac{x}{y}$.</p>
+<p>At $(3, 4)$: $\frac{dy}{dx} = -\frac{3}{4}$. Check with the picture: at the upper right of the circle the curve falls as $x$ grows, so a negative slope makes sense.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\frac{dy}{dx}$ for $x^2 + xy + y^2 = 7$, and the slope at $(1, 2)$.</p>
+<p>Check the point first: $1 + 2 + 4 = 7$, so $(1, 2)$ is on the curve.</p>
+<p>Differentiate both sides, using the product rule on $xy$: $2x + \left(y + x\frac{dy}{dx}\right) + 2y\frac{dy}{dx} = 0$.</p>
+<p>Collect: $(x + 2y)\frac{dy}{dx} = -(2x + y)$, so $\frac{dy}{dx} = -\frac{2x + y}{x + 2y}$.</p>
+<p>At $(1, 2)$: $\frac{dy}{dx} = -\frac{2 + 2}{1 + 4} = -\frac{4}{5}$. The tangent line is $y - 2 = -\frac{4}{5}(x - 1)$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Find $\frac{dy}{dx}$ for $e^y + y = x^2$.</p>
+<p>Differentiate: $e^y\frac{dy}{dx} + \frac{dy}{dx} = 2x$. Both terms on the left hold $y$, so both get $\frac{dy}{dx}$.</p>
+<p>Factor: $(e^y + 1)\frac{dy}{dx} = 2x$, so $\frac{dy}{dx} = \frac{2x}{e^y + 1}$.</p>
+</div>
+
+<h2>Reading the answer</h2>
+<p>The formula for $\frac{dy}{dx}$ usually holds both $x$ and $y$. That is not a flaw: on the circle, the points $(3, 4)$ and $(3, -4)$ share $x = 3$ but have slopes $-\frac{3}{4}$ and $\frac{3}{4}$. You need both coordinates to know which point you mean, and the point must lie on the curve.</p>
+<p>A fraction for $\frac{dy}{dx}$ also shows special points. Where the numerator is 0 and the denominator is not, the slope is 0 and the tangent line is flat. Where the denominator is 0 and the numerator is not, the slope is undefined and the tangent line is vertical, as at $(-5, 0)$ and $(5, 0)$ on the circle. Always check that such a point is actually on the curve.</p>
+
+<h2>Slips that cost points</h2>
+<ul>
+<li><b>Forgetting $\frac{dy}{dx}$ on a $y$-term.</b> Writing $2x + 2y = 0$ for the circle loses the whole problem.</li>
+<li><b>Skipping the product rule.</b> $\frac{d}{dx}(xy)$ is $y + x\frac{dy}{dx}$, two terms, not $\frac{dy}{dx}$ alone.</li>
+<li><b>Differentiating one side only.</b> Apply $\frac{d}{dx}$ to both sides, and keep the "$= 0$".</li>
+<li><b>Substituting too early.</b> Put in the point's coordinates only after differentiating; a number has derivative 0.</li>
+<li><b>Mixing notations.</b> Keep $\frac{dy}{dx}$ (or $y'$) separate from $dy$ and from $\frac{dy}{dt}$.</li>
+</ul>

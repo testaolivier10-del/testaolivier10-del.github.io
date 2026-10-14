@@ -1,0 +1,549 @@
+{
+ "stimuli": {
+  "related-rates-intro-s1": {
+   "kind": "table",
+   "title": "A spherical balloon",
+   "table": {
+    "caption": "A spherical balloon of radius r centimeters and volume V cubic centimeters; both change with time t in seconds",
+    "cols": [
+     "Quantity",
+     "Formula or value"
+    ],
+    "rows": [
+     [
+      "Volume",
+      "$V = \\frac{4}{3}\\pi r^3$"
+     ],
+     [
+      "Radius",
+      "$r$ cm, a function of $t$"
+     ],
+     [
+      "Time",
+      "$t$ seconds"
+     ]
+    ]
+   }
+  },
+  "related-rates-intro-s2": {
+   "kind": "table",
+   "title": "Two cars leaving an intersection",
+   "table": {
+    "caption": "Car A drives east and car B drives north from the same intersection. x and y are their distances from the intersection, z the distance between them, in miles, so x squared plus y squared equals z squared.",
+    "cols": [
+     "Quantity at one instant",
+     "Value"
+    ],
+    "rows": [
+     [
+      "$x$ (miles)",
+      "$30$"
+     ],
+     [
+      "$y$ (miles)",
+      "$40$"
+     ],
+     [
+      "$\\frac{dx}{dt}$ (miles per hour)",
+      "$60$"
+     ],
+     [
+      "$\\frac{dy}{dt}$ (miles per hour)",
+      "$45$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-related-rates-intro-1",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Air is pumped into the balloon so that $\\frac{dr}{dt} = 2$ cm per second. Differentiate $V = \\frac{4}{3}\\pi r^3$ with respect to $t$ and write $\\frac{dV}{dt}$ in terms of $r$.",
+   "stimulus": "related-rates-intro-s1",
+   "expr": {
+    "answer": "8pi*r^2",
+    "vars": [
+     "r"
+    ],
+    "domain": [
+     0.5,
+     5
+    ],
+    "lhs": "\\frac{dV}{dt} =",
+    "mistakes": [
+     {
+      "expr": "4pi*r^2",
+      "why": "That is $\\frac{dV}{dr}$. Differentiating with respect to $t$ multiplies by $\\frac{dr}{dt} = 2$."
+     },
+     {
+      "expr": "8pi*r",
+      "why": "The power rule on $r^3$ gives $3r^2$, so $\\frac{4}{3}\\pi \\cdot 3r^2 = 4\\pi r^2$ before the factor 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dV}{dt} = 4\\pi r^2 \\cdot \\frac{dr}{dt} = 4\\pi r^2 \\cdot 2 = 8\\pi r^2$. The factor $\\frac{dr}{dt}$ comes from the chain rule, because $r$ depends on $t$."
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-2",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "With $\\frac{dr}{dt} = 2$ cm per second, how fast is the volume increasing when $r = 3$ cm? Include units.",
+   "stimulus": "related-rates-intro-s1",
+   "numeric": {
+    "answer": "72pi",
+    "unit": "cubic centimeters per second",
+    "askUnit": true,
+    "units": [
+     "cm^3/s",
+     "cm³/s",
+     "cubic centimeters per second",
+     "cm^3 per s",
+     "cubic cm per second"
+    ],
+    "mistakes": [
+     {
+      "value": "36pi",
+      "why": "That is $4\\pi r^2$ at $r = 3$, without the factor $\\frac{dr}{dt} = 2$."
+     },
+     {
+      "value": "24pi",
+      "why": "The derivative of $r^3$ is $3r^2$; at $r = 3$, $r^2 = 9$, not 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dV}{dt} = 4\\pi r^2\\frac{dr}{dt} = 4\\pi(9)(2) = 72\\pi$ cubic centimeters per second, about 226 cm³ per second."
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-3",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Now air is pumped in at $\\frac{dV}{dt} = 100$ cubic centimeters per second. How fast is the radius increasing when $r = 5$ cm? Include units.",
+   "stimulus": "related-rates-intro-s1",
+   "numeric": {
+    "answer": "1/pi",
+    "unit": "centimeters per second",
+    "askUnit": true,
+    "units": [
+     "cm/s",
+     "centimeters per second",
+     "cm per s"
+    ],
+    "mistakes": [
+     {
+      "value": "3/(5pi)",
+      "why": "That divides 100 by the volume formula $\\frac{4}{3}\\pi r^3$. Use the differentiated equation $\\frac{dV}{dt} = 4\\pi r^2\\frac{dr}{dt}$."
+     },
+     {
+      "value": "pi",
+      "why": "Solve for $\\frac{dr}{dt}$: divide 100 by $100\\pi$, giving $\\frac{1}{\\pi}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$100 = 4\\pi(5)^2\\frac{dr}{dt} = 100\\pi\\frac{dr}{dt}$, so $\\frac{dr}{dt} = \\frac{1}{\\pi} \\approx 0.318$ centimeters per second."
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-4",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Later, air leaks out and the radius shrinks by 0.5 cm every second. Which value goes into the related-rates equation?",
+   "stimulus": "related-rates-intro-s1",
+   "options": [
+    "$\\frac{dr}{dt} = -0.5$",
+    "$\\frac{dr}{dt} = 0.5$",
+    "$\\frac{dV}{dt} = -0.5$",
+    "$r = -0.5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A decreasing quantity has a negative derivative: $\\frac{dr}{dt} = -0.5$ cm per second.",
+    "options": [
+     "The radius is decreasing, so its rate of change is negative.",
+     "A shrinking radius has a negative rate of change; the sign is part of the value.",
+     "0.5 cm per second is a rate for the radius, not for the volume.",
+     "A radius is a length; $-0.5$ is how fast it changes."
+    ]
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-5",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which equation results from differentiating $x^2 + y^2 = z^2$ with respect to $t$?",
+   "stimulus": "related-rates-intro-s2",
+   "options": [
+    "$2x + 2y = 2z$",
+    "$2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 2z\\frac{dz}{dt}$",
+    "$x\\frac{dx}{dt} + y\\frac{dy}{dt} = z$",
+    "$2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Differentiate both sides with respect to $t$, using the chain rule on each squared variable: $2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 2z\\frac{dz}{dt}$.",
+    "options": [
+     "The chain rule factors $\\frac{dx}{dt}$, $\\frac{dy}{dt}$ and $\\frac{dz}{dt}$ are missing.",
+     "Each variable depends on $t$, so each term gets its own rate.",
+     "The right side also changes with time: it needs $\\frac{dz}{dt}$.",
+     "$z$ is not a constant here; the distance between the cars changes."
+    ]
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-6",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "How fast is the distance between the cars changing at this instant? Include units.",
+   "stimulus": "related-rates-intro-s2",
+   "numeric": {
+    "answer": 72,
+    "unit": "miles per hour",
+    "askUnit": true,
+    "units": [
+     "mph",
+     "mi/hr",
+     "mi/h",
+     "miles/hour"
+    ],
+    "mistakes": [
+     {
+      "value": 105,
+      "why": "Rates do not simply add here: the cars move at right angles. Use $x\\frac{dx}{dt} + y\\frac{dy}{dt} = z\\frac{dz}{dt}$."
+     },
+     {
+      "value": 75,
+      "why": "That is $\\sqrt{60^2 + 45^2}$, Pythagoras on the speeds. The rate of $z$ depends on the positions too."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$z = \\sqrt{30^2 + 40^2} = 50$. Then $30(60) + 40(45) = 50\\frac{dz}{dt}$, so $\\frac{dz}{dt} = \\frac{3600}{50} = 72$ miles per hour."
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-7",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student substitutes $x = 30$ and $y = 40$ into $x^2 + y^2 = z^2$ before differentiating, getting $2500 = z^2$. Why does this fail?",
+   "stimulus": "related-rates-intro-s2",
+   "options": [
+    "The values make $z$ negative",
+    "It is fine, as long as $z$ is also substituted",
+    "Fixed numbers have derivative 0, so the rates of $x$ and $y$ disappear",
+    "The equation is not true at this instant"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Differentiate first, while $x$, $y$ and $z$ are still functions of $t$. Substitute the values of one instant afterward.",
+    "options": [
+     "$z = 50$ is positive; the problem is the lost rates.",
+     "Then every term is a constant and differentiating gives $0 = 0$.",
+     "Substituting freezes $x$ and $y$; their changes are what drive $\\frac{dz}{dt}$.",
+     "It is true ($900 + 1600 = 2500$), but it holds only at one instant, so it cannot be differentiated."
+    ]
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-8",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Suppose instead car B drives toward the intersection at 45 miles per hour, still 40 miles away, while car A moves as before. What is $\\frac{dz}{dt}$ at this instant?",
+   "stimulus": "related-rates-intro-s2",
+   "options": [
+    "$72$",
+    "$-72$",
+    "$15$",
+    "$0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With $\\frac{dy}{dt} = -45$: $30(60) + 40(-45) = 50\\frac{dz}{dt}$, so $\\frac{dz}{dt} = 0$. At this instant the distance between the cars is not changing.",
+    "options": [
+     "Car B now approaches, so $\\frac{dy}{dt} = -45$, which changes the result.",
+     "Only $\\frac{dy}{dt}$ changes sign, not both rates: $1800 - 1800 = 0$.",
+     "Subtracting the speeds ignores the positions; use $x\\frac{dx}{dt} + y\\frac{dy}{dt} = z\\frac{dz}{dt}$.",
+     "$\\frac{dy}{dt} = -45$: $30(60) + 40(-45) = 0$, so $\\frac{dz}{dt} = 0$."
+    ]
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-9",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A circle's radius grows at $\\frac{dr}{dt} = 3$ cm per second. Write $\\frac{dA}{dt}$ in terms of $r$, where $A = \\pi r^2$.",
+   "expr": {
+    "answer": "6pi*r",
+    "vars": [
+     "r"
+    ],
+    "domain": [
+     0.5,
+     5
+    ],
+    "lhs": "\\frac{dA}{dt} =",
+    "mistakes": [
+     {
+      "expr": "2pi*r",
+      "why": "That is $\\frac{dA}{dr}$. Multiply by $\\frac{dr}{dt} = 3$."
+     },
+     {
+      "expr": "3pi*r",
+      "why": "The power rule on $r^2$ gives $2r$: $2\\pi r \\cdot 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dA}{dt} = 2\\pi r\\frac{dr}{dt} = 2\\pi r \\cdot 3 = 6\\pi r$."
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-10",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A rectangle has sides $x$ and $y$, both changing with time, and area $A = xy$. Which is $\\frac{dA}{dt}$?",
+   "options": [
+    "$x\\frac{dy}{dt} + y\\frac{dx}{dt}$",
+    "$\\frac{dx}{dt} \\cdot \\frac{dy}{dt}$",
+    "$x + y$",
+    "$x\\frac{dx}{dt} + y\\frac{dy}{dt}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Product rule: $\\frac{dA}{dt} = \\frac{dx}{dt}y + x\\frac{dy}{dt}$.",
+    "options": [
+     "The product rule, with each side's rate of change.",
+     "The derivative of a product is not the product of the derivatives.",
+     "The rates of the sides must appear.",
+     "Each side is multiplied by the other side's rate, not its own."
+    ]
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-11",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "single",
+   "practice": "1.D",
+   "level": "recall",
+   "diff": 1,
+   "q": "Why does $\\frac{dr}{dt}$ appear when you differentiate $r^2$ with respect to $t$?",
+   "options": [
+    "Each derivative with respect to $t$ contains $\\frac{dr}{dt}$",
+    "$r$ is a function of $t$, so the chain rule multiplies by its derivative",
+    "The power rule produces it",
+    "It is the derivative of $r$ with respect to $r$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The inside function is $r(t)$: $\\frac{d}{dt}[r(t)]^2 = 2r(t) \\cdot r'(t)$.",
+    "options": [
+     "Only terms that hold $r$ get the factor $\\frac{dr}{dt}$.",
+     "$\\frac{d}{dt}r^2 = 2r\\frac{dr}{dt}$.",
+     "The power rule gives $2r$; the chain rule adds $\\frac{dr}{dt}$.",
+     "That derivative is 1; the factor is the derivative of $r$ with respect to $t$."
+    ]
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-12",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The edge $s$ of a cube grows at 0.1 cm per second. How fast is its volume $V = s^3$ growing when $s = 4$ cm? Include units.",
+   "numeric": {
+    "answer": 4.8,
+    "unit": "cubic centimeters per second",
+    "askUnit": true,
+    "units": [
+     "cm^3/s",
+     "cm³/s",
+     "cubic centimeters per second",
+     "cm^3 per s",
+     "cubic cm per second"
+    ],
+    "mistakes": [
+     {
+      "value": 48,
+      "why": "That is $3s^2$ at $s = 4$; multiply by $\\frac{ds}{dt} = 0.1$."
+     },
+     {
+      "value": 6.4,
+      "why": "That is the volume times the rate. Differentiate $s^3$ first: $3s^2\\frac{ds}{dt}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dV}{dt} = 3s^2\\frac{ds}{dt} = 3(16)(0.1) = 4.8$ cubic centimeters per second."
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-13",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Water fills a cylindrical tank of radius 3 meters, so $V = 9\\pi h$. The water level rises at 0.2 meters per minute. How fast is the volume increasing? Include units.",
+   "numeric": {
+    "answer": "1.8pi",
+    "unit": "cubic meters per minute",
+    "askUnit": true,
+    "units": [
+     "m^3/min",
+     "m³/min",
+     "cubic meters/minute",
+     "m^3 per minute"
+    ],
+    "mistakes": [
+     {
+      "value": "9pi",
+      "why": "That is $\\frac{dV}{dh}$; multiply by $\\frac{dh}{dt} = 0.2$."
+     },
+     {
+      "value": "0.6pi",
+      "why": "The volume of a cylinder uses $r^2 = 9$, not $r = 3$: $V = \\pi r^2 h = 9\\pi h$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dV}{dt} = 9\\pi\\frac{dh}{dt} = 9\\pi(0.2) = 1.8\\pi$ cubic meters per minute, about 5.65."
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-14",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Here $x$ and $y$ are functions of $t$ with $x^2 + y^2 = 100$. Which equation follows?",
+   "options": [
+    "$2x + 2y\\frac{dy}{dx} = 0$",
+    "$2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 100$",
+    "$2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0$",
+    "$2\\frac{dx}{dt} + 2\\frac{dy}{dt} = 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\frac{d}{dt}\\left(x^2 + y^2\\right) = \\frac{d}{dt}(100)$ gives $2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0$.",
+    "options": [
+     "That differentiates with respect to $x$. Related rates differentiate with respect to time.",
+     "The derivative of the constant 100 is 0.",
+     "Differentiate both sides with respect to $t$; 100 is constant.",
+     "The chain rule keeps the outside derivative: $2x$ and $2y$."
+    ]
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-15",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The area of a circular stain grows at a constant rate, $\\frac{dA}{dt} = 5$ cm² per second. As the stain gets larger, what happens to $\\frac{dr}{dt}$?",
+   "options": [
+    "It increases",
+    "It stays the same",
+    "It becomes negative",
+    "It decreases"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{dA}{dt} = 2\\pi r\\frac{dr}{dt}$, so $\\frac{dr}{dt} = \\frac{5}{2\\pi r}$, which shrinks as $r$ grows.",
+    "options": [
+     "Adding the same area each second to a larger circle widens it less.",
+     "A constant $\\frac{dA}{dt}$ does not mean a constant $\\frac{dr}{dt}$: they are linked by $2\\pi r$.",
+     "The radius still grows, so $\\frac{dr}{dt} > 0$.",
+     "$\\frac{dr}{dt} = \\frac{5}{2\\pi r}$: a larger $r$ gives a smaller rate."
+    ]
+   }
+  },
+  {
+   "id": "calc-related-rates-intro-16",
+   "unit": "unit-4",
+   "topic": "related-rates-intro",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A sphere's radius grows at 0.5 cm per second. How fast is its surface area $S = 4\\pi r^2$ growing when $r = 2$ cm? Include units.",
+   "numeric": {
+    "answer": "8pi",
+    "unit": "square centimeters per second",
+    "askUnit": true,
+    "units": [
+     "cm^2/s",
+     "cm²/s",
+     "square cm per second",
+     "cm^2 per s"
+    ],
+    "mistakes": [
+     {
+      "value": "16pi",
+      "why": "That is $8\\pi r$ at $r = 2$; multiply by $\\frac{dr}{dt} = 0.5$."
+     },
+     {
+      "value": "4pi",
+      "why": "The power rule on $r^2$ gives $2r$: $4\\pi \\cdot 2r = 8\\pi r$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{dS}{dt} = 8\\pi r\\frac{dr}{dt} = 8\\pi(2)(0.5) = 8\\pi$ square centimeters per second."
+   }
+  }
+ ]
+}

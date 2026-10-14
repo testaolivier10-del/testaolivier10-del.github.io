@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Area Between Curves That Cross… — AP® Calculus AB Notes</title>
+<meta name="description" content="So far the region between two curves had one curve on top the whole way. Now look at f(x) = x³ − 3x and g(x) = x in the figure.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/area-multiple-crossings.html">
+<meta property="og:title" content="Area Between Curves That Cross… — AP® Calculus AB Notes">
+<meta property="og:description" content="So far the region between two curves had one curve on top the whole way. Now look at f(x) = x³ − 3x and g(x) = x in the figure.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/area-multiple-crossings.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/area-multiple-crossings.html#reading",
+      "name": "Area Between Curves That Cross More Than Twice",
+      "url": "https://levlprep.com/calculus/notes/area-multiple-crossings.html",
+      "description": "So far the region between two curves had one curve on top the whole way. Now look at f(x) = x³ − 3x and g(x) = x in the figure.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "area between curves that cross more than twice ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Applications of Integration",
+          "item": "https://levlprep.com/calculus/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Area Between Curves That Cross More Than Twice: notes",
+          "item": "https://levlprep.com/calculus/notes/area-multiple-crossings.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="area-multiple-crossings" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 8 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Differential Equations</a>
+    <a class="bk-toc-chap" href="../units/unit-8.html"><span class="bk-toc-chap-n">8</span><span><b>Applications of Integration</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-8"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="average-value"><a href="average-value.html"><span class="bk-toc-n">8.1</span>Average Value of a Function</a></li><li data-toc-t="motion-with-integrals"><a href="motion-with-integrals.html"><span class="bk-toc-n">8.2</span>Motion with Integrals</a></li><li data-toc-t="accumulation-in-context"><a href="accumulation-in-context.html"><span class="bk-toc-n">8.3</span>Accumulation in Context</a></li><li data-toc-t="area-between-curves-x"><a href="area-between-curves-x.html"><span class="bk-toc-n">8.4</span>Area Between Curves (Functions of x)</a></li><li data-toc-t="area-between-curves-y"><a href="area-between-curves-y.html"><span class="bk-toc-n">8.5</span>Area Between Curves (Functions of y)</a></li><li class="current" data-toc-t="area-multiple-crossings"><a href="#main" aria-current="page"><span class="bk-toc-n">8.6</span>Area Between Curves That Cross More Than Twice</a><div class="bk-toc-onpage"><p>On this page</p><a href="#when-top-and-bottom-trade-places">When top and bottom trade places</a><a href="#splitting-the-integral">Splitting the integral</a><a href="#net-amount-or-area">Net amount or area?</a><a href="#traps-to-avoid">Traps to avoid</a></div></li><li data-toc-t="cross-sections-squares"><a href="cross-sections-squares.html"><span class="bk-toc-n">8.7</span>Volumes with Square and Rectangle Cross Sections</a></li><li data-toc-t="cross-sections-triangles"><a href="cross-sections-triangles.html"><span class="bk-toc-n">8.8</span>Volumes with Triangle and Semicircle Cross Sections</a></li><li data-toc-t="disc-method-axes"><a href="disc-method-axes.html"><span class="bk-toc-n">8.9</span>Disc Method About the Axes</a></li><li data-toc-t="disc-method-other-axes"><a href="disc-method-other-axes.html"><span class="bk-toc-n">8.10</span>Disc Method About Other Lines</a></li><li data-toc-t="washer-method-axes"><a href="washer-method-axes.html"><span class="bk-toc-n">8.11</span>Washer Method About the Axes</a></li><li data-toc-t="washer-method-other-axes"><a href="washer-method-other-axes.html"><span class="bk-toc-n">8.12</span>Washer Method About Other Lines</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Applications of Integration</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Area Between Curves That Cross More Than Twice: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/area-multiple-crossings.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 8 &middot; Topic 8.6 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Area Between Curves That Cross More Than Twice</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="area-multiple-crossings">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Farea-multiple-crossings.html&amp;title=Area%20Between%20Curves%20That%20Cross%20More%20Than%20Twice%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/area-multiple-crossings.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<h2 id="when-top-and-bottom-trade-places">When top and bottom trade places</h2>
+<p>So far the region between two curves had one curve on top the whole way. Now look at <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>3</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x) = x^3 - 3x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">g(x) = x</annotation></semantics></math> in the figure. They cross three times, at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = -2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math>. Between <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> the cubic is on top. Between <math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> the line is on top. Every crossing swaps the roles.</p>
+<figure id="fig-cross"  class="calc-figure"><div class="calc-figimg" data-fig="area-three-crossings"><img src="../figures/area-three-crossings.svg" alt="The cubic f(x) = x³ − 3x and the line g(x) = x cross at (−2, −2), (0, 0) and (2, 2). From −2 to 0 the cubic is on top (pink piece, rectangle height f − g); from 0 to 2 the line is on top (blue piece, rectangle height g − f). The side panel adds the pieces, 4 + 4 = 8, and warns that one integral of f − g from −2 to 2 is 0 because the pieces cancel." width="760" height="440" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The cubic and the line enclose two pieces. Each has area 4, but a single integral of <math class="calc-m"><semantics><mrow><mi>f</mi><mo>−</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f - g</annotation></semantics></math> over <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-2, 2]</annotation></semantics></math> is 0. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Try one <a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">integral</a> anyway:</p>
+<math class="calc-m" display="block"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><mn>2</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><mn>2</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>4</mn><mi>x</mi></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msubsup><mrow><mo fence="true" stretchy="true">[</mo><mrow><mfrac><msup><mi>x</mi><mn>4</mn></msup><mn>4</mn></mfrac><mo>−</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><mo fence="true" stretchy="true">]</mo></mrow><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><mn>2</mn></msubsup><mo>=</mo><mo stretchy="false">(</mo><mn>4</mn><mo>−</mo><mn>8</mn><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">(</mo><mn>4</mn><mo>−</mo><mn>8</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">\int_{-2}^{2} \left(f(x) - g(x)\right)\,dx = \int_{-2}^{2} \left(x^3 - 4x\right)\,dx = \left[\frac{x^4}{4} - 2x^2\right]_{-2}^{2} = (4 - 8) - (4 - 8) = 0.</annotation></semantics></math>
+<p>Zero, for a region you can clearly see. On the right piece, <math class="calc-m"><semantics><mrow><mi>f</mi><mo>−</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f - g</annotation></semantics></math> is negative, so its rectangles have negative heights and cancel the left piece. A definite integral of <math class="calc-m"><semantics><mrow><mi>f</mi><mo>−</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f - g</annotation></semantics></math> is a <b>net</b> amount: area where <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is on top minus area where <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> is on top. Area itself is never negative, so you have to stop the cancelling.</p>
+
+<h2 id="splitting-the-integral">Splitting the integral</h2>
+<p>The fix uses a property you already know: integrals over touching intervals add, <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>c</mi></msubsup></mrow><annotation encoding="application/x-tex">\int_a^c</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup></mrow><annotation encoding="application/x-tex">= \int_a^b</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>b</mi><mi>c</mi></msubsup></mrow><annotation encoding="application/x-tex">+ \int_b^c</annotation></semantics></math>. Cut the interval at every crossing. On each piece one curve stays on top, so top minus bottom is positive there.</p>
+<ol>
+<li><b>Find every crossing</b> in the interval: solve <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x) = g(x)</annotation></semantics></math>. Keep only the solutions inside the interval.</li>
+<li><b>Test each piece</b> with one <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> to see which curve is on top.</li>
+<li><b>Integrate top minus bottom on each piece</b> and add the results.</li>
+</ol>
+<p>Doing this by hand is the same as integrating the absolute value of the difference:</p>
+<math class="calc-m" display="block"><semantics><mrow><mtext>Area</mtext><mo>=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mrow><mo fence="true" stretchy="true">|</mo><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">|</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">\text{Area} = \int_a^b \left|f(x) - g(x)\right|\,dx.</annotation></semantics></math>
+<p>On a calculator, that single setup is the quickest route, because the calculator handles the swaps for you.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> Find the area between <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>3</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x) = x^3 - 3x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">g(x) = x</annotation></semantics></math>.</p>
+<p><b>Crossings.</b> <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>3</mn><mi>x</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">x^3 - 3x = x</annotation></semantics></math> gives <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>4</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">x^3 - 4x</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>x</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= x(x - 2)(x + 2)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = -2, 0, 2</annotation></semantics></math>.</p>
+<p><b>Tests.</b> At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = -1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>f</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f = 2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">g = -1</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is on top. At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>f</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f = -2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">g = 1</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> is on top.</p>
+<p><b>Pieces.</b></p>
+<math class="calc-m" display="block"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><mn>0</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>4</mn><mi>x</mi></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msubsup><mrow><mo fence="true" stretchy="true">[</mo><mrow><mfrac><msup><mi>x</mi><mn>4</mn></msup><mn>4</mn></mfrac><mo>−</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><mo fence="true" stretchy="true">]</mo></mrow><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><mn>0</mn></msubsup><mo>=</mo><mn>0</mn><mo>−</mo><mo stretchy="false">(</mo><mn>4</mn><mo>−</mo><mn>8</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">\int_{-2}^{0} \left(x^3 - 4x\right)\,dx = \left[\frac{x^4}{4} - 2x^2\right]_{-2}^{0} = 0 - (4 - 8) = 4,</annotation></semantics></math>
+<math class="calc-m" display="block"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>2</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>4</mn><mi>x</mi><mo>−</mo><msup><mi>x</mi><mn>3</mn></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msubsup><mrow><mo fence="true" stretchy="true">[</mo><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mfrac><msup><mi>x</mi><mn>4</mn></msup><mn>4</mn></mfrac></mrow><mo fence="true" stretchy="true">]</mo></mrow><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mn>8</mn><mo>−</mo><mn>4</mn><mo>=</mo><mn>4</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">\int_{0}^{2} \left(4x - x^3\right)\,dx = \left[2x^2 - \frac{x^4}{4}\right]_{0}^{2} = 8 - 4 = 4.</annotation></semantics></math>
+<p><b>Area</b> <math class="calc-m"><semantics><mrow><mo>=</mo><mn>4</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">= 4 + 4 = 8</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="net-amount-or-area">Net amount or area?</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Expression</th><th>What it measures</th><th>For the example</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><mn>2</mn></msubsup><mo stretchy="false">(</mo><mi>f</mi><mo>−</mo><mi>g</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_{-2}^{2} (f - g)\,dx</annotation></semantics></math></td><td>net: <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math>-on-top area minus <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math>-on-top area</td><td><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">|</mo><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><mn>2</mn></msubsup><mo stretchy="false">(</mo><mi>f</mi><mo>−</mo><mi>g</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><mo fence="true" stretchy="true">|</mo></mrow></mrow><annotation encoding="application/x-tex">\left|\int_{-2}^{2} (f - g)\,dx\right|</annotation></semantics></math></td><td>size of the net amount (pieces already canceled)</td><td><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><mn>2</mn></msubsup><mo stretchy="false">|</mo><mi>f</mi><mo>−</mo><mi>g</mi><mo stretchy="false">|</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_{-2}^{2} |f - g|\,dx</annotation></semantics></math></td><td>area</td><td><math class="calc-m"><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><mn>0</mn></msubsup><mo stretchy="false">(</mo><mi>f</mi><mo>−</mo><mi>g</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_{-2}^{0} (f - g)\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>2</mn></msubsup><mo stretchy="false">(</mo><mi>g</mi><mo>−</mo><mi>f</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">+ \int_{0}^{2} (g - f)\,dx</annotation></semantics></math></td><td>area, split by hand</td><td><math class="calc-m"><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>The absolute value must go inside the integral. Outside, it comes too late.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> Find the area between <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f(x) = x^2 - 2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">g(x) = x</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">0 \le x \le 3</annotation></semantics></math>.</p>
+<p><b>Crossings.</b> <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">x^2 - 2 = x</annotation></semantics></math> gives <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(x - 2)(x + 1) = 0</annotation></semantics></math>. Only <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math> is inside <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 3]</annotation></semantics></math>; the ends <math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math> are given by the problem.</p>
+<p><b>Tests.</b> At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>g</mi><mo>=</mo><mn>1</mn><mo>&gt;</mo><mi>f</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">g = 1 &gt; f = -1</annotation></semantics></math>. At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">x = 2.5</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>f</mi><mo>=</mo><mn>4.25</mn><mo>&gt;</mo><mi>g</mi><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">f = 4.25 &gt; g = 2.5</annotation></semantics></math>.</p>
+<p><b>Pieces.</b> <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>2</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>x</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_0^2 \left(x - x^2 + 2\right)\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>2</mn><mo>−</mo><mfrac><mn>8</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">= 2 - \frac{8}{3}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">+ 4</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>10</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{10}{3}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>2</mn><mn>3</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mo>−</mo><mi>x</mi></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_2^3 \left(x^2 - 2 - x\right)\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>11</mn><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{11}{6}</annotation></semantics></math>.</p>
+<p><b>Area</b> <math class="calc-m"><semantics><mrow><mo>=</mo><mfrac><mn>10</mn><mn>3</mn></mfrac><mo>+</mo><mfrac><mn>11</mn><mn>6</mn></mfrac><mo>=</mo><mfrac><mn>31</mn><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{10}{3} + \frac{11}{6} = \frac{31}{6}</annotation></semantics></math>. One integral of <math class="calc-m"><semantics><mrow><mi>g</mi><mo>−</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">g - f</annotation></semantics></math> over <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 3]</annotation></semantics></math> would give the net value <math class="calc-m"><semantics><mrow><mfrac><mn>3</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{3}{2}</annotation></semantics></math> instead.</p>
+</div>
+
+<h2 id="traps-to-avoid">Traps to avoid</h2>
+<ul>
+<li>A crossing outside the interval does not make a piece. The interval's ends are <a class="gl" href="../notes/limit-notation.html" data-c="limit">limits</a>, not crossings.</li>
+<li>Do not assume the crossings are whole numbers. Factor, or use a calculator's solver and store the values.</li>
+<li>The same idea works for horizontal strips: split where the right edge and the left edge trade places.</li>
+<li>In context, the difference between net and total matters. Between two <a class="gl" href="../notes/straight-line-motion.html" data-c="velocity">velocity</a> graphs, <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mo stretchy="false">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\int (v_1 - v_2)\,dt</annotation></semantics></math> is how far ahead runner 1 ends up; <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mo stretchy="false">|</mo><msub><mi>v</mi><mn>1</mn></msub><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false">|</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\int |v_1 - v_2|\,dt</annotation></semantics></math> is the total of the gaps.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:area-multiple-crossings">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="area-between-curves-y.html"><span>&larr; Previous</span><b>Area Between Curves (Functions of y)</b></a><a class="tb-chapter-link next" href="cross-sections-squares.html"><span>Next &rarr;</span><b>Volumes with Square and Rectangle Cross Sections</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:area-multiple-crossings">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

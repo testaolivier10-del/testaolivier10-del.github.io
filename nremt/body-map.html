@@ -258,6 +258,16 @@
   .bn-next{font:700 13px var(--font-ui);padding:9px 20px;border:0;border-radius:18px;background:var(--navy);color:var(--on-accent);cursor:pointer;min-height:40px;margin-top:6px;}
   @media (prefers-reduced-motion: reduce){.bn-shape{transition:none;}}
   @media (max-width:420px){.bn-figs{padding:10px 4px 6px;gap:4px;}}
+  /* Phone pass (2026-10-13): each figure is ~170 px wide (scale ~0.33), so the region numbers grow to read 14 px (the
+     small 1% label 12 px) and the Front/Back captions to 12.5 px. Held sideways, the figures take the stage width and the
+     stage scrolls, instead of shrinking to a 220 px height. */
+  .ls-root.ls-phone .bn-pct{font-size:46px;stroke-width:8px;}
+  .ls-root.ls-phone .bn-pct--sm{font-size:40px;}
+  .ls-root.ls-phone .bn-fig figcaption{font-size:12.5px;}
+  @media (orientation:landscape){
+    .ls-root.ls-phone .ls-stage .bn-svg{max-height:none;}
+    .ls-root.ls-phone .ls-stage .bn-figs{flex:none;}
+  }
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">

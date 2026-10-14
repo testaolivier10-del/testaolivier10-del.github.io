@@ -1,0 +1,14 @@
+{
+ "evt": {
+  "def": "If $f$ is continuous on a closed interval $[a, b]$, then $f$ has at least one absolute maximum value and at least one absolute minimum value on $[a, b]$."
+ },
+ "critical-point": {
+  "def": "An interior point $c$ of the domain of $f$ where $f'(c) = 0$ or $f'(c)$ does not exist. Relative extrema can occur only at critical points."
+ },
+ "absolute-extremum": {
+  "def": "An absolute (global) maximum is a value $f(c)$ with $f(c) \\ge f(x)$ for every $x$ in the domain or interval considered; an absolute minimum has $f(c) \\le f(x)$ for every such $x$."
+ },
+ "relative-extremum": {
+  "def": "A relative (local) maximum is a value $f(c)$ with $f(c) \\ge f(x)$ for every $x$ in some open interval around $c$; a relative minimum has $f(c) \\le f(x)$ there. It is a peak or valley compared with nearby points only."
+ }
+}

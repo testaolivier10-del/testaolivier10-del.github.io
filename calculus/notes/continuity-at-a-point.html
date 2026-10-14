@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Continuity at a Point — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="A function is continuous at x = c when f(c) is defined, the limit exists, and the two are equal. Each condition, how it fails, and how to justify continuity.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/continuity-at-a-point.html">
+<meta property="og:title" content="Continuity at a Point — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="A function is continuous at x = c when f(c) is defined, the limit exists, and the two are equal. Each condition, how it fails, and how to justify continuity.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/continuity-at-a-point.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/continuity-at-a-point.html#reading",
+      "name": "Continuity at a Point",
+      "url": "https://levlprep.com/calculus/notes/continuity-at-a-point.html",
+      "description": "A function is continuous at x = c when f(c) is defined, the limit exists, and the two are equal. Each condition, how it fails, and how to justify continuity.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "continuity at a point ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Limits and Continuity",
+          "item": "https://levlprep.com/calculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Continuity at a Point: notes",
+          "item": "https://levlprep.com/calculus/notes/continuity-at-a-point.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="continuity-at-a-point" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Limits and Continuity</b><small>16 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 16 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-at-an-instant"><a href="change-at-an-instant.html"><span class="bk-toc-n">1.1</span>Can Change Happen at an Instant?</a></li><li data-toc-t="limit-notation"><a href="limit-notation.html"><span class="bk-toc-n">1.2</span>What a Limit Is and How to Write It</a></li><li data-toc-t="limits-from-plots"><a href="limits-from-plots.html"><span class="bk-toc-n">1.3</span>Reading Limits from a Graph</a></li><li data-toc-t="limits-from-tables"><a href="limits-from-tables.html"><span class="bk-toc-n">1.4</span>Estimating Limits from Tables</a></li><li data-toc-t="limit-laws"><a href="limit-laws.html"><span class="bk-toc-n">1.5</span>Limit Laws</a></li><li data-toc-t="limit-algebra"><a href="limit-algebra.html"><span class="bk-toc-n">1.6</span>Limits by Algebra: Factor, Rationalize, Simplify</a></li><li data-toc-t="choosing-limit-methods"><a href="choosing-limit-methods.html"><span class="bk-toc-n">1.7</span>Choosing a Way to Find a Limit</a></li><li data-toc-t="squeeze-theorem"><a href="squeeze-theorem.html"><span class="bk-toc-n">1.8</span>The Squeeze Theorem</a></li><li data-toc-t="limit-representations"><a href="limit-representations.html"><span class="bk-toc-n">1.9</span>Limits Across Graphs, Tables and Formulas</a></li><li data-toc-t="discontinuity-types"><a href="discontinuity-types.html"><span class="bk-toc-n">1.10</span>Types of Discontinuity</a></li><li class="current" data-toc-t="continuity-at-a-point"><a href="#main" aria-current="page"><span class="bk-toc-n">1.11</span>Continuity at a Point</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-definition">The definition</a><a href="#checking-a-formula">Checking a formula</a><a href="#checking-a-piecewise-function">Checking a piecewise function</a><a href="#reading-a-graph-or-a-table">Reading a graph or a table</a><a href="#why-continuity-matters">Why continuity matters</a></div></li><li data-toc-t="continuity-on-intervals"><a href="continuity-on-intervals.html"><span class="bk-toc-n">1.12</span>Continuity on an Interval</a></li><li data-toc-t="removing-discontinuities"><a href="removing-discontinuities.html"><span class="bk-toc-n">1.13</span>Removing a Discontinuity</a></li><li data-toc-t="infinite-limits"><a href="infinite-limits.html"><span class="bk-toc-n">1.14</span>Infinite Limits and Vertical Asymptotes</a></li><li data-toc-t="limits-at-infinity"><a href="limits-at-infinity.html"><span class="bk-toc-n">1.15</span>Limits at Infinity and Horizontal Asymptotes</a></li><li data-toc-t="intermediate-value-theorem"><a href="intermediate-value-theorem.html"><span class="bk-toc-n">1.16</span>The Intermediate Value Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Differentiation: Definition and Fundamental Properties</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Limits and Continuity</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Continuity at a Point: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/continuity-at-a-point.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.11 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Continuity at a Point</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="continuity-at-a-point">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fcontinuity-at-a-point.html&amp;title=Continuity%20at%20a%20Point%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/continuity-at-a-point.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>The last topic described breaks in a graph. This topic turns "no break" into a precise test you can apply to a graph, a table or a formula, and write up as a justification. The test has three conditions, and every one of them matters.</p>
+
+<h2 id="the-definition">The definition</h2>
+<p>A <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is <b><a class="gl" href="../notes/discontinuity-types.html" data-c="discontinuity">continuous</a> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math></b> when all three of these hold:</p>
+<ol>
+<li><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(c)</annotation></semantics></math> is defined. (There is a point on the graph at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math>.)</li>
+<li><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to c} f(x)</annotation></semantics></math> exists. (The curve arrives at one height from both sides.)</li>
+<li><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to c} f(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= f(c)</annotation></semantics></math>. (The point is exactly where the curve arrives.)</li>
+</ol>
+<figure id="fig-conditions"  class="calc-figure"><div class="calc-figimg" data-fig="continuity-three-conditions"><img src="../figures/continuity-three-conditions.svg" alt="Four graphs near x = c. First: an open circle and no closed dot, so f(c) is not defined and condition 1 fails. Second: a jump, so the limit at c does not exist and condition 2 fails. Third: a hole with the closed dot f(c) placed above it, so the limit exists but does not equal f(c) and condition 3 fails. Fourth: an unbroken curve through a closed dot, where all three conditions hold." width="800" height="340" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Each condition can fail while the earlier ones hold. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Each condition catches a different kind of break. Check them in order: the first one that fails is your reason.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>First condition to fail</th><th>What the graph shows</th><th>Kind of discontinuity</th></tr></thead>
+<tbody>
+<tr><td>1: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(c)</annotation></semantics></math> undefined</td><td>no point at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math></td><td>removable (a hole) or infinite, depending on the <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a></td></tr>
+<tr><td>2: the <a class="gl" href="../notes/limits-from-plots.html" data-c="limit-dne">limit does not exist</a></td><td>the two sides arrive at different heights, or grow without bound</td><td>jump or infinite</td></tr>
+<tr><td>3: limit <math class="calc-m"><semantics><mrow><mo>≠</mo><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\ne f(c)</annotation></semantics></math></td><td>a hole with the point placed elsewhere</td><td>removable</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="checking-a-formula">Checking a formula</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Let <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{x^2 - 4}{x - 2}</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x \ne 2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(2) = 5</annotation></semantics></math>. Is <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> continuous at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>?</p>
+<p>Condition 1: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(2) = 5</annotation></semantics></math>, so it is defined.</p>
+<p>Condition 2: for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x \ne 2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{(x - 2)(x + 2)}{x - 2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">= x</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">+ 2</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} f(x) = 4</annotation></semantics></math>. The limit exists.</p>
+<p>Condition 3: <math class="calc-m"><semantics><mrow><mn>4</mn><mo>≠</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">4 \ne 5</annotation></semantics></math>. It fails.</p>
+<p>Conclusion: <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is not continuous at 2, because <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} f(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn><mo>≠</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">= 4 \ne 5</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= f(2)</annotation></semantics></math>. Had the rule been <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">f(2) = 4</annotation></semantics></math>, all three conditions would hold.</p>
+</div>
+
+<h2 id="checking-a-piecewise-function">Checking a piecewise function</h2>
+<p>At a break point, the <a class="gl" href="../notes/limits-from-plots.html" data-c="one-sided-limit">one-sided limits</a> come from different pieces. Find each one, then compare.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Let <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">g(x) = x^2 - 1</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x &lt; 2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">g(2) = 3</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mi>x</mi><mo>−</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">g(x) = 4x - 5</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x &gt; 2</annotation></semantics></math>. Show that <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> is continuous at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>.</p>
+<p>Condition 1: <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">g(2) = 3</annotation></semantics></math>.</p>
+<p>Condition 2: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>2</mn><mo>−</mo></msup></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 2^-} g(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mn>2</mn><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= 2^2 - 1</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">= 3</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>2</mn><mo>+</mo></msup></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 2^+} g(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>−</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">= 4(2) - 5</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">= 3</annotation></semantics></math>. The one-sided limits are equal, so <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} g(x) = 3</annotation></semantics></math>.</p>
+<p>Condition 3: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} g(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">= 3</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>g</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= g(2)</annotation></semantics></math>.</p>
+<p>All three hold, so <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> is continuous at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>.</p>
+</div>
+<p>Notice the write-up. Each condition gets its own sentence with its own number. "The pieces match" or "there is no break" is a conclusion, not a justification.</p>
+
+<h2 id="reading-a-graph-or-a-table">Reading a graph or a table</h2>
+<p>On a graph, ask three questions at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math>. Is there a closed dot? Does the curve arrive at the same height from both sides? Is the dot at that height? A closed dot at the end of one piece (a jump) passes the first question and fails the second. A dot floating above a hole passes the first two and fails the third.</p>
+<p>A table can suggest continuity: if <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f(c) = 2</annotation></semantics></math> is listed and the values on both sides close in on 2, continuity at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> is likely. As always, a table estimates the limit; it does not prove it.</p>
+
+<h2 id="why-continuity-matters">Why continuity matters</h2>
+<p>If <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is continuous at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>, then <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to c} f(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= f(c)</annotation></semantics></math>. That single fact is behind <a class="gl" href="../notes/limit-laws.html" data-c="direct-substitution">direct substitution</a>: <a class="gl" href="../notes/math-functions.html" data-c="rational-function">polynomials</a> are continuous everywhere, so their limits are their values. It also works in reverse. If you know a function is continuous at 4 and you can find its limit there, you know its value.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is continuous at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>4</mn></mrow></munder><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 4} (f(x) + 2x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">= 13</annotation></semantics></math>. Find <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(4)</annotation></semantics></math>.</p>
+<p>By the <a class="gl" href="../notes/limit-laws.html" data-c="limit-laws">limit laws</a>, <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>4</mn></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 4} f(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>13</mn><mo>−</mo><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>4</mn></mrow></munder><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">= 13 - \lim_{x \to 4} 2x</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>13</mn><mo>−</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">= 13 - 8</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">= 5</annotation></semantics></math>.</p>
+<p>Continuity at 4 gives <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(4)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>4</mn></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= \lim_{x \to 4} f(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">= 5</annotation></semantics></math>.</p>
+</div>
+<p>Later in the course, big theorems start with "if <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is continuous". Each time, you will need to say why the function is continuous before you use the theorem. This definition is where that habit begins.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:continuity-at-a-point">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="discontinuity-types.html"><span>&larr; Previous</span><b>Types of Discontinuity</b></a><a class="tb-chapter-link next" href="math-exp-log.html"><span>Next &rarr;</span><b>Exponentials and Logarithms</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:continuity-at-a-point">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

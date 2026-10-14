@@ -1,0 +1,5 @@
+{
+ "integration-strategy": {
+  "def": "Choosing how to find an antiderivative: try a basic rule (after rewriting powers or splitting over a single term), then substitution (an inside function whose derivative is a factor), then long division (top degree at least bottom degree), then completing the square (a quadratic with no real zeros on the bottom). Check by differentiating."
+ }
+}

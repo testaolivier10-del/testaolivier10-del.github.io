@@ -1,0 +1,51 @@
+{
+ "topic": "area-multiple-crossings",
+ "hook": "Two runners' speed graphs weave over and under each other during a race. The space between the graphs on a stretch where one runner is faster is real area, and so is the space where the other is faster. One integral would let those pieces cancel; to count all of the area, you have to cut the integral where the graphs cross.",
+ "prereq": [
+  {
+   "q": "If $\\int_0^2 h(x)\\,dx = 5$ and $\\int_2^6 h(x)\\,dx = -3$, what is $\\int_0^6 h(x)\\,dx$?",
+   "options": ["$2$", "$8$", "$-15$", "$-2$"],
+   "correct": 0,
+   "why": "Integrals over touching intervals add: $5 + (-3) = 2$.",
+   "review": "integral-properties"
+  },
+  {
+   "q": "The line $y = x + 1$ is above the parabola $y = x^2 - 1$ between their crossings. What is the height of a vertical strip between them?",
+   "options": ["$x + 2 - x^2$", "$x - x^2$", "$x^2 - x - 2$", "$x^2 + x$"],
+   "correct": 0,
+   "why": "Top minus bottom: $(x + 1) - (x^2 - 1) = x + 2 - x^2$.",
+   "review": "area-between-curves-x"
+  }
+ ],
+ "figure": { "figure": "area-three-crossings", "caption": "Where $f(x) = x^3 - 3x$ and $g(x) = x$ cross, top and bottom swap. The two pieces have area 4 each, but one integral of $f - g$ from $-2$ to $2$ gives 0." },
+ "chain": [
+  { "cause": "Two graphs cross inside the interval", "effect": "the curve on top changes at each crossing" },
+  { "cause": "Where $g$ is on top, $f(x) - g(x) < 0$", "effect": "one integral of $f - g$ counts that piece as negative and cancels area" },
+  { "cause": "Split the integral at every crossing and use top minus bottom on each piece", "effect": "every piece is positive, and their sum is the area" },
+  { "cause": "Top minus bottom on each piece is $|f(x) - g(x)|$", "effect": "the area is also $\\int_a^b |f(x) - g(x)|\\,dx$, which a calculator can evaluate in one step" }
+ ],
+ "ideas": [
+  "<b>Splitting the integral</b>: find every crossing inside the interval by solving $f(x) = g(x)$, then integrate top minus bottom on each piece and add.",
+  "One integral $\\int_a^b (f - g)\\,dx$ is a net value: areas where $g$ is on top are subtracted.",
+  "Area $= \\int_a^b |f(x) - g(x)|\\,dx$. On a calculator, this is the fastest setup.",
+  "Crossings outside the interval do not create pieces, and the interval's ends are not crossings.",
+  "The same rule holds in $y$: split where the right and left edges swap."
+ ],
+ "misconception": {
+  "wrong": "If the integral of $f - g$ comes out negative or zero, take its absolute value to get the area.",
+  "right": "By the time you take the absolute value, the pieces have already canceled. Split at each crossing first (or put the absolute value inside the integral), then add the positive pieces."
+ },
+ "check": [
+  "calc-area-multiple-crossings-1",
+  "calc-area-multiple-crossings-2",
+  "calc-area-multiple-crossings-3",
+  "calc-area-multiple-crossings-4",
+  "calc-area-multiple-crossings-10",
+  "calc-area-multiple-crossings-13"
+ ],
+ "summary": "When curves cross more than twice, top and bottom swap at each crossing. Find the crossings, split the integral there, use top minus bottom on each piece, and add: the area is $\\int_a^b |f(x) - g(x)|\\,dx$. A single integral of $f - g$ gives a net amount, not the area.",
+ "connections": [
+  { "href": "../notes/area-between-curves-y.html", "label": "Back: area with functions of y (8.5)" },
+  { "href": "../notes/cross-sections-squares.html", "label": "Next: 8.7" }
+ ]
+}

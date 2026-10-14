@@ -62,7 +62,7 @@
       '<path class="tb-metal" fill="none" stroke-width="2" d="M' + n1(x) + ' ' + n1(top - 6) + 'q0 4 0 6"/>' +
       '<rect class="tb-body" x="' + n1(l) + '" y="' + n1(top) + '" width="' + z.w + '" height="' + z.h + '" rx="5" fill="url(#' + id + 'b)" stroke="#6B4E12" stroke-width="1.2"/>' +
       '<rect x="' + n1(l + 3) + '" y="' + n1(top + 3) + '" width="' + (z.w - 6) + '" height="3" rx="1.5" fill="#fff" opacity=".35"/>' +
-      '<text class="tb-label" x="' + n1(x) + '" y="' + n1(top + z.h / 2 + 4.5 * Z) + '" text-anchor="middle"' + (Z !== 1 ? ' font-size="' + n1(12 * Z) + '"' : '') + '>' + esc(lab) + '</text>';
+      '<text class="tb-label" x="' + n1(x) + '" y="' + n1(top + z.h / 2 + 4.5 * Z) + '" text-anchor="middle"' + (Z !== 1 ? ' style="font-size:' + n1(12 * Z) + 'px"' : '') + '>' + esc(lab) + '</text>';
   }
   /* The meter stick, level, from x0 (px) with ppm, centred on y; ticks every
      cm, numbers every 10 cm. */
@@ -73,7 +73,7 @@
       var X = x0 + c / 100 * ppm, big = c % 10 === 0, mid = c % 5 === 0;
       if(c === 0 || c === len * 100) continue;
       out += '<line class="tb-tick' + (big ? ' big' : '') + '" x1="' + n1(X) + '" y1="' + n1(y - thick / 2) + '" x2="' + n1(X) + '" y2="' + n1(y - thick / 2 + (big ? 7 : mid ? 5 : 3)) + '"/>';
-      if(big && (Z === 1 || c % 20 === 0) && ppm * 0.1 > 34) out += '<text class="tb-num" x="' + n1(X) + '" y="' + n1(y + thick / 2 - 2) + '" text-anchor="middle"' + (Z !== 1 ? ' font-size="' + n1(10 * Z) + '"' : '') + '>' + c + '</text>';
+      if(big && (Z === 1 || c % 20 === 0) && ppm * 0.1 > 34) out += '<text class="tb-num" x="' + n1(X) + '" y="' + n1(y + thick / 2 - 2) + '" text-anchor="middle"' + (Z !== 1 ? ' style="font-size:' + n1(12 * Z) + 'px"' : '') + '>' + c + '</text>';
     }
     return out;
   }
@@ -196,7 +196,7 @@
         '<title id="' + did + 't">Meter stick on a fulcrum</title>' + benchArt(W, BENCH) +
         '<g class="tb-stops"></g><g class="tb-stand tb-drag" tabindex="0" role="slider" aria-label="Fulcrum position" aria-valuemin="25" aria-valuemax="75"></g>' +
         '<g class="tb-armg"></g><g class="tb-beam"></g><g class="tb-masses"></g><g class="tb-force"></g>' +
-        '<text class="tb-hint" x="' + (W - (Z > 1 ? 26 : 12)) + '" y="' + (vTop() + 16) + '" text-anchor="end" aria-hidden="true"' + (Z > 1 ? ' font-size="17"' : '') + '></text></svg>';
+        '<text class="tb-hint" x="' + (W - (Z > 1 ? 26 : 12)) + '" y="' + (vTop() + 16) + '" text-anchor="end" aria-hidden="true"' + (Z > 1 ? ' style="font-size:21px"' : '') + '></text></svg>';
       svg = sceneEl.querySelector('svg');
       gBeam = svg.querySelector('.tb-beam'); gMasses = svg.querySelector('.tb-masses'); gStand = svg.querySelector('.tb-stand');
       gForce = svg.querySelector('.tb-force'); gArm = svg.querySelector('.tb-armg'); gStops = svg.querySelector('.tb-stops');
@@ -221,7 +221,7 @@
           dragMass(g, q); keysMass(g, q);
         }
         var p = onBeam(q.x), z = massSize(q.m);
-        g.innerHTML = '<rect class="tb-hit" x="' + n1(p.x - z.w / 2 - 8) + '" y="' + n1(p.y - 14 * Z) + '" width="' + n1(z.w + 16) + '" height="' + n1(z.h + 34 * Z) + '"/>' + massArt(did, p.x, p.y + THICK / 2, q.m);
+        g.innerHTML = '<rect class="tb-hit" x="' + n1(p.x - z.w / 2 - 8 * Z) + '" y="' + n1(p.y - 14 * Z) + '" width="' + n1(z.w + 16 * Z) + '" height="' + n1(z.h + 34 * Z) + '"/>' + massArt(did, p.x, p.y + THICK / 2, q.m);
         var r = Math.round((q.x - st.pivot) * 100);
         g.setAttribute('aria-label', gLabel(q.m) + ' mass');
         g.setAttribute('aria-valuenow', String(Math.round(q.x * 100)));
@@ -255,12 +255,15 @@
         var c1 = { x: foot.x - vx / vl * k, y: foot.y - vy / vl * k }, sgn = t > 0 ? -1 : 1;
         out += '<line class="tb-arm" x1="' + n1(P.x) + '" y1="' + n1(P.y) + '" x2="' + n1(foot.x) + '" y2="' + n1(foot.y) + '"/>' +
           '<path class="tb-ra" d="M' + n1(c1.x) + ' ' + n1(c1.y) + 'l' + n1(sgn * ux * k) + ' ' + n1(sgn * uy * k) + 'l' + n1(vx / vl * k) + ' ' + n1(vy / vl * k) + '"/>' +
-          '<text class="tb-arm-t" x="' + n1((P.x + foot.x) / 2 + (vy / vl) * 14) + '" y="' + n1((P.y + foot.y) / 2 - (vx / vl) * 14 + 4) + '" text-anchor="middle">lever arm ' + F(arm, 2) + ' m</text>';
+          (Z > 1   // phone: the label ends 40% along the arm, away from the pull's own label at its tip
+            ? '<text class="tb-arm-t" x="' + n1(P.x + vx * 0.4 + (vy / vl) * 22) + '" y="' + n1(P.y + vy * 0.4 - (vx / vl) * 22 + 4) + '" text-anchor="' + (vx >= 0 ? 'end' : 'start') + '" style="font-size:21px">'
+            : '<text class="tb-arm-t" x="' + n1((P.x + foot.x) / 2 + (vy / vl) * 14) + '" y="' + n1((P.y + foot.y) / 2 - (vx / vl) * 14 + 4) + '" text-anchor="middle">') + 'lever arm ' + F(arm, 2) + ' m</text>';
       }
       gArm.innerHTML = out;
       gForce.innerHTML = '<g class="tb-fx tb-drag" tabindex="0" role="slider" aria-label="Pull F_A: drag its tip to change its size and direction" aria-valuemin="0" aria-valuemax="8" aria-valuenow="' + F(f.F, 1) + '" aria-valuetext="' + F(f.F, 1) + ' newtons at ' + Math.round(f.ang) + ' degrees from the stick, acting at the ' + Math.round(f.x * 100) + ' cm mark. Up and down arrows change its size, left and right its angle.">' +
         S.arrow(p.x, p.y, dx, dy, { cls: 'f-applied', label: 'F_A', width: 3.5, head: 11 }) +
-        '<circle class="tb-hit" cx="' + n1(p.x + dx) + '" cy="' + n1(p.y + dy) + '" r="18"/><circle cx="' + n1(p.x + dx) + '" cy="' + n1(p.y + dy) + '" r="6" fill="var(--white)" stroke="currentColor" stroke-width="2" style="color:#5A6268"/></g>' +
+        '<circle class="tb-hit" cx="' + n1(p.x + dx) + '" cy="' + n1(p.y + dy) + '" r="' + (Z > 1 ? 38 : 18) + '"/><circle cx="' + n1(p.x + dx) + '" cy="' + n1(p.y + dy) + '" r="6" fill="var(--white)" stroke="currentColor" stroke-width="2" style="color:#5A6268"/></g>' +
+        (Z > 1 ? '<circle class="tb-hit tb-fa-hit" cx="' + n1(p.x) + '" cy="' + n1(p.y) + '" r="38" aria-hidden="true"/>' : '') +
         '<circle class="tb-fa tb-drag" tabindex="0" role="slider" aria-label="Where the pull acts" aria-valuemin="2" aria-valuemax="98" aria-valuenow="' + Math.round(f.x * 100) + '" aria-valuetext="at the ' + Math.round(f.x * 100) + ' cm mark" cx="' + n1(p.x) + '" cy="' + n1(p.y) + '" r="7" fill="var(--white)" stroke="#5A6268" stroke-width="2.5"/>';
       dragForce(); keysForce();
     }
@@ -311,7 +314,9 @@
         f.F = Math.round(Fv * 10) / 10; f.ang = (Math.round(M.deg(Math.atan2(dy, dx)) / 5) * 5 + 360) % 360;
         fF.set(f.F); fA.set(f.ang); drawForce(); readout();
       }, end: function(){ draw(); var n = gForce.querySelector('.tb-fx'); if(n) n.focus(); } });
-      drag(at, { move: function(p){ f.x = snap((p.x - X0) / PPM, 0.02, 0.98); fX.set(f.x); drawForce(); readout(); }, end: function(){ draw(); var n = gForce.querySelector('.tb-fa'); if(n) n.focus(); } });
+      var atO = { move: function(p){ f.x = snap((p.x - X0) / PPM, 0.02, 0.98); fX.set(f.x); drawForce(); readout(); }, end: function(){ draw(); var n = gForce.querySelector('.tb-fa'); if(n) n.focus(); } };
+      drag(at, atO);
+      var atHit = gForce.querySelector('.tb-fa-hit'); if(atHit) drag(atHit, atO);   // phone: a 44 px target around the small handle
     }
     function keysForce(){
       var f = st.force, tipEl = gForce.querySelector('.tb-fx'), at = gForce.querySelector('.tb-fa');
@@ -390,7 +395,7 @@
     var RW = 640, RH = 360, RP = 300, AY = 92, W0 = AY + 30, FALL = 180, FLOOR = W0 + FALL + 40;
     /* Phone (Z > 1): a shorter drawn drop and the wheels closer together, so the
        picture is limited by the stage's width, not its small height. */
-    function raceGeo(){ var ph = Z > 1, fall = ph ? 100 : 180; FALL = fall; FLOOR = W0 + fall + massSize(0.45).h; /* a landed weight rests on the floor */ return { xs: ph ? [190, 430] : [RW * 0.27, RW * 0.73], dim: ph ? 106 : 34, vb: ph ? '94 18 462 ' + (FLOOR + 12 - 18) : '0 0 ' + RW + ' ' + RH }; }
+    function raceGeo(){ var ph = Z > 1, fall = ph ? 100 : 180; FALL = fall; FLOOR = W0 + fall + massSize(0.45).h; /* a landed weight rests on the floor */ return { xs: ph ? [190, 430] : [RW * 0.27, RW * 0.73], dim: ph ? 106 : 34, vb: ph ? '76 18 492 ' + (FLOOR + 12 - 18) : '0 0 ' + RW + ' ' + RH }; }
     /* A rotational-inertia apparatus: a grooved hub on an axle, a cross-bar
        with two brass sliders, hung from a bracket under the ceiling beam. */
     function wheelArt(id, cx, cy, d, ang, name){
@@ -415,21 +420,21 @@
         var cx = xs[i], cy = AY, st2 = w[1], rh = RA.r * RP, sx = cx + rh, wy = W0 + st2.y * fs;
         html += wheelArt(id, cx, cy, w[2], st2.theta, w[3]) +
           '<line class="tb-string" x1="' + n1(sx) + '" y1="' + cy + '" x2="' + n1(sx) + '" y2="' + n1(wy) + '"/>' + massArt(id, sx, wy - 18, 0.45, '200 g') +
-          '<text class="tb-bar-t" x="' + cx + '" y="' + (AY - 46) + '" text-anchor="middle">' + w[3] + '</text>';
-        if(st2.done) html += '<text class="tb-bar-t tb-good" x="' + n1(sx - 40 * Z) + '" y="' + n1(FLOOR - 10) + '" text-anchor="end"' + (Z > 1 ? ' font-size="16"' : '') + '>' + F(st2.tEnd, 2) + ' s</text>';
+          '<text class="tb-bar-t" x="' + cx + '" y="' + (AY - 46) + '" text-anchor="middle"' + (Z > 1 ? ' style="font-size:20px"' : '') + '>' + w[3] + '</text>';
+        if(st2.done) html += '<text class="tb-bar-t tb-good" x="' + n1(sx - 40 * Z) + '" y="' + n1(FLOOR - 10) + '" text-anchor="end"' + (Z > 1 ? ' style="font-size:18px"' : '') + '>' + F(st2.tEnd, 2) + ' s</text>';
         // This wheel's energy column: the weight's K under the wheel's K_rot,
         // as shares of the m g h it gives up by the floor.
         var bx = cx + 0.215 * RP + 26, top = AY - 20, bh = FLOOR - 14 - top, tot = RA.m * G * RA.h, hk = st2.K / tot * bh, hr = st2.Krot / tot * bh;
         html += '<rect class="tb-bar-bg" x="' + n1(bx) + '" y="' + n1(top) + '" width="26" height="' + n1(bh) + '" rx="5"/>' +
           '<rect class="tb-c0" x="' + n1(bx) + '" y="' + n1(top + bh - hk) + '" width="26" height="' + n1(hk) + '"/>' +
           '<rect class="tb-c1" x="' + n1(bx) + '" y="' + n1(top + bh - hk - hr) + '" width="26" height="' + n1(hr) + '"/>' +
-          '<text class="tb-bar-k" x="' + n1(bx + 13) + '" y="' + n1(top - 6) + '" text-anchor="middle">' + F(st2.K + st2.Krot, 2) + ' J</text>';
+          '<text class="tb-bar-k" x="' + n1(bx + 13) + '" y="' + n1(top - 6) + '" text-anchor="middle"' + (Z > 1 ? ' style="font-size:17px"' : '') + '>' + F(st2.K + st2.Krot, 2) + ' J</text>';
       });
       html += '<rect class="tb-bench" x="0" y="' + n1(FLOOR) + '" width="' + RW + '" height="12"/><rect class="tb-bench-e" x="0" y="' + n1(FLOOR + 8) + '" width="' + RW + '" height="4"/>' +
         // The drop, as a dimension line at the left.
         '<g class="tb-dimv"><line x1="' + dl + '" x2="' + dl + '" y1="' + (FLOOR - FALL) + '" y2="' + FLOOR + '" stroke="var(--muted)" stroke-width="1.4"/><path d="M' + (dl - 6) + ' ' + (FLOOR - FALL) + 'h12M' + (dl - 6) + ' ' + FLOOR + 'h12" stroke="var(--muted)" stroke-width="1.4"/>' +
-        '<text class="tb-hint" transform="translate(' + (dl - 6) + ' ' + n1(FLOOR - FALL / 2) + ') rotate(-90)" text-anchor="middle"' + (Z > 1 ? ' font-size="16"' : '') + '>drop ' + F(RA.h, 2) + ' m</text></g>' +
-        (Z > 1 ? '<g class="tb-key-svg" font-size="15"><rect class="tb-c0" x="288" y="' + (AY - 62) + '" width="13" height="13" rx="3"/><text class="tb-bar-k" font-size="15" x="306" y="' + (AY - 51) + '">K</text><rect class="tb-c1" x="326" y="' + (AY - 62) + '" width="13" height="13" rx="3"/><text class="tb-bar-k" font-size="15" x="344" y="' + (AY - 51) + '">K<tspan dy="4" font-size="11">rot</tspan></text></g>' : '') + '</svg>';
+        '<text class="tb-hint" transform="translate(' + (dl - 6) + ' ' + n1(FLOOR - FALL / 2) + ') rotate(-90)" text-anchor="middle"' + (Z > 1 ? ' style="font-size:18px"' : '') + '>drop ' + F(RA.h, 2) + ' m</text></g>' +
+        (Z > 1 ? '<g class="tb-key-svg"><rect class="tb-c0" x="288" y="' + (AY - 62) + '" width="13" height="13" rx="3"/><text class="tb-bar-k" style="font-size:18px" x="306" y="' + (AY - 51) + '">K</text><rect class="tb-c1" x="326" y="' + (AY - 62) + '" width="13" height="13" rx="3"/><text class="tb-bar-k" style="font-size:18px" x="344" y="' + (AY - 51) + '">K<tspan dy="4" style="font-size:13px">rot</tspan></text></g>' : '') + '</svg>';
       sceneEl.innerHTML = html;
       // Energy split: the weight's K against the wheel's K_rot, as shares of m g h.
       var tot = RA.m * G * RA.h;
@@ -488,7 +493,13 @@
   }
 
   /* ------------------------------------------------------------ quiz */
+  function phoneNow(){ try{ return matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
+  /* On a phone the problem drawings use bigger masses and labels (Z 1.5: 12 px text at 0.68 scale). */
   function figure(p){
+    var z0 = Z; Z = phoneNow() ? 1.5 : 1;
+    try{ return figureAt(p); } finally { Z = z0; }
+  }
+  function figureAt(p){
     var f = p.fig, id = nid('tbq'), W = 520, out = '', label = '', H = 240;
     if(f.kind === 'lever'){
       H = 220;
@@ -511,12 +522,15 @@
         '<g class="tb-dim"><line x1="' + px0 + '" x2="' + n1(ax) + '" y1="' + (py + (f.up ? 40 : -40)) + '" y2="' + (py + (f.up ? 40 : -40)) + '" stroke="var(--ink)" stroke-width="1.3"/>' +
         '<line x1="' + px0 + '" x2="' + px0 + '" y1="' + (py + (f.up ? 33 : -47)) + '" y2="' + (py + (f.up ? 47 : -33)) + '" stroke="var(--ink)" stroke-width="1.3"/><line x1="' + n1(ax) + '" x2="' + n1(ax) + '" y1="' + (py + (f.up ? 33 : -47)) + '" y2="' + (py + (f.up ? 47 : -33)) + '" stroke="var(--ink)" stroke-width="1.3"/>' +
         '<text class="tb-angle-t" x="' + n1((px0 + ax) / 2) + '" y="' + (py + (f.up ? 60 : -48)) + '" text-anchor="middle">r = ' + gv(f.r) + ' m</text></g>';
+      // Room on the right for the arrow and its label (a long lever clipped "F = 40 N").
+      W = Math.max(W, Math.ceil(Math.max(ax + Math.max(dx, 0) + 24 + ('F = ' + gv(f.F) + ' N').length * (Z > 1 ? 11 : 8.5), px0 + len + 20) / 10) * 10);
       label = 'Top or side view of ' + (f.obj === 'door' ? 'a door on its hinge' : f.obj === 'wrench' ? 'a wrench on a bolt' : 'a stick on a pin') + ': a ' + gv(f.F) + ' N force at ' + f.th + ' degrees to it, ' + gv(f.r) + ' m from the pivot, pointing ' + (f.up ? 'up' : 'down') + ' and outward.';
     } else if(f.kind === 'stick'){
       H = 230; var x0 = 30, pp = 440, y = 100, bench = 200;
       out += benchArt(W, bench) + standArt(id, x0 + f.pivot * pp, y, bench) + stickArt(id, x0, y, pp, 1, 14) + clampArt(id, x0 + f.pivot * pp, y, 14) +
         f.masses.map(function(q){ return hookArt(id, x0 + q.x * pp, y, 14) + massArt(id, x0 + q.x * pp, y + 7, q.m, gv(q.m) + ' kg'); }).join('') +
-        '<g opacity=".9"><rect class="tb-ghost" x="' + (W - 92) + '" y="18" width="62" height="34" rx="5"/><text class="tb-angle-t" x="' + (W - 61) + '" y="40" text-anchor="middle">' + gv(f.ghost.m) + ' kg</text><text class="tb-hint" x="' + (W - 100) + '" y="40" text-anchor="end">where?</text></g>';
+        (Z > 1 ? '<g opacity=".9"><rect class="tb-ghost" x="' + (W - 110) + '" y="14" width="88" height="40" rx="5"/><text class="tb-angle-t" x="' + (W - 66) + '" y="40" text-anchor="middle">' + gv(f.ghost.m) + ' kg</text><text class="tb-hint" x="' + (W - 118) + '" y="40" text-anchor="end">where?</text></g>'
+          : '<g opacity=".9"><rect class="tb-ghost" x="' + (W - 92) + '" y="18" width="62" height="34" rx="5"/><text class="tb-angle-t" x="' + (W - 61) + '" y="40" text-anchor="middle">' + gv(f.ghost.m) + ' kg</text><text class="tb-hint" x="' + (W - 100) + '" y="40" text-anchor="end">where?</text></g>');
       label = 'A meter stick on a fulcrum at the ' + Math.round(f.pivot * 100) + ' cm mark with a ' + gv(f.masses[0].m) + ' kg mass hanging at ' + Math.round(f.masses[0].x * 100) + ' cm; a ' + gv(f.ghost.m) + ' kg mass is still to be placed.';
     } else if(f.kind === 'plank'){
       H = 230; var lx = 50, pw = W - 100, sc = pw / f.L, yp = 140, bench2 = 206, xx = lx + f.x * sc;
@@ -542,7 +556,7 @@
         out += '<rect class="tb-metal" x="' + n1(cx2 - 0.27 * ps2) + '" y="' + (cy2 - 3) + '" width="' + n1(0.54 * ps2) + '" height="6" rx="3" fill="url(#' + id + 'm)"/>' +
           [-1, 1].map(function(sg){ return '<rect x="' + n1(cx2 + sg * dd - 9) + '" y="' + (cy2 - 11) + '" width="18" height="22" rx="4" fill="url(#' + id + 'b)" stroke="#6B4E12" stroke-width="1.2"/>'; }).join('') +
           '<circle cx="' + cx2 + '" cy="' + cy2 + '" r="13" fill="url(#' + id + 'r)" class="tb-metal"/><line class="tb-string" x1="' + (cx2 + 13) + '" y1="' + cy2 + '" x2="' + (cx2 + 13) + '" y2="150"/>' + massArt(id, cx2 + 13, 132, 0.2, '0.20 kg') +
-          '<text class="tb-angle-t" x="' + cx2 + '" y="' + (cy2 - 30) + '" text-anchor="middle">Wheel ' + w[0] + ': sliders ' + gv(w[1]) + ' m out</text>';
+          '<text class="tb-angle-t" x="' + cx2 + '" y="' + (cy2 - 30) + '" text-anchor="middle">' + (Z > 1 ? w[0] + ': sliders ' : 'Wheel ' + w[0] + ': sliders ') + gv(w[1]) + ' m out</text>';
       });
       label = 'Two race wheels: A with its sliders ' + gv(f.dA) + ' m from the axle, B with them ' + gv(f.dB) + ' m out; a weight hangs from a string on each hub.';
     }

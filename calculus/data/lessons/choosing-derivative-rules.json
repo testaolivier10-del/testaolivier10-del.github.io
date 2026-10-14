@@ -1,0 +1,83 @@
+{
+ "topic": "choosing-derivative-rules",
+ "hook": "A mechanic does not grab a random wrench: one look at the bolt tells which tool fits. Differentiation is the same. You already own every rule you need; this topic trains the one look that tells you which rule to use first, so that long expressions stop being scary.",
+ "prereq": [
+  {
+   "q": "What is $\\frac{d}{dx}\\left(x e^x\\right)$?",
+   "options": [
+    "$e^x + xe^x$",
+    "$e^x$",
+    "$xe^x$",
+    "$e^x \\cdot 1$"
+   ],
+   "correct": 0,
+   "why": "Product rule: $1 \\cdot e^x + x \\cdot e^x$.",
+   "review": "product-rule"
+  },
+  {
+   "q": "What is $\\frac{d}{dx}\\frac{\\sin x}{x}$?",
+   "options": [
+    "$\\frac{x\\cos x - \\sin x}{x^2}$",
+    "$\\cos x$",
+    "$\\frac{\\sin x - x\\cos x}{x^2}$",
+    "$\\frac{\\cos x}{1}$"
+   ],
+   "correct": 0,
+   "why": "Quotient rule: $\\frac{(\\sin x)' x - \\sin x \\cdot (x)'}{x^2}$.",
+   "review": "quotient-rule"
+  },
+  {
+   "q": "What is $\\frac{d}{dx}e^{5x}$?",
+   "options": [
+    "$5e^{5x}$",
+    "$e^{5x}$",
+    "$5xe^{5x - 1}$",
+    "$e^5$"
+   ],
+   "correct": 0,
+   "why": "Chain rule: $e^{5x}$ times the inside derivative 5.",
+   "review": "chain-rule"
+  }
+ ],
+ "figure": {
+  "figure": "derivative-rule-chooser",
+  "caption": "Read the last operation to choose the first rule, then repeat inside each piece."
+ },
+ "chain": [
+  {
+   "cause": "Ask what you would compute last to evaluate the expression",
+   "effect": "that last operation names the first rule: sum, product, quotient or composition"
+  },
+  {
+   "cause": "Apply that rule",
+   "effect": "it leaves smaller pieces, each needing its own derivative"
+  },
+  {
+   "cause": "Repeat the question on each piece",
+   "effect": "one rule per layer, until only basic derivatives remain"
+  },
+  {
+   "cause": "Rewrite first when it removes a rule",
+   "effect": "$\\frac{5}{x^3} = 5x^{-3}$ needs only the power rule"
+  }
+ ],
+ "ideas": [
+  "The last operation decides the first rule: $x^2\\sin(3x)$ is a product; $\\sin^2(x^3)$ is a composition (a square).",
+  "Inside a product or quotient, any factor may still need the chain rule.",
+  "Equations mixing $x$ and $y$ call for implicit differentiation; an inverse calls for $\\frac{1}{f'(g(x))}$.",
+  "Rewrite before differentiating when it saves a rule, but do not simplify more than the question asks."
+ ],
+ "misconception": {
+  "wrong": "The derivative of a product or a quotient is the product or quotient of the derivatives.",
+  "right": "$(fg)' = f'g + fg'$ and $\\left(\\frac{f}{g}\\right)' = \\frac{f'g - fg'}{g^2}$. Multiplying or dividing the derivatives gives a different, wrong function."
+ },
+ "check": [
+  "calc-choosing-derivative-rules-1",
+  "calc-choosing-derivative-rules-2",
+  "calc-choosing-derivative-rules-3",
+  "calc-choosing-derivative-rules-4",
+  "calc-choosing-derivative-rules-11",
+  "calc-choosing-derivative-rules-15"
+ ],
+ "summary": "Choose the first rule from the last operation: a sum term by term, a product by the product rule, a quotient by the quotient rule (or a rewrite), a function of a function by the chain rule. Then ask the same question of each piece, one rule per layer."
+}

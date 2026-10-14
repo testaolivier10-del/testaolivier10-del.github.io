@@ -1,0 +1,600 @@
+{
+ "stimuli": {
+  "antiderivatives-s1": {
+   "kind": "table",
+   "title": "A function known from its derivative and one value",
+   "text": "A function $f$ has derivative $f'(x) = 3x^2 - 4x + 1$, and its graph passes through $(2, 5)$.",
+   "table": {
+    "caption": "What is known about f",
+    "cols": [
+     "Given",
+     "Value"
+    ],
+    "rows": [
+     [
+      "$f'(x)$",
+      "$3x^2 - 4x + 1$"
+     ],
+     [
+      "$f(2)$",
+      "5"
+     ]
+    ]
+   }
+  },
+  "antiderivatives-s2": {
+   "kind": "table",
+   "title": "Three kinds of integral of the same function",
+   "text": "Each row uses the integrand $2x$ (or $2t$).",
+   "table": {
+    "caption": "Definite integral, indefinite integral and accumulation function compared",
+    "cols": [
+     "Written",
+     "Kind",
+     "What it is"
+    ],
+    "rows": [
+     [
+      "$\\int_0^3 2x\\,dx$",
+      "definite integral",
+      "a number"
+     ],
+     [
+      "$\\int 2x\\,dx$",
+      "indefinite integral",
+      "a family of functions"
+     ],
+     [
+      "$\\int_0^x 2t\\,dt$",
+      "accumulation function",
+      "one function of x"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-antiderivatives-1",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "antiderivatives-s1",
+   "q": "Find $\\int (3x^2 - 4x + 1)\\,dx$. Include the constant: write $+ C$.",
+   "expr": {
+    "answer": "x^3 - 2x^2 + x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int (3x^2 - 4x + 1)\\,dx =",
+    "mistakes": [
+     {
+      "expr": "6x - 4",
+      "why": "That differentiates. An antiderivative goes the other way: raise each power by one and divide by the new power."
+     },
+     {
+      "expr": "x^3 - 4x^2 + x",
+      "why": "$\\int 4x\\,dx = 4 \\cdot \\frac{x^2}{2} = 2x^2$: divide by the new power, 2."
+     },
+     {
+      "expr": "3x^3 - 4x^2 + x",
+      "why": "$\\int 3x^2\\,dx = 3 \\cdot \\frac{x^3}{3} = x^3$; the coefficient 3 cancels with the new power."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Term by term: $\\int 3x^2\\,dx = x^3$, $\\int 4x\\,dx = 2x^2$, $\\int 1\\,dx = x$. So $\\int (3x^2 - 4x + 1)\\,dx = x^3 - 2x^2 + x + C$. Check: the derivative is $3x^2 - 4x + 1$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-2",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "antiderivatives-s1",
+   "q": "$f(x) = x^3 - 2x^2 + x + C$. Find the value of $C$ that makes the graph pass through $(2, 5)$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "5 is $f(2)$, not $C$. Substitute: $f(2) = 8 - 8 + 2 + C = 2 + C$, and set it equal to 5."
+     },
+     {
+      "value": 7,
+      "why": "$2 + C = 5$ gives $C = 3$. Subtract 2 from 5; do not add."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(2) = 2^3 - 2(2)^2 + 2 + C = 2 + C = 5$, so $C = 3$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-3",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "antiderivatives-s1",
+   "q": "Write $f(x)$.",
+   "expr": {
+    "answer": "x^3 - 2x^2 + x + 3",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "exact",
+    "needC": false,
+    "lhs": "f(x) =",
+    "mistakes": [
+     {
+      "expr": "x^3 - 2x^2 + x + 5",
+      "why": "The constant is not $f(2)$. Solve $f(2) = 2 + C = 5$: $C = 3$."
+     },
+     {
+      "expr": "x^3 - 2x^2 + x",
+      "why": "With $C = 0$ the graph passes through $(2, 2)$. Use the point $(2, 5)$ to find $C = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(x) = x^3 - 2x^2 + x + 3$. Check: $f'(x) = 3x^2 - 4x + 1$ and $f(2) = 8 - 8 + 2 + 3 = 5$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-4",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "antiderivatives-s1",
+   "q": "Using the function you found, evaluate it at the origin: what is $f(0)$?",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is $f'(0)$, the slope at 0. The value $f(0)$ is the constant term of $f(x) = x^3 - 2x^2 + x + 3$."
+     },
+     {
+      "value": 0,
+      "why": "$f(0) = C$, and $C = 3$ from the point $(2, 5)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(0) = 0 - 0 + 0 + 3 = 3$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-5",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "antiderivatives-s2",
+   "q": "What is $\\int_1^x 2t\\,dt$?",
+   "options": [
+    "$x^2 - 1$",
+    "$x^2 + C$",
+    "$x^2$",
+    "$2x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An antiderivative of $2t$ is $t^2$, so $\\int_1^x 2t\\,dt = x^2 - 1^2 = x^2 - 1$: a single function, the antiderivative that is 0 at $x = 1$.",
+    "options": [
+     "Correct: one function, $t^2\\Big|_1^x = x^2 - 1$, which is 0 at $x = 1$.",
+     "That is the whole family $\\int 2x\\,dx$. With a lower limit of 1 the constant is fixed: $x^2 - 1$.",
+     "$x^2$ is 1 at $x = 1$, but an accumulation from 1 to 1 must be 0. Subtract $1^2$.",
+     "$2x$ is the derivative of the accumulation function, not the function itself."
+    ]
+   }
+  },
+  {
+   "id": "calc-antiderivatives-6",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "antiderivatives-s2",
+   "q": "Which statement compares $\\int_0^3 2x\\,dx$ and $\\int 2x\\,dx$ correctly?",
+   "options": [
+    "Both equal $x^2 + C$",
+    "The first is $x^2 + C$; the second is the number 9",
+    "Both are the number 9",
+    "The first is the number 9; the second is the family $x^2 + C$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A definite integral (with limits) is a number: $\\int_0^3 2x\\,dx = 9$. An indefinite integral (no limits) is the family of all antiderivatives: $\\int 2x\\,dx = x^2 + C$.",
+    "options": [
+     "The limits 0 and 3 turn the first into a number: $3^2 - 0^2 = 9$.",
+     "They are swapped: the one with limits is the number.",
+     "Without limits there is nothing to substitute: $\\int 2x\\,dx$ is a family of functions.",
+     "Correct: limits make a number; no limits make a family of antiderivatives."
+    ]
+   }
+  },
+  {
+   "id": "calc-antiderivatives-7",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "antiderivatives-s2",
+   "q": "Which statement is written correctly?",
+   "options": [
+    "$\\int_0^3 2x\\,dx = x^2 + C$",
+    "$\\int 2x = x^2 + C$",
+    "$\\int 2x\\,dx = x^2 + C$",
+    "$\\int 2x\\,dx = x^2$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An indefinite integral has a differential and a constant: $\\int 2x\\,dx = x^2 + C$.",
+    "options": [
+     "With limits the integral is a number, 9, not a family of functions.",
+     "The differential $dx$ is missing; it names the variable of integration and is part of the notation.",
+     "Correct: the differential and the constant are both there.",
+     "$x^2$ is one antiderivative; the indefinite integral is all of them, so it needs $+ C$."
+    ]
+   }
+  },
+  {
+   "id": "calc-antiderivatives-8",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "antiderivatives-s2",
+   "q": "$F$ and $G$ are both antiderivatives of $2x$, with $F(0) = 2$ and $G(0) = 5$. Which is true for every $x$?",
+   "options": [
+    "$G(x) = \\frac{5}{2}F(x)$",
+    "$G(x) - F(x) = 3$",
+    "$G(x) = F(x)$",
+    "$G(x) - F(x) = 3x$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$(G - F)' = 2x - 2x = 0$, so $G - F$ is constant on the interval. At $x = 0$ it is $5 - 2 = 3$.",
+    "options": [
+     "Antiderivatives differ by an added constant, not a constant factor.",
+     "Correct: two antiderivatives of the same function differ by a constant, here 5 - 2.",
+     "Two antiderivatives can differ by a constant; their values at 0 already differ.",
+     "The difference has derivative $2x - 2x = 0$, so it is a constant, not $3x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-antiderivatives-9",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\left(\\frac{5}{x} - 3e^x\\right)dx$ for $x > 0$. Include the constant: write $+ C$.",
+   "expr": {
+    "answer": "5ln(abs(x)) - 3e^x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     3
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\left(\\frac{5}{x} - 3e^x\\right)dx =",
+    "mistakes": [
+     {
+      "expr": "5ln(abs(x)) + 3e^x",
+      "why": "The sign of the second term stays: $\\int -3e^x\\,dx = -3e^x$."
+     },
+     {
+      "expr": "-5/x^2 - 3e^x",
+      "why": "$-\\frac{5}{x^2}$ is the derivative of $\\frac{5}{x}$. The function whose derivative is $\\frac{5}{x}$ is $5\\ln|x|$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int \\frac{5}{x}\\,dx = 5\\ln|x|$ and $\\int 3e^x\\,dx = 3e^x$, so the answer is $5\\ln|x| - 3e^x + C$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-10",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\sqrt{x}\\,dx$. Include the constant: write $+ C$.",
+   "expr": {
+    "answer": "(2/3)x^(3/2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.2,
+     4
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\sqrt{x}\\,dx =",
+    "answerTex": "\\frac{2}{3}x^{3/2}",
+    "mistakes": [
+     {
+      "expr": "1/(2sqrt(x))",
+      "why": "That is the derivative of $\\sqrt{x}$. Write $\\sqrt{x} = x^{1/2}$ and raise the power: $\\frac{x^{3/2}}{3/2}$."
+     },
+     {
+      "expr": "(3/2)x^(3/2)",
+      "why": "Divide by the new power $\\frac{3}{2}$, which multiplies by $\\frac{2}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sqrt{x} = x^{1/2}$, so $\\int x^{1/2}\\,dx = \\frac{x^{3/2}}{3/2} + C = \\frac{2}{3}x^{3/2} + C$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-11",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int (4\\sin x + \\sec^2 x)\\,dx$. Include the constant: write $+ C$.",
+   "expr": {
+    "answer": "-4cos(x) + tan(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1.2,
+     1.2
+    ],
+    "mode": "constant",
+    "lhs": "\\int (4\\sin x + \\sec^2 x)\\,dx =",
+    "mistakes": [
+     {
+      "expr": "4cos(x) + tan(x)",
+      "why": "The derivative of $\\cos x$ is $-\\sin x$, so $\\int \\sin x\\,dx = -\\cos x$. Check by differentiating."
+     },
+     {
+      "expr": "-4cos(x) + sec(x)^3/3",
+      "why": "The power rule does not apply to $\\sec^2 x$. Read a derivative rule backward: $\\frac{d}{dx}\\tan x = \\sec^2 x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int 4\\sin x\\,dx = -4\\cos x$ and $\\int \\sec^2 x\\,dx = \\tan x$. Answer: $-4\\cos x + \\tan x + C$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-12",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Rewrite as a power of $x$, then antidifferentiate: $\\int \\frac{1}{x^3}\\,dx$. Include the constant: write $+ C$.",
+   "expr": {
+    "answer": "-1/(2x^2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     3
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{1}{x^3}\\,dx =",
+    "answerTex": "-\\frac{1}{2x^2}",
+    "mistakes": [
+     {
+      "expr": "ln(abs(x^3))",
+      "why": "$\\ln|x|$ is only for $x^{-1}$. Here $\\frac{1}{x^3} = x^{-3}$, and the power rule works: $\\frac{x^{-2}}{-2}$."
+     },
+     {
+      "expr": "-1/(4x^4)",
+      "why": "The power goes up by one, from $-3$ to $-2$, not down to $-4$."
+     },
+     {
+      "expr": "1/(2x^2)",
+      "why": "Dividing by the new power $-2$ makes the result negative: $\\frac{x^{-2}}{-2} = -\\frac{1}{2x^2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int x^{-3}\\,dx = \\frac{x^{-2}}{-2} + C = -\\frac{1}{2x^2} + C$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-13",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is $\\int \\frac{1}{x}\\,dx$?",
+   "options": [
+    "$\\ln|x| + C$",
+    "$\\frac{x^0}{0} + C$",
+    "$-\\frac{1}{x^2} + C$",
+    "$\\frac{1}{\\ln x} + C$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $x > 0$, $(\\ln x)' = \\frac{1}{x}$; for $x < 0$, $(\\ln(-x))' = \\frac{1}{x}$ too. So $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$.",
+    "options": [
+     "Correct: $\\frac{d}{dx}\\ln|x| = \\frac{1}{x}$ for $x \\ne 0$.",
+     "The power rule needs $n \\ne -1$; for $x^{-1}$ it would divide by 0. The antiderivative is $\\ln|x|$.",
+     "That is the derivative of $\\frac{1}{x}$, the wrong direction.",
+     "The derivative of $\\frac{1}{\\ln x}$ is $-\\frac{1}{x(\\ln x)^2}$, not $\\frac{1}{x}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-antiderivatives-14",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find $\\int (x^2 + 1)^2\\,dx$. (Expand first.) Include the constant: write $+ C$.",
+   "expr": {
+    "answer": "x^5/5 + 2x^3/3 + x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int (x^2 + 1)^2\\,dx =",
+    "mistakes": [
+     {
+      "expr": "(x^2 + 1)^3/3",
+      "why": "Its derivative is $(x^2 + 1)^2 \\cdot 2x$: the inside's derivative $2x$ would have to be in the integrand. Expand instead: $x^4 + 2x^2 + 1$."
+     },
+     {
+      "expr": "x^5/5 + x",
+      "why": "$(x^2 + 1)^2 = x^4 + 2x^2 + 1$: the middle term $2x^2$ is missing."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(x^2 + 1)^2 = x^4 + 2x^2 + 1$, so the integral is $\\frac{x^5}{5} + \\frac{2x^3}{3} + x + C$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-15",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\frac{x^3 - 2x}{x}\\,dx$ for $x > 0$. Include the constant: write $+ C$.",
+   "expr": {
+    "answer": "x^3/3 - 2x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     3
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{x^3 - 2x}{x}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "(x^4/4 - x^2)/(x^2/2)",
+      "why": "The top and the bottom cannot be integrated separately. Divide first: $\\frac{x^3 - 2x}{x} = x^2 - 2$."
+     },
+     {
+      "expr": "x^3/3 - 2ln(abs(x))",
+      "why": "$\\frac{2x}{x} = 2$, a constant, whose antiderivative is $2x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide each term by $x$: $\\frac{x^3 - 2x}{x} = x^2 - 2$. Then $\\int (x^2 - 2)\\,dx = \\frac{x^3}{3} - 2x + C$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-16",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the inverse tangent rule, antidifferentiate $\\int \\frac{3}{1 + x^2}\\,dx$. Include the constant: write $+ C$.",
+   "expr": {
+    "answer": "3arctan(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{3}{1 + x^2}\\,dx =",
+    "mistakes": [
+     {
+      "expr": "3ln(1 + x^2)",
+      "why": "The derivative of $\\ln(1 + x^2)$ is $\\frac{2x}{1 + x^2}$. Without the $2x$ on top, the rule to read backward is $\\frac{d}{dx}\\arctan x = \\frac{1}{1 + x^2}$."
+     },
+     {
+      "expr": "arctan(x)",
+      "why": "Keep the constant factor 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d}{dx}\\arctan x = \\frac{1}{1 + x^2}$, so $\\int \\frac{3}{1 + x^2}\\,dx = 3\\arctan x + C$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-17",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "$f''(x) = 6$, $f'(0) = 2$ and $f(0) = 1$. Find $f(1)$.",
+   "numeric": {
+    "answer": 6,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That uses $f'(x) = 6x$ with no constant. $f'(0) = 2$ means $f'(x) = 6x + 2$, which adds $2x$ to $f$."
+     },
+     {
+      "value": 5,
+      "why": "$f(x) = 3x^2 + 2x + C$ with $f(0) = 1$ means $C = 1$; it was left out."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 6x + C_1$ with $f'(0) = 2$: $f'(x) = 6x + 2$. Then $f(x) = 3x^2 + 2x + C_2$ with $f(0) = 1$: $f(x) = 3x^2 + 2x + 1$. So $f(1) = 6$."
+   }
+  }
+ ]
+}

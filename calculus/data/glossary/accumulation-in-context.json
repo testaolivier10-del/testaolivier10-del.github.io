@@ -1,0 +1,5 @@
+{
+ "rate-in-out": {
+  "def": "The rate in (inflow rate) is how fast a quantity is added; the rate out (outflow rate) is how fast it is removed. The amount changes at rate in minus rate out, so amount at time $t$ = amount at the start + $\\int$ (rate in − rate out)."
+ }
+}

@@ -17,6 +17,7 @@
       { key: 'apbio', name: 'AP® Biology', path: '/bio/', status: 'beta' },
       { key: 'apchem', name: 'AP® Chemistry', path: '/chem/', status: 'beta' },
       { key: 'apphys', name: 'AP® Physics 1', path: '/physics/', status: 'beta' },
+      { key: 'apcalc', name: 'AP® Calculus AB', path: '/calculus/', status: 'beta' },
     ];
     // courses:end
     var COURSES = COURSE_LIST.filter(function(c){ return c.status !== 'hidden'; }).map(function(c){

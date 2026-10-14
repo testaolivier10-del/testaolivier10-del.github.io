@@ -1,0 +1,12 @@
+{
+ "ivt-continuous-vs-jump": {
+  "file": "figures/ivt-continuous-vs-jump.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Left: a continuous function on the closed interval [1, 5] with f(1) = 1 and f(5) = 5. The dashed line y = 3 lies between 1 and 5, and the curve crosses it three times, at c₁, c₂ and c₃, all inside (1, 5): the theorem promises at least one. Right: a function with a jump at x = 3 that also has f(1) = 1 and f(5) = 5 but skips over y = 3, so no c gives f(c) = 3."
+ }
+}

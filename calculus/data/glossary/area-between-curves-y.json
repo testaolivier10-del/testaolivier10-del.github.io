@@ -1,0 +1,5 @@
+{
+ "integrate-in-y": {
+  "def": "Finding an area with horizontal strips: write each edge as $x$ in terms of $y$, and integrate right minus left, $\\int_c^d \\left(x_{\\text{right}} - x_{\\text{left}}\\right)\\,dy$, between $y$-values. Best when each side edge is one formula."
+ }
+}

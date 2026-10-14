@@ -84,6 +84,42 @@ tool-studio.js; the short version:
   functional pass (deep links and problem codes, Check and recording, Keep going, menu items, Esc/focus return,
   focus trap, hint once). Then `scripts/ci-local.sh` with `BROWSER=1`.
 
+## Phones: picture first, Enlarge (2026-10-13)
+Owner: on a phone the trainers' pictures were too small (dock about half of a 360-390 px screen). Shared-layer
+change only (`tool-studio.css/js`); desktop (≥1000 px) is unchanged apart from the Enlarge button.
+- **Portrait ≤640 px:** the stage is `62svh` (min 300 px), full width (no side margin, 4 px inner padding), bar 52 px.
+  The dock follows below with tighter spacing and no inner scroll; the page scrolls for long drill text (the
+  `.ls-act` / primary row stays sticky at the bottom of the screen). The caption shows 3 lines; a tap shows the
+  rest (screen readers get it all). Segments and Why? are 44 px tall.
+- **Phone on its side** (≤999 px wide and ≤540 px tall, landscape): picture | dock side by side (dock 36%, min 270 px,
+  scrolls inside), bar 44 px, safe-area insets respected.
+- **Enlarge** (`.ls-enl`, bottom-right of the stage, every size; shown only when the stage holds an svg, canvas or img at
+  least 120 px wide): the SAME stage nodes become a fixed full-screen overlay (`.ls-stage.is-big`, root `.ls-big`), and
+  the page asks for Fullscreen (`documentElement`, so body-level popups still show; iPhone Safari has no element
+  fullscreen and just gets the overlay). A bar on top: title, zoom out / % / zoom in, Rotate (only where
+  `screen.orientation.lock` works, i.e. Android in fullscreen), Close. Zoom 100-400% lays the picture out bigger
+  (`--ls-zw`/`--ls-zh` widths, not a transform, so pointer maths stays right) and the stage scrolls to pan; pinch and
+  two-finger pan on touch, ctrl+wheel, `+`/`-` keys, the buttons. One finger still drives the tool. Turning the phone
+  sideways fills the screen (a portrait phone gets a one-line toast suggesting it). Accessibility: the stage becomes
+  `role=dialog aria-modal`, bar/dock/sheet get `inert`, focus goes to Close and is trapped, Esc (or leaving
+  fullscreen) closes and returns focus to Enlarge. No animation (reduced motion needs nothing extra).
+- **Re-measure:** entering, leaving, every zoom step and fullscreen changes dispatch `window` `resize` (what tools
+  already redraw on) and a `ls-stage` CustomEvent on the stage (`detail: { big, zoom }`); ResizeObserver tools just work.
+
+### Hooks for tools (CSS and JS)
+- `.ls-root.ls-phone`: a phone in either orientation (`(max-width:640px), (max-width:999.98px) and (max-height:540px)`).
+  Use it to pick a narrower viewBox or bigger label sizes.
+- `--ls-scale` on `.ls-stage`: multiplier for on-stage text that is NOT inside a scaling svg (HTML labels, readouts,
+  canvas text): 1 on desktop, 1.15 on a phone, times the zoom when enlarged. E.g.
+  `.my-label{font-size:calc(12px * var(--ls-scale, 1));}`. `--ls-zoom` is the zoom alone (1-4).
+- `.ls-stage.is-big` / `.ls-root.ls-big`: the enlarged view (e.g. show extra axis labels there).
+- `s.enlarge(true|false)` opens/closes; `s.enlarge()` returns the state. `mount({ enlarge: false })` hides the button
+  (a stage with no picture worth enlarging).
+- SVG text already scales with its picture; a tool whose svg text is tiny on a phone should use a taller/narrower
+  viewBox under `.ls-phone` or set its font sizes in viewBox units large enough at 360 px.
+- Weight: `assets/course` measured 25.1 KB gzipped against a 22 KB budget; needs a bump in `scripts/check-weight.mjs`
+  (22 -> 25.5, "phone stage and Enlarge").
+
 ## Status
 | Step | Scope | Status |
 |---|---|---|

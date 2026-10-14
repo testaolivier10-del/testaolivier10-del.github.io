@@ -1,0 +1,23 @@
+{
+ "about": "Trainer: tangent tracer (Unit 2, the flagship, free). Explore: twelve shelf functions and typed ones (ApCalcExpr), P dragged along f, Q at distance h, the secant and its slope, h toward 0 from both sides with the table of difference quotients, the tangent line on tap, f′ drawn as P moves or traced, one-sided slopes at corners, cusps, vertical tangents, jumps and endpoints (tangentTracer.classify). Test yourself: six seeded kinds from tangentTracer.generate; each context unlocks with its topic. The validator regenerates 300 problems per context and recomputes every key independently.",
+ "slug": "tangent-tracer",
+ "kind": "simulator",
+ "topic": "derivative-definition",
+ "intro": "<p>The derivative is the slope of a curve at one point. You cannot get a slope from one point, so take two: P on the curve and Q a distance $h$ away. The line through them, the secant, has slope $\\frac{f(a+h) - f(a)}{h}$. In <b>Explore</b>, slide $h$ toward $0$ from either side and watch the secant turn into the tangent line while its slope closes in on $f'(a)$. Move P and the graph of $f'$ draws itself underneath. In <b>Test yourself</b>, estimate derivatives from graphs and tables, pick and sketch the graph of $f'$, write tangent lines and find where $f$ is not differentiable.</p>",
+ "howItWorksTitle": "The ideas behind the tracer",
+ "howItWorks": "<ul><li><b>Secant slope.</b> Through $P = (a, f(a))$ and $Q = (a + h, f(a + h))$ the slope is $\\frac{f(a+h) - f(a)}{h}$, the average rate of change of $f$ from $a$ to $a + h$. With $h < 0$, Q is to the left of P.</li><li><b>The derivative.</b> $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}$, when this limit exists. It is the slope of the tangent line, and the instantaneous rate of change of $f$ at $a$.</li><li><b>Tangent line.</b> $y = f(a) + f'(a)(x - a)$.</li><li><b>Not differentiable.</b> The limit fails at a corner (the one-sided slopes disagree), a cusp (they go to $-\\infty$ and $+\\infty$), a vertical tangent (both go to $\\infty$) and wherever $f$ is not continuous. Differentiable implies continuous; continuous does not imply differentiable.</li><li><b>The graph of $f'$.</b> Its height at each $x$ is the slope of $f$ there: positive where $f$ rises, negative where it falls, $0$ at a peak or valley.</li></ul><p>The h slider is on a log scale: each step toward the middle makes $h$ about ten times smaller, down to $\\pm 0.001$. The tool computes the slopes for the functions on its shelf from their exact derivatives and checks each side of P separately; for a typed function it uses difference quotients with very small $h$. Sketches are graded point by point: the sign, a zero where $f$ has a peak or valley, and the size within about a quarter.</p>",
+ "partTopics": {
+  "units": "average-and-instant-rates",
+  "line": "derivative-definition"
+ },
+ "contexts": [
+  { "id": "slope-graph", "topic": "estimating-derivatives", "types": ["estimate"] },
+  { "id": "rate-table", "topic": "estimating-derivatives", "types": ["table"] },
+  { "id": "which-fprime", "topic": "derivative-definition", "types": ["whichgraph"] },
+  { "id": "sketch-fprime", "topic": "derivative-definition", "types": ["sketch"] },
+  { "id": "tangent-given", "topic": "derivative-definition", "types": ["tanline"], "source": "given" },
+  { "id": "tangent-power", "topic": "power-rule", "types": ["tanline"], "source": "power" },
+  { "id": "tangent-trans", "topic": "derivatives-sin-cos-exp-ln", "types": ["tanline"], "source": "trans" },
+  { "id": "not-differentiable", "topic": "differentiability", "types": ["notdiff"] }
+ ]
+}

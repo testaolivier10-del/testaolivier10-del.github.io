@@ -1,0 +1,526 @@
+{
+ "stimuli": {
+  "limit-laws-s1": {
+   "kind": "graph",
+   "title": "The graphs of $f$ and $g$",
+   "text": "Both functions are defined for $-1 \\le x \\le 4$ and are made of line segments. $f$ (crimson): $f(x) = x + 1$ for $x < 1$, ending at an open circle $(1, 2)$, and $f(x) = x - 1$ for $x \\ge 1$, starting at the filled point $(1, 0)$. $g$ (blue): $g(x) = 2 - x$ for $x < 1$, ending at an open circle $(1, 1)$, and $g(x) = x + 2$ for $x \\ge 1$, starting at the filled point $(1, 3)$.",
+   "plot": {
+    "label": "Graphs of the piecewise linear functions f and g on the interval from x = -1 to x = 4, each with a jump at x = 1",
+    "width": 400,
+    "height": 330,
+    "x": [
+     -1.5,
+     4.5
+    ],
+    "y": [
+     -1,
+     6.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x + 1",
+      "domain": [
+       -1,
+       1
+      ],
+      "cls": "s1",
+      "ends": [
+       "closed",
+       "open"
+      ]
+     },
+     {
+      "fn": "x - 1",
+      "domain": [
+       1,
+       4
+      ],
+      "cls": "s1",
+      "label": "f",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     },
+     {
+      "fn": "2 - x",
+      "domain": [
+       -1,
+       1
+      ],
+      "cls": "s2",
+      "ends": [
+       "closed",
+       "open"
+      ]
+     },
+     {
+      "fn": "x + 2",
+      "domain": [
+       1,
+       4
+      ],
+      "cls": "s2",
+      "label": "g",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ]
+   }
+  },
+  "limit-laws-s2": {
+   "kind": "table",
+   "title": "Three limits at $x = 4$",
+   "table": {
+    "caption": "The limits of the functions $p$, $q$ and $r$ as $x$ approaches 4",
+    "cols": [
+     "Function",
+     "$p$",
+     "$q$",
+     "$r$"
+    ],
+    "rows": [
+     [
+      "Limit as $x \\to 4$",
+      "6",
+      "−2",
+      "0"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-limit-laws-1",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "limit-laws-s1",
+   "q": "What is $\\lim_{x \\to 1} \\left[f(x) + g(x)\\right]$?",
+   "options": [
+    "$3$",
+    "It does not exist, because neither $\\lim_{x \\to 1} f(x)$ nor $\\lim_{x \\to 1} g(x)$ exists.",
+    "$5$",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Work one side at a time. From the left, $f(x) \\to 2$ and $g(x) \\to 1$, so $f(x) + g(x) \\to 3$. From the right, $f(x) \\to 0$ and $g(x) \\to 3$, so the sum $\\to 3$. Both sides give 3, so the limit is 3, even though $f$ and $g$ each jump.",
+    "options": [
+     "Left: $2 + 1$. Right: $0 + 3$. Both 3.",
+     "The sum law needs both limits to exist, so it cannot be used here; but the sum can still have a limit. Check each side of the sum directly.",
+     "5 mixes sides: $f$'s left-hand limit 2 plus $g$'s right-hand limit 3. Each one-sided limit of the sum uses the same side for both functions.",
+     "2 is the left-hand limit of $f$ alone; the question asks about the sum $f + g$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-laws-2",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "limit-laws-s1",
+   "q": "What is $\\lim_{x \\to 1} f(x)g(x)$?",
+   "options": [
+    "It does not exist.",
+    "$2$, from $2 \\cdot 1$",
+    "$0$",
+    "$3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From the left, $f(x)g(x) \\to 2 \\cdot 1 = 2$. From the right, $f(x)g(x) \\to 0 \\cdot 3 = 0$. The one-sided limits differ, so the limit does not exist.",
+    "options": [
+     "Left 2, right 0.",
+     "2 is only the left-hand limit of the product.",
+     "0 is only the right-hand limit (and $f(1)g(1)$).",
+     "3 is the limit of the sum, not the product."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-laws-3",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-laws-s1",
+   "q": "Read the needed values from the graphs and use the quotient law to find $\\lim_{x \\to 2} \\frac{f(x)}{g(x)}$.",
+   "numeric": {
+    "answer": "1/4",
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "The quotient is $\\frac{f}{g}$: $\\frac{1}{4}$, not $\\frac{4}{1}$."
+     },
+     {
+      "value": "3/4",
+      "why": "Near $x = 2$ use the right-hand pieces: $f(x) = x - 1 \\to 1$ and $g(x) = x + 2 \\to 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Near $x = 2$ both graphs are unbroken lines: $f(x) \\to 1$ and $g(x) \\to 4$. Since $4 \\ne 0$, the quotient law gives $\\frac{1}{4}$."
+   }
+  },
+  {
+   "id": "calc-limit-laws-4",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "single",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "limit-laws-s1",
+   "q": "Use the graphs to evaluate the limit of the composite function, $\\lim_{x \\to 0} f(g(x))$.",
+   "options": [
+    "$1$",
+    "$2$",
+    "$3$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As $x \\to 0$, $g(x) = 2 - x \\to 2$. Near an input of 2, $f$ is the unbroken line $x - 1$, so $f(g(x)) \\to f(2) = 1$.",
+    "options": [
+     "Inside first: $g(x) \\to 2$; then $f$ near 2 gives 1.",
+     "2 is the inside limit, $\\lim_{x \\to 0} g(x)$. Then apply $f$.",
+     "That is $g(1)$, not the composite near $x = 0$.",
+     "That is $f(1)$ from the right; the input to $f$ is near 2, not 1."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-laws-5",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-laws-s1",
+   "q": "Find $\\lim_{x \\to 1^-} \\left[2f(x) - g(x)\\right]$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": -3,
+      "why": "That uses the right-hand pieces ($0$ and $3$). From the left, $f(x) \\to 2$ and $g(x) \\to 1$."
+     },
+     {
+      "value": 1,
+      "why": "Use one side for both functions: from the left, $f \\to 2$ and $g \\to 1$, so $2(2) - 1 = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the left, $f(x) \\to 2$ and $g(x) \\to 1$. So $2f(x) - g(x) \\to 2(2) - 1 = 3$."
+   }
+  },
+  {
+   "id": "calc-limit-laws-6",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limit-laws-s2",
+   "q": "Find $\\lim_{x \\to 4} p(x)q(x)$.",
+   "numeric": {
+    "answer": -12,
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "$6 \\cdot (-2)$ is negative: $-12$."
+     },
+     {
+      "value": 4,
+      "why": "The product law multiplies the limits; it does not add them."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product law: $\\lim_{x \\to 4} p(x)q(x) = 6 \\cdot (-2) = -12$."
+   }
+  },
+  {
+   "id": "calc-limit-laws-7",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-laws-s2",
+   "q": "Find $\\lim_{x \\to 4} \\frac{p(x) - 3q(x)}{p(x) + q(x)}$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$-3q(x) \\to -3(-2) = +6$, so the numerator approaches $6 + 6 = 12$, not $6 - 6$."
+     },
+     {
+      "value": 1.5,
+      "why": "The denominator approaches $6 + (-2) = 4$, not 8."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Numerator: $6 - 3(-2) = 12$. Denominator: $6 + (-2) = 4 \\ne 0$. Quotient law: $\\frac{12}{4} = 3$."
+   }
+  },
+  {
+   "id": "calc-limit-laws-8",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "limit-laws-s2",
+   "q": "What can you conclude about $\\lim_{x \\to 4} \\frac{p(x)}{r(x)}$?",
+   "options": [
+    "No finite limit: the top heads to 6 while the bottom heads to 0.",
+    "It is 0, because the denominator approaches 0 and dividing by it gives 0.",
+    "It is 6, because the numerator approaches 6.",
+    "It equals $\\frac{6}{0} = 0$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The quotient law needs a denominator limit that is not 0, so it does not apply. Dividing numbers near 6 by numbers near 0 gives outputs of huge size, so the quotient has no finite limit.",
+    "options": [
+     "Top near 6, bottom near 0: unbounded.",
+     "A denominator near 0 makes a quotient large, not small.",
+     "The denominator matters; it is heading to 0.",
+     "$\\frac{6}{0}$ is not a number, and writing it with \"=\" is a linkage error."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-laws-9",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limit-laws-s2",
+   "q": "What is $\\lim_{x \\to 4} \\sqrt{p(x) - q(x)}$?",
+   "options": [
+    "$2\\sqrt{2}$",
+    "$2$",
+    "$8$",
+    "$\\sqrt{6} + \\sqrt{2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Inside: $p(x) - q(x) \\to 6 - (-2) = 8$. The root law (for a positive inside limit): $\\sqrt{8} = 2\\sqrt{2}$.",
+    "options": [
+     "$\\sqrt{8} = 2\\sqrt{2}$.",
+     "That is $\\sqrt{6 + (-2)} = \\sqrt{4}$: the subtraction of $-2$ was treated as adding.",
+     "8 is the inside limit; take its square root.",
+     "A root does not split over a sum: $\\sqrt{6 + 2} \\ne \\sqrt{6} + \\sqrt{2}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-laws-10",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\lim_{x \\to -1} \\frac{x^3 + 2x^2 - 5}{x^2 + 1}$.",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "$(-1)^3 = -1$, not $+1$: the numerator is $-1 + 2 - 5 = -4$."
+     },
+     {
+      "value": -4,
+      "why": "Divide by the denominator's limit, $(-1)^2 + 1 = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A rational function whose denominator is not 0 at $x = -1$: substitute. Numerator $(-1)^3 + 2(-1)^2 - 5 = -4$; denominator $(-1)^2 + 1 = 2$. Limit: $\\frac{-4}{2} = -2$."
+   }
+  },
+  {
+   "id": "calc-limit-laws-11",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\lim_{x \\to 5} (x - 3)\\sqrt{x + 4}$.",
+   "numeric": {
+    "answer": 6,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "Multiply the two limits: $(5 - 3)$ times $\\sqrt{9}$ is $2 \\cdot 3$, not $2 + 3$."
+     },
+     {
+      "value": 18,
+      "why": "$\\sqrt{9} = 3$, not 9."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product law, then root law: $(5 - 3) \\cdot \\sqrt{5 + 4} = 2 \\cdot 3 = 6$."
+   }
+  },
+  {
+   "id": "calc-limit-laws-12",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\begin{cases} x^2 - 1 & x < 3 \\\\ 2x + 2 & x \\ge 3 \\end{cases}$. What is $\\lim_{x \\to 3} f(x)$?",
+   "options": [
+    "$8$",
+    "It does not exist.",
+    "$9$",
+    "$4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From the left, use $x^2 - 1$: $9 - 1 = 8$. From the right, use $2x + 2$: $6 + 2 = 8$. Both one-sided limits are 8, so the limit is 8.",
+    "options": [
+     "Left 8, right 8.",
+     "The pieces meet: both sides give 8.",
+     "That forgets the $-1$ in $x^2 - 1$.",
+     "Substitute 3 into the piece: $2(3) + 2 = 8$, not 4."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-laws-13",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which limit can be found by direct substitution?",
+   "options": [
+    "$\\lim_{x \\to 0} \\frac{x^2 + 1}{x + 4}$",
+    "$\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}$",
+    "$\\lim_{x \\to 2} \\frac{x + 1}{x - 2}$",
+    "$\\lim_{x \\to 1} \\sqrt{x - 5}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rational function can be evaluated by substitution where its denominator is not 0. At $x = 0$ the denominator is 4, so the limit is $\\frac{1}{4}$.",
+    "options": [
+     "Denominator 4 at $x = 0$: substitute.",
+     "At $x = 3$ the denominator is 0, so substitution gives no value; Topic 1.6 handles this.",
+     "At $x = 2$ the denominator is 0.",
+     "$\\sqrt{x - 5}$ is not defined for $x$ near 1."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-laws-14",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What can you conclude about $\\lim_{x \\to 2} \\frac{x + 1}{x - 2}$?",
+   "options": [
+    "It is not a finite number: the top approaches 3 and the bottom approaches 0.",
+    "It equals 0, because the bottom approaches 0 and the quotient shrinks with it.",
+    "It equals 3, the limit of the top.",
+    "It equals $\\frac{3}{0}$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The quotient law fails because the denominator's limit is 0. With the top near 3 and the bottom near 0, the quotient grows without bound in size, so it has no finite limit.",
+    "options": [
+     "Nonzero over a number near 0: unbounded.",
+     "A small denominator makes a quotient large.",
+     "The denominator still matters.",
+     "$\\frac{3}{0}$ is not a number; that is not a limit value."
+    ]
+   }
+  },
+  {
+   "id": "calc-limit-laws-15",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "If $\\lim_{x \\to a} \\left[3f(x) - 2\\right] = 10$, find $\\lim_{x \\to a} f(x)$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": "8/3",
+      "why": "Undo the $-2$ by adding 2, not subtracting: $3L - 2 = 10$ gives $3L = 12$."
+     },
+     {
+      "value": 12,
+      "why": "$3L = 12$, so divide by 3: $L = 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Let $L = \\lim_{x \\to a} f(x)$. The laws give $3L - 2 = 10$, so $3L = 12$ and $L = 4$."
+   }
+  },
+  {
+   "id": "calc-limit-laws-16",
+   "unit": "unit-1",
+   "topic": "limit-laws",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes $\\lim_{x \\to 3} \\frac{x^2 + 1}{x - 1} = \\frac{10}{2} = 5$. Which justification supports substituting $x = 3$?",
+   "options": [
+    "It is a rational function whose denominator is not 0 at $x = 3$.",
+    "The numerator is positive at $x = 3$.",
+    "Any function given by a single formula can be found by substitution.",
+    "The answer 5 is a whole number."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Direct substitution is justified for polynomials, and for rational functions where the denominator is not 0. At $x = 3$ the denominator is 2.",
+    "options": [
+     "Rational, with a nonzero denominator at 3.",
+     "The sign of the numerator is irrelevant.",
+     "Substitution fails for $\\frac{x^2 - 9}{x - 3}$ at 3, for example.",
+     "A nice-looking answer is not a reason."
+    ]
+   }
+  }
+ ]
+}

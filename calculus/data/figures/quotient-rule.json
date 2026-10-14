@@ -1,0 +1,12 @@
+{
+ "quotient-graph": {
+  "file": "figures/quotient-graph.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 530,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Top: the graph of f(x) = x over (x squared plus 1), with a low point at (minus 1, minus 0.5) and a high point at (1, 0.5). Level tangent lines are drawn at x = minus 1 and 1, and a tangent line of slope 1 at x = 0. Bottom: the graph of f prime of x = (1 minus x squared) over (x squared plus 1) squared, which crosses 0 at x = minus 1 and 1 and has height 1 at x = 0."
+ }
+}

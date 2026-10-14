@@ -1,0 +1,72 @@
+{
+ "topic": "average-value",
+ "hook": "A weather report says the average temperature yesterday was 19 °C. It was never \"19 for the whole day\"; it was colder at dawn and warmer at three. The average is the one steady temperature that would have built up the same total. For a function, that total is an integral, and the average value is the integral divided by the length of the interval.",
+ "prereq": [
+  {
+   "q": "$\\int_0^2 3x^2\\,dx =$",
+   "options": [
+    "8",
+    "12",
+    "6",
+    "4"
+   ],
+   "correct": 0,
+   "why": "$x^3\\Big|_0^2 = 8$.",
+   "review": "ftc-definite-integrals"
+  },
+  {
+   "q": "The average rate of change of $f$ on $[1, 3]$ is",
+   "options": [
+    "$\\frac{f(3) - f(1)}{3 - 1}$",
+    "$\\frac{f(3) + f(1)}{2}$",
+    "$f'(2)$",
+    "$\\frac{f'(3) - f'(1)}{2}$"
+   ],
+   "correct": 0,
+   "why": "Change in output over change in input: the slope of the secant line.",
+   "review": "average-and-instant-rates"
+  }
+ ],
+ "figure": {
+  "figure": "average-value-rectangle",
+  "caption": "$f(x) = 6x - x^2$ on $[0, 6]$: the area under $f$ is 36, the same as a $6 \\times 6$ rectangle, so the average value is 6."
+ },
+ "chain": [
+  {
+   "cause": "$\\int_a^b f(x)\\,dx$ is the signed area, or the total accumulated",
+   "effect": "spread it evenly over the interval to get one steady height"
+  },
+  {
+   "cause": "Divide by the length $b - a$",
+   "effect": "$f_{\\text{avg}} = \\frac{1}{b - a}\\int_a^b f(x)\\,dx$, in the units of $f$"
+  },
+  {
+   "cause": "$f$ is continuous on $[a, b]$",
+   "effect": "$f$ takes its average value at some $c$ in $[a, b]$ (between its minimum and maximum, by the Intermediate Value Theorem)"
+  },
+  {
+   "cause": "The integrand is $f'$ instead of $f$",
+   "effect": "$\\frac{1}{b - a}\\int_a^b f'(x)\\,dx = \\frac{f(b) - f(a)}{b - a}$, the average rate of change of $f$"
+  }
+ ],
+ "ideas": [
+  "<b>Average value</b> of $f$ on $[a, b]$: $\\frac{1}{b - a}\\int_a^b f(x)\\,dx$. The integrand is $f$ itself.",
+  "Average value is a height, in the units of $f$. Average rate of change, $\\frac{f(b) - f(a)}{b - a}$, is a slope, in units of $f$ per unit of $x$.",
+  "Areas below the axis count as negative, exactly as in the integral.",
+  "If $f$ is continuous, some $c$ in $[a, b]$ has $f(c) = f_{\\text{avg}}$.",
+  "From a graph use geometry for the integral; from a table use a Riemann or trapezoidal sum; from a formula use the Fundamental Theorem or a calculator."
+ ],
+ "misconception": {
+  "wrong": "The average value of $f$ on $[0, 8]$ is $\\frac{f(0) + f(8)}{2}$, or $\\frac{f(8) - f(0)}{8}$.",
+  "right": "The first averages two values and ignores the rest; the second is the average rate of change. The average value uses every value: $\\frac{1}{8}\\int_0^8 f(x)\\,dx$."
+ },
+ "check": [
+  "calc-average-value-1",
+  "calc-average-value-2",
+  "calc-average-value-3",
+  "calc-average-value-9",
+  "calc-average-value-11",
+  "calc-average-value-12"
+ ],
+ "summary": "The average value of $f$ on $[a, b]$ is $\\frac{1}{b - a}\\int_a^b f(x)\\,dx$, the height of the equal-area rectangle, in the units of $f$. A continuous $f$ reaches it somewhere on the interval. Do not confuse it with the average rate of change $\\frac{f(b) - f(a)}{b - a}$, which is the average value of $f'$."
+}

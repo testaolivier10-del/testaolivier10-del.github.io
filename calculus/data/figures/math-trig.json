@@ -1,0 +1,22 @@
+{
+ "unit-circle": {
+  "file": "figures/unit-circle.svg",
+  "ext": "svg",
+  "w": 840,
+  "h": 560,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The unit circle with points at the angles 0, pi/6, pi/4, pi/3 and pi/2 and their coordinates (1, 0), (square root 3 over 2, 1/2), (square root 2 over 2, square root 2 over 2), (1/2, square root 3 over 2) and (0, 1); also (-1, 0) at pi and (0, -1) at 3 pi/2. Each quadrant is labeled with the signs of sine and cosine."
+ },
+ "sin-cos-graphs": {
+  "file": "figures/sin-cos-graphs.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The graphs of y = sin x (solid) and y = cos x (dashed) from x = -pi/2 to 2 pi: waves between -1 and 1 with period 2 pi. Sine passes through (0, 0); cosine starts at (0, 1)."
+ }
+}

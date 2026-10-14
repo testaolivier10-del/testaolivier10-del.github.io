@@ -1,0 +1,47 @@
+<p>Businesses want the most profit, engineers the least material, farmers the most land from a roll of fence. Each of these is a search for an absolute maximum or minimum, which you already know how to find. What is new in <b>optimization</b> is the first step: turning a paragraph of words into a function you can differentiate.</p>
+
+<h2>The objective function</h2>
+<p>The <b>objective function</b> is the quantity you want to make as large or as small as possible, written as a function of one variable. Writing it takes three moves:</p>
+<ol>
+<li><b>Name the quantity.</b> What does the question want largest or smallest? Area, revenue, cost, distance.</li>
+<li><b>Write a formula for it.</b> Often it starts with two variables, like $A = xy$.</li>
+<li><b>Use the given facts to reduce it to one variable.</b> A fixed amount of fence, a fixed product, a price rule: solve it for one variable and substitute.</li>
+</ol>
+<p>Then find the <b>domain</b>: the values of the variable that make physical sense. Lengths, prices and amounts are not negative.</p>
+<figure id="fig-pen" data-fig="pen-river-area"><figcaption>The fence fixes $3x + y = 600$. Substituting $y = 600 - 3x$ turns the area into a function of $x$ alone, on $[0, 200]$.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1.</b> A farmer has 600 feet of fence for a rectangular pen against a straight river, split in two by a middle fence parallel to the ends. No fence goes along the river. Find the largest area.</p>
+<p><i>Quantity:</i> area, $A = xy$, with $x$ the length of each end (and of the divider) and $y$ the side opposite the river.</p>
+<p><i>Reduce:</i> the fence is $3x + y = 600$, so $y = 600 - 3x$ and $A(x) = x(600 - 3x) = 600x - 3x^2$.</p>
+<p><i>Domain:</i> $x \ge 0$ and $y = 600 - 3x \ge 0$, so $0 \le x \le 200$.</p>
+<p><i>Critical point:</i> $A'(x) = 600 - 6x = 0$ at $x = 100$.</p>
+<p><i>Justify:</i> candidates $A(0) = 0$, $A(100) = 30{,}000$, $A(200) = 0$. The largest is $A(100)$.</p>
+<p><i>Answer in context:</i> ends of 100 feet and a long side of 300 feet give the largest area, 30,000 square feet.</p>
+</div>
+
+<h2>Justifying the answer</h2>
+<p>Setting $A'(x) = 0$ finds a candidate, not an answer. You must show it is the absolute extremum you want. Two ways work:</p>
+<table class="compare">
+<thead><tr><th scope="col">Situation</th><th scope="col">Argument</th></tr></thead>
+<tbody>
+<tr><td>Closed domain $[a, b]$</td><td>Candidates Test: compare $f$ at the endpoints and the critical points.</td></tr>
+<tr><td>Any interval, one critical point</td><td>The only critical point is a relative maximum (or minimum), by the First or Second Derivative Test, so it is the absolute one.</td></tr>
+</tbody>
+</table>
+<p>Watch for the critical point being the wrong kind. For a shipping cost $C(x) = x + \frac{16}{x}$ on $[1, 8]$, the critical point $x = 4$ gives the smallest cost, 8. If the question asks for the largest cost, the answer is at an endpoint: $C(1) = 17$.</p>
+
+<h2>Revenue, a second model</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> At a price of $p$ dollars, a theater sells $1200 - 40p$ tickets, $0 \le p \le 30$. What price maximizes revenue?</p>
+<p><i>Objective:</i> revenue = price times tickets, $R(p) = p(1200 - 40p) = 1200p - 40p^2$.</p>
+<p>$R'(p) = 1200 - 80p = 0$ at $p = 15$. Candidates: $R(0) = 0$, $R(15) = 9000$, $R(30) = 0$.</p>
+<p>A price of 15 dollars gives the most revenue, 9000 dollars.</p>
+</div>
+<p>The derivative also has a meaning on its own. $R'(10) = 400$ dollars per dollar: at a price of 10 dollars, raising the price by 1 dollar raises revenue by about 400 dollars. A positive $R'$ says the best price is higher still.</p>
+
+<h2>Numbers and distances</h2>
+<p>Pure-number problems use the same steps. If two positive numbers add to 20, their product is $P(x) = x(20 - x)$; it is largest at $x = 10$, giving 100. For a distance, minimize the squared distance instead: it is smallest at the same point and has no square root to differentiate. For the point of $y = \sqrt{x}$ nearest $(3, 0)$, minimize $D(x) = (x - 3)^2 + x$: $D'(x) = 2x - 5 = 0$ at $x = \frac{5}{2}$, and the distance is $\sqrt{D\left(\frac{5}{2}\right)} = \frac{\sqrt{11}}{2}$. Remember to take the square root at the end.</p>
+
+<h2>Answer the question asked</h2>
+<p>The final line should answer in the problem's words and units: "100 feet by 300 feet, for 30,000 square feet," not "$x = 100$." If the question asks for dimensions, give all of them; if it asks for the maximum value, give the value, not where it happens.</p>

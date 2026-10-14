@@ -1,0 +1,12 @@
+{
+ "chain-sin-squeeze": {
+  "file": "figures/chain-sin-squeeze.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Graphs of y = sin x (blue, dashed) and y = sin(2x) (crimson) from x = −π to π. Both pass through the origin; the tangent line to sin x there has slope 1 and the tangent line to sin(2x) has slope 2."
+ }
+}

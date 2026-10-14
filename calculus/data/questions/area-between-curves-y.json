@@ -1,0 +1,567 @@
+{
+ "stimuli": {
+  "area-between-curves-y-s1": {
+   "kind": "graph",
+   "title": "The region $R$ between $x = \\frac{y^2}{2}$ and $x = y + 4$",
+   "plot": {
+    "label": "The parabola x = y²/2, opening to the right, and the line x = y + 4. They meet at (2, −2) and (8, 4). The region R between them is shaded: the parabola is its left edge and the line its right edge.",
+    "x": [
+     -1,
+     9
+    ],
+    "y": [
+     -3,
+     5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "sqrt(2x)",
+      "domain": [
+       0,
+       9
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "-sqrt(2x)",
+      "domain": [
+       0,
+       4.5
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "x - 4",
+      "domain": [
+       1,
+       9
+      ],
+      "cls": "s2"
+     }
+    ],
+    "shade": [
+     {
+      "fn": "sqrt(2x)",
+      "fn2": "-sqrt(2x)",
+      "domain": [
+       0,
+       2
+      ]
+     },
+     {
+      "fn": "sqrt(2x)",
+      "fn2": "x - 4",
+      "domain": [
+       2,
+       8
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       -2
+      ],
+      "label": "(2, −2)"
+     },
+     {
+      "at": [
+       8,
+       4
+      ],
+      "label": "(8, 4)"
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       3.5,
+       1
+      ],
+      "text": "R"
+     },
+     {
+      "at": [
+       4.6,
+       -2.6
+      ],
+      "text": "x = y²/2",
+      "anchor": "start"
+     },
+     {
+      "at": [
+       6.3,
+       1.4
+      ],
+      "text": "x = y + 4",
+      "anchor": "start"
+     }
+    ]
+   }
+  },
+  "area-between-curves-y-s2": {
+   "kind": "graph",
+   "title": "The region $Q$ between $x = y^2$ and $x = 2 + \\sin(2y)$",
+   "figure": "area-y-sine-region"
+  }
+ },
+ "items": [
+  {
+   "id": "calc-area-between-curves-y-1",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "area-between-curves-y-s1",
+   "q": "Which integral gives the area of $R$?",
+   "options": [
+    "$\\int_{-2}^{4} \\left[(y + 4) - \\frac{y^2}{2}\\right]\\,dy$",
+    "$\\int_{-2}^{4} \\left[\\frac{y^2}{2} - (y + 4)\\right]\\,dy$",
+    "$\\int_{0}^{8} \\left[\\sqrt{2x} - (x - 4)\\right]\\,dx$",
+    "$\\int_{2}^{8} \\left[(y + 4) - \\frac{y^2}{2}\\right]\\,dy$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Slice horizontally: each strip runs from the parabola on the left to the line on the right, so its length is right minus left, and $y$ runs from $-2$ to $4$.",
+    "options": [
+     "Right minus left, in $dy$, between the $y$-values where the curves meet.",
+     "Left minus right gives a negative number. The line $x = y + 4$ is the right edge.",
+     "With vertical slices the bottom edge changes at $x = 2$: from $x = 0$ to $2$ the bottom is $y = -\\sqrt{2x}$, not $y = x - 4$. One integral in $x$ is not enough.",
+     "2 and 8 are the $x$-coordinates of the crossings. An integral in $dy$ needs the $y$-coordinates, $-2$ and $4$."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-2",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "area-between-curves-y-s1",
+   "q": "Find the area of $R$.",
+   "numeric": {
+    "answer": 18,
+    "mistakes": [
+     {
+      "value": -18,
+      "why": "Left minus right gives a negative number. The line is the right edge: integrate $(y + 4) - \\frac{y^2}{2}$."
+     },
+     {
+      "value": "64/3",
+      "why": "That is $\\int_0^8 \\left[\\sqrt{2x} - (x - 4)\\right]\\,dx$, which treats $y = x - 4$ as the bottom all the way. From $x = 0$ to $2$ the bottom is the lower half of the parabola. Integrate in $y$ instead."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_{-2}^{4} \\left(y + 4 - \\frac{y^2}{2}\\right)\\,dy = \\left[\\frac{y^2}{2} + 4y - \\frac{y^3}{6}\\right]_{-2}^{4} = \\frac{40}{3} - \\left(-\\frac{14}{3}\\right) = 18$."
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-3",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "expr",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "area-between-curves-y-s1",
+   "q": "A thin horizontal strip of $R$ sits at height $y$, for $-2 \\le y \\le 4$. Write its length $L(y)$.",
+   "expr": {
+    "answer": "y + 4 - y^2/2",
+    "vars": [
+     "y"
+    ],
+    "domain": [
+     -2,
+     4
+    ],
+    "lhs": "L(y) =",
+    "mistakes": [
+     {
+      "expr": "y^2/2 - y - 4",
+      "why": "That is left minus right, which is negative inside $R$. The length is right minus left: $(y + 4) - \\frac{y^2}{2}$."
+     },
+     {
+      "expr": "sqrt(2y) - (y - 4)",
+      "why": "You used the curves as functions of $x$. For a horizontal strip, write each edge as $x$ in terms of $y$: $x = y + 4$ and $x = \\frac{y^2}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The right edge is $x = y + 4$ and the left edge is $x = \\frac{y^2}{2}$, so $L(y) = (y + 4) - \\frac{y^2}{2}$."
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-4",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "area-between-curves-y-s1",
+   "q": "Integrating with respect to $y$, what are the limits of integration for the area of $R$?",
+   "options": [
+    "$y = -2$ and $y = 4$, where $\\frac{y^2}{2} = y + 4$",
+    "$x = 2$ and $x = 8$, the $x$-values where the curves meet",
+    "$y = 0$ and $y = 4$, from the $x$-axis up to the top",
+    "$x = 0$ and $x = 8$, from the left edge to the right"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{y^2}{2} = y + 4$ gives $y^2 - 2y - 8 = 0$, so $(y - 4)(y + 2) = 0$: $y = -2$ and $y = 4$.",
+    "options": [
+     "In $dy$, the limits are the lowest and highest $y$ of the region.",
+     "These are $x$-values. With $dy$ the limits must be $y$-values.",
+     "The region goes below the $x$-axis, down to $y = -2$.",
+     "These are $x$-values, and the integral is in $dy$."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-5",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "area-between-curves-y-s1",
+   "q": "Why is it simpler to find the area of $R$ with horizontal strips than with vertical ones?",
+   "options": [
+    "Vertical strips change bottom curves at $x = 2$",
+    "Horizontal strips give a larger and more accurate area",
+    "The region lies to the right of the $y$-axis, where $x > 0$",
+    "Vertical strips would make the area of $R$ negative"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every horizontal strip runs from the same left curve to the same right curve. Vertical strips end on $y = -\\sqrt{2x}$ for $0 \\le x \\le 2$ and on $y = x - 4$ for $2 \\le x \\le 8$, so they need two integrals.",
+    "options": [
+     "One formula for each edge in $y$; two pieces in $x$.",
+     "Both ways give the same area, 18. The choice only changes how much work it takes.",
+     "Where the region sits does not decide the method. What matters is whether each edge is one formula.",
+     "Done correctly, vertical strips give $+18$ too, with two integrals."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-6",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "numeric",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "area-between-curves-y-s2",
+   "q": "The curves meet at a lower point where $y = c$ and an upper point where $y = d$. Use a calculator to find $c$.",
+   "numeric": {
+    "answer": -1.0821166296452565,
+    "mistakes": [
+     {
+      "value": 1.170976400154809,
+      "why": "That is the $x$-coordinate of the lower crossing. The limits of an integral in $dy$ are $y$-values."
+     },
+     {
+      "value": -1.3968747941458344,
+      "why": "Your calculator is in degree mode. Switch to radians and solve $y^2 = 2 + \\sin(2y)$ again."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Solve $y^2 = 2 + \\sin(2y)$ (radian mode): $c = -1.08211\\ldots$, so $-1.082$ (or $-1.083$ truncated). The upper crossing is $d = 1.47800\\ldots$. Store both."
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-7",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "area-between-curves-y-s2",
+   "q": "Which expression gives the area of $Q$?",
+   "options": [
+    "$\\int_c^d \\left(2 + \\sin(2y) - y^2\\right)\\,dy$",
+    "$\\int_c^d \\left(y^2 - 2 - \\sin(2y)\\right)\\,dy$",
+    "$\\int_{c^2}^{d^2} \\left(2 + \\sin(2y) - y^2\\right)\\,dy$",
+    "$\\int_c^d \\left(2 + \\sin(2y) + y^2\\right)\\,dy$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The wave $x = 2 + \\sin(2y)$ is the right edge and the parabola $x = y^2$ the left edge (at $y = 0$: $2 > 0$), so the length is right minus left, from $y = c$ to $y = d$.",
+    "options": [
+     "Right minus left, between the $y$-values of the crossings.",
+     "This is left minus right, which comes out negative.",
+     "$c^2$ and $d^2$ are the $x$-coordinates of the crossings; an integral in $dy$ runs between $y$-values.",
+     "The lengths are differences: subtract the left edge."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-8",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "numeric",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "area-between-curves-y-s2",
+   "q": "Find the area of $Q$.",
+   "numeric": {
+    "answer": 3.833439851887104,
+    "mistakes": [
+     {
+      "value": -3.833439851887104,
+      "why": "An area is positive: integrate right minus left, $2 + \\sin(2y) - y^2$."
+     },
+     {
+      "value": 3.772097087389036,
+      "why": "Your calculator is in degree mode for both the crossings and the integral. Switch to radians."
+     },
+     {
+      "value": -1.0927682133978072,
+      "why": "You used the $x$-coordinates of the crossings as limits. In $dy$, integrate from $y = c$ to $y = d$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int_c^d \\left(2 + \\sin(2y) - y^2\\right)\\,dy = 3.83343\\ldots$, so $3.833$, using the stored values of $c$ and $d$."
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-9",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "numeric",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 1,
+   "calc": true,
+   "stimulus": "area-between-curves-y-s2",
+   "q": "Find the length of the horizontal segment across $Q$ at $y = 0.5$.",
+   "numeric": {
+    "answer": 2.5914709848078967,
+    "mistakes": [
+     {
+      "value": 1.7674524064372834,
+      "why": "$\\sin(1)$ was taken in degrees. Use radian mode: $\\sin(1) = 0.84147\\ldots$."
+     },
+     {
+      "value": 2.8414709848078967,
+      "why": "The left edge is at $x = (0.5)^2 = 0.25$; subtract it from the right edge, $2 + \\sin(1)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Right minus left at $y = 0.5$: $\\left(2 + \\sin(1)\\right) - 0.5^2 = 2.59147\\ldots$, so $2.591$."
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-10",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "single",
+   "practice": "2.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "For $x \\ge 0$ and $y \\ge 0$, the curve $y = \\sqrt{x}$ is the same as which equation?",
+   "options": [
+    "$x = y^2$",
+    "$x = \\sqrt{y}$",
+    "$x = \\frac{y}{2}$",
+    "$x = \\frac{1}{y^2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Square both sides of $y = \\sqrt{x}$: $x = y^2$ (with $y \\ge 0$). This is the inverse function, the form a horizontal strip needs.",
+    "options": [
+     "Squaring $y = \\sqrt{x}$ gives $y^2 = x$.",
+     "This swaps the letters without solving: $x = \\sqrt{y}$ is $y = x^2$.",
+     "Halving is not the inverse of a square root; squaring is.",
+     "Squaring does not put $y^2$ in a denominator."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-11",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the area of the region bounded by $y = \\ln x$, the $y$-axis, $y = 0$ and $y = 2$.",
+   "numeric": {
+    "answer": "e^2 - 1",
+    "mistakes": [
+     {
+      "value": "e^2",
+      "why": "Evaluate the antiderivative at both limits: $e^2 - e^0 = e^2 - 1$."
+     },
+     {
+      "value": "e^2 + 1",
+      "why": "Subtract the value at the lower limit: $e^0 = 1$, so the area is $e^2 - 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Write the curve as $x = e^y$. Each horizontal strip runs from the $y$-axis ($x = 0$) to $x = e^y$, so the area is $\\int_0^2 \\left(e^y - 0\\right)\\,dy = e^2 - 1$."
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-12",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "multi",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The region in the first quadrant bounded by $y = x^3$, $y = 8$ and the $y$-axis has area $A$. Which integrals equal $A$? Select all that apply.",
+   "options": [
+    "$\\int_0^8 y^{1/3}\\,dy$",
+    "$\\int_0^2 \\left(8 - x^3\\right)\\,dx$",
+    "$\\int_0^2 x^3\\,dx$",
+    "$\\int_0^8 \\left(8 - y^{1/3}\\right)\\,dy$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The region lies between the $y$-axis and the curve, under $y = 8$. In $y$: strips from $x = 0$ to $x = y^{1/3}$. In $x$: strips from $y = x^3$ up to $y = 8$. Both give 12.",
+    "options": [
+     "Right minus left in $y$: $y^{1/3} - 0$, for $0 \\le y \\le 8$. It equals 12.",
+     "Top minus bottom in $x$: $8 - x^3$, for $0 \\le x \\le 2$. It equals 12.",
+     "That is the region under the curve, below and to the right of it, with area 4.",
+     "$8 - y^{1/3}$ is not a horizontal length here: the left edge is $x = 0$ and the right edge is $x = y^{1/3}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-13",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the area of the region bounded by $x = y^2 - 4$ and $x = 2 - y$.",
+   "numeric": {
+    "answer": "125/6",
+    "mistakes": [
+     {
+      "value": "-125/6",
+      "why": "Left minus right is negative. At $y = 0$ the line is at $x = 2$ and the parabola at $x = -4$, so the line is on the right."
+     },
+     {
+      "value": "-115/6",
+      "why": "The parentheses were dropped: $(2 - y) - (y^2 - 4) = 6 - y - y^2$, not $-2 - y - y^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$y^2 - 4 = 2 - y$ gives $y^2 + y - 6 = 0$, so $y = -3$ or $y = 2$. Area $= \\int_{-3}^{2} \\left(6 - y - y^2\\right)\\,dy = \\left[6y - \\frac{y^2}{2} - \\frac{y^3}{3}\\right]_{-3}^{2} = \\frac{22}{3} + \\frac{27}{2} = \\frac{125}{6}$."
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-14",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The curves $x = y^2$ and $x = 2y$ bound a region for $0 \\le y \\le 2$. Write the length of a horizontal strip at height $y$.",
+   "expr": {
+    "answer": "2y - y^2",
+    "vars": [
+     "y"
+    ],
+    "domain": [
+     0,
+     2
+    ],
+    "lhs": "L(y) =",
+    "mistakes": [
+     {
+      "expr": "y^2 - 2y",
+      "why": "Left minus right is negative. At $y = 1$, $2y = 2$ and $y^2 = 1$, so $x = 2y$ is on the right."
+     },
+     {
+      "expr": "sqrt(y) - y/2",
+      "why": "Those are the curves solved for $y$ with the letters swapped. A horizontal strip needs $x$ in terms of $y$, as given: $x = 2y$ and $x = y^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Right edge $x = 2y$, left edge $x = y^2$, so $L(y) = 2y - y^2$. The area is $\\int_0^2 (2y - y^2)\\,dy = \\frac{4}{3}$."
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-15",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the area of the region bounded by $y = \\sqrt{x}$ and $y = \\frac{x}{2}$ by integrating with respect to $y$.",
+   "numeric": {
+    "answer": "4/3",
+    "mistakes": [
+     {
+      "value": "-16/3",
+      "why": "You used the $x$-values 0 and 4 as limits. In $y$ the region runs from $y = 0$ to $y = 2$."
+     },
+     {
+      "value": "-4/3",
+      "why": "Right minus left: the line $x = 2y$ is on the right of $x = y^2$ for $0 < y < 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "As functions of $y$: $x = y^2$ (left) and $x = 2y$ (right), meeting at $y = 0$ and $y = 2$. Area $= \\int_0^2 (2y - y^2)\\,dy = 4 - \\frac{8}{3} = \\frac{4}{3}$, the same as slicing vertically."
+   }
+  },
+  {
+   "id": "calc-area-between-curves-y-16",
+   "unit": "unit-8",
+   "topic": "area-between-curves-y",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which region is best found with one integral in $y$?",
+   "options": [
+    "Its side edges are one curve each; its bottom edge is not",
+    "Its top and bottom edges are one curve each, from left to right",
+    "It lies above the $x$-axis and to the right of the $y$-axis",
+    "It is bounded by two straight lines and the $x$-axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When each side edge is one formula $x = g(y)$, every horizontal strip has the same right-minus-left length formula, so one integral in $y$ does it. Vertical strips would need two integrals.",
+    "options": [
+     "One formula per side edge means one integral in $y$.",
+     "That region is easiest in $x$: one integral of top minus bottom.",
+     "Where the region sits does not decide the variable; the shape of its edges does.",
+     "Lines are easy either way; this does not favor $y$."
+    ]
+   }
+  }
+ ]
+}

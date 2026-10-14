@@ -1,0 +1,74 @@
+{
+ "topic": "limit-laws",
+ "hook": "Graphs and tables estimate limits. Rules find them exactly. The limit laws say that limits respect arithmetic: the limit of a sum is the sum of the limits, and the same for differences, products, quotients, powers and roots. For polynomials and most everyday functions, they collapse into the easiest rule in calculus: just substitute.",
+ "prereq": [
+  {
+   "q": "If $\\lim_{x \\to 2^-} f(x) = 5$ and $\\lim_{x \\to 2^+} f(x) = 5$, then $\\lim_{x \\to 2} f(x)$ is",
+   "options": [
+    "$5$",
+    "it does not exist",
+    "$10$",
+    "$f(2)$"
+   ],
+   "correct": 0,
+   "why": "Equal one-sided limits give the limit.",
+   "review": "limits-from-plots"
+  },
+  {
+   "q": "Let $f(x) = x^2$ and $g(x) = x + 1$. What is $f(g(2))$?",
+   "options": [
+    "$9$",
+    "$5$",
+    "$4$",
+    "$6$"
+   ],
+   "correct": 0,
+   "why": "$g(2) = 3$ and $f(3) = 9$.",
+   "review": "math-functions"
+  }
+ ],
+ "figure": {
+  "figure": "limit-laws-sum",
+  "caption": "As $x \\to 2$: $f(x) \\to 3$ and $g(x) \\to -1$, so $f(x) + g(x) \\to 3 + (-1) = 2$. Each law turns a new limit into limits you know."
+ },
+ "chain": [
+  {
+   "cause": "$\\lim_{x \\to a} f(x) = L$ and $\\lim_{x \\to a} g(x) = M$ both exist",
+   "effect": "the limit of $f \\pm g$, $fg$ and $kf$ is $L \\pm M$, $LM$ and $kL$"
+  },
+  {
+   "cause": "The denominator's limit $M$ is not 0",
+   "effect": "the limit of $\\frac{f}{g}$ is $\\frac{L}{M}$"
+  },
+  {
+   "cause": "Polynomials and rational functions are built from x and constants with these operations",
+   "effect": "their limits come from substitution, as long as the denominator is not 0 at $a$"
+  },
+  {
+   "cause": "A denominator heads to 0",
+   "effect": "the quotient law is silent: a nonzero top means no finite limit; a top also heading to 0 needs the algebra of Topic 1.6"
+  }
+ ],
+ "ideas": [
+  "Sum, difference, constant multiple, product: if both limits exist, combine them the same way. $\\lim (f + g) = \\lim f + \\lim g$.",
+  "Quotient: $\\lim \\frac{f}{g} = \\frac{\\lim f}{\\lim g}$ only when $\\lim g \\ne 0$.",
+  "Powers and roots: $\\lim [f(x)]^n = L^n$, and $\\lim \\sqrt{f(x)} = \\sqrt{L}$ when $L > 0$.",
+  "<b>Direct substitution</b>: for a polynomial, or a rational function with a nonzero denominator at $a$, the limit is the value at $a$.",
+  "For a composite, find the inside limit first: if $g(x) \\to b$ and $f$ is continuous at $b$, then $f(g(x)) \\to f(b)$.",
+  "For a piecewise function, use each side's formula for its one-sided limit."
+ ],
+ "misconception": {
+  "wrong": "If neither $\\lim f$ nor $\\lim g$ exists, then $\\lim (f + g)$ does not exist.",
+  "right": "The laws need both limits to exist; when they do not, the laws are silent, not negative. Check the sum one side at a time: two jumps can cancel, as with $f$ and $g$ at $x = 1$, where the sum's limit is 3."
+ },
+ "check": [
+  "calc-limit-laws-1",
+  "calc-limit-laws-2",
+  "calc-limit-laws-3",
+  "calc-limit-laws-4",
+  "calc-limit-laws-10",
+  "calc-limit-laws-13",
+  "calc-limit-laws-14"
+ ],
+ "summary": "The limit laws let you split a limit over sums, differences, constant multiples, products, quotients (with a nonzero denominator limit), powers, roots and compositions. Together they justify direct substitution for polynomials and for rational functions where the denominator is not 0. When a denominator heads to 0, look closer: a nonzero numerator means no finite limit."
+}

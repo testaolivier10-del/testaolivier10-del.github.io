@@ -1,0 +1,55 @@
+<p>In Unit 1 you met limits like $\lim_{x \to 0}\frac{\sin x}{x}$, where both the top and the bottom approach 0. The form $\frac{0}{0}$ tells you nothing by itself: the limit might be 1, or 7, or not exist. Back then you needed algebra tricks or a squeeze. Now that you have derivatives, one rule handles most of these limits, and it comes from the idea you just used for tangent line approximations.</p>
+
+<h2>Why slopes decide a $\frac{0}{0}$ limit</h2>
+<p>Suppose $f(a) = 0$ and $g(a) = 0$, both differentiable. Near $a$, each function is close to its tangent line:</p>
+<p>$$f(x) \approx f'(a)(x - a), \qquad g(x) \approx g'(a)(x - a)$$</p>
+<p>So their quotient is close to $\frac{f'(a)(x - a)}{g'(a)(x - a)} = \frac{f'(a)}{g'(a)}$. Both functions shrink to 0, but at rates set by their slopes, and the ratio of the slopes is what survives.</p>
+<figure id="fig-lhop" data-fig="lhospital-tangent-ratio"><figcaption>Near 0, $e^x - 1$ hugs $y = x$ and $\sin(2x)$ hugs $y = 2x$. Their quotient approaches $\frac{1}{2}$, the ratio of the slopes.</figcaption></figure>
+
+<h2>L'Hospital's rule</h2>
+<p>If $\lim_{x \to a}f(x) = 0$ and $\lim_{x \to a}g(x) = 0$, or if both limits are infinite, then</p>
+<p>$$\lim_{x \to a}\frac{f(x)}{g(x)} = \lim_{x \to a}\frac{f'(x)}{g'(x)}$$</p>
+<p>provided the limit on the right exists (or is infinite). The same holds for limits as $x \to \infty$. Three warnings:</p>
+<ul>
+<li><b>Check the form first.</b> The rule needs $\frac{0}{0}$ or $\frac{\infty}{\infty}$. On the exam, show it: write both limits.</li>
+<li><b>Differentiate the top and the bottom separately.</b> This is not the quotient rule.</li>
+<li><b>Never write "$= \frac{0}{0}$".</b> It is a form, not a number. Write "$\lim(1 - \cos x) = 0$ and $\lim x^2 = 0$" instead.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $\lim_{x \to 0}\frac{e^{3x} - 1}{x}$.</p>
+<p>Form: $\lim_{x \to 0}(e^{3x} - 1) = 0$ and $\lim_{x \to 0}x = 0$.</p>
+<p>By L'Hospital's rule, the limit equals $\lim_{x \to 0}\frac{3e^{3x}}{1} = 3$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Find $\lim_{x \to 0}\frac{1 - \cos x}{x^2}$.</p>
+<p>Form: both limits are 0. First application: $\lim_{x \to 0}\frac{\sin x}{2x}$.</p>
+<p>Check again: $\sin 0 = 0$ and $2 \cdot 0 = 0$, still $\frac{0}{0}$. Second application: $\lim_{x \to 0}\frac{\cos x}{2} = \frac{1}{2}$.</p>
+</div>
+
+<h2>When the form is not indeterminate</h2>
+<p>Using the rule on a limit that is not $\frac{0}{0}$ or $\frac{\infty}{\infty}$ gives wrong answers. For $\lim_{x \to 1}\frac{x^2 + 1}{x + 1}$, the form is $\frac{2}{2}$, so the limit is simply 1. Blindly differentiating gives $\lim\frac{2x}{1} = 2$, which is wrong. A check of the form takes five seconds and saves the point.</p>
+
+<h2>From a table of values</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> $f$ and $g$ are differentiable with $f(2) = 0$, $g(2) = 0$, $f'(2) = 5$ and $g'(2) = -2$. Find $\lim_{x \to 2}\frac{f(x)}{g(x)}$.</p>
+<p>Differentiable functions are continuous, so $\lim_{x \to 2}f(x) = f(2) = 0$ and $\lim_{x \to 2}g(x) = g(2) = 0$.</p>
+<p>By L'Hospital's rule, the limit is $\lim_{x \to 2}\frac{f'(x)}{g'(x)} = \frac{5}{-2} = -\frac{5}{2}$ (using that $f'$ and $g'$ are continuous at 2, as exam questions state or imply).</p>
+</div>
+
+<h2>The form $\frac{\infty}{\infty}$: comparing growth</h2>
+<p>As $x \to \infty$, the rule compares how fast two functions grow.</p>
+<table class="compare">
+<tr><th>Limit</th><th>Rule applied</th><th>Result</th><th>Meaning</th></tr>
+<tr><td>$\lim_{x \to \infty}\frac{\ln x}{x}$</td><td>$\frac{1/x}{1}$</td><td>$0$</td><td>$x$ outgrows $\ln x$</td></tr>
+<tr><td>$\lim_{x \to \infty}\frac{x^2}{e^x}$</td><td>$\frac{2x}{e^x}$, then $\frac{2}{e^x}$</td><td>$0$</td><td>$e^x$ outgrows $x^2$</td></tr>
+<tr><td>$\lim_{x \to \infty}\frac{3x^2 + 1}{5x^2 - x}$</td><td>$\frac{6x}{10x - 1}$, then $\frac{6}{10}$</td><td>$\frac{3}{5}$</td><td>same growth: ratio of leading coefficients</td></tr>
+</table>
+
+<h2>Slips that cost points</h2>
+<ul>
+<li>Applying the rule without showing that both limits are 0 (or both infinite).</li>
+<li>Using the quotient rule instead of differentiating top and bottom separately.</li>
+<li>Writing $\frac{0}{0} = $ a number, or "$= \frac{0}{0}$" as if it were a value.</li>
+<li>Forgetting the chain rule inside: $\frac{d}{dx}\sin(5x) = 5\cos(5x)$.</li>
+<li>Stopping after one round when the new limit is still indeterminate.</li>
+</ul>

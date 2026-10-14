@@ -1,0 +1,93 @@
+{
+ "topic": "f-and-its-derivatives",
+ "hook": "A weather station logs temperature, its rate of change, and how fast that rate is changing. A forecaster reading the three together can say \"still warming, but the warming is easing off, so the high is coming soon.\" Reading $f$, $f'$ and $f''$ together is the same skill, and the graph-of-$f'$ question on the exam is built on it.",
+ "prereq": [
+  {
+   "q": "Where the graph of $f'$ has a high point, the graph of $f$ has",
+   "options": [
+    "a point of inflection",
+    "a relative maximum",
+    "a relative minimum",
+    "a corner"
+   ],
+   "correct": 0,
+   "why": "$f'$ turns, so $f''$ changes sign: the concavity of $f$ changes.",
+   "review": "sketching-derivatives"
+  },
+  {
+   "q": "$f'(c) = 0$ and $f''(c) > 0$ mean $f$ has",
+   "options": [
+    "a relative minimum at $c$",
+    "a relative maximum at $c$",
+    "a point of inflection at $c$",
+    "no conclusion"
+   ],
+   "correct": 0,
+   "why": "The Second Derivative Test.",
+   "review": "second-derivative-test"
+  },
+  {
+   "q": "The line tangent to $f$ at $x = a$ is",
+   "options": [
+    "$y = f(a) + f'(a)(x - a)$",
+    "$y = f'(a) + f(a)(x - a)$",
+    "$y = f(a)(x - a)$",
+    "$y = f'(a)x$"
+   ],
+   "correct": 0,
+   "why": "Point $(a, f(a))$, slope $f'(a)$.",
+   "review": "local-linearity"
+  }
+ ],
+ "figure": {
+  "figure": "f-fp-fpp-sine",
+  "caption": "Three graphs on one $x$-axis. Where $f$ peaks, $f'$ is zero; where $f$ inflects, $f'$ is at an extreme and $f''$ is zero; where $f''$ is negative, $f$ is concave down."
+ },
+ "chain": [
+  {
+   "cause": "The sign of $f'$",
+   "effect": "tells whether $f$ is increasing or decreasing; a sign change of $f'$ is a relative extremum of $f$"
+  },
+  {
+   "cause": "The sign of $f''$, or whether $f'$ is rising or falling",
+   "effect": "tells the concavity of $f$; a sign change of $f''$ is a point of inflection of $f$"
+  },
+  {
+   "cause": "$f(a)$ and $f'(a)$",
+   "effect": "give the tangent line, and the sign of $f''$ near $a$ says whether it overestimates or underestimates"
+  },
+  {
+   "cause": "A justification on the exam",
+   "effect": "names the function whose sign or direction you read: \"$f'$ changes from positive to negative\", \"$f'$ is decreasing\""
+  }
+ ],
+ "ideas": [
+  "<b>Graphical analysis</b>: given any one of $f$, $f'$, $f''$ (graph, table or formula), read the features of the others.",
+  "From a graph of $f'$: sign of $f'$ (above or below the axis) gives increasing or decreasing; direction of $f'$ (rising or falling) gives concavity.",
+  "From a table: $f'(a) = 0$ and the sign of $f''(a)$ give the Second Derivative Test; a continuous $f''$ that changes from positive to negative between two inputs gives a point of inflection between them.",
+  "Words: \"increasing at a decreasing rate\" means $f' > 0$ and $f'' < 0$."
+ ],
+ "misconception": {
+  "wrong": "On a graph of $f'$, the points of inflection of $f$ are where the graph of $f'$ crosses the $x$-axis.",
+  "right": "Crossings of $f'$ are where $f$ has extrema. Inflection points of $f$ are where $f'$ turns (its peaks and valleys), because that is where $f''$ changes sign. Chief readers see this swap every year."
+ },
+ "check": [
+  "calc-f-and-its-derivatives-1",
+  "calc-f-and-its-derivatives-2",
+  "calc-f-and-its-derivatives-3",
+  "calc-f-and-its-derivatives-4",
+  "calc-f-and-its-derivatives-5",
+  "calc-f-and-its-derivatives-10"
+ ],
+ "summary": "The three graphs carry one story. $f'$ gives the direction of $f$, and its sign changes give extrema. $f''$ (or whether $f'$ rises or falls) gives the concavity of $f$, and its sign changes give inflection points. Read from whichever representation you have, and name the function in every justification.",
+ "connections": [
+  {
+   "href": "../notes/sketching-derivatives.html",
+   "label": "Back: sketching (5.8)"
+  },
+  {
+   "href": "../notes/optimization-intro.html",
+   "label": "Next: 5.10"
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 4 (docs/apcalc-architecture.md, \"Justification trainer\"). Every number is recomputed in scripts/lib/apcalc-exams.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "unit": "unit-4",
+   "id": "u4-rate-meaning-units",
+   "topic": "derivative-in-context",
+   "practice": "3.F",
+   "skill": "context",
+   "title": "What a derivative says",
+   "context": "<p>$W(t)$ is the number of gallons of water in a tank $t$ minutes after a valve opens, and $W'(5) = -2.4$.</p>",
+   "prompt": "<b>Interpret</b> the meaning of $W'(5) = -2.4$ in the context of the problem, with units.",
+   "checklist": [
+    "Names the quantity and the time: the amount of water in the tank at $t = 5$ minutes",
+    "Says it is decreasing (from the sign), at a rate of 2.4 gallons per minute",
+    "Describes a rate at an instant, not a change over 5 minutes"
+   ],
+   "earns": {
+    "answer": "At time $t = 5$ minutes after the valve opens, the amount of water in the tank is decreasing at a rate of 2.4 gallons per minute.",
+    "why": "It names the quantity, the instant, the direction and the rate with rate units."
+   },
+   "misses": {
+    "answer": "The tank lost 2.4 gallons of water in the first 5 minutes.",
+    "why": "That is a change over an interval, and its unit is gallons. $W'(5)$ is a rate at the instant $t = 5$, in gallons per minute."
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-speeding-up-signs",
+   "topic": "straight-line-motion",
+   "practice": "3.E",
+   "skill": "motion",
+   "title": "Speeding up or slowing down",
+   "context": "<p>A particle moves along the $x$-axis with velocity $v(t) = t^2 - 4t + 3$ for $t \\ge 0$.</p>",
+   "prompt": "Is the particle speeding up or slowing down at $t = 2.5$? <b>Justify</b> your answer.",
+   "checklist": [
+    "Finds $v(2.5) = 6.25 - 10 + 3 = -0.75$",
+    "Finds $a(t) = v'(t) = 2t - 4$, so $a(2.5) = 1$",
+    "Compares the signs: $v$ and $a$ have opposite signs, so the particle is slowing down"
+   ],
+   "earns": {
+    "answer": "$v(2.5) = (2.5)^2 - 4(2.5) + 3 = -0.75$ and $a(t) = v'(t) = 2t - 4$, so $a(2.5) = 1$. Since $v(2.5) < 0$ and $a(2.5) > 0$ have opposite signs, the speed is decreasing: the particle is slowing down.",
+    "why": "It finds both signs and uses them together, which is the reason the scoring guidelines accept."
+   },
+   "misses": {
+    "answer": "$a(2.5) = 1 > 0$, so the particle is speeding up.",
+    "why": "A positive acceleration alone does not mean speeding up. Here the velocity is negative, so the acceleration pushes against the motion and the particle slows down."
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-direction-change-sign",
+   "topic": "straight-line-motion",
+   "practice": "3.E",
+   "skill": "motion",
+   "title": "Where the particle turns",
+   "context": "<p>A particle moves along a line with velocity $v(t) = (t - 2)^2(t - 5)$ for $0 \\le t \\le 6$.</p>",
+   "prompt": "At what times in $(0, 6)$ does the particle change direction? <b>Justify</b> your answer.",
+   "checklist": [
+    "Finds the zeros of $v$: $t = 2$ and $t = 5$",
+    "Checks the sign of $v$ on each side: negative on $(0, 2)$ and on $(2, 5)$, positive on $(5, 6)$",
+    "Concludes the particle changes direction at $t = 5$ only, where $v$ changes sign, and not at $t = 2$"
+   ],
+   "earns": {
+    "answer": "$v(t) = 0$ at $t = 2$ and $t = 5$. Since $(t - 2)^2 \\ge 0$, the sign of $v$ is the sign of $t - 5$: $v < 0$ on $(0, 2)$ and on $(2, 5)$, and $v > 0$ on $(5, 6)$. The particle changes direction at $t = 5$, where $v$ changes from negative to positive. At $t = 2$ it stops for an instant but $v$ does not change sign, so it keeps moving left.",
+    "why": "Direction changes where the velocity changes sign, and the answer checks the sign on both sides of each zero."
+   },
+   "misses": {
+    "answer": "The particle changes direction at $t = 2$ and $t = 5$, because $v(t) = 0$ there.",
+    "why": "A zero of $v$ is only a candidate. At $t = 2$ the factor $(t - 2)^2$ does not change sign, so the particle never turns there."
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-lhospital-form-first",
+   "topic": "lhospitals-rule",
+   "practice": "3.C",
+   "skill": "limits",
+   "title": "L'Hospital's rule, checked first",
+   "context": "<p>Consider $\\lim_{x \\to 0} \\frac{e^{3x} - 1}{\\sin x}$.</p>",
+   "prompt": "<b>Find</b> the limit, and <b>justify</b> the method you use.",
+   "checklist": [
+    "Shows both limits are 0: $\\lim_{x \\to 0} (e^{3x} - 1) = 0$ and $\\lim_{x \\to 0} \\sin x = 0$",
+    "Names L'Hospital's rule as the reason for differentiating top and bottom separately",
+    "Finds $\\lim_{x \\to 0} \\frac{3e^{3x}}{\\cos x} = \\frac{3}{1} = 3$"
+   ],
+   "earns": {
+    "answer": "$\\lim_{x \\to 0} (e^{3x} - 1) = 0$ and $\\lim_{x \\to 0} \\sin x = 0$, so by L'Hospital's rule, $\\lim_{x \\to 0} \\frac{e^{3x} - 1}{\\sin x} = \\lim_{x \\to 0} \\frac{3e^{3x}}{\\cos x} = \\frac{3}{1} = 3$.",
+    "why": "It shows the indeterminate form with two separate limits before using the rule, and never writes $\\frac{0}{0}$ as if it were a number."
+   },
+   "misses": {
+    "answer": "$\\frac{e^{3x} - 1}{\\sin x} = \\frac{0}{0}$, so by L'Hospital's rule the limit is $\\frac{3e^0}{\\cos 0} = 3$.",
+    "why": "Setting the expression equal to $\\frac{0}{0}$ is a false statement, and the two limits are never shown. The readers want each limit written as 0 before the rule is used."
+   }
+  }
+ ]
+}

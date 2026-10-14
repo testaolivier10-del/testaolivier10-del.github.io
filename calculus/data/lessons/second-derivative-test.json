@@ -1,0 +1,81 @@
+{
+ "topic": "second-derivative-test",
+ "hook": "A skateboarder at the bottom of a half-pipe is at a flat spot, and the ramp curves up on both sides. At the lip of a hill the board is also flat, but the ground curves down. Flatness plus the direction of the curve tells you which you have: that is the Second Derivative Test.",
+ "prereq": [
+  {
+   "q": "If $f''(x) < 0$ on an interval, the graph of $f$ there is",
+   "options": [
+    "concave down",
+    "concave up",
+    "decreasing",
+    "increasing"
+   ],
+   "correct": 0,
+   "why": "$f'' < 0$ means $f'$ is decreasing: the graph bends down.",
+   "review": "concavity"
+  },
+  {
+   "q": "$f'$ changes from negative to positive at $x = c$. Then $f$ has",
+   "options": [
+    "a relative minimum at $c$",
+    "a relative maximum at $c$",
+    "a point of inflection at $c$",
+    "no extremum at $c$"
+   ],
+   "correct": 0,
+   "why": "The First Derivative Test.",
+   "review": "first-derivative-test"
+  }
+ ],
+ "figure": {
+  "figure": "sdt-cases",
+  "caption": "At a critical point with $f'(c) = 0$: concave up means a valley, concave down a peak. When $f''(c) = 0$, anything can happen."
+ },
+ "chain": [
+  {
+   "cause": "$f'(c) = 0$ and $f''(c) > 0$",
+   "effect": "the tangent line at $c$ is flat and the graph bends up away from it, so $f(c)$ is a relative minimum"
+  },
+  {
+   "cause": "$f'(c) = 0$ and $f''(c) < 0$",
+   "effect": "the graph bends down from a flat point, so $f(c)$ is a relative maximum"
+  },
+  {
+   "cause": "$f'(c) = 0$ and $f''(c) = 0$ (or $f''(c)$ does not exist)",
+   "effect": "the test is inconclusive; go back to the First Derivative Test"
+  },
+  {
+   "cause": "A continuous $f$ has exactly one critical point on an interval, and it is a relative extremum",
+   "effect": "that relative extremum is also the absolute extremum on the interval"
+  }
+ ],
+ "ideas": [
+  "<b>Second Derivative Test</b>: if $f'(c) = 0$ and $f''(c) > 0$, $f$ has a relative minimum at $c$; if $f'(c) = 0$ and $f''(c) < 0$, a relative maximum.",
+  "It says nothing when $f''(c) = 0$ or when $f'(c)$ does not exist. Then use the First Derivative Test.",
+  "Justify with both facts: \"$f'(1) = 0$ and $f''(1) > 0$.\"",
+  "One critical point on an interval, and it is a relative minimum (maximum)? Then it is the absolute minimum (maximum) there, even on an open interval."
+ ],
+ "misconception": {
+  "wrong": "$f''(c) > 0$, so $f$ has a relative minimum at $c$.",
+  "right": "Concave up alone is not a minimum: $f(x) = x^2$ at $x = 1$ is concave up and rising. The test needs a critical point first, $f'(c) = 0$, and then the sign of $f''(c)$. And when $f''(c) = 0$, the test says nothing at all."
+ },
+ "check": [
+  "calc-second-derivative-test-1",
+  "calc-second-derivative-test-2",
+  "calc-second-derivative-test-3",
+  "calc-second-derivative-test-4",
+  "calc-second-derivative-test-9",
+  "calc-second-derivative-test-14"
+ ],
+ "summary": "At a critical point where $f'(c) = 0$, the sign of $f''(c)$ decides: positive gives a relative minimum, negative a relative maximum, zero gives no conclusion. State both conditions in a justification. With exactly one critical point on an interval, a relative extremum there is absolute.",
+ "connections": [
+  {
+   "href": "../notes/concavity.html",
+   "label": "Back: concavity (5.6)"
+  },
+  {
+   "href": "../notes/sketching-derivatives.html",
+   "label": "Next: 5.8"
+  }
+ ]
+}

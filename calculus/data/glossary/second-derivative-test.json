@@ -1,0 +1,5 @@
+{
+ "second-derivative-test": {
+  "def": "If $f'(c) = 0$ and $f''(c) > 0$, then $f$ has a relative minimum at $c$; if $f'(c) = 0$ and $f''(c) < 0$, a relative maximum. If $f''(c) = 0$, the test gives no conclusion."
+ }
+}

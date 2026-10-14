@@ -1,0 +1,5 @@
+{
+ "first-derivative-test": {
+  "def": "At a critical point $c$ where $f$ is continuous: if $f'$ changes from positive to negative at $c$, $f$ has a relative maximum at $c$; from negative to positive, a relative minimum; if $f'$ does not change sign, no relative extremum. A sign chart of $f'$ organizes the test; the justification is a sentence naming $f'$ and its sign change."
+ }
+}

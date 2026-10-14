@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volumes with Square and Rectangle… — AP® Calculus AB Notes</title>
+<meta name="description" content="You know how to find the volume of a box: area of the face times thickness. A loaf of bread is not a box, but each thin slice of it almost is.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/cross-sections-squares.html">
+<meta property="og:title" content="Volumes with Square and Rectangle… — AP® Calculus AB Notes">
+<meta property="og:description" content="You know how to find the volume of a box: area of the face times thickness. A loaf of bread is not a box, but each thin slice of it almost is.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/cross-sections-squares.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/cross-sections-squares.html#reading",
+      "name": "Volumes with Square and Rectangle Cross Sections",
+      "url": "https://levlprep.com/calculus/notes/cross-sections-squares.html",
+      "description": "You know how to find the volume of a box: area of the face times thickness. A loaf of bread is not a box, but each thin slice of it almost is.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "volumes with square and rectangle cross sections ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Applications of Integration",
+          "item": "https://levlprep.com/calculus/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Volumes with Square and Rectangle Cross Sections: notes",
+          "item": "https://levlprep.com/calculus/notes/cross-sections-squares.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="cross-sections-squares" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 8 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Differential Equations</a>
+    <a class="bk-toc-chap" href="../units/unit-8.html"><span class="bk-toc-chap-n">8</span><span><b>Applications of Integration</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-8"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="average-value"><a href="average-value.html"><span class="bk-toc-n">8.1</span>Average Value of a Function</a></li><li data-toc-t="motion-with-integrals"><a href="motion-with-integrals.html"><span class="bk-toc-n">8.2</span>Motion with Integrals</a></li><li data-toc-t="accumulation-in-context"><a href="accumulation-in-context.html"><span class="bk-toc-n">8.3</span>Accumulation in Context</a></li><li data-toc-t="area-between-curves-x"><a href="area-between-curves-x.html"><span class="bk-toc-n">8.4</span>Area Between Curves (Functions of x)</a></li><li data-toc-t="area-between-curves-y"><a href="area-between-curves-y.html"><span class="bk-toc-n">8.5</span>Area Between Curves (Functions of y)</a></li><li data-toc-t="area-multiple-crossings"><a href="area-multiple-crossings.html"><span class="bk-toc-n">8.6</span>Area Between Curves That Cross More Than Twice</a></li><li class="current" data-toc-t="cross-sections-squares"><a href="#main" aria-current="page"><span class="bk-toc-n">8.7</span>Volumes with Square and Rectangle Cross Sections</a><div class="bk-toc-onpage"><p>On this page</p><a href="#volume-by-slicing">Volume by slicing</a><a href="#squares-standing-on-a-base">Squares standing on a base</a><a href="#square-the-difference-not-each-curve">Square the difference, not each curve</a><a href="#rectangles-other-directions-and-units">Rectangles, other directions, and units</a></div></li><li data-toc-t="cross-sections-triangles"><a href="cross-sections-triangles.html"><span class="bk-toc-n">8.8</span>Volumes with Triangle and Semicircle Cross Sections</a></li><li data-toc-t="disc-method-axes"><a href="disc-method-axes.html"><span class="bk-toc-n">8.9</span>Disc Method About the Axes</a></li><li data-toc-t="disc-method-other-axes"><a href="disc-method-other-axes.html"><span class="bk-toc-n">8.10</span>Disc Method About Other Lines</a></li><li data-toc-t="washer-method-axes"><a href="washer-method-axes.html"><span class="bk-toc-n">8.11</span>Washer Method About the Axes</a></li><li data-toc-t="washer-method-other-axes"><a href="washer-method-other-axes.html"><span class="bk-toc-n">8.12</span>Washer Method About Other Lines</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Applications of Integration</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Volumes with Square and Rectangle Cross Sections: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/cross-sections-squares.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 8 &middot; Topic 8.7 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Volumes with Square and Rectangle Cross Sections</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="cross-sections-squares">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fcross-sections-squares.html&amp;title=Volumes%20with%20Square%20and%20Rectangle%20Cross%20Sections%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/cross-sections-squares.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<h2 id="volume-by-slicing">Volume by slicing</h2>
+<p>You know how to find the volume of a box: area of the face times thickness. A loaf of bread is not a box, but each thin slice of it almost is. Its face has some area <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> and its thickness is small, so the slice's volume is about <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> times the thickness. Add up the slices and you have the loaf.</p>
+<p>Calculus makes that exact. Put the solid along the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis and slice it with planes perpendicular to the axis. The slice at position <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is a flat shape, a <b><span class="gl" tabindex="0" data-c="cross-section">cross section</span></b>, with area <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A(x)</annotation></semantics></math>. A slab of thickness <math class="calc-m"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\Delta x</annotation></semantics></math> there has volume about <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">A(x)\,\Delta x</annotation></semantics></math>. Adding the slabs is a <a class="gl" href="../notes/riemann-sums.html" data-c="riemann-sum">Riemann sum</a> for <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math>, and letting them get thin gives</p>
+<math class="calc-m" display="block"><semantics><mrow><mi>V</mi><mo>=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">V = \int_a^b A(x)\,dx.</annotation></semantics></math>
+<p>Everything in this topic, and in the next one, comes down to finding <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A(x)</annotation></semantics></math>.</p>
+
+<h2 id="squares-standing-on-a-base">Squares standing on a base</h2>
+<p>A common way to describe a solid: draw a region on the floor (the <b>base</b>), and stand a shape of a given kind on every line across it. In the figure, the base is the region under <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y = 4 - x^2</annotation></semantics></math>, and on each segment perpendicular to the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis stands a square. The segment is one side of the square.</p>
+<figure id="fig-squares"  class="calc-figure"><div class="calc-figimg" data-fig="square-sections-solid"><img src="../figures/square-sections-solid.svg" alt="A 3D view of a solid built on the region under y = 4 − x² from x = −2 to 2, lying flat on the floor. Square slices stand on the base, each perpendicular to the x-axis with one side across the base, so the slice at x has side s = 4 − x². One thin slice is highlighted in blue with its side s marked; dashed curves trace the top edges of the solid. A side panel shows a flat square of side s, its area A(x) = (4 − x²)², and the volume, the integral from −2 to 2 of A(x) dx = 512/15." width="760" height="460" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Square slices on the region under <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y = 4 - x^2</annotation></semantics></math>. The square at <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> has side <math class="calc-m"><semantics><mrow><mi>s</mi><mo>=</mo><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">s = 4 - x^2</annotation></semantics></math>; the tallest one is at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>The side of each square is the width of the base across that slice. For a base between a top curve <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = f(x)</annotation></semantics></math> and a bottom curve <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = g(x)</annotation></semantics></math>, the side is top minus bottom, exactly the height you used for <a class="gl" href="../notes/area-between-curves-x.html" data-c="area-between-curves">area between curves</a>:</p>
+<math class="calc-m" display="block"><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>,</mo><mspace width="2em"></mspace><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>s</mi><mo stretchy="false">(</mo><mi>x</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>.</mo></mrow><annotation encoding="application/x-tex">s(x) = f(x) - g(x), \qquad A(x) = s(x)^2 = \left(f(x) - g(x)\right)^2.</annotation></semantics></math>
+
+<div class="worked">
+<p><b>Worked example.</b> The base of a solid is the region under <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y = 4 - x^2</annotation></semantics></math> and above the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis. Cross sections perpendicular to the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis are squares. Find the volume.</p>
+<p><b><a class="gl" href="../notes/limit-notation.html" data-c="limit">Limits</a>.</b> <math class="calc-m"><semantics><mrow><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">4 - x^2 = 0</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = \pm 2</annotation></semantics></math>.</p>
+<p><b>Side.</b> <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>−</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= (4 - x^2) - 0</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">= 4 - x^2</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">= (4 - x^2)^2</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>16</mn><mo>−</mo><mn>8</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>x</mi><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">= 16 - 8x^2 + x^4</annotation></semantics></math>.</p>
+<p><b>Volume.</b></p>
+<math class="calc-m" display="block"><semantics><mrow><mi>V</mi><mo>=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><mn>2</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>16</mn><mo>−</mo><mn>8</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>x</mi><mn>4</mn></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mn>2</mn><msubsup><mrow><mo fence="true" stretchy="true">[</mo><mrow><mn>16</mn><mi>x</mi><mo>−</mo><mfrac><mrow><mn>8</mn><msup><mi>x</mi><mn>3</mn></msup></mrow><mn>3</mn></mfrac><mo>+</mo><mfrac><msup><mi>x</mi><mn>5</mn></msup><mn>5</mn></mfrac></mrow><mo fence="true" stretchy="true">]</mo></mrow><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mn>2</mn><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>32</mn><mo>−</mo><mfrac><mn>64</mn><mn>3</mn></mfrac><mo>+</mo><mfrac><mn>32</mn><mn>5</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mn>512</mn><mn>15</mn></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">V = \int_{-2}^{2} \left(16 - 8x^2 + x^4\right)\,dx = 2\left[16x - \frac{8x^3}{3} + \frac{x^5}{5}\right]_0^2 = 2\left(32 - \frac{64}{3} + \frac{32}{5}\right) = \frac{512}{15}.</annotation></semantics></math>
+<p>The <a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">integrand</a> is even, so the integral from <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> is twice the integral from <math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="square-the-difference-not-each-curve">Square the difference, not each curve</h2>
+<p>The most common mistake is writing <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">f(x)^2 - g(x)^2</annotation></semantics></math>. That is not the area of anything here. The square's side is the gap between the curves, and you square the gap.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> The base is the region between <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">y = \sqrt{x}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mi>x</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">y = \frac{x}{2}</annotation></semantics></math>. Cross sections perpendicular to the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis are squares. Find the volume.</p>
+<p><b>Limits.</b> <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt><mo>=</mo><mfrac><mi>x</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\sqrt{x} = \frac{x}{2}</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math>; between them <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math> is on top (at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mn>1</mn><mo>&gt;</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">1 &gt; \frac{1}{2}</annotation></semantics></math>).</p>
+<p><b>Area.</b> <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><msqrt><mi>x</mi></msqrt><mo>−</mo><mfrac><mi>x</mi><mn>2</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">= \left(\sqrt{x} - \frac{x}{2}\right)^2</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>x</mi><mo>−</mo><msup><mi>x</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">= x - x^{3/2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">+ \frac{x^2}{4}</annotation></semantics></math>.</p>
+<p><b>Volume.</b></p>
+<math class="calc-m" display="block"><semantics><mrow><mi>V</mi><mo>=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>4</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>x</mi><mo>−</mo><msup><mi>x</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>+</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>4</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msubsup><mrow><mo fence="true" stretchy="true">[</mo><mrow><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>2</mn></mfrac><mo>−</mo><mfrac><mn>2</mn><mn>5</mn></mfrac><msup><mi>x</mi><mrow><mn>5</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>+</mo><mfrac><msup><mi>x</mi><mn>3</mn></msup><mn>12</mn></mfrac></mrow><mo fence="true" stretchy="true">]</mo></mrow><mn>0</mn><mn>4</mn></msubsup><mo>=</mo><mn>8</mn><mo>−</mo><mfrac><mn>64</mn><mn>5</mn></mfrac><mo>+</mo><mfrac><mn>16</mn><mn>3</mn></mfrac><mo>=</mo><mfrac><mn>8</mn><mn>15</mn></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">V = \int_0^4 \left(x - x^{3/2} + \frac{x^2}{4}\right)\,dx = \left[\frac{x^2}{2} - \frac{2}{5}x^{5/2} + \frac{x^3}{12}\right]_0^4 = 8 - \frac{64}{5} + \frac{16}{3} = \frac{8}{15}.</annotation></semantics></math>
+<p>Squaring each curve first would give <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>4</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>x</mi><mo>−</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>4</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_0^4 \left(x - \frac{x^2}{4}\right)\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>8</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{8}{3}</annotation></semantics></math>, five times too big.</p>
+</div>
+
+<h2 id="rectangles-other-directions-and-units">Rectangles, other directions, and units</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Slice shape</th><th>Side in the base</th><th>Area <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td>Square</td><td><math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">s^2</annotation></semantics></math></td></tr>
+<tr><td>Rectangle of height <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> (a number)</td><td><math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>s</mi><mo>⋅</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">s \cdot h</annotation></semantics></math></td></tr>
+<tr><td>Rectangle whose height is <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> times its base</td><td><math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>k</mi><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">k s^2</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>If the slices are perpendicular to the <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis, slice the base horizontally: the side is <a class="gl" href="../notes/area-between-curves-y.html" data-c="integrate-in-y">right minus left</a>, written in <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, and the integral is in <math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math> between <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-values.</p>
+<p>Units follow the formula: a side in feet gives an area in square feet, and integrating over feet gives cubic feet. There is no <math class="calc-m"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math> anywhere, because squares and rectangles have none in their area formulas, even when the base has curved edges.</p>
+<p>With a calculator, find the base's crossings numerically and store them, write <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_a^b \left(f(x) - g(x)\right)^2\,dx</annotation></semantics></math> as your setup, and let the calculator do the integral. Report three decimal places.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:cross-sections-squares">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="area-multiple-crossings.html"><span>&larr; Previous</span><b>Area Between Curves That Cross More Than Twice</b></a><a class="tb-chapter-link next" href="cross-sections-triangles.html"><span>Next &rarr;</span><b>Volumes with Triangle and Semicircle Cross Sections</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:cross-sections-squares">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

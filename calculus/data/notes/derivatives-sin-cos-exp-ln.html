@@ -1,0 +1,69 @@
+<p>Polynomials are only the beginning. Waves, growth and decay are described by sine, cosine, the exponential $e^x$ and the natural logarithm $\ln x$. Their derivatives are short and worth memorizing, and each one makes sense from a picture. This page gives all four, shows where they come from, and uses them to evaluate limits that are derivatives in disguise.</p>
+
+<h2>Sine and cosine</h2>
+<p>Look at the graph of $y = \sin x$ and track its slope. At $x = 0$ it rises with slope 1. At $\frac{\pi}{2}$, the top of the wave, its tangent line is level: slope 0. At $\pi$ it falls with slope $-1$. At $\frac{3\pi}{2}$, the bottom, the slope is 0 again, and at $2\pi$ it is back to 1. The list $1, 0, -1, 0, 1$ is exactly the list of heights of $\cos x$ at those inputs.</p>
+<figure id="fig-sine" data-fig="sine-slopes-cosine"><figcaption>Each slope of $\sin x$ (top) is the height of $\cos x$ (bottom) at the same $x$.</figcaption></figure>
+<p>That match holds at every $x$:</p>
+<p>$$\frac{d}{dx}(\sin x) = \cos x, \qquad \frac{d}{dx}(\cos x) = -\sin x.$$</p>
+<p>The minus sign for cosine is easy to check: just right of $x = 0$, the graph of $\cos x$ starts to fall, so its slope is negative, while $\sin x$ is positive there.</p>
+<p>Why is the slope of $\sin x$ at 0 exactly 1? The difference quotient at 0 is $\frac{\sin h - \sin 0}{h} = \frac{\sin h}{h}$, and Unit 1 showed with the squeeze theorem that $\lim_{h \to 0} \frac{\sin h}{h} = 1$. That limit is true only when angles are measured in <b>radians</b>, so these formulas are radian formulas. In degrees, every slope would pick up an extra factor of $\frac{\pi}{180}$.</p>
+
+<h2>The exponential $e^x$</h2>
+<p>Every exponential graph $b^x$ has a slope equal to a fixed multiple of its height. For one special base, the slope at $x = 0$ is exactly 1, and then the slope at every point equals the height. That base is $e \approx 2.718$, and so</p>
+<p>$$\frac{d}{dx}\left( e^x \right) = e^x.$$</p>
+<p>The function is its own derivative. At $x = 0$ the slope is 1; at $x = \ln 3$ the height is 3 and so is the slope. Do not use the power rule here: in $e^x$ the variable is the exponent, so $xe^{x - 1}$ is wrong.</p>
+
+<h2>The natural logarithm</h2>
+<p>For $x > 0$,</p>
+<p>$$\frac{d}{dx}(\ln x) = \frac{1}{x}.$$</p>
+<p>The graph of $\ln x$ is steep near 0 and flattens as $x$ grows, matching $\frac{1}{x}$: large for small $x$, small for large $x$, and always positive, because $\ln x$ always increases. Unit 3 shows why this formula follows from the one for $e^x$.</p>
+
+<table class="compare">
+<thead><tr><th>$f(x)$</th><th>$f'(x)$</th><th>A check from the graph</th></tr></thead>
+<tbody>
+<tr><td>$\sin x$</td><td>$\cos x$</td><td>slope 1 at 0, level at $\frac{\pi}{2}$</td></tr>
+<tr><td>$\cos x$</td><td>$-\sin x$</td><td>level at 0, slope $-1$ at $\frac{\pi}{2}$</td></tr>
+<tr><td>$e^x$</td><td>$e^x$</td><td>slope 1 at 0, slope equals height</td></tr>
+<tr><td>$\ln x$</td><td>$\frac{1}{x}$, for $x > 0$</td><td>slope 1 at $x = 1$, flattening out</td></tr>
+</tbody>
+</table>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Differentiate $f(x) = 4e^x - 3\cos x + 5\ln x$ for $x > 0$, and find $f'(\pi)$.</p>
+<p>Term by term, with the constant multiple and sum rules: $f'(x) = 4e^x - 3(-\sin x) + \frac{5}{x} = 4e^x + 3\sin x + \frac{5}{x}$.</p>
+<p>At $x = \pi$: $f'(\pi) = 4e^{\pi} + 3(0) + \frac{5}{\pi} = 4e^{\pi} + \frac{5}{\pi}$.</p>
+<p>The step to watch is the double negative: $-3\cos x$ becomes $+3\sin x$.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Write the line tangent to $y = \ln x$ at $x = e$.</p>
+<p>Point: $\ln e = 1$, so $(e, 1)$. Slope: $\frac{1}{e}$.</p>
+<p>Line: $y = 1 + \frac{1}{e}(x - e)$, which simplifies to $y = \frac{x}{e}$. It passes through the origin.</p>
+</div>
+
+<h2>Limits that are derivatives</h2>
+<p>Now that you know these derivatives, you can evaluate some limits instantly by reading them as derivatives at a point. This is the <b>limit as a derivative</b> idea, and it appears on the exam every year. The method:</p>
+<ol>
+<li>Match the shape $\lim_{h \to 0} \frac{f(a + h) - f(a)}{h}$ or $\lim_{x \to a} \frac{f(x) - f(a)}{x - a}$.</li>
+<li>Name $f$ and $a$. Check that the subtracted number really is $f(a)$.</li>
+<li>The limit is $f'(a)$. Evaluate it with a derivative rule.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 3.</b> Evaluate $\lim_{h \to 0} \frac{\sin\left( \frac{\pi}{6} + h \right) - \frac{1}{2}}{h}$.</p>
+<p>Shape: $f(x) = \sin x$, $a = \frac{\pi}{6}$, and $\sin \frac{\pi}{6} = \frac{1}{2}$ is indeed $f(a)$.</p>
+<p>So the limit is $f'\left( \frac{\pi}{6} \right) = \cos \frac{\pi}{6} = \frac{\sqrt{3}}{2}$.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 4.</b> Evaluate $\lim_{h \to 0} \frac{\ln(1 + h)}{h}$.</p>
+<p>The subtracted value is hidden: $\ln 1 = 0$, so the numerator is $\ln(1 + h) - \ln 1$. That is the shape with $f(x) = \ln x$ and $a = 1$.</p>
+<p>The limit is $f'(1) = \frac{1}{1} = 1$.</p>
+</div>
+<p>Substituting $h = 0$ in these limits gives $\frac{0}{0}$, which never settles anything. Recognizing the derivative does.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Sign on cosine: $\frac{d}{dx}(\cos x) = -\sin x$, not $\sin x$.</li>
+<li>Power rule on $e^x$: the answer is $e^x$.</li>
+<li>Degrees: the trigonometric formulas need radians, on paper and on the calculator.</li>
+<li>Answering $f(a)$ instead of $f'(a)$ when a limit is a derivative.</li>
+</ul>

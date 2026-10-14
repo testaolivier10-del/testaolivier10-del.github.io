@@ -1,0 +1,5 @@
+{
+ "numerical-estimate": {
+  "def": "An estimate of a limit from a table of values: the number the outputs approach as the inputs get closer and closer to $a$ from both sides."
+ }
+}

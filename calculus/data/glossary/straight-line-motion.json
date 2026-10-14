@@ -1,0 +1,17 @@
+{
+ "position-function": {
+  "def": "A function $x(t)$ giving the location of an object moving along a line at time $t$, measured from a fixed origin, positive in one direction and negative in the other."
+ },
+ "velocity": {
+  "def": "The rate of change of position: $v(t) = x'(t)$. Its sign gives the direction of motion and its absolute value the speed. Units: distance per time."
+ },
+ "acceleration": {
+  "def": "The rate of change of velocity: $a(t) = v'(t) = x''(t)$. Units: distance per time per time, such as meters per second per second."
+ },
+ "speed": {
+  "def": "The absolute value of velocity, $|v(t)|$: how fast an object moves, whatever its direction. Speed is never negative."
+ },
+ "speeding-up": {
+  "def": "A particle is speeding up when its speed $|v|$ increases, which happens when $v(t)$ and $a(t)$ have the same sign; it is slowing down when they have opposite signs."
+ }
+}

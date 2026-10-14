@@ -1,0 +1,132 @@
+{
+ "id": "frq-u4-motion-two-particles",
+ "type": "motion",
+ "points": 9,
+ "calc": false,
+ "title": "Two particles on a line: direction and speed",
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "straight-line-motion",
+  "choosing-derivative-rules"
+ ],
+ "practices": [
+  "1.E",
+  "3.D",
+  "4.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Positions of two particles",
+  "text": "Particles $P$ and $Q$ move along the $x$-axis for $0 \\le t \\le 6$. Their positions are given below, with $x$ in meters and $t$ in seconds.",
+  "table": {
+   "caption": "Positions of particles P and Q at time t seconds, in meters",
+   "cols": [
+    "Particle",
+    "Position"
+   ],
+   "rows": [
+    [
+     "$P$",
+     "$x_P(t) = 2t^3 - 15t^2 + 24t + 5$"
+    ],
+    [
+     "$Q$",
+     "$x_Q(t) = (t - 2)e^{-t/2}$"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Find</b> the velocity of particle $P$ at time $t = 2$. Is $P$ moving to the left or to the right at $t = 2$? <b>Give a reason</b> for your answer.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "$v_P(t) = 6t^2 - 30t + 24$ and $v_P(2) = -12$ meters per second",
+     "accept": [
+      "$v_P(2) = 24 - 60 + 24 = -12$"
+     ]
+    },
+    {
+     "point": "Left, because $v_P(2) < 0$",
+     "accept": [
+      "the reason must be the sign of the velocity"
+     ]
+    }
+   ],
+   "sample": "$v_P(t) = x_P'(t) = 6t^2 - 30t + 24$, so $v_P(2) = 24 - 60 + 24 = -12$ meters per second. Since $v_P(2) < 0$, particle $P$ is moving to the left at $t = 2$."
+  },
+  {
+   "label": "b",
+   "prompt": "Is particle $P$ speeding up or slowing down at time $t = 2$? <b>Give a reason</b> for your answer.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "$a_P(t) = 12t - 30$ and $a_P(2) = -6$",
+     "accept": [
+      "$a_P(2) = 24 - 30 = -6$ meters per second per second"
+     ]
+    },
+    {
+     "point": "Speeding up, because $v_P(2)$ and $a_P(2)$ are both negative",
+     "accept": [
+      "both signs must be named; \"$a < 0$\" alone does not earn the point"
+     ]
+    }
+   ],
+   "sample": "$a_P(t) = v_P'(t) = 12t - 30$, so $a_P(2) = -6$. Since $v_P(2) = -12 < 0$ and $a_P(2) = -6 < 0$ have the same sign, particle $P$ is speeding up at $t = 2$."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Find</b> all times $t$, for $0 < t < 6$, at which particle $P$ changes direction. <b>Justify</b> your answer.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Solves $v_P(t) = 0$: $6(t - 1)(t - 4) = 0$, so $t = 1$ and $t = 4$",
+     "accept": [
+      "factoring $6t^2 - 30t + 24 = 6(t^2 - 5t + 4)$"
+     ]
+    },
+    {
+     "point": "$P$ changes direction at $t = 1$ and $t = 4$ because $v_P$ changes sign at each",
+     "accept": [
+      "from positive to negative at $t = 1$, from negative to positive at $t = 4$",
+      "\"$v_P = 0$\" without the sign change does not earn the point"
+     ]
+    }
+   ],
+   "sample": "$v_P(t) = 6(t - 1)(t - 4)$ is 0 at $t = 1$ and $t = 4$. It changes from positive to negative at $t = 1$ and from negative to positive at $t = 4$, so particle $P$ changes direction at $t = 1$ and at $t = 4$."
+  },
+  {
+   "label": "d",
+   "prompt": "<b>Find</b> the velocity $v_Q(t)$ of particle $Q$. At time $t = 3$, are particles $P$ and $Q$ moving in the same direction? <b>Justify</b> your answer.",
+   "points": 3,
+   "rubric": [
+    {
+     "point": "$v_Q(t) = e^{-t/2} - \\frac{t - 2}{2}e^{-t/2}$, by the product and chain rules",
+     "accept": [
+      "$v_Q(t) = \\frac{4 - t}{2}e^{-t/2}$",
+      "any equivalent form"
+     ]
+    },
+    {
+     "point": "$v_Q(3) = \\frac{1}{2}e^{-3/2} > 0$",
+     "accept": [
+      "$v_Q(3) = e^{-3/2} - \\frac{1}{2}e^{-3/2}$",
+      "the sign of $v_Q(3)$ with supporting work"
+     ]
+    },
+    {
+     "point": "Not the same direction: $v_P(3) = -12 < 0$ while $v_Q(3) > 0$",
+     "accept": [
+      "$P$ moves left and $Q$ moves right at $t = 3$"
+     ]
+    }
+   ],
+   "sample": "By the product rule and the chain rule, $v_Q(t) = 1 \\cdot e^{-t/2} + (t - 2) \\cdot \\left(-\\frac{1}{2}e^{-t/2}\\right) = \\frac{4 - t}{2}e^{-t/2}$. Then $v_Q(3) = \\frac{1}{2}e^{-3/2} > 0$, so $Q$ moves right. Also $v_P(3) = 6(2)(-1) = -12 < 0$, so $P$ moves left. They are moving in opposite directions at $t = 3$."
+  }
+ ]
+}

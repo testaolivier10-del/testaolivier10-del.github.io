@@ -1,0 +1,8 @@
+{
+ "average-rate": {
+  "def": "The change in a quantity divided by the change in the input over an interval: $\\frac{f(b) - f(a)}{b - a}$. It is the slope of the line through $(a, f(a))$ and $(b, f(b))$, in output units per input unit."
+ },
+ "instantaneous-rate": {
+  "def": "How fast a quantity is changing at one instant: the number that average rates of change over shorter and shorter intervals around that instant close in on."
+ }
+}

@@ -1,0 +1,556 @@
+{
+ "stimuli": {
+  "choosing-derivative-rules-s1": {
+   "kind": "table",
+   "title": "Values of $f$, $g$ and their derivatives",
+   "table": {
+    "caption": "Selected values of the differentiable functions f and g and their derivatives",
+    "cols": [
+     "$x$",
+     "$f(x)$",
+     "$f'(x)$",
+     "$g(x)$",
+     "$g'(x)$"
+    ],
+    "rows": [
+     [
+      "1",
+      "2",
+      "3",
+      "3",
+      "$-1$"
+     ],
+     [
+      "2",
+      "$-1$",
+      "5",
+      "1",
+      "4"
+     ],
+     [
+      "3",
+      "4",
+      "$-2$",
+      "2",
+      "6"
+     ]
+    ]
+   }
+  },
+  "choosing-derivative-rules-s2": {
+   "kind": "graph",
+   "title": "The graphs of $f$ and $g$",
+   "plot": {
+    "label": "Graphs on 0 to 4: f is made of segments from (0, 4) to (2, 0) and from (2, 0) to (4, 2); g is the line from (0, 3) to (4, 1)",
+    "x": [
+     -0.5,
+     4.5
+    ],
+    "y": [
+     -0.5,
+     4.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "4 - 2x",
+      "domain": [
+       0,
+       2
+      ],
+      "label": "f",
+      "ends": [
+       "closed",
+       null
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "x - 2",
+      "domain": [
+       2,
+       4
+      ],
+      "ends": [
+       null,
+       "closed"
+      ],
+      "cls": "s1"
+     },
+     {
+      "fn": "3 - x/2",
+      "domain": [
+       0,
+       4
+      ],
+      "label": "g",
+      "cls": "s2",
+      "dashed": true,
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       0
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-choosing-derivative-rules-1",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $P(x) = f(x)g(x)$. Find $P'(2)$.",
+   "stimulus": "choosing-derivative-rules-s1",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "That is $f'(2)g'(2)$. The derivative of a product is not the product of the derivatives: use $f'g + fg'$."
+     },
+     {
+      "value": 5,
+      "why": "That is only $f'(2)g(2)$. The product rule has a second term, $f(2)g'(2) = -4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product rule: $P'(2) = f'(2)g(2) + f(2)g'(2) = 5(1) + (-1)(4) = 1$."
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-2",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the table, find the derivative of the quotient $Q(x) = \\frac{f(x)}{g(x)}$ at $x = 3$.",
+   "stimulus": "choosing-derivative-rules-s1",
+   "numeric": {
+    "answer": -7,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "The numerator is reversed. It is $f'g - fg'$: derivative of the top first."
+     },
+     {
+      "value": "-1/3",
+      "why": "That is $\\frac{f'(3)}{g'(3)}$. The derivative of a quotient needs the quotient rule."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Quotient rule: $Q'(3) = \\frac{f'(3)g(3) - f(3)g'(3)}{[g(3)]^2} = \\frac{(-2)(2) - (4)(6)}{4} = \\frac{-28}{4} = -7$."
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-3",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $C(x) = f(g(x))$. What is $C'(3)$?",
+   "stimulus": "choosing-derivative-rules-s1",
+   "options": [
+    "$30$",
+    "$-12$",
+    "$5$",
+    "$20$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The last operation is applying $f$ to $g(x)$: chain rule. $C'(3) = f'(g(3)) \\cdot g'(3) = f'(2) \\cdot 6 = 5 \\cdot 6 = 30$.",
+    "options": [
+     "$f'(g(3))g'(3) = f'(2) \\cdot 6 = 30$.",
+     "This is $f'(3)g'(3)$; read $f'$ at the inside value $g(3) = 2$.",
+     "This is $f'(g(3))$ without the inside derivative $g'(3) = 6$.",
+     "This is $f'(2)g'(2)$: the inside derivative must be read at $x = 3$."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-4",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Let $D(x) = x \\cdot f(x^2)$. Find $D'(1)$.",
+   "stimulus": "choosing-derivative-rules-s1",
+   "numeric": {
+    "answer": 8,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "The chain rule factor $2x$ from the inside function $x^2$ is missing: $x \\cdot f'(x^2) \\cdot 2x$."
+     },
+     {
+      "value": 6,
+      "why": "The product rule has two terms; the first, $1 \\cdot f(1) = 2$, is missing."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product rule first, chain rule inside: $D'(x) = f(x^2) + x \\cdot f'(x^2) \\cdot 2x$. So $D'(1) = f(1) + 1 \\cdot f'(1) \\cdot 2 = 2 + 6 = 8$."
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-5",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Let $E(x) = \\frac{[g(x)]^2}{x}$. Find $E'(2)$.",
+   "stimulus": "choosing-derivative-rules-s1",
+   "numeric": {
+    "answer": "15/4",
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That is the derivative of the top over the derivative of the bottom. A quotient needs the quotient rule."
+     },
+     {
+      "value": "-15/4",
+      "why": "The numerator is reversed: derivative of the top times the bottom comes first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Quotient rule, with the chain rule for the top: $E'(x) = \\frac{2g(x)g'(x) \\cdot x - [g(x)]^2 \\cdot 1}{x^2}$. At 2: $\\frac{2(1)(4)(2) - 1}{4} = \\frac{15}{4}$."
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-6",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Reading slopes and values from the graphs, find the derivative of the product $p(x) = f(x)g(x)$ at $x = 1$.",
+   "stimulus": "choosing-derivative-rules-s2",
+   "numeric": {
+    "answer": -6,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is $f'(1)g'(1)$. Use the product rule $f'g + fg'$."
+     },
+     {
+      "value": -5,
+      "why": "That is only $f'(1)g(1)$; add $f(1)g'(1) = -1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the graph: $f(1) = 2$, $f'(1) = -2$, $g(1) = 2.5$, $g'(1) = -\\frac{1}{2}$. Then $p'(1) = (-2)(2.5) + (2)\\left(-\\frac{1}{2}\\right) = -6$."
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-7",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "Reading slopes and values from the graphs, find the derivative of the quotient $q(x) = \\frac{f(x)}{g(x)}$ at $x = 3$.",
+   "stimulus": "choosing-derivative-rules-s2",
+   "numeric": {
+    "answer": "8/9",
+    "mistakes": [
+     {
+      "value": "-8/9",
+      "why": "The numerator is reversed: it is $f'g - fg'$, not $fg' - f'g$."
+     },
+     {
+      "value": -2,
+      "why": "That is $\\frac{f'(3)}{g'(3)}$. Use the quotient rule."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(3) = 1$, $f'(3) = 1$, $g(3) = 1.5$, $g'(3) = -\\frac{1}{2}$. So $q'(3) = \\frac{(1)(1.5) - (1)\\left(-\\frac{1}{2}\\right)}{(1.5)^2} = \\frac{2}{2.25} = \\frac{8}{9}$."
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-8",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $r(x) = f(g(x))$. What is $r'(4)$?",
+   "stimulus": "choosing-derivative-rules-s2",
+   "options": [
+    "$-\\frac{1}{2}$",
+    "$1$",
+    "$-2$",
+    "$-1$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$g(4) = 1$, and $f$ has slope $-2$ at $x = 1$. So $r'(4) = f'(1) \\cdot g'(4) = (-2)\\left(-\\frac{1}{2}\\right) = 1$.",
+    "options": [
+     "This is $f'(4)g'(4)$; read $f'$ at $g(4) = 1$.",
+     "$f'(g(4))g'(4) = f'(1) \\cdot \\left(-\\frac{1}{2}\\right) = (-2)\\left(-\\frac{1}{2}\\right) = 1$.",
+     "This is $f'(g(4))$ without the inside derivative $g'(4) = -\\frac{1}{2}$.",
+     "This is $f(g(4)) \\cdot g'(4)$: the chain rule needs the slope $f'$, not the value $f$."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-9",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which statement about $p(x) = f(x)g(x)$ at $x = 2$ is true?",
+   "stimulus": "choosing-derivative-rules-s2",
+   "options": [
+    "$p'(2) = 0$, because $f(2) = 0$",
+    "$p'(2) = g'(2) = -\\frac{1}{2}$, because $f(2) = 0$",
+    "$p'(2)$ does not exist: $f$ has a corner at 2, and the one-sided slopes of $p$ differ",
+    "$p'(2) = f'(2)g'(2)$, which is 0"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$f'(2)$ does not exist (a corner). The product rule from each side gives $-4$ and $2$, so $p$ has no derivative at 2.",
+    "options": [
+     "A zero value of $f$ does not make the slope of $p$ zero.",
+     "The term $f'(2)g(2)$ is not zero; $f'(2)$ does not even exist.",
+     "From the left $p' = (-2)(2) + 0 = -4$; from the right $p' = (1)(2) + 0 = 2$.",
+     "The derivative of a product is not the product of derivatives, and $f'(2)$ does not exist."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-10",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which first step is most efficient for differentiating $y = \\frac{x^2 + 3}{\\sqrt{x}}$?",
+   "options": [
+    "Apply the quotient rule to the fraction as written",
+    "Apply the chain rule to $\\sqrt{x}$ first",
+    "Multiply the derivatives of $x^2 + 3$ and $\\frac{1}{\\sqrt{x}}$",
+    "Rewrite as $x^{3/2} + 3x^{-1/2}$ and use the power rule"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Dividing each term by $x^{1/2}$ turns the quotient into a sum of powers, $x^{3/2} + 3x^{-1/2}$, which the power rule handles directly.",
+    "options": [
+     "This works, but it is longer and gives more chances for algebra slips.",
+     "$\\sqrt{x}$ has no inside function to differentiate; the fraction is the structure to deal with.",
+     "The derivative of a product is not the product of derivatives.",
+     "Two power rules, no quotient: $\\frac{3}{2}x^{1/2} - \\frac{3}{2}x^{-3/2}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-11",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the derivative of $y = x^2\\sin(3x)$.",
+   "expr": {
+    "answer": "2x*sin(3x) + 3x^2*cos(3x)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "2x*3cos(3x)",
+      "why": "That multiplies the two derivatives. The product rule adds two terms: $f'g + fg'$."
+     },
+     {
+      "expr": "2x*sin(3x) + x^2*cos(3x)",
+      "why": "The chain rule factor 3 from the inside $3x$ is missing in the second term."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product first: $(x^2)'\\sin(3x) + x^2(\\sin(3x))'$. The second factor needs the chain rule: $(\\sin(3x))' = 3\\cos(3x)$. So $2x\\sin(3x) + 3x^2\\cos(3x)$."
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-12",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find the derivative of $y = \\frac{e^{2x}}{x + 1}$ for $x > -1$.",
+   "expr": {
+    "answer": "(2e^(2x)(x + 1) - e^(2x))/(x + 1)^2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0,
+     2
+    ],
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "2e^(2x)",
+      "why": "That is the derivative of the top over the derivative of the bottom. A quotient needs the quotient rule."
+     },
+     {
+      "expr": "(e^(2x) - 2e^(2x)(x + 1))/(x + 1)^2",
+      "why": "The numerator is reversed: derivative of the top times the bottom comes first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Quotient rule, with the chain rule on the top: $\\frac{2e^{2x}(x + 1) - e^{2x} \\cdot 1}{(x + 1)^2} = \\frac{e^{2x}(2x + 1)}{(x + 1)^2}$."
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-13",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find the derivative of $y = \\left(xe^x\\right)^3$.",
+   "expr": {
+    "answer": "3(x*e^x)^2*(e^x + x*e^x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1,
+     1
+    ],
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "3(x*e^x)^2",
+      "why": "Multiply by the derivative of the inside function $xe^x$, which is $e^x + xe^x$ by the product rule."
+     },
+     {
+      "expr": "3(x*e^x)^2*e^x",
+      "why": "The inside $xe^x$ is a product; its derivative is $e^x + xe^x$, not $e^x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The last operation is the cube: chain rule first, $3\\left(xe^x\\right)^2 \\cdot \\left(xe^x\\right)'$. The inside is a product: $\\left(xe^x\\right)' = e^x + xe^x$."
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-14",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "single",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "To differentiate $y = (x^2 + 1)^5\\cos x$, which rule do you apply first?",
+   "options": [
+    "The product rule",
+    "The chain rule",
+    "The quotient rule",
+    "The power rule on the whole expression"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Look at the last operation: a product. Use the product rule, then the chain rule for $(x^2 + 1)^5$ inside it.",
+    "options": [
+     "The last operation is multiplying $(x^2 + 1)^5$ by $\\cos x$.",
+     "The chain rule is needed later, for the factor $(x^2 + 1)^5$.",
+     "There is no division in the function.",
+     "The power 5 applies to $x^2 + 1$ alone, not to the product."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-15",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $\\frac{d}{dx}\\sin^2\\left(x^3\\right)$?",
+   "options": [
+    "$2\\sin(x^3)\\cos(x^3)$",
+    "$6x^2\\sin(x^3)\\cos(x^3)$",
+    "$6x^2\\sin(x^3)$",
+    "$-6x^2\\sin(x^3)\\cos(x^3)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Three layers: the square, the sine, and $x^3$. Multiply one derivative for each: $2\\sin(x^3) \\cdot \\cos(x^3) \\cdot 3x^2$.",
+    "options": [
+     "The innermost layer $x^3$ has derivative $3x^2$, which is missing.",
+     "One factor per layer: $2\\sin(x^3)$, $\\cos(x^3)$, $3x^2$.",
+     "The middle layer, the sine, contributes $\\cos(x^3)$, which is missing.",
+     "The derivative of sine is cosine, with no minus sign."
+    ]
+   }
+  },
+  {
+   "id": "calc-choosing-derivative-rules-16",
+   "unit": "unit-3",
+   "topic": "choosing-derivative-rules",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = x^3\\ln x$. Find $f'(e)$.",
+   "numeric": {
+    "answer": "4e^2",
+    "mistakes": [
+     {
+      "value": "3e^2",
+      "why": "That is only $3x^2\\ln x$. The product rule adds $x^3 \\cdot \\frac{1}{x} = x^2$, which is $e^2$ at $x = e$."
+     },
+     {
+      "value": "3e",
+      "why": "That multiplies the derivatives, $3x^2 \\cdot \\frac{1}{x}$. Use the product rule instead."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product rule: $f'(x) = 3x^2\\ln x + x^3 \\cdot \\frac{1}{x} = 3x^2\\ln x + x^2$. At $x = e$: $3e^2 + e^2 = 4e^2$."
+   }
+  }
+ ]
+}

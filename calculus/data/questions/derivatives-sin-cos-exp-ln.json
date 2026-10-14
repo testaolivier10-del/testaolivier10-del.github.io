@@ -1,0 +1,520 @@
+{
+ "stimuli": {
+  "derivatives-sin-cos-exp-ln-s1": {
+   "kind": "graph",
+   "title": "The graph of $y = \\sin x$ on $[0, 2\\pi]$",
+   "plot": {
+    "label": "Graph of y = sin x from 0 to 2 pi, with high point (pi/2, 1), low point (3 pi/2, -1), and crossings at 0, pi and 2 pi",
+    "x": [
+     -0.3,
+     6.6
+    ],
+    "y": [
+     -1.5,
+     1.5
+    ],
+    "piX": true,
+    "yStep": 0.5,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "sin(x)",
+      "domain": [
+       0,
+       6.2832
+      ],
+      "label": "y = sin x",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       3.141592653589793,
+       0
+      ]
+     }
+    ]
+   }
+  },
+  "derivatives-sin-cos-exp-ln-s2": {
+   "kind": "table",
+   "title": "Four limits that are derivatives",
+   "table": {
+    "caption": "Four limits, labeled L1 to L4",
+    "cols": [
+     "Label",
+     "Limit"
+    ],
+    "rows": [
+     [
+      "L1",
+      "$\\lim_{h \\to 0} \\frac{e^{2 + h} - e^2}{h}$"
+     ],
+     [
+      "L2",
+      "$\\lim_{x \\to \\pi/3} \\frac{\\cos x - \\frac{1}{2}}{x - \\frac{\\pi}{3}}$"
+     ],
+     [
+      "L3",
+      "$\\lim_{h \\to 0} \\frac{\\ln(1 + h)}{h}$"
+     ],
+     [
+      "L4",
+      "$\\lim_{h \\to 0} \\frac{\\sin\\left( \\frac{\\pi}{6} + h \\right) - \\frac{1}{2}}{h}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-1",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "derivatives-sin-cos-exp-ln-s1",
+   "q": "What is the slope of the graph of $y = \\sin x$ at $x = \\pi$?",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "That is $\\sin \\pi$, the height. The slope is $\\cos \\pi$."
+     },
+     {
+      "value": 1,
+      "why": "The sign: $\\cos \\pi = -1$, and the graph is falling as it crosses $x = \\pi$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d}{dx}(\\sin x) = \\cos x$, and $\\cos \\pi = -1$."
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-2",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "derivatives-sin-cos-exp-ln-s1",
+   "q": "Which is an equation of the line tangent to $y = \\sin x$ at $x = 0$?",
+   "options": [
+    "$y = x$",
+    "$y = 1$",
+    "$y = -x$",
+    "$y = x + 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Point $(0, \\sin 0) = (0, 0)$, slope $\\cos 0 = 1$: $y = 0 + 1(x - 0)$.",
+    "options": [
+     "Through the origin with slope 1.",
+     "That is level; the graph rises through the origin.",
+     "The slope is $\\cos 0 = +1$.",
+     "The line must pass through $(0, 0)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-3",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "derivatives-sin-cos-exp-ln-s1",
+   "q": "For $0 \\le x \\le 2\\pi$, where is the line tangent to $y = \\sin x$ level?",
+   "options": [
+    "$x = \\frac{\\pi}{2}$ and $x = \\frac{3\\pi}{2}$",
+    "$x = 0$, $x = \\pi$ and $x = 2\\pi$",
+    "$x = \\frac{\\pi}{4}$ and $x = \\frac{5\\pi}{4}$",
+    "$x = \\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slope is $\\cos x$, which is 0 at $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$: the top and bottom of the wave.",
+    "options": [
+     "Where $\\cos x = 0$.",
+     "Those are where $\\sin x = 0$, the heights; the slopes there are $\\pm 1$.",
+     "There $\\cos x = \\pm\\frac{\\sqrt{2}}{2}$, not 0.",
+     "At $\\pi$ the slope is $-1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-4",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "derivatives-sin-cos-exp-ln-s1",
+   "q": "For $0 \\le x \\le 2\\pi$, at which $x$ is the graph of $y = \\sin x$ falling most steeply?",
+   "options": [
+    "$x = \\pi$",
+    "$x = \\frac{3\\pi}{2}$",
+    "$x = \\frac{\\pi}{2}$",
+    "$x = 2\\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slope $\\cos x$ is most negative, $-1$, at $x = \\pi$.",
+    "options": [
+     "Slope $\\cos \\pi = -1$, the least value of cosine.",
+     "That is the lowest point; the slope there is 0.",
+     "That is the highest point; the slope there is 0.",
+     "There the slope is $\\cos 2\\pi = 1$: rising most steeply."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-5",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "numeric",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "derivatives-sin-cos-exp-ln-s2",
+   "q": "Evaluate L1.",
+   "numeric": {
+    "answer": "e^2",
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "Substituting $h = 0$ gives $\\frac{0}{0}$, which is not 0. Read L1 as $f'(2)$ for $f(x) = e^x$."
+     },
+     {
+      "value": "2e",
+      "why": "The power rule does not apply to $e^x$. The derivative of $e^x$ is $e^x$, so $f'(2) = e^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "L1 is $\\lim_{h \\to 0} \\frac{f(2 + h) - f(2)}{h}$ with $f(x) = e^x$, so it is $f'(2) = e^2$."
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-6",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "numeric",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "derivatives-sin-cos-exp-ln-s2",
+   "q": "Evaluate L2.",
+   "numeric": {
+    "answer": "-sqrt(3)/2",
+    "mistakes": [
+     {
+      "value": "sqrt(3)/2",
+      "why": "The derivative of $\\cos x$ is $-\\sin x$: keep the minus sign."
+     },
+     {
+      "value": "1/2",
+      "why": "That is $\\cos \\frac{\\pi}{3}$, the value subtracted in the numerator. The limit is the slope, $-\\sin \\frac{\\pi}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Since $\\cos \\frac{\\pi}{3} = \\frac{1}{2}$, L2 is $\\lim_{x \\to a} \\frac{f(x) - f(a)}{x - a}$ with $f(x) = \\cos x$ and $a = \\frac{\\pi}{3}$: $f'\\left( \\frac{\\pi}{3} \\right) = -\\sin \\frac{\\pi}{3} = -\\frac{\\sqrt{3}}{2}$."
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-7",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "numeric",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "derivatives-sin-cos-exp-ln-s2",
+   "q": "Evaluate L3.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$\\frac{\\ln 1}{0}$ is $\\frac{0}{0}$, not 0. Since $\\ln 1 = 0$, L3 is $\\lim_{h \\to 0} \\frac{\\ln(1 + h) - \\ln 1}{h}$, the derivative of $\\ln x$ at 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Write $\\ln(1 + h)$ as $\\ln(1 + h) - \\ln 1$. Then L3 is $f'(1)$ for $f(x) = \\ln x$, which is $\\frac{1}{1} = 1$."
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-8",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "numeric",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "derivatives-sin-cos-exp-ln-s2",
+   "q": "Evaluate L4.",
+   "numeric": {
+    "answer": "sqrt(3)/2",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "That is $\\sin \\frac{\\pi}{6}$, the height. L4 is the slope of sine there, $\\cos \\frac{\\pi}{6}$."
+     },
+     {
+      "value": "-1/2",
+      "why": "L4 is the derivative of sine, which is cosine with no sign change: $\\cos \\frac{\\pi}{6}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $\\sin \\frac{\\pi}{6} = \\frac{1}{2}$, L4 is $f'\\left( \\frac{\\pi}{6} \\right)$ for $f(x) = \\sin x$: $\\cos \\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$."
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-9",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Differentiate the combination $3\\sin x - 2\\cos x$ term by term.",
+   "expr": {
+    "answer": "3cos(x) + 2sin(x)",
+    "vars": [
+     "x"
+    ],
+    "lhs": "\\frac{d}{dx}\\left( 3\\sin x - 2\\cos x \\right) =",
+    "mistakes": [
+     {
+      "expr": "3cos(x) - 2sin(x)",
+      "why": "The derivative of $\\cos x$ is $-\\sin x$, so $-2\\cos x$ becomes $-2(-\\sin x) = +2\\sin x$."
+     },
+     {
+      "expr": "-3cos(x) - 2sin(x)",
+      "why": "The derivative of $\\sin x$ is $+\\cos x$; only cosine picks up a minus sign."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$3\\cos x - 2(-\\sin x) = 3\\cos x + 2\\sin x$."
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-10",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $f'(x)$ for $f(x) = 4e^x - \\ln x$, $x > 0$.",
+   "expr": {
+    "answer": "4e^x - 1/x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     3
+    ],
+    "lhs": "f'(x) =",
+    "mistakes": [
+     {
+      "expr": "4x*e^(x-1) - 1/x",
+      "why": "The power rule needs a fixed exponent; in $e^x$ the variable is the exponent. $\\frac{d}{dx}\\left( e^x \\right) = e^x$."
+     },
+     {
+      "expr": "4e^x + 1/x",
+      "why": "The minus sign stays: $\\frac{d}{dx}(-\\ln x) = -\\frac{1}{x}$."
+     },
+     {
+      "expr": "4e^x - ln(x)",
+      "why": "The derivative of $\\ln x$ is $\\frac{1}{x}$, not $\\ln x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$4e^x - \\frac{1}{x}$."
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-11",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\frac{dy}{dx}$ for $y = x^2 + 5\\ln x$, $x > 0$.",
+   "expr": {
+    "answer": "2x + 5/x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     3
+    ],
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "2x + 5",
+      "why": "The derivative of $\\ln x$ is $\\frac{1}{x}$, so $5\\ln x$ becomes $\\frac{5}{x}$."
+     },
+     {
+      "expr": "2x + 1/x",
+      "why": "Keep the constant factor: $\\frac{d}{dx}(5\\ln x) = 5 \\cdot \\frac{1}{x}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2x + 5 \\cdot \\frac{1}{x} = 2x + \\frac{5}{x}$."
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-12",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the slope of the graph of $y = e^x$ at $x = \\ln 3$?",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": "ln(3)",
+      "why": "That is the input. The slope of $e^x$ equals its height: $e^{\\ln 3} = 3$."
+     },
+     {
+      "value": 1,
+      "why": "The slope of $e^x$ is 1 only at $x = 0$. At $x = \\ln 3$ it is $e^{\\ln 3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{d}{dx}\\left( e^x \\right) = e^x$, and $e^{\\ln 3} = 3$."
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-13",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an equation of the line tangent to $y = \\ln x$ at $x = e$?",
+   "options": [
+    "$y = 1 + \\frac{1}{e}(x - e)$",
+    "$y = 1 + e(x - e)$",
+    "$y = e + \\frac{1}{e}(x - e)$",
+    "$y = \\frac{1}{e}(x - e)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Point $(e, \\ln e) = (e, 1)$; slope $\\frac{1}{e}$. It simplifies to $y = \\frac{x}{e}$, a line through the origin.",
+    "options": [
+     "Height 1, slope $\\frac{1}{e}$.",
+     "The slope of $\\ln x$ at $x$ is $\\frac{1}{x}$, which is $\\frac{1}{e}$ here, not $e$.",
+     "The height at $x = e$ is $\\ln e = 1$, not $e$.",
+     "The line must pass through $(e, 1)$; this one passes through $(e, 0)$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-14",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "single",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is $\\frac{d}{dx}(\\cos x)$?",
+   "options": [
+    "$-\\sin x$",
+    "$\\sin x$",
+    "$-\\cos x$",
+    "$\\cos x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Just right of $x = 0$ the cosine graph is falling while $\\sin x > 0$, so the derivative must be $-\\sin x$.",
+    "options": [
+     "Negative sine.",
+     "Missing the minus sign: cosine falls where sine is positive.",
+     "That is the derivative of $-\\sin x$, one step further around the cycle.",
+     "That would make cosine its own derivative, like $e^x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-15",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which limit equals $\\cos 1$?",
+   "options": [
+    "$\\lim_{h \\to 0} \\frac{\\sin(1 + h) - \\sin 1}{h}$",
+    "$\\lim_{h \\to 0} \\frac{\\cos(1 + h) - \\cos 1}{h}$",
+    "$\\lim_{h \\to 0} \\left( \\sin(1 + h) - \\sin 1 \\right)$",
+    "$\\lim_{h \\to 0} \\frac{\\sin(1 + h)}{h}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "It is the derivative of $\\sin x$ at 1, which is $\\cos 1$.",
+    "options": [
+     "The derivative of sine at $x = 1$.",
+     "That is the derivative of cosine at 1, which is $-\\sin 1$.",
+     "Without dividing by $h$ this is a change in height, and its limit is 0.",
+     "The numerator must be a change, $\\sin(1 + h) - \\sin 1$; as written the limit does not exist."
+    ]
+   }
+  },
+  {
+   "id": "calc-derivatives-sin-cos-exp-ln-16",
+   "unit": "unit-2",
+   "topic": "derivatives-sin-cos-exp-ln",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = 2e^x - 3\\sin x$. Find $f'(0)$.",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is $f(0) = 2 - 0$. The derivative is $2e^x - 3\\cos x$."
+     },
+     {
+      "value": 5,
+      "why": "The derivative of $-3\\sin x$ is $-3\\cos x$, which is $-3$ at 0: $2 - 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = 2e^x - 3\\cos x$, so $f'(0) = 2(1) - 3(1) = -1$."
+   }
+  }
+ ]
+}

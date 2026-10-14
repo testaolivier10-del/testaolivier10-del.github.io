@@ -1,0 +1,600 @@
+{
+ "stimuli": {
+  "extreme-value-theorem-s1": {
+   "kind": "graph",
+   "title": "The graph of $f$ on $[-2.5, 4]$",
+   "text": "$f(x) = (x + 1)^2 - 2$ for $-2.5 \\le x \\le 1$ and $f(x) = 2 + (x - 1) - \\frac{(x - 1)^2}{2}$ for $1 < x \\le 4$. The pieces meet at $(1, 2)$, where the slope jumps from 4 to 1.",
+   "plot": {
+    "label": "Graph of f on the closed interval from -2.5 to 4: down to a low point at (-1, -2), up to a corner at (1, 2), on up to a high point at (2, 2.5), then down to (4, 0.5)",
+    "x": [
+     -3,
+     4.5
+    ],
+    "y": [
+     -2.5,
+     3.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(x + 1)^2 - 2",
+      "domain": [
+       -2.5,
+       1
+      ],
+      "cls": "s1",
+      "ends": [
+       "closed",
+       null
+      ]
+     },
+     {
+      "fn": "2 + (x - 1) - (x - 1)^2/2",
+      "domain": [
+       1,
+       4
+      ],
+      "cls": "s1",
+      "ends": [
+       null,
+       "closed"
+      ],
+      "label": "f"
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       2
+      ],
+      "label": "(1, 2)"
+     },
+     {
+      "at": [
+       -1,
+       -2
+      ]
+     },
+     {
+      "at": [
+       2,
+       2.5
+      ]
+     }
+    ]
+   }
+  },
+  "extreme-value-theorem-s2": {
+   "kind": "graph",
+   "title": "The graph of $h$, which jumps at $x = 2$",
+   "text": "$h(x) = x$ for $0 \\le x < 2$ and $h(x) = x - 3$ for $2 \\le x \\le 4$.",
+   "plot": {
+    "label": "Graph of h on the closed interval from 0 to 4: a line from (0, 0) up to an open circle at (2, 2), then a line from a closed dot at (2, -1) up to (4, 1)",
+    "x": [
+     -0.5,
+     4.5
+    ],
+    "y": [
+     -1.5,
+     2.5
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x",
+      "domain": [
+       0,
+       2
+      ],
+      "cls": "s1",
+      "ends": [
+       "closed",
+       "open"
+      ]
+     },
+     {
+      "fn": "x - 3",
+      "domain": [
+       2,
+       4
+      ],
+      "cls": "s1",
+      "ends": [
+       "closed",
+       "closed"
+      ],
+      "label": "h"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-extreme-value-theorem-1",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "extreme-value-theorem-s1",
+   "q": "How many critical points does $f$ have in the open interval $(-2.5, 4)$?",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "You found the two flat tangent lines, at $x = -1$ and $x = 2$. A critical point is also an interior point where $f'$ does not exist: the corner at $x = 1$."
+     },
+     {
+      "value": 5,
+      "why": "The endpoints $x = -2.5$ and $x = 4$ are not critical points: a critical point is an interior point of the domain."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(-1) = 0$ and $f'(2) = 0$ (flat tangent lines), and $f'(1)$ does not exist (corner). Three critical points: $x = -1$, $1$, $2$."
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-2",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "extreme-value-theorem-s1",
+   "q": "Which statement about $f$ at $x = 1$ is true?",
+   "options": [
+    "$f$ has a relative maximum at $x = 1$, because the graph has a corner there",
+    "$x = 1$ is not a critical point, because $f$ is continuous there",
+    "$f$ has a relative minimum at $x = 1$, because $f'(1)$ does not exist",
+    "$x = 1$ is a critical point, but $f(1)$ is not a relative extremum"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A critical point is only a candidate. At $x = 1$, $f'$ does not exist, but $f$ is rising on both sides (slopes near 4 on the left, near 1 on the right), so $f(1) = 2$ is neither a relative maximum nor a relative minimum.",
+    "options": [
+     "A corner can be a peak, but this one is not: the graph keeps rising through it.",
+     "Continuity does not matter: $f'(1)$ fails to exist, which makes $x = 1$ a critical point.",
+     "An undefined derivative makes a critical point, not an extremum. Values just left of 1 are smaller than $f(1)$, values just right are larger.",
+     "$f'(1)$ does not exist, so it is a critical point; but $f$ rises on both sides of $x = 1$, so there is no peak or valley."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-3",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "extreme-value-theorem-s1",
+   "q": "What is the absolute minimum value of $f$ on $[-2.5, 4]$?",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": -1,
+      "why": "$-1$ is where the minimum happens (the $x$-value). The question asks for the value, $f(-1)$."
+     },
+     {
+      "value": 0.5,
+      "why": "$f(4) = 0.5$ is the lowest value on the right, but the graph goes lower at $x = -1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The lowest point of the graph is $(-1, -2)$, lower than both endpoint values $f(-2.5) = 0.25$ and $f(4) = 0.5$. The absolute minimum value is $-2$."
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-4",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "multi",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "extreme-value-theorem-s1",
+   "q": "At which values of $x$ does $f$ have a relative extremum? Select each one.",
+   "options": [
+    "$x = -1$",
+    "$x = 1$",
+    "$x = 2$",
+    "$x = 3$"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Relative minimum at $x = -1$ (value $-2$) and relative maximum at $x = 2$ (value $2.5$). The corner at $x = 1$ is a critical point without an extremum.",
+    "options": [
+     "A valley: $f$ falls, then rises. Relative minimum.",
+     "The graph rises through the corner; no peak or valley.",
+     "A peak: $f$ rises, then falls. Relative maximum.",
+     "At $x = 3$ the graph is falling; nothing special happens."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-5",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "extreme-value-theorem-s1",
+   "q": "What is the absolute maximum of $f$ on $[-2.5, 4]$, and where does it occur?",
+   "options": [
+    "$2.5$, at $x = 2$",
+    "$2$, at the corner $x = 1$",
+    "$0.5$, at the right endpoint $x = 4$",
+    "No maximum exists, since $f$ is not differentiable at $x = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f$ is continuous on $[-2.5, 4]$, so the Extreme Value Theorem guarantees an absolute maximum. It is $f(2) = 2.5$, the highest point of the graph.",
+    "options": [
+     "$(2, 2.5)$ is the highest point of the whole graph, above both endpoint values.",
+     "$f(1) = 2$ is less than $f(2) = 2.5$.",
+     "An endpoint can hold the maximum, but $f(4) = 0.5$ is not the largest value.",
+     "The Extreme Value Theorem needs continuity, not differentiability. $f$ is continuous on the closed interval."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-6",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "extreme-value-theorem-s2",
+   "q": "Does the Extreme Value Theorem guarantee that $h$ has an absolute maximum on $[0, 4]$?",
+   "options": [
+    "Yes, because $[0, 4]$ is a closed interval",
+    "Yes, because $h$ is defined at each point of $[0, 4]$",
+    "No, because $h$ is not differentiable at $x = 0$",
+    "No, because $h$ is not continuous at $x = 2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The Extreme Value Theorem needs $h$ continuous on $[0, 4]$. $h$ jumps at $x = 2$ ($\\lim_{x \\to 2^-} h(x) = 2$ but $h(2) = -1$), so the theorem guarantees nothing.",
+    "options": [
+     "A closed interval is half the hypothesis; $h$ must also be continuous on it.",
+     "Defined is not enough: $h$ jumps from values near 2 down to $-1$.",
+     "Differentiability is not a hypothesis of the Extreme Value Theorem, and $x = 0$ is an endpoint.",
+     "The theorem needs continuity on the closed interval; the jump at 2 breaks it."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-7",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "extreme-value-theorem-s2",
+   "q": "Which statement about $h$ on $[0, 4]$ is true?",
+   "options": [
+    "$h$ has neither, because the Extreme Value Theorem does not apply",
+    "$h$ has an absolute maximum of $2$, at $x = 2$",
+    "$h$ has an absolute minimum, $-1$, but no absolute maximum",
+    "$h$ has an absolute maximum of $1$, at the endpoint $x = 4$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The lowest value is $h(2) = -1$. For a maximum, $h(x) = x$ gets as close to 2 as you like as $x \\to 2^-$ but never equals 2, and no value is larger, so there is no absolute maximum.",
+    "options": [
+     "When a hypothesis fails, the theorem promises nothing; extrema may still exist. Here the minimum does.",
+     "$h(2) = -1$, not 2: the open circle at $(2, 2)$ is not on the graph.",
+     "$h(2) = -1$ is the lowest value. Values near $x = 2$ from the left get close to 2 but never reach it, and every value of $h$ is less than 2.",
+     "$h(1.5) = 1.5$ is larger than $h(4) = 1$, so 1 is not the largest value."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-8",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "extreme-value-theorem-s2",
+   "q": "What does the Extreme Value Theorem say about $h$ on $[2, 4]$?",
+   "options": [
+    "Nothing, because $h$ jumps at $x = 2$",
+    "$h$ is continuous there, so it has both: maximum $1$, minimum $-1$",
+    "$h$ has an absolute maximum there but perhaps no absolute minimum",
+    "$h$ has a critical point in $(2, 4)$ where its extremes occur"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "On $[2, 4]$, $h(x) = x - 3$ is continuous (including $h(2) = -1$). The Extreme Value Theorem guarantees both extremes: minimum $h(2) = -1$, maximum $h(4) = 1$.",
+    "options": [
+     "The jump is approached from the left of 2, outside $[2, 4]$. On $[2, 4]$ itself $h$ is continuous.",
+     "On $[2, 4]$, $h(x) = x - 3$ with $h(2) = -1$: no jump inside or at the ends of this interval.",
+     "The theorem gives both: an absolute maximum and an absolute minimum.",
+     "$h'(x) = 1$ on $(2, 4)$; there are no critical points. The extremes are at the endpoints."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-9",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "extreme-value-theorem-s2",
+   "q": "What is the absolute maximum value of $h$ on $[0, 1.5]$?",
+   "numeric": {
+    "answer": 1.5,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "2 is the height of the open circle at $x = 2$, outside $[0, 1.5]$. On this interval the highest point is at the right endpoint."
+     }
+    ]
+   },
+   "why": {
+    "correct": "On $[0, 1.5]$, $h(x) = x$ is continuous and rising, so the maximum is at the endpoint: $h(1.5) = 1.5$."
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-10",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "multi",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which are critical points of $f(x) = x^3 - 12x + 1$? Select each one.",
+   "options": [
+    "$x = -2$",
+    "$x = 0$",
+    "$x = 2$",
+    "$x = 1$"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "$f'(x) = 3x^2 - 12 = 3(x - 2)(x + 2)$, defined everywhere, zero at $x = \\pm 2$.",
+    "options": [
+     "$f'(-2) = 3(4) - 12 = 0$.",
+     "$f'(0) = -12$, not 0.",
+     "$f'(2) = 12 - 12 = 0$.",
+     "$f(1) = -10$ is a value of $f$; $f'(1) = -9$."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-11",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Where does $f(x) = (x - 3)^{2/3}$ have a critical point?",
+   "options": [
+    "At $x = 0$, where $f'(x) = 0$",
+    "At $x = 3$, where $f'(x) = 0$",
+    "At $x = 3$, where $f'$ does not exist",
+    "No critical point, since $f'(x) = 0$ has no solution"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$f'(x) = \\frac{2}{3\\sqrt[3]{x - 3}}$ is never 0 and is undefined at $x = 3$, which is in the domain of $f$. So $x = 3$ is the one critical point (a cusp).",
+    "options": [
+     "$f'(0) = \\frac{2}{3}(-3)^{-1/3} \\ne 0$.",
+     "$f'(3)$ is undefined, not zero: the graph has a cusp.",
+     "$f'(x) = \\frac{2}{3}(x - 3)^{-1/3}$ is undefined at $x = 3$, an interior point of the domain.",
+     "A critical point is also a point where $f'$ does not exist."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-12",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the critical point of $f(x) = x e^{-x}$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "You kept only $x \\cdot (-e^{-x})$. The product rule has two terms: $f'(x) = e^{-x} - x e^{-x} = (1 - x)e^{-x}$."
+     },
+     {
+      "value": -1,
+      "why": "Check the chain rule: the derivative of $e^{-x}$ is $-e^{-x}$, so $f'(x) = (1 - x)e^{-x}$, zero at $x = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f'(x) = e^{-x} + x(-e^{-x}) = (1 - x)e^{-x}$. Since $e^{-x} > 0$, $f'(x) = 0$ only at $x = 1$, and $f'$ exists everywhere."
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-13",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the critical points of $f(x) = x - 2\\sin x$ on $(0, 2\\pi)$.",
+   "options": [
+    "$x = \\frac{\\pi}{3}$ and $x = \\frac{5\\pi}{3}$",
+    "$x = \\frac{\\pi}{6}$ and $x = \\frac{5\\pi}{6}$",
+    "$x = \\frac{2\\pi}{3}$ and $x = \\frac{4\\pi}{3}$",
+    "$x = \\pi$ alone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$f'(x) = 1 - 2\\cos x = 0$ gives $\\cos x = \\frac{1}{2}$, so $x = \\frac{\\pi}{3}$ or $\\frac{5\\pi}{3}$.",
+    "options": [
+     "$\\cos x = \\frac{1}{2}$ at these two angles in $(0, 2\\pi)$.",
+     "These solve $\\sin x = \\frac{1}{2}$. The derivative of $\\sin x$ is $\\cos x$.",
+     "These solve $\\cos x = -\\frac{1}{2}$: check the sign of $f'(x) = 1 - 2\\cos x$.",
+     "$f'(\\pi) = 1 - 2(-1) = 3$, not 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-14",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the critical point of $f(x) = \\frac{\\ln x}{x}$ for $x > 0$. Give an exact answer.",
+   "numeric": {
+    "answer": "e",
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "At $x = 1$, $\\ln x = 0$, so $f(1) = 0$; but the question is where $f'(x) = \\frac{1 - \\ln x}{x^2}$ is zero."
+     },
+     {
+      "value": 0,
+      "why": "$x = 0$ is not in the domain of $f$, so it cannot be a critical point."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Quotient rule: $f'(x) = \\frac{x \\cdot \\frac{1}{x} - \\ln x}{x^2} = \\frac{1 - \\ln x}{x^2}$. It is zero when $\\ln x = 1$, so $x = e$."
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-15",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$f$ is continuous on $[1, 5]$. Which statement earns credit for \"$f$ has an absolute maximum on $[1, 5]$\"?",
+   "options": [
+    "\"$f$ has a critical point, so $f$ has an absolute maximum there.\"",
+    "\"By the Mean Value Theorem, $f'(c) = 0$ for some $c$, so $f$ has an absolute maximum.\"",
+    "\"$f$ is continuous on the closed interval $[1, 5]$, so by the Extreme Value Theorem $f$ has an absolute maximum there.\"",
+    "\"$f$ has an absolute maximum because a function on a closed interval has one.\""
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The Extreme Value Theorem: if $f$ is continuous on $[a, b]$, then $f$ has at least one absolute maximum value and one absolute minimum value on $[a, b]$.",
+    "options": [
+     "A critical point is a candidate, not a guarantee of anything.",
+     "The Mean Value Theorem is about slopes and needs $f(1) = f(5)$ to give $f'(c) = 0$; it does not give extrema.",
+     "It names the theorem and its hypothesis: continuous on a closed interval.",
+     "False: a function with a jump may have no maximum. Continuity is required."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-16",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For $f(x) = \\sqrt{x}$ on $[0, 4]$, which statement is true?",
+   "options": [
+    "$x = 0$ is a critical point, because $f'(0)$ does not exist",
+    "$f$ has no critical points in $(0, 4)$; its absolute minimum is at the endpoint $x = 0$",
+    "$f$ has no absolute minimum, because it has no critical points",
+    "The absolute maximum is at a critical point inside $(0, 4)$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "On $(0, 4)$, $f'(x) = \\frac{1}{2\\sqrt{x}}$ exists and is positive, so there are no critical points. Absolute extremes then occur at the endpoints: minimum $f(0) = 0$, maximum $f(4) = 2$.",
+    "options": [
+     "A critical point must be an interior point of the domain; $x = 0$ is an endpoint.",
+     "$f'(x) = \\frac{1}{2\\sqrt{x}} > 0$ on $(0, 4)$. The extremes are at the ends: $f(0) = 0$, $f(4) = 2$.",
+     "The Extreme Value Theorem still applies (continuous on $[0, 4]$); the extremes sit at endpoints.",
+     "There is no critical point inside. The maximum, $2$, is at the endpoint $x = 4$."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-17",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $f(x) = x^2$ on the open interval $(-1, 2)$, which statement is true?",
+   "options": [
+    "$f$ has an absolute minimum of 0 but no absolute maximum",
+    "$f$ has an absolute maximum of 4 at $x = 2$",
+    "$f$ has both, by the Extreme Value Theorem",
+    "$f$ has an absolute maximum of 1, reached at the endpoint $x = -1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On an open interval the Extreme Value Theorem does not apply. Here the minimum $f(0) = 0$ exists, but $x^2$ gets close to 4 without reaching it, so there is no absolute maximum.",
+    "options": [
+     "$f(0) = 0$ is the smallest value. Values near $x = 2$ approach 4, but $x = 2$ is not in the interval.",
+     "$x = 2$ is excluded from an open interval.",
+     "The theorem needs a closed interval.",
+     "$x = -1$ is excluded, and values near $x = 2$ are bigger than 1 anyway."
+    ]
+   }
+  },
+  {
+   "id": "calc-extreme-value-theorem-18",
+   "unit": "unit-5",
+   "topic": "extreme-value-theorem",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For $f(x) = x^3$, $f'(0) = 0$. What kind of point is $x = 0$?",
+   "options": [
+    "A relative minimum, because $f'(0) = 0$",
+    "A relative maximum, because the tangent line is flat",
+    "Not a critical point, because $f(0) = 0$",
+    "A critical point that is not a relative extremum"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$f'(x) = 3x^2$ is 0 at $x = 0$, so it is a critical point. But $f(x) < 0$ just left of 0 and $f(x) > 0$ just right of it, so $f(0)$ is neither a relative maximum nor a relative minimum.",
+    "options": [
+     "$f'(0) = 0$ makes 0 a candidate only. Negative values just left of 0 are smaller than $f(0)$.",
+     "A flat tangent line can sit on a rising graph, as here.",
+     "The value of $f$ does not matter; $f'(0) = 0$ makes it a critical point.",
+     "$x^3 < 0$ to the left of 0 and $x^3 > 0$ to the right, so there is no peak or valley."
+    ]
+   }
+  }
+ ]
+}

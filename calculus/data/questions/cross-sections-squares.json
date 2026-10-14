@@ -1,0 +1,271 @@
+{
+ "stimuli": {
+  "cross-sections-squares-s1": {
+   "kind": "graph",
+   "title": "The base: the region between $y = x + 2$ and $y = x^2$",
+   "plot": {
+    "label": "The line y = x + 2 and the parabola y = x², which meet at (−1, 1) and (2, 4). The region between them, the base of a solid, is shaded, with the line on top.",
+    "x": [-1.6, 2.6], "y": [-0.5, 5], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
+    "curves": [
+     { "fn": "x + 2", "domain": [-1.6, 2.6], "cls": "s2" },
+     { "fn": "x^2", "domain": [-1.6, 2.2], "cls": "s1" }
+    ],
+    "shade": [ { "fn": "x + 2", "fn2": "x^2", "domain": [-1, 2] } ],
+    "points": [ { "at": [-1, 1], "label": "(−1, 1)" }, { "at": [2, 4], "label": "(2, 4)" } ],
+    "labels": [ { "at": [-1.55, 2.6], "text": "y = x²", "anchor": "start" }, { "at": [1.1, 3.6], "text": "y = x + 2", "anchor": "end" } ]
+   }
+  },
+  "cross-sections-squares-s2": {
+   "kind": "graph",
+   "title": "The base: the region between $y = 4 - x^2$ and $y = e^x$",
+   "plot": {
+    "label": "The parabola y = 4 − x² and the curve y = e^x. They cross near x = −1.96 and x = 1.06; the region between them, the base of a solid, is shaded with the parabola on top.",
+    "x": [-2.5, 1.8], "y": [-0.5, 4.5], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
+    "curves": [
+     { "fn": "4 - x^2", "domain": [-2.12, 1.8], "cls": "s1", "label": "y = 4 − x²" },
+     { "fn": "e^x", "domain": [-2.5, 1.5], "cls": "s2", "label": "y = eˣ" }
+    ],
+    "shade": [ { "fn": "4 - x^2", "fn2": "e^x", "domain": [-1.9646355974888645, 1.0580064010906365] } ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-cross-sections-squares-1", "unit": "unit-8", "topic": "cross-sections-squares", "type": "expr", "practice": "1.E", "level": "apply", "diff": 2,
+   "stimulus": "cross-sections-squares-s1",
+   "q": "The shaded region is the base of a solid. Cross sections perpendicular to the $x$-axis are squares. Write the area $A(x)$ of the cross section at $x$.",
+   "expr": {
+    "answer": "(x + 2 - x^2)^2", "vars": ["x"], "domain": [-1, 2], "lhs": "A(x) =",
+    "mistakes": [
+     { "expr": "(x + 2)^2 - x^4", "why": "That squares each curve and subtracts. The side of the square is the gap $(x + 2) - x^2$; square the whole gap." },
+     { "expr": "x + 2 - x^2", "why": "That is the side $s$, a length. The area of a square is $s^2$." }
+    ]
+   },
+   "why": { "correct": "The side is the height of the base at $x$: $s = (x + 2) - x^2$. So $A(x) = s^2 = (x + 2 - x^2)^2$." }
+  },
+  {
+   "id": "calc-cross-sections-squares-2", "unit": "unit-8", "topic": "cross-sections-squares", "type": "single", "practice": "1.C", "level": "apply", "diff": 2,
+   "stimulus": "cross-sections-squares-s1",
+   "q": "Which integral gives the volume of the solid with this base and square cross sections perpendicular to the $x$-axis?",
+   "options": [
+    "$\\int_{-1}^{2} \\left(x + 2 - x^2\\right)^2\\,dx$",
+    "$\\int_{-1}^{2} \\left[(x + 2)^2 - (x^2)^2\\right]\\,dx$",
+    "$\\int_{-1}^{2} \\left(x + 2 - x^2\\right)\\,dx$",
+    "$\\pi \\int_{-1}^{2} \\left(x + 2 - x^2\\right)^2\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Volume is the integral of cross-sectional area: $\\int_{-1}^{2} A(x)\\,dx$ with $A(x) = s^2$ and $s = (x + 2) - x^2$.",
+    "options": [
+     "Square the side, then integrate from $-1$ to $2$.",
+     "This squares each curve separately. $(a - b)^2$ is not $a^2 - b^2$.",
+     "This is the area of the base, not the volume.",
+     "A square's area is $s^2$, with no $\\pi$."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-squares-3", "unit": "unit-8", "topic": "cross-sections-squares", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 3,
+   "stimulus": "cross-sections-squares-s1",
+   "q": "Find the volume of the solid with this base and square cross sections perpendicular to the $x$-axis.",
+   "numeric": {
+    "answer": "81/10",
+    "mistakes": [
+     { "value": "72/5", "why": "That is $\\int_{-1}^{2} \\left[(x + 2)^2 - x^4\\right]\\,dx$. Square the side $(x + 2 - x^2)$, not each curve." },
+     { "value": "9/2", "why": "That is the area of the base. Each slice's area is the side squared." }
+    ]
+   },
+   "why": { "correct": "$(x + 2 - x^2)^2 = x^4 - 2x^3 - 3x^2 + 4x + 4$, so $V = \\left[\\frac{x^5}{5} - \\frac{x^4}{2} - x^3 + 2x^2 + 4x\\right]_{-1}^{2} = \\frac{32}{5} - \\left(-\\frac{17}{10}\\right) = \\frac{81}{10}$." }
+  },
+  {
+   "id": "calc-cross-sections-squares-4", "unit": "unit-8", "topic": "cross-sections-squares", "type": "single", "practice": "2.B", "level": "apply", "diff": 1,
+   "stimulus": "cross-sections-squares-s1",
+   "q": "What is the area of the square cross section at $x = \\frac{1}{2}$?",
+   "options": ["$\\frac{81}{16}$", "$\\frac{9}{4}$", "$\\frac{99}{16}$", "$\\frac{25}{4}$"],
+   "correct": 0,
+   "why": {
+    "correct": "At $x = \\frac{1}{2}$ the side is $\\frac{5}{2} - \\frac{1}{4} = \\frac{9}{4}$, so the area is $\\left(\\frac{9}{4}\\right)^2 = \\frac{81}{16}$.",
+    "options": [
+     "Side $\\frac{9}{4}$, squared.",
+     "$\\frac{9}{4}$ is the side, a length; the area is its square.",
+     "$\\left(\\frac{5}{2}\\right)^2 - \\left(\\frac{1}{4}\\right)^2 = \\frac{99}{16}$ squares each height separately instead of the gap.",
+     "$\\left(\\frac{5}{2}\\right)^2$ uses the height of the line above the $x$-axis; the base starts at the parabola, not the axis."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-squares-5", "unit": "unit-8", "topic": "cross-sections-squares", "type": "numeric", "practice": "1.E", "level": "analyze", "diff": 3,
+   "stimulus": "cross-sections-squares-s1",
+   "q": "A second solid has the same base, but its cross sections perpendicular to the $x$-axis are rectangles whose height is half the side lying in the base. Find its volume.",
+   "numeric": {
+    "answer": "81/20",
+    "mistakes": [
+     { "value": "81/10", "why": "That is the volume with squares. Here each rectangle's area is $s \\cdot \\frac{s}{2} = \\frac{s^2}{2}$, half a square's." },
+     { "value": "9/4", "why": "That is half the base area. A rectangle's area is base times height, $s \\cdot \\frac{s}{2}$, which still has $s^2$ in it." }
+    ]
+   },
+   "why": { "correct": "$A(x) = s \\cdot \\frac{s}{2} = \\frac{1}{2}(x + 2 - x^2)^2$, so the volume is $\\frac{1}{2} \\cdot \\frac{81}{10} = \\frac{81}{20}$." }
+  },
+  {
+   "id": "calc-cross-sections-squares-6", "unit": "unit-8", "topic": "cross-sections-squares", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 1, "calc": true,
+   "stimulus": "cross-sections-squares-s2",
+   "q": "The curves cross at $x = a$ and $x = b$, with $a < b$. Use a calculator to find $b$.",
+   "numeric": {
+    "answer": 1.0580064010906365,
+    "mistakes": [
+     { "value": -1.9646355974888645, "why": "That is $a$, the left crossing. $b$ is the right one." }
+    ]
+   },
+   "why": { "correct": "Solve $4 - x^2 = e^x$: $a = -1.96463\\ldots$ and $b = 1.05800\\ldots$, so $b = 1.058$. Store both values." }
+  },
+  {
+   "id": "calc-cross-sections-squares-7", "unit": "unit-8", "topic": "cross-sections-squares", "type": "single", "practice": "1.C", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "cross-sections-squares-s2",
+   "q": "The shaded region is the base of a solid whose cross sections perpendicular to the $x$-axis are squares. Which expression gives its volume?",
+   "options": [
+    "$\\int_a^b \\left(4 - x^2 - e^x\\right)^2\\,dx$",
+    "$\\int_a^b \\left[(4 - x^2)^2 - e^{2x}\\right]\\,dx$",
+    "$\\left(\\int_a^b \\left(4 - x^2 - e^x\\right)\\,dx\\right)^2$",
+    "$\\int_a^b \\left(4 - x^2 - e^x\\right)\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each square has side $(4 - x^2) - e^x$; integrate its square from $a$ to $b$.",
+    "options": [
+     "Area of each slice, integrated across the base.",
+     "Squaring each curve separately is not squaring the side.",
+     "This squares the base's area. Square each slice's side inside the integral.",
+     "This is the area of the base."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-squares-8", "unit": "unit-8", "topic": "cross-sections-squares", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "cross-sections-squares-s2",
+   "q": "Find the volume of the solid with this base and square cross sections perpendicular to the $x$-axis.",
+   "numeric": {
+    "answer": 16.352997667480054,
+    "mistakes": [
+     { "value": 26.962353855316618, "why": "That squares each curve: $(4 - x^2)^2 - e^{2x}$. The side is the difference; square the whole difference." },
+     { "value": 6.427687376457341, "why": "That is the area of the base. The square slices have area $s^2$." }
+    ]
+   },
+   "why": { "correct": "$V = \\int_a^b \\left(4 - x^2 - e^x\\right)^2\\,dx = 16.35299\\ldots$, so $16.353$ (or $16.352$ truncated)." }
+  },
+  {
+   "id": "calc-cross-sections-squares-9", "unit": "unit-8", "topic": "cross-sections-squares", "type": "numeric", "practice": "1.D", "level": "analyze", "diff": 2, "calc": true,
+   "stimulus": "cross-sections-squares-s2",
+   "q": "A different solid on this base has cross sections perpendicular to the $x$-axis that are rectangles of height 2 (the other side lies in the base). Find its volume.",
+   "numeric": {
+    "answer": 12.855374752914681,
+    "mistakes": [
+     { "value": 32.70599533496011, "why": "That uses $A = 2s^2$. A rectangle with sides $s$ and 2 has area $2s$." },
+     { "value": 16.352997667480054, "why": "That is the volume with squares. Here the height is always 2, so $A(x) = 2s$." }
+    ]
+   },
+   "why": { "correct": "$A(x) = 2\\left(4 - x^2 - e^x\\right)$, so $V = 2\\int_a^b \\left(4 - x^2 - e^x\\right)\\,dx = 2(6.42768\\ldots) = 12.85537\\ldots$, so $12.855$." }
+  },
+  {
+   "id": "calc-cross-sections-squares-10", "unit": "unit-8", "topic": "cross-sections-squares", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "The base of a solid is the region bounded by $x = y^2$ and $x = 1$. Cross sections perpendicular to the $y$-axis are squares. Find the volume.",
+   "numeric": {
+    "answer": "16/15",
+    "mistakes": [
+     { "value": "4/3", "why": "That is the area of the base. Square each slice's side, $1 - y^2$." },
+     { "value": "8/15", "why": "That is half the volume, from $y = 0$ to $1$. The base runs from $y = -1$ to $y = 1$." }
+    ]
+   },
+   "why": { "correct": "A slice at height $y$ runs from $x = y^2$ to $x = 1$, so $s = 1 - y^2$ and $V = \\int_{-1}^{1} (1 - y^2)^2\\,dy = 2\\left(1 - \\frac{2}{3} + \\frac{1}{5}\\right) = \\frac{16}{15}$." }
+  },
+  {
+   "id": "calc-cross-sections-squares-11", "unit": "unit-8", "topic": "cross-sections-squares", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 3,
+   "q": "The base of a solid is the disk $x^2 + y^2 \\le 4$. Cross sections perpendicular to the $x$-axis are squares. Find the volume.",
+   "numeric": {
+    "answer": "128/3",
+    "mistakes": [
+     { "value": "32/3", "why": "You used $\\sqrt{4 - x^2}$ as the side. That only reaches from the $x$-axis to the top of the circle; the side spans the whole disk, $2\\sqrt{4 - x^2}$." },
+     { "value": "4*pi", "why": "That is the area of the disk. Each slice's area is $s^2 = 4(4 - x^2)$; integrate it." }
+    ]
+   },
+   "why": { "correct": "At $x$, the disk runs from $y = -\\sqrt{4 - x^2}$ to $y = \\sqrt{4 - x^2}$, so $s = 2\\sqrt{4 - x^2}$ and $A(x) = 4(4 - x^2)$. $V = \\int_{-2}^{2} 4(4 - x^2)\\,dx = 4 \\cdot \\frac{32}{3} = \\frac{128}{3}$." }
+  },
+  {
+   "id": "calc-cross-sections-squares-12", "unit": "unit-8", "topic": "cross-sections-squares", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "The base of a solid is the region under $y = \\sqrt{x}$ for $0 \\le x \\le 4$. Cross sections perpendicular to the $x$-axis are rectangles of height 3. Find the volume.",
+   "numeric": {
+    "answer": 16,
+    "mistakes": [
+     { "value": 8, "why": "That is the volume with squares, $\\int_0^4 (\\sqrt{x})^2\\,dx$. These rectangles have area $3\\sqrt{x}$." },
+     { "value": "16/3", "why": "That is the area of the base. Multiply each slice's base by its height 3." }
+    ]
+   },
+   "why": { "correct": "$A(x) = 3\\sqrt{x}$, so $V = \\int_0^4 3\\sqrt{x}\\,dx = 3 \\cdot \\frac{2}{3} \\cdot 4^{3/2} = 16$." }
+  },
+  {
+   "id": "calc-cross-sections-squares-13", "unit": "unit-8", "topic": "cross-sections-squares", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "A concrete footing has as its base the region between $y = 0$ and $y = 3 - \\frac{x^2}{3}$ for $-3 \\le x \\le 3$, with $x$ and $y$ in feet. Cross sections perpendicular to the $x$-axis are squares. Find the volume of the footing.",
+   "numeric": {
+    "answer": "144/5", "unit": "cubic feet", "askUnit": true, "units": ["ft^3", "ft³", "cu ft", "cubic ft"],
+    "mistakes": [
+     { "value": 12, "why": "That is the area of the base, in square feet. Each square slice has area $\\left(3 - \\frac{x^2}{3}\\right)^2$." }
+    ]
+   },
+   "why": { "correct": "$V = \\int_{-3}^{3} \\left(3 - \\frac{x^2}{3}\\right)^2\\,dx = 2\\int_0^3 \\left(9 - 2x^2 + \\frac{x^4}{9}\\right)\\,dx = 2\\left(27 - 18 + \\frac{27}{5}\\right) = \\frac{144}{5}$ cubic feet. A length times an area gives cubic units." }
+  },
+  {
+   "id": "calc-cross-sections-squares-14", "unit": "unit-8", "topic": "cross-sections-squares", "type": "single", "practice": "2.D", "level": "analyze", "diff": 1,
+   "q": "The volume of a solid with square cross sections has no $\\pi$, even when its base has a curved edge. Why?",
+   "options": [
+    "Each slice is a square with area $s^2$, and $s^2$ has no $\\pi$ in it",
+    "$\\pi$ cancels out when the integral is evaluated",
+    "$\\pi$ is left out because the base lies flat in the $xy$-plane",
+    "$\\pi$ is needed when the base region has a curved edge"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The volume is $\\int A(x)\\,dx$, and $A$ is whatever the shape of a slice gives. A square's area is $s^2$. A curved edge only changes how $s$ depends on $x$.",
+    "options": [
+     "The slice's area formula decides; for a square it is $s^2$.",
+     "There is no $\\pi$ to cancel: it never enters.",
+     "Every base lies in the $xy$-plane; that does not decide whether $\\pi$ appears.",
+     "A curved edge changes $s(x)$, not the area formula of a square."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-squares-15", "unit": "unit-8", "topic": "cross-sections-squares", "type": "single", "practice": "1.E", "level": "apply", "diff": 1,
+   "q": "The base of a solid is the triangle bounded by $y = x$, $y = 0$ and $x = 3$. Cross sections perpendicular to the $x$-axis are squares. What is the volume?",
+   "options": ["$9$", "$\\frac{9}{2}$", "$27$", "$36$"],
+   "correct": 0,
+   "why": {
+    "correct": "At $x$ the side is $x - 0 = x$, so $V = \\int_0^3 x^2\\,dx = \\frac{27}{3} = 9$.",
+    "options": [
+     "$\\int_0^3 x^2\\,dx = 9$.",
+     "$\\frac{9}{2}$ is the area of the triangular base.",
+     "The antiderivative of $x^2$ is $\\frac{x^3}{3}$; $27$ forgets to divide by 3.",
+     "That uses a side of $2x$. The base at $x$ runs from $y = 0$ to $y = x$, a length of $x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-cross-sections-squares-16", "unit": "unit-8", "topic": "cross-sections-squares", "type": "multi", "practice": "2.D", "level": "analyze", "diff": 2,
+   "q": "A solid has as its base the region between $y = f(x)$ (top) and $y = g(x)$ (bottom) for $a \\le x \\le b$, and square cross sections perpendicular to the $x$-axis. Which statements are true? Select all that apply.",
+   "options": [
+    "Its volume is $\\int_a^b \\left(f(x) - g(x)\\right)^2\\,dx$",
+    "Its volume is $\\int_a^b \\left(f(x)^2 - g(x)^2\\right)\\,dx$",
+    "Moving both $f$ and $g$ up 3 units leaves the volume the same",
+    "Its volume is the square of the area of the base"
+   ],
+   "correct": [0, 2],
+   "why": {
+    "correct": "Each slice is a square with side $f(x) - g(x)$. Moving both curves up 3 does not change any side, so every slice and the volume stay the same.",
+    "options": [
+     "True: side squared, integrated across the base.",
+     "False: $(f - g)^2 \\ne f^2 - g^2$.",
+     "True: $(f + 3) - (g + 3) = f - g$.",
+     "False: the area of the base squared has units to the fourth power. The squares are taken slice by slice, inside the integral."
+    ]
+   }
+  }
+ ]
+}

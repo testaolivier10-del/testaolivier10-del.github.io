@@ -1,0 +1,12 @@
+{
+ "integral-additivity": {
+  "file": "figures/integral-additivity.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 410,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A positive curve y = f(x) over points a, b and c on the x-axis. The region under the curve from a to b is shaded crimson and from b to c blue. The equation reads: the integral of f from a to c equals the integral from a to b plus the integral from b to c."
+ }
+}

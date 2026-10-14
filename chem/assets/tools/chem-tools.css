@@ -942,3 +942,67 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-pics .cd-n{display:none;}
 .ls-root .ls-drill-pics .cd-step{margin:0;padding:0;background:none;box-shadow:none;border:0;}
 .ls-root .ls-drill-pics .bt-actions .btn-press{width:100%;}
+
+/* Phone legibility pass (docs/tools-phone-pass.md; results in docs/tools-phone-pass/chem-anp.md).
+   Charts on a phone are drawn at the size of their box (ApChemTools.fitBox), so a user unit is a CSS px
+   and these sizes are what a student sees at 360 px. Text that cannot reach 12 px at a phone's picture
+   size (beaker graduations, the flask's lens caption) waits for Enlarge. */
+.ls-root.ls-phone .bt-plot .tick{font-size:12.5px;}
+.ls-root.ls-phone .bt-plot .lbl{font-size:13px;}
+.ls-root.ls-phone .tx-band-t{font-size:12.5px;}
+.ls-root.ls-phone .tx-lm{font-size:13.5px;}
+.ls-root.ls-phone .lb-grad text,.ls-root.ls-phone .lb-lens-cap{display:none;}
+.ls-root.ls-phone.ls-big .lb-grad text,.ls-root.ls-phone.ls-big .lb-lens-cap{display:inline;}
+.ls-root.ls-phone .lb-tks em{top:30px;font-size:12.5px;}
+.ls-root.ls-phone .lb-mark b,.ls-root.ls-phone .lb-k b{font-size:13.5px;}
+.ls-root.ls-phone .lb-scale-l,.ls-root.ls-phone .lb-scale-m,.ls-root.ls-phone .lb-scale-r{font-size:12.5px;}
+.ls-root.ls-phone .lb-scale{height:50px;}
+/* The gauge is the last row of the stage: its right end stays clear of the Enlarge button. */
+.ls-root.ls-phone .ls-stage .lb-side .lb-qk{margin-right:56px;}
+@media (orientation:portrait){ .ls-root.ls-phone .chem-ls-stage .bf-key{padding-right:52px;flex-wrap:wrap;} }
+.ls-root.ls-phone .ic-svg .tick{font-size:12.5px;fill:var(--ink);}
+.ls-root.ls-phone .ic-svg .lbl{font:800 13.5px var(--font-ui);fill:var(--ink);}
+.ls-root.ls-phone .ic-svg .ic-arrow{font-size:13px;}
+/* Atom symbols inside the spheres: a little larger on a phone (they stay inside every sphere). */
+.ls-root.ls-phone .pt-atom text,.ls-root.ls-phone .lb-disc text{transform-box:fill-box;transform-origin:50% 50%;scale:1.18;}
+/* ICE explore on a phone: the bars read at their CSS size, so the mixture gets more of the height. */
+.ls-root.ls-phone .chem-ls-stage .ic-live .ic-beaker{flex:1.7 1 0;}
+/* Buffer capacity drill on a phone held upright: the two beakers one above the other, each twice the size. */
+@media (orientation:portrait){
+  .ls-root.ls-phone .ls-drill-stage .bf-two{flex-direction:column;}
+  .ls-root.ls-phone .ls-drill-stage .bf-two .lb-fig{flex-direction:row;}
+}
+.ls-root.ls-phone .ls-drill-stage .bf-qnote,.ls-root.ls-phone .ls-drill-stage .bf-two + p{padding-right:52px;}
+/* Pictures to pick from (particle diagrams, buffer capacity...): on a phone two to a row at the full column
+   width (about 170 px each) instead of 84 px tall thumbnails. */
+.ls-root.ls-phone .cd-pics svg{max-height:none;}
+.ls-root.ls-phone .cd-pics .bt-radio{position:relative;}
+.ls-root.ls-phone .cd-pics .bt-radio input{position:absolute;left:8px;top:8px;margin:0;}
+.ls-root.ls-phone .cd-pics .cd-pic-n{padding-left:26px;min-height:22px;display:flex;align-items:center;}
+/* The picture the choices are compared with keeps a readable size; the stage scrolls for the rest. */
+.ls-root.ls-phone .ls-drill-stage .cd-extra:has(+ .ls-drill-pics){flex:0 0 150px;}
+.ls-root.ls-phone .cd-ice sub{font-size:.9em;}
+/* A phone on its side: the stage is wide and short, so the parts sit side by side instead of stacked (the
+   titration and buffer graphs on the left, so their axis titles are not under the Enlarge button). */
+@media (orientation:landscape){
+  .ls-root.ls-phone .tx-ls-stage{flex-direction:row-reverse;}
+  .ls-root.ls-phone .tx-ls-stage .tx-beaker,.ls-root.ls-phone .tx-ls-stage .tx-graph{flex:1 1 0;min-width:0;}
+  .ls-root.ls-phone .chem-ls-stage:has(> .bf-beaker){flex-direction:row-reverse;}
+  .ls-root.ls-phone .chem-ls-stage > .bf-beaker,.ls-root.ls-phone .chem-ls-stage > .bf-plot{flex:1 1 0;min-width:0;}
+  .ls-root.ls-phone .chem-ls-stage .ic-live{flex-direction:row;}
+  .ls-root.ls-phone .chem-ls-stage .ic-live > *{min-width:0;}
+  .ls-root.ls-phone .chem-ls-stage .qk-beaker .lb-fig{flex-direction:row;align-items:center;}
+  .ls-root.ls-phone .chem-ls-stage .qk-beaker .lb-side{width:48%;}
+  .ls-root.ls-phone .chem-ls-stage .qk-beaker .lb-svg{min-width:0;}
+}
+/* Particle diagrams: the after box (bottom right of the stage) stays clear of the Enlarge button, where a
+   particle the student adds could otherwise sit under it. */
+.ls-root.ls-phone .chem-ls-stage .pb-boxes{padding-right:48px;}
+.ls-root.ls-phone .chem-ls-stage .pb-empty{font-size:17px;}
+/* ICE drill on a phone held upright: the live bars full width over the mixture (side by side, the bars were
+   about 170 px wide and their labels 10 px). The stage scrolls to them under the table. */
+@media (orientation:portrait){
+  .ls-root.ls-phone .ls-drill-stage .ic-live{flex:1 0 auto;flex-direction:column;min-height:0;}
+  .ls-root.ls-phone .ls-drill-stage .ic-live .ic-bars{flex:none;height:190px;}
+  .ls-root.ls-phone .ls-drill-stage .ic-live .ic-beaker{flex:none;height:200px;}
+}

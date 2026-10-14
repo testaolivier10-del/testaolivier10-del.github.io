@@ -1,0 +1,327 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "calc-math-geometry-1",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A 13-foot ladder leans against a vertical wall. Its foot is 5 feet from the wall. How high up the wall does the top reach?",
+   "numeric": {
+    "answer": 12,
+    "unit": "feet",
+    "askUnit": true,
+    "units": [
+     "ft",
+     "foot"
+    ],
+    "mistakes": [
+     {
+      "value": "sqrt(194)",
+      "why": "The ladder is the hypotenuse, so subtract: $y^2 = 13^2 - 5^2$, not $13^2 + 5^2$."
+     },
+     {
+      "value": 8,
+      "why": "The Pythagorean theorem works with squares: $\\sqrt{169 - 25}$, not $13 - 5$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The ladder, wall and ground form a right triangle with hypotenuse 13: $5^2 + y^2 = 13^2$, so $y^2 = 144$ and $y = 12$ feet."
+   }
+  },
+  {
+   "id": "calc-math-geometry-2",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A conical tank, point down, is 9 feet deep with a top radius of 6 feet. When the water is $h$ feet deep, its surface has radius $r$. Which equation relates $r$ and $h$?",
+   "options": [
+    "$r = \\frac{2}{3}h$",
+    "$r = \\frac{3}{2}h$",
+    "$r = h - 3$",
+    "$r^2 + h^2 = 36$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The water forms a smaller cone similar to the tank, so the ratio of radius to depth is the same: $\\frac{r}{h} = \\frac{6}{9} = \\frac{2}{3}$.",
+    "options": [
+     "Similar triangles: $\\frac{r}{h} = \\frac{6}{9}$.",
+     "That is depth over radius; the ratio is $\\frac{r}{h} = \\frac{6}{9}$.",
+     "Similar shapes scale by a factor; they do not differ by a constant.",
+     "$r$ and $h$ are legs of the side-view triangle, not a radius and a slant length of 6."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-geometry-3",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the tank above ($r = \\frac{2}{3}h$), write the volume of water $V$ as a function of the depth $h$ alone. Use $V = \\frac{1}{3}\\pi r^2 h$.",
+   "expr": {
+    "answer": "4*pi*h^3/27",
+    "vars": [
+     "h"
+    ],
+    "domain": [
+     0.5,
+     9
+    ],
+    "mode": "exact",
+    "lhs": "V =",
+    "answerTex": "\\frac{4\\pi h^3}{27}",
+    "mistakes": [
+     {
+      "expr": "2*pi*h^3/9",
+      "why": "Square the whole radius: $\\left(\\frac{2}{3}h\\right)^2 = \\frac{4}{9}h^2$, not $\\frac{2}{3}h^2$."
+     },
+     {
+      "expr": "4*pi*h^3/9",
+      "why": "The cone formula has a factor $\\frac{1}{3}$: $\\frac{1}{3}\\pi \\cdot \\frac{4}{9}h^2 \\cdot h$."
+     },
+     {
+      "expr": "pi*h^3/3",
+      "why": "Replace $r$ by $\\frac{2}{3}h$, not by $h$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Substitute $r = \\frac{2}{3}h$: $V = \\frac{1}{3}\\pi\\left(\\frac{2}{3}h\\right)^2 h = \\frac{1}{3}\\pi \\cdot \\frac{4}{9}h^2 \\cdot h = \\frac{4\\pi h^3}{27}$."
+   }
+  },
+  {
+   "id": "calc-math-geometry-4",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A person 6 feet tall stands 10 feet from a lamppost 15 feet tall. How long is the person's shadow on the ground?",
+   "numeric": {
+    "answer": "20/3",
+    "unit": "feet",
+    "askUnit": true,
+    "units": [
+     "ft",
+     "foot"
+    ],
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "The big triangle's base is the whole distance from the post to the shadow's tip, $10 + s$, not 10: $\\frac{6}{s} = \\frac{15}{10 + s}$."
+     },
+     {
+      "value": 10,
+      "why": "The shadow is not the distance to the post; set up similar triangles: $\\frac{6}{s} = \\frac{15}{10 + s}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Two similar right triangles share the angle at the shadow's tip: $\\frac{6}{s} = \\frac{15}{10 + s}$. Cross-multiply: $60 + 6s = 15s$, so $9s = 60$ and $s = \\frac{20}{3} \\approx 6.67$ feet."
+   }
+  },
+  {
+   "id": "calc-math-geometry-5",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "single",
+   "practice": "1.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which formula gives the volume of a sphere of radius $r$?",
+   "options": [
+    "$\\frac{4}{3}\\pi r^3$",
+    "$4\\pi r^2$",
+    "$\\frac{1}{3}\\pi r^2 h$",
+    "$\\pi r^2 h$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Volume of a sphere: $V = \\frac{4}{3}\\pi r^3$. Volumes are cubed in length.",
+    "options": [
+     "The sphere's volume.",
+     "That is the sphere's surface area (squared units).",
+     "That is a cone's volume.",
+     "That is a cylinder's volume."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-geometry-6",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the area of a trapezoid with parallel sides 3 and 7 and height 4.",
+   "numeric": {
+    "answer": 20,
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "Average the parallel sides: $\\frac{3 + 7}{2} \\cdot 4$. Without the $\\frac{1}{2}$, the area is doubled."
+     },
+     {
+      "value": 84,
+      "why": "Area is not the product of all three numbers; use $\\frac{b_1 + b_2}{2}h$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$A = \\frac{b_1 + b_2}{2} \\cdot h = \\frac{3 + 7}{2} \\cdot 4 = 20$. Trapezoids return in Unit 6, where they estimate areas under curves."
+   }
+  },
+  {
+   "id": "calc-math-geometry-7",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the area of a semicircle with diameter 6.",
+   "numeric": {
+    "answer": "9pi/2",
+    "mistakes": [
+     {
+      "value": "18pi",
+      "why": "The radius is half the diameter: $r = 3$, not 6."
+     },
+     {
+      "value": "9pi",
+      "why": "That is the whole circle; a semicircle is half: $\\frac{9\\pi}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Radius 3, so a full circle has area $9\\pi$ and the semicircle $\\frac{1}{2}\\pi(3)^2 = \\frac{9\\pi}{2}$."
+   }
+  },
+  {
+   "id": "calc-math-geometry-8",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the area $A$ of an equilateral triangle in terms of its side length $s$.",
+   "expr": {
+    "answer": "sqrt(3)/4*s^2",
+    "vars": [
+     "s"
+    ],
+    "domain": [
+     0.5,
+     5
+    ],
+    "mode": "exact",
+    "lhs": "A =",
+    "answerTex": "\\frac{\\sqrt{3}}{4}s^2",
+    "mistakes": [
+     {
+      "expr": "s^2/2",
+      "why": "That is a right triangle with legs $s$. An equilateral triangle's height is $\\frac{\\sqrt{3}}{2}s$, by the Pythagorean theorem."
+     },
+     {
+      "expr": "sqrt(3)/2*s^2",
+      "why": "Area is $\\frac{1}{2} \\cdot \\text{base} \\cdot \\text{height} = \\frac{1}{2} \\cdot s \\cdot \\frac{\\sqrt{3}}{2}s$; the $\\frac{1}{2}$ was dropped."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The height splits the base in half: $h^2 + \\left(\\frac{s}{2}\\right)^2 = s^2$, so $h = \\frac{\\sqrt{3}}{2}s$. Then $A = \\frac{1}{2} \\cdot s \\cdot \\frac{\\sqrt{3}}{2}s = \\frac{\\sqrt{3}}{4}s^2$."
+   }
+  },
+  {
+   "id": "calc-math-geometry-9",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A box with a square base of side $x$ and height $y$ has volume 32 cubic inches. Which expresses $y$ in terms of $x$?",
+   "options": [
+    "$y = \\frac{32}{x^2}$",
+    "$y = \\frac{32}{x}$",
+    "$y = 32 - x^2$",
+    "$y = \\sqrt{32} - x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Volume $= x \\cdot x \\cdot y = x^2 y = 32$, so $y = \\frac{32}{x^2}$.",
+    "options": [
+     "$x^2 y = 32$.",
+     "The base has area $x^2$, not $x$.",
+     "Volume multiplies; it does not subtract.",
+     "$x^2 y = 32$ does not give a square root."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-geometry-10",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the volume of a cylinder with radius 3 and height 5. Give the exact value.",
+   "numeric": {
+    "answer": "45pi",
+    "mistakes": [
+     {
+      "value": "15pi",
+      "why": "Square the radius: $\\pi(3)^2(5) = 45\\pi$."
+     },
+     {
+      "value": "30pi",
+      "why": "$2\\pi rh$ is the curved surface area; volume is $\\pi r^2 h$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V = \\pi r^2 h = \\pi(9)(5) = 45\\pi$."
+   }
+  },
+  {
+   "id": "calc-math-geometry-11",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A balloon rises straight up from a point 50 meters from an observer on level ground. When the balloon is $h$ meters high, the angle of elevation from the observer is $\\theta$. Which equation is true?",
+   "options": [
+    "$\\tan\\theta = \\frac{h}{50}$",
+    "$\\sin\\theta = \\frac{h}{50}$",
+    "$\\tan\\theta = \\frac{50}{h}$",
+    "$\\cos\\theta = \\frac{h}{50}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the right triangle, $h$ is opposite $\\theta$ and 50 is adjacent: $\\tan\\theta = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{h}{50}$.",
+    "options": [
+     "Opposite over adjacent.",
+     "Sine uses the hypotenuse, $\\sqrt{h^2 + 2500}$, not 50.",
+     "That is adjacent over opposite, which is $\\cot\\theta$.",
+     "Cosine is adjacent over hypotenuse."
+    ]
+   }
+  }
+ ]
+}

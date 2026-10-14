@@ -1,0 +1,490 @@
+{
+ "stimuli": {
+  "estimating-derivatives-s1": {
+   "kind": "table",
+   "title": "A cup of coffee cooling on a desk",
+   "table": {
+    "caption": "Temperature $H(t)$ of the coffee, in degrees Celsius, at selected times $t$, in minutes",
+    "cols": [
+     "$t$ (minutes)",
+     "0",
+     "2",
+     "5",
+     "9",
+     "12"
+    ],
+    "rows": [
+     [
+      "$H(t)$ (degrees Celsius)",
+      "92",
+      "85",
+      "77",
+      "69",
+      "64"
+     ]
+    ]
+   }
+  },
+  "estimating-derivatives-s2": {
+   "kind": "table",
+   "title": "Values of a function near $x = 2$",
+   "text": "A function $f$ has a derivative at every $x$. Its values near $x = 2$ are shown.",
+   "table": {
+    "caption": "Selected values of $f(x)$",
+    "cols": [
+     "$x$",
+     "1.9",
+     "1.99",
+     "2",
+     "2.01",
+     "2.1"
+    ],
+    "rows": [
+     [
+      "$f(x)$",
+      "6.859",
+      "7.880599",
+      "8",
+      "8.120601",
+      "9.261"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-estimating-derivatives-1",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "estimating-derivatives-s1",
+   "q": "Use the data in the table to estimate $H'(7)$. Include units.",
+   "numeric": {
+    "answer": -2,
+    "unit": "degrees Celsius per minute",
+    "askUnit": true,
+    "units": [
+     "°C/min",
+     "°C per minute",
+     "degrees per minute",
+     "C/min",
+     "degrees C per minute",
+     "deg C/min"
+    ],
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "The sign: the coffee is cooling, so $H$ is decreasing. Subtract in the same order: $\\frac{H(9) - H(5)}{9 - 5} = \\frac{69 - 77}{4}$."
+     },
+     {
+      "value": -8,
+      "why": "That is the change in temperature, $-8$ degrees. Divide by the 4 minutes it took."
+     },
+     {
+      "value": "-1/2",
+      "why": "The quotient is upside down: temperature change over time change, $\\frac{-8}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$t = 7$ lies between the data at $t = 5$ and $t = 9$: $H'(7) \\approx \\frac{H(9) - H(5)}{9 - 5} = \\frac{69 - 77}{4} = -2$ degrees Celsius per minute."
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-2",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "single",
+   "practice": "3.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "estimating-derivatives-s1",
+   "q": "Which sentence interprets $H'(7) \\approx -2$ in context?",
+   "options": [
+    "At $t = 7$ minutes, the coffee's temperature is decreasing at about 2 degrees Celsius per minute.",
+    "At $t = 7$ minutes, the coffee's temperature is about $-2$ degrees Celsius.",
+    "From $t = 5$ to $t = 9$ minutes, the coffee's temperature drops a total of 2 degrees Celsius.",
+    "At $t = 7$ minutes, the temperature is decreasing at about 2 degrees Celsius per minute per minute."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A derivative is a rate at one instant; the negative sign means the temperature is going down.",
+    "options": [
+     "It names the time, the quantity, the direction and the units.",
+     "That reads the derivative as a temperature; it is a rate of change of the temperature.",
+     "Over those 4 minutes the drop is 8 degrees; $-2$ is a rate per minute.",
+     "That unit is a rate of a rate; $H'$ is in degrees Celsius per minute."
+    ]
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-3",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "estimating-derivatives-s1",
+   "q": "Using the table, which is the best estimate of $H'(10.5)$?",
+   "options": [
+    "$-\\frac{5}{3}$ degrees Celsius per minute",
+    "$-5$ degrees Celsius per minute",
+    "$-\\frac{3}{5}$ degrees Celsius per minute",
+    "$-\\frac{8}{3}$ degrees Celsius per minute"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The closest data on either side of 10.5 are at 9 and 12: $\\frac{64 - 69}{12 - 9} = -\\frac{5}{3}$.",
+    "options": [
+     "Change $-5$ over 3 minutes.",
+     "That is the change in temperature; divide by 3 minutes.",
+     "The quotient is upside down.",
+     "That uses $t = 2$ and $t = 5$, data that does not contain $t = 10.5$."
+    ]
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-4",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "estimating-derivatives-s1",
+   "q": "Which difference quotient should NOT be used to estimate $H'(5)$?",
+   "options": [
+    "$\\frac{H(12) - H(9)}{12 - 9}$",
+    "$\\frac{H(5) - H(2)}{5 - 2}$",
+    "$\\frac{H(9) - H(5)}{9 - 5}$",
+    "$\\frac{H(9) - H(2)}{9 - 2}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An estimate of $H'(5)$ must use an interval that contains $t = 5$. The interval $[9, 12]$ describes a later stretch of time.",
+    "options": [
+     "Its interval, $[9, 12]$, does not contain $t = 5$.",
+     "A one-sided quotient ending at $t = 5$ is a reasonable estimate.",
+     "A one-sided quotient starting at $t = 5$ is a reasonable estimate.",
+     "This interval has $t = 5$ inside it, so it is reasonable, if wider."
+    ]
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-5",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "estimating-derivatives-s2",
+   "q": "Compute the difference quotient $\\frac{f(2.01) - f(2)}{0.01}$.",
+   "numeric": {
+    "answer": 12.0601,
+    "mistakes": [
+     {
+      "value": 0.120601,
+      "why": "That is the change in $f$. Divide by $0.01$, which multiplies it by 100."
+     },
+     {
+      "value": 812.0601,
+      "why": "Subtract $f(2) = 8$ before dividing: $\\frac{8.120601 - 8}{0.01}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{8.120601 - 8}{0.01} = \\frac{0.120601}{0.01} = 12.0601$."
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-6",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "estimating-derivatives-s2",
+   "q": "Compute the symmetric difference quotient $\\frac{f(2.01) - f(1.99)}{0.02}$.",
+   "numeric": {
+    "answer": 12.0001,
+    "mistakes": [
+     {
+      "value": 24.0002,
+      "why": "The width of $[1.99, 2.01]$ is $0.02$, not $0.01$. Divide the change $0.240002$ by $0.02$."
+     },
+     {
+      "value": 0.240002,
+      "why": "That is the change in $f$; divide it by $0.02$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{8.120601 - 7.880599}{0.02} = \\frac{0.240002}{0.02} = 12.0001$."
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-7",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "estimating-derivatives-s2",
+   "q": "Based on the table, which is the best estimate of $f'(2)$?",
+   "options": [
+    "$12$",
+    "$8$",
+    "$0.12$",
+    "$120$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The difference quotients near $x = 2$ (12.0601 forward, 12.0001 symmetric) close in on 12.",
+    "options": [
+     "Where the difference quotients are heading.",
+     "That is $f(2)$, a value, not a rate.",
+     "That is the change $f(2.01) - f(2) \\approx 0.12$, before dividing by $0.01$.",
+     "That divides by $0.001$ instead of $0.01$."
+    ]
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-8",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "estimating-derivatives-s2",
+   "q": "With $h = 0.1$, the left quotient $\\frac{f(2) - f(1.9)}{0.1}$ is 11.41 and the right quotient $\\frac{f(2.1) - f(2)}{0.1}$ is 12.61. What is the symmetric quotient $\\frac{f(2.1) - f(1.9)}{0.2}$?",
+   "options": [
+    "$12.01$, the average of 11.41 and 12.61",
+    "$24.02$, the sum of 11.41 and 12.61",
+    "$1.2$, the change in $f$ divided by 2",
+    "$12.61$, because a right quotient is exact"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{9.261 - 6.859}{0.2} = \\frac{2.402}{0.2} = 12.01$, which is the average of the two one-sided quotients. Errors on the two sides partly cancel, so it is closer to $f'(2)$ than either.",
+    "options": [
+     "Dividing the total change by the total width $0.2$ averages the two sides.",
+     "The width $0.2$ is twice $0.1$, so the change is divided by twice as much: an average, not a sum.",
+     "The change $2.402$ must be divided by the width $0.2$, not by 2.",
+     "Every difference quotient is an estimate; a one-sided one is usually the less accurate."
+    ]
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-9",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Let $f(x) = \\frac{e^x}{1 + x^2}$. Use the numerical derivative on a graphing calculator to find $f'(2)$.",
+   "numeric": {
+    "answer": 0.295562243957226,
+    "mistakes": [
+     {
+      "value": 1.4778112197861302,
+      "why": "That is $f(2)$, the value of the function. Use the calculator's derivative command, $\\left.\\frac{d}{dx}\\left( \\frac{e^x}{1 + x^2} \\right)\\right|_{x=2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Calculator: $\\left.\\frac{d}{dx}\\left( \\frac{e^x}{1 + x^2} \\right)\\right|_{x=2} \\approx 0.296$ (0.29556...). Write the setup, keep full precision and round to three decimal places only at the end."
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-10",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Let $g(x) = \\frac{\\sin x}{x}$. Use a graphing calculator in radian mode to find $g'(1)$.",
+   "numeric": {
+    "answer": -0.30116867893975674,
+    "mistakes": [
+     {
+      "value": 0.8414709848078965,
+      "why": "That is $g(1) = \\sin 1$, a value. The derivative command gives the slope: $\\left.\\frac{d}{dx}\\left( \\frac{\\sin x}{x} \\right)\\right|_{x=1}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "In radian mode, $\\left.\\frac{d}{dx}\\left( \\frac{\\sin x}{x} \\right)\\right|_{x=1} \\approx -0.301$ (−0.30116...). The negative value means the graph falls at $x = 1$."
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-11",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A runner has covered $D(t)$ meters after $t$ seconds, with $D(10) = 62$ and $D(12) = 71$. Which is the best estimate of $D'(11)$?",
+   "options": [
+    "$4.5$ meters per second",
+    "$9$ meters per second",
+    "$4.5$ meters",
+    "$\\frac{2}{9}$ seconds per meter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{D(12) - D(10)}{12 - 10} = \\frac{9}{2} = 4.5$ meters per second; $t = 11$ is midway between the data.",
+    "options": [
+     "Change in distance over change in time, with rate units.",
+     "That is the 9 meters covered; divide by the 2 seconds.",
+     "The number is right but a derivative of distance is a rate, in meters per second.",
+     "That is time over distance, upside down."
+    ]
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-12",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A bacteria culture has $P(t)$ thousand bacteria after $t$ hours, with $P(3) = 20$ and $P(5) = 34$. Which is the best estimate of $P'(4)$?",
+   "options": [
+    "$7$ thousand bacteria per hour",
+    "$27$ thousand bacteria",
+    "$14$ thousand bacteria per hour",
+    "$7$ thousand bacteria"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{P(5) - P(3)}{5 - 3} = \\frac{14}{2} = 7$ thousand bacteria per hour.",
+    "options": [
+     "A rate: change in population over change in time.",
+     "That averages the two values, which estimates $P(4)$, not $P'(4)$.",
+     "That is the change over 2 hours; divide by 2.",
+     "The number is right but the units are those of $P$; a rate is per hour."
+    ]
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-13",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "single",
+   "practice": "1.F",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does the numerical derivative command of a graphing calculator give for a function $f$ at $x = a$?",
+   "options": [
+    "A decimal estimate of $f'(a)$ from a difference quotient with a very small $h$",
+    "An exact formula for $f'(x)$",
+    "The value $f(a)$",
+    "The average rate of change of $f$ from $x = 0$ to $x = a$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "It computes a symmetric difference quotient with a tiny $h$ and returns a decimal. Report three decimal places.",
+    "options": [
+     "An estimate at one input.",
+     "It returns a number at one input, not a formula.",
+     "That is a function value; the command returns a slope.",
+     "It uses inputs very close to $a$, not an interval starting at 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-14",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A function $f$ has $f(1) = 4$, $f(1.5) = 5.2$ and $f(2) = 7$. Estimate $f'(1.75)$ using two of these values.",
+   "numeric": {
+    "answer": 3.6,
+    "mistakes": [
+     {
+      "value": 1.8,
+      "why": "That is the change $f(2) - f(1.5)$. Divide by the width, 0.5, which doubles it."
+     },
+     {
+      "value": 3,
+      "why": "That uses $f(1)$ and $f(2)$, a wider interval. The closest data around 1.75 are at 1.5 and 2."
+     },
+     {
+      "value": 0.9,
+      "why": "Divide the change 1.8 by 0.5, not multiply."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{f(2) - f(1.5)}{2 - 1.5} = \\frac{1.8}{0.5} = 3.6$."
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-15",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A table gives $f(x)$ at $x = 0$, 2, 4 and 7. Which data give the best estimate of $f'(3)$?",
+   "options": [
+    "$f(2)$ and $f(4)$",
+    "$f(0)$ and $f(2)$",
+    "$f(4)$ and $f(7)$",
+    "$f(0)$ and $f(7)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The interval $[2, 4]$ contains 3 and is the narrowest one that does.",
+    "options": [
+     "The two closest inputs on either side of 3.",
+     "$[0, 2]$ does not contain 3.",
+     "$[4, 7]$ does not contain 3.",
+     "$[0, 7]$ contains 3 but is much wider than $[2, 4]$."
+    ]
+   }
+  },
+  {
+   "id": "calc-estimating-derivatives-16",
+   "unit": "unit-2",
+   "topic": "estimating-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Let $k(x) = \\sqrt{x}\\, e^{-x/4}$. Use a graphing calculator to find $k'(1)$.",
+   "numeric": {
+    "answer": 0.19470019576785122,
+    "mistakes": [
+     {
+      "value": 0.7788007830714049,
+      "why": "That is $k(1)$, a value of the function. Use the derivative command at $x = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Calculator: $\\left.\\frac{d}{dx}\\left( \\sqrt{x}\\, e^{-x/4} \\right)\\right|_{x=1} \\approx 0.195$ (0.19470...). Store the value; round at the end."
+   }
+  }
+ ]
+}

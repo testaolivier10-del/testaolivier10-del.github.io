@@ -53,7 +53,15 @@
     var LS = null, SP = null, showSlot = null;
     function $(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); }
     function $$(sel){ var a = [].slice.call(host.querySelectorAll(sel)); return LS ? a.concat([].slice.call(LS.root.querySelectorAll(sel))) : a; }
-    var BOX = { x0: 22, x1: 278, y0: 22, y1: 168 }, SL = BP.slots(20, 5, BOX);
+    // A phone in portrait stacks the two boxes (chem-tools.css), so each box
+    // is drawn wider than tall (300 x 160 instead of 300 x 190) to fill the
+    // stage's width (docs/tools-phone-pass.md). The particles keep their size.
+    var BH = 190, BOX = { x0: 22, x1: 278, y0: 22, y1: 168 }, SL = BP.slots(20, 5, BOX);
+    function boxes(){
+      var h = window.matchMedia && window.matchMedia('(max-width:599.98px)').matches ? 160 : 190;
+      if(h === BH) return;
+      BH = h; BOX = { x0: 22, x1: 278, y0: h === 190 ? 22 : 16, y1: h - (h === 190 ? 22 : 16) }; SL = BP.slots(20, 5, BOX);
+    }
     var ci = 0, seed = 1 + Math.floor(Math.random() * 9999), p, keys, before, mine = {}, placed = [], drag = null;
     host.innerHTML = '<section class="bt-problem pb-card" aria-labelledby="pb-h"><div class="tx-head"><h2 id="pb-h" class="pb-title"></h2><div class="pb-text"></div></div>' +
       '<div class="pb-boxes"><figure class="pb-fig"><figcaption class="bt-small">Before</figcaption><div class="pb-before"></div></figure>' +
@@ -84,8 +92,9 @@
       $('.pb-text').innerHTML = p.type === 'limiting'
         ? '<p class="bt-eq">' + (ctx.reactions ? eqOf(p) : '') + '</p><p class="bt-small">The reaction goes to completion. Fill the after box: what is left, and what formed?</p>'
         : '<p class="bt-eq">A₂ + B₂ ⇌ 2 AB &nbsp; K = ' + M.fmt(p.extra.K, 3) + '</p><p class="bt-small">The gas particle count does not change, so Q can be worked from counts. Fill the box with the mixture at equilibrium.</p>';
+      boxes();
       var bc = {}; Object.keys(before).forEach(function(k){ if(before[k]) bc[k] = before[k]; });
-      $('.pb-before').innerHTML = M.particles.box(bc, seed + 9, { w: 300, h: 190, label: 'Before: a box containing ' + M.particles.describe(bc) });
+      $('.pb-before').innerHTML = M.particles.box(bc, seed + 9, { w: 300, h: BH, label: 'Before: a box containing ' + M.particles.describe(bc) });
       $('.pb-palette').innerHTML = keys.map(function(k){
         return '<div class="pb-pal" data-k="' + k + '"><button type="button" class="pb-chip" data-k="' + k + '" aria-label="Add one ' + esc(NAMES[k] || k) + '"><svg viewBox="-22 -18 44 36" aria-hidden="true">' + M.particles.mol(k, 0, 0, 0) + '</svg><span>' + esc(NAMES[k] || k) + '</span></button>' +
           '<button type="button" class="bt-step pb-minus" data-k="' + k + '" aria-label="Remove one ' + esc(NAMES[k] || k) + '">−</button><b class="pb-n" data-k="' + k + '">0</b><button type="button" class="bt-step pb-plus" data-k="' + k + '" aria-label="Add one ' + esc(NAMES[k] || k) + '">+</button></div>';
@@ -96,7 +105,7 @@
         b.addEventListener('click', function(){ if(!b._dragged) add(b.getAttribute('data-k'), 1); b._dragged = false; });
         b.addEventListener('pointerdown', function(e){ startDrag(e, b); });
       });
-      var svgHtml = '<svg class="chem-svg pt-box pb-svg" viewBox="0 0 300 190" role="img" aria-label="Your after box"><rect class="pt-frame" x="1" y="1" width="298" height="188" rx="10"/><g class="pb-parts"></g><text class="pb-empty" x="150" y="100" text-anchor="middle">Empty: add particles</text></svg>';
+      var svgHtml = '<svg class="chem-svg pt-box pb-svg" viewBox="0 0 300 ' + BH + '" role="img" aria-label="Your after box"><rect class="pt-frame" x="1" y="1" width="298" height="' + (BH - 2) + '" rx="10"/><g class="pb-parts"></g><text class="pb-empty" x="150" y="' + (BH / 2 + 5) + '" text-anchor="middle">Empty: add particles</text></svg>';
       $('.pb-after').innerHTML = svgHtml;
       $('.pb-after svg').addEventListener('click', function(e){
         var g = e.target.closest('.pb-p'); if(g) add(g.getAttribute('data-k'), -1);

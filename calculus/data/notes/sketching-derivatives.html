@@ -1,0 +1,54 @@
+<p>So far you have mostly worked from formulas. The exam just as often hands you a picture and asks about a different function: here is $f$, describe $f'$; here is $f'$, describe $f$. You do not need a formula for either. You need to read features, and each feature of one graph becomes a feature of the other.</p>
+
+<h2>From $f$ to $f'$: heights become slopes</h2>
+<p>The height of the <b>graph of the derivative</b> at each $x$ is the slope of $f$ at that $x$. So read the graph of $f$ one feature at a time:</p>
+<table class="compare">
+<thead><tr><th scope="col">Graph of $f$</th><th scope="col">Graph of $f'$</th></tr></thead>
+<tbody>
+<tr><td>rising</td><td>above the $x$-axis</td></tr>
+<tr><td>falling</td><td>below the $x$-axis</td></tr>
+<tr><td>a smooth peak or valley (flat tangent line)</td><td>crosses the $x$-axis</td></tr>
+<tr><td>concave up</td><td>rising</td></tr>
+<tr><td>concave down</td><td>falling</td></tr>
+<tr><td>a point of inflection</td><td>a peak or valley</td></tr>
+<tr><td>a straight line with slope $m$</td><td>a horizontal segment at height $m$</td></tr>
+<tr><td>a corner</td><td>a jump; no value at that point</td></tr>
+</tbody>
+</table>
+<figure id="fig-sketch" data-fig="sketch-f-fprime"><figcaption>Line the graphs up. The peak and valley of $f$ are the zeros of $f'$; the inflection point of $f$ is the lowest point of $f'$.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> The graph of $f(x) = \frac{x^4}{4} - 2x^2$ is a W shape: valleys at $x = -2$ and $x = 2$, a peak at $x = 0$, and inflection points near $x = \pm 1.15$. Sketch $f'$.</p>
+<p>Zeros of $f'$: at the peak and valleys, $x = -2, 0, 2$.</p>
+<p>Signs: $f$ falls on $(-\infty, -2)$ and $(0, 2)$, so $f' < 0$ there; $f$ rises on $(-2, 0)$ and $(2, \infty)$, so $f' > 0$.</p>
+<p>Turns of $f'$: at the inflection points of $f$. $f'$ has a peak near $x = -1.15$ and a valley near $x = 1.15$.</p>
+<p>Check with the formula: $f'(x) = x^3 - 4x = x(x - 2)(x + 2)$, a cubic with exactly those zeros and turns.</p>
+</div>
+
+<h2>From $f'$ to $f$: slopes become shapes</h2>
+<p>Read the same table backward. Given the graph of $f'$:</p>
+<ul>
+<li>Where $f'$ is positive, $f$ rises; where negative, $f$ falls.</li>
+<li>Where $f'$ crosses the axis going down, $f$ has a peak; going up, a valley. Where $f'$ touches the axis without crossing, $f$ has a flat point but keeps going.</li>
+<li>Where $f'$ rises, $f$ is concave up; where it falls, concave down; where it turns, $f$ has a point of inflection.</li>
+<li>Where $f'$ is constant, $f$ is a straight line with that slope.</li>
+</ul>
+<p>The graph of $f'$ does not tell you how high $f$ is. Many graphs of $f$, shifted up or down, share one derivative. To place $f$ you need one value, such as $f(0) = 4$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> The graph of $f'$ is made of segments from $(-2, -2)$ to $(0, 2)$, to $(2, 2)$, to $(4, -2)$. Describe $f$.</p>
+<p>$f'$ crosses zero going up at $x = -1$ (valley of $f$) and going down at $x = 3$ (peak of $f$).</p>
+<p>On $(-2, 0)$, $f'$ rises: $f$ is concave up. On $(0, 2)$, $f' = 2$: $f$ is a straight segment with slope 2. On $(2, 4)$, $f'$ falls: concave down.</p>
+<p>$f''$ is the slope of the graph of $f'$: $2$, then $0$, then $-2$. At $x = 0$ and $x = 2$ the slope of $f'$ jumps, so $f''$ does not exist there.</p>
+</div>
+
+<h2>One level further down</h2>
+<p>The same pattern links $f'$ and $f''$: the height of the graph of $f''$ is the slope of $f'$. So from a graph of $f'$ you can read $f''(3)$ as a slope, and say where $f''$ is positive (wherever $f'$ is rising).</p>
+
+<h2>A symmetry shortcut</h2>
+<p>Reflecting a graph across the $y$-axis reverses every slope. So if $f$ is even (symmetric about the $y$-axis, like $x^2 + \cos x$), then $f'$ is odd (symmetric about the origin), and the reverse holds too.</p>
+
+<h2>Common sketching mistakes</h2>
+<ul>
+<li>Copying the shape of $f$. The graph of $f'$ does not look like $f$ shifted; peaks of $f$ are zeros of $f'$.</li>
+<li>Putting the peaks of $f'$ at the peaks of $f$. The peaks of $f'$ are the steepest points of $f$, its inflection points.</li>
+<li>Smoothing over a corner. A corner in $f$ is a jump in $f'$.</li>
+</ul>

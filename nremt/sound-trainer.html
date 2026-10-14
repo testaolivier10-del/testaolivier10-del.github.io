@@ -225,6 +225,16 @@
   .st-credit a{color:var(--muted);}
   .st-site{cursor:pointer;outline:none;}
   .st-hit{fill:transparent;}
+  /* Phone pass (2026-10-13): the chest is 600 units across ~350 px (scale ~0.59), so the ICS numbers and MCL captions grow
+     to read at least 12 px and each listening spot's tap circle to ~45 px. */
+  .ls-root.ls-phone .st-ics{font-size:23px;}
+  .ls-root.ls-phone .st-cap{font-size:21px;}
+  .ls-root.ls-phone .st-hit{r:38px;}
+  .ls-root.ls-phone .st-phase{font-size:12.5px;} .ls-root.ls-phone .st-evt{font-size:12.5px;} .ls-root.ls-phone .st-evt.st-evt--plain{font-size:12.5px;}
+  @media (orientation:landscape){ /* the chest fits a ~300 px height there (scale ~0.45) */
+    .ls-root.ls-phone .st-ics{font-size:28px;} .ls-root.ls-phone .st-cap{font-size:27px;} .ls-root.ls-phone .st-rl{font-size:28px;}
+    .ls-root.ls-phone .st-hit{r:49px;}
+  }
   .st-halo{fill:var(--accent);opacity:0;transition:r .25s,opacity .25s;}
   .st-site--lung .st-halo,.st-site--airway .st-halo{fill:#3C7FC0;}
   .st-dot{fill:rgba(255,255,255,.92);stroke:var(--accent);stroke-width:4;transition:stroke-width .15s;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));}

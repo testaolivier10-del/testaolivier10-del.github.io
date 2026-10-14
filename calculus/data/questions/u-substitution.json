@@ -1,0 +1,587 @@
+{
+ "stimuli": {
+  "u-substitution-s1": {
+   "kind": "table",
+   "title": "Substitution in a definite integral",
+   "text": "Evaluate $\\int_0^1 x(1 + x^2)^3\\,dx$ with the substitution $u = 1 + x^2$.",
+   "table": {
+    "caption": "The integral and the chosen substitution",
+    "cols": [
+     "Piece",
+     "Here"
+    ],
+    "rows": [
+     [
+      "integral",
+      "$\\int_0^1 x(1 + x^2)^3\\,dx$"
+     ],
+     [
+      "substitution",
+      "$u = 1 + x^2$"
+     ],
+     [
+      "limits in x",
+      "$x = 0$ to $x = 1$"
+     ]
+    ]
+   }
+  },
+  "u-substitution-s2": {
+   "kind": "table",
+   "title": "Values of $f$, $g$ and $g'$",
+   "text": "The functions $f$ and $g$ are differentiable, and $f'$ and $g'$ are continuous. Selected values are given.",
+   "table": {
+    "caption": "Values of f(x), g(x) and g'(x)",
+    "cols": [
+     "$x$",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "rows": [
+     [
+      "$f(x)$",
+      "6",
+      "3",
+      "8",
+      "1",
+      "10"
+     ],
+     [
+      "$g(x)$",
+      "2",
+      "5",
+      "4",
+      "3",
+      "1"
+     ],
+     [
+      "$g'(x)$",
+      "$-1$",
+      "2",
+      "$-3$",
+      "1",
+      "4"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-u-substitution-1",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "u-substitution-s1",
+   "q": "With $u = 1 + x^2$, what does $x\\,dx$ become?",
+   "options": [
+    "$\\frac{1}{2}\\,du$",
+    "$du$",
+    "$2\\,du$",
+    "$\\frac{du}{x}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$u = 1 + x^2$ gives $\\frac{du}{dx} = 2x$, so $du = 2x\\,dx$ and $x\\,dx = \\frac{1}{2}\\,du$.",
+    "options": [
+     "Correct: $du = 2x\\,dx$, so $x\\,dx = \\frac{1}{2}du$.",
+     "$du = 2x\\,dx$, which is twice $x\\,dx$. Divide by 2.",
+     "$du = 2x\\,dx$ gives $x\\,dx = \\frac{du}{2}$, not $2\\,du$.",
+     "$du = 2x\\,dx$; solving for $x\\,dx$ (not $dx$) gives $\\frac{1}{2}du$, with no $x$ left over."
+    ]
+   }
+  },
+  {
+   "id": "calc-u-substitution-2",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "u-substitution-s1",
+   "q": "What are the limits of integration in terms of $u$?",
+   "options": [
+    "$u = 0$ to $u = 1$",
+    "$u = 1$ to $u = 4$",
+    "$u = 0$ to $u = 2$",
+    "$u = 1$ to $u = 2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Substitute each $x$-limit into $u = 1 + x^2$: $x = 0 \\to u = 1$, $x = 1 \\to u = 2$.",
+    "options": [
+     "Those are the $x$-limits. Put each into $u = 1 + x^2$.",
+     "At $x = 1$, $u = 1 + 1^2 = 2$, not 4.",
+     "At $x = 0$, $u = 1 + 0^2 = 1$; the constant 1 in $u$ matters.",
+     "Correct: $x = 0$ gives $u = 1 + 0 = 1$ and $x = 1$ gives $u = 2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-u-substitution-3",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "u-substitution-s1",
+   "q": "Which integral in $u$ equals $\\int_0^1 x(1 + x^2)^3\\,dx$?",
+   "options": [
+    "$\\int_1^2 u^3\\,du$",
+    "$\\frac{1}{2}\\int_1^2 x\\,u^3\\,du$",
+    "$\\frac{1}{2}\\int_1^2 u^3\\,du$",
+    "$\\frac{1}{2}\\int_0^1 u^3\\,du$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\int_0^1 (1 + x^2)^3 \\cdot x\\,dx = \\int_1^2 u^3 \\cdot \\frac{1}{2}\\,du = \\frac{1}{2}\\int_1^2 u^3\\,du$.",
+    "options": [
+     "The factor $\\frac{1}{2}$ from $x\\,dx = \\frac{1}{2}du$ is missing.",
+     "Everything must be in $u$: the $x$ was absorbed into $du = 2x\\,dx$.",
+     "Correct: $(1 + x^2)^3 = u^3$, $x\\,dx = \\frac{1}{2}du$, limits 1 to 2.",
+     "The limits are still the $x$-limits. In terms of $u$ they are 1 and 2."
+    ]
+   }
+  },
+  {
+   "id": "calc-u-substitution-4",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "u-substitution-s1",
+   "q": "Find the value of $\\int_0^1 x(1 + x^2)^3\\,dx$.",
+   "numeric": {
+    "answer": "15/8",
+    "mistakes": [
+     {
+      "value": "1/8",
+      "why": "That keeps the $x$-limits 0 and 1 with the $u$-integral: $\\frac{1}{2}\\cdot\\frac{u^4}{4}\\Big|_0^1$. Change the limits to 1 and 2."
+     },
+     {
+      "value": "15/4",
+      "why": "The factor $\\frac{1}{2}$ from $x\\,dx = \\frac{1}{2}du$ was dropped."
+     },
+     {
+      "value": "15/2",
+      "why": "$\\int u^3\\,du = \\frac{u^4}{4}$: divide by 4 as well as by 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{2}\\int_1^2 u^3\\,du = \\frac{1}{2}\\cdot\\frac{u^4}{4}\\Big|_1^2 = \\frac{1}{8}(16 - 1) = \\frac{15}{8}$."
+   }
+  },
+  {
+   "id": "calc-u-substitution-5",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "u-substitution-s2",
+   "q": "Find $\\int_1^3 f'(g(x))\\,g'(x)\\,dx$.",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is $f(3) - f(1)$. An antiderivative of $f'(g(x))g'(x)$ is $f(g(x))$, so evaluate $f$ at $g(3) = 4$ and $g(1) = 2$."
+     },
+     {
+      "value": 4,
+      "why": "The order is $f(g(3)) - f(g(1)) = f(4) - f(2) = 1 - 3$: subtract, do not add."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $u = g(x)$, $du = g'(x)\\,dx$: $\\int_1^3 f'(g(x))g'(x)\\,dx = \\int_{g(1)}^{g(3)} f'(u)\\,du = f(4) - f(2) = 1 - 3 = -2$."
+   }
+  },
+  {
+   "id": "calc-u-substitution-6",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "u-substitution-s2",
+   "q": "The substitution $u = g(x)$ turns $\\int_1^3 f'(g(x))\\,g'(x)\\,dx$ into which integral?",
+   "options": [
+    "$\\int_1^3 f'(u)\\,du$",
+    "$\\int_2^4 f'(u)\\,g'(u)\\,du$",
+    "$\\int_{-1}^{-3} f'(u)\\,du$",
+    "$\\int_2^4 f'(u)\\,du$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$u = g(x)$, $du = g'(x)\\,dx$; at $x = 1$, $u = 2$; at $x = 3$, $u = 4$. So the integral is $\\int_2^4 f'(u)\\,du$.",
+    "options": [
+     "The limits must change: $u$ runs from $g(1) = 2$ to $g(3) = 4$.",
+     "$g'(x)\\,dx$ became $du$; no $g'$ is left over.",
+     "Those are values of $g'$. The new limits are values of $g$: $g(1)$ and $g(3)$.",
+     "Correct: $du = g'(x)\\,dx$, and the limits become $g(1) = 2$ and $g(3) = 4$."
+    ]
+   }
+  },
+  {
+   "id": "calc-u-substitution-7",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "u-substitution-s2",
+   "q": "Find $\\int_1^2 g'(x)\\,e^{g(x)}\\,dx$.",
+   "numeric": {
+    "answer": "e^5 - e^2",
+    "mistakes": [
+     {
+      "value": "e^2 - e",
+      "why": "That evaluates $e^x$ at 2 and 1. The antiderivative is $e^{g(x)}$, so use $g(2) = 5$ and $g(1) = 2$."
+     },
+     {
+      "value": "e^2 - e^5",
+      "why": "Upper limit first: $e^{g(2)} - e^{g(1)} = e^5 - e^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $u = g(x)$: $\\int_{g(1)}^{g(2)} e^u\\,du = e^{g(2)} - e^{g(1)} = e^5 - e^2$."
+   }
+  },
+  {
+   "id": "calc-u-substitution-8",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "u-substitution-s2",
+   "q": "Find $\\int_1^3 \\frac{g'(x)}{g(x)}\\,dx$. ($g$ is positive on $[1, 3]$.)",
+   "numeric": {
+    "answer": "ln(2)",
+    "mistakes": [
+     {
+      "value": "ln(3)",
+      "why": "That is $\\ln 3 - \\ln 1$, using the $x$-limits. The antiderivative is $\\ln|g(x)|$: evaluate at $g(3) = 4$ and $g(1) = 2$."
+     },
+     {
+      "value": "-1/4",
+      "why": "That evaluates the integrand $\\frac{g'(x)}{g(x)}$ at 3 and 1 and subtracts. Evaluate an antiderivative instead: with $u = g(x)$ it is $\\ln|u|$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "With $u = g(x)$, $du = g'(x)\\,dx$: $\\int_{2}^{4} \\frac{1}{u}\\,du = \\ln 4 - \\ln 2 = \\ln 2$."
+   }
+  },
+  {
+   "id": "calc-u-substitution-9",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int 2x\\cos(x^2)\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "sin(x^2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int 2x\\cos(x^2)\\,dx =",
+    "mistakes": [
+     {
+      "expr": "x^2*sin(x^2)",
+      "why": "The factors cannot be integrated separately. With $u = x^2$, $du = 2x\\,dx$ and the integral is $\\int \\cos u\\,du = \\sin u$."
+     },
+     {
+      "expr": "-sin(x^2)",
+      "why": "$\\int \\cos u\\,du = \\sin u$, with a plus sign."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = x^2$, $du = 2x\\,dx$: $\\int \\cos u\\,du = \\sin u + C = \\sin(x^2) + C$."
+   }
+  },
+  {
+   "id": "calc-u-substitution-10",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\int e^{3x}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "e^(3x)/3",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1,
+     1
+    ],
+    "mode": "constant",
+    "lhs": "\\int e^{3x}\\,dx =",
+    "answerTex": "\\frac{1}{3}e^{3x}",
+    "mistakes": [
+     {
+      "expr": "e^(3x)",
+      "why": "The derivative of $e^{3x}$ is $3e^{3x}$. To undo that factor 3, divide by 3."
+     },
+     {
+      "expr": "3e^(3x)",
+      "why": "That is the derivative. With $u = 3x$, $dx = \\frac{1}{3}du$: divide by 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = 3x$, $du = 3\\,dx$: $\\int e^{3x}\\,dx = \\frac{1}{3}\\int e^u\\,du = \\frac{1}{3}e^{3x} + C$."
+   }
+  },
+  {
+   "id": "calc-u-substitution-11",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\int \\cos(5x)\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "sin(5x)/5",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\cos(5x)\\,dx =",
+    "answerTex": "\\frac{1}{5}\\sin(5x)",
+    "mistakes": [
+     {
+      "expr": "5sin(5x)",
+      "why": "Differentiating $\\sin(5x)$ gives $5\\cos(5x)$, so you need $\\frac{1}{5}$ in front, not 5."
+     },
+     {
+      "expr": "sin(5x)",
+      "why": "Its derivative is $5\\cos(5x)$, five times too big. Divide by 5."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = 5x$, $du = 5\\,dx$: $\\frac{1}{5}\\int \\cos u\\,du = \\frac{1}{5}\\sin(5x) + C$."
+   }
+  },
+  {
+   "id": "calc-u-substitution-12",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Substitute for the denominator and antidifferentiate: $\\int \\frac{x}{x^2 + 4}\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "(1/2)ln(x^2 + 4)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{x}{x^2 + 4}\\,dx =",
+    "answerTex": "\\frac{1}{2}\\ln(x^2 + 4)",
+    "mistakes": [
+     {
+      "expr": "ln(x^2 + 4)",
+      "why": "$du = 2x\\,dx$, so $x\\,dx = \\frac{1}{2}du$: the answer has a factor $\\frac{1}{2}$."
+     },
+     {
+      "expr": "(1/2)arctan(x/2)",
+      "why": "The arctan form is for $\\frac{1}{x^2 + 4}$ with no $x$ on top. Here the top is (half) the derivative of the bottom: $u = x^2 + 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = x^2 + 4$, $du = 2x\\,dx$: $\\frac{1}{2}\\int \\frac{1}{u}\\,du = \\frac{1}{2}\\ln|u| + C = \\frac{1}{2}\\ln(x^2 + 4) + C$ ($x^2 + 4 > 0$)."
+   }
+  },
+  {
+   "id": "calc-u-substitution-13",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\frac{\\ln x}{x}\\,dx$ for $x > 0$. Include $+ C$.",
+   "expr": {
+    "answer": "ln(x)^2/2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     4
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\frac{\\ln x}{x}\\,dx =",
+    "answerTex": "\\frac{(\\ln x)^2}{2}",
+    "mistakes": [
+     {
+      "expr": "ln(x)^2",
+      "why": "With $u = \\ln x$ the integral is $\\int u\\,du = \\frac{u^2}{2}$: keep the $\\frac{1}{2}$."
+     },
+     {
+      "expr": "ln(ln(x))",
+      "why": "That would come from $\\frac{1}{x\\ln x}$. Here $\\ln x$ is on top: $u = \\ln x$, $du = \\frac{1}{x}dx$, and the integrand is $u\\,du$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = \\ln x$, $du = \\frac{1}{x}\\,dx$: $\\int u\\,du = \\frac{u^2}{2} + C = \\frac{(\\ln x)^2}{2} + C$."
+   }
+  },
+  {
+   "id": "calc-u-substitution-14",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\sin^3 x \\cos x\\,dx$. Include $+ C$.",
+   "expr": {
+    "answer": "sin(x)^4/4",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int \\sin^3 x\\cos x\\,dx =",
+    "answerTex": "\\frac{\\sin^4 x}{4}",
+    "mistakes": [
+     {
+      "expr": "sin(x)^4",
+      "why": "$\\int u^3\\,du = \\frac{u^4}{4}$: divide by the new power."
+     },
+     {
+      "expr": "cos(x)^4/4",
+      "why": "The inside function is $\\sin x$, whose derivative $\\cos x$ is the other factor. So $u = \\sin x$, and the answer is in $\\sin x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = \\sin x$, $du = \\cos x\\,dx$: $\\int u^3\\,du = \\frac{u^4}{4} + C = \\frac{\\sin^4 x}{4} + C$."
+   }
+  },
+  {
+   "id": "calc-u-substitution-15",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find $\\int_0^{\\sqrt{\\pi}} x\\sin(x^2)\\,dx$.",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": "(1 - cos(sqrt(pi)))/2",
+      "why": "That evaluates the $u$-antiderivative at the $x$-limits. With $u = x^2$ the limits become 0 and $\\pi$."
+     },
+     {
+      "value": 2,
+      "why": "$x\\,dx = \\frac{1}{2}du$: the answer is half of $\\int_0^\\pi \\sin u\\,du = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$u = x^2$, $du = 2x\\,dx$; $x = 0 \\to u = 0$, $x = \\sqrt{\\pi} \\to u = \\pi$. $\\frac{1}{2}\\int_0^{\\pi} \\sin u\\,du = \\frac{1}{2}\\left(-\\cos u\\right)\\Big|_0^{\\pi} = \\frac{1}{2}(1 + 1) = 1$."
+   }
+  },
+  {
+   "id": "calc-u-substitution-16",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes $\\int_0^2 x e^{x^2}\\,dx = \\frac{1}{2}\\int_0^2 e^u\\,du$ with $u = x^2$. What is wrong?",
+   "options": [
+    "Nothing is wrong; the limits stay the same for any substitution",
+    "The limits were not changed: they should be u = 0 to u = 4",
+    "The factor should be 2, not $\\frac{1}{2}$",
+    "The substitution should be $u = e^{x^2}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Once the integral is in $u$, the limits must be values of $u$: $x = 0 \\to u = 0$ and $x = 2 \\to u = 4$. So $\\frac{1}{2}\\int_0^4 e^u\\,du = \\frac{1}{2}(e^4 - 1)$.",
+    "options": [
+     "The limits stay only if you return to $x$ before evaluating. In $\\int ... du$ they must be values of $u$.",
+     "Correct: at $x = 2$, $u = 4$. The right integral is $\\frac{1}{2}\\int_0^4 e^u\\,du$.",
+     "$du = 2x\\,dx$ gives $x\\,dx = \\frac{1}{2}du$, so $\\frac{1}{2}$ is right.",
+     "$u = x^2$ works: its derivative $2x$ matches the factor $x$. The only error is in the limits."
+    ]
+   }
+  },
+  {
+   "id": "calc-u-substitution-17",
+   "unit": "unit-6",
+   "topic": "u-substitution",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For which integral does $u = x^2 + 1$ <b>not</b> work as a substitution?",
+   "options": [
+    "$\\int (x^2 + 1)^5\\,dx$",
+    "$\\int x(x^2 + 1)^5\\,dx$",
+    "$\\int \\frac{3x}{x^2 + 1}\\,dx$",
+    "$\\int x e^{x^2 + 1}\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Substitution needs the derivative of the inside, up to a constant factor, to be present. $u = x^2 + 1$ needs a factor $x$; $\\int (x^2 + 1)^5\\,dx$ has none (you would expand it into a polynomial).",
+    "options": [
+     "Correct: $du = 2x\\,dx$, but there is no factor $x$ to match. Expand instead.",
+     "It works: $x\\,dx = \\frac{1}{2}du$.",
+     "It works: $3x\\,dx = \\frac{3}{2}du$, giving $\\frac{3}{2}\\ln(x^2 + 1)$.",
+     "It works: $\\frac{1}{2}\\int e^u\\,du$."
+    ]
+   }
+  }
+ ]
+}

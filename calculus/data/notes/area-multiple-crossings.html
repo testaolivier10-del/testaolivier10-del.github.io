@@ -1,0 +1,55 @@
+<h2>When top and bottom trade places</h2>
+<p>So far the region between two curves had one curve on top the whole way. Now look at $f(x) = x^3 - 3x$ and $g(x) = x$ in the figure. They cross three times, at $x = -2$, $0$ and $2$. Between $-2$ and $0$ the cubic is on top. Between $0$ and $2$ the line is on top. Every crossing swaps the roles.</p>
+<figure id="fig-cross" data-fig="area-three-crossings"><figcaption>The cubic and the line enclose two pieces. Each has area 4, but a single integral of $f - g$ over $[-2, 2]$ is 0.</figcaption></figure>
+<p>Try one integral anyway:</p>
+$$\int_{-2}^{2} \left(f(x) - g(x)\right)\,dx = \int_{-2}^{2} \left(x^3 - 4x\right)\,dx = \left[\frac{x^4}{4} - 2x^2\right]_{-2}^{2} = (4 - 8) - (4 - 8) = 0.$$
+<p>Zero, for a region you can clearly see. On the right piece, $f - g$ is negative, so its rectangles have negative heights and cancel the left piece. A definite integral of $f - g$ is a <b>net</b> amount: area where $f$ is on top minus area where $g$ is on top. Area itself is never negative, so you have to stop the cancelling.</p>
+
+<h2>Splitting the integral</h2>
+<p>The fix uses a property you already know: integrals over touching intervals add, $\int_a^c = \int_a^b + \int_b^c$. Cut the interval at every crossing. On each piece one curve stays on top, so top minus bottom is positive there.</p>
+<ol>
+<li><b>Find every crossing</b> in the interval: solve $f(x) = g(x)$. Keep only the solutions inside the interval.</li>
+<li><b>Test each piece</b> with one $x$ to see which curve is on top.</li>
+<li><b>Integrate top minus bottom on each piece</b> and add the results.</li>
+</ol>
+<p>Doing this by hand is the same as integrating the absolute value of the difference:</p>
+$$\text{Area} = \int_a^b \left|f(x) - g(x)\right|\,dx.$$
+<p>On a calculator, that single setup is the quickest route, because the calculator handles the swaps for you.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> Find the area between $f(x) = x^3 - 3x$ and $g(x) = x$.</p>
+<p><b>Crossings.</b> $x^3 - 3x = x$ gives $x^3 - 4x = x(x - 2)(x + 2) = 0$, so $x = -2, 0, 2$.</p>
+<p><b>Tests.</b> At $x = -1$: $f = 2$ and $g = -1$, so $f$ is on top. At $x = 1$: $f = -2$ and $g = 1$, so $g$ is on top.</p>
+<p><b>Pieces.</b></p>
+$$\int_{-2}^{0} \left(x^3 - 4x\right)\,dx = \left[\frac{x^4}{4} - 2x^2\right]_{-2}^{0} = 0 - (4 - 8) = 4,$$
+$$\int_{0}^{2} \left(4x - x^3\right)\,dx = \left[2x^2 - \frac{x^4}{4}\right]_{0}^{2} = 8 - 4 = 4.$$
+<p><b>Area</b> $= 4 + 4 = 8$.</p>
+</div>
+
+<h2>Net amount or area?</h2>
+<table>
+<thead><tr><th>Expression</th><th>What it measures</th><th>For the example</th></tr></thead>
+<tbody>
+<tr><td>$\int_{-2}^{2} (f - g)\,dx$</td><td>net: $f$-on-top area minus $g$-on-top area</td><td>$0$</td></tr>
+<tr><td>$\left|\int_{-2}^{2} (f - g)\,dx\right|$</td><td>size of the net amount (pieces already canceled)</td><td>$0$</td></tr>
+<tr><td>$\int_{-2}^{2} |f - g|\,dx$</td><td>area</td><td>$8$</td></tr>
+<tr><td>$\int_{-2}^{0} (f - g)\,dx + \int_{0}^{2} (g - f)\,dx$</td><td>area, split by hand</td><td>$8$</td></tr>
+</tbody>
+</table>
+<p>The absolute value must go inside the integral. Outside, it comes too late.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> Find the area between $f(x) = x^2 - 2$ and $g(x) = x$ for $0 \le x \le 3$.</p>
+<p><b>Crossings.</b> $x^2 - 2 = x$ gives $(x - 2)(x + 1) = 0$. Only $x = 2$ is inside $[0, 3]$; the ends $0$ and $3$ are given by the problem.</p>
+<p><b>Tests.</b> At $x = 1$: $g = 1 > f = -1$. At $x = 2.5$: $f = 4.25 > g = 2.5$.</p>
+<p><b>Pieces.</b> $\int_0^2 \left(x - x^2 + 2\right)\,dx = 2 - \frac{8}{3} + 4 = \frac{10}{3}$ and $\int_2^3 \left(x^2 - 2 - x\right)\,dx = \frac{11}{6}$.</p>
+<p><b>Area</b> $= \frac{10}{3} + \frac{11}{6} = \frac{31}{6}$. One integral of $g - f$ over $[0, 3]$ would give the net value $\frac{3}{2}$ instead.</p>
+</div>
+
+<h2>Traps to avoid</h2>
+<ul>
+<li>A crossing outside the interval does not make a piece. The interval's ends are limits, not crossings.</li>
+<li>Do not assume the crossings are whole numbers. Factor, or use a calculator's solver and store the values.</li>
+<li>The same idea works for horizontal strips: split where the right edge and the left edge trade places.</li>
+<li>In context, the difference between net and total matters. Between two velocity graphs, $\int (v_1 - v_2)\,dt$ is how far ahead runner 1 ends up; $\int |v_1 - v_2|\,dt$ is the total of the gaps.</li>
+</ul>

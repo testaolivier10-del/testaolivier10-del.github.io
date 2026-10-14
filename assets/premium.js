@@ -215,6 +215,33 @@
         'The full dashboard: mastery by unit, topic and science practice',
       ],
     },
+    apcalc: {
+      name: 'AP® Calculus AB',
+      dailyFree: 15,
+      // As AP® Physics 1 (docs/apcalc-spec.md decision 3): Units 1 and 2 open,
+      // and every "Math you need" lesson (isFreeTopic in scripts/lib/apcalc-build.mjs).
+      freeChapters: ['unit-1', 'unit-2'],
+      passes: [
+        { id: 'calc-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The cram-kit study plan outline, printable',
+        'Every lesson in Units 1 and 2, and every "Math you need" lesson',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'Three trainers: the tangent tracer, the limit explorer and the rule drills',
+        'Your progress, XP, streak and weak topics',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every trainer: related rates, motion, curve analysis, Riemann sums, accumulation, slope fields, area and volume',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
+        'The full dashboard: mastery by unit, topic and mathematical practice',
+      ],
+    },
   };
 
   // Which course a page belongs to, for returnCourse().
@@ -226,6 +253,7 @@
     { key: 'apbio', path: '/bio/' },
     { key: 'apchem', path: '/chem/' },
     { key: 'apphys', path: '/physics/' },
+    { key: 'apcalc', path: '/calculus/' },
   ];
   // courses:end
 
@@ -698,7 +726,7 @@
         'Full refund within 7 days of buying, once per account and email address. Sold by Polar, our merchant of record. ' +
         'Under 18? You need a parent or guardian’s permission, and they accept the terms for you; under 16, they should make the purchase. ' +
         (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '') +
-        (course === 'apbio' || course === 'apchem' || course === 'apphys' ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
+        (course === 'apbio' || course === 'apchem' || course === 'apphys' || course === 'apcalc' ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
         '<a href="/premium.html" target="_blank" rel="noopener">Free vs Premium</a> &middot; ' +
         '<a href="/terms.html#premium" target="_blank" rel="noopener">Terms and refunds</a>';
     } else {
@@ -744,8 +772,8 @@
      brings them back to this page. Signed in → the Worker makes a Polar
      checkout and it opens over the page. */
   /* The course a pass belongs to. Not the part before the dash: the AP®
-     passes are bio-2027, chem-2027 and phys-2027 while their courses are
-     apbio, apchem and apphys, so splitting sent "bio" to the funnel counter, which drops any
+     passes are bio-2027, chem-2027, phys-2027 and calc-2027 while their courses are
+     apbio, apchem, apphys and apcalc, so splitting sent "bio" to the funnel counter, which drops any
      course it does not know (AP® checkout starts were never counted). */
   function courseOfPass(passId) {
     for (var k in COURSES) {
@@ -949,8 +977,8 @@
     if (q.premium !== 'success' && !Object.prototype.hasOwnProperty.call(q, 'customer_session_token')) return null;
     var course = q.course;
     if (course && Object.prototype.hasOwnProperty.call(COURSES, course)) return course;
-    // A course whose key may not appear in a URL (apbio, apchem, apphys;
-    // docs/apbio-spec.md decision 2) comes back named by its folder ("bio", "chem", "physics").
+    // A course whose key may not appear in a URL (apbio, apchem, apphys, apcalc;
+    // docs/apbio-spec.md decision 2) comes back named by its folder ("bio", "chem", "physics", "calculus").
     for (var j = 0; course && j < COURSE_LIST.length; j++) {
       if (COURSE_LIST[j].path === '/' + course + '/') return COURSE_LIST[j].key;
     }

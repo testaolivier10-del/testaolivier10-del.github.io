@@ -1,0 +1,543 @@
+{
+ "stimuli": {
+  "other-trig-derivatives-s1": {
+   "kind": "graph",
+   "title": "The graph of $y = \\tan x$ on $\\left( -\\frac{\\pi}{2}, \\frac{\\pi}{2} \\right)$",
+   "plot": {
+    "label": "Graph of y = tan x between vertical asymptotes at x = -pi/2 and x = pi/2, passing through the origin and the point (pi/4, 1)",
+    "x": [
+     -1.75,
+     1.75
+    ],
+    "y": [
+     -4,
+     4
+    ],
+    "piX": true,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "tan(x)",
+      "domain": [
+       -1.5707,
+       1.5707
+      ],
+      "label": "y = tan x"
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": -1.5707963
+     },
+     {
+      "x": 1.5707963
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       0,
+       0
+      ]
+     },
+     {
+      "at": [
+       0.7853982,
+       1
+      ],
+      "label": "(π/4, 1)"
+     }
+    ]
+   }
+  },
+  "other-trig-derivatives-s2": {
+   "kind": "table",
+   "title": "Exact values of sine and cosine",
+   "table": {
+    "caption": "Values of $\\sin x$ and $\\cos x$ at three angles, in radians",
+    "cols": [
+     "$x$",
+     "$\\sin x$",
+     "$\\cos x$"
+    ],
+    "rows": [
+     [
+      "$\\frac{\\pi}{6}$",
+      "$\\frac{1}{2}$",
+      "$\\frac{\\sqrt{3}}{2}$"
+     ],
+     [
+      "$\\frac{\\pi}{4}$",
+      "$\\frac{\\sqrt{2}}{2}$",
+      "$\\frac{\\sqrt{2}}{2}$"
+     ],
+     [
+      "$\\frac{\\pi}{3}$",
+      "$\\frac{\\sqrt{3}}{2}$",
+      "$\\frac{1}{2}$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-other-trig-derivatives-1",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "other-trig-derivatives-s1",
+   "q": "What is the slope of the graph of $y = \\tan x$ at $x = \\frac{\\pi}{4}$?",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is $\\tan \\frac{\\pi}{4}$, the height. The slope is $\\sec^2 \\frac{\\pi}{4}$."
+     },
+     {
+      "value": "sqrt(2)",
+      "why": "That is $\\sec \\frac{\\pi}{4}$. The derivative of $\\tan x$ is $\\sec^2 x$: square it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sec^2 \\frac{\\pi}{4} = \\frac{1}{\\cos^2 \\frac{\\pi}{4}} = \\frac{1}{1/2} = 2$."
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-2",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "other-trig-derivatives-s1",
+   "q": "Which is an equation of the line tangent to $y = \\tan x$ at $x = \\frac{\\pi}{4}$?",
+   "options": [
+    "$y = 1 + 2\\left( x - \\frac{\\pi}{4} \\right)$",
+    "$y = 2 + \\left( x - \\frac{\\pi}{4} \\right)$",
+    "$y = 1 + \\sqrt{2}\\left( x - \\frac{\\pi}{4} \\right)$",
+    "$y = 1 + 2\\left( x + \\frac{\\pi}{4} \\right)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Point $\\left( \\frac{\\pi}{4}, 1 \\right)$, slope $\\sec^2 \\frac{\\pi}{4} = 2$.",
+    "options": [
+     "Height 1, slope 2.",
+     "The height and the slope are swapped.",
+     "Slope $\\sqrt{2}$ is $\\sec \\frac{\\pi}{4}$, not squared.",
+     "Point-slope form uses $x - \\frac{\\pi}{4}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-3",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "other-trig-derivatives-s1",
+   "q": "Why is every slope of the graph of $y = \\tan x$ on $\\left( -\\frac{\\pi}{2}, \\frac{\\pi}{2} \\right)$ at least 1?",
+   "options": [
+    "The slope is $\\sec^2 x = \\frac{1}{\\cos^2 x}$, and $0 < \\cos^2 x \\le 1$ there.",
+    "The slope is $\\tan x$, which is at least 1.",
+    "The graph passes through the origin with slope 1, and slopes stay the same.",
+    "The slope is $\\sec x$, which is at least 1 on this interval."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dividing 1 by a number between 0 and 1 gives a number of at least 1, with equality at $x = 0$.",
+    "options": [
+     "$\\cos^2 x$ is at most 1, so its reciprocal is at least 1.",
+     "$\\tan x$ is the height, and it is negative for $x < 0$.",
+     "The slope changes: it is 1 at 0 and 2 at $\\frac{\\pi}{4}$.",
+     "The derivative is $\\sec^2 x$, not $\\sec x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-4",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "other-trig-derivatives-s1",
+   "q": "Which line is tangent to $y = \\tan x$ at the origin?",
+   "options": [
+    "$y = x$",
+    "$y = 0$",
+    "$y = 1 + x$",
+    "$x = 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Slope $\\sec^2 0 = 1$ through $(0, 0)$.",
+    "options": [
+     "Slope 1 through the origin.",
+     "The graph rises through the origin; it is not level there.",
+     "The line must pass through $(0, \\tan 0) = (0, 0)$.",
+     "A vertical line would need an infinite slope; $\\sec^2 0 = 1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-5",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "other-trig-derivatives-s2",
+   "q": "Find $\\frac{d}{dx}(\\sec x)$ at $x = \\frac{\\pi}{3}$.",
+   "numeric": {
+    "answer": "2sqrt(3)",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is $\\sec \\frac{\\pi}{3}$. The derivative is $\\sec x\\tan x$, and $\\tan \\frac{\\pi}{3} = \\sqrt{3}$."
+     },
+     {
+      "value": "-2sqrt(3)",
+      "why": "Secant is not a \"co-\" function: $\\frac{d}{dx}(\\sec x) = +\\sec x\\tan x$."
+     },
+     {
+      "value": 4,
+      "why": "That is $\\sec^2 \\frac{\\pi}{3}$, the derivative of $\\tan x$, not of $\\sec x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sec \\frac{\\pi}{3} = \\frac{1}{1/2} = 2$ and $\\tan \\frac{\\pi}{3} = \\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$, so $\\sec x\\tan x = 2\\sqrt{3}$."
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-6",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "other-trig-derivatives-s2",
+   "q": "Find $\\frac{d}{dx}(\\csc x)$ at $x = \\frac{\\pi}{6}$.",
+   "numeric": {
+    "answer": "-2sqrt(3)",
+    "mistakes": [
+     {
+      "value": "2sqrt(3)",
+      "why": "Cosecant is a \"co-\" function: $\\frac{d}{dx}(\\csc x) = -\\csc x\\cot x$."
+     },
+     {
+      "value": -2,
+      "why": "That is $-\\csc \\frac{\\pi}{6}$ alone. Multiply by $\\cot \\frac{\\pi}{6} = \\sqrt{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\csc \\frac{\\pi}{6} = 2$ and $\\cot \\frac{\\pi}{6} = \\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$, so $-\\csc x\\cot x = -2\\sqrt{3}$."
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-7",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "other-trig-derivatives-s2",
+   "q": "Find $\\frac{d}{dx}(\\cot x)$ at $x = \\frac{\\pi}{4}$.",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "Cotangent is a \"co-\" function: its derivative is $-\\csc^2 x$, which is negative."
+     },
+     {
+      "value": "-sqrt(2)",
+      "why": "That is $-\\csc \\frac{\\pi}{4}$. Square the cosecant: $-\\csc^2 \\frac{\\pi}{4}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\csc \\frac{\\pi}{4} = \\frac{2}{\\sqrt{2}} = \\sqrt{2}$, so $-\\csc^2 \\frac{\\pi}{4} = -2$."
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-8",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "other-trig-derivatives-s2",
+   "q": "Find $\\frac{d}{dx}(\\tan x)$ at $x = \\frac{\\pi}{6}$.",
+   "numeric": {
+    "answer": "4/3",
+    "mistakes": [
+     {
+      "value": "2/sqrt(3)",
+      "why": "That is $\\sec \\frac{\\pi}{6}$. The derivative is $\\sec^2 x$: square it."
+     },
+     {
+      "value": "1/sqrt(3)",
+      "why": "That is $\\tan \\frac{\\pi}{6}$, the height."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sec^2 \\frac{\\pi}{6} = \\frac{1}{\\cos^2 \\frac{\\pi}{6}} = \\frac{1}{3/4} = \\frac{4}{3}$."
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-9",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the quotient rule to find $\\frac{d}{dx}\\left( \\frac{\\sin x}{\\cos x} \\right)$.",
+   "expr": {
+    "answer": "sec(x)^2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1,
+     1
+    ],
+    "lhs": "\\frac{d}{dx}\\left( \\frac{\\sin x}{\\cos x} \\right) =",
+    "mistakes": [
+     {
+      "expr": "-cot(x)",
+      "why": "That is $\\frac{\\cos x}{-\\sin x}$, the quotient of the derivatives. Use the quotient rule."
+     },
+     {
+      "expr": "(cos(x)^2 - sin(x)^2)/cos(x)^2",
+      "why": "The second term is $-\\sin x \\cdot (-\\sin x) = +\\sin^2 x$. Then $\\cos^2 x + \\sin^2 x = 1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{\\cos x\\cos x - \\sin x(-\\sin x)}{\\cos^2 x} = \\frac{\\cos^2 x + \\sin^2 x}{\\cos^2 x} = \\frac{1}{\\cos^2 x} = \\sec^2 x$."
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-10",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\frac{d}{dx}(x\\tan x)$.",
+   "expr": {
+    "answer": "tan(x) + x*sec(x)^2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -1,
+     1
+    ],
+    "lhs": "\\frac{d}{dx}(x\\tan x) =",
+    "mistakes": [
+     {
+      "expr": "sec(x)^2",
+      "why": "That is $1 \\cdot \\sec^2 x$, the product of the derivatives. The product rule adds $\\tan x + x\\sec^2 x$."
+     },
+     {
+      "expr": "x*sec(x)^2",
+      "why": "That is one term. The factor $x$ also changes: add $(1)\\tan x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Product rule: $(1)\\tan x + x\\sec^2 x$."
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-11",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "expr",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\frac{dy}{dx}$ for $y = \\sec x - 2\\cot x$.",
+   "expr": {
+    "answer": "sec(x)tan(x) + 2csc(x)^2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     1.4
+    ],
+    "lhs": "\\frac{dy}{dx} =",
+    "mistakes": [
+     {
+      "expr": "sec(x)tan(x) - 2csc(x)^2",
+      "why": "The derivative of $\\cot x$ is $-\\csc^2 x$, so $-2\\cot x$ becomes $-2(-\\csc^2 x) = +2\\csc^2 x$."
+     },
+     {
+      "expr": "sec(x)^2 + 2csc(x)^2",
+      "why": "$\\sec^2 x$ is the derivative of $\\tan x$. The derivative of $\\sec x$ is $\\sec x\\tan x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sec x\\tan x - 2(-\\csc^2 x) = \\sec x\\tan x + 2\\csc^2 x$."
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-12",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "Find $\\frac{d}{dx}(\\csc x)$.",
+   "expr": {
+    "answer": "-csc(x)cot(x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     2.5
+    ],
+    "lhs": "\\frac{d}{dx}(\\csc x) =",
+    "mistakes": [
+     {
+      "expr": "csc(x)cot(x)",
+      "why": "Cosecant is a \"co-\" function, so its derivative is negative: $\\frac{0 - 1 \\cdot \\cos x}{\\sin^2 x}$."
+     },
+     {
+      "expr": "-csc(x)^2",
+      "why": "That is the derivative of $\\cot x$. For $\\csc x = \\frac{1}{\\sin x}$ the quotient rule gives $-\\frac{\\cos x}{\\sin^2 x} = -\\csc x\\cot x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\csc x = \\frac{1}{\\sin x}$: $\\frac{0 \\cdot \\sin x - 1 \\cdot \\cos x}{\\sin^2 x} = -\\frac{1}{\\sin x} \\cdot \\frac{\\cos x}{\\sin x} = -\\csc x\\cot x$."
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-13",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Deriving $\\frac{d}{dx}(\\tan x) = \\sec^2 x$ with the quotient rule, which identity simplifies the numerator?",
+   "options": [
+    "$\\sin^2 x + \\cos^2 x = 1$",
+    "$\\tan x = \\frac{\\sin x}{\\cos x}$",
+    "$\\sin(2x) = 2\\sin x\\cos x$",
+    "$\\sec x = \\frac{1}{\\cos x}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The numerator is $\\cos^2 x + \\sin^2 x$, which is 1.",
+    "options": [
+     "The Pythagorean identity collapses the numerator to 1.",
+     "That identity sets up the quotient; it does not simplify the numerator.",
+     "No $2\\sin x\\cos x$ appears in the numerator.",
+     "That identity rewrites the final answer; the numerator needs the Pythagorean identity."
+    ]
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-14",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair of derivatives is correct?",
+   "options": [
+    "$\\frac{d}{dx}(\\cot x) = -\\csc^2 x$ and $\\frac{d}{dx}(\\sec x) = \\sec x\\tan x$",
+    "$\\frac{d}{dx}(\\cot x) = \\csc^2 x$ and $\\frac{d}{dx}(\\sec x) = \\sec x\\tan x$",
+    "$\\frac{d}{dx}(\\cot x) = -\\csc^2 x$ and $\\frac{d}{dx}(\\sec x) = -\\sec x\\tan x$",
+    "$\\frac{d}{dx}(\\cot x) = -\\sec^2 x$ and $\\frac{d}{dx}(\\sec x) = \\tan^2 x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cotangent, a \"co-\" function, gets the minus sign; secant does not.",
+    "options": [
+     "Both match the quotient rule results.",
+     "The derivative of $\\cot x$ is negative.",
+     "Secant is not a \"co-\" function; its derivative is positive.",
+     "Rebuild each from sine and cosine: $\\cot x = \\frac{\\cos x}{\\sin x}$ gives $-\\csc^2 x$, and $\\sec x = \\frac{1}{\\cos x}$ gives $\\sec x\\tan x$."
+    ]
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-15",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the slope of the graph of $y = \\sec x$ at $x = 0$?",
+   "numeric": {
+    "answer": 0,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "That is $\\sec 0$, the height. The slope is $\\sec 0\\tan 0 = 1 \\cdot 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sec 0\\tan 0 = 1 \\cdot 0 = 0$: the graph of $\\sec x$ has its lowest point on $\\left( -\\frac{\\pi}{2}, \\frac{\\pi}{2} \\right)$ at $x = 0$."
+   }
+  },
+  {
+   "id": "calc-other-trig-derivatives-16",
+   "unit": "unit-2",
+   "topic": "other-trig-derivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Apply the quotient rule to $\\cot x = \\frac{\\cos x}{\\sin x}$. What does the numerator simplify to?",
+   "options": [
+    "$-1$",
+    "$1$",
+    "$\\cos^2 x - \\sin^2 x$",
+    "$-2\\sin x\\cos x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$(-\\sin x)(\\sin x) - (\\cos x)(\\cos x) = -(\\sin^2 x + \\cos^2 x) = -1$, so $(\\cot x)' = \\frac{-1}{\\sin^2 x} = -\\csc^2 x$.",
+    "options": [
+     "Both terms are negative, and they add to $-1$.",
+     "The first term, $(-\\sin x)(\\sin x)$, is negative.",
+     "The second term is subtracted: $-\\cos^2 x$, so the terms do not form $\\cos^2 x - \\sin^2 x$.",
+     "No product $\\sin x\\cos x$ survives: each term multiplies a function by itself."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,202 @@
+/* Tangent tracer (calculus/assets/tools/tangent-tracer.js). OWNED BY THIS
+   TOOL ONLY. The two linked graphs, the h slider, the table of difference
+   quotients, the Test yourself figures and the sketch grid. Theme tokens
+   only, so dark mode follows; series colours come from calc.css
+   (.calc-plot .s1 f, .s2 f′, .s4 tangent, .s5 secant). */
+
+/* ------------------------------------------------------------ the stage */
+.tt-stage{position:relative;height:min(70vh,560px);min-height:240px;}
+.ls-root .tt-stage{height:auto;flex:1;min-height:0;}
+.tt-ls-stage,.tt-ls-qstage{flex:1;min-height:0;display:flex;flex-direction:column;}
+.tt-svg{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;user-select:none;-webkit-user-select:none;overflow:visible;}
+.tt-svg text{font:600 12px var(--font-ui);}
+.tt-svg .tt-ptitle{font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.tt-svg text.tt-c1{fill:#B0123A;} .tt-svg text.tt-c2{fill:#0072B2;} .tt-svg text.tt-c5{fill:#7A4F9E;}
+:root[data-theme="dark"] .tt-svg text.tt-c1{fill:#F590AC;} :root[data-theme="dark"] .tt-svg text.tt-c2{fill:#6BB4E8;} :root[data-theme="dark"] .tt-svg text.tt-c5{fill:#C3A3E0;}
+.tt-svg text.s4,.tt-svg text.s5{fill:currentColor;stroke:none;}
+.tt-frame{fill:none;stroke:var(--line);stroke-width:1;}
+.tt-svg .calc-plot-curve.tt-f,.tt-svg .calc-plot-curve.tt-fp{stroke-width:3;}
+.tt-svg .calc-plot-curve.tt-ghost{stroke-width:1.8;stroke-dasharray:1.5 5;opacity:.75;}
+.tt-secl{stroke-width:2.2;}
+.tt-secl.is-other{stroke-dasharray:7 5;opacity:.85;}
+.tt-tanl{stroke-width:2.6;}
+.tt-tanl.is-half{stroke-width:2.6;}
+.tt-tri{fill:none;stroke-width:1.6;stroke-dasharray:4 3;}
+.tt-svg .tt-tril{font:800 12px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.tt-dot{fill:currentColor;stroke-width:2;}
+.tt-dot.is-open{fill:var(--white);}
+.tt-dot.tt-now{stroke:var(--white);stroke-width:2;}
+.tt-secmark{fill:var(--white);stroke-width:2.2;}
+.tt-guide-v{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:3 4;}
+.tt-colguide{stroke:var(--line);stroke-width:1.4;stroke-dasharray:4 4;}
+.calc-plot .tt-guide{stroke:var(--muted);stroke-width:1.3;}
+.tt-ticks text{fill:var(--muted);}
+
+/* The handles: P (crimson, the course colour) and Q (the secant's purple). */
+.tt-handle{cursor:grab;outline:none;}
+.tt-handle.is-drag{cursor:grabbing;}
+.tt-hit{fill:transparent;stroke:none;}
+.tt-handle .calc-plot-halo{fill:var(--cink);fill-opacity:.14;}
+.tt-handle:focus-visible .calc-plot-halo{fill-opacity:.3;stroke:var(--cink);stroke-width:2;}
+.tt-pdot{fill:var(--cink);stroke:var(--white);stroke-width:2.5;}
+.tt-hq .calc-plot-halo{fill:#7A4F9E;}
+.tt-hq:focus-visible .calc-plot-halo{stroke:#7A4F9E;}
+.calc-plot-handle .tt-qdot,.tt-qdot{fill:var(--white);stroke:#7A4F9E;stroke-width:3;}
+:root[data-theme="dark"] .tt-hq .calc-plot-halo{fill:#C3A3E0;}
+:root[data-theme="dark"] .calc-plot-handle .tt-qdot,:root[data-theme="dark"] .tt-qdot{stroke:#C3A3E0;}
+.tt-handle.is-off{display:none;}
+@media (prefers-reduced-motion: no-preference){ .tt-handle .calc-plot-halo{transition:fill-opacity .15s;} }
+
+/* ------------------------------------------------------------ the dock */
+.tt-dock{display:flex;flex-direction:column;gap:12px;}
+.tt-dock .bt-cue{display:none;}
+.ls-root .tt-ls-dock{gap:12px;}
+.tt-own{display:grid;gap:6px;}
+.tt-own,.tt-ownrow{min-width:0;max-width:100%;}
+.tt-ownrow{display:flex;align-items:center;gap:8px;}
+.tt-ownrow .bt-btn{flex:none;min-height:44px;}
+.tt-ownrow input{flex:1 1 0;width:0;min-width:0;min-height:44px;padding:0 12px;border:0;border-radius:12px;background:var(--white);box-shadow:inset 0 0 0 2px var(--line);color:var(--ink);font:600 16px var(--font-mono);}
+.tt-ownrow input:focus-visible{box-shadow:inset 0 0 0 2px var(--cink);outline:none;}
+.tt-ownl{font-size:17px;white-space:nowrap;}
+.tt-ownp{min-height:1.4em;font-size:14px;}
+.tt-hctl{display:grid;gap:2px;}
+.tt-hrow{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.tt-hlab{font:800 14px var(--font-ui);color:var(--ink);}
+.tt-hout{font:800 15px var(--font-mono);color:#7A4F9E;white-space:nowrap;}
+:root[data-theme="dark"] .tt-hout{color:#C3A3E0;}
+.tt-hs{width:100%;height:40px;margin:0;accent-color:var(--cink);cursor:pointer;}
+.tt-ruler{position:relative;height:16px;margin:0 11px;font:700 11px var(--font-ui);color:var(--muted);}
+.tt-ruler span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap;}
+.tt-ruler span.is-zero{color:var(--cink);font-weight:900;}
+.tt-btns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+.tt-btns .bt-btn{min-height:44px;padding:6px 8px;justify-content:center;text-align:center;}
+.tt-btns .bt-btn[aria-pressed="true"]{border-color:var(--cink);color:var(--cink);background:var(--ctint);}
+.tt-dqd > summary{cursor:pointer;min-height:36px;display:flex;align-items:center;font:800 14px var(--font-ui);color:var(--cink);}
+.tt-dqw .table-wrap{margin:0;}
+.tt-dq{width:100%;border-collapse:collapse;font:600 13px var(--font-ui);font-variant-numeric:tabular-nums;}
+.tt-dq caption{text-align:left;font:800 13px var(--font-ui);color:var(--muted);padding:0 0 4px;}
+.tt-dq caption math{font-size:1.05em;color:var(--ink);}
+.tt-dq th,.tt-dq td{padding:3px 6px;border-bottom:1px solid var(--line);text-align:right;}
+.tt-dq thead th{font:800 12px var(--font-ui);color:var(--muted);}
+.tt-dq th[scope="row"]{text-align:left;font-weight:800;}
+.tt-dq tr.is-now{background:var(--ctint);}
+.tt-dq td.is-side{font-weight:900;color:var(--cink);}
+.tt-dq tfoot th,.tt-dq tfoot td{border-bottom:0;font-weight:800;color:var(--ink);}
+.tt-dq tfoot td{text-align:left;}
+
+/* Details */
+.tt-zoom{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.tt-zl{font:800 14px var(--font-ui);margin-right:4px;}
+.tt-zoom .bt-btn{min-height:44px;min-width:52px;justify-content:center;}
+.tt-zoom .bt-btn[aria-pressed="true"]{border-color:var(--cink);color:var(--cink);background:var(--ctint);}
+.tt-ntbl td.r{text-align:right;font-variant-numeric:tabular-nums;}
+.tt-keys summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font:800 14px var(--font-ui);color:var(--cink);}
+.tt-why math[display="block"],.tt-det math[display="block"]{font-size:1.02em;}
+
+/* ------------------------------------------------------- test yourself */
+.tt-qstage{flex:1;min-height:0;display:flex;flex-direction:column;}
+.tt-qfig{height:min(60vh,500px);display:flex;flex-direction:column;gap:8px;min-height:0;}
+.ls-root .tt-qfig{height:auto;flex:1;}
+.tt-fbox{position:relative;flex:1;min-height:150px;}
+.ls-root .tt-fbox{min-height:0;}
+.tt-fbox > svg{position:absolute;inset:0;width:100% !important;height:100% !important;}
+.tt-ftop{flex:none;display:flex;justify-content:center;}
+.tt-ftop .table-wrap{margin:0;max-width:100%;}
+.tt-vt{border-collapse:collapse;font:700 15px var(--font-ui);font-variant-numeric:tabular-nums;}
+.tt-vt th,.tt-vt td{padding:6px 10px;border:1px solid var(--line);text-align:center;}
+.tt-vt th{text-align:left;background:var(--paper);white-space:nowrap;}
+.tt-vt .tt-u{font:600 12px var(--font-ui);color:var(--muted);}
+.tt-vt td.is-pick,.tt-vt td.is-a{background:var(--ctint);color:var(--cink);font-weight:900;}
+.tt-formula{margin:0;font-size:20px;}
+.tt-formula math[display="block"]{margin:2px 0;}
+.tt-tri-q{stroke:#7A4F9E;stroke-width:2.2;stroke-dasharray:5 4;}
+:root[data-theme="dark"] .tt-tri-q{stroke:#C3A3E0;}
+.tt-ring-c{fill:none;stroke:#D55E00;stroke-width:3;}
+:root[data-theme="dark"] .tt-ring-c{stroke:#F29A5C;}
+.calc-plot .calc-plot-curve.tt-yours{stroke-width:2.4;}
+.calc-plot .calc-plot-curve.tt-tanb{stroke-width:2.4;}
+.calc-plot .calc-plot-label.s4,.calc-plot .calc-plot-label.s5{fill:currentColor;}
+
+.tt-sform{display:flex;flex-direction:column;gap:10px;margin:0;}
+.tt-slabel{margin:0;font:800 15px/1.45 var(--font-ui);}
+.tt-sn{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font:800 12px var(--font-ui);color:var(--muted);vertical-align:1px;}
+.tt-shint{margin:0;}
+.tt-capk{color:var(--muted);font-weight:700;white-space:nowrap;}
+.tt-done{display:flex;gap:6px;flex-wrap:wrap;}
+.tt-done[hidden]{display:none;}
+.tt-dchip{display:inline-flex;align-items:center;padding:2px 10px;border-radius:999px;font:800 12px var(--font-ui);border:1px solid var(--line);}
+.tt-dchip.ok{background:var(--ctint);color:var(--cink);}
+.tt-dchip.no{color:var(--muted);}
+.tt-pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;margin:0;padding:0;}
+.tt-pics .cd-opt{position:relative;margin:0;min-height:0;padding:6px;align-items:stretch;}
+.ls-root .tt-pics .bt-radio{margin-top:0;padding:6px;}
+.tt-pics .cd-opt input{position:absolute;top:8px;left:8px;margin:0;width:18px;height:18px;accent-color:var(--cink);z-index:1;}
+.tt-pics .cd-opt label{display:flex;flex-direction:column;gap:2px;padding:0;border:0;background:none;cursor:pointer;min-height:44px;width:100%;}
+.tt-pics .cd-opt.is-wrong{box-shadow:inset 0 0 0 2px #B0123A;}
+.tt-pics .cd-opt input:focus-visible + label{outline:3px solid var(--accent,var(--cink));outline-offset:2px;border-radius:8px;}
+.tt-picn{font:800 12px var(--font-ui);color:var(--muted);padding-left:24px;}
+.tt-pic svg{display:block;width:100%;height:auto;}
+.tt-minisvg .calc-plot-curve.tt-mini{stroke-width:2.6;}
+.tt-opt{display:inline;}
+.tt-nw{white-space:nowrap;}
+.tt-qsvg .calc-plot-label{paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.tt-notes{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:6px;}
+.tt-notes li{display:flex;gap:8px;align-items:flex-start;}
+.tt-nt{flex:1;min-width:0;}
+.tt-nb{flex:none;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#B0123A;color:#fff;font:900 12px var(--font-ui);}
+
+/* The sketch grid */
+.tt-skp{cursor:ns-resize;outline:none;}
+.tt-skdot{fill:#0072B2;stroke:var(--white);stroke-width:2.5;}
+.tt-skp .tt-hit{fill:transparent;}
+.tt-skq{display:none;font:900 11px var(--font-ui);fill:var(--muted);}
+.tt-skp.is-unset .tt-skdot{fill:var(--white);stroke:var(--muted);stroke-dasharray:3 3;stroke-width:2;}
+.tt-skp.is-unset .tt-skq{display:block;}
+.tt-skp:focus-visible .tt-skdot{stroke:var(--cink);stroke-width:3.5;}
+.tt-skp:focus-visible .tt-hit{fill:var(--cink);fill-opacity:.12;}
+.tt-skp.is-ok .tt-skdot{fill:#009E73;}
+.tt-skp.is-bad .tt-skdot{fill:#B0123A;}
+.tt-skp.is-locked{cursor:default;}
+.tt-badge circle{fill:#B0123A;stroke:var(--white);stroke-width:1.5;}
+.tt-skp.is-ok .tt-badge circle{fill:#009E73;}
+.tt-badge text{fill:#fff;font:900 11px var(--font-ui);}
+.tt-skline{fill:none;stroke:#0072B2;stroke-width:2;stroke-dasharray:5 4;opacity:.65;}
+.tt-svg .calc-plot-curve.tt-ans{stroke-width:2.6;stroke-dasharray:8 5;}
+:root[data-theme="dark"] .tt-skdot{fill:#6BB4E8;}
+:root[data-theme="dark"] .tt-skp.is-unset .tt-skdot{fill:var(--white);stroke:var(--muted);}
+:root[data-theme="dark"] .tt-skline{stroke:#6BB4E8;}
+:root[data-theme="dark"] .tt-skp.is-ok .tt-skdot,:root[data-theme="dark"] .tt-skp.is-ok .tt-badge circle{fill:#52CFA6;}
+:root[data-theme="dark"] .tt-skp.is-bad .tt-skdot,:root[data-theme="dark"] .tt-badge circle,:root[data-theme="dark"] .tt-nb{fill:#F590AC;background:#F590AC;color:#2a0812;}
+:root[data-theme="dark"] .tt-badge text{fill:#2a0812;}
+:root[data-theme="dark"] .tt-skp.is-ok .tt-badge text{fill:#062a1f;}
+
+@media (max-width:420px){
+  .tt-btns .bt-btn{font-size:14px;padding:6px 4px;}
+  .tt-vt{font-size:14px;}
+  .tt-vt th,.tt-vt td{padding:5px 7px;}
+}
+/* Phones: the graphs need the room. The dock packs tighter and scrolls
+   sooner (the primary buttons stay near its top). */
+@media (max-width:599.98px){
+  body[data-app="tool-tangent-tracer"] .ls-dock{max-height:52vh;max-height:52dvh;}
+  .ls-root .tt-ls-dock,.ls-root .tt-ls-qdock{gap:8px;}
+  .tt-hs{height:34px;}
+  .tt-hlab{font-size:13px;}
+}
+.tt-showrow{margin-top:6px;}
+/* Labels on the Test yourself plots keep a halo in both themes (the dark
+   theme's series stroke would otherwise thicken them). */
+:root[data-theme] .tt-qsvg text.calc-plot-label{stroke:var(--white);stroke-width:4px;paint-order:stroke;}
+
+/* Phone pass (docs/tools-phone-pass.md): on-picture text at least 12 px at
+   360 px wide, in Explore, the drill figures and the sketch grid. */
+.ls-root.ls-phone .tt-svg text{font-size:13px;}
+.ls-root.ls-phone .tt-svg .tt-ptitle{font-size:14px;}
+.ls-root.ls-phone .ls-drill-stage .calc-plot,.ls-root.ls-phone .tt-qstage .calc-plot{font-size:13px;}
+.ls-root.ls-phone .tt-pic .calc-plot{font-size:11px;}
+.ls-root.ls-phone .tt-skq,.ls-root.ls-phone .tt-badge text{font-size:12px;}
+.ls-root.ls-phone .tt-ruler{font-size:12px;}
+/* The table drill's x-axis sits at the bottom of its picture: keep its last
+   tick and label clear of the Enlarge button (bottom right of the stage). */
+.ls-root.ls-phone .tt-fig-table{padding-bottom:40px;}
+.ls-root .ls-stage.is-big .tt-fig-table{padding-bottom:0;}

@@ -1,0 +1,45 @@
+<p>So far each limit came in one form: a graph, a table, or a formula. The exam mixes them. A question may give a graph of $f$ and a formula for $g$, or a table and ask for a formula that fits. This page shows how to read a limit from each representation, what each one can and cannot tell you, and how to move between them.</p>
+
+<h2>One function, four views</h2>
+<p>The same function can be described four ways.</p>
+<figure id="fig-views" data-fig="limit-three-views"><figcaption>One limit, read three ways. All three must agree.</figcaption></figure>
+<table>
+<thead><tr><th>Representation</th><th>How you read the limit</th><th>Watch out for</th></tr></thead>
+<tbody>
+<tr><td>Graph</td><td>follow the curve to $x = c$ from each side; read the height it approaches</td><td>a closed dot at $c$ is the value, not the limit; the scale can hide a hole or a jump</td></tr>
+<tr><td>Table</td><td>look at values for inputs closing in on $c$ from both sides</td><td>a table estimates; it cannot prove</td></tr>
+<tr><td>Formula</td><td>substitute; rewrite if you get $\frac{0}{0}$</td><td>algebra slips; break points of piecewise formulas</td></tr>
+<tr><td>Words</td><td>translate into notation</td><td>which side, and which number is the input</td></tr>
+</tbody>
+</table>
+
+<h2>Reading a graph</h2>
+<p>Put your finger on the curve to the left of $c$ and slide toward $x = c$. Note the height you are heading to. Do the same from the right. If the two heights match, that height is the limit. Then, separately, look at what is plotted exactly at $x = c$: a closed dot gives $f(c)$, and it may sit somewhere else entirely, or be missing.</p>
+<p>A graph on a calculator screen can hide things. A single missing point is too small to see, and a zoomed-out window can make a fast change look like a jump. When a graph and a formula seem to disagree, trust the formula and zoom in.</p>
+
+<h2>Reading a table</h2>
+<p>A good table uses inputs on both sides of $c$ that get closer and closer to it: $1.9, 1.99, 1.999$ and $2.001, 2.01, 2.1$ for $c = 2$. Read the trend on each side. If both sides settle toward one number, that is your estimate.</p>
+<p>An estimate is not a proof. Here is a trap. At $x = 1, 0.1, 0.01, 0.001$, the function $\sin\left(\frac{\pi}{x}\right)$ equals 0 every time, because $\frac{\pi}{x}$ is a multiple of $\pi$. But at $x = \frac{2}{5}$ it equals 1, and inputs like that sit as close to 0 as you like. The function keeps swinging between $-1$ and $1$ and has no limit at 0. The table was simply unlucky.</p>
+
+<h2>From a table to a formula and back</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> A table gives values of $g(x) = \frac{x^3 - 8}{x^2 - 4}$: $g(1.99) \approx 2.99251$ and $g(2.01) \approx 3.00751$. Estimate $\lim_{x \to 2} g(x)$, then confirm it.</p>
+<p>Estimate: from both sides the values approach 3.</p>
+<p>Confirm with algebra. Substituting gives $\frac{0}{0}$, so factor both parts:</p>
+<p>$$\frac{x^3 - 8}{x^2 - 4} = \frac{(x - 2)(x^2 + 2x + 4)}{(x - 2)(x + 2)} = \frac{x^2 + 2x + 4}{x + 2} \quad (x \ne 2)$$</p>
+<p>Substitute: $\frac{4 + 4 + 4}{4} = 3$. The table and the formula agree.</p>
+</div>
+<p>Going the other way, a formula tells you what its graph looks like. The expression $\frac{x^2 - 9}{x + 3}$ equals $x - 3$ except at $x = -3$, where it is undefined. Its graph is the line $y = x - 3$ with a hole at $(-3, -6)$.</p>
+
+<h2>Words and notation</h2>
+<p>Translate carefully. "As $x$ approaches 4 from values less than 4, $p(x)$ approaches 7" is $\lim_{x \to 4^-} p(x) = 7$. The side goes with the input, as a small minus or plus sign on the 4. The number after the equals sign is the output the values approach. A sentence about $p(4)$ is a sentence about the value, not the limit.</p>
+
+<h2>Limits of compositions</h2>
+<p>Exam questions love $f(g(x))$ with $f$ given by a graph and $g$ by a formula or a table. Work from the inside out, and keep track of the side.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A graph of $f$ shows $\lim_{u \to 1^-} f(u) = 2$ and $\lim_{u \to 1^+} f(u) = 5$. Let $g(x) = x^2 + 1$. Find $\lim_{x \to 0} f(g(x))$.</p>
+<p>Inside: as $x \to 0$, $g(x) \to 1$. Which side? $x^2 + 1$ is greater than 1 for every $x \ne 0$, so $g(x)$ approaches 1 from above.</p>
+<p>Outside: inputs approaching 1 from above give $f$ values approaching 5.</p>
+<p>So $\lim_{x \to 0} f(g(x)) = 5$, even though $f$ itself has no limit at 1.</p>
+</div>
+<p>When the function inside approaches its limit from both sides, you need the outer limit from both sides, and the two must agree.</p>

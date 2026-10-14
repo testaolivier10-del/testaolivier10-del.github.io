@@ -89,3 +89,18 @@ i.rl-kt,.rl-key i.rl-kt{background:var(--phys-s1);} i.rl-kr,.rl-key i.rl-kr{back
   .rl-stage.is-side .rl-cols svg{max-height:none;}
 }
 @media (max-width:999.98px){ .rl-stage.is-side.is-orbit{flex-direction:column;} .rl-stage.is-orbit .rl-scene{flex:1 1 auto;width:100%;} .rl-stage.is-orbit .rl-panel{flex:none;width:auto;} }
+/* Phone pass (docs/tools-phone-pass.md). */
+.ls-phone .rl-stage:not(.is-side) .rl-panel{padding-bottom:26px;}   /* the last bar's value clear of Enlarge */
+.ls-phone .rl-key{font-size:13px;} .ls-phone .rl-key sub{font-size:.9em;}
+.ls-phone .rl-space-g .rl-st,.ls-phone .rl-space-g .phys-arrow text{font-size:16px;}   /* orbit: viewBox 440 wide, 0.8 scale */
+.ls-phone .rl-fig .rl-t,.ls-phone .rl-fig .rl-tm,.ls-phone .rl-fig .rl-st{font-size:18px;}   /* problem drawings: 520 wide, 0.68 scale */
+/* Phone on its side: the race's bars beside the ramp (as the other scenes), so the ramp keeps the stage's height. */
+@media (max-width:999.98px) and (max-height:540px){
+  .rl-stage:not(.is-side){flex-direction:row;align-items:center;gap:6px;}
+  .rl-stage:not(.is-side) .rl-scene{flex:1 1 62%;min-width:0;}
+  .rl-stage:not(.is-side) .rl-panel{flex:0 0 36%;min-width:0;padding-bottom:48px;}
+  .rl-stage:not(.is-side) .rl-brow{grid-template-columns:1fr 4.2em;row-gap:1px;font-size:12px;}
+  .rl-stage:not(.is-side) .rl-brow .rl-bl{grid-column:1 / -1;}
+  .rl-stage:not(.is-side) .rl-btrack{height:10px;}
+  .rl-stage:not(.is-side) .rl-key{justify-content:flex-start;gap:2px 10px;}
+}

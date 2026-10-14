@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volumes with Triangle and… — AP® Calculus AB Notes</title>
+<meta name="description" content="Volumes of solids whose cross sections are triangles or semicircles: find the area A(x) of one slice from the base, then integrate it across the base.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/cross-sections-triangles.html">
+<meta property="og:title" content="Volumes with Triangle and… — AP® Calculus AB Notes">
+<meta property="og:description" content="Volumes of solids whose cross sections are triangles or semicircles: find the area A(x) of one slice from the base, then integrate it across the base.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/cross-sections-triangles.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/cross-sections-triangles.html#reading",
+      "name": "Volumes with Triangle and Semicircle Cross Sections",
+      "url": "https://levlprep.com/calculus/notes/cross-sections-triangles.html",
+      "description": "Volumes of solids whose cross sections are triangles or semicircles: find the area A(x) of one slice from the base, then integrate it across the base.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "volumes with triangle and semicircle cross sections ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Applications of Integration",
+          "item": "https://levlprep.com/calculus/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Volumes with Triangle and Semicircle Cross Sections: notes",
+          "item": "https://levlprep.com/calculus/notes/cross-sections-triangles.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="cross-sections-triangles" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 8 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Differential Equations</a>
+    <a class="bk-toc-chap" href="../units/unit-8.html"><span class="bk-toc-chap-n">8</span><span><b>Applications of Integration</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-8"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="average-value"><a href="average-value.html"><span class="bk-toc-n">8.1</span>Average Value of a Function</a></li><li data-toc-t="motion-with-integrals"><a href="motion-with-integrals.html"><span class="bk-toc-n">8.2</span>Motion with Integrals</a></li><li data-toc-t="accumulation-in-context"><a href="accumulation-in-context.html"><span class="bk-toc-n">8.3</span>Accumulation in Context</a></li><li data-toc-t="area-between-curves-x"><a href="area-between-curves-x.html"><span class="bk-toc-n">8.4</span>Area Between Curves (Functions of x)</a></li><li data-toc-t="area-between-curves-y"><a href="area-between-curves-y.html"><span class="bk-toc-n">8.5</span>Area Between Curves (Functions of y)</a></li><li data-toc-t="area-multiple-crossings"><a href="area-multiple-crossings.html"><span class="bk-toc-n">8.6</span>Area Between Curves That Cross More Than Twice</a></li><li data-toc-t="cross-sections-squares"><a href="cross-sections-squares.html"><span class="bk-toc-n">8.7</span>Volumes with Square and Rectangle Cross Sections</a></li><li class="current" data-toc-t="cross-sections-triangles"><a href="#main" aria-current="page"><span class="bk-toc-n">8.8</span>Volumes with Triangle and Semicircle Cross Sections</a><div class="bk-toc-onpage"><p>On this page</p><a href="#same-method-new-slice">Same method, new slice</a><a href="#equilateral-triangles">Equilateral triangles</a><a href="#semicircles">Semicircles</a><a href="#the-area-formulas-side-by-side">The area formulas side by side</a><a href="#slips-to-watch-for">Slips to watch for</a></div></li><li data-toc-t="disc-method-axes"><a href="disc-method-axes.html"><span class="bk-toc-n">8.9</span>Disc Method About the Axes</a></li><li data-toc-t="disc-method-other-axes"><a href="disc-method-other-axes.html"><span class="bk-toc-n">8.10</span>Disc Method About Other Lines</a></li><li data-toc-t="washer-method-axes"><a href="washer-method-axes.html"><span class="bk-toc-n">8.11</span>Washer Method About the Axes</a></li><li data-toc-t="washer-method-other-axes"><a href="washer-method-other-axes.html"><span class="bk-toc-n">8.12</span>Washer Method About Other Lines</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Applications of Integration</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Volumes with Triangle and Semicircle Cross Sections: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/cross-sections-triangles.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 8 &middot; Topic 8.8 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Volumes with Triangle and Semicircle Cross Sections</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="cross-sections-triangles">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fcross-sections-triangles.html&amp;title=Volumes%20with%20Triangle%20and%20Semicircle%20Cross%20Sections%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/cross-sections-triangles.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<h2 id="same-method-new-slice">Same method, new slice</h2>
+<p>In the last topic you built solids by standing squares on a base and found <math class="calc-m"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">= \int_a^b A(x)\,dx</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">A(x) = s^2</annotation></semantics></math>. Nothing about that method depended on the slices being squares. Stand triangles on the base, or half circles, and the volume is still the <a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">integral</a> of the slice area. The only new work is the area formula for one slice.</p>
+<p>The side <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> is found exactly as before: it is the length of the base across the slice, <math class="calc-m"><semantics><mrow><mi>s</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">s = f(x) - g(x)</annotation></semantics></math> for slices perpendicular to the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis (or <a class="gl" href="../notes/area-between-curves-y.html" data-c="integrate-in-y">right minus left</a> in <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> for slices perpendicular to the <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis).</p>
+
+<h2 id="equilateral-triangles">Equilateral triangles</h2>
+<p>An equilateral triangle with side <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> has its peak above the middle of the base. Cut it down the middle and you get a right triangle with hypotenuse <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> and short leg <math class="calc-m"><semantics><mrow><mfrac><mi>s</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{s}{2}</annotation></semantics></math>. By the <a class="gl" href="../notes/math-geometry.html" data-c="pythagorean-theorem">Pythagorean theorem</a>, the height is</p>
+<math class="calc-m" display="block"><semantics><mrow><mi>h</mi><mo>=</mo><msqrt><mrow><msup><mi>s</mi><mn>2</mn></msup><mo>−</mo><msup><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mi>s</mi><mn>2</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt><mo>=</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mi>s</mi><mo>,</mo><mspace width="2em"></mspace><mi>A</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⋅</mo><mi>s</mi><mo>⋅</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mi>s</mi><mo>=</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><msup><mi>s</mi><mn>2</mn></msup><mo>.</mo></mrow><annotation encoding="application/x-tex">h = \sqrt{s^2 - \left(\frac{s}{2}\right)^2} = \frac{\sqrt{3}}{2}s, \qquad A = \frac{1}{2} \cdot s \cdot \frac{\sqrt{3}}{2}s = \frac{\sqrt{3}}{4}s^2.</annotation></semantics></math>
+<figure id="fig-tri"  class="calc-figure"><div class="calc-figimg" data-fig="triangle-sections-solid"><img src="../figures/triangle-sections-solid.svg" alt="A 3D view of a solid on the region under y = √x from x = 0 to 4, lying flat on the floor. Equilateral triangles stand on the base, each perpendicular to the x-axis with one side across the base, so the triangle at x has side s = √x; one is highlighted in blue. A side panel shows the triangle with side s and height (√3/2)s, its area (√3/4)s², and the volume, the integral from 0 to 4 of (√3/4)(√x)² dx = 2√3, compared with 8 for squares on the same base." width="760" height="460" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Equilateral triangles on the region under <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">y = \sqrt{x}</annotation></semantics></math>. The triangle at <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> has side <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math> and area <math class="calc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{4}x</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example.</b> The base of a solid is the region under <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">y = \sqrt{x}</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">0 \le x \le 4</annotation></semantics></math>. <a class="gl" href="../notes/cross-sections-squares.html" data-c="cross-section">Cross sections</a> perpendicular to the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis are equilateral triangles. Find the volume.</p>
+<p><b>Side.</b> <math class="calc-m"><semantics><mrow><mi>s</mi><mo>=</mo><msqrt><mi>x</mi></msqrt><mo>−</mo><mn>0</mn><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">s = \sqrt{x} - 0 = \sqrt{x}</annotation></semantics></math>.</p>
+<p><b>Area.</b> <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A(x)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><msup><mrow><mo fence="true" stretchy="true">(</mo><msqrt><mi>x</mi></msqrt><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">= \frac{\sqrt{3}}{4}\left(\sqrt{x}\right)^2</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><mi>x</mi></mrow><annotation encoding="application/x-tex">= \frac{\sqrt{3}}{4}x</annotation></semantics></math>.</p>
+<p><b>Volume.</b> <math class="calc-m"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>4</mn></msubsup><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">= \int_0^4 \frac{\sqrt{3}}{4}x\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><mo>⋅</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>2</mn></mfrac><msubsup><mo stretchy="true" symmetric="true" minsize="1.8em" maxsize="1.8em">|</mo><mn>0</mn><mn>4</mn></msubsup></mrow><annotation encoding="application/x-tex">= \frac{\sqrt{3}}{4} \cdot \frac{x^2}{2}\Big|_0^4</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><mo>⋅</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">= \frac{\sqrt{3}}{4} \cdot 8</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>2</mn><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">= 2\sqrt{3}</annotation></semantics></math>.</p>
+<p>Squares on the same base would give <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>4</mn></msubsup><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_0^4 x\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">= 8</annotation></semantics></math>. The triangles keep <math class="calc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><mo>≈</mo><mn>0.433</mn></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{4} \approx 0.433</annotation></semantics></math> of that, which makes sense: a triangle fills less than half of the square on the same side.</p>
+</div>
+
+<h2 id="semicircles">Semicircles</h2>
+<p>When the slices are semicircles, the segment across the base is the <b>diameter</b>. The radius is half of it, <math class="calc-m"><semantics><mrow><mfrac><mi>s</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{s}{2}</annotation></semantics></math>, and the area is half a circle:</p>
+<math class="calc-m" display="block"><semantics><mrow><mi>A</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>π</mi><msup><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mi>s</mi><mn>2</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mfrac><mi>π</mi><mn>8</mn></mfrac><msup><mi>s</mi><mn>2</mn></msup><mo>.</mo></mrow><annotation encoding="application/x-tex">A = \frac{1}{2}\pi\left(\frac{s}{2}\right)^2 = \frac{\pi}{8}s^2.</annotation></semantics></math>
+<figure id="fig-semi"  class="calc-figure"><div class="calc-figimg" data-fig="semicircle-sections-solid"><img src="../figures/semicircle-sections-solid.svg" alt="A 3D view of the same base, the region under y = √x from x = 0 to 4, with semicircles standing on it, each perpendicular to the x-axis with its diameter across the base, so the diameter at x is s = √x; one is highlighted in green. A side panel shows the semicircle with diameter s and radius s/2, its area (π/8)s², and the volume, the integral from 0 to 4 of (π/8)(√x)² dx = π. Using s as the radius would make the answer 4 times too big." width="760" height="460" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Semicircles on the same base. The diameter at <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math>, so the radius is <math class="calc-m"><semantics><mrow><mfrac><msqrt><mi>x</mi></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{x}}{2}</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example.</b> Same base, but the cross sections are semicircles with diameters in the base.</p>
+<p><b>Area.</b> <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mi>π</mi><mn>8</mn></mfrac><msup><mrow><mo fence="true" stretchy="true">(</mo><msqrt><mi>x</mi></msqrt><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mfrac><mi>π</mi><mn>8</mn></mfrac><mi>x</mi></mrow><annotation encoding="application/x-tex">A(x) = \frac{\pi}{8}\left(\sqrt{x}\right)^2 = \frac{\pi}{8}x</annotation></semantics></math>.</p>
+<p><b>Volume.</b> <math class="calc-m"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mi>π</mi><mn>8</mn></mfrac><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>4</mn></msubsup><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">= \frac{\pi}{8}\int_0^4 x\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mi>π</mi><mn>8</mn></mfrac><mo>⋅</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">= \frac{\pi}{8} \cdot 8</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">= \pi</annotation></semantics></math>.</p>
+<p>If you had used <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> as the radius you would get <math class="calc-m"><semantics><mrow><mfrac><mi>π</mi><mn>2</mn></mfrac><mo>⋅</mo><mn>8</mn><mo>=</mo><mn>4</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">\frac{\pi}{2} \cdot 8 = 4\pi</annotation></semantics></math>, four times too big. Halve the diameter before you square it.</p>
+</div>
+
+<h2 id="the-area-formulas-side-by-side">The area formulas side by side</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Slice standing on a segment of length <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></th><th>Area <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></th><th>Constant</th></tr></thead>
+<tbody>
+<tr><td>Square</td><td><math class="calc-m"><semantics><mrow><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">s^2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></td></tr>
+<tr><td>Isosceles right triangle, a leg in the base</td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{1}{2}s^2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>0.5</mn></mrow><annotation encoding="application/x-tex">0.5</annotation></semantics></math></td></tr>
+<tr><td>Equilateral triangle</td><td><math class="calc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{4}s^2</annotation></semantics></math></td><td>about <math class="calc-m"><semantics><mrow><mn>0.433</mn></mrow><annotation encoding="application/x-tex">0.433</annotation></semantics></math></td></tr>
+<tr><td>Semicircle, diameter in the base</td><td><math class="calc-m"><semantics><mrow><mfrac><mi>π</mi><mn>8</mn></mfrac><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{\pi}{8}s^2</annotation></semantics></math></td><td>about <math class="calc-m"><semantics><mrow><mn>0.393</mn></mrow><annotation encoding="application/x-tex">0.393</annotation></semantics></math></td></tr>
+<tr><td>Isosceles right triangle, the hypotenuse in the base</td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{1}{4}s^2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>0.25</mn></mrow><annotation encoding="application/x-tex">0.25</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>Every area is a constant times <math class="calc-m"><semantics><mrow><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">s^2</annotation></semantics></math>, so on one base every volume is that constant times <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><msup><mi>s</mi><mn>2</mn></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_a^b s^2\,dx</annotation></semantics></math>. Compute <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\int s^2</annotation></semantics></math> once and you can answer for any shape. When the hypotenuse lies in the base, each leg is <math class="calc-m"><semantics><mrow><mfrac><mi>s</mi><msqrt><mn>2</mn></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{s}{\sqrt{2}}</annotation></semantics></math>, so the area is <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mi>s</mi><msqrt><mn>2</mn></msqrt></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mfrac><msup><mi>s</mi><mn>2</mn></msup><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}\left(\frac{s}{\sqrt{2}}\right)^2 = \frac{s^2}{4}</annotation></semantics></math>.</p>
+
+<h2 id="slips-to-watch-for">Slips to watch for</h2>
+<ul>
+<li><math class="calc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mi>s</mi></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{2}s</annotation></semantics></math> is the triangle's height, not its area. The area has <math class="calc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{4}</annotation></semantics></math>.</li>
+<li>The side across the base is the semicircle's diameter. Radius <math class="calc-m"><semantics><mrow><mo>=</mo><mfrac><mi>s</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{s}{2}</annotation></semantics></math>.</li>
+<li>Square the whole side <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>−</mo><mi>g</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(f - g)</annotation></semantics></math>, never each curve separately.</li>
+<li>For slices perpendicular to the <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis, <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> is right minus left in <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, and the integral is in <math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math>.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:cross-sections-triangles">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="cross-sections-squares.html"><span>&larr; Previous</span><b>Volumes with Square and Rectangle Cross Sections</b></a><a class="tb-chapter-link next" href="disc-method-axes.html"><span>Next &rarr;</span><b>Disc Method About the Axes</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:cross-sections-triangles">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

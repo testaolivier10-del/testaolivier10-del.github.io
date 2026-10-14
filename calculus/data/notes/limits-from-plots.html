@@ -1,0 +1,51 @@
+<p>Most limit questions with a graph point at the interesting places: a hole, a jump, a filled dot sitting off the curve, a vertical asymptote. At those places the two sides of the graph can tell different stories. The skill on this page is simple to state: look at each side separately, then decide. It turns every graph question into two easy readings.</p>
+
+<h2>Approaching from one side</h2>
+<p>Put your finger on the graph to the left of $x = a$ and slide it toward $a$, staying on the left. The height your finger heads to is the <b>left-hand limit</b>:
+$$\lim_{x \to a^-} f(x)$$
+The small minus sign means "from below," that is, using only $x < a$. Do the same from the right and you get the <b>right-hand limit</b>, $\lim_{x \to a^+} f(x)$, using only $x > a$. Each is a <b>one-sided limit</b>.</p>
+<p>Notice the sign is a direction, not a number. $x \to 2^-$ means $x$ takes values like 1.9, 1.99, 1.999, all below 2.</p>
+
+<h2>When the limit exists</h2>
+<p>The ordinary, two-sided limit asks for both sides at once. The rule that connects them is the most used fact in this unit:</p>
+<p style="text-align:center">$\lim_{x \to a} f(x) = L$ exactly when $\lim_{x \to a^-} f(x) = L$ and $\lim_{x \to a^+} f(x) = L$.</p>
+<p>If the two sides head to the same height, that height is the limit. If they head to different heights, there is no limit.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A graph of $f$ has a line rising to an open circle at $(-2, 3)$ from the left, a curve leaving that same open circle to the right, and a filled dot at $(-2, 1)$. At $x = 1$, a curve arrives at a filled point $(1, -1.5)$ from the left, and a new line starts at an open circle $(1, 0)$ to the right. Find the limits.</p>
+<p>At $x = -2$: from the left, the heights head to 3. From the right, also 3. So $\lim_{x \to -2} f(x) = 3$. The dot says $f(-2) = 1$; that is the value, not the limit.</p>
+<p>At $x = 1$: $\lim_{x \to 1^-} f(x) = -1.5$ and $\lim_{x \to 1^+} f(x) = 0$. Since $-1.5 \ne 0$, $\lim_{x \to 1} f(x)$ does not exist. The value $f(1) = -1.5$ exists, and it matches the left side only.</p>
+</div>
+
+<h2>Three ways a limit can fail to exist</h2>
+<figure id="fig-four" data-fig="limit-four-cases"><figcaption>One limit that exists despite the dot, and the three ways a limit fails.</figcaption></figure>
+<p>When the <b>limit does not exist</b> (sometimes written DNE), the reason is always one of these:</p>
+<table class="compare">
+<thead><tr><th>Behavior near $x = a$</th><th>What the graph does</th><th>Why there is no limit</th></tr></thead>
+<tbody>
+<tr><td>Jump</td><td>the two sides head to different heights</td><td>one-sided limits are unequal</td></tr>
+<tr><td>Unbounded</td><td>the graph shoots up or down along a vertical asymptote</td><td>the outputs grow without bound, so they approach no number</td></tr>
+<tr><td>Oscillating</td><td>the graph wiggles faster and faster</td><td>the outputs never settle near one number</td></tr>
+</tbody>
+</table>
+<p>Unbounded behavior can happen on one side or both. If the graph rises without bound on both sides of $x = a$, the outputs still approach no number, so the limit does not exist. Topic 1.14 adds a special notation for this case; for now, describe it in words: "$f(x)$ increases without bound as $x \to a^+$."</p>
+
+<h2>Dots never decide a limit</h2>
+<p>A filled dot answers one question only: what is $f(a)$? An open circle answers: what point is missing? Neither one tells you the limit, which depends only on the heights <i>near</i> $a$. Students lose points by reading the dot as the limit, or by concluding that a limit cannot exist where $f(a)$ is undefined. A hole is the clearest counterexample: the limit is the hole's height, and there is no value at all.</p>
+
+<h2>Scale can hide behavior</h2>
+<p>A graph is a picture, and pictures have limits of their own. A calculator draws with pixels, so a single missing point, such as the hole in $r(x) = \frac{x^2 - 4}{x - 2}$ at $x = 2$, is invisible at a normal zoom. A tiny wiggle or a narrow spike can also hide between pixels. A graph suggests a limit; the formula, a table of values or algebra confirms it. If the scale looks suspicious, zoom in or check with the formula.</p>
+
+<h2>Writing a graph-based answer</h2>
+<p>When you justify a conclusion about a limit, name both sides with their values. Compare:</p>
+<table class="compare">
+<thead><tr><th>Loses the point</th><th>Earns the point</th></tr></thead>
+<tbody>
+<tr><td>"The graph jumps, so no limit."</td><td>"$\lim_{x \to 1^-} f(x) = -1.5$ and $\lim_{x \to 1^+} f(x) = 0$. Since they are not equal, $\lim_{x \to 1} f(x)$ does not exist."</td></tr>
+<tr><td>"$f(-2) = 1$, so the limit is 1."</td><td>"$\lim_{x \to -2^-} f(x) = 3$ and $\lim_{x \to -2^+} f(x) = 3$, so $\lim_{x \to -2} f(x) = 3$."</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example 2.</b> A function has $\lim_{x \to 4^-} g(x) = 7$, $\lim_{x \to 4^+} g(x) = 7$ and $g(4) = 2$. Describe the graph near $x = 4$ and give $\lim_{x \to 4} g(x)$.</p>
+<p>Both sides head to height 7, so $\lim_{x \to 4} g(x) = 7$.</p>
+<p>The graph has an open circle at $(4, 7)$ and a filled dot below it at $(4, 2)$.</p>
+</div>

@@ -1,0 +1,76 @@
+{
+ "topic": "verifying-solutions",
+ "hook": "A friend claims that $y = 3e^{2x}$ fits the rule \"the slope is always twice the height\". You do not need to take her word for it, and you do not need any new method. Differentiate, substitute, and see whether the two sides match. That check is the whole topic, and it is how you will test every answer in this unit.",
+ "prereq": [
+  {
+   "q": "What is $\\frac{d}{dx}\\left(e^{3x}\\right)$?",
+   "options": [
+    "$3e^{3x}$",
+    "$e^{3x}$",
+    "$3xe^{3x - 1}$",
+    "$\\frac{e^{3x}}{3}$"
+   ],
+   "correct": 0,
+   "why": "Chain rule: the derivative of the inside, 3, multiplies $e^{3x}$.",
+   "review": "chain-rule"
+  },
+  {
+   "q": "If $y = \\sin(2x)$, what is $y''$?",
+   "options": [
+    "$-4\\sin(2x)$",
+    "$4\\sin(2x)$",
+    "$-2\\sin(2x)$",
+    "$2\\cos(2x)$"
+   ],
+   "correct": 0,
+   "why": "$y' = 2\\cos(2x)$, then $y'' = -4\\sin(2x)$.",
+   "review": "higher-order-derivatives"
+  }
+ ],
+ "figure": {
+  "figure": "solution-family-check",
+  "caption": "Every curve $y = x + 1 + Ce^x$ satisfies $\\frac{dy}{dx} = y - x$. At $x = 0.5$ each short segment has slope $y - x$, and each lies along its curve."
+ },
+ "chain": [
+  {
+   "cause": "A function is proposed for a differential equation",
+   "effect": "compute every derivative the equation uses"
+  },
+  {
+   "cause": "Substitute the function and its derivatives into both sides",
+   "effect": "simplify each side separately, never moving terms across the $=$ sign"
+  },
+  {
+   "cause": "The two sides agree for every $x$ in an interval",
+   "effect": "the function is a solution on that interval"
+  },
+  {
+   "cause": "They disagree for even one value of x in the interval",
+   "effect": "the function is not a solution there"
+  },
+  {
+   "cause": "An added constant has derivative 0",
+   "effect": "one differential equation usually has infinitely many solutions"
+  }
+ ],
+ "ideas": [
+  "A <b>solution to a differential equation</b> is a function, not a number. It makes the equation true for every $x$ in an interval.",
+  "To verify a solution: differentiate, substitute into both sides, simplify each side, compare.",
+  "Checking a single point is not enough: two different expressions can agree at one $x$.",
+  "One equation can have a whole family of solutions, such as $y = Ce^{3x}$ for $\\frac{dy}{dx} = 3y$.",
+  "A solution may live on an interval only: $y = \\frac{1}{x}$ solves $\\frac{dy}{dx} = -y^2$ on $x > 0$ and on $x < 0$, not across $x = 0$."
+ ],
+ "misconception": {
+  "wrong": "$y = x + 1 + 2e^x$ solves $\\frac{dy}{dx} = y - x$ because at $x = 0$ both sides equal 3.",
+  "right": "One matching point proves nothing. Compare the sides as functions: $\\frac{dy}{dx} = 1 + 2e^x$ and $y - x = 1 + 2e^x$ for every $x$. That is the verification."
+ },
+ "check": [
+  "calc-verifying-solutions-1",
+  "calc-verifying-solutions-2",
+  "calc-verifying-solutions-6",
+  "calc-verifying-solutions-7",
+  "calc-verifying-solutions-10",
+  "calc-verifying-solutions-12"
+ ],
+ "summary": "To verify a solution to a differential equation, differentiate the function, substitute into both sides and show they agree for every $x$ in an interval. One equation can have infinitely many solutions, and a solution may hold only on an interval where everything is defined."
+}

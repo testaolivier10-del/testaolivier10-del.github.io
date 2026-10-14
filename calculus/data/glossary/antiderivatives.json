@@ -1,0 +1,5 @@
+{
+ "indefinite-integral": {
+  "def": "The family of all antiderivatives of a function, written $\\int f(x)\\,dx = F(x) + C$, where $F' = f$ and $C$, the constant of integration, is any constant. It has no limits and is a family of functions, not a number."
+ }
+}

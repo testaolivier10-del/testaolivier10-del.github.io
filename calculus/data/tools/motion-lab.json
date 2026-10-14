@@ -1,0 +1,26 @@
+{
+ "about": "Motion lab (docs/apcalc-spec.md section 6). The motions and every number live in calculus/assets/tools/math/motion-lab.js; motions and contexts unlock with their topics (velocity-given motions with Unit 8). Checked by scripts/lib/apcalc-tool-checks/motion-lab.mjs.",
+ "slug": "motion-lab",
+ "kind": "simulator",
+ "topic": "straight-line-motion",
+ "intro": "<p>A car on a straight road, with its position, velocity and acceleration graphs drawn from the same motion. Press Play or drag across the graphs. Where the car speeds up, the graphs are tinted; where it slows down, they are hatched; dashed lines mark where it turns around. With velocity given (Unit 8), watch the position build up as the area under the velocity graph.</p>",
+ "howItWorksTitle": "How the motion is computed",
+ "howItWorks": "<ul><li><b>Position given:</b> $v(t) = x'(t)$ and $a(t) = v'(t)$, each from its formula (shown under Formulas &amp; numbers).</li><li><b>Velocity given:</b> $x(t) = x(0) + \\int_0^t v(s)\\,ds$. A formula is integrated numerically (adaptive Simpson), a graph of straight pieces exactly by triangles and trapezoids. Displacement is $\\int v$; total distance is $\\int |v|$, split where $v$ changes sign.</li><li><b>Speeding up</b> where $v$ and $a$ have the same sign, <b>slowing down</b> where their signs differ. The sign of $a$ alone never decides it.</li><li><b>A change of direction</b> needs $v$ to change sign. Where $v = 0$ and keeps its sign, the car only pauses.</li><li>The car's arrows are scaled to the motion's largest velocity and acceleration; the dots under it are where it was every quarter second, so close dots mean slow.</li></ul>",
+ "partTopics": { "disp": "motion-with-integrals", "dist": "motion-with-integrals", "xT": "motion-with-integrals", "xm": "motion-with-integrals" },
+ "motions": [
+  { "id": "cubic", "topic": "straight-line-motion" },
+  { "id": "quad", "topic": "straight-line-motion" },
+  { "id": "wave", "topic": "straight-line-motion" },
+  { "id": "surge", "topic": "straight-line-motion" },
+  { "id": "vpoly", "topic": "motion-with-integrals" },
+  { "id": "vtrig", "topic": "motion-with-integrals" },
+  { "id": "vgraph", "topic": "motion-with-integrals" }
+ ],
+ "contexts": [
+  { "id": "deriv", "topic": "straight-line-motion", "kind": "deriv" },
+  { "id": "speed", "topic": "straight-line-motion", "kind": "speed" },
+  { "id": "turn", "topic": "straight-line-motion", "kind": "turn" },
+  { "id": "dist", "topic": "motion-with-integrals", "kind": "dist" },
+  { "id": "graph", "topic": "motion-with-integrals", "kind": "graph" }
+ ]
+}

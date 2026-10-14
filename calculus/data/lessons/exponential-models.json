@@ -1,0 +1,72 @@
+{
+ "topic": "exponential-models",
+ "hook": "Bacteria in a dish, money in an account, a medicine leaving the blood, a radioactive sample: each changes at a rate proportional to how much there is. One differential equation, $\\frac{dy}{dt} = ky$, covers them all, and its solution $y = y_0e^{kt}$ is worth knowing by heart, along with what $k$ means and how to find it from data.",
+ "prereq": [
+  {
+   "q": "The general solution of $\\frac{dy}{dt} = ky$ is",
+   "options": [
+    "$y = Ae^{kt}$",
+    "$y = e^{kt} + C$",
+    "$y = \\frac{k}{2}y^2 + C$",
+    "$y = kt + C$"
+   ],
+   "correct": 0,
+   "why": "$\\ln|y| = kt + C$, so $y = Ae^{kt}$.",
+   "review": "separation-of-variables"
+  },
+  {
+   "q": "For $\\frac{dy}{dx} = 2y$ with $y(0) = 5$, the constant $A$ in $y = Ae^{2x}$ is",
+   "options": [
+    "5",
+    "2",
+    "10",
+    "$\\ln 5$"
+   ],
+   "correct": 0,
+   "why": "At $x = 0$, $y = Ae^0 = A$, so $A = 5$.",
+   "review": "particular-solutions"
+  }
+ ],
+ "figure": {
+  "figure": "exponential-growth-decay",
+  "caption": "Left: $\\frac{dP}{dt} = 0.2P$ with $P(0) = 50$ grows and doubles every $\\frac{\\ln 2}{0.2}$ time units. Right: $\\frac{dA}{dt} = -0.3A$ with $A(0) = 80$ decays and halves every $\\frac{\\ln 2}{0.3}$."
+ },
+ "chain": [
+  {
+   "cause": "A quantity changes at a rate proportional to its size",
+   "effect": "$\\frac{dy}{dt} = ky$"
+  },
+  {
+   "cause": "Separate, integrate and use y(0)",
+   "effect": "$y = y_0e^{kt}$, the exponential model"
+  },
+  {
+   "cause": "$k > 0$ or $k < 0$",
+   "effect": "growth or decay; $|k|$ is the rate as a fraction of the amount, per unit time"
+  },
+  {
+   "cause": "A second data point $y(t_1) = y_1$ is known",
+   "effect": "$e^{kt_1} = \\frac{y_1}{y_0}$, so $k = \\frac{1}{t_1}\\ln\\frac{y_1}{y_0}$"
+  }
+ ],
+ "ideas": [
+  "$\\frac{dy}{dt} = ky$ and $y(0) = y_0$ give $y = y_0e^{kt}$. You may quote this result.",
+  "$k = \\frac{dy/dt}{y}$: the rate of change as a fraction of the current amount, in \"per unit time\" (per hour, per year).",
+  "Doubling time ($k > 0$) and half-life ($k < 0$) are both $\\frac{\\ln 2}{|k|}$; they do not depend on the starting amount.",
+  "To find $k$ from two values, divide first: $\\frac{y_1}{y_0} = e^{kt_1}$, then take $\\ln$.",
+  "Cooling toward room temperature $T_r$ is exponential in $T - T_r$, not in $T$."
+ ],
+ "misconception": {
+  "wrong": "A population goes from 400 to 1200 in 3 hours, so $k = \\frac{1200 - 400}{3}$.",
+  "right": "That is an average rate, measured in cells per hour: a linear idea. For $y = 400e^{kt}$: $1200 = 400e^{3k}$, so $e^{3k} = 3$ and $k = \\frac{\\ln 3}{3}$ per hour."
+ },
+ "check": [
+  "calc-exponential-models-1",
+  "calc-exponential-models-2",
+  "calc-exponential-models-5",
+  "calc-exponential-models-10",
+  "calc-exponential-models-12",
+  "calc-exponential-models-13"
+ ],
+ "summary": "When the rate of change is proportional to the amount, $\\frac{dy}{dt} = ky$ and $y = y_0e^{kt}$. $k > 0$ is growth, $k < 0$ decay; $k$ is the rate as a fraction of the amount per unit time. Find $k$ by dividing two values and taking $\\ln$; doubling time and half-life are $\\frac{\\ln 2}{|k|}$."
+}

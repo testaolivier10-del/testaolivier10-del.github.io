@@ -1,0 +1,5 @@
+{
+ "slope-field": {
+  "def": "A picture of a differential equation $\\frac{dy}{dx} = F(x, y)$: at each chosen point $(x, y)$, a short segment with slope $F(x, y)$. A solution curve through a point follows the segments near it."
+ }
+}

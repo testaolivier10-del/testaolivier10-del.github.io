@@ -1,0 +1,5 @@
+{
+ "second-derivative": {
+  "def": "The derivative of the derivative: $f''(x) = \\frac{d}{dx}f'(x)$, also written $\\frac{d^2y}{dx^2}$. It measures how fast $f'$ changes. Higher-order derivatives continue: $f'''$, $f^{(4)}$, ..., $f^{(n)}$."
+ }
+}

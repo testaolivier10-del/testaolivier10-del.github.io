@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Area Between Curves (Functions of y) — AP® Calculus AB Notes</title>
+<meta name="description" content="When the region's sides are curves x = f(y), slice it horizontally: integrate right minus left with respect to y. When to switch, and how to set it up.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/area-between-curves-y.html">
+<meta property="og:title" content="Area Between Curves (Functions of y) — AP® Calculus AB Notes">
+<meta property="og:description" content="When the region's sides are curves x = f(y), slice it horizontally: integrate right minus left with respect to y. When to switch, and how to set it up.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/area-between-curves-y.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/area-between-curves-y.html#reading",
+      "name": "Area Between Curves (Functions of y)",
+      "url": "https://levlprep.com/calculus/notes/area-between-curves-y.html",
+      "description": "When the region's sides are curves x = f(y), slice it horizontally: integrate right minus left with respect to y. When to switch, and how to set it up.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "area between curves (functions of y) ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Applications of Integration",
+          "item": "https://levlprep.com/calculus/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Area Between Curves (Functions of y): notes",
+          "item": "https://levlprep.com/calculus/notes/area-between-curves-y.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="area-between-curves-y" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 8 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Differential Equations</a>
+    <a class="bk-toc-chap" href="../units/unit-8.html"><span class="bk-toc-chap-n">8</span><span><b>Applications of Integration</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-8"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="average-value"><a href="average-value.html"><span class="bk-toc-n">8.1</span>Average Value of a Function</a></li><li data-toc-t="motion-with-integrals"><a href="motion-with-integrals.html"><span class="bk-toc-n">8.2</span>Motion with Integrals</a></li><li data-toc-t="accumulation-in-context"><a href="accumulation-in-context.html"><span class="bk-toc-n">8.3</span>Accumulation in Context</a></li><li data-toc-t="area-between-curves-x"><a href="area-between-curves-x.html"><span class="bk-toc-n">8.4</span>Area Between Curves (Functions of x)</a></li><li class="current" data-toc-t="area-between-curves-y"><a href="#main" aria-current="page"><span class="bk-toc-n">8.5</span>Area Between Curves (Functions of y)</a><div class="bk-toc-onpage"><p>On this page</p><a href="#turning-the-strips-sideways">Turning the strips sideways</a><a href="#right-minus-left">Right minus left</a><a href="#choosing-x-or-y">Choosing x or y</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="area-multiple-crossings"><a href="area-multiple-crossings.html"><span class="bk-toc-n">8.6</span>Area Between Curves That Cross More Than Twice</a></li><li data-toc-t="cross-sections-squares"><a href="cross-sections-squares.html"><span class="bk-toc-n">8.7</span>Volumes with Square and Rectangle Cross Sections</a></li><li data-toc-t="cross-sections-triangles"><a href="cross-sections-triangles.html"><span class="bk-toc-n">8.8</span>Volumes with Triangle and Semicircle Cross Sections</a></li><li data-toc-t="disc-method-axes"><a href="disc-method-axes.html"><span class="bk-toc-n">8.9</span>Disc Method About the Axes</a></li><li data-toc-t="disc-method-other-axes"><a href="disc-method-other-axes.html"><span class="bk-toc-n">8.10</span>Disc Method About Other Lines</a></li><li data-toc-t="washer-method-axes"><a href="washer-method-axes.html"><span class="bk-toc-n">8.11</span>Washer Method About the Axes</a></li><li data-toc-t="washer-method-other-axes"><a href="washer-method-other-axes.html"><span class="bk-toc-n">8.12</span>Washer Method About Other Lines</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Applications of Integration</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Area Between Curves (Functions of y): notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/area-between-curves-y.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 8 &middot; Topic 8.5 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Area Between Curves (Functions of y)</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="area-between-curves-y">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Farea-between-curves-y.html&amp;title=Area%20Between%20Curves%20(Functions%20of%20y)%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/area-between-curves-y.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<h2 id="turning-the-strips-sideways">Turning the strips sideways</h2>
+<p>In the last topic every rectangle stood up: it had width <math class="calc-m"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\Delta x</annotation></semantics></math> and reached from a bottom curve to a top curve. That works well when the top is one curve and the bottom is one curve all the way across. Some regions are not built like that.</p>
+<p>Look at the region between the parabola <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x = y^2</annotation></semantics></math> and the line <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = y + 2</annotation></semantics></math> in the figure. Slice it vertically and the bottom of each strip is the lower half of the parabola for <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \le x \le 1</annotation></semantics></math>, but the line for <math class="calc-m"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">1 \le x \le 4</annotation></semantics></math>. You would need two <a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">integrals</a> and the formulas <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">y = -\sqrt{x}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">y = \sqrt{x}</annotation></semantics></math>. Slice it horizontally instead, and every strip runs from the parabola on the left to the line on the right. One formula, one integral.</p>
+<figure id="fig-ystrip"  class="calc-figure"><div class="calc-figimg" data-fig="area-between-y-strip"><img src="../figures/area-between-y-strip.svg" alt="The region between the parabola x = y² (left) and the line x = y + 2 (right), shaded from y = −1 to y = 2, where they meet at (1, −1) and (4, 2). One thin horizontal rectangle of thickness Δy has length right minus left, (y + 2) − y². A side panel gives the limits from y² = y + 2 and the area, the integral from −1 to 2 of [(y + 2) − y²] dy = 9/2." width="760" height="440" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A horizontal strip at height <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> reaches from the left curve <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x = y^2</annotation></semantics></math> to the right curve <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = y + 2</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="right-minus-left">Right minus left</h2>
+<p>A horizontal strip sits at height <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> and has a small thickness <math class="calc-m"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\Delta y</annotation></semantics></math>. Its length is the distance from its left end to its right end, which is a difference of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-values:</p>
+<math class="calc-m" display="block"><semantics><mrow><mtext>length</mtext><mo>=</mo><msub><mi>x</mi><mtext>right</mtext></msub><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mo>−</mo><msub><mi>x</mi><mtext>left</mtext></msub><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">\text{length} = x_{\text{right}}(y) - x_{\text{left}}(y).</annotation></semantics></math>
+<p>Each strip has area <math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><msub><mi>x</mi><mtext>right</mtext></msub><mo>−</mo><msub><mi>x</mi><mtext>left</mtext></msub></mrow><mo fence="true" stretchy="true">)</mo></mrow><mi mathvariant="normal">Δ</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\left(x_{\text{right}} - x_{\text{left}}\right)\Delta y</annotation></semantics></math>. Stack the strips from the bottom of the region to the top and let them get thin:</p>
+<math class="calc-m" display="block"><semantics><mrow><mi>A</mi><mo>=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>c</mi><mi>d</mi></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><msub><mi>x</mi><mtext>right</mtext></msub><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mo>−</mo><msub><mi>x</mi><mtext>left</mtext></msub><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>y</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">A = \int_c^d \left(x_{\text{right}}(y) - x_{\text{left}}(y)\right)\,dy.</annotation></semantics></math>
+<p>This is the same idea as top minus bottom, turned 90 degrees. The "larger" <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> is now the one farther to the right.</p>
+<p>Two things change with the variable. The edges must be written as <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> in terms of <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, and the <a class="gl" href="../notes/limit-notation.html" data-c="limit">limits</a> are <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-values. If a curve is given as <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">y = \sqrt{x}</annotation></semantics></math>, solve for <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> (here <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x = y^2</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>y</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y \ge 0</annotation></semantics></math>). That is just the <a class="gl" href="../notes/math-inverse-functions.html" data-c="inverse-function">inverse function</a>.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> Find the area of the region between <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x = y^2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = y + 2</annotation></semantics></math>.</p>
+<p><b>Limits.</b> Set the edges equal: <math class="calc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mi>y</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y^2 = y + 2</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mi>y</mi><mo>−</mo><mn>2</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y^2 - y - 2 = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>y</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(y - 2)(y + 1) = 0</annotation></semantics></math>. The curves meet at <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = -1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 2</annotation></semantics></math>. (The points are <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, -1)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(4, 2)</annotation></semantics></math>, but the limits are their <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-coordinates.)</p>
+<p><b>Right edge.</b> Test <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math>: the line gives <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math> and the parabola gives <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>. The line is on the right.</p>
+<p><b>Integral.</b></p>
+<math class="calc-m" display="block"><semantics><mrow><mi>A</mi><mo>=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mrow><mo fence="true" stretchy="true">[</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo fence="true" stretchy="true">]</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><msubsup><mrow><mo fence="true" stretchy="true">[</mo><mrow><mfrac><msup><mi>y</mi><mn>2</mn></msup><mn>2</mn></mfrac><mo>+</mo><mn>2</mn><mi>y</mi><mo>−</mo><mfrac><msup><mi>y</mi><mn>3</mn></msup><mn>3</mn></mfrac></mrow><mo fence="true" stretchy="true">]</mo></mrow><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>=</mo><mfrac><mn>10</mn><mn>3</mn></mfrac><mo>−</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>7</mn><mn>6</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mn>9</mn><mn>2</mn></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">A = \int_{-1}^{2} \left[(y + 2) - y^2\right]\,dy = \left[\frac{y^2}{2} + 2y - \frac{y^3}{3}\right]_{-1}^{2} = \frac{10}{3} - \left(-\frac{7}{6}\right) = \frac{9}{2}.</annotation></semantics></math>
+<p>With vertical strips you would need <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>1</mn></msubsup><mn>2</mn><msqrt><mi>x</mi></msqrt><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_0^1 2\sqrt{x}\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>1</mn><mn>4</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><msqrt><mi>x</mi></msqrt><mo>−</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">+ \int_1^4 \left(\sqrt{x} - (x - 2)\right)\,dx</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{4}{3}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">+</mo><mfrac><mn>19</mn><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">+ \frac{19}{6}</annotation></semantics></math>, which is also <math class="calc-m"><semantics><mrow><mfrac><mn>9</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{9}{2}</annotation></semantics></math>. Same area, twice the work.</p>
+</div>
+
+<h2 id="choosing-x-or-y">Choosing <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Look at the region</th><th>Slice</th><th>Integrand</th></tr></thead>
+<tbody>
+<tr><td>One curve on top and one on the bottom all the way across</td><td>Vertical, in <math class="calc-m"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math></td><td>top minus bottom</td></tr>
+<tr><td>One curve on the left and one on the right all the way up</td><td>Horizontal, in <math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math></td><td><span class="gl" tabindex="0" data-c="integrate-in-y">right minus left</span></td></tr>
+<tr><td>Curves given as <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x = g(y)</annotation></semantics></math></td><td>Usually horizontal</td><td>right minus left</td></tr>
+<tr><td>A curve that is hard to solve for <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></td><td>Usually vertical</td><td>top minus bottom</td></tr>
+</tbody>
+</table></div>
+<p>Either choice gives the same area if you set it up correctly. Pick the one with fewer pieces and easier <a class="gl" href="../notes/ftc-accumulation.html" data-c="antiderivative">antiderivatives</a>.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> Find the area of the <a class="gl" href="../notes/area-between-curves-x.html" data-c="area-between-curves">region bounded by</a> <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = \ln x</annotation></semantics></math>, the <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 2</annotation></semantics></math>.</p>
+<p><b>Rewrite.</b> <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = \ln x</annotation></semantics></math> means <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mi>e</mi><mi>y</mi></msup></mrow><annotation encoding="application/x-tex">x = e^y</annotation></semantics></math>. The left edge is the <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis, <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>.</p>
+<p><b>Limits.</b> The region runs from <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = 2</annotation></semantics></math>; they are given.</p>
+<p><b>Integral.</b> <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>2</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><msup><mi>e</mi><mi>y</mi></msup><mo>−</mo><mn>0</mn></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">= \int_0^2 \left(e^y - 0\right)\,dy</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mi>e</mi><mn>2</mn></msup><mo>−</mo><msup><mi>e</mi><mn>0</mn></msup></mrow><annotation encoding="application/x-tex">= e^2 - e^0</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><msup><mi>e</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= e^2 - 1</annotation></semantics></math>. In <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> this region would need <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> from 0 to <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">e^2</annotation></semantics></math> and a top edge that changes at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>: much harder.</p>
+</div>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li><b>Limits in the wrong variable.</b> In <math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math> the limits are <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-values. Writing the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-coordinates of the crossings as limits gives a wrong number.</li>
+<li><b>Left minus right.</b> That gives a negative number. Test a <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> between the limits in both edges; the larger <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is the right edge.</li>
+<li><b>Edges not rewritten.</b> <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math> inside an integral in <math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math> makes no sense. Every edge must be <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> in terms of <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>.</li>
+<li><b>Parentheses.</b> <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mi>y</mi><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">(</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2 - y) - (y^2 - 4)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>6</mn><mo>−</mo><mi>y</mi><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">= 6 - y - y^2</annotation></semantics></math>: subtract every term of the left edge.</li>
+</ul>
+<p>With a calculator, solve for the crossing <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-values numerically (<a class="gl" href="../notes/math-trig.html" data-c="radian">radian</a> mode for trigonometry), store them, write the setup with <math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math>, and evaluate the integral numerically. Give the result correct to three decimal places.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:area-between-curves-y">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="area-between-curves-x.html"><span>&larr; Previous</span><b>Area Between Curves (Functions of x)</b></a><a class="tb-chapter-link next" href="area-multiple-crossings.html"><span>Next &rarr;</span><b>Area Between Curves That Cross More Than Twice</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:area-between-curves-y">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,567 @@
+{
+ "stimuli": {
+  "disc-method-axes-s1": {
+   "kind": "graph",
+   "title": "The region $R$ bounded by $y = x^2$, $y = 4$ and the $y$-axis",
+   "plot": {
+    "label": "The parabola y = x² and the horizontal line y = 4 in the first quadrant. The region R between the y-axis, the parabola and the line y = 4 is shaded; the parabola meets the line at (2, 4).",
+    "x": [
+     -0.6,
+     2.6
+    ],
+    "y": [
+     -0.5,
+     5
+    ],
+    "xStep": 0.5,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "x^2",
+      "domain": [
+       0,
+       2.2
+      ],
+      "cls": "s1",
+      "label": "y = x²"
+     },
+     {
+      "fn": "4",
+      "domain": [
+       -0.6,
+       2.6
+      ],
+      "cls": "s2",
+      "label": "y = 4"
+     }
+    ],
+    "shade": [
+     {
+      "fn": "4",
+      "fn2": "x^2",
+      "domain": [
+       0,
+       2
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       2,
+       4
+      ],
+      "label": "(2, 4)"
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       0.6,
+       2.6
+      ],
+      "text": "R"
+     }
+    ]
+   }
+  },
+  "disc-method-axes-s2": {
+   "kind": "graph",
+   "title": "The profile of a vase: $y = 4 + \\sin\\left(\\frac{x}{2}\\right)$ for $0 \\le x \\le 12$",
+   "plot": {
+    "label": "The curve y = 4 + sin(x/2) for x from 0 to 12 centimeters, a gentle wave between y = 3 and y = 5, with the region under it shaded down to the x-axis. Revolving this region about the x-axis gives the vase.",
+    "x": [
+     -0.5,
+     12.8
+    ],
+    "y": [
+     0,
+     6
+    ],
+    "xStep": 2,
+    "yStep": 1,
+    "xLabel": "x (cm)",
+    "yLabel": "y (cm)",
+    "curves": [
+     {
+      "fn": "4 + sin(x/2)",
+      "domain": [
+       0,
+       12
+      ],
+      "cls": "s1",
+      "label": "y = 4 + sin(x/2)",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "shade": [
+     {
+      "fn": "4 + sin(x/2)",
+      "domain": [
+       0,
+       12
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-disc-method-axes-1",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "disc-method-axes-s1",
+   "q": "$R$ is revolved about the $y$-axis. Which integral gives the volume of the solid?",
+   "options": [
+    "$\\pi \\int_0^4 y\\,dy$",
+    "$\\pi \\int_0^2 x^4\\,dx$",
+    "$\\pi \\int_0^4 \\sqrt{y}\\,dy$",
+    "$\\pi \\int_0^4 y^2\\,dy$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Revolving about the $y$-axis makes horizontal discs. At height $y$ the radius reaches from the axis to the curve, $x = \\sqrt{y}$, so the disc's area is $\\pi(\\sqrt{y})^2 = \\pi y$.",
+    "options": [
+     "$\\pi r^2$ with $r = \\sqrt{y}$, stacked from $y = 0$ to $y = 4$.",
+     "That revolves the region under $y = x^2$ about the $x$-axis: a different region and a different axis.",
+     "The radius $\\sqrt{y}$ was not squared. A disc's area is $\\pi r^2$.",
+     "That uses $y$ as the radius. The radius is the horizontal distance $x = \\sqrt{y}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-2",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "disc-method-axes-s1",
+   "q": "Find the volume of the solid formed when $R$ is revolved about the $y$-axis.",
+   "numeric": {
+    "answer": "8*pi",
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "The $\\pi$ is missing. Each disc has area $\\pi r^2$."
+     },
+     {
+      "value": "16*pi/3",
+      "why": "That is $\\pi\\int_0^4 \\sqrt{y}\\,dy$: the radius was not squared."
+     },
+     {
+      "value": "32*pi/5",
+      "why": "That revolves the region under the parabola about the $x$-axis. $R$ lies between the parabola and the $y$-axis, and turns about the $y$-axis."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V = \\pi\\int_0^4 (\\sqrt{y})^2\\,dy = \\pi\\int_0^4 y\\,dy = \\pi \\cdot \\frac{y^2}{2}\\Big|_0^4 = 8\\pi$."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-3",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "expr",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "disc-method-axes-s1",
+   "q": "When $R$ is revolved about the $y$-axis, write the radius $r(y)$ of the disc at height $y$.",
+   "expr": {
+    "answer": "sqrt(y)",
+    "vars": [
+     "y"
+    ],
+    "domain": [
+     0.1,
+     4
+    ],
+    "lhs": "r(y) =",
+    "mistakes": [
+     {
+      "expr": "y^2",
+      "why": "That squares $y$. The curve $y = x^2$ solved for $x$ is $x = \\sqrt{y}$, and the radius is that horizontal distance."
+     },
+     {
+      "expr": "4 - y",
+      "why": "That is a vertical distance up to the line $y = 4$. A disc turning about the $y$-axis has a horizontal radius: from the axis out to the curve."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The radius is the distance from the axis ($x = 0$) to the curve at height $y$: $x = \\sqrt{y}$."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-4",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "disc-method-axes-s1",
+   "q": "The solid from revolving $R$ about the $y$-axis is cut by the plane $y = 3$. Find the area of that cross section.",
+   "numeric": {
+    "answer": "3*pi",
+    "mistakes": [
+     {
+      "value": "9*pi",
+      "why": "That uses $y = 3$ as the radius. The radius is $\\sqrt{3}$, and $\\pi(\\sqrt{3})^2 = 3\\pi$."
+     },
+     {
+      "value": "sqrt(3)*pi",
+      "why": "Square the radius: $\\pi r^2 = \\pi(\\sqrt{3})^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At $y = 3$ the cross section is a disc of radius $\\sqrt{3}$, with area $\\pi(\\sqrt{3})^2 = 3\\pi$."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-5",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "disc-method-axes-s1",
+   "q": "When $R$ is revolved about the $y$-axis, each thin slice of the solid is",
+   "options": [
+    "a horizontal disc with radius $\\sqrt{y}$ and thickness $\\Delta y$",
+    "a vertical disc with radius $x^2$ and thickness $\\Delta x$",
+    "a horizontal disc with radius $y$ and thickness $\\Delta y$",
+    "a vertical disc with radius $4 - x^2$ and thickness $\\Delta x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Slices are perpendicular to the axis of rotation. For the $y$-axis they are horizontal, stacked in $y$, with radius from the axis to the curve, $\\sqrt{y}$.",
+    "options": [
+     "Perpendicular to the $y$-axis, radius $\\sqrt{y}$.",
+     "Vertical slices belong to a horizontal axis. About the $y$-axis the slices are horizontal.",
+     "$y$ is the height of the slice, not its radius.",
+     "Vertical slices belong to a horizontal axis, and $4 - x^2$ is a height, not a distance from the $y$-axis."
+    ]
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-6",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "disc-method-axes-s2",
+   "q": "A vase is the solid formed by revolving the shaded region about the $x$-axis, with $x$ and $y$ in centimeters. Which expression gives its volume?",
+   "options": [
+    "$\\pi\\int_0^{12} \\left(4 + \\sin\\left(\\frac{x}{2}\\right)\\right)^2\\,dx$",
+    "$\\pi\\int_0^{12} \\left(4 + \\sin\\left(\\frac{x}{2}\\right)\\right)\\,dx$",
+    "$\\int_0^{12} \\left(4 + \\sin\\left(\\frac{x}{2}\\right)\\right)^2\\,dx$",
+    "$\\pi\\int_0^{12} \\left(16 + \\sin^2\\left(\\frac{x}{2}\\right)\\right)\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each slice is a disc of radius $4 + \\sin\\left(\\frac{x}{2}\\right)$ and area $\\pi r^2$.",
+    "options": [
+     "$\\pi r^2$, integrated along the axis from 0 to 12.",
+     "The radius is not squared.",
+     "The $\\pi$ is missing from the disc's area.",
+     "$(a + b)^2$ is not $a^2 + b^2$: the middle term $8\\sin\\left(\\frac{x}{2}\\right)$ is missing."
+    ]
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-7",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "numeric",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "disc-method-axes-s2",
+   "q": "Find the volume of the vase.",
+   "numeric": {
+    "answer": 624.8802519370885,
+    "unit": "cubic centimeters",
+    "askUnit": true,
+    "units": [
+     "cm^3",
+     "cm³",
+     "cc",
+     "cubic cm"
+    ],
+    "mistakes": [
+     {
+      "value": 151.04670484201796,
+      "why": "The radius was not squared. Each disc has area $\\pi r^2$."
+     },
+     {
+      "value": 198.90556187259307,
+      "why": "The $\\pi$ is missing: multiply the integral of $r^2$ by $\\pi$."
+     },
+     {
+      "value": 622.8781921794382,
+      "why": "You squared each term separately. $\\left(4 + \\sin\\left(\\frac{x}{2}\\right)\\right)^2$ has a middle term $8\\sin\\left(\\frac{x}{2}\\right)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V = \\pi\\int_0^{12} \\left(4 + \\sin\\left(\\frac{x}{2}\\right)\\right)^2\\,dx = 624.88025\\ldots$, so $624.880$ cubic centimeters (radian mode)."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-8",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "numeric",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "disc-method-axes-s2",
+   "q": "The vase is filled with water to a depth of 6 centimeters (from $x = 0$ to $x = 6$). Find the volume of the water.",
+   "numeric": {
+    "answer": 411.4845104719075,
+    "mistakes": [
+     {
+      "value": 312.44012596854424,
+      "why": "That is half of the vase's volume. The vase is wider near the bottom, so integrate from 0 to 6."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\pi\\int_0^{6} \\left(4 + \\sin\\left(\\frac{x}{2}\\right)\\right)^2\\,dx = 411.48451\\ldots$, so $411.485$ cubic centimeters. More than half the water fits in the lower half, where $\\sin\\left(\\frac{x}{2}\\right) > 0$."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-9",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "numeric",
+   "practice": "1.D",
+   "level": "analyze",
+   "diff": 2,
+   "calc": true,
+   "stimulus": "disc-method-axes-s2",
+   "q": "Find the average value of the area of the vase's circular cross sections over $0 \\le x \\le 12$.",
+   "numeric": {
+    "answer": 52.07335432809071,
+    "unit": "square centimeters",
+    "askUnit": true,
+    "units": [
+     "cm^2",
+     "cm²",
+     "sq cm"
+    ],
+    "mistakes": [
+     {
+      "value": 624.8802519370885,
+      "why": "That is the volume. The average value divides the integral of the area by the length, 12."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Average of $A(x) = \\pi\\left(4 + \\sin\\left(\\frac{x}{2}\\right)\\right)^2$ on $[0, 12]$: $\\frac{1}{12}\\int_0^{12} A(x)\\,dx = \\frac{624.880\\ldots}{12} = 52.07335\\ldots$, so $52.073$ square centimeters."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-10",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The region under $y = \\frac{1}{x}$ for $1 \\le x \\le 3$ is revolved about the $x$-axis. Find the volume.",
+   "numeric": {
+    "answer": "2*pi/3",
+    "mistakes": [
+     {
+      "value": "pi*ln(3)",
+      "why": "That is $\\pi\\int_1^3 \\frac{1}{x}\\,dx$: the radius was not squared. Use $\\pi\\int_1^3 \\frac{1}{x^2}\\,dx$."
+     },
+     {
+      "value": "2/3",
+      "why": "The $\\pi$ from the disc's area is missing."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V = \\pi\\int_1^3 \\frac{1}{x^2}\\,dx = \\pi\\left[-\\frac{1}{x}\\right]_1^3 = \\pi\\left(-\\frac{1}{3} + 1\\right) = \\frac{2\\pi}{3}$."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-11",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The region under $y = e^x$ for $0 \\le x \\le 1$ is revolved about the $x$-axis. Find the volume.",
+   "numeric": {
+    "answer": "pi*(e^2 - 1)/2",
+    "mistakes": [
+     {
+      "value": "pi*(e - 1)",
+      "why": "The radius $e^x$ was not squared. $(e^x)^2 = e^{2x}$."
+     },
+     {
+      "value": "pi*(e^2 - 1)",
+      "why": "An antiderivative of $e^{2x}$ is $\\frac{1}{2}e^{2x}$: divide by the 2 from the chain rule."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V = \\pi\\int_0^1 e^{2x}\\,dx = \\pi \\cdot \\frac{e^{2x}}{2}\\Big|_0^1 = \\frac{\\pi(e^2 - 1)}{2}$."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-12",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The region under $y = \\sqrt{\\sin x}$ for $0 \\le x \\le \\pi$ is revolved about the $x$-axis. Find the volume.",
+   "numeric": {
+    "answer": "2*pi",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "The $\\pi$ from the disc's area is missing."
+     },
+     {
+      "value": 0,
+      "why": "An antiderivative of $\\sin x$ is $-\\cos x$: $-\\cos\\pi + \\cos 0 = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$r^2 = \\sin x$, so $V = \\pi\\int_0^\\pi \\sin x\\,dx = \\pi\\left[-\\cos x\\right]_0^\\pi = 2\\pi$."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-13",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The region bounded by $x = e^y$, the $y$-axis, $y = 0$ and $y = \\ln 2$ is revolved about the $y$-axis. Find the volume.",
+   "numeric": {
+    "answer": "3*pi/2",
+    "mistakes": [
+     {
+      "value": "pi",
+      "why": "That is $\\pi\\int_0^{\\ln 2} e^y\\,dy$: the radius $e^y$ was not squared."
+     },
+     {
+      "value": "3*pi",
+      "why": "An antiderivative of $e^{2y}$ is $\\frac{1}{2}e^{2y}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Horizontal discs of radius $e^y$: $V = \\pi\\int_0^{\\ln 2} e^{2y}\\,dy = \\frac{\\pi}{2}\\left(e^{2\\ln 2} - 1\\right) = \\frac{\\pi}{2}(4 - 1) = \\frac{3\\pi}{2}$."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-14",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The triangle under $y = \\frac{x}{2}$ for $0 \\le x \\le 6$ is revolved about the $x$-axis. The solid is a cone with radius 3 and height 6. What volume does the disc method give?",
+   "options": [
+    "$18\\pi$",
+    "$9\\pi$",
+    "$54\\pi$",
+    "$36\\pi$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$V = \\pi\\int_0^6 \\frac{x^2}{4}\\,dx = \\pi \\cdot \\frac{216}{12} = 18\\pi$, which matches the cone formula $\\frac{1}{3}\\pi(3)^2(6) = 18\\pi$.",
+    "options": [
+     "It agrees with $\\frac{1}{3}\\pi r^2 h$.",
+     "$\\pi\\int_0^6 \\frac{x}{2}\\,dx = 9\\pi$: the radius was not squared.",
+     "$54\\pi$ is the cylinder $\\pi(3)^2(6)$, three times the cone: the antiderivative of $x^2$ needs the division by 3.",
+     "$36\\pi$ comes from writing $\\left(\\frac{x}{2}\\right)^2$ as $\\frac{x^2}{2}$: square the 2 as well, $\\frac{x^2}{4}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-15",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "The region under $y = \\sqrt{9 - x^2}$ (a half disk) is revolved about the $x$-axis, giving a ball. Find its volume with the disc method.",
+   "numeric": {
+    "answer": "36*pi",
+    "mistakes": [
+     {
+      "value": "18*pi",
+      "why": "That is $\\pi\\int_0^3 (9 - x^2)\\,dx$, half the ball. The region runs from $x = -3$ to $x = 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$V = \\pi\\int_{-3}^{3} (9 - x^2)\\,dx = \\pi(54 - 18) = 36\\pi$, the same as $\\frac{4}{3}\\pi(3)^3$."
+   }
+  },
+  {
+   "id": "calc-disc-method-axes-16",
+   "unit": "unit-8",
+   "topic": "disc-method-axes",
+   "type": "multi",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The region under $y = f(x) \\ge 0$ on $[a, b]$ is revolved about the $x$-axis. Which statements are true? Select all that apply.",
+   "options": [
+    "Each slice is a disc of radius $f(x)$ and area $\\pi f(x)^2$",
+    "The volume is $\\pi\\int_a^b f(x)^2\\,dx$",
+    "The volume is $\\pi\\left(\\int_a^b f(x)\\,dx\\right)^2$",
+    "For $f(x) = 2$ on $[0, 3]$, the volume is $6\\pi$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The radius is the distance from the $x$-axis to the curve, $f(x)$. Each disc's area is $\\pi f(x)^2$; integrate it.",
+    "options": [
+     "True: radius from the axis to the curve.",
+     "True: the disc method.",
+     "False: square inside the integral, slice by slice.",
+     "False: that solid is a cylinder of radius 2 and length 3, with volume $\\pi(2)^2(3) = 12\\pi$."
+    ]
+   }
+  }
+ ]
+}

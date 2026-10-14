@@ -1,0 +1,491 @@
+{
+ "stimuli": {
+  "infinite-limits-s1": {
+   "kind": "table",
+   "title": "A rational function $R$",
+   "table": {
+    "caption": "The function R and its factored form",
+    "cols": [
+     "Form",
+     "Formula"
+    ],
+    "rows": [
+     [
+      "Given",
+      "$R(x) = \\frac{x + 1}{x^2 - x - 2}$"
+     ],
+     [
+      "Factored",
+      "$R(x) = \\frac{x + 1}{(x - 2)(x + 1)}$"
+     ]
+    ]
+   }
+  },
+  "infinite-limits-s2": {
+   "kind": "graph",
+   "title": "The graph of $g$",
+   "plot": {
+    "label": "Graph of g(x) = 2/(x - 1) + 1/(x + 2)^2 with dashed vertical asymptotes at x = -2, where the graph rises without bound on both sides, and at x = 1, where it falls without bound on the left and rises without bound on the right",
+    "x": [
+     -5,
+     4
+    ],
+    "y": [
+     -6,
+     6
+    ],
+    "xStep": 1,
+    "yStep": 2,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "2/(x - 1) + 1/(x + 2)^2",
+      "domain": [
+       -5,
+       4
+      ],
+      "label": "g",
+      "samples": 1200
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": -2
+     },
+     {
+      "x": 1
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-infinite-limits-1",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "infinite-limits-s1",
+   "q": "Which lines are vertical asymptotes of the graph of $R$?",
+   "options": [
+    "The line $x = 2$, and no other",
+    "The lines $x = 2$ and $x = -1$",
+    "The line $x = -1$, and no other",
+    "No line; $R$ has no vertical asymptote"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The factor $x + 1$ cancels, so $R(x) = \\frac{1}{x - 2}$ for $x \\ne -1$: a hole at $x = -1$. The factor $x - 2$ stays in the denominator, so $R$ is unbounded near 2.",
+    "options": [
+     "$x - 2$ remains in the denominator after cancelling; $x + 1$ does not.",
+     "At $x = -1$ the zero factor cancels, leaving a hole, not an asymptote.",
+     "$x = -1$ is a hole. The asymptote is where the uncanceled factor $x - 2$ is 0.",
+     "Near $x = 2$, $R(x) = \\frac{1}{x - 2}$ grows without bound."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-2",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "infinite-limits-s1",
+   "q": "Find $\\lim_{x \\to 2^-} R(x)$.",
+   "options": [
+    "$\\infty$",
+    "$-\\infty$",
+    "$0$",
+    "$-\\frac{1}{3}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Near 2, $R(x) = \\frac{1}{x - 2}$. For $x$ slightly less than 2, $x - 2$ is a tiny negative number, so $\\frac{1}{x - 2}$ is a huge negative number: $\\lim_{x \\to 2^-} R(x) = -\\infty$.",
+    "options": [
+     "That is the right-hand limit, where $x - 2 > 0$.",
+     "Positive 1 over a tiny negative number is very negative.",
+     "The numerator is 1, not 0, while the denominator shrinks.",
+     "$-\\frac{1}{3}$ is the height of the hole at $x = -1$."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-3",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "infinite-limits-s1",
+   "q": "Find $\\lim_{x \\to -1} R(x)$.",
+   "numeric": {
+    "answer": "-1/3",
+    "mistakes": [
+     {
+      "value": "1/3",
+      "why": "After cancelling, $R(x) = \\frac{1}{x - 2}$, and at $x = -1$ the denominator is $-3$, so the limit is negative."
+     },
+     {
+      "value": 0,
+      "why": "Substitution gives $\\frac{0}{0}$, which is not 0. Cancel $x + 1$ first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $x \\ne -1$, $R(x) = \\frac{1}{x - 2}$, so $\\lim_{x \\to -1} R(x) = \\frac{1}{-3} = -\\frac{1}{3}$. The graph has a hole there, not an asymptote."
+   }
+  },
+  {
+   "id": "calc-infinite-limits-4",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "infinite-limits-s1",
+   "q": "Which statement about $\\lim_{x \\to 2} R(x)$ is correct?",
+   "options": [
+    "$\\lim_{x \\to 2} R(x) = \\infty$, because $R$ is unbounded on both sides of 2",
+    "$\\lim_{x \\to 2} R(x) = 0$, because $\\frac{1}{x - 2}$ has a numerator of 1",
+    "It does not exist; the sides go to $-\\infty$ and $\\infty$",
+    "It exists, because both one-sided limits are infinite in the same way"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\lim_{x \\to 2^-} R(x) = -\\infty$ and $\\lim_{x \\to 2^+} R(x) = \\infty$. The sides head in opposite directions, so not even $\\infty$ or $-\\infty$ describes the two-sided behavior.",
+    "options": [
+     "Writing $= \\infty$ for the two-sided limit needs both sides to go to $+\\infty$; here the left goes to $-\\infty$.",
+     "A fixed numerator over a shrinking denominator grows without bound.",
+     "Opposite signs on the two sides: describe each side separately.",
+     "They are infinite in opposite directions; and an infinite limit is never a number anyway."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-5",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "infinite-limits-s2",
+   "q": "Based on the graph, which describes $g$ near $x = -2$?",
+   "options": [
+    "$\\lim_{x \\to -2} g(x) = -\\infty$",
+    "$\\lim_{x \\to -2^-} g(x) = -\\infty$ and $\\lim_{x \\to -2^+} g(x) = \\infty$",
+    "$\\lim_{x \\to -2} g(x) = 0$",
+    "$\\lim_{x \\to -2} g(x) = \\infty$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "On both sides of $x = -2$ the graph rises without bound, so $\\lim_{x \\to -2} g(x) = \\infty$.",
+    "options": [
+     "The graph goes up, not down, near $-2$.",
+     "The left side also rises near $-2$.",
+     "Near $-2$ the values are huge, not near 0.",
+     "Both sides go up: the two-sided behavior is $\\infty$."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-6",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "infinite-limits-s2",
+   "q": "Which describes $g$ near $x = 1$?",
+   "options": [
+    "$\\lim_{x \\to 1^-} g(x) = -\\infty$ and $\\lim_{x \\to 1^+} g(x) = \\infty$",
+    "$\\lim_{x \\to 1^-} g(x) = \\infty$ and $\\lim_{x \\to 1^+} g(x) = -\\infty$",
+    "$\\lim_{x \\to 1} g(x) = \\infty$ from both sides of $x = 1$",
+    "$\\lim_{x \\to 1} g(x) = 0$, since the graph crosses the axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Left of 1 the graph plunges down; right of 1 it shoots up. Each one-sided limit is infinite, with opposite signs.",
+    "options": [
+     "Down on the left, up on the right.",
+     "The directions are reversed.",
+     "The left side heads down, not up.",
+     "Near 1 the graph is unbounded; crossing the axis elsewhere does not matter."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-7",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "multi",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "infinite-limits-s2",
+   "q": "Which statements about $g$ are true?",
+   "options": [
+    "$x = -2$ is a vertical asymptote of the graph",
+    "$\\lim_{x \\to 1} g(x) = \\infty$",
+    "$\\lim_{x \\to 1^+} g(x) = -\\infty$",
+    "$g(-2) = \\infty$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "An infinite limit describes unbounded behavior near a point. It is not a value of the function.",
+    "options": [
+     "$g$ is unbounded near $-2$.",
+     "From the left, $g$ decreases without bound, so the two-sided statement is false.",
+     "Right of 1 the graph rises without bound, so this limit is $\\infty$.",
+     "$\\infty$ is not a value; $g(-2)$ is undefined."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-8",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "infinite-limits-s2",
+   "q": "What does the statement $\\lim_{x \\to -2} g(x) = \\infty$ mean?",
+   "options": [
+    "$g(-2)$ equals $\\infty$, a very large number that the graph reaches",
+    "$g(x)$ grows without bound near $-2$; the limit is not a number",
+    "The limit exists and equals the largest value of $g$ on the graph",
+    "$g$ approaches the horizontal line $y = \\infty$ as $x$ nears $-2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\infty$ is not a number. Writing $= \\infty$ is a precise way of saying how the limit fails to exist: the values grow beyond every bound.",
+    "options": [
+     "$g(-2)$ is undefined, and $\\infty$ is not a number a function can equal.",
+     "An infinite limit is a kind of limit that does not exist, described by its direction.",
+     "$g$ has no largest value near $-2$; that is the point.",
+     "There is no line $y = \\infty$; the graph runs along the vertical asymptote $x = -2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-9",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to 3^+} \\frac{x + 1}{3 - x}$.",
+   "options": [
+    "$\\infty$",
+    "$-1$",
+    "$-\\infty$",
+    "$4$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "As $x \\to 3^+$, the numerator approaches 4 (positive) and $3 - x$ is a tiny negative number. Positive over tiny negative: $-\\infty$.",
+    "options": [
+     "Check the sign of $3 - x$ for $x$ just above 3: it is negative.",
+     "$-1$ is the ratio of the $x$ coefficients, which describes behavior far from 3, not near it.",
+     "$x > 3$ makes $3 - x$ negative.",
+     "4 is the numerator's limit; the denominator heads to 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-10",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\lim_{x \\to 0^+} \\ln x$.",
+   "options": [
+    "$0$",
+    "$\\infty$",
+    "$1$",
+    "$-\\infty$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "As $x$ shrinks toward 0 from the right, $\\ln x$ decreases without bound: $\\ln 0.01 \\approx -4.6$, $\\ln 0.0001 \\approx -9.2$. The graph of $\\ln x$ has the vertical asymptote $x = 0$.",
+    "options": [
+     "$\\ln 1 = 0$, but the input here goes to 0, not 1.",
+     "$\\ln x$ is negative for $0 < x < 1$.",
+     "$\\ln e = 1$; that is a value, not this limit.",
+     "Small positive inputs give large negative logarithms."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-11",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to \\frac{\\pi}{2}^-} \\tan x$.",
+   "options": [
+    "$\\infty$",
+    "$-\\infty$",
+    "$1$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\tan x = \\frac{\\sin x}{\\cos x}$. Just left of $\\frac{\\pi}{2}$, $\\sin x$ is near 1 and $\\cos x$ is a tiny positive number, so $\\tan x$ grows without bound: $\\lim_{x \\to \\frac{\\pi}{2}^-} \\tan x = \\infty$.",
+    "options": [
+     "Positive over tiny positive grows without bound.",
+     "That is the right-hand limit, where $\\cos x < 0$.",
+     "$\\tan x = 1$ at $\\frac{\\pi}{4}$, not near $\\frac{\\pi}{2}$.",
+     "$\\tan x = 0$ at $0$ and $\\pi$."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-12",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\lim_{x \\to 4} \\frac{x - 6}{(x - 4)^2}$.",
+   "options": [
+    "$\\infty$",
+    "$-\\infty$",
+    "It does not exist, and it is not $\\pm\\infty$",
+    "$-\\frac{1}{2}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The numerator approaches $-2$. The denominator $(x - 4)^2$ is a tiny positive number on both sides of 4. Negative over tiny positive: $-\\infty$ from both sides, so $\\lim_{x \\to 4} \\frac{x - 6}{(x - 4)^2} = -\\infty$.",
+    "options": [
+     "The numerator is negative near 4.",
+     "A square is positive on both sides, so both sides go to $-\\infty$.",
+     "Both sides agree on $-\\infty$, so the two-sided behavior is $-\\infty$.",
+     "The denominator approaches 0, so the quotient cannot settle on a number."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-13",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What are the vertical asymptotes of $f(x) = \\frac{x^2 - 9}{x^2 - 2x - 3}$?",
+   "options": [
+    "$x = 3$ and $x = -1$",
+    "$x = 3$, and no other line",
+    "$x = -1$, and no other",
+    "$x = 3$ and $x = -3$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$f(x) = \\frac{(x - 3)(x + 3)}{(x - 3)(x + 1)} = \\frac{x + 3}{x + 1}$ for $x \\ne 3$. The factor $x - 3$ cancels (a hole), and $x + 1$ stays: one asymptote, $x = -1$.",
+    "options": [
+     "At $x = 3$ the factor cancels, so $\\lim_{x \\to 3} f(x) = \\frac{3}{2}$: a hole.",
+     "$x = 3$ is the hole; the asymptote is $x = -1$.",
+     "Only the uncanceled factor $x + 1$ gives an asymptote.",
+     "$x = -3$ makes the numerator 0, which gives a zero of $f$."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-14",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "numeric",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For which value of $k$ is $x = 2$ NOT a vertical asymptote of $f(x) = \\frac{x + k}{x^2 - 4}$?",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "With $k = 2$ the numerator $x + 2$ cancels the factor $x + 2$, removing the asymptote at $x = -2$. To remove $x = 2$, the numerator must contain $x - 2$, so $k = -2$."
+     },
+     {
+      "value": 4,
+      "why": "The denominator factors as $(x - 2)(x + 2)$. Cancel $x - 2$ by making the numerator $x - 2$: $k = -2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x^2 - 4 = (x - 2)(x + 2)$. If $k = -2$, then $f(x) = \\frac{x - 2}{(x - 2)(x + 2)} = \\frac{1}{x + 2}$ for $x \\ne 2$, which has a finite limit $\\frac{1}{4}$ at 2: a hole, not an asymptote. For any other $k$ the numerator is not 0 at 2, so $f$ is unbounded there."
+   }
+  },
+  {
+   "id": "calc-infinite-limits-15",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement justifies that $x = 3$ is a vertical asymptote of $f(x) = \\frac{5}{x - 3}$?",
+   "options": [
+    "$f(3)$ is undefined",
+    "The denominator of $f$ is 0 when $x = 3$",
+    "$\\lim_{x \\to 3} (x - 3) = 0$",
+    "$\\lim_{x \\to 3^+} f(x) = \\infty$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A vertical asymptote $x = c$ is defined by an infinite one-sided limit at $c$. Here $\\lim_{x \\to 3^+} \\frac{5}{x - 3} = \\infty$.",
+    "options": [
+     "Undefined points can be holes; that alone does not show an asymptote.",
+     "A zero denominator can come with a zero numerator and a hole; the limit must be shown infinite.",
+     "This is about the denominator only, not about the behavior of $f$.",
+     "One infinite one-sided limit is exactly what a vertical asymptote means."
+    ]
+   }
+  },
+  {
+   "id": "calc-infinite-limits-16",
+   "unit": "unit-1",
+   "topic": "infinite-limits",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says: \"$\\lim_{x \\to 2} \\frac{1}{(x - 2)^2} = \\infty$, so this limit exists.\" What is the best response?",
+   "options": [
+    "It does not exist; $= \\infty$ describes how the values grow",
+    "It exists, because both sides of 2 agree on the value $\\infty$",
+    "It exists, but just from the right side of $x = 2$",
+    "It does not exist, because the two sides go in opposite ways"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\infty$ is not a real number, so an infinite limit is a limit that does not exist. Writing $= \\infty$ adds information: the values grow without bound in the positive direction on both sides.",
+    "options": [
+     "\"Equals infinity\" is notation for a specific way of not existing.",
+     "Both sides do agree in direction, which is why we may write $= \\infty$; but $\\infty$ is not a value.",
+     "Both one-sided limits behave the same way; neither is a number.",
+     "$(x - 2)^2 > 0$ on both sides, so both sides go up."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+{
+ "power-rule": {
+  "def": "For any real number $r$, $\\frac{d}{dx}\\left( x^r \\right) = r x^{r - 1}$: bring the exponent down and lower it by one. Roots and reciprocals are rewritten as powers first, such as $\\sqrt{x} = x^{1/2}$ and $\\frac{1}{x^2} = x^{-2}$."
+ }
+}

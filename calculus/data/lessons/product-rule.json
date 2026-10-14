@@ -1,0 +1,84 @@
+{
+ "topic": "product-rule",
+ "hook": "A store's revenue is price times the number of items sold. If the price rises while sales fall, how fast is revenue changing? Both factors are moving at once, and the answer is not the product of their rates. The product rule tells you exactly how two changing factors combine.",
+ "prereq": [
+  {
+   "q": "$\\frac{d}{dx}(\\sin x)$ is",
+   "options": [
+    "$\\cos x$",
+    "$-\\cos x$",
+    "$-\\sin x$",
+    "$\\sin x$"
+   ],
+   "correct": 0,
+   "why": "The slopes of sine are the values of cosine.",
+   "review": "derivatives-sin-cos-exp-ln"
+  },
+  {
+   "q": "$\\frac{d}{dx}\\left( e^x \\right)$ is",
+   "options": [
+    "$e^x$",
+    "$xe^{x - 1}$",
+    "$e$",
+    "$1$"
+   ],
+   "correct": 0,
+   "why": "$e^x$ is its own derivative.",
+   "review": "derivatives-sin-cos-exp-ln"
+  },
+  {
+   "q": "If $h(x) = 3f(x)$, then $h'(x)$ is",
+   "options": [
+    "$3f'(x)$",
+    "$3 + f'(x)$",
+    "$f'(x)$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": "Constant multiple rule: the factor 3 rides along.",
+   "review": "basic-derivative-rules"
+  }
+ ],
+ "figure": {
+  "figure": "product-rule-area",
+  "caption": "When both sides of a rectangle grow, its area $fg$ gains two strips, $g\\,\\Delta f$ and $f\\,\\Delta g$, plus a tiny corner that vanishes in the limit. That is the product rule."
+ },
+ "chain": [
+  {
+   "cause": "Both factors of $f(x)g(x)$ change as $x$ changes",
+   "effect": "the change in the product has two main parts: $g$ times the change in $f$, and $f$ times the change in $g$"
+  },
+  {
+   "cause": "The extra piece $\\Delta f \\, \\Delta g$ is a product of two small changes",
+   "effect": "after dividing by $\\Delta x$ it still goes to 0"
+  },
+  {
+   "cause": "Divide by $\\Delta x$ and take the limit",
+   "effect": "$(fg)' = f'g + fg'$"
+  },
+  {
+   "cause": "Three factors",
+   "effect": "differentiate one factor at a time and add: $(fgk)' = f'gk + fg'k + fgk'$"
+  }
+ ],
+ "ideas": [
+  "The <b>product rule</b>: $\\frac{d}{dx}\\left( f(x)g(x) \\right) = f'(x)g(x) + f(x)g'(x)$.",
+  "In words: derivative of the first times the second, plus the first times the derivative of the second.",
+  "The derivative of a product is NOT the product of the derivatives: $(x \\cdot x)' = 2x$, but $1 \\cdot 1 = 1$.",
+  "From a table: $(fg)'(a) = f'(a)g(a) + f(a)g'(a)$ uses both the value columns and the derivative columns.",
+  "If one factor is a constant, the product rule reduces to the constant multiple rule."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{d}{dx}\\left( f(x)g(x) \\right) = f'(x)g'(x)$.",
+  "right": "Try $f(x) = g(x) = x$: the product is $x^2$, whose derivative is $2x$, but $f'g' = 1$. Each factor's change is multiplied by the other factor's value, and the two contributions add: $(fg)' = f'g + fg'$."
+ },
+ "check": [
+  "calc-product-rule-1",
+  "calc-product-rule-2",
+  "calc-product-rule-3",
+  "calc-product-rule-4",
+  "calc-product-rule-9",
+  "calc-product-rule-14"
+ ],
+ "summary": "When two factors both change, the product changes by each factor's change times the other factor: $(fg)' = f'g + fg'$. It is never just $f'g'$. For three factors, differentiate one at a time and add the three terms. From a table, the rule needs the values as well as the derivatives."
+}

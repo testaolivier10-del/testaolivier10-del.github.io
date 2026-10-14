@@ -79,7 +79,7 @@
         '<tr><th scope="row">I</th>' + p.c0.map(function(v){ return '<td>' + M.fmt(v, 3) + '</td>'; }).join('') + '</tr>' +
         '<tr><th scope="row">C</th>' + sp.map(function(s){ return '<td>' + M.coefText(s.nu) + '</td>'; }).join('') + '</tr>' +
         '<tr class="is-active"><th scope="row">E</th>' + sp.map(function(s, i){ return '<td>' + M.fmt(p.c0[i], 3) + ' ' + (s.nu < 0 ? '−' : '+') + ' ' + (Math.abs(s.nu) > 1 ? Math.abs(s.nu) : '') + 'x<br><b>' + M.fmt(E[i], 3) + '</b></td>'; }).join('') + '</tr></tbody></table></div>';
-      var W = 320, H = 170, L = 34, B = 30, Tp = 8, pw = W - L - 8, ph = H - Tp - B, n = sp.length, gw = pw / n, g = [];
+      var fb = T.fitBox($('.ic-chart'), 320, 170, { w: 150, h: 120 }), W = fb.w, H = fb.h, L = 34, B = 30, Tp = fb.fit ? 22 : 8, pw = W - L - 8, ph = H - Tp - B, n = sp.length, gw = pw / n, g = [];
       var y = function(v){ return Tp + ph - Math.max(0, Math.min(top, v)) / top * ph; };
       g.push('<line class="axis" x1="' + L + '" x2="' + (L + pw) + '" y1="' + (Tp + ph) + '" y2="' + (Tp + ph) + '"/>');
       for(var i = 0; i < n; i++){
@@ -90,7 +90,7 @@
         g.push('<text class="tick" x="' + (cx + 3 + bw / 2).toFixed(1) + '" y="' + (y(E[i]) - 4).toFixed(1) + '" text-anchor="middle">' + M.fmt(E[i], 3) + '</text>');
         g.push('<text class="lbl" x="' + cx.toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle">' + esc(plain(sp[i].html)) + '</text>');
       }
-      g.push('<rect class="ic-bi" x="' + L + '" y="2" width="10" height="10"/><text class="tick" x="' + (L + 14) + '" y="11">start</text><rect class="ic-be" x="' + (L + 52) + '" y="2" width="10" height="10"/><text class="tick" x="' + (L + 66) + '" y="11">at this x (M)</text>');
+      g.push('<rect class="ic-bi" x="' + L + '" y="2" width="10" height="10"/><text class="tick" x="' + (L + 14) + '" y="11">start</text><rect class="ic-be" x="' + (L + (fb.fit ? 62 : 52)) + '" y="2" width="10" height="10"/><text class="tick" x="' + (L + (fb.fit ? 76 : 66)) + '" y="11">at this x (M)</text>');
       $('.ic-chart').innerHTML = '<svg class="chem-svg ic-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Bars: initial (faint) and at this x (solid): ' + esc(sp.map(function(s, i){ return plain(s.html) + ' ' + M.fmt(p.c0[i], 3) + ' to ' + M.fmt(E[i], 3); }).join('; ')) + '.">' + g.join('') + '</svg>';
       var counts = {}; E.forEach(function(v, i){ counts['s' + i] = Math.round(Math.max(0, v) / perP); });
       beaker.update(q > 0 ? { counts: counts, Q: q, K: p.K } : { counts: counts });
@@ -120,6 +120,7 @@
       SP = T.studioPane(pane, s, { stage: [$('.ic-eqn'), $('.ic-live')], dock: [$('.ic-x'), $('.ic-solve')], setup: 'Reaction', moreLabel: 'Another reaction, new numbers',
         why: [$('.ic-why'), $('.ic-setup')], details: [$('.ic-tab')] });
       draw();
+      T.watchBox($('.ic-chart'), draw);
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ic-x input[type=range]'), text: 'Drag x and watch Q move toward K', round: 999 });
     }
     build();
@@ -183,7 +184,7 @@
       draw();
     }
     function draw(){
-      var W = 320, H = 190, L = 34, B = 34, Tp = 14, pw = W - L - 8, ph = H - Tp - B, gw = pw / n;
+      var fb = T.fitBox(chart, 320, 190, { w: 160, h: 120 }), W = fb.w, H = fb.h, L = fb.fit ? 40 : 34, B = 34, Tp = fb.fit ? 18 : 14, pw = W - L - 8, ph = H - Tp - B, gw = pw / n;
       var y = function(v){ return Tp + ph - Math.max(0, Math.min(top, v)) / top * ph; };
       var g = [], tick = top > 1 ? M.round(top / 2, 1) : M.sig(top / 2, 1);
       g.push('<line class="axis" x1="' + L + '" x2="' + (L + pw) + '" y1="' + (Tp + ph) + '" y2="' + (Tp + ph) + '"/>');
@@ -215,6 +216,7 @@
           'Q = ' + M.fmt(q, 3) + ' vs K = ' + M.fmt(p.K, 3) + (Math.abs(r - 1) <= 0.01 ? ': they match, so this row is at equilibrium.' : Math.abs(r - 1) <= 0.04 ? ': within ' + F(100 * Math.abs(r - 1), 1) + '%, which is the rounding of a three-figure row, so this is the equilibrium.' : r < 1 ? ': Q is still below K' + (useE ? ', so these numbers are not yet the equilibrium.' : '.') : ': Q is above K' + (useE ? ', so too much product: recheck x or the signs.' : '.'))) +
         ' One particle ≈ ' + M.fmt(perP, 2) + ' ' + (p.Kp ? 'atm' : 'M') + '.';
     }
+    T.watchBox(chart, draw);
     return { read: read, checked: checked, draw: draw };
   }
 })();

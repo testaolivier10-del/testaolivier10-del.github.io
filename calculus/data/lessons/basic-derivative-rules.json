@@ -1,0 +1,72 @@
+{
+ "topic": "basic-derivative-rules",
+ "hook": "Two pumps fill a pool, one adding 30 liters a minute and the other 45. Together they add 75 liters a minute: rates add. Triple the first pump's output and its rate triples. These everyday facts are the sum and constant multiple rules, and with the power rule they differentiate every polynomial.",
+ "prereq": [
+  {
+   "q": "$\\frac{d}{dx}\\left( x^4 \\right)$ is",
+   "options": [
+    "$4x^3$",
+    "$4x^4$",
+    "$x^3$",
+    "$3x^4$"
+   ],
+   "correct": 0,
+   "why": "Power rule: bring down 4 and lower the exponent to 3.",
+   "review": "power-rule"
+  },
+  {
+   "q": "$\\frac{d}{dx}\\left( \\sqrt{x} \\right)$ is",
+   "options": [
+    "$\\frac{1}{2\\sqrt{x}}$",
+    "$\\frac{\\sqrt{x}}{2}$",
+    "$2\\sqrt{x}$",
+    "$\\frac{1}{2}x^{3/2}$"
+   ],
+   "correct": 0,
+   "why": "$x^{1/2}$ becomes $\\frac{1}{2}x^{-1/2}$.",
+   "review": "power-rule"
+  }
+ ],
+ "figure": {
+  "figure": "shift-same-slope",
+  "caption": "Adding 3 lifts the graph of $f$ without tilting it: at every $x$, $f$ and $f + 3$ have parallel tangent lines, so $(f + 3)' = f'$."
+ },
+ "chain": [
+  {
+   "cause": "A constant function has a flat graph",
+   "effect": "its derivative is 0: $\\frac{d}{dx}(c) = 0$"
+  },
+  {
+   "cause": "Multiplying $f$ by $k$ stretches every rise by $k$ while runs stay the same",
+   "effect": "every slope is multiplied by $k$: $(kf)' = kf'$"
+  },
+  {
+   "cause": "The change in $f + g$ is the change in $f$ plus the change in $g$",
+   "effect": "rates add: $(f + g)' = f' + g'$, and $(f - g)' = f' - g'$"
+  },
+  {
+   "cause": "A polynomial is a sum of constant multiples of powers of $x$",
+   "effect": "differentiate it term by term with the power rule"
+  }
+ ],
+ "ideas": [
+  "<b>Constant rule</b>: $\\frac{d}{dx}(c) = 0$. Adding a constant shifts a graph up or down and changes no slope.",
+  "<b>Constant multiple rule</b>: $\\frac{d}{dx}\\left( kf(x) \\right) = kf'(x)$.",
+  "<b>Sum and difference rules</b>: $\\frac{d}{dx}\\left( f(x) \\pm g(x) \\right) = f'(x) \\pm g'(x)$.",
+  "Together with the power rule: $\\frac{d}{dx}\\left( 4x^3 - 5x + 2 \\right) = 12x^2 - 5$.",
+  "These rules work on values too: if $h = 3f - 2g$, then $h'(2) = 3f'(2) - 2g'(2)$."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{d}{dx}\\left( 3x^2 + 7 \\right) = 6x + 7$.",
+  "right": "The 7 is a constant term, and the derivative of a constant is 0: adding 7 lifts the graph without changing any slope. So the derivative is $6x$. A constant factor stays ($\\frac{d}{dx}(7x) = 7$); a constant term disappears."
+ },
+ "check": [
+  "calc-basic-derivative-rules-1",
+  "calc-basic-derivative-rules-2",
+  "calc-basic-derivative-rules-3",
+  "calc-basic-derivative-rules-4",
+  "calc-basic-derivative-rules-12",
+  "calc-basic-derivative-rules-13"
+ ],
+ "summary": "Constants added to a function disappear when you differentiate; constant factors stay. Derivatives of sums and differences are sums and differences of derivatives. With the power rule, these rules differentiate any polynomial term by term, and they work on tables of values as well as formulas."
+}

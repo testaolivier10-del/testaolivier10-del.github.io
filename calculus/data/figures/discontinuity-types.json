@@ -1,0 +1,12 @@
+{
+ "discontinuity-types": {
+  "file": "figures/discontinuity-types.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Three graphs, each with a break at x = 2. Removable: the curve has a hole at (2, 3), an open circle, while f(2) = 1 is a closed dot below it; the limit exists. Jump: the left piece ends at a closed dot at (2, 1) and the right piece starts at an open circle at (2, 3); the one-sided limits differ. Infinite: the curve rises without bound on both sides of the dashed vertical asymptote x = 2."
+ }
+}

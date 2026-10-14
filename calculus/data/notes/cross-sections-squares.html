@@ -1,0 +1,45 @@
+<h2>Volume by slicing</h2>
+<p>You know how to find the volume of a box: area of the face times thickness. A loaf of bread is not a box, but each thin slice of it almost is. Its face has some area $A$ and its thickness is small, so the slice's volume is about $A$ times the thickness. Add up the slices and you have the loaf.</p>
+<p>Calculus makes that exact. Put the solid along the $x$-axis and slice it with planes perpendicular to the axis. The slice at position $x$ is a flat shape, a <b>cross section</b>, with area $A(x)$. A slab of thickness $\Delta x$ there has volume about $A(x)\,\Delta x$. Adding the slabs is a Riemann sum for $A$, and letting them get thin gives</p>
+$$V = \int_a^b A(x)\,dx.$$
+<p>Everything in this topic, and in the next one, comes down to finding $A(x)$.</p>
+
+<h2>Squares standing on a base</h2>
+<p>A common way to describe a solid: draw a region on the floor (the <b>base</b>), and stand a shape of a given kind on every line across it. In the figure, the base is the region under $y = 4 - x^2$, and on each segment perpendicular to the $x$-axis stands a square. The segment is one side of the square.</p>
+<figure id="fig-squares" data-fig="square-sections-solid"><figcaption>Square slices on the region under $y = 4 - x^2$. The square at $x$ has side $s = 4 - x^2$; the tallest one is at $x = 0$.</figcaption></figure>
+<p>The side of each square is the width of the base across that slice. For a base between a top curve $y = f(x)$ and a bottom curve $y = g(x)$, the side is top minus bottom, exactly the height you used for area between curves:</p>
+$$s(x) = f(x) - g(x), \qquad A(x) = s(x)^2 = \left(f(x) - g(x)\right)^2.$$
+
+<div class="worked">
+<p><b>Worked example.</b> The base of a solid is the region under $y = 4 - x^2$ and above the $x$-axis. Cross sections perpendicular to the $x$-axis are squares. Find the volume.</p>
+<p><b>Limits.</b> $4 - x^2 = 0$ at $x = \pm 2$.</p>
+<p><b>Side.</b> $s = (4 - x^2) - 0 = 4 - x^2$, so $A(x) = (4 - x^2)^2 = 16 - 8x^2 + x^4$.</p>
+<p><b>Volume.</b></p>
+$$V = \int_{-2}^{2} \left(16 - 8x^2 + x^4\right)\,dx = 2\left[16x - \frac{8x^3}{3} + \frac{x^5}{5}\right]_0^2 = 2\left(32 - \frac{64}{3} + \frac{32}{5}\right) = \frac{512}{15}.$$
+<p>The integrand is even, so the integral from $-2$ to $2$ is twice the integral from $0$ to $2$.</p>
+</div>
+
+<h2>Square the difference, not each curve</h2>
+<p>The most common mistake is writing $f(x)^2 - g(x)^2$. That is not the area of anything here. The square's side is the gap between the curves, and you square the gap.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> The base is the region between $y = \sqrt{x}$ and $y = \frac{x}{2}$. Cross sections perpendicular to the $x$-axis are squares. Find the volume.</p>
+<p><b>Limits.</b> $\sqrt{x} = \frac{x}{2}$ at $x = 0$ and $x = 4$; between them $\sqrt{x}$ is on top (at $x = 1$: $1 > \frac{1}{2}$).</p>
+<p><b>Area.</b> $A(x) = \left(\sqrt{x} - \frac{x}{2}\right)^2 = x - x^{3/2} + \frac{x^2}{4}$.</p>
+<p><b>Volume.</b></p>
+$$V = \int_0^4 \left(x - x^{3/2} + \frac{x^2}{4}\right)\,dx = \left[\frac{x^2}{2} - \frac{2}{5}x^{5/2} + \frac{x^3}{12}\right]_0^4 = 8 - \frac{64}{5} + \frac{16}{3} = \frac{8}{15}.$$
+<p>Squaring each curve first would give $\int_0^4 \left(x - \frac{x^2}{4}\right)\,dx = \frac{8}{3}$, five times too big.</p>
+</div>
+
+<h2>Rectangles, other directions, and units</h2>
+<table>
+<thead><tr><th>Slice shape</th><th>Side in the base</th><th>Area $A$</th></tr></thead>
+<tbody>
+<tr><td>Square</td><td>$s$</td><td>$s^2$</td></tr>
+<tr><td>Rectangle of height $h$ (a number)</td><td>$s$</td><td>$s \cdot h$</td></tr>
+<tr><td>Rectangle whose height is $k$ times its base</td><td>$s$</td><td>$k s^2$</td></tr>
+</tbody>
+</table>
+<p>If the slices are perpendicular to the $y$-axis, slice the base horizontally: the side is right minus left, written in $y$, and the integral is in $dy$ between $y$-values.</p>
+<p>Units follow the formula: a side in feet gives an area in square feet, and integrating over feet gives cubic feet. There is no $\pi$ anywhere, because squares and rectangles have none in their area formulas, even when the base has curved edges.</p>
+<p>With a calculator, find the base's crossings numerically and store them, write $\int_a^b \left(f(x) - g(x)\right)^2\,dx$ as your setup, and let the calculator do the integral. Report three decimal places.</p>

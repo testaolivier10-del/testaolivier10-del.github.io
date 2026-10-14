@@ -1,0 +1,5 @@
+{
+ "cross-section": {
+  "def": "The flat shape you get by slicing a solid with a plane, here perpendicular to an axis. If the slice at $x$ has area $A(x)$, the solid's volume is $\\int_a^b A(x)\\,dx$. For squares with side $s(x)$, $A(x) = s(x)^2$."
+ }
+}

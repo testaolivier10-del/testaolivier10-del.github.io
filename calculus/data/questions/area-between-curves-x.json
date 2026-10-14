@@ -1,0 +1,284 @@
+{
+ "stimuli": {
+  "area-between-curves-x-s1": {
+   "kind": "graph",
+   "title": "The region $R$ between $f(x) = 3 + 2x - x^2$ and $g(x) = x^2 - 2x + 3$",
+   "plot": {
+    "label": "Graphs of f(x) = 3 + 2x − x² (a parabola opening down) and g(x) = x² − 2x + 3 (a parabola opening up). They meet at (0, 3) and (2, 3); the region R between them is shaded, with f on top.",
+    "x": [-0.6, 2.6], "y": [0, 5], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
+    "curves": [
+     { "fn": "3 + 2x - x^2", "domain": [-0.6, 2.6], "cls": "s1", "label": "f" },
+     { "fn": "x^2 - 2x + 3", "domain": [-0.6, 2.6], "cls": "s2", "label": "g" }
+    ],
+    "shade": [ { "fn": "3 + 2x - x^2", "fn2": "x^2 - 2x + 3", "domain": [0, 2] } ],
+    "points": [ { "at": [0, 3], "label": "(0, 3)" }, { "at": [2, 3], "label": "(2, 3)" } ],
+    "labels": [ { "at": [1, 3], "text": "R" } ]
+   }
+  },
+  "area-between-curves-x-s2": {
+   "kind": "graph",
+   "title": "The region $S$ between $y = 2\\cos x$ and $y = x^2 - 1$",
+   "plot": {
+    "label": "Graphs of y = 2 cos x and y = x² − 1 for x from −2 to 2. The cosine curve is on top between the two crossing points, near x = −1.27 and x = 1.27, and the region S between them is shaded.",
+    "x": [-2, 2], "y": [-1.5, 2.5], "xStep": 0.5, "yStep": 0.5, "xLabel": "x", "yLabel": "y",
+    "curves": [
+     { "fn": "2cos(x)", "domain": [-2, 2], "cls": "s1", "label": "y = 2cos x" },
+     { "fn": "x^2 - 1", "domain": [-1.85, 1.85], "cls": "s2", "label": "y = x² − 1" }
+    ],
+    "shade": [ { "fn": "2cos(x)", "fn2": "x^2 - 1", "domain": [-1.2654237058693352, 1.2654237058693352] } ],
+    "labels": [ { "at": [0, 0.6], "text": "S" } ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-area-between-curves-x-1", "unit": "unit-8", "topic": "area-between-curves-x", "type": "single", "practice": "1.C", "level": "apply", "diff": 1,
+   "stimulus": "area-between-curves-x-s1",
+   "q": "Which integral gives the area of $R$?",
+   "options": [
+    "$\\int_0^2 \\left[(3 + 2x - x^2) - (x^2 - 2x + 3)\\right]\\,dx$",
+    "$\\int_0^2 \\left[(x^2 - 2x + 3) - (3 + 2x - x^2)\\right]\\,dx$",
+    "$\\int_0^2 (3 + 2x - x^2)\\,dx$",
+    "$\\int_2^4 \\left[(3 + 2x - x^2) - (x^2 - 2x + 3)\\right]\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On $[0, 2]$ the graph of $f$ is on top, so each vertical rectangle has height $f(x) - g(x)$, and the curves meet at $x = 0$ and $x = 2$.",
+    "options": [
+     "Top minus bottom, from the left crossing to the right one.",
+     "Bottom minus top: every rectangle gets a negative height, and the integral comes out as $-\\frac{8}{3}$.",
+     "This is the area under $f$ all the way down to the $x$-axis, which includes the space under $g$.",
+     "The limits are the $y$-values 2 and 4. With $dx$ the limits are $x$-values: the crossings at $x = 0$ and $x = 2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-x-2", "unit": "unit-8", "topic": "area-between-curves-x", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "stimulus": "area-between-curves-x-s1",
+   "q": "Find the area of $R$.",
+   "numeric": {
+    "answer": "8/3",
+    "mistakes": [
+     { "value": "-8/3", "why": "An area is never negative. You subtracted top from bottom: use $f(x) - g(x)$, since $f$ is on top." },
+     { "value": "22/3", "why": "That is $\\int_0^2 f(x)\\,dx$, the area under $f$ down to the $x$-axis. Subtract $g$: the region stops at the lower curve." }
+    ]
+   },
+   "why": { "correct": "$f(x) - g(x) = 4x - 2x^2$, so the area is $\\int_0^2 (4x - 2x^2)\\,dx = \\left[2x^2 - \\frac{2x^3}{3}\\right]_0^2 = 8 - \\frac{16}{3} = \\frac{8}{3}$." }
+  },
+  {
+   "id": "calc-area-between-curves-x-3", "unit": "unit-8", "topic": "area-between-curves-x", "type": "expr", "practice": "1.E", "level": "apply", "diff": 1,
+   "stimulus": "area-between-curves-x-s1",
+   "q": "A thin vertical rectangle in $R$ stands at $x$, for $0 \\le x \\le 2$. Write its height $h(x)$ and simplify.",
+   "expr": {
+    "answer": "4x - 2x^2", "vars": ["x"], "domain": [0, 2], "lhs": "h(x) =",
+    "mistakes": [
+     { "expr": "2x^2 - 4x", "why": "That is bottom minus top, so it is negative on $(0, 2)$. The height is top minus bottom: $f(x) - g(x)$." },
+     { "expr": "6", "why": "You added the two functions. A height between two curves is the difference, top minus bottom." },
+     { "expr": "4x", "why": "Check the parentheses: $(3 + 2x - x^2) - (x^2 - 2x + 3)$ subtracts every term of $g$, so $-x^2 - x^2 = -2x^2$." }
+    ]
+   },
+   "why": { "correct": "$h(x) = (3 + 2x - x^2) - (x^2 - 2x + 3) = 4x - 2x^2$. Subtract every term of $g$: put it in parentheses first." }
+  },
+  {
+   "id": "calc-area-between-curves-x-4", "unit": "unit-8", "topic": "area-between-curves-x", "type": "single", "practice": "2.B", "level": "apply", "diff": 1,
+   "stimulus": "area-between-curves-x-s1",
+   "q": "How do you find the limits of integration for the area of $R$ without the graph?",
+   "options": [
+    "Solve $f(x) = g(x)$, which gives $x = 0$ and $x = 2$",
+    "Solve $f(x) = 0$, which gives where $f$ meets the $x$-axis",
+    "Use the $y$-values where the curves meet, 3 and 3",
+    "Use the lowest and highest points of $R$, $y = 2$ and $y = 4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The region is closed where the curves meet. $3 + 2x - x^2 = x^2 - 2x + 3$ gives $2x^2 - 4x = 0$, so $x = 0$ or $x = 2$.",
+    "options": [
+     "The curves meet where $f(x) = g(x)$; those $x$-values close the region.",
+     "Where $f$ meets the $x$-axis matters for the area under $f$, not for the region between two curves.",
+     "An integral in $dx$ runs between $x$-values. The points meet at $y = 3$, but the limits are their $x$-coordinates.",
+     "Heights of the region are not limits. The limits come from where the curves cross, at $x$-values."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-x-5", "unit": "unit-8", "topic": "area-between-curves-x", "type": "single", "practice": "2.D", "level": "analyze", "diff": 2,
+   "stimulus": "area-between-curves-x-s1",
+   "q": "Where is $R$ tallest, and how tall is it there?",
+   "options": [
+    "At $x = 1$, where $f(x) - g(x) = 2$",
+    "At $x = 1$, where $f(x) = 4$",
+    "At $x = 2$, where the curves meet",
+    "At $x = 0$, where $f(x) - g(x) = 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The height is $h(x) = 4x - 2x^2$, with $h'(x) = 4 - 4x = 0$ at $x = 1$, and $h'$ changes from positive to negative there. $h(1) = 4 - 2 = 2$.",
+    "options": [
+     "$h(1) = 2$ is the largest value of $h(x) = 4x - 2x^2$ on $[0, 2]$.",
+     "4 is the height of the top curve above the $x$-axis. The region's height is top minus bottom: $4 - 2 = 2$.",
+     "Where the curves meet, the height of $R$ is 0, its smallest.",
+     "At $x = 0$ both curves equal 3, so the height there is 0, not 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-x-6", "unit": "unit-8", "topic": "area-between-curves-x", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "area-between-curves-x-s2",
+   "q": "The curves cross at $x = -a$ and $x = a$. Use a calculator to find $a > 0$.",
+   "numeric": {
+    "answer": 1.2654237058693352,
+    "mistakes": [
+     { "value": 1.7317870814737417, "why": "Your calculator is in degree mode. Calculus uses radians: switch modes and solve $2\\cos x = x^2 - 1$ again." }
+    ]
+   },
+   "why": { "correct": "Solve $2\\cos x = x^2 - 1$ with the calculator's intersect or solver (radian mode): $a = 1.26542\\ldots$, so $1.265$. Store the full value for the next steps." }
+  },
+  {
+   "id": "calc-area-between-curves-x-7", "unit": "unit-8", "topic": "area-between-curves-x", "type": "single", "practice": "1.C", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "area-between-curves-x-s2",
+   "q": "With $a$ as in the graph, which expression gives the area of $S$?",
+   "options": [
+    "$\\int_{-a}^{a} \\left(2\\cos x - x^2 + 1\\right)\\,dx$",
+    "$\\int_{-a}^{a} \\left(2\\cos x - x^2 - 1\\right)\\,dx$",
+    "$\\int_{-a}^{a} \\left(x^2 - 1 - 2\\cos x\\right)\\,dx$",
+    "$\\int_{-1}^{1} \\left(2\\cos x - x^2 + 1\\right)\\,dx$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Top minus bottom is $2\\cos x - (x^2 - 1) = 2\\cos x - x^2 + 1$, from crossing to crossing.",
+    "options": [
+     "Subtracting all of $x^2 - 1$ turns $-1$ into $+1$.",
+     "The parentheses were dropped: $2\\cos x - (x^2 - 1)$ is $2\\cos x - x^2 + 1$, not $- 1$.",
+     "This is bottom minus top, which gives a negative number.",
+     "$\\pm 1$ are where $x^2 - 1$ crosses the $x$-axis. The region ends where the two curves cross, at $\\pm a$."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-x-8", "unit": "unit-8", "topic": "area-between-curves-x", "type": "numeric", "practice": "1.D", "level": "apply", "diff": 2, "calc": true,
+   "stimulus": "area-between-curves-x-s2",
+   "q": "Find the area of $S$.",
+   "numeric": {
+    "answer": 4.994907788024035,
+    "mistakes": [
+     { "value": -4.994907788024035, "why": "An area is positive. You integrated bottom minus top; the cosine curve is on top." },
+     { "value": -0.06678703545330979, "why": "The parentheses were dropped: the integrand is $2\\cos x - (x^2 - 1) = 2\\cos x - x^2 + 1$." }
+    ]
+   },
+   "why": { "correct": "Area $= \\int_{-a}^{a} \\left(2\\cos x - (x^2 - 1)\\right)\\,dx = 4.99490\\ldots$, so $4.995$ (or $4.994$ truncated), using the stored value of $a$." }
+  },
+  {
+   "id": "calc-area-between-curves-x-9", "unit": "unit-8", "topic": "area-between-curves-x", "type": "numeric", "practice": "1.D", "level": "analyze", "diff": 3, "calc": true,
+   "stimulus": "area-between-curves-x-s2",
+   "q": "Find the average value of the vertical distance $2\\cos x - (x^2 - 1)$ between the curves on $[-a, a]$.",
+   "numeric": {
+    "answer": 1.9736108012108784,
+    "mistakes": [
+     { "value": 4.994907788024035, "why": "That is the area. The average value divides it by the length of the interval, $2a$." },
+     { "value": 3.9472216024217567, "why": "You divided by $a$. The interval $[-a, a]$ has length $2a$." }
+    ]
+   },
+   "why": { "correct": "Average value $= \\frac{1}{2a}\\int_{-a}^{a} \\left(2\\cos x - x^2 + 1\\right)\\,dx = \\frac{4.99490\\ldots}{2.53084\\ldots} = 1.97361\\ldots$, so $1.974$ (or $1.973$ truncated)." }
+  },
+  {
+   "id": "calc-area-between-curves-x-10", "unit": "unit-8", "topic": "area-between-curves-x", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "Find the area of the region bounded by $y = \\sqrt{x}$ and $y = \\frac{x}{2}$.",
+   "numeric": {
+    "answer": "4/3",
+    "mistakes": [
+     { "value": "-4/3", "why": "On $(0, 4)$, $\\sqrt{x}$ is above $\\frac{x}{2}$ (at $x = 1$: $1 > 0.5$). Subtract in the order top minus bottom." },
+     { "value": "16/3", "why": "That is the area under $y = \\sqrt{x}$ alone. Subtract the line: the region's bottom is $y = \\frac{x}{2}$, not the $x$-axis." }
+    ]
+   },
+   "why": { "correct": "$\\sqrt{x} = \\frac{x}{2}$ gives $x = 0$ or $x = 4$. Area $= \\int_0^4 \\left(\\sqrt{x} - \\frac{x}{2}\\right)\\,dx = \\left[\\frac{2}{3}x^{3/2} - \\frac{x^2}{4}\\right]_0^4 = \\frac{16}{3} - 4 = \\frac{4}{3}$." }
+  },
+  {
+   "id": "calc-area-between-curves-x-11", "unit": "unit-8", "topic": "area-between-curves-x", "type": "expr", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "The line $y = x + 1$ and the parabola $y = x^2 - 1$ bound a region from $x = -1$ to $x = 2$. Write the integrand (top minus bottom) for its area, simplified.",
+   "expr": {
+    "answer": "x + 2 - x^2", "vars": ["x"], "domain": [-1, 2], "lhs": "\\text{integrand} =",
+    "mistakes": [
+     { "expr": "x - x^2", "why": "The parentheses were dropped: $(x + 1) - (x^2 - 1) = x + 1 - x^2 + 1$. Subtracting $-1$ adds 1." },
+     { "expr": "x^2 - x - 2", "why": "That is bottom minus top. At $x = 0$ the line is at 1 and the parabola at $-1$, so the line is on top." }
+    ]
+   },
+   "why": { "correct": "$(x + 1) - (x^2 - 1) = x + 2 - x^2$. The area is $\\int_{-1}^{2} (x + 2 - x^2)\\,dx = \\frac{9}{2}$." }
+  },
+  {
+   "id": "calc-area-between-curves-x-12", "unit": "unit-8", "topic": "area-between-curves-x", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "Find the area of the region bounded by $y = x + 1$ and $y = x^2 - 1$.",
+   "numeric": {
+    "answer": "9/2",
+    "mistakes": [
+     { "value": "10/3", "why": "You integrated from $-1$ to $1$, where $x^2 - 1$ meets the $x$-axis. The limits are where the two curves meet: $x + 1 = x^2 - 1$ gives $x = -1$ and $x = 2$." },
+     { "value": "-9/2", "why": "Bottom minus top gives a negative number. The line is on top: use $(x + 1) - (x^2 - 1)$." }
+    ]
+   },
+   "why": { "correct": "$x^2 - x - 2 = 0$ gives $x = -1, 2$. Area $= \\int_{-1}^{2} (x + 2 - x^2)\\,dx = \\left[\\frac{x^2}{2} + 2x - \\frac{x^3}{3}\\right]_{-1}^{2} = \\frac{10}{3} - \\left(-\\frac{7}{6}\\right) = \\frac{9}{2}$." }
+  },
+  {
+   "id": "calc-area-between-curves-x-13", "unit": "unit-8", "topic": "area-between-curves-x", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "Find the area of the region bounded by $y = e^x$, $y = 1$ and $x = \\ln 3$.",
+   "numeric": {
+    "answer": "2 - ln(3)",
+    "mistakes": [
+     { "value": 2, "why": "That is the area under $y = e^x$ down to the $x$-axis. The region's bottom is $y = 1$: integrate $e^x - 1$." },
+     { "value": "2 + ln(3)", "why": "The bottom is subtracted: $\\int_0^{\\ln 3} (e^x - 1)\\,dx = (3 - 1) - \\ln 3$." }
+    ]
+   },
+   "why": { "correct": "$e^x = 1$ at $x = 0$, so the region runs from $x = 0$ to $x = \\ln 3$ with $e^x$ on top. Area $= \\int_0^{\\ln 3} (e^x - 1)\\,dx = \\left[e^x - x\\right]_0^{\\ln 3} = (3 - \\ln 3) - 1 = 2 - \\ln 3$." }
+  },
+  {
+   "id": "calc-area-between-curves-x-14", "unit": "unit-8", "topic": "area-between-curves-x", "type": "numeric", "practice": "1.E", "level": "apply", "diff": 2,
+   "q": "Find the area of the region between $y = \\cos x$ and $y = \\sin x$ for $0 \\le x \\le \\frac{\\pi}{4}$.",
+   "numeric": {
+    "answer": "sqrt(2) - 1",
+    "mistakes": [
+     { "value": 1, "why": "Check the antiderivative of $-\\sin x$: it is $+\\cos x$. So $\\int (\\cos x - \\sin x)\\,dx = \\sin x + \\cos x$." },
+     { "value": "1 - sqrt(2)", "why": "On $\\left(0, \\frac{\\pi}{4}\\right)$, $\\cos x > \\sin x$, so cosine is on top. An area is positive." }
+    ]
+   },
+   "why": { "correct": "Area $= \\int_0^{\\pi/4} (\\cos x - \\sin x)\\,dx = \\left[\\sin x + \\cos x\\right]_0^{\\pi/4} = \\left(\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2}\\right) - 1 = \\sqrt{2} - 1$." }
+  },
+  {
+   "id": "calc-area-between-curves-x-15", "unit": "unit-8", "topic": "area-between-curves-x", "type": "single", "practice": "2.D", "level": "analyze", "diff": 2,
+   "q": "A student says the area of the region between $y = x^2 - 4$ and the $x$-axis is $\\int_{-2}^{2} (x^2 - 4)\\,dx = -\\frac{32}{3}$. What is the area?",
+   "options": [
+    "$\\frac{32}{3}$, from $\\int_{-2}^{2} \\left(0 - (x^2 - 4)\\right)\\,dx$",
+    "$-\\frac{32}{3}$, since the region lies below the axis",
+    "$0$, since the region is symmetric about the $y$-axis",
+    "$\\frac{64}{3}$, the sum of its left and right halves"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Here the $x$-axis ($y = 0$) is on top and the parabola is on the bottom, so the height is $0 - (x^2 - 4) = 4 - x^2$. $\\int_{-2}^{2} (4 - x^2)\\,dx = \\frac{32}{3}$.",
+    "options": [
+     "Top minus bottom with $y = 0$ on top gives $4 - x^2 \\ge 0$.",
+     "A definite integral can be negative, but an area cannot. The student subtracted in the wrong order.",
+     "Symmetry about the $y$-axis does not cancel anything here: both halves are below the axis and both add area.",
+     "Each half is $\\frac{16}{3}$, so the two halves add to $\\frac{32}{3}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-area-between-curves-x-16", "unit": "unit-8", "topic": "area-between-curves-x", "type": "multi", "practice": "2.D", "level": "analyze", "diff": 2,
+   "q": "On $[a, b]$, $f(x) \\ge g(x)$, and the graphs meet at $x = a$ and $x = b$. Which statements are true? Select all that apply.",
+   "options": [
+    "$\\int_a^b \\left(f(x) - g(x)\\right)\\,dx$ is the area between the curves",
+    "$\\int_a^b \\left(g(x) - f(x)\\right)\\,dx$ is the area, written as a negative number",
+    "The area is the same if both graphs are moved up 5 units",
+    "The area equals $\\int_a^b f(x)\\,dx$ when $g(x) < 0$ on $[a, b]$"
+   ],
+   "correct": [0, 2],
+   "why": {
+    "correct": "With $f$ on top, $f(x) - g(x) \\ge 0$ is the height of every vertical rectangle. Moving both graphs up by 5 does not change any height, because $(f + 5) - (g + 5) = f - g$.",
+    "options": [
+     "True: top minus bottom, between the crossings.",
+     "False: that integral is the negative of the area. An area is never written as a negative number.",
+     "True: the 5 cancels in the difference, so every height stays the same.",
+     "False: when $g < 0$, the region reaches below the axis, and $\\int_a^b f(x)\\,dx$ leaves that part out. Subtracting $g$ adds it back."
+    ]
+   }
+  }
+ ]
+}

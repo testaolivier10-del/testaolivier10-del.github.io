@@ -1,0 +1,49 @@
+<h2>Same method, new slice</h2>
+<p>In the last topic you built solids by standing squares on a base and found $V = \int_a^b A(x)\,dx$ with $A(x) = s^2$. Nothing about that method depended on the slices being squares. Stand triangles on the base, or half circles, and the volume is still the integral of the slice area. The only new work is the area formula for one slice.</p>
+<p>The side $s$ is found exactly as before: it is the length of the base across the slice, $s = f(x) - g(x)$ for slices perpendicular to the $x$-axis (or right minus left in $y$ for slices perpendicular to the $y$-axis).</p>
+
+<h2>Equilateral triangles</h2>
+<p>An equilateral triangle with side $s$ has its peak above the middle of the base. Cut it down the middle and you get a right triangle with hypotenuse $s$ and short leg $\frac{s}{2}$. By the Pythagorean theorem, the height is</p>
+$$h = \sqrt{s^2 - \left(\frac{s}{2}\right)^2} = \frac{\sqrt{3}}{2}s, \qquad A = \frac{1}{2} \cdot s \cdot \frac{\sqrt{3}}{2}s = \frac{\sqrt{3}}{4}s^2.$$
+<figure id="fig-tri" data-fig="triangle-sections-solid"><figcaption>Equilateral triangles on the region under $y = \sqrt{x}$. The triangle at $x$ has side $\sqrt{x}$ and area $\frac{\sqrt{3}}{4}x$.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example.</b> The base of a solid is the region under $y = \sqrt{x}$ for $0 \le x \le 4$. Cross sections perpendicular to the $x$-axis are equilateral triangles. Find the volume.</p>
+<p><b>Side.</b> $s = \sqrt{x} - 0 = \sqrt{x}$.</p>
+<p><b>Area.</b> $A(x) = \frac{\sqrt{3}}{4}\left(\sqrt{x}\right)^2 = \frac{\sqrt{3}}{4}x$.</p>
+<p><b>Volume.</b> $V = \int_0^4 \frac{\sqrt{3}}{4}x\,dx = \frac{\sqrt{3}}{4} \cdot \frac{x^2}{2}\Big|_0^4 = \frac{\sqrt{3}}{4} \cdot 8 = 2\sqrt{3}$.</p>
+<p>Squares on the same base would give $\int_0^4 x\,dx = 8$. The triangles keep $\frac{\sqrt{3}}{4} \approx 0.433$ of that, which makes sense: a triangle fills less than half of the square on the same side.</p>
+</div>
+
+<h2>Semicircles</h2>
+<p>When the slices are semicircles, the segment across the base is the <b>diameter</b>. The radius is half of it, $\frac{s}{2}$, and the area is half a circle:</p>
+$$A = \frac{1}{2}\pi\left(\frac{s}{2}\right)^2 = \frac{\pi}{8}s^2.$$
+<figure id="fig-semi" data-fig="semicircle-sections-solid"><figcaption>Semicircles on the same base. The diameter at $x$ is $\sqrt{x}$, so the radius is $\frac{\sqrt{x}}{2}$.</figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example.</b> Same base, but the cross sections are semicircles with diameters in the base.</p>
+<p><b>Area.</b> $A(x) = \frac{\pi}{8}\left(\sqrt{x}\right)^2 = \frac{\pi}{8}x$.</p>
+<p><b>Volume.</b> $V = \frac{\pi}{8}\int_0^4 x\,dx = \frac{\pi}{8} \cdot 8 = \pi$.</p>
+<p>If you had used $s$ as the radius you would get $\frac{\pi}{2} \cdot 8 = 4\pi$, four times too big. Halve the diameter before you square it.</p>
+</div>
+
+<h2>The area formulas side by side</h2>
+<table>
+<thead><tr><th>Slice standing on a segment of length $s$</th><th>Area $A$</th><th>Constant</th></tr></thead>
+<tbody>
+<tr><td>Square</td><td>$s^2$</td><td>$1$</td></tr>
+<tr><td>Isosceles right triangle, a leg in the base</td><td>$\frac{1}{2}s^2$</td><td>$0.5$</td></tr>
+<tr><td>Equilateral triangle</td><td>$\frac{\sqrt{3}}{4}s^2$</td><td>about $0.433$</td></tr>
+<tr><td>Semicircle, diameter in the base</td><td>$\frac{\pi}{8}s^2$</td><td>about $0.393$</td></tr>
+<tr><td>Isosceles right triangle, the hypotenuse in the base</td><td>$\frac{1}{4}s^2$</td><td>$0.25$</td></tr>
+</tbody>
+</table>
+<p>Every area is a constant times $s^2$, so on one base every volume is that constant times $\int_a^b s^2\,dx$. Compute $\int s^2$ once and you can answer for any shape. When the hypotenuse lies in the base, each leg is $\frac{s}{\sqrt{2}}$, so the area is $\frac{1}{2}\left(\frac{s}{\sqrt{2}}\right)^2 = \frac{s^2}{4}$.</p>
+
+<h2>Slips to watch for</h2>
+<ul>
+<li>$\frac{\sqrt{3}}{2}s$ is the triangle's height, not its area. The area has $\frac{\sqrt{3}}{4}$.</li>
+<li>The side across the base is the semicircle's diameter. Radius $= \frac{s}{2}$.</li>
+<li>Square the whole side $(f - g)$, never each curve separately.</li>
+<li>For slices perpendicular to the $y$-axis, $s$ is right minus left in $y$, and the integral is in $dy$.</li>
+</ul>

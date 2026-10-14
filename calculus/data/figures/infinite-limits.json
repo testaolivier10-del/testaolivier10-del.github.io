@@ -1,0 +1,12 @@
+{
+ "infinite-limits-two-cases": {
+  "file": "figures/infinite-limits-two-cases.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 350,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "Two graphs with a dashed vertical asymptote at x = 2. Left: y = 1/(x − 2)², which rises without bound on both sides, so the limit as x approaches 2 is +∞ from each side. Right: y = 1/(x − 2), which falls without bound from the left (−∞) and rises without bound from the right (+∞), so the one-sided infinite limits have opposite signs."
+ }
+}

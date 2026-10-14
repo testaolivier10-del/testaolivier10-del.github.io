@@ -1,0 +1,5 @@
+{
+ "mvt": {
+  "def": "If $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$, then there is at least one $c$ in $(a, b)$ with $f'(c) = \\frac{f(b) - f(a)}{b - a}$: the tangent line at $c$ is parallel to the secant line."
+ }
+}

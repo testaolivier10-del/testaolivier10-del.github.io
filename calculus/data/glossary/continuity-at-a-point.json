@@ -1,0 +1,5 @@
+{
+ "continuity-definition": {
+  "def": "A function $f$ is continuous at $x = c$ when three conditions hold: $f(c)$ is defined, $\\lim_{x \\to c} f(x)$ exists, and $\\lim_{x \\to c} f(x) = f(c)$."
+ }
+}

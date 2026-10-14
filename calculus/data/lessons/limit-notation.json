@@ -1,0 +1,72 @@
+{
+ "topic": "limit-notation",
+ "hook": "In Topic 1.1, a falling stone's average speeds 48, 40, 33.6, 32.16, 32.016 kept closing in on 32. Calculus turns \"closing in\" into a precise idea with its own notation, the limit. Every later idea in this course is built on it, so learning to write it and read it now pays off in every unit.",
+ "prereq": [
+  {
+   "q": "The average speed of a stone over $[1, 1 + h]$ is $32 + 16h$. What does it close in on as $h$ shrinks toward 0?",
+   "options": [
+    "$32$",
+    "$48$",
+    "$16$",
+    "$0$"
+   ],
+   "correct": 0,
+   "why": "$16h$ shrinks toward 0, leaving 32.",
+   "review": "change-at-an-instant"
+  },
+  {
+   "q": "On a graph, an open circle at $(2, 4)$ means",
+   "options": [
+    "the point $(2, 4)$ is not on the graph",
+    "$f(2) = 4$",
+    "$f(4) = 2$",
+    "the graph crosses the $x$-axis at 2"
+   ],
+   "correct": 0,
+   "why": "An open circle marks a point left out of the graph.",
+   "review": "math-functions"
+  }
+ ],
+ "figure": {
+  "figure": "limit-vs-value",
+  "caption": "The limit of $g(x)$ as $x \\to 2$ is 4, where the curve heads; the value $g(2)$ is 1, the filled dot. A limit never looks at the point itself."
+ },
+ "chain": [
+  {
+   "cause": "Let $x$ get close to $a$ from both sides, but never equal $a$",
+   "effect": "watch where the outputs $f(x)$ go"
+  },
+  {
+   "cause": "If the outputs close in on a single number $L$",
+   "effect": "we write $\\lim_{x \\to a} f(x) = L$: the limit of $f(x)$ as $x$ approaches $a$ is $L$"
+  },
+  {
+   "cause": "The definition never uses $x = a$ itself",
+   "effect": "the limit can differ from $f(a)$, or exist when $f(a)$ is not defined"
+  },
+  {
+   "cause": "A limit can be read from a graph, a table or a formula",
+   "effect": "the next four topics teach each way"
+  }
+ ],
+ "ideas": [
+  "$\\lim_{x \\to a} f(x) = L$ means: as $x$ gets close to $a$ (from both sides, $x \\ne a$), $f(x)$ gets close to $L$, as close as we like.",
+  "The limit at $a$ and the value $f(a)$ are different questions. A hole can have a limit and no value; a filled dot off the curve gives a value that is not the limit.",
+  "Read the notation from the bottom up: the input heads to $a$, the output heads to $L$.",
+  "Write \"lim\" with its arrow on every line until the line where you substitute and get a number; then drop it."
+ ],
+ "misconception": {
+  "wrong": "$\\lim_{x \\to a} f(x)$ is just $f(a)$, the value of the function at $a$.",
+  "right": "The limit describes where $f(x)$ heads for inputs near $a$, never at $a$. It equals $f(a)$ for many functions, but not when the graph has a hole or a dot off the curve, and it can exist when $f(a)$ does not."
+ },
+ "check": [
+  "calc-limit-notation-1",
+  "calc-limit-notation-2",
+  "calc-limit-notation-3",
+  "calc-limit-notation-4",
+  "calc-limit-notation-9",
+  "calc-limit-notation-12",
+  "calc-limit-notation-15"
+ ],
+ "summary": "$\\lim_{x \\to a} f(x) = L$ says that $f(x)$ closes in on $L$ as $x$ approaches $a$ from both sides. The value at $a$ never enters: the limit can equal $f(a)$, differ from it, or exist where $f(a)$ is undefined. Limits can be found from graphs, tables and formulas, and the rest of Unit 1 shows how."
+}

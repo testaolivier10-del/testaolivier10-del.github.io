@@ -1,0 +1,5 @@
+{
+ "product-rule": {
+  "def": "$\\frac{d}{dx}\\left( f(x)g(x) \\right) = f'(x)g(x) + f(x)g'(x)$: the derivative of the first factor times the second, plus the first times the derivative of the second. It is not $f'(x)g'(x)$."
+ }
+}

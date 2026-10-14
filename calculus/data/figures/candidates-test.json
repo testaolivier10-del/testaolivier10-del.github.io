@@ -1,0 +1,12 @@
+{
+ "candidates-check": {
+  "file": "figures/candidates-check.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The graph of f(x) = 2x cubed minus 9x squared plus 12x on the closed interval from 0 to 3, with four candidates: endpoints (0, 0) and (3, 9), critical points (1, 5) and (2, 4). A table lists the values; the absolute maximum is 9 at x = 3 and the absolute minimum is 0 at x = 0. The relative maximum (1, 5) and relative minimum (2, 4) are not absolute."
+ }
+}

@@ -97,3 +97,42 @@
 .ft-dock{display:flex;flex-direction:column;gap:10px;}
 .ft-dock .bt-buttons{flex-wrap:nowrap;}
 .ft-dock .bt-buttons > *{flex:1;}
+/* Phone pass (docs/tools-phone-pass.md). */
+.ft-vtoggle button[hidden]{display:none !important;}
+@media (max-width:700px){
+  /* Spring scale: "Forces" shows the free-body diagram, "Graph" the reading against depth, each on the whole stage. */
+  .ft-view.show-panel:not(.show-fbd) .ft-two .ft-fbdfig{display:none;}
+  .ft-view.show-fbd .ft-two .bt-plot{display:none;}
+  .ft-two .ft-fbdfig svg{max-height:none;}
+}
+.ls-phone .ft-svg .ft-mut{font-size:14px;}
+.ls-phone .ft-fbd .ft-mut{font-size:15.5px;} .ls-phone .ft-fbd .ft-fbdl{font-size:18px;}
+.ls-phone .ft-panel .bt-plot .tick{font-size:13.5px;}
+.ls-phone .ft-panel .bt-plot .lbl{font-size:14.5px;}
+.ls-phone .ft-note{padding-right:52px;}   /* clear of Enlarge */
+/* Phone on its side: the same Tank / Graph switch as a narrow phone (side by side, the panel was about 150 px wide). */
+@media (min-width:700.02px) and (max-width:999.98px) and (max-height:540px){
+  .ft-view{flex-direction:column;gap:6px;}
+  .ft-view > .ft-vtoggle,.ls-root .ft-view > .ft-vtoggle.tseg{display:inline-flex;align-self:flex-start;flex:none;}
+  .ft-vtoggle button{min-height:36px !important;}
+  .ft-view.show-scene .ft-panel,.ft-view.show-panel .ft-scene{display:none;}
+  .ft-scene svg,.ft-panel svg{max-height:none;}
+  .ft-view.show-panel:not(.show-fbd) .ft-two .ft-fbdfig{display:none;}
+  .ft-view.show-fbd .ft-two .bt-plot{display:none;}
+  .ft-two .ft-fbdfig svg{max-height:none;}
+}
+@media (max-width:999.98px) and (max-height:540px){
+  .ls-phone .ft-svg .ft-mut{font-size:21px;}
+  .ls-phone .ft-svg .phys-arrow text{font-size:22px;}
+  .ls-phone .ft-fbd .ft-mut{font-size:26px;} .ls-phone .ft-fbd .ft-fbdl{font-size:28px;}
+  .ls-phone .ft-svg .ft-bar-t{font-size:17px;}
+  /* the float scene's forces: diagram left, its note right */
+  .ls-phone .ft-panel > .ft-fbdfig{flex-direction:row;flex-wrap:wrap;align-items:center;align-content:center;}
+  .ls-phone .ft-panel > .ft-fbdfig > .ft-cap{flex:1 1 100%;}
+  .ls-phone .ft-panel > .ft-fbdfig > svg{flex:1 1 52%;min-width:0;height:100%;}
+  .ls-phone .ft-panel > .ft-fbdfig > .ft-note{flex:1 1 40%;min-width:0;padding-right:52px;}
+  .ls-phone .ft-panel .bt-plot .tick{font-size:20px;}
+  .ls-phone .ft-panel .bt-plot .lbl{font-size:21px;}
+}
+.ls-phone .ft-view.show-scene .ft-scene{padding-right:40px;}   /* the tank's scale and the stands clear of Enlarge */
+.ls-phone .ft-fig .ft-svg .ft-mut{font-size:14.5px;}

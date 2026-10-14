@@ -1,0 +1,570 @@
+{
+ "stimuli": {
+  "limits-from-plots-s1": {
+   "kind": "graph",
+   "title": "The graph of $f$",
+   "text": "The graph of $f$ for $-4 \\le x \\le 4$ has three pieces. A line rises from $(-4, 1)$ to an open circle at $(-2, 3)$; a filled dot sits at $(-2, 1)$. A curve leaves the open circle at $(-2, 3)$ and falls to the filled point $(1, -1.5)$. A line starts at an open circle at $(1, 0)$ and rises to $(4, 3)$.",
+   "plot": {
+    "label": "Graph of the piecewise function f from x = -4 to x = 4 with a hole at (-2, 3), a dot at (-2, 1) and a jump at x = 1",
+    "width": 400,
+    "height": 320,
+    "x": [
+     -4.5,
+     4.5
+    ],
+    "y": [
+     -2.5,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "cls": "s1",
+      "fn": "x + 5",
+      "domain": [
+       -4,
+       -2
+      ],
+      "ends": [
+       "closed",
+       "open"
+      ]
+     },
+     {
+      "cls": "s1",
+      "fn": "3 - 0.5(x + 2)^2",
+      "domain": [
+       -2,
+       1
+      ],
+      "ends": [
+       "open",
+       "closed"
+      ]
+     },
+     {
+      "cls": "s1",
+      "fn": "x - 1",
+      "domain": [
+       1,
+       4
+      ],
+      "label": "f",
+      "ends": [
+       "open",
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       -2,
+       1
+      ]
+     }
+    ]
+   }
+  },
+  "limits-from-plots-s2": {
+   "kind": "graph",
+   "title": "The graph of $h$",
+   "text": "The graph of $h$ for $-2 \\le x \\le 6.5$ has a vertical asymptote at $x = 3$ (dashed). To the left of 3 the graph falls without bound; to the right it rises without bound. There is an open circle at $(1, 1)$ and a filled dot at $(1, 4)$. The graph passes through $(5, 3)$.",
+   "plot": {
+    "label": "Graph of h with a vertical asymptote at x = 3, an open circle at (1, 1) and a filled dot at (1, 4)",
+    "width": 400,
+    "height": 320,
+    "x": [
+     -2.5,
+     7
+    ],
+    "y": [
+     -5,
+     8
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "cls": "s1",
+      "fn": "2/(x - 3) + 2",
+      "domain": [
+       -2,
+       1
+      ],
+      "ends": [
+       "closed",
+       "open"
+      ]
+     },
+     {
+      "cls": "s1",
+      "fn": "2/(x - 3) + 2",
+      "domain": [
+       1,
+       3
+      ],
+      "ends": [
+       "open",
+       null
+      ]
+     },
+     {
+      "cls": "s1",
+      "fn": "2/(x - 3) + 2",
+      "domain": [
+       3,
+       6.5
+      ],
+      "label": "h",
+      "ends": [
+       null,
+       "closed"
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       4
+      ]
+     }
+    ],
+    "asymptotes": [
+     {
+      "x": 3
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-limits-from-plots-1",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limits-from-plots-s1",
+   "q": "Reading each side of the graph, what is $\\lim_{x \\to -2} f(x)$?",
+   "options": [
+    "$3$",
+    "$1$",
+    "$-2$",
+    "The limit does not exist."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From the left, the line heads to height 3; from the right, the curve also heads to height 3. Both one-sided limits are 3, so the limit is 3. The dot at $(-2, 1)$ is $f(-2)$, which does not affect the limit.",
+    "options": [
+     "Left and right both head to 3.",
+     "1 is $f(-2)$, the filled dot. A limit does not use the value at the point.",
+     "$-2$ is the input being approached.",
+     "Both sides head to the same height, 3, so the limit exists."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-2",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limits-from-plots-s1",
+   "q": "What is $\\lim_{x \\to 1^+} f(x)$?",
+   "options": [
+    "$0$",
+    "$-1.5$",
+    "$1$",
+    "The limit does not exist."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $x$ just to the right of 1, the graph is the rising line, whose heights head to 0, the open circle at $(1, 0)$.",
+    "options": [
+     "From the right, the line heads to the open circle at height 0.",
+     "$-1.5$ is where the curve on the left ends, so it is the limit from the left.",
+     "1 is the $x$-value, not a height.",
+     "A one-sided limit only needs one side to settle, and the right side heads to 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-3",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limits-from-plots-s1",
+   "q": "Which statement about $\\lim_{x \\to 1} f(x)$ is correct?",
+   "options": [
+    "It does not exist, because $\\lim_{x \\to 1^-} f(x) = -1.5$ and $\\lim_{x \\to 1^+} f(x) = 0$.",
+    "It equals $-1.5$, because $f(1) = -1.5$.",
+    "It equals $-0.75$, halfway between the two sides.",
+    "It does not exist, because $f(1)$ is not defined."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A two-sided limit needs both one-sided limits to be equal. From the left the heights head to $-1.5$; from the right, to 0. They differ, so the limit does not exist.",
+    "options": [
+     "Names both one-sided limits and why they rule out a limit.",
+     "$f(1) = -1.5$ is a value; it does not make the right side agree.",
+     "There is no averaging: when the sides disagree there is no limit.",
+     "$f(1)$ is defined: the filled point $(1, -1.5)$. The reason is the unequal sides."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-4",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limits-from-plots-s1",
+   "q": "Which statement about $f$ is true?",
+   "options": [
+    "$\\lim_{x \\to 1^-} f(x) = f(1)$",
+    "$\\lim_{x \\to 1^+} f(x) = f(1)$",
+    "$\\lim_{x \\to -2} f(x) = f(-2)$",
+    "$\\lim_{x \\to -2^-} f(x) = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From the left of 1, the curve heads to $-1.5$, and the filled point at the end of that curve says $f(1) = -1.5$. They match.",
+    "options": [
+     "Both equal $-1.5$.",
+     "From the right the heights head to 0, but $f(1) = -1.5$.",
+     "The limit at $-2$ is 3, but $f(-2) = 1$.",
+     "From the left of $-2$, the line heads to 3, not to the dot at 1."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-5",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limits-from-plots-s1",
+   "q": "Find $\\lim_{x \\to -2^-} f(x) + f(-2)$.",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "$f(-2)$ is the filled dot at height 1, not the open circle at height 3. The sum is $3 + 1$."
+     },
+     {
+      "value": 2,
+      "why": "From the left, the line heads to the open circle at height 3; the dot at 1 is only the value $f(-2)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the left, the line's heights head to 3. The value $f(-2)$ is the filled dot, 1. Sum: $3 + 1 = 4$."
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-6",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limits-from-plots-s2",
+   "q": "What is $\\lim_{x \\to 1} h(x)$?",
+   "options": [
+    "$1$",
+    "$4$",
+    "$2$",
+    "The limit does not exist."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From both sides of $x = 1$ the curve heads to the open circle at height 1. The filled dot at $(1, 4)$ is $h(1)$, which the limit ignores.",
+    "options": [
+     "Both sides head to the open circle at height 1.",
+     "4 is the value $h(1)$, not the limit.",
+     "2 is the height the curve levels toward far away, not near $x = 1$.",
+     "Both sides agree at 1, so the limit exists."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-7",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "limits-from-plots-s2",
+   "q": "Which describes $\\lim_{x \\to 3^-} h(x)$?",
+   "options": [
+    "It does not exist: $h(x)$ decreases without bound as $x \\to 3^-$.",
+    "It is 0, where the asymptote crosses the $x$-axis.",
+    "It is 3, the location of the asymptote.",
+    "It does not exist: $h(x)$ increases without bound as $x \\to 3^-$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Just to the left of $x = 3$ the graph plunges downward along the asymptote, with no bottom. The outputs do not close in on any number, so this one-sided limit does not exist.",
+    "options": [
+     "The left branch falls without bound.",
+     "The heights near the asymptote are huge negative numbers, not near 0.",
+     "3 is the $x$-value approached; the heights do not settle anywhere.",
+     "The left branch goes down, not up; it is the right branch that rises."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-8",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "limits-from-plots-s2",
+   "q": "Which is the best justification that $\\lim_{x \\to 3} h(x)$ does not exist?",
+   "options": [
+    "As $x \\to 3^-$, $h(x)$ decreases without bound, and as $x \\to 3^+$, $h(x)$ increases without bound, so $h(x)$ does not approach a number.",
+    "$h(3)$ is not defined, so there is no limit.",
+    "The graph has an open circle at $x = 1$.",
+    "The two sides of the graph stay off the line $x = 3$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The reason must be about the outputs near 3: they are unbounded on both sides (in opposite directions), so they close in on no single number.",
+    "options": [
+     "Describes the outputs on each side and concludes correctly.",
+     "A missing value never decides a limit: at a hole the limit exists even though the function has no value there. Here the reason is the unbounded outputs near 3.",
+     "What happens at $x = 1$ says nothing about $x = 3$.",
+     "Not touching the asymptote is not the reason; unbounded outputs are."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-9",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "limits-from-plots-s2",
+   "q": "What is $\\lim_{x \\to 5} h(x)$?",
+   "options": [
+    "$3$",
+    "$5$",
+    "$2$",
+    "The limit does not exist."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Near $x = 5$ the graph is an unbroken curve through $(5, 3)$, so the heights close in on 3.",
+    "options": [
+     "The curve passes through $(5, 3)$ with no break.",
+     "5 is the $x$-value approached.",
+     "2 is where the curve levels off far to the right, not its height at 5.",
+     "Nothing unusual happens at $x = 5$; both sides head to 3."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-10",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Near $x = 0$, the graph of a function $q$ wiggles up and down between heights $-1$ and $1$ infinitely many times, faster and faster as $x$ gets closer to 0. What is $\\lim_{x \\to 0} q(x)$?",
+   "options": [
+    "It does not exist, because the outputs oscillate and settle on no single number.",
+    "$0$, the height halfway between $-1$ and $1$.",
+    "$1$, the highest height the graph reaches.",
+    "It does not exist, because the outputs grow without bound."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "However close $x$ gets to 0, the outputs keep taking every value from $-1$ to 1. They never settle near one number, so there is no limit.",
+    "options": [
+     "Oscillating outputs settle on nothing.",
+     "The outputs pass through 0 but never stay close to it.",
+     "The graph keeps coming back down from 1.",
+     "The outputs stay between $-1$ and 1; they are bounded. The cause is oscillation."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-11",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "For a function $p$, $\\lim_{x \\to 4^-} p(x) = 7$, $\\lim_{x \\to 4^+} p(x) = 7$ and $p(4) = 2$. What is $\\lim_{x \\to 4} p(x)$?",
+   "options": [
+    "$7$",
+    "$2$",
+    "$4.5$",
+    "The limit does not exist."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both one-sided limits are 7, so the two-sided limit is 7. The value $p(4) = 2$ does not change that.",
+    "options": [
+     "Equal one-sided limits give the limit.",
+     "2 is the value at 4; the limit ignores it.",
+     "Limits are not averages of the value and the trend.",
+     "The one-sided limits agree, so the limit exists."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-12",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which condition guarantees that $\\lim_{x \\to a} f(x) = 5$?",
+   "options": [
+    "$\\lim_{x \\to a^-} f(x) = 5$ and $\\lim_{x \\to a^+} f(x) = 5$",
+    "$f(a) = 5$",
+    "$\\lim_{x \\to a^-} f(x) = 5$",
+    "$f(a) = 5$ and $\\lim_{x \\to a^-} f(x) = 5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A two-sided limit exists and equals $L$ exactly when both one-sided limits exist and equal $L$.",
+    "options": [
+     "Both sides equal 5: that is the definition's test.",
+     "The value at $a$ says nothing about nearby outputs.",
+     "One side is not enough; the right side could head elsewhere.",
+     "The right side is still unknown, and the value does not help."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-13",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A graph has an open circle at $(2, 5)$, a filled dot at $(2, 1)$, and the curve heads to the open circle from the left and from the right. Which statements are both true?",
+   "options": [
+    "$\\lim_{x \\to 2} f(x) = 5$ and $f(2) = 1$",
+    "$\\lim_{x \\to 2} f(x) = 1$ and $f(2) = 5$",
+    "$\\lim_{x \\to 2} f(x) = 5$ and $f(2) = 5$",
+    "$\\lim_{x \\to 2^-} f(x) = 5$ and $\\lim_{x \\to 2^+} f(x) = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The curve on both sides heads to the open circle, so the limit is 5. The filled dot is the value: $f(2) = 1$.",
+    "options": [
+     "Limit from the curve, value from the dot.",
+     "The two numbers are swapped.",
+     "The open circle is not the value; the filled dot is.",
+     "Both sides of the curve head to 5; the dot is not a one-sided limit."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-14",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "1.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "On a graphing calculator at the standard zoom, the graph of $r(x) = \\frac{x^2 - 4}{x - 2}$ looks like an unbroken straight line through $(2, 4)$. Which conclusion is justified?",
+   "options": [
+    "The picture suggests $\\lim_{x \\to 2} r(x) = 4$, but $r(2)$ is not defined, so the hole is too small to see at this scale.",
+    "$r(2) = 4$, because the graph shows a point there.",
+    "The limit at 2 does not exist, because $r(2)$ is not defined.",
+    "The graph proves the limit is 4 with no further work needed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A screen draws in pixels, so a single missing point is invisible. Scale can hide behavior. The graph suggests the limit is 4, while the formula shows $x = 2$ makes the denominator 0, so $r(2)$ does not exist.",
+    "options": [
+     "The graph suggests 4; the formula shows the hole.",
+     "Substituting $x = 2$ gives a zero denominator, so there is no value at 2.",
+     "A missing value does not prevent a limit.",
+     "A picture suggests; it cannot show a hole one point wide."
+    ]
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-15",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $f(x) = \\begin{cases} x + 1 & x < 2 \\\\ 7 & x = 2 \\\\ 5 - x & x > 2 \\end{cases}$. Find $\\lim_{x \\to 2} f(x)$.",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "7 is $f(2)$. The limit uses the pieces for $x$ near 2: from the left $x + 1 \\to 3$, from the right $5 - x \\to 3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the left, $x + 1$ heads to 3. From the right, $5 - x$ heads to 3. Both one-sided limits are 3, so $\\lim_{x \\to 2} f(x) = 3$, even though $f(2) = 7$."
+   }
+  },
+  {
+   "id": "calc-limits-from-plots-16",
+   "unit": "unit-1",
+   "topic": "limits-from-plots",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which graph feature matches $\\lim_{x \\to 1^-} g(x) = 2$, $\\lim_{x \\to 1^+} g(x) = 2$ and $g(1)$ not defined?",
+   "options": [
+    "A hole at $(1, 2)$ with no dot above or below it",
+    "A filled dot at $(1, 2)$ on an unbroken curve",
+    "A jump at $x = 1$ from height 2 to another height",
+    "A vertical asymptote at $x = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both sides head to height 2, and there is no value at $x = 1$: a hole at $(1, 2)$.",
+    "options": [
+     "Both sides head to 2 and nothing is plotted at $x = 1$.",
+     "A filled dot would mean $g(1) = 2$ is defined.",
+     "A jump would make the one-sided limits differ.",
+     "An asymptote means unbounded outputs, not outputs heading to 2."
+    ]
+   }
+  }
+ ]
+}

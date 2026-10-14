@@ -121,6 +121,15 @@ const CARDS = [
     title: 'Physics 1 for the May exam, one force at a time',
     sub: 'Free notes for every topic, free-body diagrams graded force by force, and trainers that are also tests.',
   },
+  /* AP® Calculus AB (folder calculus/), the same rules: no mark, no counts
+     (docs/apcalc-spec.md decision 2). Render with ONLY=calculus/assets/og-image.png. */
+  {
+    out: 'calculus/assets/og-image.png',
+    badge: 'Beta · Free notes',
+    brand: 'LevlPrep',
+    title: 'Calculus AB for the May exam, one idea at a time',
+    sub: 'Free notes for every topic, answers you type graded by value, and calculator and no-calculator practice as the exam splits it.',
+  },
 ];
 // ONLY=<out path> renders just that card (adding a course need not re-render the others).
 if (process.env.ONLY) CARDS.splice(0, CARDS.length, ...CARDS.filter((c) => c.out === process.env.ONLY));

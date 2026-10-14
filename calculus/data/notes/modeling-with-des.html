@@ -1,0 +1,46 @@
+<p>So far you have been handed a function and asked for its derivative. Many real questions run the other way. A biologist cannot write down the size of a bacteria culture for every hour, but she can say how fast it grows: the bigger the culture, the faster it grows. A cook cannot predict the temperature of soup minute by minute, but he knows hot soup cools faster than warm soup. Each of these is a statement about a <b>rate</b>. Written with a derivative, it becomes a <b>differential equation</b>. This page is about writing and reading them; later topics solve them.</p>
+
+<h2>What a differential equation is</h2>
+<p>A differential equation is an equation that contains the derivative of an unknown function. Here are three:</p>
+<p>$$\frac{dP}{dt} = 0.26P \qquad \frac{dT}{dt} = -0.05(T - 20) \qquad \frac{dy}{dx} = x + y$$</p>
+<p>Read the first one aloud: "the rate of change of $P$ with respect to $t$ equals 0.26 times $P$." It does not tell you what $P$ is at any time. It tells you how fast $P$ changes <i>once you know</i> $P$. If $P = 500$ cells, then $P$ is growing at $0.26 \cdot 500 = 130$ cells per hour. If $P = 800$, it is growing at 208 cells per hour.</p>
+<p>That is the big shift. An ordinary equation such as $y = x^2$ gives values. A differential equation gives <b>rates</b>, and the rate usually depends on the current value.</p>
+
+<h2>Translating "proportional to"</h2>
+<p>Most word problems use one phrase: <b>proportional to</b>. "$A$ is proportional to $B$" means $A = kB$ for some constant $k$, called the constant of proportionality. When $A$ is a rate, it goes on the left as a derivative.</p>
+<table>
+<thead><tr><th>Words</th><th>Differential equation</th></tr></thead>
+<tbody>
+<tr><td>The rate of change of $y$ is proportional to $y$.</td><td>$\frac{dy}{dt} = ky$</td></tr>
+<tr><td>The rate of change of $y$ is proportional to the square root of $y$.</td><td>$\frac{dy}{dt} = k\sqrt{y}$</td></tr>
+<tr><td>The rate of change of $y$ is inversely proportional to $y^2$.</td><td>$\frac{dy}{dt} = \frac{k}{y^2}$</td></tr>
+<tr><td>The temperature changes at a rate proportional to the difference between $T$ and 20.</td><td>$\frac{dT}{dt} = k(T - 20)$</td></tr>
+<tr><td>The rate of change of $y$ with respect to $x$ is proportional to the product of $x$ and $y$.</td><td>$\frac{dy}{dx} = kxy$</td></tr>
+</tbody>
+</table>
+<p>Two checks catch most mistakes. First, the sentence talks about a <i>rate</i>, so a derivative must appear. "Grows proportionally to its size" is $\frac{dP}{dt} = kP$, never $P = kt$. Second, look at the variable after "proportional to". If it says the population, the right side uses $P$, not $t$.</p>
+
+<h2>The sign of the rate</h2>
+<p>Words like "decreases" or "decays" fix a sign. "The amount of medicine decreases at a rate proportional to the amount present" is $\frac{dA}{dt} = -kA$ with $k > 0$. You could also write $\frac{dA}{dt} = kA$ and say $k < 0$; both are correct if you state the sign.</p>
+<p>The sign of the right side tells you where the function rises or falls, before you know any formula. For $\frac{dy}{dt} = 0.4(50 - y)$, the rate is positive when $y < 50$ and negative when $y > 50$. So $y$ climbs toward 50 from below and falls toward 50 from above. That is a lot of information from one line.</p>
+
+<h2>Finding the constant</h2>
+<div class="worked">
+<p><b>Worked example.</b> Coffee at 90 °C sits in a 20 °C room. It cools at a rate proportional to the difference between its temperature and the room's. At 90 °C it is cooling at 3.5 °C per minute. Write the differential equation, then find the rate when the coffee is at 55 °C.</p>
+<p>Name the quantity: $T$, the temperature in °C, at time $t$ in minutes. "Proportional to the difference" gives $\frac{dT}{dt} = k(T - 20)$.</p>
+<p>Use the known rate. Cooling means $\frac{dT}{dt} = -3.5$ when $T = 90$: $-3.5 = k(90 - 20) = 70k$, so $k = -0.05$ per minute.</p>
+<p>Now predict: at $T = 55$, $\frac{dT}{dt} = -0.05(55 - 20) = -1.75$ °C per minute. The coffee still cools, at half the speed, because it is half as far above room temperature.</p>
+</div>
+<figure id="fig-cooling" data-fig="cooling-rate-slopes"><figcaption>The temperature of the coffee in the worked example. Each tangent segment has slope $-0.05(T - 20)$, so the graph flattens as $T$ nears 20 °C.</figcaption></figure>
+<p>Notice the units of $k$. The left side is in °C per minute and $T - 20$ is in °C, so $k$ is in "per minute". In $\frac{dP}{dt} = 0.26P$ with $t$ in hours, $k = 0.26$ per hour.</p>
+
+<h2>Reading a model from data</h2>
+<p>A table can tell you which model fits. If a table lists $P$ and $\frac{dP}{dt}$ and the ratio $\frac{dP/dt}{P}$ is the same in every column, the rate is proportional to $P$, and that ratio is $k$. If the rate were the same in every column, the model would be $\frac{dP}{dt} = c$, a constant rate, and the graph would be a line.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Writing the quantity instead of its rate: $P = kP$ or $P = kt$ for "grows at a rate proportional to its size".</li>
+<li>Using $T$ instead of $T - 20$ in a cooling problem: the coffee cools toward room temperature, not toward 0 °C.</li>
+<li>Losing the sign: "decreases" needs a negative rate.</li>
+<li>Mixing up "proportional" ($ky$) and "inversely proportional" ($\frac{k}{y}$).</li>
+</ul>

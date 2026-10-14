@@ -1,0 +1,46 @@
+<p>Many quantities change together. As a balloon fills, its radius and its volume both grow. As two cars drive away from a corner, the distance between them grows. An equation links the quantities at every instant, and differentiating that equation with respect to time links their <b>rates</b>. That is the whole idea of related rates; this page sets up the method, and the next topic solves full problems.</p>
+
+<h2>Everything is a function of time</h2>
+<p>In $A = \pi r^2$ there is no $t$ in sight. But if the circle is a spreading ripple, then $r$ depends on $t$, and so does $A$. To find how fast $A$ changes, differentiate both sides with respect to $t$. The right side is a composite function, $\pi[r(t)]^2$, so the chain rule applies:</p>
+<p>$$\frac{dA}{dt} = 2\pi r \cdot \frac{dr}{dt}$$</p>
+<p>This is the same move as implicit differentiation, with $t$ in place of $x$. Every variable that changes gets its rate as a factor; constants such as $\pi$ do not.</p>
+<figure id="fig-ripple" data-fig="ripple-related-rates"><figcaption>A spreading ripple: the area and the radius both depend on time, so their rates are linked by $\frac{dA}{dt} = 2\pi r\frac{dr}{dt}$.</figcaption></figure>
+<p>The equation explains something you can see on a pond. Even if the ripple's radius grows at a steady 3 cm per second, the area grows faster and faster, because the factor $2\pi r$ grows. At $r = 5$ cm the area grows at $2\pi(5)(3) = 30\pi$ cm² per second; at $r = 10$ cm, at $60\pi$ cm² per second.</p>
+
+<h2>The basic move, on common formulas</h2>
+<table class="compare">
+<tr><th>Relation</th><th>Differentiated with respect to $t$</th></tr>
+<tr><td>circle: $A = \pi r^2$</td><td>$\frac{dA}{dt} = 2\pi r\frac{dr}{dt}$</td></tr>
+<tr><td>sphere: $V = \frac{4}{3}\pi r^3$</td><td>$\frac{dV}{dt} = 4\pi r^2\frac{dr}{dt}$</td></tr>
+<tr><td>cube: $V = s^3$</td><td>$\frac{dV}{dt} = 3s^2\frac{ds}{dt}$</td></tr>
+<tr><td>rectangle: $A = xy$</td><td>$\frac{dA}{dt} = \frac{dx}{dt}y + x\frac{dy}{dt}$</td></tr>
+<tr><td>right triangle: $x^2 + y^2 = z^2$</td><td>$2x\frac{dx}{dt} + 2y\frac{dy}{dt} = 2z\frac{dz}{dt}$</td></tr>
+</table>
+<div class="worked">
+<p><b>Worked example 1.</b> A spherical balloon's radius grows at 2 cm per second. How fast does its volume grow when $r = 3$ cm?</p>
+<p>Relation: $V = \frac{4}{3}\pi r^3$. Differentiate with respect to $t$: $\frac{dV}{dt} = 4\pi r^2\frac{dr}{dt}$.</p>
+<p>Now substitute the instant: $r = 3$ and $\frac{dr}{dt} = 2$. $\frac{dV}{dt} = 4\pi(9)(2) = 72\pi$ cm³ per second.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Air is pumped into the balloon at 100 cm³ per second. How fast is the radius growing when $r = 5$ cm?</p>
+<p>Same equation, different unknown: $100 = 4\pi(25)\frac{dr}{dt}$, so $\frac{dr}{dt} = \frac{100}{100\pi} = \frac{1}{\pi} \approx 0.32$ cm per second.</p>
+</div>
+
+<h2>Two rules that prevent most errors</h2>
+<p><b>Differentiate first, substitute second.</b> The values of one instant (like $r = 3$) are true only at that instant. If you put them into the equation before differentiating, they become constants with derivative 0, and the rates you need vanish.</p>
+<p><b>Signs come from the words.</b> "Increasing at 2 cm per second" means $\frac{dr}{dt} = 2$; "decreasing at 2 cm per second" or "shrinking by 2 cm each second" means $\frac{dr}{dt} = -2$. A distance to a point that something approaches is decreasing, so its rate is negative.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Car A drives east from an intersection at 60 mph and car B drives north at 45 mph. When A is 30 miles and B is 40 miles from the intersection, how fast is the distance between them growing?</p>
+<p>Relation: $x^2 + y^2 = z^2$. Differentiate: $2x\frac{dx}{dt} + 2y\frac{dy}{dt} = 2z\frac{dz}{dt}$.</p>
+<p>At this instant $z = \sqrt{900 + 1600} = 50$. Substitute: $30(60) + 40(45) = 50\frac{dz}{dt}$, so $\frac{dz}{dt} = \frac{3600}{50} = 72$ mph.</p>
+<p>If car B were instead driving <i>toward</i> the intersection, $\frac{dy}{dt} = -45$ and $\frac{dz}{dt} = \frac{1800 - 1800}{50} = 0$: at that instant the distance would not be changing.</p>
+</div>
+
+<h2>Slips that cost points</h2>
+<ul>
+<li>Differentiating with respect to $x$ or $r$ instead of $t$, so no rates appear.</li>
+<li>Dropping the chain rule factor: writing $4\pi r^2$ for $\frac{dV}{dt}$.</li>
+<li>Substituting values before differentiating.</li>
+<li>Entering a decreasing rate as positive.</li>
+<li>Missing the product rule on a product of two changing quantities.</li>
+</ul>

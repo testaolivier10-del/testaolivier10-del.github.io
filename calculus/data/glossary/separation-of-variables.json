@@ -1,0 +1,5 @@
+{
+ "separation-of-variables": {
+  "def": "A way to solve $\\frac{dy}{dx} = g(x)h(y)$: move every $y$ to the side with $dy$ and every $x$ to the side with $dx$, $\\frac{1}{h(y)}\\,dy = g(x)\\,dx$, then integrate both sides and add one constant $C$. The result, a family with $C$ in it, is the general solution."
+ }
+}

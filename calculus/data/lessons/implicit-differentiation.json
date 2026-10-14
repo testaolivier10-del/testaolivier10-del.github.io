@@ -1,0 +1,71 @@
+{
+ "topic": "implicit-differentiation",
+ "hook": "Some curves, like a circle or a tilted oval, cannot be written as y equals a single formula in x. Their equations mix x and y together. You can still find the slope at any point without solving for y: differentiate the equation as it stands and let the chain rule do the work.",
+ "prereq": [
+  {
+   "q": "What is $\\frac{d}{dx}(x^2 + 1)^3$?",
+   "options": [
+    "$6x(x^2 + 1)^2$",
+    "$3(x^2 + 1)^2$",
+    "$3(2x)^2$",
+    "$6x^2(x^2 + 1)$"
+   ],
+   "correct": 0,
+   "why": "The chain rule: $3(x^2 + 1)^2 \\cdot 2x$.",
+   "review": "chain-rule"
+  },
+  {
+   "q": "What is $\\frac{d}{dx}\\left(x^2 \\sin x\\right)$?",
+   "options": [
+    "$2x\\sin x + x^2\\cos x$",
+    "$2x\\cos x$",
+    "$x^2\\cos x$",
+    "$2x\\sin x$"
+   ],
+   "correct": 0,
+   "why": "The product rule: derivative of the first times the second, plus the first times the derivative of the second.",
+   "review": "product-rule"
+  }
+ ],
+ "figure": {
+  "figure": "implicit-tilted-ellipse",
+  "caption": "The curve $x^2 + xy + y^2 = 7$ is not the graph of a function, yet near $(1, 2)$ it has a tangent line with slope $-\\frac{4}{5}$, found by implicit differentiation."
+ },
+ "chain": [
+  {
+   "cause": "The equation mixes $x$ and $y$, so $y$ is defined implicitly",
+   "effect": "near a point, $y$ still acts like a function of $x$"
+  },
+  {
+   "cause": "Apply $\\frac{d}{dx}$ to both sides of the equation",
+   "effect": "each term with $y$ gets a factor $\\frac{dy}{dx}$ by the chain rule; products like $xy$ need the product rule"
+  },
+  {
+   "cause": "Collect the $\\frac{dy}{dx}$ terms on one side and factor",
+   "effect": "$\\frac{dy}{dx}$ equals a fraction that may hold both $x$ and $y$"
+  },
+  {
+   "cause": "Substitute the coordinates of a point on the curve",
+   "effect": "the result is the slope of the tangent line there"
+  }
+ ],
+ "ideas": [
+  "Every term with $y$ gets a factor $\\frac{dy}{dx}$: $\\frac{d}{dx}y^2 = 2y\\frac{dy}{dx}$, $\\frac{d}{dx}\\sin y = \\cos y\\frac{dy}{dx}$.",
+  "A product of $x$ and $y$ needs the product rule: $\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}$.",
+  "Write the whole equation after differentiating, with $= 0$ or the right side, before you solve for $\\frac{dy}{dx}$.",
+  "The answer usually holds both $x$ and $y$; a slope needs both coordinates of a point on the curve."
+ ],
+ "misconception": {
+  "wrong": "Differentiating $x^2 + y^2 = 25$ gives $2x + 2y = 0$.",
+  "right": "$y$ depends on $x$, so the chain rule gives $\\frac{d}{dx}y^2 = 2y\\frac{dy}{dx}$: $2x + 2y\\frac{dy}{dx} = 0$, and $\\frac{dy}{dx} = -\\frac{x}{y}$."
+ },
+ "check": [
+  "calc-implicit-differentiation-1",
+  "calc-implicit-differentiation-2",
+  "calc-implicit-differentiation-3",
+  "calc-implicit-differentiation-4",
+  "calc-implicit-differentiation-13",
+  "calc-implicit-differentiation-15"
+ ],
+ "summary": "To differentiate an equation in $x$ and $y$, apply $\\frac{d}{dx}$ to both sides, treating $y$ as a function of $x$: each $y$-term gets a factor $\\frac{dy}{dx}$, and products need the product rule. Collect the $\\frac{dy}{dx}$ terms, factor, and solve. Substitute a point of the curve to get a slope."
+}

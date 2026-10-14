@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behavior of Implicit Relations — AP® Calculus AB Notes</title>
+<meta name="description" content="A circle, an oval or a looping curve fails the vertical line test, so it is not the graph of a function y = f(x) .">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/implicit-relations.html">
+<meta property="og:title" content="Behavior of Implicit Relations — AP® Calculus AB Notes">
+<meta property="og:description" content="A circle, an oval or a looping curve fails the vertical line test, so it is not the graph of a function y = f(x) .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/implicit-relations.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/implicit-relations.html#reading",
+      "name": "Behavior of Implicit Relations",
+      "url": "https://levlprep.com/calculus/notes/implicit-relations.html",
+      "description": "A circle, an oval or a looping curve fails the vertical line test, so it is not the graph of a function y = f(x) .",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "behavior of implicit relations ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Analytical Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Behavior of Implicit Relations: notes",
+          "item": "https://levlprep.com/calculus/notes/implicit-relations.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="implicit-relations" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Contextual Applications of Differentiation</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Analytical Applications of Differentiation</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="mean-value-theorem"><a href="mean-value-theorem.html"><span class="bk-toc-n">5.1</span>The Mean Value Theorem</a></li><li data-toc-t="extreme-value-theorem"><a href="extreme-value-theorem.html"><span class="bk-toc-n">5.2</span>Extreme Value Theorem, Global and Local Extrema, Critical Points</a></li><li data-toc-t="increasing-decreasing"><a href="increasing-decreasing.html"><span class="bk-toc-n">5.3</span>Where a Function Increases or Decreases</a></li><li data-toc-t="first-derivative-test"><a href="first-derivative-test.html"><span class="bk-toc-n">5.4</span>The First Derivative Test</a></li><li data-toc-t="candidates-test"><a href="candidates-test.html"><span class="bk-toc-n">5.5</span>The Candidates Test</a></li><li data-toc-t="concavity"><a href="concavity.html"><span class="bk-toc-n">5.6</span>Concavity and Points of Inflection</a></li><li data-toc-t="second-derivative-test"><a href="second-derivative-test.html"><span class="bk-toc-n">5.7</span>The Second Derivative Test</a></li><li data-toc-t="sketching-derivatives"><a href="sketching-derivatives.html"><span class="bk-toc-n">5.8</span>Sketching f, f' and f''</a></li><li data-toc-t="f-and-its-derivatives"><a href="f-and-its-derivatives.html"><span class="bk-toc-n">5.9</span>Connecting f, f' and f''</a></li><li data-toc-t="optimization-intro"><a href="optimization-intro.html"><span class="bk-toc-n">5.10</span>Introduction to Optimization</a></li><li data-toc-t="solving-optimization"><a href="solving-optimization.html"><span class="bk-toc-n">5.11</span>Solving Optimization Problems</a></li><li class="current" data-toc-t="implicit-relations"><a href="#main" aria-current="page"><span class="bk-toc-n">5.12</span>Behavior of Implicit Relations</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-slope-formula-as-a-fraction">The slope formula as a fraction</a><a href="#horizontal-and-vertical-tangent-lines">Horizontal and vertical tangent lines</a><a href="#when-both-parts-are-zero">When both parts are zero</a><a href="#high-and-low-points-of-a">High and low points of a curve</a><a href="#what-earns-the-points">What earns the points</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Analytical Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Behavior of Implicit Relations: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/implicit-relations.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.12 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Behavior of Implicit Relations</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="implicit-relations">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fimplicit-relations.html&amp;title=Behavior%20of%20Implicit%20Relations%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/implicit-relations.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>A circle, an oval or a looping curve fails the vertical line test, so it is not the <a class="gl" href="../notes/math-functions.html" data-c="function-graph">graph of a function</a> <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = f(x)</annotation></semantics></math>. You already know how to find its <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> with <a class="gl" href="../notes/implicit-differentiation.html" data-c="implicit-differentiation">implicit differentiation</a>. This topic asks what that slope formula tells you about the shape: where the curve is flat, where it stands straight up, and where it has a local high or low point.</p>
+
+<h2 id="the-slope-formula-as-a-fraction">The slope formula as a fraction</h2>
+<p><a class="gl" href="../notes/derivative-definition.html" data-c="derivative">Differentiate</a> both sides of the curve's equation with respect to <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, write "<math class="calc-m"><semantics><mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>" (or the derivative of the right side), and solve. The result usually looks like a fraction in both <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{N(x, y)}{D(x, y)}</annotation></semantics></math></p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">x^2 - xy + y^2 = 12</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d}{dx}</annotation></semantics></math> of both sides: <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mo>−</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>y</mi><mo>+</mo><mi>x</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>+</mo><mn>2</mn><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">2x - \left(y + x\frac{dy}{dx}\right) + 2y\frac{dy}{dx}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>. (The <a class="gl" href="../notes/product-rule.html" data-c="product-rule">product rule</a> on <math class="calc-m"><semantics><mrow><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">xy</annotation></semantics></math> gives two terms.)</p>
+<p>Collect the <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> terms: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo stretchy="false">(</mo><mn>2</mn><mi>y</mi><mo>−</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>y</mi><mo>−</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}(2y - x) = y - 2x</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mi>y</mi><mo>−</mo><mn>2</mn><mi>x</mi></mrow><mrow><mn>2</mn><mi>y</mi><mo>−</mo><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{y - 2x}{2y - x}</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="horizontal-and-vertical-tangent-lines">Horizontal and vertical tangent lines</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="horizontal-tangent">horizontal tangent</span></b> needs slope 0, so the numerator must be 0 while the denominator is not. A <a class="gl" href="../notes/differentiability.html" data-c="corner">vertical tangent line</a> needs the slope to be undefined because the denominator is 0 while the numerator is not. In both cases the point must actually be on the curve.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Tangent line, Numerator N, Denominator D, Also"><table class="compare">
+<thead><tr><th scope="col">Tangent line</th><th scope="col">Numerator <math class="calc-m"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></th><th scope="col">Denominator <math class="calc-m"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></th><th scope="col">Also</th></tr></thead>
+<tbody>
+<tr><td>horizontal</td><td><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td>not <math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td>point on the curve</td></tr>
+<tr><td>vertical</td><td>not <math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td>point on the curve</td></tr>
+<tr><td>no conclusion</td><td><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td>the formula gives <math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{0}{0}</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<figure id="fig-implicit"  class="calc-figure"><div class="calc-figimg" data-fig="implicit-tangents"><img src="../figures/implicit-tangents.svg" alt="The tilted oval x squared plus xy plus y squared = 3, with dy/dx = -(2x + y)/(x + 2y). Horizontal tangent lines touch it at (-1, 2) and (1, -2), where the numerator 2x + y is zero; vertical tangent lines touch it at (-2, 1) and (2, -1), where the denominator x + 2y is zero and the numerator is not." width="900" height="500" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> On <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x^2 + xy + y^2 = 3</annotation></semantics></math>, each condition picks out a line through the origin; where that line meets the curve, the tangent line is horizontal (blue) or vertical (green). <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the points of <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">x^2 - xy + y^2 = 12</annotation></semantics></math> with horizontal and with vertical <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">tangent lines</a>.</p>
+<p><i>Horizontal:</i> <math class="calc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mn>2</mn><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y - 2x = 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">y = 2x</annotation></semantics></math>. Substitute into the curve: <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">x^2 - 2x^2 + 4x^2 = 12</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">3x^2 = 12</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = \pm 2</annotation></semantics></math>. Points <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 4)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-2, -4)</annotation></semantics></math>; the denominator there is <math class="calc-m"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">-6</annotation></semantics></math>, not 0.</p>
+<p><i>Vertical:</i> <math class="calc-m"><semantics><mrow><mn>2</mn><mi>y</mi><mo>−</mo><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">2y - x = 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">x = 2y</annotation></semantics></math>. Substitute: <math class="calc-m"><semantics><mrow><mn>4</mn><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">4y^2 - 2y^2 + y^2 = 12</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = \pm 2</annotation></semantics></math>. Points <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(4, 2)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-4, -2)</annotation></semantics></math>; the numerator there is <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">-6</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math>, not 0.</p>
+</div>
+<p>The substitution step is the one students skip. The point <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math> makes the numerator <math class="calc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">y - 2x</annotation></semantics></math> zero, but <math class="calc-m"><semantics><mrow><mn>1</mn><mo>−</mo><mn>2</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>3</mn><mo>≠</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">1 - 2 + 4 = 3 \ne 12</annotation></semantics></math>, so it is not on the curve, and its "slope" means nothing.</p>
+
+<h2 id="when-both-parts-are-zero">When both parts are zero</h2>
+<p>For the curve <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><msup><mi>y</mi><mn>3</mn></msup><mo>=</mo><mn>6</mn><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">x^3 + y^3 = 6xy</annotation></semantics></math>, implicit differentiation gives <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>2</mn><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{2y - x^2}{y^2 - 2x}</annotation></semantics></math>. At the origin, which is on the curve, both the numerator and the denominator are 0. The formula is undefined and decides nothing; this curve actually crosses itself there. Never write "<math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{0}{0} = 0</annotation></semantics></math>" or "<math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{0}{0} = 1</annotation></semantics></math>": that is a notation error.</p>
+
+<h2 id="high-and-low-points-of-a">High and low points of a curve</h2>
+<p>Near a point with a horizontal tangent, the curve is the graph of a <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, so the <a class="gl" href="../notes/second-derivative-test.html" data-c="second-derivative-test">Second Derivative Test</a> still works. Find <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d^2y}{dx^2}</annotation></semantics></math> by differentiating the fraction for <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx}</annotation></semantics></math> (<a class="gl" href="../notes/quotient-rule.html" data-c="quotient-rule">quotient rule</a>, treating <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> as a function of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>), then substitute the point and the value <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 0</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> For <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">x^2 - xy + y^2 = 12</annotation></semantics></math>, find <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d^2y}{dx^2}</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 4)</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d^2y}{dx^2}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mn>2</mn></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo stretchy="false">(</mo><mn>2</mn><mi>y</mi><mo>−</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>2</mn><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>−</mo><mn>1</mn></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><mrow><mo stretchy="false">(</mo><mn>2</mn><mi>y</mi><mo>−</mo><mi>x</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{\left(\frac{dy}{dx} - 2\right)(2y - x) - (y - 2x)\left(2\frac{dy}{dx} - 1\right)}{(2y - x)^2}</annotation></semantics></math>.</p>
+<p>At <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 4)</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mn>2</mn><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y - 2x = 0</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo>−</mo><mn>0</mn></mrow><mn>36</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{(-2)(6) - 0}{36} = -\frac{1}{3}</annotation></semantics></math>.</p>
+<p>A horizontal tangent where the curve is <a class="gl" href="../notes/local-linearity.html" data-c="concave">concave down</a>: <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 4)</annotation></semantics></math> is a local high point of the curve, and in fact its highest point.</p>
+</div>
+
+<h2 id="what-earns-the-points">What earns the points</h2>
+<ul>
+<li>Apply <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d}{dx}</annotation></semantics></math> to both sides and keep "<math class="calc-m"><semantics><mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>" on the right.</li>
+<li>Use the product rule on every <math class="calc-m"><semantics><mrow><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">xy</annotation></semantics></math>-type term and the <a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a> on every power of <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>.</li>
+<li>For a vertical tangent, say "the denominator is 0 and the numerator is not," never "<math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 0</annotation></semantics></math>."</li>
+<li>Substitute candidate points back into the curve's equation.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:implicit-relations">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="solving-optimization.html"><span>&larr; Previous</span><b>Solving Optimization Problems</b></a><a class="tb-chapter-link next" href="accumulation-of-change.html"><span>Next &rarr;</span><b>Accumulating Change</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:implicit-relations">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

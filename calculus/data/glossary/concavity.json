@@ -1,0 +1,5 @@
+{
+ "inflection-point": {
+  "def": "A point on the graph of a continuous function where the concavity changes, from concave up to concave down or the reverse. For a twice-differentiable $f$, $f''$ changes sign there; equivalently, $f'$ changes from increasing to decreasing or back."
+ }
+}

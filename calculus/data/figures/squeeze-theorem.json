@@ -1,0 +1,12 @@
+{
+ "squeeze-x-sin": {
+  "file": "figures/squeeze-x-sin.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original graph",
+  "alt": "The graph of f(x) = x sin(1/x) for x between −0.4 and 0.4, x not 0. It wiggles faster and faster near 0 but stays between the lines y = |x| and y = −|x|. Both bounds reach 0 at x = 0, so f is squeezed to 0: its limit at 0 is 0. An open circle at the origin marks that f(0) is not defined."
+ }
+}

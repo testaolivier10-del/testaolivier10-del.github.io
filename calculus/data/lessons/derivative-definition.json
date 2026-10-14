@@ -1,0 +1,84 @@
+{
+ "topic": "derivative-definition",
+ "hook": "A speedometer shows one number, how fast you are going right now, even though \"right now\" lasts no time at all. Behind that number is the limit from the last topic. Give it a name, the derivative, and a picture, the tangent line, and you have the central idea of the whole course.",
+ "prereq": [
+  {
+   "q": "The instantaneous rate of change of $f$ at $x = a$ is",
+   "options": [
+    "$\\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}$",
+    "$\\frac{f(a + h) - f(a)}{h}$ with $h = 0$",
+    "$\\lim_{h \\to 0} \\left( f(a + h) - f(a) \\right)$",
+    "$\\frac{f(a)}{a}$"
+   ],
+   "correct": 0,
+   "why": "It is the limit of average rates on shorter and shorter intervals.",
+   "review": "average-and-instant-rates"
+  },
+  {
+   "q": "A line passes through $(2, 5)$ with slope $-3$. Its equation is",
+   "options": [
+    "$y - 5 = -3(x - 2)$",
+    "$y - 2 = -3(x - 5)$",
+    "$y + 5 = -3(x + 2)$",
+    "$y = -3x + 5$"
+   ],
+   "correct": 0,
+   "why": "Point-slope form: $y - y_1 = m(x - x_1)$.",
+   "review": "average-and-instant-rates"
+  },
+  {
+   "q": "For $x \\ne 4$, $\\frac{\\sqrt{x} - 2}{x - 4}$ equals",
+   "options": [
+    "$\\frac{1}{\\sqrt{x} + 2}$",
+    "$\\sqrt{x} + 2$",
+    "$\\frac{1}{\\sqrt{x} - 2}$",
+    "$\\frac{1}{x + 4}$"
+   ],
+   "correct": 0,
+   "why": "Factor $x - 4 = (\\sqrt{x} - 2)(\\sqrt{x} + 2)$ and cancel.",
+   "review": "limit-algebra"
+  }
+ ],
+ "figure": {
+  "figure": "secant-to-tangent",
+  "caption": "The secant line through $(a, f(a))$ and $(a + h, f(a + h))$ has slope $\\frac{f(a + h) - f(a)}{h}$. As $h \\to 0$ it turns into the tangent line at $x = a$, whose slope is $f'(a)$."
+ },
+ "chain": [
+  {
+   "cause": "The limit $\\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}$ exists",
+   "effect": "its value is called the derivative of $f$ at $a$, written $f'(a)$"
+  },
+  {
+   "cause": "Secant lines through $(a, f(a))$ pivot as $h \\to 0$",
+   "effect": "they approach the tangent line at $x = a$, whose slope is $f'(a)$"
+  },
+  {
+   "cause": "The derivative is found at every input where the limit exists",
+   "effect": "the result is a new function, $f'(x)$, also written $y'$ or $\\frac{dy}{dx}$"
+  },
+  {
+   "cause": "You know $f(a)$ and $f'(a)$",
+   "effect": "the tangent line is $y = f(a) + f'(a)(x - a)$"
+  }
+ ],
+ "ideas": [
+  "The <b>derivative</b> of $f$ at $a$ is $f'(a) = \\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h}$, or equivalently $\\lim_{x \\to a} \\frac{f(x) - f(a)}{x - a}$. Both are the same limit of secant slopes.",
+  "The <b>tangent line</b> at $x = a$ passes through $(a, f(a))$ with slope $f'(a)$: $y = f(a) + f'(a)(x - a)$.",
+  "Done at every $x$, the limit gives the derivative function $f'(x)$. In <b>Leibniz notation</b>, $y = f(x)$ has derivative $\\frac{dy}{dx}$, and $\\frac{d}{dx}$ means \"the derivative of\".",
+  "A derivative has the units of a rate: output units per input unit."
+ ],
+ "misconception": {
+  "wrong": "$\\lim_{h \\to 0} \\frac{(3 + h)^2 - 9}{h}$ is a strange limit to evaluate by plugging in, so it is $\\frac{0}{0}$ and undefined.",
+  "right": "Read its shape. It is $\\lim_{h \\to 0} \\frac{f(3 + h) - f(3)}{h}$ with $f(x) = x^2$, so it is $f'(3)$, the slope of $y = x^2$ at $x = 3$. Simplify and it equals 6. A limit of a difference quotient is a derivative at a point."
+ },
+ "check": [
+  "calc-derivative-definition-1",
+  "calc-derivative-definition-2",
+  "calc-derivative-definition-3",
+  "calc-derivative-definition-4",
+  "calc-derivative-definition-9",
+  "calc-derivative-definition-13",
+  "calc-derivative-definition-15"
+ ],
+ "summary": "The derivative $f'(a)$ is the limit of the difference quotient as $h \\to 0$: the instantaneous rate of change of $f$ at $a$ and the slope of the tangent line there. Found at every $x$, it is the function $f'(x) = \\frac{dy}{dx}$. The tangent line at $a$ is $y = f(a) + f'(a)(x - a)$."
+}

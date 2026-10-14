@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Related Rates — AP® Calculus AB Notes</title>
+<meta name="description" content="Many quantities change together. As a balloon fills, its radius and its volume both grow.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/related-rates-intro.html">
+<meta property="og:title" content="Introduction to Related Rates — AP® Calculus AB Notes">
+<meta property="og:description" content="Many quantities change together. As a balloon fills, its radius and its volume both grow.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/related-rates-intro.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/related-rates-intro.html#reading",
+      "name": "Introduction to Related Rates",
+      "url": "https://levlprep.com/calculus/notes/related-rates-intro.html",
+      "description": "Many quantities change together. As a balloon fills, its radius and its volume both grow.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "introduction to related rates ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contextual Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Introduction to Related Rates: notes",
+          "item": "https://levlprep.com/calculus/notes/related-rates-intro.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="related-rates-intro" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Contextual Applications of Differentiation</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="derivative-in-context"><a href="derivative-in-context.html"><span class="bk-toc-n">4.1</span>The Derivative in Context</a></li><li data-toc-t="straight-line-motion"><a href="straight-line-motion.html"><span class="bk-toc-n">4.2</span>Straight-Line Motion: Position, Velocity, Acceleration</a></li><li data-toc-t="rates-in-context"><a href="rates-in-context.html"><span class="bk-toc-n">4.3</span>Rates of Change in Other Contexts</a></li><li class="current" data-toc-t="related-rates-intro"><a href="#main" aria-current="page"><span class="bk-toc-n">4.4</span>Introduction to Related Rates</a><div class="bk-toc-onpage"><p>On this page</p><a href="#everything-is-a-function-of-time">Everything is a function of time</a><a href="#the-basic-move-on-common-formulas">The basic move, on common formulas</a><a href="#two-rules-that-prevent-most-errors">Two rules that prevent most errors</a><a href="#slips-that-cost-points">Slips that cost points</a></div></li><li data-toc-t="solving-related-rates"><a href="solving-related-rates.html"><span class="bk-toc-n">4.5</span>Solving Related Rates Problems</a></li><li data-toc-t="local-linearity"><a href="local-linearity.html"><span class="bk-toc-n">4.6</span>Local Linearity and Linearization</a></li><li data-toc-t="lhospitals-rule"><a href="lhospitals-rule.html"><span class="bk-toc-n">4.7</span>L'Hospital's Rule</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Analytical Applications of Differentiation</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Contextual Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Introduction to Related Rates: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/related-rates-intro.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.4 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Introduction to Related Rates</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="related-rates-intro">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Frelated-rates-intro.html&amp;title=Introduction%20to%20Related%20Rates%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/related-rates-intro.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Many quantities change together. As a balloon fills, its radius and its volume both grow. As two cars drive away from a <a class="gl" href="../notes/differentiability.html" data-c="corner">corner</a>, the distance between them grows. An equation links the quantities at every instant, and <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">differentiating</a> that equation with respect to time links their <b>rates</b>. That is the whole idea of <span class="gl" tabindex="0" data-c="related-rates">related rates</span>; this page sets up the method, and the next topic solves full problems.</p>
+
+<h2 id="everything-is-a-function-of-time">Everything is a function of time</h2>
+<p>In <math class="calc-m"><semantics><mrow><mi>A</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">A = \pi r^2</annotation></semantics></math> there is no <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> in sight. But if the circle is a spreading ripple, then <math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> depends on <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>, and so does <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math>. To find how fast <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math> changes, differentiate both sides with respect to <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>. The right side is a <a class="gl" href="../notes/math-functions.html" data-c="composition">composite function</a>, <math class="calc-m"><semantics><mrow><mi>π</mi><mo stretchy="false">[</mo><mi>r</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">]</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\pi[r(t)]^2</annotation></semantics></math>, so the <a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a> applies:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>A</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mo>⋅</mo><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dA}{dt} = 2\pi r \cdot \frac{dr}{dt}</annotation></semantics></math></p>
+<p>This is the same move as <a class="gl" href="../notes/implicit-differentiation.html" data-c="implicit-differentiation">implicit differentiation</a>, with <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> in place of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. Every variable that changes gets its rate as a factor; constants such as <math class="calc-m"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math> do not.</p>
+<figure id="fig-ripple"  class="calc-figure"><div class="calc-figimg" data-fig="ripple-related-rates"><img src="../figures/ripple-related-rates.svg" alt="A circular ripple seen from above, with earlier smaller ripples dashed, the radius r drawn and an arrow for dr/dt. Beside it: A = πr², differentiated with respect to t to give dA/dt = 2πr · dr/dt; with r = 5 cm and dr/dt = 3 cm/s, dA/dt = 30π cm²/s." width="800" height="460" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A spreading ripple: the area and the radius both depend on time, so their rates are linked by <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>A</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dA}{dt} = 2\pi r\frac{dr}{dt}</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>The equation explains something you can see on a pond. Even if the ripple's radius grows at a steady 3 cm per second, the area grows faster and faster, because the factor <math class="calc-m"><semantics><mrow><mn>2</mn><mi>π</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">2\pi r</annotation></semantics></math> grows. At <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">r = 5</annotation></semantics></math> cm the area grows at <math class="calc-m"><semantics><mrow><mn>2</mn><mi>π</mi><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>30</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi(5)(3) = 30\pi</annotation></semantics></math> cm² per second; at <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">r = 10</annotation></semantics></math> cm, at <math class="calc-m"><semantics><mrow><mn>60</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">60\pi</annotation></semantics></math> cm² per second.</p>
+
+<h2 id="the-basic-move-on-common-formulas">The basic move, on common formulas</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<tr><th>Relation</th><th>Differentiated with respect to <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></th></tr>
+<tr><td>circle: <math class="calc-m"><semantics><mrow><mi>A</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">A = \pi r^2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>A</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dA}{dt} = 2\pi r\frac{dr}{dt}</annotation></semantics></math></td></tr>
+<tr><td>sphere: <math class="calc-m"><semantics><mrow><mi>V</mi><mo>=</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">V = \frac{4}{3}\pi r^3</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dV}{dt} = 4\pi r^2\frac{dr}{dt}</annotation></semantics></math></td></tr>
+<tr><td>cube: <math class="calc-m"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>s</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">V = s^3</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>3</mn><msup><mi>s</mi><mn>2</mn></msup><mfrac><mrow><mi>d</mi><mi>s</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dV}{dt} = 3s^2\frac{ds}{dt}</annotation></semantics></math></td></tr>
+<tr><td>rectangle: <math class="calc-m"><semantics><mrow><mi>A</mi><mo>=</mo><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">A = xy</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>A</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>y</mi><mo>+</mo><mi>x</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dA}{dt} = \frac{dx}{dt}y + x\frac{dy}{dt}</annotation></semantics></math></td></tr>
+<tr><td>right triangle: <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2 + y^2 = z^2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mn>2</mn><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">2x\frac{dx}{dt} + 2y\frac{dy}{dt}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>2</mn><mi>z</mi><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">= 2z\frac{dz}{dt}</annotation></semantics></math></td></tr>
+</table></div>
+<div class="worked">
+<p><b>Worked example 1.</b> A spherical balloon's radius grows at 2 cm per second. How fast does its volume grow when <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">r = 3</annotation></semantics></math> cm?</p>
+<p>Relation: <math class="calc-m"><semantics><mrow><mi>V</mi><mo>=</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">V = \frac{4}{3}\pi r^3</annotation></semantics></math>. Differentiate with respect to <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dV}{dt} = 4\pi r^2\frac{dr}{dt}</annotation></semantics></math>.</p>
+<p>Now substitute the instant: <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">r = 3</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{dr}{dt} = 2</annotation></semantics></math>. <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>4</mn><mi>π</mi><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>72</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">\frac{dV}{dt} = 4\pi(9)(2) = 72\pi</annotation></semantics></math> cm³ per second.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Air is pumped into the balloon at 100 cm³ per second. How fast is the radius growing when <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">r = 5</annotation></semantics></math> cm?</p>
+<p>Same equation, different unknown: <math class="calc-m"><semantics><mrow><mn>100</mn><mo>=</mo><mn>4</mn><mi>π</mi><mo stretchy="false">(</mo><mn>25</mn><mo stretchy="false">)</mo><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">100 = 4\pi(25)\frac{dr}{dt}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dr}{dt}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>100</mn><mrow><mn>100</mn><mi>π</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{100}{100\pi}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mi>π</mi></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{\pi}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">≈</mo><mn>0.32</mn></mrow><annotation encoding="application/x-tex">\approx 0.32</annotation></semantics></math> cm per second.</p>
+</div>
+
+<h2 id="two-rules-that-prevent-most-errors">Two rules that prevent most errors</h2>
+<p><b>Differentiate first, substitute second.</b> The values of one instant (like <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">r = 3</annotation></semantics></math>) are true only at that instant. If you put them into the equation before differentiating, they become constants with derivative 0, and the rates you need vanish.</p>
+<p><b>Signs come from the words.</b> "Increasing at 2 cm per second" means <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{dr}{dt} = 2</annotation></semantics></math>; "decreasing at 2 cm per second" or "shrinking by 2 cm each second" means <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>r</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{dr}{dt} = -2</annotation></semantics></math>. A distance to a point that something approaches is decreasing, so its rate is negative.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Car A drives east from an intersection at 60 mph and car B drives north at 45 mph. When A is 30 miles and B is 40 miles from the intersection, how fast is the distance between them growing?</p>
+<p>Relation: <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2 + y^2 = z^2</annotation></semantics></math>. Differentiate: <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mn>2</mn><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">2x\frac{dx}{dt} + 2y\frac{dy}{dt}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>2</mn><mi>z</mi><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">= 2z\frac{dz}{dt}</annotation></semantics></math>.</p>
+<p>At this instant <math class="calc-m"><semantics><mrow><mi>z</mi><mo>=</mo><msqrt><mrow><mn>900</mn><mo>+</mo><mn>1600</mn></mrow></msqrt><mo>=</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">z = \sqrt{900 + 1600} = 50</annotation></semantics></math>. Substitute: <math class="calc-m"><semantics><mrow><mn>30</mn><mo stretchy="false">(</mo><mn>60</mn><mo stretchy="false">)</mo><mo>+</mo><mn>40</mn><mo stretchy="false">(</mo><mn>45</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">30(60) + 40(45)</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>50</mn><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">= 50\frac{dz}{dt}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mn>3600</mn><mn>50</mn></mfrac><mo>=</mo><mn>72</mn></mrow><annotation encoding="application/x-tex">\frac{dz}{dt} = \frac{3600}{50} = 72</annotation></semantics></math> mph.</p>
+<p>If car B were instead driving <i>toward</i> the intersection, <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>45</mn></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = -45</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>z</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dz}{dt}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>1800</mn><mo>−</mo><mn>1800</mn></mrow><mn>50</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1800 - 1800}{50}</annotation></semantics></math><wbr><math class="calc-m"><semantics><mrow><mo form="infix">=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">= 0</annotation></semantics></math>: at that instant the distance would not be changing.</p>
+</div>
+
+<h2 id="slips-that-cost-points">Slips that cost points</h2>
+<ul>
+<li>Differentiating with respect to <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> instead of <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>, so no rates appear.</li>
+<li>Dropping the chain rule factor: writing <math class="calc-m"><semantics><mrow><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">4\pi r^2</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dV}{dt}</annotation></semantics></math>.</li>
+<li>Substituting values before differentiating.</li>
+<li>Entering a decreasing rate as positive.</li>
+<li>Missing the <a class="gl" href="../notes/product-rule.html" data-c="product-rule">product rule</a> on a product of two changing quantities.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:related-rates-intro">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="math-geometry.html"><span>&larr; Previous</span><b>Geometry for Calculus</b></a><a class="tb-chapter-link next" href="solving-related-rates.html"><span>Next &rarr;</span><b>Solving Related Rates Problems</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:related-rates-intro">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>
