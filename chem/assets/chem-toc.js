@@ -25,9 +25,12 @@
     });
     document.querySelectorAll('[data-toc-prog]').forEach(function(el){
       var ch = el.getAttribute('data-toc-prog'), n = count(ch), t = total(ch) || 1, p = Math.round(n / t * 100) + '%';
-      el.querySelector('b').textContent = n;
-      el.querySelector('.bk-toc-pct').textContent = p;
-      el.querySelector('.tb-progress-fill').style.width = p;
+      // Each part checked: a cached page from an older layout can pair other
+      // markup with this script (client_errors, bio-toc.js:29).
+      var b = el.querySelector('b'), pct = el.querySelector('.bk-toc-pct'), fill = el.querySelector('.tb-progress-fill');
+      if(b) b.textContent = n;
+      if(pct) pct.textContent = p;
+      if(fill) fill.style.width = p;
     });
     document.querySelectorAll('[data-chip-topic]').forEach(function(el){
       var k = tier(C.topicMastery(el.getAttribute('data-chip-topic')));

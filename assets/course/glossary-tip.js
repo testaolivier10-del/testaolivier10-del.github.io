@@ -56,7 +56,8 @@
 
   function load(){
     if(!loading) loading = fetch(DATA).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function(d){ data = d; d.byId = {}; (d.terms || []).forEach(function(t){ d.byId[t.id] = t; }); return d; });
+      .then(function(d){ data = d; d.byId = {}; (d.terms || []).forEach(function(t){ d.byId[t.id] = t; }); return d; },
+        function(e){ loading = null; throw e; }); // a dropped connection is retried on the next hover, not remembered
     return loading;
   }
 

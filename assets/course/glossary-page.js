@@ -95,7 +95,7 @@
       apply(false);
       fromHash();
       window.addEventListener('hashchange', fromHash);
-      if(window.LevlGlossary && window.LevlGlossary.load) window.LevlGlossary.load();
+      if(window.LevlGlossary && window.LevlGlossary.load) window.LevlGlossary.load().catch(function(){});
     }
 
     function apply(announce){

@@ -60,6 +60,23 @@
   var sent = 0;
   var seen = {};
   var queue = [];
+  var imgFailed = false;
+
+  /* Crawlers are not readers. Search bots and scrapers run the page with
+     images or scripts switched off, or drive it from a test harness, and every
+     one of those reports looks like a broken page that is not broken: in one
+     week a scraper walking the A&P notes with images blocked filed 250 of the
+     site's 300 reports. A self-declared bot, or a browser that says it is
+     automated, is not reported. */
+  function fromRobot() {
+    try {
+      var nav = window.navigator || {};
+      if (nav.webdriver === true) return true;
+      return /bot\b|bot\/|crawl|spider|slurp|headless/i.test(String(nav.userAgent || ''));
+    } catch (e) {
+      return false;
+    }
+  }
 
   function optedOut() {
     try {
@@ -96,7 +113,7 @@
 
   function report(message, source, line, column, stack) {
     try {
-      if (sent >= MAX_PER_LOAD || optedOut()) return;
+      if (sent >= MAX_PER_LOAD || optedOut() || fromRobot()) return;
 
       var msg = String(message || '').slice(0, MAX_MESSAGE);
       if (!msg) return;
@@ -168,6 +185,13 @@
           // and have already designed around. One of our own files failing to
           // load is the opposite — it means a page just lost a module.
           if (src.indexOf('/') !== 0 && src.indexOf(window.location.origin) !== 0) return;
+          // One image per load. When every figure on a page fails at once it
+          // is the connection or an image blocker, and five reports of it say
+          // no more than one does.
+          if (event.target.tagName === 'IMG') {
+            if (imgFailed) return;
+            imgFailed = true;
+          }
           report('Failed to load ' + event.target.tagName.toLowerCase(), src, null, null, '');
           return;
         }
@@ -206,7 +230,7 @@
     report: report,
     flush: flush,
     _pending: function () { return queue.slice(); },
-    _reset: function () { sent = 0; seen = {}; queue.length = 0; },
+    _reset: function () { sent = 0; seen = {}; queue.length = 0; imgFailed = false; },
     _sent: function () { return sent; },
   };
 
