@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trauma to the Head, Neck &amp; Spine: NREMT-EMT Notes | LevlPrep</title>
+<meta name="description" content="Injuries to the head, neck and spine carry the greatest risk of permanent disability, and the care given in the first minutes can prevent or cause it.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/trauma-to-the-head-neck-and-spine.html">
+<meta property="og:title" content="Trauma to the Head, Neck &amp; Spine: NREMT-EMT Notes | LevlPrep">
+<meta property="og:description" content="Injuries to the head, neck and spine carry the greatest risk of permanent disability, and the care given in the first minutes can prevent or cause it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/trauma-to-the-head-neck-and-spine.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/trauma-to-the-head-neck-and-spine.html#notes","name":"Trauma to the Head, Neck, and Spine: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/trauma-to-the-head-neck-and-spine.html","description":"Injuries to the head, neck and spine carry the greatest risk of permanent disability, and the care given in the first minutes can prevent or cause it.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":33},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Trauma to the Head, Neck, and Spine","item":"https://levlprep.com/nremt/notes/trauma-to-the-head-neck-and-spine.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="musculoskeletal-trauma.html"><span class="bk-toc-n">32</span>Musculoskeletal Trauma</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">33</span><span><b>Trauma to the Head, Neck, and Spine</b><small>3 sections</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch33-head-neck-spine"><span class="bk-toc-n">33.1</span>Neck Wounds & Spinal Assessment</a></li><li><a href="#ch33-tbi"><span class="bk-toc-n">33.2</span>Traumatic Brain Injury</a></li><li><a href="#ch33-cord-injury"><span class="bk-toc-n">33.3</span>Spinal Cord Injury & Neurogenic Shock</a></li></ol></nav>
+    <a class="bk-toc-other" href="multisystem-trauma.html"><span class="bk-toc-n">34</span>Multisystem Trauma</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Trauma to the Head, Neck, and Spine</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-33"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html?domain=Trauma">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="33">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 33 of 40</p>
+      <h1 class="tb-chapter-title">Trauma to the Head, Neck, and Spine</h1>
+      <div class="tb-chapter-meta">
+        <span>3 sections · 9 topics · about 11 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/trauma-to-the-head-neck-and-spine.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">Injuries to the head, neck and spine carry the greatest risk of permanent disability, and the care given in the first minutes can prevent or cause it. This chapter covers neck wounds, spinal assessment using NEXUS-based criteria to decide when motion restriction is needed, practical tips for the long backboard, when and how to remove a helmet, the traumatic brain injury whose outcome depends almost entirely on whether you keep the brain oxygenated and perfused, and the spinal cord injury whose shock looks nothing like the shock of blood loss.</p>
+    </header>
+<section class="section bk-sec" id="ch33-head-neck-spine" data-num="33.1" data-title="Neck Wounds &amp; Spinal Assessment">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">33.1</span>Neck Wounds & Spinal Assessment</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch33-head-neck-spine--1" data-heading="Neck wounds">
+      <h3>Neck wounds</h3>
+      <p>The major vessels of the neck run close to the surface, and a wound there carries two risks at once. The first is massive hemorrhage. The second is air embolism: the veins of the neck run at a pressure lower than atmospheric, so air can be sucked into an open vein, travel to the lungs, and cause cardiac arrest. Direct pressure remains a lifesaving step; the only caution is not to interfere with breathing.</p>
+            <p>Care proceeds in order. Open the airway, then place a gloved hand over the wound immediately. Replace the hand with an occlusive dressing of thick material that extends 2 in past the edges of the wound and is sealed on all 4 sides, and apply pressure to stop the bleeding. Never compress both carotid arteries at the same time. Once the bleeding has stopped, bandage the dressing in place without restricting the airway or the vessels of the neck.</p>
+    </div>
+<div class="topic" id="ch33-head-neck-spine--2" data-heading="Spinal assessment — NEXUS-based criteria">
+      <h3>Spinal assessment — NEXUS-based criteria</h3>
+      <p>The NEXUS study validated a tool for judging the risk of spinal injury. It rests on <strong>five</strong> criteria, and they are written as things that must all be <em>absent</em> before the cervical spine can be considered low risk:</p>
+            <ol>
+            <li><strong>No posterior midline cervical tenderness</strong>: palpate down the midline of the neck, and the rest of the spine while you are there.</li>
+            <li><strong>No evidence of intoxication</strong>: alcohol or drugs blunt the pain that the other criteria depend on the patient reporting.</li>
+            <li><strong>A normal level of alertness</strong>: the patient is fully awake and oriented, not confused, drowsy or post-ictal.</li>
+            <li><strong>No focal neurologic deficit</strong>: compare grip strength for equality, and check for paralysis, weakness, numbness or tingling.</li>
+            <li><strong>No painful distracting injury</strong>: a femur fracture or a large burn can occupy a patient's attention so completely that a broken neck does not hurt yet.</li>
+            </ol>
+            <p class="sub">Intoxication and alertness are two separate criteria, not one. They are often taught merged into a single question about whether the patient is "reliable", which is how the list gets miscounted as four — and a patient can be fully sober and still too drowsy to assess, or wide awake and drunk.</p>
+            <p class="sub">In pediatric patients, weight the mechanism of injury (MOI) more heavily. Young children cannot reliably report pain, and because their vertebrae are more cartilaginous, a significant spinal cord injury can occur without external tenderness or deformity.</p>
+    </div>
+<div class="topic" id="ch33-head-neck-spine--3" data-heading="Long backboard application — practical tips">
+      <h3>Long backboard application — practical tips</h3>
+      <p>The patient is log-rolled onto the long backboard, and the EMT holding the head calls the move. Once the patient is on the board, pad the voids between the head or torso and the board. Straps are placed at the upper chest, the pelvis and the thighs, and the head is secured last, after the body has been strapped down.</p>
+            <p class="sub">A full-term pregnant patient is immobilized on the board, and the board is then tilted to the left to reduce compression of the vena cava.</p>
+            <p class="sub">For children 6 years of age or younger, pad beneath the shoulder blades to compensate for a proportionally larger head.</p>
+    </div>
+<div class="topic" id="ch33-head-neck-spine--4" data-heading="Helmet management">
+      <h3>Helmet management</h3>
+      <p>A helmet is left on when it fits snugly, there is no impending airway or breathing problem, removal would cause further injury, and proper spinal immobilization can be achieved with it in place. It is removed when it interferes with assessment or management of the airway or breathing, when it fits poorly and allows excessive movement inside, when it interferes with immobilization, or when the patient is in cardiac arrest.</p>
+            <p class="sub">With a football-, hockey- or lacrosse-style helmet worn with shoulder pads, remove both together or leave both in place. Removing only one forces the neck into hyperflexion or hyperextension.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 33.1</div>
+      <ul><li>Never compress both carotid arteries simultaneously.</li><li>Neck wound: occlusive dressing sealed on all four sides, extending 2 in past the wound edges — the veins can entrain air.</li><li>NEXUS has FIVE criteria, all of which must be absent for a low-risk cervical spine: no midline cervical tenderness, no intoxication, normal alertness, no focal neurologic deficit, no painful distracting injury.</li><li>Intoxication and alertness are separate criteria. Merging them into one question about 'reliability' is how the list gets miscounted as four.</li><li>In young children, weight the mechanism of injury more heavily — cartilaginous vertebrae allow cord injury without tenderness or deformity.</li><li>Backboard: strap the body first (upper chest, pelvis, thighs), secure the head LAST.</li><li>Full-term pregnant patients on a backboard should be tilted left to relieve vena cava compression.</li><li>Children 6 and under: pad beneath the shoulder blades to offset the proportionally larger head.</li><li>Remove a helmet only if it interferes with airway management, fits poorly, interferes with immobilization, or the patient is in cardiac arrest.</li><li>Football-style helmet + shoulder pads: remove both together or neither — never just one.</li></ul>
+    </div>
+  </section>
+<section class="section bk-sec" id="ch33-tbi" data-num="33.2" data-title="Traumatic Brain Injury">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">33.2</span>Traumatic Brain Injury</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch33-tbi--1" data-heading="Primary injury is already done; secondary injury is the one you can prevent">
+      <h3>Primary injury is already done; secondary injury is the one you can prevent</h3>
+      <p>A traumatic brain injury has two halves. The <strong>primary injury</strong> is the damage done at the instant of impact — torn tissue, bruised brain, sheared axons. Nothing an EMT does changes it; it happened before the call came in.</p><p>The <strong>secondary injury</strong> is everything that damages the brain afterward: swelling, rising pressure inside a rigid skull, and above all <strong>hypoxia and hypotension</strong>. These two are the reason head-injury care looks so much like ordinary good care. Keeping the airway open, keeping the saturation up, and keeping the blood pressure from dropping is the treatment for a brain injury, because the brain is exquisitely intolerant of low oxygen and low perfusion pressure. Adding hypoglycemia to a head-injured patient does the same thing, which is another reason the glucose gets checked.</p><p>Put plainly: the EMT cannot repair the brain, and the EMT can substantially change whether that brain is further injured in the next twenty minutes.</p>
+    </div>
+<div class="topic" id="ch33-tbi--2" data-heading="Rising intracranial pressure announces itself in a pattern that is the opposite of shock">
+      <h3>Rising intracranial pressure announces itself in a pattern that is the opposite of shock</h3>
+      <p>The skull is a closed box. Blood or swelling inside it has nowhere to expand, so the pressure rises and squeezes the brain. Late in that process the body mounts a characteristic response, <strong>Cushing's triad</strong>, and it is worth memorizing precisely because it inverts the pattern you have been taught to look for.</p><p class="tb-caption"><b>Table 33.1</b>Rising intracranial pressure announces itself in a pattern that is the opposite of shock</p><div class="table-wrap"><table><thead><tr><th></th><th>Hemorrhagic shock</th><th>Rising ICP (Cushing's triad)</th></tr></thead><tbody><tr><td>Blood pressure</td><td>Falling</td><td><strong>Rising</strong>, with a widening pulse pressure</td></tr><tr><td>Heart rate</td><td>Rising (tachycardia)</td><td><strong>Falling</strong> (bradycardia)</td></tr><tr><td>Respirations</td><td>Rapid</td><td><strong>Irregular</strong> in rate and depth</td></tr></tbody></table></div><p>A head-injured patient whose pressure is climbing while their pulse slows is not stabilizing. Other signs of rising pressure and impending herniation include a deteriorating level of consciousness — the single most sensitive indicator — vomiting, often without nausea, and a <strong>pupil that becomes dilated and unreactive on one side</strong>.</p><p>One thing not to do reflexively: <strong>do not routinely hyperventilate a head-injured patient</strong>. Driving down carbon dioxide constricts cerebral vessels and reduces blood flow to a brain that needs more of it, not less. Ventilate at the normal rate, and hyperventilate only if your protocol directs it for specific signs of herniation.</p>
+    </div>
+<div class="topic" id="ch33-tbi--3" data-heading="Skull fractures, concussion, and the drainage you leave alone">
+      <h3>Skull fractures, concussion, and the drainage you leave alone</h3>
+      <p>A <strong>basilar skull fracture</strong>, at the base of the skull, produces signs that are distinctive and, importantly, <strong>late</strong> — they can take hours to appear, so their absence early means nothing. <strong>Raccoon eyes</strong> are bruising around both eyes; <strong>Battle's sign</strong> is bruising behind the ear over the mastoid; and clear or blood-tinged fluid draining from the nose or the ear is cerebrospinal fluid escaping through the fracture.</p><p><strong>Do not pack the nose or the ears to stop that drainage.</strong> The fluid is coming from around the brain, and blocking its exit raises the pressure inside the skull. Cover loosely with a sterile dressing and let it drain. This is also the reason an NPA is avoided in a patient with these signs.</p><p>A <strong>concussion</strong> is a transient disturbance of brain function without a structural injury that imaging will show. Expect headache, confusion, dizziness, and amnesia — either for events before the injury or for events after it — and the repetitive questioning ("What happened? Where am I?" asked over and over) that is characteristic. Most resolve. All of them are evaluated, because a concussion and a slowly expanding bleed can look identical in the first hour.</p><p>Finally, a point about where to look for shock: in an adult, <strong>a head injury alone rarely causes hypotension</strong>. An adult head-injury patient who is in shock is almost certainly bleeding somewhere else, and looking for it is the priority. Infants are the exception — their blood volume is small enough relative to their head that intracranial bleeding genuinely can cause shock.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 33.2</div>
+      <ul><li>Primary injury happens at impact and cannot be changed. Secondary injury — hypoxia, hypotension, swelling, hypoglycemia — is what EMT care prevents.</li><li>Hypoxia and hypotension are the two biggest worsening factors in TBI. Protecting airway, oxygenation and blood pressure IS head-injury treatment.</li><li>Cushing's triad (LATE sign of rising ICP): rising blood pressure with widening pulse pressure, FALLING heart rate, irregular respirations. It is the mirror image of shock.</li><li>A deteriorating level of consciousness is the most sensitive sign of rising intracranial pressure.</li><li>A unilaterally dilated, unreactive pupil suggests herniation. Vomiting without nausea is another sign of rising pressure.</li><li>Do NOT routinely hyperventilate a head-injured patient — it constricts cerebral vessels and reduces blood flow. Only per protocol for signs of herniation.</li><li>Basilar skull fracture signs — raccoon eyes, Battle's sign, CSF from nose or ears — are LATE. Their absence early means nothing.</li><li>Never pack the nose or ears to stop CSF drainage; cover loosely and let it drain. This is also why an NPA is avoided here.</li><li>Concussion: transient dysfunction without structural injury — headache, confusion, amnesia, repetitive questioning. Evaluate every one; an expanding bleed looks the same early.</li><li>In an adult, a head injury alone rarely causes hypotension — look elsewhere for the bleeding. In infants it can, because of their small blood volume.</li></ul>
+    </div>
+  </section>
+<section class="section bk-sec" id="ch33-cord-injury" data-num="33.3" data-title="Spinal Cord Injury &amp; Neurogenic Shock">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">33.3</span>Spinal Cord Injury & Neurogenic Shock</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch33-cord-injury--1" data-heading="What the cord controls depends on how high the injury is, and breathing is the level that matters most">
+      <h3>What the cord controls depends on how high the injury is, and breathing is the level that matters most</h3>
+      <p>An injury to the spinal cord removes function below the level of the injury, which means the height of the injury predicts what the patient has lost. The level worth knowing by heart is the diaphragm: the nerves that drive it leave the cord at roughly <strong>C3 through C5</strong> — remembered as "C3, 4, 5 keep the diaphragm alive." An injury <strong>above</strong> that level takes the diaphragm with it and the patient stops breathing. An injury just below it spares the diaphragm but paralyzes the muscles between the ribs, producing <strong>diaphragmatic breathing</strong>: the belly rises and falls while the chest barely moves. That pattern in a trauma patient is a cord injury until proven otherwise.</p><p>Other findings: loss of sensation or movement below a level, numbness or tingling in the extremities, loss of bowel or bladder control, and — in a male patient — <strong>priapism</strong>, a persistent erection caused by the loss of sympathetic tone, which is a specific and often-tested sign.</p>
+    </div>
+<div class="topic" id="ch33-cord-injury--2" data-heading="Neurogenic shock is hypotension without the tachycardia, and confusing it with blood loss is the trap">
+      <h3>Neurogenic shock is hypotension without the tachycardia, and confusing it with blood loss is the trap</h3>
+      <p>A high cord injury cuts the sympathetic nervous system's signal to the blood vessels. The vessels below the injury dilate, the effective size of the container becomes larger than the volume of blood in it, and the pressure falls. That is <strong>neurogenic shock</strong>, and it looks unlike any other shock on the exam.</p><p class="tb-caption"><b>Table 33.2</b>Neurogenic shock is hypotension without the tachycardia, and confusing it with blood loss is the trap</p><div class="table-wrap"><table><thead><tr><th></th><th>Hemorrhagic shock</th><th>Neurogenic shock</th></tr></thead><tbody><tr><td>Blood pressure</td><td>Low</td><td>Low</td></tr><tr><td>Heart rate</td><td>Fast</td><td><strong>Normal or slow</strong></td></tr><tr><td>Skin</td><td>Pale, cool, clammy</td><td><strong>Warm, dry, flushed</strong> below the injury</td></tr></tbody></table></div><p>The heart rate is the giveaway. The same sympathetic signal that would normally speed the heart in response to falling pressure is the signal that has been cut, so the patient cannot mount the tachycardia. A hypotensive trauma patient with a normal or slow pulse and warm dry skin has a cord injury; a hypotensive trauma patient with a fast pulse and cool clammy skin is bleeding.</p><p>Two practical consequences. Because the patient cannot constrict their peripheral vessels, they lose heat continuously and become <strong>hypothermic</strong> quickly even in a mild environment — cover them. And because a trauma patient can have both problems at once, neurogenic shock is never a reason to stop looking for hemorrhage.</p><p>One term to keep separate: <strong>spinal shock</strong> is the temporary loss of cord function — flaccid paralysis and lost reflexes — immediately after an injury, and it may partly resolve over hours to weeks. It describes neurological function. <strong>Neurogenic shock</strong> describes the circulation. They often occur together and they are not the same thing.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 33.3</div>
+      <ul><li>C3, 4, 5 keep the diaphragm alive. An injury above that level stops breathing.</li><li>Diaphragmatic breathing — belly moving, chest still — in a trauma patient means a cord injury until proven otherwise.</li><li>Cord injury signs: loss of sensation or movement below a level, numbness or tingling, loss of bowel or bladder control, and priapism in a male patient.</li><li>Neurogenic shock: LOW blood pressure with a NORMAL or SLOW heart rate and warm, dry, flushed skin below the injury.</li><li>Hemorrhagic shock: low blood pressure with a FAST heart rate and pale, cool, clammy skin. The heart rate is the distinguishing finding.</li><li>The patient cannot mount a tachycardia because the sympathetic signal that would produce it is the one that was cut.</li><li>Neurogenic shock patients lose heat continuously and become hypothermic quickly — cover them.</li><li>A trauma patient can have both — neurogenic shock is never a reason to stop looking for hemorrhage.</li><li>Spinal shock = temporary loss of neurological function, may resolve. Neurogenic shock = the circulatory problem. Not the same thing.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-bradycardia">Bradycardia</a></dt><dd>An abnormally slow heart rate.</dd></div><div><dt><a href="../glossary.html#t-clammy">Clammy</a></dt><dd>Skin that is cool and moist to the touch, often a sign of shock or poor perfusion.</dd></div><div><dt><a href="../glossary.html#t-diaphragm">Diaphragm</a></dt><dd>The dome-shaped muscle beneath the lungs that is the primary muscle of breathing.</dd></div><div><dt><a href="../glossary.html#t-embolism">Embolism</a></dt><dd>A blockage in a blood vessel caused by a clot or other material that traveled there from elsewhere in the body.</dd></div><div><dt><a href="../glossary.html#t-flaccid">Flaccid</a></dt><dd>Lacking normal muscle tone; limp.</dd></div><div><dt><a href="../glossary.html#t-hemorrhage">Hemorrhage</a></dt><dd>Heavy or uncontrolled bleeding.</dd></div><div><dt><a href="../glossary.html#t-hypoxia">Hypoxia</a></dt><dd>A deficiency of oxygen reaching the body's tissues.</dd></div><div><dt><a href="../glossary.html#t-pediatric">Pediatric</a></dt><dd>Relating to infants, children, and adolescents — generally patients under 18 years of age.</dd></div><div><dt><a href="../glossary.html#t-perfusion">Perfusion</a></dt><dd>The flow of blood through blood vessels to an organ or tissue, delivering oxygen and nutrients.</dd></div><div><dt><a href="../glossary.html#t-peripheral">Peripheral</a></dt><dd>Relating to the outer parts of the body, away from the center, such as the peripheral pulses in the wrists and feet.</dd></div><div><dt><a href="../glossary.html#t-priapism">Priapism</a></dt><dd>A persistent, often painful erection unrelated to sexual stimulation, sometimes seen in spinal injury or certain medical conditions.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div><div><dt><a href="../glossary.html#t-tachycardia">Tachycardia</a></dt><dd>An abnormally fast heart rate.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html?domain=Trauma">Practice this domain &rarr;</a> <a href="../study-notes.html#chapter-33">Open in the reader &rarr;</a></p>
+    </section>
+    <section class="book-tools" aria-label="Practice this">
+      <div class="chapter-tools">
+        <span class="chapter-tools__k">Practice this</span>
+        <a href="../scenario-sim.html">Scenarios <small>run a trauma call end to end</small></a>
+      </div>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="musculoskeletal-trauma.html"><span>&larr; Chapter 32</span><b>Musculoskeletal Trauma</b></a>
+      <a class="tb-chapter-link next" href="multisystem-trauma.html"><span>Chapter 34 &rarr;</span><b>Multisystem Trauma</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

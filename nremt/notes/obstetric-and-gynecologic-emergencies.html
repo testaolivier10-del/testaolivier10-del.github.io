@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obstetric and Gynecologic Emergencies: EMT Notes | LevlPrep</title>
+<meta name="description" content="Most births need no help at all, and the EMT's job is to recognize the ones that do.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/obstetric-and-gynecologic-emergencies.html">
+<meta property="og:title" content="Obstetric and Gynecologic Emergencies: EMT Notes | LevlPrep">
+<meta property="og:description" content="Most births need no help at all, and the EMT's job is to recognize the ones that do.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/obstetric-and-gynecologic-emergencies.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/obstetric-and-gynecologic-emergencies.html#notes","name":"Obstetric and Gynecologic Emergencies: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/obstetric-and-gynecologic-emergencies.html","description":"Most births need no help at all, and the EMT's job is to recognize the ones that do.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":36},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Obstetric and Gynecologic Emergencies","item":"https://levlprep.com/nremt/notes/obstetric-and-gynecologic-emergencies.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="environmental-emergencies.html"><span class="bk-toc-n">35</span>Environmental Emergencies</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">36</span><span><b>Obstetric and Gynecologic Emergencies</b><small>2 sections</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch36-pregnancy-labor"><span class="bk-toc-n">36.1</span>Pregnancy & Labor</a></li><li><a href="#ch36-complications"><span class="bk-toc-n">36.2</span>Complications & Gynecologic Emergencies</a></li></ol></nav>
+    <a class="bk-toc-other" href="emergencies-for-patients-with-special-challenges.html"><span class="bk-toc-n">37</span>Emergencies for Patients with Special Challenges</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Obstetric and Gynecologic Emergencies</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-36"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html?domain=OB%2FPeds%20%26%20Special%20Populations">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="36">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 36 of 40</p>
+      <h1 class="tb-chapter-title">Obstetric and Gynecologic Emergencies</h1>
+      <div class="tb-chapter-meta">
+        <span>2 sections · 12 topics · about 8 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/obstetric-and-gynecologic-emergencies.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">Most births need no help at all, and the EMT's job is to recognize the ones that do. This chapter covers the physiologic changes of pregnancy, the three stages of labor and the transport decision, assisting a normal delivery, care and APGAR scoring of the newborn and neonatal resuscitation, and then the complications: abnormal presentations, bleeding, ectopic pregnancy, seizures, trauma and cardiac arrest in pregnancy, and gynecologic emergencies.</p>
+    </header>
+<section class="section bk-sec" id="ch36-pregnancy-labor" data-num="36.1" data-title="Pregnancy &amp; Labor">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">36.1</span>Pregnancy & Labor</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch36-pregnancy-labor--1" data-heading="Physiologic changes in pregnancy">
+      <h3>Physiologic changes in pregnancy</h3>
+      <p>Pregnancy changes the mother's body in ways that matter to the EMT. As the uterus grows it becomes thinner-walled and less protected, and so more vulnerable to injury. The cardiovascular system adapts as well: blood volume, cardiac output and heart rate all increase, but the red blood cell (RBC) count rises less than the plasma volume does, so the added volume dilutes the cells that are present and produces a <strong>dilutional anemia</strong>.</p>
+            <p>The respiratory system is affected too. The mother's demand for oxygen (O2) rises, and in late pregnancy the fetus presses upward on the diaphragm and reduces lung volume. A pregnant patient therefore has less reserve at the very time she needs more oxygen.</p>
+    </div>
+<div class="topic" id="ch36-pregnancy-labor--2" data-heading="Supine hypotensive syndrome">
+      <h3>Supine hypotensive syndrome</h3>
+      <p>In the third trimester, the weight of the uterus and fetus can compress the inferior vena cava when the mother lies on her back. Compression of the vena cava reduces venous return to the heart, which in turn reduces cardiac output, and the mother becomes dizzy and her blood pressure (BP) drops. This is <strong>supine hypotensive syndrome</strong>.</p>
+            <p>Standard treatment for shock does not work here, because the problem is the position of the patient rather than a loss of volume. The fix is positional: transport all third-trimester patients on their left side, which takes the weight of the uterus off the vena cava.</p>
+    </div>
+<div class="topic" id="ch36-pregnancy-labor--3" data-heading="Labor &amp; delivery — 3 stages">
+      <h3>Labor & delivery — 3 stages</h3>
+      <p>Labor is divided into three stages, and the table below sets out where each begins and ends.</p>
+            <p class="tb-caption"><b>Table 36.1</b>Labor &amp; delivery — 3 stages</p><div class="table-wrap"><table><thead><tr><th>Stage</th><th>Starts</th><th>Ends</th></tr></thead><tbody>
+            <tr><td>1st (dilation)</td><td>Regular contractions + cervical thinning begin</td><td>Cervix fully dilated</td></tr>
+            <tr><td>2nd</td><td>Baby enters birth canal</td><td>Baby is born</td></tr>
+            <tr><td>3rd</td><td>After baby is born</td><td>Afterbirth delivered</td></tr>
+            </tbody></table></div>
+            <p class="sub">Contractions progress from roughly 30 minutes apart to 3 minutes apart or less as delivery nears. Bloody show, the watery, blood-tinged mucus that passes from the vagina, is a normal sign that labor has begun.</p>
+    </div>
+<div class="topic" id="ch36-pregnancy-labor--4" data-heading="Assessing the woman in labor — transport decision">
+      <h3>Assessing the woman in labor — transport decision</h3>
+      <p>When you are called to a woman in labor, the first question is whether there is time to transport. Begin with the history: ask for her due date, whether this is her first pregnancy, and whether she has had prenatal care. Then look for <strong>crowning</strong>, a visual check for a bulging or presenting part at the vaginal opening, which is best seen during a contraction. A <strong>cephalic presentation</strong>, head first, is normal. A <strong>breech presentation</strong> means the buttocks or feet present first.</p>
+            <p>The general rule is to <strong>transport unless delivery is expected within a few minutes</strong>. If crowning or other signs of imminent delivery are present, consult medical direction, and if delivery has not occurred within 10 minutes, contact medical direction again to request transport. If crowning occurs during transport, stop the ambulance and prepare for delivery.</p>
+    </div>
+<div class="topic" id="ch36-pregnancy-labor--5" data-heading="Assisting the delivery">
+      <h3>Assisting the delivery</h3>
+      <p>If the baby is coming on scene, your job is to assist a process that will happen on its own. The steps are as follows:</p>
+            <ol>
+            <li>Keep a constant view of the vaginal opening and be ready at any moment.</li>
+            <li>Place one hand with slight pressure on the baby's head as it emerges. Never squeeze the head, and never pull on the baby.</li>
+            <li>If the amniotic sac has not broken, puncture it with your finger and clear the membrane from the baby's mouth and nose. Check the fluid for meconium staining.</li>
+            <li>Check for a nuchal cord, a cord wrapped around the baby's neck. Gently loosen it; if it cannot be loosened, clamp the cord in two places and cut between the clamps.</li>
+            <li>Deliver the shoulders. Guide the head downward to deliver the upper shoulder, then upward to deliver the lower shoulder.</li>
+            <li>Support the baby, who will be very slippery. Dry the baby, wrap it in a warm blanket, and suction only if needed, the mouth first and then the nose.</li>
+            <li>Note the exact time of birth.</li>
+            </ol>
+    </div>
+<div class="topic" id="ch36-pregnancy-labor--6" data-heading="The neonate &amp; the APGAR score">
+      <h3>The neonate & the APGAR score</h3>
+      <p>A normal newborn has a pulse above 100 beats per minute, breathes easily, cries vigorously, and shows blue coloration, if any, only at the hands and feet. The <strong>APGAR score</strong> records the newborn's condition in five categories, each scored from 0 to 2, and the table below gives the criteria for each score.</p>
+            <p class="tb-caption"><b>Table 36.2</b>The neonate &amp; the APGAR score</p><div class="table-wrap"><table><thead><tr><th>Category</th><th>0</th><th>1</th><th>2</th></tr></thead><tbody>
+            <tr><td>Appearance</td><td>Blue/pale all over</td><td>Extremities blue, trunk pink</td><td>Pink all over</td></tr>
+            <tr><td>Pulse</td><td>0</td><td>&lt;100</td><td>&gt;100</td></tr>
+            <tr><td>Grimace</td><td>No reaction</td><td>Facial grimace</td><td>Sneeze/cough/cry</td></tr>
+            <tr><td>Activity</td><td>No movement</td><td>Slight flexion</td><td>Moving normally</td></tr>
+            <tr><td>Respiratory effort</td><td>None</td><td>Slow/irregular, weak cry</td><td>Good breathing, strong cry</td></tr>
+            </tbody></table></div>
+            <p class="sub">APGAR does not guide resuscitation and must never delay it. It is a documentation and scoring tool, not a decision-making tool in the moment. Warmth is the number one priority for the newborn.</p>
+    </div>
+<div class="topic" id="ch36-pregnancy-labor--7" data-heading="Neonatal resuscitation — the inverted pyramid">
+      <h3>Neonatal resuscitation — the inverted pyramid</h3>
+      <p>Most neonates need only simple maneuvers, and the sequence of care is drawn as an inverted pyramid: the simple steps at the wide top are needed by almost every baby, and each step below is needed by fewer. Each step is performed for 30 seconds, and the baby is then reassessed before you move to the next. The steps are:</p>
+            <ol>
+            <li>Dry, warm and stimulate the baby.</li>
+            <li>If the baby is apneic or gasping, or the heart rate (HR) is below 100, begin positive pressure ventilation at 40 to 60 breaths per minute.</li>
+            <li>If the HR is below 60, begin chest compressions using the two-thumbs-encircling technique, at a compression-to-ventilation ratio of 3:1.</li>
+            </ol>
+    </div></div>
+  </section>
+<section class="section bk-sec" id="ch36-complications" data-num="36.2" data-title="Complications &amp; Gynecologic Emergencies">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">36.2</span>Complications & Gynecologic Emergencies</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch36-complications--1" data-heading="Childbirth complications">
+      <h3>Childbirth complications</h3>
+      <p>Three abnormal presentations can be recognized at the scene, and in each the most important decision is what not to do. The table below sets out the findings and the critical actions for each.</p>
+            <p class="tb-caption"><b>Table 36.3</b>Childbirth complications</p><div class="table-wrap"><table><thead><tr><th>Complication</th><th>Key findings</th><th>Critical actions</th></tr></thead><tbody>
+            <tr><td>Breech presentation</td><td>Buttocks/legs first</td><td>Rapid transport; never pull on the legs</td></tr>
+            <tr><td>Limb presentation</td><td>Arm/leg/shoulder presenting</td><td>Cannot be delivered prehospital — immediate transport, don't pull the limb or push it back in</td></tr>
+            <tr><td>Prolapsed umbilical cord</td><td>Cord presents before the baby</td><td>Head-down/pelvis-raised; push the baby's head/buttocks off the cord and maintain until relieved at the hospital</td></tr>
+            </tbody></table></div>
+            <p>In breech and limb presentations the harm comes from pulling; in a prolapsed cord it comes from compression of the cord. Never pull on a presenting limb or on the legs of a breech, and never push a presenting limb back in.</p>
+    </div>
+<div class="topic" id="ch36-complications--2" data-heading="Excessive prebirth bleeding &amp; ectopic pregnancy">
+      <h3>Excessive prebirth bleeding & ectopic pregnancy</h3>
+      <p>Heavy bleeding before birth usually comes from one of two problems with the placenta, and the table below contrasts them.</p>
+            <p class="tb-caption"><b>Table 36.4</b>Excessive prebirth bleeding &amp; ectopic pregnancy</p><div class="table-wrap"><table><thead><tr><th>Condition</th><th>Presentation</th></tr></thead><tbody>
+            <tr><td>Placenta previa</td><td>3rd trimester, heavy bleeding often WITHOUT abdominal pain</td></tr>
+            <tr><td>Abruptio placentae</td><td>3rd trimester, abdominal/back pain + heavy bleeding; often trauma-related</td></tr>
+            </tbody></table></div>
+            <p>In <strong>placenta previa</strong>, the bleeding comes in the third trimester and is heavy, and it often occurs without abdominal pain. In <strong>abruptio placentae</strong>, the third-trimester bleeding is accompanied by abdominal or back pain, and the condition is often related to trauma.</p>
+            <p><strong>Ectopic pregnancy</strong> is the other bleeding emergency you must keep in mind. Assume that any woman of childbearing age with abdominal pain, and especially abdominal pain with vaginal bleeding, has an ectopic pregnancy until proven otherwise. The signs are one-sided acute abdominal pain, a rapid and weak pulse, which is a later sign, and a low BP, which is a very late sign.</p>
+    </div>
+<div class="topic" id="ch36-complications--3" data-heading="Seizures in pregnancy &amp; trauma">
+      <h3>Seizures in pregnancy & trauma</h3>
+      <p><strong>Preeclampsia</strong> presents with altered mental status (AMS), swelling and hypertension. When it progresses to seizures, the condition is <strong>eclampsia</strong>. Care for the seizing pregnant patient is to open the airway, give O2, transport her on the left side, keep her warm, and call for ALS.</p>
+            <p>Trauma in pregnancy raises particular concerns. The uterus acts as a natural shock absorber for minor abdominal trauma, but major forces can cause uterine rupture, abruptio placentae or organ injury. The pregnant patient's baseline pulse is 10 to 15 beats per minute faster than a nonpregnant woman's, and she can lose 30 to 35 percent of her blood volume before obvious signs of shock appear. Shock is therefore genuinely harder to detect in pregnancy, and it remains the most likely cause of prehospital fetal death.</p>
+    </div>
+<div class="topic" id="ch36-complications--4" data-heading="Cardiac arrest in the pregnant patient">
+      <h3>Cardiac arrest in the pregnant patient</h3>
+      <p>When a pregnant patient goes into cardiac arrest, resuscitation stays focused on the mother, because a resuscitated mother is the best hope for the baby as well. If the patient is more than 20 weeks pregnant, manually displace the uterus to the left during CPR, or tilt her 27 to 30 degrees to the left lateral position on a backboard, to take the uterus off the vena cava. Place your hands in the usual position on the lower half of the sternum; current AHA guidance does not recommend moving them higher. An AED and defibrillation are appropriate in pregnancy and should be used as needed.</p>
+    </div>
+<div class="topic" id="ch36-complications--5" data-heading="Gynecologic emergencies (non-pregnancy)">
+      <h3>Gynecologic emergencies (non-pregnancy)</h3>
+      <p>Vaginal bleeding in a woman who is not known to be pregnant still calls for the same thinking as before: consider pregnancy-related causes, especially ectopic pregnancy, first in any woman of childbearing age.</p>
+            <p>A call for sexual assault demands care for both the patient and the evidence. Ensure scene safety first. Be nonjudgmental, and treat life threats before anything else. Avoid disturbing evidence unless doing so is necessary for care, and examine the genitals only if severe bleeding is present. Discourage the patient from bathing or voiding, because both destroy evidence.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 36.2</div>
+      <ul><li>Third-trimester patients are transported on their left side to relieve vena cava compression.</li><li>General rule: transport unless delivery is expected within a few minutes; crowning during transport means stop and deliver.</li><li>APGAR is a documentation tool only — never let scoring delay resuscitation.</li><li>Never pull on a baby during delivery, and never pull a limb during a limb presentation.</li><li>Assume any woman of childbearing age with abdominal pain and bleeding has an ectopic pregnancy until proven otherwise.</li><li>Pregnant patients can lose 30–35% of blood volume before showing obvious shock signs.</li><li>In cardiac arrest >20 weeks pregnant: manually displace the uterus left; use the standard hand position on the lower half of the sternum.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-acute">Acute</a></dt><dd>Having a sudden onset and typically a short, intense course — contrast with chronic.</dd></div><div><dt><a href="../glossary.html#t-cephalic">Cephalic</a></dt><dd>Relating to the head; also used to describe the head-first presentation of a fetus during delivery.</dd></div><div><dt><a href="../glossary.html#t-diaphragm">Diaphragm</a></dt><dd>The dome-shaped muscle beneath the lungs that is the primary muscle of breathing.</dd></div><div><dt><a href="../glossary.html#t-neonate">Neonate</a></dt><dd>A newborn infant, generally within the first 28 days of life.</dd></div><div><dt><a href="../glossary.html#t-prehospital">Prehospital</a></dt><dd>Occurring or provided before a patient reaches the hospital, i.e. EMS care in the field.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div><div><dt><a href="../glossary.html#t-supine">Supine</a></dt><dd>Lying face-up.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html?domain=OB%2FPeds%20%26%20Special%20Populations">Practice this domain &rarr;</a> <a href="../study-notes.html#chapter-36">Open in the reader &rarr;</a></p>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="environmental-emergencies.html"><span>&larr; Chapter 35</span><b>Environmental Emergencies</b></a>
+      <a class="tb-chapter-link next" href="emergencies-for-patients-with-special-challenges.html"><span>Chapter 37 &rarr;</span><b>Emergencies for Patients with Special Challenges</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Well-Being of the EMT: NREMT-EMT Study Notes | LevlPrep</title>
+<meta name="description" content="An EMT who is exhausted, exposed or hurt cannot take care of anyone else, so this chapter is about protecting the provider first.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/well-being-of-the-emt.html">
+<meta property="og:title" content="Well-Being of the EMT: NREMT-EMT Study Notes | LevlPrep">
+<meta property="og:description" content="An EMT who is exhausted, exposed or hurt cannot take care of anyone else, so this chapter is about protecting the provider first.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/well-being-of-the-emt.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/well-being-of-the-emt.html#notes","name":"Well-Being of the EMT: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/well-being-of-the-emt.html","description":"An EMT who is exhausted, exposed or hurt cannot take care of anyone else, so this chapter is about protecting the provider first.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":2},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Well-Being of the EMT","item":"https://levlprep.com/nremt/notes/well-being-of-the-emt.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="introduction-to-ems.html"><span class="bk-toc-n">1</span>Introduction to EMS</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">2</span><span><b>Well-Being of the EMT</b><small>2 sections</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch2-provider-wellness"><span class="bk-toc-n">2.1</span>Well-Being & Standard Precautions</a></li><li><a href="#ch2-stress-safety"><span class="bk-toc-n">2.2</span>Stress, Grief & Scene Safety</a></li></ol></nav>
+    <a class="bk-toc-other" href="lifting-and-moving-patients.html"><span class="bk-toc-n">3</span>Lifting and Moving Patients</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Well-Being of the EMT</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-2"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="2">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 2 of 40 · EMS Operations domain</p>
+      <h1 class="tb-chapter-title">Well-Being of the EMT</h1>
+      <div class="tb-chapter-meta">
+        <span>2 sections · 12 topics · about 8 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/well-being-of-the-emt.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">An EMT who is exhausted, exposed or hurt cannot take care of anyone else, so this chapter is about protecting the provider first. It covers standard precautions and the personal protective equipment that stands between you and infectious disease, the way stress accumulates over a career and how to manage it, what patients and families go through around death, and how to read a scene for violence, hazardous materials and rescue situations before stepping into it.</p>
+    </header>
+<section class="section bk-sec" id="ch2-provider-wellness" data-num="2.1" data-title="Well-Being &amp; Standard Precautions">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">2.1</span>Well-Being & Standard Precautions</h2>
+      <span class="domain-tag">EMS Operations domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch2-provider-wellness--1" data-heading="Well-being / healthy habits">
+      <h3>Well-being / healthy habits</h3>
+      <p>Taking care of yourself is the foundation of a long career, and it rests on a few habits. The first is a support system of solid personal relationships with family, EMS colleagues and friends. Exercise builds strength, flexibility and cardiovascular fitness and helps with weight management. Sleep is just as important, because a lack of it leads to medical errors, poor decisions, more motor vehicle collisions (MVCs) and a weaker immune system. Eating right provides the fuel for long shifts and strenuous work.</p>
+            <p>Alcohol and caffeine should both be limited. Each impairs performance, decision making and reaction time, even when you feel more awake for having had them. Finally, see a physician regularly and stay current on your vaccines.</p>
+    </div>
+<div class="topic" id="ch2-provider-wellness--2" data-heading="Standard precautions">
+      <h3>Standard precautions</h3>
+      <p>Pathogens spread in two main ways: through blood and body fluids (bloodborne) or through droplets (airborne). Because you cannot tell by looking whether a patient is infected, <strong>standard precautions</strong> require you to assume that all body fluids are infectious. The decision about which precautions to take is made during scene size-up and is reassessed throughout the call as the patient's condition changes.</p>
+            <p>The law divides the responsibility. Under the Occupational Safety and Health Administration (OSHA), the employer must provide training, vaccines, personal protective equipment (PPE) and a written exposure control plan; the employee must follow that plan and report exposures. Federal law also provides that emergency workers can be notified if a patient they were exposed to is later found to be infected with tuberculosis (TB), hepatitis B or HIV.</p>
+    </div>
+<div class="topic" id="ch2-provider-wellness--3" data-heading="PPE types">
+      <h3>PPE types</h3>
+      <p>The table below sets out the types of PPE an EMT uses and when each is called for.</p>
+            <p class="tb-caption"><b>Table 2.1</b>PPE types</p><div class="table-wrap"><table><thead><tr><th>Equipment</th><th>When</th></tr></thead><tbody>
+            <tr><td>Gloves (nonlatex)</td><td>Any contact w/ blood/body fluids (bleeding, suction, ventilation, CPR) — carry 2 pairs</td></tr>
+            <tr><td>Heavy-duty gloves</td><td>Cleaning ambulance/equipment, broken glass</td></tr>
+            <tr><td>Eye protection</td><td>Risk of splash/spatter</td></tr>
+            <tr><td>Surgical mask</td><td>Blood/fluid spatter</td></tr>
+            <tr><td>N-95/HEPA respirator</td><td>Suspected TB (NIOSH-approved)</td></tr>
+            <tr><td>Face shield</td><td>Suctioning</td></tr>
+            <tr><td>Gown/apron</td><td>Arterial bleeding, childbirth, multi-trauma</td></tr>
+            </tbody></table></div>
+            <p>Gloves are not a substitute for handwashing. Wash your hands after every patient contact, even if you wore gloves. An alcohol-based cleaner is acceptable unless your hands are visibly soiled or anthrax is suspected.</p>
+            <p class="sub">A few common-sense rules apply: keep PPE on your person or in your kits at all times, carry 2 sets of gloves, and if in doubt, take precautions.</p>
+    </div>
+<div class="topic" id="ch2-provider-wellness--4" data-heading="Diseases of concern">
+      <h3>Diseases of concern</h3>
+      <p>Several infectious diseases are of particular concern to EMS providers because of how they spread and how serious they are. The table below summarizes them.</p>
+            <p class="tb-caption"><b>Table 2.2</b>Diseases of concern</p><div class="table-wrap"><table><thead><tr><th>Disease</th><th>Spread</th><th>Notes</th></tr></thead><tbody>
+            <tr><td>Hepatitis B</td><td>Blood/body fluids</td><td>Vaccine available; deadly without it (was the top occupational killer)</td></tr>
+            <tr><td>Hepatitis C</td><td>Blood/body fluids</td><td>No vaccine</td></tr>
+            <tr><td>TB</td><td>Airborne</td><td>Highly contagious; assume any productive cough = possible TB</td></tr>
+            <tr><td>HIV/AIDS</td><td>Blood (needlestick, IV drug use, sex, transfusion)</td><td>Less risk than HBV (&lt;0.5% vs. 30% per exposure) — doesn't survive well outside the body</td></tr>
+            <tr><td>Ebola</td><td>Blood/body fluids</td><td>High death rate; a vaccine and treatments exist but are limited; screen travel history</td></tr>
+            <tr><td>SARS/MERS/Avian flu</td><td>Respiratory droplets</td><td>Severe respiratory illness, regional outbreaks</td></tr>
+            </tbody></table></div>
+            <p class="sub">The <strong>incubation period</strong> is the time between contact with a pathogen and the first symptoms; it varies by disease.</p>
+    </div>
+<div class="topic" id="ch2-provider-wellness--5" data-heading="Infection control &amp; the law">
+      <h3>Infection control & the law</h3>
+      <p>Infection control in EMS is shaped by two pieces of federal law. The OSHA Bloodborne Pathogen Standard requires the employer to have an exposure control plan; to provide training, a free hepatitis B vaccine and PPE; to label hazards properly with the biohazard symbol; and to maintain housekeeping and decontamination procedures. The Ryan White CARE Act of 1990 gives emergency responders the right to find out whether they have been exposed to a life-threatening disease.</p>
+            <p>Notification works differently depending on the route of exposure. After an airborne exposure, such as to TB, the hospital notifies your agency's designated officer, who notifies you. After a bloodborne exposure, such as to HIV, you must request a determination yourself, through the designated officer. When caring for or transporting a suspected TB patient, or when performing a high-risk procedure such as suctioning or intubation, an N-95/HEPA respirator is required.</p>
+            <p>If you are exposed, whether by needlestick or splash, seek medical care immediately, because delay reduces the effectiveness of any preventive treatment. EMTs are also tested regularly for TB exposure, usually yearly, with the tuberculin skin test (TST).</p>
+    </div></div>
+  </section>
+<section class="section bk-sec" id="ch2-stress-safety" data-num="2.2" data-title="Stress, Grief &amp; Scene Safety">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">2.2</span>Stress, Grief & Scene Safety</h2>
+      <span class="domain-tag">EMS Operations domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch2-stress-safety--1" data-heading="Stress — Selye's General Adaptation Syndrome (3 stages)">
+      <h3>Stress — Selye's General Adaptation Syndrome (3 stages)</h3>
+      <p><strong>Resilience</strong> is toughness, the ability to recover from difficult situations, and understanding how the body responds to stress is part of building it. Selye described that response as the general adaptation syndrome, which unfolds in three stages. In the <strong>alarm</strong> stage the body mounts the fight-or-flight response: the heart rate (HR) rises, the pupils dilate, blood pressure (BP) climbs and cortisol is released. In the <strong>resistance</strong> stage the body adapts and returns to normal as it copes with the stressor. If the stress is prolonged or severe, the body reaches the <strong>exhaustion</strong> stage, when the body's resources are depleted and fatigue and stress-related illness set in.</p>
+    </div>
+<div class="topic" id="ch2-stress-safety--2" data-heading="3 types of stress reactions">
+      <h3>3 types of stress reactions</h3>
+      <p>Stress reactions differ in when they appear. The table below sets out the three types.</p>
+            <p class="tb-caption"><b>Table 2.3</b>3 types of stress reactions</p><div class="table-wrap"><table><thead><tr><th>Type</th><th>Timing</th><th>Example</th></tr></thead><tbody>
+            <tr><td>Acute</td><td>During/shortly after incident</td><td>Nausea after a bad call</td></tr>
+            <tr><td>Delayed (PTSD)</td><td>Days–years later</td><td>Flashbacks, nightmares, irritability (1+ month)</td></tr>
+            <tr><td>Cumulative (burnout)</td><td>Builds over years</td><td>Apathy → physical complaints → depression</td></tr>
+            </tbody></table></div>
+            <p>Not all stress is harmful. <strong>Eustress</strong> is positive, helpful stress; <strong>distress</strong> is negative stress that impairs performance. Certain calls are recognized as especially stressful: multiple-casualty incidents (MCIs), calls involving infants or children, severe injuries, abuse or neglect, and the death of a coworker. The signs that stress is taking a toll include irritability, poor concentration, changes in sleep or appetite, anxiety, guilt and isolation.</p>
+    </div>
+<div class="topic" id="ch2-stress-safety--3" data-heading="Dealing with stress">
+      <h3>Dealing with stress</h3>
+      <p>Managing stress begins with lifestyle. A better diet, less alcohol and caffeine, exercise and relaxation techniques all help, and so, when needed, does a change of shift or work location.</p>
+            <p>For patients and for EMTs alike, the mnemonic <strong>eSCAPe</strong> describes what to offer after a traumatic event, to every patient, every time:</p>
+            <ul>
+            <li><strong>S</strong> – Social support: the person is not alone.</li>
+            <li><strong>C</strong> – Choice and control: offer small choices.</li>
+            <li><strong>A</strong> – Anticipate: explain what happens next.</li>
+            <li><strong>P</strong> – Plan and organize: reduce confusion.</li>
+            </ul>
+            <p>Critical Incident Stress Management (CISM) is a comprehensive system of education, peer support and counseling. One of its components is critical incident stress debriefing (CISD), in which a team of peers and mental health professionals meets with responders 24–72 hours after an incident; a "defusing" is an earlier, smaller session of the same kind. Debriefing is now used less often and is not always recommended. Whatever form it takes, seeking help is a sign of strength, not weakness.</p>
+    </div>
+<div class="topic" id="ch2-stress-safety--4" data-heading="Death &amp; dying — 5 stages">
+      <h3>Death & dying — 5 stages</h3>
+      <p>Patients who are dying, and their families, commonly pass through five emotional stages:</p>
+            <ol>
+            <li>Denial ("Not me")</li>
+            <li>Anger ("Why me?")</li>
+            <li>Bargaining ("Let me first...")</li>
+            <li>Depression ("I haven't...")</li>
+            <li>Acceptance ("I'm not afraid")</li>
+            </ol>
+            <p>Not everyone goes through all five stages, or in this order, and the family may need more support than the patient does. You can help by treating the patient with respect and dignity and talking directly to him or her, by tolerating anger without taking it personally, by listening empathetically, and by offering realistic comfort. Never give false reassurance.</p>
+    </div>
+<div class="topic" id="ch2-stress-safety--5" data-heading="Scene safety">
+      <h3>Scene safety</h3>
+      <p>Whether a scene is safe is the most important decision you make on every call. It helps to know what actually kills EMS providers. The biggest killers are heart attacks, MVCs and air-medical crashes, not violence, and back injury ends more careers than violence does.</p>
+    </div>
+<div class="topic" id="ch2-stress-safety--6" data-heading="Hazardous materials &amp; rescue">
+      <h3>Hazardous materials & rescue</h3>
+      <p>At a hazardous materials incident, your first task is to keep your distance. Stay well back and use binoculars to identify placards. The DOT Emergency Response Guidebook gives information on safe distances and procedures. Your job is to recognize the hazard, protect yourself and others, and notify the hazmat team; you do not act beyond that. Contaminated patients are not treated until they have been decontaminated, because treating them earlier contaminates the ambulance and the ER. Terrorism may involve chemical, biological, radiological or explosive agents, and you should know your local protocols for it.</p>
+            <p>Rescue operations follow the same principle. Call for police, fire or specialist teams as needed, and never act outside your training. The PPE for rescue work is turnout gear, eyewear, a helmet and puncture-proof gloves.</p>
+    </div>
+<div class="topic" id="ch2-stress-safety--7" data-heading="Violence — Plan / Observe / React">
+      <h3>Violence — Plan / Observe / React</h3>
+      <p>Protection from violence follows three steps: plan, observe and react. Planning starts before the call. Wear safe clothing, meaning nonslip shoes, reflective gear and, in high-risk settings, body armor. Carry equipment you can manage, keep a portable radio with you, and assign safety roles; one EMT can act as the observer.</p>
+            <p>Observation begins on approach and continues throughout the call. Look for signs of violence such as broken glass or arguing, for a crime scene, for drug or alcohol use, for weapons, for agitated family members or bystanders, for possible perpetrators still on scene, and for pets. Turn off your lights and siren as you near the scene so that you do not draw a crowd, and do not stand directly in front of doors.</p>
+            <p>If violence develops, react with the 3 Rs:</p>
+            <ul>
+            <li><strong>Respond</strong>: put distance between yourself and the threat and use cover, which protects you from projectiles, or concealment, which hides you but does not protect you.</li>
+            <li><strong>Radio</strong>: call for police and give clear information about the location, the number of people involved and any weapons.</li>
+            <li><strong>Reevaluate</strong>: do not re-enter until the police have secured the scene, and stay alert even after they have.</li>
+            </ul>
+            <p class="sub">When you have to retreat, flee with 2 obstacles between you and the danger, ditch cumbersome gear, and take cover or concealment.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 2.2</div>
+      <ul><li>Standard Precautions – treat all body fluids as infectious (= body substance isolation).</li><li>Pathogens – disease-causing organisms (viruses, bacteria).</li><li>PPE – equipment protecting from infection/exposure.</li><li>Contamination – introduction of disease/chemicals. Decontamination – removal/cleansing of contaminants.</li><li>Hazardous material incident – release of a harmful substance.</li><li>MCI (multiple-casualty incident) – single incident, multiple patients.</li><li>Resilience – ability to recover quickly from hardship.</li><li>Stress – state of physical/psychological arousal to a stimulus.</li><li>CISM – system to prevent/manage stress.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-acute">Acute</a></dt><dd>Having a sudden onset and typically a short, intense course — contrast with chronic.</dd></div><div><dt><a href="../glossary.html#t-pathogen">Pathogen</a></dt><dd>A microorganism capable of causing disease, such as a virus or bacterium.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div><div><dt><a href="../glossary.html#t-symptom">Symptom</a></dt><dd>A subjective sensation reported by the patient, such as pain or nausea, that can't be directly observed by someone else — contrast with a sign.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html">Practice the bank &rarr;</a> <a href="../study-notes.html#chapter-2">Open in the reader &rarr;</a></p>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="introduction-to-ems.html"><span>&larr; Chapter 1</span><b>Introduction to EMS</b></a>
+      <a class="tb-chapter-link next" href="lifting-and-moving-patients.html"><span>Chapter 3 &rarr;</span><b>Lifting and Moving Patients</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

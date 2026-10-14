@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airway Management: NREMT-EMT Study Notes | LevlPrep</title>
+<meta name="description" content="No intervention matters if air cannot reach the lungs, which is why the airway comes first in every assessment.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/airway-management.html">
+<meta property="og:title" content="Airway Management: NREMT-EMT Study Notes | LevlPrep">
+<meta property="og:description" content="No intervention matters if air cannot reach the lungs, which is why the airway comes first in every assessment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/airway-management.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/airway-management.html#notes","name":"Airway Management: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/airway-management.html","description":"No intervention matters if air cannot reach the lungs, which is why the airway comes first in every assessment.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":9},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Airway Management","item":"https://levlprep.com/nremt/notes/airway-management.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="life-span-development.html"><span class="bk-toc-n">8</span>Life Span Development</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">9</span><span><b>Airway Management</b><small>5 sections</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch9-airway"><span class="bk-toc-n">9.1</span>Airway Anatomy & the Manual Maneuvers</a></li><li><a href="#ch9-adjuncts"><span class="bk-toc-n">9.2</span>Airway Adjuncts — OPA and NPA</a></li><li><a href="#ch9-suction"><span class="bk-toc-n">9.3</span>Suctioning & the Sounds of an Obstructed Airway</a></li><li><a href="#ch9-fbao"><span class="bk-toc-n">9.4</span>Choking — Foreign Body Airway Obstruction</a></li><li><a href="#ch9-bvm"><span class="bk-toc-n">9.5</span>Bag-Valve-Mask Ventilation</a></li></ol></nav>
+    <a class="bk-toc-other" href="ventilation-and-oxygen-equipment.html"><span class="bk-toc-n">10</span>Ventilation &amp; Oxygen Equipment</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Airway Management</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-9"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html?domain=Airway%20%26%20Respiratory">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="9">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 9 of 40 · Airway, Respiration &amp; Ventilation domain</p>
+      <h1 class="tb-chapter-title">Airway Management</h1>
+      <div class="tb-chapter-meta">
+        <span>5 sections · 19 topics · about 25 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/airway-management.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">No intervention matters if air cannot reach the lungs, which is why the airway comes first in every assessment. This chapter traces the path a breath follows from the nose and mouth to the lungs, explains why one small structure, the epiglottis, accounts for so much airway trouble, and then works through what you actually do about a threatened airway: the two manual maneuvers and when each one applies, sizing and inserting the oral and nasal airways, suctioning within the limits that keep it from doing harm, reading the four sounds an obstructed airway makes, and the technique that makes a bag-valve mask work rather than merely look like it is working.</p>
+    </header>
+<section class="section bk-sec" id="ch9-airway" data-num="9.1" data-title="Airway Anatomy &amp; the Manual Maneuvers">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">9.1</span>Airway Anatomy & the Manual Maneuvers</h2>
+      <span class="domain-tag">Airway, Respiration & Ventilation domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch9-airway--1" data-heading="Every breath follows the same physical path, and airway management is entirely about keeping that path open">
+      <h3>Every breath follows the same physical path, and airway management is entirely about keeping that path open</h3>
+      <p>Air enters through the nose or mouth, travels through the throat and down the windpipe, and reaches the lungs, where the actual exchange of gases takes place. The nose does something the mouth does not: as air passes through its curved internal passages, the nose warms and humidifies it. The whole path is divided into two regions with a specific dividing line. The <strong>upper airway</strong> runs from the mouth and nose down to the vocal cords, and the <strong>lower airway</strong> is everything below that.</p>
+    </div>
+<div class="topic" id="ch9-airway--2" data-heading="The epiglottis is a single small structure doing a genuinely critical job">
+      <h3>The epiglottis is a single small structure doing a genuinely critical job</h3>
+      <p>Right where the throat meets the windpipe sits the <strong>epiglottis</strong>, a flap that flips downward every time you swallow, sealing off the airway so that food and liquid go toward the esophagus instead of the lungs. Just below it is the <strong>glottic opening</strong>, at the level of the vocal cords, which marks the actual boundary between the upper and lower airway. This one structure explains a great deal of airway pathology. Swelling here, injury here, or failure of the mechanism itself, as in a patient with a depressed level of consciousness who can no longer protect their own airway, is why airway problems are addressed before almost anything else in patient care.</p>
+    </div>
+<div class="topic" id="ch9-airway--3" data-heading="In an unresponsive patient the tongue is the most common obstruction, and it is an obstruction you can fix with your hands">
+      <h3>In an unresponsive patient the tongue is the most common obstruction, and it is an obstruction you can fix with your hands</h3>
+      <p>The tongue is anchored to the lower jaw. When a patient loses consciousness, the muscles that hold the jaw forward relax, the jaw falls back toward the spine, and the tongue falls back with it against the posterior wall of the throat. Nothing is stuck in the airway and nothing is swollen; the airway has simply folded shut. This is the single most common cause of airway obstruction in an unresponsive patient, and the reason the first thing you do for such a patient costs nothing and takes two seconds.</p><p>Both manual maneuvers work by the same mechanism: they move the lower jaw forward, and the tongue, being attached to it, comes forward off the back of the throat. Neither one opens anything. They un-fold something.</p><!-- fig:ch9-airway-path:start --><figure class="notes-figure notes-figure--wide" style="--vb:700"><svg viewBox="0 0 700 236" role="img" aria-label="The path of a breath from nose and mouth through pharynx, larynx, trachea and bronchi to the alveoli, with the epiglottis marked at the larynx and the esophagus branching away"><text class="fg-tag" x="20" y="28" text-anchor="start" font-size="11.5">THE PATH OF ONE BREATH</text><rect class="fg-panel" x="20" y="52" width="100" height="62" rx="10"></rect><text class="fg-lbl" x="70" y="78" text-anchor="middle" font-size="11.5">Nose / mouth</text><text class="fg-sm" x="70" y="96" text-anchor="middle" font-size="9.5">warmed, filtered</text><line class="fg-arrow" x1="121" y1="83" x2="123" y2="83"></line><path class="fg-head" d="M131 83 L123 87.16 L123 78.84 Z"></path><rect class="fg-panel" x="132" y="52" width="100" height="62" rx="10"></rect><text class="fg-lbl" x="182" y="78" text-anchor="middle" font-size="11.5">Pharynx</text><text class="fg-sm" x="182" y="96" text-anchor="middle" font-size="9.5">shared with food</text><line class="fg-arrow" x1="233" y1="83" x2="235" y2="83"></line><path class="fg-head" d="M243 83 L235 87.16 L235 78.84 Z"></path><rect class="fg-panel-warn" x="244" y="52" width="100" height="62" rx="10"></rect><text class="fg-lbl" x="294" y="78" text-anchor="middle" font-size="11.5">Larynx</text><text class="fg-sm" x="294" y="96" text-anchor="middle" font-size="9.5">the epiglottis</text><line class="fg-arrow" x1="345" y1="83" x2="347" y2="83"></line><path class="fg-head" d="M355 83 L347 87.16 L347 78.84 Z"></path><rect class="fg-panel" x="356" y="52" width="100" height="62" rx="10"></rect><text class="fg-lbl" x="406" y="78" text-anchor="middle" font-size="11.5">Trachea</text><text class="fg-sm" x="406" y="96" text-anchor="middle" font-size="9.5">held open by rings</text><line class="fg-arrow" x1="457" y1="83" x2="459" y2="83"></line><path class="fg-head" d="M467 83 L459 87.16 L459 78.84 Z"></path><rect class="fg-panel" x="468" y="52" width="100" height="62" rx="10"></rect><text class="fg-lbl" x="518" y="78" text-anchor="middle" font-size="11.5">Bronchi</text><text class="fg-sm" x="518" y="96" text-anchor="middle" font-size="9.5">one per lung</text><line class="fg-arrow" x1="569" y1="83" x2="571" y2="83"></line><path class="fg-head" d="M579 83 L571 87.16 L571 78.84 Z"></path><rect class="fg-panel" x="580" y="52" width="100" height="62" rx="10"></rect><text class="fg-lbl" x="630" y="78" text-anchor="middle" font-size="11.5">Alveoli</text><text class="fg-sm" x="630" y="96" text-anchor="middle" font-size="9.5">gas exchange</text><line class="fg-arrow" x1="182" y1="116" x2="182" y2="138"></line><path class="fg-head" d="M182 146 L177.84 138 L186.16 138 Z"></path><text class="fg-sm" x="182" y="164" text-anchor="middle" font-size="10">esophagus — food, and anything</text><text class="fg-sm" x="182" y="178" text-anchor="middle" font-size="10">that comes back up</text><text class="fg-tag-warn" x="294" y="42" text-anchor="middle" font-size="10.5">the gate</text></svg><figcaption>Every breath follows the same path, and airway management is entirely about keeping it open. The <b>pharynx is shared</b> — it is the one place where the road to the lungs and the road to the stomach are the same road.<span class="notes-figure-note">That sharing is why the epiglottis exists, and why it causes so much trouble: it is a single flap deciding, several times a minute, which pipe the next thing goes down. It is also why the tongue — which sits in the pharynx — is the most common airway obstruction in an unresponsive patient, and why suction is an airway skill rather than a cleaning one.</span></figcaption></figure><!-- fig:ch9-airway-path:end -->
+    </div>
+<div class="topic" id="ch9-airway--4" data-heading="Head-tilt/chin-lift is the default; jaw-thrust is the one you use when the spine is in question">
+      <h3>Head-tilt/chin-lift is the default; jaw-thrust is the one you use when the spine is in question</h3>
+      <p>The <strong>head-tilt/chin-lift</strong> is the standard maneuver for a patient with no suspected spinal injury. One hand on the forehead tilts the head back; the fingertips of the other hand under the bony part of the chin lift it upward. Keep your fingers on bone. Pressing into the soft tissue under the chin pushes the base of the tongue up into the airway, which is the opposite of what you are trying to do.</p><p>The <strong>jaw-thrust</strong> is the maneuver for a patient in whom you suspect a spinal injury, because it opens the airway without moving the neck. You position yourself at the patient's head, place your fingers behind the angles of the jaw on both sides, and displace the jaw forward while keeping the head in a neutral, in-line position. It is harder to hold and it ties up both of your hands, which is why it is not the default.</p><p>There is an order of priority worth being explicit about, because scenarios are written to test it. A patient with a suspected spinal injury who has no airway gets the jaw-thrust first. If the jaw-thrust does not open the airway, you use the maneuver that does. An open airway is the higher priority, because a protected spine in a patient who is not breathing is not a good outcome.</p>
+    </div>
+<div class="topic" id="ch9-airway--5" data-heading="A child's airway is not a small adult airway, and the differences change what you do">
+      <h3>A child's airway is not a small adult airway, and the differences change what you do</h3>
+      <p>Several differences matter at the bedside. A child's tongue is proportionally larger relative to the mouth, so tongue obstruction is more likely and more complete. The airway structures themselves are smaller and softer, so a given amount of swelling narrows the airway far more, and so the trachea can be collapsed by pressure from outside. The back of an infant's head is proportionally large, so when an infant is laid flat on a hard surface the head is pushed forward into flexion and the airway closes.</p><p>The practical consequence is that the neutral position for an infant or small child is not the same as for an adult. You may need a folded towel under the shoulders to bring the airway back into line, and over-extending the neck, tilting the head back as far as it will go, will kink a soft trachea shut rather than open it.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 9.1</div>
+      <ul><li>Airway path: nose/mouth → throat → windpipe → lungs (gas exchange).</li><li>The nose warms and humidifies incoming air; the mouth does not.</li><li>Upper airway: mouth/nose down to the vocal cords. Lower airway: everything below the vocal cords.</li><li>Epiglottis: flap that seals the airway during swallowing, directing food/liquid to the esophagus instead of the lungs.</li><li>Glottic opening (at the vocal cords) marks the boundary between upper and lower airway.</li><li>A patient with depressed LOC may lose the ability to protect their own airway via this mechanism — why airway comes first in patient care.</li><li>The tongue is the most common airway obstruction in an unresponsive patient; it is attached to the jaw, so moving the jaw forward moves the tongue forward.</li><li>Head-tilt/chin-lift: the default maneuver, no suspected spinal injury. Lift the bony chin, not the soft tissue under it.</li><li>Jaw-thrust: the maneuver for suspected spinal injury — opens the airway without moving the neck.</li><li>If a jaw-thrust does not open the airway, use the maneuver that does. An open airway outranks spinal precautions.</li><li>Pediatric airway: larger tongue, smaller and softer structures, large occiput. Padding under the shoulders keeps an infant's airway in line; over-extension kinks it shut.</li></ul>
+    </div>
+  </section>
+<section class="section bk-sec" id="ch9-adjuncts" data-num="9.2" data-title="Airway Adjuncts — OPA and NPA">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">9.2</span>Airway Adjuncts — OPA and NPA</h2>
+      <span class="domain-tag">Airway, Respiration & Ventilation domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch9-adjuncts--1" data-heading="An adjunct holds the tongue off the back of the throat so your hands do not have to">
+      <h3>An adjunct holds the tongue off the back of the throat so your hands do not have to</h3>
+      <p>A manual maneuver works only while you are doing it. The moment you let go to do something else, the jaw falls back and the airway closes again. An <strong>airway adjunct</strong> is a device that holds the tongue away from the posterior pharynx mechanically, so the airway stays open without a rescuer permanently committed to holding it.</p><p>Neither adjunct is a definitive airway. Neither one seals the trachea, and neither protects the lungs from vomit. A patient with an adjunct in place can still aspirate, and you still need suction within reach.</p>
+    </div>
+<div class="topic" id="ch9-adjuncts--2" data-heading="The oropharyngeal airway: no gag reflex, sized from the corner of the mouth to the earlobe">
+      <h3>The oropharyngeal airway: no gag reflex, sized from the corner of the mouth to the earlobe</h3>
+      <p>The <strong>oropharyngeal airway (OPA)</strong> is a rigid curved plastic device that sits in the mouth with its tip in the posterior pharynx. Its one absolute requirement is that the patient has <strong>no gag reflex</strong>. In a patient who retains a gag, an OPA will provoke gagging and vomiting, and in a patient who cannot protect their airway that vomit goes into the lungs. If the patient tolerates it, the adjunct was appropriate; if the patient gags on it, remove it.</p><p><strong>Sizing:</strong> measure from the corner of the patient's mouth to the tip of the earlobe, or from the center of the mouth to the angle of the jaw. Both landmarks are taught and both give a workable length. Size matters in both directions: an OPA that is too long can push the epiglottis down over the glottic opening and obstruct the airway you were trying to open, and one that is too short leaves the tongue exactly where it was.</p><p><strong>Insertion, adult:</strong> open the mouth, insert the airway with the tip pointed toward the roof of the mouth, and as it reaches the back of the mouth rotate it 180 degrees so the curve follows the curve of the tongue. The flange should rest against the lips.</p><p><strong>Insertion, pediatric:</strong> do not use the rotation technique. A child's palate is soft and the rotation tears it. Insert the airway right side up, following the curve of the tongue, using a tongue depressor to hold the tongue down and out of the way.</p>
+    </div>
+<div class="topic" id="ch9-adjuncts--3" data-heading="The nasopharyngeal airway: tolerated by a patient with a gag, sized nose to earlobe">
+      <h3>The nasopharyngeal airway: tolerated by a patient with a gag, sized nose to earlobe</h3>
+      <p>The <strong>nasopharyngeal airway (NPA)</strong> is a soft flexible tube that passes through the nostril into the posterior pharynx. Its advantage is the one the OPA lacks: most patients with an intact gag reflex will tolerate it. That makes it the adjunct for the patient whose level of consciousness is depressed but not absent, the semi-conscious patient who keeps losing their airway but gags on anything in their mouth.</p><p><strong>Sizing:</strong> length is measured from the tip of the nose to the tip of the earlobe. Diameter should be the largest that fits the nostril without blanching it, roughly the diameter of the patient's own little finger.</p><p><strong>Insertion:</strong> lubricate the tube generously with a water-soluble lubricant. Position the bevel toward the septum, the wall dividing the nostrils, and advance the tube <em>straight back</em>, along the floor of the nasal cavity, not upward. The nasal passage runs backward, not up toward the eyes; advancing upward drives the tube into the roof of the nasal cavity and causes bleeding. If you meet resistance, do not force it. Withdraw and try the other nostril.</p><p><strong>The contraindication to know:</strong> an NPA is avoided in a patient with signs of a <strong>basilar skull fracture</strong> or significant mid-face trauma — raccoon eyes, Battle's sign, fluid from the nose or ears. The concern is a tube passing through a fracture at the base of the skull rather than into the pharynx.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 9.2</div>
+      <ul><li>An adjunct holds the tongue off the posterior pharynx mechanically; a manual maneuver only works while you hold it.</li><li>Neither adjunct protects against aspiration. Keep suction within reach.</li><li>OPA requires NO gag reflex. If the patient gags, remove it.</li><li>OPA sizing: corner of the mouth to the tip of the earlobe, or center of the mouth to the angle of the jaw.</li><li>Too long an OPA can push the epiglottis over the glottic opening and obstruct; too short leaves the tongue in place.</li><li>OPA insertion, adult: tip toward the roof of the mouth, rotate 180° at the back of the mouth. Flange rests at the lips.</li><li>OPA insertion, pediatric: right side up with a tongue depressor. Do NOT rotate — it tears the soft palate.</li><li>NPA is tolerated by most patients WITH a gag reflex — the adjunct for a semi-conscious patient.</li><li>NPA sizing: tip of the nose to the tip of the earlobe; diameter roughly the patient's little finger.</li><li>NPA insertion: lubricate, bevel toward the septum, advance straight back along the floor of the nose — never upward. Resistance means try the other nostril, not more force.</li><li>Avoid an NPA with signs of basilar skull fracture or major mid-face trauma (raccoon eyes, Battle's sign, drainage from nose or ears).</li></ul>
+    </div>
+  </section>
+<section class="section bk-sec" id="ch9-suction" data-num="9.3" data-title="Suctioning &amp; the Sounds of an Obstructed Airway">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">9.3</span>Suctioning & the Sounds of an Obstructed Airway</h2>
+      <span class="domain-tag">Airway, Respiration & Ventilation domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch9-suction--1" data-heading="Suctioning removes what you can hear; it is a time-limited procedure because it removes oxygen too">
+      <h3>Suctioning removes what you can hear; it is a time-limited procedure because it removes oxygen too</h3>
+      <p>Suction clears blood, vomit, and secretions from the airway. The reason it is limited in time is that a suction catheter in the pharynx removes air along with fluid, and for the duration of the procedure the patient is neither breathing nor being ventilated. Suctioning a hypoxic patient makes them more hypoxic before it makes them better, so you pre-oxygenate when you can, suction for a defined interval, and ventilate again.</p><p>The limit taught for an adult is <strong>no more than about 15 seconds</strong> per attempt, and <strong>shorter in a child or infant — about 10 seconds or less</strong>, with a lower suction pressure. Some texts teach 10 seconds for an adult rather than 15; local protocol governs the number you are held to. The principle behind whichever number your system uses does not vary: suction, then ventilate, then suction again, rather than staying in the airway until it is perfectly clear.</p>
+    </div>
+<div class="topic" id="ch9-suction--2" data-heading="The technique details are the ones that separate suctioning that helps from suctioning that injures">
+      <h3>The technique details are the ones that separate suctioning that helps from suctioning that injures</h3>
+      <p>Measure the catheter before you insert it: from the corner of the mouth to the angle of the jaw or earlobe, the same landmark as an OPA. Insert it <em>without</em> suction applied, to the measured depth only, and apply suction while withdrawing in a sweeping motion. Suctioning on the way in pulls the soft tissue of the pharynx into the catheter tip and removes oxygen for the whole insertion rather than the withdrawal. Never insert past the point you can see.</p><p>The <strong>rigid (Yankauer) catheter</strong> is the one for thick secretions and vomit in the mouth of an adult, because its bore is wide enough not to clog. A <strong>soft (French) catheter</strong> is for the nose, for a stoma, or for going through an adjunct. If vomit is thick enough to clog even a rigid catheter, log-roll the patient onto their side and let gravity do it.</p><p>Stimulating the back of the throat can trigger a vagal response and slow the heart rate, which matters most in infants and children. If the heart rate falls during suctioning, stop and ventilate.</p>
+    </div>
+<div class="topic" id="ch9-suction--3" data-heading="Four sounds, four different problems, four different responses">
+      <h3>Four sounds, four different problems, four different responses</h3>
+      <p>An airway in trouble usually announces itself, and the sound tells you where the problem is and what to do about it. This is high-yield because each sound has a distinct and non-interchangeable response.</p><p><strong>Snoring</strong> is the tongue against the posterior pharynx — a partially obstructed upper airway in a patient with depressed consciousness. The response is positional: a manual maneuver, then an adjunct. Suction does nothing for it.</p><p><strong>Gurgling</strong> is fluid in the airway — blood, vomit, or secretions. The response is suction. Repositioning does nothing for it.</p><p><strong>Stridor</strong> is a high-pitched sound, heard on inspiration, produced by narrowing at or above the level of the larynx: swelling from anaphylaxis or burns, infection, or a foreign body. It is an upper-airway emergency, and it is the sound that should make you think about rapid transport rather than another adjunct, because nothing in an EMT's hands opens a swollen larynx.</p><p><strong>Wheezing</strong> is a whistling sound from narrowed <em>lower</em> airways, classically on expiration, and it points to bronchoconstriction — asthma, COPD, and also the lower-airway component of anaphylaxis. It is treated pharmacologically, not mechanically.</p><p>And the sound that is not a sound: a patient making obvious respiratory effort with <em>no</em> air movement at all has a complete obstruction. Silence with effort is worse than any noise on this list.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 9.3</div>
+      <ul><li>Suction removes oxygen along with fluid; pre-oxygenate, suction, then ventilate.</li><li>Limit a single attempt to about 15 seconds in an adult and about 10 seconds or less in a child or infant, at a lower pressure. Some texts teach 10 seconds for adults; local protocol governs.</li><li>Measure the catheter corner-of-mouth to earlobe/angle of jaw; insert to that depth only, never past what you can see.</li><li>Insert WITHOUT suction; apply suction while withdrawing, sweeping.</li><li>Rigid (Yankauer): thick secretions and vomit in an adult's mouth. Soft (French): nose, stoma, or through an adjunct.</li><li>Thick vomit that clogs the catheter: log-roll the patient and let gravity clear it.</li><li>Suctioning can trigger a vagal response and bradycardia, especially in children. If the heart rate falls, stop and ventilate.</li><li>Snoring = tongue = reposition and place an adjunct.</li><li>Gurgling = fluid = suction.</li><li>Stridor = upper airway narrowing (inspiratory, high-pitched) = an emergency you transport rather than fix.</li><li>Wheezing = lower airway constriction (expiratory) = treated with medication, not with an adjunct.</li><li>Respiratory effort with no air movement = complete obstruction. Silence with effort is the worst sign here.</li></ul>
+    </div>
+  </section>
+<section class="section bk-sec" id="ch9-fbao" data-num="9.4" data-title="Choking — Foreign Body Airway Obstruction">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">9.4</span>Choking — Foreign Body Airway Obstruction</h2>
+      <span class="domain-tag">Airway, Respiration & Ventilation domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch9-fbao--1" data-heading="Mild or severe is the only question, and the answer is how much air is moving">
+      <h3>Mild or severe is the only question, and the answer is how much air is moving</h3>
+      <p>A foreign body in the airway produces one of two problems, and telling them apart decides everything that follows. The deciding evidence is air movement, not whether the patient looks distressed.</p>
+            <p>A <strong>mild</strong> obstruction leaves enough of the airway open for effective air exchange. The patient can cough forcefully, can speak, and can move air you can hear. Do not intervene. A forceful cough generates more airflow, and more sudden pressure, than any thrust a rescuer can deliver by hand, and the patient is already doing the most effective thing available. Stay with them, encourage the coughing, and watch. Reaching in with thrusts or a finger on a patient who is still clearing the airway themselves can drive the object further in and convert a mild obstruction into a severe one.</p>
+            <p>A <strong>severe</strong> obstruction means air exchange has become inadequate. The cough is weak or absent, the patient cannot speak, there is high-pitched stridor or no sound at all, and cyanosis follows. Many patients clutch the throat &mdash; the universal choking sign. Note the trap here: a patient with a weak, ineffective cough is still technically coughing, and still counts as severe. The question is never whether something is happening but whether enough air is moving to sustain the patient.</p>
+            <p class="sub">Silence with visible effort is the worst finding in the whole chapter: the patient is trying to breathe and nothing is moving.</p>
+    </div>
+<div class="topic" id="ch9-fbao--2" data-heading="The 2025 sequence: five back blows first, at every age">
+      <h3>The 2025 sequence: five back blows first, at every age</h3>
+      <p>The 2025 AHA guidelines settled on one shape for the maneuver across every age group: <strong>five back blows, then five thrusts, repeated</strong>. Only the second half changes with age.</p>
+            <p class="tb-caption"><b>Table 9.1</b>The 2025 sequence: five back blows first, at every age</p><div class="table-wrap"><table><thead><tr><th></th><th>Adult</th><th>Child (1 year to puberty)</th><th>Infant (under 1 year)</th></tr></thead><tbody>
+            <tr><td><strong>First</strong></td><td colspan="3">5 back blows between the shoulder blades, with the heel of the hand</td></tr>
+            <tr><td><strong>Then</strong></td><td>5 abdominal thrusts</td><td>5 abdominal thrusts</td><td>5 chest thrusts, heel of one hand on the lower sternum</td></tr>
+            <tr><td><strong>Repeat until</strong></td><td colspan="3">The object is expelled, or the patient becomes unresponsive</td></tr>
+            <tr><td><strong>If you cannot reach around the abdomen</strong></td><td colspan="2">5 chest thrusts instead of abdominal thrusts &mdash; late pregnancy, or significant obesity</td><td>Abdominal thrusts are not used at this age at all</td></tr>
+            </tbody></table></div>
+            <p>For a responsive adult or child, position yourself behind the patient, place a fist thumb-side in just above the navel and below the xiphoid, grasp it with the other hand, and deliver each thrust inward and upward as a distinct movement rather than a squeeze. For an infant, support the head and jaw, lay the infant face down along your forearm with the head lower than the chest for the back blows, then turn the infant as a unit and deliver chest thrusts on the lower sternum.</p>
+            <p>Abdominal thrusts are never used on an infant. An infant's liver is proportionally large and sits low, largely below the protection of the rib cage, and an abdominal thrust can tear it.</p><!-- fig:ch9-fbao-cycle:start --><figure class="notes-figure notes-figure--wide" style="--vb:700"><svg viewBox="0 0 700 282" role="img" aria-label="The choking cycle: five back blows, then five thrusts, repeated until the object clears or the patient goes unresponsive, with the thrusts differing by age"><text class="fg-tag" x="20" y="26" text-anchor="start" font-size="11">SEVERE OBSTRUCTION — NO EFFECTIVE COUGH, NO SPEECH, NO AIR</text><rect class="fg-panel-hi" x="20" y="56" width="190" height="74" rx="10"></rect><text class="fg-lbl" x="115" y="84" text-anchor="middle" font-size="13.5">5 back blows</text><text class="fg-sm" x="115" y="103" text-anchor="middle" font-size="9.5">between the shoulder blades,</text><text class="fg-sm" x="115" y="116" text-anchor="middle" font-size="9.5">heel of the hand</text><line class="fg-arrow" x1="212" y1="93" x2="234" y2="93"></line><path class="fg-head" d="M242 93 L234 97.16 L234 88.84 Z"></path><rect class="fg-panel-hi" x="244" y="56" width="190" height="74" rx="10"></rect><text class="fg-lbl" x="339" y="84" text-anchor="middle" font-size="13.5">5 thrusts</text><text class="fg-sm" x="339" y="106" text-anchor="middle" font-size="9.5">the half that changes with age</text><line class="fg-arrow" x1="436" y1="93" x2="458" y2="93"></line><path class="fg-head" d="M466 93 L458 97.16 L458 88.84 Z"></path><rect class="fg-panel" x="468" y="56" width="212" height="74" rx="10"></rect><text class="fg-lbl" x="574" y="82" text-anchor="middle" font-size="12.5">Object out?</text><text class="fg-sm" x="574" y="102" text-anchor="middle" font-size="9.5">No — repeat the cycle</text><text class="fg-sm" x="574" y="116" text-anchor="middle" font-size="9.5">Unresponsive — start CPR</text><line class="fg-rule" x1="20" y1="160" x2="680" y2="160"></line><text class="fg-tag" x="20" y="182" text-anchor="start" font-size="10.5">AND WHAT THE THRUSTS ARE</text><text class="fg-tag" x="20" y="210" text-anchor="start" font-size="10.5">Adult</text><text class="fg-lbl" x="20" y="228" text-anchor="start" font-size="11.5">abdominal thrusts</text><text class="fg-tag" x="242" y="210" text-anchor="start" font-size="10.5">Child 1 to puberty</text><text class="fg-lbl" x="242" y="228" text-anchor="start" font-size="11.5">abdominal thrusts</text><text class="fg-tag" x="464" y="210" text-anchor="start" font-size="10.5">Infant under 1</text><text class="fg-lbl" x="464" y="228" text-anchor="start" font-size="11.5">chest thrusts</text><text class="fg-lbl" x="464" y="246" text-anchor="start" font-size="11.5">heel of one hand</text><text class="fg-sm" x="20" y="272" text-anchor="start" font-size="10">Never abdominal thrusts under 1 year — the infant liver is large, low, and poorly protected.</text></svg><figcaption>The 2025 sequence. <b>Five back blows, then five thrusts, repeated</b> — the same shape at every age, and only the second half changes.<span class="notes-figure-note">The back blows are the new part for adults and children, who used to get thrusts alone. In a cohort of 709 choking patients, back blows relieved more obstructions and caused fewer injuries than abdominal thrusts did; the five-and-five shape was chosen because infants were already being treated that way, so one sequence now covers everyone.</span></figcaption></figure><!-- fig:ch9-fbao-cycle:end -->
+    </div>
+<div class="topic" id="ch9-fbao--3" data-heading="What changed in 2025, and why it changed">
+      <h3>What changed in 2025, and why it changed</h3>
+      <p>Two pieces of this are new, and both are the kind of detail a question is built on.</p>
+            <p><strong>Back blows were added to the adult and child sequences.</strong> An adult used to receive abdominal thrusts alone, and a child the same. A cohort study of 709 people with a foreign body airway obstruction found that back blows relieved more obstructions, and caused fewer injuries, than abdominal thrusts did. The AHA also wanted one sequence a rescuer could remember under stress rather than three, and infants were already receiving back blows first &mdash; so the adult and child sequences moved to match, rather than the other way round.</p>
+            <p><strong>Infant chest thrusts are delivered with the heel of one hand.</strong> They used to be delivered with two fingers, the same landmark as infant compressions. Two fingers turned out not to reach a useful depth reliably, and the technique was dropped from infant chest compressions for the same reason. Note the AHA's own care with the words: these are chest <em>thrusts</em>, not chest compressions, because nothing about rate or recoil applies &mdash; you are trying to expel an object, not perfuse a brain.</p>
+    </div>
+<div class="topic" id="ch9-fbao--4" data-heading="When the patient goes unresponsive, it stops being a choking call">
+      <h3>When the patient goes unresponsive, it stops being a choking call</h3>
+      <p>Once the patient loses consciousness, the maneuver changes completely. Lower them to the ground and <strong>begin CPR, starting with chest compressions</strong>. Compressions generate higher airway pressures than an abdominal thrust does, so they are both the resuscitation and the best remaining attempt at clearing the object.</p>
+            <p>The one modification is that before each set of rescue breaths you <strong>look in the mouth</strong>, and remove an object only if you can actually see it. If the chest does not rise on the first breath, reposition the head and try once more before returning to compressions. Do not stop to check for a pulse between cycles the way you would in an ordinary arrest.</p>
+            <p><strong>Blind finger sweeps are not done, at any age.</strong> A finger you cannot see with can push a partially dislodged object back past the vocal cords, and in a child or infant the airway structures are small and soft enough to injure on the way.</p>
+    </div>
+<div class="topic" id="ch9-fbao--5" data-heading="After it clears, and the obstructions this does not fix">
+      <h3>After it clears, and the obstructions this does not fix</h3>
+      <p>A patient whose obstruction is relieved still goes to the hospital. Abdominal thrusts can injure the liver, spleen or stomach; a fragment of the object may remain; and aspiration of what did go down shows up hours later as pneumonia. Reassess the airway and breathing, give oxygen if it is indicated, and transport.</p>
+            <p>Finally, know what this sequence is <em>for</em>. Back blows and thrusts relieve a mechanical obstruction sitting in the airway. They do nothing at all for an airway narrowed by swollen tissue &mdash; anaphylaxis, an inhalation burn, epiglottitis, angioedema. Those patients are also stridorous and also in trouble, but nothing in an EMT's hands opens a swollen larynx, and the answer is oxygen, minimal agitation, and rapid transport toward a provider who can secure the airway. Thrusting on them wastes the time they have.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 9.4</div>
+      <ul><li>Mild vs. severe turns on air exchange, not on distress. Forceful cough and speech = mild = encourage coughing and do nothing else.</li><li>A weak or ineffective cough, stridor, inability to speak, or cyanosis = severe, even though the patient is still 'doing something.'</li><li>2025 AHA sequence, every age: 5 back blows, then 5 thrusts, repeated until the object clears or the patient goes unresponsive.</li><li>Adult and child: the thrusts are abdominal. Infant under 1 year: the thrusts are chest thrusts, with the heel of one hand.</li><li>Back blows are new for adults and children — it used to be abdominal thrusts alone. A cohort of 709 patients showed back blows relieved more obstructions with fewer injuries.</li><li>Infant chest thrusts use the heel of one hand, not two fingers. Two fingers did not reach adequate depth, and were dropped from infant compressions too.</li><li>Abdominal thrusts are not used under 1 year: the infant liver is large, low, and poorly protected.</li><li>Cannot get your arms around the abdomen (late pregnancy, significant obesity)? 5 chest thrusts replace the abdominal thrusts.</li><li>Patient goes unresponsive: lower them and start CPR with compressions. Look in the mouth before each set of breaths, remove only what you can see.</li><li>No blind finger sweeps at any age — they push the object deeper.</li><li>Every patient whose obstruction is relieved is still transported: thrust injuries, retained fragments, and later aspiration pneumonia.</li><li>Thrusts relieve a foreign body. They do nothing for a swollen airway (anaphylaxis, burns, epiglottitis) — that is oxygen, calm, and rapid transport.</li></ul>
+    </div>
+  </section>
+<section class="section bk-sec" id="ch9-bvm" data-num="9.5" data-title="Bag-Valve-Mask Ventilation">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">9.5</span>Bag-Valve-Mask Ventilation</h2>
+      <span class="domain-tag">Airway, Respiration & Ventilation domain</span>
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch9-bvm--1" data-heading="The bag-valve mask is the skill most often performed badly, and the failure is almost always the seal">
+      <h3>The bag-valve mask is the skill most often performed badly, and the failure is almost always the seal</h3>
+      <p>A <strong>bag-valve mask (BVM)</strong> delivers positive-pressure ventilation to a patient who is not breathing adequately on their own. The adult bag holds roughly 1,200 to 1,600 mL. Connected to oxygen at 15 L/min with a reservoir attached, it delivers close to 100 percent oxygen; without oxygen connected it delivers room air, about 21 percent, which is still worth doing while someone sets up the tank.</p><p>The device fails in a specific and predictable way. Squeezing the bag is easy; maintaining a seal on the face with one hand while holding the jaw forward with the same hand is hard, and when the seal leaks the volume goes into the room instead of the patient. This is why <strong>two-rescuer BVM is preferred whenever a second pair of hands exists</strong>: one rescuer uses both hands to hold the mask and the jaw, the other squeezes the bag. It is not a matter of preference or staffing convenience. Two-rescuer technique delivers measurably more volume.</p>
+    </div>
+<div class="topic" id="ch9-bvm--2" data-heading="The mechanics: E-C clamp, chest rise, one second, and no faster than the rate calls for">
+      <h3>The mechanics: E-C clamp, chest rise, one second, and no faster than the rate calls for</h3>
+      <p>For a single rescuer, the <strong>E-C clamp</strong> is the hand position: thumb and index finger form a C over the mask pressing it to the face, while the remaining three fingers form an E along the bony ridge of the jaw, lifting the jaw up into the mask rather than pressing the mask down into the face. Lifting the jaw into the mask both seals and opens; pressing the mask down pushes the jaw back and closes the airway.</p><p>Position the mask with the narrow end over the bridge of the nose and the wide end in the groove between the lower lip and the chin. Squeeze <strong>over about one second</strong>, and squeeze only until <strong>the chest visibly rises</strong>. Visible chest rise is the endpoint, not a full squeeze of the bag.</p><p>Rate, for a patient who has a pulse but is not breathing adequately: about <strong>1 breath every 6 seconds (10 per minute) in an adult</strong>, and <strong>1 every 2 to 3 seconds (20 to 30 per minute) in an infant or child</strong>. During CPR with an advanced airway in place, ventilations run about 10 per minute without pausing compressions. Note that older references teach 10 to 12 per minute for an adult; the current AHA figure is 10.</p>
+    </div>
+<div class="topic" id="ch9-bvm--3" data-heading="Too much ventilation is its own injury, and the troubleshooting order is fixed">
+      <h3>Too much ventilation is its own injury, and the troubleshooting order is fixed</h3>
+      <p>Ventilating too fast or with too much volume is actively harmful, not merely wasteful. Excess pressure opens the esophagus and forces air into the stomach. <strong>Gastric distention</strong> pushes the diaphragm up, reducing the volume the lungs can hold, and it makes vomiting and aspiration far more likely. Beyond that, sustained positive pressure in the chest raises intrathoracic pressure and reduces the blood returning to the heart, which lowers cardiac output at the exact moment the patient can least afford it.</p><p>When the chest does not rise, work through the causes in this order, because the common ones come first: <strong>re-seal the mask</strong> (the most common failure by a wide margin), <strong>reposition the head and jaw</strong>, <strong>suction</strong> if there is fluid, and <strong>check for an obstruction</strong>. Squeezing harder is not on the list. If the seal is leaking, more force makes a louder leak.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 9.5</div>
+      <ul><li>Adult BVM volume is roughly 1,200–1,600 mL; with 15 L/min oxygen and a reservoir it delivers close to 100% oxygen.</li><li>Two-rescuer BVM is preferred whenever a second rescuer is available — one holds the mask with both hands, one ventilates. It delivers more volume than one-rescuer technique.</li><li>One-rescuer hand position: E-C clamp. Thumb and index finger seal the mask (C); three fingers lift the jaw into the mask (E).</li><li>Lift the jaw up into the mask; do not press the mask down into the face.</li><li>Mask position: narrow end over the bridge of the nose, wide end between the lower lip and chin.</li><li>Squeeze over about one second, and only until the chest visibly rises. Chest rise is the endpoint, not an emptied bag.</li><li>Rate with a pulse: adult about 1 breath every 6 seconds (10/min); infant or child 1 every 2–3 seconds (20–30/min). Older texts say 10–12/min for adults; current AHA is 10.</li><li>With an advanced airway during CPR: about 10 ventilations per minute, without pausing compressions.</li><li>Over-ventilation causes gastric distention (raising the diaphragm, inviting vomiting) and raises intrathoracic pressure, reducing venous return and cardiac output.</li><li>No chest rise? Re-seal, reposition, suction, check for obstruction — in that order. Squeezing harder is never the fix.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-anaphylaxis">Anaphylaxis</a></dt><dd>A severe, systemic allergic reaction involving multiple body systems, potentially life-threatening.</dd></div><div><dt><a href="../glossary.html#t-bradycardia">Bradycardia</a></dt><dd>An abnormally slow heart rate.</dd></div><div><dt><a href="../glossary.html#t-contraindication">Contraindication</a></dt><dd>A specific situation or condition in which a drug, procedure, or treatment should NOT be used because it could cause harm.</dd></div><div><dt><a href="../glossary.html#t-cyanosis">Cyanosis</a></dt><dd>A bluish discoloration of the skin or mucous membranes, typically indicating inadequate oxygenation.</dd></div><div><dt><a href="../glossary.html#t-diaphragm">Diaphragm</a></dt><dd>The dome-shaped muscle beneath the lungs that is the primary muscle of breathing.</dd></div><div><dt><a href="../glossary.html#t-distention">Distention</a></dt><dd>Swelling or stretching outward, such as abdominal distention.</dd></div><div><dt><a href="../glossary.html#t-pediatric">Pediatric</a></dt><dd>Relating to infants, children, and adolescents — generally patients under 18 years of age.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div><div><dt><a href="../glossary.html#t-stridor">Stridor</a></dt><dd>A high-pitched, harsh sound heard on inspiration, indicating a narrowed or partially obstructed upper airway.</dd></div><div><dt><a href="../glossary.html#t-wheezing">Wheezing</a></dt><dd>A high-pitched, whistling lung sound produced by air moving through narrowed airways, typical of asthma or COPD.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html?domain=Airway%20%26%20Respiratory">Practice this domain &rarr;</a> <a href="../study-notes.html#chapter-9">Open in the reader &rarr;</a></p>
+    </section>
+    <section class="book-tools" aria-label="Practice this">
+      <div class="chapter-tools">
+        <span class="chapter-tools__k">Practice this</span>
+        <a href="../sound-trainer.html">Sound Trainer <small>hear wheezes, crackles and stridor</small></a><a href="../flowcharts.html">Flow Diagrams <small>drill the obstruction sequence</small></a>
+      </div>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="life-span-development.html"><span>&larr; Chapter 8</span><b>Life Span Development</b></a>
+      <a class="tb-chapter-link next" href="ventilation-and-oxygen-equipment.html"><span>Chapter 10 &rarr;</span><b>Ventilation &amp; Oxygen Equipment</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

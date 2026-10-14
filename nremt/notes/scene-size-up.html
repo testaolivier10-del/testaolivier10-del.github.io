@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scene Size-Up: NREMT-EMT Study Notes | LevlPrep</title>
+<meta name="description" content="Scene size-up begins before the ambulance stops and never really ends.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/scene-size-up.html">
+<meta property="og:title" content="Scene Size-Up: NREMT-EMT Study Notes | LevlPrep">
+<meta property="og:description" content="Scene size-up begins before the ambulance stops and never really ends.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/scene-size-up.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/scene-size-up.html#notes","name":"Scene Size-Up: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/scene-size-up.html","description":"Scene size-up begins before the ambulance stops and never really ends.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":11},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Scene Size-Up","item":"https://levlprep.com/nremt/notes/scene-size-up.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="ventilation-and-oxygen-equipment.html"><span class="bk-toc-n">10</span>Ventilation &amp; Oxygen Equipment</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">11</span><span><b>Scene Size-Up</b><small>1 section</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch11-scene-size-up"><span class="bk-toc-n">11.1</span>Scene Safety, Nature of the Call & Resources</a></li></ol></nav>
+    <a class="bk-toc-other" href="primary-assessment.html"><span class="bk-toc-n">12</span>Primary Assessment</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Scene Size-Up</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-11"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html?domain=Assessment">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="11">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 11 of 40</p>
+      <h1 class="tb-chapter-title">Scene Size-Up</h1>
+      <div class="tb-chapter-meta">
+        <span>1 section · 7 topics · about 5 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/scene-size-up.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">Scene size-up begins before the ambulance stops and never really ends. This chapter lays out its four components, the danger-zone distances to keep at a collision, the standard precautions to take before patient contact, how the mechanism of injury or the nature of the illness predicts what you will find, and how to decide early whether the patients on scene exceed the resources you have.</p>
+    </header>
+<section class="section bk-sec" id="ch11-scene-size-up" data-num="11.1" data-title="Scene Safety, Nature of the Call &amp; Resources">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">11.1</span>Scene Safety, Nature of the Call & Resources</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch11-scene-size-up--1" data-heading="Scene size-up — 4 components">
+      <h3>Scene size-up — 4 components</h3>
+      <p>The <strong>scene size-up</strong> is the first part of patient assessment, but it does not end when you reach the patient. Scenes are dynamic, so the size-up continues throughout the call. It has four components: scene safety, Standard Precautions, the nature of the call (the mechanism of injury (MOI) or the nature of the illness), and the number of patients together with the resources they will need.</p>
+            <p>Never assume a scene is safe, even when police, fire, or other units are already there. Always do your own size-up. It begins before the ambulance stops, and you keep observing as you approach and again before you exit the vehicle.</p>
+    </div>
+<div class="topic" id="ch11-scene-size-up--2" data-heading="Approaching a collision — danger zone distances">
+      <h3>Approaching a collision — danger zone distances</h3>
+      <p>When you approach a motor vehicle collision, the hazards present determine how far from the wreck you park. The table below sets out the danger-zone distance for each hazard.</p>
+            <p class="tb-caption"><b>Table 11.1</b>Approaching a collision — danger zone distances</p><div class="table-wrap"><table><thead><tr><th>Hazard</th><th>Distance</th></tr></thead><tbody>
+            <tr><td>No apparent hazard</td><td>≥50 ft (15.2 m) all directions</td></tr>
+            <tr><td>Fuel spilled</td><td>≥100 ft (30.4 m); park upwind, uphill if fuel flowing; avoid gutters/ditches; no flares</td></tr>
+            <tr><td>Vehicle on fire</td><td>≥100 ft (30.4 m), even if the fire looks small</td></tr>
+            <tr><td>Wires down</td><td>Park at least one full span of wire away from poles</td></tr>
+            <tr><td>HazMat</td><td>Check ERG or call CHEMTREC (800-424-9300); park upwind, 50 ft–2000+ ft depending on substance</td></tr>
+            </tbody></table></div>
+            <p>Violence and crime scenes are a hazard of a different kind. Never enter a violent scene to provide care. The warning signs are fighting or loud voices, weapons that are visible or have been used, signs of alcohol or drug use, an unusual silence, and a known history of prior violence at that address.</p>
+    </div>
+<div class="topic" id="ch11-scene-size-up--3" data-heading="Standard Precautions (BSI)">
+      <h3>Standard Precautions (BSI)</h3>
+      <p><strong>Standard Precautions</strong>, also called body substance isolation (BSI), are the measures you take to keep a patient's body substances from reaching you. Body substances include blood, saliva, and all other body fluids, and they enter the body through cuts and other openings in the skin or through the eyes, nose, and mouth. The high-risk situations are bleeding, coughing, sneezing, and direct contact such as mouth-to-mouth. The infection risk runs both ways: the patient can infect you, and you can infect the patient.</p>
+            <p>The protection you choose depends on the situation. Gloves and eyewear are appropriate for trauma with suspected bleeding. A mask and eyewear are added when you are suctioning or the patient is spitting blood. An N-95 or HEPA respirator is worn when tuberculosis (TB) or another airborne disease is suspected.</p>
+    </div>
+<div class="topic" id="ch11-scene-size-up--4" data-heading="Nature of the call — mechanism of injury">
+      <h3>Nature of the call — mechanism of injury</h3>
+      <p>The <strong>mechanism of injury (MOI)</strong> is the force or forces that caused an injury. Certain mechanisms are commonly associated with certain injuries: falls and collisions with bone and joint injury, fire and explosion with burns, and gunshots with penetrating soft-tissue injury. Knowing the mechanism therefore tells you what to look for before you have found it.</p>
+            <p>Maintaining a <strong>high index of suspicion</strong> means staying aware of possible injury even when there are no obvious signs of it. Never assume there is no injury just because the mechanism seems minor.</p>
+    </div>
+<div class="topic" id="ch11-scene-size-up--5" data-heading="Motor vehicle collisions">
+      <h3>Motor vehicle collisions</h3>
+      <p>Every motor vehicle collision (MVC) is really 3 collisions: (1) the vehicle hits an object, (2) the occupant's body hits the interior of the vehicle, and (3) the organs hit the inside of the body. Airbags deploy once only. The powder they release is nontoxic and should not be mistaken for smoke, but the bags themselves can cause abrasions and fractures, and they can turn loose objects into projectiles.</p>
+            <p>The type of collision predicts the pattern of injury, as the table below shows.</p>
+            <p class="tb-caption"><b>Table 11.2</b>Motor vehicle collisions</p><div class="table-wrap"><table><thead><tr><th>Collision type</th><th>Injury pattern</th></tr></thead><tbody>
+            <tr><td>Head-on</td><td>Up-and-over: head/windshield → head, neck, chest, abdomen. Down-and-under: knees/dash → knee, leg, hip</td></tr>
+            <tr><td>Rear-end</td><td>Neck/head injury — head stays still, body pushed forward; whiplash if headrest misplaced</td></tr>
+            <tr><td>Side-impact (T-bone)</td><td>Neck injury (head stays still, body pushed laterally); direct injury to head, chest, abdomen, pelvis, thighs</td></tr>
+            <tr><td>Rollover</td><td>Most serious — multiple impacts, ejection risk if unbelted, any injury pattern possible</td></tr>
+            <tr><td>Rotational impact</td><td>Struck vehicle spins → subsequent impacts, multiple injury patterns</td></tr>
+            </tbody></table></div>
+    </div>
+<div class="topic" id="ch11-scene-size-up--6" data-heading="Falls &amp; penetrating/blunt trauma">
+      <h3>Falls & penetrating/blunt trauma</h3>
+      <p>In a fall, consider the height, the surface struck, the part of the body that hit it, and anything that interrupted the fall. The 2021 national field triage guideline uses one threshold for every age: a fall from more than 10 feet (3 m). The adult figure used to be taught as 20 feet, and the 2011 guideline used a multiple of a child's height; it came down because injuries were being missed below it. For a child aged 5 or under or an adult aged 65 or over, a low-level fall with a significant head strike is a risk factor to weigh under EMS judgment, and so is anticoagulant use in any fall. A patient who has fallen that far should go to a trauma center.</p>
+            <p>Penetrating trauma is classified by the velocity of the object. Low-velocity wounds, such as those from knives, are localized, although the blade may have moved inside the body. Medium-velocity wounds come from handguns and shotguns. Arrows, like knives, are low-velocity. High-velocity wounds, from rifles, can cause damage almost anywhere. A bullet injures in two ways: along its direct path, and by <strong>cavitation</strong>, in which the pressure wave creates a temporary cavity larger than the bullet itself.</p>
+            <p>In blunt-force trauma the energy travels through the body, so organs can rupture or hemorrhage while the external signs stay subtle. The MOI is your main clue that something serious has happened inside.</p>
+    </div>
+<div class="topic" id="ch11-scene-size-up--7" data-heading="Number of patients &amp; resources">
+      <h3>Number of patients & resources</h3>
+      <p>Actively scan the scene for additional patients, such as passengers and pedestrians. If there are more patients than you can handle, call for more ambulances immediately rather than waiting to see how things develop. Call for extra help early: once you are involved in patient care it is easy to forget, and by then it may be too late for help to arrive in time.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 11.1</div>
+      <ul><li>Blunt-force trauma – injury from a blow that doesn't penetrate skin/tissue.</li><li>Danger zone – the area around wreckage requiring special safety precautions.</li><li>Index of suspicion – awareness that injuries may be present.</li><li>Mechanism of injury (MOI) – force(s) that may have caused injury.</li><li>Nature of the illness – what is medically wrong with the patient.</li><li>Penetrating trauma – injury from an object passing through skin/tissue.</li><li>Scene size-up = safety check, Standard Precautions, MOI/nature of illness, patient count, resource needs.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-abrasion">Abrasion</a></dt><dd>A superficial wound where the skin is scraped away, typically not through the full thickness of the skin.</dd></div><div><dt><a href="../glossary.html#t-hemorrhage">Hemorrhage</a></dt><dd>Heavy or uncontrolled bleeding.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html?domain=Assessment">Practice this domain &rarr;</a> <a href="../study-notes.html#chapter-11">Open in the reader &rarr;</a></p>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="ventilation-and-oxygen-equipment.html"><span>&larr; Chapter 10</span><b>Ventilation &amp; Oxygen Equipment</b></a>
+      <a class="tb-chapter-link next" href="primary-assessment.html"><span>Chapter 12 &rarr;</span><b>Primary Assessment</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

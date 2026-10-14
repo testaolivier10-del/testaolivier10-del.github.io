@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behavioral and Psychiatric Emergencies: EMT Notes | LevlPrep</title>
+<meta name="description" content="Before you conclude that a patient's behavior has a psychiatric cause, you must rule out the physical conditions that can produce the same picture.">
+<link rel="canonical" href="https://levlprep.com/nremt/notes/behavioral-and-psychiatric-emergencies-and-suicide.html">
+<meta property="og:title" content="Behavioral and Psychiatric Emergencies: EMT Notes | LevlPrep">
+<meta property="og:description" content="Before you conclude that a patient's behavior has a psychiatric cause, you must rule out the physical conditions that can produce the same picture.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/nremt/notes/behavioral-and-psychiatric-emergencies-and-suicide.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<!-- The reader's own styles, copied from nremt/study-notes.html by
+     scripts/build-nremt-notes-pages.mjs so a chapter looks the same here. -->
+<style>
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
+  }
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
+
+  /* Search results, shown in place of the chapter while a query is typed. */
+  /* While the chapters are on their way, and if they never arrive. Both are
+     centred blocks in the reading column rather than an overlay, so nothing
+     moves when the real content replaces them. */
+  .tb-notes-loading{
+    font:700 15px var(--font-ui);color:var(--muted);
+    text-align:center;padding:64px 16px;margin:0;
+  }
+  .tb-notes-error{
+    border:2px solid var(--line-soft);border-radius:var(--radius-sm);
+    padding:20px;margin:32px 0;background:var(--surface-2,transparent);
+  }
+  .tb-notes-error h2{margin:0 0 8px;font-size:20px;}
+  .tb-notes-error p{margin:0 0 12px;color:var(--muted);}
+  .tb-notes-error p:last-child{margin-bottom:0;}
+  .tb-results-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-bottom:var(--bw) solid var(--line);padding-bottom:14px;margin-bottom:6px;
+  }
+  .tb-results-count{font:800 14px var(--font-ui);color:var(--muted);margin:0;}
+  .tb-results-count b{color:var(--ink);}
+  .tb-results-close{
+    border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;
+    padding:5px 13px;border-radius:var(--radius-pill);font:800 12px var(--font-ui);white-space:nowrap;
+  }
+  .tb-results-close:hover{border-color:var(--accent);color:var(--accent);}
+  .tb-results-status{font:700 13.5px var(--font-ui);color:var(--muted);margin:16px 0 0;}
+  .tb-result{padding:18px 0 14px;border-bottom:var(--bw) solid var(--line);}
+  .tb-result-chapter{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tb-result-title{font:900 18px var(--font-ui);color:var(--ink);letter-spacing:-.01em;margin:2px 0 8px;}
+  .tb-result-hit{
+    display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;cursor:pointer;
+    background:var(--white);border:0;border-radius:12px;box-shadow:var(--lift-sm);
+    padding:11px 14px;margin-top:8px;font:inherit;color:inherit;
+  }
+  .tb-result-hit:hover{background:var(--hover-tint);}
+  .tb-result-heading{font:900 11.5px var(--font-ui);color:var(--muted);}
+  .tb-result-snippet{font:600 14px/1.6 var(--font-ui);color:var(--ink);}
+  .tb-result-snippet mark{background:var(--tint-accent);color:var(--accent-text);border-radius:4px;padding:0 2px;font-weight:900;}
+
+  /* The passage a result pointed at, flashed once on arrival. */
+  .tb-hit{border-radius:10px;animation:tb-hit-flash 2.6s ease-out 1;}
+  @keyframes tb-hit-flash{
+    0%,55%{box-shadow:0 0 0 8px var(--tint-accent);background:var(--tint-accent);}
+    100%{box-shadow:0 0 0 8px transparent;background:transparent;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
+  }
+
+  /* Tables are numbered per chapter and captioned with the heading they sit
+     under. Numbering is done after render, so the notes data stays unnumbered
+     and a table added or removed renumbers the rest. */
+  .tb-caption{font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .tb-caption b{
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink);margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;margin:0 0 14px;border-radius:10px;box-shadow:var(--lift-sm);}
+  /* Browsers don't offer a break opportunity at "/", so a run like
+     chemical/biological/radiological/explosive stays one 42-character word and
+     overflows its list item — which scrolled the whole page sideways on a phone. */
+  .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
+  .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
+  .topic table:last-child{margin-bottom:0;}
+  .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .topic th{background:var(--hover-tint);color:var(--ink);font-weight:600;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .topic tr:last-child td{border-bottom:none;}
+
+  .takeaways{
+    background:var(--white);border-left:3px solid var(--cink);
+    border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
+  }
+  .takeaways .tk-title{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .takeaways li{margin-bottom:6px;}
+  .takeaways li:last-child{margin-bottom:0;}
+
+  /* ---- end matter: key terms, review questions, the tools --------------- */
+  .book-end{margin-top:36px;padding-top:24px;border-top:2px solid var(--line);}
+  .book-end__title{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
+  }
+  .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
+  .book-end > section + section{margin-top:30px;}
+
+  .book-terms dl{margin:0;}
+  .book-terms dl > div{padding:9px 0;border-top:1px solid var(--line);}
+  .book-terms dl > div:first-child{border-top:0;padding-top:0;}
+  .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
+  .book-terms dt a{color:inherit;text-decoration:none;}
+  .book-terms dt a:hover{color:var(--accent);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
+  .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
+
+  .book-btn{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:0;
+    background:var(--accent);color:var(--on-accent-fill);padding:9px 16px;
+    border-radius:var(--radius-pill);font:800 13px var(--font-ui);box-shadow:var(--btn-shadow-accent);
+  }
+  .book-btn:hover{background:var(--accent-press);}
+  .book-btn.quiet{background:var(--white);color:var(--ink);box-shadow:var(--lift-sm);}
+  .book-btn.quiet:hover{color:var(--accent);}
+  .book-btn[disabled]{opacity:.6;cursor:progress;}
+  .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+  .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
+  .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
+  .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
+  .book-q__opt{
+    display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid transparent;border-radius:10px;padding:9px 12px;
+    font:600 14px/1.5 var(--font-ui);color:var(--ink);
+  }
+  .book-q__opt:hover{border-color:var(--line);}
+  .book-q__opt b{font:700 11.5px var(--font-mono);color:var(--muted);flex-shrink:0;padding-top:2px;}
+  .book-q.answered .book-q__opt{cursor:default;}
+  .book-q.answered .book-q__opt:hover{border-color:transparent;}
+  .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
+  .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
+  .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
+  .book-q__why b.good{color:var(--good-text);}
+  .book-q__why b.bad{color:var(--bad-text);}
+  .book-review__foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;font:700 13.5px var(--font-ui);color:var(--muted);}
+  .book-review__foot .score{color:var(--ink);margin-right:auto;}
+  .book-review__foot a{color:var(--accent);text-decoration:none;font-weight:800;}
+
+  .chapter-tools{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0;padding:12px 14px;border-radius:12px;
+    background:var(--tint-accent);
+  }
+  .chapter-tools__k{
+    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    color:var(--accent);margin-right:2px;
+  }
+  .chapter-tools a{
+    display:inline-flex;align-items:baseline;gap:6px;text-decoration:none;
+    font-size:13px;font-weight:700;color:var(--ink);background:var(--white);
+    border-radius:16px;padding:6px 13px;box-shadow:var(--lift-sm);
+  }
+  .chapter-tools a:hover{color:var(--accent);}
+  .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
+
+
+
+  /* Printing lays the whole book out in order — a cover, the contents, then
+     every chapter on a fresh page; the script swaps the one-chapter view for
+     the book while the dialog is open. */
+  .print-cover,.print-toc{display:none;}
+  @media print{
+    .tb-shell{display:block;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
+    .tb-main{max-width:none;padding-top:0;}
+    .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
+    .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+    .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
+    .print-toc{display:block;break-after:page;}
+    .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
+    .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
+    .print-toc li{break-inside:avoid;display:flex;gap:10px;}
+    .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
+    .print-chapter{break-before:page;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
+    .topic{break-inside:auto;}
+  }
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/nremt/notes/behavioral-and-psychiatric-emergencies-and-suicide.html#notes","name":"Behavioral and Psychiatric Emergencies and Suicide: NREMT-EMT study notes","url":"https://levlprep.com/nremt/notes/behavioral-and-psychiatric-emergencies-and-suicide.html","description":"Before you conclude that a patient's behavior has a psychiatric cause, you must rule out the physical conditions that can produce the same picture.","learningResourceType":"Reading","educationalLevel":"Professional certification","inLanguage":"en","isAccessibleForFree":true,"isPartOf":{"@id":"https://levlprep.com/nremt/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":27},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"NREMT-EMT Prep","item":"https://levlprep.com/nremt/"},{"@type":"ListItem","position":3,"name":"NREMT-EMT study notes","item":"https://levlprep.com/nremt/study-notes.html"},{"@type":"ListItem","position":4,"name":"Behavioral and Psychiatric Emergencies and Suicide","item":"https://levlprep.com/nremt/notes/behavioral-and-psychiatric-emergencies-and-suicide.html"}]}]}
+</script>
+</head>
+<body>
+  <header id="site-header"></header>
+<div class="course-nav"></div>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="../index.html">Home</a> · <a href="../study-notes.html">Learn</a> · <a href="../practice.html">Practice</a> · <a href="../review.html">Review</a> · <a href="../exams.html">Exams</a> · <a href="../glossary.html">Glossary</a> · <a href="../tools.html">Tools</a> · <a href="../dashboard.html">Dashboard</a></div></noscript>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="nr-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="abdominal-emergencies.html"><span class="bk-toc-n">26</span>Abdominal Emergencies</a>
+    <a class="bk-toc-chap" href="#main"><span class="bk-toc-chap-n">27</span><span><b>Behavioral and Psychiatric Emergencies and Suicide</b><small>2 sections</small></span></a>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li><a href="#ch27-behavioral-assessment"><span class="bk-toc-n">27.1</span>Assessing Behavioral Emergencies</a></li><li><a href="#ch27-restraint"><span class="bk-toc-n">27.2</span>Aggressive Patients, Restraint & Excited Delirium</a></li></ol></nav>
+    <a class="bk-toc-other" href="hematologic-and-renal-emergencies.html"><span class="bk-toc-n">28</span>Hematologic and Renal Emergencies</a>
+    <p class="tb-filter-hint" style="margin-top:14px"><a href="../study-notes.html">All 40 chapters, with search</a></p>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../study-notes.html">Study notes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Behavioral and Psychiatric Emergencies and Suicide</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../study-notes.html#chapter-27"><i aria-hidden="true">&#9654;</i>Open in the interactive reader</a> <a class="bk-pill" href="../practice.html">Practice questions</a> <a class="bk-pill" href="../index.html">NREMT-EMT course home</a></div>
+    <div data-chapter="27">
+    <header class="tb-chapter-head">
+      <p class="tb-chapter-eyebrow">Chapter 27 of 40</p>
+      <h1 class="tb-chapter-title">Behavioral and Psychiatric Emergencies and Suicide</h1>
+      <div class="tb-chapter-meta">
+        <span>2 sections · 9 topics · about 6 min · free</span>
+        <div class="bk-actions" role="group" aria-label="Share or print this chapter"><button type="button" class="bk-action" data-copy="https://levlprep.com/nremt/notes/behavioral-and-psychiatric-emergencies-and-suicide.html">Copy link</button><button type="button" class="bk-action" data-print>Print this chapter</button></div>
+      </div>
+      <p class="bk-lede">A behavioral emergency is any situation in which a person's behavior is unacceptable or intolerable to themselves or others, and the first job is to rule out the medical conditions that mimic one. This chapter covers assessment and de-escalation, acute psychosis, suicide, and the safety, legal and procedural rules for restraining an aggressive patient, including excited delirium.</p>
+    </header>
+<section class="section bk-sec" id="ch27-behavioral-assessment" data-num="27.1" data-title="Assessing Behavioral Emergencies">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">27.1</span>Assessing Behavioral Emergencies</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch27-behavioral-assessment--1" data-heading="What is a behavioral emergency?">
+      <h3>What is a behavioral emergency?</h3>
+      <p>A <strong>behavioral emergency</strong> is abnormal behavior, within a given situation, that is unacceptable or intolerable to the patient, the family or the community, and it is often potentially harmful to the patient or to others. The word "abnormal" has to be read in context, because what counts as normal depends on the situation. Cultural background matters as well: a behavior that seems unusual to you may be entirely normal within the patient's culture.</p>
+    </div>
+<div class="topic" id="ch27-behavioral-assessment--2" data-heading="Physical causes that mimic psychiatric emergencies — always rule out first">
+      <h3>Physical causes that mimic psychiatric emergencies — always rule out first</h3>
+      <p>Before you conclude that a patient's behavior has a psychiatric cause, you must rule out the physical conditions that can produce the same picture. The table below lists the most important physical mimics and the signs that point to each.</p>
+            <p class="tb-caption"><b>Table 27.1</b>Physical causes that mimic psychiatric emergencies — always rule out first</p><div class="table-wrap"><table><thead><tr><th>Cause</th><th>Key signs</th></tr></thead><tbody>
+            <tr><td>Low blood sugar</td><td>Rapid-onset erratic/hostile behavior, sweating, rapid pulse + normal BP</td></tr>
+            <tr><td>Hypoxia</td><td>Restlessness, confusion, cyanosis</td></tr>
+            <tr><td>Stroke</td><td>Confusion, impaired speech, one-sided weakness</td></tr>
+            <tr><td>Head trauma</td><td>Personality changes, AMS, amnesia</td></tr>
+            <tr><td>Seizures</td><td>Postictal AMS</td></tr>
+            <tr><td>Cold/heat extremes</td><td>Shivering/numbness/AMS or decreased LOC</td></tr>
+            </tbody></table></div>
+            <p>Ruling out a medical cause does not mean choosing between two possibilities. Medical and psychiatric conditions can coexist, and a real medical problem can also worsen the symptoms of a chronic psychiatric illness.</p>
+    </div>
+<div class="topic" id="ch27-behavioral-assessment--3" data-heading="Acute psychosis">
+      <h3>Acute psychosis</h3>
+      <p><strong>Acute psychosis</strong> is a severe break in the patient's ability to process reality. It is associated with schizophrenia and is defined by the presence of at least 1 of four features. The first is hallucinations; auditory hallucinations are typically psychiatric in origin, but visual hallucinations can also have a medical cause, such as drug intoxication or alcohol withdrawal. The second is delusions, which are false, fixed beliefs. The third is catatonia, in which the patient either barely interacts with the surroundings at all or moves in wildly inappropriate ways. The fourth is thought disorder.</p>
+    </div>
+<div class="topic" id="ch27-behavioral-assessment--4" data-heading="De-escalation &amp; assessment sequence">
+      <h3>De-escalation & assessment sequence</h3>
+      <p>Your approach to the patient does much of the work of the assessment. Identify yourself and your role, speak slowly and calmly, maintain eye contact, and listen actively. Stay non-judgmental, keep your body language positive, and acknowledge the patient's feelings. Stay at least 3 feet away, and watch throughout for signs that the patient's aggression is escalating.</p>
+            <p>The assessment itself follows the usual order. The scene size-up comes first, and if the scene calls for it, the police go in before you do. Identify yourself, then perform the primary assessment, screening specifically for medical and traumatic causes of the behavior. Carry out as detailed an exam as the patient will allow, and take a thorough history, including any past psychiatric history, current medications and any missed doses, the possibility of diabetes, and substance use.</p>
+    </div></div>
+  </section>
+<section class="section bk-sec" id="ch27-restraint" data-num="27.2" data-title="Aggressive Patients, Restraint &amp; Excited Delirium">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">27.2</span>Aggressive Patients, Restraint & Excited Delirium</h2>
+      
+    </div>
+    <div class="bk-prose" data-glossary-topic=""><div class="topic" id="ch27-restraint--1" data-heading="Aggressive/hostile patients — safety precautions">
+      <h3>Aggressive/hostile patients — safety precautions</h3>
+      <p>An aggressive or hostile patient is a danger to you before anything else, and a few rules protect you. Never isolate yourself from your partner or from other help, always maintain an escape route, and never let the patient get between you and the door. Watch for weapons, and avoid kitchens in particular, because they are a common source of them.</p>
+            <p>A calm patient can turn aggressive without warning, so do not relax because the patient seems settled. Be especially alert to sudden silence in a patient who was agitated a moment before. It may not mean the patient is calming down; it can indicate that a serious medical emergency is developing.</p>
+    </div>
+<div class="topic" id="ch27-restraint--2" data-heading="Reasonable force &amp; restraint — legal note">
+      <h3>Reasonable force & restraint — legal note</h3>
+      <p>As a general rule, an EMT cannot legally restrain, forcibly move or force care on a behavioral-emergency patient, even when the family asks you to. That authority belongs to law enforcement, and in some systems to a physician acting through medical direction. Where force is authorized, it is limited to <strong>reasonable force</strong>, which means only the force necessary to prevent the patient from harming himself or herself or others.</p>
+            <p>The rule is different when the cause is medical or traumatic. A combative hypoglycemic patient, for example, may be restrained so that treatment can be given; that is a medical necessity, not a behavioral-emergency restraint. In any case, never attempt to restrain a patient without sufficient personnel. Avoid handcuffs and plastic restraints, which cause soft tissue damage; soft restraints are preferred where local protocol authorizes them.</p>
+    </div>
+<div class="topic" id="ch27-restraint--3" data-heading="Excited delirium — critical danger">
+      <h3>Excited delirium — critical danger</h3>
+      <p><strong>Excited delirium</strong> (now often called hyperactive delirium with severe agitation) is a state of extreme agitation and psychosis that most often arises from uncontrolled psychiatric illness, stimulant intoxication, or both. The patient shows bizarre and aggressive behavior, is insensitive to pain, displays unexpected strength and is hyperthermic. The critical danger comes after the struggle: these patients can suddenly stop struggling and, within minutes, develop inadequate or absent respirations and go into cardiac arrest. Constant monitoring is essential even after the patient appears to have calmed down.</p>
+    </div>
+<div class="topic" id="ch27-restraint--4" data-heading="Restraint procedure">
+      <h3>Restraint procedure</h3>
+      <p>When restraint is authorized and necessary, it is carried out as a planned procedure with adequate help. The steps are as follows.</p>
+            <ol>
+            <li>Assemble adequate help and plan the approach. Stay beyond the patient's reach until you are ready, and once the decision is made, act quickly.</li>
+            <li>Assign one EMT to talk to and reassure the patient throughout. Use a minimum of 4 rescuers, one for each limb.</li>
+            <li>Apply restraints approved by medical direction to all 4 limbs.</li>
+            <li>Position the patient face-up. Never place a restrained patient prone or in any position that restricts movement of the chest wall, and never hog-tie a patient.</li>
+            <li>Monitor the airway constantly, and contact ALS, because chemical sedation may be needed.</li>
+            <li>Reassess distal circulation frequently.</li>
+            <li>Never remove police restraints until you are certain that the soft restraints will hold.</li>
+            </ol>
+            <p class="sub">Positional asphyxia from improper restraint has caused patient deaths. The face-up rule is the single most important safety rule in this chapter.</p>
+    </div>
+<div class="topic" id="ch27-restraint--5" data-heading="Medical/legal considerations">
+      <h3>Medical/legal considerations</h3>
+      <p>A refusal of care from a behavioral-emergency patient carries significant risk, and the law treats it differently from other refusals. Most states allow you to transport such a patient against his or her will if the patient is a danger to self or others, which is an exception to the normal rules of consent. Whenever possible, have an EMT of the same sex as the patient attend the patient; this protects you against false accusations of misconduct. For an aggressive or violent patient, have law enforcement accompany the transport, which protects both you and the patient.</p>
+    </div></div>
+    <div class="takeaways">
+      <div class="tk-title">Key points · 27.2</div>
+      <ul><li>Always rule out hypoglycemia, hypoxia, stroke, and head trauma before assuming a purely psychiatric cause.</li><li>A calm patient can turn aggressive without warning — never let your guard down.</li><li>EMTs generally cannot legally restrain a behavioral-emergency patient without law enforcement authority.</li><li>Restrained patients must always be face-up, never prone or hog-tied — positional asphyxia kills.</li><li>Excited delirium: sudden calm after struggling can mean imminent cardiac arrest, not resolution.</li><li>Most states allow transport against will only when the patient is a danger to self or others.</li></ul>
+    </div>
+  </section>
+    <div class="book-end">
+    <section class="book-terms" aria-labelledby="bookTermsH">
+      <h2 class="book-end__title" id="bookTermsH">Key terms <small>in this chapter</small></h2>
+      <dl><div><dt><a href="../glossary.html#t-acute">Acute</a></dt><dd>Having a sudden onset and typically a short, intense course — contrast with chronic.</dd></div><div><dt><a href="../glossary.html#t-chronic">Chronic</a></dt><dd>Persisting over a long period of time — contrast with acute.</dd></div><div><dt><a href="../glossary.html#t-cyanosis">Cyanosis</a></dt><dd>A bluish discoloration of the skin or mucous membranes, typically indicating inadequate oxygenation.</dd></div><div><dt><a href="../glossary.html#t-distal">Distal</a></dt><dd>Farther from the point of attachment or the trunk of the body.</dd></div><div><dt><a href="../glossary.html#t-hypoxia">Hypoxia</a></dt><dd>A deficiency of oxygen reaching the body's tissues.</dd></div><div><dt><a href="../glossary.html#t-postictal">Postictal</a></dt><dd>The period immediately following a seizure, typically marked by confusion, drowsiness, or altered mental status.</dd></div><div><dt><a href="../glossary.html#t-prone">Prone</a></dt><dd>Lying face-down.</dd></div><div><dt><a href="../glossary.html#t-sign">Sign</a></dt><dd>An objective finding that can be observed or measured by another person, such as a rash or an abnormal pulse — contrast with a symptom.</dd></div><div><dt><a href="../glossary.html#t-symptom">Symptom</a></dt><dd>A subjective sensation reported by the patient, such as pain or nausea, that can't be directly observed by someone else — contrast with a sign.</dd></div></dl>
+      <p class="book-terms__all"><a href="../glossary.html">The full glossary &rarr;</a></p>
+    </section>
+    <section class="book-review" aria-labelledby="bookReviewH">
+      <h2 class="book-end__title" id="bookReviewH">Check your understanding</h2>
+      <p class="book-end__lede">The question bank covers the ground this chapter does. Answer questions with explanations in practice, or open this chapter in the reader for five drawn from the bank.</p>
+      <p class="book-review__foot"><a href="../practice.html">Practice the bank &rarr;</a> <a href="../study-notes.html#chapter-27">Open in the reader &rarr;</a></p>
+    </section>
+    </div>
+    <nav class="tb-chapter-nav" aria-label="Chapter navigation">
+      <a class="tb-chapter-link prev" href="abdominal-emergencies.html"><span>&larr; Chapter 26</span><b>Abdominal Emergencies</b></a>
+      <a class="tb-chapter-link next" href="hematologic-and-renal-emergencies.html"><span>Chapter 28 &rarr;</span><b>Hematologic and Renal Emergencies</b></a>
+    </nav>
+    </div>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+<script>
+  // nav.js builds the course tabs relative to nremt/; this page is one level
+  // down, and it belongs under Learn.
+  window.NREMT_BASE = '../';
+  window.NREMT_PAGE = 'study-notes.html';
+</script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../../assets/course/book.js" defer></script>
+<script src="../assets/nav.js" defer></script>
+</body>
+</html>

@@ -38,8 +38,8 @@
 
    Forty chapter titles is still thin for a page this size, and the honest fix
    for that is the one the ochem prose got: a page per chapter, the way
-   ochem/notes/** works. That is a bigger change than a contents list, and it
-   creates forty new URLs, so it is noted here rather than done quietly.
+   ochem/notes/** works. scripts/build-nremt-notes-pages.mjs now writes those
+   pages, and each line of this contents list links to one.
 
      node scripts/build-nremt-notes-toc.mjs            rewrite
      node scripts/build-nremt-notes-toc.mjs --check    fail if stale (CI)
@@ -47,6 +47,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { chapterSlug } from './lib/nremt-notes.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
@@ -64,10 +65,13 @@ if (!chapters || !chapters.length) {
   process.exit(1);
 }
 
-/* The anchors are the ones route() already answers to, so a link here lands on
-   the chapter rather than at the top of a page that then jumps. */
+/* Each chapter links to its own page under nremt/notes/
+   (scripts/build-nremt-notes-pages.mjs), which is where its text is readable
+   without JavaScript and where a crawler finds it. Readers with JavaScript
+   never see these links: the page's script replaces this block with the
+   chapter as soon as the data lands. */
 const items = chapters.map((ch) => (
-  `          <li><a href="#ch${ch.num}"><b>${ch.num}</b> ${esc(ch.title)}</a></li>`
+  `          <li><a href="notes/${chapterSlug(ch)}.html"><b>${ch.num}</b> ${esc(ch.title)}</a></li>`
 )).join('\n');
 
 const sections = chapters.reduce((n, ch) => n + (ch.sections ? ch.sections.length : 0), 0);

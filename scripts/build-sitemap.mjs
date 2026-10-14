@@ -31,7 +31,9 @@ const check = process.argv.includes('--check');
 // ochem/notes/** used to be skipped here as bare fragments. They are full
 // pages now (scripts/build-notes-pages.mjs) and robots.txt no longer
 // disallows them, so they are listed like anything else — they are the only
-// form in which the ochem prose is readable without JavaScript.
+// form in which the ochem prose is readable without JavaScript. The same goes
+// for nremt/notes/**, one page per study-notes chapter
+// (scripts/build-nremt-notes-pages.mjs), listed at the notes priority.
 // 'scripts' holds build tooling and files meant to be pasted into a
 // dashboard (SQL, auth email templates) — none of it is a published page, so
 // none of it needs an OG tag or a sitemap entry. check-site.mjs has always
@@ -67,7 +69,7 @@ function priorityFor(path) {
   if (path === '/') return '1.0';
   if (COURSE_HOME.test(path)) return '0.9';
   if (COURSE_NAMED.test(path)) return '0.8';
-  if (/^\/(ochem\/notes|anatomy-physiology\/(notes|chapters)|bio\/(notes|units)|chem\/(notes|units)|physics\/(notes|units)|calculus\/(notes|units))\//.test(path)) return '0.7';
+  if (/^\/(ochem\/notes|nremt\/notes|anatomy-physiology\/(notes|chapters)|bio\/(notes|units)|chem\/(notes|units)|physics\/(notes|units)|calculus\/(notes|units))\//.test(path)) return '0.7';
   if (/^\/nremt\/[^/]+\.html$/.test(path)) return '0.7';
   if (/^\/(ochem\/(lessons|mechanisms)|anatomy-physiology\/(lessons|concepts)|bio\/(lessons|unit-sheets|frq)|chem\/(lessons|unit-sheets|frq)|physics\/(lessons|unit-sheets|frq)|calculus\/(lessons|unit-sheets|frq))\//.test(path)) return '0.6';
   if (/^\/(ochem|anatomy-physiology|bio|chem|physics|calculus)\/tools\//.test(path)) return '0.5';
