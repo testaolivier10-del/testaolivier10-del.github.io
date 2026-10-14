@@ -212,6 +212,11 @@ a tool's data file exists and its topic is published.
       a long inline chain before each top-level = or \approx (21 notes pages scrolled sideways at 360 px);
       flashcards showed definitions as escaped MathML; the home trainers band now names the free rule drills; the
       trainer caption split no longer cuts at a decimal point (calculus and physics `studioAsk`).
+    - Full CI with browser checks then found: a plot holding a draggable handle must be `role="group"`, not
+      `img` (`ApCalcPlot.draggable` sets it for every trainer); formula-page cells overflowed a few pixels
+      vertically (hidden now) and three long formulas sideways (the chain split also breaks before \Rightarrow
+      and \quad, pieces joined by `<wbr>`; the EVT row is now "max and min over [a, b] exist"); the site-search
+      test now covers `?course=calculus`.
 
 ## 8. Open items for the owner
 
