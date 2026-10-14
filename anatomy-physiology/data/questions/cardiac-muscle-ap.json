@@ -178,22 +178,22 @@
       "communication"
     ],
     "figure": "os-10-22",
-    "pin": "intercalated-disc",
+    "pin": "gap-junction",
     "q": "Name the pinned structure.",
     "options": [
-      "Sarcoplasmic reticulum",
-      "Sarcolemma",
+      "Desmosome",
+      "Tight junction",
       "T tubule",
-      "Intercalated disc"
+      "Gap junction"
     ],
     "correct": 3,
     "why": {
-      "correct": "Intercalated discs join cardiac muscle cells end to end. Each disc holds desmosomes and gap junctions.",
+      "correct": "Gap junctions are channels inside each intercalated disc that link the cytoplasm of neighboring cardiac muscle cells. Ions flow through them, so the action potential spreads from cell to cell and the heart contracts as one unit.",
       "options": [
-        "The sarcoplasmic reticulum is a network of membrane sacs inside each cell that stores calcium. It does not join two cells.",
-        "The sarcolemma is the plasma membrane of each cell. An intercalated disc is where two cells' membranes meet and are joined.",
-        "A T tubule is an inward fold of the sarcolemma that carries the action potential into the cell, not a junction between cells.",
-        "Correct. This is an intercalated disc."
+        "A desmosome is the other junction in the intercalated disc. It anchors neighboring cells so they do not pull apart during contraction, but it does not pass ions between them.",
+        "Tight junctions seal neighboring epithelial cells together to block leakage between them. They are not part of the intercalated disc.",
+        "A T tubule is an inward fold of the sarcolemma that carries the action potential into a single cell, not a channel between two cells.",
+        "Correct. This is a gap junction."
       ]
     },
     "id": "anp-cardiac-muscle-ap-7"
