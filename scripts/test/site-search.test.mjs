@@ -171,15 +171,22 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('chem'), 'apchem');
   assert.equal(A.parseCourse('chemistry'), 'apchem');
   assert.equal(A.urlKey('apchem'), 'chem');
-  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys']);
+  // AP® Calculus AB (beta since its launch): key apcalc, named by its folder, alias calc.
+  assert.equal(A.parseCourse('calculus'), 'apcalc');
+  assert.equal(A.parseCourse('calc'), 'apcalc');
+  assert.equal(A.urlKey('apcalc'), 'calculus');
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc']);
   eq(A.scopeKeys('ochem'), ['ochem']);
   eq(A.scopeKeys('apphys'), ['apphys']);
+  eq(A.scopeKeys('apcalc'), ['apcalc']);
 });
 
 test('HTML becomes plain text: tags out, entities decoded, blocks spaced', () => {
   const { A } = searchAll();
   assert.equal(A.stripHtml('<p>Give O<sub>2</sub> &amp; reassess&nbsp;&mdash; then</p><li>a</li><li>b</li>'), 'Give O 2 & reassess — then a b');
   assert.equal(A.stripHtml('<script>var x = "<p>"</script>kept'), 'kept');
+  // AP® Calculus AB math: the formula's symbols, never its TeX annotation, and no space before the stop.
+  assert.equal(A.stripHtml('at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>.'), 'at x=2.');
   assert.equal(A.decodeEntities('&#8805; &#x2192; &unknown;'), '≥ → &unknown;');
 });
 

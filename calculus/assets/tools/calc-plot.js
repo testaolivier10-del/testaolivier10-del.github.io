@@ -266,6 +266,9 @@
   function draggable(svgEl, F, o){
     o = o || {};
     var x = o.x || 0, y = o.y || 0, step = o.step || (F.x[1] - F.x[0]) / 100;
+    // A picture that holds a slider is a group, not an image (an img role
+    // may not have focusable children: axe nested-interactive).
+    if(svgEl.getAttribute('role') === 'img') svgEl.setAttribute('role', 'group');
     var g = document.createElementNS(NS, 'g');
     g.setAttribute('class', 'calc-plot-handle');
     g.setAttribute('tabindex', '0');
