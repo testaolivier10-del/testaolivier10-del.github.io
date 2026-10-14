@@ -26,3 +26,15 @@ Sheets: *-sheet-green.png (1376x768). Prompt style: the quality v2 wording plus 
 | emd-talking | Dispatcher | leaning to the mic, hand raised, giving instructions |
 | emts-walk | Two EMTs: woman about 35 with blond bun, man about 28 with dark skin and short hair; navy EMS uniforms with reflective stripes, blue gloves, no logos | walking right, red jump bag and yellow AED case |
 | emts-cpr | Two EMTs | man doing compressions, woman with a bag valve mask, on a shirtless young patient (NOT Frank; avoid when continuity matters) |
+
+## Added 2026-10-13 (Figma AI, gemini-3.1-flash-image, two character sheets; sheet 2 keyed with pipeline/chroma_soft.py because its green is duller)
+Jordan: woman about 20, athletic runner build, light olive skin, dark brown hair in a high ponytail, teal sleeveless running top, black running shorts, white running shoes with teal accents, a plain white race bib with no text; facing right. All poses are at the same pixel scale (place with the same factor, see IMGS in pipeline/long/a01_spec.py).
+
+| file | character | pose |
+|---|---|---|
+| jordan-sprint | Jordan | sprinting mid stride, determined, sweat drops |
+| jordan-bent | Jordan | bent forward, hands on knees, panting |
+| jordan-hips | Jordan | standing, hands on hips, relieved smile |
+| jordan-shiver | Jordan | standing, shivering, arms wrapped around herself |
+| jordan-foot | Jordan | yanking her right foot up as if she stepped on something sharp |
+| jordan-drink | Jordan | drinking from a plain teal water bottle |

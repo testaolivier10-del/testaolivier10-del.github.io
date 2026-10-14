@@ -22,6 +22,9 @@ Prefer these over the synthesized sfx.py sounds whenever one fits; sfx.py stays 
 | cough_real | cough | 1.1 s |
 | door_close_real | door | 1.2 s |
 | whoosh_real | short whoosh | 0.2 s |
+| run_steps_real | running footsteps (loop every 3.2 s) | 3.3 s |
+| crowd_cheer_real | stadium crowd cheer | 4.1 s |
+| breath_female_real | woman breathing hard after running | 4.1 s |
 
 Adding more: Freesound refuses the cloud workspace, so search and download on Olivier's laptop with device_bash
 (key in ~/mnt/Downloads/levlprep/freesound_key.txt, read only inside commands; CC0 filter; previews["preview-hq-mp3"]),
