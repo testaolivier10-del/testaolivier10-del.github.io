@@ -143,3 +143,27 @@ test('a browser that refuses localStorage is treated as opted out', () => {
   b.window.LevlErrors.report('boom', '/a.js', 1, 1, '');
   assert.equal(calls.length, 0);
 });
+
+test('a crawler or an automated browser is not reported', () => {
+  for (const ua of [
+    'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.6778.33 Safari/537.36',
+    'HanaleiBot runid=beta-stage-integration-test',
+  ]) {
+    const { b, calls, errors } = fresh();
+    b.window.navigator.userAgent = ua;
+    errors.report('boom', '/a.js', 1, 1, '');
+    assert.equal(calls.length, 0, ua);
+  }
+  const { b, calls, errors } = fresh();
+  b.window.navigator.webdriver = true;
+  errors.report('boom', '/a.js', 1, 1, '');
+  assert.equal(calls.length, 0);
+});
+
+test('a real browser is still reported', () => {
+  const { b, calls, errors } = fresh();
+  b.window.navigator.userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36';
+  errors.report('boom', '/a.js', 1, 1, '');
+  assert.equal(calls.length, 1);
+});

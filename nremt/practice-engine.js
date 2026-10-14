@@ -1663,6 +1663,10 @@ $id('flashcardExitBtn').addEventListener('click', () => {
 });
 
 function startDomainQuiz(domain, length){
+  // A picker value no question carries (a page cached before the 2025
+  // domains, beside today's bank) drills every domain instead of opening an
+  // empty quiz (client_errors: q is undefined in renderQuestion).
+  if(domain && domain !== 'all' && !poolFor(domain).length) domain = 'all';
   if(G.quotaApplies('domain')) length = Math.min(length, G.quotaLeft());
   const diffFilter = $id('difficultySelect').value;
   mode = 'domain';

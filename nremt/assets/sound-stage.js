@@ -468,6 +468,20 @@
   /* ======================================================================= */
 
   function mount(root, opts){
+    // For a few minutes after a release the browser can hold last release's
+    // sound-bank.js beside this file, which needs its newer calls
+    // (client_errors: Bank.getVolume is not a function). Refetch it past the
+    // cache and reload once rather than mount a stage that cannot play.
+    if(typeof Bank.getVolume !== 'function' || typeof Bank.heartData !== 'function'){
+      try{
+        var tag = document.querySelector('script[src*="sound-bank.js"]');
+        if(tag && !sessionStorage.getItem('levl_sound_bank_reload')){
+          sessionStorage.setItem('levl_sound_bank_reload', '1');
+          fetch(tag.src, { cache: 'reload' }).then(function(){ location.reload(); }, function(){});
+        }
+      }catch(e){}
+      return null;
+    }
     var SOUNDS = opts.sounds;
     var byId = {}; SOUNDS.forEach(function(s){ byId[s.id] = s; });
     var playable = SOUNDS.filter(function(s){ return s.available; });

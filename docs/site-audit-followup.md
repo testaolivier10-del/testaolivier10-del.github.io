@@ -246,6 +246,15 @@ and every fix those checks asked for was applied before its merge. The `sw.js` c
 
 ## Progress log
 
+- 2026-10-14: `client_errors` triage (7 days, about 300 rows). About 250 "Failed to load img" came from one crawler walking
+  the A&P notes every few minutes with images blocked and rotating desktop Chrome user agents; every reported file
+  exists. `assets/errors.js` now skips bots (user agent or `navigator.webdriver`) and sends one image failure per
+  load. Real fixes: bio/chem/phys/calc toc scripts guard the progress rail like anp-toc.js; the sound trainer
+  refetches a stale `sound-bank.js` and reloads once (deploy skew); an NREMT domain drill whose picker value matches
+  no question drills all domains; the glossary loader retries after a dropped fetch. The rest was noise: wallet
+  extension (`window.ethereum`), crawlers (Googlebot, bingbot, Exa, HeadlessChrome waitForFunction on search.html),
+  dropped connections, and owner tests during a deploy.
+
 - 2026-10-02: site and Worker switched to api.levlprep.com; public contact is hello@levlprep.com; checklist 1, 3, 4, 5, 6 done (Polar webhook and the workers.dev switch-off left).
 
 - 2026-10-02: W9 merged; all workstreams done, full CI green.
