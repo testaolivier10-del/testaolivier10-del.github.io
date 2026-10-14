@@ -7,7 +7,7 @@
      Expr  = ApCalcExpr (parse, fn, compare, grade, number, toTex)
      Tex   = ApCalcTex  (render, html, text, plain, check)
      Plot  = ApCalcPlot (svg, frame, ticks, sample)
-     mathHtml(str)     $...$ rendered to MathML, strict: a typo throws
+     mathHtml(str)     $...$ rendered to MathML, strict: a typo throws; long chains wrap
      renderDeep(value, skip)  every string field with $ rendered (questions,
                        FRQs, tool data), except the keys in `skip` */
 import { readFileSync } from 'node:fs';
@@ -25,7 +25,8 @@ for (const f of ['calc-expr.js', 'calc-math.js', 'tools/calc-plot.js'])
 export const Expr = ctx.ApCalcExpr;
 export const Tex = ctx.ApCalcTex;
 export const Plot = ctx.ApCalcPlot;
-export const mathHtml = s => Tex.html(s, { strict: true });
+// wrap: long inline chains may break at = (calc-math.js), for authored prose and options.
+export const mathHtml = s => Tex.html(s, { strict: true, wrap: true });
 
 // Fields that hold keys, ids or expressions in the student syntax: never TeX.
 export const RAW_KEYS = new Set(['id', 'slug', 'topic', 'unit', 'type', 'kind', 'answer', 'expr', 'fn', 'fn2', 'dydx', 'vars', 'mode', 'practice', 'stimulus', 'figure', 'cls', 'domain', 'level', 'diff', 'calc', 'href', 'src']);

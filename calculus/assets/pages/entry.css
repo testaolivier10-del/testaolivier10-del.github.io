@@ -45,12 +45,14 @@
 .calc-eq thead th{font:900 12.5px var(--font-ui);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
 .calc-eq-f{font:700 15px var(--font-mono, monospace);white-space:normal;color:var(--cink);}
 .calc-eq tbody th{min-width:150px;}
-/* Fixed columns so a long formula cannot squeeze the words; MathML does not wrap, so it scrolls in its cell. */
-@media (min-width: 561px){
+/* Fixed columns so a long formula cannot squeeze the words; MathML does not wrap, so it scrolls in its cell.
+   From 720 px: below that the columns size to their content and the whole table scrolls in its (focusable) region. */
+@media (min-width: 720px){
   .calc-eq{table-layout:fixed;}
   .calc-eq thead th:nth-child(1){width:34%;} .calc-eq thead th:nth-child(2){width:25%;} .calc-eq thead th:nth-child(3){width:27%;} .calc-eq thead th:nth-child(4){width:14%;}
 }
 .calc-eq-f{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:2px 0 4px;}
+@media (max-width: 719px){ .calc-eq-f{max-width:none;overflow:visible;} }
 .calc-eq-not li{margin:8px 0;}
 .calc-entry .calc-qs{margin:16px 0;}
 .calc-cards-row{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 12px;}

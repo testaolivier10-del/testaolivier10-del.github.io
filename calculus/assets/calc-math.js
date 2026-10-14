@@ -10,7 +10,8 @@
        strict: throw ApCalcTex.Error on anything outside the subset (the build);
        otherwise unknown commands show as text (the preview).
      ApCalcTex.html(str, opts) -> str with $$...$$ (display) and $...$ (inline)
-       rendered; \$ is a literal dollar sign.
+       rendered; \$ is a literal dollar sign. opts.wrap: a long inline chain
+       is split so it can wrap (below).
      ApCalcTex.text(tex) -> plain text ("∫ from 0 to 1 of x² dx"), for titles,
        labels and search.
      ApCalcTex.check(str) -> [problems] (unbalanced $, unknown commands)
@@ -340,13 +341,15 @@
   /* ---------------------------------------------------------- in text */
   var MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g;
   /* A long inline chain (a = b = c) is split before each top-level =, \approx,
-     \Rightarrow or \quad
-     into pieces of math with a <wbr> between (the operator keeps its own spacing),
+     \Rightarrow or \quad (and, past 34 characters, before each top-level +
+     and after each top-level comma) into pieces of math with a <wbr> between (the operator keeps its own spacing),
      so a line can wrap there: MathML
      never breaks inside an inline formula, and on a phone one long chain made
-     the whole page scroll sideways (AP® Calculus AB launch). */
-  var BREAK_AT = 30;
-  function splitChain(tex){
+     the whole page scroll sideways (AP® Calculus AB launch). Only with
+     html(str, { wrap: true }), which the build uses for authored text; the
+     trainers render one formula per string and read its annotation back. */
+  var BREAK_AT = 24;
+  function splitChain(tex, soft){
     var out = [], from = 0, depth = 0, i = 0, m;
     while(i < tex.length){
       var c = tex[i];
@@ -358,25 +361,32 @@
         else if((cmd === 'approx' || cmd === 'Rightarrow' || cmd === 'quad') && depth === 0 && i > from && tex.slice(from, i).trim()){ out.push(tex.slice(from, i)); from = i; }
         i += m ? m[0].length : 1; continue;
       }
-      if(c === '{') depth++;
-      else if(c === '}') depth--;
+      if(c === '{' || c === '(' || c === '[') depth++;
+      else if(c === '}' || c === ')' || c === ']') depth--;
       else if(c === '=' && depth === 0 && i > from && tex.slice(from, i).trim()){ out.push(tex.slice(from, i)); from = i; }
+      else if(soft && c === '+' && depth === 0 && i > from && tex.slice(from, i).trim()){ out.push(tex.slice(from, i)); from = i; }
+      else if(soft && c === ',' && depth === 0){ out.push(tex.slice(from, i + 1)); from = i + 1; }
       i++;
     }
     out.push(tex.slice(from));
     return out.map(function(x){ return x.trim(); }).filter(Boolean);
   }
   function inline(tex, opts){
-    var parts = text(tex).length > BREAK_AT ? splitChain(tex) : [tex];
+    var len = text(tex).length, parts = len > BREAK_AT ? splitChain(tex, len > BREAK_AT + 10) : [tex];
     if(parts.length < 2) return render(tex, opts);
-    return parts.map(function(x){ return render(x, opts); }).join('<wbr>');
+    // A piece that starts with its operator (= b, + c) keeps the operator's infix
+    // spacing; a leading + or − would otherwise be read as a sign, set tight.
+    return parts.map(function(x, k){
+      var h = render(x, opts);
+      return k ? h.replace(/^(<math[^>]*><semantics>(?:<mrow>)*)<mo(?:\s[^>]*)?>/, '$1<mo form="infix">') : h;
+    }).join('<wbr>');
   }
   function html(str, opts){
     var s = String(str == null ? '' : str);
     if(s.indexOf('$') < 0) return s;
     return s.replace(/\\\$/g, '\u0000').replace(MATH_RE, function(m, d, i){
       var o = { display: d !== undefined, strict: opts && opts.strict };
-      return d !== undefined ? render(d, o) : inline(i, o);
+      return d !== undefined || !(opts && opts.wrap) ? render(d !== undefined ? d : i, o) : inline(i, o);
     }).replace(/\u0000/g, '$');
   }
   function plain(str){

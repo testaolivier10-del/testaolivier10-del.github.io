@@ -214,9 +214,13 @@ a tool's data file exists and its topic is published.
       trainer caption split no longer cuts at a decimal point (calculus and physics `studioAsk`).
     - Full CI with browser checks then found: a plot holding a draggable handle must be `role="group"`, not
       `img` (`ApCalcPlot.draggable` sets it for every trainer); formula-page cells overflowed a few pixels
-      vertically (hidden now) and three long formulas sideways (the chain split also breaks before \Rightarrow
-      and \quad, pieces joined by `<wbr>`; the EVT row is now "max and min over [a, b] exist"); the site-search
-      test now covers `?course=calculus`.
+      vertically (hidden now) and long formulas sideways: the chain split also breaks before \Rightarrow and
+      \quad (past 34 characters also before a top-level + and after a top-level comma, never inside brackets),
+      pieces joined by `<wbr>` with the operator kept infix; below 720 px the formula table sizes to content
+      and scrolls as a whole; the EVT row is now "max and min over [a, b] exist". The split is opt-in
+      (`ApCalcTex.html(s, { wrap: true })`, used by the build's `mathHtml`), because trainers render one
+      formula per string and read its annotation back (the Riemann sums drill's duplicate check broke). The
+      site-search test now covers `?course=calculus`.
 
 ## 8. Open items for the owner
 

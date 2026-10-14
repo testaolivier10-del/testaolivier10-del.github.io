@@ -258,7 +258,7 @@ test('the formula page lists the rules, theorems and set-ups to know', () => {
   const all = rows.map(r => r[0]).join(' | ');
   const must = [String.raw`\lim_{h \to 0} \frac{f(a + h) - f(a)}{h}`, String.raw`\frac{\sin x}{x} = 1`, 'n x^{n - 1}', "f'(x)g(x) + f(x)g'(x)", "f'(x)g(x) - f(x)g'(x)", "f'(g(x)) \\cdot g'(x)",
     String.raw`\frac{d}{dx}\sin x = \cos x`, String.raw`\frac{d}{dx}\tan x = \sec^2 x`, String.raw`\frac{d}{dx}\ln x = \frac{1}{x}`, String.raw`\frac{d}{dx}\arctan x`, String.raw`\left(f^{-1}\right)'(b)`, "f(a) + f'(a)(x - a)",
-    "\\frac{f'(x)}{g'(x)}", 'a < c < b', 'absolute max and min', String.raw`\text{compare}`, 'concave up', String.raw`f(c) = d \ \text{for some}`,
+    "\\frac{f'(x)}{g'(x)}", 'a < c < b', String.raw`\max_{[a, b]} f`, String.raw`\text{compare}`, 'concave up', String.raw`f(c) = d \ \text{for some}`,
     String.raw`\int \frac{1}{x}\,dx = \ln|x| + C`, String.raw`\int \sin x\,dx = -\cos x + C`, String.raw`\frac{d}{dx}\int_a^x f(t)\,dt = f(x)`, 'F(b) - F(a)', String.raw`\frac{\Delta x_1}{2}`, String.raw`\int f(u)\,du`,
     String.raw`f_{\text{avg}} = \frac{1}{b - a}`, String.raw`\int_a^b |v(t)|\,dt`, String.raw`x(t) = x(t_0)`, String.raw`\left[f(x) - g(x)\right]dx`, String.raw`\pi\int_a^b \left[R(x)\right]^2 dx`, String.raw`\left[r(x)\right]^2`, String.raw`\frac{\sqrt{3}}{4}s^2`, String.raw`y = y_0 e^{kt}`];
   for (const e of must) assert.ok(all.includes(e), `the page has "${e}"`);
