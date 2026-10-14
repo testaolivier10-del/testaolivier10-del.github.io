@@ -224,13 +224,11 @@ a tool's data file exists and its topic is published.
 
 ## 8. Open items for the owner
 
-- **Launch checklist (only you can do).** The course is published (free parts live, Premium shows
-  "coming soon" and locks nothing) until these are done, in order:
-  1. Apply `scripts/sql/migrations/2026-10g-apcalc.sql` in Supabase (after 2026-10f).
-  2. Create the Polar product "AP® Calculus AB Premium (through June 30, 2027)", one-time $25.
-  3. Add `"calc-2027": "<product id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker settings.
-  4. Merge the PR (the Worker deploys on merge, `.github/workflows/deploy-worker.yml`).
-  5. Delete `onSale: false` from `COURSES.apcalc` in `assets/premium.js` and bump `CACHE_NAME` in `sw.js`.
+- **Launch checklist: done 2026-10-13.** Migration `2026-10g-apcalc.sql` applied in Supabase (live function bodies
+  checked identical apart from `apcalc` first); Polar product "AP® Calculus AB Premium (through June 30, 2027)" $25
+  one-time, id `898416cb-b686-4f27-8031-041fe1e0daa6`; `"calc-2027"` added to `POLAR_PRODUCTS` in the Cloudflare
+  Worker settings; `onSale: false` removed from `COURSES.apcalc`, `sw.js` cache v80; owner access granted (to 2099).
+  Merging the PR puts AP® Calculus AB Premium on sale.
 - Questions in `docs/apcalc-needs-author.md` (CED exclusions for Units 3-8 and the scope calls that rest on them,
   unit weights, the 2027 scaling and score cut-offs, which trainers are free, the calculator link, form 2's two
   particle-motion questions, notes that print item answers, lesson weight, tool polish).

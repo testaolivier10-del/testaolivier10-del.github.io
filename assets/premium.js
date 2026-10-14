@@ -221,9 +221,6 @@
       // As AP® Physics 1 (docs/apcalc-spec.md decision 3): Units 1 and 2 open,
       // and every "Math you need" lesson (isFreeTopic in scripts/lib/apcalc-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
-      // Not on sale until the owner checklist is done (docs/apcalc-spec.md,
-      // section 8): nothing locks and the dialog says "Coming soon".
-      onSale: false,
       passes: [
         { id: 'calc-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
