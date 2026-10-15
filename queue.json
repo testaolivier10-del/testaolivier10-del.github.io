@@ -23,7 +23,9 @@
       "yt_buffer": "6ac70a1457f9bd074d257dd0",
       "youtube_id": "3Hhybi9eYQw",
       "shorts_thumb": null,
-      "note": "Earlier batch (b2). TikTok Oct 7; YouTube posted late on Oct 7 at Olivier's request."
+      "note": "Earlier batch (b2). TikTok Oct 7; YouTube posted late on Oct 7 at Olivier's request.",
+      "related_video": "1p-L3_POFL0",
+      "related_set": false
     },
     {
       "id": "b3-01-stroke-scale",
@@ -37,7 +39,9 @@
       "hook": "Which one is NOT on the Cincinnati stroke scale?",
       "buffer": "6ac452bee5a59b81e4054c09",
       "youtube_id": "MJUvHoExOpo",
-      "shorts_thumb": true
+      "shorts_thumb": true,
+      "related_video": "lqxfWZZtRgE",
+      "related_set": false
     },
     {
       "id": "b3-02-rule-of-nines",
@@ -52,7 +56,9 @@
       "buffer": "6ac452e6755dd29f0906396a",
       "youtube_id": "Tw1e6Ci2aSk",
       "yt_buffer": "6ac706da5632f7b74bd822d5",
-      "shorts_thumb": true
+      "shorts_thumb": true,
+      "related_video": "lqxfWZZtRgE",
+      "related_set": false
     },
     {
       "id": "b3-03-huckel-aromaticity",
@@ -67,7 +73,9 @@
       "buffer": "6ac452f1e5a59b81e4054c0a",
       "youtube_id": "FgS0aNf_5Lo",
       "yt_buffer": "6ac7062195b0fb1c5cc818d0",
-      "shorts_thumb": true
+      "shorts_thumb": true,
+      "related_video": "1p-L3_POFL0",
+      "related_set": false
     },
     {
       "id": "b3-04-mitral-valve",
@@ -99,7 +107,9 @@
       "youtube_id": "RwvK7olWBVw",
       "thumbnail_set": null,
       "yt_buffer": "6ac706415632f7b74bd81781",
-      "shorts_thumb": true
+      "shorts_thumb": true,
+      "related_video": "lqxfWZZtRgE",
+      "related_set": false
     },
     {
       "id": "w1006-02-heart-wiring",
@@ -133,7 +143,9 @@
       "youtube_id": "TrK9lBe_364",
       "thumbnail_set": null,
       "yt_buffer": "6ac7068e365feab0d73a674d",
-      "shorts_thumb": true
+      "shorts_thumb": true,
+      "related_video": "1p-L3_POFL0",
+      "related_set": false
     },
     {
       "id": "w1006-04-mix-it-up",
@@ -165,7 +177,9 @@
       "buffer": "6ac6df3d365feab0d734df29",
       "youtube_id": null,
       "thumbnail_set": null,
-      "yt_buffer": "6ac706a001166a3e1c11d713"
+      "yt_buffer": "6ac706a001166a3e1c11d713",
+      "related_video": "lqxfWZZtRgE",
+      "related_set": false
     },
     {
       "id": "w1007-03-co-pulseox",
@@ -181,7 +195,9 @@
       "buffer": "6ac6df3e01166a3e1c0c5e7e",
       "youtube_id": null,
       "thumbnail_set": null,
-      "yt_buffer": "6ac706a857f9bd074d24f322"
+      "yt_buffer": "6ac706a857f9bd074d24f322",
+      "related_video": "lqxfWZZtRgE",
+      "related_set": false
     },
     {
       "id": "w1007-09-sarcomere",
@@ -213,7 +229,9 @@
       "buffer": "6ac7070e2977c961bdc2c466",
       "youtube_id": null,
       "thumbnail_set": null,
-      "yt_buffer": "6ac708bb5632f7b74bd87c73"
+      "yt_buffer": "6ac708bb5632f7b74bd87c73",
+      "related_video": "1p-L3_POFL0",
+      "related_set": false
     },
     {
       "id": "w1007-01-tourniquet",
@@ -229,7 +247,9 @@
       "buffer": "6ac8405293f9e5101fe1d898",
       "youtube_id": null,
       "thumbnail_set": null,
-      "yt_buffer": "6ac8407a93f9e5101fe1dd53"
+      "yt_buffer": "6ac8407a93f9e5101fe1dd53",
+      "related_video": "lqxfWZZtRgE",
+      "related_set": false
     },
     {
       "id": "w1007-10-pretest",
@@ -272,7 +292,9 @@
         "youtube": "R-_p0T45FwQ",
         "note": "2026-10-12 old 39 s v1 posted by mistake; reposted v2",
         "youtube_status": "set to private 2026-10-12"
-      }
+      },
+      "related_video": "lqxfWZZtRgE",
+      "related_set": false
     },
     {
       "id": "w1007-07-acid-resonance",
@@ -288,7 +310,9 @@
       "buffer": "6acc58fc63ff33d8c9a66d16",
       "youtube_id": null,
       "thumbnail_set": null,
-      "yt_buffer": "6acc5910ea568e911a4ef883"
+      "yt_buffer": "6acc5910ea568e911a4ef883",
+      "related_video": "1p-L3_POFL0",
+      "related_set": false
     },
     {
       "id": "w1007-02-jaw-thrust",
@@ -304,7 +328,9 @@
       "buffer": "6acee554b610c3011f992c62",
       "youtube_id": null,
       "thumbnail_set": null,
-      "yt_buffer": "6acee562848c31c8095723c9"
+      "yt_buffer": "6acee562848c31c8095723c9",
+      "related_video": "lqxfWZZtRgE",
+      "related_set": false
     },
     {
       "id": "w1007-08-oxygen-curve",
@@ -336,7 +362,9 @@
       "buffer": "6ad036d029c470dd80bb664b",
       "youtube_id": null,
       "thumbnail_set": null,
-      "yt_buffer": "6ad036de29c470dd80bb6815"
+      "yt_buffer": "6ad036de29c470dd80bb6815",
+      "related_video": "1p-L3_POFL0",
+      "related_set": false
     },
     {
       "id": "w1007-04-gcs-floor",
