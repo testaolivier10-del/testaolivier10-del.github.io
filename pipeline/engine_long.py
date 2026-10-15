@@ -144,7 +144,7 @@ def srt(spec, c, WT, out):
     items = []
     for ch in spec["chapters"]:
         for b in ch["beats"]:
-            k = b["key"]; d = notag(b.get("disp") or clean(b["vo"])); words = d.split()
+            k = b["key"]; d = notag(re.sub(r"\{\d+\}", "", b.get("disp") or clean(b["vo"]))); words = d.split()
             s0, e0 = c.T[k], c.T[k] + c.D[k]
             if k in WT and WT[k][0]:
                 ws = [x for x, _ in WT[k][0]]
