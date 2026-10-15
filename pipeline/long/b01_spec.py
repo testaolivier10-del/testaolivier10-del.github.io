@@ -77,17 +77,12 @@ def hb(id, xa, ya, xb, yb, op=0, color=WHITE, w=4):
     return f'<line id="{id}" x1="{xa:.1f}" y1="{ya:.1f}" x2="{xb:.1f}" y2="{yb:.1f}" stroke="{color}" stroke-width="{w}" stroke-dasharray="9 8" stroke-linecap="round" opacity="{op}"/>'
 
 def water_bg(id, op=0, seed=3, tint="#0b2a4e"):
-    """underwater backdrop for molecule chapters: deep blue, soft light rays, slow bubbles (far), vignette"""
-    R = random.Random(seed)
-    s = [f'<g id="{id}" opacity="{op}"><rect x="-1600" y="-1000" width="5120" height="3080" fill="{tint}"/>',
-         f'<g filter="url(#blur14)" opacity=".5">'] + [f'<path d="M {300+i*380} -100 L {420+i*380} -100 L {120+i*380} 1200 L {40+i*380} 1200 Z" fill="#5fc8ff" opacity=".10"/>' for i in range(5)] + ['</g>']
-    s.append(f'<g id="{id}_bub" filter="url(#blur6)">' + "".join(f'<circle cx="{R.uniform(0,1920):.0f}" cy="{R.uniform(100,1100):.0f}" r="{R.uniform(4,12):.0f}" fill="#9fe3ff" opacity=".22"/>' for _ in range(40)) + '</g>')
-    s.append(f'<radialGradient id="{id}_vg" cx="50%" cy="50%" r="72%"><stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".7"/></radialGradient>'
-             f'<rect x="-420" y="-300" width="2760" height="1680" fill="url(#{id}_vg)"/></g>')
-    return "".join(s)
+    """calm backdrop for explaining chapters (Olivier, 2026-10-15): nothing drawn, so the engine's still navy background
+    shows, like the orgo and NREMT videos. Kept as an empty group so scene ids and selectors still exist."""
+    return f'<g id="{id}" opacity="{op}"><g id="{id}_bub"></g></g>'
 
 def bubbles_up(c, sel, t0, t1, dy=-160):
-    c.g(f'tl.fromTo("{sel}",{{y:0}},{{y:{dy},duration:{max(1,t1-t0):.2f},ease:"none",immediateRender:false}},{t0:.2f});')
+    return  # calm backgrounds: no drifting bubbles
 
 def jiggle(c, ids, t0, t1, amp=8, per=0.5, seed=1):
     """random small motion of molecules (thermal motion), each on its own rhythm"""
@@ -266,12 +261,7 @@ def intro(c):
     s.append(L(c, "in_stick", 1420, 680, "polar → they stick", C["why"][3] + 1.6, 46, GOLD))
     c.sound("pop", C["why"][3] + 2.0, 0.4)
     # {5} dive into a sweat drop on her arm: camera push into the drop
-    s.append(f'<g id="in_drop" opacity="0"><path d="M 690 548 Q 712 590 690 606 Q 668 590 690 548 Z" fill="#dff6ff" stroke="#9ad8f5" stroke-width="2"/></g>')
     hideall(c, ["#in_lc", "#in_one", "#in_m1", "#in_m2", "#in_stick"], C["why"][5] - 0.4)
-    c.fade_in("#in_drop", C["why"][5] - 0.3, y=0)
-    c.g(f'tl.to("#cam",{{scale:9,x:{(960-690)*9:.0f},y:{(540-585)*9:.0f},duration:1.6,ease:"power3.in"}},{C["why"][5]:.2f});')
-    c.g(f'tl.set("#cam",{{scale:1,x:0,y:0}},{t1+0.35:.2f});')
-    c.sound("whoosh_real", C["why"][5] + 0.4, 0.5)
     s.append(fg + '</g>')
     c.hide("#g_in", t1 - 0.2, 0.5)
     return "".join(s)
