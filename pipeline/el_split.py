@@ -29,7 +29,16 @@ def split(resp, beats, outdir):
         subprocess.run(f'ffmpeg -y -loglevel error -i /tmp/claude-0/full.wav -ss {s:.3f} -to {e:.3f} -af "afade=t=in:d=0.01,areverse,afade=t=in:d=0.03,areverse" /tmp/claude-0/seg.wav', shell=True, check=True)
         sub = dict(characters=chars[i:j], character_start_times_seconds=[x - s for x in st[i:j]], character_end_times_seconds=[x - s for x in en[i:j]])
         json.dump(dict(audio_base64=base64.b64encode(open('/tmp/claude-0/seg.wav', 'rb').read()).decode(), alignment=sub), open(f'{outdir}/{k}.el.json', 'w'))
-    print(outdir, [(k, round(st[i], 2)) for k, i, j in spans])
+    segs = []
+    for n, (k, i, j) in enumerate(spans):
+        a = st[i]; jj = j - 1
+        while jj > i and not chars[jj].isalnum(): jj -= 1
+        b = en[jj]; prev_end = en[spans[n-1][2]-1] if n else 0
+        nxt = st[spans[n+1][1]] if n + 1 < len(spans) else b + 0.3
+        segs.append((max(prev_end + 0.01, a - 0.05) if n else max(0, a - 0.05), min(nxt - 0.01, b + 0.12)))
+    gaps = {k: round(segs[n+1][0] - segs[n][1], 3) for n, (k, i, j) in enumerate(spans[:-1])}
+    json.dump(gaps, open(f'{outdir}/offsets.json', 'w'))
+    print(outdir, [(k, round(st[i], 2)) for k, i, j in spans], gaps)
 def beats_of(mod, keys=None):
     m = __import__(mod)
     out = [(b['key'], re.sub(r'\{\d\}', '', b['vo'])) for b in m.SPEC['beats']]

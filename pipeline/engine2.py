@@ -83,6 +83,7 @@ body{margin:0;background:var(--navy);color:#fff;font-family:"Inter",Arial,sans-s
 #end-site{font-size:120px;font-weight:900;color:var(--teal);margin-top:30px;letter-spacing:-2px}
 #end-ul{display:block;width:760px;height:10px;border-radius:5px;background:var(--yellow);margin-top:6px;transform-origin:left center;transform:scaleX(0)}
 .lbl{font-family:Inter,Arial,sans-serif;font-weight:900}
+#wm{position:absolute;left:56px;top:1372px;z-index:9;font-size:32px;font-weight:900;color:var(--teal);letter-spacing:.5px;opacity:.88;text-shadow:0 2px 8px rgba(0,0,0,.7)}
 """
 
 def fonts():
@@ -105,6 +106,9 @@ def plan(spec, out):
     for b in spec["beats"]:
         k, vo = b["key"], b["vo"]
         clean = re.sub(r"\{\d\}", "", vo)
+        if not clean.strip():
+            subprocess.run(f'ffmpeg -y -loglevel error -f lavfi -i anullsrc=r=44100:cl=mono -t 0.05 "{out}/{k}.wav"', shell=True, check=True)
+            D[k] = 0.05; CUES[k] = {}; continue
         el = el_audio(k, out)
         if el:
             D[k], al = el
@@ -192,6 +196,8 @@ def build(spec):
     c.g(f'tl.fromTo("#end-site",{{opacity:0,scale:1.4}},{{opacity:1,scale:1,duration:0.4,ease:"back.out(2)"}},{tE+0.35:.2f});')
     c.g(f'tl.fromTo("#end-ul",{{scaleX:0}},{{scaleX:1,duration:0.45,ease:"power3.out"}},{tE+0.6:.2f});')
     c.sound("pop", tE + 0.35, 0.8)
+    c.g(f'tl.fromTo("#end-site",{{scale:1}},{{scale:1.06,duration:{max(0.5, TOT - tE - 0.75):.2f},ease:"sine.inOut",immediateRender:false}},{tE+0.75:.2f});')
+    c.g(f'tl.fromTo("#end-l1",{{y:0}},{{y:-12,duration:{max(0.5, TOT - tE - 0.45):.2f},ease:"sine.inOut",immediateRender:false}},{tE+0.45:.2f});')
     caps = captions(c)
     titles = "".join(f'<div class="tt {cls}" id="tt{i}" style="{"opacity:1;" if i==0 else ""}{f"font-size:{sz}px;" if sz else ""}"><div>{h}</div></div>' for i, h, cls, sz in c.titles)
     v = spec.get("vars", "")
@@ -203,6 +209,7 @@ def build(spec):
 <div id="titles">{titles}</div>
 <div id="stagewrap"><div id="cam"><div id="stage">{stage}</div></div></div>
 <div id="captions">{caps}</div>
+<div id="wm">{SITE if spec.get("watermark", True) else ""}</div>
 <div id="end"><div id="end-l1">{spec["end_line"]}</div><div id="end-site">{SITE}</div><i id="end-ul"></i></div>
 </div>
 <script>

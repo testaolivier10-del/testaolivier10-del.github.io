@@ -38,3 +38,16 @@ Jordan: woman about 20, athletic runner build, light olive skin, dark brown hair
 | jordan-shiver | Jordan | standing, shivering, arms wrapped around herself |
 | jordan-foot | Jordan | yanking her right foot up as if she stepped on something sharp |
 | jordan-drink | Jordan | drinking from a plain teal water bottle |
+
+## Added 2026-10-14 (Figma AI, gemini-3.1-flash-image, one character sheet each; student keyed with pipeline/chroma_soft.py, EMT with chroma.py; each pose cropped from the sheet at the same scale, so poses of one character swap without a jump)
+Student prompt: "college student: man about 20, light brown skin, short black curly hair, oversized heather grey hoodie, dark blue jeans, white sneakers", seated on a simple wooden desk chair, facing right.
+EMT B prompt: "EMT: woman about 35, light skin, blond hair in a neat bun, navy EMS uniform shirt and navy cargo trousers with silver reflective stripes on the sleeves and legs, blue nitrile gloves, black boots, no logos", kneeling on one knee, facing right (flip it to face left; it has no text so mirroring is safe). Same look as the blond EMT in emts-walk.
+
+| file | character | pose |
+|---|---|---|
+| student-yawn | Student | slumped, yawning, rubbing one eye |
+| student-sip | Student | sipping from a plain white coffee cup |
+| student-alert | Student | wide awake, holding the cup |
+| emtb-offer | EMT B | kneeling, open hand offering two tablets |
+| emtb-chew | EMT B | kneeling, pointing at her mouth ("chew") |
+| emtb-pulse | EMT B | kneeling, taking a pulse while checking her watch |
