@@ -11,7 +11,8 @@
       "yt_buffer": "6ac70a855632f7b74bd8bf29",
       "youtube_id": "W31WC2n1g0Y",
       "shorts_thumb": null,
-      "note": "Earlier batch (b2). TikTok Oct 6; YouTube posted late on Oct 7 at Olivier's request."
+      "note": "Earlier batch (b2). TikTok Oct 6; YouTube posted late on Oct 7 at Olivier's request.",
+      "thumb_v2": true
     },
     {
       "id": "b2-04-orgo-markovnikov",
@@ -25,7 +26,8 @@
       "shorts_thumb": null,
       "note": "Earlier batch (b2). TikTok Oct 7; YouTube posted late on Oct 7 at Olivier's request.",
       "related_video": "1p-L3_POFL0",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "b3-01-stroke-scale",
@@ -161,7 +163,8 @@
       "buffer": "6ac6df3c2977c961bdbd62e4",
       "youtube_id": "oOY3he1Ngt8",
       "thumbnail_set": null,
-      "yt_buffer": "6ac706972977c961bdc2b62b"
+      "yt_buffer": "6ac706972977c961bdc2b62b",
+      "thumb_v2": true
     },
     {
       "id": "w1006-05-airway-sizing",
@@ -179,7 +182,8 @@
       "thumbnail_set": null,
       "yt_buffer": "6ac706a001166a3e1c11d713",
       "related_video": "lqxfWZZtRgE",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "w1007-03-co-pulseox",
@@ -197,7 +201,8 @@
       "thumbnail_set": null,
       "yt_buffer": "6ac706a857f9bd074d24f322",
       "related_video": "lqxfWZZtRgE",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "w1007-09-sarcomere",
