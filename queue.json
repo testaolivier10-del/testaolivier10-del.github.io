@@ -10,7 +10,7 @@
       "buffer": "6abd5a0059b8e27764eb7d92",
       "yt_buffer": "6ac70a855632f7b74bd8bf29",
       "youtube_id": "W31WC2n1g0Y",
-      "shorts_thumb": null,
+      "shorts_thumb": true,
       "note": "Earlier batch (b2). TikTok Oct 6; YouTube posted late on Oct 7 at Olivier's request.",
       "thumb_v2": true
     },
@@ -23,7 +23,7 @@
       "buffer": "6abd5c046bed9240f18e5c16",
       "yt_buffer": "6ac70a1457f9bd074d257dd0",
       "youtube_id": "3Hhybi9eYQw",
-      "shorts_thumb": null,
+      "shorts_thumb": true,
       "note": "Earlier batch (b2). TikTok Oct 7; YouTube posted late on Oct 7 at Olivier's request.",
       "related_video": "1p-L3_POFL0",
       "related_set": false,
@@ -184,7 +184,8 @@
       "yt_buffer": "6ac706a001166a3e1c11d713",
       "related_video": "lqxfWZZtRgE",
       "related_set": false,
-      "thumb_v2": true
+      "thumb_v2": true,
+      "shorts_thumb": true
     },
     {
       "id": "w1007-03-co-pulseox",
