@@ -63,13 +63,15 @@
       "captions": "long/yt-ap-01-captions.srt",
       "playlist": "Anatomy and Physiology | LevlPrep",
       "date": "2026-10-15",
-      "status": "approved",
+      "status": "posted",
       "approved_on": "2026-10-13",
       "youtube_id": "aMvkCfwrepA",
       "thumbnail_set": true,
       "playlist_added": true,
       "captions_set": true,
-      "pr_url": ""
+      "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/69",
+      "comment_id": "UgwSeoOMNMryZjM_V7d4AaABAg",
+      "comment_pinned": false
     },
     {
       "id": "yt-apbio-01-water-hydrogen-bonding",
