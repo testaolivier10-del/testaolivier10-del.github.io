@@ -379,7 +379,8 @@
       "hook": "The lowest GCS isn't zero.",
       "buffer": "6ad19b044ed7d375a443247e",
       "youtube_id": null,
-      "thumbnail_set": null
+      "thumbnail_set": null,
+      "yt_buffer": "6ad19b1a9597cd16626583f2"
     },
     {
       "id": "y1011-01-burn-depth",
