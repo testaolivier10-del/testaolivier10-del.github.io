@@ -66,9 +66,9 @@
       "status": "approved",
       "approved_on": "2026-10-13",
       "youtube_id": "aMvkCfwrepA",
-      "thumbnail_set": false,
-      "playlist_added": false,
-      "captions_set": false,
+      "thumbnail_set": true,
+      "playlist_added": true,
+      "captions_set": true,
       "pr_url": ""
     },
     {
