@@ -1,0 +1,12 @@
+{
+ "block-design": {
+  "file": "figures/block-design.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Forty tomato plants, the experimental units, are split into two blocks by location: 24 plants on a sunny bench and 16 on a shady bench. Within each block, random assignment puts half the plants on fertilizer A and half on fertilizer B (12 and 12 on the sunny bench, 8 and 8 on the shady bench). The response, tomato weight, is compared within each block. Each block is a small completely randomized experiment."
+ }
+}

@@ -1,0 +1,298 @@
+{
+ "id": "frq-regression-output",
+ "type": "analyze",
+ "points": 10,
+ "title": "Coffee shop seats and revenue: reading regression output",
+ "units": [
+  "unit-5"
+ ],
+ "topics": [
+  "least-squares-regression",
+  "residuals",
+  "linear-models",
+  "scatterplots"
+ ],
+ "practices": [
+  "3.B",
+  "4.A",
+  "4.B",
+  "4.D"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Seats and weekly revenue at 15 coffee shops",
+  "text": "A coffee chain records the number of seats and the weekly revenue (thousands of dollars) at 15 of its shops. The scatterplot and part of the regression output are below. (Invented data.)",
+  "plot": {
+   "label": "Scatterplot of 15 coffee shops: seats from 12 to 50 against weekly revenue from 8.1 to 19.8 thousand dollars, rising in a narrow straight band",
+   "kind": "scatter",
+   "xs": [
+    12,
+    15,
+    18,
+    20,
+    22,
+    25,
+    28,
+    30,
+    32,
+    35,
+    38,
+    40,
+    42,
+    45,
+    50
+   ],
+   "ys": [
+    8.1,
+    9.3,
+    9.6,
+    9.5,
+    10.7,
+    11.0,
+    13.1,
+    15.1,
+    13.7,
+    14.4,
+    16.6,
+    17.1,
+    17.4,
+    17.2,
+    19.8
+   ],
+   "x": [
+    10,
+    52
+   ],
+   "y": [
+    6,
+    22
+   ],
+   "xLabel": "number of seats",
+   "yLabel": "weekly revenue ($1,000)"
+  },
+  "table": {
+   "caption": "Regression of weekly revenue (thousands of dollars) on number of seats",
+   "cols": [
+    "Predictor",
+    "Coef"
+   ],
+   "rows": [
+    [
+     "Constant",
+     "4.102"
+    ],
+    [
+     "Seats",
+     "0.3121"
+    ],
+    [
+     "S = 0.726",
+     "R-Sq = 96.3%"
+    ]
+   ]
+  },
+  "data": {
+   "vars": [
+    {
+     "name": "seats",
+     "values": [
+      12,
+      15,
+      18,
+      20,
+      22,
+      25,
+      28,
+      30,
+      32,
+      35,
+      38,
+      40,
+      42,
+      45,
+      50
+     ]
+    },
+    {
+     "name": "weekly revenue",
+     "unit": "thousand dollars",
+     "values": [
+      8.1,
+      9.3,
+      9.6,
+      9.5,
+      10.7,
+      11.0,
+      13.1,
+      15.1,
+      13.7,
+      14.4,
+      16.6,
+      17.1,
+      17.4,
+      17.2,
+      19.8
+     ]
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Describe</b> the relationship between number of seats and weekly revenue shown in the scatterplot.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Direction and form: a positive, linear association.",
+     "accept": [
+      "positive and linear",
+      "shops with more seats tend to have higher revenue, in a straight-line pattern"
+     ]
+    },
+    {
+     "point": "Strength and context: strong, with no clear outliers, describing seats and weekly revenue for these shops.",
+     "accept": [
+      "strong association between seats and revenue, unusual points addressed"
+     ]
+    }
+   ],
+   "sample": "There is a strong, positive, linear association between the number of seats and weekly revenue for these 15 shops, with no clear outliers. Shops with more seats tend to have higher weekly revenue."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Write</b> the equation of the least-squares regression line, defining any variables you use, and <b>interpret</b> its slope in context.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Equation with variables defined: predicted revenue = 4.102 + 0.3121(seats), with revenue in thousands of dollars.",
+     "accept": [
+      "y-hat = 4.102 + 0.3121x with y = weekly revenue (thousands of dollars) and x = number of seats"
+     ]
+    },
+    {
+     "point": "Slope: for each additional seat, the predicted weekly revenue increases by about 0.312 thousand dollars (about 312 dollars).",
+     "accept": [
+      "the slope interpreted with \"predicted\" and both variables in context"
+     ]
+    }
+   ],
+   "sample": "predicted revenue = 4.102 + 0.3121(seats), where revenue is weekly revenue in thousands of dollars and seats is the number of seats.\nFor each additional seat, the predicted weekly revenue increases by about 0.312 thousand dollars, about 312 dollars."
+  },
+  {
+   "label": "c",
+   "prompt": "One shop has 30 seats and weekly revenue of 15.1 thousand dollars. <b>Calculate</b> and <b>interpret</b> its residual.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Correct residual with work: predicted = 4.102 + 0.3121(30) = 13.47, so residual = 15.1 - 13.47 = 1.63.",
+     "accept": [
+      "actual minus predicted computed correctly"
+     ]
+    },
+    {
+     "point": "Interpretation: the shop's weekly revenue is about 1.63 thousand dollars higher than the line predicts for a shop with 30 seats.",
+     "accept": [
+      "positive residual interpreted as above the predicted revenue, in context"
+     ]
+    }
+   ],
+   "sample": "predicted = 4.102 + 0.3121(30) = 13.47\nresidual = actual - predicted = 15.1 - 13.47 = 1.63\nThis shop's weekly revenue is about 1.63 thousand dollars (about 1,635 dollars) more than the line predicts for a shop with 30 seats.",
+   "check": {
+    "type": "numeric",
+    "numeric": {
+     "kind": "stat",
+     "places": 2,
+     "from": {
+      "fn": "lsrl",
+      "args": [
+       [
+        12,
+        15,
+        18,
+        20,
+        22,
+        25,
+        28,
+        30,
+        32,
+        35,
+        38,
+        40,
+        42,
+        45,
+        50
+       ],
+       [
+        8.1,
+        9.3,
+        9.6,
+        9.5,
+        10.7,
+        11.0,
+        13.1,
+        15.1,
+        13.7,
+        14.4,
+        16.6,
+        17.1,
+        17.4,
+        17.2,
+        19.8
+       ]
+      ],
+      "pick": "residuals.7"
+     }
+    }
+   }
+  },
+  {
+   "label": "d",
+   "prompt": "<b>Interpret</b> the values of R-Sq and S in context.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "R-Sq: about 96.3% of the variation in weekly revenue is accounted for by the linear model using number of seats.",
+     "accept": [
+      "r^2 interpreted as variation in revenue explained by the line with seats"
+     ]
+    },
+    {
+     "point": "S: the actual weekly revenue of a shop typically differs from its predicted revenue by about 0.726 thousand dollars.",
+     "accept": [
+      "s interpreted as a typical prediction error in thousands of dollars"
+     ]
+    }
+   ],
+   "sample": "About 96.3% of the variation in weekly revenue is accounted for by the linear model using number of seats.\nThe actual weekly revenue of these shops typically differs from the revenue predicted by the line by about 0.726 thousand dollars, about 726 dollars."
+  },
+  {
+   "label": "e",
+   "prompt": "The chain is planning a shop with 85 seats. <b>Explain</b> why using the line to predict its weekly revenue could be unreliable.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Identifies extrapolation: 85 seats is far outside the 12 to 50 seats in the data, so the linear pattern may not continue.",
+     "accept": [
+      "the prediction is outside the range of the data"
+     ]
+    }
+   ],
+   "sample": "Predicting for 85 seats is extrapolation. The shops in the data have 12 to 50 seats, so nothing in the data shows that revenue keeps rising at the same rate for a shop that large."
+  },
+  {
+   "label": "f",
+   "prompt": "Suppose a 16th shop with 85 seats and weekly revenue of 21.0 thousand dollars were added to the data. <b>Explain</b> how this point would affect the least-squares slope, and <b>identify</b> what kind of point it is.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Identifies the point as high leverage (its x value is far from the others) and influential, and explains that it lies far below the line (the line predicts about 30.6), so it would pull the line down at the right and make the slope smaller (about 0.206 instead of 0.312).",
+     "accept": [
+      "a high-leverage, influential point that would decrease the slope because it sits well below the extended line"
+     ]
+    }
+   ],
+   "sample": "The point is a high-leverage point, because 85 seats is far from the other shops' 12 to 50 seats. The line predicts about 30.6 thousand dollars for 85 seats, but the shop earns only 21.0, so the point lies far below the line. Least squares would pull the line toward it, flattening the line: the slope would drop from about 0.312 to about 0.206. Because removing it would change the slope that much, it is an influential point."
+  }
+ ]
+}

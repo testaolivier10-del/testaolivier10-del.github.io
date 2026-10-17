@@ -1,0 +1,32 @@
+{
+ "experimental-unit": {
+  "def": "The individual (person, animal, plant or object) to which a treatment is assigned in an experiment. Experimental units that are people are called subjects."
+ },
+ "treatment": {
+  "def": "A specific condition imposed on experimental units. A factor is an explanatory variable in an experiment; its levels are the values it is set to."
+ },
+ "control-group": {
+  "def": "A group that receives no treatment, a placebo or the standard treatment, to compare with the treatment group. A placebo is a fake treatment; the placebo effect is a response to it caused by expectation."
+ },
+ "random-assignment": {
+  "def": "Using a chance process to decide which experimental units receive which treatment, so that other variables are balanced between groups on average."
+ },
+ "replication": {
+  "def": "Using enough experimental units in each treatment group that chance differences between units tend to average out."
+ },
+ "blinding": {
+  "def": "Keeping subjects (single-blind) or both subjects and the people who interact with them or measure the response (double-blind) from knowing who received which treatment."
+ },
+ "completely-randomized": {
+  "def": "An experimental design in which every experimental unit is assigned to a treatment at random, with no grouping first."
+ },
+ "block-design": {
+  "def": "A randomized block design groups experimental units that are similar in a way expected to affect the response into blocks, then assigns treatments at random within each block."
+ },
+ "matched-pairs": {
+  "def": "A design in which pairs of similar units each receive both treatments, one each, or each unit receives both treatments in a random order."
+ },
+ "statistically-significant-diff": {
+  "def": "A difference between treatment groups is statistically significant when it is too large to be explained by the chance variation of random assignment alone."
+ }
+}

@@ -112,7 +112,7 @@
     var ev = mode === 'less' ? 'X < ' + Xb : mode === 'greater' ? 'X > ' + Xa : Xa + ' < X < ' + Xb;
     var text = '<p>' + c.setup.replace('{mu}', F(mu, pl) + u).replace('{sd}', F(sd, pl + (sd < 1 ? 2 : 0)) + u) + '</p><p>' + ask + '</p>';
     var shade = choice('sketch', '3.A', 'Which region of the normal curve is the probability you want?', [
-      { t: mode === 'less' ? 'The area to the left of ' + Xb : mode === 'greater' ? 'The area to the right of ' + Xa : 'The area between ' + Xa + ' and ' + Xb, why: 'Right: $P(' + ev + ')$ is that region under the curve.' },
+      { t: mode === 'less' ? 'The area to the left of ' + Xb : mode === 'greater' ? 'The area to the right of ' + Xa : 'The area between ' + Xa + ' and ' + Xb, why: '$P(' + ev + ')$ is that region under the curve.' },
       { t: mode === 'less' ? 'The area to the right of ' + Xb : mode === 'greater' ? 'The area to the left of ' + Xa : 'The area outside ' + Xa + ' and ' + Xb, why: 'That is the complement: the other side of the boundary. Read the direction words again.' },
       { t: 'The height of the curve at ' + (mode === 'greater' ? Xa : Xb), why: 'A probability for a continuous variable is an area, never the height of the curve.' }
     ]);
@@ -130,7 +130,7 @@
     steps.push({ key: 'p', kind: 'num', practice: '3.C', d: 4, label: 'The probability $P(' + ev + ')$.', cell: probCell(p, res.pTable, pms) });
     var good = 'X is normal with $\\mu = ' + F(mu, pl) + '$ and $\\sigma = ' + F(sd, pl + (sd < 1 ? 2 : 0)) + '$; $P(' + ev + ') = ' + P4(p) + '$.';
     steps.push(choice('work', '3.C', 'Which answer shows the work the exam asks for?', [
-      { t: good, why: 'Right: it names the distribution and its parameters, the boundary and the direction, then gives the probability.' },
+      { t: good, why: 'It names the distribution and its parameters, the boundary and the direction, then gives the probability.' },
       { t: 'normalcdf(' + (mode === 'greater' ? Xa : mode === 'between' ? Xa : '−1E99') + ', ' + (mode === 'less' ? Xb : mode === 'between' ? Xb : '1E99') + ', ' + F(mu, pl) + ', ' + F(sd, pl + (sd < 1 ? 2 : 0)) + ') = ' + P4(p), why: 'Calculator syntax alone is not work: the reader wants the distribution, parameters, boundary and direction in standard notation or words.' },
       { t: 'The answer is ' + P4(p) + '.', why: 'The number alone earns little: show the distribution, its parameters, the boundary and the direction.' },
       { t: 'X is normal with $\\mu = ' + F(mu, pl) + '$ and $\\sigma = ' + F(sd, pl + (sd < 1 ? 2 : 0)) + '$, so the probability is ' + P4(p) + '.', why: 'This names the distribution but not the event: say which boundary and which direction, as in $P(' + ev + ')$.' }
@@ -161,7 +161,7 @@
         cell: statCell(x, pl + 1, [{ value: mu - z * sd, why: 'The sign of z is lost: $x = \\mu + z\\sigma$, and z is ' + (z < 0 ? 'negative here (below the mean)' : 'positive here (above the mean)') + '.' }, { value: mu + z * sd * sd, why: 'That multiplies by the variance. Use $x = \\mu + z\\sigma$ with σ = ' + F(sd, 2) + '.' }], Math.abs(zTab - z) * sd + 0.006 * sd) }
     ];
     steps.push(choice('check', '4.C', 'Does the answer make sense?', [
-      { t: (x > mu ? 'Yes: it is above the mean, as the ' : 'Yes: it is below the mean, as the ') + (side === 'right' ? 'top ' : 'bottom ') + pct + '% must be.', why: 'Right: a boundary for a small upper tail is above the mean, for a small lower tail below it.' },
+      { t: (x > mu ? 'Yes: it is above the mean, as the ' : 'Yes: it is below the mean, as the ') + (side === 'right' ? 'top ' : 'bottom ') + pct + '% must be.', why: 'A boundary for a small upper tail is above the mean, for a small lower tail below it.' },
       { t: 'No: a percentile is always above the mean.', why: 'Percentiles below 50% are below the mean of a normal distribution.' },
       { t: 'No: the boundary should equal the mean plus ' + pct + '.', why: 'A percent of the data is an area, not a distance on the scale: convert it with z.' }
     ]));
@@ -185,7 +185,7 @@
     var text = '<p>' + c.setup.replace('{n}', n).replace('{p}', String(p)) + '</p><p>Let $X$ = ' + c.X + '. Find the probability that ' + words + '.</p>';
     var equiv = { fewer: 'X \\le ' + (k - 1), atMost: 'X \\le ' + k, atLeast: 'X \\ge ' + k, more: 'X \\ge ' + (k + 1), exactly: 'X = ' + k }[rel];
     var trans = [
-      { t: '$P(' + equiv + ')$', why: 'Right: "' + b.words + ' ' + k + '" ' + (rel === 'fewer' ? 'leaves ' + k + ' out, so it is ' + (k - 1) + ' or fewer.' : rel === 'more' ? 'leaves ' + k + ' out, so it is ' + (k + 1) + ' or more.' : rel === 'atMost' ? 'includes ' + k + '.' : rel === 'atLeast' ? 'includes ' + k + '.' : 'is one count only.') }
+      { t: '$P(' + equiv + ')$', why: '"' + b.words + ' ' + k + '" ' + (rel === 'fewer' ? 'leaves ' + k + ' out, so it is ' + (k - 1) + ' or fewer.' : rel === 'more' ? 'leaves ' + k + ' out, so it is ' + (k + 1) + ' or more.' : rel === 'atMost' ? 'includes ' + k + '.' : rel === 'atLeast' ? 'includes ' + k + '.' : 'is one count only.') }
     ];
     var wrongs = {
       fewer: [['X \\le ' + k, '"Fewer than ' + k + '" does not include ' + k + ': that is $X \\le ' + (k - 1) + '$. The reader report names this slip.'], ['X \\ge ' + k, 'Fewer means smaller counts, the left side.'], ['X = ' + (k - 1), 'Fewer than ' + k + ' is every count from 0 to ' + (k - 1) + ', not one count.']],

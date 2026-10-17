@@ -204,9 +204,11 @@
   }
 
   /* ============================================================ TeX in problems */
+  // The problem text is also the plain caption: H₀ and Hₐ read as letters there.
+  function hText(t){ return String(t).replace(/\$H_0\$/g, 'H₀').replace(/\$H_a\$/g, 'Hₐ').replace(/\$H_0: /g, 'H₀: $').replace(/\$H_a: /g, 'Hₐ: $'); }
   function texify(p){
     var q = {}; for(var k in p) q[k] = p[k];
-    q.text = tx(p.text);
+    q.text = tx(hText(p.text));
     q.solution = p.solution.map(tx);
     q.steps = p.steps.map(function(s){
       var t = {}; for(var k2 in s) t[k2] = s[k2];
@@ -457,6 +459,7 @@
     }
 
     /* --- Why: the reasoning with the current numbers --- */
+    function openWhy(){ var d = whyEl.querySelector('details.bt-why'); if(d) d.open = true; }
     var whyEl = q('.pv-why');
     function why(view, r){
       var c = S.sc;
@@ -468,7 +471,7 @@
           '<p><b>Read it in context.</b> ' + tx('Assuming ' + param + ' is ' + v0 + u + ', there is a ' + P4(t.p) + ' probability of getting a sample ' + (isMean() ? 'mean' : 'proportion') + ' of ' + (isMean() ? F(t.obs, c.places != null ? c.places : 2) + u : String(+t.obs.toFixed(4))) + ' ' + sideWords() + ' by chance in a random sample of ' + S.n + '.') + '</p>' +
           '<p><b>Decide and conclude.</b> ' + tx('Because the p-value of ' + P4(t.p) + ' is ' + (rej ? 'less' : 'greater') + ' than $\\alpha = ' + S.alpha + '$, we ' + (rej ? 'reject' : 'fail to reject') + ' $H_0$. There ' + (rej ? 'is' : 'is not') + ' convincing evidence that ' + param + ' is ' + PV.HA_WORD[S.ha] + ' ' + v0 + u + '.') + '</p>' +
           '<p class="bt-small">' + tx('A p-value is not the probability that $H_0$ is true, and failing to reject never proves $H_0$: it only means the data are not convincing.') + '</p>';
-        T.explain(whyEl, head, body);
+        T.explain(whyEl, head, body); openWhy();
       } else {
         var e = r;
         var body2 = '<p>' + tx('The blue curve is $\\hat{p}$ when $H_0$ is true ($p = ' + c.p0 + '$). The orange curve is $\\hat{p}$ if the true proportion is ' + F(S.pa, 3) + '. The dashed line is the cutoff: a sample beyond it gives a p-value below α.') + '</p>' +
@@ -476,7 +479,7 @@
           '<li><b>Type II error</b> (light orange, β = ' + P4(e.typeII) + '): ' + tx('the true proportion is ' + F(S.pa, 3) + ', but the sample lands short of the cutoff and we fail to reject $H_0$.') + '</li>' +
           '<li><b>Power</b> (green, ' + P4(e.power) + ' = 1 − β): ' + tx('the probability of rejecting $H_0$ when the true proportion is ' + F(S.pa, 3) + '.') + '</li></ul>' +
           '<p><b>More power</b> comes from a larger sample (both curves get narrower), a larger α (the cutoff moves toward ' + tx('$p_0$') + '), or a true value farther from ' + tx('$p_0$') + '. A smaller α means fewer Type I errors but more Type II errors.</p>';
-        T.explain(whyEl, 'A test can be wrong in two ways: reject a true null (Type I) or miss a real effect (Type II).', body2);
+        T.explain(whyEl, 'A test can be wrong in two ways: reject a true null (Type I) or miss a real effect (Type II).', body2); openWhy();
       }
       if(LS && LS.why) { var w = whyEl.querySelector('details.bt-why'); if(w) w.open = true; }
     }

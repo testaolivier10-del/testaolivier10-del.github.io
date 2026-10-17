@@ -1,0 +1,702 @@
+{
+ "stimuli": {
+  "least-squares-regression-s1": {
+   "kind": "table",
+   "title": "Computer output: car weight and fuel economy",
+   "set": "regression",
+   "text": "For a random sample of 30 car models, a magazine regresses highway fuel economy (miles per gallon) on weight (thousands of pounds). Part of the output is below. (Invented data.)",
+   "table": {
+    "caption": "Regression of fuel economy (mpg) on weight (1,000 lb)",
+    "cols": [
+     "Predictor",
+     "Coef"
+    ],
+    "rows": [
+     [
+      "Constant",
+      "48.7"
+     ],
+     [
+      "Weight",
+      "$-6.25$"
+     ],
+     [
+      "S = 2.81",
+      "R-Sq = 76.4%"
+     ]
+    ]
+   }
+  },
+  "least-squares-regression-s2": {
+   "kind": "graph",
+   "title": "Practice and free throws, with one unusual player",
+   "set": "regression",
+   "text": "A coach records practice hours per week and free throw percentage for 11 players. One player practices 16 hours a week and makes 58% of free throws. (Invented data.)",
+   "plot": {
+    "label": "Scatterplot of 11 players: ten with 2 to 8 practice hours and 52 to 70 percent rising steeply, and one at 16 hours and 58 percent far to the right, with the least-squares line for all 11 players",
+    "kind": "scatter",
+    "xs": [
+     2,
+     3,
+     3,
+     4,
+     5,
+     5,
+     6,
+     7,
+     7,
+     8,
+     16
+    ],
+    "ys": [
+     52,
+     55,
+     58,
+     57,
+     62,
+     60,
+     66,
+     65,
+     69,
+     70,
+     58
+    ],
+    "line": true,
+    "x": [
+     0,
+     18
+    ],
+    "y": [
+     45,
+     80
+    ],
+    "xLabel": "practice hours per week",
+    "yLabel": "free throws made (%)"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "practice hours",
+      "unit": "hours",
+      "values": [
+       2,
+       3,
+       3,
+       4,
+       5,
+       5,
+       6,
+       7,
+       7,
+       8,
+       16
+      ]
+     },
+     {
+      "name": "free throws made",
+      "unit": "percent",
+      "values": [
+       52,
+       55,
+       58,
+       57,
+       62,
+       60,
+       66,
+       65,
+       69,
+       70,
+       58
+      ]
+     }
+    ]
+   }
+  },
+  "least-squares-regression-s3": {
+   "kind": "table",
+   "title": "Summary statistics for ten players",
+   "text": "For the ten players who practice 2 to 8 hours a week, the coach computes these summaries of practice hours ($x$) and free throw percentage ($y$). The scatterplot is linear with no unusual points. (Invented data.)",
+   "table": {
+    "caption": "Summary statistics",
+    "cols": [
+     "",
+     "Mean",
+     "Standard deviation"
+    ],
+    "rows": [
+     [
+      "Practice hours, $x$",
+      "5.00",
+      "2.00"
+     ],
+     [
+      "Free throws (%), $y$",
+      "61.40",
+      "6.04"
+     ],
+     [
+      "Correlation",
+      "$r = 0.966$",
+      ""
+     ]
+    ]
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "practice hours",
+      "unit": "hours",
+      "values": [
+       2,
+       3,
+       3,
+       4,
+       5,
+       5,
+       6,
+       7,
+       7,
+       8
+      ]
+     },
+     {
+      "name": "free throws made",
+      "unit": "percent",
+      "values": [
+       52,
+       55,
+       58,
+       57,
+       62,
+       60,
+       66,
+       65,
+       69,
+       70
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-least-squares-regression-1",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "least-squares-regression-s1",
+   "q": "Which is the correct interpretation of the slope?",
+   "why": {
+    "correct": "Slope in context with \"predicted\" and the units of $x$.",
+    "options": [
+     "Right: the slope is the predicted change in $y$ per one-unit increase in $x$, and the unit of $x$ here is 1,000 pounds.",
+     "The slope describes predicted values, not an exact change for each car.",
+     "That mixes up the slope and the intercept, and a weight of 0 is not sensible.",
+     "Weight is in thousands of pounds, so one unit of $x$ is 1,000 pounds."
+    ]
+   },
+   "options": [
+    "For each extra 1,000 lb, predicted fuel economy drops by about 6.25 mpg",
+    "For each additional 1,000 pounds, each car loses exactly 6.25 mpg",
+    "A car that weighs 0 pounds is predicted to get 6.25 mpg",
+    "For each additional pound of weight, the predicted fuel economy decreases by about 6.25 mpg"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-least-squares-regression-2",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "least-squares-regression-s1",
+   "q": "Which is the correct interpretation of R-Sq = 76.4%?",
+   "why": {
+    "correct": "$r^2$: \"About [r squared]% of the variation in [y] is accounted for by the linear model using [x].\"",
+    "options": [
+     "Right: $r^2$ is the fraction of the variation in $y$ explained by the line.",
+     "$r^2$ measures how much variation the line accounts for, not cause.",
+     "$r^2$ is not a share of cars; predictions are rarely exactly right.",
+     "The correlation is $r = -\\sqrt{0.764} = -0.874$, negative because the slope is negative."
+    ]
+   },
+   "options": [
+    "About 76.4% of the variation in fuel economy is accounted for by the linear model using weight",
+    "Weight causes about 76.4% of the variation in a car's fuel economy",
+    "About 76.4% of the cars in the sample have fuel economy the line predicts correctly",
+    "The correlation between weight and fuel economy for these 30 car models is 0.764"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-least-squares-regression-3",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "least-squares-regression-s1",
+   "q": "Which is the correct interpretation of S = 2.81?",
+   "why": {
+    "correct": "$s$: \"The actual [y] typically differs from the predicted [y] by about $s$ [units].\"",
+    "options": [
+     "Right: $s$, the standard deviation of the residuals, is the typical size of a prediction error, in the units of $y$.",
+     "That would be a slope; the slope here is $-6.25$.",
+     "The unexplained share is $100\\% - 76.4\\% = 23.6\\%$; $s$ is in mpg, not a percent.",
+     "$s$ measures scatter around the line in $y$ units, not the spread of $x$."
+    ]
+   },
+   "options": [
+    "A car's actual mpg is typically about 2.81 mpg away from its predicted mpg",
+    "The predicted fuel economy changes by about 2.81 mpg for each additional 1,000 pounds",
+    "About 2.81% of the variation in fuel economy is left unexplained",
+    "The cars' weights typically differ from their mean weight by about 2.81 thousand pounds"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-least-squares-regression-4",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "least-squares-regression-s2",
+   "q": "How is the player at 16 hours best described?",
+   "why": {
+    "correct": "High leverage: an extreme $x$ value. Influential: removing it changes the line a lot.",
+    "options": [
+     "Its $x$ value, 16, is twice the next largest, which makes it unusual.",
+     "The line is pulled close to it, so its residual is not very large; that is what influence looks like.",
+     "Its 58% is ordinary on its own, but at 16 hours it is far from the others' $x$ values, so it moves the line a lot.",
+     "Right: far from $\\bar{x}$ gives high leverage, and removing it changes the slope a lot."
+    ]
+   },
+   "options": [
+    "A typical point, since it lies inside the range of $y$ values",
+    "A point with a large residual that the line passes far from",
+    "An outlier with no effect on the line, since its percentage is ordinary",
+    "High leverage and influential: extreme $x$, and it pulls the line"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-least-squares-regression-5",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "least-squares-regression-s2",
+   "q": "With all 11 players the least-squares slope is about 0.49. What happens to the slope if the 16-hour player is removed?",
+   "why": {
+    "correct": "Removing an influential point changes the slope substantially.",
+    "options": [
+     "The other ten points rise steeply; the slope without the point is positive and large.",
+     "The unusual point is below where the trend of the others would put it, so removing it makes the line steeper, not flatter.",
+     "A point with high leverage can change the slope a great deal, as here.",
+     "Right: technology gives $b = 2.92$ for the other ten players. The one point had flattened the line."
+    ]
+   },
+   "options": [
+    "It becomes negative",
+    "It decreases to about 0.24",
+    "It stays about 0.49, since one point out of 11 is small",
+    "It increases to about 2.92"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-least-squares-regression-6",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "least-squares-regression-s2",
+   "q": "With all 11 players, $r = 0.32$. Without the 16-hour player, $r = 0.97$. What does this show?",
+   "why": {
+    "correct": "Unusual points can change $r$ and the slope; analyze with and without them.",
+    "options": [
+     "Among the ten typical players the association is strong; the weak $r$ is caused by one point.",
+     "Report the point and the analysis with and without it; do not delete data without a reason.",
+     "Right: correlation is not resistant; one high-leverage point weakened it from 0.97 to 0.32.",
+     "The change from 0.97 to 0.32 shows the opposite."
+    ]
+   },
+   "options": [
+    "Practice has little to do with free throws for these players",
+    "The 16-hour player should be deleted from any report",
+    "One point hides a strong linear link among the other ten",
+    "Correlation is resistant to unusual points"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-least-squares-regression-7",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "least-squares-regression-s3",
+   "q": "Write the expression for the slope of the least-squares line, $b = r\\frac{s_y}{s_x}$, with the values substituted, then evaluate it.",
+   "why": {
+    "correct": "$b = 0.966\\left(\\frac{6.04}{2.00}\\right) = 2.917$ percentage points per hour."
+   },
+   "setup": {
+    "answer": "0.966*6.04/2",
+    "bind": {},
+    "mustUse": [
+     "0.966",
+     "6.04",
+     "2"
+    ],
+    "mistakes": [
+     {
+      "expr": "0.966*2/6.04",
+      "why": "The fraction is upside down: $b = r\\frac{s_y}{s_x}$, the response's SD over the explanatory variable's SD."
+     },
+     {
+      "expr": "6.04/2",
+      "why": "That leaves out $r$. The slope is $r$ times the ratio of standard deviations."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-least-squares-regression-8",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "least-squares-regression-s3",
+   "q": "The least-squares line passes through $(\\bar{x}, \\bar{y})$. Using the slope from the data, $b = 2.917$, what is the intercept $a$? Give two decimal places.",
+   "why": {
+    "correct": "$a = \\bar{y} - b\\bar{x} = 61.4 - 2.917(5) = 46.82$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "from": {
+     "fn": "lsrl",
+     "args": [
+      [
+       2,
+       3,
+       3,
+       4,
+       5,
+       5,
+       6,
+       7,
+       7,
+       8
+      ],
+      [
+       52,
+       55,
+       58,
+       57,
+       62,
+       60,
+       66,
+       65,
+       69,
+       70
+      ]
+     ],
+     "pick": "a"
+    },
+    "mistakes": [
+     {
+      "value": 75.983,
+      "why": "That adds $b\\bar{x}$. Since $\\bar{y} = a + b\\bar{x}$, subtract: $a = \\bar{y} - b\\bar{x}$."
+     },
+     {
+      "value": 61.4,
+      "why": "That is $\\bar{y}$, the predicted value at $\\bar{x} = 5$, not at $x = 0$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-least-squares-regression-9",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "least-squares-regression-s3",
+   "q": "What is $r^2$ for these ten players? Give three decimal places.",
+   "why": {
+    "correct": "$r^2 = 0.9657^2 = 0.933$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 3,
+    "from": {
+     "fn": "lsrl",
+     "args": [
+      [
+       2,
+       3,
+       3,
+       4,
+       5,
+       5,
+       6,
+       7,
+       7,
+       8
+      ],
+      [
+       52,
+       55,
+       58,
+       57,
+       62,
+       60,
+       66,
+       65,
+       69,
+       70
+      ]
+     ],
+     "pick": "r2"
+    },
+    "mistakes": [
+     {
+      "value": 0.9657,
+      "why": "That is $r$. Square it to get the coefficient of determination."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-least-squares-regression-10",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "least-squares-regression-s3",
+   "q": "A player practices exactly 5 hours a week, the mean. What free throw percentage does the least-squares line predict?",
+   "why": {
+    "correct": "$\\hat{y}$ at $\\bar{x}$ is $\\bar{y}$.",
+    "options": [
+     "At $x = \\bar{x}$ the prediction is exactly $\\bar{y}$.",
+     "The intercept is the prediction at 0 hours, not at 5.",
+     "The prediction is in percent made, the $y$ variable.",
+     "Right: the least-squares line always passes through $(\\bar{x}, \\bar{y})$."
+    ]
+   },
+   "options": [
+    "About 64.3%, one SD of $x$ above the mean of $y$",
+    "46.8%, the intercept",
+    "5%, the mean of $x$",
+    "61.4%, the mean of $y$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-least-squares-regression-11",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "least-squares-regression-s3",
+   "q": "A player 1 standard deviation above the mean in practice hours (7 hours) is predicted to be how far above the mean in free throw percentage?",
+   "why": {
+    "correct": "$b = r\\frac{s_y}{s_x}$: one $s_x$ step in $x$ gives $r \\cdot s_y$ in $\\hat{y}$.",
+    "options": [
+     "2.917 is the slope in percentage points per hour, not in standard deviations.",
+     "One SD in $x$ gives $r$ SDs in $y$, not 2.",
+     "Right: in standard units the line predicts $r$ SDs of $y$ for each SD of $x$: $0.966(6.04) = 5.8$.",
+     "Only if $r = 1$. With $r = 0.966$, predictions regress slightly toward the mean."
+    ]
+   },
+   "options": [
+    "2.917 standard deviations",
+    "2 standard deviations, 12.08 points",
+    "About 0.966 standard deviations, about 5.8 points",
+    "Exactly 1 standard deviation, 6.04 points, as $x$ moved 1 SD"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-least-squares-regression-12",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What makes the least-squares regression line \"least squares\"?",
+   "why": {
+    "correct": "Least squares: minimize $\\sum (y - \\hat{y})^2$.",
+    "options": [
+     "Right: among all lines, it gives the smallest $\\sum (y - \\hat{y})^2$.",
+     "It may pass through none of the points.",
+     "No line can make every residual small; it minimizes the sum of their squares.",
+     "The slope is whatever minimizes the squared residuals."
+    ]
+   },
+   "options": [
+    "It minimizes the sum of the squared residuals",
+    "It passes through as many data points as possible",
+    "It makes each residual as small as possible",
+    "It has the smallest possible slope"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-least-squares-regression-13",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a regression with negative slope, $r^2 = 0.81$. What is the correlation?",
+   "why": {
+    "correct": "$r$ has the sign of $b$ and size $\\sqrt{r^2}$.",
+    "options": [
+     "That squares 0.81 again.",
+     "Take the square root of $r^2$.",
+     "The square root has two signs; the negative slope means $r$ is negative.",
+     "Right: $r = \\pm\\sqrt{0.81} = \\pm 0.9$, and it takes the sign of the slope."
+    ]
+   },
+   "options": [
+    "$r = 0.6561$",
+    "$r = -0.81$",
+    "$r = 0.9$",
+    "$r = -0.9$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-least-squares-regression-14",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "conclude",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A line predicts exam score from hours studied for 40 students, with $r^2 = 0.64$. Interpret $r^2$ in context.",
+   "why": {
+    "correct": "$r^2$: the share of the variation in $y$ accounted for by the line."
+   },
+   "conclude": {
+    "mode": "r2",
+    "slots": {
+     "amount": {
+      "label": "Amount",
+      "options": [
+       "About 64% of the variation in exam score",
+       "About 64% of the students' exam scores",
+       "About 80% of the variation in exam score"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "$r^2$ is about variation in $y$, not a share of students.",
+       "2": "80% is $r$ as a percent; the question gives $r^2$."
+      }
+     },
+     "cause": {
+      "label": "Explained by",
+      "options": [
+       "is accounted for by the linear model using hours studied.",
+       "is caused by hours studied.",
+       "is predicted exactly by the line."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "$r^2$ does not show cause.",
+       "2": "Predictions are not exact; there is still unexplained variation."
+      }
+     }
+    },
+    "model": "About 64% of the variation in exam score is accounted for by the linear model using hours studied.",
+    "write": {
+     "context": [
+      "exam score",
+      "hours"
+     ],
+     "parameter": false,
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-least-squares-regression-15",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A point has an $x$ value near $\\bar{x}$ but a $y$ value far above the rest of the data. What does it change most?",
+   "why": {
+    "correct": "Outlier in $y$ near $\\bar{x}$: big residual, little leverage.",
+    "options": [
+     "A point above the middle of the data lifts the line up; it does not flip its direction.",
+     "Right: near $\\bar{x}$ it has little leverage, so the slope hardly moves, but its large residual adds scatter.",
+     "A point near $\\bar{x}$ has low leverage on the slope; its big residual does affect $s$ and $r$.",
+     "A large residual affects $s$, $r$ and $r^2$, and shifts the intercept a little."
+    ]
+   },
+   "options": [
+    "It makes the slope negative",
+    "It raises $s$ and lowers $r$, but barely changes the slope",
+    "It changes the slope a lot, but leaves $s$ about the same",
+    "It has no effect on the line or its summaries"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-least-squares-regression-16",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "4.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "A line predicts the weight of a fish (grams) from its length (cm), with $s = 42$. What are the units of $s$?",
+   "why": {
+    "correct": "$s$ is in the units of $y$.",
+    "options": [
+     "$s$ measures vertical gaps, in units of the response.",
+     "$r^2$ is a percent; $s$ is in grams.",
+     "Right: $s$ is a typical residual, so it has the units of $y$.",
+     "That is the unit of the slope."
+    ]
+   },
+   "options": [
+    "Centimeters",
+    "Percent",
+    "Grams",
+    "Grams per centimeter"
+   ],
+   "correct": 2
+  }
+ ]
+}

@@ -47,10 +47,10 @@
    },
    "stimulus": "one-categorical-displays-s1",
    "options": [
-    "Horror, the bar just to the right of drama",
+    "Horror",
     "Drama",
-    "Other, the last bar in the chart",
-    "Action, the second bar from the left"
+    "Other",
+    "Action"
    ],
    "correct": 1
   },
@@ -74,9 +74,9 @@
    },
    "stimulus": "one-categorical-displays-s1",
    "options": [
-    "25, reading the bar height as a count",
-    "60, which is the number who chose comedy",
-    "800, from dividing 200 by 0.25",
+    "25",
+    "60",
+    "800",
     "50"
    ],
    "correct": 3
@@ -102,7 +102,7 @@
    "stimulus": "one-categorical-displays-s1",
    "options": [
     "Comedy was chosen about twice as often as drama",
-    "Most of the teens in the sample chose comedy as their favorite",
+    "Most teens chose comedy",
     "Action films are better liked than drama films by each teen",
     "More teens chose horror than chose documentaries and other together"
    ],
@@ -158,7 +158,7 @@
     "It uses different colors for the two schools’ bars",
     "It shows percents instead of numbers of students passing",
     "Its vertical axis starts at 50%, not at 0%",
-    "It puts school A on the left and school B on the right"
+    "It puts A on the left"
    ],
    "correct": 2
   },
@@ -183,9 +183,9 @@
    "stimulus": "one-categorical-displays-s2",
    "options": [
     "4 times",
-    "About 1.1 times, as 58 divided by 52",
-    "6 times, from the 6 point gap between 58 and 52",
-    "The same height, because each bar stands for one school"
+    "About 1.1 times",
+    "6 times",
+    "The same height"
    ],
    "correct": 0
   },
@@ -210,7 +210,7 @@
    "stimulus": "one-categorical-displays-s2",
    "options": [
     "School B’s pass rate is about four times school A’s rate",
-    "Almost no students at school A passed the state exam",
+    "Few at A passed",
     "School B had more students pass the exam than school A did",
     "School B’s pass rate is 6 points higher than A’s"
    ],
@@ -236,7 +236,7 @@
    },
    "stimulus": "one-categorical-displays-s2",
    "options": [
-    "Make school B’s bar wider than school A’s bar",
+    "Make B’s bar wider",
     "Start the vertical axis at 0%",
     "Turn it into a pie chart with one slice for each school",
     "Remove the percent labels from the vertical axis"
@@ -263,7 +263,7 @@
    },
    "options": [
     "A bar chart",
-    "A line graph of the counts over time, day by day",
+    "A line graph",
     "A number line with a mark for each value of the data",
     "A list of each individual in the order they were asked"
    ],
@@ -366,10 +366,10 @@
     ]
    },
    "options": [
-    "90%, from the slice’s angle of 90 degrees",
+    "90%",
     "25%",
-    "4%, from the four quarters of the circle",
-    "40%, because a quarter is one fourth"
+    "4%",
+    "40%"
    ],
    "correct": 1
   },

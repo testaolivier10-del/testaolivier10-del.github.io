@@ -1,0 +1,461 @@
+{
+ "stimuli": {
+  "experimental-design-s1": {
+   "kind": "table",
+   "title": "Blue-light glasses and sleep",
+   "html": "<p>A researcher recruits 60 college students who volunteer for a sleep study. A random number generator assigns 30 of them to wear glasses that block blue light for two hours before bed, and the other 30 to wear clear glasses that look exactly the same. After two weeks, each student’s sleep quality is scored from a sleep tracker. Neither the students nor the person scoring the trackers knows who wore which glasses (invented study).</p>"
+  },
+  "experimental-design-s2": {
+   "kind": "table",
+   "title": "Two training programs",
+   "html": "<p>A gym wants to compare two six-week training programs, P and Q, for increasing the number of push-ups members can do. Forty members volunteer: 16 are beginners and 24 are experienced. The plan: within the beginners, assign 8 to P and 8 to Q at random; within the experienced members, assign 12 to P and 12 to Q at random. Each member’s gain in push-ups is recorded (invented study).</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "stat-experimental-design-1",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What are the experimental units?",
+   "why": {
+    "correct": "Experimental units are the individuals to which treatments are assigned: here the 60 students.",
+    "options": [
+     "The glasses are the treatments.",
+     "Right: the units are the individuals the treatments are given to.",
+     "The scores are the response.",
+     "The trackers measure the response; they are not what the treatments are applied to."
+    ]
+   },
+   "stimulus": "experimental-design-s1",
+   "options": [
+    "The glasses",
+    "The 60 students",
+    "The sleep quality scores",
+    "The sleep trackers worn by the students"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-experimental-design-2",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What are the treatments, and what is the response variable?",
+   "why": {
+    "correct": "A treatment is a condition imposed on the units; the response variable is what is measured afterward.",
+    "options": [
+     "The students are the experimental units; the glasses are imposed on them.",
+     "This reverses them: the glasses are imposed, and sleep is measured.",
+     "The trackers record the response, sleep quality.",
+     "Right: the researcher imposes the glasses and measures sleep quality."
+    ]
+   },
+   "stimulus": "experimental-design-s1",
+   "options": [
+    "Treatments: the 60 students. Response: the type of glasses worn",
+    "Treatments: sleep quality scores. Response: the two kinds of glasses",
+    "Treatments: the sleep trackers. Response: the time spent in bed",
+    "Treatments: the two kinds of glasses. Response: sleep quality"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-experimental-design-3",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why do half the students wear clear glasses that look the same?",
+   "why": {
+    "correct": "A placebo control group receives a fake treatment, so the placebo effect is the same in both groups and the comparison isolates the real effect.",
+    "options": [
+     "Right: any effect of simply wearing glasses, or of expecting better sleep, shows up in both groups.",
+     "Cost is not the reason; the clear glasses control for the placebo effect.",
+     "The glasses do not set how long students sleep.",
+     "The glasses are assigned at random, not chosen."
+    ]
+   },
+   "stimulus": "experimental-design-s1",
+   "options": [
+    "To act as a placebo, so both groups believe they may be treated",
+    "To make the study cheaper, since clear glasses cost less",
+    "To make sure that each student sleeps for the same number of hours",
+    "To let the students choose the glasses that they like better"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-experimental-design-4",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Neither the students nor the person scoring the trackers knows who wore which glasses. What is this called?",
+   "why": {
+    "correct": "When neither the subjects nor those who interact with them or measure the response know who received which treatment, the experiment is double-blind.",
+    "options": [
+     "Single-blind means one side, usually the subjects, does not know; here both sides are kept in the dark.",
+     "Matched pairs is about pairing units, not about who knows the treatments.",
+     "Right: both the subjects and the person measuring the response are blind to the treatments.",
+     "The treatments are imposed, so this is an experiment."
+    ]
+   },
+   "stimulus": "experimental-design-s1",
+   "options": [
+    "A single-blind experiment",
+    "A matched pairs experiment",
+    "A double-blind experiment",
+    "An observational study of sleep"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-experimental-design-5",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "What does random assignment allow the researcher to conclude?",
+   "why": {
+    "correct": "Random assignment balances other variables between groups on average, so a large difference in the response supports a cause-and-effect conclusion, for units like these.",
+    "options": [
+     "Generalizing needs a random sample from a population; these are volunteers.",
+     "An experiment compares groups; it does not promise an effect for each person.",
+     "Right: chance made the groups similar in every other way, on average, so a large difference can be traced to the treatment.",
+     "Random assignment makes groups similar on average, not identical."
+    ]
+   },
+   "stimulus": "experimental-design-s1",
+   "options": [
+    "The results apply to college students across the country",
+    "Each student’s own sleep will improve with blue-light glasses",
+    "A large difference was likely caused by the glasses",
+    "The two groups were exactly alike before the study began"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-experimental-design-6",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is this design called?",
+   "why": {
+    "correct": "Grouping similar units into blocks and randomizing treatments within each block is a randomized block design.",
+    "options": [
+     "Right: members are grouped by experience into blocks, and treatments are assigned at random within each block.",
+     "In a completely randomized design all 40 members would be assigned in one draw, without grouping first.",
+     "Matched pairs uses pairs of similar units, or each unit receives both treatments.",
+     "Stratifying is for choosing a sample; blocking is for assigning treatments in an experiment."
+    ]
+   },
+   "stimulus": "experimental-design-s2",
+   "options": [
+    "A randomized block design",
+    "A completely randomized design",
+    "A matched pairs design",
+    "A stratified random sample"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-experimental-design-7",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the gym block by experience?",
+   "why": {
+    "correct": "Block on a variable that is expected to affect the response. Comparing treatments within blocks keeps that variable from hiding the treatment effect.",
+    "options": [
+     "Both programs are given within each block; that is the point.",
+     "The blocks have different sizes, 16 and 24; that is fine.",
+     "Blocking is a statistical choice, not a social one.",
+     "Right: blocking accounts for a known source of variation and makes the comparison of programs more precise."
+    ]
+   },
+   "stimulus": "experimental-design-s2",
+   "options": [
+    "So that beginners get program P and experienced members get program Q",
+    "To make sure the gym has the same number of beginners and experienced members",
+    "Because experienced members would refuse to train with beginners",
+    "Experience affects gains, so comparing within blocks removes that variation"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-experimental-design-8",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "order",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for assigning the 16 beginners to the programs in order.",
+   "why": {
+    "correct": "Label (identical slips), mix, draw 8 for P, and the rest get Q. Then repeat the process for the experienced block."
+   },
+   "stimulus": "experimental-design-s2",
+   "options": [
+    "Write the 16 beginners’ names on identical slips of paper",
+    "Mix the slips well in a container",
+    "Draw 8 slips without looking",
+    "Assign those 8 beginners to program P",
+    "Assign the other 8 beginners to program Q"
+   ]
+  },
+  {
+   "id": "stat-experimental-design-9",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Members in program P gain many more push-ups than members in Q, too many to be explained by chance in the assignment. What can the gym conclude?",
+   "why": {
+    "correct": "Random assignment supports cause and effect; without random sampling, the conclusion applies to units like those in the experiment.",
+    "options": [
+     "The members were volunteers, not a random sample of all gym members.",
+     "Right: random assignment supports cause and effect, but the units are volunteers from one gym, which limits generalizing.",
+     "With random assignment, a cause-and-effect conclusion is justified.",
+     "Unequal block sizes are fine; each block is randomized on its own."
+    ]
+   },
+   "stimulus": "experimental-design-s2",
+   "options": [
+    "P causes larger gains for gym members across the country",
+    "P causes larger gains for members like these volunteers",
+    "P is linked to larger gains, but no cause can be claimed",
+    "Nothing can be concluded, as the blocks have different sizes"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-experimental-design-10",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "To test two sunscreens, each of 20 volunteers gets sunscreen A on one arm and B on the other, with a coin flip deciding which arm gets A. What design is this?",
+   "why": {
+    "correct": "Matched pairs: each unit (or each pair of similar units) receives both treatments, with the order or side decided at random.",
+    "options": [
+     "Right: each volunteer receives both treatments, one per arm, with chance deciding which arm gets which.",
+     "Here each volunteer gets both sunscreens, one per arm; one sunscreen per volunteer would be a completely randomized design.",
+     "The sunscreens are imposed, so this is an experiment.",
+     "This is about assigning treatments, not sampling."
+    ]
+   },
+   "options": [
+    "A matched pairs design",
+    "One sunscreen per volunteer",
+    "An observational study",
+    "A cluster sample of arms"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-experimental-design-11",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "In experimental design, what does replication mean?",
+   "why": {
+    "correct": "Replication means using enough experimental units in each treatment group so that chance variation between units averages out.",
+    "options": [
+     "Repeating a whole study is useful, but in design, replication means many units per treatment.",
+     "Repeated measurement is a different idea.",
+     "Right: with many units per treatment, chance differences between units tend to even out.",
+     "An experiment compares two or more treatments."
+    ]
+   },
+   "options": [
+    "Copying another researcher’s experiment exactly",
+    "Measuring each unit twice to check the measurement",
+    "Giving each treatment to enough experimental units",
+    "Using one treatment on each unit"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-experimental-design-12",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A report says the difference between two treatment groups was statistically significant. What does that mean?",
+   "why": {
+    "correct": "A statistically significant difference is larger than what chance variation in the random assignment would usually produce.",
+    "options": [
+     "Statistically significant is about chance, not about practical size.",
+     "Right: random assignment by itself would rarely create a difference this big.",
+     "Statistics gives evidence, not proof, and effects vary between individuals.",
+     "Precision of measurement is a separate issue."
+    ]
+   },
+   "options": [
+    "The difference is large enough to matter in daily life",
+    "The difference is too large to be explained by chance alone",
+    "The study proved that the treatment works for everyone",
+    "The difference was measured very precisely"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-experimental-design-13",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a completely randomized design for comparing two fertilizers on 30 plants?",
+   "why": {
+    "correct": "In a completely randomized design, every unit is assigned to a treatment by chance, with no grouping first.",
+    "options": [
+     "Choosing by height confounds height with fertilizer.",
+     "Choice by a person can favor one fertilizer.",
+     "That is a randomized block design.",
+     "Right: every plant is assigned by chance, with no blocks."
+    ]
+   },
+   "options": [
+    "Give fertilizer A to the 15 tallest plants and B to the rest",
+    "Let the gardener pick which plants get each fertilizer",
+    "Split by sunlight first",
+    "Assign 15 plants at random to each fertilizer"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-experimental-design-14",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why do many experiments include a control group?",
+   "why": {
+    "correct": "A control group (no treatment, a placebo, or the current standard) shows what happens without the new treatment, so the comparison isolates its effect.",
+    "options": [
+     "A control group gets no treatment, a placebo or the standard treatment.",
+     "Right: without a comparison group, improvements could come from time, attention or the placebo effect.",
+     "A control group adds subjects; it does not reduce them.",
+     "That is blinding, which is related but different."
+    ]
+   },
+   "options": [
+    "To make sure that each subject receives the new treatment",
+    "To give a baseline that the treatment group can be compared with",
+    "To reduce the number of subjects that the study needs",
+    "To stop subjects from knowing they are in a study"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-experimental-design-15",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A teacher lets students choose between a new online study tool and the usual worksheets, then compares test scores. Why is this a weak experiment?",
+   "why": {
+    "correct": "When subjects choose their own treatment, other differences between them (such as motivation) are confounded with the treatment. Random assignment prevents this.",
+    "options": [
+     "Cost does not affect what the comparison shows.",
+     "A quantitative response is fine.",
+     "Many students is good for replication.",
+     "Right: without random assignment, motivation is mixed up with the effect of the tool."
+    ]
+   },
+   "options": [
+    "The online tool and the worksheets cost different amounts",
+    "Test scores are a quantitative response variable",
+    "The class has too many students to compare",
+    "Self-chosen groups may differ in motivation"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-experimental-design-16",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Patients given a sugar pill report less pain, though the pill has no active ingredient. What is this called?",
+   "why": {
+    "correct": "The placebo effect is a response to a fake treatment, driven by expectation. A placebo control group lets researchers measure the real treatment against it.",
+    "options": [
+     "Right: expecting to feel better can change how people feel.",
+     "Response bias is about untrue survey answers; here the improvement is in how patients feel.",
+     "Replication is about many units per treatment.",
+     "The pill has no active ingredient; the effect comes from expectation."
+    ]
+   },
+   "options": [
+    "The placebo effect",
+    "Response bias",
+    "Replication of the pain medicine",
+    "A confounding variable in the medicine"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-experimental-design-17",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "multi",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which feature of a study allows a cause-and-effect conclusion? Select all that apply.",
+   "why": {
+    "correct": "Random assignment is what supports cause and effect. Random sampling is what supports generalizing to a population.",
+    "options": [
+     "Right: it balances other variables between groups, on average.",
+     "That allows generalizing to the population, not a causal conclusion.",
+     "Size helps replication, but volunteers who choose treatments still allow confounding.",
+     "Measuring more variables does not remove confounding."
+    ]
+   },
+   "options": [
+    "Random assignment of treatments to units",
+    "Random selection of units from a population",
+    "Using a large number of volunteers",
+    "Measuring many variables on each unit"
+   ],
+   "correct": [0]
+  }
+ ]
+}

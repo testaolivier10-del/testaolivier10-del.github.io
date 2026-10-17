@@ -1,0 +1,12 @@
+{
+ "choose-two-of-four": {
+  "file": "figures/choose-two-of-four.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 250,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "All six teams of 2 that can be chosen from Ana, Ben, Cal and Dee: Ana and Ben, Ana and Cal, Ana and Dee, Ben and Cal, Ben and Dee, Cal and Dee. Below: 4C2 = 4! / (2! × 2!) = 24 / 4 = 6 teams."
+ }
+}

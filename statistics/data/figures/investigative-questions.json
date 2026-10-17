@@ -1,0 +1,12 @@
+{
+ "question-to-plan": {
+  "file": "figures/question-to-plan.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A flowchart. It starts at the investigative question, which names the variable, the population and the kind of answer wanted. First decision: data on every member of the population? If yes, a census. If no, a sample, and a second decision: does the researcher impose a condition? If yes, an experiment, where conditions decided by chance allow a cause-and-effect conclusion. If no, an observational study or sample survey, which shows how variables relate, but confounding blocks a cause-and-effect conclusion."
+ }
+}

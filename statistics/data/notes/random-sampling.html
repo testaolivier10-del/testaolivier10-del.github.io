@@ -1,0 +1,35 @@
+<p>A sample is only useful if it represents the population. The surest way to get one is to let chance choose. This page covers why chance works, the four random sampling methods on the exam, and how to write a sampling procedure that someone else could follow exactly.</p>
+
+<h2>Why let chance choose?</h2>
+<p>When a person picks the sample, their choices creep in: friendly-looking people, nearby houses, the first names on a list. Those choices can make the sample differ from the population in ways nobody planned. A <b>random</b> selection uses a chance process, such as a random number generator, so nobody’s preferences decide who is chosen. On average, a random sample looks like the population it came from, and the larger it is, the closer its results tend to be to the population’s.</p>
+<p>Sampling starts from a <b>sampling frame</b>, the list of individuals the sample is actually drawn from: a school roster, a list of addresses, a park map of ponds. Ideally the frame lists the whole population.</p>
+
+<h2>Simple random samples</h2>
+<p>A <b>simple random sample</b> (SRS) of size n is chosen so that every group of n individuals has the same chance of being the sample. That is stronger than saying each individual has the same chance: in a sample of whole homerooms, each student has the same chance, but a group of 100 students from many different homerooms can never occur.</p>
+<p>Samples are usually drawn <b>without replacement</b>: once an individual is chosen, it cannot be chosen again. Drawing <b>with replacement</b> puts each one back, so it could be picked twice, which makes no sense for a committee or a survey.</p>
+<div class="worked">
+<p><b>Write an SRS procedure.</b> A park has 80 ponds; a team will test the water in 10 of them.</p>
+<p><b>Label.</b> Number the ponds on the park map from 1 to 80.</p>
+<p><b>Generate.</b> Use a random number generator to produce whole numbers from 1 to 80.</p>
+<p><b>Skip repeats.</b> If a number comes up again, ignore it.</p>
+<p><b>Select.</b> Continue until 10 different numbers have been chosen, and test the ponds with those numbers.</p>
+<p>A procedure that says only "pick 10 ponds at random" loses credit: another person could not repeat it.</p>
+</div>
+
+<h2>Stratified, cluster and systematic samples</h2>
+<figure id="fig-four" data-fig="four-samples"><figcaption>The same population of 48 students, sampled four ways. Chosen students are in plum.</figcaption></figure>
+<p>A <b>stratified random sample</b> first splits the population into groups called <b>strata</b> (singular: stratum) whose members are similar, such as grades or neighborhoods, then takes an SRS from each stratum. Every stratum is guaranteed a place in the sample. When the response differs between strata, stratifying also gives estimates that vary less from sample to sample than an SRS of the same size.</p>
+<p>A <b>cluster sample</b> splits the population into groups called clusters, often by location (homerooms, city blocks), chooses some clusters at random, and measures everyone in them. It is convenient: four homerooms are much easier to survey than 100 students scattered across the school. It works best when each cluster looks like a small copy of the population.</p>
+<p>A <b>systematic random sample</b> chooses a random starting point in an ordered list and then takes every kth individual. From 1,200 students with $k = 12$, it gives about $\frac{1200}{12} = 100$ students. It is easy, but risky if the list has a pattern that repeats every k entries, such as every 10th house on a street being a corner house.</p>
+<table class="compare">
+<thead><tr><th>Method</th><th>How</th><th>Strength</th><th>Watch out</th></tr></thead>
+<tbody>
+<tr><th>SRS</th><td>label, generate, skip repeats, select</td><td>every group of n equally possible</td><td>needs a full list; may miss a subgroup by chance</td></tr>
+<tr><th>Stratified</th><td>SRS within each stratum</td><td>every stratum represented; more precise when strata differ</td><td>strata must be groups of similar individuals</td></tr>
+<tr><th>Cluster</th><td>choose whole groups at random, measure everyone in them</td><td>cheap and convenient</td><td>clusters that differ from each other make results less precise</td></tr>
+<tr><th>Systematic</th><td>random start, then every kth</td><td>easy to carry out</td><td>a pattern in the list that repeats every k</td></tr>
+</tbody>
+</table>
+
+<h2>Strata or clusters?</h2>
+<p>The two ideas are used in opposite ways. Strata should be groups of individuals who are alike, and you sample from <i>every</i> stratum. Clusters should each be a mix that resembles the population, and you sample <i>all</i> of a few clusters. If a principal thinks opinions differ by grade, she should stratify by grade. If she just needs a quick, reasonable sample and homerooms mix all kinds of students, clusters are fine.</p>

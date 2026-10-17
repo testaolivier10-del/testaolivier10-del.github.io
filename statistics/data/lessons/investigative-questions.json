@@ -1,0 +1,83 @@
+{
+ "topic": "investigative-questions",
+ "hook": "Students who eat breakfast get better grades. Does that mean breakfast raises grades? Maybe, but students who eat breakfast may also sleep more or have more help at home. Before collecting data, you need a clear question and a plan that can answer it. Whether you may claim that breakfast causes anything depends on how the data were collected.",
+ "prereq": [
+  {
+   "q": "Which is a parameter?",
+   "options": [
+    "The proportion of all students at a school who walk to school",
+    "The proportion of 50 sampled students who walk",
+    "The number of students asked",
+    "The answer of one student"
+   ],
+   "correct": 0,
+   "why": "A parameter describes the whole population.",
+   "review": "variables"
+  },
+  {
+   "q": "Which question needs data from many individuals?",
+   "options": [
+    "How much do students at a school sleep on school nights?",
+    "When does the school open?",
+    "How many floors does the school have?",
+    "What is the principal’s name?"
+   ],
+   "correct": 0,
+   "why": "Sleep varies from student to student.",
+   "review": "intro-statistics"
+  }
+ ],
+ "figure": {
+  "figure": "question-to-plan",
+  "caption": "From an investigative question to a plan: a census measures everyone; a sample survey or observational study shows how variables relate; only an experiment supports cause and effect."
+ },
+ "chain": [
+  {
+   "cause": "Write an investigative question that names the population, the variable and the kind of answer",
+   "effect": "it tells you what to measure, on whom, and which parameter you are after"
+  },
+  {
+   "cause": "If you can measure the whole population",
+   "effect": "a census answers the question directly"
+  },
+  {
+   "cause": "If you observe without imposing anything (a survey or observational study)",
+   "effect": "you can describe the population and show how variables are related"
+  },
+  {
+   "cause": "But groups that form on their own can differ in other ways",
+   "effect": "confounding blocks a cause-and-effect conclusion; that needs an experiment with conditions decided by chance"
+  }
+ ],
+ "ideas": [
+  "An <b>investigative question</b> names the population, the variable, the parameter (such as a proportion or a typical value) and whether the goal is to describe or to look for a cause.",
+  "A <b>census</b> collects data from every member of the population; a <b>sample survey</b> asks questions of a sample.",
+  "An <b>observational study</b> records variables without imposing anything (looking back: retrospective; following forward: prospective). An <b>experiment</b> imposes conditions and measures the response.",
+  "The <b>explanatory variable</b> may help explain changes in the <b>response variable</b>. A <b>confounding variable</b> is related to both, so its effect cannot be separated.",
+  "A <b>cause-and-effect conclusion</b> needs an experiment in which chance decides who gets which condition."
+ ],
+ "misconception": {
+  "wrong": "Walkers in a study of 1,200 adults had lower blood pressure, so walking lowers blood pressure.",
+  "right": "This is an observational study. Walkers may be younger or eat differently, and those confounding variables could explain the difference. Only an experiment supports cause and effect."
+ },
+ "check": [
+  "stat-investigative-questions-1",
+  "stat-investigative-questions-2",
+  "stat-investigative-questions-3",
+  "stat-investigative-questions-4",
+  "stat-investigative-questions-5",
+  "stat-investigative-questions-11",
+  "stat-investigative-questions-15"
+ ],
+ "summary": "An investigative question names the population, the variable, the parameter and the kind of conclusion wanted. A census measures everyone; sample surveys and observational studies record variables without imposing anything, so they show relationships but confounding blocks cause. Only an experiment, with conditions decided by chance, supports a cause-and-effect conclusion.",
+ "connections": [
+  {
+   "href": "../notes/comparing-distributions.html",
+   "label": "Back: comparing distributions (1.9)"
+  },
+  {
+   "href": "../notes/random-sampling.html",
+   "label": "Next: choosing a sample (1.11)"
+  }
+ ]
+}

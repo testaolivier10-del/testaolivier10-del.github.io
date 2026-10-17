@@ -81,8 +81,8 @@
 .ls-root.ls-phone .pv-tl{font-size:13px;}
 .pv-lead{fill:none;stroke:var(--stat-s1);stroke-width:1.4;}
 .pv-leaddot{fill:var(--stat-s1);stroke:var(--white);stroke-width:1.5;}
-:root[data-theme="dark"] .pv-pshade{fill-opacity:.62;}
-:root[data-theme="dark"] .pv-under{fill-opacity:.1;}
+:root[data-theme="dark"] .pv-pshade{fill-opacity:.72;}
+:root[data-theme="dark"] .pv-under{fill-opacity:.04;}
 :root[data-theme="dark"] .pv-power{fill-opacity:.55;}
 :root[data-theme="dark"] .pv-beta{fill-opacity:.26;}
 .pv-seg > button{font-size:15px;white-space:nowrap;}

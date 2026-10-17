@@ -50,9 +50,7 @@
      350
     ],
     "xLabel": "hours of sleep",
-    "yLabel": "reaction time (ms)",
-    "width": 520,
-    "height": 300
+    "yLabel": "reaction time (ms)"
    },
    "data": {
     "vars": [

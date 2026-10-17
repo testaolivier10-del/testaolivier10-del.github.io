@@ -27,33 +27,31 @@
    "table": {
     "caption": "The 12 differences (before minus after), beats per minute",
     "cols": [
-     "Member",
-     "1",
-     "2",
-     "3",
-     "4",
-     "5",
-     "6",
-     "7",
-     "8",
-     "9",
-     "10",
-     "11",
-     "12"
+     "Members 1 to 6",
+     "Members 7 to 12"
     ],
     "rows": [
      [
-      "Difference",
       "3",
+      "-1"
+     ],
+     [
       "1",
+      "5"
+     ],
+     [
       "6",
+      "3"
+     ],
+     [
       "1",
+      "3"
+     ],
+     [
       "2",
-      "5",
-      "-1",
-      "5",
-      "3",
-      "3",
+      "5"
+     ],
+     [
       "5",
       "1"
      ]
@@ -727,20 +725,19 @@
    "q": "Which statements about the t statistic $t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$ are true? Select all that apply.",
    "options": [
     "It counts how many standard errors $\\bar{x}$ is from $\\mu_0$",
-    "Its p-value comes from a t distribution with $n - 1$ degrees of freedom",
+    "Its p-value comes from a t distribution with $n$ degrees of freedom",
     "It uses the sample mean in place of $\\mu_0$ in the numerator",
     "A negative value means the test was set up wrongly",
     "It is compared with $z^*$ to find the p-value"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "t is the number of standard errors between the sample mean and the hypothesized mean, judged on the t distribution with $n - 1$ df.",
+    "correct": "t is the number of standard errors between the sample mean and the hypothesized mean, judged on the t distribution with $n - 1$ df (not $n$).",
     "options": [
      "Right: a standardized test statistic is (statistic minus null value) over standard error.",
-     "Right: using $s$ for $\\sigma$ calls for t with $n - 1$ df.",
+     "A one-sample t statistic has $n - 1$ degrees of freedom.",
      "The numerator is $\\bar{x} - \\mu_0$: both appear.",
      "A negative t just means $\\bar{x}$ is below $\\mu_0$.",
      "The p-value comes from the t distribution, not the standard normal."

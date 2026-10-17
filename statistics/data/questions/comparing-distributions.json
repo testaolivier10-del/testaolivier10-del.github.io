@@ -1,0 +1,540 @@
+{
+ "stimuli": {
+  "comparing-distributions-s1": {
+   "kind": "graph",
+   "title": "Travel times on two bus routes",
+   "text": "A commuter timed 15 trips on each of two bus routes from her home to work, in minutes. Route 1: 24, 26, 27, 28, 29, 30, 30, 31, 32, 33, 33, 34, 35, 37, 39. Route 2: 18, 20, 22, 23, 25, 26, 27, 28, 30, 32, 35, 38, 41, 45, 62 (invented data).",
+   "plot": {
+    "label": "Parallel boxplots of travel times in minutes for two bus routes, 15 trips each. Route 1: box from 28 to 34, median 31, whiskers from 24 to 39. Route 2: box from 23 to 38, median 28, whiskers from 18 to 45, one outlier at 62.",
+    "kind": "box",
+    "groups": [
+     {
+      "name": "Route 1",
+      "data": [24, 26, 27, 28, 29, 30, 30, 31, 32, 33, 33, 34, 35, 37, 39]
+     },
+     {
+      "name": "Route 2",
+      "data": [18, 20, 22, 23, 25, 26, 27, 28, 30, 32, 35, 38, 41, 45, 62]
+     }
+    ],
+    "xLabel": "minutes",
+    "x": [10, 70],
+    "xStep": 10
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "Route 1 travel time",
+      "unit": "minutes",
+      "values": [24, 26, 27, 28, 29, 30, 30, 31, 32, 33, 33, 34, 35, 37, 39]
+     },
+     {
+      "name": "Route 2 travel time",
+      "unit": "minutes",
+      "values": [18, 20, 22, 23, 25, 26, 27, 28, 30, 32, 35, 38, 41, 45, 62]
+     }
+    ]
+   }
+  },
+  "comparing-distributions-s2": {
+   "kind": "table",
+   "title": "Scores in two chemistry classes",
+   "text": "Two chemistry classes took different tests. Ana, in class A, scored 86. Ben, in class B, scored 88 (invented data).",
+   "table": {
+    "caption": "Test scores by class",
+    "cols": [
+     "Class",
+     "Mean",
+     "Standard deviation"
+    ],
+    "rows": [
+     [
+      "A",
+      "74",
+      "8"
+     ],
+     [
+      "B",
+      "81",
+      "4"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-comparing-distributions-1",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which statement compares the centers of the two distributions?",
+   "why": {
+    "correct": "Compare with a comparing word and numbers: Route 1’s median (31) is greater than Route 2’s (28).",
+    "options": [
+     "Both numbers are right, but a comparison needs a comparing word: which median is greater?",
+     "Right: it names both medians and says which is greater, in context.",
+     "The longest trip is not the center. Route 2’s median, 28, is the smaller one.",
+     "The medians differ by 3 minutes, and the comparison should say which is greater."
+    ]
+   },
+   "stimulus": "comparing-distributions-s1",
+   "options": [
+    "The median travel time for Route 1 is 31 minutes, and the median for Route 2 is 28 minutes",
+    "Route 1 has a greater median travel time (31 minutes) than Route 2 (28 minutes)",
+    "Route 2 has the greater center, as its trips run up to 62 minutes",
+    "The routes have about the same center, as both are about 30 minutes"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-comparing-distributions-2",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement compares the variability of the two routes?",
+   "why": {
+    "correct": "Compare spreads with a measure such as the IQR: 15 minutes for Route 2 against 6 for Route 1, so Route 2 is more variable.",
+    "options": [
+     "A larger center says nothing about spread.",
+     "Equal sample sizes do not mean equal spread.",
+     "Where the box starts is position, not spread; Route 2’s box is wider.",
+     "Right: Route 2’s box is much wider, $38 - 23 = 15$ against $34 - 28 = 6$."
+    ]
+   },
+   "stimulus": "comparing-distributions-s1",
+   "options": [
+    "Route 1’s times vary more, since its median of 31 minutes is the greater of the two medians",
+    "The routes vary equally, since each has 15 timed trips",
+    "Route 2’s times vary less, since its box starts at a lower time",
+    "Route 2’s times vary more: its IQR is 15 minutes, against 6 for Route 1"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-comparing-distributions-3",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which comparison is the most complete?",
+   "why": {
+    "correct": "A complete comparison covers shape, center, spread and unusual features, each with a comparing word and numbers, in context.",
+    "options": [
+     "Right: shape, outliers, center and spread are all compared, with numbers and comparing words, in context.",
+     "The numbers are right, but nothing is compared: which is greater, which varies more?",
+     "\"Better\" and \"worse\" are judgments; the comparison needs shape, center and spread.",
+     "This ignores the outlier, the different medians and the very different spreads."
+    ]
+   },
+   "stimulus": "comparing-distributions-s1",
+   "options": [
+    "Route 2 is skewed right with an outlier at 62 minutes, while Route 1 is roughly symmetric with none; Route 1 has the greater median (31 against 28) but much less variability (IQR 6 against 15 minutes)",
+    "Route 1’s median is 31 and its IQR is 6; Route 2’s median is 28 and its IQR is 15, and Route 2 also has an outlier at 62 minutes",
+    "Route 2 is better, because some of its trips are much faster, and Route 1 is worse, because its trips are slower on most days",
+    "Both routes have trips from about 20 to about 40 minutes, so the two distributions are nearly the same"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-comparing-distributions-4",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The commuter must reach work within 40 minutes every day. Which route should she choose, based on these trips?",
+   "why": {
+    "correct": "The claim is about the longest trips, so look at the upper end: Route 1 never went over 39 minutes; Route 2 went over 40 three times.",
+    "options": [
+     "A lower typical time does not help if some trips are too long; 3 of Route 2’s trips took over 40 minutes.",
+     "Her need is to never be late, which depends on the longest trips.",
+     "Right: Route 1’s maximum is 39. Route 2 took longer than 40 minutes on 3 of its 15 trips.",
+     "Medians under 40 still allow trips over 40; Route 2 had three."
+    ]
+   },
+   "stimulus": "comparing-distributions-s1",
+   "options": [
+    "Route 2: its median of 28 minutes is lower than Route 1’s",
+    "Route 2: its fastest trip, 18 minutes, beats any Route 1 trip",
+    "Route 1: all 15 of its trips took 39 minutes or less",
+    "Either route"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-comparing-distributions-5",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Type the expression for the z-score of Ana’s score of 86 in class A.",
+   "why": {
+    "correct": "$z = \\frac{x - \\bar{x}}{s} = \\frac{86 - 74}{8} = 1.5$."
+   },
+   "stimulus": "comparing-distributions-s2",
+   "setup": {
+    "answer": "(86 - 74)/8",
+    "mustUse": [
+     "74",
+     "8"
+    ],
+    "mistakes": [
+     {
+      "expr": "(74 - 86)/8",
+      "why": "Subtract in the order value minus mean, so a score above the mean has a positive z-score: (86 − 74)/8."
+     },
+     {
+      "expr": "86 - 74/8",
+      "why": "Put brackets around the subtraction: (86 − 74)/8. Without them only 74 is divided by 8."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-comparing-distributions-6",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Type the expression for the z-score of Ben’s score of 88 in class B.",
+   "why": {
+    "correct": "$z = \\frac{88 - 81}{4} = 1.75$."
+   },
+   "stimulus": "comparing-distributions-s2",
+   "setup": {
+    "answer": "(88 - 81)/4",
+    "mustUse": [
+     "81",
+     "4"
+    ],
+    "mistakes": [
+     {
+      "expr": "(88 - 81)/8",
+      "why": "Use Ben’s own class: its standard deviation is 4, not 8."
+     },
+     {
+      "expr": "(88 - 74)/4",
+      "why": "Use class B’s mean, 81, for Ben."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-comparing-distributions-7",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which student did better compared with their own class?",
+   "why": {
+    "correct": "Standardize: Ana $z = 1.5$, Ben $z = 1.75$. Ben is further above his class in standard deviation units.",
+    "options": [
+     "Raw distances ignore spread. Class B’s scores vary less, so 7 points there is a bigger achievement.",
+     "The classes took different tests, so raw scores cannot be compared.",
+     "Right: Ben’s score is farther above his class mean, measured in standard deviations.",
+     "z-scores are made exactly for this: they put both scores on the same scale."
+    ]
+   },
+   "stimulus": "comparing-distributions-s2",
+   "options": [
+    "Ana: her score is 12 points above her class mean, and Ben’s is 7",
+    "Ben, because his score of 88 is higher than Ana’s 86",
+    "Ben: his z-score of 1.75 is higher than Ana’s 1.5",
+    "Neither"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-comparing-distributions-8",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "conclude",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Interpret Ana’s z-score of 1.5 in context.",
+   "why": {
+    "correct": "A z-score tells how many standard deviations a value is above (positive) or below (negative) the mean, in context."
+   },
+   "stimulus": "comparing-distributions-s2",
+   "conclude": {
+    "mode": "zscore",
+    "slots": {
+     "size": {
+      "label": "How far",
+      "options": [
+       "1.5 standard deviations",
+       "1.5 points",
+       "1.5 percent"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A z-score counts standard deviations, not points.",
+       "2": "A z-score is not a percent."
+      }
+     },
+     "direction": {
+      "options": [
+       "above",
+       "below"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A positive z-score means above the mean."
+      }
+     },
+     "context": {
+      "label": "Compared with",
+      "options": [
+       "the mean score of class A",
+       "the median score of class A",
+       "the top score in class A"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A z-score measures from the mean.",
+       "2": "A z-score measures from the mean, not the top score."
+      }
+     }
+    },
+    "model": "Ana’s score of 86 is 1.5 standard deviations above the mean score of class A.",
+    "write": {
+     "context": [
+      "class",
+      "score"
+     ],
+     "parameter": false,
+     "evidence": false,
+     "forbid": [
+      "1.5 points",
+      "percent"
+     ]
+    }
+   }
+  },
+  {
+   "id": "stat-comparing-distributions-9",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "A runner’s time has a z-score of $-2$ among runners in her race. What does this mean?",
+   "why": {
+    "correct": "Negative z: below the mean. $|z| = 2$: two standard deviations away.",
+    "options": [
+     "Right: a negative z-score is below the mean; the size counts standard deviations.",
+     "A z-score counts standard deviations, not minutes.",
+     "A z-score gives distance from the mean, not a place in the order.",
+     "A z-score is not a percent."
+    ]
+   },
+   "options": [
+    "Her time is 2 standard deviations below the mean time",
+    "Her time is 2 minutes faster than the mean time in the race",
+    "She finished in second place among the runners",
+    "Her time is 2% lower than the mean time in the race"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-comparing-distributions-10",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Scores on a quiz have mean 60 and standard deviation 10. What score has a z-score of $-0.5$?",
+   "why": {
+    "correct": "Undo the z-score: value = mean + z × SD = $60 + (-0.5)(10) = 55$.",
+    "options": [
+     "A negative z-score is below the mean.",
+     "z counts standard deviations: subtract $0.5 \\times 10 = 5$.",
+     "z is $-0.5$, half a standard deviation.",
+     "Right: $x = \\bar{x} + z \\cdot s = 60 + (-0.5)(10) = 55$."
+    ]
+   },
+   "options": [
+    "65",
+    "59.5",
+    "50",
+    "55"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-comparing-distributions-11",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In one school the median commute is 20 minutes; in another it is 30 minutes. A student says the median commute for both schools together must be 25 minutes. Is that right?",
+   "why": {
+    "correct": "You cannot average medians to get the median of combined data; it depends on every value and on the group sizes.",
+    "options": [
+     "That holds only in special cases. With 1,000 students at one school and 100 at the other, the larger school dominates.",
+     "Right: a median of combined data comes from all the values together; averaging two medians usually gives the wrong answer.",
+     "Even symmetric groups of different sizes give a combined median closer to the larger group’s.",
+     "It can be anywhere from 20 to 30, depending on the data."
+    ]
+   },
+   "options": [
+    "Yes: the median of the combined data is the average of the two medians",
+    "No: it depends on each school’s size and on all the values",
+    "Yes, as long as each of the two schools has a symmetric distribution",
+    "No: it is 30 minutes"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-comparing-distributions-12",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Distribution A of reaction times is roughly symmetric; distribution B is skewed right. Which statement about their shapes is a correct comparison?",
+   "why": {
+    "correct": "Compare shapes directly: B has a long tail toward larger (slower) times; A does not.",
+    "options": [
+     "Right: right skew in B means a few much slower reaction times that A does not have.",
+     "Shape says nothing about the number of values.",
+     "Skew alone does not tell which center is greater; that needs the centers themselves.",
+     "Both may be unimodal, but one is symmetric and the other skewed."
+    ]
+   },
+   "options": [
+    "B has a longer tail toward slow times than A does",
+    "A has more reaction times than B, since it is symmetric",
+    "B has a greater center than A, since it is skewed right",
+    "A and B have the same shape"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-comparing-distributions-13",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Kai’s height is at the 90th percentile of his class. Lena’s is at the 85th percentile of hers. What does this tell you?",
+   "why": {
+    "correct": "Percentiles and z-scores describe relative position within a group, not raw size across groups.",
+    "options": [
+     "Percentiles are relative to each class; Lena could be taller in centimeters.",
+     "A percentile is a position, not a measurement.",
+     "Right: a percentile gives relative position within the person’s own group.",
+     "Percentiles inside each class say nothing about which class is taller."
+    ]
+   },
+   "options": [
+    "Kai is taller than Lena, since 90 is more than 85",
+    "Kai is 90 cm tall and Lena is 85 cm tall",
+    "Kai is taller than 90% of his class, and Lena than 85% of hers",
+    "Kai’s class is taller than Lena’s on average"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-comparing-distributions-14",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "multi",
+   "practice": "4.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which of these describe the relative position of a value in its distribution? Select all that apply.",
+   "why": {
+    "correct": "Percentiles and z-scores are measures of relative position.",
+    "options": [
+     "Right: it counts standard deviations above or below the mean.",
+     "Right: it gives the percent of values at or below it.",
+     "The range describes the whole distribution’s spread, not one value’s position.",
+     "The sample size says nothing about where one value stands."
+    ]
+   },
+   "options": [
+    "Its z-score",
+    "Its percentile",
+    "The range of the data",
+    "The number of values in the data"
+   ],
+   "correct": [0, 1]
+  },
+  {
+   "id": "stat-comparing-distributions-15",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Heights of a team are measured in inches and the z-score of one player is 1.2. If the heights are converted to centimeters, what is the player’s z-score?",
+   "why": {
+    "correct": "A z-score has no units: $\\frac{x - \\bar{x}}{s}$ has the same units on top and bottom, so changing units leaves it unchanged.",
+    "options": [
+     "The top and bottom of the z-score both get multiplied by 2.54, so it cancels.",
+     "Right: converting units multiplies the value, the mean and the standard deviation by 2.54, so the ratio is unchanged.",
+     "Nothing is divided: the change in units cancels out.",
+     "Whatever the height, the z-score stays 1.2: it has no units."
+    ]
+   },
+   "options": [
+    "3.05",
+    "Still 1.2",
+    "0.47",
+    "It depends on the player’s height in centimeters"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-comparing-distributions-16",
+   "unit": "unit-1",
+   "topic": "comparing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two dotplots: weights of apples from orchard A run from 150 to 170 grams; weights from orchard B run from 120 to 210 grams. Both are centered near 160 grams. Which statement is a correct comparison?",
+   "why": {
+    "correct": "With similar centers, compare spread: B’s weights cover a far wider range, so B is more variable.",
+    "options": [
+     "The centers are similar; B also has much lighter apples.",
+     "Values close together mean less variability.",
+     "Same center, very different spread.",
+     "Right: B’s weights spread over 90 grams, A’s over 20, with similar centers."
+    ]
+   },
+   "options": [
+    "Orchard B’s apples are heavier, since some weigh 210 grams",
+    "Orchard A’s apples are more variable, since they are close together",
+    "The orchards are the same, since both centers are near 160 grams",
+    "The weights from orchard B are more variable than those from A"
+   ],
+   "correct": 3
+  }
+ ]
+}

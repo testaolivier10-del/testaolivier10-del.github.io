@@ -31,7 +31,12 @@
         typeLabel: 'Kind of problem',
         title: function(p){ return { design: 'Name the design', variables: 'Variables and units', scope: 'What can we conclude?', procedure: 'Random assignment', confound: 'Confounding and blinding' }[p.type] || 'Practice problem'; },
         extra: function(el, p, api){ api.fig = el; qfig(el, p, false); },
-        onStep: function(st, right, api){ if(st.key === 'cause') qfig(api.fig, api.problem, true); } }); },
+        onStep: function(st, right, api){
+          if(st.key !== 'cause') return;
+          qfig(api.fig, api.problem, true);
+          var stage = document.querySelector('.ls-root .ls-drill-stage');
+          if(stage && api.fig && !stage.contains(api.fig)) stage.appendChild(api.fig);
+        } }); },
       onShow: function(m){ if(m !== 'explore' && ex) ex.stop(); },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
@@ -56,9 +61,9 @@
       [1, 0].forEach(function(b){ var rows = U.filter(function(u){ return u.block === b; }), r0 = rows[0].row; L.blocks[b] = { x: x0 - 8, y: shelf[r0] - 250, w: sc.cols * cw + 16, h: 270, name: sc.lurk.names[b], ty: shelf[r0] - 228 }; });
     } else {
       var W2 = 1000, cw2 = 150, rh = 150, x2 = (W2 - sc.cols * cw2) / 2, top = 40;
-      L.W = W2; L.H = top + sc.rows * rh + 30;
+      L.W = W2; L.H = top + sc.rows * rh + 50;
       bg.push('<rect class="dr-room" x="0" y="0" width="' + W2 + '" height="' + L.H + '"/>');
-      U.forEach(function(u){ L.at.push({ x: x2 + u.col * cw2, y: top + u.row * rh + (u.row >= sc.lurk.rows[0] ? 20 : 0), w: cw2, h: rh - 10 }); });
+      U.forEach(function(u){ L.at.push({ x: x2 + u.col * cw2, y: top + u.row * rh + (u.row >= sc.lurk.rows[0] ? 40 : 0), w: cw2, h: rh - 10 }); });
       [0, 1].forEach(function(b){ var rows = U.filter(function(u){ return u.block === b; }), ys = rows.map(function(u){ return L.at[u.i].y; }); var y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys) + rh - 10; L.blocks[b] = { x: x2 - 10, y: y0 - 28, w: sc.cols * cw2 + 20, h: y1 - y0 + 34, name: sc.lurk.names[b], ty: y0 - 9 }; });
     }
     var pairs = {};
@@ -85,17 +90,17 @@
       if(y != null && grow > 0.95) g += '<text class="dr-val" x="' + cx + '" y="' + (base - 16) + '" text-anchor="middle">' + fx(y, sc.decimals) + '</text>';
       g += '<text class="dr-lab" x="' + (a.x + 10) + '" y="' + (base - 4) + '">' + u.label + '</text>';
     } else {
-      var cx2 = a.x + a.w / 2 - 14, b2 = a.y + a.h * 0.72, hy = b2 - 34, old = u.block === 1;
+      var cx2 = a.x + a.w / 2 - 16, b2 = a.y + a.h * 0.74, hy = b2 - 44, old = u.block === 1;
       var skin = hash(u.i, 5) % 4, hair = old ? 'old' + (hash(u.i, 6) % 2) : String(hash(u.i, 6) % 4);
-      g += '<rect class="dr-chair" x="' + (cx2 - 30) + '" y="' + (b2 - 36) + '" width="60" height="44" rx="10"/>' +
-        '<path class="dr-shirt dr-shirt-' + (hash(u.i, 7) % 4) + '" d="M' + (cx2 - 23) + ' ' + b2 + ' Q ' + (cx2 - 23) + ' ' + (b2 - 25) + ' ' + cx2 + ' ' + (b2 - 25) + ' Q ' + (cx2 + 23) + ' ' + (b2 - 25) + ' ' + (cx2 + 23) + ' ' + b2 + ' Z"/>' +
-        '<circle class="dr-skin dr-skin-' + skin + '" cx="' + cx2 + '" cy="' + hy + '" r="14"/>' +
-        '<path class="dr-hair dr-hair-' + hair + '" d="M' + (cx2 - 14.6) + ' ' + (hy + 1) + ' A 14.6 14.6 0 0 1 ' + (cx2 + 14.6) + ' ' + (hy + 1) + ' Q ' + (cx2 + 5) + ' ' + (hy - (old ? 4 : 9)) + ' ' + (cx2 - 14.6) + ' ' + (hy + 1) + ' Z"/>' +
-        (old && hash(u.i, 8) % 2 ? '<path class="dr-glasses" d="M' + (cx2 - 10) + ' ' + (hy + 2) + ' h 7 M ' + (cx2 + 3) + ' ' + (hy + 2) + ' h 7 M ' + (cx2 - 3) + ' ' + (hy + 2) + ' h 6"/>' : '') +
-        '<rect class="dr-table" x="' + (cx2 - 34) + '" y="' + (b2 - 2) + '" width="68" height="12" rx="3"/>' +
-        '<text class="dr-age" x="' + cx2 + '" y="' + (b2 + 27) + '" text-anchor="middle">' + (u.age != null ? 'Age ' + u.age : '') + '</text>';
-      if(tr) g += '<g class="dr-tag dr-pill"><rect x="' + (cx2 + 30) + '" y="' + (b2 - 26) + '" width="34" height="18" rx="9"/><path class="dr-pill-mid" d="M' + (cx2 + 47) + ' ' + (b2 - 26) + ' v 18"/><text x="' + (cx2 + 47) + '" y="' + (b2 - 46) + '" text-anchor="middle">' + tr + '</text></g>';
-      if(y != null && grow > 0.95) g += '<g class="dr-score"><rect x="' + (cx2 + 26) + '" y="' + (hy - 30) + '" width="42" height="26" rx="8"/><text x="' + (cx2 + 47) + '" y="' + (hy - 11.5) + '" text-anchor="middle">' + fx(y, 0) + '</text></g>';
+      g += '<rect class="dr-chair" x="' + (cx2 - 38) + '" y="' + (b2 - 46) + '" width="76" height="56" rx="13"/>' +
+        '<path class="dr-shirt dr-shirt-' + (hash(u.i, 7) % 4) + '" d="M' + (cx2 - 30) + ' ' + b2 + ' Q ' + (cx2 - 30) + ' ' + (b2 - 32) + ' ' + cx2 + ' ' + (b2 - 32) + ' Q ' + (cx2 + 30) + ' ' + (b2 - 32) + ' ' + (cx2 + 30) + ' ' + b2 + ' Z"/>' +
+        '<circle class="dr-skin dr-skin-' + skin + '" cx="' + cx2 + '" cy="' + hy + '" r="18"/>' +
+        '<path class="dr-hair dr-hair-' + hair + '" d="M' + (cx2 - 18.7) + ' ' + (hy + 1) + ' A 18.7 18.7 0 0 1 ' + (cx2 + 18.7) + ' ' + (hy + 1) + ' Q ' + (cx2 + 6) + ' ' + (hy - (old ? 5 : 11)) + ' ' + (cx2 - 18.7) + ' ' + (hy + 1) + ' Z"/>' +
+        (old && hash(u.i, 8) % 2 ? '<path class="dr-glasses" d="M' + (cx2 - 13) + ' ' + (hy + 3) + ' h 9 M ' + (cx2 + 4) + ' ' + (hy + 3) + ' h 9 M ' + (cx2 - 4) + ' ' + (hy + 3) + ' h 8"/>' : '') +
+        '<rect class="dr-table" x="' + (cx2 - 44) + '" y="' + (b2 - 3) + '" width="88" height="14" rx="3"/>' +
+        '<text class="dr-age" x="' + cx2 + '" y="' + (b2 + 32) + '" text-anchor="middle">' + (u.age != null ? 'Age ' + u.age : '') + '</text>';
+      if(tr) g += '<g class="dr-tag dr-pill"><rect x="' + (cx2 + 34) + '" y="' + (b2 - 30) + '" width="44" height="24" rx="12"/><text x="' + (cx2 + 56) + '" y="' + (b2 - 13) + '" text-anchor="middle">' + tr + '</text></g>';
+      if(y != null && grow > 0.95) g += '<g class="dr-score"><rect x="' + (cx2 + 30) + '" y="' + (hy - 34) + '" width="46" height="28" rx="9"/><text x="' + (cx2 + 53) + '" y="' + (hy - 14) + '" text-anchor="middle">' + fx(y, 0) + '</text></g>';
       g += '<text class="dr-lab" x="' + (a.x + 6) + '" y="' + (a.y + 18) + '">' + u.label + '</text>';
     }
     return g + '<rect class="dr-hit" x="' + a.x + '" y="' + a.y + '" width="' + a.w + '" height="' + a.h + '"/></g>';
@@ -133,7 +138,7 @@
     var LS = null, nid = T.nid('dr'), sc, U, L, lim, design = 'cr', blind = true, rows = {}, cur = null, anim = null, touched = false, sel = -1, dom = [0, 1];
     var rng = M.rng(1000 + Math.floor(Math.random() * 9000));
     function $(s){ return host.querySelector(s) || (LS ? LS.root.querySelector(s) : null); }
-    function seg(d){ return '<button type="button" data-d="' + d + '" aria-pressed="false"' + (d === 'none' ? ' aria-label="Not random: someone chooses"' : '') + '>' + esc({ cr: 'Completely random', block: 'Blocked', pairs: 'Matched pairs', none: 'Someone chooses' }[d]) + '</button>'; }
+    function seg(d){ return '<button type="button" data-d="' + d + '" aria-pressed="false"' + (d === 'none' ? ' aria-label="Not random: someone chooses"' : d === 'cr' ? ' aria-label="Completely randomized"' : '') + '>' + esc({ cr: 'Randomized', block: 'Blocked', pairs: 'Matched pairs', none: 'Someone chooses' }[d]) + '</button>'; }
     host.innerHTML = '<section class="bt-problem dr-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Design randomizer</h2>' +
       '<div class="sl-fig dr-fig"><div class="sl-scenebox dr-scenebox"></div><div class="sl-side"><div class="sl-strip dr-strip" aria-hidden="true" hidden></div>' +
       '<p class="sl-legend dr-legend" aria-hidden="true"><span class="dr-lg-t">True effect</span><span class="dr-lg-cur">This experiment</span><span class="dr-lg-dot">Other runs</span></p><div class="sl-meansbox dr-estbox"></div></div></div>' +

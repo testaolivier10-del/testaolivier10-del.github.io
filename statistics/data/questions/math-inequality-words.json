@@ -1,0 +1,288 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "stat-math-inequality-words-1",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "A count X can be 0, 1, 2, and so on. Which inequality says \"X is at least 3\"?",
+   "why": {
+    "correct": "\"At least 3\" is 3 or more: $X \\ge 3$.",
+    "options": [
+     "That is \"more than 3\", which leaves out 3.",
+     "Right: \"at least 3\" means 3 or more, so 3 itself is included.",
+     "That is \"at most 3\", 3 or fewer.",
+     "That is \"fewer than 3\"."
+    ]
+   },
+   "options": [
+    "$X > 3$",
+    "$X \\ge 3$",
+    "$X \\le 3$",
+    "$X < 3$"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-inequality-words-2",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a count X, which is the same as \"fewer than 3\"?",
+   "why": {
+    "correct": "\"Fewer than 3\" means $X < 3$. For counts, the largest such value is 2, so it is $X \\le 2$. Reading it as $X \\le 3$ is a classic slip.",
+    "options": [
+     "That includes 3. \"Fewer than 3\" stops before 3.",
+     "That is \"at least 3\", the opposite group of counts.",
+     "That leaves out 2, which is fewer than 3.",
+     "Right: fewer than 3 is $X < 3$, and for whole-number counts that is 0, 1 or 2, so $X \\le 2$."
+    ]
+   },
+   "options": [
+    "$X \\le 3$",
+    "$X \\ge 3$",
+    "$X < 2$",
+    "$X \\le 2$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-math-inequality-words-3",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "multi",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "A count X can be 0 to 6. Which values are included in \"at most 2\"? Select all that apply.",
+   "why": {
+    "correct": "\"At most 2\" means 2 or fewer: 0, 1 and 2.",
+    "options": [
+     "Right: at most 2 includes every count up to and including 2.",
+     "Right: 1 is fewer than 2.",
+     "Right: \"at most\" includes the boundary.",
+     "3 is more than 2.",
+     "4 is more than 2.",
+     "6 is more than 2."
+    ]
+   },
+   "options": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "6"
+   ],
+   "correct": [0, 1, 2]
+  },
+  {
+   "id": "stat-math-inequality-words-4",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Out of 10 free throws, a player makes \"more than 4\". For the count X of free throws made, which inequality fits?",
+   "why": {
+    "correct": "\"More than 4\" is $X > 4$, which for counts is $X \\ge 5$.",
+    "options": [
+     "Right: more than 4 is $X > 4$, which for whole numbers is 5 or more.",
+     "That includes 4, but \"more than 4\" does not.",
+     "That is \"at most 4\".",
+     "That leaves out 5, which is more than 4."
+    ]
+   },
+   "options": [
+    "$X \\ge 5$",
+    "$X \\ge 4$",
+    "$X \\le 4$",
+    "$X > 5$"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-inequality-words-5",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which inequality says \"no more than 5\"?",
+   "why": {
+    "correct": "\"No more than 5\" is the same as \"at most 5\": $X \\le 5$.",
+    "options": [
+     "That leaves out 5, which \"no more than 5\" allows.",
+     "That is \"at least 5\", the opposite direction.",
+     "Right: no more than 5 means 5 or fewer.",
+     "That is \"more than 5\"."
+    ]
+   },
+   "options": [
+    "$X < 5$",
+    "$X \\ge 5$",
+    "$X \\le 5$",
+    "$X > 5$"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-inequality-words-6",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A count X can be 0, 1, 2, ... , 8. Which counts make up \"at least one\"?",
+   "why": {
+    "correct": "\"At least one\" is $X \\ge 1$: every value except 0. It is often easiest to find by starting with all the values and removing 0.",
+    "options": [
+     "Those are \"at most one\".",
+     "That is \"exactly one\".",
+     "Right: \"at least one\" is every count except 0.",
+     "That is \"more than one\", which leaves out 1."
+    ]
+   },
+   "options": [
+    "0 and 1",
+    "1 alone",
+    "1 through 8",
+    "2 through 8"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-inequality-words-7",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which inequality says \"from 2 to 5, inclusive\"?",
+   "why": {
+    "correct": "\"Inclusive\" includes both endpoints: $2 \\le X \\le 5$.",
+    "options": [
+     "Right: inclusive means both ends are included.",
+     "That leaves out both 2 and 5.",
+     "That leaves out 5.",
+     "That describes the values outside the range."
+    ]
+   },
+   "options": [
+    "$2 \\le X \\le 5$",
+    "$2 < X < 5$",
+    "$2 \\le X < 5$",
+    "$X \\le 2$ or $X \\ge 5$"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-inequality-words-8",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which phrase means the same as $X \\ge 3$?",
+   "why": {
+    "correct": "\"No fewer than 3\" and \"at least 3\" both mean $X \\ge 3$.",
+    "options": [
+     "That is $X < 3$.",
+     "That is $X \\le 3$.",
+     "That is $X > 3$, which leaves out 3.",
+     "Right: not fewer than 3 means 3 or more."
+    ]
+   },
+   "options": [
+    "Fewer than 3",
+    "No more than 3",
+    "More than 3",
+    "No fewer than 3"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-math-inequality-words-9",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Ten students read 0, 1, 1, 2, 3, 3, 4, 5, 6 and 9 books. How many students read at least 5 books?",
+   "why": {
+    "correct": "\"At least 5\" includes 5: the students with 5, 6 and 9 books, so 3 students.",
+    "options": [
+     "That counts only 6 and 9, leaving out the student who read exactly 5.",
+     "Right: the counts 5, 6 and 9 are 5 or more.",
+     "That also counts the student who read 4, which is fewer than 5.",
+     "5 is the boundary value, not the number of students."
+    ]
+   },
+   "options": [
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-inequality-words-10",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For a count, \"fewer than 3\" and \"3 or fewer\" give different answers. For a commute time measured very precisely, do \"less than 20 minutes\" and \"20 minutes or less\" give very different proportions?",
+   "why": {
+    "correct": "For counts the boundary value matters a lot ($X < 3$ is $X \\le 2$). For continuous measurements, including or leaving out the exact boundary barely changes anything.",
+    "options": [
+     "Right: for a continuous variable the boundary itself holds almost no values, so the two proportions are nearly equal.",
+     "True in words, but for a precise measurement that is almost no one.",
+     "The two phrases differ only at the boundary, not by half the data.",
+     "Commute times are measurements (continuous), not counts."
+    ]
+   },
+   "options": [
+    "No: almost no one has a commute of exactly 20.000 minutes",
+    "Yes: \"or less\" adds each commute of exactly 20 minutes",
+    "Yes: one of them leaves out half of the data",
+    "No: commute times are counts, so the phrases agree"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-inequality-words-11",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "order",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a count X from 0 to 10, put these events in order from the fewest included values to the most.",
+   "why": {
+    "correct": "Exactly 4 is one value; fewer than 4 is 0 to 3 (four values); at most 4 is 0 to 4 (five values); at least 4 is 4 to 10 (seven values)."
+   },
+   "options": [
+    "Exactly 4",
+    "Fewer than 4",
+    "At most 4",
+    "At least 4"
+   ]
+  }
+ ]
+}

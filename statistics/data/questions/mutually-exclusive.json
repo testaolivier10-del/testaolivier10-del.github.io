@@ -469,10 +469,10 @@
    "diff": 2,
    "q": "Events R and T are mutually exclusive. Which statements must be true? Select all that apply.",
    "why": {
-    "correct": "Mutually exclusive means no shared outcomes: $P(R \\cap T) = 0$, and if R happens, T does not. Their probabilities need not add to 1 or be equal.",
+    "correct": "Mutually exclusive means no shared outcomes, so $P(R \\cap T) = 0$. Their probabilities add to 1 or less, and they need not add to exactly 1 or be equal.",
     "options": [
      "Right: the joint event has no outcomes.",
-     "Right: they cannot happen together.",
+     "Mutually exclusive events have probabilities that add to 1 or less, since no outcome is counted twice.",
      "That holds for an event and its complement, not for every pair of mutually exclusive events.",
      "Complements are mutually exclusive, but mutually exclusive events may leave other outcomes.",
      "Mutually exclusive events can have any probabilities that add to 1 or less."
@@ -480,14 +480,13 @@
    },
    "options": [
     "$P(R \\cap T) = 0$",
-    "If R happens on a trial, T does not happen on that trial",
+    "$P(R) + P(T)$ is more than 1",
     "$P(R) + P(T) = 1$",
     "R and T are complements of each other",
     "$P(R) = P(T)$"
    ],
    "correct": [
-    0,
-    1
+    0
    ]
   }
  ]

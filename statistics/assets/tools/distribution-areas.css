@@ -40,7 +40,7 @@
 .da-halo{fill:var(--cink);fill-opacity:.16;}
 .da-dot{fill:var(--cink);stroke:var(--white);stroke-width:2.5;}
 .da-handle:focus-visible .da-halo{fill-opacity:.36;stroke:var(--cink);stroke-width:2;}
-:root[data-theme="dark"] .da-shade{fill-opacity:.62;}
+:root[data-theme="dark"] .da-shade{fill-opacity:.72;}
 :root[data-theme="dark"] .da-bar{fill-opacity:.28;}
 :root[data-theme="dark"] .da-bar.is-in{fill-opacity:.9;}
 
@@ -69,3 +69,4 @@
 .da-bl.is-in{fill:var(--ink);}
 .da-brk.is-ev{stroke:var(--ink);stroke-width:1.6;}
 .da-ylab{font-weight:800;}
+:root[data-theme="dark"] .da-under{fill-opacity:.04;}

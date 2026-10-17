@@ -258,11 +258,10 @@
     "from": {
      "fn": "normCdf",
      "args": [
-      5,
+      3.4000000000000004,
       4.2,
       0.44271887242357305
-     ],
-     "complement": true
+     ]
     },
     "mistakes": [
      {
@@ -368,7 +367,7 @@
    "q": "Using the normal model for $\\bar{x}$, what is the probability that a random sample of 16 bags has a mean weight below 28.0 grams?",
    "stimulus": "sampling-dist-mean-s2",
    "why": {
-    "correct": "$\\bar{x}$ is normal with mean 28.4 and standard deviation $\\frac{1.2}{\\sqrt{16}} = 0.3$. $P(\\bar{x} < 28.0) = P\\left(z < \\frac{28.0 - 28.4}{0.3}\\right) = P(z < -1.33) = 0.091$. In the dotplot, 4 of the 40 simulated means are below 28.0, which agrees."
+    "correct": "$\\bar{x}$ is normal with mean 28.4 and standard deviation $\\frac{1.2}{\\sqrt{16}} = 0.3$. $P(\\bar{x} < 28.0) = P\\left(z < \\frac{28.0 - 28.4}{0.3}\\right) = P(z < -1.33) = 0.091$. In the dotplot, 5 of the 40 simulated means (0.125) are below 28.0, close to the model value for so few simulated samples."
    },
    "numeric": {
     "kind": "prob",
@@ -522,11 +521,10 @@
     "from": {
      "fn": "normCdf",
      "args": [
-      13,
+      12,
       12.5,
       0.5059644256269407
-     ],
-     "complement": true
+     ]
     },
     "mistakes": [
      {

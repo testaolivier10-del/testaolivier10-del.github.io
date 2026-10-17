@@ -1,0 +1,77 @@
+{
+ "topic": "math-inequality-words",
+ "hook": "A coach wants to know how often a player makes \"at least 3\" of 5 shots; a teacher counts students who scored \"fewer than 3\" errors. One word changes which counts are included. Get the boundary wrong and every number after it is wrong too, which is one of the most common slips on the AP® Statistics exam.",
+ "prereq": [
+  {
+   "q": "Which variable is discrete?",
+   "options": [
+    "Number of shots made",
+    "Time to run a mile",
+    "Height",
+    "Weight"
+   ],
+   "correct": 0,
+   "why": "A count takes separate whole-number values.",
+   "review": "variables"
+  },
+  {
+   "q": "What proportion of 10 students is 3 students?",
+   "options": [
+    "0.3",
+    "3",
+    "0.03",
+    "0.7"
+   ],
+   "correct": 0,
+   "why": "3/10 = 0.3.",
+   "review": "math-fractions-percents"
+  }
+ ],
+ "figure": {
+  "figure": "inequality-lines",
+  "caption": "At least 3, more than 3, at most 3 and fewer than 3 on a number line of counts from 0 to 8. \"At least\" and \"at most\" include the boundary; \"more than\" and \"fewer than\" do not."
+ },
+ "chain": [
+  {
+   "cause": "Write the phrase as an inequality",
+   "effect": "\"at least 3\" is $X \\ge 3$, \"fewer than 3\" is $X < 3$"
+  },
+  {
+   "cause": "Decide whether the boundary is included",
+   "effect": "\"at least\", \"at most\", \"no more than\" and \"inclusive\" include it; \"more than\" and \"fewer than\" do not"
+  },
+  {
+   "cause": "For a count, turn a strict inequality into one with an equals sign",
+   "effect": "$X < 3$ becomes $X \\le 2$, and $X > 4$ becomes $X \\ge 5$"
+  },
+  {
+   "cause": "List the included values to check",
+   "effect": "the slip \"fewer than 3 is 3 or fewer\" shows up at once"
+  }
+ ],
+ "ideas": [
+  "<b>At least</b> $k$: $X \\ge k$. <b>At most</b> $k$ and <b>no more than</b> $k$: $X \\le k$. <b>More than</b> $k$: $X > k$. <b>Fewer than</b> $k$: $X < k$. <b>No fewer than</b> $k$: $X \\ge k$.",
+  "For counts, $X < k$ is $X \\le k - 1$ and $X > k$ is $X \\ge k + 1$: \"fewer than 3\" is 0, 1 or 2.",
+  "\"At least one\" is every count except 0.",
+  "For continuous measurements, whether the exact boundary is included makes almost no difference."
+ ],
+ "misconception": {
+  "wrong": "\"Fewer than 3\" means $X \\le 3$.",
+  "right": "\"Fewer than 3\" leaves out 3: it is $X < 3$, which for counts is $X \\le 2$, the values 0, 1 and 2."
+ },
+ "check": [
+  "stat-math-inequality-words-1",
+  "stat-math-inequality-words-2",
+  "stat-math-inequality-words-3",
+  "stat-math-inequality-words-4",
+  "stat-math-inequality-words-6",
+  "stat-math-inequality-words-9"
+ ],
+ "summary": "Translate words into inequalities before computing: at least is $\\ge$, at most and no more than are $\\le$, more than is $>$, fewer than is $<$. For counts, change strict inequalities to include the next whole number ($X < 3$ is $X \\le 2$), and list the included values to check.",
+ "connections": [
+  {
+   "href": "../notes/probability-intro.html",
+   "label": "Next: topic 2.4"
+  }
+ ]
+}

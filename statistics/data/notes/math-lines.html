@@ -1,0 +1,38 @@
+<p>Unit 5 describes how one quantitative variable changes with another using a straight line. Before that, you need to be comfortable reading any line: what its slope says, what its intercept says, and how to find both.</p>
+
+<h2>The equation of a line</h2>
+<p>Statistics writes a line as</p>
+<p>$$y = a + bx,$$</p>
+<p>with the intercept first. $b$ is the <b>slope</b> and $a$ is the <b>y-intercept</b>. (Algebra classes often write $y = mx + b$; it is the same line with different letters.)</p>
+<figure id="fig-line" data-fig="slope-intercept"><figcaption>The rental cost line $y = 12 + 3x$, with its intercept and one rise-over-run step.</figcaption></figure>
+
+<h2>Slope</h2>
+<p>The slope is the change in y for each one-unit increase in x. On a graph it is rise over run: from any point on the line, move 1 unit right, and y changes by $b$. A positive slope rises; a negative slope falls.</p>
+<p>From two points $(x_1, y_1)$ and $(x_2, y_2)$:</p>
+<p>$$b = \frac{y_2 - y_1}{x_2 - x_1}.$$</p>
+<p>Subtract in the same order on top and bottom. The slope has units: y units per x unit, such as dollars per hour.</p>
+<div class="worked">
+<p><b>Slope and intercept from two points.</b> A line passes through $(2, 7)$ and $(6, 19)$.</p>
+<p>Slope: $b = \frac{19 - 7}{6 - 2} = \frac{12}{4} = 3$.</p>
+<p>Intercept: write $y = a + 3x$ and use one point, $(2, 7)$: $7 = a + 3(2) = a + 6$, so $a = 1$.</p>
+<p>Equation: $y = 1 + 3x$. Check with the other point: $1 + 3(6) = 19$. Correct.</p>
+</div>
+
+<h2>Intercept</h2>
+<p>The y-intercept is the value of y when $x = 0$, where the line crosses the vertical axis. For the bike rental $y = 12 + 3x$, it is the 12 dollar fee charged before any hours. Sometimes $x = 0$ makes no sense: a line giving adult height from shoe length has an intercept at shoe length 0, which no adult has. Then the intercept is just a number that places the line, with no meaning of its own.</p>
+
+<h2>Saying it in context</h2>
+<div class="worked">
+<p><b>Interpret a line.</b> A cooling drink’s temperature is $y = 80 - 2.5x$ degrees Fahrenheit after $x$ minutes.</p>
+<p>Slope: <i>"For each additional minute, the temperature of the drink decreases by 2.5 degrees."</i></p>
+<p>Intercept: <i>"At 0 minutes, when it is poured, the drink is 80 degrees."</i> Here $x = 0$ makes sense, so the intercept has a meaning.</p>
+<p>A value: after 6 minutes, $y = 80 - 2.5(6) = 80 - 15 = 65$ degrees.</p>
+</div>
+<table class="compare">
+<thead><tr><th></th><th>Slope $b$</th><th>Intercept $a$</th></tr></thead>
+<tbody>
+<tr><th>Meaning</th><td>change in y per one-unit increase in x</td><td>y when $x = 0$</td></tr>
+<tr><th>Units</th><td>y units per x unit</td><td>y units</td></tr>
+<tr><th>Template</th><td>"For each additional [x unit], [y] increases (decreases) by [b] [y units]."</td><td>"When [x] is 0, [y] is [a] [y units]." (only if $x = 0$ makes sense)</td></tr>
+</tbody>
+</table>

@@ -114,10 +114,10 @@
    },
    "stimulus": "one-quantitative-displays-s1",
    "options": [
-    "7, counting the two students who read exactly 6",
+    "7",
     "5",
-    "6, reading the value 6 as a count of students",
-    "12, which is the largest number of books read"
+    "6",
+    "12"
    ],
    "correct": 1
   },
@@ -174,9 +174,9 @@
    },
    "stimulus": "one-quantitative-displays-s1",
    "options": [
-    "13, including the four students who read 4 books",
-    "5, counting just the students who read 3 books",
-    "2, the width of the bin in books",
+    "13",
+    "5",
+    "2",
     "9"
    ],
    "correct": 3
@@ -228,10 +228,10 @@
    },
    "stimulus": "one-quantitative-displays-s2",
    "options": [
-    "5, the smallest stem in the plot",
-    "8, the leaf on the first row",
+    "5",
+    "8",
     "58",
-    "62, the first full row of the plot"
+    "62"
    ],
    "correct": 2
   },
@@ -255,10 +255,10 @@
    },
    "stimulus": "one-quantitative-displays-s2",
    "options": [
-    "6, counting the two leaves of 4 as one",
-    "8, reading the stem as the number of students",
+    "6",
+    "8",
     "7",
-    "10, counting the eighties and the nineties"
+    "10"
    ],
    "correct": 2
   },
@@ -342,9 +342,9 @@
    },
    "stimulus": "one-quantitative-displays-s3",
    "options": [
-    "0.30, the jump between 10 and 20 minutes",
-    "0.55, the workers above 20 minutes",
-    "20, reading the time instead of the height",
+    "0.30",
+    "0.55",
+    "20",
     "0.45"
    ],
    "correct": 3
@@ -369,10 +369,10 @@
    },
    "stimulus": "one-quantitative-displays-s3",
    "options": [
-    "0.70, the height of the graph at 30 minutes",
+    "0.70",
     "0.30",
-    "0.15, the proportion between 30 and 40 minutes",
-    "0.85, the height of the graph at 40 minutes"
+    "0.15",
+    "0.85"
    ],
    "correct": 1
   },
@@ -397,9 +397,9 @@
    "stimulus": "one-quantitative-displays-s3",
    "options": [
     "0.40",
-    "1.30, from adding the two heights",
-    "0.85, the height of the graph at 40 minutes",
-    "0.20, the difference between the times"
+    "1.30",
+    "0.85",
+    "0.20"
    ],
    "correct": 0
   },

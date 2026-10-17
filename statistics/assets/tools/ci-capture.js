@@ -252,7 +252,7 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { prop: 'A confidence interval for p', mean: 'A confidence interval for μ', claim: 'A claim from an interval', capture: 'Counting captures' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
-      onStep: function(s, right, api){ var st = api.st; st[s.key] = true; if(s.key === 'me' || s.key === 'interp' || s.key === 'claim' || s.key === 'count' || s.key === 'mefrom') figure(api.fig, api.problem, st); }
+      onStep: function(s, right, api){ var st = api.st; st[s.key] = true; if(s.key === 'phat' || s.key === 'me' || s.key === 'claim' || s.key === 'count' || s.key === 'mefrom') figure(api.fig, api.problem, st); }
     };
     T.drill(host, data, o);
   }
@@ -261,7 +261,7 @@
      simulated intervals of a counting problem. */
   function figure(el, p, st){
     var g = p.figure; if(!g){ el.innerHTML = ''; return; }
-    var phone = (window.innerWidth || 1280) <= 640, W = phone ? 340 : 600, H = g.kind === 'many' ? (phone ? 380 : 340) : (phone ? 260 : 240), L = 18, R = W - 18, out = [];
+    var phone = (window.innerWidth || 1280) <= 640, W = phone ? 340 : 600, H = g.kind === 'many' ? (phone ? 380 : 340) : (phone ? 300 : 280), L = 18, R = W - 18, out = [];
     if(g.kind === 'many'){
       var lo = Infinity, hi = -Infinity; g.ivs.forEach(function(v){ lo = Math.min(lo, v.lo); hi = Math.max(hi, v.hi); });
       var pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
@@ -285,13 +285,14 @@
     out.push('<text class="ci-h" x="' + L + '" y="18">' + (shownParts ? 'The ' + esc(g.L) + ' interval' : 'The sample') + '</text>');
     if(shownParts){
       out.push('<line class="ci-iv is-plain" x1="' + x2(lo2).toFixed(1) + '" x2="' + x2(hi2).toFixed(1) + '" y1="' + y + '" y2="' + y + '" style="stroke-width:6"/>');
-      out.push('<path class="ci-brace" d="M' + x2(g.est).toFixed(1) + ' ' + (y - 16) + 'V' + (y - 22) + 'H' + x2(hi2).toFixed(1) + 'V' + (y - 16) + '"/><text class="ci-lab ci-c-samp" x="' + ((x2(g.est) + x2(hi2)) / 2).toFixed(1) + '" y="' + (y - 28) + '" text-anchor="middle">ME = ' + T.F(g.me, 4) + '</text>');
+      if(p.type !== 'claim' || st.mefrom) out.push('<path class="ci-brace" d="M' + x2(g.est).toFixed(1) + ' ' + (y - 16) + 'V' + (y - 22) + 'H' + x2(hi2).toFixed(1) + 'V' + (y - 16) + '"/><text class="ci-lab ci-c-samp" x="' + ((x2(g.est) + x2(hi2)) / 2).toFixed(1) + '" y="' + (y - 28) + '" text-anchor="middle">ME = ' + T.F(g.me, 4) + '</text>');
       [[lo2, 'end'], [hi2, 'start']].forEach(function(e){ out.push('<text class="ci-lab" x="' + (x2(e[0]) + (e[1] === 'end' ? -6 : 6)).toFixed(1) + '" y="' + (y + 5) + '" text-anchor="' + e[1] + '">' + T.F(e[0], g.d) + '</text>'); });
     }
-    out.push('<circle class="ci-est" cx="' + x2(g.est).toFixed(1) + '" cy="' + y + '" r="6"/><text class="ci-lab ci-c-samp" x="' + x2(g.est).toFixed(1) + '" y="' + (y + 26) + '" text-anchor="middle">' + sym + ' = ' + T.F(g.est, g.d) + unit + '</text>');
+    var estKnown = p.type !== 'prop' || st.phat;
+    out.push('<circle class="ci-est" cx="' + x2(g.est).toFixed(1) + '" cy="' + y + '" r="6"/><text class="ci-lab ci-c-samp" x="' + x2(g.est).toFixed(1) + '" y="' + (y + 26) + '" text-anchor="middle">' + sym + (estKnown ? ' = ' + T.F(g.est, g.d) + unit : ', the sample proportion') + '</text>');
     if(g.p0 != null){ var px = x2(g.p0); out.push('<line class="ci-claim" x1="' + px.toFixed(1) + '" x2="' + px.toFixed(1) + '" y1="' + (y - 40) + '" y2="' + (y + 40) + '"/><text class="ci-lab ci-c-miss" x="' + px.toFixed(1) + '" y="' + (y + 54) + '" text-anchor="middle">claim: ' + T.F(g.p0, 2) + '</text>'); }
     axis(a, b, x2, H - 34);
-    el.innerHTML = '<figure class="ci-qfig"><svg class="ci-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(sym + ' = ' + T.F(g.est, g.d) + (shownParts ? '; the interval from ' + T.F(lo2, g.d) + ' to ' + T.F(hi2, g.d) : '') + (g.p0 != null ? '; the claimed value ' + T.F(g.p0, 2) : '')) + '">' + out.join('') + '</svg></figure>';
+    el.innerHTML = '<figure class="ci-qfig"><svg class="ci-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(sym + (estKnown ? ' = ' + T.F(g.est, g.d) : ', the sample statistic') + (shownParts ? '; the interval from ' + T.F(lo2, g.d) + ' to ' + T.F(hi2, g.d) : '') + (g.p0 != null ? '; the claimed value ' + T.F(g.p0, 2) : '')) + '">' + out.join('') + '</svg></figure>';
     function axis(a0, b0, xf, yb){
       out.push('<line class="ci-axis" x1="' + L + '" x2="' + R + '" y1="' + yb + '" y2="' + yb + '"/>');
       (P ? P.ticks(a0, b0, 6) : [a0, b0]).forEach(function(t){ var xx = xf(t); out.push('<line class="ci-tick" x1="' + xx.toFixed(1) + '" x2="' + xx.toFixed(1) + '" y1="' + yb + '" y2="' + (yb + 5) + '"/><text class="ci-tk" x="' + xx.toFixed(1) + '" y="' + (yb + 18) + '" text-anchor="middle">' + String(+t.toPrecision(6)).replace('-', '−') + '</text>'); });

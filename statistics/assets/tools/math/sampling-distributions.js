@@ -87,16 +87,30 @@
     return { kind: 'mean', lo: lo, width: w, hi: lo + w * ws.length, weights: ws, cum: cum, mu: mu, sigma: sigma,
       skew: sigma > 0 ? m3 / (sigma * sigma * sigma) : 0, normal: !!(def.shape && def.shape.dist === 'normal'), def: def };
   }
+  /* One uniform draw gives both the bar (by the cumulative weights) and the
+     point inside it (where u falls within that bar's share): exactly a
+     draw from the histogram density. */
   function value(r, pop){
     if(pop.kind === 'prop') return r() < pop.p ? 1 : 0;
     var u = r(), c = pop.cum, a = 0, b = c.length - 1;
     while(a < b){ var h = (a + b) >> 1; if(u < c[h]) b = h; else a = h + 1; }
-    return pop.lo + (a + r()) * pop.width;
+    var c0 = a ? c[a - 1] : 0, w = c[a] - c0;
+    var f = w > 0 ? (u - c0) / w : 0.5;
+    return pop.lo + (a + (f < 0.999999999 ? f : 0.999999999)) * pop.width;
+  }
+  /* A long simulation draws from a local stream seeded by one draw of the
+     drill's seeded generator (mulberry32 again, with Math.imul held
+     locally): the same seed gives the same samples, and node's vm sandbox
+     (the validator) does not pay a global lookup per draw. */
+  var IMUL = Math.imul;
+  function stream(r){
+    var s = (Math.floor(r() * 4294967296) >>> 0) || 1;
+    return function(){ s = (s + 0x6D2B79F5) >>> 0; var t = s; t = IMUL(t ^ (t >>> 15), t | 1); t ^= t + IMUL(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
   }
   function draw(r, pop, n){ var out = []; for(var i = 0; i < n; i++) out.push(value(r, pop)); return out; }
   function stat(pop, xs){ var s = 0; for(var i = 0; i < xs.length; i++) s += xs[i]; return s / xs.length; }
   function simulate(r, pop, n, k){
-    var out = [];
+    var out = []; r = stream(r);
     for(var j = 0; j < k; j++){ var s = 0; for(var i = 0; i < n; i++) s += value(r, pop); out.push(s / n); }
     return out;
   }
@@ -195,7 +209,7 @@
       fig.x = x; fig.dir = dir; fig.pr = ps.p;
       sol.push(tx('$z = \\frac{' + t(x, 2) + ' - ' + t(mu, 2) + '}{' + t(se, 3) + '} = ' + t(ps.z, 2) + '$, so $P(' + xb + ' ' + sym + ' ' + t(x, 2) + ') = ' + t(ps.p, 4) + '$ (normal, mean ' + t(mu, 2) + ', SD ' + t(se, 3) + ').'));
     } else sol.push('No probability from a normal model here: its condition is not met.');
-    return { ctx: c.id, topic: c.topic, type: 'mean', text: text, steps: steps, solution: sol, figure: fig };
+    return { ctx: c.id, topic: c.topic, type: 'mean', text: text, steps: steps, solution: sol, figure: fig, given: { mu: mu, sigma: sigma, n: n, normalPop: normalPop, x: fig.x, dir: fig.dir } };
   }
 
   /* p-hat: center, spread, large counts, a probability. */
@@ -242,7 +256,7 @@
       fig.x = x; fig.dir = dir; fig.pr = ps.p;
       sol.push(tx('$z = \\frac{' + xs + ' - ' + t(p, 2) + '}{' + t(se, 4) + '} = ' + t(ps.z, 2) + '$, so $P(' + ph + ' ' + sym + ' ' + xs + ') = ' + t(ps.p, 4) + '$.'));
     } else sol.push('No probability from a normal model here: the large counts condition fails.');
-    return { ctx: c.id, topic: c.topic, type: 'prop', text: text, steps: steps, solution: sol, figure: fig };
+    return { ctx: c.id, topic: c.topic, type: 'prop', text: text, steps: steps, solution: sol, figure: fig, given: { p: p, n: n, x: fig.x, dir: fig.dir } };
   }
 
   /* A difference of two independent statistics. */
@@ -316,7 +330,7 @@
       fig.x = 0; fig.dir = dir; fig.pr = ps.p;
       sol.push(tx('$z = \\frac{0 - ' + '(' + t(th.center, 2) + ')}{' + t(th.sd, 4) + '} = ' + t(ps.z, 2) + '$, so $P(' + S + ' ' + sym + ' 0) = ' + t(ps.p, 4) + '$.'));
     } else sol.push('No probability from a normal model here: its condition is not met.');
-    return { ctx: c.id, topic: c.topic, type: 'diff', text: text, steps: steps, solution: sol, figure: fig };
+    return { ctx: c.id, topic: c.topic, type: 'diff', text: text, steps: steps, solution: sol, figure: fig, given: isP ? { kind: 'prop', p1: a, p2: b, n1: nA, n2: nB, dir: fig.dir } : { kind: 'mean', mu1: a, mu2: b, s1: ta.sig, s2: tb.sig, n1: nA, n2: nB, shape: c.shape, dir: fig.dir } };
   }
 
   /* A tiny histogram (pure svg string) of simulated values on a fixed axis. */
@@ -333,7 +347,7 @@
 
   /* The CLT in pictures: which histogram is the sampling distribution? */
   function genShape(r, c){
-    var pop = population(POPS[c.pop]), n = r.pick(c.ns || [2, 3, 4, 5, 9]), big = n * 16, K = 400;
+    var pop = population(POPS[c.pop]), n = r.pick(c.ns || [2, 3, 4, 5, 9]), big = n * 16, K = 300;
     var right = simulate(r, pop, n, K), one = simulate(r, pop, 1, K), narrow = simulate(r, pop, big, K);
     var lo = pop.lo, hi = pop.hi, bins = 30, d = c.d == null ? 1 : c.d;
     var mu = M.round(pop.mu, d), sg = M.round(pop.sigma, d), se = sg / Math.sqrt(n);
@@ -357,7 +371,8 @@
     var sol = ['The sampling distribution of x̄ centers at μ = ' + f(mu, d) + ' with a smaller spread than the population.',
       tx('$\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{' + t(sg, d) + '}{\\sqrt{' + n + '}} = ' + t(se, 2) + '$.'),
       'Multiplying n by ' + m + ' divides σ/√n by √' + m + ' = ' + root + '.'];
-    return { ctx: c.id, topic: c.topic, type: 'shape', text: text, steps: steps, solution: sol, figure: { kind: 'pop', pop: c.pop } };
+    return { ctx: c.id, topic: c.topic, type: 'shape', text: text, steps: steps, solution: sol, figure: { kind: 'pop', pop: c.pop },
+      given: { mu: mu, sigma: sg, n: n, big: big, m: m, sds: [D().sd(right), D().sd(one), D().sd(narrow)], popSigma: pop.sigma } };
   }
 
   /* Bias and variability from three simulated sampling distributions. */
@@ -366,7 +381,7 @@
     var names = M.shuffle(r, ['P', 'Q', 'R']), sign = r() < 0.5 ? -1 : 1;
     var roles = { best: names[0], wide: names[1], biased: names[2] };
     var spec = {}; spec[roles.best] = { bias: 0, sd: s }; spec[roles.wide] = { bias: 0, sd: 2.3 * s }; spec[roles.biased] = { bias: sign * 2.2 * s, sd: 0.55 * s };
-    var K = 200, rows = ['P', 'Q', 'R'].map(function(nm){ var o = spec[nm], v = []; for(var i = 0; i < K; i++) v.push(M.normal(r, theta + o.bias, o.sd)); return { name: nm, values: v }; });
+    var K = 200, q = stream(r), rows = ['P', 'Q', 'R'].map(function(nm){ var o = spec[nm], v = []; for(var i = 0; i < K; i++) v.push(M.normal(q, theta + o.bias, o.sd)); return { name: nm, values: v }; });
     var Dd = D(), stats = {}; rows.forEach(function(x){ stats[x.name] = { mean: Dd.mean(x.values), sd: Dd.sd(x.values) }; });
     var pair = [roles.best, roles.wide].sort().join(' and ');
     var text = '<p>' + um(c.lead + ' Three statistics, $P$, $Q$ and $R$, are proposed to estimate ' + c.param + '. The picture shows each statistic computed from ' + K + ' random samples; the line marks the true value, ' + c.sym + ' = ' + t(theta, c.d || 0) + '.') + '</p>';
@@ -389,12 +404,12 @@
       roles.biased + ' has the least variability but is biased (center about ' + f(stats[roles.biased].mean, (c.d || 0) + 1) + ').',
       roles.best + ' is best: unbiased with low variability.'];
     return { ctx: c.id, topic: c.topic, type: 'estimator', text: text, steps: steps, solution: sol,
-      figure: { kind: 'estimators', theta: theta, sym: c.sym, unit: c.unit || '', rows: rows, d: c.d || 0 } };
+      figure: { kind: 'estimators', theta: theta, sym: c.sym, unit: c.unit || '', rows: rows, d: c.d || 0 }, given: { theta: theta, roles: roles } };
   }
 
   var GEN = { mean: genMean, prop: genProp, diff: genDiff, shape: genShape, estimator: genEstimator };
   M.register('samplingDistributions', {
-    POPS: POPS, population: population, value: value, draw: draw, stat: stat, simulate: simulate,
+    POPS: POPS, population: population, value: value, draw: draw, stream: stream, stat: stat, simulate: simulate,
     theory: theory, theoryDiff: theoryDiff, shapeWeights: shapeWeights, miniHist: miniHist,
     TYPES: Object.keys(GEN),
     generate: function(r, ctx, type){

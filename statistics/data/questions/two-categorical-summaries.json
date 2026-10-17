@@ -523,7 +523,7 @@
     "correct": "A joint relative frequency is one cell over the grand total, 250.",
     "options": [
      "Right: first visit and hiking, over all visitors.",
-     "Right: returning and picnic, over all visitors.",
+     "That divides by the returning row total, a conditional relative frequency.",
      "That divides by a row total, a conditional relative frequency.",
      "That is a column total over 250, a marginal relative frequency.",
      "That divides by a column total, a conditional relative frequency."
@@ -531,14 +531,13 @@
    },
    "options": [
     "$\\frac{45}{250}$",
-    "$\\frac{36}{250}$",
+    "$\\frac{36}{150}$",
     "$\\frac{45}{100}$",
     "$\\frac{105}{250}$",
     "$\\frac{54}{69}$"
    ],
    "correct": [
-    0,
-    1
+    0
    ]
   }
  ]

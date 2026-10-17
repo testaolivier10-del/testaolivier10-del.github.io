@@ -1,0 +1,83 @@
+{
+ "topic": "comparing-distributions",
+ "hook": "Two bus routes get a commuter to work. Route 2 is usually a little faster, but now and then it takes 45 minutes or more. Route 1 is slower on a typical day but very steady. Which is better depends on what you need, and to decide, you have to compare whole distributions: shape, center, spread and outliers, not just one number.",
+ "prereq": [
+  {
+   "q": "Which summary is the length of the box in a boxplot?",
+   "options": [
+    "The IQR",
+    "The range",
+    "The median",
+    "The standard deviation"
+   ],
+   "correct": 0,
+   "why": "The box runs from $Q_1$ to $Q_3$.",
+   "review": "boxplots"
+  },
+  {
+   "q": "What does a standard deviation of 4 points tell you about test scores?",
+   "options": [
+    "Scores typically differ from the mean by about 4 points",
+    "The mean is 4",
+    "Four students were absent",
+    "The highest score is 4 above the median"
+   ],
+   "correct": 0,
+   "why": "The standard deviation is a typical distance from the mean.",
+   "review": "summary-statistics"
+  }
+ ],
+ "figure": {
+  "figure": "compare-and-z",
+  "caption": "Top: parallel boxplots compare two groups on one scale. Bottom: a z-score measures distance from the mean in standard deviations."
+ },
+ "chain": [
+  {
+   "cause": "Two groups are measured on the same variable",
+   "effect": "graph them on one scale, such as parallel boxplots or stacked dotplots"
+  },
+  {
+   "cause": "Compare shape, center, spread and unusual features",
+   "effect": "use comparing words (greater, less variable) with numbers for each feature, in context"
+  },
+  {
+   "cause": "Two values come from different distributions",
+   "effect": "compare their positions, not their raw sizes"
+  },
+  {
+   "cause": "Subtract the mean and divide by the standard deviation",
+   "effect": "the z-score puts both on one scale: standard deviations above or below their own mean"
+  }
+ ],
+ "ideas": [
+  "Compare distributions on every feature: shape, center, spread and outliers, each with a <i>comparing word</i> and numbers, in context.",
+  "A <b>z-score</b> is $z = \\frac{x - \\bar{x}}{s}$ (or $\\frac{x - \\mu}{\\sigma}$ for a population): how many standard deviations a value is above (+) or below (−) the mean. It has no units.",
+  "<b>Relative position</b> compares values from different groups: z-scores and percentiles do this; raw values do not.",
+  "The median of combined groups is not the average of their medians."
+ ],
+ "misconception": {
+  "wrong": "Route 1’s median is 31 minutes and Route 2’s median is 28 minutes. (Given as a comparison.)",
+  "right": "That lists numbers but compares nothing. Say \"Route 1 has a greater median travel time (31 minutes) than Route 2 (28 minutes).\""
+ },
+ "check": [
+  "stat-comparing-distributions-1",
+  "stat-comparing-distributions-2",
+  "stat-comparing-distributions-3",
+  "stat-comparing-distributions-4",
+  "stat-comparing-distributions-5",
+  "stat-comparing-distributions-6",
+  "stat-comparing-distributions-7",
+  "stat-comparing-distributions-8"
+ ],
+ "summary": "To compare distributions, describe each feature (shape, center, spread, outliers) with a comparing word and numbers, in context. To compare single values from different distributions, use relative position: the z-score $z = \\frac{x - \\bar{x}}{s}$ counts standard deviations from the mean, and a percentile gives the percent of values at or below.",
+ "connections": [
+  {
+   "href": "../notes/boxplots.html",
+   "label": "Back: graphing the summaries (1.8)"
+  },
+  {
+   "href": "../notes/investigative-questions.html",
+   "label": "Next: collecting data (1.10)"
+  }
+ ]
+}

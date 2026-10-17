@@ -1,0 +1,440 @@
+{
+ "stimuli": {
+  "investigative-questions-s1": {
+   "kind": "table",
+   "title": "Walking and blood pressure",
+   "html": "<p>A health researcher studied the medical records of 1,200 adults in a city. Adults whose records said they walked 30 minutes or more a day had a lower typical blood pressure than adults who walked less. The researcher did not ask anyone to change how much they walk (invented data).</p>"
+  },
+  "investigative-questions-s2": {
+   "kind": "table",
+   "title": "Phones at lunch",
+   "html": "<p>The student council at Lincoln High School, which has 1,500 students, wants to learn about phone use during lunch. Members suggest four questions:</p><ol><li>Do you like your phone?</li><li>What proportion of Lincoln High students use a phone during lunch on a typical school day?</li><li>Do phones cause students to eat less at lunch?</li><li>How many minutes did Maria spend on her phone at lunch today?</li></ol>"
+  }
+ },
+ "items": [
+  {
+   "id": "stat-investigative-questions-1",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What kind of study is this?",
+   "why": {
+    "correct": "The researcher observed walking and blood pressure without imposing any condition, so this is an observational study.",
+    "options": [
+     "Comparing groups is not enough for an experiment; the researcher would have to decide who walks.",
+     "Right: the researcher recorded walking and blood pressure as they already were, without imposing anything.",
+     "1,200 adults are a part of the city, not every adult in it.",
+     "No one was asked anything; the data came from existing records."
+    ]
+   },
+   "stimulus": "investigative-questions-s1",
+   "options": [
+    "An experiment",
+    "An observational study",
+    "A census",
+    "A sample survey, because the adults answered questions about walking"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-investigative-questions-2",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the explanatory and response variables?",
+   "why": {
+    "correct": "The explanatory variable is the one that may help explain changes in the response: walking explains blood pressure.",
+    "options": [
+     "This reverses them. The researcher wants to see whether walking is related to blood pressure.",
+     "The city and the adults are the setting and the observational units, not variables.",
+     "Records are the data source, and a conclusion is not a variable.",
+     "Right: the question is whether walking helps explain blood pressure."
+    ]
+   },
+   "stimulus": "investigative-questions-s1",
+   "options": [
+    "Explanatory: blood pressure. Response: daily walking time",
+    "Explanatory: the city. Response: the adults",
+    "Explanatory: medical records. Response: the researcher’s conclusion",
+    "Explanatory: daily walking. Response: blood pressure"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-investigative-questions-3",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is a possible confounding variable in this study?",
+   "why": {
+    "correct": "A confounding variable is linked to both the explanatory and the response variable, so their effects cannot be separated. Age is a strong candidate.",
+    "options": [
+     "Right: a confounding variable is related to both the explanatory and the response variable, so its effect mixes with walking’s.",
+     "Blood pressure is the response variable itself.",
+     "The sample size is a fact about the study, not a variable recorded for each adult.",
+     "A confounding variable must be related to both walking and blood pressure; hair color is linked to neither."
+    ]
+   },
+   "stimulus": "investigative-questions-s1",
+   "options": [
+    "Age: younger adults may walk more and have lower blood pressure",
+    "Blood pressure, since it is measured in each adult’s medical record",
+    "The number of adults whose records were studied, 1,200",
+    "Hair color, since it differs a lot from one adult to the next"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-investigative-questions-4",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Can the researcher conclude that walking more lowers blood pressure?",
+   "why": {
+    "correct": "Only a study that imposes the conditions, with chance deciding who gets which, supports cause and effect. Here the link may be due to confounding.",
+    "options": [
+     "A large observational study still cannot rule out confounding variables.",
+     "A difference between groups that formed on their own can come from other differences between them.",
+     "Right: in an observational study the walkers may differ in other ways, such as age or diet, that affect blood pressure.",
+     "The measurement is fine; the problem is that walking was not imposed."
+    ]
+   },
+   "stimulus": "investigative-questions-s1",
+   "options": [
+    "Yes: 1,200 adults is enough",
+    "Yes: the walkers had lower blood pressure, so walking caused it",
+    "No: it shows a link, and confounding may explain it",
+    "No: blood pressure is too hard to measure accurately to tell either way"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-investigative-questions-5",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the best investigative question?",
+   "why": {
+    "correct": "A good investigative question names the population, the variable and the kind of answer (here a proportion), and can be answered with data that vary.",
+    "options": [
+     "It is a survey item for one person, not a question about the population, and \"like\" is vague.",
+     "It asks about cause, which needs an experiment, and it does not name a population or a measurable variable.",
+     "Right: it names the population (Lincoln High students), the variable (phone use at lunch) and what to estimate (a proportion).",
+     "It has one answer about one student; there is no variation to study."
+    ]
+   },
+   "stimulus": "investigative-questions-s2",
+   "options": [
+    "Question 1",
+    "Question 3",
+    "Question 2",
+    "Question 4"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-investigative-questions-6",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Question 2 asks about which kind of number?",
+   "why": {
+    "correct": "The question is about every student at Lincoln High, so it asks for a parameter, the population proportion.",
+    "options": [
+     "Right: the question is about the whole school, so it asks for a population proportion.",
+     "The council may estimate the answer with a statistic, but the question itself is about the whole school.",
+     "The question asks about use at lunch, not ownership.",
+     "The question asks for a proportion of students, not minutes."
+    ]
+   },
+   "stimulus": "investigative-questions-s2",
+   "options": [
+    "A parameter: the proportion of the whole school using a phone at lunch",
+    "A statistic: the proportion of the students who answer the council",
+    "A count of the phones that the students at Lincoln High own",
+    "A mean of the minutes that students spend on phones at lunch"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-investigative-questions-7",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which plan best answers Question 2?",
+   "why": {
+    "correct": "To estimate a proportion for a population, survey a sample chosen by chance from the whole population.",
+    "options": [
+     "The council wants to know how students behave now, not the effect of a condition.",
+     "A census of 1,500 students’ phone records is impractical and private; a sample does the job.",
+     "Council members are not chosen to represent the school.",
+     "Right: asking a well chosen sample is practical and can estimate the school’s proportion."
+    ]
+   },
+   "stimulus": "investigative-questions-s2",
+   "options": [
+    "An experiment in which some students are told to use phones",
+    "A census of each of the 1,500 students’ phone records from the past month",
+    "Asking the members of the student council what they do at lunch",
+    "A sample survey of students chosen at random from the school list"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-investigative-questions-8",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why is Question 3 hard to answer with a survey?",
+   "why": {
+    "correct": "Questions about cause need an experiment. A survey or observational study shows only how variables are related.",
+    "options": [
+     "Time is not the problem; the design of the study is.",
+     "Right: students who use phones may differ in other ways, so only an experiment that imposes phone use could show a cause.",
+     "They might answer; the issue is what the answers could show.",
+     "There is no such rule; the issue is cause and effect."
+    ]
+   },
+   "stimulus": "investigative-questions-s2",
+   "options": [
+    "A survey of the students would take too long to finish",
+    "A survey can show a link, but a cause needs an experiment",
+    "Students would refuse to answer questions about their phones",
+    "Questions about food at lunch are not allowed in a survey"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-investigative-questions-9",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is a census?",
+   "why": {
+    "correct": "A census gathers data from the entire population.",
+    "options": [
+     "Right: a census measures the whole population, not a sample.",
+     "That describes an experiment.",
+     "That is a sample, and a poorly chosen one.",
+     "A census covers the whole population of interest, not one household."
+    ]
+   },
+   "options": [
+    "A study that collects data on every member of the population",
+    "A study that imposes a condition on the people in the sample",
+    "A survey of a small group of people who volunteer to answer",
+    "A count of the people living in one house in a town"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-investigative-questions-10",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A teacher wants the typical number of hours her 28 students slept last night. Which is the most sensible plan?",
+   "why": {
+    "correct": "When the population is small and easy to reach, a census answers the question exactly.",
+    "options": [
+     "A sample works, but with 28 students a census is easy and exact.",
+     "The teacher wants to know how long students slept, not the effect of a condition.",
+     "Right: the population is small, so measuring everyone is easy and gives the exact answer.",
+     "The question is about her own 28 students."
+    ]
+   },
+   "options": [
+    "A sample of 5 students chosen at random from the class",
+    "An experiment",
+    "A census: ask all 28 students",
+    "A survey of students in another class at the school"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-investigative-questions-11",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Researchers enroll 5,000 adults who do not smoke, record their diets, and follow them for 20 years to see who develops heart disease. What kind of study is this?",
+   "why": {
+    "correct": "Prospective: follow individuals forward and record outcomes. Retrospective: look back at existing records. Both are observational when nothing is imposed.",
+    "options": [
+     "Retrospective studies look back at past records; this one looks forward.",
+     "Right: it follows people forward in time, recording what happens, without imposing anything.",
+     "Length does not matter. No diet is imposed, so it is observational.",
+     "The 5,000 adults are a sample of nonsmokers."
+    ]
+   },
+   "options": [
+    "A retrospective observational study of past heart disease",
+    "A prospective observational study",
+    "An experiment",
+    "A census of the nation’s adults who do not smoke and who eat a recorded diet"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-investigative-questions-12",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which question can only be settled well by an experiment?",
+   "why": {
+    "correct": "A cause-and-effect question needs an experiment, in which the researcher imposes the conditions.",
+    "options": [
+     "That describes a population; a sample survey answers it.",
+     "That is answered by measuring the plants as they are.",
+     "That asks about a relationship that already exists; an observational study answers it.",
+     "Right: a question about cause needs the researcher to impose the fertilizer on some plants and not others."
+    ]
+   },
+   "options": [
+    "What proportion of a town’s gardeners grow tomatoes?",
+    "How tall are the tomato plants in a garden center today?",
+    "Do tomato growers grow peppers?",
+    "Does a new fertilizer make tomato plants taller?"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-investigative-questions-13",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What makes a study an experiment rather than an observational study?",
+   "why": {
+    "correct": "An experiment deliberately imposes conditions on individuals to measure their responses; an observational study does not.",
+    "options": [
+     "Observational studies also measure many variables.",
+     "Right: in an experiment the researcher decides who gets which condition.",
+     "Experiments can happen anywhere; what matters is imposing conditions.",
+     "Size does not decide the type of study."
+    ]
+   },
+   "options": [
+    "The researcher measures many variables at the same time",
+    "The researcher imposes a condition, then measures the response",
+    "The study is done in a laboratory, not out in the everyday world",
+    "The study uses a very large group of participants"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-investigative-questions-14",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Students who eat breakfast earn higher grades than students who do not. A news report says breakfast raises grades. What does confounding mean here?",
+   "why": {
+    "correct": "A confounding variable is related to both the explanatory and the response variables, so their effects on the response cannot be told apart.",
+    "options": [
+     "Confounding is about variables mixing their effects, not about confusion.",
+     "That is a mixed effect, not confounding.",
+     "That is a concern about measurement, a different issue.",
+     "Right: if a third variable affects both, its effect is mixed up with breakfast’s."
+    ]
+   },
+   "options": [
+    "The breakfast eaters were confused by the questions they were asked",
+    "Breakfast has mixed effects",
+    "The grades were recorded by the students themselves, not the school",
+    "A third variable, like family routine, may affect both"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-investigative-questions-15",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which of these is an investigative question that data from a sample could help answer? Select all that apply.",
+   "why": {
+    "correct": "An investigative question names a population and a variable whose values vary, and asks for something data can estimate.",
+    "options": [
+     "Right: it names a population and a variable that varies, and asks for a typical value.",
+     "One person, one answer: no variation to study.",
+     "A single fact to look up.",
+     "Too vague: no population, no measurable variable."
+    ]
+   },
+   "options": [
+    "What is the typical commute time of employees at a company of 900 workers?",
+    "How long was my commute this morning?",
+    "What time does the company office open each day?",
+    "Is commuting bad?"
+   ],
+   "correct": [0]
+  },
+  {
+   "id": "stat-investigative-questions-16",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A sample survey asks 400 adults whether they recycle. What kind of study is a sample survey?",
+   "why": {
+    "correct": "A sample survey is an observational study: it records answers from a sample without imposing anything.",
+    "options": [
+     "Right: a survey asks people about themselves without imposing any condition.",
+     "Answering questions is not a condition imposed to see a response.",
+     "A census asks every member of the population.",
+     "A survey shows relationships, not causes."
+    ]
+   },
+   "options": [
+    "An observational study that asks questions",
+    "An experiment, since the adults have to answer the questions",
+    "A census",
+    "A study that can show recycling causes changes in behavior"
+   ],
+   "correct": 0
+  }
+ ]
+}

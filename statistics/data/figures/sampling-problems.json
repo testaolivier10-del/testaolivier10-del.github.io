@@ -1,0 +1,12 @@
+{
+ "frame-and-response": {
+  "file": "figures/frame-and-response.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Nested ovals. The largest is the population, all adults in the town. Inside it, the sampling frame, a list of landline numbers, which leaves part of the population out: undercoverage, people not on the list can never be chosen. Inside the frame, the sample chosen at random, and inside that the people who responded. Chosen people who do not answer are nonresponse. Answers that are not true, from wording or pressure, are response bias."
+ }
+}

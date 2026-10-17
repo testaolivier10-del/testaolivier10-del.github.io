@@ -482,10 +482,10 @@
    "diff": 2,
    "q": "Which displays compare the distribution of one categorical variable across the groups of another? Select all that apply.",
    "why": {
-    "correct": "Segmented bar charts and mosaic plots show each group's percents for the other variable. Histograms, boxplots and dotplots display quantitative data.",
+    "correct": "A segmented bar chart shows each group's percents for the other variable Stemplots, histograms, boxplots and dotplots each display one quantitative variable.",
     "options": [
      "Right: one bar per group, split by the other variable.",
-     "Right: a segmented bar chart whose bar widths show the group sizes.",
+     "A stemplot shows the digits of a quantitative variable.",
      "A histogram shows one quantitative variable.",
      "A boxplot summarizes a quantitative variable with five numbers.",
      "A dotplot shows the values of a quantitative variable."
@@ -493,14 +493,13 @@
    },
    "options": [
     "A segmented bar chart",
-    "A mosaic plot",
+    "A stemplot",
     "A histogram",
     "A boxplot",
     "A dotplot"
    ],
    "correct": [
-    0,
-    1
+    0
    ]
   }
  ]

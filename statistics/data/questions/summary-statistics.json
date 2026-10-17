@@ -217,10 +217,10 @@
    },
    "stimulus": "summary-statistics-s1",
    "options": [
-    "7.2 and 14.9 hours, the two most extreme values",
+    "7.2 and 14.9 hours",
     "14.9 hours alone",
     "No phone, since 14.9 is below twice the mean of 9.68 hours",
-    "10.6 and 14.9 hours, the two values above $Q_3$"
+    "10.6 and 14.9 hours"
    ],
    "correct": 1
   },
@@ -244,7 +244,7 @@
    },
    "stimulus": "summary-statistics-s2",
    "options": [
-    "No: 980 is less than 1.5 times the median price of 390",
+    "No: 980 < 1.5 × 390",
     "No: the upper fence is 460 + 1.5(980 − 210) = 1,615",
     "Yes, because the maximum of a data set is an outlier by definition",
     "Yes: the upper fence is 632.5, and 980 is above it"
@@ -299,7 +299,7 @@
    "stimulus": "summary-statistics-s2",
    "options": [
     "Mean 417 and standard deviation 100, as both go up by 5",
-    "Mean 412 and standard deviation 95, as a fee is not a price",
+    "Mean 412 and SD 95",
     "Mean 417 and standard deviation 95",
     "Mean 2,060 and standard deviation 475, from multiplying by 5"
    ],
@@ -325,10 +325,10 @@
    },
    "stimulus": "summary-statistics-s2",
    "options": [
-    "632.5 thousand dollars, the upper fence",
-    "507 thousand dollars, one SD above the mean",
+    "632.5 thousand dollars",
+    "507 thousand dollars",
     "602 thousand dollars",
-    "580 thousand dollars, twice the SD above the median"
+    "580 thousand dollars"
    ],
    "correct": 2
   },
@@ -382,7 +382,7 @@
    "options": [
     "80% of the scores are at or below this score",
     "The student answered 80% of the questions correctly",
-    "The student scored 80 points out of 100 on the test",
+    "The score was 80 points",
     "80 students scored higher than this student on the test"
    ],
    "correct": 0
@@ -436,7 +436,7 @@
    "options": [
     "The mean is greater than the median, since most scores are high",
     "The mean and the median are equal, as in any skewed shape",
-    "The median is zero, since the tail starts at zero",
+    "The median is zero",
     "The mean is less than the median"
    ],
    "correct": 3
@@ -494,10 +494,10 @@
     ]
    },
    "options": [
-    "3.16 cm, since spread does not change with units",
+    "3.16 cm",
     "8.03 cm",
-    "5.70 cm, from adding 2.54 to the SD",
-    "1.24 cm, from dividing the SD by 2.54"
+    "5.70 cm",
+    "1.24 cm"
    ],
    "correct": 1
   },
@@ -521,9 +521,9 @@
    },
    "options": [
     "$\\mu$ and $\\sigma$",
-    "$\\bar{x}$ and $s$, read \"x-bar\" and \"s\"",
-    "$\\mu$ and $s$, mixing the two kinds",
-    "$\\bar{x}$ and $\\sigma$, mixing the two kinds"
+    "$\\bar{x}$ and $s$",
+    "$\\mu$ and $s$",
+    "$\\bar{x}$ and $\\sigma$"
    ],
    "correct": 0
   },
@@ -546,8 +546,8 @@
     ]
    },
    "options": [
-    "85, the score that each student earned",
-    "1, since there is one distinct score",
+    "85",
+    "1",
     "0",
     "It is undefined when the scores are equal"
    ],

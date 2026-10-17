@@ -85,7 +85,7 @@
    },
    "stimulus": "variables-s1",
    "options": [
-    "The kennels where the dogs sleep at the shelter",
+    "Kennels",
     "The dogs",
     "The size groups small, medium and large",
     "The columns of the table, one for each characteristic"
@@ -112,7 +112,7 @@
    },
    "stimulus": "variables-s1",
    "options": [
-    "Weight in kilograms, measured on a scale",
+    "Weight (kg)",
     "Times adopted before, a count for each dog",
     "Vaccinated?, recorded as a yes or a no",
     "Kennel number"
@@ -142,7 +142,7 @@
     "Quantitative and discrete",
     "Quantitative and continuous, like any measurement",
     "Categorical, because it takes just a few different values",
-    "Categorical, because it is recorded for each dog"
+    "Categorical"
    ],
    "correct": 0
   },
@@ -169,7 +169,7 @@
     "Times adopted before, which takes the values 0, 1 and 2",
     "Kennel number, which runs from 1 up to about 25",
     "Weight (kg)",
-    "Size group, which goes from small to medium to large"
+    "Size group"
    ],
    "correct": 2
   },
@@ -194,7 +194,7 @@
    "stimulus": "variables-s2",
    "options": [
     "A statistic, because it is written as a percent",
-    "A variable, because it can change from year to year",
+    "A variable",
     "A parameter",
     "An observational unit of the reporter’s study"
    ],
@@ -214,7 +214,7 @@
     "options": [
      "Right: 26% describes the sample of 80 seniors the reporter asked.",
      "It describes only the 80 seniors in the sample, so it is a statistic.",
-     "Having a job is the categorical variable; 26% is a number that summarizes it.",
+     "\"Has a job\" is the variable; 26% is a number that summarizes it for the sample.",
      "The population is the 1,250 seniors; 26% is a number found from the sample."
     ]
    },
@@ -222,7 +222,7 @@
    "options": [
     "A statistic",
     "A parameter, because it describes the district’s seniors",
-    "A categorical variable, because \"has a job\" is yes or no",
+    "A variable",
     "The population that the reporter wants to learn about"
    ],
    "correct": 0
@@ -248,7 +248,7 @@
    "stimulus": "variables-s2",
    "options": [
     "The 31% of the district’s seniors who have a job",
-    "The number of seniors in the school district, 1,250",
+    "The district’s 1,250 seniors",
     "The number of seniors that each reporter asks, which is 80",
     "The percent of the 80 seniors who have a job"
    ],
@@ -302,7 +302,7 @@
    "options": [
     "Jersey number printed on the back of each player’s shirt",
     "Height in centimeters",
-    "Favorite sport, chosen from a list of six sports",
+    "Favorite sport",
     "Phone area code, such as 612 or 858, for each player"
    ],
    "correct": 1
@@ -329,7 +329,7 @@
     "The fish",
     "The species of fish that live in the lake",
     "The lengths, measured in centimeters",
-    "The nets the biologist uses to catch the fish"
+    "The nets"
    ],
    "correct": 0
   },
@@ -355,7 +355,7 @@
     "The time a student takes to run a mile, in seconds",
     "A student’s height, measured to the nearest millimeter",
     "The number of texts a student sends in a day",
-    "A student’s favorite color, such as blue or green"
+    "Favorite color"
    ],
    "correct": 2
   },
@@ -380,7 +380,7 @@
    "options": [
     "The single value that the variable takes most often in the data",
     "The values it takes and how often it takes each one",
-    "The list of individuals for whom the variable was recorded",
+    "The list of individuals",
     "The difference between the variable’s largest and smallest values"
    ],
    "correct": 1
@@ -430,7 +430,7 @@
     ]
    },
    "options": [
-    "Brown, which is what one student wrote down",
+    "Brown",
     "Eye color",
     "1.62 meters, the height of one student in the class",
     "Yes, one student’s answer to \"Do you play an instrument?\""

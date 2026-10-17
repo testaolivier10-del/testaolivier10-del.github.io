@@ -1,0 +1,83 @@
+{
+ "topic": "random-sampling",
+ "hook": "A principal wants 100 students’ opinions on a new schedule. She could number all 1,200 students and pick 100 by chance, pick 25 from each grade, pick four whole homerooms, or take every 12th name on a list. All four are random. They differ in cost, in convenience, and in how well they guarantee that every grade is heard.",
+ "prereq": [
+  {
+   "q": "A school wants to know what its 1,200 students think. What is the population?",
+   "options": [
+    "The 1,200 students",
+    "The 100 students asked",
+    "The principal",
+    "The schedule"
+   ],
+   "correct": 0,
+   "why": "The population is the whole group the question is about.",
+   "review": "intro-statistics"
+  },
+  {
+   "q": "A study asks 100 students their opinion without imposing anything. What kind of study is it?",
+   "options": [
+    "A sample survey",
+    "An experiment",
+    "A census",
+    "None of these"
+   ],
+   "correct": 0,
+   "why": "It asks a sample questions, so it is a sample survey, an observational study.",
+   "review": "investigative-questions"
+  }
+ ],
+ "figure": {
+  "figure": "four-samples",
+  "caption": "One population of 48 students, four random samples: simple random, stratified by grade, cluster (two whole homerooms) and systematic (every 6th after a random start)."
+ },
+ "chain": [
+  {
+   "cause": "Use chance, not judgment, to choose the sample",
+   "effect": "no one’s preferences decide who is in it, so it tends to represent the population"
+  },
+  {
+   "cause": "Label every individual in the sampling frame and pick labels at random, skipping repeats",
+   "effect": "you get a simple random sample: every group of n has the same chance"
+  },
+  {
+   "cause": "Split the population into strata of similar individuals and sample each",
+   "effect": "every group is represented, and estimates vary less when strata differ"
+  },
+  {
+   "cause": "Choose whole clusters, or every kth individual after a random start",
+   "effect": "sampling is cheaper and easier, at some cost in precision or with a risk from patterns in the list"
+  }
+ ],
+ "ideas": [
+  "A <b>simple random sample</b> (SRS) of size n gives every group of n individuals the same chance of being chosen. Procedure: label, generate random numbers, skip repeats, select.",
+  "Sampling <b>without replacement</b> means each individual can be chosen once; <b>with replacement</b> allows repeats.",
+  "A <b>stratified random sample</b> splits the population into <b>strata</b> of similar individuals and takes an SRS from each.",
+  "A <b>cluster sample</b> chooses whole groups at random and measures everyone in them. A <b>systematic random sample</b> takes every kth individual after a random start.",
+  "The <b>sampling frame</b> is the list the sample is drawn from."
+ ],
+ "misconception": {
+  "wrong": "\"Use a random number generator to choose 10 ponds\" is a complete procedure.",
+  "right": "Someone else could not follow it. Say how the ponds are labeled (1 to 80), what is generated (whole numbers from 1 to 80), what to do with repeats (skip them) and when to stop (10 different ponds)."
+ },
+ "check": [
+  "stat-random-sampling-1",
+  "stat-random-sampling-2",
+  "stat-random-sampling-3",
+  "stat-random-sampling-4",
+  "stat-random-sampling-6",
+  "stat-random-sampling-7",
+  "stat-random-sampling-11"
+ ],
+ "summary": "Random sampling uses chance to choose individuals from a sampling frame. A simple random sample gives every group of n the same chance; a stratified sample takes an SRS within each stratum of similar individuals; a cluster sample takes whole groups chosen at random; a systematic sample takes every kth individual after a random start. Write procedures as label, generate, skip repeats, select.",
+ "connections": [
+  {
+   "href": "../notes/investigative-questions.html",
+   "label": "Back: collecting data (1.10)"
+  },
+  {
+   "href": "../notes/sampling-problems.html",
+   "label": "Next: problems with sampling (1.12)"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "investigative-question": {
+  "def": "A question that data can answer: it names the population, the variable, what to estimate (such as a proportion or a typical value) and whether the goal is to describe or to find a cause."
+ },
+ "census": {
+  "def": "A study that collects data from every member of the population."
+ },
+ "observational-study": {
+  "def": "A study that records variables on individuals without imposing any condition on them. A retrospective study looks back at existing records; a prospective study follows individuals forward in time."
+ },
+ "experiment": {
+  "def": "A study in which the researcher deliberately imposes conditions on individuals and measures their responses."
+ },
+ "survey": {
+  "def": "A sample survey collects data by asking questions of a sample of individuals. It is an observational study."
+ },
+ "explanatory-response": {
+  "def": "The explanatory variable may help explain or predict changes in the response variable, the outcome being measured."
+ },
+ "confounding": {
+  "def": "A confounding variable is related to both the explanatory and the response variable, so its effect on the response cannot be separated from the explanatory variable’s effect."
+ },
+ "causation": {
+  "def": "A cause-and-effect conclusion says that changing the explanatory variable changes the response. It needs an experiment in which chance decides who gets which condition; observational studies cannot rule out confounding."
+ }
+}

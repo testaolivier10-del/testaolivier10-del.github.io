@@ -72,18 +72,19 @@
   /* ------------------------------------------------------------ tables */
   function normalize(a){ var s = 0; a.forEach(function(x){ s += x; }); return a.map(function(x){ return x / s; }); }
   function tilt(r, base, size){ return normalize(base.map(function(b){ return Math.max(0.02, b * (1 + size * (r() * 2 - 1))); })); }
-  function makeTable(r, c){
+  function makeTable(r, c, scale){
+    scale = scale || 1;
     var R = c.rows.length, C = c.cols.length, obs = [], i, j, k;
     var size = r.pick(c.tilts || [0, 0.15, 0.3, 0.45]);
     if(c.design === 'independence'){
-      var N = r.pick(c.Ns), rp = tilt(r, c.rowBase, 0.15);
+      var N = Math.round(r.pick(c.Ns) * scale), rp = tilt(r, c.rowBase, 0.15);
       for(i = 0; i < R; i++){ obs.push([]); for(j = 0; j < C; j++) obs[i].push(0); }
       var probsRow = [];
       for(i = 0; i < R; i++) probsRow.push(tilt(r, c.base, size));
       for(k = 0; k < N; k++){ var ri = draw(r, rp), cj = draw(r, probsRow[ri]); obs[ri][cj]++; }
     } else {
       for(i = 0; i < R; i++){
-        var n = r.pick(c.rowNs), pr = tilt(r, c.base, size), row = [];
+        var n = Math.round(r.pick(c.rowNs) * scale), pr = tilt(r, c.base, size), row = [];
         for(j = 0; j < C; j++) row.push(0);
         for(k = 0; k < n; k++) row[draw(r, pr)]++;
         obs.push(row);
@@ -99,7 +100,7 @@
     var ind = c.design === 'independence';
     var good = ind ? 'There ' + (reject ? 'is' : 'is not') + ' convincing evidence of an association between ' + c.rowVar + ' and ' + c.colVar + ' for ' + c.pop + '.'
       : 'There ' + (reject ? 'is' : 'is not') + ' convincing evidence that the distribution of ' + c.colVar + ' differs for ' + c.groups + '.';
-    var opts = [{ t: good, why: 'Right: evidence language, the claim of $H_a$ in context, and ' + (ind ? 'association' : 'the distributions') + ' named.' }];
+    var opts = [{ t: good, why: 'Evidence language, the claim of $H_a$ in context, and ' + (ind ? 'association' : 'the distributions') + ' named.' }];
     if(reject){
       opts.push({ t: 'This proves that ' + (ind ? c.rowVar + ' and ' + c.colVar + ' are associated' : 'the distribution of ' + c.colVar + ' differs for ' + c.groups) + '.', why: 'A test gives convincing evidence, never proof.' });
       opts.push({ t: ind ? 'There is convincing evidence that ' + c.rowVar + ' causes differences in ' + c.colVar + '.' : 'There is convincing evidence that the sample counts are different from each other.', why: ind ? 'An association from an observational sample is not cause and effect.' : 'The conclusion is about the populations, not the sample counts, which are known exactly.' });
@@ -139,9 +140,9 @@
       { key: 'p', kind: 'num', practice: '3.E', d: 4, label: 'The p-value.', hint: 'The area to the right of $\\chi^2$ under the $\\chi^2$ distribution with $df = ' + t.df + '$.',
         cell: pCell(t.p, [{ value: 1 - t.p, why: 'That is the area to the left. A $\\chi^2$ test uses only the upper tail: large $\\chi^2$ means far from $H_0$.' }, { value: D().chi2Sf(t.chi2, R * C - 1), why: 'That uses $df = ' + (R * C - 1) + '$. A two-way table has $df = (r - 1)(c - 1) = ' + t.df + '$.' }]) },
       choice('decide', '4.G', 'Compare the p-value with α and decide.', [
-        { t: 'Because the p-value of ' + P4(t.p) + ' is ' + (reject ? 'less' : 'greater') + ' than $\\alpha = ' + A(alpha) + '$, ' + (reject ? 'reject' : 'fail to reject') + ' $H_0$.', why: 'Right: reject only when the p-value is less than α.' },
+        { t: 'Because the p-value of ' + P4(t.p) + ' is ' + (reject ? 'less' : 'greater') + ' than $\\alpha = ' + A(alpha) + '$, ' + (reject ? 'reject' : 'fail to reject') + ' $H_0$.', why: 'Reject only when the p-value is less than α.' },
         { t: 'Because the p-value of ' + P4(t.p) + ' is ' + (reject ? 'less' : 'greater') + ' than $\\alpha = ' + A(alpha) + '$, ' + (reject ? 'fail to reject' : 'reject') + ' $H_0$.', why: 'The comparison is right but the decision is reversed.' },
-        { t: 'Because $\\chi^2 = ' + F(t.chi2, 2) + '$ is ' + (t.chi2 > 1 ? 'greater' : 'less') + ' than 1, reject $H_0$.', why: 'Compare the p-value with α (or $\\chi^2$ with the critical value for df ' + t.df + '), never $\\chi^2$ with 1.' },
+        { t: 'Because $\\chi^2 = ' + F(t.chi2, 2) + '$ is ' + (t.chi2 > t.df ? 'greater' : 'less') + ' than the ' + t.df + ' degrees of freedom, ' + (t.chi2 > t.df ? 'reject' : 'fail to reject') + ' $H_0$.', why: 'Compare the p-value with α (or $\\chi^2$ with the critical value for $df = ' + t.df + '$ and this α), never $\\chi^2$ with the df.' },
         { t: 'Because the p-value of ' + P4(t.p) + ' is ' + (reject ? 'less' : 'greater') + ' than $\\alpha = ' + A(alpha) + '$, ' + (reject ? 'accept $H_a$ as proven.' : 'accept $H_0$.'), why: reject ? 'A test never proves $H_a$; say "reject $H_0$".' : 'We never accept $H_0$; say "fail to reject $H_0$".' }
       ]),
       choice('conclude', '4.F', 'Which conclusion is written correctly, in context?', conclusions(c, reject))
@@ -163,34 +164,35 @@
     var obs, t, g = 0, small = r() < 0.4;
     for(;;){
       if(g++ > 400) throw new Error('chiSquareLab: no table for ' + c.id);
-      obs = makeTable(r, c); t = table(obs);
-      if(small ? t.minExpected >= 5 || t.minExpected < 1 : t.minExpected < 5) { if(small && g > 100) small = false; continue; }
+      obs = makeTable(r, c, small ? 0.12 + r() * 0.1 : 1); t = table(obs);
+      if(!(t.minExpected > 0) || obs.some(function(row){ return row.every(function(x){ return x === 0; }); })) continue;
+      if(small ? t.minExpected >= 5 || t.minExpected < 1 : t.minExpected < 5) { if(small && g > 200) small = false; continue; }
       break;
     }
     var h = hyp(c), ind = c.design === 'independence', other = { design: ind ? 'homogeneity' : 'independence', rowVar: c.rowVar, colVar: c.colVar, pop: c.pop, groups: c.groups || ('the ' + c.rows.length + ' groups') };
     var ho = hyp(other);
     var steps = [
       choice('test', '2.C', 'Which test fits this study?', ind ? [
-        { t: 'A chi-square test for independence', why: 'Right: one random sample, each individual classified on two categorical variables.' },
+        { t: 'A chi-square test for independence', why: 'One random sample, each individual classified on two categorical variables.' },
         { t: 'A chi-square test for homogeneity', why: 'Homogeneity compares separate samples or treatment groups. Here there is one sample classified two ways.' },
         { t: 'A two-sample z test for a difference of proportions', why: 'That compares one proportion in two groups. This table has more categories than two proportions can hold.' }
       ] : [
-        { t: 'A chi-square test for homogeneity', why: 'Right: separate random samples (or treatment groups), one categorical variable compared across them.' },
+        { t: 'A chi-square test for homogeneity', why: 'Separate random samples (or treatment groups), one categorical variable compared across them.' },
         { t: 'A chi-square test for independence', why: 'Independence uses one sample classified on two variables. Here the groups were sampled (or assigned) separately.' },
         { t: 'A two-sample z test for a difference of proportions', why: 'That compares one proportion in two groups. This variable has more than two categories, or there are more than two groups.' }
       ]),
       choice('hyp', '2.E', 'Which null hypothesis matches that test?', [
-        { t: '$H_0$: ' + h.h0, why: 'Right: ' + (ind ? 'independence is "no association" in one population.' : 'homogeneity is "the same distribution" in every group.') },
+        { t: '$H_0$: ' + h.h0, why: ind ? 'Independence is "no association" in one population.' : 'Homogeneity is "the same distribution" in every group.' },
         { t: '$H_0$: ' + ho.h0, why: 'That is the hypothesis of the other test. Match the wording to the design.' },
         { t: '$H_0$: ' + h.ha, why: 'That is $H_a$. The null hypothesis is ' + (ind ? 'no association' : 'no difference among the groups') + '.' },
         { t: '$H_0$: Every cell of the table has the same count.', why: '$H_0$ does not say the cells are equal; it is about ' + (ind ? 'association' : 'the distributions being the same') + '.' }
       ]),
       choice('cond', '4.E', 'The smallest expected count is ' + F(t.minExpected, 2) + '. Is the large counts condition met?', t.minExpected >= 5 ? [
-        { t: 'Yes: every expected count is at least 5.', why: 'Right: the condition is on the expected counts, all at least 5.' },
+        { t: 'Yes: every expected count is at least 5.', why: 'The condition is on the expected counts, all at least 5.' },
         { t: 'No: some observed counts are below 10.', why: 'The condition is about expected counts, at least 5 each, not observed counts.' },
         { t: 'No: the sample size must be at least 30.', why: 'The 30 rule is for means. For chi-square, every expected count must be at least 5.' }
       ] : [
-        { t: 'No: an expected count is below 5, so the chi-square distribution may not fit.', why: 'Right: every expected count must be at least 5.' },
+        { t: 'No: an expected count is below 5, so the chi-square distribution may not fit.', why: 'Every expected count must be at least 5.' },
         { t: 'Yes: the grand total is large.', why: 'A large total is not enough: each expected count must be at least 5.' },
         { t: 'Yes: every observed count is at least 1.', why: 'The condition is about expected counts, at least 5 each.' }
       ])

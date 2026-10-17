@@ -1,0 +1,41 @@
+<p>Some probability questions need a count first: how many different ways can 3 of 10 quiz answers be right? Listing them all would take a long time. Two tools do the counting for you: the factorial and the combination.</p>
+
+<h2>Factorials: counting orders</h2>
+<p>How many ways can you line up 5 different books on a shelf? There are 5 choices for the first spot. Once that book is placed, 4 remain for the second spot, then 3, then 2, then 1. Multiply:</p>
+<p>$$5 \times 4 \times 3 \times 2 \times 1 = 120.$$</p>
+<p>That product is written $5!$, read "5 factorial". In general,</p>
+<p>$$n! = n \times (n - 1) \times (n - 2) \times \cdots \times 2 \times 1,$$</p>
+<p>and by definition $0! = 1$. Factorials grow fast: $10! = 3{,}628{,}800$.</p>
+
+<h2>Combinations: counting choices</h2>
+<p>Often the order does not matter. A team of Ana and Ben is the same team as Ben and Ana. Counting <i>ordered</i> choices of 2 from 4 people gives $4 \times 3 = 12$, but that counts each team twice, once in each order. Divide by the $2! = 2$ orders: 6 teams.</p>
+<figure id="fig-teams" data-fig="choose-two-of-four"><figcaption>The six teams of 2 from 4 people.</figcaption></figure>
+<p>The general rule is the <b>combination</b>, the number of ways to choose k items from n when order does not matter:</p>
+<p>$$ {}_nC_k = \binom{n}{k} = \frac{n!}{k!\,(n - k)!}.$$</p>
+<p>Read it "n choose k". Both notations mean the same thing; on a calculator it is usually nCr, and in Bluebook you can type 10C3.</p>
+<div class="worked">
+<p><b>Choose 3 of 10.</b> In how many ways can a student get exactly 3 of 10 quiz questions right?</p>
+<p>The order does not matter (it is just which 3 questions), so use a combination.</p>
+<p>$${}_{10}C_3 = \frac{10!}{3!\,7!} = \frac{10 \times 9 \times 8 \times 7!}{3 \times 2 \times 1 \times 7!} = \frac{720}{6} = 120.$$</p>
+<p>The $7!$ cancels: you only ever need the top k factors over $k!$.</p>
+<p>Answer: 120 different sets of 3 questions.</p>
+</div>
+
+<h2>Useful facts</h2>
+<ul>
+<li>${}_nC_0 = 1$ and ${}_nC_n = 1$: one way to choose nothing, one way to choose everything.</li>
+<li>${}_nC_k = {}_nC_{n-k}$: choosing the 3 questions that are right is the same as choosing the 7 that are wrong, so ${}_{10}C_3 = {}_{10}C_7 = 120$.</li>
+<li>${}_nC_1 = n$: there are n ways to choose one item.</li>
+</ul>
+
+<h2>Order or no order?</h2>
+<table class="compare">
+<thead><tr><th>Situation</th><th>Order matters?</th><th>Count</th></tr></thead>
+<tbody>
+<tr><td>Line up 5 books</td><td>yes</td><td>$5! = 120$</td></tr>
+<tr><td>Choose a team of 2 from 4</td><td>no</td><td>${}_4C_2 = 6$</td></tr>
+<tr><td>Pizza with 3 of 6 toppings</td><td>no</td><td>${}_6C_3 = 20$</td></tr>
+<tr><td>Which 3 of 10 answers are right</td><td>no</td><td>${}_{10}C_3 = 120$</td></tr>
+</tbody>
+</table>
+<p>In Unit 2 the combination appears inside a probability formula, counting the different orders in which successes and failures can happen. Being quick and sure with ${}_nC_k$ now makes that formula much easier.</p>

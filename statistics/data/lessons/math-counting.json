@@ -1,0 +1,77 @@
+{
+ "topic": "math-counting",
+ "hook": "A student guesses on a 10-question quiz and gets 3 right. Which 3? It could be the first three, the last three, or any of many other sets. To find how likely 3 right answers is, you first need to count how many different sets of 3 questions there are. Factorials and combinations do that counting without listing every case.",
+ "prereq": [
+  {
+   "q": "Evaluate $\\frac{6 \\times 5}{2 \\times 1}$.",
+   "options": [
+    "15",
+    "30",
+    "12",
+    "3"
+   ],
+   "correct": 0,
+   "why": "Top: 30. Bottom: 2. 30/2 = 15.",
+   "review": "math-formulas"
+  },
+  {
+   "q": "A count X can be 0 to 10. Which values are \"at least 9\"?",
+   "options": [
+    "9 and 10",
+    "10 only",
+    "0 to 9",
+    "9 only"
+   ],
+   "correct": 0,
+   "why": "At least 9 includes 9.",
+   "review": "math-inequality-words"
+  }
+ ],
+ "figure": {
+  "figure": "choose-two-of-four",
+  "caption": "All six teams of 2 from 4 people. A team is a set, so order does not matter: ${}_4C_2 = 6$."
+ },
+ "chain": [
+  {
+   "cause": "Line up n different items",
+   "effect": "there are n choices for the first place, n − 1 for the next, and so on: $n!$ orders"
+  },
+  {
+   "cause": "Choose k items in order",
+   "effect": "$n \\times (n - 1) \\times \\cdots$ for k places, but each set of k appears $k!$ times"
+  },
+  {
+   "cause": "Divide out the orders",
+   "effect": "${}_nC_k = \\frac{n!}{k!\\,(n - k)!}$ counts the sets of k"
+  },
+  {
+   "cause": "Choosing k to include is choosing $n - k$ to leave out",
+   "effect": "${}_nC_k = {}_nC_{n-k}$, and ${}_nC_0 = {}_nC_n = 1$"
+  }
+ ],
+ "ideas": [
+  "A <b>factorial</b> $n! = n \\times (n - 1) \\times \\cdots \\times 2 \\times 1$ counts the orders of n different items; $0! = 1$.",
+  "A <b>combination</b> ${}_nC_k = \\binom{n}{k} = \\frac{n!}{k!\\,(n - k)!}$ counts the ways to choose k of n items when order does not matter.",
+  "Ordered choices overcount: $10 \\times 9 \\times 8 = 720$ counts each set of 3 six times, so ${}_{10}C_3 = 120$.",
+  "On a calculator or in Bluebook, type ${}_{10}C_3$ as 10C3 or nCr(10, 3)."
+ ],
+ "misconception": {
+  "wrong": "There are $4 \\times 3 = 12$ teams of 2 from 4 people.",
+  "right": "12 counts ordered pairs, so Ana with Ben is counted twice. Divide by $2! = 2$: ${}_4C_2 = 6$."
+ },
+ "check": [
+  "stat-math-counting-1",
+  "stat-math-counting-2",
+  "stat-math-counting-3",
+  "stat-math-counting-4",
+  "stat-math-counting-5",
+  "stat-math-counting-10"
+ ],
+ "summary": "A factorial $n!$ multiplies n by each whole number below it and counts the orders of n items ($0! = 1$). A combination ${}_nC_k = \\frac{n!}{k!\\,(n - k)!}$ counts the ways to choose k of n when order does not matter; it equals ${}_nC_{n-k}$.",
+ "connections": [
+  {
+   "href": "../notes/binomial-distribution.html",
+   "label": "Next: topic 2.10"
+  }
+ ]
+}

@@ -74,10 +74,10 @@
    },
    "stimulus": "describing-distributions-s1",
    "options": [
-    "Skewed left, because the tallest bars are on the left side",
+    "Skewed left",
     "Skewed right",
-    "Roughly symmetric, with one peak between 10 and 15 minutes",
-    "Uniform, since each bin holds a few of the workers"
+    "Roughly symmetric",
+    "Uniform"
    ],
    "correct": 1
   },
@@ -129,9 +129,9 @@
    "stimulus": "describing-distributions-s1",
    "options": [
     "Between 15 and 20 minutes",
-    "Between 10 and 15 minutes, the tallest bar",
-    "About 35 minutes, halfway between 0 and 70",
-    "Between 20 and 25 minutes, past the peak"
+    "Between 10 and 15 minutes",
+    "About 35 minutes",
+    "Between 20 and 25 minutes"
    ],
    "correct": 0
   },
@@ -182,10 +182,10 @@
    },
    "stimulus": "describing-distributions-s2",
    "options": [
-    "Skewed right, because the heights go up to 202 centimeters",
-    "Uniform, since both groups have about the same number of athletes",
+    "Skewed right",
+    "Uniform",
     "Bimodal",
-    "Roughly symmetric and unimodal, centered near 175 centimeters"
+    "Unimodal"
    ],
    "correct": 2
   },
@@ -238,7 +238,7 @@
    "options": [
     "An outlier at 202 centimeters, the tallest athlete in the camp",
     "An outlier at 148 centimeters, the shortest athlete in the camp",
-    "A uniform stretch of heights between 150 and 200 centimeters",
+    "A uniform stretch",
     "A gap: no athlete is between 165 and 180 centimeters"
    ],
    "correct": 3
@@ -266,7 +266,7 @@
     "175 centimeters is too tall to be a typical height for an athlete",
     "Hardly anyone is near 175; the heights form two groups",
     "A center is not defined for heights measured in centimeters",
-    "The coach should have used inches to describe the athletes"
+    "It should be in inches"
    ],
    "correct": 1
   },
@@ -290,9 +290,9 @@
    },
    "options": [
     "Skewed left",
-    "Skewed right, because most of the scores are high ones",
-    "Roughly symmetric around a score of 9 out of 10",
-    "Uniform, since each score from 0 to 10 is possible"
+    "Skewed right",
+    "Roughly symmetric",
+    "Uniform"
    ],
    "correct": 0
   },
@@ -341,10 +341,10 @@
     ]
    },
    "options": [
-    "Skewed right, toward the larger numbers",
+    "Skewed right",
     "Roughly uniform",
-    "Bimodal, with peaks at 1 and at 8",
-    "Mound-shaped with a peak near 4 or 5"
+    "Bimodal",
+    "Mound-shaped"
    ],
    "correct": 1
   },
@@ -367,7 +367,7 @@
     ]
    },
    "options": [
-    "Club A’s ages vary more, since its members are older",
+    "Club A’s ages vary more",
     "The spreads are the same, since both clubs contain adults",
     "Spread is impossible to compare without the shape of each club",
     "Club B’s ages vary more than club A’s ages do"
@@ -451,7 +451,7 @@
    "options": [
     "A long tail of the distribution to the right",
     "A center of the distribution of weights",
-    "A uniform part of the distribution",
+    "A uniform part",
     "A cluster, set apart by a gap"
    ],
    "correct": 3

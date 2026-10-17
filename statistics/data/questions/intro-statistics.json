@@ -32,7 +32,7 @@
    },
    "stimulus": "intro-statistics-s1",
    "options": [
-    "The 120 students chosen from the school list",
+    "The 120 students asked",
     "All 2,400 students at the school",
     "The 78 students who answered yes to the question",
     "Students who already study in the library at lunch"
@@ -60,7 +60,7 @@
    "stimulus": "intro-statistics-s1",
    "options": [
     "The 2,400 students enrolled at the high school",
-    "The 78 students who said they would use the room",
+    "The 78 who said yes",
     "The members of the student council who ran the study",
     "The 120 students the council asked"
    ],
@@ -88,7 +88,7 @@
    "options": [
     "65% of the students asked said yes",
     "Exactly 65% of the school’s 2,400 students would use the room",
-    "78% of the students at the school would use the study room",
+    "78% of the school would use it",
     "Exactly 78 students at the school would use the study room"
    ],
    "correct": 0
@@ -113,7 +113,7 @@
    },
    "stimulus": "intro-statistics-s1",
    "options": [
-    "Exactly 78 yes answers, because the school itself has not changed",
+    "Exactly 78 yes answers again",
     "A percent very far from 65%, since each group is chosen by chance",
     "A percent near 65%, but probably not exactly 65%",
     "Exactly 65% of the 120, because the method of choosing is the same"
@@ -141,7 +141,7 @@
    "stimulus": "intro-statistics-s2",
    "options": [
     "The 60 students in her classes who kept sleep records",
-    "The students who attend her own high school",
+    "Students at her own school",
     "The district’s 9,000 high school students",
     "Teenagers across the country who go to high school"
    ],
@@ -196,7 +196,7 @@
    "options": [
     "How many hours did one particular student in her class sleep last Tuesday night?",
     "Do students at the other five schools sleep less than the students in her classes?",
-    "What time does the first class at her school start each school morning?",
+    "What time does her school start?",
     "How much do students in her classes sleep on school nights?"
    ],
    "correct": 3
@@ -224,7 +224,7 @@
     "Ask the same 60 students to keep records for two weeks instead of one",
     "Choose students at random from a district list",
     "Ask 200 students from her own school instead of 60 from her classes",
-    "Ask her students to go to bed earlier during the week of the study"
+    "Ask her students to sleep more"
    ],
    "correct": 1
   },
@@ -276,7 +276,7 @@
     "The whole group of people or things that the question is about",
     "The answer that a study reports about the group it studied",
     "The part of the population that data come from",
-    "The question that the researchers are trying to answer"
+    "The question a study asks"
    ],
    "correct": 2
   },
@@ -299,7 +299,7 @@
     ]
    },
    "options": [
-    "The 50 bags that the team took and weighed",
+    "The 50 bags weighed",
     "The 8,000 bags made that day",
     "The weight that is printed on each bag of rice",
     "The machine on the line that fills the bags"
@@ -325,7 +325,7 @@
     ]
    },
    "options": [
-    "The answer to the question is 70%, which is more than half",
+    "The answer is 70%",
     "Most of the people who answered the question want more of it",
     "210 is greater than 300 divided by 2, so the result is a majority",
     "70% of the 300 visitors asked want more shade trees"
@@ -379,7 +379,7 @@
    "options": [
     "5,000 votes is far too few to learn anything about a whole city",
     "Percents are a poor way to describe opinions about a stadium",
-    "The votes should have been counted a second time to be sure",
+    "The votes were not recounted",
     "Readers who chose to vote may not represent the city"
    ],
    "correct": 3
@@ -432,7 +432,7 @@
     "So a reader knows who was studied and what was measured",
     "So that the numbers in the report look more precise to a reader",
     "Because results should be rounded to whole percents before they are shared",
-    "To make the written report longer and more detailed for the reader"
+    "To make the report longer"
    ],
    "correct": 0
   },
@@ -455,7 +455,7 @@
     ]
    },
    "options": [
-    "The number of players on the team and the number of practices",
+    "The number of players",
     "The full injury history of the best player on the team this season",
     "For each player: stretches or not, and number of injuries",
     "The names of the stretching exercises the team does before practice"

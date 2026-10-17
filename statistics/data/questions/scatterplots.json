@@ -48,9 +48,7 @@
      350
     ],
     "xLabel": "hours of sleep",
-    "yLabel": "reaction time (ms)",
-    "width": 520,
-    "height": 300
+    "yLabel": "reaction time (ms)"
    },
    "data": {
     "vars": [
@@ -149,9 +147,7 @@
      11
     ],
     "xLabel": "temperature (°F)",
-    "yLabel": "gas used (therms)",
-    "width": 520,
-    "height": 300
+    "yLabel": "gas used (therms)"
    },
    "data": {
     "vars": [
@@ -254,9 +250,7 @@
      34
     ],
     "xLabel": "age (years)",
-    "yLabel": "price ($1,000)",
-    "width": 520,
-    "height": 300
+    "yLabel": "price ($1,000)"
    },
    "data": {
     "vars": [

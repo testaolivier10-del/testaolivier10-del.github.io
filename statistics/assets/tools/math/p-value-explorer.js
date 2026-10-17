@@ -107,14 +107,14 @@
       less: 'A "less than" alternative counts results at least as small as the one observed: the left tail.',
       two: 'A "different from" alternative counts results at least as far from the null value on either side: both tails.'
     };
-    var opts = o.map(function(x){ return { t: x.t, why: x.k === ha ? 'Right. ' + why[ha] : 'Not this one. ' + why[ha] + ' The tail comes from $H_a$, not from where the sample happened to land.' }; });
+    var opts = o.map(function(x){ return { t: x.t, why: x.k === ha ? why[ha] : 'Not this one. ' + why[ha] + ' The tail comes from $H_a$, not from where the sample happened to land.' }; });
     var correct = o.map(function(x){ return x.k; }).indexOf(ha);
     return { opts: opts, correct: correct };
   }
   function decideStep(p, alpha, practice){
     var ps = P4(p), a = A(alpha), less = p < alpha;
     var opts = [
-      { t: 'Because the p-value of ' + ps + ' is ' + (less ? 'less' : 'greater') + ' than $\\alpha = ' + a + '$, ' + (less ? 'reject $H_0$.' : 'fail to reject $H_0$.'), why: less ? 'Right: a p-value below α is unusual enough under $H_0$ to reject it.' : 'Right: a p-value above α is not unusual enough under $H_0$, so we fail to reject it.' },
+      { t: 'Because the p-value of ' + ps + ' is ' + (less ? 'less' : 'greater') + ' than $\\alpha = ' + a + '$, ' + (less ? 'reject $H_0$.' : 'fail to reject $H_0$.'), why: less ? 'A p-value below α is unusual enough under $H_0$ to reject it.' : 'A p-value above α is not unusual enough under $H_0$, so we fail to reject it.' },
       { t: 'Because the p-value of ' + ps + ' is ' + (less ? 'less' : 'greater') + ' than $\\alpha = ' + a + '$, ' + (less ? 'fail to reject $H_0$.' : 'reject $H_0$.'), why: 'The comparison is right but the decision is reversed: reject $H_0$ only when the p-value is less than α.' },
       { t: 'Because the p-value of ' + ps + ' is ' + (less ? 'greater' : 'less') + ' than $\\alpha = ' + a + '$, ' + (less ? 'fail to reject $H_0$.' : 'reject $H_0$.'), why: 'Check the inequality: ' + ps + ' is ' + (less ? 'less' : 'greater') + ' than ' + a + '.' },
       { t: 'Because the p-value of ' + ps + ' is ' + (less ? 'less' : 'greater') + ' than $\\alpha = ' + a + '$, ' + (less ? 'accept $H_a$ as proven.' : 'accept $H_0$.'), why: less ? 'A test never proves anything; it gives convincing evidence. Say "reject $H_0$".' : 'We never "accept" $H_0$: a large p-value only means the data are not convincing. Say "fail to reject $H_0$".' }
@@ -124,12 +124,12 @@
   function concludeStep(reject, param, ha, v, statWord, practice){
     var dir = HA_WORD[ha];
     var opts = reject ? [
-      { t: 'There is convincing evidence that ' + param + ' is ' + dir + ' ' + v + '.', why: 'Right: the evidence language, the parameter in context and the direction of $H_a$.' },
+      { t: 'There is convincing evidence that ' + param + ' is ' + dir + ' ' + v + '.', why: 'The evidence language, the parameter in context and the direction of $H_a$.' },
       { t: 'There is convincing evidence that the sample ' + statWord + ' is ' + dir + ' ' + v + '.', why: 'The conclusion is about the population parameter, not the sample: the sample value is known exactly.' },
       { t: 'This proves that ' + param + ' is ' + dir + ' ' + v + '.', why: 'A test gives evidence, never proof: a small p-value can happen by chance even when $H_0$ is true.' },
       { t: 'There is convincing evidence that ' + param + ' is equal to ' + v + '.', why: 'Rejecting $H_0$ gives evidence for $H_a$ (' + dir + ' ' + v + '), not for $H_0$.' }
     ] : [
-      { t: 'There is not convincing evidence that ' + param + ' is ' + dir + ' ' + v + '.', why: 'Right: failing to reject $H_0$ means the data are not convincing evidence for $H_a$, in context.' },
+      { t: 'There is not convincing evidence that ' + param + ' is ' + dir + ' ' + v + '.', why: 'Failing to reject $H_0$ means the data are not convincing evidence for $H_a$, in context.' },
       { t: 'There is convincing evidence that ' + param + ' is equal to ' + v + '.', why: 'Failing to reject never shows $H_0$ is true; it only means the evidence for $H_a$ is not convincing.' },
       { t: 'This proves that ' + param + ' is ' + v + '.', why: 'A test never proves $H_0$. A large p-value says the data are consistent with it, nothing more.' },
       { t: 'There is not convincing evidence that the sample ' + statWord + ' is ' + dir + ' ' + v + '.', why: 'The conclusion is about the population parameter, not the sample, and the sample value is known exactly.' }
@@ -250,7 +250,7 @@
     var s = propSample(r, c), ph = F(s.phat, 4), dirW = s.ha === 'greater' ? 'or greater' : s.ha === 'less' ? 'or less' : 'or farther from ' + s.p0;
     var tailWord = s.ha === 'two' ? 'at least as far from ' + s.p0 + ' as ' + ph + ' (in either direction)' : ph + ' ' + dirW;
     var opts = [
-      { t: 'Assuming ' + propParam(c) + ' is ' + s.p0 + ', there is a ' + P4(s.p) + ' probability of getting a sample proportion ' + tailWord + ' by chance in a random sample of ' + s.n + '.', why: 'Right: it assumes $H_0$, names the statistic and its direction, and keeps the context and the sample size.' },
+      { t: 'Assuming ' + propParam(c) + ' is ' + s.p0 + ', there is a ' + P4(s.p) + ' probability of getting a sample proportion ' + tailWord + ' by chance in a random sample of ' + s.n + '.', why: 'It assumes $H_0$, names the statistic and its direction, and keeps the context and the sample size.' },
       { t: 'There is a ' + P4(s.p) + ' probability that ' + propParam(c) + ' is ' + s.p0 + '.', why: 'A p-value is not the probability that $H_0$ is true. It is computed assuming $H_0$ is true.' },
       { t: 'Assuming ' + propParam(c) + ' is ' + s.p0 + ', there is a ' + P4(s.p) + ' probability of getting a sample proportion of exactly ' + ph + ' in a random sample of ' + s.n + '.', why: 'A p-value counts results at least as extreme as the one observed, not that exact value.' },
       { t: 'Assuming ' + propParam(c) + ' is ' + ph + ', there is a ' + P4(s.p) + ' probability of getting a sample proportion ' + tailWord + ' by chance.', why: 'The p-value assumes the null value ' + s.p0 + ', not the sample proportion ' + ph + '.' }
@@ -262,15 +262,15 @@
     };
     var picStep = { key: 'shade', kind: 'choice', practice: '3.A', label: 'Which picture shades this p-value? The dot marks the observed $\\hat{p} = ' + ph + '$.',
       options: picOpts.map(function(k){ return 'Shaded: ' + picWhy[k]; }), correct: picOpts.indexOf(s.ha),
-      why: picOpts.map(function(k){ return k === s.ha ? 'Right: $H_a$ says ' + HA_WORD[s.ha] + ' ' + s.p0 + ', so the p-value is ' + picWhy[k] + ' beyond the observed value.' : 'Not this one. $H_a$ says ' + HA_WORD[s.ha] + ' ' + s.p0 + ', so the p-value is ' + picWhy[s.ha] + ' beyond the observed value' + (k === 'center' ? '; the middle is the results closer to $p_0$ than this one.' : '.'); }),
+      why: picOpts.map(function(k){ return k === s.ha ? '$H_a$ says ' + HA_WORD[s.ha] + ' ' + s.p0 + ', so the p-value is ' + picWhy[k] + ' beyond the observed value.' : 'Not this one. $H_a$ says ' + HA_WORD[s.ha] + ' ' + s.p0 + ', so the p-value is ' + picWhy[s.ha] + ' beyond the observed value' + (k === 'center' ? '; the middle is the results closer to $p_0$ than this one.' : '.'); }),
       fixed: true, pics: { p0: s.p0, n: s.n, x: s.x, ha: s.ha, list: picOpts } };
     var twoStep = s.ha === 'two' ? choice('sides', '2.D', 'Suppose the alternative had been one-sided, in the direction the sample landed. What happens to the p-value?', [
-        { t: 'It is cut in half, to ' + P4(s.p / 2) + '.', why: 'Right: the one tail in the direction of the sample is half of the two-sided p-value.' },
+        { t: 'It is cut in half, to ' + P4(s.p / 2) + '.', why: 'The one tail in the direction of the sample is half of the two-sided p-value.' },
         { t: 'It doubles, to ' + P4(Math.min(1, s.p * 2)) + '.', why: 'Doubling goes the other way: from one tail to two. One tail is half as big.' },
         { t: 'It stays ' + P4(s.p) + ', because the data are the same.', why: 'The data are the same, but the p-value counts only the results that support $H_a$, and that set changes.' },
         { t: 'It becomes ' + P4(1 - s.p / 2) + '.', why: 'That is the area on the far side of the sample. The one-sided tail in the direction of the sample is the smaller area.' }
       ]) : choice('sides', '2.D', 'Suppose the alternative had been two-sided ($H_a: p \\ne ' + s.p0 + '$). What happens to the p-value?', [
-        { t: 'It doubles, to ' + P4(2 * s.p) + '.', why: 'Right: a two-sided p-value counts both tails, twice the smaller tail.' },
+        { t: 'It doubles, to ' + P4(2 * s.p) + '.', why: 'A two-sided p-value counts both tails, twice the smaller tail.' },
         { t: 'It is cut in half, to ' + P4(s.p / 2) + '.', why: 'Halving goes the other way. Two tails hold more area than one, never less.' },
         { t: 'It stays ' + P4(s.p) + ', because the data are the same.', why: 'The data are the same, but a two-sided alternative counts results that are extreme in either direction.' },
         { t: 'It becomes ' + P4(1 - s.p) + '.', why: 'That is the complement: the area on the other side of the observed value.' }
@@ -302,33 +302,33 @@
     if(!e) throw new Error('pValueExplorer: no true value for ' + c.id);
     var beta = e.typeII;
     var whichOpts = reject ? [
-      { t: 'A Type I error: rejecting $H_0$ when it is true.', why: 'Right: the test rejected $H_0$, and rejecting a true $H_0$ is a Type I error.' },
+      { t: 'A Type I error: rejecting $H_0$ when it is true.', why: 'The test rejected $H_0$, and rejecting a true $H_0$ is a Type I error.' },
       { t: 'A Type II error: failing to reject $H_0$ when it is false.', why: 'The test rejected $H_0$, so it cannot have failed to reject it. Only a Type I error is possible.' },
       { t: 'Both a Type I and a Type II error.', why: 'Each decision allows only one kind of error. Rejecting $H_0$ can only be a Type I error.' },
       { t: 'No error is possible, because the p-value is small.', why: 'A small p-value can still happen by chance when $H_0$ is true; that is a Type I error.' }
     ] : [
-      { t: 'A Type II error: failing to reject $H_0$ when it is false.', why: 'Right: the test failed to reject $H_0$, and failing to reject a false $H_0$ is a Type II error.' },
+      { t: 'A Type II error: failing to reject $H_0$ when it is false.', why: 'The test failed to reject $H_0$, and failing to reject a false $H_0$ is a Type II error.' },
       { t: 'A Type I error: rejecting $H_0$ when it is true.', why: 'The test did not reject $H_0$, so a Type I error is impossible here.' },
       { t: 'Both a Type I and a Type II error.', why: 'Each decision allows only one kind of error. Failing to reject $H_0$ can only be a Type II error.' },
       { t: 'No error is possible, because we did not reject anything.', why: 'If $H_0$ is actually false, failing to reject it is a Type II error.' }
     ];
     var t1 = [
-      { t: 'The true proportion of all ' + c.pop + ' ' + (c.rel || 'who') + ' ' + c.trait + ' is ' + s.p0 + ', but we find convincing evidence that it is ' + dir + ' ' + s.p0 + '.', why: 'Right: the condition ($H_0$ is true) first, then the wrong decision, in context.' },
+      { t: 'The true proportion of all ' + c.pop + ' ' + (c.rel || 'who') + ' ' + c.trait + ' is ' + s.p0 + ', but we find convincing evidence that it is ' + dir + ' ' + s.p0 + '.', why: 'The condition ($H_0$ is true) first, then the wrong decision, in context.' },
       { t: 'We find convincing evidence that ' + propParam(c) + ' is ' + dir + ' ' + s.p0 + '.', why: 'This leaves out the condition. A Type I error needs "when the true proportion really is ' + s.p0 + '".' },
       { t: 'The true proportion of all ' + c.pop + ' ' + (c.rel || 'who') + ' ' + c.trait + ' is ' + dir + ' ' + s.p0 + ', but we do not find convincing evidence that it is.', why: 'That is a Type II error: $H_a$ is true but the test misses it.' },
       { t: 'The sample proportion is ' + dir + ' ' + s.p0 + ' by chance alone.', why: 'Errors are about the decision and the truth about the population, not about the sample value.' }
     ];
     var incr = r.pick(['n', 'alpha', 'far']);
     var powOpts = {
-      n: [{ t: 'Take a larger random sample.', why: 'Right: a larger $n$ shrinks the spread of $\\hat{p}$, so the two distributions overlap less.' },
+      n: [{ t: 'Take a larger random sample.', why: 'A larger $n$ shrinks the spread of $\\hat{p}$, so the two distributions overlap less.' },
           { t: 'Take a smaller random sample.', why: 'A smaller sample spreads $\\hat{p}$ out, so the distributions overlap more and power falls.' },
           { t: 'Use a smaller significance level α.', why: 'A smaller α moves the cutoff away from $p_0$: fewer Type I errors, but less power.' },
           { t: 'Change nothing: power depends only on the sample you happened to get.', why: 'Power is a property of the test before any data: it depends on $n$, α and the true value.' }],
-      alpha: [{ t: 'Use a larger significance level α.', why: 'Right: a larger α moves the cutoff toward $p_0$, so more of the alternative distribution is in the rejection region (at the cost of more Type I errors).' },
+      alpha: [{ t: 'Use a larger significance level α.', why: 'A larger α moves the cutoff toward $p_0$, so more of the alternative distribution is in the rejection region (at the cost of more Type I errors).' },
           { t: 'Use a smaller significance level α.', why: 'A smaller α moves the cutoff away from $p_0$: fewer Type I errors, but less power.' },
           { t: 'Take a smaller random sample.', why: 'A smaller sample spreads $\\hat{p}$ out, so the distributions overlap more and power falls.' },
           { t: 'Report the p-value to more decimal places.', why: 'Rounding has nothing to do with power.' }],
-      far: [{ t: 'The true proportion is farther from ' + s.p0 + ' than ' + pa + '.', why: 'Right: a true value farther from $p_0$ moves the alternative distribution away from the null one, so the test detects it more often.' },
+      far: [{ t: 'The true proportion is farther from ' + s.p0 + ' than ' + pa + '.', why: 'A true value farther from $p_0$ moves the alternative distribution away from the null one, so the test detects it more often.' },
           { t: 'The true proportion is closer to ' + s.p0 + ' than ' + pa + '.', why: 'A true value close to $p_0$ is hard to tell apart from it: the distributions overlap more and power falls.' },
           { t: 'A smaller significance level is used.', why: 'A smaller α moves the cutoff away from $p_0$: less power.' },
           { t: 'A smaller random sample is taken.', why: 'A smaller sample spreads $\\hat{p}$ out, so power falls.' }]

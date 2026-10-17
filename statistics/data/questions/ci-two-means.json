@@ -3,7 +3,30 @@
   "ci-two-means-s1": {
    "kind": "graph",
    "title": "Spaced versus massed practice",
-   "text": "<p>Twenty-eight student volunteers learned 50 new vocabulary words. They were randomly assigned, 14 to each group, to study in four short sessions spread over a week (spaced) or in one long session (massed). A week later each took the same recall test (invented data).</p><table class=\"stat-data\"><thead><tr><th scope=\"col\">Group</th><th scope=\"col\">n</th><th scope=\"col\">Mean</th><th scope=\"col\">SD</th></tr></thead><tbody><tr><th scope=\"row\">Spaced</th><td>14</td><td>34.21</td><td>6.13</td></tr><tr><th scope=\"row\">Massed</th><td>14</td><td>28.50</td><td>6.97</td></tr></tbody></table>",
+   "text": "<p>Twenty-eight student volunteers learned 50 new vocabulary words. They were randomly assigned, 14 to each group, to study in four short sessions spread over a week (spaced) or in one long session (massed). A week later each took the same recall test (invented data).</p>",
+   "table": {
+    "caption": "Words recalled (out of 50)",
+    "cols": [
+     "Group",
+     "n",
+     "Mean",
+     "SD"
+    ],
+    "rows": [
+     [
+      "Spaced",
+      "14",
+      "34.21",
+      "6.13"
+     ],
+     [
+      "Massed",
+      "14",
+      "28.50",
+      "6.97"
+     ]
+    ]
+   },
    "plot": {
     "label": "Side-by-side boxplots of words recalled: spaced practice centered higher than massed practice, both roughly symmetric with no outliers",
     "kind": "box",

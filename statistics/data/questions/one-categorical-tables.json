@@ -178,7 +178,7 @@
    "stimulus": "one-categorical-tables-s1",
    "options": [
     "The city’s adults, as a population proportion",
-    "The 12 adults who named print newspapers",
+    "The 12 adults",
     "The news sources that the city’s adults can choose from",
     "The 160 adults in the sample"
    ],
@@ -238,9 +238,9 @@
    "stimulus": "one-categorical-tables-s2",
    "options": [
     "168",
-    "42, reading the relative frequency as a count",
-    "952, from dividing 400 by 0.42",
-    "176, which is the number of type O donors"
+    "42",
+    "952",
+    "176"
    ],
    "correct": 0
   },
@@ -264,7 +264,7 @@
    },
    "stimulus": "one-categorical-tables-s2",
    "options": [
-    "The first bank, because it had more donors in total",
+    "The first bank",
     "The first bank: its 40 type B donors outnumber 30",
     "The second bank: 0.12 against 0.10",
     "Neither, since the two banks had different numbers of donors"
@@ -320,7 +320,7 @@
     "Each category and how many individuals are in it",
     "Each individual and the category that individual belongs to",
     "The categories, ranked from the most to the least important",
-    "The average of the categories, together with the total count"
+    "The average category"
    ],
    "correct": 0
   },
@@ -377,7 +377,7 @@
    "options": [
     "$\\hat{p}$, which is read as \"p-hat\"",
     "$n$, the count of individuals asked",
-    "The percent sign, %, after a decimal",
+    "The % sign",
     "$p$"
    ],
    "correct": 3
@@ -401,10 +401,10 @@
     ]
    },
    "options": [
-    "15, reading 0.15 as a number of shoppers",
+    "15",
     "33",
-    "1,467, from dividing 220 by 0.15",
-    "187, the shoppers who did not pay with cash"
+    "1,467",
+    "187"
    ],
    "correct": 1
   },
@@ -512,7 +512,7 @@
     "The relative frequency of blue is 12, the second largest value",
     "24% of these 50 students have blue eyes",
     "Blue is 0.24, so it is the most common eye color in the class",
-    "12% of the 50 students in the class have blue eyes"
+    "12% have blue eyes"
    ],
    "correct": 1
   }

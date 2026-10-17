@@ -28,10 +28,10 @@
   "sampling-dist-two-proportions-s2": {
    "kind": "graph",
    "title": "100 simulated differences in sample proportions",
-   "text": "A teacher simulates two classes of 60 students each, where every student has a 0.40 chance of saying yes to a survey question, in both classes. Each dot is one simulated value of $\\hat{p}_1 - \\hat{p}_2$, the difference in the two sample proportions. There are 100 dots.",
+   "text": "A teacher simulates two classes of 60 students each, where every student has a 0.40 chance of saying yes to a survey question, in both classes. The histogram shows 100 simulated values of $\\hat{p}_1 - \\hat{p}_2$, the difference in the two sample proportions, in bins 0.05 wide (each bin includes its left end).",
    "plot": {
-    "label": "Dotplot of 100 simulated differences in sample proportions, centered near 0, from about minus 0.25 to 0.25",
-    "kind": "dot",
+    "label": "Histogram of 100 simulated differences in sample proportions in bins 0.05 wide, centered near 0, from about minus 0.3 to 0.25",
+    "kind": "hist",
     "data": [
      0.05,
      0.05,
@@ -134,9 +134,12 @@
      0.0,
      -0.05
     ],
+    "bins": {
+     "start": -0.3,
+     "width": 0.05
+    },
     "xLabel": "difference in sample proportions",
-    "width": 560,
-    "height": 230
+    "yLabel": "trials"
    },
    "data": {
     "vars": [
@@ -414,12 +417,12 @@
    "level": "apply",
    "diff": 1,
    "stimulus": "sampling-dist-two-proportions-s2",
-   "q": "Why is the dotplot centered near 0?",
+   "q": "Why is the histogram centered near 0?",
    "why": {
     "correct": "The mean of $\\hat{p}_1 - \\hat{p}_2$ is $p_1 - p_2 = 0.40 - 0.40 = 0$.",
     "options": [
      "Sample size affects the spread and the shape. The center comes from $p_1 - p_2$.",
-     "The number of trials changes how smooth the dotplot looks, not where it is centered.",
+     "The number of trials changes how smooth the histogram looks, not where it is centered.",
      "The center is the difference of the two proportions, $0.40 - 0.40 = 0$, not either proportion.",
      "Right: the difference in sample proportions is centered at the difference in the true proportions, which is 0 here."
     ]
@@ -446,9 +449,9 @@
     "correct": "A simulated probability is the count of trials at or beyond the value, over the number of trials.",
     "options": [
      "The simulation assumed the proportions were equal. It estimates how often a difference that large happens under that assumption, not the chance the assumption is true.",
-     "That counts the dots below 0.15. The question asks for 0.15 or more.",
-     "Right: count the dots at or above 0.15 (6) and divide by the 100 trials.",
-     "The number of dots has to be counted from the plot. A cutoff value does not tell you how many dots lie beyond it."
+     "That counts the trials below 0.15. The question asks for 0.15 or more.",
+     "Right: add the heights of the bars from 0.15 up (6) and divide by the 100 trials.",
+     "The number of trials has to be read from the bars. A cutoff value does not tell you how many trials lie beyond it."
     ]
    },
    "options": [
@@ -495,7 +498,7 @@
    "level": "analyze",
    "diff": 2,
    "stimulus": "sampling-dist-two-proportions-s2",
-   "q": "The teacher repeats the simulation with 240 students in each class instead of 60. How does the new dotplot compare?",
+   "q": "The teacher repeats the simulation with 240 students in each class instead of 60. How does the new histogram compare?",
    "why": {
     "correct": "Quadrupling both sample sizes halves the standard deviation of the difference.",
     "options": [

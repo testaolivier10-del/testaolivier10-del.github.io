@@ -36,8 +36,9 @@ body.stat{
 .bt-app .sl-scene{height:auto;max-height:560px;}
 .sl-side{flex:none;display:flex;flex-direction:column;gap:4px;min-height:0;}
 .sl-meansbox{flex:none;height:clamp(118px,26vh,220px);min-height:0;}
-.sl-fig.is-wide{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,1fr);gap:18px;align-items:stretch;}
+.sl-fig.is-wide{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(300px,1fr);gap:18px;align-items:stretch;}
 .sl-fig.is-wide .sl-side{justify-content:center;}
+.sl-fig.is-wide .sl-strip{flex-wrap:wrap;row-gap:4px;white-space:normal;mask-image:none;}
 .sl-fig.is-wide .sl-meansbox{height:min(62%,420px);}
 .sl-legend{margin:0;display:flex;flex-wrap:wrap;gap:4px 14px;font:700 calc(12px * var(--ls-scale, 1)) var(--font-ui);color:var(--muted);}
 .sl-legend span{display:inline-flex;align-items:center;gap:6px;}

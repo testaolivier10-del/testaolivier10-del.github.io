@@ -167,9 +167,9 @@
    },
    "stimulus": "boxplots-s1",
    "options": [
-    "About 75%, the percent above the box",
-    "About 50%, the percent inside the box",
-    "About 5%, since just one nurse is an outlier",
+    "About 75%",
+    "About 50%",
+    "About 5%",
     "About 25%"
    ],
    "correct": 3
@@ -248,10 +248,10 @@
    },
    "stimulus": "boxplots-s2",
    "options": [
-    "About 30, a quarter of the students",
-    "About 90, three quarters of the students",
+    "About 30",
+    "About 90",
     "About 60",
-    "About 16, the IQR of the scores"
+    "About 16"
    ],
    "correct": 2
   },
@@ -276,7 +276,7 @@
    "stimulus": "boxplots-s2",
    "options": [
     "It is in the top quarter of the scores",
-    "It is an outlier, since it is above the third quartile",
+    "It is an outlier",
     "It is near the median, since it is near the middle of 41 and 98",
     "It is in the middle half of the scores, inside the box"
    ],
@@ -328,10 +328,10 @@
     ]
    },
    "options": [
-    "3, 6, 8, 12.5, 14, with the median kept in both halves",
+    "3, 6, 8, 12.5, 14",
     "3, 5, 8, 13, 14",
-    "3, 5, 8.86, 13, 14, using the mean for the center",
-    "3, 7, 8, 12, 14, using the values next to the median"
+    "3, 5, 8.86, 13, 14",
+    "3, 7, 8, 12, 14"
    ],
    "correct": 1
   },
@@ -414,10 +414,10 @@
     ]
    },
    "options": [
-    "At 22 minutes, the largest value in the data",
-    "At 19 minutes, the upper fence itself",
+    "At 22 minutes",
+    "At 19 minutes",
     "At 18 minutes",
-    "At 10 minutes, the third quartile of the wait times"
+    "At 10 minutes"
    ],
    "correct": 2
   },
@@ -440,10 +440,10 @@
     ]
    },
    "options": [
-    "Skewed left, since the median is on the left of the box",
+    "Skewed left",
     "Skewed right",
-    "Roughly symmetric, since there is one box",
-    "Bimodal, with one peak in the box and one in the whisker"
+    "Roughly symmetric",
+    "Bimodal"
    ],
    "correct": 1
   },

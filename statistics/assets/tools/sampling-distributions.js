@@ -216,13 +216,14 @@
           g.push('<line class="sd-base" x1="' + L + '" x2="' + (W - R) + '" y1="' + rb.toFixed(1) + '" y2="' + rb.toFixed(1) + '"/>');
           var mxp = sx(pp.mu), sgp = pp.sigma / (dom[1] - dom[0]) * pw, ay = ry + 9;
           g.push('<line class="sd-mu" x1="' + mxp.toFixed(1) + '" x2="' + mxp.toFixed(1) + '" y1="' + (ry + 2).toFixed(1) + '" y2="' + rb.toFixed(1) + '"/>');
-          g.push('<path class="sd-sig" d="M' + mxp.toFixed(1) + ' ' + ay.toFixed(1) + 'H' + (mxp + sgp).toFixed(1) + 'm-5 -4l5 4l-5 4"/>');
-          var muRight = mxp < L + pw * 0.75;
-          g.push('<text class="sd-lab sd-c-pop" x="' + (mxp + (muRight ? -5 : 5)).toFixed(1) + '" y="' + (ay + 4).toFixed(1) + '" text-anchor="' + (muRight ? 'end' : 'start') + '">μ = ' + F(pp.mu, 1) + '</text>');
-          g.push('<text class="sd-lab sd-c-pop" x="' + (mxp + sgp + 6).toFixed(1) + '" y="' + (ay + 4).toFixed(1) + '">σ = ' + F(pp.sigma, 1) + '</text>');
+          // sigma as an arrow from mu toward the roomier side; mu's label on the other side
+          var toR = mxp < L + pw * 0.55, sx2 = toR ? mxp + sgp : mxp - sgp;
+          g.push('<path class="sd-sig" d="M' + mxp.toFixed(1) + ' ' + ay.toFixed(1) + 'H' + sx2.toFixed(1) + (toR ? 'm-5 -4l5 4l-5 4' : 'm5 -4l-5 4l5 4') + '"/>');
+          g.push('<text class="sd-lab sd-c-pop" x="' + (mxp + (toR ? -5 : 5)).toFixed(1) + '" y="' + (ay + 4).toFixed(1) + '" text-anchor="' + (toR ? 'end' : 'start') + '">μ = ' + F(pp.mu, 1) + '</text>');
+          g.push('<text class="sd-lab sd-c-pop" x="' + (sx2 + (toR ? 6 : -6)).toFixed(1) + '" y="' + (ay + 4).toFixed(1) + '" text-anchor="' + (toR ? 'start' : 'end') + '">σ = ' + F(pp.sigma, 1) + '</text>');
         }
       });
-      if(cur.draw) g.push('<text class="sd-note" x="' + (W - R) + '" y="' + (y1 + 13) + '" text-anchor="end">' + (phone ? 'Drag the bars' : 'Drag the bars to draw the population') + '</text>');
+      if(cur.draw){ var nl = sx(A.mu) > L + pw * 0.5; g.push('<text class="sd-note" x="' + (nl ? L + 4 : W - R) + '" y="' + (y1 + popH * 0.55) + '" text-anchor="' + (nl ? 'start' : 'end') + '">' + (phone ? 'Drag the bars' : 'Drag the bars to draw the population') + '</text>'); }
       /* --- panel 2: one sample */
       g.push('<text class="sd-h sd-c-samp" x="' + L + '" y="' + (y2 - 6) + '">One sample, n = ' + n() + (cur.diff ? ' from each' : '') + (o && tt >= 1 ? '<tspan class="sd-hs"> ' + esc(sampLine(o)) + '</tspan>' : '') + '</text>');
       var srows = cur.diff ? [['A', 'a'], ['B', 'b']] : [['A', 'a']], sh = sampH / srows.length;
@@ -297,6 +298,7 @@
         if(dots) for(var j = 0; j < c; j++) g.push('<circle class="sd-dot" cx="' + cx.toFixed(1) + '" cy="' + (y3b - (j + 0.5) * dpx).toFixed(1) + '" r="' + (dpx / 2 - 0.5).toFixed(1) + '"/>');
         else { var bw = bins.w / (dd[1] - dd[0]) * pw, hh = c * yScale; g.push('<rect class="sd-hbar" x="' + (cx - bw / 2 + 0.4).toFixed(1) + '" y="' + (y3b - hh).toFixed(1) + '" width="' + Math.max(1, bw - 0.8).toFixed(1) + '" height="' + hh.toFixed(1) + '"/>'); }
       });
+      if(!K && !fx) g.push('<text class="sd-empty" x="' + (L + pw / 2) + '" y="' + (y3 + distH * 0.45).toFixed(1) + '" text-anchor="middle">Each sample’s ' + (cur.diff ? 'difference' : isP ? 'proportion p̂' : 'mean x̄') + ' lands here</text>');
       // the statistic falling in (Take 1)
       if(fx && tt > 0.62){
         var a2 = Math.min(1, (tt - 0.62) / 0.38), bb = Math.round(o.stat / bins.w), c2 = (cnt3[bb] || 0) + 1, fy = dots ? y3b - (c2 - 0.5) * dpx : y3b - c2 * yScale - 4, fy0 = y2b;

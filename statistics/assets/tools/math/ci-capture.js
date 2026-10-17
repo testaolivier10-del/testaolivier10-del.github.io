@@ -53,10 +53,20 @@
     }
     return M.normal(r, s.mu, s.sigma);
   }
+  /* One sample draws from a local stream seeded by one draw of the seeded
+     generator (mulberry32 with Math.imul held locally), so the same seed
+     gives the same sample and the validator's vm pays no global lookup per
+     draw. */
+  var IMUL = Math.imul;
+  function stream(r){
+    var q = (Math.floor(r() * 4294967296) >>> 0) || 1;
+    return function(){ q = (q + 0x6D2B79F5) >>> 0; var t = q; t = IMUL(t ^ (t >>> 15), t | 1); t ^= t + IMUL(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
   function sample(r, s){
-    if(s.kind === 'prop'){ var x = M.bernoulli(r, s.p, s.n); return { x: x, est: x / s.n }; }
+    var q = stream(r);
+    if(s.kind === 'prop'){ var x = 0; for(var j = 0; j < s.n; j++) if(q() < s.p) x++; return { x: x, est: x / s.n }; }
     var xs = [], Dd = D();
-    for(var i = 0; i < s.n; i++) xs.push(value(r, s));
+    for(var i = 0; i < s.n; i++) xs.push(value(q, s));
     return { est: Dd.mean(xs), s: Dd.sd(xs) };
   }
   function interval(smp, s, level, o){
@@ -68,7 +78,12 @@
   }
   function captures(iv, s){ var v = param(s); return iv.lo <= v && v <= iv.hi; }
   /* critical value for a level: z* for a proportion (or a mean with o.z), t* with n - 1 df for a mean */
-  function crit(s, level, o){ var Dd = D(), q = 1 - (1 - level) / 2; return s.kind === 'prop' || (o && o.z) ? Dd.invNorm(q) : Dd.invT(q, s.n - 1); }
+  var CRIT = {};
+  function crit(s, level, o){
+    var Dd = D(), q = 1 - (1 - level) / 2, z = s.kind === 'prop' || (o && o.z), k = (z ? 'z' : 't' + (s.n - 1)) + ':' + level;
+    if(!(k in CRIT)) CRIT[k] = z ? Dd.invNorm(q) : Dd.invT(q, s.n - 1);   // invT is slow: computed once per df and level
+    return CRIT[k];
+  }
   /* Many intervals at once (the explore picture): the critical value is
      found once with ApStatDist, then each interval is est +/- crit x SE,
      exactly as ci1prop / ci1mean compute it (the test checks they agree). */
@@ -130,8 +145,7 @@
     var steps = [
       num('phat', tx('The sample proportion $' + hp + ' =$'), ph, 4, { abs: 0.0006, mistakes: [{ value: 1 - ph, why: 'That is the proportion who do not. Count the ones who ' + c.yes + '.' }] }),
       num('crit', tx('The critical value $z^* =$ for ' + L + ' confidence'), z, 3, { abs: 0.0051, mistakes: [
-        { value: Dd.invNorm(L0), why: 'That leaves all of the ' + pct(1 - L0) + ' in one tail. A confidence interval splits it: ' + pct((1 - L0) / 2) + ' in each tail.' },
-        { value: Dd.invT(1 - (1 - L0) / 2, n - 1), why: 'That is a t* value. Intervals for a proportion use z*.' }] }),
+        { value: Dd.invNorm(L0), why: 'That leaves all of the ' + pct(1 - L0) + ' in one tail. A confidence interval splits it: ' + pct((1 - L0) / 2) + ' in each tail.' }] }),
       num('se', tx('The standard error $\\sqrt{\\frac{' + hp + '(1 - ' + hp + ')}{n}} =$'), se, 4, { abs: Math.max(0.00006, 1.3 * Math.abs(seR - se)), mistakes: [
         { value: ph * (1 - ph) / n, why: 'That is the square of the standard error. Take the square root.' },
         { value: Math.sqrt(ph / n), why: 'Include 1 − p̂ under the square root.' },
@@ -149,7 +163,7 @@
       tx('$\\text{SE} = \\sqrt{\\frac{' + t(ph, 4) + '(' + t(1 - ph, 4) + ')}{' + n + '}} = ' + t(se, 4) + '$.'),
       tx('$\\text{ME} = ' + t(z, 3) + ' \\times ' + t(se, 4) + ' = ' + t(me, 4) + '$, so the interval is $' + t(ph, 4) + ' \\pm ' + t(me, 4) + '$, ' + iv2(lo, hi, 3) + '.'),
       'We are ' + L + ' confident that the interval ' + iv2(lo, hi, 3) + ' captures the true proportion of ' + c.popAll + ' who ' + c.yes + '.'];
-    return { ctx: c.id, topic: c.topic, type: 'prop', text: text, steps: steps, solution: sol,
+    return { ctx: c.id, topic: c.topic, type: 'prop', text: text, steps: steps, solution: sol, given: { x: x, n: n, level: L0 },
       figure: { kind: 'one', est: ph, lo: lo, hi: hi, me: me, crit: z, se: se, sym: '\\hat{p}', par: 'p', d: 3, L: L } };
   }
 
@@ -157,14 +171,14 @@
     var Dd = D(), n = r.pick(c.ns), L0 = r.pick(c.levels || [0.9, 0.95, 0.99]), L = pct(L0), d = c.d == null ? 1 : c.d;
     var s = { kind: 'mean', mu: between(r, c.mu, d), sigma: between(r, c.sigma, d), n: n, shape: 'normal' };
     var smp = sample(r, s), xb = M.round(smp.est, d + 1), sd = M.round(smp.s, d + 1), df = n - 1;
-    var tc = Dd.invT(1 - (1 - L0) / 2, df), se = sd / Math.sqrt(n), me = tc * se, lo = xb - me, hi = xb + me;
+    var tc = crit({ kind: 'mean', n: n }, L0), se = sd / Math.sqrt(n), me = tc * se, lo = xb - me, hi = xb + me;
     var tt = Dd.tableRoute('tcrit', L0, df), z = Dd.invNorm(1 - (1 - L0) / 2);
     var text = '<p>' + um(c.lead + ' A random sample of $n = ' + n + '$ ' + c.who + ' from ' + c.popAll + ' has mean ' + c.var + ' $\\bar{x} = ' + t(xb, d + 1) + '$ ' + c.unit + ' and standard deviation $s = ' + t(sd, d + 1) + '$ ' + c.unit + '. A graph of the sample shows no strong skew or outliers. Construct ' + an(L) + ' confidence interval for $\\mu$, the mean ' + c.var + ' of ' + c.popAll + '.') + '</p>';
     var steps = [
       num('df', 'Degrees of freedom, df =', df, 0, { mistakes: [{ value: n, why: 'For a one-sample t interval, df = n − 1.' }] }),
       num('crit', tx('The critical value $t^* =$'), tc, 3, { abs: Math.max(0.0006, 1.3 * Math.abs(tt - tc)), mistakes: [
         { value: z, why: 'That is z*. With s in place of σ, use t* with df = ' + df + ': it is a bit larger.' },
-        { value: Dd.invT(L0, df), why: 'That puts all of the ' + pct(1 - L0) + ' in one tail. Split it between the two tails.' }] }),
+        { value: crit({ kind: 'mean', n: n }, 2 * L0 - 1), why: 'That puts all of the ' + pct(1 - L0) + ' in one tail. Split it between the two tails.' }] }),
       num('se', tx('The standard error $\\frac{s}{\\sqrt{n}} =$'), se, 3, { unit: c.unit, mistakes: [
         { value: sd, why: 'That is s, the spread of single values. Divide by √n.' },
         { value: sd / n, why: 'Divide by the square root of n, not n.' }] }),
@@ -180,7 +194,7 @@
       tx('$\\text{SE} = \\frac{' + t(sd, d + 1) + '}{\\sqrt{' + n + '}} = ' + t(se, 3) + '$ ' + c.unit + '.'),
       tx('$\\text{ME} = ' + t(tc, 3) + ' \\times ' + t(se, 3) + ' = ' + t(me, 3) + '$, so the interval is ' + iv2(lo, hi, d + 1) + ' ' + c.unit + '.'),
       'We are ' + L + ' confident that the interval ' + iv2(lo, hi, d + 1) + ' ' + c.unit + ' captures the true mean ' + c.var + ' of ' + c.popAll + '.'];
-    return { ctx: c.id, topic: c.topic, type: 'mean', text: text, steps: steps, solution: sol,
+    return { ctx: c.id, topic: c.topic, type: 'mean', text: text, steps: steps, solution: sol, given: { xbar: xb, s: sd, n: n, level: L0, d: d },
       figure: { kind: 'one', est: xb, lo: lo, hi: hi, me: me, crit: tc, se: se, sym: '\\bar{x}', par: 'μ', d: d + 1, unit: c.unit, L: L } };
   }
 
@@ -220,7 +234,7 @@
     var sol = ['ME = (' + t(hi, 3) + ' − ' + t(lo, 3) + ') ÷ 2 = ' + t(me, 4) + '.',
       yes ? 'Every value in the interval is greater than ' + t(p0, 2) + ', so the interval gives convincing evidence that p > ' + t(p0, 2) + '.' : t(p0, 2) + ' is inside the interval, a plausible value for p, so the interval does not give convincing evidence that p > ' + t(p0, 2) + '.',
       'A higher level uses a larger z*, so the interval is wider.', 'ME has √n in the denominator: 4 times n halves it.'];
-    return { ctx: c.id, topic: c.topic, type: 'claim', text: text, steps: steps, solution: sol,
+    return { ctx: c.id, topic: c.topic, type: 'claim', text: text, steps: steps, solution: sol, given: { lo: lo, hi: hi, p0: p0, phat: ph, level: L0, n: n },
       figure: { kind: 'one', est: ph, lo: lo, hi: hi, me: me, sym: '\\hat{p}', par: 'p', d: 3, L: L, p0: p0 } };
   }
 
@@ -238,7 +252,7 @@
     var sol = [hits + ' of the ' + K + ' intervals cross the line at p = ' + t(s.p, 2) + '.',
       'In the long run about ' + L + ' of intervals built this way capture p; one batch of ' + K + ' can be above or below that.',
       'The level is the success rate of the method, not a chance about one interval.'];
-    return { ctx: c.id, topic: c.topic, type: 'capture', text: text, steps: steps, solution: sol,
+    return { ctx: c.id, topic: c.topic, type: 'capture', text: text, steps: steps, solution: sol, given: { p: s.p, n: n, level: L0, ests: ivs.map(function(v){ return v.est; }) },
       figure: { kind: 'many', p: s.p, ivs: ivs.map(function(v){ return { lo: v.lo, hi: v.hi, est: v.est, hit: v.hit }; }), L: L } };
   }
 

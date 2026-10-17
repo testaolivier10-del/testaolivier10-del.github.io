@@ -165,9 +165,11 @@
     return '<svg class="da-pic" id="' + id + '" viewBox="0 0 260 100" role="img" aria-label="Normal curve showing ' + names[k] + '">' + r.svg + extra + '</svg>';
   }
 
+  // The problem text is also the plain caption: H₀ and Hₐ read as letters there.
+  function hText(t){ return String(t).replace(/\$H_0\$/g, 'H₀').replace(/\$H_a\$/g, 'Hₐ').replace(/\$H_0: /g, 'H₀: $').replace(/\$H_a: /g, 'Hₐ: $'); }
   function texify(p){
     var q = {}; for(var k in p) q[k] = p[k];
-    q.text = tx(p.text); q.solution = p.solution.map(tx);
+    q.text = tx(hText(p.text)); q.solution = p.solution.map(tx);
     q.steps = p.steps.map(function(s){
       var t = {}; for(var k2 in s) t[k2] = s[k2];
       t.label = tx(s.label); if(s.hint) t.hint = tx(s.hint);
@@ -396,6 +398,7 @@
     }
 
     /* --- Why: the work as the exam wants it --- */
+    function openWhy(){ var d = whyEl.querySelector('details.bt-why'); if(d) d.open = true; }
     var whyEl = q('.da-why');
     function whyN(res){
       var c = S.ns, d = c.places, ev = evTex(), Dd = D();
@@ -410,7 +413,7 @@
         '<li>' + tx('<b>The area.</b> ' + pline + '. Table A, with z to two places, gives ' + P4(res.pTable) + '.') + '</li></ol>' +
         '<p class="bt-small">' + tx('For a normal variable $P(X < x)$ and $P(X \\le x)$ are equal: a single value has probability 0. Calculator syntax alone, like normalcdf(...), is not work; name the distribution, the parameters, the boundary and the direction.') + '</p>' +
         (S.emp ? '<p>' + tx('<b>The 68-95-99.7 rule</b> is an approximation: the exact areas within 1, 2 and 3 standard deviations are 0.6827, 0.9545 and 0.9973.') + '</p>' : '');
-      T.explain(whyEl, 'A normal probability is an area: find the boundary in z-scores, then the area on the side the question asks for.', body);
+      T.explain(whyEl, 'A normal probability is an area: find the boundary in z-scores, then the area on the side the question asks for.', body); openWhy();
     }
     function whyB(b, eq){
       var n = S.n, p = S.p, q1 = M.round(1 - p, 4);
@@ -423,7 +426,7 @@
         '<li>' + tx('<b>Center and spread.</b> $\\mu_X = np = ' + F(b.mean, 2) + '$, $\\sigma_X = \\sqrt{np(1 - p)} = ' + F(b.sd, 3) + '$.') + '</li></ol>' +
         '<p class="bt-small">' + tx('"Fewer than" and "more than" leave the boundary out; "at most" and "at least" keep it. For counts this changes the answer; the reader report names it as a common slip.') + '</p>' +
         (S.curve ? '<p>' + tx('The dashed curve is the normal shape with the same mean and SD, drawn only to compare shapes. With $np$ and $n(1 - p)$ both large the bars follow it closely; every probability here is still the exact binomial one.') + '</p>' : '');
-      T.explain(whyEl, 'A binomial probability adds bars: translate the words into the counts they include, then add those bars.', body);
+      T.explain(whyEl, 'A binomial probability adds bars: translate the words into the counts they include, then add those bars.', body); openWhy();
     }
     function plainEv(e){ return 'P(' + e.replace(/\\le/g, '≤').replace(/\\ge/g, '≥').replace(/\s+/g, ' ').trim() + ')'; }
     function texN(z){ var s = F(z, 2); return s.charAt(0) === '−' || s.charAt(0) === '-' ? '{-' + s.slice(1) + '}' : s; }

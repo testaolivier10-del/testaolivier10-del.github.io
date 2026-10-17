@@ -1,0 +1,12 @@
+{
+ "compare-and-z": {
+  "file": "figures/compare-and-z.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 412,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Top: parallel boxplots of delivery times in minutes for two restaurants, 15 orders each. Restaurant A has median 32 and a narrow box from 28 to 36. Restaurant B has a lower median, 27, a wider box from 23 to 37, a long right whisker and one high outlier at 60. Bottom: a z-score number line from minus 3 to plus 3 with the mean at 0; a value with z = 1.5 sits 1.5 standard deviations above the mean."
+ }
+}

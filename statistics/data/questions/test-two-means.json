@@ -623,20 +623,19 @@
    "q": "Which statements about the two-sample t statistic $t = \\frac{\\bar{x}_1 - \\bar{x}_2}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$ are true? Select all that apply.",
    "options": [
     "It measures the difference in sample means in standard errors",
-    "It uses each sample standard deviation separately",
+    "It uses one combined standard deviation for both groups",
     "It requires the two samples to be the same size",
     "Its value depends on the degrees of freedom",
     "A larger $|t|$ gives a larger p-value"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "The two-sample t statistic is the observed difference over its standard error; df only enter when finding the p-value.",
+    "correct": "The two-sample t statistic is the observed difference over its standard error, built from $s_1$ and $s_2$ separately; df only enter when finding the p-value.",
     "options": [
      "Right: (statistic minus null value 0) over the standard error.",
-     "Right: $s_1$ and $s_2$ each appear with their own $n$.",
+     "It uses $s_1$ and $s_2$ separately, each with its own $n$.",
      "Any sample sizes work.",
      "df affect the p-value, not the statistic.",
      "A larger $|t|$ means stronger evidence, so a smaller p-value."

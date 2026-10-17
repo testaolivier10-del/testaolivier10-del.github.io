@@ -1,0 +1,5 @@
+{
+ "inequality-words": {
+  "def": "Phrases that set a boundary on a count or measurement: at least k ($\\ge k$), at most k or no more than k ($\\le k$), more than k ($> k$), fewer than k ($< k$), no fewer than k ($\\ge k$). For counts, fewer than k is the same as at most $k - 1$."
+ }
+}
