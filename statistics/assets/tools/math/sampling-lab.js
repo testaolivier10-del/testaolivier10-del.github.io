@@ -41,8 +41,10 @@
   function mean(a){ var s = 0; for(var i = 0; i < a.length; i++) s += a[i]; return a.length ? s / a.length : NaN; }
   function sd(a, pop){ var m = mean(a), s = 0; for(var i = 0; i < a.length; i++) s += (a[i] - m) * (a[i] - m); return Math.sqrt(s / (a.length - (pop ? 0 : 1))); }
   function cap(s){ s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); }
+  /* a count as text: 1,200 */
+  function fN(x){ return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
   function list(a){ return a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]; }
-  function inGroups(c){ return c.clusters.phrase || 'The ' + c.N + ' ' + c.units + ' are in ' + c.clusters.count + ' ' + c.clusters.many + ' of ' + c.clusters.size + '.'; }
+  function inGroups(c){ return c.clusters.phrase || 'The ' + fN(c.N) + ' ' + c.units + ' are in ' + c.clusters.count + ' ' + c.clusters.many + ' of ' + c.clusters.size + '.'; }
 
   /* ------------------------------------------------------ the population */
   /* scene: { id, rows, cols, seed, decimals, strata: { by: 'row'|'col'|'cluster',
@@ -194,8 +196,8 @@
   /* A procedure, in the context's words, for each method. */
   function describe(ctx, method, r, nums){
     var c = ctx, U = c.units, n = nums.n;
-    if(method === 'srs') return 'The ' + c.who + ' numbers all ' + c.N + ' ' + U + ' on ' + c.list + ', uses a random number generator to choose ' + n + ' different numbers, and ' + c.verb + ' those ' + n + ' ' + U + '.';
-    if(method === 'strat') return 'The ' + c.who + ' splits the ' + c.N + ' ' + U + ' by ' + c.strata.by + ' (' + list(c.strata.groups.map(function(g){ return g.name; })) + ') and chooses a simple random sample from each ' + c.strata.word + ': ' + list(nums.alloc.map(String)) + ' ' + U + ', ' + n + ' in all. Then the ' + c.who + ' ' + c.verb + ' them.';
+    if(method === 'srs') return 'The ' + c.who + ' numbers all ' + fN(c.N) + ' ' + U + ' on ' + c.list + ', uses a random number generator to choose ' + n + ' different numbers, and ' + c.verb + ' those ' + n + ' ' + U + '.';
+    if(method === 'strat') return 'The ' + c.who + ' splits the ' + fN(c.N) + ' ' + U + ' by ' + c.strata.by + ' (' + list(c.strata.groups.map(function(g){ return g.name; })) + ') and chooses a simple random sample from each ' + c.strata.word + ': ' + list(nums.alloc.map(String)) + ' ' + U + ', ' + n + ' in all. Then the ' + c.who + ' ' + c.verb + ' them.';
     if(method === 'cluster') return inGroups(c) + ' The ' + c.who + ' chooses ' + nums.m + ' ' + c.clusters.many + ' at random and ' + c.verb + ' every one of the ' + U + ' in them.';
     if(method === 'sys') return 'Using ' + c.list + ', the ' + c.who + ' chooses a random number from 1 to ' + nums.k + ', starts with that ' + c.unit + ', and then takes every ' + ord(nums.k) + ' ' + c.unit + ' after it until there are ' + n + '.';
     if(method === 'conv') return c.conv + ' The ' + c.who + ' ' + c.verb + ' the first ' + n + ' ' + U + ' found there.';
@@ -234,7 +236,7 @@
         { t: 'The ' + ctx.strata.by + ' groups: ' + list(ctx.strata.groups.map(function(g){ return g.name; })), ok: true, why: 'The strata are the groups the ' + ctx.units + ' were split into before sampling: one random sample from each.' },
         { t: 'The ' + n + ' ' + ctx.units + ' in the sample', ok: false, why: 'Those are the sample, not the strata. The strata are the groups sampled from.' },
         { t: 'The ' + ctx.clusters.many, ok: false, why: 'The ' + ctx.clusters.many + ' were not used here. The ' + ctx.units + ' were grouped by ' + ctx.strata.by + '.' },
-        { t: 'All ' + ctx.N + ' ' + ctx.units, ok: false, why: 'That is the population. Strata are the groups inside it.' }
+        { t: 'All ' + fN(ctx.N) + ' ' + ctx.units, ok: false, why: 'That is the population. Strata are the groups inside it.' }
       ], r));
       sol.push('The strata are the ' + ctx.strata.by + ' groups. Stratifying by ' + ctx.strata.by + ' helps when ' + ctx.strata.why + ': each group is represented, so the estimate varies less from sample to sample.');
     } else if(method === 'cluster'){
@@ -259,7 +261,7 @@
       ], r));
       sol.push(method === 'srs' ? 'Simple random: every group of ' + n + ' had the same chance. Label, generate random numbers, skip repeats, select.' : 'Systematic: a random start from 1 to ' + nums.k + ', then every ' + ord(nums.k) + ' ' + ctx.unit + '. It is random, but only ' + nums.k + ' samples are possible. It can go wrong if the list repeats in a cycle of ' + nums.k + '.');
     } else {
-      steps.push(choiceStep('represent', 'Is this sample likely to represent all ' + ctx.N + ' ' + ctx.units + '?', '2.A', [
+      steps.push(choiceStep('represent', 'Is this sample likely to represent all ' + fN(ctx.N) + ' ' + ctx.units + '?', '2.A', [
         { t: 'No: ' + (method === 'conv' ? 'the easiest ' + ctx.units + ' to reach' : 'the ' + ctx.units + ' who chose to answer') + ' may differ from the rest, so the method is biased', ok: true, why: 'A nonrandom method lets a systematic difference creep in. ' + (method === 'conv' ? ctx.convWhy : ctx.volWhy) },
         { t: 'No, because the sample is too small', ok: false, why: 'Size is not the problem: a larger nonrandom sample is just as biased. The Chief Reader Report calls this an extraneous reason.' },
         { t: 'Yes, because ' + n + ' ' + ctx.units + ' is enough', ok: false, why: 'Bias comes from how the sample is chosen, not how big it is.' },
@@ -273,16 +275,16 @@
   function genProcedure(r, ctx){
     var N = ctx.N, n = ctx.n, U = ctx.units;
     var labelOpts = [
-      { t: 'Label the ' + U + ' from 1 to ' + N + '.', ok: true, why: 'Every ' + ctx.unit + ' needs its own number so the random numbers can point at it.' },
-      { t: 'Label the ' + U + ' from 1 to ' + n + '.', ok: false, why: 'Only ' + n + ' labels for ' + N + ' ' + U + ' leaves most of the population out. Label all ' + N + '.' },
-      { t: 'Put the ' + U + ' in alphabetical order.', ok: false, why: 'An order is not a label. Give each ' + ctx.unit + ' a distinct number from 1 to ' + N + '.' },
+      { t: 'Label the ' + U + ' from 1 to ' + fN(N) + '.', ok: true, why: 'Every ' + ctx.unit + ' needs its own number so the random numbers can point at it.' },
+      { t: 'Label the ' + U + ' from 1 to ' + n + '.', ok: false, why: 'Only ' + n + ' labels for ' + fN(N) + ' ' + U + ' leaves most of the population out. Label all ' + fN(N) + '.' },
+      { t: 'Put the ' + U + ' in alphabetical order.', ok: false, why: 'An order is not a label. Give each ' + ctx.unit + ' a distinct number from 1 to ' + fN(N) + '.' },
       { t: 'Choose ' + n + ' ' + U + ' that seem typical.', ok: false, why: 'Choosing by judgment is not random. The labelling step gives every ' + ctx.unit + ' a number instead.' }
     ];
     var genOpts = [
-      { t: 'Use a random number generator to produce integers from 1 to ' + N + '.', ok: true, why: 'The range matches the labels exactly, so every ' + ctx.unit + ' can be chosen.' },
-      { t: 'Use a random number generator.', ok: false, why: 'Say what it generates: integers from 1 to ' + N + '. "Use random numbers" with no process loses the point on the exam.' },
+      { t: 'Use a random number generator to produce integers from 1 to ' + fN(N) + '.', ok: true, why: 'The range matches the labels exactly, so every ' + ctx.unit + ' can be chosen.' },
+      { t: 'Use a random number generator.', ok: false, why: 'Say what it generates: integers from 1 to ' + fN(N) + '. "Use random numbers" with no process loses the point on the exam.' },
       { t: 'Use a random number generator to produce integers from 1 to ' + n + '.', ok: false, why: 'Integers 1 to ' + n + ' can only reach the first ' + n + ' labels.' },
-      { t: 'Use a random number generator to produce integers from 0 to ' + N + '.', ok: false, why: 'There is no ' + ctx.unit + ' 0. The range must match the labels, 1 to ' + N + '.' }
+      { t: 'Use a random number generator to produce integers from 0 to ' + fN(N) + '.', ok: false, why: 'There is no ' + ctx.unit + ' 0. The range must match the labels, 1 to ' + fN(N) + '.' }
     ];
     var repOpts = [
       { t: 'Ignore any repeated number and keep generating.', ok: true, why: 'Sampling is without replacement: a ' + ctx.unit + ' cannot be in the sample twice.' },
@@ -303,8 +305,8 @@
       choiceStep('select', 'Step 4: <b>select</b> the sample.', '2.B', selOpts, r)
     ];
     var d = srsDraws(r, N, n);
-    return { ctx: ctx.id, topic: ctx.topic, type: 'procedure', text: '<p>' + ctx.lead + ' The ' + ctx.who + ' wants a simple random sample of ' + n + ' of the ' + N + ' ' + U + ' on ' + ctx.list + '. Build the procedure one step at a time.</p>', steps: steps,
-      solution: ['Label the ' + U + ' from 1 to ' + N + '.', 'Use a random number generator to produce integers from 1 to ' + N + '.', 'Ignore repeated numbers.', 'The ' + U + ' whose labels match the first ' + n + ' different numbers are the sample. For example, the generator gave ' + d.draws.slice(0, 8).map(function(x){ return x.v + (x.repeat ? ' (a repeat, skipped)' : ''); }).join(', ') + (d.draws.length > 8 ? ', and so on' : '') + '.'],
+    return { ctx: ctx.id, topic: ctx.topic, type: 'procedure', text: '<p>' + ctx.lead + ' The ' + ctx.who + ' wants a simple random sample of ' + n + ' of the ' + fN(N) + ' ' + U + ' on ' + ctx.list + '. Build the procedure one step at a time.</p>', steps: steps,
+      solution: ['Label the ' + U + ' from 1 to ' + fN(N) + '.', 'Use a random number generator to produce integers from 1 to ' + fN(N) + '.', 'Ignore repeated numbers.', 'The ' + U + ' whose labels match the first ' + n + ' different numbers are the sample. For example, the generator gave ' + d.draws.slice(0, 8).map(function(x){ return x.v + (x.repeat ? ' (a repeat, skipped)' : ''); }).join(', ') + (d.draws.length > 8 ? ', and so on' : '') + '.'],
       figure: { method: 'srs', draws: d.draws } };
   }
 
@@ -331,11 +333,11 @@
   }
 
   function genNumbers(r, ctx){
-    var which = pick(r, ['sys', 'strat', 'cluster']), steps = [], sol = [], text;
+    var which = pick(r, ['sys', 'strat', 'cluster']), steps = [], sol = [], text, fig = { which: which, N: ctx.N };
     if(which === 'sys'){
       var ns = ctx.sysN.filter(function(n){ return ctx.N % n === 0; }), n = pick(r, ns), k = ctx.N / n;
-      text = '<p>' + ctx.lead + ' The ' + ctx.who + ' wants a systematic random sample of ' + n + ' of the ' + ctx.N + ' ' + ctx.units + ' on ' + ctx.list + '.</p>';
-      steps.push(numStep('k', 'Take every k-th ' + ctx.unit + '. What is k?', '2.A', k, [{ value: n, why: 'That is the sample size. k is the population size over the sample size: ' + ctx.N + ' ÷ ' + n + '.' }, { value: k - 1, why: 'Count again: ' + ctx.N + ' ÷ ' + n + ' gives the step between chosen ' + ctx.units + '.' }]));
+      text = '<p>' + ctx.lead + ' The ' + ctx.who + ' wants a systematic random sample of ' + n + ' of the ' + fN(ctx.N) + ' ' + ctx.units + ' on ' + ctx.list + '.</p>';
+      steps.push(numStep('k', 'Take every k-th ' + ctx.unit + '. What is k?', '2.A', k, [{ value: n, why: 'That is the sample size. k is the population size over the sample size: ' + fN(ctx.N) + ' ÷ ' + n + '.' }, { value: k - 1, why: 'Count again: ' + fN(ctx.N) + ' ÷ ' + n + ' gives the step between chosen ' + ctx.units + '.' }]));
       steps.push(choiceStep('start', 'How is the first ' + ctx.unit + ' chosen?', '2.B', [
         { t: 'A random integer from 1 to ' + k, ok: true, why: 'The start must be random and within the first ' + k + ', so every ' + ctx.unit + ' has a 1 in ' + k + ' chance.' },
         { t: 'Always the first ' + ctx.unit + ' on the list', ok: false, why: 'A fixed start makes the whole sample fixed: nothing random is left.' },
@@ -343,19 +345,21 @@
         k === n ? { t: 'A random integer from 0 to ' + k, ok: false, why: 'There is no ' + ctx.unit + ' 0: the start is a label from 1 to k = ' + k + '.' }
           : { t: 'A random integer from 1 to ' + n, ok: false, why: 'The start ranges over one step, 1 to k = ' + k + ', not over the sample size.' }
       ], r));
-      sol.push('k = ' + ctx.N + ' ÷ ' + n + ' = ' + k + '.', 'Choose a random integer from 1 to ' + k + ' for the first ' + ctx.unit + ', then take every ' + ord(k) + ' one after it.');
+      fig.k = k; fig.n = n;
+      sol.push('k = ' + fN(ctx.N) + ' ÷ ' + n + ' = ' + k + '.', 'Choose a random integer from 1 to ' + k + ' for the first ' + ctx.unit + ', then take every ' + ord(k) + ' one after it.');
     } else if(which === 'strat'){
       var sizes = ctx.strata.groups.map(function(g){ return g.size; }), nn = pick(r, ctx.stratN), al = allocate(sizes, nn), h = r.int(0, sizes.length - 1), g = ctx.strata.groups[h];
-      text = '<p>' + ctx.lead + ' The ' + ctx.N + ' ' + ctx.units + ' are ' + list(ctx.strata.groups.map(function(x){ return x.size + ' ' + x.name; })) + '. The ' + ctx.who + ' takes a stratified random sample of ' + nn + ' with each ' + ctx.strata.word + ' in proportion to its size.</p>';
+      text = '<p>' + ctx.lead + ' The ' + fN(ctx.N) + ' ' + ctx.units + ' are ' + list(ctx.strata.groups.map(function(x){ return x.size + ' ' + x.name; })) + '. The ' + ctx.who + ' takes a stratified random sample of ' + nn + ' with each ' + ctx.strata.word + ' in proportion to its size.</p>';
       var exact = nn * g.size / ctx.N;
-      steps.push(numStep('alloc', 'How many of the sample come from ' + g.name + '?', '3.C', al[h], [{ value: M.round(nn / sizes.length, 0), why: 'That splits the sample equally. In proportion means ' + nn + ' × ' + g.size + '/' + ctx.N + '.' }, { value: g.size, why: 'That is the size of the ' + ctx.strata.word + ', not its share of the sample.' }], { hint: 'Its share of the population times the sample size' + (Math.abs(exact - Math.round(exact)) > 1e-9 ? ', rounded so the counts add to ' + nn : '') + '.' }));
+      steps.push(numStep('alloc', 'How many of the sample come from ' + g.name + '?', '3.C', al[h], [{ value: M.round(nn / sizes.length, 0), why: 'That splits the sample equally. In proportion means ' + nn + ' × ' + g.size + '/' + fN(ctx.N) + '.' }, { value: g.size, why: 'That is the size of the ' + ctx.strata.word + ', not its share of the sample.' }], { hint: 'Its share of the population times the sample size' + (Math.abs(exact - Math.round(exact)) > 1e-9 ? ', rounded so the counts add to ' + nn : '') + '.' }));
       steps.push(choiceStep('within', 'How are the ' + al[h] + ' chosen within ' + g.name + '?', '2.B', [
         { t: 'A simple random sample of ' + al[h] + ' from the ' + g.size + ' ' + g.name, ok: true, why: 'Within each ' + ctx.strata.word + ' the sample is an SRS.' },
         { t: 'The first ' + al[h] + ' ' + g.name + ' on the list', ok: false, why: 'Not random inside the ' + ctx.strata.word + '. Each ' + ctx.strata.word + ' needs its own random sample.' },
         { t: 'All ' + g.size + ' ' + g.name, ok: false, why: 'Taking a whole group is cluster sampling. A stratum gets a random sample.' },
         { t: 'Any ' + al[h] + ' who volunteer', ok: false, why: 'Volunteers make a voluntary response sample, which is biased.' }
       ], r));
-      sol.push(nn + ' × ' + g.size + '/' + ctx.N + ' = ' + M.fmt(exact, 4) + (Math.abs(exact - al[h]) > 1e-9 ? ', which rounds to ' + al[h] + ' (the counts ' + list(al.map(String)) + ' add to ' + nn + ')' : '') + '.', 'Then take a simple random sample of ' + al[h] + ' within ' + g.name + '.');
+      fig.sizes = sizes; fig.alloc = al; fig.names = ctx.strata.groups.map(function(x){ return x.name; }); fig.h = h; fig.n = nn;
+      sol.push(nn + ' × ' + g.size + '/' + fN(ctx.N) + ' = ' + M.fmt(exact, 4) + (Math.abs(exact - al[h]) > 1e-9 ? ', which rounds to ' + al[h] + ' (the counts ' + list(al.map(String)) + ' add to ' + nn + ')' : '') + '.', 'Then take a simple random sample of ' + al[h] + ' within ' + g.name + '.');
     } else {
       var size = ctx.clusters.size, want = pick(r, ctx.clusterN), m = want / size;
       text = '<p>' + ctx.lead + ' ' + inGroups(ctx) + ' The ' + ctx.who + ' wants a cluster sample of ' + want + ' ' + ctx.units + '.</p>';
@@ -366,9 +370,10 @@
         { t: 'Only the ' + ctx.units + ' who volunteer', ok: false, why: 'Volunteers would make it a voluntary response sample.' },
         { t: 'One ' + ctx.unit + ' from each ' + ctx.clusters.one, ok: false, why: 'One from each group is closer to a stratified idea. Clusters are taken whole.' }
       ], r));
+      fig.m = m; fig.count = ctx.clusters.count; fig.many = ctx.clusters.many; fig.pick = M.sample(r, ctx.clusters.count > 0 ? Array.apply(null, Array(ctx.clusters.count)).map(function(x, i){ return i; }) : [], m);
       sol.push(want + ' ÷ ' + size + ' = ' + m + ' ' + ctx.clusters.many + ', chosen at random from the ' + ctx.clusters.count + '.', 'Everyone in each chosen ' + ctx.clusters.one + ' is sampled.');
     }
-    return { ctx: ctx.id, topic: ctx.topic, type: 'numbers', text: text, steps: steps, solution: sol };
+    return { ctx: ctx.id, topic: ctx.topic, type: 'numbers', text: text, steps: steps, solution: sol, figure: fig };
   }
 
   var GEN = { method: genMethod, procedure: genProcedure, bias: genBias, numbers: genNumbers };

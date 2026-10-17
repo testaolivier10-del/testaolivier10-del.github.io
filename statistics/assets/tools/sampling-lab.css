@@ -164,3 +164,20 @@ body.stat{
 .sl-strip-q .sl-num{padding:4px 10px;}
 .ls-root .ls-drill-stage .cd-extra:has(.sl-qtape){justify-content:center;}
 .ls-root.ls-phone .ls-stage:not(.is-big) .sl-meansbox{height:136px;}
+/* drills: the numbers of a sample */
+.sl-nfig{margin:auto 0;display:flex;flex-direction:column;gap:8px;}
+.sl-nfig svg{width:100%;height:auto;max-height:100%;}
+.sl-nfig figcaption{text-align:center;}
+.nf-l rect{fill:var(--paper);stroke:var(--line);stroke-width:1.5;}
+.nf-l text{fill:var(--muted);font:800 14px var(--font-mono);}
+.nf-l.is-on rect{fill:var(--stat-s2);stroke:var(--stat-s2);}
+.nf-l.is-on text{fill:#fff;}
+.nf-k{fill:var(--muted);font:800 14px var(--font-ui);}
+.nf-s rect{stroke:none;}
+.nf-s0 rect{fill:color-mix(in srgb,var(--stat-s1) 30%,var(--white));} .nf-s1 rect{fill:color-mix(in srgb,var(--stat-s3) 30%,var(--white));}
+.nf-s2 rect{fill:color-mix(in srgb,var(--stat-s4) 32%,var(--white));} .nf-s3 rect{fill:color-mix(in srgb,var(--stat-s5) 28%,var(--white));}
+.nf-s.is-on rect{stroke:var(--stat-s2);stroke-width:3.5;}
+.nf-s text{fill:var(--ink);font:900 16px var(--font-mono);}
+.nf-link{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 4;fill:none;}
+.nf-c{fill:var(--paper);stroke:var(--line);stroke-width:1.5;}
+.nf-c.is-on{fill:var(--stat-s2);stroke:var(--stat-s2);}

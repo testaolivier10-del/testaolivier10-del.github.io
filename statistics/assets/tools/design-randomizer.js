@@ -308,11 +308,49 @@
     return '<g class="dd-box ' + (cls || '') + '"><rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="12"/>' + lines.map(function(l, i){ return '<text x="' + (x + w / 2) + '" y="' + (y0 + i * lh) + '" text-anchor="middle">' + esc(l) + '</text>'; }).join('') + '</g>';
   }
   function arrow(x1, y1, x2, y2, dashed){ return '<path class="dd-arrow' + (dashed ? ' is-dash' : '') + '" d="M' + x1 + ' ' + y1 + ' C ' + ((x1 + x2) / 2) + ' ' + y1 + ', ' + ((x1 + x2) / 2) + ' ' + y2 + ', ' + (x2 - 8) + ' ' + y2 + '" marker-end="url(#ddArr)"/>'; }
+  function arrowV(x1, y1, x2, y2){ return '<path class="dd-arrow" d="M' + x1 + ' ' + y1 + ' C ' + x1 + ' ' + ((y1 + y2) / 2) + ', ' + x2 + ' ' + ((y1 + y2) / 2) + ', ' + x2 + ' ' + (y2 - 8) + '" marker-end="url(#ddArr)"/>'; }
+  /* The same diagram, top to bottom, for a phone (its text stays near its
+     true size in a narrow stage). */
+  function diagramV(d, c, h, compare){
+    var g = [], W = 400, H;
+    if(d === 'cr' || d === 'obs'){
+      g.push(box(100, 8, 200, 54, wrap(c.N + ' ' + c.units, 22)));
+      g.push(box(110, 96, 180, 64, d === 'obs' ? ['They choose', '(no random assignment)'] : ['Random assignment'], d === 'obs' ? 'is-warn' : 'is-key'));
+      g.push(box(8, 196, 186, 84, ['Group 1: ' + (d === 'obs' ? 'some' : h)].concat(wrap(c.tA, 20)), 'is-a'));
+      g.push(box(206, 196, 186, 84, ['Group 2: ' + (d === 'obs' ? 'the rest' : h)].concat(wrap(c.tB, 20)), 'is-b'));
+      g.push(box(90, 318, 220, 60, wrap(compare, 24)));
+      g.push(arrowV(200, 62, 200, 96), arrowV(200, 160, 101, 196), arrowV(200, 160, 299, 196), arrowV(101, 280, 200, 318), arrowV(299, 280, 200, 318));
+      H = 390;
+      if(d === 'obs'){ g.push(box(20, 398, 360, 60, wrap('Possible confounding variable: ' + c.lurk, 40), 'is-warn is-note')); H = 470; }
+    } else if(d === 'block'){
+      g.push(box(100, 6, 200, 50, wrap(c.N + ' ' + c.units, 22)));
+      [0, 1].forEach(function(k){
+        var x0 = k ? 205 : 8, w = 187, cx = x0 + w / 2;
+        g.push(box(x0, 88, w, 76, ['Block ' + (k + 1)].concat(wrap(c.blocks[k], 20)), 'is-key'));
+        g.push(box(x0 + 16, 192, w - 32, 50, ['Random', 'assignment'], 'is-key'));
+        g.push(box(x0, 270, w / 2 - 4, 72, wrap(c.tA, 10), 'is-a'));
+        g.push(box(x0 + w / 2 + 4, 270, w / 2 - 4, 72, wrap(c.tB, 10), 'is-b'));
+        g.push(box(x0 + 16, 372, w - 32, 50, ['Compare', 'in block ' + (k + 1)]));
+        g.push(arrowV(200, 56, cx, 88), arrowV(cx, 164, cx, 192), arrowV(cx, 242, x0 + w / 4, 270), arrowV(cx, 242, x0 + 3 * w / 4, 270), arrowV(x0 + w / 4, 342, cx, 372), arrowV(x0 + 3 * w / 4, 342, cx, 372));
+      });
+      H = 430;
+    } else {
+      g.push(box(60, 8, 280, 70, c.selfPairs ? wrap(c.N + ' ' + c.units + ', each one a pair (' + c.pairsHow + ')', 30) : wrap(h + ' pairs of ' + c.pairsHow, 30)));
+      g.push(box(100, 108, 200, 60, ['In each pair, a coin', 'flip decides'], 'is-key'));
+      g.push(box(8, 200, 186, 76, wrap((c.selfPairs ? 'One side gets ' : 'One gets ') + c.tA, 20), 'is-a'));
+      g.push(box(206, 200, 186, 76, wrap((c.selfPairs ? 'The other side gets ' : 'The other gets ') + c.tB, 20), 'is-b'));
+      g.push(box(80, 310, 240, 60, wrap('Compare the differences within pairs', 26)));
+      g.push(arrowV(200, 78, 200, 108), arrowV(200, 168, 101, 200), arrowV(200, 168, 299, 200), arrowV(101, 276, 200, 310), arrowV(299, 276, 200, 310));
+      H = 384;
+    }
+    return { W: W, H: H, g: g };
+  }
   function diagram(p, c){
     var d = p.type === 'design' ? p.figure.design : p.type === 'confound' && p.steps[0].key === 'confound' ? 'obs' : c.selfPairs ? 'pairs' : 'cr';
-    var h = c.N / 2, cap = function(t){ return t.charAt(0).toUpperCase() + t.slice(1); }, g = [], W = 700, H = 300;
+    var h = c.N / 2, g = [], W = 700, H = 300;
     var compare = 'Compare ' + c.response;
-    if(d === 'cr' || d === 'obs'){
+    if((window.innerWidth || 1280) <= 640){ var v = diagramV(d, c, h, compare); W = v.W; H = v.H; g = v.g; }
+    else if(d === 'cr' || d === 'obs'){
       g.push(box(10, 120, 140, 60, wrap(c.N + ' ' + c.units, 16)));
       g.push(box(190, 115, 150, 70, d === 'obs' ? ['They choose', '(no random', 'assignment)'] : ['Random', 'assignment'], d === 'obs' ? 'is-warn' : 'is-key'));
       g.push(box(390, 40, 160, 76, ['Group 1: ' + (d === 'obs' ? 'some' : h)].concat(wrap(c.tA, 18)), 'is-a'));
@@ -328,10 +366,10 @@
       [[40, 0], [244, 1]].forEach(function(b){
         var y = b[0], cy = y + 38;
         g.push(box(336, y + 10, 92, 56, ['Random', 'assignment'], 'is-key'));
-        g.push(box(458, y - 26, 132, 56, wrap(c.tA, 16), 'is-a'));
-        g.push(box(458, y + 46, 132, 56, wrap(c.tB, 16), 'is-b'));
-        g.push(arrow(306, cy, 336, cy), arrow(428, cy, 458, y + 2), arrow(428, cy, 458, y + 74), arrow(590, y + 2, 604, cy), arrow(590, y + 74, 604, cy));
-        g.push(box(604, cy - 26, 92, 52, ['Compare', 'in block ' + (b[1] + 1)]));
+        g.push(box(458, y - 26, 122, 56, wrap(c.tA, 15), 'is-a'));
+        g.push(box(458, y + 46, 122, 56, wrap(c.tB, 15), 'is-b'));
+        g.push(arrow(306, cy, 336, cy), arrow(428, cy, 458, y + 2), arrow(428, cy, 458, y + 74), arrow(580, y + 2, 612, cy), arrow(580, y + 74, 612, cy));
+        g.push(box(612, cy - 26, 84, 52, ['Compare', 'in block ' + (b[1] + 1)]));
       });
       g.push(arrow(126, 180, 156, 78), arrow(126, 180, 156, 282));
     } else {
@@ -342,7 +380,7 @@
       g.push(box(590, 110, 106, 80, wrap('Compare the differences within pairs', 13)));
       g.push(arrow(170, 150, 210, 150), arrow(360, 150, 400, 75), arrow(360, 150, 400, 225), arrow(550, 75, 590, 150), arrow(550, 225, 590, 150));
     }
-    return '<figure class="dd-fig"><svg class="dd-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(D.D_NAME[d] + ' diagram for this study: ' + c.N + ' ' + c.units + ', ' + c.tA + ' and ' + c.tB + ', ' + compare + '.') + '"><defs><marker id="ddArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" class="dd-head"/></marker></defs>' + g.join('') + '</svg><figcaption class="bt-small">' + esc(D.D_NAME[d]) + ' for this study.</figcaption></figure>';
+    return '<figure class="dd-fig"><svg class="dd-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(D.D_NAME[d] + ' diagram for this study: ' + c.N + ' ' + c.units + ', ' + c.tA + ' and ' + c.tB + ', ' + compare + '.') + '"><defs><marker id="ddArr" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" class="dd-head"/></marker></defs>' + g.join('') + '</svg><figcaption class="bt-small">' + esc(D.D_NAME[d]) + ' for this study.</figcaption></figure>';
   }
 
   /* A scope problem's picture, once its first step is answered: the 2 x 2

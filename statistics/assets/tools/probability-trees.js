@@ -171,7 +171,12 @@
     function act(){ if(!touched){ touched = true; cue.done(); } }
     function setScene(s){ stop(); sc = s; pA = s.pA; pBgA = s.pBgA; pBgNA = s.pBgNA; sl.pA.set(pA); sl.pBgA.set(pBgA); sl.pBgNA.set(pBgNA); outs = []; changed(true);
       var sv = LS && LS.root.querySelector('.stat-ls-setup .ls-v'); if(sv) sv.textContent = sc.name; }
-    function changed(keep){ J = PT.joint(pA, pBgA, pBgNA); if(!keep){ stop(); outs = []; } draw(); }
+    function changed(keep){
+      J = PT.joint(pA, pBgA, pBgNA); if(!keep){ stop(); outs = []; }
+      // the table's total: the first that makes every count a whole number
+      N = [1000, 1200, 600, 6000, 10000, 12000, 100000].filter(function(t){ return PT.CELLS.every(function(c){ var x = J[c] * t; return Math.abs(x - Math.round(x)) < 1e-6; }); })[0] || 1000;
+      draw();
+    }
     function ask(k){ if(!PT.QS[k]) return; q = k; draw(); var narrow = !$('.pt-fig').classList.contains('is-wide'); if(narrow && view === 'sim' && !outs.length) setView('tree'); }
     function setView(v){ view = v; $$('.pt-tabs button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); }); $$('.pt-view').forEach(function(el){ el.classList.toggle('is-on', el.getAttribute('data-v') === v); }); if(v === 'sim') drawSim(); }
     function formula(){

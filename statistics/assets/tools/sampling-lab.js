@@ -430,10 +430,51 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { method: 'Which kind of sample?', procedure: 'Write the procedure', bias: 'Spot the bias', numbers: 'The numbers of a sample' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; qfig(el, p, scenes, false); },
-      onStep: function(s, right, api){ if(s.key === 'method') qfig(api.fig, api.problem, scenes, true); }
+      onStep: function(s, right, api){
+        if(s.key === 'method') qfig(api.fig, api.problem, scenes, true);
+        else if(s.key === 'k' || s.key === 'alloc' || s.key === 'm'){
+          api.fig.innerHTML = numFig(api.problem.figure);
+          var stage = document.querySelector('.ls-root .ls-drill-stage');
+          if(stage && !stage.contains(api.fig)) stage.appendChild(api.fig);
+        }
+      }
     };
     T.drill(host, data, o);
   }
+  /* After a numbers step: the systematic list, the proportional split or the
+     chosen clusters, drawn from the problem's own numbers. */
+  function numFig(f){
+    var W = 640, g = [], H, cap;
+    if(f.which === 'sys'){
+      var k = f.k, st = Math.ceil(k / 2), show = Math.min(f.N, 3 * k + st), cols = Math.min(show, 24), cw = (W - 20) / cols, rows = Math.ceil(show / cols);
+      H = rows * 44 + 20;
+      for(var i = 1; i <= show; i++){
+        var x = 10 + ((i - 1) % cols) * cw, y = 10 + Math.floor((i - 1) / cols) * 44, on = i >= st && (i - st) % k === 0;
+        g.push('<g class="nf-l' + (on ? ' is-on' : '') + '"><rect x="' + (x + 1) + '" y="' + y + '" width="' + (cw - 2) + '" height="36" rx="6"/><text x="' + (x + cw / 2) + '" y="' + (y + 23) + '" text-anchor="middle">' + i + '</text></g>');
+      }
+      cap = 'With k = ' + k + ' and a random start of, say, ' + st + ': labels ' + st + ', ' + (st + k) + ', ' + (st + 2 * k) + ' and so on, ' + f.n + ' in all.';
+    } else if(f.which === 'strat'){
+      var N = f.N, x0 = 10, bw = W - 20, nn = f.n; H = 200;
+      g.push('<text class="nf-k" x="10" y="20">Population, ' + N + '</text><text class="nf-k" x="10" y="122">Sample, ' + nn + '</text>');
+      var a = x0, b = x0;
+      f.sizes.forEach(function(sz, j){
+        var w1 = bw * sz / N, w2 = bw * f.alloc[j] / nn, cls = 'nf-s nf-s' + (j % 4) + (j === f.h ? ' is-on' : '');
+        g.push('<g class="' + cls + '"><rect x="' + a + '" y="28" width="' + Math.max(1, w1 - 3) + '" height="52" rx="6"/><text x="' + (a + w1 / 2) + '" y="59" text-anchor="middle">' + sz + '</text></g>');
+        g.push('<g class="' + cls + '"><rect x="' + b + '" y="130" width="' + Math.max(1, w2 - 3) + '" height="52" rx="6"/><text x="' + (b + w2 / 2) + '" y="161" text-anchor="middle">' + f.alloc[j] + '</text></g>');
+        g.push('<path class="nf-link" d="M' + (a + w1 / 2) + ' 82 L ' + (b + w2 / 2) + ' 128"/>');
+        a += w1; b += w2;
+      });
+      cap = 'Each stratum keeps its share: ' + f.names.map(function(n, j){ return n + ' ' + f.sizes[j] + ' to ' + f.alloc[j]; }).join(', ') + '.';
+    } else {
+      var cnt = f.count, cols2 = Math.min(cnt, cnt > 60 ? 15 : 10), cs = Math.min(46, (W - 20) / cols2), rows2 = Math.ceil(cnt / cols2), on2 = {};
+      (f.pick || []).forEach(function(i){ on2[i] = true; });
+      H = rows2 * cs + 20; W = Math.max(cols2 * cs + 20, 200);
+      for(var c = 0; c < cnt; c++) g.push('<rect class="nf-c' + (on2[c] ? ' is-on' : '') + '" x="' + (10 + (c % cols2) * cs + 2) + '" y="' + (10 + Math.floor(c / cols2) * cs + 2) + '" width="' + (cs - 4) + '" height="' + (cs - 4) + '" rx="6"/>');
+      cap = f.m + ' of the ' + cnt + ' ' + f.many + ' chosen at random, everyone in them sampled.';
+    }
+    return '<figure class="sl-nfig"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(cap) + '">' + g.join('') + '</svg><figcaption class="bt-small">' + esc(cap) + '</figcaption></figure>';
+  }
+
   /* A drill's picture. Procedure: the random number tape. Method: a small
      model of the setting; once the method is answered, that method's sample
      drawn on it (it is a model of the idea, not the real numbers). */

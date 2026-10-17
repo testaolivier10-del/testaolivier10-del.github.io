@@ -100,7 +100,8 @@ export function check(data, map) {
       if (m === 'sys' && !plain.includes(`random number from 1 to ${Math.floor(c.N / c.n)}`)) errs.push(`${w}: systematic start range is not 1 to N / n`);
     }
     if (p.type === 'procedure') {
-      const want = { label: `from 1 to ${c.N}.`, generate: `integers from 1 to ${c.N}.`, repeats: 'Ignore any repeated number', select: `first ${c.n} different numbers` };
+      const NN = c.N.toLocaleString('en-US');
+      const want = { label: `from 1 to ${NN}.`, generate: `integers from 1 to ${NN}.`, repeats: 'Ignore any repeated number', select: `first ${c.n} different numbers` };
       for (const [k, frag] of Object.entries(want)) if (!step(k) || !right(step(k)).includes(frag)) errs.push(`${w}: procedure step ${k} key is "${step(k) && right(step(k))}"`);
     }
     if (p.type === 'bias') {

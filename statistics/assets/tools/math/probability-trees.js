@@ -97,6 +97,7 @@
   /* -------------------------------------------------- test yourself */
   function pick(r, a){ return a[Math.floor(r() * a.length)]; }
   function F4(x){ return M.fixed(x, 4); }
+  function fN(x){ return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
   function probCell(answer, mistakes){
     // the course's prob tolerance (docs/apstat-spec.md section 7): 0.002, or 1% when below 0.1
     return answer < 0.1 ? M.cell(answer, 0.01, mistakes, 0) : M.cell(answer, 0, mistakes, 0.002);
@@ -169,7 +170,7 @@
     var E = ctx.ev, P = function(n){ return n / N; };
     var isIndep = T.AB * T.N === T.A * T.B;
     var steps = [
-      numStep('A', 'Find P(A): a randomly chosen ' + ctx.one + ' ' + E.A + '.', '3.C', P(T.A), [{ value: T.A / T.B, why: 'Divide by the grand total, ' + N + ', not by a column total.' }]),
+      numStep('A', 'Find P(A): a randomly chosen ' + ctx.one + ' ' + E.A + '.', '3.C', P(T.A), [{ value: T.A / T.B, why: 'Divide by the grand total, ' + fN(N) + ', not by a column total.' }]),
       numStep('AB', 'Find P(A and B).', '3.C', P(T.AB), [{ value: T.AB / T.A, why: 'That divides by the A row total, which is P(B | A). "And" uses the grand total.' }, { value: T.AB / T.B, why: 'That divides by the B column, which is P(A | B). "And" uses the grand total.' }]),
       numStep('AorB', 'Find P(A or B).', '3.C', P(T.A + T.B - T.AB), [{ value: P(T.A + T.B), why: 'The ' + T.AB + ' in both were counted twice. Subtract P(A and B) once.' }, { value: P(T.AB), why: 'That is "and". "Or" counts everyone in A, in B, or in both.' }], 'P(A or B) = P(A) + P(B) − P(A and B).'),
       numStep('BgA', 'Find P(B | A): among those who ' + E.Ap + ', the share who ' + E.Bp + '.', '3.C', T.AB / T.A, [{ value: P(T.AB), why: 'That is P(A and B). Given A means the A row is the whole: divide by ' + T.A + '.' }, { value: T.AB / T.B, why: 'That is P(A | B). Given A: slice the A row.' }], 'Slice the A row: its count of B over its total.'),
@@ -180,12 +181,12 @@
         { t: 'Yes: they are mutually exclusive', ok: false, why: 'Mutually exclusive events (with positive probabilities) are never independent, and these overlap anyway.' }
       ], { fixed: true })
     ];
-    var hdr = '<table class="stat-data pt-qtable"><caption>' + ctx.tableCap + ' (' + N + ' ' + ctx.many + ')</caption><thead><tr><th scope="col"></th><th scope="col">' + cap(E.B) + ' (B)</th><th scope="col">' + cap(E.nB) + '</th><th scope="col">Total</th></tr></thead><tbody>' +
-      '<tr><th scope="row">' + cap(E.A) + ' (A)</th><td>' + T.AB + '</td><td>' + T.AnB + '</td><td>' + T.A + '</td></tr>' +
-      '<tr><th scope="row">' + cap(E.nA) + '</th><td>' + T.nAB + '</td><td>' + T.nAnB + '</td><td>' + T.nA + '</td></tr>' +
-      '<tr><th scope="row">Total</th><td>' + T.B + '</td><td>' + T.nB + '</td><td>' + N + '</td></tr></tbody></table>';
+    var hdr = '<table class="stat-data pt-qtable"><caption>' + ctx.tableCap + ' (' + fN(N) + ' ' + ctx.many + ')</caption><thead><tr><th scope="col"><span class="sr-only">Event A</span></th><th scope="col">' + cap(E.B) + ' (B)</th><th scope="col">' + cap(E.nB) + '</th><th scope="col">Total</th></tr></thead><tbody>' +
+      '<tr><th scope="row">' + cap(E.A) + ' (A)</th><td>' + fN(T.AB) + '</td><td>' + fN(T.AnB) + '</td><td>' + fN(T.A) + '</td></tr>' +
+      '<tr><th scope="row">' + cap(E.nA) + '</th><td>' + fN(T.nAB) + '</td><td>' + fN(T.nAnB) + '</td><td>' + fN(T.nA) + '</td></tr>' +
+      '<tr><th scope="row">Total</th><td>' + fN(T.B) + '</td><td>' + fN(T.nB) + '</td><td>' + fN(N) + '</td></tr></tbody></table>';
     return { ctx: ctx.id, topic: 'conditional-probability', type: 'table', text: '<p>' + ctx.tableLead + ' One ' + ctx.one + ' is chosen at random. Let A be "' + E.A + '" and B be "' + E.B + '".</p>', steps: steps,
-      solution: ['P(A) = ' + T.A + '/' + N + ' = ' + F4(P(T.A)) + '.', 'P(A and B) = ' + T.AB + '/' + N + ' = ' + F4(P(T.AB)) + '.', 'P(A or B) = (' + T.A + ' + ' + T.B + ' − ' + T.AB + ')/' + N + ' = ' + F4(P(T.A + T.B - T.AB)) + '.', 'P(B | A) = ' + T.AB + '/' + T.A + ' = ' + F4(T.AB / T.A) + '.', isIndep ? 'P(B | A) = P(B) = ' + F4(P(T.B)) + ', so A and B are independent.' : 'P(B | A) = ' + F4(T.AB / T.A) + ' is not P(B) = ' + F4(P(T.B)) + ', so A and B are not independent.'],
+      solution: ['P(A) = ' + T.A + '/' + fN(N) + ' = ' + F4(P(T.A)) + '.', 'P(A and B) = ' + T.AB + '/' + fN(N) + ' = ' + F4(P(T.AB)) + '.', 'P(A or B) = (' + T.A + ' + ' + T.B + ' − ' + T.AB + ')/' + fN(N) + ' = ' + F4(P(T.A + T.B - T.AB)) + '.', 'P(B | A) = ' + T.AB + '/' + T.A + ' = ' + F4(T.AB / T.A) + '.', isIndep ? 'P(B | A) = P(B) = ' + F4(P(T.B)) + ', so A and B are independent.' : 'P(B | A) = ' + F4(T.AB / T.A) + ' is not P(B) = ' + F4(P(T.B)) + ', so A and B are not independent.'],
       figure: { table: T }, table: { html: hdr } };
   }
   function gcd(a, b){ while(b){ var t = b; b = a % b; a = t; } return a; }
