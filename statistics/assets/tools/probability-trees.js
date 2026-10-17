@@ -81,7 +81,7 @@
     return '<table class="pt-tbl"><caption>' + esc('Out of ' + N.toLocaleString('en-US') + ' ' + sc.pop) + '</caption><thead><tr><th scope="col"><span class="sr-only">Event A</span></th><th scope="col" class="pt-hb">B: ' + esc(sc.B) + '</th><th scope="col">not B</th><th scope="col">Total</th></tr></thead><tbody>' +
       '<tr><th scope="row" class="pt-ha">A: ' + esc(sc.A) + '</th>' + c('AB') + c('AnB') + tot('A', ['AB', 'AnB']) + '</tr>' +
       '<tr><th scope="row">not A</th>' + c('nAB') + c('nAnB') + tot('nA', ['nAB', 'nAnB']) + '</tr>' +
-      '<tr><th scope="row">Total</th>' + tot('B', ['AB', 'nAB']) + tot('nB', ['AnB', 'nAnB']) + '<td class="pt-tot"><b>' + N + '</b><span>1</span></td></tr></tbody></table>';
+      '<tr><th scope="row">Total</th>' + tot('B', ['AB', 'nAB']) + tot('nB', ['AnB', 'nAnB']) + '<td class="pt-tot"><b>' + N.toLocaleString('en-US') + '</b><span>1</span></td></tr></tbody></table>';
   }
   var vid = 0;
   function vennSvg(J, sc, q, o){
@@ -188,9 +188,11 @@
       return { text: parts[q], v: v, cond: !!Q.den };
     }
     function words(){
-      var A = sc.A.toLowerCase(), B = sc.B.toLowerCase();
-      return { A: 'the chance of "' + A + '"', B: 'the chance of "' + B + '", adding both paths that end in B', nA: 'not A', nB: 'not B', AB: 'both "' + A + '" and "' + B + '"', AnB: '"' + A + '" but not "' + B + '"', nAB: '"' + B + '" without "' + A + '"', nAnB: 'neither', AorB: 'at least one of the two, the overlap counted once',
-        BgA: 'among the "' + A + '" ' + sc.pop + ' only, the share that are "' + B + '"', AgB: 'among the "' + B + '" ' + sc.pop + ' only, the share that are "' + A + '"', BgnA: 'among the rest, the share "' + B + '"', AgnB: 'among the "not B", the share "' + A + '"' }[q];
+      var A = '"' + sc.A + '" (A)', B = '"' + sc.B + '" (B)';
+      return { A: 'the share of all ' + sc.pop + ' in ' + A, B: 'the share of all ' + sc.pop + ' in ' + B + ': add both paths that end in B', nA: 'everyone outside ' + A, nB: 'everyone outside ' + B,
+        AB: 'the ' + sc.pop + ' in both ' + A + ' and ' + B, AnB: 'in ' + A + ' but not ' + B, nAB: 'in ' + B + ' but not ' + A, nAnB: 'in neither', AorB: 'in at least one of ' + A + ' and ' + B + ', the overlap counted once',
+        BgA: 'only the ' + A + ' slice counts as the whole; the share of it also in ' + B, AgB: 'only the ' + B + ' slice counts as the whole; the share of it also in ' + A,
+        BgnA: 'only the slice outside A counts; the share of it in ' + B, AgnB: 'only the slice outside B counts; the share of it in ' + A }[q];
     }
     function draw(){
       var lbl = sc.name + '. A: ' + sc.A + '. B: ' + sc.B + '. ' + QNAME[q] + ' = ' + F4(PT.value(J, q)) + '.';
