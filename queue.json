@@ -229,7 +229,8 @@
       "thumbnail_set": null,
       "yt_buffer": "6ac706fd57f9bd074d24fb48",
       "related_video": "aMvkCfwrepA",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "w1007-06-rs-steering",
@@ -247,7 +248,8 @@
       "thumbnail_set": null,
       "yt_buffer": "6ac708bb5632f7b74bd87c73",
       "related_video": "1p-L3_POFL0",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "w1007-01-tourniquet",
@@ -265,7 +267,8 @@
       "thumbnail_set": null,
       "yt_buffer": "6ac8407a93f9e5101fe1dd53",
       "related_video": "lqxfWZZtRgE",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "w1007-10-pretest",
