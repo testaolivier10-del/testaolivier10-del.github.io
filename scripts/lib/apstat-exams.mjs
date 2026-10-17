@@ -221,9 +221,9 @@ const loaf = Dist.t1(489, 500, 24, 16);
 // 2-11 to 2-13: price = 24.60 - 1.85 age, R-sq 79.2%.
 export const EXAM_NUMBERS = [
   { id: 'stat-exam-1-05', key: f3(atLeast3), also: [f3(1 - Dist.binomCdf(3, bin.n, bin.p)), f3(Dist.binomPmf(3, bin.n, bin.p)), f3(Dist.binomCdf(2, bin.n, bin.p))] },
-  { id: 'stat-exam-1-06', key: `Mean ${bin.n * bin.p}, standard deviation ${f2(Math.sqrt(bin.n * bin.p * (1 - bin.p)))}`, check: () => Math.abs(bin.n * bin.p - 1.8) < 1e-9,
+  { id: 'stat-exam-1-06', key: `Mean ${(bin.n * bin.p).toFixed(1)}, standard deviation ${f2(Math.sqrt(bin.n * bin.p * (1 - bin.p)))}`, check: () => Math.abs(bin.n * bin.p - 1.8) < 1e-9,
     also: [`Mean 1.8, standard deviation ${f2(bin.n * bin.p * (1 - bin.p))}`, `Mean ${f2(bin.n * (1 - bin.p)).replace(/0$/, '')}, standard deviation ${f2(Math.sqrt(bin.n * bin.p * (1 - bin.p)))}`, `Mean 1.8, standard deviation ${f2(Math.sqrt(bin.p * (1 - bin.p)))}`] },
-  { id: 'stat-exam-1-07', key: f3(1 - Dist.normCdf(Math.round(eggZ * 100) / 100)), check: () => f3(1 - Dist.normCdf(eggZ)) === '0.060',
+  { id: 'stat-exam-1-07', key: f3(1 - Dist.normCdf(eggZ)), check: () => Math.abs((1 - Dist.normCdf(Math.round(eggZ * 100) / 100)) - (1 - Dist.normCdf(eggZ))) < 0.001,
     also: [f3(1 - Dist.normCdf((65 - 58) / 4.5 ** 2)), f3(Dist.normCdf(eggZ))] },
   { id: 'stat-exam-1-08', key: `$z \\approx ${f2(rail.z)}$`, also: [`$z \\approx ${f2((278 / 500 - 0.5) / Math.sqrt(0.556 * 0.444 / 500))}$`, `$z \\approx ${rail.p.greater.toFixed(4)}$`] },
   { id: 'stat-exam-1-11', key: `From ${f2(commute.lo)} to ${f2(commute.hi)} minutes`, check: () => f3(commute.crit) === '2.064',

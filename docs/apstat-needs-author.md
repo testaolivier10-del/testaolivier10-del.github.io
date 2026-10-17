@@ -29,6 +29,24 @@ Resolved in Phase 0 from official text (2026-10-17): the 10% condition is in the
 Unit 4 overview names it); pooled two-sample t is not (the 2026 reference sheet has only the unpooled
 SE for means, and p_c only for two proportions); b = r·s_y/s_x is not on the 2026 sheet.
 
+## u1-u2-review: judgment calls left by the Units 1-2 accuracy review (open, 2026-10-17)
+
+From `docs/apstat-reviews/u1-u2.md`. None changes a key; a teacher should confirm.
+
+- **z-scores in 1.9.** The CED's 1.9.D reads "Calculate z-scores with population parameters"; the course
+  teaches $z = \frac{x - \bar{x}}{s}$ from sample summaries (with $\frac{x - \mu}{\sigma}$ named as the
+  population form), and the FRQ `frq-u1-compare-distributions` part (c) uses sample means and SDs.
+  Confirm that sample-based z-scores are fine for 1.9 items.
+- **"Statistically significant" in 1.13.** The CED text read has the phrase only in the Unit 1 overview,
+  not in topic 1.13's own statements; 1.13 teaches it as "too large to be explained by chance alone" and
+  three items and the blocking FRQ use it. Confirm it belongs in 1.13 rather than only in Unit 3.
+- **Direction of voluntary response bias.** `stat-sampling-problems-2` keys "overestimates the
+  proportion who oppose the fee" (strong objectors are most motivated); the FRQ rubric for
+  `frq-u1-survey-sampling` (c) accepts either direction with a reason. Confirm the single key is
+  defensible as written.
+- **CED 2.2-2.12 still unread** (see `ced-text`): this review could read Unit 1's objectives and 2.1's,
+  nothing past the Unit 2 skill list.
+
 ## frq-scoring: the 10-point rubric split is an estimate (open)
 
 No released 10-point scoring guideline exists beyond the CED sample. Our FRQs use one rubric line per

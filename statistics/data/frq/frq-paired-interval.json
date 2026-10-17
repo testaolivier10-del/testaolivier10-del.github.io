@@ -124,9 +124,9 @@
    "step": 0.1,
    "x": [
     -0.4,
-    1.6
+    2.0
    ],
-   "xLabel": "difference, with minus without (miles per gallon)"
+   "xLabel": "with minus without (mpg)"
   }
  },
  "parts": [

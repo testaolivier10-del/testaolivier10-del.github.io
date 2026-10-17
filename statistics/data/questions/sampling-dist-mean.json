@@ -82,9 +82,9 @@
     "step": 0.1,
     "x": [
      27.4,
-     30.2
+     30.4
     ],
-    "xLabel": "sample mean weight (grams)"
+    "xLabel": "sample mean (grams)"
    },
    "data": {
     "vars": [

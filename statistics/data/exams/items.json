@@ -264,7 +264,7 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "$z = \\frac{65 - 58}{4.5} \\approx 1.56$. The area to the right of $z = 1.56$ under the standard normal curve is $1 - 0.9406 \\approx 0.060$ (technology with the unrounded $z$ gives 0.0599).",
+    "correct": "$z = \\frac{65 - 58}{4.5} \\approx 1.56$. The area to the right of $z \\approx 1.556$ under the standard normal curve is about 0.060 (technology gives 0.0599; Table A with $z = 1.56$ gives $1 - 0.9406 = 0.0594$, the same to two places).",
     "options": [
      "This uses the empirical rule as if 65 grams were 2 standard deviations above the mean; it is $\\frac{7}{4.5} \\approx 1.56$ standard deviations above.",
      "Right: $P(z > 1.56) \\approx 0.060$.",
