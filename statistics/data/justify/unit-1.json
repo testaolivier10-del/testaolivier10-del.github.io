@@ -103,19 +103,19 @@
    "skill": "sampling",
    "title": "Name the bias and its direction",
    "context": "<p>A city council posts a question on its website: \"Should the city spend more on road repairs?\" Of the 1,240 people who answer, 88% say yes.</p>",
-   "prompt": "<b>Explain</b> why 88% is likely a poor estimate of the percent of all city residents who support more road repair spending, and say whether it is likely too high or too low.",
+   "prompt": "<b>Explain</b> why 88% probably misstates the percent of all city residents who support more road repair spending, and say whether it is likely too high or too low.",
    "checklist": [
     "Names voluntary response bias: people chose whether to answer",
     "Explains who is overrepresented: residents with strong feelings, such as those upset about bad roads, are more likely to respond",
-    "Gives the direction: 88% is likely too high, an overestimate of support among all residents"
+    "Says which way the error goes: 88% is probably too high, overstating support among all residents"
    ],
    "earns": {
-    "answer": "This is voluntary response bias: people chose whether to answer. Residents who feel strongly about bad roads are the most likely to visit the site and respond, and they are likely to say yes. So the respondents overrepresent supporters, and 88% probably overestimates the percent of all city residents who support more road repair spending.",
-    "why": "It names the bias, explains the mechanism in context, and states the direction of the error."
+    "answer": "This is voluntary response bias: people chose whether to answer. Residents who feel strongly about bad roads are the ones who tend to visit the site and respond, and they are likely to say yes. So the respondents overrepresent supporters, and 88% probably overestimates the percent of all city residents who support more road repair spending.",
+    "why": "It names the bias, explains the mechanism in context, and says which way the error goes."
    },
    "misses": {
     "answer": "The sample is biased because it is not random, so the 88% might be wrong.",
-    "why": "\"Biased\" and \"might be wrong\" name no mechanism and no direction. A biased sample must be explained: who is over or underrepresented, and which way the estimate moves."
+    "why": "\"Biased\" and \"might be wrong\" name no mechanism, and they never say whether 88% is too high or too low. A biased sample must be explained: who is over or underrepresented, and which way the result moves."
    }
   },
   {
@@ -149,7 +149,7 @@
    "practice": "4.D",
    "skill": "design",
    "title": "What random assignment allows",
-   "context": "<p>A researcher recruits 60 volunteers who want to sleep better. She randomly assigns 30 to a 20 minute evening walk each day and 30 to no change, then compares the groups' average sleep scores after four weeks. The walk group sleeps better on average, and the difference is larger than chance variation would explain.</p>",
+   "context": "<p>A researcher recruits 60 volunteers who want to sleep better. She randomly assigns 30 to a 20 minute evening walk each day and 30 to no change, then compares the groups' average sleep scores after four weeks. The walk group sleeps better on average, and the difference is larger than the random assignment alone would tend to produce.</p>",
    "prompt": "<b>Explain</b> what the researcher can conclude about cause and effect, and to whom the conclusion applies.",
    "checklist": [
     "Says random assignment lets her conclude that the evening walk caused the better sleep",

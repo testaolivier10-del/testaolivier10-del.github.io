@@ -105,16 +105,16 @@
    "prompt": "<b>Calculate</b> the proportion of the country's adult women who are taller than 68 inches. Show your work.",
    "checklist": [
     "Names the distribution and its parameters: normal with mean 64.5 inches and standard deviation 2.5 inches",
-    "Gives the boundary and direction: the area to the right of 68 inches (a labeled sketch or $P(\\text{height} > 68)$)",
+    "Gives the boundary and the side: the area to the right of 68 inches (a labeled sketch or $P(\\text{height} > 68)$)",
     "Standardizes or names the technology input: $z = \\frac{68 - 64.5}{2.5} = 1.40$",
     "Gives the answer: about 0.081"
    ],
    "earns": {
     "answer": "Heights are normal with mean 64.5 inches and standard deviation 2.5 inches. We want $P(\\text{height} > 68)$, the area to the right of 68. $z = \\frac{68 - 64.5}{2.5} = 1.40$, and the area to the right of $z = 1.40$ is $1 - 0.9192 = 0.0808$. About 8.1% of the country's adult women are taller than 68 inches.",
-    "why": "It names the distribution, the parameters, the boundary and the direction, then shows the standardization and the answer in context."
+    "why": "It names the distribution, the parameters, the boundary and the side to shade, then shows the standardization and the answer in context."
    },
    "misses": {
-    "answer": "normalcdf(68, 1000, 64.5, 2.5) = 0.0808",
+    "answer": "normalcdf(68, 1000, 64.5, 2.5) = 0.0808, so the answer is 0.0808.",
     "why": "Calculator syntax alone is not accepted as work: the distribution, the parameters and the region must be labeled in words or a sketch."
    }
   },
@@ -128,13 +128,13 @@
    "context": "<p>A teacher claims a quiz's 10 true or false questions have random answers, so a student guessing on every question would get each one right with probability 0.5. A student who says he guessed got 9 right. The teacher simulates 200 guessers; 7 of the 200 simulated guessers got 9 or more right.</p>",
    "prompt": "<b>Explain</b> what the simulation says about the student's claim that he guessed.",
    "checklist": [
-    "Estimates the probability from the simulation: about $\\frac{7}{200} = 0.035$",
+    "Finds the proportion of simulated trials at 9 or more: about $\\frac{7}{200} = 0.035$",
     "Interprets it conditionally: if the student were guessing, 9 or more right would happen in only about 3.5% of trials",
     "Concludes in context: this is unusual, so the simulation gives evidence against the claim that he guessed (it does not prove he did not)"
    ],
    "earns": {
-    "answer": "In the simulation, 7 of 200 guessers got 9 or more right, so the estimated probability is $\\frac{7}{200} = 0.035$. If the student were really guessing, a score of 9 or more would happen only about 3.5% of the time, which is unusual. So the simulation gives evidence against the student's claim that he guessed on every question.",
-    "why": "It counts the trials at or beyond the observed result, interprets the estimate assuming the claim, and draws a careful conclusion."
+    "answer": "In the simulation, 7 of 200 guessers got 9 or more right, so the simulated proportion is $\\frac{7}{200} = 0.035$. If the student were really guessing, a score of 9 or more would happen only about 3.5% of the time, which is unusual. So the simulation gives evidence against the student's claim that he guessed on every question.",
+    "why": "It counts the trials at or beyond the observed result, interprets that proportion assuming the claim, and draws a careful conclusion."
    },
    "misses": {
     "answer": "Most simulated guessers got around 5 right, so the student was not guessing.",

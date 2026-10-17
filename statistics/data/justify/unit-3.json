@@ -122,12 +122,12 @@
    "prompt": "<b>Interpret</b> the p-value of 0.0082 in context.",
    "checklist": [
     "Conditions on the null hypothesis: assuming the true proportion of all the city's commuters who ride a bus weekly is 0.25",
-    "Names the statistic and direction: a sample proportion of 0.31 or more",
+    "Names the statistic and the side: a sample proportion of 0.31 or more",
     "Names the chance part and sample: by chance, in a random sample of 300 commuters, with probability 0.0082"
    ],
    "earns": {
     "answer": "Assuming the true proportion of all the city's commuters who ride a bus at least once a week is 0.25, there is a 0.0082 probability of getting a sample proportion of 0.31 or more by chance in a random sample of 300 commuters.",
-    "why": "It conditions on $H_0$, names the statistic and the direction, the sample size and the context."
+    "why": "It conditions on $H_0$, names the statistic and the side (or more), the sample size and the context."
    },
    "misses": {
     "answer": "There is a 0.0082 probability that the null hypothesis is true.",
@@ -146,11 +146,11 @@
    "checklist": [
     "Compares the p-value with alpha, with the inequality: $0.0082 < 0.05$, so reject $H_0$",
     "Uses evidence language: there is convincing evidence",
-    "States the direction and parameter in context: the true proportion of all the city's commuters who ride a bus at least once a week is greater than 0.25"
+    "States the parameter in context, on the side of $H_a$: the true proportion of all the city's commuters who ride a bus at least once a week is greater than 0.25"
    ],
    "earns": {
     "answer": "Because the p-value of 0.0082 is less than $\\alpha = 0.05$, we reject $H_0$. There is convincing evidence that the true proportion of all the city's commuters who ride a bus at least once a week is greater than 0.25.",
-    "why": "It has the four parts: the comparison, the evidence wording, the direction, and the parameter in context."
+    "why": "It has the four parts: the comparison, the evidence wording, the side of $H_a$, and the parameter in context."
    },
    "misses": {
     "answer": "We reject $H_0$, so the proportion of commuters who ride the bus is 0.31.",
