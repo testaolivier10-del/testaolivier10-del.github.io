@@ -67,7 +67,7 @@ export function check(data, map) {
     if (p.type === 'table') {
       const T = p.figure.table, html = p.table.html;
       for (const v of [T.AB, T.AnB, T.nAB, T.nAnB, T.N]) if (!html.includes(`<td>${v}</td>`)) errs.push(`${w}: the table does not show ${v}`);
-      if (T.AB + T.AnB + T.nAB + T.nAnB !== T.N || [T.AB, T.AnB, T.nAB, T.nAnB].some(x => x < 0)) { errs.push(`${w}: table counts`); return; }
+      if (T.AB + T.AnB + T.nAB + T.nAnB !== T.N || [T.AB, T.AnB, T.nAB, T.nAnB].some(x => !(x > 0))) { errs.push(`${w}: table counts (every cell must be positive)`); return; }
       const nA = T.AB + T.AnB, nB = T.AB + T.nAB;
       if (!near(key(p, 'A'), nA / T.N)) errs.push(`${w}: P(A) key`);
       if (!near(key(p, 'AB'), T.AB / T.N)) errs.push(`${w}: P(A and B) key`);

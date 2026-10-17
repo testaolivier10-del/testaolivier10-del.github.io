@@ -29,7 +29,7 @@
   var uid = 0;
   function D(){ return window.ApStatDist; }
   function TX(){ return window.ApStatTex; }
-  function tx(s){ return TX() ? TX().html(String(s)) : esc(s); }
+  function tx(s){ return TX() ? TX().html(String(s), { wrap: true }) : esc(s); }
   function F(x, d){ return T.F(x, d); }
   function P4(p){ return DA.P4(p); }
   function el(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
@@ -407,7 +407,7 @@
       var pline = S.mode === 'less' ? '$P(' + ev + ') = P(Z < ' + texN(res.zb) + ') = ' + P4(res.p) + '$'
         : S.mode === 'greater' ? '$P(' + ev + ') = P(Z > ' + texN(res.za) + ') = 1 - ' + P4(Dd.normCdf(res.za)) + ' = ' + P4(res.p) + '$'
         : '$P(' + ev + ') = ' + P4(Dd.normCdf(res.zb)) + ' - ' + P4(Dd.normCdf(res.za)) + ' = ' + P4(res.p) + '$';
-      var body = '<ol class="ls-steps da-work"><li>' + tx('<b>Name the distribution and its parameters.</b> $X$ = ' + c.var + ', normal with $\\mu = ' + F(S.mu, d) + '$ and $\\sigma = ' + F(S.sd, d) + '$ ' + c.units + '.') + '</li>' +
+      var body = '<ol class="da-work"><li>' + tx('<b>Name the distribution and its parameters.</b> $X$ = ' + c.var + ', normal with $\\mu = ' + F(S.mu, d) + '$ and $\\sigma = ' + F(S.sd, d) + '$ ' + c.units + '.') + '</li>' +
         '<li>' + tx('<b>Boundary and direction.</b> The event is $' + ev + '$: the area ' + (S.mode === 'less' ? 'to the left of ' + F(S.b, d) : S.mode === 'greater' ? 'to the right of ' + F(S.a, d) : 'between ' + F(S.a, d) + ' and ' + F(S.b, d)) + '.') + '</li>' +
         '<li>' + tx('<b>Standardize.</b> ' + zline + '.') + '</li>' +
         '<li>' + tx('<b>The area.</b> ' + pline + '. Table A, with z to two places, gives ' + P4(res.pTable) + '.') + '</li></ol>' +
@@ -420,7 +420,7 @@
       var how = b.lo === 0 ? '$P(X \\le ' + b.hi + ')$ adds the bars from 0 to ' + b.hi + ' (technology: the binomial cdf).'
         : b.hi === n && S.rel !== 'exactly' ? '$P(X \\ge ' + b.lo + ') = 1 - P(X \\le ' + (b.lo - 1) + ')$: technology adds from 0, so take the complement.'
         : '$P(X = ' + b.lo + ') = \\binom{' + n + '}{' + b.lo + '}(' + F(p, 2) + ')^{' + b.lo + '}(' + q1 + ')^{' + (n - b.lo) + '}$, one bar.';
-      var body = '<ol class="ls-steps da-work"><li>' + tx('<b>Name the distribution and its parameters.</b> $X$ = ' + (S.bs ? S.bs.X : 'the count') + ', binomial with $n = ' + n + '$ and $p = ' + F(p, 2) + '$.') + '</li>' +
+      var body = '<ol class="da-work"><li>' + tx('<b>Name the distribution and its parameters.</b> $X$ = ' + (S.bs ? S.bs.X : 'the count') + ', binomial with $n = ' + n + '$ and $p = ' + F(p, 2) + '$.') + '</li>' +
         '<li>' + tx('<b>Words to symbols.</b> "' + b.words + ' ' + S.k + '" is $' + eq + '$' + (S.rel === 'fewer' ? ': ' + S.k + ' itself is left out.' : S.rel === 'more' ? ': ' + S.k + ' itself is left out.' : S.rel === 'exactly' ? '.' : ': ' + S.k + ' itself is included.')) + '</li>' +
         '<li>' + tx('<b>The probability.</b> ' + how + ' $= ' + P4(b.p) + '$.') + '</li>' +
         '<li>' + tx('<b>Center and spread.</b> $\\mu_X = np = ' + F(b.mean, 2) + '$, $\\sigma_X = \\sqrt{np(1 - p)} = ' + F(b.sd, 3) + '$.') + '</li></ol>' +

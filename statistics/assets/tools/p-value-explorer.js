@@ -29,7 +29,7 @@
   var uid = 0;
   function D(){ return window.ApStatDist; }
   function TX(){ return window.ApStatTex; }
-  function tx(s){ return TX() ? TX().html(String(s)) : esc(s); }
+  function tx(s){ return TX() ? TX().html(String(s), { wrap: true }) : esc(s); }
   function F(x, d){ return T.F(x, d); }
   function P4(p){ return PV.P4(p); }
   function el(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }

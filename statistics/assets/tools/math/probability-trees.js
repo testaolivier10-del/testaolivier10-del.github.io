@@ -148,11 +148,21 @@
     var nA = Math.round(N * pA), nAB = Math.round(nA * pBgA), nnAB = Math.round((N - nA) * pBgNA);
     var indep = r() < 0.3;
     if(indep){
-      // a table whose rows have the same B share: choose counts that make it exact
-      var g = gcd(nA, N - nA), unit = (N - nA) / g, uA = nA / g, best = Math.max(1, Math.round(pBgA * g));
-      nAB = best * uA; nnAB = best * unit;
-      if(nAB > nA || nnAB > N - nA){ indep = false; nAB = Math.round(nA * pBgA); nnAB = Math.round((N - nA) * pBgNA); }
+      // an independent table: row and column totals whose product is a
+      // multiple of N, every cell positive, as near the drawn shares as can be
+      var nA0 = nA, nB0 = Math.round(N * pBgA), found = null;
+      for(var dA = 0; dA <= 40 && !found; dA++) for(var sA = -1; sA <= 1 && !found; sA += 2){
+        var a = nA0 + sA * dA;
+        if(a < 2 || a > N - 2) continue;
+        for(var dB = 0; dB <= 40 && !found; dB++) for(var sB = -1; sB <= 1 && !found; sB += 2){
+          var bb = nB0 + sB * dB, ab = a * bb / N;
+          if(bb < 2 || bb > N - 2 || ab !== Math.floor(ab)) continue;
+          if(ab > 0 && a - ab > 0 && bb - ab > 0 && N - a - bb + ab > 0) found = [a, bb, ab];
+        }
+      }
+      if(found){ nA = found[0]; nAB = found[2]; nnAB = found[1] - found[2]; } else indep = false;
     }
+    if(!indep){ nAB = Math.max(1, Math.min(nA - 1, nAB)); nnAB = Math.max(1, Math.min(N - nA - 1, nnAB)); }
     if(!indep && nAB * (N - nA) === nnAB * nA) nnAB += nnAB < N - nA ? 1 : -1;
     var T = { AB: nAB, AnB: nA - nAB, nAB: nnAB, nAnB: N - nA - nnAB, N: N };
     T.A = nA; T.B = nAB + nnAB; T.nA = N - nA; T.nB = N - T.B;

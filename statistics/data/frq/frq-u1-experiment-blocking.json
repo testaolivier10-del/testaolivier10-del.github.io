@@ -1,0 +1,130 @@
+{
+ "id": "frq-u1-experiment-blocking",
+ "type": "collect",
+ "points": 10,
+ "title": "Two fertilizers in a greenhouse",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "experimental-design",
+  "investigative-questions"
+ ],
+ "practices": [
+  "2.A",
+  "2.B",
+  "4.B"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Two fertilizers in a greenhouse",
+  "html": "<p>A horticulture student wants to know whether a new organic fertilizer, B, produces a greater weight of tomatoes than the fertilizer the greenhouse uses now, A. The greenhouse has 40 young tomato plants of the same variety in identical pots: 24 on a sunny bench by the windows and 16 on a shady bench at the back. Over the season, the student will record the total weight of tomatoes, in grams, picked from each plant.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Identify</b> the treatments, the experimental units and the response variable in this experiment.",
+   "rubric": [
+    {
+     "point": "Treatments: fertilizer A and fertilizer B; experimental units: the 40 tomato plants",
+     "accept": [
+      "the two fertilizers",
+      "the plants (in their pots)"
+     ]
+    },
+    {
+     "point": "Response variable: total weight of tomatoes (grams) picked from each plant",
+     "accept": [
+      "tomato weight per plant"
+     ]
+    }
+   ],
+   "sample": "The treatments are fertilizer A and fertilizer B. The experimental units are the 40 tomato plants. The response variable is the total weight of tomatoes, in grams, picked from each plant during the season."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "<b>Describe</b> a randomized block design for this experiment, including a method of random assignment that someone else could follow.",
+   "rubric": [
+    {
+     "point": "Blocks by bench: the 24 sunny-bench plants form one block and the 16 shady-bench plants another",
+     "accept": [
+      "block on location (sunny or shady)"
+     ]
+    },
+    {
+     "point": "Random assignment within each block with a usable procedure: for example, label the sunny plants 1 to 24, generate random integers from 1 to 24 ignoring repeats until 12 are chosen, give those fertilizer B and the rest A; do the same for the shady plants with 8 of 16",
+     "accept": [
+      "slips of paper mixed in a container, 12 drawn on the sunny bench and 8 on the shady bench",
+      "half of each block to each fertilizer"
+     ]
+    },
+    {
+     "point": "Compares the treatments within each block (tomato weights of A and B plants on the same bench), then combines the results",
+     "accept": [
+      "the comparison is made within blocks"
+     ]
+    }
+   ],
+   "sample": "Use the benches as blocks: the 24 plants on the sunny bench form one block and the 16 on the shady bench form the other. On the sunny bench, label the plants 1 to 24, use a random number generator to produce integers from 1 to 24, ignore repeats, and give fertilizer B to the first 12 different plants chosen; the other 12 get fertilizer A. On the shady bench, do the same with labels 1 to 16, giving fertilizer B to 8 plants and fertilizer A to the other 8. At the end of the season, compare the tomato weights of the A and B plants within each bench, then combine the comparisons."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Explain</b> why blocking by bench is a good idea in this experiment.",
+   "rubric": [
+    {
+     "point": "Sunlight (bench location) is likely to affect tomato weight",
+     "accept": [
+      "plants in the sun are likely to produce more tomatoes"
+     ]
+    },
+    {
+     "point": "Blocking accounts for that variation: comparing fertilizers within benches keeps sunlight from hiding (or adding to) the effect of the fertilizer, so the comparison is more precise",
+     "accept": [
+      "removes the variation due to sunlight from the comparison",
+      "so any difference is not due to how many B plants happened to be in the sun"
+     ]
+    }
+   ],
+   "sample": "Plants on the sunny bench will probably produce more tomatoes than plants on the shady bench, whatever the fertilizer. By comparing the fertilizers within each bench, the student removes this variation due to sunlight from the comparison, so a difference between fertilizers is easier to detect and cannot be caused by one fertilizer getting more of the sunny plants."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "The plants given fertilizer B produce a statistically significantly greater weight of tomatoes than the plants given fertilizer A. What can the student conclude, and about which plants? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Cause and effect: fertilizer B causes a greater tomato weight than fertilizer A, because the fertilizers were randomly assigned to the plants",
+     "accept": [
+      "random assignment allows a causal conclusion"
+     ]
+    },
+    {
+     "point": "Scope: the conclusion applies to plants like these (this variety, grown in this greenhouse), because the plants were not randomly selected from a larger population",
+     "accept": [
+      "cannot generalize to all tomato plants",
+      "only plants similar to those in the experiment"
+     ]
+    }
+   ],
+   "sample": "Because the fertilizers were randomly assigned to plants within each bench, the student can conclude that fertilizer B causes a greater weight of tomatoes than fertilizer A. Because the 40 plants were not randomly selected from a larger population, the conclusion applies only to plants like these: this variety, grown in this greenhouse."
+  },
+  {
+   "label": "e",
+   "points": 1,
+   "prompt": "<b>Explain</b> why the student should water every plant with the same amount of water on the same schedule.",
+   "rubric": [
+    {
+     "point": "Controlling water keeps it from being a source of differences between the treatment groups (it is not confounded with fertilizer) and reduces variation in the response",
+     "accept": [
+      "if B plants got more water, that and not the fertilizer could explain the difference",
+      "control of other variables"
+     ]
+    }
+   ],
+   "sample": "If watering differed between plants, the amount of water could also change tomato weight, and a difference between the groups might be due to water instead of fertilizer. Giving every plant the same water keeps that variable the same for both treatments and reduces variation in the response."
+  }
+ ]
+}

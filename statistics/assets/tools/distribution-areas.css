@@ -70,3 +70,6 @@
 .da-brk.is-ev{stroke:var(--ink);stroke-width:1.6;}
 .da-ylab{font-weight:800;}
 :root[data-theme="dark"] .da-under{fill-opacity:.04;}
+.da-work{margin:8px 0;padding-left:22px;}
+.da-work li{overflow-wrap:anywhere;}
+.ls-root .da-ls-why math{max-width:100%;}
