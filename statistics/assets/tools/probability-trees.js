@@ -76,9 +76,9 @@
     return '<svg class="pt-tree-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(o.label) + '">' + g.join('') + '</svg>';
   }
   function tableHtml(J, sc, q, N){
-    var c = function(k){ var s = cellState(q, k); return '<td class="pt-cell is-' + s + '"><button type="button" class="pt-cb" data-q="' + k + '" aria-label="' + esc(QNAME[k]) + ': ' + Math.round(J[k] * N) + ' of ' + N + '"><b>' + M.fmt(J[k] * N, 4) + '</b><span>' + F4(J[k]) + '</span></button></td>'; };
+    var c = function(k){ var s = cellState(q, k); return '<td class="pt-cell is-' + s + '"><button type="button" class="pt-cb" data-q="' + k + '" aria-label="' + esc(QNAME[k]) + ': ' + Math.round(J[k] * N) + ' of ' + N + '"><b>' + cnt(J[k] * N) + '</b><span>' + F4(J[k]) + '</span></button></td>'; };
     var tot = function(k, cells){ var den = PT.QS[q].den, isDen = den && cells.every(function(x){ return den.indexOf(x) > -1; }) && den.length === cells.length;
-      return '<td class="pt-tot' + (isDen ? ' is-dent' : '') + '"><button type="button" class="pt-cb" data-q="' + k + '" aria-label="' + esc(QNAME[k]) + ': ' + Math.round(J[k] * N) + ' of ' + N + '"><b>' + M.fmt(J[k] * N, 4) + '</b><span>' + F4(J[k]) + '</span></button></td>'; };
+      return '<td class="pt-tot' + (isDen ? ' is-dent' : '') + '"><button type="button" class="pt-cb" data-q="' + k + '" aria-label="' + esc(QNAME[k]) + ': ' + Math.round(J[k] * N) + ' of ' + N + '"><b>' + cnt(J[k] * N) + '</b><span>' + F4(J[k]) + '</span></button></td>'; };
     return '<table class="pt-tbl"><caption>' + esc('Out of ' + N.toLocaleString('en-US') + ' ' + sc.pop) + '</caption><thead><tr><th scope="col"><span class="sr-only">Event A</span></th><th scope="col" class="pt-hb">B: ' + esc(sc.B) + '</th><th scope="col">not B</th><th scope="col">Total</th></tr></thead><tbody>' +
       '<tr><th scope="row" class="pt-ha">A: ' + esc(sc.A) + '</th>' + c('AB') + c('AnB') + tot('A', ['AB', 'AnB']) + '</tr>' +
       '<tr><th scope="row">not A</th>' + c('nAB') + c('nAnB') + tot('nA', ['nAB', 'nAnB']) + '</tr>' +
@@ -248,6 +248,9 @@
       var sp = T.studioPane(pane, s, { stage: [$('.pt-fig')], dock: [$('.pt-ctl')], setup: 'Events', moreLabel: 'The events and the simulation', why: [$('.pt-say')], details: [$('.pt-all')] });
       sp.setup(sc.name);
       draw();
+      var ab = document.createElement('div'); ab.className = 'ls-sec stat-about';
+      ab.innerHTML = (data.intro || '') + (data.howItWorks ? '<h3 class="ls-title-l">' + esc(data.howItWorksTitle || 'How it works') + '</h3>' + data.howItWorks : '');
+      s.add('about', ab, { mode: 'explore' });
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.pt-qs'), text: 'Pick a probability' });
       if(window.ResizeObserver){ var t = null, last = ''; new ResizeObserver(function(en){ var r = en[0].contentRect, k = Math.round(r.width / 4) + 'x' + Math.round(r.height / 4); if(k === last) return; last = k; clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.pt-fig')); }
     }

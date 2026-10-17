@@ -104,7 +104,7 @@ body.stat{
 .dr-last{fill:var(--stat-s2);stroke:var(--white);stroke-width:2;}
 .dr-truth{stroke:var(--ink);stroke-width:2;stroke-dasharray:6 4;}
 .dr-trutht{fill:var(--ink);font:800 12px var(--font-ui);}
-.dr-empty{fill:var(--muted);font:700 13px var(--font-ui);}
+.dr-empty{fill:var(--muted);font:700 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:5px;}
 
 /* the dock */
 .sl-seg{display:flex;flex-direction:column;gap:8px;}
@@ -128,3 +128,15 @@ body.stat{
 .dr-scope-t td{background:var(--paper);border-radius:12px;padding:12px;vertical-align:top;}
 .dr-scope-t td.is-here{background:var(--ctint);box-shadow:inset 0 0 0 2.5px var(--cink);}
 .dr-scope-t td b{display:block;color:var(--cink);margin-top:4px;}
+/* drills: the design diagram */
+.dd-fig{margin:auto 0;display:flex;flex-direction:column;gap:6px;}
+.dd-svg{width:100%;height:auto;max-height:100%;}
+.dd-fig figcaption{text-align:center;}
+.dd-box rect{fill:var(--paper);stroke:var(--line);stroke-width:2;}
+.dd-box text{fill:var(--ink);font:800 14px var(--font-ui);}
+.dd-box.is-key rect{fill:var(--ctint);stroke:var(--cink);}
+.dd-box.is-key text{fill:var(--cink);}
+.dd-box.is-a rect{stroke:var(--stat-s2);stroke-width:3;} .dd-box.is-b rect{stroke:var(--stat-s1);stroke-width:3;}
+.dd-box.is-warn rect{stroke:var(--stat-s2);stroke-dasharray:6 4;}
+.dd-arrow{fill:none;stroke:var(--muted);stroke-width:2.2;}
+.dd-head{fill:var(--muted);}

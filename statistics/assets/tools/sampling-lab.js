@@ -409,6 +409,9 @@
       var sp = T.studioPane(pane, s, { stage: [$('.sl-fig')], dock: [$('.sl-ctl')], setup: 'Population', moreLabel: 'Population, colors and the dots', why: [$('.sl-say')], details: [$('.sl-now'), $('.sl-table'), $('.sl-popinfo')] });
       sp.setup(sc.name);
       syncSeg(); drawMeans(); text();
+      var ab = document.createElement('div'); ab.className = 'ls-sec stat-about';
+      ab.innerHTML = (data.intro || '') + (data.howItWorks ? '<h3 class="ls-title-l">' + esc(data.howItWorksTitle || 'How it works') + '</h3>' + data.howItWorks : '');
+      s.add('about', ab, { mode: 'explore' });
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.sl-draw'), text: 'Draw a sample' });
       watch($('.sl-meansbox'));
     }

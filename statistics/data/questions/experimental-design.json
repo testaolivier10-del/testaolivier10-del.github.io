@@ -456,6 +456,60 @@
     "Measuring many variables on each unit"
    ],
    "correct": [0]
+  },
+  {
+   "id": "stat-experimental-design-18",
+   "unit": "unit-1",
+   "topic": "experimental-design",
+   "type": "conclude",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In the blue-light study, 60 volunteers were randomly assigned to the two kinds of glasses, and the blue-light group had statistically significantly better sleep quality. Build the scope-of-inference statement.",
+   "why": {
+    "correct": "Random assignment supports cause and effect; random sampling supports generalizing. This study had the first but not the second."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "cause": {
+      "label": "Cause and effect",
+      "options": [
+       "Blue-light glasses cause better sleep quality, because the glasses were randomly assigned",
+       "Blue-light glasses are linked to better sleep, but no cause can be claimed",
+       "Blue-light glasses cause better sleep, because 60 students is a large sample"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Random assignment of treatments is exactly what allows a cause-and-effect conclusion.",
+       "2": "Sample size does not create a causal conclusion; random assignment does."
+      }
+     },
+     "scope": {
+      "label": "To whom",
+      "options": [
+       "for students like these volunteers",
+       "for all college students",
+       "for every person who wears glasses"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The students were volunteers, not a random sample of all college students.",
+       "2": "The study included only college student volunteers."
+      }
+     }
+    },
+    "model": "Because the glasses were randomly assigned, the study shows that blue-light glasses cause better sleep quality for students like these volunteers; because the students were volunteers and not a random sample, the result should not be generalized to all college students.",
+    "write": {
+     "context": [
+      "glasses",
+      "students",
+      "sleep"
+     ],
+     "parameter": false,
+     "evidence": false
+    }
+   }
   }
  ]
 }

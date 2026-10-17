@@ -137,7 +137,7 @@ body.stat{
 .sl-mdot.is-off{opacity:.5;}
 .sl-mlast{fill:var(--stat-s2);stroke:var(--white);stroke-width:2;}
 .sl-mu{stroke:var(--stat-s1);stroke-width:2.2;stroke-dasharray:6 4;}
-.sl-empty{fill:var(--muted);font:700 13px var(--font-ui);}
+.sl-empty{fill:var(--muted);font:700 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:5px;}
 .sl-mut{fill:var(--stat-s1);font:800 12px var(--font-ui);}
 
 /* Dock: four random methods, then the two that are not random */
