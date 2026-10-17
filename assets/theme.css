@@ -213,29 +213,29 @@
 
 /* The ochem course's tint. Set on <body> by site-chrome.js from the course
    the page registered; the hub and NREMT keep the mint defaults above. */
-body[data-course="ochem"]{--ctint:#ECE8FB;--cink:#4B3BA8;}
-:root[data-theme="dark"] body[data-course="ochem"]{--ctint:rgba(156,143,224,0.18);--cink:#C9C0F2;}
+body[data-course="ochem"],[data-tint="ochem"]{--ctint:#ECE8FB;--cink:#4B3BA8;}
+:root[data-theme="dark"] body[data-course="ochem"],:root[data-theme="dark"] [data-tint="ochem"]{--ctint:rgba(156,143,224,0.18);--cink:#C9C0F2;}
 /* Anatomy & Physiology: a warm coral, the one hue neither other course uses. */
-body[data-course="anp"]{--ctint:#FBE9E4;--cink:#A33B26;}
+body[data-course="anp"],[data-tint="anp"]{--ctint:#FBE9E4;--cink:#A33B26;}
 /* 7%: at 18% the coral over the dark page read as muddy brown (audit 2026-10). */
-:root[data-theme="dark"] body[data-course="anp"]{--ctint:rgba(236,132,108,0.07);--cink:#F2B9A9;}
+:root[data-theme="dark"] body[data-course="anp"],:root[data-theme="dark"] [data-tint="anp"]{--ctint:rgba(236,132,108,0.07);--cink:#F2B9A9;}
 /* AP Biology: a leaf green. */
-body[data-course="bio"]{--ctint:#E4F1DD;--cink:#2D6A1F;}
-:root[data-theme="dark"] body[data-course="bio"]{--ctint:rgba(140,200,110,0.08);--cink:#B6E2A2;}
+body[data-course="bio"],[data-tint="bio"]{--ctint:#E4F1DD;--cink:#2D6A1F;}
+:root[data-theme="dark"] body[data-course="bio"],:root[data-theme="dark"] [data-tint="bio"]{--ctint:rgba(140,200,110,0.08);--cink:#B6E2A2;}
 /* AP Chemistry: a cobalt blue (not ochem's lilac, Biology's green, A&P's coral
    or NREMT's mint). --cink on --ctint: 7.2:1 light, 8.7:1 dark. */
-body[data-course="apchem"]{--ctint:#E3EAFA;--cink:#1D44A6;}
-:root[data-theme="dark"] body[data-course="apchem"]{--ctint:rgba(90,130,230,0.12);--cink:#B3C8F7;}
+body[data-course="apchem"],[data-tint="apchem"]{--ctint:#E3EAFA;--cink:#1D44A6;}
+:root[data-theme="dark"] body[data-course="apchem"],:root[data-theme="dark"] [data-tint="apchem"]{--ctint:rgba(90,130,230,0.12);--cink:#B3C8F7;}
 /* AP Physics 1: amber (not ochem's lilac, Biology's green, A&P's coral,
    NREMT's mint or Chemistry's cobalt). --cink on --ctint: 7.3:1 light, about
    10:1 dark (docs/apphys-spec.md decision 6). */
-body[data-course="apphys"]{--ctint:#FBEED5;--cink:#734200;}
-:root[data-theme="dark"] body[data-course="apphys"]{--ctint:rgba(235,165,50,0.10);--cink:#F5CF8A;}
+body[data-course="apphys"],[data-tint="apphys"]{--ctint:#FBEED5;--cink:#734200;}
+:root[data-theme="dark"] body[data-course="apphys"],:root[data-theme="dark"] [data-tint="apphys"]{--ctint:rgba(235,165,50,0.10);--cink:#F5CF8A;}
 /* AP Calculus AB: crimson (not ochem's lilac, Biology's green, A&P's coral,
    NREMT's mint, Chemistry's cobalt or Physics' amber). --cink on --ctint:
    8.0:1 light, about 9.8:1 dark (docs/apcalc-spec.md decision 6). */
-body[data-course="apcalc"]{--ctint:#FCE8EE;--cink:#8C1036;}
-:root[data-theme="dark"] body[data-course="apcalc"]{--ctint:rgba(232,80,122,0.10);--cink:#F7B8CA;}
+body[data-course="apcalc"],[data-tint="apcalc"]{--ctint:#FCE8EE;--cink:#8C1036;}
+:root[data-theme="dark"] body[data-course="apcalc"],:root[data-theme="dark"] [data-tint="apcalc"]{--ctint:rgba(232,80,122,0.10);--cink:#F7B8CA;}
 
 /* ==========================================================================
    2. Base
@@ -941,19 +941,30 @@ footer .privacy-link a:hover{color:var(--ink);}
   .site-header__course-short{display:inline;}
   .site-header__course{font-size:14.5px;color:var(--cink);padding-left:11px;flex-shrink:0;}
 }
-/* A phone's header row holds the mark, the course, search, level, account,
-   mute and theme. At 360-390px that only fits with the wordmark text dropped
-   (the mark still links to the hub), tighter gaps, and the streak chip left
-   to the course homes, which show it in their hero. */
+/* Phone header: mark, wordmark (polish A9), course, search, level, menu.
+   Under 360px with a course name the wordmark text drops. */
 @media (max-width:480px){
   .site-header__inner{padding-left:14px;padding-right:14px;gap:8px;}
-  .site-header__brand .brand-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+  .site-header__brand{gap:7px;font-size:15.5px;}
+  .site-header__brand .brand-mark{width:30px;height:30px;border-radius:10px;font-size:15px;}
   .site-header__brand-row{gap:8px;}
+  .site-header__course{padding-left:9px;}
   .nav-right{gap:6px;}
   .nav-right .theme-toggle::after,.nav-right .level-badge::after{inset:-6px;}
 }
 @media (max-width:400px){
   .nav-streak{display:none;}
+}
+/* The assistant button, docked in the phone header by tutor-launcher.js
+   (polish A10); the id outranks tutor.js's floating rules. */
+#site-header .lp-launch{
+  position:static;width:34px;height:34px;opacity:1;transform:none;pointer-events:auto;
+  filter:none;box-shadow:var(--lift-sm);border-radius:11px;flex-shrink:0;
+}
+#site-header .lp-launch svg{border-radius:11px;}
+#site-header .lp-launch:hover{transform:none;}
+@media (max-width:359px){
+  .site-header__brand:has(+ .site-header__course) .brand-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
 }
 
 /* ==========================================================================
@@ -970,6 +981,9 @@ footer{
   font-family:var(--font-ui);font-weight:600;
   margin-top:48px;font-size:12.5px;color:var(--muted);max-width:60ch;
 }
+/* A course footer that is its own shell keeps the shell's gutter, in line
+   with the content (each .xx-foot zeroed it; polish A11). */
+footer.xshell{padding-left:clamp(18px,3.5vw,48px);padding-right:clamp(18px,3.5vw,48px);}
 
 ::selection{background:var(--accent);color:var(--on-accent-fill);}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px;}
