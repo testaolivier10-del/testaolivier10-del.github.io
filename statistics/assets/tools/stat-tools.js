@@ -59,6 +59,23 @@
     });
     return node.textContent.replace(/\s+/g, ' ').replace(/ ([.,;:?!)])/g, '$1').trim();
   }
+  /* A problem text as one line of caption html: its words (escaped), inline
+     emphasis and every formula as its rendered MathML; tables, figures and
+     form controls are left out, and blocks run together with a space. */
+  var CAP_INLINE = { b: 1, strong: 1, i: 1, em: 1, sub: 1, sup: 1 }, CAP_SKIP = { table: 1, figure: 1, svg: 1, input: 1, select: 1, textarea: 1, button: 1, details: 1, script: 1, style: 1 };
+  function capHtml(node){
+    function walk(n){
+      if(n.nodeType === 3) return esc(n.nodeValue);
+      if(n.nodeType !== 1) return '';
+      var tag = n.tagName.toLowerCase();
+      if(tag === 'math') return n.outerHTML;
+      if(CAP_SKIP[tag] || (n.classList && n.classList.contains('sr-only'))) return '';
+      var inner = Array.prototype.map.call(n.childNodes, walk).join('');
+      if(CAP_INLINE[tag]) return '<' + tag + '>' + inner + '</' + tag + '>';
+      return /^(p|div|li|ul|ol|br|h[1-6]|section)$/.test(tag) ? ' ' + inner + ' ' : inner;
+    }
+    return Array.prototype.map.call(node.childNodes, walk).join('').replace(/\s+/g, ' ').replace(/ ([.,;:?!)])/g, '$1').trim();
+  }
   function F(x, d){ var s = M.fixed(x, d == null ? 2 : d); return s.charAt(0) === '-' ? '−' + s.slice(1) : s; }
   function core(){ return window.ApStatCore; }
   function base(){ return window.ApStatBase || '../'; }
@@ -834,7 +851,9 @@
           var ask = ss.filter(function(x){ return /\?\s*$/.test(x); }).pop() || ss[ss.length - 1];
           text = (eqT ? eqT.replace(/\s+K\s*=/, ', K =') + '. ' : '') + ask.trim();
         }
-        s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : esc(text), m); s.pills([], 'left', m);
+        // The caption keeps each formula as rendered math (p̂, x̄, H₀), not its
+        // plain reading ("p-hat", "H_0"); a studioAsk caption is cut from the text.
+        s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : o.studioAsk ? esc(text) : capHtml(ctx), m); s.pills([], 'left', m);
       },
       done: function(right, total){
         var sol = area.querySelector(':scope > .bt-solution');

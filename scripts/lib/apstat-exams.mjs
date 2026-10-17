@@ -13,6 +13,7 @@
                                    prompt, recomputed here (EXAM_NUMBERS) */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { Dist } from './apstat-mathlib.mjs';
 
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 const strip = s => String(s ?? '').replace(/<\/?[A-Za-z!][^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -195,11 +196,51 @@ export function checkJustify(prompts, ctx) {
 
 /* Every number in an exam-only item or a prompt, recomputed: the value, and
    where it must appear (an item's keyed option, or a prompt's text). Each
-   entry is { id, key, starts?, check? } for an item and { id, has: [...] }
-   for a prompt. Phase 3 fills both lists as the forms and prompts are
-   written, every number recomputed through ApStatDist
-   (scripts/lib/apstat-mathlib.mjs, Dist). */
-export const EXAM_NUMBERS = [];
+   entry is { id, key, starts?, also?, check? } for an item (also: distractor
+   values recomputed from the slip they name, each one an option) and
+   { id, has: [...] } for a prompt. Every number comes from ApStatDist
+   (scripts/lib/apstat-mathlib.mjs, Dist), the same code the graders use. */
+const f2 = x => x.toFixed(2), f3 = x => x.toFixed(3);
+// Form 1: the commuter flight set (X binomial, n = 15, p = 0.12).
+const bin = { n: 15, p: 0.12 };
+const atLeast3 = 1 - Dist.binomCdf(2, bin.n, bin.p);
+// 1-07: eggs, normal with mean 58 g and SD 4.5 g, above 65 g (Table A z to two places, and technology).
+const eggZ = (65 - 58) / 4.5;
+// 1-08: 278 of 500, H0: p = 0.5.
+const rail = Dist.z1prop(278 / 500, 0.5, 500);
+// 1-11: commute times, n = 25, x-bar 31.4, s 8.2, 95%.
+const commute = Dist.ci1mean(31.4, 8.2, 25, 0.95);
+// Form 2: the jobs table (rows grades 9-10 and 11-12; columns job, no job).
+const jobs = [[30, 170], [90, 110]], N = 400;
+// 2-07: 136 of 400 households, 90%.
+const thermo = Dist.ci1prop(136 / 400, 400, 0.90);
+// 2-08: 64 of 200 with a reminder, 45 of 180 without.
+const remind = Dist.z2prop(64, 200, 45, 180);
+// 2-10: loaves, n = 16, x-bar 489, s 24, H0: mu = 500, Ha: mu < 500.
+const loaf = Dist.t1(489, 500, 24, 16);
+// 2-11 to 2-13: price = 24.60 - 1.85 age, R-sq 79.2%.
+export const EXAM_NUMBERS = [
+  { id: 'stat-exam-1-05', key: f3(atLeast3), also: [f3(1 - Dist.binomCdf(3, bin.n, bin.p)), f3(Dist.binomPmf(3, bin.n, bin.p)), f3(Dist.binomCdf(2, bin.n, bin.p))] },
+  { id: 'stat-exam-1-06', key: `Mean ${bin.n * bin.p}, standard deviation ${f2(Math.sqrt(bin.n * bin.p * (1 - bin.p)))}`, check: () => Math.abs(bin.n * bin.p - 1.8) < 1e-9,
+    also: [`Mean 1.8, standard deviation ${f2(bin.n * bin.p * (1 - bin.p))}`, `Mean ${f2(bin.n * (1 - bin.p)).replace(/0$/, '')}, standard deviation ${f2(Math.sqrt(bin.n * bin.p * (1 - bin.p)))}`, `Mean 1.8, standard deviation ${f2(Math.sqrt(bin.p * (1 - bin.p)))}`] },
+  { id: 'stat-exam-1-07', key: f3(1 - Dist.normCdf(Math.round(eggZ * 100) / 100)), check: () => f3(1 - Dist.normCdf(eggZ)) === '0.060',
+    also: [f3(1 - Dist.normCdf((65 - 58) / 4.5 ** 2)), f3(Dist.normCdf(eggZ))] },
+  { id: 'stat-exam-1-08', key: `$z \\approx ${f2(rail.z)}$`, also: [`$z \\approx ${f2((278 / 500 - 0.5) / Math.sqrt(0.556 * 0.444 / 500))}$`, `$z \\approx ${rail.p.greater.toFixed(4)}$`] },
+  { id: 'stat-exam-1-11', key: `From ${f2(commute.lo)} to ${f2(commute.hi)} minutes`, check: () => f3(commute.crit) === '2.064',
+    also: [`From ${f2(31.4 - Dist.invNorm(0.975) * 8.2 / 5)} to ${f2(31.4 + Dist.invNorm(0.975) * 8.2 / 5)} minutes`, `From ${f2(31.4 - commute.crit * 8.2 / 25)} to ${f2(31.4 + commute.crit * 8.2 / 25)} minutes`] },
+  { id: 'stat-exam-2-03', key: f3(jobs[1][0] / (jobs[1][0] + jobs[1][1])), also: [f3(jobs[1][0] / N), f3((jobs[0][0] + jobs[1][0]) / N), f3(jobs[1][0] / (jobs[0][0] + jobs[1][0]))] },
+  { id: 'stat-exam-2-04', key: f3((jobs[0][0] + jobs[1][0] + 200 - jobs[1][0]) / N), also: [f3((120 + 200) / N), f3(jobs[1][0] / N), f3((jobs[0][0] + jobs[1][1]) / N)] },
+  { id: 'stat-exam-2-05', key: `No, because $P(\\text{job} \\mid \\text{grades 11 and 12}) = ${f2(90 / 200)}$ is not equal to $P(\\text{job}) = ${f2(120 / N)}$.`},
+  { id: 'stat-exam-2-07', key: `From ${f3(thermo.lo)} to ${f3(thermo.hi)}`, check: () => f3(thermo.crit) === '1.645',
+    also: [`From ${f3(Dist.ci1prop(0.34, 400, 0.95).lo)} to ${f3(Dist.ci1prop(0.34, 400, 0.95).hi)}`, `From ${f3(Dist.ci1prop(0.34, 400, 0.80).lo)} to ${f3(Dist.ci1prop(0.34, 400, 0.80).hi)}`, `From ${f3(0.34 - thermo.crit * Math.sqrt(0.34 * 0.66) / 400)} to ${f3(0.34 + thermo.crit * Math.sqrt(0.34 * 0.66) / 400)}`] },
+  { id: 'stat-exam-2-08', key: `$z \\approx ${f2(remind.z)}$`, check: () => remind.p.greater > 0.05,
+    also: [`$z \\approx ${f2((remind.p1 - remind.p2) / Math.sqrt(remind.p1 * (1 - remind.p1) / 200 + remind.p2 * (1 - remind.p2) / 180))}$`, `$z \\approx ${f2(0.07 / (Math.sqrt(remind.pc * (1 - remind.pc) / 200) + Math.sqrt(remind.pc * (1 - remind.pc) / 180)))}$`] },
+  { id: 'stat-exam-2-10', key: `Because the p-value of ${f3(loaf.p.less)} is less than 0.05, reject $H_0$.`, starts: true, check: () => f2(loaf.t) === '-1.83' && loaf.df === 15,
+    also: [`Because the p-value of ${f3(loaf.p.two)} is greater than 0.05, fail to reject $H_0$. There is not convincing evidence that the true mean weight is less than 500 grams.`] },
+  { id: 'stat-exam-2-12', key: `${f2(24.60 - 1.85 * 6)} thousand dollars`, also: [`${f2(24.60 + 1.85 * 6)} thousand dollars`, `${f2(24.60 - 1.85)} thousand dollars`, `${f2(1.85 * 6)} thousand dollars`] },
+  { id: 'stat-exam-2-13', key: `$-${f3(Math.sqrt(0.792))}$`, also: [`${f3(0.792)}`, `${f3(Math.sqrt(0.792))}`] },
+];
+// Every number a prompt shows, recomputed (filled with the prompts below).
 export const JUSTIFY_NUMBERS = [];
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {
@@ -212,6 +253,7 @@ export function checkNumbers(items, prompts) {
     if (!ok) errs.push(`numbers: ${n.id} keys "${key}", the recomputed value is "${n.key}"`);
     if (n.check && !n.check()) errs.push(`numbers: ${n.id} fails its side condition`);
     if (q.options.filter(o => strip(o) === key).length !== 1) errs.push(`numbers: ${n.id} has its key twice`);
+    for (const a of n.also || []) if (!q.options.some((o, i) => i !== q.correct && strip(o) === a)) errs.push(`numbers: ${n.id} should have the distractor "${a}" (the slip it names, recomputed)`);
   }
   const byId = new Map(prompts.map(p => [p.id, p]));
   for (const n of JUSTIFY_NUMBERS) {

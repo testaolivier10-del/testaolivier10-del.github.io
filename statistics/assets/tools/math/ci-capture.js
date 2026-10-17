@@ -140,10 +140,10 @@
     if(x < 10 || n - x < 10){ x = Math.max(10, Math.min(n - 10, x)); }
     var ph = x / n, z = Dd.invNorm(1 - (1 - L0) / 2), se = Math.sqrt(ph * (1 - ph) / n), me = z * se, lo = ph - me, hi = ph + me;
     var zt = { 0.9: 1.645, 0.95: 1.96, 0.99: 2.576 }[L0] || M.round(z, 3), ph3 = M.round(ph, 3), seR = Math.sqrt(ph3 * (1 - ph3) / n);
-    var text = '<p>' + um(c.lead + ' In a random sample of $n = ' + n + '$ ' + c.who + ' from ' + c.popAll + ', $' + x + '$ ' + c.yes + '. Construct ' + an(L) + ' confidence interval for $p$, the proportion of ' + c.popAll + ' who ' + c.yes + '.') + '</p>';
+    var text = '<p>' + um(c.lead + ' In a random sample of $n = ' + n + '$ ' + c.who + ' from ' + c.popAll + ', $' + x + '$ ' + c.yes + '. Construct ' + an(L) + ' confidence interval for $p$, the proportion of ' + c.popAll + ' ' + (c.rel || 'who') + ' ' + c.yes + '.') + '</p>';
     var hp = '\\hat{p}';
     var steps = [
-      num('phat', tx('The sample proportion $' + hp + ' =$'), ph, 4, { abs: 0.0006, mistakes: [{ value: 1 - ph, why: 'That is the proportion who do not. Count the ones who ' + c.yes + '.' }] }),
+      num('phat', tx('The sample proportion $' + hp + ' =$'), ph, 4, { abs: 0.0006, mistakes: [{ value: 1 - ph, why: 'That is the proportion ' + (c.rel || 'who') + ' do not. Count the ones ' + (c.rel || 'who') + ' ' + c.yes + '.' }] }),
       num('crit', tx('The critical value $z^* =$ for ' + L + ' confidence'), z, 3, { abs: 0.0051, mistakes: [
         { value: Dd.invNorm(L0), why: 'That leaves all of the ' + pct(1 - L0) + ' in one tail. A confidence interval splits it: ' + pct((1 - L0) / 2) + ' in each tail.' }] }),
       num('se', tx('The standard error $\\sqrt{\\frac{' + hp + '(1 - ' + hp + ')}{n}} =$'), se, 4, { abs: Math.max(0.00006, 1.3 * Math.abs(seR - se)), mistakes: [
@@ -154,7 +154,7 @@
         { value: se, why: 'That is the standard error alone. Multiply it by z*.' },
         { value: 2 * me, why: 'That is the full width of the interval. The margin of error is half of it.' },
         { value: Dd.invNorm(L0) * se, why: 'That used a one-tail z*. Use z* = ' + f(z, 3) + '.' }] }),
-      choice('interp', 'The interval is ' + iv2(lo, hi, 3) + '. Which sentence interprets it correctly?', interpOpts(L, iv2(lo, hi, 3), c.popAll + ' who ' + c.yes, n, c.who, true,
+      choice('interp', 'The interval is ' + iv2(lo, hi, 3) + '. Which sentence interprets it correctly?', interpOpts(L, iv2(lo, hi, 3), c.popAll + ' ' + (c.rel || 'who') + ' ' + c.yes, n, c.who, true,
         ['Between ' + f(lo * 100, 1) + '% and ' + f(hi * 100, 1) + '% of the ' + n + ' ' + c.who + ' in the sample ' + c.yes + '.', 'The sample has one proportion, p̂ = ' + f(ph, 3) + ', known exactly. The interval is about the proportion of ' + c.popAll + '.'])),
       choice('level', 'Which sentence explains what ' + L + ' confidence means here?', levelOpts(L, n, c.who, true))
     ];
@@ -162,7 +162,7 @@
       tx('$z^* = ' + t(z, 3) + '$ for ' + L + ' confidence (' + pct((1 - L0) / 2) + ' in each tail).'),
       tx('$\\text{SE} = \\sqrt{\\frac{' + t(ph, 4) + '(' + t(1 - ph, 4) + ')}{' + n + '}} = ' + t(se, 4) + '$.'),
       tx('$\\text{ME} = ' + t(z, 3) + ' \\times ' + t(se, 4) + ' = ' + t(me, 4) + '$, so the interval is $' + t(ph, 4) + ' \\pm ' + t(me, 4) + '$, ' + iv2(lo, hi, 3) + '.'),
-      'We are ' + L + ' confident that the interval ' + iv2(lo, hi, 3) + ' captures the true proportion of ' + c.popAll + ' who ' + c.yes + '.'];
+      'We are ' + L + ' confident that the interval ' + iv2(lo, hi, 3) + ' captures the true proportion of ' + c.popAll + ' ' + (c.rel || 'who') + ' ' + c.yes + '.'];
     return { ctx: c.id, topic: c.topic, type: 'prop', text: text, steps: steps, solution: sol, given: { x: x, n: n, level: L0 },
       figure: { kind: 'one', est: ph, lo: lo, hi: hi, me: me, crit: z, se: se, sym: '\\hat{p}', par: 'p', d: 3, L: L } };
   }
@@ -206,13 +206,13 @@
     var yes = r() < 0.5, p0 = yes ? M.round(lo - between(r, [0.01, 0.05], 2), 2) : M.round(lo + (hi - lo) * between(r, [0.2, 0.45], 2), 2);
     if(p0 <= 0.01) { p0 = M.round(lo + (hi - lo) * 0.3, 2); yes = false; }
     yes = p0 < lo;
-    var text = '<p>' + um(c.lead + ' A random sample of $' + n + '$ ' + c.who + ' gives ' + an(L) + ' confidence interval for $p$, the proportion of ' + c.popAll + ' who ' + c.yes + ', from ' + t(lo, 3) + ' to ' + t(hi, 3) + '. ' + c.claimer + ' claims that more than $' + t(p0, 2) + '$ of ' + c.popAll + ' ' + c.yes + '.') + '</p>';
+    var text = '<p>' + um(c.lead + ' A random sample of $' + n + '$ ' + c.who + ' gives ' + an(L) + ' confidence interval for $p$, the proportion of ' + c.popAll + ' ' + (c.rel || 'who') + ' ' + c.yes + ', from ' + t(lo, 3) + ' to ' + t(hi, 3) + '. ' + c.claimer + ' claims that more than $' + t(p0, 2) + '$ of ' + c.popAll + ' ' + c.yes + '.') + '</p>';
     var steps = [
       num('mefrom', 'The margin of error of this interval =', me, 4, { abs: 0.0006, mistakes: [{ value: hi - lo, why: 'That is the width. The margin of error is half the width.' }] }),
       choice('claim', 'Does the interval give convincing evidence for the claim?', yes ? [
         ['Yes: every value in the interval is greater than ' + t(p0, 2) + ', so the claim is supported.', 'Right. ' + t(p0, 2) + ' is below the whole interval, so it is not a plausible value for p.'],
         ['No: ' + t(p0, 2) + ' is close to the interval, so it is still plausible.', 'Plausible values are the ones inside the interval. ' + t(p0, 2) + ' is outside it, below every value.'],
-        ['It proves that p is greater than ' + t(p0, 2) + '.', 'An interval gives convincing evidence, never proof: the method misses ' + pct(1 - L0) + ' of the time.'],
+        ['It proves that p is greater than ' + t(p0, 2) + '.', 'An interval gives convincing evidence, never proof: intervals built this way miss the parameter about ' + pct(1 - L0) + ' of the time.'],
         ['Yes, because the sample proportion ' + t(ph, 3) + ' is greater than ' + t(p0, 2) + '.', 'A sample proportion above ' + t(p0, 2) + ' alone is not convincing; the whole interval must be above it.']
       ] : [
         ['No: ' + t(p0, 2) + ' is inside the interval, so it is a plausible value for p.', 'Right. Because ' + t(p0, 2) + ' is in the interval, the data do not rule it out.'],
@@ -243,7 +243,7 @@
     var L0 = r.pick([0.8, 0.9, 0.95]), L = pct(L0), n = r.pick(c.ns), s = { kind: 'prop', p: between(r, c.p, 2), n: n }, K = 20;
     var ivs = batch(r, s, K).map(function(smp){ var iv = interval(smp, s, L0); iv.hit = captures(iv, s); return iv; });
     var hits = ivs.filter(function(v){ return v.hit; }).length;
-    var text = '<p>' + um(c.lead + ' Suppose the true proportion of ' + c.popAll + ' who ' + c.yes + ' is $p = ' + t(s.p, 2) + '$. A computer takes ' + K + ' random samples of $n = ' + n + '$ and builds ' + an(L) + ' confidence interval from each. The picture shows all ' + K + ', with a line at the true value.') + '</p>';
+    var text = '<p>' + um(c.lead + ' Suppose the true proportion of ' + c.popAll + ' ' + (c.rel || 'who') + ' ' + c.yes + ' is $p = ' + t(s.p, 2) + '$. A computer takes ' + K + ' random samples of $n = ' + n + '$ and builds ' + an(L) + ' confidence interval from each. The picture shows all ' + K + ', with a line at the true value.') + '</p>';
     var steps = [
       num('count', 'How many of the ' + K + ' intervals capture p?', hits, 0, { hint: 'An interval captures p when the line crosses it.', mistakes: [{ value: K - hits, why: 'That counts the ones that miss. Count the intervals the line crosses.' }] }),
       num('longrun', 'If the computer kept going, about what percent of all the intervals would capture p?', L0 * 100, 0, { unit: '%', mistakes: hits === Math.round(L0 * K) ? [] : [{ value: hits / K * 100, why: 'That is this batch of ' + K + '. Over many intervals the rate settles at the confidence level.' }] }),

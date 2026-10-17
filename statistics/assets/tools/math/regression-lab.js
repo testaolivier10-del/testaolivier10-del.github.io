@@ -216,7 +216,7 @@
     var L = line(r, c), d = dataUntil(r, c, { a: L.a, b: L.b, noise: L.span * 0.1 }, function(F, xs){ return Math.abs(F.r) >= 0.8 && Math.abs(curvature(xs, F.residuals)) < 0.4; });
     var F = fit(d.xs, d.ys), P = printed(F), xmin = d.xs[0], xmax = d.xs[d.xs.length - 1];
     var x0 = M.round(xmin + (xmax - xmin) * r.between(0.2, 0.8, 2), c.x.dp || 0), yhat = P.a + P.b * x0;
-    var far = M.round(xmax + (xmax - xmin) * r.between(1.5, 3, 2), c.x.dp || 0);
+    var far = M.round(xmax + (xmax - xmin) * r.between(0.6, 1.2, 2), c.x.dp || 0);
     var up = P.b > 0, bs = M.fixed(Math.abs(P.b), P.db), dy = dpFor(yhat);
     var text = '<p>' + c.lead + ' For ' + d.xs.length + ' ' + c.noun + ', the least-squares regression line is <b>' + eq(c, P.a, P.b, P.da, P.db) + '</b>, where x is ' + c.x.name + ' (' + c.x.unit + ') and ŷ is the predicted ' + c.y.name + ' (' + c.y.unit + ').</p>';
     var steps = [
@@ -225,7 +225,7 @@
         { value: P.b * x0, why: 'Add the intercept ' + f(P.a, P.da) + ' too.' }], { unit: c.y.unit }),
       choice(r, 'who', 'The slope sentence starts “' + c.x.per + ', …”. What changes?', [
         { o: 'the predicted ' + c.y.name, ok: true, w: 'Right: the line predicts; individual ' + c.noun + ' vary around it. Say “predicted”.' },
-        { o: 'the ' + c.y.name, ok: false, w: 'The actual ' + c.y.name + ' of a single one varies around the line. The slope describes the predicted value: say “the predicted ' + c.y.name + '”.' },
+        { o: 'the ' + c.y.name, ok: false, w: 'Actual values of ' + c.y.name + ' vary around the line. The slope describes the predicted value: say “the predicted ' + c.y.name + '”.' },
         { o: 'the ' + c.x.name, ok: false, w: 'x is what changes by one unit; the slope tells how the predicted y responds.' }], true),
       choice(r, 'how', '… the predicted ' + c.y.name + ' …', [
         { o: (up ? 'increases' : 'decreases') + ' by about ' + bs + ' ' + c.y.unit + '.', ok: true, w: 'Right: the slope is ' + f(P.b, P.db) + ' ' + c.y.unit + ' per ' + c.x.one + '.' },
@@ -307,7 +307,7 @@
     ];
     var sol = [
       'b = r · s_y ÷ s_x = ' + f(sh.r, 3) + ' × ' + f(sh.sy, 2) + ' ÷ ' + f(sh.sx, 2) + ' = ' + f(b, db) + '.',
-      'a = ȳ − b x̄ = ' + f(sh.ybar, 2) + ' − (' + f(b, db) + ')(' + f(sh.xbar, 2) + ') = ' + f(a, da) + '.',
+      'a = ȳ − b x̄ = ' + f(sh.ybar, 2) + ' − (' + f(b, db + 1) + ')(' + f(sh.xbar, 2) + ') = ' + f(a, da) + '.',
       'So ŷ = ' + f(a, da) + (b < 0 ? ' − ' : ' + ') + M.fixed(Math.abs(b), db) + 'x. The line passes through (x̄, ȳ).',
       'r² = ' + f(sh.r * sh.r, 3) + ': about ' + pct + '% of the variation in ' + c.y.name + ' is accounted for by the line. s = ' + f(sh.s, 2) + ' ' + c.y.unit + ' is the typical prediction error.'
     ];

@@ -203,7 +203,7 @@
     ], { fixed: true });
     var gen = choiceStep('generalize', 'To whom can the result be generalized?', '4.B', [
       { t: 'To all ' + ctx.population, ok: sampled, why: sampled ? 'The ' + ctx.units + ' were a random sample of ' + ctx.population + ', so the result extends to them.' : 'The ' + ctx.units + ' were not randomly selected from all ' + ctx.population + '.' },
-      { t: 'Only to ' + ctx.units + ' like the ones in the study', ok: !sampled, why: !sampled ? 'Volunteers may differ from the population, so the result is limited to units like these.' : 'Here the units were randomly sampled, so we can go further.' },
+      { t: 'Only to ' + ctx.units + ' like the ones in the study', ok: !sampled, why: !sampled ? 'These ' + ctx.units + ' were not randomly selected, so they may differ from the population: the result is limited to ' + ctx.units + ' like these.' : 'Here the units were randomly sampled, so we can go further.' },
       { t: 'To everyone, because the groups were randomly assigned', ok: false, why: 'Random assignment allows cause and effect, not generalizing.' },
       { t: 'To no one, because the study is too small', ok: false, why: 'Scope depends on how units were chosen, not on size alone.' }
     ], { fixed: true });
@@ -231,7 +231,8 @@
         { t: 'The ' + U + ' with those labels get ' + ctx.tA + '; the other ' + h + ' get ' + ctx.tB + '.', ok: true, why: 'Tie the numbers back to the units and say what everyone else gets.' },
         { t: 'The ' + U + ' with those labels get ' + ctx.tA + '.', ok: false, why: 'Say what the other ' + h + ' get: ' + ctx.tB + '.' },
         { t: 'The researcher decides who gets ' + ctx.tA + ' from the list.', ok: false, why: 'A person choosing undoes the randomization.' },
-        { t: 'The ' + U + ' who want ' + ctx.tA + ' get it.', ok: false, why: 'Letting units choose is not random assignment.' }
+        ctx.human ? { t: 'The ' + U + ' who want ' + ctx.tA + ' get it.', ok: false, why: 'Letting units choose is not random assignment.' }
+          : { t: 'The first ' + h + ' ' + U + ' on the list get ' + ctx.tA + '.', ok: false, why: 'The order of a list is not random: whatever put those ' + U + ' first could also affect ' + ctx.response + '.' }
       ]),
       choiceStep('why', 'Why randomize at all?', '2.B', [
         { t: 'To make the groups roughly alike in other variables, such as ' + ctx.lurk + ', so the treatment can be called the cause', ok: true, why: 'That is the purpose of random assignment.' },

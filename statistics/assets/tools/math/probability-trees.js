@@ -147,11 +147,11 @@
   function genTable(r, ctx){
     var N = pick(r, ctx.totals), pA = between(r, ctx.pA), pBgA = between(r, ctx.pBgA), pBgNA = between(r, ctx.pBgNA);
     var nA = Math.round(N * pA), nAB = Math.round(nA * pBgA), nnAB = Math.round((N - nA) * pBgNA);
-    var indep = r() < 0.3;
+    var indep = !ctx.noIndep && r() < 0.3; // a context where independence would be absurd (a screening test) sets noIndep
     if(indep){
       // an independent table: row and column totals whose product is a
       // multiple of N, every cell positive, as near the drawn shares as can be
-      var nA0 = nA, nB0 = Math.round(N * pBgA), found = null;
+      var nA0 = nA, nB0 = Math.round(N * (pA * pBgA + (1 - pA) * pBgNA)), found = null;
       for(var dA = 0; dA <= 40 && !found; dA++) for(var sA = -1; sA <= 1 && !found; sA += 2){
         var a = nA0 + sA * dA;
         if(a < 2 || a > N - 2) continue;

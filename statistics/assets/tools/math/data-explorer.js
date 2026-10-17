@@ -99,6 +99,7 @@
     }
     throw new Error('dataExplorer: no clear ' + sh + ' data for ' + c.id);
   }
+  function whats(c){ return c.whats || c.what + 's'; } // the variable's plural ("battery lives")
   function list(xs, dp){ return xs.map(function(v){ return M.fixed(v, dp || 0); }).join(', '); }
 
   /* ----------------------------------------------------------- drills */
@@ -142,7 +143,7 @@
     var S = D().summary(xs), sum = xs.reduce(function(a, b){ return a + b; }, 0);
     var listMid = n % 2 ? xs[(n - 1) / 2] : (xs[n / 2 - 1] + xs[n / 2]) / 2;
     var popSd = Math.sqrt(xs.reduce(function(a, v){ return a + (v - S.mean) * (v - S.mean); }, 0) / n);
-    var text = '<p>' + c.lead + ' The ' + c.what + 's (' + c.unit + ') of ' + n + ' ' + c.noun + ' are:</p><p class="dx-list">' + list(xs, c.dp) + '</p>';
+    var text = '<p>' + c.lead + ' The ' + whats(c) + ' (' + c.unit + ') of ' + n + ' ' + c.noun + ' are:</p><p class="dx-list">' + list(xs, c.dp) + '</p>';
     var steps = [
       num('mean', 'The mean, x̄, to 2 decimal places', S.mean, 2, [
         { value: sum / (n - 1), why: 'You divided by n − 1. The mean divides the total by n = ' + n + '; n − 1 belongs to the standard deviation.' },
@@ -174,7 +175,7 @@
     var Dv = rnd(Math.max(c.hi - c.lo, 10) * r.between(0.4, 1.1, 2), c.dp), nx = rnd(mx + Dv, c.dp);
     var ys = xs.slice(); ys[i] = nx;
     var T = D().summary(ys), dMean = T.mean - S.mean, dMed = T.med - S.med;
-    var text = '<p>' + c.lead + ' The ' + c.what + 's (' + c.unit + ') of ' + n + ' ' + c.noun + ' are:</p><p class="dx-list">' + list(xs, c.dp) + '</p>' +
+    var text = '<p>' + c.lead + ' The ' + whats(c) + ' (' + c.unit + ') of ' + n + ' ' + c.noun + ' are:</p><p class="dx-list">' + list(xs, c.dp) + '</p>' +
       '<p>The largest value, ' + u(c, mx) + ', was a typing error: it should be ' + u(c, nx) + '.</p>';
     var sdUp = T.sd > S.sd + 1e-9, iqrSame = Math.abs(T.iqr - S.iqr) < 1e-9;
     var steps = [
@@ -212,7 +213,7 @@
     S = D().summary(xs);
     var ext = hiSide ? S.max : S.min, fence = hiSide ? S.fences[1] : S.fences[0], out = hiSide ? ext > fence : ext < fence;
     var wk = whiskers(S, xs), wEnd = hiSide ? wk[1] : wk[0];
-    var text = '<p>' + c.lead + ' The ' + c.what + 's (' + c.unit + ') of ' + n + ' ' + c.noun + ' are:</p><p class="dx-list">' + list(xs, c.dp) + '</p>';
+    var text = '<p>' + c.lead + ' The ' + whats(c) + ' (' + c.unit + ') of ' + n + ' ' + c.noun + ' are:</p><p class="dx-list">' + list(xs, c.dp) + '</p>';
     var side = hiSide ? 'upper' : 'lower', sgn = hiSide ? '+' : '−';
     var steps = [
       num('q1', 'The first quartile, Q1', S.q1, 1, [{ value: S.med, why: 'That is the median. Q1 is the median of the lower half of the ordered data.' }], { unit: c.unit }),
@@ -249,8 +250,8 @@
       outs.length === 1 ? 'There is one ' + (outs[0] > S.med ? 'high' : 'low') + ' outlier at ' + u(c, outs[0]) + '.' : 'There are ' + outs.length + ' outliers (' + list(sorted(outs), dp) + ' ' + c.unit + ').';
     var shapeW = { right: 'skewed right', left: 'skewed left', sym: 'roughly symmetric' };
     var wrongDir = sh === 'left' ? 'skewed right' : 'skewed left';
-    var good = 'The distribution of ' + c.what + 's is ' + shapeW[sh] + ', with ' + center + ' and ' + spread + '. ' + outTxt;
-    var tailNote = 'The values reach ' + M.fixed(S.max - S.med, dp) + ' ' + c.unit + ' above the median but only ' + M.fixed(S.med - S.min, dp) + ' below it.';
+    var good = 'The distribution of ' + whats(c) + ' is ' + shapeW[sh] + ', with ' + center + ' and ' + spread + '. ' + outTxt;
+    var tailNote = 'The values reach ' + M.fixed(S.max - S.med, dp) + ' ' + c.unit + ' above the median and ' + M.fixed(S.med - S.min, dp) + ' ' + c.unit + ' below it.';
     var gap = S.mean - S.med;
     var steps = [
       choice(r, 'shape', 'What is the shape of the distribution?', [
@@ -263,9 +264,9 @@
         { o: 'They are about the same.', ok: sh === 'sym', w: 'The mean is ' + M.fixed(S.mean, 2) + ' and the median ' + M.fixed(S.med, 1) + ', a difference of ' + M.fixed(Math.abs(gap), 2) + ' (' + M.fixed(Math.abs(gap) / S.sd, 2) + ' SD). ' + (sh === 'sym' ? 'Symmetric data have the mean near the median.' : 'The tail pulls the mean away from the median.') }], true),
       choice(r, 'sentence', 'Which description would earn full credit?', [
         { o: good, ok: true, w: 'Right: shape, center, spread and unusual features, each with a number, in context (the variable and its units).' },
-        { o: 'The distribution is ' + shapeW[sh] + ', with a center of ' + M.fixed(skewed ? S.med : S.mean, 1) + ' and a spread of ' + M.fixed(skewed ? S.iqr : S.sd, 1) + '.', ok: false, w: 'No context: say what was measured (' + c.what + 's) and the units (' + c.unit + '), and mention outliers or say there are none.' },
-        { o: 'The distribution of ' + c.what + 's is ' + wrongDir + ', with ' + center + ' and ' + spread + '. ' + outTxt, ok: false, w: sh === 'sym' ? 'The data are roughly symmetric, not skewed: ' + tailNote : 'Wrong direction. Skew is named for the long tail: ' + tailNote },
-        { o: 'The distribution of ' + c.what + 's is ' + shapeW[sh] + ', with ' + center + ' and a spread from ' + u(c, S.min) + ' to ' + u(c, S.max) + '. ' + outTxt, ok: false, w: 'A spread is one number. The range is max − min = ' + u(c, S.range) + ', not an interval “from … to …”.' }])
+        { o: 'The distribution is ' + shapeW[sh] + ', with a center of ' + M.fixed(skewed ? S.med : S.mean, 1) + ' and a spread of ' + M.fixed(skewed ? S.iqr : S.sd, 1) + '.', ok: false, w: 'No context: say what was measured (' + whats(c) + ') and the units (' + c.unit + '), and mention outliers or say there are none.' },
+        { o: 'The distribution of ' + whats(c) + ' is ' + wrongDir + ', with ' + center + ' and ' + spread + '. ' + outTxt, ok: false, w: sh === 'sym' ? 'The data are roughly symmetric, not skewed: ' + tailNote : 'Wrong direction. Skew is named for the long tail: ' + tailNote },
+        { o: 'The distribution of ' + whats(c) + ' is ' + shapeW[sh] + ', with ' + center + ' and a spread from ' + u(c, S.min) + ' to ' + u(c, S.max) + '. ' + outTxt, ok: false, w: 'A spread is one number. The range is max − min = ' + u(c, S.range) + ', not an interval “from … to …”.' }])
     ];
     var sol = [
       'Shape: ' + shapeW[sh] + '. ' + tailNote,
@@ -273,7 +274,7 @@
       'Spread: SD ' + M.fixed(S.sd, 2) + ', IQR ' + M.fixed(S.iqr, 1) + ' ' + c.unit + '. Fences ' + M.fixed(S.fences[0], 2) + ' and ' + M.fixed(S.fences[1], 2) + '. ' + outTxt,
       'Full credit: ' + good
     ];
-    return { type: 'describe', text: '<p>' + c.lead + ' The dotplot shows the ' + c.what + 's (' + c.unit + ') of ' + n + ' ' + c.noun + '.</p>', steps: steps, solution: sol, data: { values: xs, shape: sh }, figure: figure(xs, c, { hist: true, reveal: { vs: 'center', sentence: 'box' } }) };
+    return { type: 'describe', text: '<p>' + c.lead + ' The dotplot shows the ' + whats(c) + ' (' + c.unit + ') of ' + n + ' ' + c.noun + '.</p>', steps: steps, solution: sol, data: { values: xs, shape: sh }, figure: figure(xs, c, { hist: true, reveal: { vs: 'center', sentence: 'box' } }) };
   }
 
   function gZscore(r, c){
@@ -284,7 +285,7 @@
     var x = r.pick(pool.length ? pool : [a[0], a[a.length - 1]]);
     var zz = (x - m2) / s2, above = zz > 0, two = Math.abs(zz) > 2;
     var name = r.pick(c.names || ['One of them']);
-    var text = '<p>' + c.lead + ' For the ' + c.what + 's of these ' + n + ' ' + c.noun + ', the mean is ' + M.fixed(m2, 2) + ' ' + c.unit + ' and the standard deviation is ' + M.fixed(s2, 2) + ' ' + c.unit + '. ' + name + '’s value is ' + u(c, x) + '.</p>';
+    var text = '<p>' + c.lead + ' For the ' + whats(c) + ' of these ' + n + ' ' + c.noun + ', the mean is ' + M.fixed(m2, 2) + ' ' + c.unit + ' and the standard deviation is ' + M.fixed(s2, 2) + ' ' + c.unit + '. ' + name + '’s value is ' + u(c, x) + '.</p>';
     var zs = M.fixed(Math.abs(zz), 2);
     var steps = [
       num('z', 'The z-score of ' + u(c, x), zz, 2, [

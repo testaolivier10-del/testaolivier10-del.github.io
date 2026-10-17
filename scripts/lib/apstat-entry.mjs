@@ -71,35 +71,35 @@ export function unitSample(ch, ctx) {
    (scripts/test/apstat-exams.test.mjs). */
 const D = String.raw;
 export const EQ = [
-  { id: 'describe', h: 'Describing data', rows: [
+  { id: 'describe', h: 'I. Descriptive statistics', rows: [
     [D`\bar{x} = \frac{1}{n}\sum x_i = \frac{\sum x_i}{n}`, 'The sample mean: add the values and divide by how many there are.', 'The center of quantitative data, when the distribution is roughly symmetric with no outliers.', 'Unit 1', 'summary-statistics', ['data-explorer']],
-    [D`s = \sqrt{\frac{1}{n - 1}\sum \left(x_i - \bar{x}\right)^2}`, 'The sample standard deviation: a typical distance of the values from their mean. Note $n - 1$, not $n$.', 'The spread of quantitative data, alongside the mean.', 'Unit 1', 'summary-statistics', ['data-explorer']],
+    [D`s_x = \sqrt{\frac{1}{n - 1}\sum \left(x_i - \bar{x}\right)^2} = \sqrt{\frac{\sum \left(x_i - \bar{x}\right)^2}{n - 1}}`, 'The sample standard deviation: a typical distance of the values from their mean. Note $n - 1$, not $n$.', 'The spread of quantitative data, alongside the mean.', 'Unit 1', 'summary-statistics', ['data-explorer']],
     [D`\hat{y} = a + bx`, 'A regression line: $a$ is the intercept and $b$ the slope; $\hat{y}$ is a predicted value of the response.', 'Predicting the response from the explanatory variable, inside the range of the data.', 'Unit 5', 'linear-models', ['regression-lab']],
   ] },
-  { id: 'probability', h: 'Probability and random variables', rows: [
+  { id: 'probability', h: 'II. Probability and distributions', rows: [
     [D`P(A \cup B) = P(A) + P(B) - P(A \cap B)`, 'The addition rule: the probability that A or B (or both) happens.', 'Any "or" probability; subtract the overlap so it is not counted twice.', 'Unit 2', 'independence-unions', ['probability-trees']],
     [D`P(A \mid B) = \frac{P(A \cap B)}{P(B)}`, 'Conditional probability: the probability of A given that B happened.', 'A "given" probability, often from one row or column of a two-way table.', 'Unit 2', 'conditional-probability', ['probability-trees']],
     [D`\mu_X = E(X) = \sum x_i \cdot P(x_i)`, 'The mean (expected value) of a discrete random variable: each value weighted by its probability.', 'The long-run average value of a random variable.', 'Unit 2', 'random-variable-parameters'],
     [D`\sigma_X = \sqrt{\sum \left(x_i - \mu_X\right)^2 \cdot P(x_i)}`, 'The standard deviation of a discrete random variable.', 'How much the random variable typically varies from its mean.', 'Unit 2', 'random-variable-parameters'],
-    [D`P(X = x) = \binom{n}{x} p^x (1 - p)^{n - x}`, 'The binomial probability of exactly $x$ successes in $n$ independent trials with success probability $p$.', 'A count of successes in a binomial setting. Name the distribution and its $n$ and $p$ first.', 'Unit 2', 'binomial-distribution', ['distribution-areas']],
+    [D`P(X = x) = \binom{n}{x} p^x (1 - p)^{n - x}`, 'The binomial probability of exactly $x$ successes in $n$ independent trials with success probability $p$, for $x = 0, 1, 2, \ldots, n$.', 'A count of successes in a binomial setting. Name the distribution and its $n$ and $p$ first.', 'Unit 2', 'binomial-distribution', ['distribution-areas']],
     [D`\mu_X = np, \quad \sigma_X = \sqrt{np(1 - p)}`, 'The mean and standard deviation of a binomial random variable.', 'The center and spread of a binomial count, without listing the whole distribution.', 'Unit 2', 'binomial-distribution', ['distribution-areas']],
   ] },
-  { id: 'inference', h: 'Inference in general', rows: [
+  { id: 'inference', h: 'III. Sampling distributions and inferential statistics', rows: [
     [D`\text{standardized test statistic} = \frac{\text{statistic} - \text{parameter}}{\text{standard error of the statistic}}`, 'The shape of every z and t test statistic in the course. In a test, the parameter is its null value.', 'Any significance test: write the general form, then substitute.', 'Unit 3', 'test-one-proportion', ['p-value-explorer']],
     [D`\text{statistic} \pm (\text{critical value})(\text{standard error of the statistic})`, 'The shape of every confidence interval in the course. The product is the margin of error.', 'Any confidence interval: name the procedure, then substitute.', 'Unit 3', 'ci-one-proportion', ['ci-capture']],
     [D`\chi^2 = \sum \frac{(\text{observed} - \text{expected})^2}{\text{expected}}`, 'The chi-square statistic, summed over every cell of a two-way table.', 'Tests for homogeneity or independence. Expected count = row total times column total over the table total.', 'Unit 3', 'chi-square-test', ['chi-square-lab']],
   ] },
-  { id: 'proportions', h: 'Sampling distributions for proportions', rows: [
+  { id: 'proportions', h: 'III (continued). Sampling distributions for proportions', rows: [
     [D`\mu_{\hat{p}} = p, \quad \sigma_{\hat{p}} = \sqrt{\frac{p(1 - p)}{n}}`, 'The center and spread of the sampling distribution of a sample proportion.', 'Probabilities about $\hat{p}$ when $p$ is known, and in a test, where $p$ is the null value $p_0$.', 'Unit 3', 'sampling-dist-proportion', ['sampling-distributions']],
     [D`\text{SE}_{\hat{p}} = \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}`, 'The standard error: the same formula with $\hat{p}$ in place of the unknown $p$.', 'A one-proportion confidence interval (a test uses $p_0$ instead).', 'Unit 3', 'ci-one-proportion', ['ci-capture']],
-    [D`\sigma_{\hat{p}_1 - \hat{p}_2} = \sqrt{\frac{p_1(1 - p_1)}{n_1} + \frac{p_2(1 - p_2)}{n_2}}`, 'The spread of the difference of two independent sample proportions; its mean is $p_1 - p_2$.', 'Probabilities about a difference of sample proportions.', 'Unit 3', 'sampling-dist-two-proportions', ['sampling-distributions']],
+    [D`\mu_{\hat{p}_1 - \hat{p}_2} = p_1 - p_2, \quad \sigma_{\hat{p}_1 - \hat{p}_2} = \sqrt{\frac{p_1(1 - p_1)}{n_1} + \frac{p_2(1 - p_2)}{n_2}}`, 'The center and spread of the sampling distribution of the difference of two independent sample proportions.', 'Probabilities about a difference of sample proportions.', 'Unit 3', 'sampling-dist-two-proportions', ['sampling-distributions']],
     [D`\text{SE}_{\hat{p}_1 - \hat{p}_2} = \sqrt{\frac{\hat{p}_1(1 - \hat{p}_1)}{n_1} + \frac{\hat{p}_2(1 - \hat{p}_2)}{n_2}}`, 'The standard error of a difference of sample proportions.', 'A two-proportion confidence interval.', 'Unit 3', 'ci-two-proportions', ['ci-capture']],
-    [D`\text{SE} = \sqrt{p_c(1 - p_c)\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}, \quad p_c = \frac{n_1\hat{p}_1 + n_2\hat{p}_2}{n_1 + n_2}`, 'The pooled standard error, with $p_c$ the combined proportion of successes in both samples.', 'A two-proportion test, where the null hypothesis says $p_1 = p_2$.', 'Unit 3', 'test-two-proportions-setup', ['p-value-explorer']],
+    [D`\text{SE} = \sqrt{p_c(1 - p_c)\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}, \quad p_c = \frac{n_1\hat{p}_1 + n_2\hat{p}_2}{n_1 + n_2}`, 'The standard error when $p_1 = p_2$ is assumed, with $p_c$ the combined proportion of successes in both samples.', 'A two-proportion test, where the null hypothesis says $p_1 = p_2$.', 'Unit 3', 'test-two-proportions-setup', ['p-value-explorer']],
   ] },
-  { id: 'means', h: 'Sampling distributions for means', rows: [
+  { id: 'means', h: 'III (continued). Sampling distributions for means', rows: [
     [D`\mu_{\bar{x}} = \mu, \quad \sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}`, 'The center and spread of the sampling distribution of a sample mean.', 'Probabilities about $\bar{x}$ when $\mu$ and $\sigma$ are known.', 'Unit 4', 'sampling-dist-mean', ['sampling-distributions']],
     [D`\text{SE}_{\bar{x}} = \frac{s}{\sqrt{n}}`, 'The standard error of a sample mean, with $s$ in place of the unknown $\sigma$.', 'One-sample and paired t intervals and tests (for paired data, $s$ is the SD of the differences).', 'Unit 4', 'ci-one-mean'],
-    [D`\sigma_{\bar{x}_1 - \bar{x}_2} = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}`, 'The spread of the difference of two independent sample means; its mean is $\mu_1 - \mu_2$.', 'Probabilities about a difference of sample means.', 'Unit 4', 'sampling-dist-two-means', ['sampling-distributions']],
+    [D`\mu_{\bar{x}_1 - \bar{x}_2} = \mu_1 - \mu_2, \quad \sigma_{\bar{x}_1 - \bar{x}_2} = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}`, 'The center and spread of the sampling distribution of the difference of two independent sample means.', 'Probabilities about a difference of sample means.', 'Unit 4', 'sampling-dist-two-means', ['sampling-distributions']],
     [D`\text{SE}_{\bar{x}_1 - \bar{x}_2} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}`, 'The standard error of a difference of sample means. It is never pooled.', 'Two-sample t intervals and tests.', 'Unit 4', 'ci-two-means'],
   ] },
 ];
@@ -115,8 +115,8 @@ export const NOT_ON = [
 // How to read the three tables on the sheet (our own generated tables are in the trainers).
 export const TABLES = [
   ['Table A: standard normal probabilities', 'The area to the left of $z$, for $z$ from $-3.4$ to $3.4$ in steps of 0.01. Round $z$ to two decimal places, find the row for the first decimal and the column for the second. For an area to the right, subtract from 1.'],
-  ['Table B: t critical values', 'One row per degrees of freedom (1 to 30, then 40, 50, 60, 80, 100, 1000 and infinity); columns are upper-tail probabilities, with confidence levels along the bottom. When your df is not a row, use the next lower row. A t statistic between two columns gives a range for the p-value.'],
-  ['Table C: chi-square critical values', 'One row per degrees of freedom (1 to 30, then 40 to 100); columns are upper-tail probabilities. A statistic between two columns gives a range for the p-value, such as "between 0.025 and 0.05".'],
+  ['Table B: t critical values', 'One row per degrees of freedom (1 to 30, then 40, 50, 60, 80, 100, 1000 and infinity); columns are upper-tail probabilities from 0.25 to 0.0005, with confidence levels from 50% to 99.9% along the bottom. When your df is not a row, use the next lower row. A t statistic between two columns gives a range for the p-value.'],
+  ['Table C: chi-square critical values', 'One row per degrees of freedom (1 to 30, then 40, 50, 60, 80 and 100); columns are the same upper-tail probabilities as Table B, from 0.25 to 0.0005. A statistic between two columns gives a range for the p-value, such as "between 0.025 and 0.05".'],
 ];
 
 export function entryPages(ctx) {

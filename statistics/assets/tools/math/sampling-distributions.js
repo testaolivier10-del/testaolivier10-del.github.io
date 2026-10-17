@@ -216,10 +216,10 @@
   function genProp(r, c){
     var p = between(r, c.p, 2), n = r.pick(c.ns), se = Math.sqrt(p * (1 - p) / n), a = n * p, b = n * (1 - p), ok = a >= 10 && b >= 10;
     var ph = '\\hat{p}';
-    var text = '<p>' + um(c.lead + ' Suppose $p = ' + t(p, 2) + '$ of ' + c.popAll + ' ' + c.yes + '. A random sample of $n = ' + n + '$ ' + c.who + ' is selected, and $' + ph + '$ is the proportion of the sample who ' + c.yes + '.') + '</p>';
+    var text = '<p>' + um(c.lead + ' Suppose $p = ' + t(p, 2) + '$ of ' + c.popAll + ' ' + c.yes + '. A random sample of $n = ' + n + '$ ' + c.who + ' is selected, and $' + ph + '$ is the proportion of the sample ' + (c.rel || 'who') + ' ' + c.yes + '.') + '</p>';
     var steps = [], sol = [];
     steps.push(num('mean', tx('Mean of the sampling distribution of $' + ph + '$: $\\mu_{' + ph + '} =$'), p, 2, {
-      mistakes: [{ value: 1 - p, why: 'That is the proportion who do not. The center is p, the proportion who ' + c.yes + '.' }] }));
+      mistakes: [{ value: 1 - p, why: 'That is the proportion ' + (c.rel || 'who') + ' do not. The center is p, the proportion ' + (c.rel || 'who') + ' ' + c.yes + '.' }] }));
     steps.push(num('sd', tx('Standard deviation: $\\sigma_{' + ph + '} =$'), se, 4, {
       mistakes: [{ value: Math.sqrt(p * (1 - p)), why: 'That is the spread of single yes or no answers. Divide p(1 − p) by n before the square root.' },
         { value: p * (1 - p) / n, why: 'That is the variance. Take the square root.' },
@@ -381,7 +381,10 @@
     var names = M.shuffle(r, ['P', 'Q', 'R']), sign = r() < 0.5 ? -1 : 1;
     var roles = { best: names[0], wide: names[1], biased: names[2] };
     var spec = {}; spec[roles.best] = { bias: 0, sd: s }; spec[roles.wide] = { bias: 0, sd: 2.3 * s }; spec[roles.biased] = { bias: sign * 2.2 * s, sd: 0.55 * s };
-    var K = 200, q = stream(r), rows = ['P', 'Q', 'R'].map(function(nm){ var o = spec[nm], v = []; for(var i = 0; i < K; i++) v.push(M.normal(q, theta + o.bias, o.sd)); return { name: nm, values: v }; });
+    // Each picture is drawn so its center sits exactly at the statistic's own
+    // center (theta + bias): with 200 draws a chance shift of 3 standard errors
+    // would make an unbiased statistic look biased.
+    var K = 200, q = stream(r), rows = ['P', 'Q', 'R'].map(function(nm){ var o = spec[nm], v = [], m = 0, i; for(i = 0; i < K; i++){ v.push(M.normal(q, theta + o.bias, o.sd)); m += v[i]; } m = m / K - (theta + o.bias); for(i = 0; i < K; i++) v[i] -= m; return { name: nm, values: v }; });
     var Dd = D(), stats = {}; rows.forEach(function(x){ stats[x.name] = { mean: Dd.mean(x.values), sd: Dd.sd(x.values) }; });
     var pair = [roles.best, roles.wide].sort().join(' and ');
     var text = '<p>' + um(c.lead + ' Three statistics, $P$, $Q$ and $R$, are proposed to estimate ' + c.param + '. The picture shows each statistic computed from ' + K + ' random samples; the line marks the true value, ' + c.sym + ' = ' + t(theta, c.d || 0) + '.') + '</p>';

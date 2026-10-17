@@ -35,7 +35,7 @@
   function N(x, d){ var s = F(x, d); return s.charAt(0) === '-' ? '−' + s.slice(1) : s; }
   function A(a){ return a === 0.1 ? '0.10' : String(a); } // α as printed
   function q0(p0){ return String(M.round(1 - p0, 6)); }
-  function P4(p){ return p < 0.0001 ? '0.0000' : F(p, 4); } // shown p-value
+  function P4(p){ return p < 0.00005 ? '0.0000' : F(p, 4); } // drills never ask below 0.00005, so a shown p-value is never 0.0000 // shown p-value
   function pText(p){ return p < 0.0001 ? 'less than 0.0001' : F(p, 4); }
   var HA_TEX = { greater: '>', less: '<', two: '\\ne' };
   var HA_WORD = { greater: 'greater than', less: 'less than', two: 'different from' };
