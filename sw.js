@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v80';
+const CACHE_NAME = 'levlprep-v81';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -304,6 +304,18 @@ function cacheable(res) {
   return !!res && res.status === 200 && res.type === 'basic';
 }
 
+/* The same request, sent past the HTTP cache with a revalidation. A
+   navigation request cannot be copied with new options in every browser
+   (mode "navigate" is not constructible), so it is rebuilt from its URL. */
+function revalidate(req) {
+  try {
+    if (req.mode === 'navigate') return new Request(req.url, { cache: 'no-cache', credentials: 'same-origin', redirect: 'follow' });
+    return new Request(req, { cache: 'no-cache' });
+  } catch (e) {
+    return req;
+  }
+}
+
 function putLater(cacheName, request, res) {
   if (!cacheable(res)) return;
   const copy = res.clone();
@@ -353,7 +365,13 @@ self.addEventListener('fetch', event => {
   }
 
   if(isNetworkFirst){
-    const network = fetch(event.request).then(response => {
+    /* Revalidated with the server every time (cache: 'no-cache': a
+       conditional request, a 304 when nothing changed), never answered from
+       the browser's HTTP cache. GitHub Pages sends max-age=600, so a plain
+       fetch could hand back a page up to ten minutes old, or older from a
+       cache in between, while the same URL with ?v= was current
+       (polish 2026-10-17, A12: /nremt/ showed a retired bank count). */
+    const network = fetch(revalidate(event.request)).then(response => {
       putLater(CACHE_NAME, event.request, response);
       return response;
     });

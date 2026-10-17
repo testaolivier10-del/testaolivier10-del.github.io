@@ -56,7 +56,7 @@ function boot({ fetchImpl, tabs = [] } = {}) {
     registration: { showNotification: async () => {}, pushManager: { getSubscription: async () => null } },
   };
   class Req {
-    constructor(url, init = {}) { this.url = new URL(url, ORIGIN + '/').href; this.cache = init.cache; this.method = 'GET'; this.mode = init.mode || 'cors'; this.headers = new Headers(init.headers || {}); }
+    constructor(url, init = {}) { if (url && typeof url === 'object' && url.url) { init = { mode: url.mode, ...init }; url = url.url; } this.url = new URL(url, ORIGIN + '/').href; this.cache = init.cache; this.method = 'GET'; this.mode = init.mode || 'cors'; this.headers = new Headers(init.headers || {}); }
   }
   const sandbox = { self, caches, fetch: fetchImpl || (async () => new Response('x', { status: 200 })), Request: Req, Response, Headers, URL, Promise, setTimeout, clearTimeout, console };
   vm.createContext(sandbox);
@@ -103,6 +103,19 @@ test('a course shell is warmed on the first visit to that course, once', async (
   assert.equal(seen.filter((u) => u.includes('/ochem/assets/')).length, seen.slice(0, n).filter((u) => u.includes('/ochem/assets/')).length, 'warmed twice');
   await nav('/nremt/practice.html');
   assert.ok(seen.some((u) => u.endsWith('/nremt/assets/questions-core.json')), 'NREMT bank not warmed with its course');
+});
+
+test('pages and scripts are revalidated, never served from the HTTP cache', async () => {
+  const seen = [];
+  const { handlers, Req } = boot({ fetchImpl: async (req) => { seen.push(req); return resp(200); } });
+  for (const [url, mode] of [['/nremt/', 'navigate'], ['/assets/site-chrome.js', 'cors']]) {
+    let response;
+    handlers.fetch({ request: new Req(url, { mode }), respondWith: (p) => { response = p; }, waitUntil: () => {} });
+    assert.equal((await response).status, 200);
+  }
+  const pages = seen.filter((r) => /\/nremt\/$|site-chrome\.js$/.test(r.url));
+  assert.equal(pages.length, 2);
+  assert.ok(pages.every((r) => r.cache === 'no-cache'), 'a page or script could come from the HTTP cache (a stale copy under the plain URL)');
 });
 
 test('install fails only when a page the offline fallback needs is missing', async () => {
