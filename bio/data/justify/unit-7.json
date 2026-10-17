@@ -1,0 +1,100 @@
+{
+ "about": "Justification trainer prompts for Unit 7, Natural Selection (docs/apbio-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u7-insecticide-resistance",
+   "unit": "unit-7",
+   "topic": "natural-selection",
+   "practice": "6.B",
+   "skill": "argument",
+   "title": "Did the insecticide cause resistance?",
+   "context": "<p>Farmers began spraying an insecticide on a field in 2016. Researchers measured the frequency of an allele that makes beetles resistant to it. The 2016 sample was collected and frozen just before the first spraying. Beetles in this population have about one generation per year.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Resistance allele frequency by year\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Year</th><th scope=\"col\">Resistance allele frequency</th></tr></thead><tbody><tr><td>2016 (before spraying)</td><td>0.02</td></tr><tr><td>2018</td><td>0.09</td></tr><tr><td>2020</td><td>0.27</td></tr><tr><td>2022</td><td>0.48</td></tr><tr><td>2024</td><td>0.61</td></tr></tbody></table></div><p>A student claims the insecticide caused resistance mutations in the beetles that were sprayed.</p>",
+   "prompt": "<b>Support</b> or <b>refute</b> the student's claim using evidence from the table and reasoning about natural selection.",
+   "checklist": [
+    "Refutes the claim that the insecticide caused the resistance mutations",
+    "Evidence: the resistance allele was already present, at a frequency of 0.02, in beetles collected before any spraying",
+    "Evidence: the allele frequency rose to 0.61 by 2024, over about 8 generations of spraying",
+    "Reasoning: spraying killed more susceptible beetles, so resistant beetles survived and reproduced more and passed on the allele; mutations arise at random, not because they are needed"
+   ],
+   "earns": {
+    "answer": "The data refute the claim. The resistance allele was already in the population before spraying began: beetles frozen in 2016, before the first spray, had an allele frequency of 0.02. So the insecticide did not create it. After spraying started, the frequency rose to 0.09 in 2018, 0.27 in 2020 and 0.61 in 2024. The insecticide killed more susceptible beetles than resistant ones. Resistant beetles survived and left more offspring, and those offspring inherited the allele. Over about 8 generations of this selection, the allele became more common. Mutations arise at random; the environment selects among the variation already present.",
+    "why": "It uses the key evidence (the allele was present before exposure) plus the trend, and explains the rise with differential survival and reproduction."
+   },
+   "misses": {
+    "answer": "The claim is wrong because the beetles evolved resistance by natural selection, not by mutation.",
+    "why": "It names a process but cites no data, especially the 0.02 frequency before spraying, and does not explain how selection raised the frequency."
+   }
+  },
+  {
+   "id": "u7-hw-chi-square",
+   "unit": "unit-7",
+   "topic": "hardy-weinberg",
+   "practice": "5.C",
+   "skill": "stats",
+   "title": "Is this population at equilibrium?",
+   "context": "<p>A gene in a wildflower population has two alleles, A and a. A survey of 500 plants found 245 AA, 190 Aa and 65 aa. At p = 0.05, the critical value is 3.84 for 1 degree of freedom and 5.99 for 2 degrees of freedom.</p>",
+   "prompt": "<b>Calculate</b> the expected genotype counts under Hardy-Weinberg equilibrium and a chi-square value, and <b>determine</b> whether the population is in equilibrium for this gene.",
+   "checklist": [
+    "Allele frequencies from the counts: p = (2 × 245 + 190) ÷ 1,000 = 0.68 and q = 0.32",
+    "Expected counts: AA = p² × 500 = 231.2, Aa = 2pq × 500 = 217.6, aa = q² × 500 = 51.2",
+    "Chi-square ≈ 8.04 (0.824 + 3.501 + 3.720)",
+    "Compares with the critical value: 8.04 is larger than 3.84 and 5.99, so equilibrium is rejected, with fewer heterozygotes (190 versus 217.6) than expected"
+   ],
+   "earns": {
+    "answer": "There are 1,000 alleles. p = (2 × 245 + 190) ÷ 1,000 = 0.68, so q = 0.32. Expected counts are AA = 0.4624 × 500 = 231.2, Aa = 0.4352 × 500 = 217.6 and aa = 0.1024 × 500 = 51.2. Chi-square = (245 − 231.2)²/231.2 + (190 − 217.6)²/217.6 + (65 − 51.2)²/51.2 = 0.824 + 3.501 + 3.720 ≈ 8.04. This is larger than the critical value with either 1 or 2 degrees of freedom, so I reject the null hypothesis: the population is not in Hardy-Weinberg equilibrium for this gene. It has fewer heterozygotes than expected (190 versus 217.6) and more of both homozygotes.",
+    "why": "It computes allele frequencies from the observed genotypes, shows expected counts and the test, rejects the null correctly and describes the direction of the departure."
+   },
+   "misses": {
+    "answer": "The population is not in equilibrium because the genotypes are not in a 1:2:1 ratio.",
+    "why": "Hardy-Weinberg expected counts come from p² : 2pq : q², not 1:2:1, and no chi-square test is done to judge the size of the difference."
+   }
+  },
+  {
+   "id": "u7-tree-shared-trait",
+   "unit": "unit-7",
+   "topic": "phylogeny",
+   "practice": "2.B",
+   "skill": "models",
+   "title": "Reading relatedness from a tree",
+   "context": "<p>A phylogenetic tree of four beetle species, W, X, Y and Z, built from DNA sequences, shows this branching order: Z splits off first from the common ancestor of all four. Next, W splits from the lineage leading to X and Y. Last, X and Y split from each other. Species Z, W and X all have hind wings; species Y has none.</p><p>A student claims that X is more closely related to W than to Y, because X and W both have hind wings.</p>",
+   "prompt": "<b>Use</b> the tree to <b>evaluate</b> the student's claim.",
+   "checklist": [
+    "Says relatedness is read from the most recent common ancestor (the branch points), not from shared traits",
+    "Says X and Y share a common ancestor that W does not share, so X is more closely related to Y; the claim is wrong",
+    "Explains the shared wings: hind wings are also in Z, so they were most likely present in the common ancestor of all four and lost in the lineage leading to Y"
+   ],
+   "earns": {
+    "answer": "The claim is wrong. On a tree, how closely two species are related depends on how recently they shared a common ancestor. X and Y split from each other last, so they share a common ancestor that W does not. X is therefore more closely related to Y than to W. Shared hind wings do not show close relationship here. Z, which split off first, also has hind wings, so hind wings were most likely present in the common ancestor of all four species. W and X kept this ancestral trait, and hind wings were lost in the lineage leading to Y after it split from X.",
+    "why": "It uses the branch points of the tree to judge relatedness and explains the trait pattern with the tree instead of letting the trait decide."
+   },
+   "misses": {
+    "answer": "The claim is wrong because the tree is based on DNA, and DNA is more accurate than traits like wings.",
+    "why": "It does not read the tree: no most recent common ancestor, no explanation of why W and X share wings while Y lacks them."
+   }
+  },
+  {
+   "id": "u7-frog-call-speciation",
+   "unit": "unit-7",
+   "topic": "speciation",
+   "practice": "1.C",
+   "skill": "mechanism",
+   "title": "From a barrier to separate species",
+   "context": "<p>A tree frog population was split by a mountain ridge that formed about a million years ago. Today, males on the east side call at about 32 pulses per second and males on the west side at about 51 pulses per second. In playback trials, east-side females moved toward the east-side call in 18 of 20 trials, and west-side females moved toward the west-side call in 17 of 20 trials. In a small area where the two groups now meet, almost no hybrids are found.</p>",
+   "prompt": "<b>Explain</b> how the separation by the ridge could have led to reproductive isolation between the two groups of frogs.",
+   "checklist": [
+    "Says the ridge blocked gene flow between the two populations",
+    "Says each population changed independently: different mutations arose, and natural selection and genetic drift changed allele frequencies differently on each side",
+    "Links the divergence to the different calls (32 versus 51 pulses per second) and to females preferring their own population's call",
+    "Names behavioral isolation, a prezygotic barrier, that keeps the groups from interbreeding even where they meet"
+   ],
+   "earns": {
+    "answer": "The ridge blocked gene flow, so alleles could no longer move between the east and west populations. Each population then changed on its own. Different mutations arose on each side, natural selection acted on them under different conditions, and genetic drift changed allele frequencies at random. Over about a million years, genes that affect calling and call preference diverged. East-side males now call at about 32 pulses per second and west-side males at about 51, and females chose their own population's call in 18 of 20 trials (east) and 17 of 20 trials (west). Because females respond mostly to their own population's call, the groups rarely mate even where they meet. This behavioral isolation is a prezygotic barrier, so the two groups are now reproductively isolated.",
+    "why": "It gives the full chain: no gene flow, independent change by mutation, selection and drift, then a behavioral barrier, tied to the data."
+   },
+   "misses": {
+    "answer": "The ridge separated the frogs, so they became different species with different calls.",
+    "why": "It restates the outcome. It does not say that gene flow stopped, what made the populations diverge or how the calls block interbreeding."
+   }
+  }
+ ]
+}

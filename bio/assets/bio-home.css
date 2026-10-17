@@ -102,3 +102,18 @@
   .bio-tool-chips{justify-content:center;}
 }
 @media (max-width:560px){.bio-feature .icon-circle,.bio-feature .icon-circle svg{width:120px;height:120px;}}
+
+/* Practice and study (polish 2026-10-17, C2): fixed columns so no card sits
+   alone on the last row. 4 across: with 4n+1 cards the first spans two. 2
+   across: with an odd count the first spans two. 1 across on phones. */
+.bio-go{grid-template-columns:repeat(4,minmax(0,1fr));}
+.bio-go > li:first-child:nth-last-child(4n+1){grid-column:span 2;}
+@media (max-width:1000px){
+  .bio-go{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .bio-go > li:first-child:nth-last-child(4n+1){grid-column:auto;}
+  .bio-go > li:first-child:nth-last-child(odd){grid-column:span 2;}
+}
+@media (max-width:560px){
+  .bio-go{grid-template-columns:minmax(0,1fr);}
+  .bio-go > li:first-child:nth-last-child(odd){grid-column:auto;}
+}

@@ -25,6 +25,8 @@
   function renderHero(){
     if(HP){
       var info = HP.levelInfo('apcalc');
+      // Zeros say nothing to a new visitor: the card shows what it tracks until the first XP (polish 2026-10-17, B10).
+      el('calcLevel').toggleAttribute('data-lv-zero', !(info.total > 0));
       el('calcLvRing').textContent = 'L' + info.level;
       el('calcLvTitle').textContent = info.title;
       el('calcLvSub').textContent = 'Level ' + info.level + ' · ' + info.total + ' XP';

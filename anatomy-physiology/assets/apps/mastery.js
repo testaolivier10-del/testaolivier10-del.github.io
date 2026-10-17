@@ -105,7 +105,7 @@
        stay free, spec decision 72) --- */
     if(!isNew){
       html += H.panel({ id: 'anp-db-weak', title: 'Weakest topics', body: weak.length ? weak.map(function(w){
-          return bar({ label: w.title, href: BASE + 'lessons/' + w.id + '.html', value: w.value, tier: T(w.value, w.answered), note: plural(w.answered, 'item') + ' answered',
+          return bar({ label: w.title, href: BASE + 'lessons/' + w.id + '.html', value: w.value, tier: T(w.value, w.answered), note: plural(w.answered, 'item') + ' answered &middot; <a href="' + esc(BASE + 'notes/' + w.id + '.html') + '">notes</a>',
             action: action(BASE + 'practice.html?topic=' + encodeURIComponent(w.id), 'Practice') });
         }).join('') : '<p class="cx-emptynote">Answer a few questions and your weakest topics show up here.</p>' });
     }
@@ -120,18 +120,18 @@
     var chapters = CU.chapters.filter(function(ch){ return builtTopics.some(function(t){ return t.chapter === ch.id; }); });
     html += H.panel({ id: 'anp-db-ch', title: 'Mastery by chapter and topic',
       hint: 'Mastery counts distinct questions you have right, weighted by level and fading slowly if you do not revisit them. Untouched topics count as zero.',
-      body: chapters.map(function(ch){
+      body: H.groups(chapters.map(function(ch){
         var m = A.chapterMastery(ch.id);
         var ts = builtTopics.filter(function(t){ return t.chapter === ch.id; });
         var st = ts.filter(function(t){ return A.topicMastery(t.id).answered; }).length;
-        return H.group({ label: ch.n + '. ' + ch.title, value: m.value, tier: T(m.value, m.answered), note: st + ' of ' + plural(ts.length, 'topic') + ' started' },
+        return { started: m.answered > 0, html: H.group({ label: ch.n + '. ' + ch.title, value: m.value, tier: T(m.value, m.answered), note: st + ' of ' + plural(ts.length, 'topic') + ' started' },
           ts.map(function(t){
             var tm = A.topicMastery(t.id);
             return bar({ label: t.n + '. ' + t.title, href: BASE + 'lessons/' + t.id + '.html', value: tm.value, tier: T(tm.value, tm.answered),
               note: tm.answered ? plural(tm.answered, 'item') + ' answered' : (store.lessons[t.id] ? 'Lesson finished' : 'Not started'),
               action: action(BASE + 'practice.html?topic=' + encodeURIComponent(t.id), 'Practice') });
-          }).join(''));
-      }).join('') });
+          }).join('')) };
+      }), 'chapter') });
 
     html += '</div><div class="cx-db-col">';
 
@@ -174,7 +174,7 @@
       target: function(days){
         var left = builtTopics.filter(function(t){ return A.topicMastery(t.id).value < 0.6; }).length;
         if(!left) return { done: 'Every built topic is at strong or better. Keep Review clear and take a cumulative exam.' };
-        return { n: Math.ceil(left / days), unit: left === 1 ? 'topic' : 'topics', why: 'brought to strong covers the ' + left + ' not there yet' };
+        return { n: Math.ceil(left / days), unit: 'topics', one: 'topic', why: 'brought to strong covers the ' + left + ' not there yet' };
       }
     });
   }

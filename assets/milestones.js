@@ -353,19 +353,43 @@
     '</li>';
   }
 
+  /* The line under the heading. "0 of 1 earned" read as a score with
+     nothing in it (polish 2026-10-17, B9), so before the first one it names
+     what to aim for, and after it counts up toward the rest. */
+  // Unearned milestones nearest to done first (share of lessons finished).
+  function closest(todo){
+    return todo.slice().sort(function(a, b){
+      var pa = a.total ? a.done / a.total : 0, pb = b.total ? b.done / b.total : 0;
+      return pb - pa;
+    });
+  }
+  function summary(got, todo){
+    var cert = 'printable certificate of completion';
+    if(!got.length){
+      if(todo.length === 1) return 'One to earn so far. It comes with a ' + cert + '.';
+      return 'None earned yet. Each comes with a ' + cert + '; the closest are listed below.';
+    }
+    if(!todo.length) return 'All ' + got.length + ' earned in this browser. Every one has a ' + cert + '.';
+    return got.length + ' earned in this browser, ' + todo.length + ' still to go.';
+  }
+
   function renderList(el, course){
     if(!el) return;
     ensure(course).then(function(){
       var items = list(course);
       var got = items.filter(function(m){ return m.earned; });
       var todo = items.filter(function(m){ return !m.earned; });
+      // Before the first one, the nearest three are shown open and the rest
+      // fold away under "Still to earn".
+      var first = !got.length && todo.length > 4;
+      if(first) todo = closest(todo);
       el.innerHTML = '<section class="levl-ms" aria-labelledby="levlMsH">' +
         '<h2 class="levl-ms__h" id="levlMsH">Milestones and certificates</h2>' +
-        '<p class="levl-ms__sum">' + got.length + ' of ' + items.length + ' earned in this browser.' +
-          (got.length ? '' : ' Each one comes with a printable certificate of completion.') + '</p>' +
+        '<p class="levl-ms__sum">' + summary(got, todo) + '</p>' +
         (got.length ? '<ul class="levl-ms__list">' + got.map(function(m){ return row(m, course); }).join('') + '</ul>' : '') +
+        (!got.length && todo.length > 4 ? '<ul class="levl-ms__list">' + todo.slice(0, 3).map(function(m){ return row(m, course); }).join('') + '</ul>' : '') +
         (todo.length ? (got.length || todo.length > 4
-          ? '<details class="levl-ms__more"><summary>Still to earn (' + todo.length + ')</summary><ul class="levl-ms__list">' + todo.map(function(m){ return row(m, course); }).join('') + '</ul></details>'
+          ? '<details class="levl-ms__more"><summary>' + (first ? 'More to earn' : 'Still to earn') + ' (' + (first ? todo.length - 3 : todo.length) + ')</summary><ul class="levl-ms__list">' + (first ? todo.slice(3) : todo).map(function(m){ return row(m, course); }).join('') + '</ul></details>'
           : '<ul class="levl-ms__list">' + todo.map(function(m){ return row(m, course); }).join('') + '</ul>') : '') +
       '</section>';
     }, function(){ /* offline and the map would not load: leave the slot empty */ });

@@ -61,23 +61,28 @@
     background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);
     display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;color:#fff;
   }
-  .feature-card .icon-circle{
-    width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.12);
-    display:flex;align-items:center;justify-content:center;margin:0 auto;
+  /* The body map's own anatomy render (nremt/assets/body-figs), cropped to
+     the head and trunk on a light panel so the organs read on the navy. */
+  .feature-card .feature-art{
+    width:min(100%,300px);height:250px;border-radius:18px;margin:0 auto;overflow:hidden;
+    background:radial-gradient(circle at 50% 35%,#FFFFFF 0%,#E7F1EE 70%);
   }
+  .feature-card .feature-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 4%;transform:scale(1.35);transform-origin:50% 0;}
+  .feature-card .feature-credit{font-size:11.5px;font-weight:600;opacity:.7;margin:16px 0 0;max-width:46ch;}
+  .feature-card .feature-credit a{color:inherit;}
   .feature-card h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
   .feature-card p{opacity:.85;font-size:15px;font-weight:600;margin:0 0 20px;max-width:38ch;}
 
   /* Sample-question section. */
   .sample-row{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(28px,4vw,48px);align-items:center;}
-  .sample-list{display:flex;flex-direction:column;gap:14px;}
-  .sample-list .row{
-    display:flex;align-items:center;gap:12px;font-weight:800;font-size:14.5px;
-    padding:12px 16px;background:var(--white);border:var(--bw) solid var(--line);border-radius:14px;
-  }
-  .sample-list .row .n{
-    width:26px;height:26px;border-radius:8px;background:var(--tint-accent);color:var(--accent);
-    display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);flex-shrink:0;
+  /* A legend of the item types, not controls: plain text, no card or
+     border, so nothing here looks pressable (polish 2026-10-17, B5). */
+  .sample-legend-h{font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;}
+  .sample-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+  .sample-list li{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;color:var(--ink-2,var(--ink));}
+  .sample-list .n{
+    width:22px;height:22px;border-radius:6px;color:var(--accent-text);box-shadow:inset 0 0 0 1.5px var(--line);
+    display:flex;align-items:center;justify-content:center;font:800 11px var(--font-mono);flex-shrink:0;
   }
   .qcard{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--lift-lg);}
   .qcard .qtext{font-weight:800;font-size:16px;margin:14px 0 18px;line-height:1.5;}
@@ -182,7 +187,8 @@
 
       <!-- Live progress card. Rendered from localStorage by the script below;
            this markup is the signed-out / brand-new-user state. -->
-      <div class="progress-card">
+      <div class="progress-card" id="heroProgress" data-lv-zero>
+        <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
         <div class="progress-card__top">
           <div class="level-chip">
             <div class="level-ring" id="heroLevelRing">L1</div>
@@ -273,14 +279,8 @@
 
       <div class="side-rail" id="sideRail">
         <div class="tip-card">
-          <div class="k">Or go short</div>
-          <div class="v">A 20-question domain drill</div>
-          <div class="s">Short, focused, with each answer checked as you go. Your weakest topics show up on the dashboard once you've answered a few.</div>
-          <div style="margin-top:14px"><a href="practice.html" class="btn-press alt sm">Start a drill</a></div>
-        </div>
-        <div class="tip-card">
-          <div class="k">Or go long</div>
-          <div class="v">100-question timed exam</div>
+          <div class="k">Ready for the full length?</div>
+          <div class="v"><a href="exams.html">100-question timed exam</a></div>
           <div class="s">Full-length, exam-paced, scored by domain when you finish.</div>
         </div>
         <div class="tip-card">
@@ -294,16 +294,14 @@
 
   <div class="xsection">
     <div class="feature-card">
-      <div class="icon-circle">
-        <svg width="56" height="70" viewBox="0 0 56 70" fill="none" aria-hidden="true">
-          <circle cx="28" cy="12" r="9" stroke="#fff" stroke-opacity=".9" stroke-width="2.5"/>
-          <path d="M28 21v24M28 30l-12 7M28 30l12 7M28 45l-7 21M28 45l7 21" stroke="#fff" stroke-opacity=".9" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
+      <div class="feature-art">
+        <img src="assets/body-figs/adult-front-anat.webp" alt="" width="480" height="1200" loading="lazy" decoding="async">
       </div>
       <div>
         <h2>Learn the anatomy by pointing at it.</h2>
         <p>A 3D body map and a sound trainer, plus twenty-five branching scenarios with Premium.</p>
         <a href="body-map.html" class="btn-press alt">Open the body map</a>
+        <p class="feature-credit">Figure from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a> &copy; 2008 Life Science Integrated Database Center, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 JP</a>.</p>
       </div>
     </div>
   </div>
@@ -313,11 +311,12 @@
       <div>
         <h2 style="margin-top:0">Try one.</h2>
         <p class="section-lede" style="margin:0 0 24px;text-align:left">A sample from the practice bank. Pick an answer to check it.</p>
-        <div class="sample-list">
-          <div class="row"><span class="n">A</span> Single best answer</div>
-          <div class="row"><span class="n">N</span> Select N (the item says how many)</div>
-          <div class="row"><span class="n">S</span> Build list (put steps in order)</div>
-        </div>
+        <p class="sample-legend-h">Question types in the bank</p>
+        <ul class="sample-list">
+          <li><span class="n" aria-hidden="true">A</span> Single best answer</li>
+          <li><span class="n" aria-hidden="true">N</span> Select N (the item says how many)</li>
+          <li><span class="n" aria-hidden="true">S</span> Build list (put steps in order)</li>
+        </ul>
         <p class="sample-note">The real exam also uses drag-and-drop sorting and options-table items. This site does not simulate those two yet; its build-list items use move-up and move-down buttons rather than dragging.</p>
       </div>
       <div class="qcard" id="sampleCard">
@@ -336,11 +335,17 @@
 
   <div class="xsection">
     <div class="trust-row">
-      <div class="trust-pill">Free, no account</div>
+      <div class="trust-pill">Free to start</div>
       <div class="trust-pill">Works offline</div>
       <div class="trust-pill">Private by default</div>
     </div>
-    <p class="disclaimer">Independent study aid. Not affiliated with or endorsed by the National Registry of Emergency Medical Technicians. <a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+  </div>
+
+  <div class="xsection">
+    <footer style="margin-top:0">
+      <p>Independent study aid. Not affiliated with or endorsed by the National Registry of Emergency Medical Technicians.</p>
+      <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </footer>
   </div>
 
 </div>
@@ -384,6 +389,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var level = XP.levelForXp(state.total);
     var prev = XP.xpForLevel(level), next = XP.xpForLevel(level + 1);
     var into = state.total - prev, span = Math.max(1, next - prev);
+    document.getElementById('heroProgress').toggleAttribute('data-lv-zero', !(state.total > 0));
     document.getElementById('heroLevelRing').textContent = 'L' + level;
     document.getElementById('heroLevelTitle').textContent = XP.titleForLevel(level);
     document.getElementById('heroLevelSub').textContent = 'Level ' + level + ' \u00b7 ' + state.total + ' XP';

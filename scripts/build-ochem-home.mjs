@@ -15,7 +15,9 @@
        inside the #modulePath div (one .node per chapter, numbered);
      - the "teaches" array and the "syllabusSections" array of the Course
        object in the page's JSON-LD script. The rest of that script is left
-       exactly as written.
+       exactly as written;
+     - the "Try a step" question between <!-- sample:start --> and
+       <!-- sample:end -->, read from ochem/assets/practice-bank.json.
 
      node scripts/build-ochem-home.mjs            rewrite
      node scripts/build-ochem-home.mjs --check    fail if the page is stale (CI)
@@ -58,6 +60,35 @@ const nodes = MODULES.map((m, i) =>
   `      </a>`
 ).join('\n');
 html = html.slice(0, a + START.length) + '\n' + nodes + '\n      ' + html.slice(b);
+
+/* ---- the "Try a step" card (polish 2026-10-17, C5) ----------------------
+   One real question from the practice bank (a free chapter, Curved arrows),
+   found by its stem so a bank edit that drops it fails here instead of the
+   page keeping a stale copy. ochem-home.js grades it in place; without
+   JavaScript the answer sits in a "Show the answer" disclosure. */
+const SAMPLE = { topic: 'curved-arrows', stem: 'A proposed step has one curved arrow: from a lone pair on hydroxide' };
+{
+  const bank = JSON.parse(readFileSync(join(ROOT, 'ochem', 'assets', 'practice-bank.json'), 'utf8'));
+  const q = (bank[SAMPLE.topic] || []).find((x) => x.type === 'mcq' && x.q.startsWith(SAMPLE.stem));
+  if (!q) { console.error(`ochem/index.html: the sample question ("${SAMPLE.stem}...") is no longer in the ${SAMPLE.topic} bank. Pick another in scripts/build-ochem-home.mjs.`); process.exit(1); }
+  const mod = MODULES.find((m) => m.topics.some((t) => t.id === SAMPLE.topic));
+  const topic = mod.topics.find((t) => t.id === SAMPLE.topic);
+  const card =
+    `      <div class="mechcard" id="ochemSample" data-correct="${q.correct}">\n` +
+    `        <span class="tag domain">${esc(mod.title)}</span> <span class="tag diff">${esc(topic.title)}</span>\n` +
+    `        <p class="qtext" id="ochemSampleQ">${esc(q.q)}</p>\n` +
+    `        <div role="group" aria-labelledby="ochemSampleQ">\n` +
+    q.options.map((o, i) => `          <button type="button" class="qopt" data-i="${i}"><span class="letter">${'ABCDEFG'[i]}</span> ${esc(o)}</button>\n`).join('') +
+    `        </div>\n` +
+    `        <p class="why" id="ochemSampleWhy" aria-live="polite"></p>\n` +
+    `        <details class="sample-key"><summary>Show the answer</summary><p><b>${esc(q.options[q.correct])}</b> ${esc(q.why || '')}</p></details>\n` +
+    `        <p class="sample-more"><a class="link-quiet" href="${topic.href}">Open the free lesson on ${esc(topic.title.toLowerCase())} &rarr;</a></p>\n` +
+    `      </div>\n`;
+  const SA = '<!-- sample:start -->', SB = '<!-- sample:end -->';
+  const i = html.indexOf(SA), j = html.indexOf(SB);
+  if (i === -1 || j === -1 || j < i) { console.error(`ochem/index.html: expected ${SA} … ${SB} in #sample.`); process.exit(1); }
+  html = html.slice(0, i + SA.length) + '\n' + card + '      ' + html.slice(j);
+}
 
 /* ---- the JSON-LD course ----------------------------------------------- */
 const sOpen = html.indexOf('<script type="application/ld+json">');

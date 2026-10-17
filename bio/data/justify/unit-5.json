@@ -1,0 +1,99 @@
+{
+ "about": "Justification trainer prompts for Unit 5, Heredity (docs/apbio-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u5-gamete-variety",
+   "unit": "unit-5",
+   "topic": "meiosis-genetic-diversity",
+   "practice": "1.B",
+   "skill": "mechanism",
+   "title": "More than eight kinds of gametes",
+   "context": "<p>An animal has a diploid number of 2n = 6, so its cells hold three pairs of homologous chromosomes. In each pair, one chromosome came from its mother and one from its father, and the two carry different alleles of many genes. A student says this animal can make only 2³ = 8 genetically different kinds of gametes.</p>",
+   "prompt": "<b>Explain</b> how meiosis produces genetically different gametes in this animal, and why the number of kinds is much larger than 8.",
+   "checklist": [
+    "Independent assortment: in metaphase I each homologous pair lines up independently of the others, giving 2³ = 8 combinations of whole chromosomes",
+    "Crossing over: in prophase I nonsister chromatids of homologous chromosomes exchange segments, making chromosomes with new combinations of alleles",
+    "Says crossing over can happen at different places in each meiosis, so the gametes are not limited to the 8 combinations of whole chromosomes"
+   ],
+   "earns": {
+    "answer": "In metaphase I, each pair of homologous chromosomes lines up at the middle of the cell independently of the other pairs. Which chromosome of a pair goes to which pole is random, so with three pairs there are 2³ = 8 combinations of whole maternal and paternal chromosomes. This is independent assortment. Earlier, in prophase I, nonsister chromatids of homologous chromosomes exchange segments by crossing over. Each recombinant chromatid carries some maternal and some paternal alleles. Crossovers can occur at different places in each meiosis, so the chromosomes in gametes are new mixtures, and the number of kinds of gametes is far larger than 8.",
+    "why": "It names both sources of variation, places each in its stage of meiosis, and says why crossing over breaks the limit of 8."
+   },
+   "misses": {
+    "answer": "Meiosis shuffles the chromosomes, and crossing over also happens, so there are more than 8 kinds.",
+    "why": "It names the processes but explains neither: how pairs line up in metaphase I or how crossing over makes new allele combinations."
+   }
+  },
+  {
+   "id": "u5-dihybrid-chi-square",
+   "unit": "unit-5",
+   "topic": "mendelian-genetics",
+   "practice": "5.C",
+   "skill": "stats",
+   "title": "Testing a 9:3:3:1 ratio",
+   "context": "<p>In a plant, purple flowers (P) are dominant to white (p), and tall stems (T) are dominant to short (t). Two plants with genotype PpTt are crossed, giving 320 offspring.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Offspring phenotypes from a PpTt cross\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Phenotype</th><th scope=\"col\">Observed (plants)</th></tr></thead><tbody><tr><td>Purple, tall</td><td>172</td></tr><tr><td>Purple, short</td><td>66</td></tr><tr><td>White, tall</td><td>61</td></tr><tr><td>White, short</td><td>21</td></tr></tbody></table></div><p>The critical value for 3 degrees of freedom at p = 0.05 is 7.81.</p>",
+   "prompt": "<b>Calculate</b> the chi-square value and <b>determine</b> whether the data support the hypothesis that the two genes assort independently.",
+   "checklist": [
+    "Expected counts from 9:3:3:1 of 320: 180, 60, 60 and 20 plants",
+    "Chi-square ≈ 1.02, with 3 degrees of freedom (4 classes minus 1)",
+    "Compares 1.02 with 7.81: fails to reject the null hypothesis, so the differences can be explained by chance and the data fit independent assortment"
+   ],
+   "earns": {
+    "answer": "For independent assortment the null hypothesis predicts a 9:3:3:1 ratio. Of 320 plants, the expected counts are 180, 60, 60 and 20. Chi-square = (172 − 180)²/180 + (66 − 60)²/60 + (61 − 60)²/60 + (21 − 20)²/20 = 0.356 + 0.600 + 0.017 + 0.050 ≈ 1.02. There are 4 classes, so 3 degrees of freedom. Since 1.02 is less than the critical value 7.81, I fail to reject the null hypothesis. The differences between observed and expected counts are small enough to be explained by chance, so the data support independent assortment.",
+    "why": "It shows the expected counts, the calculation and the degrees of freedom, compares with the critical value and states what failing to reject means."
+   },
+   "misses": {
+    "answer": "The observed numbers are not exactly 9:3:3:1, so the genes do not assort independently.",
+    "why": "Random chance always makes counts differ a little. Without a chi-square test, the answer cannot judge whether the difference is too large to be chance."
+   }
+  },
+  {
+   "id": "u5-linked-genes-testcross",
+   "unit": "unit-5",
+   "topic": "non-mendelian-genetics",
+   "practice": "6.B",
+   "skill": "argument",
+   "title": "Are these genes on different chromosomes?",
+   "context": "<p>In a beetle, shiny shell (S) is dominant to dull (s), and long antennae (L) are dominant to short (l). A female that inherited S and L from one parent and s and l from the other is crossed with a dull, short male (ssll). The cross gives 1,000 offspring.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Testcross offspring by phenotype\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Phenotype</th><th scope=\"col\">Offspring</th></tr></thead><tbody><tr><td>Shiny, long</td><td>412</td></tr><tr><td>Dull, short</td><td>418</td></tr><tr><td>Shiny, short</td><td>87</td></tr><tr><td>Dull, long</td><td>83</td></tr></tbody></table></div><p>A student claims the two genes are on different chromosomes.</p>",
+   "prompt": "<b>Support</b> or <b>refute</b> the student's claim using the data and reasoning about how chromosomes are inherited.",
+   "checklist": [
+    "Refutes the claim that the two genes are on different chromosomes",
+    "Says genes on different chromosomes would give about 250 of each class (1:1:1:1), but the parental classes are 412 and 418 and the new combinations only 87 and 83",
+    "Reasons that the genes are linked on one chromosome, so their alleles are inherited together unless crossing over occurs between them",
+    "Uses the recombinant offspring: 170 of 1,000, or 17%, come from crossing over between the two genes"
+   ],
+   "earns": {
+    "answer": "The data refute the claim. If the genes were on different chromosomes, they would assort independently and the testcross would give about 250 offspring in each of the four classes. Instead, the two parental combinations, shiny long (412) and dull short (418), make up 830 of 1,000 offspring, while the new combinations total only 170. This means the genes are linked: S and L sit on one chromosome and s and l on its homolog, so they are usually inherited together. The 170 recombinant offspring, 17%, come from crossing over between the two genes during meiosis in the female.",
+    "why": "It compares the observed counts with what independent assortment predicts, and explains both the excess of parental types and the recombinants."
+   },
+   "misses": {
+    "answer": "The claim is wrong because the four groups are not equal, so the genes must be linked.",
+    "why": "It gives no counts or expected values and does not explain why linked genes give mostly parental types or where the recombinants come from."
+   }
+  },
+  {
+   "id": "u5-flower-color-temperature",
+   "unit": "unit-5",
+   "topic": "environment-phenotype",
+   "practice": "3.C",
+   "skill": "design",
+   "title": "Temperature and flower color",
+   "context": "<p>Researchers took 40 cuttings from one parent plant and grew them into new plants. They grew 20 at 15 °C and 20 at 30 °C, with the same light, soil, pot size and watering. At 15 °C, 18 plants had red flowers and 2 had pink flowers. At 30 °C, 19 had white flowers and 1 had red flowers.</p>",
+   "prompt": "<b>Identify</b> the independent and dependent variables, <b>explain</b> why the researchers used cuttings from a single parent plant, and <b>state</b> what the results show about genotype and phenotype.",
+   "checklist": [
+    "Independent variable: growing temperature (15 °C or 30 °C)",
+    "Dependent variable: flower color, counted as the number of plants with red, pink or white flowers",
+    "Says cuttings from one parent are genetically identical, so differences in genotype are ruled out as a cause of the color difference",
+    "Concludes the color difference is an effect of the environment on the phenotype, since light, soil and water were held constant"
+   ],
+   "earns": {
+    "answer": "The independent variable is the growing temperature, 15 °C or 30 °C. The dependent variable is flower color, counted as the number of plants with each color. Cuttings from one parent plant are genetically identical, so all 40 plants have the same genotype. This rules out genetic differences as the cause of the color difference. Light, soil, pot size and watering were also the same. So the change from mostly red flowers at 15 °C (18 of 20) to mostly white flowers at 30 °C (19 of 20) shows that temperature changes the phenotype produced by one genotype.",
+    "why": "It names each variable and how it was measured, and says what the identical genotype rules out and what conclusion that allows."
+   },
+   "misses": {
+    "answer": "The independent variable is the plants and the dependent variable is the color. Cuttings were used so the plants would be the same.",
+    "why": "The plants are not the variable that was changed, and \"the same\" does not say that genotype is the alternative cause being ruled out."
+   }
+  }
+ ]
+}
