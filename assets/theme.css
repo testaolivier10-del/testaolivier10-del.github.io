@@ -1451,6 +1451,13 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 }
 @keyframes levl-floatup{0%{transform:translate(0,0) scale(1);opacity:1}70%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.6);opacity:0}}
 .levl-pulse{animation:levl-pulse .6s cubic-bezier(.2,.8,.3,1.4);}
+/* The same gain, still: reduced motion, or no level badge on the page. */
+.levl-xp-still{
+  position:fixed;z-index:80;pointer-events:none;opacity:0;
+  font:600 13.5px var(--font-mono);color:var(--accent-text);background:var(--tint-accent);
+  padding:5px 11px;border-radius:var(--radius-pill);box-shadow:var(--lift);transition:opacity .2s ease;
+}
+.levl-xp-still.show{opacity:1;}
 @keyframes levl-pulse{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
 /* Level-up toast, anchored just under the header so it never lands on the
    answer or explanation the student is reading (audit 2026-10). */
