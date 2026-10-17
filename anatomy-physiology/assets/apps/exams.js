@@ -479,7 +479,7 @@
         '<button type="button" class="btn-press anp-ex-next">Next</button>' +
         '<button type="button" class="btn-outline anp-ex-finish">Finish exam</button>' +
       '</div>' +
-      '<div class="anp-ex-confirm" hidden role="alertdialog" aria-labelledby="anp-ex-confirm-t"><p id="anp-ex-confirm-t"></p>' +
+      '<div class="anp-ex-confirm" hidden role="alertdialog" aria-labelledby="anp-ex-confirm-t"><p id="anp-ex-confirm-t"></p><div class="cx-flaglist" hidden></div>' +
         '<button type="button" class="btn-press anp-ex-yes">Finish now</button> <button type="button" class="btn-outline anp-ex-no">Keep working</button></div>' +
     '</div>';
     app.querySelector('.anp-ex-nav').addEventListener('click', function(e){ var b = e.target.closest('[data-go]'); if(b) go(+b.getAttribute('data-go')); });
@@ -497,6 +497,8 @@
     window.addEventListener('beforeunload', guard);
     go(0);
   }
+  // A flag set or cleared mid exam repaints the question map (assets/course/flags.js).
+  document.addEventListener('levl:flag', function(){ if(run && !run.done && run.qs && app.querySelector('.anp-ex-navcount')) status(); });
   function guard(e){ if(run && !run.done){ e.preventDefault(); e.returnValue = ''; } }
 
   function tick(){
@@ -533,6 +535,7 @@
       b.setAttribute('aria-label', 'Question ' + (i + 1) + ', ' + (done ? 'answered' : 'not answered'));
     });
     app.querySelector('.anp-ex-navcount').textContent = '(' + answeredCount() + ' of ' + run.qs.length + ' answered)';
+    if(window.LevlFlags) window.LevlFlags.markNav(app.querySelectorAll('.anp-ex-nav button'), 'anp', run.qs);
     app.querySelector('.anp-ex-prev').disabled = run.i === 0;
     var nb = app.querySelector('.anp-ex-next');
     var left = run.qs.length - answeredCount();
@@ -600,6 +603,7 @@
     var left = run.qs.length - answeredCount();
     var box = app.querySelector('.anp-ex-confirm');
     box.querySelector('p').textContent = left ? plural(left, 'question') + ' not answered yet. Unanswered questions count as wrong. Finish anyway?' : 'All ' + run.qs.length + ' answered. Finish and see your results?';
+    if(window.LevlFlags) window.LevlFlags.examList(box.querySelector('.cx-flaglist'), 'anp', run.qs, function(i){ box.hidden = true; go(i); });
     box.hidden = false;
     box.querySelector('.anp-ex-yes').focus();
   }
