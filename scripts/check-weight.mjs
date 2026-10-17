@@ -128,7 +128,10 @@ const SHELL_BUDGETS = [
      the seventh course in every generated course list, its premium.js entry,
      ranks, tutor starters, search source and the theme tint. Measured 287.9 KB
      (from 287.0 with the AP® Physics 1 launch changes). */
-  ['site', 288.5],
+  /* 288.5 -> 289 (polish 2026-10-17, B): the still "+N XP" chip for reduced
+     motion, the folded "units not started" group and inline row actions in
+     the shared dashboard. Measured 288.8 KB. */
+  ['site', 289],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -352,7 +355,9 @@ const BUDGETS = [
      the script that fills it from the practice-engine records. Measured
      10.3 KB. */
   /* nremt/index.html 10.4 -> 10.6 (2026-10-08, trust plan): the founder line under the hero. */
-  ['nremt/index.html', 10.6],
+  /* 10.6 -> 11.2 (polish 2026-10-17, B): the body map art and its credit, the
+     full footer and the level card's first-visit line. Measured 11.0 KB. */
+  ['nremt/index.html', 11.2],
   /* 10 -> 11. The home page lists every chapter's topics, so it grows by a
      line of markup each time the course gains a section; the generated list
      crossed 10 KB gzipped when the reactivity chapter gained its energy-
@@ -365,7 +370,8 @@ const BUDGETS = [
      added two topics (cyclopropanation, electrocyclic and sigmatropic
      reactions), so the generated path gained two chapter nodes and two
      topic lines. Measured 11.5 KB. */
-  ['ochem/index.html', 11.6],
+  /* 11.6 -> 11.8 (polish 2026-10-17, B10): the level card's first-visit line. */
+  ['ochem/index.html', 11.8],
 
   // The busiest page on the site, and the one the bank split was for.
   /* 40 -> 44 in the 2026-10 audit follow-up: the runner gained a check step
@@ -380,7 +386,8 @@ const BUDGETS = [
      hooks on the results screen. Measured 45.1 KB. */
   // 45.2 -> 48: the shared step builder and "Your numbers" rail, with
   // nremt/practice-study.js mapping it onto the engine's controls (W-C).
-  ['nremt/practice.html', 48],
+  /* 48 -> 48.4 (polish 2026-10-17, B11): XP paid as each answer is checked. */
+  ['nremt/practice.html', 48.4],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
@@ -476,7 +483,8 @@ const BUDGETS = [
      chapter path as a real list of 27 links with their snake placement, and
      one real bank question with its explanations, all in the markup so they
      read without JavaScript. Measured 6.4 KB; ochem's home is budgeted at 11. */
-  ['anatomy-physiology/index.html', 7],
+  /* 7 -> 7.3 (polish 2026-10-17, B10): the level card's first-visit line. */
+  ['anatomy-physiology/index.html', 7.3],
   /* 10 -> 10.6 (audit 2026-10, W7): the stepped view is in the markup and a
      tiny inline script opens the saved step before first paint, which took
      an A&P lesson's layout shift from 0.27-1.0 to under 0.1. Measured
