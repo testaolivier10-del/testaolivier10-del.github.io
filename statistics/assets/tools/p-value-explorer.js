@@ -86,7 +86,7 @@
     return out.join('');
   }
   function patternDefs(id){
-    return '<defs><pattern id="' + id + '-h" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="pv-hatch-bg"/><line x1="0" y1="0" x2="0" y2="7" class="pv-hatch"/></pattern></defs>';
+    return '<defs><pattern id="' + id + '-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="pv-hatch-bg"/><line x1="0" y1="0" x2="0" y2="7" class="pv-hatch"/></pattern></defs>';
   }
 
   /* The figure of one test: the null curve, the observed value and (optionally)
@@ -169,8 +169,8 @@
     if(cuts.hi != null) out.push('<path class="pv-power" d="' + areaPath(fA, G, U, G.hi) + '"/>');
     if(cuts.lo != null) out.push('<path class="pv-power" d="' + areaPath(fA, G, G.lo, L) + '"/>');
     // α: null curve in the rejection region.
-    if(cuts.hi != null) out.push('<path class="pv-alpha" d="' + areaPath(f0, G, U, G.hi) + '" fill="url(#' + id + '-h)"/>');
-    if(cuts.lo != null) out.push('<path class="pv-alpha" d="' + areaPath(f0, G, G.lo, L) + '" fill="url(#' + id + '-h)"/>');
+    if(cuts.hi != null) out.push('<path class="pv-alpha" d="' + areaPath(f0, G, U, G.hi) + '" fill="url(#' + id + '-hatch)"/>');
+    if(cuts.lo != null) out.push('<path class="pv-alpha" d="' + areaPath(f0, G, G.lo, L) + '" fill="url(#' + id + '-hatch)"/>');
     out.push('<path class="pv-curve s1" d="' + curvePath(f0, G) + '"/>');
     out.push('<path class="pv-curve s2" d="' + curvePath(fA, G) + '"/>');
     [cuts.lo, cuts.hi].forEach(function(c){

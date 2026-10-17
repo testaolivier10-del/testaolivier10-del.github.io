@@ -333,8 +333,10 @@ const SHELL_BUDGETS = [
      for numeric kinds, intervals and conclusions (stat-grade.js, 4.2 KB),
      and the statistics input in the parser and the engine (3.6 KB).
      Calculus' 68 is the reference; measured 80.9 KB on the exams page before
-     any unit is published. */
-  ['statistics', 82],
+     any unit is published. 82 -> 83 for the launch (docs/apstat-spec.md
+     decision 15): the flag hook and Flagged mode (as calculus' 68 -> 68.5),
+     the setup value step and the tiny p-value wording; measured 82.6 KB. */
+  ['statistics', 83],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -368,8 +370,10 @@ const BUDGETS = [
   /* 9.0 -> 9.4 for the 2026-10-17 polish (A2, A5, A6): the Free and Premium
      cards in place of one paragraph, the generated facts row and the grid
      that keeps the last card from sitting alone. The FAQ price answer got
-     shorter. Measured 9.3 KB. */
-  ['index.html', 9.4],
+     shorter. Measured 9.3 KB. 9.4 -> 9.8 for AP® Statistics' launch
+     (docs/apstat-spec.md decision 15): its hub card, its pass in the FAQ and
+     the offers. Measured 9.6 KB. */
+  ['index.html', 9.8],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */

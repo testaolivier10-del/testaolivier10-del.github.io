@@ -175,10 +175,15 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('calculus'), 'apcalc');
   assert.equal(A.parseCourse('calc'), 'apcalc');
   assert.equal(A.urlKey('apcalc'), 'calculus');
-  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc']);
+  // AP® Statistics (beta since its launch): key apstat, named by its folder, aliases stats and stat.
+  assert.equal(A.parseCourse('statistics'), 'apstat');
+  assert.equal(A.parseCourse('stats'), 'apstat');
+  assert.equal(A.urlKey('apstat'), 'statistics');
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat']);
   eq(A.scopeKeys('ochem'), ['ochem']);
   eq(A.scopeKeys('apphys'), ['apphys']);
   eq(A.scopeKeys('apcalc'), ['apcalc']);
+  eq(A.scopeKeys('apstat'), ['apstat']);
 });
 
 test('HTML becomes plain text: tags out, entities decoded, blocks spaced', () => {

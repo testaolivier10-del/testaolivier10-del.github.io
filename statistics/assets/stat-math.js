@@ -358,7 +358,7 @@
   var MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g;
   /* A long inline chain (a = b = c) is split before each top-level =, \approx,
      \Rightarrow or \quad (and, past 34 characters, before each top-level +
-     and after each top-level comma) into pieces of math with a <wbr> between (the operator keeps its own spacing),
+     and \pm, between two bracketed factors and after each top-level comma) into pieces of math with a <wbr> between (the operator keeps its own spacing),
      so a line can wrap there: MathML
      never breaks inside an inline formula, and on a phone one long chain made
      the whole page scroll sideways (AP® Statistics launch). Only with
@@ -374,9 +374,11 @@
         var cmd = m ? m[1] : '';
         if(cmd === 'left' || cmd === 'begin') depth++;
         else if(cmd === 'right' || cmd === 'end') depth--;
-        else if((cmd === 'approx' || cmd === 'Rightarrow' || cmd === 'quad') && depth === 0 && i > from && tex.slice(from, i).trim()){ out.push(tex.slice(from, i)); from = i; }
+        else if((cmd === 'approx' || cmd === 'Rightarrow' || cmd === 'quad' || (soft && cmd === 'pm')) && depth === 0 && i > from && tex.slice(from, i).trim()){ out.push(tex.slice(from, i)); from = i; }
         i += m ? m[0].length : 1; continue;
       }
+      // Past the soft length, also between two bracketed factors, ")(".
+      if(soft && c === '(' && depth === 0 && /\)\s*$/.test(tex.slice(from, i))){ out.push(tex.slice(from, i)); from = i; }
       if(c === '{' || c === '(' || c === '[') depth++;
       else if(c === '}' || c === ')' || c === ']') depth--;
       else if(c === '=' && depth === 0 && i > from && tex.slice(from, i).trim()){ out.push(tex.slice(from, i)); from = i; }
