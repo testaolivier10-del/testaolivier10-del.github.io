@@ -241,6 +241,9 @@ export function fromValue(from) {
   // The table route: z rounded to two places for Table A, the df row for Table B.
   if (from.fn === 'normCdf' && from.args.length === 1) out.table = Dist.tableRoute('normal', from.args[0]);
   if (from.fn === 'normCdf' && from.args.length === 3) out.table = Dist.tableRoute('normal', (from.args[0] - from.args[1]) / from.args[2]);
+  // An upper-tail recipe complements its table value too, or the wrong tail
+  // would be accepted as an alternative (author E, self-unit-4.md).
+  if (from.complement && out.table != null) out.table = 1 - out.table;
   if (from.fn === 'invT') out.table = Dist.invT(from.args[0], Dist.tableDf(from.args[1]));
   if ((from.fn === 't2' || from.fn === 'ci2mean') && /df$/.test(from.pick || '')) out.table = from.fn === 't2' ? Dist.t2(...from.args).dfCons : Dist.ci2mean(...from.args).dfCons;
   if (from.fn === 'ci2mean' && /^(lo|hi|me|crit)$/.test(from.pick || '')) out.table = Dist.ci2mean(...from.args).cons[from.pick];

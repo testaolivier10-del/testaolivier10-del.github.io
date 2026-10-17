@@ -74,7 +74,8 @@ test('a published unit builds every page kind, math rendered and plots drawn, an
   assert.ok(order.indexOf('math-counting') < order.indexOf('binomial-distribution'), 'the math you need comes before it is used');
   assert.ok(CU.topics.find(t => t.id === 'math-lines').free, 'math lessons are free');
   assert.ok(CU.topics.find(t => t.id === 'experimental-design').free, 'Unit 1 is free (decision 10)');
-  assert.ok(!CU.topics.find(t => t.id === 'conditional-probability').free, 'Unit 2 is Premium (decision 10)');
+  assert.ok(CU.topics.find(t => t.id === 'conditional-probability').free, 'Unit 2 is free like the other AP courses (decision 10)');
+  assert.ok(!CU.topics.find(t => t.id === 'p-values').free, 'Unit 3 is Premium (decision 10)');
   assert.equal(CU.topics.find(t => t.id === T).bank, undefined);
 });
 
@@ -191,4 +192,11 @@ test('the real statistics/data passes the content check, and the fixture sample 
   const run = env => execFileSync(process.execPath, ['scripts/check-apstat-content.mjs', '--check'], { env: { ...process.env, ...env }, encoding: 'utf8' });
   assert.match(run({}), /0 failing/);
   assert.match(run({ APSTAT_DATA: FIX }), /1 topics, 15 items, 0 failing/);
+});
+
+test('an upper-tail normal recipe accepts the upper-tail table value, never the lower one', async () => {
+  const { fromValue } = await import('../lib/apstat-build.mjs');
+  const r = fromValue({ fn: 'normCdf', args: [1.812], complement: true });
+  assert.ok(r.value > 0.03 && r.value < 0.04, `value ${r.value}`);
+  assert.ok(r.table != null && r.table > 0.03 && r.table < 0.04, `table ${r.table}`);
 });
