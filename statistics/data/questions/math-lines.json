@@ -251,7 +251,7 @@
    },
    "options": [
     "A shoe length of 0 cm is impossible for an adult",
-    "Heights cannot be 95 centimeters for anyone",
+    "No adult is 95 centimeters tall",
     "The slope is positive, so the intercept is zero",
     "Intercepts are given in different units from y"
    ],
