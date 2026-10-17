@@ -19,5 +19,6 @@
     "2026-10-15 daily run: scheduled w1007-04-gcs-floor for 2026-10-25 on TikTok and YouTube (Buffer full again at 10 per channel; w1014-01, w1014-03, w1014-02 approved and waiting). w1006-05-airway-sizing got youtube_id 2xul4FXiT1c. New pro thumbnails made (thumb_v2) for b2-05, b2-04, w1006-04, w1006-05 and w1007-03, copied to Downloads\\LevlPrep-posting\\thumbs. Studio upload of the w1006-04 thumbnail was sent and Save clicked, but the laptop went offline before it could be confirmed, so shorts_thumb stays false and the next run rechecks it; the other three uploads, D2 and D4 were skipped. yt-ap-01-intro-levels-of-organization upload failed: Zapier task limit reached; stays approved. D1: gcs-floor related_video set to the NREMT long video.",
     "2026-10-15 ~9pm PT: yt-ap-01 published by hand through YouTube Studio in Olivier's Chrome at his request (Zapier out of tasks): https://youtu.be/aMvkCfwrepA, public, not for kids, AI use answered No (Olivier: AI narration does not need the label), tags and English set in Studio; thumbnail, playlist 'Anatomy and Physiology | LevlPrep' (new) and captions set by API; comment posted (not pinned yet); embed PR #69 (A&P notes are generated: edit anatomy-physiology/data/notes/<id>.html and run node scripts/build-anp.mjs). w1006-04 Studio thumbnail confirmed."
   ],
-  "pending_reruns": []
+  "pending_reruns": [],
+  "related_check_after": "2026-10-24"
 }
