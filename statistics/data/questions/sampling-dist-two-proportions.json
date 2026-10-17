@@ -138,6 +138,7 @@
      "start": -0.3,
      "width": 0.05
     },
+    "xStep": 0.1,
     "xLabel": "difference in sample proportions",
     "yLabel": "trials"
    },

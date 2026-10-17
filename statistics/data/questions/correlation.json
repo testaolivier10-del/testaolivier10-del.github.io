@@ -307,14 +307,14 @@
      "A negative $r$ is not weaker; $-0.79$ is as strong as 0.79.",
      "That would be a slope; $r$ has no units.",
      "$r$ is not a percent of points.",
-     "Right: negative sign, size about 0.8."
+     "Right: the negative sign gives the direction, and a size of 0.79 is a moderate linear association, close to strong."
     ]
    },
    "options": [
     "A weak association, because $r$ is negative",
     "That $y$ decreases by 0.79 for each unit of $x$",
     "That 79% of the points lie on a line",
-    "A fairly strong linear trend: $y$ falls as $x$ rises"
+    "A moderate linear trend: $y$ tends to fall as $x$ rises"
    ],
    "correct": 3
   },

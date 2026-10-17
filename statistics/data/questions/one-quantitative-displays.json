@@ -148,8 +148,8 @@
       "why": "That counts just the five students who read 3 books. Add the dots at 0, 1, 2 and 3: 1 + 2 + 4 + 5 = 12."
      },
      {
-      "value": 0.68,
-      "why": "That also counts the four students at 4. Stop at 3 books: 12 of 25."
+      "value": 0.64,
+      "why": "That also counts the four students at 4 (16 of 25). Stop at 3 books: 12 of 25."
      }
     ]
    }

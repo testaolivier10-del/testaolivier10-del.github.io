@@ -58,7 +58,7 @@
    "kind": "graph",
    "title": "Iced drinks and temperature: the residual plot",
    "set": "regression",
-   "text": "A cafe records the daily high temperature (°F) and the number of iced drinks sold on 12 days. Its regression line is $\\hat{y} = -114.8 + 3.41x$. The residual plot is below. (Invented data.)",
+   "text": "A cafe records the daily high temperature (°F) and the number of iced drinks sold on 12 days. Its regression line is $\\hat{y} = -114.81 + 3.407x$. The residual plot is below. (Invented data.)",
    "plot": {
     "label": "Residual plot of the iced drink line: 12 residuals between about minus 7.5 and 5.4 scattered above and below the zero line with no pattern, across temperatures from 62 to 91 degrees",
     "kind": "resid",
@@ -355,7 +355,7 @@
     "correct": "Residual $= y - \\hat{y}$.",
     "options": [
      "That is predicted minus actual. Residual is actual minus predicted.",
-     "Right: $\\hat{y} = -114.8 + 3.41(80) = 157.7$, and $160 - 157.7 = 2.3$.",
+     "Right: $\\hat{y} = -114.81 + 3.407(80) = 157.75$, and $160 - 157.75 = 2.25$, about 2.3.",
      "That is the temperature, not a residual.",
      "That is the predicted number of drinks, not the residual."
     ]
@@ -364,7 +364,7 @@
     "About -2.3 drinks",
     "About 2.3 drinks",
     "About 80 drinks",
-    "About 157.7 drinks"
+    "About 157.8 drinks"
    ],
    "correct": 1
   },

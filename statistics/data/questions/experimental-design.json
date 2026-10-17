@@ -499,7 +499,7 @@
       }
      }
     },
-    "model": "Because the glasses were randomly assigned, the study shows that blue-light glasses cause better sleep quality for students like these volunteers; because the students were volunteers and not a random sample, the result should not be generalized to all college students.",
+    "model": "Because the glasses were randomly assigned and the difference was statistically significant, the study gives evidence that blue-light glasses cause better sleep quality for students like these volunteers; because the students were volunteers and not a random sample, the result should not be generalized to all college students.",
     "write": {
      "context": [
       "glasses",

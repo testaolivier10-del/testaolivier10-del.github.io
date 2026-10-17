@@ -386,8 +386,8 @@
       "why": "The differences are after minus before, so faster typing gives a positive difference."
      },
      {
-      "value": 6.875,
-      "why": "That leaves out the student whose speed fell (difference $-2$). Average all 10 differences."
+      "value": 7.222,
+      "why": "That leaves out the student whose speed fell (difference $-2$): $\\frac{65}{9} = 7.22$. Average all 10 differences, including the negative one."
      }
     ]
    }

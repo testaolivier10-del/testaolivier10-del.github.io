@@ -188,6 +188,7 @@
   {
    "lead": "A tech site tested how long phones last on one charge.",
    "what": "battery life",
+   "whats": "battery lives",
    "unit": "hours",
    "unitOne": "hour",
    "noun": "phones",
@@ -277,6 +278,7 @@
   {
    "lead": "A tech site tested how long phones last on one charge.",
    "what": "battery life",
+   "whats": "battery lives",
    "unit": "hours",
    "unitOne": "hour",
    "noun": "phones",

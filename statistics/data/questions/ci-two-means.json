@@ -216,11 +216,14 @@
    "q": "How many degrees of freedom does technology give for the two-sample t interval? (The conservative choice is also accepted.)",
    "stimulus": "ci-two-means-s1",
    "why": {
-    "correct": "Technology uses the Welch formula and gives $\\text{df} = 25.6$. The conservative choice is the smaller $n - 1$: $14 - 1 = 13$. Either is accepted on the exam."
+    "correct": "Technology uses the Welch formula and gives $\\text{df} = 25.58$. The conservative choice is the smaller $n - 1$: $14 - 1 = 13$. Either is accepted on the exam. Reading Table B, use the row at or below the technology df (25), never a rounded-up row."
    },
    "numeric": {
     "kind": "df",
     "tol": 0.1,
+    "alts": [
+     25
+    ],
     "from": {
      "fn": "ci2mean",
      "args": [
@@ -254,14 +257,14 @@
    "practice": "3.E",
    "level": "apply",
    "diff": 2,
-   "q": "Construct the 95% confidence interval for $\\mu_S - \\mu_M$, in words recalled.",
+   "q": "Construct the 95% confidence interval for $\\mu_S - \\mu_M$, in words recalled. Use the technology degrees of freedom, $\\text{df} = 25.6$.",
    "stimulus": "ci-two-means-s1",
    "why": {
-    "correct": "$(\\bar{x}_S - \\bar{x}_M) \\pm t^*\\sqrt{\\frac{s_S^2}{n_S} + \\frac{s_M^2}{n_M}} = (34.21 - 28.50) \\pm 2.057\\sqrt{\\frac{6.13^2}{14} + \\frac{6.97^2}{14}} = 5.71 \\pm 5.10$, from 0.61 to 10.81 words (technology df 25.6). With the conservative df 13, $t^* = 2.160$ gives 0.35 to 11.07; both are accepted."
+    "correct": "$(\\bar{x}_S - \\bar{x}_M) \\pm t^*\\sqrt{\\frac{s_S^2}{n_S} + \\frac{s_M^2}{n_M}} = (34.21 - 28.50) \\pm 2.057\\sqrt{\\frac{6.13^2}{14} + \\frac{6.97^2}{14}} = 5.71 \\pm 5.10$, from 0.61 to 10.81 words ($t^* = 2.057$ at df 25.6; the Table B row for df 25 gives 2.060 and nearly the same interval). On the exam the conservative df 13 is also accepted: $t^* = 2.160$ gives 0.35 to 11.07. Using $z^* = 1.96$ (0.85 to 10.57) is wrong, because $s_S$ and $s_M$ estimate the population standard deviations."
    },
    "interval": {
     "places": 2,
-    "tol": 0.3,
+    "tol": 0.05,
     "from": {
      "fn": "ci2mean",
      "args": [
@@ -425,14 +428,14 @@
    "practice": "3.E",
    "level": "apply",
    "diff": 2,
-   "q": "Construct the 95% confidence interval for $\\mu_1 - \\mu_2$, in minutes.",
+   "q": "Construct the 95% confidence interval for $\\mu_1 - \\mu_2$, in minutes. Use the technology degrees of freedom, $\\text{df} = 67.6$.",
    "stimulus": "ci-two-means-s2",
    "why": {
-    "correct": "$4.7 \\pm 1.996(2.47) = 4.7 \\pm 4.94$, from $-0.23$ to 9.63 minutes (technology df 67.6). The conservative df, 34, gives $t^* = 2.032$ and $-0.33$ to 9.73; both are accepted."
+    "correct": "$4.7 \\pm 1.996(2.47) = 4.7 \\pm 4.94$, from $-0.23$ to 9.63 minutes ($t^* = 1.996$ at df 67.6; the Table B row for df 60 gives 2.000 and nearly the same interval). On the exam the conservative df, 34, is also accepted: $t^* = 2.032$ gives $-0.33$ to 9.73. Using $z^* = 1.96$ ($-0.15$ to 9.55) is wrong, because $s_1$ and $s_2$ estimate the population standard deviations."
    },
    "interval": {
     "places": 2,
-    "tol": 0.1,
+    "tol": 0.03,
     "from": {
      "fn": "ci2mean",
      "args": [

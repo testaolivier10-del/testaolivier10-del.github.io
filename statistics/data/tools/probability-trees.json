@@ -29,7 +29,7 @@
   },
   "contexts": [
     {
-      "id": "screening", "topic": "conditional-probability", "types": ["tree", "table", "rules"],
+      "id": "screening", "topic": "conditional-probability", "types": ["tree", "table", "rules"], "noIndep": true,
       "lead": "A clinic screens patients for a condition with a quick test.",
       "who": "a patient", "one": "patient", "many": "patients",
       "ev": { "A": "has the condition", "Ap": "have the condition", "nA": "does not have the condition", "B": "tests positive", "Bp": "test positive", "nB": "tests negative" },

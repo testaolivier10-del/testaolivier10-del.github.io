@@ -53,7 +53,7 @@
   "Four steps: State ($H_0$, $H_a$, $\\alpha$, $p$ defined), Plan (procedure, conditions), Do ($z$, p-value), Conclude.",
   "Conclusion: \"Because the p-value of __ is less than $\\alpha$ = __, we reject $H_0$. There is convincing evidence that the true proportion of all __ is __ than __.\"",
   "Fail to reject: \"there is not convincing evidence that ...\", still naming the direction of $H_a$. Never \"accept $H_0$\" or \"prove\".",
-  "A two-sided test at $\\alpha = 0.05$ rejects exactly when $p_0$ is outside the 95% interval.",
+  "A two-sided test at $\\alpha = 0.05$ almost always rejects when $p_0$ is outside the 95% interval, and fails to reject when it is inside.",
   "Random sampling lets you generalize; only random assignment lets you claim cause."
  ],
  "misconception": {

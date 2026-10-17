@@ -518,7 +518,7 @@
    "practice": "3.B",
    "level": "apply",
    "diff": 2,
-   "q": "Using the park table (250 visitors), which of these are joint relative frequencies? Select all that apply.",
+   "q": "A two-way table of 250 park visitors has visit type in the rows (totals 100 and 150) and activity in the columns (totals 105, 69 and 76). Which of these are joint relative frequencies? Select all that apply.",
    "why": {
     "correct": "A joint relative frequency is one cell over the grand total, 250.",
     "options": [

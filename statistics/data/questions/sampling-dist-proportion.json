@@ -239,6 +239,7 @@
      "start": -0.016666666666666666,
      "width": 0.03333333333333333
     },
+    "xStep": 0.05,
     "xLabel": "sample proportion left-handed",
     "yLabel": "number of samples"
    },
@@ -581,7 +582,7 @@
      },
      {
       "value": 0.0808,
-      "why": "That uses a standard deviation of 0.0357 or similar. Check the formula: $\\sqrt{p(1 - p)/n} = 0.0252$."
+      "why": "That uses a standard deviation of 0.0357, which is $\\sqrt{0.85(0.15)/100}$: a sample size of 100. With 200 seeds, $\\sqrt{0.85(0.15)/200} = 0.0252$."
      }
     ]
    },

@@ -171,11 +171,7 @@
     "mistakes": [
      {
       "value": 0.36,
-      "why": "That is the joint probability of Brand Y and a full day. Given Brand Y, divide by 150."
-     },
-     {
-      "value": 0.36,
-      "why": "That multiplies 0.6 by 0.6. A conditional probability from a table is the cell over its group total."
+      "why": "That is the joint probability of Brand Y and a full day, 90/250 (also the product 0.6 × 0.6). Given Brand Y, divide the cell by the 150 Brand Y phones."
      }
     ]
    }

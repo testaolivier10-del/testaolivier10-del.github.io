@@ -109,11 +109,13 @@
      4,
      4
     ],
-    "xLabel": "Number of boxes bought to get all 4 prizes",
+    "xLabel": "boxes",
     "x": [
-     3,
-     20
-    ]
+     2,
+     22
+    ],
+    "xStep": 2,
+    "yTicks": false
    },
    "data": {
     "vars": [
@@ -566,16 +568,16 @@
    "practice": "3.C",
    "level": "apply",
    "diff": 2,
-   "q": "To study families with 4 children, a student simulates 200 families, using a coin flip for each child (heads for a girl). In 46 of the 200 simulated families, 3 or more of the children were girls. Estimate the chance that a family of 4 children has 3 or more girls.",
+   "q": "To study families with 4 children, a student simulates 200 families, using a coin flip for each child (heads for a girl). In 62 of the 200 simulated families, 3 or more of the children were girls. Estimate the chance that a family of 4 children has 3 or more girls.",
    "why": {
-    "correct": "The estimate is the share of trials with the result: $\\frac{46}{200} = 0.23$."
+    "correct": "The estimate is the share of trials with the result: $\\frac{62}{200} = 0.31$."
    },
    "numeric": {
     "kind": "prob",
-    "answer": 0.23,
+    "answer": 0.31,
     "mistakes": [
      {
-      "value": 0.0575,
+      "value": 0.0775,
       "why": "That divides by the 800 simulated children. A trial is a family, so divide by the 200 families."
      },
      {

@@ -346,7 +346,7 @@
    "stimulus": "sampling-dist-two-means-s2",
    "options": [
     "Yes, because 2.1 is more than twice the true difference of 1 mL between machines",
-    "Not very: a difference above 2 mL happens in about 11% of samples",
+    "Not very: a difference of 2.1 mL or more happens in about 9% of samples",
     "Yes, because the true means differ by just 1 mL",
     "There is no way to judge it without the sample standard deviations"
    ],

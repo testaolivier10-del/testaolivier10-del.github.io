@@ -47,7 +47,7 @@
      0.12,
      0.06
     ],
-    "xLabel": "G = number of goals in a game",
+    "xLabel": "goals",
     "yLabel": "Probability"
    }
   }

@@ -389,10 +389,10 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "A one-sided test at $\\alpha = 0.05$ matches a 90% interval (5% in each tail). Every value in the interval is above 0.5, which agrees with rejecting $H_0: p = 0.5$ in favor of $p > 0.5$, and the interval also estimates how much above 0.5 the proportion is.",
+    "correct": "A one-sided test at $\\alpha = 0.05$ goes with a 90% interval (5% in each tail), and the two almost always agree. Every value in the interval is above 0.5, which agrees with rejecting $H_0: p = 0.5$ in favor of $p > 0.5$, and the interval also estimates how much above 0.5 the proportion is.",
     "options": [
      "Right: the interval and the test tell the same story, and the interval adds a range for $p$.",
-     "A 90% interval leaves 5% in each tail, which is exactly what matches a one-sided test at 0.05.",
+     "A 90% interval leaves 5% in each tail, which is what goes with a one-sided test at 0.05.",
      "Every interval contains its own sample proportion; what matters is whether it contains 0.5.",
      "The 90% is the confidence level, not a share of adults."
     ]
@@ -624,12 +624,12 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "A 95% interval and a two-sided test at 0.05 match. 0.50 is inside the interval, so it is plausible: the test would fail to reject $H_0$.",
+    "correct": "A 95% interval and a two-sided test at 0.05 almost always agree (they differ only in rare borderline cases, because the test uses $p_0$ in its standard deviation). 0.50 is inside the interval, so it is plausible: the test would fail to reject $H_0$.",
     "options": [
      "Being off the center is expected; what matters is that 0.50 is inside the interval.",
      "Right: a plausible value is not ruled out by the matching test.",
      "It also includes 0.50 itself, so 0.50 is plausible.",
-     "For the same data, a 95% interval and a two-sided test at 0.05 agree about $p_0$."
+     "For the same data, a 95% interval and a two-sided test at 0.05 almost always agree about $p_0$."
     ]
    }
   },

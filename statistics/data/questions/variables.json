@@ -447,9 +447,9 @@
    "diff": 2,
    "q": "A survey records five things about each student. Which variables are categorical? Select all that apply.",
    "why": {
-    "correct": "Categorical variables put individuals into groups; quantitative variables record amounts. Grade level is usually treated as a group label here.",
+    "correct": "Categorical variables put individuals into groups; quantitative variables record amounts or counts.",
     "options": [
-     "Right: grade level sorts students into groups. It is coded with numbers, but the analysis counts students in each grade.",
+     "Right: favorite subject puts each student in a group.",
      "Right: yes or no puts each student in a group.",
      "Minutes are a measured amount, so this is quantitative.",
      "A count is quantitative.",
@@ -457,7 +457,7 @@
     ]
    },
    "options": [
-    "Grade level (9, 10, 11 or 12)",
+    "Favorite school subject",
     "Whether the student owns a bike",
     "Minutes spent getting to school",
     "Number of siblings",

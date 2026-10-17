@@ -27,7 +27,7 @@
       }
      ]
     },
-    "xLabel": "Battery life (hours)"
+    "xLabel": "hours"
    }
   },
   "normal-distribution-s2": {
@@ -66,7 +66,7 @@
       }
      ]
     },
-    "xLabel": "Egg weight (grams)"
+    "xLabel": "grams"
    }
   }
  },
@@ -81,7 +81,7 @@
    "diff": 2,
    "q": "What is the probability that a randomly chosen phone's battery lasts less than 16 hours?",
    "why": {
-    "correct": "B is $N(18, 1.5)$. $z = \\frac{16 - 18}{1.5} \\approx -1.33$, and $P(B < 16) = P(Z < -1.33) \\approx 0.0912$ (technology gives 0.0912; Table A gives 0.0918).",
+    "correct": "B is $N(18, 1.5)$. $z = \\frac{16 - 18}{1.5} \\approx -1.33$, and $P(B < 16) \\approx 0.0912$ by technology (Table A with $z = -1.33$ gives 0.0918).",
     "options": [
      "That is the area to the right of 16 hours, the complement.",
      "That uses the empirical rule for 1 standard deviation, but 16 hours is 1.33 standard deviations below the mean.",

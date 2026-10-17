@@ -236,7 +236,7 @@
    "why": {
     "correct": "$\\text{IQR} = 460 - 345 = 115$; upper fence $= 460 + 1.5(115) = 632.5$; 980 > 632.5, so it is an outlier.",
     "options": [
-     "The rule adds $1.5 \\times \\text{IQR}$ to $Q_3$; it does not multiply the median.",
+     "That multiplies $Q_3$ by 1.5. The fence adds $1.5 \\times \\text{IQR}$ to $Q_3$, and $\\text{IQR} = 460 - 345 = 115$.",
      "That uses the range instead of the IQR.",
      "The maximum is an outlier only when it is beyond the fence.",
      "Right: $\\text{IQR} = 460 - 345 = 115$, so the fence is $460 + 1.5(115) = 632.5$."
@@ -244,7 +244,7 @@
    },
    "stimulus": "summary-statistics-s2",
    "options": [
-    "No: 980 < 1.5 × 390",
+    "No: the upper fence is 460 + 1.5(460) = 1,150",
     "No: the upper fence is 460 + 1.5(980 − 210) = 1,615",
     "Yes, because the maximum of a data set is an outlier by definition",
     "Yes: the upper fence is 632.5, and 980 is above it"

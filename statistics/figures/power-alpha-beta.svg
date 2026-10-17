@@ -27,10 +27,10 @@
 <text x="339.91" y="58" font-size="15" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">cutoff 0.558: reject H₀ to the right</text>
 <text x="234.71" y="64" font-size="15" text-anchor="end" font-weight="bold" fill="#6E2470" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">if H₀ is true (p = 0.50)</text>
 <text x="558.82" y="110" font-size="15" text-anchor="start" font-weight="bold" fill="#0072B2" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">if p = 0.60</text>
-<text x="473.53" y="230" font-size="16" text-anchor="middle" font-weight="bold" fill="#00684A" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">power ≈ 0.89</text>
+<text x="413.82" y="230" font-size="16" text-anchor="middle" font-weight="bold" fill="#00684A" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">power ≈ 0.89</text>
 <line x1="255.18" y1="254" x2="316.59" y2="286" stroke="#A34100" stroke-width="1.5"/>
 <text x="243.24" y="248" font-size="16" text-anchor="end" font-weight="bold" fill="#A34100" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">β ≈ 0.11</text>
-<line x1="350.71" y1="297" x2="466.71" y2="282" stroke="#6E2470" stroke-width="1.5"/>
-<text x="473.53" y="286" font-size="16" text-anchor="start" font-weight="bold" fill="#6E2470" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">α = 0.05</text>
+<line x1="350.71" y1="297" x2="534.94" y2="260" stroke="#6E2470" stroke-width="1.5"/>
+<text x="540.06" y="258" font-size="16" text-anchor="start" font-weight="bold" fill="#6E2470" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">α = 0.05</text>
 <text x="30" y="24" font-size="16" font-weight="bold" fill="#1F2A28">One test, two possible truths</text>
 </svg>

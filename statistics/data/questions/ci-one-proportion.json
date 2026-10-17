@@ -331,10 +331,10 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "Solve $1.96\\sqrt{\\frac{0.54(0.46)}{n}} \\le 0.02$: $n \\ge \\left(\\frac{1.96}{0.02}\\right)^2(0.54)(0.46) = 2385.5$. Round up to 2,386 residents (always round a sample size up).",
+    "correct": "Solve $1.96\\sqrt{\\frac{0.54(0.46)}{n}} \\le 0.02$: $n \\ge \\left(\\frac{1.96}{0.02}\\right)^2(0.54)(0.46) = 2385.6$. Round up to 2,386 residents (always round a sample size up).",
     "options": [
-     "The calculation gives 2,385.5, and a sample size is always rounded up, or the margin would be a bit over 0.02.",
-     "Right: $\\left(\\frac{1.96}{0.02}\\right)^2(0.54)(0.46) = 2385.5$, rounded up.",
+     "The calculation gives 2,385.6, and a sample size is always rounded up, or the margin would be a bit over 0.02.",
+     "Right: $\\left(\\frac{1.96}{0.02}\\right)^2(0.54)(0.46) = 2385.6$, rounded up.",
      "That uses 0.5 in place of 0.54. It is the safe choice when there is no estimate, but this question says to use 0.54.",
      "That uses $z^* = 1.645$, the critical value for 90% confidence. For 95%, use 1.96."
     ]

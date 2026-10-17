@@ -1351,8 +1351,13 @@
      "start": 0.24,
      "width": 0.02
     },
-    "xLabel": "Sample proportion of supporters",
-    "yLabel": "Number of samples"
+    "xLabel": "proportion",
+    "yLabel": "Number of samples",
+    "x": [
+     0.2,
+     0.7
+    ],
+    "xStep": 0.1
    },
    "data": {
     "vars": [

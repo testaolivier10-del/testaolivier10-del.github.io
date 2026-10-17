@@ -482,7 +482,7 @@
    "diff": 2,
    "q": "Which displays compare the distribution of one categorical variable across the groups of another? Select all that apply.",
    "why": {
-    "correct": "A segmented bar chart shows each group's percents for the other variable Stemplots, histograms, boxplots and dotplots each display one quantitative variable.",
+    "correct": "A segmented bar chart shows each group's percents for the other variable. Stemplots, histograms, boxplots and dotplots each display one quantitative variable.",
     "options": [
      "Right: one bar per group, split by the other variable.",
      "A stemplot shows the digits of a quantitative variable.",

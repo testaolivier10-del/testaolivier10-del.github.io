@@ -19,7 +19,7 @@
  "stimulus": {
   "kind": "table",
   "title": "A survey about a new bus route",
-  "html": "<p>A city’s transit agency is planning a new express bus route. The city has four districts, A, B, C and D, and the agency has a complete list of the 48,000 home addresses in the city, organized by district. Residents of districts near the planned route may feel very differently about it from residents of districts far from it. The agency considers two ways to gather opinions:</p><ul><li><b>Method 1:</b> choose 100 addresses at random from each district’s list and interview one adult at each address.</li><li><b>Method 2:</b> post a link on the agency’s website and social media asking residents to vote for or against the new route.</li></ul>"
+  "html": "<p>A city’s transit agency is planning a new express bus route. The city has four districts, A, B, C and D, and the agency has a complete list of the 48,000 home addresses in the city, organized by district (12,000 in each district). Residents of districts near the planned route may feel very differently about it from residents of districts far from it. The agency considers two ways to gather opinions:</p><ul><li><b>Method 1:</b> choose 100 addresses at random from each district’s list and interview one adult at each address.</li><li><b>Method 2:</b> post a link on the agency’s website and social media asking residents to vote for or against the new route.</li></ul>"
  },
  "parts": [
   {

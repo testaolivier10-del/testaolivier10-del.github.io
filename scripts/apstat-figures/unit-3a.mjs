@@ -110,7 +110,7 @@ fig('estimator-bias-variability', 'estimators', {
       const pts = []; for (let k = 0; k <= r.n; k++) { const x = k / r.n; if (x >= 0.1 && x <= 0.78) pts.push([x, Dist.binomPmf(k, r.n, r.p) * r.n]); }
       P.bars(pts, 1 / r.n * 0.92, { fill: r.fill, stroke: r.color });
       P.axis();
-      P.vline(0.40, top - 6, P.base, { color: INK, width: 2, dash: '6 4' });
+      P.vline(0.40, top + 8, P.base, { color: INK, width: 2, dash: '6 4' });
       body.push(...P.parts);
       body.push(T(left, top + 2, r.name, { size: 16, bold: true, color: r.color }));
       body.push(T(left + w, top + 2, r.tag, { size: 15, anchor: 'end', color: INK }));
@@ -298,11 +298,11 @@ fig('power-alpha-beta', 'errors-and-power', {
     body.push(T(P.sx(cut) + 6, 58, `cutoff ${cut.toFixed(3)}: reject H₀ to the right`, { size: 15, halo: true }));
     body.push(T(P.sx(p0), 64, 'if H₀ is true (p = 0.50)', { size: 15, anchor: 'end', color: PLUM, bold: true, halo: true }));
     body.push(T(P.sx(0.69), 110, 'if p = 0.60', { size: 15, anchor: 'start', color: BLUE, bold: true, halo: true }));
-    body.push(T(P.sx(0.64), 230, `power ≈ ${(1 - beta).toFixed(2)}`, { size: 16, anchor: 'middle', color: '#00684A', bold: true, halo: true }));
+    body.push(T(P.sx(0.605), 230, `power ≈ ${(1 - beta).toFixed(2)}`, { size: 16, anchor: 'middle', color: '#00684A', bold: true, halo: true }));
     body.push(`<line x1="${r2(P.sx(0.512))}" y1="${r2(P.base - 46)}" x2="${r2(P.sx(0.548))}" y2="${r2(P.base - 14)}" stroke="#A34100" stroke-width="1.5"/>`);
     body.push(T(P.sx(0.505), P.base - 52, `β ≈ ${beta.toFixed(2)}`, { size: 16, anchor: 'end', color: '#A34100', bold: true, halo: true }));
-    body.push(`<line x1="${r2(P.sx(0.568))}" y1="${r2(P.base - 3)}" x2="${r2(P.sx(0.636))}" y2="${r2(P.base - 18)}" stroke="${PLUM}" stroke-width="1.5"/>`);
-    body.push(T(P.sx(0.64), P.base - 14, 'α = 0.05', { size: 16, anchor: 'start', color: PLUM, bold: true, halo: true }));
+    body.push(`<line x1="${r2(P.sx(0.568))}" y1="${r2(P.base - 3)}" x2="${r2(P.sx(0.676))}" y2="${r2(P.base - 40)}" stroke="${PLUM}" stroke-width="1.5"/>`);
+    body.push(T(P.sx(0.679), P.base - 42, 'α = 0.05', { size: 16, anchor: 'start', color: PLUM, bold: true, halo: true }));
     body.push(T(left, 24, 'One test, two possible truths', { size: 16, bold: true }));
     return { w: W, h: 370, body };
   },

@@ -42,7 +42,7 @@ export function unit3b() {
     F.line(I.lo, y, I.hi, y, C.plum, 5).line(I.lo, y - 0.5, I.lo, y + 0.5, C.plum, 3).line(I.hi, y - 0.5, I.hi, y + 0.5, C.plum, 3).dot(0.08, y, C.ink, 6);
     F.line(0, 0, 0, 3.6, C.soft, 1.4, '5 4').text(0, 3.75, '0 (no difference)', { anchor: 'middle', color: C.soft });
     F.text(0.08, y + 0.85, 'estimate 0.08', { anchor: 'middle', bold: true });
-    F.text(I.lo, y - 1.3, I.lo.toFixed(3), { anchor: 'middle', color: C.plum, bold: true }).text(I.hi, y - 1.3, I.hi.toFixed(3), { anchor: 'middle', color: C.plum, bold: true });
+    F.text(I.lo + 0.003, y - 1.3, I.lo.toFixed(3), { anchor: 'start', color: C.plum, bold: true }).text(I.hi, y - 1.3, I.hi.toFixed(3), { anchor: 'middle', color: C.plum, bold: true });
     F.text(0.117, y + 0.85, `± ${I.me.toFixed(3)}`, { anchor: 'start', color: C.plum, bold: true });
     save('two-prop-interval', doc(W, H, 'A 95% confidence interval for a difference in proportions',
       `Number line from -0.04 to 0.20. A dot marks the sample difference 0.08 (0.62 minus 0.54). A bar runs from ${I.lo.toFixed(3)} to ${I.hi.toFixed(3)}, the estimate plus or minus a margin of error of ${I.me.toFixed(3)}. A dashed line marks 0, just to the left of the interval.`, F.svg()));
@@ -84,7 +84,7 @@ export function unit3b() {
   {
     const T = Dist.z2prop(125, 160, 91, 140), d = T.p1 - T.p2, W = 640, H = 360;
     const F = frame({ x0: 60, y0: 30, w: 550, h: 240, x: [-0.2, 0.2], y: [0, 9], xStep: 0.05, yTicks: false, grid: false,
-      xLabel: 'Difference in sample proportions if H0 is true (new minus old)' }).axes();
+      xLabel: 'Difference in sample proportions if H₀ is true (new minus old)' }).axes();
     const f = x => Dist.normPdf(x, 0, T.se);
     F.area(f, d, 0.2, C.plum, 0.45).curve(f, -0.2, 0.2, C.ink, 2.4);
     F.line(d, 0, d, 7.4, C.plum, 2, '6 4').text(d, 7.6, `observed ${d.toFixed(3)}`, { anchor: 'middle', bold: true, color: C.plum, dy: -2 });
@@ -133,7 +133,7 @@ export function unit3b() {
     F.area(f, T.chi2, 14, C.plum, 0.5).curve(f, 0.001, 14, C.ink, 2.4);
     F.line(T.chi2, 0, T.chi2, 0.2, C.plum, 2, '6 4').text(T.chi2, 0.215, `observed χ² = ${T.chi2.toFixed(2)}`, { anchor: 'middle', bold: true, color: C.plum });
     F.text(T.chi2 + 0.4, 0.05, `p-value = ${T.p.toFixed(4)}`, { color: C.plum, bold: true });
-    F.text(3.2, 0.36, 'If H0 is true, most values are small:', { bold: true }).text(3.2, 0.33, 'the mean of this curve is df = 2', { bold: true });
+    F.text(3.2, 0.36, 'If H₀ is true, most values are small:', { bold: true }).text(3.2, 0.33, 'the mean of this curve is df = 2', { bold: true });
     save('chi-square-tail', doc(W, H, 'The chi-square distribution and a p-value',
       `Right-skewed chi-square density curve with 2 degrees of freedom, starting high at 0 and falling toward 14. A dashed line marks the observed chi-square statistic, ${T.chi2.toFixed(2)}, and the thin tail to its right is shaded: the p-value, ${T.p.toFixed(4)}.`, F.svg()));
   }

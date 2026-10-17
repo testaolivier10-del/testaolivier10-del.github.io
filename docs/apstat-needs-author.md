@@ -63,3 +63,20 @@ Premium (`statistics/data/pages.json`, the only place that says so).
 Decision 6 goes further than the other AP® courses: exam results show section percentages and
 breakdowns, never an estimated AP® score. Built that way; `statistics/assets/pages/exams.js` has no
 band and there is no score calculator page.
+
+## unit3-review: points left open by the Unit 3 accuracy review (open, 2026-10-17)
+
+From `docs/apstat-reviews/u3.md`. The CED's Unit 3 pages are still unread (`ced-text`: WebFetch stops at
+character 109,952, before Unit 3; another scraper was out of credits), so these stay with a person:
+
+- **Large counts for the two-proportion test.** 3.12, 3.13 and their items check $n_1 p_c$, $n_1(1 - p_c)$,
+  $n_2 p_c$, $n_2(1 - p_c)$ (the old CED's wording, which matches the pooled SE on the reference sheet).
+  Scoring guidelines have usually also accepted the observed successes and failures. No item makes the observed
+  counts wrong, but `stat-test-two-proportions-setup-4` keys only the pooled check. Confirm against the revised CED.
+- **Power as a calculation (3.8).** `stat-errors-and-power-7` and the notes compute power from a stated cutoff.
+  Keep if the revised 3.8 still has power only conceptually plus "factors that affect power"; retire the numeric
+  item otherwise (rewrite it in place, keep its id).
+- **Sample size for a margin of error (3.3).** Notes and `stat-ci-one-proportion-9` solve for $n$. Confirm it is in
+  the revised 3.3 objectives.
+- **Interval and test agreement (one proportion).** Now taught as "almost always agree" (the test's SD uses
+  $p_0$, the interval's SE uses $\hat{p}$), as 3.11-3.13 already did; keep that wording course-wide.

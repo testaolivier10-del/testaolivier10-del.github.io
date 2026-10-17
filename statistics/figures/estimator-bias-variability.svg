@@ -20,7 +20,7 @@
 <rect x="521.28" y="147.69" width="29.44" height="0.31" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
 <rect x="553.28" y="147.92" width="29.44" height="0.08" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
 <line x1="40" y1="148" x2="600" y2="148" stroke="#1F2A28" stroke-width="1.4"/>
-<line x1="280" y1="24" x2="280" y2="148" stroke="#1F2A28" stroke-width="2" stroke-dasharray="6 4"/>
+<line x1="280" y1="38" x2="280" y2="148" stroke="#1F2A28" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="40" y="32" font-size="16" font-weight="bold" fill="#6E2470">Random samples of 25</text>
 <text x="600" y="32" font-size="15" text-anchor="end" fill="#1F2A28">Unbiased, high variability</text>
 <rect x="36.32" y="310" width="7.36" height="0" fill="#CCE3F0" stroke="#0072B2" stroke-width="1"/>
@@ -93,7 +93,7 @@
 <rect x="572.32" y="310" width="7.36" height="0" fill="#CCE3F0" stroke="#0072B2" stroke-width="1"/>
 <rect x="580.32" y="310" width="7.36" height="0" fill="#CCE3F0" stroke="#0072B2" stroke-width="1"/>
 <line x1="40" y1="310" x2="600" y2="310" stroke="#1F2A28" stroke-width="1.4"/>
-<line x1="280" y1="186" x2="280" y2="310" stroke="#1F2A28" stroke-width="2" stroke-dasharray="6 4"/>
+<line x1="280" y1="200" x2="280" y2="310" stroke="#1F2A28" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="40" y="194" font-size="16" font-weight="bold" fill="#0072B2">Random samples of 100</text>
 <text x="600" y="194" font-size="15" text-anchor="end" fill="#1F2A28">Unbiased, low variability</text>
 <rect x="36.32" y="472" width="7.36" height="0" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
@@ -183,7 +183,7 @@
 <line x1="600" y1="472" x2="600" y2="478" stroke="#1F2A28" stroke-width="1.2"/>
 <text x="600" y="495" font-size="15" text-anchor="middle" fill="#1F2A28">0.8</text>
 <text x="320" y="520" font-size="16" text-anchor="middle" fill="#1F2A28">value of the estimate</text>
-<line x1="280" y1="348" x2="280" y2="472" stroke="#1F2A28" stroke-width="2" stroke-dasharray="6 4"/>
+<line x1="280" y1="362" x2="280" y2="472" stroke="#1F2A28" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="40" y="356" font-size="16" font-weight="bold" fill="#D55E00">A method that favors one group (100)</text>
 <text x="600" y="356" font-size="15" text-anchor="end" fill="#1F2A28">Biased, low variability</text>
 <text x="272" y="52" font-size="15" text-anchor="end" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">true p = 0.40</text>

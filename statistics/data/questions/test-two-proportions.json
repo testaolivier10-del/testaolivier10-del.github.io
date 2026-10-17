@@ -663,7 +663,7 @@
      "parameter": {
       "options": [
        "the true proportion of men at the college who skip breakfast ... that of women",
-       "the proportion of the 200 men sampled who skipped breakfast ... the 220 women sampled",
+       "the proportion of the sampled men who skipped breakfast ... the sampled women",
        "the number of men who skip breakfast ... the number of women"
       ],
       "correct": 0,

@@ -81,11 +81,7 @@
     "mistakes": [
      {
       "value": 0.08333333333333333,
-      "why": "That counts only a sum of exactly 10. \"At least 10\" also includes 11 and 12."
-     },
-     {
-      "value": 0.08333333333333333,
-      "why": "That counts sums above 10. \"At least 10\" includes 10 itself."
+      "why": "That counts only part of the event: a sum of exactly 10 (3 outcomes), or only the sums above 10 (3 outcomes). \"At least 10\" means 10, 11 or 12, which is 6 outcomes."
      }
     ]
    }
@@ -269,8 +265,8 @@
     ],
     "mistakes": [
      {
-      "expr": "1 - 28/40",
-      "why": "That subtracts the non-freshmen. The complement rule subtracts P(freshman) = 12/40 from 1."
+      "expr": "40 - 12",
+      "why": "That is the number of non-freshmen, 28, not a probability. The complement rule subtracts P(freshman) = 12/40 from 1."
      },
      {
       "expr": "12/40",
