@@ -4,7 +4,7 @@ clot starves the muscle -> aspirin calms the platelets (does not dissolve the cl
 EMT kneels: screening questions, 4 x 81 mg chewable, chew then swallow."""
 import re, math
 import beats_w1014 as B
-import lpx, medart, chem, rig
+import lpx, medart, chem, rig, lottiefx
 from lpx import wt, cam_to, char, swap, chip
 
 ID = "w1014-01-aspirin-rig"
@@ -229,7 +229,11 @@ def compose(c):
     (p1, q1), (p2, q2) = tangents(CH, 22, HC, 250)
     call_d = f"M{p1[0]:.1f} {p1[1]:.1f} L{q1[0]:.1f} {q1[1]:.1f} L{q2[0]:.1f} {q2[1]:.1f} L{p2[0]:.1f} {p2[1]:.1f} Z"
     call_l = "".join(f'<path d="M{a[0]:.1f} {a[1]:.1f} L{b[0]:.1f} {b[1]:.1f}" stroke="#ff8a7a" stroke-width="3" stroke-dasharray="10 9" opacity=".8"/>' for a, b in ((p1, q1), (p2, q2)))
-    svg = f'''<svg viewBox="0 0 1080 960"><defs>{lpx.DEFS}
+    # Lottie effects (free LottieFiles animations, see lottie/README.md), only where they match the moment
+    lf_alert, scr = lottiefx.place(c, "alert-dot", PX + 120, 300, 120, 120, C["asp"][1] + 0.05, dur=1.6, recolor={"#ff2d55": "#ff6b6b", "#fe2c55": "#ff6b6b"})
+    lf_spark, _ = lottiefx.place(c, "sparkle-stars", 790, 30, 280, 280, C["asp"][3] + 1.25, dur=1.8)
+    lf_bulb, _ = lottiefx.place(c, "idea-bulb", 150, 445, 180, 180, wt(c, "asp", "chewing") - 0.1, dur=1.9, recolor={"#ffbd59": "#ffd23f"})
+    svg = scr + f'''<svg viewBox="0 0 1080 960"><defs>{lpx.DEFS}
     <linearGradient id="gWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2a33"/><stop offset=".6" stop-color="#2a1f2a"/><stop offset="1" stop-color="#160f18"/></linearGradient>
     <linearGradient id="gNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f1c3a"/><stop offset="1" stop-color="#26355e"/></linearGradient>
     <linearGradient id="gCone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd58a" stop-opacity=".55"/><stop offset="1" stop-color="#ffd58a" stop-opacity="0"/></linearGradient>
@@ -258,7 +262,7 @@ def compose(c):
     <g id="callout" opacity="0"><path d="{call_d}" fill="url(#gCall)"/>{call_l}
       <circle cx="{CH[0]:.1f}" cy="{CH[1]:.1f}" r="22" fill="none" stroke="#ff8a7a" stroke-width="4"/></g>
     <g id="scH" opacity="0"><g id="hGrow">{heart_svg(c, out)}</g></g>
-    <g clip-path="url(#lensClip)"><g id="scV" opacity="0"><g id="vZoom"><g id="vCam">{artery_svg(c, out)}{race_svg()}</g></g></g></g>
+    <g clip-path="url(#lensClip)"><g id="scV" opacity="0"><g id="vZoom"><g id="vCam">{artery_svg(c, out)}{race_svg()}{lf_alert}{lf_spark}</g></g></g></g>
     <g id="insW" opacity="0">
       <circle cx="{INS[0]}" cy="{INS[1]}" r="{INS[2]}" fill="#2a1f2a"/>
       <g clip-path="url(#insClip)"><g id="insMove">
@@ -267,6 +271,7 @@ def compose(c):
         {rig.char(c, "frank-chest", 150, 165, 705, "fi")}
       </g></g>
       <circle id="insRing" cx="{INS[0]}" cy="{INS[1]}" r="{INS[2]}" fill="none" stroke="#ff8a7a" stroke-width="7" opacity="0"/>
+      {lf_bulb}
     </g>
     <g clip-path="url(#txClip)"><g id="scT" opacity="0"><g id="tZoom">
       {room_svg_simple(c)}
