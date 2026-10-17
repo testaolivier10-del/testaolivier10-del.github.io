@@ -98,3 +98,37 @@ character 109,952, before Unit 3; another scraper was out of credits), so these 
   the revised 3.3 objectives.
 - **Interval and test agreement (one proportion).** Now taught as "almost always agree" (the test's SD uses
   $p_0$, the interval's SE uses $\hat{p}$), as 3.11-3.13 already did; keep that wording course-wide.
+
+## u4-u5-review: points left open by the Units 4-5 accuracy review (open, 2026-10-17)
+
+From `docs/apstat-reviews/u4-u5.md`. The first two need a change to shared runtime code, which the review
+did not touch; content workarounds are in place.
+
+- **The `df` grader rounds to the nearest whole number** (`statistics/assets/stat-grade.js`, `numeric`, the
+  `count`/`df` rule `Math.round(v) === Math.round(x)`). Judgment: this does not match the course's own
+  convention or the exam. Readers do not score df alone; they accept the technology df (25.58, at any
+  sensible rounding) or the conservative df, and judge the $t^*$ or p-value that follows; with Table B the
+  course says "round the row down". The rule had two effects in `stat-ci-two-means-3` (key 25.58): the Table B
+  row 25 was graded wrong while 26 was graded right, and 26 is also $n_1 + n_2 - 2$, the pooled df the
+  course excludes, so that slip cannot be authored as a mistake. Content workaround: the item now lists
+  `alts: [25]`. Proposed fix (lead): for `df`, accept a typed value within `tol` of the key, `floor(key)` and
+  the `alts`; drop the nearest-integer rule (or keep it only with a note that Table B rows round down).
+- **Two-sample intervals cannot accept both df routes without also accepting $z^*$.** The interval grader
+  has no `alts`, so `stat-ci-two-means-4`, `-8` and `stat-ci-two-means-claims-11` used a wide `tol`
+  (0.3, 0.1, 0.03) to admit the conservative interval, and that band also admitted the $z^* = 1.96$ interval,
+  a slip the CED's Unit 4 overview names (confusing t and z). Content workaround: each stem now says "Use the
+  technology degrees of freedom" and the `tol` is narrow (0.05, 0.03, 0.01); the explanation names the
+  conservative interval as also accepted on the exam. Proposed fix (lead): for an `interval` with
+  `from.fn: "ci2mean"`, have `prepareBank` add the conservative interval as an accepted alternative (as
+  `fromValue` already does for numeric `lo`/`hi`), then the stems can go back to either df.
+- **Residual plots draw the x axis through 0** (`statistics/assets/tools/stat-plot.js`, `kind: "resid"`
+  has no `leftAxis`, and the frame puts the x axis at y = 0). Tick labels then sit among the points: in
+  the regression exam set `residuals-s2`, the 88°F residual ($-1.0$) lands on the "90" label. Proposed:
+  draw the axis at the bottom for `resid` and keep the dashed zero line. Data dotplots also place the
+  x-axis label inside the plot at the lower right, where tall stacks can cover it (two stimuli were given
+  wider x ranges to clear it).
+- **CED Units 4-5 pages still unread** (`ced-text`). WebFetch reached the Unit 4 overview ("students often
+  confuse t-tests with z-tests", hypotheses about parameters) and the titles of 4.1, 4.2, 4.7, 5.1, 5.3
+  and 5.5, nothing from the topic pages. Still to confirm: whether reading $s$ from output is assessed
+  (taught in 5.5 and the regression FRQ), and whether 5.5 still expects $b = r\frac{s_y}{s_x}$ as a
+  relationship (taught, one setup item).

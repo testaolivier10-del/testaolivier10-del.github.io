@@ -73,7 +73,7 @@
   function axes(G, o){
     var out = [], b = G.b, tk = ticks(G.lo, G.hi, G.W < 420 ? 6 : 8), d = Math.max(o.minDec || 0, decs(tk.step));
     out.push('<line class="pv-axis" x1="' + f2(G.l) + '" y1="' + f2(b) + '" x2="' + f2(G.r) + '" y2="' + f2(b) + '"/>');
-    tk.list.forEach(function(v){ var x = G.sx(v); if(x < G.l + 18 || x > G.W - 6) return; // clear of the axis name at the left end if(o.avoid != null && Math.abs(o.avoid - x) < 22) return; out.push('<line class="pv-tick" x1="' + f2(x) + '" y1="' + f2(b) + '" x2="' + f2(x) + '" y2="' + f2(b + 5) + '"/>' + svgText(x, b + 19, minus(v.toFixed(d)), 'pv-tl')); });
+    tk.list.forEach(function(v){ var x = G.sx(v); if(x < G.l + 18 || x > G.W - 6) return; /* clear of the axis name at the left end */ if(o.avoid != null && Math.abs(o.avoid - x) < 22) return; out.push('<line class="pv-tick" x1="' + f2(x) + '" y1="' + f2(b) + '" x2="' + f2(x) + '" y2="' + f2(b + 5) + '"/>' + svgText(x, b + 19, minus(v.toFixed(d)), 'pv-tl')); });
     out.push(svgText(G.l - 4, b + 19, o.name, 'pv-an', 'end'));
     if(o.z){
       var zb = b + 34, zlo = Math.ceil((G.lo - o.z.center) / o.z.se), zhi = Math.floor((G.hi - o.z.center) / o.z.se);
