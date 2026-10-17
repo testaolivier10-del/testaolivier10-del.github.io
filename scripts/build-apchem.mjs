@@ -31,6 +31,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlink
 import { join, dirname } from 'node:path';
 import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
+import { connectionsWithNext } from './lib/lesson-next.mjs';
 import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from './lib/glossary.mjs';
 import { premiumData, lockedLd, courseOffers } from './lib/premium-data.mjs';
 import {
@@ -176,7 +177,7 @@ function build() {
       { id: 'check', kind: 'Check yourself', nav: 'Check yourself', h: 'Check yourself', html: `<p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check">${staticQuestions(check, stimuli, depth)}</div>` },
       { id: 'summary', kind: 'Summary', nav: 'Summary', h: 'Summary', html: g(L.summary) },
       { id: 'next', kind: 'Up next', nav: 'What comes next', h: 'What comes next', html: nx ? `<nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="${nx.id}.html">${esc(nx.title)} &rarr;</a></p></nav>` : '<p>This is the last topic in the course.</p>' },
-      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="chem-links chem-nav-ref">${connections(id, L).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
+      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="chem-links chem-nav-ref">${connectionsWithNext(connections(id, L), nx).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
     ].filter(Boolean);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LearningResource', '@id': `${url}#lesson`, name: t.title, url, description: desc, learningResourceType: 'Lesson', educationalLevel: 'High school', inLanguage: 'en', ...freeLd(t),
@@ -187,12 +188,13 @@ function build() {
     const body = `
 ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
 <div class="xshell">${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../units/${ch.id}.html` }, { name: t.title }])}</div>
-<div class="xshell chem-ls${parts.length > 1 ? ' chem-stepped' : ''}">
+<div class="xshell chem-ls cx-ls${parts.length > 1 ? ' chem-stepped' : ''}" data-course="apchem"${nx ? ` data-next-title="${esc(nx.title)}" data-next-unit="${nx.chapter}"${isFreeTopic(map, nx) ? ' data-next-free="1"' : ''}` : ''}>
   <aside class="chem-ls-rail chem-nav-ref" aria-label="Lesson parts">
-    <p class="chem-ls-k">${unitLabel(ch)} · ${esc(ch.title)}</p>
+    <p class="chem-ls-k cx-ls-k">${unitLabel(ch)} · ${esc(ch.title)}</p>
     <p class="chem-ls-links"><a href="../units/${ch.id}.html">&larr; Back to the unit</a><a href="../notes/${id}.html">Read the notes</a></p>
-    <div class="chem-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / ${parts.length}</span></div>
-    <ol class="chem-ls-steps">${parts.map((p, i) => `<li><a href="#${p.id}"><span class="n">${i + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
+    <div class="chem-ls-prog cx-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / ${parts.length}</span></div>
+    <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of ${parts.length}</span><span class="cx-ls-all">All steps</span></button>
+    <ol class="chem-ls-steps cx-ls-steps" id="lesson-steps">${parts.map((p, i) => `<li><a href="#${p.id}"><span class="n">${i + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
   </aside>
   <main id="main" class="chem-ls-main chem-lesson">
   <header class="chem-ls-hero">
@@ -200,8 +202,6 @@ ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
     <h1>${esc(t.title)}</h1>
     <p class="lede">${esc(lede)}</p>
     <p class="chem-tags chem-nav-ref">${(t.practices || []).map(n => `<span class="chem-tag">Practice ${n}: ${esc(practiceName(n))}</span>`).join('')}</p>
-    ${shareBar(`lessons/${id}.html`, `${t.title}: chemistry lesson`, 'lesson')}
-    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=${id}">Question set for this topic</a></p>
   </header>
   <div class="chem-ls-card">
 ${parts.map((p, i) => `  <section class="chem-part chem-step${i === 0 ? ' is-on' : ''}" id="${p.id}" aria-labelledby="h-${p.id}">
@@ -211,16 +211,20 @@ ${parts.map((p, i) => `  <section class="chem-part chem-step${i === 0 ? ' is-on'
   </section>`).join('\n')}
     <div class="chem-ls-actions chem-nav-ref"><button type="button" class="chem-ls-back">&larr; Previous</button><button type="button" class="chem-ls-go">Continue &rarr;</button><a class="chem-ls-go" hidden href="${nx ? `${nx.id}.html">Next lesson` : `../units/${ch.id}.html">Back to the unit`} &rarr;</a></div>
   </div>
+  <div class="cx-ls-end">
+    ${shareBar(`lessons/${id}.html`, `${t.title}: chemistry lesson`, 'lesson')}
+    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=${id}">Question set for this topic</a></p>
+  </div>
   </main>
 </div>
 ${STEP_FIRST_PAINT}
 ${footer(depth, `lesson:${id}`)}
 <script type="application/json" id="chem-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
-${tail({ depth, section: 'learn', extra: ['chem-questions.js', 'chem-lesson.js'], premium: true })}
+${tail({ depth, section: 'learn', extra: ['chem-questions.js', 'chem-lesson.js'], premium: true, site: ['course/lesson.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: `lessons/${id}.html`, depth, jsonld, noindex }) + body;
+    return head({ title, desc, path: `lessons/${id}.html`, depth, jsonld, noindex, meta: '<link rel="stylesheet" href="../../assets/course/lesson.css">\n' }) + body;
   }
 
   /* ------------------------------------------------------------ notes */

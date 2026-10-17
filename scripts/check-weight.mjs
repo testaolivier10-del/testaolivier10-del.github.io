@@ -483,7 +483,9 @@ const BUDGETS = [
      tiny inline script opens the saved step before first paint, which took
      an A&P lesson's layout shift from 0.27-1.0 to under 0.1. Measured
      10.4 KB. */
-  ['anatomy-physiology/lessons/heart-chambers-valves.html', 10.6],
+  /* 10.6 -> 10.8 (polish 2026-10-17, D2): the phone step toggle ("Step 1 of 11") and the
+     lesson.css link, so a lesson starts on the first phone screen. Measured 10.7 KB. */
+  ['anatomy-physiology/lessons/heart-chambers-valves.html', 10.8],
   /* 19 -> 19.5 (audit 2026-10, W8): each figure's <picture> with its AVIF
      srcset (about 0.03 KB gzipped a figure) in exchange for AVIF images. */
   ['anatomy-physiology/notes/cardiac-cycle.html', 19.5],

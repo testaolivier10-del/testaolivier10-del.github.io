@@ -1,0 +1,39 @@
+/* Shared lesson chrome (assets/course/lesson.js) for A&P and the four AP
+   courses. Course colours come from --ctint/--cink (theme.css).
+
+   Phones: the rail's unit label and progress bar give way to one toggle,
+   "Step 3 of 11: How it works", and the step list stays folded until it is
+   opened, so the lesson itself starts on the first screen. Wider screens
+   never see the toggle. Without JavaScript the list shows as before. */
+.cx-ls-toggle{display:none;}
+@media (max-width:600px){
+  .cx-ls .cx-ls-k,.cx-ls .cx-ls-prog{display:none;}
+  .cx-ls .cx-ls-toggle{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;margin:0;padding:8px 14px;border:0;border-radius:var(--radius);background:var(--white);box-shadow:var(--lift-sm);color:var(--ink);font:800 14px/1.35 var(--font-ui);text-align:left;cursor:pointer;}
+  .cx-ls .cx-ls-toggle[hidden]{display:none;}
+  .cx-ls-now{flex:1;min-width:0;}
+  .cx-ls-all{flex:0 0 auto;font:800 12.5px var(--font-ui);color:var(--cink);}
+  .cx-ls-all::after{content:"";display:inline-block;width:7px;height:7px;margin:0 2px 2px 8px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .15s ease;}
+  .cx-ls-toggle[aria-expanded="true"] .cx-ls-all::after{transform:rotate(-135deg);margin-bottom:-2px;}
+  .cx-ls .cx-ls-steps:not(.is-open){display:none;}
+  .cx-ls .cx-ls-steps.is-open{flex-direction:column;gap:2px;padding:6px;border-radius:var(--radius);background:var(--white);box-shadow:var(--lift-sm);}
+  .cx-ls .cx-ls-steps.is-open a{box-shadow:none;background:none;padding:8px;}
+  .cx-ls .cx-ls-steps.is-open .t{display:inline !important;}
+  .cx-ls .cx-ls-steps.is-open .current a{background:var(--ctint);}
+}
+@media (scripting:none){.cx-ls .cx-ls-toggle{display:none !important;}.cx-ls .cx-ls-steps:not(.is-open){display:flex;}}
+@media (prefers-reduced-motion:reduce){.cx-ls-all::after{transition:none;}}
+
+/* Share, copy and print, moved to the end of the lesson. */
+.cx-ls-end{margin:18px 0 0;}
+.cx-ls-end > *{margin-top:0;}
+
+/* After "Check yourself": one quiet offer, never a modal. */
+.cx-ls-nudge{position:relative;margin:14px 0 0;padding:14px 16px;border-radius:var(--radius);background:var(--ctint);color:var(--ink);}
+.cx-ls-nudge .premium-card{margin:10px 0 0;background:var(--white);}
+.cx-ls-nudge-t{margin:0;padding-right:72px;font:600 14px/1.55 var(--font-ui);}
+.cx-ls-nudge-t b{font-weight:900;}
+.cx-ls-nudge-a{margin:10px 0 0;}
+.cx-ls-nudge-x{position:absolute;top:8px;right:8px;min-height:36px;padding:0 10px;border:0;background:none;color:var(--muted);font:800 12.5px var(--font-ui);cursor:pointer;text-decoration:underline;}
+.cx-ls-nudge-x:hover{color:var(--ink);}
+.cx-ls-nudge-x:focus-visible,.cx-ls-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+@media print{.cx-ls-toggle,.cx-ls-nudge,.cx-ls-end{display:none !important;}}
