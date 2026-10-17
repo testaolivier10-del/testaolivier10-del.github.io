@@ -35,6 +35,7 @@ import { join, dirname } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
+import { connectionsWithNext } from './lib/lesson-next.mjs';
 import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from './lib/glossary.mjs';
 import { premiumData, lockedLd, courseOffers } from './lib/premium-data.mjs';
 import {
@@ -185,7 +186,7 @@ function build() {
       { id: 'check', kind: 'Check yourself', nav: 'Check yourself', h: 'Check yourself', html: `<p class="stat-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="stat-qs" data-set="check">${staticQuestions(check, stimuli, depth)}</div>` },
       { id: 'summary', kind: 'Summary', nav: 'Summary', h: 'Summary', html: g(L.summary) },
       { id: 'next', kind: 'Up next', nav: 'What comes next', h: 'What comes next', html: nx ? `<nav class="stat-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="${nx.id}.html">${esc(nx.title)} &rarr;</a></p></nav>` : '<p>This is the last topic in the course.</p>' },
-      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="stat-links stat-nav-ref">${connections(id, L).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
+      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="stat-links stat-nav-ref">${connectionsWithNext(connections(id, L), nx).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
     ].filter(Boolean);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LearningResource', '@id': `${url}#lesson`, name: t.title, url, description: desc, learningResourceType: 'Lesson', educationalLevel: 'High school', inLanguage: 'en', ...freeLd(t),
@@ -196,12 +197,13 @@ function build() {
     const body = `
 ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
 <div class="xshell">${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../units/${ch.id}.html` }, { name: t.title }])}</div>
-<div class="xshell stat-ls${parts.length > 1 ? ' stat-stepped' : ''}">
+<div class="xshell stat-ls cx-ls${parts.length > 1 ? ' stat-stepped' : ''}" data-course="apstat"${nx ? ` data-next-title="${esc(nx.title)}" data-next-unit="${nx.chapter}"${isFreeTopic(map, nx) ? ' data-next-free="1"' : ''}` : ''}>
   <aside class="stat-ls-rail stat-nav-ref" aria-label="Lesson parts">
-    <p class="stat-ls-k">${unitLabel(ch)} · ${esc(ch.title)}</p>
+    <p class="stat-ls-k cx-ls-k">${unitLabel(ch)} · ${esc(ch.title)}</p>
     <p class="stat-ls-links"><a href="../units/${ch.id}.html">&larr; Back to the unit</a><a href="../notes/${id}.html">Read the notes</a></p>
-    <div class="stat-ls-prog"><div class="stat-ls-track"><div class="stat-ls-fill"></div></div><span class="stat-ls-count">Step 1 / ${parts.length}</span></div>
-    <ol class="stat-ls-steps">${parts.map((p, i) => `<li><a href="#${p.id}"><span class="n">${i + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
+    <div class="stat-ls-prog cx-ls-prog"><div class="stat-ls-track"><div class="stat-ls-fill"></div></div><span class="stat-ls-count">Step 1 / ${parts.length}</span></div>
+    <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of ${parts.length}</span><span class="cx-ls-all">All steps</span></button>
+    <ol class="stat-ls-steps cx-ls-steps" id="lesson-steps">${parts.map((p, i) => `<li><a href="#${p.id}"><span class="n">${i + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
   </aside>
   <main id="main" class="stat-ls-main stat-lesson">
   <header class="stat-ls-hero">
@@ -209,8 +211,6 @@ ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
     <h1>${esc(t.title)}</h1>
     <p class="lede">${esc(lede)}</p>
     <p class="stat-tags stat-nav-ref">${(t.practices || []).map(n => `<span class="stat-tag">Practice ${n}: ${esc(practiceName(n))}</span>`).join('')}</p>
-    ${shareBar(`lessons/${id}.html`, `${t.title}: statistics lesson`, 'lesson')}
-    <p class="stat-small stat-nav-ref"><a href="../practice.html?topic=${id}">Question set for this topic</a></p>
   </header>
   <div class="stat-ls-card">
 ${parts.map((p, i) => `  <section class="stat-part stat-step${i === 0 ? ' is-on' : ''}" id="${p.id}" aria-labelledby="h-${p.id}">
@@ -220,16 +220,20 @@ ${parts.map((p, i) => `  <section class="stat-part stat-step${i === 0 ? ' is-on'
   </section>`).join('\n')}
     <div class="stat-ls-actions stat-nav-ref"><button type="button" class="stat-ls-back">&larr; Previous</button><button type="button" class="stat-ls-go">Continue &rarr;</button><a class="stat-ls-go" hidden href="${nx ? `${nx.id}.html">Next lesson` : `../units/${ch.id}.html">Back to the unit`} &rarr;</a></div>
   </div>
+  <div class="cx-ls-end">
+    ${shareBar(`lessons/${id}.html`, `${t.title}: statistics lesson`, 'lesson')}
+    <p class="stat-small stat-nav-ref"><a href="../practice.html?topic=${id}">Question set for this topic</a></p>
+  </div>
   </main>
 </div>
 ${STEP_FIRST_PAINT}
 ${footer(depth, `lesson:${id}`)}
 <script type="application/json" id="stat-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
-${tail({ depth, section: 'learn', extra: ['stat-questions.js', 'stat-lesson.js'], premium: true })}
+${tail({ depth, section: 'learn', extra: ['stat-questions.js', 'stat-lesson.js'], premium: true, site: ['course/lesson.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: `lessons/${id}.html`, depth, jsonld, noindex }) + body;
+    return head({ title, desc, path: `lessons/${id}.html`, depth, jsonld, noindex, meta: '<link rel="stylesheet" href="../../assets/course/lesson.css">\n' }) + body;
   }
 
   /* ------------------------------------------------------------ notes */
@@ -555,9 +559,9 @@ ${tail({ depth, section: 'learn', extra: ['stat-toc.js', 'stat-book.js'] })}
   const PART_LABEL = { course: 'Units', skills: 'Math you need' };
   const HOME_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
   // The "Try a step" card: one real question from a free unit's bank, read at
-  // build time. Chosen when Unit 1 is written; until then the card is left out
-  // (the test fixture's sample topic is 1.2).
-  const SAMPLE_Q = { topic: 'limit-notation', id: 'stat-limit-notation-1' };
+  // build time (a Unit 1 item on voluntary response bias, a reader-report miss);
+  // left out when that topic is not built (the test fixture's sample is Unit 4).
+  const SAMPLE_Q = { topic: 'sampling-problems', id: 'stat-sampling-problems-11' };
   const STREAK_SVG = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg>';
 
   function homePath(depth) {
@@ -648,11 +652,11 @@ ${bodyOpen()}
     <div>
       <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>
       <h1>${COURSE_HTML}, ${esc(IDENTITY.headline)}</h1>
-      <p class="lede">Built on the revised course framework, in its order: ${word(units.length).toLowerCase()} units, each topic taught from scratch, with the math you need placed just before it is used. Then practice that checks what the exam checks: data and plots to read, numbers from a table or a calculator, the setup shown as the exam asks, and conclusions written in context.</p>
-      <p class="stat-review-note">${BETA_PILL} ${esc(BETA_NOTE)}</p>
+      <p class="lede">Each topic taught from scratch for the 2027 exam, then practice that checks your numbers, your setup and your conclusions in context.</p>
       <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apstat_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All units &rarr;</a>${freeSim ? `<a class="link-quiet" href="tools/${freeSim.slug}.html">${esc(freeSim.name)} &rarr;</a>` : ''}</div>
     </div>
-    <div class="stat-level-card" id="statLevel">
+    <div class="stat-level-card" id="statLevel" data-lv-zero>
+      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
       <div class="stat-level-top">
         <div class="stat-level-chip"><div class="level-ring" id="statLvRing">L1</div><div class="t"><b id="statLvTitle">${esc(IDENTITY.firstRank)}</b><span id="statLvSub">Level 1 &middot; 0 XP</span></div></div>
         <div class="streak-chip" id="statStreak" hidden title="Day streak, across every subject">${STREAK_SVG}<span id="statStreakN">0</span></div>
@@ -699,7 +703,7 @@ ${bodyOpen()}
     <div>
       <h2 id="h-covers">What the course covers</h2>
       <p>${units.length} units and ${unitTopics.length} topics in the order of the course framework (the revised course, first examined in May 2027), plus ${skillTopics} math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
-      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets that share one data set, plot or table, as on the real exam. Every option has its own explanation; a number from a table and the same number from a calculator are both right.</p>
+      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets that share one data set, plot or table, as on the real exam. Every option has its own explanation; a number from a table and the same number from a calculator are both right. Practice checks what the exam checks: data and plots to read, the setup shown as the exam asks, and conclusions written in context, with the math you need placed just before it is used.</p>
       <p class="stat-small">${built.length === topics.length ? `All ${built.length} topics are built, each with its lesson, notes and questions.` : `So far, ${built.length} of ${topics.length} topics are built. The rest are listed so you can see where everything fits.`}</p>
     </div>
     <div>
@@ -733,11 +737,10 @@ ${sims.length ? `
 ${homeSample(depth)}
   <section class="xsection" aria-labelledby="h-go">
     <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="stat-cards">${(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`).join('')}
-      <li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>
-      <li><a href="formula-sheet.html"><b>The reference sheet, explained</b><span>Every formula on the sheet the exam gives you, what it means and when to use it, how to read the tables, and what is not on it.</span></a></li>
-${units.filter(chapterBuilt).length ? `      <li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>
-` : ''}    </ul>
+    <ul class="stat-cards stat-go">${[...(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`),
+      `<li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>`,
+      `<li><a href="formula-sheet.html"><b>The reference sheet, explained</b><span>Every formula on the sheet the exam gives you, what it means and when to use it, how to read the tables, and what is not on it.</span></a></li>`,
+      ...(units.filter(chapterBuilt).length ? [`<li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>`] : [])].join('')}</ul>
   </section>
 
   <section class="xsection" aria-label="About LevlPrep">
@@ -747,7 +750,6 @@ ${units.filter(chapterBuilt).length ? `      <li><a href="unit-tests/${units.fil
       <div class="trust-pill">Unit sheets free to print</div>
       <div class="trust-pill">Progress saved on your device</div>
     </div>
-    <p class="stat-disclaimer stat-home-legal">${esc(DISCLAIMER)}</p>
   </section>
 </main>
 ${footer(depth, 'home')}
@@ -821,7 +823,7 @@ ${bodyOpen(` data-app="${a.slug}"`)}
     : `<p class="stat-soon">This page arrives with the first published unit. Meanwhile, read the <a href="learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `page:${a.slug}`)}
-${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssList.map(f => `<link rel="stylesheet" href="assets/${f}">\n`).join('')}${a.studio ? '<link rel="stylesheet" href="../assets/course/tool-studio.css">\n' : ''}${tail({ depth, section: a.section, extra: ['stat-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(a.studio ? ['course/tool-studio.js'] : []), ...(a.siteScripts || [])] })}
+${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssList.map(f => `<link rel="stylesheet" href="assets/${f}">\n`).join('')}${a.studio ? '<link rel="stylesheet" href="../assets/course/tool-studio.css">\n' : ''}${tail({ depth, section: a.section, extra: ['stat-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'dashboard'].includes(a.slug) ? ['course/flags.js'] : []), ...(a.studio ? ['course/tool-studio.js'] : []), ...(a.siteScripts || [])] })}
 </body>
 </html>
 `;

@@ -142,6 +142,8 @@
             var first = window.ApStatCore && window.ApStatCore.lessonComplete(topic);
             if(window.ApStatCore) window.ApStatCore.event('apstat-session-finish', { mode: 'lesson', topic: topic, answered: total, correct: right });
             chk.insertAdjacentHTML('afterend', '<p class="stat-done" role="status"><b>Lesson complete.</b> ' + right + ' of ' + total + ' right' + (first ? ', +40 XP' : '') + '.</p>');
+            // Sign in to keep it, or the Premium pitch when the next lesson is Premium (assets/course/lesson.js).
+            if(window.LevlLesson) window.LevlLesson.checked(chk.parentNode.querySelector('.stat-done'));
           }
         }
       }, data.stimuli);

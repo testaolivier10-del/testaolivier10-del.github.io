@@ -57,7 +57,7 @@
   }
   function plain(t){ var T = window.ApStatTex; return T && T.plain ? T.plain(t) : String(t).replace(/\$/g, ''); }
   var SLOT = { decision: 'Decision', evidence: 'Evidence', direction: 'Direction', parameter: 'Parameter', context: 'Context', level: 'Confidence', claim: 'Claim', condition: 'Condition' };
-  /* The conclusion builder: one labelled select per slot, in order. */
+  /* The conclusion builder: one labeled select per slot, in order. */
   function builderHtml(p){
     var C = p.conclude, names = Object.keys(C.slots);
     return '<fieldset class="stat-fq-rpart stat-js-build"><legend>Now build it part by part</legend>' +
@@ -204,7 +204,7 @@
       if(kick) S.add('details', lsBox('ls-sec', [kick]));
       S.pills([{ html: esc(unitLabel(p.unit)) + ' · ' + esc(DATA.skills[p.skill] || p.skill), tone: 'ghost' }], 'left');
       S.caption(auto ? (left ? '<b>Your next prompt.</b> Write your answer, then check it.' : 'Write your answer, then check it against the rubric.') : 'Write your answer, then check it against the rubric.');
-      S.hint({ target: ta, text: 'Write your answer here', round: 14 });
+      S.hint({ target: ta, text: 'Write your answer here', round: 14, inside: true });
     }
     ta.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(function(){ saveDraft(p.id, ta.value); }, 300); });
     checkBtn.addEventListener('click', function(){

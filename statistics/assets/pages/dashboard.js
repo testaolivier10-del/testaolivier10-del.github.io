@@ -100,15 +100,15 @@
     var units = CU.units.filter(function(u){ return built.some(function(t){ return t.unit === u.id; }); });
     html += H.panel({ id: 'stat-db-u', title: 'Mastery by unit and topic',
       hint: 'Mastery counts distinct questions you have right, weighted by level and fading slowly if you do not revisit them. Untouched topics count as zero.',
-      body: units.length ? units.map(function(u){
+      body: units.length ? H.groups(units.map(function(u){
         var m = A.unitMastery(u.id), ts = built.filter(function(t){ return t.unit === u.id; });
-        return H.group({ label: unitName(u.id), value: m.value, tier: tier(m.value, m.answered), note: ts.filter(function(t){ return A.topicMastery(t.id).answered; }).length + ' of ' + plural(ts.length, 'topic') + ' started' },
+        return { started: m.answered > 0, html: H.group({ label: unitName(u.id), value: m.value, tier: tier(m.value, m.answered), note: ts.filter(function(t){ return A.topicMastery(t.id).answered; }).length + ' of ' + plural(ts.length, 'topic') + ' started' },
           ts.map(function(t){
             var tm = A.topicMastery(t.id);
             return bar({ label: (t.ced ? t.ced + ' ' : '') + t.title, href: BASE + 'lessons/' + t.id + '.html', value: tm.value, tier: tier(tm.value, tm.answered),
               note: tm.answered ? plural(tm.answered, 'item') + ' answered' : (store.lessons[t.id] ? 'Lesson finished' : 'Not started'), action: action(BASE + 'practice.html?topic=' + encodeURIComponent(t.id), 'Practice') });
-          }).join(''));
-      }).join('') : '<p class="cx-emptynote">Units appear here as they are published.</p>' });
+          }).join('')) };
+      }), 'unit') : '<p class="cx-emptynote">Units appear here as they are published.</p>' });
 
     html += H.panel({ id: 'stat-db-ex', title: 'Exam history', body: exams.length ? '<ul class="stat-db-list">' + exams.slice(0, 8).map(function(x){
         return '<li><b>' + esc(x.label) + '</b> <span class="stat-small">' + esc(new Date(x.ts).toLocaleDateString()) + '</span><br>Multiple choice ' + x.mcq.c + '/' + x.mcq.n + ' (' + pct(x.mcq.n ? x.mcq.c / x.mcq.n : 0) + '%)' +
@@ -146,7 +146,7 @@
       target: function(days){
         var left = built.filter(function(t){ return A.topicMastery(t.id).value < 0.6; }).length;
         if(!left) return { done: 'Every published topic is at strong or better. Keep Review clear and take a practice exam.' };
-        return { n: Math.ceil(left / Math.max(1, days)), unit: left === 1 ? 'topic' : 'topics', why: 'brought to strong covers the ' + left + ' not there yet' };
+        return { n: Math.ceil(left / Math.max(1, days)), unit: 'topics', one: 'topic', why: 'brought to strong covers the ' + left + ' not there yet' };
       }
     });
   }

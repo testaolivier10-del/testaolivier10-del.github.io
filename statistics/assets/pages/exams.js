@@ -16,7 +16,7 @@
 
    When the bank cannot fill a full exam, the setup says so plainly (what a
    full exam needs, what exists per unit and part, and per free-response
-   part) and offers a shorter exam from what exists, labelled as such; no
+   part) and offers a shorter exam from what exists, labeled as such; no
    count is invented.
 
    Timing: a visible clock per part. Section I and unit tests can be paused
@@ -27,7 +27,7 @@
    first tap on an answer locks it in. Every answer is recorded through
    ApStatCore when the exam ends (A&P decision 42), an unanswered question as
    a miss, so misses reach review. Results: MCQ score, FRQ self-score, by
-   unit and by skill and practice. No readiness band and nothing labelled an
+   unit and by skill and practice. No readiness band and nothing labeled an
    AP® score (spec decision 6: 2027 is a new format with no score data).
    History goes to apstat_prefs_v1
    .examHistory (the dashboard reads it).
@@ -466,6 +466,8 @@
       if(run.left <= 0){ clearInterval(run.tick); onEnd(true); }
     }, 250);
   }
+  // A flag set or cleared mid exam repaints the question map (assets/course/flags.js).
+  document.addEventListener('levl:flag', function(){ if(run && !run.done && run.qs && app.querySelector('.stat-ex-navcount')) status(); });
   function guard(e){ if(run && !run.done){ e.preventDefault(); e.returnValue = ''; } }
 
   function partName(sec, p){ return p.key ? 'Section ' + sec + ', Part ' + p.key : 'Section ' + (sec === 1 ? 'I' : 'II'); }
@@ -485,7 +487,7 @@
       '<div class="stat-ex-paused" hidden><p><b>Paused.</b> The question is hidden while the clock is stopped.</p><button type="button" class="btn-press stat-ex-resume">Resume</button></div>' +
       '<h2 class="sr-only">' + (P.key ? partName(1, P) : 'Section I') + ' questions</h2><div class="stat-ex-stage"></div>' +
       '<div class="stat-ex-controls"><button type="button" class="btn-outline stat-ex-prev">Previous</button><button type="button" class="btn-press stat-ex-next">Next</button><button type="button" class="btn-outline stat-ex-finish">' + endWord + '</button></div>' +
-      '<div class="stat-ex-confirm" hidden role="alertdialog" aria-labelledby="stat-ex-confirm-t"><p id="stat-ex-confirm-t"></p><button type="button" class="btn-press stat-ex-yes">' + (more ? endWord : 'Finish now') + '</button> <button type="button" class="btn-outline stat-ex-no">Keep working</button></div>' +
+      '<div class="stat-ex-confirm" hidden role="alertdialog" aria-labelledby="stat-ex-confirm-t"><p id="stat-ex-confirm-t"></p><div class="cx-flaglist" hidden></div><button type="button" class="btn-press stat-ex-yes">' + (more ? endWord : 'Finish now') + '</button> <button type="button" class="btn-outline stat-ex-no">Keep working</button></div>' +
     '</div>';
     app.querySelector('.stat-ex-nav').addEventListener('click', function(e){ var b = e.target.closest('[data-go]'); if(b) go(+b.getAttribute('data-go')); });
     app.querySelector('.stat-ex-prev').addEventListener('click', function(){ go(run.i - 1); });
@@ -518,6 +520,7 @@
       b.setAttribute('aria-label', 'Question ' + (i + 1) + ', ' + (d ? 'answered' : 'not answered'));
     });
     app.querySelector('.stat-ex-navcount').textContent = '(' + answered() + ' of ' + run.qs.length + ' answered)';
+    if(window.LevlFlags) window.LevlFlags.markNav(app.querySelectorAll('.stat-ex-nav button'), 'apstat', run.qs);
     app.querySelector('.stat-ex-prev').disabled = run.i === 0;
     var left = run.qs.length - answered();
     app.querySelector('.stat-ex-next').textContent = !left ? endWord() : (run.res[run.qs[run.i].id] ? 'Next' : 'Skip for now');
@@ -534,7 +537,7 @@
       stage.appendChild(box);
       run.els[q.id] = box;
       // A set's stimulus is shown with each of its questions.
-      Q.hydrate(box, [q], { exam: true, record: false, onAnswer: function(res){ lockedIn(q, box, res); } });
+      Q.hydrate(box, [q], { exam: true, record: false, flag: OWN.items.some(function(x){ return x.id === q.id; }) ? 'session' : undefined, onAnswer: function(res){ lockedIn(q, box, res); } });
       var nEl = box.querySelector('.stat-q-n'); if(nEl) nEl.textContent = (i + 1) + '.';
       var chk = box.querySelector('.stat-check'); if(chk) chk.textContent = 'Lock in answer';
     }
@@ -568,6 +571,7 @@
     var left = run.qs.length - answered(), box = app.querySelector('.stat-ex-confirm');
     box.querySelector('p').textContent = (left ? plural(left, 'question') + ' not answered yet. Unanswered questions count as wrong. ' : 'All ' + run.qs.length + ' answered. ') +
       (moreAfter() ? 'You cannot come back to ' + (run.mcqParts[run.pi].key ? 'this part' : 'Section I') + '. End it now?' : 'Finish and see your results?');
+    if(window.LevlFlags) window.LevlFlags.examList(box.querySelector('.cx-flaglist'), 'apstat', run.qs, function(i){ box.hidden = true; go(i); });
     box.hidden = false;
     box.querySelector('.stat-ex-yes').focus();
   }

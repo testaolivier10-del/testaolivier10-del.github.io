@@ -1,5 +1,5 @@
 /* Flagged questions for the courses on the shared engine (A&P, AP® Biology,
-   AP® Chemistry, AP® Physics 1, AP® Calculus AB): window.LevlFlags.
+   AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics): window.LevlFlags.
 
    The same idea as NREMT's flag (nremt/practice-engine.js) and ochem's
    (ochem/assets/flags.js): a manual bookmark on one question. It is not the
@@ -106,7 +106,7 @@
   /* The dashboard card: how many are flagged, linking to the Flagged mode.
      It mounts itself above the dashboard (#app[data-slug="dashboard"]) and
      shows only when something is flagged. */
-  var DIRS = { 'anatomy-physiology': 'anp', bio: 'apbio', chem: 'apchem', physics: 'apphys', calculus: 'apcalc' };
+  var DIRS = { 'anatomy-physiology': 'anp', bio: 'apbio', chem: 'apchem', physics: 'apphys', calculus: 'apcalc', statistics: 'apstat' };
   function dashCard(){
     var app = document.querySelector('#app[data-slug="dashboard"]');
     var course = DIRS[(location.pathname.split('/').filter(Boolean).slice(-2, -1)[0]) || ''];
