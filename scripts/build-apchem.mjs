@@ -636,7 +636,8 @@ ${bodyOpen()}
       <p class="chem-review-note">${BETA_PILL} ${esc(BETA_NOTE)}</p>
       <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apchem_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All units &rarr;</a>${freeSim ? `<a class="link-quiet" href="tools/${freeSim.slug}.html">${esc(freeSim.name)} &rarr;</a>` : ''}</div>
     </div>
-    <div class="chem-level-card" id="chemLevel">
+    <div class="chem-level-card" id="chemLevel" data-lv-zero>
+      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
       <div class="chem-level-top">
         <div class="chem-level-chip"><div class="level-ring" id="chemLvRing">L1</div><div class="t"><b id="chemLvTitle">Mole Counter</b><span id="chemLvSub">Level 1 &middot; 0 XP</span></div></div>
         <div class="streak-chip" id="chemStreak" hidden title="Day streak, across every subject">${STREAK_SVG}<span id="chemStreakN">0</span></div>

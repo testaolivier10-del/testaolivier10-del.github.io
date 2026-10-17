@@ -81,6 +81,8 @@
   function renderHero(){
     if(!HP) return;
     var info = HP.levelInfo('ochem');
+    // Zeros say nothing to a new visitor (polish 2026-10-17, B10).
+    el('heroProgress').toggleAttribute('data-lv-zero', !(info.total > 0));
     el('heroLevelRing').textContent = 'L' + info.level;
     el('heroLevelTitle').textContent = info.title;
     el('heroLevelSub').textContent = 'Level ' + info.level + ' · ' + info.total + ' XP';
