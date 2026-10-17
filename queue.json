@@ -12,7 +12,9 @@
       "youtube_id": "W31WC2n1g0Y",
       "shorts_thumb": true,
       "note": "Earlier batch (b2). TikTok Oct 6; YouTube posted late on Oct 7 at Olivier's request.",
-      "thumb_v2": true
+      "thumb_v2": true,
+      "related_video": "aMvkCfwrepA",
+      "related_set": false
     },
     {
       "id": "b2-04-orgo-markovnikov",
@@ -92,7 +94,9 @@
       "buffer": "6ac452fa3fbdeb68b9092ae2",
       "youtube_id": "hKG6W1GyZTQ",
       "yt_buffer": "6ac7063001166a3e1c11cbba",
-      "shorts_thumb": true
+      "shorts_thumb": true,
+      "related_video": "aMvkCfwrepA",
+      "related_set": false
     },
     {
       "id": "w1006-01-bag-rate",
@@ -128,7 +132,9 @@
       "youtube_id": "EBZNvvrwnuo",
       "thumbnail_set": null,
       "yt_buffer": "6ac706822977c961bdc2b4ed",
-      "shorts_thumb": true
+      "shorts_thumb": true,
+      "related_video": "aMvkCfwrepA",
+      "related_set": false
     },
     {
       "id": "w1006-03-chair-flip",
@@ -221,7 +227,9 @@
       "buffer": "6ac706e901166a3e1c11dc2d",
       "youtube_id": null,
       "thumbnail_set": null,
-      "yt_buffer": "6ac706fd57f9bd074d24fb48"
+      "yt_buffer": "6ac706fd57f9bd074d24fb48",
+      "related_video": "aMvkCfwrepA",
+      "related_set": false
     },
     {
       "id": "w1007-06-rs-steering",
@@ -354,7 +362,9 @@
       "buffer": "6acee56d1f3f10bcb7aabb5b",
       "youtube_id": null,
       "thumbnail_set": null,
-      "yt_buffer": "6acee579848c31c809572632"
+      "yt_buffer": "6acee579848c31c809572632",
+      "related_video": "aMvkCfwrepA",
+      "related_set": false
     },
     {
       "id": "w1007-05-sn2-umbrella",
