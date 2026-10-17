@@ -1,0 +1,249 @@
+{
+ "about": "The AP Statistics app pages. scripts/build-apstat.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in statistics/assets/<script>, which mounts into #app. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApStatCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apstat-spec.md decision 2). tools[] are the ten trainers of docs/apstat-spec.md section 6, pre-registered in Phase 0: page statistics/tools/<slug>.html, script statistics/assets/tools/<slug>.js, model statistics/assets/tools/math/<slug>.js (ApStatMath.<camelSlug>), content statistics/data/tools/<slug>.json, validator scripts/lib/apstat-tool-checks/<slug>.mjs, test scripts/test/apstat-tool-<slug>.test.mjs (docs/apstat-architecture.md, \"Tools\"). topic is the tool's context topic: the tool is built only when its data file exists and that topic is published. FREE OR PREMIUM is set here and only here: a tool with \"premium\": \"tools\" is Premium; sampling-distributions, data-explorer and probability-trees carry none and are free (docs/apstat-spec.md section 6, proposed; owner to confirm).",
+ "apps": [
+  {
+   "slug": "practice",
+   "premium": "question-bank",
+   "section": "practice",
+   "h1": "Practice",
+   "title": "Practice questions",
+   "desc": "Statistics practice by unit, topic or skill: data sets in stimulus sets, numbers graded by table or technology, typed setups and conclusions in context.",
+   "card": "Drill a unit, a topic or a skill, with the probability and regression sets.",
+   "script": "pages/practice.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "review",
+   "premium": "review",
+   "section": "review",
+   "h1": "Review",
+   "title": "Spaced review",
+   "desc": "Your statistics spaced review queue: every question you missed comes back just before you would forget it.",
+   "card": "Missed questions come back when you are about to forget them.",
+   "script": "pages/review.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "exams",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Exams",
+   "title": "Unit tests and practice exams",
+   "desc": "Timed statistics unit tests and full practice exams in the May 2027 format: 42 multiple-choice questions, then 4 free-response questions.",
+   "card": "Unit tests and full timed practice exams in the May 2027 format.",
+   "script": "pages/exams.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "frq",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Free-response practice",
+   "title": "Free-response practice",
+   "desc": "Statistics free-response practice in the four exam question types, 10 points each, with a rubric, a full-credit sample and a printable sheet.",
+   "card": "The four free-response question types, with 10-point rubrics and sample answers.",
+   "script": "pages/frq.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "justify",
+   "premium": "justify",
+   "section": "exams",
+   "h1": "Say it in context",
+   "title": "Say it in context",
+   "desc": "Statistics conclusions and interpretations in context, built part by part, then an answer that earns the point beside one that does not.",
+   "lede": "Write a conclusion or an interpretation, then check it against the rubric and two model answers: one that earns the point and one that loses it.",
+   "card": "Conclusions and interpretations in context, checked against a rubric.",
+   "script": "pages/justify.js",
+   "studio": true,
+   "css": [
+    "pages/pages.css",
+    "pages/entry.css"
+   ]
+  },
+  {
+   "slug": "cram",
+   "section": "exams",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Cram kit",
+   "title": "Cram kit",
+   "desc": "Statistics cram plans counted back from your exam date: three or two weeks, day by day, weighted by unit, with unit sheets, timed mixed sets and practice exams.",
+   "lede": "A 3-week or 2-week plan counted back from your exam date, day by day: unit sheets and notes, a timed mixed set and one free-response question each study day, two full practice exams and rest days. Print it and tick the days off.",
+   "card": "3-week and 2-week plans to exam day, and timed mixed sets.",
+   "script": "pages/cram.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "flashcards",
+   "section": "practice",
+   "h1": "Flashcards",
+   "title": "Flashcards",
+   "desc": "Spaced-repetition statistics flashcards built from the glossary, by unit and topic.",
+   "card": "Spaced-repetition cards from the glossary.",
+   "script": "pages/flashcards.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "tools",
+   "section": "tools",
+   "h1": "Tools",
+   "title": "Trainers",
+   "desc": "Statistics trainers: sampling distributions, data, sampling, experiments, probability, distributions, intervals, p-values, chi-square and regression.",
+   "card": "Trainers and simulators, then the questions about what you saw.",
+   "script": "pages/tools.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "dashboard",
+   "section": "dashboard",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Dashboard",
+   "title": "Your dashboard",
+   "desc": "Your statistics mastery by unit, topic and skill, with every miss linked to the lesson that teaches it.",
+   "card": "Mastery by unit, topic and skill.",
+   "script": "pages/dashboard.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "search",
+   "section": "",
+   "h1": "Search",
+   "title": "Search the course",
+   "desc": "Search every statistics lesson, notes page, glossary term and tool in the course.",
+   "script": "pages/search.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "teachers",
+   "section": "",
+   "h1": "For teachers",
+   "title": "For teachers",
+   "desc": "For statistics teachers: stable share links, printable notes and unit sheets, and sharing pages to Google Classroom, with no new student data collected.",
+   "lede": "Share any notes page, lesson or unit sheet with a stable link. Students need no account, and nothing they do leaves their device unless they choose to sign in.",
+   "static": true
+  }
+ ],
+ "tools": [
+  {
+   "slug": "data-explorer",
+   "kind": "simulator",
+   "topic": "summary-statistics",
+   "name": "Data explorer",
+   "title": "Data Explorer",
+   "desc": "One data set as a dotplot, a histogram and a boxplot at once: drag a point and watch the mean and median, the SD and the IQR, and the outlier fences respond.",
+   "blurb": "Drag a point and watch the mean, median and spread respond.",
+   "lede": "Drag a value and watch every summary and graph respond.",
+   "studio": true
+  },
+  {
+   "slug": "sampling-lab",
+   "kind": "simulator",
+   "topic": "random-sampling",
+   "name": "Sampling lab",
+   "title": "Sampling Lab",
+   "desc": "An illustrated population on a grid: draw simple random, stratified, cluster and systematic samples, see bias from convenience and voluntary response, and write a sampling procedure step by step.",
+   "blurb": "Draw four kinds of random sample and see where bias comes from.",
+   "lede": "Draw random samples four ways, then write the procedure.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "design-randomizer",
+   "kind": "simulator",
+   "topic": "experimental-design",
+   "name": "Design randomizer",
+   "title": "Design Randomizer",
+   "desc": "Experimental units, treatments, blocks and matched pairs: randomize with a seeded generator, check the balance, and name what random assignment allows.",
+   "blurb": "Randomize an experiment and see why it allows cause and effect.",
+   "lede": "Assign treatments at random, block, and name the design.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "probability-trees",
+   "kind": "simulator",
+   "topic": "conditional-probability",
+   "name": "Probability trees",
+   "title": "Probability Trees",
+   "desc": "The same events as a tree diagram, a two-way table and a Venn diagram, linked: conditional probability by slicing a row, independence checked, and a simulation closing in on the exact value.",
+   "blurb": "Slice a two-way table and watch conditional probability appear.",
+   "lede": "Build a tree, a table and a Venn diagram of the same events.",
+   "studio": true
+  },
+  {
+   "slug": "distribution-areas",
+   "kind": "simulator",
+   "topic": "normal-distribution",
+   "name": "Distribution areas",
+   "title": "Distribution Areas",
+   "desc": "Shade a region under a normal curve or a binomial histogram and read the probability: name the distribution, its parameters, the boundary and the direction, by table or technology.",
+   "blurb": "Shade the area and read the probability, normal or binomial.",
+   "lede": "Shade a region and read its probability, as the exam asks.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "sampling-distributions",
+   "kind": "simulator",
+   "topic": "sampling-dist-proportion",
+   "name": "Sampling distributions",
+   "title": "Sampling Distributions",
+   "desc": "Pick a population, a sample size and a statistic, then take one, a hundred or a thousand samples: the sampling distribution builds dot by dot, with its center and spread against the formulas and the Central Limit Theorem made visible.",
+   "blurb": "Watch a sampling distribution build, sample by sample.",
+   "lede": "Take samples and watch the distribution of the statistic build.",
+   "studio": true
+  },
+  {
+   "slug": "ci-capture",
+   "kind": "simulator",
+   "topic": "ci-one-proportion-claims",
+   "name": "Interval capture",
+   "title": "Interval Capture",
+   "desc": "A hundred confidence intervals from the same population, coloured by whether they capture the parameter: change the level and the sample size, see the margin of error, and pick the right interpretation.",
+   "blurb": "See what 95% confident really means, one hundred intervals at a time.",
+   "lede": "Build a hundred intervals and count how many capture the truth.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "p-value-explorer",
+   "kind": "simulator",
+   "topic": "p-values",
+   "name": "p-value explorer",
+   "title": "P-Value Explorer",
+   "desc": "The null distribution with the observed statistic and the shaded p-value, one or two sided, then Type I and II errors and power with the alternative overlaid.",
+   "blurb": "Shade the p-value, then see Type I and II errors and power.",
+   "lede": "See where a p-value comes from and what power depends on.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "chi-square-lab",
+   "kind": "simulator",
+   "topic": "chi-square-test",
+   "name": "Chi-square lab",
+   "title": "Chi-Square Lab",
+   "desc": "A two-way table: expected counts cell by cell, each component on a heat map, and the chi-square statistic on its distribution with its degrees of freedom and p-value.",
+   "blurb": "Fill in expected counts and watch the chi-square statistic build.",
+   "lede": "Build a chi-square test from a two-way table, cell by cell.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "regression-lab",
+   "kind": "simulator",
+   "topic": "least-squares-regression",
+   "name": "Regression lab",
+   "title": "Regression Lab",
+   "desc": "Drag points on a scatterplot: the least-squares line, r, r squared and the residual plot update live, with influential points and extrapolation shown, and slope and r squared interpreted in context.",
+   "blurb": "Drag points and watch the least-squares line and residuals respond.",
+   "lede": "Drag points and watch the regression line, r and residuals respond.",
+   "studio": true,
+   "premium": "tools"
+  }
+ ]
+}

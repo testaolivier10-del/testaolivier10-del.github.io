@@ -1,0 +1,104 @@
+/* AP® Statistics course home, loaded by statistics/index.html only. A fork of
+   anatomy-physiology/assets/anp-home.css (spec decisions 1 and 27): the same
+   layout, components and shared theme.css pieces (level ring, XP track, qopt,
+   trust pills), with the class prefix stat- and the course tint. stat-home.js
+   fills the level card, the three "now" cards and the path from the runtime;
+   the markup stands without it. */
+.stat-home-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,5vw,52px);align-items:center;}
+.stat-home-hero h1{max-width:18ch;}
+.stat-home-hero .stat-review-note{margin:0 0 20px;}
+.stat-level-card,.stat-now-card,.stat-qcard{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift-lg);}
+.stat-level-card{border-radius:22px;padding:26px 26px 22px;}
+.stat-level-top{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.stat-level-chip{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+.stat-level-chip .t b{display:block;font-weight:900;font-size:16px;}
+.stat-level-chip .t span{font-size:12.5px;color:var(--muted);font-weight:700;}
+.stat-level-card .level-ring{border-color:var(--cink);color:var(--cink);background:var(--ctint);}
+.stat-part-bars{margin-top:14px;}
+.stat-part-bars .mini-domain-row span:first-child{min-width:92px;}
+.stat-now-row{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:18px;}
+.stat-now-card{padding:22px 24px;}
+.stat-now-card.due{box-shadow:var(--lift-lg),inset 0 0 0 2px var(--amber);}
+.stat-now-card .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.stat-now-card h2{margin:0 0 6px;font-size:19px;}
+.stat-now-card p{margin:0 0 16px;font-size:13.5px;font-weight:700;color:var(--muted);}
+.stat-now-card .xp-track{height:10px;margin:0 0 14px;}
+
+/* The path: a real ordered list of unit links, placed as a snake (left to
+   right, then right to left) by the --r/--c pairs the generator writes for 5,
+   4 and 3 columns, so it needs no script to lay out. One column on a phone.
+   stat-home.js only draws the line through the rings. */
+.stat-path-legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0 26px;}
+.stat-path-legend span{display:inline-flex;align-items:center;gap:8px;font:800 12.5px var(--font-ui);color:var(--muted);background:var(--white);padding:6px 12px;border-radius:999px;box-shadow:var(--lift-sm);}
+.stat-path-legend i{width:10px;height:10px;border-radius:50%;background:var(--c);}
+.stat-path{position:relative;max-width:1000px;margin:0 auto;container-type:inline-size;}
+.stat-path .path-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;}
+.stat-path .path-track,.stat-path .path-fill{fill:none;stroke:var(--line);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;}
+.stat-path .path-fill{stroke:var(--cink);}
+.stat-path-list{list-style:none;margin:0;padding:14px 0 6px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:40px 10px;}
+.stat-path .node{position:relative;z-index:1;grid-row:var(--r5);grid-column:var(--c5);display:flex;justify-content:center;}
+.stat-path .node > *{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;text-decoration:none;color:inherit;border-radius:12px;}
+.stat-path .ring{position:relative;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;background:conic-gradient(var(--cink) calc(var(--p,0) * 1%),var(--line) 0);transition:transform .18s ease;}
+.stat-path .ring::before{content:"";position:absolute;inset:-8px;border-radius:50%;background:var(--pc);opacity:.18;z-index:-1;}
+.stat-path .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--white);box-shadow:var(--lift-sm);font:900 15px var(--font-mono);color:var(--muted);}
+.stat-path a:hover .ring,.stat-path a:focus-visible .ring{transform:translateY(-3px);}
+.stat-path .label{display:flex;flex-direction:column;gap:2px;max-width:170px;padding:2px 6px;border-radius:8px;background:var(--paper);}
+.stat-path .label b{font-size:13.5px;font-weight:900;line-height:1.25;text-wrap:balance;}
+.stat-path .label small{font:700 12px var(--font-ui);color:var(--muted);}
+.stat-path .part{align-self:center;margin-bottom:4px;font:900 10px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--pcd);padding:2px 8px;border-radius:999px;}
+.stat-path .current .ring{width:68px;height:68px;box-shadow:0 0 0 6px var(--ctint);}
+.stat-path .current .ring::before{inset:-14px;background:var(--ctint);opacity:.9;}
+.stat-path .current .n{width:54px;height:54px;color:var(--cink);font-size:17px;}
+.stat-path .current .label b,.stat-path .current .label small{color:var(--cink);}
+@container (max-width:899px){.stat-path-list{grid-template-columns:repeat(4,minmax(0,1fr));} .stat-path .node{grid-row:var(--r4);grid-column:var(--c4);}}
+@container (max-width:759px){.stat-path-list{grid-template-columns:repeat(3,minmax(0,1fr));} .stat-path .node{grid-row:var(--r3);grid-column:var(--c3);}}
+@container (max-width:479px){
+  .stat-path-list{grid-template-columns:1fr;gap:18px;}
+  .stat-path .node{grid-row:auto;grid-column:1;justify-content:flex-start;}
+  .stat-path .node > *{flex-direction:row;text-align:left;gap:16px;}
+  .stat-path .ring,.stat-path .current .ring{width:60px;height:60px;}
+  .stat-path .current .n{width:48px;height:48px;}
+  .stat-path .label{max-width:none;}
+  .stat-path .part{align-self:flex-start;}
+}
+@media (prefers-reduced-motion:reduce){.stat-path .ring{transition:none;}}
+
+/* Dark tools panel, sample question, about, trust. */
+.stat-feature{background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;color:#fff;}
+.stat-feature h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
+.stat-feature p{color:var(--muted-on-dark);font-size:15px;font-weight:600;margin:0 0 20px;max-width:42ch;}
+:root[data-theme="dark"] .stat-feature p{color:#D0DED9;} /* 5.3:1 on the dark theme navy; --muted-on-dark was 3.7:1 */
+.stat-feature .icon-circle{width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;margin:0 auto;}
+.stat-feature .icon-circle svg{width:170px;height:170px;}
+.stat-tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+.stat-tool-chips a{font:800 12px var(--font-ui);color:#fff;text-decoration:none;background:rgba(255,255,255,.14);border-radius:var(--radius-pill);padding:6px 12px;}
+.stat-tool-chips a:hover{background:rgba(255,255,255,.26);color:#fff;}
+.stat-sample-row,.stat-home-about{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,48px);align-items:center;}
+.stat-sample-row h2{margin-top:0;}
+.stat-sample-row .section-lede{margin:0 0 24px;text-align:left;}
+.stat-sample-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.stat-sample-list li{display:flex;align-items:center;gap:12px;font-weight:800;font-size:14.5px;padding:12px 16px;background:var(--white);border:var(--bw) solid var(--line);border-radius:14px;}
+.stat-sample-list .n{width:26px;height:26px;border-radius:8px;background:var(--ctint);color:var(--cink);display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);flex-shrink:0;}
+.stat-qcard{padding:26px;}
+.stat-qcard .qtext{font-weight:800;font-size:16px;margin:14px 0 18px;line-height:1.5;}
+.stat-qcard .qopt{font-size:14.5px;padding:13px 16px;box-shadow:var(--lift-sm);}
+.stat-qcard .why{margin:4px 0 0;padding:12px 14px;border-radius:12px;background:var(--ctint);font:600 13.5px/1.55 var(--font-ui);}
+.stat-qcard .why:empty{display:none;}
+.stat-qcard .why b{color:var(--cink);}
+.stat-sample-key summary{cursor:pointer;font-weight:800;color:var(--cink);}
+.stat-sample-key p{font:600 13.5px/1.55 var(--font-ui);}
+.js .stat-sample-key{display:none;}
+.stat-sample-more{margin:14px 0 0;}
+.stat-home-about{align-items:start;}
+.stat-home-about h2{font-size:22px;margin:0 0 12px;}
+.stat-home-about p{font-weight:600;line-height:1.7;}
+.stat-how li{align-items:flex-start;font-weight:600;line-height:1.5;}
+.stat-home-legal{max-width:none;text-align:center;margin:18px auto 0;}
+@media (max-width:1000px){.stat-now-row{grid-template-columns:1fr;}}
+@media (max-width:900px){
+  .stat-home-hero,.stat-feature,.stat-sample-row,.stat-home-about{grid-template-columns:1fr;}
+  .stat-feature{text-align:center;}
+  .stat-feature p{margin-left:auto;margin-right:auto;}
+  .stat-tool-chips{justify-content:center;}
+}
+@media (max-width:560px){.stat-feature .icon-circle,.stat-feature .icon-circle svg{width:120px;height:120px;}}
