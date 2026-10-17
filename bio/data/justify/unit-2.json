@@ -1,0 +1,100 @@
+{
+ "about": "Justification trainer prompts for Unit 2, Cell Structure and Function (docs/apbio-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u2-cube-model-cell-size",
+   "unit": "unit-2",
+   "topic": "cell-size",
+   "practice": "2.B",
+   "skill": "models",
+   "title": "A cube model of cell size",
+   "context": "<p>A student models cells as cubes. Every µm³ of cytoplasm uses oxygen at the same rate, and oxygen can enter only across the surface.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Surface area and volume of model cubes\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Side length (µm)</th><th scope=\"col\">Surface area (µm²)</th><th scope=\"col\">Volume (µm³)</th><th scope=\"col\">Surface area ÷ volume (per µm)</th></tr></thead><tbody><tr><td>10</td><td>600</td><td>1,000</td><td>0.60</td></tr><tr><td>20</td><td>2,400</td><td>8,000</td><td>0.30</td></tr><tr><td>40</td><td>9,600</td><td>64,000</td><td>0.15</td></tr></tbody></table></div>",
+   "prompt": "<b>Use</b> the model to <b>explain</b> why the size of a cell is limited.",
+   "checklist": [
+    "Uses values: doubling the side multiplies surface area by 4 but volume by 8, so the ratio halves (0.60 to 0.30 per µm)",
+    "Says surface area sets the rate of exchange, because materials enter and leave only across the plasma membrane",
+    "Says volume sets how much material the cell uses, so demand grows faster than supply as the cell grows",
+    "Concludes that above some size, exchange across the surface is too slow to supply the whole volume"
+   ],
+   "earns": {
+    "answer": "In the model, doubling the side from 10 µm to 20 µm multiplies the surface area by 4, from 600 to 2,400 µm², but the volume by 8, from 1,000 to 8,000 µm³. The surface area to volume ratio halves, from 0.60 to 0.30 per µm. Oxygen enters and wastes leave only across the plasma membrane, so surface area sets the rate of exchange. Volume sets how much oxygen the cell uses. As the cube grows, each µm³ of cytoplasm is served by less membrane. Above some size, exchange across the surface is too slow to supply the whole volume, so cell size is limited.",
+    "why": "It reads the model with numbers, says what surface area and volume each stand for, and uses the falling ratio to explain the limit."
+   },
+   "misses": {
+    "answer": "Bigger cells have less surface area, so they cannot take in enough oxygen.",
+    "why": "A bigger cube has more surface area, not less. The limit comes from the ratio of surface area to volume, and the answer uses no values from the model."
+   }
+  },
+  {
+   "id": "u2-beet-membrane-leak",
+   "unit": "unit-2",
+   "topic": "membrane-permeability",
+   "practice": "5.B",
+   "skill": "stats",
+   "title": "Heated beet cells and a leaking red compound",
+   "context": "<p>A red compound is stored inside beet cells and leaks out only through damaged membranes. Students held beet cubes at one temperature for 10 minutes, then placed each cube in room-temperature water for 30 minutes. They measured the absorbance of the water: more of the red compound gives a higher absorbance. Each mean is from 5 cubes, and the ± value gives the 95% confidence interval (mean ± 2 SE).</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Leakage of red compound from beet cubes by temperature\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Temperature (°C)</th><th scope=\"col\">Mean absorbance ± 2 SE</th></tr></thead><tbody><tr><td>25</td><td>0.12 ± 0.03</td></tr><tr><td>40</td><td>0.15 ± 0.04</td></tr><tr><td>55</td><td>0.48 ± 0.06</td></tr><tr><td>70</td><td>0.91 ± 0.07</td></tr></tbody></table></div>",
+   "prompt": "A student says that heating from 25 °C to 40 °C damaged the membranes. <b>Evaluate</b> the claim using the confidence intervals, and <b>compare</b> it with the change from 40 °C to 55 °C.",
+   "checklist": [
+    "Gives the intervals at 25 °C (0.09 to 0.15) and 40 °C (0.11 to 0.19) and notes that they overlap",
+    "Concludes the 25 °C to 40 °C difference is not good evidence of damage: it could come from variation between cubes",
+    "Shows the intervals at 40 °C (0.11 to 0.19) and 55 °C (0.42 to 0.54) do not overlap, so that increase is likely real"
+   ],
+   "earns": {
+    "answer": "The data do not support the claim. The 95% confidence interval at 25 °C runs from 0.09 to 0.15, and at 40 °C it runs from 0.11 to 0.19. The intervals overlap a lot, so the rise in mean absorbance from 0.12 to 0.15 may come from variation between cubes, not from membrane damage. From 40 °C to 55 °C the mean rises from 0.15 to 0.48, and the intervals, 0.11 to 0.19 and 0.42 to 0.54, do not overlap. That increase is very likely real, so the evidence points to membrane damage starting between 40 °C and 55 °C.",
+    "why": "It turns each mean ± 2 SE into an interval, uses overlap to judge each difference, and reaches a conclusion that matches the evidence."
+   },
+   "misses": {
+    "answer": "The claim is supported because absorbance went up from 0.12 to 0.15, so more of the red compound leaked at 40 °C.",
+    "why": "It compares only the means. With overlapping 95% confidence intervals, a difference this small is not good evidence of a real change."
+   }
+  },
+  {
+   "id": "u2-aquaporin-vesicles",
+   "unit": "unit-2",
+   "topic": "tonicity-osmoregulation",
+   "practice": "3.C",
+   "skill": "design",
+   "title": "What each control rules out",
+   "context": "<p>Researchers make small artificial vesicles from a phospholipid bilayer. In some, they insert aquaporin, a channel protein for water. They place vesicles in a solution and measure the percent increase in vesicle volume after 10 s.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Vesicle swelling in three groups\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Group</th><th scope=\"col\">Aquaporin in vesicle</th><th scope=\"col\">Outside solution</th><th scope=\"col\">Mean volume increase after 10 s (%)</th></tr></thead><tbody><tr><td>A</td><td>Yes</td><td>Hypotonic</td><td>28</td></tr><tr><td>B</td><td>No</td><td>Hypotonic</td><td>3</td></tr><tr><td>C</td><td>Yes</td><td>Isotonic</td><td>0</td></tr></tbody></table></div>",
+   "prompt": "<b>Identify</b> the independent and dependent variables for groups A and B, and <b>explain</b> what group B and group C each rule out.",
+   "checklist": [
+    "Independent variable: whether aquaporin is in the vesicle membrane",
+    "Dependent variable: percent increase in vesicle volume after 10 s",
+    "Group B shows how much water crosses the bare bilayer (3%), ruling out the bilayer alone as the cause of the fast swelling in group A",
+    "Group C rules out the protein itself or the handling of the vesicles as a cause of swelling, since without a concentration difference there is no net water entry"
+   ],
+   "earns": {
+    "answer": "The independent variable is whether aquaporin is in the vesicle membrane. The dependent variable is the percent increase in vesicle volume after 10 s. Group B has no aquaporin but is in the same hypotonic solution, and its vesicles swell only 3%. Water crosses the bare bilayer slowly, so the bilayer alone does not explain the 28% swelling in group A. The faster water entry is due to aquaporin. Group C has aquaporin but is in an isotonic solution, and its volume does not change. This rules out the idea that inserting the protein or handling the vesicles causes swelling by itself. Net water movement needs a difference in solute concentration across the membrane.",
+    "why": "It names both variables with their measurement and says, for each control, which other explanation it removes."
+   },
+   "misses": {
+    "answer": "The independent variable is aquaporin and the dependent variable is swelling. Groups B and C are the controls, so the results can be compared.",
+    "why": "It calls B and C controls without saying what each one rules out, and the dependent variable has no measurement or time."
+   }
+  },
+  {
+   "id": "u2-potato-sucrose-mass",
+   "unit": "unit-2",
+   "topic": "tonicity-osmoregulation",
+   "practice": "4.B",
+   "skill": "data",
+   "title": "Potato cores in sucrose solutions",
+   "context": "<p>Students placed potato cores in sucrose solutions at 22 °C and measured each core's mass before and after 24 hours. Each value is the mean of 4 cores.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Percent change in mass of potato cores by sucrose concentration\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Sucrose (M)</th><th scope=\"col\">Mean change in mass (%)</th></tr></thead><tbody><tr><td>0.0</td><td>+18.5</td></tr><tr><td>0.2</td><td>+6.1</td></tr><tr><td>0.4</td><td>−4.2</td></tr><tr><td>0.6</td><td>−12.8</td></tr><tr><td>0.8</td><td>−17.0</td></tr></tbody></table></div>",
+   "prompt": "<b>Describe</b> the effect of sucrose concentration on the change in mass, using values from the table, <b>estimate</b> the sucrose concentration at which there is no net movement of water, and <b>explain</b> the gain and loss of mass in terms of water potential.",
+   "checklist": [
+    "States the direction with values: from a gain of 18.5% in 0.0 M to a loss of 17.0% in 0.8 M sucrose",
+    "Notes the change in mass crosses zero between 0.2 M (+6.1%) and 0.4 M (−4.2%)",
+    "Estimates about 0.32 M (any value near 0.3 M) as the concentration with no net water movement",
+    "Explains gain and loss with water potential: water moves from the higher to the lower water potential"
+   ],
+   "earns": {
+    "answer": "As sucrose concentration increases, the cores gain less mass and then lose mass. In 0.0 M the cores gained 18.5% of their mass, and in 0.8 M they lost 17.0%. The change crosses zero between 0.2 M (+6.1%) and 0.4 M (−4.2%). Reading between those points, the change in mass is zero at about 0.32 M. There the water potential of the solution equals that of the potato cells, so there is no net water movement. In weaker solutions the solution has the higher water potential and water moves into the cells; in stronger ones water moves out.",
+    "why": "It describes the trend with values and units, locates the zero crossing from two data points and explains both sides with water potential."
+   },
+   "misses": {
+    "answer": "The more sucrose, the more mass the potato cores lost. The cores are isotonic at about 0.4 M.",
+    "why": "It gives no values, misses that cores gained mass in weak solutions, and ignores that cores already lost 4.2% at 0.4 M."
+   }
+  }
+ ]
+}

@@ -1,0 +1,101 @@
+{
+ "about": "Justification trainer prompts for Unit 8, Ecology (docs/apbio-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u8-energy-transfer-ten-percent",
+   "unit": "unit-8",
+   "topic": "energy-flow-ecosystems",
+   "practice": "1.C",
+   "skill": "mechanism",
+   "title": "Where the other 90% goes",
+   "context": "<p>In a grassland food chain, energy stored in new biomass each year is: producers 20,000 kcal/m², primary consumers 2,000 kcal/m², secondary consumers 200 kcal/m² and tertiary consumers 20 kcal/m².</p>",
+   "prompt": "<b>Explain</b> why only about 10% of the energy at one trophic level is stored as biomass at the next level, and what this means for the number of trophic levels the grassland can support.",
+   "checklist": [
+    "Says most of the energy an organism takes in is used in cellular respiration and leaves the ecosystem as heat",
+    "Says some energy is never eaten or absorbed: uneaten plant parts, feces and dead bodies pass to decomposers instead",
+    "Says only the energy stored in new biomass is available to the next trophic level",
+    "Concludes that energy shrinks tenfold at each step (20,000 to 20 kcal/m² in three steps), so too little remains to support more than a few levels"
+   ],
+   "earns": {
+    "answer": "Primary consumers do not eat all of the producers' biomass, and of what they eat, some is not digested and leaves as feces. That energy goes to decomposers, not to the next level. Of the energy consumers do absorb, most is used in cellular respiration to power movement, active transport and the building of molecules, and that energy leaves as heat. Only the energy stored in new biomass, about 10%, can be eaten by the next level. So energy falls tenfold at each step, from 20,000 to 2,000 to 200 to 20 kcal/m². After a few steps too little energy is left to support another population, so food chains have only a few trophic levels.",
+    "why": "It accounts for where the missing energy goes (not eaten, not absorbed, lost as heat in respiration) and uses the data to explain the limit on trophic levels."
+   },
+   "misses": {
+    "answer": "Each level only gets 10% of the energy because the rest is lost, so there are not many trophic levels.",
+    "why": "It restates the 10% figure. It never says how the energy is lost: respiration, heat and material that is never eaten or absorbed."
+   }
+  },
+  {
+   "id": "u8-paramecium-logistic",
+   "unit": "unit-8",
+   "topic": "population-density",
+   "practice": "4.B",
+   "skill": "data",
+   "title": "Growth of a Paramecium culture",
+   "context": "<p>A student added Paramecium to a flask of culture medium and counted them every 2 days. Fresh food was added every 2 days at the same rate.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Paramecium density over 12 days\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Day</th><th scope=\"col\">Density (cells/mL)</th></tr></thead><tbody><tr><td>0</td><td>10</td></tr><tr><td>2</td><td>40</td></tr><tr><td>4</td><td>150</td></tr><tr><td>6</td><td>380</td></tr><tr><td>8</td><td>520</td></tr><tr><td>10</td><td>560</td></tr><tr><td>12</td><td>570</td></tr></tbody></table></div>",
+   "prompt": "<b>Describe</b> the pattern of population growth, using values from the table, and <b>identify</b> the carrying capacity.",
+   "checklist": [
+    "Growth starts slowly, from 10 to 40 cells/mL over days 0 to 2 (15 cells/mL per day)",
+    "Growth is fastest between days 4 and 6: from 150 to 380 cells/mL, about 115 cells/mL per day",
+    "Growth slows and levels off: from 560 to 570 cells/mL over days 10 to 12, only 5 cells/mL per day",
+    "Identifies the carrying capacity as about 570 cells/mL and names the pattern as logistic growth"
+   ],
+   "earns": {
+    "answer": "The population shows logistic growth. It grows slowly at first, from 10 to 40 cells/mL over days 0 to 2, a rate of 15 cells/mL per day. Growth is fastest between days 4 and 6, when density rises from 150 to 380 cells/mL, about 115 cells/mL per day. After that the rate falls: 70 cells/mL per day between days 6 and 8, and only 5 cells/mL per day between days 10 and 12, when density goes from 560 to 570 cells/mL. The population levels off at a carrying capacity of about 570 cells/mL, where the food supply and the buildup of wastes limit further growth.",
+    "why": "It describes each phase with values, units and rates, names the pattern and reads the carrying capacity from where the curve levels off."
+   },
+   "misses": {
+    "answer": "The population grew quickly and then stopped growing at its carrying capacity.",
+    "why": "It gives no values, rates or units and does not state the carrying capacity as a number."
+   }
+  },
+  {
+   "id": "u8-snail-removal-cages",
+   "unit": "unit-8",
+   "topic": "community-ecology",
+   "practice": "3.C",
+   "skill": "design",
+   "title": "A removal experiment with cages",
+   "context": "<p>Two snail species, A and B, graze algae on intertidal rocks. Ecologists placed mesh cages over 20 rock patches. In 10 cages they removed all species A snails; in the other 10 they left both species. At the start, species B density was 40 snails/m² in both groups. After one year it was 95 snails/m² in the removal cages and 42 snails/m² in the cages with both species.</p>",
+   "prompt": "<b>Identify</b> the independent and dependent variables, <b>explain</b> what the cages with both species rule out, and <b>state</b> what the results suggest about how A and B interact.",
+   "checklist": [
+    "Independent variable: whether species A is present (removed or left in the cage)",
+    "Dependent variable: density of species B, in snails/m², after one year",
+    "Says the cages with both species have the same cages, rocks and year, ruling out the cages themselves or changes in weather or algae over the year as the cause of the rise in B",
+    "Concludes the rise from 40 to 95 snails/m² happened only when A was removed, which is evidence that A competes with B"
+   ],
+   "earns": {
+    "answer": "The independent variable is whether species A is present: removed or left in the cage. The dependent variable is the density of species B in snails/m² after one year. The cages with both species are the control. They had the same mesh cages, the same kind of rocks and the same year as the removal cages. In them, B changed only from 40 to 42 snails/m². This rules out the cages themselves, or changes in weather or algae growth during the year, as the reason B increased. B rose to 95 snails/m² only where A was removed, so A was holding B down, which is evidence of competition between the two species for algae.",
+    "why": "It names the variables with units, says exactly which other causes the control cages remove and draws the conclusion the comparison allows."
+   },
+   "misses": {
+    "answer": "The independent variable is species A and the dependent variable is species B. The cages with both species are the control group.",
+    "why": "The variables are vague (no presence or absence, no density or units), and it labels the control without saying what it rules out."
+   }
+  },
+  {
+   "id": "u8-invasive-plant-simpson",
+   "unit": "unit-8",
+   "topic": "ecosystem-disruptions",
+   "practice": "6.B",
+   "skill": "argument",
+   "title": "More species, less diversity?",
+   "context": "<p>Ecologists counted the first 100 plants along the same transect in a meadow before and five years after an invasive plant arrived. Simpson's diversity index is D = 1 − Σ(n/N)².</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Plant counts before and after an invasive species arrived\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Species</th><th scope=\"col\">Before (plants)</th><th scope=\"col\">After (plants)</th></tr></thead><tbody><tr><td>Native 1</td><td>30</td><td>10</td></tr><tr><td>Native 2</td><td>25</td><td>8</td></tr><tr><td>Native 3</td><td>25</td><td>7</td></tr><tr><td>Native 4</td><td>20</td><td>5</td></tr><tr><td>Invasive plant</td><td>0</td><td>70</td></tr></tbody></table></div><p>A student claims the invasive plant made the meadow more diverse, because the number of species rose from 4 to 5.</p>",
+   "prompt": "<b>Support</b> or <b>refute</b> the student's claim using Simpson's diversity index and reasoning about what diversity measures.",
+   "checklist": [
+    "Refutes the claim that the meadow became more diverse",
+    "Calculates D before ≈ 0.75 (1 − 0.255) and D after ≈ 0.49 (1 − 0.514)",
+    "Reasons that diversity depends on evenness as well as the number of species: one species now makes up 70 of 100 plants",
+    "Notes the native plants fell from 100 to 30, so the community is dominated by one species"
+   ],
+   "earns": {
+    "answer": "The data refute the claim. Before the invasion, D = 1 − (0.30² + 0.25² + 0.25² + 0.20²) = 1 − 0.255 ≈ 0.75. After it, D = 1 − (0.70² + 0.10² + 0.08² + 0.07² + 0.05²) = 1 − 0.514 ≈ 0.49. Diversity fell even though species richness rose from 4 to 5. Simpson's index measures how evenly individuals are spread among species as well as how many species there are. Before, the four natives were close to equal in number. After, the invasive plant makes up 70 of 100 plants and the natives dropped from 100 plants to 30, so two plants picked at random are much more likely to be the same species.",
+    "why": "It calculates the index before and after, uses the drop as evidence and explains why evenness, not just species count, sets diversity."
+   },
+   "misses": {
+    "answer": "The claim is wrong because the invasive plant took over, so the meadow is less diverse.",
+    "why": "It gives no index values and no reasoning about evenness, so it does not show why one more species can still mean lower diversity."
+   }
+  }
+ ]
+}

@@ -36,6 +36,7 @@ import {
   termIndex, glossify, figureImg, credit, renderFigures, stimulusBody, stimulusPanel, questionForPage, questionHtml,
   groupSets, hasApToken, stripMark, STIM_KIND,
 } from './lib/apbio-build.mjs';
+import { entryPages } from './lib/apbio-entry.mjs';
 
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
@@ -582,6 +583,7 @@ ${tail({ depth, section: 'learn', extra: ['bio-toc.js', 'bio-book.js'] })}
   </section>`;
   }
 
+
   function homePage() {
     const depth = '';
     const title = `${LABEL} Course, Free to Start | LevlPrep`;
@@ -618,8 +620,7 @@ ${bodyOpen()}
     <div>
       <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>
       <h1>${COURSE_HTML}, taught from scratch, in order.</h1>
-      <p class="lede">Built on the 2025 course framework, in its order: ${word(units.length).toLowerCase()} units, each topic taught from scratch for when your class moves too fast. See each process step by step, then answer harder, data-heavy questions that match the real exam.</p>
-      <p class="bio-review-note">${BETA_PILL} ${esc(BETA_NOTE)}</p>
+      <p class="lede">Each topic taught from scratch, in framework order. See the process, then answer data-heavy questions like the real exam.</p>
       <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apbio_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All units &rarr;</a>${freeSim ? `<a class="link-quiet" href="tools/${freeSim.slug}.html">${esc(freeSim.name)} &rarr;</a>` : ''}</div>
     </div>
     <div class="bio-level-card" id="bioLevel" data-lv-zero>
@@ -669,7 +670,7 @@ ${bodyOpen()}
   <section class="xsection bio-home-about" aria-label="About the course">
     <div>
       <h2 id="h-covers">What the course covers</h2>
-      <p>${units.length} units and ${unitTopics.length} topics in the order of the 2025 course framework, plus ${skillTopics} skills topics built on the official formula sheet: statistics, rates, water potential and experimental design. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
+      <p>${units.length} units and ${unitTopics.length} topics in the order of the 2025 course framework, plus ${skillTopics} skills topics built on the official formula sheet: statistics, rates, water potential and experimental design. Each topic is taught from scratch for when your class moves too fast, with an interactive lesson, a free notes page and exam-style practice, and each unit has a printable unit sheet.</p>
       <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation.</p>
       <p class="bio-small">${built.length === topics.length ? `All ${built.length} topics are built, each with its lesson, notes and questions.` : `So far, ${built.length} of ${topics.length} topics are built. The rest are listed so you can see where everything fits.`}</p>
     </div>
@@ -707,9 +708,8 @@ ${sims.length ? `
 ${homeSample(depth)}
   <section class="xsection" aria-labelledby="h-go">
     <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="bio-cards">${(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`).join('')}
-      <li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>
-    </ul>
+    <ul class="bio-cards bio-go">${[...(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`), `<li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>`,
+      ...(units.filter(chapterBuilt).length ? [`<li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>`] : [])].join('')}</ul>
   </section>
 
   <section class="xsection" aria-label="About LevlPrep">
@@ -719,7 +719,6 @@ ${homeSample(depth)}
       <div class="trust-pill">Unit sheets free to print</div>
       <div class="trust-pill">Progress saved on your device</div>
     </div>
-    <p class="bio-disclaimer bio-home-legal">${esc(DISCLAIMER)}</p>
   </section>
 </main>
 ${footer(depth, 'home')}
@@ -775,7 +774,8 @@ ${tail({ depth, section: 'home', extra: ['bio-home.js'] })}
   function appShell(a) {
     const depth = '', path = `${a.slug}.html`, url = `${SITE}${BASE}${path}`;
     const scriptOk = a.script && existsSync(join(ROOT, 'bio', 'assets', a.script));
-    const cssOk = a.css && existsSync(join(ROOT, 'bio', 'assets', a.css));
+    // css: one file, or a list (a page that adds its own sheet on top of pages.css).
+    const cssList = [].concat(a.css || []).filter(f => existsSync(join(ROOT, 'bio', 'assets', f)));
     const hub = HUB_PAGES.has(a.slug);
     // Practice, Review, Flashcards and Exams: the shared study shell
     // (docs/course-shell.md, W-C), as in the other three courses.
@@ -792,12 +792,12 @@ ${bodyOpen(` data-app="${a.slug}"`)}
   ${study || hub
     ? `<header class="page-head"><div class="eyebrow">${COURSE_HTML} <span class="cx-beta">Beta</span></div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`
     : `<header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`}
-  <div id="app" class="bio-app-mount${study ? ' cx-study' : ''}" data-slug="${a.slug}"${a.premium ? ` data-premium="${a.premium}"` : ''}>${a.slug === 'tools' ? toolsHub() : scriptOk
+  <div id="app" class="bio-app-mount${study ? ' cx-study' : ''}" data-slug="${a.slug}"${a.premium ? ` data-premium="${a.premium}"` : ''}${a.studio ? ' data-studio="1"' : ''}>${a.slug === 'tools' ? toolsHub() : scriptOk
     ? '<noscript><p>This page needs JavaScript. Every notes page works without it.</p></noscript>'
     : `<p class="bio-soon">This page arrives with the first published unit. Meanwhile, read the <a href="learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `page:${a.slug}`)}
-${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssOk ? `<link rel="stylesheet" href="assets/${a.css}">\n` : ''}${tail({ depth, section: a.section, extra: ['bio-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'dashboard'].includes(a.slug) ? ['course/flags.js'] : []), ...(a.siteScripts || [])] })}
+${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssList.map(f => `<link rel="stylesheet" href="assets/${f}">\n`).join('')}${a.studio ? '<link rel="stylesheet" href="../assets/course/tool-studio.css">\n' : ''}${tail({ depth, section: a.section, extra: ['bio-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(a.studio ? ['course/tool-studio.js'] : []), ...(['practice', 'review', 'exams', 'dashboard'].includes(a.slug) ? ['course/flags.js'] : []), ...(a.siteScripts || [])] })}
 </body>
 </html>
 `;
@@ -1101,12 +1101,17 @@ window.ApBioCurriculum = ${JSON.stringify(data)};
     put(`assets/bank/${ch}-why.json`, JSON.stringify(b.why));
   }
   put('assets/bank/index.json', bankIndex());
+  /* The free unit practice tests and the justification trainer's prompts
+     (scripts/lib/apbio-entry.mjs; spec decision 29). */
+  const entry = entryPages({ map, C, head, tail, footer, crumbNav, crumbs, orgCrumbs, esc, SITE, BASE, COURSE_ID, COURSE_NAME, BETA_PILL, LABEL,
+    courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic });
+  for (const [rel, content] of Object.entries(entry.pages)) put(rel, content);
 }
 
 /* Generated places hold nothing else. With no map, every generated file
    left behind is stale. */
-const OWNED_DIRS = ['lessons', 'notes', 'units', 'unit-sheets', 'assets/bank', 'frq', 'assets/frq', 'tools', 'assets/tool-data'];
-const OWNED_FILES = ['index.html', 'learn.html', 'glossary.html', 'assets/bio-curriculum.js', 'assets/glossary.json', 'assets/notes-index.json', 'assets/summaries.json',
+const OWNED_DIRS = ['lessons', 'notes', 'units', 'unit-sheets', 'assets/bank', 'frq', 'assets/frq', 'tools', 'assets/tool-data', 'unit-tests'];
+const OWNED_FILES = ['index.html', 'learn.html', 'glossary.html', 'assets/bio-curriculum.js', 'assets/glossary.json', 'assets/notes-index.json', 'assets/summaries.json', 'assets/justify.json',
   ...(C.pages.apps || []).map(a => `${a.slug}.html`)];
 const stale = [];
 for (const d of OWNED_DIRS) {

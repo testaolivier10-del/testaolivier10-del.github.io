@@ -1,0 +1,100 @@
+{
+ "about": "Justification trainer prompts for Unit 1, Chemistry of Life (docs/apbio-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u1-water-oil-heating",
+   "unit": "unit-1",
+   "topic": "water-hydrogen-bonding",
+   "practice": "1.C",
+   "skill": "mechanism",
+   "title": "Why water warms more slowly than oil",
+   "context": "<p>A student heats 500 g of water and 500 g of vegetable oil on identical hot plates. Each sample absorbs 21,000 J of energy. The water warms from 20.0 °C to 30.0 °C. The oil warms from 20.0 °C to about 41 °C.</p>",
+   "prompt": "<b>Explain</b>, at the level of molecules, why the same amount of energy raised the temperature of the water less than the temperature of the oil.",
+   "checklist": [
+    "Says water molecules are polar and form hydrogen bonds with each other, while oil molecules are nonpolar and do not",
+    "Says part of the energy absorbed by the water breaks hydrogen bonds instead of making the molecules move faster",
+    "Links temperature to the average kinetic energy of the molecules, so less energy going into motion means a smaller temperature rise"
+   ],
+   "earns": {
+    "answer": "Water molecules are polar. The partial negative oxygen of one water molecule is attracted to the partial positive hydrogens of its neighbors, so the molecules are held together by many hydrogen bonds. Oil molecules are nonpolar and form no hydrogen bonds. When the water absorbed 21,000 J, part of that energy broke hydrogen bonds, and only the rest made the molecules move faster. Temperature measures the average kinetic energy of the molecules, so the water warmed by 10 °C while the oil warmed by about 21 °C. This is why water has a high specific heat.",
+    "why": "It names the cause (hydrogen bonds between polar water molecules), says where the extra energy goes, and connects that to temperature as molecular motion."
+   },
+   "misses": {
+    "answer": "Water has a higher specific heat than oil, so it takes more energy to heat up water.",
+    "why": "It restates the result with a name. It never says what in water's structure causes the high specific heat or where the absorbed energy goes."
+   }
+  },
+  {
+   "id": "u1-buried-charged-r-group",
+   "unit": "unit-1",
+   "topic": "proteins",
+   "practice": "6.E",
+   "skill": "prediction",
+   "title": "A charged R group inside a protein",
+   "context": "<p>A small protein folds into a compact shape with a pocket that binds a sugar molecule. Amino acid 42 sits in the protein's interior. Its R group is valine, which is nonpolar, and the R groups around it are also nonpolar. A lab makes a version of the protein that is identical except that amino acid 42 is aspartic acid, whose R group carries a negative charge at pH 7.</p>",
+   "prompt": "<b>Predict</b> how this change affects the protein's ability to bind the sugar, and <b>justify</b> your prediction.",
+   "checklist": [
+    "Predicts that the changed protein binds the sugar less well or not at all",
+    "Says the charged R group is hydrophilic and is not stable buried among nonpolar R groups, so the hydrophobic interactions in the interior are disrupted",
+    "Says the protein folds differently, so its tertiary structure and the shape of the binding pocket change",
+    "Links the changed shape of the pocket to weaker binding: structure determines function"
+   ],
+   "earns": {
+    "answer": "The changed protein will bind the sugar less well, or not at all. Tertiary structure depends on interactions between R groups. In the original protein, nonpolar valine is packed with other nonpolar R groups away from water, and these hydrophobic interactions hold the interior together. The negatively charged R group of aspartic acid is hydrophilic, so it is not stable buried among nonpolar R groups. The chain folds differently, which moves the charge toward water and changes the tertiary structure. The binding pocket changes shape, so the sugar fits less well and binding drops.",
+    "why": "It makes a clear prediction and justifies it with a chain of causes: R group polarity, then folding, then pocket shape, then function."
+   },
+   "misses": {
+    "answer": "The protein will not work because an amino acid changed, and changing the amino acids changes the protein.",
+    "why": "It predicts without a mechanism. It says nothing about the polarity of the two R groups, how folding changes or why the pocket's shape matters."
+   }
+  },
+  {
+   "id": "u1-fatty-acid-melting-points",
+   "unit": "unit-1",
+   "topic": "lipids",
+   "practice": "3.C",
+   "skill": "design",
+   "title": "Double bonds and melting point",
+   "context": "<p>A student asks whether the number of double bonds in a fatty acid changes its melting point. The student measures the melting points of four pure fatty acids, three trials each, in a temperature-controlled bath. All four fatty acids have 18 carbons.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Melting points of four 18-carbon fatty acids\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Fatty acid</th><th scope=\"col\">C=C double bonds</th><th scope=\"col\">Mean melting point (°C)</th></tr></thead><tbody><tr><td>Stearic acid</td><td>0</td><td>69</td></tr><tr><td>Oleic acid</td><td>1</td><td>13</td></tr><tr><td>Linoleic acid</td><td>2</td><td>−5</td></tr><tr><td>Linolenic acid</td><td>3</td><td>−11</td></tr></tbody></table></div>",
+   "prompt": "<b>Identify</b> the independent and dependent variables, and <b>explain</b> why the student chose fatty acids that all have 18 carbons.",
+   "checklist": [
+    "Independent variable: the number of C=C double bonds in the fatty acid (0, 1, 2 or 3)",
+    "Dependent variable: the melting point of the fatty acid, measured in °C",
+    "Says chain length also affects melting point, because longer chains have more contact and more attractions between neighboring chains",
+    "Says holding chain length constant lets the drop in melting point be linked to the double bonds and not to a difference in length"
+   ],
+   "earns": {
+    "answer": "The independent variable is the number of C=C double bonds in each fatty acid: 0, 1, 2 or 3. The dependent variable is the melting point in °C. All four fatty acids have 18 carbons because chain length also changes melting point. Longer chains touch along more of their length, so more attractions form between neighboring chains. With chain length held constant, the drop in melting point from 69 °C to −11 °C can be linked to the double bonds and not to a difference in chain length.",
+    "why": "It names each variable precisely, with its values or units, and says which other explanation the constant chain length rules out."
+   },
+   "misses": {
+    "answer": "The independent variable is the fatty acids and the dependent variable is temperature. The carbons are kept the same to make it a fair test.",
+    "why": "\"The fatty acids\" is not the factor that was changed, and \"temperature\" is vague: the measured outcome is each fatty acid's melting point, not the bath temperature. \"Fair test\" does not say what other cause is ruled out."
+   }
+  },
+  {
+   "id": "u1-gc-content-melting",
+   "unit": "unit-1",
+   "topic": "nucleic-acids",
+   "practice": "4.B",
+   "skill": "data",
+   "title": "G-C content and DNA melting temperature",
+   "context": "<p>Researchers heat four double-stranded DNA samples, each 500 base pairs long. For each sample they record the melting temperature: the temperature at which half of the DNA has separated into single strands.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Melting temperature of DNA by G-C content\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">G-C base pairs (% of all pairs)</th><th scope=\"col\">Melting temperature (°C)</th></tr></thead><tbody><tr><td>30</td><td>81.6</td></tr><tr><td>40</td><td>85.7</td></tr><tr><td>50</td><td>89.8</td></tr><tr><td>60</td><td>93.9</td></tr></tbody></table></div>",
+   "prompt": "<b>Describe</b> the relationship between G-C content and melting temperature, using values from the table, and <b>explain</b> it in terms of base pairing.",
+   "checklist": [
+    "States the direction: as the percent of G-C pairs increases, the melting temperature increases",
+    "Cites values with units, such as 81.6 °C at 30% G-C and 93.9 °C at 60% G-C",
+    "Gives the size of the change: about 4.1 °C higher for every 10 percentage points of G-C, a steady rise",
+    "Explains that a G-C pair has three hydrogen bonds and an A-T pair has two, so more energy is needed to separate the strands"
+   ],
+   "earns": {
+    "answer": "Melting temperature increases as G-C content increases. The sample with 30% G-C pairs melts at 81.6 °C and the sample with 60% G-C pairs melts at 93.9 °C, a rise of 12.3 °C. The rise is steady, about 4.1 °C for every 10 percentage points of G-C. A G-C pair is held together by three hydrogen bonds, while an A-T pair is held by two. DNA with more G-C pairs has more hydrogen bonds between its strands, so more energy, and a higher temperature, is needed to separate them.",
+    "why": "It gives the direction, real values with units and the size of the change, then explains the pattern with the number of hydrogen bonds per pair."
+   },
+   "misses": {
+    "answer": "Higher G-C content makes DNA melt at a higher temperature because G-C pairs are stronger.",
+    "why": "The direction is right, but there are no values, units or size of change, and \"stronger\" is not explained with hydrogen bonds."
+   }
+  }
+ ]
+}

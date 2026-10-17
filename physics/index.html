@@ -132,8 +132,7 @@
     <div>
       <div class="eyebrow">AP&reg; Physics 1 <span class="phys-beta phys-nav-ref">Beta</span></div>
       <h1>AP&reg; Physics 1, one force at a time.</h1>
-      <p class="lede">Built on the 2024-25 course framework, in its order: eight units, each topic taught from scratch, with the math you need placed just before it is used. Then practice that checks what the exam checks: free-body diagrams, graphs, units and justifications that name the condition.</p>
-      <p class="phys-review-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher.</p>
+      <p class="lede">Each topic taught from scratch, in framework order, then practice that checks diagrams, graphs and justifications.</p>
       <div class="hero-ctas"><a class="btn-press" id="heroPrimaryCta" href="lessons/math-units.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apphys_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script><a class="link-quiet" href="learn.html">All units &rarr;</a><a class="link-quiet" href="tools/motion-graphs.html">Motion graphs &rarr;</a></div>
     </div>
     <div class="phys-level-card" id="physLevel" data-lv-zero>
@@ -184,7 +183,7 @@
     <div>
       <h2 id="h-covers">What the course covers</h2>
       <p>8 units and 43 topics in the order of the 2024-25 course framework, plus 5 math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
-      <p>747 practice questions, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation.</p>
+      <p>747 practice questions, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation. Practice checks what the exam checks: free-body diagrams, graphs, units and justifications that name the condition.</p>
       <p class="phys-small">All 48 topics are built, each with its lesson, notes and questions.</p>
     </div>
     <div>
@@ -220,14 +219,30 @@
     </div>
   </section>
 
+  <section class="xsection" id="sample" aria-labelledby="h-sample">
+    <div class="phys-sample-row">
+      <div>
+        <h2 id="h-sample">Try a step.</h2>
+        <p class="section-lede">One real question from the bank. Pick an answer to see why it is right or wrong.</p>
+        <ol class="phys-sample-list">
+          <li><span class="n" aria-hidden="true">1</span> Read the situation</li>
+          <li><span class="n" aria-hidden="true">2</span> Pick the answer you would bet on</li>
+          <li><span class="n" aria-hidden="true">3</span> See the cause and effect behind it</li>
+        </ol>
+      </div>
+      <div class="phys-qcard" id="physSample" data-correct="2">
+        <span class="tag domain">Unit 1 &middot; Kinematics</span> <span class="tag diff">Displacement, Velocity and Acceleration</span>
+        <p class="qtext" id="physSampleQ">Two bikes each gain 6.0 m/s of velocity. Bike A takes 3.0 s and bike B takes 1.5 s. How does bike B's average acceleration compare with bike A's?</p>
+        <div class="phys-qopts" role="group" aria-labelledby="physSampleQ"><button type="button" class="qopt" data-i="0" data-why="Dividing the same Δv by a smaller time gives a larger result, not a smaller one."><span class="letter">A</span> Half as large</button><button type="button" class="qopt" data-i="1" data-why="Acceleration is how fast the velocity changes, so the time matters."><span class="letter">B</span> The same, because both gain 6.0 m/s</button><button type="button" class="qopt" data-i="2" data-why="Right: the same Δv in half the time doubles Δv/Δt (4.0 m/s² against 2.0 m/s²)."><span class="letter">C</span> Twice as large</button><button type="button" class="qopt" data-i="3" data-why="The time is halved, not quartered, and it is not squared in a = Δv/Δt."><span class="letter">D</span> Four times as large</button></div>
+        <p class="why" id="physSampleWhy" aria-live="polite"></p>
+        <details class="phys-sample-key"><summary>Show the answer</summary><p><b>Twice as large</b> a = Δv/Δt: 6.0/3.0 = 2.0 m/s² and 6.0/1.5 = 4.0 m/s². Halving Δt for the same Δv doubles the acceleration.</p></details>
+        <p class="phys-sample-more"><a class="link-quiet" href="lessons/motion-quantities.html">Open the free lesson on displacement, velocity and acceleration &rarr;</a></p>
+      </div>
+    </div>
+  </section>
   <section class="xsection" aria-labelledby="h-go">
     <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="phys-cards"><li><a href="practice.html"><b>Practice</b><span>Drill a unit, a topic or a science practice, with stimulus sets.</span></a></li><li><a href="review.html"><b>Review</b><span>Missed questions come back when you are about to forget them.</span></a></li><li><a href="exams.html"><b>Exams</b><span>Unit tests and full timed practice exams in the real 42 + 4 format.</span></a></li><li><a href="frq.html"><b>Free-response practice</b><span>All four free-response types, with rubrics and sample answers.</span></a></li><li><a href="justify.html"><b>Justification trainer</b><span>Explain and justify prompts with a rubric checklist and two model answers.</span></a></li><li><a href="cram.html"><b>Cram kit</b><span>3-week and 2-week plans to exam day, and timed mixed sets.</span></a></li><li><a href="flashcards.html"><b>Flashcards</b><span>Spaced-repetition cards from the glossary.</span></a></li><li><a href="tools.html"><b>Tools</b><span>Trainers and drills, then the questions about what you did.</span></a></li><li><a href="dashboard.html"><b>Dashboard</b><span>Mastery by unit, topic and science practice.</span></a></li>
-      <li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>
-      <li><a href="equations-sheet.html"><b>Equations sheet, explained</b><span>What each equation and constant is for, and what the sheet leaves out.</span></a></li>
-      <li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li>
-      <li><a href="unit-tests/unit-1.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>
-    </ul>
+    <ul class="phys-cards phys-go"><li><a href="practice.html"><b>Practice</b><span>Drill a unit, a topic or a science practice, with stimulus sets.</span></a></li><li><a href="review.html"><b>Review</b><span>Missed questions come back when you are about to forget them.</span></a></li><li><a href="exams.html"><b>Exams</b><span>Unit tests and full timed practice exams in the real 42 + 4 format.</span></a></li><li><a href="frq.html"><b>Free-response practice</b><span>All four free-response types, with rubrics and sample answers.</span></a></li><li><a href="justify.html"><b>Justification trainer</b><span>Explain and justify prompts with a rubric checklist and two model answers.</span></a></li><li><a href="cram.html"><b>Cram kit</b><span>3-week and 2-week plans to exam day, and timed mixed sets.</span></a></li><li><a href="flashcards.html"><b>Flashcards</b><span>Spaced-repetition cards from the glossary.</span></a></li><li><a href="tools.html"><b>Tools</b><span>Trainers and drills, then the questions about what you did.</span></a></li><li><a href="dashboard.html"><b>Dashboard</b><span>Mastery by unit, topic and science practice.</span></a></li><li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li><li><a href="equations-sheet.html"><b>Equations sheet, explained</b><span>What each equation and constant is for, and what the sheet leaves out.</span></a></li><li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li><li><a href="unit-tests/unit-1.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li></ul>
   </section>
 
   <section class="xsection" aria-label="About LevlPrep">
@@ -237,7 +252,6 @@
       <div class="trust-pill">Unit sheets free to print</div>
       <div class="trust-pill">Progress saved on your device</div>
     </div>
-    <p class="phys-disclaimer phys-home-legal">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
   </section>
 </main>
 <footer class="phys-foot xshell">

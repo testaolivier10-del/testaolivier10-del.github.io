@@ -1,0 +1,99 @@
+{
+ "about": "Justification trainer prompts for Unit 4, Cell Communication and Cell Cycle (docs/apbio-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u4-camp-breakdown-blocked",
+   "unit": "unit-4",
+   "topic": "signal-transduction-pathways",
+   "practice": "6.E",
+   "skill": "prediction",
+   "title": "Blocking the off switch for cAMP",
+   "context": "<p>In liver cells, epinephrine binds a G protein-coupled receptor. The activated G protein activates adenylyl cyclase, which makes cAMP from ATP. cAMP activates protein kinase A, which starts a phosphorylation cascade that activates the enzyme that breaks glycogen into glucose. The enzyme phosphodiesterase breaks down cAMP. A drug blocks phosphodiesterase.</p>",
+   "prompt": "<b>Predict</b> how treating liver cells with the drug affects glucose release after a short pulse of epinephrine, and <b>justify</b> your prediction.",
+   "checklist": [
+    "Predicts more glucose release, or release that continues longer after epinephrine is gone",
+    "Says cAMP is not broken down, so cAMP stays high after the signal",
+    "Says high cAMP keeps protein kinase A active, so the cascade keeps activating the enzyme that breaks glycogen into glucose"
+   ],
+   "earns": {
+    "answer": "The treated cells will release more glucose, and release will continue longer after the epinephrine pulse ends. Normally phosphodiesterase breaks down cAMP, which shuts the pathway off once epinephrine leaves the receptor. With phosphodiesterase blocked, the cAMP made during the pulse is not broken down, so cAMP stays high. cAMP keeps protein kinase A active, and the phosphorylation cascade keeps the glycogen-breaking enzyme active. More glycogen is broken into glucose over a longer time.",
+    "why": "It makes a clear prediction and traces the effect through the pathway: cAMP level, then protein kinase A, then the enzyme, then glucose."
+   },
+   "misses": {
+    "answer": "The cells will release less glucose because the drug blocks an enzyme in the pathway.",
+    "why": "Phosphodiesterase turns the signal off. Blocking it keeps cAMP high, so the response gets stronger, not weaker."
+   }
+  },
+  {
+   "id": "u4-insulin-negative-feedback",
+   "unit": "unit-4",
+   "topic": "feedback",
+   "practice": "1.B",
+   "skill": "mechanism",
+   "title": "Why insulin release is negative feedback",
+   "context": "<p>After a meal, a student's blood glucose rose from 90 mg/dL to 140 mg/dL. Cells in the pancreas released insulin. Insulin bound to receptors on liver and muscle cells, which took up glucose and stored it as glycogen. Within 2 hours blood glucose was back near 90 mg/dL, and insulin release had dropped.</p>",
+   "prompt": "<b>Explain</b> how these events make up a negative feedback loop.",
+   "checklist": [
+    "Names the stimulus: the rise in blood glucose is detected by pancreas cells, which release insulin",
+    "Gives the response: insulin binding to liver and muscle cells leads to glucose uptake and storage as glycogen, so blood glucose falls",
+    "Says the response reduces the stimulus: as glucose returns toward 90 mg/dL, insulin release decreases",
+    "Says this is negative feedback because the response opposes the change, not because a level goes down"
+   ],
+   "earns": {
+    "answer": "The stimulus is the rise in blood glucose from 90 to 140 mg/dL. Cells in the pancreas detect the higher glucose and release insulin. Insulin binds to receptors on liver and muscle cells, and these cells take up glucose and store it as glycogen. Blood glucose falls back toward 90 mg/dL. As glucose falls, the stimulus for the pancreas cells gets weaker, so insulin release drops. The response reduces the change that caused it, which returns glucose to its set level. That is negative feedback.",
+    "why": "It traces the full loop, stimulus to response and back, and defines negative feedback by the response opposing the change."
+   },
+   "misses": {
+    "answer": "Insulin lowers blood sugar, which is negative feedback because it makes the glucose level go down.",
+    "why": "\"Negative\" does not mean the level goes down. It skips the loop: the falling glucose reducing insulin release."
+   }
+  },
+  {
+   "id": "u4-root-tip-phase-counts",
+   "unit": "unit-4",
+   "topic": "cell-cycle",
+   "practice": "4.B",
+   "skill": "data",
+   "title": "A compound that changes phase counts",
+   "context": "<p>Students counted 1,000 cells in onion root tips from a control group and from roots treated for 12 hours with a compound.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Number of root tip cells in each phase\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Phase</th><th scope=\"col\">Control (cells)</th><th scope=\"col\">Treated (cells)</th></tr></thead><tbody><tr><td>Interphase</td><td>880</td><td>790</td></tr><tr><td>Prophase</td><td>70</td><td>60</td></tr><tr><td>Metaphase</td><td>20</td><td>140</td></tr><tr><td>Anaphase</td><td>15</td><td>5</td></tr><tr><td>Telophase</td><td>15</td><td>5</td></tr></tbody></table></div>",
+   "prompt": "<b>Describe</b> how the treatment changed the distribution of cells among the phases, using values from the table, and <b>identify</b> the step the compound most likely blocks.",
+   "checklist": [
+    "Metaphase cells rise from 20 (2.0%) to 140 (14.0%), seven times as many",
+    "Anaphase plus telophase cells fall from 30 (3.0%) to 10 (1.0%)",
+    "Cells in mitosis rise from 120 (12.0%) to 210 (21.0%) of the 1,000 counted",
+    "Identifies the block: cells reach metaphase but do not move on to anaphase"
+   ],
+   "earns": {
+    "answer": "The treatment raised the number of cells in metaphase from 20 to 140 of 1,000, or from 2.0% to 14.0%, seven times as many. Cells in anaphase and telophase together fell from 30 (3.0%) to 10 (1.0%). The share of cells in mitosis rose from 12.0% to 21.0%, while interphase cells fell from 880 to 790. Cells keep entering mitosis and reaching metaphase, but few move on to anaphase. The compound most likely blocks the step from metaphase to anaphase, so cells pile up in metaphase.",
+    "why": "It compares control and treated values for each relevant phase, with the size of each change, then draws a conclusion the numbers support."
+   },
+   "misses": {
+    "answer": "The treated roots have more cells in metaphase, so the compound affects mitosis.",
+    "why": "It gives no values, misses the drop in anaphase and telophase, and does not name which step is blocked."
+   }
+  },
+  {
+   "id": "u4-growth-factor-s-phase",
+   "unit": "unit-4",
+   "topic": "cell-cycle-regulation",
+   "practice": "5.B",
+   "skill": "stats",
+   "title": "Does more growth factor help?",
+   "context": "<p>Researchers grew cells for 24 hours with no growth factor, 10 ng/mL or 50 ng/mL of a growth factor, then measured the percent of cells that had entered S phase. Each mean is from 6 dishes; the ± value gives the 95% confidence interval (mean ± 2 SE).</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Percent of cells in S phase by growth factor dose\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Growth factor (ng/mL)</th><th scope=\"col\">Cells in S phase (%, mean ± 2 SE)</th></tr></thead><tbody><tr><td>0</td><td>8 ± 3</td></tr><tr><td>10</td><td>24 ± 4</td></tr><tr><td>50</td><td>27 ± 5</td></tr></tbody></table></div><p>A student claims that raising the dose from 10 to 50 ng/mL makes more cells pass the G1 checkpoint.</p>",
+   "prompt": "<b>Evaluate</b> the student's claim using the confidence intervals.",
+   "checklist": [
+    "Gives the intervals at 10 ng/mL (20% to 28%) and 50 ng/mL (22% to 32%) and notes that they overlap",
+    "Concludes the claim is not supported: the 3 percentage point difference between means (24% and 27%) could come from variation between dishes",
+    "Contrasts with 0 versus 10 ng/mL: intervals of 5% to 11% and 20% to 28% do not overlap, so the growth factor itself does increase S phase entry"
+   ],
+   "earns": {
+    "answer": "The claim is not supported. At 10 ng/mL the 95% confidence interval is 20% to 28%, and at 50 ng/mL it is 22% to 32%. These intervals overlap, so the difference between the means, 24% and 27%, may come from variation between dishes and is not good evidence of a real effect. The growth factor itself does matter: with none, the interval is 5% to 11%, which does not overlap the interval at 10 ng/mL. So adding growth factor makes more cells pass the G1 checkpoint, but these data show no clear extra effect from raising the dose to 50 ng/mL.",
+    "why": "It converts each mean ± 2 SE into an interval, judges both comparisons by overlap, and keeps the conclusion within what the data show."
+   },
+   "misses": {
+    "answer": "The claim is supported because 27% of cells entered S phase at 50 ng/mL compared with 24% at 10 ng/mL.",
+    "why": "It compares means without the intervals. The intervals overlap, so this small difference is not good evidence of a real effect."
+   }
+  }
+ ]
+}

@@ -43,6 +43,8 @@
      ['review', 'Review', 'Your spaced review queue of missed questions.'],
      ['exams', 'Exams', 'Unit tests and full practice exams in the hybrid format, with rubrics.'],
      ['frq', 'Free-response practice', 'All six free-response types with rubrics, sample answers and printable sheets.'],
+     ['justify', 'Justification trainer', 'Write explanations and justifications with a mechanism and evidence, then check them against a rubric and two model answers.'],
+     ['unit-tests/unit-1', 'Free unit practice tests', 'A free practice test for every unit, with data sets and an explanation for every option.'],
      ['flashcards', 'Flashcards', 'Spaced-repetition cards from the glossary and lesson summaries.'],
      ['dashboard', 'Dashboard', 'Your mastery by unit, topic and science practice.'],
      ['glossary', 'Glossary', 'Every defined term.'],

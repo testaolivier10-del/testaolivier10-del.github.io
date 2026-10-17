@@ -153,6 +153,13 @@
   .mechcard{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--lift-lg);}
   .mechcard .qtext{font-weight:800;font-size:16px;margin:14px 0 18px;line-height:1.5;}
   .mechcard .qopt{font-size:14.5px;padding:13px 16px;box-shadow:var(--lift-sm);}
+  .mechcard .why{margin:4px 0 0;padding:12px 14px;border-radius:12px;background:var(--ctint);font:600 13.5px/1.55 var(--font-ui);}
+  .mechcard .why:empty{display:none;}
+  .mechcard .why b{color:var(--cink);}
+  .mechcard .sample-key summary{cursor:pointer;font-weight:800;color:var(--cink);}
+  .mechcard .sample-key p{font:600 13.5px/1.55 var(--font-ui);}
+  .js .mechcard .sample-key{display:none;}
+  .mechcard .sample-more{margin:14px 0 0;}
 
   @media(max-width:1000px){ .now-row{grid-template-columns:1fr;} }
   @media(max-width:900px){
@@ -1420,21 +1427,28 @@
     <div class="sample-row">
       <div>
         <h2 style="margin-top:0">Try a step.</h2>
-        <p class="section-lede" style="margin:0 0 24px;text-align:left">Mechanisms are graded one step at a time.</p>
+        <p class="section-lede" style="margin:0 0 24px;text-align:left">One real question from the practice bank. Pick an answer to see why it is right or wrong.</p>
         <div class="sample-list">
-          <div class="row"><span class="n">1</span> Identify the nucleophile and electrophile</div>
-          <div class="row"><span class="n">2</span> Draw the electron-pushing arrow</div>
-          <div class="row"><span class="n">3</span> Predict the product and stereochemistry</div>
+          <div class="row"><span class="n">1</span> Read the step</div>
+          <div class="row"><span class="n">2</span> Pick the answer you would bet on</div>
+          <div class="row"><span class="n">3</span> See why the arrows work that way</div>
         </div>
       </div>
-      <div class="mechcard">
-        <span class="tag domain">SN2</span> <span class="tag diff">Arrow step</span>
-        <div class="qtext">Hydroxide attacks bromomethane. Where does the arrow start, and where does it end?</div>
-        <div class="qopt"><span class="letter">A</span> From the C&ndash;Br bond to the bromine</div>
-        <div class="qopt correct"><span class="letter">B</span> From the hydroxide lone pair to the carbon</div>
-        <div class="qopt"><span class="letter">C</span> From the carbon to the hydroxide oxygen</div>
-        <div class="qopt" style="margin-bottom:0"><span class="letter">D</span> From the bromine lone pair to the carbon</div>
+      <!-- sample:start -->
+      <div class="mechcard" id="ochemSample" data-correct="0">
+        <span class="tag domain">Drawing Molecules &amp; Moving Electrons</span> <span class="tag diff">Curved arrows</span>
+        <p class="qtext" id="ochemSampleQ">A proposed step has one curved arrow: from a lone pair on hydroxide to the carbon bonded to Cl in CH₃CH₂–Cl. No other arrow is drawn. What is wrong?</p>
+        <div role="group" aria-labelledby="ochemSampleQ">
+          <button type="button" class="qopt" data-i="0"><span class="letter">A</span> The carbon would end up with five bonds</button>
+          <button type="button" class="qopt" data-i="1"><span class="letter">B</span> The tail should start on the carbon instead</button>
+          <button type="button" class="qopt" data-i="2"><span class="letter">C</span> Hydroxide has no lone pair to give</button>
+          <button type="button" class="qopt" data-i="3"><span class="letter">D</span> Nothing, since one arrow is enough</button>
+        </div>
+        <p class="why" id="ochemSampleWhy" aria-live="polite"></p>
+        <details class="sample-key"><summary>Show the answer</summary><p><b>The carbon would end up with five bonds</b> The arrow makes a new O–C bond, but that carbon already has four bonds. Unless a second arrow breaks the C–Cl bond and sends that pair to chlorine, the carbon would hold five bonds. Hydroxide does have lone pairs, and the tail belongs on them.</p></details>
+        <p class="sample-more"><a class="link-quiet" href="lessons/curved-arrows.html">Open the free lesson on curved arrows &rarr;</a></p>
       </div>
+      <!-- sample:end -->
     </div>
   </div>
 

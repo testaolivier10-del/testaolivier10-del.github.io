@@ -83,6 +83,7 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 | 2 | Units 1-3 + statistics and design skills, Beta | `claude/apbio-beta` | published 2026-10-03: 35 topics (23 CED + 12 skills/design), 688 questions, 13 FRQs, 2 simulators, 9 tools; every unit accuracy-checked (`docs/apbio-reviews/`). Pass not on sale yet (owner checklist) |
 | 3 | Units 4-8 (one at a time, each with its accuracy check), remaining 10 simulators, full practice exams (by 2027-01-15); glossary page to the A&P index design (decision 22) | `claude/apbio-u4` … `-u8` | done: Unit 4 published 2026-10-03 (6 topics, 120 questions, 4 FRQs, 2 simulators; review `docs/apbio-reviews/u4.md`); Unit 5 published 2026-10-03 (5 topics, 108 questions, 5 FRQs, meiosis simulator; review `u5.md`). Unit 6 published 2026-10-03 (8 topics, 168 questions, 5 FRQs, operon simulator; review `u6.md`). Unit 7 published 2026-10-03 (12 topics, 249 questions, 6 FRQs, drift and tree-reading simulators; reviews `u7a.md`, `u7b.md`); design drills written and reviewed (`drills.md`). Unit 8 published 2026-10-03 (7 topics, 154 questions, 6 FRQs, population-growth and energy-flow simulators; review `u8.md`): all eight units, 10 simulators and the full practice exams are live. Done; glossary index done (decision 22) |
 | 4 | Cram kit (by 2027-03-01) | `claude/apbio-cram` | done 2026-10-03 (decision 26): `bio/cram.html`, 3-week and 2-week plans, timed mixed sets in exams.js; plan generator tests `scripts/test/apbio-cram.test.mjs` |
+| 6 | Unit practice tests and justification trainer (decision 29) | `claude/p-ap` | done 2026-10-17: 8 unit tests, 32 prompts, independent check `docs/apbio-reviews/justify.md` |
 | 5 | Second accuracy pass, whole course | `claude/vibrant-newton-gxohg6` | done 2026-10-06: ten independent checkers (Units 1-8, Unit 7 in two halves, skills track and tools), every bank item, lesson, notes page, glossary entry, figure label, FRQ and tool rechecked, numeric keys recomputed, no OpenStax (decision 24). 18 fixes, none to an answer key; reports in `docs/apbio-reviews/second-pass/`; 4 new entries in `docs/apbio-needs-author.md` |
 
 ## 3. Decisions log
@@ -334,6 +335,28 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    `assets/course/glossary-page.js` and `glossary-tip.js` replace `bio-glossary-page.js` and
    `bio-glossary.js`; `bio/assets/glossary.json` is in the shared shape written by
    `scripts/lib/glossary.mjs` (search and flashcards adapt it to their old map).
+
+29. (2026-10-17, polish C6, `docs/polish-2026-10-17.md`) **Free unit practice tests and a
+   justification trainer**, to the Chemistry, Physics and Calculus standard (no score calculator:
+   owner judged it low yield). `scripts/lib/apbio-entry.mjs` (forked from `apcalc-entry.mjs`) writes
+   `unit-tests/<unit>.html` for every published unit: 12 fixed, already reviewed bank items (whole
+   single-answer sets first, then standalone items over the unit's topics, lesson check items
+   skipped), readable without JavaScript, graded live by `pages/sample.js`, free and indexable, in the
+   sitemap and the course search, linked from the home's "Practice and study" cards. The trainer is
+   `justify.html` (a `pages.json` app, `studio: true`, `css` now a list), `pages/justify.js` and
+   `pages/entry.css` forked from Calculus; 32 prompts in `data/justify/<unit>.json` (4 per unit, 7
+   skills in `JUSTIFY_SKILLS`, `scripts/lib/apbio-exams.mjs`), served as `assets/justify.json` for
+   published units; the first 3 in course order free (`FREE_JUSTIFY`), the rest Premium feature
+   `justify` (open while nothing is locked). `check-apbio-content` runs `checkJustify` (format, bold
+   task verb, 2 to 4 rubric lines, fuller earning answer, trademark, purpose wording, wrapped tables,
+   unit-level ordering); test `scripts/test/apbio-justify.test.mjs`. Independent accuracy check
+   `docs/apbio-reviews/justify.md` (separate helper): 1 error and 13 fixes applied; open points in
+   `docs/apbio-needs-author.md` ("Justification trainer and unit tests").
+30. (2026-10-17, polish C1 to C5) **Course home.** The hero lede is one or two lines (the detail moved
+   to "What the course covers"); the Beta note and the trademark disclaimer appear once, in the
+   footer; "Practice and study" uses fixed columns (4, 2, 1) and widens the first card so none sits
+   alone (`bio-home.css` `.bio-go`); primary buttons use the course green (`--btn-bg` tokens in
+   `assets/theme.css`, white text 6.6:1, dark mode 12.3:1).
 
 ## 4. Map format (Phase 0)
 
