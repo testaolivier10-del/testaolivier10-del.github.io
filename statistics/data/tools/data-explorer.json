@@ -1,0 +1,354 @@
+{
+ "slug": "data-explorer",
+ "kind": "simulator",
+ "topic": "summary-statistics",
+ "intro": "<p>One data set drawn three ways at once: a dotplot, a histogram and a boxplot. Drag any dot and every summary and every graph is recomputed from the dots you see.</p>",
+ "howItWorksTitle": "How the numbers are computed",
+ "howItWorks": "<p>The mean is the total divided by n. The median is the middle of the ordered values. Quartiles follow the rule AP® Statistics uses: Q1 and Q3 are the medians of the lower and upper halves, with the median itself left out when n is odd. The standard deviation is the sample SD, dividing by n − 1. A value is an outlier when it is more than 1.5 × IQR below Q1 or above Q3, and the whiskers end at the most extreme values inside those fences. Histogram bins include their left edge, so a value on an edge counts in the bin to its right.</p><p>Test yourself problems are generated from a seed: the problem code reopens the same data.</p>",
+ "partTopics": {
+  "shape": "describing-distributions",
+  "vs": "describing-distributions",
+  "sentence": "describing-distributions",
+  "q1": "boxplots",
+  "q3": "boxplots",
+  "fence": "boxplots",
+  "isout": "boxplots",
+  "whisk": "boxplots",
+  "z": "comparing-distributions",
+  "zread": "comparing-distributions",
+  "zrule": "comparing-distributions"
+ },
+ "explore": {
+  "datasets": [
+   {
+    "id": "commute",
+    "topic": "summary-statistics",
+    "name": "Commute times",
+    "what": "commute time",
+    "unit": "minutes",
+    "short": "min",
+    "noun": "students",
+    "lead": "One-way commute times of 20 students at a high school.",
+    "values": [
+     5,
+     7,
+     8,
+     10,
+     10,
+     12,
+     12,
+     13,
+     15,
+     15,
+     15,
+     17,
+     18,
+     20,
+     20,
+     22,
+     25,
+     28,
+     35,
+     48
+    ],
+    "step": 1,
+    "x": [
+     0,
+     70
+    ],
+    "bin": 5,
+    "binMin": 2,
+    "binMax": 20,
+    "binStep": 1
+   },
+   {
+    "id": "quiz",
+    "topic": "summary-statistics",
+    "name": "Quiz scores",
+    "what": "quiz score",
+    "unit": "points",
+    "short": "pts",
+    "noun": "students",
+    "lead": "Scores of 18 students on a 50-point quiz.",
+    "values": [
+     22,
+     30,
+     34,
+     36,
+     38,
+     39,
+     40,
+     41,
+     42,
+     42,
+     43,
+     44,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49
+    ],
+    "step": 1,
+    "x": [
+     10,
+     50
+    ],
+    "bin": 5,
+    "binMin": 1,
+    "binMax": 10,
+    "binStep": 1
+   },
+   {
+    "id": "pulse",
+    "topic": "summary-statistics",
+    "name": "Resting pulse rates",
+    "what": "resting pulse rate",
+    "unit": "beats per minute",
+    "short": "bpm",
+    "noun": "adults",
+    "lead": "Resting pulse rates of 22 adults.",
+    "values": [
+     58,
+     61,
+     62,
+     64,
+     65,
+     66,
+     67,
+     68,
+     68,
+     69,
+     70,
+     70,
+     71,
+     72,
+     72,
+     73,
+     74,
+     75,
+     77,
+     78,
+     80,
+     84
+    ],
+    "step": 1,
+    "x": [
+     45,
+     95
+    ],
+    "bin": 4,
+    "binMin": 1,
+    "binMax": 12,
+    "binStep": 1
+   }
+  ]
+ },
+ "contexts": [
+  {
+   "lead": "A random sample of students at a large high school reported their commute to school.",
+   "what": "commute time",
+   "unit": "minutes",
+   "unitOne": "minute",
+   "noun": "students",
+   "lo": 3,
+   "hi": 45,
+   "dp": 0,
+   "id": "commute-summary",
+   "topic": "summary-statistics",
+   "types": [
+    "summary",
+    "resist"
+   ],
+   "shapes": [
+    "right",
+    "sym"
+   ]
+  },
+  {
+   "lead": "A teacher recorded the scores on a 50-point quiz.",
+   "what": "quiz score",
+   "unit": "points",
+   "unitOne": "point",
+   "noun": "students",
+   "lo": 14,
+   "hi": 50,
+   "dp": 0,
+   "id": "quiz-summary",
+   "topic": "summary-statistics",
+   "types": [
+    "summary"
+   ],
+   "shapes": [
+    "left",
+    "sym"
+   ]
+  },
+  {
+   "lead": "A tech site tested how long phones last on one charge.",
+   "what": "battery life",
+   "unit": "hours",
+   "unitOne": "hour",
+   "noun": "phones",
+   "lo": 6,
+   "hi": 30,
+   "dp": 0,
+   "id": "battery-resist",
+   "topic": "summary-statistics",
+   "types": [
+    "summary",
+    "resist"
+   ],
+   "shapes": [
+    "right",
+    "sym"
+   ]
+  },
+  {
+   "lead": "A health class measured resting pulse rates.",
+   "what": "resting pulse rate",
+   "unit": "beats per minute",
+   "unitOne": "beat per minute",
+   "noun": "students",
+   "lo": 52,
+   "hi": 100,
+   "dp": 0,
+   "id": "pulse-fences",
+   "topic": "boxplots",
+   "types": [
+    "fences"
+   ],
+   "shapes": [
+    "right"
+   ]
+  },
+  {
+   "lead": "A random sample of students at a large high school reported their commute to school.",
+   "what": "commute time",
+   "unit": "minutes",
+   "unitOne": "minute",
+   "noun": "students",
+   "lo": 3,
+   "hi": 45,
+   "dp": 0,
+   "id": "commute-fences",
+   "topic": "boxplots",
+   "types": [
+    "fences"
+   ],
+   "shapes": [
+    "right"
+   ]
+  },
+  {
+   "lead": "A college recorded scores on a 100-point final exam.",
+   "what": "final exam score",
+   "unit": "points",
+   "unitOne": "point",
+   "noun": "students",
+   "lo": 35,
+   "hi": 100,
+   "dp": 0,
+   "id": "final-fences",
+   "topic": "boxplots",
+   "types": [
+    "fences"
+   ],
+   "shapes": [
+    "left"
+   ]
+  },
+  {
+   "lead": "A student looked at the songs on one playlist.",
+   "what": "song length",
+   "unit": "seconds",
+   "unitOne": "second",
+   "noun": "songs",
+   "lo": 130,
+   "hi": 330,
+   "dp": 0,
+   "id": "songs-describe",
+   "topic": "describing-distributions",
+   "types": [
+    "describe"
+   ]
+  },
+  {
+   "lead": "A tech site tested how long phones last on one charge.",
+   "what": "battery life",
+   "unit": "hours",
+   "unitOne": "hour",
+   "noun": "phones",
+   "lo": 6,
+   "hi": 30,
+   "dp": 0,
+   "id": "battery-describe",
+   "topic": "describing-distributions",
+   "types": [
+    "describe"
+   ]
+  },
+  {
+   "lead": "A college recorded scores on a 100-point final exam.",
+   "what": "final exam score",
+   "unit": "points",
+   "unitOne": "point",
+   "noun": "students",
+   "lo": 35,
+   "hi": 100,
+   "dp": 0,
+   "id": "final-describe",
+   "topic": "describing-distributions",
+   "types": [
+    "describe"
+   ],
+   "shapes": [
+    "left",
+    "sym"
+   ]
+  },
+  {
+   "lead": "A coach measured the players on a basketball program.",
+   "what": "height",
+   "unit": "centimeters",
+   "unitOne": "centimeter",
+   "noun": "players",
+   "lo": 165,
+   "hi": 205,
+   "dp": 0,
+   "names": [
+    "Jordan",
+    "Sam",
+    "Riley",
+    "Avery"
+   ],
+   "id": "heights-z",
+   "topic": "comparing-distributions",
+   "types": [
+    "zscore"
+   ]
+  },
+  {
+   "lead": "A track team recorded long jump distances at practice.",
+   "what": "long jump distance",
+   "unit": "centimeters",
+   "unitOne": "centimeter",
+   "noun": "jumps",
+   "lo": 380,
+   "hi": 620,
+   "dp": 0,
+   "names": [
+    "Maya",
+    "Theo",
+    "Priya",
+    "Luis"
+   ],
+   "id": "jump-z",
+   "topic": "comparing-distributions",
+   "types": [
+    "zscore"
+   ]
+  }
+ ]
+}

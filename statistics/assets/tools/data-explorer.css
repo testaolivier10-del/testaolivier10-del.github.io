@@ -1,0 +1,66 @@
+/* Data explorer (statistics/assets/tools/data-explorer.js). OWNED BY THIS TOOL
+   ONLY. Colours come from the course tokens (--stat-s1 dots and bars, --stat-s2
+   the mean, --stat-s3 the median, --stat-s5 the fences), so light and dark
+   follow the theme. Every shape is drawn in real pixels (the svg is laid out at
+   the stage's size), so text stays readable at 360 px. */
+.dx-card{display:flex;flex-direction:column;gap:12px;}
+.dx-fig{position:relative;width:100%;min-height:300px;}
+.ls-root .dx-fig{flex:1;min-height:0;height:100%;}
+.dx-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);touch-action:pan-y;user-select:none;-webkit-user-select:none;overflow:visible;}
+.dx-svg text{fill:var(--muted);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.dx-grid line{stroke:var(--line);stroke-width:1;}
+.dx-axis line{stroke:var(--muted);stroke-width:1;}
+.dx-axis .dx-axt{fill:var(--ink);font-weight:600;}
+.dx-ptitle{fill:var(--ink) !important;font-weight:600;letter-spacing:.01em;}
+.dx-base{stroke:var(--muted);stroke-width:1.2;}
+.dx-bar{fill:var(--stat-s1);fill-opacity:.22;stroke:var(--stat-s1);stroke-width:1.4;}
+.dx-blab{fill:var(--ink) !important;font-weight:600;}
+.dx-hgrid{stroke:var(--line);stroke-dasharray:2 3;}
+.dx-cnt{fill:var(--muted);}
+.dx-dot{fill:var(--stat-s1);stroke:var(--white);stroke-width:1.2;transition:cx .12s ease, cy .12s ease;}
+.dx-svg [data-i]{cursor:grab;touch-action:none;outline:none;}
+.dx-svg [data-i]:focus-visible{stroke:var(--cink);stroke-width:3;}
+.dx-dot.is-out{fill:var(--stat-s2);}
+.dx-dot.is-sel{stroke:var(--cink);stroke-width:3;}
+.dx-dot.is-mark{fill:var(--stat-s2);stroke:var(--cink);stroke-width:2.5;}
+.dx-dot.is-moved{fill:var(--stat-s2);}
+.dx-ghost{fill:none;stroke:var(--stat-s2);stroke-width:1.5;stroke-dasharray:3 2;}
+.dx-move path{fill:none;stroke:var(--stat-s2);stroke-width:1.6;}
+.dx-sel line{stroke:var(--cink);stroke-width:1.2;stroke-dasharray:2 2;}
+.dx-sel text{fill:var(--cink) !important;font-weight:700;}
+.dx-mean{stroke:var(--stat-s2);stroke-width:2;stroke-dasharray:6 4;}
+.dx-mean.is-after{stroke-dasharray:2 3;opacity:.9;}
+.dx-median{stroke:var(--stat-s3);stroke-width:2;}
+.dx-ml{font-weight:700;}
+.dx-ml.mean{fill:var(--stat-s2) !important;}
+.dx-ml.median{fill:var(--stat-s3) !important;}
+.dx-sdband{fill:var(--stat-s2);fill-opacity:.09;stroke:var(--stat-s2);stroke-opacity:.35;stroke-dasharray:3 3;}
+.dx-sdl{fill:var(--stat-s2) !important;font-weight:600;}
+.dx-zs line{stroke:var(--stat-s2);stroke-opacity:.55;stroke-dasharray:2 3;}
+.dx-zs line.is-0{stroke-opacity:1;}
+.dx-zs text{fill:var(--stat-s2) !important;font-weight:600;}
+.dx-fence{stroke:var(--stat-s5);stroke-width:1.6;stroke-dasharray:5 4;}
+.dx-fl{fill:var(--ink) !important;font-weight:600;}
+.dx-boxr{fill:var(--stat-s1);fill-opacity:.12;stroke:var(--ink);stroke-width:1.6;}
+.dx-boxm{stroke:var(--stat-s3);stroke-width:3;}
+.dx-wh{stroke:var(--ink);stroke-width:1.6;}
+.dx-bout{fill:var(--stat-s2);stroke:var(--white);stroke-width:1;}
+.dx-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.dx-sw{display:inline-block;width:14px;height:10px;margin-right:7px;border-radius:2px;vertical-align:-1px;}
+.dx-sw.sd{background:var(--stat-s2);opacity:.45;}
+.dx-sw.fence{border-left:2px dashed var(--stat-s5);border-right:2px dashed var(--stat-s5);width:12px;height:12px;border-radius:0;}
+.tchip.on .dx-sw.sd{background:var(--white);opacity:.7;}
+.tchip.on .dx-sw.fence{border-color:var(--white);}
+.dx-list{font-family:var(--font-mono);font-size:.95em;line-height:1.6;overflow-wrap:anywhere;}
+.dx-vals{font-family:var(--font-mono);font-size:.92em;overflow-wrap:anywhere;}
+.dx-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;}
+.dx-qfig{margin:0;width:100%;}
+.ls-root .ls-drill-stage .dx-qfig{flex:1;min-height:220px;position:relative;}
+.ls-root .ls-drill-stage .dx-qfig > svg{position:absolute;inset:0;width:100%;height:100%;}
+.ls-root .ls-drill-stage .ls-drill-text{flex:none;}
+.dx-btns{display:flex;flex-wrap:wrap;gap:8px;}
+@media (prefers-reduced-motion: reduce){ .dx-dot{transition:none;} }
+body.ls-on .stat-crumb{display:none;} /* Tool Studio hides the other courses' crumbs; .stat-crumb is not in its list yet */
+.dx-h{font-size:1rem;font-weight:700;margin:16px 0 4px;color:var(--ink);}
+.bt-why-b > .dx-h:first-child{margin-top:4px;}
+.dx-ph{fill:var(--muted) !important;font-style:italic;}
