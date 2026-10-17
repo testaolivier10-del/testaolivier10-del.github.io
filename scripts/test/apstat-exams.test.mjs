@@ -8,8 +8,9 @@
      script); no readiness band and no score calculator (spec decision 6);
    - the unit and practice weight ranges come out right for 42 questions;
    - a good form passes and the checker catches each way a form can break,
-     including the two exam sets and the Q1 to Q4 order (synthetic forms;
-     Phase 3 writes the real ones);
+     including the two exam sets and the Q1 to Q4 order (synthetic forms),
+     and the two real forms and the prompts pass, with every recomputed
+     number in place and the number and builder checks shown to bite;
    - the justification checker refuses "accept", "prove" and a conclusion
      without the parameter;
    - the formula page lists the 2026 reference sheet, nothing more;
@@ -17,13 +18,13 @@
      published, and a unit test and the formula page once one is. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync, mkdtempSync } from 'node:fs';
+import { readFileSync, existsSync, mkdtempSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { loadMap } from '../lib/apstat-build.mjs';
 import { Tex } from '../lib/apstat-mathlib.mjs';
-import { loadExams, checkForms, checkJustify, unitRange, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FRQ_ORDER, EXAM_SETS, JUSTIFY_SKILLS } from '../lib/apstat-exams.mjs';
+import { loadExams, loadJustify, checkNumbers, EXAM_NUMBERS, JUSTIFY_NUMBERS, checkForms, checkJustify, unitRange, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FRQ_ORDER, EXAM_SETS, JUSTIFY_SKILLS } from '../lib/apstat-exams.mjs';
 import { EQ, NOT_ON, TABLES } from '../lib/apstat-entry.mjs';
 
 const map = loadMap();
@@ -128,9 +129,31 @@ test('the "Say it in context" checker refuses accept, prove, and a conclusion wi
   assert.ok(checkJustify([r], { map }).some(e => /names the parameter/.test(e)));
 });
 
-test('Phase 0: no real forms or prompts yet', () => {
-  const ex = loadExams('statistics/data');
-  assert.deepEqual(ex.forms, []);
+test('the two real forms and the 36+ prompts pass every check, and every recomputed number is in place', () => {
+  const D = 'statistics/data';
+  const ex = loadExams(D);
+  assert.equal(ex.forms.length, 2);
+  const bank = new Map(), stim = {}, orderOf = {};
+  for (const t of map.topics) { const p = join(D, 'questions', `${t.id}.json`); if (!existsSync(p)) continue; const d = JSON.parse(readFileSync(p, 'utf8')); d.items.forEach((q, i) => { bank.set(q.id, q); orderOf[q.id] = i; }); Object.assign(stim, d.stimuli || {}); }
+  ex.items.forEach((q, i) => { orderOf[q.id] = i; });
+  const examItems = new Map(ex.items.map(q => [q.id, q]));
+  const frqs = {}; for (const f of readdirSync(join(D, 'frq'))) { const d = JSON.parse(readFileSync(join(D, 'frq', f), 'utf8')); frqs[d.id] = d; }
+  assert.deepEqual(checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id], stimuli: id => ex.stimuli[id] || stim[id] }), []);
+  const prompts = loadJustify(D, map);
+  assert.ok(prompts.length >= 35);
+  assert.deepEqual(checkJustify(prompts, { map }), []);
+  assert.deepEqual(checkNumbers(examItems, prompts), []);
+  // Every computed exam-only key and every prompt number is covered, and the check bites.
+  assert.ok(EXAM_NUMBERS.length >= 12 && JUSTIFY_NUMBERS.length >= 15);
+  const wrong = new Map(examItems); const q = JSON.parse(JSON.stringify(examItems.get('stat-exam-1-08'))); q.options[q.correct] = '$z \\approx 2.52$'; wrong.set(q.id, q);
+  assert.ok(checkNumbers(wrong, prompts).some(e => /stat-exam-1-08/.test(e)));
+  const p2 = JSON.parse(JSON.stringify(prompts).replace(/73\.5 = 7\.5/g, '73.5 = 8.5'));
+  assert.ok(checkNumbers(examItems, p2).some(e => /u5-residual/.test(e)));
+  // A builder slot without a why for a wrong option, or a test builder without p, is refused.
+  const b = JSON.parse(JSON.stringify(prompts.find(p => p.conclude && p.conclude.mode === 'test')));
+  delete b.conclude.slots.evidence.why; delete b.conclude.p;
+  const e = checkJustify([b], { map });
+  assert.ok(e.some(x => /needs a why/.test(x)) && e.some(x => /needs p and alpha/.test(x)), e.join(' | '));
 });
 
 test('the formula page is the 2026 reference sheet, explained: every formula on it, and only those', () => {

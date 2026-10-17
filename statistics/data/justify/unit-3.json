@@ -17,7 +17,7 @@
    ],
    "earns": {
     "answer": "We are 95% confident that the interval from 0.262 to 0.342 captures the true proportion of all the state's teens who have a part time job.",
-    "why": "It has the level, the interval and the parameter in context, the three parts readers look for."
+    "why": "It has the level, the interval and the parameter in context, the three parts an exam answer needs."
    },
    "misses": {
     "answer": "We are 95% confident that the proportion of the 500 teens who have a part time job is between 0.262 and 0.342.",
@@ -229,9 +229,9 @@
     "slots": {
      "condition": {
       "options": [
-       "If the true proportion of all the city's commuters who ride a bus weekly is 0.25,",
-       "If the sample proportion is 0.31,",
-       "If the office adds buses,"
+       "Suppose the true proportion of all the city's commuters who ride a bus weekly is 0.25.",
+       "Suppose the sample proportion is 0.31.",
+       "Suppose the office adds buses."
       ],
       "correct": 0,
       "why": {
@@ -241,9 +241,9 @@
      },
      "claim": {
       "options": [
-       "but the office finds convincing evidence that it is greater than 0.25, that is a Type I error.",
-       "but the office finds convincing evidence that it is greater than 0.25, that is a Type II error.",
-       "and the office fails to find convincing evidence, that is a Type I error."
+       "If the office finds convincing evidence that it is greater than 0.25, that is a Type I error.",
+       "If the office finds convincing evidence that it is greater than 0.25, that is a Type II error.",
+       "If the office fails to find convincing evidence, that is a Type I error."
       ],
       "correct": 0,
       "why": {

@@ -72,15 +72,15 @@
    "practice": "4.G",
    "skill": "interval",
    "title": "A paired interval and a claim",
-   "context": "<p>Twenty randomly selected students took a reading test before and after a summer program. For each student, difference = after minus before. A 95% t interval for the mean difference is from 1.8 to 6.4 points (invented data).</p>",
-   "prompt": "<b>Explain</b> whether the interval gives convincing evidence that the program raises scores on average.",
+   "context": "<p>Twenty randomly selected students from a school district took a reading test before and after a summer program. For each student, difference = after minus before. A 95% t interval for the mean difference is from 1.8 to 6.4 points (invented data).</p>",
+   "prompt": "<b>Explain</b> whether the interval gives convincing evidence that scores increase on average after the program.",
    "checklist": [
     "Notes that every value in the interval is positive (0 is not in the interval)",
     "Concludes there is convincing evidence that the true mean difference (after minus before) for all such students is greater than 0",
     "Says this means scores increase on average, in context"
    ],
    "earns": {
-    "answer": "Because every value in the interval from 1.8 to 6.4 points is greater than 0, the interval gives convincing evidence that the true mean difference in reading score (after minus before) for all students like these is greater than 0. That is, scores increase on average after the program, by somewhere from about 1.8 to 6.4 points.",
+    "answer": "Because every value in the interval from 1.8 to 6.4 points is greater than 0, the interval gives convincing evidence that the true mean difference in reading score (after minus before) for all such students in the district is greater than 0. That is, scores increase on average after the program, by somewhere from about 1.8 to 6.4 points.",
     "why": "It reads the interval against 0, states the conclusion about the true mean difference in context, and keeps the order of the difference (after minus before)."
    },
    "misses": {
@@ -278,12 +278,12 @@
    "context": "<p>A gardener randomly assigns 40 tomato seedlings from one nursery to two fertilizers, 20 each. After six weeks, fertilizer A plants have mean height 14.2 cm ($s = 2.1$) and fertilizer B plants 12.9 cm ($s = 2.4$). A two-sample t test of $H_0: \\mu_A - \\mu_B = 0$ against $H_a: \\mu_A - \\mu_B > 0$, where $\\mu_A$ and $\\mu_B$ are the true mean heights of seedlings like these given each fertilizer, gives $t = 1.82$ with $\\text{df} = 37.3$ and a p-value of 0.038 (invented data).</p>",
    "prompt": "<b>Explain</b> what kind of conclusion the gardener can draw (cause and effect or not) and to which plants it applies.",
    "checklist": [
-    "Cause and effect: the seedlings were randomly assigned to fertilizers, so fertilizer A can be said to cause the greater mean height",
+    "Cause and effect: the seedlings were randomly assigned to fertilizers, so, with the p-value of 0.038, there is convincing evidence that fertilizer A causes greater mean height",
     "Scope: the seedlings are from one nursery and were not a random sample of all tomato plants, so the result applies to seedlings like these",
     "Ties each part to the design feature that allows it (random assignment for cause, random sampling for generalizing)"
    ],
    "earns": {
-    "answer": "Because the seedlings were randomly assigned to the two fertilizers, the groups should be similar apart from the fertilizer, so the gardener can conclude that fertilizer A causes greater mean height. But the seedlings came from one nursery and were not randomly selected from all tomato plants, so the conclusion applies only to seedlings like these.",
+    "answer": "Because the seedlings were randomly assigned to the two fertilizers, the groups should be similar apart from the fertilizer, so, with a p-value of 0.038, there is convincing evidence that fertilizer A causes greater mean height. But the seedlings came from one nursery and were not randomly selected from all tomato plants, so the conclusion applies only to seedlings like these.",
     "why": "It links cause to random assignment and limits the scope because there was no random sampling."
    },
    "misses": {

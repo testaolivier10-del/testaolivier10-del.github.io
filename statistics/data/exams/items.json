@@ -150,7 +150,7 @@
    "diff": 2,
    "q": "A restaurant chain prints a link on every receipt inviting diners to rate their visit online. Of the diners who rate their visit, 41% say they were \"very unhappy.\" Which statement best describes a problem with using this result to estimate the proportion of all the chain's diners who were very unhappy?",
    "options": [
-    "Undercoverage: diners who pay with cash do not get a receipt, so the estimate is too low.",
+    "Undercoverage: diners who order takeout are not invited, so the estimate is too low.",
     "Response bias: the online form words its question in a way that leads diners to say they were happy.",
     "Voluntary response bias: diners with strong feelings, especially bad experiences, are more likely to respond, so 41% probably overstates the proportion.",
     "There is no problem, because each diner received the same invitation on the receipt."
@@ -159,7 +159,7 @@
    "why": {
     "correct": "Diners chose whether to respond. People with strong opinions, especially complaints, are the most likely to bother, so the respondents overrepresent unhappy diners and 41% is likely too high.",
     "options": [
-     "The problem says every receipt carries the link, so no group of diners is left out of the invitation.",
+     "Nothing in the description says any group is not invited; the problem is who chooses to respond.",
      "Nothing in the description says the wording leads diners; and this bias would push the estimate the other way.",
      "Right: the responders select themselves, and unhappy diners are more likely to respond.",
      "Everyone being invited does not make the responders representative: who chooses to answer is not random."
@@ -294,7 +294,7 @@
     "options": [
      "0.11 is $\\frac{0.056}{0.5}$, dividing by $p_0$ instead of the standard error.",
      "2.52 uses $\\hat{p}$ in the standard error; a test assumes $H_0$ is true, so it uses $p_0 = 0.5$.",
-     "0.0061 is the p-value for this test, $P(z > 2.50)$, not the test statistic.",
+     "0.0061 is the p-value for this test, about 0.006, not the test statistic.",
      "Right: $\\frac{0.556 - 0.5}{\\sqrt{0.25/500}} \\approx 2.50$."
     ]
    }
@@ -321,7 +321,7 @@
      "There are two populations to compare, not one proportion against a fixed value.",
      "Right: two independent samples, one proportion from each.",
      "The response is categorical (flu shot or not), so there are no means to compare.",
-     "A test for independence uses one sample classified by two variables; here there are two separate samples. (A chi-square test for homogeneity would also fit a two-way table, but not independence.)"
+     "A test for independence uses one sample classified by two variables; here there are two separate samples."
     ]
    }
   },
@@ -338,7 +338,7 @@
     "A chi-square test for homogeneity",
     "A two-sample z test for a difference in proportions",
     "A chi-square test for independence",
-    "A chi-square test that the four news sources are equally popular"
+    "A two-sample t test for a difference in means"
    ],
    "correct": 2,
    "why": {
@@ -347,7 +347,7 @@
      "Homogeneity compares one variable across separate samples from several populations; here there is one sample with two variables.",
      "Each variable has more than two categories, so a single difference of two proportions cannot answer the question.",
      "Right: one sample, two categorical variables, association.",
-     "Whether the four sources are equally popular is not the question, and that test is not part of this course; the question is about an association with age."
+     "Both variables are categorical, so there are no means to compare."
     ]
    }
   },
@@ -622,21 +622,21 @@
    "practice": "3.E",
    "level": "apply",
    "diff": 3,
-   "q": "In a randomized experiment, 64 of 200 people who got a text reminder and 45 of 180 people who did not get one kept a dental appointment on time. To test $H_0: p_1 = p_2$ against $H_a: p_1 > p_2$, where $p_1$ and $p_2$ are the true proportions who would keep the appointment with and without a reminder, what is the test statistic?",
+   "q": "In a randomized experiment, 70 of 250 people who got a text reminder and 30 of 150 people who did not get one kept a dental appointment on time. To test $H_0: p_1 = p_2$ against $H_a: p_1 > p_2$, where $p_1$ and $p_2$ are the true proportions who would keep the appointment with and without a reminder, what is the test statistic?",
    "options": [
-    "$z \\approx 1.51$",
-    "$z \\approx 1.52$",
-    "$z \\approx 0.07$",
-    "$z \\approx 1.07$"
+    "$z \\approx 1.79$",
+    "$z \\approx 1.85$",
+    "$z \\approx 0.08$",
+    "$z \\approx 1.28$"
    ],
    "correct": 0,
    "why": {
-    "correct": "$\\hat{p}_1 = \\frac{64}{200} = 0.32$, $\\hat{p}_2 = \\frac{45}{180} = 0.25$ and $p_c = \\frac{64 + 45}{200 + 180} = \\frac{109}{380} \\approx 0.2868$. $z = \\frac{0.32 - 0.25}{\\sqrt{0.2868(0.7132)\\left(\\frac{1}{200} + \\frac{1}{180}\\right)}} = \\frac{0.07}{0.0465} \\approx 1.51$. Technology: a two-proportion z test gives the same.",
+    "correct": "$\\hat{p}_1 = \\frac{70}{250} = 0.28$, $\\hat{p}_2 = \\frac{30}{150} = 0.20$ and $p_c = \\frac{70 + 30}{250 + 150} = \\frac{100}{400} = 0.25$. $z = \\frac{0.28 - 0.20}{\\sqrt{0.25(0.75)\\left(\\frac{1}{250} + \\frac{1}{150}\\right)}} = \\frac{0.08}{0.0447} \\approx 1.79$. Technology: a two-proportion z test gives the same.",
     "options": [
      "Right: the pooled standard error, because the test assumes $p_1 = p_2$.",
-     "1.52 uses the unpooled standard error from the interval; a test of $p_1 = p_2$ pools the two samples into $p_c$.",
-     "0.07 is the difference in sample proportions, not standardized by its standard error.",
-     "1.07 adds the two standard errors, $\\sqrt{\\frac{p_c(1 - p_c)}{200}} + \\sqrt{\\frac{p_c(1 - p_c)}{180}}$; the variances add under one square root."
+     "1.85 uses the unpooled standard error from the interval; a test of $p_1 = p_2$ pools the two samples into $p_c$.",
+     "0.08 is the difference in sample proportions, not standardized by its standard error.",
+     "1.28 adds the two standard errors, $\\sqrt{\\frac{p_c(1 - p_c)}{250}} + \\sqrt{\\frac{p_c(1 - p_c)}{150}}$; the variances add under one square root."
     ]
    }
   },

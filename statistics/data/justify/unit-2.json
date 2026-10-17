@@ -125,15 +125,15 @@
    "practice": "4.B",
    "skill": "probability",
    "title": "Read a simulation as evidence",
-   "context": "<p>A teacher claims a quiz's 10 true or false questions have random answers, so a student guessing on every question would get each one right with probability 0.5. A student who says he guessed got 9 right. The teacher simulates 200 guessers; 7 of the 200 simulated guessers got 9 or more right.</p>",
+   "context": "<p>A student says he guessed on every question of a 10 question true or false quiz, so each answer had probability 0.5 of being right. He got 9 right. A teacher simulates 200 guessers; 2 of the 200 simulated guessers got 9 or more right.</p>",
    "prompt": "<b>Explain</b> what the simulation says about the student's claim that he guessed.",
    "checklist": [
-    "Finds the proportion of simulated trials at 9 or more: about $\\frac{7}{200} = 0.035$",
-    "Interprets it conditionally: if the student were guessing, 9 or more right would happen in only about 3.5% of trials",
+    "Finds the proportion of simulated trials at 9 or more: about $\\frac{2}{200} = 0.01$",
+    "Interprets it conditionally: if the student were guessing, 9 or more right would happen in only about 1% of trials",
     "Concludes in context: this is unusual, so the simulation gives evidence against the claim that he guessed (it does not prove he did not)"
    ],
    "earns": {
-    "answer": "In the simulation, 7 of 200 guessers got 9 or more right, so the simulated proportion is $\\frac{7}{200} = 0.035$. If the student were really guessing, a score of 9 or more would happen only about 3.5% of the time, which is unusual. So the simulation gives evidence against the student's claim that he guessed on every question.",
+    "answer": "In the simulation, 2 of 200 guessers got 9 or more right, so the simulated proportion is $\\frac{2}{200} = 0.01$. If the student were really guessing, a score of 9 or more would happen only about 1% of the time, which is unusual. So the simulation gives evidence against the student's claim that he guessed on every question.",
     "why": "It counts the trials at or beyond the observed result, interprets that proportion assuming the claim, and draws a careful conclusion."
    },
    "misses": {

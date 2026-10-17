@@ -15,12 +15,16 @@
               self-checked (in course order), with "All prompts" one tap away
      one      ?p=<id>: context, prompt, a textarea (saved on this device in
               apstat_frq_drafts_v1 under "justify:<id>", as FRQ drafts are),
-              then the checklist and the two model answers
+              then the checklist, the conclusion builder when the prompt has
+              one (p.conclude: a select per slot, graded exactly by
+              ApStatGrade.conclude, the note naming the slot that is wrong;
+              spec section 7, rule 5), and the two model answers
 
    Premium: the first prompts in course order (free: true in
    assets/justify.json) are open to everyone; the rest show the Premium card
    when ApStatCore.locked() (nothing is locked before launch). Self-checks go
-   to apstat_prefs_v1.justify { id: { got, of, best, ts } }. */
+   to apstat_prefs_v1.justify { id: { got, of, best, ts, built? } }, where
+   built is the builder's first try { right, of }. */
 (function(){
   var BASE = window.ApStatBase || '';
   var app = document.getElementById('app');
@@ -44,6 +48,49 @@
       s[id] = { got: got, of: of, best: Math.max(got, prev && prev.best || 0), ts: Date.now() };
       p.justify = s; localStorage.setItem(PREFS, JSON.stringify(p));
     }catch(e){}
+  }
+  function saveBuilt(id, right, of){
+    try{
+      var p = readJson(PREFS), s = p.justify || {}, cur = s[id] || { got: 0, of: 0, best: 0, ts: Date.now() };
+      if(!cur.built){ cur.built = { right: right, of: of }; s[id] = cur; p.justify = s; localStorage.setItem(PREFS, JSON.stringify(p)); }
+    }catch(e){}
+  }
+  function plain(t){ var T = window.ApStatTex; return T && T.plain ? T.plain(t) : String(t).replace(/\$/g, ''); }
+  var SLOT = { decision: 'Decision', evidence: 'Evidence', direction: 'Direction', parameter: 'Parameter', context: 'Context', level: 'Confidence', claim: 'Claim', condition: 'Condition' };
+  /* The conclusion builder: one labelled select per slot, in order. */
+  function builderHtml(p){
+    var C = p.conclude, names = Object.keys(C.slots);
+    return '<fieldset class="stat-fq-rpart stat-js-build"><legend>Now build it part by part</legend>' +
+      '<p class="stat-small">Choose the wording for each part. This is graded exactly, part by part.</p><div class="stat-cl">' +
+      names.map(function(n, k){
+        var sl = C.slots[n];
+        return '<label class="stat-cl-slot" for="stat-js-b' + k + '"><span>' + esc(SLOT[n] || n) + '</span><select id="stat-js-b' + k + '" data-slot="' + esc(n) + '"><option value="">Choose</option>' +
+          sl.options.map(function(o, i){ return '<option value="' + i + '">' + esc(plain(o)) + '</option>'; }).join('') + '</select></label>';
+      }).join('') + '</div><div class="stat-pr-actions"><button type="button" class="btn-outline" data-act="build">Check my sentence</button></div>' +
+      '<div class="stat-js-bfb" role="status" aria-live="polite"></div></fieldset>';
+  }
+  function wireBuilder(box, p){
+    var el = box.querySelector('.stat-js-build'); if(!el) return;
+    var btn = el.querySelector('[data-act="build"]'), fb = el.querySelector('.stat-js-bfb'), first = true;
+    btn.addEventListener('click', function(){
+      var picks = {};
+      el.querySelectorAll('select[data-slot]').forEach(function(sel){ if(sel.value !== '') picks[sel.getAttribute('data-slot')] = +sel.value; });
+      var G = window.ApStatGrade;
+      var g = G ? G.conclude(p.conclude, picks) : { valid: false, notes: ['The grader did not load.'] };
+      [].slice.call(el.querySelectorAll('.stat-mark')).forEach(function(m){ m.remove(); });
+      if(!g.valid){ fb.innerHTML = '<p class="stat-small" role="alert">Choose an option in every part.</p>'; return; }
+      var names = Object.keys(p.conclude.slots), right = names.filter(function(n){ return g.slots[n]; }).length;
+      el.querySelectorAll('select[data-slot]').forEach(function(sel){
+        sel.insertAdjacentHTML('afterend', '<span class="stat-mark ' + (g.slots[sel.getAttribute('data-slot')] ? 'ok">Right' : 'no">Check this') + '</span>');
+      });
+      // A wrong slot's note names the slot; its why is authored math HTML.
+      var notes = names.filter(function(n){ return !g.slots[n]; }).map(function(n){
+        var sl = p.conclude.slots[n], w = sl.why && sl.why[picks[n]];
+        return '<li>Check the ' + esc((SLOT[n] || n).toLowerCase()) + (w ? ': ' + w : '.') + '</li>';
+      });
+      fb.innerHTML = '<p><b>' + right + ' of ' + names.length + ' parts right.</b>' + (g.correct ? ' That sentence earns the point.' : '') + '</p>' + (notes.length ? '<ul class="stat-num-notes">' + notes.join('') + '</ul>' : '');
+      if(first){ first = false; saveBuilt(p.id, right, names.length); if(Core) Core.event('apstat-justify-build', { prompt: p.id, right: right, of: names.length }); }
+    });
   }
   function locked(p){ return !p.free && Core && Core.locked && Core.locked(); }
   function unitLabel(u){ var c = UNIT[u]; return c ? (c.part === 'course' ? 'Unit ' + c.n : c.title) : u; }
@@ -177,6 +224,7 @@
         '<fieldset class="stat-fq-rpart"><legend>Tick each point your answer makes, in your own words</legend>' +
         p.checklist.map(function(c, k){ return '<label class="stat-fq-point" for="stat-js-c' + k + '"><input type="checkbox" id="stat-js-c' + k + '" data-k="' + k + '"><span>' + c + '</span></label>'; }).join('') +
         '</fieldset><p class="stat-fq-total" role="status" aria-live="polite"></p>' +
+        (p.conclude ? builderHtml(p) : '') +
         '<div class="stat-js-models">' +
           '<div class="stat-js-model is-earns"><p class="stat-fq-sample-k">An answer that earns the point</p><p>' + p.earns.answer + '</p><p class="stat-js-why"><b>Why it earns it:</b> ' + p.earns.why + '</p></div>' +
           '<div class="stat-js-model is-misses"><p class="stat-fq-sample-k">An answer that does not</p><p>' + p.misses.answer + '</p><p class="stat-js-why"><b>Why it misses:</b> ' + p.misses.why + '</p></div>' +
@@ -185,6 +233,7 @@
           '<button type="button" class="btn-outline" data-act="again">Rewrite my answer</button>' +
           (next ? '<a class="btn-outline" href="?p=' + encodeURIComponent(next.id) + '">Next prompt</a>' : '<a class="btn-outline" href="' + LIST + '">All prompts</a>') + '</div>' +
         '<p class="stat-small">More practice on this topic: <a href="' + BASE + 'notes/' + p.topic + '.html">the notes</a> &middot; <a href="' + BASE + 'frq.html?unit=' + p.unit + '">free-response questions for ' + esc(unitLabel(p.unit)) + '</a>.</p>';
+      wireBuilder(box, p);
       function total(){ var n = box.querySelectorAll('.stat-fq-point input:checked').length; box.querySelector('.stat-fq-total').textContent = 'Your answer makes ' + n + ' of ' + p.checklist.length + ' points.'; return n; }
       box.addEventListener('change', total); total();
       box.querySelector('[data-act="save"]').addEventListener('click', function(){

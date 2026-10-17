@@ -19,7 +19,7 @@
    No path carries the token "ap" (spec decision 2). The helpers come from
    the generator (ctx) so the pages share its head, crumbs, footer and tail. */
 import { loadExams, loadJustify, formUnits, FREE_JUSTIFY, JUSTIFY_SKILLS } from './apstat-exams.mjs';
-import { renderMath, prepareBank } from './apstat-build.mjs';
+import { renderMath, prepareBank, concludeSlots } from './apstat-build.mjs';
 
 export const SAMPLE_SIZE = 12;
 
@@ -243,10 +243,18 @@ ${tail({ depth, section: 'exams', extra: ['stat-questions.js', 'pages/sample.js'
 
   /* ---------------------------------------------------- justification data */
   const prompts = loadJustify(C.data, map).filter(p => C.published.has(p.unit));
+  /* The conclusion builder for a prompt whose answer has components: the
+     slots in order (a test's decision slot generated from p and alpha, first),
+     option text raw (shown as plain text in a select, ApStatTex.plain), each
+     why rendered as math. */
+  const builder = Cn => {
+    const sl = concludeSlots(Cn), order = [...(sl.decision ? ['decision'] : []), ...Object.keys(sl).filter(k => k !== 'decision')];
+    return { mode: Cn.mode, slots: Object.fromEntries(order.map(k => [k, { options: sl[k].options, correct: sl[k].correct, why: renderMath(sl[k].why || {}) }])) };
+  };
   out['assets/justify.json'] = JSON.stringify({
     skills: JUSTIFY_SKILLS,
     // "answer" is a raw key for questions (never TeX), so the model answers are rendered on their own.
-    prompts: prompts.map((raw, i) => { const p = renderMath(raw), R1 = s => renderMath([s])[0]; return { id: p.id, unit: p.unit, topic: p.topic, practice: p.practice, skill: p.skill, title: p.title, context: p.context || '', prompt: p.prompt, checklist: p.checklist, earns: { answer: R1(raw.earns.answer), why: p.earns.why }, misses: { answer: R1(raw.misses.answer), why: p.misses.why }, ...(i < FREE_JUSTIFY ? { free: true } : {}) }; }),
+    prompts: prompts.map((raw, i) => { const p = renderMath(raw), R1 = s => renderMath([s])[0]; return { id: p.id, unit: p.unit, topic: p.topic, practice: p.practice, skill: p.skill, title: p.title, context: p.context || '', prompt: p.prompt, checklist: p.checklist, earns: { answer: R1(raw.earns.answer), why: p.earns.why }, misses: { answer: R1(raw.misses.answer), why: p.misses.why }, ...(raw.conclude ? { conclude: builder(raw.conclude) } : {}), ...(i < FREE_JUSTIFY ? { free: true } : {}) }; }),
   });
   return { pages: out, sampleUnits: units.filter(built).map(u => u.id), forms: live.length, prompts: prompts.length };
 }

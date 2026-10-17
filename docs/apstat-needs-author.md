@@ -132,3 +132,22 @@ did not touch; content workarounds are in place.
   and 5.5, nothing from the topic pages. Still to confirm: whether reading $s$ from output is assessed
   (taught in 5.5 and the regression FRQ), and whether 5.5 still expects $b = r\frac{s_y}{s_x}$ as a
   relationship (taught, one setup item).
+
+## tools-review: points left open by the trainers accuracy review (open, 2026-10-17)
+
+From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy recheck; these are judgment calls.
+
+- **Rules of thumb graded as keys.** `regression-lab` "How strong is it?" keys strong/moderate/weak from
+  |r| ≥ 0.8 / 0.5 to 0.8 / below 0.5, and `data-explorer` "What is the shape?" keys skewed or roughly
+  symmetric from a skewness rule. Both rules are stated in the feedback and the generators keep every
+  problem far from a border (|r| ≥ 0.88, 0.56-0.72, 0.15-0.38; skewness ≥ 0.8, ≤ −0.8, |g| ≤ 0.25), but the
+  course has no fixed cutoffs. Confirm this is acceptable, or turn strength into a comparison item.
+- **The 2 SD outlier rule.** `data-explorer` z-score drills key "outlier" as |z| > 2 and the solution says
+  the course also uses 1.5 × IQR and the two can disagree. Confirm the revised CED (1.8-1.9) still names
+  the 2 SD rule.
+- **Bias names.** `sampling-lab` offers "Convenience sampling bias" beside undercoverage, nonresponse,
+  response and voluntary response bias. Confirm the course term (some texts say only "convenience
+  sampling" is the method and the bias is "likely not representative").
+- **Very small p-values in Explore.** `chi-square-lab` and `p-value-explorer` show a p-value under
+  0.00005 as 0.0000 in the Explore pills and Why sentence ("Because 0.0000 is less than α"). The drills
+  never reach it. Consider "less than 0.0001" there.

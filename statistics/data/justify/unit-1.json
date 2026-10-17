@@ -69,7 +69,7 @@
    },
    "misses": {
     "answer": "The heights are symmetric and normal with one peak, because the box and whiskers are even.",
-    "why": "\"Normal\" and \"one peak\" go beyond what a boxplot can show; readers take this point away every year."
+    "why": "\"Normal\" and \"one peak\" go beyond what a boxplot can show; points are lost for this on the exam every year."
    }
   },
   {
@@ -101,16 +101,16 @@
    "topic": "sampling-problems",
    "practice": "2.B",
    "skill": "sampling",
-   "title": "Name the bias and its direction",
+   "title": "Name the bias and which way it pushes",
    "context": "<p>A city council posts a question on its website: \"Should the city spend more on road repairs?\" Of the 1,240 people who answer, 88% say yes.</p>",
-   "prompt": "<b>Explain</b> why 88% probably misstates the percent of all city residents who support more road repair spending, and say whether it is likely too high or too low.",
+   "prompt": "<b>Explain</b> why 88% probably misstates the percent of all city residents who support more road repair spending, and say whether it is probably too high or too low.",
    "checklist": [
     "Names voluntary response bias: people chose whether to answer",
-    "Explains who is overrepresented: residents with strong feelings, such as those upset about bad roads, are more likely to respond",
+    "Explains who is overrepresented: residents with strong feelings, such as those upset about bad roads, are the ones who tend to respond",
     "Says which way the error goes: 88% is probably too high, overstating support among all residents"
    ],
    "earns": {
-    "answer": "This is voluntary response bias: people chose whether to answer. Residents who feel strongly about bad roads are the ones who tend to visit the site and respond, and they are likely to say yes. So the respondents overrepresent supporters, and 88% probably overestimates the percent of all city residents who support more road repair spending.",
+    "answer": "This is voluntary response bias: people chose whether to answer. Residents who feel strongly about bad roads are the ones who tend to visit the site and respond, and they tend to say yes. So the respondents overrepresent supporters, and 88% probably overestimates the percent of all city residents who support more road repair spending.",
     "why": "It names the bias, explains the mechanism in context, and says which way the error goes."
    },
    "misses": {
@@ -154,10 +154,10 @@
    "checklist": [
     "Says random assignment lets her conclude that the evening walk caused the better sleep",
     "Explains why: random assignment makes the groups similar in other variables, so the treatment is the only systematic difference",
-    "Limits the scope: the volunteers were not a random sample, so the result applies to volunteers like these, not to all adults"
+    "Limits the scope: the volunteers were not a random sample, so the conclusion applies only to volunteers like these, not to all adults"
    ],
    "earns": {
-    "answer": "Because the volunteers were randomly assigned to the treatments, the two groups should be similar in everything except the evening walk, so she can conclude that the walk caused the better sleep. But the volunteers were not randomly selected from a larger population, so she can generalize only to people like these volunteers, not to all adults.",
+    "answer": "Because the volunteers were randomly assigned to the treatments, the two groups should be similar in everything except the evening walk, so she can conclude that the walk caused the better sleep. But the volunteers were not randomly selected from a larger population, so the conclusion applies only to volunteers like these, not to all adults.",
     "why": "It ties cause and effect to random assignment, and it limits the conclusion because there was no random sampling."
    },
    "misses": {

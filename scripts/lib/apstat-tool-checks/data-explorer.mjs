@@ -50,7 +50,7 @@ export function recheck(p, c, errs, w) {
     if (sh === 'right' && !(m > S.med) || sh === 'left' && !(m < S.med) || sh === 'sym' && !(Math.abs(m - S.med) < 0.1 * sd(xs))) errs.push(`${w}: mean ${m} and median ${S.med} disagree with the shape ${sh}`);
     if (!right(p, 'vs').includes(want === 'about' ? 'about the same' : want)) errs.push(`${w}: vs: wrong option marked right`);
     const good = right(p, 'sentence');
-    if (!good.includes(c.what) || !good.includes(c.unit)) errs.push(`${w}: the full-credit sentence lacks context`);
+    if (!good.includes(c.whats || c.what) || !good.includes(c.unit)) errs.push(`${w}: the full-credit sentence lacks context`);
     if (S.outliers.length === 0 ? !good.includes('no outliers') : good.includes('no outliers')) errs.push(`${w}: the full-credit sentence misstates the outliers`);
   } else if (p.type === 'zscore') {
     const { x, mean: m2, sd: s2 } = p.data;

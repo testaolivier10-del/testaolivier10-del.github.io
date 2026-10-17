@@ -289,7 +289,7 @@
     var repOpts = [
       { t: 'Ignore any repeated number and keep generating.', ok: true, why: 'Sampling is without replacement: a ' + ctx.unit + ' cannot be in the sample twice.' },
       { t: 'Keep a repeated number; that ' + ctx.unit + ' counts twice.', ok: false, why: 'Then the sample could have fewer than ' + n + ' different ' + U + '. Skip repeats.' },
-      { t: 'If a number repeats, start the whole sample again.', ok: false, why: 'Not wrong in effect, but wasteful and not the standard step. Just skip the repeat and keep going.' },
+      { t: 'If a number repeats, take the ' + ctx.unit + ' with the next label instead.', ok: false, why: 'Then a ' + ctx.unit + ' just after an already chosen one gets two chances, so not every group of ' + n + ' is equally likely. Skip the repeat and keep generating.' },
       { t: 'Repeats cannot happen, so no rule is needed.', ok: false, why: 'A generator can give the same integer twice. Say what you do when it does.' }
     ];
     var selOpts = [
