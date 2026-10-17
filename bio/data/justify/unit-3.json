@@ -1,0 +1,100 @@
+{
+ "about": "Justification trainer prompts for Unit 3, Cellular Energetics (docs/apbio-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u3-amylase-low-ph",
+   "unit": "unit-3",
+   "topic": "enzyme-environment",
+   "practice": "6.E",
+   "skill": "prediction",
+   "title": "A saliva enzyme at stomach pH",
+   "context": "<p>Amylase from saliva breaks starch into smaller sugars. Students measured its activity at 37 °C at several pH values, as a percent of its highest activity.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Amylase activity by pH\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">pH</th><th scope=\"col\">Activity (% of maximum)</th></tr></thead><tbody><tr><td>4</td><td>15</td></tr><tr><td>5</td><td>48</td></tr><tr><td>6</td><td>92</td></tr><tr><td>7</td><td>100</td></tr><tr><td>8</td><td>71</td></tr></tbody></table></div>",
+   "prompt": "<b>Predict</b> the rate of starch breakdown by this enzyme at pH 2, and <b>justify</b> your prediction with a mechanism.",
+   "checklist": [
+    "Predicts activity near zero at pH 2, lower than the 15% measured at pH 4",
+    "Uses the trend: activity falls from 100% at pH 7 to 15% at pH 4 as pH drops",
+    "Says the high H+ concentration changes the charges on R groups, breaking ionic and hydrogen bonds that hold the enzyme's shape",
+    "Says the active site changes shape, so starch fits poorly and few enzyme-substrate complexes form"
+   ],
+   "earns": {
+    "answer": "The rate at pH 2 will be close to zero, lower than the 15% measured at pH 4. Activity drops steadily as pH falls below 7: 92% at pH 6, 48% at pH 5 and 15% at pH 4. At pH 2 the H+ concentration is 100 times higher than at pH 4. The extra H+ ions bind to R groups that are normally negatively charged, which changes their charges. Ionic bonds and hydrogen bonds between R groups break, so the enzyme's tertiary structure and its active site change shape. Starch no longer fits the active site well, so few enzyme-substrate complexes form and little starch is broken down.",
+    "why": "The prediction follows the data, and the justification is a chain from H+ to R group charges to active site shape to rate."
+   },
+   "misses": {
+    "answer": "The rate will be lower because the acid at pH 2 denatures the enzyme.",
+    "why": "The direction is right, but it uses no data and \"denatures\" names the outcome without saying how H+ changes R groups and the active site."
+   }
+  },
+  {
+   "id": "u3-inhibitor-substrate-curve",
+   "unit": "unit-3",
+   "topic": "enzyme-environment",
+   "practice": "6.B",
+   "skill": "argument",
+   "title": "Where does inhibitor X bind?",
+   "context": "<p>Researchers measured the rate of an enzyme reaction at four substrate concentrations, with and without a fixed amount of inhibitor X.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Reaction rate with and without inhibitor X\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Substrate (mM)</th><th scope=\"col\">Rate, no inhibitor (µmol/min)</th><th scope=\"col\">Rate, with X (µmol/min)</th></tr></thead><tbody><tr><td>1</td><td>10</td><td>4</td></tr><tr><td>5</td><td>30</td><td>16</td></tr><tr><td>20</td><td>44</td><td>34</td></tr><tr><td>80</td><td>49</td><td>47</td></tr></tbody></table></div><p>A student claims that X binds to the enzyme's active site.</p>",
+   "prompt": "<b>Support</b> or <b>refute</b> the student's claim using evidence from the table and reasoning about how inhibitors work.",
+   "checklist": [
+    "Supports the claim, citing low substrate evidence: at 1 mM the rate falls from 10 to 4 µmol/min with X, 60% lower",
+    "Cites high substrate evidence: at 80 mM the rate is 47 versus 49 µmol/min, only about 4% lower",
+    "Reasons that X and substrate compete for the active site, so at high substrate most active sites hold substrate and few bind X",
+    "Says an inhibitor that bound elsewhere and changed the enzyme's shape would still lower the rate at high substrate"
+   ],
+   "earns": {
+    "answer": "The data support the claim. At 1 mM substrate, X lowers the rate from 10 to 4 µmol/min, a 60% drop. At 80 mM substrate, the rate with X is 47 µmol/min compared with 49 µmol/min without it, only about 4% lower. So adding more substrate almost cancels the effect of X. This fits a competitive inhibitor: X and the substrate compete for the same active site. At high substrate concentration, substrate molecules occupy most active sites, so X binds few enzymes. An inhibitor that bound somewhere else and changed the enzyme's shape would still lower the rate at high substrate, because extra substrate could not undo that change.",
+    "why": "It takes a side, uses values at both ends of the range, and explains why the pattern points to the active site and not to another site."
+   },
+   "misses": {
+    "answer": "The claim is supported because X lowers the reaction rate at every substrate concentration.",
+    "why": "Any inhibitor lowers the rate. The evidence that matters is that high substrate almost removes the effect, and the answer gives no reasoning about competition."
+   }
+  },
+  {
+   "id": "u3-elodea-light-curve",
+   "unit": "unit-3",
+   "topic": "photosynthesis",
+   "practice": "4.B",
+   "skill": "data",
+   "title": "Net oxygen output across light levels",
+   "context": "<p>A student measured net oxygen production by a water plant at 25 °C under six light intensities. Net production is oxygen released by photosynthesis minus oxygen used by cellular respiration.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Net oxygen production by light intensity\"><table class=\"bio-data\"><thead><tr><th scope=\"row\">Light intensity (µmol photons/m²/s)</th><th>Net O<sub>2</sub> production (mL/h)</th></tr></thead><tbody><tr><td>0</td><td>−0.4</td></tr><tr><td>100</td><td>0.8</td></tr><tr><td>200</td><td>1.9</td></tr><tr><td>400</td><td>3.2</td></tr><tr><td>800</td><td>3.4</td></tr><tr><td>1600</td><td>3.4</td></tr></tbody></table></div>",
+   "prompt": "<b>Describe</b> how net oxygen production changes with light intensity, using values from the table, and <b>explain</b> the value at 0 light and why production levels off at high light.",
+   "checklist": [
+    "From 0 to 400 µmol photons/m²/s, net O2 production rises from −0.4 to 3.2 mL/h",
+    "Above 400, it levels off: 3.2 mL/h at 400 and 3.4 mL/h at both 800 and 1600",
+    "At 0 light the value is negative because the plant still uses O2 in cellular respiration while no photosynthesis occurs",
+    "Gives a reason for the leveling off: something other than light, such as CO2 supply or Calvin cycle enzymes, limits the rate"
+   ],
+   "earns": {
+    "answer": "Net oxygen production rises with light intensity at first, then levels off. It goes from −0.4 mL/h at 0 light to 0.8 mL/h at 100, 1.9 mL/h at 200 and 3.2 mL/h at 400 µmol photons/m²/s. Above 400 it barely changes: 3.4 mL/h at both 800 and 1600. At high light, another factor such as the CO2 supply or the speed of the Calvin cycle limits the rate. At 0 light the value is negative because the plant still uses oxygen in cellular respiration, but no photosynthesis releases oxygen, so it takes up 0.4 mL of O2 each hour.",
+    "why": "It describes both parts of the curve with values and units, and explains the negative value with respiration and the plateau with another limit."
+   },
+   "misses": {
+    "answer": "Oxygen production goes up as light intensity goes up, because more light means more photosynthesis.",
+    "why": "It gives no values, misses the plateau above 400 and does not explain why the value at 0 light is negative."
+   }
+  },
+  {
+   "id": "u3-proton-leak-model",
+   "unit": "unit-3",
+   "topic": "cellular-respiration",
+   "practice": "2.B",
+   "skill": "models",
+   "title": "A leak in the inner membrane",
+   "context": "<p>Model: in the inner mitochondrial membrane, electrons from NADH pass along the electron transport chain to O<sub>2</sub>. As electrons pass, chain proteins pump H+ from the matrix into the intermembrane space. H+ flows back into the matrix through ATP synthase, and this flow drives ATP synthesis.</p><p>A compound lets H+ cross the inner membrane directly. In isolated mitochondria, adding the compound raised O<sub>2</sub> use from 2.0 to 3.6 nmol/min per mg protein, while ATP production fell from 5.0 to 0.8 nmol/min per mg protein.</p>",
+   "prompt": "<b>Use</b> the model to <b>explain</b> why the compound lowers ATP production even though the mitochondria keep using O<sub>2</sub>.",
+   "checklist": [
+    "Says electron transport to O2 still runs, so O2 is still used as the final electron acceptor",
+    "Says H+ pumped into the intermembrane space returns through the compound instead of through ATP synthase, so the H+ gradient is smaller",
+    "Says ATP synthase makes ATP only when H+ flows through it, so less flow through ATP synthase means less ATP (5.0 down to 0.8)"
+   ],
+   "earns": {
+    "answer": "In the model, electrons from NADH pass along the electron transport chain to O2, the final electron acceptor. As they pass, the chain pumps H+ from the matrix into the intermembrane space, building a high H+ concentration there. Normally H+ flows back through ATP synthase, and that flow drives ATP synthesis. The compound gives H+ another path across the inner membrane. Electron transport still runs, so O2 is still used, but most H+ returns through the compound instead of ATP synthase. The H+ gradient becomes smaller and less H+ flows through ATP synthase, so ATP production falls from 5.0 to 0.8 nmol/min per mg protein.",
+    "why": "It uses each step of the model to separate electron transport (which uses O2) from ATP synthesis (which needs H+ flow through ATP synthase)."
+   },
+   "misses": {
+    "answer": "The compound stops the electron transport chain, so less ATP is made.",
+    "why": "It contradicts the data, since O2 use continued. It misses that the compound lets H+ bypass ATP synthase."
+   }
+  }
+ ]
+}

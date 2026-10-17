@@ -209,6 +209,18 @@ whose prompt says graph, plot or construct gets the blank grid on paper.
 - `tools/<slug>.json`: each needs `scripts/lib/apbio-tool-checks/<slug>.mjs` exporting
   `check(data, map)` (as A&P's tool contract). See "Tools" below.
 
+## Unit practice tests and justification trainer (spec decision 29)
+
+- `unit-tests/<unit>.html` (`scripts/lib/apbio-entry.mjs`): 12 bank items per published unit, the
+  same choice every build; page data in `#bio-page-data`, graded by `pages/sample.js`.
+- `data/justify/<unit>.json`: `{ about, prompts: [{ id: "u<N>-<words>", unit, topic, practice
+  ("6.E"), skill (a `JUSTIFY_SKILLS` key: mechanism, data, design, prediction, argument, models,
+  stats), title, context (HTML; a table in `<div class="table-wrap" ...>` with `class="bio-data"`),
+  prompt (one bold task verb or more), checklist (2 to 4 lines), earns { answer, why }, misses
+  { answer, why } }] }`. Checked by `checkJustify` in `scripts/lib/apbio-exams.mjs`, served as
+  `assets/justify.json` (published units, first `FREE_JUSTIFY` free). Runtime `pages/justify.js`
+  (drafts in `apbio_frq_drafts_v1` under `justify:<id>`, self-checks in `apbio_prefs_v1.justify`).
+
 ## Tools (simulators, skills tools, drills)
 
 Every tool meets `docs/anp-tools-contract.md`: real buttons and form controls, keyboard and

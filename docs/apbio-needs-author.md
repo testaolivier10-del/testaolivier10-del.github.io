@@ -655,3 +655,23 @@ Unit 8 (Ecology), raised by its author, 2026-10-03:
   (n/N)²; the n(n − 1)/N(N − 1) form is the finite-sample (unbiased) variant used in some ecology
   texts and IB. Owner: confirm against the current printed formula sheet (the PDF could not be
   fetched from this container).
+
+## Justification trainer and unit tests (2026-10-17)
+
+New content: 32 prompts in `bio/data/justify/` (spec decision 29), checked by a separate helper that
+did not write them (`docs/apbio-reviews/justify.md`: 1 error, 13 fixes, 9 notes). The error (a
+chi-square rounded to 8.05 instead of 8.04), every fix and four notes were applied; these stay open:
+
+- **justify-gc-stacking** (open). `u1-gc-content-melting` explains the higher melting point of G-C
+  rich DNA by the third hydrogen bond, the usual course explanation; base stacking contributes
+  more of the extra stability. Decide whether to add a stacking clause.
+- **justify-batch-culture** (logged). `u8-paramecium-logistic` now says fresh food was added every 2
+  days, so "carrying capacity" fits the culture (a closed batch culture levels off, then declines).
+  Confirm the wording.
+- **justify-free-prompts** (open). The first 3 prompts in course order are free and the rest
+  Premium (feature `justify`), as in the other AP courses; open to everyone while nothing is locked.
+  Owner to confirm, or make the trainer free.
+- **justify-hw-df** (logged). `u7-hw-chi-square` gives the critical values for 1 and 2 degrees of
+  freedom and its chi-square (8.04) exceeds both, matching the course's stated handling.
+- **justify-teacher-review** (open). None of the prompts has been seen by a biology teacher yet
+  (Beta note on the page).
