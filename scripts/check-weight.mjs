@@ -128,7 +128,11 @@ const SHELL_BUDGETS = [
      the seventh course in every generated course list, its premium.js entry,
      ranks, tutor starters, search source and the theme tint. Measured 287.9 KB
      (from 287.0 with the AP® Physics 1 launch changes). */
-  ['site', 288.5],
+  /* 288.5 -> 289 for the 2026-10-17 polish (docs/polish-2026-10-17.md, A9 to
+     A11): the assistant button docked in the phone header instead of over the
+     text, the course footers' gutter, and the hub cards' course tints shared
+     from the course tint rules. Measured 288.8 KB after trimming. */
+  ['site', 289],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -343,7 +347,11 @@ const BUDGETS = [
      its hub card, its pass in the FAQ and the offers. Measured 8.6 KB. */
   /* 8.8 -> 9.0 for AP® Calculus AB's launch (docs/apcalc-spec.md decision 12):
      its hub card, its pass in the FAQ and the offers. Measured 8.9 KB. */
-  ['index.html', 9.0],
+  /* 9.0 -> 9.4 for the 2026-10-17 polish (A2, A5, A6): the Free and Premium
+     cards in place of one paragraph, the generated facts row and the grid
+     that keeps the last card from sitting alone. The FAQ price answer got
+     shorter. Measured 9.3 KB. */
+  ['index.html', 9.4],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */

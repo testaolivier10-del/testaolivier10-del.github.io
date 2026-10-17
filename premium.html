@@ -26,12 +26,21 @@
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
-  .hero .pp-anchor{margin:14px 0 0;max-width:60ch;font-size:14.5px;font-weight:700;color:var(--muted);line-height:1.6;}
   .pp p,.pp li{font-size:15.5px;font-weight:600;color:var(--muted);line-height:1.6;max-width:66ch;}
   .pp strong{color:var(--ink);font-weight:800;}
-  .pp h2{font-size:21px;margin:0 0 10px;}
+  .pp h2{font-size:19px;margin:0 0 10px;}
   .pp h3{font:900 12px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 6px;}
-  .pp-course{border:var(--bw) solid var(--line);border-radius:var(--radius);padding:18px 20px;margin:0 0 18px;}
+  .pp-course{border:var(--bw) solid var(--line);border-radius:var(--radius);padding:0 20px;margin:0 0 12px;background:var(--white);}
+  .pp-course[open]{padding-bottom:18px;}
+  .pp-course{scroll-margin-top:calc(var(--chrome-row1-h) + 16px);}
+  .pp-course > summary{list-style:none;display:flex;align-items:center;gap:12px;padding:16px 0;cursor:pointer;}
+  .pp-course > summary::-webkit-details-marker{display:none;}
+  .pp-course > summary::before{content:var(--disclose);font:900 20px/1 var(--font-ui);color:var(--muted);width:12px;flex-shrink:0;transition:transform .15s ease;}
+  .pp-course[open] > summary::before{transform:rotate(90deg);}
+  .pp-course > summary h2{margin:0;flex:1;min-width:0;}
+  .pp .pp-from{font:900 14px var(--font-ui);color:var(--muted);white-space:nowrap;}
+  .pp-course[open] .pp-from{visibility:hidden;}
+  @media (prefers-reduced-motion:reduce){.pp-course > summary::before{transition:none;}}
   .pp-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .pp-cols ul{padding-left:18px;margin:0;}
   .pp-cols li{margin-bottom:5px;}
@@ -232,8 +241,7 @@
   <div class="hero">
     <div class="eyebrow">Free vs Premium</div>
     <h1>What&rsquo;s free, and what Premium adds.</h1>
-    <p class="lede">All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics. Premium is a one-time pass for one course: no subscription, nothing renews. <span data-founding-until="2027-01-31">Founding-member price: 30% off every pass until 31 January 2027.</span></p>
-    <p class="pp-anchor">A pass costs $25 to $49, about what one or two hours with a private tutor costs (<a href="https://www.care.com/cost/private-tutors/boston-ma" rel="noopener">Care.com</a> puts a US tutor&rsquo;s average starting rate near $26 an hour, October 2026). If it isn&rsquo;t what you expected, you can refund it yourself, in full, within 7 days (once per account, <a href="terms.html">terms</a>).</p>
+    <p class="lede">Every course is free to start. Premium is a one-time pass for one course, $25 to $49, with no subscription and a 7-day refund. <span data-founding-until="2027-01-31">30% off until 31 January 2027.</span></p>
   </div>
 
   <div class="xsection">
@@ -241,8 +249,8 @@
       <div class="xlabel">Courses</div>
       <div class="xcontent narrow pp">
 
-        <section class="pp-course" id="nremt" aria-labelledby="pp-nremt">
-          <h2 id="pp-nremt">NREMT-EMT Prep</h2>
+        <details class="pp-course" id="nremt" data-path="/nremt/">
+          <summary><h2 id="pp-nremt">NREMT-EMT Prep</h2><span class="pp-from"><span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Study notes, glossary, flowcharts, mnemonics, flashcards and the body map</li><li>15 practice or review questions a day, any topic</li><li>One full timed exam</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>The full 2,033-question bank, unlimited</li><li>Unlimited timed 100-question exams</li><li>Unlimited missed-question review and spaced repetition</li><li>Readiness score and domain breakdowns</li><li>The clinical scenario simulator</li></ul></div>
@@ -250,10 +258,10 @@
           <ul class="pp-passes"><li><span class="pp-label">90 days</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$29</s> <b>$20.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$29</b></span></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="nremt" data-premium-source="pricing-page">Get Premium for NREMT-EMT Prep</button> <a href="/nremt/">Start free</a></p>
           <p class="pp-guarantee" id="pass-or-extend">Pass-or-extend: take the NREMT cognitive exam during an NREMT pass you bought and don’t pass, and you can claim one free 90-day extension from your Account page within 30 days of the exam. It needs at least 2 full timed exams on LevlPrep, finished while signed in, during your pass and before the real exam, and the legal name and state you tested under. Once per account and email address. It extends your access; it is not a refund. <a href="terms.html#pass-or-extend">The full terms</a>.</p>
-        </section>
+        </details>
 
-        <section class="pp-course" id="ochem" aria-labelledby="pp-ochem">
-          <h2 id="pp-ochem">Organic Chemistry</h2>
+        <details class="pp-course" id="ochem" data-path="/ochem/">
+          <summary><h2 id="pp-ochem">Organic Chemistry</h2><span class="pp-from">from <span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>The textbook section for every topic, and the flashcards</li><li>The first four chapters, fully interactive</li><li>15 practice or review questions a day from any chapter</li><li>One full exam, and three of the interactive tools</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson and mechanism walkthrough</li><li>The full 3,675-question bank, unlimited practice and review</li><li>Unlimited exams</li><li>Mastery dashboard and gap detection</li><li>All eight interactive tools</li></ul></div>
@@ -261,10 +269,10 @@
           <ul class="pp-passes"><li><span class="pp-label">Semester (5 months)</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$29</s> <b>$20.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$29</b></span></li><li><span class="pp-label">Full year</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$49</s> <b>$34.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$49</b></span></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="ochem" data-premium-source="pricing-page">Get Premium for Organic Chemistry</button> <a href="/ochem/">Start free</a></p>
           
-        </section>
+        </details>
 
-        <section class="pp-course" id="anp" aria-labelledby="pp-anp">
-          <h2 id="pp-anp">Anatomy &amp; Physiology</h2>
+        <details class="pp-course" id="anp" data-path="/anatomy-physiology/">
+          <summary><h2 id="pp-anp">Anatomy &amp; Physiology</h2><span class="pp-from">from <span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>The notes page for every topic, the glossary and the flashcards</li><li>The Foundations chapters, fully interactive</li><li>15 practice or review questions a day from any chapter</li><li>One full exam, and three of the interactive tools</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>The full 3,321-question bank, unlimited practice and review</li><li>Unlimited exams</li><li>All the interactive tools, including the lab practical</li><li>Detailed dashboard analytics</li></ul></div>
@@ -272,10 +280,10 @@
           <ul class="pp-passes"><li><span class="pp-label">Semester (5 months)</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$29</s> <b>$20.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$29</b></span></li><li><span class="pp-label">Full year (A&amp;P I and II)</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$49</s> <b>$34.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$49</b></span></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="anp" data-premium-source="pricing-page">Get Premium for Anatomy &amp; Physiology</button> <a href="/anatomy-physiology/">Start free</a></p>
           
-        </section>
+        </details>
 
-        <section class="pp-course" id="apbio" aria-labelledby="pp-apbio">
-          <h2 id="pp-apbio">AP® Biology</h2>
+        <details class="pp-course" id="apbio" data-path="/bio/">
+          <summary><h2 id="pp-apbio">AP® Biology</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every skills lesson</li><li>One simulator</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every simulator</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>
@@ -284,10 +292,10 @@
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="apbio" data-premium-source="pricing-page">Get Premium for AP® Biology</button> <a href="/bio/">Start free</a></p>
           
           <p>One pass, whenever you buy it: it lasts through 30 June 2027, the end of the 2027 exam season.</p>
-        </section>
+        </details>
 
-        <section class="pp-course" id="apchem" aria-labelledby="pp-apchem">
-          <h2 id="pp-apchem">AP® Chemistry</h2>
+        <details class="pp-course" id="apchem" data-path="/chem/">
+          <summary><h2 id="pp-apchem">AP® Chemistry</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every math refresher lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer and drill: justifications, particle diagrams, equilibrium and buffer drills</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>
@@ -296,10 +304,10 @@
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="apchem" data-premium-source="pricing-page">Get Premium for AP® Chemistry</button> <a href="/chem/">Start free</a></p>
           
           <p>One pass, whenever you buy it: it lasts through 30 June 2027, the end of the 2027 exam season.</p>
-        </section>
+        </details>
 
-        <section class="pp-course" id="apphys" aria-labelledby="pp-apphys">
-          <h2 id="pp-apphys">AP® Physics 1</h2>
+        <details class="pp-course" id="apphys" data-path="/physics/">
+          <summary><h2 id="pp-apphys">AP® Physics 1</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every &quot;Math you need&quot; lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Three trainers: free-body diagrams, motion graphs and the scaling drills</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer: free-body diagrams, motion graphs, energy bar charts, collisions, lab design and more</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>
@@ -308,10 +316,10 @@
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="apphys" data-premium-source="pricing-page">Get Premium for AP® Physics 1</button> <a href="/physics/">Start free</a></p>
           
           <p>One pass, whenever you buy it: it lasts through 30 June 2027, the end of the 2027 exam season.</p>
-        </section>
+        </details>
 
-        <section class="pp-course" id="apcalc" aria-labelledby="pp-apcalc">
-          <h2 id="pp-apcalc">AP® Calculus AB</h2>
+        <details class="pp-course" id="apcalc" data-path="/calculus/">
+          <summary><h2 id="pp-apcalc">AP® Calculus AB</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every &quot;Math you need&quot; lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Three trainers: the tangent tracer, the limit explorer and the rule drills</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer: related rates, motion, curve analysis, Riemann sums, accumulation, slope fields, area and volume</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and mathematical practice</li></ul></div>
@@ -320,7 +328,7 @@
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="apcalc" data-premium-source="pricing-page">Get Premium for AP® Calculus AB</button> <a href="/calculus/">Start free</a></p>
           
           <p>One pass, whenever you buy it: it lasts through 30 June 2027, the end of the 2027 exam season.</p>
-        </section>
+        </details>
       </div>
     </div>
   </div>
@@ -329,6 +337,8 @@
     <div class="xgrid">
       <div class="xlabel">The rules</div>
       <div class="xcontent narrow pp">
+        <p>All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics.</p>
+        <p>A pass costs $25 to $49, about what one or two hours with a private tutor costs (<a href="https://www.care.com/cost/private-tutors/boston-ma" rel="noopener">Care.com</a> puts a US tutor&rsquo;s average starting rate near $26 an hour, October 2026).</p>
         <ul class="pp-rules">
           <li><strong>One-time, never a subscription.</strong> Prices are in US dollars; sales tax or VAT is added at checkout and shown before you pay. Polar, our merchant of record, sells the pass and sends the receipt.</li>
           <li><strong>Buying needs a free account</strong>, so the pass follows you to every device. Everything free works without one.</li>
@@ -349,6 +359,27 @@
   </footer>
 </div>
 
+<script>
+// Open the course the visitor came from: ?course= (a key or its folder), a
+// #key link, or the course page that linked here. With none, all stay folded.
+(function(){
+  var list = [].slice.call(document.querySelectorAll('details.pp-course'));
+  var want = null, q = null, ref = '';
+  try { q = new URLSearchParams(location.search).get('course'); } catch(e){}
+  var h = location.hash.replace('#', '');
+  try { var r = new URL(document.referrer); if(r.origin === location.origin) ref = r.pathname; } catch(e){}
+  list.forEach(function(d){
+    var path = d.getAttribute('data-path'), folder = path.split('/').join('');
+    if(!want && q && (q === d.id || q === folder)) want = d;
+  });
+  if(!want && h) want = document.getElementById(h);
+  if(!want && ref) list.forEach(function(d){ if(!want && ref.indexOf(d.getAttribute('data-path')) === 0) want = d; });
+  if(want && want.tagName === 'DETAILS'){
+    want.open = true;
+    if(want !== list[0] || h) want.scrollIntoView({ block: 'start' });
+  }
+})();
+</script>
 <script>
 // The founding price ends on its date without a rebuild: after it, the
 // founding parts hide and the full price shows.
