@@ -37,6 +37,7 @@
   });
 
   function F4(x){ return T.F(x, 4); }
+  function cnt(x){ return M.round(x, 1).toLocaleString('en-US'); }
   function nice(x){ return M.fmt(M.round(x, 4), 4); }
 
   /* --------------------------------------------------------------- views */
