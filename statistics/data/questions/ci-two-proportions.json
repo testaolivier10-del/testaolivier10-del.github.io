@@ -1,0 +1,579 @@
+{
+ "stimuli": {
+  "ci-two-proportions-s1": {
+   "kind": "table",
+   "title": "App use at city and rural stores",
+   "text": "A grocery chain takes a random sample of 300 shoppers at its city stores and a separate random sample of 220 shoppers at its rural stores. It asks each shopper whether they order with the chain's app. (Invented data.)",
+   "table": {
+    "caption": "Survey results",
+    "cols": [
+     "Stores",
+     "Use the app",
+     "Sample size",
+     "Sample proportion"
+    ],
+    "rows": [
+     [
+      "City",
+      "180",
+      "300",
+      "0.60"
+     ],
+     [
+      "Rural",
+      "99",
+      "220",
+      "0.45"
+     ]
+    ]
+   }
+  },
+  "ci-two-proportions-s2": {
+   "kind": "table",
+   "title": "Text or call reminders",
+   "text": "A dental office has 240 patients with appointments next month. It randomly assigns 120 to get a text reminder and 120 to get a phone call. It records who keeps the appointment. (Invented data.)",
+   "table": {
+    "caption": "Appointments kept",
+    "cols": [
+     "Reminder",
+     "Kept",
+     "Missed",
+     "Total"
+    ],
+    "rows": [
+     [
+      "Text",
+      "104",
+      "16",
+      "120"
+     ],
+     [
+      "Call",
+      "93",
+      "27",
+      "120"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-ci-two-proportions-1",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ci-two-proportions-s1",
+   "q": "What is the point estimate of $p_C - p_R$, the difference between the true proportions of city and rural shoppers who use the app?",
+   "why": {
+    "correct": "The point estimate is $\\hat{p}_C - \\hat{p}_R$.",
+    "options": [
+     "That is the proportion for both samples together, $\\frac{279}{520}$. It mixes the groups instead of comparing them.",
+     "That averages the two sample proportions. The estimate of a difference is a difference.",
+     "That subtracts the counts, $180 - 99$. The samples have different sizes, so compare proportions, not counts.",
+     "Right: $\\hat{p}_C - \\hat{p}_R = 0.60 - 0.45 = 0.15$."
+    ]
+   },
+   "options": [
+    "$0.537$",
+    "$0.525$",
+    "$81$",
+    "$0.15$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-ci-two-proportions-2",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-s1",
+   "q": "Which statement correctly checks the large counts condition for a confidence interval for $p_C - p_R$?",
+   "why": {
+    "correct": "An interval uses $\\hat{p}_1$ and $\\hat{p}_2$: $n_1\\hat{p}_1$, $n_1(1 - \\hat{p}_1)$, $n_2\\hat{p}_2$, $n_2(1 - \\hat{p}_2)$ are each at least 10.",
+    "options": [
+     "Right: for an interval, use the observed successes and failures in each sample: $300 - 180 = 120$ and $220 - 99 = 121$.",
+     "There is no reason to use 0.5. An interval uses each sample's own $\\hat{p}$.",
+     "That is not the condition. The counts of successes and failures must each reach 10.",
+     "Comparing $n$ with 30 is not the check for proportions. Count successes and failures in each sample."
+    ]
+   },
+   "options": [
+    "The counts 180, 120, 99 and 121 are each at least 10",
+    "$300(0.5) = 150$ and $220(0.5) = 110$ are each at least 10",
+    "Each sample proportion is between 0.1 and 0.9",
+    "The two sample sizes, 300 and 220, are each at least 30"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-ci-two-proportions-3",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-s1",
+   "q": "What is the standard error of $\\hat{p}_C - \\hat{p}_R$? Give three decimal places.",
+   "why": {
+    "correct": "$\\text{SE} = \\sqrt{\\frac{0.60(0.40)}{300} + \\frac{0.45(0.55)}{220}} = \\sqrt{0.0008 + 0.001125} = 0.0439$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 3,
+    "from": {
+     "fn": "ci2prop",
+     "args": [
+      0.6,
+      300,
+      0.45,
+      220,
+      0.95
+     ],
+     "pick": "se"
+    },
+    "mistakes": [
+     {
+      "value": 0.0618,
+      "why": "You added the two standard errors. Add the two variance terms under one square root."
+     },
+     {
+      "value": 0.00192,
+      "why": "That is the sum of the variances. Take its square root to get the standard error."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-proportions-4",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "interval",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-s1",
+   "q": "Construct a 95% confidence interval for $p_C - p_R$. Give each end to three decimal places.",
+   "why": {
+    "correct": "$0.15 \\pm 1.96(0.0439) = 0.15 \\pm 0.086$, from 0.064 to 0.236."
+   },
+   "interval": {
+    "places": 3,
+    "from": {
+     "fn": "ci2prop",
+     "args": [
+      0.6,
+      300,
+      0.45,
+      220,
+      0.95
+     ]
+    }
+   }
+  },
+  {
+   "id": "stat-ci-two-proportions-5",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-s1",
+   "q": "Interpret the 95% interval from 0.064 to 0.236 in context.",
+   "why": {
+    "correct": "Name the level, the interval and the parameter in context: the true difference, city minus rural."
+   },
+   "conclude": {
+    "mode": "interval",
+    "slots": {
+     "level": {
+      "options": [
+       "We are 95% confident that the interval from 0.064 to 0.236 captures",
+       "There is a 95% chance that the sample difference is between 0.064 and 0.236, which is",
+       "95% of shoppers fall between 0.064 and 0.236, which describes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample difference is 0.15 for certain. Confidence is about the true difference, which the interval may or may not capture.",
+       "2": "An interval for a proportion says nothing about individual shoppers; it estimates a parameter."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true difference in the proportions of city and rural shoppers who use the app (city minus rural)",
+       "the difference in the two sample proportions, 0.60 minus 0.45",
+       "the true proportion of the chain's shoppers who use the app"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "We know the sample difference exactly; an interval estimates the population difference.",
+       "2": "The interval is for a difference between two groups, not one overall proportion."
+      }
+     }
+    },
+    "model": "We are 95% confident that the interval from 0.064 to 0.236 captures the true difference in the proportions of all city shoppers and all rural shoppers who use the app (city minus rural).",
+    "write": {
+     "context": [
+      "shoppers",
+      "app"
+     ],
+     "evidence": false,
+     "forbid": [
+      "chance that the true"
+     ]
+    }
+   }
+  },
+  {
+   "id": "stat-ci-two-proportions-6",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-s2",
+   "q": "The office wants a confidence interval for $p_T - p_C$. Which condition takes the place of \"two independent random samples\" here?",
+   "why": {
+    "correct": "Random assignment creates two groups that differ only by chance, so the two-sample z interval applies.",
+    "options": [
+     "Right: in an experiment, random assignment to two groups plays the role of two independent random samples.",
+     "Careful counting matters, but the condition for inference is the random assignment.",
+     "The patients were not sampled from a larger population, so the 10% condition is not the point. Random assignment is.",
+     "Equal group sizes are convenient but not needed. What matters is how patients got into the groups."
+    ]
+   },
+   "options": [
+    "The patients were randomly assigned to the two reminder types",
+    "The office counted the kept appointments with care",
+    "The 240 patients are less than 10% of the dental patients in the region",
+    "Each group has the same number of patients, 120"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-ci-two-proportions-7",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ci-two-proportions-s2",
+   "q": "What critical value $z^*$ is used for a 90% confidence interval? Give three decimal places.",
+   "why": {
+    "correct": "Leave 5% in each tail: $z^* = 1.645$, the 95th percentile of the standard normal distribution."
+   },
+   "numeric": {
+    "kind": "critical",
+    "from": {
+     "fn": "invNorm",
+     "args": [
+      0.95
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1.282,
+      "why": "That leaves 10% in one tail. For 90% confidence, 5% is in each tail, so use the 95th percentile."
+     },
+     {
+      "value": 1.96,
+      "why": "That is $z^*$ for 95% confidence. For 90%, use 1.645."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-proportions-8",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "setup",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-s2",
+   "q": "Write the expression for a 90% confidence interval for $p_T - p_C$, with the values substituted.",
+   "why": {
+    "correct": "$(0.867 - 0.775) \\pm 1.645\\sqrt{\\frac{0.867(0.133)}{120} + \\frac{0.775(0.225)}{120}} = 0.092 \\pm 0.081$, from 0.011 to 0.173."
+   },
+   "setup": {
+    "answer": "(104/120 - 93/120) +/- 1.645*sqrt((104/120)*(16/120)/120 + (93/120)*(27/120)/120)",
+    "bind": {},
+    "mustUse": [
+     "1.645"
+    ],
+    "mistakes": [
+     {
+      "expr": "(104/120 - 93/120) +/- 1.96*sqrt((104/120)*(16/120)/120 + (93/120)*(27/120)/120)",
+      "why": "That uses $z^* = 1.96$, the 95% value. A 90% interval uses 1.645."
+     },
+     {
+      "expr": "(104/120 - 93/120) +/- 1.645*(sqrt((104/120)*(16/120)/120) + sqrt((93/120)*(27/120)/120))",
+      "why": "That adds two standard errors. The two variance terms go under one square root."
+     },
+     {
+      "expr": "(104/120 - 93/120) +/- 1.645*sqrt((197/240)*(43/240)*(1/120 + 1/120))",
+      "why": "That pools the two groups. An interval does not assume the proportions are equal, so it keeps each group's own $\\hat{p}$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-proportions-9",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-s2",
+   "q": "In this experiment, what does \"90% confident\" mean?",
+   "why": {
+    "correct": "The confidence level is the long-run capture rate of the method.",
+    "options": [
+     "That is a sample result (104 of 120 is about 87%), not the meaning of the confidence level.",
+     "The sample difference is always the center of its own interval. Confidence is about capturing the true difference.",
+     "Right: the level describes the method's long-run success rate.",
+     "The true difference is fixed; this interval either captures it or not. The 90% describes the method."
+    ]
+   },
+   "options": [
+    "About 90% of the patients who got a text kept their appointment",
+    "The difference in the sample proportions will be inside the interval 90% of the time",
+    "About 90% of intervals made this way, over many repetitions, capture the true difference",
+    "There is a 90% chance that the true difference is between the two ends of this one interval"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-ci-two-proportions-10",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "ci-two-proportions-s2",
+   "q": "What does the design of this study allow the office to conclude from the interval?",
+   "why": {
+    "correct": "Random assignment supports cause; random sampling supports generalizing. This study has the first.",
+    "options": [
+     "Random sampling is for generalizing. Random assignment is what supports cause and effect, and this study has it.",
+     "Right: random assignment allows a cause-and-effect conclusion. The patients were not a random sample, so generalize with care.",
+     "The comparison is between the two groups; both groups are needed to say the reminder type made the difference.",
+     "The 240 patients were not randomly sampled from all dental patients, so the conclusion is limited to patients like these."
+    ]
+   },
+   "options": [
+    "Nothing about cause, because no random sample was taken",
+    "A difference between the groups can be blamed on the reminder type, for patients like these",
+    "A cause-and-effect conclusion, but just for the 120 text patients",
+    "The results apply to dental patients across the country"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-ci-two-proportions-11",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "A researcher takes independent random samples of 400 nurses and 350 teachers and asks whether each works a second job. She wants to estimate how much the true proportions differ. Which procedure fits?",
+   "why": {
+    "correct": "Estimate a difference of two proportions with a two-sample z interval.",
+    "options": [
+     "Overlap of two intervals is a rough and misleading comparison. One interval for the difference answers the question directly.",
+     "Right: two independent random samples, a categorical variable, and an estimate of a difference.",
+     "Nothing here is about 0.5, and the goal is to estimate, not to test one proportion.",
+     "Combining the samples estimates one overall proportion. The question compares two groups."
+    ]
+   },
+   "options": [
+    "Two one-sample z intervals, checked for overlap",
+    "A two-sample z interval for $p_N - p_T$",
+    "A one-proportion z test of $H_0: p = 0.5$",
+    "A one-sample z interval for $p$, using the 750 people combined"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-ci-two-proportions-12",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "A 95% confidence interval for $p_1 - p_2$ goes from 0.02 to 0.14. Using the same data, how would a 99% interval compare?",
+   "why": {
+    "correct": "Margin of error $= z^* \\times \\text{SE}$; a 99% $z^*$ is larger.",
+    "options": [
+     "Right: a higher level uses a larger $z^*$ (2.576 instead of 1.96), so the margin of error grows; the center is still $\\hat{p}_1 - \\hat{p}_2$.",
+     "More confidence needs a wider net: $z^*$ rises from 1.96 to 2.576.",
+     "The data fix the standard error, but the critical value changes with the level.",
+     "The center is the sample difference, which does not change with the level."
+    ]
+   },
+   "options": [
+    "It would be wider, with the same center of 0.08",
+    "It would be narrower, with the same center of 0.08",
+    "It would be the same width, since the data are the same",
+    "It would be wider, with a new center"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-ci-two-proportions-13",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A polling group plans a two-sample z interval for $p_1 - p_2$. If it takes four times as many people in both samples, about what happens to the margin of error, assuming the sample proportions stay about the same?",
+   "why": {
+    "correct": "The margin of error shrinks like $\\frac{1}{\\sqrt{n}}$.",
+    "options": [
+     "More data gives a more precise estimate, not a less precise one.",
+     "The variance is cut to a quarter, but the margin of error depends on its square root.",
+     "Larger samples give less variable statistics, so the margin shrinks.",
+     "Right: each variance term is divided by 4, so the standard error is divided by $\\sqrt{4} = 2$."
+    ]
+   },
+   "options": [
+    "It doubles",
+    "It is cut to about a quarter",
+    "It stays about the same",
+    "It is cut about in half"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-ci-two-proportions-14",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Independent random samples give $\\hat{p}_1 = 0.42$ with $n_1 = 500$ and $\\hat{p}_2 = 0.35$ with $n_2 = 450$. What is the margin of error of a 95% confidence interval for $p_1 - p_2$? Give three decimal places.",
+   "why": {
+    "correct": "$1.96\\sqrt{\\frac{0.42(0.58)}{500} + \\frac{0.35(0.65)}{450}} = 1.96(0.0315) = 0.062$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 3,
+    "from": {
+     "fn": "ci2prop",
+     "args": [
+      0.42,
+      500,
+      0.35,
+      450,
+      0.95
+     ],
+     "pick": "me"
+    },
+    "mistakes": [
+     {
+      "value": 0.0315,
+      "why": "That is the standard error alone. The margin of error is $z^* \\times \\text{SE}$, with $z^* = 1.96$."
+     },
+     {
+      "value": 0.0518,
+      "why": "That uses $z^* = 1.645$, the 90% value. For 95%, use 1.96."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-proportions-15",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A 95% confidence interval for $p_A - p_B$ is from $-0.12$ to $-0.03$. What is the 95% interval for $p_B - p_A$ from the same data?",
+   "why": {
+    "correct": "Multiply both ends by $-1$ and put the smaller one first.",
+    "options": [
+     "Right: switching the order changes every sign, so the ends swap and flip: $-(-0.03) = 0.03$ and $-(-0.12) = 0.12$.",
+     "Write the lower end first: from 0.03 to 0.12.",
+     "Subtracting in the other order changes the sign of the difference, so the interval moves to the other side of 0.",
+     "Those are the same two numbers in reverse order. The signs change too."
+    ]
+   },
+   "options": [
+    "From 0.03 to 0.12",
+    "From 0.12 to 0.03",
+    "From $-0.12$ to $-0.03$",
+    "From $-0.03$ to $-0.12$"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-ci-two-proportions-16",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student interprets a 95% interval for $p_C - p_R$ from 0.064 to 0.236 this way: \"95% of city shoppers use the app between 6.4 and 23.6 percentage points more than rural shoppers.\" What is the main error?",
+   "why": {
+    "correct": "An interval for $p_1 - p_2$ is about the true difference in the two population proportions.",
+    "options": [
+     "Writing 95% is fine. The error is what the student says the 95% refers to.",
+     "The order city minus rural is fine as long as it is stated. The error is about individuals.",
+     "An interval is centered at the sample difference, 0.15. Nothing about 0 is needed to interpret it.",
+     "Right: the interval is about the true difference in proportions; \"95% of shoppers\" describes individuals, which an interval for a proportion never does."
+    ]
+   },
+   "options": [
+    "A confidence level is not allowed to be written as a percent",
+    "The ends should be in the order rural minus city",
+    "The interval should have been centered at 0",
+    "The interval estimates one population difference, not how individual shoppers behave"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-ci-two-proportions-17",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A school compares two programs. In a random sample of 25 students from program A, 22 passed a test; in a random sample of 30 from program B, 26 passed. Why is a two-sample z interval not appropriate?",
+   "why": {
+    "correct": "Successes and failures in each sample must each be at least 10.",
+    "options": [
+     "Close proportions are fine to compare. The problem is the counts.",
+     "Different sample sizes are fine. The problem is the small numbers of failures.",
+     "Right: the large counts condition fails, so the sampling distribution may not be approximately normal.",
+     "Random samples are what we want. The problem is too few failures in each sample."
+    ]
+   },
+   "options": [
+    "The pass rates, 0.88 and 0.87, are too close together to compare",
+    "The two samples have different sizes, 25 and 30",
+    "Sample A has 3 failures and sample B has 4, fewer than 10",
+    "The samples are random, so the results are not reliable"
+   ],
+   "correct": 2
+  }
+ ]
+}

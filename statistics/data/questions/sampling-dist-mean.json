@@ -1,0 +1,634 @@
+{
+ "stimuli": {
+  "sampling-dist-mean-s1": {
+   "kind": "table",
+   "title": "Drive-through wait times",
+   "text": "<p>A coffee chain records the wait time of every car at its drive-through windows (invented data). Over many thousands of cars, the wait times have mean $\\mu = 4.2$ minutes and standard deviation $\\sigma = 2.8$ minutes, and their distribution is strongly skewed right. A manager takes a random sample of 40 cars from last month and computes the sample mean wait time $\\bar{x}$.</p>",
+   "table": {
+    "caption": "The population of wait times and the sample",
+    "cols": [
+     "Quantity",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Population mean",
+      "4.2 minutes"
+     ],
+     [
+      "Population standard deviation",
+      "2.8 minutes"
+     ],
+     [
+      "Population shape",
+      "strongly skewed right"
+     ],
+     [
+      "Sample size",
+      "40 cars, chosen at random"
+     ]
+    ]
+   }
+  },
+  "sampling-dist-mean-s2": {
+   "kind": "graph",
+   "title": "Simulated means of 16 bags of chips",
+   "text": "<p>A snack company fills bags whose weights are normally distributed with mean $\\mu = 28.4$ grams and standard deviation $\\sigma = 1.2$ grams. A quality team simulated 40 random samples of 16 bags each and recorded each sample mean $\\bar{x}$ (invented data). The dotplot shows the 40 sample means.</p>",
+   "plot": {
+    "label": "Dotplot of 40 simulated sample means of 16 bag weights, centered near 28.4 grams and ranging from about 27.8 to 29.0 grams",
+    "kind": "dot",
+    "data": [
+     28.3,
+     28.1,
+     28.4,
+     28.1,
+     28.6,
+     28.2,
+     28.3,
+     28,
+     28.6,
+     27.9,
+     28.2,
+     27.8,
+     28.8,
+     28.5,
+     28.6,
+     27.9,
+     28.5,
+     28.4,
+     28.7,
+     28.4,
+     28.6,
+     28.4,
+     28.6,
+     29,
+     27.9,
+     28.4,
+     28.5,
+     28.7,
+     28.2,
+     28.4,
+     28.5,
+     28.5,
+     28.5,
+     29,
+     28.3,
+     28.5,
+     28.9,
+     28.5,
+     28.3,
+     27.8
+    ],
+    "step": 0.1,
+    "x": [
+     27.4,
+     29.4
+    ],
+    "xLabel": "sample mean weight (grams)"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "sample mean weight",
+      "unit": "grams",
+      "values": [
+       28.3,
+       28.1,
+       28.4,
+       28.1,
+       28.6,
+       28.2,
+       28.3,
+       28,
+       28.6,
+       27.9,
+       28.2,
+       27.8,
+       28.8,
+       28.5,
+       28.6,
+       27.9,
+       28.5,
+       28.4,
+       28.7,
+       28.4,
+       28.6,
+       28.4,
+       28.6,
+       29,
+       27.9,
+       28.4,
+       28.5,
+       28.7,
+       28.2,
+       28.4,
+       28.5,
+       28.5,
+       28.5,
+       29,
+       28.3,
+       28.5,
+       28.9,
+       28.5,
+       28.3,
+       27.8
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-sampling-dist-mean-1",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "What are the mean and the standard deviation of the sampling distribution of $\\bar{x}$ for samples of 40 cars?",
+   "stimulus": "sampling-dist-mean-s1",
+   "options": [
+    "Mean 4.2 minutes, standard deviation about 0.44 minutes",
+    "Mean 4.2 minutes, standard deviation 2.8 minutes",
+    "Mean 4.2 minutes, standard deviation 0.07 minutes",
+    "Mean 0.44 minutes, standard deviation 2.8 minutes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\mu_{\\bar{x}} = \\mu = 4.2$ minutes and $\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{2.8}{\\sqrt{40}} = 0.443$ minutes.",
+    "options": [
+     "The mean of $\\bar{x}$ equals $\\mu = 4.2$, and its standard deviation is $\\frac{2.8}{\\sqrt{40}} \\approx 0.44$ minutes.",
+     "2.8 minutes is the spread of single wait times. Averages of 40 cars vary much less: divide by $\\sqrt{40}$.",
+     "That divides 2.8 by 40. The standard deviation of $\\bar{x}$ divides by the square root of $n$, not by $n$.",
+     "The center does not shrink. The sample mean is an unbiased estimator, so its mean is $\\mu = 4.2$."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-2",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The wait times are strongly skewed. Why is a normal model still reasonable for the sampling distribution of $\\bar{x}$?",
+   "stimulus": "sampling-dist-mean-s1",
+   "options": [
+    "The population of wait times is approximately normal",
+    "40 cars is less than 10% of the cars served",
+    "The sample size of 40 is at least 30, so the central limit theorem applies",
+    "The cars were chosen at random from last month"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The central limit theorem: for a random sample with $n \\ge 30$, the sampling distribution of $\\bar{x}$ is approximately normal even when the population is skewed.",
+    "options": [
+     "The stimulus says the population is strongly skewed right. The normal shape comes from the large sample, not the population.",
+     "The 10% condition justifies the standard deviation formula. It says nothing about shape.",
+     "With $n = 40 \\ge 30$, the central limit theorem says the sampling distribution of $\\bar{x}$ is approximately normal whatever the population shape.",
+     "Random selection is needed, but it does not by itself make the shape normal. The sample size does that."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-3",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "setup",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the expression for the z-score of a sample mean of 5 minutes in the sampling distribution of $\\bar{x}$. Type it as you would on the exam, for example (a - b)/(c/sqrt(n)).",
+   "stimulus": "sampling-dist-mean-s1",
+   "why": {
+    "correct": "$z = \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}} = \\frac{5 - 4.2}{2.8/\\sqrt{40}} = 1.81$. The standard deviation in the denominator is the one for $\\bar{x}$, not for single cars."
+   },
+   "setup": {
+    "answer": "(5 - 4.2)/(2.8/sqrt(40))",
+    "bind": {
+     "x-bar": 5,
+     "mu": 4.2
+    },
+    "mustUse": [
+     "40"
+    ],
+    "then": {
+     "kind": "z",
+     "from": {
+      "fn": "t1",
+      "args": [
+       5,
+       4.2,
+       2.8,
+       40
+      ],
+      "pick": "t"
+     }
+    },
+    "mistakes": [
+     {
+      "expr": "(5 - 4.2)/2.8",
+      "why": "That uses the standard deviation of single wait times. A sample mean of 40 cars has standard deviation 2.8 divided by sqrt(40)."
+     },
+     {
+      "expr": "(5 - 4.2)/(2.8/40)",
+      "why": "Divide by the square root of the sample size, sqrt(40), not by 40."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-4",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the mean wait time of the 40 sampled cars is more than 5 minutes?",
+   "stimulus": "sampling-dist-mean-s1",
+   "why": {
+    "correct": "The sampling distribution of $\\bar{x}$ is approximately normal with mean 4.2 and standard deviation $\\frac{2.8}{\\sqrt{40}} = 0.443$. $P(\\bar{x} > 5) = P\\left(z > \\frac{5 - 4.2}{0.443}\\right) = P(z > 1.81) = 0.035$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "normCdf",
+     "args": [
+      5,
+      4.2,
+      0.44271887242357305
+     ],
+     "complement": true
+    },
+    "mistakes": [
+     {
+      "value": 0.3875,
+      "why": "That uses $\\sigma = 2.8$, the spread of single cars. For a mean of 40 cars use $\\frac{2.8}{\\sqrt{40}} = 0.443$."
+     },
+     {
+      "value": 0.9646,
+      "why": "That is the area below 5 minutes. The question asks for more than 5, the upper tail."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-5",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does checking that 40 is less than 10% of all cars served last month allow the manager to do?",
+   "stimulus": "sampling-dist-mean-s1",
+   "options": [
+    "Use a normal model for single wait times",
+    "Use $\\frac{\\sigma}{\\sqrt{n}}$ for the standard deviation of $\\bar{x}$",
+    "Treat the sample as random",
+    "Conclude that the sample mean equals 4.2"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The 10% condition is about independence when sampling without replacement, so it justifies the standard deviation formula $\\frac{\\sigma}{\\sqrt{n}}$.",
+    "options": [
+     "Single wait times are strongly skewed; no condition changes that.",
+     "Sampling without replacement makes the cars slightly dependent. When the sample is under 10% of the population, the formula $\\frac{\\sigma}{\\sqrt{n}}$ is still accurate.",
+     "Randomness comes from how the cars were chosen, not from the sample being a small part of the population.",
+     "The sample mean varies from sample to sample; its mean is 4.2, but one sample mean is rarely exactly 4.2."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-6",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The standard deviation of the 40 simulated means is close to which value?",
+   "stimulus": "sampling-dist-mean-s2",
+   "options": [
+    "1.2 grams",
+    "0.3 grams",
+    "0.075 grams",
+    "4.8 grams"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{1.2}{\\sqrt{16}} = 0.3$ grams. The simulated means have standard deviation 0.30, as predicted.",
+    "options": [
+     "1.2 grams is the spread of single bags. The dotplot shows means of 16 bags, which vary less.",
+     "The formula gives $\\frac{1.2}{\\sqrt{16}} = 0.3$ grams, and the dots spread about that much (their standard deviation is 0.30).",
+     "That is $\\frac{1.2}{16}$: it divides by $n$ instead of $\\sqrt{n}$, and it is far narrower than the dots.",
+     "That multiplies by $\\sqrt{16}$. Averaging makes the spread smaller, not larger."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-7",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The samples have only 16 bags. Why is the sampling distribution of $\\bar{x}$ still normal?",
+   "stimulus": "sampling-dist-mean-s2",
+   "options": [
+    "16 is close enough to 30",
+    "The dotplot has 40 dots, which is at least 30",
+    "Sample means are normal for any population and any sample size",
+    "The bag weights themselves are normally distributed"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A normal population gives a normal sampling distribution of $\\bar{x}$ at every sample size; the central limit theorem is needed only when the population is not normal.",
+    "options": [
+     "There is no \"close enough\" rule. The reason here is the normal population.",
+     "The 40 dots are 40 samples. The sample size that matters is 16 bags per sample.",
+     "For a skewed population and a small sample, $\\bar{x}$ keeps some of the skew.",
+     "When the population is normal, the sampling distribution of $\\bar{x}$ is normal for any sample size."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-8",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the normal model for $\\bar{x}$, what is the probability that a random sample of 16 bags has a mean weight below 28.0 grams?",
+   "stimulus": "sampling-dist-mean-s2",
+   "why": {
+    "correct": "$\\bar{x}$ is normal with mean 28.4 and standard deviation $\\frac{1.2}{\\sqrt{16}} = 0.3$. $P(\\bar{x} < 28.0) = P\\left(z < \\frac{28.0 - 28.4}{0.3}\\right) = P(z < -1.33) = 0.091$. In the dotplot, 4 of the 40 simulated means are below 28.0, which agrees."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "normCdf",
+     "args": [
+      28,
+      28.4,
+      0.3
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.3694,
+      "why": "That uses $\\sigma = 1.2$ for single bags. A mean of 16 bags has standard deviation $\\frac{1.2}{\\sqrt{16}} = 0.3$."
+     },
+     {
+      "value": 0.9088,
+      "why": "That is the area above 28.0. \"Below 28.0\" is the lower tail."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-9",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "If the team had used samples of 64 bags instead of 16, how would the spread of the simulated means change?",
+   "stimulus": "sampling-dist-mean-s2",
+   "options": [
+    "It would be about half as large",
+    "It would be about one fourth as large",
+    "It would stay about the same",
+    "It would be about twice as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{1.2}{\\sqrt{64}} = 0.15$ grams, half of $\\frac{1.2}{\\sqrt{16}} = 0.3$ grams.",
+    "options": [
+     "Four times the sample size divides the standard deviation by $\\sqrt{4} = 2$: $\\frac{1.2}{\\sqrt{64}} = 0.15$ grams.",
+     "The spread shrinks with the square root of $n$, so four times the bags halves it.",
+     "Larger samples give means that vary less, so the dots would bunch closer to 28.4.",
+     "More bags in each sample make each mean more precise, so the spread gets smaller."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-10",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "single",
+   "practice": "3.D",
+   "level": "recall",
+   "diff": 1,
+   "q": "For random samples of size $n$ from any population with mean $\\mu$, what is the mean of the sampling distribution of $\\bar{x}$?",
+   "options": [
+    "$\\mu$",
+    "$\\frac{\\mu}{\\sqrt{n}}$",
+    "$\\mu$ when $n \\ge 30$, and less than $\\mu$ otherwise",
+    "$n\\mu$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\mu_{\\bar{x}} = \\mu$ for every sample size, so $\\bar{x}$ is an unbiased estimator of $\\mu$.",
+    "options": [
+     "The sample mean is an unbiased estimator: on average over many samples it equals $\\mu$.",
+     "Dividing by $\\sqrt{n}$ applies to the standard deviation, not to the center.",
+     "Sample size changes the shape and spread, not the center.",
+     "That is the mean of a sum of $n$ values, not of their average."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-11",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Incomes in a town are strongly skewed right. A researcher takes a random sample of 8 households. What shape does the sampling distribution of $\\bar{x}$ have?",
+   "options": [
+    "Approximately normal, because sample means are normal",
+    "Skewed left, the opposite of the population",
+    "Skewed right, though less skewed than the incomes",
+    "Exactly as skewed as the incomes"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For a skewed population and a small sample, the sampling distribution of $\\bar{x}$ is skewed in the same direction, less strongly. A normal model would need $n \\ge 30$.",
+    "options": [
+     "Sample means become approximately normal only for a normal population or a large sample.",
+     "Averaging pulls the shape toward normal; it does not flip the direction of skew.",
+     "With $n = 8$ the central limit theorem cannot be counted on, so some of the population's right skew remains.",
+     "Averaging 8 values already reduces the skew, though not enough to call the shape normal."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-12",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "multi",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A random sample of 50 is taken from a large, strongly skewed population with mean $\\mu$ and standard deviation $\\sigma$. Which statements are true? Select all that apply.",
+   "options": [
+    "The sampling distribution of $\\bar{x}$ has mean $\\mu$",
+    "The sampling distribution of $\\bar{x}$ has standard deviation $\\frac{\\sigma}{\\sqrt{50}}$",
+    "The sampling distribution of $\\bar{x}$ is approximately normal",
+    "The 50 values in the sample are approximately normal",
+    "The standard deviation of $\\bar{x}$ is $\\sigma$",
+    "The sampling distribution of $\\bar{x}$ is skewed right, like the population"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Center $\\mu$, spread $\\frac{\\sigma}{\\sqrt{n}}$ and an approximately normal shape describe the sampling distribution of $\\bar{x}$, not the sample itself.",
+    "options": [
+     "Right: $\\bar{x}$ is unbiased for $\\mu$.",
+     "Right: the population is large, so the 10% condition holds.",
+     "Right: $n = 50 \\ge 30$, so the central limit theorem applies.",
+     "The sample looks like the population, so it is skewed too. The central limit theorem is about the means of many samples.",
+     "Averages vary less than single values; divide $\\sigma$ by $\\sqrt{50}$.",
+     "With 50 values in each mean, the skew is smoothed away; the central limit theorem gives an approximately normal shape."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-13",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "The life of a phone battery is normally distributed with mean 12.5 hours and standard deviation 1.6 hours. What is the probability that the mean life of a random sample of 10 batteries is more than 13 hours?",
+   "why": {
+    "correct": "$\\bar{x}$ is normal (the population is normal) with mean 12.5 and standard deviation $\\frac{1.6}{\\sqrt{10}} = 0.506$. $P(\\bar{x} > 13) = P\\left(z > \\frac{13 - 12.5}{0.506}\\right) = P(z > 0.99) = 0.162$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "normCdf",
+     "args": [
+      13,
+      12.5,
+      0.5059644256269407
+     ],
+     "complement": true
+    },
+    "mistakes": [
+     {
+      "value": 0.3773,
+      "why": "That is the probability for one battery, using $\\sigma = 1.6$. For a mean of 10 batteries use $\\frac{1.6}{\\sqrt{10}}$."
+     },
+     {
+      "value": 0.8385,
+      "why": "That is the lower tail, the probability of a mean below 13 hours."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-14",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For the batteries above (mean 12.5 hours, standard deviation 1.6 hours, normal), which is more likely: one battery lasting more than 13 hours, or the mean of 10 batteries being more than 13 hours?",
+   "options": [
+    "The mean of 10 batteries being more than 13 hours",
+    "One battery lasting more than 13 hours",
+    "They are equally likely, since both have mean 12.5",
+    "It depends on whether 10 is at least 30"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "One battery: $z = \\frac{13 - 12.5}{1.6} = 0.31$, probability 0.38. A mean of 10: $z = \\frac{13 - 12.5}{0.506} = 0.99$, probability 0.16.",
+    "options": [
+     "A mean of 10 stays closer to 12.5, so going past 13 is less likely for the mean.",
+     "Single batteries vary more, so a value 0.5 hours above the mean is less unusual for one battery (about 0.38) than for a mean of 10 (about 0.16).",
+     "The centers match, but the spreads differ, and spread decides how likely 13 is.",
+     "The population is normal, so the sampling distribution is normal; the comparison is about spread."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-15",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A landlord picks a random sample of 60 apartments from the 400 in a complex, without replacement, to estimate the mean monthly water use. What is the problem with using $\\frac{\\sigma}{\\sqrt{60}}$ as the standard deviation of $\\bar{x}$?",
+   "options": [
+    "60 is more than 10% of 400, so the formula overstates the spread",
+    "60 is too small for the central limit theorem",
+    "The formula needs the sample standard deviation",
+    "Water use is not normally distributed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$0.10 \\times 400 = 40$ and $60 > 40$. Without replacement, a large share of the population makes the values dependent, and $\\frac{\\sigma}{\\sqrt{n}}$ is too large.",
+    "options": [
+     "The sample is 15% of the population, so the 10% condition fails and $\\frac{\\sigma}{\\sqrt{n}}$ is not accurate (the true spread is smaller).",
+     "60 is at least 30. The issue is the share of the population sampled.",
+     "The formula uses $\\sigma$; the problem is independence, not which standard deviation.",
+     "With $n = 60$ the shape is fine. The 10% condition is the one that fails."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-mean-16",
+   "unit": "unit-4",
+   "topic": "sampling-dist-mean",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "Scores on a reading test have population standard deviation $\\sigma = 15$ points. What is the standard deviation of the sample mean for random samples of 25 students from a large school district?",
+   "why": {
+    "correct": "$\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{15}{\\sqrt{25}} = \\frac{15}{5} = 3$ points. The district is large, so the 10% condition holds."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "points",
+    "from": {
+     "fn": "t1",
+     "args": [
+      0,
+      0,
+      15,
+      25
+     ],
+     "pick": "se"
+    },
+    "mistakes": [
+     {
+      "value": 0.6,
+      "why": "That divides 15 by 25. Divide by the square root of the sample size: $\\sqrt{25} = 5$."
+     },
+     {
+      "value": 15,
+      "why": "That is the spread of single scores. Means of 25 students vary less."
+     }
+    ]
+   }
+  }
+ ]
+}

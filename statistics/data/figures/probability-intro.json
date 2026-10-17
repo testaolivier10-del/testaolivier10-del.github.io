@@ -1,0 +1,12 @@
+{
+ "u2-dice-grid": {
+  "file": "figures/u2-dice-grid.svg",
+  "ext": "svg",
+  "w": 560,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A 6 by 6 grid of the 36 equally likely outcomes when a red die and a blue die are rolled. The 5 outcomes with a sum of 8 are shaded: (2, 6), (3, 5), (4, 4), (5, 3) and (6, 2). So P(sum is 8) = 5/36."
+ }
+}

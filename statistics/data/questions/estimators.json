@@ -1,0 +1,604 @@
+{
+ "stimuli": {
+  "estimators-s1": {
+   "kind": "table",
+   "title": "Four ways to estimate the proportion of faulty phone chargers",
+   "text": "<p>A shipment holds 40,000 phone chargers, and 8% of them are faulty, so $p = 0.08$. An inspector simulates each of four sampling methods 1,000 times. Each time, the method gives one sample proportion of faulty chargers. The table summarizes the 1,000 sample proportions from each method.</p>",
+   "table": {
+    "caption": "Summaries of 1,000 simulated sample proportions from each method (invented simulation)",
+    "cols": [
+     "Method",
+     "How the chargers are chosen",
+     "Mean of the 1,000 sample proportions",
+     "Standard deviation of the 1,000 sample proportions"
+    ],
+    "rows": [
+     [
+      "W",
+      "Simple random sample of 50 chargers",
+      "0.080",
+      "0.038"
+     ],
+     [
+      "X",
+      "Simple random sample of 200 chargers",
+      "0.080",
+      "0.019"
+     ],
+     [
+      "Y",
+      "The first 200 chargers packed on one morning shift",
+      "0.052",
+      "0.016"
+     ],
+     [
+      "Z",
+      "50 chargers the inspector picks by hand from open boxes",
+      "0.110",
+      "0.044"
+     ]
+    ]
+   }
+  },
+  "estimators-s2": {
+   "kind": "graph",
+   "title": "Forty simulated samples of 60 households",
+   "text": "<p>In a town, 25% of households have rooftop solar panels. A class uses a computer to take 40 random samples of 60 households each and records the proportion with solar panels in each sample. Each dot is one sample.</p>",
+   "plot": {
+    "label": "Dotplot of 40 simulated sample proportions of households with solar panels, from samples of 60, centered near 0.25",
+    "kind": "dot",
+    "data": [
+     0.1333,
+     0.1333,
+     0.15,
+     0.1667,
+     0.1833,
+     0.2,
+     0.2,
+     0.2,
+     0.2167,
+     0.2333,
+     0.2333,
+     0.2333,
+     0.2333,
+     0.2333,
+     0.2333,
+     0.2333,
+     0.25,
+     0.25,
+     0.25,
+     0.25,
+     0.2667,
+     0.2667,
+     0.2667,
+     0.2667,
+     0.2833,
+     0.2833,
+     0.2833,
+     0.2833,
+     0.3,
+     0.3,
+     0.3,
+     0.3,
+     0.3,
+     0.3167,
+     0.3167,
+     0.3333,
+     0.3333,
+     0.3333,
+     0.35,
+     0.3667
+    ],
+    "xLabel": "sample proportion with solar panels"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "sample proportion with solar panels",
+      "values": [
+       0.1333,
+       0.1333,
+       0.15,
+       0.1667,
+       0.1833,
+       0.2,
+       0.2,
+       0.2,
+       0.2167,
+       0.2333,
+       0.2333,
+       0.2333,
+       0.2333,
+       0.2333,
+       0.2333,
+       0.2333,
+       0.25,
+       0.25,
+       0.25,
+       0.25,
+       0.2667,
+       0.2667,
+       0.2667,
+       0.2667,
+       0.2833,
+       0.2833,
+       0.2833,
+       0.2833,
+       0.3,
+       0.3,
+       0.3,
+       0.3,
+       0.3,
+       0.3167,
+       0.3167,
+       0.3333,
+       0.3333,
+       0.3333,
+       0.35,
+       0.3667
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-estimators-1",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "multi",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which methods appear to give unbiased estimators of $p$? Select all that apply.",
+   "stimulus": "estimators-s1",
+   "options": [
+    "Method W",
+    "Method X",
+    "Method Y",
+    "Method Z"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "An estimator is unbiased when the center of its sampling distribution equals the parameter. Methods W and X have means of 0.080, which is $p$.",
+    "options": [
+     "Right: its 1,000 estimates center at 0.080, the true value of $p$.",
+     "Right: its 1,000 estimates also center at 0.080.",
+     "Its estimates center at 0.052, well below 0.08, so it underestimates $p$: biased.",
+     "Its estimates center at 0.110, above 0.08, so it overestimates $p$: biased."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-2",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "4.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which method gives estimates that vary the least from one sample to the next?",
+   "stimulus": "estimators-s1",
+   "options": [
+    "Method X, because it is unbiased and uses 200 chargers",
+    "Method Y, with a standard deviation of 0.016",
+    "Method W, because its mean equals the true proportion",
+    "Method Z, because its mean of 0.110 is the largest"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Variability is the spread of the sampling distribution, measured here by the standard deviation of the 1,000 estimates. Method Y has the smallest, 0.016, even though it is biased.",
+    "options": [
+     "X is the best method overall, but Y has a slightly smaller standard deviation (0.016 against 0.019). Low variability and no bias are separate properties.",
+     "Right: the smallest spread of the four, so Y varies least, even though it misses $p$.",
+     "A mean equal to $p$ says W is unbiased. It says nothing about spread, and W's spread, 0.038, is large.",
+     "The mean tells you where the estimates center, not how much they vary. Z has the largest spread."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-3",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The inspector can afford to check 200 chargers. Which method should the inspector use, and why?",
+   "stimulus": "estimators-s1",
+   "options": [
+    "Method Y, because its estimates have the smallest spread",
+    "Method X: its estimates center at $p$ with little spread",
+    "Method Z, because a person checks each box before choosing",
+    "Method W, because a smaller sample has less chance of error"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A good estimator has no bias and low variability. Method X centers on $p$ and has a small spread; Method Y has a slightly smaller spread but misses $p$ by about 0.03 on average.",
+    "options": [
+     "Precision does not help when the estimates are centered in the wrong place: Y's estimates cluster around 0.052, not 0.08.",
+     "Right: no bias and low variability together.",
+     "Choosing by hand is not random; Z centers at 0.110 and has the largest spread.",
+     "A smaller random sample gives more variable estimates: W's standard deviation is twice X's."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-4",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Method X's standard deviation, 0.019, is about half of Method W's, 0.038. What explains this?",
+   "stimulus": "estimators-s1",
+   "options": [
+    "X samples 4 times as many chargers, and the spread is divided by the square root of 4",
+    "X samples 4 times as many chargers, so its spread is divided by 4",
+    "X is unbiased and W is biased, so X has less spread",
+    "The 1,000 simulated samples of X happened to be less variable by chance"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both are random samples, so both are unbiased. Method X uses 4 times as many chargers. Spread shrinks with the square root of the sample size, and $\\sqrt{4} = 2$, so the spread is cut in half.",
+    "options": [
+     "Right: quadrupling the sample size halves the spread of the sample proportion.",
+     "Spread shrinks with the square root of the sample size, not the sample size itself: dividing by 4 would give about 0.010.",
+     "Both W and X center at 0.080, so both are unbiased. Bias is not what changed.",
+     "With 1,000 repetitions, chance has little effect on the standard deviation; the difference comes from the sample size."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-5",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "4.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement describes Method Y correctly in context?",
+   "stimulus": "estimators-s1",
+   "options": [
+    "Its estimates tend to be too high, because a morning shift makes more faulty chargers",
+    "It is unbiased, because it uses the same sample size as Method X",
+    "Its estimates tend to be too low: on average it underestimates the proportion of faulty chargers",
+    "It has high variability, because its standard deviation is 0.016"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The mean of Y's estimates is 0.052, below the true 0.08. On average, Y underestimates the proportion of faulty chargers, probably because chargers packed on one morning shift are not like the whole shipment.",
+    "options": [
+     "The estimates center at 0.052, which is below 0.08: they are too low, not too high.",
+     "Sample size does not remove bias. How the chargers are chosen matters, and Y centers at 0.052.",
+     "Right: a mean of 0.052 against a true proportion of 0.08 is a downward bias.",
+     "0.016 is the smallest standard deviation in the table, so Y has low variability."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-6",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "4.D",
+   "level": "recall",
+   "diff": 2,
+   "q": "What does one dot in the dotplot represent?",
+   "stimulus": "estimators-s2",
+   "options": [
+    "One household, placed at its own proportion of solar panels",
+    "The proportion with solar panels in one sample of 60 households",
+    "The proportion of the town's households with solar panels",
+    "The number of households with solar panels across the 40 samples"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Each dot is the value of the statistic from one simulated sample: the proportion of the 60 households in that sample that have solar panels.",
+    "options": [
+     "A single household either has panels or does not; the dots are proportions from whole samples.",
+     "Right: one dot, one sample, one sample proportion.",
+     "That is the parameter, 0.25. It is one fixed number, not 40 dots.",
+     "The axis shows proportions from single samples, not a count combined over samples."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-7",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "The dots center close to 0.25. What does this suggest about the sample proportion as an estimator of the proportion of all households with solar panels?",
+   "stimulus": "estimators-s2",
+   "options": [
+    "It is unbiased: its values center at the true proportion",
+    "It is biased, because many samples give values other than 0.25",
+    "It has no variability, because the center equals 0.25",
+    "It is unbiased for the samples whose proportion equals 0.25 and biased for the rest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The center of the simulated sampling distribution is close to the parameter, 0.25, which is what an unbiased estimator looks like. Individual samples still miss: that is variability, not bias.",
+    "options": [
+     "Right: the sampling distribution is centered at the parameter.",
+     "Missing the target in single samples is variability. Bias means the center is off, and here it is not.",
+     "The dots spread from about 0.13 to 0.37, so there is plenty of variability.",
+     "Bias describes the whole sampling distribution, not single samples."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-8",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The class repeats the simulation with random samples of 240 households instead of 60. How would the new dotplot compare?",
+   "stimulus": "estimators-s2",
+   "options": [
+    "Centered near 0.25, with about half the spread",
+    "Centered near 0.25, with about one fourth of the spread",
+    "Centered closer to 0.25 than before, with the same spread",
+    "Centered above 0.25, because more households are counted"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A larger random sample does not move the center (the estimator stays unbiased) but reduces the spread. The sample size is 4 times as large, so the spread is about half as large.",
+    "options": [
+     "Right: same center, spread divided by $\\sqrt{4} = 2$.",
+     "Spread shrinks with the square root of the sample size, so 4 times the sample size halves it.",
+     "The center was already at 0.25. What changes with sample size is the spread.",
+     "Proportions, not counts, are plotted. A larger random sample does not push the center up."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-9",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "4.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "In how many of the 40 samples was the sample proportion at least 0.30, and what does that suggest?",
+   "stimulus": "estimators-s2",
+   "options": [
+    "12 samples: a sample proportion of 0.30 or more is not unusual when $p = 0.25$",
+    "7 samples: a sample proportion of 0.30 or more is rare when $p = 0.25$",
+    "28 samples: most samples give 0.30 or more",
+    "0 samples: the true proportion is 0.25, so no sample can reach 0.30"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Count the dots at 0.30 and above: there are 12. So a sample proportion of 0.30 or more happened in 12 of 40 samples, about 30% of the time, even though the true proportion is 0.25. A value like 0.30 is not unusual for samples of 60.",
+    "options": [
+     "Right: count the dots at or to the right of 0.30.",
+     "That count leaves out the dots exactly at 0.30. \"At least 0.30\" includes 0.30.",
+     "That counts the dots below 0.30, the opposite side.",
+     "Single samples vary around 0.25; several dots sit at 0.30 and beyond."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-10",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "2.D",
+   "level": "recall",
+   "diff": 2,
+   "q": "A researcher uses the proportion of 500 randomly chosen adults who own a pet to estimate the proportion of all adults in the state who own a pet. In this setting, the sample proportion is",
+   "options": [
+    "a point estimate",
+    "the parameter itself",
+    "a census of the state's adults",
+    "a population proportion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A statistic used to estimate a parameter is an estimator, and its value from one sample is a point estimate.",
+    "options": [
+     "Right: the statistic is the estimator; its value here is the point estimate.",
+     "The parameter is the proportion for all adults in the state; the sample gives only an estimate of it.",
+     "A census measures every member of the population; this is a sample of 500.",
+     "It is computed from a sample, so it is a statistic, not a population value."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-11",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A biologist wants the largest wingspan among a park's 3,000 bats. She captures a random sample of 30 bats and uses the largest wingspan in the sample. Which describes this estimator?",
+   "options": [
+    "Unbiased, because the sample was chosen at random",
+    "Biased: it tends to underestimate the largest wingspan",
+    "Biased: it tends to overestimate the largest wingspan",
+    "Unbiased, because a sample of 30 bats is large enough"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The sample maximum can equal the population maximum but can never exceed it. So its sampling distribution sits at or below the true value: it tends to underestimate, which is bias.",
+    "options": [
+     "Random selection does not make every statistic unbiased. The sample maximum cannot go above the true maximum, so it tends to fall short.",
+     "Right: no sample can show a wingspan larger than the largest in the park, and most samples miss the largest bat.",
+     "A sample cannot contain a bat larger than the largest bat in the park, so it cannot overestimate.",
+     "A larger sample would reduce the shortfall, but the sample maximum still tends to be too small."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-12",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A website poll asks visitors whether a new stadium should be built, and 1,200 visitors respond. A second poll with the same method gets 12,000 responses. What does the larger poll improve?",
+   "options": [
+    "Both its bias and its variability",
+    "Its bias, but not its variability",
+    "Its variability, but not its bias",
+    "Neither, because website polls give no information"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A larger sample reduces variability, so the second poll's result would vary less from poll to poll. Voluntary response bias comes from who chooses to answer, and a bigger sample of the same kind of people keeps that bias.",
+    "options": [
+     "Bias comes from the method (people choose to respond). More responses of the same kind do not remove it.",
+     "It is the other way round: sample size works on variability, and method works on bias.",
+     "Right: more responses means less sample to sample variation, but the same voluntary response bias.",
+     "The larger poll does reduce variability; it still estimates the wrong thing because of bias."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-13",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "4.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "An archer's arrows land in a tight group well to the left of the bullseye. If the bullseye is the parameter and each arrow is an estimate from one sample, the archer is like an estimator with",
+   "options": [
+    "high bias and high variability",
+    "no bias and low variability",
+    "no bias and high variability",
+    "high bias and low variability"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Tight grouping means low variability; a group centered away from the bullseye means bias.",
+    "options": [
+     "The arrows are close together, so variability is low.",
+     "The group is centered to the left of the bullseye, so the estimator is biased.",
+     "This would be arrows scattered widely around the bullseye.",
+     "Right: consistent, but consistently off target."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-14",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A store manager wants the mean time customers wait in line. Each day for 100 days he times 25 randomly chosen customers and records their mean. The mean of his 100 sample means is very close to the true mean wait. This shows that the sample mean is",
+   "options": [
+    "an unbiased estimator of the mean wait for all customers",
+    "equal to the true mean wait on each of the 100 days",
+    "a biased estimator, because the wait times vary from day to day",
+    "an estimator with no variability once 100 days are averaged"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When the center of the distribution of a statistic matches the parameter, the statistic is an unbiased estimator. Each single sample mean still differs from the true mean.",
+    "options": [
+     "Right: its sampling distribution is centered at the parameter.",
+     "Single sample means vary from day to day; only their center matches the true mean.",
+     "Variation from sample to sample is variability, not bias.",
+     "Averaging the 100 sample means shows where they center; each day's mean still varies."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-15",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A city wants to estimate the proportion of its residents who have a library card, using a random sample. Which change makes the sample proportion less variable from sample to sample?",
+   "options": [
+    "Sampling 1,000 residents instead of 250",
+    "Sampling residents as they leave the library",
+    "Doing the survey in a larger city with the same sample size",
+    "Using the sample count instead of the sample proportion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With random sampling, the spread of the sample proportion shrinks as the sample size grows. The size of the population barely matters as long as it is much larger than the sample.",
+    "options": [
+     "Right: a larger random sample gives a less variable estimate.",
+     "This makes the estimate biased (library visitors are more likely to have cards), and it does not fix variability.",
+     "With the same sample size, the spread is about the same in any large population.",
+     "A count is on a different scale; it does not make the estimate of the proportion more precise."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-16",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "multi",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A school wants to estimate the proportion of its 2,400 students who play a sport. Which methods give a biased estimator of that proportion? Select all that apply.",
+   "options": [
+    "Ask the students in the gym after school",
+    "Choose 120 students at random from the full student list",
+    "Post an online form and use the students who choose to answer",
+    "Choose 60 students at random from the full list"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "A method that favors some kinds of students over others gives estimates that center away from the true proportion. A simple random sample from the full student list does not.",
+    "options": [
+     "Right: students in the gym are more likely to play a sport, so the estimates tend to be too high.",
+     "A simple random sample gives an unbiased estimator.",
+     "Right: students who choose to respond may differ from the rest, so the method is biased.",
+     "A smaller random sample is more variable, but it is still unbiased."
+    ]
+   }
+  },
+  {
+   "id": "stat-estimators-17",
+   "unit": "unit-3",
+   "topic": "estimators",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two unbiased estimators of the same parameter are compared by simulation. Estimator 1 has standard deviation 0.05 and Estimator 2 has standard deviation 0.02 across the simulated samples. Which is better, and why?",
+   "options": [
+    "Estimator 1, because its larger spread covers more possible values",
+    "Estimator 2, because its estimates are typically closer to the parameter",
+    "Neither, because two unbiased estimators give the same estimates",
+    "Estimator 1, because a larger standard deviation means less bias"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both are centered at the parameter, so the one with less spread gives estimates that are typically closer to the parameter.",
+    "options": [
+     "Covering more values means a typical estimate lands farther from the parameter.",
+     "Right: same center, less variability.",
+     "They center at the same place but differ in spread, so single estimates differ.",
+     "Standard deviation measures variability, not bias. Both estimators are unbiased."
+    ]
+   }
+  }
+ ]
+}

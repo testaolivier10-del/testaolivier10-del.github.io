@@ -1,0 +1,58 @@
+<p>A two-way table holds a lot of counts. Turning them into shares is what lets you answer questions. The trick is that the same count, 45, can be part of three different shares, depending on which total you divide by. This page names the three and shows how to tell which one a question wants.</p>
+
+<h2>One table, three totals</h2>
+<p>Rangers at a state park asked a random sample of 250 visitors two questions: is this your first visit, and what is your main activity today?</p>
+<table class="compare">
+<thead><tr><th>Visit type</th><th>Hiking</th><th>Fishing</th><th>Picnic</th><th>Total</th></tr></thead>
+<tbody>
+<tr><td>First visit</td><td>45</td><td>15</td><td>40</td><td>100</td></tr>
+<tr><td>Returning</td><td>60</td><td>54</td><td>36</td><td>150</td></tr>
+<tr><td>Total</td><td>105</td><td>69</td><td>76</td><td>250</td></tr>
+</tbody>
+</table>
+<p>Every share is a count over a total. The table has three kinds of total: the grand total (250), the row totals (100 and 150) and the column totals (105, 69, 76). Each kind gives its own name.</p>
+<figure id="fig-park" data-fig="u2-park-table"><figcaption>The circled cell, the shaded total and the shaded row show the three kinds of share.</figcaption></figure>
+
+<h2>Joint, marginal and conditional</h2>
+<ul>
+<li>A <b>joint relative frequency</b> is one cell over the grand total. $\frac{45}{250} = 0.18$: 18% of all visitors were on a first visit <i>and</i> hiking.</li>
+<li>A <b>marginal relative frequency</b> is a row or column total over the grand total. $\frac{105}{250} = 0.42$: 42% of all visitors hiked. The marginal totals sit in the margins of the table, hence the name. Listing it for every activity (42%, 27.6%, 30.4%) gives the <b>marginal distribution</b> of activity.</li>
+<li>A <b>conditional relative frequency</b> is one cell over its row or column total. $\frac{45}{100} = 0.45$: of the first-time visitors, 45% hiked. Listing it for every activity gives the <b>conditional distribution</b> of activity for first-time visitors.</li>
+</ul>
+<table class="compare">
+<thead><tr><th>Kind</th><th>Divide</th><th>Answers</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Joint</td><td>a cell by the grand total</td><td>"What share of everyone is both ...?"</td><td>$\frac{45}{250} = 0.18$</td></tr>
+<tr><td>Marginal</td><td>a total by the grand total</td><td>"What share of everyone is ...?"</td><td>$\frac{105}{250} = 0.42$</td></tr>
+<tr><td>Conditional</td><td>a cell by its group's total</td><td>"Of those who ..., what share ...?"</td><td>$\frac{45}{100} = 0.45$</td></tr>
+</tbody>
+</table>
+
+<h2>Finding the group</h2>
+<p>Conditional questions are where most mistakes happen. Read the question for the group it starts from. That group's total goes on the bottom.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find (a) the proportion of returning visitors who came to fish and (b) the proportion of people who fished who were returning visitors.</p>
+<p>(a) The group is returning visitors, 150 of them. 54 fished: $\frac{54}{150} = 0.36$.</p>
+<p>(b) The group is the people who fished, 69 of them. 54 were returning: $\frac{54}{69} \approx 0.783$.</p>
+<p>Same cell, 54, but different groups, so different answers. Mixing these two up is the most common slip with two-way tables.</p>
+</div>
+
+<h2>Comparing groups</h2>
+<p>To compare first-time and returning visitors, compare their conditional distributions:</p>
+<table class="compare">
+<thead><tr><th>Visit type</th><th>Hiking</th><th>Fishing</th><th>Picnic</th></tr></thead>
+<tbody>
+<tr><td>First visit (100)</td><td>45%</td><td>15%</td><td>40%</td></tr>
+<tr><td>Returning (150)</td><td>40%</td><td>36%</td><td>24%</td></tr>
+</tbody>
+</table>
+<p>Each row adds to 100%. The rows differ, most of all for fishing, so visit type and activity are associated in this sample.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A ranger claims that returning visitors are more likely to come to fish. Use the data to respond.</p>
+<p>Compare conditional relative frequencies: $\frac{54}{150} = 0.36$ for returning visitors and $\frac{15}{100} = 0.15$ for first visits.</p>
+<p>The data support the claim for this sample: 36% of returning visitors (54 of 150) came to fish, compared with 15% of first-time visitors (15 of 100). Because the visitors were a random sample, the comparison can be generalized to the park's visitors.</p>
+</div>
+
+<h2>What no association looks like</h2>
+<p>If visit type made no difference, each row would match the marginal distribution: 42% hiking, 27.6% fishing, 30.4% picnic for both groups. That gives a quick check. Overall 63% of new drivers in a sample passed their road test on the first try. If driver's education were not associated with passing, about 63% of the course takers and about 63% of the others would pass. When the conditional relative frequencies are far from each other, as 75% and 55% are, the variables are associated.</p>
+<p>One more fact follows. A marginal relative frequency is a weighted mix of the conditional ones. If 30% of men and 30% of women prefer a window seat, then 30% of everyone does, whatever the numbers of men and women.</p>

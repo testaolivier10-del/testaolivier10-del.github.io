@@ -1,0 +1,39 @@
+<p>An interval estimates how far apart two proportions are. A test answers a sharper question: is there convincing evidence that they differ at all, or differ in one direction? Before computing anything, a test needs a careful setup. This topic covers the setup for comparing two proportions: the procedure, the hypotheses, the pooled proportion and the conditions.</p>
+
+<h2>Naming the procedure</h2>
+<p>When two groups are compared on a yes or no outcome, the parameter is a difference of two proportions, $p_1 - p_2$, and the procedure is a <b>two-sample z test for $p_1 - p_2$</b>. Name it in full on the exam. "A z test" alone is incomplete.</p>
+<p>The two groups can come from two independent random samples (teens in 2016 and teens in 2026) or from random assignment in an experiment (households given new or old recycling bins). Two measurements on the same people, like before and after on the same players, are linked, so this test does not fit.</p>
+
+<h2>Hypotheses</h2>
+<p>The null hypothesis is "no difference": $H_0: p_1 - p_2 = 0$, which is the same as $p_1 = p_2$. The alternative matches the question:</p>
+<table class="stat-compare">
+<thead><tr><th>The question asks whether</th><th>Alternative</th></tr></thead>
+<tbody>
+<tr><td>group 1's proportion is higher</td><td>$H_a: p_1 - p_2 > 0$</td></tr>
+<tr><td>group 1's proportion is lower</td><td>$H_a: p_1 - p_2 < 0$</td></tr>
+<tr><td>the proportions differ, or "have changed"</td><td>$H_a: p_1 - p_2 \ne 0$</td></tr>
+</tbody>
+</table>
+<p>Three rules. Hypotheses are about parameters ($p$), never statistics ($\hat{p}$). Define each parameter in context right after them. And choose the direction from the question, before looking at the data; picking $>$ because the sample came out higher makes the evidence look stronger than it is.</p>
+
+<h2>Why the test pools the samples</h2>
+<figure id="fig-pool" data-fig="pooled-proportion"><figcaption>The pooled proportion sits between the two sample proportions, closer to the larger group.</figcaption></figure>
+<p>A significance test asks: if $H_0$ were true, how surprising would our data be? So every calculation is done as if $H_0$ were true. If $p_1 = p_2$, both samples come from populations with the same proportion, and the best estimate of that common value uses all the data at once. That is the <b>pooled proportion</b>:</p>
+<p>$$p_c = \frac{x_1 + x_2}{n_1 + n_2} = \frac{\text{total successes}}{\text{total sample size}}.$$</p>
+<p>Pool the counts, not the proportions. Averaging $\hat{p}_1$ and $\hat{p}_2$ gives the wrong value whenever the sample sizes differ, because it lets the smaller sample count as much as the larger one. A confidence interval does not pool, because it makes no assumption that the proportions are equal.</p>
+
+<h2>Conditions</h2>
+<ul>
+<li><b>Random:</b> two independent random samples, or two groups formed by random assignment.</li>
+<li><b>10%:</b> when sampling without replacement, each sample is less than 10% of its population.</li>
+<li><b>Large counts:</b> because the test assumes $H_0$, use $p_c$: $n_1 p_c$, $n_1(1 - p_c)$, $n_2 p_c$ and $n_2(1 - p_c)$ are each at least 10.</li>
+</ul>
+
+<div class="worked">
+<p><b>Worked example.</b> A city randomly assigns 160 volunteer households a new recycling bin and 140 the old bin. Afterward, 125 of the new bin households and 91 of the old bin households sort correctly. Set up a test of whether the new bin increases correct sorting.</p>
+<p><b>Procedure:</b> a two-sample z test for $p_N - p_O$.</p>
+<p><b>Hypotheses:</b> $H_0: p_N - p_O = 0$ and $H_a: p_N - p_O > 0$, where $p_N$ is the true proportion of households like these that would sort correctly with the new bin and $p_O$ is the true proportion that would with the old bin.</p>
+<p><b>Pooled proportion:</b> $p_c = \frac{125 + 91}{160 + 140} = \frac{216}{300} = 0.72$.</p>
+<p><b>Conditions.</b> Random: the bins were randomly assigned to the households. 10%: not needed, because the households were not sampled from a larger population; they were volunteers, so any conclusion applies to households like them. Large counts: $160(0.72) = 115.2$, $160(0.28) = 44.8$, $140(0.72) = 100.8$ and $140(0.28) = 39.2$ are each at least 10.</p>
+</div>
+<p><a class="figref" href="#fig-pool">The figure</a> shows the three proportions from this example. The pooled value, 0.72, is the single proportion both groups would share if the bin made no difference. The next topic uses it to build the test statistic and the p-value.</p>

@@ -1,0 +1,548 @@
+{
+ "stimuli": {
+  "errors-and-power-s1": {
+   "kind": "table",
+   "title": "Lead in household water",
+   "text": "<p>A city must replace its old water pipes if more than 10% of its homes have lead levels above a safety limit. The water department tests a random sample of 300 of the city's 40,000 homes and will test $H_0: p = 0.10$ against $H_a: p > 0.10$, where $p$ is the true proportion of all the city's homes with lead above the limit. If the test finds convincing evidence for $H_a$, the city replaces the pipes.</p>",
+   "table": {
+    "caption": "The four possible outcomes of the test",
+    "cols": [
+     "",
+     "$H_0$ is true ($p = 0.10$)",
+     "$H_a$ is true ($p > 0.10$)"
+    ],
+    "rows": [
+     [
+      "Reject $H_0$",
+      "Type I error",
+      "Correct decision"
+     ],
+     [
+      "Fail to reject $H_0$",
+      "Correct decision",
+      "Type II error"
+     ]
+    ]
+   }
+  },
+  "errors-and-power-s2": {
+   "kind": "graph",
+   "title": "Will customers prefer the new recipe?",
+   "text": "<p>A snack company will switch to a new recipe only if there is convincing evidence that more than half of its customers prefer it. It plans a one-sided test of $H_0: p = 0.5$ against $H_a: p > 0.5$ at $\\alpha = 0.05$, using a random sample of 200 customers. The test rejects $H_0$ when $\\hat{p}$ is 0.558 or more. The figure shows the sampling distribution of $\\hat{p}$ if $H_0$ is true, and if in fact $p = 0.60$.</p>",
+   "figure": "power-alpha-beta"
+  }
+ },
+ "items": [
+  {
+   "id": "stat-errors-and-power-1",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which describes a Type I error in this context?",
+   "stimulus": "errors-and-power-s1",
+   "options": [
+    "The proportion is 0.10, but the test finds convincing evidence that it is greater",
+    "The proportion is greater than 0.10, but the test does not find convincing evidence",
+    "The proportion is greater than 0.10, and the test finds convincing evidence of that",
+    "The sample proportion turns out to be greater than 0.10"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A Type I error is rejecting a true $H_0$: the true proportion is 0.10, but the test finds convincing evidence that it is greater than 0.10.",
+    "options": [
+     "Right: $H_0$ is true and we reject it.",
+     "That is a Type II error: $H_a$ is true and we fail to reject $H_0$.",
+     "That is a correct decision.",
+     "An error is about the decision compared with the truth, not about the sample result."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-2",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which describes a Type II error in this context?",
+   "stimulus": "errors-and-power-s1",
+   "options": [
+    "The proportion is 0.10, and the test finds convincing evidence that it is greater",
+    "Over 10% of homes are above the limit, but the test finds no convincing evidence",
+    "The test fails to reject $H_0$ when exactly 10% of homes are above the limit",
+    "The department tests too few homes to find anything"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A Type II error is failing to reject a false $H_0$: more than 10% of homes really are above the limit, but the test does not find convincing evidence of it.",
+    "options": [
+     "That is a Type I error.",
+     "Right: $H_a$ is true and we fail to reject $H_0$.",
+     "If $H_0$ is true, failing to reject it is the correct decision.",
+     "A small sample can make a Type II error more likely, but the error itself is a wrong decision about $H_0$."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-3",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is a consequence of a Type II error here?",
+   "stimulus": "errors-and-power-s1",
+   "options": [
+    "The city spends money replacing pipes that did not need replacing",
+    "The city replaces the pipes, as it should",
+    "The city does not replace the pipes, and residents keep drinking unsafe water",
+    "The city has to test a second random sample"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "After a Type II error the city does not replace the pipes, even though more than 10% of homes have lead above the limit. Residents keep drinking water with too much lead.",
+    "options": [
+     "That is the consequence of a Type I error.",
+     "That follows a correct decision to reject $H_0$ when $H_a$ is true.",
+     "Right: the problem exists but the test misses it.",
+     "Nothing in the plan calls for a second sample; the decision is made from this test."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-4",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The department thinks a Type II error is the more serious mistake here. Which significance level should it choose, and why?",
+   "stimulus": "errors-and-power-s1",
+   "options": [
+    "$\\alpha = 0.01$, because a smaller $\\alpha$ makes both errors less likely",
+    "$\\alpha = 0.10$, because a larger $\\alpha$ makes a Type II error less likely",
+    "$\\alpha = 0.05$, because the choice of $\\alpha$ does not affect Type II errors",
+    "$\\alpha = 0.01$, because a Type II error is the same as rejecting $H_0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A larger $\\alpha$ makes it easier to reject $H_0$, which lowers the probability of a Type II error (and raises the probability of a Type I error). With unsafe water at stake, $\\alpha = 0.10$ is the better choice.",
+    "options": [
+     "A smaller $\\alpha$ lowers the Type I error probability but raises the Type II error probability.",
+     "Right: rejecting more readily means missing a real problem less often.",
+     "It does: $\\alpha$ and the Type II error probability move in opposite directions for a fixed sample size.",
+     "A Type II error is failing to reject a false $H_0$."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-5",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Build the description of a Type I error and its consequence in this context.",
+   "stimulus": "errors-and-power-s1",
+   "conclude": {
+    "mode": "error",
+    "slots": {
+     "condition": {
+      "options": [
+       "If the true proportion of all the city's homes with lead above the limit is 0.10",
+       "If the true proportion of all the city's homes with lead above the limit is greater than 0.10",
+       "If the sample proportion of homes with lead above the limit is 0.10"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the situation for a Type II error. A Type I error starts with $H_0$ true.",
+       "2": "The condition is about the population proportion, not the sample."
+      }
+     },
+     "claim": {
+      "options": [
+       "but the test finds convincing evidence that it is greater than 0.10,",
+       "and the test does not find convincing evidence that it is greater than 0.10,",
+       "but the test does not find convincing evidence that it is greater than 0.10,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Failing to reject a true $H_0$ is a correct decision, not an error.",
+       "2": "That pairing does not fit: with $p = 0.10$, failing to reject is correct."
+      }
+     },
+     "context": {
+      "options": [
+       "the city would replace pipes that did not need replacing.",
+       "residents would keep drinking unsafe water.",
+       "the city would need a larger sample."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the consequence of a Type II error.",
+       "2": "The consequence is what happens because of the wrong decision: an unneeded, costly replacement."
+      }
+     }
+    },
+    "model": "A Type I error would occur if the true proportion of all the city's homes with lead above the limit is 0.10, but the test finds convincing evidence that it is greater than 0.10. The city would then spend money replacing pipes that did not need replacing.",
+    "write": {
+     "context": [
+      "pipes",
+      "lead",
+      "homes"
+     ],
+     "direction": "greater"
+    }
+   },
+   "why": {
+    "correct": "State the condition first (what is true), then the wrong decision, then what happens because of it."
+   }
+  },
+  {
+   "id": "stat-errors-and-power-6",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "2.D",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is the probability that the test makes a Type I error?",
+   "stimulus": "errors-and-power-s2",
+   "options": [
+    "0.05, the significance level",
+    "0.11, the area to the left of the cutoff under the curve for $p = 0.60$",
+    "0.89, the area to the right of the cutoff under the curve for $p = 0.60$",
+    "0.558, the cutoff for rejecting $H_0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A Type I error can happen only when $H_0$ is true, and then the test rejects with probability $\\alpha$. Here $\\alpha = 0.05$: the dark area to the right of the cutoff under the null curve.",
+    "options": [
+     "Right: $P(\\text{Type I error}) = \\alpha$.",
+     "That area is $\\beta$, the probability of a Type II error when $p = 0.60$.",
+     "That is the power of the test against $p = 0.60$.",
+     "The cutoff is a value of $\\hat{p}$, not a probability."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-7",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Suppose that in fact $p = 0.60$. Find the power of the test: the probability that $\\hat{p}$ is 0.558 or more. Give three decimal places.",
+   "stimulus": "errors-and-power-s2",
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.558,
+      0.6,
+      200
+     ],
+     "pick": "p.greater"
+    },
+    "mistakes": [
+     {
+      "value": 0.1127,
+      "why": "That is the area below the cutoff, $\\beta$, the probability of a Type II error. Power is the area at or above the cutoff."
+     },
+     {
+      "value": 0.0505,
+      "why": "That uses the null distribution (mean 0.5). Power is computed in the world where $p = 0.60$, so center the curve at 0.60."
+     }
+    ]
+   },
+   "why": {
+    "correct": "If $p = 0.60$, $\\hat{p}$ is approximately normal with mean 0.60 and standard deviation $\\sqrt{\\frac{0.60(0.40)}{200}} = 0.0346$. Power $= P(\\hat{p} \\ge 0.558) = P\\left(Z \\ge \\frac{0.558 - 0.60}{0.0346}\\right) = P(Z \\ge -1.21) = 0.887$."
+   }
+  },
+  {
+   "id": "stat-errors-and-power-8",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "The power against $p = 0.60$ is about 0.89. Which interpretation is correct?",
+   "stimulus": "errors-and-power-s2",
+   "options": [
+    "If 60% prefer it, the test has an 89% chance of finding convincing evidence that over half do",
+    "There is an 89% chance that more than half of the company's customers prefer the new recipe",
+    "About 89% of customers will prefer the new recipe",
+    "If half of customers prefer it, the test has an 89% chance of a Type I error"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Power is the probability of correctly rejecting $H_0$ when a particular alternative is true. If 60% of customers really prefer the new recipe, the test has about an 89% chance of finding convincing evidence that more than half do.",
+    "options": [
+     "Right: power is the chance of detecting this alternative.",
+     "Power is computed assuming a specific truth, $p = 0.60$; it is not a probability about $p$.",
+     "The 0.89 is a probability about the test's decision, not a share of customers.",
+     "If $p = 0.5$, the chance of a Type I error is $\\alpha = 0.05$."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-9",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The company increases the sample to 400 customers and keeps $\\alpha = 0.05$. What happens to the power against $p = 0.60$?",
+   "stimulus": "errors-and-power-s2",
+   "options": [
+    "It decreases, because the cutoff moves",
+    "It stays about 0.89, because $\\alpha$ did not change",
+    "It increases: both sampling distributions get narrower",
+    "It becomes 0.05, the same as $\\alpha$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A larger sample makes both curves narrower, so they overlap less. The cutoff moves closer to 0.5, more of the $p = 0.60$ curve lies beyond it, and power increases.",
+    "options": [
+     "The cutoff moves toward 0.5, which puts more of the $p = 0.60$ curve beyond it: power goes up.",
+     "Fixing $\\alpha$ fixes the Type I error probability, not the power.",
+     "Right: less overlap means the test detects $p = 0.60$ more often.",
+     "Power and $\\alpha$ are different probabilities: one assumes $H_a$, the other $H_0$."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-10",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "If the company used $\\alpha = 0.01$ with the same 200 customers, how would the probabilities of a Type I error and of a Type II error (when $p = 0.60$) change?",
+   "stimulus": "errors-and-power-s2",
+   "options": [
+    "Both would decrease",
+    "Type I would decrease and Type II would increase",
+    "Type I would increase and Type II would decrease",
+    "Neither would change, because the sample is the same"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A smaller $\\alpha$ moves the cutoff to the right. The Type I error probability falls to 0.01, but more of the $p = 0.60$ curve now falls below the cutoff, so $\\beta$ rises and power falls.",
+    "options": [
+     "With a fixed sample size, lowering one error probability raises the other.",
+     "Right: the cutoff moves right, trading one error for the other.",
+     "That is what a larger $\\alpha$ does.",
+     "The cutoff depends on $\\alpha$, so both probabilities change."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-11",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "multi",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A researcher plans a test of $H_0: p = 0.4$ against $H_a: p > 0.4$. Which changes would increase the power of the test against $p = 0.5$? Select all that apply.",
+   "options": [
+    "Using a larger random sample",
+    "Using $\\alpha = 0.10$ instead of $\\alpha = 0.05$",
+    "Using $\\alpha = 0.01$ instead of $\\alpha = 0.05$",
+    "Using a smaller random sample"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Power grows with a larger sample (less overlap between the curves) and with a larger $\\alpha$ (a cutoff that is easier to pass). A smaller sample or a smaller $\\alpha$ lowers power.",
+    "options": [
+     "Right: narrower sampling distributions overlap less.",
+     "Right: the cutoff moves toward $p_0$, so rejection is easier.",
+     "A stricter standard of evidence makes rejection harder, so power falls.",
+     "Wider sampling distributions overlap more, so power falls."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-12",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A test at $\\alpha = 0.05$ rejects $H_0$. Which error could it have made?",
+   "options": [
+    "A Type I error, if $H_0$ is actually true",
+    "A Type II error, if $H_a$ is actually true",
+    "Either type of error",
+    "No error, because the p-value was below 0.05"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rejecting $H_0$ is wrong only if $H_0$ is true, which is a Type I error. A Type II error needs a failure to reject.",
+    "options": [
+     "Right: the only possible mistake after rejecting.",
+     "If $H_a$ is true, rejecting $H_0$ is the correct decision.",
+     "After rejecting, a Type II error (failing to reject) is impossible.",
+     "A small p-value can still happen when $H_0$ is true; that is a Type I error."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-13",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A test gives a p-value of 0.21 at $\\alpha = 0.05$. Which error could it have made?",
+   "options": [
+    "A Type I error, because the p-value is large",
+    "A Type II error, if $H_a$ is actually true",
+    "Neither, because failing to reject is not a decision that can be wrong",
+    "A Type II error with probability 0.21"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Because $0.21 > 0.05$ the test fails to reject $H_0$. That is a mistake only if $H_a$ is true: a Type II error.",
+    "options": [
+     "A Type I error needs a rejection, and this test did not reject.",
+     "Right: failing to reject a false $H_0$.",
+     "It is wrong when $H_a$ is true: a real effect was missed.",
+     "The p-value is not the probability of a Type II error; that depends on the true value of $p$."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-14",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A test of $H_0: p = 0.3$ against $H_a: p < 0.3$ has power 0.72 against $p = 0.2$. What is the probability of a Type II error when $p = 0.2$?",
+   "options": [
+    "0.72",
+    "0.28",
+    "0.05",
+    "0.2"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When $p = 0.2$, the test either rejects $H_0$ (probability = power) or fails to (probability $\\beta$). So $\\beta = 1 - 0.72 = 0.28$.",
+    "options": [
+     "That is the power, the probability of correctly rejecting $H_0$.",
+     "Right: $\\beta = 1 - \\text{power}$.",
+     "That would be $\\alpha$, a probability computed assuming $H_0$ is true.",
+     "That is the alternative value of $p$, not a probability of error."
+    ]
+   }
+  },
+  {
+   "id": "stat-errors-and-power-15",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A hospital tests whether fewer than 90% of its patients get their medicine on time: $H_0: p = 0.90$, $H_a: p < 0.90$. If there is convincing evidence for $H_a$, it will add staff. Build the description of a Type II error and its consequence.",
+   "conclude": {
+    "mode": "error",
+    "slots": {
+     "condition": {
+      "options": [
+       "If the true proportion of all the hospital's patients who get their medicine on time is less than 0.90",
+       "If the true proportion of all the hospital's patients who get their medicine on time is 0.90",
+       "If the proportion of sampled patients who get their medicine on time is less than 0.90"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With $H_0$ true, failing to reject is correct; a Type II error starts with $H_a$ true.",
+       "2": "The condition is about the population, not the sample."
+      }
+     },
+     "claim": {
+      "options": [
+       "but the test does not find convincing evidence that it is less than 0.90,",
+       "and the test finds convincing evidence that it is less than 0.90,",
+       "but the test finds convincing evidence that it is 0.90,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rejecting $H_0$ when $H_a$ is true is the correct decision.",
+       "2": "A test never finds evidence that $H_0$ is true."
+      }
+     },
+     "context": {
+      "options": [
+       "the hospital would not add the staff it needs, and patients would keep getting late medicine.",
+       "the hospital would add staff it did not need.",
+       "the hospital would have proved that its patients get medicine on time."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the consequence of a Type I error.",
+       "2": "Failing to reject proves nothing."
+      }
+     }
+    },
+    "model": "A Type II error would occur if the true proportion of all the hospital's patients who get their medicine on time is less than 0.90, but the test does not find convincing evidence that it is less than 0.90. The hospital would not add the staff it needs, and patients would keep getting late medicine.",
+    "write": {
+     "context": [
+      "medicine",
+      "hospital"
+     ],
+     "direction": "less"
+    }
+   },
+   "why": {
+    "correct": "A Type II error: $H_a$ is true (fewer than 90% on time), but the test does not find convincing evidence of it, so the hospital does not add staff it needs."
+   }
+  },
+  {
+   "id": "stat-errors-and-power-16",
+   "unit": "unit-3",
+   "topic": "errors-and-power",
+   "type": "single",
+   "practice": "2.D",
+   "level": "recall",
+   "diff": 2,
+   "q": "In general, what is the power of a significance test?",
+   "options": [
+    "The probability of rejecting $H_0$ when it is true",
+    "The probability that $H_a$ is true",
+    "The probability of rejecting $H_0$ when a specific alternative is true",
+    "The probability of failing to reject $H_0$ when it is false"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Power is the probability that the test rejects $H_0$ when a particular alternative value is true: the chance it detects a real effect. Power $= 1 - \\beta$.",
+    "options": [
+     "That is $\\alpha$, the probability of a Type I error.",
+     "Power assumes a specific alternative is true; it is not a probability about the hypotheses.",
+     "Right: the chance of detecting that alternative.",
+     "That is $\\beta$, the probability of a Type II error."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,494 @@
+{
+ "stimuli": {
+  "mutually-exclusive-s1": {
+   "kind": "table",
+   "title": "Students by class and sport",
+   "text": "A school has 200 students. The table shows each student's class and whether the student plays on a school sports team. One student is chosen at random (invented data).",
+   "table": {
+    "caption": "Class and sports team for 200 students",
+    "cols": [
+     "Class",
+     "Plays a sport",
+     "No sport",
+     "Total"
+    ],
+    "rows": [
+     [
+      "Freshman",
+      "20",
+      "30",
+      "50"
+     ],
+     [
+      "Sophomore",
+      "22",
+      "28",
+      "50"
+     ],
+     [
+      "Junior",
+      "18",
+      "32",
+      "50"
+     ],
+     [
+      "Senior",
+      "15",
+      "35",
+      "50"
+     ],
+     [
+      "Total",
+      "75",
+      "125",
+      "200"
+     ]
+    ]
+   }
+  },
+  "mutually-exclusive-s2": {
+   "kind": "diagram",
+   "title": "Events for one roll of a die",
+   "text": "A fair die is rolled once. Event V: the roll is even (2, 4, 6). Event F: the roll is a 5. Event G: the roll is greater than 3 (4, 5, 6).",
+   "html": "<svg viewBox=\"0 0 520 120\" width=\"520\" height=\"120\" role=\"img\" aria-label=\"The six faces of a die, 1 to 6, with the outcomes of event V (2, 4, 6), event F (5) and event G (4, 5, 6) listed under them\"><rect width=\"520\" height=\"120\" fill=\"#FFFFFF\"/><rect x=\"20\" y=\"12\" width=\"56\" height=\"56\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><text x=\"48\" y=\"48\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">1</text><rect x=\"100\" y=\"12\" width=\"56\" height=\"56\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><text x=\"128\" y=\"48\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">2</text><rect x=\"180\" y=\"12\" width=\"56\" height=\"56\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><text x=\"208\" y=\"48\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">3</text><rect x=\"260\" y=\"12\" width=\"56\" height=\"56\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><text x=\"288\" y=\"48\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">4</text><rect x=\"340\" y=\"12\" width=\"56\" height=\"56\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><text x=\"368\" y=\"48\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">5</text><rect x=\"420\" y=\"12\" width=\"56\" height=\"56\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><text x=\"448\" y=\"48\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">6</text><text x=\"20\" y=\"92\" font-size=\"14\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#6E2470\">V (even): 2, 4, 6</text><text x=\"200\" y=\"92\" font-size=\"14\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#0072B2\">F: 5</text><text x=\"290\" y=\"92\" font-size=\"14\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#D55E00\">G (greater than 3): 4, 5, 6</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "stat-mutually-exclusive-1",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $P(\\text{senior} \\cap \\text{plays a sport})$, the probability that the student is a senior and plays a sport?",
+   "why": {
+    "correct": "The joint event is one cell: 15 seniors play a sport. Out of 200 equally likely students, $\\frac{15}{200} = 0.075$."
+   },
+   "stimulus": "mutually-exclusive-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.075,
+    "mistakes": [
+     {
+      "value": 0.3,
+      "why": "That divides by the 50 seniors. The student is chosen from all 200, so divide by 200."
+     },
+     {
+      "value": 0.2,
+      "why": "That divides by the 75 students who play a sport. Divide by all 200."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-mutually-exclusive-2",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Are the events \"the student is a freshman\" and \"the student is a senior\" mutually exclusive?",
+   "why": {
+    "correct": "No student is in two classes, so the joint event has no outcomes: $P(\\text{freshman} \\cap \\text{senior}) = 0$.",
+    "options": [
+     "Equal probabilities have nothing to do with being mutually exclusive.",
+     "Sharing a third feature does not put a student in both classes.",
+     "Together they cover only 100 students; and covering everything is not the test.",
+     "Right: they cannot happen together."
+    ]
+   },
+   "stimulus": "mutually-exclusive-s1",
+   "options": [
+    "No: each event has the same probability, 0.25",
+    "No: some freshmen and some seniors play a sport",
+    "Yes: together they make up the whole school of 200 students",
+    "Yes: no student is both a freshman and a senior"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-mutually-exclusive-3",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Are \"the student is a junior\" and \"the student plays a sport\" mutually exclusive?",
+   "why": {
+    "correct": "18 students are juniors who play a sport, so $P(\\text{junior} \\cap \\text{plays a sport}) = \\frac{18}{200} = 0.09$, not 0. The events can happen together.",
+    "options": [
+     "Right: the joint probability is not 0.",
+     "Mutually exclusive means no overlap at all, not \"mostly separate\".",
+     "Events on different variables can happen together, as these do.",
+     "The size of each probability is not the test; the joint probability is."
+    ]
+   },
+   "stimulus": "mutually-exclusive-s1",
+   "options": [
+    "No, because 18 students are juniors on a team, so the joint probability is 0.09",
+    "Yes, because more juniors do not play a sport (32) than play one (18)",
+    "Yes, because class and sport are two different variables",
+    "No, because both events have probability above 0.2"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-mutually-exclusive-4",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the student is a freshman or a senior?",
+   "why": {
+    "correct": "The two events are mutually exclusive, so their probabilities add: $\\frac{50}{200} + \\frac{50}{200} = 0.5$. No student is counted twice."
+   },
+   "stimulus": "mutually-exclusive-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.5,
+    "mistakes": [
+     {
+      "value": 0.25,
+      "why": "That is the probability of just one of the classes. \"Freshman or senior\" includes both groups, 100 students."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-mutually-exclusive-5",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write an expression for $P(\\text{sophomore} \\cap \\text{plays a sport})$.",
+   "why": {
+    "correct": "The joint event is the cell for sophomores who play a sport, 22 students, over all 200: $\\frac{22}{200} = 0.11$."
+   },
+   "stimulus": "mutually-exclusive-s1",
+   "setup": {
+    "answer": "22/200",
+    "bind": {},
+    "mustUse": [
+     "22",
+     "200"
+    ],
+    "mistakes": [
+     {
+      "expr": "22/50",
+      "why": "That divides by the 50 sophomores. The student comes from all 200."
+     },
+     {
+      "expr": "22/75",
+      "why": "That divides by the 75 students on teams. Use all 200."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-mutually-exclusive-6",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair of events is mutually exclusive?",
+   "why": {
+    "correct": "V is 2, 4, 6 and F is 5: no outcome is in both. V and G share 4 and 6; F and G share 5.",
+    "options": [
+     "They share 4 and 6, so they can happen together.",
+     "A 5 is greater than 3, so F and G happen together on a 5.",
+     "A 6 is in G, so they overlap.",
+     "Right: an even roll can never be a 5."
+    ]
+   },
+   "stimulus": "mutually-exclusive-s2",
+   "options": [
+    "V and G",
+    "F and G",
+    "G and \"the roll is 6\"",
+    "V and F"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-mutually-exclusive-7",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $P(V \\cap G)$, the probability that the roll is even and greater than 3?",
+   "why": {
+    "correct": "The outcomes in both events are 4 and 6. Two of six equally likely outcomes: $\\frac{2}{6} \\approx 0.333$."
+   },
+   "stimulus": "mutually-exclusive-s2",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.3333333333333333,
+    "mistakes": [
+     {
+      "value": 0.6666666666666666,
+      "why": "That counts outcomes in either event (2, 4, 5, 6). The joint event needs both: even AND greater than 3."
+     },
+     {
+      "value": 0.25,
+      "why": "That multiplies the two probabilities. List the outcomes in both events instead: 4 and 6."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-mutually-exclusive-8",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the roll is even or a 5?",
+   "why": {
+    "correct": "V and F are mutually exclusive, so the probabilities add: $\\frac{3}{6} + \\frac{1}{6} = \\frac{4}{6}$ (the rolls 2, 4, 5, 6).",
+    "options": [
+     "That is the even rolls alone, without the 5.",
+     "Right: 2, 4, 5 and 6.",
+     "That is the 5 alone.",
+     "That multiplies the probabilities, which does not give the chance of one or the other."
+    ]
+   },
+   "stimulus": "mutually-exclusive-s2",
+   "options": [
+    "$\\frac{3}{6}$",
+    "$\\frac{4}{6}$",
+    "$\\frac{1}{6}$",
+    "$\\frac{3}{36}$"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-mutually-exclusive-9",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student finds the probability that the roll is even or greater than 3 as $\\frac{3}{6} + \\frac{3}{6} = 1$. What went wrong?",
+   "why": {
+    "correct": "V and G are not mutually exclusive: 4 and 6 are in both, so adding counts them twice. Listing the outcomes, 2, 4, 5, 6, gives $\\frac{4}{6}$.",
+    "options": [
+     "A probability of 1 would mean a 1 or a 3 could never be rolled, which is false.",
+     "Multiplying does not give the chance of one event or the other.",
+     "Right: adding works only for mutually exclusive events.",
+     "The fractions already use 6 as the denominator."
+    ]
+   },
+   "stimulus": "mutually-exclusive-s2",
+   "options": [
+    "Nothing went wrong, since each event has probability one half",
+    "The student should have multiplied the probabilities to get one fourth",
+    "The events overlap at 4 and 6, so those rolls were counted twice",
+    "The die has 6 faces, so the answer should have been divided by 6"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-mutually-exclusive-10",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "single",
+   "practice": "4.B",
+   "level": "recall",
+   "diff": 2,
+   "q": "Two events are mutually exclusive when",
+   "why": {
+    "correct": "Mutually exclusive (disjoint) events have no outcomes in common, so they cannot happen together and their joint probability is 0.",
+    "options": [
+     "That describes an event and its complement, one special case.",
+     "Equal chances are a different idea.",
+     "That is about how events affect each other, not whether they overlap.",
+     "Right: no shared outcomes."
+    ]
+   },
+   "options": [
+    "their probabilities add to 1 and one of them is sure to happen",
+    "they have the same probability of happening on any one trial",
+    "one of them makes the other more likely to happen on the next trial",
+    "they cannot happen on the same trial, so their joint probability is 0"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-mutually-exclusive-11",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "An adult is chosen at random. Which pair of events is mutually exclusive?",
+   "why": {
+    "correct": "A person has one blood type, so \"type A blood\" and \"type O blood\" cannot both happen. The other pairs can happen together.",
+    "options": [
+     "Right: a person has exactly one blood type.",
+     "Many people own both a dog and a cat.",
+     "Many teenagers have a license.",
+     "Someone can be born on a Monday in May."
+    ]
+   },
+   "options": [
+    "Has type A blood; has type O blood",
+    "Owns a dog; owns a cat",
+    "Is under 20 years old; has a driver's license",
+    "Was born in May; was born on a Monday"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-mutually-exclusive-12",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "At a diner, each customer orders exactly one main course. The probability that a customer orders a salad is 0.30 and that a customer orders a burger is 0.45. What is the probability that the next customer orders a salad or a burger?",
+   "why": {
+    "correct": "One main course each means a customer cannot order both, so the events are mutually exclusive and the probabilities add: $0.30 + 0.45 = 0.75$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.75,
+    "mistakes": [
+     {
+      "value": 0.135,
+      "why": "That multiplies the probabilities. For \"one or the other\" with no overlap, add them."
+     },
+     {
+      "value": 0.25,
+      "why": "That is the probability of neither, $1 - 0.75$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-mutually-exclusive-13",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Event H has probability 0.6 and event K has probability 0.5. Can H and K be mutually exclusive?",
+   "why": {
+    "correct": "If they could not happen together, the probability of H or K would be $0.6 + 0.5 = 1.1$, more than 1, which is impossible. So H and K must overlap.",
+    "options": [
+     "Different probabilities do not separate events.",
+     "Probabilities of mutually exclusive events add to at most 1.",
+     "Right: no probability can exceed 1.",
+     "The numbers alone settle it: 0.6 + 0.5 is more than 1."
+    ]
+   },
+   "options": [
+    "Yes: any two events with different probabilities are mutually exclusive",
+    "Yes: mutually exclusive events have probabilities that add to more than 1",
+    "No: then the chance of one or the other would be 1.1, more than 1",
+    "It depends on whether H makes K more likely to happen"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-mutually-exclusive-14",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a survey of a school, 12% of students both walk to school on some days and ride a bike on other days. Are \"walks some days\" and \"bikes some days\" mutually exclusive for a randomly chosen student?",
+   "why": {
+    "correct": "The joint probability is 0.12, not 0, so the events can happen together: they are not mutually exclusive.",
+    "options": [
+     "The events are about \"some days\", and 12% of students do both.",
+     "Small is not zero; any overlap means not mutually exclusive.",
+     "Being similar is not the test; sharing outcomes is.",
+     "Right: mutually exclusive means a joint probability of 0."
+    ]
+   },
+   "options": [
+    "Yes, because a student is unable to walk and bike on the same day",
+    "Yes, because 12% is a small percent of the students",
+    "No, because walking and biking are both ways to get to school",
+    "No, because the probability of both is 0.12, not 0"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-mutually-exclusive-15",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A company has 400 workers. 90 work night shifts, 150 are part-time, and 64 are part-time workers on night shifts. A worker is chosen at random. Find $P(\\text{night shift} \\cap \\text{part-time})$.",
+   "why": {
+    "correct": "The joint event is the 64 workers who are both, out of 400: $\\frac{64}{400} = 0.16$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.16,
+    "mistakes": [
+     {
+      "value": 0.7111111111111111,
+      "why": "That divides by the 90 night workers. The worker is chosen from all 400."
+     },
+     {
+      "value": 0.6,
+      "why": "That adds the two groups. The joint event is only the 64 workers in both."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-mutually-exclusive-16",
+   "unit": "unit-2",
+   "topic": "mutually-exclusive",
+   "type": "multi",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Events R and T are mutually exclusive. Which statements must be true? Select all that apply.",
+   "why": {
+    "correct": "Mutually exclusive means no shared outcomes: $P(R \\cap T) = 0$, and if R happens, T does not. Their probabilities need not add to 1 or be equal.",
+    "options": [
+     "Right: the joint event has no outcomes.",
+     "Right: they cannot happen together.",
+     "That holds for an event and its complement, not for every pair of mutually exclusive events.",
+     "Complements are mutually exclusive, but mutually exclusive events may leave other outcomes.",
+     "Mutually exclusive events can have any probabilities that add to 1 or less."
+    ]
+   },
+   "options": [
+    "$P(R \\cap T) = 0$",
+    "If R happens on a trial, T does not happen on that trial",
+    "$P(R) + P(T) = 1$",
+    "R and T are complements of each other",
+    "$P(R) = P(T)$"
+   ],
+   "correct": [
+    0,
+    1
+   ]
+  }
+ ]
+}

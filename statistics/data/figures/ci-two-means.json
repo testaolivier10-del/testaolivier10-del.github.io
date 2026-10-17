@@ -1,0 +1,12 @@
+{
+ "two-sample-interval": {
+  "file": "figures/two-sample-interval.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Top: side-by-side boxplots of words recalled. Spaced practice: min 25, Q1 29, median 35, Q3 39, max 44. Massed practice: min 16, Q1 25, median 29, Q3 34, max 39. Neither has outliers. Bottom: the 95% confidence interval for the true difference in mean recall, spaced minus massed, from 0.61 to 10.81 words, centered at 5.71, entirely to the right of a dashed line at 0."
+ }
+}

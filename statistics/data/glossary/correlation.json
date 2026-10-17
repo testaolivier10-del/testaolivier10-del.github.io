@@ -1,0 +1,5 @@
+{
+ "correlation": {
+  "def": "The correlation coefficient $r = \\frac{1}{n - 1}\\sum z_x z_y$: a number from $-1$ to 1 that measures the direction and strength of the linear association between two quantitative variables. It has no units and is not resistant to outliers."
+ }
+}

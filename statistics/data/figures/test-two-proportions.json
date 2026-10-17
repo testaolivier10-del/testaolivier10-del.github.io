@@ -1,0 +1,11 @@
+{
+ "two-prop-pvalue": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep",
+  "ext": "svg",
+  "w": 640,
+  "h": 360,
+  "alt": "Normal curve centered at 0 with standard error 0.052, the distribution of the difference in sample proportions if the null hypothesis is true; the observed difference 0.131 is marked and the small area to its right, the p-value of about 0.006, is shaded."
+ }
+}

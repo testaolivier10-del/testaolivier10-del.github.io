@@ -1,0 +1,545 @@
+{
+ "stimuli": {
+  "test-two-proportions-setup-s1": {
+   "kind": "table",
+   "title": "New recycling bins",
+   "text": "A city wants to know whether a new bin design increases the share of households that sort their recycling correctly. It randomly assigns 300 volunteer households: 160 get the new bin and 140 keep the old one. After a month, inspectors record which households sorted correctly. (Invented data.)",
+   "table": {
+    "caption": "Households that sorted correctly",
+    "cols": [
+     "Bin",
+     "Sorted correctly",
+     "Households",
+     "Sample proportion"
+    ],
+    "rows": [
+     [
+      "New",
+      "125",
+      "160",
+      "0.781"
+     ],
+     [
+      "Old",
+      "91",
+      "140",
+      "0.650"
+     ]
+    ]
+   }
+  },
+  "test-two-proportions-setup-s2": {
+   "kind": "table",
+   "title": "Reading for fun, 10 years apart",
+   "text": "A youth library group took a random sample of 250 teens in a state in 2016 and a separate random sample of 300 teens in the same state in 2026. Each teen was asked whether they read for fun at least once a week. The group wants to know whether the proportion has changed. (Invented data.)",
+   "table": {
+    "caption": "Teens who read for fun weekly",
+    "cols": [
+     "Year",
+     "Read weekly",
+     "Sample size"
+    ],
+    "rows": [
+     [
+      "2016",
+      "105",
+      "250"
+     ],
+     [
+      "2026",
+      "108",
+      "300"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-test-two-proportions-setup-1",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "test-two-proportions-setup-s1",
+   "q": "Which hypotheses match the city's question?",
+   "why": {
+    "correct": "The null is no difference; the alternative is the direction of the research question.",
+    "options": [
+     "Right: the null says no difference; the alternative says the new bin is better, the direction the city asked about.",
+     "The null hypothesis is the \"no difference\" claim, with an equals sign; the alternative is what we look for evidence of.",
+     "The city asked whether the new design increases correct sorting, a one-sided question. Choose the direction before seeing the data.",
+     "Hypotheses are about parameters. We know the sample proportions differ; the question is about the true proportions."
+    ]
+   },
+   "options": [
+    "$H_0: p_N - p_O = 0$, $H_a: p_N - p_O > 0$",
+    "$H_0: p_N - p_O > 0$, $H_a: p_N - p_O = 0$",
+    "$H_0: p_N - p_O = 0$, $H_a: p_N - p_O \\ne 0$",
+    "$H_0: \\hat{p}_N - \\hat{p}_O = 0$, $H_a: \\hat{p}_N - \\hat{p}_O > 0$"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-two-proportions-setup-2",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "test-two-proportions-setup-s1",
+   "q": "How should $p_N$ be defined in context?",
+   "why": {
+    "correct": "Define each parameter as a true proportion, in context.",
+    "options": [
+     "That is $\\hat{p}_N = 0.781$, a statistic we already know.",
+     "Households did not choose; the city assigned the bins at random.",
+     "A proportion is a fraction of a group, not a count.",
+     "Right: in an experiment, the parameter is the proportion of subjects like these who would succeed with that treatment."
+    ]
+   },
+   "options": [
+    "The proportion of the 160 new bin households in this study that sorted correctly",
+    "The chance that a household chosen at random picks the new bin over the old one",
+    "The number of households in the study that sorted correctly with the new bin",
+    "The true share of such households that would sort correctly with the new bin"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-test-two-proportions-setup-3",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "test-two-proportions-setup-s1",
+   "q": "What is the pooled proportion $p_c$ for this test? Give three decimal places.",
+   "why": {
+    "correct": "$p_c = \\frac{125 + 91}{160 + 140} = \\frac{216}{300} = 0.72$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "z2prop",
+     "args": [
+      125,
+      160,
+      91,
+      140
+     ],
+     "pick": "pc"
+    },
+    "mistakes": [
+     {
+      "value": 0.7156,
+      "why": "That averages the two sample proportions. Pool the counts: total successes over total households, $\\frac{125 + 91}{160 + 140}$."
+     },
+     {
+      "value": 0.1312,
+      "why": "That is the difference $\\hat{p}_N - \\hat{p}_O$. The pooled proportion combines the two groups."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-proportions-setup-4",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "test-two-proportions-setup-s1",
+   "q": "Which statement correctly checks the large counts condition for this test?",
+   "why": {
+    "correct": "For the test, $n_1 p_c$, $n_1(1 - p_c)$, $n_2 p_c$, $n_2(1 - p_c)$ are each at least 10.",
+    "options": [
+     "Nothing in the problem is 0.5. The null hypothesis says the proportions are equal, and $p_c$ estimates that common value.",
+     "That is not the condition. Each group needs at least 10 expected successes and failures.",
+     "Right: a test assumes $p_N = p_O$, so the four counts use the pooled proportion $p_c = 0.72$.",
+     "Comparing $n$ with 30 is a rule for means. Check counts against 10."
+    ]
+   },
+   "options": [
+    "$160(0.5) = 80$ and $140(0.5) = 70$ are each at least 10",
+    "Both $\\hat{p}_N$ and $\\hat{p}_O$ are greater than 0.10",
+    "$160(0.72) = 115.2$, $160(0.28) = 44.8$, $140(0.72) = 100.8$ and $140(0.28) = 39.2$ are each at least 10",
+    "The total of 300 households is at least 30"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-test-two-proportions-setup-5",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "test-two-proportions-setup-s1",
+   "q": "Which procedure should the city use?",
+   "why": {
+    "correct": "Compare two proportions from two groups with a two-sample z test.",
+    "options": [
+     "Right: two groups from random assignment, a yes or no outcome, and a question about a difference.",
+     "That tests one proportion against a fixed value. The city compares two treatments.",
+     "An interval estimates the difference. The city asked a yes or no question about an increase, which calls for a test.",
+     "Testing one group alone has no comparison. The question is whether new beats old."
+    ]
+   },
+   "options": [
+    "A two-sample z test for $p_N - p_O$",
+    "A one-proportion z test of $H_0: p = 0.72$",
+    "A two-sample z interval for $p_N - p_O$",
+    "A one-proportion z test on the 160 new bin households"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-two-proportions-setup-6",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "test-two-proportions-setup-s2",
+   "q": "Which alternative hypothesis fits the group's question?",
+   "why": {
+    "correct": "The question's wording, not the sample, sets the direction.",
+    "options": [
+     "Hypotheses are about the true proportions, not the sample proportions.",
+     "Nothing in the question says \"increased\". \"Changed\" allows either direction.",
+     "The 2026 sample proportion is lower (0.36 against 0.42), but the question was asked before the data: \"has changed\" is two-sided.",
+     "Right: \"has changed\" does not name a direction, so the test is two-sided."
+    ]
+   },
+   "options": [
+    "$H_a: \\hat{p}_{2026} - \\hat{p}_{2016} \\ne 0$",
+    "$H_a: p_{2026} - p_{2016} > 0$",
+    "$H_a: p_{2026} - p_{2016} < 0$",
+    "$H_a: p_{2026} - p_{2016} \\ne 0$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-test-two-proportions-setup-7",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "test-two-proportions-setup-s2",
+   "q": "Which statement checks the 10% condition?",
+   "why": {
+    "correct": "Sampling without replacement: each sample is under 10% of its population.",
+    "options": [
+     "That is part of the large counts condition, about shape.",
+     "Each sample is checked against its whole population of teens, not against readers.",
+     "Right: each sample is compared with its own population.",
+     "That is the random condition. The 10% condition compares sample size with population size."
+    ]
+   },
+   "options": [
+    "At least 10 teens in each sample read weekly",
+    "The two samples together have fewer than 10% of the teens who read",
+    "Each sample is under 10% of the state's teens in its year",
+    "The samples were selected at random in each year"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-test-two-proportions-setup-8",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "test-two-proportions-setup-s2",
+   "q": "Why does this test use the pooled proportion $p_c = \\frac{105 + 108}{250 + 300}$ when the confidence interval for the same difference does not?",
+   "why": {
+    "correct": "A test is computed as if $H_0$ were true; an interval makes no such assumption.",
+    "options": [
+     "Pooling is not chosen for its effect on the decision. It follows from assuming $H_0$ is true.",
+     "Right: if $p_{2016} = p_{2026}$, combining the samples gives the best estimate of that shared proportion.",
+     "Pooling is about the null hypothesis, not the sample sizes.",
+     "An interval does not assume the proportions are equal, so it keeps them separate."
+    ]
+   },
+   "options": [
+    "Pooling makes the test more likely to reject $H_0$",
+    "The test assumes $H_0$, that the two proportions are equal, so both samples estimate one common value",
+    "Pooling is needed when the sample sizes differ",
+    "The interval uses pooling too, and this question is mistaken"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-test-two-proportions-setup-9",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "test-two-proportions-setup-s2",
+   "q": "Which statement checks the random condition?",
+   "why": {
+    "correct": "Say \"two independent random samples\" in the words of the problem.",
+    "options": [
+     "Size does not make a sample random. How the teens were chosen matters.",
+     "Right: two independent random samples, stated in words from the problem.",
+     "Similar results say nothing about how the samples were chosen.",
+     "Choosing to answer is voluntary response, not randomness. The random samples are what count."
+    ]
+   },
+   "options": [
+    "A large number of teens were asked, 550 in total",
+    "The teens came from two separate random samples, one in each year",
+    "The proportions 0.42 and 0.36 are close, so the samples are similar",
+    "The teens could choose whether to answer, so the samples are random"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-test-two-proportions-setup-10",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A researcher looks at her data, sees that $\\hat{p}_1 > \\hat{p}_2$, and then writes $H_a: p_1 - p_2 > 0$. What is wrong?",
+   "why": {
+    "correct": "Set hypotheses from the question, before the data.",
+    "options": [
+     "Right: choosing a one-sided test because of the sample result makes evidence look stronger than it is.",
+     "The equality belongs in $H_0$.",
+     "Hypotheses are about parameters, never sample statistics.",
+     "One-sided alternatives are fine when the question has a direction."
+    ]
+   },
+   "options": [
+    "The direction of $H_a$ must come from the question, not the data",
+    "$H_a$ should say $p_1 - p_2 = 0$",
+    "$H_a$ should be written about the sample proportions, $\\hat{p}_1 - \\hat{p}_2$",
+    "One-sided alternatives are not allowed for two proportions"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-two-proportions-setup-11",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A coach records whether each of 40 players makes a free throw before and after a training camp. Why is a two-sample z test for $p_{\\text{after}} - p_{\\text{before}}$ not appropriate?",
+   "why": {
+    "correct": "A two-sample z test needs two independent groups.",
+    "options": [
+     "There are other issues with the design, but the reason this test does not fit is that the two groups are the same people.",
+     "Being under 10% is what the 10% condition wants. The problem is that the groups are the same players.",
+     "Right: before and after on the same players are linked, not two independent samples.",
+     "Make or miss is categorical, so proportions are right. The samples are the problem."
+    ]
+   },
+   "options": [
+    "The camp did not use random assignment of the players",
+    "40 players is fewer than 10% of the players in the league",
+    "The same 40 players are in both groups, so the groups are linked",
+    "Making a free throw is a quantitative variable, not categorical"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-test-two-proportions-setup-12",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "In a random sample of 120 adults in Town A, 48 own a dog; in an independent random sample of 100 adults in Town B, 30 do. Write the expression for the pooled proportion $p_c$, then give its value to three decimal places.",
+   "why": {
+    "correct": "$p_c = \\frac{48 + 30}{120 + 100} = \\frac{78}{220} = 0.355$."
+   },
+   "setup": {
+    "answer": "(48 + 30)/(120 + 100)",
+    "bind": {},
+    "mustUse": [
+     "48",
+     "30",
+     "120",
+     "100"
+    ],
+    "then": {
+     "kind": "prob",
+     "from": {
+      "fn": "z2prop",
+      "args": [
+       48,
+       120,
+       30,
+       100
+      ],
+      "pick": "pc"
+     }
+    },
+    "mistakes": [
+     {
+      "expr": "(48/120 + 30/100)/2",
+      "why": "That averages the two proportions, which treats the towns as if they had equal sample sizes. Pool the counts: total successes over total sample size."
+     },
+     {
+      "expr": "(48 + 30)/2",
+      "why": "That averages the counts. Divide the total successes by the total number of adults, 220."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-proportions-setup-13",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which pair of hypotheses is written correctly for a test of whether two true proportions differ?",
+   "why": {
+    "correct": "$H_0$: no difference between the true proportions; $H_a$: the difference of interest.",
+    "options": [
+     "These are about statistics, which we can see. Hypotheses are about the unknown population proportions.",
+     "These are reversed: the null holds the equality.",
+     "Right: equal in the null, different in the alternative, about parameters. Writing $p_1 - p_2 = 0$ means the same thing.",
+     "The pooled proportion is used in the calculation, but the hypotheses compare $p_1$ and $p_2$."
+    ]
+   },
+   "options": [
+    "$H_0: \\hat{p}_1 = \\hat{p}_2$, $H_a: \\hat{p}_1 \\ne \\hat{p}_2$",
+    "$H_0: p_1 \\ne p_2$, $H_a: p_1 = p_2$",
+    "$H_0: p_1 = p_2$, $H_a: p_1 \\ne p_2$",
+    "$H_0: p_c = 0$, $H_a: p_c \\ne 0$"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-test-two-proportions-setup-14",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A clinic randomly assigns 30 patients to each of two treatments for a rare reaction. In all, 6 of the 60 patients have the reaction. Why is the large counts condition not met for a two-sample z test?",
+   "why": {
+    "correct": "Each of the four counts with $p_c$ must reach 10.",
+    "options": [
+     "That count passes. It is the other count, $30(0.10) = 3$, that fails.",
+     "Equal groups are fine. The small number of reactions expected in each group is the problem.",
+     "Random assignment satisfies the random condition. The counts are the problem.",
+     "Right: with so few reactions overall, each group expects only 3, too few for a normal model."
+    ]
+   },
+   "options": [
+    "$30(0.90) = 27$ is more than 10",
+    "The groups have the same size, 30",
+    "Random assignment was used instead of random sampling",
+    "$p_c = 0.10$, so $30(0.10) = 3$ is less than 10 in each group"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-test-two-proportions-setup-15",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which study calls for a two-sample z test rather than a one-proportion z test?",
+   "why": {
+    "correct": "Two groups compared with each other: two-sample. One group against a number: one-proportion.",
+    "options": [
+     "Right: two independent samples and a comparison of two proportions.",
+     "One sample against one claimed value: a one-proportion z test.",
+     "One set of trials compared with 0.5: a one-proportion z test.",
+     "One sample, compared with a fixed value: a one-proportion z test."
+    ]
+   },
+   "options": [
+    "Comparing left-handedness in random samples of musicians and non-musicians",
+    "Testing whether 60% of a school's students eat breakfast, from one random sample",
+    "Testing whether a coin lands heads half the time, from 200 flips",
+    "Testing whether more than 10% of a town's adults are left-handed, from one random sample"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-two-proportions-setup-16",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "A two-sample z test for the bins study gives a p-value of 0.006. State the conclusion at $\\alpha = 0.05$.",
+   "why": {
+    "correct": "Compare p with α, then state convincing evidence for $H_a$ about the true proportions, in context."
+   },
+   "conclude": {
+    "mode": "test",
+    "p": 0.006,
+    "alpha": 0.05,
+    "ha": "greater",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence that",
+       "There is not convincing evidence that",
+       "It is proven that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is below 0.05, so the evidence is convincing.",
+       "2": "A test gives evidence; it never proves."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true proportion of households like these that sort correctly is greater with the new bin than with the old bin",
+       "the 160 households with the new bin sorted better than the 140 with the old bin",
+       "the new bin and the old bin give the same proportion"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is a fact about the samples. The conclusion is about the true proportions.",
+       "2": "That is the null hypothesis; a small p-value is evidence against it."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.006 is less than 0.05, we reject the null hypothesis. There is convincing evidence that the true proportion of all households like these that sort their recycling correctly is greater with the new bin than with the old bin.",
+    "write": {
+     "context": [
+      "households",
+      "bin"
+     ],
+     "direction": "greater",
+     "compare": {
+      "p": 0.006,
+      "alpha": 0.05
+     }
+    }
+   }
+  }
+ ]
+}

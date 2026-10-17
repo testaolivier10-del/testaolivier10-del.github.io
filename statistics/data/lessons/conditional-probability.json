@@ -1,0 +1,71 @@
+{
+ "topic": "conditional-probability",
+ "hook": "A screening test catches 90% of people who have a condition. You test positive. Is there a 90% chance you have it? Surprisingly, no: in a typical population it is closer to 38%. The difference is which group a probability is about, and a tree diagram makes it visible.",
+ "prereq": [
+  {
+   "q": "Of 150 returning park visitors, 54 fished. What is the conditional relative frequency of fishing for returning visitors?",
+   "options": [
+    "0.36",
+    "0.216",
+    "0.783",
+    "0.54"
+   ],
+   "correct": 0,
+   "why": "$\\frac{54}{150} = 0.36$: divide by the group's total.",
+   "review": "two-categorical-summaries"
+  },
+  {
+   "q": "What is $P(A \\cap B)$?",
+   "options": [
+    "The probability that A and B both happen",
+    "The probability that A or B happens",
+    "The probability of A minus B",
+    "The probability that neither happens"
+   ],
+   "correct": 0,
+   "why": "$\\cap$ is \"and\": both events.",
+   "review": "mutually-exclusive"
+  }
+ ],
+ "figure": {
+  "figure": "u2-screening-tree",
+  "caption": "First branch: condition or not. Second branch: the test result given the first. Multiply along a path; add the paths you want."
+ },
+ "chain": [
+  {
+   "cause": "You are told that B happened",
+   "effect": "only the outcomes in B are possible now, so B becomes the new total"
+  },
+  {
+   "cause": "So the share of B that is also A",
+   "effect": "is the conditional probability: $P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}$"
+  },
+  {
+   "cause": "Rearrange the rule",
+   "effect": "the multiplication rule: $P(A \\cap B) = P(A) \\cdot P(B \\mid A)$, which is multiplying along a tree's path"
+  },
+  {
+   "cause": "Add every path that ends in the result you want",
+   "effect": "you get its total probability, and dividing one path by it reverses the condition"
+  }
+ ],
+ "ideas": [
+  "A <b>conditional probability</b> $P(A \\mid B)$ is the probability of A given that B happened: $P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}$. In a table, divide by the total of B's row or column.",
+  "The <b>multiplication rule</b>: $P(A \\cap B) = P(A) \\cdot P(B \\mid A)$. Drawing without replacement changes the second probability.",
+  "A <b>tree diagram</b> shows stages: first-stage probabilities, then conditional ones. Multiply along a path; add paths.",
+  "$P(A \\mid B)$ and $P(B \\mid A)$ are usually different. Name the group after the bar."
+ ],
+ "misconception": {
+  "wrong": "If the test is positive for 90% of people with the condition, then 90% of people who test positive have it.",
+  "right": "Those are different conditional probabilities: $P(\\text{positive} \\mid \\text{condition}) = 0.90$, but $P(\\text{condition} \\mid \\text{positive}) = \\frac{0.036}{0.0936} \\approx 0.385$."
+ },
+ "check": [
+  "stat-conditional-probability-1",
+  "stat-conditional-probability-2",
+  "stat-conditional-probability-3",
+  "stat-conditional-probability-4",
+  "stat-conditional-probability-5",
+  "stat-conditional-probability-10"
+ ],
+ "summary": "Given B, the outcomes in B are the new whole, so $P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}$. Rearranged, the multiplication rule $P(A \\cap B) = P(A) \\cdot P(B \\mid A)$ is what a tree diagram does along each path. Adding paths gives a total probability, and dividing reverses a condition, which usually changes the answer."
+}

@@ -1,0 +1,625 @@
+{
+ "stimuli": {
+  "ci-one-mean-claims-s1": {
+   "kind": "table",
+   "title": "Cereal box fill weights",
+   "text": "<p>A cereal maker labels its boxes \"500 grams\". An inspector takes a random sample of 30 boxes from the thousands filled on one day and weighs the contents (invented data). A dotplot of the 30 weights shows no strong skew and no outliers.</p>",
+   "table": {
+    "caption": "Summary of the 30 fill weights and a 95% t interval",
+    "cols": [
+     "Sample size",
+     "Mean",
+     "Standard deviation",
+     "95% confidence interval for the mean"
+    ],
+    "rows": [
+     [
+      "30",
+      "495.9 g",
+      "7.5 g",
+      "from 493.10 to 498.70 g"
+     ]
+    ]
+   }
+  },
+  "ci-one-mean-claims-s2": {
+   "kind": "table",
+   "title": "A tutoring program's claim",
+   "text": "<p>A tutoring company claims its 6-week program raises math test scores by more than 10 points on average. A district took a random sample of 40 students who completed the program and compared each student's score before and after (invented data). The differences (after minus before) show no strong skew.</p>",
+   "table": {
+    "caption": "Summary of the 40 differences, after minus before, in points",
+    "cols": [
+     "Sample size",
+     "Mean difference",
+     "Standard deviation of differences",
+     "95% confidence interval for the mean difference"
+    ],
+    "rows": [
+     [
+      "40",
+      "11.2",
+      "11.9",
+      "from 7.4 to 15.0 points"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-ci-one-mean-claims-1",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "What are the point estimate and the margin of error of the 95% interval?",
+   "stimulus": "ci-one-mean-claims-s1",
+   "options": [
+    "495.9 g and 5.60 g",
+    "500 g and 4.10 g",
+    "495.9 g and 7.5 g",
+    "495.9 g and 2.80 g"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Interval = point estimate $\\pm$ margin of error, so the center is 495.9 g and the margin is 2.80 g.",
+    "options": [
+     "5.60 g is the full width of the interval. The margin of error is half of it.",
+     "500 g is the label, not an estimate from the data. The center of the interval is the sample mean, 495.9 g.",
+     "7.5 g is the sample standard deviation of single boxes. The margin of error is $t^*\\frac{s}{\\sqrt{n}} = 2.045\\frac{7.5}{\\sqrt{30}} = 2.80$ g.",
+     "The point estimate is the center, $\\bar{x} = 495.9$; the margin of error is half the width, $\\frac{498.70 - 493.10}{2} = 2.80$ g."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-2",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Does the 95% interval give convincing evidence that the true mean fill weight that day is different from the 500 grams on the label? Build the justification.",
+   "stimulus": "ci-one-mean-claims-s1",
+   "why": {
+    "correct": "Every plausible value in the interval is below 500, so 500 is not a plausible value for the true mean, and the evidence points to underfilling."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "claim": {
+      "options": [
+       "Because every value in the interval from 493.10 to 498.70 g is less than 500,",
+       "Because the sample mean of 495.9 g is less than 500,",
+       "Because the interval is narrow,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A sample mean below 500 could happen by chance; the interval accounts for that variability.",
+       "2": "Width alone does not decide; what matters is whether 500 is inside."
+      }
+     },
+     "evidence": {
+      "options": [
+       "the interval gives convincing evidence that",
+       "the interval proves that",
+       "the interval does not give convincing evidence that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An interval gives evidence; it never proves.",
+       "2": "500 is outside the interval, so it is not a plausible value."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean fill weight of all boxes filled that day is less than 500 g",
+       "the 30 sampled boxes weigh less than 500 g on average",
+       "every box filled that day weighs less than 500 g"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample mean is known; the claim is about the population mean.",
+       "2": "The interval is about a mean; many single boxes weigh more than 500 g."
+      }
+     }
+    },
+    "model": "Because every value in the interval from 493.10 to 498.70 g is less than 500, the interval gives convincing evidence that the true mean fill weight of all boxes filled that day is less than 500 grams.",
+    "write": {
+     "context": [
+      "box",
+      "fill"
+     ],
+     "direction": "less"
+    }
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-3",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A manager says, \"The true mean fill weight that day was 497 grams.\" What does the 95% interval say about this claim?",
+   "stimulus": "ci-one-mean-claims-s1",
+   "options": [
+    "497 g is plausible, but the interval does not show it is the true mean",
+    "The interval confirms that the true mean is 497 g",
+    "497 g is not plausible because it differs from 495.9 g",
+    "The claim is rejected, because 497 g is less than the 500 g on the label"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A value inside the interval is plausible; that is weaker than being shown true.",
+    "options": [
+     "497 lies inside the interval, so it is a plausible value. So are many others, such as 494 and 498.5, so the data cannot single out 497.",
+     "An interval gives a range of plausible values. It cannot confirm one value.",
+     "Values near the sample mean are the most plausible ones; 497 is well inside the interval.",
+     "The interval is the guide here, and 497 is inside it."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-4",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "interval",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Construct a 99% confidence interval for the true mean fill weight from the same 30 boxes, in grams.",
+   "stimulus": "ci-one-mean-claims-s1",
+   "why": {
+    "correct": "$\\text{df} = 29$, $t^* = 2.756$. $\\bar{x} \\pm t^*\\frac{s}{\\sqrt{n}} = 495.9 \\pm 2.756\\frac{7.5}{\\sqrt{30}} = 495.9 \\pm 3.77$, from 492.13 to 499.67 g."
+   },
+   "interval": {
+    "places": 2,
+    "from": {
+     "fn": "ci1mean",
+     "args": [
+      495.9,
+      7.5,
+      30,
+      0.99
+     ]
+    }
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-5",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The 99% interval is from 492.13 to 499.67 grams. Compared with the 95% interval, what changes?",
+   "stimulus": "ci-one-mean-claims-s1",
+   "options": [
+    "It is narrower, so it is more precise",
+    "It is wider, so it now contains 500",
+    "It is wider, and it still gives convincing evidence of underfilling",
+    "Nothing changes, because both intervals come from the same 30 boxes of cereal"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Same $\\bar{x}$, $s$ and $n$; only $t^*$ grows. Wider interval, more confidence, and 500 is still not a plausible value.",
+    "options": [
+     "A 99% interval uses $t^* = 2.756$ instead of 2.045, so it is wider, not narrower.",
+     "The upper end is 499.67, still below 500.",
+     "Higher confidence needs a larger $t^*$, so the interval widens. Even so, 500 stays outside it.",
+     "The same data with a higher confidence level give a wider interval."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-6",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Does the interval give convincing evidence for the company's claim that the mean improvement is more than 10 points? Build the justification.",
+   "stimulus": "ci-one-mean-claims-s2",
+   "why": {
+    "correct": "Values below 10, such as 8 or 9, are inside the interval, so they are plausible. The data are consistent with a mean improvement above 10 or below it."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "claim": {
+      "options": [
+       "Because 10 is in the interval from 7.4 to 15.0 points,",
+       "Because the sample mean of 11.2 is greater than 10,",
+       "Because 0 is not in the interval,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample mean is above 10, but values below 10 are still plausible.",
+       "2": "That answers whether there is any improvement, not whether it exceeds 10."
+      }
+     },
+     "evidence": {
+      "options": [
+       "the interval does not give convincing evidence that",
+       "the interval gives convincing evidence that",
+       "the interval proves that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With 10 inside the interval, more than 10 is not established.",
+       "2": "An interval never proves a claim."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean improvement for students who complete the program is greater than 10 points",
+       "the 40 students improved by more than 10 points on average",
+       "every student who completes the program improves by more than 10 points"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is about the sample, whose mean is known (11.2).",
+       "2": "The interval is about a mean, not each student."
+      }
+     }
+    },
+    "model": "Because 10 is in the interval from 7.4 to 15.0 points, the interval does not give convincing evidence that the true mean improvement for students who complete the program is greater than 10 points.",
+    "write": {
+     "context": [
+      "improve",
+      "program"
+     ],
+     "direction": "greater"
+    }
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-7",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "Does the interval give convincing evidence that students improve at all, on average?",
+   "stimulus": "ci-one-mean-claims-s2",
+   "options": [
+    "No, because 10 is in the interval",
+    "Yes, because every value in the interval is greater than 0",
+    "No, because some students' scores went down",
+    "Yes, because the sample mean of 11.2 points is well above 0 points"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The claim \"some improvement\" means $\\mu_d > 0$. Since 0 is outside the interval and every plausible value is positive, there is convincing evidence of improvement.",
+    "options": [
+     "Whether 10 is inside matters for the company's claim. For \"any improvement\" the value to check is 0.",
+     "A mean difference of 0 (no change) is not plausible, since the interval runs from 7.4 to 15.0.",
+     "Individual students can decline while the mean difference is clearly positive.",
+     "A positive sample mean alone could be chance. The interval, entirely above 0, is the evidence."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-8",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The district wants a narrower 95% interval in its next study. What should it change?",
+   "stimulus": "ci-one-mean-claims-s2",
+   "options": [
+    "Use a larger random sample of students",
+    "Use a 99% confidence level",
+    "Compare two separate groups of students instead of before and after",
+    "Leave out the students whose scores dropped"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Margin of error $= t^*\\frac{s_d}{\\sqrt{n}}$: a larger sample shrinks it. Four times the students roughly halves it.",
+    "options": [
+     "A larger $n$ makes $\\frac{s_d}{\\sqrt{n}}$ smaller (and $t^*$ slightly smaller), so the interval narrows at the same confidence.",
+     "A higher level needs a larger $t^*$, which widens the interval.",
+     "Two separate groups add student-to-student variation, which usually widens the interval.",
+     "Dropping data that do not fit is not honest and makes the sample unrepresentative."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-9",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A parent reads the interval and says, \"So 95% of students gain between 7.4 and 15.0 points.\" What is wrong?",
+   "stimulus": "ci-one-mean-claims-s2",
+   "options": [
+    "Nothing; that is the meaning of 95% confidence",
+    "It should say 95% of the 40 sampled students",
+    "The interval estimates the mean gain, not individual gains",
+    "It should say that 5% of students gain less than 7.4 points"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A confidence interval is about a parameter, here $\\mu_d$. With $s_d = 11.9$, single students' gains spread far wider than 7.4 to 15.0.",
+    "options": [
+     "95% confidence describes how often the method captures the true mean, not where 95% of individual values fall.",
+     "Even for the sample, the interval does not describe individual gains.",
+     "Individual differences have standard deviation 11.9 points, so many students gain far more or less than this range.",
+     "The interval makes no statement about the share of students above or below a value."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-10",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "numeric",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "A 90% t interval for the mean weekly screen time of a town's teenagers, from a random sample of 22, is from 12.56 to 14.84 hours. What is the margin of error, in hours?",
+   "why": {
+    "correct": "Margin of error = half the width: $\\frac{14.84 - 12.56}{2} = 1.14$ hours. The center, $\\bar{x} = 13.70$, is the point estimate."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "hours",
+    "from": {
+     "fn": "ci1mean",
+     "args": [
+      13.7,
+      3.1,
+      22,
+      0.9
+     ],
+     "pick": "me"
+    },
+    "mistakes": [
+     {
+      "value": 2.28,
+      "why": "That is the full width of the interval. The margin of error is half of it."
+     },
+     {
+      "value": 13.7,
+      "why": "That is the point estimate, the center. The margin of error is the distance from the center to either end."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-11",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A researcher plans a t interval for a mean. About how does the interval width change if she uses four times as many subjects, keeping the confidence level the same?",
+   "options": [
+    "It is cut to roughly one fourth",
+    "It is cut roughly in half",
+    "It doubles",
+    "It stays the same"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{1}{\\sqrt{4}} = \\frac{1}{2}$: quadrupling the sample size halves the standard error, and so roughly halves the width.",
+    "options": [
+     "The width depends on $\\sqrt{n}$, not $n$.",
+     "Width is $2t^*\\frac{s}{\\sqrt{n}}$, and $\\sqrt{4n} = 2\\sqrt{n}$, so the width roughly halves ($t^*$ also shrinks a little).",
+     "More data make the estimate more precise, so the interval gets narrower.",
+     "The standard error $\\frac{s}{\\sqrt{n}}$ shrinks as $n$ grows."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-12",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "From the same data, a 90% interval for a mean is narrower than a 95% interval. What is the trade-off?",
+   "options": [
+    "The 90% interval is narrower and captures the mean more often",
+    "There is no trade-off, so 90% is better",
+    "The 90% interval uses a smaller sample",
+    "The 90% interval is more precise but captures the mean less often"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Confidence and precision pull against each other for a fixed sample: lower confidence, smaller $t^*$, narrower interval.",
+    "options": [
+     "Narrower intervals from the same data miss more often.",
+     "Precision is gained by giving up some confidence.",
+     "Both intervals use the same sample; only the critical value changes.",
+     "A smaller $t^*$ gives a narrower interval, but the method captures the true mean in about 90% of samples instead of 95%."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-13",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "multi",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which changes make a t interval for a mean narrower? Select all that apply.",
+   "options": [
+    "A larger sample size",
+    "A lower confidence level",
+    "A population with more variability",
+    "A higher confidence level",
+    "Replacing $t^*$ with $z^*$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Width $= 2t^*\\frac{s}{\\sqrt{n}}$: shrink it with a larger $n$ or a smaller $t^*$ (lower confidence). A smaller $s$ would help too, but that is the population's, not the researcher's, choice.",
+    "options": [
+     "Right: the standard error $\\frac{s}{\\sqrt{n}}$ shrinks.",
+     "Right: $t^*$ gets smaller.",
+     "More variability means a larger $s$, which widens the interval.",
+     "Higher confidence needs a larger $t^*$, a wider interval.",
+     "That makes the arithmetic narrower but the method wrong: with $s$ in the formula the capture rate would fall below the stated level."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-14",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A 95% t interval for a mean does not contain 70. What would a two-sided significance test of the claim that the mean is 70 conclude, from the same data, at $\\alpha = 0.05$?",
+   "options": [
+    "Reject the null hypothesis that the mean is 70",
+    "Fail to reject the null hypothesis that the mean is 70",
+    "Nothing can be said without the p-value",
+    "Reject it at $\\alpha = 0.01$ as well"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A $C$% confidence interval matches a two-sided test at $\\alpha = 1 - C$: values outside the interval are rejected, values inside are not.",
+    "options": [
+     "A 95% interval holds the values a two-sided test at the 0.05 significance level would not reject. 70 is outside, so the test rejects it.",
+     "That would happen if 70 were inside the interval.",
+     "The interval and the two-sided test at matching levels agree, so the conclusion is known.",
+     "A 99% interval would be wider and might contain 70, so the 0.01 result is unknown."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-15",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Interpret the 95% confidence interval for the cereal boxes, from 493.10 to 498.70 grams, built from a random sample of 30 boxes filled on one day.",
+   "why": {
+    "correct": "Name the level, the interval, and the parameter in context: the true mean fill weight of all boxes filled that day."
+   },
+   "conclude": {
+    "mode": "interval",
+    "slots": {
+     "level": {
+      "options": [
+       "We are 95% confident that",
+       "There is a 95% chance that",
+       "95% of boxes show that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "After the interval is built, the true mean is either in it or not.",
+       "2": "The interval does not describe single boxes."
+      }
+     },
+     "claim": {
+      "options": [
+       "the interval from 493.10 to 498.70 grams captures",
+       "the sample mean of 495.9 grams captures",
+       "the boxes weigh between 493.10 and 498.70 grams, matching"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The interval estimates the population mean, not the sample mean.",
+       "2": "Individual box weights vary far more than this interval."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean fill weight of all boxes filled that day",
+       "the mean fill weight of the 30 boxes in the sample",
+       "the label weight of 500 grams"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is known exactly (495.9 g); it needs no interval.",
+       "2": "The label is a claim to judge, not the parameter being estimated."
+      }
+     }
+    },
+    "model": "We are 95% confident that the interval from 493.10 to 498.70 grams captures the true mean fill weight of all boxes filled that day.",
+    "write": {
+     "context": [
+      "box",
+      "fill"
+     ],
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-16",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two inspectors each take random samples of 30 boxes, one at a plant with very consistent fill machines and one at a plant with erratic machines. Which 95% interval for the mean will tend to be wider?",
+   "options": [
+    "The interval from the plant with consistent machines",
+    "Both widths are the same, since $n = 30$ at each plant",
+    "The interval from the plant with erratic machines",
+    "Whichever plant has the larger mean fill weight"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Width depends on $t^*$, $s$ and $n$. Here $t^*$ and $n$ match, so the plant with more variable fills gives the wider interval.",
+    "options": [
+     "Consistent machines give a small $s$ and so a narrow interval.",
+     "Same $n$ and level, but different $s$, so different widths.",
+     "Erratic machines give a larger sample standard deviation $s$, and the margin of error $t^*\\frac{s}{\\sqrt{n}}$ grows with $s$.",
+     "The center of the interval does not affect its width."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-claims-17",
+   "unit": "unit-4",
+   "topic": "ci-one-mean-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A coffee shop says its large drinks hold at least 16 ounces on average. A 95% interval for the true mean, from a random sample of drinks, is from 15.8 to 16.4 ounces. Which conclusion is justified?",
+   "options": [
+    "The interval proves the mean is at least 16 ounces",
+    "The interval does not give convincing evidence against the shop's claim",
+    "The interval gives convincing evidence that the mean is below 16",
+    "The interval shows the mean is exactly 16.1 ounces"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "To give convincing evidence against \"at least 16\", every plausible value would have to be below 16. Here part of the interval is at or above 16.",
+    "options": [
+     "An interval never proves a claim, and values below 16 are plausible.",
+     "Values of 16 or more are inside the interval, so the claim is plausible. Values below 16 are plausible too, so the claim is not shown true either.",
+     "16 and values above it are inside the interval, so they remain plausible.",
+     "16.1 is the center, the point estimate; the interval allows a range of values."
+    ]
+   }
+  }
+ ]
+}

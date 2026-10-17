@@ -1,0 +1,486 @@
+{
+ "stimuli": {
+  "describing-distributions-s1": {
+   "kind": "graph",
+   "title": "Commute times of 60 workers",
+   "plot": {
+    "label": "Histogram of the one-way commute times of 60 workers in bins 5 minutes wide, from 0 to 70 minutes: most between 5 and 25 minutes, a long tail to the right, and one value between 65 and 70 minutes",
+    "kind": "hist",
+    "data": [3, 2, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 16, 16, 17, 17, 17, 18, 18, 19, 19, 20, 20, 21, 22, 22, 23, 24, 24, 25, 26, 27, 27, 28, 29, 30, 31, 33, 34, 36, 38, 42, 67],
+    "xLabel": "minutes",
+    "bins": {
+     "start": 0,
+     "width": 5
+    },
+    "x": [0, 90],
+    "xStep": 10
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "commute time",
+      "unit": "minutes",
+      "values": [3, 2, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 16, 16, 17, 17, 17, 18, 18, 19, 19, 20, 20, 21, 22, 22, 23, 24, 24, 25, 26, 27, 27, 28, 29, 30, 31, 33, 34, 36, 38, 42, 67]
+     }
+    ]
+   },
+   "text": "A histogram of the one-way commute times of 60 workers at a hospital, in bins 5 minutes wide (invented data)."
+  },
+  "describing-distributions-s2": {
+   "kind": "graph",
+   "title": "Heights of 30 athletes",
+   "plot": {
+    "label": "Histogram of the heights of 30 athletes in bins 5 centimeters wide: one group from 145 to 165 centimeters, an empty stretch from 165 to 180, and a second group from 180 to 205 centimeters",
+    "kind": "hist",
+    "data": [148, 150, 151, 152, 153, 154, 155, 155, 156, 157, 158, 159, 160, 162, 164, 184, 186, 187, 188, 189, 190, 191, 191, 192, 193, 194, 195, 197, 199, 202],
+    "xLabel": "cm",
+    "bins": {
+     "start": 145,
+     "width": 5
+    },
+    "x": [145, 215],
+    "xStep": 10
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "height",
+      "unit": "cm",
+      "values": [148, 150, 151, 152, 153, 154, 155, 155, 156, 157, 158, 159, 160, 162, 164, 184, 186, 187, 188, 189, 190, 191, 191, 192, 193, 194, 195, 197, 199, 202]
+     }
+    ]
+   },
+   "text": "A sports camp measured the heights of the 30 athletes in two of its groups, in centimeters (invented data)."
+  }
+ },
+ "items": [
+  {
+   "id": "stat-describing-distributions-1",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the shape of the distribution of commute times?",
+   "why": {
+    "correct": "The tail stretches toward the larger values, so the distribution is skewed right (toward the tail).",
+    "options": [
+     "Skew is named for the tail, not the peak. The long tail here points right.",
+     "Right: most times are short, and the bars trail off in a long tail toward the longer times on the right.",
+     "There is one peak, but the right side stretches much farther than the left, so the shape is not symmetric.",
+     "A uniform shape has bars of about equal height; these rise and then fall away."
+    ]
+   },
+   "stimulus": "describing-distributions-s1",
+   "options": [
+    "Skewed left, because the tallest bars are on the left side",
+    "Skewed right",
+    "Roughly symmetric, with one peak between 10 and 15 minutes",
+    "Uniform, since each bin holds a few of the workers"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-describing-distributions-2",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which unusual feature does the histogram show?",
+   "why": {
+    "correct": "The empty bins from 45 to 65 minutes form a gap, and the lone commute between 65 and 70 is a possible outlier.",
+    "options": [
+     "The bars fall steadily from 10 to 45 minutes; there is no second peak.",
+     "The bar from 0 to 5 joins the rest of the data; it does not stand apart.",
+     "The empty bins from 45 to 65 and the lone bar after them stand out.",
+     "Right: one worker’s commute sits far from the rest, so it is a possible outlier."
+    ]
+   },
+   "stimulus": "describing-distributions-s1",
+   "options": [
+    "A second peak between 30 and 35 minutes, making it bimodal",
+    "A cluster of commutes below 5 minutes that stands apart",
+    "No unusual features, as the bars decrease steadily",
+    "A gap from 45 to 65 minutes, then one commute between 65 and 70"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-describing-distributions-3",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "About where is the center of the distribution, the value with half the commutes below it?",
+   "why": {
+    "correct": "Count from the left: $3 + 10 + 14 = 27$ commutes under 15 minutes and $27 + 11 = 38$ under 20. The middle (the 30th and 31st values) is in the 15 to 20 bin.",
+    "options": [
+     "Right: 27 commutes are under 15 minutes and 38 are under 20, so the 30th and 31st values fall in the 15 to 20 bin.",
+     "The tallest bar is the most common bin, not the middle of the data.",
+     "Halfway along the axis is not the middle of the data; the commutes bunch at the low end.",
+     "By 20 minutes, 38 of the 60 commutes have already been counted, more than half."
+    ]
+   },
+   "stimulus": "describing-distributions-s1",
+   "options": [
+    "Between 15 and 20 minutes",
+    "Between 10 and 15 minutes, the tallest bar",
+    "About 35 minutes, halfway between 0 and 70",
+    "Between 20 and 25 minutes, past the peak"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-describing-distributions-4",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which description of the distribution is the most complete?",
+   "why": {
+    "correct": "A full description covers shape, center, spread and unusual features, each with numbers, and names the variable in context.",
+    "options": [
+     "It has numbers but no context: it never says these are commute times in minutes.",
+     "It gives shape and context but no center, spread or unusual features, and it adds a claim the data do not show.",
+     "Right: it gives shape, center, spread and unusual features, all in context with numbers.",
+     "It reads bars instead of describing shape, center and spread."
+    ]
+   },
+   "stimulus": "describing-distributions-s1",
+   "options": [
+    "The distribution is skewed right with a center between 15 and 20 and an outlier between 65 and 70; most of the values are from 5 to 30, so the spread is large",
+    "The commute times of the 60 workers are skewed to the right, which tells us that most of the hospital’s workers live a short drive from work",
+    "The distribution of commute times is skewed right with a center between 15 and 20 minutes; most commutes take 5 to 30 minutes, with a gap and one possible outlier between 65 and 70 minutes",
+    "The histogram of commute times has a tallest bar from 10 to 15 minutes and a shortest bar from 40 to 45 minutes, with many bars between them"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-describing-distributions-5",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the shape of the distribution of heights?",
+   "why": {
+    "correct": "Two peaks with a gap between them make the distribution bimodal.",
+    "options": [
+     "A long tail would be a few large values trailing off; here there is a whole second group.",
+     "A uniform shape has bars of about equal height everywhere; this histogram has an empty stretch in the middle.",
+     "Right: there are two separate peaks, one near 155 cm and one near 190 cm.",
+     "The two sides match, but there are two peaks and almost no one near 175."
+    ]
+   },
+   "stimulus": "describing-distributions-s2",
+   "options": [
+    "Skewed right, because the heights go up to 202 centimeters",
+    "Uniform, since both groups have about the same number of athletes",
+    "Bimodal",
+    "Roughly symmetric and unimodal, centered near 175 centimeters"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-describing-distributions-6",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is the most likely explanation for the shape of this distribution?",
+   "why": {
+    "correct": "Two clusters usually point to two kinds of individuals in one data set. Here that is two sports.",
+    "options": [
+     "Right: a bimodal distribution often signals that two groups have been mixed together, such as gymnasts and basketball players.",
+     "Heights in inches would be near 60 to 80, far below the values here.",
+     "Rounding would change bars a little; it would not create two groups 30 cm apart.",
+     "That would push the data up, not split it into two separate groups."
+    ]
+   },
+   "stimulus": "describing-distributions-s2",
+   "options": [
+    "The athletes come from two sports with very different typical heights",
+    "Some athletes were measured in inches instead of centimeters",
+    "The heights were rounded to the nearest 5 centimeters",
+    "Tall athletes are more likely to be chosen for the camp"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-describing-distributions-7",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which unusual feature does the histogram show?",
+   "why": {
+    "correct": "The empty bins between about 165 and 180 cm are a gap between two clusters.",
+    "options": [
+     "202 is close to the other tall athletes, inside the upper cluster.",
+     "148 sits with the lower cluster of heights.",
+     "The stretch from 165 to 180 is empty, so the heights are far from uniform.",
+     "Right: the empty bins between the two clusters form a gap."
+    ]
+   },
+   "stimulus": "describing-distributions-s2",
+   "options": [
+    "An outlier at 202 centimeters, the tallest athlete in the camp",
+    "An outlier at 148 centimeters, the shortest athlete in the camp",
+    "A uniform stretch of heights between 150 and 200 centimeters",
+    "A gap: no athlete is between 165 and 180 centimeters"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-describing-distributions-8",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A coach says, \"A typical athlete at this camp is about 175 cm tall.\" Why is this a poor summary?",
+   "why": {
+    "correct": "In a bimodal distribution a single center can fall in a gap where there are no values. Describe each cluster separately.",
+    "options": [
+     "The problem is not the size of 175 but that no athlete is near it.",
+     "Right: a single center hides the two groups. It is better to describe each group on its own.",
+     "Centers can be given in any unit; this one just falls in the gap.",
+     "The unit does not matter; a center in the gap misleads in any unit."
+    ]
+   },
+   "stimulus": "describing-distributions-s2",
+   "options": [
+    "175 centimeters is too tall to be a typical height for an athlete",
+    "Hardly anyone is near 175; the heights form two groups",
+    "A center is not defined for heights measured in centimeters",
+    "The coach should have used inches to describe the athletes"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-describing-distributions-9",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Scores on an easy quiz: most students score 9 or 10 out of 10, and a few score much lower. What shape is the distribution?",
+   "why": {
+    "correct": "A tail toward the low values makes the distribution skewed left. Name the skew for the tail, not for where most values are.",
+    "options": [
+     "Right: the few low scores form a tail toward the smaller values, on the left.",
+     "Skew is named for the tail. The tail points to the low scores, so the skew is left.",
+     "Scores cannot go above 10, so the low tail has no match on the right.",
+     "Possible values are not the same as how often they occur; most scores pile up at 9 and 10."
+    ]
+   },
+   "options": [
+    "Skewed left",
+    "Skewed right, because most of the scores are high ones",
+    "Roughly symmetric around a score of 9 out of 10",
+    "Uniform, since each score from 0 to 10 is possible"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-describing-distributions-10",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "A distribution is skewed right. What does that tell you?",
+   "why": {
+    "correct": "Skewed right tells you the tail is on the right, toward the larger values.",
+    "options": [
+     "In a right-skewed distribution most values are on the left; the tail is on the right.",
+     "Two peaks describe a bimodal shape, not skew.",
+     "Right: \"skewed right\" names the direction of the tail.",
+     "A long tail is not the same as outliers, and outliers are not simply removed."
+    ]
+   },
+   "options": [
+    "Most of the values are on the right side of the graph",
+    "The graph has two separate peaks with a gap",
+    "A long tail stretches toward the larger values",
+    "The largest values are outliers to be removed"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-describing-distributions-11",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A spinner lands on the numbers 1 to 8 with no number favored. After 800 spins, which shape do you expect for a histogram of the results?",
+   "why": {
+    "correct": "When each value occurs about equally often, the bars are about level: a uniform shape.",
+    "options": [
+     "No number is favored, so there is no reason for a tail.",
+     "Right: each number should come up about 100 times, so the bars are about the same height.",
+     "The ends of the spinner are not favored, so there is no reason for two peaks.",
+     "A peak in the middle would show middle numbers coming up more often, but each number is equally favored."
+    ]
+   },
+   "options": [
+    "Skewed right, toward the larger numbers",
+    "Roughly uniform",
+    "Bimodal, with peaks at 1 and at 8",
+    "Mound-shaped with a peak near 4 or 5"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-describing-distributions-12",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "The ages of members of club A run from 40 to 60 years. The ages in club B run from 10 to 90 years. Which statement compares their spread?",
+   "why": {
+    "correct": "Spread (variability) describes how far apart the values are: from 10 to 90 is far wider than from 40 to 60.",
+    "options": [
+     "Spread is about how far apart values are, not how large they are.",
+     "Club B includes children and much older adults, so its ages are more spread out.",
+     "The range of values is enough here to see that B is more spread out.",
+     "Right: B’s ages cover 80 years and A’s cover 20."
+    ]
+   },
+   "options": [
+    "Club A’s ages vary more, since its members are older",
+    "The spreads are the same, since both clubs contain adults",
+    "Spread is impossible to compare without the shape of each club",
+    "Club B’s ages vary more than club A’s ages do"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-describing-distributions-13",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is an outlier?",
+   "why": {
+    "correct": "An outlier is a value that falls far outside the overall pattern. Investigate it; do not simply delete it.",
+    "options": [
+     "The largest value is an outlier only if it is far from the others.",
+     "Right: an outlier stands apart from the rest of the distribution.",
+     "An outlier may be a real value; investigate it rather than deleting it.",
+     "The most common value is the peak (mode), the opposite of an outlier."
+    ]
+   },
+   "options": [
+    "The largest value in any data set, whatever its distance from the rest",
+    "A value that falls far from the overall pattern of the data",
+    "A value that was recorded by mistake and is removed",
+    "The most common value in the data, where the peak is"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-describing-distributions-14",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "multi",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A complete description of a quantitative distribution includes which of these? Select all that apply.",
+   "why": {
+    "correct": "Describe shape, center, spread and unusual features, with numbers and in context.",
+    "options": [
+     "Right: for example skewed right, roughly symmetric or bimodal.",
+     "Right: a typical value.",
+     "Right: how far the values reach or vary.",
+     "Names identify individuals; they do not describe a distribution.",
+     "Order of collection is not part of describing a distribution.",
+     "Colors are a drawing choice, not a feature of the data."
+    ]
+   },
+   "options": [
+    "Its shape",
+    "Its center, with a number",
+    "Its spread, with numbers",
+    "The name of each individual in the data set",
+    "The order in which the data were collected",
+    "The color of each bar in the histogram"
+   ],
+   "correct": [0, 1, 2]
+  },
+  {
+   "id": "stat-describing-distributions-15",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A dotplot of 40 apple weights shows one group from 140 to 170 grams and a second, smaller group from 205 to 220 grams. Which words describe the second group?",
+   "why": {
+    "correct": "A bunch of values separated from the rest by empty space is a cluster, and the empty space is a gap.",
+    "options": [
+     "A tail trails off gradually; this group stands on its own after an empty stretch.",
+     "The center describes a typical value of the whole data set, not a separate group.",
+     "Uniform describes level bars; this is a separate bunch of values.",
+     "Right: values bunched together with empty space around them form a cluster; the empty space is a gap."
+    ]
+   },
+   "options": [
+    "A long tail of the distribution to the right",
+    "A center of the distribution of weights",
+    "A uniform part of the distribution",
+    "A cluster, set apart by a gap"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-describing-distributions-16",
+   "unit": "unit-1",
+   "topic": "describing-distributions",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes, \"The distribution is roughly symmetric, centered at 72, with values from 60 to 85.\" What is missing for full credit?",
+   "why": {
+    "correct": "Shape, center and spread are there, but without context the description could be about anything. Name the variable and units.",
+    "options": [
+     "Right: the description never says what the numbers are, such as heart rates in beats per minute.",
+     "A description summarizes; listing every value is not needed.",
+     "The student described the shape as roughly symmetric, which can be correct.",
+     "One center is enough for a unimodal distribution."
+    ]
+   },
+   "options": [
+    "Context: what was measured, and its units",
+    "The value of each observation in the data",
+    "A statement that the data are skewed",
+    "A second center, since a description needs two"
+   ],
+   "correct": 0
+  }
+ ]
+}

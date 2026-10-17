@@ -1,0 +1,12 @@
+{
+ "bin-width": {
+  "file": "figures/bin-width.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Minutes 30 students spent on homework, from 12 to 75, shown three ways on the same scale from 10 to 80 minutes. Top: a dotplot with one dot per student. Middle: a histogram with bins 5 minutes wide, which shows more detail. Bottom: a histogram with bins 10 minutes wide, which is smoother; the tallest bin, 30 to 40 minutes, holds 9 students."
+ }
+}

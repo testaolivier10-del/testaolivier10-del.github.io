@@ -1,0 +1,41 @@
+<p>Statistics formulas are recipes. Each one tells you which numbers to combine and in what order. This page is about the order: how to substitute numbers into a formula and evaluate it exactly as written, including sums and square roots.</p>
+
+<h2>Order of operations</h2>
+<p>Every reader of a formula must get the same answer, so there is an agreed order:</p>
+<ol>
+<li>Anything grouped: brackets, the top and bottom of a fraction bar, everything under a square root.</li>
+<li>Powers and roots.</li>
+<li>Multiplication and division, left to right.</li>
+<li>Addition and subtraction, left to right.</li>
+</ol>
+<p>So $6 + 4 \times 3 = 6 + 12 = 18$, not 30. And a fraction bar works like brackets: in $\frac{2 + 4 + 9}{3}$ the whole top is added before dividing, giving $\frac{15}{3} = 5$. On a calculator you must type those brackets yourself: <code>(2 + 4 + 9)/3</code>. Typing <code>2 + 4 + 9/3</code> divides only the 9 and gives 9.</p>
+<p>Squares need care with negative numbers. $(-3)^2 = (-3)(-3) = 9$: a square is never negative. On many calculators, <code>-3^2</code> gives $-9$, because the square is done before the minus sign. Type <code>(-3)^2</code>.</p>
+
+<h2>Square roots</h2>
+<p>The square root $\sqrt{a}$ is the nonnegative number whose square is $a$. $\sqrt{0.25} = 0.5$ because $0.5 \times 0.5 = 0.25$. Notice that the square root of a number between 0 and 1 is <i>larger</i> than the number.</p>
+<p>A square root covers everything under its bar. $\sqrt{\frac{26}{2}} = \sqrt{13} \approx 3.61$, but $\frac{\sqrt{26}}{2} \approx 2.55$. On a calculator, put the whole quantity in the root’s brackets: <code>sqrt(26/2)</code>.</p>
+
+<h2>The summation sign</h2>
+<p>The summation sign, the Greek capital letter $\sum$, stands for "add up". For values $x_1 = 3$, $x_2 = 5$, $x_3 = 10$:</p>
+<ul>
+<li>$\sum x_i = 3 + 5 + 10 = 18$.</li>
+<li>$\sum (x_i - 6)$: subtract 6 from each value, then add: $(-3) + (-1) + 4 = 0$.</li>
+<li>$\sum (x_i - 6)^2$: subtract, square each result, then add: $9 + 1 + 16 = 26$.</li>
+</ul>
+<p>The order matters: in $\sum (x_i - 6)^2$ the squaring happens to each term <i>before</i> the adding.</p>
+
+<h2>A formula from start to finish</h2>
+<figure id="fig-dist" data-fig="distances-from-average"><figcaption>The values 2, 4 and 9, their average 5, and the distance of each value from the average.</figcaption></figure>
+<div class="worked">
+<p><b>Evaluate in order.</b> Find $\sqrt{\frac{(2 - 5)^2 + (4 - 5)^2 + (9 - 5)^2}{3 - 1}}$.</p>
+<p>Brackets: $2 - 5 = -3$, $4 - 5 = -1$, $9 - 5 = 4$.</p>
+<p>Powers: $(-3)^2 = 9$, $(-1)^2 = 1$, $4^2 = 16$.</p>
+<p>The top of the fraction: $9 + 1 + 16 = 26$. The bottom: $3 - 1 = 2$.</p>
+<p>Divide: $\frac{26}{2} = 13$.</p>
+<p>Square root last: $\sqrt{13} \approx 3.61$.</p>
+<p>On a calculator in one line: <code>sqrt(((2-5)^2 + (4-5)^2 + (9-5)^2)/(3-1))</code>.</p>
+</div>
+<p>Notice what the distances do without squares: $-3 - 1 + 4 = 0$. Distances from the average always add to 0, because the values above and below balance. Squaring makes every distance count as positive, which is why the formula squares before adding. You will meet this exact formula, and the reason for the $3 - 1$ on the bottom, in the next topic.</p>
+
+<h2>Show your work as the exam asks</h2>
+<p>On the AP® Statistics exam, a calculation earns full credit when it shows three things: the formula, the numbers put into it, and the result. Write $\frac{62 - 50}{8} = \frac{12}{8} = 1.5$, not just 1.5. If a number is wrong, a grader can then see that your method was right.</p>

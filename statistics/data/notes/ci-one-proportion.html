@@ -1,0 +1,54 @@
+<p>A point estimate such as $\hat{p} = 0.62$ is our best single guess, but it is almost never exactly right. A <b>confidence interval</b> gives a range of values instead, built so that the method captures the true proportion a known percent of the time. This topic is about building one correctly; the next topic is about what it lets you say.</p>
+
+<h2>The idea: go out a fixed distance on each side</h2>
+<p>From the last topic, when the conditions hold, $\hat{p}$ is approximately normal with mean $p$ and standard deviation $\sqrt{p(1 - p)/n}$. In 95% of random samples, $\hat{p}$ lands within 1.96 standard deviations of $p$. Turn that sentence around: in 95% of samples, $p$ is within 1.96 standard deviations of $\hat{p}$. So if we go 1.96 standard deviations out on each side of whatever $\hat{p}$ we get, 95% of the intervals we build that way will reach across $p$.</p>
+<figure id="fig-ci" data-fig="ci-construction"><figcaption>Sample proportions that land in the middle 95% of the sampling distribution give intervals that capture p; the ones in the tails give intervals that miss.</figcaption></figure>
+<p>Every confidence interval in this course has the same shape, which is on the reference sheet:</p>
+<p style="text-align:center"><b>statistic ± (critical value)(standard error of the statistic)</b></p>
+<p>For one proportion that is</p>
+<p>$$\hat{p} \pm z^*\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}$$</p>
+
+<h2>The three pieces</h2>
+<ul>
+<li><b>The point estimate</b> $\hat{p}$ is the center of the interval.</li>
+<li><b>The standard error</b>, $\text{SE} = \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}$. The true standard deviation needs $p$, which we do not know, so we substitute $\hat{p}$. A standard deviation estimated from the data is called a standard error.</li>
+<li><b>The critical value</b> $z^*$ comes from the <b>confidence level</b> $C$. It is the value with an area of $C$ between $-z^*$ and $z^*$ under the standard normal curve, so each tail holds $\frac{1 - C}{2}$.</li>
+</ul>
+<p>The product $z^* \cdot \text{SE}$ is the <b>margin of error</b>, $\text{ME}$: how far the interval reaches on each side of $\hat{p}$.</p>
+<table>
+<thead><tr><th scope="col">Confidence level</th><th scope="col">Area in each tail</th><th scope="col">Area below $z^*$</th><th scope="col">$z^*$</th></tr></thead>
+<tbody>
+<tr><td>90%</td><td>0.05</td><td>0.95</td><td>1.645</td></tr>
+<tr><td>95%</td><td>0.025</td><td>0.975</td><td>1.960</td></tr>
+<tr><td>98%</td><td>0.01</td><td>0.99</td><td>2.326</td></tr>
+<tr><td>99%</td><td>0.005</td><td>0.995</td><td>2.576</td></tr>
+</tbody>
+</table>
+<p>Find $z^*$ with an inverse normal command using the area below it, or from the bottom row of Table B. A common slip is to use 0.90 as the area for a 90% interval: that leaves all 10% in one tail.</p>
+
+<h2>Conditions for inference</h2>
+<p>Check three conditions, in words and with numbers, before you calculate.</p>
+<ul>
+<li><b>Random:</b> the data come from a random sample (or a randomized experiment). Quote the problem: "a random sample of 400 students."</li>
+<li><b>10%:</b> when sampling without replacement, $n$ is at most 10% of the population: "400 is less than 10% of the 28,000 students."</li>
+<li><b>Large counts:</b> at least 10 successes and 10 failures in the sample: $n\hat{p} \ge 10$ and $n(1 - \hat{p}) \ge 10$. For an interval we use the sample's counts, because $p$ is unknown.</li>
+</ul>
+<p>The procedure's full name is the <b>one-sample z interval for a proportion</b> (some books say one-proportion z interval). Name it on the exam; "z interval" alone is incomplete.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> A random sample of 400 of a university's 28,000 students finds that 248 regularly skip breakfast. Construct a 95% confidence interval for the proportion of all students at the university who regularly skip breakfast.</p>
+<p><b>Procedure.</b> One-sample z interval for a proportion, where $p$ is the true proportion of all students at the university who regularly skip breakfast.</p>
+<p><b>Conditions.</b> Random: a random sample of 400 students. 10%: 400 is less than 10% of 28,000 (2,800). Large counts: 248 skip and 152 do not, both at least 10.</p>
+<p><b>Calculate.</b> $\hat{p} = \frac{248}{400} = 0.62$. $\text{SE} = \sqrt{\frac{0.62(0.38)}{400}} = 0.0243$. For 95%, $z^* = 1.96$, so $\text{ME} = 1.96(0.0243) = 0.0476$.</p>
+<p>$$0.62 \pm 1.96\sqrt{\frac{0.62(0.38)}{400}} = 0.62 \pm 0.048$$</p>
+<p><b>Answer.</b> The interval runs from 0.572 to 0.668. Technology (a one-proportion z interval) gives the same. Interpreted: we are 95% confident that the interval from 0.572 to 0.668 captures the true proportion of all students at the university who regularly skip breakfast.</p>
+</div>
+<p>Type an interval as "from 0.572 to 0.668" or "(0.572, 0.668)". Never "0.572-0.668", which reads as a subtraction.</p>
+
+<h2>What changes the margin of error</h2>
+<ul>
+<li><b>Sample size:</b> $n$ sits under a square root in the denominator. Four times the sample size halves the margin of error.</li>
+<li><b>Confidence level:</b> more confidence needs a larger $z^*$, so the interval gets longer. A 99% interval reaches farther than a 95% interval from the same data.</li>
+<li><b>Population size:</b> it does not appear, as long as the 10% condition holds.</li>
+</ul>
+<p>To plan a sample size, solve $z^*\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} \le \text{ME}$ for $n$: $n \ge \left(\frac{z^*}{\text{ME}}\right)^2\hat{p}(1 - \hat{p})$. With no earlier estimate, use $\hat{p} = 0.5$, which gives the largest $n$ and so is safe. Always round a sample size up.</p>

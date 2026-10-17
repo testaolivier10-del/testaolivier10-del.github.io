@@ -1,0 +1,71 @@
+{
+ "hook": "Does a short night make you slower the next morning? A sports science class measured 14 students: hours of sleep and reaction time on a screen test. A list of 28 numbers says little. Plot each student as one point, sleep across and reaction time up, and a clear pattern appears at once.",
+ "prereq": [
+  {
+   "q": "In a study of whether study time affects test scores, which is the response variable?",
+   "options": [
+    "Test score",
+    "Study time",
+    "The number of students",
+    "The test date"
+   ],
+   "correct": 0,
+   "why": "The response is the outcome the study measures; study time is the explanatory variable.",
+   "review": "investigative-questions"
+  },
+  {
+   "q": "Which variable is quantitative?",
+   "options": [
+    "Reaction time in milliseconds",
+    "Favorite sport",
+    "Eye color",
+    "Grade (freshman, sophomore, ...)"
+   ],
+   "correct": 0,
+   "why": "A quantitative variable takes numerical values that can be averaged.",
+   "review": "variables"
+  }
+ ],
+ "figure": {
+  "figure": "sleep-reaction",
+  "caption": "Each point is one student. Sleep goes across (explanatory), reaction time up (response). Pattern: strong, negative, linear."
+ },
+ "chain": [
+  {
+   "cause": "Two quantitative variables are measured on the same individuals",
+   "effect": "plot one point per individual: explanatory variable on the horizontal axis, response on the vertical axis"
+  },
+  {
+   "cause": "Look at how $y$ changes as $x$ increases",
+   "effect": "direction: positive (up together), negative (one up, one down) or none"
+  },
+  {
+   "cause": "Look at the shape and the scatter around it",
+   "effect": "form (linear or curved) and strength (how closely points follow the form)"
+  },
+  {
+   "cause": "Look for points away from the pattern",
+   "effect": "unusual features: outliers and clusters, which deserve a reason, and then describe it all in context"
+  }
+ ],
+ "ideas": [
+  "A scatterplot shows the relationship between two quantitative variables measured on the same individuals.",
+  "Describe direction, form, strength and unusual features, in context: \"a strong, negative, linear association between hours of sleep and reaction time, with no outliers\".",
+  "Strength is how closely points follow the pattern, not how steep it is; a curved pattern can be strong.",
+  "Association is not causation: observational data show a pattern, not its cause."
+ ],
+ "misconception": {
+  "wrong": "A steep trend in a scatterplot means a strong association.",
+  "right": "Steepness and strength are different. Strength is how tightly the points cluster around the pattern; a gentle trend with little scatter is stronger than a steep trend with lots of scatter."
+ },
+ "check": [
+  "stat-scatterplots-1",
+  "stat-scatterplots-2",
+  "stat-scatterplots-3",
+  "stat-scatterplots-4",
+  "stat-scatterplots-15",
+  "stat-scatterplots-16"
+ ],
+ "summary": "A scatterplot plots two quantitative variables, explanatory on the horizontal axis and response on the vertical. Describe what you see with four features in context: direction, form, strength and unusual features such as outliers. A pattern in observational data shows association, not cause.",
+ "topic": "scatterplots"
+}

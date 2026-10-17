@@ -1,0 +1,11 @@
+{
+ "residual-plot-pair": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep",
+  "ext": "svg",
+  "w": 620,
+  "h": 640,
+  "alt": "Top: used car age against price with a regression line; the points bend away from it. Bottom: the residual plot, with residuals positive for the newest cars, negative in the middle and positive again for the oldest, a U shape."
+ }
+}

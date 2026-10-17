@@ -1,0 +1,73 @@
+{
+ "topic": "ci-one-proportion-claims",
+ "hook": "A school board says more than 60% of parents want a later start time. A newspaper's random sample of 500 parents finds 66% in favor. Is that enough to back the board? The sample is above 60%, but samples bounce around. A confidence interval answers the question, if you know how to read it and what not to say about it.",
+ "prereq": [
+  {
+   "q": "A random sample of 500 gives $\\hat{p} = 0.66$. Which is the 95% confidence interval for $p$?",
+   "options": [
+    "$0.66 \\pm 1.96\\sqrt{\\frac{0.66(0.34)}{500}}$",
+    "$0.66 \\pm 1.645\\sqrt{\\frac{0.66(0.34)}{500}}$",
+    "$0.66 \\pm 1.96\\frac{0.66(0.34)}{500}$",
+    "$0.66 \\pm 1.96\\sqrt{0.66(0.34)}$"
+   ],
+   "correct": 0,
+   "why": "Statistic ± (critical value)(standard error), with $z^* = 1.96$ for 95% and the square root over $\\frac{\\hat{p}(1 - \\hat{p})}{n}$.",
+   "review": "ci-one-proportion"
+  },
+  {
+   "q": "In a 95% confidence interval, what does the critical value 1.96 come from?",
+   "options": [
+    "The middle 95% of the standard normal distribution lies between $-1.96$ and $1.96$",
+    "1.96 is 95% of 2",
+    "The sample proportion is 1.96 standard errors from $p$",
+    "Large counts requires 1.96 successes"
+   ],
+   "correct": 0,
+   "why": "A 95% interval keeps the middle 95% of the standard normal area, leaving 2.5% in each tail.",
+   "review": "ci-one-proportion"
+  }
+ ],
+ "figure": {
+  "figure": "ci-capture-25",
+  "caption": "Twenty-five 95% intervals from random samples when p = 0.60. Each interval is centered at its own sample proportion; most capture p, a few miss."
+ },
+ "chain": [
+  {
+   "cause": "Each random sample gives its own $\\hat{p}$",
+   "effect": "each sample gives its own interval, while the true proportion stays fixed"
+  },
+  {
+   "cause": "The method captures $p$ in about 95% of samples",
+   "effect": "we say we are 95% confident in one interval, because we cannot tell whether it is one of the misses"
+  },
+  {
+   "cause": "A claimed value lies inside the interval",
+   "effect": "it is a plausible value, so the interval gives no convincing evidence against it (and does not prove it)"
+  },
+  {
+   "cause": "The whole interval lies above (or below) a claimed value",
+   "effect": "that value is not plausible, so the interval gives convincing evidence that the parameter is greater (or less) than it"
+  }
+ ],
+ "ideas": [
+  "Interval: \"We are 95% confident that the interval from __ to __ captures the true proportion of all __.\"",
+  "Level: \"If we took many random samples of this size and built a 95% interval from each, about 95% of the intervals would capture the true proportion.\"",
+  "Values inside the interval are <b>plausible</b>. A claim is supported (<b>convincing evidence</b>) only when the whole interval is on the claimed side.",
+  "Never: \"95% probability that $p$ is in the interval\", \"95% of the data\", or anything about the sample proportion.",
+  "Higher confidence gives a longer interval, so more values stay plausible."
+ ],
+ "misconception": {
+  "wrong": "The claimed value 0.70 is inside the interval, so the interval shows the claim is true.",
+  "right": "Inside the interval means plausible, not proven: many other values are plausible too. Say the interval does not give convincing evidence against the claim."
+ },
+ "check": [
+  "stat-ci-one-proportion-claims-1",
+  "stat-ci-one-proportion-claims-2",
+  "stat-ci-one-proportion-claims-3",
+  "stat-ci-one-proportion-claims-6",
+  "stat-ci-one-proportion-claims-7",
+  "stat-ci-one-proportion-claims-8",
+  "stat-ci-one-proportion-claims-13"
+ ],
+ "summary": "Interpret an interval with its level, its ends and the parameter in context; interpret the level as the long-run capture rate of the method. Values inside the interval are plausible. An interval gives convincing evidence for a claim like \"greater than 0.60\" only when every value in it is greater than 0.60; a claimed value inside the interval is plausible, which is not the same as proven."
+}

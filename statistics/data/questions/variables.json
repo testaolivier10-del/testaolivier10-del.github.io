@@ -1,0 +1,495 @@
+{
+ "stimuli": {
+  "variables-s1": {
+   "kind": "table",
+   "title": "Records for five shelter dogs",
+   "text": "An animal shelter keeps one record for each dog in its care. Part of the table is below (invented data).",
+   "table": {
+    "caption": "Shelter records",
+    "cols": [
+     "Dog",
+     "Size group",
+     "Vaccinated?",
+     "Kennel number",
+     "Times adopted before",
+     "Weight (kg)"
+    ],
+    "rows": [
+     [
+      "Milo",
+      "small",
+      "yes",
+      "14",
+      "0",
+      "6.8"
+     ],
+     [
+      "Nala",
+      "large",
+      "no",
+      "3",
+      "1",
+      "29.4"
+     ],
+     [
+      "Otis",
+      "medium",
+      "yes",
+      "22",
+      "2",
+      "15.1"
+     ],
+     [
+      "Pip",
+      "small",
+      "yes",
+      "7",
+      "0",
+      "4.9"
+     ],
+     [
+      "Rosie",
+      "large",
+      "yes",
+      "18",
+      "1",
+      "33.0"
+     ]
+    ]
+   }
+  },
+  "variables-s2": {
+   "kind": "table",
+   "title": "Seniors with part-time jobs",
+   "html": "<p>District records show that 31% of the 1,250 seniors in a school district have a part-time job. A reporter chooses 80 of the district’s seniors at random and finds that 26% of the 80 have a part-time job. Those with jobs work an average of 14 hours a week (invented data).</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "stat-variables-1",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What are the observational units in this table?",
+   "why": {
+    "correct": "Each row describes one dog, so the dogs are the observational units.",
+    "options": [
+     "Kennel number is one of the variables recorded about each dog; the rows are dogs.",
+     "Right: each row is one dog, and every variable is recorded for each dog.",
+     "Those are values of one variable, size group.",
+     "Columns are variables. Observational units are what each row describes."
+    ]
+   },
+   "stimulus": "variables-s1",
+   "options": [
+    "The kennels where the dogs sleep at the shelter",
+    "The dogs",
+    "The size groups small, medium and large",
+    "The columns of the table, one for each characteristic"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-variables-2",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which variable is categorical even though its values are numbers?",
+   "why": {
+    "correct": "Kennel numbers name places; doing arithmetic with them makes no sense, so the variable is categorical.",
+    "options": [
+     "Weight is a measured amount, so it is quantitative.",
+     "A count is quantitative: 2 adoptions is twice as many as 1.",
+     "This is categorical, but its values are words, not numbers.",
+     "Right: a kennel number is a label. Averaging two kennel numbers gives nothing useful."
+    ]
+   },
+   "stimulus": "variables-s1",
+   "options": [
+    "Weight in kilograms, measured on a scale",
+    "Times adopted before, a count for each dog",
+    "Vaccinated?, recorded as a yes or a no",
+    "Kennel number"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-variables-3",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How should \"Times adopted before\" be classified?",
+   "why": {
+    "correct": "A count is quantitative, and since it takes whole-number values with gaps between them, it is discrete.",
+    "options": [
+     "Right: it is a count, and counts take separate whole-number values.",
+     "A count jumps from 0 to 1 to 2; it does not take every value in between.",
+     "Having few values does not make a variable categorical; these values are amounts.",
+     "Every variable is recorded for each dog. What matters is whether the values are amounts."
+    ]
+   },
+   "stimulus": "variables-s1",
+   "options": [
+    "Quantitative and discrete",
+    "Quantitative and continuous, like any measurement",
+    "Categorical, because it takes just a few different values",
+    "Categorical, because it is recorded for each dog"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-variables-4",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which variable is quantitative and continuous?",
+   "why": {
+    "correct": "A continuous variable is measured and can take any value in an interval. Weight is one.",
+    "options": [
+     "A count is discrete: no dog has been adopted 1.5 times.",
+     "Kennel numbers are labels, so the variable is categorical.",
+     "Right: weight is measured and can take any value in a range, such as 15.1 or 15.13 kg.",
+     "Size group puts dogs into groups, so it is categorical even though the groups have an order."
+    ]
+   },
+   "stimulus": "variables-s1",
+   "options": [
+    "Times adopted before, which takes the values 0, 1 and 2",
+    "Kennel number, which runs from 1 up to about 25",
+    "Weight (kg)",
+    "Size group, which goes from small to medium to large"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-variables-5",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In this situation, what is the 31%?",
+   "why": {
+    "correct": "A parameter is a number that describes a population. The 31% describes all 1,250 seniors.",
+    "options": [
+     "A statistic describes a sample. The 31% comes from records on every senior.",
+     "A variable is a characteristic of each senior, such as whether that senior has a job.",
+     "Right: 31% describes the whole population, all 1,250 seniors in the district.",
+     "Observational units are the seniors themselves, not a number about them."
+    ]
+   },
+   "stimulus": "variables-s2",
+   "options": [
+    "A statistic, because it is written as a percent",
+    "A variable, because it can change from year to year",
+    "A parameter",
+    "An observational unit of the reporter’s study"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-variables-6",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In this situation, what is the 26%?",
+   "why": {
+    "correct": "A statistic is a number that describes a sample. The 26% describes the 80 seniors chosen.",
+    "options": [
+     "Right: 26% describes the sample of 80 seniors the reporter asked.",
+     "It describes only the 80 seniors in the sample, so it is a statistic.",
+     "Having a job is the categorical variable; 26% is a number that summarizes it.",
+     "The population is the 1,250 seniors; 26% is a number found from the sample."
+    ]
+   },
+   "stimulus": "variables-s2",
+   "options": [
+    "A statistic",
+    "A parameter, because it describes the district’s seniors",
+    "A categorical variable, because \"has a job\" is yes or no",
+    "The population that the reporter wants to learn about"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-variables-7",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A second reporter chooses a different 80 seniors at random. Which number would most likely be different?",
+   "why": {
+    "correct": "A parameter stays fixed. A statistic changes from one sample to the next because different individuals are chosen.",
+    "options": [
+     "The 31% describes the population, which is the same no matter who is sampled.",
+     "The district size does not depend on who the reporter chooses.",
+     "Both reporters chose 80 seniors; the size of the sample is set in advance.",
+     "Right: a statistic depends on which seniors are in the sample, so it changes from sample to sample."
+    ]
+   },
+   "stimulus": "variables-s2",
+   "options": [
+    "The 31% of the district’s seniors who have a job",
+    "The number of seniors in the school district, 1,250",
+    "The number of seniors that each reporter asks, which is 80",
+    "The percent of the 80 seniors who have a job"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-variables-8",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "multi",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these numbers are statistics? Select all that apply.",
+   "why": {
+    "correct": "Numbers found from the 80 sampled seniors are statistics; numbers about all 1,250 seniors are parameters.",
+    "options": [
+     "Right: it describes the sample.",
+     "Right: the 14 hours describes the seniors in the sample who have jobs, so it is a statistic.",
+     "This describes the population, so it is a parameter.",
+     "This describes the population (and is unknown), so it is a parameter."
+    ]
+   },
+   "stimulus": "variables-s2",
+   "options": [
+    "26% of the 80 seniors have a part-time job",
+    "Sampled seniors with jobs work an average of 14 hours a week",
+    "31% of the district’s seniors have a part-time job",
+    "The average weekly hours of the district’s working seniors"
+   ],
+   "correct": [0, 1]
+  },
+  {
+   "id": "stat-variables-9",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which variable is quantitative?",
+   "why": {
+    "correct": "A quantitative variable takes numerical values that are amounts. Height is one; jersey numbers and area codes are labels.",
+    "options": [
+     "Jersey numbers are labels; the average jersey number tells you nothing.",
+     "Right: height is a measured amount, and averaging heights makes sense.",
+     "Favorite sport puts people into groups, so it is categorical.",
+     "Area codes are labels for places, so the variable is categorical."
+    ]
+   },
+   "options": [
+    "Jersey number printed on the back of each player’s shirt",
+    "Height in centimeters",
+    "Favorite sport, chosen from a list of six sports",
+    "Phone area code, such as 612 or 858, for each player"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-variables-10",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A biologist nets fish in a lake and records each fish’s species and length. What are the observational units?",
+   "why": {
+    "correct": "Observational units are the individuals data describe. Each record describes one fish.",
+    "options": [
+     "Right: species and length are recorded for each fish.",
+     "Species is a variable recorded about each fish.",
+     "Length is another variable; its values are numbers.",
+     "The nets are equipment; data are recorded about the fish."
+    ]
+   },
+   "options": [
+    "The fish",
+    "The species of fish that live in the lake",
+    "The lengths, measured in centimeters",
+    "The nets the biologist uses to catch the fish"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-variables-11",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which variable is discrete?",
+   "why": {
+    "correct": "A discrete variable is a quantitative variable that takes separate values, usually counts.",
+    "options": [
+     "Time is measured and can take any value in a range, so it is continuous.",
+     "Height is continuous; rounding the measurement does not change what kind of variable it is.",
+     "Right: a count takes whole-number values with gaps, so it is discrete.",
+     "Favorite color is categorical, not quantitative."
+    ]
+   },
+   "options": [
+    "The time a student takes to run a mile, in seconds",
+    "A student’s height, measured to the nearest millimeter",
+    "The number of texts a student sends in a day",
+    "A student’s favorite color, such as blue or green"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-variables-12",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the distribution of a variable?",
+   "why": {
+    "correct": "A distribution describes all the values a variable takes and how often each value, or range of values, occurs.",
+    "options": [
+     "The most common value is one feature of a distribution, not the whole distribution.",
+     "Right: a distribution tells what values occur and how often.",
+     "That is the set of observational units, not the distribution of a variable.",
+     "That is a measure of how far the values reach, one feature of the distribution."
+    ]
+   },
+   "options": [
+    "The single value that the variable takes most often in the data",
+    "The values it takes and how often it takes each one",
+    "The list of individuals for whom the variable was recorded",
+    "The difference between the variable’s largest and smallest values"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-variables-13",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A league’s official roster lists every player. From it, the average height of all players in the league is 191 cm. A fan measures 12 players and finds an average of 189 cm. Which is correct?",
+   "why": {
+    "correct": "A parameter describes a population (the whole league); a statistic describes a sample (the 12 players).",
+    "options": [
+     "This reverses them: the roster covers the whole league, the population.",
+     "Whether a number is a parameter or a statistic depends on the group it describes, not on how it is computed.",
+     "The 189 describes only the 12 measured players, a sample.",
+     "Right: 191 describes every player in the league; 189 describes the 12 measured."
+    ]
+   },
+   "options": [
+    "191 cm is a statistic and 189 cm is a parameter",
+    "Both are statistics, because both are averages of heights",
+    "Both are parameters, because both describe league players",
+    "191 cm is a parameter and 189 cm is a statistic"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-variables-14",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which is a variable, not a value of a variable?",
+   "why": {
+    "correct": "A variable is a characteristic that can differ from one individual to the next; brown, 1.62 m and yes are values.",
+    "options": [
+     "Brown is one value the variable eye color can take.",
+     "Right: eye color is a characteristic recorded for each person.",
+     "1.62 meters is a value of the variable height.",
+     "Yes is one value of a yes or no variable."
+    ]
+   },
+   "options": [
+    "Brown, which is what one student wrote down",
+    "Eye color",
+    "1.62 meters, the height of one student in the class",
+    "Yes, one student’s answer to \"Do you play an instrument?\""
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-variables-15",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "multi",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A survey records five things about each student. Which variables are categorical? Select all that apply.",
+   "why": {
+    "correct": "Categorical variables put individuals into groups; quantitative variables record amounts. Grade level is usually treated as a group label here.",
+    "options": [
+     "Right: grade level sorts students into groups. It is coded with numbers, but the analysis counts students in each grade.",
+     "Right: yes or no puts each student in a group.",
+     "Minutes are a measured amount, so this is quantitative.",
+     "A count is quantitative.",
+     "Hours of sleep are a measured amount, so this is quantitative."
+    ]
+   },
+   "options": [
+    "Grade level (9, 10, 11 or 12)",
+    "Whether the student owns a bike",
+    "Minutes spent getting to school",
+    "Number of siblings",
+    "Hours of sleep last night"
+   ],
+   "correct": [0, 1]
+  },
+  {
+   "id": "stat-variables-16",
+   "unit": "unit-1",
+   "topic": "variables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why do researchers usually use a statistic to learn about a parameter?",
+   "why": {
+    "correct": "A parameter describes the whole population and is usually unknown. A statistic, from a sample, is used to estimate it.",
+    "options": [
+     "A statistic and a parameter are often found by the same formula; they differ in the group they describe.",
+     "It is the statistic that changes from sample to sample; the parameter is fixed.",
+     "A sample is smaller than the population, so a statistic describes fewer individuals.",
+     "Right: measuring every individual is rarely possible, so a statistic from a sample estimates the parameter."
+    ]
+   },
+   "options": [
+    "Statistics are calculated with a different and more accurate formula",
+    "A parameter changes each time a new sample is taken",
+    "A statistic describes more individuals than a parameter does",
+    "The parameter is usually unknown, because it needs data on the whole population"
+   ],
+   "correct": 3
+  }
+ ]
+}

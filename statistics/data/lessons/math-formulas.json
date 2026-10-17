@@ -1,0 +1,77 @@
+{
+ "topic": "math-formulas",
+ "hook": "In the next topic you will meet formulas like $\\sqrt{\\frac{\\sum (x_i - 5)^2}{n - 1}}$. They look fierce, but each is a short recipe: subtract, square, add, divide, take a root. Doing the steps in the right order is the whole skill, and a calculator only helps if you type the brackets it needs.",
+ "prereq": [
+  {
+   "q": "What is $\\frac{18}{24}$ as a decimal?",
+   "options": [
+    "0.75",
+    "1.33",
+    "0.18",
+    "0.6"
+   ],
+   "correct": 0,
+   "why": "Divide the top by the bottom: 18 ÷ 24 = 0.75.",
+   "review": "math-fractions-percents"
+  },
+  {
+   "q": "A distribution has a long tail toward larger values. What is its shape?",
+   "options": [
+    "Skewed right",
+    "Skewed left",
+    "Symmetric",
+    "Uniform"
+   ],
+   "correct": 0,
+   "why": "Skew is named for the tail.",
+   "review": "describing-distributions"
+  }
+ ],
+ "figure": {
+  "figure": "distances-from-average",
+  "caption": "The values 2, 4 and 9 with their average, 5. The distances from the average are −3, −1 and 4."
+ },
+ "chain": [
+  {
+   "cause": "A formula is a recipe written in symbols",
+   "effect": "substitute the numbers for the letters first"
+  },
+  {
+   "cause": "Brackets and fraction bars group terms",
+   "effect": "work out what is inside them before anything else"
+  },
+  {
+   "cause": "Then powers and roots, then multiplication and division, then addition and subtraction",
+   "effect": "every reader of the formula gets the same answer"
+  },
+  {
+   "cause": "A square root or fraction bar covers a whole expression",
+   "effect": "type it on a calculator with brackets around everything it covers"
+  }
+ ],
+ "ideas": [
+  "<b>Order of operations</b>: brackets (and anything grouped by a fraction bar or root) first, then powers and roots, then multiplication and division, then addition and subtraction.",
+  "A <b>square root</b> $\\sqrt{a}$ is the nonnegative number whose square is $a$: $\\sqrt{0.25} = 0.5$. Squares are never negative: $(-3)^2 = 9$.",
+  "<b>Summation</b>: $\\sum x_i$ says add every value; $\\sum (x_i - 5)^2$ says subtract 5 from each value, square each result, then add.",
+  "Show the work the way the exam asks: the formula, the numbers substituted, then the answer."
+ ],
+ "misconception": {
+  "wrong": "$2 + 4 + 9/3 = 5$, because that is the average of 2, 4 and 9.",
+  "right": "Without brackets only the 9 is divided: $2 + 4 + 3 = 9$. The average is $(2 + 4 + 9)/3 = 5$; the fraction bar groups the whole top."
+ },
+ "check": [
+  "stat-math-formulas-1",
+  "stat-math-formulas-2",
+  "stat-math-formulas-3",
+  "stat-math-formulas-5",
+  "stat-math-formulas-6",
+  "stat-math-formulas-8"
+ ],
+ "summary": "Evaluate a formula by substituting values, then following the order of operations: grouped terms first (brackets, fraction bars, roots), then powers, then multiplication and division, then addition and subtraction. $\\sum$ adds a list of terms, and a square root covers everything under it, so type brackets on a calculator.",
+ "connections": [
+  {
+   "href": "../notes/summary-statistics.html",
+   "label": "Next: summary statistics (1.7)"
+  }
+ ]
+}

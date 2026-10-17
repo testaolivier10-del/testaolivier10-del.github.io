@@ -1,0 +1,523 @@
+{
+ "stimuli": {
+  "conditional-probability-s1": {
+   "kind": "table",
+   "title": "Main news source by age group",
+   "set": "probability",
+   "text": "A random sample of 400 adults in a city were asked their main source of news. One of these adults is chosen at random (invented data).",
+   "table": {
+    "caption": "Age group and main news source for 400 adults",
+    "cols": [
+     "Age group",
+     "Online",
+     "TV",
+     "Print",
+     "Total"
+    ],
+    "rows": [
+     [
+      "Under 40",
+      "132",
+      "66",
+      "22",
+      "220"
+     ],
+     [
+      "40 and over",
+      "54",
+      "90",
+      "36",
+      "180"
+     ],
+     [
+      "Total",
+      "186",
+      "156",
+      "58",
+      "400"
+     ]
+    ]
+   }
+  },
+  "conditional-probability-s2": {
+   "kind": "diagram",
+   "title": "A screening test",
+   "figure": "u2-screening-tree",
+   "text": "A screening test is used on a large population in which 4% of people have a certain condition. For people with the condition, the test is positive 90% of the time. For people without it, the test is positive 6% of the time. One person from the population is tested."
+  }
+ },
+ "items": [
+  {
+   "id": "stat-conditional-probability-1",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the adult gets news mainly online, given that the adult is under 40?",
+   "why": {
+    "correct": "Given under 40, the 220 adults under 40 are the new total: $P(\\text{online} \\mid \\text{under } 40) = \\frac{132}{220} = 0.6$.",
+    "options": [
+     "That is $\\frac{132}{400}$, the joint probability of under 40 and online.",
+     "That is $\\frac{132}{186}$, the probability of under 40 given online: the condition is reversed.",
+     "Right: 132 of the 220 adults under 40.",
+     "That is $\\frac{186}{400}$, the probability of online for everyone."
+    ]
+   },
+   "stimulus": "conditional-probability-s1",
+   "options": [
+    "0.33",
+    "0.710",
+    "0.6",
+    "0.465"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-conditional-probability-2",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Given that the adult gets news mainly from TV, what is the probability that the adult is under 40?",
+   "why": {
+    "correct": "The condition is TV, so divide by the 156 TV viewers: $P(\\text{under } 40 \\mid \\text{TV}) = \\frac{66}{156} \\approx 0.423$.",
+    "options": [
+     "That is $\\frac{66}{220}$, the probability of TV given under 40: the condition is reversed.",
+     "That is $\\frac{66}{400}$, a joint probability.",
+     "That is $\\frac{220}{400}$, the probability of under 40 for everyone.",
+     "Right: 66 of the 156 TV viewers."
+    ]
+   },
+   "stimulus": "conditional-probability-s1",
+   "options": [
+    "0.3",
+    "0.165",
+    "0.55",
+    "0.423"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-conditional-probability-3",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the adult is 40 or over and gets news mainly from print?",
+   "why": {
+    "correct": "This is a joint probability, one cell over all 400: $P(40 \\text{ or over} \\cap \\text{print}) = \\frac{36}{400} = 0.09$.",
+    "options": [
+     "Right: 36 of all 400 adults.",
+     "That is $\\frac{36}{180}$, a conditional probability given 40 or over.",
+     "That is $\\frac{36}{58}$, a conditional probability given print.",
+     "That is $\\frac{58}{400}$, the probability of print for everyone."
+    ]
+   },
+   "stimulus": "conditional-probability-s1",
+   "options": [
+    "0.09",
+    "0.2",
+    "0.621",
+    "0.145"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-conditional-probability-4",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the test is positive?",
+   "why": {
+    "correct": "Add the two branches that end in positive: $P(\\text{positive}) = (0.04)(0.90) + (0.96)(0.06) = 0.036 + 0.0576 = 0.0936$."
+   },
+   "stimulus": "conditional-probability-s2",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.0936,
+    "mistakes": [
+     {
+      "value": 0.036,
+      "why": "That is only the branch for people with the condition. People without it can test positive too: add (0.96)(0.06)."
+     },
+     {
+      "value": 0.96,
+      "why": "That adds the two conditional probabilities without weighting them by how many people are on each branch."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-conditional-probability-5",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Given that the test is positive, what is the probability that the person has the condition?",
+   "why": {
+    "correct": "$P(\\text{condition} \\mid \\text{positive}) = \\frac{P(\\text{condition} \\cap \\text{positive})}{P(\\text{positive})} = \\frac{0.036}{0.0936} \\approx 0.385$."
+   },
+   "stimulus": "conditional-probability-s2",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.38461538461538464,
+    "mistakes": [
+     {
+      "value": 0.9,
+      "why": "That is P(positive | condition), the reverse. The question gives the positive result and asks about the condition."
+     },
+     {
+      "value": 0.036,
+      "why": "That is the joint probability. Divide it by P(positive), 0.0936."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-conditional-probability-6",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "single",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which probability is the 0.90 on the tree?",
+   "why": {
+    "correct": "The second-stage branches are conditional on the first stage: 0.90 is the chance of a positive test given that the person has the condition.",
+    "options": [
+     "That reverses the condition; it is about 0.385, not 0.90.",
+     "P(positive) is 0.0936; it adds two branches.",
+     "The joint probability multiplies along the path: 0.036.",
+     "Right: on the branch that starts from \"condition\"."
+    ]
+   },
+   "stimulus": "conditional-probability-s2",
+   "options": [
+    "$P(\\text{condition} \\mid \\text{positive})$",
+    "$P(\\text{positive})$",
+    "$P(\\text{condition} \\cap \\text{positive})$",
+    "$P(\\text{positive} \\mid \\text{condition})$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-conditional-probability-7",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write an expression for the probability that the person has the condition and tests positive.",
+   "why": {
+    "correct": "Multiplication rule: $P(\\text{condition} \\cap \\text{positive}) = P(\\text{condition}) \\cdot P(\\text{positive} \\mid \\text{condition}) = (0.04)(0.90) = 0.036$."
+   },
+   "stimulus": "conditional-probability-s2",
+   "setup": {
+    "answer": "0.04*0.90",
+    "bind": {},
+    "mustUse": [
+     "0.04",
+     "0.9"
+    ],
+    "mistakes": [
+     {
+      "expr": "0.04*0.10",
+      "why": "0.10 is the chance of a negative test for people with the condition. The path to \"positive\" uses 0.90."
+     },
+     {
+      "expr": "0.90",
+      "why": "That is the conditional probability alone. Multiply by 0.04, the chance of being on that branch."
+     },
+     {
+      "expr": "0.04*0.06",
+      "why": "0.06 belongs to the people without the condition. Follow the \"condition\" branch, then \"positive\"."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-conditional-probability-8",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The test catches 90% of people with the condition, yet a positive result means only about a 38.5% chance of having it. Why?",
+   "why": {
+    "correct": "False positives come from the 96% without the condition: 0.0576 of everyone, more than the 0.036 true positives. So most positive results belong to people without the condition.",
+    "options": [
+     "The test is right 90% of the time for them.",
+     "Right: 0.0576 against 0.036.",
+     "Paths multiply, and that was done correctly.",
+     "It can and does: the two numbers condition on different events."
+    ]
+   },
+   "stimulus": "conditional-probability-s2",
+   "options": [
+    "The test is wrong 90% of the time for people with the condition",
+    "Most people do not have it, so false positives outnumber true positives",
+    "The tree adds the probabilities along each path instead of multiplying",
+    "A 38.5% chance is impossible when the test catches 90% of cases"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-conditional-probability-9",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "single",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which is the rule for a conditional probability?",
+   "why": {
+    "correct": "Given the condition, its outcomes are the new total: divide the joint probability by the probability of the condition, the event after the bar.",
+    "options": [
+     "That divides by the probability of the event before the bar, which gives the reverse conditional probability.",
+     "A product is not a conditional probability.",
+     "Right: the joint probability over the probability of the condition.",
+     "This leaves out the joint event entirely."
+    ]
+   },
+   "options": [
+    "$P(A \\mid B) = \\frac{P(A \\cap B)}{P(A)}$",
+    "$P(A \\mid B) = P(A) \\cdot P(B)$",
+    "$P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}$",
+    "$P(A \\mid B) = \\frac{P(B)}{P(A)}$"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-conditional-probability-10",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bag has 5 red and 3 blue tokens. Two tokens are drawn at random without replacement. What is the probability that both are red?",
+   "why": {
+    "correct": "Multiplication rule: $P(\\text{1st red}) \\cdot P(\\text{2nd red} \\mid \\text{1st red}) = \\frac{5}{8} \\cdot \\frac{4}{7} = \\frac{20}{56} \\approx 0.357$. After one red is gone, 4 of the 7 tokens left are red."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.3571428571428571,
+    "mistakes": [
+     {
+      "value": 0.390625,
+      "why": "That uses $\\frac{5}{8}$ twice, as if the first token went back. Without replacement, the second draw is from 7 tokens, 4 of them red."
+     },
+     {
+      "value": 0.3125,
+      "why": "After one token is drawn, 7 remain, so the second fraction is $\\frac{4}{7}$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-conditional-probability-11",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "At a store, 40% of customers use a coupon, and 10% of customers both use a coupon and spend more than \\$50. Given that a customer uses a coupon, what is the probability that the customer spends more than \\$50?",
+   "why": {
+    "correct": "$P(\\text{over } \\$50 \\mid \\text{coupon}) = \\frac{P(\\text{over } \\$50 \\cap \\text{coupon})}{P(\\text{coupon})} = \\frac{0.10}{0.40} = 0.25$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.25,
+    "mistakes": [
+     {
+      "value": 0.1,
+      "why": "That is the joint probability. Divide it by P(coupon), 0.40."
+     },
+     {
+      "value": 0.04,
+      "why": "That multiplies the two numbers. A conditional probability divides the joint probability by the probability of the condition."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-conditional-probability-12",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A report says 80% of drivers injured in crashes were wearing seat belts, and a reader concludes that seat belts are dangerous. What is the flaw?",
+   "why": {
+    "correct": "The 80% is P(belt | injured). Most drivers wear belts, so most injured drivers will too. The safety question is P(injured | belt) compared with P(injured | no belt).",
+    "options": [
+     "A large share is expected because most drivers wear belts.",
+     "Right: compare P(injured | belt) with P(injured | no belt).",
+     "80% is already a share; the problem is which group it is a share of.",
+     "A belted driver can be injured, so these events overlap."
+    ]
+   },
+   "options": [
+    "There is no flaw: 80% of the injured drivers is a large share",
+    "It reverses the condition: the question is the injury rate for belted drivers",
+    "The 80% should have been divided by the number of crashes in the report",
+    "Seat belts and injuries are mutually exclusive, so 80% is impossible"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-conditional-probability-13",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a survey of 300 adults, 120 have a pet, and 45 of the pet owners exercise every day. Write an expression for the probability that a randomly chosen pet owner from the survey exercises every day.",
+   "why": {
+    "correct": "Given a pet owner, the 120 pet owners are the total: $P(\\text{exercises daily} \\mid \\text{pet}) = \\frac{45}{120} = 0.375$."
+   },
+   "setup": {
+    "answer": "45/120",
+    "bind": {},
+    "mustUse": [
+     "45",
+     "120"
+    ],
+    "mistakes": [
+     {
+      "expr": "45/300",
+      "why": "That is the joint probability over all 300 adults. The person is chosen from the 120 pet owners."
+     },
+     {
+      "expr": "120/300",
+      "why": "That is the probability of owning a pet, not of exercising daily."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-conditional-probability-14",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "At a school, 60% of students ride the bus. Of the bus riders, 25% are late at least once a month; of the other students, 10% are. What is the probability that a randomly chosen student is late at least once a month?",
+   "why": {
+    "correct": "Two branches end in \"late\": $(0.60)(0.25) + (0.40)(0.10) = 0.15 + 0.04 = 0.19$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.19,
+    "mistakes": [
+     {
+      "value": 0.35,
+      "why": "That adds the conditional rates without weighting by 0.60 and 0.40, the shares on each branch."
+     },
+     {
+      "value": 0.15,
+      "why": "That is only the bus riders who are late. Add the late students who do not ride the bus, (0.40)(0.10)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-conditional-probability-15",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At a school, 60% of students ride the bus. Of the bus riders, 25% are late at least once a month; of the other students, 10% are. Given that a student is late at least once a month, what is the probability that the student rides the bus?",
+   "why": {
+    "correct": "$P(\\text{bus} \\mid \\text{late}) = \\frac{P(\\text{bus} \\cap \\text{late})}{P(\\text{late})} = \\frac{(0.60)(0.25)}{0.19} = \\frac{0.15}{0.19} \\approx 0.789$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.7894736842105263,
+    "mistakes": [
+     {
+      "value": 0.25,
+      "why": "That is P(late | bus), the reverse condition."
+     },
+     {
+      "value": 0.15,
+      "why": "That is the joint probability. Divide by P(late), 0.19."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-conditional-probability-16",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "conclude",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For the screening test (4% have the condition, 90% positive with it, 6% positive without it), $P(\\text{condition} \\mid \\text{positive}) \\approx 0.385$. Build an interpretation in context.",
+   "why": {
+    "correct": "The condition, after the bar, names the group: people who test positive. Of them, about 38.5% have the condition."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "claim": {
+      "label": "Meaning",
+      "options": [
+       "Of the people who test positive, about 38.5% have the condition",
+       "Of the people who have the condition, about 38.5% test positive",
+       "About 38.5% of all people tested have the condition and test positive"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That reverses the condition. Of people with the condition, 90% test positive.",
+       "2": "That describes a joint probability, which is 0.036."
+      }
+     },
+     "evidence": {
+      "label": "So",
+      "options": [
+       "so a positive result alone is far from certain proof of the condition, and a follow-up test makes sense",
+       "so the test misses most people who have the condition",
+       "so the test is positive for most people"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The test catches 90% of people with the condition.",
+       "2": "Only 0.0936 of people test positive."
+      }
+     }
+    },
+    "model": "Of the people in this population who test positive, about 38.5% actually have the condition, so a positive screening result is far from certain and a follow-up test makes sense.",
+    "write": {
+     "context": [
+      "positive",
+      "condition"
+     ],
+     "parameter": false,
+     "evidence": false,
+     "forbid": []
+    }
+   }
+  }
+ ]
+}

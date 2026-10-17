@@ -1,0 +1,11 @@
+{
+ "random-variable": {
+  "def": "A random variable is a numerical value that depends on the outcome of a chance process, such as the number of people in a randomly chosen car. It is named with a capital letter and defined in context."
+ },
+ "probability-distribution": {
+  "def": "The probability distribution of a random variable gives each of its possible values and the probability of each, as a table, a formula or a probability histogram. The probabilities are from 0 to 1 and add to 1."
+ },
+ "cumulative-probability": {
+  "def": "A cumulative probability is the probability that a random variable is at most a given value, such as $P(X \\le 3)$, found by adding the probabilities of every value up to and including that value."
+ }
+}

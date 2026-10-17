@@ -1,0 +1,12 @@
+{
+ "bar-and-pie": {
+  "file": "figures/bar-and-pie.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 320,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a bar chart of how 250 students get to school, with relative frequency on the vertical axis from 0 to 0.4: Bus 0.38, Car 0.32, Walk 0.18, Bike 0.08, Other 0.04. Right: a pie chart of the same data, with slices Bus 38%, Car 32%, Walk 18%, Bike 8%, Other 4%."
+ }
+}

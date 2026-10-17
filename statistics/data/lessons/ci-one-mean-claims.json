@@ -1,0 +1,71 @@
+{
+ "topic": "ci-one-mean-claims",
+ "hook": "A cereal box says 500 grams. An inspector weighs 30 boxes from one day and gets an interval for the true mean from 493.1 to 498.7 grams. Is the company underfilling, or could this just be chance? A confidence interval answers both questions at once: what the mean probably is, and which claims about it survive.",
+ "prereq": [
+  {
+   "q": "A 95% t interval for a mean is from 5.60 to 8.00. What is its margin of error?",
+   "options": [
+    "1.20",
+    "2.40",
+    "6.80",
+    "0.60"
+   ],
+   "correct": 0,
+   "why": "The margin of error is half the width: $\\frac{8.00 - 5.60}{2} = 1.20$.",
+   "review": "ci-one-mean"
+  },
+  {
+   "q": "A value inside a confidence interval is",
+   "options": [
+    "a plausible value for the parameter",
+    "the true value of the parameter",
+    "the sample statistic",
+    "an impossible value for the parameter"
+   ],
+   "correct": 0,
+   "why": "The interval gives a range of plausible values; none is shown to be the true one.",
+   "review": "ci-one-proportion-claims"
+  }
+ ],
+ "figure": {
+  "figure": "mean-interval-claims",
+  "caption": "Three intervals for the true mean fill weight from the same 30 boxes. Higher confidence gives a wider interval. All three lie below the label value of 500 grams."
+ },
+ "chain": [
+  {
+   "cause": "An interval lists the plausible values of the true mean",
+   "effect": "a claimed value outside it is not plausible, and one inside it is"
+  },
+  {
+   "cause": "If every value in the interval is on one side of the claimed value",
+   "effect": "the interval gives convincing evidence that the true mean is on that side"
+  },
+  {
+   "cause": "If the claimed value is inside the interval",
+   "effect": "the interval does not give convincing evidence against it, and does not prove it either"
+  },
+  {
+   "cause": "The width is $2t^*\\frac{s}{\\sqrt{n}}$",
+   "effect": "higher confidence (larger $t^*$) widens it; a larger sample narrows it, by about half for four times the data"
+  }
+ ],
+ "ideas": [
+  "Claim from an interval: \"Because every value in the interval is less than 500 (or: 500 is in the interval), the interval gives (does not give) convincing evidence that the true mean ...\"",
+  "A plausible value is not a proven value: many values inside the interval are equally plausible.",
+  "Interval width $= 2t^*\\frac{s}{\\sqrt{n}}$: more confidence, wider; more data, narrower; more variable data, wider.",
+  "A $C$% interval matches a two-sided test at $\\alpha = 1 - C$: it excludes exactly the values that test would reject."
+ ],
+ "misconception": {
+  "wrong": "The claimed value is inside the interval, so the interval proves the claim is true.",
+  "right": "Inside the interval means plausible, nothing more. Other values in the interval are just as plausible, so the claim is neither rejected nor proven."
+ },
+ "check": [
+  "stat-ci-one-mean-claims-1",
+  "stat-ci-one-mean-claims-2",
+  "stat-ci-one-mean-claims-3",
+  "stat-ci-one-mean-claims-12",
+  "stat-ci-one-mean-claims-13",
+  "stat-ci-one-mean-claims-17"
+ ],
+ "summary": "Use a t interval to judge a claim about a mean: a claimed value outside the interval is not plausible, so the interval gives convincing evidence against it; a value inside is plausible, and nothing is proven. Write it with \"Because every value in the interval ...\" and name the parameter in context. Interval width grows with confidence and with $s$, and shrinks like $\\frac{1}{\\sqrt{n}}$."
+}

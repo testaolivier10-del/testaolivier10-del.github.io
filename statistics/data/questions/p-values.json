@@ -1,0 +1,843 @@
+{
+ "stimuli": {
+  "p-values-s1": {
+   "kind": "table",
+   "title": "Pastries with coffee",
+   "text": "<p>A coffee chain's head office says that 40% of its customers order a pastry. A store manager suspects the proportion at her store is lower. She selects a random sample of 300 orders from the store's many orders this month, and 105 of them include a pastry. She tests $H_0: p = 0.40$ against $H_a: p < 0.40$, where $p$ is the true proportion of all the store's orders this month that include a pastry. The conditions are met.</p>",
+   "table": {
+    "caption": "Sample results (invented data)",
+    "cols": [
+     "Orders sampled",
+     "With a pastry",
+     "Sample proportion"
+    ],
+    "rows": [
+     [
+      "300",
+      "105",
+      "$\\hat{p} = 0.35$"
+     ]
+    ]
+   }
+  },
+  "p-values-s2": {
+   "kind": "graph",
+   "title": "Simulating free throws",
+   "text": "<p>A coach says a player makes 75% of her free throws. In one week of practice she makes 31 of 50 ($\\hat{p} = 0.62$), and a teammate wonders whether her true rate is lower. To test $H_0: p = 0.75$ against $H_a: p < 0.75$, a computer simulates 100 sets of 50 shots by a player who makes each shot with probability 0.75. Each dot is the proportion made in one simulated set.</p>",
+   "plot": {
+    "label": "Dotplot of 100 simulated proportions of free throws made out of 50, assuming a 75% shooter; 3 dots are at or below 0.62",
+    "kind": "dot",
+    "data": [
+     0.54,
+     0.58,
+     0.62,
+     0.66,
+     0.66,
+     0.66,
+     0.66,
+     0.68,
+     0.68,
+     0.68,
+     0.68,
+     0.7,
+     0.7,
+     0.7,
+     0.7,
+     0.7,
+     0.7,
+     0.7,
+     0.72,
+     0.72,
+     0.72,
+     0.72,
+     0.72,
+     0.72,
+     0.72,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.74,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.76,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.78,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.82,
+     0.84,
+     0.84,
+     0.84,
+     0.84,
+     0.86,
+     0.86,
+     0.88,
+     0.9,
+     0.92
+    ],
+    "xLabel": "simulated proportion of 50 free throws made"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "simulated proportion made",
+      "values": [
+       0.54,
+       0.58,
+       0.62,
+       0.66,
+       0.66,
+       0.66,
+       0.66,
+       0.68,
+       0.68,
+       0.68,
+       0.68,
+       0.7,
+       0.7,
+       0.7,
+       0.7,
+       0.7,
+       0.7,
+       0.7,
+       0.72,
+       0.72,
+       0.72,
+       0.72,
+       0.72,
+       0.72,
+       0.72,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.74,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.76,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.78,
+       0.8,
+       0.8,
+       0.8,
+       0.8,
+       0.8,
+       0.8,
+       0.8,
+       0.8,
+       0.8,
+       0.82,
+       0.82,
+       0.82,
+       0.82,
+       0.82,
+       0.82,
+       0.82,
+       0.82,
+       0.82,
+       0.82,
+       0.84,
+       0.84,
+       0.84,
+       0.84,
+       0.86,
+       0.86,
+       0.88,
+       0.9,
+       0.92
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-p-values-1",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate the standardized test statistic. Give two decimal places.",
+   "stimulus": "p-values-s1",
+   "numeric": {
+    "kind": "z",
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.35,
+      0.4,
+      300
+     ],
+     "pick": "z"
+    },
+    "mistakes": [
+     {
+      "value": -1.8157,
+      "why": "That uses $\\hat{p} = 0.35$ inside the square root. A test's standard deviation uses $p_0 = 0.40$: $\\sqrt{0.40(0.60)/300}$."
+     },
+     {
+      "value": 1.7678,
+      "why": "The sign is backward. Compute statistic minus null value, $0.35 - 0.40$, which is negative."
+     },
+     {
+      "value": -62.5,
+      "why": "That divides by $\\frac{0.40(0.60)}{300}$ with no square root. The denominator is a standard deviation: $\\sqrt{0.40(0.60)/300} = 0.0283$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$z = \\frac{\\hat{p} - p_0}{\\sqrt{p_0(1 - p_0)/n}} = \\frac{0.35 - 0.40}{\\sqrt{0.40(0.60)/300}} = \\frac{-0.05}{0.0283} = -1.77$. The standard deviation uses $p_0$, because the test assumes $H_0$ is true."
+   }
+  },
+  {
+   "id": "stat-p-values-2",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "setup",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Type the expression for the test statistic with the values substituted, as you would show it on the exam.",
+   "stimulus": "p-values-s1",
+   "setup": {
+    "answer": "(0.35 - 0.40)/sqrt(0.40*0.60/300)",
+    "bind": {
+     "phat": 0.35,
+     "p0": 0.4,
+     "n": 300
+    },
+    "mustUse": [
+     "p0",
+     "n"
+    ],
+    "mustNotUse": [
+     "phat in sqrt"
+    ],
+    "then": {
+     "kind": "z",
+     "from": {
+      "fn": "z1prop",
+      "args": [
+       0.35,
+       0.4,
+       300
+      ],
+      "pick": "z"
+     }
+    },
+    "mistakes": [
+     {
+      "expr": "(0.35 - 0.40)/sqrt(0.35*0.65/300)",
+      "why": "Use $p_0 = 0.40$ in the standard deviation of a test, not $\\hat{p} = 0.35$."
+     },
+     {
+      "expr": "(0.35 - 0.40)/(0.40*0.60/300)",
+      "why": "The standard deviation needs a square root around $\\frac{0.40(0.60)}{300}$."
+     },
+     {
+      "expr": "(0.40 - 0.35)/sqrt(0.40*0.60/300)",
+      "why": "Subtract in the order statistic minus null value: $0.35 - 0.40$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "(statistic − null value) / (standard deviation of the statistic): $\\frac{0.35 - 0.40}{\\sqrt{0.40(0.60)/300}}$."
+   }
+  },
+  {
+   "id": "stat-p-values-3",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the p-value of the test. Give four decimal places.",
+   "stimulus": "p-values-s1",
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.35,
+      0.4,
+      300
+     ],
+     "pick": "p.less"
+    },
+    "mistakes": [
+     {
+      "value": 0.0771,
+      "why": "That doubles the tail area, as for a two-sided test. Here $H_a: p < 0.40$ is one-sided, so use one tail."
+     },
+     {
+      "value": 0.9615,
+      "why": "That is the area to the right of $z = -1.77$. The alternative says \"less than\", so shade the left tail."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$H_a$ is $p < 0.40$, so the p-value is the area to the left of $z = -1.77$: $P(Z \\le -1.77) = 0.0385$. Technology (a 1-proportion z test) gives 0.0385. Table A with $z = -1.77$ gives 0.0384."
+   }
+  },
+  {
+   "id": "stat-p-values-4",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Build the interpretation of the p-value, 0.0385, in context.",
+   "stimulus": "p-values-s1",
+   "conclude": {
+    "mode": "pvalue",
+    "slots": {
+     "condition": {
+      "options": [
+       "Assuming the true proportion of all the store's orders that include a pastry is 0.40,",
+       "Assuming the true proportion of all the store's orders that include a pastry is 0.35,",
+       "Assuming the manager is right that the proportion is lower,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is computed assuming the null value, 0.40, not the sample result.",
+       "2": "The p-value assumes $H_0$ is true, not $H_a$."
+      }
+     },
+     "claim": {
+      "options": [
+       "there is a 0.0385 probability of getting a sample proportion of 0.35 or less",
+       "there is a 0.0385 probability that the null hypothesis is true",
+       "there is a 0.0385 probability of getting a sample proportion of exactly 0.35"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A p-value is not the probability that $H_0$ is true; it is computed by assuming $H_0$ is true.",
+       "2": "It is the probability of a result as extreme or more, \"0.35 or less\", not exactly 0.35."
+      }
+     },
+     "context": {
+      "options": [
+       "by chance in a random sample of 300 orders.",
+       "in the store's orders next month.",
+       "in the 105 orders that included a pastry."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is about random samples of the same size, 300 orders, not next month's orders.",
+       "2": "The 105 orders are the result, not the sample the probability describes."
+      }
+     }
+    },
+    "model": "Assuming the true proportion of all the store's orders that include a pastry is 0.40, there is a 0.0385 probability of getting a sample proportion of 0.35 or less by chance in a random sample of 300 orders.",
+    "write": {
+     "context": [
+      "pastry",
+      "orders"
+     ],
+     "evidence": false,
+     "forbid": [
+      "probability that the null",
+      "probability the null"
+     ]
+    }
+   },
+   "why": {
+    "correct": "A p-value is a probability computed assuming $H_0$ is true: the chance of a sample result at least as extreme as the one observed, in the direction of $H_a$."
+   }
+  },
+  {
+   "id": "stat-p-values-5",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does the small p-value, 0.0385, suggest?",
+   "stimulus": "p-values-s1",
+   "options": [
+    "This result is unusual if $p = 0.40$, which is evidence that $p < 0.40$",
+    "There is a 3.85% chance that the head office's figure of 40% is correct",
+    "About 3.85% of the store's orders include a pastry",
+    "The manager has proven that fewer than 40% of orders include a pastry"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "If the true proportion were 0.40, a sample proportion as low as 0.35 would happen only about 4% of the time. That makes 0.40 hard to believe, which is evidence for $H_a: p < 0.40$.",
+    "options": [
+     "Right: a small p-value counts against $H_0$ and for $H_a$.",
+     "The p-value assumes the figure is correct; it is not the probability that it is.",
+     "The p-value is a probability about samples, not a proportion of orders.",
+     "A small p-value is evidence, never proof; a sample this low can still happen when $p = 0.40$."
+    ]
+   }
+  },
+  {
+   "id": "stat-p-values-6",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "single",
+   "practice": "4.F",
+   "level": "recall",
+   "diff": 2,
+   "q": "What does one dot in the dotplot represent?",
+   "stimulus": "p-values-s2",
+   "options": [
+    "The proportion made in one simulated set of 50 shots",
+    "One of the player's 50 real free throws",
+    "The proportion made by the player in one real practice week",
+    "The probability that the player is a 75% shooter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each dot is the sample proportion from one simulated set of 50 shots, made in a world where $H_0$ is true ($p = 0.75$).",
+    "options": [
+     "Right: one simulated sample, assuming $H_0$ is true.",
+     "The real shots give one value, 0.62. The dots come from the simulation.",
+     "The player has one real week of data; the 100 dots are simulated.",
+     "The dots are simulated sample proportions, not probabilities about the player."
+    ]
+   }
+  },
+  {
+   "id": "stat-p-values-7",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the dotplot to estimate the p-value of the test.",
+   "stimulus": "p-values-s2",
+   "options": [
+    "About 0.03: 3 of 100 dots are at or below 0.62",
+    "About 0.97, because 97 of the 100 dots are above 0.62",
+    "About 0.62, the proportion of shots she made",
+    "About 0.75, the center of the dotplot"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The p-value is the proportion of simulated results at least as extreme as the observed one in the direction of $H_a$ (here, 0.62 or less). 3 of the 100 dots are at or below 0.62, so the estimated p-value is 3/100 = 0.03.",
+    "options": [
+     "Right: count the dots at or beyond the observed value, in the direction of $H_a$.",
+     "Those dots are in the wrong direction. $H_a$ says \"less than\", so count dots at or below 0.62.",
+     "That is the observed statistic, not the p-value.",
+     "The center is the null value; the p-value is a tail proportion."
+    ]
+   }
+  },
+  {
+   "id": "stat-p-values-8",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is the dotplot centered near 0.75 rather than near 0.62?",
+   "stimulus": "p-values-s2",
+   "options": [
+    "Because the player's true rate has been shown to be 0.75",
+    "Because the simulation assumes $H_0$ is true, $p = 0.75$",
+    "Because 100 sets of shots is a large number of samples",
+    "Because 0.62 is an outlier in the player's real shooting this week"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The simulation was run assuming $H_0$ is true, a 75% shooter. A p-value always measures the observed result against what would happen if $H_0$ were true.",
+    "options": [
+     "The simulation assumes 0.75; it does not show it.",
+     "Right: the null distribution is built in the world where $H_0$ holds.",
+     "The number of simulated sets affects how smooth the dotplot is, not where it is centered.",
+     "The real 0.62 is compared with the simulated dots; it does not set their center."
+    ]
+   }
+  },
+  {
+   "id": "stat-p-values-9",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does the estimated p-value suggest about the coach's claim?",
+   "stimulus": "p-values-s2",
+   "options": [
+    "It suggests the coach is right, because most dots are near 0.75",
+    "It suggests a lower true rate: 0.62 or less is rare for a 75% shooter",
+    "It proves her true free-throw proportion is 0.62",
+    "It says nothing, because a simulation is not real data about the player"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "If she really made 75% of her shots, making 62% or fewer in 50 shots happened in about 3 of 100 simulated weeks. That is unusual, so it gives evidence that her true free-throw proportion is less than 0.75.",
+    "options": [
+     "The dots are near 0.75 because they assume the claim; what matters is how rare 0.62 is among them.",
+     "Right: a result this rare under $H_0$ is evidence for $H_a$.",
+     "A p-value cannot prove anything, and it gives no reason to think the rate is exactly 0.62.",
+     "Simulating many samples under $H_0$ and counting extreme results is a valid way to estimate a p-value."
+    ]
+   }
+  },
+  {
+   "id": "stat-p-values-10",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A website says 20% of visitors click its banner. An analyst takes a random sample of 500 visits, and 116 include a click ($\\hat{p} = 0.232$). For $H_0: p = 0.20$ against $H_a: p \\ne 0.20$, find the test statistic. Give two decimal places.",
+   "numeric": {
+    "kind": "z",
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.232,
+      0.2,
+      500
+     ],
+     "pick": "z"
+    },
+    "mistakes": [
+     {
+      "value": 1.6948,
+      "why": "That uses $\\hat{p} = 0.232$ inside the square root. The test's standard deviation uses $p_0 = 0.20$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$z = \\frac{0.232 - 0.20}{\\sqrt{0.20(0.80)/500}} = \\frac{0.032}{0.0179} = 1.79$."
+   }
+  },
+  {
+   "id": "stat-p-values-11",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the banner test ($z = 1.79$, $H_a: p \\ne 0.20$), find the p-value. Give four decimal places.",
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.232,
+      0.2,
+      500
+     ],
+     "pick": "p.two"
+    },
+    "mistakes": [
+     {
+      "value": 0.0368,
+      "why": "That is one tail. The alternative is two-sided ($p \\ne 0.20$), so double it."
+     },
+     {
+      "value": 0.9632,
+      "why": "That is the area below $z = 1.79$. Use the tail areas beyond $\\pm 1.79$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Two-sided: count both tails. $P(Z \\ge 1.79) = 0.0368$, so the p-value is $2(0.0368) = 0.0736$."
+   }
+  },
+  {
+   "id": "stat-p-values-12",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Build the interpretation of the banner test's p-value, 0.0736.",
+   "conclude": {
+    "mode": "pvalue",
+    "slots": {
+     "condition": {
+      "options": [
+       "Assuming the true proportion of all visits that include a click is 0.20,",
+       "Assuming the true proportion of all visits that include a click is 0.232,",
+       "Assuming the website's figure is wrong,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value assumes the null value, 0.20.",
+       "2": "The p-value is computed assuming $H_0$ is true."
+      }
+     },
+     "claim": {
+      "options": [
+       "there is a 0.0736 probability of getting a sample proportion at least as far from 0.20 as 0.232, in either direction,",
+       "there is a 0.0736 probability of getting a sample proportion of 0.232 or more,",
+       "there is a 0.0736 probability that the website's figure is correct"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That describes one tail, 0.0368. A two-sided p-value counts both directions.",
+       "2": "A p-value is not the probability that $H_0$ is true."
+      }
+     },
+     "context": {
+      "options": [
+       "by chance in a random sample of 500 visits.",
+       "for the next 500 visitors.",
+       "among the 116 clicks."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The probability is about random samples like the one taken, not a prediction about specific visitors.",
+       "2": "The clicks are the result; the probability is about samples of 500 visits."
+      }
+     }
+    },
+    "model": "Assuming the true proportion of all visits that include a click is 0.20, there is a 0.0736 probability of getting a sample proportion at least as far from 0.20 as 0.232, in either direction, by chance in a random sample of 500 visits.",
+    "write": {
+     "context": [
+      "visits",
+      "click"
+     ],
+     "evidence": false
+    }
+   },
+   "why": {
+    "correct": "For a two-sided test, \"as extreme\" means at least as far from $p_0$ in either direction."
+   }
+  },
+  {
+   "id": "stat-p-values-13",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A test of $H_0: p = 0.5$ gives a p-value of 0.31. Which statement is correct?",
+   "options": [
+    "The data show that $p = 0.5$",
+    "There is a 31% chance that $p = 0.5$",
+    "Results like this are common if $p = 0.5$: little evidence against $H_0$",
+    "31% of the people in the sample agreed with the null hypothesis"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A p-value of 0.31 means results like this one happen about 31% of the time when $H_0$ is true. That is not unusual, so the data give little evidence against $H_0$. It does not show that $H_0$ is true.",
+    "options": [
+     "A large p-value means the data are consistent with $H_0$; it does not prove $H_0$.",
+     "The p-value assumes $p = 0.5$; it is not the probability that $p = 0.5$.",
+     "Right: a large p-value means the result is not surprising under $H_0$.",
+     "A p-value is a probability about samples, not a share of the sample."
+    ]
+   }
+  },
+  {
+   "id": "stat-p-values-14",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two studies test $H_0: p = 0.6$ against $H_a: p > 0.6$ with the same sample size. Study 1 finds $\\hat{p} = 0.64$ and Study 2 finds $\\hat{p} = 0.70$. Which has the smaller p-value, and why?",
+   "options": [
+    "Study 1, because 0.64 is closer to 0.6",
+    "They are equal, because the two studies use the same hypotheses",
+    "Study 2: 0.70 is farther above 0.6, in the direction of $H_a$",
+    "It depends on $\\alpha$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With the same $n$, the standard deviation $\\sqrt{0.6(0.4)/n}$ is the same, so the result farther above 0.6 in the direction of $H_a$ gives a larger $z$ and a smaller tail area.",
+    "options": [
+     "Closer to the null value means less surprising, so a larger p-value.",
+     "The hypotheses match, but the observed results differ, so the p-values differ.",
+     "Right: a more extreme result under $H_0$ gives a smaller p-value.",
+     "The p-value comes from the data and $H_0$; $\\alpha$ is only compared with it later."
+    ]
+   }
+  },
+  {
+   "id": "stat-p-values-15",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "single",
+   "practice": "3.E",
+   "level": "recall",
+   "diff": 2,
+   "q": "The reference sheet gives a standardized test statistic as $\\frac{\\text{statistic} - \\text{parameter}}{\\text{standard error of the statistic}}$. In a one-sample z test for a proportion, which values fill it in?",
+   "options": [
+    "$\\frac{\\hat{p} - p_0}{\\sqrt{p_0(1 - p_0)/n}}$",
+    "$\\frac{\\hat{p} - p_0}{\\sqrt{\\hat{p}(1 - \\hat{p})/n}}$",
+    "$\\frac{p_0 - \\hat{p}}{\\sqrt{p_0(1 - p_0)/n}}$",
+    "$\\frac{\\hat{p} - p_0}{p_0(1 - p_0)/n}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The statistic is $\\hat{p}$, the parameter is its value under $H_0$, $p_0$, and the denominator is the standard deviation of $\\hat{p}$ computed with $p_0$.",
+    "options": [
+     "Right: everything about the parameter uses $p_0$.",
+     "That is the interval's standard error. A test assumes $H_0$, so it uses $p_0$.",
+     "The order is statistic minus null value, or the sign comes out backward.",
+     "The denominator is a standard deviation, so it needs the square root."
+    ]
+   }
+  },
+  {
+   "id": "stat-p-values-16",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "multi",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A test of $H_0: p = 0.3$ against $H_a: p > 0.3$ gives $\\hat{p} = 0.34$. Which changes would make the p-value smaller? Select all that apply.",
+   "options": [
+    "The same $\\hat{p}$ from a larger random sample",
+    "A sample proportion of 0.38 with the same sample size",
+    "Using $H_a: p \\ne 0.3$ instead",
+    "A sample proportion of 0.26 with the same sample size"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A p-value gets smaller when the result is more extreme in the direction of $H_a$: a larger sample (smaller standard deviation, larger $z$) or a sample proportion farther above 0.3.",
+    "options": [
+     "Right: a larger $n$ shrinks the standard deviation, so $z$ grows.",
+     "Right: farther above 0.3 in the direction of $H_a$.",
+     "A two-sided p-value counts both tails, so it doubles.",
+     "0.26 is below 0.3, the opposite of the direction of $H_a$, so the p-value is large."
+    ]
+   }
+  },
+  {
+   "id": "stat-p-values-17",
+   "unit": "unit-3",
+   "topic": "p-values",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student writes: \"The p-value is 0.02, so there is a 2% chance that the null hypothesis is true.\" What is the error?",
+   "options": [
+    "There is no error",
+    "It should say 98%, the complement, is the chance that $H_a$ is true",
+    "The p-value is computed assuming $H_0$ is true, so it is not the chance $H_0$ is true",
+    "A p-value has to be compared with 0.5 before it means anything"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The p-value is computed by assuming $H_0$ is true. It is the probability of data this extreme or more under $H_0$, not the probability that $H_0$ holds.",
+    "options": [
+     "This is the most common misreading of a p-value.",
+     "The complement is not the probability that $H_a$ is true either.",
+     "Right: the condition is \"if $H_0$ is true\", not \"that $H_0$ is true\".",
+     "A p-value is compared with $\\alpha$, chosen in advance, not with 0.5."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "distribution-areas",
+  "kind": "simulator",
+  "topic": "normal-distribution",
+  "about": "Data for distribution areas (docs/apstat-spec.md section 6). explore.normal and explore.binomial are the studies the Explore view opens on; contexts are the Test yourself studies, each with its topic (it unlocks with that topic's unit) and the problem types it serves. The model is statistics/assets/tools/math/distribution-areas.js; every number comes from ApStatDist.",
+  "intro": "<p>A probability for a normal variable is an area under its curve; for a binomial count it is the total height of some bars. Drag the boundary, pick the direction, and read the probability. Each answer is written the way the exam wants it: the distribution, its parameters, the boundary and the direction.</p>",
+  "howItWorksTitle": "How the areas are found",
+  "howItWorks": "<p>Every area is computed exactly: the normal one from the standard normal distribution after $z = (x - \\mu)/\\sigma$, the binomial one by adding $P(X = k) = \\binom{n}{k}p^k(1 - p)^{n - k}$ over every count in the event. The shaded region is the region added up.</p><ul><li><b>Table or technology.</b> Table A gives the area to the left of $z$ rounded to two places. Its answer can differ from technology in the third or fourth decimal; both are accepted.</li><li><b>Words to symbols.</b> \"At most 3\" is $X \\le 3$, \"fewer than 3\" is $X \\le 2$, \"at least 3\" is $X \\ge 3$, \"more than 3\" is $X \\ge 4$. For a count the difference matters; for a normal variable it does not, because one value has probability 0.</li><li><b>The empirical rule.</b> About 68%, 95% and 99.7% of a normal distribution lies within 1, 2 and 3 standard deviations of the mean. It is an approximation; the exact areas are 0.6827, 0.9545 and 0.9973.</li><li><b>The normal shape over a binomial.</b> The curve with mean $np$ and SD $\\sqrt{np(1 - p)}$ is drawn only to compare shapes. Every binomial probability here is exact.</li></ul><p>Test yourself makes new problems from a seed (the problem code), checks every step against a key the validator recomputes independently, and names the usual slip when an answer misses.</p>",
+  "explore": {
+    "normal": [
+      { "id": "height", "topic": "normal-distribution", "name": "Heights of adult women", "mu": 64.5, "sd": 2.5, "units": "inches", "places": 1, "grid": 0.5, "var": "height", "who": "adult women", "a": 62, "b": 68, "mode": "greater" },
+      { "id": "battery", "topic": "normal-distribution", "name": "Phone battery life", "mu": 22, "sd": 3, "units": "hours", "places": 1, "grid": 0.5, "var": "battery life", "who": "phones", "a": 18, "b": 25, "mode": "less" },
+      { "id": "score", "topic": "normal-distribution", "name": "Scores on a state test", "mu": 500, "sd": 100, "units": "points", "places": 0, "grid": 5, "var": "score", "who": "students", "a": 400, "b": 650, "mode": "between" }
+    ],
+    "binomial": [
+      { "id": "freethrow", "topic": "binomial-distribution", "name": "Free throws (n = 10)", "n": 10, "p": 0.7, "k": 6, "rel": "fewer", "X": "the number of free throws made", "trial": "shots" },
+      { "id": "guess", "topic": "binomial-distribution", "name": "Guessing on a quiz (n = 20)", "n": 20, "p": 0.25, "k": 8, "rel": "atLeast", "X": "the number of questions answered correctly", "trial": "questions" },
+      { "id": "defect", "topic": "binomial-distribution", "name": "Defective chargers (n = 50)", "n": 50, "p": 0.06, "k": 2, "rel": "atMost", "X": "the number of defective chargers", "trial": "chargers" }
+    ]
+  },
+  "contexts": [
+    { "id": "height", "topic": "normal-distribution", "types": ["normal", "inverse", "empirical"], "var": "height", "who": "adult women", "units": "inches", "places": 1, "grid": 0.5, "mus": [64, 64.5, 65], "sds": [2.5, 2.8, 3],
+      "axis": "Height (inches)", "setup": "The heights of adult women in a large country are approximately normal with mean {mu} and standard deviation {sd}.",
+      "less": "What is the probability that a randomly chosen woman is shorter than {b}?", "more": "What is the probability that a randomly chosen woman is taller than {a}?", "between": "What is the probability that a randomly chosen woman is between {a} and {b} tall?",
+      "low": "What height marks the shortest {pct} of adult women?", "high": "How tall must a woman be to be among the tallest {pct}?" },
+    { "id": "commute", "topic": "normal-distribution", "types": ["normal", "inverse", "empirical"], "var": "commute time", "who": "commutes", "units": "minutes", "places": 0, "grid": 1, "mus": [24, 28, 32], "sds": [5, 6, 8],
+      "axis": "Commute time (minutes)", "setup": "One driver's commute times are approximately normal with mean {mu} and standard deviation {sd}.",
+      "less": "What is the probability that a randomly chosen commute takes less than {b}?", "more": "What is the probability that a randomly chosen commute takes more than {a}?", "between": "What is the probability that a randomly chosen commute takes between {a} and {b}?",
+      "low": "What commute time marks the fastest {pct} of this driver's commutes?", "high": "What commute time marks the slowest {pct} of this driver's commutes?" },
+    { "id": "cereal", "topic": "normal-distribution", "types": ["normal", "inverse", "empirical"], "var": "fill weight", "who": "boxes", "units": "grams", "places": 0, "grid": 1, "mus": [500, 510], "sds": [4, 5, 6],
+      "axis": "Fill weight (grams)", "setup": "A machine fills cereal boxes with weights that are approximately normal with mean {mu} and standard deviation {sd}.",
+      "less": "What is the probability that a randomly chosen box holds less than {b}?", "more": "What is the probability that a randomly chosen box holds more than {a}?", "between": "What is the probability that a randomly chosen box holds between {a} and {b}?",
+      "low": "What weight marks the lightest {pct} of boxes?", "high": "What weight marks the heaviest {pct} of boxes?" },
+    { "id": "sat", "topic": "normal-distribution", "types": ["normal", "inverse", "empirical"], "var": "score", "who": "students", "units": "points", "places": 0, "grid": 10, "mus": [500, 520], "sds": [90, 100, 110],
+      "axis": "Score (points)", "setup": "Scores on a state reading test are approximately normal with mean {mu} and standard deviation {sd}.",
+      "less": "What is the probability that a randomly chosen student scores below {b}?", "more": "What is the probability that a randomly chosen student scores above {a}?", "between": "What is the probability that a randomly chosen student scores between {a} and {b}?",
+      "low": "What score marks the lowest {pct} of students?", "high": "What score must a student reach to be in the top {pct}?" },
+    { "id": "freethrow", "topic": "binomial-distribution", "types": ["binomial"], "ns": [8, 10, 12, 15], "ps": [0.6, 0.7, 0.75, 0.8], "axis": "Free throws made",
+      "setup": "A basketball player makes each free throw with probability {p}, independently of other shots. She takes {n} free throws.", "X": "the number of free throws she makes", "event": "she makes {k} of them" },
+    { "id": "guess", "topic": "binomial-distribution", "types": ["binomial"], "ns": [10, 12, 15, 20], "ps": [0.2, 0.25], "axis": "Questions right",
+      "setup": "A student guesses at random on {n} multiple-choice questions, each with probability {p} of a correct guess.", "X": "the number of questions the student gets right", "event": "the student gets {k} right" },
+    { "id": "seeds", "topic": "binomial-distribution", "types": ["binomial"], "ns": [10, 12, 20, 25], "ps": [0.8, 0.85, 0.9], "axis": "Seeds that sprout",
+      "setup": "Each seed in a packet sprouts with probability {p}, independently of the others. A gardener plants {n} seeds.", "X": "the number of seeds that sprout", "event": "{k} seeds sprout" },
+    { "id": "survey", "topic": "binomial-distribution", "types": ["binomial"], "ns": [15, 20, 25, 30], "ps": [0.3, 0.4, 0.45], "axis": "People who say yes",
+      "setup": "In a large city, a proportion {p} of adults ride a bike to work at least once a week. A random sample of {n} adults is chosen.", "X": "the number of adults in the sample who ride a bike to work at least once a week", "event": "{k} of the adults in the sample ride a bike to work at least once a week" }
+  ]
+}

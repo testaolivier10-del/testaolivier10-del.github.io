@@ -1,0 +1,520 @@
+{
+ "stimuli": {
+  "one-categorical-tables-s1": {
+   "kind": "table",
+   "title": "Where adults get their news",
+   "text": "A random sample of 160 adults in a city were asked for their main source of news (invented data).",
+   "table": {
+    "caption": "Main news source of 160 adults",
+    "cols": [
+     "News source",
+     "Frequency"
+    ],
+    "rows": [
+     [
+      "Social media",
+      "56"
+     ],
+     [
+      "Television",
+      "40"
+     ],
+     [
+      "News websites",
+      "36"
+     ],
+     [
+      "Radio",
+      "16"
+     ],
+     [
+      "Print newspaper",
+      "12"
+     ],
+     [
+      "Total",
+      "160"
+     ]
+    ]
+   }
+  },
+  "one-categorical-tables-s2": {
+   "kind": "table",
+   "title": "Blood types of donors",
+   "text": "A blood bank recorded the blood type of 400 donors in one month (invented data). One relative frequency is missing.",
+   "table": {
+    "caption": "Blood types of 400 donors",
+    "cols": [
+     "Blood type",
+     "O",
+     "A",
+     "B",
+     "AB"
+    ],
+    "rows": [
+     [
+      "Relative frequency",
+      "0.44",
+      "0.42",
+      "0.10",
+      "?"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-one-categorical-tables-1",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the relative frequency of adults whose main source is television?",
+   "why": {
+    "correct": "$\\frac{40}{160} = 0.25$: a quarter of the sampled adults get their news mainly from television."
+   },
+   "stimulus": "one-categorical-tables-s1",
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "That is the frequency (the count). A relative frequency divides the count by the total: 40/160."
+     },
+     {
+      "value": 4,
+      "why": "That divides 160 by 40. Put the count on top: 40/160 = 0.25."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-one-categorical-tables-2",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What proportion of the sampled adults get their news mainly from social media or television?",
+   "why": {
+    "correct": "$\\frac{56 + 40}{160} = \\frac{96}{160} = 0.60$."
+   },
+   "stimulus": "one-categorical-tables-s1",
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.35,
+      "why": "That is social media alone. Add the two counts first: 56 + 40 = 96, then 96/160."
+     },
+     {
+      "value": 0.25,
+      "why": "That is television alone. Include social media too: (56 + 40)/160."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-one-categorical-tables-3",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement about the relative frequencies of the five news sources is true?",
+   "why": {
+    "correct": "When categories do not overlap and cover everyone, the relative frequencies add to 1 (or 100%).",
+    "options": [
+     "The frequencies add to 160. Each relative frequency is a count over 160, so together they add to 1.",
+     "Right: every adult chose one main source, so the five parts make up the whole sample.",
+     "Each adult chose one source, but the sources were chosen different numbers of times.",
+     "As percents they add to 100%. As relative frequencies (decimals) they add to 1."
+    ]
+   },
+   "stimulus": "one-categorical-tables-s1",
+   "options": [
+    "They add to 160, the number of adults who were asked",
+    "They add to 1, because each adult is in exactly one category",
+    "They are equal to one another, since each adult chose a single source",
+    "They add to 100, because each one is a percent of the sample"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-one-categorical-tables-4",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For print newspapers, $\\hat{p} = \\frac{12}{160} = 0.075$. What does $\\hat{p}$ describe?",
+   "why": {
+    "correct": "A sample proportion $\\hat{p}$ is the part of the sample in a category. It is a statistic, used to estimate the population proportion p.",
+    "options": [
+     "That would be p, the population proportion, which is unknown here.",
+     "The 12 are the part; $\\hat{p}$ compares them with the whole sample of 160.",
+     "The sources are the categories; $\\hat{p}$ is a number about adults in one category.",
+     "Right: $\\hat{p}$ is a sample proportion, a statistic. It estimates p for the city."
+    ]
+   },
+   "stimulus": "one-categorical-tables-s1",
+   "options": [
+    "The city’s adults, as a population proportion",
+    "The 12 adults who named print newspapers",
+    "The news sources that the city’s adults can choose from",
+    "The 160 adults in the sample"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-one-categorical-tables-5",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the missing relative frequency for type AB?",
+   "why": {
+    "correct": "The four relative frequencies add to 1, so AB is $1 - (0.44 + 0.42 + 0.10) = 0.04$."
+   },
+   "stimulus": "one-categorical-tables-s2",
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.96,
+      "why": "That is the total of the other three. The missing value is what is left: 1 − 0.96."
+     },
+     {
+      "value": 16,
+      "why": "That is the number of AB donors, 0.04 × 400. The question asks for the relative frequency."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-one-categorical-tables-6",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many of the 400 donors had type A blood?",
+   "why": {
+    "correct": "Count = relative frequency × total: $0.42 \\times 400 = 168$.",
+    "options": [
+     "Right: $0.42 \\times 400 = 168$ donors.",
+     "0.42 is a part of the whole. Multiply by the whole to get a count: 0.42 × 400.",
+     "Dividing gives a number larger than the whole. A count from a relative frequency is a multiplication.",
+     "That uses type O’s 0.44. Type A is 0.42 × 400."
+    ]
+   },
+   "stimulus": "one-categorical-tables-s2",
+   "options": [
+    "168",
+    "42, reading the relative frequency as a count",
+    "952, from dividing 400 by 0.42",
+    "176, which is the number of type O donors"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-one-categorical-tables-7",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A second blood bank had 250 donors, and 30 of them had type B blood. Which bank had the larger proportion of type B donors?",
+   "why": {
+    "correct": "Divide each count by its own total: 0.10 for the first bank and $\\frac{30}{250} = 0.12$ for the second.",
+    "options": [
+     "A bigger total does not decide it; compare the relative frequencies.",
+     "The first bank did have 0.10 × 400 = 40 type B donors, but counts from different totals cannot be compared.",
+     "Right: $\\frac{30}{250} = 0.12$, larger than the first bank’s 0.10.",
+     "Relative frequencies exist exactly to compare groups of different sizes."
+    ]
+   },
+   "stimulus": "one-categorical-tables-s2",
+   "options": [
+    "The first bank, because it had more donors in total",
+    "The first bank: its 40 type B donors outnumber 30",
+    "The second bank: 0.12 against 0.10",
+    "Neither, since the two banks had different numbers of donors"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-one-categorical-tables-8",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The blood bank says, \"44% of our donors this month had type O.\" A doctor wants to know the proportion of type O among the region’s whole population. How are the two related?",
+   "why": {
+    "correct": "The 0.44 is a statistic, $\\hat{p}$, from this month’s donors. It estimates the population proportion p for the region only to the extent that donors represent the region.",
+    "options": [
+     "Testing 400 donors gives a sample proportion; the region’s proportion would need data on everyone.",
+     "Blood types are stable, but the donors are a sample, and a sample proportion can differ from p.",
+     "Right: a sample proportion estimates a population proportion when the sample represents the population. Donors may differ from the region.",
+     "176 is a count in the sample, not a proportion for the region."
+    ]
+   },
+   "stimulus": "one-categorical-tables-s2",
+   "options": [
+    "0.44 is the region’s p, because the blood bank tested 400 people",
+    "They are equal, because blood type does not change over a month",
+    "0.44 is $\\hat{p}$ for these donors; the region’s p is unknown, and 0.44 estimates it only if these donors represent the region",
+    "The region’s p is 0.44 × 400 = 176, the number of type O people"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-one-categorical-tables-9",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "3.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does a frequency table show for a categorical variable?",
+   "why": {
+    "correct": "A frequency table lists each category with its count, or frequency.",
+    "options": [
+     "Right: a frequency table lists the categories and the count in each.",
+     "That is the raw data table, one row per individual.",
+     "A frequency table counts the categories; it does not rank their importance.",
+     "Categories are groups, not numbers, so they have no average."
+    ]
+   },
+   "options": [
+    "Each category and how many individuals are in it",
+    "Each individual and the category that individual belongs to",
+    "The categories, ranked from the most to the least important",
+    "The average of the categories, together with the total count"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-one-categorical-tables-10",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "A gym asked 60 members which class they like best: 12 chose yoga, 18 chose cycling and 30 chose weights. What is the relative frequency of cycling?",
+   "why": {
+    "correct": "$\\frac{18}{60} = 0.30$, so 30% of the members asked chose cycling."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.18,
+      "why": "That reads the count as a decimal. Divide by the total: 18/60."
+     },
+     {
+      "value": 0.6,
+      "why": "That is 18/30, which uses the weights count as the whole. The whole is all 60 members."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-one-categorical-tables-11",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which symbol stands for a population proportion?",
+   "why": {
+    "correct": "The population proportion is $p$; the sample proportion is $\\hat{p}$.",
+    "options": [
+     "$\\hat{p}$ is the sample proportion, a statistic.",
+     "n is the sample size, the number of individuals in the sample.",
+     "A percent is a way to write a number, not a symbol for a population value.",
+     "Right: p is the parameter, the proportion in the whole population."
+    ]
+   },
+   "options": [
+    "$\\hat{p}$, which is read as \"p-hat\"",
+    "$n$, the count of individuals asked",
+    "The percent sign, %, after a decimal",
+    "$p$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-one-categorical-tables-12",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a sample of 220 shoppers, the relative frequency of paying with cash is 0.15. How many shoppers paid with cash?",
+   "why": {
+    "correct": "Count = relative frequency × total = $0.15 \\times 220 = 33$.",
+    "options": [
+     "0.15 is a part of 1, not a count. Multiply by 220.",
+     "Right: $0.15 \\times 220 = 33$.",
+     "A count from a relative frequency is a multiplication, not a division.",
+     "That is 0.85 × 220, the shoppers who used other methods."
+    ]
+   },
+   "options": [
+    "15, reading 0.15 as a number of shoppers",
+    "33",
+    "1,467, from dividing 220 by 0.15",
+    "187, the shoppers who did not pay with cash"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-one-categorical-tables-13",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "multi",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A relative frequency table for one categorical variable has no missing values. Which statements are true? Select all that apply.",
+   "why": {
+    "correct": "Relative frequencies are counts divided by one total, so they are between 0 and 1, add to 1, and keep the order of the counts.",
+    "options": [
+     "Right: a part of a whole is never negative and never bigger than the whole.",
+     "Right: together the parts make up the whole.",
+     "Right: every relative frequency divides by the same total, so the order of the counts is kept.",
+     "A relative frequency table hides the total; you need it to get back to counts.",
+     "0.5 is half the total; the count depends on the total.",
+     "An empty category has count 0, so its relative frequency is 0, not negative."
+    ]
+   },
+   "options": [
+    "Each relative frequency is between 0 and 1",
+    "The relative frequencies add to 1 when categories do not overlap",
+    "The category with the largest relative frequency also has the largest count",
+    "Relative frequencies show the total number of individuals",
+    "A relative frequency of 0.5 is a count of 50 individuals",
+    "A category with no individuals has a negative relative frequency"
+   ],
+   "correct": [0, 1, 2]
+  },
+  {
+   "id": "stat-one-categorical-tables-14",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Class A has 30 students and class B has 120. Which summary is best for comparing how popular soccer is in the two classes?",
+   "why": {
+    "correct": "Compare groups of different sizes with relative frequencies (proportions or percents), not counts.",
+    "options": [
+     "Right: dividing by each class size makes classes of different sizes comparable.",
+     "Class B is four times larger, so its count would be larger even if soccer were equally popular.",
+     "Class size alone says nothing about soccer.",
+     "The number of categories does not show how popular one category is."
+    ]
+   },
+   "options": [
+    "The relative frequency of students who chose soccer",
+    "The number of students in each class who chose soccer",
+    "The total number of students in each of the two classes",
+    "The number of different sports named in each class"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-one-categorical-tables-15",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A survey asked 200 students, \"Which of these apps do you use? Check every one you use.\" The relative frequencies add to 1.85. What explains this?",
+   "why": {
+    "correct": "Relative frequencies add to 1 only when each individual falls in exactly one category. With \"check every one\", students fall in several.",
+    "options": [
+     "The sum is correct; it is over 1 because the categories overlap.",
+     "The total is 200; overlap explains the sum.",
+     "Right: one student can be counted in several categories, so the parts add to more than the whole.",
+     "They add to 1 only when each individual is in exactly one category."
+    ]
+   },
+   "options": [
+    "Someone added the relative frequencies incorrectly",
+    "The survey asked more students than it reported in the total",
+    "Students could check more than one app, so categories overlap",
+    "Relative frequencies are supposed to add to 2 for a survey"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-one-categorical-tables-16",
+   "unit": "unit-1",
+   "topic": "one-categorical-tables",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A frequency table of eye color for 50 students lists brown 26, blue 12, green 7 and hazel 5. Which conclusion is stated correctly in context?",
+   "why": {
+    "correct": "Relative frequency of blue: $\\frac{12}{50} = 0.24$, so 24% of these students have blue eyes.",
+    "options": [
+     "12 is the frequency. The relative frequency is 12/50 = 0.24.",
+     "Right: $\\frac{12}{50} = 0.24$, and the sentence names the students and the variable.",
+     "Brown, with 0.52, is the most common; blue is second.",
+     "The count 12 is not a percent: 12 out of 50 is 24%."
+    ]
+   },
+   "options": [
+    "The relative frequency of blue is 12, the second largest value",
+    "24% of these 50 students have blue eyes",
+    "Blue is 0.24, so it is the most common eye color in the class",
+    "12% of the 50 students in the class have blue eyes"
+   ],
+   "correct": 1
+  }
+ ]
+}

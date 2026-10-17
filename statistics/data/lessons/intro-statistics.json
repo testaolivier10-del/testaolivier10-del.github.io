@@ -1,0 +1,52 @@
+{
+ "topic": "intro-statistics",
+ "hook": "A student council at a school of 2,400 students wants to know whether students would use a quiet study room at lunch. It cannot ask everyone, so it asks 120 students chosen at random, and 78 say yes. What can 78 answers out of 120 tell the council about all 2,400 students? That question, how to learn about a big group from a smaller one, is what statistics is for.",
+ "figure": {
+  "figure": "study-path",
+  "caption": "A study moves from a question about a population, to a sample, to data, and back to a conclusion about the population, stated in context."
+ },
+ "chain": [
+  {
+   "cause": "The question is about a large group, the population",
+   "effect": "asking everyone would take too long and cost too much"
+  },
+  {
+   "cause": "So you collect data from a sample, a smaller part of the population",
+   "effect": "the answers vary from person to person, so you summarize them: 78 of 120 is 65%"
+  },
+  {
+   "cause": "The summary describes the sample",
+   "effect": "it is a good estimate for the population only if the sample represents the population"
+  },
+  {
+   "cause": "A different sample would give a slightly different result",
+   "effect": "so a conclusion about the population is an estimate, stated in context, never a certainty"
+  }
+ ],
+ "ideas": [
+  "<b>Statistics</b> is the science of collecting, summarizing and reading <b>data</b> to answer questions whose answers vary.",
+  "The <b>population</b> is the whole group a question is about. The <b>sample</b> is the part of it that data come from.",
+  "A study uses data from a sample to answer a question about a population. It works only if the sample represents the population.",
+  "State every result <b>in context</b>: who was studied, what was measured, and what the number tells you.",
+  "Another sample gives a slightly different result, so a sample result is an estimate for the population, not its exact value."
+ ],
+ "misconception": {
+  "wrong": "78 of the 120 students said yes, so exactly 65% of all 2,400 students would use the room.",
+  "right": "The 65% describes the sample. It estimates the school’s percent, and another random sample of 120 would give a slightly different number."
+ },
+ "check": [
+  "stat-intro-statistics-1",
+  "stat-intro-statistics-2",
+  "stat-intro-statistics-3",
+  "stat-intro-statistics-4",
+  "stat-intro-statistics-9",
+  "stat-intro-statistics-12"
+ ],
+ "summary": "Statistics answers questions about a population, the whole group of interest, using data from a sample, the part you actually measure. Answers vary, so a sample result is an estimate. It is useful only when the sample represents the population, and every result is stated in context.",
+ "connections": [
+  {
+   "href": "../notes/variables.html",
+   "label": "Next: variables (1.2)"
+  }
+ ]
+}

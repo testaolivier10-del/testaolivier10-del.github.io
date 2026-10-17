@@ -1,0 +1,11 @@
+{
+ "degrees-of-freedom": {
+  "def": "The number that picks out one member of a family of distributions. For a chi-square test on a two-way table, $\\text{df} = (\\text{rows} - 1)(\\text{columns} - 1)$."
+ },
+ "chi-square-dist": {
+  "def": "A family of right-skewed density curves for values of 0 or more, one for each number of degrees of freedom; its mean is the df. If $H_0$ is true and the conditions hold, the $\\chi^2$ statistic approximately follows one."
+ },
+ "chi-square-component": {
+  "def": "One cell's term $\\frac{(O - E)^2}{E}$ in the chi-square statistic. The cells with the largest components show where the observed counts differ most from what the null hypothesis predicts."
+ }
+}

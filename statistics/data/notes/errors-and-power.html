@@ -1,0 +1,44 @@
+<p>A significance test makes a decision from a sample, and samples vary. So even a test done perfectly can reach the wrong decision. This topic names the two ways a test can be wrong, says how likely each one is, and shows what you can do about them. The exam asks you to describe each error in context and to explain its consequence.</p>
+
+<h2>Two ways to be wrong</h2>
+<p>The truth is either $H_0$ or $H_a$, and the decision is either reject $H_0$ or fail to reject it. That gives four outcomes, two of them mistakes.</p>
+<table>
+<thead><tr><th scope="col"></th><th scope="col">$H_0$ is true</th><th scope="col">$H_a$ is true</th></tr></thead>
+<tbody>
+<tr><th scope="row">Reject $H_0$</th><td><b>Type I error</b> (probability $\alpha$)</td><td>Correct (probability = power)</td></tr>
+<tr><th scope="row">Fail to reject $H_0$</th><td>Correct</td><td><b>Type II error</b> (probability $\beta$)</td></tr>
+</tbody>
+</table>
+<ul>
+<li>A <b>Type I error</b> is rejecting $H_0$ when $H_0$ is true: finding convincing evidence for an effect that is not there.</li>
+<li>A <b>Type II error</b> is failing to reject $H_0$ when $H_a$ is true: missing an effect that is there.</li>
+</ul>
+<p>Only one error is possible after a decision. If you rejected $H_0$, the only possible mistake is Type I. If you failed to reject, the only possible mistake is Type II.</p>
+
+<h2>Describing an error in context</h2>
+<p>Readers want the condition first: what is actually true, then the wrong decision, then what happens because of it.</p>
+<div class="worked">
+<p><b>Worked example.</b> A city must replace its water pipes if more than 10% of its homes have lead above a safety limit. It tests $H_0: p = 0.10$ against $H_a: p > 0.10$, where $p$ is the true proportion of all the city's homes with lead above the limit, and replaces the pipes if there is convincing evidence for $H_a$. Describe each error and its consequence.</p>
+<p><b>Type I error.</b> The true proportion of all the city's homes with lead above the limit is 0.10, but the test finds convincing evidence that it is greater than 0.10. Consequence: the city spends money replacing pipes that did not need replacing.</p>
+<p><b>Type II error.</b> The true proportion of all the city's homes with lead above the limit is greater than 0.10, but the test does not find convincing evidence that it is greater than 0.10. Consequence: the pipes are not replaced, and residents keep drinking water with too much lead.</p>
+<p><b>Which is worse?</b> Here the Type II error is a health risk, so the city should make it less likely, for example by using $\alpha = 0.10$ instead of 0.01 or by testing more homes.</p>
+</div>
+
+<h2>How likely is each error?</h2>
+<p><b>Type I.</b> If $H_0$ is true, the test rejects whenever the p-value falls below $\alpha$, and that happens with probability $\alpha$. So $P(\text{Type I error}) = \alpha$. Choosing $\alpha$ is choosing how often you are willing to raise a false alarm.</p>
+<p><b>Type II.</b> Its probability, $\beta$, depends on what the true value of $p$ actually is. A true proportion of 0.11 is hard to tell apart from 0.10; a true proportion of 0.20 is easy. So $\beta$ is always "against" a specific alternative value.</p>
+<p>The <b>power</b> of a test against a specific alternative is the probability that it rejects $H_0$ when that alternative is true: the chance it detects a real effect. $\text{power} = 1 - \beta$.</p>
+
+<h2>Seeing α, β and power</h2>
+<figure id="fig-power" data-fig="power-alpha-beta"><figcaption>A one-sided test of H0: p = 0.5 with 200 customers at α = 0.05 rejects when the sample proportion is 0.558 or more. If p is really 0.60, the area beyond the cutoff under the right curve is the power, about 0.89; the area before it is β, about 0.11.</figcaption></figure>
+<p>A snack company will switch recipes only if there is convincing evidence that more than half of its customers prefer the new one. With 200 customers and $\alpha = 0.05$, the test rejects $H_0: p = 0.5$ when $\hat{p} \ge 0.5 + 1.645\sqrt{\frac{0.5(0.5)}{200}} = 0.558$. If in fact $p = 0.60$, then $\hat{p}$ is approximately normal with mean 0.60 and standard deviation $\sqrt{\frac{0.60(0.40)}{200}} = 0.0346$, and</p>
+<p>$$\text{power} = P(\hat{p} \ge 0.558) = P\left(Z \ge \frac{0.558 - 0.60}{0.0346}\right) = P(Z \ge -1.21) = 0.887.$$</p>
+<p>So $\beta = 1 - 0.887 = 0.113$: about an 11% chance of missing a real 60% preference.</p>
+
+<h2>What increases power</h2>
+<ul>
+<li><b>A larger sample size.</b> Both curves get narrower and overlap less. This is the best fix, because it lowers $\beta$ without raising $\alpha$.</li>
+<li><b>A larger $\alpha$.</b> The cutoff moves toward $p_0$, so rejecting is easier: power rises, but so does the Type I error probability.</li>
+<li><b>A true value farther from $p_0$.</b> Big effects are easier to detect than small ones. You cannot choose this, but you can plan the sample size for the smallest effect worth finding.</li>
+</ul>
+<p>For a fixed sample size, the two error probabilities move in opposite directions: lowering $\alpha$ raises $\beta$. Decide which error has worse consequences in context, and choose $\alpha$ and $n$ with that in mind.</p>

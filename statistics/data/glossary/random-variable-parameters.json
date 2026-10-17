@@ -1,0 +1,8 @@
+{
+ "expected-value": {
+  "def": "The mean, or expected value, of a discrete random variable X is $\\mu_X = E(X) = \\sum x_i p_i$: each value times its probability, added up. It is the average value of X over very many repetitions of the chance process."
+ },
+ "rv-sd": {
+  "def": "The standard deviation of a discrete random variable X is $\\sigma_X = \\sqrt{\\sum (x_i - \\mu_X)^2 p_i}$. It measures how far the values of X typically are from the mean, in the units of X. Its square, before the square root, is the variance."
+ }
+}

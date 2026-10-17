@@ -1,0 +1,41 @@
+<p>You can now build an interval such as "from 0.618 to 0.702". This topic is about the words that go with it: what the interval says, what "95% confident" means, and how an interval supports or fails to support a claim. These sentences earn or lose points on almost every inference question, so they follow fixed templates.</p>
+
+<h2>Interpreting the interval</h2>
+<p>Three pieces, in this order: the confidence level, the interval, and the parameter in context.</p>
+<p style="text-align:center"><b>"We are 95% confident that the interval from 0.618 to 0.702 captures the true proportion of all the district's parents who support a later start time."</b></p>
+<p>The parameter is always about the population ("all the district's parents"), never about the sample. You already know the sample proportion exactly; the interval exists because you do not know the population proportion.</p>
+
+<h2>Interpreting the confidence level</h2>
+<p>The confidence level describes the method, not one interval. Imagine repeating the whole study many times:</p>
+<p style="text-align:center"><b>"If we took many random samples of 500 parents and built a 95% interval from each, about 95% of the intervals would capture the true proportion of all the district's parents who support a later start time."</b></p>
+<figure id="fig-capture" data-fig="ci-capture-25"><figcaption>Twenty-five 95% intervals from random samples of 400 when p = 0.60. Most cross the line; a few miss. In the long run about 95% capture p.</figcaption></figure>
+<p><a class="figref" href="#fig-capture">The figure</a> shows the idea. Each sample gives a different $\hat{p}$, so each interval sits in a different place. The true proportion does not move. Some intervals miss it, and we never know which ones, which is why we say "confident" and not "certain".</p>
+
+<h2>Readings that lose the point</h2>
+<table>
+<thead><tr><th scope="col">Wrong reading</th><th scope="col">Why it is wrong</th></tr></thead>
+<tbody>
+<tr><td>"There is a 95% probability that $p$ is between 0.618 and 0.702."</td><td>$p$ is a fixed number, and this interval is fixed too: it either captures $p$ or it does not. The 95% belongs to the method.</td></tr>
+<tr><td>"95% of parents are between 0.618 and 0.702."</td><td>Each parent supports the change or not. The interval is about one proportion, not about individuals or about 95% of the data.</td></tr>
+<tr><td>"We are 95% confident the sample proportion is in the interval."</td><td>The sample proportion is the center of the interval, so it is always inside. The target is the population proportion.</td></tr>
+<tr><td>"95% of samples will have $\hat{p}$ between 0.618 and 0.702."</td><td>Other samples give other intervals; the 95% is about intervals capturing $p$.</td></tr>
+</tbody>
+</table>
+
+<h2>Plausible values and claims</h2>
+<p>Every value inside a confidence interval is a <b>plausible value</b> for the parameter: the data are consistent with it. Values outside the interval are not plausible at that confidence level. That gives a simple rule for judging a claim:</p>
+<ul>
+<li><b>The claimed value is inside the interval.</b> It is plausible. The interval does not give convincing evidence against the claim. It does not prove the claim either, because many other values are plausible too.</li>
+<li><b>The interval lies entirely on one side of the claimed value.</b> The claimed value is not plausible, and the interval gives <b>convincing evidence</b> that the parameter is greater than (or less than) it.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example.</b> A school board says more than 60% of the district's parents support a later start. In a random sample of 500 parents, 330 support it, and the 95% interval is $0.66 \pm 1.96\sqrt{\frac{0.66(0.34)}{500}} = 0.66 \pm 0.042$, from 0.618 to 0.702. Does the interval support the board's claim?</p>
+<p><b>Compare.</b> Every value from 0.618 to 0.702 is greater than 0.60, so 0.60 (and anything below it) is not a plausible value.</p>
+<p><b>Conclude.</b> Because every value in the interval from 0.618 to 0.702 is greater than 0.60, the interval gives convincing evidence that the true proportion of all the district's parents who support a later start time is greater than 0.60.</p>
+<p><b>A second claim.</b> A teacher says the true figure is 70%. 0.70 is inside the interval, so it is plausible: the interval does not give convincing evidence that the true proportion is different from 0.70.</p>
+</div>
+<p>Notice what the sample proportion alone cannot do. $\hat{p} = 0.66$ is above 0.60, but a sample could land above 0.60 by chance even if the true proportion were 0.60 or a bit less. The interval builds in that chance variation; the bare point estimate does not.</p>
+
+<h2>Changing the confidence level</h2>
+<p>A higher confidence level makes the interval longer, so more values become plausible and it is harder to rule a claimed value out. From the same sample, the 99% interval for the parents runs from 0.605 to 0.715. It still lies above 0.60, so the evidence for the board's claim holds even at 99% confidence. With a claimed value of 0.61, the 95% interval would rule it out but the 99% interval would not. Choose the level before looking at the data, and report the one you chose.</p>
+<p>On the exam, a claim question earns full credit when you (1) give the interval, (2) say whether the claimed value is inside it, using the word "plausible" or "every value is greater than", and (3) state the conclusion about the parameter in context.</p>

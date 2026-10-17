@@ -1,0 +1,14 @@
+{
+ "dotplot": {
+  "def": "A graph of a quantitative variable that puts one dot above a number line for each value; repeated values stack up."
+ },
+ "stemplot": {
+  "def": "A display of a quantitative variable that splits each value into a stem (its leading digits) and a leaf (its last digit), so every value is kept. It needs a key, such as 7 | 4 stands for 74."
+ },
+ "histogram": {
+  "def": "A graph of a quantitative variable that groups values into equal-width bins on a number line, with touching bars whose heights are the counts or relative frequencies in each bin."
+ },
+ "cumulative-graph": {
+  "def": "A graph that shows, for each value, the proportion of the data at or below that value (the relative frequencies added up from the left)."
+ }
+}

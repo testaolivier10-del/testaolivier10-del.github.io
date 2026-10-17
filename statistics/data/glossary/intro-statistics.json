@@ -1,0 +1,17 @@
+{
+ "statistics": {
+  "def": "The science of collecting, summarizing and interpreting data to answer questions whose answers vary from one individual to another."
+ },
+ "data": {
+  "def": "The values recorded for the individuals in a study: answers, counts or measurements."
+ },
+ "population": {
+  "def": "The whole group of individuals (people, animals or things) that a question is about."
+ },
+ "sample": {
+  "def": "The part of a population from which data are actually collected."
+ },
+ "context": {
+  "def": "The real situation behind the numbers: who or what was studied and what was measured. Results are always stated in context."
+ }
+}

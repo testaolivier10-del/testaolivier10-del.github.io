@@ -1,0 +1,11 @@
+{
+ "expected-counts-table": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep",
+  "ext": "svg",
+  "w": 700,
+  "h": 330,
+  "alt": "Two-way table of 400 adults by age group and main news source showing each observed count with its expected count in parentheses, for example 72 observed and 45.5 expected for adults 55 and older who use TV, found as 140 times 130 divided by 400."
+ }
+}

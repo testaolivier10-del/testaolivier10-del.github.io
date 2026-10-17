@@ -1,0 +1,40 @@
+<p>Some chance questions have neat formulas. Many do not, or the formula is not obvious. A simulation answers them anyway: you build a small model of the chance process, run it many times, and count. This topic also fixes what the word probability means, which the rest of the unit builds on.</p>
+
+<h2>What a probability is</h2>
+<p>Flip a fair coin once and you cannot say what will happen. Flip it 10,000 times and the share of heads will be very close to one half. That long-run share is the <b>probability</b> of heads. In general, the probability of a result is the proportion of times it would happen if the chance process were repeated a very large number of times. It is always a number from 0 to 1: 0 for a result that never happens, 1 for one that always does.</p>
+<p>The <b>law of large numbers</b> says exactly this: as the number of repetitions grows, the share of repetitions with the result gets closer and closer to its probability. In the short run, anything can happen. Thirteen heads in 20 flips is common. After 2,000 flips the share will very likely be close to 0.5. The early excess of heads is not "corrected" by extra tails; it is simply swamped by the many later flips.</p>
+
+<h2>Running a simulation</h2>
+<p>A <b>simulation</b> imitates a chance process with a model that has the same chances. Each repetition of the model is one <b>trial</b>. The share of trials with the result estimates its probability. Four steps make a simulation someone else could follow:</p>
+<ol>
+<li><b>Model.</b> Name the chance device and what each value means. For a 70% free-throw shooter, use random digits: 0 to 6 is a make (7 of the 10 digits), 7 to 9 is a miss.</li>
+<li><b>Trial.</b> Say what one trial is and what you record. For "9 or more makes in 10 shots", one trial is 10 random digits, and you record the number of makes.</li>
+<li><b>Repeat.</b> Do many trials, often 100 or more.</li>
+<li><b>Estimate.</b> The estimated probability is the number of trials with the result divided by the number of trials.</li>
+</ol>
+<p>Two details matter. First, the digit assignment must match the real chances. Digits 1 to 6 do not model a 1-in-6 chance: they are 6 of 10 digits, a 60% chance. Second, decide whether repeats are allowed. When each trial step is a new shot with the same chance, repeated digits are fine. When you are choosing different people, as in a random sample, you skip repeats.</p>
+
+<h2>Testing a claim with a simulation</h2>
+<figure id="fig-council" data-fig="u2-sim-dotplot"><figcaption>100 simulated random picks of 4 members from 8 seniors and 12 juniors.</figcaption></figure>
+<p>A student council of 8 seniors and 12 juniors says it picked 4 members at random for a conference, and all 4 were seniors. Is that believable? Simulate the claim: label the members 01 to 20, with 01 to 08 the seniors. Use random numbers to choose 4 different labels, skipping repeats and numbers above 20, and record how many seniors are chosen. <a class="figref" href="#fig-council">The figure</a> shows 100 such trials.</p>
+<div class="worked">
+<p><b>Worked example.</b> Use the simulation to judge the council's claim.</p>
+<p>Count the trials at the observed result: 2 of the 100 trials chose 4 seniors.</p>
+<p>Estimate: $\frac{2}{100} = 0.02$.</p>
+<p>Conclusion: if the pick were truly random, choosing 4 seniors would happen only about 2% of the time. Because that result is so unusual, the data give reason to doubt that the council picked at random.</p>
+</div>
+<p>Notice what the conclusion does not say. It does not say the pick was certainly unfair: 2 of the 100 random picks did choose 4 seniors. A rare result makes the claim hard to believe; it does not make it impossible. The comparison is always "How often does the model produce a result like the one we saw?"</p>
+
+<h2>Reading a simulation's dotplot</h2>
+<p>Each dot is one trial. To estimate a probability, count the dots that meet the condition and divide by the number of dots. Watch the words. "10 or more boxes" includes the dots at 10. "More than 10" does not. A cereal maker puts one of 4 prizes in each box at random; in a simulation of 100 families buying boxes until they had all 4 prizes, 27 families needed 10 or more boxes, so the estimate is $\frac{27}{100} = 0.27$.</p>
+<table class="compare">
+<thead><tr><th>Word</th><th>Means</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Trial</td><td>one run of the chance model</td><td>one simulated family buying boxes</td></tr>
+<tr><td>Result recorded</td><td>what you note after each trial</td><td>the number of boxes bought</td></tr>
+<tr><td>Estimate</td><td>trials with the result over all trials</td><td>$\frac{27}{100} = 0.27$</td></tr>
+</tbody>
+</table>
+
+<h2>How many trials?</h2>
+<p>An estimate from 50 trials can easily be off by several percentage points. One from 1,000 trials is much steadier. So when two simulations disagree, trust the one with more trials. If you need a more trustworthy estimate, run more trials; never change the model or stop trials early to get a number you like.</p>

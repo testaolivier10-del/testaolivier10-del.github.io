@@ -1,0 +1,11 @@
+{
+ "regression-line-predict": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep",
+  "ext": "svg",
+  "w": 620,
+  "h": 400,
+  "alt": "The sleep and reaction time scatterplot with the regression line, predicted time = 391.1 minus 11.37 times hours; dashed lines go up from 6.8 hours to the line and across to a predicted reaction time of 314 milliseconds."
+ }
+}

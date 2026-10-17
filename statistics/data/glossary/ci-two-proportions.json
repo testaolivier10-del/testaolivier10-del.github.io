@@ -1,0 +1,5 @@
+{
+ "two-sample-z-interval": {
+  "def": "A confidence interval for the difference of two population proportions, $p_1 - p_2$: $(\\hat{p}_1 - \\hat{p}_2) \\pm z^* \\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$. It needs two independent random samples (or two randomly assigned groups) and at least 10 successes and 10 failures in each."
+ }
+}

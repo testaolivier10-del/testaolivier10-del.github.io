@@ -1,0 +1,12 @@
+{
+ "distances-from-average": {
+  "file": "figures/distances-from-average.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 240,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three values, 2, 4 and 9, as dots on a number line from 0 to 10. A plum line marks their average, (2 + 4 + 9) / 3 = 5. Arrows from the average to each value show the distances 2 − 5 = −3, 4 − 5 = −1 and 9 − 5 = 4."
+ }
+}

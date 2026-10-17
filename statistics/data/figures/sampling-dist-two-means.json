@@ -1,0 +1,12 @@
+{
+ "diff-means-normal": {
+  "file": "figures/diff-means-normal.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 560,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Top: two normal curves for the sample mean apple weight, orchard A centered at 180 grams with standard deviation 3.16 and orchard B centered at 170 grams with standard deviation 3.54. Bottom: a wider normal curve for the difference of the two sample means, centered at 10 grams with standard deviation 4.74; the area below 0, shaded, is 0.0175."
+ }
+}

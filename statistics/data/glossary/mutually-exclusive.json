@@ -1,0 +1,8 @@
+{
+ "intersection": {
+  "def": "The joint event \"A and B\", written $A \\cap B$ (the intersection of A and B), happens when both A and B happen. Its probability is the joint probability $P(A \\cap B)$; in a two-way table it is one cell over the grand total."
+ },
+ "mutually-exclusive": {
+  "def": "Two events are mutually exclusive, or disjoint, when they have no outcomes in common, so they cannot happen together: $P(A \\cap B) = 0$. Then the probability that one or the other happens is $P(A) + P(B)$."
+ }
+}

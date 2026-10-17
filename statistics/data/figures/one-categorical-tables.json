@@ -1,0 +1,12 @@
+{
+ "counts-to-relative": {
+  "file": "figures/counts-to-relative.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: 250 students drawn as dots, one dot for every 5 students, in five rows: Bus 95, Car 80, Walk 45, Bike 20, Other 10. Right: the frequency table with each count over 250: Bus 0.38, Car 0.32, Walk 0.18, Bike 0.08, Other 0.04, total 1.00."
+ }
+}

@@ -1,0 +1,691 @@
+{
+ "stimuli": {
+  "test-two-proportions-s1": {
+   "kind": "table",
+   "title": "New recycling bins: the test",
+   "text": "A city randomly assigned 160 volunteer households a new recycling bin and 140 the old bin. It tests $H_0: p_N - p_O = 0$ against $H_a: p_N - p_O > 0$ at $\\alpha = 0.05$, where $p_N$ and $p_O$ are the true proportions of households like these that would sort correctly with each bin. The conditions are met. (Invented data.)",
+   "table": {
+    "caption": "Households that sorted correctly",
+    "cols": [
+     "Bin",
+     "Sorted correctly",
+     "Households",
+     "Sample proportion"
+    ],
+    "rows": [
+     [
+      "New",
+      "125",
+      "160",
+      "0.781"
+     ],
+     [
+      "Old",
+      "91",
+      "140",
+      "0.650"
+     ],
+     [
+      "Both",
+      "216",
+      "300",
+      "$p_c = 0.72$"
+     ]
+    ]
+   }
+  },
+  "test-two-proportions-s2": {
+   "kind": "table",
+   "title": "Computer output: support for a park bond",
+   "text": "A newspaper takes independent random samples of likely voters in two districts and asks whether they support a park bond. It tests whether support differs between the districts. The output from its software is below. (Invented data.)",
+   "table": {
+    "caption": "Test for two proportions, $H_0: p_A - p_B = 0$ against $H_a: p_A - p_B \\ne 0$",
+    "cols": [
+     "Sample",
+     "Support",
+     "N",
+     "Sample p"
+    ],
+    "rows": [
+     [
+      "District A",
+      "212",
+      "400",
+      "0.5300"
+     ],
+     [
+      "District B",
+      "171",
+      "360",
+      "0.4750"
+     ],
+     [
+      "Difference",
+      "",
+      "",
+      "0.0550"
+     ],
+     [
+      "Pooled p",
+      "",
+      "",
+      "0.5039"
+     ],
+     [
+      "Z",
+      "",
+      "",
+      "1.51"
+     ],
+     [
+      "P-Value",
+      "",
+      "",
+      "0.130"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-test-two-proportions-1",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "setup",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "test-two-proportions-s1",
+   "q": "Write the expression for the test statistic $z$, with the values substituted, then give its value to two decimal places.",
+   "why": {
+    "correct": "$z = \\frac{0.781 - 0.650}{\\sqrt{0.72(0.28)\\left(\\frac{1}{160} + \\frac{1}{140}\\right)}} = \\frac{0.131}{0.0520} = 2.53$."
+   },
+   "setup": {
+    "answer": "(0.78125 - 0.65)/sqrt(0.72*0.28*(1/160 + 1/140))",
+    "bind": {
+     "phat1": 0.78125,
+     "phat2": 0.65,
+     "pc": 0.72
+    },
+    "mustUse": [
+     "pc"
+    ],
+    "mustNotUse": [
+     "phat1 in sqrt",
+     "phat2 in sqrt"
+    ],
+    "then": {
+     "kind": "z",
+     "from": {
+      "fn": "z2prop",
+      "args": [
+       125,
+       160,
+       91,
+       140
+      ],
+      "pick": "z"
+     }
+    },
+    "mistakes": [
+     {
+      "expr": "(0.78125 - 0.65)/sqrt(0.78125*0.21875/160 + 0.65*0.35/140)",
+      "why": "That is the standard error of an interval. A test assumes $H_0$, so its standard error uses the pooled proportion $p_c = 0.72$ for both groups."
+     },
+     {
+      "expr": "(0.78125 - 0.65)/sqrt(0.72*0.28/300)",
+      "why": "That treats the 300 households as one sample. The standard error has a term for each group: $\\frac{1}{160} + \\frac{1}{140}$."
+     },
+     {
+      "expr": "(0.78125 - 0.65)/(0.72*0.28*(1/160 + 1/140))",
+      "why": "The square root is missing: that divides by the variance instead of the standard error."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-proportions-2",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "test-two-proportions-s1",
+   "q": "What is the p-value of the test? Give four decimal places.",
+   "why": {
+    "correct": "$P(Z \\ge 2.53) = 0.0058$, the area to the right of $z$ under the standard normal curve."
+   },
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "z2prop",
+     "args": [
+      125,
+      160,
+      91,
+      140
+     ],
+     "pick": "p.greater"
+    },
+    "mistakes": [
+     {
+      "value": 0.0115,
+      "why": "That doubles the tail area, as for a two-sided test. Here $H_a$ is one-sided ($>$), so the p-value is the area to the right of $z$ alone."
+     },
+     {
+      "value": 0.9942,
+      "why": "That is the area to the left of $z$. For $H_a: p_N - p_O > 0$ the p-value is the area to the right."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-proportions-3",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "test-two-proportions-s1",
+   "q": "State the conclusion of the test in context.",
+   "why": {
+    "correct": "Compare, then evidence, direction and parameter in context."
+   },
+   "conclude": {
+    "mode": "test",
+    "p": 0.0058,
+    "alpha": 0.05,
+    "ha": "greater",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence that",
+       "There is not convincing evidence that",
+       "This proves that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is far below 0.05.",
+       "2": "A test never proves; it gives evidence."
+      }
+     },
+     "direction": {
+      "options": [
+       "is greater than",
+       "is different from",
+       "is less than"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "$H_a$ is one-sided, so the conclusion names its direction.",
+       "2": "The alternative is that the new bin is better."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true proportion of households like these that sort correctly with the new bin ... with the old bin",
+       "the proportion of the 160 study households with new bins that sorted correctly ... with old bins",
+       "the pooled proportion of households that sort correctly ... 0.72"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That describes the sample, which we know. Conclusions are about the true proportions.",
+       "2": "The pooled proportion is a step in the calculation, not the parameter."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.0058 is less than 0.05, we reject the null hypothesis. There is convincing evidence that the true proportion of all households like these that sort their recycling correctly is greater with the new bin than with the old bin.",
+    "write": {
+     "context": [
+      "households",
+      "bin"
+     ],
+     "direction": "greater",
+     "compare": {
+      "p": 0.0058,
+      "alpha": 0.05
+     }
+    }
+   }
+  },
+  {
+   "id": "stat-test-two-proportions-4",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "test-two-proportions-s1",
+   "q": "In this study, what would a Type I error be?",
+   "why": {
+    "correct": "Type I: $H_0$ is true, but we reject it.",
+    "options": [
+     "Right: a Type I error rejects a true $H_0$, here finding convincing evidence that the new bin helps when it makes no difference.",
+     "A sample result by itself is not an error. Errors are about the decision made from it.",
+     "That is a flaw in design, not a Type I or Type II error.",
+     "That is a Type II error: failing to find a real effect."
+    ]
+   },
+   "options": [
+    "Finding the new bin helps when it truly makes no difference",
+    "Getting a sample proportion of 0.781 by chance",
+    "Assigning the bins without random assignment",
+    "Concluding the new bin makes no difference when it really does help"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-two-proportions-5",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "test-two-proportions-s1",
+   "q": "What may the city conclude about cause and about which households?",
+   "why": {
+    "correct": "Random assignment: cause. Random sampling: generalize. This study has only the first.",
+    "options": [
+     "Volunteers may differ from other households, so the result cannot be extended to the whole city without a random sample.",
+     "Random sampling is about generalizing. Random assignment, which this study has, supports cause.",
+     "Right: random assignment supports cause and effect; volunteers are not a random sample, so generalize with care.",
+     "Unequal group sizes are fine for this test."
+    ]
+   },
+   "options": [
+    "The new bin caused better sorting for each household in the city",
+    "There is an association but no cause, since no random sample was taken",
+    "Cause: the new bin helped, for households like these volunteers",
+    "Nothing, because the groups had different sizes"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-test-two-proportions-6",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "test-two-proportions-s2",
+   "q": "Check the software: what is the value of the test statistic $z$? Give two decimal places.",
+   "why": {
+    "correct": "$z = \\frac{0.530 - 0.475}{\\sqrt{0.5039(0.4961)\\left(\\frac{1}{400} + \\frac{1}{360}\\right)}} = 1.51$."
+   },
+   "numeric": {
+    "kind": "z",
+    "from": {
+     "fn": "z2prop",
+     "args": [
+      212,
+      400,
+      171,
+      360
+     ],
+     "pick": "z"
+    },
+    "mistakes": [
+     {
+      "value": 3.033,
+      "why": "That uses one sample of 760 in the standard error. Use $\\frac{1}{400} + \\frac{1}{360}$, one term per district."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-proportions-7",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "test-two-proportions-s2",
+   "q": "Which is the correct interpretation of the p-value, 0.130?",
+   "why": {
+    "correct": "A p-value: assuming $H_0$, the probability of a result at least as extreme as the one observed.",
+    "options": [
+     "A Type I error can happen only if we reject $H_0$, and its probability is $\\alpha$, set in advance.",
+     "The p-value is about the samples' difference under $H_0$, not about individual voters.",
+     "Right: the p-value assumes $H_0$ and names the statistic, how extreme, and both directions for a two-sided test.",
+     "A p-value is computed assuming $H_0$ is true; it is not the probability that $H_0$ is true."
+    ]
+   },
+   "options": [
+    "There is a 0.130 probability that the newspaper made a Type I error",
+    "About 13% of voters in District A support the bond more than voters in B",
+    "If support is equal in both districts, a gap of 0.055 or more either way has probability 0.130",
+    "There is a 0.130 probability that support for the bond is the same in both districts"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-test-two-proportions-8",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "test-two-proportions-s2",
+   "q": "State the conclusion at $\\alpha = 0.05$.",
+   "why": {
+    "correct": "p > α: fail to reject; not convincing evidence for $H_a$, in context."
+   },
+   "conclude": {
+    "mode": "test",
+    "p": 0.13,
+    "alpha": 0.05,
+    "ha": "different",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is not convincing evidence that",
+       "There is convincing evidence that",
+       "It is shown that it is false that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is above 0.05, so the evidence is not convincing.",
+       "2": "Failing to reject does not show anything is false; it means the evidence is not strong enough."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true proportions of likely voters who support the bond differ between the two districts",
+       "the sample proportions, 0.53 and 0.475, differ",
+       "the true proportions of likely voters who support the bond are equal in the two districts"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "We know the sample proportions differ. The question is about the populations.",
+       "2": "The conclusion is stated about $H_a$, the claim we looked for evidence of."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.130 is greater than 0.05, we fail to reject the null hypothesis. There is not convincing evidence that the true proportions of all likely voters who support the park bond differ between District A and District B.",
+    "write": {
+     "context": [
+      "voters",
+      "bond"
+     ],
+     "direction": "different",
+     "compare": {
+      "p": 0.13,
+      "alpha": 0.05
+     }
+    }
+   }
+  },
+  {
+   "id": "stat-test-two-proportions-9",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "test-two-proportions-s2",
+   "q": "A reader writes: \"The test shows that support for the bond is the same in both districts.\" What is wrong with this?",
+   "why": {
+    "correct": "Never \"accept\" $H_0$; say \"not convincing evidence\".",
+    "options": [
+     "The sample difference could easily be chance (p = 0.13). That is why we fail to reject.",
+     "Changing the alternative after seeing the data to get a smaller p-value is not allowed.",
+     "Right: the evidence for a difference is not convincing, but a real difference of several points is still plausible.",
+     "A test never proves $H_0$. A large p-value only means the data are not surprising if $H_0$ is true."
+    ]
+   },
+   "options": [
+    "The test showed that District A has more support, since 0.53 > 0.475",
+    "The reader should have used a one-sided test to get a smaller p-value",
+    "Failing to reject is not evidence of no difference",
+    "Nothing; a large p-value proves $H_0$"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-test-two-proportions-10",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "In independent random samples of 150 residents each, 45 people in Lakeview and 63 people in Hillcrest say they take public transit to work. For a test of $H_0: p_L - p_H = 0$ against $H_a: p_L - p_H \\ne 0$, what is the p-value? Give four decimal places.",
+   "why": {
+    "correct": "$p_c = \\frac{108}{300} = 0.36$, $z = \\frac{0.30 - 0.42}{\\sqrt{0.36(0.64)\\left(\\frac{2}{150}\\right)}} = -2.17$, and $2P(Z \\le -2.17) = 0.0304$."
+   },
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "z2prop",
+     "args": [
+      45,
+      150,
+      63,
+      150
+     ],
+     "pick": "p.two"
+    },
+    "mistakes": [
+     {
+      "value": 0.0152,
+      "why": "That is one tail only. The alternative is two-sided ($\\ne$), so double the tail area."
+     },
+     {
+      "value": 0.9696,
+      "why": "That is the area between the two tails. The p-value is the area in both tails beyond $z$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-proportions-11",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two studies find the same sample proportions, 0.30 and 0.42, but the second uses samples four times as large. How does its test statistic compare?",
+   "why": {
+    "correct": "With the same difference, larger samples give a larger $|z|$ and a smaller p-value.",
+    "options": [
+     "Right: the standard error is divided by $\\sqrt{4} = 2$, so $z$ doubles and the evidence is stronger.",
+     "The proportions set the numerator; the sample sizes set the standard error in the denominator.",
+     "The standard error shrinks by $\\sqrt{4}$, not by 4, so $z$ doubles.",
+     "Larger samples give smaller standard errors and so larger $z$ values, not smaller."
+    ]
+   },
+   "options": [
+    "About twice as large, so the p-value is smaller",
+    "The same, since the proportions are the same",
+    "About four times as large, since the samples are four times as large",
+    "About half as large in size"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-two-proportions-12",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A website invites visitors to vote on two logo designs and finds a significant difference with a two-sample z test. Which condition is the biggest problem?",
+   "why": {
+    "correct": "Without random samples or random assignment, the test has no sound basis.",
+    "options": [
+     "Many visitors make large counts easy to meet.",
+     "Right: a voluntary response sample is not random, so the test's results cannot be trusted to describe any population.",
+     "Being under 10% is what the condition requires.",
+     "The level is a choice, not a condition. The data collection is the problem."
+    ]
+   },
+   "options": [
+    "Large counts: websites get too many visitors",
+    "Random: the voters chose to take part",
+    "10%: the voters are less than 10% of internet users",
+    "The significance level was 0.05 rather than 0.01"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-test-two-proportions-13",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A two-sided two-sample z test at $\\alpha = 0.05$ rejects $H_0: p_1 - p_2 = 0$. What can you say about the 95% confidence interval for $p_1 - p_2$ from the same data?",
+   "why": {
+    "correct": "Tests and intervals agree about whether 0 is plausible, except in rare borderline cases because their standard errors differ slightly.",
+    "options": [
+     "An interval containing 0 goes with failing to reject, not rejecting.",
+     "An interval is centered at $\\hat{p}_1 - \\hat{p}_2$, not at the null value.",
+     "Right: a two-sided test at 0.05 and a 95% interval nearly always agree; rejecting means 0 is not plausible.",
+     "The margin of error depends on $z^*$ and the standard error, not on $\\alpha$ directly."
+    ]
+   },
+   "options": [
+    "It contains 0, the null value",
+    "It is centered at 0",
+    "It almost surely excludes 0",
+    "It has a margin of error of 0.05"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-test-two-proportions-14",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a two-sample z test use $\\sqrt{p_c(1 - p_c)\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}$ while the interval uses $\\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$?",
+   "why": {
+    "correct": "Test: assume $H_0$, pool. Interval: no assumption, keep each $\\hat{p}$.",
+    "options": [
+     "Pooled and unpooled values are usually close; the choice comes from assuming $H_0$, not from size.",
+     "It is the other way round: only the test assumes they are equal.",
+     "Both procedures work for samples and for experiments.",
+     "Right: under $H_0$ both groups share one proportion, best estimated by $p_c$."
+    ]
+   },
+   "options": [
+    "The test needs a larger standard error to be fair",
+    "The interval assumes the proportions are equal",
+    "Intervals are for experiments and tests are for samples",
+    "It is computed as if $H_0: p_1 = p_2$ were true"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-test-two-proportions-15",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "A test of $H_0: p_1 - p_2 = 0$ gives a p-value of 0.21, so the researchers fail to reject $H_0$. Which error could they have made?",
+   "why": {
+    "correct": "Fail to reject: the possible error is Type II.",
+    "options": [
+     "One decision allows one kind of error: fail to reject, so only Type II.",
+     "They did not reject $H_0$, so a Type I error is not possible here.",
+     "Right: failing to reject a false $H_0$ is a Type II error.",
+     "A large p-value does not show $H_0$ is true; a real difference may have gone undetected."
+    ]
+   },
+   "options": [
+    "Both a Type I and a Type II error",
+    "A Type I error: they may have rejected a true $H_0$",
+    "A Type II error: missing a real difference",
+    "No error, since the p-value is large"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-test-two-proportions-16",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "A test of $H_0: p_M - p_W = 0$ against $H_a: p_M - p_W < 0$, where $p_M$ and $p_W$ are the true proportions of men and women at a large college who skip breakfast, gives a p-value of 0.0137 from independent random samples. State the conclusion at $\\alpha = 0.05$.",
+   "why": {
+    "correct": "p < α: reject; convincing evidence for $H_a$, with its direction, in context."
+   },
+   "conclude": {
+    "mode": "test",
+    "p": 0.0137,
+    "alpha": 0.05,
+    "ha": "less",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence that",
+       "There is not convincing evidence that",
+       "It is proven that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is below 0.05.",
+       "2": "A test never proves."
+      }
+     },
+     "direction": {
+      "options": [
+       "is less than",
+       "is greater than",
+       "is equal to"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "$H_a$ says men's proportion is lower.",
+       "2": "Equality is the null hypothesis, never the conclusion."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true proportion of men at the college who skip breakfast ... that of women",
+       "the proportion of the 200 men sampled who skipped breakfast ... the 220 women sampled",
+       "the number of men who skip breakfast ... the number of women"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Conclusions are about populations, not the samples.",
+       "2": "The parameters are proportions, not counts."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.0137 is less than 0.05, we reject the null hypothesis. There is convincing evidence that the true proportion of all men at the college who skip breakfast is less than the true proportion of all women at the college who do.",
+    "write": {
+     "context": [
+      "breakfast",
+      "college"
+     ],
+     "direction": "less",
+     "compare": {
+      "p": 0.0137,
+      "alpha": 0.05
+     }
+    }
+   }
+  }
+ ]
+}

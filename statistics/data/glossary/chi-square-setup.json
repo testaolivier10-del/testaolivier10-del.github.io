@@ -1,0 +1,14 @@
+{
+ "chi-square": {
+  "def": "The statistic $\\chi^2 = \\sum \\frac{(O - E)^2}{E}$, added over every cell of a table of observed ($O$) and expected ($E$) counts. It is 0 when the observed counts match the expected counts exactly and grows as they move apart."
+ },
+ "homogeneity": {
+  "def": "A chi-square test of whether one categorical variable has the same distribution in several populations or treatment groups, using separate random samples or randomly assigned groups. $H_0$: the distributions are the same."
+ },
+ "independence-test": {
+  "def": "A chi-square test of whether two categorical variables are associated in a population, using one random sample classified by both variables. $H_0$: there is no association between the variables."
+ },
+ "expected-count": {
+  "def": "The count a cell of a two-way table would have, on average, if the null hypothesis were true: $\\frac{\\text{row total} \\times \\text{column total}}{\\text{grand total}}$. The observed count is the count in the data."
+ }
+}

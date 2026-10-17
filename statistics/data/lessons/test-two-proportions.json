@@ -1,0 +1,71 @@
+{
+ "hook": "The recycling test is set up: $H_0: p_N - p_O = 0$, $H_a: p_N - p_O > 0$, and the pooled proportion is 0.72. The new bin households sorted correctly 13 points more often. Now the real question: if the bin made no difference, how often would random assignment alone produce a gap that large?",
+ "prereq": [
+  {
+   "q": "For $z = 2.10$ and $H_a: p > p_0$, the p-value is the area",
+   "options": [
+    "to the right of 2.10",
+    "to the left of 2.10",
+    "in both tails beyond 2.10",
+    "between $-2.10$ and 2.10"
+   ],
+   "correct": 0,
+   "why": "A \"greater than\" alternative uses the right tail.",
+   "review": "test-one-proportion"
+  },
+  {
+   "q": "What is the pooled proportion for 30 of 100 and 50 of 150?",
+   "options": [
+    "$0.32$",
+    "$0.317$",
+    "$0.4$",
+    "$0.033$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{30 + 50}{100 + 150} = \\frac{80}{250} = 0.32$.",
+   "review": "test-two-proportions-setup"
+  }
+ ],
+ "figure": {
+  "figure": "two-prop-pvalue",
+  "caption": "If $H_0$ is true, $\\hat{p}_N - \\hat{p}_O$ is centered at 0 with standard error 0.052. The observed 0.131 is far in the right tail; the shaded area is the p-value."
+ },
+ "chain": [
+  {
+   "cause": "Assume $H_0$: the two true proportions are equal",
+   "effect": "the difference $\\hat{p}_1 - \\hat{p}_2$ is centered at 0, with standard error $\\sqrt{p_c(1 - p_c)\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}$"
+  },
+  {
+   "cause": "Standardize the observed difference",
+   "effect": "$z = \\frac{(\\hat{p}_1 - \\hat{p}_2) - 0}{\\sqrt{p_c(1 - p_c)\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}}$ counts how many standard errors it lies from 0"
+  },
+  {
+   "cause": "Find the area beyond $z$ in the direction of $H_a$ (both tails for $\\ne$)",
+   "effect": "that area is the p-value: how often chance alone gives a difference this extreme"
+  },
+  {
+   "cause": "Compare the p-value with $\\alpha$",
+   "effect": "reject or fail to reject $H_0$, then state convincing evidence (or not) for $H_a$ about the true proportions, in context"
+  }
+ ],
+ "ideas": [
+  "Test statistic: $z = \\frac{\\hat{p}_1 - \\hat{p}_2}{\\sqrt{p_c(1 - p_c)\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}}$, with $p_c = \\frac{x_1 + x_2}{n_1 + n_2}$.",
+  "p-value: area beyond $z$ in the direction of $H_a$; double one tail for a two-sided test.",
+  "Conclusion: \"Because the p-value of ... is less than (greater than) $\\alpha$ = ..., we reject (fail to reject) $H_0$. There is (is not) convincing evidence that the true proportion ...\"",
+  "Reject: a Type I error is possible. Fail to reject: a Type II error is possible."
+ ],
+ "misconception": {
+  "wrong": "A p-value of 0.13 means there is a 13% chance that the two proportions are equal.",
+  "right": "The p-value is computed assuming the proportions are equal. It is the probability of a difference at least as extreme as the one observed if $H_0$ were true, not the probability that $H_0$ is true."
+ },
+ "check": [
+  "stat-test-two-proportions-1",
+  "stat-test-two-proportions-2",
+  "stat-test-two-proportions-3",
+  "stat-test-two-proportions-4",
+  "stat-test-two-proportions-11",
+  "stat-test-two-proportions-15"
+ ],
+ "summary": "A two-sample z test standardizes the observed difference with the pooled standard error, $z = \\frac{\\hat{p}_1 - \\hat{p}_2}{\\sqrt{p_c(1 - p_c)(\\frac{1}{n_1} + \\frac{1}{n_2})}}$, finds the p-value in the direction of $H_a$, compares it with $\\alpha$, and concludes about the true proportions in context, never accepting $H_0$.",
+ "topic": "test-two-proportions"
+}

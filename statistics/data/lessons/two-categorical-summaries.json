@@ -1,0 +1,71 @@
+{
+ "topic": "two-categorical-summaries",
+ "hook": "A state park wants to know who comes to fish so it can plan bait shops and boat rentals. Rangers ask 250 visitors two questions: is this your first visit, and what did you come to do? The same table of counts answers three different questions, depending on which total you divide by.",
+ "prereq": [
+  {
+   "q": "In a two-way table, where is the grand total?",
+   "options": [
+    "In the corner, where the Total row and Total column meet",
+    "At the end of the first row",
+    "At the top of the first column",
+    "In the largest cell"
+   ],
+   "correct": 0,
+   "why": "The grand total counts every individual and sits where the totals meet.",
+   "review": "two-categorical-displays"
+  },
+  {
+   "q": "A relative frequency is",
+   "options": [
+    "a count divided by a total",
+    "a count multiplied by 100",
+    "the largest count in a table",
+    "a total minus a count"
+   ],
+   "correct": 0,
+   "why": "A relative frequency is a share: count over total.",
+   "review": "one-categorical-tables"
+  }
+ ],
+ "figure": {
+  "figure": "u2-park-table",
+  "caption": "One table, three kinds of share: a cell over the grand total (joint), a total over the grand total (marginal), and a cell over its row or column total (conditional)."
+ },
+ "chain": [
+  {
+   "cause": "Divide one cell by the grand total",
+   "effect": "a joint relative frequency: the share of everyone in that pairing (45 of 250 are first visits who hiked, 0.18)"
+  },
+  {
+   "cause": "Divide a row or column total by the grand total",
+   "effect": "a marginal relative frequency: the share of everyone in one category (105 of 250 hiked, 0.42)"
+  },
+  {
+   "cause": "Divide one cell by its row or column total",
+   "effect": "a conditional relative frequency: the share within one group (45 of the 100 first visits hiked, 0.45)"
+  },
+  {
+   "cause": "Compare conditional relative frequencies across groups",
+   "effect": "if they differ, the variables are associated"
+  }
+ ],
+ "ideas": [
+  "<b>Joint relative frequency</b>: one cell over the grand total.",
+  "<b>Marginal relative frequency</b>: a row or column total over the grand total. The marginal distribution of a variable lists them for every category.",
+  "<b>Conditional relative frequency</b>: one cell over its row or column total. Read \"of those who ...\" to find the group, and divide by that group's total.",
+  "Conditional relative frequencies for one group add to 1. If they are the same for every group, there is no association."
+ ],
+ "misconception": {
+  "wrong": "The share of course takers who passed and the share of passers who took the course are the same number.",
+  "right": "They have different denominators: 60 of the 80 course takers passed (0.75), but 60 of the 126 passers took the course (0.476). The group named first is the denominator."
+ },
+ "check": [
+  "stat-two-categorical-summaries-1",
+  "stat-two-categorical-summaries-2",
+  "stat-two-categorical-summaries-3",
+  "stat-two-categorical-summaries-6",
+  "stat-two-categorical-summaries-7",
+  "stat-two-categorical-summaries-11"
+ ],
+ "summary": "From one two-way table you can find three kinds of share. Joint: a cell over the grand total. Marginal: a row or column total over the grand total. Conditional: a cell over the total of its group. Compare groups with conditional relative frequencies; if they differ, the variables are associated."
+}

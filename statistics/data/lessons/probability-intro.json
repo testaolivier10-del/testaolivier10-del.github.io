@@ -1,0 +1,71 @@
+{
+ "topic": "probability-intro",
+ "hook": "A board game says you escape jail by rolling doubles. Your friend rolls a sum of 7 three turns in a row and swears the dice are loaded. Are some rolls really more common? List the 36 ways two dice can land, and the answers come from counting.",
+ "prereq": [
+  {
+   "q": "\"At least 3\" heads in 5 flips means",
+   "options": [
+    "3, 4 or 5 heads",
+    "0, 1, 2 or 3 heads",
+    "exactly 3 heads",
+    "4 or 5 heads"
+   ],
+   "correct": 0,
+   "why": "At least 3 means 3 or more.",
+   "review": "math-inequality-words"
+  },
+  {
+   "q": "In 500 simulated trials, a result happened 85 times. What is the estimated probability?",
+   "options": [
+    "0.17",
+    "0.85",
+    "85",
+    "0.085"
+   ],
+   "correct": 0,
+   "why": "$\\frac{85}{500} = 0.17$: trials with the result over all trials.",
+   "review": "simulation"
+  }
+ ],
+ "figure": {
+  "figure": "u2-dice-grid",
+  "caption": "The 36 equally likely outcomes of two dice. Five of them give a sum of 8."
+ },
+ "chain": [
+  {
+   "cause": "List every possible outcome of the chance process",
+   "effect": "the sample space (36 pairs for two dice)"
+  },
+  {
+   "cause": "The outcomes are equally likely",
+   "effect": "the probability of an event is the number of its outcomes over the total: $P(\\text{sum is } 8) = \\frac{5}{36}$"
+  },
+  {
+   "cause": "An event is easier to count from the outside",
+   "effect": "use the complement rule: $P(A) = 1 - P(A^c)$"
+  },
+  {
+   "cause": "The outcomes are not equally likely (win, lose, tie)",
+   "effect": "counting outcomes fails; use the long-run shares instead"
+  }
+ ],
+ "ideas": [
+  "The <b>sample space</b> is the list of every possible outcome. An <b>event</b> is a set of outcomes, such as \"sum is 8\".",
+  "When outcomes are <b>equally likely</b>, $P(A) = \\frac{\\text{number of outcomes in } A}{\\text{number of outcomes}}$.",
+  "Every probability is from 0 to 1, and the probabilities of all the outcomes add to 1.",
+  "The <b>complement</b> $A^c$ is \"A does not happen\": $P(A^c) = 1 - P(A)$. It is the quick route for \"at least one\"."
+ ],
+ "misconception": {
+  "wrong": "A sum of 12 has probability $\\frac{1}{11}$, since there are 11 possible sums.",
+  "right": "The sums are not equally likely. Count the 36 equally likely pairs: only (6, 6) gives 12, so the probability is $\\frac{1}{36}$."
+ },
+ "check": [
+  "stat-probability-intro-1",
+  "stat-probability-intro-2",
+  "stat-probability-intro-4",
+  "stat-probability-intro-6",
+  "stat-probability-intro-8",
+  "stat-probability-intro-15"
+ ],
+ "summary": "List the sample space. If its outcomes are equally likely, the probability of an event is its number of outcomes over the total. Probabilities run from 0 to 1 and the outcomes' probabilities add to 1. The complement rule, $P(A^c) = 1 - P(A)$, is often the fastest route, especially for \"at least one\"."
+}

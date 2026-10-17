@@ -189,7 +189,7 @@
   {
    "slug": "sampling-distributions",
    "kind": "simulator",
-   "topic": "sampling-dist-proportion",
+   "topic": "sampling-distributions",
    "name": "Sampling distributions",
    "title": "Sampling Distributions",
    "desc": "Pick a population, a sample size and a statistic, then take one, a hundred or a thousand samples: the sampling distribution builds dot by dot, with its center and spread against the formulas and the Central Limit Theorem made visible.",

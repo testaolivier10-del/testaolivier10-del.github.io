@@ -1,0 +1,41 @@
+<p>In the last topic you saw that a random sample's $\hat{p}$ is an unbiased estimator of $p$, and that larger samples make it less variable. Now we pin that down with numbers: the exact center, the exact spread, and when the shape is close enough to normal to use a normal model. Every estimate and every judgment about a proportion later in this unit is built on this one sampling distribution.</p>
+
+<h2>Center, spread and shape</h2>
+<p>Take a random sample of size $n$ from a population in which a proportion $p$ have some characteristic (a "success"). The sample proportion is $\hat{p} = \frac{\text{number of successes}}{n}$. Over all possible samples, $\hat{p}$ has a sampling distribution with:</p>
+<ul>
+<li><b>Center:</b> $\mu_{\hat{p}} = p$. This is the unbiasedness from the last topic, now as a formula.</li>
+<li><b>Spread:</b> the <b>standard deviation of the sample proportion</b>, $\sigma_{\hat{p}} = \sqrt{\frac{p(1 - p)}{n}}$. It is on the reference sheet.</li>
+<li><b>Shape:</b> approximately normal when the sample is large enough (the large counts condition, below).</li>
+</ul>
+<p>Why this formula? One person's answer is a 1 (success) or a 0 (failure), and the standard deviation of such a 0-or-1 value is $\sqrt{p(1 - p)}$. Averaging $n$ independent answers divides the spread by $\sqrt{n}$. That is where the square root of $n$ comes from, and it is why 4 times the sample size halves the spread.</p>
+<p>Notice that $p(1 - p)$ is largest when $p = 0.5$ ($0.5 \times 0.5 = 0.25$). For a fixed sample size, proportions near one half are the hardest to pin down.</p>
+
+<h2>Two conditions, two different jobs</h2>
+<p>Students often mix these two up. They protect different parts of the model.</p>
+<table>
+<thead><tr><th scope="col">Condition</th><th scope="col">What to check</th><th scope="col">What it protects</th></tr></thead>
+<tbody>
+<tr><td><b>10% condition</b></td><td>When sampling without replacement, $n$ is at most 10% of the population size</td><td>The standard deviation formula. Draws without replacement are then close to independent.</td></tr>
+<tr><td><b>Large counts condition</b></td><td>$np \ge 10$ and $n(1 - p) \ge 10$ (some books use 5)</td><td>The normal shape. With at least 10 expected successes and 10 expected failures, the distribution is close to normal.</td></tr>
+</tbody>
+</table>
+<p>Random selection is a third requirement, and it is about bias: without it, the center of the sampling distribution is not $p$, and no formula fixes that.</p>
+<p>When large counts fails, the distribution is skewed. If $p$ is small, values pile up near 0 and stretch to the right; if $p$ is large, they pile up near 1 and stretch to the left. "$n \ge 30$" is a rule of thumb for sample means and is never the check for proportions.</p>
+
+<figure id="fig-phat" data-fig="phat-sampling-distribution"><figcaption>The exact sampling distribution of the proportion of seeds that sprout when p = 0.85. With 200 seeds the normal curve fits; with 20 seeds, 20(0.15) = 3 is less than 10 and the distribution is skewed left.</figcaption></figure>
+
+<h2>Probabilities about a sample proportion</h2>
+<p>When both conditions hold, standardize $\hat{p}$ with its own mean and standard deviation and use the normal distribution:</p>
+<p>$$z = \frac{\hat{p} - p}{\sqrt{\frac{p(1 - p)}{n}}}$$</p>
+<div class="worked">
+<p><b>Worked example.</b> A seed company says 85% of its tomato seeds sprout. A store plants a random sample of 200 seeds from a shipment of 50,000. If the company is right, what is the probability that 80% or fewer of the 200 seeds sprout?</p>
+<p><b>Conditions.</b> 10%: 200 is less than 10% of 50,000 seeds (5,000). Large counts: $np = 200(0.85) = 170 \ge 10$ and $n(1 - p) = 200(0.15) = 30 \ge 10$. So $\hat{p}$ is approximately normal.</p>
+<p><b>Parameters.</b> $\mu_{\hat{p}} = 0.85$ and $\sigma_{\hat{p}} = \sqrt{\frac{0.85(0.15)}{200}} = 0.0252$.</p>
+<p><b>Boundary and direction.</b> We want $P(\hat{p} \le 0.80)$, the area to the left of 0.80 under the normal curve with mean 0.85 and standard deviation 0.0252.</p>
+<p><b>Calculate.</b> $z = \frac{0.80 - 0.85}{0.0252} = -1.98$, and $P(Z \le -1.98) = 0.024$ from Table A. Technology (a normal distribution with mean 0.85 and SD 0.0252, area below 0.80) gives 0.0239.</p>
+<p><b>Tie it to the claim.</b> If the company's 85% is correct, a sample this low would happen only about 2 times in 100 samples of 200 seeds. A result like that would make us doubt the company's figure.</p>
+</div>
+<p>Use the true $p$ in the standard deviation, not the sample value you are standardizing. In the worked example the standard deviation uses 0.85, never 0.80.</p>
+
+<h2>Count or proportion?</h2>
+<p>The number of successes, $X = n\hat{p}$, is binomial with mean $np$ and standard deviation $\sqrt{np(1 - p)}$. The proportion is that count divided by $n$, so its mean is $p$ and its standard deviation is $\sqrt{p(1 - p)/n}$. Read the question: "how many of the 200 seeds" is a count; "what proportion" or "what percent" is $\hat{p}$. Mixing the two scales is a common slip.</p>

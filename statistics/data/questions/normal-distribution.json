@@ -1,0 +1,555 @@
+{
+ "stimuli": {
+  "normal-distribution-s1": {
+   "kind": "graph",
+   "title": "Battery life of a phone model",
+   "set": "probability",
+   "text": "Under a standard test, the battery life of a new phone model is approximately normal with mean 18 hours and standard deviation 1.5 hours (invented data). Let B = the battery life of a randomly chosen phone.",
+   "plot": {
+    "label": "Normal density curve of battery life with mean 18 hours and standard deviation 1.5 hours, the area below 16 hours shaded",
+    "kind": "density",
+    "density": {
+     "dist": "normal",
+     "params": {
+      "mean": 18,
+      "sd": 1.5
+     },
+     "shade": [
+      {
+       "from": 12,
+       "to": 16
+      }
+     ],
+     "marks": [
+      {
+       "at": 16,
+       "label": "16"
+      }
+     ]
+    },
+    "xLabel": "Battery life (hours)"
+   }
+  },
+  "normal-distribution-s2": {
+   "kind": "graph",
+   "title": "Egg weights at a farm",
+   "text": "The weights of eggs from a farm's hens are approximately normal with mean 58 grams and standard deviation 4 grams (invented data).",
+   "plot": {
+    "label": "Normal density curve of egg weights with mean 58 grams and standard deviation 4 grams, marked at 50, 54, 58, 62 and 66 grams",
+    "kind": "density",
+    "density": {
+     "dist": "normal",
+     "params": {
+      "mean": 58,
+      "sd": 4
+     },
+     "marks": [
+      {
+       "at": 50,
+       "label": "50"
+      },
+      {
+       "at": 54,
+       "label": "54"
+      },
+      {
+       "at": 58,
+       "label": "58"
+      },
+      {
+       "at": 62,
+       "label": "62"
+      },
+      {
+       "at": 66,
+       "label": "66"
+      }
+     ]
+    },
+    "xLabel": "Egg weight (grams)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-normal-distribution-1",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that a randomly chosen phone's battery lasts less than 16 hours?",
+   "why": {
+    "correct": "B is $N(18, 1.5)$. $z = \\frac{16 - 18}{1.5} \\approx -1.33$, and $P(B < 16) = P(Z < -1.33) \\approx 0.0912$ (technology gives 0.0912; Table A gives 0.0918).",
+    "options": [
+     "That is the area to the right of 16 hours, the complement.",
+     "That uses the empirical rule for 1 standard deviation, but 16 hours is 1.33 standard deviations below the mean.",
+     "Right: the area to the left of z = −1.33.",
+     "That is the empirical rule for 2 standard deviations; 16 hours is less than 2 SDs away."
+    ]
+   },
+   "stimulus": "normal-distribution-s1",
+   "options": [
+    "0.9088",
+    "0.16",
+    "0.0912",
+    "0.025"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-normal-distribution-2",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "About what percent of phones have a battery life of more than 20.5 hours?",
+   "why": {
+    "correct": "$z = \\frac{20.5 - 18}{1.5} \\approx 1.67$, and $P(B > 20.5) = 1 - P(Z < 1.67) \\approx 0.0478$, about 4.8%.",
+    "options": [
+     "That is the area below 20.5 hours.",
+     "That is the empirical rule for 1 SD; 20.5 is 1.67 SDs above the mean.",
+     "That would be more than 2 SDs above the mean, 21 hours.",
+     "Right: the area to the right of z = 1.67."
+    ]
+   },
+   "stimulus": "normal-distribution-s1",
+   "options": [
+    "About 95.2%",
+    "About 16%",
+    "About 2.5%",
+    "About 4.8%"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-normal-distribution-3",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What battery life is the 90th percentile?",
+   "why": {
+    "correct": "The 90th percentile has 0.90 of the area below it: $z \\approx 1.28$, so $18 + 1.28(1.5) \\approx 19.92$ hours.",
+    "options": [
+     "Right: 1.28 standard deviations above the mean.",
+     "That is the 10th percentile, 1.28 SDs below the mean.",
+     "That uses z = 0.9 in place of the z-score with 0.90 of the area below it.",
+     "That is 2 standard deviations above the mean, about the 97.7th percentile."
+    ]
+   },
+   "stimulus": "normal-distribution-s1",
+   "options": [
+    "19.92 hours",
+    "16.08 hours",
+    "19.35 hours",
+    "21.00 hours"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-normal-distribution-4",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By the empirical rule, about what percent of eggs weigh between 54 and 62 grams?",
+   "why": {
+    "correct": "54 and 62 are 1 standard deviation below and above the mean, $58 \\pm 4$, so about 68% of eggs fall between them.",
+    "options": [
+     "That is within 2 standard deviations, 50 to 66 grams.",
+     "Right: within 1 standard deviation.",
+     "That is one side only, 58 to 62 grams.",
+     "Half of the eggs are below the mean, 58 grams."
+    ]
+   },
+   "stimulus": "normal-distribution-s2",
+   "options": [
+    "About 95%",
+    "About 68%",
+    "About 34%",
+    "About 50%"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-normal-distribution-5",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By the empirical rule, about what percent of eggs weigh more than 66 grams?",
+   "why": {
+    "correct": "66 is 2 standard deviations above the mean. About 95% lie within 2 SDs, leaving 5% in the two tails, so about 2.5% above 66 grams.",
+    "options": [
+     "That is both tails together; above 66 is one tail.",
+     "That is above 1 SD, 62 grams.",
+     "Right: half of the 5% outside 2 SDs.",
+     "That is above 3 SDs, 70 grams."
+    ]
+   },
+   "stimulus": "normal-distribution-s2",
+   "options": [
+    "About 5%",
+    "About 16%",
+    "About 2.5%",
+    "About 0.15%"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-normal-distribution-6",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "numeric",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the z-score of a 63-gram egg?",
+   "why": {
+    "correct": "$z = \\frac{x - \\mu}{\\sigma} = \\frac{63 - 58}{4} = 1.25$: the egg is 1.25 standard deviations above the mean."
+   },
+   "stimulus": "normal-distribution-s2",
+   "numeric": {
+    "kind": "z",
+    "answer": 1.25,
+    "mistakes": [
+     {
+      "value": -1.25,
+      "why": "The sign is backward: value minus mean, so an egg above the mean has a positive z-score."
+     },
+     {
+      "value": 5,
+      "why": "That is the distance in grams. Divide by the standard deviation, 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-normal-distribution-7",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that a randomly chosen egg weighs between 55 and 60 grams?",
+   "why": {
+    "correct": "Let W = egg weight, $N(58, 4)$. $z = \\frac{55 - 58}{4} = -0.75$ and $z = \\frac{60 - 58}{4} = 0.5$. $P(55 < W < 60) = P(-0.75 < Z < 0.5) = 0.6915 - 0.2266 \\approx 0.4648$."
+   },
+   "stimulus": "normal-distribution-s2",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.4648351088971448,
+    "mistakes": [
+     {
+      "value": 0.691462461274013,
+      "why": "That is the area below 60 grams. Subtract the area below 55."
+     },
+     {
+      "value": 0.9180898136508813,
+      "why": "Areas between two values subtract: the area below 60 minus the area below 55."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-normal-distribution-8",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the expression for the z-score of a 50-gram egg.",
+   "why": {
+    "correct": "$z = \\frac{x - \\mu}{\\sigma} = \\frac{50 - 58}{4} = -2$."
+   },
+   "stimulus": "normal-distribution-s2",
+   "setup": {
+    "answer": "(50 - 58)/4",
+    "bind": {},
+    "mustUse": [
+     "58",
+     "4"
+    ],
+    "mistakes": [
+     {
+      "expr": "(58 - 50)/4",
+      "why": "Subtract in the order value minus mean, so a light egg gets a negative z-score."
+     },
+     {
+      "expr": "(50 - 58)/16",
+      "why": "Divide by the standard deviation, 4, not its square."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-normal-distribution-9",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "single",
+   "practice": "4.C",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which is true of every density curve?",
+   "why": {
+    "correct": "A density curve is on or above the horizontal axis and has a total area of exactly 1 under it. Areas under it are probabilities (or proportions).",
+    "options": [
+     "Normal curves are; other density curves can be skewed.",
+     "The area, not the height, is 1.",
+     "Right: areas are probabilities.",
+     "That holds for symmetric curves, not skewed ones."
+    ]
+   },
+   "options": [
+    "It is symmetric and bell-shaped",
+    "Its highest point is at a height of 1",
+    "It lies on or above the axis and has a total area of 1 under it",
+    "Its mean and median are equal"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-normal-distribution-10",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Egg weights are modeled as $N(58, 4)$. What is the probability that a randomly chosen egg weighs exactly 60 grams?",
+   "why": {
+    "correct": "For a continuous model, probability is area, and a single value has no width, so its probability is 0. Questions ask about intervals, such as between 59.5 and 60.5 grams.",
+    "options": [
+     "Heights of a density curve are not probabilities.",
+     "That is the probability of 60 grams or less.",
+     "Being near the mean does not give a single value half the area.",
+     "Right: only intervals have area."
+    ]
+   },
+   "options": [
+    "The height of the curve at 60 grams",
+    "About 0.69, the area below 60 grams",
+    "About 0.5, because 60 is close to the mean",
+    "0, because a single value has no area under the curve"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-normal-distribution-11",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the standard normal distribution, find $P(Z > 1.5)$.",
+   "why": {
+    "correct": "$P(Z > 1.5) = 1 - P(Z < 1.5) = 1 - 0.9332 = 0.0668$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "normCdf",
+     "args": [
+      1.5
+     ],
+     "complement": true
+    },
+    "mistakes": [
+     {
+      "value": 0.9331927987311419,
+      "why": "That is the area to the left of 1.5. \"Greater than\" is the right tail."
+     },
+     {
+      "value": 0.16,
+      "why": "That uses the empirical rule for 1 SD; 1.5 is farther out."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-normal-distribution-12",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the standard normal distribution, what z-score has 25% of the area to its left (the first quartile)?",
+   "why": {
+    "correct": "Inverse normal: the z with area 0.25 to its left is about −0.67."
+   },
+   "numeric": {
+    "kind": "z",
+    "from": {
+     "fn": "invNorm",
+     "args": [
+      0.25
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.67,
+      "why": "That has 25% of the area to its right. The first quartile is below the mean, so z is negative."
+     },
+     {
+      "value": 0.25,
+      "why": "That is the area. Find the z-score that has that area to its left."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-normal-distribution-13",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "conclude",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "An egg weighs 63 grams, so its z-score is 1.25 (mean 58 grams, standard deviation 4 grams). Build an interpretation of the z-score in context.",
+   "why": {
+    "correct": "A z-score says how many standard deviations a value is from the mean, and in which direction."
+   },
+   "conclude": {
+    "mode": "zscore",
+    "slots": {
+     "claim": {
+      "label": "Meaning",
+      "options": [
+       "The egg weighs 1.25 standard deviations more than the mean weight",
+       "The egg weighs 1.25 grams more than the mean weight",
+       "1.25% of eggs weigh more than this egg"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The distance in grams is 5; 1.25 is in standard deviations.",
+       "2": "A z-score is a position, not a percent."
+      }
+     },
+     "context": {
+      "label": "Of what",
+      "options": [
+       "of 58 grams for eggs from this farm",
+       "of all the eggs in the world",
+       "of a standard normal egg"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The model describes this farm's eggs.",
+       "2": "Name the real context and its units."
+      }
+     }
+    },
+    "model": "This 63-gram egg weighs 1.25 standard deviations more than the mean weight of 58 grams for eggs from this farm.",
+    "write": {
+     "context": [
+      "egg",
+      "grams"
+     ],
+     "parameter": false,
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-normal-distribution-14",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A histogram of the times 200 customers spent waiting at a bank is strongly skewed right. Should a normal model be used to find the percent who waited more than 10 minutes?",
+   "why": {
+    "correct": "A normal model fits only distributions that are roughly symmetric and mound-shaped. Strong right skew means normal areas would give wrong percents; use the data directly.",
+    "options": [
+     "A large data set keeps its own shape; it does not become normal.",
+     "Knowing them does not make the shape normal.",
+     "Times can be close to normal; the problem here is the skew.",
+     "Right: check the shape before using a normal model."
+    ]
+   },
+   "options": [
+    "Yes: any data set with 200 values can be treated as normal",
+    "Yes: the mean and standard deviation of the waits are known",
+    "No: a normal model is used for heights and not for times",
+    "No: the waits are strongly skewed, so normal areas would be wrong"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-normal-distribution-15",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The heaviest 5% of eggs are sold as \"jumbo\". Using $N(58, 4)$ grams, what is the minimum weight for a jumbo egg?",
+   "why": {
+    "correct": "The boundary has 0.95 of the area below it: $z \\approx 1.645$, so $58 + 1.645(4) \\approx 64.6$ grams."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 1,
+    "from": {
+     "fn": "invNorm",
+     "args": [
+      0.95,
+      58,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 51.4205856,
+      "why": "That is the lightest 5%: the boundary is above the mean for the heaviest eggs."
+     },
+     {
+      "value": 66,
+      "why": "That uses the empirical rule (2 SDs), which leaves about 2.5% above, not 5%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-normal-distribution-16",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Ana scored 82 on a history test whose scores were approximately $N(70, 8)$. Ben scored 90 on a math test whose scores were approximately $N(80, 5)$. Who did better relative to the other students on the test?",
+   "why": {
+    "correct": "Compare z-scores: Ana $\\frac{82 - 70}{8} = 1.5$, Ben $\\frac{90 - 80}{5} = 2$. Ben is farther above his test's mean, in standard deviations.",
+    "options": [
+     "Points mean different things on tests with different spreads.",
+     "Right: 2 standard deviations above the mean beats 1.5.",
+     "Raw scores on different tests cannot be compared directly.",
+     "Both are above the mean, but by different numbers of SDs."
+    ]
+   },
+   "options": [
+    "Ana, because she was 12 points above her test's mean",
+    "Ben, whose z-score is 2 compared with Ana's 1.5",
+    "Ben, because 90 is a higher score than 82",
+    "They did equally well, since both scored above the mean"
+   ],
+   "correct": 1
+  }
+ ]
+}

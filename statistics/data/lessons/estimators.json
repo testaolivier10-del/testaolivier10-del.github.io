@@ -1,0 +1,88 @@
+{
+ "topic": "estimators",
+ "hook": "A shipment holds 40,000 phone chargers, and an inspector can test only 200 of them. Grab the first 200 off one shift's line, and the answer comes back too low, again and again. Choose 200 at random, and the answers scatter around the truth. Which method you use decides whether your number can be trusted, long before you do any arithmetic.",
+ "prereq": [
+  {
+   "q": "A survey finds that 62% of 500 randomly chosen adults in a state own a pet. In this sentence, 62% is",
+   "options": [
+    "a statistic, because it describes the sample",
+    "a parameter, because it describes the state",
+    "a parameter, because the sample was random",
+    "a statistic, because it is a percent"
+   ],
+   "correct": 0,
+   "why": "A statistic describes a sample; a parameter describes the whole population. The 62% comes from the 500 adults surveyed.",
+   "review": "variables"
+  },
+  {
+   "q": "A computer takes 1,000 random samples of the same size from one population and records the sample proportion from each. The distribution of those 1,000 values approximates",
+   "options": [
+    "the sampling distribution of the sample proportion",
+    "the distribution of the population",
+    "the distribution of one sample",
+    "the probability that one sample is correct"
+   ],
+   "correct": 0,
+   "why": "The values of a statistic over many samples of the same size form (approximately) its sampling distribution.",
+   "review": "sampling-distributions"
+  },
+  {
+   "q": "Asking students in the school gym whether they play a sport is likely to give a result that is",
+   "options": [
+    "too high, because students in the gym are more likely to play",
+    "too low, because the gym is a small place",
+    "about right, because many students use the gym",
+    "random, because nobody chose the students"
+   ],
+   "correct": 0,
+   "why": "A convenience sample like this favors students who play sports, so it is biased upward.",
+   "review": "sampling-problems"
+  }
+ ],
+ "figure": {
+  "figure": "estimator-bias-variability",
+  "caption": "The exact sampling distributions of three estimators of p = 0.40. Random samples are centered on the truth; a larger sample is less spread out; a method that favors one group is centered in the wrong place."
+ },
+ "chain": [
+  {
+   "cause": "A sample is only part of the population",
+   "effect": "a statistic such as $\\hat{p}$ is used as an estimator of the parameter, and its value is a point estimate"
+  },
+  {
+   "cause": "Different samples give different values of the statistic",
+   "effect": "the statistic has a sampling distribution, with a center and a spread"
+  },
+  {
+   "cause": "The center of that sampling distribution equals the parameter",
+   "effect": "the estimator is unbiased: it is right on average, though single samples still miss"
+  },
+  {
+   "cause": "The random sample is made larger",
+   "effect": "the spread of the sampling distribution shrinks, so a typical estimate lands closer to the parameter"
+  },
+  {
+   "cause": "The method favors some members of the population",
+   "effect": "the center moves away from the parameter, and a bigger sample of the same kind does not move it back"
+  }
+ ],
+ "ideas": [
+  "An <b>estimator</b> is a statistic used to estimate a parameter: $\\hat{p}$ for $p$, $\\bar{x}$ for $\\mu$. One sample's value is a <b>point estimate</b>.",
+  "<b>Bias</b> is about the center: an <b>unbiased estimator</b> has a sampling distribution centered at the parameter.",
+  "<b>Variability</b> is about the spread of the sampling distribution. For random samples, larger samples give less variability.",
+  "Bias comes from the method, so a larger sample does not fix it. Variability comes from sample size, so a better method alone does not fix it.",
+  "The best estimator has no bias and low variability: random selection plus a large enough sample."
+ ],
+ "misconception": {
+  "wrong": "An unbiased estimator gives the right answer, so if a random sample says 0.31, the population proportion is 0.31.",
+  "right": "Unbiased means right on average over many samples. One random sample's estimate still misses the parameter by some amount; how far it tends to miss is the variability."
+ },
+ "check": [
+  "stat-estimators-1",
+  "stat-estimators-2",
+  "stat-estimators-3",
+  "stat-estimators-12",
+  "stat-estimators-13",
+  "stat-estimators-14"
+ ],
+ "summary": "A statistic used to estimate a parameter is an estimator, and its value from one sample is a point estimate. Judge an estimator by its sampling distribution: it is unbiased when that distribution is centered at the parameter, and it has low variability when the distribution is narrow. Random selection removes bias; larger random samples reduce variability. Neither fixes the other."
+}

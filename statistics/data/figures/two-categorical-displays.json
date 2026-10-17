@@ -1,0 +1,22 @@
+{
+ "u2-commute-segbar": {
+  "file": "figures/u2-commute-segbar.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Segmented bar chart of how 160 sophomores and 140 seniors get to school. Sophomores: 45% bus, 30% car, 25% walk or bike. Seniors: 20% bus, 60% car, 20% walk or bike. The bars differ, so class year and way to school are associated."
+ },
+ "u2-library-segbar": {
+  "file": "figures/u2-library-segbar.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Segmented bar chart of library card ownership by age group for 500 adults: 50% of the 180 adults aged 18 to 34 have a card, 60% of the 200 aged 35 to 54, and 70% of the 120 aged 55 and over."
+ }
+}

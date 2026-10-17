@@ -1,0 +1,29 @@
+{
+ "observational-unit": {
+  "def": "One individual that data describe, such as a person, an animal, an object or a day. Each row of a data table is one observational unit."
+ },
+ "variable": {
+  "def": "A characteristic recorded for each observational unit, whose value can differ from one unit to another."
+ },
+ "categorical-variable": {
+  "def": "A variable whose values place each unit in a group or category, such as eye color or yes and no. Numbers used as labels, like ZIP codes, are categorical."
+ },
+ "quantitative-variable": {
+  "def": "A variable whose values are numbers that measure or count an amount, so arithmetic with them makes sense."
+ },
+ "discrete-variable": {
+  "def": "A quantitative variable that takes separate values with gaps between them, usually a count."
+ },
+ "continuous-variable": {
+  "def": "A quantitative variable that can take any value in an interval, usually a measurement such as time, length or weight."
+ },
+ "parameter": {
+  "def": "A number that describes a population. It is usually unknown, because finding it needs data on every individual."
+ },
+ "statistic": {
+  "def": "A number that describes a sample. It changes from sample to sample and is used to estimate a parameter."
+ },
+ "distribution": {
+  "def": "The values a variable takes and how often it takes each value or range of values."
+ }
+}

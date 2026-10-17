@@ -1,0 +1,11 @@
+{
+ "intervals-vs-zero": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep",
+  "ext": "svg",
+  "w": 660,
+  "h": 290,
+  "alt": "Three 95% intervals for a difference in proportions against a dashed line at 0: study A from 0.03 to 0.11 lies entirely above 0, study B from -0.04 to 0.06 contains 0, and study C from -0.15 to -0.02 lies entirely below 0."
+ }
+}

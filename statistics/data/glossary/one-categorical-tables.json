@@ -1,0 +1,14 @@
+{
+ "frequency-table": {
+  "def": "A table that lists each category of a categorical variable with its frequency, the number of individuals in that category."
+ },
+ "relative-frequency": {
+  "def": "A count divided by the total number of individuals: the part of the whole in one category, written as a decimal, fraction or percent."
+ },
+ "sample-proportion": {
+  "def": "The part of a sample that falls in a category, $\\hat{p} = \\frac{\\text{count in the category}}{n}$, read \"p-hat\". It is a statistic."
+ },
+ "population-proportion": {
+  "def": "The part of a whole population that falls in a category, written $p$. It is a parameter, usually unknown and estimated by $\\hat{p}$."
+ }
+}

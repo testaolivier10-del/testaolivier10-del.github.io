@@ -1,0 +1,310 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "stat-math-fractions-percents-1",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "In a reading group, 18 of the 24 students finished the book. What part of the group finished, as a decimal?",
+   "why": {
+    "correct": "Part over whole: $\\frac{18}{24} = 0.75$, which is 75% of the group."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1.3333333333333333,
+      "why": "That is 24/18, the whole over the part. Put the part on top: 18/24."
+     },
+     {
+      "value": 0.18,
+      "why": "The count 18 is not a decimal of the group. Divide the part by the whole: 18/24 = 0.75."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-fractions-percents-2",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "In a class of 25 students, 2 are left-handed. What decimal of the class is left-handed?",
+   "why": {
+    "correct": "$\\frac{2}{25} = 0.08$, so 8% of the class is left-handed."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.8,
+      "why": "The decimal point slipped one place: 2/25 = 0.08, which is 8%, not 80%."
+     },
+     {
+      "value": 0.02,
+      "why": "That is 2/100. The whole is 25 students, so divide by 25: 2/25 = 0.08."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-fractions-percents-3",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A survey asked 400 adults whether they had visited a museum this year; 132 said yes. What decimal of the adults said yes?",
+   "why": {
+    "correct": "$\\frac{132}{400} = 0.33$, or 33% of the adults."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.132,
+      "why": "That divides by 1,000. The whole is 400 adults: 132/400 = 0.33."
+     },
+     {
+      "value": 3.0303030303030303,
+      "why": "That is 400/132, the whole over the part. Put the part on top."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-fractions-percents-4",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "single",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which decimal and percent equal $\\frac{3}{8}$?",
+   "why": {
+    "correct": "$\\frac{3}{8} = 3 \\div 8 = 0.375 = 37.5\\%$.",
+    "options": [
+     "The decimal 0.375 is 37.5%, not 3.8%: a percent is the decimal times 100.",
+     "Right: 3 divided by 8 is 0.375, and moving the decimal point two places gives 37.5%.",
+     "That divides 8 by 3. A fraction is the top divided by the bottom: 3 ÷ 8.",
+     "Close after rounding, but the exact values are 0.375 and 37.5%."
+    ]
+   },
+   "options": [
+    "0.38 and 3.8%, rounding the decimal first",
+    "0.375 and 37.5%",
+    "2.667 and 266.7%, from dividing 8 by 3",
+    "0.38 and 38%, the same as 38 out of 100"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-fractions-percents-5",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is 45% of 300?",
+   "why": {
+    "correct": "Change the percent to a decimal and multiply: $0.45 \\times 300 = 135$.",
+    "options": [
+     "Multiplying by 45 instead of 0.45 makes the answer 100 times too big.",
+     "A percent of a number is a multiplication: 0.45 × 300.",
+     "That is the other 55% of 300. The question asks for 45%.",
+     "Right: 45% is 0.45, and $0.45 \\times 300 = 135$."
+    ]
+   },
+   "options": [
+    "13,500, from multiplying 45 by 300 without converting",
+    "6.67, from dividing 300 by 45",
+    "165, which is the 55% that remains",
+    "135"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-math-fractions-percents-6",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Of 60 seniors, 24 play a school sport, and 9 of those 24 play two sports. What part of the sport players play two sports?",
+   "why": {
+    "correct": "First find the whole the question names (\"of the sport players\"): 24. Then part over whole: $\\frac{9}{24} = 0.375$.",
+    "options": [
+     "Right: the whole is the 24 sport players, so the part is $\\frac{9}{24} = 0.375$.",
+     "That uses the wrong whole. The question is about the sport players, so divide by 24.",
+     "That is the part of all seniors who play a sport, not the part of players who play two.",
+     "That is the whole over the part. Put the part, 9, on top."
+    ]
+   },
+   "options": [
+    "0.375",
+    "0.15, from dividing 9 by the 60 seniors",
+    "0.40, from dividing 24 by 60",
+    "2.667, from dividing 24 by 9 to compare them"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-fractions-percents-7",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At school A, 18 of 30 students walk to school. At school B, 25 of 50 walk. Which statement is correct?",
+   "why": {
+    "correct": "Counts from groups of different sizes cannot be compared directly. Divide each part by its own whole and compare the decimals.",
+    "options": [
+     "School B has more walkers, but it also has more students. Compare each part with its own whole.",
+     "The decimals 0.60 and 0.50 differ, so the schools differ.",
+     "Right: comparing parts of different wholes needs the decimals, $\\frac{18}{30} = 0.60$ and $\\frac{25}{50} = 0.50$.",
+     "The size of the school alone says nothing about the part that walks."
+    ]
+   },
+   "options": [
+    "More of school B walks, because 25 is larger than 18",
+    "The schools are the same, since both have some walkers",
+    "A larger part of school A walks: 0.60 against 0.50",
+    "School B, because 50 students is larger than 30 students"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-fractions-percents-8",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Of 120 people at a concert, 42 bought a T-shirt. Type an expression for the percent who bought a T-shirt (for example, a fraction times 100).",
+   "why": {
+    "correct": "$\\frac{42}{120} \\times 100 = 35$, so 35% bought a T-shirt."
+   },
+   "setup": {
+    "answer": "42/120*100",
+    "mustUse": [
+     "42",
+     "120"
+    ],
+    "mistakes": [
+     {
+      "expr": "120/42*100",
+      "why": "That is the whole over the part. The part, 42, goes on top: 42/120 * 100."
+     },
+     {
+      "expr": "42/100*120",
+      "why": "Divide by the whole, 120, not by 100: 42/120 = 0.35, then times 100 gives 35%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-fractions-percents-9",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "order",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put these values in order from smallest to largest.",
+   "why": {
+    "correct": "As decimals: 0.3, then $\\frac{1}{3} \\approx 0.333$, then 35% = 0.35, then 0.4."
+   },
+   "options": [
+    "0.3",
+    "$\\frac{1}{3}$",
+    "35%",
+    "0.4"
+   ]
+  },
+  {
+   "id": "stat-math-fractions-percents-10",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "multi",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which of these are equal to $\\frac{1}{4}$? Select all that apply.",
+   "why": {
+    "correct": "One fourth is 0.25, 25% and any equivalent fraction such as $\\frac{2}{8}$.",
+    "options": [
+     "Right: 1 ÷ 4 = 0.25.",
+     "Right: 0.25 × 100 = 25%.",
+     "Right: divide the top and bottom by 2 and you get $\\frac{1}{4}$.",
+     "That is $\\frac{2}{5}$. The digits 1 and 4 are not a decimal of $\\frac{1}{4}$.",
+     "4% is 0.04, much smaller than one fourth.",
+     "1.4 is larger than 1; one fourth is less than 1."
+    ]
+   },
+   "options": [
+    "0.25",
+    "25%",
+    "$\\frac{2}{8}$",
+    "0.4",
+    "4%",
+    "1.4"
+   ],
+   "correct": [0, 1, 2]
+  },
+  {
+   "id": "stat-math-fractions-percents-11",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A survey found that 2 of every 3 students own a bike. Rounded to one decimal place, what percent own a bike?",
+   "why": {
+    "correct": "$2 \\div 3 = 0.6667$, and $0.6667 \\times 100 = 66.67$, which rounds to 66.7%.",
+    "options": [
+     "0.67 is the decimal. As a percent it is 67, not 0.67.",
+     "The digits of a fraction are not its percent. Divide 2 by 3 first.",
+     "Right: $\\frac{2}{3} = 0.6667$, which is 66.7% to one decimal place.",
+     "That is the whole over the part. Two of three is less than the whole, so less than 100%."
+    ]
+   },
+   "options": [
+    "0.67%, from rounding the decimal and stopping",
+    "23%, from writing the digits 2 and 3 together",
+    "66.7%",
+    "150%, from dividing 3 by 2"
+   ],
+   "correct": 2
+  }
+ ]
+}

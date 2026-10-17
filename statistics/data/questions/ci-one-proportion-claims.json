@@ -1,0 +1,545 @@
+{
+ "stimuli": {
+  "ci-one-proportion-claims-s1": {
+   "kind": "graph",
+   "title": "Twenty-five intervals from one population",
+   "text": "<p>A computer takes 25 random samples of 400 people from a population in which the true proportion with a certain trait is $p = 0.60$. From each sample it builds a 95% confidence interval for $p$. Each bar is one interval, with a dot at that sample's $\\hat{p}$; the dashed line is $p = 0.60$.</p>",
+   "figure": "ci-capture-25"
+  },
+  "ci-one-proportion-claims-s2": {
+   "kind": "table",
+   "title": "A later school start time",
+   "text": "<p>A school board says that more than 60% of the district's parents support starting high school later. A local paper selects a random sample of 500 of the district's 9,000 parents, and 330 of them ($\\hat{p} = 0.66$) support the change. The conditions for inference are met.</p>",
+   "table": {
+    "caption": "Confidence intervals for the proportion of all the district's parents who support a later start",
+    "cols": [
+     "Confidence level",
+     "Interval"
+    ],
+    "rows": [
+     [
+      "95%",
+      "from 0.618 to 0.702"
+     ],
+     [
+      "99%",
+      "from 0.605 to 0.715"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-ci-one-proportion-claims-1",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many of the 25 intervals capture the true proportion, and is that surprising?",
+   "stimulus": "ci-one-proportion-claims-s1",
+   "options": [
+    "22, about what 95% confidence predicts for 25 intervals",
+    "25, because a 95% interval captures $p$ in each sample",
+    "22, which shows the method gives far less than 95% confidence",
+    "3, the intervals drawn in a different color"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "22 intervals cross the dashed line at 0.60 and 3 miss it. In the long run about 95% capture $p$, which is about 23.75 of 25. Getting 22 in one set of 25 is ordinary chance variation.",
+    "options": [
+     "Right: 22 of 25 is close to 95%, given the chance variation in 25 tries.",
+     "About 5% of 95% intervals miss $p$; here some bars stop short of the dashed line.",
+     "The 95% is a long-run rate. 22 out of 25 is well within normal chance variation from 95%.",
+     "The orange intervals are the ones that miss the line. Count the ones that cross it."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-2",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "What does \"95% confidence\" mean in this picture?",
+   "stimulus": "ci-one-proportion-claims-s1",
+   "options": [
+    "About 95% of the population has the trait",
+    "Each interval has a 95% chance of containing its own $\\hat{p}$",
+    "In the long run, about 95% of such intervals capture $p$",
+    "About 95% of each sample of 400 falls inside its interval"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The confidence level describes the method: if we kept taking random samples and building intervals this way, about 95% of the intervals would capture $p$.",
+    "options": [
+     "The population proportion is 0.60. The 95% describes how often the method captures it.",
+     "Each interval is centered at its own $\\hat{p}$, so it contains $\\hat{p}$ every time.",
+     "Right: the level is a success rate of the method over many samples.",
+     "An interval for a proportion is about $p$, not about where individual people fall."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-3",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Look at the interval in the eighth row, which misses $p$. A student says, \"There was a 95% chance that this interval would contain 0.60.\" Which statement is correct?",
+   "stimulus": "ci-one-proportion-claims-s1",
+   "options": [
+    "It describes the method; this finished interval does not contain 0.60",
+    "It is correct: this interval still has a 95% chance of containing 0.60",
+    "It is correct, because $p$ moves around from sample to sample",
+    "It is wrong: this interval had a 5% chance of being built"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Before the sample was taken, the method had a 95% chance of producing an interval that captures $p$. Once this interval is built, it either contains 0.60 or it does not; this one does not.",
+    "options": [
+     "Right: probability belongs to the method, not to a finished interval.",
+     "The interval is fixed and so is $p$. It misses 0.60, and no probability changes that.",
+     "The parameter is fixed at 0.60. The intervals are what change from sample to sample.",
+     "The 5% is the long-run share of intervals that miss, not the chance of building one particular interval."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-4",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Suppose the computer had built 99% intervals from the same 25 samples. How would the picture change?",
+   "stimulus": "ci-one-proportion-claims-s1",
+   "options": [
+    "Same centers, longer bars, at least as many capturing 0.60",
+    "Same centers, shorter bars, and more of them capturing 0.60",
+    "New centers closer to 0.60, with the bars just as long",
+    "The same picture, because the samples did not change"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A 99% interval uses $z^* = 2.576$ instead of 1.96, so every bar would be longer and centered at the same $\\hat{p}$. Longer bars capture $p$ more often.",
+    "options": [
+     "Right: a larger critical value stretches every interval around the same $\\hat{p}$.",
+     "Higher confidence needs a larger critical value, so the bars get longer, not shorter.",
+     "The samples are the same, so each $\\hat{p}$ and each center stays where it is.",
+     "The critical value changes from 1.96 to 2.576, so every margin of error changes."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-5",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the 95% interval to build a sentence about the board's claim.",
+   "stimulus": "ci-one-proportion-claims-s2",
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "claim": {
+      "options": [
+       "Because every value in the interval from 0.618 to 0.702 is greater than 0.60,",
+       "Because the sample proportion, 0.66, is greater than 0.60,",
+       "Because 0.60 is close to the interval,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A single sample proportion above 0.60 could happen by chance even if the true proportion were 0.60. The interval accounts for that.",
+       "2": "What matters is whether 0.60 is inside the interval, not how close it is."
+      }
+     },
+     "evidence": {
+      "options": [
+       "the interval gives convincing evidence",
+       "the interval proves",
+       "the interval does not give convincing evidence"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An interval gives evidence; it never proves a claim.",
+       "2": "When every plausible value is above 0.60, the interval does give convincing evidence."
+      }
+     },
+     "parameter": {
+      "options": [
+       "that the true proportion of all the district's parents who support a later start is greater than 0.60",
+       "that the proportion of the 500 sampled parents who support a later start is greater than 0.60",
+       "that 95% of the district's parents support a later start"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "We already know the sample proportion (0.66). The claim is about all the district's parents.",
+       "2": "The 95% is the confidence level, not a percent of parents."
+      }
+     }
+    },
+    "model": "Because every value in the interval from 0.618 to 0.702 is greater than 0.60, the interval gives convincing evidence that the true proportion of all the district's parents who support a later start time is greater than 0.60.",
+    "write": {
+     "context": [
+      "parents",
+      "start"
+     ],
+     "direction": "greater"
+    }
+   },
+   "why": {
+    "correct": "Every value from 0.618 to 0.702 is greater than 0.60, so 0.60 and anything below it are not plausible values for the true proportion. That is convincing evidence for the board's claim."
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-6",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "A teacher claims that 70% of the district's parents support the later start. What does the 95% interval say about this claim?",
+   "stimulus": "ci-one-proportion-claims-s2",
+   "options": [
+    "0.70 is plausible, so there is not convincing evidence against the claim",
+    "0.70 is in the interval, so the interval shows that 70% of parents support the change",
+    "0.70 is far from 0.66, so the interval gives convincing evidence against the claim",
+    "Nothing, because the interval was built for the board's claim of 60%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "0.70 is inside the interval from 0.618 to 0.702, so it is a plausible value. The interval does not give convincing evidence that the true proportion is different from 0.70; it does not prove that it equals 0.70 either.",
+    "options": [
+     "Right: a value inside the interval cannot be ruled out.",
+     "Many values in the interval are plausible, 0.62 and 0.66 among them. Being plausible is not being proven.",
+     "Distance from $\\hat{p}$ is not the test; 0.70 is inside the interval, so it is plausible.",
+     "An interval gives plausible values for $p$; any claimed value can be compared with it."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-7",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the correct interpretation of the 95% interval?",
+   "stimulus": "ci-one-proportion-claims-s2",
+   "options": [
+    "We are 95% confident that the interval from 0.618 to 0.702 captures the true proportion of all the district's parents who support the change",
+    "There is a 95% probability that the proportion of the district's parents who support the change is between 0.618 and 0.702",
+    "We are 95% confident that the interval from 0.618 to 0.702 captures the proportion of the 500 parents in the sample who support the change",
+    "About 95% of the district's parents support the change at a level between 0.618 and 0.702, as the interval shows"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Name the level, the interval and the parameter in context. The interval estimates the proportion for all the district's parents.",
+    "options": [
+     "Right: level, interval and parameter in context.",
+     "The true proportion is fixed; it is in this interval or not. Confidence describes the method, so say \"95% confident\".",
+     "The sample proportion is known exactly, 0.66. The interval is about the whole district.",
+     "Each parent either supports the change or not. The interval is about one proportion, not individual parents."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-8",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Build the interpretation of the 95% confidence level in this context.",
+   "stimulus": "ci-one-proportion-claims-s2",
+   "conclude": {
+    "mode": "level",
+    "slots": {
+     "claim": {
+      "options": [
+       "If we took many random samples of 500 parents and built a 95% interval from each,",
+       "If we asked the same 500 parents again,",
+       "For this one sample of 500 parents,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The level is about new random samples, not repeating the same one.",
+       "2": "One finished interval either captures $p$ or not; the level describes many samples."
+      }
+     },
+     "level": {
+      "options": [
+       "about 95% of the intervals would capture",
+       "about 95% of the parents would fall inside",
+       "there is a 95% probability that the sample proportion is"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An interval for a proportion is not about where individual parents fall.",
+       "2": "The sample proportion is known; the level is about intervals capturing the parameter."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true proportion of all the district's parents who support a later start",
+       "the sample proportion of 0.66",
+       "the 330 parents who support a later start"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each interval is centered at its own sample proportion, so it always contains it. The target is the population value.",
+       "2": "The intervals estimate a proportion of the whole district, not a group of sampled parents."
+      }
+     }
+    },
+    "model": "If we took many random samples of 500 parents and built a 95% interval from each, about 95% of the intervals would capture the true proportion of all the district's parents who support a later start time.",
+    "write": {
+     "context": [
+      "parents"
+     ],
+     "evidence": false,
+     "forbid": [
+      "95% of the parents"
+     ]
+    }
+   },
+   "why": {
+    "correct": "The level describes what happens over many samples of the same size: the long-run share of intervals that capture the true proportion."
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-9",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Does the 99% interval also give convincing evidence for the board's claim that more than 60% of parents support the change?",
+   "stimulus": "ci-one-proportion-claims-s2",
+   "options": [
+    "No, because a 99% interval is longer, so it reaches below 0.60",
+    "Yes, because its lower end, 0.605, is still above 0.60",
+    "No, because two intervals from the same sample disagree",
+    "Yes, because 99% is higher than the 60% claim"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The 99% interval, from 0.605 to 0.715, is longer than the 95% interval but still lies entirely above 0.60. So even at 99% confidence, 0.60 is not plausible, and the evidence for the claim holds.",
+    "options": [
+     "Longer is not long enough here: the lower end is still above 0.60.",
+     "Right: every value in the 99% interval is greater than 0.60.",
+     "They do not disagree: both lie above 0.60.",
+     "The confidence level is not compared with the claimed proportion. Compare 0.60 with the interval."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-10",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A random sample of 1,200 adults in a state finds that 286 have used a meal-kit delivery service. A 95% confidence interval for the proportion runs from 0.214 to 0.262. Build its interpretation.",
+   "conclude": {
+    "mode": "interval",
+    "slots": {
+     "level": {
+      "options": [
+       "We are 95% confident that",
+       "We are 95% sure that the sample shows that",
+       "In 95% of states,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The interval is about the population, not about what the sample shows.",
+       "2": "There is one state here; the 95% describes the method."
+      }
+     },
+     "claim": {
+      "options": [
+       "the interval from 0.214 to 0.262 captures",
+       "the sample proportion 0.238 equals",
+       "95% of the adults are between 0.214 and 0.262 for"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample proportion is known exactly; the interval is for the unknown population value.",
+       "2": "People are not \"between\" two proportions; the interval is about one population proportion."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true proportion of all adults in the state who have used a meal-kit service",
+       "the proportion of the 1,200 sampled adults who have used a meal-kit service",
+       "the number of meal kits a typical adult in the state has ordered"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That proportion is known: 286 of 1,200. The interval estimates the state proportion.",
+       "2": "The variable is whether an adult has used the service, not how many kits."
+      }
+     }
+    },
+    "model": "We are 95% confident that the interval from 0.214 to 0.262 captures the true proportion of all adults in the state who have used a meal-kit delivery service.",
+    "write": {
+     "context": [
+      "meal"
+     ],
+     "evidence": false
+    }
+   },
+   "why": {
+    "correct": "Level, interval, and the parameter in context (all adults in the state, not the 1,200 in the sample)."
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-11",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "A meal-kit company says that 25% of adults in the state have used its type of service. Based on the interval from 0.214 to 0.262, what can you conclude?",
+   "options": [
+    "0.25 is plausible: no convincing evidence against the company's figure",
+    "The company is right, because 0.25 is inside the interval",
+    "The company is wrong, because the sample proportion, 0.238, is not 0.25",
+    "The company is wrong, because 0.25 is not the center of the interval"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "0.25 is inside the interval, so it is a plausible value for the true proportion. The interval does not give convincing evidence that the company is wrong.",
+    "options": [
+     "Right: a value inside the interval cannot be ruled out.",
+     "Plausible is not proven; values such as 0.22 are plausible too.",
+     "A sample proportion is expected to differ a little from $p$; the interval accounts for that.",
+     "The center is the sample proportion. Any value inside the interval is plausible."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-12",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "A food blogger claims that fewer than 30% of adults in the state have used a meal-kit service. Does the interval from 0.214 to 0.262 support this claim?",
+   "options": [
+    "Yes: every plausible value is below 0.30, which is convincing evidence",
+    "No: 0.30 is close to the upper end, so the claim is not supported",
+    "Yes: the sample proportion is below 0.30, and that alone proves the claim",
+    "No: an interval can support claims of equality but not \"fewer than\" claims"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every value in the interval is less than 0.30, so 0.30 and above are not plausible. The interval gives convincing evidence that the true proportion is less than 0.30.",
+    "options": [
+     "Right: 0.30 lies above the whole interval.",
+     "Close does not matter. 0.30 is outside the interval, and every value inside is below it.",
+     "A sample proportion below 0.30 could happen by chance. The interval is what gives the evidence, and evidence is not proof.",
+     "An interval that lies entirely below a value gives evidence that $p$ is below it."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-13",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A news report says, \"In a random sample of likely voters, 52% favor Measure 4, with a margin of error of 3 percentage points (95% confidence).\" Which conclusion is justified?",
+   "options": [
+    "A majority of likely voters favor Measure 4, because 52% is more than half of them",
+    "There is not convincing evidence of a majority, since 0.50 is in the interval",
+    "The poll shows that exactly 52% of likely voters favor Measure 4",
+    "95% of likely voters favor Measure 4 by 3 percentage points"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The interval is $0.52 \\pm 0.03$, from 0.49 to 0.55. It includes 0.50 and values below it, so the poll does not give convincing evidence that a majority of all likely voters favor the measure.",
+    "options": [
+     "The interval reaches down to 0.49, so a proportion of one half or less is still plausible.",
+     "Right: 0.50 is a plausible value.",
+     "The 52% describes the sample; the margin of error says the population value may differ.",
+     "That mixes up the confidence level with the result. The 95% describes the method."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-14",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "multi",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 95% confidence interval for the proportion of a city's households with a smart speaker runs from 0.41 to 0.49. Which of these values are plausible for the true proportion? Select all that apply.",
+   "options": [
+    "0.42",
+    "0.48",
+    "0.50",
+    "0.40"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Plausible values are the values inside the interval: anything from 0.41 to 0.49.",
+    "options": [
+     "Right: 0.42 is inside the interval.",
+     "Right: 0.48 is inside the interval.",
+     "0.50 is above the upper end, 0.49, so it is not plausible.",
+     "0.40 is below the lower end, 0.41, so it is not plausible."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-15",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "From a random sample of 300 commuters, a 95% confidence interval for the proportion of a region's commuters who bike to work is from 0.06 to 0.12. A student writes: \"95% of commuters bike between 6% and 12% of the time.\" What is wrong?",
+   "options": [
+    "Nothing: that is what the interval says",
+    "It should say 95% of the 300 commuters in the sample instead of 95% of commuters",
+    "It treats the interval as describing commuters, not one population proportion",
+    "It should use 0.06 and 0.12 instead of 6% and 12%"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The interval is about one number, the proportion of all commuters in the region who bike to work. It says nothing about how often individual commuters bike, and the 95% is the confidence level of the method, not a percent of commuters.",
+    "options": [
+     "The interval is about the population proportion, not about individual commuters.",
+     "The interval is not about individuals in the sample either.",
+     "Right: the interval estimates one parameter.",
+     "Percents and decimals are both fine; the problem is what the interval describes."
+    ]
+   }
+  }
+ ]
+}

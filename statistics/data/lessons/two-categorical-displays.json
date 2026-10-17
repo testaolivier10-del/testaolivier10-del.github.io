@@ -1,0 +1,72 @@
+{
+ "topic": "two-categorical-displays",
+ "hook": "A school wants fewer cars in its drop-off line, so it surveys 300 students: sophomore or senior, and how do you get to school? 84 seniors drive or are driven, and only 48 sophomores. But the two groups are not the same size, so is that gap real? A two-way table and one well-chosen chart answer it.",
+ "prereq": [
+  {
+   "q": "In a sample of 80 students, 20 play an instrument. What is the relative frequency of playing an instrument?",
+   "options": [
+    "0.25",
+    "0.20",
+    "20",
+    "0.80"
+   ],
+   "correct": 0,
+   "why": "$\\frac{20}{80} = 0.25$: the count over the total.",
+   "review": "one-categorical-tables"
+  },
+  {
+   "q": "Which display is made for a single categorical variable?",
+   "options": [
+    "A bar chart",
+    "A histogram",
+    "A boxplot",
+    "A dotplot"
+   ],
+   "correct": 0,
+   "why": "A bar chart has one bar per category; the others show quantitative data.",
+   "review": "one-categorical-displays"
+  }
+ ],
+ "figure": {
+  "figure": "u2-commute-segbar",
+  "caption": "Each bar is one class year split by way to school, in percents. The bars differ, so class year and way to school are associated."
+ },
+ "chain": [
+  {
+   "cause": "Two categorical variables are recorded for each student",
+   "effect": "a two-way table counts each pairing of categories, with row and column totals"
+  },
+  {
+   "cause": "The groups have different sizes (160 sophomores, 140 seniors)",
+   "effect": "counts cannot be compared directly, so each row is turned into percents of its own total"
+  },
+  {
+   "cause": "Each group's percents become one bar that reaches 100%",
+   "effect": "a segmented bar chart puts the groups side by side on the same scale"
+  },
+  {
+   "cause": "The bars split differently (60% of seniors by car, 30% of sophomores)",
+   "effect": "the variables are associated in these data"
+  }
+ ],
+ "ideas": [
+  "A <b>two-way table</b> shows the counts for each pairing of categories of two categorical variables, with totals.",
+  "Compare groups with <b>percents of each group</b>, never with raw counts when group sizes differ.",
+  "A <b>segmented bar chart</b> has one bar per group, each split into the other variable's categories and reaching 100%. A <b>side-by-side bar chart</b> puts the bars next to each other; a <b>mosaic plot</b> also makes each bar's width show the group's size.",
+  "Two variables are <b>associated</b> when the percents differ from group to group. Equal percents mean no association.",
+  "In a survey, association is not cause and effect."
+ ],
+ "misconception": {
+  "wrong": "More seniors than sophomores ride in a car (84 against 48), so the counts show seniors drive more.",
+  "right": "The groups differ in size, so compare percents: 60% of seniors and 30% of sophomores. The conclusion holds here, but only percents show it fairly."
+ },
+ "check": [
+  "stat-two-categorical-displays-1",
+  "stat-two-categorical-displays-2",
+  "stat-two-categorical-displays-3",
+  "stat-two-categorical-displays-6",
+  "stat-two-categorical-displays-8",
+  "stat-two-categorical-displays-13"
+ ],
+ "summary": "A two-way table counts two categorical variables together. To compare groups, turn each group's counts into percents and show them as segmented or side-by-side bars, or a mosaic plot. If the percents differ between groups, the variables are associated; association in a survey does not show cause."
+}

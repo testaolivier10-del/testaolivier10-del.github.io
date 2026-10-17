@@ -1,0 +1,49 @@
+<p>This topic finishes the basic probability rules with two ideas. Independence asks whether one event tells you anything about another. Unions ask for the probability that one event or another happens when they can overlap. Each has a rule, and each rule has a trap.</p>
+
+<h2>Independent events</h2>
+<p>A tech site tested 250 phones of two brands.</p>
+<table class="compare">
+<thead><tr><th>Brand</th><th>Lasted a full day</th><th>Did not</th><th>Total</th></tr></thead>
+<tbody>
+<tr><td>Brand X</td><td>60</td><td>40</td><td>100</td></tr>
+<tr><td>Brand Y</td><td>90</td><td>60</td><td>150</td></tr>
+<tr><td>Total</td><td>150</td><td>100</td><td>250</td></tr>
+</tbody>
+</table>
+<p>For a randomly chosen phone, $P(\text{full day}) = \frac{150}{250} = 0.6$. Given Brand X, it is $\frac{60}{100} = 0.6$; given Brand Y, $\frac{90}{150} = 0.6$. Knowing the brand does not change the probability at all. Events like this are <b>independent</b>:</p>
+<p>$$A \text{ and } B \text{ are independent when } P(A \mid B) = P(A).$$</p>
+<p>When the conditional probability differs from the plain one, the events are <b>dependent</b>. Put $P(B \mid A) = P(B)$ into the multiplication rule and you get the shortcut that holds only for independent events:</p>
+<p>$$P(A \cap B) = P(A) \cdot P(B).$$</p>
+<div class="worked">
+<p><b>Worked example 1.</b> In a city, 30% of adults are runners, 50% own a dog, and 15% are runners who own a dog. Are the two events independent?</p>
+<p>Structure: compare $P(\text{runner}) \cdot P(\text{dog})$ with $P(\text{runner} \cap \text{dog})$.</p>
+<p>Substitute: $(0.30)(0.50) = 0.15$, and the joint probability is 0.15.</p>
+<p>They match, so "runner" and "owns a dog" are independent. The same check by conditional probability: $P(\text{dog} \mid \text{runner}) = \frac{0.15}{0.30} = 0.5 = P(\text{dog})$.</p>
+</div>
+<p>Independence must be checked with numbers or justified by how the process works. Two separate machines in a factory, or two flips of a coin, can reasonably be treated as independent. Two people from the same household catching the flu cannot: if one has it, the other is more likely to. Two draws without replacement are dependent too, because the first draw changes what is left.</p>
+
+<h2>Mutually exclusive is not independent</h2>
+<p>Students often mix these up, so here they are side by side.</p>
+<table class="compare">
+<thead><tr><th></th><th>Mutually exclusive</th><th>Independent</th></tr></thead>
+<tbody>
+<tr><td>Meaning</td><td>cannot happen together</td><td>one does not change the chance of the other</td></tr>
+<tr><td>Test</td><td>$P(A \cap B) = 0$</td><td>$P(A \mid B) = P(A)$, or $P(A \cap B) = P(A) \cdot P(B)$</td></tr>
+<tr><td>"Or"</td><td>$P(A) + P(B)$</td><td>$P(A) + P(B) - P(A)P(B)$</td></tr>
+<tr><td>Example</td><td>a student is a freshman; is a senior</td><td>two flips of a fair coin both land heads</td></tr>
+</tbody>
+</table>
+<p>If two events each have a positive probability and are mutually exclusive, they cannot be independent. Knowing that one happened makes the other impossible, which changes its probability from something to 0.</p>
+
+<h2>Unions and the general addition rule</h2>
+<figure id="fig-venn" data-fig="u2-clubs-venn"><figcaption>A Venn diagram of Spanish and art students, with the union shaded.</figcaption></figure>
+<p>The <b>union</b> of A and B, written $A \cup B$, is the event "A or B or both". In <a class="figref" href="#fig-venn">the Venn diagram</a>, 50 students take Spanish and 40 take art. Adding gives 90, but the 15 students in both circles were counted twice. The <b>general addition rule</b> subtracts them once:</p>
+<p>$$P(A \cup B) = P(A) + P(B) - P(A \cap B).$$</p>
+<div class="worked">
+<p><b>Worked example 2.</b> One of the 120 students is chosen at random. Find the probability that the student takes Spanish or art, and the probability of neither.</p>
+<p>Structure: $P(S \cup R) = P(S) + P(R) - P(S \cap R)$, with S for Spanish and R for art.</p>
+<p>Substitute: $\frac{50}{120} + \frac{40}{120} - \frac{15}{120} = \frac{75}{120}$.</p>
+<p>Answer: 0.625. The probability of neither is the complement, $1 - 0.625 = 0.375$, which matches the 45 students outside both circles.</p>
+</div>
+<p>A <b>Venn diagram</b> makes these questions easy if you fill it from the inside out: the overlap first (15), then the rest of each circle ($50 - 15 = 35$ and $40 - 15 = 25$), then the outside ($120 - 75 = 45$). For mutually exclusive events the overlap is 0, and the rule becomes the plain sum from topic 2.5.</p>
+<p>For independent events, the overlap is the product. Two independent machines break down with probabilities 0.05 and 0.08, so the chance at least one breaks down is $0.05 + 0.08 - (0.05)(0.08) = 0.126$. The complement gives the same answer: $1 - (0.95)(0.92) = 0.126$.</p>

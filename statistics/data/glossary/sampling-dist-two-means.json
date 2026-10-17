@@ -1,0 +1,5 @@
+{
+ "diff-means": {
+  "def": "The statistic $\\bar{x}_1 - \\bar{x}_2$ from two independent samples or groups. Its sampling distribution has mean $\\mu_1 - \\mu_2$ and standard deviation $\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$, and is approximately normal when each sample mean is."
+ }
+}

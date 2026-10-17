@@ -1,0 +1,73 @@
+{
+ "topic": "test-one-proportion-setup",
+ "hook": "Last year 70% of a city's households recycled. Then the city stopped picking up glass at the curb, and an environmental group thinks recycling has dropped. Before it surveys a single household, the group has to write down exactly what it is testing, in which direction, and how strong the evidence must be. Get that wrong and no calculation can save the conclusion.",
+ "prereq": [
+  {
+   "q": "A random sample of 250 households is taken from a city of 82,000 households. Which statement checks the 10% condition?",
+   "options": [
+    "250 is less than 10% of 82,000",
+    "250 is at least 10",
+    "250 is more than 10% of 2,500",
+    "10% of the sample recycles"
+   ],
+   "correct": 0,
+   "why": "The 10% condition compares the sample size with the population: 10% of 82,000 is 8,200.",
+   "review": "sampling-dist-proportion"
+  },
+  {
+   "q": "Which is a parameter?",
+   "options": [
+    "The proportion of all the city's households that recycle",
+    "The proportion of the 250 sampled households that recycle",
+    "The number of sampled households that recycle",
+    "The sample size, 250"
+   ],
+   "correct": 0,
+   "why": "A parameter describes the whole population; the other three describe the sample.",
+   "review": "variables"
+  }
+ ],
+ "figure": {
+  "figure": "alternative-directions",
+  "caption": "The null value p₀ = 0.70 and the three possible alternative hypotheses. The research question, not the data, picks one."
+ },
+ "chain": [
+  {
+   "cause": "A study weighs a claim about a population proportion",
+   "effect": "write $H_0: p = p_0$ (no change, the claimed value) and $H_a$ (what the study seeks evidence for)"
+  },
+  {
+   "cause": "The question has a direction (\"dropped\", \"more than\")",
+   "effect": "the alternative is one-sided; with no direction (\"changed\") it is two-sided, $p \\ne p_0$"
+  },
+  {
+   "cause": "The standard of evidence must not depend on the data",
+   "effect": "the significance level $\\alpha$ is chosen before the data are collected"
+  },
+  {
+   "cause": "The test reasons as if $H_0$ were true",
+   "effect": "large counts is checked with $p_0$: $np_0 \\ge 10$ and $n(1 - p_0) \\ge 10$"
+  }
+ ],
+ "ideas": [
+  "$H_0: p = p_0$ always has the equals sign; $H_a$ is $p < p_0$, $p > p_0$ or $p \\ne p_0$.",
+  "Hypotheses are about the parameter $p$, never $\\hat{p}$. Define $p$ in context right after them.",
+  "The direction of $H_a$ comes from the question, before the data: never from which way the sample went.",
+  "$\\alpha$ is the standard of evidence, set in advance. Smaller $\\alpha$, stricter standard.",
+  "Procedure: one-sample z test for a proportion. Conditions: random, 10%, large counts with $p_0$."
+ ],
+ "misconception": {
+  "wrong": "The sample came out at 31% red, so the alternative should be $H_a: p > 0.25$.",
+  "right": "The alternative comes from the research question, set before the data. If the question was \"is the spinner fair?\", the alternative is $H_a: p \\ne 0.25$ whatever the sample shows."
+ },
+ "check": [
+  "stat-test-one-proportion-setup-1",
+  "stat-test-one-proportion-setup-2",
+  "stat-test-one-proportion-setup-3",
+  "stat-test-one-proportion-setup-4",
+  "stat-test-one-proportion-setup-8",
+  "stat-test-one-proportion-setup-11",
+  "stat-test-one-proportion-setup-16"
+ ],
+ "summary": "Set up a test before looking at the data: hypotheses about $p$ ($H_0: p = p_0$ and a one-sided or two-sided $H_a$ chosen from the question), $p$ defined in context, a significance level $\\alpha$, the procedure named (one-sample z test for a proportion), and the conditions checked in words, with large counts using $p_0$."
+}

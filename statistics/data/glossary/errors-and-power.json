@@ -1,0 +1,11 @@
+{
+ "type-i": {
+  "def": "Rejecting the null hypothesis when it is true: finding convincing evidence for an effect that is not there. Its probability is the significance level $\\alpha$."
+ },
+ "type-ii": {
+  "def": "Failing to reject the null hypothesis when the alternative is true: missing an effect that is there. Its probability, $\\beta$, depends on the true value of the parameter."
+ },
+ "power": {
+  "def": "The probability that a test rejects the null hypothesis when a specific alternative value is true, $1 - \\beta$. It increases with the sample size, with $\\alpha$, and with the distance between the true value and the null value."
+ }
+}

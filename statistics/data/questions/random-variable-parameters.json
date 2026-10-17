@@ -1,0 +1,525 @@
+{
+ "stimuli": {
+  "random-variable-parameters-s1": {
+   "kind": "table",
+   "title": "Tacos per order at a food truck",
+   "set": "probability",
+   "text": "A food truck tracks how many tacos each order contains. Let X = the number of tacos in a randomly chosen order (invented data).",
+   "table": {
+    "caption": "Probability distribution of X, tacos per order",
+    "cols": [
+     "$x$",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "rows": [
+     [
+      "$P(X = x)$",
+      "0.20",
+      "0.35",
+      "0.25",
+      "0.15",
+      "0.05"
+     ]
+    ]
+   }
+  },
+  "random-variable-parameters-s2": {
+   "kind": "table",
+   "title": "A fundraiser game",
+   "text": "A school fundraiser game costs \\$2 to play. A player wins \\$10 with probability 0.10 and \\$5 with probability 0.15, and otherwise wins nothing. Let W = a player's net gain in dollars (prize minus the \\$2 cost) on one play.",
+   "table": {
+    "caption": "Probability distribution of W, net gain on one play",
+    "cols": [
+     "$w$ (dollars)",
+     "8",
+     "3",
+     "−2"
+    ],
+    "rows": [
+     [
+      "$P(W = w)$",
+      "0.10",
+      "0.15",
+      "0.75"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-random-variable-parameters-1",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the mean (expected value) of X?",
+   "why": {
+    "correct": "$\\mu_X = \\sum x_i p_i = 1(0.20) + 2(0.35) + 3(0.25) + 4(0.15) + 5(0.05) = 0.20 + 0.70 + 0.75 + 0.60 + 0.25 = 2.5$ tacos.",
+    "options": [
+     "That averages 1 to 5 without the probabilities.",
+     "That is the most likely value, not the mean.",
+     "Right: each value weighted by its probability.",
+     "That averages the probabilities, which always gives 1 divided by the number of values."
+    ]
+   },
+   "stimulus": "random-variable-parameters-s1",
+   "options": [
+    "3 tacos",
+    "2 tacos",
+    "2.5 tacos",
+    "0.2 tacos"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-random-variable-parameters-2",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the standard deviation of X, to two decimal places?",
+   "why": {
+    "correct": "$\\sigma_X = \\sqrt{\\sum (x_i - \\mu_X)^2 p_i} = \\sqrt{(1 - 2.5)^2(0.20) + (2 - 2.5)^2(0.35) + (3 - 2.5)^2(0.25) + (4 - 2.5)^2(0.15) + (5 - 2.5)^2(0.05)} = \\sqrt{1.25} \\approx 1.12$ tacos.",
+    "options": [
+     "That is the variance. Take its square root.",
+     "That treats 1 to 5 as a data set with no probabilities.",
+     "That is the squared deviation of 2 or 3 from the mean, not the whole sum.",
+     "Right: the square root of the weighted squared deviations, 1.25."
+    ]
+   },
+   "stimulus": "random-variable-parameters-s1",
+   "options": [
+    "1.25 tacos",
+    "1.58 tacos",
+    "0.25 tacos",
+    "1.12 tacos"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-random-variable-parameters-3",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is the best interpretation of the mean of X in context?",
+   "why": {
+    "correct": "An expected value is a long-run average: over many randomly chosen orders, the average number of tacos per order is about 2.5.",
+    "options": [
+     "Right: a long-run average over many orders.",
+     "No order contains 2.5 tacos; the most common is 2.",
+     "That would describe a median; here 55% of orders have fewer than 2.5.",
+     "The mean does not predict one order; it describes the long run."
+    ]
+   },
+   "stimulus": "random-variable-parameters-s1",
+   "options": [
+    "Over many orders, the average number of tacos per order is about 2.5",
+    "Most orders contain 2.5 tacos, the most common order size",
+    "Half of the orders have more than 2.5 tacos and half have fewer",
+    "The next order will contain about 2 or 3 tacos"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-random-variable-parameters-4",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the expression for the expected value of W.",
+   "why": {
+    "correct": "$\\mu_W = 8(0.10) + 3(0.15) + (-2)(0.75) = 0.80 + 0.45 - 1.50 = -0.25$ dollars."
+   },
+   "stimulus": "random-variable-parameters-s2",
+   "setup": {
+    "answer": "8*0.10 + 3*0.15 + (-2)*0.75",
+    "bind": {},
+    "mustUse": [
+     "0.1",
+     "0.15",
+     "0.75"
+    ],
+    "then": {
+     "kind": "stat",
+     "answer": -0.25,
+     "places": 2
+    },
+    "mistakes": [
+     {
+      "expr": "(8 + 3 - 2)/3",
+      "why": "That averages the three values as if they were equally likely. Weight each value by its probability."
+     },
+     {
+      "expr": "8*0.10 + 3*0.15",
+      "why": "The \\$2 loss happens with probability 0.75 and must be included: add (−2)(0.75)."
+     },
+     {
+      "expr": "10*0.10 + 5*0.15",
+      "why": "Those are the prizes, not the net gains. W subtracts the \\$2 cost: use 8, 3 and −2."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variable-parameters-5",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the standard deviation of W, in dollars?",
+   "why": {
+    "correct": "$\\sigma_W = \\sqrt{(8 + 0.25)^2(0.10) + (3 + 0.25)^2(0.15) + (-2 + 0.25)^2(0.75)} = \\sqrt{6.80625 + 1.584375 + 2.296875} = \\sqrt{10.6875} \\approx 3.27$ dollars."
+   },
+   "stimulus": "random-variable-parameters-s2",
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "answer": 3.2691742076555053,
+    "mistakes": [
+     {
+      "value": 10.6875,
+      "why": "That is the variance. Take the square root."
+     },
+     {
+      "value": 5,
+      "why": "That treats 8, 3 and −2 as a data set. Use the probabilities as weights and the mean, −0.25."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variable-parameters-6",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "conclude",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The expected value of W is −\\$0.25. Build an interpretation in context.",
+   "why": {
+    "correct": "An expected value is a long-run average. A negative mean net gain means players lose money on average, which is how the school raises money."
+   },
+   "stimulus": "random-variable-parameters-s2",
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "claim": {
+      "label": "Meaning",
+      "options": [
+       "If many people play, players lose an average of about \\$0.25 per play",
+       "Each player loses exactly \\$0.25 every time the game is played",
+       "A typical player wins \\$0.25 on most plays"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "On any one play a player gains \\$8 or \\$3 or loses \\$2; the \\$0.25 is an average over many plays.",
+       "2": "The mean is negative, and 75% of plays lose \\$2."
+      }
+     },
+     "evidence": {
+      "label": "So",
+      "options": [
+       "so the school raises about \\$0.25 per play in the long run",
+       "so the game is fair to the players",
+       "so the school loses money on the game"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A fair game would have an expected net gain of 0.",
+       "2": "Players lose on average, so the school gains on average."
+      }
+     }
+    },
+    "model": "If many people play the game, players lose an average of about \\$0.25 per play, so in the long run the school raises about 25 cents for each play.",
+    "write": {
+     "context": [
+      "play"
+     ],
+     "parameter": false,
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-random-variable-parameters-7",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The school expects 400 plays at the fair. About how much money should the game raise?",
+   "why": {
+    "correct": "The mean net gain for a player is −\\$0.25, so the school gains about \\$0.25 per play on average: $400 \\times 0.25 = 100$ dollars. The actual total will vary by chance.",
+    "options": [
+     "Right: 400 plays times an average of \\$0.25 to the school.",
+     "That is the \\$2 cost times 400, ignoring the prizes paid out.",
+     "That counts only the \\$3 net from small prizes; the prizes reduce what the school keeps.",
+     "That is 0.25 times 100 plays, not 400."
+    ]
+   },
+   "stimulus": "random-variable-parameters-s2",
+   "options": [
+    "About \\$100",
+    "About \\$800",
+    "About \\$1,200",
+    "About \\$25"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-random-variable-parameters-8",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "single",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which is the formula for the mean (expected value) of a discrete random variable X?",
+   "why": {
+    "correct": "Weight each value by its probability and add: $\\mu_X = \\sum x_i p_i$.",
+    "options": [
+     "That is the mean of a data list with no probabilities.",
+     "Right: the probability-weighted average of the values.",
+     "The probabilities alone add to 1.",
+     "That has the shape of a standard deviation."
+    ]
+   },
+   "options": [
+    "$\\mu_X = \\frac{\\sum x_i}{n}$",
+    "$\\mu_X = \\sum x_i p_i$",
+    "$\\mu_X = \\sum p_i$",
+    "$\\mu_X = \\sqrt{\\sum (x_i - \\bar{x})^2 p_i}$"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-random-variable-parameters-9",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let D = the number of defective bulbs in a randomly chosen box of 4, with $P(D = 0) = 0.70$, $P(D = 1) = 0.20$, $P(D = 2) = 0.08$ and $P(D = 3) = 0.02$. Find the expected value of D.",
+   "why": {
+    "correct": "$\\mu_D = 0(0.70) + 1(0.20) + 2(0.08) + 3(0.02) = 0 + 0.20 + 0.16 + 0.06 = 0.42$ defective bulbs per box."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "answer": 0.42,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "That averages 0, 1, 2 and 3 without the probabilities."
+     },
+     {
+      "value": 0.25,
+      "why": "That averages the probabilities. Multiply each value by its probability and add."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variable-parameters-10",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let D = the number of defective bulbs in a randomly chosen box of 4, with $P(D = 0) = 0.70$, $P(D = 1) = 0.20$, $P(D = 2) = 0.08$ and $P(D = 3) = 0.02$. The mean is 0.42. Find the standard deviation of D.",
+   "why": {
+    "correct": "$\\sigma_D = \\sqrt{(0 - 0.42)^2(0.70) + (1 - 0.42)^2(0.20) + (2 - 0.42)^2(0.08) + (3 - 0.42)^2(0.02)} = \\sqrt{0.5236} \\approx 0.72$ bulbs."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "answer": 0.7236021006050218,
+    "mistakes": [
+     {
+      "value": 0.5236,
+      "why": "That is the variance. Take the square root for the standard deviation."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variable-parameters-11",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Random variables P and Q both have mean 3. P takes the values 2, 3 and 4; Q takes the values 0, 3 and 6. Each has probabilities 0.25, 0.5 and 0.25 for its three values. Which has the larger standard deviation?",
+   "why": {
+    "correct": "Q's values lie farther from the mean (3 away) than P's (1 away), with the same probabilities, so Q varies more: $\\sigma_Q = \\sqrt{9(0.5)} \\approx 2.12$ and $\\sigma_P = \\sqrt{1(0.5)} \\approx 0.71$.",
+    "options": [
+     "Right: larger deviations from the mean, same weights.",
+     "Values closer together mean less spread, so a smaller SD.",
+     "Equal probabilities with different distances give different spreads.",
+     "The same mean says nothing about spread."
+    ]
+   },
+   "options": [
+    "Q, because its values lie farther from the mean of 3",
+    "P, because its values are closer together",
+    "They are equal, because the probabilities are the same",
+    "They are equal, because the means are both 3"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-random-variable-parameters-12",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "single",
+   "practice": "4.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the tacos distribution, $\\sigma_X \\approx 1.12$. What does this mean in context?",
+   "why": {
+    "correct": "The standard deviation of a random variable is the typical distance of its values from the mean, in the long run.",
+    "options": [
+     "A standard deviation is a distance in tacos, not a percent of orders.",
+     "Right: a typical distance from the mean, in tacos.",
+     "Orders come in whole tacos, and the SD measures spread on both sides.",
+     "The mean is exact for this distribution; the SD describes how orders vary."
+    ]
+   },
+   "options": [
+    "About 1.12% of orders differ from the mean of 2.5 tacos",
+    "The number of tacos in an order typically varies by about 1.12 from the mean of 2.5",
+    "Most orders contain between 2.5 and 3.62 tacos",
+    "The mean of 2.5 tacos per order could be off from the truth by about 1.12 tacos"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-random-variable-parameters-13",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a randomly chosen family in a town, the expected number of children is 1.8. A student says this is impossible, since no family has 1.8 children. How should you respond?",
+   "why": {
+    "correct": "An expected value is a long-run average over many families. It need not be one of the possible values.",
+    "options": [
+     "Rounding throws away information; the average is 1.8.",
+     "Means of counts are often not whole numbers.",
+     "Right: the long-run mean can fall between whole numbers.",
+     "The mean alone does not say what most families have."
+    ]
+   },
+   "options": [
+    "The student is right: it should be rounded to 2 children",
+    "The expected value is probably a mistake, since it is not a whole number of children",
+    "It is an average over many families, so it need not be a possible value",
+    "It means most families in the town have 1 or 2 children"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-random-variable-parameters-14",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A delivery takes 10, 20, 30 or 40 minutes with probabilities 0.2, 0.3, $p$ and 0.1. Find $p$, then find the mean delivery time in minutes.",
+   "why": {
+    "correct": "First $p = 1 - (0.2 + 0.3 + 0.1) = 0.4$. Then $\\mu = 10(0.2) + 20(0.3) + 30(0.4) + 40(0.1) = 2 + 6 + 12 + 4 = 24$ minutes."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 1,
+    "answer": 24,
+    "mistakes": [
+     {
+      "value": 25,
+      "why": "That averages 10, 20, 30 and 40 equally. Weight by the probabilities, with $p = 0.4$."
+     },
+     {
+      "value": 20,
+      "why": "That leaves out the 40-minute term, $40(0.1) = 4$. Every value must be weighted and added."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variable-parameters-15",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For the tacos distribution, a student finds the mean as $\\frac{1 + 2 + 3 + 4 + 5}{5} = 3$. What is wrong?",
+   "why": {
+    "correct": "Dividing by 5 treats the values as equally likely. Orders of 1 or 2 tacos are more likely than 4 or 5, so the probability-weighted mean is lower, 2.5.",
+    "options": [
+     "Right: weight each value by its probability.",
+     "Dividing by the sum of the values gives 1, not a mean.",
+     "The middle of the list of values is not the mean of the distribution.",
+     "The mean is in tacos; it needs the values and the probabilities."
+    ]
+   },
+   "options": [
+    "It ignores the probabilities, as if every order size were equally likely",
+    "It should divide by 15, the sum of the values",
+    "Nothing is wrong, since 3 is the middle value of the five order sizes",
+    "It should have used the probabilities alone, 0.2 on average"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-random-variable-parameters-16",
+   "unit": "unit-2",
+   "topic": "random-variable-parameters",
+   "type": "numeric",
+   "practice": "4.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "An insurance company sells a one-year policy for \\$200. It pays \\$5,000 if the insured item is stolen, which happens with probability 0.01. What is the company's expected profit per policy, in dollars?",
+   "why": {
+    "correct": "Profit is \\$200 with probability 0.99 and \\$200 − \\$5,000 = −\\$4,800 with probability 0.01: $\\mu = 200(0.99) + (-4800)(0.01) = 198 - 48 = 150$ dollars per policy, on average over many policies."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 0,
+    "answer": 150,
+    "mistakes": [
+     {
+      "value": 198,
+      "why": "That is only $200(0.99)$. Add the theft case too: $(-4800)(0.01) = -48$."
+     },
+     {
+      "value": -4800,
+      "why": "That is the profit on a policy with a theft, not the long-run average."
+     }
+    ]
+   }
+  }
+ ]
+}

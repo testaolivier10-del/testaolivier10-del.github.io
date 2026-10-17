@@ -1,0 +1,656 @@
+{
+ "stimuli": {
+  "test-one-proportion-s1": {
+   "kind": "table",
+   "title": "A mentoring program and chronic absence",
+   "text": "<p>Last year, 18% of a large school district's students were chronically absent (missed 10% or more of school days). This year the district started a mentoring program and wants to know whether the proportion has gone down. A researcher selects a random sample of 450 of the district's 21,000 students; 63 of them are chronically absent so far. She tests $H_0: p = 0.18$ against $H_a: p < 0.18$ at $\\alpha = 0.05$, where $p$ is the true proportion of all the district's students who are chronically absent this year.</p>",
+   "table": {
+    "caption": "Sample results (invented data)",
+    "cols": [
+     "Students sampled",
+     "Chronically absent",
+     "Sample proportion"
+    ],
+    "rows": [
+     [
+      "450",
+      "63",
+      "$\\hat{p} = 0.14$"
+     ]
+    ]
+   }
+  },
+  "test-one-proportion-s2": {
+   "kind": "table",
+   "title": "Computer output: a four-day school week",
+   "text": "<p>A polling firm selects a random sample of 1,000 adults in a state and asks whether they would support a four-day school week. The firm wants to know whether more than half of the state's adults support it. Its software prints the output below.</p>",
+   "table": {
+    "caption": "Test and confidence interval for one proportion (invented data)",
+    "cols": [
+     "Test",
+     "X",
+     "N",
+     "Sample p",
+     "Z",
+     "P-Value"
+    ],
+    "rows": [
+     [
+      "p = 0.5 vs p > 0.5",
+      "532",
+      "1000",
+      "0.532",
+      "2.02",
+      "0.0215"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-test-one-proportion-1",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate the test statistic. Give two decimal places.",
+   "stimulus": "test-one-proportion-s1",
+   "numeric": {
+    "kind": "z",
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.14,
+      0.18,
+      450
+     ],
+     "pick": "z"
+    },
+    "mistakes": [
+     {
+      "value": -2.4454,
+      "why": "That uses $\\hat{p} = 0.14$ in the standard deviation. A test uses $p_0 = 0.18$: $\\sqrt{0.18(0.82)/450}$."
+     },
+     {
+      "value": 2.2086,
+      "why": "The sign is backward: statistic minus null value is $0.14 - 0.18$, a negative number."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$z = \\frac{0.14 - 0.18}{\\sqrt{0.18(0.82)/450}} = \\frac{-0.04}{0.0181} = -2.21$. Conditions: random sample; 450 is less than 10% of 21,000; $450(0.18) = 81$ and $450(0.82) = 369$ are at least 10."
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-2",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the p-value. Give four decimal places.",
+   "stimulus": "test-one-proportion-s1",
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.14,
+      0.18,
+      450
+     ],
+     "pick": "p.less"
+    },
+    "mistakes": [
+     {
+      "value": 0.0272,
+      "why": "That doubles the tail as for a two-sided test. $H_a: p < 0.18$ is one-sided: use one tail."
+     },
+     {
+      "value": 0.9864,
+      "why": "That is the right tail. \"Less than\" means the area to the left of $z = -2.21$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$H_a: p < 0.18$, so the p-value is the left tail: $P(Z \\le -2.21) = 0.0136$. Technology (a 1-proportion z test) gives $z = -2.21$ and p-value 0.0136."
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-3",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "State the conclusion of the test at $\\alpha = 0.05$.",
+   "stimulus": "test-one-proportion-s1",
+   "conclude": {
+    "mode": "test",
+    "p": 0.0136,
+    "alpha": 0.05,
+    "ha": "less",
+    "parameter": "the true proportion of all the district's students who are chronically absent this year",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "It is proven"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is below $\\alpha$, so the evidence is convincing.",
+       "2": "A test gives evidence; it never proves."
+      }
+     },
+     "direction": {
+      "options": [
+       "is less than 0.18",
+       "is greater than 0.18",
+       "is equal to 0.18"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Match the direction of $H_a: p < 0.18$.",
+       "2": "Evidence is always for $H_a$, never that $H_0$ is true."
+      }
+     },
+     "parameter": {
+      "options": [
+       "that the true proportion of all the district's students who are chronically absent this year",
+       "that the proportion of the 450 sampled students who are chronically absent",
+       "that the mentoring program lowered the proportion of chronically absent students, which"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample proportion is known to be 0.14; the conclusion is about the population.",
+       "2": "This study has no comparison group, so it cannot show the program caused a change."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.0136 is less than α = 0.05, we reject H0. There is convincing evidence that the true proportion of all the district's students who are chronically absent this year is less than 0.18.",
+    "write": {
+     "context": [
+      "absent",
+      "district"
+     ],
+     "direction": "less",
+     "compare": {
+      "p": 0.0136,
+      "alpha": 0.05
+     }
+    }
+   },
+   "why": {
+    "correct": "Because $0.0136 < 0.05$, reject $H_0$. The conclusion is about the parameter, in context, with evidence language and the direction of $H_a$."
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-4",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Suppose the researcher had chosen $\\alpha = 0.01$ before collecting the data. What would she conclude?",
+   "stimulus": "test-one-proportion-s1",
+   "options": [
+    "Reject $H_0$, because the p-value is small",
+    "Fail to reject $H_0$: not convincing evidence that $p < 0.18$",
+    "Accept $H_0$: the true proportion is 0.18",
+    "Change to $\\alpha = 0.05$ so the result is significant"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Because $0.0136 > 0.01$, she would fail to reject $H_0$: there would not be convincing evidence at the 1% level that the true proportion is less than 0.18. That does not mean the proportion is 0.18.",
+    "options": [
+     "At $\\alpha = 0.01$, the p-value 0.0136 is not small enough: it is greater than 0.01.",
+     "Right: $0.0136 > 0.01$.",
+     "A test never accepts $H_0$; failing to reject means the evidence is not strong enough.",
+     "The significance level is fixed before the data; changing it afterward to get a result is not allowed."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-5",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Based on this study, can the district conclude that the mentoring program caused the drop in chronic absence?",
+   "stimulus": "test-one-proportion-s1",
+   "options": [
+    "Yes, because the p-value of 0.0136 is less than the significance level of 0.05",
+    "Yes, because the 450 students were chosen at random",
+    "No, because a significance test is not meant for data about schools",
+    "No: with no randomly assigned comparison group, other changes could explain it"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The test gives evidence that the proportion this year is below 18%, but the study is not an experiment: there was no randomly assigned comparison group, and other things changed from last year to this year. It shows a change, not its cause.",
+    "options": [
+     "A small p-value shows the change is unlikely to be chance; it cannot show what caused it.",
+     "Random sampling lets her generalize to the district; it does not create a comparison group.",
+     "Tests work for any random sample; the problem here is the design, not the subject.",
+     "Right: only random assignment to treatments supports a cause-and-effect conclusion."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-6",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which hypotheses did the software test, where $p$ is the true proportion of all the state's adults who would support a four-day week?",
+   "stimulus": "test-one-proportion-s2",
+   "options": [
+    "$H_0: p = 0.5$, $H_a: p > 0.5$",
+    "$H_0: p = 0.532$, $H_a: p > 0.532$",
+    "$H_0: p = 0.5$, $H_a: p \\ne 0.5$",
+    "$H_0: \\hat{p} = 0.5$, $H_a: \\hat{p} > 0.5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The output line \"p = 0.5 vs p > 0.5\" gives $H_0: p = 0.5$ and $H_a: p > 0.5$: one-sided, matching \"more than half\".",
+    "options": [
+     "Right: read the test line of the output.",
+     "The null value is 0.5 from the question. 0.532 is the sample proportion.",
+     "The output says \"p > 0.5\", and the question asks about more than half: one-sided.",
+     "Hypotheses are about $p$, never about $\\hat{p}$."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-7",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "The firm had chosen $\\alpha = 0.01$. State the conclusion.",
+   "stimulus": "test-one-proportion-s2",
+   "conclude": {
+    "mode": "test",
+    "p": 0.0215,
+    "alpha": 0.01,
+    "ha": "greater",
+    "parameter": "the true proportion of all the state's adults who would support a four-day school week",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is not convincing evidence",
+       "There is convincing evidence",
+       "There is proof"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value, 0.0215, is above $\\alpha = 0.01$, so the evidence is not convincing at this level.",
+       "2": "A test never proves anything."
+      }
+     },
+     "direction": {
+      "options": [
+       "is greater than 0.5",
+       "is equal to 0.5",
+       "is less than 0.5"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Failing to reject does not show the proportion equals 0.5. The conclusion still names the alternative: \"not convincing evidence that ... is greater than 0.5\".",
+       "2": "The alternative is \"greater than 0.5\"."
+      }
+     },
+     "parameter": {
+      "options": [
+       "that the true proportion of all the state's adults who would support a four-day school week",
+       "that the 532 adults in the sample",
+       "that the sample proportion of 0.532"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The conclusion is about the population, not the sampled adults.",
+       "2": "We know the sample proportion is 0.532; the conclusion is about $p$."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.0215 is greater than α = 0.01, we fail to reject H0. There is not convincing evidence that the true proportion of all the state's adults who would support a four-day school week is greater than 0.5.",
+    "write": {
+     "context": [
+      "four-day",
+      "adults"
+     ],
+     "direction": "greater",
+     "compare": {
+      "p": 0.0215,
+      "alpha": 0.01
+     }
+    }
+   },
+   "why": {
+    "correct": "Because $0.0215 > 0.01$, fail to reject $H_0$. The data do not give convincing evidence, at the 1% level, that more than half of the state's adults support a four-day week. This does not show that the true proportion is 0.5."
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-8",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "If the firm had used $\\alpha = 0.05$ instead, which conclusion would be correct?",
+   "stimulus": "test-one-proportion-s2",
+   "options": [
+    "Reject $H_0$: convincing evidence that more than half of adults support it",
+    "Reject $H_0$: the test proves that exactly 53.2% of the state's adults support it",
+    "Fail to reject $H_0$, because 0.532 is close to 0.5",
+    "Reject $H_0$: the sample proportion is greater than 0.5"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Because $0.0215 < 0.05$, reject $H_0$: there is convincing evidence that the true proportion of all the state's adults who would support a four-day week is greater than 0.5.",
+    "options": [
+     "Right: $0.0215 < 0.05$.",
+     "A test gives evidence, never proof, and 0.532 is the sample result, not the population value.",
+     "Compare the p-value with $\\alpha$, not the sample proportion with 0.5 by eye.",
+     "We already knew that. The conclusion is about the population proportion."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-9",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The software also gives a 90% confidence interval for $p$: from 0.506 to 0.558. How does it relate to the one-sided test at $\\alpha = 0.05$?",
+   "stimulus": "test-one-proportion-s2",
+   "options": [
+    "It agrees: every value is above 0.5, as rejecting $H_0$ at 0.05 suggests",
+    "It disagrees, because the interval uses 90% confidence and the test used 5%",
+    "It disagrees, because the interval contains 0.532",
+    "It shows that 90% of adults support the four-day week"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A one-sided test at $\\alpha = 0.05$ matches a 90% interval (5% in each tail). Every value in the interval is above 0.5, which agrees with rejecting $H_0: p = 0.5$ in favor of $p > 0.5$, and the interval also estimates how much above 0.5 the proportion is.",
+    "options": [
+     "Right: the interval and the test tell the same story, and the interval adds a range for $p$.",
+     "A 90% interval leaves 5% in each tail, which is exactly what matches a one-sided test at 0.05.",
+     "Every interval contains its own sample proportion; what matters is whether it contains 0.5.",
+     "The 90% is the confidence level, not a share of adults."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-10",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "setup",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A city says 30% of its bus riders pay with a phone app. A transit group thinks the share is higher. In a random sample of 600 riders, 207 use the app ($\\hat{p} = 0.345$). Type the expression for the test statistic of $H_0: p = 0.30$ against $H_a: p > 0.30$, with values substituted.",
+   "setup": {
+    "answer": "(0.345 - 0.30)/sqrt(0.30*0.70/600)",
+    "bind": {
+     "phat": 0.345,
+     "p0": 0.3,
+     "n": 600
+    },
+    "mustUse": [
+     "p0",
+     "n"
+    ],
+    "mustNotUse": [
+     "phat in sqrt"
+    ],
+    "then": {
+     "kind": "z",
+     "from": {
+      "fn": "z1prop",
+      "args": [
+       0.345,
+       0.3,
+       600
+      ],
+      "pick": "z"
+     }
+    },
+    "mistakes": [
+     {
+      "expr": "(0.345 - 0.30)/sqrt(0.345*0.655/600)",
+      "why": "A test's standard deviation uses $p_0 = 0.30$, not $\\hat{p}$: $\\sqrt{0.30(0.70)/600}$."
+     },
+     {
+      "expr": "(0.345 - 0.30)/sqrt(0.30*0.70)",
+      "why": "Divide by $n = 600$ inside the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$z = \\frac{0.345 - 0.30}{\\sqrt{0.30(0.70)/600}} = 2.41$. The standard deviation uses $p_0 = 0.30$."
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-11",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the bus-app test ($z = 2.41$, $H_a: p > 0.30$), find the p-value. Give four decimal places.",
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.345,
+      0.3,
+      600
+     ],
+     "pick": "p.greater"
+    },
+    "mistakes": [
+     {
+      "value": 0.9919,
+      "why": "That is the area below $z = 2.41$. \"Greater than\" means the right tail."
+     },
+     {
+      "value": 0.0102,
+      "why": "That uses $\\hat{p}$ in the standard deviation ($z = 2.32$). Use $p_0 = 0.30$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Right tail: $P(Z \\ge 2.41) = 0.0081$. Technology gives 0.0081; Table A gives $1 - 0.9920 = 0.0080$."
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-12",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "State the conclusion of the bus-app test at $\\alpha = 0.05$ (p-value 0.0081).",
+   "conclude": {
+    "mode": "test",
+    "p": 0.0081,
+    "alpha": 0.05,
+    "ha": "greater",
+    "parameter": "the true proportion of all the city's bus riders who pay with the app",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "We have proven"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A p-value of 0.0081 is below 0.05, so the evidence is convincing.",
+       "2": "Evidence, not proof."
+      }
+     },
+     "direction": {
+      "options": [
+       "is greater than 0.30",
+       "is not equal to 0.30",
+       "is 0.345"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The alternative was one-sided: greater than 0.30.",
+       "2": "The test does not show the proportion equals the sample value."
+      }
+     },
+     "parameter": {
+      "options": [
+       "that the true proportion of all the city's bus riders who pay with the app",
+       "that the 207 riders who use the app",
+       "that the proportion of the 600 sampled riders who pay with the app"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The conclusion is about a proportion of all riders.",
+       "2": "The sample proportion is known; the conclusion is about the population."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.0081 is less than α = 0.05, we reject H0. There is convincing evidence that the true proportion of all the city's bus riders who pay with the app is greater than 0.30.",
+    "write": {
+     "context": [
+      "bus",
+      "riders",
+      "app"
+     ],
+     "direction": "greater",
+     "compare": {
+      "p": 0.0081,
+      "alpha": 0.05
+     }
+    }
+   },
+   "why": {
+    "correct": "Because $0.0081 < 0.05$, reject $H_0$: there is convincing evidence that the true proportion of all the city's bus riders who pay with the app is greater than 0.30."
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-13",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "A test of $H_0: p = 0.25$ against $H_a: p \\ne 0.25$ gives a p-value of 0.38. Which conclusion is worded correctly?",
+   "options": [
+    "We accept $H_0$: the true proportion is 0.25",
+    "We fail to reject $H_0$: not convincing evidence that $p \\ne 0.25$",
+    "There is a 38% chance that the true proportion is 0.25",
+    "The data prove that the proportion is still 0.25, just as it was before"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Because $0.38 > 0.05$, fail to reject $H_0$, and say the evidence is not convincing for $H_a$. Never \"accept\" $H_0$ or say it is true.",
+    "options": [
+     "A test never accepts $H_0$; a large p-value means the data are consistent with it, not that it is true.",
+     "Right: the decision, then evidence language about $H_a$.",
+     "A p-value is not the probability that $H_0$ is true.",
+     "Tests never prove; failing to reject only means the evidence was not strong enough."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-14",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student wants to test whether more than 10% of a lake's 2,000 fish carry a parasite. She catches a random sample of 40 fish. What is the problem with a one-sample z test here?",
+   "options": [
+    "$40(0.10) = 4$ is less than 10, so the normal model is not justified",
+    "40 is less than 30, so the sample is too small",
+    "40 is more than 10% of the 2,000 fish",
+    "Fish in a lake are not a population that a random sample can be drawn from"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Large counts with $p_0$: $np_0 = 40(0.10) = 4$, which is less than 10. The sampling distribution of $\\hat{p}$ is skewed, so a p-value from the normal distribution may be inaccurate.",
+    "options": [
+     "Right: large counts fails for successes.",
+     "For proportions, check successes and failures with $p_0$, not $n \\ge 30$.",
+     "10% of 2,000 is 200, so 40 is well under it.",
+     "The problem says the sample is random; the issue is that only 4 parasite carriers are expected."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-15",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A 95% confidence interval for a proportion runs from 0.46 to 0.52. What would a two-sided test of $H_0: p = 0.50$ at $\\alpha = 0.05$ conclude?",
+   "options": [
+    "Reject $H_0$, because 0.49, the center, is not 0.50",
+    "Fail to reject $H_0$, because 0.50 is inside the interval",
+    "Reject $H_0$, because the interval includes values below 0.50",
+    "Nothing, because intervals and tests answer different questions"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A 95% interval and a two-sided test at 0.05 match. 0.50 is inside the interval, so it is plausible: the test would fail to reject $H_0$.",
+    "options": [
+     "Being off the center is expected; what matters is that 0.50 is inside the interval.",
+     "Right: a plausible value is not ruled out by the matching test.",
+     "It also includes 0.50 itself, so 0.50 is plausible.",
+     "For the same data, a 95% interval and a two-sided test at 0.05 agree about $p_0$."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-16",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "order",
+   "practice": "2.C",
+   "level": "recall",
+   "diff": 2,
+   "q": "Put the four steps of a significance test in order.",
+   "options": [
+    "State: hypotheses, $\\alpha$, and the parameter in context",
+    "Plan: name the procedure and check the conditions",
+    "Do: compute the test statistic and the p-value",
+    "Conclude: compare the p-value with $\\alpha$ and state the conclusion in context"
+   ],
+   "why": {
+    "correct": "State what you are testing, plan how (procedure and conditions), do the calculation, then conclude in context."
+   }
+  }
+ ]
+}

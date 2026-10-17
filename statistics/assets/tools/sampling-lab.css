@@ -1,0 +1,165 @@
+/* Sampling lab (statistics/assets/tools/sampling-lab.js). OWNED BY THIS TOOL.
+   The illustrated populations take their colors from the tokens below, so
+   light and dark both read; the sample is always --stat-s2, the population
+   mean --stat-s1 and the sample means --stat-s3 (linked across views). */
+.sl-card{display:grid;gap:14px;}
+body.stat{
+  --sl-hill:#E2EDD3;--sl-riverside:#E3EEF0;--sl-river:#A9CFE6;--sl-ripple:#FFFFFF;--sl-lane:#DAD6CC;--sl-lane-t:#6A655B;
+  --sl-wall0:#F7EBD8;--sl-wall1:#EFE3EC;--sl-wall2:#E3ECEF;--sl-wallk:#8F8574;
+  --sl-roof0:#B4543C;--sl-roof1:#5D6E86;--sl-roof2:#7B5A3B;--sl-roof3:#3F6C5B;
+  --sl-win:#CFE5F4;--sl-door:#8A5A3C;--sl-bush:#86B573;--sl-chim:#9A8A78;
+  --sl-grass:#DCE8CC;--sl-road:#CDC8BD;--sl-canal:#93C5E2;--sl-soil0:#EAD5A8;--sl-soil1:#C29A6E;--sl-leaf:#4F9440;--sl-fruit:#D6452A;
+  --sl-floor:#EFEBE3;--sl-hall:#E3DDD1;--sl-room:#FCFBF8;--sl-roomk:#B7AE9E;--sl-board:#3D5A4E;--sl-desk:#D8C19C;--sl-office:#D7E3EA;
+  --sl-shirt0:#5A8CB8;--sl-shirt1:#C4694A;--sl-shirt2:#6E9D69;--sl-shirt3:#977AB0;
+  --sl-skin0:#F2CBA8;--sl-skin1:#D9A47B;--sl-skin2:#A86F4A;--sl-skin3:#6D452F;
+  --sl-hair0:#2D2420;--sl-hair1:#5A3A22;--sl-hair2:#8B6139;--sl-hair3:#1E1E23;
+  --sl-t0:#E3EEF7;--sl-t1:#BAD5EC;--sl-t2:#86B5DD;--sl-t3:#4A8FC6;--sl-t4:#1C5D97;
+  --sl-ink:#2A2D2C;
+}
+:root[data-theme="dark"] body.stat{
+  --sl-hill:#1F2B1F;--sl-riverside:#1B2629;--sl-river:#25536E;--sl-ripple:#7FB3D2;--sl-lane:#2E302E;--sl-lane-t:#A7ADA9;
+  --sl-wall0:#4A4438;--sl-wall1:#463E48;--sl-wall2:#3C474B;--sl-wallk:#7F7768;
+  --sl-roof0:#B96650;--sl-roof1:#7486A0;--sl-roof2:#94714F;--sl-roof3:#558A74;
+  --sl-win:#5E86A0;--sl-door:#7A563E;--sl-bush:#4D7A40;--sl-chim:#6E6458;
+  --sl-grass:#1D281B;--sl-road:#383733;--sl-canal:#28567A;--sl-soil0:#8C7650;--sl-soil1:#4E3A2A;--sl-leaf:#6DB458;--sl-fruit:#F07858;
+  --sl-floor:#202328;--sl-hall:#2A2E34;--sl-room:#1A1D21;--sl-roomk:#4C525B;--sl-board:#4E7A69;--sl-desk:#5B4B36;--sl-office:#283845;
+  --sl-shirt0:#5C8DBA;--sl-shirt1:#C0704F;--sl-shirt2:#6B9B67;--sl-shirt3:#9A80B2;
+  --sl-t0:#1E3243;--sl-t1:#244868;--sl-t2:#2C6593;--sl-t3:#3F87C0;--sl-t4:#77BDEF;
+  --sl-ink:#E6E8E7;
+}
+
+/* The stage: the picture fills it, the process strip and the dotplot below. */
+.sl-fig{display:flex;flex-direction:column;gap:6px;min-height:0;}
+.bt-app .sl-fig{min-height:520px;}
+.sl-scenebox{flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;}
+.sl-scene{display:block;width:100%;height:100%;max-height:100%;}
+.bt-app .sl-scene{height:auto;max-height:560px;}
+.sl-side{flex:none;display:flex;flex-direction:column;gap:4px;min-height:0;}
+.sl-meansbox{flex:none;height:clamp(118px,26vh,220px);min-height:0;}
+.sl-fig.is-wide{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,1fr);gap:18px;align-items:stretch;}
+.sl-fig.is-wide .sl-side{justify-content:center;}
+.sl-fig.is-wide .sl-meansbox{height:min(62%,420px);}
+.sl-legend{margin:0;display:flex;flex-wrap:wrap;gap:4px 14px;font:700 calc(12px * var(--ls-scale, 1)) var(--font-ui);color:var(--muted);}
+.sl-legend span{display:inline-flex;align-items:center;gap:6px;}
+.sl-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;}
+.sl-lg-mu::before{width:14px !important;height:0 !important;border-radius:0 !important;border-top:2.5px dashed var(--stat-s1);}
+.sl-lg-cur::before{background:var(--stat-s2);}
+.sl-lg-dot::before{background:var(--stat-s3);}
+.sl-means{display:block;}
+.ls-root .stat-ls-stage .sl-fig{flex:1;}
+
+/* Process strip: the random numbers, strata counts, clusters, start and k. */
+.sl-strip{flex:none;display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;white-space:nowrap;min-height:26px;
+  font:700 calc(12.5px * var(--ls-scale, 1)) var(--font-ui);padding:0 2px;mask-image:linear-gradient(90deg,#000 88%,transparent);}
+.sl-strip::-webkit-scrollbar{display:none;}
+.sl-strip[hidden]{display:none;}
+.sl-k{color:var(--muted);font-weight:800;margin-right:4px;}
+.sl-k.is-bias{color:var(--stat-s2);}
+.sl-num{display:inline-block;padding:2px 7px;border-radius:7px;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--line);font-family:var(--font-mono);color:var(--ink);}
+.sl-num.is-rep{text-decoration:line-through;color:var(--muted);box-shadow:none;background:transparent;}
+
+/* Scene: houses */
+.sl-land-0{fill:var(--sl-hill);} .sl-land-1{fill:var(--sl-riverside);}
+.sl-river{fill:var(--sl-river);} .sl-ripple{fill:none;stroke:var(--sl-ripple);stroke-width:3;stroke-linecap:round;opacity:.7;}
+.sl-lane{fill:var(--sl-lane);}
+.sl-lane-t{fill:var(--sl-lane-t);font:800 11px var(--font-ui);letter-spacing:.02em;}
+.sl-zone{fill:var(--sl-ink);font:900 21px var(--font-ui);opacity:.62;letter-spacing:.01em;}
+.sl-zone.is-strat{fill:var(--stat-s1);opacity:1;}
+.sl-wall{stroke:var(--sl-wallk);stroke-width:1.4;}
+.sl-wall-0{fill:var(--sl-wall0);} .sl-wall-1{fill:var(--sl-wall1);} .sl-wall-2{fill:var(--sl-wall2);}
+.sl-roof{stroke:rgba(0,0,0,.18);stroke-width:1.2;stroke-linejoin:round;}
+.sl-roof-0{fill:var(--sl-roof0);} .sl-roof-1{fill:var(--sl-roof1);} .sl-roof-2{fill:var(--sl-roof2);} .sl-roof-3{fill:var(--sl-roof3);}
+.sl-win{fill:var(--sl-win);stroke:var(--sl-wallk);stroke-width:1;}
+.sl-doorx{fill:var(--sl-door);}
+.sl-bush{fill:var(--sl-bush);}
+.sl-chim{fill:var(--sl-chim);}
+/* Scene: plots */
+.sl-grass{fill:var(--sl-grass);}
+.sl-road{fill:var(--sl-road);} .sl-road-d{stroke:var(--sl-ripple);stroke-width:2.5;stroke-dasharray:14 12;opacity:.8;}
+.sl-canal{fill:var(--sl-canal);}
+.sl-vert{fill:var(--sl-ink);font:800 15px var(--font-ui);opacity:.7;}
+.sl-soil-0{fill:var(--sl-soil0);} .sl-soil-1{fill:var(--sl-soil1);}
+.sl-soil{stroke:rgba(0,0,0,.12);stroke-width:1.2;}
+.sl-furrow{stroke:rgba(0,0,0,.14);stroke-width:3;stroke-linecap:round;}
+.sl-leaf{fill:var(--sl-leaf);} .sl-fruit{fill:var(--sl-fruit);}
+/* Scene: classrooms */
+.sl-floor{fill:var(--sl-floor);} .sl-hall{fill:var(--sl-hall);}
+.sl-hall-t,.sl-office-t{fill:var(--muted);font:800 17px var(--font-ui);letter-spacing:.04em;}
+.sl-office{fill:var(--sl-office);stroke:var(--sl-roomk);stroke-width:2;}
+.sl-room{fill:var(--sl-room);stroke:var(--sl-roomk);stroke-width:3;}
+.sl-door{stroke:var(--sl-hall);stroke-width:6;}
+.sl-board{fill:var(--sl-board);}
+.sl-room-t{fill:var(--sl-ink);font:900 18px var(--font-ui);}
+.sl-room-g{fill:var(--muted);font:800 15px var(--font-ui);}
+.sl-desk{fill:var(--sl-desk);stroke:rgba(0,0,0,.15);stroke-width:1;}
+.sl-shirt-0{fill:var(--sl-shirt0);} .sl-shirt-1{fill:var(--sl-shirt1);} .sl-shirt-2{fill:var(--sl-shirt2);} .sl-shirt-3{fill:var(--sl-shirt3);}
+.sl-skin-0{fill:var(--sl-skin0);} .sl-skin-1{fill:var(--sl-skin1);} .sl-skin-2{fill:var(--sl-skin2);} .sl-skin-3{fill:var(--sl-skin3);}
+.sl-hair-0{fill:var(--sl-hair0);} .sl-hair-1{fill:var(--sl-hair1);} .sl-hair-2{fill:var(--sl-hair2);} .sl-hair-3{fill:var(--sl-hair3);}
+
+/* "Show each value": the value tone replaces the wall, soil or shirt color. */
+.sl-tone-0 :is(.sl-wall,.sl-soil,.sl-shirt){fill:var(--sl-t0);} .sl-tone-1 :is(.sl-wall,.sl-soil,.sl-shirt){fill:var(--sl-t1);}
+.sl-tone-2 :is(.sl-wall,.sl-soil,.sl-shirt){fill:var(--sl-t2);} .sl-tone-3 :is(.sl-wall,.sl-soil,.sl-shirt){fill:var(--sl-t3);}
+.sl-tone-4 :is(.sl-wall,.sl-soil,.sl-shirt){fill:var(--sl-t4);}
+
+/* Labels: on desktop and in Enlarge; a phone shows them only when enlarged. */
+.sl-lab{fill:var(--muted);font:800 12px var(--font-mono);}
+.sl-lab-plot{fill:var(--sl-ink);opacity:.6;}
+.ls-root.ls-phone .ls-stage:not(.is-big) .sl-lab{display:none;}
+.sl-u{cursor:pointer;transition:opacity .25s;}
+.sl-hit{fill:transparent;}
+.sl-scene.has-sample .sl-u:not(.is-pick){opacity:.36;}
+.sl-u.is-pick{opacity:1;}
+.sl-ring{fill:none;stroke:var(--stat-s2);stroke-width:5;}
+.sl-badge circle{fill:var(--stat-s2);stroke:var(--white);stroke-width:2.5;}
+.sl-badge text{fill:#fff;font:900 15px var(--font-ui);}
+:root[data-theme="dark"] .sl-badge text{fill:#1A1310;}
+.sl-selbox{fill:none;stroke:var(--ink);stroke-width:3;stroke-dasharray:7 5;}
+.sl-band{fill:none;}
+.sl-band.is-strat{stroke:var(--stat-s1);stroke-width:4;stroke-dasharray:14 9;}
+.sl-band.is-cluster{stroke:var(--muted);stroke-width:1.6;stroke-dasharray:6 6;}
+.sl-band.is-cluster.is-on{stroke:var(--stat-s2);stroke-width:5;stroke-dasharray:none;fill:color-mix(in srgb,var(--stat-s2) 9%,transparent);}
+.sl-band-t{fill:var(--stat-s1);font:900 19px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:5px;stroke-linejoin:round;}
+@media (prefers-reduced-motion:reduce){.sl-u{transition:none;}}
+
+/* The dotplot of sample means */
+.sl-grid{stroke:var(--line);stroke-width:1;}
+.sl-axis{stroke:var(--ink);stroke-width:1.5;}
+.sl-tick{fill:var(--muted);font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.sl-axl{fill:var(--muted);font:800 11.5px var(--font-ui);}
+.sl-rowt{fill:var(--ink);font:800 12.5px var(--font-ui);}
+.sl-rowt.is-cur{fill:var(--cink);}
+.sl-rown{fill:var(--muted);font-weight:700;}
+.ls-root.ls-phone .ls-stage:not(.is-big) .sl-meansbox{height:118px;}
+.ls-root.ls-phone .ls-stage:not(.is-big) .sl-legend{font-size:11.5px;gap:2px 10px;flex-wrap:nowrap;white-space:nowrap;}
+.sl-rowsep{stroke:var(--line);stroke-width:1;stroke-dasharray:2 4;}
+.sl-mdot{fill:var(--stat-s3);}
+.sl-mdot.is-off{opacity:.5;}
+.sl-mlast{fill:var(--stat-s2);stroke:var(--white);stroke-width:2;}
+.sl-mu{stroke:var(--stat-s1);stroke-width:2.2;stroke-dasharray:6 4;}
+.sl-empty{fill:var(--muted);font:700 13px var(--font-ui);}
+.sl-mut{fill:var(--stat-s1);font:800 12px var(--font-ui);}
+
+/* Dock: four random methods, then the two that are not random */
+.sl-seg{display:flex;flex-direction:column;gap:8px;}
+.sl-seg .ls-seg > button{flex:1 1 auto;padding:0 8px;font-size:14px;}
+.sl-seg-b{display:flex;align-items:center;gap:10px;}
+.sl-seg-k{flex:none;font:800 13px var(--font-ui);color:var(--muted);}
+.sl-seg-b .ls-seg{flex:1;}
+.sl-seg-b .ls-seg > button[aria-pressed=true]{color:var(--stat-s2);}
+.sl-seg button:disabled{opacity:.45;cursor:not-allowed;}
+.sl-btns{display:flex;gap:8px;}
+.sl-btns > *{flex:1 1 0;min-width:0;}
+.sl-check{display:flex;align-items:center;gap:10px;min-height:44px;font:700 15px var(--font-ui);cursor:pointer;}
+.sl-check input{width:22px;height:22px;accent-color:var(--cink);}
+.ls-root .sl-ctl{display:flex;flex-direction:column;gap:12px;}
+.ls-root .sl-ctl .bt-slider label{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+
+/* Drill figures */
+.sl-qfig{margin:0;display:flex;flex-direction:column;gap:4px;flex:1;min-height:0;}
+.sl-qfig svg{flex:1;min-height:0;width:100%;height:100%;}
+.sl-qfig figcaption{text-align:center;}
+.sl-qtape{margin:auto 0;display:flex;flex-direction:column;gap:8px;}
+.sl-strip-q{flex-wrap:wrap;white-space:normal;mask-image:none;font-size:calc(16px * var(--ls-scale, 1));gap:6px;}
+.sl-strip-q .sl-num{padding:4px 10px;}
+.ls-root .ls-drill-stage .cd-extra:has(.sl-qtape){justify-content:center;}
+.ls-root.ls-phone .ls-stage:not(.is-big) .sl-meansbox{height:136px;}

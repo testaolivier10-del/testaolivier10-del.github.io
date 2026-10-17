@@ -1,0 +1,29 @@
+{
+ "shape": {
+  "def": "The overall form of a quantitative distribution on a graph: whether it is symmetric or skewed, how many peaks it has, or whether it is level (uniform)."
+ },
+ "symmetric": {
+  "def": "A distribution whose left and right sides are roughly mirror images of each other around its center."
+ },
+ "skewed": {
+  "def": "A distribution with a long tail on one side. It is skewed right when the tail stretches toward larger values, skewed left when the tail stretches toward smaller values."
+ },
+ "modality": {
+  "def": "The number of peaks (modes) in a distribution: unimodal has one, bimodal has two, multimodal has more."
+ },
+ "uniform-shape": {
+  "def": "A distribution in which all values occur about equally often, so its histogram has bars of about the same height."
+ },
+ "center": {
+  "def": "A typical or middle value of a distribution, around which the data are located."
+ },
+ "spread": {
+  "def": "Variability: how far apart the values of a distribution are from each other, or how much they vary."
+ },
+ "outlier": {
+  "def": "A value that falls far from the overall pattern of a distribution. It should be investigated, not simply removed."
+ },
+ "gap-cluster": {
+  "def": "A gap is a stretch of the number line with no values; a cluster is a bunch of values set apart from the rest by gaps."
+ }
+}

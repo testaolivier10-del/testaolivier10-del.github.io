@@ -1671,9 +1671,8 @@
   },
   {
    "id": "statistic",
-   "term": "statistic",
+   "term": "statistic (number)",
    "aliases": [
-    "statistics (numbers)",
     "sample statistic",
     "sample statistics"
    ],
@@ -2657,7 +2656,7 @@
     "likely",
     "unlikely"
    ],
-   "taughtIn": "probability-intro",
+   "taughtIn": "simulation",
    "dependsOn": [
     "random-selection"
    ]
@@ -3146,7 +3145,7 @@
     "95% confident",
     "confident"
    ],
-   "taughtIn": "ci-one-proportion-claims",
+   "taughtIn": "ci-one-proportion",
    "dependsOn": [
     "confidence-interval"
    ]
@@ -3161,6 +3160,15 @@
    "taughtIn": "ci-one-proportion-claims",
    "dependsOn": [
     "confidence-interval"
+   ]
+  },
+  {
+   "id": "convincing-evidence",
+   "term": "convincing evidence",
+   "aliases": [],
+   "taughtIn": "ci-one-proportion-claims",
+   "dependsOn": [
+    "plausible"
    ]
   },
   {
@@ -3275,8 +3283,7 @@
    "term": "reject the null hypothesis",
    "aliases": [
     "fail to reject",
-    "reject H0",
-    "convincing evidence"
+    "reject H0"
    ],
    "taughtIn": "test-one-proportion",
    "dependsOn": [
@@ -3709,10 +3716,22 @@
     "technology degrees of freedom",
     "Welch degrees of freedom"
    ],
+   "taughtIn": "ci-two-means",
+   "dependsOn": [
+    "two-sample-t-interval",
+    "degrees-of-freedom"
+   ]
+  },
+  {
+   "id": "two-sample-t-statistic",
+   "term": "two-sample t statistic",
+   "aliases": [
+    "two-sample t statistics"
+   ],
    "taughtIn": "test-two-means",
    "dependsOn": [
     "two-sample-t-test",
-    "degrees-of-freedom"
+    "t-statistic"
    ]
   },
   {

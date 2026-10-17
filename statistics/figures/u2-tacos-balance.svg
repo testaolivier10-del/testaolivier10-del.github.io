@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="600" height="420" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">The mean of a random variable as a balance point</title>
+<desc id="d">Probability histogram of X, the number of tacos in an order: 0.20, 0.35, 0.25, 0.15 and 0.05 for 1 to 5 tacos. A triangle under the axis marks the mean, 2.5 tacos, where the histogram would balance; arrows show one standard deviation, about 1.12 tacos, on each side.</desc>
+<rect width="600" height="420" fill="#FFFFFF"/>
+<line x1="70" y1="350" x2="560" y2="350" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="284.4" x2="560" y2="284.4" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="218.8" x2="560" y2="218.8" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="153.2" x2="560" y2="153.2" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="87.6" x2="560" y2="87.6" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="22" x2="560" y2="22" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="70" y1="350" x2="560" y2="350" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="70" y1="22" x2="70" y2="350" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="133.52" y1="350" x2="133.52" y2="355" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="133.52" y="370" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">1</text>
+<line x1="224.26" y1="350" x2="224.26" y2="355" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="224.26" y="370" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">2</text>
+<line x1="315" y1="350" x2="315" y2="355" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="315" y="370" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">3</text>
+<line x1="405.74" y1="350" x2="405.74" y2="355" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="405.74" y="370" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">4</text>
+<line x1="496.48" y1="350" x2="496.48" y2="355" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="496.48" y="370" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">5</text>
+<line x1="65" y1="350" x2="70" y2="350" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="61" y="354.5" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">0</text>
+<line x1="65" y1="284.4" x2="70" y2="284.4" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="61" y="288.9" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">0.1</text>
+<line x1="65" y1="218.8" x2="70" y2="218.8" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="61" y="223.3" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">0.2</text>
+<line x1="65" y1="153.2" x2="70" y2="153.2" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="61" y="157.7" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">0.3</text>
+<line x1="65" y1="87.6" x2="70" y2="87.6" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="61" y="92.1" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">0.4</text>
+<line x1="65" y1="22" x2="70" y2="22" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="61" y="26.5" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">0.5</text>
+<text x="315" y="392" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">X = number of tacos in an order</text>
+<text x="24" y="186" font-size="14" text-anchor="middle" fill="#1F2A28" transform="rotate(-90 24 186)">Probability</text>
+<rect x="97.22" y="218.8" width="72.59" height="131.2" fill="#E9D3E8" stroke="#6E2470" stroke-width="1.2"/>
+<text x="133.52" y="212.8" font-size="12" text-anchor="middle" font-weight="normal" fill="#5A6563">0.2</text>
+<rect x="187.96" y="120.4" width="72.59" height="229.6" fill="#E9D3E8" stroke="#6E2470" stroke-width="1.2"/>
+<text x="224.26" y="114.4" font-size="12" text-anchor="middle" font-weight="normal" fill="#5A6563">0.35</text>
+<rect x="278.7" y="186" width="72.59" height="164" fill="#E9D3E8" stroke="#6E2470" stroke-width="1.2"/>
+<text x="315" y="180" font-size="12" text-anchor="middle" font-weight="normal" fill="#5A6563">0.25</text>
+<rect x="369.44" y="251.6" width="72.59" height="98.4" fill="#E9D3E8" stroke="#6E2470" stroke-width="1.2"/>
+<text x="405.74" y="245.6" font-size="12" text-anchor="middle" font-weight="normal" fill="#5A6563">0.15</text>
+<rect x="460.19" y="317.2" width="72.59" height="32.8" fill="#E9D3E8" stroke="#6E2470" stroke-width="1.2"/>
+<text x="496.48" y="311.2" font-size="12" text-anchor="middle" font-weight="normal" fill="#5A6563">0.05</text>
+<path d="M269.63 351 l-9 15 h18 z" fill="#D55E00"/>
+<text x="269.63" y="38.4" font-size="14" text-anchor="middle" font-weight="bold" fill="#D55E00" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">mean of X = 2.5 tacos (the balance point)</text>
+<line x1="269.63" y1="44.96" x2="269.63" y2="350" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="5 4"/>
+<line x1="168.18" y1="81.04" x2="371.08" y2="81.04" stroke="#0072B2" stroke-width="2"/>
+<path d="M168.18 81.04000000000002 l8 -5 v10 z M371.08 81.04000000000002 l-8 -5 v10 z" fill="#0072B2"/>
+<text x="377.08" y="86.04" font-size="13" text-anchor="start" font-weight="normal" fill="#0072B2" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">SD of X ≈ 1.12 tacos each side</text>
+</svg>

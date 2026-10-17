@@ -1,0 +1,72 @@
+{
+ "topic": "simulation",
+ "hook": "A student council of 8 seniors and 12 juniors says it chose 4 members \"at random\" to send to a conference. All 4 were seniors. The juniors cry foul. Could plain chance pick 4 seniors? You do not need a formula: imitate a random pick 100 times and see how often it happens.",
+ "prereq": [
+  {
+   "q": "Random digits are used to pick 4 of 20 students. A digit pair repeats one already chosen. What should you do?",
+   "options": [
+    "Skip it and keep going",
+    "Choose that student twice",
+    "Start over from the beginning",
+    "Stop with fewer students"
+   ],
+   "correct": 0,
+   "why": "When picking different people, skip repeats so each student is chosen once.",
+   "review": "random-sampling"
+  },
+  {
+   "q": "A dotplot of 100 values has 12 dots at 7 or more. What share of the values are 7 or more?",
+   "options": [
+    "0.12",
+    "0.88",
+    "12",
+    "0.7"
+   ],
+   "correct": 0,
+   "why": "$\\frac{12}{100} = 0.12$, a relative frequency.",
+   "review": "one-quantitative-displays"
+  }
+ ],
+ "figure": {
+  "figure": "u2-sim-dotplot",
+  "caption": "100 simulated random picks of 4 members. Only 2 trials chose 4 seniors."
+ },
+ "chain": [
+  {
+   "cause": "A chance process is hard to analyze with a formula",
+   "effect": "imitate it with a model that has the same chances (random numbers, a coin, a die)"
+  },
+  {
+   "cause": "Carry out the model once and record the result",
+   "effect": "one trial: here, the number of seniors among 4 random picks"
+  },
+  {
+   "cause": "Repeat the trial many times",
+   "effect": "the share of trials with the result estimates its probability (2 of 100 gave 4 seniors, about 0.02)"
+  },
+  {
+   "cause": "Run more and more trials",
+   "effect": "by the law of large numbers the estimate settles near the true probability"
+  }
+ ],
+ "ideas": [
+  "A <b>simulation</b> imitates a chance process with a model that has the same chances. Each repetition is a <b>trial</b>.",
+  "The <b>probability</b> of a result is the share of times it happens in a very long run of trials. A simulation estimates it with the share of its trials.",
+  "Describe a simulation so someone else could run it: the device and what each value means, what one trial is, what you record, how many trials.",
+  "The <b>law of large numbers</b>: as the number of trials grows, the share of trials with the result gets closer to the true probability.",
+  "A result that happens rarely in a simulation of a claim gives reason to doubt the claim."
+ ],
+ "misconception": {
+  "wrong": "A coin that has landed heads many times in a row is \"due\" for tails, so early streaks will be balanced out.",
+  "right": "The coin has no memory. In the long run the share of heads approaches 0.5 because later flips swamp the early ones, not because tails catch up."
+ },
+ "check": [
+  "stat-simulation-1",
+  "stat-simulation-2",
+  "stat-simulation-5",
+  "stat-simulation-6",
+  "stat-simulation-7",
+  "stat-simulation-11"
+ ],
+ "summary": "To estimate a probability by simulation, model the chance process with a device that has the right chances, define one trial and what to record, repeat many trials, and use the share of trials with the result. More trials give a steadier estimate (the law of large numbers). A rare simulated result casts doubt on the claim behind the model."
+}

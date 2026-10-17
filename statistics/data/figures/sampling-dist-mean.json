@@ -1,0 +1,12 @@
+{
+ "xbar-sampling-panels": {
+  "file": "figures/xbar-sampling-panels.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 640,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three histograms on the same axis from 0 to 14 minutes. Top: 20,000 simulated drive-through wait times, strongly skewed right, mean 4.19 and standard deviation 2.78. Middle: 5,000 means of samples of 4 cars, still skewed right, standard deviation 1.41. Bottom: 5,000 means of samples of 40 cars, bell shaped and narrow, standard deviation 0.439, close to 2.8 divided by the square root of 40. A dashed line marks the population mean 4.2 in every panel."
+ }
+}

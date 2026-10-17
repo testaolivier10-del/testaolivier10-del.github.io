@@ -1,0 +1,12 @@
+{
+ "four-shapes": {
+  "file": "figures/four-shapes.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four histograms. Top left, roughly symmetric: one peak in the middle with matching sides. Top right, skewed right: most values on the left and a long tail to the right. Bottom left, skewed left: most values on the right and a long tail to the left. Bottom right, bimodal: two separate peaks."
+ }
+}

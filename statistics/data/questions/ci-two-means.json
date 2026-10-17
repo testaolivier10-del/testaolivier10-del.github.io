@@ -1,0 +1,692 @@
+{
+ "stimuli": {
+  "ci-two-means-s1": {
+   "kind": "graph",
+   "title": "Spaced versus massed practice",
+   "text": "<p>Twenty-eight student volunteers learned 50 new vocabulary words. They were randomly assigned, 14 to each group, to study in four short sessions spread over a week (spaced) or in one long session (massed). A week later each took the same recall test (invented data).</p><table class=\"stat-data\"><thead><tr><th scope=\"col\">Group</th><th scope=\"col\">n</th><th scope=\"col\">Mean</th><th scope=\"col\">SD</th></tr></thead><tbody><tr><th scope=\"row\">Spaced</th><td>14</td><td>34.21</td><td>6.13</td></tr><tr><th scope=\"row\">Massed</th><td>14</td><td>28.50</td><td>6.97</td></tr></tbody></table>",
+   "plot": {
+    "label": "Side-by-side boxplots of words recalled: spaced practice centered higher than massed practice, both roughly symmetric with no outliers",
+    "kind": "box",
+    "groups": [
+     {
+      "name": "Spaced",
+      "data": [
+       44,
+       36,
+       31,
+       34,
+       37,
+       43,
+       25,
+       39,
+       39,
+       35,
+       26,
+       35,
+       26,
+       29
+      ]
+     },
+     {
+      "name": "Massed",
+      "data": [
+       31,
+       33,
+       18,
+       39,
+       26,
+       34,
+       25,
+       16,
+       28,
+       30,
+       21,
+       37,
+       26,
+       35
+      ]
+     }
+    ],
+    "x": [
+     10,
+     50
+    ],
+    "xLabel": "words recalled (out of 50)"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "spaced",
+      "unit": "words",
+      "values": [
+       44,
+       36,
+       31,
+       34,
+       37,
+       43,
+       25,
+       39,
+       39,
+       35,
+       26,
+       35,
+       26,
+       29
+      ]
+     },
+     {
+      "name": "massed",
+      "unit": "words",
+      "values": [
+       31,
+       33,
+       18,
+       39,
+       26,
+       34,
+       25,
+       16,
+       28,
+       30,
+       21,
+       37,
+       26,
+       35
+      ]
+     }
+    ]
+   }
+  },
+  "ci-two-means-s2": {
+   "kind": "table",
+   "title": "Commute times in two cities",
+   "text": "<p>A researcher took independent random samples of commuters who drive to work in two large cities and recorded one-way commute times in minutes (invented data). Both samples are small shares of the cities' commuters. She wants to estimate $\\mu_1 - \\mu_2$, the difference in true mean commute time (city 1 minus city 2).</p>",
+   "table": {
+    "caption": "Summary statistics of commute times, in minutes",
+    "cols": [
+     "City",
+     "n",
+     "Mean",
+     "SD"
+    ],
+    "rows": [
+     [
+      "City 1",
+      "40",
+      "31.2",
+      "9.8"
+     ],
+     [
+      "City 2",
+      "35",
+      "26.5",
+      "11.4"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-ci-two-means-1",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which procedure estimates how much better spaced practice is, on average?",
+   "stimulus": "ci-two-means-s1",
+   "options": [
+    "A paired t interval for the mean difference",
+    "A two-sample z interval for $p_S - p_M$",
+    "Two one-sample t intervals, one per group",
+    "A two-sample t interval for $\\mu_S - \\mu_M$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Parameter: $\\mu_S - \\mu_M$, the true mean recall with spaced practice minus with massed practice, for volunteers like these. Procedure: a two-sample t interval.",
+    "options": [
+     "The volunteers were not paired: each was in one group only, so there are no natural pairs to subtract.",
+     "Words recalled is quantitative, so the parameter is a difference of means.",
+     "Two separate intervals do not estimate the difference, and overlapping intervals are hard to judge.",
+     "Two separate groups from random assignment, a quantitative response and unknown population standard deviations: a two-sample t interval for the difference in true mean recall."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-2",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Each group has only 14 students. How is the normal/large sample condition met?",
+   "stimulus": "ci-two-means-s1",
+   "options": [
+    "The two groups together have 28 students",
+    "Neither boxplot shows strong skew or outliers",
+    "The volunteers were randomly assigned to the two groups",
+    "14 is less than 10% of the students at their school"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Conditions: random assignment (random); no 10% check for an experiment; normal/large sample from the two boxplots, each without strong skew or outliers.",
+    "options": [
+     "Each group is checked on its own, and 14 is less than 30.",
+     "With $n < 30$ in both groups, each group's graph must show no strong skew and no outliers. Both boxplots are roughly symmetric with no outliers.",
+     "That is the random condition. Shape is a separate check.",
+     "The 10% condition does not apply to random assignment, and it is about independence, not shape."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-3",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "How many degrees of freedom does technology give for the two-sample t interval? (The conservative choice is also accepted.)",
+   "stimulus": "ci-two-means-s1",
+   "why": {
+    "correct": "Technology uses the Welch formula and gives $\\text{df} = 25.6$. The conservative choice is the smaller $n - 1$: $14 - 1 = 13$. Either is accepted on the exam."
+   },
+   "numeric": {
+    "kind": "df",
+    "tol": 0.1,
+    "from": {
+     "fn": "ci2mean",
+     "args": [
+      34.21,
+      6.13,
+      14,
+      28.5,
+      6.97,
+      14,
+      0.95
+     ],
+     "pick": "df"
+    },
+    "mistakes": [
+     {
+      "value": 28,
+      "why": "That is the total number of volunteers. A two-sample t interval uses the technology df (25.6) or the conservative df, the smaller $n - 1 = 13$."
+     },
+     {
+      "value": 27,
+      "why": "That is $n_1 + n_2 - 1$. A two-sample t interval uses the technology df or the smaller of $n_1 - 1$ and $n_2 - 1$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-4",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "interval",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Construct the 95% confidence interval for $\\mu_S - \\mu_M$, in words recalled.",
+   "stimulus": "ci-two-means-s1",
+   "why": {
+    "correct": "$(\\bar{x}_S - \\bar{x}_M) \\pm t^*\\sqrt{\\frac{s_S^2}{n_S} + \\frac{s_M^2}{n_M}} = (34.21 - 28.50) \\pm 2.057\\sqrt{\\frac{6.13^2}{14} + \\frac{6.97^2}{14}} = 5.71 \\pm 5.10$, from 0.61 to 10.81 words (technology df 25.6). With the conservative df 13, $t^* = 2.160$ gives 0.35 to 11.07; both are accepted."
+   },
+   "interval": {
+    "places": 2,
+    "tol": 0.3,
+    "from": {
+     "fn": "ci2mean",
+     "args": [
+      34.21,
+      6.13,
+      14,
+      28.5,
+      6.97,
+      14,
+      0.95
+     ]
+    }
+   }
+  },
+  {
+   "id": "stat-ci-two-means-5",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Interpret the 95% interval from 0.61 to 10.81 words in context.",
+   "stimulus": "ci-two-means-s1",
+   "why": {
+    "correct": "Name the level, the interval, the parameter (a difference of true means, in the order spaced minus massed) and the context."
+   },
+   "conclude": {
+    "mode": "interval",
+    "slots": {
+     "level": {
+      "options": [
+       "We are 95% confident that",
+       "There is a 95% probability that",
+       "95% of the volunteers show that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The parameter is fixed; confidence describes the method.",
+       "2": "The interval does not describe individual volunteers."
+      }
+     },
+     "claim": {
+      "options": [
+       "the interval from 0.61 to 10.81 words captures",
+       "the difference in sample means of 5.71 words falls in",
+       "each spaced student recalls 0.61 to 10.81 more words than"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample difference is the center; the interval estimates the true difference.",
+       "2": "The interval is about a difference of means, not individual students."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true difference in mean recall (spaced minus massed) for volunteers like these",
+       "the difference between the two sample means",
+       "the mean recall of spaced students"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is known exactly: 5.71 words.",
+       "2": "The parameter is a difference of two means."
+      }
+     }
+    },
+    "model": "We are 95% confident that the interval from 0.61 to 10.81 words captures the true difference in mean recall (spaced minus massed) for volunteers like these.",
+    "write": {
+     "context": [
+      "recall",
+      "spaced",
+      "word"
+     ],
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-ci-two-means-6",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "setup",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the expression for a 95% confidence interval for $\\mu_1 - \\mu_2$, using $t^* = 1.996$ (technology df 67.6). Type it as on the exam, for example (a - b) +/- t*sqrt(s^2/m + r^2/n).",
+   "stimulus": "ci-two-means-s2",
+   "why": {
+    "correct": "$(31.2 - 26.5) \\pm 1.996\\sqrt{\\frac{9.8^2}{40} + \\frac{11.4^2}{35}} = 4.7 \\pm 4.94$."
+   },
+   "setup": {
+    "answer": "(31.2 - 26.5) +/- 1.996*sqrt(9.8^2/40 + 11.4^2/35)",
+    "bind": {},
+    "tol": 0.002,
+    "mustUse": [
+     "40",
+     "35",
+     "9.8",
+     "11.4"
+    ],
+    "mistakes": [
+     {
+      "expr": "(31.2 - 26.5) +/- 1.996*(9.8/sqrt(40) + 11.4/sqrt(35))",
+      "why": "Standard errors do not add. Add the variances 9.8^2/40 and 11.4^2/35 under one square root."
+     },
+     {
+      "expr": "(31.2 - 26.5) +/- 1.96*sqrt(9.8^2/40 + 11.4^2/35)",
+      "why": "1.96 is z*. With sample standard deviations, use t* from the t distribution: 1.996 here."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-7",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the standard error of $\\bar{x}_1 - \\bar{x}_2$, in minutes?",
+   "stimulus": "ci-two-means-s2",
+   "why": {
+    "correct": "$\\text{SE} = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}} = \\sqrt{\\frac{9.8^2}{40} + \\frac{11.4^2}{35}} = \\sqrt{2.401 + 3.713} = 2.47$ minutes."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "minutes",
+    "from": {
+     "fn": "ci2mean",
+     "args": [
+      31.2,
+      9.8,
+      40,
+      26.5,
+      11.4,
+      35,
+      0.95
+     ],
+     "pick": "se"
+    },
+    "mistakes": [
+     {
+      "value": 3.47,
+      "why": "That adds the two standard errors, $\\frac{9.8}{\\sqrt{40}} + \\frac{11.4}{\\sqrt{35}}$. Add the variances first, then take one square root."
+     },
+     {
+      "value": 15.03,
+      "why": "That leaves out the sample sizes. Divide each squared standard deviation by its $n$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-8",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "interval",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Construct the 95% confidence interval for $\\mu_1 - \\mu_2$, in minutes.",
+   "stimulus": "ci-two-means-s2",
+   "why": {
+    "correct": "$4.7 \\pm 1.996(2.47) = 4.7 \\pm 4.94$, from $-0.23$ to 9.63 minutes (technology df 67.6). The conservative df, 34, gives $t^* = 2.032$ and $-0.33$ to 9.73; both are accepted."
+   },
+   "interval": {
+    "places": 2,
+    "tol": 0.1,
+    "from": {
+     "fn": "ci2mean",
+     "args": [
+      31.2,
+      9.8,
+      40,
+      26.5,
+      11.4,
+      35,
+      0.95
+     ]
+    }
+   }
+  },
+  {
+   "id": "stat-ci-two-means-9",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does the design of this study allow the researcher to conclude?",
+   "stimulus": "ci-two-means-s2",
+   "options": [
+    "She can generalize to drivers in the two cities, but not claim the city causes longer commutes",
+    "She can claim living in city 1 causes longer commutes",
+    "She can generalize her results to commuters in the other large cities in the country",
+    "She can conclude nothing, because the samples have different sizes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Random sampling allows generalizing; random assignment allows cause-and-effect conclusions. This is an observational study with random samples.",
+    "options": [
+     "Random samples support generalizing to each city's commuters who drive. With no random assignment, a difference could come from other factors, such as distance or road layout.",
+     "Cause and effect needs random assignment, which is impossible here.",
+     "The samples come from two cities, so results apply to those cities.",
+     "Different sample sizes are fine for a two-sample t interval."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-10",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "Interpret the 95% confidence level for the commute study's interval for $\\mu_1 - \\mu_2$ (random samples of 40 and 35 commuters).",
+   "why": {
+    "correct": "The level describes the long-run capture rate of the method over repeated pairs of samples of the same sizes."
+   },
+   "conclude": {
+    "mode": "level",
+    "slots": {
+     "level": {
+      "options": [
+       "If we took many pairs of random samples of 40 and 35 commuters and built a 95% interval from each pair,",
+       "If we surveyed 95% of the commuters in each city,",
+       "Since 95% of commute times fall in the interval,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Confidence is about repeating the sampling, not about surveying most of the population.",
+       "2": "The interval is not built to contain 95% of the data."
+      }
+     },
+     "claim": {
+      "options": [
+       "about 95% of the intervals would capture",
+       "about 95% of the differences in sample means would equal",
+       "there is a 95% chance this interval captures"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample differences vary; the intervals built around them are what capture or miss.",
+       "2": "That sentence is about one interval; the level describes many."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true difference in mean commute time (city 1 minus city 2)",
+       "the difference in sample means, 4.7 minutes",
+       "the commute time of 95% of drivers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Every interval captures its own sample difference.",
+       "2": "The intervals estimate a difference of means, not individual times."
+      }
+     }
+    },
+    "model": "If we took many pairs of random samples of 40 and 35 commuters and built a 95% interval from each pair, about 95% of the intervals would capture the true difference in mean commute time (city 1 minus city 2).",
+    "write": {
+     "context": [
+      "commut"
+     ],
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-ci-two-means-11",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 95% interval for $\\mu_A - \\mu_B$ is from 2.1 to 6.5. What is the 95% interval for $\\mu_B - \\mu_A$ from the same data?",
+   "options": [
+    "From 2.1 to 6.5",
+    "From $-2.1$ to $-6.5$",
+    "From $-6.5$ to $-2.1$",
+    "From 6.5 to 2.1"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "If $\\mu_A - \\mu_B$ is between 2.1 and 6.5, then $\\mu_B - \\mu_A$ is between $-6.5$ and $-2.1$.",
+    "options": [
+     "The new parameter is the negative of the old one, so the interval changes sign.",
+     "Write the lower end first: $-6.5$ is less than $-2.1$.",
+     "Reversing the order of subtraction flips the sign of every value: the interval keeps its width and changes sides of 0.",
+     "That reverses the ends without changing signs, and the lower end must come first."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-12",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A two-sample t interval uses samples of $n_1 = 18$ and $n_2 = 25$. What are the conservative degrees of freedom?",
+   "why": {
+    "correct": "Conservative degrees of freedom: the smaller of $n_1 - 1 = 17$ and $n_2 - 1 = 24$, so 17. Technology would give a larger, non-integer df."
+   },
+   "numeric": {
+    "kind": "df",
+    "from": {
+     "fn": "t2",
+     "args": [
+      0,
+      1,
+      18,
+      0,
+      1,
+      25
+     ],
+     "pick": "dfCons"
+    },
+    "mistakes": [
+     {
+      "value": 24,
+      "why": "Use the smaller sample: $\\min(n_1 - 1, n_2 - 1) = 17$."
+     },
+     {
+      "value": 41,
+      "why": "$n_1 + n_2 - 2 = 41$ belongs to a method that is not used here. The conservative choice is the smaller $n - 1$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-13",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "From the same data, how does a two-sample t interval with conservative degrees of freedom compare with one using technology degrees of freedom?",
+   "options": [
+    "It is a little narrower",
+    "It is a little wider",
+    "It is the same width but shifted",
+    "It is wider by a factor of $\\sqrt{2}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Conservative df never exceed the technology df, so the conservative interval is at least as wide; that is why it is called conservative.",
+    "options": [
+     "The conservative df is smaller, which makes $t^*$ larger, not smaller.",
+     "Fewer degrees of freedom give a larger $t^*$ (2.160 at df 13 against 2.057 at df 25.6), so the margin of error grows slightly.",
+     "The center, $\\bar{x}_1 - \\bar{x}_2$, does not depend on df; only the margin of error does.",
+     "The difference comes only from $t^*$, which changes by a few percent."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-14",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which study calls for a two-sample t interval rather than a paired t interval?",
+   "options": [
+    "Battery life of 30 phones of brand A and 30 phones of brand B, chosen at random",
+    "Blood pressure of 30 patients measured before and after taking a new medicine for a month",
+    "Tread wear on the left and right front tires of 30 cars",
+    "Scores of 30 sets of twins, one twin per teaching method"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two-sample procedures need two independent groups. Paired procedures are for two linked measurements on each unit.",
+    "options": [
+     "Two separate random samples with no link between a phone of brand A and a phone of brand B.",
+     "Each patient gives two linked values: paired.",
+     "Left and right tires on the same car are a natural pair.",
+     "Twins are matched pairs."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-15",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a confidence interval for $\\mu_1 - \\mu_2$ use $t^*$ rather than $z^*$?",
+   "options": [
+    "The two samples are of different sizes",
+    "Each sample has fewer than 30 observations",
+    "The difference in sample means could turn out to be negative",
+    "$s_1$ and $s_2$ stand in for the unknown $\\sigma_1$ and $\\sigma_2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With $s_1$ and $s_2$ estimating $\\sigma_1$ and $\\sigma_2$, the standardized difference follows (approximately) a t distribution.",
+    "options": [
+     "Unequal sample sizes are fine; the reason is the estimated standard deviations.",
+     "Large samples use $t^*$ too, whenever the standard deviations are estimated.",
+     "The sign of the estimate has nothing to do with the critical value.",
+     "Estimating two population standard deviations adds variability, so the critical value comes from a t distribution."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-two-means-16",
+   "unit": "unit-4",
+   "topic": "ci-two-means",
+   "type": "multi",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which conditions must be checked for a two-sample t interval from two independent random samples? Select all that apply.",
+   "options": [
+    "Each sample is a random sample from its population",
+    "Each sample is less than 10% of its population",
+    "Each population is normal or each sample has $n \\ge 30$, or each sample's graph shows no strong skew or outliers",
+    "The two samples have the same size",
+    "The two sample standard deviations are about equal",
+    "At least 10 successes and 10 failures in each sample"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Random, 10% and normal/large sample, each checked for both samples.",
+    "options": [
+     "Right: the random condition, for both samples.",
+     "Right: checked separately for each sample.",
+     "Right: the normal/large sample condition, for both groups.",
+     "Sample sizes can differ.",
+     "The standard error uses each $s$ separately, so they need not match.",
+     "That is the large counts condition for proportions."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+ "test-statistic": {
+  "def": "A standardized measure of how far a sample statistic is from the null value: $\\frac{\\text{statistic} - \\text{parameter}}{\\text{standard error of the statistic}}$. For one proportion, $z = \\frac{\\hat{p} - p_0}{\\sqrt{p_0(1 - p_0)/n}}$."
+ },
+ "p-value": {
+  "def": "The probability, assuming the null hypothesis is true, of getting a statistic at least as extreme as the one observed, in the direction of the alternative. It is not the probability that the null hypothesis is true."
+ }
+}

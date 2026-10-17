@@ -1,0 +1,31 @@
+{
+  "slug": "p-value-explorer",
+  "kind": "simulator",
+  "topic": "p-values",
+  "about": "Data for the p-value explorer (docs/apstat-spec.md section 6). explore.scenarios are the studies the Explore view opens on; contexts are the Test yourself studies, each with its topic (it unlocks with that topic's unit) and the problem types it serves. The model is statistics/assets/tools/math/p-value-explorer.js; every number comes from ApStatDist.",
+  "intro": "<p>A p-value answers one question: if the null hypothesis were true, how surprising would a result like ours be? Drag the observed statistic and watch the shaded area, the p-value, grow and shrink. Then switch to Errors and power to see the two ways a test can be wrong and what makes it more likely to catch a real effect.</p>",
+  "howItWorksTitle": "How the pictures and numbers are made",
+  "howItWorks": "<p>The curve is the null distribution: the sampling distribution of the statistic when $H_0$ is true. For a proportion it is the normal model with mean $p_0$ and standard deviation $\\sqrt{p_0(1 - p_0)/n}$; for a mean it is the $t$ distribution with $n - 1$ degrees of freedom. The shaded area is the p-value, computed exactly from that distribution, in the direction $H_a$ names.</p><ul><li><b>One or two sided.</b> A one-sided alternative shades one tail; a two-sided one shades both tails, beyond the observed value and its mirror image.</li><li><b>α.</b> The dashed line is the cutoff: a statistic beyond it gives a p-value below α.</li><li><b>Errors and power.</b> The second curve is the sampling distribution of $\\hat{p}$ if the true proportion is the value you drag. The area of the null curve beyond the cutoff is α (Type I), the area of the true curve short of the cutoff is β (Type II), and the rest of the true curve is the power.</li></ul><p>Test yourself makes new problems from a seed (the problem code), checks every step against a key the validator recomputes independently, and names the usual slip when an answer misses.</p>",
+  "explore": {
+    "scenarios": [
+      { "id": "bond", "topic": "p-values", "kind": "prop", "name": "Library bond (a proportion)", "p0": 0.5, "n": 400, "x": 214, "ha": "greater",
+        "pop": "registered voters in the city", "trait": "support the library bond", "unit": "voters" },
+      { "id": "recycling", "topic": "p-values", "kind": "prop", "name": "Recycling habit (a proportion)", "p0": 0.3, "n": 250, "x": 63, "ha": "less",
+        "pop": "households in the county", "trait": "recycle every week", "unit": "households" },
+      { "id": "battery", "topic": "test-one-mean", "kind": "mean", "name": "Battery life (a mean)", "mu0": 10, "s": 1.2, "n": 25, "xbar": 9.6, "ha": "less", "step": 0.01, "places": 2,
+        "measure": "lifetime", "pop": "AA batteries of this brand", "units": "hours", "sym": "x̄" }
+    ]
+  },
+  "contexts": [
+    { "id": "bond", "topic": "p-values", "types": ["pvalue", "meaning"], "who": "A city council member", "pop": "registered voters in the city", "trait": "support the library bond", "unit": "voters", "p0s": [0.5, 0.6], "ns": [200, 300, 400, 500], "has": ["greater", "less", "two"] },
+    { "id": "phone", "topic": "p-values", "types": ["pvalue", "meaning"], "who": "A school counselor", "pop": "students at the high school", "trait": "own a smartphone", "unit": "students", "p0s": [0.8, 0.85, 0.9], "ns": [150, 200, 250], "has": ["greater", "less", "two"] },
+    { "id": "seeds", "topic": "p-values", "types": ["pvalue", "meaning"], "who": "A gardener", "pop": "seeds from this supplier", "rel": "that", "trait": "sprout within ten days", "unit": "seeds", "p0s": [0.7, 0.75], "ns": [120, 200, 300], "has": ["greater", "less", "two"] },
+    { "id": "commute", "topic": "p-values", "types": ["pvalue", "meaning"], "who": "A transit planner", "pop": "workers in the city", "trait": "commute by bus", "unit": "workers", "p0s": [0.2, 0.25], "ns": [300, 400, 600], "has": ["greater", "less", "two"] },
+    { "id": "screening", "topic": "errors-and-power", "types": ["errors"], "who": "A clinic manager", "pop": "patients at the clinic", "trait": "are up to date on their vaccines", "unit": "patients", "p0s": [0.7, 0.8], "ns": [150, 200, 300], "has": ["greater", "less", "two"] },
+    { "id": "defects", "topic": "errors-and-power", "types": ["errors"], "who": "A quality engineer", "pop": "parts made on the new line", "rel": "that", "trait": "pass inspection", "unit": "parts", "p0s": [0.9, 0.95], "ns": [200, 300, 400], "has": ["greater", "less"] },
+    { "id": "ads", "topic": "errors-and-power", "types": ["errors"], "who": "A marketing team", "pop": "visitors to the website", "trait": "click the new banner", "unit": "visitors", "p0s": [0.1, 0.15], "ns": [400, 600, 800], "has": ["greater", "two"] },
+    { "id": "battery", "topic": "test-one-mean", "types": ["tmean"], "claim": "A company says its AA batteries last {mu0} on average.", "who": "A consumer group", "measure": "lifetime", "pop": "AA batteries of this brand", "item": "batteries", "units": "hours", "mu0s": [10, 12], "sRange": [0.8, 1.6], "ns": [16, 20, 25, 30], "places": 2, "has": ["less", "two"] },
+    { "id": "sleep", "topic": "test-one-mean", "types": ["tmean"], "claim": "A health guide says teenagers sleep {mu0} a night on average.", "who": "A school nurse", "measure": "nightly sleep", "pop": "students at the school", "item": "students", "units": "hours", "mu0s": [8], "sRange": [0.9, 1.5], "ns": [20, 30, 40], "places": 2, "has": ["less", "greater", "two"] },
+    { "id": "fill", "topic": "test-one-mean", "types": ["tmean"], "claim": "A machine is set to fill cereal boxes with {mu0} of cereal on average.", "who": "An inspector", "measure": "fill weight", "pop": "boxes filled by the machine", "item": "boxes", "units": "grams", "mu0s": [500], "sRange": [3, 8], "ns": [12, 15, 20, 24], "places": 1, "has": ["greater", "less", "two"] }
+  ]
+}

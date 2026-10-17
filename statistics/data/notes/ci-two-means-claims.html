@@ -1,0 +1,41 @@
+<p>An interval for a difference of two means, $\mu_1 - \mu_2$, carries more information than a yes or no. It tells you whether there is convincing evidence of a difference, which direction it goes, and how large it plausibly is. That last part lets you judge whether the difference actually matters.</p>
+
+<h2>Is 0 in the interval?</h2>
+<p>For a difference, the key value is 0: $\mu_1 - \mu_2 = 0$ means the two true means are equal. So the first question about any interval for $\mu_1 - \mu_2$ is where 0 sits.</p>
+<table class="stat-compare">
+<thead><tr><th scope="col">Interval</th><th scope="col">What it shows</th></tr></thead>
+<tbody>
+<tr><td>every value greater than 0</td><td>convincing evidence that $\mu_1 > \mu_2$</td></tr>
+<tr><td>every value less than 0</td><td>convincing evidence that $\mu_1 < \mu_2$</td></tr>
+<tr><td>0 inside</td><td>no convincing evidence of a difference; differences in both directions are plausible</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example 1.</b> Sixty student volunteers were randomly assigned, 30 each, to take a timed reading test with noise-cancelling headphones (H) or without (N) in a noisy room (invented data). Headphones: $\bar{x} = 74.6$, $s = 8.1$; none: $\bar{x} = 70.1$, $s = 6.4$. The 95% two-sample t interval is</p>
+<p>$$(74.6 - 70.1) \pm 2.004\sqrt{\frac{8.1^2}{30} + \frac{6.4^2}{30}} = 4.5 \pm 3.78,$$</p>
+<p>from 0.72 to 8.28 points. Does it give convincing evidence that headphones raise the mean score?</p>
+<p>Conclusion: Because every value in the interval from 0.72 to 8.28 is greater than 0, the interval gives convincing evidence that the true mean reading score is higher with headphones than without, for students like these.</p>
+<p>Scope: the students were randomly assigned, so the difference can be credited to the headphones. They were volunteers, not a random sample, so the result applies to students like them.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Independent random samples of one-bedroom listings in two cities give a 99% interval for $\mu_A - \mu_B$ (true mean monthly rent, city A minus city B) from $-45$ to 130 dollars.</p>
+<p>Conclusion: Because 0 is in the interval from $-45$ to 130 dollars, the interval does not give convincing evidence that the true mean monthly rents of one-bedroom listings differ between cities A and B.</p>
+<p>What the interval does <i>not</i> say: that the rents are the same. City A could plausibly cost up to 130 dollars more on average, or city B up to 45 dollars more.</p>
+</div>
+
+<h2>Statistically significant is not the same as important</h2>
+<p>A difference is <b>statistically significant</b> when chance alone is not a plausible explanation: here, when 0 is outside the interval. <b>Practical significance</b> asks a different question: is the difference big enough to matter to someone?</p>
+<figure id="fig-pract" data-fig="diff-interval-claims"><figcaption>Three intervals for the headphones effect, with 0 and the school's 5-point threshold marked.</figcaption></figure>
+<p>The school in worked example 1 will only buy headphones if they raise the mean score by more than 5 points. The 95% interval runs from 0.72 to 8.28. Gains below 5 are plausible, and so are gains above 5. So the interval gives convincing evidence of <i>some</i> gain, but not convincing evidence of a gain big enough for the school. <a class="figref" href="#fig-pract">The figure</a> shows the 5-point line inside every interval.</p>
+<p>The opposite can happen too. With two random samples of 20,000 phones each, a 95% interval for the difference in mean battery life might run from 0.03 to 0.09 hours. That excludes 0, so the difference is statistically significant, but it is at most about 5 minutes: probably not practically significant. Very large samples make tiny differences detectable.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A randomized experiment gives a 95% interval for the true mean weight loss on diet A minus diet B from 0.4 to 1.1 kilograms over a year. A doctor thinks 3 kilograms is the smallest change worth a patient's effort. Summarize.</p>
+<p>Every value is greater than 0, so there is convincing evidence that diet A produces more weight loss on average. Every value is also far below 3 kilograms, so the advantage is not large enough to matter by the doctor's standard.</p>
+</div>
+
+<h2>Three habits</h2>
+<ul>
+<li><b>State the order.</b> An interval for $\mu_N - \mu_H$ is the interval for $\mu_H - \mu_N$ with the signs flipped (from $-8.28$ to $-0.72$); the conclusion is the same.</li>
+<li><b>Use one interval for the difference</b>, not two separate intervals. Two intervals can overlap a little even when the interval for the difference excludes 0, because the standard error of a difference is smaller than the sum of the two standard errors.</li>
+<li><b>Link to tests.</b> A 95% interval for $\mu_1 - \mu_2$ excludes 0 exactly when a two-sided test of $H_0: \mu_1 - \mu_2 = 0$ at $\alpha = 0.05$ rejects. A wider interval (99%) can contain 0 when a narrower one (95%) does not, as the figure shows.</li>
+</ul>

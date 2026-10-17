@@ -1,0 +1,12 @@
+{
+ "ci-construction": {
+  "file": "figures/ci-construction.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Top: the normal sampling distribution of the sample proportion, centered at the unknown true proportion p, with the middle 95% shaded between p minus 1.96 standard deviations and p plus 1.96 standard deviations. Below it, three sample proportions are drawn with their intervals, each the sample proportion plus or minus 1.96 standard deviations. The two sample proportions that land inside the shaded middle 95% give intervals that reach across p; the one that lands in the tail gives an interval that misses p."
+ }
+}

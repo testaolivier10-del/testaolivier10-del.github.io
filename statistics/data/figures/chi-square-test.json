@@ -1,0 +1,11 @@
+{
+ "chi-square-tail": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep",
+  "ext": "svg",
+  "w": 640,
+  "h": 360,
+  "alt": "Right-skewed chi-square density curve with 2 degrees of freedom; a dashed line marks the observed statistic 8.21 and the thin shaded tail to its right is the p-value, 0.0165."
+ }
+}

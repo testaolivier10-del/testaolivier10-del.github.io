@@ -1,0 +1,12 @@
+{
+ "t-test-pvalue": {
+  "file": "figures/t-test-pvalue.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The t distribution with 44 degrees of freedom, centered at 0. A dashed line marks the observed t statistic 2.37, and the small area under the curve to its right is shaded: the one-sided p-value, 0.0112."
+ }
+}

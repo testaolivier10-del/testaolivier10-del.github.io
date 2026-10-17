@@ -1,0 +1,11 @@
+{
+ "order-of-operations": {
+  "def": "The agreed order for evaluating an expression: grouped terms (brackets, fraction bars, roots) first, then powers, then multiplication and division, then addition and subtraction."
+ },
+ "square-root": {
+  "def": "The square root of a nonnegative number $a$, written $\\sqrt{a}$, is the nonnegative number whose square is $a$; for example $\\sqrt{0.25} = 0.5$."
+ },
+ "summation": {
+  "def": "The symbol $\\sum$ stands for \"add up\": $\\sum x_i$ is the sum of all the values $x_1, x_2, \\ldots, x_n$."
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "topic": "one-categorical-displays",
+ "hook": "A school report shows two bars for the percent of students passing a state exam: one school at 52%, the other at 58%. The second bar looks four times as tall. Is the second school four times better? No: the vertical axis starts at 50%. Graphs of categorical data are simple, but they have rules, and those rules are what keep a picture honest.",
+ "prereq": [
+  {
+   "q": "In a sample of 200, the relative frequency of a category is 0.15. What is its count?",
+   "options": [
+    "30",
+    "15",
+    "0.15",
+    "1,333"
+   ],
+   "correct": 0,
+   "why": "Count = relative frequency × total = 0.15 × 200 = 30.",
+   "review": "one-categorical-tables"
+  },
+  {
+   "q": "When do the relative frequencies of a categorical variable add to 1?",
+   "options": [
+    "When each individual is in exactly one category",
+    "Always, whatever the survey asked",
+    "Only when there are two categories",
+    "When the sample is large"
+   ],
+   "correct": 0,
+   "why": "Then the categories together make up the whole sample.",
+   "review": "one-categorical-tables"
+  }
+ ],
+ "figure": {
+  "figure": "bar-and-pie",
+  "caption": "The same relative frequencies as a bar chart and as a pie chart. Bars are easier to compare; the pie shows parts of one whole."
+ },
+ "chain": [
+  {
+   "cause": "Each category of a categorical variable gets one bar",
+   "effect": "the bar’s height is the category’s count or relative frequency, measured from 0"
+  },
+  {
+   "cause": "Categories have no number order",
+   "effect": "bars can go in any order and are drawn with gaps between them"
+  },
+  {
+   "cause": "When each individual is in exactly one category",
+   "effect": "the parts make one whole, so a pie chart can show them as slices"
+  },
+  {
+   "cause": "A cut-off axis or bars from groups of different sizes",
+   "effect": "the picture misleads, so start at 0 and graph relative frequencies to compare groups"
+  }
+ ],
+ "ideas": [
+  "A <b>bar chart</b> shows one bar per category, with height equal to the count or relative frequency. The vertical axis starts at 0.",
+  "A <b>pie chart</b> shows each category as a slice of one circle, sized by its relative frequency. It needs categories that do not overlap and cover everyone.",
+  "Bar charts make it easier to compare categories; pie charts show how parts make up a whole.",
+  "To compare groups of different sizes, graph relative frequencies, and describe what the graph shows with numbers, in context."
+ ],
+ "misconception": {
+  "wrong": "School B’s bar is four times as tall, so its pass rate is four times school A’s.",
+  "right": "The axis starts at 50%. The actual rates are 58% and 52%, a difference of 6 percentage points."
+ },
+ "check": [
+  "stat-one-categorical-displays-1",
+  "stat-one-categorical-displays-2",
+  "stat-one-categorical-displays-3",
+  "stat-one-categorical-displays-4",
+  "stat-one-categorical-displays-5",
+  "stat-one-categorical-displays-6"
+ ],
+ "summary": "Bar charts and pie charts display one categorical variable. A bar’s height is its count or relative frequency measured from 0; a pie’s slices are parts of one whole, so every individual must be in exactly one category. Compare groups of different sizes with relative frequencies, and check axes before trusting a picture.",
+ "connections": [
+  {
+   "href": "../notes/one-categorical-tables.html",
+   "label": "Back: tables for one categorical variable (1.3)"
+  },
+  {
+   "href": "../notes/one-quantitative-displays.html",
+   "label": "Next: graphs for one quantitative variable (1.5)"
+  }
+ ]
+}

@@ -1,0 +1,565 @@
+{
+ "stimuli": {
+  "ci-two-proportions-claims-s1": {
+   "kind": "table",
+   "title": "Three studies, three 95% intervals",
+   "text": "Each study below compares two groups with a 95% confidence interval for $p_1 - p_2$ (group 1 minus group 2). The conditions for inference were met in every study. (Invented data.)",
+   "table": {
+    "caption": "95% confidence intervals for $p_1 - p_2$",
+    "cols": [
+     "Study",
+     "Group 1",
+     "Group 2",
+     "Proportion of",
+     "95% interval"
+    ],
+    "rows": [
+     [
+      "A",
+      "students sent weekly nudge emails",
+      "students sent no emails",
+      "students who finish the online course",
+      "from 0.03 to 0.11"
+     ],
+     [
+      "B",
+      "shoppers at store 1",
+      "shoppers at store 2",
+      "shoppers who buy a snack at checkout",
+      "from $-0.04$ to 0.06"
+     ],
+     [
+      "C",
+      "seedlings in new soil",
+      "seedlings in old soil",
+      "seedlings that survive a month",
+      "from $-0.15$ to $-0.02$"
+     ]
+    ]
+   }
+  },
+  "ci-two-proportions-claims-s2": {
+   "kind": "table",
+   "title": "Telehealth visits by age",
+   "text": "A health researcher takes a random sample of 500 adults under 40 and a separate random sample of 400 adults aged 40 or older in one state. She asks each whether they had a video visit with a doctor in the past year. (Invented data.)",
+   "table": {
+    "caption": "Video visits in the past year",
+    "cols": [
+     "Age group",
+     "Had a video visit",
+     "Sample size"
+    ],
+    "rows": [
+     [
+      "Under 40",
+      "190",
+      "500"
+     ],
+     [
+      "40 or older",
+      "124",
+      "400"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-ci-two-proportions-claims-1",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ci-two-proportions-claims-s1",
+   "q": "Which study gives convincing evidence that $p_1$ is greater than $p_2$?",
+   "why": {
+    "correct": "An interval entirely above 0 is convincing evidence that $p_1 - p_2 > 0$.",
+    "options": [
+     "Study B's interval reaches below 0, so it does not give convincing evidence of a positive difference.",
+     "Right: every value from 0.03 to 0.11 is positive, so every plausible difference has group 1 higher.",
+     "Study B's interval contains 0, so equal proportions are plausible.",
+     "Study C's interval is entirely negative: it suggests group 2 is higher, the other direction."
+    ]
+   },
+   "options": [
+    "Studies A and B",
+    "Study A",
+    "Study B",
+    "Study C"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-2",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-claims-s1",
+   "q": "What does Study B's interval let you conclude?",
+   "why": {
+    "correct": "Containing 0 means equal proportions are plausible: no convincing evidence of a difference, and no proof of equality.",
+    "options": [
+     "More of the interval lies above 0, but 0 is still inside it, so a difference of 0 is plausible.",
+     "Right: the interval holds negative values, 0 and positive values, so it cannot rule out equal proportions.",
+     "An interval that contains 0 does not show the difference is 0; it shows 0 cannot be ruled out. Values up to 0.06 are plausible too.",
+     "Intervals cross 0 often. It means the data are consistent with no difference."
+    ]
+   },
+   "options": [
+    "Store 1 has the higher proportion, since most of the interval is positive",
+    "There is not convincing evidence of a difference: 0 is a plausible value",
+    "The two stores have exactly the same proportion of snack buyers",
+    "The study made an error, since an interval should not cross 0"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-3",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-claims-s1",
+   "q": "Complete the claim about Study C in context.",
+   "why": {
+    "correct": "An interval entirely below 0 is convincing evidence that $p_1 < p_2$."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "claim": {
+      "label": "Reason",
+      "options": [
+       "Because every value in the interval is less than 0,",
+       "Because the interval contains 0,",
+       "Because the sample difference is negative,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Study C's interval runs from $-0.15$ to $-0.02$; it does not reach 0.",
+       "2": "A negative sample difference alone could be chance. The whole interval being below 0 is what counts."
+      }
+     },
+     "evidence": {
+      "options": [
+       "the interval gives convincing evidence that",
+       "the interval proves that",
+       "the interval does not give convincing evidence that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An interval gives evidence; it never proves.",
+       "2": "The interval excludes 0, so it does give convincing evidence."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true proportion of seedlings that survive a month is lower in new soil than in old soil",
+       "the seedlings in this study did worse in new soil",
+       "new soil kills 15% of seedlings"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The claim is about the true proportions, not just these seedlings.",
+       "2": "The interval estimates a difference in survival proportions; it says nothing about 15% being killed."
+      }
+     }
+    },
+    "model": "Because every value in the interval from -0.15 to -0.02 is less than 0, the interval gives convincing evidence that the true proportion of seedlings that survive a month is lower in new soil than in old soil.",
+    "write": {
+     "context": [
+      "seedlings",
+      "soil"
+     ],
+     "direction": "less"
+    }
+   }
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-4",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "ci-two-proportions-claims-s1",
+   "q": "Study A's team also computes a 99% interval from the same data. What would it show?",
+   "why": {
+    "correct": "Same center, larger $z^*$: the 99% interval is wider but here still excludes 0.",
+    "options": [
+     "A higher confidence level makes the interval wider, not narrower.",
+     "Right: the 95% margin, 0.04, means $\\text{SE} = \\frac{0.04}{1.96} = 0.0204$; the 99% margin is $2.576(0.0204) = 0.053$, and the lower end is still positive.",
+     "The level changes $z^*$ from 1.96 to 2.576, so the interval widens.",
+     "The 99% margin is about 0.053, not 0.08. The lower end stays above 0."
+    ]
+   },
+   "options": [
+    "About 0.01 to 0.09, with both ends above 0",
+    "About 0.017 to 0.123, with both ends above 0",
+    "The same interval, from 0.03 to 0.11",
+    "About $-0.01$ to 0.15, now containing 0"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-5",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "interval",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-claims-s2",
+   "q": "Construct a 95% confidence interval for $p_Y - p_O$, the difference in the true proportions (under 40 minus 40 or older). Give each end to three decimal places.",
+   "why": {
+    "correct": "$(0.38 - 0.31) \\pm 1.96\\sqrt{\\frac{0.38(0.62)}{500} + \\frac{0.31(0.69)}{400}} = 0.07 \\pm 0.062$, from 0.008 to 0.132."
+   },
+   "interval": {
+    "places": 3,
+    "from": {
+     "fn": "ci2prop",
+     "args": [
+      0.38,
+      500,
+      0.31,
+      400,
+      0.95
+     ]
+    }
+   }
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-6",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-claims-s2",
+   "q": "Using the interval from 0.008 to 0.132, is there convincing evidence that the two age groups differ? Complete the claim.",
+   "why": {
+    "correct": "Every value in the interval is positive, so a difference of 0 is not plausible."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "claim": {
+      "label": "Reason",
+      "options": [
+       "Because 0 is not in the interval,",
+       "Because 0.07 is in the interval,",
+       "Because the interval is narrow,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample difference is always in its own interval, so that shows nothing.",
+       "2": "Width tells you about precision, not about whether 0 is plausible."
+      }
+     },
+     "evidence": {
+      "options": [
+       "the interval gives convincing evidence that",
+       "the interval does not give convincing evidence that",
+       "it is proven that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Every plausible value is positive, so it does give convincing evidence.",
+       "2": "An interval gives evidence; it never proves."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true proportions of adults in the state who had a video visit differ for the two age groups",
+       "the sample proportions, 0.38 and 0.31, differ",
+       "every younger adult is more likely to have a video visit"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample proportions differ for certain; the question is about the populations.",
+       "2": "An interval about proportions says nothing about each individual."
+      }
+     }
+    },
+    "model": "Because 0 is not in the interval from 0.008 to 0.132, the interval gives convincing evidence that the true proportions of all adults in the state under 40 and 40 or older who had a video visit are different.",
+    "write": {
+     "context": [
+      "video visit",
+      "adults"
+     ],
+     "direction": "different"
+    }
+   }
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-7",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-claims-s2",
+   "q": "A news story says, \"Adults under 40 are 15 percentage points more likely to have had a video visit.\" What does the interval from 0.008 to 0.132 say about this claim?",
+   "why": {
+    "correct": "Judge a claimed value by whether it is inside the interval.",
+    "options": [
+     "A difference in proportions of 0.15 is 15 percentage points; they are the same quantity.",
+     "Positive values show the younger group is higher, but none of them is as large as 0.15.",
+     "Right: 0.15 is not a plausible value of $p_Y - p_O$, so the interval gives convincing evidence that the true difference is less than 15 points.",
+     "Close does not count. A value outside the interval is not plausible."
+    ]
+   },
+   "options": [
+    "It is unable to judge it, because the interval is for proportions and the claim is in percentage points",
+    "It supports it, because the interval lies above 0",
+    "It gives convincing evidence against it: 0.15 is above every value in the interval",
+    "It supports it, because 0.15 is close to the upper end, 0.132"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-8",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ci-two-proportions-claims-s2",
+   "q": "Can the researcher conclude that being under 40 causes people to use video visits more?",
+   "why": {
+    "correct": "Without random assignment, a difference may come from other variables linked to age, such as comfort with technology.",
+    "options": [
+     "Random sampling supports generalizing. Cause needs random assignment, which is impossible for age.",
+     "Different sample sizes are fine. The issue is that age was not assigned.",
+     "Right: this is an observational study. Random sampling allows generalizing to the state's adults, but not a cause-and-effect conclusion.",
+     "An interval above 0 shows a difference between the populations, not what causes it."
+    ]
+   },
+   "options": [
+    "Yes: the samples were random, so the interval shows a cause",
+    "No: the sample sizes are different, 500 and 400",
+    "No: age was not assigned, so other variables could explain the gap",
+    "Yes: the interval lies above 0, so age is the cause"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-9",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 95% interval for $p_1 - p_2$ is from $-0.02$ to 0.09. A student writes, \"This proves the two proportions are equal.\" Which statement is correct?",
+   "why": {
+    "correct": "Inference gives evidence, never proof. Containing 0 means \"no convincing evidence of a difference\".",
+    "options": [
+     "Right: containing 0 means there is not convincing evidence of a difference; it does not prove there is none.",
+     "An interval can never prove a single value. Many nonzero differences are plausible too.",
+     "Negative values are plausible, but so are 0 and positive values. Nothing is proven.",
+     "Being mostly positive is not enough. Because 0 is inside, a difference of 0 is plausible."
+    ]
+   },
+   "options": [
+    "Equal proportions are plausible, but so are differences up to 0.09",
+    "The student is right, since 0 is in the interval",
+    "The interval proves that $p_2$ is larger, since it starts below 0",
+    "The interval proves that $p_1$ is larger, since most of it is positive"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-10",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A 95% interval for $p_1 - p_2$ is from 0.01 to 0.08. What does this say about a two-sided test of $H_0: p_1 - p_2 = 0$ at $\\alpha = 0.05$ with the same data?",
+   "why": {
+    "correct": "A $C\\%$ interval and a two-sided test at $\\alpha = 1 - C$ give matching answers about a null value, except in rare borderline cases.",
+    "options": [
+     "Width is not the point. What matters is that 0 lies outside the interval.",
+     "A 99% interval would be needed for that, and it might reach 0. You cannot tell from the 95% interval.",
+     "They are closely linked: a 95% interval holds, nearly exactly, the values a two-sided test at 0.05 would not reject.",
+     "Right: a two-sided test at $\\alpha = 0.05$ and a 95% interval nearly always agree; an interval well clear of 0 matches a p-value below 0.05."
+    ]
+   },
+   "options": [
+    "The test would fail to reject $H_0$, because the interval is narrow",
+    "The test would reject $H_0$ at $\\alpha = 0.01$ as well",
+    "Nothing, because tests and intervals answer different questions",
+    "The test would reject $H_0$, because 0 is not a plausible value"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-11",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A 90% interval for $p_1 - p_2$ is from 0.04 to 0.16. What are the point estimate and the margin of error?",
+   "why": {
+    "correct": "Midpoint for the estimate, half the width for the margin of error.",
+    "options": [
+     "Right: the estimate is the midpoint, $\\frac{0.04 + 0.16}{2}$, and the margin is half the width, $\\frac{0.16 - 0.04}{2}$.",
+     "That uses the width as the estimate. The estimate is the midpoint.",
+     "The width is 0.12; the margin of error is half of it.",
+     "The estimate is the center, not the lower end."
+    ]
+   },
+   "options": [
+    "Estimate 0.10, margin of error 0.06",
+    "Estimate 0.12, margin of error 0.06",
+    "Estimate 0.10, margin of error 0.12",
+    "Estimate 0.04, margin of error 0.16"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-12",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 95% interval for $p_W - p_N$ (with a warranty card minus without) is from 0.05 to 0.13, for the true proportions of customers who return a satisfaction survey. Interpret the interval.",
+   "why": {
+    "correct": "Level, interval, the true difference, in context, with the order of subtraction."
+   },
+   "conclude": {
+    "mode": "interval",
+    "slots": {
+     "level": {
+      "options": [
+       "We are 95% confident that the interval from 0.05 to 0.13 captures",
+       "There is a 95% probability that the interval from 0.05 to 0.13 contains",
+       "95% of customers fall between 0.05 and 0.13 in"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "After the data are in, the interval either captures the true difference or not; the 95% describes the method.",
+       "2": "An interval for proportions is not about individual customers."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true difference in the proportions of customers who return the survey (with the card minus without)",
+       "the difference in the sample proportions who returned the survey",
+       "the true proportion of customers who return the survey"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample difference is known exactly; the interval estimates the population difference.",
+       "2": "The interval is for a difference between two groups."
+      }
+     }
+    },
+    "model": "We are 95% confident that the interval from 0.05 to 0.13 captures the true difference in the proportions of all customers who return the satisfaction survey with a warranty card and without one (with minus without).",
+    "write": {
+     "context": [
+      "customers",
+      "survey"
+     ],
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-13",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 95% interval for $p_1 - p_2$ is from 0.07 to 0.19. Does it give convincing evidence for the claim that $p_1$ is more than 5 percentage points above $p_2$?",
+   "why": {
+    "correct": "Compare the claimed value with the whole interval, not with the estimate.",
+    "options": [
+     "An interval can judge a claim about a value: check where the value sits relative to the interval.",
+     "Right: the claim is $p_1 - p_2 > 0.05$, and every plausible value is above 0.05.",
+     "Not containing 0.05 is exactly what supports the claim here, because the whole interval is above it.",
+     "The sample difference alone could be chance. The whole interval being above 0.05 is the evidence."
+    ]
+   },
+   "options": [
+    "No: you would need a test, not an interval",
+    "Yes: every value in the interval is greater than 0.05",
+    "No: the interval does not contain 0.05",
+    "Yes: the sample difference, 0.13, is greater than 0.05"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-14",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A huge online study gives a 95% interval for $p_1 - p_2$ from 0.001 to 0.004 for the proportions of visitors who click two button colors. Which statement is most accurate?",
+   "why": {
+    "correct": "With very large samples, tiny differences become convincing; judge their size in context.",
+    "options": [
+     "Small values are still positive. The interval excludes 0, so the evidence is convincing.",
+     "Large samples give precise intervals. That is why such a small difference can be detected.",
+     "Right: the interval excludes 0, so a difference is convincing, and its size is tiny. Evidence of a difference is not the same as an important difference.",
+     "The interval is a difference in proportions, not a ratio. It is 0.1 to 0.4 percentage points."
+    ]
+   },
+   "options": [
+    "There is not convincing evidence of a difference, because the values are so small",
+    "The study is wrong, because large samples give unreliable intervals",
+    "Convincing evidence of a difference, though at most 0.4 points, maybe too small to matter",
+    "One button color makes visitors click 0.1 to 0.4 times more often than the other"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-15",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "A hospital wants convincing evidence that a new cleaning routine lowers the true proportion of patients who get an infection. Which 95% interval for $p_{\\text{new}} - p_{\\text{old}}$ would give it?",
+   "why": {
+    "correct": "Lower for new minus old means a negative difference: the whole interval must be below 0.",
+    "options": [
+     "Every value is positive: that would be evidence that the new routine raises the infection rate.",
+     "This interval contains 0 and is mostly positive. It does not support a lower rate.",
+     "This interval contains 0, so no difference is plausible and the evidence is not convincing.",
+     "Right: every value is negative, so every plausible difference has the new routine lower."
+    ]
+   },
+   "options": [
+    "From 0.01 to 0.06",
+    "From $-0.01$ to 0.06",
+    "From $-0.06$ to 0.01",
+    "From $-0.06$ to $-0.01$"
+   ],
+   "correct": 3
+  }
+ ]
+}

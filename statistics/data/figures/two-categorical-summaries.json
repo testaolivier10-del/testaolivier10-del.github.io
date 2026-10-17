@@ -1,0 +1,12 @@
+{
+ "u2-park-table": {
+  "file": "figures/u2-park-table.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The two-way table of 250 park visitors by visit type and activity, with three cells marked. The joint cell, first visit and hiking, holds 45 of all 250 visitors (0.18). The marginal total for hiking is 105 of 250 (0.42). The conditional share of hikers among first visits is 45 of the 100 first visits (0.45)."
+ }
+}

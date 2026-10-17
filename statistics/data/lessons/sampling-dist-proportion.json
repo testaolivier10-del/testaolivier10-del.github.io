@@ -1,0 +1,73 @@
+{
+ "topic": "sampling-dist-proportion",
+ "hook": "A seed company prints \"85% sprout\" on every packet. A garden store plants 200 seeds and only 160 come up: 80%. Is the company exaggerating, or is that just the luck of the draw? To answer, you need to know how much a sample proportion of 200 seeds bounces around when the truth really is 85%.",
+ "prereq": [
+  {
+   "q": "For a normal distribution with mean 0.85 and standard deviation 0.025, what is the z-score of 0.80?",
+   "options": [
+    "$-2$",
+    "$2$",
+    "$-0.05$",
+    "$-0.5$"
+   ],
+   "correct": 0,
+   "why": "$z = \\frac{0.80 - 0.85}{0.025} = \\frac{-0.05}{0.025} = -2$.",
+   "review": "normal-distribution"
+  },
+  {
+   "q": "As the size of a random sample grows, the sampling distribution of $\\hat{p}$",
+   "options": [
+    "stays centered at $p$ and becomes less spread out",
+    "moves closer to 0.5 and becomes more spread out",
+    "stays centered at $p$ and keeps the same spread",
+    "becomes centered at the sample's own proportion"
+   ],
+   "correct": 0,
+   "why": "$\\hat{p}$ from a random sample is unbiased at every sample size, and larger samples give less variability.",
+   "review": "estimators"
+  }
+ ],
+ "figure": {
+  "figure": "phat-sampling-distribution",
+  "caption": "Exact sampling distributions of the proportion of seeds that sprout when p = 0.85. With 200 seeds the normal curve fits; with 20 seeds it does not."
+ },
+ "chain": [
+  {
+   "cause": "Each sampled seed sprouts (1) or not (0), with a 0-or-1 spread of $\\sqrt{p(1 - p)}$",
+   "effect": "averaging $n$ of them gives $\\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1 - p)}{n}}$, centered at $\\mu_{\\hat{p}} = p$"
+  },
+  {
+   "cause": "The sample is drawn without replacement",
+   "effect": "the formula is accurate only when $n$ is at most 10% of the population: the 10% condition"
+  },
+  {
+   "cause": "At least 10 successes and 10 failures are expected ($np \\ge 10$, $n(1 - p) \\ge 10$)",
+   "effect": "the sampling distribution is approximately normal: the large counts condition"
+  },
+  {
+   "cause": "Both conditions hold",
+   "effect": "standardize with $z = \\frac{\\hat{p} - p}{\\sigma_{\\hat{p}}}$ and find probabilities about $\\hat{p}$ from the normal distribution"
+  }
+ ],
+ "ideas": [
+  "$\\mu_{\\hat{p}} = p$ and $\\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1 - p)}{n}}$, using the true $p$.",
+  "<b>10% condition</b>: $n$ at most 10% of the population, so the standard deviation formula holds when sampling without replacement.",
+  "<b>Large counts condition</b>: $np \\ge 10$ and $n(1 - p) \\ge 10$, so the shape is approximately normal. Never \"$n \\ge 30$\" for proportions.",
+  "When large counts fails, the distribution is skewed: right when $p$ is near 0, left when $p$ is near 1.",
+  "Four times the sample size halves $\\sigma_{\\hat{p}}$."
+ ],
+ "misconception": {
+  "wrong": "The 10% condition is what makes the distribution of $\\hat{p}$ normal, so a sample under 10% of the population can always use a normal model.",
+  "right": "The 10% condition protects the standard deviation formula (independence). The normal shape comes from the large counts condition, $np \\ge 10$ and $n(1 - p) \\ge 10$. Check both, for different reasons."
+ },
+ "check": [
+  "stat-sampling-dist-proportion-1",
+  "stat-sampling-dist-proportion-2",
+  "stat-sampling-dist-proportion-3",
+  "stat-sampling-dist-proportion-4",
+  "stat-sampling-dist-proportion-10",
+  "stat-sampling-dist-proportion-13",
+  "stat-sampling-dist-proportion-16"
+ ],
+ "summary": "For random samples, $\\hat{p}$ has mean $p$ and standard deviation $\\sqrt{p(1 - p)/n}$ (accurate when the sample is at most 10% of the population) and is approximately normal when $np \\ge 10$ and $n(1 - p) \\ge 10$. Then $z = \\frac{\\hat{p} - p}{\\sigma_{\\hat{p}}}$ turns a question about a sample proportion into a normal probability, which you can tie back to a claim about $p$."
+}

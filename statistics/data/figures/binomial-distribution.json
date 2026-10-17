@@ -1,0 +1,12 @@
+{
+ "u2-binomial-shaded": {
+  "file": "figures/u2-binomial-shaded.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Probability histogram of the binomial distribution with n = 10 and p = 0.3. The bars for 4 through 10 are shaded; together they are P(X ≥ 4) = 1 − P(X ≤ 3) = 0.350."
+ }
+}

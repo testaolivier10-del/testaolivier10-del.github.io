@@ -1,0 +1,494 @@
+{
+ "stimuli": {
+  "random-variables-s1": {
+   "kind": "table",
+   "title": "People in a car at a toll booth",
+   "text": "A highway agency records the number of people in each car that passes a toll booth. Let X = the number of people in a randomly chosen car. The probability for 5 people (the most a car can hold here) is missing (invented data).",
+   "table": {
+    "caption": "Probability distribution of X, the number of people in a car",
+    "cols": [
+     "$x$",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "rows": [
+     [
+      "$P(X = x)$",
+      "0.45",
+      "0.30",
+      "0.12",
+      "0.09",
+      "?"
+     ]
+    ]
+   }
+  },
+  "random-variables-s2": {
+   "kind": "graph",
+   "title": "Goals scored by a soccer team",
+   "text": "Let G = the number of goals a club soccer team scores in a randomly chosen game. The probability histogram shows its distribution, built from several seasons of results (invented data).",
+   "plot": {
+    "label": "Probability histogram of G, goals in a game: 0.25 for 0 goals, 0.35 for 1, 0.22 for 2, 0.12 for 3 and 0.06 for 4",
+    "kind": "bar",
+    "categories": [
+     "0",
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "values": [
+     0.25,
+     0.35,
+     0.22,
+     0.12,
+     0.06
+    ],
+    "xLabel": "G = number of goals in a game",
+    "yLabel": "Probability"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-random-variables-1",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "numeric",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What probability belongs in the blank, $P(X = 5)$?",
+   "why": {
+    "correct": "The probabilities of a distribution add to 1: $1 - (0.45 + 0.30 + 0.12 + 0.09) = 1 - 0.96 = 0.04$."
+   },
+   "stimulus": "random-variables-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.040000000000000036,
+    "mistakes": [
+     {
+      "value": 0.2,
+      "why": "That spreads the probability evenly over 5 values. The probabilities must add to 1, so the blank is 1 minus the others."
+     },
+     {
+      "value": 0.96,
+      "why": "That is the sum of the other probabilities. The blank is what is left: 1 − 0.96."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variables-2",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that a randomly chosen car has at least 3 people?",
+   "why": {
+    "correct": "\"At least 3\" is 3, 4 or 5: $P(X \\ge 3) = 0.12 + 0.09 + 0.04 = 0.25$."
+   },
+   "stimulus": "random-variables-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.25,
+    "mistakes": [
+     {
+      "value": 0.12,
+      "why": "That is $P(X = 3)$ only. At least 3 includes 4 and 5."
+     },
+     {
+      "value": 0.13,
+      "why": "That is $P(X > 3)$, which leaves out 3."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variables-3",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that a car has fewer than 3 people?",
+   "why": {
+    "correct": "\"Fewer than 3\" means 1 or 2, that is $X \\le 2$: $P(X \\le 2) = 0.45 + 0.30 = 0.75$."
+   },
+   "stimulus": "random-variables-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.75,
+    "mistakes": [
+     {
+      "value": 0.87,
+      "why": "That is $P(X \\le 3)$. \"Fewer than 3\" does not include 3."
+     },
+     {
+      "value": 0.25,
+      "why": "That is the complement, 3 or more."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variables-4",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a complete definition of the random variable in this context?",
+   "why": {
+    "correct": "A random variable is a number that comes from a chance process, defined in context: what is counted, and for which randomly chosen individual.",
+    "options": [
+     "People are not a number. Say what is counted: the number of people.",
+     "Right: a count, in context, for one random car.",
+     "X takes values like 1 to 5; probabilities describe how likely each value is.",
+     "Cars are the individuals, not the numerical value being recorded."
+    ]
+   },
+   "stimulus": "random-variables-s1",
+   "options": [
+    "X = the people in the cars at the toll booth",
+    "X = the number of people in a randomly chosen car at the toll booth",
+    "X = the probability that a car has more than one person",
+    "X = the cars that pass through the toll booth on a randomly chosen day"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-random-variables-5",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the cumulative probability $P(X \\le 3)$.",
+   "why": {
+    "correct": "A cumulative probability adds every value up to the boundary: $0.45 + 0.30 + 0.12 = 0.87$."
+   },
+   "stimulus": "random-variables-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.87,
+    "mistakes": [
+     {
+      "value": 0.12,
+      "why": "That is $P(X = 3)$ alone; cumulative adds 1, 2 and 3."
+     },
+     {
+      "value": 0.75,
+      "why": "That stops at 2. \"At most 3\" includes 3."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variables-6",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which describes the shape of the distribution of G?",
+   "why": {
+    "correct": "The tallest bar is at 1 and the bars trail off toward 3 and 4 goals: a longer tail to the right, so skewed right.",
+    "options": [
+     "The long tail is toward the larger values, 3 and 4.",
+     "The bars are much lower on the right than on the left.",
+     "Uniform would need equal bar heights.",
+     "Right: the tail is on the high side."
+    ]
+   },
+   "stimulus": "random-variables-s2",
+   "options": [
+    "Skewed left, with a peak at 1 goal and a tail toward 0 goals",
+    "Roughly symmetric, centered at 2 goals",
+    "Uniform, since each number of goals is possible",
+    "Skewed right, with a peak at 1 goal and a tail toward 4"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-random-variables-7",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the team scores at least 2 goals in a game?",
+   "why": {
+    "correct": "$P(G \\ge 2) = 0.22 + 0.12 + 0.06 = 0.40$, or $1 - P(G \\le 1) = 1 - 0.60 = 0.40$."
+   },
+   "stimulus": "random-variables-s2",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.39999999999999997,
+    "mistakes": [
+     {
+      "value": 0.22,
+      "why": "That is $P(G = 2)$ alone."
+     },
+     {
+      "value": 0.18,
+      "why": "That is $P(G > 2)$, which leaves out 2 goals."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variables-8",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "single",
+   "practice": "3.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What kind of random variable is G?",
+   "why": {
+    "correct": "G takes a list of separate values (0, 1, 2, 3, 4), so it is a discrete random variable.",
+    "options": [
+     "The variable is goals, not time.",
+     "Right: goals are counted.",
+     "G is a number from a chance process; the bars are its values.",
+     "It cannot be 2.5 goals; only whole numbers are possible."
+    ]
+   },
+   "stimulus": "random-variables-s2",
+   "options": [
+    "Continuous, because a game lasts for 90 minutes of playing time",
+    "Discrete, because it takes separate whole-number values",
+    "Categorical, because each bar is a category",
+    "Continuous, because it can be any number from 0 to 4"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-random-variables-9",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The cumulative probability $P(G \\le 1)$ is 0.60. What does it mean in context?",
+   "why": {
+    "correct": "$P(G \\le 1) = 0.25 + 0.35 = 0.60$: in the long run, the team scores 1 goal or fewer in about 60% of its games.",
+    "options": [
+     "That would be $P(G = 1)$, which is 0.35.",
+     "That is $P(G \\ge 1) = 0.75$.",
+     "Right: a cumulative probability up to 1 goal.",
+     "A cumulative probability is a probability, not a number of goals."
+    ]
+   },
+   "stimulus": "random-variables-s2",
+   "options": [
+    "In about 60% of games, the team scores exactly 1 goal",
+    "In about 60% of games, the team scores at least 1 goal",
+    "In about 60% of games, the team scores 1 goal or fewer",
+    "The team scores 0.60 goals in a typical game"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-random-variables-10",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "single",
+   "practice": "3.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is a random variable?",
+   "why": {
+    "correct": "A random variable assigns a number to each outcome of a chance process, such as the number of heads in 3 flips.",
+    "options": [
+     "The randomness is in the outcome, not in choosing the variable.",
+     "A random variable takes numerical values.",
+     "A random variable varies from trial to trial.",
+     "Right: its values come with probabilities."
+    ]
+   },
+   "options": [
+    "A variable that was chosen at random from a list of variables",
+    "Any categorical variable recorded in a survey",
+    "A number that stays the same from one trial of a chance process to the next",
+    "A numerical value that depends on the outcome of a chance process"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-random-variables-11",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which table is a valid probability distribution for a random variable W that takes the values 0, 1, 2 and 3?",
+   "why": {
+    "correct": "Each probability must be from 0 to 1 and the four must add to 1: $0.1 + 0.4 + 0.3 + 0.2 = 1$.",
+    "options": [
+     "Right: each between 0 and 1, sum 1.",
+     "These add to 1.1, more than 1.",
+     "A probability cannot be negative.",
+     "These add to 0.9, less than 1."
+    ]
+   },
+   "options": [
+    "0.1, 0.4, 0.3, 0.2",
+    "0.2, 0.4, 0.3, 0.2",
+    "0.5, 0.4, 0.3, −0.2",
+    "0.1, 0.2, 0.3, 0.3"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-random-variables-12",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which random variable is continuous?",
+   "why": {
+    "correct": "A continuous random variable can take any value in an interval, like a time measured as precisely as you like. Counts are discrete.",
+    "options": [
+     "Texts are counted, so the variable is discrete.",
+     "Right: time can be any value in a range.",
+     "Heads are counted: 0 to 10.",
+     "Cars are counted."
+    ]
+   },
+   "options": [
+    "The number of texts a randomly chosen student sends in a day",
+    "The time a randomly chosen runner takes to finish a mile",
+    "The number of heads in 10 flips of a coin",
+    "The number of red cars in a parking lot chosen at random"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-random-variables-13",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "numeric",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A fair coin is flipped 3 times. Let H = the number of heads. Find $P(H = 2)$.",
+   "why": {
+    "correct": "The 8 equally likely outcomes include HHT, HTH and THH with 2 heads: $P(H = 2) = \\frac{3}{8} = 0.375$. The full distribution is 0.125, 0.375, 0.375, 0.125 for 0 to 3 heads."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.375,
+    "mistakes": [
+     {
+      "value": 0.25,
+      "why": "That treats the values 0, 1, 2 and 3 as equally likely. Count the 8 outcomes instead."
+     },
+     {
+      "value": 0.125,
+      "why": "That counts one arrangement, HHT. There are 3 ways to get 2 heads."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variables-14",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let W = the number of extended warranties a store sells in a randomly chosen hour, with $P(W = 0) = 0.50$, $P(W = 1) = 0.30$, $P(W = 2) = 0.15$ and $P(W = 3) = 0.05$. Write an expression for $P(W \\ge 1)$ using the complement rule.",
+   "why": {
+    "correct": "$P(W \\ge 1) = 1 - P(W = 0) = 1 - 0.50 = 0.50$, the same as $0.30 + 0.15 + 0.05$."
+   },
+   "setup": {
+    "answer": "1 - 0.50",
+    "bind": {},
+    "mustUse": [
+     "1",
+     "0.5"
+    ],
+    "mistakes": [
+     {
+      "expr": "0.30",
+      "why": "That is $P(W = 1)$ only. At least 1 is 1, 2 or 3."
+     },
+     {
+      "expr": "0.15 + 0.05",
+      "why": "That leaves out $P(W = 1) = 0.30$. At least 1 means 1, 2 or 3, which is everything except 0."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-random-variables-15",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "single",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A playlist of 12 songs is shuffled and a student counts the rock songs. Which definition of the random variable would earn full credit on the exam?",
+   "why": {
+    "correct": "Define the random variable as a number in context: what is counted and out of what. \"Rock songs\" names things, not a number.",
+    "options": [
+     "Right: a count, with what is counted and out of how many.",
+     "That names things, not a number.",
+     "That is a probability, not the random count.",
+     "That is a categorical outcome, not a numerical random variable."
+    ]
+   },
+   "options": [
+    "Let R = the number of rock songs among the 12 songs on the playlist",
+    "Let R = rock songs",
+    "Let R = the probability that a song is a rock song",
+    "Let R = whether each song on the shuffled playlist is rock or not rock"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-random-variables-16",
+   "unit": "unit-2",
+   "topic": "random-variables",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a discrete random variable Y with whole-number values, $P(Y \\le 2) = 0.80$ and $P(Y \\le 1) = 0.55$. Find $P(Y = 2)$.",
+   "why": {
+    "correct": "Cumulative probabilities differ by the values between them: $P(Y = 2) = P(Y \\le 2) - P(Y \\le 1) = 0.80 - 0.55 = 0.25$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.25,
+    "mistakes": [
+     {
+      "value": 0.8,
+      "why": "That is the cumulative probability up to 2, not the probability of exactly 2."
+     },
+     {
+      "value": 1.35,
+      "why": "Adding cumulative probabilities double counts; subtract them."
+     }
+    ]
+   }
+  }
+ ]
+}

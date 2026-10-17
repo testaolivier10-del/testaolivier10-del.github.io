@@ -1,0 +1,12 @@
+{
+ "u2-cars-histogram": {
+  "file": "figures/u2-cars-histogram.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Probability histogram of X, the number of people in a car at a toll booth: P(X = 1) = 0.45, P(X = 2) = 0.30, P(X = 3) = 0.12, P(X = 4) = 0.09, P(X = 5) = 0.04. The bars add to 1."
+ }
+}

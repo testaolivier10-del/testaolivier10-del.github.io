@@ -1,0 +1,12 @@
+{
+ "power-alpha-beta": {
+  "file": "figures/power-alpha-beta.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 370,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two normal curves for the sample proportion from samples of 200. The left curve, centered at the null value 0.50, is the distribution if the null is true; the right curve, centered at 0.60, is the distribution if the true proportion is 0.60. A vertical line at the cutoff 0.558 marks where the test rejects H0 at alpha = 0.05 (sample proportions above it). Under the null curve, the small area beyond the cutoff is alpha, the probability of a Type I error. Under the alternative curve, the area to the left of the cutoff is beta, the probability of a Type II error, about 0.11; the area to the right is the power, about 0.89."
+ }
+}

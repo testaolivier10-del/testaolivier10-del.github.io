@@ -1,0 +1,152 @@
+{
+  "about": "Sampling lab (docs/apstat-spec.md section 6). explore.scenes are the illustrated populations of the Explore view (each a fixed seeded population drawn by statistics/assets/tools/sampling-lab.js from ApStatMath.samplingLab.population); contexts are the Test yourself settings (ApStatMath.samplingLab.generate). Validator: scripts/lib/apstat-tool-checks/sampling-lab.mjs.",
+  "slug": "sampling-lab",
+  "kind": "simulator",
+  "topic": "random-sampling",
+  "intro": "<p>A sample is only as good as the way it was chosen. Pick a method, draw a sample from an illustrated population, and watch where the sample mean lands. Draw a hundred samples and the dots show the two things that matter: whether a method is biased (centered away from the truth) and how much it varies.</p>",
+  "howItWorksTitle": "How the lab draws its samples",
+  "howItWorks": "<p>Each population is fixed: every household, plot or student has its own value, made once from a seed, so the population mean never changes. Every sample comes from a seeded random number generator.</p><ul><li><b>Simple random.</b> Random integers from 1 to N, repeats skipped, until n different labels appear.</li><li><b>Stratified.</b> The sample is split among the strata in proportion to their sizes, then a simple random sample is taken inside each stratum.</li><li><b>Cluster.</b> Whole groups (streets, rows, classrooms) are chosen at random; everyone in them is in the sample.</li><li><b>Systematic.</b> k = N ÷ n, rounded down; a random start from 1 to k, then every k-th label.</li><li><b>Convenience.</b> The units nearest the spot where the surveyor stands.</li><li><b>Voluntary response.</b> Everyone is invited, and the chance of answering grows with how strongly a unit feels, so the strongest opinions answer most.</li></ul><p>Test yourself makes new problems from a seed (the problem code) and checks every step against a key the validator recomputes.</p>",
+  "partTopics": { "represent": "sampling-problems", "bias": "sampling-problems", "direction": "sampling-problems" },
+  "explore": {
+    "scenes": [
+      {
+        "id": "street", "topic": "random-sampling", "kind": "houses", "name": "Households on a hillside", "short": "Households",
+        "unit": "household", "units": "households", "where": "the town", "variable": "monthly water use", "unitOf": "thousand gallons", "abbr": "k gal",
+        "rows": 10, "cols": 10, "seed": 4127, "decimals": 1, "n": 10, "clip": [2, 14],
+        "strata": { "by": "row", "word": "side of town", "groups": [ { "name": "Hillside", "from": 0, "to": 4, "mean": 9.0, "sd": 1.5 }, { "name": "Riverside", "from": 5, "to": 9, "mean": 5.6, "sd": 1.2 } ] },
+        "clusters": { "by": "row", "name": "street", "one": "street", "many": "streets", "names": ["Summit Rd", "Aspen Ln", "Birch St", "Cedar Ave", "Elm Ct", "Maple St", "Willow Way", "Poplar St", "Reed Ln", "River Rd"] },
+        "convenience": { "row": 9, "tie": "col", "note": "The surveyor gets off the bus on River Road and knocks on the nearest doors." },
+        "voluntary": { "dir": 1, "strength": 1.3, "note": "A flyer asks households to text their water bill. The ones angry about big bills answer most." },
+        "stratWhy": "Hillside lawns use much more water than riverside yards, so each side of town is a stratum of similar households.",
+        "clusterWhy": "Each street sits on one side of town, so the households on a street are alike: a few streets can land all on one side.",
+        "convWhy": "River Road is on the riverside, where yards are small, so the nearest doors use less water than the town as a whole.",
+        "volWhy": "The households with the biggest bills are the most eager to answer, so the responses run high."
+      },
+      {
+        "id": "field", "topic": "random-sampling", "kind": "plots", "name": "Plots in a tomato field", "short": "Field plots",
+        "unit": "plot", "units": "plots", "where": "the field", "variable": "tomato yield", "unitOf": "kilograms per plot", "abbr": "kg",
+        "rows": 10, "cols": 10, "seed": 9031, "decimals": 0, "n": 10, "clip": [15, 70],
+        "strata": { "by": "col", "word": "zone", "groups": [ { "name": "Dry west", "from": 0, "to": 4, "mean": 32, "sd": 3.5 }, { "name": "Irrigated east", "from": 5, "to": 9, "mean": 44, "sd": 3.5 } ] },
+        "trend": { "by": "col", "per": 0.9 },
+        "clusters": { "by": "row", "name": "row", "one": "row", "many": "rows", "names": ["Row 1", "Row 2", "Row 3", "Row 4", "Row 5", "Row 6", "Row 7", "Row 8", "Row 9", "Row 10"] },
+        "convenience": { "col": 0, "tie": "row", "note": "The agronomist parks on the farm road along the west edge and measures the first plots she reaches." },
+        "noVoluntary": "Plots of land cannot volunteer, so there is no voluntary response sample here.",
+        "stratWhy": "The irrigated east grows far more than the dry west, so each zone is a stratum of similar plots.",
+        "clusterWhy": "Every row crosses both zones, so each row looks like a small copy of the field: here a cluster sample works well.",
+        "convWhy": "The farm road runs along the dry west edge, where plots are dusty and get no water from the canal, so they yield less."
+      },
+      {
+        "id": "school", "topic": "random-sampling", "kind": "rooms", "name": "Students in classrooms", "short": "Students",
+        "unit": "student", "units": "students", "where": "the school", "variable": "sleep on a school night", "unitOf": "hours", "abbr": "h",
+        "rows": 0, "cols": 0, "seed": 2213, "decimals": 1, "n": 12, "clip": [4, 10],
+        "strata": { "by": "cluster", "word": "grade", "groups": [ { "name": "Grade 9", "from": 0, "to": 1, "mean": 8.0, "sd": 0.6 }, { "name": "Grade 10", "from": 2, "to": 3, "mean": 7.5, "sd": 0.6 }, { "name": "Grade 11", "from": 4, "to": 5, "mean": 7.0, "sd": 0.6 }, { "name": "Grade 12", "from": 6, "to": 7, "mean": 6.4, "sd": 0.6 } ] },
+        "clusters": { "by": "room", "name": "classroom", "one": "classroom", "many": "classrooms", "names": ["Room 101", "Room 102", "Room 103", "Room 104", "Room 105", "Room 106", "Room 107", "Room 108"], "rooms": { "count": 8, "seatRows": 3, "seatCols": 4 } },
+        "convenience": { "room": 0, "note": "The reporter surveys the class next to the main office, Room 101." },
+        "voluntary": { "dir": -1, "strength": 1.3, "note": "An online poll asks, \"Are you getting enough sleep?\" The most tired students answer most." },
+        "stratWhy": "Older students sleep less, so each grade is a stratum of similar students.",
+        "clusterWhy": "Each classroom holds one grade, so a classroom is a group of similar students: one or two rooms can miss whole grades.",
+        "convWhy": "Room 101 is a ninth grade class, and ninth graders sleep the most, so the sample runs high.",
+        "volWhy": "The students who sleep least are the most eager to answer, so the responses run low."
+      }
+    ]
+  },
+  "contexts": [
+    {
+      "id": "school", "topic": "random-sampling", "types": ["method", "procedure", "bias", "numbers"],
+      "lead": "The student newspaper asks whether students want school to start later.",
+      "who": "editor", "verb": "surveys", "list": "the school roster", "unit": "student", "units": "students", "N": 1200, "n": 60,
+      "param": "the proportion of all students who want a later start",
+      "strata": { "by": "grade", "word": "grade", "why": "students in different grades may answer differently", "groups": [ { "name": "ninth graders", "size": 340 }, { "name": "tenth graders", "size": 310 }, { "name": "eleventh graders", "size": 290 }, { "name": "twelfth graders", "size": 260 } ] },
+      "clusters": { "count": 48, "size": 25, "one": "homeroom", "many": "homerooms" },
+      "conv": "The editor stands at the cafeteria door at lunch.",
+      "convWhy": "Students who eat in the cafeteria at that lunch period may feel differently from the rest of the school.",
+      "vol": "The editor posts a link to an online poll, and 60 students choose to answer it.",
+      "volWhy": "Students with strong feelings about the start time are the ones who bother to answer.",
+      "sysN": [40, 60, 80, 100, 120, 150],
+      "stratN": [40, 60, 80, 100, 120],
+      "clusterN": [50, 75, 100, 125, 150],
+      "biases": [
+        { "kind": "voluntary", "dir": "over", "text": "The poll link is shared only by the club campaigning for a later start, and 300 students choose to answer it.", "why": "Here the campaign reached its own supporters first.", "how": "The students eager to answer are mostly the ones who want the change, so the sample proportion is likely higher than the true proportion." },
+        { "kind": "undercoverage", "dir": "over", "text": "The editor picks 100 students at random from the list of students who ride the early bus.", "why": "Students who do not ride the early bus can never be chosen.", "how": "Early bus riders wake up earliest, so they are more likely than other students to want a later start." },
+        { "kind": "nonresponse", "dir": "under", "text": "A random sample of 100 students gets the survey by email at 6 a.m., and the survey closes at 7 a.m. Only 38 answer.", "why": "The 62 who did not answer were chosen but are missing.", "how": "The students awake and answering before 7 a.m. are early risers, who are less likely to want a later start." },
+        { "kind": "response", "dir": "over", "text": "Each of 100 randomly chosen students is asked, \"Should the school stop forcing students through exhausting 7:30 a.m. classes?\"", "why": "The wording pushes students toward one answer.", "how": "The loaded wording makes saying yes to a later start feel like the only reasonable answer." }
+      ]
+    },
+    {
+      "id": "town", "topic": "random-sampling", "types": ["method", "procedure", "bias", "numbers"],
+      "lead": "A town council wants to know how residents feel about a new bike lane.",
+      "who": "council", "verb": "surveys", "list": "the list of water customers", "unit": "household", "units": "households", "N": 2400, "n": 80,
+      "param": "the proportion of all households in the town that support the bike lane",
+      "strata": { "by": "neighborhood", "word": "neighborhood", "why": "households in different neighborhoods may answer differently", "groups": [ { "name": "Downtown households", "size": 900 }, { "name": "Northside households", "size": 800 }, { "name": "Lakeview households", "size": 700 } ] },
+      "clusters": { "count": 120, "size": 20, "one": "city block", "many": "city blocks" },
+      "conv": "A council member walks down her own street, next to the downtown bike shop.",
+      "convWhy": "Households next to a downtown bike shop may ride more, and like bike lanes more, than the rest of the town.",
+      "vol": "The council asks residents in the newspaper to call in their opinion, and 80 households call.",
+      "volWhy": "Households with strong opinions are the ones who call; most households never do.",
+      "sysN": [40, 60, 80, 100, 120, 150, 200],
+      "stratN": [60, 80, 100, 120],
+      "clusterN": [60, 80, 100, 120, 140],
+      "biases": [
+        { "kind": "convenience", "dir": "over", "text": "Volunteers with clipboards stand outside the downtown bike shop on Saturday and ask the people walking by.", "why": "The people walking past a bike shop were the easiest to reach.", "how": "People at a bike shop are more likely than the average resident to ride, so they support bike lanes more." },
+        { "kind": "voluntary", "dir": "over", "text": "The bike club's website invites visitors to vote on the bike lane, and 500 people vote.", "why": "The voters chose themselves, and the site's visitors are mostly riders.", "how": "Bike club readers favor bike lanes far more than the town as a whole." },
+        { "kind": "undercoverage", "dir": "under", "text": "The council chooses households at random from the phone book, which lists only landline numbers.", "why": "Households without a landline cannot be chosen.", "how": "Landline households tend to be older and to drive more, so they are less likely to support a bike lane." },
+        { "kind": "response", "dir": "over", "text": "Interviewers in bike club shirts ask a random sample of households, \"You do want safer streets for our children, don't you?\"", "why": "The shirts and the leading question push the answer.", "how": "Few people say no to \"safer streets for children\", so support looks higher than it is." }
+      ]
+    },
+    {
+      "id": "farm", "topic": "random-sampling", "types": ["method", "procedure", "bias", "numbers"],
+      "lead": "An agronomist estimates this season's tomato harvest on a large farm.",
+      "who": "agronomist", "verb": "measures the yield of", "list": "the farm map", "unit": "plot", "units": "plots", "N": 400, "n": 40,
+      "param": "the mean yield per plot on the farm",
+      "strata": { "by": "soil type", "word": "soil zone", "why": "sandy and clay soils grow tomatoes differently", "groups": [ { "name": "sandy plots", "size": 160 }, { "name": "clay plots", "size": 240 } ] },
+      "clusters": { "count": 20, "size": 20, "one": "row", "many": "rows" },
+      "conv": "The agronomist parks on the farm road and walks to the nearest plots.",
+      "convWhy": "Plots along the road get dust and foot traffic, so their yields may be lower than plots deeper in the field.",
+      "sysN": [20, 40, 50, 80, 100],
+      "stratN": [20, 40, 50, 80],
+      "clusterN": [40, 60, 80, 100],
+      "biases": [
+        { "kind": "undercoverage", "dir": "over", "text": "The agronomist chooses plots at random, but only from the plots beside the irrigation canal.", "why": "Plots away from the canal can never be chosen.", "how": "Plots beside the canal get the most water, so they grow more than the average plot." },
+        { "kind": "convenience", "dir": "under", "text": "The agronomist measures the 40 plots closest to the dusty farm road.", "why": "Those were simply the easiest plots to reach.", "how": "Roadside plots lose yield to dust and trampling, so they grow less than the average plot." },
+        { "kind": "response", "dir": "over", "text": "Plots are chosen at random, but the farmer reports each plot's yield from memory and likes to round up.", "why": "The values recorded are pushed in one direction.", "how": "Rounding up every report makes the recorded yields higher than the true yields." }
+      ]
+    },
+    {
+      "id": "factory", "topic": "random-sampling", "types": ["method", "procedure", "bias", "numbers"],
+      "lead": "A battery factory checks today's production for defects.",
+      "who": "inspector", "verb": "tests", "list": "the production log", "unit": "battery", "units": "batteries", "N": 1000, "n": 50,
+      "param": "the proportion of all batteries made today that are defective",
+      "strata": { "by": "machine", "word": "machine", "why": "the two machines may make defects at different rates", "groups": [ { "name": "Machine A batteries", "size": 600 }, { "name": "Machine B batteries", "size": 400 } ] },
+      "clusters": { "count": 50, "size": 20, "one": "box", "many": "boxes" },
+      "conv": "The inspector reaches into the bin beside her desk.",
+      "convWhy": "The batteries in the nearest bin all came from one short stretch of the day, so they may not match the rest.",
+      "sysN": [20, 25, 40, 50, 100, 125, 200],
+      "stratN": [40, 50, 80, 100],
+      "clusterN": [40, 60, 80, 100],
+      "biases": [
+        { "kind": "undercoverage", "dir": "under", "text": "The inspector picks batteries at random from Machine A's log only, because Machine B's log is kept on paper.", "why": "Batteries from Machine B can never be chosen.", "how": "Machine B jams more and makes more defects, so leaving it out makes the defect rate look lower." },
+        { "kind": "convenience", "dir": "under", "text": "The inspector tests the first 50 batteries off the line right after the morning cleaning.", "why": "Those were the first and easiest batteries to grab.", "how": "Freshly cleaned machines run best, so the first batteries are less likely to be defective." }
+      ]
+    },
+    {
+      "id": "hospital", "topic": "random-sampling", "types": ["method", "procedure", "bias", "numbers"],
+      "lead": "A hospital studies how satisfied patients were with their care.",
+      "who": "researcher", "verb": "interviews", "list": "the list of patients discharged last month", "unit": "patient", "units": "patients", "N": 1500, "n": 75,
+      "param": "the proportion of all patients discharged last month who were satisfied with their care",
+      "strata": { "by": "ward", "word": "ward", "why": "patients in different wards had very different stays", "groups": [ { "name": "surgery patients", "size": 600 }, { "name": "maternity patients", "size": 450 }, { "name": "medicine patients", "size": 450 } ] },
+      "clusters": { "count": 30, "size": 50, "one": "discharge day", "many": "discharge days", "phrase": "The 1500 patients left on 30 discharge days, 50 a day." },
+      "conv": "The researcher waits in the lobby on Monday morning.",
+      "convWhy": "Patients well enough to walk out through the lobby on a Monday may have had different care from the rest.",
+      "vol": "The hospital emails every patient a link to a feedback form, and 75 patients choose to fill it in.",
+      "volWhy": "Patients with a very good or a very bad stay are the most likely to bother answering.",
+      "sysN": [50, 60, 75, 100, 150, 250, 300],
+      "stratN": [60, 75, 90, 120],
+      "clusterN": [50, 100, 150, 200],
+      "biases": [
+        { "kind": "nonresponse", "dir": "over", "text": "A random sample of 150 patients is phoned. A third cannot be reached, most of them still recovering in a care home.", "why": "The patients who were chosen but not reached are missing from the results.", "how": "The patients still recovering likely had harder stays and lower satisfaction, so leaving them out pushes the estimate up." },
+        { "kind": "response", "dir": "over", "text": "The nurse who treated each patient asks them, in person, whether their care was good.", "why": "Patients answer to the person who cared for them.", "how": "Few patients will tell their own nurse the care was poor, so satisfaction looks higher than it is." },
+        { "kind": "voluntary", "dir": "under", "text": "The hospital reads the forms left in the box by the exit marked \"Comments and complaints\".", "why": "The patients who wrote forms chose themselves.", "how": "A complaints box draws unhappy patients, so the forms show less satisfaction than patients really had." }
+      ]
+    }
+  ]
+}

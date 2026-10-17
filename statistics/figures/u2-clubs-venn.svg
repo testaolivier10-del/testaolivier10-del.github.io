@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 330" width="620" height="330" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Students taking Spanish, art or both</title>
+<desc id="d">Venn diagram of 120 students: 50 take Spanish, 40 take art, and 15 take both, so 35 take only Spanish, 25 only art and 45 neither. The union, Spanish or art, is shaded: 35 + 15 + 25 = 75 students, which equals 50 + 40 − 15.</desc>
+<rect width="620" height="330" fill="#FFFFFF"/>
+<rect x="30" y="30" width="560" height="250" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.4"/>
+<text x="44" y="52" font-size="14" text-anchor="start" font-weight="normal" fill="#5A6563">All 120 students</text>
+<circle cx="250" cy="160" r="98" fill="#6E2470" fill-opacity="0.22"/>
+<circle cx="370" cy="160" r="90" fill="#0072B2" fill-opacity="0.22"/>
+<circle cx="250" cy="160" r="98" fill="none" stroke="#6E2470" stroke-width="2.4"/>
+<circle cx="370" cy="160" r="90" fill="none" stroke="#0072B2" stroke-width="2.4"/>
+<text x="200" y="92" font-size="14" text-anchor="middle" font-weight="bold" fill="#6E2470" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Spanish (50)</text>
+<text x="420" y="92" font-size="14" text-anchor="middle" font-weight="bold" fill="#0072B2" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Art (40)</text>
+<text x="205" y="166" font-size="20" text-anchor="middle" font-weight="bold" fill="#1F2A28">35</text>
+<text x="312" y="166" font-size="20" text-anchor="middle" font-weight="bold" fill="#1F2A28">15</text>
+<text x="415" y="166" font-size="20" text-anchor="middle" font-weight="bold" fill="#1F2A28">25</text>
+<text x="520" y="250" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">Neither: 45</text>
+<text x="310" y="306" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">Spanish or art: 35 + 15 + 25 = 75 = 50 + 40 − 15</text>
+</svg>

@@ -1,0 +1,71 @@
+{
+ "topic": "mutually-exclusive",
+ "hook": "A raffle at a school fair gives one prize to a freshman, one to a sophomore and so on. Can one student win the freshman prize and the senior prize? Of course not. Some events cannot happen together, and spotting them makes \"or\" questions easy, while missing an overlap makes answers too big.",
+ "prereq": [
+  {
+   "q": "One of 40 students is chosen at random; 8 are juniors. What is P(junior)?",
+   "options": [
+    "0.2",
+    "0.8",
+    "8",
+    "0.25"
+   ],
+   "correct": 0,
+   "why": "$\\frac{8}{40} = 0.2$: equally likely students.",
+   "review": "probability-intro"
+  },
+  {
+   "q": "In a two-way table of 200 students, 15 are seniors who play a sport. What is the joint relative frequency?",
+   "options": [
+    "0.075",
+    "0.15",
+    "0.3",
+    "15"
+   ],
+   "correct": 0,
+   "why": "One cell over the grand total: $\\frac{15}{200} = 0.075$.",
+   "review": "two-categorical-summaries"
+  }
+ ],
+ "figure": {
+  "figure": "u2-event-diagrams",
+  "caption": "Left: events with no outcome in common, so the probability of both is 0. Right: events that overlap; the overlap is the joint event."
+ },
+ "chain": [
+  {
+   "cause": "Two events share some outcomes",
+   "effect": "the joint event $A \\cap B$ (\"A and B\") is those shared outcomes, and its probability is above 0"
+  },
+  {
+   "cause": "Two events share no outcomes",
+   "effect": "they are mutually exclusive: $P(A \\cap B) = 0$"
+  },
+  {
+   "cause": "Events are mutually exclusive",
+   "effect": "the probability of one or the other is the sum: $P(A) + P(B)$"
+  },
+  {
+   "cause": "Events overlap and you add anyway",
+   "effect": "the shared outcomes are counted twice and the answer is too big"
+  }
+ ],
+ "ideas": [
+  "The <b>joint probability</b> $P(A \\cap B)$ is the probability that A and B both happen.",
+  "Events are <b>mutually exclusive</b> (disjoint) when they cannot happen together: $P(A \\cap B) = 0$.",
+  "For mutually exclusive events, P(A or B) = P(A) + P(B). If they overlap, plain adding double counts.",
+  "Two events whose probabilities add to more than 1 cannot be mutually exclusive."
+ ],
+ "misconception": {
+  "wrong": "Any two events about different things, such as class and sport, are mutually exclusive.",
+  "right": "Mutually exclusive means no outcome is in both. A junior can play a sport, so \"junior\" and \"plays a sport\" overlap: the joint probability is 0.09."
+ },
+ "check": [
+  "stat-mutually-exclusive-1",
+  "stat-mutually-exclusive-2",
+  "stat-mutually-exclusive-3",
+  "stat-mutually-exclusive-6",
+  "stat-mutually-exclusive-7",
+  "stat-mutually-exclusive-13"
+ ],
+ "summary": "The joint probability $P(A \\cap B)$ is the chance both events happen; in a table it is one cell over the grand total. Events are mutually exclusive when that joint probability is 0. Only then can you find P(A or B) by adding P(A) and P(B)."
+}

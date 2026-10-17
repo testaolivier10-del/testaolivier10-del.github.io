@@ -1,0 +1,507 @@
+{
+ "stimuli": {
+  "two-categorical-displays-s1": {
+   "kind": "table",
+   "title": "How sophomores and seniors get to school",
+   "text": "A random sample of 300 students at a large high school were asked their class year and the main way they get to school. The counts are below (invented data).",
+   "table": {
+    "caption": "Class year and main way to school for 300 students",
+    "cols": [
+     "Class year",
+     "Bus",
+     "Car",
+     "Walk or bike",
+     "Total"
+    ],
+    "rows": [
+     [
+      "Sophomores",
+      "72",
+      "48",
+      "40",
+      "160"
+     ],
+     [
+      "Seniors",
+      "28",
+      "84",
+      "28",
+      "140"
+     ],
+     [
+      "Total",
+      "100",
+      "132",
+      "68",
+      "300"
+     ]
+    ]
+   }
+  },
+  "two-categorical-displays-s2": {
+   "kind": "graph",
+   "title": "Library cards by age group",
+   "figure": "u2-library-segbar",
+   "text": "A random sample of 500 adults in a town were asked whether they have a library card. The segmented bar chart shows the results for each age group: 180 adults aged 18 to 34, 200 aged 35 to 54 and 120 aged 55 and over (invented data)."
+  }
+ },
+ "items": [
+  {
+   "id": "stat-two-categorical-displays-1",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What proportion of the sophomores walk or bike to school? Give a decimal.",
+   "why": {
+    "correct": "Use only the sophomore row: 40 of the 160 sophomores walk or bike, and $\\frac{40}{160} = 0.25$."
+   },
+   "stimulus": "two-categorical-displays-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.25,
+    "mistakes": [
+     {
+      "value": 0.5882352941176471,
+      "why": "That is 40 out of the 68 walkers and bikers, the share of walkers who are sophomores. The question starts from the sophomores, so divide by the sophomore total, 160."
+     },
+     {
+      "value": 0.13333333333333333,
+      "why": "That divides by all 300 students. The question is about sophomores only, so divide by the 160 sophomores."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-two-categorical-displays-2",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which comparison is the right way to judge whether class year and way to school are related?",
+   "why": {
+    "correct": "The groups have different sizes (160 and 140), so compare each group's percents, category by category.",
+    "options": [
+     "Counts mislead when the groups differ in size; turn each count into a percent of its own row first.",
+     "Those totals mix both class years together, so they cannot show a difference between the years.",
+     "That compares the sizes of the two groups, which says nothing about how each group travels.",
+     "Right: 45% of sophomores and 20% of seniors ride the bus, a fair comparison of groups of different sizes."
+    ]
+   },
+   "stimulus": "two-categorical-displays-s1",
+   "options": [
+    "The 72 sophomores who ride the bus with the 28 seniors who ride the bus, as counts",
+    "The 100 bus riders in total with the 132 car riders in total",
+    "The number of sophomores, 160, with the number of seniors, 140",
+    "The percent of sophomores who ride the bus with the percent of seniors who do"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-two-categorical-displays-3",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Do these data show an association between class year and main way to school?",
+   "why": {
+    "correct": "Sophomores: 45% bus, 30% car, 25% walk or bike. Seniors: 20% bus, 60% car, 20% walk or bike. The distributions differ, so the variables are associated in this sample.",
+    "options": [
+     "Right: the percents differ clearly between the class years, which is what association means.",
+     "Group sizes do not decide association; the percents within each group do.",
+     "That is about all 300 students together. Association is about whether the groups differ.",
+     "Close counts are not the test, and here the percents in other categories differ a lot (45% and 20% for the bus)."
+    ]
+   },
+   "stimulus": "two-categorical-displays-s1",
+   "options": [
+    "Yes: 60% of seniors ride in a car, compared with 30% of sophomores",
+    "No: more sophomores (160) than seniors (140) were in the sample",
+    "Yes: 132 students ride in a car, more than use any other way",
+    "No: the counts of walkers and bikers, 40 and 28, are close to each other"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-two-categorical-displays-4",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Of the students who ride the bus, what proportion are sophomores? Give a decimal.",
+   "why": {
+    "correct": "Start from the bus column: 72 of the 100 bus riders are sophomores, so $\\frac{72}{100} = 0.72$."
+   },
+   "stimulus": "two-categorical-displays-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.72,
+    "mistakes": [
+     {
+      "value": 0.45,
+      "why": "That is 72 out of the 160 sophomores, the share of sophomores who ride the bus. This question starts from the bus riders, so divide by the bus total, 100."
+     },
+     {
+      "value": 0.24,
+      "why": "That divides by all 300 students; the question asks only about the 100 bus riders."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-two-categorical-displays-5",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A segmented bar chart that compares the two class years would have",
+   "why": {
+    "correct": "One bar per class year, each split into the three ways of travel by percent of that year, so every bar reaches 100%.",
+    "options": [
+     "That is a bar chart of the column totals; it ignores class year.",
+     "A single bar cannot compare the two class years.",
+     "Right: each bar is one group's distribution in percents.",
+     "A segmented bar chart uses percents, so each bar has the same height, 100%."
+    ]
+   },
+   "stimulus": "two-categorical-displays-s1",
+   "options": [
+    "three bars, one for each way of travel, with heights of 100, 132 and 68 students",
+    "one bar for the 300 students, split into six pieces",
+    "two bars, one per class year, each split by way of travel and each reaching 100%",
+    "two bars whose heights are 160 and 140 students"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-two-categorical-displays-6",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement is supported by the chart?",
+   "why": {
+    "correct": "The \"Has a card\" segment grows from 50% to 60% to 70% across the age groups.",
+    "options": [
+     "In counts, 70% of 120 is 84, less than 60% of 200, which is 120. A taller segment is a larger percent, not a larger count.",
+     "Overall, 294 of 500 have a card, 58.8%. Half is the figure for the youngest group only.",
+     "Association means the percents differ between groups, and here they do.",
+     "Right: 50%, then 60%, then 70%."
+    ]
+   },
+   "stimulus": "two-categorical-displays-s2",
+   "options": [
+    "More adults aged 55 and over have a card than adults aged 35 to 54",
+    "Half of the 500 adults in the sample have a library card",
+    "Age and having a card are not associated, since each group has some card holders",
+    "The percent of adults with a card is higher in each older age group"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-two-categorical-displays-7",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many of the 500 adults in the sample have a library card?",
+   "why": {
+    "correct": "Turn each percent back into a count: $0.50(180) + 0.60(200) + 0.70(120) = 90 + 120 + 84 = 294$."
+   },
+   "stimulus": "two-categorical-displays-s2",
+   "numeric": {
+    "kind": "count",
+    "answer": 294,
+    "mistakes": [
+     {
+      "value": 300,
+      "why": "That is 60% of 500, which averages the three percents. The groups have different sizes, so find each group's count first: 90 + 120 + 84."
+     },
+     {
+      "value": 180,
+      "why": "That adds the three percents, 50 + 60 + 70. Multiply each percent by its group size instead."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-two-categorical-displays-8",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What proportion of all 500 adults have a library card? Give a decimal.",
+   "why": {
+    "correct": "294 of the 500 adults have a card: $\\frac{294}{500} = 0.588$."
+   },
+   "stimulus": "two-categorical-displays-s2",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.588,
+    "mistakes": [
+     {
+      "value": 0.6,
+      "why": "That averages 50%, 60% and 70%. The 200 middle-aged adults count more than the 120 older adults, so use the counts: 294 out of 500."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-two-categorical-displays-9",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A reporter writes: \"Older adults in this town are more likely than younger adults to have a library card.\" Do the data support the claim?",
+   "why": {
+    "correct": "The sample was random, so it can speak for the town, and each older group has a higher percent with a card (50%, 60%, 70%).",
+    "options": [
+     "Counts depend on group size. Compare percents: 60% is less than the 70% of the oldest group.",
+     "Every segmented bar reaches 100% by design; the split inside each bar is what to compare.",
+     "Right: percents within each group, from a random sample of the town's adults.",
+     "A survey shows an association, not cause and effect, and the claim does not need cause."
+    ]
+   },
+   "stimulus": "two-categorical-displays-s2",
+   "options": [
+    "No: the 35 to 54 group has the most card holders, 120 adults",
+    "No: the bars in the chart are the same height, 100%",
+    "Yes: the sample was random and the percent with a card rises with age",
+    "Yes: a segmented bar chart shows that age causes card ownership"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-two-categorical-displays-10",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What does a two-way table show?",
+   "why": {
+    "correct": "A two-way table counts the individuals in each pairing of a category of one categorical variable with a category of another, with row and column totals.",
+    "options": [
+     "A two-way table is for categorical variables; two quantitative variables need a different display, met later in the course.",
+     "A two-way table holds counts of categories, not means.",
+     "It crosses two different variables, so each cell is a pairing of one category from each.",
+     "Right: one variable in the rows, one in the columns, a count in each cell."
+    ]
+   },
+   "options": [
+    "The values of two quantitative variables for each individual",
+    "The mean of one quantitative variable for each category of a categorical variable",
+    "Two frequency tables of the same variable, side by side",
+    "The count of individuals in each pairing of categories of two categorical variables"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-two-categorical-displays-11",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A survey has 400 adults who rent and 100 who own their home. To compare how the two groups commute, why use percents instead of counts?",
+   "why": {
+    "correct": "With 4 times as many renters, renter counts will be larger in almost every category. Percents put the two groups on the same scale.",
+    "options": [
+     "Right: percents of each group compare like with like.",
+     "A percent is computed from the counts, so it is no more accurate; it is just on a common scale.",
+     "Bar charts can show counts; the problem here is the unequal group sizes.",
+     "Percents reveal association more clearly; they do not remove it."
+    ]
+   },
+   "options": [
+    "The groups differ in size, so counts favor the larger group",
+    "Percents are more accurate than counts",
+    "Counts are not allowed on the axis of a bar chart",
+    "Percents remove any association between where people live and how they commute"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-two-categorical-displays-12",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A mosaic plot of pet type (dog, cat, none) by home type (house, apartment) has two bars of different widths, but the segments in both bars split at the same heights. What does this show for these data?",
+   "why": {
+    "correct": "In a mosaic plot the widths show how many are in each home type, and the splits inside a bar show percents within it. Identical splits mean the same pet distribution for both home types: no association.",
+    "options": [
+     "The widths only show that more people live in one type of home than the other.",
+     "Right: equal percents within each bar mean the pet distribution does not depend on home type.",
+     "Comparing pet types overall says nothing about whether home type matters.",
+     "A mosaic plot shows percents within each group (heights) and group sizes (widths)."
+    ]
+   },
+   "options": [
+    "A strong association, because the bars have different widths",
+    "No association: houses and apartments have the same distribution of pet types",
+    "An association, because dog owners outnumber cat owners",
+    "Nothing useful, because a mosaic plot shows counts rather than percents within groups"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-two-categorical-displays-13",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a company survey, 30% of the 200 morning-shift workers and 30% of the 120 evening-shift workers bike to work. What do these data show?",
+   "why": {
+    "correct": "The same percent of each group bikes, so in these data shift and biking to work are not associated.",
+    "options": [
+     "The counts differ only because the groups differ in size; the percents are equal.",
+     "The same 70% in each group is again no difference between the groups.",
+     "Right: equal percents in the groups mean no association.",
+     "Each group has the same 30%, so neither is more likely."
+    ]
+   },
+   "options": [
+    "An association, because 60 morning workers bike but 36 evening workers do",
+    "An association, because 70% of each shift does not bike",
+    "No association between shift and biking to work in this survey",
+    "Morning workers are more likely to bike than evening workers"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-two-categorical-displays-14",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "conclude",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a random sample of 250 adults, 48 of the 120 who exercise weekly said they usually sleep 8 hours, compared with 26 of the 130 who do not exercise weekly. Build a description of the association in context.",
+   "why": {
+    "correct": "$\\frac{48}{120} = 0.40$ and $\\frac{26}{130} = 0.20$. A higher percent of weekly exercisers sleep 8 hours, so the variables are associated in this sample. The description names the groups, the direction and the percents."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "claim": {
+      "label": "Association",
+      "options": [
+       "A higher percent of weekly exercisers usually sleep 8 hours than of adults who do not exercise weekly",
+       "A lower percent of weekly exercisers usually sleep 8 hours than of adults who do not exercise weekly",
+       "Exercising weekly and sleeping 8 hours are not associated"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Compare the percents: 40% is greater than 20%.",
+       "2": "The percents differ (40% and 20%), so there is an association."
+      }
+     },
+     "evidence": {
+      "label": "Numbers",
+      "options": [
+       "40% (48 of 120) compared with 20% (26 of 130)",
+       "48 people compared with 26 people",
+       "74 of the 250 adults sleep 8 hours"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Raw counts mislead when the groups differ in size; give each group's percent.",
+       "2": "That is the overall share; it does not compare the groups."
+      }
+     }
+    },
+    "model": "In this sample, exercising weekly and sleeping 8 hours are associated: 40% of the adults who exercise weekly (48 of 120) usually sleep 8 hours, compared with 20% of the adults who do not (26 of 130).",
+    "write": {
+     "context": [
+      "sleep",
+      "exercise"
+     ],
+     "parameter": false,
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-two-categorical-displays-15",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A survey finds that a higher percent of students who use a planner turn in homework on time. A principal says buying planners for every student will cause more homework to be on time. What is the best response?",
+   "why": {
+    "correct": "A survey is an observational study: it shows an association but not cause and effect. A confounding variable, such as how organized a student already is, could explain both planner use and on-time homework.",
+    "options": [
+     "Right: no treatment was assigned, so a confounding variable could explain the link.",
+     "An association in a survey does not show that planners cause the difference.",
+     "A bigger sample does not turn an observational study into evidence of cause.",
+     "The survey did find an association; the issue is what it can conclude."
+    ]
+   },
+   "options": [
+    "A survey shows association, not cause; organized students may both use planners and finish on time",
+    "The claim is correct, since the planner users had the higher percent of homework turned in on time",
+    "The claim is correct if the survey had more than 100 students",
+    "There is no association, because a survey is unable to measure homework"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-two-categorical-displays-16",
+   "unit": "unit-2",
+   "topic": "two-categorical-displays",
+   "type": "multi",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which displays compare the distribution of one categorical variable across the groups of another? Select all that apply.",
+   "why": {
+    "correct": "Segmented bar charts and mosaic plots show each group's percents for the other variable. Histograms, boxplots and dotplots display quantitative data.",
+    "options": [
+     "Right: one bar per group, split by the other variable.",
+     "Right: a segmented bar chart whose bar widths show the group sizes.",
+     "A histogram shows one quantitative variable.",
+     "A boxplot summarizes a quantitative variable with five numbers.",
+     "A dotplot shows the values of a quantitative variable."
+    ]
+   },
+   "options": [
+    "A segmented bar chart",
+    "A mosaic plot",
+    "A histogram",
+    "A boxplot",
+    "A dotplot"
+   ],
+   "correct": [
+    0,
+    1
+   ]
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+<p>Many probability questions involve two events at once. Will a randomly chosen student be a senior <i>and</i> play a sport? Will a roll be even <i>or</i> a 5? Before computing anything, ask one question about the two events: can they happen together?</p>
+
+<h2>The joint event: A and B</h2>
+<p>The event "A and B" happens when both A and B happen. It is also called the <b>intersection</b> of A and B, written $A \cap B$, and its probability $P(A \cap B)$ is a <b>joint probability</b>. In a two-way table it is one cell over the grand total, exactly the joint relative frequency from topic 2.2.</p>
+<table class="compare">
+<thead><tr><th>Class</th><th>Plays a sport</th><th>No sport</th><th>Total</th></tr></thead>
+<tbody>
+<tr><td>Freshman</td><td>20</td><td>30</td><td>50</td></tr>
+<tr><td>Sophomore</td><td>22</td><td>28</td><td>50</td></tr>
+<tr><td>Junior</td><td>18</td><td>32</td><td>50</td></tr>
+<tr><td>Senior</td><td>15</td><td>35</td><td>50</td></tr>
+<tr><td>Total</td><td>75</td><td>125</td><td>200</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example 1.</b> One of these 200 students is chosen at random. Find the probability that the student is a senior and plays a sport.</p>
+<p>The joint event is the single cell "senior, plays a sport": 15 students.</p>
+<p>All 200 students are equally likely, so $P(\text{senior} \cap \text{plays a sport}) = \frac{15}{200} = 0.075$.</p>
+</div>
+<p>Notice the denominator: 200, the whole school. Dividing by the 50 seniors would answer a different question, "of the seniors, what share play a sport?", which comes in the next topic.</p>
+
+<h2>Mutually exclusive events</h2>
+<figure id="fig-events" data-fig="u2-event-diagrams"><figcaption>Separate circles: no outcome in both. Overlapping circles: the overlap is "A and B".</figcaption></figure>
+<p>Two events are <b>mutually exclusive</b> (or <b>disjoint</b>) when they have no outcomes in common. They cannot happen on the same trial, so</p>
+<p>$$P(A \cap B) = 0.$$</p>
+<p>"Freshman" and "senior" are mutually exclusive: no student is in two classes. "Junior" and "plays a sport" are not: 18 students are juniors on a team, so the joint probability is $\frac{18}{200} = 0.09$. Events about different variables usually overlap. <a class="figref" href="#fig-events">The figure</a> shows the two cases.</p>
+<p>To decide, look for one outcome that is in both events. If you find one, the events are not mutually exclusive. In a table, check whether the cell for both is 0.</p>
+
+<h2>"Or" for mutually exclusive events</h2>
+<p>"A or B" happens when at least one of them happens. If the events are mutually exclusive, nothing is shared, so you can simply add:</p>
+<p>$$P(A \text{ or } B) = P(A) + P(B) \quad \text{(mutually exclusive events only).}$$</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A fair die is rolled. Event V is "even" (2, 4, 6), event F is "a 5" and event G is "greater than 3" (4, 5, 6). Find P(V or F) and P(V or G).</p>
+<p>V and F share no outcomes, so add: $P(V \text{ or } F) = \frac{3}{6} + \frac{1}{6} = \frac{4}{6}$. Check by listing: 2, 4, 5, 6.</p>
+<p>V and G share 4 and 6, so they are not mutually exclusive. Adding would give $\frac{3}{6} + \frac{3}{6} = 1$, which says a 1 or 3 can never be rolled: nonsense. List instead: 2, 4, 5, 6, so $P(V \text{ or } G) = \frac{4}{6}$.</p>
+</div>
+<p>The second case is the key warning. Adding probabilities of overlapping events counts the shared outcomes twice. Topic 2.7 gives the general rule that fixes this; for now, add only when the events are mutually exclusive, and otherwise list or count the outcomes.</p>
+
+<h2>Quick checks</h2>
+<ul>
+<li>If $P(A) + P(B)$ is more than 1, the events cannot be mutually exclusive. With probabilities 0.6 and 0.5, they must overlap.</li>
+<li>An event and its complement are always mutually exclusive, and their probabilities add to 1. Other mutually exclusive events, like "freshman" and "senior", may add to less than 1, because other outcomes exist.</li>
+<li>"Mostly separate" is not mutually exclusive. If 12% of students both walk and bike to school on different days, the joint probability is 0.12, not 0.</li>
+</ul>
+<table class="compare">
+<thead><tr><th>Question</th><th>Mutually exclusive events</th><th>Overlapping events</th></tr></thead>
+<tbody>
+<tr><td>$P(A \cap B)$</td><td>0</td><td>more than 0</td></tr>
+<tr><td>P(A or B)</td><td>$P(A) + P(B)$</td><td>less than $P(A) + P(B)$: list or count</td></tr>
+<tr><td>Example</td><td>freshman, senior</td><td>junior, plays a sport</td></tr>
+</tbody>
+</table>

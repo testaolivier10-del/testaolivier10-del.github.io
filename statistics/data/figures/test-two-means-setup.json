@@ -1,0 +1,12 @@
+{
+ "paired-vs-two-sample": {
+  "file": "figures/paired-vs-two-sample.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left panel, paired design: five numbered runners each run in shoe A and in shoe B, and each gives one difference, A minus B; the differences form one sample, analyzed with a paired t test on the mean difference with df equal to the number of pairs minus 1. Right panel, two groups: runners are split at random into group 1 wearing shoe A and group 2 wearing shoe B, different runners in each; each group gives its own mean, standard deviation and size, analyzed with a two-sample t test on mu 1 minus mu 2, with technology df or the smaller n minus 1."
+ }
+}

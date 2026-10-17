@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Sample means from a skewed population</title>
+<desc id="d">Three panels. Top: the population of wait times, a strongly right-skewed curve with mean 5 minutes and standard deviation 5 minutes. Middle: histogram of 2000 simulated sample means for samples of 2, still skewed right. Bottom: histogram of 2000 sample means for samples of 30, close to a symmetric bell shape centered at 5 with a much smaller spread, about 0.91 minutes.</desc>
+<rect width="640" height="640" fill="#FFFFFF"/>
+<path d="M70 160L70 50.91L72.65 53.07L75.3 55.19L77.95 57.26L80.6 59.3L83.25 61.29L85.9 63.25L88.55 65.16L91.2 67.04L93.85 68.88L96.5 70.68L99.15 72.45L101.8 74.19L104.45 75.89L107.1 77.55L109.75 79.18L112.4 80.78L115.05 82.35L117.7 83.89L120.35 85.4L123 86.87L125.65 88.32L128.3 89.74L130.95 91.13L133.6 92.5L136.25 93.83L138.9 95.14L141.55 96.43L144.2 97.69L146.85 98.92L149.5 100.13L152.15 101.32L154.8 102.48L157.45 103.62L160.1 104.73L162.75 105.83L165.4 106.9L168.05 107.95L170.7 108.98L173.35 109.99L176 110.98L178.65 111.95L181.3 112.9L183.95 113.84L186.6 114.75L189.25 115.65L191.9 116.53L194.55 117.39L197.2 118.23L199.85 119.06L202.5 119.87L205.15 120.66L207.8 121.44L210.45 122.2L213.1 122.95L215.75 123.69L218.4 124.41L221.05 125.11L223.7 125.8L226.35 126.48L229 127.14L231.65 127.79L234.3 128.43L236.95 129.06L239.6 129.67L242.25 130.27L244.9 130.86L247.55 131.44L250.2 132L252.85 132.56L255.5 133.1L258.15 133.63L260.8 134.15L263.45 134.67L266.1 135.17L268.75 135.66L271.4 136.14L274.05 136.61L276.7 137.08L279.35 137.53L282 137.97L284.65 138.41L287.3 138.84L289.95 139.26L292.6 139.67L295.25 140.07L297.9 140.47L300.55 140.85L303.2 141.23L305.85 141.6L308.5 141.97L311.15 142.32L313.8 142.67L316.45 143.02L319.1 143.35L321.75 143.68L324.4 144.01L327.05 144.32L329.7 144.63L332.35 144.94L335 145.24L337.65 145.53L340.3 145.82L342.95 146.1L345.6 146.37L348.25 146.64L350.9 146.91L353.55 147.16L356.2 147.42L358.85 147.67L361.5 147.91L364.15 148.15L366.8 148.39L369.45 148.62L372.1 148.84L374.75 149.06L377.4 149.28L380.05 149.49L382.7 149.7L385.35 149.9L388 150.1L390.65 150.3L393.3 150.49L395.95 150.68L398.6 150.86L401.25 151.05L403.9 151.22L406.55 151.4L409.2 151.57L411.85 151.73L414.5 151.9L417.15 152.06L419.8 152.22L422.45 152.37L425.1 152.52L427.75 152.67L430.4 152.81L433.05 152.96L435.7 153.1L438.35 153.23L441 153.37L443.65 153.5L446.3 153.63L448.95 153.75L451.6 153.88L454.25 154L456.9 154.12L459.55 154.23L462.2 154.35L464.85 154.46L467.5 154.57L470.15 154.68L472.8 154.78L475.45 154.88L478.1 154.99L480.75 155.09L483.4 155.18L486.05 155.28L488.7 155.37L491.35 155.46L494 155.55L496.65 155.64L499.3 155.73L501.95 155.81L504.6 155.9L507.25 155.98L509.9 156.06L512.55 156.13L515.2 156.21L517.85 156.29L520.5 156.36L523.15 156.43L525.8 156.5L528.45 156.57L531.1 156.64L533.75 156.71L536.4 156.77L539.05 156.83L541.7 156.9L544.35 156.96L547 157.02L549.65 157.08L552.3 157.14L554.95 157.19L557.6 157.25L560.25 157.3L562.9 157.36L565.55 157.41L568.2 157.46L570.85 157.51L573.5 157.56L576.15 157.61L578.8 157.66L581.45 157.7L584.1 157.75L586.75 157.79L589.4 157.84L592.05 157.88L594.7 157.92L597.35 157.96L600 158L600 160Z" fill="#E9D3E8"/>
+<line x1="70" y1="160" x2="600" y2="160" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="70" y1="160" x2="70" y2="165" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="70" y="180" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">0</text>
+<line x1="202.5" y1="160" x2="202.5" y2="165" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="202.5" y="180" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">5</text>
+<line x1="335" y1="160" x2="335" y2="165" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="335" y="180" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">10</text>
+<line x1="467.5" y1="160" x2="467.5" y2="165" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="467.5" y="180" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">15</text>
+<line x1="600" y1="160" x2="600" y2="165" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="600" y="180" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">20</text>
+<path d="M70 50.91L71.77 52.35L73.53 53.78L75.3 55.19L77.07 56.57L78.83 57.94L80.6 59.3L82.37 60.63L84.13 61.95L85.9 63.25L87.67 64.53L89.43 65.79L91.2 67.04L92.97 68.27L94.73 69.49L96.5 70.68L98.27 71.87L100.03 73.03L101.8 74.19L103.57 75.32L105.33 76.44L107.1 77.55L108.87 78.64L110.63 79.72L112.4 80.78L114.17 81.83L115.93 82.87L117.7 83.89L119.47 84.9L121.23 85.89L123 86.87L124.77 87.84L126.53 88.8L128.3 89.74L130.07 90.67L131.83 91.59L133.6 92.5L135.37 93.39L137.13 94.27L138.9 95.14L140.67 96L142.43 96.85L144.2 97.69L145.97 98.51L147.73 99.33L149.5 100.13L151.27 100.92L153.03 101.71L154.8 102.48L156.57 103.24L158.33 103.99L160.1 104.73L161.87 105.46L163.63 106.19L165.4 106.9L167.17 107.6L168.93 108.3L170.7 108.98L172.47 109.66L174.23 110.32L176 110.98L177.77 111.63L179.53 112.27L181.3 112.9L183.07 113.53L184.83 114.14L186.6 114.75L188.37 115.35L190.13 115.94L191.9 116.53L193.67 117.1L195.43 117.67L197.2 118.23L198.97 118.78L200.73 119.33L202.5 119.87L204.27 120.4L206.03 120.92L207.8 121.44L209.57 121.95L211.33 122.46L213.1 122.95L214.87 123.44L216.63 123.93L218.4 124.41L220.17 124.88L221.93 125.34L223.7 125.8L225.47 126.25L227.23 126.7L229 127.14L230.77 127.58L232.53 128.01L234.3 128.43L236.07 128.85L237.83 129.26L239.6 129.67L241.37 130.07L243.13 130.47L244.9 130.86L246.67 131.24L248.43 131.62L250.2 132L251.97 132.37L253.73 132.74L255.5 133.1L257.27 133.45L259.03 133.81L260.8 134.15L262.57 134.5L264.33 134.83L266.1 135.17L267.87 135.5L269.63 135.82L271.4 136.14L273.17 136.46L274.93 136.77L276.7 137.08L278.47 137.38L280.23 137.68L282 137.97L283.77 138.27L285.53 138.55L287.3 138.84L289.07 139.12L290.83 139.4L292.6 139.67L294.37 139.94L296.13 140.2L297.9 140.47L299.67 140.72L301.43 140.98L303.2 141.23L304.97 141.48L306.73 141.73L308.5 141.97L310.27 142.21L312.03 142.44L313.8 142.67L315.57 142.9L317.33 143.13L319.1 143.35L320.87 143.57L322.63 143.79L324.4 144.01L326.17 144.22L327.93 144.43L329.7 144.63L331.47 144.84L333.23 145.04L335 145.24L336.77 145.43L338.53 145.62L340.3 145.82L342.07 146L343.83 146.19L345.6 146.37L347.37 146.55L349.13 146.73L350.9 146.91L352.67 147.08L354.43 147.25L356.2 147.42L357.97 147.59L359.73 147.75L361.5 147.91L363.27 148.07L365.03 148.23L366.8 148.39L368.57 148.54L370.33 148.69L372.1 148.84L373.87 148.99L375.63 149.14L377.4 149.28L379.17 149.42L380.93 149.56L382.7 149.7L384.47 149.84L386.23 149.97L388 150.1L389.77 150.23L391.53 150.36L393.3 150.49L395.07 150.62L396.83 150.74L398.6 150.86L400.37 150.99L402.13 151.1L403.9 151.22L405.67 151.34L407.43 151.45L409.2 151.57L410.97 151.68L412.73 151.79L414.5 151.9L416.27 152L418.03 152.11L419.8 152.22L421.57 152.32L423.33 152.42L425.1 152.52L426.87 152.62L428.63 152.72L430.4 152.81L432.17 152.91L433.93 153L435.7 153.1L437.47 153.19L439.23 153.28L441 153.37L442.77 153.45L444.53 153.54L446.3 153.63L448.07 153.71L449.83 153.79L451.6 153.88L453.37 153.96L455.13 154.04L456.9 154.12L458.67 154.19L460.43 154.27L462.2 154.35L463.97 154.42L465.73 154.5L467.5 154.57L469.27 154.64L471.03 154.71L472.8 154.78L474.57 154.85L476.33 154.92L478.1 154.99L479.87 155.05L481.63 155.12L483.4 155.18L485.17 155.25L486.93 155.31L488.7 155.37L490.47 155.43L492.23 155.49L494 155.55L495.77 155.61L497.53 155.67L499.3 155.73L501.07 155.78L502.83 155.84L504.6 155.9L506.37 155.95L508.13 156L509.9 156.06L511.67 156.11L513.43 156.16L515.2 156.21L516.97 156.26L518.73 156.31L520.5 156.36L522.27 156.41L524.03 156.46L525.8 156.5L527.57 156.55L529.33 156.59L531.1 156.64L532.87 156.68L534.63 156.73L536.4 156.77L538.17 156.81L539.93 156.86L541.7 156.9L543.47 156.94L545.23 156.98L547 157.02L548.77 157.06L550.53 157.1L552.3 157.14L554.07 157.17L555.83 157.21L557.6 157.25L559.37 157.28L561.13 157.32L562.9 157.36L564.67 157.39L566.43 157.43L568.2 157.46L569.97 157.49L571.73 157.53L573.5 157.56L575.27 157.59L577.03 157.62L578.8 157.66L580.57 157.69L582.33 157.72L584.1 157.75L585.87 157.78L587.63 157.81L589.4 157.84L591.17 157.86L592.93 157.89L594.7 157.92L596.47 157.95L598.23 157.98L600 158" fill="none" stroke="#6E2470" stroke-width="2.6"/>
+<text x="56" y="100" font-size="13" text-anchor="middle" fill="#5A6563" transform="rotate(-90 56 100)">Density</text>
+<text x="70" y="28" font-size="14" text-anchor="start" font-weight="bold" fill="#1F2A28">Population of wait times: skewed right, μ = 5, σ = 5</text>
+<rect x="70" y="339.4" width="13.25" height="30.6" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="83.25" y="299.49" width="13.25" height="70.51" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="96.5" y="293.5" width="13.25" height="76.5" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="109.75" y="284.19" width="13.25" height="85.81" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="123" y="264.24" width="13.25" height="105.76" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="136.25" y="276.21" width="13.25" height="93.79" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="149.5" y="260.91" width="13.25" height="109.09" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="162.75" y="287.52" width="13.25" height="82.48" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="176" y="284.86" width="13.25" height="85.14" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="189.25" y="305.48" width="13.25" height="64.52" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="202.5" y="301.49" width="13.25" height="68.51" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="215.75" y="317.45" width="13.25" height="52.55" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="229" y="323.44" width="13.25" height="46.56" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="242.25" y="330.09" width="13.25" height="39.91" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="255.5" y="330.09" width="13.25" height="39.91" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="268.75" y="328.76" width="13.25" height="41.24" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="282" y="335.41" width="13.25" height="34.59" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="295.25" y="341.4" width="13.25" height="28.6" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="308.5" y="344.72" width="13.25" height="25.28" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="321.75" y="344.06" width="13.25" height="25.94" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="335" y="352.04" width="13.25" height="17.96" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="348.25" y="358.69" width="13.25" height="11.31" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="361.5" y="357.36" width="13.25" height="12.64" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="374.75" y="358.69" width="13.25" height="11.31" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="388" y="357.36" width="13.25" height="12.64" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="401.25" y="358.03" width="13.25" height="11.97" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="414.5" y="363.35" width="13.25" height="6.65" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="427.75" y="362.68" width="13.25" height="7.32" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="441" y="364.68" width="13.25" height="5.32" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="454.25" y="364.68" width="13.25" height="5.32" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="467.5" y="366.67" width="13.25" height="3.33" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="480.75" y="369.33" width="13.25" height="0.67" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="494" y="367.34" width="13.25" height="2.66" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="507.25" y="366.67" width="13.25" height="3.33" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="520.5" y="367.34" width="13.25" height="2.66" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="533.75" y="367.34" width="13.25" height="2.66" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="547" y="368" width="13.25" height="2" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="560.25" y="369.33" width="13.25" height="0.67" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="573.5" y="368.67" width="13.25" height="1.33" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="586.75" y="369.33" width="13.25" height="0.67" fill="#6E2470" stroke="#FFFFFF" stroke-width="0.8"/>
+<line x1="70" y1="370" x2="600" y2="370" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="70" y1="370" x2="70" y2="375" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="70" y="390" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">0</text>
+<line x1="202.5" y1="370" x2="202.5" y2="375" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="202.5" y="390" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">5</text>
+<line x1="335" y1="370" x2="335" y2="375" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="335" y="390" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">10</text>
+<line x1="467.5" y1="370" x2="467.5" y2="375" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="467.5" y="390" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">15</text>
+<line x1="600" y1="370" x2="600" y2="375" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="600" y="390" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">20</text>
+<text x="56" y="310" font-size="13" text-anchor="middle" fill="#5A6563" transform="rotate(-90 56 310)">Relative frequency</text>
+<text x="70" y="238" font-size="14" text-anchor="start" font-weight="bold" fill="#1F2A28">Means of samples of n = 2: center about 4.9, SD about 3.53 (formula 5/√2 = 3.54)</text>
+<rect x="123" y="579.77" width="13.25" height="0.23" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="136.25" y="576.26" width="13.25" height="3.74" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="149.5" y="566.45" width="13.25" height="13.55" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="162.75" y="533.98" width="13.25" height="46.02" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="176" y="500.81" width="13.25" height="79.19" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="189.25" y="470.91" width="13.25" height="109.09" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="202.5" y="484.69" width="13.25" height="95.31" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="215.75" y="516.23" width="13.25" height="63.77" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="229" y="548.23" width="13.25" height="31.77" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="242.25" y="563.88" width="13.25" height="16.12" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="255.5" y="574.86" width="13.25" height="5.14" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="268.75" y="577.9" width="13.25" height="2.1" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="282" y="579.3" width="13.25" height="0.7" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="295.25" y="579.77" width="13.25" height="0.23" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="308.5" y="579.77" width="13.25" height="0.23" fill="#0072B2" stroke="#FFFFFF" stroke-width="0.8"/>
+<line x1="70" y1="580" x2="600" y2="580" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="70" y1="580" x2="70" y2="585" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="70" y="600" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">0</text>
+<line x1="202.5" y1="580" x2="202.5" y2="585" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="202.5" y="600" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">5</text>
+<line x1="335" y1="580" x2="335" y2="585" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="335" y="600" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">10</text>
+<line x1="467.5" y1="580" x2="467.5" y2="585" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="467.5" y="600" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">15</text>
+<line x1="600" y1="580" x2="600" y2="585" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="600" y="600" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">20</text>
+<text x="335" y="622" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">Wait time or mean wait time (minutes)</text>
+<text x="56" y="520" font-size="13" text-anchor="middle" fill="#5A6563" transform="rotate(-90 56 520)">Relative frequency</text>
+<text x="70" y="448" font-size="14" text-anchor="start" font-weight="bold" fill="#1F2A28">Means of samples of n = 30: center about 5.0, SD about 0.89 (formula 5/√30 = 0.91)</text>
+</svg>

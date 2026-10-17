@@ -1,0 +1,87 @@
+{
+ "topic": "sampling-dist-mean",
+ "hook": "A coffee chain times every car at its drive-through. Most cars wait 2 or 3 minutes, a few wait 12. If a manager averages a random sample of 40 cars, how far can that average land from the true mean of 4.2 minutes? The answer is a whole distribution, and it is much narrower and much more normal than the wait times themselves.",
+ "prereq": [
+  {
+   "q": "A sampling distribution shows",
+   "options": [
+    "the values of a statistic over many random samples of the same size",
+    "the values in one sample",
+    "the values in the whole population",
+    "the sample sizes a study could use"
+   ],
+   "correct": 0,
+   "why": "A sampling distribution is the distribution of a statistic, such as $\\bar{x}$, across all possible samples of one size.",
+   "review": "sampling-distributions"
+  },
+  {
+   "q": "Heights are normal with mean 170 cm and standard deviation 8 cm. What is the z-score of 182 cm?",
+   "options": [
+    "1.5",
+    "12",
+    "0.67",
+    "-1.5"
+   ],
+   "correct": 0,
+   "why": "$z = \\frac{182 - 170}{8} = 1.5$: the value minus the mean, over the standard deviation.",
+   "review": "normal-distribution"
+  },
+  {
+   "q": "Why does the 10% condition matter when sampling without replacement?",
+   "options": [
+    "It keeps the observations close enough to independent for the standard deviation formula",
+    "It makes the sampling distribution normal",
+    "It removes bias from the sample",
+    "It makes the sample size large enough"
+   ],
+   "correct": 0,
+   "why": "Drawing a small share of a large population barely changes what is left, so the draws act independent.",
+   "review": "sampling-dist-proportion"
+  }
+ ],
+ "figure": {
+  "figure": "xbar-sampling-panels",
+  "caption": "Left: the skewed population of wait times. Middle and right: 5,000 simulated sample means for samples of 4 and of 40 cars. The center stays at 4.2 minutes, the spread shrinks like $\\frac{\\sigma}{\\sqrt{n}}$, and the shape becomes normal."
+ },
+ "chain": [
+  {
+   "cause": "Each sample mean averages $n$ values",
+   "effect": "high and low values partly cancel, so means vary less than single values"
+  },
+  {
+   "cause": "On average over many samples, $\\bar{x}$ hits the population mean",
+   "effect": "$\\mu_{\\bar{x}} = \\mu$: the sample mean is unbiased"
+  },
+  {
+   "cause": "The variance of an average of $n$ independent values is $\\frac{\\sigma^2}{n}$",
+   "effect": "the standard deviation of $\\bar{x}$ is $\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}}$ (when the sample is under 10% of the population)"
+  },
+  {
+   "cause": "Averaging many values smooths away skew",
+   "effect": "for $n \\ge 30$ the sampling distribution is approximately normal (the central limit theorem); for a normal population it is normal at any $n$"
+  },
+  {
+   "cause": "With a normal model, center and spread",
+   "effect": "a z-score $\\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}}$ gives probabilities about sample means"
+  }
+ ],
+ "ideas": [
+  "Center: $\\mu_{\\bar{x}} = \\mu$ for every sample size.",
+  "Spread: $\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}}$, valid when the sample is less than 10% of the population. Four times the sample size halves the spread.",
+  "Shape: normal if the population is normal; approximately normal if $n \\ge 30$ (central limit theorem); otherwise it keeps some of the population's skew.",
+  "The central limit theorem is about the distribution of many sample means, not about the data in one sample."
+ ],
+ "misconception": {
+  "wrong": "With a large sample, the data become normal, so a skewed population gives a normal sample.",
+  "right": "A large random sample looks like the population, skew and all. What becomes approximately normal is the sampling distribution of $\\bar{x}$, the pattern of the means over many samples."
+ },
+ "check": [
+  "stat-sampling-dist-mean-1",
+  "stat-sampling-dist-mean-2",
+  "stat-sampling-dist-mean-3",
+  "stat-sampling-dist-mean-4",
+  "stat-sampling-dist-mean-12",
+  "stat-sampling-dist-mean-14"
+ ],
+ "summary": "The sample mean $\\bar{x}$ has a sampling distribution centered at $\\mu$ with standard deviation $\\frac{\\sigma}{\\sqrt{n}}$ (10% condition). It is normal for a normal population and approximately normal for $n \\ge 30$ by the central limit theorem. Standardize with $z = \\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}}$ to find probabilities about a sample mean."
+}

@@ -1,0 +1,12 @@
+{
+ "u2-tacos-balance": {
+  "file": "figures/u2-tacos-balance.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Probability histogram of X, the number of tacos in an order: 0.20, 0.35, 0.25, 0.15 and 0.05 for 1 to 5 tacos. A triangle under the axis marks the mean, 2.5 tacos, where the histogram would balance; arrows show one standard deviation, about 1.12 tacos, on each side."
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "hook": "A city hands out a new recycling bin to 160 randomly chosen households and leaves 140 with the old one. A month later, 78% of the new bin households sort correctly against 65% of the others. Before anyone runs the numbers, the test has to be set up: what exactly is being claimed, which procedure fits, and are its conditions met?",
+ "prereq": [
+  {
+   "q": "Which is a correct null hypothesis for one proportion?",
+   "options": [
+    "$H_0: p = 0.4$",
+    "$H_0: \\hat{p} = 0.4$",
+    "$H_0: p > 0.4$",
+    "$H_0: \\hat{p} > 0.4$"
+   ],
+   "correct": 0,
+   "why": "A null hypothesis is about the parameter, with an equals sign.",
+   "review": "test-one-proportion-setup"
+  },
+  {
+   "q": "For a test of $H_0: p = 0.4$ with $n = 50$, which large counts check is right?",
+   "options": [
+    "$50(0.4) = 20$ and $50(0.6) = 30$ are at least 10",
+    "$n = 50$ is at least 30",
+    "$50\\hat{p}$ is at least 10",
+    "$50(0.5) = 25$ is at least 10"
+   ],
+   "correct": 0,
+   "why": "A test checks large counts with the null value $p_0$.",
+   "review": "test-one-proportion-setup"
+  }
+ ],
+ "figure": {
+  "figure": "pooled-proportion",
+  "caption": "The two sample proportions and the pooled proportion $p_c = \\frac{216}{300} = 0.72$, the estimate of the common proportion if $H_0$ is true."
+ },
+ "chain": [
+  {
+   "cause": "The question compares two groups on a yes or no outcome",
+   "effect": "the parameter is $p_1 - p_2$, and the procedure is a two-sample z test"
+  },
+  {
+   "cause": "The null hypothesis says there is no difference",
+   "effect": "$H_0: p_1 - p_2 = 0$, and $H_a$ says $>$, $<$ or $\\ne$ as the question asks, chosen before seeing the data"
+  },
+  {
+   "cause": "If $H_0$ is true, both samples come from populations with one common proportion",
+   "effect": "estimate it by pooling: $p_c = \\frac{x_1 + x_2}{n_1 + n_2}$, total successes over total sample size"
+  },
+  {
+   "cause": "The test is computed as if $H_0$ were true",
+   "effect": "check large counts with $p_c$: $n_1 p_c$, $n_1(1 - p_c)$, $n_2 p_c$, $n_2(1 - p_c)$ each at least 10, plus random and 10%"
+  }
+ ],
+ "ideas": [
+  "Hypotheses: $H_0: p_1 - p_2 = 0$ and $H_a: p_1 - p_2 > 0$, $< 0$ or $\\ne 0$, with each $p$ defined as a true proportion in context.",
+  "Pooled proportion: $p_c = \\frac{x_1 + x_2}{n_1 + n_2}$, the combined successes over the combined sample size. Never the average of $\\hat{p}_1$ and $\\hat{p}_2$.",
+  "Conditions: two independent random samples or randomly assigned groups; 10% for each sample; large counts with $p_c$.",
+  "Name it in full: \"a two-sample z test for $p_1 - p_2$\"."
+ ],
+ "misconception": {
+  "wrong": "The pooled proportion is the average of the two sample proportions.",
+  "right": "Pool the counts, not the proportions: add the successes and divide by the total sample size. With unequal sample sizes the two answers differ, and only the pooled counts give the right estimate."
+ },
+ "check": [
+  "stat-test-two-proportions-setup-1",
+  "stat-test-two-proportions-setup-2",
+  "stat-test-two-proportions-setup-3",
+  "stat-test-two-proportions-setup-4",
+  "stat-test-two-proportions-setup-10",
+  "stat-test-two-proportions-setup-14"
+ ],
+ "summary": "A two-sample z test for $p_1 - p_2$ starts from $H_0: p_1 - p_2 = 0$ and an alternative chosen from the question. Because the test assumes $H_0$, it pools the samples, $p_c = \\frac{x_1 + x_2}{n_1 + n_2}$, and checks large counts with $p_c$, along with two independent random samples (or random assignment) and the 10% condition.",
+ "topic": "test-two-proportions-setup"
+}

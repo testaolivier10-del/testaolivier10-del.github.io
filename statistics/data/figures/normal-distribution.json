@@ -1,0 +1,12 @@
+{
+ "u2-empirical-rule": {
+  "file": "figures/u2-empirical-rule.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Normal density curve for egg weights with mean 58 grams and standard deviation 4 grams, axis marked from 46 to 70 grams. Brackets show that about 68% of weights fall within 1 standard deviation (54 to 62 g), about 95% within 2 (50 to 66 g) and about 99.7% within 3 (46 to 70 g)."
+ }
+}

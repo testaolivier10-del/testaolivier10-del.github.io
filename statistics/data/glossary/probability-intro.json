@@ -1,0 +1,11 @@
+{
+ "sample-space": {
+  "def": "The sample space of a chance process is the list of all its possible outcomes. When those outcomes are equally likely, the probability of an event is its number of outcomes divided by the number in the sample space."
+ },
+ "event": {
+  "def": "An event is a collection of outcomes from the sample space, such as \"the sum of two dice is 8\". Its probability is the chance that the outcome falls in that collection."
+ },
+ "complement": {
+  "def": "The complement of an event A, written $A^c$, is the event that A does not happen. The complement rule: $P(A^c) = 1 - P(A)$."
+ }
+}

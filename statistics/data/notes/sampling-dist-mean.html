@@ -1,0 +1,57 @@
+<p>Unit 3 asked how a sample proportion $\hat{p}$ varies from sample to sample. Unit 4 asks the same question about a sample mean $\bar{x}$. Every inference procedure for means in this unit rests on the answer, so it is worth getting exactly right: the center, the spread and the shape of the sampling distribution of $\bar{x}$.</p>
+
+<h2>A population, and many samples from it</h2>
+<p>A coffee chain records the wait time of every car at its drive-through (invented data). Over thousands of cars, the mean wait is $\mu = 4.2$ minutes and the standard deviation is $\sigma = 2.8$ minutes. Most cars wait 2 or 3 minutes; a few wait 10 or more, so the distribution is strongly skewed right.</p>
+<p>A manager takes a random sample of cars and computes the mean wait $\bar{x}$. A second random sample gives a different $\bar{x}$, a third another. If you could take every possible sample of the same size and plot all the means, you would have the <b>sampling distribution of $\bar{x}$</b>. The figure shows 5,000 simulated sample means for samples of 4 cars and of 40 cars.</p>
+<figure id="fig-panels" data-fig="xbar-sampling-panels"><figcaption>The population of wait times, then 5,000 simulated sample means for n = 4 and n = 40. Same center, smaller spread, more normal shape.</figcaption></figure>
+<p>Three things stand out in <a class="figref" href="#fig-panels">the figure</a>. The means pile up around 4.2 minutes. They spread out much less than single wait times. And with 40 cars, the skew is gone: the means form a bell shape.</p>
+
+<h2>Center: the sample mean is unbiased</h2>
+<p>Some samples happen to catch more slow cars, some fewer. Over all possible samples, the overestimates and underestimates balance exactly. So the mean of the sampling distribution equals the population mean:</p>
+<p>$$\mu_{\bar{x}} = \mu.$$</p>
+<p>This holds for every sample size and every population shape. In the language of Unit 3, $\bar{x}$ is an <b>unbiased estimator</b> of $\mu$.</p>
+
+<h2>Spread: divide by the square root of n</h2>
+<p>Why do means vary less than single values? A mean adds $n$ values and divides by $n$. A slow car in the sample is usually offset, at least partly, by quick ones. The more cars you average, the more the high and low values cancel. The exact result, for independent observations, is</p>
+<p>$$\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}.$$</p>
+<p>This is the <b>standard deviation of the sample mean</b>. Notice the square root. To cut the spread in half, you need four times as many observations, because $\sqrt{4} = 2$. Going from 16 bags to 64 bags halves the spread; it does not quarter it.</p>
+<p>The formula needs independent observations. Sampling without replacement makes the draws slightly dependent, so check the <b>10% condition</b>: the sample is less than 10% of the population. A sample of 40 cars from thousands passes easily. A sample of 60 apartments from a complex of 400 does not ($60 > 40$), and then $\frac{\sigma}{\sqrt{n}}$ overstates the true spread.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> For random samples of 40 cars, find the mean and standard deviation of the sampling distribution of $\bar{x}$.</p>
+<p>Center: $\mu_{\bar{x}} = \mu = 4.2$ minutes.</p>
+<p>Spread: $\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}} = \frac{2.8}{\sqrt{40}} = 0.443$ minutes.</p>
+<p>The 10% condition holds: 40 cars is less than 10% of the thousands of cars served last month.</p>
+</div>
+
+<h2>Shape: normal population, or a large sample</h2>
+<p>The shape depends on the population and on $n$.</p>
+<table class="stat-compare">
+<thead><tr><th scope="col">Population</th><th scope="col">Sample size</th><th scope="col">Shape of the sampling distribution of $\bar{x}$</th></tr></thead>
+<tbody>
+<tr><td>Normal</td><td>any $n$</td><td>Normal</td></tr>
+<tr><td>Not normal, or unknown</td><td>$n \ge 30$</td><td>Approximately normal (central limit theorem)</td></tr>
+<tr><td>Skewed</td><td>small $n$</td><td>Skewed the same way as the population, less strongly</td></tr>
+</tbody>
+</table>
+<p>The <b>central limit theorem</b> (Unit 2) is the reason the second row works: averaging enough values smooths away skew. A common rule of thumb is $n \ge 30$; a very strongly skewed population may need more.</p>
+<p>Be careful what the theorem says. It is about the distribution of many sample means. It does not say the 40 wait times in one sample look normal. A random sample looks like its population, so a sample of wait times is skewed right too.</p>
+
+<h2>Probabilities about a sample mean</h2>
+<p>Once the sampling distribution is approximately normal, standardize with the standard deviation of $\bar{x}$, not of single values:</p>
+<p>$$z = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}}.$$</p>
+<div class="worked">
+<p><b>Worked example 2.</b> What is the probability that the mean wait of a random sample of 40 cars is more than 5 minutes?</p>
+<p>Shape: $n = 40 \ge 30$, so by the central limit theorem $\bar{x}$ is approximately normal, with mean 4.2 and standard deviation 0.443 (worked example 1).</p>
+<p>Expression and substitution: $z = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}} = \frac{5 - 4.2}{2.8/\sqrt{40}} = 1.81$.</p>
+<p>Answer: $P(\bar{x} > 5) = P(z > 1.81) = 0.035$. Technology gives the same with a normal distribution of mean 4.2 and standard deviation 0.443, area above 5. A sample mean above 5 minutes would happen in only about 3.5% of samples, so it would be surprising if the true mean were really 4.2.</p>
+</div>
+<p>Compare one car. $P(\text{one wait} > 5)$ cannot be found with a normal model at all, because single wait times are skewed. Even for a normal population, one value is far more likely to land far from $\mu$ than a mean is. For phone batteries with mean 12.5 hours and standard deviation 1.6 hours (normal), one battery lasts more than 13 hours with probability $P\left(z > \frac{13 - 12.5}{1.6}\right) = P(z > 0.31) = 0.38$, but the mean of 10 batteries does so with probability only $P\left(z > \frac{13 - 12.5}{1.6/\sqrt{10}}\right) = P(z > 0.99) = 0.16$.</p>
+
+<h2>What to remember</h2>
+<ul>
+<li>Center: $\mu_{\bar{x}} = \mu$.</li>
+<li>Spread: $\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$, after checking the 10% condition.</li>
+<li>Shape: normal if the population is normal; approximately normal if $n \ge 30$; otherwise it keeps some skew.</li>
+<li>Always say which condition gives the normal shape, in words, with the numbers: "the population is normal" or "$n = 40 \ge 30$, so the central limit theorem applies".</li>
+</ul>
+<p>In real studies, $\sigma$ is almost never known. The next topic replaces it with the sample standard deviation $s$ and shows the price of doing so.</p>

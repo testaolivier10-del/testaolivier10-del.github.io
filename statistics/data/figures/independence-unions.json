@@ -1,0 +1,12 @@
+{
+ "u2-clubs-venn": {
+  "file": "figures/u2-clubs-venn.svg",
+  "ext": "svg",
+  "w": 620,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Venn diagram of 120 students: 50 take Spanish, 40 take art, and 15 take both, so 35 take only Spanish, 25 only art and 45 neither. The union, Spanish or art, is shaded: 35 + 15 + 25 = 75 students, which equals 50 + 40 − 15."
+ }
+}

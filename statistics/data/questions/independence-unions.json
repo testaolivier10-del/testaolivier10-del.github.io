@@ -1,0 +1,485 @@
+{
+ "stimuli": {
+  "independence-unions-s1": {
+   "kind": "diagram",
+   "title": "Spanish and art students",
+   "set": "probability",
+   "figure": "u2-clubs-venn",
+   "text": "At a school, 120 students are in the arts and languages program. 50 take Spanish, 40 take art, and 15 take both. One of the 120 students is chosen at random (invented data)."
+  },
+  "independence-unions-s2": {
+   "kind": "table",
+   "title": "Phone brand and battery life",
+   "text": "A tech site tested a random sample of 250 phones of two brands and recorded whether the battery lasted a full day of normal use. One of the 250 phones is chosen at random (invented data).",
+   "table": {
+    "caption": "Brand and battery result for 250 phones",
+    "cols": [
+     "Brand",
+     "Lasted a full day",
+     "Did not",
+     "Total"
+    ],
+    "rows": [
+     [
+      "Brand X",
+      "60",
+      "40",
+      "100"
+     ],
+     [
+      "Brand Y",
+      "90",
+      "60",
+      "150"
+     ],
+     [
+      "Total",
+      "150",
+      "100",
+      "250"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-independence-unions-1",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the student takes Spanish or art?",
+   "why": {
+    "correct": "Addition rule: $P(S \\cup R) = P(S) + P(R) - P(S \\cap R) = \\frac{50}{120} + \\frac{40}{120} - \\frac{15}{120} = \\frac{75}{120} = 0.625$, where S is Spanish and R is art.",
+    "options": [
+     "That is $\\frac{90}{120}$: the 15 students in both were counted twice.",
+     "That is $\\frac{15}{120}$, the students who take both, not either.",
+     "Right: 75 of the 120 students take at least one of the two.",
+     "That is $\\frac{45}{120}$, the students who take neither."
+    ]
+   },
+   "stimulus": "independence-unions-s1",
+   "options": [
+    "0.75",
+    "0.125",
+    "0.625",
+    "0.375"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-independence-unions-2",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Given that the student takes art, what is the probability that the student takes Spanish?",
+   "why": {
+    "correct": "Given art, the 40 art students are the total, and 15 of them take Spanish: $\\frac{15}{40} = 0.375$.",
+    "options": [
+     "That is $\\frac{15}{50}$, the probability of art given Spanish.",
+     "That is $\\frac{15}{120}$, the joint probability.",
+     "That is $\\frac{50}{120}$, the probability of Spanish for all students.",
+     "Right: 15 of the 40 art students."
+    ]
+   },
+   "stimulus": "independence-unions-s1",
+   "options": [
+    "0.3",
+    "0.125",
+    "0.417",
+    "0.375"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-independence-unions-3",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Are \"takes Spanish\" and \"takes art\" independent events?",
+   "why": {
+    "correct": "Compare $P(\\text{Spanish} \\mid \\text{art}) = \\frac{15}{40} = 0.375$ with $P(\\text{Spanish}) = \\frac{50}{120} \\approx 0.417$. They differ, so the events are not independent.",
+    "options": [
+     "Right: knowing art changes the probability of Spanish.",
+     "Overlapping is not independence; independence compares probabilities.",
+     "They are not mutually exclusive: 15 students take both.",
+     "How classes were chosen does not settle it; compare the probabilities."
+    ]
+   },
+   "stimulus": "independence-unions-s1",
+   "options": [
+    "No: P(Spanish given art) is 0.375 but P(Spanish) is about 0.417",
+    "Yes, because 15 students take both classes, so the events overlap",
+    "No, because they are mutually exclusive events at this school",
+    "Yes, because the students chose their own classes"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-independence-unions-4",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the phone's battery lasted a full day?",
+   "why": {
+    "correct": "150 of the 250 phones lasted a full day: $\\frac{150}{250} = 0.6$."
+   },
+   "stimulus": "independence-unions-s2",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.6,
+    "mistakes": [
+     {
+      "value": 0.4,
+      "why": "That is the probability that the phone is Brand X. Use the full-day column total, 150, over 250."
+     },
+     {
+      "value": 1.5,
+      "why": "A probability cannot be more than 1. Divide by all 250 phones."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-independence-unions-5",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $P(\\text{full day} \\mid \\text{Brand Y})$?",
+   "why": {
+    "correct": "Given Brand Y, divide by the 150 Brand Y phones: $\\frac{90}{150} = 0.6$."
+   },
+   "stimulus": "independence-unions-s2",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.6,
+    "mistakes": [
+     {
+      "value": 0.36,
+      "why": "That is the joint probability of Brand Y and a full day. Given Brand Y, divide by 150."
+     },
+     {
+      "value": 0.36,
+      "why": "That multiplies 0.6 by 0.6. A conditional probability from a table is the cell over its group total."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-independence-unions-6",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Are \"Brand Y\" and \"battery lasted a full day\" independent?",
+   "why": {
+    "correct": "$P(\\text{full day} \\mid \\text{Brand Y}) = \\frac{90}{150} = 0.6$, the same as $P(\\text{full day}) = 0.6$ (and Brand X is $\\frac{60}{100} = 0.6$ too). Knowing the brand does not change the probability, so the events are independent.",
+    "options": [
+     "Counts depend on how many of each brand were tested; compare probabilities.",
+     "Overlap is not how independence is checked.",
+     "That makes the brands mutually exclusive, which is a different idea.",
+     "Right: equal conditional and unconditional probabilities."
+    ]
+   },
+   "stimulus": "independence-unions-s2",
+   "options": [
+    "No: more Brand Y phones (90) than Brand X phones (60) lasted a full day",
+    "No: a phone can be Brand Y and last a full day, so they overlap",
+    "Yes: a phone is either Brand X or Brand Y and is not both at once",
+    "Yes: the probability of a full day is 0.6 with or without knowing the brand"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-independence-unions-7",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write an expression, using the general addition rule, for the probability that the phone is Brand X or lasted a full day.",
+   "why": {
+    "correct": "$P(X \\cup F) = P(X) + P(F) - P(X \\cap F) = \\frac{100}{250} + \\frac{150}{250} - \\frac{60}{250} = \\frac{190}{250} = 0.76$, where X is Brand X and F is a full day."
+   },
+   "stimulus": "independence-unions-s2",
+   "setup": {
+    "answer": "100/250 + 150/250 - 60/250",
+    "bind": {},
+    "mustUse": [
+     "60"
+    ],
+    "then": {
+     "kind": "prob",
+     "answer": 0.76
+    },
+    "mistakes": [
+     {
+      "expr": "100/250 + 150/250",
+      "why": "That counts the 60 Brand X phones that lasted a full day twice. Subtract the joint probability, 60/250."
+     },
+     {
+      "expr": "60/250",
+      "why": "That is the probability of both, not of either one."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-independence-unions-8",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which calculation confirms the independence of \"Brand X\" and \"full day\" with the multiplication rule?",
+   "why": {
+    "correct": "For independent events the joint probability equals the product: $P(\\text{Brand X}) \\cdot P(\\text{full day}) = 0.4 \\times 0.6 = 0.24$, and the table gives $\\frac{60}{250} = 0.24$.",
+    "options": [
+     "Adding to 1 does not show independence.",
+     "Right: the product matches the joint probability.",
+     "Those are the two results for Brand X; independence compares with the overall rate.",
+     "$\\frac{60}{150} = 0.4$, not 0.24. The joint probability divides by all 250 phones."
+    ]
+   },
+   "stimulus": "independence-unions-s2",
+   "options": [
+    "$0.4 + 0.6 = 1$, so one of the two events is sure to happen",
+    "$0.4 \\times 0.6 = 0.24$, which equals $\\frac{60}{250}$",
+    "$\\frac{60}{100} = 0.6$ compared with $\\frac{40}{100} = 0.4$",
+    "$0.4 \\times 0.6 = 0.24$, which equals $\\frac{60}{150}$"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-independence-unions-9",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 2,
+   "q": "Two events are independent when",
+   "why": {
+    "correct": "Independent events: knowing one happened does not change the probability of the other. In symbols, the conditional probability equals the plain probability.",
+    "options": [
+     "That defines mutually exclusive events.",
+     "That is true of an event and its complement.",
+     "Right: the conditional probability equals the plain probability.",
+     "Timing does not make events independent; sequential draws without replacement are dependent."
+    ]
+   },
+   "options": [
+    "they have no outcomes in common, so they are unable to happen together on one trial",
+    "their probabilities add up to exactly 1",
+    "knowing that one happened does not change the probability of the other",
+    "they happen at different times, one after the other"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-independence-unions-10",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A factory has two machines that work independently. On a given day, machine 1 breaks down with probability 0.05 and machine 2 with probability 0.08. What is the probability that both break down on the same day?",
+   "why": {
+    "correct": "For independent events, $P(\\text{both}) = (0.05)(0.08) = 0.004$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.004,
+    "mistakes": [
+     {
+      "value": 0.13,
+      "why": "That adds the probabilities. For both of two independent events, multiply."
+     },
+     {
+      "value": 0.05,
+      "why": "That is machine 1 alone. Multiply by machine 2's 0.08."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-independence-unions-11",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For the same two independent machines (breakdown probabilities 0.05 and 0.08), what is the probability that at least one breaks down on a given day?",
+   "why": {
+    "correct": "Complement: neither breaks down with probability $(0.95)(0.92) = 0.874$, so $P(\\text{at least one}) = 1 - 0.874 = 0.126$. The addition rule agrees: $0.05 + 0.08 - 0.004 = 0.126$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.126,
+    "mistakes": [
+     {
+      "value": 0.13,
+      "why": "That adds without subtracting the 0.004 chance that both break down, which was counted twice."
+     },
+     {
+      "value": 0.874,
+      "why": "That is the probability that neither breaks down, the complement."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-independence-unions-12",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Events M and N each have a probability above 0 and are mutually exclusive. Can they be independent?",
+   "why": {
+    "correct": "If N happens, M cannot, so $P(M \\mid N) = 0$. But $P(M) > 0$. The conditional and plain probabilities differ, so mutually exclusive events with positive probabilities are never independent.",
+    "options": [
+     "They are different ideas, and here they clash.",
+     "Right: P(M given N) = 0, which differs from P(M).",
+     "Ruling M out is the biggest possible effect.",
+     "As long as both are above 0, the answer is no."
+    ]
+   },
+   "options": [
+    "Yes: mutually exclusive and independent mean the same thing",
+    "No: if N happens then M is impossible, so N changes the chance of M",
+    "Yes: since they are unable to happen together, they have no effect on each other",
+    "It depends on the sizes of P(M) and P(N) in the problem"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-independence-unions-13",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a town, 55% of households have a streaming subscription, 30% have cable, and 15% have both. What is the probability that a randomly chosen household has streaming or cable?",
+   "why": {
+    "correct": "General addition rule: $0.55 + 0.30 - 0.15 = 0.70$. Subtract the 15% with both, who were counted in each group."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.7000000000000001,
+    "mistakes": [
+     {
+      "value": 0.85,
+      "why": "That adds 0.55 and 0.30 without subtracting the 0.15 who have both."
+     },
+     {
+      "value": 0.15,
+      "why": "That is the probability of both, not of either."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-independence-unions-14",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a city, 30% of adults are runners, 50% own a dog, and 15% are runners who own a dog. Are \"runner\" and \"owns a dog\" independent for a randomly chosen adult?",
+   "why": {
+    "correct": "Check the multiplication rule: $(0.30)(0.50) = 0.15$, which equals the joint probability. Equivalently, $P(\\text{dog} \\mid \\text{runner}) = \\frac{0.15}{0.30} = 0.5 = P(\\text{dog})$. They are independent.",
+    "options": [
+     "Overlap is expected for independent events; check the product.",
+     "The sum says nothing about independence.",
+     "They are not mutually exclusive, since 15% are both.",
+     "Right: the product equals the joint probability."
+    ]
+   },
+   "options": [
+    "No: 15% of adults are both, so the events overlap",
+    "No: 0.30 + 0.50 is less than 1",
+    "Yes: running and owning a dog are mutually exclusive",
+    "Yes: $(0.30)(0.50) = 0.15$, the probability of both"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-independence-unions-15",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A survey records whether each of two people from the same household had the flu this winter. Is it reasonable to treat \"first person had the flu\" and \"second person had the flu\" as independent?",
+   "why": {
+    "correct": "Flu spreads between people who live together, so if one had it, the other is more likely to have had it. The events are probably not independent, and multiplying their probabilities would understate the chance that both had the flu.",
+    "options": [
+     "Right: knowing one changes the probability of the other.",
+     "Different people can still affect each other's chances.",
+     "How the questions were asked does not change how flu spreads.",
+     "Both people can have the flu, so the events are not mutually exclusive."
+    ]
+   },
+   "options": [
+    "No: flu spreads at home, so one case makes the other more likely",
+    "Yes: the two people are different individuals",
+    "Yes: the survey asked about the two people separately, in two different questions",
+    "No: the two events are mutually exclusive in one household"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-independence-unions-16",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In the town where 55% of households have streaming, 30% have cable and 15% have both, what is the probability that a randomly chosen household has neither?",
+   "why": {
+    "correct": "Neither is the complement of \"streaming or cable\": $1 - (0.55 + 0.30 - 0.15) = 1 - 0.70 = 0.30$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.29999999999999993,
+    "mistakes": [
+     {
+      "value": 0.15,
+      "why": "That is the probability of both. Neither is 1 minus the probability of either."
+     },
+     {
+      "value": 0.7,
+      "why": "That is the probability of streaming or cable. Neither is its complement, 1 minus 0.70."
+     }
+    ]
+   }
+  }
+ ]
+}

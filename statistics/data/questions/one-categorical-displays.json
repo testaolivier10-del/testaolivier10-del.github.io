@@ -1,0 +1,455 @@
+{
+ "stimuli": {
+  "one-categorical-displays-s1": {
+   "kind": "graph",
+   "title": "Favorite kind of film",
+   "text": "A random sample of 200 teens in a county named their favorite kind of film. \"Docs\" stands for documentaries (invented data).",
+   "plot": {
+    "label": "Bar chart of the relative frequency of each favorite kind of film among 200 teens: comedy 0.30, action 0.25, drama 0.15, horror 0.12, documentaries 0.08, other 0.10",
+    "kind": "bar",
+    "categories": [
+     "Comedy",
+     "Action",
+     "Drama",
+     "Horror",
+     "Docs",
+     "Other"
+    ],
+    "values": [0.3, 0.25, 0.15, 0.12, 0.08, 0.1],
+    "yLabel": "Relative frequency",
+    "y": [0, 0.35]
+   }
+  },
+  "one-categorical-displays-s2": {
+   "kind": "diagram",
+   "title": "A bar chart from a school report",
+   "html": "<p>A report shows the percent of students who passed a state exam at two schools: 52% at school A and 58% at school B. Its bar chart is below.</p><svg viewBox=\"0 0 300 220\" width=\"300\" height=\"220\" role=\"img\" aria-label=\"Bar chart of the percent of students passing at two schools, with a vertical axis that starts at 50 percent: school A 52 percent, school B 58 percent\" font-family=\"Arial, Helvetica, sans-serif\"><rect width=\"300\" height=\"220\" fill=\"#FFFFFF\"/><line x1=\"60\" y1=\"180\" x2=\"280\" y2=\"180\" stroke=\"#E3E7E6\"/><text x=\"52\" y=\"184\" font-size=\"12\" text-anchor=\"end\" fill=\"#1F2A28\">50%</text><line x1=\"60\" y1=\"150\" x2=\"280\" y2=\"150\" stroke=\"#E3E7E6\"/><text x=\"52\" y=\"154\" font-size=\"12\" text-anchor=\"end\" fill=\"#1F2A28\">52%</text><line x1=\"60\" y1=\"120\" x2=\"280\" y2=\"120\" stroke=\"#E3E7E6\"/><text x=\"52\" y=\"124\" font-size=\"12\" text-anchor=\"end\" fill=\"#1F2A28\">54%</text><line x1=\"60\" y1=\"90\" x2=\"280\" y2=\"90\" stroke=\"#E3E7E6\"/><text x=\"52\" y=\"94\" font-size=\"12\" text-anchor=\"end\" fill=\"#1F2A28\">56%</text><line x1=\"60\" y1=\"60\" x2=\"280\" y2=\"60\" stroke=\"#E3E7E6\"/><text x=\"52\" y=\"64\" font-size=\"12\" text-anchor=\"end\" fill=\"#1F2A28\">58%</text><line x1=\"60\" y1=\"30\" x2=\"280\" y2=\"30\" stroke=\"#E3E7E6\"/><text x=\"52\" y=\"34\" font-size=\"12\" text-anchor=\"end\" fill=\"#1F2A28\">60%</text><rect x=\"95\" y=\"150\" width=\"60\" height=\"30\" fill=\"#0072B2\"/><rect x=\"185\" y=\"60\" width=\"60\" height=\"120\" fill=\"#6E2470\"/><line x1=\"60\" y1=\"180\" x2=\"280\" y2=\"180\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><line x1=\"60\" y1=\"30\" x2=\"60\" y2=\"180\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"125\" y=\"198\" font-size=\"12\" text-anchor=\"middle\" fill=\"#1F2A28\">School A</text><text x=\"215\" y=\"198\" font-size=\"12\" text-anchor=\"middle\" fill=\"#1F2A28\">School B</text><text x=\"170\" y=\"216\" font-size=\"12\" font-weight=\"bold\" text-anchor=\"middle\" fill=\"#1F2A28\">Percent passing</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "stat-one-categorical-displays-1",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "3.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which kind of film did 15% of the teens choose?",
+   "why": {
+    "correct": "Read the height of each bar on the relative frequency axis: drama is at 0.15.",
+    "options": [
+     "The horror bar reaches 0.12, so 12% chose horror.",
+     "Right: the drama bar reaches 0.15, which is 15%.",
+     "The other bar reaches 0.10, so 10% chose another kind.",
+     "The action bar reaches 0.25, so 25% chose action."
+    ]
+   },
+   "stimulus": "one-categorical-displays-s1",
+   "options": [
+    "Horror, the bar just to the right of drama",
+    "Drama",
+    "Other, the last bar in the chart",
+    "Action, the second bar from the left"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-one-categorical-displays-2",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many of the 200 teens chose action films?",
+   "why": {
+    "correct": "Count = relative frequency × total = $0.25 \\times 200 = 50$.",
+    "options": [
+     "The bar shows a relative frequency, 0.25. Multiply by the total, 200.",
+     "That is comedy: 0.30 × 200 = 60.",
+     "A count from a relative frequency is a multiplication: 0.25 × 200.",
+     "Right: $0.25 \\times 200 = 50$ teens."
+    ]
+   },
+   "stimulus": "one-categorical-displays-s1",
+   "options": [
+    "25, reading the bar height as a count",
+    "60, which is the number who chose comedy",
+    "800, from dividing 200 by 0.25",
+    "50"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-one-categorical-displays-3",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which claim does the bar chart support?",
+   "why": {
+    "correct": "Compare bar heights: comedy at 0.30 is twice drama at 0.15. \"Most\" would need more than 0.50.",
+    "options": [
+     "Right: 0.30 is twice 0.15.",
+     "Comedy is the most common choice, but 0.30 is less than half, so not most.",
+     "The chart shows how many teens chose each kind as a favorite, not each teen’s ranking of all kinds.",
+     "Horror is 0.12, and documentaries plus other is 0.08 + 0.10 = 0.18."
+    ]
+   },
+   "stimulus": "one-categorical-displays-s1",
+   "options": [
+    "Comedy was chosen about twice as often as drama",
+    "Most of the teens in the sample chose comedy as their favorite",
+    "Action films are better liked than drama films by each teen",
+    "More teens chose horror than chose documentaries and other together"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-one-categorical-displays-4",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Could these data also be shown in a pie chart?",
+   "why": {
+    "correct": "A pie chart works when every individual is in exactly one category, so the parts add to the whole. Here they add to 1.",
+    "options": [
+     "A pie chart can have many slices; what it needs is parts that make up one whole.",
+     "A pie chart shows each category as a part of the whole, which is exactly a relative frequency.",
+     "Right: 0.30 + 0.25 + 0.15 + 0.12 + 0.08 + 0.10 = 1, so the slices make one whole.",
+     "Sorting is a design choice; the parts already make up one whole."
+    ]
+   },
+   "stimulus": "one-categorical-displays-s1",
+   "options": [
+    "No: a pie chart can show four categories or fewer",
+    "No: pie charts are used for counts, and these are relative frequencies",
+    "Yes: each teen chose one kind, so the six parts add to 1",
+    "Yes, but just after the bars are sorted from tallest to shortest"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-one-categorical-displays-5",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does this bar chart give a misleading picture?",
+   "why": {
+    "correct": "A bar’s height (or length) must be its value, measured from 0. Starting the axis at 50% exaggerates the difference.",
+    "options": [
+     "Colors help tell the bars apart; they do not change the heights.",
+     "Percents are the right choice for schools of different sizes.",
+     "Right: with the bottom cut off, bar heights no longer match the values they stand for.",
+     "The order of categories in a bar chart is a free choice."
+    ]
+   },
+   "stimulus": "one-categorical-displays-s2",
+   "options": [
+    "It uses different colors for the two schools’ bars",
+    "It shows percents instead of numbers of students passing",
+    "Its vertical axis starts at 50%, not at 0%",
+    "It puts school A on the left and school B on the right"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-one-categorical-displays-6",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In this chart, how many times as tall does school B’s bar look compared with school A’s?",
+   "why": {
+    "correct": "The visible heights are $58 - 50 = 8$ and $52 - 50 = 2$, so B looks $\\frac{8}{2} = 4$ times as tall, though 58% is only about 1.1 times 52%.",
+    "options": [
+     "Right: above 50%, school A’s bar is 2 points tall and school B’s is 8, a ratio of 4.",
+     "That is how the actual percents compare. The drawn bars start at 50, so they look 8/2 = 4 times as tall.",
+     "6 is the difference in percents, not the ratio of the drawn heights.",
+     "The bars are drawn to different heights: 2 and 8 points above the axis."
+    ]
+   },
+   "stimulus": "one-categorical-displays-s2",
+   "options": [
+    "4 times",
+    "About 1.1 times, as 58 divided by 52",
+    "6 times, from the 6 point gap between 58 and 52",
+    "The same height, because each bar stands for one school"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-one-categorical-displays-7",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which sentence describes the data honestly?",
+   "why": {
+    "correct": "Describe the values themselves: 52% against 58%, a difference of 6 percentage points.",
+    "options": [
+     "That is how the cut-off bars look, not what the percents say.",
+     "More than half (52%) of school A’s students passed.",
+     "The chart gives percents, not counts; school A could be larger.",
+     "Right: 58% − 52% = 6 percentage points, a modest difference."
+    ]
+   },
+   "stimulus": "one-categorical-displays-s2",
+   "options": [
+    "School B’s pass rate is about four times school A’s rate",
+    "Almost no students at school A passed the state exam",
+    "School B had more students pass the exam than school A did",
+    "School B’s pass rate is 6 points higher than A’s"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-one-categorical-displays-8",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How should the chart be redrawn so that bar heights are fair?",
+   "why": {
+    "correct": "In a bar chart, heights are compared from 0, so the axis must start at 0.",
+    "options": [
+     "Changing widths adds a second distortion; bar widths should be equal.",
+     "Right: then each bar’s height is its percent, and B looks only slightly taller than A.",
+     "The two percents are not parts of one whole, so a pie chart does not fit.",
+     "Without labels a reader cannot read the values at all."
+    ]
+   },
+   "stimulus": "one-categorical-displays-s2",
+   "options": [
+    "Make school B’s bar wider than school A’s bar",
+    "Start the vertical axis at 0%",
+    "Turn it into a pie chart with one slice for each school",
+    "Remove the percent labels from the vertical axis"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-one-categorical-displays-9",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "3.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which display is made for one categorical variable?",
+   "why": {
+    "correct": "Bar charts and pie charts display one categorical variable.",
+    "options": [
+     "Right: one bar per category, with height equal to the count or relative frequency.",
+     "A line graph follows a quantity over time, a different situation.",
+     "A number line shows numerical values; categories have no positions on a number line.",
+     "A list of raw data is not a display; it has not been summarized."
+    ]
+   },
+   "options": [
+    "A bar chart",
+    "A line graph of the counts over time, day by day",
+    "A number line with a mark for each value of the data",
+    "A list of each individual in the order they were asked"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-one-categorical-displays-10",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A survey asked 300 students, \"Which school clubs do you belong to? Check every one.\" Why is a pie chart a poor choice for the results?",
+   "why": {
+    "correct": "A pie chart needs categories that do not overlap and together cover everyone. \"Check every one\" breaks that.",
+    "options": [
+     "A pie chart shows parts of a whole, which are relative frequencies.",
+     "A pie chart can have few or many slices.",
+     "Right: the relative frequencies can add to more than 1, so there is no single pie to cut.",
+     "Pie charts are for categorical variables; the issue here is overlap."
+    ]
+   },
+   "options": [
+    "Pie charts are allowed for counts and not for relative frequencies",
+    "There are too few clubs at the school to fill a pie chart",
+    "Students can be in several clubs, so the parts do not make one whole",
+    "Pie charts are used for quantitative variables such as height"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-one-categorical-displays-11",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a bar chart of favorite fruit, can the bars be put in any order?",
+   "why": {
+    "correct": "Categories have no numerical order, so the order of bars is a free choice; sorting by height often helps.",
+    "options": [
+     "Alphabetical order is one choice among many.",
+     "Right: many people sort bars by height to make comparisons easier, but any order is correct.",
+     "Bars in a bar chart are separated by gaps, and collection order does not matter.",
+     "There is no rule about the tallest bar; any order of categories is fine."
+    ]
+   },
+   "options": [
+    "No: bars go in alphabetical order so readers can find them",
+    "Yes: categories have no number order, so any order works",
+    "No: the bars touch, in the order the data were collected",
+    "Yes, as long as the tallest bar is placed exactly in the middle"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-one-categorical-displays-12",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two bar charts show favorite subject at a school with 900 students and at a school with 300. Each shows counts. Why is comparing them misleading?",
+   "why": {
+    "correct": "To compare groups of different sizes, graph relative frequencies, not counts.",
+    "options": [
+     "They can be compared, once both show relative frequencies.",
+     "That limits which bars match, but the main problem is the different totals.",
+     "Counts are exact; they just depend on how many students each school has.",
+     "Right: counts grow with school size. Bar charts of relative frequencies would compare the schools fairly."
+    ]
+   },
+   "options": [
+    "Bar charts of two different schools may not be compared",
+    "The schools may offer different subjects to their students",
+    "Counts are less accurate than relative frequencies are",
+    "The bigger school has taller bars even if its students choose subjects the same way"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-one-categorical-displays-13",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a pie chart, a slice takes up a quarter of the circle. What percent of the individuals does it stand for?",
+   "why": {
+    "correct": "A slice is its category’s part of the whole: a quarter of the circle is $\\frac{1}{4} = 25\\%$.",
+    "options": [
+     "The angle is 90 degrees out of 360, which is a quarter of the circle, so 25%.",
+     "Right: a quarter of the whole is 0.25, or 25%.",
+     "A quarter is one part of four, which is 1/4 = 25%.",
+     "One fourth is 0.25, not 0.40."
+    ]
+   },
+   "options": [
+    "90%, from the slice’s angle of 90 degrees",
+    "25%",
+    "4%, from the four quarters of the circle",
+    "40%, because a quarter is one fourth"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-one-categorical-displays-14",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "multi",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which feature does a bar chart need for its bar heights to compare values honestly? Select all that apply.",
+   "why": {
+    "correct": "The one requirement here is an axis that starts at 0; order, colors and gaps are design choices.",
+    "options": [
+     "Right: heights are compared from 0, so the axis must start there.",
+     "Order is a free choice; it does not affect honesty.",
+     "Colors are a style choice; equal colors are just as honest.",
+     "Bars in a bar chart usually have gaps between them; touching is not required."
+    ]
+   },
+   "options": [
+    "A vertical axis that starts at 0",
+    "Bars arranged in alphabetical order",
+    "A different color for each bar",
+    "Bars that touch each other"
+   ],
+   "correct": [0]
+  },
+  {
+   "id": "stat-one-categorical-displays-15",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In a bar chart of how 80 students get to school, the tallest bar is \"bus\" at 34 students. What does this tell you?",
+   "why": {
+    "correct": "The tallest bar is the most common category, here bus with 34 of 80 students (42.5%).",
+    "options": [
+     "34 out of 80 is 0.425, less than half.",
+     "34 is a count; as a percent it is 34/80 = 42.5%.",
+     "The chart counts students; it says nothing about speed.",
+     "Right: the tallest bar marks the category with the largest count."
+    ]
+   },
+   "options": [
+    "More than half of the 80 students ride the bus to school",
+    "Thirty-four percent of the 80 students ride the bus",
+    "The bus is faster than the other ways of getting to school",
+    "Bus is the most common way these students get to school"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-one-categorical-displays-16",
+   "unit": "unit-1",
+   "topic": "one-categorical-displays",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two categories have relative frequencies 0.21 and 0.24. Which display makes their difference easier to see?",
+   "why": {
+    "correct": "Bar charts compare categories by length on one axis, which shows small differences better than slice angles do.",
+    "options": [
+     "Right: the eye compares lengths on a common axis far better than the angles of slices.",
+     "Slices of 21% and 24% look almost the same; angles are hard to judge.",
+     "Lengths along a shared axis are easier to compare than slice angles.",
+     "It can be graphed; a bar chart shows it best."
+    ]
+   },
+   "options": [
+    "A bar chart, since bars next to each other are easy to compare",
+    "A pie chart, since slices are easy to compare by their angles",
+    "Both displays make the difference equally easy to see",
+    "Neither display, as a difference this small is too hard to graph"
+   ],
+   "correct": 0
+  }
+ ]
+}
