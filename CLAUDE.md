@@ -43,7 +43,8 @@ AP® Calculus AB work and update it in the same commit. Research: `docs/apcalc-r
 `docs/apstat-spec.md` is the source of truth (owner brief, research summary, trainers, grading, build plan, decisions,
 launch checklist); read it before AP® Statistics work and update it in the same commit. Research:
 `docs/apstat-research/` (the course was revised for 2026-27: five units, new exam). Formats: `docs/apstat-architecture.md`;
-writing rules and conclusion templates: `docs/apstat-authoring-guide.md`. Both are Phase R drafts until Phase 0.
+writing rules and conclusion templates: `docs/apstat-authoring-guide.md`; map and the CED check: `docs/apstat-phase0.md`;
+open points: `docs/apstat-needs-author.md`; briefs: `docs/apstat-briefs/`. Registered `hidden` until launch.
 
 ## Ochem readability and diagram pass
 

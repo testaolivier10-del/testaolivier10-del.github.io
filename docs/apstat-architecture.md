@@ -1,8 +1,9 @@
-# AP® Statistics course: architecture (draft, Phase R)
+# AP® Statistics course: architecture
 
-How the course will be built and where everything lives. Forked from AP® Calculus AB
+How the course is built and where everything lives. Forked from AP® Calculus AB
 (`docs/apcalc-architecture.md`, spec decision 1); this file lists what is the same in one line and what
-differs in full. Phase 0 turns this draft into the real file. Writing rules: `docs/apstat-authoring-guide.md`;
+differs in full. Built in Phase 0 (2026-10-17); where this file and the code disagree, the code's header
+comments are newer. Writing rules: `docs/apstat-authoring-guide.md`;
 concept map: `docs/apstat-phase0.md` (Phase 0); status and decisions: `docs/apstat-spec.md`.
 
 ## Layout
@@ -15,17 +16,19 @@ statistics/                             the course, at levlprep.com/statistics/
   cram.html dashboard.html search.html teachers.html   app page shells from pages.json        generated
   frq/<id>.html  tools/<slug>.html                                                             generated
   formula-sheet.html unit-tests/<unit>.html            free entry pages (no score-calculator)  generated
-  manifest.json                         "LevlPrep — Statistics"
+  manifest.json                         "LevlPrep Statistics" (description from build-pricing.mjs)
   assets/
     stat-core.js stat-questions.js stat-lesson.js stat-nav.js stat-book.js stat-toc.js stat-home.js
     stat-expr.js                        ApStatExpr: calc-expr.js plus statistics input (below)
     stat-math.js                        ApStatTex: calc-math.js subset plus statistics notation
     stat-dist.js                        ApStatDist: distributions, tests, intervals (below)
-    stat-grade.js                       ApStatGrade: numeric kinds, interval, setup, conclude graders
+    stat-grade.js                       ApStatGrade: numeric kinds, interval and conclude graders
+                                        (setup items grade through ApStatExpr.gradeSetup)
     stat.css stat-home.css og-image.png
     pages/*.js pages/pages.css pages/entry.css
     tools/stat-tools.js stat-tools.css  tool framework (ApStatTools)
-    tools/stat-tool-math.js             shared tool math (ApStatMath: rng, samplers, helpers)
+    tools/stat-tool-math.js             shared tool math (ApStatMath: rng, normal, sample, bernoulli,
+                                        shuffle, repeat, cell, diagnose; Dist() is ApStatDist)
     tools/stat-plot.js                  ApStatPlot: data plots and density curves (SVG)
     tools/math/<slug>.js                ONE TOOL's model (ApStatMath.<camelSlug>)
     tools/<slug>.js                     ONE TOOL's page script
@@ -40,7 +43,8 @@ ids `stat-`; CSS classes `stat-`. Pass id `stat-2027`.
 ## Math and notation
 
 As AP® Calculus AB: TeX between dollar signs, rendered to MathML at build time, TeX kept in the annotation
-for the ordering check. Additions to the subset (Phase 0, in `stat-math.js`):
+for the ordering check. Additions to the subset (built in `stat-math.js`; `\bar`, `\hat`, `\overline`
+and `\binom` are new commands, the rest already rendered):
 
 - `\bar{x}`, `\hat{p}`, `\hat{y}` (accents, also on subscripted symbols: `\hat{p}_1`, `\bar{x}_d`);
 - `\mu_{\bar{x}}`, `\sigma_{\hat{p}}`, `p_c`, `H_0`, `H_a`, `\chi^2`, `s_y`, `r^2`, `Q_1`, `Q_3`;
@@ -49,14 +53,18 @@ for the ordering check. Additions to the subset (Phase 0, in `stat-math.js`):
 - `\text{df}`, `\text{SE}`, `\text{IQR}`, `\text{ME}`.
 
 Dropped from the calculus subset: `\int`, `\lim`, `\frac{d}{dx}` and friends stay in the renderer but the
-content check refuses them in statistics data.
+content check refuses them in statistics data (`EXCLUDED` in `scripts/check-apstat-content.mjs`). The
+plain-text reading (`ApStatTex.text`, for titles and search) writes accents the way Bluebook types them:
+`p-hat_1`, `x-bar`, `(10C3)`.
 
 ## Expressions a student types: `ApStatExpr`
 
-The calculus parser (no eval) plus: `+/-` and `±` (an interval: returns `[lo, hi]`), `nCr` written `10C3`,
-`C(10,3)` or `nCr(10,3)`, factorial `!`, and names the item binds to values (`p-hat`, `phat`, `x-bar`, `xbar`,
-`p0`, `mu0`, `n`, `s`). Bluebook spellings from the digital response guidelines are read as written (`sqrt(...)`,
-`p-hat_1`). `ApStatExpr.uses(tree)` returns the numbers and names that appear, for `mustUse` checks.
+The calculus parser (no eval) plus: `+/-` and `±` (an interval), `nCr` written `10C3`, `C(10,3)` or
+`nCr(10,3)`, factorial `!`, and names the item binds to values (`p-hat`, `phat`, `x-bar`, `xbar`, `p_0`,
+`p0`, `mu_0`, `n`, `s`, `p-hat_1`). Bluebook spellings from the digital response guidelines are read as
+written. The API: `evaluate(str, bind)` gives `{ value }` or `{ interval: [lo, hi] }`; `used(tree)` the
+numbers and names that appear (and those inside a square root); `gradeSetup(item, typed)` grades a
+`setup` item.
 
 ## Distributions: `ApStatDist` (`stat-dist.js`, pure, runs in node and the browser)
 
@@ -75,8 +83,8 @@ tableRoute(kind, value, df?)                      the Table A/B/C value a studen
 ```
 
 Quartiles use the AP® convention (median of each half, excluding the median when n is odd), stated in the notes.
-Every function is tested against published reference values (R outputs stored in the test file, not fetched)
-to 1e-6. `ApStatDist` is the one place numbers come from: questions, explanations, tool models, validators and
+Every function is tested against reference values computed with SciPy 1.18 (stored in
+`scripts/test/apstat-dist.test.mjs`, not fetched) to 1e-9; it agrees to about 1e-12. `ApStatDist` is the one place numbers come from: questions, explanations, tool models, validators and
 exam keys all call it.
 
 ## Content formats
@@ -98,15 +106,20 @@ stops the build).
 
 ### numeric
 
-`numeric: { answer, kind, places?, tol?, accept?, unit?, mistakes?: [{ value, why }], from?: {...} }`.
+`numeric: { answer, kind, places?, tol?, accept?, alpha?, unit?, mistakes?: [{ value, why }], from?: {...} }`.
 `kind` is one of `prob`, `z`, `t`, `chi2`, `pvalue`, `stat`, `count`, `df`, `critical` and sets the tolerance
-(spec section 7, rule 2). `from` names how the key is computed (`{ fn: "z1prop", args: [...] }`); the
-checker calls `ApStatDist` and compares, and adds the table route to the accepted band. No `askUnit`
-(statistics answers rarely carry units; `unit` is shown, not graded).
+(spec section 7, rule 2; `ApStatGrade.tolerance`). `from` is the recipe: `{ fn, args, pick?, complement? }`,
+`fn` one of `FROM_FNS` in `scripts/lib/apstat-build.mjs` (an `ApStatDist` function), `pick` the path to the
+number in its result (`"z"`, `"p.greater"`, `"df"`). The build recomputes the key from it (a typed `answer`
+that disagrees stops the content check) and adds the table route (Table A z to two places, the Table B
+df row, the conservative df) to `alts`. Give `alpha` on a p-value so the wrong side is always wrong. No
+`askUnit` (`unit` is shown, not graded).
 
 ### interval
 
-`interval: { lo, hi, kind: "stat", places?, from? }`. One box ("from a to b", "(a, b)", "a +/- m") or two.
+`interval: { lo, hi, places?, tol?, from? }`, where `from` is a `ci*` recipe (the build picks `lo` and
+`hi`). One box: "from a to b", "(a, b)", "a to b" or "a +/- m"; "a-b" is refused, as Bluebook would read
+it as a subtraction. Each end is graded as `stat`; a wrong center or a wrong margin gets its own note.
 
 ### setup
 
@@ -117,8 +130,10 @@ checker calls `ApStatDist` and compares, and adds the table route to the accepte
              "mistakes": [{ "expr": "(0.47-0.5)/sqrt(0.47*0.53/400)", "why": "A test's SE uses p0 ..." }] } }
 ```
 
-Graded by value (relative 1e-6 against the key) and structure (`mustUse`, `mustNotUse` patterns over
-`ApStatExpr.uses`); `then` asks for the value as a second step graded as `numeric`.
+Graded by value (relative 1e-6 against the key, both ends of an interval) and structure: every
+`mustUse` token (a bound name or a number) appears, typed by name or by its value; no `mustNotUse` token
+does, and `"<name> in sqrt"` means not inside a square root. A right value with the work missing scores
+half. `then` asks for the value as a second step graded as `numeric`.
 
 ### conclude
 
@@ -130,10 +145,12 @@ Graded by value (relative 1e-6 against the key) and structure (`mustUse`, `mustN
                 "write": { "context": ["voters", "bond"], "forbid": ["prove", "accept"] } } }
 ```
 
-`mode` is `test`, `interval` (interpret a CI or the level), `pvalue`, `error` (Type I/II in context),
-`slope`, `r2`, `residual`, `zscore`. The builder's slots are generated from the mode and the item (one right
-option plus authored distractors from the reader-report errors); `write` turns on the free-text layer with
-its flags (spec section 7, rule 5).
+`mode` is `test`, `interval`, `level`, `pvalue`, `error` (Type I/II in context), `slope`, `intercept`,
+`r2`, `residual`, `zscore` or `claim`. Slots are authored as `{ options, correct, why?: { index: text } }`;
+for `mode: "test"` the build adds a `decision` slot from `p` and `alpha` when the item has none
+(`concludeSlots` in `scripts/lib/apstat-build.mjs`). `model` is a full-credit sentence, shown after
+checking and required to pass its own `write` flags. `write` turns on the free-text layer with its
+flags (spec section 7, rule 5).
 
 ### FRQ: `data/frq/<id>.json`
 
@@ -159,10 +176,12 @@ Every plot is drawn from the data or distribution in the spec. Boxplots use the 
 
 As AP® Calculus AB (`--check`, `--out <dir>`, `APSTAT_PUBLISHED=unit-1`, `APSTAT_DATA=<dir>`), plus:
 
-- `prepareBank` adds each numeric item's accepted band (technology and table routes) and each conclude item's
-  generated slots; bank files split by gzip size (`bankFile`, 44 KB) as calculus.
-- Free lessons: Unit 1 and every "Math you need" topic (`isFreeTopic`; spec decision 10).
-- Home: "AP® Statistics, one idea at a time.", plum colours, the bell-curve icon, ranks from "Data Collector".
+- `prepareBank` recomputes each numeric and interval key from its recipe, adds the table route to `alts`,
+  renders each setup key, and generates each conclude item's decision slot; bank files split by gzip
+  size (`bankFile`, 44 KB) as calculus. The bank index marks the items of an exam set (`p` or `r`), so
+  practice can filter the two set types.
+- Free lessons: `FREE_UNITS` (Unit 1) and every "Math you need" topic (`isFreeTopic`; spec decision 10).
+- Home: from `IDENTITY` in `scripts/lib/apstat-build.mjs` (headline, accent, icon paths, first rank).
 - `formula-sheet.html` "The reference sheet, explained": every formula on the official sheet in our own
   layout with what it is, when to use it, the topic and trainers; how to read Tables A, B, C (our own
   generated tables); and "Not on the sheet" lines (1.5 × IQR, z-score, empirical rule, conditions, df rules).
@@ -172,18 +191,22 @@ As AP® Calculus AB (`--check`, `--out <dir>`, `APSTAT_PUBLISHED=unit-1`, `APSTA
 
 | File | What changes |
 |---|---|
-| `stat-questions.js` | Renderers and graders for `interval`, `setup`, `conclude`; numeric by `kind`; no calculator chip; Desmos link on every numeric item. |
+| `stat-questions.js` | Renderers and graders for `interval`, `setup`, `conclude`; numeric by `kind` (`ApStatGrade`); no calculator chip. The answered event is `stat:answered`. |
 | `pages/exams.js` | `MCQ_PARTS` one part: 42 in 90 min; `FRQ_PARTS` one part: 4 in 90 min, 10 points each. No calculator split. Results: MCQ %, FRQ self-score, by unit and practice; **no band**. |
 | `pages/cram.js` | Default exam date 2027-05-11; 42 + 4 format text; timed sets at about 2 min 9 s a question and 22 min an FRQ. |
 | `pages/frq-kit.js`, `frq.js`, `dashboard.js`, `practice.js` | The four FRQ types; practice filters for interval, setup and conclude items and the two set types. |
-| `stat.css` | Plum tint, the same values as `body[data-course="apstat"]` in `assets/theme.css`. |
+| `stat.css` | Plum tint on `body.stat`, the same values as `body[data-course="apstat"]` in `assets/theme.css`; bars, boxes and shaded bars for the data plots. |
+| `pages/practice.js` | Item-type filters: numeric, interval, setup, conclude, probability sets, regression sets. |
+| `tools/stat-plot.js` | `kind` plots (dot, hist, box, scatter, resid, bar, density) expanded from their data by `expand(spec)` before drawing. |
 
 Dropped from the fork: `calc-expr.js` `expr` items, the three-decimal rule, calculator/no-calculator split,
 `score.js`, plots of functions, slope fields.
 
 ## Tools
 
-Ten trainers (`docs/apstat-spec.md` section 6), registered in `data/pages.json` with `studio: true`;
+Ten trainers (`docs/apstat-spec.md` section 6), registered in `statistics/data/pages.json` with
+`studio: true` and scaffolded in Phase 0 (a placeholder model, page script, validator and test per slug;
+nothing builds until `statistics/data/tools/<slug>.json` exists and its topic is published).
 `sampling-distributions`, `data-explorer` and `probability-trees` free, the rest `premium: 'tools'`. Each slug
 owns four files:
 
@@ -196,8 +219,8 @@ scripts/test/apstat-tool-<slug>.test.mjs     its tests
 
 Slugs: `data-explorer`, `sampling-lab`, `design-randomizer`, `probability-trees`, `distribution-areas`,
 `sampling-distributions`, `ci-capture`, `p-value-explorer`, `chi-square-lab`, `regression-lab`.
-`_shared.mjs` loads `stat-expr.js`, `stat-math.js`, `stat-dist.js`, `stat-tool-math.js` and `stat-plot.js` in
-a vm. Simulations use a seeded generator (`ApStatMath.rng(seed)`), so a drill's sample is reproducible and the
+`_shared.mjs` loads `stat-expr.js`, `stat-math.js`, `stat-dist.js`, `stat-grade.js`, `stat-tool-math.js` and
+`stat-plot.js` in a vm (`runtime(slug)` returns `{ M, Expr, Tex, Dist, Grade, Plot, model }`). Simulations use a seeded generator (`ApStatMath.rng(seed)`), so a drill's sample is reproducible and the
 validator regenerates it. Model tests are statistical: 10,000 simulated 95% intervals capture within 94-96%,
 the simulated SD of x̄ matches σ/√n within 3%, simulated Type I rate within 1 point of α.
 
@@ -225,7 +248,10 @@ about the sample or "95% of the data".
 
 ## Registration
 
-Registered hidden in Phase 0, `beta` at launch, Premium `onSale: false` until the owner checklist.
+Registered hidden in Phase 0 (done 2026-10-17), `beta` at launch, Premium `onSale: false` until the owner
+checklist. Hidden means: no hub card, 404 card, premium.html entry, site-search source listing or sitemap
+entry; the generated course lists in `index.html` and `offline.html` include it (as calculus did), but
+nothing on the homepage shows it.
 `assets/courses.js` (key `apstat`, order 8, path `/statistics/`, short "Statistics", aliases `statistics`,
 `stats`, `stat`); `assets/premium.js` (`COURSES.apstat`, pass `stat-2027`, $25 through 2027-06-30,
 `freeChapters: ['unit-1']`, `COURSE_LIST`, the trademark line's course test); `assets/exam-date.js`
@@ -234,7 +260,9 @@ Registered hidden in Phase 0, `beta` at launch, Premium `onSale: false` until th
 `build-courses.mjs`, `build-og-images.mjs`, `check-site.mjs`, `check-a11y.mjs`, `check-console.mjs`,
 `check-weight.mjs`; `worker/src/premium.js` (`PASSES['stat-2027']`, `URL_COURSE.apstat = 'statistics'`,
 `COURSE_NAMES`) and `index.js` (`COURSE_RULES.apstat`); `sw.js` `COURSE_URLS.statistics`;
-`scripts/sql/migrations/2026-10h-apstat.sql` with `schema.sql`, `reports.sql`, `pageviews.sql`.
+`scripts/sql/migrations/2026-10h-apstat.sql` (not applied) with `schema.sql`, `reports.sql`, `pageviews.sql`;
+`scripts/build-og-images.mjs` (`statistics/assets/og-image.png`), `build-og-tags.mjs`, `build-sitemap.mjs`,
+`lib/app-pages.mjs`, `lib/premium-data.mjs`; `worker/dist/worker.js` rebuilt.
 
 ## Checks
 
@@ -242,6 +270,6 @@ Registered hidden in Phase 0, `beta` at launch, Premium `onSale: false` until th
 node scripts/build-apstat.mjs --check
 node scripts/check-apstat-map.mjs --check        nothing used before it is taught (prose and notation)
 node scripts/check-apstat-content.mjs --check    formats, math, recomputed keys, plots, sets, forms, excluded topics
-node --test scripts/test/apstat-*.test.mjs
-scripts/ci-local.sh
+node --test scripts/test/apstat-*.test.mjs       map, build, core, cram, dist, exams, expr, math, plot, questions, syntax, tools
+scripts/ci-local.sh                              all of the above, wired in like apcalc (also .github/workflows/checks.yml)
 ```

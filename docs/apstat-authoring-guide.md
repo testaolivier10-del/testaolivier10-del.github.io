@@ -1,4 +1,4 @@
-# AP® Statistics authoring guide (draft, Phase R)
+# AP® Statistics authoring guide
 
 Rules for writing AP® Statistics content, adapted from `docs/apcalc-authoring-guide.md`. They come from
 `docs/apstat-spec.md`; where this guide and the spec differ, the spec wins. File formats are in
@@ -14,7 +14,10 @@ Rules for writing AP® Statistics content, adapted from `docs/apcalc-authoring-g
    sample mean, a null hypothesis, chi-square, conditional probability.
 3. Write `statistics/data/lessons/<id>.json`, `notes/<id>.html`, `questions/<id>.json`, `glossary/<id>.json`.
 4. Run `node scripts/check-apstat-content.mjs --topic <id>` until it reports nothing, and
-   `node scripts/check-apstat-map.mjs --check`.
+   `node scripts/check-apstat-map.mjs --check`. The placeholder fixture
+   `scripts/test/fixtures/apstat-data/questions/test-one-mean.json` shows every item type in working form
+   (numeric with `from`, interval, setup, conclude, a probability set); it is placeholder content, never a
+   model for wording.
 
 ## Originality, sources and the trademark
 
@@ -38,11 +41,15 @@ may mention one in a `going-further` aside.
 - The chi-square goodness-of-fit test (homogeneity and independence stay).
 - Transformations to achieve linearity (logs, powers).
 - Inference for the slope of a regression line.
-- Pooled two-sample t procedures; anything requiring calculus.
+- Pooled two-sample t procedures (confirmed: the 2026 reference sheet gives only the unpooled SE for
+  means); anything requiring calculus.
+- The normal approximation to the binomial (not found in any readable official text; needs-author
+  `ced-text`). Binomial probabilities are exact (formula or technology).
 
-Uncertain until the CED text is read (needs-author `ced-text`): the 10% condition wording, the normal
-approximation to the binomial. Until then use the 10% condition when sampling without replacement (it is
-standard) and do not test the normal approximation to the binomial.
+The 10% condition **is** in the course (the CED's Unit 4 overview names it): check it whenever sampling
+is without replacement, and keep it apart from the random condition (confusing the two is a common
+error the CED names). The slope formula $b = r\frac{s_y}{s_x}$ is not on the 2026 reference sheet; teach
+it in 5.5 as a relationship, and give slope and intercept from computer output in items.
 
 ## Notation
 
@@ -148,11 +155,14 @@ cause-and-effect conclusion. Say which one the study has, and so what it allows.
   `set: "regression"`), at least 4 sets per relevant unit.
 - Every unit mixes representations: tables, dotplots, histograms, boxplots, scatterplots, two-way tables,
   written study descriptions.
-- Numeric items use `kind` and `from` (the key is recomputed). Add 2-3 `mistakes` from real slips: p̂ instead of
+- Numeric items use `kind` and `from` (the key is recomputed by `ApStatDist`; a typed key that disagrees fails
+  the check). Give `alpha` on every p-value item. Add 2-3 `mistakes` from real slips: p̂ instead of
   p₀ in a test's SE; dividing by n instead of n − 1; one-sided p doubled or not; using z* for means; P(X = 4)
   for P(X ≥ 4); "fewer than 3" as P(X ≤ 3).
 - Conclusion items (`conclude`) for every inference topic and every interpretation skill (4.C, 4.D, 4.F, 4.G);
-  builder distractors are the forbidden wordings above.
+  builder distractors are the forbidden wordings above, each with its `why`; every one has a `model` sentence
+  that follows the templates above (the check runs its own flags on it).
+- No `calc` flag (a calculator is allowed everywhere) and no `expr` items (use `setup`).
 
 ## FRQs: the 10-point analytic style
 

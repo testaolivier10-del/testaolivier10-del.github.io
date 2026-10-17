@@ -3,9 +3,9 @@
 The source of truth for LevlPrep's eighth course. A fresh session reads this file, `CLAUDE.md`,
 `docs/apstat-research/framework.md` and `docs/apstat-research/market.md`, not the chat history. When the
 plan changes, update this file in the same commit. Open points for a person go in
-`docs/apstat-needs-author.md` (created in Phase 0; until then, section 8 here). Formats:
-`docs/apstat-architecture.md`; writing rules: `docs/apstat-authoring-guide.md`; map: `docs/apstat-phase0.md`
-(Phase 0).
+`docs/apstat-needs-author.md`. Formats: `docs/apstat-architecture.md`; writing rules:
+`docs/apstat-authoring-guide.md`; map and the CED check: `docs/apstat-phase0.md`; briefs for Phases 1, 2
+and 4: `docs/apstat-briefs/`.
 
 Course key `apstat` (storage, analytics, registry, SQL). URL path `/statistics/`. Every new browser global
 starts with `ApStat`. Question ids start `stat-`, CSS classes `stat-`. Template: the AP® Calculus AB course
@@ -40,7 +40,10 @@ Proportions 15-25% (15; one and two proportions, error types, chi-square homogen
 Inference for Quantitative Data: Means 10-20% (10; one-sample and paired t, two-sample t), U5 Regression
 Analysis 10-20% (5; scatterplots, correlation, LSRL, residuals; no inference). Practices: 1 Formulate
 Questions 5-10%, 2 Collect Data 20-30%, 3 Analyze Data 25-35%, 4 Interpret Results 25-35%, with skills
-1.A, 2.A-2.E, 3.A-3.E, 4.A-4.G. Unit 4 and 5 topic titles come from third parties (needs-author `ced-text`).
+1.A, 2.A-2.E, 3.A-3.E, 4.A-4.G. Checked in Phase 0 against the CED text, the official student page and the
+2026 reference sheet: every topic title is official except 4.3, 4.5, 4.9 and 5.4 (three third-party
+sites agree); the 10% condition is in the course; pooled two-sample t is not; b = r·s_y/s_x is not on the
+sheet; the normal approximation to the binomial was not found (needs-author `ced-text`).
 
 **Exam (Tue 11 May 2027, afternoon), fully digital in Bluebook, 3 hours.** Section I: 42 MCQ, 4 options,
 90 min, 50%, including two 3-question sets (probability and distributions; regression). Section II: 4 FRQs,
@@ -116,15 +119,45 @@ One branch, `claude/apstat`, one PR at the end. Phases as AP® Calculus AB.
 | Phase | What | Parallel split | Status |
 |---|---|---|---|
 | R | Research: `docs/apstat-research/framework.md`, `market.md`; this spec; architecture and authoring drafts | one session | **done 2026-10-17** |
-| 0 | Fork AP® Calculus AB: CED map (55 topics + math chapter), dependency map with notation patterns, generator `scripts/build-apstat.mjs`, runtime `statistics/assets/` (`stat-*`), `ApStatDist` distributions library, statistics TeX additions, numeric/interval/setup/conclusion item types, `ApStatPlot` (dotplot, histogram, boxplot, scatter, density curves), checks, tests, fixture, registration hidden (registry, Premium pass, Worker, SQL migration, hub/pricing, search, sitemap, OG, budgets, theme, sw.js), tool scaffolding, briefs, needs-author | one session (shared files) | |
-| 1 | Content: lessons, notes, banks (incl. the two set types), FRQs, glossary, figures | 5 authors at once: (a) U1 + "Math you need", (b) U2, (c) U3 topics 3.1-3.8, (d) U3 3.9-3.15 + U5, (e) U4. Each writes only its topics' files | |
-| 2 | Trainers (section 6) | 3-4 builders at once, each owning whole slugs (four files per slug); runs alongside Phase 1 because contexts unlock per unit | |
+| 0 | Fork AP® Calculus AB: CED map (55 topics + math chapter), dependency map with notation patterns, generator `scripts/build-apstat.mjs`, runtime `statistics/assets/` (`stat-*`), `ApStatDist` distributions library, statistics TeX additions, numeric/interval/setup/conclusion item types, `ApStatPlot` (dotplot, histogram, boxplot, scatter, density curves), checks, tests, fixture, registration hidden (registry, Premium pass, Worker, SQL migration, hub/pricing, search, sitemap, OG, budgets, theme, sw.js), tool scaffolding, briefs, needs-author | one session (shared files) | **done 2026-10-17** (`docs/apstat-phase0.md`, `docs/apstat-architecture.md`, `docs/apstat-briefs/`); CI passes |
+| 1 | Content: lessons, notes, banks (incl. the two set types), FRQs, glossary, figures | 5 authors at once (section 5a). Each writes only its topics' files | |
+| 2 | Trainers (section 6) | 4 builders at once, each owning whole slugs (section 5a); runs alongside Phase 1 because contexts unlock per unit | |
 | 3 | "Say it in context" trainer, two fixed practice exams, formulas page, unit tests, cram kit | one session (needs the banks) | |
 | 4 | Independent accuracy checks per unit and for tools and exams (every key recomputed by code with `ApStatDist`); fixes | reviewers in parallel, one per unit group + tools + exams | |
 | Launch | Publish, generators, continuity pass against calculus on every shared page type, "Eight courses" wording, full CI with browser checks, PR | one session | |
 
 Quality bar: AP® Calculus AB authoring rules; every number, probability, interval and p-value key recomputed
 by code; every plot drawn from the data or distribution it claims to show; independent accuracy review.
+
+### 5a. Authoring split (proposed, Phase 0)
+
+Balanced by work, not by topic count: Unit 1 is long but light on calculation, Unit 3 is heavy, so it is
+split in two; Unit 5 is short, so it rides with the second half of Unit 3. Each author owns every file of
+its topics (lesson, notes, questions, glossary, figures) and the FRQs listed; the map's FRQ themes give 12
+FRQs, two of each type at least, enough for the two practice exams (decision 7).
+
+| Author | Topics | Count | FRQs | Exam sets |
+|---|---|---|---|---|
+| A | Unit 1 (1.1-1.13) and the whole "Math you need" chapter (5 skills) | 13 + 5 | `analyze` comparing distributions; `collect` survey and bias; `collect` experiment with blocking | none |
+| B | Unit 2 (2.1-2.12) | 12 | `multi` binomial random variable and a claim; `analyze` conditional probability from a two-way table | at least 4 probability sets of 3 (two-way tables, a discrete distribution, binomial, normal) |
+| C | Unit 3, 3.1-3.8 (one proportion, p-values, errors and power) | 8 | `inference` one-proportion z test; `multi` Type I and II errors in context | none |
+| D | Unit 3, 3.9-3.15 (two proportions, chi-square) and Unit 5 (5.1-5.5) | 7 + 5 | `inference` two-proportion interval and claim; `inference` chi-square test for independence; `analyze` regression output | at least 4 regression sets of 3 |
+| E | Unit 4 (4.1-4.10, one-sample and paired t, two-sample t) | 10 | `inference` paired t interval; `inference` two-sample t test | none |
+
+The "Say it in context" prompts (5-8 per unit) are written in Phase 3 from the banks, not by these
+authors.
+
+Trainer builders (Phase 2), four at once, each owning whole slugs (four files per slug, nothing shared):
+
+| Builder | Trainers | Why together |
+|---|---|---|
+| T1 | `sampling-distributions` (flagship), `ci-capture` | the same sampling engine: repeated samples from a population, then intervals built from them |
+| T2 | `p-value-explorer`, `distribution-areas`, `chi-square-lab` | shaded areas under density curves from `ApStatDist` (normal, t, chi-square, binomial) |
+| T3 | `data-explorer`, `regression-lab` | drag-a-point data plots: summaries and fences, then the least-squares line and residuals |
+| T4 | `sampling-lab`, `design-randomizer`, `probability-trees` | illustrated populations and units, seeded random selection and assignment, linked tree, table and Venn views |
+
+Each trainer's context topics must be published before its page builds, so T3 and T4 can start on Unit 1
+contexts first and T1 and T2 on Unit 2-3 contexts as those authors finish.
 
 ## 6. Trainers
 
@@ -232,22 +265,30 @@ All grading is code; nothing is graded by an AI model. Formats in `docs/apstat-a
    tab, nothing embedded (as AP® Calculus AB decision 9).
 10. (2026-10-17) **Free tier (proposed):** Unit 1 and the "Math you need" lessons free (Unit 1 alone is
     20-30% of the exam; Units 1-2 would be 25 of 55 topics, more than the other courses give).
+11. (2026-10-17) **Phase 0 built as proposed, each choice in one place** so the owner can change it: the
+    identity in `IDENTITY` (`scripts/lib/apstat-build.mjs`) with its CSS values in `assets/theme.css` and
+    `statistics/assets/stat.css` and the ranks in `assets/hub-progress.js`; the free tier in `FREE_UNITS`
+    and `assets/premium.js` `freeChapters`; the free trainers in `statistics/data/pages.json`. Registered
+    `status: 'hidden'`, `onSale: false`, pass `stat-2027`, SQL migration `2026-10h-apstat.sql` not applied.
+12. (2026-10-17) **CED check outcome.** The 10% condition is taught in 3.2 and used in every inference
+    topic; two-sample t is unpooled (technology df, conservative df accepted); the normal approximation to
+    the binomial is not tested; the slope is read from output (b = r·s_y/s_x is taught as a relationship,
+    not on the sheet). The formulas page lists exactly the 2026 sheet (a test holds it to that).
+13. (2026-10-17) **Graders are code and live in two files.** `ApStatGrade` (`stat-grade.js`) for numeric
+    kinds, intervals and conclusions; `ApStatExpr.gradeSetup` (`stat-expr.js`) for setups. Every numeric
+    and interval key carries a recipe (`from`) the build recomputes with `ApStatDist`, which matches SciPy
+    to about 1e-12; the table route is added as an accepted alternative at build time.
 
 ## 9. Open items for the owner
 
-Before Phase 0:
+Before Phase 1 (built as proposed in Phase 0, each easy to change; decision 11):
 - Confirm the accent, icon, headline and ranks (decision 5), the free trainers (section 6) and the free tier
   (decision 10).
 - Confirm no readiness band on exams (decision 6), stricter than the other AP® courses.
+- Confirm the authoring split (section 5a).
 
-Uncertain research (into `docs/apstat-needs-author.md` in Phase 0):
-- `ced-text`: Units 2-5 learning objectives and essential knowledge were not text-verified; Unit 4 and 5 topic
-  titles come from third parties. Someone should read the CED PDF topic pages, especially for: the 10%
-  condition, the normal approximation to the binomial, pooled two-sample t (expected excluded), and whether
-  the revised reference sheet still gives b = r·s_y/s_x.
-- `frq-scoring`: no released 10-point scoring guideline yet beyond the CED sample; our rubric line split is an
-  estimate.
-- `set-format`: the two 3-question MCQ sets are confirmed; whether other stimulus sets exist is not.
+Uncertain research: `docs/apstat-needs-author.md` (`ced-text`: Units 2-5 objectives, four third-party titles
+and the normal approximation to the binomial; `frq-scoring`; `set-format`).
 
 **Launch checklist (after the PR is ready, owner):**
 - [ ] Apply SQL migration `2026-10h-apstat.sql` in Supabase (check live function bodies match apart from
