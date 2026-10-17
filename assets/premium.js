@@ -249,9 +249,6 @@
       // every "Math you need" lesson. Keep in step with FREE_UNITS in
       // scripts/lib/apstat-build.mjs (build-pricing --check compares them).
       freeChapters: ['unit-1'],
-      // Not on sale until the owner checklist is done (docs/apstat-spec.md,
-      // section 9): nothing locks and the dialog says "Coming soon".
-      onSale: false,
       passes: [
         { id: 'stat-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
