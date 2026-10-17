@@ -263,8 +263,8 @@ All grading is code; nothing is graded by an AI model. Formats in `docs/apstat-a
    sections); items never require a specific calculator. Explanations show the formula route and name the
    calculator command in words ("a 1-proportion z test"); a link to the free Desmos calculator opens in a new
    tab, nothing embedded (as AP® Calculus AB decision 9).
-10. (2026-10-17) **Free tier (proposed):** Unit 1 and the "Math you need" lessons free (Unit 1 alone is
-    20-30% of the exam; Units 1-2 would be 25 of 55 topics, more than the other courses give).
+10. (2026-10-17) **Free tier (owner decided):** Units 1 and 2 and the "Math you need" lessons free, the same
+    as the other AP® courses (Olivier, 2026-10-17). Accent plum confirmed.
 11. (2026-10-17) **Phase 0 built as proposed, each choice in one place** so the owner can change it: the
     identity in `IDENTITY` (`scripts/lib/apstat-build.mjs`) with its CSS values in `assets/theme.css` and
     `statistics/assets/stat.css` and the ranks in `assets/hub-progress.js`; the free tier in `FREE_UNITS`

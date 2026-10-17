@@ -47,7 +47,7 @@ export const IDENTITY = {
 // Unit 1 and every "Math you need" lesson. Change it here and in
 // assets/premium.js COURSES.apstat.freeChapters (build-pricing --check
 // compares the two), then rebuild.
-export const FREE_UNITS = ['unit-1'];
+export const FREE_UNITS = ['unit-1', 'unit-2'];
 export const MAP_PATH = join(ROOT, 'docs', 'apstat-dependency-map.json');
 export const STUB_PATH = join(ROOT, 'scripts', 'test', 'fixtures', 'apstat-map-stub.json');
 
