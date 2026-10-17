@@ -42,22 +42,40 @@
   }
 
   /* One mastery row. o: label, href, value (0..1), text (shown instead of
-     the percentage), tier ({label,lvl}), note (html), action ({href,label}). */
+     the percentage), tier ({label,lvl}), note (html), action ({href,label}).
+     The action sits in its own column beside the row rather than on a line
+     of its own, so a row with a Practice button is no taller than one
+     without (polish 2026-10-17, B8). */
   function row(o){
     var p = pct(o.value);
     var act = o.action ? '<a class="cx-go" href="' + esc(o.action.href) + '">' + esc(o.action.label) + '</a>' : '';
-    return '<div class="cx-row"><div class="cx-row-top">' +
+    var main = '<div class="cx-row-top">' +
         '<span class="cx-row-name">' + (o.href ? '<a href="' + esc(o.href) + '">' + esc(o.label) + '</a>' : esc(o.label)) + '</span>' +
         '<span class="cx-row-val"><b>' + (o.text != null ? o.text : (o.tier && !o.tier.lvl ? '' : p + '%')) + '</b>' + chip(o.tier) + '</span>' +
       '</div>' +
       '<div class="track thin" aria-hidden="true"><i style="width:' + Math.max(o.value > 0 ? 2 : 0, Math.min(100, p)) + '%"></i></div>' +
-      ((o.note || act) ? '<div class="cx-row-foot"><span>' + (o.note || '') + '</span>' + act + '</div>' : '') +
-    '</div>';
+      ((o.note || act) ? '<div class="cx-row-foot"><span>' + (o.note || '') + '</span></div>' : '');
+    return act ? '<div class="cx-row has-go"><div class="cx-row-main">' + main + '</div>' + act + '</div>'
+      : '<div class="cx-row">' + main + '</div>';
   }
 
   // A collapsible group (chapter, unit, module, domain) with rows inside.
   function group(head, bodyHtml, open){
     return '<details class="cx-group"' + (open ? ' open' : '') + '><summary>' + row(head) + '</summary><div class="cx-group-body">' + bodyHtml + '</div></details>';
+  }
+
+  /* Groups nobody has touched yet, folded into one line ("6 units not
+     started yet") once at least one group has been started, so a learner's
+     own work is not lost among a column of zeros. items: [{ html, started }];
+     noun: 'unit' / 'chapter'. With nothing started, every group is shown as
+     before: then the list is the map of where to begin. */
+  function groups(items, noun){
+    var started = items.filter(function(x){ return x.started; });
+    var rest = items.filter(function(x){ return !x.started; });
+    if(!started.length || rest.length < 2) return items.map(function(x){ return x.html; }).join('');
+    return started.map(function(x){ return x.html; }).join('') +
+      '<details class="cx-untouched"><summary>' + esc(plural(rest.length, noun)) + ' not started yet</summary>' +
+      rest.map(function(x){ return x.html; }).join('') + '</details>';
   }
 
   function panel(o){
@@ -87,13 +105,18 @@
   function level(info, o){
     o = o || {};
     if(!info) return '';
+    // Before the first answer there is nothing to show but zeros, so the card
+    // says what it will track instead (polish 2026-10-17, B10).
+    if(!info.total) return '<section class="cx-level is-zero" aria-labelledby="cx-level-h"><h2 id="cx-level-h">Your level</h2>' +
+      '<p class="cx-level-sub">Starts with your first answer. Every question, card and lesson earns XP, and one level counts across every LevlPrep course.</p></section>';
     var into = Math.round(info.into / Math.max(1, info.span) * 100);
+    var toNext = Number(info.toNext != null ? info.toNext : info.span - info.into);
     return '<section class="cx-level" aria-labelledby="cx-level-h">' +
       '<div class="cx-level-head"><span class="cx-level-ring" aria-hidden="true">' + info.level + '</span><div>' +
         '<h2 id="cx-level-h">Level ' + info.level + ' &middot; ' + esc(info.title) + '</h2>' +
         '<span class="cx-level-sub">' + (o.xpLine || (Number(info.total || 0).toLocaleString() + ' XP total')) + '</span></div></div>' +
       '<div class="cx-level-track" aria-hidden="true"><i style="width:' + into + '%"></i></div>' +
-      '<p class="cx-level-sub">' + Number(info.toNext != null ? info.toNext : info.span - info.into).toLocaleString() + ' XP to level ' + (info.level + 1) + '</p>' +
+      '<p class="cx-level-sub">' + toNext.toLocaleString() + ' XP to level ' + (info.level + 1) + '</p>' +
       (o.sub || []).map(function(s){ return '<p class="cx-level-sub">' + s + '</p>'; }).join('') +
       (o.chips && o.chips.length ? '<div class="cx-level-chips">' + o.chips.map(function(c){ return '<span>' + esc(c) + '</span>'; }).join('') + '</div>' : '') +
     '</section>';
@@ -307,7 +330,7 @@
     });
   }
 
-  var api = { esc: esc, pct: pct, plural: plural, tier: tier, chip: chip, stats: stats, row: row, group: group, panel: panel, next: next,
+  var api = { esc: esc, pct: pct, plural: plural, tier: tier, chip: chip, stats: stats, row: row, group: group, groups: groups, panel: panel, next: next,
     level: level, streakLine: streakLine, badges: badges, toolCard: toolCard, toolGrid: toolGrid, toolStatus: toolStatus, nowCard: nowCard,
     search: search, engine: engine };
   root.LevlHub = api;
