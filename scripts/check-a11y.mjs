@@ -117,6 +117,14 @@ const PAGES = [
   ['/calculus/frq.html', 'the AP® Calculus AB free-response list'],
   ['/calculus/formula-sheet.html', 'the AP® Calculus AB formula page'],
   ...bioPages('calculus', 'AP® Calculus AB'),
+  // AP® Statistics, the same way, hidden until a unit is published.
+  ['/statistics/', 'the AP® Statistics course home'],
+  ['/statistics/glossary.html', 'the AP® Statistics glossary'],
+  ['/statistics/practice.html', 'the AP® Statistics practice builder'],
+  ['/statistics/exams.html', 'the AP® Statistics exams app'],
+  ['/statistics/frq.html', 'the AP® Statistics free-response list'],
+  ['/statistics/formula-sheet.html', 'the AP® Statistics reference sheet page'],
+  ...bioPages('statistics', 'AP® Statistics'),
 ];
 
 /* The first published AP® Biology topic's lesson and notes page, the first

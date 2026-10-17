@@ -149,6 +149,19 @@ jobs:
         run: node scripts/build-apcalc.mjs --check
       - name: the AP Calculus AB content follows its rules
         run: node scripts/check-apcalc-content.mjs --check
+      # AP Statistics, the same three checks (docs/apstat-architecture.md):
+      # the ordering rule (words and notation such as p-hat or H_0), the
+      # generated pages against statistics/data, and the authored data against
+      # its rules (every numeric key recomputed by ApStatDist, setup and
+      # conclusion items graded by their own rules, the two exam sets, the four
+      # FRQ types, removed topics refused, pre-registered tools). Only
+      # published units fail.
+      - name: the AP Statistics course uses no concept before it is taught
+        run: node scripts/check-apstat-map.mjs --check
+      - name: the AP Statistics pages match their data
+        run: node scripts/build-apstat.mjs --check
+      - name: the AP Statistics content follows its rules
+        run: node scripts/check-apstat-content.mjs --check
       # The ochem homepage lists the chapters twice (the path of nodes and the
       # JSON-LD syllabus). Both are generated from curriculum.js; a stale copy
       # would show a reader, and a search engine, the wrong course.

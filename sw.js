@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v80';
+const CACHE_NAME = 'levlprep-v81';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -250,6 +250,26 @@ COURSE_URLS.calculus = [
   'calculus/assets/calc-questions.js',
   'calculus/assets/calc-nav.js',
   'calculus/assets/glossary.json',
+];
+COURSE_URLS.statistics = [
+  // The AP® Statistics shell (key apstat, folder statistics), as Calculus plus
+  // the distributions library and the graders every question page loads.
+  'statistics/index.html',
+  'statistics/learn.html',
+  'statistics/search.html',
+  'statistics/tools.html',
+  'statistics/dashboard.html',
+  'statistics/manifest.json',
+  'statistics/assets/stat.css',
+  'statistics/assets/stat-curriculum.js',
+  'statistics/assets/stat-core.js',
+  'statistics/assets/stat-expr.js',
+  'statistics/assets/stat-math.js',
+  'statistics/assets/stat-dist.js',
+  'statistics/assets/stat-grade.js',
+  'statistics/assets/stat-questions.js',
+  'statistics/assets/stat-nav.js',
+  'statistics/assets/glossary.json',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude

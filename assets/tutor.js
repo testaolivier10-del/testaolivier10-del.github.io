@@ -42,6 +42,7 @@
     { key: 'apchem', dir: 'chem' },
     { key: 'apphys', dir: 'physics' },
     { key: 'apcalc', dir: 'calculus' },
+    { key: 'apstat', dir: 'statistics' },
   ];
   // courses:end
   function courseKey(){
@@ -136,6 +137,14 @@
       .catch(function(){ return []; });
   }
 
+  // AP® Statistics's, the same way (scripts/build-apstat.mjs).
+  function statPages(){
+    return fetch('/statistics/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(list){ return list.length ? list.concat([{ file: '/statistics/glossary.html', title: 'Glossary', data: '/statistics/assets/glossary.json' }]) : list; })
+      .catch(function(){ return []; });
+  }
+
   function resolvePages(){
     var k = courseKey();
     if(k === 'ochem') return ochemPages();
@@ -144,6 +153,7 @@
     if(k === 'apchem') return chemPages();
     if(k === 'apphys') return physPages();
     if(k === 'apcalc') return calcPages();
+    if(k === 'apstat') return statPages();
     return Promise.resolve(NREMT_PAGES);
   }
 
@@ -156,6 +166,7 @@
     if(k === 'apchem') return '<a href="/chem/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apphys') return '<a href="/physics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apcalc') return '<a href="/calculus/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    if(k === 'apstat') return '<a href="/statistics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
@@ -1070,6 +1081,12 @@
       'How do I justify a relative maximum?',
       'What is the difference between a definite and an indefinite integral?',
       'Which hypotheses does the Mean Value Theorem need?'
+    ],
+    apstat: [
+      'What does 95% confident actually mean?',
+      'How do I write a conclusion for a significance test?',
+      'When do I use a t procedure instead of a z procedure?',
+      'What is the difference between a Type I and a Type II error?'
     ]
   };
 
@@ -1080,7 +1097,8 @@
     apbio: 'Ask me anything from this course — every published Biology notes page and the glossary are indexed. I can define a term, explain a process step by step, or point you at the page it came from.',
     apchem: 'Ask me anything from this course — every published Chemistry notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.',
     apphys: 'Ask me anything from this course — every published Physics notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.',
-    apcalc: 'Ask me anything from this course — every published Calculus notes page and the glossary are indexed. I can define a term, explain a derivative or an integral step by step, or point you at the page it came from.'
+    apcalc: 'Ask me anything from this course — every published Calculus notes page and the glossary are indexed. I can define a term, explain a derivative or an integral step by step, or point you at the page it came from.',
+    apstat: 'Ask me anything from this course: every published Statistics notes page and the glossary are indexed. I can define a term, explain a calculation or a conclusion step by step, or point you at the page it came from.'
   };
 
   function Tutor(mount, opts){

@@ -31,6 +31,7 @@
     { key: 'apchem', searchLabel: 'Chemistry', name: 'AP® Chemistry', dir: 'chem', aliases: ['chem', 'chemistry'], status: 'beta' },
     { key: 'apphys', searchLabel: 'Physics', name: 'AP® Physics 1', dir: 'physics', aliases: ['physics', 'phys', 'physics-1'], status: 'beta' },
     { key: 'apcalc', searchLabel: 'Calculus', name: 'AP® Calculus AB', dir: 'calculus', aliases: ['calculus', 'calc', 'calculus-ab'], status: 'beta' },
+    { key: 'apstat', searchLabel: 'Statistics', name: 'AP® Statistics', dir: 'statistics', aliases: ['statistics', 'stats', 'stat'], status: 'hidden' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {
@@ -60,11 +61,11 @@
   }
 
   /* The ?course= value written for a course. A key with the token "ap" in it
-     (apbio, apchem, apphys, apcalc) never goes into a URL (docs/apbio-spec.md decision 2): it travels
+     (apbio, apchem, apphys, apcalc, apstat) never goes into a URL (docs/apbio-spec.md decision 2): it travels
      as its folder ("bio"), which parseCourse reads back through its aliases. */
   function urlKey(key) {
     var tokens = String(key || '').toLowerCase().split(/[^a-z0-9]+/);
-    if (tokens.indexOf('ap') === -1 && tokens.indexOf('apbio') === -1 && tokens.indexOf('apchem') === -1 && tokens.indexOf('apphys') === -1 && tokens.indexOf('apcalc') === -1) return key;
+    if (tokens.indexOf('ap') === -1 && tokens.indexOf('apbio') === -1 && tokens.indexOf('apchem') === -1 && tokens.indexOf('apphys') === -1 && tokens.indexOf('apcalc') === -1 && tokens.indexOf('apstat') === -1) return key;
     for (var i = 0; i < COURSE_LIST.length; i++) if (COURSE_LIST[i].key === key) return COURSE_LIST[i].dir;
     return key;
   }
@@ -92,10 +93,12 @@
   // a space so "<li>a</li><li>b</li>" does not read as "ab".
   /* AP® Calculus AB math (<math>...<annotation>TeX</annotation></math>) as
      plain text: its TeX read out by ApCalcTex.text once calc-math.js is
-     loaded ("d/dx f(g(x)) = f′(g(x)) · g′(x)"), else the formula's symbols. */
+     loaded ("d/dx f(g(x)) = f′(g(x)) · g′(x)"), else the formula's symbols.
+     AP® Statistics math the same way through ApStatTex (stat-math.js). */
   function mathText(m) {
     var tex = /<annotation[^>]*>([\s\S]*?)<\/annotation>/.exec(m);
-    if (tex && window.ApCalcTex) return ' ' + window.ApCalcTex.text(decodeEntities(tex[1])) + ' ';
+    var T = window.ApCalcTex || window.ApStatTex;
+    if (tex && T) return ' ' + T.text(decodeEntities(tex[1])) + ' ';
     return ' ' + m.replace(/<annotation[\s\S]*?<\/annotation>/g, '').replace(/<[^>]+>/g, '') + ' ';
   }
   function stripHtml(html) {
@@ -681,6 +684,51 @@
                 if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
                 if (text.length < 30) return;
                 out.push({ course: 'apcalc', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
+                  heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
+              });
+              return out;
+            }).catch(function () { return []; });
+          })).then(function (all) { return [].concat.apply([], all); });
+        });
+      }],
+    ],
+    // AP® Statistics: the same, from scripts/build-apstat.mjs (empty until a unit is published).
+    apstat: [
+      ['lessons', function () {
+        return loadScript('statistics/assets/stat-curriculum.js').then(function () {
+          return apbioStructureChunks(window.ApStatCurriculum, 'apstat', 'statistics');
+        });
+      }],
+      ['glossary', function () {
+        return loadScript('statistics/assets/stat-math.js').catch(function () {}).then(function () {
+          return getJson('statistics/assets/glossary.json');
+        }).then(function (g) {
+          return glossaryChunks('apstat', termsFromJson(g), function (x) { return { file: 'glossary.html#t-' + x.id }; });
+        });
+      }],
+      ['notes', function () {
+        return loadScript('statistics/assets/stat-math.js').catch(function () {}).then(function () {
+          return getJson('statistics/assets/notes-index.json');
+        }).then(function (list) {
+          return Promise.all(list.map(function (n) {
+            var id = String(n.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+            var href = 'statistics/notes/' + id + '.html';
+            return getText(href).then(function (html) {
+              var doc = parseHtml(html);
+              var root = doc.querySelector('.stat-prose') || doc.querySelector('main') || doc.body;
+              root.querySelectorAll('.stat-crumb,.stat-onward,.stat-share,.stat-foot').forEach(function (x) { x.remove(); });
+              // Each formula as plain text, not its MathML symbols plus the TeX kept in its annotation.
+              root.querySelectorAll('math').forEach(function (m) { m.replaceWith(doc.createTextNode(mathText(m.outerHTML))); });
+              root.normalize();
+              var out = [];
+              var heading = n.title;
+              var hid = '';
+              root.querySelectorAll('h2,h3,p,li,td,th,dd,figcaption').forEach(function (el) {
+                var text = (el.textContent || '').replace(/\s+/g, ' ').trim().replace(/ ([.,;:])/g, '$1');
+                if (!text) return;
+                if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
+                if (text.length < 30) return;
+                out.push({ course: 'apstat', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
                   heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
               });
               return out;

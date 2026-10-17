@@ -810,6 +810,8 @@ const PASSES = {
   'phys-2027':      { course: 'apphys', until: '2027-06-30T23:59:59-10:00' },
   // AP® Calculus AB mirrors AP® Physics 1 (docs/apcalc-spec.md decision 3).
   'calc-2027':      { course: 'apcalc', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Statistics mirrors AP® Calculus AB (docs/apstat-spec.md decision 3).
+  'stat-2027':      { course: 'apstat', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -829,7 +831,7 @@ function passTerms(pass) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1468,7 +1470,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -1831,6 +1833,17 @@ const COURSE_RULES = {
     '- Justify with the named theorem and its hypotheses (continuity on the closed interval for the Intermediate and Extreme Value Theorems, also differentiability on the open interval for the Mean Value Theorem), and tie every sign argument to the function it is about (f\' changes sign, not "it changes sign").',
     '- A relative extremum needs a sign change of f\'; an absolute extremum needs the candidates test or a global argument. An antiderivative carries + C.',
     '- For calculator answers, give the setup and three decimal places. Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  apstat: [
+    '',
+    'This student is a high-school student preparing for the AP® Statistics exam (the revised course, first examined in May 2027). Additional guidance:',
+    '- Explain at a high-school level, from the basics up; the course needs only first-year algebra. Show each calculation as the exam asks: the formula, the values substituted, then the answer.',
+    '- Write math so it reads plainly in text, as Bluebook types it: p-hat, x-bar, mu, sqrt( ), H_0, H_a, and intervals as "from 0.41 to 0.53".',
+    '- Every conclusion is in context and about the parameter ("the true proportion of all ..."): compare the p-value with alpha, say whether there is convincing evidence for H_a, never "accept H_0" or "prove". Interpret a confidence level as a long-run capture rate, never as the chance the parameter is in one interval.',
+    '- Check conditions in words with numbers (random, 10% when sampling without replacement, large counts, normal or large sample). Two-sample t procedures are not pooled.',
+    '- Do not teach the geometric distribution, combining random variables, chi-square goodness of fit, transformations or inference for slope as tested content: they were removed from the course. Do not state a value that is not in the passages; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
   ].join('\n'),

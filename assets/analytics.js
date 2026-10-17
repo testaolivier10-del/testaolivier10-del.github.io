@@ -43,6 +43,7 @@
     { key: 'apchem', dir: 'chem' },
     { key: 'apphys', dir: 'physics' },
     { key: 'apcalc', dir: 'calculus' },
+    { key: 'apstat', dir: 'statistics' },
   ];
   // courses:end
 

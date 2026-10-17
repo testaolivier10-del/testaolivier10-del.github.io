@@ -130,6 +130,15 @@ const CARDS = [
     title: 'Calculus AB for the May exam, one idea at a time',
     sub: 'Free notes for every topic, answers you type graded by value, and calculator and no-calculator practice as the exam splits it.',
   },
+  /* AP® Statistics (folder statistics/), the same rules: no mark, no counts
+     (docs/apstat-spec.md decision 2). Render with ONLY=statistics/assets/og-image.png. */
+  {
+    out: 'statistics/assets/og-image.png',
+    badge: 'Beta · Free notes',
+    brand: 'LevlPrep',
+    title: 'Statistics for the May 2027 exam, one idea at a time',
+    sub: 'Free notes for every topic, simulators you can run, and conclusions checked part by part.',
+  },
 ];
 // ONLY=<out path> renders just that card (adding a course need not re-render the others).
 if (process.env.ONLY) CARDS.splice(0, CARDS.length, ...CARDS.filter((c) => c.out === process.env.ONLY));

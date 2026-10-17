@@ -31,6 +31,9 @@ export const APP_STATE_PAGES = [
   'calculus/dashboard.html',
   'calculus/review.html',
   'calculus/search.html',
+  'statistics/dashboard.html',
+  'statistics/review.html',
+  'statistics/search.html',
 ];
 
 export const NOINDEX = '<meta name="robots" content="noindex, follow">';

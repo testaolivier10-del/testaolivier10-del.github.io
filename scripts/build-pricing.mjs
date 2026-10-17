@@ -32,7 +32,11 @@
       first unit is published (docs/apphys-spec.md).
    9. AP® Calculus AB's the same way (<!-- hub-calc:start/end -->,
       <!-- nf-calc:start/end -->, calculus/manifest.json), hidden until its
-      first unit is published (docs/apcalc-spec.md). */
+      first unit is published (docs/apcalc-spec.md).
+  10. AP® Statistics's manifest (statistics/manifest.json) only: it is
+      registered hidden (docs/apstat-spec.md), so it has no hub card, no 404
+      card and no pricing entry; the launch adds those markers the AP®
+      Calculus AB way. */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText } from './lib/premium-data.mjs';
@@ -493,7 +497,7 @@ function hubCalcCard() {
   const out = src.replace(/(The full )[\d,]+(-question bank[^\n]*\/\/ count:)(nremt|ochem|anp)/g,
     (_, a, b, k) => `${a}${fmt(N[k])}${b}${k}`);
   // AP® Biology and AP® Chemistry state no count while their banks grow unit by unit.
-  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
+  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc' && x !== 'apstat')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
   put(rel, out);
 }
 
@@ -502,7 +506,7 @@ function hubCalcCard() {
 /* Manifests never carry the AP® mark (docs/apbio-spec.md, "Trademark": no
    "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
    app is "Biology". */
-const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus' };
+const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus', apstat: 'Statistics' };
 const MANIFESTS = {
   'manifest.json': {
     name: 'LevlPrep — NREMT-EMT, Organic Chemistry and A&P study tools',
@@ -528,6 +532,11 @@ const MANIFESTS = {
     name: 'LevlPrep — Calculus',
     short_name: 'LevlPrep Calculus',
     description: `Calculus AB on the course framework, in its order, for the May exam: every notes page is free forever and Units 1 and 2 are fully interactive, with the math you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
+  },
+  'statistics/manifest.json': {
+    name: 'LevlPrep Statistics',
+    short_name: 'LevlPrep Statistics',
+    description: `Statistics on the revised course framework, in its order, for the May 2027 exam: every notes page is free forever and Unit 1 is fully interactive, with the math you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
   },
   'nremt/manifest.json': {
     name: 'LevlPrep — NREMT-EMT Practice Exam & Study Tools',

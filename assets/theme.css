@@ -236,6 +236,12 @@ body[data-course="apphys"]{--ctint:#FBEED5;--cink:#734200;}
    8.0:1 light, about 9.8:1 dark (docs/apcalc-spec.md decision 6). */
 body[data-course="apcalc"]{--ctint:#FCE8EE;--cink:#8C1036;}
 :root[data-theme="dark"] body[data-course="apcalc"]{--ctint:rgba(232,80,122,0.10);--cink:#F7B8CA;}
+/* AP Statistics: plum (not Calculus' crimson, ochem's lilac, Biology's green,
+   A&P's coral, NREMT's mint, Chemistry's cobalt or Physics' amber). --cink on
+   --ctint 8.2:1 light, 9.8:1 on white (docs/apstat-spec.md decision 5,
+   proposed; the same values as IDENTITY.accent in scripts/lib/apstat-build.mjs). */
+body[data-course="apstat"]{--ctint:#F5E6F4;--cink:#6E2470;}
+:root[data-theme="dark"] body[data-course="apstat"]{--ctint:rgba(214,120,206,0.10);--cink:#F0BCEB;}
 
 /* ==========================================================================
    2. Base
