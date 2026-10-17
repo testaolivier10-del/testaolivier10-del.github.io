@@ -157,7 +157,7 @@
       if(kick) S.add('details', lsBox('ls-sec', [kick]));
       S.pills([{ html: esc(unitLabel(p.unit)) + ' · ' + esc(DATA.skills[p.skill] || p.skill), tone: 'ghost' }], 'left');
       S.caption(auto ? (left ? '<b>Your next prompt.</b> Write your answer, then check it.' : 'Write your answer, then check it against the rubric.') : 'Write your answer, then check it against the rubric.');
-      S.hint({ target: ta, text: 'Write your answer here', round: 14 });
+      S.hint({ target: ta, text: 'Write your answer here', round: 14, inside: true });
     }
     ta.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(function(){ saveDraft(p.id, ta.value); }, 300); });
     checkBtn.addEventListener('click', function(){
