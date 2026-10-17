@@ -170,3 +170,41 @@ test('ApStatMath: shared helpers and seeded samplers', () => {
   const p4 = counts.filter(k => k >= 4).length / counts.length;
   assert.ok(Math.abs(p4 - (1 - M.Dist().binomCdf(3, 10, 0.3))) < 0.015, `simulated P(X >= 4) = ${p4}`);
 });
+
+test('df: the technology df or the Table B row rounded down, never rounded up or pooled (launch review fix)', () => {
+  const q = num(25.58, 'df', { alts: [13] });
+  for (const t of ['25.58', '25.6', '25', '13']) assert.equal(Q.grade(q, t).correct, true, t);
+  for (const t of ['26', '27', '25.4']) assert.equal(Q.grade(q, t).correct, false, t);
+  const big = num(67.56, 'df', { alts: [34] });
+  for (const t of ['67.56', '67', '60', '34']) assert.equal(Q.grade(big, t).correct, true, t);
+  for (const t of ['68', '73', '30']) assert.equal(Q.grade(big, t).correct, false, t);
+  // An integer key (n - 1, (r - 1)(c - 1)) is exact; its Table B row is not a df.
+  assert.equal(Q.grade(num(45, 'df'), '45').correct, true);
+  assert.equal(Q.grade(num(45, 'df'), '40').correct, false);
+  assert.equal(Q.grade(num(24, 'df'), '24.4').correct, false);
+});
+
+test('intervals: an accepted alternative (conservative df, Table B row) is right, a z* interval is not', () => {
+  const D = B.window.ApStatDist;
+  const r = D.ci2mean(34.21, 6.13, 14, 28.5, 6.97, 14, 0.95), cons = r.cons;
+  const I = { lo: r.lo, hi: r.hi, places: 2, alts: [{ lo: cons.lo, hi: cons.hi }] };
+  const f = v => v.toFixed(2);
+  assert.equal(Q.grade({ type: 'interval', interval: I }, `from ${f(r.lo)} to ${f(r.hi)}`).correct, true);
+  assert.equal(Q.grade({ type: 'interval', interval: I }, `(${f(cons.lo)}, ${f(cons.hi)})`).correct, true);
+  const z = 1.959964 * r.se, d = 34.21 - 28.5;
+  assert.equal(Q.grade({ type: 'interval', interval: I }, `${f(d - z)} to ${f(d + z)}`).correct, false);
+  assert.equal(Q.grade({ type: 'interval', interval: I }, `${f(r.lo)} to ${f(cons.hi)}`).correct, false, 'ends from two different intervals');
+});
+
+test('setup with a value step (setup.then): both steps graded, the record right only when both are', () => {
+  const q = { type: 'setup', setup: { answer: '(0.345 - 0.30)/sqrt(0.30*0.70/600)', bind: { phat: 0.345, p0: 0.3, n: 600 }, mustUse: ['p0', 'n'], mustNotUse: ['phat in sqrt'],
+    then: { kind: 'z', answer: 2.405351177 } } };
+  const ok = Q.grade(q, { expr: '(0.345 - 0.30)/sqrt(0.30*0.70/600)', value: '2.41' });
+  assert.equal(ok.correct, true); assert.equal(ok.score, 1); assert.equal(ok.total, 2);
+  const badV = Q.grade(q, { expr: '(0.345 - 0.30)/sqrt(0.30*0.70/600)', value: '2.2' });
+  assert.equal(badV.correct, false); assert.equal(badV.score, 0.5); assert.equal(badV.parts.value, false);
+  const badE = Q.grade(q, { expr: '(0.345 - 0.30)/sqrt(0.345*0.655/600)', value: '2.41' });
+  assert.equal(badE.correct, false); assert.equal(badE.parts.expr, false); assert.equal(badE.parts.value, true);
+  assert.equal(Q.grade(q, { expr: '(0.345 - 0.30)/sqrt(0.30*0.70/600)', value: 'two' }).valid, false);
+  assert.equal(Q.grade(q, '(0.345 - 0.30)/sqrt(0.30*0.70/600)').correct, true, 'the expression alone still grades (older callers)');
+});

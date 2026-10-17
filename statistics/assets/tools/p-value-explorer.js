@@ -32,6 +32,9 @@
   function tx(s){ return TX() ? TX().html(String(s), { wrap: true }) : esc(s); }
   function F(x, d){ return T.F(x, d); }
   function P4(p){ return PV.P4(p); }
+  // A p-value in a sentence or after "=": "< 0.0001" reads as words there.
+  function PW(p){ var s = P4(p); return s.charAt(0) === '<' ? 'less than 0.0001' : s; }
+  function PEQ(p){ var s = P4(p); return s.charAt(0) === '<' ? s : '= ' + s; }
   function el(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
   function r1(v){ return Math.round(v * 10) / 10; }
 
@@ -447,7 +450,7 @@
       title.textContent = 'Null and true sampling distributions of p̂ with the rejection region';
       tbl.innerHTML = '<table class="pv-2x2"><caption class="sr-only">Decision against the truth</caption><colgroup><col class="pv-c0"><col><col></colgroup><thead><tr><th scope="col"><span class="sr-only">Decision</span></th><th scope="col">H<sub>0</sub> true (p = ' + S.sc.p0 + ')</th><th scope="col">Truth: p = ' + F(S.pa, 3) + '</th></tr></thead><tbody>' +
         '<tr><th scope="row">Reject H<sub>0</sub></th><td class="is-alpha"><b>Type I error</b><span>α = ' + F(S.alpha, 2) + '</span></td><td class="is-power"><b>Correct</b><span>power ' + P4(e.power) + '</span></td></tr>' +
-        '<tr><th scope="row">Fail to reject</th><td class="is-ok"><b>Correct</b><span>1 − α = ' + F(1 - S.alpha, 2) + '</span></td><td class="is-beta"><b>Type II error</b><span>β = ' + P4(e.typeII) + '</span></td></tr></tbody></table>';
+        '<tr><th scope="row">Fail to reject</th><td class="is-ok"><b>Correct</b><span>1 − α = ' + F(1 - S.alpha, 2) + '</span></td><td class="is-beta"><b>Type II error</b><span>β ' + PEQ(e.typeII) + '</span></td></tr></tbody></table>';
       why('e', e);
       say();
     }
@@ -468,16 +471,16 @@
         var rej = t.p < S.alpha, u = isMean() ? ' ' + c.units : '';
         var head = 'The p-value is the area under the null distribution ' + (S.ha === 'two' ? 'in both tails' : S.ha === 'greater' ? 'to the right of' : 'to the left of') + (S.ha === 'two' ? ', beyond the observed value and its mirror image.' : ' the observed value.');
         var body = '<p>' + tx('The curve is what ' + (isMean() ? '$\\bar{x}$' : '$\\hat{p}$') + ' would do in repeated random samples of ' + S.n + ' if $H_0: ' + sym + ' = ' + v0 + '$ were true. ' + hasTex() + ' decides which results count as at least as extreme as ours.') + '</p>' +
-          '<p><b>Read it in context.</b> ' + tx('Assuming ' + param + ' is ' + v0 + u + ', there is a ' + P4(t.p) + ' probability of getting a sample ' + (isMean() ? 'mean' : 'proportion') + ' of ' + (isMean() ? F(t.obs, c.places != null ? c.places : 2) + u : String(+t.obs.toFixed(4))) + ' ' + sideWords() + ' by chance in a random sample of ' + S.n + '.') + '</p>' +
-          '<p><b>Decide and conclude.</b> ' + tx('Because the p-value of ' + P4(t.p) + ' is ' + (rej ? 'less' : 'greater') + ' than $\\alpha = ' + S.alpha + '$, we ' + (rej ? 'reject' : 'fail to reject') + ' $H_0$. There ' + (rej ? 'is' : 'is not') + ' convincing evidence that ' + param + ' is ' + PV.HA_WORD[S.ha] + ' ' + v0 + u + '.') + '</p>' +
+          '<p><b>Read it in context.</b> ' + tx('Assuming ' + param + ' is ' + v0 + u + ', there is a ' + PW(t.p) + ' probability of getting a sample ' + (isMean() ? 'mean' : 'proportion') + ' of ' + (isMean() ? F(t.obs, c.places != null ? c.places : 2) + u : String(+t.obs.toFixed(4))) + ' ' + sideWords() + ' by chance in a random sample of ' + S.n + '.') + '</p>' +
+          '<p><b>Decide and conclude.</b> ' + tx('Because the p-value ' + (t.p < 0.00005 ? '(less than 0.0001)' : 'of ' + P4(t.p)) + ' is ' + (rej ? 'less' : 'greater') + ' than $\\alpha = ' + S.alpha + '$, we ' + (rej ? 'reject' : 'fail to reject') + ' $H_0$. There ' + (rej ? 'is' : 'is not') + ' convincing evidence that ' + param + ' is ' + PV.HA_WORD[S.ha] + ' ' + v0 + u + '.') + '</p>' +
           '<p class="bt-small">' + tx('A p-value is not the probability that $H_0$ is true, and failing to reject never proves $H_0$: it only means the data are not convincing.') + '</p>';
         T.explain(whyEl, head, body); openWhy();
       } else {
         var e = r;
         var body2 = '<p>' + tx('The blue curve is $\\hat{p}$ when $H_0$ is true ($p = ' + c.p0 + '$). The orange curve is $\\hat{p}$ if the true proportion is ' + F(S.pa, 3) + '. The dashed line is the cutoff: a sample beyond it gives a p-value below α.') + '</p>' +
           '<ul class="pv-list"><li><b>Type I error</b> (hatched, probability α = ' + S.alpha + '): ' + tx('$H_0$ is true, but the sample lands beyond the cutoff and we reject it.') + '</li>' +
-          '<li><b>Type II error</b> (light orange, β = ' + P4(e.typeII) + '): ' + tx('the true proportion is ' + F(S.pa, 3) + ', but the sample lands short of the cutoff and we fail to reject $H_0$.') + '</li>' +
-          '<li><b>Power</b> (green, ' + P4(e.power) + ' = 1 − β): ' + tx('the probability of rejecting $H_0$ when the true proportion is ' + F(S.pa, 3) + '.') + '</li></ul>' +
+          '<li><b>Type II error</b> (light orange, β ' + PEQ(e.typeII) + '): ' + tx('the true proportion is ' + F(S.pa, 3) + ', but the sample lands short of the cutoff and we fail to reject $H_0$.') + '</li>' +
+          '<li><b>Power</b> (green, 1 − β ' + PEQ(e.power) + '): ' + tx('the probability of rejecting $H_0$ when the true proportion is ' + F(S.pa, 3) + '.') + '</li></ul>' +
           '<p><b>More power</b> comes from a larger sample (both curves get narrower), a larger α (the cutoff moves toward ' + tx('$p_0$') + '), or a true value farther from ' + tx('$p_0$') + '. A smaller α means fewer Type I errors but more Type II errors.</p>';
         T.explain(whyEl, 'A test can be wrong in two ways: reject a true null (Type I) or miss a real effect (Type II).', body2); openWhy();
       }

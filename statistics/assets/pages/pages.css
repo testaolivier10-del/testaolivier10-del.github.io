@@ -487,3 +487,13 @@ button.stat-fc-face:hover{border-color:var(--accent);}
   .stat-cr-todo a{color:#000;text-decoration:none;}
   .stat-cr-day.is-done .stat-cr-dn::after{content:" (done)";}
 }
+/* "Check my number" under an FRQ part's sample (frq-kit.js numCheckHtml). */
+.stat-fq-numchk{margin:10px 0 0;display:flex;flex-direction:column;gap:6px;}
+.stat-fq-numchk label{font:800 14px var(--font-ui);}
+.stat-fq-numchk .stat-num-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.stat-fq-numchk input{width:16ch;max-width:100%;min-height:44px;padding:8px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:800 16px var(--font-mono, monospace);}
+.stat-fq-numchk input:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.stat-fq-numchk .btn-outline{min-height:44px;}
+.stat-fq-numchk p{margin:0;}
+.stat-fq-numchk p.is-right{color:var(--good-text, var(--ink));font-weight:700;}
+.stat-fq-numchk p.is-wrong{color:var(--bad-text, var(--ink));font-weight:700;}

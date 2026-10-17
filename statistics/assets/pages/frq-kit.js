@@ -86,6 +86,7 @@
 
   function rubricHtml(f, opts){
     opts = opts || {};
+    if(!opts.readonly){ checks[f.id] = f; wireChecks(); }
     var name = 'rb-' + f.id + '-' + (++uid), had = opts.checked || {};
     return '<div class="stat-fq-rubric" data-frq="' + esc(f.id) + '">' + f.parts.map(function(p, i){
       return '<fieldset class="stat-fq-rpart"><legend>Part (' + esc(p.label) + ') &middot; ' + pts(p.points) + '</legend>' +
@@ -94,8 +95,36 @@
           return '<label class="stat-fq-point" for="' + id + '"><input type="checkbox" id="' + id + '" data-part="' + i + '" data-k="' + k + '"' + (on ? ' checked' : '') + (opts.readonly ? ' disabled' : '') + '>' +
             '<span><b>1 point.</b> ' + r.point + (r.accept && r.accept.length ? '<span class="stat-fq-accept">Also accept: ' + r.accept.map(richText).join('; ') + '</span>' : '') + '</span></label>';
         }).join('') +
-        '<div class="stat-fq-sample"><p class="stat-fq-sample-k">A full-credit answer</p><p>' + p.sample + '</p></div></fieldset>';
+        '<div class="stat-fq-sample"><p class="stat-fq-sample-k">A full-credit answer</p><p>' + p.sample + '</p></div>' +
+        (opts.readonly ? '' : numCheckHtml(f, p, i)) + '</fieldset>';
     }).join('') + '</div>';
+  }
+  /* "Check my number" (spec section 7, rule 6): a part with a `check` (its
+     answer computed by the build from its recipe) gets one box graded by
+     ApStatGrade, table and technology values both accepted. It never
+     changes the self-score. */
+  function numCheckHtml(f, p, i){
+    var c = p.check, G = typeof window !== 'undefined' && window.ApStatGrade;
+    if(!c || !G || !(c.type === 'numeric' || c.type === 'interval')) return '';
+    var id = 'fqn-' + f.id + '-' + i + '-' + (++uid), iv = c.type === 'interval';
+    return '<div class="stat-fq-numchk" data-frq="' + esc(f.id) + '" data-part="' + i + '"><label for="' + id + '">Check my ' + (iv ? 'interval' : 'number') + '</label>' +
+      '<span class="stat-num-row"><input type="text" id="' + id + '" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="' + (iv ? 'from 0.04 to 0.22' : '0.0123') + '">' +
+      '<button type="button" class="btn-outline sm">Check</button></span><p class="stat-small" role="status" aria-live="polite"></p></div>';
+  }
+  var checks = {};
+  function wireChecks(){
+    if(typeof document === 'undefined' || wireChecks.on) return;
+    wireChecks.on = true;
+    function go(box){
+      var G = window.ApStatGrade, f = checks[box.getAttribute('data-frq')], p = f && f.parts[+box.getAttribute('data-part')];
+      if(!G || !p || !p.check) return;
+      var c = p.check, v = box.querySelector('input').value, out = box.querySelector('[role="status"]');
+      var g = c.type === 'interval' ? G.interval(c.interval, v) : G.numeric(c.numeric, v);
+      out.textContent = !g.valid ? (g.notes[0] || 'Type a number.') : (g.correct ? 'That matches.' : 'That does not match yet.') + (g.notes && g.notes.length ? ' ' + g.notes.join(' ') : '');
+      out.className = 'stat-small ' + (!g.valid ? '' : g.correct ? 'is-right' : 'is-wrong');
+    }
+    document.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('.stat-fq-numchk button'); if(b) go(b.closest('.stat-fq-numchk')); });
+    document.addEventListener('keydown', function(e){ if(e.key !== 'Enter') return; var b = e.target.closest && e.target.closest('.stat-fq-numchk'); if(b && e.target.tagName === 'INPUT'){ e.preventDefault(); go(b); } });
   }
   function score(el){
     var parts = [], got = 0, of = 0;

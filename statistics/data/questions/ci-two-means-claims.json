@@ -403,13 +403,12 @@
    "practice": "3.E",
    "level": "apply",
    "diff": 2,
-   "q": "Independent random samples of 35 phones of brand 1 and 35 of brand 2 give mean battery lives of 11.8 hours ($s = 1.9$) and 10.9 hours ($s = 2.3$). Construct a 95% confidence interval for $\\mu_1 - \\mu_2$, in hours. Use the technology degrees of freedom, $\\text{df} = 65.7$.",
+   "q": "Independent random samples of 35 phones of brand 1 and 35 of brand 2 give mean battery lives of 11.8 hours ($s = 1.9$) and 10.9 hours ($s = 2.3$). Construct a 95% confidence interval for $\\mu_1 - \\mu_2$, in hours.",
    "why": {
     "correct": "$(11.8 - 10.9) \\pm 1.997\\sqrt{\\frac{1.9^2}{35} + \\frac{2.3^2}{35}} = 0.9 \\pm 1.007$, from $-0.11$ to 1.91 hours ($t^* = 1.997$ at df 65.7; the Table B row for df 60 gives 2.000 and the same interval to two places). On the exam the conservative df 34 is also accepted ($-0.12$ to 1.92). Using $z^* = 1.96$ ($-0.09$ to 1.89) is wrong, because the standard deviations are estimated."
    },
    "interval": {
     "places": 2,
-    "tol": 0.01,
     "from": {
      "fn": "ci2mean",
      "args": [

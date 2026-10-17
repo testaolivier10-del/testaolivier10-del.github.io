@@ -64,3 +64,10 @@ test('chi-square-lab: chance tables keep row totals, and the simulated Type I ra
   const rate = model.simulateTypeI(M.rng(2026), [100, 100, 100], [0.4, 0.25, 0.35], 0.05, 10000);
   assert.ok(Math.abs(rate - 0.05) <= 0.01, `rate ${rate}`);
 });
+
+test('chi-square-lab: a tiny p-value reads "< 0.0001", never "0.0000"', () => {
+  const { model } = runtime('chi-square-lab');
+  assert.equal(model.P4(0.00001), '< 0.0001');
+  assert.equal(model.P4(0.00007), '0.0001');
+  assert.equal(model.P4(0.0123), '0.0123');
+});

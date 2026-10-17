@@ -157,7 +157,9 @@
     spec = expand(spec);
     var F = frame(spec), out = [], x0 = F.x[0], x1 = F.x[1], y0 = F.y[0], y1 = F.y[1];
     var L = PAD.l, R = F.w - PAD.r, T = PAD.t, B = F.h - PAD.b;
-    var xt = spec.xTicks === false ? [] : spec.piX ? piTicks(x0, x1) : ticks(x0, x1, 7, spec.xStep), yt = spec.yTicks === false ? [] : ticks(y0, y1, 6, spec.yStep);
+    var xt = spec.xTicks === false ? [] : spec.piX ? piTicks(x0, x1) : ticks(x0, x1, 7, spec.xStep), yt = spec.yTicks === false ? [] : spec.yTickList ? spec.yTickList.map(function(t){ return t.v; }) : ticks(y0, y1, 6, spec.yStep);
+    var yText = function(v){ var t = spec.yTickList && spec.yTickList.filter(function(u){ return u.v === v; })[0]; return t ? String(t.text) : fmtTick(v); };
+    var extraH = 0;
     // Grid
     if(spec.grid !== false){
       out.push('<g class="stat-plot-grid">' + xt.map(function(v){ return '<line x1="' + r2(F.sx(v)) + '" y1="' + T + '" x2="' + r2(F.sx(v)) + '" y2="' + B + '"/>'; }).join('') +
@@ -178,14 +180,19 @@
     out.push(rectsSvg(spec, F));
     // Axes, ticks, labels
     if(spec.axes !== false){
-      var ax = y0 <= 0 && y1 >= 0 ? F.sy(0) : B, ay = spec.leftAxis || !(x0 <= 0 && x1 >= 0) ? L : F.sx(0);
+      var ax = !spec.bottomAxis && y0 <= 0 && y1 >= 0 ? F.sy(0) : B, ay = spec.leftAxis || !(x0 <= 0 && x1 >= 0) ? L : F.sx(0);
       out.push('<g class="stat-plot-axis"><line x1="' + L + '" y1="' + r2(ax) + '" x2="' + R + '" y2="' + r2(ax) + '"/><line x1="' + r2(ay) + '" y1="' + T + '" x2="' + r2(ay) + '" y2="' + B + '"/>' +
         xt.filter(function(v){ return Math.abs(v) > 1e-12 || ay === L; }).map(function(v){ var px = r2(F.sx(v)); return '<line x1="' + px + '" y1="' + r2(ax - 3) + '" x2="' + px + '" y2="' + r2(ax + 3) + '"/>'; }).join('') +
         yt.filter(function(v){ return Math.abs(v) > 1e-12 || ax === B; }).map(function(v){ var py = r2(F.sy(v)); return '<line x1="' + r2(ay - 3) + '" y1="' + py + '" x2="' + r2(ay + 3) + '" y2="' + py + '"/>'; }).join('') + '</g>');
       var lab = [];
       xt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ay !== L) return; lab.push('<text x="' + r2(F.sx(v)) + '" y="' + r2(Math.min(F.h - 4, ax + 15)) + '" text-anchor="middle">' + (spec.piX ? piLabel(v) : fmtTick(v)) + '</text>'); });
-      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ax !== B) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + fmtTick(v) + '</text>'); });
-      if(spec.xLabel) lab.push('<text class="stat-plot-axlabel" x="' + (R - 2) + '" y="' + r2(Math.max(T + 10, ax - 6)) + '" text-anchor="end">' + esc(plain(spec.xLabel)) + '</text>');
+      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ax !== B) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + yText(v) + '</text>'); });
+      // The x-axis name sits under the tick labels, centred, when the axis is
+      // the bottom edge (every data plot), so it never covers the data; the
+      // picture grows by one line for it. Inside the plot only when the axis
+      // runs through it (a function plot through y = 0).
+      if(spec.xLabel && ax === B){ extraH = 16; lab.push('<text class="stat-plot-axlabel" x="' + r2((L + R) / 2) + '" y="' + r2(B + 31) + '" text-anchor="middle">' + esc(plain(spec.xLabel)) + '</text>'); }
+      else if(spec.xLabel) lab.push('<text class="stat-plot-axlabel" x="' + (R - 2) + '" y="' + r2(Math.max(T + 10, ax - 6)) + '" text-anchor="end">' + esc(plain(spec.xLabel)) + '</text>');
       if(spec.yLabel) lab.push('<text class="stat-plot-axlabel" x="' + r2(ay + 6) + '" y="' + (T + 10) + '" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
       out.push('<g class="stat-plot-ticks">' + lab.join('') + '</g>');
     }
@@ -239,7 +246,7 @@
     (spec.labels || []).forEach(function(t){
       out.push('<text class="stat-plot-label" x="' + r2(F.sx(t.at[0])) + '" y="' + r2(F.sy(t.at[1])) + '" text-anchor="' + (t.anchor || 'middle') + '">' + esc(plain(t.text)) + '</text>');
     });
-    return '<svg class="stat-plot" viewBox="0 0 ' + F.w + ' ' + F.h + '" width="' + F.w + '" height="' + F.h + '" role="img" aria-label="' + esc(plain(spec.label)) + '">' + out.join('') + '</svg>';
+    return '<svg class="stat-plot" viewBox="0 0 ' + F.w + ' ' + (F.h + extraH) + '" width="' + F.w + '" height="' + (F.h + extraH) + '" role="img" aria-label="' + esc(plain(spec.label)) + '">' + out.join('') + '</svg>';
   }
 
   /* ---------------------------------------------------------- statistics */
@@ -250,8 +257,10 @@
     if(!spec.kind) return spec;
     var o = {}, k;
     for(k in spec) o[k] = spec[k];
-    // Data plots put the count or density axis at the left edge, not at x = 0.
-    if(spec.kind !== 'resid' && spec.kind !== 'scatter') o.leftAxis = true;
+    // Data plots put the count or density axis at the left edge, not at x = 0,
+    // and the x axis at the bottom edge: a residual plot keeps y = 0 as a
+    // dashed line among the points, with its tick labels below the plot.
+    o.leftAxis = true; o.bottomAxis = true;
     o.rects = (spec.rects || []).slice(); o.points = (spec.points || []).slice(); o.lines = (spec.lines || []).slice();
     o.curves = (spec.curves || []).slice(); o.shade = (spec.shade || []).slice(); o.labels = (spec.labels || []).slice();
     var Dd = D(), lo, hi, i;
@@ -261,7 +270,12 @@
       o.x = spec.x || nice(pad(lo, hi, 0.05)[0], pad(lo, hi, 0.05)[1]);
       xs.forEach(function(v){ var key = st0 ? Math.round(v / st0) * st0 : v; counts[key] = (counts[key] || 0) + 1; if(counts[key] > mx) mx = counts[key];
         o.points.push({ at: [+key, counts[key] - 0.5], cls: spec.cls || 's1' }); });
-      o.y = spec.y || [0, Math.max(4, mx + 0.5)]; o.yStep = o.yStep || Math.max(1, Math.ceil(mx / 5)); o.grid = spec.grid === true;
+      o.y = spec.y || [0, Math.max(4, mx + 0.5)]; o.grid = spec.grid === true;
+      // Count labels at the middle of each row of dots (dot k sits at k - 0.5),
+      // never between rows.
+      var ys = spec.yStep || Math.max(1, Math.ceil(mx / 5)), yl = [];
+      for(var kk = ys; kk - 0.5 <= o.y[1]; kk += ys) yl.push({ v: kk - 0.5, text: kk });
+      o.yTickList = yl;
     } else if(spec.kind === 'hist'){
       var b = spec.bins, n = spec.data.length, counts2 = [], top = 0;
       lo = Math.min.apply(null, spec.data); hi = Math.max.apply(null, spec.data);

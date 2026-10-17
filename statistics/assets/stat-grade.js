@@ -6,6 +6,8 @@
      ApStatGrade.tolerance(N) -> the allowed distance from the key for a
        numeric item, from its kind (spec rule 2) unless it sets tol.
      ApStatGrade.numeric(N, typed) -> { valid, correct, value, notes, mistake, range? }
+       kind df: the technology df (within 0.05) or a whole number read as
+       Table B is read, rounded down to the df or its row; never rounded up.
        N: { answer, kind, places?, tol?, accept?: [lo, hi], alts?: [...],
             alpha?, mistakes?: [{ value, why }] }
        alts are other accepted values (the table route the build adds);
@@ -14,7 +16,7 @@
      ApStatGrade.readInterval(typed) -> { lo, hi } from "from a to b", "(a, b)",
        "a to b", "a, b" or "a +/- m"; null when it cannot be read.
      ApStatGrade.interval(I, typed | { lo, hi }) -> { valid, correct, lo, hi, parts, notes }
-       I: { lo, hi, kind: 'stat', places?, tol? }
+       I: { lo, hi, kind: 'stat', places?, tol?, alts?: [{ lo, hi }] }
      ApStatGrade.conclude(C, picks) -> { valid, correct, slots: { name: bool }, notes }
        the builder: picks = { slot: option index }; every slot exact.
      ApStatGrade.flags(C, text) -> [{ rule, ok, hint }]
@@ -33,7 +35,9 @@
       case 'chi2': return A > 10 ? 0.05 : 0.02;
       case 'pvalue': return A < 0.05 ? Math.max(0.1 * A, 1e-6) : 0.005;
       case 'stat': return Math.max(0.5 * Math.pow(10, -places), 0.005 * A);
-      case 'count': case 'df': return 0;
+      case 'count': return 0;
+      // A technology df (25.58) typed to one or two places; an integer key is exact.
+      case 'df': return Number.isInteger(A) ? 0 : 0.05;
       case 'critical': return 0.005;
     }
     return 1e-9 * Math.max(1, A);
@@ -61,6 +65,15 @@
     return isFinite(a) && isFinite(b) ? [Math.min(a, b), Math.max(a, b)] : null;
   }
 
+  // The Table B row at or below a df (the same rule as ApStatDist.tableDf).
+  function tableDf(df){
+    df = Math.floor(df + 1e-9);
+    if(df <= 30) return Math.max(1, df);
+    var rows = [40, 50, 60, 80, 100, 1000], row = 30;
+    for(var i = 0; i < rows.length; i++) if(rows[i] <= df) row = rows[i];
+    return row;
+  }
+
   function within(v, A, tol){ return Math.abs(v - A) <= tol + 1e-12; }
 
   function numeric(N, typed){
@@ -77,7 +90,15 @@
     var right = within(v, A, tol);
     if(!right && N.accept) right = v >= N.accept[0] - 1e-12 && v <= N.accept[1] + 1e-12;
     if(!right && N.alts) right = N.alts.some(function(x){ return within(v, +x, tol); });
-    if(N.kind === 'count' || N.kind === 'df') right = right || Math.abs(v - Math.round(v)) < 1e-9 && (N.alts || []).concat([A]).some(function(x){ return Math.round(v) === Math.round(+x); });
+    if(N.kind === 'count') right = right || Math.abs(v - Math.round(v)) < 1e-9 && (N.alts || []).concat([A]).some(function(x){ return Math.round(v) === Math.round(+x); });
+    // df: an integer key (n - 1, (r - 1)(c - 1), the conservative df) is
+    // exact. A technology df (25.58) is right typed to a place or two, or as
+    // a whole number read the way the course reads Table B, rounded down
+    // (25.58 -> 25; 67.56 -> 67 or its row 60), never rounded up (26 here is
+    // also the pooled n1 + n2 - 2, which the course leaves out).
+    if(N.kind === 'df' && !right && Math.abs(v - Math.round(v)) < 1e-9) right = [A].concat(N.alts || []).some(function(x){
+      x = +x; return !Number.isInteger(x) && (v === Math.floor(x) || v === tableDf(x));
+    });
     if(right && N.kind === 'pvalue' && N.alpha != null && (v < N.alpha) !== (A < N.alpha)){
       right = false;
       notes.push('Your p-value is on the other side of α = ' + N.alpha + ' from the right one, so it would change the conclusion.');
@@ -106,11 +127,19 @@
   function interval(I, typed){
     var got = typed && typeof typed === 'object' ? { lo: +typed.lo, hi: +typed.hi } : readInterval(typed);
     if(!got || !isFinite(got.lo) || !isFinite(got.hi)) return { valid: false, correct: false, notes: ['Type the interval as "from 0.41 to 0.53", "(0.41, 0.53)" or "0.47 +/- 0.06".'] };
-    var notes = [], N = { kind: 'stat', places: I.places, tol: I.tol };
+    var notes = [];
     var reversed = got.lo > got.hi;
     if(reversed){ var x = got.lo; got = { lo: got.hi, hi: x }; notes.push('Write the lower end first.'); }
-    var okLo = within(got.lo, +I.lo, tolerance({ kind: 'stat', places: I.places, tol: I.tol, answer: I.lo })), okHi = within(got.hi, +I.hi, tolerance({ kind: 'stat', places: I.places, tol: I.tol, answer: I.hi }));
-    void N;
+    // The key first, then any accepted alternative interval (I.alts, added by
+    // the build: the conservative-df and Table B row intervals for t).
+    var cands = [{ lo: +I.lo, hi: +I.hi }].concat((I.alts || []).map(function(a){ return { lo: +a.lo, hi: +a.hi }; }));
+    var okLo = false, okHi = false;
+    cands.some(function(c){
+      var l = within(got.lo, c.lo, tolerance({ kind: 'stat', places: I.places, tol: I.tol, answer: c.lo })), h = within(got.hi, c.hi, tolerance({ kind: 'stat', places: I.places, tol: I.tol, answer: c.hi }));
+      if(l && h){ okLo = okHi = true; return true; }
+      if(l + h > okLo + okHi){ okLo = l; okHi = h; }
+      return false;
+    });
     if(!(okLo && okHi)){
       var c = (+I.lo + +I.hi) / 2, gc = (got.lo + got.hi) / 2, me = (+I.hi - +I.lo) / 2, gme = (got.hi - got.lo) / 2;
       if(within(gme, me, Math.abs(me) * 0.01) && !within(gc, c, Math.abs(me) * 0.01)) notes.push('The width is right but the interval is centered in the wrong place: center it on the sample statistic.');

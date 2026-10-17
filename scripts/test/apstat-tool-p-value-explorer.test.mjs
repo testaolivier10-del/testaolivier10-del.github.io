@@ -87,3 +87,9 @@ test('p-value-explorer: the power from the normal model matches simulated tests'
   // A two-sided test: alpha at the null value itself.
   assert.ok(Math.abs(model.errors({ ...sc, ha: 'two' }, alpha, 0.5).power - alpha) < 1e-9);
 });
+
+test('p-value-explorer: a tiny p-value reads "< 0.0001", never "0.0000"', () => {
+  const { model } = runtime('p-value-explorer');
+  assert.equal(model.P4(0.00001), '< 0.0001');
+  assert.equal(model.P4(0.0123), '0.0123');
+});

@@ -98,3 +98,31 @@ test('statistics plots are drawn from their data: dotplot, histogram, boxplot, s
   }
   assert.throws(() => P.svg({ ...L, kind: 'pie', data }), /unknown plot kind/);
 });
+
+test('data plots: the x-axis name under the tick labels, dot counts on their rows, residual axis at the bottom (launch review fixes)', () => {
+  const L = { label: 'Invented data for a plot test, fourteen values' };
+  const data = [12, 15, 9, 22, 18, 30, 14, 11, 16, 20, 13, 15, 17, 30, 30, 30];
+  // The name is centred below the ticks, outside the plot area, and the
+  // picture grows to hold it; nothing is drawn there but the name.
+  const out = P.svg({ ...L, kind: 'dot', data, xLabel: 'minutes' });
+  assert.match(out, /viewBox="0 0 360 276"/);
+  const m = /<text class="stat-plot-axlabel" x="([\d.]+)" y="([\d.]+)" text-anchor="middle">minutes<\/text>/.exec(out);
+  assert.ok(m, 'label drawn centred');
+  assert.equal(+m[1], (34 + 346) / 2);
+  assert.ok(+m[2] > 260 - 28 + 15, 'below the tick labels');
+  // Dotplot counts sit on the middle of a row of dots (k - 0.5), not between rows.
+  const dot = P.expand({ ...L, kind: 'dot', data });
+  const rows = new Set(dot.points.map(p => p.at[1]));
+  for (const t of dot.yTickList) assert.ok(rows.has(t.v) || t.v > Math.max(...rows), `tick ${t.v} on a row`);
+  assert.equal(JSON.stringify(dot.yTickList.slice(0, 2).map(t => [t.v, t.text])), '[[0.5,1],[1.5,2]]');
+  // A residual plot: the x axis at the bottom edge, y = 0 a dashed line.
+  const xs = [1, 2, 3, 4, 5], ys = [2, 4, 5, 4, 5];
+  const rs = P.svg({ ...L, kind: 'resid', xs, ys });
+  const F = P.frame(P.expand({ ...L, kind: 'resid', xs, ys }));
+  const axis = /<g class="stat-plot-axis"><line x1="34" y1="([\d.]+)"/.exec(rs);
+  assert.equal(+axis[1], F.h - 28, 'x axis on the bottom edge');
+  assert.match(rs, /stat-plot-line s2 is-dashed/, 'the zero line is still drawn');
+  // A function plot through y = 0 keeps its axis (and its name) inside.
+  const fn = P.svg({ label: 'A test graph of a function on an interval', x: [-2, 4], y: [-2, 6], curves: [{ fn: 'x' }], xLabel: 'x' });
+  assert.match(fn, /viewBox="0 0 360 260"/);
+});

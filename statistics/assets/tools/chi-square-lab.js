@@ -32,6 +32,9 @@
   function tx(s){ return TX() ? TX().html(String(s), { wrap: true }) : esc(s); }
   function F(x, d){ return T.F(x, d); }
   function P4(p){ return CS.P4(p); }
+  // A p-value in a sentence or after "=": "< 0.0001" reads as words there.
+  function PW(p){ var s = P4(p); return s.charAt(0) === '<' ? 'less than 0.0001' : s; }
+  function PEQ(p){ var s = P4(p); return s.charAt(0) === '<' ? s : '= ' + s; }
   function el(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
   function f2(v){ return (Math.round(v * 10) / 10).toFixed(1); }
   function txt(x, y, t, cls, anchor){ return '<text x="' + f2(x) + '" y="' + f2(y) + '" class="' + (cls || '') + '" text-anchor="' + (anchor || 'middle') + '">' + esc(t) + '</text>'; }
@@ -293,7 +296,7 @@
         '<p><b>Hypotheses.</b> ' + tx('$H_0$: ' + h.h0 + ' $H_a$: ' + h.ha) + '</p>' +
         '<p><b>Expected counts.</b> ' + tx('If $H_0$ is true, each cell should hold $\\frac{(\\text{row total})(\\text{column total})}{\\text{grand total}}$. The smallest here is ' + F(t.minExpected, 2) + (t.ok ? ', at least 5, so the large counts condition is met.' : ': below 5, so the chi-square distribution may not fit.')) + '</p>' +
         '<p><b>The statistic.</b> ' + tx('$\\chi^2 = \\sum \\frac{(O - E)^2}{E} = ' + F(t.chi2, 2) + '$; each coloured segment of the bar on the axis is one cell\'s share. Orange cells hold more than expected, blue fewer.') + '</p>' +
-        '<p><b>Decide and conclude.</b> ' + tx('$df = (' + S.obs.length + ' - 1)(' + S.obs[0].length + ' - 1) = ' + t.df + '$, p-value $= P(\\chi^2 \\ge ' + F(t.chi2, 2) + ') = ' + P4(t.p) + '$. Because ' + P4(t.p) + ' is ' + (rej ? 'less' : 'greater') + ' than $\\alpha = ' + (S.alpha === 0.1 ? '0.10' : S.alpha) + '$, we ' + (rej ? 'reject' : 'fail to reject') + ' $H_0$. ' + CS.conclusions(c, rej)[0].t) + '</p>' +
+        '<p><b>Decide and conclude.</b> ' + tx('$df = (' + S.obs.length + ' - 1)(' + S.obs[0].length + ' - 1) = ' + t.df + '$, p-value $= P(\\chi^2 \\ge ' + F(t.chi2, 2) + ') ' + PEQ(t.p) + '$. Because the p-value ' + (t.p < 0.00005 ? '(less than 0.0001)' : 'of ' + P4(t.p)) + ' is ' + (rej ? 'less' : 'greater') + ' than $\\alpha = ' + (S.alpha === 0.1 ? '0.10' : S.alpha) + '$, we ' + (rej ? 'reject' : 'fail to reject') + ' $H_0$. ' + CS.conclusions(c, rej)[0].t) + '</p>' +
         '<p class="bt-small">Press Chance table a few times: tables drawn from ' + tx('$H_0$') + ' itself still give χ² values around the df, and about ' + Math.round(S.alpha * 100) + ' in 100 land beyond the cutoff.</p>';
       T.explain(whyEl, 'χ² adds up how far each cell is from the count the null hypothesis predicts; a large χ² is evidence against the null.', body); openWhy();
     }

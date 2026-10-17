@@ -29,7 +29,7 @@
   if(!M) return;
   function D(){ return M.Dist(); }
   function F(x, d){ return M.fixed(x, d == null ? 2 : d); }
-  function P4(p){ return p < 0.00005 ? '0.0000' : F(p, 4); } // drills never ask below 0.00005, so a shown p-value is never 0.0000
+  function P4(p){ return p < 0.00005 ? '< 0.0001' : F(p, 4); } // never "0.0000"; drills never go below 0.00005, so only Explore can show "< 0.0001"
   function A(a){ return a === 0.1 ? '0.10' : String(a); }
 
   /* ------------------------------------------------------------ explore */

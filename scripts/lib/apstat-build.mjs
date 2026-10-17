@@ -194,7 +194,12 @@ export function loadCourse(root = ROOT, { map = loadMap(), published: pubOverrid
   for (const id of Object.keys(notes)) notes[id] = R(notes[id], `notes/${id}.html`);
   for (const id of Object.keys(questions)) { raw.questions[id] = questions[id]; questions[id] = prepareBank(R(questions[id], `questions/${id}.json`), id, mathProblems); }
   for (const id of Object.keys(glossary)) glossary[id] = R(glossary[id], `glossary/${glossary[id]._file}`);
-  for (const id of Object.keys(frq)) frq[id] = R(frq[id], `frq/${id}.json`);
+  for (const id of Object.keys(frq)) {
+    frq[id] = R(frq[id], `frq/${id}.json`);
+    for (const p of frq[id].parts || []) if (p.check) {
+      try { p.check = prepareFrqCheck(p.check, `part (${p.label}) check`); } catch (e) { mathProblems.push(`frq/${id}.json: ${e.message}`); }
+    }
+  }
   return {
     map, data, lessons, notes, questions, glossary, figures, frq, published, built, mathProblems, raw,
     pages: readOpt('pages.json', { apps: [], tools: [] }),
@@ -270,6 +275,57 @@ export function concludeSlots(C) {
   return slots;
 }
 
+/* A numeric grader's key from its recipe, with the table route as an
+   accepted alternative; an authored answer that disagrees throws. */
+function prepareNumeric(N, where) {
+  const r = fromValue(N.from);
+  if (typeof N.answer === 'number' && Math.abs(N.answer - r.value) > Grade.tolerance({ ...N, answer: r.value }) / 10 + 1e-12)
+    throw new Error(`${where}.answer ${N.answer} disagrees with its recipe (${N.from.fn} gives ${r.value})`);
+  N.answer = r.value;
+  if (r.table != null && Math.abs(r.table - r.value) > 1e-12 && !(N.alts || []).some(x => Math.abs(x - r.table) < 1e-12)) N.alts = [...(N.alts || []), r.table];
+  return N;
+}
+
+/* The other t intervals a reader accepts (spec section 7, rules 2 and 3):
+   t* from the Table B row at or below the df, and for two samples the
+   conservative df (the smaller n - 1) and its row. The z* interval is never
+   one of them. Only intervals that differ from the key are listed. */
+export function intervalAlts(from) {
+  if (!from || (from.fn !== 'ci1mean' && from.fn !== 'ci2mean')) return [];
+  const r = Dist[from.fn](...from.args), level = from.args[from.args.length - 1];
+  const crit = df => Dist.invT(1 - (1 - level) / 2, df);
+  const dfs = [Dist.tableDf(r.df)];
+  if (from.fn === 'ci2mean') dfs.push(r.dfCons, Dist.tableDf(r.dfCons));
+  const out = [];
+  for (const d of dfs) {
+    const me = crit(d) * r.se, lo = r.est - me, hi = r.est + me;
+    if (Math.abs(lo - r.lo) < 1e-9 && Math.abs(hi - r.hi) < 1e-9) continue;
+    if (out.some(a => Math.abs(a.lo - lo) < 1e-9)) continue;
+    out.push({ lo, hi });
+  }
+  return out;
+}
+
+/* An FRQ part's "check my number" grader (`check`), computed from its recipe
+   as bank keys are, so the built JSON carries the answer. */
+export function prepareFrqCheck(check, where = 'frq check') {
+  if (!check) return check;
+  const out = JSON.parse(JSON.stringify(check));
+  if (out.type === 'numeric' && out.numeric) {
+    if (out.numeric.from) prepareNumeric(out.numeric, `${where}.numeric`);
+    if (typeof out.numeric.answer !== 'number') throw new Error(`${where}: numeric check has no answer`);
+  } else if (out.type === 'interval' && out.interval) {
+    const I = out.interval;
+    if (I.from) {
+      I.lo = fromValue({ ...I.from, pick: 'lo' }).value; I.hi = fromValue({ ...I.from, pick: 'hi' }).value;
+      const alts = intervalAlts(I.from);
+      if (alts.length) I.alts = [...(I.alts || []), ...alts];
+    }
+    if (typeof I.lo !== 'number' || typeof I.hi !== 'number') throw new Error(`${where}: interval check has no ends`);
+  } else throw new Error(`${where}: check type must be numeric or interval`);
+  return out;
+}
+
 /* What the runtime needs beyond what was authored: numeric keys recomputed
    (`from`) with the table route added as an accepted alternative; the setup
    key rendered as math; conclude slots generated. Kept from the calculus
@@ -279,11 +335,7 @@ export function prepareBank(bank, topicId, problems = []) {
   for (const q of (bank && bank.items) || []) {
     try {
       if (q.type === 'numeric' && q.numeric && q.numeric.from) {
-        const N = q.numeric, r = fromValue(N.from);
-        if (typeof N.answer === 'number' && Math.abs(N.answer - r.value) > Grade.tolerance({ ...N, answer: r.value }) / 10 + 1e-12)
-          throw new Error(`numeric.answer ${N.answer} disagrees with its recipe (${N.from.fn} gives ${r.value})`);
-        N.answer = r.value;
-        if (r.table != null && Math.abs(r.table - r.value) > 1e-12) N.alts = [...(N.alts || []), r.table];
+        prepareNumeric(q.numeric, 'numeric');
       } else if (q.type === 'numeric' && q.numeric && typeof q.numeric.answer === 'string') {
         const v = Expr.number(q.numeric.answer);
         if (!Number.isFinite(v)) throw new Error(`numeric answer "${q.numeric.answer}" is not a number`);
@@ -296,12 +348,17 @@ export function prepareBank(bank, topicId, problems = []) {
         for (const [k, v] of [['lo', lo], ['hi', hi]]) if (typeof I[k] === 'number' && Math.abs(I[k] - v) > Grade.tolerance({ kind: 'stat', places: I.places, answer: v }) / 10)
           throw new Error(`interval.${k} ${I[k]} disagrees with its recipe (${v})`);
         I.lo = lo; I.hi = hi;
+        const alts = intervalAlts(I.from);
+        if (alts.length) I.alts = [...(I.alts || []), ...alts];
       }
       if (q.type === 'setup' && q.setup) {
         const S = q.setup, got = Expr.evaluate(String(S.answer), S.bind || {});
         if (!got.ok) throw new Error(`setup.answer "${S.answer}" does not evaluate: ${got.error || 'not a number'}`);
         S.answerHtml = Tex.render(S.answerTex || got.tex, { strict: true });
         for (const m of S.mistakes || []) if (!Expr.evaluate(String(m.expr), S.bind || {}).ok) throw new Error(`setup mistake "${m.expr}" does not evaluate`);
+        // The value step: its key from its recipe, like a numeric item.
+        if (S.then && S.then.from) prepareNumeric(S.then, 'setup.then');
+        else if (S.then && typeof S.then.answer !== 'number') throw new Error('setup.then needs a numeric answer or a from recipe');
       }
       if (q.type === 'conclude' && q.conclude) q.conclude.slots = concludeSlots(q.conclude);
     } catch (e) { problems.push(`questions/${topicId}.json [${q.id}]: ${e.message}`); }

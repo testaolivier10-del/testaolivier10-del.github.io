@@ -199,8 +199,15 @@
     }
     if(t === 'setup'){
       if(!X()) return { valid: false, correct: false, score: 0, error: 'The expression checker did not load.' };
-      var gs = X().gradeSetup(q, resp);
-      return { valid: gs.valid, correct: gs.correct, score: gs.correct ? 1 : gs.valueOk ? 0.5 : 0, notes: gs.notes || [], error: gs.error, mistake: gs.mistake, tex: gs.tex };
+      // resp: the typed expression, or { expr, value } when the item has a
+      // second step (setup.then) asking for the value, graded as numeric.
+      var two = resp && typeof resp === 'object', T2 = q.setup && q.setup.then;
+      var gs = X().gradeSetup(q, two ? resp.expr : resp), es = gs.correct ? 1 : gs.valueOk ? 0.5 : 0;
+      if(!two || !T2) return { valid: gs.valid, correct: gs.correct, score: es, notes: gs.notes || [], error: gs.error, mistake: gs.mistake, tex: gs.tex };
+      var gv = G().numeric(T2, resp.value);
+      if(!gs.valid || !gv.valid) return { valid: false, correct: false, score: 0, error: !gs.valid ? gs.error : 'Type the value as a number, such as -1.25.', notes: [] };
+      return { valid: true, correct: gs.correct && gv.correct, score: (es + (gv.correct ? 1 : 0)) / 2, notes: (gs.notes || []).concat(gv.notes || []), error: gs.error, mistake: gs.mistake || gv.mistake, tex: gs.tex,
+        parts: { expr: gs.correct, value: gv.correct }, right: (gs.correct ? 1 : 0) + (gv.correct ? 1 : 0), total: 2 };
     }
     if(t === 'conclude'){
       var gc = G().conclude(q.conclude || {}, resp);
@@ -460,14 +467,17 @@
        graded by value and by structure (ApStatExpr.gradeSetup). The names the
        item binds (p-hat, p0, n ...) may be typed instead of their values. */
     function setupItem(){
-      var S = q.setup || {}, id = 'su-' + (++uid), names = Object.keys(S.bind || {});
+      var S = q.setup || {}, id = 'su-' + (++uid), names = Object.keys(S.bind || {}), T2 = S.then && S.then.kind ? S.then : null;
+      var VHINT = { prob: 'a probability', pvalue: 'a p-value', z: 'the z statistic', t: 'the t statistic', chi2: 'the chi-square statistic', stat: 'the value', count: 'the count', df: 'the degrees of freedom', critical: 'the critical value' };
       body.innerHTML = '<div class="stat-expr"><label for="' + id + '">Your expression</label>' +
         '<span class="stat-expr-row"><input type="text" id="' + id + '" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="' + id + '-p ' + id + '-h"></span>' +
         '<div class="stat-expr-preview" id="' + id + '-p" aria-live="polite"><span class="stat-small">Your expression will show here as math.</span></div>' +
         '<span class="stat-small" id="' + id + '-h">Type it as on the exam: sqrt( ) for a square root, * for times, ^ for powers, +/- for an interval, 10C3 for a combination.' +
-        (names.length ? ' You may use the names ' + esc(names.join(', ')) + '.' : '') + '</span></div>';
+        (names.length ? ' You may use the names ' + esc(names.join(', ')) + '.' : '') + '</span></div>' +
+        (T2 ? '<div class="stat-num stat-then"><label for="' + id + '-v">Then its value' + (T2.unit ? ' (' + esc(T2.unit) + ')' : '') + '</label><span class="stat-num-row"><input type="text" class="stat-then-v" id="' + id + '-v" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="' + id + '-vh"></span>' +
+          '<span class="stat-small" id="' + id + '-vh">Work out ' + (VHINT[T2.kind] || 'the value') + ' from your expression. Table or technology: both are accepted.</span></div>' : '');
       actions.innerHTML = '<button type="button" class="btn-press sm stat-check">Check</button>';
-      var input = body.querySelector('input'), prev = body.querySelector('.stat-expr-preview'), check = actions.querySelector('.stat-check'), pending = null;
+      var input = body.querySelector('input'), vin = body.querySelector('.stat-then-v'), prev = body.querySelector('.stat-expr-preview'), check = actions.querySelector('.stat-check'), pending = null;
       function paint(){
         pending = null;
         var v = input.value.trim();
@@ -478,17 +488,27 @@
       input.addEventListener('input', function(){ if(!pending) pending = setTimeout(paint, 120); });
       function go(){
         if(done || busy) return;
-        var g = grade(q, input.value);
-        if(!g.valid){ fb.innerHTML = '<p class="stat-small" role="alert">' + esc(g.error || 'Type the expression.') + '</p>'; input.focus(); return; }
+        if(T2 && input.value.trim() && !vin.value.trim()){ fb.innerHTML = '<p class="stat-small" role="alert">Now type its value in the second box.</p>'; vin.focus(); return; }
+        var resp = T2 ? { expr: input.value, value: vin.value } : input.value;
+        var g = grade(q, resp);
+        if(!g.valid){ fb.innerHTML = '<p class="stat-small" role="alert">' + esc(g.error || 'Type the expression.') + '</p>'; (T2 && X() && X().evaluate(input.value, S.bind || {}).tex ? vin : input).focus(); return; }
         busy = true;
         explain(function(){
+          var mark = function(v){ return v ? '<span class="stat-mark ok">Right</span>' : '<span class="stat-mark no">Not yet</span>'; };
+          if(T2){
+            input.readOnly = vin.readOnly = true;
+            var detail2 = opts.exam ? '' : '<ul class="stat-num-parts"><li>' + mark(g.parts.expr) + ' Expression</li><li>' + mark(g.parts.value) + ' Value</li></ul>' + notesHtml(g.notes) +
+              '<p><b>Answer:</b> ' + (S.answerHtml || esc(S.answer)) + ', about ' + keyText(T2) + '</p>';
+            finish(g, detail2, resp, g.right + ' of 2 steps right.');
+            return;
+          }
           lockMark(input, g);
           var detail = opts.exam ? '' : notesHtml(g.notes) + '<p><b>Answer:</b> ' + (S.answerHtml || esc(S.answer)) + '</p>';
           finish(g, detail, input.value, 'The value is right; the expression is missing a step the exam wants shown.');
         });
       }
       check.addEventListener('click', go);
-      input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); go(); } });
+      [input, vin].forEach(function(el){ if(el) el.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); if(el === input && vin && !vin.value.trim()) vin.focus(); else go(); } }); });
     }
 
     /* A conclusion built slot by slot (spec section 7, rule 5): a labelled

@@ -101,8 +101,13 @@ character 109,952, before Unit 3; another scraper was out of credits), so these 
 
 ## u4-u5-review: points left open by the Units 4-5 accuracy review (open, 2026-10-17)
 
-From `docs/apstat-reviews/u4-u5.md`. The first two need a change to shared runtime code, which the review
-did not touch; content workarounds are in place.
+From `docs/apstat-reviews/u4-u5.md`. **The first three were fixed at launch (2026-10-17)**: `df` now accepts the
+technology df (within 0.05) or a whole number read as Table B is read, rounded down to the df or its row (an
+integer key stays exact), never rounded up, so 26 for 25.58 is now an authored mistake; `prepareBank` adds the
+conservative-df and Table B row intervals to every t interval as `interval.alts` (the z* interval stays wrong),
+so `stat-ci-two-means-3` lost its `alts` and `stat-ci-two-means-4`, `-8` and `stat-ci-two-means-claims-11` went
+back to "either df" with the default tolerance; data plots draw the x axis on the bottom edge, so residual
+plots keep y = 0 as a dashed line with the tick labels below. The text below is the record.
 
 - **The `df` grader rounds to the nearest whole number** (`statistics/assets/stat-grade.js`, `numeric`, the
   `count`/`df` rule `Math.round(v) === Math.round(x)`). Judgment: this does not match the course's own
@@ -148,6 +153,6 @@ From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy
 - **Bias names.** `sampling-lab` offers "Convenience sampling bias" beside undercoverage, nonresponse,
   response and voluntary response bias. Confirm the course term (some texts say only "convenience
   sampling" is the method and the bias is "likely not representative").
-- **Very small p-values in Explore.** `chi-square-lab` and `p-value-explorer` show a p-value under
+- **Very small p-values in Explore** (fixed at launch: "< 0.0001", worded "less than 0.0001" in sentences). `chi-square-lab` and `p-value-explorer` show a p-value under
   0.00005 as 0.0000 in the Explore pills and Why sentence ("Because 0.0000 is less than α"). The drills
   never reach it. Consider "less than 0.0001" there.

@@ -249,7 +249,16 @@ export function setupProblems(S) {
     else if (mg.correct) bad(`setup.mistakes[${i}] (${m.expr}) is graded right, so its feedback never shows`);
     if (!m.why || strip(m.why).trim().length < 20) bad(`setup.mistakes[${i}] needs a "why" that names the slip and how to fix it`);
   }
-  if (S.then !== undefined) for (const p of numericProblems(S.then)) bad(`setup.then: ${p}`);
+  if (S.then !== undefined) {
+    const tp = numericProblems(S.then);
+    for (const p of tp) bad(`setup.then: ${p}`);
+    // The value step asks for the value of the expression just typed.
+    if (!tp.length && typeof r.value === 'number') {
+      let tv = S.then.answer;
+      try { if (S.then.from) tv = fromValue(S.then.from).value; } catch { tv = null; }
+      if (typeof tv === 'number' && Math.abs(tv - r.value) > Math.max(Grade.tolerance({ ...S.then, answer: tv }), 1e-9)) bad(`setup.then answer ${tv} is not the value of setup.answer (${r.value})`);
+    }
+  }
   return out;
 }
 

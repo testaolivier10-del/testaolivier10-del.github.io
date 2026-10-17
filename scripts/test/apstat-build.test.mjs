@@ -200,3 +200,29 @@ test('an upper-tail normal recipe accepts the upper-tail table value, never the 
   assert.ok(r.value > 0.03 && r.value < 0.04, `value ${r.value}`);
   assert.ok(r.table != null && r.table > 0.03 && r.table < 0.04, `table ${r.table}`);
 });
+
+test('launch fixes in the build: setup.then and FRQ checks computed from their recipes, t intervals get their accepted alternatives', async () => {
+  const { loadCourse, intervalAlts } = await import('../lib/apstat-build.mjs');
+  const C = loadCourse();
+  let thens = 0, checks = 0;
+  for (const bank of Object.values(C.questions)) for (const q of bank.items || []) if (q.type === 'setup' && q.setup.then) {
+    thens++; assert.equal(typeof q.setup.then.answer, 'number', `${q.id} then.answer`);
+  }
+  assert.ok(thens >= 10, `${thens} setup items with a value step`);
+  for (const f of Object.values(C.frq)) for (const p of f.parts || []) if (p.check) {
+    checks++;
+    if (p.check.type === 'numeric') assert.equal(typeof p.check.numeric.answer, 'number', `${f.id} (${p.label})`);
+    else { assert.equal(typeof p.check.interval.lo, 'number'); assert.equal(typeof p.check.interval.hi, 'number'); }
+  }
+  assert.ok(checks >= 8, `${checks} FRQ checks`);
+  assert.equal(C.mathProblems.filter(m => /frq|then/.test(m)).length, 0, C.mathProblems.join('\n'));
+  const chi = C.frq['frq-chi-square-independence'].parts.find(p => p.check && p.check.numeric.kind === 'stat');
+  assert.ok(Math.abs(chi.check.numeric.answer - 38.1) < 0.01);
+  // ci-two-means-4: technology df 25.58, conservative df 13, Table B row 25.
+  const alts = intervalAlts({ fn: 'ci2mean', args: [34.21, 6.13, 14, 28.5, 6.97, 14, 0.95] });
+  assert.ok(alts.some(a => Math.abs(a.lo - 0.3507) < 1e-3 && Math.abs(a.hi - 11.0693) < 1e-3), 'conservative interval');
+  assert.equal(intervalAlts({ fn: 'ci1mean', args: [6.8, 2.9, 25, 0.95] }).length, 0, 'df 24 is its own Table B row');
+  assert.equal(intervalAlts({ fn: 'ci1prop', args: [0.4, 100, 0.95] }).length, 0);
+  const it = C.questions['ci-two-means'].items.find(q => q.id === 'stat-ci-two-means-8');
+  assert.ok(it.interval.alts.length >= 2 && it.interval.tol == null);
+});
