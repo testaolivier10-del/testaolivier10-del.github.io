@@ -141,7 +141,7 @@
     sol.push(mode === 'less' ? '$P(Z < ' + texN(res.zb, 2) + ') = ' + P4(p) + '$.' : mode === 'greater' ? '$P(Z > ' + texN(res.za, 2) + ') = 1 - ' + P4(Dd.normCdf(res.za)) + ' = ' + P4(p) + '$.' : '$P(' + texN(res.za, 2) + ' < Z < ' + texN(res.zb, 2) + ') = ' + P4(Dd.normCdf(res.zb)) + ' - ' + P4(Dd.normCdf(res.za)) + ' = ' + P4(p) + '$.');
     sol.push('Technology gives ' + P4(p) + '; Table A, with each z rounded to two places, gives ' + P4(res.pTable) + '. Both are accepted.');
     return { text: text, steps: steps, solution: sol, data: { mu: mu, sd: sd, mode: mode, a: a, b: b },
-      fig: { kind: 'normal', mu: mu, sd: sd, mode: mode, a: a, b: b, label: c.axis } };
+      fig: { kind: 'normal', mu: mu, sd: sd, mode: mode, a: a, b: b, label: c.axis, places: pl } };
   }
 
   /* ------------------------------------------------------------ inverse */
@@ -171,7 +171,7 @@
       '$x = \\mu + z\\sigma = ' + F(mu, pl) + ' + (' + texN(z, 3) + ')(' + F(sd, pl + (sd < 1 ? 2 : 0)) + ') = ' + F(x, pl + 1) + '$' + u + '.'
     ];
     return { text: text, steps: steps, solution: sol, data: { mu: mu, sd: sd, area: area, side: side },
-      fig: { kind: 'normal', mu: mu, sd: sd, mode: side === 'left' ? 'less' : 'greater', a: x, b: x, label: c.axis, hideX: true } };
+      fig: { kind: 'normal', mu: mu, sd: sd, mode: side === 'left' ? 'less' : 'greater', a: x, b: x, label: c.axis, hideX: true, places: pl } };
   }
 
   /* ------------------------------------------------------------ binomial */
@@ -237,7 +237,7 @@
       'The normal model: $P(' + T(bd[0]) + ' < Z < ' + T(bd[1]) + ') = ' + P4(exact) + '$, close to the rule\'s ' + F(pct / 100, 4) + '. The rule is an approximation for distributions that are approximately normal.'
     ];
     return { text: text, steps: steps, solution: sol, data: { mu: mu, sd: sd, k1: bd[0], k2: bd[1], kz: kz },
-      fig: { kind: 'normal', mu: mu, sd: sd, mode: 'between', a: a, b: b, label: c.axis, emp: true } };
+      fig: { kind: 'normal', mu: mu, sd: sd, mode: 'between', a: a, b: b, label: c.axis, emp: true, places: pl } };
   }
   function fmtV(v, pl){ return F(v, pl + (Math.abs(v * Math.pow(10, pl) - Math.round(v * Math.pow(10, pl))) > 1e-6 ? 1 : 0)); }
   function bandWords(bd){

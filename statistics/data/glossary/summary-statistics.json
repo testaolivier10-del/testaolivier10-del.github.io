@@ -1,0 +1,38 @@
+{
+ "mean": {
+  "def": "The sum of the values divided by how many there are: $\\bar{x} = \\frac{\\sum x_i}{n}$ for a sample. It is not resistant."
+ },
+ "population-mean": {
+  "def": "The mean of a whole population, written $\\mu$ (mu). It is a parameter, estimated by the sample mean $\\bar{x}$."
+ },
+ "median": {
+  "def": "The middle value of the ordered data, or the average of the two middle values when n is even. Half the data are at or below it. It is resistant."
+ },
+ "quartile": {
+  "def": "The first quartile $Q_1$ is the median of the lower half of the ordered data and the third quartile $Q_3$ is the median of the upper half (the median itself is left out of both halves when n is odd)."
+ },
+ "percentile": {
+  "def": "The pth percentile is the value with p percent of the data at or below it."
+ },
+ "range": {
+  "def": "The maximum minus the minimum: a single number that measures spread. It is not resistant."
+ },
+ "iqr": {
+  "def": "The interquartile range, $\\text{IQR} = Q_3 - Q_1$: the spread of the middle half of the data. It is resistant."
+ },
+ "standard-deviation": {
+  "def": "A measure of the typical distance of the values from the mean: $s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}$ for a sample. It is 0 only when every value is the same, and it is not resistant."
+ },
+ "variance": {
+  "def": "The square of the standard deviation, $s^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n - 1}$ for a sample."
+ },
+ "population-sd": {
+  "def": "The standard deviation of a whole population, written $\\sigma$ (sigma). It is a parameter, estimated by the sample standard deviation $s$."
+ },
+ "outlier-rule": {
+  "def": "A value is an outlier if it is below $Q_1 - 1.5 \\times \\text{IQR}$ or above $Q_3 + 1.5 \\times \\text{IQR}$ (the fences). Another rule flags values more than 2 standard deviations from the mean."
+ },
+ "resistant": {
+  "def": "A summary is resistant if extreme values barely change it. The median and IQR are resistant; the mean, standard deviation and range are not."
+ }
+}

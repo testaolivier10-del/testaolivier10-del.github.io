@@ -1,0 +1,83 @@
+{
+ "hook": "The sleep data show a strong, negative, linear pattern. A coach wants more than a description: if a player slept 6.8 hours, what reaction time should she expect? A line through the points answers that. Its equation, $\\hat{y} = 391.1 - 11.37x$, turns a scatterplot into a prediction machine, as long as it is used with care.",
+ "prereq": [
+  {
+   "q": "What is the slope of $y = 12 - 3x$?",
+   "options": [
+    "$-3$",
+    "$12$",
+    "$3$",
+    "$-12$"
+   ],
+   "correct": 0,
+   "why": "In $y = a + bx$, the slope is the coefficient of $x$.",
+   "review": "math-lines"
+  },
+  {
+   "q": "For $y = 12 - 3x$, what is $y$ when $x = 2$?",
+   "options": [
+    "$6$",
+    "$18$",
+    "$10$",
+    "$-6$"
+   ],
+   "correct": 0,
+   "why": "$12 - 3(2) = 6$.",
+   "review": "math-lines"
+  },
+  {
+   "q": "Which variable goes on the horizontal axis of a scatterplot?",
+   "options": [
+    "The explanatory variable",
+    "The response variable",
+    "The larger variable",
+    "Either, always"
+   ],
+   "correct": 0,
+   "why": "Explanatory on $x$, response on $y$.",
+   "review": "scatterplots"
+  }
+ ],
+ "figure": {
+  "figure": "regression-line-predict",
+  "caption": "The regression line for the sleep data. Go up from 6.8 hours to the line, then across: a predicted reaction time of about 314 milliseconds."
+ },
+ "chain": [
+  {
+   "cause": "A scatterplot shows a linear pattern",
+   "effect": "a line $\\hat{y} = a + bx$ can summarize it and predict $y$ from $x$"
+  },
+  {
+   "cause": "Substitute a value of $x$",
+   "effect": "the result $\\hat{y}$ is a predicted value: typical for that $x$, not exact for any one individual"
+  },
+  {
+   "cause": "The slope $b$ is the change in $\\hat{y}$ per one-unit increase in $x$",
+   "effect": "interpret it as \"for each additional ..., the predicted ... increases (decreases) by about $|b|$ ...\""
+  },
+  {
+   "cause": "The line was fit only to the $x$ values in the data",
+   "effect": "predicting far outside that range (extrapolation) can give nonsense, and the intercept means something only when $x = 0$ is reasonable"
+  }
+ ],
+ "ideas": [
+  "A regression line $\\hat{y} = a + bx$ gives predicted values $\\hat{y}$ of the response for values of the explanatory variable.",
+  "Slope: \"For each additional [unit of $x$], the predicted [$y$] increases (decreases) by about $|b|$ [units of $y$].\"",
+  "Intercept: \"When [$x$] is 0, the predicted [$y$] is $a$.\" Interpret it only when $x = 0$ makes sense.",
+  "Extrapolation, predicting outside the range of the data, is unreliable."
+ ],
+ "misconception": {
+  "wrong": "The slope says exactly how much each individual's $y$ changes when $x$ goes up by 1.",
+  "right": "The slope describes the predicted value, the average trend. Individuals scatter around the line, so always say \"the predicted ...\" when you interpret it."
+ },
+ "check": [
+  "stat-linear-models-1",
+  "stat-linear-models-2",
+  "stat-linear-models-3",
+  "stat-linear-models-4",
+  "stat-linear-models-6",
+  "stat-linear-models-10"
+ ],
+ "summary": "A regression line $\\hat{y} = a + bx$ predicts the response from the explanatory variable. Interpret the slope as the predicted change in $y$ for each one-unit increase in $x$, and the intercept as the predicted $y$ at $x = 0$ when that makes sense, always in context and with \"predicted\". Do not extrapolate beyond the data.",
+ "topic": "linear-models"
+}

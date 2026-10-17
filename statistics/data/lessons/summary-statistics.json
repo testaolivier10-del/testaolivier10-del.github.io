@@ -1,0 +1,95 @@
+{
+ "topic": "summary-statistics",
+ "hook": "A reviewer tests 12 phones of one model. Eleven last between 7 and 11 hours; one lasts 14.9. Report the mean and the typical phone seems to last 9.68 hours. Report the median and it is 9.4. Both are correct. Which one to report depends on what each summary does with that one long-lasting phone, and that is the heart of this topic.",
+ "prereq": [
+  {
+   "q": "Evaluate $\\frac{3 + 5 + 10}{3}$.",
+   "options": [
+    "6",
+    "11.33",
+    "18",
+    "3"
+   ],
+   "correct": 0,
+   "why": "Add the top first: 18, then divide by 3.",
+   "review": "math-formulas"
+  },
+  {
+   "q": "Which shape has a long tail toward the larger values?",
+   "options": [
+    "Skewed right",
+    "Skewed left",
+    "Uniform",
+    "Symmetric"
+   ],
+   "correct": 0,
+   "why": "Skew is named for the tail.",
+   "review": "describing-distributions"
+  },
+  {
+   "q": "What is $\\sqrt{\\frac{26}{2}}$, to two decimal places?",
+   "options": [
+    "3.61",
+    "2.55",
+    "13",
+    "6.5"
+   ],
+   "correct": 0,
+   "why": "$\\frac{26}{2} = 13$ and $\\sqrt{13} = 3.61$.",
+   "review": "math-formulas"
+  }
+ ],
+ "figure": {
+  "figure": "mean-median-pull",
+  "caption": "Adding one phone that lasts 14.9 hours moves the mean from 9.21 to 9.68 hours, but the median only from 9.30 to 9.40."
+ },
+ "chain": [
+  {
+   "cause": "The mean adds every value and divides by n",
+   "effect": "one extreme value pulls it toward the tail"
+  },
+  {
+   "cause": "The median and quartiles depend only on the order of the values",
+   "effect": "they barely move when an extreme value changes: they are resistant"
+  },
+  {
+   "cause": "The standard deviation squares each distance from the mean",
+   "effect": "it measures typical distance from the mean, and an outlier inflates it"
+  },
+  {
+   "cause": "So for skewed data or outliers",
+   "effect": "report the median and IQR; for roughly symmetric data, the mean and standard deviation"
+  }
+ ],
+ "ideas": [
+  "<b>Mean</b> $\\bar{x} = \\frac{\\sum x_i}{n}$; <b>median</b>: the middle of the ordered values (the average of the two middle ones when n is even).",
+  "<b>Quartiles</b>: $Q_1$ and $Q_3$ are the medians of the lower and upper halves (leave out the median when n is odd). $\\text{IQR} = Q_3 - Q_1$; <b>range</b> = max − min.",
+  "<b>Standard deviation</b> $s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}$, the typical distance from the mean; <b>variance</b> is $s^2$. Population versions: $\\mu$ and $\\sigma$.",
+  "Outliers: beyond $Q_1 - 1.5 \\times \\text{IQR}$ or $Q_3 + 1.5 \\times \\text{IQR}$, or more than 2 standard deviations from the mean.",
+  "Adding a constant shifts the center but not the spread; multiplying by a constant multiplies both."
+ ],
+ "misconception": {
+  "wrong": "The mean is always the best measure of center, because it uses every value.",
+  "right": "Using every value is what makes the mean sensitive to extreme values. With strong skew or outliers, the resistant median describes a typical value better."
+ },
+ "check": [
+  "stat-summary-statistics-1",
+  "stat-summary-statistics-2",
+  "stat-summary-statistics-3",
+  "stat-summary-statistics-4",
+  "stat-summary-statistics-5",
+  "stat-summary-statistics-11",
+  "stat-summary-statistics-12"
+ ],
+ "summary": "The mean and standard deviation use every value, so outliers and skew pull them; the median and IQR are resistant. Quartiles are the medians of the two halves, and the $1.5 \\times \\text{IQR}$ fences or the 2 standard deviation rule flag outliers. Adding a constant shifts center but not spread; multiplying by a constant scales both.",
+ "connections": [
+  {
+   "href": "../notes/describing-distributions.html",
+   "label": "Back: describing distributions (1.6)"
+  },
+  {
+   "href": "../notes/boxplots.html",
+   "label": "Next: graphing the summaries (1.8)"
+  }
+ ]
+}

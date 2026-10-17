@@ -1,0 +1,503 @@
+{
+ "stimuli": {
+  "boxplots-s1": {
+   "kind": "graph",
+   "title": "Commute times of 20 nurses",
+   "plot": {
+    "label": "Boxplot of the commute times of 20 nurses in minutes, with the box from 13.5 to 27, the median at 19.5, whiskers from 6 to 37 and one outlier at 58",
+    "kind": "box",
+    "data": [6, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 22, 23, 25, 26, 28, 31, 34, 37, 58],
+    "xLabel": "minutes",
+    "x": [0, 70],
+    "xStep": 10
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "commute time",
+      "unit": "minutes",
+      "values": [6, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 22, 23, 25, 26, 28, 31, 34, 37, 58]
+     }
+    ]
+   },
+   "text": "The one-way commute times, in minutes, of 20 nurses at a clinic, in order: 6, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 22, 23, 25, 26, 28, 31, 34, 37, 58 (invented data). The boxplot is drawn from these values."
+  },
+  "boxplots-s2": {
+   "kind": "table",
+   "title": "Final exam scores",
+   "text": "The five-number summary of the final exam scores of 120 students (invented data).",
+   "table": {
+    "caption": "Five-number summary of 120 exam scores",
+    "cols": [
+     "Min",
+     "Q1",
+     "Median",
+     "Q3",
+     "Max"
+    ],
+    "rows": [
+     [
+      "41",
+      "63",
+      "72",
+      "79",
+      "98"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-boxplots-1",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the first quartile, $Q_1$, of the commute times, in minutes?",
+   "why": {
+    "correct": "Lower half: the 10 smallest values, 6 to 19. Its median is $\\frac{13 + 14}{2} = 13.5$ minutes."
+   },
+   "stimulus": "boxplots-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 1,
+    "unit": "minutes",
+    "from": {
+     "fn": "summary",
+     "args": [
+      [6, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 22, 23, 25, 26, 28, 31, 34, 37, 58]
+     ],
+     "pick": "q1"
+    },
+    "mistakes": [
+     {
+      "value": 13,
+      "why": "That is the 5th value. The lower half has 10 values, so $Q_1$ is the average of its 5th and 6th values: (13 + 14)/2."
+     },
+     {
+      "value": 19.5,
+      "why": "That is the median of all 20 values. $Q_1$ is the median of the lower half."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-boxplots-2",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the upper fence, $Q_3 + 1.5 \\times \\text{IQR}$, in minutes?",
+   "why": {
+    "correct": "$Q_3 = \\frac{26 + 28}{2} = 27$, $\\text{IQR} = 27 - 13.5 = 13.5$, so the fence is $27 + 1.5(13.5) = 47.25$ minutes."
+   },
+   "stimulus": "boxplots-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "minutes",
+    "from": {
+     "fn": "summary",
+     "args": [
+      [6, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 22, 23, 25, 26, 28, 31, 34, 37, 58]
+     ],
+     "pick": "fences.1"
+    },
+    "mistakes": [
+     {
+      "value": 40.5,
+      "why": "That adds just one IQR to $Q_3$. The fence adds $1.5 \\times \\text{IQR} = 1.5(13.5) = 20.25$."
+     },
+     {
+      "value": 105,
+      "why": "That uses the range, 52, instead of the IQR, 13.5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-boxplots-3",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the right whisker end at 37 minutes and not at the maximum, 58?",
+   "why": {
+    "correct": "Whiskers go to the most extreme values that are not outliers. Outliers, beyond the fences, are marked separately.",
+    "options": [
+     "The whisker stops at an actual data value, the largest one inside the fence.",
+     "Right: a whisker reaches the most extreme value inside the fences, here 37; 58 is above 47.25.",
+     "Whiskers can have different lengths; that is how a boxplot shows skew.",
+     "Whiskers are not set at a percentile; they end at the most extreme value inside the fences."
+    ]
+   },
+   "stimulus": "boxplots-s1",
+   "options": [
+    "Whiskers stop at $Q_3$ plus the IQR, which is about 40.5",
+    "58 is beyond the upper fence, so it is drawn as an outlier",
+    "The whisker is drawn to the same length as the left whisker",
+    "37 is the 95th percentile of the 20 commute times"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-boxplots-4",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "About what percent of the nurses have commutes longer than $Q_3$, 27 minutes?",
+   "why": {
+    "correct": "The five numbers split the data into quarters: about 25% of the values lie above $Q_3$. Here 5 of 20 nurses do.",
+    "options": [
+     "About 75% are at or below $Q_3$; the part above is a quarter.",
+     "The box holds the middle half; the upper whisker and outliers hold about a quarter.",
+     "The outlier is one of five values above 27 minutes.",
+     "Right: $Q_3$ has about three quarters of the data at or below it, so about a quarter above."
+    ]
+   },
+   "stimulus": "boxplots-s1",
+   "options": [
+    "About 75%, the percent above the box",
+    "About 50%, the percent inside the box",
+    "About 5%, since just one nurse is an outlier",
+    "About 25%"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-boxplots-5",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student says, \"The boxplot shows that the commute times have one peak.\" What is wrong with this claim?",
+   "why": {
+    "correct": "Never read modality (one peak, two peaks) from a boxplot. Use a dotplot or histogram for shape details.",
+    "options": [
+     "Right: a boxplot hides how values are spread inside the box and whiskers, so it cannot show modality, gaps or clusters.",
+     "A boxplot shows no peaks at all; the halves of the box are quarters of the data, not peaks.",
+     "Commute times are quantitative. The issue is what a boxplot can show.",
+     "An outlier is a single far value, not a peak."
+    ]
+   },
+   "stimulus": "boxplots-s1",
+   "options": [
+    "A boxplot shows five numbers and outliers, so it cannot show peaks",
+    "The boxplot shows two peaks, one on each side of the median",
+    "Commute times are categorical, so they have no peaks",
+    "The peak of a boxplot is the outlier at 58 minutes"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-boxplots-6",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Would a boxplot of these scores show any outliers?",
+   "why": {
+    "correct": "$\\text{IQR} = 79 - 63 = 16$; fences at $63 - 1.5(16) = 39$ and $79 + 1.5(16) = 103$. The min and max are inside, so the whiskers reach 41 and 98.",
+    "options": [
+     "Far below the median is not enough; 41 is above the lower fence of 39.",
+     "98 is below the upper fence of 103, so it is not an outlier.",
+     "Right: $\\text{IQR} = 16$, so the fences are $63 - 24 = 39$ and $79 + 24 = 103$. The minimum 41 and maximum 98 are inside.",
+     "The $1.5 \\times \\text{IQR}$ rule needs only $Q_1$ and $Q_3$, and the extremes."
+    ]
+   },
+   "stimulus": "boxplots-s2",
+   "options": [
+    "Yes: the score of 41 is far below the median of 72",
+    "Yes: the score of 98 is far above the third quartile of 79",
+    "No: the fences are 39 and 103, and every score is between them",
+    "It is impossible to decide without the mean and standard deviation"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-boxplots-7",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "About how many of the 120 students scored between 63 and 79?",
+   "why": {
+    "correct": "The box spans the middle 50% of the data: about $0.5 \\times 120 = 60$ students.",
+    "options": [
+     "A quarter lies in each whisker section; the box holds two quarters.",
+     "About three quarters scored 79 or less; between 63 and 79 is the middle half.",
+     "Right: the box, from $Q_1$ to $Q_3$, holds the middle half of the data: about half of 120.",
+     "16 points is the width of the box, not a count of students."
+    ]
+   },
+   "stimulus": "boxplots-s2",
+   "options": [
+    "About 30, a quarter of the students",
+    "About 90, three quarters of the students",
+    "About 60",
+    "About 16, the IQR of the scores"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-boxplots-8",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student scored 85. What can you say about this score?",
+   "why": {
+    "correct": "85 lies between $Q_3 = 79$ and the maximum 98, the top quarter of the scores.",
+    "options": [
+     "Right: 85 is above $Q_3 = 79$, so it is higher than about 75% of the scores.",
+     "Values above $Q_3$ are ordinary parts of the data; 85 is well inside the upper fence of 103.",
+     "The median is 72. The middle of the min and max is not the median.",
+     "The box ends at 79; 85 is beyond it."
+    ]
+   },
+   "stimulus": "boxplots-s2",
+   "options": [
+    "It is in the top quarter of the scores",
+    "It is an outlier, since it is above the third quartile",
+    "It is near the median, since it is near the middle of 41 and 98",
+    "It is in the middle half of the scores, inside the box"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-boxplots-9",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement compares the spread of the lower and upper quarters of the scores?",
+   "why": {
+    "correct": "Each quarter holds the same number of values; a wider section means those values are more spread out. Here 63 − 41 = 22 and 98 − 79 = 19.",
+    "options": [
+     "Each quarter holds about 30 students; the quarters differ in width, not in count.",
+     "Equal counts do not mean equal widths: 22 points against 19.",
+     "Reaching the maximum is not the same as being wide: 79 to 98 is 19 points.",
+     "Right: 22 points against 19 points, so the lowest quarter of scores is more spread out."
+    ]
+   },
+   "stimulus": "boxplots-s2",
+   "options": [
+    "The top quarter has more students than the lowest quarter",
+    "The two quarters are equally spread, as each holds a quarter of the scores",
+    "The top quarter is more spread out, since it reaches the highest score",
+    "The lowest quarter (41 to 63) is more spread out than the top quarter (79 to 98)"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-boxplots-10",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the five-number summary of 3, 5, 7, 8, 12, 13, 14?",
+   "why": {
+    "correct": "Min 3; $Q_1$ = median of 3, 5, 7 = 5; median 8; $Q_3$ = median of 12, 13, 14 = 13; max 14.",
+    "options": [
+     "That keeps the median, 8, in both halves. With n odd, leave it out: lower half 3, 5, 7.",
+     "Right: median 8; the lower half 3, 5, 7 has median 5; the upper half 12, 13, 14 has median 13.",
+     "8.86 is the mean. The five-number summary uses the median, 8.",
+     "The quartiles are the medians of each half, not the neighbors of the median."
+    ]
+   },
+   "options": [
+    "3, 6, 8, 12.5, 14, with the median kept in both halves",
+    "3, 5, 8, 13, 14",
+    "3, 5, 8.86, 13, 14, using the mean for the center",
+    "3, 7, 8, 12, 14, using the values next to the median"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-boxplots-11",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the values 3, 5, 7, 8, 12, 13, 14, what is $Q_3$?",
+   "why": {
+    "correct": "Leave out the median, 8. The upper half is 12, 13, 14, so $Q_3 = 13$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 1,
+    "from": {
+     "fn": "summary",
+     "args": [
+      [3, 5, 7, 8, 12, 13, 14]
+     ],
+     "pick": "q3"
+    },
+    "mistakes": [
+     {
+      "value": 12.5,
+      "why": "That keeps the median, 8, in the upper half (8, 12, 13, 14). With n odd, leave the median out: the median of 12, 13, 14 is 13."
+     },
+     {
+      "value": 12,
+      "why": "That is the value just above the median. $Q_3$ is the median of the upper half."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-boxplots-12",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "3.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does the length of the box in a boxplot show?",
+   "why": {
+    "correct": "The box spans $Q_1$ to $Q_3$, so its length is the IQR.",
+    "options": [
+     "Right: the box runs from $Q_1$ to $Q_3$.",
+     "The range runs from the end of one whisker (or outlier) to the other.",
+     "A boxplot uses quartiles, not the mean or standard deviation.",
+     "A boxplot does not show how many values there are."
+    ]
+   },
+   "options": [
+    "The IQR, the spread of the middle half of the data",
+    "The range, from the minimum value to the maximum value",
+    "The mean plus and minus one standard deviation",
+    "The number of values in the data set"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-boxplots-13",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Data on wait times have $Q_1 = 4$ and $Q_3 = 10$ minutes. The three largest values are 17, 18 and 22 minutes. Where does the right whisker of the boxplot end?",
+   "why": {
+    "correct": "$\\text{IQR} = 6$, so the upper fence is $10 + 1.5(6) = 19$. The whisker goes to the largest value at or below 19, which is 18; 22 is marked as an outlier.",
+    "options": [
+     "22 is above the upper fence of 19, so it is drawn as an outlier, not reached by the whisker.",
+     "A whisker ends at an actual data value, not at the fence.",
+     "Right: the upper fence is $10 + 1.5(6) = 19$. 22 is beyond it, so 22 is an outlier and the whisker stops at 18, the largest value inside the fence.",
+     "The box ends at $Q_3$; the whisker continues past it to the largest value inside the fence."
+    ]
+   },
+   "options": [
+    "At 22 minutes, the largest value in the data",
+    "At 19 minutes, the upper fence itself",
+    "At 18 minutes",
+    "At 10 minutes, the third quartile of the wait times"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-boxplots-14",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a boxplot, the median is close to $Q_1$ and the right whisker is much longer than the left. What is the most likely shape?",
+   "why": {
+    "correct": "Long right whisker and the median near $Q_1$: the upper values are spread out, so the distribution is skewed right.",
+    "options": [
+     "A median near $Q_1$ means the lower values are bunched, and the upper values stretch out to the right.",
+     "Right: the upper half of the data stretches farther, a long tail toward the larger values.",
+     "Symmetry would show a median near the middle of the box and whiskers of similar length.",
+     "A boxplot cannot show peaks."
+    ]
+   },
+   "options": [
+    "Skewed left, since the median is on the left of the box",
+    "Skewed right",
+    "Roughly symmetric, since there is one box",
+    "Bimodal, with one peak in the box and one in the whisker"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-boxplots-15",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "multi",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which feature of a distribution can a boxplot show? Select all that apply.",
+   "why": {
+    "correct": "A boxplot shows the five-number summary and outliers; it hides peaks, gaps and the mean.",
+    "options": [
+     "Right: they are marked as separate points.",
+     "The box and whiskers hide peaks, so a boxplot cannot show modality.",
+     "A boxplot shows the median, not the mean.",
+     "Gaps inside the box or a whisker are hidden."
+    ]
+   },
+   "options": [
+    "Outliers by the $1.5 \\times \\text{IQR}$ rule",
+    "Whether the distribution has two peaks",
+    "The mean of the data",
+    "Gaps between clusters of values"
+   ],
+   "correct": [0]
+  },
+  {
+   "id": "stat-boxplots-16",
+   "unit": "unit-1",
+   "topic": "boxplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A boxplot of 40 test scores has its median line in the middle of the box and two whiskers of equal length. Which conclusion is justified?",
+   "why": {
+    "correct": "Equal box halves and whiskers mean the quarters of the data are equally spread on each side of the median: roughly symmetric, as far as a boxplot can tell.",
+    "options": [
+     "A boxplot cannot show peaks; the scores could even be bimodal.",
+     "A boxplot does not show the mean, so this cannot be read from it.",
+     "Each of the four sections holds about a quarter of the scores.",
+     "Right: that is what equal halves of the box and equal whiskers show; the distribution looks roughly symmetric."
+    ]
+   },
+   "options": [
+    "The distribution of the scores has exactly one peak",
+    "The mean of the scores is exactly equal to the median",
+    "Each quarter of the box holds twice as many scores as a whisker",
+    "The quarters of the data are spread evenly on both sides of the median"
+   ],
+   "correct": 3
+  }
+ ]
+}

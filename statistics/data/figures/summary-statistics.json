@@ -1,0 +1,12 @@
+{
+ "mean-median-pull": {
+  "file": "figures/mean-median-pull.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two dotplots of battery life in hours on a scale from 7 to 15. Top: eleven phones from 7.2 to 10.6 hours, with median 9.30 and mean 9.21 close together. Bottom: the same phones plus one that lasts 14.9 hours; the median moves only to 9.40 while the mean moves to 9.68, pulled toward the large value."
+ }
+}

@@ -69,5 +69,5 @@
   "stat-p-values-11",
   "stat-p-values-17"
  ],
- "summary": "Assuming $H_0$ is true, standardize the sample proportion with $z = \\frac{\\hat{p} - p_0}{\\sqrt{p_0(1 - p_0)/n}}$ and find the tail area in the direction of $H_a$ (both tails for $\\ne$). That area is the p-value: the chance of a result at least as extreme as the one observed if $H_0$ is true. Small p-values are evidence against $H_0$; they are never the probability that $H_0$ is true."
+ "summary": "A p-value measures how surprising the data are if $H_0$ is true. Assuming $H_0$ is true, standardize the sample proportion with $z = \\frac{\\hat{p} - p_0}{\\sqrt{p_0(1 - p_0)/n}}$ and find the tail area in the direction of $H_a$ (both tails for $\\ne$). That area is the p-value: the chance of a result at least as extreme as the one observed if $H_0$ is true. Small p-values are evidence against $H_0$; they are never the probability that $H_0$ is true."
 }

@@ -336,6 +336,15 @@ FIGS['paired-vs-two-sample'] = { topic: 'test-two-means-setup', w: 720, h: 470, 
     alt: 'Left panel, paired design: five numbered runners each run in shoe A and in shoe B, and each gives one difference, A minus B; the differences form one sample, analyzed with a paired t test on the mean difference with df equal to the number of pairs minus 1. Right panel, two groups: runners are split at random into group 1 wearing shoe A and group 2 wearing shoe B, different runners in each; each group gives its own mean, standard deviation and size, analyzed with a two-sample t test on mu 1 minus mu 2, with technology df or the smaller n minus 1.', body };
 } };
 
+
+/* 4.10: the caffeine experiment's two-sample t test, left tail, technology df. */
+FIGS['two-sample-t-pvalue'] = { topic: 'test-two-means', w: 720, h: 380, build() {
+  const r = Dist.t2(241, 28, 20, 262, 31, 22);
+  const { body, p } = tTails({ df: r.df, t: r.t, sides: 1, title: 'If H₀ is true (μC = μN): the t distribution with df 40.0' });
+  return { numbers: { t: r.t, df: r.df, p, pCons: r.pCons.less }, title: 'p-value of a two-sample t test',
+    alt: `The t distribution with ${r.df.toFixed(1)} degrees of freedom, centered at 0. A dashed line marks the observed two-sample t statistic ${r.t.toFixed(2)}, and the small area to its left is shaded: the one-sided p-value, ${p.toFixed(4)}.`, body };
+} };
+
 /* ------------------------------------------------------------ output */
 export function buildAll() {
   const out = {};

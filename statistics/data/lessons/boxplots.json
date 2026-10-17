@@ -1,0 +1,82 @@
+{
+ "topic": "boxplots",
+ "hook": "Twenty nurses report their commute times, and one lives 58 minutes away. A dotplot shows every nurse; a boxplot shows just five numbers and the outlier. That sounds like less, and it is, but five numbers are exactly what you need to see the center, the spread of the middle half and the skew at a glance, and to compare groups side by side.",
+ "prereq": [
+  {
+   "q": "For 6, 9, 11, 12, 13, 14 what is the median?",
+   "options": [
+    "11.5",
+    "11",
+    "12",
+    "10.83"
+   ],
+   "correct": 0,
+   "why": "n = 6 is even: average the 3rd and 4th values, (11 + 12)/2.",
+   "review": "summary-statistics"
+  },
+  {
+   "q": "With $Q_1 = 4$ and $Q_3 = 10$, what is the upper fence?",
+   "options": [
+    "19",
+    "16",
+    "14",
+    "25"
+   ],
+   "correct": 0,
+   "why": "$\\text{IQR} = 6$, so $10 + 1.5(6) = 19$.",
+   "review": "summary-statistics"
+  }
+ ],
+ "figure": {
+  "figure": "box-from-dots",
+  "caption": "The commute times of 20 workers as a dotplot and as a boxplot on the same scale. The outlier at 62 is beyond the fence at 49.5, so the whisker stops at 38."
+ },
+ "chain": [
+  {
+   "cause": "Find the minimum, $Q_1$, the median, $Q_3$ and the maximum",
+   "effect": "these five numbers split the ordered data into four quarters"
+  },
+  {
+   "cause": "Draw a box from $Q_1$ to $Q_3$ with a line at the median",
+   "effect": "the box holds the middle half of the data, and its length is the IQR"
+  },
+  {
+   "cause": "Compute the fences $Q_1 - 1.5 \\times \\text{IQR}$ and $Q_3 + 1.5 \\times \\text{IQR}$",
+   "effect": "values beyond them are marked as outliers, and each whisker stops at the most extreme value inside its fence"
+  },
+  {
+   "cause": "The picture keeps only quarters and outliers",
+   "effect": "it shows center, spread and skew, but it cannot show peaks, gaps or the mean"
+  }
+ ],
+ "ideas": [
+  "The <b>five-number summary</b> is minimum, $Q_1$, median, $Q_3$, maximum. Each quarter of the data lies between two neighbors.",
+  "A <b>boxplot</b> draws a box from $Q_1$ to $Q_3$ with a line at the median, whiskers to the most extreme values inside the fences, and outliers as separate points.",
+  "Skew shows as a longer whisker and a median closer to one end of the box: skewed right when the right side is stretched.",
+  "A boxplot cannot show modality, gaps or clusters, so never describe a boxplot as having one or two peaks."
+ ],
+ "misconception": {
+  "wrong": "The right whisker always goes to the maximum value.",
+  "right": "A whisker stops at the most extreme value inside the fence. If the maximum is beyond $Q_3 + 1.5 \\times \\text{IQR}$, it is plotted as an outlier and the whisker is shorter."
+ },
+ "check": [
+  "stat-boxplots-1",
+  "stat-boxplots-2",
+  "stat-boxplots-3",
+  "stat-boxplots-4",
+  "stat-boxplots-5",
+  "stat-boxplots-10",
+  "stat-boxplots-14"
+ ],
+ "summary": "A boxplot pictures the five-number summary: a box from $Q_1$ to $Q_3$ split at the median, whiskers to the most extreme values inside the $1.5 \\times \\text{IQR}$ fences, and outliers marked separately. It shows center, the spread of the middle half and skew, and about a quarter of the data lies in each section, but it hides peaks and gaps.",
+ "connections": [
+  {
+   "href": "../notes/summary-statistics.html",
+   "label": "Back: summary statistics (1.7)"
+  },
+  {
+   "href": "../notes/comparing-distributions.html",
+   "label": "Next: comparing distributions (1.9)"
+  }
+ ]
+}

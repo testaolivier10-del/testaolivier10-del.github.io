@@ -1,0 +1,8 @@
+{
+ "regression-line": {
+  "def": "A line $\\hat{y} = a + bx$ that describes how a response variable $y$ changes, on average, as an explanatory variable $x$ changes. Its output $\\hat{y}$ (y-hat) is a predicted value of $y$."
+ },
+ "extrapolation": {
+  "def": "Using a regression line to predict for values of $x$ outside the range of the data. Such predictions are unreliable because the pattern may not continue."
+ }
+}

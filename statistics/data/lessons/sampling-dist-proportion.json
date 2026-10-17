@@ -69,5 +69,5 @@
   "stat-sampling-dist-proportion-13",
   "stat-sampling-dist-proportion-16"
  ],
- "summary": "For random samples, $\\hat{p}$ has mean $p$ and standard deviation $\\sqrt{p(1 - p)/n}$ (accurate when the sample is at most 10% of the population) and is approximately normal when $np \\ge 10$ and $n(1 - p) \\ge 10$. Then $z = \\frac{\\hat{p} - p}{\\sigma_{\\hat{p}}}$ turns a question about a sample proportion into a normal probability, which you can tie back to a claim about $p$."
+ "summary": "For random samples, $\\hat{p}$ is centered at $p$ with a spread that shrinks as $n$ grows. It has mean $p$ and standard deviation $\\sqrt{p(1 - p)/n}$ (accurate when the sample is at most 10% of the population) and is approximately normal when $np \\ge 10$ and $n(1 - p) \\ge 10$. Then $z = \\frac{\\hat{p} - p}{\\sigma_{\\hat{p}}}$ turns a question about a sample proportion into a normal probability, which you can tie back to a claim about $p$."
 }

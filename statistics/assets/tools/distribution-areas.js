@@ -139,11 +139,11 @@
       out.push('<rect class="da-bar' + (inE ? ' is-in' : '') + (k === v.k ? ' is-k' : '') + '" x="' + f2(x - bw / 2) + '" y="' + f2(y) + '" width="' + f2(bw) + '" height="' + f2(Math.max(0, G.b - y)) + '" rx="' + (bw > 10 ? 2 : 0) + '"/>');
     }
     if(v.curve){ var fN = function(x){ return D().normPdf(x, mean, sd); }; out.push('<path class="da-ncurve" d="' + curvePath(fN, G, lo, hi) + '"/>'); }
-    if(bw >= 30 && n <= 20) for(k = Math.ceil(lo); k <= Math.floor(hi); k++){ if(pm[k] < 0.0005) continue; out.push(txt(G.sx(k), G.sy(pm[k]) - 5, pm[k].toFixed(3).replace(/^0/, ''), 'da-bl' + (v.shade && v.lo != null && k >= v.lo && k <= v.hi ? ' is-in' : ''))); }
+    if(v.barLabels && bw >= 30 && n <= 20) for(k = Math.ceil(lo); k <= Math.floor(hi); k++){ if(pm[k] < 0.0005) continue; out.push(txt(G.sx(k), G.sy(pm[k]) - 5, pm[k].toFixed(3).replace(/^0/, ''), 'da-bl' + (v.shade && v.lo != null && k >= v.lo && k <= v.hi ? ' is-in' : ''))); }
     if(v.showP && v.shade && v.lo != null && v.hi >= v.lo){
       // A bracket over the bars in the event, with their total.
       var s = 0, mx = 0; for(k = v.lo; k <= v.hi; k++){ s += pm[k]; if(pm[k] > mx) mx = pm[k]; }
-      var a0 = Math.max(v.lo, Math.ceil(lo)), b0 = Math.min(v.hi, Math.floor(hi)), x1 = G.sx(a0) - bw / 2, x2 = G.sx(b0) + bw / 2, by = Math.max(G.t + 22, G.sy(mx) - (bw >= 30 && n <= 20 ? 24 : 10));
+      var a0 = Math.max(v.lo, Math.ceil(lo)), b0 = Math.min(v.hi, Math.floor(hi)), x1 = G.sx(a0) - bw / 2, x2 = G.sx(b0) + bw / 2, by = Math.max(G.t + 22, G.sy(mx) - (v.barLabels && bw >= 30 && n <= 20 ? 24 : 10));
       out.push('<path class="da-brk is-ev" d="M' + f2(x1) + ' ' + f2(by + 6) + 'V' + f2(by) + 'H' + f2(x2) + 'V' + f2(by + 6) + '"/>');
       out.push(txt(Math.max(G.l + 34, Math.min(G.r - 34, (x1 + x2) / 2)), by - 6, P4(Math.min(1, s)), 'da-parea'));
     }
@@ -355,7 +355,7 @@
         tellN(res);
       } else {
         var b = DA.binom(S.n, S.p, S.rel, S.k), bs = S.bs;
-        var rb = binomFig({ n: S.n, p: S.p, lo: b.lo, hi: b.hi, shade: true, showP: true, curve: S.curve, W: W, H: H, label: bs ? 'X = ' + bs.X : 'X', k: S.k });
+        var rb = binomFig({ n: S.n, p: S.p, lo: b.lo, hi: b.hi, shade: true, showP: true, curve: S.curve, W: W, H: H, barLabels: true, label: bs ? 'X = ' + bs.X : 'X', k: S.k });
         layer.innerHTML = rb.svg; G = rb.G;
         h1.setAttribute('transform', 'translate(' + f2(G.sx(S.k)) + ' ' + f2(G.b) + ')'); h1.style.display = ''; h2.style.display = 'none';
         h1.setAttribute('aria-label', 'Boundary count k'); h1.setAttribute('aria-valuetext', 'k = ' + S.k + ', probability ' + P4(b.p));
@@ -486,7 +486,7 @@
         title.textContent = 'Binomial distribution with n = ' + fg.n + ' and p = ' + fg.p + (st.shade ? ', the event shaded' : '');
       } else {
         var a = isFinite(fg.a) ? fg.a : fg.b, b = isFinite(fg.b) ? fg.b : fg.a;
-        layer.innerHTML = normalFig({ mu: fg.mu, sd: fg.sd, mode: fg.mode, a: a, b: b, shade: st.shade || fg.emp && st.emp, showP: st.showP && !fg.emp, emp: fg.emp && st.emp, W: w, H: h, label: fg.label, hideX: fg.hideX && !st.x, places: 1, tags: fg.emp ? st.emp : true }).svg;
+        layer.innerHTML = normalFig({ mu: fg.mu, sd: fg.sd, mode: fg.mode, a: a, b: b, shade: st.shade || fg.emp && st.emp, showP: st.showP && !fg.emp, emp: fg.emp && st.emp, W: w, H: h, label: fg.label, hideX: fg.hideX && !st.x, places: fg.places != null ? fg.places : 1, tags: fg.emp ? st.emp : true }).svg;
         title.textContent = 'Normal curve with mean ' + fg.mu + ' and standard deviation ' + fg.sd;
       }
     }

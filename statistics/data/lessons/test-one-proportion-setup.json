@@ -69,5 +69,5 @@
   "stat-test-one-proportion-setup-11",
   "stat-test-one-proportion-setup-16"
  ],
- "summary": "Set up a test before looking at the data: hypotheses about $p$ ($H_0: p = p_0$ and a one-sided or two-sided $H_a$ chosen from the question), $p$ defined in context, a significance level $\\alpha$, the procedure named (one-sample z test for a proportion), and the conditions checked in words, with large counts using $p_0$."
+ "summary": "Set up a test before looking at the data. Write hypotheses about $p$ ($H_0: p = p_0$ and a one-sided or two-sided $H_a$ chosen from the question), $p$ defined in context, a significance level $\\alpha$, the procedure named (one-sample z test for a proportion), and the conditions checked in words, with large counts using $p_0$."
 }

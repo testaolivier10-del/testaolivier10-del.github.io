@@ -490,23 +490,22 @@
    "practice": "4.E",
    "level": "analyze",
    "diff": 2,
-   "q": "A pollster builds a 95% confidence interval for a proportion. Which changes would make the margin of error smaller? Select all that apply.",
+   "q": "A pollster builds a 95% confidence interval for a proportion from a random sample. Which changes would make the margin of error smaller? Select all that apply.",
    "options": [
     "Taking a larger random sample",
-    "Using 90% confidence instead of 95%",
     "Using 99% confidence instead of 95%",
+    "Using 0.5 in place of $\\hat{p}$ in the standard error",
     "Sampling from a population 10 times as large, with the same sample size"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "The margin of error is $z^*\\sqrt{\\hat{p}(1 - \\hat{p})/n}$. A larger $n$ shrinks the standard error; a lower confidence level shrinks $z^*$. Raising the confidence level does the opposite, and the size of a large population does not enter.",
+    "correct": "The margin of error is $z^*\\sqrt{\\hat{p}(1 - \\hat{p})/n}$. Only a larger $n$ shrinks it here. Raising the confidence level raises $z^*$; replacing $\\hat{p}$ by 0.5 makes $\\hat{p}(1 - \\hat{p})$ as large as it can be; and the size of a large population does not enter.",
     "options": [
      "Right: $n$ is in the denominator of the standard error.",
-     "Right: $z^*$ drops from 1.96 to 1.645.",
      "Higher confidence needs $z^* = 2.576$, a larger margin of error.",
+     "$0.5(0.5) = 0.25$ is the largest possible value of $\\hat{p}(1 - \\hat{p})$, so the margin of error cannot shrink this way.",
      "Population size does not appear in the formula when the sample is under 10% of it."
     ]
    }

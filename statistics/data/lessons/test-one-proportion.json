@@ -69,5 +69,5 @@
   "stat-test-one-proportion-13",
   "stat-test-one-proportion-16"
  ],
- "summary": "A complete test states hypotheses about $p$ with $\\alpha$, names the one-sample z test for a proportion and checks random, 10% and large counts with $p_0$, computes $z$ and the p-value, then concludes: compare the p-value with $\\alpha$, reject or fail to reject $H_0$, and say whether there is convincing evidence for $H_a$ about the true proportion of all ..., in context. Never accept $H_0$, and claim cause only from a randomized experiment."
+ "summary": "A complete test runs state, plan, do, conclude. It states hypotheses about $p$ with $\\alpha$, names the one-sample z test for a proportion and checks random, 10% and large counts with $p_0$, computes $z$ and the p-value, then concludes: compare the p-value with $\\alpha$, reject or fail to reject $H_0$, and say whether there is convincing evidence for $H_a$ about the true proportion of all ..., in context. Never accept $H_0$, and claim cause only from a randomized experiment."
 }

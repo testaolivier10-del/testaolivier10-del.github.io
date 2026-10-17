@@ -357,24 +357,23 @@
    "practice": "2.D",
    "level": "analyze",
    "diff": 2,
-   "q": "A researcher plans a test of $H_0: p = 0.4$ against $H_a: p > 0.4$. Which changes would increase the power of the test against $p = 0.5$? Select all that apply.",
+   "q": "A researcher plans a test of $H_0: p = 0.4$ against $H_a: p > 0.4$ at $\\alpha = 0.05$. Which changes would increase the power of the test against $p = 0.5$? Select all that apply.",
    "options": [
     "Using a larger random sample",
-    "Using $\\alpha = 0.10$ instead of $\\alpha = 0.05$",
     "Using $\\alpha = 0.01$ instead of $\\alpha = 0.05$",
-    "Using a smaller random sample"
+    "Using a smaller random sample",
+    "Asking about power against $p = 0.42$ instead of $p = 0.5$"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Power grows with a larger sample (less overlap between the curves) and with a larger $\\alpha$ (a cutoff that is easier to pass). A smaller sample or a smaller $\\alpha$ lowers power.",
+    "correct": "Of these, only a larger sample increases power: the sampling distributions get narrower and overlap less. A smaller $\\alpha$ or a smaller sample lowers power, and power against an alternative closer to 0.4 is lower, not higher.",
     "options": [
      "Right: narrower sampling distributions overlap less.",
-     "Right: the cutoff moves toward $p_0$, so rejection is easier.",
      "A stricter standard of evidence makes rejection harder, so power falls.",
-     "Wider sampling distributions overlap more, so power falls."
+     "Wider sampling distributions overlap more, so power falls.",
+     "An alternative closer to $p_0$ is harder to detect, so power is lower."
     ]
    }
   },
