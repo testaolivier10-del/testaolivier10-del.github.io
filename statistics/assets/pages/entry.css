@@ -117,3 +117,9 @@ body.stat-calm-ref main.stat-entry .stat-ex-band-warn{border-radius:16px;}
 body.stat-calm-ref .stat-foot{max-width:760px;margin:0 auto;padding:0 16px 24px;}
 @media (min-width:1000px){ body.stat-calm-ref main.stat-entry{padding-top:8px;} }
 .ls-root .stat-ls-jcard .stat-js-prompt{color:var(--ink);} .ls-root .stat-ls-jcard .stat-stim{box-shadow:none;}
+/* "Say it in context": the conclusion builder under the checklist (pages/justify.js). */
+.stat-js-build{margin-top:14px;}
+.stat-js-build .stat-cl-slot select{max-width:100%;}
+.stat-js-bact{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.stat-js-bfb:empty{display:none;}
+.stat-js-bfb{margin-top:8px;}

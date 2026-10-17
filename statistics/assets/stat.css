@@ -423,6 +423,17 @@ table.stat-data td{font-variant-numeric:tabular-nums;}
 .stat-num-parts li{display:flex;align-items:center;gap:6px;}
 .stat-num-notes{margin:6px 0;padding-left:20px;font-size:14.5px;line-height:1.5;}
 .stat-num-notes li{margin:2px 0;}
+/* Conclusions built slot by slot (conclude items in stat-questions.js and the
+   "Say it in context" builder in pages/justify.js): one labelled select per
+   slot, stacked, full width so long wordings stay readable at phone width. */
+.stat-cl{display:flex;flex-direction:column;gap:12px;margin:6px 0;}
+.stat-cl-slot{display:flex;flex-direction:column;align-items:flex-start;gap:4px;font:800 14px var(--font-ui);}
+.stat-cl-slot select{width:100%;max-width:100%;min-height:44px;padding:8px 10px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:600 15px var(--font-ui);}
+.stat-cl-slot select:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.stat-cl-slot .stat-mark{margin-left:0;}
+.stat-cl-write{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.stat-cl-write label{font:800 14px var(--font-ui);}
+.stat-cl-write textarea{width:100%;box-sizing:border-box;padding:8px 10px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:500 15px var(--font-ui);}
 
 
 

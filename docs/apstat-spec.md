@@ -122,7 +122,7 @@ One branch, `claude/apstat`, one PR at the end. Phases as AP® Calculus AB.
 | 0 | Fork AP® Calculus AB: CED map (55 topics + math chapter), dependency map with notation patterns, generator `scripts/build-apstat.mjs`, runtime `statistics/assets/` (`stat-*`), `ApStatDist` distributions library, statistics TeX additions, numeric/interval/setup/conclusion item types, `ApStatPlot` (dotplot, histogram, boxplot, scatter, density curves), checks, tests, fixture, registration hidden (registry, Premium pass, Worker, SQL migration, hub/pricing, search, sitemap, OG, budgets, theme, sw.js), tool scaffolding, briefs, needs-author | one session (shared files) | **done 2026-10-17** (`docs/apstat-phase0.md`, `docs/apstat-architecture.md`, `docs/apstat-briefs/`); CI passes |
 | 1 | Content: lessons, notes, banks (incl. the two set types), FRQs, glossary, figures | 5 authors at once (section 5a). Each writes only its topics' files | |
 | 2 | Trainers (section 6) | 4 builders at once, each owning whole slugs (section 5a); runs alongside Phase 1 because contexts unlock per unit | |
-| 3 | "Say it in context" trainer, two fixed practice exams, formulas page, unit tests, cram kit | one session (needs the banks) | |
+| 3 | "Say it in context" trainer, two fixed practice exams, formulas page, unit tests, cram kit | one session (needs the banks) | **done 2026-10-17**: 36 prompts (8, 6, 8, 7, 7 by unit; every skill; 7 with the conclusion builder), two forms (29 bank + 13 exam-only each, one probability and one regression set, unit and practice counts in range, Q1-Q4 FRQs), formulas page held to the 2026 sheet, unit tests, cram kit; every new number recomputed (`EXAM_NUMBERS`, `JUSTIFY_NUMBERS`, distractors too); independent review `docs/apstat-reviews/phase3.md`, all findings applied (decision 14) |
 | 4 | Independent accuracy checks per unit and for tools and exams (every key recomputed by code with `ApStatDist`); fixes | reviewers in parallel, one per unit group + tools + exams | |
 | Launch | Publish, generators, continuity pass against calculus on every shared page type, "Eight courses" wording, full CI with browser checks, PR | one session | |
 
@@ -278,6 +278,19 @@ All grading is code; nothing is graded by an AI model. Formats in `docs/apstat-a
     kinds, intervals and conclusions; `ApStatExpr.gradeSetup` (`stat-expr.js`) for setups. Every numeric
     and interval key carries a recipe (`from`) the build recomputes with `ApStatDist`, which matches SciPy
     to about 1e-12; the table route is added as an accepted alternative at build time.
+
+14. (2026-10-17) **Phase 3 as built.** Practice exams: each form is 29 bank questions (standalone four-option
+    items that are neither lesson check items nor on the free unit tests) plus 13 exam-only questions
+    (`data/exams/items.json`: investigative questions, choosing the procedure, calculations and interpretations,
+    and the exam sets), in course order. The bank's exam sets are almost all lesson check items, so form 1 uses the
+    bank regression set `residuals-s2` and exam-only probability set; form 2 uses exam-only sets for both. FRQs:
+    form 1 survey sampling, comparing distributions, two-sample t test, binomial claim; form 2 experiment with
+    blocking, regression output, two-proportion interval, errors and consequences. "Say it in context": the first
+    3 prompts free (`FREE_JUSTIFY`); a prompt may carry a `conclude` builder (slots graded by
+    `ApStatGrade.conclude`, first try saved in `apstat_prefs_v1.justify[id].built`). Every exam-only key, its
+    named-slip distractors and every number a prompt shows are recomputed with `ApStatDist`
+    (`scripts/lib/apstat-exams.mjs`). Formulas page: the sheet's three section headings, `s_x`, the means of the
+    two difference distributions and the Table B and C ranges as on the 2026 sheet.
 
 ## 9. Open items for the owner
 

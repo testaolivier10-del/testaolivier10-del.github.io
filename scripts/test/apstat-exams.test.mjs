@@ -163,6 +163,11 @@ test('the formula page is the 2026 reference sheet, explained: every formula on 
   assert.deepEqual(EQ.map(s => s.rows.length), [3, 6, 3, 5, 4]);
   for (const r of rows) {
     assert.equal(Tex.check(`$${r[0]}$ ${r[1]} ${r[2]}`).length, 0, r[0]);
+    // A TeX command in a plain (non-raw) string loses its backslash ("\hat" becomes "hat", "\b" a backspace).
+    for (const t of [r[1], r[2]]) {
+      assert.doesNotMatch(t, /[\x00-\x08]/, t);
+      for (const m of t.match(/\$[^$]*\$/g) || []) assert.doesNotMatch(m, /(^|[^\\a-z])(hat|bar|ldots|frac|sqrt|sigma|mu|text)\b/, m);
+    }
     assert.ok(topics.has(r[4]), r[4]);
     assert.match(r[3], /^Unit [1-5]$/);
   }

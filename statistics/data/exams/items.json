@@ -59,9 +59,9 @@
    "kind": "table",
    "title": "Used car prices and age: regression output",
    "set": "regression",
-   "text": "A buyer records the age (years) and the price (thousands of dollars) of 20 used cars of one model listed for sale in her area. The scatterplot is linear with no unusual points. Computer output for the least-squares regression of price on age is below (invented data).",
+   "text": "A buyer records the age (years) and the price (thousands of dollars) of 20 used cars of one model listed for sale in her area. The scatterplot is linear with no unusual points. Computer output for the least-squares regression of price on age is below, with S = 1.92 and R-sq = 79.2% (invented data).",
    "table": {
-    "caption": "Regression of price (thousands of dollars) on age (years), 20 cars",
+    "caption": "Regression of price (thousands of dollars) on age (years), 20 cars. S = 1.92, R-sq = 79.2%",
     "cols": [
      "Predictor",
      "Coef",
@@ -77,11 +77,6 @@
       "Age",
       "-1.85",
       "0.22"
-     ],
-     [
-      "S = 1.92",
-      "R-sq = 79.2%",
-      ""
      ]
     ]
    }

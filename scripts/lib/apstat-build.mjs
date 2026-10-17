@@ -263,9 +263,9 @@ export function concludeSlots(C) {
       options: [`Because ${p} < ${a}, reject the null hypothesis.`, `Because ${p} > ${a}, fail to reject the null hypothesis.`,
         `Because ${p} > ${a}, reject the null hypothesis.`, `Because ${p} < ${a}, accept the null hypothesis.`],
       correct: lt ? 0 : 1,
-      why: { 2: 'Reject only when the p-value is less than alpha.', 3: 'A test never accepts the null hypothesis; it can only fail to reject it.' },
+      why: { 1: `Check the inequality: the p-value ${p} is less than alpha ${a}, so reject the null hypothesis.`, 2: 'Reject only when the p-value is less than alpha.', 3: 'A test never accepts the null hypothesis; it can only fail to reject it.' },
     };
-    if (!lt) { slots.decision.options[0] = `Because ${p} > ${a}, fail to reject the null hypothesis.`; slots.decision.options[1] = `Because ${p} < ${a}, reject the null hypothesis.`; slots.decision.correct = 0; }
+    if (!lt) { slots.decision.options[0] = `Because ${p} > ${a}, fail to reject the null hypothesis.`; slots.decision.options[1] = `Because ${p} < ${a}, reject the null hypothesis.`; slots.decision.correct = 0; slots.decision.why[1] = `Check the inequality: the p-value ${p} is greater than alpha ${a}, so fail to reject the null hypothesis.`; }
   }
   return slots;
 }

@@ -66,7 +66,7 @@
         var sl = C.slots[n];
         return '<label class="stat-cl-slot" for="stat-js-b' + k + '"><span>' + esc(SLOT[n] || n) + '</span><select id="stat-js-b' + k + '" data-slot="' + esc(n) + '"><option value="">Choose</option>' +
           sl.options.map(function(o, i){ return '<option value="' + i + '">' + esc(plain(o)) + '</option>'; }).join('') + '</select></label>';
-      }).join('') + '</div><div class="stat-pr-actions"><button type="button" class="btn-outline" data-act="build">Check my sentence</button></div>' +
+      }).join('') + '</div><div class="stat-js-bact"><button type="button" class="btn-outline" data-act="build">Check my sentence</button></div>' +
       '<div class="stat-js-bfb" role="status" aria-live="polite"></div></fieldset>';
   }
   function wireBuilder(box, p){
