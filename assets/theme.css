@@ -236,6 +236,10 @@ body[data-course="apphys"]{--ctint:#FBEED5;--cink:#734200;}
    8.0:1 light, about 9.8:1 dark (docs/apcalc-spec.md decision 6). */
 body[data-course="apcalc"]{--ctint:#FCE8EE;--cink:#8C1036;}
 :root[data-theme="dark"] body[data-course="apcalc"]{--ctint:rgba(232,80,122,0.10);--cink:#F7B8CA;}
+/* Primary buttons in the course color (--cink, page-colored text). Contrast,
+   light / dark: ochem 8.4 / 10.5, A&P 6.5 / 10.5, Biology 6.6 / 12.3,
+   Chemistry 8.6 / 10.7, Physics 8.4 / 12.1, Calculus 9.4 / 10.8. */
+body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-course="apchem"],[data-course="apphys"],[data-course="apcalc"],.bio,.chem,.phys,.calc){--btn-bg:var(--cink);--btn-ink:var(--paper);}
 
 /* ==========================================================================
    2. Base
@@ -304,6 +308,8 @@ strong,b{font-weight:900;}
 .btn-press:hover,.btn-dark:hover,.start-btn:hover,.auth-modal-submit:hover{
   filter:brightness(1.06);color:var(--on-accent);background:var(--navy);transform:translateY(-1px);
 }
+/* Course color on course pages: --btn-bg/--btn-ink, section 1 (polish C3). */
+.btn-press,.btn-press:hover{background:var(--btn-bg,var(--navy));color:var(--btn-ink,var(--on-accent));}
 .btn-press:active,.btn-dark:active,.start-btn:active,.auth-modal-submit:active{
   transform:translateY(1px) scale(.98);box-shadow:0 3px 8px rgba(31,74,66,0.25);
 }

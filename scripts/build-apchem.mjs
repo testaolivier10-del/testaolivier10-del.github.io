@@ -596,6 +596,7 @@ ${tail({ depth, section: 'learn', extra: ['chem-toc.js', 'chem-book.js'] })}
   </section>`;
   }
 
+
   function homePage() {
     const depth = '';
     const title = `${LABEL} Course, Free to Start | LevlPrep`;
@@ -632,8 +633,7 @@ ${bodyOpen()}
     <div>
       <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>
       <h1>${COURSE_HTML}, one particle at a time.</h1>
-      <p class="lede">Built on the 2024 course framework, in its order: ${word(units.length).toLowerCase()} units, each topic taught from scratch at the particle level, with the math you need refreshed first. Then practice that checks what the exam checks: units, significant figures, particle diagrams and justifications that compare both species.</p>
-      <p class="chem-review-note">${BETA_PILL} ${esc(BETA_NOTE)}</p>
+      <p class="lede">Each topic taught from scratch at the particle level, in framework order, then practice that checks your reasoning.</p>
       <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apchem_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All units &rarr;</a>${freeSim ? `<a class="link-quiet" href="tools/${freeSim.slug}.html">${esc(freeSim.name)} &rarr;</a>` : ''}</div>
     </div>
     <div class="chem-level-card" id="chemLevel">
@@ -683,7 +683,7 @@ ${bodyOpen()}
     <div>
       <h2 id="h-covers">What the course covers</h2>
       <p>${units.length} units and ${unitTopics.length} topics in the order of the 2024 course framework, plus ${skillTopics} math refresher topics built on the official equations and constants sheet. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
-      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation.</p>
+      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation. Practice checks what the exam checks: units, significant figures, particle diagrams and justifications that compare both species.</p>
       <p class="chem-small">${built.length === topics.length ? `All ${built.length} topics are built, each with its lesson, notes and questions.` : `So far, ${built.length} of ${topics.length} topics are built. The rest are listed so you can see where everything fits.`}</p>
     </div>
     <div>
@@ -718,12 +718,11 @@ ${sims.length ? `
 ${homeSample(depth)}
   <section class="xsection" aria-labelledby="h-go">
     <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="chem-cards">${(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`).join('')}
-      <li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>
-      <li><a href="equations-sheet.html"><b>Equations sheet, explained</b><span>What each equation and constant is for, and what the sheet leaves out.</span></a></li>
-      <li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li>
-${units.filter(chapterBuilt).length ? `      <li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>
-` : ''}    </ul>
+    <ul class="chem-cards chem-go">${[...(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`),
+      `<li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>`,
+      `<li><a href="equations-sheet.html"><b>Equations sheet, explained</b><span>What each equation and constant is for, and what the sheet leaves out.</span></a></li>`,
+      `<li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li>`,
+      ...(units.filter(chapterBuilt).length ? [`<li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>`] : [])].join('')}</ul>
   </section>
 
   <section class="xsection" aria-label="About LevlPrep">
@@ -733,7 +732,6 @@ ${units.filter(chapterBuilt).length ? `      <li><a href="unit-tests/${units.fil
       <div class="trust-pill">Unit sheets free to print</div>
       <div class="trust-pill">Progress saved on your device</div>
     </div>
-    <p class="chem-disclaimer chem-home-legal">${esc(DISCLAIMER)}</p>
   </section>
 </main>
 ${footer(depth, 'home')}

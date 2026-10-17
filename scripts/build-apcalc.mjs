@@ -558,7 +558,7 @@ ${tail({ depth, section: 'learn', extra: ['calc-toc.js', 'calc-book.js'] })}
   // The "Try a step" card: one real question from a free unit's bank, read at
   // build time. Chosen when Unit 1 is written; until then the card is left out
   // (the test fixture's sample topic is 1.2).
-  const SAMPLE_Q = { topic: 'limit-notation', id: 'calc-limit-notation-1' };
+  const SAMPLE_Q = { topic: 'limit-notation', id: 'calc-limit-notation-15' };
   const STREAK_SVG = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg>';
 
   function homePath(depth) {
@@ -608,6 +608,7 @@ ${tail({ depth, section: 'learn', extra: ['calc-toc.js', 'calc-book.js'] })}
   </section>`;
   }
 
+
   function homePage() {
     const depth = '';
     const title = `${LABEL} Course, Free to Start | LevlPrep`;
@@ -649,8 +650,7 @@ ${bodyOpen()}
     <div>
       <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>
       <h1>${COURSE_HTML}, one idea at a time.</h1>
-      <p class="lede">Built on the course framework, in its order: ${word(units.length).toLowerCase()} units, each topic taught from scratch, with the math you need placed just before it is used. Then practice that checks what the exam checks: answers you type as expressions, graphs and tables, calculator and no-calculator parts, and justifications that name the theorem.</p>
-      <p class="calc-review-note">${BETA_PILL} ${esc(BETA_NOTE)}</p>
+      <p class="lede">Each topic taught from scratch, in framework order, then practice that grades typed answers and justifications.</p>
       <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apcalc_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All units &rarr;</a>${freeSim ? `<a class="link-quiet" href="tools/${freeSim.slug}.html">${esc(freeSim.name)} &rarr;</a>` : ''}</div>
     </div>
     <div class="calc-level-card" id="calcLevel">
@@ -700,7 +700,7 @@ ${bodyOpen()}
     <div>
       <h2 id="h-covers">What the course covers</h2>
       <p>${units.length} units and ${unitTopics.length} topics in the order of the course framework (the Calculus AB topics only), plus ${skillTopics} math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
-      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets of four or five that share one graph or table, as on the real exam. Every option has its own explanation, and typed answers are graded by their value, so any correct form counts.</p>
+      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets of four or five that share one graph or table, as on the real exam. Every option has its own explanation, and typed answers are graded by their value, so any correct form counts. Practice checks what the exam checks: answers you type as expressions, graphs and tables, calculator and no-calculator parts, and justifications that name the theorem.</p>
       <p class="calc-small">${built.length === topics.length ? `All ${built.length} topics are built, each with its lesson, notes and questions.` : `So far, ${built.length} of ${topics.length} topics are built. The rest are listed so you can see where everything fits.`}</p>
     </div>
     <div>
@@ -735,12 +735,11 @@ ${sims.length ? `
 ${homeSample(depth)}
   <section class="xsection" aria-labelledby="h-go">
     <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="calc-cards">${(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`).join('')}
-      <li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>
-      <li><a href="formula-sheet.html"><b>Formulas to know</b><span>No formula sheet is given on the exam: every formula and theorem you need, and where it is taught.</span></a></li>
-      <li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li>
-${units.filter(chapterBuilt).length ? `      <li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>
-` : ''}    </ul>
+    <ul class="calc-cards calc-go">${[...(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`),
+      `<li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>`,
+      `<li><a href="formula-sheet.html"><b>Formulas to know</b><span>No formula sheet is given on the exam: every formula and theorem you need, and where it is taught.</span></a></li>`,
+      `<li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li>`,
+      ...(units.filter(chapterBuilt).length ? [`<li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>`] : [])].join('')}</ul>
   </section>
 
   <section class="xsection" aria-label="About LevlPrep">
@@ -750,7 +749,6 @@ ${units.filter(chapterBuilt).length ? `      <li><a href="unit-tests/${units.fil
       <div class="trust-pill">Unit sheets free to print</div>
       <div class="trust-pill">Progress saved on your device</div>
     </div>
-    <p class="calc-disclaimer calc-home-legal">${esc(DISCLAIMER)}</p>
   </section>
 </main>
 ${footer(depth, 'home')}
