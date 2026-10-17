@@ -201,7 +201,8 @@ def build(spec):
     caps = captions(c)
     titles = "".join(f'<div class="tt {cls}" id="tt{i}" style="{"opacity:1;" if i==0 else ""}{f"font-size:{sz}px;" if sz else ""}"><div>{h}</div></div>' for i, h, cls, sz in c.titles)
     v = spec.get("vars", "")
-    html = f'''<!doctype html><html><head><meta charset="utf-8"><title>{spec["id"]}</title><script src="gsap.min.js"></script>
+    lottie_tag = '<script src="lottie.min.js"></script>' if os.path.exists(f"{out}/lottie.min.js") else ""
+    html = f'''<!doctype html><html><head><meta charset="utf-8"><title>{spec["id"]}</title><script src="gsap.min.js"></script>{lottie_tag}
 <style>{fonts()}{CSS}{spec.get("css","")}</style></head><body>
 <div id="root" style="{v}"><div class="bg"></div><div class="orb" id="o1"></div><div class="orb" id="o2"></div><div id="grid"></div>{sparks}
 <div id="progress"><i id="pbar"></i></div>

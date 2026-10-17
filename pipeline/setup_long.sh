@@ -3,7 +3,7 @@
 set -e
 cd /home/claude/lp
 [ -f package.json ] || npm init -y >/dev/null
-npm i playwright-core gsap @fontsource/inter @fontsource/kalam 3dmol >/dev/null 2>&1
+npm i playwright-core gsap lottie-web @fontsource/inter @fontsource/kalam 3dmol >/dev/null 2>&1
 mkdir -p assets out long
 for w in 700 800 900; do cp node_modules/@fontsource/inter/files/inter-latin-$w-normal.woff2 assets/; done
 pip install --break-system-packages -q pillow numpy soundfile rdkit cairosvg >/dev/null 2>&1 || true

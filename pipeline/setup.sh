@@ -2,7 +2,7 @@
 set -e
 mkdir -p /home/claude/lp/{assets,kokoro,out} && cd /home/claude/lp
 [ -f package.json ] || npm init -y >/dev/null
-npm i playwright-core gsap @fontsource/inter >/dev/null 2>&1
+npm i playwright-core gsap lottie-web @fontsource/inter >/dev/null 2>&1
 for w in 700 800 900; do cp node_modules/@fontsource/inter/files/inter-latin-$w-normal.woff2 assets/; done
 pip install --break-system-packages -q kokoro-onnx soundfile numpy pillow
 [ -f kokoro/kokoro-v1.0.onnx ] || curl -sL -o kokoro/kokoro-v1.0.onnx https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx

@@ -7,7 +7,8 @@ Only effects that match the flat LevlPrep look go in that folder.
 
   svg_part = lottiefx.place(c, "stars-gold", x, y, w, h, t, dur=1.2, fid="spk1")   # inside the stage <svg>
   lottiefx.place(..., recolor={"#f5c64a": "#ffd23f"})                           # optional color swap
-The first call also adds the player script to the stage.
+The first call copies the player next to the page; engine2 and engine_long load it in <head> when it is there.
+Works the same in Shorts (engine2) and long videos (engine_long).
 """
 import json, os, re, shutil
 
@@ -66,6 +67,5 @@ def place(c, name, x, y, w, h, t, dur=None, fid=None, recolor=None, loops=1, fad
     c.g(f'const {var} = lottie.loadAnimation({{container: document.getElementById("{fid}"), renderer: "svg", loop: false, autoplay: false, animationData: {json.dumps(data, separators=(",", ":"))}, rendererSettings: {{preserveAspectRatio: "xMidYMid meet"}}}});')
     c.g(f'tl.fromTo({{f:0}},{{f:0}},{{f:{frames - 0.01:.2f},duration:{dur:.2f},ease:"none",immediateRender:false,onUpdate(){{ {var}.goToAndStop({ip} + (this.targets()[0].f % {op - ip}), true); }}}},{t:.2f});')
     c.g(f'tl.fromTo("#{fid}w",{{opacity:0}},{{opacity:{opacity},duration:{fade},immediateRender:false}},{t:.2f}); tl.to("#{fid}w",{{opacity:0,duration:{fade}}},{t + dur - fade:.2f});')
-    script = '<script src="lottie.min.js"></script>' if c._lottie_n == 1 else ""
     return (f'<g id="{fid}w" opacity="0"><foreignObject x="{x}" y="{y}" width="{w}" height="{h}">'
-            f'<div xmlns="http://www.w3.org/1999/xhtml" id="{fid}" style="width:{w}px;height:{h}px"></div></foreignObject></g>'), script
+            f'<div xmlns="http://www.w3.org/1999/xhtml" id="{fid}" style="width:{w}px;height:{h}px"></div></foreignObject></g>')

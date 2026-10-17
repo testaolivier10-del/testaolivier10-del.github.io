@@ -212,7 +212,8 @@ def build(spec, draft_ok=True):
     stage = spec["compose"](c)
     srt(spec, c, WT, out)
     v = spec.get("vars", "")
-    page = f'''<!doctype html><html><head><meta charset="utf-8"><title>{spec["id"]}</title><script src="gsap.min.js"></script>
+    lottie_tag = '<script src="lottie.min.js"></script>' if os.path.exists(f"{out}/lottie.min.js") else ""
+    page = f'''<!doctype html><html><head><meta charset="utf-8"><title>{spec["id"]}</title><script src="gsap.min.js"></script>{lottie_tag}
 <style>{ff}{CSS}{spec.get("css","")}</style></head><body>
 <div id="root" style="{v}"><div class="bg"></div><div class="orb" id="o1"></div><div class="orb" id="o2"></div><div id="grid"></div>
 <div id="cam"><div id="stage"><svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">{DEFS}{stage}</svg></div></div>
