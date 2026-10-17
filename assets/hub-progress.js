@@ -61,9 +61,13 @@
   var EASE_MISSES = 2;          // ...and ease off after this many were missed
 
   // Cumulative XP needed to REACH level n (n >= 1). Quadratic, so each level
-  // takes a little longer than the last. Unchanged from the NREMT curve, so
-  // migrated users land on exactly the level they already had.
-  function xpForLevel(n){ return 100 * (n - 1) * (n - 1); }
+  // takes a little longer than the last; the NREMT curve, so migrated users
+  // keep the level they had. One exception: level 2 comes at 50 XP rather than
+  // 100, so a first session of about ten questions ends in a level-up
+  // (polish 2026-10-17, B11). Lowering a threshold can only promote, never
+  // demote, and every level from 3 on is unchanged.
+  var FIRST_LEVEL_XP = 50;
+  function xpForLevel(n){ return n === 2 ? FIRST_LEVEL_XP : 100 * (n - 1) * (n - 1); }
   function levelForXp(xp){
     var n = 1;
     while(xpForLevel(n + 1) <= xp) n++;

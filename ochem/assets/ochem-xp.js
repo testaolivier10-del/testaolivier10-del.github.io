@@ -104,13 +104,18 @@
 
   /* ---- per-answer: tier-weighted, correct answers only ---------------- */
 
-  var pending = { xp: 0, correct: 0, asked: 0 };
+  var pending = { xp: 0, correct: 0, asked: 0, paid: 0 };
 
   function onAnswer(conceptId, correct, tier){
     pending.asked++;
     if(!correct) return;
     pending.correct++;
-    pending.xp += TIER_XP[Math.max(1, Math.min(4, tier || 2))];
+    var xp = TIER_XP[Math.max(1, Math.min(4, tier || 2))];
+    pending.xp += xp;
+    // Paid now, so the gain shows on the answer that earned it (polish
+    // 2026-10-17, B11). onSession pays only what is left and still lists the
+    // whole amount in the summary.
+    if(HP()){ HP().award('ochem', xp); pending.paid += xp; }
   }
 
   /* ---- concept badges: checked against decayed strength ---------------- */
@@ -284,7 +289,11 @@
     // Falls back to a flat rate if this page never routed answers through
     // onAnswer (a mode that records sessions but not individual concepts).
     var base = pending.asked ? pending.xp : correct * TIER_XP[2];
-    if(asked) award(base + SESSION_BONUS, asked + ' questions');
+    if(asked){
+      var paid = pending.asked ? Math.min(pending.paid, base) : 0;
+      award(base - paid + SESSION_BONUS, asked + ' questions');
+      if(paid && lastAwards.length) lastAwards[lastAwards.length - 1].xp += paid;
+    }
     if(asked >= 5 && correct === asked){
       award(PERFECT_BONUS, 'Perfect session');
       unlock('perfect');
@@ -298,7 +307,7 @@
     var questResult = advanceQuest(asked);
     checkStandingAchievements();
 
-    pending = { xp: 0, correct: 0, asked: 0 };
+    pending = { xp: 0, correct: 0, asked: 0, paid: 0 };
 
     lastResult = {
       awards: takeAwards(),

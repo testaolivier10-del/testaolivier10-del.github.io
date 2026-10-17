@@ -748,7 +748,8 @@ function homePage() {
       <p class="lede">${HOME_WORDS[map.chapters.length] || map.chapters.length} chapters and ${map.topics.length} topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time. Practice sits inside the reading.</p>
       <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('anp_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All chapters &rarr;</a><a class="link-quiet" href="tools/predict.html">Predict the change &rarr;</a></div>
     </div>
-    <div class="anp-level-card" id="anpLevel">
+    <div class="anp-level-card" id="anpLevel" data-lv-zero>
+      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
       <div class="anp-level-top">
         <div class="anp-level-chip"><div class="level-ring" id="anpLvRing">L1</div><div class="t"><b id="anpLvTitle">Cell Scout</b><span id="anpLvSub">Level 1 &middot; 0 XP</span></div></div>
         <div class="streak-chip" id="anpStreak" hidden title="Day streak, across every subject">${STREAK_SVG}<span id="anpStreakN">0</span></div>

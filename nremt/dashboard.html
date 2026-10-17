@@ -100,7 +100,7 @@
   <header class="page-head">
     <div class="eyebrow">NREMT-EMT</div>
     <h1>Dashboard</h1>
-    <p id="headSub">Everything this browser knows about how you're doing, by topic area and exam domain.</p>
+    <p id="headSub">Everything this browser knows about how you&rsquo;re doing, in six topic areas and the five exam domains.</p>
   </header>
   <div data-levl-cross="nremt"></div>
   <script>document.addEventListener('DOMContentLoaded', function(){ var el = document.querySelector('[data-levl-cross]'); if(window.LevlLazy && /"m":\{"/.test(localStorage.getItem('levlprep_cross') || '')) window.LevlLazy('cross-course', function(X){ X.offer(el, 'nremt'); }); });</script>
@@ -163,6 +163,23 @@ document.addEventListener('DOMContentLoaded', function(){
     { d: 'Operations',                    band: '10–14%' },
   ];
   const EXAM_DOMAIN_STATS_KEY = 'nremt_exam_domain_stats';
+  // The notes chapter that teaches each topic area and exam domain, so a weak
+  // reading links to the reading that fixes it (polish 2026-10-17, B7).
+  const NOTES = {
+    'Assessment': ['principles-of-assessment', 'Principles of assessment'],
+    'Airway & Respiratory': ['airway-management', 'Airway management'],
+    'Cardiac & Medical': ['cardiac-emergencies', 'Cardiac emergencies'],
+    'Trauma': ['multisystem-trauma', 'Multisystem trauma'],
+    'OB/Peds & Special Populations': ['obstetric-and-gynecologic-emergencies', 'Obstetric emergencies'],
+    'EMS Operations': ['ems-operations', 'EMS operations'],
+    'Scene Size-Up & Safety': ['scene-size-up', 'Scene size-up'],
+    'Primary Assessment': ['primary-assessment', 'Primary assessment'],
+    'Secondary Assessment': ['secondary-assessment', 'Secondary assessment'],
+    'Patient Treatment & Transport': ['', 'the chapters by condition', 'study-notes.html'],
+    'Operations': ['ems-operations', 'EMS operations'],
+  };
+  function notesHref(n){ return n[2] || 'notes/' + n[0] + '.html'; }
+  function notesLink(d){ const n = NOTES[d]; return n ? '<a href="' + notesHref(n) + '">notes: ' + esc(n[1]) + '</a>' : ''; }
 
   const HISTORY_KEY = 'nremt_exam100_history';
   const MASTERY_KEY = 'nremt_mastery';
@@ -232,8 +249,8 @@ document.addEventListener('DOMContentLoaded', function(){
   const missedCount = Array.isArray(missed) ? missed.length : 0;
 
   set('statCards', H.stats([
-    { value: overallPct === null ? '—' : overallPct + '%', label: 'Overall accuracy', sub: allTotal ? plural(allTotal, 'question') + ' answered' : 'across every mode' },
-    { value: topicsStarted + '<small> / ' + DOMAINS.length + '</small>', label: 'Topics started', sub: plural(history.length, 'full exam') + ' taken' },
+    { value: (overallPct || 0) + '%', label: 'Overall accuracy', sub: allTotal ? plural(allTotal, 'question') + ' answered' : 'across every mode' },
+    { value: topicsStarted + '<small> / ' + DOMAINS.length + '</small>', label: 'Topic areas started', sub: plural(history.length, 'full exam') + ' taken' },
     { value: dueCount, label: 'Due for review', sub: plural(dueCount, 'question') + ' &middot; ' + missedCount + ' missed' },
     { value: st.current, label: 'Day streak', sub: st.metToday ? 'Today’s goal met' : st.todayCount + ' of ' + st.goal + ' today' },
   ]));
@@ -245,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   if(!allTotal && !history.length){
     set('nextBox', H.next({
-      intro: 'Every question you answer, in any mode, updates your accuracy by topic area and by exam domain. Nothing here yet, so here is where to start.',
+      intro: 'Every question you answer, in any mode, updates your accuracy in six topic areas and in the five exam domains. Nothing here yet, so here is where to start.',
       steps: [
         '<a href="practice.html">Start a 20-question domain drill</a>, each answer checked as you go.',
         'Or read the <a href="study-notes.html">study notes</a>, chapter by chapter.',
@@ -256,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const cards = [];
     if(dueCount) cards.push({ href: 'review.html', title: 'Review ' + plural(dueCount, 'question'), sub: 'Missed and shaky questions come back before you forget them.' });
     const w = weakestTopic();
-    if(w && w.s.correct / w.s.total < 0.75) cards.push({ href: 'practice.html?system=' + encodeURIComponent(w.d), title: 'Shore up ' + esc(w.d), sub: 'Your weakest topic area, at ' + Math.round(w.s.correct / w.s.total * 100) + '%.' });
+    if(w && w.s.correct / w.s.total < 0.75) cards.push({ href: 'practice.html?system=' + encodeURIComponent(w.d), title: 'Shore up ' + esc(w.d), sub: 'Your weakest topic area, at ' + Math.round(w.s.correct / w.s.total * 100) + '%.' + (NOTES[w.d] ? ' Read <a href="' + notesHref(NOTES[w.d]) + '">' + esc(NOTES[w.d][1]) + '</a> first.' : '') });
     if(!history.length) cards.push({ href: 'exams.html', title: 'Take a full timed exam', sub: 'Scored by domain, and the readiness estimate starts from it.' });
     else cards.push({ href: 'practice.html', title: 'Continue practicing', sub: 'A drill, a domain or weak-spot practice.' });
     set('nextBox', H.next({ cards: cards.slice(0, 4) }));
@@ -267,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function accRow(d, s, sub, param){
     const v = s && s.total ? s.correct / s.total : 0;
     return H.row({ label: d, value: v, text: s && s.total ? Math.round(v * 100) + '%' : null,
-      tier: H.tier(v, s && s.total), note: (s && s.total ? s.correct + ' of ' + s.total + ' right' + (sub ? ' &middot; ' : '') : '') + (sub || ''),
+      tier: H.tier(v, s && s.total), note: [s && s.total ? s.correct + ' of ' + s.total + ' right' : '', sub || '', s && s.total && s.correct < s.total ? notesLink(d) : ''].filter(Boolean).join(' &middot; '),
       action: { href: 'practice.html?' + param + '=' + encodeURIComponent(d), label: 'Practice' } });
   }
 
@@ -280,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function(){
         const pb = b.st && b.st.total ? b.st.correct / b.st.total : 2;
         return pa - pb;
       });
-    set('topicBox', H.panel({ id: 'nr-topics', title: 'Accuracy by topic area', hint: 'Every mode counts, weakest first. Always free.',
+    set('topicBox', H.panel({ id: 'nr-topics', title: 'Topic areas', hint: 'Six study areas, grouped by body system the way the notes are. Every mode counts, weakest first. Always free. They are not the exam&rsquo;s five domains, which are below.',
       body: rows.map(r => accRow(r.d, r.st, '', 'system')).join('') }));
   })();
 
@@ -292,13 +309,13 @@ document.addEventListener('DOMContentLoaded', function(){
     // One upsell per screen: when locked, the Premium card sits in the side
     // column (premiumBox) and this panel says what it holds.
     if(!G.canUse('readiness')){
-      set('domainBox', H.panel({ id: 'nr-domains', title: 'Exam domains ' + G.badge(), body: '<p class="cx-emptynote">Your accuracy in each of the five 2025 exam domains, with each one&rsquo;s share of the exam, comes with Premium along with the readiness estimate.</p>' }));
+      set('domainBox', H.panel({ id: 'nr-domains', title: 'The five 2025 exam domains ' + G.badge(), body: '<p class="cx-emptynote">Your accuracy in each of the five 2025 exam domains, with each one&rsquo;s share of the exam, comes with Premium along with the readiness estimate.</p>' }));
       set('premiumBox', G.gate('readiness', 'dashboard-domains'));
       return;
     }
     set('premiumBox', '');
     const attempted = EXAM_DOMAINS.filter(x => examDomainStats[x.d] && examDomainStats[x.d].total > 0);
-    set('domainBox', H.panel({ id: 'nr-domains', title: 'Exam domains ' + G.badge(),
+    set('domainBox', H.panel({ id: 'nr-domains', title: 'The five 2025 exam domains ' + G.badge(),
       hint: 'The five domains of the National Registry&rsquo;s EMT exam launched 7 April 2025, with each one&rsquo;s share of the exam. Practice exams here draw questions in the same proportions.',
       body: (attempted.length ? '' : '<p class="cx-emptynote">Answer questions in any mode to see your accuracy by exam domain.</p>') +
         EXAM_DOMAINS.map(({d, band}) => accRow(d, examDomainStats[d], band + ' of the exam', 'domain')).join('') }));
@@ -395,18 +412,20 @@ document.addEventListener('DOMContentLoaded', function(){
   (function renderBadges(){
     const lvl = window.HubProgress ? window.HubProgress.level() : info.level;
     const best = history.length ? Math.max(...history.map(h2 => Math.round(h2.score/h2.total*100))) : 0;
+    // Progress in words a person reads at a glance ("Now level 4", not
+    // "4/10", which read as a score; polish 2026-10-17, B9).
     const defs = [
-      { icon: '🎖️', label: '7-day streak',  have: st.longest, need: 7, unit: 'days' },
-      { icon: '🔥', label: '30-day streak', have: st.longest, need: 30, unit: 'days' },
-      { icon: '🚑', label: 'First exam',    have: history.length, need: 1, unit: 'exam' },
-      { icon: '💯', label: '90%+ exam',     have: best, need: 90, unit: '% best' },
-      { icon: '📚', label: '500 questions', have: allTotal, need: 500, unit: 'answered' },
-      { icon: '🏅', label: 'Level 10',      have: lvl, need: 10, unit: 'level' },
+      { icon: '🎖️', label: '7-day streak',  have: st.longest, need: 7, prog: n => 'Best ' + plural(n, 'day') },
+      { icon: '🔥', label: '30-day streak', have: st.longest, need: 30, prog: n => 'Best ' + plural(n, 'day') },
+      { icon: '🚑', label: 'First exam',    have: history.length, need: 1, prog: () => 'Take one full exam' },
+      { icon: '💯', label: '90%+ exam',     have: best, need: 90, prog: n => n ? 'Best so far ' + n + '%' : 'Score 90% on a full exam' },
+      { icon: '📚', label: '500 questions', have: allTotal, need: 500, prog: n => n.toLocaleString() + ' answered' },
+      { icon: '🏅', label: 'Level 10',      have: lvl, need: 10, prog: n => 'Now level ' + n },
     ];
     set('badgeGrid', H.badges(defs.map(b => {
-      const earned = b.have >= b.need, shown = Math.min(b.have, b.need);
-      return { icon: b.icon, label: b.label, earned, prog: earned ? 'Earned' : shown + '/' + b.need,
-        aria: b.label + ': ' + (earned ? 'earned' : 'not yet, ' + shown + ' of ' + b.need + ' ' + b.unit) };
+      const earned = b.have >= b.need, p = b.prog(Math.min(b.have, b.need));
+      return { icon: b.icon, label: b.label, earned, prog: earned ? 'Earned' : p,
+        aria: b.label + ': ' + (earned ? 'earned' : 'not yet. ' + p) };
     })));
   })();
 
@@ -478,9 +497,9 @@ document.addEventListener('DOMContentLoaded', function(){
         let bank = 0;
         try{ bank = parseInt(localStorage.getItem('nremt_bank_size'), 10) || 0; }catch(e){}
         const left = Math.max(0, bank - Object.keys(mastery).length);
-        if(!bank) return { n: hubStreak().goal || 15, unit: 'questions', why: 'is your daily goal' };
+        if(!bank) return { n: hubStreak().goal || 15, unit: 'questions', one: 'question', why: 'is your daily goal' };
         if(!left) return { done: 'You have answered every question in the bank. Days from here are for Review and timed exams.' };
-        return { n: Math.ceil(left / days), unit: 'new questions', why: 'covers the ' + left.toLocaleString() + ' you have not answered yet, plus whatever Review has due' };
+        return { n: Math.ceil(left / days), unit: 'new questions', one: 'new question', why: 'covers the ' + left.toLocaleString() + ' you have not answered yet, plus whatever Review has due' };
       }
     });
   }

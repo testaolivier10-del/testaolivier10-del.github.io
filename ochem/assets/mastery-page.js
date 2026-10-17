@@ -143,7 +143,9 @@
   var weakList = M.weakest(8, 2);
   set('weakConcepts', !weakList.length ? '' : H.panel({ id: 'oc-weak', title: 'Weakest concepts', body: weakList.map(function(p){
     var s = p.strength === null ? 0 : p.strength;
-    return H.row({ label: p.concept.title, value: s, tier: bandTier(p.strength),
+    // The lesson that teaches it, so a miss leads to the fix (polish 2026-10-17, B7).
+    var lt = CN.lessonTopicFor(p.id);
+    return H.row({ label: p.concept.title, href: lt ? lt.href : null, value: s, tier: bandTier(p.strength),
       note: p.correct + '/' + p.attempts + ' right' + (p.isDue ? ' &middot; due now' : (p.dueIn !== null && p.dueIn > 0 ? ' &middot; back in ' + plural(p.dueIn, 'day') : '')),
       action: { href: 'practice.html?concept=' + p.id, label: 'Drill' } });
   }).join('') }));
@@ -151,18 +153,18 @@
   /* ---- mastery by chapter, rolled up from concepts, with its topics ---- */
   set('moduleStats', H.panel({ id: 'oc-mod', title: 'Mastery by chapter and topic',
     hint: 'Strength comes from the concepts each question tests and decays if you stop practicing. Topics with notes only are not scored.',
-    body: C.MODULES.map(function(m, i){
+    body: H.groups(C.MODULES.map(function(m, i){
       var ts = m.topics.filter(function(t){ return C.hasLesson(t); });
       var r = M.topicsStrength(ts.map(function(t){ return t.id; }));
       var started = ts.filter(function(t){ return M.topicStrength(t.id).strength !== null; }).length;
-      return H.group({ label: (i + 1) + '. ' + m.title, value: r.strength || 0, tier: bandTier(r.strength), note: started + ' of ' + plural(ts.length, 'topic') + ' started' },
+      return { started: started > 0, html: H.group({ label: (i + 1) + '. ' + m.title, value: r.strength || 0, tier: bandTier(r.strength), note: started + ' of ' + plural(ts.length, 'topic') + ' started' },
         ts.map(function(t){
           var tr = M.topicStrength(t.id);
           return H.row({ label: t.title, href: t.href, value: tr.strength || 0, tier: bandTier(tr.strength),
             note: tr.strength === null ? 'Not started' : tr.touched + ' of ' + plural(tr.total, 'concept') + ' tried',
             action: { href: 'practice.html?topic=' + t.id, label: 'Practice' } });
-        }).join('') || '<p class="cx-emptynote">Notes only so far.</p>');
-    }).join('') }));
+        }).join('') || '<p class="cx-emptynote">Notes only so far.</p>') };
+    }), 'chapter') }));
 
   /* ---- concept families (Premium): the breakdown the engine thinks in,
      which shows a weakness that is really one idea failing in five places. */

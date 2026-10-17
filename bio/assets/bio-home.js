@@ -25,6 +25,8 @@
   function renderHero(){
     if(HP){
       var info = HP.levelInfo('apbio');
+      // Zeros say nothing to a new visitor: the card shows what it tracks until the first XP (polish 2026-10-17, B10).
+      el('bioLevel').toggleAttribute('data-lv-zero', !(info.total > 0));
       el('bioLvRing').textContent = 'L' + info.level;
       el('bioLvTitle').textContent = info.title;
       el('bioLvSub').textContent = 'Level ' + info.level + ' · ' + info.total + ' XP';
