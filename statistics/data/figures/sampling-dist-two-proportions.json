@@ -1,0 +1,11 @@
+{
+ "diff-props-sim": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep",
+  "ext": "svg",
+  "w": 640,
+  "h": 400,
+  "alt": "Histogram of 1,000 simulated differences in sample proportions, Northfield minus Riverton, centered at 0.14 and running from about 0 to 0.30, with a normal curve of mean 0.14 and standard deviation 0.060 drawn over the bars."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "inequality-lines": {
+  "file": "figures/inequality-lines.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four number lines for a count from 0 to 8, with the included counts filled in plum. At least 3, X ≥ 3: 3 through 8. More than 3, X > 3: 4 through 8. At most 3, X ≤ 3: 0 through 3. Fewer than 3, X < 3, so X ≤ 2: 0, 1 and 2."
+ }
+}

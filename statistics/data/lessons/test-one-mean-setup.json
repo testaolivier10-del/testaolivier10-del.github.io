@@ -1,0 +1,71 @@
+{
+ "topic": "test-one-mean-setup",
+ "hook": "A delivery company promises 30 minutes on average. A manager thinks it is longer. Before anyone computes a number, the test has to be set up: which parameter, which hypotheses, which direction, and whether the conditions let a t procedure be trusted. Most lost points on inference questions happen here, not in the arithmetic.",
+ "prereq": [
+  {
+   "q": "Which pair of hypotheses is written correctly?",
+   "options": [
+    "$H_0: p = 0.5$, $H_a: p > 0.5$",
+    "$H_0: \\hat{p} = 0.5$, $H_a: \\hat{p} > 0.5$",
+    "$H_0: p > 0.5$, $H_a: p = 0.5$",
+    "$H_0: p = 0.56$, $H_a: p > 0.56$, using the sample result"
+   ],
+   "correct": 0,
+   "why": "Hypotheses are about the parameter, the null holds the equals sign, and the null value comes from the question.",
+   "review": "test-one-proportion-setup"
+  },
+  {
+   "q": "For paired data, a confidence interval for the mean difference is built from",
+   "options": [
+    "the differences within each pair, as one sample",
+    "the two groups as separate samples",
+    "the larger of the two means",
+    "the before values only"
+   ],
+   "correct": 0,
+   "why": "Subtract within each pair, then use a one-sample t procedure on the differences.",
+   "review": "ci-one-mean"
+  }
+ ],
+ "figure": {
+  "figure": "paired-before-after",
+  "caption": "Resting heart rates of 12 gym members before and after a breathing class, joined by a line for each member, and the dotplot of the 12 differences (before minus after). The test uses the differences."
+ },
+ "chain": [
+  {
+   "cause": "Start from the question, before the data",
+   "effect": "it gives the parameter, the hypothesized mean $\\mu_0$ and the direction of $H_a$"
+  },
+  {
+   "cause": "Write $H_0: \\mu = \\mu_0$ and $H_a$ with $>$, $<$ or $\\ne$",
+   "effect": "define $\\mu$ in context: \"the true mean ... of all ...\""
+  },
+  {
+   "cause": "If each individual gives two linked measurements",
+   "effect": "the data are paired: test $H_0: \\mu_d = 0$ on the differences, with the order of subtraction stated"
+  },
+  {
+   "cause": "Check random, 10% and normal/large sample in words",
+   "effect": "a one-sample (or paired) t test can be trusted, with $\\text{df} = n - 1$"
+  }
+ ],
+ "ideas": [
+  "One-sample t test: $H_0: \\mu = \\mu_0$ against $H_a: \\mu > \\mu_0$, $\\mu < \\mu_0$ or $\\mu \\ne \\mu_0$.",
+  "Paired t test: a one-sample t test on the differences, $H_0: \\mu_d = 0$. The order of subtraction sets the direction of $H_a$.",
+  "Hypotheses use parameters ($\\mu$, $\\mu_d$), never statistics ($\\bar{x}$), and the direction comes from the question, never from the sample result.",
+  "Conditions: random; 10% when sampling without replacement; normal population, $n \\ge 30$, or a graph of the sample (or the differences) without strong skew or outliers."
+ ],
+ "misconception": {
+  "wrong": "The sample mean was below 30, so the alternative should be $H_a: \\mu < 30$.",
+  "right": "The alternative comes from the research question asked before the data. If the question is \"different from 30\", the alternative is $\\mu \\ne 30$ whatever the sample shows."
+ },
+ "check": [
+  "stat-test-one-mean-setup-6",
+  "stat-test-one-mean-setup-7",
+  "stat-test-one-mean-setup-8",
+  "stat-test-one-mean-setup-9",
+  "stat-test-one-mean-setup-10",
+  "stat-test-one-mean-setup-14"
+ ],
+ "summary": "To set up a t test for a mean, name the parameter in context, write $H_0: \\mu = \\mu_0$ and an alternative whose direction comes from the question, and check random, 10% and normal/large sample. For paired data, test the mean difference $\\mu_d$ with a paired t test on the differences, saying which way you subtracted."
+}

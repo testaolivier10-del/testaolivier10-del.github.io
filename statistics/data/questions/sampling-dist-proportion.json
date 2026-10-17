@@ -1,0 +1,993 @@
+{
+ "stimuli": {
+  "sampling-dist-proportion-s1": {
+   "kind": "table",
+   "title": "Testing a seed company's sprouting rate",
+   "text": "<p>A seed company says that 85% of its tomato seeds sprout. A garden store plants a random sample of 200 seeds from a shipment of 50,000 seeds and records the proportion that sprout. Suppose the company's figure is correct, so $p = 0.85$.</p>",
+   "table": {
+    "caption": "The setting for the sampling distribution of the sample proportion",
+    "cols": [
+     "Quantity",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Population",
+      "50,000 seeds in the shipment"
+     ],
+     [
+      "True proportion that sprout, $p$",
+      "0.85"
+     ],
+     [
+      "Sample size, $n$",
+      "200 seeds, chosen at random"
+     ]
+    ]
+   }
+  },
+  "sampling-dist-proportion-s2": {
+   "kind": "graph",
+   "title": "Left-handed students in samples of 30",
+   "text": "<p>A school has 900 students, and 90 of them (10%) are left-handed. A computer takes 200 random samples of 30 students, without replacement, and records the proportion of left-handed students in each sample.</p>",
+   "plot": {
+    "label": "Histogram of 200 simulated sample proportions of left-handed students, samples of 30, skewed right with a peak near 0.07 to 0.10",
+    "kind": "hist",
+    "data": [
+     0.1333,
+     0.1,
+     0.0667,
+     0.1667,
+     0.0667,
+     0.1,
+     0.1,
+     0.1667,
+     0.0667,
+     0,
+     0.2667,
+     0.1,
+     0.0667,
+     0.0333,
+     0.0667,
+     0.2333,
+     0.0667,
+     0.1,
+     0.0667,
+     0.1,
+     0.0667,
+     0.1333,
+     0.1,
+     0.1333,
+     0.1,
+     0.2667,
+     0.1333,
+     0.0667,
+     0.1,
+     0,
+     0.0333,
+     0.0667,
+     0.1,
+     0.1333,
+     0.0667,
+     0.0333,
+     0.1,
+     0.1,
+     0.0333,
+     0.0667,
+     0.1,
+     0.1333,
+     0.1333,
+     0.0333,
+     0.1333,
+     0.1,
+     0.1333,
+     0.2,
+     0.3333,
+     0.0667,
+     0.0667,
+     0.1667,
+     0.1,
+     0.0667,
+     0.1333,
+     0.0333,
+     0.0667,
+     0.1,
+     0.1333,
+     0.1667,
+     0.1,
+     0.0667,
+     0,
+     0.2,
+     0.0333,
+     0.1333,
+     0.0333,
+     0.0667,
+     0.0333,
+     0.0333,
+     0.0667,
+     0.0333,
+     0.1,
+     0.1333,
+     0.1333,
+     0.1,
+     0.0333,
+     0.0667,
+     0.0667,
+     0.0667,
+     0.2333,
+     0.1,
+     0.1333,
+     0.1667,
+     0.0667,
+     0.0667,
+     0.1333,
+     0.0667,
+     0.0667,
+     0.1667,
+     0.1,
+     0.1,
+     0.0333,
+     0.1667,
+     0.1,
+     0.1,
+     0.1,
+     0.0333,
+     0.1667,
+     0.1,
+     0.0667,
+     0.1,
+     0.1,
+     0.1,
+     0.1,
+     0.1333,
+     0.0333,
+     0.1667,
+     0.1667,
+     0.1333,
+     0.0667,
+     0.1333,
+     0.0667,
+     0.0333,
+     0.0667,
+     0.2333,
+     0.1333,
+     0.0667,
+     0.1,
+     0.1,
+     0.1,
+     0.1,
+     0.1,
+     0.0333,
+     0,
+     0.1667,
+     0.1,
+     0.1333,
+     0.1,
+     0.1667,
+     0,
+     0.1667,
+     0.1333,
+     0.0333,
+     0.0667,
+     0.1333,
+     0.1333,
+     0.0667,
+     0.2333,
+     0.2,
+     0.2,
+     0.0667,
+     0.1333,
+     0.0333,
+     0.1,
+     0.1,
+     0.1333,
+     0.1333,
+     0.1,
+     0.0667,
+     0.1333,
+     0.1667,
+     0.0667,
+     0,
+     0.0667,
+     0.1667,
+     0,
+     0.1,
+     0.1,
+     0.1,
+     0.2,
+     0.1667,
+     0.0667,
+     0.0667,
+     0.1333,
+     0.0333,
+     0.1667,
+     0.1,
+     0.0667,
+     0.1333,
+     0.1333,
+     0.1667,
+     0.2,
+     0.0667,
+     0.1667,
+     0.0667,
+     0.0667,
+     0.1,
+     0.2,
+     0.1,
+     0.0333,
+     0.0667,
+     0.1,
+     0.0333,
+     0.1333,
+     0,
+     0.1,
+     0.0333,
+     0.2,
+     0.0333,
+     0.1667,
+     0.0333,
+     0.1333,
+     0.1667,
+     0.1333,
+     0.1,
+     0.0667,
+     0.1,
+     0.0667,
+     0.0667
+    ],
+    "bins": {
+     "start": -0.016666666666666666,
+     "width": 0.03333333333333333
+    },
+    "xStep": 0.05,
+    "xLabel": "sample proportion left-handed",
+    "yLabel": "number of samples"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "sample proportion left-handed",
+      "values": [
+       0.1333,
+       0.1,
+       0.0667,
+       0.1667,
+       0.0667,
+       0.1,
+       0.1,
+       0.1667,
+       0.0667,
+       0,
+       0.2667,
+       0.1,
+       0.0667,
+       0.0333,
+       0.0667,
+       0.2333,
+       0.0667,
+       0.1,
+       0.0667,
+       0.1,
+       0.0667,
+       0.1333,
+       0.1,
+       0.1333,
+       0.1,
+       0.2667,
+       0.1333,
+       0.0667,
+       0.1,
+       0,
+       0.0333,
+       0.0667,
+       0.1,
+       0.1333,
+       0.0667,
+       0.0333,
+       0.1,
+       0.1,
+       0.0333,
+       0.0667,
+       0.1,
+       0.1333,
+       0.1333,
+       0.0333,
+       0.1333,
+       0.1,
+       0.1333,
+       0.2,
+       0.3333,
+       0.0667,
+       0.0667,
+       0.1667,
+       0.1,
+       0.0667,
+       0.1333,
+       0.0333,
+       0.0667,
+       0.1,
+       0.1333,
+       0.1667,
+       0.1,
+       0.0667,
+       0,
+       0.2,
+       0.0333,
+       0.1333,
+       0.0333,
+       0.0667,
+       0.0333,
+       0.0333,
+       0.0667,
+       0.0333,
+       0.1,
+       0.1333,
+       0.1333,
+       0.1,
+       0.0333,
+       0.0667,
+       0.0667,
+       0.0667,
+       0.2333,
+       0.1,
+       0.1333,
+       0.1667,
+       0.0667,
+       0.0667,
+       0.1333,
+       0.0667,
+       0.0667,
+       0.1667,
+       0.1,
+       0.1,
+       0.0333,
+       0.1667,
+       0.1,
+       0.1,
+       0.1,
+       0.0333,
+       0.1667,
+       0.1,
+       0.0667,
+       0.1,
+       0.1,
+       0.1,
+       0.1,
+       0.1333,
+       0.0333,
+       0.1667,
+       0.1667,
+       0.1333,
+       0.0667,
+       0.1333,
+       0.0667,
+       0.0333,
+       0.0667,
+       0.2333,
+       0.1333,
+       0.0667,
+       0.1,
+       0.1,
+       0.1,
+       0.1,
+       0.1,
+       0.0333,
+       0,
+       0.1667,
+       0.1,
+       0.1333,
+       0.1,
+       0.1667,
+       0,
+       0.1667,
+       0.1333,
+       0.0333,
+       0.0667,
+       0.1333,
+       0.1333,
+       0.0667,
+       0.2333,
+       0.2,
+       0.2,
+       0.0667,
+       0.1333,
+       0.0333,
+       0.1,
+       0.1,
+       0.1333,
+       0.1333,
+       0.1,
+       0.0667,
+       0.1333,
+       0.1667,
+       0.0667,
+       0,
+       0.0667,
+       0.1667,
+       0,
+       0.1,
+       0.1,
+       0.1,
+       0.2,
+       0.1667,
+       0.0667,
+       0.0667,
+       0.1333,
+       0.0333,
+       0.1667,
+       0.1,
+       0.0667,
+       0.1333,
+       0.1333,
+       0.1667,
+       0.2,
+       0.0667,
+       0.1667,
+       0.0667,
+       0.0667,
+       0.1,
+       0.2,
+       0.1,
+       0.0333,
+       0.0667,
+       0.1,
+       0.0333,
+       0.1333,
+       0,
+       0.1,
+       0.0333,
+       0.2,
+       0.0333,
+       0.1667,
+       0.0333,
+       0.1333,
+       0.1667,
+       0.1333,
+       0.1,
+       0.0667,
+       0.1,
+       0.0667,
+       0.0667
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-sampling-dist-proportion-1",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the mean and standard deviation of the sampling distribution of $\\hat{p}$, the proportion of the 200 seeds that sprout?",
+   "stimulus": "sampling-dist-proportion-s1",
+   "options": [
+    "Mean 0.85, standard deviation 0.0252",
+    "Mean 0.85, standard deviation 0.000638",
+    "Mean 0.85, standard deviation 0.357",
+    "Mean 170, standard deviation 5.05"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\mu_{\\hat{p}} = p = 0.85$ and $\\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1 - p)}{n}} = \\sqrt{\\frac{0.85(0.15)}{200}} = 0.0252$.",
+    "options": [
+     "Right: the mean is $p$ and the standard deviation is $\\sqrt{p(1 - p)/n}$.",
+     "That is $\\frac{p(1 - p)}{n}$ without the square root: the variance, not the standard deviation.",
+     "That is $\\sqrt{p(1 - p)}$, the spread for a single seed. Divide by $n$ inside the square root.",
+     "Those describe the count of seeds that sprout, $np$ and $\\sqrt{np(1 - p)}$, not the proportion."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-2",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate the standard deviation of the sampling distribution of $\\hat{p}$. Give four decimal places.",
+   "stimulus": "sampling-dist-proportion-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 4,
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.85,
+      0.85,
+      200
+     ],
+     "pick": "se"
+    },
+    "mistakes": [
+     {
+      "value": 0.0006375,
+      "why": "That is $\\frac{p(1 - p)}{n}$, the variance. Take its square root to get the standard deviation."
+     },
+     {
+      "value": 0.3570714,
+      "why": "That is $\\sqrt{p(1 - p)}$, with no division by $n$. Divide $p(1 - p)$ by the sample size before taking the square root."
+     },
+     {
+      "value": 5.0497525,
+      "why": "That is $\\sqrt{np(1 - p)}$, the standard deviation of the count of seeds that sprout. For the proportion, divide by $n$ inside the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1 - p)}{n}} = \\sqrt{\\frac{0.85(0.15)}{200}} = \\sqrt{0.0006375} = 0.0252$. The 10% condition holds (200 is less than 10% of 50,000), so this formula applies."
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-3",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is it reasonable to use a normal model for the sampling distribution of $\\hat{p}$ here?",
+   "stimulus": "sampling-dist-proportion-s1",
+   "options": [
+    "Because $n = 200$ is at least 30",
+    "Because 200 is less than 10% of the 50,000 seeds in the shipment",
+    "Both $200(0.85) = 170$ and $200(0.15) = 30$ are at least 10",
+    "Because the seeds were chosen at random"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The large counts condition: $np = 200(0.85) = 170$ and $n(1 - p) = 200(0.15) = 30$ are both at least 10, so the distribution of $\\hat{p}$ is approximately normal.",
+    "options": [
+     "The rule of 30 is for sample means. For proportions, check the expected numbers of successes and failures.",
+     "That is the 10% condition. It justifies the standard deviation formula, not the normal shape.",
+     "Right: the large counts condition, with both counts at least 10.",
+     "Random selection is needed, but it does not make the shape normal. The shape depends on the expected numbers of successes and failures."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-4",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Assuming the company's figure is correct, find the probability that 80% or fewer of the 200 seeds sprout.",
+   "stimulus": "sampling-dist-proportion-s1",
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.8,
+      0.85,
+      200
+     ],
+     "pick": "p.less"
+    },
+    "mistakes": [
+     {
+      "value": 0.9761,
+      "why": "That is $P(\\hat{p} \\ge 0.80)$, the area above 0.80. \"80% or fewer\" is the area below."
+     },
+     {
+      "value": 0.0385,
+      "why": "That uses 0.80 in the standard deviation. The sampling distribution is built from the true $p = 0.85$: $\\sqrt{0.85(0.15)/200}$."
+     },
+     {
+      "value": 0.0808,
+      "why": "That uses a standard deviation of 0.0357, which is $\\sqrt{0.85(0.15)/100}$: a sample size of 100. With 200 seeds, $\\sqrt{0.85(0.15)/200} = 0.0252$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\hat{p}$ is approximately normal with mean 0.85 and standard deviation 0.0252. $z = \\frac{0.80 - 0.85}{0.0252} = -1.98$, so $P(\\hat{p} \\le 0.80) = P(Z \\le -1.98) = 0.024$. Technology (normal, mean 0.85, SD 0.0252, below 0.80) gives 0.0239."
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-5",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Type the expression for the z-score of $\\hat{p} = 0.80$ in this sampling distribution, with the values substituted (as you would show it on the exam).",
+   "stimulus": "sampling-dist-proportion-s1",
+   "setup": {
+    "answer": "(0.80 - 0.85)/sqrt(0.85*0.15/200)",
+    "bind": {},
+    "mustUse": [
+     "0.85",
+     "200"
+    ],
+    "mustNotUse": [
+     "0.8 in sqrt"
+    ],
+    "then": {
+     "kind": "z",
+     "from": {
+      "fn": "z1prop",
+      "args": [
+       0.8,
+       0.85,
+       200
+      ],
+      "pick": "z"
+     }
+    },
+    "mistakes": [
+     {
+      "expr": "(0.80 - 0.85)/sqrt(0.80*0.20/200)",
+      "why": "The standard deviation of $\\hat{p}$ uses the true $p = 0.85$, not the value 0.80 you are standardizing."
+     },
+     {
+      "expr": "(0.80 - 0.85)/(0.85*0.15/200)",
+      "why": "The standard deviation needs a square root: $\\sqrt{0.85(0.15)/200}$."
+     },
+     {
+      "expr": "(0.85 - 0.80)/sqrt(0.85*0.15/200)",
+      "why": "Subtract in the order value minus mean, so a value below the mean gets a negative z-score."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Standardize: $z = \\frac{\\hat{p} - p}{\\sqrt{p(1 - p)/n}} = \\frac{0.80 - 0.85}{\\sqrt{0.85(0.15)/200}} = -1.98$. The standard deviation uses the true $p = 0.85$."
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-6",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is the simulated sampling distribution skewed right instead of approximately normal?",
+   "stimulus": "sampling-dist-proportion-s2",
+   "options": [
+    "Because $np = 30(0.10) = 3$ is less than 10",
+    "Because 200 samples is too few to show the true shape",
+    "Because 30 is more than 10% of the school",
+    "Because the samples were taken without replacement"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With $n = 30$ and $p = 0.10$, the expected number of left-handed students is $np = 3$, less than 10. The proportion cannot go below 0 but can go well above 0.10, so the distribution is skewed right.",
+    "options": [
+     "Right: the large counts condition fails for successes.",
+     "More simulated samples would show the same skewed shape more smoothly; the shape comes from $n$ and $p$.",
+     "10% of 900 is 90, and 30 is less than that, so the 10% condition holds.",
+     "Sampling without replacement is fine when the sample is under 10% of the population; it does not cause the skew."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-7",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate the standard deviation of the sampling distribution of the sample proportion for samples of 30 from this school. Give four decimal places.",
+   "stimulus": "sampling-dist-proportion-s2",
+   "numeric": {
+    "kind": "stat",
+    "places": 4,
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.1,
+      0.1,
+      30
+     ],
+     "pick": "se"
+    },
+    "mistakes": [
+     {
+      "value": 0.003,
+      "why": "That is $\\frac{p(1 - p)}{n}$, the variance. Take the square root."
+     },
+     {
+      "value": 0.3,
+      "why": "That is $\\sqrt{p(1 - p)}$, with no division by the sample size inside the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The 10% condition holds ($30 \\le 90$), so $\\sigma_{\\hat{p}} = \\sqrt{\\frac{0.10(0.90)}{30}} = 0.0548$. The simulated proportions have a standard deviation close to this."
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-8",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is the smallest sample size for which the large counts condition holds with $p = 0.10$?",
+   "stimulus": "sampling-dist-proportion-s2",
+   "options": [
+    "$n = 30$",
+    "$n = 100$",
+    "$n = 300$",
+    "$n = 90$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Large counts needs $np \\ge 10$ and $n(1 - p) \\ge 10$. With $p = 0.10$, $0.10n \\ge 10$ gives $n \\ge 100$; then $n(0.90) = 90$ is also at least 10.",
+    "options": [
+     "At $n = 30$, $np = 3$: the condition fails, as the skewed histogram shows.",
+     "Right: $100(0.10) = 10$ and $100(0.90) = 90$.",
+     "$n = 300$ meets the condition, but so do smaller samples; the smallest is 100.",
+     "$90(0.10) = 9$, just short of 10."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-9",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "To meet the large counts condition, the computer takes samples of 100 from this school of 900. Which condition is now a problem, and what does it affect?",
+   "stimulus": "sampling-dist-proportion-s2",
+   "options": [
+    "Large counts: the shape of the distribution is still skewed right with samples of 100",
+    "The 10% condition: the standard deviation formula overstates the spread",
+    "Random: samples of 100 are not random",
+    "The 10% condition: the mean is no longer equal to $p$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "10% of 900 is 90, and 100 is more than that. When a sample is more than 10% of the population, draws without replacement are not close to independent, so $\\sqrt{p(1 - p)/n}$ overstates the spread of $\\hat{p}$.",
+    "options": [
+     "With $n = 100$, $np = 10$ and $n(1 - p) = 90$, so large counts now holds.",
+     "Right: 100 is more than 90, 10% of the school, so the formula is no longer accurate.",
+     "The computer still selects at random; the issue is how large the sample is compared with the school.",
+     "The mean of $\\hat{p}$ is still $p$ for random samples. What the 10% condition protects is the standard deviation formula."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-10",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A pollster keeps everything else the same but takes a random sample 4 times as large. By what factor does the standard deviation of $\\hat{p}$ change?",
+   "options": [
+    "It is divided by 4",
+    "It is divided by 2",
+    "It is multiplied by 2",
+    "It does not change, because $p$ is the same"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1 - p)}{n}}$ has $n$ under a square root. Replacing $n$ with $4n$ divides it by $\\sqrt{4} = 2$.",
+    "options": [
+     "The sample size is inside a square root, so the effect is $\\sqrt{4}$, not 4.",
+     "Right: $\\sqrt{4n}$ is twice $\\sqrt{n}$.",
+     "A larger sample gives less spread, not more.",
+     "The formula depends on $n$ as well as $p$."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-11",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a large city, 50% of voters favor a new transit tax. A random sample of 400 voters is taken. Find the probability that 55% or more of the sample favors the tax.",
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "z1prop",
+     "args": [
+      0.55,
+      0.5,
+      400
+     ],
+     "pick": "p.greater"
+    },
+    "mistakes": [
+     {
+      "value": 0.9772,
+      "why": "That is the area below 0.55. \"55% or more\" is the area above."
+     },
+     {
+      "value": 0,
+      "why": "That comes from a standard deviation of $\\frac{0.5(0.5)}{400}$ with no square root, which makes $z$ enormous. Take the square root: 0.025."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Large counts: $400(0.5) = 200 \\ge 10$ twice. $\\sigma_{\\hat{p}} = \\sqrt{\\frac{0.5(0.5)}{400}} = 0.025$, so $z = \\frac{0.55 - 0.50}{0.025} = 2.00$ and $P(\\hat{p} \\ge 0.55) = P(Z \\ge 2.00) = 0.0228$."
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-12",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A researcher selects 120 nurses at random, without replacement, from a hospital system with 6,000 nurses. Which condition makes it reasonable to treat the 120 selections as independent?",
+   "options": [
+    "The large counts condition",
+    "The 10% condition: 120 is less than 600",
+    "Random selection of the 120 nurses from the full list",
+    "A sample size of at least 30"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When a sample is no more than 10% of the population, selections without replacement are close enough to independent. 120 is less than 10% of 6,000, which is 600.",
+    "options": [
+     "Large counts is about the shape of the sampling distribution, not independence.",
+     "Right: the sample is less than 10% of the population.",
+     "Random selection avoids bias. It does not by itself make draws without replacement independent.",
+     "That rule of thumb is about sample means and shape, not independence."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-13",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "About 3% of a factory's light bulbs are defective. An inspector takes a random sample of 250 bulbs from a large batch. What can you say about the shape of the sampling distribution of the proportion defective?",
+   "options": [
+    "Approximately normal, because 250 is a large sample",
+    "Skewed left, because most bulbs are not defective",
+    "Approximately normal, because $n(1 - p) = 242.5$",
+    "Skewed right, because $250(0.03) = 7.5$ is less than 10"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$np = 250(0.03) = 7.5$, which is less than 10. Large counts fails, so the distribution is skewed right (it piles up near 0 and has a longer tail to the right).",
+    "options": [
+     "Size alone is not enough: the expected number of defective bulbs is only 7.5.",
+     "With $p$ near 0, the proportion piles up near 0 and stretches to the right: skewed right.",
+     "Both counts must be at least 10, and $np = 7.5$ is not.",
+     "Right: large counts fails for the defective bulbs."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-14",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "multi",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statements about $\\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1 - p)}{n}}$ are true? Select all that apply.",
+   "options": [
+    "It gets smaller as the sample size increases",
+    "For a fixed sample size, it is largest when $p = 0.5$",
+    "Doubling the sample size cuts it in half",
+    "It is larger for a population of 10 million than for one of 100,000"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The standard deviation shrinks as $n$ grows, and for a fixed $n$, $p(1 - p)$ is largest at $p = 0.5$. It shrinks with the square root of $n$, so doubling $n$ divides it by about 1.41, not 2.",
+    "options": [
+     "Right: $n$ is in the denominator.",
+     "Right: $p(1 - p)$ peaks at $0.5 \\times 0.5 = 0.25$.",
+     "Doubling $n$ divides it by $\\sqrt{2} \\approx 1.41$; it takes 4 times the sample size to halve it.",
+     "As long as the sample is under 10% of the population, the population size does not appear in the formula."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-15",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A random sample of 100 adults is replaced by a random sample of 900 adults from the same large population. What happens to the mean of the sampling distribution of $\\hat{p}$?",
+   "options": [
+    "It moves closer to $p$",
+    "It is divided by 3",
+    "It stays equal to $p$",
+    "It becomes 9 times as large"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\mu_{\\hat{p}} = p$ for any sample size: the sample proportion is an unbiased estimator. The sample size changes only the spread.",
+    "options": [
+     "It already equals $p$ at any sample size.",
+     "The mean does not depend on $n$; the standard deviation is the part that is divided by $\\sqrt{9} = 3$.",
+     "Right: the center is $p$ whatever the sample size.",
+     "That would describe the mean count of successes, $np$, not the proportion."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-proportion-16",
+   "unit": "unit-3",
+   "topic": "sampling-dist-proportion",
+   "type": "conclude",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The garden store plants a random sample of 200 seeds and only 78% sprout. Assuming 85% of all the company's seeds sprout, $P(\\hat{p} \\le 0.78) = 0.0028$. Build a sentence that uses this probability to judge the company's claim.",
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "claim": {
+      "options": [
+       "Assuming 85% of all the company's seeds sprout",
+       "Assuming 78% of all the company's seeds sprout",
+       "Assuming 85% of these 200 seeds sprout"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The probability was computed assuming the company's 85%, not the sample's 78%.",
+       "2": "The assumption is about all the company's seeds, the population, not this sample."
+      }
+     },
+     "evidence": {
+      "options": [
+       "a sample proportion of 0.78 or less would be very unusual (probability 0.0028)",
+       "a sample proportion of 0.78 or less would be quite likely (probability 0.0028)",
+       "there is a 0.0028 probability that the company is right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A probability of 0.0028 is very small: about 3 times in 1,000 samples.",
+       "2": "The probability assumes the claim is true; it is not the probability that the claim is true."
+      }
+     },
+     "context": {
+      "options": [
+       "so this result gives reason to doubt the company's claim",
+       "so this result shows the claim is false",
+       "so this result supports the company's claim"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An unusual result casts doubt on a claim; it does not show the claim is false for certain.",
+       "2": "An outcome this unlikely under the claim counts against the claim, not for it."
+      }
+     }
+    },
+    "model": "Assuming 85% of all the company's seeds sprout, a sample proportion of 0.78 or less in a random sample of 200 seeds would be very unusual (probability 0.0028), so this result gives reason to doubt the company's claim.",
+    "write": {
+     "context": [
+      "seed",
+      "sprout"
+     ],
+     "evidence": false
+    }
+   },
+   "why": {
+    "correct": "A probability is useful only when you tie it back to the claim. If the claim were true, 78% or fewer sprouting would happen in about 3 of every 1,000 samples, so it would be very unusual. That casts doubt on the claim."
+   }
+  }
+ ]
+}

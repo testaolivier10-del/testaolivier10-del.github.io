@@ -1,0 +1,12 @@
+{
+ "alternative-directions": {
+  "file": "figures/alternative-directions.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 392,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three number lines for a proportion from 0.55 to 0.85, each with the null value 0.70 marked by a dot. First, alternative \"p < 0.70\": the values below 0.70 are highlighted. Second, alternative \"p > 0.70\": the values above 0.70 are highlighted. Third, alternative \"p is not 0.70\": the values on both sides of 0.70 are highlighted. The direction comes from the research question, before any data are seen."
+ }
+}

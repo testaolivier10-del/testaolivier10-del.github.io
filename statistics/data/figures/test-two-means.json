@@ -1,0 +1,12 @@
+{
+ "two-sample-t-pvalue": {
+  "file": "figures/two-sample-t-pvalue.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The t distribution with 40.0 degrees of freedom, centered at 0. A dashed line marks the observed two-sample t statistic -2.31, and the small area to its left is shaded: the one-sided p-value, 0.0132."
+ }
+}

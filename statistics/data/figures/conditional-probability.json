@@ -1,0 +1,12 @@
+{
+ "u2-screening-tree": {
+  "file": "figures/u2-screening-tree.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Tree diagram for a screening test. First branches: 0.04 of people have the condition and 0.96 do not. Given the condition, the test is positive with probability 0.90 and negative 0.10. Given no condition, positive 0.06 and negative 0.94. The four paths multiply to 0.036, 0.004, 0.0576 and 0.9024. The positive paths add to 0.0936."
+ }
+}

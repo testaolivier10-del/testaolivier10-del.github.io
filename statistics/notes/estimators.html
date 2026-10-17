@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estimators — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="Unit 3 is about using a sample to say something about a population. Before any formulas, we need a way to judge whether a sample's answer can be trusted.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/estimators.html">
+<meta property="og:title" content="Estimators — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="Unit 3 is about using a sample to say something about a population. Before any formulas, we need a way to judge whether a sample's answer can be trusted.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/estimators.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/estimators.html#reading",
+      "name": "Estimators",
+      "url": "https://levlprep.com/statistics/notes/estimators.html",
+      "description": "Unit 3 is about using a sample to say something about a population. Before any formulas, we need a way to judge whether a sample's answer can be trusted.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "estimators ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Categorical Data: Proportions",
+          "item": "https://levlprep.com/statistics/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Estimators: notes",
+          "item": "https://levlprep.com/statistics/notes/estimators.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="estimators" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Inference for Categorical Data: Proportions</b><small>15 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="estimators"><a href="#main" aria-current="page"><span class="bk-toc-n">3.1</span>Estimators</a><div class="bk-toc-onpage"><p>On this page</p><a href="#estimators-and-point-estimates">Estimators and point estimates</a><a href="#bias-where-the-estimates-center">Bias: where the estimates center</a><a href="#variability-how-spread-out-the-estimates">Variability: how spread out the estimates are</a><a href="#bias-and-variability-are-separate-problems">Bias and variability are separate problems</a><a href="#how-the-exam-asks-about-this">How the exam asks about this</a></div></li><li data-toc-t="sampling-dist-proportion"><a href="sampling-dist-proportion.html"><span class="bk-toc-n">3.2</span>Sampling Distributions for Sample Proportions</a></li><li data-toc-t="ci-one-proportion"><a href="ci-one-proportion.html"><span class="bk-toc-n">3.3</span>Constructing a Confidence Interval for a Population Proportion</a></li><li data-toc-t="ci-one-proportion-claims"><a href="ci-one-proportion-claims.html"><span class="bk-toc-n">3.4</span>Justifying a Claim Based on a Confidence Interval for a Population Proportion</a></li><li data-toc-t="test-one-proportion-setup"><a href="test-one-proportion-setup.html"><span class="bk-toc-n">3.5</span>Setting Up a Test for a Population Proportion</a></li><li data-toc-t="p-values"><a href="p-values.html"><span class="bk-toc-n">3.6</span>p-Values</a></li><li data-toc-t="test-one-proportion"><a href="test-one-proportion.html"><span class="bk-toc-n">3.7</span>Carrying Out a Test for a Population Proportion</a></li><li data-toc-t="errors-and-power"><a href="errors-and-power.html"><span class="bk-toc-n">3.8</span>Potential Errors When Performing Tests</a></li><li data-toc-t="sampling-dist-two-proportions"><a href="sampling-dist-two-proportions.html"><span class="bk-toc-n">3.9</span>Sampling Distributions for the Difference Between Sample Proportions</a></li><li data-toc-t="ci-two-proportions"><a href="ci-two-proportions.html"><span class="bk-toc-n">3.10</span>Constructing a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="ci-two-proportions-claims"><a href="ci-two-proportions-claims.html"><span class="bk-toc-n">3.11</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions-setup"><a href="test-two-proportions-setup.html"><span class="bk-toc-n">3.12</span>Setting Up a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions"><a href="test-two-proportions.html"><span class="bk-toc-n">3.13</span>Carrying Out a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="chi-square-setup"><a href="chi-square-setup.html"><span class="bk-toc-n">3.14</span>Setting Up a Chi-Square Test for Homogeneity or Independence</a></li><li data-toc-t="chi-square-test"><a href="chi-square-test.html"><span class="bk-toc-n">3.15</span>Carrying Out a Chi-Square Test for Homogeneity or Independence</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Inference for Categorical Data: Proportions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Estimators: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/estimators.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 3 &middot; Topic 3.1 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Estimators</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="estimators">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Festimators.html&amp;title=Estimators%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/estimators.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>Unit 3 is about using a sample to say something about a <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a>. Before any formulas, we need a way to judge whether a sample's answer can be trusted. That judgment always comes from the same place: what the statistic does over many possible <a class="gl" href="../notes/intro-statistics.html" data-c="sample">samples</a>.</p>
+
+<h2 id="estimators-and-point-estimates">Estimators and point estimates</h2>
+<p>A <b><a class="gl" href="../notes/variables.html" data-c="parameter">parameter</a></b> describes a whole population, and we usually cannot measure it. A <b>statistic</b> describes a sample, and we can. When we use a statistic to <span class="gl" tabindex="0" data-c="estimator">estimate</span> a parameter, the statistic is called an <b>estimator</b>. The value it gives for one particular sample is a <b>point estimate</b>.</p>
+<ul>
+<li>The <a class="gl" href="../notes/one-categorical-tables.html" data-c="sample-proportion">sample proportion</a> <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> estimates the <a class="gl" href="../notes/one-categorical-tables.html" data-c="population-proportion">population proportion</a> <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>.</li>
+<li>The <a class="gl" href="../notes/summary-statistics.html" data-c="mean">sample mean</a> <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> estimates the <a class="gl" href="../notes/summary-statistics.html" data-c="population-mean">population mean</a> <math class="stat-m"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math>.</li>
+<li>The <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">sample standard deviation</a> <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> estimates the <a class="gl" href="../notes/summary-statistics.html" data-c="population-sd">population standard deviation</a> <math class="stat-m"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>.</li>
+</ul>
+<p>If 124 of 400 <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">randomly</a> chosen voters support a new park, the point estimate of <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> is <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mfrac><mn>124</mn><mn>400</mn></mfrac><mo>=</mo><mn>0.31</mn></mrow><annotation encoding="application/x-tex">\hat{p} = \frac{124}{400} = 0.31</annotation></semantics></math>. Another random sample of 400 would give a slightly different number. So a point estimate on its own tells you nothing about how far off it might be. To know that, look at the estimator's <a class="gl" href="../notes/sampling-distributions.html" data-c="sampling-distribution">sampling distribution</a>.</p>
+
+<h2 id="bias-where-the-estimates-center">Bias: where the estimates center</h2>
+<p>Picture taking every possible sample of the same size with the same method and computing the statistic each time. Those values <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">form</a> the statistic's sampling <a class="gl" href="../notes/variables.html" data-c="distribution">distribution</a>. An estimator is <b><a class="gl" href="../notes/sampling-problems.html" data-c="bias">unbiased</a></b> when the <a class="gl" href="../notes/describing-distributions.html" data-c="center">center</a> (the mean) of its sampling distribution equals the parameter. It is <b>biased</b> when the center sits too high or too low.</p>
+<p>Unbiased does not mean "right in every sample". It means "right on average". Single samples still land above or below the truth. They just do not lean one way.</p>
+<p>Bias comes from the method. A random sample gives every member of the population a fair <a class="gl" href="../notes/simulation.html" data-c="probability">chance</a>, so <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> from a random sample is an <span class="gl" tabindex="0" data-c="unbiased-estimator">unbiased estimator</span> of <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>, and <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> is an unbiased estimator of <math class="stat-m"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math>. A method that favors some members (a <a class="gl" href="../notes/sampling-problems.html" data-c="convenience">convenience sample</a>, a <a class="gl" href="../notes/sampling-problems.html" data-c="voluntary-response">voluntary response</a> poll) moves the center away from the parameter. Some statistics are biased even with random sampling. The sample maximum can never be larger than the population maximum, so it tends to come in too low as an estimate of it.</p>
+
+<h2 id="variability-how-spread-out-the-estimates">Variability: how spread out the estimates are</h2>
+<p><b><a class="gl" href="../notes/describing-distributions.html" data-c="spread">Variability</a></b> is the spread of the sampling distribution. Low variability means the estimates from different samples are close to each other, so a typical estimate is close to its center.</p>
+<p>For random samples, variability depends mostly on the sample size. Larger samples give less <a class="gl" href="../notes/variables.html" data-c="variable">variable</a> estimates. The spread shrinks with the <a class="gl" href="../notes/math-formulas.html" data-c="square-root">square root</a> of the sample size: four times as many observations cut the spread in half, not to a quarter. You will see the exact formula in the next topic. The size of the population barely matters, as long as it is much bigger than the sample.</p>
+
+<figure id="fig-bias-var"  class="stat-figure"><div class="stat-figimg" data-fig="estimator-bias-variability"><img src="../figures/estimator-bias-variability.svg" alt="Three probability histograms on the same scale from 0.1 to 0.8, each with a dashed line at the true proportion p = 0.40. Top: the sample proportion from random samples of 25 is centered at 0.40 and spread widely, from about 0.2 to 0.6: unbiased, high variability. Middle: the sample proportion from random samples of 100 is centered at 0.40 and about half as spread out: unbiased, low variability. Bottom: a biased method whose sample proportions center at 0.55 with low variability: biased, low variability." width="640" height="532" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Three estimators of p = 0.40. Random samples of 25 and of 100 are both centered on the truth; the larger sample is about half as spread out. A method that favors one group is centered at 0.55: precise, but precisely wrong. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="bias-and-variability-are-separate-problems">Bias and variability are separate problems</h2>
+<p><a class="figref" href="#fig-bias-var">The figure</a> shows three of the four <a class="gl" href="../notes/math-counting.html" data-c="combination">combinations</a> you need to tell apart; the table lists all four. Think of a target, with the parameter as the bullseye and each estimate as one arrow.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Low variability, High variability"><table>
+<thead><tr><th scope="col"></th><th scope="col">Low variability</th><th scope="col">High variability</th></tr></thead>
+<tbody>
+<tr><th scope="row">Unbiased</th><td>Arrows tightly grouped on the bullseye: the goal</td><td>Arrows scattered widely around the bullseye</td></tr>
+<tr><th scope="row">Biased</th><td>Arrows tightly grouped, but off to one side</td><td>Arrows scattered, and centered off to one side</td></tr>
+</tbody>
+</table></div>
+<p>The fixes are different, too:</p>
+<ul>
+<li>To reduce bias, change the method: select at random from the whole population.</li>
+<li>To reduce variability, take a larger random sample.</li>
+</ul>
+<p>A bigger sample does not fix a biased method. A website poll with 12,000 responses varies less from poll to poll than one with 1,200, but both are pulled the same way by who chooses to answer.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> In a shipment of 40,000 chargers, 8% are faulty (<math class="stat-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.08</mn></mrow><annotation encoding="application/x-tex">p = 0.08</annotation></semantics></math>). An inspector simulates four methods 1,000 times each. Method W (random samples of 50) gives sample proportions with mean 0.080 and standard deviation 0.038. Method X (random samples of 200): mean 0.080, standard deviation 0.019. Method Y (the first 200 packed on one shift): mean 0.052, standard deviation 0.016. Which method is best?</p>
+<p><b>Bias.</b> W and X center at 0.080, the parameter, so they are unbiased. Y centers at 0.052, below 0.08: it tends to underestimate the proportion of faulty chargers.</p>
+<p><b>Variability.</b> Y has the smallest spread (0.016), then X (0.019), then W (0.038). X uses <math class="stat-m"><semantics><mrow><mfrac><mn>200</mn><mn>50</mn></mfrac><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\frac{200}{50} = 4</annotation></semantics></math> times as many chargers as W, and its spread is about <math class="stat-m"><semantics><mrow><mfrac><mn>0.038</mn><msqrt><mn>4</mn></msqrt></mfrac><mo>=</mo><mn>0.019</mn></mrow><annotation encoding="application/x-tex">\frac{0.038}{\sqrt{4}} = 0.019</annotation></semantics></math>.</p>
+<p><b>Conclusion.</b> Method X is best: it is unbiased and has low variability. Method Y is the least variable, but its estimates <a class="gl" href="../notes/describing-distributions.html" data-c="gap-cluster">cluster</a> around the wrong value, about 0.03 too low on average.</p>
+</div>
+
+<h2 id="how-the-exam-asks-about-this">How the exam asks about this</h2>
+<p>Expect a table or plot of <a class="gl" href="../notes/simulation.html" data-c="simulation">simulated</a> values of two or more estimators, and questions such as "which is unbiased?", "which has the least variability?" or "which would you use, and why?". Answer with the center for bias and the spread for variability, and name both when you justify a choice. Always say it <a class="gl" href="../notes/intro-statistics.html" data-c="context">in context</a>: "on average, this method underestimates the proportion of faulty chargers in the shipment."</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:estimators">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="sampling-distributions.html"><span>&larr; Previous</span><b>Sampling Distributions and the Central Limit Theorem</b></a><a class="tb-chapter-link next" href="sampling-dist-proportion.html"><span>Next &rarr;</span><b>Sampling Distributions for Sample Proportions</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:estimators">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

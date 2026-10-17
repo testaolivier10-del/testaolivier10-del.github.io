@@ -1,0 +1,43 @@
+<p>The z tests of the last few topics compare one or two proportions. Many questions are bigger than that. Is age related to where people get their news, with three age groups and three news sources? Do three high schools differ in how students get to school? A two-way table holds these data, and a <b>chi-square test</b> asks whether the pattern in the table is more than chance. This topic sets the test up; the next one carries it out.</p>
+
+<h2>Two tests, two designs</h2>
+<p>There are two chi-square tests for two-way tables. The arithmetic is identical; what differs is how the data were collected, and so how the hypotheses read.</p>
+<table class="stat-compare">
+<thead><tr><th></th><th>Test for independence</th><th>Test for homogeneity</th></tr></thead>
+<tbody>
+<tr><td>Design</td><td>one random sample, each person classified by two categorical variables</td><td>separate random samples from several populations, or several randomly assigned treatment groups</td></tr>
+<tr><td>Question</td><td>Are the two variables associated in the population?</td><td>Is the distribution of one variable the same in every population?</td></tr>
+<tr><td>$H_0$</td><td>There is no association between the variables.</td><td>The distribution is the same in every population.</td></tr>
+<tr><td>$H_a$</td><td>There is an association.</td><td>At least one distribution is different.</td></tr>
+<tr><td>Example</td><td>400 adults, each asked age group and news source</td><td>separate samples at three schools, each asked travel mode</td></tr>
+</tbody>
+</table>
+<p>A quick test: did the researcher decide how many people to take from each group? If so (or if the groups were made by random assignment), it is homogeneity. If one sample was taken and both variables were recorded afterward, it is independence. Either way, the alternative hypothesis has no direction: it says only that an association, or a difference, exists.</p>
+
+<h2>Expected counts</h2>
+<p>Both tests compare the <b>observed counts</b> in the table with the <b>expected counts</b>: the counts we would expect, on average, if $H_0$ were true.</p>
+<p>Here is the idea. In the news poll, 130 of the 400 adults (32.5%) use TV most. If age and news source were unrelated, TV would claim 32.5% of every age group. There are 140 adults aged 55 and older, so we would expect $140 \times \frac{130}{400} = 45.5$ of them to use TV most. That is the general rule:</p>
+<p>$$\text{expected count} = \frac{\text{row total} \times \text{column total}}{\text{grand total}}.$$</p>
+<figure id="fig-exp" data-fig="expected-counts-table"><figcaption>Observed counts with the expected counts beside them.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example.</b> Use the news poll in <a class="figref" href="#fig-exp">the figure</a> to find two expected counts.</p>
+<p>18 to 34, news websites: $\frac{120 \times 140}{400} = 42$. The observed count is 40, close to it.</p>
+<p>55 and older, TV: $\frac{140 \times 130}{400} = 45.5$. The observed count is 72, far above it: older adults use TV more than "no association" predicts.</p>
+<p>Expected counts need not be whole numbers, and you should not round them. In each row they add up to the row total, and in each column to the column total.</p>
+</div>
+
+<h2>The chi-square statistic</h2>
+<p>To measure how far the whole table is from $H_0$, compare every observed count $O$ with its expected count $E$:</p>
+<p>$$\chi^2 = \sum \frac{(O - E)^2}{E}.$$</p>
+<p>Squaring makes every gap count, whether the observed count is above or below; dividing by $E$ puts gaps on a fair scale, since a gap of 10 matters more when 20 were expected than when 200 were. If the table matched $H_0$ exactly, $\chi^2$ would be 0. The farther the observed counts sit from the expected counts, the larger $\chi^2$ gets, and the stronger the evidence against $H_0$. The next topic shows how large is large.</p>
+
+<h2>Conditions</h2>
+<ul>
+<li><b>Random:</b> one random sample (independence), or separate random samples or random assignment (homogeneity), in the words of the problem.</li>
+<li><b>10%:</b> when sampling without replacement, each sample is less than 10% of its population.</li>
+<li><b>Large counts:</b> every <b>expected</b> count is at least 5. Not the observed counts, and not 10.</li>
+</ul>
+<p>In the news poll, the smallest expected count is 39, so the condition is met easily. If one expected count were 3.2, a chi-square test would not be reliable, no matter how large the other cells are.</p>
+
+<h2>Writing it up</h2>
+<p>For the news poll: a chi-square test for independence. $H_0$: there is no association between age group and main news source among adults in the city. $H_a$: there is an association between age group and main news source among adults in the city. Random: a random sample of 400 adults. 10%: 400 is less than 10% of the city's adults. Large counts: every expected count is at least 39, so at least 5.</p>

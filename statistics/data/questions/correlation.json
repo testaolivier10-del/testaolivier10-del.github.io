@@ -1,0 +1,506 @@
+{
+ "stimuli": {
+  "correlation-s1": {
+   "kind": "graph",
+   "title": "Study time and quiz scores",
+   "text": "A teacher records how many hours each of 8 students studied for a quiz and their score out of 100. (Invented data.)",
+   "plot": {
+    "label": "Scatterplot of 8 students: hours studied, 1 to 6, against quiz score, 62 to 86, rising in a fairly tight straight band",
+    "kind": "scatter",
+    "xs": [
+     1,
+     2,
+     2,
+     3,
+     4,
+     5,
+     5,
+     6
+    ],
+    "ys": [
+     62,
+     65,
+     70,
+     72,
+     71,
+     80,
+     84,
+     86
+    ],
+    "x": [
+     0,
+     7
+    ],
+    "y": [
+     55,
+     90
+    ],
+    "xLabel": "hours studied",
+    "yLabel": "quiz score"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "hours studied",
+      "unit": "hours",
+      "values": [
+       1,
+       2,
+       2,
+       3,
+       4,
+       5,
+       5,
+       6
+      ]
+     },
+     {
+      "name": "quiz score",
+      "unit": "points",
+      "values": [
+       62,
+       65,
+       70,
+       72,
+       71,
+       80,
+       84,
+       86
+      ]
+     }
+    ]
+   }
+  },
+  "correlation-s2": {
+   "kind": "graph",
+   "title": "Four scatterplots",
+   "text": "Each plot shows 20 points of invented data, with its correlation computed from the data printed above it.",
+   "figure": "correlation-gallery"
+  }
+ },
+ "items": [
+  {
+   "id": "stat-correlation-1",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "correlation-s1",
+   "q": "Use technology to find the correlation $r$ between hours studied and quiz score. Give three decimal places.",
+   "why": {
+    "correct": "Technology (a linear regression or correlation command on the two lists) gives $r = 0.951$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 3,
+    "from": {
+     "fn": "lsrl",
+     "args": [
+      [
+       1,
+       2,
+       2,
+       3,
+       4,
+       5,
+       5,
+       6
+      ],
+      [
+       62,
+       65,
+       70,
+       72,
+       71,
+       80,
+       84,
+       86
+      ]
+     ],
+     "pick": "r"
+    },
+    "mistakes": [
+     {
+      "value": -0.9507,
+      "why": "The sign is wrong: scores rise with study time, so the correlation is positive."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-correlation-2",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "correlation-s1",
+   "q": "Which interpretation of $r = 0.95$ is correct?",
+   "why": {
+    "correct": "$r$ gives direction (sign) and strength (closeness to 1 or $-1$) of a linear association.",
+    "options": [
+     "Correlation measures a linear association, not accuracy.",
+     "$r$ is not a percent of students, and it says nothing about cause.",
+     "Right: $r$ near 1 means a strong positive linear association.",
+     "That would be a slope. $r$ has no units and does not measure change per hour."
+    ]
+   },
+   "options": [
+    "The quiz scores are about 95% accurate measures",
+    "About 95% of the students scored higher because they studied more",
+    "A strong, positive, linear link between study time and score",
+    "Each extra hour of study raises the score by 0.95 points"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-correlation-3",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "correlation-s1",
+   "q": "The teacher recomputes $r$ with study time in minutes instead of hours. What happens to $r$?",
+   "why": {
+    "correct": "$r$ is unitless: it does not change when either variable changes units.",
+    "options": [
+     "Rescaling a variable does not change how tightly the points follow a line.",
+     "Right: changing units changes every z-score not at all, so $r$ is unchanged.",
+     "Any units work; $r$ is based on standardized values.",
+     "$r$ is always between $-1$ and 1; it has no units to convert."
+    ]
+   },
+   "options": [
+    "It becomes 60 times smaller, 0.016",
+    "It stays 0.95",
+    "It can no longer be computed",
+    "It becomes 60 times larger, 57.0"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-correlation-4",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "correlation-s1",
+   "q": "If quiz score were put on the horizontal axis and hours on the vertical axis, what would the correlation be?",
+   "why": {
+    "correct": "Correlation is symmetric in $x$ and $y$.",
+    "options": [
+     "Switching axes does not reverse the direction: high scores still go with more hours.",
+     "Right: $r$ treats the two variables the same way, so switching them leaves it unchanged.",
+     "A correlation can never exceed 1, and switching axes leaves it as it was.",
+     "Correlation does not depend on which variable is called explanatory."
+    ]
+   },
+   "options": [
+    "The negative, $-0.95$",
+    "The same, 0.95",
+    "The reciprocal, 1.05",
+    "Zero, since a score is unable to explain hours"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-correlation-5",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "correlation-s1",
+   "q": "A ninth student studied 6 hours but scored 40. What would adding this student do to $r$?",
+   "why": {
+    "correct": "Like the mean and SD, $r$ is pulled by outliers.",
+    "options": [
+     "The new point sits far below the trend, so the association gets weaker, not stronger.",
+     "Right: with the ninth point, technology gives $r = 0.14$. Correlation is not resistant to outliers.",
+     "It drops a lot, to about 0.14, but the other eight points still trend upward.",
+     "One point far from the line can change $r$ a lot. Correlation is not resistant."
+    ]
+   },
+   "options": [
+    "It would rise, since the new student studied a lot",
+    "It would drop sharply, to about 0.14: $r$ is not resistant",
+    "It would become negative, since 40 is the lowest score",
+    "It would barely change, since one point out of nine is small"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-correlation-6",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "correlation-s2",
+   "q": "Which plot shows a strong relationship even though its correlation is close to 0?",
+   "why": {
+    "correct": "Correlation near 0 means no linear association; there may still be a strong curved one.",
+    "options": [
+     "Its $r$ is close to 1, not 0.",
+     "Those points are widely scattered; the relationship really is weak.",
+     "Its $r$ is far from 0.",
+     "Right: the points follow an arch very closely, but $r$ measures only linear association, and an arch is not a line."
+    ]
+   },
+   "options": [
+    "The strong positive plot, $r = 0.99$",
+    "The weak positive plot, $r = 0.29$",
+    "The moderate negative plot, $r = -0.79$",
+    "The curved plot, $r = 0.04$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-correlation-7",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "correlation-s2",
+   "q": "Which plot has the strongest linear association?",
+   "why": {
+    "correct": "Linear strength is the size of $r$, $|r|$, whatever its sign.",
+    "options": [
+     "Wide spread means a weak association.",
+     "Right: its $r$ is closest to 1 or $-1$ in size, and its points hug a line.",
+     "The curve is clear, but it is not linear, and $r$ measures linear strength.",
+     "The sign gives direction only. Compare sizes: 0.99 is larger than 0.79."
+    ]
+   },
+   "options": [
+    "The plot with $r = 0.29$, because its points spread widest",
+    "The plot with $r = 0.99$",
+    "The plot with $r = 0.04$, because its pattern is clear",
+    "The plot with $r = -0.79$, because negative is stronger"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-correlation-8",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "correlation-s2",
+   "q": "What does the plot with $r = -0.79$ show?",
+   "why": {
+    "correct": "Sign: direction. Size: strength of the linear pattern.",
+    "options": [
+     "A negative $r$ is not weaker; $-0.79$ is as strong as 0.79.",
+     "That would be a slope; $r$ has no units.",
+     "$r$ is not a percent of points.",
+     "Right: the negative sign gives the direction, and a size of 0.79 is a moderate linear association, close to strong."
+    ]
+   },
+   "options": [
+    "A weak association, because $r$ is negative",
+    "That $y$ decreases by 0.79 for each unit of $x$",
+    "That 79% of the points lie on a line",
+    "A moderate linear trend: $y$ tends to fall as $x$ rises"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-correlation-9",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "correlation-s2",
+   "q": "A student says, \"The curved plot has $r = 0.04$, so $x$ and $y$ are unrelated.\" What should you tell the student?",
+   "why": {
+    "correct": "Correlation describes linear relationships only.",
+    "options": [
+     "A strong curve can have $r$ near 0, as this plot shows.",
+     "Squaring a small number makes it smaller and still ignores the curve.",
+     "It is correct; the arch is symmetric, so the upward and downward halves cancel in $r$.",
+     "Right: always plot the data; a near-zero $r$ rules out only a linear pattern."
+    ]
+   },
+   "options": [
+    "The student is right: a correlation near 0 means no relationship of any kind",
+    "The student should square $r$ to see the true strength",
+    "The correlation was probably computed wrong",
+    "Look at the plot first: $r$ misses curved relationships"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-correlation-10",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Across cities, the number of fire trucks sent to a fire and the dollar damage have a correlation of 0.7. What explains this best?",
+   "why": {
+    "correct": "A strong correlation can come from a lurking variable.",
+    "options": [
+     "$r$ is not a percent of anything.",
+     "Right: fire size is a lurking variable linked to both. Correlation does not mean the trucks cause damage.",
+     "The correlation is real; its explanation is a lurking variable.",
+     "Correlation is not causation; a third variable explains both."
+    ]
+   },
+   "options": [
+    "70% of the damage is caused by the trucks",
+    "Bigger fires bring more trucks and more damage",
+    "The correlation is probably a mistake in the data",
+    "The fire trucks themselves cause most of the damage"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-correlation-11",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which correlation shows the strongest linear association?",
+   "why": {
+    "correct": "Compare $|r|$.",
+    "options": [
+     "That is weak.",
+     "That is weak.",
+     "Size 0.70 is smaller than 0.85.",
+     "Right: its size, 0.85, is the largest."
+    ]
+   },
+   "options": [
+    "$r = 0.10$",
+    "$r = -0.20$",
+    "$r = 0.70$",
+    "$r = -0.85$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-correlation-12",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement about the correlation $r$ is true?",
+   "why": {
+    "correct": "$-1 \\le r \\le 1$, unitless, linear only.",
+    "options": [
+     "A strong curve can give $r$ near 0.",
+     "$r = 1$ only when the points lie exactly on a rising line.",
+     "Right: it is computed from z-scores, which have no units.",
+     "That describes a slope."
+    ]
+   },
+   "options": [
+    "It is large for any strong curved pattern",
+    "It is 1 whenever $y$ increases with $x$",
+    "It is between $-1$ and 1 and has no units",
+    "It is measured in the units of $y$ per unit of $x$"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-correlation-13",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Five students have these products of z-scores, $z_x z_y$: 1.1, 0.6, 0.2, 0.7 and 1.0. Write the expression for the correlation $r = \\frac{1}{n - 1}\\sum z_x z_y$, then give its value.",
+   "why": {
+    "correct": "$r = \\frac{1}{5 - 1}(1.1 + 0.6 + 0.2 + 0.7 + 1.0) = \\frac{3.6}{4} = 0.9$."
+   },
+   "setup": {
+    "answer": "(1/(5 - 1))*(1.1 + 0.6 + 0.2 + 0.7 + 1.0)",
+    "bind": {},
+    "mistakes": [
+     {
+      "expr": "(1/5)*(1.1 + 0.6 + 0.2 + 0.7 + 1.0)",
+      "why": "Divide by $n - 1 = 4$, as for a standard deviation, not by $n = 5$."
+     },
+     {
+      "expr": "1.1 + 0.6 + 0.2 + 0.7 + 1.0",
+      "why": "The sum alone is 3.6, which cannot be a correlation. Divide it by $n - 1$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-correlation-14",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why does a point in the upper right of a scatterplot (above average on both variables) push $r$ up?",
+   "why": {
+    "correct": "Upper right and lower left: positive products; upper left and lower right: negative.",
+    "options": [
+     "Distance from the origin does not matter; what matters is position relative to the means.",
+     "Raw size does not matter, since $r$ uses standardized values.",
+     "Every point counts once.",
+     "Right: $r$ averages $z_x z_y$; points in the upper right and lower left give positive products."
+    ]
+   },
+   "options": [
+    "It is far from the origin, and distance from the origin raises $r$",
+    "It has large raw values, and $r$ grows with the size of the values",
+    "Points in the upper right count twice in the formula",
+    "Its two z-scores are positive, so their product is positive"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-correlation-15",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A study of 1,000 adults finds $r = 0.45$ between hours of TV and weight. A headline says, \"TV makes you gain weight.\" What is the main problem?",
+   "why": {
+    "correct": "Association is not causation.",
+    "options": [
+     "Right: this is observational, so a cause cannot be claimed.",
+     "A thousand adults is plenty. The design, not the size, is the problem.",
+     "A moderate correlation can be real; the problem is the causal claim.",
+     "That is not what $r$ means, and the headline's problem is about cause."
+    ]
+   },
+   "options": [
+    "It is observational; other variables, like exercise, could explain it",
+    "The sample of 1,000 adults is too small to trust",
+    "A correlation of 0.45 is too small to mean anything",
+    "$r = 0.45$ means TV explains 45% of weight"
+   ],
+   "correct": 0
+  }
+ ]
+}

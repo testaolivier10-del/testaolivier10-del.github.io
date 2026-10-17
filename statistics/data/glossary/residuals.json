@@ -1,0 +1,8 @@
+{
+ "residual": {
+  "def": "The difference between an observed value and the value a regression line predicts: residual $= y - \\hat{y}$. Positive when the point lies above the line, negative when below."
+ },
+ "residual-plot": {
+  "def": "A scatterplot of the residuals against the explanatory variable (or the predicted values). Random scatter around 0 means a linear model is appropriate; a curved pattern means it is not."
+ }
+}

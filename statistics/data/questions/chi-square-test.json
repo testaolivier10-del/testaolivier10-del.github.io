@@ -1,0 +1,672 @@
+{
+ "stimuli": {
+  "chi-square-test-s1": {
+   "kind": "table",
+   "title": "Phones in the bedroom and sleep",
+   "text": "A random sample of 300 students at a large high school is asked whether they keep their phone in the bedroom at night and how many hours they usually sleep. A chi-square test for independence is planned at $\\alpha = 0.05$; the conditions are met. (Invented data.)",
+   "table": {
+    "caption": "Observed counts: phone in bedroom by usual sleep",
+    "cols": [
+     "Phone in bedroom",
+     "Under 7 hours",
+     "7 to 8 hours",
+     "Over 8 hours",
+     "Total"
+    ],
+    "rows": [
+     [
+      "Yes",
+      "70",
+      "90",
+      "40",
+      "200"
+     ],
+     [
+      "No",
+      "20",
+      "50",
+      "30",
+      "100"
+     ],
+     [
+      "Total",
+      "90",
+      "140",
+      "70",
+      "300"
+     ]
+    ]
+   }
+  },
+  "chi-square-test-s2": {
+   "kind": "table",
+   "title": "Yoga or physical therapy for back pain",
+   "text": "A clinic randomly assigns 200 adults with lower back pain to 12 weeks of yoga or of physical therapy, 100 to each, and records each patient's result. It tests at $\\alpha = 0.05$ whether the distribution of results differs between the treatments. All expected counts are at least 9. (Invented data.)",
+   "table": {
+    "caption": "Observed counts. Software output: chi-square = 4.178",
+    "cols": [
+     "Treatment",
+     "Much better",
+     "Somewhat better",
+     "No change",
+     "Worse",
+     "Total"
+    ],
+    "rows": [
+     [
+      "Yoga",
+      "34",
+      "38",
+      "20",
+      "8",
+      "100"
+     ],
+     [
+      "Physical therapy",
+      "22",
+      "40",
+      "28",
+      "10",
+      "100"
+     ],
+     [
+      "Total",
+      "56",
+      "78",
+      "48",
+      "18",
+      "200"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-chi-square-test-1",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "chi-square-test-s1",
+   "q": "What is the value of the chi-square statistic? Give two decimal places.",
+   "why": {
+    "correct": "Expected counts: 60, 93.3, 46.7 (yes) and 30, 46.7, 23.3 (no). $\\chi^2 = \\frac{(70 - 60)^2}{60} + \\frac{(90 - 93.3)^2}{93.3} + \\dots + \\frac{(30 - 23.3)^2}{23.3} = 8.21$."
+   },
+   "numeric": {
+    "kind": "chi2",
+    "from": {
+     "fn": "chi2table",
+     "args": [
+      [
+       [
+        70,
+        90,
+        40
+       ],
+       [
+        20,
+        50,
+        30
+       ]
+      ]
+     ],
+     "pick": "chi2"
+    },
+    "mistakes": [
+     {
+      "value": 311.11,
+      "why": "That adds the squared gaps $(O - E)^2$ without dividing each by its expected count $E$."
+     },
+     {
+      "value": 1.036,
+      "why": "The gaps must be squared: each term is $\\frac{(O - E)^2}{E}$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-chi-square-test-2",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "chi-square-test-s1",
+   "q": "How many degrees of freedom does the test have?",
+   "why": {
+    "correct": "$\\text{df} = (2 - 1)(3 - 1) = 2$."
+   },
+   "numeric": {
+    "kind": "df",
+    "from": {
+     "fn": "chi2table",
+     "args": [
+      [
+       [
+        70,
+        90,
+        40
+       ],
+       [
+        20,
+        50,
+        30
+       ]
+      ]
+     ],
+     "pick": "df"
+    },
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "That is the number of cells minus 1. For a two-way table, $\\text{df} = (\\text{rows} - 1)(\\text{columns} - 1)$."
+     },
+     {
+      "value": 299,
+      "why": "That is $n - 1$. For chi-square, df depends on the table's size: $(2 - 1)(3 - 1) = 2$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-chi-square-test-3",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "chi-square-test-s1",
+   "q": "What is the p-value? Give four decimal places.",
+   "why": {
+    "correct": "$P(\\chi^2 \\ge 8.21)$ with $\\text{df} = 2$ is 0.0165, the area in the right tail."
+   },
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "chi2table",
+     "args": [
+      [
+       [
+        70,
+        90,
+        40
+       ],
+       [
+        20,
+        50,
+        30
+       ]
+      ]
+     ],
+     "pick": "p"
+    },
+    "mistakes": [
+     {
+      "value": 0.1448,
+      "why": "That uses 5 degrees of freedom. The table has 2 rows and 3 columns, so $\\text{df} = 2$."
+     },
+     {
+      "value": 0.9835,
+      "why": "That is the area to the left. A chi-square p-value is the area to the right of $\\chi^2$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-chi-square-test-4",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "chi-square-test-s1",
+   "q": "State the conclusion of the test in context.",
+   "why": {
+    "correct": "Reject $H_0$: convincing evidence of an association, in context, for the population sampled."
+   },
+   "conclude": {
+    "mode": "test",
+    "p": 0.0165,
+    "alpha": 0.05,
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence of an association between",
+       "There is not convincing evidence of an association between",
+       "It is proven that there is an association between"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value, 0.0165, is less than 0.05, so the evidence is convincing.",
+       "2": "A test gives evidence; it never proves."
+      }
+     },
+     "parameter": {
+      "options": [
+       "keeping a phone in the bedroom and usual sleep, for students at the school",
+       "keeping a phone in the bedroom and usual sleep, for the 300 students sampled",
+       "phones in the bedroom and less sleep, because phones keep students awake"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The conclusion is about the school's students, the population, not just the sample.",
+       "2": "This is an observational study, so it cannot show that phones cause less sleep."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.0165 is less than 0.05, we reject the null hypothesis. There is convincing evidence of an association between keeping a phone in the bedroom and usual hours of sleep for students at the school.",
+    "write": {
+     "context": [
+      "phone",
+      "sleep"
+     ],
+     "parameter": false,
+     "compare": {
+      "p": 0.0165,
+      "alpha": 0.05
+     }
+    }
+   }
+  },
+  {
+   "id": "stat-chi-square-test-5",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "chi-square-test-s1",
+   "q": "Which cell contributes most to the chi-square statistic, and what does it show?",
+   "why": {
+    "correct": "Each cell's term $\\frac{(O - E)^2}{E}$ shows where the table departs most from $H_0$.",
+    "options": [
+     "Right: its term is $\\frac{(20 - 30)^2}{30} = 3.33$, the largest of the six.",
+     "A large count is not the same as a large gap. Here 90 is close to the expected 93.3, a term of only 0.12.",
+     "This term is $\\frac{(70 - 60)^2}{60} = 1.67$. The same gap of 10 counts for more where only 30 were expected.",
+     "This term is 1.90, second largest. The no phone, under 7 hours cell is larger."
+    ]
+   },
+   "options": [
+    "No phone, under 7 hours: 20 observed, 30 expected",
+    "Phone, 7 to 8 hours: the largest observed count in the table, 90",
+    "Phone, under 7 hours: 70 observed against 60 expected",
+    "No phone, over 8 hours: 30 observed against 23.3 expected"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-chi-square-test-6",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "chi-square-test-s2",
+   "q": "How many degrees of freedom does this test have?",
+   "why": {
+    "correct": "$\\text{df} = (2 - 1)(4 - 1) = 3$."
+   },
+   "numeric": {
+    "kind": "df",
+    "from": {
+     "fn": "chi2table",
+     "args": [
+      [
+       [
+        34,
+        38,
+        20,
+        8
+       ],
+       [
+        22,
+        40,
+        28,
+        10
+       ]
+      ]
+     ],
+     "pick": "df"
+    },
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "That is the number of cells minus 1. Use $(2 - 1)(4 - 1)$."
+     },
+     {
+      "value": 199,
+      "why": "That is $n - 1$. Chi-square degrees of freedom come from the table: $(\\text{rows} - 1)(\\text{columns} - 1)$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-chi-square-test-7",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "chi-square-test-s2",
+   "q": "What is the p-value for $\\chi^2 = 4.178$? Give three decimal places.",
+   "why": {
+    "correct": "The area to the right of 4.178 under the chi-square curve with 3 degrees of freedom is 0.243."
+   },
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "chi2table",
+     "args": [
+      [
+       [
+        34,
+        38,
+        20,
+        8
+       ],
+       [
+        22,
+        40,
+        28,
+        10
+       ]
+      ]
+     ],
+     "pick": "p"
+    },
+    "mistakes": [
+     {
+      "value": 0.759,
+      "why": "That uses 7 degrees of freedom (cells minus 1). With 2 rows and 4 columns, df = 3."
+     },
+     {
+      "value": 0.0409,
+      "why": "That uses 1 degree of freedom. With 2 rows and 4 columns, df = 3."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-chi-square-test-8",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "chi-square-test-s2",
+   "q": "State the conclusion in context.",
+   "why": {
+    "correct": "p > α: fail to reject; not convincing evidence that the distributions differ."
+   },
+   "conclude": {
+    "mode": "test",
+    "p": 0.243,
+    "alpha": 0.05,
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is not convincing evidence that",
+       "There is convincing evidence that",
+       "It is shown that it is false that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value, 0.243, is greater than 0.05.",
+       "2": "Failing to reject never shows a claim is false; the evidence is just not strong enough."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the distribution of results differs between yoga and physical therapy for adults like these",
+       "the results of the 200 patients in the study differ between treatments",
+       "yoga and physical therapy give the same distribution of results"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The conclusion is about the treatments' effects for patients like these, not just these patients' outcomes.",
+       "2": "That is $H_0$. A conclusion speaks about $H_a$ and never accepts $H_0$."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.243 is greater than 0.05, we fail to reject the null hypothesis. There is not convincing evidence that the distribution of results differs between yoga and physical therapy for adults with lower back pain like these.",
+    "write": {
+     "context": [
+      "yoga",
+      "therapy"
+     ],
+     "parameter": false,
+     "compare": {
+      "p": 0.243,
+      "alpha": 0.05
+     }
+    }
+   }
+  },
+  {
+   "id": "stat-chi-square-test-9",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "chi-square-test-s2",
+   "q": "A blog post says, \"The clinic's study shows yoga and physical therapy work equally well.\" What is the best response?",
+   "why": {
+    "correct": "Never \"accept\" $H_0$.",
+    "options": [
+     "Random assignment makes a difference attributable to treatment if one is found; it does not turn \"no evidence\" into \"equal\".",
+     "A large p-value never shows $H_0$ is true; it shows the evidence against it is weak.",
+     "Right: a large p-value means the data are consistent with no difference; a real difference too small to detect is still possible.",
+     "The sample difference could be chance, which is why the test failed to reject $H_0$."
+    ]
+   },
+   "options": [
+    "The post is right, because the treatments were randomly assigned",
+    "The post is right, since the p-value is greater than 0.05",
+    "No convincing difference was found; that does not show they are equal",
+    "The post is wrong, because yoga had more patients much better, 34 against 22"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-chi-square-test-10",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "single",
+   "practice": "3.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which describes a chi-square distribution?",
+   "why": {
+    "correct": "Chi-square curves: right-skewed, nonnegative, mean equal to df.",
+    "options": [
+     "A sum of squares cannot be negative, so the distribution cannot be centered at 0 and symmetric.",
+     "The long tail is to the right, toward large values.",
+     "The shape changes with df: very skewed for small df, more symmetric for large df.",
+     "Right: $\\chi^2$ adds squared terms, so it is never negative, and the curve becomes more symmetric as df grows."
+    ]
+   },
+   "options": [
+    "It is symmetric and centered at 0, like the standard normal distribution",
+    "It is skewed left, with a long tail toward 0",
+    "It has the same shape for each number of degrees of freedom",
+    "Values of 0 or more, skewed right, shape set by the df"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-chi-square-test-11",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "setup",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "In one cell of a two-way table, the observed count is 30 and the expected count is 22.4. Write the expression for this cell's contribution to $\\chi^2$, then give its value to two decimal places.",
+   "why": {
+    "correct": "$\\frac{(30 - 22.4)^2}{22.4} = \\frac{57.76}{22.4} = 2.58$."
+   },
+   "setup": {
+    "answer": "(30 - 22.4)^2/22.4",
+    "bind": {},
+    "mustUse": [
+     "30",
+     "22.4"
+    ],
+    "mistakes": [
+     {
+      "expr": "(30 - 22.4)^2/30",
+      "why": "Divide by the expected count, 22.4, not the observed count."
+     },
+     {
+      "expr": "(30 - 22.4)/22.4",
+      "why": "Square the gap first: $(O - E)^2$, then divide by $E$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-chi-square-test-12",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Two chi-square tests on tables of the same size give $\\chi^2 = 3.1$ and $\\chi^2 = 14.8$. Which statement is true?",
+   "why": {
+    "correct": "With the same df, larger $\\chi^2$ means a smaller p-value.",
+    "options": [
+     "With equal df, a larger $\\chi^2$ is stronger evidence against $H_0$.",
+     "A smaller $\\chi^2$ means the counts are closer to expected, which gives a larger p-value.",
+     "Right: the p-value is the area to the right of $\\chi^2$; the farther right, the smaller the area.",
+     "The same df gives the same curve, but different $\\chi^2$ values cut off different areas."
+    ]
+   },
+   "options": [
+    "The p-values say nothing, because $\\chi^2$ values are not comparable",
+    "The test with $\\chi^2 = 3.1$ has the smaller p-value",
+    "The test with $\\chi^2 = 14.8$ has the smaller p-value",
+    "Both tests have the same p-value, since the tables are the same size"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-chi-square-test-13",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A two-way table classifies students by class year (4 categories) and favorite lunch option (5 categories). How many degrees of freedom does a chi-square test for independence have?",
+   "why": {
+    "correct": "$\\text{df} = (r - 1)(c - 1)$.",
+    "options": [
+     "That is the number of cells minus 1. Use $(r - 1)(c - 1)$.",
+     "That adds $(4 - 1) + (5 - 1)$. Multiply instead.",
+     "That is the number of cells.",
+     "Right: $(4 - 1)(5 - 1) = 3 \\times 4 = 12$."
+    ]
+   },
+   "options": [
+    "19",
+    "7",
+    "20",
+    "12"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-chi-square-test-14",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A chi-square test for independence rejects $H_0$. Which follow-up best describes the association?",
+   "why": {
+    "correct": "A chi-square test detects an association; describing it takes the table itself.",
+    "options": [
+     "The number of categories says nothing about cause, and without random assignment no cause can be claimed.",
+     "$H_a$ for chi-square has no direction. The direction comes from describing the table.",
+     "Changing $\\alpha$ after the fact to get a different answer is not allowed.",
+     "Right: the test says an association exists; the conditional percents and the biggest terms show what it looks like."
+    ]
+   },
+   "options": [
+    "Report that the variable with more categories causes the other",
+    "State the direction of the association, using the alternative hypothesis",
+    "Run the test again with a smaller $\\alpha$ until it fails to reject",
+    "Compare conditional distributions; find the largest $\\frac{(O - E)^2}{E}$ terms"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-chi-square-test-15",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "single",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "In the phone and sleep study, what would a Type I error be?",
+   "why": {
+    "correct": "Type I: $H_0$ is true but rejected.",
+    "options": [
+     "A large value by chance is how a Type I error can happen, but the error itself is the wrong decision.",
+     "Right: Type I means rejecting a true $H_0$, here \"no association\".",
+     "That is a mistake about cause and effect, not a Type I error.",
+     "That is failing to reject a false $H_0$, a Type II error."
+    ]
+   },
+   "options": [
+    "Getting a large $\\chi^2$ value by chance",
+    "Finding an association for the school's students when there is none",
+    "Concluding that phones cause students to sleep less",
+    "Concluding there is no association when there really is one in the school"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-chi-square-test-16",
+   "unit": "unit-3",
+   "topic": "chi-square-test",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A chi-square test has $\\chi^2 = 9.8$ with 4 degrees of freedom. Table C gives critical values 9.49 (tail area 0.05) and 11.14 (tail area 0.025) for df = 4. What can you say about the p-value?",
+   "why": {
+    "correct": "A larger critical value goes with a smaller tail area; bracket the statistic.",
+    "options": [
+     "Right: 9.8 lies between 9.49 and 11.14, so its tail area lies between those tail areas. Technology gives 0.044.",
+     "A value beyond the 0.05 critical value, 9.49, has a tail area below 0.05.",
+     "The p-value is an area, not the statistic read as a percent.",
+     "To have a tail area below 0.025, $\\chi^2$ would need to pass 11.14."
+    ]
+   },
+   "options": [
+    "It is between 0.025 and 0.05",
+    "It is between 0.05 and 0.10",
+    "It is about 9.8%",
+    "It is less than 0.025"
+   ],
+   "correct": 0
+  }
+ ]
+}

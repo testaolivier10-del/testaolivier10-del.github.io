@@ -1,0 +1,23 @@
+{
+ "random-selection": {
+  "def": "Choosing individuals by a chance process, such as a random number generator, so that no one’s judgment decides who is chosen."
+ },
+ "srs": {
+  "def": "A simple random sample (SRS) of size n is chosen so that every group of n individuals in the population has the same chance of being the sample."
+ },
+ "replacement": {
+  "def": "Sampling without replacement means an individual can be chosen once; with replacement, an individual is returned and can be chosen again."
+ },
+ "stratified": {
+  "def": "A stratified random sample splits the population into strata, groups of similar individuals, and takes a simple random sample from each stratum."
+ },
+ "cluster-sample": {
+  "def": "A cluster sample splits the population into groups (clusters), chooses some clusters at random, and measures every individual in the chosen clusters."
+ },
+ "systematic": {
+  "def": "A systematic random sample chooses a random starting point in an ordered list and then takes every kth individual."
+ },
+ "sampling-frame": {
+  "def": "The list of individuals from which a sample is actually chosen, such as a roster, a map or a list of addresses."
+ }
+}

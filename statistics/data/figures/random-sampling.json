@@ -1,0 +1,12 @@
+{
+ "four-samples": {
+  "file": "figures/four-samples.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four copies of the same population of 48 students in 6 homerooms of 8, with selected students in plum. Simple random sample: any 8 of the 48, scattered. Stratified random sample: the grades are strata, two homerooms each, and 3 students are chosen at random from each grade. Cluster sample: 2 whole homerooms chosen at random. Systematic random sample: a random start at the 3rd student, then every 6th student in order."
+ }
+}

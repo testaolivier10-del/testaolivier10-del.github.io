@@ -1,0 +1,72 @@
+{
+ "topic": "normal-distribution",
+ "hook": "A farm sorts its eggs by weight: small, large, jumbo. It cannot weigh every possible egg in advance, but egg weights follow a smooth, bell-shaped pattern. With a curve, a mean of 58 grams and a standard deviation of 4 grams, the farm can predict what share of tomorrow's eggs will be jumbo.",
+ "prereq": [
+  {
+   "q": "A value is 6 above the mean and the standard deviation is 4. What is its z-score?",
+   "options": [
+    "1.5",
+    "6",
+    "0.67",
+    "24"
+   ],
+   "correct": 0,
+   "why": "$z = \\frac{6}{4} = 1.5$ standard deviations above the mean.",
+   "review": "comparing-distributions"
+  },
+  {
+   "q": "Which describes a distribution with a single peak and matching tails on both sides?",
+   "options": [
+    "Roughly symmetric",
+    "Skewed right",
+    "Skewed left",
+    "Uniform"
+   ],
+   "correct": 0,
+   "why": "Matching tails on both sides mean symmetric.",
+   "review": "describing-distributions"
+  }
+ ],
+ "figure": {
+  "figure": "u2-empirical-rule",
+  "caption": "Egg weights modeled by a normal curve with mean 58 g and SD 4 g: about 68%, 95% and 99.7% within 1, 2 and 3 SDs."
+ },
+ "chain": [
+  {
+   "cause": "A distribution is roughly symmetric and bell-shaped",
+   "effect": "a normal curve $N(\\mu, \\sigma)$ can model it, and areas under the curve are probabilities"
+  },
+  {
+   "cause": "Every normal curve has the same shape in standard-deviation units",
+   "effect": "about 68%, 95% and 99.7% of values lie within 1, 2 and 3 SDs (the empirical rule)"
+  },
+  {
+   "cause": "Standardize a value with $z = \\frac{x - \\mu}{\\sigma}$",
+   "effect": "any normal question becomes one about the standard normal $N(0, 1)$, answered by Table A or technology"
+  },
+  {
+   "cause": "Work backward from an area",
+   "effect": "inverse normal gives the z, then $x = \\mu + z\\sigma$ gives the boundary"
+  }
+ ],
+ "ideas": [
+  "A <b>density curve</b> is on or above the axis with total area 1; the area over an interval is the probability of that interval.",
+  "A <b>normal distribution</b> $N(\\mu, \\sigma)$ is symmetric and bell-shaped, centered at $\\mu$ with spread $\\sigma$. The <b>standard normal</b> is $N(0, 1)$.",
+  "The <b>empirical rule</b>: about 68%, 95% and 99.7% within 1, 2 and 3 standard deviations of the mean.",
+  "Show work: name the distribution and parameters, the boundary and the direction, for example \"$N(58, 4)$, $P(W > 66)$\", with a sketch.",
+  "Forward: $z = \\frac{x - \\mu}{\\sigma}$, then the area. Backward: the area, then z, then $x = \\mu + z\\sigma$."
+ ],
+ "misconception": {
+  "wrong": "A normal model works for any data set once you know its mean and standard deviation.",
+  "right": "A normal model fits only roughly symmetric, mound-shaped data. For strongly skewed data, normal areas give the wrong percents."
+ },
+ "check": [
+  "stat-normal-distribution-1",
+  "stat-normal-distribution-2",
+  "stat-normal-distribution-3",
+  "stat-normal-distribution-4",
+  "stat-normal-distribution-5",
+  "stat-normal-distribution-6"
+ ],
+ "summary": "A density curve models a distribution with areas as probabilities. Normal distributions $N(\\mu, \\sigma)$ are symmetric and bell-shaped, with about 68%, 95% and 99.7% of values within 1, 2 and 3 SDs. Standardize with $z = \\frac{x - \\mu}{\\sigma}$ to find areas, or work back from an area to a boundary with $x = \\mu + z\\sigma$. Always name the distribution, parameters, boundary and direction."
+}

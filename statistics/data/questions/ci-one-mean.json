@@ -1,0 +1,756 @@
+{
+ "stimuli": {
+  "ci-one-mean-s1": {
+   "kind": "graph",
+   "title": "One-way distances of 25 bike commuters",
+   "text": "<p>A city transportation office surveyed a random sample of 25 of the city's many thousands of bike commuters and recorded each one's one-way commute distance (invented data). The sample mean is $\\bar{x} = 6.8$ miles and the sample standard deviation is $s = 2.9$ miles.</p>",
+   "plot": {
+    "label": "Dotplot of 25 one-way bike commute distances, from 1.1 to 12.7 miles, roughly symmetric with no outliers",
+    "kind": "dot",
+    "data": [
+     4.8,
+     4.8,
+     8.3,
+     1.9,
+     9.7,
+     9.7,
+     3.3,
+     6.2,
+     6,
+     9.4,
+     4,
+     7.1,
+     7.4,
+     1.1,
+     4.5,
+     10,
+     12.7,
+     5.1,
+     4.6,
+     6.4,
+     8.8,
+     9.8,
+     9.1,
+     10.1,
+     5.2
+    ],
+    "step": 0.5,
+    "x": [
+     0,
+     14
+    ],
+    "xLabel": "one-way distance (miles)"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "one-way distance",
+      "unit": "miles",
+      "values": [
+       4.8,
+       4.8,
+       8.3,
+       1.9,
+       9.7,
+       9.7,
+       3.3,
+       6.2,
+       6,
+       9.4,
+       4,
+       7.1,
+       7.4,
+       1.1,
+       4.5,
+       10,
+       12.7,
+       5.1,
+       4.6,
+       6.4,
+       8.8,
+       9.8,
+       9.1,
+       10.1,
+       5.2
+      ]
+     }
+    ]
+   }
+  },
+  "ci-one-mean-s2": {
+   "kind": "table",
+   "title": "Typing speeds before and after a course",
+   "text": "<p>A large high school offers a keyboarding course. A random sample of 10 of this year's students in the course typed a passage on the first day and again on the last day (invented data). The table gives words per minute.</p>",
+   "table": {
+    "caption": "Words per minute for 10 students, before and after the course",
+    "cols": [
+     "Student",
+     "Before",
+     "After",
+     "After minus before"
+    ],
+    "rows": [
+     [
+      "1",
+      "42",
+      "50",
+      "8"
+     ],
+     [
+      "2",
+      "38",
+      "41",
+      "3"
+     ],
+     [
+      "3",
+      "55",
+      "66",
+      "11"
+     ],
+     [
+      "4",
+      "47",
+      "53",
+      "6"
+     ],
+     [
+      "5",
+      "51",
+      "49",
+      "-2"
+     ],
+     [
+      "6",
+      "36",
+      "45",
+      "9"
+     ],
+     [
+      "7",
+      "44",
+      "49",
+      "5"
+     ],
+     [
+      "8",
+      "49",
+      "56",
+      "7"
+     ],
+     [
+      "9",
+      "40",
+      "52",
+      "12"
+     ],
+     [
+      "10",
+      "58",
+      "62",
+      "4"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-ci-one-mean-1",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "How many degrees of freedom does the t distribution for a confidence interval for the mean distance have?",
+   "stimulus": "ci-one-mean-s1",
+   "why": {
+    "correct": "A one-sample t interval uses $\\text{df} = n - 1 = 25 - 1 = 24$."
+   },
+   "numeric": {
+    "kind": "df",
+    "from": {
+     "fn": "ci1mean",
+     "args": [
+      6.8,
+      2.9,
+      25,
+      0.95
+     ],
+     "pick": "df"
+    },
+    "mistakes": [
+     {
+      "value": 25,
+      "why": "Degrees of freedom are one less than the sample size: $n - 1 = 24$. One is used up by estimating the mean."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-2",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the critical value $t^*$ for a 95% confidence interval for the mean distance?",
+   "stimulus": "ci-one-mean-s1",
+   "why": {
+    "correct": "With $\\text{df} = 24$, the middle 95% of the t distribution lies between $-2.064$ and $2.064$, so $t^* = 2.064$ (Table B, df 24, 95% column, or technology: the 0.975 quantile of t with 24 df)."
+   },
+   "numeric": {
+    "kind": "critical",
+    "from": {
+     "fn": "invT",
+     "args": [
+      0.975,
+      24
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1.96,
+      "why": "That is $z^*$ for 95%. The population standard deviation is unknown, so the interval uses $t^*$ with 24 degrees of freedom."
+     },
+     {
+      "value": 1.711,
+      "why": "That puts 5% in one tail. A 95% interval leaves 2.5% in each tail: use the 0.975 quantile."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-3",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "setup",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the expression for the 95% confidence interval for the mean one-way distance, with $t^* = 2.064$. Type it as on the exam, for example a +/- b*c/sqrt(n).",
+   "stimulus": "ci-one-mean-s1",
+   "why": {
+    "correct": "$\\bar{x} \\pm t^*\\frac{s}{\\sqrt{n}} = 6.8 \\pm 2.064\\frac{2.9}{\\sqrt{25}} = 6.8 \\pm 1.197$."
+   },
+   "setup": {
+    "answer": "6.8 +/- 2.064*2.9/sqrt(25)",
+    "bind": {
+     "x-bar": 6.8,
+     "s": 2.9,
+     "n": 25
+    },
+    "tol": 0.002,
+    "mustUse": [
+     "s",
+     "n"
+    ],
+    "mustNotUse": [
+     "1.96"
+    ],
+    "mistakes": [
+     {
+      "expr": "6.8 +/- 1.96*2.9/sqrt(25)",
+      "why": "1.96 is z*. With s in place of sigma, the critical value comes from the t distribution with 24 df: 2.064."
+     },
+     {
+      "expr": "6.8 +/- 2.064*2.9/25",
+      "why": "The standard error divides s by the square root of n: 2.9/sqrt(25), not 2.9/25."
+     },
+     {
+      "expr": "6.8 +/- 2.064*2.9",
+      "why": "That uses the spread of single commuters. The interval needs the standard error of the mean, 2.9/sqrt(25)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-4",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "interval",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Construct the 95% confidence interval for the mean one-way distance of the city's bike commuters, in miles.",
+   "stimulus": "ci-one-mean-s1",
+   "why": {
+    "correct": "$6.8 \\pm 2.064\\frac{2.9}{\\sqrt{25}} = 6.8 \\pm 1.197$, from 5.60 to 8.00 miles. Technology (a one-sample t interval) gives the same."
+   },
+   "interval": {
+    "places": 2,
+    "from": {
+     "fn": "ci1mean",
+     "args": [
+      6.8,
+      2.9,
+      25,
+      0.95
+     ]
+    }
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-5",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The sample has only 25 commuters. How is the normal/large sample condition met?",
+   "stimulus": "ci-one-mean-s1",
+   "options": [
+    "25 is less than 10% of the many thousands of bike commuters in the city",
+    "The dotplot of the sample shows no strong skew and no outliers",
+    "The sample was chosen at random",
+    "25 is at least 10"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Normal/large sample: the population is normal, or $n \\ge 30$, or (as here) a graph of the sample shows no strong skew or outliers.",
+    "options": [
+     "That is the 10% condition, about independence. It does not address the shape.",
+     "With $n < 30$, check a graph of the sample: this dotplot is roughly symmetric with no outliers, so a t interval is reasonable.",
+     "That is the random condition. The normal/large sample condition is about shape or sample size.",
+     "10 is the large counts threshold for proportions. For means, either $n \\ge 30$ or a graph without strong skew or outliers."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-6",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why should the analysis use the 10 differences, after minus before, instead of the before and after values as two separate samples?",
+   "stimulus": "ci-one-mean-s2",
+   "options": [
+    "Each student was measured twice, so the data are paired",
+    "The after scores are higher than the before scores",
+    "The sample of 10 is too small for two samples",
+    "Differences are approximately normal by the central limit theorem"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Paired data: two measurements on the same individuals. Subtract within each pair and work with the differences, a single sample estimating $\\mu_d$.",
+    "options": [
+     "The two speeds come from the same student, so they are not independent samples. Paired data are analyzed through the differences, as one sample.",
+     "The direction of the change is not the reason. The design (two measurements on each student) is.",
+     "Sample size does not decide the method. Pairing does.",
+     "With 10 differences, the central limit theorem cannot be counted on; the reason to use differences is the pairing."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-7",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the mean $\\bar{x}_d$ of the 10 differences (after minus before), in words per minute?",
+   "stimulus": "ci-one-mean-s2",
+   "why": {
+    "correct": "$\\bar{x}_d = \\frac{8 + 3 + 11 + 6 - 2 + 9 + 5 + 7 + 12 + 4}{10} = \\frac{63}{10} = 6.3$ words per minute."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "words per minute",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       8,
+       3,
+       11,
+       6,
+       -2,
+       9,
+       5,
+       7,
+       12,
+       4
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": -6.3,
+      "why": "The differences are after minus before, so faster typing gives a positive difference."
+     },
+     {
+      "value": 7.222,
+      "why": "That leaves out the student whose speed fell (difference $-2$): $\\frac{65}{9} = 7.22$. Average all 10 differences, including the negative one."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-8",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the standard deviation $s_d$ of the 10 differences, in words per minute?",
+   "stimulus": "ci-one-mean-s2",
+   "why": {
+    "correct": "Technology (one-variable statistics on the differences) gives $s_d = 4.11$ words per minute, dividing the sum of squared deviations by $n - 1 = 9$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "words per minute",
+    "from": {
+     "fn": "sd",
+     "args": [
+      [
+       8,
+       3,
+       11,
+       6,
+       -2,
+       9,
+       5,
+       7,
+       12,
+       4
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 3.9,
+      "why": "That divides by $n = 10$. The sample standard deviation divides by $n - 1 = 9$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-9",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "interval",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Construct a 95% confidence interval for the mean change in typing speed (after minus before) for students in the course, in words per minute.",
+   "stimulus": "ci-one-mean-s2",
+   "why": {
+    "correct": "Paired t interval: $\\bar{x}_d \\pm t^*\\frac{s_d}{\\sqrt{n}} = 6.3 \\pm 2.262\\frac{4.11}{\\sqrt{10}} = 6.3 \\pm 2.94$, from 3.36 to 9.24 words per minute ($\\text{df} = 9$)."
+   },
+   "interval": {
+    "places": 2,
+    "from": {
+     "fn": "ci1mean",
+     "args": [
+      6.3,
+      4.110960958218893,
+      10,
+      0.95
+     ]
+    }
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-10",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "To check the normal/large sample condition for this interval, which graph should you make?",
+   "stimulus": "ci-one-mean-s2",
+   "options": [
+    "A dotplot of the 10 differences",
+    "A dotplot of the 10 before speeds",
+    "Side-by-side boxplots of before and after",
+    "A dotplot of the 20 speeds together"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With $n = 10 < 30$, the differences must show no strong skew or outliers. These 10 differences, from $-2$ to 12, show neither.",
+    "options": [
+     "The procedure is a one-sample t interval on the differences, so the differences are the sample whose shape matters.",
+     "The before speeds are not the sample being analyzed.",
+     "Those compare two groups; the interval is built from one list of differences.",
+     "Mixing before and after values ignores the pairing."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-11",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a confidence interval for a mean use $t^*$ instead of $z^*$?",
+   "options": [
+    "The data come from a skewed population",
+    "The sample is smaller than 30",
+    "The interval uses $s$ in place of the unknown $\\sigma$",
+    "By definition, intervals for means use t and intervals for proportions use z"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With $\\sigma$ unknown, $\\frac{\\bar{x} - \\mu}{s/\\sqrt{n}}$ follows a t distribution with $n - 1$ degrees of freedom, which is wider than the standard normal.",
+    "options": [
+     "The shape condition is separate. Even for a normal population, using $s$ calls for t.",
+     "Large samples use $t^*$ too, whenever $\\sigma$ is estimated by $s$.",
+     "Replacing $\\sigma$ with $s$ adds variability, because $s$ changes from sample to sample. The t distribution, with heavier tails, accounts for it.",
+     "There is a reason: for means the standard error estimates $\\sigma$ with $s$, which adds extra uncertainty."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-12",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "As the degrees of freedom increase, what happens to $t^*$ for 95% confidence?",
+   "options": [
+    "It increases toward 3",
+    "It decreases toward $z^* = 1.96$",
+    "It stays the same, at 1.96, whatever the sample size",
+    "It decreases toward 0"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Table B: the 95% column falls from 12.71 at df 1 toward 1.96 in the infinite row.",
+    "options": [
+     "The heaviest tails, and the largest $t^*$, come with the fewest degrees of freedom.",
+     "More data make $s$ a steadier estimate of $\\sigma$, so the t distribution gets closer to the standard normal: 2.776 at df 4, 2.064 at df 24, 1.984 at df 100.",
+     "$t^*$ is larger than 1.96 at each finite df, and the gap shrinks as df grows.",
+     "$t^*$ approaches $z^* = 1.96$, not 0: the middle 95% of a normal curve still has width."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-13",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "The 95% confidence interval for the mean one-way distance of the city's bike commuters is from 5.60 to 8.00 miles. Build the interpretation.",
+   "why": {
+    "correct": "The confidence is about the method capturing the parameter, the true mean distance of all the city's bike commuters, not about individual commuters or the sample mean."
+   },
+   "conclude": {
+    "mode": "interval",
+    "slots": {
+     "level": {
+      "options": [
+       "We are 95% confident that",
+       "There is a 95% probability that",
+       "95% of the time,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The parameter is fixed; once the interval is built it either captures it or not.",
+       "2": "Confidence describes the method over many samples, and this sentence is about one interval."
+      }
+     },
+     "claim": {
+      "options": [
+       "the interval from 5.60 to 8.00 miles captures",
+       "95% of commuters ride between 5.60 and 8.00 miles, which describes",
+       "the sample mean of 6.8 miles lies in the interval, which estimates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The interval estimates a mean, not where individual distances fall.",
+       "2": "The sample mean is the center of the interval by construction; there is nothing to estimate about it."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean one-way distance of all the city's bike commuters",
+       "the mean one-way distance of the 25 sampled commuters",
+       "the one-way distance of a typical commuter"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample mean is known exactly: 6.8 miles. The interval is for the population mean.",
+       "2": "The interval is for a mean, not for one person's distance."
+      }
+     }
+    },
+    "model": "We are 95% confident that the interval from 5.60 to 8.00 miles captures the true mean one-way distance of all the city's bike commuters.",
+    "write": {
+     "context": [
+      "commut",
+      "distance"
+     ],
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-14",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "Interpret the confidence level of the 95% interval for the mean one-way bike commute distance (from samples of 25 commuters).",
+   "why": {
+    "correct": "The level describes the method: the long-run share of intervals, from repeated random samples of the same size, that capture the true mean."
+   },
+   "conclude": {
+    "mode": "level",
+    "slots": {
+     "level": {
+      "options": [
+       "If we took many random samples of 25 commuters and built a 95% interval from each,",
+       "If we measured 95% of the city's commuters,",
+       "Since 95% of the 25 distances fall in the interval,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The level is about repeating the sampling, not about measuring part of the population.",
+       "2": "The interval is not built to contain 95% of the data."
+      }
+     },
+     "claim": {
+      "options": [
+       "about 95% of the intervals would capture",
+       "about 95% of the sample means would equal",
+       "there is a 95% chance that this interval captures"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Sample means vary; the intervals around them are what capture or miss.",
+       "2": "That sentence is about this one interval, and the level describes many."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean one-way distance of all the city's bike commuters",
+       "the sample mean of 6.8 miles",
+       "the distances of 95% of commuters"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Every interval captures its own sample mean, its center.",
+       "2": "The intervals estimate a mean, not individual distances."
+      }
+     }
+    },
+    "model": "If we took many random samples of 25 bike commuters and built a 95% interval from each, about 95% of the intervals would capture the true mean one-way distance of all the city's bike commuters.",
+    "write": {
+     "context": [
+      "commut",
+      "distance"
+     ],
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-15",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A researcher records the ages of both partners in a random sample of 30 married couples and wants to estimate how much older husbands are than wives, on average. Which procedure fits?",
+   "options": [
+    "Two separate t intervals, one for the husbands' ages and one for the wives' ages, then compare",
+    "A two-sample z interval for the difference of two proportions",
+    "A one-sample z interval using 1.96",
+    "A one-sample t interval for the mean of the 30 differences, husband minus wife"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Pairs: compute husband minus wife for each couple, then $\\bar{x}_d \\pm t^*\\frac{s_d}{\\sqrt{30}}$ with 29 df.",
+    "options": [
+     "Two intervals do not estimate the mean of the paired difference, and they ignore the pairing.",
+     "Ages are quantitative, so this is about means, not proportions.",
+     "The population standard deviation of the differences is unknown, so use $t^*$.",
+     "The two ages in a couple belong together, so the data are paired: one difference per couple, then a t interval for $\\mu_d$."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-16",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $t^*$ for a 90% confidence interval for a mean from a random sample of 12 observations?",
+   "why": {
+    "correct": "$\\text{df} = 12 - 1 = 11$. A 90% interval leaves 5% in each tail, so $t^*$ is the 0.95 quantile of t with 11 df: 1.796."
+   },
+   "numeric": {
+    "kind": "critical",
+    "from": {
+     "fn": "invT",
+     "args": [
+      0.95,
+      11
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1.645,
+      "why": "That is $z^*$ for 90%. With $s$ estimating $\\sigma$, use t with 11 df."
+     },
+     {
+      "value": 1.782,
+      "why": "That uses 12 degrees of freedom. A one-sample t interval has $n - 1 = 11$."
+     },
+     {
+      "value": 2.201,
+      "why": "That is the 95% critical value. For 90% confidence, each tail holds 5%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-mean-17",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A random sample of 12 home sale prices in a town includes one mansion priced far above the rest, and a dotplot is strongly skewed right. Is a t interval for the mean sale price appropriate?",
+   "options": [
+    "No, the skew and outlier are too strong for $n = 12$",
+    "Yes, because the sample was random",
+    "Yes, because t procedures are designed for small samples like this one",
+    "No, because 12 is less than 10% of the homes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For $n < 30$, a t interval needs sample data without strong skew or outliers. One extreme price pulls $\\bar{x}$ and $s$ a long way.",
+    "options": [
+     "A small sample needs a graph with no strong skew or outliers. Here the dotplot shows both, so a t interval could be misleading.",
+     "Random sampling is one condition; the shape condition fails here.",
+     "t procedures handle unknown $\\sigma$; for small samples they still need roughly normal data.",
+     "Being under 10% of the population helps (independence). The problem is the shape."
+    ]
+   }
+  }
+ ]
+}

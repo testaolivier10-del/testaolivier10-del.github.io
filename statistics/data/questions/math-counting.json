@@ -1,0 +1,270 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "stat-math-counting-1",
+   "unit": "skills-math",
+   "topic": "math-counting",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Type an expression for the number of ways to line up 5 different books on a shelf, and check its value.",
+   "why": {
+    "correct": "$5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$ orders."
+   },
+   "setup": {
+    "answer": "5!",
+    "mistakes": [
+     {
+      "expr": "5*4",
+      "why": "That counts only the first two places. All five places are filled: 5 × 4 × 3 × 2 × 1 = 5!."
+     },
+     {
+      "expr": "5*5",
+      "why": "Once a book is placed it cannot be used again, so the choices go down: 5 × 4 × 3 × 2 × 1."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-counting-2",
+   "unit": "skills-math",
+   "topic": "math-counting",
+   "type": "single",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is $4!$?",
+   "why": {
+    "correct": "$n! = n \\times (n - 1) \\times \\cdots \\times 2 \\times 1$, so $4! = 24$.",
+    "options": [
+     "That is $4^2$, not the factorial.",
+     "Right: $4! = 4 \\times 3 \\times 2 \\times 1 = 24$.",
+     "That is $4 + 3 + 2 + 1$; a factorial multiplies.",
+     "A factorial multiplies 4 by every whole number below it."
+    ]
+   },
+   "options": [
+    "16",
+    "24",
+    "10",
+    "4"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-counting-3",
+   "unit": "skills-math",
+   "topic": "math-counting",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A quiz has 10 questions. Type an expression for the number of ways to choose which 3 questions a student gets right.",
+   "why": {
+    "correct": "${}_{10}C_3 = \\frac{10!}{3!\\,7!} = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$."
+   },
+   "setup": {
+    "answer": "10C3",
+    "mistakes": [
+     {
+      "expr": "10*9*8",
+      "why": "That counts ordered choices. Which 3 questions are right does not depend on order, so divide by 3! = 6: 10C3."
+     },
+     {
+      "expr": "10*3",
+      "why": "Choosing 3 of 10 is not 10 × 3. Use the combination 10C3."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-counting-4",
+   "unit": "skills-math",
+   "topic": "math-counting",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "How many different teams of 2 can be chosen from 4 people?",
+   "why": {
+    "correct": "A team does not depend on order: ${}_4C_2 = \\frac{4 \\times 3}{2 \\times 1} = 6$.",
+    "options": [
+     "That counts ordered pairs: Ana then Ben is the same team as Ben then Ana, so divide by 2.",
+     "That is 4 × 2, which is not how choices combine.",
+     "That is $4^2$, which allows the same person twice and counts order.",
+     "Right: ${}_4C_2 = \\frac{4!}{2!\\,2!} = 6$."
+    ]
+   },
+   "options": [
+    "12",
+    "8",
+    "16",
+    "6"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-math-counting-5",
+   "unit": "skills-math",
+   "topic": "math-counting",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does choosing 3 of 10 questions use a combination and not $10 \\times 9 \\times 8$?",
+   "why": {
+    "correct": "Ordered choices overcount each set by the number of its orders. Dividing by $3!$ gives the number of sets: $\\frac{720}{6} = 120$.",
+    "options": [
+     "Right: $10 \\times 9 \\times 8 = 720$ counts each set of 3 questions $3! = 6$ times, once for each order.",
+     "Calculators handle 720 easily; the problem is counting each set several times.",
+     "A combination chooses different items, with no repeats.",
+     "It counts ordered choices of 3, not the wrong answers."
+    ]
+   },
+   "options": [
+    "The order in which the 3 questions are picked does not matter",
+    "$10 \\times 9 \\times 8$ is too large for a calculator",
+    "Combinations are used when questions can be repeated",
+    "$10 \\times 9 \\times 8$ counts the questions answered wrong"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-counting-6",
+   "unit": "skills-math",
+   "topic": "math-counting",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are ${}_8C_0$ and ${}_8C_8$?",
+   "why": {
+    "correct": "${}_nC_0 = {}_nC_n = 1$, using $0! = 1$.",
+    "options": [
+     "Choosing none is one way (the empty choice), so ${}_8C_0 = 1$.",
+     "There is just one way to take all 8 items.",
+     "Right: there is one way to choose none of the 8, and one way to choose all 8.",
+     "There is one way to choose nothing, not 8."
+    ]
+   },
+   "options": [
+    "0 and 1",
+    "0 and 8",
+    "Both are 1",
+    "8 and 1"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-counting-7",
+   "unit": "skills-math",
+   "topic": "math-counting",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Type an expression with factorials for ${}_6C_2$, the number of ways to choose 2 of 6.",
+   "why": {
+    "correct": "${}_6C_2 = \\frac{6!}{2!\\,4!} = \\frac{720}{2 \\times 24} = 15$."
+   },
+   "setup": {
+    "answer": "6!/(2!*4!)",
+    "mustUse": [
+     "6",
+     "2",
+     "4"
+    ],
+    "mistakes": [
+     {
+      "expr": "6!/2!",
+      "why": "Divide by both $2!$ and $(6 - 2)! = 4!$: 6!/(2! * 4!)."
+     },
+     {
+      "expr": "6!/(2*4)",
+      "why": "Use factorials in the bottom: 2! and 4!, not 2 and 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-counting-8",
+   "unit": "skills-math",
+   "topic": "math-counting",
+   "type": "single",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is $0!$?",
+   "why": {
+    "correct": "$0! = 1$ by definition.",
+    "options": [
+     "It is defined as 1, not 0, so that the combination formula works at the ends.",
+     "It is defined, as 1.",
+     "Right: by definition $0! = 1$, which keeps formulas such as ${}_nC_n = \\frac{n!}{n!\\,0!} = 1$ working.",
+     "Nothing in the factorial gives 10."
+    ]
+   },
+   "options": [
+    "0",
+    "Undefined",
+    "1",
+    "10"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-counting-9",
+   "unit": "skills-math",
+   "topic": "math-counting",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is equal to ${}_{10}C_3$?",
+   "why": {
+    "correct": "${}_nC_k = {}_nC_{n-k}$: picking the 3 in is the same as picking the 7 out.",
+    "options": [
+     "Right: choosing 3 questions to get right is the same as choosing the 7 to get wrong.",
+     "That chooses 4, which gives 210 ways, not 120.",
+     "You cannot choose 10 items from 3.",
+     "That is a division, not a count of choices."
+    ]
+   },
+   "options": [
+    "${}_{10}C_7$",
+    "${}_{10}C_4$",
+    "${}_3C_{10}$",
+    "$\\frac{10}{3}$"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-counting-10",
+   "unit": "skills-math",
+   "topic": "math-counting",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A pizza shop offers 6 toppings. How many different pizzas with exactly 3 different toppings are possible?",
+   "why": {
+    "correct": "Order does not matter and toppings do not repeat: ${}_6C_3 = 20$.",
+    "options": [
+     "That counts ordered choices; the order of toppings on a pizza does not matter.",
+     "That is 6 × 3, which is not a count of choices.",
+     "That is $6^3$, which allows the same topping three times.",
+     "Right: ${}_6C_3 = \\frac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20$."
+    ]
+   },
+   "options": [
+    "120",
+    "18",
+    "216",
+    "20"
+   ],
+   "correct": 3
+  }
+ ]
+}

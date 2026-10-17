@@ -1,0 +1,54 @@
+<p>Topic 1.6 described center and spread by eye. This topic gives them numbers: the mean and median for center; the range, IQR and standard deviation for spread; quartiles and percentiles for position; and two rules for deciding what counts as an outlier. The key idea running through all of them is which summaries an extreme value can push around.</p>
+
+<h2>Measures of center: mean and median</h2>
+<p>The <b>mean</b> is the sum of the values divided by how many there are. For a sample it is written $\bar{x}$ ("x-bar"):</p>
+<p>$$\bar{x} = \frac{\sum x_i}{n}$$</p>
+<p>The <b>median</b> is the middle of the ordered values. With an odd number of values it is the middle one; with an even number it is the average of the two middle ones. Half the data are at or below the median.</p>
+<div class="worked">
+<p><b>Mean and median.</b> The battery lives, in hours, of 12 phones in order: 7.2, 8.1, 8.4, 8.9, 9.0, 9.3, 9.5, 9.8, 10.1, 10.4, 10.6, 14.9.</p>
+<p>Mean: $\bar{x} = \frac{7.2 + 8.1 + \cdots + 14.9}{12} = \frac{116.2}{12} = 9.68$ hours.</p>
+<p>Median: $n = 12$ is even, so average the 6th and 7th values: $\frac{9.3 + 9.5}{2} = 9.4$ hours.</p>
+</div>
+<figure id="fig-pull" data-fig="mean-median-pull"><figcaption>One long-lasting phone pulls the mean up by almost half an hour; the median moves by 0.1 hour.</figcaption></figure>
+<p>Why are they different? The mean uses every value, so the one phone at 14.9 hours drags it up. The median only cares about order: make that phone last 30 hours and the median stays at 9.4. A summary that extreme values barely change is called <b>resistant</b>. The median is resistant; the mean is not. So the mean is pulled toward a long tail: in a right-skewed distribution the mean is usually larger than the median, and in a left-skewed one it is usually smaller.</p>
+
+<h2>Quartiles, percentiles and the IQR</h2>
+<p>The <b>quartiles</b> split the ordered data into quarters. $Q_1$ is the median of the lower half and $Q_3$ is the median of the upper half. When n is odd, leave the median itself out of both halves (this is the method the exam uses, and the one technology here uses).</p>
+<p>The <b>interquartile range</b>, $\text{IQR} = Q_3 - Q_1$, is the spread of the middle half of the data. The <b>range</b> is maximum minus minimum. Both are single numbers: write "the range is 7.7 hours", not "the range is 7.2 to 14.9".</p>
+<p>A <b>percentile</b> gives position: the pth percentile is the value with p% of the data at or below it. $Q_1$ is about the 25th percentile, the median the 50th, $Q_3$ the 75th. A score at the 80th percentile is not 80% correct; it is a score that 80% of the scores are at or below.</p>
+
+<h2>Standard deviation</h2>
+<p>The <b>standard deviation</b> measures the typical distance of the values from the mean. Its recipe: find each distance from the mean, square it, add the squares, divide by $n - 1$, and take the square root.</p>
+<p>$$s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n - 1}}$$</p>
+<p>Why square? The distances above and below the mean always add to 0, so they would cancel. Squaring makes each one count. Why divide by $n - 1$ and not $n$? A sample’s values sit a little closer to their own mean $\bar{x}$ than to the population mean, so the squared distances run a little small; dividing by $n - 1$ makes up for that. The square of the standard deviation, $s^2$, is the <b>variance</b>.</p>
+<div class="worked">
+<p><b>A standard deviation by hand.</b> The values 4, 6, 11 have mean $\bar{x} = \frac{21}{3} = 7$.</p>
+<p>Distances: $4 - 7 = -3$, $6 - 7 = -1$, $11 - 7 = 4$. Squares: 9, 1, 16, which add to 26.</p>
+<p>$s = \sqrt{\frac{26}{3 - 1}} = \sqrt{13} = 3.61$. In words: the values are typically about 3.6 away from their mean of 7.</p>
+<p>For the 12 phones, technology gives $s = 1.91$ hours: battery lives typically differ from the mean of 9.68 hours by about 1.9 hours.</p>
+</div>
+<p>The standard deviation is 0 only when every value is the same, and it is not resistant: one far-out value adds a huge squared distance. For a whole population the mean and standard deviation are written $\mu$ and $\sigma$; for a sample, $\bar{x}$ and $s$.</p>
+
+<h2>Two rules for outliers</h2>
+<ul>
+<li><b>The $1.5 \times \text{IQR}$ rule.</b> A value is an outlier if it is below $Q_1 - 1.5 \times \text{IQR}$ or above $Q_3 + 1.5 \times \text{IQR}$. These two cutoffs are the fences.</li>
+<li><b>The 2 standard deviation rule.</b> A value more than 2 standard deviations from the mean is flagged as unusual.</li>
+</ul>
+<div class="worked">
+<p><b>Use the fences.</b> For the 12 phones: lower half 7.2 to 9.3, so $Q_1 = \frac{8.4 + 8.9}{2} = 8.65$; upper half 9.5 to 14.9, so $Q_3 = \frac{10.1 + 10.4}{2} = 10.25$. $\text{IQR} = 1.6$.</p>
+<p>Lower fence: $8.65 - 1.5(1.6) = 6.25$. Upper fence: $10.25 + 1.5(1.6) = 12.65$.</p>
+<p>Only 14.9 hours is beyond a fence, so it is the one outlier. In context: <i>"The phone that lasted 14.9 hours is an outlier, since it is above the upper fence of 12.65 hours."</i></p>
+</div>
+
+<h2>Which summaries to report</h2>
+<table class="compare">
+<thead><tr><th></th><th>Resistant</th><th>Not resistant</th></tr></thead>
+<tbody>
+<tr><th>Center</th><td>median</td><td>mean</td></tr>
+<tr><th>Spread</th><td>IQR</td><td>standard deviation, range</td></tr>
+<tr><th>Report when</th><td>the distribution is skewed or has outliers</td><td>the distribution is roughly symmetric with no outliers</td></tr>
+</tbody>
+</table>
+
+<h2>Changing units</h2>
+<p>If you add the same constant to every value, every measure of center and position (mean, median, quartiles) shifts by that constant, and every measure of spread (range, IQR, standard deviation) stays the same: the values all move together. If you multiply every value by a constant, center, position and spread are all multiplied by it. Five plants grew 4, 5, 6, 8 and 12 inches, with mean 7 and standard deviation 3.16 inches. In centimeters ($\times 2.54$) the mean is $7 \times 2.54 = 17.78$ cm and the standard deviation is $3.16 \times 2.54 = 8.03$ cm.</p>

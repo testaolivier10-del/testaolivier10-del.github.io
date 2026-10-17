@@ -1,0 +1,46 @@
+<p>So far, events have been described in words: "the sum is 8", "the student takes art". Often the outcome of a chance process is naturally a number: how many people are in a car, how many goals a team scores, how many of 12 songs are rock songs. A number like that is a random variable, and its probabilities form a distribution, just as data values did in Unit 1.</p>
+
+<h2>Random variables</h2>
+<p>A <b>random variable</b> is a numerical value that depends on the outcome of a chance process. Name it with a capital letter and define it in context, saying what is counted or measured and for which randomly chosen individual:</p>
+<p style="text-align:center">Let X = the number of people in a randomly chosen car at the toll booth.</p>
+<p>The definition has to describe a number. "Let X = the people in the car" or "Let X = rock songs" names things, not a number, and the exam does not give credit for it. Lower-case $x$ stands for a particular value: $P(X = 3)$ is the probability that the car holds 3 people.</p>
+<p>A random variable is <b>discrete</b> if its values are separate, usually counts: people in a car, goals in a game, heads in 3 flips. It is continuous if it can take any value in an interval, like the time to run a mile. This unit treats discrete random variables first; continuous ones come later in the unit, in topic 2.11.</p>
+
+<h2>Probability distributions</h2>
+<p>The <b>probability distribution</b> of a discrete random variable lists every value with its probability.</p>
+<table class="compare">
+<thead><tr><th>$x$</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+<tbody><tr><td>$P(X = x)$</td><td>0.45</td><td>0.30</td><td>0.12</td><td>0.09</td><td>0.04</td></tr></tbody>
+</table>
+<p>Two rules make a distribution valid, the same two rules as in topic 2.4: every probability is from 0 to 1, and the probabilities add to exactly 1. The second rule finds a missing value: if the probability for 5 people were blank, it would be $1 - (0.45 + 0.30 + 0.12 + 0.09) = 0.04$.</p>
+<figure id="fig-cars" data-fig="u2-cars-histogram"><figcaption>A probability histogram: one bar per value, its height the probability.</figcaption></figure>
+<p>A <b>probability histogram</b> draws the distribution with one bar per value. Describe its shape as you would a histogram of data. <a class="figref" href="#fig-cars">The figure</a> is skewed right: most cars carry 1 or 2 people, and a few carry 4 or 5.</p>
+
+<h2>Building a distribution</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> A fair coin is flipped 3 times. Let H = the number of heads. Give the probability distribution of H.</p>
+<p>List the 8 equally likely outcomes: HHH, HHT, HTH, THH, HTT, THT, TTH, TTT.</p>
+<p>Count the heads in each: one outcome has 3, three have 2, three have 1, one has 0.</p>
+<p>Distribution: $P(H = 0) = \frac{1}{8}$, $P(H = 1) = \frac{3}{8}$, $P(H = 2) = \frac{3}{8}$, $P(H = 3) = \frac{1}{8}$. Check: they add to 1.</p>
+</div>
+<p>The values 0, 1, 2, 3 are not equally likely. Values are equally likely only when the underlying outcomes give each one the same number of ways.</p>
+
+<h2>Probabilities from a distribution</h2>
+<p>To find the probability of an event, write it with an inequality, then add the probabilities of the values it includes. The words matter:</p>
+<table class="compare">
+<thead><tr><th>Words</th><th>Inequality</th><th>For the car data</th></tr></thead>
+<tbody>
+<tr><td>at least 3</td><td>$X \ge 3$</td><td>$0.12 + 0.09 + 0.04 = 0.25$</td></tr>
+<tr><td>more than 3</td><td>$X > 3$</td><td>$0.09 + 0.04 = 0.13$</td></tr>
+<tr><td>fewer than 3</td><td>$X \le 2$</td><td>$0.45 + 0.30 = 0.75$</td></tr>
+<tr><td>at most 3</td><td>$X \le 3$</td><td>$0.45 + 0.30 + 0.12 = 0.87$</td></tr>
+</tbody>
+</table>
+<p>"Fewer than 3" read as "3 or fewer" is one of the most common slips on the exam. Fewer than 3 people means 1 or 2.</p>
+<p>A <b>cumulative probability</b> adds everything up to a boundary: $P(X \le 3) = 0.87$. Cumulative probabilities also give single values by subtraction: $P(X = 3) = P(X \le 3) - P(X \le 2) = 0.87 - 0.75 = 0.12$. And the complement rule still works: $P(X \ge 2) = 1 - P(X = 1) = 0.55$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Let G = the number of goals a team scores in a randomly chosen game, with probabilities 0.25, 0.35, 0.22, 0.12, 0.06 for 0 to 4 goals. Find and interpret $P(G \le 1)$.</p>
+<p>Add the values up to the boundary: $P(G \le 1) = 0.25 + 0.35 = 0.60$.</p>
+<p>Interpretation: in the long run, the team scores 1 goal or fewer in about 60% of its games.</p>
+</div>
+<p>Every answer in this topic should be checkable: probabilities between 0 and 1, the whole distribution adding to 1, and an event's inequality written down before any adding begins.</p>

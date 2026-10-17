@@ -1,0 +1,44 @@
+<p>A confidence interval does two jobs. It estimates a parameter, and it lets you judge a claim about that parameter. This topic is about the second job for means, and about what controls how wide an interval is. The reasoning is the same as for proportions in Unit 3; only the parameter has changed.</p>
+
+<h2>Reading an interval</h2>
+<p>Every interval has the form point estimate $\pm$ margin of error. Given the two ends, you can recover both pieces:</p>
+<ul>
+<li>the point estimate is the center, $\frac{\text{lower} + \text{upper}}{2}$, which is $\bar{x}$ (or $\bar{x}_d$ for paired data);</li>
+<li>the margin of error is half the width, $\frac{\text{upper} - \text{lower}}{2}$.</li>
+</ul>
+<p>The values inside the interval are the plausible values for the true mean. Values outside are not plausible at that confidence level.</p>
+
+<h2>Judging a claim</h2>
+<p>A cereal maker labels boxes "500 grams". An inspector weighs a random sample of 30 boxes from one day's production (invented data): $\bar{x} = 495.9$ g, $s = 7.5$ g, and the dotplot shows no strong skew or outliers. The 95% t interval is $495.9 \pm 2.045\frac{7.5}{\sqrt{30}} = 495.9 \pm 2.80$, from 493.10 to 498.70 grams.</p>
+<figure id="fig-claims" data-fig="mean-interval-claims"><figcaption>90%, 95% and 99% intervals from the same 30 boxes, with the label value of 500 grams marked.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> Does the interval give convincing evidence that the true mean fill weight differs from 500 grams?</p>
+<p>Look at where 500 sits. Every value in the interval, from 493.10 to 498.70, is below 500. So 500 is not a plausible value for the true mean.</p>
+<p>Conclusion: Because every value in the interval from 493.10 to 498.70 g is less than 500, the interval gives convincing evidence that the true mean fill weight of all boxes filled that day is less than 500 grams.</p>
+</div>
+<p>Notice the sentence names the parameter in context ("the true mean fill weight of all boxes filled that day"), uses evidence language, and does not claim proof. It also does not rely on the sample mean alone. A sample mean of 495.9 below 500 could be chance; the interval is what accounts for chance.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A tutoring company claims its program raises scores by more than 10 points on average. For a random sample of 40 students, the 95% interval for the mean improvement (after minus before) is from 7.4 to 15.0 points. Is the claim supported?</p>
+<p>Look at where 10 sits: inside the interval. Values above 10 are plausible, but so are values below 10, such as 8 or 9.</p>
+<p>Conclusion: Because 10 is in the interval from 7.4 to 15.0 points, the interval does not give convincing evidence that the true mean improvement for students who complete the program is greater than 10 points.</p>
+<p>A second question has a different answer. Is there evidence of <i>any</i> improvement? Now the value to check is 0. Every value in the interval is greater than 0, so the interval gives convincing evidence that the true mean improvement is greater than 0.</p>
+</div>
+<p>Two traps. First, "inside the interval" does not mean "true". If a manager says the true mean fill was 497 grams, the interval says 497 is plausible, but so are 494 and 498.5. Second, an interval for a mean says nothing about individual values. It is wrong to say "95% of students gain between 7.4 and 15.0 points"; single students' gains vary far more than the mean does.</p>
+
+<h2>What controls the interval width</h2>
+<p>The <b>interval width</b> is twice the margin of error:</p>
+<p>$$\text{width} = 2t^*\frac{s}{\sqrt{n}}.$$</p>
+<p>Each piece has a job.</p>
+<table class="stat-compare">
+<thead><tr><th scope="col">Change</th><th scope="col">Effect on the width</th><th scope="col">Why</th></tr></thead>
+<tbody>
+<tr><td>Higher confidence level</td><td>wider</td><td>larger $t^*$ (2.756 for 99% at df 29, against 2.045 for 95%)</td></tr>
+<tr><td>Larger sample size</td><td>narrower</td><td>$\frac{s}{\sqrt{n}}$ shrinks; four times the data roughly halves the width</td></tr>
+<tr><td>More variable data</td><td>wider</td><td>larger $s$</td></tr>
+</tbody>
+</table>
+<p>For the cereal boxes, the 99% interval is $495.9 \pm 2.756\frac{7.5}{\sqrt{30}} = 495.9 \pm 3.77$, from 492.13 to 499.67 grams. It is wider than the 95% interval, which is the price of more confidence. Even so, 500 is still outside, so the conclusion about underfilling holds at 99% confidence too.</p>
+<p>With a fixed sample, confidence and precision trade against each other: a 90% interval is narrower, but the method captures the true mean in only about 90% of samples. The way to gain precision without losing confidence is more data.</p>
+
+<h2>Intervals and two-sided tests agree</h2>
+<p>A 95% confidence interval contains exactly the values that a two-sided significance test at $\alpha = 0.05$ would not reject. So if 500 is outside the 95% interval, a two-sided test of "the true mean is 500" at the 0.05 level rejects that null hypothesis. The interval gives more: it also shows how far from 500 the mean plausibly is. The next topic sets up that test directly.</p>

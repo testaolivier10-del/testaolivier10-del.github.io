@@ -1,0 +1,41 @@
+<p>You have all the pieces: hypotheses and conditions (setup), the test statistic and p-value. This topic puts them together into one complete significance test and adds the last step, the decision and the conclusion. On the exam this is a whole free-response question, scored part by part, so we write every part out.</p>
+
+<h2>The decision: compare the p-value with α</h2>
+<p>The significance level $\alpha$ was chosen before the data. Now compare:</p>
+<ul>
+<li>If the p-value is less than $\alpha$, <b>reject $H_0$</b>. The result would be too unusual if $H_0$ were true, so there is <b>convincing evidence</b> for $H_a$.</li>
+<li>If the p-value is greater than $\alpha$, <b>fail to reject $H_0$</b>. The result is not unusual enough, so there is <b>not convincing evidence</b> for $H_a$.</li>
+</ul>
+<p>"Fail to reject" is not "accept". A large p-value means the data are consistent with $H_0$, and also with many values near $p_0$. It never shows that $H_0$ is true, just as a "not guilty" verdict does not show that someone is innocent.</p>
+
+<h2>The conclusion has four parts</h2>
+<ol>
+<li><b>Compare</b>, naming both numbers and the inequality: "Because the p-value of 0.0136 is less than $\alpha = 0.05$, we reject $H_0$."</li>
+<li><b>Evidence</b>: "There is convincing evidence that ..." (or "is not convincing evidence").</li>
+<li><b>Parameter and direction</b>: "... the true proportion of all ... is less than 0.18." Use the direction word of $H_a$, even when you fail to reject.</li>
+<li><b>Context</b>: the population and variable, in the question's words.</li>
+</ol>
+<p>Conclusions about the sample ("the sample proportion is less than 0.18") earn nothing: we knew that before the test. Conclusions about $H_0$ being true, and the words "prove" and "accept", lose the point.</p>
+
+<h2>A complete test: state, plan, do, conclude</h2>
+<figure id="fig-steps" data-fig="test-four-steps"><figcaption>The four steps of a significance test, filled in for the chronic absence example below.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example.</b> Last year 18% of a large district's students were chronically absent. This year the district began a mentoring program. In a random sample of 450 of the district's 21,000 students, 63 are chronically absent. Is there convincing evidence at $\alpha = 0.05$ that the proportion has gone down?</p>
+<p><b>State.</b> $H_0: p = 0.18$, $H_a: p < 0.18$, where $p$ is the true proportion of all the district's students who are chronically absent this year. $\alpha = 0.05$.</p>
+<p><b>Plan.</b> One-sample z test for a proportion. Random: a random sample of 450 students. 10%: 450 is less than 10% of the 21,000 students. Large counts: $np_0 = 450(0.18) = 81 \ge 10$ and $n(1 - p_0) = 450(0.82) = 369 \ge 10$.</p>
+<p><b>Do.</b> $\hat{p} = \frac{63}{450} = 0.14$.</p>
+<p>$$z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1 - p_0)}{n}}} = \frac{0.14 - 0.18}{\sqrt{\frac{0.18(0.82)}{450}}} = \frac{-0.04}{0.0181} = -2.21$$</p>
+<p>p-value $= P(Z \le -2.21) = 0.0136$. (Technology: a 1-proportion z test gives $z = -2.21$, p-value 0.0136.)</p>
+<p><b>Conclude.</b> Because the p-value of 0.0136 is less than $\alpha = 0.05$, we reject $H_0$. There is convincing evidence that the true proportion of all the district's students who are chronically absent this year is less than 0.18.</p>
+</div>
+<p>With $\alpha = 0.01$ instead, the same data give the opposite decision: $0.0136 > 0.01$, so we would fail to reject $H_0$, and there would not be convincing evidence that the true proportion is less than 0.18. That is why $\alpha$ is fixed in advance.</p>
+
+<h2>Reading computer output</h2>
+<p>Software prints a line such as "Test of p = 0.5 vs p > 0.5: X = 532, N = 1000, Sample p = 0.532, Z = 2.02, P-Value = 0.0215". Read the hypotheses from the first part ($H_0: p = 0.5$, $H_a: p > 0.5$), then compare the p-value with $\alpha$ as usual. You still have to state the hypotheses with the parameter defined, check the conditions and write the conclusion; output is not work.</p>
+
+<h2>What a test can and cannot tell you</h2>
+<ul>
+<li><b>Generalize:</b> with a random sample, the conclusion applies to the population sampled (all the district's students).</li>
+<li><b>Cause:</b> only random assignment to treatments supports cause and effect. The mentoring study compares this year with last year with no randomly assigned comparison group, so it cannot show that the program caused the drop; other changes could explain it.</li>
+<li><b>Tests and intervals agree:</b> a two-sided test at $\alpha = 0.05$ almost always rejects $H_0: p = p_0$ when $p_0$ is outside the 95% interval and fails to reject when it is inside. (The test's standard deviation uses $p_0$ and the interval's standard error uses $\hat{p}$, so in rare borderline cases the two can disagree.) A one-sided test at 0.05 goes with a 90% interval in the same way. The interval adds something the test does not: how far from $p_0$ the true proportion plausibly is.</li>
+</ul>

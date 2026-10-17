@@ -1,0 +1,12 @@
+{
+ "box-from-dots": {
+  "file": "figures/box-from-dots.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 320,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Commute times of 20 workers in minutes. Top: a dotplot from 8 to 62. Bottom: the boxplot of the same data on the same scale. The box runs from Q1 = 14.5 to Q3 = 28.5 with the median at 20.5. The upper fence is at 49.5, so 62 is an outlier, drawn as an open circle, and the right whisker stops at 38, the largest value inside the fence. The left whisker reaches the minimum, 8."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "u2-event-diagrams": {
+  "file": "figures/u2-event-diagrams.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two diagrams of events inside a rectangle of all outcomes. Left: events A and B as separate circles that do not touch, so A and B cannot happen together and P(A and B) = 0. Right: circles that overlap; the shaded overlap is the joint event A and B."
+ }
+}

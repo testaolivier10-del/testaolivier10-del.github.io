@@ -1,0 +1,50 @@
+<p>A categorical variable sorts individuals into groups. The first way to summarize it is to count: how many individuals are in each group? This page shows how to turn those counts into a frequency table, how to turn the counts into relative frequencies, and what a sample proportion is.</p>
+
+<h2>Frequency tables</h2>
+<p>A <b>frequency table</b> lists each category of a categorical variable with its <b>frequency</b>, the number of individuals in that category. The frequencies add to the total number of individuals, as long as each individual is in exactly one category.</p>
+<p>For example, a random sample of 160 adults named their main source of news: 56 social media, 40 television, 36 news websites, 16 radio and 12 print newspapers. Those five counts are the frequencies, and they add to 160.</p>
+
+<h2>Relative frequencies</h2>
+<p>Counts are hard to compare between groups of different sizes. Forty television viewers out of 160 adults is a large share; forty out of 5,000 is tiny. So divide each count by the total. The result is the <b>relative frequency</b>:</p>
+<p>$$\text{relative frequency} = \frac{\text{count in the category}}{\text{total}}$$</p>
+<figure id="fig-counts" data-fig="counts-to-relative"><figcaption>Counts in five categories, and the same counts divided by the total of 250.</figcaption></figure>
+<div class="worked">
+<p><b>Build the relative frequency table.</b> Use the 160 adults above.</p>
+<table class="compare">
+<thead><tr><th>News source</th><th>Frequency</th><th>Relative frequency</th></tr></thead>
+<tbody>
+<tr><td>Social media</td><td>56</td><td>$\frac{56}{160} = 0.35$</td></tr>
+<tr><td>Television</td><td>40</td><td>$\frac{40}{160} = 0.25$</td></tr>
+<tr><td>News websites</td><td>36</td><td>$\frac{36}{160} = 0.225$</td></tr>
+<tr><td>Radio</td><td>16</td><td>$\frac{16}{160} = 0.10$</td></tr>
+<tr><td>Print newspaper</td><td>12</td><td>$\frac{12}{160} = 0.075$</td></tr>
+<tr><th>Total</th><th>160</th><th>1.000</th></tr>
+</tbody>
+</table>
+<p>Check: $0.35 + 0.25 + 0.225 + 0.10 + 0.075 = 1$. In context: 35% of the sampled adults get their news mainly from social media.</p>
+</div>
+<p>Three facts follow from the division:</p>
+<ul>
+<li>Every relative frequency is between 0 and 1 (between 0% and 100%).</li>
+<li>When each individual is in exactly one category, the relative frequencies add to 1. A "check every one that applies" question breaks this: one person can sit in several categories, so the sum can be more than 1.</li>
+<li>To get a count back, multiply: count = relative frequency × total. A relative frequency of 0.42 among 400 donors is $0.42 \times 400 = 168$ donors. Without the total you cannot recover the counts.</li>
+</ul>
+<p>A missing relative frequency can be found from the others, because they add to 1. If the blood types O, A and B have relative frequencies 0.44, 0.42 and 0.10, then type AB has $1 - (0.44 + 0.42 + 0.10) = 0.04$.</p>
+
+<h2>Sample proportion and population proportion</h2>
+<p>When the data come from a sample, the relative frequency of a category has a name: the <b>sample proportion</b>, written $\hat{p}$ and read "p-hat".</p>
+<p>$$\hat{p} = \frac{\text{number in the sample in the category}}{n}$$</p>
+<p>Here $n$ is the sample size. For television, $\hat{p} = \frac{40}{160} = 0.25$. The sample proportion is a statistic.</p>
+<p>The same quantity for the whole population is the <b>population proportion</b>, written $p$: the part of every adult in the city whose main source is television. It is a parameter, usually unknown, and $\hat{p}$ estimates it. The hat is a reminder that $\hat{p}$ is an estimate built from a sample.</p>
+<table class="compare">
+<thead><tr><th></th><th>Sample proportion</th><th>Population proportion</th></tr></thead>
+<tbody>
+<tr><th>Symbol</th><td>$\hat{p}$</td><td>$p$</td></tr>
+<tr><th>Describes</th><td>the sample</td><td>the whole population</td></tr>
+<tr><th>Kind of number</th><td>statistic</td><td>parameter</td></tr>
+<tr><th>Known?</th><td>yes, computed from data</td><td>usually not</td></tr>
+</tbody>
+</table>
+
+<h2>Comparing groups fairly</h2>
+<p>A second blood bank had 250 donors, 30 with type B. The first had 400 donors, 40 with type B. The counts suggest the first bank, but the relative frequencies say otherwise: $\frac{30}{250} = 0.12$ against $\frac{40}{400} = 0.10$. Whenever groups have different sizes, compare relative frequencies, and say which is larger in context: "a larger proportion of the second bank’s donors had type B blood."</p>

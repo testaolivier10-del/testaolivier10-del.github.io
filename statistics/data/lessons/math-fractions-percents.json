@@ -1,0 +1,73 @@
+{
+ "topic": "math-fractions-percents",
+ "hook": "Most statistics in Unit 1 start the same way: count how many individuals are in a group, then divide by how many there are in all. 18 of 24 students, 132 of 400 adults, 9 of 24 sport players. If you can turn a part of a whole into a decimal and a percent, and pick the right whole, you are ready for the first summaries of data.",
+ "prereq": [
+  {
+   "q": "A class records each student’s number of siblings. What kind of variable is that?",
+   "options": [
+    "Quantitative and discrete",
+    "Categorical",
+    "Quantitative and continuous",
+    "A parameter"
+   ],
+   "correct": 0,
+   "why": "A count of siblings takes whole-number values, so it is quantitative and discrete.",
+   "review": "variables"
+  },
+  {
+   "q": "A school asks 50 of its 900 students about lunch. What is the population?",
+   "options": [
+    "The 900 students",
+    "The 50 students",
+    "The lunch menu",
+    "The students who answered yes"
+   ],
+   "correct": 0,
+   "why": "The population is the whole group the question is about.",
+   "review": "intro-statistics"
+  }
+ ],
+ "figure": {
+  "figure": "part-of-whole",
+  "caption": "18 of 24 is a part over its whole: 0.75 of the bar, or 75%."
+ },
+ "chain": [
+  {
+   "cause": "Find the whole the question names (\"of the sport players\")",
+   "effect": "that number goes on the bottom of the fraction"
+  },
+  {
+   "cause": "Count the part inside that whole",
+   "effect": "that number goes on top"
+  },
+  {
+   "cause": "Divide the top by the bottom",
+   "effect": "the decimal is between 0 and 1; times 100 gives the percent"
+  }
+ ],
+ "ideas": [
+  "A <b>part of a whole</b> is the part divided by the whole: $\\frac{\\text{part}}{\\text{whole}}$. The result is a decimal from 0 to 1.",
+  "A <b>percent</b> is a decimal times 100: $0.375 = 37.5\\%$. To go back, divide by 100.",
+  "The whole is the group the question says \"of\": \"what part <i>of the sport players</i>\" tells you to divide by the number of sport players.",
+  "Compare groups of different sizes with decimals or percents, not counts."
+ ],
+ "misconception": {
+  "wrong": "School B has more walkers, 25 against 18, so a larger part of school B walks.",
+  "right": "School B is also bigger. As parts of their own wholes, $\\frac{18}{30} = 0.60$ and $\\frac{25}{50} = 0.50$, so a larger part of school A walks."
+ },
+ "check": [
+  "stat-math-fractions-percents-1",
+  "stat-math-fractions-percents-4",
+  "stat-math-fractions-percents-5",
+  "stat-math-fractions-percents-6",
+  "stat-math-fractions-percents-7",
+  "stat-math-fractions-percents-8"
+ ],
+ "summary": "A part of a whole is the part divided by the whole, a decimal from 0 to 1, and a percent is that decimal times 100. Pick the whole from the words of the question, and compare groups of different sizes with decimals or percents, never raw counts.",
+ "connections": [
+  {
+   "href": "../notes/one-categorical-tables.html",
+   "label": "Next: tables for one categorical variable (1.3)"
+  }
+ ]
+}

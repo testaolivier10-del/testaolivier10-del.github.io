@@ -1,0 +1,72 @@
+{
+ "hook": "A transit agency asks random samples of city and suburban residents whether they would ride a new train line: 62% of 400 city residents say yes, and 54% of 300 suburban residents do. The gap in the samples is 8 percentage points. But how big is the gap for everyone in the region? A confidence interval for the difference gives a range of plausible values.",
+ "prereq": [
+  {
+   "q": "What critical value $z^*$ goes with 95% confidence?",
+   "options": [
+    "$1.96$",
+    "$1.645$",
+    "$2.576$",
+    "$0.95$"
+   ],
+   "correct": 0,
+   "why": "95% in the middle leaves 2.5% in each tail; $z^* = 1.96$.",
+   "review": "ci-one-proportion"
+  },
+  {
+   "q": "For independent samples, the standard deviation of $\\hat{p}_1 - \\hat{p}_2$ is found by",
+   "options": [
+    "adding the two variances, then taking the square root",
+    "subtracting the two standard deviations",
+    "adding the two standard deviations",
+    "averaging the two standard deviations"
+   ],
+   "correct": 0,
+   "why": "Variances add for independent samples.",
+   "review": "sampling-dist-two-proportions"
+  }
+ ],
+ "figure": {
+  "figure": "two-prop-interval",
+  "caption": "The 95% interval for $p_{\\text{city}} - p_{\\text{sub}}$: the sample difference 0.08 plus or minus a margin of error of 0.074."
+ },
+ "chain": [
+  {
+   "cause": "You want the true difference $p_1 - p_2$ but only have two samples",
+   "effect": "the sample difference $\\hat{p}_1 - \\hat{p}_2$ is the point estimate"
+  },
+  {
+   "cause": "Sample differences vary with standard deviation $\\sqrt{\\frac{p_1(1-p_1)}{n_1} + \\frac{p_2(1-p_2)}{n_2}}$",
+   "effect": "replace each $p$ by its $\\hat{p}$ to get the standard error, since the $p$s are unknown"
+  },
+  {
+   "cause": "The sampling distribution is approximately normal when the four counts reach 10",
+   "effect": "go $z^*$ standard errors each way: $(\\hat{p}_1 - \\hat{p}_2) \\pm z^* \\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$"
+  },
+  {
+   "cause": "The method captures the true difference in about 95% of samples",
+   "effect": "say \"we are 95% confident that the interval captures the true difference in proportions\", naming the order of subtraction"
+  }
+ ],
+ "ideas": [
+  "Two-sample z interval: $(\\hat{p}_1 - \\hat{p}_2) \\pm z^* \\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$.",
+  "Conditions: two independent random samples or two randomly assigned groups; each sample under 10% of its population; at least 10 successes and 10 failures in each sample.",
+  "Interpret: \"We are 95% confident that the interval from ... to ... captures the true difference in the proportions of ... (group 1 minus group 2).\"",
+  "Random assignment allows a cause-and-effect conclusion; random sampling allows generalizing to the populations."
+ ],
+ "misconception": {
+  "wrong": "A 95% interval for $p_1 - p_2$ means 95% of the people in group 1 are that much more likely to say yes.",
+  "right": "The interval estimates one number, the true difference in the two population proportions. It says nothing about individuals; the 95% describes how often the method captures that number."
+ },
+ "check": [
+  "stat-ci-two-proportions-1",
+  "stat-ci-two-proportions-2",
+  "stat-ci-two-proportions-3",
+  "stat-ci-two-proportions-4",
+  "stat-ci-two-proportions-5",
+  "stat-ci-two-proportions-11",
+  "stat-ci-two-proportions-14"
+ ],
+ "summary": "To estimate $p_1 - p_2$, use the two-sample z interval $(\\hat{p}_1 - \\hat{p}_2) \\pm z^* \\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$ after checking random, 10% and large counts for each sample. Interpret it as capturing the true difference in proportions, in context and with the order of subtraction named.",
+ "topic": "ci-two-proportions"
+}

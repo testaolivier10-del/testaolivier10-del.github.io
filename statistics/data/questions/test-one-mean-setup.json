@@ -1,0 +1,572 @@
+{
+ "stimuli": {
+  "test-one-mean-setup-s1": {
+   "kind": "table",
+   "title": "Resting heart rate before and after a breathing class",
+   "text": "<p>A large gym offers a four-week breathing class. A random sample of 12 of the members who took the class had their resting heart rate measured, in beats per minute, before the class and after it (invented data). The gym wants to know whether the class lowers resting heart rate on average.</p>",
+   "table": {
+    "caption": "Resting heart rate (beats per minute) of 12 members, before and after the class",
+    "cols": [
+     "Member",
+     "Before",
+     "After",
+     "Before minus after"
+    ],
+    "rows": [
+     [
+      "1",
+      "72",
+      "69",
+      "3"
+     ],
+     [
+      "2",
+      "68",
+      "67",
+      "1"
+     ],
+     [
+      "3",
+      "80",
+      "74",
+      "6"
+     ],
+     [
+      "4",
+      "75",
+      "74",
+      "1"
+     ],
+     [
+      "5",
+      "66",
+      "64",
+      "2"
+     ],
+     [
+      "6",
+      "84",
+      "79",
+      "5"
+     ],
+     [
+      "7",
+      "70",
+      "71",
+      "-1"
+     ],
+     [
+      "8",
+      "77",
+      "72",
+      "5"
+     ],
+     [
+      "9",
+      "73",
+      "70",
+      "3"
+     ],
+     [
+      "10",
+      "69",
+      "66",
+      "3"
+     ],
+     [
+      "11",
+      "81",
+      "76",
+      "5"
+     ],
+     [
+      "12",
+      "74",
+      "73",
+      "1"
+     ]
+    ]
+   }
+  },
+  "test-one-mean-setup-s2": {
+   "kind": "table",
+   "title": "Delivery times",
+   "text": "<p>A delivery company advertises a mean delivery time of 30 minutes in one city. A manager suspects the true mean is longer. She takes a random sample of 45 of last month's thousands of deliveries in the city and records each delivery time (invented data).</p>",
+   "table": {
+    "caption": "The study at a glance",
+    "cols": [
+     "Claim",
+     "Suspicion",
+     "Sample",
+     "Variable"
+    ],
+    "rows": [
+     [
+      "mean delivery time is 30 minutes",
+      "the mean is greater than 30",
+      "45 deliveries, chosen at random",
+      "delivery time in minutes"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-test-one-mean-setup-1",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "With differences computed as before minus after, which hypotheses fit the gym's question?",
+   "stimulus": "test-one-mean-setup-s1",
+   "options": [
+    "$H_0: \\mu_d = 0$, $H_a: \\mu_d < 0$",
+    "$H_0: \\bar{x}_d = 0$, $H_a: \\bar{x}_d > 0$",
+    "$H_0: \\mu_d = 0$, $H_a: \\mu_d > 0$",
+    "$H_0: \\mu_d > 0$, $H_a: \\mu_d = 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$H_0: \\mu_d = 0$ (no change), $H_a: \\mu_d > 0$, where $\\mu_d$ is the true mean drop in resting heart rate (before minus after) for gym members who take the class.",
+    "options": [
+     "With before minus after, a drop in heart rate gives positive differences, so the alternative is greater than 0.",
+     "Hypotheses are about the parameter $\\mu_d$, never the sample statistic $\\bar{x}_d$, which is known.",
+     "A lower heart rate after the class makes before minus after positive. The null says no change on average.",
+     "The null hypothesis is the \"no effect\" statement with an equals sign; the claim to find evidence for goes in $H_a$."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-2",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the correct definition of the parameter $\\mu_d$ in these hypotheses?",
+   "stimulus": "test-one-mean-setup-s1",
+   "options": [
+    "The mean of the 12 differences in the table",
+    "The true mean of before minus after heart rate for members who take the class",
+    "The difference between the mean before rate and 0",
+    "The true mean resting heart rate, after the class, of the gym members who take it"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\mu_d$ = the true mean difference in resting heart rate (before minus after) for gym members who take the breathing class.",
+    "options": [
+     "That is the sample mean $\\bar{x}_d$, a statistic.",
+     "A parameter is a population value, defined in context with the direction of subtraction.",
+     "The parameter is the mean of the paired differences in the population, not a comparison with 0.",
+     "That leaves out the pairing: $\\mu_d$ is the mean of the differences."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-3",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which significance test should the gym use?",
+   "stimulus": "test-one-mean-setup-s1",
+   "options": [
+    "A paired t test for the mean difference",
+    "A test comparing two independent groups of heart rates",
+    "A one-proportion z test",
+    "A one-sample z test for a mean using $\\sigma = 1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Paired data with $\\sigma$ unknown: a paired t test, which is a one-sample t test on the differences with $\\text{df} = 11$.",
+    "options": [
+     "The same 12 members were measured twice, so the data are paired: a one-sample t test on the 12 differences.",
+     "The before and after rates come from the same people, so the groups are not independent.",
+     "Heart rate is quantitative, so the test is about a mean.",
+     "The population standard deviation is unknown; it is estimated by $s_d$, so the test uses t."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-4",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How should the normal/large sample condition be checked here?",
+   "stimulus": "test-one-mean-setup-s1",
+   "options": [
+    "Make a dotplot of the 12 differences and check for strong skew or outliers",
+    "Check that 12 is at least 10",
+    "Make separate dotplots of the before rates and the after rates, and check each one",
+    "It is met because heart rates are normally distributed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Normal/large sample for a paired t test: a graph of the differences with no strong skew or outliers, since $n = 12$ is less than 30.",
+    "options": [
+     "With $n = 12 < 30$, the shape of the sample of differences decides. These differences (from $-1$ to 6) show no strong skew and no outliers.",
+     "Ten is the large counts threshold for proportions. For means: normal population, $n \\ge 30$, or a graph of the sample.",
+     "The test analyzes the differences, so their shape is the one that matters.",
+     "Nothing in the study says the population is normal. Check the graph of the differences."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-5",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Suppose the gym computes the differences as after minus before instead. How do the hypotheses change?",
+   "stimulus": "test-one-mean-setup-s1",
+   "options": [
+    "$H_0$ becomes $\\mu_d = 1$",
+    "Nothing changes",
+    "The test becomes two-sided",
+    "$H_a$ becomes $\\mu_d < 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Order of subtraction and direction of $H_a$ go together: before minus after, $H_a: \\mu_d > 0$; after minus before, $H_a: \\mu_d < 0$.",
+    "options": [
+     "The null value is still 0: no change on average.",
+     "The direction of subtraction decides the sign of the differences, and so the direction of $H_a$.",
+     "The question is still one-sided (does the class lower heart rate?); only the sign flips.",
+     "A drop in heart rate now gives a negative difference, so the alternative flips to less than 0. The null stays $\\mu_d = 0$."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-6",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which hypotheses should the manager test?",
+   "stimulus": "test-one-mean-setup-s2",
+   "options": [
+    "$H_0: \\mu = 30$, $H_a: \\mu \\ne 30$",
+    "$H_0: \\mu = 30$, $H_a: \\mu > 30$",
+    "$H_0: \\mu > 30$, $H_a: \\mu = 30$",
+    "$H_0: \\bar{x} = 30$, $H_a: \\bar{x} > 30$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$H_0: \\mu = 30$ and $H_a: \\mu > 30$, where $\\mu$ is the true mean delivery time of all the company's deliveries in the city. The hypothesized mean is $\\mu_0 = 30$.",
+    "options": [
+     "The manager suspects longer times before seeing the data, so the alternative is one-sided: greater than 30.",
+     "The null is the advertised value; the alternative is the manager's suspicion, longer deliveries.",
+     "The null hypothesis holds the equals sign and the claim being tested; the suspicion belongs in $H_a$.",
+     "Hypotheses are about the population mean $\\mu$, never the sample mean $\\bar{x}$."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-7",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is a one-sided alternative appropriate here?",
+   "stimulus": "test-one-mean-setup-s2",
+   "options": [
+    "The sample mean will turn out to be greater than 30",
+    "One-sided tests are easier to reject with",
+    "The manager suspected longer delivery times before collecting data",
+    "The sample size is larger than 30"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A one-sided $H_a$ is set by a directional question stated in advance (\"is the mean longer than advertised?\").",
+    "options": [
+     "Choosing the direction from the sample result is a common error; the question decides it.",
+     "Ease of rejecting is not a reason; the research question is.",
+     "The direction of $H_a$ comes from the question asked before the data, not from the sample result.",
+     "Sample size affects the conditions, not the direction of the alternative."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-8",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The manager has not graphed the delivery times. Is the normal/large sample condition met?",
+   "stimulus": "test-one-mean-setup-s2",
+   "options": [
+    "Yes, because $n = 45 \\ge 30$",
+    "No, because delivery times are probably skewed",
+    "Yes, because 45 is less than 10% of last month's deliveries",
+    "No, because a graph of the sample is required for each test"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Normal/large sample: $n = 45 \\ge 30$. (Still, a quick graph is good practice, to catch extreme outliers.)",
+    "options": [
+     "With a sample of at least 30, the central limit theorem makes the sampling distribution of $\\bar{x}$ approximately normal.",
+     "Some skew is fine with $n = 45$; only very strong skew or extreme outliers would worry us.",
+     "That is the 10% condition, which is about independence.",
+     "A graph of the sample is required only when $n < 30$ and the population is not known to be normal."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-9",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes \"$H_0: \\bar{x} = 30$\" for this study. What is wrong?",
+   "stimulus": "test-one-mean-setup-s2",
+   "options": [
+    "It should use 45 instead of 30",
+    "Nothing, $\\bar{x}$ and $\\mu$ mean the same thing",
+    "It should be a two-sided statement",
+    "It is about the sample mean, which is known once the data are in"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Use $\\mu$ (the parameter) in hypotheses, never $\\bar{x}$.",
+    "options": [
+     "45 is the sample size, not the hypothesized mean.",
+     "$\\bar{x}$ is a statistic from one sample; $\\mu$ is the population parameter.",
+     "The null hypothesis is an equality; the problem is the symbol, not the sides.",
+     "Hypotheses describe the population. Write $H_0: \\mu = 30$, with $\\mu$ defined in context."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-10",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A sleep researcher wants to know whether college students at a large university sleep a mean amount different from 8 hours a night. Which hypotheses fit?",
+   "options": [
+    "$H_0: \\mu = 8$, $H_a: \\mu \\ne 8$",
+    "$H_0: \\mu = 8$, $H_a: \\mu < 8$",
+    "$H_0: \\mu \\ne 8$, $H_a: \\mu = 8$",
+    "$H_0: \\mu = 7.4$, $H_a: \\mu \\ne 7.4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$H_0: \\mu = 8$, $H_a: \\mu \\ne 8$, where $\\mu$ is the true mean nightly sleep of students at the university.",
+    "options": [
+     "\"Different from\" points to a two-sided alternative, with 8 hours as the hypothesized mean.",
+     "The question asks about any difference, not only less sleep.",
+     "The equality belongs in the null hypothesis.",
+     "The hypothesized value comes from the question (8 hours), not from a sample result."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-11",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "multi",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which conditions must be checked for a one-sample t test for a mean? Select all that apply.",
+   "options": [
+    "The data come from a random sample or a randomized experiment",
+    "The sample is less than 10% of the population, when sampling without replacement",
+    "The population is normal, $n \\ge 30$, or the sample shows no strong skew or outliers",
+    "At least 10 successes and 10 failures",
+    "The population standard deviation is known",
+    "The sample mean is greater than the hypothesized mean"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Random, 10% and normal/large sample: the three conditions for every t procedure for a mean.",
+    "options": [
+     "Right: the random condition.",
+     "Right: the 10% condition keeps observations close to independent.",
+     "Right: the normal/large sample condition.",
+     "That is the large counts condition for proportions.",
+     "If it were known, t would not be needed; t tests estimate it with $s$.",
+     "The sample result never decides whether a test may be used."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-12",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student sees a sample mean of 27 minutes for battery charging time and then writes $H_a: \\mu < 30$ because 27 is below 30. The original question was whether the mean differs from 30. What is the error?",
+   "options": [
+    "The direction of $H_a$ was chosen from the data instead of the question",
+    "The hypothesized mean should be 27",
+    "There is no error, because the data showed which direction to test",
+    "The alternative should be $\\mu > 30$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Hypotheses are set from the research question, before looking at the data.",
+    "options": [
+     "The question asked about a difference in either direction, so $H_a: \\mu \\ne 30$. Letting the sample pick the side inflates the chance of a false rejection.",
+     "The hypothesized mean comes from the question (30); 27 is the sample result.",
+     "Choosing the side after seeing the data makes the test look stronger than it is.",
+     "The question is two-sided, so neither one-sided alternative fits."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-13",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "conclude",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the delivery study ($H_0: \\mu = 30$, $H_a: \\mu > 30$), describe a Type I error in context.",
+   "why": {
+    "correct": "A Type I error rejects a true null hypothesis: the true mean really is 30 minutes, but the test finds convincing evidence it is longer."
+   },
+   "conclude": {
+    "mode": "error",
+    "slots": {
+     "condition": {
+      "options": [
+       "A Type I error would occur if the true mean delivery time of all the company's deliveries in the city is 30 minutes",
+       "A Type I error would occur if the true mean delivery time is greater than 30 minutes",
+       "A Type I error would occur if the sample mean is 30 minutes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That condition goes with a Type II error. A Type I error needs the null hypothesis to be true.",
+       "2": "Errors are about the true parameter, not the sample mean."
+      }
+     },
+     "claim": {
+      "options": [
+       "but we find convincing evidence that it is greater than 30 minutes",
+       "and we fail to find convincing evidence that it is greater than 30 minutes",
+       "and we accept that it is 30 minutes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Failing to reject a true null hypothesis is the right decision, not an error.",
+       "2": "A test never accepts the null hypothesis."
+      }
+     }
+    },
+    "model": "A Type I error would occur if the true mean delivery time of all the company's deliveries in the city is 30 minutes, but we find convincing evidence that it is greater than 30 minutes.",
+    "write": {
+     "context": [
+      "deliver"
+     ],
+     "direction": "greater"
+    }
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-14",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A study measures reaction time for 20 sets of identical twins; one twin in each set is randomly assigned to drink coffee and the other water. Which analysis fits?",
+   "options": [
+    "A test comparing two independent groups of 20",
+    "A paired t test on the 20 within-twin differences",
+    "A one-sample t test on the 20 coffee times alone",
+    "A one-proportion z test on the share of faster coffee twins"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Matched pairs design: compute coffee minus water within each twin pair and test $H_0: \\mu_d = 0$ with a paired t test (df 19).",
+    "options": [
+     "The twins are matched, so the two groups are not independent.",
+     "Twins are matched pairs, so each pair gives one difference (coffee minus water), and the test is on the mean difference.",
+     "The water twins carry the comparison; leaving them out loses the point of the design.",
+     "That throws away the size of each difference; the reaction times are quantitative."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-15",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A random sample of 15 commute times is strongly skewed right, with one time of 95 minutes far above the rest. Can a one-sample t test for the mean commute time be carried out as planned?",
+   "options": [
+    "Yes, because the sample was random",
+    "Yes, because t tests do not need a normal population",
+    "No, because the graph shows strong skew and an outlier",
+    "No, because 15 is less than 10% of the town's commuters"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With $n < 30$, the normal/large sample condition is judged from a graph of the sample. Strong skew and an outlier mean the condition is not met.",
+    "options": [
+     "Random sampling is necessary but not enough; the shape condition also matters.",
+     "t procedures are fairly robust, but not to strong skew and outliers in a sample of 15.",
+     "A small sample must show no strong skew or outliers in its graph. This one shows both.",
+     "Being under 10% is what we want; the problem is the shape."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-setup-16",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the hypotheses $H_0: \\mu = 30$, $H_a: \\mu > 30$, what is the value 30?",
+   "options": [
+    "The sample mean $\\bar{x}$",
+    "The significance level",
+    "The sample size",
+    "The hypothesized mean $\\mu_0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\mu_0 = 30$ is the hypothesized mean: the null value the test assumes when it computes how surprising the data are.",
+    "options": [
+     "The sample mean comes from the data and never appears in the hypotheses.",
+     "The significance level is $\\alpha$, a probability such as 0.05.",
+     "The sample size $n$ is used in the standard error, not in the hypotheses.",
+     "The hypothesized mean is the value of $\\mu$ that the null hypothesis claims, taken from the question."
+    ]
+   }
+  }
+ ]
+}

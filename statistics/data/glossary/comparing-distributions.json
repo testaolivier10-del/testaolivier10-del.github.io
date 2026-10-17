@@ -1,0 +1,8 @@
+{
+ "z-score": {
+  "def": "The number of standard deviations a value is above or below the mean: $z = \\frac{x - \\bar{x}}{s}$ ($\\frac{x - \\mu}{\\sigma}$ for a population). Positive is above the mean, negative below; it has no units."
+ },
+ "relative-position": {
+  "def": "Where a value stands within its own distribution, measured by a percentile or a z-score, so values from different distributions can be compared."
+ }
+}

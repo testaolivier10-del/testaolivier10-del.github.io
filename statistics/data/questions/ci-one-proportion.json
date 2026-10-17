@@ -1,0 +1,580 @@
+{
+ "stimuli": {
+  "ci-one-proportion-s1": {
+   "kind": "table",
+   "title": "Skipping breakfast at a large university",
+   "text": "<p>A dietitian at a university with 28,000 students selects a random sample of 400 students. Of them, 248 say they regularly skip breakfast. She wants to estimate the proportion of all students at the university who regularly skip breakfast.</p>",
+   "table": {
+    "caption": "Survey results (invented data)",
+    "cols": [
+     "Response",
+     "Number of students"
+    ],
+    "rows": [
+     [
+      "Regularly skip breakfast",
+      "248"
+     ],
+     [
+      "Do not",
+      "152"
+     ],
+     [
+      "Total",
+      "400"
+     ]
+    ]
+   }
+  },
+  "ci-one-proportion-s2": {
+   "kind": "table",
+   "title": "One poll, three intervals",
+   "text": "<p>A city council selects a random sample of 600 residents, and 324 of them ($\\hat{p} = 0.54$) favor longer library hours. A computer builds three confidence intervals for the proportion of all residents who favor longer hours, at 90%, 95% and 99% confidence, and lists them in random order.</p>",
+   "table": {
+    "caption": "Three intervals from the same sample, levels not shown",
+    "cols": [
+     "Interval",
+     "Lower end",
+     "Upper end"
+    ],
+    "rows": [
+     [
+      "Interval 1",
+      "0.500",
+      "0.580"
+     ],
+     [
+      "Interval 2",
+      "0.488",
+      "0.592"
+     ],
+     [
+      "Interval 3",
+      "0.507",
+      "0.573"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-ci-one-proportion-1",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement correctly checks the large counts condition for a confidence interval?",
+   "stimulus": "ci-one-proportion-s1",
+   "options": [
+    "248 skip and 152 do not, and both are at least 10",
+    "$n = 400$ is at least 30",
+    "400 is less than 10% of 28,000",
+    "$400(0.5) = 200$ is at least 10"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For an interval, $p$ is unknown, so check the observed successes and failures: $n\\hat{p} = 248$ and $n(1 - \\hat{p}) = 152$, both at least 10.",
+    "options": [
+     "Right: for an interval, check the sample's successes and failures.",
+     "The rule of 30 is about means. For a proportion, check successes and failures.",
+     "That is the 10% condition, which is about independence, not the normal shape.",
+     "No value of 0.5 is claimed here. For an interval, use the sample's counts, 248 and 152."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-2",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate the standard error of $\\hat{p}$. Give four decimal places.",
+   "stimulus": "ci-one-proportion-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 4,
+    "from": {
+     "fn": "ci1prop",
+     "args": [
+      0.62,
+      400,
+      0.95
+     ],
+     "pick": "se"
+    },
+    "mistakes": [
+     {
+      "value": 0.000589,
+      "why": "That is $\\frac{\\hat{p}(1 - \\hat{p})}{n}$ before the square root. Take the square root to get the standard error."
+     },
+     {
+      "value": 0.4854,
+      "why": "That is $\\sqrt{\\hat{p}(1 - \\hat{p})}$ with no division by $n$. Divide by 400 inside the square root."
+     },
+     {
+      "value": 0.025,
+      "why": "That uses 0.5 in place of $\\hat{p}$. An interval's standard error uses the sample proportion, 0.62."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\hat{p} = \\frac{248}{400} = 0.62$ and $\\text{SE} = \\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}} = \\sqrt{\\frac{0.62(0.38)}{400}} = 0.0243$. It uses $\\hat{p}$ because $p$ is unknown."
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-3",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate the margin of error for a 95% confidence interval for the proportion of all students who regularly skip breakfast. Give four decimal places.",
+   "stimulus": "ci-one-proportion-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 4,
+    "from": {
+     "fn": "ci1prop",
+     "args": [
+      0.62,
+      400,
+      0.95
+     ],
+     "pick": "me"
+    },
+    "mistakes": [
+     {
+      "value": 0.0399,
+      "why": "That uses $z^* = 1.645$, the critical value for 90% confidence. For 95%, $z^* = 1.96$."
+     },
+     {
+      "value": 0.0625,
+      "why": "That uses $z^* = 2.576$, the critical value for 99% confidence. For 95%, $z^* = 1.96$."
+     },
+     {
+      "value": 0.0243,
+      "why": "That is the standard error alone. Multiply it by the critical value, 1.96."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\text{ME} = z^* \\cdot \\text{SE} = 1.96\\sqrt{\\frac{0.62(0.38)}{400}} = 1.96(0.0243) = 0.0476$."
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-4",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "interval",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Construct a 95% confidence interval for the proportion of all students at the university who regularly skip breakfast.",
+   "stimulus": "ci-one-proportion-s1",
+   "interval": {
+    "places": 3,
+    "from": {
+     "fn": "ci1prop",
+     "args": [
+      0.62,
+      400,
+      0.95
+     ]
+    }
+   },
+   "why": {
+    "correct": "$0.62 \\pm 1.96\\sqrt{\\frac{0.62(0.38)}{400}} = 0.62 \\pm 0.048$, which gives the interval from 0.572 to 0.668. Technology (a one-proportion z interval) gives the same."
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-5",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "setup",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Type the 95% confidence interval as an expression with the values substituted: the point estimate, then +/-, then the margin of error.",
+   "stimulus": "ci-one-proportion-s1",
+   "setup": {
+    "answer": "0.62 +/- 1.96*sqrt(0.62*0.38/400)",
+    "bind": {
+     "phat": 0.62,
+     "n": 400
+    },
+    "mustUse": [
+     "phat",
+     "n",
+     "1.96"
+    ],
+    "mistakes": [
+     {
+      "expr": "0.62 +/- 1.96*(0.62*0.38/400)",
+      "why": "The standard error needs a square root: $\\sqrt{0.62(0.38)/400}$."
+     },
+     {
+      "expr": "0.62 +/- 1.645*sqrt(0.62*0.38/400)",
+      "why": "1.645 is the critical value for 90% confidence. For 95%, use 1.96."
+     },
+     {
+      "expr": "0.62 +/- 1.96*sqrt(0.62*0.38)/400",
+      "why": "Divide by $n$ inside the square root: $\\sqrt{0.62(0.38)/400}$, not $\\sqrt{0.62(0.38)}/400$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Statistic $\\pm$ (critical value)(standard error): $0.62 \\pm 1.96\\sqrt{\\frac{0.62(0.38)}{400}}$."
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-6",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which interval was built with 99% confidence?",
+   "stimulus": "ci-one-proportion-s2",
+   "options": [
+    "Interval 1",
+    "Interval 2",
+    "Interval 3",
+    "There is no way to tell, because they come from the same sample"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Higher confidence needs a larger critical value (2.576 for 99%), so the margin of error is largest. Interval 2 reaches farthest from 0.54 on each side (from 0.488 to 0.592).",
+    "options": [
+     "Interval 1, from 0.500 to 0.580, is in the middle: it is the 95% interval.",
+     "Right: the largest margin of error comes from the largest critical value.",
+     "Interval 3 has the smallest margin of error, so it has the lowest confidence, 90%.",
+     "Same sample, same $\\hat{p}$ and standard error, but different critical values, so different margins of error."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-7",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the margin of error of Interval 1?",
+   "stimulus": "ci-one-proportion-s2",
+   "options": [
+    "0.040",
+    "0.080",
+    "0.540",
+    "0.020"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The margin of error is half the distance between the ends: $\\frac{0.580 - 0.500}{2} = 0.040$. Equivalently, it is the distance from $\\hat{p} = 0.54$ to either end.",
+    "options": [
+     "Right: half the distance between the two ends.",
+     "That is the whole distance from one end to the other. The margin of error is half of it.",
+     "That is the center of the interval, the point estimate, not the margin of error.",
+     "That is the standard error. The margin of error is the standard error times $z^* = 1.96$."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-8",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Suppose the council had surveyed 2,400 residents and still found $\\hat{p} = 0.54$. About what would the margin of error of the 95% interval be?",
+   "stimulus": "ci-one-proportion-s2",
+   "options": [
+    "0.020",
+    "0.010",
+    "0.040",
+    "0.080"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The margin of error is $z^*\\sqrt{\\hat{p}(1 - \\hat{p})/n}$. With 4 times the sample size it is divided by $\\sqrt{4} = 2$: about $\\frac{0.040}{2} = 0.020$.",
+    "options": [
+     "Right: 4 times the sample size halves the margin of error.",
+     "The sample size is inside a square root, so 4 times the residents divides the margin by 2, not 4.",
+     "A larger sample gives a smaller margin of error; it does not stay the same.",
+     "More residents give a more precise estimate, so the margin of error shrinks."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-9",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a new poll, the council wants a 95% margin of error of at most 0.02. Using 0.54 as its estimate of the proportion, what is the smallest sample size it needs?",
+   "stimulus": "ci-one-proportion-s2",
+   "options": [
+    "2,385",
+    "2,386",
+    "2,401",
+    "1,681"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Solve $1.96\\sqrt{\\frac{0.54(0.46)}{n}} \\le 0.02$: $n \\ge \\left(\\frac{1.96}{0.02}\\right)^2(0.54)(0.46) = 2385.6$. Round up to 2,386 residents (always round a sample size up).",
+    "options": [
+     "The calculation gives 2,385.6, and a sample size is always rounded up, or the margin would be a bit over 0.02.",
+     "Right: $\\left(\\frac{1.96}{0.02}\\right)^2(0.54)(0.46) = 2385.6$, rounded up.",
+     "That uses 0.5 in place of 0.54. It is the safe choice when there is no estimate, but this question says to use 0.54.",
+     "That uses $z^* = 1.645$, the critical value for 90% confidence. For 95%, use 1.96."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-10",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the critical value $z^*$ for a 90% confidence interval. Give three decimal places.",
+   "numeric": {
+    "kind": "critical",
+    "from": {
+     "fn": "invNorm",
+     "args": [
+      0.95
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1.2816,
+      "why": "That puts 90% below $z^*$, leaving all 10% in one tail. Split the 10% into two tails of 5%: area 0.95 below $z^*$."
+     },
+     {
+      "value": 1.96,
+      "why": "1.96 is the critical value for 95% confidence. For 90%, it is 1.645."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A 90% interval leaves 5% in each tail, so $z^*$ has 95% of the standard normal area below it: $z^* = 1.645$."
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-11",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the critical value $z^*$ for a 98% confidence interval. Give three decimal places.",
+   "numeric": {
+    "kind": "critical",
+    "from": {
+     "fn": "invNorm",
+     "args": [
+      0.99
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2.0537,
+      "why": "That puts 98% below $z^*$. A 98% interval leaves 1% in each tail, so the area below $z^*$ is 0.99."
+     },
+     {
+      "value": 2.576,
+      "why": "2.576 is the critical value for 99% confidence. For 98%, it is 2.326."
+     }
+    ]
+   },
+   "why": {
+    "correct": "98% in the middle leaves 1% in each tail, so $z^*$ has 0.99 of the area below it: $z^* = 2.326$."
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-12",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A wildlife officer wants to estimate the proportion of all deer in a state forest that carry a certain tick, from a random sample of 150 deer. Which procedure fits?",
+   "options": [
+    "A one-sample z interval for a proportion",
+    "A one-sample z interval for a mean",
+    "A z interval that compares two groups of deer",
+    "A z-score for the 150 deer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One population, one categorical variable (carries the tick or not), and the goal is an estimate: a one-sample z interval for a proportion.",
+    "options": [
+     "Right: one sample, a proportion, an estimate.",
+     "Carrying a tick is a yes-or-no variable, so the parameter is a proportion, not a mean.",
+     "There is one group of deer, not two groups to compare.",
+     "A z-score locates one value in a distribution; it does not estimate a population proportion."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-13",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does the standard error for a confidence interval use $\\hat{p}$ instead of $p$?",
+   "options": [
+    "Because $\\hat{p}$ is closer to 0.5 than $p$",
+    "Because using $\\hat{p}$ makes the margin of error smaller",
+    "Because $p$ is unknown, so the sample value stands in for it",
+    "Because $\\hat{p}$ is the parameter and $p$ is the statistic"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The formula $\\sqrt{p(1 - p)/n}$ needs $p$, which is what we are trying to estimate. We substitute the sample's $\\hat{p}$, and the result is called the standard error.",
+    "options": [
+     "There is no reason $\\hat{p}$ would be closer to 0.5; it is used because it is what we have.",
+     "The substitution is made because $p$ is unknown, not to shrink the margin.",
+     "Right: the standard error estimates $\\sigma_{\\hat{p}}$ from the data.",
+     "It is the other way round: $p$ is the parameter, $\\hat{p}$ the statistic."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-14",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student takes a random sample of 40 skateboards from a skate park and finds 4 with cracked decks. Why should she not build a one-sample z interval for the proportion of all the park's skateboards with cracked decks?",
+   "options": [
+    "Because 40 is less than 30",
+    "Because there are only 4 successes, fewer than 10",
+    "Because 40 skateboards is more than 10% of the population",
+    "Because a proportion of 0.10 is too small to estimate"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Large counts requires at least 10 successes and 10 failures in the sample. There are only 4 cracked decks, so the sampling distribution of $\\hat{p}$ may be skewed and the normal critical value would not give the stated confidence.",
+    "options": [
+     "For proportions the check is successes and failures, not the sample size; and 40 is more than 30 anyway.",
+     "Right: large counts fails, so the normal model is not justified.",
+     "Nothing says the park has fewer than 400 skateboards, and the 10% condition is not the main problem here.",
+     "Small proportions can be estimated; the problem is that the sample has too few successes."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-15",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "multi",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A pollster builds a 95% confidence interval for a proportion from a random sample. Which changes would make the margin of error smaller? Select all that apply.",
+   "options": [
+    "Taking a larger random sample",
+    "Using 99% confidence instead of 95%",
+    "Using 0.5 in place of $\\hat{p}$ in the standard error",
+    "Sampling from a population 10 times as large, with the same sample size"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "The margin of error is $z^*\\sqrt{\\hat{p}(1 - \\hat{p})/n}$. Only a larger $n$ shrinks it here. Raising the confidence level raises $z^*$; replacing $\\hat{p}$ by 0.5 makes $\\hat{p}(1 - \\hat{p})$ as large as it can be; and the size of a large population does not enter.",
+    "options": [
+     "Right: $n$ is in the denominator of the standard error.",
+     "Higher confidence needs $z^* = 2.576$, a larger margin of error.",
+     "$0.5(0.5) = 0.25$ is the largest possible value of $\\hat{p}(1 - \\hat{p})$, so the margin of error cannot shrink this way.",
+     "Population size does not appear in the formula when the sample is under 10% of it."
+    ]
+   }
+  },
+  {
+   "id": "stat-ci-one-proportion-16",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "The dietitian's 95% confidence interval for the proportion of all students at her university who regularly skip breakfast runs from 0.572 to 0.668. Build the interpretation of this interval.",
+   "conclude": {
+    "mode": "interval",
+    "slots": {
+     "level": {
+      "options": [
+       "We are 95% confident that",
+       "There is a 95% probability that",
+       "95% of students say that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Once built, the interval either captures the true proportion or not; the 95% describes the method, so say \"confident\".",
+       "2": "The 95% is not a percent of students; it is the confidence level of the method."
+      }
+     },
+     "claim": {
+      "options": [
+       "the interval from 0.572 to 0.668 captures",
+       "the sample proportion falls between 0.572 and 0.668",
+       "95% of the data fall between 0.572 and 0.668"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample proportion is 0.62 for certain; the interval is about the unknown population value.",
+       "2": "An interval for a proportion says nothing about where 95% of the data fall."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true proportion of all students at the university who regularly skip breakfast",
+       "the proportion of the 400 sampled students who skip breakfast",
+       "the proportion of days a typical student skips breakfast"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample proportion is known (0.62); the interval estimates the population proportion.",
+       "2": "The variable is whether a student regularly skips breakfast, not how many days."
+      }
+     }
+    },
+    "model": "We are 95% confident that the interval from 0.572 to 0.668 captures the true proportion of all students at the university who regularly skip breakfast.",
+    "write": {
+     "context": [
+      "breakfast",
+      "students"
+     ],
+     "evidence": false,
+     "forbid": [
+      "95% chance",
+      "probability that the true"
+     ]
+    }
+   },
+   "why": {
+    "correct": "The interpretation names the confidence level, the interval, and the parameter in context: the proportion of all students at the university, not the 400 in the sample."
+   }
+  }
+ ]
+}

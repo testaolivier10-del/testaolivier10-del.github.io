@@ -1,0 +1,72 @@
+{
+ "topic": "independence-unions",
+ "hook": "A phone reviewer tests two brands and finds that 60% of each brand's batteries last a full day. Does knowing the brand help you predict the battery? Not at all, and that is what independence means. A Venn diagram of students in two classes shows the other half of this topic: how to add probabilities that overlap.",
+ "prereq": [
+  {
+   "q": "Of 40 art students, 15 take Spanish. What is P(Spanish given art)?",
+   "options": [
+    "0.375",
+    "0.15",
+    "0.3",
+    "0.125"
+   ],
+   "correct": 0,
+   "why": "Given art, divide by the 40 art students: $\\frac{15}{40} = 0.375$.",
+   "review": "conditional-probability"
+  },
+  {
+   "q": "Events R and T are mutually exclusive. What is $P(R \\cap T)$?",
+   "options": [
+    "0",
+    "1",
+    "$P(R) + P(T)$",
+    "0.5"
+   ],
+   "correct": 0,
+   "why": "Mutually exclusive events cannot happen together.",
+   "review": "mutually-exclusive"
+  }
+ ],
+ "figure": {
+  "figure": "u2-clubs-venn",
+  "caption": "120 students: 50 take Spanish, 40 take art, 15 take both. The shaded union holds 75 students: 50 + 40 − 15."
+ },
+ "chain": [
+  {
+   "cause": "Knowing that B happened leaves the probability of A unchanged",
+   "effect": "A and B are independent: $P(A \\mid B) = P(A)$"
+  },
+  {
+   "cause": "Put $P(A \\mid B) = P(A)$ into the multiplication rule",
+   "effect": "for independent events, $P(A \\cap B) = P(A) \\cdot P(B)$"
+  },
+  {
+   "cause": "Add P(A) and P(B) for \"A or B\"",
+   "effect": "the outcomes in both are counted twice"
+  },
+  {
+   "cause": "Subtract the overlap once",
+   "effect": "the general addition rule: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$"
+  }
+ ],
+ "ideas": [
+  "Events are <b>independent</b> when knowing one happened does not change the probability of the other: $P(A \\mid B) = P(A)$. Then, and only then, $P(A \\cap B) = P(A) \\cdot P(B)$.",
+  "To check independence, compare $P(A \\mid B)$ with $P(A)$, or $P(A \\cap B)$ with $P(A) \\cdot P(B)$, using the numbers.",
+  "The <b>union</b> $A \\cup B$ is \"A or B or both\". The general addition rule: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$.",
+  "A <b>Venn diagram</b> shows events as overlapping circles; fill the overlap first.",
+  "Mutually exclusive is not independent: events that cannot happen together affect each other completely."
+ ],
+ "misconception": {
+  "wrong": "Mutually exclusive events are independent, because one has nothing to do with the other.",
+  "right": "If two events cannot happen together, knowing one happened makes the other impossible, so its probability drops to 0. They are as dependent as events can be."
+ },
+ "check": [
+  "stat-independence-unions-1",
+  "stat-independence-unions-2",
+  "stat-independence-unions-3",
+  "stat-independence-unions-6",
+  "stat-independence-unions-10",
+  "stat-independence-unions-13"
+ ],
+ "summary": "Events are independent when $P(A \\mid B) = P(A)$; then the probability of both is the product $P(A) \\cdot P(B)$. Check independence with the numbers, never by assumption alone. The probability of A or B is $P(A) + P(B) - P(A \\cap B)$, subtracting the overlap that would be counted twice; for mutually exclusive events the overlap is 0."
+}

@@ -1,0 +1,71 @@
+{
+ "hook": "Two scatterplots both show \"a strong positive association\". Which is stronger? Words like strong and weak are hard to compare. The correlation coefficient $r$ turns the direction and strength of a linear pattern into one number between $-1$ and 1, and it works the same way for any two quantitative variables, in any units.",
+ "prereq": [
+  {
+   "q": "A value is 1 standard deviation below the mean. What is its z-score?",
+   "options": [
+    "$-1$",
+    "$1$",
+    "$0$",
+    "$-0.5$"
+   ],
+   "correct": 0,
+   "why": "A z-score counts standard deviations from the mean; below is negative.",
+   "review": "comparing-distributions"
+  },
+  {
+   "q": "Which word describes a scatterplot whose points fall from upper left to lower right?",
+   "options": [
+    "negative",
+    "positive",
+    "curved",
+    "strong"
+   ],
+   "correct": 0,
+   "why": "One variable rises as the other falls: a negative direction.",
+   "review": "scatterplots"
+  }
+ ],
+ "figure": {
+  "figure": "correlation-gallery",
+  "caption": "Four data sets and their correlations. The arch has $r$ near 0 even though $x$ and $y$ are closely related."
+ },
+ "chain": [
+  {
+   "cause": "Standardize each value: $z_x = \\frac{x - \\bar{x}}{s_x}$ and $z_y = \\frac{y - \\bar{y}}{s_y}$",
+   "effect": "units disappear, so $r$ is the same in any units"
+  },
+  {
+   "cause": "Points above average on both or below average on both",
+   "effect": "give positive products $z_x z_y$; mixed points give negative products"
+  },
+  {
+   "cause": "Average the products: $r = \\frac{1}{n - 1}\\sum z_x z_y$",
+   "effect": "$r$ is positive for a rising pattern, negative for a falling one, and near $\\pm 1$ when points hug a line"
+  },
+  {
+   "cause": "$r$ measures only how well a straight line fits",
+   "effect": "always plot first: a curve can have $r$ near 0, and one outlier can change $r$ a lot"
+  }
+ ],
+ "ideas": [
+  "The correlation $r$ measures the direction and strength of a linear association; $-1 \\le r \\le 1$.",
+  "Interpret: \"$r = 0.95$: a strong, positive, linear association between hours studied and quiz score.\"",
+  "$r$ has no units, does not change when units change, and is the same if $x$ and $y$ swap.",
+  "$r$ is not resistant, measures only linear patterns, and never shows cause."
+ ],
+ "misconception": {
+  "wrong": "A correlation near 0 means the two variables are unrelated.",
+  "right": "A correlation near 0 means there is no linear association. The variables can still be strongly related along a curve, so look at the scatterplot before trusting $r$."
+ },
+ "check": [
+  "stat-correlation-1",
+  "stat-correlation-2",
+  "stat-correlation-3",
+  "stat-correlation-4",
+  "stat-correlation-5",
+  "stat-correlation-12"
+ ],
+ "summary": "The correlation $r = \\frac{1}{n - 1}\\sum z_x z_y$ gives the direction (sign) and strength (closeness to $\\pm 1$) of a linear association. It has no units, ignores which variable is explanatory, is pulled by outliers, misses curved patterns, and says nothing about cause.",
+ "topic": "correlation"
+}

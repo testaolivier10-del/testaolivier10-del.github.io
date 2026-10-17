@@ -1,0 +1,47 @@
+<p>Some random variables are measurements rather than counts: an egg's weight, a battery's life, a person's height. They can take any value in a range, so there is no list of values to put in a table. Instead, a smooth curve describes the distribution, and probabilities are areas under it. The most important such curve is the normal curve.</p>
+
+<h2>Density curves</h2>
+<p>A <b>density curve</b> is a smooth curve that lies on or above the horizontal axis and has an area of exactly 1 under it. The area over any interval is the proportion of values in that interval, which is also the probability that a randomly chosen value lands there. It is like a histogram with very narrow bars, rescaled so the total area is 1.</p>
+<p>One consequence surprises people: the probability of any single exact value is 0, because a single point has no width and so no area. $P(\text{weight} = 60)$ is 0; $P(59.5 < \text{weight} < 60.5)$ is not. For the same reason, $P(X < 60)$ and $P(X \le 60)$ are equal for a continuous random variable.</p>
+
+<h2>Normal distributions</h2>
+<p>A <b>normal distribution</b> has a symmetric, single-peaked, bell-shaped density curve. Two parameters fix it: the mean $\mu$, at the center, and the standard deviation $\sigma$, which sets the spread. Write it $N(\mu, \sigma)$. Egg weights at a farm might be $N(58, 4)$ grams. The curve changes from bending down to bending up one standard deviation from the mean on each side, at 54 and 62 grams.</p>
+<figure id="fig-emp" data-fig="u2-empirical-rule"><figcaption>The empirical rule for egg weights, $N(58, 4)$.</figcaption></figure>
+<p>Every normal curve has the same shape when measured in standard deviations, which gives the <b>empirical rule</b>, shown in <a class="figref" href="#fig-emp">the figure</a>:</p>
+<ul>
+<li>about 68% of values lie within 1 standard deviation of the mean (54 to 62 grams);</li>
+<li>about 95% lie within 2 standard deviations (50 to 66 grams);</li>
+<li>about 99.7% lie within 3 standard deviations (46 to 70 grams).</li>
+</ul>
+<p>Because the curve is symmetric, the leftover 5% outside 2 standard deviations splits evenly: about 2.5% of eggs weigh more than 66 grams.</p>
+<p>A normal model is a model, not a law. It fits many roughly symmetric, mound-shaped distributions. It does not fit strongly skewed data, like bank waiting times, whatever their mean and standard deviation.</p>
+
+<h2>Standardizing: the standard normal</h2>
+<p>For values that are not a whole number of standard deviations away, standardize. The z-score from Unit 1, $z = \frac{x - \mu}{\sigma}$, says how many standard deviations a value is from the mean. Standardizing a normal random variable gives the <b>standard normal distribution</b>, $N(0, 1)$. Table A on the reference sheet lists the area to the left of each z from about −3.4 to 3.4; a calculator's normal area command gives the same areas directly.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Battery life B is $N(18, 1.5)$ hours. Find the probability that a battery lasts less than 16 hours.</p>
+<p>Name the distribution, boundary and direction: B is $N(18, 1.5)$; we want $P(B < 16)$, the area to the left of 16. A sketch shades the left tail.</p>
+<p>Standardize: $z = \frac{16 - 18}{1.5} \approx -1.33$.</p>
+<p>Find the area: $P(Z < -1.33) = 0.0918$ from Table A (technology, without rounding z: 0.0912). About 9% of batteries last less than 16 hours.</p>
+</div>
+<p>For an area to the right, subtract from 1: $P(Z > 1.5) = 1 - 0.9332 = 0.0668$. For an area between two values, subtract two left areas: with egg weights, $P(55 < W < 60) = P(-0.75 < Z < 0.5) = 0.6915 - 0.2266 = 0.4649$.</p>
+
+<h2>Working backward: from an area to a value</h2>
+<p>Sometimes the area is given and the boundary is wanted, such as a percentile or a cutoff. Reverse the steps: find the z with the right area to its left (Table A read from the inside out, or an inverse normal command), then turn it back into the original units with $x = \mu + z\sigma$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> The heaviest 5% of eggs are sold as jumbo. Find the minimum jumbo weight.</p>
+<p>The boundary has 95% of the area below it, so $z \approx 1.645$.</p>
+<p>Unstandardize: $x = 58 + 1.645(4) \approx 64.6$ grams. Eggs of about 64.6 grams or more are jumbo.</p>
+</div>
+
+<h2>Show the work the exam asks for</h2>
+<p>A calculator command on its own ("normalcdf") does not earn credit. Write the distribution and its parameters, the boundary, and the direction, with a labeled sketch or in symbols: "W is $N(58, 4)$; $P(W > 66) = P(Z > 2) \approx 0.0228$." Then answer in context.</p>
+<table class="compare">
+<thead><tr><th>Question</th><th>Steps</th></tr></thead>
+<tbody>
+<tr><td>Area from a value</td><td>name $N(\mu, \sigma)$, sketch, $z = \frac{x - \mu}{\sigma}$, area to the left (subtract from 1 for the right)</td></tr>
+<tr><td>Area between two values</td><td>two z-scores, subtract the two left areas</td></tr>
+<tr><td>Value from an area</td><td>area to the left, inverse normal z, $x = \mu + z\sigma$</td></tr>
+<tr><td>Comparing two values on different scales</td><td>compare z-scores, not raw values</td></tr>
+</tbody>
+</table>

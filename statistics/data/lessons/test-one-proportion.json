@@ -1,0 +1,73 @@
+{
+ "topic": "test-one-proportion",
+ "hook": "A school district starts a mentoring program, and this year's random sample shows 14% of students chronically absent, down from 18% last year. The superintendent wants to announce that absence has dropped. A complete significance test says whether the data back her up, and it also says what she still cannot claim.",
+ "prereq": [
+  {
+   "q": "For $H_0: p = 0.18$, $H_a: p < 0.18$, $n = 450$ and $\\hat{p} = 0.14$, which is the test statistic?",
+   "options": [
+    "$\\frac{0.14 - 0.18}{\\sqrt{0.18(0.82)/450}}$",
+    "$\\frac{0.14 - 0.18}{\\sqrt{0.14(0.86)/450}}$",
+    "$\\frac{0.18 - 0.14}{\\sqrt{0.18(0.82)/450}}$",
+    "$\\frac{0.14 - 0.18}{0.18(0.82)/450}$"
+   ],
+   "correct": 0,
+   "why": "Statistic minus null value, over the standard deviation computed with $p_0 = 0.18$.",
+   "review": "p-values"
+  },
+  {
+   "q": "Which hypotheses fit \"has the proportion gone down from 18%?\"",
+   "options": [
+    "$H_0: p = 0.18$, $H_a: p < 0.18$",
+    "$H_0: p = 0.18$, $H_a: p \\ne 0.18$",
+    "$H_0: p < 0.18$, $H_a: p = 0.18$",
+    "$H_0: \\hat{p} = 0.18$, $H_a: \\hat{p} < 0.18$"
+   ],
+   "correct": 0,
+   "why": "The equals sign goes in $H_0$; \"gone down\" gives a one-sided alternative about $p$.",
+   "review": "test-one-proportion-setup"
+  }
+ ],
+ "figure": {
+  "figure": "test-four-steps",
+  "caption": "State, plan, do, conclude: a complete one-sample z test for a proportion, with every part written out."
+ },
+ "chain": [
+  {
+   "cause": "The p-value is less than $\\alpha$",
+   "effect": "the result is too unusual under $H_0$: reject $H_0$, and there is convincing evidence for $H_a$"
+  },
+  {
+   "cause": "The p-value is greater than $\\alpha$",
+   "effect": "fail to reject $H_0$: there is not convincing evidence for $H_a$ (which does not make $H_0$ true)"
+  },
+  {
+   "cause": "The data come from a random sample",
+   "effect": "the conclusion applies to the population that was sampled"
+  },
+  {
+   "cause": "There was no random assignment to treatments",
+   "effect": "the test can show a change but not what caused it"
+  }
+ ],
+ "ideas": [
+  "Four steps: State ($H_0$, $H_a$, $\\alpha$, $p$ defined), Plan (procedure, conditions), Do ($z$, p-value), Conclude.",
+  "Conclusion: \"Because the p-value of __ is less than $\\alpha$ = __, we reject $H_0$. There is convincing evidence that the true proportion of all __ is __ than __.\"",
+  "Fail to reject: \"there is not convincing evidence that ...\", still naming the direction of $H_a$. Never \"accept $H_0$\" or \"prove\".",
+  "A two-sided test at $\\alpha = 0.05$ almost always rejects when $p_0$ is outside the 95% interval, and fails to reject when it is inside.",
+  "Random sampling lets you generalize; only random assignment lets you claim cause."
+ ],
+ "misconception": {
+  "wrong": "The p-value of 0.38 is greater than 0.05, so we accept $H_0$: the proportion has not changed.",
+  "right": "Fail to reject $H_0$: there is not convincing evidence that the proportion has changed. The data are consistent with $H_0$, but a test cannot show that $H_0$ is true."
+ },
+ "check": [
+  "stat-test-one-proportion-1",
+  "stat-test-one-proportion-2",
+  "stat-test-one-proportion-3",
+  "stat-test-one-proportion-4",
+  "stat-test-one-proportion-7",
+  "stat-test-one-proportion-13",
+  "stat-test-one-proportion-16"
+ ],
+ "summary": "A complete test runs state, plan, do, conclude. It states hypotheses about $p$ with $\\alpha$, names the one-sample z test for a proportion and checks random, 10% and large counts with $p_0$, computes $z$ and the p-value, then concludes: compare the p-value with $\\alpha$, reject or fail to reject $H_0$, and say whether there is convincing evidence for $H_a$ about the true proportion of all ..., in context. Never accept $H_0$, and claim cause only from a randomized experiment."
+}

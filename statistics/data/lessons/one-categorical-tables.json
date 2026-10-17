@@ -1,0 +1,81 @@
+{
+ "topic": "one-categorical-tables",
+ "hook": "A city newspaper asks 160 adults where they get their news. Fifty-six say social media and 40 say television. A second city asks 500 adults and 130 say television. Which city leans more on television? The counts 40 and 130 cannot answer it, because the samples are different sizes. Dividing each count by its total can.",
+ "prereq": [
+  {
+   "q": "What is 40 out of 160 as a decimal?",
+   "options": [
+    "0.25",
+    "0.4",
+    "4",
+    "0.04"
+   ],
+   "correct": 0,
+   "why": "Part over whole: 40/160 = 0.25.",
+   "review": "math-fractions-percents"
+  },
+  {
+   "q": "A survey records each adult’s main news source. What kind of variable is that?",
+   "options": [
+    "Categorical",
+    "Quantitative and discrete",
+    "Quantitative and continuous",
+    "A statistic"
+   ],
+   "correct": 0,
+   "why": "Each adult is placed in a group (a source), so the variable is categorical.",
+   "review": "variables"
+  }
+ ],
+ "figure": {
+  "figure": "counts-to-relative",
+  "caption": "Counting students in each category gives the frequencies; dividing each by the total, 250, gives the relative frequencies, which add to 1."
+ },
+ "chain": [
+  {
+   "cause": "Each individual falls in one category of a categorical variable",
+   "effect": "counting each category gives a frequency table"
+  },
+  {
+   "cause": "Divide each count by the total",
+   "effect": "the relative frequencies are parts of the whole, between 0 and 1, and they add to 1"
+  },
+  {
+   "cause": "Relative frequencies all divide by their own totals",
+   "effect": "samples of different sizes can be compared fairly"
+  },
+  {
+   "cause": "The relative frequency of a category in a sample is $\\hat{p}$",
+   "effect": "it is a statistic that estimates p, the proportion in the whole population"
+  }
+ ],
+ "ideas": [
+  "A <b>frequency table</b> lists each category of a categorical variable and its count (frequency).",
+  "A <b>relative frequency</b> is a count divided by the total. Relative frequencies are between 0 and 1 and add to 1 when categories do not overlap.",
+  "Count = relative frequency × total, so a relative frequency table needs the total to get back to counts.",
+  "The <b>sample proportion</b> $\\hat{p}$ is the relative frequency of a category in a sample, a statistic. The <b>population proportion</b> $p$ is the same quantity for the whole population, a parameter."
+ ],
+ "misconception": {
+  "wrong": "The second city has 130 television viewers against 40, so a larger share of its adults watch television.",
+  "right": "Compare relative frequencies: $\\frac{40}{160} = 0.25$ and $\\frac{130}{500} = 0.26$. The shares are almost the same; the second sample is simply bigger."
+ },
+ "check": [
+  "stat-one-categorical-tables-1",
+  "stat-one-categorical-tables-2",
+  "stat-one-categorical-tables-3",
+  "stat-one-categorical-tables-4",
+  "stat-one-categorical-tables-10",
+  "stat-one-categorical-tables-15"
+ ],
+ "summary": "A frequency table counts each category; a relative frequency divides each count by the total, so relative frequencies are between 0 and 1, add to 1, and compare groups of different sizes. In a sample, the relative frequency of a category is the sample proportion $\\hat{p}$, a statistic that estimates the population proportion $p$.",
+ "connections": [
+  {
+   "href": "../notes/variables.html",
+   "label": "Back: variables (1.2)"
+  },
+  {
+   "href": "../notes/one-categorical-displays.html",
+   "label": "Next: graphs for one categorical variable (1.4)"
+  }
+ ]
+}

@@ -1,0 +1,287 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "stat-math-lines-1",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A line passes through the points $(2, 7)$ and $(6, 19)$. What is its slope?",
+   "why": {
+    "correct": "Slope = $\\frac{\\text{rise}}{\\text{run}} = \\frac{19 - 7}{6 - 2} = \\frac{12}{4} = 3$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "from": {
+     "fn": "lsrl",
+     "args": [
+      [2, 6],
+      [7, 19]
+     ],
+     "pick": "b"
+    },
+    "mistakes": [
+     {
+      "value": 0.3333333333333333,
+      "why": "That is run over rise. Slope is rise over run: (19 − 7)/(6 − 2)."
+     },
+     {
+      "value": 12,
+      "why": "That is the rise alone. Divide by the run, 6 − 2 = 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-lines-2",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the same line through $(2, 7)$ and $(6, 19)$, what is the y-intercept?",
+   "why": {
+    "correct": "With slope 3, $y = a + 3x$. Using $(2, 7)$: $7 = a + 3(2)$, so $a = 1$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "from": {
+     "fn": "lsrl",
+     "args": [
+      [2, 6],
+      [7, 19]
+     ],
+     "pick": "a"
+    },
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "That is y at x = 2. The intercept is y at x = 0: 7 − 3(2) = 1."
+     },
+     {
+      "value": 13,
+      "why": "That adds the slope times 2 instead of subtracting: going from x = 2 back to x = 0 lowers y by 3 × 2."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-lines-3",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Type the expression for the slope of the line through $(1, 40)$ and $(5, 28)$.",
+   "why": {
+    "correct": "$\\frac{28 - 40}{5 - 1} = \\frac{-12}{4} = -3$: the line falls 3 units for each 1 unit to the right."
+   },
+   "setup": {
+    "answer": "(28 - 40)/(5 - 1)",
+    "mustUse": [
+     "28",
+     "40"
+    ],
+    "mistakes": [
+     {
+      "expr": "(5 - 1)/(28 - 40)",
+      "why": "That is run over rise. Put the change in y on top."
+     },
+     {
+      "expr": "(28 - 40)/(1 - 5)",
+      "why": "Subtract in the same order on top and bottom: (28 − 40)/(5 − 1)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-lines-4",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bike rental costs $y = 12 + 3x$ dollars for $x$ hours. What does the slope 3 tell you?",
+   "why": {
+    "correct": "Slope = change in y per one-unit increase in x: 3 dollars more for each extra hour.",
+    "options": [
+     "That would be the intercept, which here is 12 dollars.",
+     "Right: the slope is the change in y for each one-unit increase in x.",
+     "The slope is a rate, not a limit on x.",
+     "That ignores the 12 dollar start; the cost is 12 plus 3 per hour."
+    ]
+   },
+   "options": [
+    "The rental costs 3 dollars before any time is used",
+    "The cost goes up 3 dollars for each additional hour",
+    "The bike can be rented for at most 3 hours",
+    "The total cost of the rental is 3 times the hours"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-lines-5",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "For the rental cost $y = 12 + 3x$, what does the y-intercept 12 tell you?",
+   "why": {
+    "correct": "The y-intercept is the value of y when $x = 0$: a 12 dollar fee before any hours.",
+    "options": [
+     "That would be a slope of 12; the slope here is 3.",
+     "The intercept is a value of y (dollars), not of x.",
+     "After the start, each hour adds 3 dollars.",
+     "Right: the intercept is the value of y when x = 0."
+    ]
+   },
+   "options": [
+    "The cost goes up 12 dollars for each hour",
+    "The rental lasts 12 hours",
+    "The cost is 12 dollars per hour after the first hour",
+    "The cost is 12 dollars at 0 hours, a fixed fee"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-math-lines-6",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Using $y = 12 + 3x$, what is the cost of a 5-hour rental?",
+   "why": {
+    "correct": "Substitute and follow the order of operations: $12 + 3(5) = 12 + 15 = 27$ dollars.",
+    "options": [
+     "Right: $12 + 3(5) = 27$.",
+     "That works out $(12 + 3) \\times 5$. Multiply first: $3 \\times 5 = 15$, then add 12.",
+     "That adds 12 + 3 + 5 instead of multiplying 3 by 5.",
+     "That leaves out the 12 dollar fee."
+    ]
+   },
+   "options": [
+    "27 dollars",
+    "75 dollars",
+    "20 dollars",
+    "15 dollars"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-lines-7",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cooling drink’s temperature is $y = 80 - 2.5x$ degrees after $x$ minutes. What does the slope tell you?",
+   "why": {
+    "correct": "Slope $-2.5$: for each one-minute increase, the temperature decreases by 2.5 degrees.",
+    "options": [
+     "The minus sign means the temperature falls.",
+     "The start, at $x = 0$, is 80 degrees.",
+     "Right: a negative slope means y goes down as x goes up.",
+     "80 is the starting temperature, not a rate."
+    ]
+   },
+   "options": [
+    "The temperature rises 2.5 degrees for each minute",
+    "The drink starts at 2.5 degrees",
+    "The temperature falls 2.5 degrees for each minute",
+    "The drink is 80 degrees colder after each minute"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-lines-8",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which line rises most steeply?",
+   "why": {
+    "correct": "Steepness of a rising line is its slope; the intercept only moves the line up or down.",
+    "options": [
+     "Its intercept is larger, but its slope is only 2.",
+     "Its slope, $-6$, is steep but falling, not rising.",
+     "Right: its slope, 5, is the largest, so y rises fastest as x increases.",
+     "Its slope is 1."
+    ]
+   },
+   "options": [
+    "$y = 20 + 2x$",
+    "$y = 9 - 6x$",
+    "$y = 2 + 5x$",
+    "$y = 5 + x$"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-lines-9",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A line for adults gives height in centimeters from shoe length in centimeters: $y = 95 + 2.8x$. Why does the intercept 95 have no sensible meaning here?",
+   "why": {
+    "correct": "Interpret an intercept only when $x = 0$ makes sense in context; a shoe length of 0 does not.",
+    "options": [
+     "Right: the intercept is y at $x = 0$, far outside any real shoe length.",
+     "Some people are 95 cm tall; the problem is the x-value, 0.",
+     "A positive slope says nothing about the intercept’s value.",
+     "The intercept is in y’s units, centimeters of height."
+    ]
+   },
+   "options": [
+    "A shoe length of 0 cm is impossible for an adult",
+    "No adult is 95 centimeters tall",
+    "The slope is positive, so the intercept is zero",
+    "Intercepts are given in different units from y"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-lines-10",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A line has slope 4 and passes through $(3, 20)$. What is its equation?",
+   "why": {
+    "correct": "Write $y = a + 4x$ and substitute the point: $20 = a + 12$, so $a = 8$.",
+    "options": [
+     "That uses 20 as the intercept, but 20 is y at $x = 3$, not at $x = 0$.",
+     "That uses the x-value as the intercept.",
+     "That adds $4 \\times 3$ instead of subtracting it.",
+     "Right: $20 = a + 4(3)$, so $a = 8$."
+    ]
+   },
+   "options": [
+    "$y = 20 + 4x$",
+    "$y = 3 + 4x$",
+    "$y = 32 + 4x$",
+    "$y = 8 + 4x$"
+   ],
+   "correct": 3
+  }
+ ]
+}

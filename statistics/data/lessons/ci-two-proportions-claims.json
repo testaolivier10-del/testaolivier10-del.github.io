@@ -1,0 +1,71 @@
+{
+ "hook": "A college says weekly nudge emails help students finish online courses, and its study gives a 95% interval for the difference in finishing rates from 0.03 to 0.11. Another study of snack sales at two stores gives an interval from $-0.04$ to 0.06. One interval supports a claim and the other does not. The difference is where 0 sits.",
+ "prereq": [
+  {
+   "q": "A 95% interval for $p$ is from 0.44 to 0.52. Is 0.5 a plausible value of $p$?",
+   "options": [
+    "Yes, it is inside the interval",
+    "No, it is above the center",
+    "No, the interval is too wide",
+    "Only at 99% confidence"
+   ],
+   "correct": 0,
+   "why": "Values inside the interval are plausible.",
+   "review": "ci-one-proportion-claims"
+  },
+  {
+   "q": "What does the interval $(\\hat{p}_1 - \\hat{p}_2) \\pm z^* \\text{SE}$ estimate?",
+   "options": [
+    "$p_1 - p_2$",
+    "$\\hat{p}_1 - \\hat{p}_2$",
+    "$p_1$",
+    "the standard error"
+   ],
+   "correct": 0,
+   "why": "An interval estimates a parameter: the true difference.",
+   "review": "ci-two-proportions"
+  }
+ ],
+ "figure": {
+  "figure": "intervals-vs-zero",
+  "caption": "Three 95% intervals for $p_1 - p_2$. Where 0 falls decides the claim each one supports."
+ },
+ "chain": [
+  {
+   "cause": "A difference of 0 means $p_1 = p_2$",
+   "effect": "ask whether 0 is a plausible value of $p_1 - p_2$, that is, whether it is inside the interval"
+  },
+  {
+   "cause": "Every value in the interval is greater than 0",
+   "effect": "the interval gives convincing evidence that $p_1 > p_2$ (less than 0: that $p_1 < p_2$)"
+  },
+  {
+   "cause": "The interval contains 0",
+   "effect": "equal proportions are plausible, so there is not convincing evidence of a difference, and the interval does not prove there is none"
+  },
+  {
+   "cause": "A claim names a value such as \"15 points more\"",
+   "effect": "check that value the same way: inside the interval means plausible, outside means convincing evidence against it"
+  }
+ ],
+ "ideas": [
+  "Entirely above 0: convincing evidence $p_1 > p_2$. Entirely below 0: convincing evidence $p_1 < p_2$. Contains 0: no convincing evidence of a difference.",
+  "Write the claim with the reason first: \"Because every value in the interval is greater than 0, the interval gives convincing evidence that ...\"",
+  "A 95% interval and a two-sided test at $\\alpha = 0.05$ nearly always agree about whether 0 is plausible.",
+  "Containing 0 never proves the proportions are equal; very large samples can make even tiny differences convincing."
+ ],
+ "misconception": {
+  "wrong": "If the interval contains 0, the study proved that the two proportions are the same.",
+  "right": "Containing 0 only means a difference of 0 is plausible. Other values in the interval are plausible too, so the right wording is \"not convincing evidence of a difference\"."
+ },
+ "check": [
+  "stat-ci-two-proportions-claims-1",
+  "stat-ci-two-proportions-claims-2",
+  "stat-ci-two-proportions-claims-3",
+  "stat-ci-two-proportions-claims-4",
+  "stat-ci-two-proportions-claims-10",
+  "stat-ci-two-proportions-claims-13"
+ ],
+ "summary": "To judge a claim with an interval for $p_1 - p_2$, look at where 0, or the claimed value, sits. Entirely above or below 0 gives convincing evidence of a difference in that direction; an interval that contains 0 gives no convincing evidence of a difference, which is not proof of equality. State the reason, the evidence and the parameter in context.",
+ "topic": "ci-two-proportions-claims"
+}

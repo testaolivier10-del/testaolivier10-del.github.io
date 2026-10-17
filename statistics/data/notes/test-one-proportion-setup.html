@@ -1,0 +1,54 @@
+<p>A confidence interval answers "what is $p$, roughly?". A <b>significance test</b> answers a different question: "is there evidence against one particular claimed value of $p$?". This topic is the setup, the part you do before any data are analyzed: the hypotheses, the significance level, the procedure and the conditions. Most points lost on test questions are lost here, so we go slowly.</p>
+
+<h2>Two competing claims</h2>
+<p>Every test weighs two hypotheses about a parameter.</p>
+<ul>
+<li>The <b>null hypothesis</b> $H_0$ is the "nothing new" claim: the proportion equals a specific value, the <b>null value</b> $p_0$. It always has the equals sign.</li>
+<li>The <b>alternative hypothesis</b> $H_a$ is what the study hopes to find evidence for: the proportion is less than, greater than, or different from $p_0$.</li>
+</ul>
+<p>Write them with the parameter, then define the parameter in context right away:</p>
+<p style="text-align:center">$H_0: p = 0.70$ &nbsp;&nbsp; $H_a: p < 0.70$, where $p$ is the true proportion of all the city's households that recycle this year.</p>
+<p>Hypotheses are always about $p$, the population, never about $\hat{p}$. We know $\hat{p}$ exactly once we have data, so there is nothing to test about it.</p>
+
+<h2>One-sided or two-sided</h2>
+<p>The direction of $H_a$ comes from the research question, in its own words, before the data are seen.</p>
+<figure id="fig-dirs" data-fig="alternative-directions"><figcaption>The null value 0.70 and the three possible alternatives: less than, greater than, and different from (two-sided).</figcaption></figure>
+<table>
+<thead><tr><th scope="col">The question says</th><th scope="col">Alternative</th><th scope="col">Kind</th></tr></thead>
+<tbody>
+<tr><td>"has dropped", "is lower", "fewer than"</td><td>$H_a: p < p_0$</td><td>one-sided</td></tr>
+<tr><td>"has increased", "more than", "exceeds"</td><td>$H_a: p > p_0$</td><td>one-sided</td></tr>
+<tr><td>"has changed", "is different", "is off", no direction</td><td>$H_a: p \ne p_0$</td><td>two-sided</td></tr>
+</tbody>
+</table>
+<p>Never choose the direction after looking at the sample. If a designer asks "is the spinner fair?" and then sees 31% red, the alternative is still $p \ne 0.25$. Picking $p > 0.25$ because the data went that way makes ordinary chance results look more convincing than they are, and readers mark it wrong.</p>
+
+<h2>The significance level</h2>
+<p>Before collecting data, choose the <b>significance level</b> $\alpha$ (alpha), usually 0.05, sometimes 0.01 or 0.10. It is your standard of evidence: how unlikely the sample result must be, if $H_0$ were true, before you stop believing $H_0$. A smaller $\alpha$ is a stricter standard. In the next two topics you will compare a probability from the data with $\alpha$, so it has to be fixed first.</p>
+
+<h2>The procedure and its conditions</h2>
+<p>For one random sample and a claim about one population proportion, the procedure is the <b>one-sample z test for a proportion</b> (also called a one-proportion z test). Name it in full. The conditions are the ones you know, with one change:</p>
+<ul>
+<li><b>Random:</b> a random sample (or random assignment).</li>
+<li><b>10%:</b> $n$ is at most 10% of the population when sampling without replacement.</li>
+<li><b>Large counts, using $p_0$:</b> $np_0 \ge 10$ and $n(1 - p_0) \ge 10$.</li>
+</ul>
+<p>Why $p_0$ and not $\hat{p}$? A test reasons inside the world where $H_0$ is true, and in that world $p = p_0$. So the expected numbers of successes and failures come from $p_0$. (For a confidence interval there is no claimed value, so you used the sample's counts instead.)</p>
+
+<div class="worked">
+<p><b>Worked example.</b> Last year 70% of a city's households recycled. After the city stopped collecting glass at the curb, an environmental group suspects the proportion has dropped. It will survey a random sample of 250 of the city's 82,000 households and use $\alpha = 0.05$. Set up the test.</p>
+<p><b>Hypotheses.</b> $H_0: p = 0.70$, $H_a: p < 0.70$, where $p$ is the true proportion of all the city's households that recycle this year. One-sided, because the group suspects a drop.</p>
+<p><b>Significance level.</b> $\alpha = 0.05$, chosen in advance.</p>
+<p><b>Procedure.</b> One-sample z test for a proportion.</p>
+<p><b>Conditions.</b> Random: the group will survey a random sample of 250 households. 10%: 250 is less than 10% of the 82,000 households (8,200). Large counts: $np_0 = 250(0.70) = 175 \ge 10$ and $n(1 - p_0) = 250(0.30) = 75 \ge 10$.</p>
+<p>All three conditions are met, so the sampling distribution of $\hat{p}$, assuming $H_0$ is true, is approximately normal with mean 0.70 and standard deviation $\sqrt{\frac{0.70(0.30)}{250}} = 0.029$.</p>
+</div>
+
+<h2>A checklist for the setup</h2>
+<ol>
+<li>Hypotheses about $p$, with the null value from the claim and the direction from the question.</li>
+<li>$p$ defined in context: "the true proportion of all ... who ...".</li>
+<li>$\alpha$ stated before the data.</li>
+<li>Procedure named in full.</li>
+<li>Random, 10% and large counts with $p_0$, each in words with numbers.</li>
+</ol>

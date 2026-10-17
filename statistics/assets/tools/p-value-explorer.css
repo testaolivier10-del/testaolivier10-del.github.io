@@ -1,0 +1,93 @@
+/* p-value explorer (statistics/assets/tools/p-value-explorer.js). OWNED BY THIS TOOL ONLY.
+   Colours are the course's series tokens: the null distribution --stat-s1
+   (blue), the true (alternative) distribution --stat-s2 (vermillion), power
+   --stat-s3 (green); the observed statistic is ink. */
+.pv-ex{margin:0;}
+.pv-stage{display:flex;flex-direction:column;gap:8px;min-height:0;height:100%;}
+.pv-fig{position:relative;flex:1 1 auto;min-height:200px;}
+.pv-svg{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;font-family:var(--font-ui);}
+.pv-qfig{position:relative;flex:1 1 auto;min-height:180px;}
+.pv-qfig .pv-svg{touch-action:auto;}
+.pv-under{fill:var(--stat-s1);fill-opacity:.07;stroke:none;}
+.pv-curve{fill:none;stroke-width:2.6;stroke-linejoin:round;}
+.pv-curve.s1{stroke:var(--stat-s1);} .pv-curve.s2{stroke:var(--stat-s2);}
+.pv-pshade{fill:var(--stat-s1);fill-opacity:.55;stroke:none;}
+.pv-alpha{stroke:none;}
+.pv-hatch-bg{fill:var(--stat-s1);fill-opacity:.22;}
+.pv-hatch{stroke:var(--stat-s1);stroke-width:2.2;}
+.pv-beta{fill:var(--stat-s2);fill-opacity:.2;stroke:none;}
+.pv-power{fill:var(--stat-s3);fill-opacity:.5;stroke:none;}
+.pv-axis{stroke:var(--ink);stroke-width:1.4;}
+.pv-tick,.pv-ztick{stroke:var(--muted);stroke-width:1.2;}
+.pv-tl{fill:var(--ink);font-size:12.5px;font-weight:600;}
+.pv-zl{fill:var(--muted);font-size:11.5px;font-weight:600;}
+.pv-an{fill:var(--ink);font-size:13px;font-weight:800;font-style:italic;}
+.pv-zn{fill:var(--muted);}
+.pv-cl{fill:var(--muted);font-size:12px;font-weight:700;}
+.pv-cl.s1t{fill:var(--stat-s1);} .pv-cl.s2t{fill:var(--stat-s2);}
+.pv-cut{stroke:var(--muted);stroke-width:1.6;stroke-dasharray:5 4;}
+.pv-cut.is-e{stroke:var(--ink);}
+.pv-cutl,.pv-rl{fill:var(--muted);font-size:11.5px;font-weight:700;}
+.pv-rl{fill:var(--ink);}
+.pv-obs{stroke:var(--ink);stroke-width:2.2;}
+.pv-mirror{stroke:var(--ink);stroke-width:1.6;stroke-dasharray:4 3;opacity:.7;}
+.pv-tag rect{fill:var(--ink);}
+.pv-tag text{fill:var(--white);font-size:12.5px;font-weight:800;}
+.pv-parea{fill:var(--stat-s1);font-size:13px;font-weight:900;paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.pv-handle{cursor:grab;outline:none;}
+.pv-handle.is-drag{cursor:grabbing;}
+.pv-hit{fill:transparent;}
+.pv-halo{fill:var(--cink);fill-opacity:.16;}
+.pv-dot{fill:var(--cink);stroke:var(--white);stroke-width:2.5;}
+.pv-handle:focus-visible .pv-halo{fill-opacity:.36;stroke:var(--cink);stroke-width:2;}
+@media (prefers-reduced-motion: no-preference){ .pv-handle .pv-halo{transition:fill-opacity .15s;} }
+
+/* the 2 x 2 table (Errors and power) */
+.pv-table{flex:none;}
+.pv-2x2{width:100%;border-collapse:separate;border-spacing:4px;font:600 13px/1.25 var(--font-ui);table-layout:fixed;}
+.pv-2x2 th{font-weight:800;color:var(--muted);text-align:left;padding:2px 4px;font-size:12.5px;}
+.pv-2x2 thead th{text-align:center;}
+.pv-2x2 td{border-radius:10px;padding:6px 8px;text-align:center;background:var(--surface2, #f3f3f3);}
+.pv-2x2 td b{display:block;font-weight:800;}
+.pv-2x2 td span{font-variant-numeric:tabular-nums;}
+.pv-2x2 td.is-alpha{background:color-mix(in srgb, var(--stat-s1) 18%, transparent);}
+.pv-2x2 td.is-power{background:color-mix(in srgb, var(--stat-s3) 26%, transparent);}
+.pv-2x2 td.is-beta{background:color-mix(in srgb, var(--stat-s2) 20%, transparent);}
+
+/* dock */
+.pv-dock{display:flex;flex-direction:column;gap:10px;}
+.pv-segw{display:flex;flex-direction:column;gap:4px;}
+.pv-seglab{font:800 var(--ls-s, 13px) var(--font-ui);color:var(--muted);}
+.pv-seglab:empty{display:none;}
+.pv-seg > button{font-weight:800;}
+.pv-dp,.pv-de{display:flex;flex-direction:column;gap:10px;}
+.pv-dp[hidden],.pv-de[hidden]{display:none;}
+.pv-ntbl td,.pv-ntbl th{font-size:14px;}
+.pv-list{margin:6px 0;padding-left:20px;}
+.pv-list li{margin:4px 0;}
+
+/* the "which picture" choices */
+.pv-pic{display:block;width:100%;max-width:260px;height:auto;}
+.pv-pic-t{display:block;font:700 13px var(--font-ui);color:var(--muted);margin-top:2px;}
+
+.ls-root .pv-ls-stage{flex:1;min-height:0;display:flex;flex-direction:column;}
+.ls-root .pv-ls-stage > .pv-stage{flex:1;}
+.ls-root .pv-ls-dock .bt-cue{display:none;}
+.ls-root .pv-ls-why .bt-cue{display:block;font:600 var(--ls-s)/1.45 var(--font-ui);color:var(--muted);}
+.ls-root .pv-ls-why .bt-cue-k{display:none;}
+.ls-root .pv-ls-why .tx-where,.ls-root .pv-ls-why .bt-say{margin:0;padding:0;background:none;border:0;box-shadow:none;font-size:var(--ls-m);}
+.ls-root .pv-ls-why details.bt-why > summary{display:none;}
+.ls-root .ls-drill-stage .pv-qfig{flex:1;}
+.ls-root.ls-phone .pv-tl{font-size:13px;}
+.pv-lead{fill:none;stroke:var(--stat-s1);stroke-width:1.4;}
+.pv-leaddot{fill:var(--stat-s1);stroke:var(--white);stroke-width:1.5;}
+:root[data-theme="dark"] .pv-pshade{fill-opacity:.72;}
+:root[data-theme="dark"] .pv-under{fill-opacity:.04;}
+:root[data-theme="dark"] .pv-power{fill-opacity:.55;}
+:root[data-theme="dark"] .pv-beta{fill-opacity:.26;}
+.pv-seg > button{font-size:15px;white-space:nowrap;}
+.pv-table{padding-right:46px;}
+.pv-2x2 col.pv-c0{width:24%;}
+.pv-halo-t{paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.pv-obsdot{fill:var(--ink);stroke:var(--white);stroke-width:2;}
+.pv-pic .pv-cl{font-size:11px;}

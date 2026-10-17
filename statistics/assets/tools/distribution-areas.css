@@ -1,0 +1,75 @@
+/* Distribution areas (statistics/assets/tools/distribution-areas.js). OWNED BY THIS TOOL ONLY.
+   The distribution is --stat-s1 (blue) with its probability shaded in the same
+   colour; the normal shape over the bars is --stat-s4; boundaries are ink. */
+.da-ex{margin:0;}
+.da-stage{display:flex;flex-direction:column;min-height:0;height:100%;}
+.da-fig,.da-qfig{position:relative;flex:1 1 auto;min-height:190px;}
+.da-svg{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;font-family:var(--font-ui);}
+.da-qfig .da-svg{touch-action:auto;}
+.da-svg.is-drag{cursor:grabbing;}
+.da-under{fill:var(--stat-s1);fill-opacity:.07;}
+.da-shade{fill:var(--stat-s1);fill-opacity:.55;}
+.da-curve{fill:none;stroke:var(--stat-s1);stroke-width:2.6;stroke-linejoin:round;}
+.da-ncurve{fill:none;stroke:var(--stat-s4);stroke-width:2.4;stroke-dasharray:7 4;}
+.da-bar{fill:var(--stat-s1);fill-opacity:.22;stroke:var(--stat-s1);stroke-opacity:.55;stroke-width:1;}
+.da-bar.is-in{fill-opacity:.85;stroke-opacity:1;}
+.da-bar.is-k{stroke:var(--ink);stroke-width:2;stroke-opacity:1;}
+.da-grid{stroke:var(--line);stroke-width:1;}
+.da-yl{fill:var(--muted);font-size:11px;font-weight:600;}
+.da-axis{stroke:var(--ink);stroke-width:1.4;}
+.da-tick,.da-ztick{stroke:var(--muted);stroke-width:1.2;}
+.da-tl{fill:var(--ink);font-size:12.5px;font-weight:600;}
+.da-tl.is-k{font-weight:900;}
+.da-zl{fill:var(--muted);font-size:11.5px;font-weight:600;}
+.da-an{fill:var(--muted);font-size:13px;font-weight:800;font-style:italic;}
+.da-axl{fill:var(--muted);font-size:12.5px;font-weight:700;}
+.da-cl{fill:var(--muted);font-size:12px;font-weight:800;font-style:italic;}
+.da-bline{stroke:var(--ink);stroke-width:2;}
+.da-tag rect{fill:var(--ink);}
+.da-tag text{fill:var(--white);font-size:12.5px;font-weight:800;}
+.da-parea{fill:var(--ink);font-size:14px;font-weight:900;paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.da-lead{fill:none;stroke:var(--ink);stroke-width:1.3;}
+.da-empl{stroke:var(--stat-s1);stroke-width:1.2;stroke-dasharray:3 3;opacity:.8;}
+.da-empl.is-mid{stroke-dasharray:none;}
+.da-brk{fill:none;stroke:var(--muted);stroke-width:1.4;}
+.da-brkl{fill:var(--muted);font-size:11.5px;font-weight:800;}
+.da-hline{stroke:var(--stat-s2);stroke-width:2.4;}
+.da-hdot{fill:var(--stat-s2);}
+.da-handle{cursor:grab;outline:none;}
+.da-hit{fill:transparent;}
+.da-halo{fill:var(--cink);fill-opacity:.16;}
+.da-dot{fill:var(--cink);stroke:var(--white);stroke-width:2.5;}
+.da-handle:focus-visible .da-halo{fill-opacity:.36;stroke:var(--cink);stroke-width:2;}
+:root[data-theme="dark"] .da-shade{fill-opacity:.72;}
+:root[data-theme="dark"] .da-bar{fill-opacity:.28;}
+:root[data-theme="dark"] .da-bar.is-in{fill-opacity:.9;}
+
+.da-dock{display:flex;flex-direction:column;gap:10px;}
+.da-dn,.da-db{display:flex;flex-direction:column;gap:10px;}
+.da-dn[hidden],.da-db[hidden],.da-detn[hidden],.da-detb[hidden]{display:none;}
+.da-segw{display:flex;flex-direction:column;gap:4px;}
+.da-seglab{font:800 var(--ls-s, 13px) var(--font-ui);color:var(--muted);}
+.da-seg > button{font-weight:800;white-space:nowrap;}
+.da-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.da-chips .tchip{min-height:40px;padding:0 14px;font:800 14px var(--font-ui);}
+.da-row{display:flex;flex-wrap:wrap;gap:8px;}
+.da-work li{margin:6px 0;}
+.da-pmf{margin-top:8px;}
+.da-pic{display:block;width:100%;max-width:260px;height:auto;}
+
+.ls-root .da-ls-stage{flex:1;min-height:0;display:flex;flex-direction:column;}
+.ls-root .da-ls-stage > .da-stage{flex:1;}
+.ls-root .da-ls-dock .bt-cue{display:none;}
+.ls-root .da-ls-why .bt-cue{display:block;font:600 var(--ls-s)/1.45 var(--font-ui);color:var(--muted);}
+.ls-root .da-ls-why .bt-cue-k{display:none;}
+.ls-root .da-ls-why .tx-where,.ls-root .da-ls-why .bt-say{margin:0;padding:0;background:none;border:0;box-shadow:none;font-size:var(--ls-m);}
+.ls-root .da-ls-why details.bt-why > summary{display:none;}
+.ls-root .ls-drill-stage .da-qfig{flex:1;}
+.da-bl{fill:var(--muted);font-size:11px;font-weight:700;}
+.da-bl.is-in{fill:var(--ink);}
+.da-brk.is-ev{stroke:var(--ink);stroke-width:1.6;}
+.da-ylab{font-weight:800;}
+:root[data-theme="dark"] .da-under{fill-opacity:.04;}
+.da-work{margin:8px 0;padding-left:22px;}
+.da-work li{overflow-wrap:anywhere;}
+.ls-root .da-ls-why math{max-width:100%;}

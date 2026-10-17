@@ -1,0 +1,8 @@
+{
+ "slope-line": {
+  "def": "The slope of a line $y = a + bx$ is $b$, the change in y for each one-unit increase in x. From two points, $b = \\frac{y_2 - y_1}{x_2 - x_1}$."
+ },
+ "intercept": {
+  "def": "The y-intercept of a line $y = a + bx$ is $a$, the value of y when $x = 0$."
+ }
+}

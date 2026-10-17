@@ -1,0 +1,5 @@
+{
+ "practical-significance": {
+  "def": "Whether a difference is large enough to matter in context. A result can be statistically significant (0 outside the interval, or a small p-value) but practically unimportant, especially with very large samples. Judge it by comparing the plausible values in the interval with a meaningful threshold."
+ }
+}

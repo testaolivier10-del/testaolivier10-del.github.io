@@ -1,0 +1,5 @@
+{
+ "interval-width": {
+  "def": "The distance between the two ends of a confidence interval, twice the margin of error. For a t interval it is $2t^*\\frac{s}{\\sqrt{n}}$: it grows with the confidence level and with the variability, and shrinks as the sample size grows."
+ }
+}

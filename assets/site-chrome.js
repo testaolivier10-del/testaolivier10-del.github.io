@@ -132,6 +132,7 @@
     { key: 'apchem', short: 'Chemistry', dir: 'chem' },
     { key: 'apphys', short: 'Physics', dir: 'physics' },
     { key: 'apcalc', short: 'Calculus', dir: 'calculus' },
+    { key: 'apstat', short: 'Statistics', dir: 'statistics' },
   ];
   // courses:end
   var COURSE_SHORT = {};

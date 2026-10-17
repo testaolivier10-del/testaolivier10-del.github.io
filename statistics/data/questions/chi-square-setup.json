@@ -1,0 +1,624 @@
+{
+ "stimuli": {
+  "chi-square-setup-s1": {
+   "kind": "table",
+   "title": "Age and main news source",
+   "text": "A polling firm asks a random sample of 400 adults in a large city for their age group and the source they use most for news. (Invented data.)",
+   "table": {
+    "caption": "Observed counts: age group by main news source",
+    "cols": [
+     "Age group",
+     "Social media",
+     "TV",
+     "News websites",
+     "Total"
+    ],
+    "rows": [
+     [
+      "18 to 34",
+      "62",
+      "18",
+      "40",
+      "120"
+     ],
+     [
+      "35 to 54",
+      "45",
+      "40",
+      "55",
+      "140"
+     ],
+     [
+      "55 and older",
+      "23",
+      "72",
+      "45",
+      "140"
+     ],
+     [
+      "Total",
+      "130",
+      "130",
+      "140",
+      "400"
+     ]
+    ]
+   }
+  },
+  "chi-square-setup-s2": {
+   "kind": "table",
+   "title": "Getting to school at three high schools",
+   "text": "A district takes a separate random sample of students at each of its three high schools and asks how they usually get to school. (Invented data.)",
+   "table": {
+    "caption": "Observed counts: school by travel mode",
+    "cols": [
+     "School",
+     "Bus",
+     "Car",
+     "Walk or bike",
+     "Total"
+    ],
+    "rows": [
+     [
+      "Central",
+      "60",
+      "55",
+      "35",
+      "150"
+     ],
+     [
+      "East",
+      "40",
+      "60",
+      "20",
+      "120"
+     ],
+     [
+      "West",
+      "52",
+      "48",
+      "30",
+      "130"
+     ],
+     [
+      "Total",
+      "152",
+      "163",
+      "85",
+      "400"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-chi-square-setup-1",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "chi-square-setup-s1",
+   "q": "Which test fits the firm's question of whether age group and main news source are related?",
+   "why": {
+    "correct": "One sample, two categorical variables: independence.",
+    "options": [
+     "That compares two proportions. Here each variable has three categories.",
+     "Right: one random sample, two categorical variables recorded on each person.",
+     "That looks at one category of one variable and ignores age.",
+     "Homogeneity compares one variable across separate samples or groups. Here one sample is classified two ways."
+    ]
+   },
+   "options": [
+    "A two-sample z test for $p_1 - p_2$",
+    "A chi-square test for independence",
+    "A one-proportion z test for the share who use TV",
+    "A chi-square test for homogeneity"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-chi-square-setup-2",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "chi-square-setup-s1",
+   "q": "Which hypotheses fit this test?",
+   "why": {
+    "correct": "$H_0$: the variables are independent (no association) in the population; $H_a$: they are associated.",
+    "options": [
+     "These are reversed. The null hypothesis is \"no association\".",
+     "The hypotheses are about the whole relationship, not one cell, and $H_0$ is the \"no association\" claim.",
+     "Right: independence hypotheses are about the relationship between the two variables in the population.",
+     "That is about one variable only. The question is whether the two variables are related."
+    ]
+   },
+   "options": [
+    "$H_0$: there is an association; $H_a$: there is no association",
+    "$H_0$: older adults in the city prefer TV news; $H_a$: older adults in the city do not prefer TV news",
+    "$H_0$: age group and news source are not associated among the city's adults; $H_a$: they are associated",
+    "$H_0$: the proportions of adults in the three age groups are equal; $H_a$: they are not"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-chi-square-setup-3",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "chi-square-setup-s1",
+   "q": "If $H_0$ is true, what is the expected count of adults aged 55 and older whose main source is TV?",
+   "why": {
+    "correct": "Expected $= \\frac{140 \\times 130}{400} = 45.5$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 1,
+    "from": {
+     "fn": "chi2table",
+     "args": [
+      [
+       [
+        62,
+        18,
+        40
+       ],
+       [
+        45,
+        40,
+        55
+       ],
+       [
+        23,
+        72,
+        45
+       ]
+      ]
+     ],
+     "pick": "expected.2.1"
+    },
+    "mistakes": [
+     {
+      "value": 72,
+      "why": "That is the observed count. The expected count is what $H_0$ predicts: row total times column total over the grand total."
+     },
+     {
+      "value": 44.44,
+      "why": "That splits 400 equally over the nine cells. Expected counts follow the row and column totals."
+     },
+     {
+      "value": 46.67,
+      "why": "That splits the 55 and older row equally over the three sources. Under $H_0$ the row follows the overall column pattern."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-chi-square-setup-4",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "chi-square-setup-s1",
+   "q": "Write the expression for the expected count of adults aged 18 to 34 whose main source is news websites, then give its value.",
+   "why": {
+    "correct": "Expected $= \\frac{\\text{row total} \\times \\text{column total}}{\\text{grand total}} = \\frac{120 \\times 140}{400} = 42$."
+   },
+   "setup": {
+    "answer": "120*140/400",
+    "bind": {},
+    "mustUse": [
+     "120",
+     "140",
+     "400"
+    ],
+    "then": {
+     "kind": "stat",
+     "places": 1,
+     "from": {
+      "fn": "chi2table",
+      "args": [
+       [
+        [
+         62,
+         18,
+         40
+        ],
+        [
+         45,
+         40,
+         55
+        ],
+        [
+         23,
+         72,
+         45
+        ]
+       ]
+      ],
+      "pick": "expected.0.2"
+     }
+    },
+    "mistakes": [
+     {
+      "expr": "120*130/400",
+      "why": "That uses the social media or TV column total, 130. The news websites column total is 140."
+     },
+     {
+      "expr": "(120 + 140)/400",
+      "why": "Multiply the row and column totals, then divide by the grand total."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-chi-square-setup-5",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "chi-square-setup-s1",
+   "q": "Which statement correctly checks the large counts condition for this chi-square test?",
+   "why": {
+    "correct": "Large counts for chi-square: all expected counts at least 5.",
+    "options": [
+     "Comparing $n$ with 30 is a rule for means.",
+     "Right: a chi-square test needs every expected count to be at least 5.",
+     "They always add to the grand total, so this checks nothing.",
+     "The condition is about expected counts, and the chi-square threshold is 5."
+    ]
+   },
+   "options": [
+    "The sample of 400 is at least 30",
+    "The smallest expected count is 39, so every expected count is at least 5",
+    "The expected counts add up to 400, the sample size",
+    "The smallest observed count is 18, so the observed counts are at least 10"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-chi-square-setup-6",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "chi-square-setup-s2",
+   "q": "Which test fits the district's question of whether the travel mode distributions differ among the schools?",
+   "why": {
+    "correct": "Several samples or groups, one categorical variable: homogeneity.",
+    "options": [
+     "Right: three separate random samples, one categorical variable compared across them.",
+     "Independence uses one sample classified by two variables. Here the district chose how many students to sample at each school.",
+     "Separate tests for one category at a time would not compare the whole distributions at once.",
+     "That compares two schools on one category. There are three schools and three categories."
+    ]
+   },
+   "options": [
+    "A chi-square test for homogeneity",
+    "A chi-square test for independence",
+    "Three one-proportion z tests",
+    "A two-sample z test for the bus proportions"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-chi-square-setup-7",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "chi-square-setup-s2",
+   "q": "Which null hypothesis fits this test?",
+   "why": {
+    "correct": "$H_0$: the distributions are the same; $H_a$: at least one differs.",
+    "options": [
+     "The test compares the travel mode distributions, not school sizes.",
+     "That is the alternative: at least one school's distribution differs.",
+     "Equal shares for each mode is not the claim. $H_0$ says the schools share one distribution, whatever it is.",
+     "Right: homogeneity means \"same distribution\" in every population."
+    ]
+   },
+   "options": [
+    "The three schools have the same number of students",
+    "The distribution of travel mode is different at each school",
+    "Bus, car and walking are equally common at each of the schools",
+    "The travel mode distribution is the same at all three schools"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-chi-square-setup-8",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "chi-square-setup-s2",
+   "q": "If $H_0$ is true, what is the expected count of East students who walk or bike?",
+   "why": {
+    "correct": "Expected $= \\frac{120 \\times 85}{400} = 25.5$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 1,
+    "from": {
+     "fn": "chi2table",
+     "args": [
+      [
+       [
+        60,
+        55,
+        35
+       ],
+       [
+        40,
+        60,
+        20
+       ],
+       [
+        52,
+        48,
+        30
+       ]
+      ]
+     ],
+     "pick": "expected.1.2"
+    },
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "That is the observed count. Use row total times column total over the grand total."
+     },
+     {
+      "value": 28.33,
+      "why": "That splits the walkers equally among the schools, but the schools have different sample sizes."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-chi-square-setup-9",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "chi-square-setup-s2",
+   "q": "Which statement checks the 10% condition for this test?",
+   "why": {
+    "correct": "10%: each sample is less than 10% of its population when sampling without replacement.",
+    "options": [
+     "That is not a condition. Expected counts are checked against 5.",
+     "That is not the condition. The 10% condition compares sample size with population size.",
+     "Right: with three samples drawn without replacement, check each against its own population.",
+     "The populations are the students at each school, not the district's adults."
+    ]
+   },
+   "options": [
+    "Each expected count is at least 10% of its row total",
+    "At least 10% of each sample walks or bikes",
+    "Each sample is less than 10% of the students at its own school",
+    "The 400 students are less than 10% of the district's adults"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-chi-square-setup-10",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "chi-square-setup-s2",
+   "q": "Which of these changes to the table would make the chi-square statistic larger, with the totals kept the same?",
+   "why": {
+    "correct": "The statistic measures how far the observed counts are from what $H_0$ predicts.",
+    "options": [
+     "Then each term is 0 and $\\chi^2 = 0$, the smallest it can be.",
+     "Closer counts give smaller terms and a smaller $\\chi^2$.",
+     "Reordering the rows changes no count, so $\\chi^2$ is the same.",
+     "Right: $\\chi^2$ adds up $\\frac{(O - E)^2}{E}$, so larger gaps between observed and expected give a larger value."
+    ]
+   },
+   "options": [
+    "Expected counts that equal the observed counts",
+    "Observed counts that sit closer to their expected counts",
+    "Listing the schools in a different order",
+    "Observed counts farther from their expected counts"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-chi-square-setup-11",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why is an expected count equal to (row total)(column total) divided by the grand total?",
+   "why": {
+    "correct": "Expected $= \\text{row total} \\times \\frac{\\text{column total}}{\\text{grand total}}$.",
+    "options": [
+     "Equal cells would ignore the totals. Expected counts follow the table's own row and column totals.",
+     "Multiplying, then dividing by the grand total, is not an average; it applies a proportion to a row.",
+     "Expected counts come from $H_0$ alone, not from making them match the data.",
+     "Right: the column proportion, column total over grand total, applies to every row, so expected = row total times that proportion."
+    ]
+   },
+   "options": [
+    "It spreads the grand total equally over the cells of the table",
+    "It is the average of the row total and the column total",
+    "It makes the expected counts as close as possible to the observed counts in the table",
+    "With no association, each row shares the whole table's column proportions"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-chi-square-setup-12",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A vet randomly assigns 150 dogs to three diets and records whether each dog's coat improves, stays the same or gets worse. Which test fits?",
+   "why": {
+    "correct": "Groups made by random assignment, one categorical response: homogeneity.",
+    "options": [
+     "Right: randomly assigned groups are treated like separate samples, and one categorical outcome is compared across them.",
+     "That ignores the diets, the point of the study.",
+     "The vet created three groups by random assignment; comparing their outcome distributions is homogeneity.",
+     "A two-sample z test compares two proportions. Here there are three groups and three outcomes."
+    ]
+   },
+   "options": [
+    "Homogeneity: compare the three diet groups' outcome distributions",
+    "A one-proportion z test for the share of dogs that improve",
+    "A chi-square test for independence, since the dogs form one group",
+    "A two-sample z test, since there are two variables"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-chi-square-setup-13",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a two-way table, one expected count is 3.2 and the rest are above 8. What does this mean for a chi-square test?",
+   "why": {
+    "correct": "All expected counts at least 5.",
+    "options": [
+     "Right: every expected count must be at least 5.",
+     "Expected counts are not rounded, and rounding would not fix a small count.",
+     "The condition is on the expected count, which is 3.2 here.",
+     "Every expected count must reach 5, not most of them."
+    ]
+   },
+   "options": [
+    "Large counts fails, so the p-value from the test may not be accurate",
+    "The 3.2 should be rounded to 3 before testing",
+    "The test is fine, as long as the observed count in that cell is above 5",
+    "The test is fine, because most of the expected counts are large"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-chi-square-setup-14",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes this alternative hypothesis for a test of independence: \"$H_a$: there is an association, and people who exercise sleep more.\" What is wrong?",
+   "why": {
+    "correct": "$H_a$ for chi-square: there is an association (or the distributions differ), with no direction.",
+    "options": [
+     "Right: the test cannot pick out a direction; follow-up work with the table can describe the association.",
+     "That is the null hypothesis.",
+     "Hypotheses are about the population, not the sample.",
+     "Recorded as categories (such as yes or no), exercise is categorical and fits a chi-square test."
+    ]
+   },
+   "options": [
+    "A chi-square alternative only claims an association, with no direction",
+    "It should say there is no association between the variables",
+    "It should be written about the sample counts in the table",
+    "Exercise is not a categorical variable, so the test does not apply"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-chi-square-setup-15",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A random sample of 200 workers is classified by whether they work from home (80 do, 120 do not) and whether they own a pet. Of those who work from home, 34 own a pet; of the others, 38 do. If working from home and pet ownership are independent, what is the expected count of workers who work from home and own a pet?",
+   "why": {
+    "correct": "72 workers own a pet, so expected $= \\frac{80 \\times 72}{200} = 28.8$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 1,
+    "from": {
+     "fn": "chi2table",
+     "args": [
+      [
+       [
+        34,
+        46
+       ],
+       [
+        38,
+        82
+       ]
+      ]
+     ],
+     "pick": "expected.0.0"
+    },
+    "mistakes": [
+     {
+      "value": 34,
+      "why": "That is the observed count. Expected $= \\frac{\\text{row total} \\times \\text{column total}}{\\text{grand total}}$."
+     },
+     {
+      "value": 50,
+      "why": "That divides 200 equally over four cells. Use the totals: 80 work from home and 72 own a pet."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-chi-square-setup-16",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which study calls for a chi-square test for independence rather than homogeneity?",
+   "why": {
+    "correct": "Independence: one sample, two variables. Homogeneity: several samples or groups, one variable.",
+    "options": [
+     "Groups made by assignment, one outcome compared: homogeneity.",
+     "Right: one sample, two variables recorded on each voter.",
+     "Several samples, one variable: homogeneity.",
+     "Separate samples from each party, one variable compared: homogeneity."
+    ]
+   },
+   "options": [
+    "Patients randomly assigned to three treatments, with the outcome recorded as better, same or worse",
+    "One random sample of 500 voters, each classified by party and by view on a ballot measure",
+    "Random samples of 100 students at four schools, asked their favorite subject",
+    "Separate random samples of 200 voters from each of three parties, asked their view on a measure"
+   ],
+   "correct": 1
+  }
+ ]
+}

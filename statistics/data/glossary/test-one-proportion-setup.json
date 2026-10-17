@@ -1,0 +1,17 @@
+{
+ "hypotheses": {
+  "def": "The two claims a significance test weighs, both about a parameter. The null hypothesis $H_0$ states a specific value ($p = p_0$); the alternative hypothesis $H_a$ states what the study seeks evidence for ($p < p_0$, $p > p_0$ or $p \\ne p_0$)."
+ },
+ "significance-test": {
+  "def": "A procedure that uses sample data to weigh the evidence against a null hypothesis about a parameter. For one proportion it is the one-sample z test for a proportion."
+ },
+ "significance-level": {
+  "def": "The standard of evidence $\\alpha$ (alpha), chosen before the data are collected, often 0.05: how unlikely a result must be, if the null hypothesis is true, before the null hypothesis is doubted."
+ },
+ "one-two-sided": {
+  "def": "A one-sided alternative claims a direction ($p < p_0$ or $p > p_0$); a two-sided alternative claims only a change ($p \\ne p_0$). The research question, not the data, decides which."
+ },
+ "null-value": {
+  "def": "The specific value of the parameter stated in the null hypothesis, written $p_0$ for a proportion, as in $H_0: p = 0.70$."
+ }
+}

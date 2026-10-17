@@ -1,0 +1,466 @@
+{
+ "stimuli": {
+  "intro-statistics-s1": {
+   "kind": "table",
+   "title": "A study room at lunch",
+   "html": "<p>A high school has 2,400 students. The student council wants to know whether students would use a quiet study room at lunch. The council chooses 120 students at random from the school list and asks each one, \"Would you use a quiet study room at lunch once a week or more?\" Of the 120 students, 78 answer yes (invented data).</p>"
+  },
+  "intro-statistics-s2": {
+   "kind": "table",
+   "title": "Sleep on school nights",
+   "html": "<p>A health teacher wants to learn how many hours of sleep students in her district get on school nights. The district has 6 high schools with 9,000 students in all. She asks 60 students from her own school, each in one of her classes, to record their sleep for one week (invented data).</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "stat-intro-statistics-1",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the population in this study?",
+   "why": {
+    "correct": "The population is the whole group the question is about: all 2,400 students at the school.",
+    "options": [
+     "These 120 are the sample: the part of the population the council actually asked.",
+     "Right: the question is about every student at the school, so the whole school is the population.",
+     "The 78 are a count inside the sample, not the group the question is about.",
+     "The question is about every student, not just those who already use a study space."
+    ]
+   },
+   "stimulus": "intro-statistics-s1",
+   "options": [
+    "The 120 students asked",
+    "All 2,400 students at the school",
+    "The 78 students who answered yes to the question",
+    "Students who already study in the library at lunch"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-intro-statistics-2",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the sample in this study?",
+   "why": {
+    "correct": "The sample is the part of the population that data come from: the 120 students who were asked.",
+    "options": [
+     "That is the population, the whole group the question is about.",
+     "They are part of the sample, but the sample is everyone who was asked, yes or no.",
+     "The council ran the study; they are not the students who were asked.",
+     "Right: the sample is the group data were actually collected from."
+    ]
+   },
+   "stimulus": "intro-statistics-s1",
+   "options": [
+    "The 2,400 students enrolled at the high school",
+    "The 78 who said yes",
+    "The members of the student council who ran the study",
+    "The 120 students the council asked"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-intro-statistics-3",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement correctly uses the data?",
+   "why": {
+    "correct": "The 78 yes answers are 78 out of 120, which is 65% of the sample. That is a fact about the sample and an estimate for the school.",
+    "options": [
+     "Right: 78 out of 120 is 0.65, and it describes the students who were asked.",
+     "The 65% describes the sample. A different sample would give a slightly different number, so it is not exact for the whole school.",
+     "78 is the count of yes answers, not a percent: 78 out of 120 is 65%.",
+     "Just 120 of the 2,400 students were asked; far more than 78 students at the school could want the room."
+    ]
+   },
+   "stimulus": "intro-statistics-s1",
+   "options": [
+    "65% of the students asked said yes",
+    "Exactly 65% of the school’s 2,400 students would use the room",
+    "78% of the school would use it",
+    "Exactly 78 students at the school would use the study room"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-intro-statistics-4",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A second group of 120 students is chosen at random from the same school list and asked the same question. What is most likely?",
+   "why": {
+    "correct": "Different students give different answers, so a new group of 120 gives a result that varies a little from the first one but is usually close to it.",
+    "options": [
+     "Different students are chosen each time, so the count changes from group to group even when the school stays the same.",
+     "Groups chosen by chance from the same school tend to give similar results; a huge change would be surprising.",
+     "Right: answers vary from student to student, so each group of 120 gives a somewhat different percent, usually close to the first.",
+     "The method is the same, but the students are different, so the result usually shifts a little."
+    ]
+   },
+   "stimulus": "intro-statistics-s1",
+   "options": [
+    "Exactly 78 yes answers again",
+    "A percent very far from 65%, since each group is chosen by chance",
+    "A percent near 65%, but probably not exactly 65%",
+    "Exactly 65% of the 120, because the method of choosing is the same"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-intro-statistics-5",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What population does the teacher want to learn about?",
+   "why": {
+    "correct": "The population is the group the question is about: all 9,000 high school students in the district.",
+    "options": [
+     "These 60 are the sample she collected data from.",
+     "Her question names the district, so the population is every high school student in the district.",
+     "Right: her question is about students in the whole district.",
+     "Her question is about one district, not every teenager."
+    ]
+   },
+   "stimulus": "intro-statistics-s2",
+   "options": [
+    "The 60 students in her classes who kept sleep records",
+    "Students at her own school",
+    "The district’s 9,000 high school students",
+    "Teenagers across the country who go to high school"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-intro-statistics-6",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why might her 60 students give a poor picture of the population?",
+   "why": {
+    "correct": "A sample is useful when it looks like the population. Students from one school, and from one teacher’s classes, may sleep differently from students across the district.",
+    "options": [
+     "Right: a sample tells about a population only when it represents it, and this one leaves out five of the six schools.",
+     "Sixty is a manageable number; the problem is who the 60 are, not how many.",
+     "Students can record when they fall asleep and wake up; the measurement is possible.",
+     "A week of records covers several school nights, which helps; the trouble is which students were chosen."
+    ]
+   },
+   "stimulus": "intro-statistics-s2",
+   "options": [
+    "They come from one school, so they may sleep differently from students elsewhere",
+    "Sixty students is too many people for one teacher to measure carefully",
+    "Hours of sleep are too personal to measure, so the records are guesses",
+    "One week is too long a time to keep a record of sleep for each student"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-intro-statistics-7",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which question can her data help answer, with the data collected as described?",
+   "why": {
+    "correct": "Data answer questions about the group they come from. Her records describe the students in her classes.",
+    "options": [
+     "That has one exact answer from one record; it is not a question about a group with answers that vary.",
+     "She has no data from the other schools, so she has nothing to compare.",
+     "That is a fact to look up, not a question answered by collecting data that vary.",
+     "Right: the data come from her classes, so they describe her classes well."
+    ]
+   },
+   "stimulus": "intro-statistics-s2",
+   "options": [
+    "How many hours did one particular student in her class sleep last Tuesday night?",
+    "Do students at the other five schools sleep less than the students in her classes?",
+    "What time does her school start?",
+    "How much do students in her classes sleep on school nights?"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-intro-statistics-8",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "To learn about the whole district, which change to her plan helps most?",
+   "why": {
+    "correct": "To learn about a population, the sample has to come from the whole population. Choosing at random from a district list does that.",
+    "options": [
+     "More nights from the same students still leaves out the other five schools.",
+     "Right: choosing by chance from the whole district gives every school a fair place in the sample.",
+     "A bigger sample from one school still does not represent the other five schools.",
+     "Changing the students’ sleep would ruin the measurement of their usual sleep."
+    ]
+   },
+   "stimulus": "intro-statistics-s2",
+   "options": [
+    "Ask the same 60 students to keep records for two weeks instead of one",
+    "Choose students at random from a district list",
+    "Ask 200 students from her own school instead of 60 from her classes",
+    "Ask her students to sleep more"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-intro-statistics-9",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which question is answered by collecting data that vary from one person to another?",
+   "why": {
+    "correct": "Statistics answers questions where the answers vary, so the data must come from many individuals.",
+    "options": [
+     "Right: homework time differs from student to student, so it takes data from many students to answer.",
+     "That is one number about one person; there is no variation to study.",
+     "The lunch period has one fixed length; looking it up answers the question.",
+     "That is one fixed number from the school records, not data that vary."
+    ]
+   },
+   "options": [
+    "How long do students here spend on homework on a typical night?",
+    "How many minutes did I spend on my own homework last night?",
+    "How many minutes long is the lunch period at this school?",
+    "How many students are enrolled at this school this year?"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-intro-statistics-10",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is a sample?",
+   "why": {
+    "correct": "A sample is the part of the population you collect data from.",
+    "options": [
+     "That describes the population.",
+     "That is a conclusion, not a group of people or things.",
+     "Right: a sample is a subset of the population.",
+     "The question comes first; the sample is who or what you collect data from."
+    ]
+   },
+   "options": [
+    "The whole group of people or things that the question is about",
+    "The answer that a study reports about the group it studied",
+    "The part of the population that data come from",
+    "The question a study asks"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-intro-statistics-11",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A quality team weighs 50 bags of rice taken from a day’s production of 8,000 bags. What is the population?",
+   "why": {
+    "correct": "The population is every bag the question is about: all 8,000 made that day.",
+    "options": [
+     "These are the sample.",
+     "Right: the team wants to know about the whole day’s production.",
+     "That is a label, not a group of bags.",
+     "The machine makes the bags; the question is about the bags themselves."
+    ]
+   },
+   "options": [
+    "The 50 bags weighed",
+    "The 8,000 bags made that day",
+    "The weight that is printed on each bag of rice",
+    "The machine on the line that fills the bags"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-intro-statistics-12",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A park department asks 300 park visitors whether they want more shade trees; 210 say yes. Which conclusion is stated in context?",
+   "why": {
+    "correct": "A conclusion in context names who was studied, what was measured, and what the number tells you: 210 out of 300 is 70% of the visitors surveyed.",
+    "options": [
+     "A number with no context does not say who, or what the 70% measures.",
+     "This does not name the people, the park or the trees.",
+     "True arithmetic, but it says nothing about the visitors or the trees.",
+     "Right: it says who was asked, what about, and the number: 210 out of 300 is 70%."
+    ]
+   },
+   "options": [
+    "The answer is 70%",
+    "Most of the people who answered the question want more of it",
+    "210 is greater than 300 divided by 2, so the result is a majority",
+    "70% of the 300 visitors asked want more shade trees"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-intro-statistics-13",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A town wants to know how residents feel about a new bike lane. Why ask a sample of residents instead of every resident?",
+   "why": {
+    "correct": "Collecting data from everyone takes time and money. A sample that represents the town gives a useful estimate at a fraction of the cost.",
+    "options": [
+     "A sample gives an estimate; another sample would give a slightly different result.",
+     "Right: a good sample can stand in for the population at a small part of the cost.",
+     "Everyone may have an opinion; they simply are not asked.",
+     "The reason is practical: time and cost, not a rule."
+    ]
+   },
+   "options": [
+    "A sample gives the exact answer for the whole town, with no error",
+    "It is faster and cheaper, and a good sample still describes the town",
+    "Residents who are not chosen for the sample have no opinion to give",
+    "Towns are required by law to ask a sample and not the whole town"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-intro-statistics-14",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A news site asks its readers to vote online on whether the city should build a stadium. Of 5,000 votes, 80% say no. What is the main problem with saying \"80% of city residents oppose the stadium\"?",
+   "why": {
+    "correct": "A result describes the population only when the sample represents it. People who choose to answer may differ from everyone else.",
+    "options": [
+     "Five thousand is a large number; the problem is who voted, not how many.",
+     "Percents describe opinions well; the issue is whose opinions they are.",
+     "Recounting would not fix who took part in the vote.",
+     "Right: the people who voted picked themselves, and they may feel more strongly or differ from residents in other ways."
+    ]
+   },
+   "options": [
+    "5,000 votes is far too few to learn anything about a whole city",
+    "Percents are a poor way to describe opinions about a stadium",
+    "The votes were not recounted",
+    "Readers who chose to vote may not represent the city"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-intro-statistics-15",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "multi",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A researcher measures the heights of 40 sunflowers chosen from a field of 2,000 sunflowers. Which statements are true? Select all that apply.",
+   "why": {
+    "correct": "The population is the field of 2,000; the sample is the 40 measured. Heights vary, and the sample gives an estimate for the field.",
+    "options": [
+     "Right: the question is about the whole field.",
+     "Right: data come from these 40.",
+     "Heights vary from plant to plant; that variation is why many plants are measured.",
+     "The 40 give an estimate for the field, not an exact value."
+    ]
+   },
+   "options": [
+    "The 2,000 sunflowers are the population",
+    "The 40 measured sunflowers are the sample",
+    "The 40 measured heights will be identical",
+    "The field’s heights are known exactly from the 40"
+   ],
+   "correct": [0, 1]
+  },
+  {
+   "id": "stat-intro-statistics-16",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the best reason to report results \"in context\"?",
+   "why": {
+    "correct": "Context tells the reader whom the data describe and what was measured, so the number can be understood and used.",
+    "options": [
+     "Right: a number says little until you know whom and what it describes.",
+     "Context does not change precision; it explains the meaning.",
+     "Rounding is a different choice; context is about meaning.",
+     "Length is not the goal; meaning is."
+    ]
+   },
+   "options": [
+    "So a reader knows who was studied and what was measured",
+    "So that the numbers in the report look more precise to a reader",
+    "Because results should be rounded to whole percents before they are shared",
+    "To make the report longer"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-intro-statistics-17",
+   "unit": "unit-1",
+   "topic": "intro-statistics",
+   "type": "single",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A coach asks, \"Do the players on my team who stretch before practice get fewer injuries?\" Which data would help answer this?",
+   "why": {
+    "correct": "To answer a question about a group, collect data on every individual that measure what the question names: stretching and injuries.",
+    "options": [
+     "The team size alone says nothing about stretching or injuries.",
+     "One player does not show how stretching and injuries relate across a team.",
+     "Right: the question compares injuries for stretchers and non-stretchers, so both facts are needed for every player.",
+     "The exercises do not tell who stretched or who was injured."
+    ]
+   },
+   "options": [
+    "The number of players",
+    "The full injury history of the best player on the team this season",
+    "For each player: stretches or not, and number of injuries",
+    "The names of the stretching exercises the team does before practice"
+   ],
+   "correct": 2
+  }
+ ]
+}

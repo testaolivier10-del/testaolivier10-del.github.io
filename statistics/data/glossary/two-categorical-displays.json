@@ -1,0 +1,11 @@
+{
+ "two-way-table": {
+  "def": "A table of counts for two categorical variables: the categories of one variable label the rows, the other the columns, and each cell counts the individuals in that pairing of categories, with row and column totals."
+ },
+ "segmented-bar": {
+  "def": "A segmented bar chart has one bar for each group, split into the categories of the other variable by percent of that group, so every bar reaches 100%. A side-by-side bar chart puts those percents as separate bars next to each other; a mosaic plot is a segmented bar chart whose bar widths show the group sizes."
+ },
+ "association": {
+  "def": "Two categorical variables are associated when the distribution of one differs across the categories of the other, for example when the percent who ride the bus differs between class years. Equal percents in every group mean no association."
+ }
+}

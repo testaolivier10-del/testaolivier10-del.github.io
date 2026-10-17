@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 506" width="640" height="506" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Four steps of a significance test</title>
+<desc id="d">Four boxes in a column joined by arrows, for a test about chronic absence in a school district. State: the hypotheses H0: p = 0.18 and Ha: p &lt; 0.18, where p is the true proportion of all district students who are chronically absent, with alpha = 0.05. Plan: a one-sample z test for a proportion; random sample; 450 is less than 10% of the students; 450(0.18) = 81 and 450(0.82) = 369 are at least 10. Do: z = (0.14 − 0.18) / sqrt(0.18(0.82)/450) = −2.21 and p-value = 0.014. Conclude: because 0.014 &lt; 0.05, reject H0; there is convincing evidence that the true proportion is less than 0.18.</desc>
+<rect width="640" height="506" fill="#FFFFFF"/>
+<rect x="30" y="12" width="580" height="104" rx="10" fill="#FFFFFF" stroke="#6E2470" stroke-width="2.4"/>
+<rect x="30" y="12" width="112" height="104" rx="10" fill="#6E2470"/>
+<rect x="130" y="12" width="12" height="104" fill="#6E2470"/>
+<text x="86" y="70" font-size="18" text-anchor="middle" font-weight="bold" fill="#FFFFFF">State</text>
+<text x="156" y="42" font-size="15" fill="#1F2A28">H₀: p = 0.18,  Hₐ: p &lt; 0.18,  α = 0.05</text>
+<text x="156" y="68" font-size="15" fill="#1F2A28">p = the true proportion of all district students</text>
+<text x="156" y="94" font-size="15" fill="#1F2A28">who are chronically absent</text>
+<path d="M86 119 v13 m-6 -7 l6 8 l6 -8" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<rect x="30" y="138" width="580" height="104" rx="10" fill="#FFFFFF" stroke="#0072B2" stroke-width="2.4"/>
+<rect x="30" y="138" width="112" height="104" rx="10" fill="#0072B2"/>
+<rect x="130" y="138" width="12" height="104" fill="#0072B2"/>
+<text x="86" y="196" font-size="18" text-anchor="middle" font-weight="bold" fill="#FFFFFF">Plan</text>
+<text x="156" y="168" font-size="15" fill="#1F2A28">One-sample z test for a proportion</text>
+<text x="156" y="194" font-size="15" fill="#1F2A28">Random sample of 450 students; 450 &lt; 10% of all students</text>
+<text x="156" y="220" font-size="15" fill="#1F2A28">Large counts: 450(0.18) = 81 ≥ 10 and 450(0.82) = 369 ≥ 10</text>
+<path d="M86 245 v13 m-6 -7 l6 8 l6 -8" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<rect x="30" y="264" width="580" height="104" rx="10" fill="#FFFFFF" stroke="#009E73" stroke-width="2.4"/>
+<rect x="30" y="264" width="112" height="104" rx="10" fill="#009E73"/>
+<rect x="130" y="264" width="12" height="104" fill="#009E73"/>
+<text x="86" y="322" font-size="18" text-anchor="middle" font-weight="bold" fill="#FFFFFF">Do</text>
+<text x="156" y="294" font-size="15" fill="#1F2A28">p̂ = 63/450 = 0.14</text>
+<text x="156" y="320" font-size="15" fill="#1F2A28">z = (0.14 − 0.18) / √(0.18 × 0.82 / 450) = −2.21</text>
+<text x="156" y="346" font-size="15" fill="#1F2A28">p-value = P(Z ≤ −2.21) = 0.014</text>
+<path d="M86 371 v13 m-6 -7 l6 8 l6 -8" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<rect x="30" y="390" width="580" height="104" rx="10" fill="#FFFFFF" stroke="#D55E00" stroke-width="2.4"/>
+<rect x="30" y="390" width="112" height="104" rx="10" fill="#D55E00"/>
+<rect x="130" y="390" width="12" height="104" fill="#D55E00"/>
+<text x="86" y="448" font-size="18" text-anchor="middle" font-weight="bold" fill="#FFFFFF">Conclude</text>
+<text x="156" y="420" font-size="15" fill="#1F2A28">Because 0.014 &lt; 0.05, reject H₀. There is convincing evidence</text>
+<text x="156" y="446" font-size="15" fill="#1F2A28">that the true proportion of all district students who are</text>
+<text x="156" y="472" font-size="15" fill="#1F2A28">chronically absent is less than 0.18.</text>
+</svg>

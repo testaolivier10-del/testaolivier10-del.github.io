@@ -1,0 +1,8 @@
+{
+ "plausible": {
+  "def": "A value inside a confidence interval: the data are consistent with it as the parameter's value. A plausible value is not proven; values outside the interval are not plausible at that confidence level."
+ },
+ "convincing-evidence": {
+  "def": "The wording for a conclusion that the data support a claim about a parameter, as in \"the interval gives convincing evidence that the true proportion is greater than 0.60\". Evidence is never proof."
+ }
+}

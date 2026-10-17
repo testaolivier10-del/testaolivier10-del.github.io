@@ -1,0 +1,11 @@
+{
+ "binomial-setting": {
+  "def": "A binomial setting is a chance process with a fixed number n of trials, each with two outcomes (success or failure), trials independent of each other, and the same probability of success p on every trial."
+ },
+ "binomial": {
+  "def": "In a binomial setting, the binomial random variable X counts the successes in the n trials. Its distribution, the binomial distribution with parameters n and p, gives $P(X = k) = \\binom{n}{k}p^k(1 - p)^{n - k}$ for $k = 0, 1, \\dots, n$."
+ },
+ "binomial-mean-sd": {
+  "def": "A binomial random variable with parameters n and p has mean $\\mu_X = np$ and standard deviation $\\sigma_X = \\sqrt{np(1 - p)}$."
+ }
+}

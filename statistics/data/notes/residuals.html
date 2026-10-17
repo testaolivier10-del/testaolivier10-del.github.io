@@ -1,0 +1,42 @@
+<p>A regression line gives a prediction for every value of $x$, but real points do not sit on the line. How far each one misses, and whether the misses follow a pattern, tells you how good the line is and whether a line was the right shape at all.</p>
+
+<h2>What a residual is</h2>
+<p>For each data point, the <b>residual</b> is the actual value minus the predicted value:</p>
+<p>$$\text{residual} = y - \hat{y} = \text{actual} - \text{predicted}.$$</p>
+<p>On a scatterplot it is the vertical gap between the point and the line. A residual has the units of $y$.</p>
+<ul>
+<li>A <b>positive</b> residual: the point is above the line, so the line <b>underpredicted</b>.</li>
+<li>A <b>negative</b> residual: the point is below the line, so the line <b>overpredicted</b>.</li>
+<li>A residual of 0: the point is on the line.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> A cafe's line for predicting iced drinks sold from the day's high temperature is $\hat{y} = -114.81 + 3.407x$. On an 80°F day it sold 160 drinks. Find and interpret the residual.</p>
+<p>Predicted: $\hat{y} = -114.81 + 3.407(80) = 157.75$ drinks.</p>
+<p>Residual: $160 - 157.75 = 2.25$ drinks.</p>
+<p>Interpretation: on that 80°F day, the cafe sold about 2.25 more iced drinks than the line predicts.</p>
+</div>
+<p>Order matters. Predicted minus actual has the opposite sign and the opposite meaning. Always subtract the prediction from the actual value.</p>
+
+<h2>The residual plot</h2>
+<p>A <b>residual plot</b> graphs each residual against its $x$ value (some software uses $\hat{y}$ instead; the reading is the same). It takes the trend out of the picture. Whatever is left is what the line failed to capture. A horizontal line at 0 marks "exactly predicted".</p>
+<figure id="fig-res" data-fig="residual-plot-pair"><figcaption>A line fit to curved data, and the U-shaped residual plot that gives it away.</figcaption></figure>
+<p>Read a residual plot like this:</p>
+<table class="stat-compare">
+<thead><tr><th>Residual plot</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td>random scatter above and below 0, even spread</td><td>a line is a reasonable model</td></tr>
+<tr><td>a curve (U shape or upside-down U)</td><td>the relationship is curved; a line is not appropriate</td></tr>
+<tr><td>a fan (spread grows or shrinks with $x$)</td><td>predictions are less precise where the spread is larger</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example 2.</b> <a class="figref" href="#fig-res">The figure</a> shows 16 used cars, age against price, with a regression line, and the residual plot below it. Is a line appropriate?</p>
+<p>The residuals are positive for the newest cars (about 2.5 to 3.8 thousand dollars at 1 year), negative for cars aged 3 to 8, and positive again for the oldest (about 3.6 thousand at 11 years). That U shape is a clear pattern: price drops quickly at first and then levels off, and a line cannot bend to follow it. A line is not an appropriate model.</p>
+<p>The pattern also says where the line's predictions go wrong: it underpredicts the newest and oldest cars and overpredicts the middle-aged ones.</p>
+</div>
+
+<h2>Why both signs are not enough</h2>
+<p>Any line fit through the middle of a cloud of points has some points above and some below, so "the residuals are positive and negative" says nothing. Small residuals are not enough either. The question is whether they form a <b>pattern</b>. Even a correlation near 1 can hide a curve: the car data have $r$ about $-0.94$, a strong linear association by the number, yet the residual plot shows the line is the wrong shape.</p>
+
+<h2>Putting it together</h2>
+<p>A full regression check goes in this order: plot the data and describe it; fit a line; look at the residual plot; then, only if the residuals show no pattern, use the line to predict and interpret its slope. Topic 5.5 adds the last pieces: how the line is chosen and how to measure its typical error.</p>

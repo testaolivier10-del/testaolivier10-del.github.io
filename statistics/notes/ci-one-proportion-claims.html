@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claims from a Proportion Interval — AP® Statistics Notes</title>
+<meta name="description" content="Justifying a Claim Based on a Confidence Interval for a Population Proportion explained from scratch: free statistics study notes with figures and worked…">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/ci-one-proportion-claims.html">
+<meta property="og:title" content="Claims from a Proportion Interval — AP® Statistics Notes">
+<meta property="og:description" content="Justifying a Claim Based on a Confidence Interval for a Population Proportion explained from scratch: free statistics study notes with figures and worked…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/ci-one-proportion-claims.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/ci-one-proportion-claims.html#reading",
+      "name": "Justifying a Claim Based on a Confidence Interval for a Population Proportion",
+      "url": "https://levlprep.com/statistics/notes/ci-one-proportion-claims.html",
+      "description": "Justifying a Claim Based on a Confidence Interval for a Population Proportion explained from scratch: free statistics study notes with figures and worked…",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "justifying a claim based on a confidence interval for a population proportion ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Categorical Data: Proportions",
+          "item": "https://levlprep.com/statistics/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Justifying a Claim Based on a Confidence Interval for a Population Proportion: notes",
+          "item": "https://levlprep.com/statistics/notes/ci-one-proportion-claims.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="ci-one-proportion-claims" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Inference for Categorical Data: Proportions</b><small>15 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="estimators"><a href="estimators.html"><span class="bk-toc-n">3.1</span>Estimators</a></li><li data-toc-t="sampling-dist-proportion"><a href="sampling-dist-proportion.html"><span class="bk-toc-n">3.2</span>Sampling Distributions for Sample Proportions</a></li><li data-toc-t="ci-one-proportion"><a href="ci-one-proportion.html"><span class="bk-toc-n">3.3</span>Constructing a Confidence Interval for a Population Proportion</a></li><li class="current" data-toc-t="ci-one-proportion-claims"><a href="#main" aria-current="page"><span class="bk-toc-n">3.4</span>Justifying a Claim Based on a Confidence Interval for a Population Proportion</a><div class="bk-toc-onpage"><p>On this page</p><a href="#interpreting-the-interval">Interpreting the interval</a><a href="#interpreting-the-confidence-level">Interpreting the confidence level</a><a href="#readings-that-lose-the-point">Readings that lose the point</a><a href="#plausible-values-and-claims">Plausible values and claims</a><a href="#changing-the-confidence-level">Changing the confidence level</a></div></li><li data-toc-t="test-one-proportion-setup"><a href="test-one-proportion-setup.html"><span class="bk-toc-n">3.5</span>Setting Up a Test for a Population Proportion</a></li><li data-toc-t="p-values"><a href="p-values.html"><span class="bk-toc-n">3.6</span>p-Values</a></li><li data-toc-t="test-one-proportion"><a href="test-one-proportion.html"><span class="bk-toc-n">3.7</span>Carrying Out a Test for a Population Proportion</a></li><li data-toc-t="errors-and-power"><a href="errors-and-power.html"><span class="bk-toc-n">3.8</span>Potential Errors When Performing Tests</a></li><li data-toc-t="sampling-dist-two-proportions"><a href="sampling-dist-two-proportions.html"><span class="bk-toc-n">3.9</span>Sampling Distributions for the Difference Between Sample Proportions</a></li><li data-toc-t="ci-two-proportions"><a href="ci-two-proportions.html"><span class="bk-toc-n">3.10</span>Constructing a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="ci-two-proportions-claims"><a href="ci-two-proportions-claims.html"><span class="bk-toc-n">3.11</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions-setup"><a href="test-two-proportions-setup.html"><span class="bk-toc-n">3.12</span>Setting Up a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions"><a href="test-two-proportions.html"><span class="bk-toc-n">3.13</span>Carrying Out a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="chi-square-setup"><a href="chi-square-setup.html"><span class="bk-toc-n">3.14</span>Setting Up a Chi-Square Test for Homogeneity or Independence</a></li><li data-toc-t="chi-square-test"><a href="chi-square-test.html"><span class="bk-toc-n">3.15</span>Carrying Out a Chi-Square Test for Homogeneity or Independence</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Inference for Categorical Data: Proportions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Justifying a Claim Based on a Confidence Interval for a Population Proportion: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/ci-one-proportion-claims.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 3 &middot; Topic 3.4 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Justifying a Claim Based on a Confidence Interval for a Population Proportion</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="ci-one-proportion-claims">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fci-one-proportion-claims.html&amp;title=Justifying%20a%20Claim%20Based%20on%20a%20Confidence%20Interval%20for%20a%20Population%20Proportion%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/ci-one-proportion-claims.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>You can now build an interval such as "from 0.618 to 0.702". This topic is about the words that go with it: what the interval says, what "<a class="gl" href="../notes/ci-one-proportion.html" data-c="confidence-level">95% confident</a>" <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a>, and how an interval supports or fails to support a claim. These sentences earn or lose points on almost every inference question, so they follow fixed templates.</p>
+
+<h2 id="interpreting-the-interval">Interpreting the interval</h2>
+<p>Three pieces, in this order: the confidence <a class="gl" href="../notes/experimental-design.html" data-c="treatment">level</a>, the interval, and the <a class="gl" href="../notes/variables.html" data-c="parameter">parameter</a> <a class="gl" href="../notes/intro-statistics.html" data-c="context">in context</a>.</p>
+<p style="text-align:center"><b>"We are 95% confident that the interval from 0.618 to 0.702 captures the <a class="gl" href="../notes/one-categorical-tables.html" data-c="population-proportion">true proportion</a> of all the district's parents who support a later start time."</b></p>
+<p>The parameter is always about the <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> ("all the district's parents"), never about the <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a>. You already know the <a class="gl" href="../notes/one-categorical-tables.html" data-c="sample-proportion">sample proportion</a> exactly; the interval exists because you do not know the population proportion.</p>
+
+<h2 id="interpreting-the-confidence-level">Interpreting the confidence level</h2>
+<p>The confidence level describes the method, not one interval. Imagine repeating the whole study many times:</p>
+<p style="text-align:center"><b>"If we took many <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">random</a> samples of 500 parents and built a 95% interval from each, about 95% of the intervals would capture the true proportion of all the district's parents who support a later start time."</b></p>
+<figure id="fig-capture"  class="stat-figure"><div class="stat-figimg" data-fig="ci-capture-25"><img src="../figures/ci-capture-25.svg" alt="Twenty-five 95% confidence intervals, one per row, each from a simulated random sample of 400 from a population where the true proportion is p = 0.60, shown as a dashed vertical line. Each interval is drawn as a bar with a dot at its sample proportion. 22 of the 25 intervals cross the line and capture p; 3 miss it and are drawn in orange. The intervals have nearly the same length but are centered at different sample proportions." width="640" height="561" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Twenty-five 95% intervals from random samples of 400 when p = 0.60. Most cross the line; a few miss. In the long run about 95% capture p. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p><a class="figref" href="#fig-capture">The figure</a> shows the idea. Each sample gives a different <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math>, so each interval sits in a different place. The true proportion does not move. Some intervals miss it, and we never know which ones, which is why we say "confident" and not "certain".</p>
+
+<h2 id="readings-that-lose-the-point">Readings that lose the point</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Wrong reading, Why it is wrong"><table>
+<thead><tr><th scope="col">Wrong reading</th><th scope="col">Why it is wrong</th></tr></thead>
+<tbody>
+<tr><td>"There is a 95% <a class="gl" href="../notes/simulation.html" data-c="probability">probability</a> that <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> is between 0.618 and 0.702."</td><td><math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> is a fixed number, and this interval is fixed too: it either captures <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> or it does not. The 95% belongs to the method.</td></tr>
+<tr><td>"95% of parents are between 0.618 and 0.702."</td><td>Each parent supports the change or not. The interval is about one proportion, not about individuals or about 95% of the <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>.</td></tr>
+<tr><td>"We are 95% confident the sample proportion is in the interval."</td><td>The sample proportion is the <a class="gl" href="../notes/describing-distributions.html" data-c="center">center</a> of the interval, so it is always inside. The target is the population proportion.</td></tr>
+<tr><td>"95% of samples will have <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> between 0.618 and 0.702."</td><td>Other samples give other intervals; the 95% is about intervals capturing <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>.</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="plausible-values-and-claims">Plausible values and claims</h2>
+<p>Every value inside a <a class="gl" href="../notes/ci-one-proportion.html" data-c="confidence-interval">confidence interval</a> is a <b><span class="gl" tabindex="0" data-c="plausible">plausible value</span></b> for the parameter: the data are consistent with it. Values outside the interval are not plausible at that confidence level. That gives a simple rule for judging a claim:</p>
+<ul>
+<li><b>The claimed value is inside the interval.</b> It is plausible. The interval does not give <span class="gl" tabindex="0" data-c="convincing-evidence">convincing evidence</span> against the claim. It does not prove the claim either, because many other values are plausible too.</li>
+<li><b>The interval lies entirely on one side of the claimed value.</b> The claimed value is not plausible, and the interval gives <b>convincing evidence</b> that the parameter is greater than (or less than) it.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example.</b> A school board says more than 60% of the district's parents support a later start. In a random sample of 500 parents, 330 support it, and the 95% interval is <math class="stat-m"><semantics><mrow><mn>0.66</mn></mrow><annotation encoding="application/x-tex">0.66</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">±</mo><mn>1.96</mn><msqrt><mfrac><mrow><mn>0.66</mn><mo stretchy="false">(</mo><mn>0.34</mn><mo stretchy="false">)</mo></mrow><mn>500</mn></mfrac></msqrt></mrow><annotation encoding="application/x-tex">\pm 1.96\sqrt{\frac{0.66(0.34)}{500}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.66</mn></mrow><annotation encoding="application/x-tex">= 0.66</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">±</mo><mn>0.042</mn></mrow><annotation encoding="application/x-tex">\pm 0.042</annotation></semantics></math>, from 0.618 to 0.702. Does the interval support the board's claim?</p>
+<p><b>Compare.</b> Every value from 0.618 to 0.702 is greater than 0.60, so 0.60 (and anything below it) is not a plausible value.</p>
+<p><b>Conclude.</b> Because every value in the interval from 0.618 to 0.702 is greater than 0.60, the interval gives convincing evidence that the true proportion of all the district's parents who support a later start time is greater than 0.60.</p>
+<p><b>A second claim.</b> A teacher says the true figure is 70%. 0.70 is inside the interval, so it is plausible: the interval does not give convincing evidence that the true proportion is different from 0.70.</p>
+</div>
+<p>Notice what the sample proportion alone cannot do. <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mn>0.66</mn></mrow><annotation encoding="application/x-tex">\hat{p} = 0.66</annotation></semantics></math> is above 0.60, but a sample could land above 0.60 by chance even if the true proportion were 0.60 or a bit less. The interval builds in that chance <a class="gl" href="../notes/describing-distributions.html" data-c="spread">variation</a>; the bare <a class="gl" href="../notes/estimators.html" data-c="estimator">point estimate</a> does not.</p>
+
+<h2 id="changing-the-confidence-level">Changing the confidence level</h2>
+<p>A higher confidence level makes the interval longer, so more values become plausible and it is harder to rule a claimed value out. From the same sample, the 99% interval for the parents runs from 0.605 to 0.715. It still lies above 0.60, so the evidence for the board's claim holds even at 99% confidence. With a claimed value of 0.61, the 95% interval would rule it out but the 99% interval would not. Choose the level before looking at the data, and report the one you chose.</p>
+<p>On the exam, a claim question earns full credit when you (1) give the interval, (2) say whether the claimed value is inside it, using the word "plausible" or "every value is greater than", and (3) state the conclusion about the parameter in context.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:ci-one-proportion-claims">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="ci-one-proportion.html"><span>&larr; Previous</span><b>Constructing a Confidence Interval for a Population Proportion</b></a><a class="tb-chapter-link next" href="test-one-proportion-setup.html"><span>Next &rarr;</span><b>Setting Up a Test for a Population Proportion</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:ci-one-proportion-claims">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

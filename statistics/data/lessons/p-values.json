@@ -1,0 +1,73 @@
+{
+ "topic": "p-values",
+ "hook": "Head office says 40% of customers buy a pastry with their coffee. At one store, only 105 of 300 sampled orders include one: 35%. Is that store really different, or would a gap that size show up by luck at a store that matches head office? The p-value puts a number on \"by luck\".",
+ "prereq": [
+  {
+   "q": "A study tests $H_0: p = 0.40$. Which large counts check is right for $n = 300$?",
+   "options": [
+    "$300(0.40) = 120$ and $300(0.60) = 180$, both at least 10",
+    "$300 \\ge 30$",
+    "$300(0.35) = 105 \\ge 10$ only",
+    "300 is less than 10% of the population"
+   ],
+   "correct": 0,
+   "why": "A test checks large counts with the null value $p_0 = 0.40$, because it assumes $H_0$ is true.",
+   "review": "test-one-proportion-setup"
+  },
+  {
+   "q": "For a normal distribution with mean 0.40 and standard deviation 0.0283, about what is the z-score of 0.35?",
+   "options": [
+    "$-1.77$",
+    "$1.77$",
+    "$-0.05$",
+    "$-0.35$"
+   ],
+   "correct": 0,
+   "why": "$z = \\frac{0.35 - 0.40}{0.0283} = -1.77$: value minus mean, over the standard deviation.",
+   "review": "normal-distribution"
+  }
+ ],
+ "figure": {
+  "figure": "p-value-tails",
+  "caption": "A p-value is a tail area of the null distribution: one tail for a one-sided alternative, both tails for a two-sided one."
+ },
+ "chain": [
+  {
+   "cause": "Assume $H_0$ is true, so $p = p_0$",
+   "effect": "$\\hat{p}$ is approximately normal with mean $p_0$ and standard deviation $\\sqrt{p_0(1 - p_0)/n}$"
+  },
+  {
+   "cause": "Standardize the observed $\\hat{p}$",
+   "effect": "the test statistic $z = \\frac{\\hat{p} - p_0}{\\sqrt{p_0(1 - p_0)/n}}$ says how many standard deviations it is from $p_0$"
+  },
+  {
+   "cause": "Find the area beyond $z$ in the direction of $H_a$ (both tails if two-sided)",
+   "effect": "that area is the p-value: the chance of a result at least this extreme if $H_0$ is true"
+  },
+  {
+   "cause": "The p-value is small",
+   "effect": "the result would be rare under $H_0$, which is evidence against $H_0$ and for $H_a$ (but never proof)"
+  }
+ ],
+ "ideas": [
+  "Test statistic: $z = \\frac{\\hat{p} - p_0}{\\sqrt{p_0(1 - p_0)/n}}$, with $p_0$ in the square root.",
+  "p-value: the probability, assuming $H_0$ is true, of a statistic at least as extreme as observed, in the direction of $H_a$. Two-sided: double one tail.",
+  "Interpret: \"Assuming the true proportion of all __ is $p_0$, there is a __ probability of getting a sample proportion of __ or less (more) by chance in a random sample of __.\"",
+  "A simulation estimates a p-value: the share of simulated results, made assuming $H_0$, at least as extreme as the real one.",
+  "Not the probability that $H_0$ is true. A large p-value does not prove $H_0$."
+ ],
+ "misconception": {
+  "wrong": "A p-value of 0.0385 means there is a 3.85% chance that the null hypothesis is true.",
+  "right": "The p-value is computed assuming $H_0$ is true. It is the probability of data at least this extreme if $H_0$ holds, not the probability that $H_0$ holds."
+ },
+ "check": [
+  "stat-p-values-1",
+  "stat-p-values-2",
+  "stat-p-values-3",
+  "stat-p-values-4",
+  "stat-p-values-5",
+  "stat-p-values-11",
+  "stat-p-values-17"
+ ],
+ "summary": "A p-value measures how surprising the data are if $H_0$ is true. Assuming $H_0$ is true, standardize the sample proportion with $z = \\frac{\\hat{p} - p_0}{\\sqrt{p_0(1 - p_0)/n}}$ and find the tail area in the direction of $H_a$ (both tails for $\\ne$). That area is the p-value: the chance of a result at least as extreme as the one observed if $H_0$ is true. Small p-values are evidence against $H_0$; they are never the probability that $H_0$ is true."
+}

@@ -1,0 +1,36 @@
+<p>Many questions in Unit 2 ask about a count: the number of shots made, defective parts found, people who say yes. They describe the counts in words, such as "at least 3" or "fewer than 2", and each phrase picks out a particular set of whole numbers. This page is about translating those words exactly.</p>
+
+<h2>The phrases and their inequalities</h2>
+<table class="compare">
+<thead><tr><th>Words</th><th>Inequality</th><th>For a count from 0 to 8</th></tr></thead>
+<tbody>
+<tr><td>at least 3, no fewer than 3, 3 or more</td><td>$X \ge 3$</td><td>3, 4, 5, 6, 7, 8</td></tr>
+<tr><td>more than 3</td><td>$X > 3$</td><td>4, 5, 6, 7, 8</td></tr>
+<tr><td>at most 3, no more than 3, 3 or fewer</td><td>$X \le 3$</td><td>0, 1, 2, 3</td></tr>
+<tr><td>fewer than 3, less than 3</td><td>$X < 3$</td><td>0, 1, 2</td></tr>
+<tr><td>from 2 to 5 inclusive</td><td>$2 \le X \le 5$</td><td>2, 3, 4, 5</td></tr>
+</tbody>
+</table>
+<figure id="fig-ineq" data-fig="inequality-lines"><figcaption>Which counts each phrase includes, on a number line from 0 to 8.</figcaption></figure>
+<p>The question to ask every time: <i>is the boundary number itself included?</i> "At least", "at most", "no more than" and "inclusive" include it. "More than" and "fewer than" leave it out.</p>
+
+<h2>Counts change strict inequalities</h2>
+<p>A count jumps from one whole number to the next, so a strict inequality can always be rewritten with an equals sign:</p>
+<ul>
+<li>$X < 3$ is the same as $X \le 2$.</li>
+<li>$X > 4$ is the same as $X \ge 5$.</li>
+</ul>
+<p>This matters because calculators and tables usually work with "or fewer". If a question asks for "fewer than 3", you want the total for 0, 1 and 2, which is "2 or fewer", not "3 or fewer". Reading "fewer than 3" as $X \le 3$ is one of the slips most often seen on exam answers.</p>
+<div class="worked">
+<p><b>Translate, then list.</b> A player takes 10 free throws. Let X be the number she makes.</p>
+<p>"She makes more than 4": $X > 4$, so $X \ge 5$: the values 5, 6, 7, 8, 9, 10.</p>
+<p>"She makes fewer than 3": $X < 3$, so $X \le 2$: the values 0, 1, 2.</p>
+<p>"She makes at least one": $X \ge 1$: every value except 0. It is quickest to think of it as "all the values, minus the value 0".</p>
+<p>Check by listing the values each time; the list makes a slip at the boundary obvious.</p>
+</div>
+
+<h2>Counting from data</h2>
+<p>The same care applies to data. Ten students read 0, 1, 1, 2, 3, 3, 4, 5, 6 and 9 books. "At least 5 books" includes the student who read exactly 5: the values 5, 6 and 9, so 3 students, or $\frac{3}{10} = 0.3$ of the group. "More than 5" would leave that student out: 2 students.</p>
+
+<h2>Measurements are different</h2>
+<p>For a continuous variable measured precisely, such as a commute time in seconds, almost no value lands exactly on the boundary. So "less than 20 minutes" and "20 minutes or less" give nearly the same proportion. The boundary matters a lot for counts and very little for measurements.</p>

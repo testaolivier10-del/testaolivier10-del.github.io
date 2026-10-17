@@ -1,0 +1,12 @@
+{
+ "estimator-bias-variability": {
+  "file": "figures/estimator-bias-variability.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 532,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three probability histograms on the same scale from 0.1 to 0.8, each with a dashed line at the true proportion p = 0.40. Top: the sample proportion from random samples of 25 is centered at 0.40 and spread widely, from about 0.2 to 0.6: unbiased, high variability. Middle: the sample proportion from random samples of 100 is centered at 0.40 and about half as spread out: unbiased, low variability. Bottom: a biased method whose sample proportions center at 0.55 with low variability: biased, low variability."
+ }
+}

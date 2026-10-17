@@ -1,0 +1,295 @@
+{
+ "about": "\"Say it in context\" prompts for unit-4 (docs/apstat-architecture.md, \"Justification trainer\"; spec section 6). Written in Phase 3 from the banks; checked by checkJustify in scripts/lib/apstat-exams.mjs, numbers recomputed in JUSTIFY_NUMBERS. Invented data.",
+ "prompts": [
+  {
+   "unit": "unit-4",
+   "id": "u4-t-interval-interpret",
+   "topic": "ci-one-mean",
+   "practice": "4.F",
+   "skill": "interval",
+   "title": "Interpret a t interval for a mean",
+   "context": "<p>A random sample of 18 bags of trail mix from a factory has mean weight 11.9 ounces and standard deviation 0.56 ounces. A 95% t interval for the mean weight is from 11.62 to 12.18 ounces (invented data).</p>",
+   "prompt": "<b>Interpret</b> the interval in context.",
+   "checklist": [
+    "States the level: we are 95% confident",
+    "Says the interval from 11.62 to 12.18 ounces captures the parameter",
+    "Names the parameter: the true mean weight of all bags of trail mix from this factory (not individual bags, not the sample mean)"
+   ],
+   "earns": {
+    "answer": "We are 95% confident that the interval from 11.62 to 12.18 ounces captures the true mean weight of all bags of trail mix from this factory.",
+    "why": "It has the level, the interval with units and the parameter in context."
+   },
+   "misses": {
+    "answer": "95% of the bags of trail mix weigh between 11.62 and 12.18 ounces.",
+    "why": "The interval estimates the mean weight, not where individual bags fall; many bags weigh outside it."
+   },
+   "conclude": {
+    "mode": "interval",
+    "slots": {
+     "level": {
+      "options": [
+       "We are 95% confident that",
+       "95% of the bags weigh between 11.62 and 12.18 ounces, so",
+       "There is a 95% chance that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The interval is about the mean, not individual bags.",
+       "2": "The 95% describes the method; say confident."
+      }
+     },
+     "claim": {
+      "options": [
+       "the interval from 11.62 to 12.18 ounces captures",
+       "the sample mean of 11.9 ounces is",
+       "the interval from 11.62 to 12.18 ounces captures 95% of"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample mean is known; the interval estimates the parameter.",
+       "2": "The interval estimates one mean, not 95% of anything."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean weight of all bags of trail mix from this factory.",
+       "the mean weight of the 18 bags in the sample.",
+       "the weight of a typical bag in the sample."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the sample mean, known exactly.",
+       "2": "The parameter is the mean for all the factory's bags."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-paired-claim",
+   "topic": "ci-one-mean-claims",
+   "practice": "4.G",
+   "skill": "interval",
+   "title": "A paired interval and a claim",
+   "context": "<p>Twenty randomly selected students from a school district took a reading test before and after a summer program. For each student, difference = after minus before. A 95% t interval for the mean difference is from 1.8 to 6.4 points (invented data).</p>",
+   "prompt": "<b>Explain</b> whether the interval gives convincing evidence that scores increase on average after the program.",
+   "checklist": [
+    "Notes that every value in the interval is positive (0 is not in the interval)",
+    "Concludes there is convincing evidence that the true mean difference (after minus before) for all such students is greater than 0",
+    "Says this means scores increase on average, in context"
+   ],
+   "earns": {
+    "answer": "Because every value in the interval from 1.8 to 6.4 points is greater than 0, the interval gives convincing evidence that the true mean difference in reading score (after minus before) for all such students in the district is greater than 0. That is, scores increase on average after the program, by somewhere from about 1.8 to 6.4 points.",
+    "why": "It reads the interval against 0, states the conclusion about the true mean difference in context, and keeps the order of the difference (after minus before)."
+   },
+   "misses": {
+    "answer": "The interval does not contain 0, so the program works for every student.",
+    "why": "The interval is about the mean difference, not every student; and a study without a comparison group cannot say the program caused the gain."
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-normal-condition",
+   "topic": "ci-one-mean",
+   "practice": "4.E",
+   "skill": "conditions",
+   "title": "The normal condition for a small sample",
+   "context": "<p>A biologist measures the lengths of 12 randomly selected trout from a hatchery pond and wants a 95% t interval for the mean length. A dotplot of the 12 lengths is roughly symmetric with no outliers.</p>",
+   "prompt": "<b>Verify</b> the conditions for the t interval.",
+   "checklist": [
+    "Random: the 12 trout were randomly selected",
+    "10%: 12 is less than 10% of all the trout in the pond",
+    "Normal: the sample is small ($n = 12 < 30$), so it relies on the dotplot of the sample showing no strong skew or outliers, which it does"
+   ],
+   "earns": {
+    "answer": "Random: the 12 trout were randomly selected from the pond. 10%: 12 is less than 10% of all the trout in a hatchery pond. Normal: $n = 12$ is less than 30, so we cannot rely on the central limit theorem; but the dotplot of the sample lengths is roughly symmetric with no outliers, so it is reasonable to use a t interval.",
+    "why": "It checks all three conditions, and for the small sample it names the graph and what the graph shows."
+   },
+   "misses": {
+    "answer": "The data are normal, so the conditions are met.",
+    "why": "It assumes what must be checked: the population is not known to be normal, so the answer must point to a graph of the sample, and random and 10% are missing."
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-t-test-conclusion",
+   "topic": "test-one-mean",
+   "practice": "4.G",
+   "skill": "test",
+   "title": "Conclude a one-sample t test",
+   "context": "<p>A phone maker says its battery lasts 20 hours on average. A reviewer tests a random sample of 25 phones: $\\bar{x} = 19.2$ hours, $s = 1.8$ hours. For $H_0: \\mu = 20$ and $H_a: \\mu < 20$, where $\\mu$ is the true mean battery life of all phones of this model, the test gives $t = -2.22$ with $\\text{df} = 24$ and a p-value of 0.018 (invented data).</p>",
+   "prompt": "<b>State</b> the conclusion at $\\alpha = 0.05$.",
+   "checklist": [
+    "Compares: because the p-value of 0.018 is less than $\\alpha = 0.05$, reject $H_0$",
+    "Evidence language: there is convincing evidence",
+    "Parameter in context, on the side of $H_a$: the true mean battery life of all phones of this model is less than 20 hours"
+   ],
+   "earns": {
+    "answer": "Because the p-value of 0.018 is less than $\\alpha = 0.05$, we reject $H_0$. There is convincing evidence that the true mean battery life of all phones of this model is less than 20 hours.",
+    "why": "Comparison, evidence wording, the side of $H_a$ and the parameter in context: all four parts."
+   },
+   "misses": {
+    "answer": "Because 0.018 < 0.05, we reject $H_0$. The battery lasts 19.2 hours, not 20.",
+    "why": "19.2 hours is the sample mean; the conclusion must be evidence about the true mean of all phones, on the side of $H_a$."
+   },
+   "conclude": {
+    "mode": "test",
+    "p": 0.018,
+    "alpha": 0.05,
+    "ha": "less",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "It is proven"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is below alpha.",
+       "2": "A test never proves."
+      }
+     },
+     "parameter": {
+      "options": [
+       "that the true mean battery life of all phones of this model",
+       "that the mean battery life of the 25 phones tested",
+       "that the battery life of each phone of this model"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample mean is known; the conclusion is about all phones.",
+       "2": "The parameter is a mean, not every phone."
+      }
+     },
+     "direction": {
+      "options": [
+       "is less than 20 hours.",
+       "is 19.2 hours.",
+       "is different from 19.2 hours."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A test gives evidence for $H_a: \\mu < 20$, not a value.",
+       "2": "The hypotheses are about 20 hours."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-two-sample-conclusion",
+   "topic": "test-two-means",
+   "practice": "4.G",
+   "skill": "test",
+   "title": "Conclude a two-sample t test",
+   "context": "<p>A gardener randomly assigns 40 tomato seedlings from one nursery to two fertilizers, 20 each. After six weeks, fertilizer A plants have mean height 14.2 cm ($s = 2.1$) and fertilizer B plants 12.9 cm ($s = 2.4$). A two-sample t test of $H_0: \\mu_A - \\mu_B = 0$ against $H_a: \\mu_A - \\mu_B > 0$, where $\\mu_A$ and $\\mu_B$ are the true mean heights of seedlings like these given each fertilizer, gives $t = 1.82$ with $\\text{df} = 37.3$ and a p-value of 0.038 (invented data).</p>",
+   "prompt": "<b>State</b> the conclusion at $\\alpha = 0.05$.",
+   "checklist": [
+    "Compares: because the p-value of 0.038 is less than $\\alpha = 0.05$, reject $H_0$",
+    "Evidence language on the side of $H_a$: convincing evidence that the true mean height with fertilizer A is greater than with fertilizer B",
+    "Names the parameter as a difference of true means for seedlings like these, not the sample means 14.2 and 12.9"
+   ],
+   "earns": {
+    "answer": "Because the p-value of 0.038 is less than $\\alpha = 0.05$, we reject $H_0$. There is convincing evidence that the true mean height of seedlings like these is greater with fertilizer A than with fertilizer B, that is, the true mean difference $\\mu_A - \\mu_B$ is greater than 0.",
+    "why": "It compares, uses evidence language, keeps the side of $H_a$, and states the parameter as a difference of true means."
+   },
+   "misses": {
+    "answer": "Because the p-value is small, the plants with fertilizer A grew 1.3 cm more.",
+    "why": "\"Small\" is not compared with alpha, and 1.3 cm is the sample difference; the conclusion is about the true mean difference."
+   },
+   "conclude": {
+    "mode": "test",
+    "p": 0.038,
+    "alpha": 0.05,
+    "ha": "greater",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "This proves"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "0.038 is below 0.05.",
+       "2": "A test never proves."
+      }
+     },
+     "parameter": {
+      "options": [
+       "that the true mean height of seedlings like these with fertilizer A, minus that with fertilizer B,",
+       "that the mean height of the 20 fertilizer A plants, minus that of the 20 fertilizer B plants,",
+       "that every fertilizer A plant's height, minus a fertilizer B plant's height,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Those sample means are known (14.2 and 12.9).",
+       "2": "The parameter is a difference of means, not of individual plants."
+      }
+     },
+     "direction": {
+      "options": [
+       "is greater than 0.",
+       "is equal to 0.",
+       "is less than 0."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Evidence is never that $H_0$ is true.",
+       "2": "Match $H_a: \\mu_A - \\mu_B > 0$."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-two-means-interval-claim",
+   "topic": "ci-two-means-claims",
+   "practice": "4.G",
+   "skill": "interval",
+   "title": "An interval for a difference that contains 0",
+   "context": "<p>Independent random samples of commuters on two train lines give a 95% confidence interval for $\\mu_{\\text{East}} - \\mu_{\\text{West}}$, the difference in true mean commute times (minutes), from $-1.2$ to 3.5 minutes (invented data).</p>",
+   "prompt": "<b>Explain</b> whether the interval gives convincing evidence that the true mean commute times on the two lines differ.",
+   "checklist": [
+    "Notes that 0 is in the interval from $-1.2$ to 3.5 minutes",
+    "Concludes the interval does not give convincing evidence that the true mean commute times differ",
+    "Avoids saying the means are equal: 0 is plausible, but so are differences of either sign"
+   ],
+   "earns": {
+    "answer": "Because 0 is in the interval from $-1.2$ to 3.5 minutes, a difference of 0 is plausible, so the interval does not give convincing evidence that the true mean commute times of all East line and all West line commuters differ. It also does not show they are equal: the East line mean could plausibly be up to 1.2 minutes shorter or 3.5 minutes longer.",
+    "why": "It checks 0 against the interval and states the conclusion about the true mean difference without overclaiming."
+   },
+   "misses": {
+    "answer": "Since the interval contains 0, the two lines have the same mean commute time.",
+    "why": "Containing 0 means no convincing evidence of a difference, not evidence of no difference."
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-scope-of-inference",
+   "topic": "test-two-means",
+   "practice": "4.G",
+   "skill": "design",
+   "title": "Cause and effect, and to whom",
+   "context": "<p>A gardener randomly assigns 40 tomato seedlings from one nursery to two fertilizers, 20 each. After six weeks, fertilizer A plants have mean height 14.2 cm ($s = 2.1$) and fertilizer B plants 12.9 cm ($s = 2.4$). A two-sample t test of $H_0: \\mu_A - \\mu_B = 0$ against $H_a: \\mu_A - \\mu_B > 0$, where $\\mu_A$ and $\\mu_B$ are the true mean heights of seedlings like these given each fertilizer, gives $t = 1.82$ with $\\text{df} = 37.3$ and a p-value of 0.038 (invented data).</p>",
+   "prompt": "<b>Explain</b> what kind of conclusion the gardener can draw (cause and effect or not) and to which plants it applies.",
+   "checklist": [
+    "Cause and effect: the seedlings were randomly assigned to fertilizers, so, with the p-value of 0.038, there is convincing evidence that fertilizer A causes greater mean height",
+    "Scope: the seedlings are from one nursery and were not a random sample of all tomato plants, so the result applies to seedlings like these",
+    "Ties each part to the design feature that allows it (random assignment for cause, random sampling for generalizing)"
+   ],
+   "earns": {
+    "answer": "Because the seedlings were randomly assigned to the two fertilizers, the groups should be similar apart from the fertilizer, so, with a p-value of 0.038, there is convincing evidence that fertilizer A causes greater mean height. But the seedlings came from one nursery and were not randomly selected from all tomato plants, so the conclusion applies only to seedlings like these.",
+    "why": "It links cause to random assignment and limits the scope because there was no random sampling."
+   },
+   "misses": {
+    "answer": "Fertilizer A makes all tomato plants grow taller because the result was significant.",
+    "why": "Significance alone does not allow a causal claim (random assignment does), and \"all tomato plants\" generalizes without random sampling."
+   }
+  }
+ ]
+}

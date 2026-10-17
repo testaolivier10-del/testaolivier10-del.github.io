@@ -1,0 +1,12 @@
+{
+ "paired-before-after": {
+  "file": "figures/paired-before-after.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a slope chart of resting heart rate for 12 gym members, before and after a breathing class, on a scale from 60 to 90 beats per minute; 11 lines slope down and one slopes up. Right: a dotplot of the 12 differences, before minus after: -1, 1, 1, 1, 2, 3, 3, 3, 5, 5, 5, 6, with mean 2.83 and standard deviation 2.12. All but one difference is above 0."
+ }
+}

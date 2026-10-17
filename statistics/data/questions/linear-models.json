@@ -1,0 +1,586 @@
+{
+ "stimuli": {
+  "linear-models-s1": {
+   "kind": "graph",
+   "title": "Sleep and reaction time, with a regression line",
+   "set": "regression",
+   "text": "For 14 student volunteers, the regression line for predicting reaction time (milliseconds) from hours of sleep the night before is $\\hat{y} = 391.1 - 11.37x$. The students slept from 4.5 to 9.5 hours. (Invented data.)",
+   "plot": {
+    "label": "Scatterplot of hours of sleep against reaction time for 14 students with the regression line from about 345 milliseconds at 4 hours down to about 277 at 10 hours",
+    "kind": "scatter",
+    "xs": [
+     4.5,
+     5,
+     5.5,
+     6,
+     6,
+     6.5,
+     7,
+     7,
+     7.5,
+     8,
+     8,
+     8.5,
+     9,
+     9.5
+    ],
+    "ys": [
+     338,
+     341,
+     322,
+     330,
+     312,
+     326,
+     301,
+     318,
+     309,
+     294,
+     306,
+     287,
+     296,
+     281
+    ],
+    "line": true,
+    "x": [
+     4,
+     10
+    ],
+    "y": [
+     270,
+     350
+    ],
+    "xLabel": "hours of sleep",
+    "yLabel": "reaction time (ms)"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "hours of sleep",
+      "unit": "hours",
+      "values": [
+       4.5,
+       5,
+       5.5,
+       6,
+       6,
+       6.5,
+       7,
+       7,
+       7.5,
+       8,
+       8,
+       8.5,
+       9,
+       9.5
+      ]
+     },
+     {
+      "name": "reaction time",
+      "unit": "ms",
+      "values": [
+       338,
+       341,
+       322,
+       330,
+       312,
+       326,
+       301,
+       318,
+       309,
+       294,
+       306,
+       287,
+       296,
+       281
+      ]
+     }
+    ]
+   }
+  },
+  "linear-models-s2": {
+   "kind": "table",
+   "title": "Used phone prices",
+   "text": "A resale site fits a regression line to 60 listings of one phone model, aged 0 (new, unopened) to 6 years: $\\widehat{\\text{price}} = 620 - 95(\\text{age})$, with price in dollars and age in years. (Invented data.)",
+   "table": {
+    "caption": "The regression line",
+    "cols": [
+     "Term",
+     "Value",
+     "Meaning"
+    ],
+    "rows": [
+     [
+      "Intercept",
+      "620",
+      "predicted price at age 0"
+     ],
+     [
+      "Slope",
+      "$-95$",
+      "change in predicted price per year of age"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-linear-models-1",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "linear-models-s1",
+   "q": "What reaction time does the line predict for a student who slept 6.8 hours?",
+   "why": {
+    "correct": "Substitute $x = 6.8$ into the equation.",
+    "options": [
+     "That is only the slope times 6.8. Add it to the intercept with its sign: $391.1 - 77.3$.",
+     "That adds the slope term. The slope is negative, so subtract.",
+     "Right: $\\hat{y} = 391.1 - 11.37(6.8) = 313.8$.",
+     "That is the intercept, the prediction for 0 hours of sleep."
+    ]
+   },
+   "options": [
+    "About 77 milliseconds",
+    "About 468 milliseconds",
+    "About 314 milliseconds",
+    "About 391 milliseconds"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-linear-models-2",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-models-s1",
+   "q": "Which is the correct interpretation of the slope?",
+   "why": {
+    "correct": "Slope: \"for each additional [unit of $x$], the predicted [$y$] increases (decreases) by about $|b|$ [units of $y$]\".",
+    "options": [
+     "Right: the slope is the predicted change in $y$ for each one-unit increase in $x$, in context.",
+     "That describes the intercept, and 0 hours is far outside the data.",
+     "The line predicts reaction time from sleep, not the other way round.",
+     "The line gives predictions, not exact changes for each student. Say \"predicted\"."
+    ]
+   },
+   "options": [
+    "For each extra hour of sleep, predicted reaction time drops by about 11.4 ms",
+    "A student who slept 0 hours is predicted to react in 391 milliseconds",
+    "For each millisecond of reaction time, predicted sleep decreases by 11.4 hours",
+    "For each additional hour of sleep, reaction time decreases by exactly 11.4 milliseconds"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-linear-models-3",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-models-s1",
+   "q": "The line predicts a reaction time of about 243 milliseconds for a student who sleeps 13 hours. How much should this prediction be trusted?",
+   "why": {
+    "correct": "Extrapolation: predicting outside the range of $x$ values in the data.",
+    "options": [
+     "Predictions inside the data range are reasonable for typical students. The problem is extrapolating.",
+     "Right: no one in the data slept that long, so there is no reason to think the linear trend continues there.",
+     "Any $x$ gives a number; that does not make the prediction sensible.",
+     "A strong association inside the data says nothing about values far outside it."
+    ]
+   },
+   "options": [
+    "Hardly, because predictions do not work for one person",
+    "Very little: 13 hours is far outside the data, so it is extrapolation",
+    "Fully, because the equation gives a number",
+    "Fully, because the association between sleep and reaction time is strong"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-linear-models-4",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "conclude",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-models-s2",
+   "q": "Interpret the slope in context.",
+   "why": {
+    "correct": "Slope: predicted change in $y$ per one-unit increase in $x$."
+   },
+   "conclude": {
+    "mode": "slope",
+    "slots": {
+     "change": {
+      "label": "For each",
+      "options": [
+       "For each additional year of age,",
+       "For each additional dollar of price,",
+       "For a phone that is 1 year old,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Price is the response; the slope is per unit of the explanatory variable, age.",
+       "2": "That would be a prediction for one age, not the slope."
+      }
+     },
+     "amount": {
+      "label": "Change",
+      "options": [
+       "the predicted price decreases by about 95 dollars.",
+       "the price of each phone drops by exactly 95 dollars.",
+       "the predicted price is 95 dollars."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The line describes predicted values, not exact changes for each phone.",
+       "2": "The slope is a change in price, not a price."
+      }
+     }
+    },
+    "model": "For each additional year of age, the predicted resale price of this phone model decreases by about 95 dollars.",
+    "write": {
+     "context": [
+      "price",
+      "year"
+     ],
+     "parameter": false,
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-linear-models-5",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "conclude",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "linear-models-s2",
+   "q": "Interpret the intercept in context. Does it make sense here?",
+   "why": {
+    "correct": "Intercept: the predicted $y$ when $x = 0$, worth interpreting only when $x = 0$ is in or near the data."
+   },
+   "conclude": {
+    "mode": "intercept",
+    "slots": {
+     "value": {
+      "label": "Intercept",
+      "options": [
+       "A new phone (age 0) has a predicted price of 620 dollars,",
+       "Each phone loses 620 dollars of value,",
+       "The average phone in the data costs 620 dollars,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The intercept is a predicted price, not a loss.",
+       "2": "The intercept is the prediction at age 0, not the average price."
+      }
+     },
+     "sense": {
+      "label": "Does it make sense?",
+      "options": [
+       "and this makes sense, since new phones (age 0) are in the data.",
+       "but this never makes sense, since an intercept is always extrapolation.",
+       "and this is the exact price of every new phone."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An intercept makes sense when $x = 0$ is a reasonable value inside the data, as here.",
+       "2": "The line gives a predicted value; actual prices vary."
+      }
+     }
+    },
+    "model": "When the phone is new (age 0 years), its predicted resale price is 620 dollars. This makes sense because the data include new phones.",
+    "write": {
+     "context": [
+      "price",
+      "age"
+     ],
+     "parameter": false,
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-linear-models-6",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "linear-models-s2",
+   "q": "Write the expression for the predicted price of a 3.5-year-old phone, then evaluate it.",
+   "why": {
+    "correct": "$\\widehat{\\text{price}} = 620 - 95(3.5) = 287.5$ dollars."
+   },
+   "setup": {
+    "answer": "620 - 95*3.5",
+    "bind": {},
+    "mustUse": [
+     "620",
+     "95",
+     "3.5"
+    ],
+    "mistakes": [
+     {
+      "expr": "(620 - 95)*3.5",
+      "why": "Multiply the slope by the age first, then subtract from the intercept: $620 - 95(3.5)$."
+     },
+     {
+      "expr": "620 + 95*3.5",
+      "why": "The slope is negative: price falls with age, so subtract."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-linear-models-7",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "linear-models-s2",
+   "q": "What does the line predict for an 8-year-old phone, and what does that show?",
+   "why": {
+    "correct": "Predictions far outside the data can be meaningless.",
+    "options": [
+     "Substitute carefully: $620 - 760 = -140$. And the line cannot tell us about ages beyond 6.",
+     "Use the age: $620 - 95(8)$.",
+     "A negative price is a sign the line does not apply outside the data, not a real prediction.",
+     "Right: $620 - 95(8) = -140$. Extrapolation can give nonsense."
+    ]
+   },
+   "options": [
+    "$140$ dollars, the value after the phone stops losing value",
+    "$525$ dollars, the intercept minus the slope",
+    "$-140$ dollars, so the seller would pay the buyer to take it",
+    "$-140$, impossible: 8 years is outside the data"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-linear-models-8",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "4.B",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "linear-models-s2",
+   "q": "In $\\widehat{\\text{price}} = 620 - 95(\\text{age})$, what does the hat on \"price\" mean?",
+   "why": {
+    "correct": "$\\hat{y}$ (y-hat) is the predicted value of $y$.",
+    "options": [
+     "The hat does not mean a maximum.",
+     "The hat marks a prediction for a given age, not one overall average.",
+     "The hat marks a predicted value.",
+     "Right: $\\hat{y}$ is a predicted value; actual prices scatter around it."
+    ]
+   },
+   "options": [
+    "It is the highest price in the data",
+    "It is the average of the 60 listed prices in the data",
+    "It is the price in a different currency",
+    "A predicted price, not an actual listed price"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-linear-models-9",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "4.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "A line for predicting quiz score (points) from study time (hours) has slope 4.2. What are the units of the slope?",
+   "why": {
+    "correct": "Slope units: $y$ units per $x$ unit.",
+    "options": [
+     "That flips the ratio. The slope is $y$ units over $x$ units.",
+     "Right: a slope is a change in $y$ per unit of $x$.",
+     "A slope is a rate: points per hour.",
+     "Unlike $r$, a slope carries units of $y$ per unit of $x$."
+    ]
+   },
+   "options": [
+    "Hours per point",
+    "Points per hour",
+    "Points",
+    "It has no units, like a correlation"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-linear-models-10",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A regression line has slope 2.5 and passes through the point $(4, 30)$. What is its equation?",
+   "why": {
+    "correct": "Substitute the point into $\\hat{y} = a + bx$ and solve for $a$.",
+    "options": [
+     "Subtract 10 from 30, do not add it.",
+     "That uses the $y$ value as the intercept. Solve $30 = a + 2.5(4)$.",
+     "That uses the $x$ value as the intercept.",
+     "Right: $30 = a + 2.5(4)$, so $a = 30 - 10 = 20$."
+    ]
+   },
+   "options": [
+    "$\\hat{y} = 40 + 2.5x$",
+    "$\\hat{y} = 30 + 2.5x$",
+    "$\\hat{y} = 4 + 2.5x$",
+    "$\\hat{y} = 20 + 2.5x$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-linear-models-11",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For children aged 5 to 12, a line predicts height (cm) from age (years): $\\hat{y} = 76 + 6.2x$. Why should the intercept not be interpreted as a newborn's height?",
+   "why": {
+    "correct": "Interpret the intercept only when $x = 0$ makes sense in context.",
+    "options": [
+     "Right: interpreting the intercept here would be extrapolation; real newborns are about 50 cm.",
+     "An intercept is meaningful when $x = 0$ is inside the data, as for new phones.",
+     "The intercept is the prediction at age 0, not an average.",
+     "The sign of the slope does not decide whether the intercept makes sense."
+    ]
+   },
+   "options": [
+    "Age 0 is outside the data, and growth is not linear from birth",
+    "Intercepts are not meaningful in any regression line",
+    "76 cm is the average height of the children in the study",
+    "The slope is positive, so the intercept should be ignored"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-linear-models-12",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A scatterplot has correlation $r = -0.7$. What is true of the slope of its regression line?",
+   "why": {
+    "correct": "Slope and correlation share their sign.",
+    "options": [
+     "Right: the slope and the correlation always have the same sign.",
+     "The slope has units and depends on the spreads of $x$ and $y$; it equals $r$ only in special cases.",
+     "A negative correlation means $y$ tends to fall as $x$ rises, so the line falls.",
+     "A slope of 0 would mean no linear trend, but $r = -0.7$ shows one."
+    ]
+   },
+   "options": [
+    "It is negative",
+    "It is $-0.7$",
+    "It is positive",
+    "It is 0"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-linear-models-13",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A line predicts monthly electricity cost (dollars) from home size (square feet): $\\hat{y} = 18 + 0.06x$. Two homes differ in size by 500 square feet. How do their predicted costs differ?",
+   "why": {
+    "correct": "A change of $\\Delta x$ changes $\\hat{y}$ by $b\\,\\Delta x$.",
+    "options": [
+     "Right: $0.06 \\times 500 = 30$ dollars.",
+     "That adds the intercept. The intercept cancels when comparing two predictions.",
+     "That is the difference for 1 square foot.",
+     "Multiply the slope by the difference in size; do not add numbers."
+    ]
+   },
+   "options": [
+    "By 30 dollars",
+    "By 48 dollars",
+    "By 0.06 dollars",
+    "By 518 dollars"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-linear-models-14",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The phone line predicts 287.50 dollars for a 3.5-year-old phone. One such phone is listed at 340 dollars. Which statement is correct?",
+   "why": {
+    "correct": "Predictions are typical values, not exact ones.",
+    "options": [
+     "One phone above the line does not make the line wrong.",
+     "Real data do not fall exactly on a line; that is expected.",
+     "Right: $\\hat{y}$ is a prediction. Actual values scatter above and below the line.",
+     "The line predicts; it does not set prices."
+    ]
+   },
+   "options": [
+    "The line is wrong, since it missed this phone",
+    "The listing is wrong, since it does not match the line",
+    "Individual phones vary around the line's typical price",
+    "The phone should sell for exactly 287.50 dollars"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-linear-models-15",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "A regression line has intercept 50, and its predicted $y$ falls by 3 for each one-unit increase in $x$. Which is its equation?",
+   "why": {
+    "correct": "$\\hat{y} = a + bx$ with $a = 50$, $b = -3$.",
+    "options": [
+     "The intercept is the constant term, 50; the slope multiplies $x$.",
+     "That swaps the intercept and the slope.",
+     "Right: intercept 50, slope $-3$.",
+     "A falling line has a negative slope."
+    ]
+   },
+   "options": [
+    "$\\hat{y} = -3 + 50x$",
+    "$\\hat{y} = 3 - 50x$",
+    "$\\hat{y} = 50 - 3x$",
+    "$\\hat{y} = 50 + 3x$"
+   ],
+   "correct": 2
+  }
+ ]
+}

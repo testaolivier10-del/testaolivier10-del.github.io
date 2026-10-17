@@ -1,0 +1,71 @@
+{
+ "topic": "random-variables",
+ "hook": "A highway agency wants to know how many people ride in each car, to plan a carpool lane. One car is chosen at random: it might hold 1 person, or 5. That uncertain count is a random variable, and listing its values with their probabilities answers every question the agency has.",
+ "prereq": [
+  {
+   "q": "A die is rolled. What is P(roll is at least 5)?",
+   "options": [
+    "$\\frac{2}{6}$",
+    "$\\frac{1}{6}$",
+    "$\\frac{5}{6}$",
+    "$\\frac{4}{6}$"
+   ],
+   "correct": 0,
+   "why": "5 and 6: 2 of 6 outcomes.",
+   "review": "probability-intro"
+  },
+  {
+   "q": "Which variable is discrete?",
+   "options": [
+    "The number of siblings a student has",
+    "A student's height",
+    "The time to finish a test",
+    "The weight of a backpack"
+   ],
+   "correct": 0,
+   "why": "Siblings are counted, with gaps between the values.",
+   "review": "variables"
+  }
+ ],
+ "figure": {
+  "figure": "u2-cars-histogram",
+  "caption": "The probability distribution of X, the number of people in a car. The bars add to 1."
+ },
+ "chain": [
+  {
+   "cause": "A chance process produces a number",
+   "effect": "that number is a random variable, named with a capital letter and defined in context"
+  },
+  {
+   "cause": "List every value with its probability",
+   "effect": "the probability distribution, a table or a probability histogram"
+  },
+  {
+   "cause": "Every outcome gives exactly one value",
+   "effect": "the probabilities are from 0 to 1 and add to 1, which finds a missing value"
+  },
+  {
+   "cause": "Add the probabilities up to a boundary",
+   "effect": "a cumulative probability such as $P(X \\le 3)$; translate \"fewer than 3\" as $X \\le 2$"
+  }
+ ],
+ "ideas": [
+  "A <b>random variable</b> is a number that comes from a chance process. Define it in context: \"Let X = the number of people in a randomly chosen car.\"",
+  "A <b>probability distribution</b> gives every value of the random variable and its probability, as a table or a probability histogram. The probabilities are from 0 to 1 and add to 1.",
+  "A <b>discrete</b> random variable has separate values (counts); a continuous one can take any value in an interval.",
+  "A <b>cumulative probability</b> adds up to a boundary: $P(X \\le 3)$. \"Fewer than 3\" is $X \\le 2$; \"at least 3\" is $X \\ge 3$."
+ ],
+ "misconception": {
+  "wrong": "\"Let X = rock songs\" defines the random variable.",
+  "right": "A random variable is a number. Say what is counted and out of what: \"Let X = the number of rock songs among the 12 songs on the playlist.\""
+ },
+ "check": [
+  "stat-random-variables-1",
+  "stat-random-variables-2",
+  "stat-random-variables-3",
+  "stat-random-variables-4",
+  "stat-random-variables-7",
+  "stat-random-variables-8"
+ ],
+ "summary": "A random variable is a number from a chance process, defined in context. Its probability distribution lists each value with its probability; the probabilities are from 0 to 1 and add to 1. Probabilities of events like \"at least 3\" or \"fewer than 3\" come from adding the right values, and cumulative probabilities add everything up to a boundary."
+}

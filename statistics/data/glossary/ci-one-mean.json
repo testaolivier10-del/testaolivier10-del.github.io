@@ -1,0 +1,14 @@
+{
+ "t-distribution": {
+  "def": "A family of symmetric, bell-shaped density curves centered at 0, with heavier tails than the standard normal. Each is set by its degrees of freedom; as df grows, the t distribution approaches the standard normal. Its critical values are written $t^*$."
+ },
+ "one-sample-t-interval": {
+  "def": "A confidence interval for a population mean when $\\sigma$ is unknown: $\\bar{x} \\pm t^*\\frac{s}{\\sqrt{n}}$, with $\\text{df} = n - 1$. Conditions: random, 10%, normal/large sample."
+ },
+ "paired-data": {
+  "def": "Two measurements that belong together, on the same individual or on two matched individuals (before and after, left and right, twins). Analyze the differences as one sample; the parameter is the true mean difference $\\mu_d$."
+ },
+ "normal-large-sample": {
+  "def": "The shape condition for t procedures: the population is normal, or the sample size is at least 30, or a graph of the sample data (dotplot, boxplot, histogram) shows no strong skew and no outliers."
+ }
+}

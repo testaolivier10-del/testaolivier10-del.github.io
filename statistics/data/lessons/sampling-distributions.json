@@ -1,0 +1,71 @@
+{
+ "topic": "sampling-distributions",
+ "hook": "A pharmacy says customers wait 5 minutes on average. You time 40 customers and get an average of 7.5 minutes. Bad luck, or a false claim? Every sample gives a slightly different average, so the question is how much averages bounce around. The answer, the sampling distribution, is the bridge to everything in Units 3 and 4.",
+ "prereq": [
+  {
+   "q": "Which is a statistic?",
+   "options": [
+    "The mean height of 50 sunflowers in a sample",
+    "The mean height of all sunflowers in the field",
+    "The number of sunflowers in the field",
+    "The true proportion of tall sunflowers"
+   ],
+   "correct": 0,
+   "why": "A statistic describes a sample.",
+   "review": "variables"
+  },
+  {
+   "q": "For $N(5, 0.8)$, what is the z-score of 7.4?",
+   "options": [
+    "3",
+    "2.4",
+    "0.33",
+    "9.25"
+   ],
+   "correct": 0,
+   "why": "$\\frac{7.4 - 5}{0.8} = 3$.",
+   "review": "normal-distribution"
+  }
+ ],
+ "figure": {
+  "figure": "u2-clt-panels",
+  "caption": "A skewed population of wait times, then 2000 sample means for n = 2 and for n = 30. The means center at 5, spread less as n grows, and become bell-shaped."
+ },
+ "chain": [
+  {
+   "cause": "Different random samples contain different individuals",
+   "effect": "a statistic such as $\\bar{x}$ or $\\hat{p}$ varies from sample to sample (sampling variability)"
+  },
+  {
+   "cause": "Collect the statistic from every possible sample of size n",
+   "effect": "its sampling distribution, with a center, a spread and a shape"
+  },
+  {
+   "cause": "Average more individuals in each sample",
+   "effect": "the center stays at the parameter, $\\mu_{\\bar{x}} = \\mu$, and the spread shrinks, $\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}}$"
+  },
+  {
+   "cause": "Make n large, even from a skewed population",
+   "effect": "the Central Limit Theorem makes the sampling distribution of $\\bar{x}$ approximately normal"
+  }
+ ],
+ "ideas": [
+  "A statistic varies from sample to sample. Its <b>sampling distribution</b> is the distribution of its values over all possible random samples of the same size.",
+  "Keep three distributions apart: the population, one sample's data, and the sampling distribution of a statistic.",
+  "For $\\bar{x}$: center $\\mu_{\\bar{x}} = \\mu$ and spread $\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}}$. Four times the sample size halves the spread. For $\\hat{p}$, the center is p.",
+  "The <b>Central Limit Theorem</b>: for large n (a common guide is 30 or more), the sampling distribution of $\\bar{x}$ is approximately normal whatever the population's shape. A normal population gives normal $\\bar{x}$ at any n."
+ ],
+ "misconception": {
+  "wrong": "The Central Limit Theorem says a large sample of data looks normal.",
+  "right": "A large sample from a skewed population is still skewed. The CLT is about the sample mean: across many samples, the values of $\\bar{x}$ pile up in a roughly normal shape."
+ },
+ "check": [
+  "stat-sampling-distributions-1",
+  "stat-sampling-distributions-2",
+  "stat-sampling-distributions-3",
+  "stat-sampling-distributions-4",
+  "stat-sampling-distributions-10",
+  "stat-sampling-distributions-11"
+ ],
+ "summary": "A statistic varies from sample to sample, and its sampling distribution describes how. For the sample mean, the center is $\\mu$ and the spread is $\\frac{\\sigma}{\\sqrt{n}}$, so larger samples give less variable means. By the Central Limit Theorem, for large n the sampling distribution of $\\bar{x}$ is approximately normal even from a skewed population, which lets you judge whether a sample mean is surprising."
+}

@@ -1,0 +1,1444 @@
+{
+ "about": "Topic map of the AP Statistics Course and Exam Description (revised, effective fall 2026), written in LevlPrep's own words from docs/apstat-research/framework.md. No CED text is reproduced. Titles: Units 1-3 read in the CED; Unit 4 and 5 titles checked against the official student course page (7 of 10 and 4 of 5 there or in the CED text) and three third-party sites that agree; each topic's source says which. Objectives and knowledge lines are summaries, not CED text, and beyond 2.1 are not text-verified (docs/apstat-needs-author.md, ced-text).",
+ "ced": {
+  "title": "AP Statistics Course and Exam Description",
+  "edition": "Revised course, effective fall 2026 (5 units, 55 topics)",
+  "effective": "Fall 2026; first exam May 2027",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-statistics-course-and-exam-description.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-statistics/future-revisions",
+   "https://apstudents.collegeboard.org/courses/ap-statistics",
+   "https://apcentral.collegeboard.org/media/pdf/ap-statistics-formula-tables-sheet.pdf"
+  ],
+  "verification": "CED PDF text readable to about 110k characters (through Unit 2 and the Course at a Glance for Unit 3 and parts of 4-5); reference sheet read in full; student course page read (2026-10-17)."
+ },
+ "practices": [
+  {
+   "id": 1,
+   "name": "Formulate Questions",
+   "skills": [
+    "1.A"
+   ],
+   "mcqWeight": [
+    5,
+    10
+   ],
+   "skillNames": {
+    "1.A": "Determine a valid investigative question"
+   }
+  },
+  {
+   "id": 2,
+   "name": "Collect Data",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D",
+    "2.E"
+   ],
+   "mcqWeight": [
+    20,
+    30
+   ],
+   "skillNames": {
+    "2.A": "Identify the information needed to answer a question",
+    "2.B": "Justify an ethical method for gathering and representing data",
+    "2.C": "Identify an appropriate inference method",
+    "2.D": "Identify types of errors and how the parts of inference relate",
+    "2.E": "Identify null and alternative hypotheses"
+   }
+  },
+  {
+   "id": 3,
+   "name": "Analyze Data",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C",
+    "3.D",
+    "3.E"
+   ],
+   "mcqWeight": [
+    25,
+    35
+   ],
+   "skillNames": {
+    "3.A": "Construct tables and graphs",
+    "3.B": "Calculate summary statistics, relative positions and predicted responses",
+    "3.C": "Calculate expected counts, percentages, probabilities and intervals",
+    "3.D": "Calculate means, standard deviations and parameters of distributions",
+    "3.E": "Calculate the results of an inference method"
+   }
+  },
+  {
+   "id": 4,
+   "name": "Interpret Results",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "4.D",
+    "4.E",
+    "4.F",
+    "4.G"
+   ],
+   "mcqWeight": [
+    25,
+    35
+   ],
+   "skillNames": {
+    "4.A": "Describe and compare representations and summaries",
+    "4.B": "Justify a claim from calculations",
+    "4.C": "Describe distributions and relative positions",
+    "4.D": "Interpret calculations to assess meaning or a claim",
+    "4.E": "Justify a method by verifying conditions",
+    "4.F": "Interpret the results of inference",
+    "4.G": "Justify a claim from the results of inference"
+   }
+  }
+ ],
+ "units": [
+  {
+   "n": 1,
+   "id": "unit-1",
+   "title": "Exploring One-Variable Data and Collecting Data",
+   "weight": "20-30%",
+   "classPeriods": "~26",
+   "topics": [
+    {
+     "id": "1.1",
+     "slug": "intro-statistics",
+     "title": "Introducing Statistics: What Can We Learn from Data?",
+     "skills": [
+      "1.A",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Say what question a study can answer and what population and sample it uses."
+     ],
+     "knowledge": [
+      "A study answers a question about a population using data from a sample.",
+      "Results are stated in the context of the question."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.2",
+     "slug": "variables",
+     "title": "Variables",
+     "skills": [
+      "2.A"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Identify observational units and classify variables; tell a parameter from a statistic."
+     ],
+     "knowledge": [
+      "Variables are categorical or quantitative; quantitative ones are discrete or continuous.",
+      "A parameter describes a population; a statistic describes a sample."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.3",
+     "slug": "one-categorical-tables",
+     "title": "Tabular Representation and Summary Statistics for One Categorical Variable",
+     "skills": [
+      "3.A",
+      "4.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Summarize one categorical variable with frequency and relative frequency tables."
+     ],
+     "knowledge": [
+      "A relative frequency is a count divided by the total; a sample proportion is one."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.4",
+     "slug": "one-categorical-displays",
+     "title": "Graphical Representations for One Categorical Variable",
+     "skills": [
+      "3.A",
+      "4.A",
+      "4.B"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Display and compare categorical data with bar charts and pie charts."
+     ],
+     "knowledge": [
+      "Bar heights show counts or proportions; comparisons need the same scale."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.5",
+     "slug": "one-quantitative-displays",
+     "title": "Graphical Representations for One Quantitative Variable",
+     "skills": [
+      "3.A"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Display one quantitative variable with dotplots, stemplots and histograms."
+     ],
+     "knowledge": [
+      "A histogram's look depends on its bin width; cumulative graphs show percentiles."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.6",
+     "slug": "describing-distributions",
+     "title": "Descriptions for One Quantitative Variable Distributions",
+     "skills": [
+      "4.A",
+      "4.B"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Describe shape, center, spread and unusual features in context."
+     ],
+     "knowledge": [
+      "Shapes: symmetric, skewed left or right, unimodal, bimodal, uniform.",
+      "Unusual features: outliers, gaps, clusters."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.7",
+     "slug": "summary-statistics",
+     "title": "Summary Statistics for One Quantitative Variable",
+     "skills": [
+      "3.B",
+      "4.A",
+      "4.B"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Calculate and interpret mean, median, quartiles, range, IQR and standard deviation; spot outliers."
+     ],
+     "knowledge": [
+      "Outlier rules: beyond 1.5 IQR from the quartiles, or more than 2 standard deviations from the mean.",
+      "Median and IQR resist outliers; mean, range and SD do not.",
+      "Changing units shifts and scales the summaries in predictable ways."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.8",
+     "slug": "boxplots",
+     "title": "Graphical Representations of Summary Statistics for One Quantitative Variable",
+     "skills": [
+      "3.A",
+      "4.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Draw and read boxplots from the five-number summary, with outliers marked."
+     ],
+     "knowledge": [
+      "A boxplot shows the five-number summary; it cannot show modality."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.9",
+     "slug": "comparing-distributions",
+     "title": "Comparisons of the Distributions for One Quantitative Variable",
+     "skills": [
+      "3.B",
+      "4.A",
+      "4.B",
+      "4.C"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Compare groups and find relative positions with percentiles and z-scores."
+     ],
+     "knowledge": [
+      "A z-score is the value minus the mean, over the standard deviation.",
+      "Comparisons name which group is higher or more variable."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.10",
+     "slug": "investigative-questions",
+     "title": "The Investigative Question Revisited and Data Collection",
+     "skills": [
+      "1.A",
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Write a good investigative question and match it to a census, survey, experiment or observational study."
+     ],
+     "knowledge": [
+      "A good question names the variable, parameter, population and kind of conclusion.",
+      "Only random assignment supports a cause-and-effect conclusion; confounding blocks it otherwise."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.11",
+     "slug": "random-sampling",
+     "title": "Random Sampling",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Describe and carry out simple random, stratified, cluster and systematic samples."
+     ],
+     "knowledge": [
+      "Sampling may be with or without replacement.",
+      "A procedure labels, generates, skips repeats and selects."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.12",
+     "slug": "sampling-problems",
+     "title": "Potential Problems with Sampling",
+     "skills": [
+      "2.A"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Name the source of bias in a sampling method and its likely direction."
+     ],
+     "knowledge": [
+      "Voluntary response, convenience, undercoverage, nonresponse and response bias."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.13",
+     "slug": "experimental-design",
+     "title": "Experimental Design",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Design and describe completely randomized, randomized block and matched pairs experiments."
+     ],
+     "knowledge": [
+      "Comparison, random assignment, replication and control.",
+      "Blinding; a matched pairs design is a block design with two treatments.",
+      "Volunteers limit how far results generalize."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "id": "unit-2",
+   "title": "Probability, Random Variables, and Probability Distributions",
+   "weight": "15-25%",
+   "classPeriods": "~24",
+   "topics": [
+    {
+     "id": "2.1",
+     "slug": "two-categorical-displays",
+     "title": "Tabular and Graphical Representations for the Distributions of Two Categorical Variables",
+     "skills": [
+      "4.A",
+      "4.B"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Show two categorical variables with two-way tables, side-by-side and segmented bar charts and mosaic plots."
+     ],
+     "knowledge": [
+      "Association shows when conditional distributions differ."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.2",
+     "slug": "two-categorical-summaries",
+     "title": "Summary Statistics for Two Categorical Variables",
+     "skills": [
+      "3.B",
+      "4.A",
+      "4.B"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Find joint, marginal and conditional relative frequencies and compare them."
+     ],
+     "knowledge": [
+      "Conditional relative frequencies answer 'of those in a group, what share ...'."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.3",
+     "slug": "simulation",
+     "title": "Estimating Probabilities Using Simulation",
+     "skills": [
+      "3.C"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Estimate a probability by simulating a chance process many times."
+     ],
+     "knowledge": [
+      "The estimate is the share of trials with the event; more trials give a steadier estimate."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.4",
+     "slug": "probability-intro",
+     "title": "Introduction to Probability",
+     "skills": [
+      "3.C"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Find probabilities of events from equally likely outcomes, including complements."
+     ],
+     "knowledge": [
+      "A probability is the long-run relative frequency of an outcome.",
+      "P(not A) = 1 - P(A)."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.5",
+     "slug": "mutually-exclusive",
+     "title": "Mutually Exclusive Events",
+     "skills": [
+      "4.B"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Decide whether events are mutually exclusive and use the joint probability."
+     ],
+     "knowledge": [
+      "Mutually exclusive events cannot happen together: P(A and B) = 0."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.6",
+     "slug": "conditional-probability",
+     "title": "Conditional Probability",
+     "skills": [
+      "3.C"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Calculate and interpret conditional probabilities, including with the multiplication rule."
+     ],
+     "knowledge": [
+      "P(A | B) = P(A and B) / P(B)."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.7",
+     "slug": "independence-unions",
+     "title": "Independent Events and Unions of Events",
+     "skills": [
+      "3.C"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Check independence and find the probability of a union with the addition rule."
+     ],
+     "knowledge": [
+      "Independent: P(A | B) = P(A).",
+      "P(A or B) = P(A) + P(B) - P(A and B)."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.8",
+     "slug": "random-variables",
+     "title": "Introduction to Random Variables and Probability Distributions",
+     "skills": [
+      "3.A"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Define a discrete random variable in context and give its probability distribution."
+     ],
+     "knowledge": [
+      "Probabilities in a distribution are between 0 and 1 and add to 1."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.9",
+     "slug": "random-variable-parameters",
+     "title": "Parameters of Random Variables",
+     "skills": [
+      "3.B",
+      "4.D"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Calculate and interpret the mean (expected value) and standard deviation of a discrete random variable."
+     ],
+     "knowledge": [
+      "The mean weights each value by its probability."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.10",
+     "slug": "binomial-distribution",
+     "title": "The Binomial Distribution",
+     "skills": [
+      "3.C",
+      "3.D",
+      "4.B",
+      "4.D"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Recognize a binomial setting and calculate binomial probabilities, mean and standard deviation."
+     ],
+     "knowledge": [
+      "Fixed n, two outcomes, constant p, independent trials.",
+      "Show the distribution, its parameters, the boundary and direction."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.11",
+     "slug": "normal-distribution",
+     "title": "The Normal Distribution",
+     "skills": [
+      "3.C",
+      "3.D",
+      "4.C"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Find areas and boundary values for normal distributions; use the empirical rule."
+     ],
+     "knowledge": [
+      "Standardize with z; areas under the curve are probabilities."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.12",
+     "slug": "sampling-distributions",
+     "title": "Sampling Distributions and the Central Limit Theorem",
+     "skills": [
+      "4.C"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Describe the sampling distribution of a statistic and what the Central Limit Theorem says about its shape."
+     ],
+     "knowledge": [
+      "A statistic varies from sample to sample; its distribution has a center, spread and shape.",
+      "For large n, the sampling distribution of a sample mean is approximately normal."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "id": "unit-3",
+   "title": "Inference for Categorical Data: Proportions",
+   "weight": "15-25%",
+   "classPeriods": "~30",
+   "topics": [
+    {
+     "id": "3.1",
+     "slug": "estimators",
+     "title": "Estimators",
+     "skills": [
+      "2.D",
+      "4.D"
+     ],
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Tell biased from unbiased estimators and relate variability to sample size."
+     ],
+     "knowledge": [
+      "An unbiased estimator's sampling distribution is centered at the parameter."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.2",
+     "slug": "sampling-dist-proportion",
+     "title": "Sampling Distributions for Sample Proportions",
+     "skills": [
+      "3.D",
+      "4.E"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Give the mean, standard deviation and shape of the sampling distribution of a sample proportion."
+     ],
+     "knowledge": [
+      "Large counts: np and n(1 - p) at least 10; the 10% condition when sampling without replacement."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.3",
+     "slug": "ci-one-proportion",
+     "title": "Constructing a Confidence Interval for a Population Proportion",
+     "skills": [
+      "2.C",
+      "3.E",
+      "4.E"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Construct a one-sample z interval for a proportion, checking conditions."
+     ],
+     "knowledge": [
+      "statistic plus or minus critical value times standard error."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.4",
+     "slug": "ci-one-proportion-claims",
+     "title": "Justifying a Claim Based on a Confidence Interval for a Population Proportion",
+     "skills": [
+      "4.F",
+      "4.G"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Interpret an interval and its confidence level and use it to judge a claim."
+     ],
+     "knowledge": [
+      "A level describes the method's long-run capture rate."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.5",
+     "slug": "test-one-proportion-setup",
+     "title": "Setting Up a Test for a Population Proportion",
+     "skills": [
+      "2.C",
+      "2.E",
+      "4.E"
+     ],
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Write hypotheses about a population proportion and check the conditions for a test."
+     ],
+     "knowledge": [
+      "Hypotheses are about parameters; the test's SE uses p0."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.6",
+     "slug": "p-values",
+     "title": "p-Values",
+     "skills": [
+      "4.F"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Interpret a p-value as a probability computed assuming the null hypothesis."
+     ],
+     "knowledge": [
+      "Small p-values are evidence against the null."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.7",
+     "slug": "test-one-proportion",
+     "title": "Carrying Out a Test for a Population Proportion",
+     "skills": [
+      "3.E",
+      "4.G"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Carry out a one-sample z test for a proportion and state the conclusion in context."
+     ],
+     "knowledge": [
+      "Compare the p-value with alpha; conclude about the alternative."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.8",
+     "slug": "errors-and-power",
+     "title": "Potential Errors When Performing Tests",
+     "skills": [
+      "2.D",
+      "4.F"
+     ],
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Describe Type I and Type II errors and power in context and what changes them."
+     ],
+     "knowledge": [
+      "P(Type I) = alpha; power rises with n and effect size."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.9",
+     "slug": "sampling-dist-two-proportions",
+     "title": "Sampling Distributions for the Difference Between Sample Proportions",
+     "skills": [
+      "3.D",
+      "4.E"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Describe the sampling distribution of a difference of two sample proportions."
+     ],
+     "knowledge": [
+      "Variances add for independent samples."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.10",
+     "slug": "ci-two-proportions",
+     "title": "Constructing a Confidence Interval for the Difference Between Two Population Proportions",
+     "skills": [
+      "2.C",
+      "3.E",
+      "4.E"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Construct a two-sample z interval for a difference of proportions."
+     ],
+     "knowledge": [
+      "Unpooled SE for intervals."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.11",
+     "slug": "ci-two-proportions-claims",
+     "title": "Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions",
+     "skills": [
+      "4.F",
+      "4.G"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Use an interval for a difference to judge a claim, including whether 0 is plausible."
+     ],
+     "knowledge": [
+      "An interval entirely above 0 is evidence the first proportion is larger."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.12",
+     "slug": "test-two-proportions-setup",
+     "title": "Setting Up a Test for the Difference Between Two Population Proportions",
+     "skills": [
+      "2.C",
+      "2.E",
+      "4.E"
+     ],
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Write hypotheses and check conditions for a two-sample z test."
+     ],
+     "knowledge": [
+      "The test's SE pools the two samples (p_c)."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.13",
+     "slug": "test-two-proportions",
+     "title": "Carrying Out a Test for the Difference Between Two Population Proportions",
+     "skills": [
+      "3.E",
+      "4.G"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Carry out a two-sample z test and conclude in context."
+     ],
+     "knowledge": [
+      "Conclusions about the difference of the true proportions."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.14",
+     "slug": "chi-square-setup",
+     "title": "Setting Up a Chi-Square Test for Homogeneity or Independence",
+     "skills": [
+      "2.C",
+      "2.E",
+      "3.C",
+      "4.E"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Choose homogeneity or independence, write hypotheses, compute expected counts and check conditions."
+     ],
+     "knowledge": [
+      "Expected count = row total times column total over the grand total."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    },
+    {
+     "id": "3.15",
+     "slug": "chi-square-test",
+     "title": "Carrying Out a Chi-Square Test for Homogeneity or Independence",
+     "skills": [
+      "3.E",
+      "4.G"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Calculate the chi-square statistic, degrees of freedom and p-value and conclude in context."
+     ],
+     "knowledge": [
+      "df = (rows - 1)(columns - 1)."
+     ],
+     "exclusions": [],
+     "source": "CED Course at a Glance (read)"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "id": "unit-4",
+   "title": "Inference for Quantitative Data: Means",
+   "weight": "10-20%",
+   "classPeriods": "~18",
+   "topics": [
+    {
+     "id": "4.1",
+     "slug": "sampling-dist-mean",
+     "title": "Sampling Distributions for Sample Means",
+     "skills": [
+      "3.D",
+      "4.E"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Give the mean, standard deviation and shape of the sampling distribution of a sample mean."
+     ],
+     "knowledge": [
+      "sigma over the square root of n; normal population or large n."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "4.2",
+     "slug": "ci-one-mean",
+     "title": "Constructing a Confidence Interval for a Population Mean or Population Mean Difference",
+     "skills": [
+      "2.C",
+      "3.E",
+      "4.E"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Construct a one-sample t interval for a mean or a paired mean difference."
+     ],
+     "knowledge": [
+      "t distributions with n - 1 degrees of freedom when sigma is unknown."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "4.3",
+     "slug": "ci-one-mean-claims",
+     "title": "Justifying a Claim Based on a Confidence Interval for a Population Mean or Population Mean Difference",
+     "skills": [
+      "4.F",
+      "4.G"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Interpret a t interval and use it to judge a claim."
+     ],
+     "knowledge": [
+      "As for proportions, in terms of a mean."
+     ],
+     "exclusions": [],
+     "source": "third party (Fiveable, num8ers, OnePrep agree); not text-verified"
+    },
+    {
+     "id": "4.4",
+     "slug": "test-one-mean-setup",
+     "title": "Setting Up a Test for a Population Mean or Population Mean Difference",
+     "skills": [
+      "2.C",
+      "2.E",
+      "4.E"
+     ],
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Write hypotheses and check conditions for a one-sample or paired t test."
+     ],
+     "knowledge": [
+      "Paired data: analyze the differences."
+     ],
+     "exclusions": [],
+     "source": "official student course page (title) + third-party numbering"
+    },
+    {
+     "id": "4.5",
+     "slug": "test-one-mean",
+     "title": "Carrying Out a Test for a Population Mean or Population Mean Difference",
+     "skills": [
+      "3.E",
+      "4.G"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Carry out a one-sample or paired t test and conclude in context."
+     ],
+     "knowledge": [
+      "t = (x-bar - mu0) / (s / sqrt(n))."
+     ],
+     "exclusions": [],
+     "source": "third party (Fiveable, num8ers, OnePrep agree); not text-verified"
+    },
+    {
+     "id": "4.6",
+     "slug": "sampling-dist-two-means",
+     "title": "Sampling Distributions for the Difference Between Two Sample Means",
+     "skills": [
+      "3.D",
+      "4.E"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Describe the sampling distribution of a difference of two sample means."
+     ],
+     "knowledge": [
+      "Variances add for independent samples."
+     ],
+     "exclusions": [],
+     "source": "official student course page (title) + third-party numbering"
+    },
+    {
+     "id": "4.7",
+     "slug": "ci-two-means",
+     "title": "Constructing a Confidence Interval for the Difference Between Two Population Means",
+     "skills": [
+      "2.C",
+      "3.E",
+      "4.E"
+     ],
+     "practices": [
+      2,
+      3,
+      4
+     ],
+     "objectives": [
+      "Construct a two-sample t interval for a difference of means."
+     ],
+     "knowledge": [
+      "Unpooled SE; technology df or the conservative df."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "4.8",
+     "slug": "ci-two-means-claims",
+     "title": "Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Means",
+     "skills": [
+      "4.F",
+      "4.G"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Use an interval for a difference of means to judge a claim."
+     ],
+     "knowledge": [
+      "Is 0 in the interval?"
+     ],
+     "exclusions": [],
+     "source": "official student course page (title) + third-party numbering"
+    },
+    {
+     "id": "4.9",
+     "slug": "test-two-means-setup",
+     "title": "Setting Up a Test for the Difference Between Two Population Means",
+     "skills": [
+      "2.C",
+      "2.E",
+      "4.E"
+     ],
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Write hypotheses and check conditions for a two-sample t test."
+     ],
+     "knowledge": [
+      "Two independent random samples or groups."
+     ],
+     "exclusions": [],
+     "source": "third party (Fiveable, num8ers, OnePrep agree); not text-verified"
+    },
+    {
+     "id": "4.10",
+     "slug": "test-two-means",
+     "title": "Carrying Out a Test for the Difference Between Two Population Means",
+     "skills": [
+      "3.E",
+      "4.G"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Carry out a two-sample t test and conclude in context."
+     ],
+     "knowledge": [
+      "Unpooled two-sample t."
+     ],
+     "exclusions": [],
+     "source": "official student course page (title) + third-party numbering"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "id": "unit-5",
+   "title": "Regression Analysis",
+   "weight": "10-20%",
+   "classPeriods": "~9",
+   "topics": [
+    {
+     "id": "5.1",
+     "slug": "scatterplots",
+     "title": "Graphical Representations Between Two Quantitative Variables",
+     "skills": [
+      "3.A",
+      "4.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Make and describe scatterplots: direction, form, strength and unusual features."
+     ],
+     "knowledge": [
+      "Explanatory variable on the horizontal axis."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "5.2",
+     "slug": "correlation",
+     "title": "Correlation",
+     "skills": [
+      "3.B",
+      "4.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Interpret the correlation r and know what it does not measure."
+     ],
+     "knowledge": [
+      "r measures linear strength and direction; correlation is not causation."
+     ],
+     "exclusions": [],
+     "source": "official student course page (title) + third-party numbering"
+    },
+    {
+     "id": "5.3",
+     "slug": "linear-models",
+     "title": "Linear Regression Models",
+     "skills": [
+      "3.B",
+      "4.B"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Use a regression line to predict and interpret its slope and intercept in context; avoid extrapolation."
+     ],
+     "knowledge": [
+      "y-hat = a + bx."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "5.4",
+     "slug": "residuals",
+     "title": "Residuals",
+     "skills": [
+      "3.B",
+      "4.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Calculate and interpret residuals and read residual plots."
+     ],
+     "knowledge": [
+      "residual = actual - predicted; a pattern means a linear model is not appropriate."
+     ],
+     "exclusions": [],
+     "source": "third party (Fiveable, num8ers, OnePrep agree); not text-verified"
+    },
+    {
+     "id": "5.5",
+     "slug": "least-squares-regression",
+     "title": "Least-Squares Regression",
+     "skills": [
+      "3.B",
+      "4.B",
+      "4.D"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Interpret the least-squares line, r squared and s, and the effect of unusual points."
+     ],
+     "knowledge": [
+      "The least-squares line minimizes the sum of squared residuals."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    }
+   ]
+  }
+ ],
+ "skillsTopics": [
+  {
+   "slug": "math-fractions-percents",
+   "title": "Fractions, Decimals and Percents",
+   "before": "one-categorical-tables",
+   "practices": [
+    3
+   ],
+   "objectives": [
+    "Convert between fractions, decimals and percents and find a part of a whole."
+   ],
+   "knowledge": [
+    "A proportion is a part over a whole."
+   ]
+  },
+  {
+   "slug": "math-formulas",
+   "title": "Formulas, Order of Operations and Square Roots",
+   "before": "summary-statistics",
+   "practices": [
+    3
+   ],
+   "objectives": [
+    "Substitute into a formula and evaluate it in the right order, including sums and square roots."
+   ],
+   "knowledge": [
+    "The summation sign adds a list of terms."
+   ]
+  },
+  {
+   "slug": "math-inequality-words",
+   "title": "Inequalities in Words",
+   "before": "probability-intro",
+   "practices": [
+    3
+   ],
+   "objectives": [
+    "Translate 'at least', 'at most', 'fewer than' and 'more than' into inequalities."
+   ],
+   "knowledge": [
+    "'Fewer than 3' is X < 3, which is X <= 2 for counts."
+   ]
+  },
+  {
+   "slug": "math-counting",
+   "title": "Factorials and Combinations",
+   "before": "binomial-distribution",
+   "practices": [
+    3
+   ],
+   "objectives": [
+    "Count arrangements with factorials and choices with combinations."
+   ],
+   "knowledge": [
+    "n choose k counts the ways to pick k of n."
+   ]
+  },
+  {
+   "slug": "math-lines",
+   "title": "Lines: Slope and Intercept",
+   "before": "scatterplots",
+   "practices": [
+    3
+   ],
+   "objectives": [
+    "Read and use the slope and intercept of a line."
+   ],
+   "knowledge": [
+    "Slope is the change in y for each one-unit increase in x."
+   ]
+  }
+ ],
+ "topicCount": 55,
+ "topicCountByUnit": {
+  "1": 13,
+  "2": 12,
+  "3": 15,
+  "4": 10,
+  "5": 5
+ },
+ "exclusionsSummary": {
+  "removedForRevision": [
+   "the geometric distribution (old 4.12)",
+   "combining random variables (old 4.9)",
+   "chi-square goodness of fit (old 8.2-8.3)",
+   "transformations / departures from linearity (old 2.9)",
+   "inference for regression slope (old Unit 9)"
+  ],
+  "notOnReferenceSheet": [
+   "pooled two-sample t (the sheet gives only the unpooled SE for means; the only pooled SE is p_c for proportions)",
+   "b = r s_y / s_x and the formula for r (not on the 2026 sheet)"
+  ],
+  "verifiedInCourse": [
+   "the 10% condition (named in the CED's Unit 4 overview)"
+  ],
+  "unverified": [
+   "normal approximation to the binomial (no mention found in the readable CED text or official pages)",
+   "the least-squares slope formula b = r s_y / s_x as a required calculation"
+  ]
+ },
+ "exam": {
+  "date2027": "2027-05-11",
+  "day": "Tuesday",
+  "session": "afternoon",
+  "totalTime": "3 h",
+  "delivery": "Fully digital in Bluebook; free responses typed.",
+  "mcq": {
+   "questions": 42,
+   "minutes": 90,
+   "weight": "50%",
+   "options": 4,
+   "sets": [
+    "probability, random variables and distributions (3 questions)",
+    "regression analysis (3 questions)"
+   ]
+  },
+  "frq": {
+   "questions": 4,
+   "minutes": 90,
+   "weight": "50%",
+   "pointsEach": 10,
+   "rawPoints": 40,
+   "types": {
+    "collect": "Q1 Formulate and collect (Practices 1-2)",
+    "analyze": "Q2 Analyze and interpret (Practices 3-4)",
+    "inference": "Q3 Inference: a test or an interval (Practices 2-4)",
+    "multi": "Q4 Multi-focus across content (Practices 2-4)"
+   }
+  },
+  "calculator": "Graphing calculator with statistics functions in both sections; Desmos in Bluebook.",
+  "reference": "Formulas and Tables A (normal), B (t), C (chi-square) provided (2026 sheet)."
+ }
+}

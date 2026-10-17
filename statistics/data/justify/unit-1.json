@@ -1,0 +1,192 @@
+{
+ "about": "\"Say it in context\" prompts for unit-1 (docs/apstat-architecture.md, \"Justification trainer\"; spec section 6). Written in Phase 3 from the banks; checked by checkJustify in scripts/lib/apstat-exams.mjs, numbers recomputed in JUSTIFY_NUMBERS. Invented data.",
+ "prompts": [
+  {
+   "unit": "unit-1",
+   "id": "u1-describe-commute",
+   "topic": "describing-distributions",
+   "practice": "4.C",
+   "skill": "describe",
+   "title": "Describe a distribution of commute times",
+   "context": "<p>A random sample of 30 workers in a town reported their one-way commute time in minutes. A histogram of the times has a tall peak from 10 to 30 minutes and a long tail to the right. Summary: minimum 8, $Q_1 = 15$, median 22, $Q_3 = 30$, maximum 95 (invented data).</p>",
+   "prompt": "<b>Describe</b> the distribution of commute times.",
+   "checklist": [
+    "Shape: says the distribution is skewed right (a long tail toward the longer times)",
+    "Center: gives the median, 22 minutes, as the typical commute (the median suits skewed data)",
+    "Spread: gives the IQR of 15 minutes or the range of 87 minutes, with units",
+    "Unusual features and context: names the 95 minute commute as an outlier (above $Q_3 + 1.5 \\times \\text{IQR} = 52.5$) and keeps the words commute time throughout"
+   ],
+   "earns": {
+    "answer": "The distribution of commute times for these 30 workers is skewed right. The median commute is 22 minutes, and the IQR is $30 - 15 = 15$ minutes. The 95 minute commute is an outlier, because it is greater than $Q_3 + 1.5 \\times \\text{IQR} = 30 + 22.5 = 52.5$ minutes.",
+    "why": "It covers shape, center, spread and an unusual feature, each with a number and the context, and it backs the outlier with the 1.5 IQR rule."
+   },
+   "misses": {
+    "answer": "The data are skewed with a median of 22, a spread of 15, and maybe an outlier.",
+    "why": "It never says which way the data are skewed, gives no units or context (22 what?), and \"maybe an outlier\" names no value and checks no rule."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-compare-clinics",
+   "topic": "comparing-distributions",
+   "practice": "4.A",
+   "skill": "compare",
+   "title": "Compare wait times at two clinics",
+   "context": "<p>Wait times (minutes) for random samples of 40 patients at two urgent care clinics. Clinic North: minimum 5, $Q_1 = 12$, median 18, $Q_3 = 25$, maximum 41, roughly symmetric. Clinic South: minimum 8, $Q_1 = 20$, median 31, $Q_3 = 44$, maximum 70, skewed right (invented data).</p>",
+   "prompt": "<b>Compare</b> the distributions of wait times at the two clinics.",
+   "checklist": [
+    "Uses comparison words for center: the median wait at South (31 minutes) is greater than at North (18 minutes)",
+    "Uses comparison words for spread: South's waits are more variable (IQR 24 minutes vs 13 minutes, or range 62 vs 36)",
+    "Compares shape: North is roughly symmetric while South is skewed right",
+    "Keeps the context (wait times at each clinic) and the units throughout"
+   ],
+   "earns": {
+    "answer": "The median wait time at Clinic South (31 minutes) is greater than the median at Clinic North (18 minutes). South's wait times are also more variable: its IQR is $44 - 20 = 24$ minutes, compared with $25 - 12 = 13$ minutes at North. North's distribution is roughly symmetric, while South's is skewed right toward long waits.",
+    "why": "Every feature (center, spread, shape) is a comparison, with numbers from both clinics and the context."
+   },
+   "misses": {
+    "answer": "North has a median of 18 and an IQR of 13. South has a median of 31 and an IQR of 24.",
+    "why": "These are two separate lists. Nothing says which clinic is greater or more variable, so the comparison is left for the reader, and shape is missing."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-boxplot-shape",
+   "topic": "boxplots",
+   "practice": "4.A",
+   "skill": "describe",
+   "title": "What a boxplot cannot show",
+   "context": "<p>A boxplot of the heights of 50 sunflowers has its median line in the middle of the box and two whiskers of equal length. A student writes, \"The heights are normal and have one peak in the middle.\"</p>",
+   "prompt": "<b>Explain</b> what the boxplot shows about the shape of the distribution of heights, and what it cannot show.",
+   "checklist": [
+    "Says the boxplot suggests the heights are roughly symmetric (median centered in the box, equal whiskers)",
+    "Explains that a boxplot does not show the number of peaks or gaps, so \"one peak\" cannot be read from it",
+    "Says \"normal\" cannot be concluded from a boxplot; a dotplot or histogram is needed to judge peaks or a bell shape"
+   ],
+   "earns": {
+    "answer": "The boxplot suggests the distribution of sunflower heights is roughly symmetric, because the median is in the middle of the box and the whiskers are equal. But a boxplot shows only five numbers, so it cannot show how many peaks there are or whether there are gaps: the heights could even have two peaks. To judge whether the shape is bell shaped or has one peak, we would need a dotplot or a histogram.",
+    "why": "It reads symmetry correctly and explains why modality and a normal shape cannot be read from a boxplot, naming the display that would show them."
+   },
+   "misses": {
+    "answer": "The heights are symmetric and normal with one peak, because the box and whiskers are even.",
+    "why": "\"Normal\" and \"one peak\" go beyond what a boxplot can show; points are lost for this on the exam every year."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-outlier-rule",
+   "topic": "summary-statistics",
+   "practice": "4.C",
+   "skill": "describe",
+   "title": "Is the largest value an outlier?",
+   "context": "<p>The prices (dollars) of 15 used bikes listed online have $Q_1 = 120$, median 180 and $Q_3 = 240$. The most expensive bike is listed at 450 dollars (invented data).</p>",
+   "prompt": "<b>Determine</b> whether the 450 dollar bike is an outlier. <b>Justify</b> your answer.",
+   "checklist": [
+    "Computes the IQR: $240 - 120 = 120$ dollars",
+    "Computes the upper fence: $Q_3 + 1.5 \\times \\text{IQR} = 240 + 180 = 420$ dollars",
+    "Concludes that 450 dollars is an outlier because it is greater than the fence of 420 dollars"
+   ],
+   "earns": {
+    "answer": "The IQR is $240 - 120 = 120$ dollars, so the upper fence is $Q_3 + 1.5 \\times \\text{IQR} = 240 + 1.5(120) = 420$ dollars. Because 450 dollars is greater than 420 dollars, the 450 dollar bike is an outlier.",
+    "why": "It shows the rule with the numbers substituted and compares the value with the fence."
+   },
+   "misses": {
+    "answer": "Yes, 450 is an outlier because it is much bigger than the other prices.",
+    "why": "\"Much bigger\" is a judgment, not a check: no IQR, no fence, and no comparison of 450 with a cutoff."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-voluntary-bias",
+   "topic": "sampling-problems",
+   "practice": "2.B",
+   "skill": "sampling",
+   "title": "Name the bias and which way it pushes",
+   "context": "<p>A city council posts a question on its website: \"Should the city spend more on road repairs?\" Of the 1,240 people who answer, 88% say yes.</p>",
+   "prompt": "<b>Explain</b> why 88% probably misstates the percent of all city residents who support more road repair spending, and say whether it is probably too high or too low.",
+   "checklist": [
+    "Names voluntary response bias: people chose whether to answer",
+    "Explains who is overrepresented: residents with strong feelings, such as those upset about bad roads, are the ones who tend to respond",
+    "Says which way the error goes: 88% is probably too high, overstating support among all residents"
+   ],
+   "earns": {
+    "answer": "This is voluntary response bias: people chose whether to answer. Residents who feel strongly about bad roads are the ones who tend to visit the site and respond, and they tend to say yes. So the respondents overrepresent supporters, and 88% probably overestimates the percent of all city residents who support more road repair spending.",
+    "why": "It names the bias, explains the mechanism in context, and says which way the error goes."
+   },
+   "misses": {
+    "answer": "The sample is biased because it is not random, so the 88% might be wrong.",
+    "why": "\"Biased\" and \"might be wrong\" name no mechanism, and they never say whether 88% is too high or too low. A biased sample must be explained: who is over or underrepresented, and which way the result moves."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-srs-procedure",
+   "topic": "random-sampling",
+   "practice": "2.B",
+   "skill": "sampling",
+   "title": "A sampling procedure someone else could follow",
+   "context": "<p>A school has 1,200 students and an alphabetical list of all of them. The principal wants a simple random sample of 50 students to survey about lunch options.</p>",
+   "prompt": "<b>Describe</b> how to select the simple random sample, in enough detail that someone else could do it.",
+   "checklist": [
+    "Labels: numbers the students on the list from 1 to 1,200",
+    "Generates: uses a random number generator (or a table of random digits) to produce numbers from 1 to 1,200",
+    "Skips repeats and stops: ignores any number already chosen and continues until 50 different numbers are chosen",
+    "Selects: surveys the 50 students whose labels were chosen"
+   ],
+   "earns": {
+    "answer": "Number the students on the alphabetical list from 1 to 1,200. Use a random number generator to generate integers from 1 to 1,200, ignoring any number that has already appeared, until 50 different numbers are chosen. The 50 students with those numbers are the sample.",
+    "why": "Each step (label, generate, skip repeats, select) is stated, so someone else could repeat the procedure exactly."
+   },
+   "misses": {
+    "answer": "Randomly pick 50 students from the list using a random number generator.",
+    "why": "It does not say how the students are labeled, what range of numbers to generate, or what to do with repeats; \"randomly pick\" is the goal, not a procedure."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-random-assignment-cause",
+   "topic": "experimental-design",
+   "practice": "4.D",
+   "skill": "design",
+   "title": "What random assignment allows",
+   "context": "<p>A researcher recruits 60 volunteers who want to sleep better. She randomly assigns 30 to a 20 minute evening walk each day and 30 to no change, then compares the groups' average sleep scores after four weeks. The walk group sleeps better on average, and the difference is larger than the random assignment alone would tend to produce.</p>",
+   "prompt": "<b>Explain</b> what the researcher can conclude about cause and effect, and to whom the conclusion applies.",
+   "checklist": [
+    "Says random assignment lets her conclude that the evening walk caused the better sleep",
+    "Explains why: random assignment makes the groups similar in other variables, so the treatment is the only systematic difference",
+    "Limits the scope: the volunteers were not a random sample, so the conclusion applies only to volunteers like these, not to all adults"
+   ],
+   "earns": {
+    "answer": "Because the volunteers were randomly assigned to the treatments, the two groups should be similar in everything except the evening walk, so she can conclude that the walk caused the better sleep. But the volunteers were not randomly selected from a larger population, so the conclusion applies only to volunteers like these, not to all adults.",
+    "why": "It ties cause and effect to random assignment, and it limits the conclusion because there was no random sampling."
+   },
+   "misses": {
+    "answer": "Walking causes better sleep for everyone, because the walk group slept better.",
+    "why": "It never says what allows a causal claim (random assignment), and \"everyone\" generalizes beyond volunteers, which needs random sampling."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-control-blinding",
+   "topic": "experimental-design",
+   "practice": "2.B",
+   "skill": "design",
+   "title": "Why a comparison group and blinding?",
+   "context": "<p>A company tests a new pain relief cream. Version 1 of the plan: give the cream to 40 people with sore knees and ask after a week whether their pain has improved. Version 2: randomly assign 40 people to the cream or an identical looking cream with no active ingredient, without telling them which they got.</p>",
+   "prompt": "<b>Explain</b> why version 2 gives better evidence about whether the cream works.",
+   "checklist": [
+    "Explains that version 1 has no comparison group, so improvement could come from time passing or other factors",
+    "Explains that the identical looking cream (a placebo) and not telling the subjects (blinding) control the placebo effect: expecting relief can reduce pain",
+    "Says random assignment makes the two groups similar, so a difference in pain can be attributed to the active ingredient"
+   ],
+   "earns": {
+    "answer": "In version 1 there is no comparison group, so if pain improves, we cannot tell whether the cream helped or the knees improved with time or the people simply expected to feel better. In version 2, the identical looking cream acts as a placebo and the subjects do not know which cream they got, so both groups expect relief equally and the placebo effect is controlled. Random assignment makes the groups similar in other ways, so a difference in pain can be attributed to the active ingredient.",
+    "why": "It names the comparison group, the placebo and blinding, and random assignment, and says what each one rules out."
+   },
+   "misses": {
+    "answer": "Version 2 is better because it is an experiment and it is random.",
+    "why": "Both versions impose a treatment; the answer never says what the comparison group, the placebo or the blinding fixes."
+   }
+  }
+ ]
+}

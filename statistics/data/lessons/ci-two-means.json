@@ -1,0 +1,72 @@
+{
+ "topic": "ci-two-means",
+ "hook": "Twenty-eight volunteers learned new words, half in short sessions spread over a week and half in one long cram. A week later the spaced group recalled 5.7 more words on average. How big is the real advantage? A two-sample t interval turns the two groups' means and spreads into a range of plausible values for the true difference.",
+ "prereq": [
+  {
+   "q": "For independent samples, the standard deviation of $\\bar{x}_1 - \\bar{x}_2$ is",
+   "options": [
+    "$\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$",
+    "$\\frac{\\sigma_1}{\\sqrt{n_1}} + \\frac{\\sigma_2}{\\sqrt{n_2}}$",
+    "$\\sqrt{\\frac{\\sigma_1^2}{n_1} - \\frac{\\sigma_2^2}{n_2}}$",
+    "$\\frac{\\sigma_1 - \\sigma_2}{n_1 + n_2}$"
+   ],
+   "correct": 0,
+   "why": "Variances add, then take the square root.",
+   "review": "sampling-dist-two-means"
+  },
+  {
+   "q": "A one-sample t interval for a mean is",
+   "options": [
+    "$\\bar{x} \\pm t^*\\frac{s}{\\sqrt{n}}$ with $n - 1$ df",
+    "$\\bar{x} \\pm z^*\\frac{s}{n}$",
+    "$\\bar{x} \\pm t^* s$",
+    "$\\mu \\pm t^*\\frac{s}{\\sqrt{n}}$"
+   ],
+   "correct": 0,
+   "why": "Statistic plus or minus $t^*$ times the standard error $\\frac{s}{\\sqrt{n}}$.",
+   "review": "ci-one-mean"
+  }
+ ],
+ "figure": {
+  "figure": "two-sample-interval",
+  "caption": "Top: boxplots of words recalled by the two randomly assigned groups. Bottom: the 95% two-sample t interval for $\\mu_S - \\mu_M$, from 0.61 to 10.81 words, centered at the observed difference 5.71."
+ },
+ "chain": [
+  {
+   "cause": "The parameter is $\\mu_1 - \\mu_2$, the difference in true means",
+   "effect": "its point estimate is $\\bar{x}_1 - \\bar{x}_2$"
+  },
+  {
+   "cause": "Replace $\\sigma_1$ and $\\sigma_2$ with $s_1$ and $s_2$",
+   "effect": "the standard error is $\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$"
+  },
+  {
+   "cause": "Estimating two standard deviations adds uncertainty",
+   "effect": "use $t^*$, with technology df (Welch) or the conservative df, the smaller of $n_1 - 1$ and $n_2 - 1$"
+  },
+  {
+   "cause": "Check random, 10% and normal/large sample for each group",
+   "effect": "build $(\\bar{x}_1 - \\bar{x}_2) \\pm t^*\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$ and interpret it in context, order of subtraction stated"
+  }
+ ],
+ "ideas": [
+  "Two-sample t interval: $(\\bar{x}_1 - \\bar{x}_2) \\pm t^*\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$.",
+  "Degrees of freedom: technology (Welch) gives a non-integer df; the conservative df is the smaller of $n_1 - 1$ and $n_2 - 1$, which gives a slightly wider interval. Both are accepted.",
+  "Conditions for each group: random (two independent random samples or random assignment), 10% (when sampling), normal/large sample.",
+  "Two independent groups use this interval; two linked measurements on each unit are paired and use a one-sample t interval on the differences."
+ ],
+ "misconception": {
+  "wrong": "Build a t interval for each group; if they overlap, there is no difference.",
+  "right": "Two separate intervals answer a different question and can overlap even when the difference is clear. Estimate the difference directly with one two-sample t interval for $\\mu_1 - \\mu_2$."
+ },
+ "check": [
+  "stat-ci-two-means-1",
+  "stat-ci-two-means-2",
+  "stat-ci-two-means-3",
+  "stat-ci-two-means-4",
+  "stat-ci-two-means-5",
+  "stat-ci-two-means-12",
+  "stat-ci-two-means-14"
+ ],
+ "summary": "To estimate $\\mu_1 - \\mu_2$ from two independent samples or randomized groups, use $(\\bar{x}_1 - \\bar{x}_2) \\pm t^*\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$ with technology df or the conservative df. Check random, 10% and normal/large sample for each group, and interpret the interval as capturing the true difference in means, in the stated order."
+}

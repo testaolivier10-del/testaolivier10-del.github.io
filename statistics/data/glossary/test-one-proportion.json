@@ -1,0 +1,5 @@
+{
+ "reject": {
+  "def": "The decision in a significance test. Reject $H_0$ when the p-value is less than $\\alpha$: there is convincing evidence for $H_a$. Fail to reject $H_0$ when the p-value is greater than $\\alpha$: there is not convincing evidence for $H_a$. A test never accepts $H_0$."
+ }
+}

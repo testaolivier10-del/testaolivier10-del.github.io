@@ -1,0 +1,73 @@
+{
+ "topic": "errors-and-power",
+ "hook": "A city will replace its old water pipes only if a test finds convincing evidence that more than 10% of homes have too much lead. The test can go wrong in two ways: the city spends millions on pipes it did not need, or it leaves families drinking unsafe water. Which mistake is worse, and how can the city make it less likely?",
+ "prereq": [
+  {
+   "q": "A test at $\\alpha = 0.05$ gives a p-value of 0.03. What is the decision?",
+   "options": [
+    "Reject $H_0$, because $0.03 < 0.05$",
+    "Fail to reject $H_0$, because $0.03 < 0.05$",
+    "Accept $H_0$, because 0.03 is small",
+    "Reject $H_a$, because $0.03 < 0.05$"
+   ],
+   "correct": 0,
+   "why": "Reject $H_0$ when the p-value is less than $\\alpha$.",
+   "review": "test-one-proportion"
+  },
+  {
+   "q": "If $\\hat{p}$ is approximately normal with mean 0.60 and standard deviation 0.0346, which expression gives $P(\\hat{p} \\ge 0.558)$?",
+   "options": [
+    "$P\\left(Z \\ge \\frac{0.558 - 0.60}{0.0346}\\right)$",
+    "$P\\left(Z \\le \\frac{0.558 - 0.60}{0.0346}\\right)$",
+    "$P\\left(Z \\ge \\frac{0.60 - 0.558}{0.0346}\\right)$",
+    "$P(Z \\ge 0.558)$"
+   ],
+   "correct": 0,
+   "why": "Standardize the boundary with the distribution's own mean and standard deviation, and keep the direction.",
+   "review": "sampling-dist-proportion"
+  }
+ ],
+ "figure": {
+  "figure": "power-alpha-beta",
+  "caption": "The null distribution (p = 0.5) and one alternative (p = 0.60) for samples of 200, with the rejection cutoff: α under the null curve, β and power under the alternative."
+ },
+ "chain": [
+  {
+   "cause": "$H_0$ is true but the sample happens to look extreme",
+   "effect": "the test rejects $H_0$: a Type I error, with probability $\\alpha$"
+  },
+  {
+   "cause": "$H_a$ is true but the sample happens to look ordinary",
+   "effect": "the test fails to reject $H_0$: a Type II error, with probability $\\beta$"
+  },
+  {
+   "cause": "A specific alternative value is true",
+   "effect": "the test rejects $H_0$ with probability power $= 1 - \\beta$"
+  },
+  {
+   "cause": "The sample size grows (or $\\alpha$ grows, or the true value is farther from $p_0$)",
+   "effect": "the curves overlap less or the cutoff is easier to pass, so power rises and $\\beta$ falls"
+  }
+ ],
+ "ideas": [
+  "Type I: $H_0$ true, but we reject it (a false alarm). Probability $\\alpha$.",
+  "Type II: $H_a$ true, but we fail to reject $H_0$ (a missed effect). Probability $\\beta$, which depends on the true value.",
+  "Describe an error with the condition first: \"if the true proportion of all __ is __, but we find (do not find) convincing evidence that ...\", then the consequence in context.",
+  "Power $= 1 - \\beta$: the probability of rejecting $H_0$ when a specific alternative is true.",
+  "More power: larger $n$ (best), larger $\\alpha$, or a true value farther from $p_0$. For a fixed $n$, lowering $\\alpha$ raises $\\beta$."
+ ],
+ "misconception": {
+  "wrong": "A Type I error is when the test gets the answer wrong, and a Type II error is when it gets it wrong a second time.",
+  "right": "Each is a specific mistake: Type I rejects a true $H_0$; Type II fails to reject a false $H_0$. After a rejection only a Type I error is possible; after a failure to reject, only a Type II error."
+ },
+ "check": [
+  "stat-errors-and-power-1",
+  "stat-errors-and-power-2",
+  "stat-errors-and-power-3",
+  "stat-errors-and-power-5",
+  "stat-errors-and-power-6",
+  "stat-errors-and-power-7",
+  "stat-errors-and-power-8"
+ ],
+ "summary": "A Type I error rejects a true $H_0$ (probability $\\alpha$); a Type II error fails to reject a false $H_0$ (probability $\\beta$, against a specific alternative). Describe each with the condition first and its consequence in context. Power $= 1 - \\beta$ is the chance of detecting a real effect; it grows with the sample size, with $\\alpha$, and with the distance between the true value and $p_0$."
+}

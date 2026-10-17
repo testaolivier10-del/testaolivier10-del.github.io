@@ -1,0 +1,5 @@
+{
+ "t-statistic": {
+  "def": "The standardized test statistic of a t test: $t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$ for one sample."
+ }
+}

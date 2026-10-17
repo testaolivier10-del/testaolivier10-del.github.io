@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 392" width="640" height="392" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">The three directions of an alternative hypothesis</title>
+<desc id="d">Three number lines for a proportion from 0.55 to 0.85, each with the null value 0.70 marked by a dot. First, alternative "p &lt; 0.70": the values below 0.70 are highlighted. Second, alternative "p &gt; 0.70": the values above 0.70 are highlighted. Third, alternative "p is not 0.70": the values on both sides of 0.70 are highlighted. The direction comes from the research question, before any data are seen.</desc>
+<rect width="640" height="392" fill="#FFFFFF"/>
+<text x="40" y="40" font-size="16" font-weight="bold" fill="#1F2A28">Hₐ: p &lt; 0.70   (the claim is "less than")</text>
+<line x1="60" y1="70" x2="579.9999999999999" y2="70" stroke="#1F2A28" stroke-width="1.6"/>
+<line x1="311" y1="70" x2="68.67" y2="70" stroke="#6E2470" stroke-width="9" stroke-linecap="round" stroke-opacity="0.85"/>
+<path d="M58 70 l12 -9 v18 z" fill="#6E2470"/>
+<line x1="60" y1="76" x2="60" y2="82" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="60" y="100" font-size="15" text-anchor="middle" fill="#1F2A28">0.55</text>
+<line x1="146.67" y1="76" x2="146.67" y2="82" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="146.67" y="100" font-size="15" text-anchor="middle" fill="#1F2A28">0.6</text>
+<line x1="233.33" y1="76" x2="233.33" y2="82" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="233.33" y="100" font-size="15" text-anchor="middle" fill="#1F2A28">0.65</text>
+<line x1="320" y1="76" x2="320" y2="82" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="320" y="100" font-size="15" text-anchor="middle" fill="#1F2A28">0.7</text>
+<line x1="406.67" y1="76" x2="406.67" y2="82" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="406.67" y="100" font-size="15" text-anchor="middle" fill="#1F2A28">0.75</text>
+<line x1="493.33" y1="76" x2="493.33" y2="82" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="493.33" y="100" font-size="15" text-anchor="middle" fill="#1F2A28">0.8</text>
+<line x1="580" y1="76" x2="580" y2="82" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="580" y="100" font-size="15" text-anchor="middle" fill="#1F2A28">0.85</text>
+<circle cx="320" cy="70" r="7" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2.4"/>
+<text x="40" y="145" font-size="16" font-weight="bold" fill="#1F2A28">Hₐ: p &gt; 0.70   (the claim is "greater than")</text>
+<line x1="60" y1="175" x2="579.9999999999999" y2="175" stroke="#1F2A28" stroke-width="1.6"/>
+<line x1="329" y1="175" x2="571.33" y2="175" stroke="#6E2470" stroke-width="9" stroke-linecap="round" stroke-opacity="0.85"/>
+<path d="M582 175 l-12 -9 v18 z" fill="#6E2470"/>
+<line x1="60" y1="181" x2="60" y2="187" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="60" y="205" font-size="15" text-anchor="middle" fill="#1F2A28">0.55</text>
+<line x1="146.67" y1="181" x2="146.67" y2="187" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="146.67" y="205" font-size="15" text-anchor="middle" fill="#1F2A28">0.6</text>
+<line x1="233.33" y1="181" x2="233.33" y2="187" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="233.33" y="205" font-size="15" text-anchor="middle" fill="#1F2A28">0.65</text>
+<line x1="320" y1="181" x2="320" y2="187" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="320" y="205" font-size="15" text-anchor="middle" fill="#1F2A28">0.7</text>
+<line x1="406.67" y1="181" x2="406.67" y2="187" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="406.67" y="205" font-size="15" text-anchor="middle" fill="#1F2A28">0.75</text>
+<line x1="493.33" y1="181" x2="493.33" y2="187" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="493.33" y="205" font-size="15" text-anchor="middle" fill="#1F2A28">0.8</text>
+<line x1="580" y1="181" x2="580" y2="187" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="580" y="205" font-size="15" text-anchor="middle" fill="#1F2A28">0.85</text>
+<circle cx="320" cy="175" r="7" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2.4"/>
+<text x="40" y="250" font-size="16" font-weight="bold" fill="#1F2A28">Hₐ: p ≠ 0.70   (the claim is "different from")</text>
+<line x1="60" y1="280" x2="579.9999999999999" y2="280" stroke="#1F2A28" stroke-width="1.6"/>
+<line x1="311" y1="280" x2="68.67" y2="280" stroke="#6E2470" stroke-width="9" stroke-linecap="round" stroke-opacity="0.85"/>
+<line x1="329" y1="280" x2="571.33" y2="280" stroke="#6E2470" stroke-width="9" stroke-linecap="round" stroke-opacity="0.85"/>
+<path d="M58 280 l12 -9 v18 z" fill="#6E2470"/>
+<path d="M582 280 l-12 -9 v18 z" fill="#6E2470"/>
+<line x1="60" y1="286" x2="60" y2="292" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="60" y="310" font-size="15" text-anchor="middle" fill="#1F2A28">0.55</text>
+<line x1="146.67" y1="286" x2="146.67" y2="292" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="146.67" y="310" font-size="15" text-anchor="middle" fill="#1F2A28">0.6</text>
+<line x1="233.33" y1="286" x2="233.33" y2="292" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="233.33" y="310" font-size="15" text-anchor="middle" fill="#1F2A28">0.65</text>
+<line x1="320" y1="286" x2="320" y2="292" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="320" y="310" font-size="15" text-anchor="middle" fill="#1F2A28">0.7</text>
+<line x1="406.67" y1="286" x2="406.67" y2="292" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="406.67" y="310" font-size="15" text-anchor="middle" fill="#1F2A28">0.75</text>
+<line x1="493.33" y1="286" x2="493.33" y2="292" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="493.33" y="310" font-size="15" text-anchor="middle" fill="#1F2A28">0.8</text>
+<line x1="580" y1="286" x2="580" y2="292" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="580" y="310" font-size="15" text-anchor="middle" fill="#1F2A28">0.85</text>
+<circle cx="320" cy="280" r="7" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2.4"/>
+<text x="40" y="372" font-size="15" fill="#5A6563">The open dot is the null value p₀ = 0.70; the plum part is what Hₐ claims.</text>
+</svg>

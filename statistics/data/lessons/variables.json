@@ -1,0 +1,83 @@
+{
+ "topic": "variables",
+ "hook": "An animal shelter keeps a record for every dog: its size group, whether it is vaccinated, its kennel number, how many times it has been adopted, its weight. Before you can summarize any of it, you have to know what kind of information each column holds. A kennel number is a number, but its average tells you nothing. Sorting the columns is the first job of every analysis.",
+ "prereq": [
+  {
+   "q": "A city asks 500 of its 80,000 adults about a new park. What is the sample?",
+   "options": [
+    "The 500 adults who were asked",
+    "The 80,000 adults in the city",
+    "The new park",
+    "The city council"
+   ],
+   "correct": 0,
+   "why": "The sample is the part of the population that data come from.",
+   "review": "intro-statistics"
+  },
+  {
+   "q": "Which question needs data from many individuals?",
+   "options": [
+    "How long do adults in the city spend commuting?",
+    "How long is the main bridge?",
+    "What year was the park built?",
+    "How many members are on the city council?"
+   ],
+   "correct": 0,
+   "why": "Commute times vary from person to person; the other answers are single facts.",
+   "review": "intro-statistics"
+  }
+ ],
+ "figure": {
+  "figure": "data-table-anatomy",
+  "caption": "In a data table each row is one observational unit and each column is one variable."
+ },
+ "chain": [
+  {
+   "cause": "Each row of a data table is one individual",
+   "effect": "the individuals are the observational units"
+  },
+  {
+   "cause": "Each column records one characteristic for every individual",
+   "effect": "each column is a variable, and its values can differ from row to row"
+  },
+  {
+   "cause": "Some variables put individuals into groups, others record amounts",
+   "effect": "categorical and quantitative variables need different summaries and graphs"
+  },
+  {
+   "cause": "A number can describe the whole population or only the sample",
+   "effect": "it is a parameter (usually unknown) or a statistic (used to estimate the parameter)"
+  }
+ ],
+ "ideas": [
+  "An <b>observational unit</b> is one individual the data describe: a person, a dog, a fish, a day. A <b>variable</b> is a characteristic recorded for each unit.",
+  "A <b>categorical variable</b> places each unit in a group (size group, yes or no). A <b>quantitative variable</b> records an amount, where arithmetic makes sense.",
+  "Quantitative variables are <b>discrete</b> (separate values, usually counts) or <b>continuous</b> (any value in an interval, usually measurements).",
+  "Numbers that are labels, such as ZIP codes or jersey numbers, are categorical.",
+  "A <b>parameter</b> describes a population; a <b>statistic</b> describes a sample. The <b>distribution</b> of a variable tells what values it takes and how often."
+ ],
+ "misconception": {
+  "wrong": "Kennel number is quantitative, because its values are numbers.",
+  "right": "Kennel numbers are labels. Ask whether arithmetic makes sense: an average kennel number tells you nothing, so the variable is categorical."
+ },
+ "check": [
+  "stat-variables-1",
+  "stat-variables-2",
+  "stat-variables-3",
+  "stat-variables-4",
+  "stat-variables-5",
+  "stat-variables-6",
+  "stat-variables-13"
+ ],
+ "summary": "Observational units are the individuals in a data set, and variables are the characteristics recorded for each. Categorical variables sort units into groups; quantitative ones record amounts, discrete or continuous. A parameter describes a population, a statistic describes a sample, and a distribution tells what values a variable takes and how often.",
+ "connections": [
+  {
+   "href": "../notes/intro-statistics.html",
+   "label": "Back: introducing statistics (1.1)"
+  },
+  {
+   "href": "../notes/one-categorical-tables.html",
+   "label": "Next: tables for one categorical variable (1.3)"
+  }
+ ]
+}

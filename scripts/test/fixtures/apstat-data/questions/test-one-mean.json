@@ -1,0 +1,542 @@
+{
+ "stimuli": {
+  "test-one-mean-s1": {
+   "kind": "graph",
+   "title": "Warm-up times of 14 players",
+   "plot": {
+    "label": "Boxplot of warm-up times for 14 players, in minutes, with one outlier at 45",
+    "kind": "box",
+    "data": [
+     12,
+     15,
+     9,
+     22,
+     18,
+     30,
+     14,
+     11,
+     16,
+     20,
+     13,
+     15,
+     17,
+     45
+    ],
+    "xLabel": "minutes"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "warm-up time",
+      "unit": "minutes",
+      "values": [
+       12,
+       15,
+       9,
+       22,
+       18,
+       30,
+       14,
+       11,
+       16,
+       20,
+       13,
+       15,
+       17,
+       45
+      ]
+     }
+    ]
+   }
+  },
+  "test-one-mean-s2": {
+   "kind": "table",
+   "title": "Summary of quiz scores",
+   "set": "probability",
+   "table": {
+    "caption": "Placeholder: a discrete random variable X, the number of correct quiz answers",
+    "cols": [
+     "$x$",
+     "0",
+     "1",
+     "2",
+     "3"
+    ],
+    "rows": [
+     [
+      "$P(X = x)$",
+      "0.1",
+      "0.3",
+      "0.4",
+      "0.2"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-test-one-mean-1",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which summary of the warm-up times is resistant to the outlier at 45 minutes?",
+   "why": {
+    "correct": "The median depends only on the middle of the ordered data.",
+    "options": [
+     "Right: it depends only on the middle values.",
+     "The mean adds 45 in, so it moves.",
+     "The range uses the maximum, 45.",
+     "The standard deviation uses every distance from the mean."
+    ]
+   },
+   "stimulus": "test-one-mean-s1",
+   "options": [
+    "The median",
+    "The mean",
+    "The range",
+    "The standard deviation"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-one-mean-2",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the median warm-up time, in minutes?",
+   "why": {
+    "correct": "The ordered 7th and 8th values are 15 and 16, so the median is 15.5."
+   },
+   "stimulus": "test-one-mean-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 1,
+    "answer": 15.5,
+    "from": {
+     "fn": "summary",
+     "args": [
+      [
+       12,
+       15,
+       9,
+       22,
+       18,
+       30,
+       14,
+       11,
+       16,
+       20,
+       13,
+       15,
+       17,
+       45
+      ]
+     ],
+     "pick": "med"
+    },
+    "mistakes": [
+     {
+      "value": 18.36,
+      "why": "That is the mean, not the median: order the data and take the middle value."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-3",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the interquartile range of the warm-up times, in minutes?",
+   "why": {
+    "correct": "$Q_1 = 13$ and $Q_3 = 20$ (the medians of each half), so $\\text{IQR} = 7$."
+   },
+   "stimulus": "test-one-mean-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 1,
+    "from": {
+     "fn": "summary",
+     "args": [
+      [
+       12,
+       15,
+       9,
+       22,
+       18,
+       30,
+       14,
+       11,
+       16,
+       20,
+       13,
+       15,
+       17,
+       45
+      ]
+     ],
+     "pick": "iqr"
+    },
+    "mistakes": [
+     {
+      "value": 36,
+      "why": "That is the range, the maximum minus the minimum; the IQR is Q3 minus Q1."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-4",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "By the $1.5 \\times \\text{IQR}$ rule, which warm-up times are outliers?",
+   "why": {
+    "correct": "The upper fence is $20 + 1.5(7) = 30.5$; only 45 is above it, and nothing is below $13 - 10.5 = 2.5$.",
+    "options": [
+     "Right: 45 is the only value above 30.5.",
+     "30 is below the fence of 30.5.",
+     "9 is well above the lower fence of 2.5.",
+     "45 is beyond the upper fence."
+    ]
+   },
+   "stimulus": "test-one-mean-s1",
+   "options": [
+    "45 only",
+    "30 and 45",
+    "9 and 45",
+    "None of them"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-one-mean-5",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the table, what is $P(X \\ge 2)$?",
+   "why": {
+    "correct": "$P(X \\ge 2) = 0.4 + 0.2 = 0.6$.",
+    "options": [
+     "Right: the two values at least 2.",
+     "That is $P(X = 2)$ alone.",
+     "That is $P(X = 3)$ alone.",
+     "That is $P(X \\ge 1)$."
+    ]
+   },
+   "stimulus": "test-one-mean-s2",
+   "options": [
+    "0.6",
+    "0.4",
+    "0.2",
+    "0.9"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-one-mean-6",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the table, what is the mean (expected value) of $X$?",
+   "why": {
+    "correct": "$0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 1.7$.",
+    "options": [
+     "Right: each value weighted by its probability.",
+     "That averages 0, 1, 2 and 3 without the probabilities.",
+     "That is the most likely value, not the mean.",
+     "That averages the probabilities."
+    ]
+   },
+   "stimulus": "test-one-mean-s2",
+   "options": [
+    "1.7",
+    "1.5",
+    "2",
+    "0.25"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-one-mean-7",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "4.B",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which statement about the table is true?",
+   "why": {
+    "correct": "A probability distribution's probabilities add to 1.",
+    "options": [
+     "Right: 0.1 + 0.3 + 0.4 + 0.2 = 1.",
+     "X takes only whole-number values, so it is discrete.",
+     "X never equals 4.",
+     "The weighted mean is 1.7."
+    ]
+   },
+   "stimulus": "test-one-mean-s2",
+   "options": [
+    "The probabilities add to 1",
+    "X is continuous",
+    "P(X = 4) is 0.2",
+    "The mean is 1.5"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-one-mean-8",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "interval",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: a 95% interval for a mean, from $\\bar{x} = 18.36$, $s = 9.06$ and $n = 14$.",
+   "why": {
+    "correct": "$18.36 \\pm t^*\\frac{9.06}{\\sqrt{14}}$ with 13 degrees of freedom."
+   },
+   "interval": {
+    "from": {
+     "fn": "ci1mean",
+     "args": [
+      18.36,
+      9.06,
+      14,
+      0.95
+     ]
+    },
+    "places": 2
+   }
+  },
+  {
+   "id": "stat-test-one-mean-9",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the expression for the z-score of a warm-up time of 30 minutes, using the mean 18.36 and standard deviation 9.06.",
+   "why": {
+    "correct": "A z-score is the value minus the mean, over the standard deviation."
+   },
+   "setup": {
+    "answer": "(30 - 18.36)/9.06",
+    "bind": {
+     "x-bar": 18.36,
+     "s": 9.06
+    },
+    "mustUse": [
+     "x-bar",
+     "s"
+    ],
+    "mistakes": [
+     {
+      "expr": "(18.36 - 30)/9.06",
+      "why": "Subtract in the order value minus mean, so a value above the mean has a positive z-score."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-10",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the z-score of a warm-up time of 30 minutes, using mean 18.36 and standard deviation 9.06?",
+   "why": {
+    "correct": "$z = \\frac{30 - 18.36}{9.06} = 1.28$."
+   },
+   "numeric": {
+    "kind": "z",
+    "answer": 1.2847682119205297,
+    "mistakes": [
+     {
+      "value": -1.2847682119205297,
+      "why": "The sign is backward: value minus mean, not mean minus value."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-11",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "conclude",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: state the conclusion of a test with p-value 0.012 at $\\alpha = 0.05$.",
+   "why": {
+    "correct": "Because 0.012 < 0.05, reject the null hypothesis: convincing evidence for the alternative."
+   },
+   "conclude": {
+    "mode": "test",
+    "p": 0.012,
+    "alpha": 0.05,
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "It is proven"
+      ],
+      "correct": 0,
+      "why": {
+       "2": "A test gives evidence; it never proves."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean warm-up time of all players",
+       "the sample mean warm-up time",
+       "the median of these 14 times"
+      ],
+      "correct": 0
+     }
+    },
+    "model": "Because the p-value of 0.012 is less than 0.05, we reject the null hypothesis. There is convincing evidence that the true mean warm-up time of all players is greater than 15 minutes.",
+    "write": {
+     "context": [
+      "warm-up"
+     ],
+     "direction": "greater",
+     "compare": {
+      "p": 0.012,
+      "alpha": 0.05
+     }
+    }
+   }
+  },
+  {
+   "id": "stat-test-one-mean-12",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Adding 5 minutes to every warm-up time changes which summary?",
+   "why": {
+    "correct": "Adding a constant shifts every measure of center and leaves every measure of spread unchanged.",
+    "options": [
+     "Right: the mean rises by 5.",
+     "Spread does not change when every value shifts.",
+     "Spread does not change when every value shifts.",
+     "Spread does not change when every value shifts."
+    ]
+   },
+   "options": [
+    "The mean",
+    "The IQR",
+    "The standard deviation",
+    "The range"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-one-mean-13",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is true of a distribution that is strongly skewed to the right?",
+   "why": {
+    "correct": "The long right tail pulls the mean up, past the median.",
+    "options": [
+     "Right: the tail pulls the mean toward it.",
+     "Only roughly symmetric data have mean close to median.",
+     "That is typical of left skew.",
+     "The IQR measures the middle half, which still has spread."
+    ]
+   },
+   "options": [
+    "The mean is usually greater than the median",
+    "The mean equals the median",
+    "The median is usually greater than the mean",
+    "The IQR is zero"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-one-mean-14",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A teacher reports the median warm-up time. Why is it a better center than the mean here?",
+   "why": {
+    "correct": "The outlier at 45 pulls the mean toward it; the median resists it.",
+    "options": [
+     "Right: the mean is pulled toward the outlier.",
+     "Here the median is smaller than the mean.",
+     "The mean can always be computed.",
+     "An even count does not favor either."
+    ]
+   },
+   "options": [
+    "One player's 45 minutes pulls the mean up",
+    "The median is always larger",
+    "The mean cannot be computed",
+    "There is an even number of players"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-test-one-mean-15",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "multi",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which summaries use every value in the data? Select all that apply.",
+   "why": {
+    "correct": "The mean and the standard deviation add up every value (or every distance).",
+    "options": [
+     "Right: it adds every value.",
+     "Right: it uses every distance from the mean.",
+     "It uses only the middle value or two.",
+     "It uses only the two quartiles."
+    ]
+   },
+   "options": [
+    "The mean",
+    "The standard deviation",
+    "The median",
+    "The IQR"
+   ],
+   "correct": [
+    0,
+    1
+   ]
+  }
+ ]
+}

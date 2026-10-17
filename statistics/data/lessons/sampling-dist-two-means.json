@@ -1,0 +1,71 @@
+{
+ "topic": "sampling-dist-two-means",
+ "hook": "Orchard A grows heavier apples on average than orchard B, by 10 grams. A buyer weighs 40 apples from A and 50 from B. Could her sample from B still come out heavier? To answer, you need the sampling distribution of a difference: where $\\bar{x}_A - \\bar{x}_B$ centers, how much it varies, and its shape.",
+ "prereq": [
+  {
+   "q": "For random samples of size $n$ (under 10% of the population), the standard deviation of $\\bar{x}$ is",
+   "options": [
+    "$\\frac{\\sigma}{\\sqrt{n}}$",
+    "$\\frac{\\sigma^2}{n}$",
+    "$\\frac{\\sigma}{n}$",
+    "$\\sigma$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{\\sigma}{\\sqrt{n}}$; its square, $\\frac{\\sigma^2}{n}$, is the variance of $\\bar{x}$.",
+   "review": "sampling-dist-mean"
+  },
+  {
+   "q": "For two independent samples, the standard deviation of $\\hat{p}_1 - \\hat{p}_2$ is",
+   "options": [
+    "$\\sqrt{\\frac{p_1(1 - p_1)}{n_1} + \\frac{p_2(1 - p_2)}{n_2}}$",
+    "$\\sqrt{\\frac{p_1(1 - p_1)}{n_1} - \\frac{p_2(1 - p_2)}{n_2}}$",
+    "$\\frac{p_1 - p_2}{n_1 + n_2}$",
+    "$\\sqrt{p_1 - p_2}$"
+   ],
+   "correct": 0,
+   "why": "The two variances add, then take the square root.",
+   "review": "sampling-dist-two-proportions"
+  }
+ ],
+ "figure": {
+  "figure": "diff-means-normal",
+  "caption": "Top: the sampling distributions of $\\bar{x}_A$ (mean 180, SD 3.16) and $\\bar{x}_B$ (mean 170, SD 3.54). Bottom: the sampling distribution of $\\bar{x}_A - \\bar{x}_B$, centered at 10 with SD 4.74, wider than either. The shaded area, 0.0175, is the chance that B's sample mean comes out larger."
+ },
+ "chain": [
+  {
+   "cause": "Each sample mean is centered at its population mean",
+   "effect": "the difference is centered at $\\mu_1 - \\mu_2$"
+  },
+  {
+   "cause": "Each sample mean has its own variability, $\\frac{\\sigma_1^2}{n_1}$ and $\\frac{\\sigma_2^2}{n_2}$",
+   "effect": "for independent samples the variances add, so the difference varies more than either mean"
+  },
+  {
+   "cause": "Take the square root of the sum",
+   "effect": "$\\sigma_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$"
+  },
+  {
+   "cause": "If each sample mean is approximately normal (normal population or $n \\ge 30$ for each)",
+   "effect": "the difference is approximately normal, and z-scores give probabilities"
+  }
+ ],
+ "ideas": [
+  "Center: $\\mu_{\\bar{x}_1 - \\bar{x}_2} = \\mu_1 - \\mu_2$.",
+  "Spread: $\\sigma_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$ for independent samples (or groups formed by random assignment), each under 10% of its population when sampling.",
+  "Variances add, never standard deviations, and never subtract.",
+  "Shape: normal if both populations are normal; approximately normal if both $n_1 \\ge 30$ and $n_2 \\ge 30$."
+ ],
+ "misconception": {
+  "wrong": "The means are subtracted, so the variability of the difference is the first variance minus the second.",
+  "right": "Both sample means wobble, and both wobbles end up in the difference. For independent samples the variances add: $\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}$."
+ },
+ "check": [
+  "stat-sampling-dist-two-means-1",
+  "stat-sampling-dist-two-means-2",
+  "stat-sampling-dist-two-means-3",
+  "stat-sampling-dist-two-means-4",
+  "stat-sampling-dist-two-means-10",
+  "stat-sampling-dist-two-means-11"
+ ],
+ "summary": "For independent random samples (or randomly assigned groups), $\\bar{x}_1 - \\bar{x}_2$ has mean $\\mu_1 - \\mu_2$ and standard deviation $\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$, and it is approximately normal when each sample mean is. Use $z = \\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1 - \\mu_2)}{\\sigma_{\\bar{x}_1 - \\bar{x}_2}}$ for probabilities."
+}

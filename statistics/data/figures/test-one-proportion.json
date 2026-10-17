@@ -1,0 +1,12 @@
+{
+ "test-four-steps": {
+  "file": "figures/test-four-steps.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 506,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four boxes in a column joined by arrows, for a test about chronic absence in a school district. State: the hypotheses H0: p = 0.18 and Ha: p < 0.18, where p is the true proportion of all district students who are chronically absent, with alpha = 0.05. Plan: a one-sample z test for a proportion; random sample; 450 is less than 10% of the students; 450(0.18) = 81 and 450(0.82) = 369 are at least 10. Do: z = (0.14 − 0.18) / sqrt(0.18(0.82)/450) = −2.21 and p-value = 0.014. Conclude: because 0.014 < 0.05, reject H0; there is convincing evidence that the true proportion is less than 0.18."
+ }
+}

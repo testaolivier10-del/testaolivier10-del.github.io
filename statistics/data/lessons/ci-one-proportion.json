@@ -1,0 +1,73 @@
+{
+ "topic": "ci-one-proportion",
+ "hook": "A dietitian surveys 400 randomly chosen students and finds that 62% regularly skip breakfast. She could report \"62%\" and stop, but another sample would give 59% or 65%. A confidence interval reports a range instead, built by a method that captures the true campus proportion a known share of the time.",
+ "prereq": [
+  {
+   "q": "If $p = 0.5$ and $n = 400$, what is $\\sigma_{\\hat{p}}$?",
+   "options": [
+    "0.025",
+    "0.000625",
+    "0.5",
+    "0.25"
+   ],
+   "correct": 0,
+   "why": "$\\sqrt{\\frac{0.5(0.5)}{400}} = \\sqrt{0.000625} = 0.025$.",
+   "review": "sampling-dist-proportion"
+  },
+  {
+   "q": "Under the standard normal curve, what value has an area of 0.975 below it?",
+   "options": [
+    "1.96",
+    "1.645",
+    "2.576",
+    "0.975"
+   ],
+   "correct": 0,
+   "why": "$P(Z \\le 1.96) = 0.975$, so 95% of the area lies between $-1.96$ and $1.96$.",
+   "review": "normal-distribution"
+  }
+ ],
+ "figure": {
+  "figure": "ci-construction",
+  "caption": "In 95% of samples, the sample proportion lands within 1.96 standard deviations of p, so the interval built around it reaches across p."
+ },
+ "chain": [
+  {
+   "cause": "$\\hat{p}$ is approximately normal, centered at $p$",
+   "effect": "in 95% of random samples, $\\hat{p}$ lands within 1.96 standard deviations of $p$"
+  },
+  {
+   "cause": "Turn that around",
+   "effect": "in 95% of samples, $p$ is within 1.96 standard deviations of $\\hat{p}$"
+  },
+  {
+   "cause": "We do not know $p$, so the standard deviation cannot be computed",
+   "effect": "we use the standard error $\\sqrt{\\hat{p}(1 - \\hat{p})/n}$ in its place"
+  },
+  {
+   "cause": "Go $z^*$ standard errors out on each side of $\\hat{p}$",
+   "effect": "$\\hat{p} \\pm z^*\\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}$ captures $p$ for the stated share of samples"
+  }
+ ],
+ "ideas": [
+  "Interval = statistic ± (critical value)(standard error). For one proportion: $\\hat{p} \\pm z^*\\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}$.",
+  "$z^*$: 1.645 for 90%, 1.96 for 95%, 2.576 for 99%. Area below $z^*$ is $C + \\frac{1 - C}{2}$.",
+  "Conditions in words: random sample; $n$ at most 10% of the population; at least 10 successes and 10 failures in the sample.",
+  "Margin of error $= z^* \\cdot \\text{SE}$. It shrinks with a larger $n$ (4 times $n$ halves it) and grows with the confidence level.",
+  "Name the procedure in full: one-sample z interval for a proportion."
+ ],
+ "misconception": {
+  "wrong": "For a 90% interval, find the $z$ with 0.90 of the area below it, so $z^* = 1.28$.",
+  "right": "A 90% interval keeps 90% in the middle and leaves 5% in each tail, so $z^*$ has 0.95 below it: $z^* = 1.645$."
+ },
+ "check": [
+  "stat-ci-one-proportion-1",
+  "stat-ci-one-proportion-2",
+  "stat-ci-one-proportion-3",
+  "stat-ci-one-proportion-4",
+  "stat-ci-one-proportion-5",
+  "stat-ci-one-proportion-10",
+  "stat-ci-one-proportion-16"
+ ],
+ "summary": "A confidence interval for $p$ is $\\hat{p} \\pm z^*\\sqrt{\\hat{p}(1 - \\hat{p})/n}$: the point estimate plus or minus a margin of error. Check random, 10% and large counts (sample successes and failures at least 10) in words first. Larger samples shrink the margin of error; higher confidence levels stretch it."
+}

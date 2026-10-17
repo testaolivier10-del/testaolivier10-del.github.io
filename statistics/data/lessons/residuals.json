@@ -1,0 +1,71 @@
+{
+ "hook": "A dealer fits a line to the ages and prices of 16 used cars. The line looks reasonable at a glance, but the newest and oldest cars sit above it and the middle-aged ones below. Each car's miss, actual minus predicted, is its residual, and plotting the residuals shows at once whether a line was the right choice.",
+ "prereq": [
+  {
+   "q": "For $\\hat{y} = 20 - 2x$, what is the predicted value at $x = 3$?",
+   "options": [
+    "$14$",
+    "$26$",
+    "$18$",
+    "$6$"
+   ],
+   "correct": 0,
+   "why": "$20 - 2(3) = 14$.",
+   "review": "linear-models"
+  },
+  {
+   "q": "What does the hat in $\\hat{y}$ mean?",
+   "options": [
+    "A predicted value",
+    "An observed value",
+    "An average of the $x$ values",
+    "A residual"
+   ],
+   "correct": 0,
+   "why": "$\\hat{y}$ is a predicted value from the line.",
+   "review": "linear-models"
+  }
+ ],
+ "figure": {
+  "figure": "residual-plot-pair",
+  "caption": "Top: the car data and a regression line. Bottom: the residuals, which form a U shape, so a line is not the right model."
+ },
+ "chain": [
+  {
+   "cause": "A line predicts $\\hat{y}$ for each observed $x$",
+   "effect": "each point misses by its residual, $y - \\hat{y}$, the vertical gap from the line"
+  },
+  {
+   "cause": "A point above the line",
+   "effect": "has a positive residual: the line underpredicts; below the line, negative: it overpredicts"
+  },
+  {
+   "cause": "Plot each residual against $x$",
+   "effect": "the residual plot removes the trend, so what is left is the pattern the line missed"
+  },
+  {
+   "cause": "Random scatter around 0 means the line is fine; a curve means the data bend; a fan means the spread changes",
+   "effect": "use the residual plot to decide whether a linear model is appropriate"
+  }
+ ],
+ "ideas": [
+  "Residual $= y - \\hat{y}$, actual minus predicted, in the units of $y$.",
+  "Positive residual: actual above the line (underpredicted). Negative: below the line (overpredicted).",
+  "A residual plot graphs residuals against $x$ (or against $\\hat{y}$).",
+  "No pattern: a line is appropriate. A curved pattern: a line is not. A fan: predictions are less precise where the spread is larger."
+ ],
+ "misconception": {
+  "wrong": "If the residuals are both positive and negative, the line must fit well.",
+  "right": "Every line has residuals of both signs. What matters is the pattern: a curve or fan in the residual plot means the line misses the data in a systematic way."
+ },
+ "check": [
+  "stat-residuals-1",
+  "stat-residuals-2",
+  "stat-residuals-3",
+  "stat-residuals-4",
+  "stat-residuals-9",
+  "stat-residuals-12"
+ ],
+ "summary": "A residual is actual minus predicted, $y - \\hat{y}$: positive when the point is above the line, negative when below, in the units of $y$. A residual plot shows the residuals against $x$; random scatter around 0 means a line is appropriate, while a curve or a fan shows what the line misses.",
+ "topic": "residuals"
+}

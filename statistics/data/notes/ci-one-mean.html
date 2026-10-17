@@ -1,0 +1,59 @@
+<p>In Unit 3 you built confidence intervals for a proportion. The recipe for a mean has the same shape, statistic plus or minus a margin of error, with one change that matters: you almost never know the population standard deviation, so you estimate it, and that calls for a new critical value.</p>
+
+<h2>The problem with sigma</h2>
+<p>The last topic gave the standard deviation of $\bar{x}$ as $\frac{\sigma}{\sqrt{n}}$. But if you do not know the population mean $\mu$ (that is why you are estimating it), you almost surely do not know $\sigma$ either. The natural fix is to use the sample standard deviation $s$. The estimated standard deviation of $\bar{x}$ is its <b>standard error</b>:</p>
+<p>$$\text{SE} = \frac{s}{\sqrt{n}}.$$</p>
+<p>Here is the catch. $s$ changes from sample to sample. Some samples happen to have a small $s$, which makes the standardized value $\frac{\bar{x} - \mu}{s/\sqrt{n}}$ larger than a z-score would be. So this ratio does not follow the standard normal distribution. It follows a <b>t distribution</b>.</p>
+
+<h2>The t distributions</h2>
+<figure id="fig-t" data-fig="t-vs-normal"><figcaption>The standard normal curve and t distributions with 3 and 15 degrees of freedom, with the 95% critical values marked.</figcaption></figure>
+<p>A t distribution looks like the standard normal: symmetric, bell shaped, centered at 0. Its tails are heavier, because of the extra variability from $s$. There is a different t distribution for each number of <b>degrees of freedom</b>. For one sample, $\text{df} = n - 1$, the same $n - 1$ that appears in the formula for $s$.</p>
+<p>The more data, the better $s$ estimates $\sigma$, and the closer the t distribution gets to the standard normal. <a class="figref" href="#fig-t">The figure</a> shows it: with 3 df the middle 95% reaches out to $\pm 3.182$; with 15 df to $\pm 2.131$; the standard normal stops at $\pm 1.96$.</p>
+<table class="stat-compare">
+<thead><tr><th scope="col"></th><th scope="col">z procedures (proportions)</th><th scope="col">t procedures (means)</th></tr></thead>
+<tbody>
+<tr><th scope="row">Standard error</th><td>$\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}$</td><td>$\frac{s}{\sqrt{n}}$</td></tr>
+<tr><th scope="row">Critical value</th><td>$z^*$ from the standard normal (Table A)</td><td>$t^*$ with $n - 1$ df (Table B)</td></tr>
+<tr><th scope="row">Shape condition</th><td>Large counts: at least 10 successes and 10 failures</td><td>Normal/large sample: normal population, $n \ge 30$, or no strong skew or outliers in the sample</td></tr>
+<tr><th scope="row">95% critical value</th><td>1.96</td><td>depends on df: 2.262 at df 9, 2.064 at df 24, 1.984 at df 100</td></tr>
+</tbody>
+</table>
+<p>To read $t^*$ from Table B, find the row for your df and the column for your confidence level. If your df is not in the table (say 44), use the next smaller row (40); that is a little conservative. Technology gives the exact value: the 0.975 quantile of t with your df, for 95%.</p>
+
+<h2>The one-sample t interval</h2>
+<p>$$\bar{x} \pm t^*\frac{s}{\sqrt{n}}, \qquad \text{df} = n - 1.$$</p>
+<p>Before you compute, check the <b>conditions for inference</b>, in words, with numbers:</p>
+<ul>
+<li><b>Random:</b> a random sample from the population, or random assignment in an experiment.</li>
+<li><b>10%:</b> when sampling without replacement, $n$ is less than 10% of the population.</li>
+<li><b>Normal/large sample:</b> the population is normal, or $n \ge 30$ (the central limit theorem), or a graph of the sample shows no strong skew and no outliers. Name the graph and what it shows.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> A random sample of 25 of a city's bike commuters has mean one-way distance $\bar{x} = 6.8$ miles and $s = 2.9$ miles. A dotplot of the 25 distances is roughly symmetric with no outliers. Construct a 95% confidence interval for the mean one-way distance.</p>
+<p>Procedure: a one-sample t interval for $\mu$, the true mean one-way distance of all the city's bike commuters.</p>
+<p>Conditions. Random: the problem says a random sample. 10%: 25 is less than 10% of the city's many thousands of bike commuters. Normal/large sample: $n = 25 < 30$, but the dotplot of the sample shows no strong skew and no outliers.</p>
+<p>Expression and substitution: $\text{df} = 24$, $t^* = 2.064$, so $\bar{x} \pm t^*\frac{s}{\sqrt{n}} = 6.8 \pm 2.064\frac{2.9}{\sqrt{25}} = 6.8 \pm 1.197$.</p>
+<p>Answer: from 5.60 to 8.00 miles.</p>
+<p>Interpretation: We are 95% confident that the interval from 5.60 to 8.00 miles captures the true mean one-way distance of all the city's bike commuters.</p>
+</div>
+<p>The confidence level has the same meaning as in Unit 3: if we took many random samples of 25 commuters and built a 95% interval from each, about 95% of the intervals would capture the true mean distance. It does not say that 95% of commuters ride between 5.60 and 8.00 miles; the interval is about a mean, not about individual riders.</p>
+
+<h2>Paired data: one sample of differences</h2>
+<p>Sometimes the data come in pairs: the same student before and after a course, the left and right foot, two matched subjects in a matched pairs design. The two values in a pair belong together. They are not two independent samples. The right move is to subtract within each pair and analyze the differences as <b>one</b> sample. The parameter is the true mean difference, $\mu_d$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A random sample of 10 students in a keyboarding course typed a passage on the first and last days. The differences (after minus before, in words per minute) are 8, 3, 11, 6, $-2$, 9, 5, 7, 12, 4. Construct a 95% confidence interval for the mean change.</p>
+<p>Summaries of the differences: $\bar{x}_d = \frac{63}{10} = 6.3$ and $s_d = 4.11$ words per minute.</p>
+<p>Conditions. Random: a random sample of students in the course. 10%: 10 is less than 10% of all students who take it. Normal/large sample: $n = 10 < 30$, and a dotplot of the 10 differences shows no strong skew and no outliers.</p>
+<p>Expression and substitution: $\text{df} = 9$, $t^* = 2.262$, so $\bar{x}_d \pm t^*\frac{s_d}{\sqrt{n}} = 6.3 \pm 2.262\frac{4.11}{\sqrt{10}} = 6.3 \pm 2.94$.</p>
+<p>Answer: from 3.36 to 9.24 words per minute.</p>
+<p>Interpretation: We are 95% confident that the interval from 3.36 to 9.24 words per minute captures the true mean change in typing speed (after minus before) for students who take the course.</p>
+</div>
+<p>Two habits earn points here. Say which way you subtracted (after minus before), so a positive mean difference has a clear meaning. And check the shape condition on the differences, because the differences are the sample.</p>
+
+<h2>Common slips</h2>
+<ul>
+<li>Using $z^* = 1.96$ for a mean. With $s$ in the formula, use $t^*$ at every sample size.</li>
+<li>Using $n$ instead of $n - 1$ for df.</li>
+<li>Treating paired data as two separate samples.</li>
+<li>Checking "$n \ge 10$" for a mean. Ten is the large counts threshold for proportions. For means the check is normal population, $n \ge 30$, or a graph with no strong skew or outliers.</li>
+</ul>

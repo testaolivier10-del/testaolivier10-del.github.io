@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulas, Order of Operations and… — AP® Statistics Notes</title>
+<meta name="description" content="Statistics formulas are recipes. Each one tells you which numbers to combine and in what order.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/math-formulas.html">
+<meta property="og:title" content="Formulas, Order of Operations and… — AP® Statistics Notes">
+<meta property="og:description" content="Statistics formulas are recipes. Each one tells you which numbers to combine and in what order.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/math-formulas.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/math-formulas.html#reading",
+      "name": "Formulas, Order of Operations and Square Roots",
+      "url": "https://levlprep.com/statistics/notes/math-formulas.html",
+      "description": "Statistics formulas are recipes. Each one tells you which numbers to combine and in what order.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "formulas, order of operations and square roots for statistics",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/statistics/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Formulas, Order of Operations and Square Roots: notes",
+          "item": "https://levlprep.com/statistics/notes/math-formulas.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="math-formulas" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Regression Analysis</a>
+    <a class="bk-toc-chap" href="../units/skills-math.html"><span class="bk-toc-chap-n">S</span><span><b>Math you need</b><small>5 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="skills-math"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="math-fractions-percents"><a href="math-fractions-percents.html"><span class="bk-toc-n">S</span>Fractions, Decimals and Percents</a></li><li class="current" data-toc-t="math-formulas"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Formulas, Order of Operations and Square Roots</a><div class="bk-toc-onpage"><p>On this page</p><a href="#order-of-operations">Order of operations</a><a href="#square-roots">Square roots</a><a href="#the-summation-sign">The summation sign</a><a href="#a-formula-from-start-to-finish">A formula from start to finish</a><a href="#show-your-work-as-the-exam">Show your work as the exam asks</a></div></li><li data-toc-t="math-inequality-words"><a href="math-inequality-words.html"><span class="bk-toc-n">S</span>Inequalities in Words</a></li><li data-toc-t="math-counting"><a href="math-counting.html"><span class="bk-toc-n">S</span>Factorials and Combinations</a></li><li data-toc-t="math-lines"><a href="math-lines.html"><span class="bk-toc-n">S</span>Lines: Slope and Intercept</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Formulas, Order of Operations and Square Roots: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/math-formulas.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Skills <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Formulas, Order of Operations and Square Roots</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="math-formulas">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fmath-formulas.html&amp;title=Formulas%2C%20Order%20of%20Operations%20and%20Square%20Roots%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/math-formulas.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>Statistics formulas are recipes. Each one tells you which numbers to combine and in what order. This page is about the order: how to substitute numbers into a formula and evaluate it exactly as written, including sums and <span class="gl" tabindex="0" data-c="square-root">square roots</span>.</p>
+
+<h2 id="order-of-operations">Order of operations</h2>
+<p>Every reader of a formula must get the same answer, so there is an agreed order:</p>
+<ol>
+<li>Anything grouped: brackets, the top and bottom of a fraction bar, everything under a square root.</li>
+<li>Powers and roots.</li>
+<li>Multiplication and division, left to right.</li>
+<li>Addition and subtraction, left to right.</li>
+</ol>
+<p>So <math class="stat-m"><semantics><mrow><mn>6</mn><mo>+</mo><mn>4</mn><mo>×</mo><mn>3</mn><mo>=</mo><mn>6</mn><mo>+</mo><mn>12</mn><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">6 + 4 \times 3 = 6 + 12 = 18</annotation></semantics></math>, not 30. And a fraction bar works like brackets: in <math class="stat-m"><semantics><mrow><mfrac><mrow><mn>2</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>9</mn></mrow><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{2 + 4 + 9}{3}</annotation></semantics></math> the whole top is added before dividing, giving <math class="stat-m"><semantics><mrow><mfrac><mn>15</mn><mn>3</mn></mfrac><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\frac{15}{3} = 5</annotation></semantics></math>. On a calculator you must type those brackets yourself: <code>(2 + 4 + 9)/3</code>. Typing <code>2 + 4 + 9/3</code> divides only the 9 and gives 9.</p>
+<p>Squares need care with negative numbers. <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">(-3)^2 = (-3)(-3) = 9</annotation></semantics></math>: a square is never negative. On many calculators, <code>-3^2</code> gives <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">-9</annotation></semantics></math>, because the square is done before the minus sign. Type <code>(-3)^2</code>.</p>
+
+<h2 id="square-roots">Square roots</h2>
+<p>The square root <math class="stat-m"><semantics><mrow><msqrt><mi>a</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{a}</annotation></semantics></math> is the nonnegative number whose square is <math class="stat-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>. <math class="stat-m"><semantics><mrow><msqrt><mn>0.25</mn></msqrt><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\sqrt{0.25} = 0.5</annotation></semantics></math> because <math class="stat-m"><semantics><mrow><mn>0.5</mn><mo>×</mo><mn>0.5</mn><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">0.5 \times 0.5 = 0.25</annotation></semantics></math>. Notice that the square root of a number between 0 and 1 is <i>larger</i> than the number.</p>
+<p>A square root covers everything under its bar. <math class="stat-m"><semantics><mrow><msqrt><mfrac><mn>26</mn><mn>2</mn></mfrac></msqrt><mo>=</mo><msqrt><mn>13</mn></msqrt><mo>≈</mo><mn>3.61</mn></mrow><annotation encoding="application/x-tex">\sqrt{\frac{26}{2}} = \sqrt{13} \approx 3.61</annotation></semantics></math>, but <math class="stat-m"><semantics><mrow><mfrac><msqrt><mn>26</mn></msqrt><mn>2</mn></mfrac><mo>≈</mo><mn>2.55</mn></mrow><annotation encoding="application/x-tex">\frac{\sqrt{26}}{2} \approx 2.55</annotation></semantics></math>. On a calculator, put the whole quantity in the root’s brackets: <code>sqrt(26/2)</code>.</p>
+
+<h2 id="the-summation-sign">The summation sign</h2>
+<p>The <span class="gl" tabindex="0" data-c="summation">summation</span> sign, the Greek capital letter <math class="stat-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo></mrow><annotation encoding="application/x-tex">\sum</annotation></semantics></math>, stands for "add up". For values <math class="stat-m"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x_1 = 3</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x_2 = 5</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>x</mi><mn>3</mn></msub><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">x_3 = 10</annotation></semantics></math>:</p>
+<ul>
+<li><math class="stat-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mn>3</mn><mo>+</mo><mn>5</mn><mo>+</mo><mn>10</mn><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">\sum x_i = 3 + 5 + 10 = 18</annotation></semantics></math>.</li>
+<li><math class="stat-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sum (x_i - 6)</annotation></semantics></math>: subtract 6 from each value, then add: <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>4</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(-3) + (-1) + 4 = 0</annotation></semantics></math>.</li>
+<li><math class="stat-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mn>6</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\sum (x_i - 6)^2</annotation></semantics></math>: subtract, square each result, then add: <math class="stat-m"><semantics><mrow><mn>9</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>16</mn><mo>=</mo><mn>26</mn></mrow><annotation encoding="application/x-tex">9 + 1 + 16 = 26</annotation></semantics></math>.</li>
+</ul>
+<p>The order matters: in <math class="stat-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mn>6</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\sum (x_i - 6)^2</annotation></semantics></math> the squaring happens to each term <i>before</i> the adding.</p>
+
+<h2 id="a-formula-from-start-to-finish">A formula from start to finish</h2>
+<figure id="fig-dist"  class="stat-figure"><div class="stat-figimg" data-fig="distances-from-average"><img src="../figures/distances-from-average.svg" alt="Three values, 2, 4 and 9, as dots on a number line from 0 to 10. A plum line marks their average, (2 + 4 + 9) / 3 = 5. Arrows from the average to each value show the distances 2 − 5 = −3, 4 − 5 = −1 and 9 − 5 = 4." width="720" height="240" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The values 2, 4 and 9, their average 5, and the distance of each value from the average. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Evaluate in order.</b> Find <math class="stat-m"><semantics><mrow><msqrt><mfrac><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mn>5</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mn>4</mn><mo>−</mo><mn>5</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mn>9</mn><mo>−</mo><mn>5</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mrow><mn>3</mn><mo>−</mo><mn>1</mn></mrow></mfrac></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\frac{(2 - 5)^2 + (4 - 5)^2 + (9 - 5)^2}{3 - 1}}</annotation></semantics></math>.</p>
+<p>Brackets: <math class="stat-m"><semantics><mrow><mn>2</mn><mo>−</mo><mn>5</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">2 - 5 = -3</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mn>4</mn><mo>−</mo><mn>5</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">4 - 5 = -1</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mn>9</mn><mo>−</mo><mn>5</mn><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">9 - 5 = 4</annotation></semantics></math>.</p>
+<p>Powers: <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">(-3)^2 = 9</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">(-1)^2 = 1</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msup><mn>4</mn><mn>2</mn></msup><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">4^2 = 16</annotation></semantics></math>.</p>
+<p>The top of the fraction: <math class="stat-m"><semantics><mrow><mn>9</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>16</mn><mo>=</mo><mn>26</mn></mrow><annotation encoding="application/x-tex">9 + 1 + 16 = 26</annotation></semantics></math>. The bottom: <math class="stat-m"><semantics><mrow><mn>3</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3 - 1 = 2</annotation></semantics></math>.</p>
+<p>Divide: <math class="stat-m"><semantics><mrow><mfrac><mn>26</mn><mn>2</mn></mfrac><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">\frac{26}{2} = 13</annotation></semantics></math>.</p>
+<p>Square root last: <math class="stat-m"><semantics><mrow><msqrt><mn>13</mn></msqrt><mo>≈</mo><mn>3.61</mn></mrow><annotation encoding="application/x-tex">\sqrt{13} \approx 3.61</annotation></semantics></math>.</p>
+<p>On a calculator in one line: <code>sqrt(((2-5)^2 + (4-5)^2 + (9-5)^2)/(3-1))</code>.</p>
+</div>
+<p>Notice what the distances do without squares: <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>−</mo><mn>1</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">-3 - 1 + 4 = 0</annotation></semantics></math>. Distances from the <a class="gl" href="../notes/summary-statistics.html" data-c="mean">average</a> always add to 0, because the values above and below balance. Squaring makes every distance count as positive, which is why the formula squares before adding. You will meet this exact formula, and the reason for the <math class="stat-m"><semantics><mrow><mn>3</mn><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3 - 1</annotation></semantics></math> on the bottom, in the next topic.</p>
+
+<h2 id="show-your-work-as-the-exam">Show your work as the exam asks</h2>
+<p>On the AP® Statistics exam, a calculation earns full credit when it shows three things: the formula, the numbers put into it, and the result. Write <math class="stat-m"><semantics><mrow><mfrac><mrow><mn>62</mn><mo>−</mo><mn>50</mn></mrow><mn>8</mn></mfrac><mo>=</mo><mfrac><mn>12</mn><mn>8</mn></mfrac><mo>=</mo><mn>1.5</mn></mrow><annotation encoding="application/x-tex">\frac{62 - 50}{8} = \frac{12}{8} = 1.5</annotation></semantics></math>, not just 1.5. If a number is wrong, a grader can then see that your method was right.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:math-formulas">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="describing-distributions.html"><span>&larr; Previous</span><b>Descriptions for One Quantitative Variable Distributions</b></a><a class="tb-chapter-link next" href="summary-statistics.html"><span>Next &rarr;</span><b>Summary Statistics for One Quantitative Variable</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:math-formulas">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

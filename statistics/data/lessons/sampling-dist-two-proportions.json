@@ -1,0 +1,83 @@
+{
+ "hook": "A district says 70% of its high schoolers ride the bus but only 55% of its middle schoolers do. A reporter checks with two random samples and gets a gap of 0.02 instead of 0.15. Is the district wrong, or is that just what samples do? To answer, you need to know how a difference of two sample proportions behaves from sample to sample.",
+ "prereq": [
+  {
+   "q": "A population has $p = 0.4$. What is the standard deviation of $\\hat{p}$ for random samples of 100?",
+   "options": [
+    "$0.049$",
+    "$0.0024$",
+    "$0.24$",
+    "$0.4$"
+   ],
+   "correct": 0,
+   "why": "$\\sqrt{\\frac{0.4(0.6)}{100}} = \\sqrt{0.0024} = 0.049$.",
+   "review": "sampling-dist-proportion"
+  },
+  {
+   "q": "For $n = 50$ and $p = 0.1$, is the large counts condition met?",
+   "options": [
+    "No: $50(0.1) = 5$ is less than 10",
+    "Yes: $n = 50$ is at least 30",
+    "Yes: $50(0.9) = 45$ is at least 10",
+    "No: $p$ is less than 0.5"
+   ],
+   "correct": 0,
+   "why": "Both $np$ and $n(1 - p)$ must be at least 10; $np = 5$ fails.",
+   "review": "sampling-dist-proportion"
+  },
+  {
+   "q": "A normal distribution has mean 0.15 and standard deviation 0.05. What is the z-score of 0.05?",
+   "options": [
+    "$-2$",
+    "$2$",
+    "$-0.1$",
+    "$-1$"
+   ],
+   "correct": 0,
+   "why": "$z = \\frac{0.05 - 0.15}{0.05} = -2$.",
+   "review": "normal-distribution"
+  }
+ ],
+ "figure": {
+  "figure": "diff-props-sim",
+  "caption": "1,000 simulated values of $\\hat{p}_A - \\hat{p}_B$ with the normal curve the formulas predict: mean 0.14, standard deviation 0.060."
+ },
+ "chain": [
+  {
+   "cause": "Take a random sample from each of two populations, independently",
+   "effect": "each sample proportion has its own chance error, and so does their difference $\\hat{p}_1 - \\hat{p}_2$"
+  },
+  {
+   "cause": "Each sample proportion is centered at its true proportion",
+   "effect": "the difference is centered at $p_1 - p_2$, so it is an unbiased estimator of the true difference"
+  },
+  {
+   "cause": "The two chance errors come from separate samples and do not cancel",
+   "effect": "the variances add: $\\sigma^2 = \\frac{p_1(1-p_1)}{n_1} + \\frac{p_2(1-p_2)}{n_2}$, and the standard deviation is its square root"
+  },
+  {
+   "cause": "Both samples have at least 10 expected successes and 10 expected failures",
+   "effect": "the sampling distribution is approximately normal, so z-scores and normal areas give probabilities"
+  }
+ ],
+ "ideas": [
+  "Mean: $\\mu_{\\hat{p}_1 - \\hat{p}_2} = p_1 - p_2$.",
+  "Standard deviation: $\\sigma_{\\hat{p}_1 - \\hat{p}_2} = \\sqrt{\\frac{p_1(1-p_1)}{n_1} + \\frac{p_2(1-p_2)}{n_2}}$. Add variances, never standard deviations.",
+  "Shape: approximately normal when $n_1 p_1$, $n_1(1-p_1)$, $n_2 p_2$ and $n_2(1-p_2)$ are each at least 10.",
+  "Conditions: two independent random samples (or two randomly assigned groups), and each sample less than 10% of its population when sampling without replacement."
+ ],
+ "misconception": {
+  "wrong": "Subtracting the sample proportions means you subtract their standard deviations too, so the difference varies less than either one.",
+  "right": "Each sample brings its own chance error, and the errors add up rather than cancel. The variances add, so a difference varies more than either sample proportion alone."
+ },
+ "check": [
+  "stat-sampling-dist-two-proportions-1",
+  "stat-sampling-dist-two-proportions-2",
+  "stat-sampling-dist-two-proportions-3",
+  "stat-sampling-dist-two-proportions-4",
+  "stat-sampling-dist-two-proportions-12",
+  "stat-sampling-dist-two-proportions-14"
+ ],
+ "summary": "For two independent random samples, $\\hat{p}_1 - \\hat{p}_2$ is centered at $p_1 - p_2$ and has standard deviation $\\sqrt{\\frac{p_1(1-p_1)}{n_1} + \\frac{p_2(1-p_2)}{n_2}}$: the variances add. When all four large counts are at least 10, its distribution is approximately normal, so you can find probabilities with z-scores.",
+ "topic": "sampling-dist-two-proportions"
+}

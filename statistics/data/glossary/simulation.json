@@ -1,0 +1,14 @@
+{
+ "simulation": {
+  "def": "A simulation imitates a chance process using a model with the same chances, such as random digits, a coin or a die, and repeats it many times to estimate how often a result happens."
+ },
+ "trial": {
+  "def": "One repetition of a chance process or of its simulation, such as one random pick of 4 council members or one set of 10 simulated free throws."
+ },
+ "law-large-numbers": {
+  "def": "The law of large numbers says that as a chance process is repeated more and more times, the proportion of trials with a given result gets closer and closer to its true probability."
+ },
+ "probability": {
+  "def": "The probability of a result is the proportion of times it would happen in a very long series of repetitions of a chance process. It is a number from 0 (never happens) to 1 (always happens), and a simulation estimates it with the share of its trials."
+ }
+}

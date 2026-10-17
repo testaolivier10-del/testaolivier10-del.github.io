@@ -1,0 +1,71 @@
+{
+ "topic": "test-two-means",
+ "hook": "Volunteers who drank caffeine reacted in 241 milliseconds on average; those who drank a caffeine-free look-alike took 262. Random assignment made the groups comparable, so if the gap is real, caffeine caused it. Is a 21 millisecond gap bigger than chance would produce? The two-sample t test answers that.",
+ "prereq": [
+  {
+   "q": "For a two-sample t test, the null hypothesis is usually",
+   "options": [
+    "$H_0: \\mu_1 - \\mu_2 = 0$",
+    "$H_0: \\bar{x}_1 - \\bar{x}_2 = 0$",
+    "$H_0: \\mu_d = 0$",
+    "$H_0: \\mu_1 - \\mu_2 > 0$"
+   ],
+   "correct": 0,
+   "why": "No difference in the true means, written with parameters.",
+   "review": "test-two-means-setup"
+  },
+  {
+   "q": "The standard error of $\\bar{x}_1 - \\bar{x}_2$ is",
+   "options": [
+    "$\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$",
+    "$\\frac{s_1}{\\sqrt{n_1}} + \\frac{s_2}{\\sqrt{n_2}}$",
+    "$\\frac{s_1 - s_2}{\\sqrt{n_1 + n_2}}$",
+    "$\\sqrt{s_1^2 + s_2^2}$"
+   ],
+   "correct": 0,
+   "why": "Each variance over its own $n$, added, then the square root.",
+   "review": "ci-two-means"
+  }
+ ],
+ "figure": {
+  "figure": "two-sample-t-pvalue",
+  "caption": "If caffeine had no effect, the two-sample t statistic would follow (approximately) the t distribution with technology df 40.0. The observed $t = -2.31$ leaves 0.0132 in the left tail: the p-value."
+ },
+ "chain": [
+  {
+   "cause": "Assume $H_0$: the true means are equal, $\\mu_1 - \\mu_2 = 0$",
+   "effect": "differences in sample means vary around 0 with standard error $\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$"
+  },
+  {
+   "cause": "Measure the observed difference in standard errors",
+   "effect": "$t = \\frac{(\\bar{x}_1 - \\bar{x}_2) - 0}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$"
+  },
+  {
+   "cause": "Find the tail area in the direction of $H_a$",
+   "effect": "with technology df, or the conservative df (smaller $n - 1$), which gives a slightly larger p-value"
+  },
+  {
+   "cause": "Compare with $\\alpha$ and conclude in context",
+   "effect": "then say what the design allows: cause and effect (random assignment) or generalizing (random sampling)"
+  }
+ ],
+ "ideas": [
+  "Two-sample t statistic: $t = \\frac{(\\bar{x}_1 - \\bar{x}_2) - 0}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$.",
+  "p-value: left tail for $<$, right tail for $>$, twice the smaller tail for $\\ne$; technology df, or the conservative df (also accepted).",
+  "Conclusion: \"Because the p-value of 0.0132 is less than 0.05, we reject $H_0$. There is convincing evidence that the true mean ... with caffeine is less than without ...\"",
+  "Choosing the procedure: proportion or mean? one sample, paired, or two independent groups? interval or test?"
+ ],
+ "misconception": {
+  "wrong": "A p-value of 0.274 shows the two counties have the same mean exercise time.",
+  "right": "A large p-value means the observed difference is the kind chance alone often produces. It is not convincing evidence of a difference, and it is not evidence that the means are equal."
+ },
+ "check": [
+  "stat-test-two-means-1",
+  "stat-test-two-means-2",
+  "stat-test-two-means-3",
+  "stat-test-two-means-4",
+  "stat-test-two-means-11",
+  "stat-test-two-means-12"
+ ],
+ "summary": "A two-sample t test computes $t = \\frac{\\bar{x}_1 - \\bar{x}_2}{\\sqrt{s_1^2/n_1 + s_2^2/n_2}}$, finds the p-value from the t distribution with technology or conservative df in the direction of $H_a$, and concludes about $\\mu_1 - \\mu_2$ in context. Random assignment allows a causal conclusion; random samples allow generalizing."
+}

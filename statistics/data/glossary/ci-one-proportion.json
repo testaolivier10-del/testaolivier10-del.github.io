@@ -1,0 +1,20 @@
+{
+ "confidence-interval": {
+  "def": "A range of values for a parameter, built as statistic ± (critical value)(standard error). For one proportion, the one-sample z interval is $\\hat{p} \\pm z^*\\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}$."
+ },
+ "standard-error": {
+  "def": "An estimate of a statistic's standard deviation computed from the sample, used when the parameter in the formula is unknown. For a proportion's interval, $\\text{SE} = \\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}$."
+ },
+ "critical-value": {
+  "def": "The multiplier $z^*$ in a confidence interval: the standard normal value with the confidence level's area between $-z^*$ and $z^*$. It is 1.645 for 90%, 1.96 for 95% and 2.576 for 99%."
+ },
+ "margin-of-error": {
+  "def": "How far a confidence interval reaches on each side of the point estimate: $\\text{ME} = z^* \\cdot \\text{SE}$. A larger sample makes it smaller; a higher confidence level makes it larger."
+ },
+ "conditions": {
+  "def": "What must be true for an inference method to work, checked in words with numbers: random (a random sample or random assignment), 10% (when sampling without replacement), and a shape condition such as large counts."
+ },
+ "confidence-level": {
+  "def": "The success rate of the method that builds a confidence interval: for 95% confidence, about 95% of intervals built from many random samples capture the parameter. It sets the critical value."
+ }
+}

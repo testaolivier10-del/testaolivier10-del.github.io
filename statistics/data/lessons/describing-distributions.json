@@ -1,0 +1,81 @@
+{
+ "topic": "describing-distributions",
+ "hook": "Sixty hospital workers report their commute times. The histogram rises fast, peaks between 10 and 15 minutes, then trails off toward 45, with one lone worker near 67. Describing a distribution is putting that picture into words a reader can trust: its shape, its center, its spread, anything unusual, and always what the numbers measure.",
+ "prereq": [
+  {
+   "q": "In a histogram with bins 0 to 5, 5 to 10 and so on (left end included), where does a value of 10 go?",
+   "options": [
+    "In the 10 to 15 bin",
+    "In the 5 to 10 bin",
+    "In both bins",
+    "In neither bin"
+   ],
+   "correct": 0,
+   "why": "Each bin holds its left end, so 10 starts the 10 to 15 bin.",
+   "review": "one-quantitative-displays"
+  },
+  {
+   "q": "What does a histogram show that a list of values does not show at a glance?",
+   "options": [
+    "How the values are spread along the number line",
+    "The exact value of each observation",
+    "The order the data were collected",
+    "The name of each individual"
+   ],
+   "correct": 0,
+   "why": "A histogram shows the distribution: how many values fall in each part of the number line.",
+   "review": "one-quantitative-displays"
+  }
+ ],
+ "figure": {
+  "figure": "four-shapes",
+  "caption": "Four common shapes: roughly symmetric, skewed right, skewed left and bimodal. Skew is named for the side with the long tail."
+ },
+ "chain": [
+  {
+   "cause": "A graph shows where the values of a quantitative variable fall",
+   "effect": "you can read its shape: symmetric, skewed, one peak or two, or level"
+  },
+  {
+   "cause": "A tail stretches toward one side",
+   "effect": "the distribution is skewed toward the tail: right for large values, left for small values"
+  },
+  {
+   "cause": "Values bunch around a typical value and reach out from it",
+   "effect": "you describe the center and the spread with numbers"
+  },
+  {
+   "cause": "Some values stand apart, with empty space around them",
+   "effect": "you name them as gaps, clusters or possible outliers, and every feature is stated in context"
+  }
+ ],
+ "ideas": [
+  "Describe a quantitative distribution with four features: <b>shape</b>, <b>center</b>, <b>spread</b> and unusual features, all <b>in context</b> with numbers.",
+  "Shape: <b>symmetric</b>, <b>skewed</b> right or left (named for the long tail), <b>unimodal</b> or <b>bimodal</b>, or <b>uniform</b> (bars about level).",
+  "Spread (<b>variability</b>) is how far apart the values are; give it with numbers, such as \"most values from 5 to 30 minutes\".",
+  "Unusual features: an <b>outlier</b> falls far from the overall pattern; a <b>gap</b> is an empty stretch; a <b>cluster</b> is a separate bunch of values."
+ ],
+ "misconception": {
+  "wrong": "Most commute times are on the left, so the distribution is skewed left.",
+  "right": "Skew is named for the tail, not the bulk. The long tail stretches toward the larger values on the right, so the distribution is skewed right."
+ },
+ "check": [
+  "stat-describing-distributions-1",
+  "stat-describing-distributions-2",
+  "stat-describing-distributions-3",
+  "stat-describing-distributions-4",
+  "stat-describing-distributions-9",
+  "stat-describing-distributions-16"
+ ],
+ "summary": "To describe a quantitative distribution, give its shape (symmetric, skewed toward the tail, unimodal, bimodal or uniform), its center and spread with numbers, and any unusual features such as outliers, gaps and clusters. Every description names the variable and its units, so it is in context.",
+ "connections": [
+  {
+   "href": "../notes/one-quantitative-displays.html",
+   "label": "Back: graphs for one quantitative variable (1.5)"
+  },
+  {
+   "href": "../notes/summary-statistics.html",
+   "label": "Next: summary statistics (1.7)"
+  }
+ ]
+}

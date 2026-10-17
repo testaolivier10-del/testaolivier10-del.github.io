@@ -1,0 +1,8 @@
+{
+ "estimator": {
+  "def": "A statistic used to estimate a parameter, such as the sample proportion $\\hat{p}$ for the population proportion $p$. Its value from one sample is a point estimate."
+ },
+ "unbiased-estimator": {
+  "def": "An estimator whose sampling distribution is centered at the parameter it estimates, so it is right on average over many samples. A biased estimator's sampling distribution is centered too high or too low."
+ }
+}

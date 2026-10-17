@@ -1,0 +1,14 @@
+{
+ "density-curve": {
+  "def": "A density curve is a smooth curve that models a distribution: it is on or above the horizontal axis and has an area of exactly 1 under it. The area under the curve over an interval is the proportion of values, or the probability, in that interval."
+ },
+ "normal-distribution": {
+  "def": "A normal distribution, written $N(\\mu, \\sigma)$, has a symmetric, bell-shaped density curve centered at its mean $\\mu$, with standard deviation $\\sigma$ setting its spread. It models many roughly symmetric, mound-shaped distributions."
+ },
+ "standard-normal": {
+  "def": "The standard normal distribution is the normal distribution with mean 0 and standard deviation 1, $N(0, 1)$. Standardizing a value, $z = \\frac{x - \\mu}{\\sigma}$, turns any normal question into a standard normal one, answered by Table A or technology."
+ },
+ "empirical-rule": {
+  "def": "The empirical rule (68-95-99.7 rule): in a normal distribution about 68% of values lie within 1 standard deviation of the mean, about 95% within 2, and about 99.7% within 3."
+ }
+}

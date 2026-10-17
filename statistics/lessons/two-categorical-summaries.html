@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summary Statistics for Two Categorical… — AP® Statistics</title>
+<meta name="description" content="From one two-way table you can find three kinds of share. Joint: a cell over the grand total. Marginal: a row or column total over the grand total.">
+<link rel="canonical" href="https://levlprep.com/statistics/lessons/two-categorical-summaries.html">
+<meta property="og:title" content="Summary Statistics for Two Categorical… — AP® Statistics">
+<meta property="og:description" content="From one two-way table you can find three kinds of share. Joint: a cell over the grand total. Marginal: a row or column total over the grand total.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/lessons/two-categorical-summaries.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/course/lesson.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/lessons/two-categorical-summaries.html#lesson",
+      "name": "Summary Statistics for Two Categorical Variables",
+      "url": "https://levlprep.com/statistics/lessons/two-categorical-summaries.html",
+      "description": "From one two-way table you can find three kinds of share. Joint: a cell over the grand total. Marginal: a row or column total over the grand total.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".stat-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "joint relative frequency"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "marginal relative frequency"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "conditional relative frequency"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Probability, Random Variables, and Probability Distributions",
+          "item": "https://levlprep.com/statistics/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Summary Statistics for Two Categorical Variables",
+          "item": "https://levlprep.com/statistics/lessons/two-categorical-summaries.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="two-categorical-summaries" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Probability, Random Variables, and Probability Distributions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Summary Statistics for Two Categorical Variables</span></nav></div>
+<div class="xshell stat-ls cx-ls stat-stepped" data-course="apstat" data-next-title="Estimating Probabilities Using Simulation" data-next-unit="unit-2">
+  <aside class="stat-ls-rail stat-nav-ref" aria-label="Lesson parts">
+    <p class="stat-ls-k cx-ls-k">Unit 2 · Probability, Random Variables, and Probability Distributions</p>
+    <p class="stat-ls-links"><a href="../units/unit-2.html">&larr; Back to the unit</a><a href="../notes/two-categorical-summaries.html">Read the notes</a></p>
+    <div class="stat-ls-prog cx-ls-prog"><div class="stat-ls-track"><div class="stat-ls-fill"></div></div><span class="stat-ls-count">Step 1 / 11</span></div>
+    <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of 11</span><span class="cx-ls-all">All steps</span></button>
+    <ol class="stat-ls-steps cx-ls-steps" id="lesson-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="stat-ls-main stat-lesson">
+  <header class="stat-ls-hero">
+    <div class="eyebrow">Unit 2 · Topic 2.2 <span class="stat-beta stat-nav-ref">Beta</span></div>
+    <h1>Summary Statistics for Two Categorical Variables</h1>
+    <p class="lede">From one two-way table you can find three kinds of share.</p>
+    <p class="stat-tags stat-nav-ref"><span class="stat-tag">Practice 3: Analyze Data</span><span class="stat-tag">Practice 4: Interpret Results</span></p>
+  </header>
+  <div class="stat-ls-card">
+  <section class="stat-part stat-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="stat-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="stat-step-body stat-hook">A state park wants to know who comes to fish so it can plan bait shops and boat rentals. Rangers ask 250 visitors two questions: is this your first visit, and what did you come to do? The same table of counts answers three different questions, depending on which total you divide by.</div>
+  </section>
+  <section class="stat-part stat-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="stat-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="stat-step-body"><nav class="stat-nav-ref" aria-label="Earlier topics"><ul class="stat-links"><li><a href="../notes/one-categorical-tables.html">Tabular Representation and Summary Statistics for One Categorical Variable</a></li><li><a href="../notes/two-categorical-displays.html">Tabular and Graphical Representations for the Distributions of Two Categorical Variables</a></li></ul></nav></div>
+  </section>
+  <section class="stat-part stat-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="stat-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="stat-step-body"><div class="stat-qs" data-set="prereq"><div class="stat-q" data-qid="two-categorical-summaries-pre-1"><p class="stat-q-stem"><span class="stat-q-n">1.</span> In a two-way table, where is the grand total?</p><ol class="stat-opts"><li>In the corner, where the Total row and Total column meet</li><li>At the end of the first row</li><li>At the top of the first column</li><li>In the largest cell</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>The grand total counts every individual and sits where the totals meet.</p><ul><li><b>Correct:</b> In the corner, where the Total row and Total column meet: </li><li>At the end of the first row: </li><li>At the top of the first column: </li><li>In the largest cell: </li></ul></details></div><div class="stat-q" data-qid="two-categorical-summaries-pre-2"><p class="stat-q-stem"><span class="stat-q-n">2.</span> A relative frequency is</p><ol class="stat-opts"><li>a count divided by a total</li><li>a count multiplied by 100</li><li>the largest count in a table</li><li>a total minus a count</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>A relative frequency is a share: count over total.</p><ul><li><b>Correct:</b> a count divided by a total: </li><li>a count multiplied by 100: </li><li>the largest count in a table: </li><li>a total minus a count: </li></ul></details></div></div></div>
+  </section>
+  <section class="stat-part stat-step" id="figure" aria-labelledby="h-figure">
+    <p class="stat-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="stat-step-body"><figure class="stat-figure stat-lesson-fig"><div class="stat-figimg" data-fig="u2-park-table"><img src="../figures/u2-park-table.svg" alt="The two-way table of 250 park visitors by visit type and activity, with three cells marked. The joint cell, first visit and hiking, holds 45 of all 250 visitors (0.18). The marginal total for hiking is 105 of 250 (0.42). The conditional share of hikers among first visits is 45 of the 100 first visits (0.45)." width="680" height="330" loading="lazy" decoding="async"></div><figcaption>One table, three kinds of share: a cell over the grand total (joint), a total over the grand total (marginal), and a cell over its row or column total (conditional). <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="stat-part stat-step" id="chain" aria-labelledby="h-chain">
+    <p class="stat-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="stat-step-body"><ol class="stat-chain"><li><span class="stat-cause">Divide one cell by the grand total</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">a <span class="gl" tabindex="0" data-c="joint-rel-freq">joint relative frequency</span>: the share of everyone in that pairing (45 of 250 are first visits who hiked, 0.18)</span></li><li><span class="stat-cause">Divide a row or column total by the grand total</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">a <span class="gl" tabindex="0" data-c="marginal-rel-freq">marginal relative frequency</span>: the share of everyone in one category (105 of 250 hiked, 0.42)</span></li><li><span class="stat-cause">Divide one cell by its row or column total</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">a <span class="gl" tabindex="0" data-c="conditional-rel-freq">conditional relative frequency</span>: the share within one group (45 of the 100 first visits hiked, 0.45)</span></li><li><span class="stat-cause">Compare conditional <a class="gl" href="../notes/one-categorical-tables.html" data-c="relative-frequency">relative frequencies</a> across groups</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">if they differ, the <a class="gl" href="../notes/variables.html" data-c="variable">variables</a> are <a class="gl" href="../notes/two-categorical-displays.html" data-c="association">associated</a></span></li></ol></div>
+  </section>
+  <section class="stat-part stat-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="stat-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="stat-step-body"><ul class="stat-ideas"><li><b>Joint relative <a class="gl" href="../notes/one-categorical-tables.html" data-c="frequency-table">frequency</a></b>: one cell over the grand total.</li><li><b>Marginal relative frequency</b>: a row or column total over the grand total. The marginal <a class="gl" href="../notes/variables.html" data-c="distribution">distribution of a variable</a> lists them for every category.</li><li><b>Conditional relative frequency</b>: one cell over its row or column total. Read "of those who ..." to find the group, and divide by that group's total.</li><li>Conditional relative frequencies for one group add to 1. If they are the same for every group, there is no association.</li></ul></div>
+  </section>
+  <section class="stat-part stat-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="stat-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="stat-step-body stat-misconception"><p class="stat-wrong"><b>The wrong idea:</b> The share of course takers who passed and the share of passers who took the course are the same number.</p><p class="stat-right"><b>What actually happens:</b> They have different denominators: 60 of the 80 course takers passed (0.75), but 60 of the 126 passers took the course (0.476). The group named first is the denominator.</p></div>
+  </section>
+  <section class="stat-part stat-step" id="check" aria-labelledby="h-check">
+    <p class="stat-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="stat-step-body"><p class="stat-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="stat-qs" data-set="check"><div class="stat-set"><section class="stat-stim" data-stim="two-categorical-summaries-s1" aria-labelledby="stim-two-categorical-summaries-s1"><p class="stat-stim-k">Table</p><h3 id="stim-two-categorical-summaries-s1">Park visitors by visit type and activity</h3><div class="stat-stim-text">Rangers at a state park asked a random sample of 250 visitors whether this was their first visit and what their main activity was that day (invented data).</div><div class="table-wrap" tabindex="0" role="region" aria-label="Visit type and main activity for 250 park visitors"><table class="stat-data"><caption>Visit type and main activity for 250 park visitors</caption><thead><tr><th scope="col">Visit type</th><th scope="col">Hiking</th><th scope="col">Fishing</th><th scope="col">Picnic</th><th scope="col">Total</th></tr></thead><tbody><tr><th scope="row">First visit</th><td>45</td><td>15</td><td>40</td><td>100</td></tr><tr><th scope="row">Returning</th><td>60</td><td>54</td><td>36</td><td>150</td></tr><tr><th scope="row">Total</th><td>105</td><td>69</td><td>76</td><td>250</td></tr></tbody></table></div></section><div class="stat-q" data-qid="stat-two-categorical-summaries-1"><p class="stat-q-stem"><span class="stat-q-n">1.</span> What proportion of the 250 visitors were on a first visit and hiking?</p><p class="stat-small">Type a number. A table answer and a calculator answer are both accepted.</p><details class="stat-q-key"><summary>Show the answer</summary><p>A joint relative frequency divides one cell by the grand total: <math class="stat-m"><semantics><mrow><mfrac><mn>45</mn><mn>250</mn></mfrac><mo>=</mo><mn>0.18</mn></mrow><annotation encoding="application/x-tex">\frac{45}{250} = 0.18</annotation></semantics></math>.</p><ul><li>Answer: 0.18</li></ul></details></div><div class="stat-q" data-qid="stat-two-categorical-summaries-2"><p class="stat-q-stem"><span class="stat-q-n">2.</span> What is the marginal relative frequency of fishing?</p><p class="stat-small">Type a number. A table answer and a calculator answer are both accepted.</p><details class="stat-q-key"><summary>Show the answer</summary><p>A marginal relative frequency uses a total on the edge of the table: 69 of the 250 visitors fished, <math class="stat-m"><semantics><mrow><mfrac><mn>69</mn><mn>250</mn></mfrac><mo>=</mo><mn>0.276</mn></mrow><annotation encoding="application/x-tex">\frac{69}{250} = 0.276</annotation></semantics></math>.</p><ul><li>Answer: 0.276</li></ul></details></div><div class="stat-q" data-qid="stat-two-categorical-summaries-3"><p class="stat-q-stem"><span class="stat-q-n">3.</span> Of the returning visitors, what proportion came to fish?</p><p class="stat-small">Type a number. A table answer and a calculator answer are both accepted.</p><details class="stat-q-key"><summary>Show the answer</summary><p>"Of the returning visitors" means divide by that row's total: <math class="stat-m"><semantics><mrow><mfrac><mn>54</mn><mn>150</mn></mfrac><mo>=</mo><mn>0.36</mn></mrow><annotation encoding="application/x-tex">\frac{54}{150} = 0.36</annotation></semantics></math>.</p><ul><li>Answer: 0.36</li></ul></details></div></div><div class="stat-set"><section class="stat-stim" data-stim="two-categorical-summaries-s2" aria-labelledby="stim-two-categorical-summaries-s2"><p class="stat-stim-k">Table</p><h3 id="stim-two-categorical-summaries-s2">Driver's education and the road test</h3><div class="stat-stim-text">A state records, for a random sample of 200 new drivers, whether each took a driver's education course and whether each passed the road test on the first try (invented data).</div><div class="table-wrap" tabindex="0" role="region" aria-label="Course and first-try result for 200 new drivers"><table class="stat-data"><caption>Course and first-try result for 200 new drivers</caption><thead><tr><th scope="col">Course</th><th scope="col">Passed</th><th scope="col">Failed</th><th scope="col">Total</th></tr></thead><tbody><tr><th scope="row">Took the course</th><td>60</td><td>20</td><td>80</td></tr><tr><th scope="row">No course</th><td>66</td><td>54</td><td>120</td></tr><tr><th scope="row">Total</th><td>126</td><td>74</td><td>200</td></tr></tbody></table></div></section><div class="stat-q" data-qid="stat-two-categorical-summaries-6"><p class="stat-q-stem"><span class="stat-q-n">4.</span> What proportion of the drivers who took the course passed on the first try?</p><p class="stat-small">Type a number. A table answer and a calculator answer are both accepted.</p><details class="stat-q-key"><summary>Show the answer</summary><p>Start from the 80 course takers: <math class="stat-m"><semantics><mrow><mfrac><mn>60</mn><mn>80</mn></mfrac><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">\frac{60}{80} = 0.75</annotation></semantics></math>.</p><ul><li>Answer: 0.75</li></ul></details></div><div class="stat-q" data-qid="stat-two-categorical-summaries-7"><p class="stat-q-stem"><span class="stat-q-n">5.</span> A school ad says, "Most drivers who pass on the first try took a driver's education course." Do these data support the ad?</p><ol class="stat-opts"><li>No: of the 126 drivers who passed, only 60 (about 48%) took the course</li><li>Yes: 75% of the drivers who took the course passed, which is most of them</li><li>Yes: 60 course takers passed, which is most of the group of 80</li><li>No: the course takers are 80 of 200 drivers, which is 40% of the sample</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Start from the drivers who passed: 60 of the 126 took the course, <math class="stat-m"><semantics><mrow><mfrac><mn>60</mn><mn>126</mn></mfrac><mo>≈</mo><mn>0.476</mn></mrow><annotation encoding="application/x-tex">\frac{60}{126} \approx 0.476</annotation></semantics></math>, less than half.</p><ul><li><b>Correct:</b> No: of the 126 drivers who passed, only 60 (about 48%) took the course: Right: "of drivers who pass" means divide by the 126 who passed.</li><li>Yes: 75% of the drivers who took the course passed, which is most of them: True, but that answers a different question, about course takers rather than about drivers who passed.</li><li>Yes: 60 course takers passed, which is most of the group of 80: The ad is about drivers who passed, so the group to start from is the 126 who passed.</li><li>No: the course takers are 80 of 200 drivers, which is 40% of the sample: That is the marginal share who took the course, not the share of passers who did.</li></ul></details></div></div><div class="stat-q" data-qid="stat-two-categorical-summaries-11"><p class="stat-q-stem"><span class="stat-q-n">6.</span> A table of 500 voters shows party membership and support for a school bond. 120 voters are Party A members who support the bond. What is <math class="stat-m"><semantics><mrow><mfrac><mn>120</mn><mn>500</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{120}{500}</annotation></semantics></math>?</p><ol class="stat-opts"><li>A joint relative frequency</li><li>A marginal relative frequency</li><li>A conditional relative frequency</li><li>The percent of Party A members who support the bond</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>One cell over the grand total is a joint relative frequency: 24% of all 500 voters are Party A members who support the bond.</p><ul><li><b>Correct:</b> A joint relative frequency: Right: one cell divided by the grand total.</li><li>A marginal relative frequency: A marginal uses a row or column total on top, not one cell.</li><li>A conditional relative frequency: A conditional divides by a row or column total, not by 500.</li><li>The percent of Party A members who support the bond: That would divide by the number of Party A members.</li></ul></details></div></div></div>
+  </section>
+  <section class="stat-part stat-step" id="summary" aria-labelledby="h-summary">
+    <p class="stat-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="stat-step-body">From one <a class="gl" href="../notes/two-categorical-displays.html" data-c="two-way-table">two-way table</a> you can find three kinds of share. Joint: a cell over the grand total. Marginal: a row or column total over the grand total. Conditional: a cell over the total of its group. Compare groups with conditional relative frequencies; if they differ, the variables are associated.</div>
+  </section>
+  <section class="stat-part stat-step" id="next" aria-labelledby="h-next">
+    <p class="stat-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="stat-step-body"><nav class="stat-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="simulation.html">Estimating Probabilities Using Simulation &rarr;</a></p></nav></div>
+  </section>
+  <section class="stat-part stat-step" id="connections" aria-labelledby="h-connections">
+    <p class="stat-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="stat-step-body"><ul class="stat-links stat-nav-ref"><li><a href="../notes/one-categorical-tables.html">Back: Tabular Representation and Summary Statistics for One Categorical Variable (1.3)</a></li><li><a href="../notes/two-categorical-displays.html">Back: Tabular and Graphical Representations for the Distributions of Two Categorical Variables (2.1)</a></li><li><a href="simulation.html">Next: Estimating Probabilities Using Simulation (2.3)</a></li></ul></div>
+  </section>
+    <div class="stat-ls-actions stat-nav-ref"><button type="button" class="stat-ls-back">&larr; Previous</button><button type="button" class="stat-ls-go">Continue &rarr;</button><a class="stat-ls-go" hidden href="simulation.html">Next lesson &rarr;</a></div>
+  </div>
+  <div class="cx-ls-end">
+    <div class="stat-share stat-nav-ref" role="group" aria-label="Share or print this lesson"><a class="stat-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Flessons%2Ftwo-categorical-summaries.html&amp;title=Summary%20Statistics%20for%20Two%20Categorical%20Variables%3A%20statistics%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="stat-share-btn" data-copy="https://levlprep.com/statistics/lessons/two-categorical-summaries.html">Copy link</button><button type="button" class="stat-share-btn" data-print>Print</button></div>
+    <p class="stat-small stat-nav-ref"><a href="../practice.html?topic=two-categorical-summaries">Question set for this topic</a></p>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.stat-ls'),p=s&&s.querySelectorAll('.stat-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.stat-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apstat_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="lesson:two-categorical-summaries">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="stat-page-data">{"topic":"two-categorical-summaries","unit":"unit-2","free":false,"prereq":[{"id":"two-categorical-summaries-pre-1","type":"single","unit":"unit-2","topic":"two-categorical-summaries","q":"In a two-way table, where is the grand total?","options":["In the corner, where the Total row and Total column meet","At the end of the first row","At the top of the first column","In the largest cell"],"correct":0,"why":{"correct":"The grand total counts every individual and sits where the totals meet.","options":["","","",""]},"reviewHref":"../notes/two-categorical-displays.html","reviewTitle":"Tabular and Graphical Representations for the Distributions of Two Categorical Variables"},{"id":"two-categorical-summaries-pre-2","type":"single","unit":"unit-2","topic":"two-categorical-summaries","q":"A relative frequency is","options":["a count divided by a total","a count multiplied by 100","the largest count in a table","a total minus a count"],"correct":0,"why":{"correct":"A relative frequency is a share: count over total.","options":["","","",""]},"reviewHref":"../notes/one-categorical-tables.html","reviewTitle":"Tabular Representation and Summary Statistics for One Categorical Variable"}],"check":[{"id":"stat-two-categorical-summaries-1","type":"numeric","unit":"unit-2","topic":"two-categorical-summaries","practice":"3.B","level":"apply","diff":2,"stimulus":"two-categorical-summaries-s1","q":"What proportion of the 250 visitors were on a first visit and hiking?","numeric":{"kind":"prob","answer":0.18,"mistakes":[{"value":0.45,"why":"That divides by the 100 first visits, the share of first visits who hiked. \"Of the 250 visitors\" asks for the cell over the grand total."},{"value":0.42857142857142855,"why":"That divides by the 105 hikers. The question is about all 250 visitors, so divide by 250."}]},"why":{"correct":"A joint relative frequency divides one cell by the grand total: \u003cmath class=\"stat-m\">\u003csemantics>\u003cmrow>\u003cmfrac>\u003cmn>45\u003c/mn>\u003cmn>250\u003c/mn>\u003c/mfrac>\u003cmo>=\u003c/mo>\u003cmn>0.18\u003c/mn>\u003c/mrow>\u003cannotation encoding=\"application/x-tex\">\\frac{45}{250} = 0.18\u003c/annotation>\u003c/semantics>\u003c/math>."}},{"id":"stat-two-categorical-summaries-2","type":"numeric","unit":"unit-2","topic":"two-categorical-summaries","practice":"3.B","level":"apply","diff":2,"stimulus":"two-categorical-summaries-s1","q":"What is the marginal relative frequency of fishing?","numeric":{"kind":"prob","answer":0.276,"mistakes":[{"value":0.36,"why":"That is the share of returning visitors who fished, a conditional relative frequency. The marginal uses the fishing total, 69, over 250."},{"value":0.46,"why":"That divides the fishing total by the 150 returning visitors. A marginal divides by the grand total, 250."}]},"why":{"correct":"A marginal relative frequency uses a total on the edge of the table: 69 of the 250 visitors fished, \u003cmath class=\"stat-m\">\u003csemantics>\u003cmrow>\u003cmfrac>\u003cmn>69\u003c/mn>\u003cmn>250\u003c/mn>\u003c/mfrac>\u003cmo>=\u003c/mo>\u003cmn>0.276\u003c/mn>\u003c/mrow>\u003cannotation encoding=\"application/x-tex\">\\frac{69}{250} = 0.276\u003c/annotation>\u003c/semantics>\u003c/math>."}},{"id":"stat-two-categorical-summaries-3","type":"numeric","unit":"unit-2","topic":"two-categorical-summaries","practice":"3.B","level":"apply","diff":2,"stimulus":"two-categorical-summaries-s1","q":"Of the returning visitors, what proportion came to fish?","numeric":{"kind":"prob","answer":0.36,"mistakes":[{"value":0.216,"why":"That is the joint relative frequency, out of all 250 visitors. Here the group is the 150 returning visitors."},{"value":0.782608695652174,"why":"That is the share of the 69 people who fished who were returning visitors. Start from the group named first: returning visitors."}]},"why":{"correct":"\"Of the returning visitors\" means divide by that row's total: \u003cmath class=\"stat-m\">\u003csemantics>\u003cmrow>\u003cmfrac>\u003cmn>54\u003c/mn>\u003cmn>150\u003c/mn>\u003c/mfrac>\u003cmo>=\u003c/mo>\u003cmn>0.36\u003c/mn>\u003c/mrow>\u003cannotation encoding=\"application/x-tex\">\\frac{54}{150} = 0.36\u003c/annotation>\u003c/semantics>\u003c/math>."}},{"id":"stat-two-categorical-summaries-6","type":"numeric","unit":"unit-2","topic":"two-categorical-summaries","practice":"3.B","level":"apply","diff":2,"stimulus":"two-categorical-summaries-s2","q":"What proportion of the drivers who took the course passed on the first try?","numeric":{"kind":"prob","answer":0.75,"mistakes":[{"value":0.47619047619047616,"why":"That is the share of the 126 drivers who passed who took the course. The question starts from the course takers, so divide by 80."},{"value":0.3,"why":"That divides by all 200 drivers, a joint relative frequency. Divide by the 80 who took the course."}]},"why":{"correct":"Start from the 80 course takers: \u003cmath class=\"stat-m\">\u003csemantics>\u003cmrow>\u003cmfrac>\u003cmn>60\u003c/mn>\u003cmn>80\u003c/mn>\u003c/mfrac>\u003cmo>=\u003c/mo>\u003cmn>0.75\u003c/mn>\u003c/mrow>\u003cannotation encoding=\"application/x-tex\">\\frac{60}{80} = 0.75\u003c/annotation>\u003c/semantics>\u003c/math>."}},{"id":"stat-two-categorical-summaries-7","type":"single","unit":"unit-2","topic":"two-categorical-summaries","practice":"4.B","level":"analyze","diff":2,"stimulus":"two-categorical-summaries-s2","q":"A school ad says, \"Most drivers who pass on the first try took a driver's education course.\" Do these data support the ad?","options":["No: of the 126 drivers who passed, only 60 (about 48%) took the course","Yes: 75% of the drivers who took the course passed, which is most of them","Yes: 60 course takers passed, which is most of the group of 80","No: the course takers are 80 of 200 drivers, which is 40% of the sample"],"correct":0,"why":{"correct":"Start from the drivers who passed: 60 of the 126 took the course, \u003cmath class=\"stat-m\">\u003csemantics>\u003cmrow>\u003cmfrac>\u003cmn>60\u003c/mn>\u003cmn>126\u003c/mn>\u003c/mfrac>\u003cmo>≈\u003c/mo>\u003cmn>0.476\u003c/mn>\u003c/mrow>\u003cannotation encoding=\"application/x-tex\">\\frac{60}{126} \\approx 0.476\u003c/annotation>\u003c/semantics>\u003c/math>, less than half.","options":["Right: \"of drivers who pass\" means divide by the 126 who passed.","True, but that answers a different question, about course takers rather than about drivers who passed.","The ad is about drivers who passed, so the group to start from is the 126 who passed.","That is the marginal share who took the course, not the share of passers who did."]}},{"id":"stat-two-categorical-summaries-11","type":"single","unit":"unit-2","topic":"two-categorical-summaries","practice":"3.B","level":"apply","diff":2,"q":"A table of 500 voters shows party membership and support for a school bond. 120 voters are Party A members who support the bond. What is \u003cmath class=\"stat-m\">\u003csemantics>\u003cmrow>\u003cmfrac>\u003cmn>120\u003c/mn>\u003cmn>500\u003c/mn>\u003c/mfrac>\u003c/mrow>\u003cannotation encoding=\"application/x-tex\">\\frac{120}{500}\u003c/annotation>\u003c/semantics>\u003c/math>?","options":["A joint relative frequency","A marginal relative frequency","A conditional relative frequency","The percent of Party A members who support the bond"],"correct":0,"why":{"correct":"One cell over the grand total is a joint relative frequency: 24% of all 500 voters are Party A members who support the bond.","options":["Right: one cell divided by the grand total.","A marginal uses a row or column total on top, not one cell.","A conditional divides by a row or column total, not by 500.","That would divide by the number of Party A members."]}}],"stimuli":{"two-categorical-summaries-s1":{"kind":"table","title":"Park visitors by visit type and activity","html":"\u003cdiv class=\"stat-stim-text\">Rangers at a state park asked a random sample of 250 visitors whether this was their first visit and what their main activity was that day (invented data).\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Visit type and main activity for 250 park visitors\">\u003ctable class=\"stat-data\">\u003ccaption>Visit type and main activity for 250 park visitors\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Visit type\u003c/th>\u003cth scope=\"col\">Hiking\u003c/th>\u003cth scope=\"col\">Fishing\u003c/th>\u003cth scope=\"col\">Picnic\u003c/th>\u003cth scope=\"col\">Total\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">First visit\u003c/th>\u003ctd>45\u003c/td>\u003ctd>15\u003c/td>\u003ctd>40\u003c/td>\u003ctd>100\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Returning\u003c/th>\u003ctd>60\u003c/td>\u003ctd>54\u003c/td>\u003ctd>36\u003c/td>\u003ctd>150\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Total\u003c/th>\u003ctd>105\u003c/td>\u003ctd>69\u003c/td>\u003ctd>76\u003c/td>\u003ctd>250\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"},"two-categorical-summaries-s2":{"kind":"table","title":"Driver's education and the road test","html":"\u003cdiv class=\"stat-stim-text\">A state records, for a random sample of 200 new drivers, whether each took a driver's education course and whether each passed the road test on the first try (invented data).\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Course and first-try result for 200 new drivers\">\u003ctable class=\"stat-data\">\u003ccaption>Course and first-try result for 200 new drivers\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Course\u003c/th>\u003cth scope=\"col\">Passed\u003c/th>\u003cth scope=\"col\">Failed\u003c/th>\u003cth scope=\"col\">Total\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Took the course\u003c/th>\u003ctd>60\u003c/td>\u003ctd>20\u003c/td>\u003ctd>80\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">No course\u003c/th>\u003ctd>66\u003c/td>\u003ctd>54\u003c/td>\u003ctd>120\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Total\u003c/th>\u003ctd>126\u003c/td>\u003ctd>74\u003c/td>\u003ctd>200\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/lesson.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-expr.js" defer></script>
+<script src="../assets/stat-math.js" defer></script>
+<script src="../assets/stat-dist.js" defer></script>
+<script src="../assets/stat-grade.js" defer></script>
+<script src="../assets/stat-questions.js" defer></script>
+<script src="../assets/stat-lesson.js" defer></script>
+</body>
+</html>

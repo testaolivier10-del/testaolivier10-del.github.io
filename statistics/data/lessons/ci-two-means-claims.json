@@ -1,0 +1,71 @@
+{
+ "topic": "ci-two-means-claims",
+ "hook": "Students who wore noise-canceling headphones scored 4.5 points higher on a reading test than students who did not. The school will only buy headphones if they add more than 5 points. One interval answers two questions: is there any real difference, and is it big enough to matter?",
+ "prereq": [
+  {
+   "q": "A 95% interval for $\\mu_1 - \\mu_2$ is from $-1.2$ to 3.4. Which is true?",
+   "options": [
+    "0 is a plausible value for the difference",
+    "The interval proves $\\mu_1 = \\mu_2$",
+    "Group 1 has the larger mean",
+    "The interval is invalid because it has a negative end"
+   ],
+   "correct": 0,
+   "why": "0 is inside the interval, so no difference is plausible, as are differences in either direction.",
+   "review": "ci-two-means"
+  },
+  {
+   "q": "For two proportions, an interval for $p_1 - p_2$ entirely above 0 gives",
+   "options": [
+    "convincing evidence that $p_1 > p_2$",
+    "proof that $p_1 > p_2$",
+    "no evidence either way",
+    "evidence that $p_1 < p_2$"
+   ],
+   "correct": 0,
+   "why": "Every plausible difference is positive, so the evidence points to $p_1 > p_2$.",
+   "review": "ci-two-proportions-claims"
+  }
+ ],
+ "figure": {
+  "figure": "diff-interval-claims",
+  "caption": "90%, 95% and 99% intervals for the headphones effect. 0 is outside the 90% and 95% intervals but inside the 99% interval. The 5-point threshold is inside all three, so no interval shows the effect is large enough for the school."
+ },
+ "chain": [
+  {
+   "cause": "Look at where 0 sits in the interval for $\\mu_1 - \\mu_2$",
+   "effect": "outside: convincing evidence of a difference (its sign gives the direction); inside: no convincing evidence"
+  },
+  {
+   "cause": "Compare the interval with the smallest difference that matters in context",
+   "effect": "that judges practical significance, which a p-value or \"0 is outside\" cannot"
+  },
+  {
+   "cause": "Ask how the data were produced",
+   "effect": "random assignment supports cause and effect; random sampling supports generalizing"
+  },
+  {
+   "cause": "0 inside the interval",
+   "effect": "is never proof of no difference: the plausible values still range from one direction to the other"
+  }
+ ],
+ "ideas": [
+  "0 outside the interval: \"Because every value in the interval is greater than 0, the interval gives convincing evidence that the true mean ... is greater for group 1 than for group 2.\"",
+  "0 inside the interval: \"Because 0 is in the interval, the interval does not give convincing evidence that the true means differ.\" Never \"the means are equal\".",
+  "Practical significance: a difference can be statistically significant yet too small to matter; compare the plausible values with a threshold from the context.",
+  "Reversing the order of subtraction flips the interval's signs, not the conclusion."
+ ],
+ "misconception": {
+  "wrong": "0 is outside the interval, so the difference is large and important.",
+  "right": "Excluding 0 shows a difference exists (statistical significance). Whether it is big enough to matter (practical significance) depends on the plausible values compared with what matters in context; with very large samples, a tiny difference can exclude 0."
+ },
+ "check": [
+  "stat-ci-two-means-claims-1",
+  "stat-ci-two-means-claims-2",
+  "stat-ci-two-means-claims-3",
+  "stat-ci-two-means-claims-4",
+  "stat-ci-two-means-claims-9",
+  "stat-ci-two-means-claims-16"
+ ],
+ "summary": "Use an interval for $\\mu_1 - \\mu_2$ to judge claims: if 0 is outside, there is convincing evidence of a difference in the direction of the interval's sign; if 0 is inside, there is not, and no difference is proven. Then judge practical significance by comparing the plausible values with what matters in context, and judge cause and generalization from the design."
+}

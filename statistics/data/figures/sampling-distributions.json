@@ -1,0 +1,12 @@
+{
+ "u2-clt-panels": {
+  "file": "figures/u2-clt-panels.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 640,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels. Top: the population of wait times, a strongly right-skewed curve with mean 5 minutes and standard deviation 5 minutes. Middle: histogram of 2000 simulated sample means for samples of 2, still skewed right. Bottom: histogram of 2000 sample means for samples of 30, close to a symmetric bell shape centered at 5 with a much smaller spread, about 0.91 minutes."
+ }
+}

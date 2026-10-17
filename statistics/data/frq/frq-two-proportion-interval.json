@@ -1,0 +1,166 @@
+{
+ "id": "frq-two-proportion-interval",
+ "type": "inference",
+ "points": 10,
+ "title": "Summer jobs: a two-proportion interval and the claims it supports",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "ci-two-proportions",
+  "ci-two-proportions-claims"
+ ],
+ "practices": [
+  "2.C",
+  "3.E",
+  "4.E",
+  "4.F",
+  "4.G"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Summer jobs for juniors and seniors",
+  "text": "A large school district wants to compare its juniors and seniors. It selects a random sample of 220 seniors and, separately, a random sample of 250 juniors, and asks each student whether they already have a summer job lined up. (Invented data.)",
+  "table": {
+   "caption": "Students with a summer job lined up",
+   "cols": [
+    "Group",
+    "Have a job lined up",
+    "Sample size"
+   ],
+   "rows": [
+    [
+     "Seniors",
+     "121",
+     "220"
+    ],
+    [
+     "Juniors",
+     "105",
+     "250"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Identify</b> an appropriate inference procedure for estimating the difference between the proportion of all seniors and the proportion of all juniors in the district who have a summer job lined up, <b>define</b> the parameter, and <b>verify</b> the conditions for the procedure.",
+   "points": 3,
+   "rubric": [
+    {
+     "point": "Names a two-sample z interval for a difference in proportions and defines the parameter p_S - p_J in context (true proportions of all seniors and all juniors in the district with a summer job lined up).",
+     "accept": [
+      "two-proportion z interval for p_S - p_J",
+      "a 2-proportion z interval with p_J - p_S defined clearly in context"
+     ]
+    },
+    {
+     "point": "Checks random and 10%: two independent random samples, and 220 is less than 10% of the district's seniors and 250 is less than 10% of its juniors.",
+     "accept": [
+      "states both samples are random and independent, and that each sample is under 10% of its population"
+     ]
+    },
+    {
+     "point": "Checks large counts with numbers: 121, 99, 105 and 145 are each at least 10.",
+     "accept": [
+      "n_S p-hat_S = 121, n_S(1 - p-hat_S) = 99, n_J p-hat_J = 105, n_J(1 - p-hat_J) = 145, all at least 10 (5 is also accepted as the threshold)"
+     ]
+    }
+   ],
+   "sample": "Two-sample z interval for p_S - p_J, where p_S is the true proportion of all seniors in the district with a summer job lined up and p_J is the true proportion of all juniors in the district with one.\nRandom: the problem says two separate random samples, one of seniors and one of juniors, so the samples are independent.\n10%: 220 is less than 10% of all seniors in a large district, and 250 is less than 10% of all juniors.\nLarge counts: 121, 220 - 121 = 99, 105 and 250 - 105 = 145 are each at least 10."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Construct</b> a 95% confidence interval for the difference. Show the expression with the values substituted.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Shows the correct expression with values: (0.55 - 0.42) +/- 1.96*sqrt(0.55*0.45/220 + 0.42*0.58/250).",
+     "accept": [
+      "the same expression for p-hat_J - p-hat_S",
+      "the general formula with the four values substituted"
+     ]
+    },
+    {
+     "point": "Gives the correct interval, from about 0.040 to 0.220 (or from -0.220 to -0.040 for juniors minus seniors).",
+     "accept": [
+      "an interval from technology matching to two decimal places",
+      "the margin of error 0.090 with the center 0.13"
+     ]
+    }
+   ],
+   "sample": "p-hat_S = 121/220 = 0.55 and p-hat_J = 105/250 = 0.42.\n(0.55 - 0.42) +/- 1.96*sqrt(0.55*0.45/220 + 0.42*0.58/250) = 0.13 +/- 1.96(0.0458) = 0.13 +/- 0.090\nThe interval is from 0.040 to 0.220.",
+   "check": {
+    "type": "interval",
+    "interval": {
+     "places": 3,
+     "from": {
+      "fn": "ci2prop",
+      "args": [
+       0.55,
+       220,
+       0.42,
+       250,
+       0.95
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Interpret</b> the interval in context.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Uses confidence language about capturing the parameter: \"We are 95% confident that the interval ... captures ...\".",
+     "accept": [
+      "\"we are 95% confident the true difference is between ... and ...\""
+     ]
+    },
+    {
+     "point": "Names the parameter in context with the order of subtraction: the true difference in the proportions of all seniors and all juniors in the district with a summer job lined up (seniors minus juniors).",
+     "accept": [
+      "the true difference p_S - p_J described in context"
+     ]
+    }
+   ],
+   "sample": "We are 95% confident that the interval from 0.040 to 0.220 captures the true difference in the proportions of all seniors and all juniors in the district who have a summer job lined up (seniors minus juniors)."
+  },
+  {
+   "label": "d",
+   "prompt": "A counselor makes two claims: (i) seniors in the district are more likely than juniors to have a summer job lined up; (ii) the proportion of seniors with a job lined up is 25 percentage points higher than the proportion of juniors. <b>Justify</b> whether the interval supports each claim.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Claim (i): because every value in the interval is greater than 0, the interval gives convincing evidence that the true proportion of seniors with a job lined up is greater than that of juniors.",
+     "accept": [
+      "0 is not in the interval and the plausible differences are positive, so claim (i) is supported; the reason uses the interval, not only the sample difference of 0.13"
+     ]
+    },
+    {
+     "point": "Claim (ii): because 0.25 is greater than every value in the interval, 0.25 is not a plausible difference, so the interval gives convincing evidence against claim (ii) (the true difference is less than 25 points).",
+     "accept": [
+      "0.25 is outside the interval, so claim (ii) is not supported; the reason uses the interval, not only the sample difference"
+     ]
+    }
+   ],
+   "sample": "(i) Because every value in the interval from 0.040 to 0.220 is greater than 0, the interval gives convincing evidence that the true proportion of all seniors in the district with a summer job lined up is greater than the true proportion of all juniors with one. The interval supports claim (i).\n(ii) A difference of 25 percentage points is 0.25. Because 0.25 is greater than every value in the interval, it is not a plausible value for p_S - p_J. The interval gives convincing evidence that the true difference is less than 0.25, so it does not support claim (ii)."
+  },
+  {
+   "label": "e",
+   "prompt": "<b>Explain</b> what the phrase \"95% confidence\" means in this context.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes the capture rate of the method in repeated sampling: about 95% of intervals from many pairs of random samples of these sizes would capture the true difference p_S - p_J.",
+     "accept": [
+      "\"if we repeated the sampling many times, about 95% of the resulting intervals would contain the true difference in proportions\""
+     ]
+    }
+   ],
+   "sample": "If the district took many pairs of random samples of 220 seniors and 250 juniors and built a 95% interval from each pair, about 95% of those intervals would capture the true difference between the proportions of all seniors and all juniors with a summer job lined up."
+  }
+ ]
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experimental Design — AP® Statistics Lesson | LevlPrep</title>
+<meta name="description" content="An experiment imposes treatments on experimental units and measures a response.">
+<link rel="canonical" href="https://levlprep.com/statistics/lessons/experimental-design.html">
+<meta property="og:title" content="Experimental Design — AP® Statistics Lesson | LevlPrep">
+<meta property="og:description" content="An experiment imposes treatments on experimental units and measures a response.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/lessons/experimental-design.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/course/lesson.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/lessons/experimental-design.html#lesson",
+      "name": "Experimental Design",
+      "url": "https://levlprep.com/statistics/lessons/experimental-design.html",
+      "description": "An experiment imposes treatments on experimental units and measures a response.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "experimental unit"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "treatment"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "control group"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "random assignment"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "replication"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "blinding"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "completely randomized design"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "randomized block design"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "matched pairs design"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "statistically significant"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exploring One-Variable Data and Collecting Data",
+          "item": "https://levlprep.com/statistics/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Experimental Design",
+          "item": "https://levlprep.com/statistics/lessons/experimental-design.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="experimental-design" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Exploring One-Variable Data and Collecting Data</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Experimental Design</span></nav></div>
+<div class="xshell stat-ls cx-ls stat-stepped" data-course="apstat" data-next-title="Tabular and Graphical Representations for the Distributions of Two Categorical Variables" data-next-unit="unit-2">
+  <aside class="stat-ls-rail stat-nav-ref" aria-label="Lesson parts">
+    <p class="stat-ls-k cx-ls-k">Unit 1 · Exploring One-Variable Data and Collecting Data</p>
+    <p class="stat-ls-links"><a href="../units/unit-1.html">&larr; Back to the unit</a><a href="../notes/experimental-design.html">Read the notes</a></p>
+    <div class="stat-ls-prog cx-ls-prog"><div class="stat-ls-track"><div class="stat-ls-fill"></div></div><span class="stat-ls-count">Step 1 / 11</span></div>
+    <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of 11</span><span class="cx-ls-all">All steps</span></button>
+    <ol class="stat-ls-steps cx-ls-steps" id="lesson-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="stat-ls-main stat-lesson">
+  <header class="stat-ls-hero">
+    <div class="eyebrow">Unit 1 · Topic 1.13 <span class="stat-beta stat-nav-ref">Beta</span></div>
+    <h1>Experimental Design</h1>
+    <p class="lede">An experiment imposes treatments on experimental units and measures a response.</p>
+    <p class="stat-tags stat-nav-ref"><span class="stat-tag">Practice 2: Collect Data</span></p>
+  </header>
+  <div class="stat-ls-card">
+  <section class="stat-part stat-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="stat-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="stat-step-body stat-hook">Do glasses that <span class="gl" tabindex="0" data-c="block-design">block</span> blue light help people sleep? Ask people who already wear them and you learn little: they may also go to bed earlier, or care more about sleep. To find out what the glasses themselves do, a researcher has to impose them, with <a class="gl" href="../notes/simulation.html" data-c="probability">chance</a> deciding who wears which glasses, and keep everyone else in the study comparable.</div>
+  </section>
+  <section class="stat-part stat-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="stat-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="stat-step-body"><nav class="stat-nav-ref" aria-label="Earlier topics"><ul class="stat-links"><li><a href="../notes/investigative-questions.html">The Investigative Question Revisited and Data Collection</a></li><li><a href="../notes/random-sampling.html">Random Sampling</a></li></ul></nav></div>
+  </section>
+  <section class="stat-part stat-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="stat-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="stat-step-body"><div class="stat-qs" data-set="prereq"><div class="stat-q" data-qid="experimental-design-pre-1"><p class="stat-q-stem"><span class="stat-q-n">1.</span> What is a confounding variable?</p><ol class="stat-opts"><li>A variable related to both the explanatory and response variables</li><li>The response variable</li><li>A variable with no effect</li><li>A variable measured twice</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Its effect mixes with the explanatory variable’s effect.</p><ul><li><b>Correct:</b> A variable related to both the explanatory and response variables: </li><li>The response variable: </li><li>A variable with no effect: </li><li>A variable measured twice: </li></ul></details></div><div class="stat-q" data-qid="experimental-design-pre-2"><p class="stat-q-stem"><span class="stat-q-n">2.</span> Which kind of study can support a cause-and-effect conclusion?</p><ol class="stat-opts"><li>An experiment with conditions decided by chance</li><li>An observational study</li><li>A sample survey</li><li>A census</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Only imposing conditions, decided by chance, rules out confounding.</p><ul><li><b>Correct:</b> An experiment with conditions decided by chance: </li><li>An observational study: </li><li>A sample survey: </li><li>A census: </li></ul></details></div></div></div>
+  </section>
+  <section class="stat-part stat-step" id="figure" aria-labelledby="h-figure">
+    <p class="stat-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="stat-step-body"><figure class="stat-figure stat-lesson-fig"><div class="stat-figimg" data-fig="block-design"><img src="../figures/block-design.svg" alt="Forty tomato plants, the experimental units, are split into two blocks by location: 24 plants on a sunny bench and 16 on a shady bench. Within each block, random assignment puts half the plants on fertilizer A and half on fertilizer B (12 and 12 on the sunny bench, 8 and 8 on the shady bench). The response, tomato weight, is compared within each block. Each block is a small completely randomized experiment." width="720" height="360" loading="lazy" decoding="async"></div><figcaption>A randomized block design: plants are grouped by bench (sunny or shady), and fertilizers are assigned <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">at random</a> within each block. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="stat-part stat-step" id="chain" aria-labelledby="h-chain">
+    <p class="stat-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="stat-step-body"><ol class="stat-chain"><li><span class="stat-cause">Impose two or more <span class="gl" tabindex="0" data-c="treatment">treatments</span>, including a control or <span class="gl" tabindex="0" data-c="control-group">placebo</span></span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">the comparison shows the effect of the treatment, not of time or expectation</span></li><li><span class="stat-cause">Let chance assign the treatments to the <span class="gl" tabindex="0" data-c="experimental-unit">experimental units</span></span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">other <a class="gl" href="../notes/variables.html" data-c="variable">variables</a> balance between groups on <a class="gl" href="../notes/summary-statistics.html" data-c="mean">average</a>, so they cannot explain a difference</span></li><li><span class="stat-cause">Use enough units per treatment, keep other conditions the same, and <span class="gl" tabindex="0" data-c="blinding">blind</span> subjects and evaluators</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">chance differences average out and expectations do not <a class="gl" href="../notes/sampling-problems.html" data-c="bias">bias</a> the response</span></li><li><span class="stat-cause">When the difference in response is too large to be chance (<span class="gl" tabindex="0" data-c="statistically-significant-diff">statistically significant</span>)</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">conclude the treatment caused it, for units like these; generalizing needs a random <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a></span></li></ol></div>
+  </section>
+  <section class="stat-part stat-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="stat-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="stat-step-body"><ul class="stat-ideas"><li><b>Experimental units</b> (or subjects) receive <b>treatments</b>, the conditions imposed; the <a class="gl" href="../notes/investigative-questions.html" data-c="explanatory-response">response variable</a> is measured afterward. A <b>control group</b> gets no treatment, a <b>placebo</b> or the standard one.</li><li>Principles: compare treatments, use <b><span class="gl" tabindex="0" data-c="random-assignment">random assignment</span></b>, use <b><span class="gl" tabindex="0" data-c="replication">replication</span></b> (enough units per treatment), and control other variables. <b>Blinding</b>: single-blind or double-blind.</li><li><b><span class="gl" tabindex="0" data-c="completely-randomized">Completely randomized design</span></b>: assign every unit by chance. <b>Randomized block design</b>: group similar units into blocks, randomize within each. <b><span class="gl" tabindex="0" data-c="matched-pairs">Matched pairs</span></b>: pairs of similar units, or each unit gets both treatments in random order.</li><li>A difference is <b>statistically significant</b> when it is too large to be explained by chance alone. Random assignment allows cause; random sampling allows generalizing.</li></ul></div>
+  </section>
+  <section class="stat-part stat-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="stat-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="stat-step-body stat-misconception"><p class="stat-wrong"><b>The wrong idea:</b> The gym’s volunteers were randomly assigned, so the result applies to every gym member in the country.</p><p class="stat-right"><b>What actually happens:</b> Random assignment supports a <a class="gl" href="../notes/investigative-questions.html" data-c="causation">cause-and-effect conclusion</a>. Generalizing to a <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> needs a random sample from it; these were volunteers from one gym.</p></div>
+  </section>
+  <section class="stat-part stat-step" id="check" aria-labelledby="h-check">
+    <p class="stat-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="stat-step-body"><p class="stat-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="stat-qs" data-set="check"><div class="stat-set"><section class="stat-stim" data-stim="experimental-design-s1" aria-labelledby="stim-experimental-design-s1"><p class="stat-stim-k">Table</p><h3 id="stim-experimental-design-s1">Blue-light glasses and sleep</h3><div class="stat-stim-html"><p>A researcher recruits 60 college students who volunteer for a sleep study. A random number generator assigns 30 of them to wear glasses that block blue light for two hours before bed, and the other 30 to wear clear glasses that look exactly the same. After two weeks, each student’s sleep quality is scored from a sleep tracker. Neither the students nor the person scoring the trackers knows who wore which glasses (invented study).</p></div></section><div class="stat-q" data-qid="stat-experimental-design-1"><p class="stat-q-stem"><span class="stat-q-n">1.</span> What are the experimental units?</p><ol class="stat-opts"><li>The glasses</li><li>The 60 students</li><li>The sleep quality scores</li><li>The sleep trackers worn by the students</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Experimental units are the individuals to which treatments are assigned: here the 60 students.</p><ul><li>The glasses: The glasses are the treatments.</li><li><b>Correct:</b> The 60 students: Right: the units are the individuals the treatments are given to.</li><li>The sleep quality scores: The scores are the response.</li><li>The sleep trackers worn by the students: The trackers measure the response; they are not what the treatments are applied to.</li></ul></details></div><div class="stat-q" data-qid="stat-experimental-design-2"><p class="stat-q-stem"><span class="stat-q-n">2.</span> What are the treatments, and what is the response variable?</p><ol class="stat-opts"><li>Treatments: the 60 students. Response: the type of glasses worn</li><li>Treatments: sleep quality scores. Response: the two kinds of glasses</li><li>Treatments: the sleep trackers. Response: the time spent in bed</li><li>Treatments: the two kinds of glasses. Response: sleep quality</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>A treatment is a condition imposed on the units; the response variable is what is measured afterward.</p><ul><li>Treatments: the 60 students. Response: the type of glasses worn: The students are the experimental units; the glasses are imposed on them.</li><li>Treatments: sleep quality scores. Response: the two kinds of glasses: This reverses them: the glasses are imposed, and sleep is measured.</li><li>Treatments: the sleep trackers. Response: the time spent in bed: The trackers record the response, sleep quality.</li><li><b>Correct:</b> Treatments: the two kinds of glasses. Response: sleep quality: Right: the researcher imposes the glasses and measures sleep quality.</li></ul></details></div><div class="stat-q" data-qid="stat-experimental-design-3"><p class="stat-q-stem"><span class="stat-q-n">3.</span> Why do half the students wear clear glasses that look the same?</p><ol class="stat-opts"><li>To act as a placebo, so both groups believe they may be treated</li><li>To make the study cheaper, since clear glasses cost less</li><li>To make sure that each student sleeps for the same number of hours</li><li>To let the students choose the glasses that they like better</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>A placebo control group receives a fake treatment, so the placebo effect is the same in both groups and the comparison isolates the real effect.</p><ul><li><b>Correct:</b> To act as a placebo, so both groups believe they may be treated: Right: any effect of simply wearing glasses, or of expecting better sleep, shows up in both groups.</li><li>To make the study cheaper, since clear glasses cost less: Cost is not the reason; the clear glasses control for the placebo effect.</li><li>To make sure that each student sleeps for the same number of hours: The glasses do not set how long students sleep.</li><li>To let the students choose the glasses that they like better: The glasses are assigned at random, not chosen.</li></ul></details></div><div class="stat-q" data-qid="stat-experimental-design-4"><p class="stat-q-stem"><span class="stat-q-n">4.</span> Neither the students nor the person scoring the trackers knows who wore which glasses. What is this called?</p><ol class="stat-opts"><li>A single-blind experiment</li><li>A matched pairs experiment</li><li>A double-blind experiment</li><li>An observational study of sleep</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>When neither the subjects nor those who interact with them or measure the response know who received which treatment, the experiment is double-blind.</p><ul><li>A single-blind experiment: Single-blind means one side, usually the subjects, does not know; here both sides are kept in the dark.</li><li>A matched pairs experiment: Matched pairs is about pairing units, not about who knows the treatments.</li><li><b>Correct:</b> A double-blind experiment: Right: both the subjects and the person measuring the response are blind to the treatments.</li><li>An observational study of sleep: The treatments are imposed, so this is an experiment.</li></ul></details></div><div class="stat-q" data-qid="stat-experimental-design-5"><p class="stat-q-stem"><span class="stat-q-n">5.</span> What does random assignment allow the researcher to conclude?</p><ol class="stat-opts"><li>The results apply to college students across the country</li><li>Each student’s own sleep will improve with blue-light glasses</li><li>A large difference was likely caused by the glasses</li><li>The two groups were exactly alike before the study began</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Random assignment balances other variables between groups on average, so a large difference in the response supports a cause-and-effect conclusion, for units like these.</p><ul><li>The results apply to college students across the country: Generalizing needs a random sample from a population; these are volunteers.</li><li>Each student’s own sleep will improve with blue-light glasses: An experiment compares groups; it does not promise an effect for each person.</li><li><b>Correct:</b> A large difference was likely caused by the glasses: Right: chance made the groups similar in every other way, on average, so a large difference can be traced to the treatment.</li><li>The two groups were exactly alike before the study began: Random assignment makes groups similar on average, not identical.</li></ul></details></div></div><div class="stat-q" data-qid="stat-experimental-design-10"><p class="stat-q-stem"><span class="stat-q-n">6.</span> To test two sunscreens, each of 20 volunteers gets sunscreen A on one arm and B on the other, with a coin flip deciding which arm gets A. What design is this?</p><ol class="stat-opts"><li>A matched pairs design</li><li>One sunscreen per volunteer</li><li>An observational study</li><li>A cluster sample of arms</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Matched pairs: each unit (or each pair of similar units) receives both treatments, with the order or side decided at random.</p><ul><li><b>Correct:</b> A matched pairs design: Right: each volunteer receives both treatments, one per arm, with chance deciding which arm gets which.</li><li>One sunscreen per volunteer: Here each volunteer gets both sunscreens, one per arm; one sunscreen per volunteer would be a completely randomized design.</li><li>An observational study: The sunscreens are imposed, so this is an experiment.</li><li>A cluster sample of arms: This is about assigning treatments, not sampling.</li></ul></details></div><div class="stat-q" data-qid="stat-experimental-design-12"><p class="stat-q-stem"><span class="stat-q-n">7.</span> A report says the difference between two treatment groups was statistically significant. What does that mean?</p><ol class="stat-opts"><li>The difference is large enough to matter in daily life</li><li>The difference is too large to be explained by chance alone</li><li>The study proved that the treatment works for everyone</li><li>The difference was measured very precisely</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>A statistically significant difference is larger than what chance variation in the random assignment would usually produce.</p><ul><li>The difference is large enough to matter in daily life: Statistically significant is about chance, not about practical size.</li><li><b>Correct:</b> The difference is too large to be explained by chance alone: Right: random assignment by itself would rarely create a difference this big.</li><li>The study proved that the treatment works for everyone: Statistics gives evidence, not proof, and effects vary between individuals.</li><li>The difference was measured very precisely: Precision of measurement is a separate issue.</li></ul></details></div></div></div>
+  </section>
+  <section class="stat-part stat-step" id="summary" aria-labelledby="h-summary">
+    <p class="stat-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="stat-step-body">An <a class="gl" href="../notes/investigative-questions.html" data-c="experiment">experiment</a> imposes treatments on experimental units and measures a response. Good designs compare treatments (often with a control or placebo), assign them at random, replicate, control other variables and blind where possible. Completely randomized, randomized block and matched pairs designs differ in how units are grouped before randomizing. Random assignment allows cause and effect; random sampling allows generalizing.</div>
+  </section>
+  <section class="stat-part stat-step" id="next" aria-labelledby="h-next">
+    <p class="stat-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="stat-step-body"><nav class="stat-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="two-categorical-displays.html">Tabular and Graphical Representations for the Distributions of Two Categorical Variables &rarr;</a></p></nav></div>
+  </section>
+  <section class="stat-part stat-step" id="connections" aria-labelledby="h-connections">
+    <p class="stat-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="stat-step-body"><ul class="stat-links stat-nav-ref"><li><a href="../notes/sampling-problems.html">Back: problems with sampling (1.12)</a></li></ul></div>
+  </section>
+    <div class="stat-ls-actions stat-nav-ref"><button type="button" class="stat-ls-back">&larr; Previous</button><button type="button" class="stat-ls-go">Continue &rarr;</button><a class="stat-ls-go" hidden href="two-categorical-displays.html">Next lesson &rarr;</a></div>
+  </div>
+  <div class="cx-ls-end">
+    <div class="stat-share stat-nav-ref" role="group" aria-label="Share or print this lesson"><a class="stat-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Flessons%2Fexperimental-design.html&amp;title=Experimental%20Design%3A%20statistics%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="stat-share-btn" data-copy="https://levlprep.com/statistics/lessons/experimental-design.html">Copy link</button><button type="button" class="stat-share-btn" data-print>Print</button></div>
+    <p class="stat-small stat-nav-ref"><a href="../practice.html?topic=experimental-design">Question set for this topic</a></p>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.stat-ls'),p=s&&s.querySelectorAll('.stat-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.stat-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apstat_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="lesson:experimental-design">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="stat-page-data">{"topic":"experimental-design","unit":"unit-1","free":true,"prereq":[{"id":"experimental-design-pre-1","type":"single","unit":"unit-1","topic":"experimental-design","q":"What is a confounding variable?","options":["A variable related to both the explanatory and response variables","The response variable","A variable with no effect","A variable measured twice"],"correct":0,"why":{"correct":"Its effect mixes with the explanatory variable’s effect.","options":["","","",""]},"reviewHref":"../notes/investigative-questions.html","reviewTitle":"The Investigative Question Revisited and Data Collection"},{"id":"experimental-design-pre-2","type":"single","unit":"unit-1","topic":"experimental-design","q":"Which kind of study can support a cause-and-effect conclusion?","options":["An experiment with conditions decided by chance","An observational study","A sample survey","A census"],"correct":0,"why":{"correct":"Only imposing conditions, decided by chance, rules out confounding.","options":["","","",""]},"reviewHref":"../notes/investigative-questions.html","reviewTitle":"The Investigative Question Revisited and Data Collection"}],"check":[{"id":"stat-experimental-design-1","type":"single","unit":"unit-1","topic":"experimental-design","practice":"2.A","level":"recall","diff":1,"stimulus":"experimental-design-s1","q":"What are the experimental units?","options":["The glasses","The 60 students","The sleep quality scores","The sleep trackers worn by the students"],"correct":1,"why":{"correct":"Experimental units are the individuals to which treatments are assigned: here the 60 students.","options":["The glasses are the treatments.","Right: the units are the individuals the treatments are given to.","The scores are the response.","The trackers measure the response; they are not what the treatments are applied to."]}},{"id":"stat-experimental-design-2","type":"single","unit":"unit-1","topic":"experimental-design","practice":"2.A","level":"apply","diff":1,"stimulus":"experimental-design-s1","q":"What are the treatments, and what is the response variable?","options":["Treatments: the 60 students. Response: the type of glasses worn","Treatments: sleep quality scores. Response: the two kinds of glasses","Treatments: the sleep trackers. Response: the time spent in bed","Treatments: the two kinds of glasses. Response: sleep quality"],"correct":3,"why":{"correct":"A treatment is a condition imposed on the units; the response variable is what is measured afterward.","options":["The students are the experimental units; the glasses are imposed on them.","This reverses them: the glasses are imposed, and sleep is measured.","The trackers record the response, sleep quality.","Right: the researcher imposes the glasses and measures sleep quality."]}},{"id":"stat-experimental-design-3","type":"single","unit":"unit-1","topic":"experimental-design","practice":"2.B","level":"analyze","diff":2,"stimulus":"experimental-design-s1","q":"Why do half the students wear clear glasses that look the same?","options":["To act as a placebo, so both groups believe they may be treated","To make the study cheaper, since clear glasses cost less","To make sure that each student sleeps for the same number of hours","To let the students choose the glasses that they like better"],"correct":0,"why":{"correct":"A placebo control group receives a fake treatment, so the placebo effect is the same in both groups and the comparison isolates the real effect.","options":["Right: any effect of simply wearing glasses, or of expecting better sleep, shows up in both groups.","Cost is not the reason; the clear glasses control for the placebo effect.","The glasses do not set how long students sleep.","The glasses are assigned at random, not chosen."]}},{"id":"stat-experimental-design-4","type":"single","unit":"unit-1","topic":"experimental-design","practice":"2.A","level":"apply","diff":2,"stimulus":"experimental-design-s1","q":"Neither the students nor the person scoring the trackers knows who wore which glasses. What is this called?","options":["A single-blind experiment","A matched pairs experiment","A double-blind experiment","An observational study of sleep"],"correct":2,"why":{"correct":"When neither the subjects nor those who interact with them or measure the response know who received which treatment, the experiment is double-blind.","options":["Single-blind means one side, usually the subjects, does not know; here both sides are kept in the dark.","Matched pairs is about pairing units, not about who knows the treatments.","Right: both the subjects and the person measuring the response are blind to the treatments.","The treatments are imposed, so this is an experiment."]}},{"id":"stat-experimental-design-5","type":"single","unit":"unit-1","topic":"experimental-design","practice":"2.B","level":"analyze","diff":3,"stimulus":"experimental-design-s1","q":"What does random assignment allow the researcher to conclude?","options":["The results apply to college students across the country","Each student’s own sleep will improve with blue-light glasses","A large difference was likely caused by the glasses","The two groups were exactly alike before the study began"],"correct":2,"why":{"correct":"Random assignment balances other variables between groups on average, so a large difference in the response supports a cause-and-effect conclusion, for units like these.","options":["Generalizing needs a random sample from a population; these are volunteers.","An experiment compares groups; it does not promise an effect for each person.","Right: chance made the groups similar in every other way, on average, so a large difference can be traced to the treatment.","Random assignment makes groups similar on average, not identical."]}},{"id":"stat-experimental-design-10","type":"single","unit":"unit-1","topic":"experimental-design","practice":"2.A","level":"apply","diff":2,"q":"To test two sunscreens, each of 20 volunteers gets sunscreen A on one arm and B on the other, with a coin flip deciding which arm gets A. What design is this?","options":["A matched pairs design","One sunscreen per volunteer","An observational study","A cluster sample of arms"],"correct":0,"why":{"correct":"Matched pairs: each unit (or each pair of similar units) receives both treatments, with the order or side decided at random.","options":["Right: each volunteer receives both treatments, one per arm, with chance deciding which arm gets which.","Here each volunteer gets both sunscreens, one per arm; one sunscreen per volunteer would be a completely randomized design.","The sunscreens are imposed, so this is an experiment.","This is about assigning treatments, not sampling."]}},{"id":"stat-experimental-design-12","type":"single","unit":"unit-1","topic":"experimental-design","practice":"4.B","level":"analyze","diff":2,"q":"A report says the difference between two treatment groups was statistically significant. What does that mean?","options":["The difference is large enough to matter in daily life","The difference is too large to be explained by chance alone","The study proved that the treatment works for everyone","The difference was measured very precisely"],"correct":1,"why":{"correct":"A statistically significant difference is larger than what chance variation in the random assignment would usually produce.","options":["Statistically significant is about chance, not about practical size.","Right: random assignment by itself would rarely create a difference this big.","Statistics gives evidence, not proof, and effects vary between individuals.","Precision of measurement is a separate issue."]}}],"stimuli":{"experimental-design-s1":{"kind":"table","title":"Blue-light glasses and sleep","html":"\u003cdiv class=\"stat-stim-html\">\u003cp>A researcher recruits 60 college students who volunteer for a sleep study. A random number generator assigns 30 of them to wear glasses that block blue light for two hours before bed, and the other 30 to wear clear glasses that look exactly the same. After two weeks, each student’s sleep quality is scored from a sleep tracker. Neither the students nor the person scoring the trackers knows who wore which glasses (invented study).\u003c/p>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/lesson.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-expr.js" defer></script>
+<script src="../assets/stat-math.js" defer></script>
+<script src="../assets/stat-dist.js" defer></script>
+<script src="../assets/stat-grade.js" defer></script>
+<script src="../assets/stat-questions.js" defer></script>
+<script src="../assets/stat-lesson.js" defer></script>
+</body>
+</html>

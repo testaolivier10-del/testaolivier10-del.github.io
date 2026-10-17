@@ -1,0 +1,5 @@
+{
+ "t-statistic": {
+  "def": "The standardized test statistic of a one-sample t test: $t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$, the number of standard errors between the sample mean and the hypothesized mean. Its p-value comes from the t distribution with $n - 1$ degrees of freedom."
+ }
+}

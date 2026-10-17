@@ -1,0 +1,41 @@
+<p>A scatterplot shows the direction, form and strength of a relationship, but "strong" and "fairly strong" are hard to compare from one plot to the next. For a linear pattern, one number does the job: the <b>correlation</b>, written $r$.</p>
+
+<h2>What $r$ tells you</h2>
+<ul>
+<li>The <b>sign</b> gives the direction: $r > 0$ for a positive association, $r < 0$ for a negative one.</li>
+<li>The <b>size</b> gives the strength of the linear pattern: near 1 or $-1$ when points hug a line, near 0 when there is no linear pattern.</li>
+<li>$r$ is always between $-1$ and 1. It equals 1 or $-1$ only when every point lies exactly on a line.</li>
+</ul>
+<figure id="fig-gal" data-fig="correlation-gallery"><figcaption>Four data sets with their correlations.</figcaption></figure>
+<p><a class="figref" href="#fig-gal">The figure</a> shows four data sets. Rough guide: a size above about 0.8 is strong, 0.5 to 0.8 moderate, below 0.5 weak. But look at the fourth plot: the points follow an arch almost perfectly, yet $r = 0.04$. Correlation measures how well a <b>line</b> fits, nothing else.</p>
+
+<h2>Where the number comes from</h2>
+<p>The formula uses z-scores, which you met with one variable. Standardize each $x$ and each $y$, multiply each pair, and average the products (dividing by $n - 1$, as for a standard deviation):</p>
+<p>$$r = \frac{1}{n - 1}\sum z_x z_y, \qquad z_x = \frac{x - \bar{x}}{s_x},\quad z_y = \frac{y - \bar{y}}{s_y}.$$</p>
+<p>Why does this work? Draw lines at $\bar{x}$ and $\bar{y}$. A point above average on both variables has two positive z-scores, so a positive product; a point below average on both has two negative z-scores, again a positive product. Points in the other two corners give negative products. If most points sit in the upper right and lower left, the products add up to a positive $r$.</p>
+<div class="worked">
+<p><b>Worked example.</b> Find $r$ for the four points $(2, 3)$, $(4, 5)$, $(6, 4)$, $(8, 8)$.</p>
+<p>Means and standard deviations: $\bar{x} = 5$, $s_x = 2.582$; $\bar{y} = 5$, $s_y = 2.160$.</p>
+<p>z-scores: $z_x = -1.162, -0.387, 0.387, 1.162$ and $z_y = -0.926, 0, -0.463, 1.389$.</p>
+<p>Products: $1.076$, $0$, $-0.179$, $1.614$, which add to $2.511$.</p>
+<p>$r = \frac{1}{4 - 1}(2.511) = 0.837$: a fairly strong, positive, linear association.</p>
+<p>In practice, use technology: a linear regression or correlation command on the two lists reports $r$ directly. The formula is for understanding, not for long hand calculations.</p>
+</div>
+
+<h2>Interpreting $r$ in context</h2>
+<p>For the teacher's 8 students, technology gives $r = 0.951$ between hours studied and quiz score. Write it like this: "There is a strong, positive, linear association between hours studied and quiz score for these students." Do not write "95% of students ..." or "scores rise 0.95 points per hour". $r$ is not a percent and has no units.</p>
+
+<h2>Properties to remember</h2>
+<table class="stat-compare">
+<thead><tr><th>Property</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>No units; changing units (hours to minutes) leaves $r$ the same</td><td>z-scores have no units</td></tr>
+<tr><td>Switching $x$ and $y$ leaves $r$ the same</td><td>the formula treats the variables alike</td></tr>
+<tr><td>Not resistant: one outlier can change $r$ a lot</td><td>a far-off point has large z-scores</td></tr>
+<tr><td>Measures linear association only</td><td>a symmetric curve gives products that cancel</td></tr>
+</tbody>
+</table>
+<p>To see the outlier effect: add a ninth student who studied 6 hours but scored 40, and $r$ falls from 0.95 to about 0.14.</p>
+
+<h2>Correlation is not causation</h2>
+<p>A strong correlation in observational data does not mean one variable causes the other. Across cities, the number of fire trucks sent to a fire is strongly correlated with the damage, because bigger fires bring more trucks and do more damage. A third variable linked to both, here the size of the fire, can create a correlation. Only a randomized experiment supports a claim of cause.</p>

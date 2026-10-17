@@ -1,0 +1,490 @@
+{
+ "stimuli": {
+  "test-one-proportion-setup-s1": {
+   "kind": "table",
+   "title": "Has recycling dropped?",
+   "text": "<p>Last year, 70% of a city's households recycled. This year the city stopped collecting glass at the curb, and an environmental group suspects that the proportion of households that recycle has dropped. The group plans to survey a random sample of 250 of the city's 82,000 households.</p>",
+   "table": {
+    "caption": "The plan for the study",
+    "cols": [
+     "Item",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Population",
+      "the city's 82,000 households, this year"
+     ],
+     [
+      "Last year's proportion that recycled",
+      "0.70"
+     ],
+     [
+      "Planned sample",
+      "250 households, chosen at random"
+     ],
+     [
+      "Significance level",
+      "$\\alpha = 0.05$"
+     ]
+    ]
+   }
+  },
+  "test-one-proportion-setup-s2": {
+   "kind": "table",
+   "title": "Is the spinner fair?",
+   "text": "<p>A mobile game shows a spinner with four equal colored sections and says each color comes up one fourth of the time. A designer suspects the code is off but does not know in which direction. She plans to record 400 spins and use $\\alpha = 0.05$.</p>",
+   "table": {
+    "caption": "The designer's plan",
+    "cols": [
+     "Item",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Advertised proportion of red",
+      "0.25"
+     ],
+     [
+      "Planned spins",
+      "400"
+     ],
+     [
+      "Significance level",
+      "$\\alpha = 0.05$"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-test-one-proportion-setup-1",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair of hypotheses matches the group's question?",
+   "stimulus": "test-one-proportion-setup-s1",
+   "options": [
+    "$H_0: p = 0.70$, $H_a: p < 0.70$",
+    "$H_0: p = 0.70$, $H_a: p \\ne 0.70$",
+    "$H_0: p < 0.70$, $H_a: p = 0.70$",
+    "$H_0: \\hat{p} = 0.70$, $H_a: \\hat{p} < 0.70$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The null hypothesis says nothing has changed, $p = 0.70$. The group suspects a drop, so the alternative is one-sided: $p < 0.70$. Both are about the parameter $p$.",
+    "options": [
+     "Right: no change against the suspected drop.",
+     "The group's question has a direction (a drop), so the alternative is one-sided, not two-sided.",
+     "These are reversed. The null hypothesis holds the equals sign; the suspected change is the alternative.",
+     "Hypotheses are about the parameter $p$, never about the sample statistic $\\hat{p}$."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-2",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the correct definition of the parameter $p$ in these hypotheses?",
+   "stimulus": "test-one-proportion-setup-s1",
+   "options": [
+    "The proportion of the 250 sampled households that recycle",
+    "The true proportion of all the city's households that recycle this year",
+    "The number of the city's households that recycle this year",
+    "The proportion of the city's households that recycled last year"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The parameter is a population value: the proportion of all the city's households that recycle this year, after the change.",
+    "options": [
+     "That is $\\hat{p}$, a statistic. The hypotheses are about the population.",
+     "Right: a population proportion, in context.",
+     "A count is not a proportion, and $p$ in these hypotheses is a proportion.",
+     "Last year's value, 0.70, is the null value $p_0$. The parameter is this year's proportion."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-3",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which correctly checks the large counts condition for this test?",
+   "stimulus": "test-one-proportion-setup-s1",
+   "options": [
+    "$250(0.70) = 175$ and $250(0.30) = 75$, both at least 10",
+    "$n = 250$ is at least 30",
+    "250 is less than 10% of the 82,000 households",
+    "The sample will have at least 10 households of each kind"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A test assumes $H_0$ is true while it checks conditions, so it uses $p_0 = 0.70$: $np_0 = 250(0.70) = 175$ and $n(1 - p_0) = 250(0.30) = 75$, both at least 10.",
+    "options": [
+     "Right: use the null value $p_0$ in a test.",
+     "\"At least 30\" is a rule of thumb for means. Proportions need expected successes and failures.",
+     "That is the 10% condition, which protects independence, not the normal shape.",
+     "We have not seen the sample yet; the check uses $p_0$, which also matches the assumption that $H_0$ is true."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-4",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does the group need to check the 10% condition, and is it met?",
+   "stimulus": "test-one-proportion-setup-s1",
+   "options": [
+    "It makes the shape normal; it is met because 250 is at least 10",
+    "It removes bias; it is met because the sample is random",
+    "It makes the households close to independent; met, since 250 is under 8,200",
+    "It is not needed, because the city has more than 10,000 households"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The sample is taken without replacement, so the households are close to independent only if the sample is at most 10% of the population. 10% of 82,000 is 8,200, and 250 is far less.",
+    "options": [
+     "Shape comes from large counts. The 10% condition compares the sample with the population size.",
+     "Random selection removes bias. The 10% condition is about independence.",
+     "Right: 250 is less than 10% of 82,000.",
+     "It is needed whenever the sample is drawn without replacement; a large city just makes it easy to meet."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-5",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which procedure should the group plan to use?",
+   "stimulus": "test-one-proportion-setup-s1",
+   "options": [
+    "A one-sample z interval for a proportion",
+    "A one-sample z test for a mean",
+    "A one-sample z test for a proportion",
+    "A comparison of this year's sample with last year's sample"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "One random sample, one categorical variable (recycles or not), and a claim about one population proportion: a one-sample z test for a proportion.",
+    "options": [
+     "An interval estimates $p$. The group wants to weigh a specific claim, $p = 0.70$, so it needs a significance test.",
+     "Recycling is a yes-or-no variable, so the parameter is a proportion, not a mean.",
+     "Right: one sample, one proportion, a claim to weigh.",
+     "Last year's 70% is treated as a known value, $p_0$; there is one new sample."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-6",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which hypotheses should the designer use, where $p$ is the true proportion of all spins that land on red?",
+   "stimulus": "test-one-proportion-setup-s2",
+   "options": [
+    "$H_0: p = 0.25$, $H_a: p > 0.25$",
+    "$H_0: p = 0.25$, $H_a: p \\ne 0.25$",
+    "$H_0: p \\ne 0.25$, $H_a: p = 0.25$",
+    "$H_0: p = 0.5$, $H_a: p \\ne 0.5$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "She wants to know whether red comes up at a rate other than 0.25, in either direction, so the alternative is two-sided.",
+    "options": [
+     "That would test only for red coming up too often. She has no direction in mind.",
+     "Right: no direction is suspected, so use \"not equal\".",
+     "Reversed: the advertised value goes in the null hypothesis.",
+     "The advertised proportion of red is one fourth, 0.25, not one half."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-7",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does choosing $\\alpha = 0.05$ mean for the designer's study?",
+   "stimulus": "test-one-proportion-setup-s2",
+   "options": [
+    "She expects about 5% of the spins to land on red",
+    "A result must be under 5% likely if $H_0$ is true before she doubts it",
+    "There is a 5% chance that the spinner is fair",
+    "She will record 5% more spins if the results are close"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The significance level is set before the data are seen. It is the standard of evidence: how unlikely the result must be, if $H_0$ is true, before she will doubt $H_0$.",
+    "options": [
+     "The significance level is not a guess about the data; red is advertised at 25%.",
+     "Right: $\\alpha$ is the cutoff for how unusual a result must be, set in advance.",
+     "The spinner is fair or not; $\\alpha$ is a standard for judging the evidence, not a probability about $H_0$.",
+     "The sample size is fixed in the plan; $\\alpha$ does not change it."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-8",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "After the 400 spins, 31% land on red. The designer then rewrites the alternative as $H_a: p > 0.25$. What is wrong with this?",
+   "stimulus": "test-one-proportion-setup-s2",
+   "options": [
+    "Nothing, because the sample shows the direction",
+    "The alternative should be $H_a: \\hat{p} > 0.25$",
+    "The hypotheses must be set from the question, before seeing the data",
+    "The null hypothesis should be changed to $p = 0.31$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Hypotheses come from the question asked before the data are collected. Choosing the direction after seeing which way the sample went makes unusual results look more convincing than they are.",
+    "options": [
+     "Letting the data pick the direction is the mistake: the question had no direction.",
+     "Hypotheses are never written about $\\hat{p}$.",
+     "Right: her question was two-sided, so the alternative stays $p \\ne 0.25$.",
+     "The null value comes from the claim being weighed, 0.25, not from the sample."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-9",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which correctly checks the large counts condition for the designer's test?",
+   "stimulus": "test-one-proportion-setup-s2",
+   "options": [
+    "$400(0.25) = 100$ and $400(0.75) = 300$ are both at least 10",
+    "$400(0.31) = 124$ and $400(0.69) = 276$ are both at least 10",
+    "400 spins is more than 30",
+    "400 is less than 10% of the possible spins"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Use $p_0$: $400(0.25) = 100$ and $400(0.75) = 300$, both at least 10.",
+    "options": [
+     "Right: the expected numbers of successes and failures if $H_0$ is true, using $p_0 = 0.25$.",
+     "A test checks large counts with $p_0$, because it assumes $H_0$ is true; 0.31 is the sample result.",
+     "The rule of 30 is about means, not proportions.",
+     "That is the 10% condition, a different check, and spins of a program are not drawn from a fixed population anyway."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-10",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which pair is written correctly as hypotheses for a test about a population proportion?",
+   "options": [
+    "$H_0: \\hat{p} = 0.4$, $H_a: \\hat{p} > 0.4$",
+    "$H_0: p > 0.4$, $H_a: p = 0.4$",
+    "$H_0: p = 0.4$, $H_a: p > 0.4$",
+    "$H_0: p = 0.4$, $H_a: p > 0.45$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Both hypotheses are about the parameter $p$. The null hypothesis has the equals sign and the null value; the alternative states the suspected direction.",
+    "options": [
+     "Hypotheses are about the parameter $p$, not the statistic $\\hat{p}$.",
+     "The equals sign belongs in the null hypothesis.",
+     "Right: the null value in $H_0$, the suspected direction in $H_a$.",
+     "The alternative uses the same null value, 0.4."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-11",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A factory's defect rate has been 2%. After a new supplier starts, a manager wants to know whether the defect rate has changed. Which alternative hypothesis fits?",
+   "options": [
+    "$H_a: p > 0.02$",
+    "$H_a: p < 0.02$",
+    "$H_a: p \\ne 0.02$",
+    "$H_a: p = 0.02$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "\"Has changed\" has no direction, so the alternative is two-sided: $H_a: p \\ne 0.02$.",
+    "options": [
+     "That asks only whether the rate went up. \"Changed\" could mean up or down.",
+     "That asks only whether the rate went down.",
+     "Right: \"changed\" in either direction is two-sided.",
+     "The alternative never contains the equals sign; that is the null hypothesis."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-12",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A clinic says that more than half of its patients get an appointment within a week. A reporter wants to find evidence for the clinic's claim. Which hypotheses fit, where $p$ is the true proportion of all the clinic's patients seen within a week?",
+   "options": [
+    "$H_0: p = 0.5$, $H_a: p > 0.5$",
+    "$H_0: p > 0.5$, $H_a: p = 0.5$",
+    "$H_0: p = 0.5$, $H_a: p < 0.5$",
+    "$H_0: p = 0.5$, $H_a: p \\ne 0.5$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The claim the reporter wants evidence for goes in the alternative: $H_a: p > 0.5$, with $H_0: p = 0.5$.",
+    "options": [
+     "Right: evidence for \"more than half\" means $H_a: p > 0.5$.",
+     "Reversed. A test looks for evidence for $H_a$, so the claim to support goes there.",
+     "That would look for evidence that fewer than half are seen within a week.",
+     "The claim has a direction, \"more than half\", so the alternative is one-sided."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-13",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A researcher plans her study with $\\alpha = 0.01$ instead of $\\alpha = 0.05$. What does that change?",
+   "options": [
+    "She needs stronger evidence before she will doubt $H_0$",
+    "She needs a sample 5 times as large",
+    "Her study now has a 1% chance that $H_0$ is true",
+    "The alternative hypothesis has to become two-sided"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A smaller significance level is a stricter standard: the result has to be even more unlikely, assuming $H_0$ is true, before she doubts $H_0$.",
+    "options": [
+     "Right: a smaller $\\alpha$ sets a stricter standard of evidence.",
+     "The significance level and the sample size are separate choices.",
+     "$\\alpha$ is a cutoff she chooses, not the probability that $H_0$ is true.",
+     "The direction of $H_a$ comes from the question, whatever $\\alpha$ she picks."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-14",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "multi",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a test with null hypothesis $H_0: p = 0.3$, which could be a correctly written alternative hypothesis? Select all that apply.",
+   "options": [
+    "$H_a: p < 0.3$",
+    "$H_a: p \\ne 0.3$",
+    "$H_a: \\hat{p} > 0.3$",
+    "$H_a: p = 0.3$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "An alternative is about $p$, uses the same null value, and has no equals sign: $p < 0.3$, $p > 0.3$ or $p \\ne 0.3$, depending on the question.",
+    "options": [
+     "Right: one-sided, about $p$.",
+     "Right: two-sided, about $p$.",
+     "Hypotheses are about the parameter, not the statistic $\\hat{p}$.",
+     "That is the null hypothesis itself; the alternative never has the equals sign."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-15",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does a significance test check large counts with $p_0$ instead of $\\hat{p}$?",
+   "options": [
+    "Because $\\hat{p}$ is not known until the data are collected",
+    "Because the test assumes $H_0$ is true, so $p = p_0$",
+    "Because $p_0$ gives larger counts than $\\hat{p}$ would",
+    "Because $p_0$ is the same as $\\hat{p}$ in a good sample"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A test works out what samples would look like if $H_0$ were true. Under that assumption $p = p_0$, so the expected successes and failures are $np_0$ and $n(1 - p_0)$.",
+    "options": [
+     "It is known by the time you compute anything; the reason is the assumption that $H_0$ is true.",
+     "Right: the whole test is built in the world where $H_0$ holds.",
+     "Either value could give larger counts; the choice comes from the logic of the test.",
+     "They usually differ; the test asks whether the difference is too large to be chance."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-proportion-setup-16",
+   "unit": "unit-3",
+   "topic": "test-one-proportion-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student asks: \"Is the proportion of all students at my school who own a pet different from the national figure of 0.65?\" She surveys a random sample of 120 of the school's 1,800 students. Which plan fits her question?",
+   "options": [
+    "A one-sample z test with $H_0: p = 0.65$ and $H_a: p \\ne 0.65$",
+    "A one-sample z test with $H_0: p = 0.65$ and $H_a: p > 0.65$",
+    "A one-sample z test with $H_0: p \\ne 0.65$ and $H_a: p = 0.65$",
+    "A test with $H_0: \\hat{p} = 0.65$ against the national survey's sample"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A question with a specific claimed value and \"different from\" calls for a one-sample z test for a proportion with $H_0: p = 0.65$ and $H_a: p \\ne 0.65$.",
+    "options": [
+     "Right: one proportion, a claimed value, no direction.",
+     "\"Different from\" has no direction, so the alternative is two-sided.",
+     "The equals sign and the national figure belong in the null hypothesis.",
+     "Hypotheses are about the school's population proportion $p$, not a sample proportion."
+    ]
+   }
+  }
+ ]
+}

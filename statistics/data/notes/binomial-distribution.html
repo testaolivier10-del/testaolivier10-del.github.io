@@ -1,0 +1,53 @@
+<p>Many chance questions have the same shape: repeat a yes-or-no trial a set number of times and count the yeses. How many of 10 customers use an app? How many of 12 guessed answers are right? How many of 20 parts are defective? These counts all follow one distribution, the binomial, with one formula.</p>
+
+<h2>The binomial setting</h2>
+<p>A count of successes is <b>binomial</b> when the chance process is a <b>binomial setting</b>. Check four conditions, in context:</p>
+<ul>
+<li><b>Binary:</b> each trial has two outcomes, success or failure (uses the app or not).</li>
+<li><b>Independent:</b> the outcome of one trial does not change the chances on another (customers chosen at random do not influence each other).</li>
+<li><b>Number:</b> the number of trials, n, is fixed in advance (10 customers).</li>
+<li><b>Same probability:</b> the probability of success, p, is the same on every trial (0.3 for each customer).</li>
+</ul>
+<p>The first letters spell BINS. When a condition fails, the count is not binomial. Draw 4 tickets without replacement from a jar of 12 with 4 winners, and the chance of a winner changes after every draw: 4 of 12, then 3 of 11 or 4 of 11. The draws are not independent, and p is not constant.</p>
+
+<h2>Where the formula comes from</h2>
+<p>Let X = the number of the 10 customers who use the app. Think about $X = 4$. One particular order, 4 app users then 6 non-users, has probability $(0.3)^4(0.7)^6$ by the multiplication rule for independent trials. Every other order of 4 users and 6 non-users has the same probability. How many orders are there? That is the number of ways to choose which 4 of the 10 customers are users, $\binom{10}{4} = 210$, from the counting skills page. So</p>
+<p>$$P(X = k) = \binom{n}{k}p^k(1 - p)^{n - k}, \quad k = 0, 1, \dots, n.$$</p>
+<p>This is the binomial probability formula on the reference sheet. The two exponents always add to n: k successes and $n - k$ failures.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A polling firm dials 15 random numbers; 20% of calls are answered. Let Y = the number of answered calls. Find $P(Y = 2)$.</p>
+<p>Name it: Y is binomial with $n = 15$ and $p = 0.20$.</p>
+<p>Structure and substitution: $P(Y = 2) = \binom{15}{2}(0.20)^2(0.80)^{13} = 105(0.04)(0.80)^{13}$.</p>
+<p>Answer: $P(Y = 2) \approx 0.231$. A calculator's binomial probability command gives the same value; on the exam, write the distribution, the parameters and the expression, not just the command.</p>
+</div>
+
+<h2>More than one value: add, or use the complement</h2>
+<figure id="fig-binom" data-fig="u2-binomial-shaded"><figcaption>The binomial distribution with n = 10 and p = 0.3, with 4 or more shaded.</figcaption></figure>
+<p>Most questions ask about several values. First write the event as an inequality. "Fewer than 2" is $Y \le 1$. "At least 4" is $X \ge 4$. Then add the probabilities, or use a cumulative probability and the complement.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> For the coffee shop, find the probability that at least 4 of the 10 customers use the app.</p>
+<p>X is binomial with $n = 10$, $p = 0.3$. The boundary is 4 and the direction is "4 or more".</p>
+<p>$P(X \ge 4) = 1 - P(X \le 3) = 1 - 0.6496 = 0.3504$.</p>
+<p>This is the shaded area in <a class="figref" href="#fig-binom">the figure</a>.</p>
+</div>
+<p>The classic slip is $1 - P(X \le 4)$. The opposite of "4 or more" is "3 or fewer", so the complement stops at 3.</p>
+
+<h2>Mean and standard deviation</h2>
+<p>For a binomial random variable, the mean and standard deviation have short formulas, both on the reference sheet:</p>
+<p>$$\mu_X = np, \qquad \sigma_X = \sqrt{np(1 - p)}.$$</p>
+<p>For the guessing quiz ($n = 12$, $p = 0.25$): $\mu = 12(0.25) = 3$ questions and $\sigma = \sqrt{12(0.25)(0.75)} = 1.5$ questions. Over many students who guess on every question, the average score is about 3 right, and scores typically vary by about 1.5 questions from that.</p>
+
+<h2>Using a binomial probability to judge a claim</h2>
+<p>The shop claims 30% of customers use the app, and 7 of 10 random customers did. Assume the claim and compute the chance of a result at least that extreme:</p>
+<p>$$P(X \ge 7) = 1 - P(X \le 6) \approx 0.011, \quad X \text{ binomial}, n = 10, p = 0.3.$$</p>
+<p>Conclusion: if 30% of customers use the app, the probability that 7 or more of 10 randomly chosen customers use it is about 0.011. Because that is so unlikely, the sample gives reason to doubt the claim and suggests more than 30% use the app.</p>
+<p>Compare a coin that lands heads 7 times in 10 flips. If it is fair, $P(\text{7 or more heads}) \approx 0.172$. That happens about one time in six, so it gives little reason to doubt the coin. A small probability casts doubt on a claim; a moderate one does not, and neither shows the claim is true.</p>
+<table class="compare">
+<thead><tr><th>Words</th><th>Write</th><th>Compute</th></tr></thead>
+<tbody>
+<tr><td>exactly 3</td><td>$P(X = 3)$</td><td>the formula</td></tr>
+<tr><td>at most 3</td><td>$P(X \le 3)$</td><td>cumulative</td></tr>
+<tr><td>fewer than 3</td><td>$P(X \le 2)$</td><td>cumulative</td></tr>
+<tr><td>at least 4</td><td>$P(X \ge 4)$</td><td>$1 - P(X \le 3)$</td></tr>
+</tbody>
+</table>

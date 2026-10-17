@@ -1,0 +1,334 @@
+{
+ "slug": "sampling-distributions",
+ "kind": "simulator",
+ "topic": "sampling-distributions",
+ "intro": "<p>A statistic changes from sample to sample. Pick a population, choose the sample size, and take samples: every sample's mean or proportion drops onto the bottom plot, and the sampling distribution builds dot by dot. Compare its center and spread with the formulas, and see when a normal model fits.</p>",
+ "howItWorksTitle": "How the samples are drawn and checked",
+ "howItWorks": "<p>Each population is a histogram: its bars are the true proportions of the population in each interval, and a value is drawn by picking a bar with that chance and then a point at random inside it. So the population mean $\\mu$ and standard deviation $\\sigma$ are exact. Samples are drawn independently (as from a very large population, so the 10% condition holds), from a seeded generator: the same seed gives the same samples.</p><p>The bottom plot shows every simulated statistic: dots while each fits, then a histogram. The formulas $\\mu_{\\bar{x}} = \\mu$, $\\sigma_{\\bar{x}} = \\sigma/\\sqrt{n}$ and $\\sigma_{\\hat{p}} = \\sqrt{p(1 - p)/n}$ are printed beside the simulated mean and standard deviation, and the normal curve, when shown, is that model drawn to the same scale. The shape rule is the AP® Statistics one: a normal population or $n \\ge 30$ for $\\bar{x}$, and $np \\ge 10$ and $n(1 - p) \\ge 10$ for $\\hat{p}$.</p>",
+ "partTopics": {
+  "tenpct": "sampling-dist-mean"
+ },
+ "explore": {
+  "populations": [
+   "commute",
+   "wait",
+   "geyser",
+   "heights",
+   "lefties",
+   "bond"
+  ]
+ },
+ "contexts": [
+  {
+   "id": "clt-commute",
+   "topic": "sampling-distributions",
+   "types": [
+    "shape"
+   ],
+   "pop": "commute",
+   "lead": "A city surveys the commute times of its workers."
+  },
+  {
+   "id": "clt-wait",
+   "topic": "sampling-distributions",
+   "types": [
+    "shape"
+   ],
+   "pop": "wait",
+   "lead": "A bus comes every 20 minutes, and riders arrive at random times."
+  },
+  {
+   "id": "clt-geyser",
+   "topic": "sampling-distributions",
+   "types": [
+    "shape"
+   ],
+   "pop": "geyser",
+   "lead": "Rangers log the time between eruptions of a geyser."
+  },
+  {
+   "id": "est-apples",
+   "topic": "estimators",
+   "types": [
+    "estimator"
+   ],
+   "lead": "An orchard wants to estimate the mean weight of its apples.",
+   "param": "the mean weight $\\mu$ of all the apples, in grams",
+   "sym": "μ",
+   "theta": [
+    140,
+    170
+   ],
+   "sd": [
+    3,
+    6
+   ],
+   "d": 0,
+   "unit": "g"
+  },
+  {
+   "id": "est-battery",
+   "topic": "estimators",
+   "types": [
+    "estimator"
+   ],
+   "lead": "A lab wants to estimate the mean life of a new battery.",
+   "param": "the mean life $\\mu$ of all the batteries, in hours",
+   "sym": "μ",
+   "theta": [
+    30,
+    60
+   ],
+   "sd": [
+    1,
+    2
+   ],
+   "d": 0,
+   "unit": "hours"
+  },
+  {
+   "id": "commute",
+   "topic": "sampling-dist-mean",
+   "types": [
+    "mean"
+   ],
+   "lead": "A transit agency studies how long workers in a large city take to get to work.",
+   "var": "commute time",
+   "unit": "minutes",
+   "who": "workers",
+   "pop": "the city's workers",
+   "popAll": "all workers in the city",
+   "shape": "skewed right",
+   "mu": [
+    22,
+    34
+   ],
+   "sigma": [
+    9,
+    15
+   ],
+   "ns": [
+    10,
+    12,
+    15,
+    20,
+    40,
+    50,
+    60,
+    80
+   ]
+  },
+  {
+   "id": "heights",
+   "topic": "sampling-dist-mean",
+   "types": [
+    "mean"
+   ],
+   "lead": "A clothing company studies the heights of adult women in a large country.",
+   "var": "height",
+   "unit": "cm",
+   "who": "women",
+   "pop": "the country's adult women",
+   "popAll": "all adult women in the country",
+   "shape": "approximately normal",
+   "mu": [
+    160,
+    166
+   ],
+   "sigma": [
+    6,
+    8
+   ],
+   "ns": [
+    4,
+    5,
+    8,
+    10,
+    16,
+    25,
+    36
+   ]
+  },
+  {
+   "id": "phones",
+   "topic": "sampling-dist-mean",
+   "types": [
+    "mean"
+   ],
+   "lead": "A survey company studies daily screen time among teenagers in a large state.",
+   "var": "daily screen time",
+   "unit": "hours",
+   "who": "teenagers",
+   "pop": "the state's teenagers",
+   "popAll": "all teenagers in the state",
+   "shape": "skewed right",
+   "mu": [
+    4.2,
+    6.5
+   ],
+   "sigma": [
+    1.8,
+    3.2
+   ],
+   "dmu": 1,
+   "dsig": 1,
+   "dx": 2,
+   "ns": [
+    8,
+    12,
+    20,
+    35,
+    45,
+    64,
+    100
+   ]
+  },
+  {
+   "id": "lefties",
+   "topic": "sampling-dist-proportion",
+   "types": [
+    "prop"
+   ],
+   "lead": "A large school district records which hand its students write with.",
+   "yes": "are left-handed",
+   "who": "students",
+   "popAll": "all students in the district",
+   "p": [
+    0.08,
+    0.13
+   ],
+   "ns": [
+    25,
+    40,
+    60,
+    100,
+    150,
+    200,
+    300
+   ]
+  },
+  {
+   "id": "bond",
+   "topic": "sampling-dist-proportion",
+   "types": [
+    "prop"
+   ],
+   "lead": "A large city will vote on a school bond.",
+   "yes": "support the bond",
+   "who": "voters",
+   "popAll": "all voters in the city",
+   "p": [
+    0.45,
+    0.62
+   ],
+   "ns": [
+    15,
+    50,
+    100,
+    200,
+    400
+   ]
+  },
+  {
+   "id": "defects",
+   "topic": "sampling-dist-proportion",
+   "types": [
+    "prop"
+   ],
+   "lead": "A factory makes thousands of phone screens a day.",
+   "yes": "have a flaw",
+   "who": "screens",
+   "popAll": "all screens made that day",
+   "rel": "that",
+   "p": [
+    0.03,
+    0.07
+   ],
+   "ns": [
+    50,
+    100,
+    200,
+    400,
+    800
+   ]
+  },
+  {
+   "id": "two-towns",
+   "topic": "sampling-dist-two-proportions",
+   "types": [
+    "diff"
+   ],
+   "kind": "prop",
+   "lead": "Two large towns vote on the same park plan.",
+   "yes": "of voters support it",
+   "who": "voters",
+   "groups": [
+    {
+     "name": "the north town",
+     "p": [
+      0.55,
+      0.68
+     ]
+    },
+    {
+     "name": "the south town",
+     "p": [
+      0.4,
+      0.52
+     ]
+    }
+   ],
+   "ns": [
+    20,
+    40,
+    80,
+    120,
+    200
+   ]
+  },
+  {
+   "id": "two-schools",
+   "topic": "sampling-dist-two-means",
+   "types": [
+    "diff"
+   ],
+   "kind": "mean",
+   "lead": "Two large school districts compare how long their students sleep.",
+   "var": "sleep time",
+   "unit": "hours",
+   "shape": "skewed left",
+   "groups": [
+    {
+     "name": "students in district 2",
+     "Name": "Students in district 1",
+     "mu": [
+      7.2,
+      8.0
+     ],
+     "sigma": [
+      1.0,
+      1.6
+     ]
+    },
+    {
+     "name": "students in district 2",
+     "mu": [
+      6.6,
+      7.1
+     ],
+     "sigma": [
+      1.0,
+      1.6
+     ]
+    }
+   ],
+   "ns": [
+    15,
+    25,
+    40,
+    60,
+    90
+   ]
+  }
+ ]
+}

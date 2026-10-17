@@ -1,0 +1,40 @@
+<p>Take a random sample, compute a statistic, and you get one number. Take another random sample from the same population and you will get a slightly different number. This topic is about that variation: how much a statistic changes from sample to sample, and what pattern the changes follow. It is the idea that makes inference in Units 3 and 4 possible.</p>
+
+<h2>Statistics vary: sampling variability</h2>
+<p>In a large city, 40% of voters support a park tax. That 0.40 is a parameter: one fixed number describing every voter. Poll a random sample of 100 voters and the sample proportion $\hat{p}$ might be 0.37. Another sample might give 0.44. A statistic varies from sample to sample because each sample holds different individuals. This is <b>sampling variability</b>, and it is not a mistake: it happens even with perfect random sampling.</p>
+<p>The <b>sampling distribution</b> of a statistic is the distribution of its values in all possible random samples of the same size from the same population. We rarely see it directly, but a simulation can approximate it: a computer took 500 random samples of 100 voters and the 500 values of $\hat{p}$ pile up around 0.40, mostly between about 0.30 and 0.50, in a roughly symmetric mound.</p>
+
+<h2>Three distributions, kept apart</h2>
+<table class="compare">
+<thead><tr><th>Distribution</th><th>Made of</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Population</td><td>every individual's value</td><td>the wait times of all customers at a pharmacy</td></tr>
+<tr><td>One sample</td><td>the values in one sample</td><td>the waits of the 40 customers you timed</td></tr>
+<tr><td>Sampling distribution</td><td>the statistic from every possible sample</td><td>the mean wait $\bar{x}$ of every possible sample of 40</td></tr>
+</tbody>
+</table>
+<p>Most confusion in this topic comes from mixing these up. The sample looks like the population (skewed if the population is skewed). The sampling distribution is a different object: a distribution of means or proportions.</p>
+
+<h2>Center and spread of the sampling distribution of $\bar{x}$</h2>
+<figure id="fig-clt" data-fig="u2-clt-panels"><figcaption>A skewed population of waits, and simulated sample means for n = 2 and n = 30.</figcaption></figure>
+<p>Pharmacy wait times are strongly skewed right with mean $\mu = 5$ minutes and standard deviation $\sigma = 5$ minutes. <a class="figref" href="#fig-clt">The figure</a> shows simulated sample means for two sample sizes. Two patterns hold for any sample size n:</p>
+<ul>
+<li><b>Center:</b> $\mu_{\bar{x}} = \mu$. Sample means are centered at the population mean; they do not systematically run high or low.</li>
+<li><b>Spread:</b> $\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$. Averaging more individuals cancels out more of the extreme values, so the means vary less.</li>
+</ul>
+<p>For samples of 40 waits, $\sigma_{\bar{x}} = \frac{5}{\sqrt{40}} \approx 0.79$ minutes, much less than the 5-minute spread of single waits. Because of the square root, quadrupling the sample size halves the spread. The same ideas hold for $\hat{p}$: its sampling distribution is centered at p, and larger samples make it less variable. Unit 3 gives the formula for its spread.</p>
+
+<h2>Shape: the Central Limit Theorem</h2>
+<p>If the population is normal, the sampling distribution of $\bar{x}$ is normal for any sample size. If the population is not normal, something remarkable happens anyway. The <b>Central Limit Theorem</b> says that when n is large, the sampling distribution of $\bar{x}$ is approximately normal, whatever the shape of the population. In the figure, means of 2 waits are still skewed right, but means of 30 waits form a near bell shape. A common guide is that n of 30 or more is large enough; strongly skewed populations need larger samples than mildly skewed ones.</p>
+<p>The theorem is about the sample mean, not the data. A sample of 1,000 waits is still skewed right. It is the means of many samples that pile up in a normal shape.</p>
+
+<h2>Using the sampling distribution</h2>
+<div class="worked">
+<p><b>Worked example.</b> Waits have $\mu = 5$ and $\sigma = 5$ minutes, skewed right. For a random sample of 40 customers, find the probability that the sample mean wait is more than 6 minutes.</p>
+<p>Shape: n = 40 is large, so by the Central Limit Theorem $\bar{x}$ is approximately normal.</p>
+<p>Center and spread: $\mu_{\bar{x}} = 5$ and $\sigma_{\bar{x}} = \frac{5}{\sqrt{40}} \approx 0.791$.</p>
+<p>Area: $z = \frac{6 - 5}{0.791} \approx 1.26$, so $P(\bar{x} > 6) \approx 1 - 0.8962 = 0.104$ (technology without rounding z: 0.103).</p>
+<p>About 10% of random samples of 40 customers have a mean wait above 6 minutes.</p>
+</div>
+<p>The same calculation can test a claim. If a random sample of 40 had a mean wait of 7.5 minutes, then $z = \frac{7.5 - 5}{0.791} \approx 3.16$ and $P(\bar{x} \ge 7.5) \approx 0.0008$. If the pharmacy's numbers were right, a sample mean that high would almost never happen, so the sample gives strong reason to doubt them. That reasoning, "how surprising is this statistic if the claim is true?", is the core of the inference methods in Units 3 and 4.</p>
+<p>The common slip is using $\sigma$ in place of $\sigma_{\bar{x}}$. Single waits of 6 minutes or more are common; sample means of 40 waits that high are not, because means vary much less than individuals.</p>

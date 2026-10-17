@@ -30,7 +30,7 @@
      same definition as text to filter on: the formula's symbols, not its TeX
      annotation or its markup. */
   var MATH_SPLIT = /(<math[\s\S]*?<\/math>)/;
-  function rich(s){ return String(s == null ? '' : s).split(MATH_SPLIT).map(function(x, i){ return i % 2 ? x : esc(x).replace(/&lt;(\/?)(i|b|em|strong|sub|sup)&gt;/g, '<$1$2>'); }).join(''); }
+  function rich(s){ return String(s == null ? '' : s).split(MATH_SPLIT).map(function(x, i){ return i % 2 ? x : esc(x).replace(/&lt;(\/?)(i|b|em|strong|sub|sup)&gt;/g, '<$1$2>').replace(/&lt;wbr&gt;/g, '<wbr>'); }).join(''); }
   function plainDef(s){ return String(s == null ? '' : s).replace(/<annotation[\s\S]*?<\/annotation>/g, '').replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&'); }
   function fold(s){
     return String(s || '').replace(/<[^>]+>/g, '').replace(/[αβγδεκλμπσω]/g, function(c){ return GREEK[c]; })

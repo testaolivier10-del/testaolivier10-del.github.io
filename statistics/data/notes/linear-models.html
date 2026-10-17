@@ -1,0 +1,42 @@
+<p>A scatterplot describes a relationship; a correlation measures how linear it is. The next step is to use the relationship: to predict the response for a given value of the explanatory variable. When the pattern is linear, a straight line does that.</p>
+
+<h2>The regression line</h2>
+<p>A <b>regression line</b> is a line that describes how the response $y$ changes, on average, as the explanatory variable $x$ changes. In statistics it is written</p>
+<p>$$\hat{y} = a + bx,$$</p>
+<p>where $a$ is the intercept and $b$ is the slope, the same kind of equation as $y = mx + b$ from algebra. Watch the letters: here $b$ is the slope (algebra's $m$) and $a$ is the intercept (algebra's $b$), written first. The hat on $\hat{y}$ ("y-hat") says that the output is a <b>predicted value</b>, not an observed one. Real data points scatter above and below the line; the line gives the typical value for each $x$. (This equation, $\hat{y} = a + bx$, is on the reference sheet.)</p>
+<p>Where does the line come from? Usually from technology, which fits the line to the data. Topic 5.5 explains how the best line is chosen. For now, take the equation as given and learn to use it.</p>
+
+<h2>Making a prediction</h2>
+<figure id="fig-line" data-fig="regression-line-predict"><figcaption>The regression line for the sleep data and one prediction.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> For 14 students, the line for predicting reaction time (milliseconds) from hours of sleep is $\hat{y} = 391.1 - 11.37x$. Predict the reaction time of a student who slept 6.8 hours.</p>
+<p>$\hat{y} = 391.1 - 11.37(6.8) = 391.1 - 77.3 = 313.8$ milliseconds.</p>
+<p>In words: the line predicts a reaction time of about 314 milliseconds for a student who slept 6.8 hours. <a class="figref" href="#fig-line">The figure</a> shows the same prediction: up from 6.8 to the line, then across.</p>
+</div>
+
+<h2>Interpreting the slope</h2>
+<p>The slope is the change in the predicted value for each one-unit increase in $x$. Its units are units of $y$ per unit of $x$. Use this template, filling in context:</p>
+<p style="text-align:center"><b>"For each additional [unit of $x$], the predicted [$y$] increases (decreases) by about $|b|$ [units of $y$]."</b></p>
+<p>For the sleep line: for each additional hour of sleep, the predicted reaction time decreases by about 11.4 milliseconds. The word "predicted" matters. The slope does not say that every student who sleeps one more hour reacts exactly 11.4 milliseconds faster; it describes the trend of the predictions.</p>
+<p>The slope always has the same sign as the correlation: a negative association gives a falling line.</p>
+
+<h2>Interpreting the intercept, when it makes sense</h2>
+<p>The intercept $a$ is the predicted $y$ when $x = 0$. Interpret it only if $x = 0$ is a sensible value inside, or very near, the data.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A resale site fits $\widehat{\text{price}} = 620 - 95(\text{age})$ to listings of one phone model aged 0 to 6 years.</p>
+<p><b>Slope:</b> for each additional year of age, the predicted resale price decreases by about 95 dollars.</p>
+<p><b>Intercept:</b> a new phone (age 0) has a predicted price of 620 dollars. This makes sense, because new phones are in the data.</p>
+<p><b>A prediction:</b> for a 3.5-year-old phone, $620 - 95(3.5) = 287.5$, so about 287.50 dollars.</p>
+</div>
+<p>Compare a line for children aged 5 to 12, $\hat{y} = 76 + 6.2x$ for height in centimeters. The intercept would describe a newborn, but no newborns are in the data, and children do not grow at a steady rate from birth. So the intercept has no useful meaning here.</p>
+
+<h2>Extrapolation</h2>
+<p>A line is fit to the $x$ values in the data. Using it far outside that range is <b>extrapolation</b>, and it is unreliable: nothing in the data says the pattern continues. The phone line predicts $620 - 95(8) = -140$ dollars for an 8-year-old phone, an impossible price. The sleep line predicts about 243 milliseconds for 13 hours of sleep, far faster than any student in the data, who all slept 4.5 to 9.5 hours. Both numbers come out of the equation; neither should be trusted.</p>
+<table class="stat-compare">
+<thead><tr><th>Part</th><th>Meaning</th><th>Template</th></tr></thead>
+<tbody>
+<tr><td>$\hat{y}$</td><td>predicted value of $y$</td><td>"The predicted [$y$] for [$x$ value] is ..."</td></tr>
+<tr><td>$b$</td><td>predicted change in $y$ per unit of $x$</td><td>"For each additional ..., the predicted ... increases (decreases) by about ..."</td></tr>
+<tr><td>$a$</td><td>predicted $y$ when $x = 0$</td><td>"When [$x$] is 0, the predicted [$y$] is ...", only if $x = 0$ makes sense</td></tr>
+</tbody>
+</table>

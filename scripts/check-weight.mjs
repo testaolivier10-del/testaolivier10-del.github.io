@@ -135,7 +135,8 @@ const SHELL_BUDGETS = [
   /* plus (polish 2026-10-17, B): the still "+N XP" chip for reduced
      motion, the folded "units not started" group and inline row actions in
      the shared dashboard. Measured 288.8 KB on its own. */
-  ['site', 290],
+  /* plus AP® Statistics' registration (Phase 0, measured 289.0 KB alone, from 288.4). */
+  ['site', 291],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -324,6 +325,18 @@ const SHELL_BUDGETS = [
      68 -> 68.5 (polish 2026-10-17, D1): the flag hook in calc-questions.js and the
      Flagged practice mode and exam flag list; measured 68.1 KB. */
   ['calculus', 68.5],
+  /* AP® Statistics (statistics/, a fork of the AP® Calculus AB runtime),
+     plus what every statistics question page needs (docs/apstat-spec.md
+     section 7): the distributions library (stat-dist.js, 6.4 KB gzipped:
+     normal, t, chi-square, binomial, every test and interval the course
+     uses, accurate to 1e-12, in place of a statistics library), the graders
+     for numeric kinds, intervals and conclusions (stat-grade.js, 4.2 KB),
+     and the statistics input in the parser and the engine (3.6 KB).
+     Calculus' 68 is the reference; measured 80.9 KB on the exams page before
+     any unit is published. 82 -> 83 for the launch (docs/apstat-spec.md
+     decision 15): the flag hook and Flagged mode (as calculus' 68 -> 68.5),
+     the setup value step and the tiny p-value wording; measured 82.6 KB. */
+  ['statistics', 83],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -357,8 +370,10 @@ const BUDGETS = [
   /* 9.0 -> 9.4 for the 2026-10-17 polish (A2, A5, A6): the Free and Premium
      cards in place of one paragraph, the generated facts row and the grid
      that keeps the last card from sitting alone. The FAQ price answer got
-     shorter. Measured 9.3 KB. */
-  ['index.html', 9.4],
+     shorter. Measured 9.3 KB. 9.4 -> 9.8 for AP® Statistics' launch
+     (docs/apstat-spec.md decision 15): its hub card, its pass in the FAQ and
+     the offers. Measured 9.6 KB. */
+  ['index.html', 9.8],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */
@@ -553,6 +568,13 @@ const BUDGETS = [
   ['calculus/frq.html', 3],
   ['calculus/glossary.html', 30],
   ['calculus/tools.html', 5],
+  ['statistics/index.html', 7],
+  ['statistics/practice.html', 3],
+  ['statistics/exams.html', 3],
+  ['statistics/frq.html', 3],
+  ['statistics/glossary.html', 30],
+  ['statistics/tools.html', 5],
+  ['statistics/formula-sheet.html', 12],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -928,6 +950,19 @@ function weigh(pageRel) {
     if (sheet) BUDGETS.push([`physics/unit-sheets/${sheet}`, 12]);
   }
 }
+/* The same for AP® Statistics (statistics/assets/notes-index.json, build-apstat.mjs),
+   with Calculus' budgets as the reference until the first unit is published. */
+{
+  const idx = join(ROOT, 'statistics', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    BUDGETS.push([`statistics/lessons/${id}.html`, 22], [`statistics/notes/${id}.html`, 22]);
+    const sheets = join(ROOT, 'statistics', 'unit-sheets');
+    const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
+    if (sheet) BUDGETS.push([`statistics/unit-sheets/${sheet}`, 14]);
+  }
+}
 /* The same for AP® Calculus AB (calculus/assets/notes-index.json, build-apcalc.mjs).
    Math is MathML on the page, so a calculus page is heavier than its text. */
 {
@@ -1021,6 +1056,14 @@ if (existsSync(CALC_BANK_DIR)) {
   }
 }
 DATA_BUDGETS.push(['calculus/assets/glossary.json', 150], ['calculus/assets/notes-index.json', 4], ['calculus/assets/summaries.json', 40]);
+/* AP® Statistics's, the same (build-apstat.mjs bankFile packs by gzipped size). */
+const STAT_BANK_DIR = join(ROOT, 'statistics', 'assets', 'bank');
+if (existsSync(STAT_BANK_DIR)) {
+  for (const f of readdirSync(STAT_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`statistics/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+DATA_BUDGETS.push(['statistics/assets/glossary.json', 150], ['statistics/assets/notes-index.json', 4], ['statistics/assets/summaries.json', 40]);
 
 const dataRows = [];
 for (const [rel, budgetKb] of DATA_BUDGETS) {

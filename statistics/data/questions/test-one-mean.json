@@ -1,0 +1,748 @@
+{
+ "stimuli": {
+  "test-one-mean-s1": {
+   "kind": "table",
+   "title": "Testing the delivery time claim",
+   "text": "<p>A company advertises a mean delivery time of 30 minutes in one city. A manager suspects the true mean is longer and takes a random sample of 45 of last month's thousands of deliveries (invented data). She tests $H_0: \\mu = 30$ against $H_a: \\mu > 30$, where $\\mu$ is the true mean delivery time of all the company's deliveries in the city, at $\\alpha = 0.05$.</p>",
+   "table": {
+    "caption": "Summary of the 45 delivery times",
+    "cols": [
+     "Sample size",
+     "Sample mean",
+     "Sample standard deviation"
+    ],
+    "rows": [
+     [
+      "45",
+      "32.4 minutes",
+      "6.8 minutes"
+     ]
+    ]
+   }
+  },
+  "test-one-mean-s2": {
+   "kind": "table",
+   "title": "Heart rate differences after a breathing class",
+   "text": "<p>A random sample of 12 members of a large gym took a breathing class. The differences in resting heart rate, before minus after (beats per minute), are below (invented data). The gym tests $H_0: \\mu_d = 0$ against $H_a: \\mu_d > 0$ at $\\alpha = 0.05$, where $\\mu_d$ is the true mean drop for members who take the class. A dotplot of the differences shows no strong skew and no outliers.</p>",
+   "table": {
+    "caption": "The 12 differences (before minus after), beats per minute",
+    "cols": [
+     "Members 1 to 6",
+     "Members 7 to 12"
+    ],
+    "rows": [
+     [
+      "3",
+      "-1"
+     ],
+     [
+      "1",
+      "5"
+     ],
+     [
+      "6",
+      "3"
+     ],
+     [
+      "1",
+      "3"
+     ],
+     [
+      "2",
+      "5"
+     ],
+     [
+      "5",
+      "1"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-test-one-mean-1",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "setup",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the expression for the test statistic. Type it as on the exam, for example (a - b)/(s/sqrt(n)).",
+   "stimulus": "test-one-mean-s1",
+   "why": {
+    "correct": "$t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} = \\frac{32.4 - 30}{6.8/\\sqrt{45}} = 2.37$, with $\\text{df} = 44$."
+   },
+   "setup": {
+    "answer": "(32.4 - 30)/(6.8/sqrt(45))",
+    "bind": {
+     "x-bar": 32.4,
+     "mu_0": 30,
+     "s": 6.8,
+     "n": 45
+    },
+    "mustUse": [
+     "mu_0",
+     "n"
+    ],
+    "then": {
+     "kind": "t",
+     "from": {
+      "fn": "t1",
+      "args": [
+       32.4,
+       30,
+       6.8,
+       45
+      ],
+      "pick": "t"
+     }
+    },
+    "mistakes": [
+     {
+      "expr": "(32.4 - 30)/6.8",
+      "why": "That divides by the spread of single deliveries. The standard error of the mean is 6.8/sqrt(45)."
+     },
+     {
+      "expr": "(32.4 - 30)/(6.8/45)",
+      "why": "Divide s by the square root of n: 6.8/sqrt(45), not 6.8/45."
+     },
+     {
+      "expr": "(30 - 32.4)/(6.8/sqrt(45))",
+      "why": "Subtract in the order statistic minus null value: 32.4 - 30."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-2",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the p-value of the test?",
+   "stimulus": "test-one-mean-s1",
+   "why": {
+    "correct": "With $t = 2.37$ and $\\text{df} = 44$, the p-value is the area to the right: $P(t > 2.37) = 0.011$. Technology: a one-sample t test gives $t = 2.37$, $p = 0.0112$. Table B (df 40 row) puts it between 0.01 and 0.02."
+   },
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "t1",
+     "args": [
+      32.4,
+      30,
+      6.8,
+      45
+     ],
+     "pick": "p.greater"
+    },
+    "mistakes": [
+     {
+      "value": 0.0224,
+      "why": "That doubles the tail area. The alternative is one-sided ($\\mu > 30$), so the p-value is one tail."
+     },
+     {
+      "value": 0.00895,
+      "why": "That uses the standard normal. The test statistic uses $s$, so the p-value comes from the t distribution with 44 df."
+     },
+     {
+      "value": 0.9888,
+      "why": "That is the area to the left of $t = 2.37$. For $H_a: \\mu > 30$, the p-value is the area to the right."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-3",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "State the conclusion of the test at $\\alpha = 0.05$.",
+   "stimulus": "test-one-mean-s1",
+   "why": {
+    "correct": "Compare the p-value with alpha, then state the evidence for $H_a$ in context, naming the parameter."
+   },
+   "conclude": {
+    "mode": "test",
+    "alpha": 0.05,
+    "p": 0.0112,
+    "ha": "greater",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "It is proven",
+       "There is convincing evidence for the null hypothesis"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is below alpha, so the data do give convincing evidence.",
+       "2": "A test gives evidence; it never proves anything.",
+       "3": "A test weighs evidence against the null hypothesis, never for it."
+      }
+     },
+     "direction": {
+      "options": [
+       "is greater than 30 minutes",
+       "is different from 30 minutes",
+       "is 30 minutes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Match the alternative hypothesis, which is one-sided: greater than.",
+       "2": "The conclusion is about the alternative, and a test never shows the null value is right."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean delivery time of all the company's deliveries in the city",
+       "the mean delivery time of the 45 sampled deliveries",
+       "the delivery time of most deliveries"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample mean, 32.4, is already known; the test is about the population.",
+       "2": "The test is about a mean, not about most single deliveries."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.0112 is less than 0.05, we reject the null hypothesis. There is convincing evidence that the true mean delivery time of all the company's deliveries in the city is greater than 30 minutes.",
+    "write": {
+     "context": [
+      "deliver"
+     ],
+     "direction": "greater",
+     "compare": {
+      "p": 0.0112,
+      "alpha": 0.05
+     }
+    }
+   }
+  },
+  {
+   "id": "stat-test-one-mean-4",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Interpret the p-value of 0.0112 in context.",
+   "stimulus": "test-one-mean-s1",
+   "why": {
+    "correct": "A p-value is a probability computed assuming the null hypothesis is true: the chance of a sample result at least as extreme as the one observed, in the direction of $H_a$."
+   },
+   "conclude": {
+    "mode": "pvalue",
+    "slots": {
+     "condition": {
+      "options": [
+       "Assuming the true mean delivery time is 30 minutes,",
+       "Assuming the true mean delivery time is 32.4 minutes,",
+       "Because the null hypothesis is false,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is computed under the null hypothesis, $\\mu = 30$.",
+       "2": "The p-value is computed assuming the null hypothesis is true."
+      }
+     },
+     "claim": {
+      "options": [
+       "there is a 0.0112 probability of getting a sample mean of 32.4 minutes or more",
+       "there is a 0.0112 probability that the null hypothesis is true",
+       "there is a 0.0112 probability that the true mean is greater than 30 minutes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A p-value is not the probability that a hypothesis is true.",
+       "2": "The parameter is fixed; the probability is about sample results."
+      }
+     },
+     "context": {
+      "options": [
+       "by chance in a random sample of 45 deliveries.",
+       "in one delivery chosen at random.",
+       "in the whole population of deliveries."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The statistic is a mean of 45 deliveries, not one delivery.",
+       "2": "The probability is about a sample of 45, not the population."
+      }
+     }
+    },
+    "model": "Assuming the true mean delivery time of all the company's deliveries in the city is 30 minutes, there is a 0.0112 probability of getting a sample mean of 32.4 minutes or more by chance in a random sample of 45 deliveries.",
+    "write": {
+     "context": [
+      "deliver"
+     ],
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-test-one-mean-5",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Suppose the manager had chosen $\\alpha = 0.01$ instead. What would the decision be?",
+   "stimulus": "test-one-mean-s1",
+   "options": [
+    "Reject the null hypothesis, because 0.0112 is still less than 0.05 as before",
+    "Fail to reject the null hypothesis, because 0.0112 is greater than 0.01",
+    "Accept the null hypothesis that the mean is 30",
+    "The p-value changes to 0.001, so reject the null hypothesis"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$0.0112 > 0.01$: fail to reject $H_0$. A smaller $\\alpha$ demands stronger evidence.",
+    "options": [
+     "The decision compares the p-value with the chosen $\\alpha$, now 0.01.",
+     "At the 0.01 level the p-value is not small enough, so there is not convincing evidence that the mean exceeds 30 minutes.",
+     "A test never accepts the null hypothesis; it fails to reject it.",
+     "The p-value depends on the data, not on $\\alpha$."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-6",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The differences have mean $\\bar{x}_d = 2.83$ and standard deviation $s_d = 2.12$ beats per minute. What is the value of the t statistic?",
+   "stimulus": "test-one-mean-s2",
+   "why": {
+    "correct": "$t = \\frac{\\bar{x}_d - 0}{s_d/\\sqrt{n}} = \\frac{2.833 - 0}{2.125/\\sqrt{12}} = 4.62$, with $\\text{df} = 11$."
+   },
+   "numeric": {
+    "kind": "t",
+    "accept": [
+     4.6,
+     4.64
+    ],
+    "from": {
+     "fn": "t1",
+     "args": [
+      2.8333333333333335,
+      0,
+      2.124888588879783,
+      12
+     ],
+     "pick": "t"
+    },
+    "mistakes": [
+     {
+      "value": 1.33,
+      "why": "That divides by $s_d$ alone. The standard error is $\\frac{s_d}{\\sqrt{12}}$."
+     },
+     {
+      "value": 16,
+      "why": "That divides $s_d$ by 12. Divide by the square root of the sample size."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-7",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the p-value of the paired t test?",
+   "stimulus": "test-one-mean-s2",
+   "why": {
+    "correct": "$P(t > 4.62)$ with $\\text{df} = 11$ is 0.0004. Technology: a one-sample t test on the differences gives $t = 4.62$, $p = 0.00037$. Table B: beyond the 0.0005 column for df 11."
+   },
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "t1",
+     "args": [
+      2.8333333333333335,
+      0,
+      2.124888588879783,
+      12
+     ],
+     "pick": "p.greater"
+    },
+    "mistakes": [
+     {
+      "value": 0.0007,
+      "why": "That is the two-sided p-value. The alternative $\\mu_d > 0$ is one-sided."
+     },
+     {
+      "value": 0.1047,
+      "why": "That uses $t = 1.33$, which forgot to divide $s_d$ by $\\sqrt{12}$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-8",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "State the conclusion of the paired t test at $\\alpha = 0.05$ ($p = 0.0004$).",
+   "stimulus": "test-one-mean-s2",
+   "why": {
+    "correct": "The p-value is far below 0.05, so reject $H_0$ and state the evidence about $\\mu_d$ in context."
+   },
+   "conclude": {
+    "mode": "test",
+    "alpha": 0.05,
+    "p": 0.0004,
+    "ha": "greater",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "It is proven",
+       "There is convincing evidence for the null hypothesis"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is below alpha, so the data do give convincing evidence.",
+       "2": "A test gives evidence; it never proves anything.",
+       "3": "A test weighs evidence against the null hypothesis, never for it."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean drop in resting heart rate (before minus after) for gym members who take the class",
+       "the mean drop for the 12 members in the sample",
+       "the resting heart rate of each member who takes the class"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the sample mean, 2.83, which needs no test.",
+       "2": "The test is about the mean difference, not each member."
+      }
+     },
+     "direction": {
+      "options": [
+       "is greater than 0",
+       "is different from 0",
+       "is equal to 2.83"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The alternative is one-sided, greater than 0.",
+       "2": "The test does not show the mean equals the sample value."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.0004 is less than 0.05, we reject the null hypothesis. There is convincing evidence that the true mean drop in resting heart rate (before minus after) for gym members who take the class is greater than 0.",
+    "write": {
+     "context": [
+      "heart"
+     ],
+     "direction": "greater",
+     "compare": {
+      "p": 0.0004,
+      "alpha": 0.05
+     }
+    }
+   }
+  },
+  {
+   "id": "stat-test-one-mean-9",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Can the gym conclude that the breathing class caused the drop in heart rate?",
+   "stimulus": "test-one-mean-s2",
+   "options": [
+    "No: there was no random assignment and no comparison group",
+    "Yes, because the p-value is very small",
+    "Yes, because the members were chosen at random",
+    "No, because the sample size is less than 30"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Random sampling allows generalizing to the population; random assignment allows a cause-and-effect conclusion. This study has the first, not the second.",
+    "options": [
+     "Without a randomized control group, other changes over the four weeks (season, other exercise) could explain the drop. The random sample does let the gym generalize to members who take the class.",
+     "A small p-value shows the drop is not just chance; it does not show what caused it.",
+     "Random sampling allows generalizing; cause and effect needs random assignment to treatments.",
+     "Sample size is not what blocks a causal claim; the lack of an experiment with a control group is."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-10",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A random sample of 20 students at a large university slept a mean of 7.55 hours a night with standard deviation 1.09 hours. For $H_0: \\mu = 8$ against $H_a: \\mu \\ne 8$, what is the p-value?",
+   "why": {
+    "correct": "$t = \\frac{7.55 - 8}{1.09/\\sqrt{20}} = -1.85$, $\\text{df} = 19$. Two-sided: $p = 2P(t < -1.85) = 0.080$."
+   },
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "t1",
+     "args": [
+      7.55,
+      8,
+      1.09,
+      20
+     ],
+     "pick": "p.two"
+    },
+    "mistakes": [
+     {
+      "value": 0.0402,
+      "why": "That is one tail. The alternative $\\mu \\ne 8$ is two-sided, so double the tail area."
+     },
+     {
+      "value": 0.9598,
+      "why": "That is the area to the right of $t = -1.85$. For a two-sided test, double the smaller tail."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-11",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the sleep study ($H_0: \\mu = 8$, $H_a: \\mu \\ne 8$, $p = 0.080$), state the conclusion at $\\alpha = 0.05$.",
+   "why": {
+    "correct": "0.080 is greater than 0.05, so fail to reject $H_0$. The data are not convincing evidence of a difference, which is not the same as showing the mean is 8."
+   },
+   "conclude": {
+    "mode": "test",
+    "alpha": 0.05,
+    "p": 0.08,
+    "ha": "different",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "It is proven",
+       "There is convincing evidence for the null hypothesis"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "The p-value is above alpha, so the data do not give convincing evidence.",
+       "2": "A test gives evidence; it never proves anything.",
+       "3": "A test weighs evidence against the null hypothesis, never for it."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean nightly sleep of students at the university",
+       "the mean sleep of the 20 students in the sample",
+       "the sleep of a typical student"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample mean is known: 7.55 hours.",
+       "2": "The test is about the population mean, not one student."
+      }
+     },
+     "direction": {
+      "options": [
+       "is different from 8 hours",
+       "is less than 8 hours",
+       "is equal to 8 hours"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Match the two-sided alternative: different from.",
+       "2": "Failing to reject never shows the null value is true."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.080 is greater than 0.05, we fail to reject the null hypothesis. There is not convincing evidence that the true mean nightly sleep of students at the university is different from 8 hours.",
+    "write": {
+     "context": [
+      "sleep"
+     ],
+     "direction": "different",
+     "compare": {
+      "p": 0.08,
+      "alpha": 0.05
+     }
+    }
+   }
+  },
+  {
+   "id": "stat-test-one-mean-12",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two random samples give the same $\\bar{x}$ and $s$, but one has $n = 16$ and the other $n = 64$. Testing the same $H_0: \\mu = \\mu_0$, how do the results compare?",
+   "options": [
+    "Both give the same t and p-value",
+    "The smaller sample gives the smaller p-value",
+    "The larger sample gives a larger $|t|$ and a smaller p-value",
+    "The larger sample gives a smaller $|t|$ but the same p-value"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$: four times the sample size doubles $|t|$.",
+    "options": [
+     "The same difference $\\bar{x} - \\mu_0$ is measured against a smaller standard error when $n$ is larger.",
+     "Less data means more uncertainty, so a larger p-value.",
+     "The standard error $\\frac{s}{\\sqrt{n}}$ is half as large for $n = 64$, so $|t|$ doubles and the p-value shrinks.",
+     "$|t|$ grows with $\\sqrt{n}$, and the p-value moves with it."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-13",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A one-sided t test ($H_a: \\mu > \\mu_0$) gives $t = 2.37$ with $\\text{df} = 44$. Using the df 40 row of Table B (one-tail columns: 0.02 at 2.123, 0.01 at 2.423), what can you say about the p-value?",
+   "options": [
+    "It is between 0.02 and 0.04",
+    "It is less than 0.01",
+    "It is between 0.98 and 0.99",
+    "It is between 0.01 and 0.02"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Table B gives tail areas for critical values. Bracket the statistic between two columns in the df row (rounded down to 40).",
+    "options": [
+     "Those are two-sided areas. The test is one-sided, so read the one-tail probabilities.",
+     "That would need $t$ greater than 2.423.",
+     "Those are areas to the left of $t$; the p-value is the area to the right.",
+     "2.37 lies between 2.123 and 2.423, so the tail area beyond 2.37 is between 0.01 and 0.02 (technology: 0.011)."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-14",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A t test gives $p = 0.27$ at $\\alpha = 0.05$. Which statement is correct?",
+   "options": [
+    "The data do not give convincing evidence against the null hypothesis",
+    "The data show that the null hypothesis is true",
+    "There is a 27% chance that the null hypothesis is true",
+    "The sample mean equals the hypothesized mean"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$0.27 > 0.05$: fail to reject $H_0$. That is \"not convincing evidence\", never \"accept $H_0$\".",
+    "options": [
+     "A large p-value means results like these are common when $H_0$ is true, so there is not convincing evidence for $H_a$.",
+     "Failing to reject is not proof of $H_0$; the true mean could differ by an amount this sample could not detect.",
+     "A p-value is computed assuming $H_0$ is true; it is not the probability of $H_0$.",
+     "The sample mean almost surely differs from $\\mu_0$; the difference is just not convincing."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-15",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "For $H_0: \\mu = 100$, a random sample of 36 gives $\\bar{x} = 101.8$ and $s = 6$. What is the t statistic?",
+   "why": {
+    "correct": "$t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} = \\frac{101.8 - 100}{6/\\sqrt{36}} = \\frac{1.8}{1} = 1.80$, with $\\text{df} = 35$."
+   },
+   "numeric": {
+    "kind": "t",
+    "from": {
+     "fn": "t1",
+     "args": [
+      101.8,
+      100,
+      6,
+      36
+     ],
+     "pick": "t"
+    },
+    "mistakes": [
+     {
+      "value": 0.3,
+      "why": "That divides by $s$ alone. The standard error is $\\frac{6}{\\sqrt{36}} = 1$."
+     },
+     {
+      "value": 10.8,
+      "why": "That divides $s$ by 36 instead of $\\sqrt{36}$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-one-mean-16",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "multi",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statements about the t statistic $t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$ are true? Select all that apply.",
+   "options": [
+    "It counts how many standard errors $\\bar{x}$ is from $\\mu_0$",
+    "Its p-value comes from a t distribution with $n$ degrees of freedom",
+    "It uses the sample mean in place of $\\mu_0$ in the numerator",
+    "A negative value means the test was set up wrongly",
+    "It is compared with $z^*$ to find the p-value"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "t is the number of standard errors between the sample mean and the hypothesized mean, judged on the t distribution with $n - 1$ df (not $n$).",
+    "options": [
+     "Right: a standardized test statistic is (statistic minus null value) over standard error.",
+     "A one-sample t statistic has $n - 1$ degrees of freedom.",
+     "The numerator is $\\bar{x} - \\mu_0$: both appear.",
+     "A negative t just means $\\bar{x}$ is below $\\mu_0$.",
+     "The p-value comes from the t distribution, not the standard normal."
+    ]
+   }
+  }
+ ]
+}

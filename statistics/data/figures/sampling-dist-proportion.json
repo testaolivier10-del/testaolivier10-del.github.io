@@ -1,0 +1,12 @@
+{
+ "phat-sampling-distribution": {
+  "file": "figures/phat-sampling-distribution.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 510,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two probability histograms of the sample proportion of seeds that sprout when the true proportion is p = 0.85. Top, samples of 200: the bars form a symmetric mound centered at 0.85 that matches the normal curve with mean 0.85 and standard deviation 0.025 drawn over it; large counts hold because 200(0.85) = 170 and 200(0.15) = 30 are both at least 10. Bottom, samples of 20: the bars are skewed left, piled up near 0.85 to 1 with a long tail toward lower values, and the normal curve does not fit; 20(0.15) = 3 is less than 10."
+ }
+}

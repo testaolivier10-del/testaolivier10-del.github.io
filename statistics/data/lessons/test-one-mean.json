@@ -1,0 +1,83 @@
+{
+ "topic": "test-one-mean",
+ "hook": "The delivery sample came back: 45 deliveries, mean 32.4 minutes, standard deviation 6.8. That is 2.4 minutes over the advertised 30. Is that a real slowdown or the ordinary wobble of a random sample? One number, the t statistic, measures the gap in standard errors, and the t distribution turns it into a p-value.",
+ "prereq": [
+  {
+   "q": "For $H_0: \\mu = 30$ and $H_a: \\mu > 30$, a p-value of 0.03 at $\\alpha = 0.05$ means",
+   "options": [
+    "reject $H_0$: there is convincing evidence that $\\mu > 30$",
+    "accept $H_0$: $\\mu = 30$",
+    "fail to reject $H_0$",
+    "there is a 3% chance that $H_0$ is true"
+   ],
+   "correct": 0,
+   "why": "$0.03 < 0.05$, so reject $H_0$; the evidence supports $H_a$.",
+   "review": "test-one-proportion"
+  },
+  {
+   "q": "A standardized test statistic has the form",
+   "options": [
+    "(statistic minus null value) divided by the standard error",
+    "statistic divided by the sample size",
+    "null value minus statistic",
+    "standard error divided by the statistic"
+   ],
+   "correct": 0,
+   "why": "It counts how many standard errors the statistic is from the null value.",
+   "review": "p-values"
+  },
+  {
+   "q": "For paired data, the hypotheses $H_0: \\mu_d = 0$, $H_a: \\mu_d > 0$ are tested with",
+   "options": [
+    "a one-sample t test on the differences",
+    "two separate one-sample tests",
+    "a one-proportion z test",
+    "a z test using $\\sigma = 1$"
+   ],
+   "correct": 0,
+   "why": "A paired t test is a one-sample t test on the differences.",
+   "review": "test-one-mean-setup"
+  }
+ ],
+ "figure": {
+  "figure": "t-test-pvalue",
+  "caption": "The t distribution with 44 degrees of freedom, the null model for the delivery test. The observed $t = 2.37$ is marked, and the shaded area to its right, 0.011, is the p-value."
+ },
+ "chain": [
+  {
+   "cause": "Assume $H_0$ is true: the true mean is $\\mu_0$",
+   "effect": "sample means vary around $\\mu_0$ with standard error $\\frac{s}{\\sqrt{n}}$"
+  },
+  {
+   "cause": "Measure the gap in standard errors",
+   "effect": "$t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$, with $\\text{df} = n - 1$"
+  },
+  {
+   "cause": "Find the area beyond $t$ in the direction of $H_a$",
+   "effect": "that area is the p-value (double the tail for $\\ne$)"
+  },
+  {
+   "cause": "Compare the p-value with $\\alpha$",
+   "effect": "reject $H_0$ if $p < \\alpha$, fail to reject otherwise, and state the evidence for $H_a$ in context"
+  }
+ ],
+ "ideas": [
+  "t statistic: $t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$ (paired: $t = \\frac{\\bar{x}_d - 0}{s_d/\\sqrt{n}}$), $\\text{df} = n - 1$.",
+  "p-value: right tail for $>$, left tail for $<$, twice the smaller tail for $\\ne$. Table B brackets it; technology gives it exactly.",
+  "Conclusion: \"Because the p-value of 0.0112 is less than 0.05, we reject $H_0$. There is convincing evidence that the true mean ... is greater than ...\"",
+  "A large p-value is \"not convincing evidence\", never \"accept $H_0$\" or \"the mean is $\\mu_0$\"."
+ ],
+ "misconception": {
+  "wrong": "A p-value of 0.0112 means there is a 1.12% chance that the null hypothesis is true.",
+  "right": "The p-value is computed assuming $H_0$ is true. It is the probability of a sample mean at least as extreme as the one observed, by chance alone, when the true mean is $\\mu_0$."
+ },
+ "check": [
+  "stat-test-one-mean-1",
+  "stat-test-one-mean-2",
+  "stat-test-one-mean-3",
+  "stat-test-one-mean-4",
+  "stat-test-one-mean-11",
+  "stat-test-one-mean-14"
+ ],
+ "summary": "Carry out a one-sample (or paired) t test by computing $t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$ with $n - 1$ df, finding the p-value in the direction of $H_a$, and comparing it with $\\alpha$. Conclude in context with evidence language about the true mean, and interpret the p-value as a probability computed assuming $H_0$."
+}

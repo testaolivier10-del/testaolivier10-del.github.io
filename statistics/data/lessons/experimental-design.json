@@ -1,0 +1,78 @@
+{
+ "topic": "experimental-design",
+ "hook": "Do glasses that block blue light help people sleep? Ask people who already wear them and you learn little: they may also go to bed earlier, or care more about sleep. To find out what the glasses themselves do, a researcher has to impose them, with chance deciding who wears which glasses, and keep everyone else in the study comparable.",
+ "prereq": [
+  {
+   "q": "What is a confounding variable?",
+   "options": [
+    "A variable related to both the explanatory and response variables",
+    "The response variable",
+    "A variable with no effect",
+    "A variable measured twice"
+   ],
+   "correct": 0,
+   "why": "Its effect mixes with the explanatory variable’s effect.",
+   "review": "investigative-questions"
+  },
+  {
+   "q": "Which kind of study can support a cause-and-effect conclusion?",
+   "options": [
+    "An experiment with conditions decided by chance",
+    "An observational study",
+    "A sample survey",
+    "A census"
+   ],
+   "correct": 0,
+   "why": "Only imposing conditions, decided by chance, rules out confounding.",
+   "review": "investigative-questions"
+  }
+ ],
+ "figure": {
+  "figure": "block-design",
+  "caption": "A randomized block design: plants are grouped by bench (sunny or shady), and fertilizers are assigned at random within each block."
+ },
+ "chain": [
+  {
+   "cause": "Impose two or more treatments, including a control or placebo",
+   "effect": "the comparison shows the effect of the treatment, not of time or expectation"
+  },
+  {
+   "cause": "Let chance assign the treatments to the experimental units",
+   "effect": "other variables balance between groups on average, so they cannot explain a difference"
+  },
+  {
+   "cause": "Use enough units per treatment, keep other conditions the same, and blind subjects and evaluators",
+   "effect": "chance differences average out and expectations do not bias the response"
+  },
+  {
+   "cause": "When the difference in response is too large to be chance (statistically significant)",
+   "effect": "conclude the treatment caused it, for units like these; generalizing needs a random sample"
+  }
+ ],
+ "ideas": [
+  "<b>Experimental units</b> (or subjects) receive <b>treatments</b>, the conditions imposed; the response variable is measured afterward. A <b>control group</b> gets no treatment, a <b>placebo</b> or the standard one.",
+  "Principles: compare treatments, use <b>random assignment</b>, use <b>replication</b> (enough units per treatment), and control other variables. <b>Blinding</b>: single-blind or double-blind.",
+  "<b>Completely randomized design</b>: assign every unit by chance. <b>Randomized block design</b>: group similar units into blocks, randomize within each. <b>Matched pairs</b>: pairs of similar units, or each unit gets both treatments in random order.",
+  "A difference is <b>statistically significant</b> when it is too large to be explained by chance alone. Random assignment allows cause; random sampling allows generalizing."
+ ],
+ "misconception": {
+  "wrong": "The gym’s volunteers were randomly assigned, so the result applies to every gym member in the country.",
+  "right": "Random assignment supports a cause-and-effect conclusion. Generalizing to a population needs a random sample from it; these were volunteers from one gym."
+ },
+ "check": [
+  "stat-experimental-design-1",
+  "stat-experimental-design-2",
+  "stat-experimental-design-3",
+  "stat-experimental-design-4",
+  "stat-experimental-design-5",
+  "stat-experimental-design-10",
+  "stat-experimental-design-12"
+ ],
+ "summary": "An experiment imposes treatments on experimental units and measures a response. Good designs compare treatments (often with a control or placebo), assign them at random, replicate, control other variables and blind where possible. Completely randomized, randomized block and matched pairs designs differ in how units are grouped before randomizing. Random assignment allows cause and effect; random sampling allows generalizing.",
+ "connections": [
+  {
+   "href": "../notes/sampling-problems.html",
+   "label": "Back: problems with sampling (1.12)"
+  }
+ ]
+}

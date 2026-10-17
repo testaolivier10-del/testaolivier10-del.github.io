@@ -1,0 +1,5 @@
+{
+ "two-sample-t-statistic": {
+  "def": "The test statistic of a two-sample t test: $t = \\frac{(\\bar{x}_1 - \\bar{x}_2) - 0}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$, the observed difference in sample means measured in standard errors. Its p-value comes from a t distribution with technology df or the conservative df."
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "binomial-distribution",
+ "hook": "A coffee shop says 30% of its customers order with its app. You watch 10 random customers and 7 of them use it. Is the shop wrong, or did you see a fluke? When a chance process repeats the same yes-or-no trial a fixed number of times, one formula gives every probability you need to decide.",
+ "prereq": [
+  {
+   "q": "What is $\\binom{5}{2}$?",
+   "options": [
+    "10",
+    "20",
+    "7",
+    "5"
+   ],
+   "correct": 0,
+   "why": "$\\binom{5}{2} = \\frac{5!}{2!\\,3!} = 10$.",
+   "review": "math-counting"
+  },
+  {
+   "q": "Events are independent when",
+   "options": [
+    "knowing one happened does not change the probability of the other",
+    "they cannot happen together",
+    "their probabilities add to 1",
+    "they have the same probability"
+   ],
+   "correct": 0,
+   "why": "That is the definition: $P(A \\mid B) = P(A)$.",
+   "review": "independence-unions"
+  }
+ ],
+ "figure": {
+  "figure": "u2-binomial-shaded",
+  "caption": "The binomial distribution with n = 10 and p = 0.3. The shaded bars, 4 through 10, add to P(X ≥ 4) = 0.350."
+ },
+ "chain": [
+  {
+   "cause": "A trial has two outcomes and repeats a fixed number of times, independently, with the same p",
+   "effect": "the count of successes X is binomial with parameters n and p"
+  },
+  {
+   "cause": "One order of k successes and n − k failures has probability $p^k(1 - p)^{n - k}$",
+   "effect": "and there are $\\binom{n}{k}$ such orders, so $P(X = k) = \\binom{n}{k}p^k(1 - p)^{n - k}$"
+  },
+  {
+   "cause": "An event like \"at least 4\" covers several values",
+   "effect": "add them, or use the complement: $P(X \\ge 4) = 1 - P(X \\le 3)$"
+  },
+  {
+   "cause": "The probability of a result as extreme as the one seen is very small under a claim",
+   "effect": "the result gives reason to doubt the claim"
+  }
+ ],
+ "ideas": [
+  "A <b>binomial setting</b>: two outcomes per trial, independent trials, a fixed number n of trials, the same success probability p on every trial.",
+  "The <b>binomial distribution</b>: $P(X = k) = \\binom{n}{k}p^k(1 - p)^{n - k}$ for $k = 0, 1, \\dots, n$.",
+  "Show work: name the distribution and parameters, the boundary and the direction: \"X is binomial, $n = 10$, $p = 0.3$; $P(X \\ge 4) = 1 - P(X \\le 3) = 0.350$.\"",
+  "Mean $\\mu_X = np$ and standard deviation $\\sigma_X = \\sqrt{np(1 - p)}$.",
+  "Translate carefully: \"fewer than 3\" is $P(X \\le 2)$, \"at least 4\" is $P(X \\ge 4)$."
+ ],
+ "misconception": {
+  "wrong": "$P(X \\ge 4)$ is $1 - P(X \\le 4)$.",
+  "right": "The complement of \"4 or more\" is \"3 or fewer\", so $P(X \\ge 4) = 1 - P(X \\le 3)$. Subtracting $P(X \\le 4)$ throws away the value 4 itself."
+ },
+ "check": [
+  "stat-binomial-distribution-1",
+  "stat-binomial-distribution-2",
+  "stat-binomial-distribution-3",
+  "stat-binomial-distribution-4",
+  "stat-binomial-distribution-5",
+  "stat-binomial-distribution-6"
+ ],
+ "summary": "When a yes-or-no trial repeats n times independently with the same success probability p, the number of successes is binomial: $P(X = k) = \\binom{n}{k}p^k(1 - p)^{n - k}$, with mean np and standard deviation $\\sqrt{np(1 - p)}$. Name the distribution and its parameters, translate the event into an inequality, and use the complement for \"at least\" questions. A tiny probability under a claim casts doubt on the claim."
+}

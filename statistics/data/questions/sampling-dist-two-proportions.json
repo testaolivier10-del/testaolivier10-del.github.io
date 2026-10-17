@@ -1,0 +1,762 @@
+{
+ "stimuli": {
+  "sampling-dist-two-proportions-s1": {
+   "kind": "table",
+   "title": "Bus riders in two school levels",
+   "text": "A school district knows from its bus card records that 70% of its high school students and 55% of its middle school students ride a district bus at least once a week. A reporter takes independent random samples of 100 high school students and 80 middle school students and finds the sample proportion of bus riders in each, $\\hat{p}_H$ and $\\hat{p}_M$. (Invented data.)",
+   "table": {
+    "caption": "Population proportions and sample sizes",
+    "cols": [
+     "Group",
+     "Proportion who ride",
+     "Sample size"
+    ],
+    "rows": [
+     [
+      "High school",
+      "0.70",
+      "100"
+     ],
+     [
+      "Middle school",
+      "0.55",
+      "80"
+     ]
+    ]
+   }
+  },
+  "sampling-dist-two-proportions-s2": {
+   "kind": "graph",
+   "title": "100 simulated differences in sample proportions",
+   "text": "A teacher simulates two classes of 60 students each, where every student has a 0.40 chance of saying yes to a survey question, in both classes. The histogram shows 100 simulated values of $\\hat{p}_1 - \\hat{p}_2$, the difference in the two sample proportions, in bins 0.05 wide (each bin includes its left end).",
+   "plot": {
+    "label": "Histogram of 100 simulated differences in sample proportions in bins 0.05 wide, centered near 0, from about minus 0.3 to 0.25",
+    "kind": "hist",
+    "data": [
+     0.05,
+     0.05,
+     -0.2,
+     -0.0333,
+     0.1167,
+     0.0833,
+     -0.1,
+     -0.0667,
+     0.1667,
+     0.1167,
+     0.0833,
+     0.1167,
+     -0.0167,
+     -0.0833,
+     -0.0667,
+     0.0333,
+     -0.0167,
+     0.2,
+     0.0667,
+     -0.1,
+     0.15,
+     -0.0333,
+     -0.0333,
+     0.0,
+     -0.0167,
+     -0.0167,
+     0.05,
+     -0.05,
+     0.0833,
+     -0.1,
+     -0.0167,
+     -0.0167,
+     0.0833,
+     0.1167,
+     -0.0833,
+     0.0333,
+     0.1833,
+     -0.0667,
+     0.05,
+     0.0167,
+     0.1833,
+     0.0167,
+     0.0333,
+     -0.0667,
+     -0.0333,
+     0.1,
+     -0.1333,
+     -0.0333,
+     0.1167,
+     0.05,
+     -0.0167,
+     0.05,
+     -0.05,
+     0.0,
+     -0.0167,
+     -0.0167,
+     -0.0333,
+     -0.15,
+     0.0333,
+     -0.3,
+     0.0167,
+     0.2167,
+     0.05,
+     -0.0167,
+     0.0667,
+     0.1167,
+     -0.0167,
+     0.0167,
+     0.1167,
+     0.0833,
+     0.0833,
+     0.05,
+     0.0,
+     -0.0667,
+     0.1333,
+     0.05,
+     0.0667,
+     0.0,
+     0.05,
+     0.0667,
+     -0.1167,
+     0.1333,
+     0.0,
+     0.0833,
+     0.1,
+     0.05,
+     -0.1333,
+     -0.0333,
+     0.0833,
+     0.1333,
+     -0.1,
+     -0.0833,
+     0.0167,
+     0.0333,
+     0.0167,
+     0.0,
+     0.0,
+     0.1,
+     0.0,
+     -0.05
+    ],
+    "bins": {
+     "start": -0.3,
+     "width": 0.05
+    },
+    "xStep": 0.1,
+    "xLabel": "difference in sample proportions",
+    "yLabel": "trials"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "simulated difference",
+      "values": [
+       0.05,
+       0.05,
+       -0.2,
+       -0.0333,
+       0.1167,
+       0.0833,
+       -0.1,
+       -0.0667,
+       0.1667,
+       0.1167,
+       0.0833,
+       0.1167,
+       -0.0167,
+       -0.0833,
+       -0.0667,
+       0.0333,
+       -0.0167,
+       0.2,
+       0.0667,
+       -0.1,
+       0.15,
+       -0.0333,
+       -0.0333,
+       0.0,
+       -0.0167,
+       -0.0167,
+       0.05,
+       -0.05,
+       0.0833,
+       -0.1,
+       -0.0167,
+       -0.0167,
+       0.0833,
+       0.1167,
+       -0.0833,
+       0.0333,
+       0.1833,
+       -0.0667,
+       0.05,
+       0.0167,
+       0.1833,
+       0.0167,
+       0.0333,
+       -0.0667,
+       -0.0333,
+       0.1,
+       -0.1333,
+       -0.0333,
+       0.1167,
+       0.05,
+       -0.0167,
+       0.05,
+       -0.05,
+       0.0,
+       -0.0167,
+       -0.0167,
+       -0.0333,
+       -0.15,
+       0.0333,
+       -0.3,
+       0.0167,
+       0.2167,
+       0.05,
+       -0.0167,
+       0.0667,
+       0.1167,
+       -0.0167,
+       0.0167,
+       0.1167,
+       0.0833,
+       0.0833,
+       0.05,
+       0.0,
+       -0.0667,
+       0.1333,
+       0.05,
+       0.0667,
+       0.0,
+       0.05,
+       0.0667,
+       -0.1167,
+       0.1333,
+       0.0,
+       0.0833,
+       0.1,
+       0.05,
+       -0.1333,
+       -0.0333,
+       0.0833,
+       0.1333,
+       -0.1,
+       -0.0833,
+       0.0167,
+       0.0333,
+       0.0167,
+       0.0,
+       0.0,
+       0.1,
+       0.0,
+       -0.05
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-sampling-dist-two-proportions-1",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sampling-dist-two-proportions-s1",
+   "q": "What is the mean of the sampling distribution of $\\hat{p}_H - \\hat{p}_M$?",
+   "why": {
+    "correct": "The difference $\\hat{p}_H - \\hat{p}_M$ is an unbiased estimator of $p_H - p_M = 0.15$.",
+    "options": [
+     "That averages the two proportions. The distribution of a difference is centered at the difference, $0.70 - 0.55$.",
+     "That divides 0.70 by 0.55. A difference is centered at $p_H - p_M$, a subtraction, not a ratio.",
+     "Zero would be the mean only if the two population proportions were equal. Here they differ by 0.15.",
+     "Right: the mean of a difference in sample proportions is the difference in the population proportions, $0.70 - 0.55 = 0.15$."
+    ]
+   },
+   "options": [
+    "$0.625$",
+    "$1.27$",
+    "$0$",
+    "$0.15$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-2",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sampling-dist-two-proportions-s1",
+   "q": "What is the standard deviation of the sampling distribution of $\\hat{p}_H - \\hat{p}_M$? Give three decimal places.",
+   "why": {
+    "correct": "$\\sigma = \\sqrt{\\frac{0.70(0.30)}{100} + \\frac{0.55(0.45)}{80}} = \\sqrt{0.0021 + 0.00309} = 0.072$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 3,
+    "from": {
+     "fn": "ci2prop",
+     "args": [
+      0.7,
+      100,
+      0.55,
+      80,
+      0.95
+     ],
+     "pick": "se"
+    },
+    "mistakes": [
+     {
+      "value": 0.1014,
+      "why": "You added the two standard deviations. Add the variances (the parts inside the square roots), then take one square root."
+     },
+     {
+      "value": 0.0315,
+      "why": "You subtracted the variances. Variability adds up even when you subtract the statistics, so add the two parts under the square root."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-3",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sampling-dist-two-proportions-s1",
+   "q": "Which check shows that the sampling distribution of $\\hat{p}_H - \\hat{p}_M$ is approximately normal?",
+   "why": {
+    "correct": "Approximate normality needs at least 10 expected successes and 10 expected failures in each sample.",
+    "options": [
+     "Proportions above 0.5 do not make a shape normal. The counts $n p$ and $n(1 - p)$ in each sample must reach 10.",
+     "Random selection lets you generalize, but it says nothing about the shape. The shape comes from the large counts condition.",
+     "Right: the large counts condition is checked for both samples, successes and failures, four counts in all.",
+     "Comparing $n$ with 30 is a rule for sample means. For proportions, check the four counts $n_1 p_1$, $n_1(1 - p_1)$, $n_2 p_2$, $n_2(1 - p_2)$ against 10."
+    ]
+   },
+   "options": [
+    "Both population proportions, 0.70 and 0.55, are above 0.5",
+    "Both samples were selected at random from the district",
+    "$100(0.70) = 70$, $100(0.30) = 30$, $80(0.55) = 44$ and $80(0.45) = 36$ are each at least 10",
+    "The combined sample size, $100 + 80 = 180$, is at least 30"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-4",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sampling-dist-two-proportions-s1",
+   "q": "What is the probability that $\\hat{p}_H - \\hat{p}_M$ is 0.05 or less? Give four decimal places.",
+   "why": {
+    "correct": "$z = \\frac{0.05 - 0.15}{0.072} = -1.39$, so $P(\\hat{p}_H - \\hat{p}_M \\le 0.05) = 0.0826$ (the area to the left of $z$ under the standard normal curve)."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "normCdf",
+     "args": [
+      0.05,
+      0.15,
+      0.07206767652699787
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.1621,
+      "why": "That uses the sum of the two standard deviations (0.101) as the spread. The standard deviation of the difference is 0.072: add variances, not standard deviations."
+     },
+     {
+      "value": 0.7561,
+      "why": "That centers the distribution at 0. The sampling distribution is centered at $p_H - p_M = 0.15$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-5",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "sampling-dist-two-proportions-s1",
+   "q": "The reporter finds $\\hat{p}_H - \\hat{p}_M = 0.02$. What does the sampling distribution say about this result?",
+   "why": {
+    "correct": "Compare the result with the sampling distribution: how many standard deviations from the mean is it, and how often does it happen?",
+    "options": [
+     "One unusual sample is not proof. It is surprising if the records are right, which is a reason to look closer, not a certainty.",
+     "Sample differences vary from sample to sample. The value 0.15 is the center of that variation, not the only possible result.",
+     "Right: $z = \\frac{0.02 - 0.15}{0.072} = -1.80$, and the area below it is about 0.036. Such a small difference is rare when the true difference is 0.15.",
+     "Positive is not enough. A difference of 0.02 sits 1.8 standard deviations below the mean of 0.15."
+    ]
+   },
+   "options": [
+    "It shows that the district records are wrong",
+    "It is impossible, because the difference has to be 0.15",
+    "It is unusual: a difference of 0.02 or less happens in about 4% of samples like these",
+    "It is typical, because 0.02 is a positive difference like 0.15"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-6",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "sampling-dist-two-proportions-s2",
+   "q": "Why is the histogram centered near 0?",
+   "why": {
+    "correct": "The mean of $\\hat{p}_1 - \\hat{p}_2$ is $p_1 - p_2 = 0.40 - 0.40 = 0$.",
+    "options": [
+     "Sample size affects the spread and the shape. The center comes from $p_1 - p_2$.",
+     "The number of trials changes how smooth the histogram looks, not where it is centered.",
+     "The center is the difference of the two proportions, $0.40 - 0.40 = 0$, not either proportion.",
+     "Right: the difference in sample proportions is centered at the difference in the true proportions, which is 0 here."
+    ]
+   },
+   "options": [
+    "Each class has more than 30 students",
+    "The teacher ran an even number of trials",
+    "A proportion of 0.40 is fairly close to 0 on this scale",
+    "The true proportions are equal, so $p_1 - p_2 = 0$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-7",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "sampling-dist-two-proportions-s2",
+   "q": "In how many of the 100 trials was the difference 0.15 or more, and what does that estimate?",
+   "why": {
+    "correct": "A simulated probability is the count of trials at or beyond the value, over the number of trials.",
+    "options": [
+     "The simulation assumed the proportions were equal. It estimates how often a difference that large happens under that assumption, not the chance the assumption is true.",
+     "That counts the trials below 0.15. The question asks for 0.15 or more.",
+     "Right: add the heights of the bars from 0.15 up (6) and divide by the 100 trials.",
+     "The number of trials has to be read from the bars. A cutoff value does not tell you how many trials lie beyond it."
+    ]
+   },
+   "options": [
+    "6 trials, so about 0.06 is the probability that the two true proportions are equal",
+    "94 trials, so a difference of 0.15 or more happens in most samples like these",
+    "6 trials; about 0.06 estimates the chance of a difference this large",
+    "15 trials, because the value 0.15 stands for 15 out of each 100 trials"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-8",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sampling-dist-two-proportions-s2",
+   "q": "The 100 simulated differences have a standard deviation of 0.088. Which formula value is this an estimate of?",
+   "why": {
+    "correct": "For independent samples the variances add: $\\sigma^2 = \\frac{p_1(1-p_1)}{n_1} + \\frac{p_2(1-p_2)}{n_2}$.",
+    "options": [
+     "That is the standard deviation of one sample proportion. A difference of two independent sample proportions varies more: add both variances.",
+     "Putting both classes in one sample of 120 gives the spread of one proportion, not of a difference of two.",
+     "That is the variance. Take the square root to get a standard deviation.",
+     "Right: the simulation estimates the standard deviation of the sampling distribution, and the formula gives it exactly."
+    ]
+   },
+   "options": [
+    "$\\sqrt{\\frac{0.4(0.6)}{60}} = 0.063$",
+    "$\\sqrt{\\frac{0.4(0.6)}{120}} = 0.045$",
+    "$\\frac{0.4(0.6)}{60} + \\frac{0.4(0.6)}{60} = 0.008$",
+    "$\\sqrt{\\frac{0.4(0.6)}{60} + \\frac{0.4(0.6)}{60}} = 0.089$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-9",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "sampling-dist-two-proportions-s2",
+   "q": "The teacher repeats the simulation with 240 students in each class instead of 60. How does the new histogram compare?",
+   "why": {
+    "correct": "Quadrupling both sample sizes halves the standard deviation of the difference.",
+    "options": [
+     "The center is $p_1 - p_2 = 0$, whatever the sample size.",
+     "The spread depends on the sample sizes as well as the proportions. Larger samples vary less.",
+     "Four times the sample size divides the variance by 4, but the standard deviation, its square root, only by 2.",
+     "Right: each variance is divided by 4, so the standard deviation is divided by $\\sqrt{4} = 2$. The center stays at 0."
+    ]
+   },
+   "options": [
+    "A center four times farther from 0",
+    "The same spread, because the proportions are still 0.40",
+    "About the same center, with about a quarter of the spread",
+    "About the same center, with about half the spread"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-10",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A survey asks 200 married couples whether each partner exercises weekly, and compares $\\hat{p}_{\\text{wives}} - \\hat{p}_{\\text{husbands}}$. Why should the standard deviation formula for a difference of two sample proportions not be used here?",
+   "why": {
+    "correct": "The variance of a difference is the sum of the variances only for independent samples.",
+    "options": [
+     "Equal sample sizes are fine. The problem is that the samples are linked couple by couple.",
+     "There is no such size rule. The formula needs two independent samples, and these are paired.",
+     "Right: the formula adds two variances, which works only when the two samples are independent. Partners in one household are linked.",
+     "Whether a person exercises weekly is categorical (yes or no), so proportions are right. The samples are the issue."
+    ]
+   },
+   "options": [
+    "The two sample sizes are equal, at 200 people each",
+    "The survey has fewer than 1,000 people taking part in it",
+    "The samples are linked: each wife is paired with her husband",
+    "Exercise is a quantitative variable, not a categorical one"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-11",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Independent random samples of 100 high school students and 80 middle school students are drawn without replacement. Which statement checks the 10% condition?",
+   "why": {
+    "correct": "Sampling without replacement: each sample is less than 10% of its population, so the observations are close enough to independent.",
+    "options": [
+     "That is part of the large counts condition, which is about shape. The 10% condition is about sampling without replacement.",
+     "That checks the random condition. The 10% condition is about the size of each sample compared with its population.",
+     "Right: the 10% condition is checked for each sample against its own population.",
+     "The 10% condition compares each sample with its population, and the sample must be smaller than 10% of it."
+    ]
+   },
+   "options": [
+    "At least 10 students in each of the two samples ride the bus",
+    "The samples were chosen at random from two separate lists of students",
+    "Each sample is less than 10% of the students at its own school level",
+    "100 and 80 are each at least 10% of the combined sample of 180"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-12",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "setup",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a large city, 35% of adults under 30 and 25% of adults 30 or older use a bike share at least once a month. Independent random samples of 250 younger adults and 200 older adults are taken. Write the expression for the standard deviation of $\\hat{p}_{\\text{young}} - \\hat{p}_{\\text{old}}$, then give its value to three decimal places.",
+   "why": {
+    "correct": "$\\sigma = \\sqrt{\\frac{0.35(0.65)}{250} + \\frac{0.25(0.75)}{200}} = \\sqrt{0.00091 + 0.00094} = 0.043$."
+   },
+   "setup": {
+    "answer": "sqrt(0.35*0.65/250 + 0.25*0.75/200)",
+    "bind": {},
+    "mustUse": [
+     "250",
+     "200"
+    ],
+    "then": {
+     "kind": "stat",
+     "places": 3,
+     "from": {
+      "fn": "ci2prop",
+      "args": [
+       0.35,
+       250,
+       0.25,
+       200,
+       0.95
+      ],
+      "pick": "se"
+     }
+    },
+    "mistakes": [
+     {
+      "expr": "sqrt(0.35*0.65/250) + sqrt(0.25*0.75/200)",
+      "why": "That adds two standard deviations. Put both variance terms under one square root."
+     },
+     {
+      "expr": "sqrt(0.25*0.75/200 - 0.35*0.65/250)",
+      "why": "Subtracting the statistics still adds variability: the two terms under the square root are added."
+     },
+     {
+      "expr": "sqrt(0.1*0.9/450)",
+      "why": "That treats the difference 0.10 as one proportion from one sample. Each group keeps its own proportion and its own sample size."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-13",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the bike share samples, the sampling distribution of $\\hat{p}_{\\text{young}} - \\hat{p}_{\\text{old}}$ is approximately normal with mean 0.10 and standard deviation 0.043. What is the probability that the sample difference is greater than 0.15? Give four decimal places.",
+   "why": {
+    "correct": "$z = \\frac{0.15 - 0.10}{0.043} = 1.16$; the area to the right is $1 - 0.8776 = 0.1224$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "normCdf",
+     "args": [
+      0.15,
+      0.1,
+      0.04298255460067491
+     ],
+     "complement": true
+    },
+    "mistakes": [
+     {
+      "value": 0.8776,
+      "why": "That is the area to the left of 0.15. \"Greater than\" asks for the area to the right: subtract from 1."
+     },
+     {
+      "value": 0.0002,
+      "why": "That centers the distribution at 0. Its mean is $p_1 - p_2 = 0.10$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-14",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which change makes the standard deviation of $\\hat{p}_1 - \\hat{p}_2$ smaller, with the population proportions kept the same?",
+   "why": {
+    "correct": "Both terms $\\frac{p(1-p)}{n}$ shrink as their $n$ grows.",
+    "options": [
+     "The question keeps the proportions fixed. The spread is lowered by larger samples.",
+     "One combined sample gives one proportion. It no longer measures a difference between two groups.",
+     "Switching the order changes the sign of the mean, not the spread. The variances add either way.",
+     "Right: each variance term has its sample size in the denominator, so larger samples shrink both terms."
+    ]
+   },
+   "options": [
+    "Using a larger difference between the populations",
+    "Combining the two samples into one",
+    "Subtracting in the other order, $\\hat{p}_2 - \\hat{p}_1$",
+    "Taking larger samples from both populations"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-15",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A clinic compares two rare side effects: 5% of patients on drug A and 8% on drug B have one. It takes independent random samples of 40 patients on each drug. Which condition fails for treating $\\hat{p}_A - \\hat{p}_B$ as approximately normal?",
+   "why": {
+    "correct": "Each of $n_1 p_1$, $n_1(1-p_1)$, $n_2 p_2$, $n_2(1-p_2)$ must be at least 10.",
+    "options": [
+     "A small sample makes the 10% condition easier to meet. The problem is too few expected successes.",
+     "Right: with rare outcomes and small samples, too few expected successes make the distribution skewed.",
+     "Two separate random samples of patients are independent even if the drugs treat the same illness.",
+     "Rare outcomes do not make a sample nonrandom. They make the large counts condition fail."
+    ]
+   },
+   "options": [
+    "The 10% condition, because 40 patients is a small sample",
+    "Large counts: $40(0.05) = 2$ and $40(0.08) = 3.2$ are below 10",
+    "Independence, because both of the drugs are used for the same illness",
+    "Random, because side effects are rare"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-16",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"The standard deviation of $\\hat{p}_1 - \\hat{p}_2$ is the standard deviation of $\\hat{p}_1$ minus the standard deviation of $\\hat{p}_2$.\" What is wrong with this?",
+   "why": {
+    "correct": "$\\sigma_{\\hat{p}_1 - \\hat{p}_2} = \\sqrt{\\sigma^2_{\\hat{p}_1} + \\sigma^2_{\\hat{p}_2}}$, which is larger than either standard deviation.",
+    "options": [
+     "Right: each sample brings its own chance error, and the two errors do not cancel, so the spread of a difference is larger than either one.",
+     "If that were right, two samples with equal spreads would give a difference with no spread at all, which is not what happens.",
+     "Multiplying has no basis here. For independent samples the variances add.",
+     "An average would make the difference less variable than one of the samples. The spread of a difference is larger than either."
+    ]
+   },
+   "options": [
+    "Variability from two independent samples adds, so the variances are added",
+    "Nothing; a difference of statistics has a difference of standard deviations",
+    "The standard deviations should be multiplied",
+    "The standard deviations should be averaged"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-sampling-dist-two-proportions-17",
+   "unit": "unit-3",
+   "topic": "sampling-dist-two-proportions",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two independent random samples of 300 come from populations with $p_1 = 0.50$ and $p_2 = 0.50$. About how far from 0 is a typical value of $\\hat{p}_1 - \\hat{p}_2$?",
+   "why": {
+    "correct": "The standard deviation is the typical distance of the statistic from its mean.",
+    "options": [
+     "Right: $\\sqrt{\\frac{0.5(0.5)}{300} + \\frac{0.5(0.5)}{300}} = 0.041$, a typical distance from the mean of 0.",
+     "That is one of the proportions. The question asks how much the difference varies.",
+     "That is the variance, $\\frac{0.25}{300} + \\frac{0.25}{300}$, before the square root.",
+     "That is the standard deviation of one sample proportion, 0.029. A difference of two varies more."
+    ]
+   },
+   "options": [
+    "About 0.04",
+    "About 0.50",
+    "About 0.0017",
+    "About 0.03"
+   ],
+   "correct": 0
+  }
+ ]
+}

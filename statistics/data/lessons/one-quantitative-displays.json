@@ -1,0 +1,81 @@
+{
+ "topic": "one-quantitative-displays",
+ "hook": "A teacher asks 25 students how many books they read over the summer. A list of 25 numbers says little. A row of dots over a number line says a lot at once: most students read 2 to 4 books, a few read many more, and one read none. Graphs for quantitative data put the values on a number line so you can see where they fall.",
+ "prereq": [
+  {
+   "q": "Which variable is quantitative?",
+   "options": [
+    "Number of books read",
+    "Favorite author",
+    "Library card (yes or no)",
+    "Grade level label"
+   ],
+   "correct": 0,
+   "why": "Books read is a count, so arithmetic with it makes sense.",
+   "review": "variables"
+  },
+  {
+   "q": "Of 25 students, 12 read four books or more. What proportion is that?",
+   "options": [
+    "0.48",
+    "0.12",
+    "2.08",
+    "0.25"
+   ],
+   "correct": 0,
+   "why": "Part over whole: 12/25 = 0.48.",
+   "review": "math-fractions-percents"
+  }
+ ],
+ "figure": {
+  "figure": "bin-width",
+  "caption": "The same 30 homework times as a dotplot and as histograms with bins 5 and 10 minutes wide. Narrow bins show detail; wide bins give a smoother picture."
+ },
+ "chain": [
+  {
+   "cause": "Quantitative values have positions on a number line",
+   "effect": "a dotplot puts one dot per value above its place on the line"
+  },
+  {
+   "cause": "With many values, dots pile up",
+   "effect": "a histogram groups values into equal bins and draws a bar for each bin’s count"
+  },
+  {
+   "cause": "The bins are chosen by whoever draws the graph",
+   "effect": "the same data can look bumpy with narrow bins or smooth with wide ones"
+  },
+  {
+   "cause": "Adding up the relative frequencies from the left",
+   "effect": "a cumulative relative frequency graph shows the proportion of values at or below each point"
+  }
+ ],
+ "ideas": [
+  "A <b>dotplot</b> shows each value as a dot above a number line; repeated values stack. Best for small data sets.",
+  "A <b>stemplot</b> splits each value into a stem (leading digits) and a leaf (last digit). It keeps every value; always give a key.",
+  "A <b>histogram</b> groups values into equal bins; each bar’s height is the bin’s count or relative frequency, and the bars touch. Its look depends on the <b>bin width</b>.",
+  "A <b>cumulative relative frequency graph</b> gives, at each value, the proportion of the data at or below that value. The proportion between two values is the difference of the heights."
+ ],
+ "misconception": {
+  "wrong": "A value that lands on a bin edge, like 4 books in bins 2 to 4 and 4 to 6, is counted in both bins.",
+  "right": "Each value goes in exactly one bin. With bins that hold their left end, 4 goes in the 4 to 6 bin."
+ },
+ "check": [
+  "stat-one-quantitative-displays-1",
+  "stat-one-quantitative-displays-2",
+  "stat-one-quantitative-displays-3",
+  "stat-one-quantitative-displays-4",
+  "stat-one-quantitative-displays-13",
+  "stat-one-quantitative-displays-15"
+ ],
+ "summary": "Dotplots and stemplots show every value of a small quantitative data set; histograms group values into equal bins and show the count in each, and their look depends on the bin width. A cumulative relative frequency graph shows the proportion of values at or below each point, so a proportion between two values is a difference of heights.",
+ "connections": [
+  {
+   "href": "../notes/one-categorical-displays.html",
+   "label": "Back: graphs for one categorical variable (1.4)"
+  },
+  {
+   "href": "../notes/describing-distributions.html",
+   "label": "Next: describing distributions (1.6)"
+  }
+ ]
+}

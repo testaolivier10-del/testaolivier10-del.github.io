@@ -1,0 +1,49 @@
+<p>Topic 1.7 gave you quartiles, the median and a rule for outliers. A boxplot turns those numbers into a picture. It is quick to draw, easy to compare across groups, and it shows skew and outliers clearly. It also hides a lot, and knowing what it hides is part of reading it well.</p>
+
+<h2>The five-number summary</h2>
+<p>The <b>five-number summary</b> is the minimum, $Q_1$, the median, $Q_3$ and the maximum. These five numbers cut the ordered data into four parts with about a quarter of the values in each: below $Q_1$, from $Q_1$ to the median, from the median to $Q_3$, and above $Q_3$.</p>
+<div class="worked">
+<p><b>Find the five numbers.</b> Seven values in order: 3, 5, 7, 8, 12, 13, 14.</p>
+<p>Median: the 4th value, 8.</p>
+<p>With n odd, leave the median out of both halves. Lower half 3, 5, 7: $Q_1 = 5$. Upper half 12, 13, 14: $Q_3 = 13$.</p>
+<p>Five-number summary: 3, 5, 8, 13, 14.</p>
+</div>
+
+<h2>Drawing a boxplot</h2>
+<ol>
+<li>Draw a number line for the variable, with units.</li>
+<li>Draw a box from $Q_1$ to $Q_3$ and a line across it at the median.</li>
+<li>Compute the fences, $Q_1 - 1.5 \times \text{IQR}$ and $Q_3 + 1.5 \times \text{IQR}$. Do not draw them; use them to sort the values.</li>
+<li>Draw each whisker from the box out to the most extreme data value inside its fence.</li>
+<li>Mark every value beyond a fence as a separate point: these are the outliers.</li>
+</ol>
+<figure id="fig-box" data-fig="box-from-dots"><figcaption>A dotplot and a boxplot of the same 20 commute times. The boxplot keeps five numbers and the outlier.</figcaption></figure>
+<div class="worked">
+<p><b>Build the boxplot.</b> The commute times of 20 workers, in minutes: 8, 10, 12, 12, 14, 15, 16, 18, 18, 20, 21, 22, 24, 25, 27, 30, 32, 35, 38, 62.</p>
+<p>Median: average of the 10th and 11th values, $\frac{20 + 21}{2} = 20.5$.</p>
+<p>$Q_1$: the lower 10 values have median $\frac{14 + 15}{2} = 14.5$. $Q_3$: the upper 10 have median $\frac{27 + 30}{2} = 28.5$.</p>
+<p>$\text{IQR} = 28.5 - 14.5 = 14$. Fences: $14.5 - 1.5(14) = -6.5$ and $28.5 + 1.5(14) = 49.5$.</p>
+<p>62 is above 49.5, so it is an outlier. The right whisker stops at 38, the largest value inside the fence; the left whisker reaches the minimum, 8.</p>
+</div>
+
+<h2>Reading a boxplot</h2>
+<ul>
+<li><b>Center</b>: the median line. It is the median, not the mean; a boxplot does not show the mean.</li>
+<li><b>Spread</b>: the length of the box is the IQR; from the end of one whisker (or the farthest outlier) to the other is the range.</li>
+<li><b>Quarters</b>: about 25% of the values lie in each whisker section and in each half of the box. So "about half the workers commute between 14.5 and 28.5 minutes", and "about a quarter commute longer than 28.5 minutes".</li>
+<li><b>Skew</b>: a longer whisker on one side and the median closer to the other end of the box suggest skew toward the long side. Above, the right whisker and the outlier stretch far to the right: skewed right.</li>
+<li><b>Outliers</b>: points beyond the whiskers, by the $1.5 \times \text{IQR}$ rule.</li>
+</ul>
+<p>A longer section does not hold more values. Each quarter holds about the same number of values; a longer section means those values are more spread out.</p>
+
+<h2>What a boxplot cannot show</h2>
+<p>Everything inside the box and along the whiskers is hidden. Two very different data sets can have the same boxplot: one with values spread evenly, another with two clumps and a gap. So a boxplot cannot show <b>how many peaks</b> a distribution has, or gaps and clusters. Saying a boxplot is "unimodal" or "bell-shaped" is a classic exam error. If you need the shape in detail, use a dotplot or a histogram; if you need to compare groups quickly, the boxplot is the tool of choice.</p>
+<table class="compare">
+<thead><tr><th>A boxplot shows</th><th>A boxplot hides</th></tr></thead>
+<tbody>
+<tr><td>median, quartiles, minimum and maximum</td><td>the mean and standard deviation</td></tr>
+<tr><td>IQR and range</td><td>how many values there are</td></tr>
+<tr><td>skew, roughly</td><td>peaks, gaps and clusters</td></tr>
+<tr><td>outliers by the $1.5 \times \text{IQR}$ rule</td><td>individual values inside the fences</td></tr>
+</tbody>
+</table>

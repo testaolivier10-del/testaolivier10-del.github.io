@@ -1,0 +1,5 @@
+{
+ "two-sample-t-test": {
+  "def": "A significance test of $H_0: \\mu_1 - \\mu_2 = 0$ for two independent random samples or two randomly assigned groups, with $\\sigma_1$ and $\\sigma_2$ unknown. It uses $s_1$ and $s_2$ separately (no combined standard deviation) and the t distribution with technology or conservative df."
+ }
+}

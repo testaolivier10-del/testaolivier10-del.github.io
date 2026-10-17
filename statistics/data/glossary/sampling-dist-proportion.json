@@ -1,0 +1,11 @@
+{
+ "large-counts": {
+  "def": "The check that the sampling distribution of $\\hat{p}$ is approximately normal: at least 10 expected successes and 10 expected failures, $np \\ge 10$ and $n(1 - p) \\ge 10$ (some books use 5). It is never \"$n \\ge 30$\" for proportions."
+ },
+ "ten-percent": {
+  "def": "When sampling without replacement, the sample size is at most 10% of the population size. Then the selections are close to independent and the standard deviation formula for a statistic is accurate."
+ },
+ "sd-phat": {
+  "def": "The spread of the sampling distribution of the sample proportion: $\\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1 - p)}{n}}$, using the true proportion $p$. Four times the sample size halves it."
+ }
+}

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 510" width="640" height="510" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Sampling distribution of a sample proportion</title>
+<desc id="d">Two probability histograms of the sample proportion of seeds that sprout when the true proportion is p = 0.85. Top, samples of 200: the bars form a symmetric mound centered at 0.85 that matches the normal curve with mean 0.85 and standard deviation 0.025 drawn over it; large counts hold because 200(0.85) = 170 and 200(0.15) = 30 are both at least 10. Bottom, samples of 20: the bars are skewed left, piled up near 0.85 to 1 with a long tail toward lower values, and the normal curve does not fit; 20(0.15) = 3 is less than 10.</desc>
+<rect width="640" height="510" fill="#FFFFFF"/>
+<rect x="33.7" y="183.87" width="12.6" height="0.13" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="47.7" y="183.76" width="12.6" height="0.24" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="61.7" y="183.56" width="12.6" height="0.44" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="75.7" y="183.21" width="12.6" height="0.79" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="89.7" y="182.64" width="12.6" height="1.36" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="103.7" y="181.71" width="12.6" height="2.29" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="117.7" y="180.26" width="12.6" height="3.74" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="131.7" y="178.05" width="12.6" height="5.95" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="145.7" y="174.83" width="12.6" height="9.17" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="159.7" y="170.27" width="12.6" height="13.73" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="173.7" y="164.07" width="12.6" height="19.93" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="187.7" y="155.94" width="12.6" height="28.06" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="201.7" y="145.72" width="12.6" height="38.28" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="215.7" y="133.43" width="12.6" height="50.57" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="229.7" y="119.35" width="12.6" height="64.65" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="243.7" y="104.07" width="12.6" height="79.93" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="257.7" y="88.5" width="12.6" height="95.5" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="271.7" y="73.82" width="12.6" height="110.18" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="285.7" y="61.36" width="12.6" height="122.64" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="299.7" y="52.41" width="12.6" height="131.59" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="313.7" y="48.02" width="12.6" height="135.98" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="327.7" y="48.82" width="12.6" height="135.18" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="341.7" y="54.85" width="12.6" height="129.15" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="355.7" y="65.55" width="12.6" height="118.45" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="369.7" y="79.84" width="12.6" height="104.16" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="383.7" y="96.31" width="12.6" height="87.69" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="397.7" y="113.42" width="12.6" height="70.58" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="411.7" y="129.77" width="12.6" height="54.23" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="425.7" y="144.29" width="12.6" height="39.71" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="439.7" y="156.34" width="12.6" height="27.66" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="453.7" y="165.72" width="12.6" height="18.28" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="467.7" y="172.55" width="12.6" height="11.45" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="481.7" y="177.23" width="12.6" height="6.77" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="495.7" y="180.22" width="12.6" height="3.78" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="509.7" y="182.02" width="12.6" height="1.98" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="523.7" y="183.03" width="12.6" height="0.97" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="537.7" y="183.56" width="12.6" height="0.44" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="551.7" y="183.81" width="12.6" height="0.19" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="565.7" y="183.93" width="12.6" height="0.07" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="579.7" y="183.97" width="12.6" height="0.03" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<rect x="593.7" y="183.99" width="12.6" height="0.01" fill="#E9D3E8" stroke="#6E2470" stroke-width="1"/>
+<line x1="40" y1="184" x2="600" y2="184" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="40" y1="184" x2="40" y2="190" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="40" y="207" font-size="15" text-anchor="middle" fill="#1F2A28">0.75</text>
+<line x1="180" y1="184" x2="180" y2="190" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="180" y="207" font-size="15" text-anchor="middle" fill="#1F2A28">0.8</text>
+<line x1="320" y1="184" x2="320" y2="190" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="320" y="207" font-size="15" text-anchor="middle" fill="#1F2A28">0.85</text>
+<line x1="460" y1="184" x2="460" y2="190" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="460" y="207" font-size="15" text-anchor="middle" fill="#1F2A28">0.9</text>
+<line x1="600" y1="184" x2="600" y2="190" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="600" y="207" font-size="15" text-anchor="middle" fill="#1F2A28">0.95</text>
+<text x="320" y="232" font-size="16" text-anchor="middle" fill="#1F2A28">sample proportion that sprout</text>
+<path d="M40 183.95L41.87 183.94L43.73 183.93L45.6 183.93L47.47 183.92L49.33 183.91L51.2 183.9L53.07 183.89L54.93 183.88L56.8 183.87L58.67 183.85L60.53 183.84L62.4 183.82L64.27 183.8L66.13 183.78L68 183.76L69.87 183.74L71.73 183.71L73.6 183.69L75.47 183.66L77.33 183.62L79.2 183.59L81.07 183.55L82.93 183.51L84.8 183.46L86.67 183.41L88.53 183.36L90.4 183.3L92.27 183.24L94.13 183.17L96 183.1L97.87 183.02L99.73 182.94L101.6 182.85L103.47 182.75L105.33 182.64L107.2 182.53L109.07 182.41L110.93 182.28L112.8 182.14L114.67 181.99L116.53 181.83L118.4 181.66L120.27 181.48L122.13 181.29L124 181.08L125.87 180.86L127.73 180.62L129.6 180.37L131.47 180.11L133.33 179.82L135.2 179.52L137.07 179.21L138.93 178.87L140.8 178.51L142.67 178.13L144.53 177.73L146.4 177.31L148.27 176.87L150.13 176.4L152 175.9L153.87 175.38L155.73 174.83L157.6 174.25L159.47 173.65L161.33 173.01L163.2 172.35L165.07 171.65L166.93 170.92L168.8 170.15L170.67 169.35L172.53 168.52L174.4 167.64L176.27 166.74L178.13 165.79L180 164.81L181.87 163.78L183.73 162.72L185.6 161.62L187.47 160.47L189.33 159.29L191.2 158.06L193.07 156.79L194.93 155.48L196.8 154.13L198.67 152.73L200.53 151.3L202.4 149.81L204.27 148.29L206.13 146.73L208 145.12L209.87 143.48L211.73 141.79L213.6 140.06L215.47 138.3L217.33 136.49L219.2 134.65L221.07 132.78L222.93 130.87L224.8 128.93L226.67 126.95L228.53 124.95L230.4 122.92L232.27 120.86L234.13 118.78L236 116.68L237.87 114.56L239.73 112.42L241.6 110.27L243.47 108.1L245.33 105.93L247.2 103.75L249.07 101.57L250.93 99.38L252.8 97.2L254.67 95.03L256.53 92.86L258.4 90.71L260.27 88.57L262.13 86.45L264 84.36L265.87 82.29L267.73 80.24L269.6 78.24L271.47 76.26L273.33 74.33L275.2 72.44L277.07 70.6L278.93 68.81L280.8 67.07L282.67 65.38L284.53 63.76L286.4 62.2L288.27 60.7L290.13 59.28L292 57.92L293.87 56.64L295.73 55.44L297.6 54.31L299.47 53.27L301.33 52.31L303.2 51.43L305.07 50.64L306.93 49.95L308.8 49.34L310.67 48.82L312.53 48.39L314.4 48.06L316.27 47.83L318.13 47.68L320 47.64L321.87 47.68L323.73 47.83L325.6 48.06L327.47 48.39L329.33 48.82L331.2 49.34L333.07 49.95L334.93 50.64L336.8 51.43L338.67 52.31L340.53 53.27L342.4 54.31L344.27 55.44L346.13 56.64L348 57.92L349.87 59.28L351.73 60.7L353.6 62.2L355.47 63.76L357.33 65.38L359.2 67.07L361.07 68.81L362.93 70.6L364.8 72.44L366.67 74.33L368.53 76.26L370.4 78.24L372.27 80.24L374.13 82.29L376 84.36L377.87 86.45L379.73 88.57L381.6 90.71L383.47 92.86L385.33 95.03L387.2 97.2L389.07 99.38L390.93 101.57L392.8 103.75L394.67 105.93L396.53 108.1L398.4 110.27L400.27 112.42L402.13 114.56L404 116.68L405.87 118.78L407.73 120.86L409.6 122.92L411.47 124.95L413.33 126.95L415.2 128.93L417.07 130.87L418.93 132.78L420.8 134.65L422.67 136.49L424.53 138.3L426.4 140.06L428.27 141.79L430.13 143.48L432 145.12L433.87 146.73L435.73 148.29L437.6 149.81L439.47 151.3L441.33 152.73L443.2 154.13L445.07 155.48L446.93 156.79L448.8 158.06L450.67 159.29L452.53 160.47L454.4 161.62L456.27 162.72L458.13 163.78L460 164.81L461.87 165.79L463.73 166.74L465.6 167.64L467.47 168.52L469.33 169.35L471.2 170.15L473.07 170.92L474.93 171.65L476.8 172.35L478.67 173.01L480.53 173.65L482.4 174.25L484.27 174.83L486.13 175.38L488 175.9L489.87 176.4L491.73 176.87L493.6 177.31L495.47 177.73L497.33 178.13L499.2 178.51L501.07 178.87L502.93 179.21L504.8 179.52L506.67 179.82L508.53 180.11L510.4 180.37L512.27 180.62L514.13 180.86L516 181.08L517.87 181.29L519.73 181.48L521.6 181.66L523.47 181.83L525.33 181.99L527.2 182.14L529.07 182.28L530.93 182.41L532.8 182.53L534.67 182.64L536.53 182.75L538.4 182.85L540.27 182.94L542.13 183.02L544 183.1L545.87 183.17L547.73 183.24L549.6 183.3L551.47 183.36L553.33 183.41L555.2 183.46L557.07 183.51L558.93 183.55L560.8 183.59L562.67 183.62L564.53 183.66L566.4 183.69L568.27 183.71L570.13 183.74L572 183.76L573.87 183.78L575.73 183.8L577.6 183.82L579.47 183.84L581.33 183.85L583.2 183.87L585.07 183.88L586.93 183.89L588.8 183.9L590.67 183.91L592.53 183.92L594.4 183.93L596.27 183.93L598.13 183.94L600 183.95" fill="none" stroke="#1F2A28" stroke-width="2.4" stroke-linejoin="round"/>
+<text x="40" y="24" font-size="16" font-weight="bold" fill="#6E2470">Samples of 200 seeds: 200(0.85) = 170 and 200(0.15) = 30</text>
+<text x="600" y="52" font-size="15" text-anchor="end" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">approximately normal</text>
+<rect x="20.31" y="440" width="39.38" height="0" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="64.06" y="439.98" width="39.38" height="0.02" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="107.81" y="439.89" width="39.37" height="0.11" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="151.56" y="439.41" width="39.37" height="0.59" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="195.31" y="437.49" width="39.37" height="2.51" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="239.06" y="431.26" width="39.37" height="8.74" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="282.81" y="415.23" width="39.37" height="24.77" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="326.56" y="383.86" width="39.37" height="56.14" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="370.31" y="340.59" width="39.37" height="99.41" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="414.06" y="307.46" width="39.37" height="132.54" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="457.81" y="314.82" width="39.37" height="125.18" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="501.56" y="365.33" width="39.37" height="74.67" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<rect x="545.31" y="418.84" width="39.37" height="21.16" fill="#F6D9C7" stroke="#D55E00" stroke-width="1"/>
+<line x1="40" y1="440" x2="600" y2="440" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="40" y1="440" x2="40" y2="446" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="40" y="463" font-size="15" text-anchor="middle" fill="#1F2A28">0.4</text>
+<line x1="127.5" y1="440" x2="127.5" y2="446" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="127.5" y="463" font-size="15" text-anchor="middle" fill="#1F2A28">0.5</text>
+<line x1="215" y1="440" x2="215" y2="446" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="215" y="463" font-size="15" text-anchor="middle" fill="#1F2A28">0.6</text>
+<line x1="302.5" y1="440" x2="302.5" y2="446" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="302.5" y="463" font-size="15" text-anchor="middle" fill="#1F2A28">0.7</text>
+<line x1="390" y1="440" x2="390" y2="446" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="390" y="463" font-size="15" text-anchor="middle" fill="#1F2A28">0.8</text>
+<line x1="477.5" y1="440" x2="477.5" y2="446" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="477.5" y="463" font-size="15" text-anchor="middle" fill="#1F2A28">0.9</text>
+<line x1="565" y1="440" x2="565" y2="446" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="565" y="463" font-size="15" text-anchor="middle" fill="#1F2A28">1</text>
+<text x="320" y="488" font-size="16" text-anchor="middle" fill="#1F2A28">sample proportion that sprout</text>
+<path d="M40 440L41.87 440L43.73 440L45.6 440L47.47 440L49.33 440L51.2 440L53.07 440L54.93 440L56.8 440L58.67 440L60.53 440L62.4 440L64.27 440L66.13 440L68 440L69.87 440L71.73 440L73.6 440L75.47 440L77.33 440L79.2 440L81.07 440L82.93 440L84.8 440L86.67 440L88.53 440L90.4 440L92.27 440L94.13 440L96 440L97.87 440L99.73 440L101.6 440L103.47 440L105.33 440L107.2 440L109.07 440L110.93 440L112.8 440L114.67 440L116.53 440L118.4 439.99L120.27 439.99L122.13 439.99L124 439.99L125.87 439.99L127.73 439.99L129.6 439.99L131.47 439.99L133.33 439.99L135.2 439.99L137.07 439.98L138.93 439.98L140.8 439.98L142.67 439.98L144.53 439.97L146.4 439.97L148.27 439.97L150.13 439.96L152 439.96L153.87 439.96L155.73 439.95L157.6 439.94L159.47 439.94L161.33 439.93L163.2 439.92L165.07 439.92L166.93 439.91L168.8 439.9L170.67 439.89L172.53 439.87L174.4 439.86L176.27 439.85L178.13 439.83L180 439.81L181.87 439.79L183.73 439.77L185.6 439.75L187.47 439.73L189.33 439.7L191.2 439.67L193.07 439.64L194.93 439.6L196.8 439.57L198.67 439.53L200.53 439.48L202.4 439.43L204.27 439.38L206.13 439.32L208 439.26L209.87 439.2L211.73 439.13L213.6 439.05L215.47 438.97L217.33 438.88L219.2 438.78L221.07 438.67L222.93 438.56L224.8 438.44L226.67 438.31L228.53 438.18L230.4 438.03L232.27 437.87L234.13 437.7L236 437.52L237.87 437.32L239.73 437.12L241.6 436.89L243.47 436.66L245.33 436.41L247.2 436.14L249.07 435.86L250.93 435.56L252.8 435.24L254.67 434.9L256.53 434.54L258.4 434.16L260.27 433.75L262.13 433.33L264 432.88L265.87 432.4L267.73 431.9L269.6 431.37L271.47 430.82L273.33 430.23L275.2 429.62L277.07 428.97L278.93 428.3L280.8 427.59L282.67 426.84L284.53 426.06L286.4 425.25L288.27 424.4L290.13 423.52L292 422.59L293.87 421.63L295.73 420.63L297.6 419.58L299.47 418.5L301.33 417.37L303.2 416.21L305.07 415L306.93 413.75L308.8 412.45L310.67 411.11L312.53 409.73L314.4 408.31L316.27 406.84L318.13 405.33L320 403.77L321.87 402.17L323.73 400.54L325.6 398.85L327.47 397.13L329.33 395.37L331.2 393.57L333.07 391.73L334.93 389.85L336.8 387.94L338.67 385.99L340.53 384.01L342.4 382L344.27 379.96L346.13 377.89L348 375.8L349.87 373.68L351.73 371.54L353.6 369.39L355.47 367.21L357.33 365.03L359.2 362.83L361.07 360.63L362.93 358.42L364.8 356.21L366.67 354L368.53 351.8L370.4 349.6L372.27 347.42L374.13 345.25L376 343.1L377.87 340.97L379.73 338.87L381.6 336.79L383.47 334.75L385.33 332.75L387.2 330.78L389.07 328.86L390.93 326.98L392.8 325.16L394.67 323.39L396.53 321.67L398.4 320.02L400.27 318.43L402.13 316.91L404 315.46L405.87 314.08L407.73 312.77L409.6 311.54L411.47 310.4L413.33 309.34L415.2 308.36L417.07 307.47L418.93 306.67L420.8 305.96L422.67 305.34L424.53 304.82L426.4 304.39L428.27 304.06L430.13 303.82L432 303.68L433.87 303.64L435.73 303.69L437.6 303.84L439.47 304.09L441.33 304.44L443.2 304.88L445.07 305.41L446.93 306.04L448.8 306.76L450.67 307.58L452.53 308.48L454.4 309.46L456.27 310.54L458.13 311.69L460 312.93L461.87 314.24L463.73 315.63L465.6 317.1L467.47 318.63L469.33 320.22L471.2 321.89L473.07 323.61L474.93 325.39L476.8 327.22L478.67 329.1L480.53 331.03L482.4 333L484.27 335.01L486.13 337.05L488 339.13L489.87 341.24L491.73 343.37L493.6 345.52L495.47 347.69L497.33 349.88L499.2 352.07L501.07 354.28L502.93 356.49L504.8 358.7L506.67 360.9L508.53 363.11L510.4 365.3L512.27 367.49L514.13 369.66L516 371.81L517.87 373.94L519.73 376.06L521.6 378.15L523.47 380.21L525.33 382.25L527.2 384.26L529.07 386.24L530.93 388.18L532.8 390.09L534.67 391.96L536.53 393.79L538.4 395.59L540.27 397.35L542.13 399.07L544 400.74L545.87 402.38L547.73 403.97L549.6 405.52L551.47 407.02L553.33 408.49L555.2 409.91L557.07 411.28L558.93 412.62L560.8 413.9L562.67 415.15L564.53 416.36L566.4 417.52L568.27 418.64L570.13 419.72L572 420.75L573.87 421.75L575.73 422.71L577.6 423.63L579.47 424.51L581.33 425.36L583.2 426.16L585.07 426.94L586.93 427.68L588.8 428.38L590.67 429.05L592.53 429.7L594.4 430.31L596.27 430.89L598.13 431.44L600 431.96" fill="none" stroke="#1F2A28" stroke-width="2.4" stroke-linejoin="round"/>
+<text x="40" y="280" font-size="16" font-weight="bold" fill="#D55E00">Samples of 20 seeds: 20(0.15) = 3, less than 10</text>
+<text x="40" y="314" font-size="15" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">skewed left: normal curve does not fit</text>
+<text x="600" y="72" font-size="15" text-anchor="end" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">mean 0.85, SD 0.025</text>
+</svg>

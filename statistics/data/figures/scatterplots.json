@@ -1,0 +1,11 @@
+{
+ "sleep-reaction": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep",
+  "ext": "svg",
+  "w": 620,
+  "h": 400,
+  "alt": "Scatterplot of 14 students: hours of sleep the night before against reaction time in milliseconds. The points fall from upper left to lower right in a fairly narrow straight band, labeled direction negative, form linear, strength strong."
+ }
+}

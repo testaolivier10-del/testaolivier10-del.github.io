@@ -150,6 +150,17 @@
       { min: 20, title: 'Area Builder' },
       { min: 30, title: 'Calculus Legend' },
     ],
+    // docs/apstat-spec.md decision 5 (proposed; owner to confirm). The first
+    // is also IDENTITY.firstRank in scripts/lib/apstat-build.mjs.
+    apstat: [
+      { min: 1,  title: 'Data Collector' },
+      { min: 3,  title: 'Pattern Spotter' },
+      { min: 6,  title: 'Chance Reader' },
+      { min: 10, title: 'Sample Builder' },
+      { min: 15, title: 'Interval Maker' },
+      { min: 20, title: 'Evidence Weigher' },
+      { min: 30, title: 'Statistics Legend' },
+    ],
   };
 
   // Each course names its ranks differently, so a rank shown on its own says
@@ -163,6 +174,7 @@
     { key: 'apchem', rankLabel: 'Chemistry rank' },
     { key: 'apphys', rankLabel: 'Physics rank' },
     { key: 'apcalc', rankLabel: 'Calculus rank' },
+    { key: 'apstat', rankLabel: 'Statistics rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

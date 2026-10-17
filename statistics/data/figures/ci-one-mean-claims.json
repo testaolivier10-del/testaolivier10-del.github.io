@@ -1,0 +1,12 @@
+{
+ "mean-interval-claims": {
+  "file": "figures/mean-interval-claims.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 292,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three horizontal confidence intervals for the true mean fill weight of cereal boxes, each centered at the sample mean 495.9 grams: 90% from 493.57 to 498.23, 95% from 493.10 to 498.70 and 99% from 492.13 to 499.67 grams. A dashed vertical line at 500 grams, the label value, lies to the right of all three intervals."
+ }
+}

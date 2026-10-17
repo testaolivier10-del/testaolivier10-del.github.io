@@ -1,0 +1,12 @@
+{
+ "ci-capture-25": {
+  "file": "figures/ci-capture-25.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 561,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Twenty-five 95% confidence intervals, one per row, each from a simulated random sample of 400 from a population where the true proportion is p = 0.60, shown as a dashed vertical line. Each interval is drawn as a bar with a dot at its sample proportion. 22 of the 25 intervals cross the line and capture p; 3 miss it and are drawn in orange. The intervals have nearly the same length but are centered at different sample proportions."
+ }
+}

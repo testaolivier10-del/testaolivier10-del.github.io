@@ -1,0 +1,5 @@
+{
+ "sd-xbar": {
+  "def": "The standard deviation of the sampling distribution of the sample mean: $\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}}$, for random samples of size $n$ that are less than 10% of the population. It measures how far sample means typically fall from $\\mu$."
+ }
+}

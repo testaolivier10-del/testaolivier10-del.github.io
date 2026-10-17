@@ -1,0 +1,62 @@
+{
+ "topic": "test-one-mean",
+ "hook": "A coach records how many minutes each of 14 players warmed up. One player warmed up for 45 minutes. Should the report give the mean or the median? The answer depends on what each summary does with that one value.",
+ "prereq": [
+  {
+   "q": "What is $\\sqrt{0.25}$?",
+   "options": [
+    "$0.5$",
+    "$0.05$",
+    "$0.125$",
+    "$2.5$"
+   ],
+   "correct": 0,
+   "why": "$0.5 \\times 0.5 = 0.25$.",
+   "review": "math-formulas"
+  },
+  {
+   "q": "Which describes the shape of a distribution with a long tail to the right?",
+   "options": [
+    "Skewed right",
+    "Skewed left",
+    "Symmetric",
+    "Uniform"
+   ],
+   "correct": 0,
+   "why": "A distribution is skewed toward its long tail.",
+   "review": "describing-distributions"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "The mean adds every value",
+   "effect": "one very large value pulls it up"
+  },
+  {
+   "cause": "The median only needs the middle of the ordered list",
+   "effect": "it barely moves when one value grows"
+  },
+  {
+   "cause": "So in skewed data with outliers",
+   "effect": "the median and IQR describe the typical value and spread better"
+  }
+ ],
+ "ideas": [
+  "The median and IQR are resistant; the mean, range and standard deviation are not.",
+  "An outlier lies more than $1.5 \\times \\text{IQR}$ beyond a quartile."
+ ],
+ "misconception": {
+  "wrong": "The mean is always the best center.",
+  "right": "In strongly skewed data, or with outliers, the median describes a typical value better."
+ },
+ "check": [
+  "stat-test-one-mean-1",
+  "stat-test-one-mean-2",
+  "stat-test-one-mean-3",
+  "stat-test-one-mean-4",
+  "stat-test-one-mean-9",
+  "stat-test-one-mean-10"
+ ],
+ "summary": "The mean and standard deviation use every value, so outliers pull them; the median and IQR resist outliers. The $1.5 \\times \\text{IQR}$ rule flags outliers."
+}

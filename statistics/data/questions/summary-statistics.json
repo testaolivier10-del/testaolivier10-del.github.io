@@ -1,0 +1,557 @@
+{
+ "stimuli": {
+  "summary-statistics-s1": {
+   "kind": "graph",
+   "title": "Battery life of 12 phones",
+   "plot": {
+    "label": "Dotplot of the battery life of 12 phones in hours: 7.2, 8.1, 8.4, 8.9, 9.0, 9.3, 9.5, 9.8, 10.1, 10.4, 10.6 and 14.9",
+    "kind": "dot",
+    "data": [7.2, 8.1, 8.4, 8.9, 9, 9.3, 9.5, 9.8, 10.1, 10.4, 10.6, 14.9],
+    "xLabel": "hours",
+    "x": [6.5, 16.5],
+    "xStep": 1,
+    "yTicks": false
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "battery life",
+      "unit": "hours",
+      "values": [7.2, 8.1, 8.4, 8.9, 9, 9.3, 9.5, 9.8, 10.1, 10.4, 10.6, 14.9]
+     }
+    ]
+   },
+   "text": "A tech reviewer ran 12 phones of one model on the same video until the battery died. The battery lives, in hours, were 7.2, 8.1, 8.4, 8.9, 9.0, 9.3, 9.5, 9.8, 10.1, 10.4, 10.6 and 14.9 (invented data)."
+  },
+  "summary-statistics-s2": {
+   "kind": "table",
+   "title": "Home sale prices",
+   "text": "Summary statistics for the sale prices of 40 homes sold in one town last spring, in thousands of dollars (invented data).",
+   "table": {
+    "caption": "Sale prices of 40 homes (thousands of dollars)",
+    "cols": [
+     "n",
+     "Mean",
+     "SD",
+     "Min",
+     "Q1",
+     "Median",
+     "Q3",
+     "Max"
+    ],
+    "rows": [
+     [
+      "40",
+      "412",
+      "95",
+      "210",
+      "345",
+      "390",
+      "460",
+      "980"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-summary-statistics-1",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the mean battery life, in hours?",
+   "why": {
+    "correct": "$\\bar{x} = \\frac{\\sum x_i}{n} = \\frac{116.2}{12} = 9.68$ hours."
+   },
+   "stimulus": "summary-statistics-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "hours",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [7.2, 8.1, 8.4, 8.9, 9, 9.3, 9.5, 9.8, 10.1, 10.4, 10.6, 14.9]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 9.4,
+      "why": "That is the median. The mean adds all 12 values and divides by 12."
+     },
+     {
+      "value": 10.5636,
+      "why": "That divides the sum by 11. There are 12 phones, so divide by 12."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-summary-statistics-2",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the median battery life, in hours?",
+   "why": {
+    "correct": "With $n = 12$, the median is the average of the 6th and 7th ordered values: $\\frac{9.3 + 9.5}{2} = 9.4$ hours."
+   },
+   "stimulus": "summary-statistics-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "hours",
+    "from": {
+     "fn": "summary",
+     "args": [
+      [7.2, 8.1, 8.4, 8.9, 9, 9.3, 9.5, 9.8, 10.1, 10.4, 10.6, 14.9]
+     ],
+     "pick": "med"
+    },
+    "mistakes": [
+     {
+      "value": 9.5,
+      "why": "That is the 7th value alone. With 12 values the median is the average of the 6th and 7th: (9.3 + 9.5)/2."
+     },
+     {
+      "value": 9.6833,
+      "why": "That is the mean. The median is the middle of the ordered values."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-summary-statistics-3",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the interquartile range (IQR) of the battery lives, in hours?",
+   "why": {
+    "correct": "Lower half 7.2 to 9.3: $Q_1 = \\frac{8.4 + 8.9}{2} = 8.65$. Upper half 9.5 to 14.9: $Q_3 = \\frac{10.1 + 10.4}{2} = 10.25$. $\\text{IQR} = 10.25 - 8.65 = 1.6$ hours."
+   },
+   "stimulus": "summary-statistics-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "hours",
+    "from": {
+     "fn": "summary",
+     "args": [
+      [7.2, 8.1, 8.4, 8.9, 9, 9.3, 9.5, 9.8, 10.1, 10.4, 10.6, 14.9]
+     ],
+     "pick": "iqr"
+    },
+    "mistakes": [
+     {
+      "value": 7.7,
+      "why": "That is the range, maximum minus minimum. The IQR is $Q_3 - Q_1$."
+     },
+     {
+      "value": 0.2,
+      "why": "That subtracts the two middle values of the whole data set, 9.5 − 9.3. $Q_1$ and $Q_3$ are the medians of the lower and upper halves."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-summary-statistics-4",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the standard deviation of the battery lives, in hours? Use the sample standard deviation.",
+   "why": {
+    "correct": "$s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}} = \\sqrt{\\frac{40.34}{11}} = 1.91$ hours. Technology gives the same value."
+   },
+   "stimulus": "summary-statistics-s1",
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "hours",
+    "from": {
+     "fn": "sd",
+     "args": [
+      [7.2, 8.1, 8.4, 8.9, 9, 9.3, 9.5, 9.8, 10.1, 10.4, 10.6, 14.9]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1.8334,
+      "why": "That divides by $n = 12$. The sample standard deviation divides by $n - 1 = 11$."
+     },
+     {
+      "value": 3.6669,
+      "why": "That is the variance, $s^2$. Take its square root."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-summary-statistics-5",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which battery lives are outliers by the $1.5 \\times \\text{IQR}$ rule?",
+   "why": {
+    "correct": "Fences: $Q_1 - 1.5 \\times \\text{IQR} = 6.25$ and $Q_3 + 1.5 \\times \\text{IQR} = 12.65$. Only 14.9 lies outside.",
+    "options": [
+     "7.2 is above the lower fence of 6.25, so it is not an outlier.",
+     "Right: the fences are $8.65 - 1.5(1.6) = 6.25$ and $10.25 + 1.5(1.6) = 12.65$; only 14.9 is outside.",
+     "Twice the mean is not an outlier rule. Use the fences: 14.9 is above 12.65.",
+     "Values above $Q_3$ are common; an outlier must be beyond the fence, 12.65."
+    ]
+   },
+   "stimulus": "summary-statistics-s1",
+   "options": [
+    "7.2 and 14.9 hours",
+    "14.9 hours alone",
+    "No phone, since 14.9 is below twice the mean of 9.68 hours",
+    "10.6 and 14.9 hours"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-summary-statistics-6",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Is the most expensive home, at 980 thousand dollars, an outlier by the $1.5 \\times \\text{IQR}$ rule?",
+   "why": {
+    "correct": "$\\text{IQR} = 460 - 345 = 115$; upper fence $= 460 + 1.5(115) = 632.5$; 980 > 632.5, so it is an outlier.",
+    "options": [
+     "That multiplies $Q_3$ by 1.5. The fence adds $1.5 \\times \\text{IQR}$ to $Q_3$, and $\\text{IQR} = 460 - 345 = 115$.",
+     "That uses the range instead of the IQR.",
+     "The maximum is an outlier only when it is beyond the fence.",
+     "Right: $\\text{IQR} = 460 - 345 = 115$, so the fence is $460 + 1.5(115) = 632.5$."
+    ]
+   },
+   "stimulus": "summary-statistics-s2",
+   "options": [
+    "No: the upper fence is 460 + 1.5(460) = 1,150",
+    "No: the upper fence is 460 + 1.5(980 − 210) = 1,615",
+    "Yes, because the maximum of a data set is an outlier by definition",
+    "Yes: the upper fence is 632.5, and 980 is above it"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-summary-statistics-7",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which measure of center better describes a typical home price in this town, and why?",
+   "why": {
+    "correct": "With right skew or high outliers the mean is pulled toward the tail; the median is resistant, so it better describes a typical price.",
+    "options": [
+     "Right: the mean (412) is above the median (390), a sign of right skew and the outlier at 980.",
+     "Using every value is exactly why a few very high prices pull the mean up.",
+     "A larger center is not better; the median sits closer to most prices here.",
+     "The reason is resistance to the high prices, not being smaller."
+    ]
+   },
+   "stimulus": "summary-statistics-s2",
+   "options": [
+    "The median, 390: the high prices pull the mean up, and the median resists them",
+    "The mean, 412: it uses each price, so it is the more accurate summary",
+    "The mean, 412: it is larger, so it covers more of the homes that were sold",
+    "The median, 390: it is the smaller of the two, and smaller is safer"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-summary-statistics-8",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The town adds a fee of 5 thousand dollars to the price of every home. What are the new mean and standard deviation?",
+   "why": {
+    "correct": "Adding a constant adds it to every measure of center and position and leaves every measure of spread (range, IQR, SD) unchanged.",
+    "options": [
+     "Adding the same amount to every value does not change how far apart they are.",
+     "The fee changes every price by 5, so the mean changes too.",
+     "Right: adding a constant shifts every value, so the mean moves up by 5 and the spread stays the same.",
+     "The fee is added to each price, not multiplied."
+    ]
+   },
+   "stimulus": "summary-statistics-s2",
+   "options": [
+    "Mean 417 and standard deviation 100, as both go up by 5",
+    "Mean 412 and SD 95",
+    "Mean 417 and standard deviation 95",
+    "Mean 2,060 and standard deviation 475, from multiplying by 5"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-summary-statistics-9",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "By the rule that flags values more than 2 standard deviations from the mean, prices above what value are outliers?",
+   "why": {
+    "correct": "Mean plus 2 standard deviations: $412 + 2(95) = 602$. By this rule, too, 980 is an outlier.",
+    "options": [
+     "That is the $1.5 \\times \\text{IQR}$ fence, a different rule.",
+     "The rule uses 2 standard deviations: $412 + 2(95)$.",
+     "Right: $412 + 2(95) = 602$.",
+     "This rule measures from the mean, not the median: $412 + 190$."
+    ]
+   },
+   "stimulus": "summary-statistics-s2",
+   "options": [
+    "632.5 thousand dollars",
+    "507 thousand dollars",
+    "602 thousand dollars",
+    "580 thousand dollars"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-summary-statistics-10",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The values 4, 6 and 11 have mean 7. Type the expression for their sample standard deviation.",
+   "why": {
+    "correct": "$s = \\sqrt{\\frac{(4 - 7)^2 + (6 - 7)^2 + (11 - 7)^2}{3 - 1}} = \\sqrt{\\frac{26}{2}} = 3.61$."
+   },
+   "setup": {
+    "answer": "sqrt(((4-7)^2 + (6-7)^2 + (11-7)^2)/(3-1))",
+    "mustUse": [
+     "7"
+    ],
+    "mistakes": [
+     {
+      "expr": "sqrt(((4-7)^2 + (6-7)^2 + (11-7)^2)/3)",
+      "why": "That divides by $n = 3$. The sample standard deviation divides by $n - 1 = 2$."
+     },
+     {
+      "expr": "((4-7)^2 + (6-7)^2 + (11-7)^2)/(3-1)",
+      "why": "That is the variance. Take its square root for the standard deviation."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-summary-statistics-11",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student’s score is at the 80th percentile of a test. What does that tell you?",
+   "why": {
+    "correct": "The pth percentile is the value with p% of the data at or below it.",
+    "options": [
+     "Right: a percentile tells the percent of the data at or below a value.",
+     "A percentile is about position among scores, not the percent correct.",
+     "A percentile is not a score; it tells where a score stands.",
+     "A percentile is a percent of the data below, not a count above."
+    ]
+   },
+   "options": [
+    "80% of the scores are at or below this score",
+    "The student answered 80% of the questions correctly",
+    "The score was 80 points",
+    "80 students scored higher than this student on the test"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-summary-statistics-12",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "multi",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which summaries are resistant to an extreme outlier? Select all that apply.",
+   "why": {
+    "correct": "The median and IQR are resistant; the mean, standard deviation and range are not.",
+    "options": [
+     "Right: it depends on the middle of the ordered data.",
+     "Right: it depends on the quartiles, not the extremes.",
+     "The mean adds in the outlier, so it moves toward it.",
+     "An outlier far from the mean makes one squared distance huge.",
+     "The range uses the maximum or minimum, which may be the outlier."
+    ]
+   },
+   "options": [
+    "The median",
+    "The IQR",
+    "The mean",
+    "The standard deviation",
+    "The range"
+   ],
+   "correct": [0, 1]
+  },
+  {
+   "id": "stat-summary-statistics-13",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A distribution of quiz scores is strongly skewed left. How do its mean and median most likely compare?",
+   "why": {
+    "correct": "The mean is pulled toward the tail: below the median for left skew, above it for right skew.",
+    "options": [
+     "Most scores are high, but the tail of low scores pulls the mean down.",
+     "They are close only for roughly symmetric distributions.",
+     "The median is the middle score, which is in the high bulk of the data.",
+     "Right: the long left tail of low scores pulls the mean down below the median."
+    ]
+   },
+   "options": [
+    "The mean is greater than the median, since most scores are high",
+    "The mean and the median are equal, as in any skewed shape",
+    "The median is zero",
+    "The mean is less than the median"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-summary-statistics-14",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Five plants grew 4, 5, 6, 8 and 12 inches. What is their mean growth in centimeters? (1 inch = 2.54 cm)",
+   "why": {
+    "correct": "Mean in inches: $\\frac{4 + 5 + 6 + 8 + 12}{5} = 7$. Multiplying every value by 2.54 multiplies the mean by 2.54: $7 \\times 2.54 = 17.78$ cm."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "cm",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [10.16, 12.7, 15.24, 20.32, 30.48]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "That is the mean in inches. Multiply by 2.54 to change units."
+     },
+     {
+      "value": 2.7559,
+      "why": "That divides by 2.54. Inches become centimeters by multiplying."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-summary-statistics-15",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The standard deviation of the plants’ growth is 3.16 inches. What is it in centimeters?",
+   "why": {
+    "correct": "Multiplying every value by a constant multiplies the mean, median, IQR and standard deviation by that constant.",
+    "options": [
+     "Adding a constant leaves spread alone; multiplying by a constant scales it.",
+     "Right: multiplying every value by 2.54 multiplies the spread by 2.54: $3.16 \\times 2.54 = 8.03$.",
+     "Changing units multiplies each value; nothing is added.",
+     "Centimeters are smaller units, so the numbers get bigger: multiply by 2.54."
+    ]
+   },
+   "options": [
+    "3.16 cm",
+    "8.03 cm",
+    "5.70 cm",
+    "1.24 cm"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-summary-statistics-16",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "single",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which symbols stand for the mean and standard deviation of a whole population?",
+   "why": {
+    "correct": "Parameters: $\\mu$ (population mean) and $\\sigma$ (population standard deviation). Statistics: $\\bar{x}$ and $s$.",
+    "options": [
+     "Right: Greek letters are used for parameters of a population.",
+     "These are the sample mean and sample standard deviation, statistics.",
+     "Use $\\sigma$ for the population standard deviation, to match $\\mu$.",
+     "$\\bar{x}$ is a sample mean; the population mean is $\\mu$."
+    ]
+   },
+   "options": [
+    "$\\mu$ and $\\sigma$",
+    "$\\bar{x}$ and $s$",
+    "$\\mu$ and $s$",
+    "$\\bar{x}$ and $\\sigma$"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-summary-statistics-17",
+   "unit": "unit-1",
+   "topic": "summary-statistics",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Every student in a small class has the same score, 85. What is the standard deviation of the scores?",
+   "why": {
+    "correct": "A standard deviation of 0 means no variation: every value is the same.",
+    "options": [
+     "85 is the center. Spread measures how far scores are from it, and none are.",
+     "The standard deviation measures distance from the mean, which is 0 here.",
+     "Right: every value equals the mean, so every distance from the mean is 0.",
+     "It is defined: the sum of squared distances is 0, so $s = 0$."
+    ]
+   },
+   "options": [
+    "85",
+    "1",
+    "0",
+    "It is undefined when the scores are equal"
+   ],
+   "correct": 2
+  }
+ ]
+}

@@ -1,0 +1,195 @@
+{
+ "about": "\"Say it in context\" prompts for unit-5 (docs/apstat-architecture.md, \"Justification trainer\"; spec section 6). Written in Phase 3 from the banks; checked by checkJustify in scripts/lib/apstat-exams.mjs, numbers recomputed in JUSTIFY_NUMBERS. Invented data.",
+ "prompts": [
+  {
+   "unit": "unit-5",
+   "id": "u5-slope",
+   "topic": "least-squares-regression",
+   "practice": "4.D",
+   "skill": "regression",
+   "title": "Interpret the slope",
+   "context": "<p>For 30 students in a statistics class, the least-squares line predicting exam score from hours studied is $\\hat{y} = 54.3 + 3.2x$, with $r^2 = 0.64$ and $s = 6.1$ points. Hours studied in the data range from 0.5 to 10 (invented data).</p>",
+   "prompt": "<b>Interpret</b> the slope of the least-squares line in context.",
+   "checklist": [
+    "Says the predicted response changes, not the actual one: the predicted exam score",
+    "Gives the amount and direction: increases by about 3.2 points",
+    "Ties it to a one-unit increase in the explanatory variable: for each additional hour studied"
+   ],
+   "earns": {
+    "answer": "For each additional hour studied, the predicted exam score increases by about 3.2 points.",
+    "why": "It says predicted, gives the amount and direction with units, and ties it to one more hour."
+   },
+   "misses": {
+    "answer": "For each hour studied, the exam score goes up 3.2 points.",
+    "why": "Actual scores vary around the line; the slope describes the predicted score, and \"goes up\" for each student overstates it."
+   },
+   "conclude": {
+    "mode": "slope",
+    "slots": {
+     "condition": {
+      "options": [
+       "For each additional hour studied,",
+       "For each additional point on the exam,",
+       "When a student studies 3.2 hours,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The slope is per unit of the explanatory variable, hours.",
+       "2": "3.2 is the change in the response, not hours."
+      }
+     },
+     "claim": {
+      "options": [
+       "the predicted exam score increases by about 3.2 points.",
+       "each student's exam score increases by exactly 3.2 points.",
+       "the exam score is 54.3 points."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Actual scores vary; the slope describes predicted scores.",
+       "2": "54.3 is the intercept."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-intercept",
+   "topic": "linear-models",
+   "practice": "4.D",
+   "skill": "regression",
+   "title": "Does the intercept make sense?",
+   "context": "<p>For 40 car models, the least-squares line predicting highway fuel economy (miles per gallon) from weight (thousands of pounds) is $\\hat{y} = 52.4 - 6.1x$. Weights in the data range from 2.4 to 5.8 thousand pounds (invented data).</p>",
+   "prompt": "<b>Interpret</b> the intercept, and <b>explain</b> whether it is meaningful here.",
+   "checklist": [
+    "Interprets: the predicted fuel economy for a car weighing 0 pounds is 52.4 miles per gallon",
+    "Explains that a weight of 0 is impossible and far outside the data (2.4 to 5.8 thousand pounds)",
+    "Concludes the intercept has no practical meaning; it only positions the line"
+   ],
+   "earns": {
+    "answer": "The intercept says that a car weighing 0 pounds has a predicted highway fuel economy of 52.4 miles per gallon. This has no practical meaning: no car weighs 0 pounds, and 0 is far below the weights in the data (2.4 to 5.8 thousand pounds), so it is an extrapolation. The intercept is only where the line crosses the axis.",
+    "why": "It interprets the intercept as a predicted value at $x = 0$ and explains why that is not meaningful in context."
+   },
+   "misses": {
+    "answer": "A car gets 52.4 miles per gallon when it starts.",
+    "why": "This misreads $x = 0$: the intercept is the predicted value at a weight of 0, which no car has, so it should be flagged as meaningless."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-r-squared",
+   "topic": "least-squares-regression",
+   "practice": "4.D",
+   "skill": "regression",
+   "title": "Interpret r squared",
+   "context": "<p>For 30 students in a statistics class, the least-squares line predicting exam score from hours studied is $\\hat{y} = 54.3 + 3.2x$, with $r^2 = 0.64$ and $s = 6.1$ points. Hours studied in the data range from 0.5 to 10 (invented data).</p>",
+   "prompt": "<b>Interpret</b> $r^2 = 0.64$ in context.",
+   "checklist": [
+    "Says about 64% of the variation",
+    "Names the response: in exam scores",
+    "Says it is accounted for by the linear model (the least-squares line) using hours studied"
+   ],
+   "earns": {
+    "answer": "About 64% of the variation in exam scores is accounted for by the linear model using hours studied.",
+    "why": "It names the percent, the variation in the response, and the linear model with the explanatory variable."
+   },
+   "misses": {
+    "answer": "64% of the students' scores are explained by studying.",
+    "why": "$r^2$ is a share of the variation in scores, not a share of students, and it describes the linear model."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-residual",
+   "topic": "residuals",
+   "practice": "3.B",
+   "skill": "regression",
+   "title": "Compute and interpret a residual",
+   "context": "<p>For 30 students in a statistics class, the least-squares line predicting exam score from hours studied is $\\hat{y} = 54.3 + 3.2x$, with $r^2 = 0.64$ and $s = 6.1$ points. Hours studied in the data range from 0.5 to 10 (invented data).</p><p>One student studied 6 hours and scored 81.</p>",
+   "prompt": "<b>Calculate</b> and <b>interpret</b> the residual for this student.",
+   "checklist": [
+    "Computes the predicted score: $\\hat{y} = 54.3 + 3.2(6) = 73.5$ points",
+    "Computes the residual as actual minus predicted: $81 - 73.5 = 7.5$ points",
+    "Interprets the sign: the student scored 7.5 points higher than the line predicts for 6 hours of study"
+   ],
+   "earns": {
+    "answer": "The predicted score is $\\hat{y} = 54.3 + 3.2(6) = 73.5$ points. The residual is actual minus predicted: $81 - 73.5 = 7.5$ points. The student scored 7.5 points higher than the least-squares line predicts for a student who studied 6 hours.",
+    "why": "It shows the prediction, uses actual minus predicted, and interprets the positive sign in context."
+   },
+   "misses": {
+    "answer": "The residual is $73.5 - 81 = -7.5$, so the student did worse than expected.",
+    "why": "A residual is actual minus predicted. Reversing it flips the sign and the interpretation: this student did better than predicted."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-typical-error",
+   "topic": "least-squares-regression",
+   "practice": "4.D",
+   "skill": "regression",
+   "title": "Interpret s, the typical prediction error",
+   "context": "<p>For 30 students in a statistics class, the least-squares line predicting exam score from hours studied is $\\hat{y} = 54.3 + 3.2x$, with $r^2 = 0.64$ and $s = 6.1$ points. Hours studied in the data range from 0.5 to 10 (invented data).</p>",
+   "prompt": "<b>Interpret</b> $s = 6.1$ in context.",
+   "checklist": [
+    "Says it is the typical (average size of a) prediction error, or residual",
+    "Gives the units and context: about 6.1 points of exam score",
+    "Says it is the distance between actual and predicted scores when the line is used"
+   ],
+   "earns": {
+    "answer": "When we use the least-squares line with hours studied to predict exam scores, the actual scores are typically about 6.1 points away from the predicted scores.",
+    "why": "It describes $s$ as the typical size of a residual, in the response's units and context."
+   },
+   "misses": {
+    "answer": "The standard deviation of the scores is 6.1.",
+    "why": "$s$ is about prediction errors from the line, not the spread of the scores themselves."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-correlation-causation",
+   "topic": "correlation",
+   "practice": "4.A",
+   "skill": "regression",
+   "title": "Describe an association, and do not claim cause",
+   "context": "<p>For 50 cities, a scatterplot of the number of coffee shops and the number of bookstores is linear with $r = 0.81$. A reporter writes, \"Coffee shops bring bookstores to a city.\"</p>",
+   "prompt": "<b>Describe</b> the association, and <b>explain</b> why the reporter's claim is not justified.",
+   "checklist": [
+    "Describes direction, form and strength in context: a strong, positive, linear association between the number of coffee shops and the number of bookstores",
+    "Explains that these are observational data, so correlation does not show that coffee shops cause bookstores",
+    "Names a likely lurking variable, such as city population, that could drive both"
+   ],
+   "earns": {
+    "answer": "There is a strong, positive, linear association between the number of coffee shops and the number of bookstores in these 50 cities ($r = 0.81$). But these are observational data, not a randomized experiment, so they cannot show that coffee shops cause bookstores. A lurking variable such as city population could explain both: bigger cities have more of each.",
+    "why": "It describes the association fully in context and explains why cause cannot be claimed, with a plausible lurking variable."
+   },
+   "misses": {
+    "answer": "The correlation is 0.81, which is high, so the reporter is right.",
+    "why": "A strong correlation is not evidence of cause; the answer also never describes the direction or form of the association."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-extrapolation",
+   "topic": "linear-models",
+   "practice": "4.D",
+   "skill": "regression",
+   "title": "A prediction outside the data",
+   "context": "<p>For 30 students in a statistics class, the least-squares line predicting exam score from hours studied is $\\hat{y} = 54.3 + 3.2x$, with $r^2 = 0.64$ and $s = 6.1$ points. Hours studied in the data range from 0.5 to 10 (invented data).</p><p>A student plans to study 25 hours and uses the line to predict a score of $54.3 + 3.2(25) = 134.3$ points on an exam out of 100.</p>",
+   "prompt": "<b>Explain</b> why this prediction is not reliable.",
+   "checklist": [
+    "Names the problem: extrapolation, predicting far outside the range of the data (0.5 to 10 hours)",
+    "Explains that the linear pattern may not continue beyond the data, as the impossible score of 134.3 shows",
+    "Keeps the context: hours studied and exam score"
+   ],
+   "earns": {
+    "answer": "This is extrapolation: 25 hours is far outside the range of hours in the data (0.5 to 10 hours), so we do not know that the linear relationship continues there. The prediction of 134.3 points is impossible on an exam out of 100, which shows the line does not apply that far out.",
+    "why": "It names extrapolation, cites the data's range, and explains why the line may not hold there."
+   },
+   "misses": {
+    "answer": "The prediction is wrong because the slope is too big.",
+    "why": "The slope fits the data well inside the range; the problem is using the line far outside it."
+   }
+  }
+ ]
+}

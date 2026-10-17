@@ -1,0 +1,42 @@
+<p>An interval for $p_1 - p_2$ is more than an estimate. It is a list of plausible values for the true difference, and that list can back up a claim or knock one down. This topic is about reading that list carefully and writing the claim in words a reader can trust.</p>
+
+<h2>The key value: zero</h2>
+<p>Most claims about two groups are really about one question: are the two true proportions different? If $p_1 = p_2$, then $p_1 - p_2 = 0$. So the value to look for in the interval is <b>zero difference</b>.</p>
+<figure id="fig-zero" data-fig="intervals-vs-zero"><figcaption>Three 95% intervals for $p_1 - p_2$ and where 0 falls for each.</figcaption></figure>
+<p><a class="figref" href="#fig-zero">The figure</a> shows the three cases:</p>
+<table class="stat-compare">
+<thead><tr><th>The interval is</th><th>Is 0 plausible?</th><th>What it supports</th></tr></thead>
+<tbody>
+<tr><td>entirely above 0 (Study A: 0.03 to 0.11)</td><td>no</td><td>convincing evidence that $p_1 > p_2$</td></tr>
+<tr><td>around 0 (Study B: $-0.04$ to 0.06)</td><td>yes</td><td>no convincing evidence of a difference</td></tr>
+<tr><td>entirely below 0 (Study C: $-0.15$ to $-0.02$)</td><td>no</td><td>convincing evidence that $p_1 < p_2$</td></tr>
+</tbody>
+</table>
+
+<h2>Writing the claim</h2>
+<p>A claim from an interval has three parts, in this order: the reason (where 0 or the claimed value sits), the evidence wording, and the parameter in context with its direction.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Study A randomly assigned students in an online course to get weekly nudge emails or no emails. The 95% interval for $p_E - p_N$, the true proportions who finish the course (emails minus no emails), is from 0.03 to 0.11. Does it support the college's claim that nudges help?</p>
+<p><b>Reason:</b> every value in the interval is greater than 0.</p>
+<p><b>Claim:</b> Because every value in the interval from 0.03 to 0.11 is greater than 0, the interval gives convincing evidence that the true proportion of students who finish the course is greater with nudge emails than without them.</p>
+<p><b>Cause?</b> Yes. The students were randomly assigned, so the nudges can be credited with the difference.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Study B compared random samples of shoppers at two stores. The 95% interval for $p_1 - p_2$, the true proportions who buy a snack at checkout, is from $-0.04$ to 0.06.</p>
+<p><b>Claim:</b> Because 0 is in the interval from $-0.04$ to 0.06, the interval does not give convincing evidence that the true proportions of shoppers who buy a snack at checkout differ between the two stores.</p>
+<p>Notice what we did <b>not</b> say. We did not say the proportions are equal. Store 1 could be up to 6 points higher, or up to 4 points lower. The interval simply cannot tell those apart from no difference.</p>
+</div>
+
+<h2>Claims about a size, not just a direction</h2>
+<p>Sometimes a claim names a number: "younger adults are 15 percentage points more likely to use video visits." Treat that number just like 0. Suppose the 95% interval for $p_Y - p_O$ is from 0.008 to 0.132. The value 0.15 is above every value in it, so it is not plausible. The interval gives convincing evidence that the difference is real (0 is outside too) but smaller than 15 points. A claim of "at least 5 points" is different: 0.05 is inside, so the interval does not give convincing evidence that the gap is more than 5 points.</p>
+
+<h2>Intervals and tests agree</h2>
+<p>A 95% interval holds, almost exactly, the values of $p_1 - p_2$ that a two-sided test at $\alpha = 0.05$ would not reject. (The test uses a slightly different standard error, built for the case $p_1 = p_2$, so in rare borderline cases the two can disagree.) So an interval that excludes 0 matches a two-sided test that rejects $H_0: p_1 - p_2 = 0$ at the 0.05 level, and an interval that contains 0 matches one that fails to reject. A 90% interval matches $\alpha = 0.10$; a 99% interval matches $\alpha = 0.01$. The interval gives you more, though: besides "is there a difference", it says how big the difference plausibly is.</p>
+
+<h2>Three traps</h2>
+<ul>
+<li><b>"Proves."</b> No interval proves anything. Use "gives convincing evidence" or "does not give convincing evidence".</li>
+<li><b>Judging by the center.</b> A positive sample difference is not enough; chance can make one. The whole interval has to be on one side of the value.</li>
+<li><b>Tiny but convincing.</b> With huge samples an interval like 0.001 to 0.004 excludes 0, so the difference is convincing, yet it is at most 0.4 percentage points. Always say how large the plausible differences are and whether that size matters in context.</li>
+</ul>
+<p>Finally, remember the design. An interval entirely above 0 from an observational study shows the populations differ, not why. Only random assignment supports a cause-and-effect claim.</p>

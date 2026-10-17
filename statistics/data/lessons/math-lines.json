@@ -1,0 +1,77 @@
+{
+ "topic": "math-lines",
+ "hook": "A bike rental charges a 12 dollar fee plus 3 dollars an hour. Its cost is the line $y = 12 + 3x$. The 3 says how fast cost grows with time, and the 12 says where it starts. Unit 5 fits lines like this to data and asks you to interpret them in context, so the slope and intercept need to feel familiar now.",
+ "prereq": [
+  {
+   "q": "What is $12 + 3(5)$?",
+   "options": [
+    "27",
+    "75",
+    "20",
+    "15"
+   ],
+   "correct": 0,
+   "why": "Multiply first: 15, then add 12.",
+   "review": "math-formulas"
+  },
+  {
+   "q": "Evaluate $\\frac{19 - 7}{6 - 2}$.",
+   "options": [
+    "3",
+    "12",
+    "4",
+    "0.33"
+   ],
+   "correct": 0,
+   "why": "12/4 = 3.",
+   "review": "math-formulas"
+  }
+ ],
+ "figure": {
+  "figure": "slope-intercept",
+  "caption": "The line $y = 12 + 3x$: it starts at 12 dollars and rises 3 dollars for each hour."
+ },
+ "chain": [
+  {
+   "cause": "A line can be written $y = a + bx$",
+   "effect": "$a$ is the y-intercept and $b$ is the slope"
+  },
+  {
+   "cause": "Move one unit to the right on x",
+   "effect": "y changes by $b$: up if $b > 0$, down if $b < 0$"
+  },
+  {
+   "cause": "Set $x = 0$",
+   "effect": "y equals $a$, which has meaning only if $x = 0$ makes sense in context"
+  },
+  {
+   "cause": "Know two points, or one point and the slope",
+   "effect": "slope = rise over run, then solve for $a$ from one point"
+  }
+ ],
+ "ideas": [
+  "A line is $y = a + bx$. The <b>slope</b> $b$ is the change in y for each one-unit increase in x; its units are y units per x unit.",
+  "Slope from two points: $b = \\frac{y_2 - y_1}{x_2 - x_1}$, rise over run, subtracting in the same order on top and bottom.",
+  "The <b>y-intercept</b> $a$ is the value of y when $x = 0$. Interpret it only when $x = 0$ makes sense.",
+  "In context: \"For each additional hour, the cost increases by 3 dollars.\""
+ ],
+ "misconception": {
+  "wrong": "The line through $(3, 20)$ with slope 4 is $y = 20 + 4x$.",
+  "right": "20 is the value of y at $x = 3$, not at $x = 0$. Solve $20 = a + 4(3)$ to get $a = 8$: $y = 8 + 4x$."
+ },
+ "check": [
+  "stat-math-lines-1",
+  "stat-math-lines-2",
+  "stat-math-lines-4",
+  "stat-math-lines-5",
+  "stat-math-lines-7",
+  "stat-math-lines-9"
+ ],
+ "summary": "A line $y = a + bx$ has slope $b$, the change in y for each one-unit increase in x (rise over run), and y-intercept $a$, the value of y when $x = 0$. Interpret both in context with units, and the intercept only when $x = 0$ makes sense.",
+ "connections": [
+  {
+   "href": "../notes/scatterplots.html",
+   "label": "Next: topic 5.1"
+  }
+ ]
+}

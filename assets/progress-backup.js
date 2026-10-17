@@ -38,6 +38,7 @@
     { storagePrefix: 'apchem_' },
     { storagePrefix: 'apphys_' },
     { storagePrefix: 'apcalc_' },
+    { storagePrefix: 'apstat_' },
   ];
   // courses:end
   var PREFIXES = ['hub_'].concat(COURSE_LIST.map(function(c){ return c.storagePrefix; }));

@@ -1,0 +1,5 @@
+{
+ "two-sample-z-statistic": {
+  "def": "The test statistic of a two-sample z test for proportions: $z = \\frac{\\hat{p}_1 - \\hat{p}_2}{\\sqrt{p_c(1 - p_c)\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}}$, the observed difference measured in standard errors from 0. The denominator is the standard error built from the pooled proportion $p_c$."
+ }
+}

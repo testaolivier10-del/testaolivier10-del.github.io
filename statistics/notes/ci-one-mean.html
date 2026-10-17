@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interval for a Mean — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="Constructing a Confidence Interval for a Population Mean or Population Mean Difference explained from scratch: free statistics study notes with figures and…">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/ci-one-mean.html">
+<meta property="og:title" content="Interval for a Mean — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="Constructing a Confidence Interval for a Population Mean or Population Mean Difference explained from scratch: free statistics study notes with figures and…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/ci-one-mean.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/ci-one-mean.html#reading",
+      "name": "Constructing a Confidence Interval for a Population Mean or Population Mean Difference",
+      "url": "https://levlprep.com/statistics/notes/ci-one-mean.html",
+      "description": "Constructing a Confidence Interval for a Population Mean or Population Mean Difference explained from scratch: free statistics study notes with figures and…",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "constructing a confidence interval for a population mean or population mean difference ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Quantitative Data: Means",
+          "item": "https://levlprep.com/statistics/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Constructing a Confidence Interval for a Population Mean or Population Mean Difference: notes",
+          "item": "https://levlprep.com/statistics/notes/ci-one-mean.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="ci-one-mean" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Inference for Categorical Data: Proportions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Inference for Quantitative Data: Means</b><small>10 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 10 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="sampling-dist-mean"><a href="sampling-dist-mean.html"><span class="bk-toc-n">4.1</span>Sampling Distributions for Sample Means</a></li><li class="current" data-toc-t="ci-one-mean"><a href="#main" aria-current="page"><span class="bk-toc-n">4.2</span>Constructing a Confidence Interval for a Population Mean or Population Mean Difference</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-problem-with-sigma">The problem with sigma</a><a href="#the-t-distributions">The t distributions</a><a href="#the-one-sample-t-interval">The one-sample t interval</a><a href="#paired-data-one-sample-of-differences">Paired data: one sample of differences</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="ci-one-mean-claims"><a href="ci-one-mean-claims.html"><span class="bk-toc-n">4.3</span>Justifying a Claim Based on a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean-setup"><a href="test-one-mean-setup.html"><span class="bk-toc-n">4.4</span>Setting Up a Test for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean"><a href="test-one-mean.html"><span class="bk-toc-n">4.5</span>Carrying Out a Test for a Population Mean or Population Mean Difference</a></li><li data-toc-t="sampling-dist-two-means"><a href="sampling-dist-two-means.html"><span class="bk-toc-n">4.6</span>Sampling Distributions for the Difference Between Two Sample Means</a></li><li data-toc-t="ci-two-means"><a href="ci-two-means.html"><span class="bk-toc-n">4.7</span>Constructing a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="ci-two-means-claims"><a href="ci-two-means-claims.html"><span class="bk-toc-n">4.8</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="test-two-means-setup"><a href="test-two-means-setup.html"><span class="bk-toc-n">4.9</span>Setting Up a Test for the Difference Between Two Population Means</a></li><li data-toc-t="test-two-means"><a href="test-two-means.html"><span class="bk-toc-n">4.10</span>Carrying Out a Test for the Difference Between Two Population Means</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Regression Analysis</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Inference for Quantitative Data: Means</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Constructing a Confidence Interval for a Population Mean or Population Mean Difference: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/ci-one-mean.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.2 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Constructing a Confidence Interval for a Population Mean or Population Mean Difference</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="ci-one-mean">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fci-one-mean.html&amp;title=Constructing%20a%20Confidence%20Interval%20for%20a%20Population%20Mean%20or%20Population%20Mean%20Difference%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/ci-one-mean.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>In Unit 3 you built <a class="gl" href="../notes/ci-one-proportion.html" data-c="confidence-interval">confidence intervals</a> for a proportion. The recipe for a <a class="gl" href="../notes/summary-statistics.html" data-c="mean">mean</a> has the same <a class="gl" href="../notes/describing-distributions.html" data-c="shape">shape</a>, statistic plus or minus a <a class="gl" href="../notes/ci-one-proportion.html" data-c="margin-of-error">margin of error</a>, with one change that matters: you almost never know the <a class="gl" href="../notes/summary-statistics.html" data-c="population-sd">population standard deviation</a>, so you <a class="gl" href="../notes/estimators.html" data-c="estimator">estimate</a> it, and that calls for a new <a class="gl" href="../notes/ci-one-proportion.html" data-c="critical-value">critical value</a>.</p>
+
+<h2 id="the-problem-with-sigma">The problem with sigma</h2>
+<p>The last topic gave the <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a> of <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> as <math class="stat-m"><semantics><mrow><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sigma}{\sqrt{n}}</annotation></semantics></math>. But if you do not know the <a class="gl" href="../notes/summary-statistics.html" data-c="population-mean">population mean</a> <math class="stat-m"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math> (that is why you are estimating it), you almost surely do not know <math class="stat-m"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math> either. The natural fix is to use the <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> standard deviation <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math>. The estimated standard deviation of <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> is its <b><a class="gl" href="../notes/ci-one-proportion.html" data-c="standard-error">standard error</a></b>:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mtext>SE</mtext><mo>=</mo><mfrac><mi>s</mi><msqrt><mi>n</mi></msqrt></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">\text{SE} = \frac{s}{\sqrt{n}}.</annotation></semantics></math></p>
+<p>Here is the catch. <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> changes from sample to sample. Some samples happen to have a small <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math>, which makes the <a class="gl" href="../notes/comparing-distributions.html" data-c="z-score">standardized value</a> <math class="stat-m"><semantics><mrow><mfrac><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>−</mo><mi>μ</mi></mrow><mrow><mi>s</mi><mo>/</mo><msqrt><mi>n</mi></msqrt></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\bar{x} - \mu}{s/\sqrt{n}}</annotation></semantics></math> larger than a z-score would be. So this ratio does not follow the <a class="gl" href="../notes/normal-distribution.html" data-c="standard-normal">standard normal distribution</a>. It follows a <b><span class="gl" tabindex="0" data-c="t-distribution">t distribution</span></b>.</p>
+
+<h2 id="the-t-distributions">The t distributions</h2>
+<figure id="fig-t"  class="stat-figure"><div class="stat-figimg" data-fig="t-vs-normal"><img src="../figures/t-vs-normal.svg" alt="Three bell-shaped density curves centered at 0 on an axis from -4.5 to 4.5: the standard normal (solid black), the t distribution with 15 degrees of freedom (dashed blue) and the t distribution with 3 degrees of freedom (orange), which is lowest in the middle and highest in the tails. Dashed marks show the 95% critical values: z* = 1.96, t* = 2.131 for 15 df and t* = 3.182 for 3 df. The outer 5% of the 3 df curve is shaded." width="720" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The standard normal curve and t distributions with 3 and 15 degrees of freedom, with the 95% critical values marked. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>A t <a class="gl" href="../notes/variables.html" data-c="distribution">distribution</a> looks like the standard normal: <a class="gl" href="../notes/describing-distributions.html" data-c="symmetric">symmetric</a>, bell shaped, centered at 0. Its tails are heavier, because of the extra <a class="gl" href="../notes/describing-distributions.html" data-c="spread">variability</a> from <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math>. There is a different t distribution for each number of <b><a class="gl" href="../notes/chi-square-test.html" data-c="degrees-of-freedom">degrees of freedom</a></b>. For one sample, <math class="stat-m"><semantics><mrow><mtext>df</mtext><mo>=</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\text{df} = n - 1</annotation></semantics></math>, the same <math class="stat-m"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math> that appears in the formula for <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math>.</p>
+<p>The more <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>, the better <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> estimates <math class="stat-m"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>, and the closer the t distribution gets to the standard normal. <a class="figref" href="#fig-t">The figure</a> shows it: with 3 df the middle 95% reaches out to <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">±</mo><mn>3.182</mn></mrow><annotation encoding="application/x-tex">\pm 3.182</annotation></semantics></math>; with 15 df to <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">±</mo><mn>2.131</mn></mrow><annotation encoding="application/x-tex">\pm 2.131</annotation></semantics></math>; the standard normal stops at <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">±</mo><mn>1.96</mn></mrow><annotation encoding="application/x-tex">\pm 1.96</annotation></semantics></math>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: z procedures (proportions), t procedures (means)"><table class="stat-compare">
+<thead><tr><th scope="col"></th><th scope="col">z procedures (proportions)</th><th scope="col">t procedures (means)</th></tr></thead>
+<tbody>
+<tr><th scope="row">Standard error</th><td><math class="stat-m"><semantics><mrow><msqrt><mfrac><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">)</mo></mrow><mi>n</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}</annotation></semantics></math></td><td><math class="stat-m"><semantics><mrow><mfrac><mi>s</mi><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{s}{\sqrt{n}}</annotation></semantics></math></td></tr>
+<tr><th scope="row">Critical value</th><td><math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">z^*</annotation></semantics></math> from the standard normal (Table A)</td><td><math class="stat-m"><semantics><mrow><msup><mi>t</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">t^*</annotation></semantics></math> with <math class="stat-m"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math> df (Table B)</td></tr>
+<tr><th scope="row">Shape condition</th><td><a class="gl" href="../notes/sampling-dist-proportion.html" data-c="large-counts">Large counts</a>: <a class="gl" href="../notes/math-inequality-words.html" data-c="inequality-words">at least</a> 10 successes and 10 failures</td><td>Normal/large sample: normal <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a>, <math class="stat-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n \ge 30</annotation></semantics></math>, or no strong <a class="gl" href="../notes/describing-distributions.html" data-c="skewed">skew</a> or <a class="gl" href="../notes/describing-distributions.html" data-c="outlier">outliers</a> in the sample</td></tr>
+<tr><th scope="row">95% critical value</th><td>1.96</td><td>depends on df: 2.262 at df 9, 2.064 at df 24, 1.984 at df 100</td></tr>
+</tbody>
+</table></div>
+<p>To read <math class="stat-m"><semantics><mrow><msup><mi>t</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">t^*</annotation></semantics></math> from Table B, find the row for your df and the column for your <a class="gl" href="../notes/ci-one-proportion.html" data-c="confidence-level">confidence level</a>. If your df is not in the table (say 44), use the next smaller row (40); that is a little conservative. Technology gives the exact value: the 0.975 quantile of t with your df, for 95%.</p>
+
+<h2 id="the-one-sample-t-interval">The one-sample t interval</h2>
+<p><math class="stat-m" display="block"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>±</mo><msup><mi>t</mi><mo>∗</mo></msup><mfrac><mi>s</mi><msqrt><mi>n</mi></msqrt></mfrac><mo>,</mo><mspace width="2em"></mspace><mtext>df</mtext><mo>=</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">\bar{x} \pm t^*\frac{s}{\sqrt{n}}, \qquad \text{df} = n - 1.</annotation></semantics></math></p>
+<p>Before you compute, check the <b><a class="gl" href="../notes/ci-one-proportion.html" data-c="conditions">conditions for inference</a></b>, in words, with numbers:</p>
+<ul>
+<li><b><a class="gl" href="../notes/random-sampling.html" data-c="random-selection">Random</a>:</b> a random sample from the population, or <a class="gl" href="../notes/experimental-design.html" data-c="random-assignment">random assignment</a> in an <a class="gl" href="../notes/investigative-questions.html" data-c="experiment">experiment</a>.</li>
+<li><b>10%:</b> when sampling <a class="gl" href="../notes/random-sampling.html" data-c="replacement">without replacement</a>, <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> is less than 10% of the population.</li>
+<li><b>Normal/large sample:</b> the population is normal, or <math class="stat-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n \ge 30</annotation></semantics></math> (the <a class="gl" href="../notes/sampling-distributions.html" data-c="clt">central limit theorem</a>), or a graph of the sample shows no strong skew and no outliers. Name the graph and what it shows.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 1.</b> A random sample of 25 of a city's bike commuters has mean one-way distance <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>=</mo><mn>6.8</mn></mrow><annotation encoding="application/x-tex">\bar{x} = 6.8</annotation></semantics></math> miles and <math class="stat-m"><semantics><mrow><mi>s</mi><mo>=</mo><mn>2.9</mn></mrow><annotation encoding="application/x-tex">s = 2.9</annotation></semantics></math> miles. A <a class="gl" href="../notes/one-quantitative-displays.html" data-c="dotplot">dotplot</a> of the 25 distances is roughly symmetric with no outliers. Construct a 95% confidence interval for the mean one-way distance.</p>
+<p>Procedure: a <span class="gl" tabindex="0" data-c="one-sample-t-interval">one-sample t interval</span> for <math class="stat-m"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math>, the true mean one-way distance of all the city's bike commuters.</p>
+<p>Conditions. Random: the problem says a random sample. 10%: 25 is less than 10% of the city's many thousands of bike commuters. Normal/large sample: <math class="stat-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>25</mn><mo>&lt;</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n = 25 &lt; 30</annotation></semantics></math>, but the dotplot of the sample shows no strong skew and no outliers.</p>
+<p>Expression and substitution: <math class="stat-m"><semantics><mrow><mtext>df</mtext><mo>=</mo><mn>24</mn></mrow><annotation encoding="application/x-tex">\text{df} = 24</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msup><mi>t</mi><mo>∗</mo></msup><mo>=</mo><mn>2.064</mn></mrow><annotation encoding="application/x-tex">t^* = 2.064</annotation></semantics></math>, so <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">±</mo><msup><mi>t</mi><mo>∗</mo></msup><mfrac><mi>s</mi><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\pm t^*\frac{s}{\sqrt{n}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>6.8</mn></mrow><annotation encoding="application/x-tex">= 6.8</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">±</mo><mn>2.064</mn><mfrac><mn>2.9</mn><msqrt><mn>25</mn></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\pm 2.064\frac{2.9}{\sqrt{25}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>6.8</mn></mrow><annotation encoding="application/x-tex">= 6.8</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">±</mo><mn>1.197</mn></mrow><annotation encoding="application/x-tex">\pm 1.197</annotation></semantics></math>.</p>
+<p>Answer: from 5.60 to 8.00 miles.</p>
+<p>Interpretation: We are 95% confident that the interval from 5.60 to 8.00 miles captures the true mean one-way distance of all the city's bike commuters.</p>
+</div>
+<p>The confidence <a class="gl" href="../notes/experimental-design.html" data-c="treatment">level</a> has the same meaning as in Unit 3: if we took many random samples of 25 commuters and built a 95% interval from each, about 95% of the intervals would capture the true mean distance. It does not say that 95% of commuters ride between 5.60 and 8.00 miles; the interval is about a mean, not about individual riders.</p>
+
+<h2 id="paired-data-one-sample-of-differences">Paired data: one sample of differences</h2>
+<p>Sometimes the data come in pairs: the same student before and after a course, the left and right foot, two matched <a class="gl" href="../notes/experimental-design.html" data-c="experimental-unit">subjects</a> in a <a class="gl" href="../notes/experimental-design.html" data-c="matched-pairs">matched pairs design</a>. The two values in a pair belong together. They are not <a class="gl" href="../notes/sampling-dist-two-proportions.html" data-c="independent-samples">two independent samples</a>. The right move is to subtract within each pair and analyze the differences as <b>one</b> sample. The <a class="gl" href="../notes/variables.html" data-c="parameter">parameter</a> is the true <span class="gl" tabindex="0" data-c="paired-data">mean difference</span>, <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">\mu_d</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A random sample of 10 students in a keyboarding course typed a passage on the first and last days. The differences (after minus before, in words per minute) are 8, 3, 11, 6, <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math>, 9, 5, 7, 12, 4. Construct a 95% confidence interval for the mean change.</p>
+<p>Summaries of the differences: <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>d</mi></msub><mo>=</mo><mfrac><mn>63</mn><mn>10</mn></mfrac><mo>=</mo><mn>6.3</mn></mrow><annotation encoding="application/x-tex">\bar{x}_d = \frac{63}{10} = 6.3</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>s</mi><mi>d</mi></msub><mo>=</mo><mn>4.11</mn></mrow><annotation encoding="application/x-tex">s_d = 4.11</annotation></semantics></math> words per minute.</p>
+<p>Conditions. Random: a random sample of students in the course. 10%: 10 is less than 10% of all students who take it. Normal/large sample: <math class="stat-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>10</mn><mo>&lt;</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n = 10 &lt; 30</annotation></semantics></math>, and a dotplot of the 10 differences shows no strong skew and no outliers.</p>
+<p>Expression and substitution: <math class="stat-m"><semantics><mrow><mtext>df</mtext><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">\text{df} = 9</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msup><mi>t</mi><mo>∗</mo></msup><mo>=</mo><mn>2.262</mn></mrow><annotation encoding="application/x-tex">t^* = 2.262</annotation></semantics></math>, so <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">\bar{x}_d</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">±</mo><msup><mi>t</mi><mo>∗</mo></msup><mfrac><msub><mi>s</mi><mi>d</mi></msub><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\pm t^*\frac{s_d}{\sqrt{n}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>6.3</mn></mrow><annotation encoding="application/x-tex">= 6.3</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">±</mo><mn>2.262</mn><mfrac><mn>4.11</mn><msqrt><mn>10</mn></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\pm 2.262\frac{4.11}{\sqrt{10}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>6.3</mn></mrow><annotation encoding="application/x-tex">= 6.3</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">±</mo><mn>2.94</mn></mrow><annotation encoding="application/x-tex">\pm 2.94</annotation></semantics></math>.</p>
+<p>Answer: from 3.36 to 9.24 words per minute.</p>
+<p>Interpretation: We are 95% confident that the interval from 3.36 to 9.24 words per minute captures the true mean change in typing speed (after minus before) for students who take the course.</p>
+</div>
+<p>Two habits earn points here. Say which way you subtracted (after minus before), so a positive mean difference has a clear meaning. And check the shape condition on the differences, because the differences are the sample.</p>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Using <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup><mo>=</mo><mn>1.96</mn></mrow><annotation encoding="application/x-tex">z^* = 1.96</annotation></semantics></math> for a mean. With <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> in the formula, use <math class="stat-m"><semantics><mrow><msup><mi>t</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">t^*</annotation></semantics></math> at every sample size.</li>
+<li>Using <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> instead of <math class="stat-m"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math> for df.</li>
+<li>Treating paired data as two separate samples.</li>
+<li>Checking "<math class="stat-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">n \ge 10</annotation></semantics></math>" for a mean. Ten is the large counts threshold for proportions. For means the check is normal population, <math class="stat-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n \ge 30</annotation></semantics></math>, or a graph with no strong skew or outliers.</li>
+</ul>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:ci-one-mean">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="sampling-dist-mean.html"><span>&larr; Previous</span><b>Sampling Distributions for Sample Means</b></a><a class="tb-chapter-link next" href="ci-one-mean-claims.html"><span>Next &rarr;</span><b>Justifying a Claim Based on a Confidence Interval for a Population Mean or Population Mean Difference</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:ci-one-mean">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

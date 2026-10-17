@@ -1,0 +1,772 @@
+{
+ "about": "Exam-only questions for the two fixed practice exams (docs/apstat-architecture.md, \"Practice exams\"). Ids stat-exam-<form>-<nn>; stimuli exam-<form>-s<n>. Four-option single-answer items in the bank item format; every computed key is recomputed in EXAM_NUMBERS (scripts/lib/apstat-exams.mjs). Invented data throughout.",
+ "stimuli": {
+  "exam-1-s1": {
+   "kind": "table",
+   "title": "No-shows on a commuter flight",
+   "set": "probability",
+   "text": "An airline finds that 12% of passengers who book its morning commuter flight do not show up. One morning, 15 passengers are booked. Assume passengers show up or not independently of each other (invented data).",
+   "table": {
+    "caption": "The morning commuter flight",
+    "cols": [
+     "Passengers booked",
+     "Probability a booked passenger does not show up"
+    ],
+    "rows": [
+     [
+      "15",
+      "0.12"
+     ]
+    ]
+   }
+  },
+  "exam-2-s1": {
+   "kind": "table",
+   "title": "After-school jobs by grade level",
+   "set": "probability",
+   "text": "A high school surveys all 400 of its students in grades 9 to 12 about whether they have an after-school job. One of these students is chosen at random (invented data).",
+   "table": {
+    "caption": "Grade level and after-school job for 400 students",
+    "cols": [
+     "Grade level",
+     "Job",
+     "No job",
+     "Total"
+    ],
+    "rows": [
+     [
+      "Grades 9 and 10",
+      "30",
+      "170",
+      "200"
+     ],
+     [
+      "Grades 11 and 12",
+      "90",
+      "110",
+      "200"
+     ],
+     [
+      "Total",
+      "120",
+      "280",
+      "400"
+     ]
+    ]
+   }
+  },
+  "exam-2-s2": {
+   "kind": "table",
+   "title": "Used car prices and age: regression output",
+   "set": "regression",
+   "text": "A buyer records the age (years) and the price (thousands of dollars) of 20 used cars of one model listed for sale in her area. The scatterplot is linear with no unusual points. Computer output for the least-squares regression of price on age is below, with S = 1.92 and R-sq = 79.2% (invented data).",
+   "table": {
+    "caption": "Regression of price (thousands of dollars) on age (years), 20 cars. S = 1.92, R-sq = 79.2%",
+    "cols": [
+     "Predictor",
+     "Coef",
+     "SE Coef"
+    ],
+    "rows": [
+     [
+      "Constant",
+      "24.60",
+      "0.95"
+     ],
+     [
+      "Age",
+      "-1.85",
+      "0.22"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-exam-1-01",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A school district wants to learn about how much its high school students sleep. Which is a valid investigative question that data from a survey of the students could answer?",
+   "options": [
+    "Is getting enough sleep important for teenagers?",
+    "How many hours do the district's high school students typically sleep on a school night?",
+    "How many hours did one student, Maya, sleep last night?",
+    "Why do teenagers in the district stay up so late?"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A valid investigative question is about a group, can be answered with data, and expects the answers to vary. The typical hours of sleep for the district's students meets all three.",
+    "options": [
+     "This asks for an opinion about importance, not something the sleep data can measure.",
+     "Right: it names the group, the variable (hours of sleep on a school night) and asks for a typical value, so it expects variability.",
+     "One student's sleep last night is a single value: there is no variability to investigate and no group.",
+     "A survey can record hours of sleep, but it cannot show why students stay up; the reasons are causes the data do not measure."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-02",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A gardener grows two varieties of tomato plant, Early Red and Big Sun, in the same raised beds. Which investigative question compares the two varieties in a way the gardener's data could answer?",
+   "options": [
+    "Do Big Sun plants in these beds tend to produce a greater total weight of tomatoes than Early Red plants?",
+    "Which tomato variety is the best one to grow anywhere?",
+    "What is the weight of the largest tomato in the beds this summer?",
+    "Do gardeners prefer Big Sun or Early Red tomatoes?"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The question names the two groups, the variable measured on each plant (total weight of tomatoes) and asks how the groups tend to compare, so it can be answered by the gardener's measurements.",
+    "options": [
+     "Right: two groups, one measured variable, and a comparison of what tends to happen.",
+     "\"Best\" is not defined by a variable, and \"anywhere\" goes far beyond plants in these beds.",
+     "One largest tomato is a single value; it does not compare the varieties.",
+     "Gardeners' preferences are not measured by weighing these plants' tomatoes."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-03",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A restaurant chain prints a link on every receipt inviting diners to rate their visit online. Of the diners who rate their visit, 41% say they were \"very unhappy.\" Which statement best describes a problem with using this result to estimate the proportion of all the chain's diners who were very unhappy?",
+   "options": [
+    "Undercoverage: diners who order takeout are not invited, so the estimate is too low.",
+    "Response bias: the online form words its question in a way that leads diners to say they were happy.",
+    "Voluntary response bias: diners with strong feelings, especially bad experiences, are more likely to respond, so 41% probably overstates the proportion.",
+    "There is no problem, because each diner received the same invitation on the receipt."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Diners chose whether to respond. People with strong opinions, especially complaints, are the most likely to bother, so the respondents overrepresent unhappy diners and 41% is likely too high.",
+    "options": [
+     "Nothing in the description says any group is not invited; the problem is who chooses to respond.",
+     "Nothing in the description says the wording leads diners; and this bias would push the estimate the other way.",
+     "Right: the responders select themselves, and unhappy diners are more likely to respond.",
+     "Everyone being invited does not make the responders representative: who chooses to answer is not random."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-04",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Let $X$ be the number of the 15 booked passengers who do not show up. Which describes the distribution of $X$?",
+   "stimulus": "exam-1-s1",
+   "options": [
+    "$X$ is binomial with $n = 15$ and $p = 0.88$.",
+    "$X$ is binomial with $n = 15$ and $p = 0.12$.",
+    "$X$ is normal with mean 1.8 and standard deviation 0.12.",
+    "$X$ is binomial with $n = 12$ and $p = 0.15$."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "There are 15 independent passengers (trials), each a success (does not show up) or a failure, with the same probability $p = 0.12$ of a no-show. So $X$ is binomial with $n = 15$ and $p = 0.12$.",
+    "options": [
+     "0.88 is the probability that a passenger shows up; $X$ counts no-shows, so $p = 0.12$.",
+     "Right: a fixed number of independent trials with the same success probability.",
+     "$X$ is a count from 0 to 15 of independent trials: binomial, not normal; and 0.12 is a probability, not a standard deviation.",
+     "The numbers are swapped: there are 15 trials, and the probability of a no-show is 0.12."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-05",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 3,
+   "q": "What is the probability that at least 3 of the 15 booked passengers do not show up?",
+   "stimulus": "exam-1-s1",
+   "options": [
+    "0.096",
+    "0.170",
+    "0.265",
+    "0.735"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$P(X \\ge 3) = 1 - P(X \\le 2) = 1 - [P(X = 0) + P(X = 1) + P(X = 2)]$, with $P(X = k) = \\binom{15}{k}(0.12)^k(0.88)^{15 - k}$. This gives $1 - 0.735 = 0.265$. Technology: one minus the binomial cumulative probability up to 2 with $n = 15$, $p = 0.12$.",
+    "options": [
+     "This is $P(X > 3) = 1 - P(X \\le 3)$: \"at least 3\" includes 3.",
+     "This is $P(X = 3)$ alone; \"at least 3\" also includes 4, 5, and so on.",
+     "Right: $1 - P(X \\le 2) = 0.265$.",
+     "This is $P(X \\le 2)$, the complement of the event asked about."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-06",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the mean and standard deviation of the number of no-shows among the 15 booked passengers?",
+   "stimulus": "exam-1-s1",
+   "options": [
+    "Mean 1.8, standard deviation 1.26",
+    "Mean 1.8, standard deviation 1.58",
+    "Mean 13.2, standard deviation 1.26",
+    "Mean 1.8, standard deviation 0.32"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a binomial random variable, $\\mu_X = np = 15(0.12) = 1.8$ and $\\sigma_X = \\sqrt{np(1 - p)} = \\sqrt{15(0.12)(0.88)} = \\sqrt{1.584} \\approx 1.26$.",
+    "options": [
+     "Right: $np = 1.8$ and $\\sqrt{np(1 - p)} \\approx 1.26$.",
+     "1.58 is the variance $np(1 - p)$; the standard deviation is its square root.",
+     "13.2 is the mean number who show up, $15(0.88)$; $X$ counts no-shows.",
+     "0.32 is $\\sqrt{p(1 - p)}$ without the $n$; the binomial standard deviation is $\\sqrt{np(1 - p)}$."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-07",
+   "unit": "unit-2",
+   "topic": "normal-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The weights of eggs from a farm are approximately normal with mean 58 grams and standard deviation 4.5 grams. About what proportion of the farm's eggs weigh more than 65 grams?",
+   "options": [
+    "0.025",
+    "0.060",
+    "0.365",
+    "0.940"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$z = \\frac{65 - 58}{4.5} \\approx 1.56$. The area to the right of $z \\approx 1.556$ under the standard normal curve is about 0.060 (technology gives 0.0599; Table A with $z = 1.56$ gives $1 - 0.9406 = 0.0594$, the same to two places).",
+    "options": [
+     "This uses the empirical rule as if 65 grams were 2 standard deviations above the mean; it is $\\frac{7}{4.5} \\approx 1.56$ standard deviations above.",
+     "Right: $P(z > 1.56) \\approx 0.060$.",
+     "This divides by the variance, $4.5^2 = 20.25$, instead of the standard deviation 4.5.",
+     "This is the area to the left of 65 grams; \"more than\" is the area to the right."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-08",
+   "unit": "unit-3",
+   "topic": "test-one-proportion",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a random sample of 500 adults in a city, 278 support a plan to extend the light rail line. A planner tests $H_0: p = 0.5$ against $H_a: p > 0.5$, where $p$ is the true proportion of all the city's adults who support the plan. What is the value of the test statistic?",
+   "options": [
+    "$z \\approx 0.11$",
+    "$z \\approx 2.52$",
+    "$z \\approx 0.0061$",
+    "$z \\approx 2.50$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\hat{p} = \\frac{278}{500} = 0.556$. A test uses $p_0$ in the standard error: $z = \\frac{0.556 - 0.5}{\\sqrt{\\frac{0.5(0.5)}{500}}} = \\frac{0.056}{0.02236} \\approx 2.50$. Technology: a one-proportion z test gives the same value.",
+    "options": [
+     "0.11 is $\\frac{0.056}{0.5}$, dividing by $p_0$ instead of the standard error.",
+     "2.52 uses $\\hat{p}$ in the standard error; a test assumes $H_0$ is true, so it uses $p_0 = 0.5$.",
+     "0.0061 is the p-value for this test, about 0.006, not the test statistic.",
+     "Right: $\\frac{0.556 - 0.5}{\\sqrt{0.25/500}} \\approx 2.50$."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-09",
+   "unit": "unit-3",
+   "topic": "test-two-proportions-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A health department takes a random sample of 300 adults from a rural county and a separate random sample of 400 adults from an urban county. It wants to know whether the proportion of adults who had a flu shot this year differs between the two counties. Which procedure fits?",
+   "options": [
+    "A one-sample z test for a proportion",
+    "A two-sample z test for a difference in proportions",
+    "A two-sample t test for a difference in means",
+    "A chi-square test for independence"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Two independent random samples, a categorical response (flu shot or not), and a question about whether two population proportions differ: a two-sample z test for $p_1 - p_2$.",
+    "options": [
+     "There are two populations to compare, not one proportion against a fixed value.",
+     "Right: two independent samples, one proportion from each.",
+     "The response is categorical (flu shot or not), so there are no means to compare.",
+     "A test for independence uses one sample classified by two variables; here there are two separate samples."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-10",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A researcher takes one random sample of 600 adults in a state and records each adult's preferred way to get news (online, TV, print, radio) and age group (under 30, 30 to 59, 60 and over). She wants to know whether news preference and age group are associated in the state's adults. Which procedure fits?",
+   "options": [
+    "A chi-square test for homogeneity",
+    "A two-sample z test for a difference in proportions",
+    "A chi-square test for independence",
+    "A two-sample t test for a difference in means"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "One random sample, two categorical variables recorded on each adult, and a question about association: a chi-square test for independence.",
+    "options": [
+     "Homogeneity compares one variable across separate samples from several populations; here there is one sample with two variables.",
+     "Each variable has more than two categories, so a single difference of two proportions cannot answer the question.",
+     "Right: one sample, two categorical variables, association.",
+     "Both variables are categorical, so there are no means to compare."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-11",
+   "unit": "unit-4",
+   "topic": "ci-one-mean",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A random sample of 25 commuters in a region has a mean one-way commute of 31.4 minutes with a standard deviation of 8.2 minutes. The sample shows no strong skew or outliers. Which is a 95% confidence interval for the mean commute time of all the region's commuters?",
+   "options": [
+    "From 28.19 to 34.61 minutes",
+    "From 28.02 to 34.78 minutes",
+    "From 30.72 to 32.08 minutes",
+    "From 23.2 to 39.6 minutes"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\bar{x} \\pm t^* \\frac{s}{\\sqrt{n}}$ with $\\text{df} = 24$ and $t^* = 2.064$: $31.4 \\pm 2.064\\left(\\frac{8.2}{\\sqrt{25}}\\right) = 31.4 \\pm 3.38$, from 28.02 to 34.78 minutes. Technology: a one-sample t interval gives the same.",
+    "options": [
+     "This uses $z^* = 1.96$; with $s$ in place of $\\sigma$, a mean uses $t^*$ with $n - 1$ degrees of freedom.",
+     "Right: $31.4 \\pm 2.064(1.64)$.",
+     "This divides $s$ by $n$ instead of $\\sqrt{n}$, so the interval is far too narrow.",
+     "This is $31.4 \\pm 8.2$, one standard deviation of individual commutes, not a margin of error for the mean."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-12",
+   "unit": "unit-4",
+   "topic": "test-one-mean-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "To test whether a typing course helps, a teacher records the typing speed (words per minute) of each of 20 randomly selected students before and after the course. Which procedure fits her question about the mean change in speed?",
+   "options": [
+    "A paired t test on the 20 differences, after minus before",
+    "A two-sample t test comparing the before speeds with the after speeds",
+    "A one-sample z test for a proportion",
+    "A two-sample z test for a difference in proportions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each student gives two measurements, so the data are paired. The question is about the mean of the differences, $\\mu_d$: a paired t test (a one-sample t test on the differences).",
+    "options": [
+     "Right: two measurements on the same students, so analyze the differences.",
+     "The before and after speeds come from the same students, so the two sets are not independent samples.",
+     "Typing speed is quantitative; there is no proportion to test.",
+     "There are no proportions here, and the measurements are paired, not two independent samples."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-1-13",
+   "unit": "unit-4",
+   "topic": "ci-two-means-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a randomized experiment, a 95% confidence interval for $\\mu_{\\text{new}} - \\mu_{\\text{old}}$, the difference in true mean battery life (hours) for phones using a new and an old power setting, is from $-0.4$ to 1.6 hours. Which is a correct interpretation?",
+   "options": [
+    "There is a 95% probability that the new setting gives 0.6 more hours of battery life.",
+    "We are 95% confident that the interval from $-0.4$ to 1.6 hours captures the true difference in mean battery life, new minus old.",
+    "95% of phones with the new setting last between 0.4 hours less and 1.6 hours more than phones with the old setting.",
+    "We are 95% confident that the difference in the sample mean battery lives is between $-0.4$ and 1.6 hours."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The confidence is about the method capturing the parameter: the true difference in mean battery life, new minus old. Because the interval contains 0, it does not give convincing evidence that the means differ.",
+    "options": [
+     "0.6 is the center of the interval, a statistic; the interval gives a range of plausible values for the parameter, not a probability for one value.",
+     "Right: the interval, the level and the parameter in context.",
+     "The interval is about the difference in true means, not about the battery lives of individual phones.",
+     "The sample difference is known exactly (it is the center, 0.6); the interval estimates the true difference."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-01",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A city's parks department wants to use data to plan new trails. Which is a valid investigative question for a survey of a random sample of the city's adults?",
+   "options": [
+    "How far did the mayor walk on the trails last weekend?",
+    "Should the city build more trails?",
+    "How many times in the past month do the city's adults typically use a park trail?",
+    "Do trails make people happier?"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A valid investigative question names the group (the city's adults), a variable the survey can record (trail visits in the past month), and expects the answers to vary, asking about a typical value.",
+    "options": [
+     "One person's distance is a single value; it is not about a group and has no variability.",
+     "This asks for a decision or an opinion, not a quantity the data can describe.",
+     "Right: a group, a variable and a typical value.",
+     "\"Happier\" is not defined as a variable here, and a survey cannot show that trails cause happiness."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-02",
+   "unit": "unit-1",
+   "topic": "investigative-questions",
+   "type": "single",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A teacher records, for each of her students, the number of hours spent on homework last week and the score on the next quiz. Which investigative question can these data answer?",
+   "options": [
+    "Does doing homework cause higher quiz scores for students across the country?",
+    "Is there a relationship between hours of homework last week and quiz score for these students?",
+    "What was the highest quiz score in the class?",
+    "Why do some students skip homework?"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Two quantitative variables recorded on the same students suggest a question about how they are related, for this group. The data are observational, so they cannot show cause, and they come from one class, not the whole country.",
+    "options": [
+     "An observational study of one class cannot show cause, and it cannot speak for students across the country.",
+     "Right: an association between two variables for the students measured.",
+     "One highest score is a single value, not an investigation of variability or a relationship.",
+     "The data record hours and scores, not the reasons for skipping homework."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-03",
+   "unit": "unit-2",
+   "topic": "conditional-probability",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the student has a job, given that the student is in grade 11 or 12?",
+   "stimulus": "exam-2-s1",
+   "options": [
+    "0.225",
+    "0.300",
+    "0.450",
+    "0.750"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Given grades 11 and 12, the 200 students in those grades are the new total: $P(\\text{job} \\mid \\text{grades 11 and 12}) = \\frac{90}{200} = 0.450$.",
+    "options": [
+     "This is $\\frac{90}{400}$, the probability of having a job and being in grades 11 or 12.",
+     "This is $\\frac{120}{400}$, the probability of a job for all students, ignoring the condition.",
+     "Right: 90 of the 200 students in grades 11 and 12.",
+     "This is $\\frac{90}{120}$, the probability of being in grades 11 or 12 given a job: the condition is reversed."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-04",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the student has a job or is in grade 11 or 12 (or both)?",
+   "stimulus": "exam-2-s1",
+   "options": [
+    "0.575",
+    "0.800",
+    "0.225",
+    "0.350"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$P(\\text{job} \\cup \\text{grades 11 and 12}) = P(\\text{job}) + P(\\text{grades 11 and 12}) - P(\\text{both}) = \\frac{120}{400} + \\frac{200}{400} - \\frac{90}{400} = \\frac{230}{400} = 0.575$.",
+    "options": [
+     "Right: add, then subtract the 90 students counted twice.",
+     "This adds $\\frac{120 + 200}{400}$ without subtracting the overlap, so the 90 students with a job in grades 11 and 12 are counted twice.",
+     "This is the probability of both, $\\frac{90}{400}$; \"or\" includes everyone in either group.",
+     "This is $\\frac{30 + 110}{400}$, students in only one of the two groups; \"or\" includes both."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-05",
+   "unit": "unit-2",
+   "topic": "independence-unions",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Are the events \"has a job\" and \"is in grade 11 or 12\" independent?",
+   "stimulus": "exam-2-s1",
+   "options": [
+    "Yes, because each grade group has 200 students.",
+    "No, because $P(\\text{job} \\mid \\text{grades 11 and 12}) = 0.45$ is not equal to $P(\\text{job}) = 0.30$.",
+    "Yes, because a student can be in grades 11 and 12 and have a job at the same time.",
+    "No, because the events are mutually exclusive."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Two events are independent when the probability of one, given the other, equals its overall probability. Here $P(\\text{job} \\mid \\text{grades 11 and 12}) = \\frac{90}{200} = 0.45$ but $P(\\text{job}) = \\frac{120}{400} = 0.30$, so knowing the grade changes the probability of a job: the events are not independent.",
+    "options": [
+     "Equal group sizes do not make the events independent; compare the conditional probability with the overall one.",
+     "Right: the conditional probability differs from the overall probability.",
+     "Being able to happen together means the events are not mutually exclusive; it says nothing about independence.",
+     "The events are not mutually exclusive: 90 students are in both. Independence is checked with probabilities."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-06",
+   "unit": "unit-3",
+   "topic": "chi-square-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A district takes a separate random sample of students from each of its three high schools and asks each student how he or she usually gets to school (bus, car, walk or bike). It wants to know whether the distribution of travel method is the same at the three schools. Which procedure and null hypothesis fit?",
+   "options": [
+    "A chi-square test for homogeneity, with $H_0$: the distribution of travel method is the same at the three schools.",
+    "A chi-square test for independence, with $H_0$: travel method and school are associated.",
+    "A chi-square test for homogeneity, with $H_0$: the distribution of travel method is different at the three schools.",
+    "A two-sample z test, with $H_0: p_1 = p_2$."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Separate random samples from several populations, one categorical variable, and a question about whether its distribution is the same: a chi-square test for homogeneity, whose null hypothesis says the distributions are the same.",
+    "options": [
+     "Right: separate samples, one variable, \"the same\" in the null hypothesis.",
+     "With separate samples from each school this is homogeneity; and a null hypothesis never states an association.",
+     "The procedure is right, but the null hypothesis must state no difference: the distributions are the same.",
+     "There are three schools and four travel methods, more than one difference of two proportions can handle."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-07",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a random sample of 400 households in a county, 136 have a smart thermostat. Which is a 90% confidence interval for the proportion of all the county's households that have a smart thermostat?",
+   "options": [
+    "From 0.294 to 0.386",
+    "From 0.338 to 0.342",
+    "From 0.301 to 0.379",
+    "From 0.310 to 0.370"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\hat{p} = \\frac{136}{400} = 0.34$. $\\hat{p} \\pm z^* \\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}} = 0.34 \\pm 1.645\\sqrt{\\frac{0.34(0.66)}{400}} = 0.34 \\pm 0.039$, from 0.301 to 0.379. Technology: a one-proportion z interval gives the same.",
+    "options": [
+     "This uses $z^* = 1.96$, the 95% critical value; 90% uses $z^* = 1.645$.",
+     "This divides by $n$ outside the square root, $1.645\\frac{\\sqrt{0.34(0.66)}}{400}$, so the margin is far too small.",
+     "Right: $0.34 \\pm 1.645(0.0237)$.",
+     "This uses $z^* = 1.282$, which leaves 10% in one tail (an 80% interval); a 90% interval leaves 5% in each tail, so $z^* = 1.645$."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-08",
+   "unit": "unit-3",
+   "topic": "test-two-proportions",
+   "type": "single",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "In a randomized experiment, 70 of 250 people who got a text reminder and 30 of 150 people who did not get one kept a dental appointment on time. To test $H_0: p_1 = p_2$ against $H_a: p_1 > p_2$, where $p_1$ and $p_2$ are the true proportions who would keep the appointment with and without a reminder, what is the test statistic?",
+   "options": [
+    "$z \\approx 1.79$",
+    "$z \\approx 1.85$",
+    "$z \\approx 0.08$",
+    "$z \\approx 1.28$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\hat{p}_1 = \\frac{70}{250} = 0.28$, $\\hat{p}_2 = \\frac{30}{150} = 0.20$ and $p_c = \\frac{70 + 30}{250 + 150} = \\frac{100}{400} = 0.25$. $z = \\frac{0.28 - 0.20}{\\sqrt{0.25(0.75)\\left(\\frac{1}{250} + \\frac{1}{150}\\right)}} = \\frac{0.08}{0.0447} \\approx 1.79$. Technology: a two-proportion z test gives the same.",
+    "options": [
+     "Right: the pooled standard error, because the test assumes $p_1 = p_2$.",
+     "1.85 uses the unpooled standard error from the interval; a test of $p_1 = p_2$ pools the two samples into $p_c$.",
+     "0.08 is the difference in sample proportions, not standardized by its standard error.",
+     "1.28 adds the two standard errors, $\\sqrt{\\frac{p_c(1 - p_c)}{250}} + \\sqrt{\\frac{p_c(1 - p_c)}{150}}$; the variances add under one square root."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-09",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A trainer randomly assigns 40 volunteers to two groups of 20. One group does a 10-minute warm-up and the other does none; each volunteer then runs one mile and the time is recorded. Which procedure fits a test of whether the warm-up lowers the mean mile time?",
+   "options": [
+    "A paired t test, because both groups ran the same mile",
+    "A two-sample t test for a difference in means",
+    "A one-sample t test on the warm-up group's times",
+    "A two-sample z test for a difference in proportions"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Random assignment to two separate groups, a quantitative response (mile time), and a question about the difference in means: a two-sample t test for $\\mu_1 - \\mu_2$.",
+    "options": [
+     "Pairing needs two measurements on the same volunteer, or matched pairs; here each volunteer is in one group only.",
+     "Right: two independent groups, means compared.",
+     "Testing one group's mean alone has no comparison with the group that did not warm up.",
+     "Mile time is quantitative, so the question is about means, not proportions."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-10",
+   "unit": "unit-4",
+   "topic": "test-one-mean",
+   "type": "single",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bakery says its loaves weigh 500 grams on average. An inspector weighs a random sample of 16 loaves: $\\bar{x} = 489$ grams and $s = 24$ grams, with no strong skew or outliers. She tests $H_0: \\mu = 500$ against $H_a: \\mu < 500$, where $\\mu$ is the true mean weight of all the bakery's loaves, and gets $t \\approx -1.83$ with $\\text{df} = 15$. Which conclusion is correct at $\\alpha = 0.05$?",
+   "options": [
+    "Because the p-value of 0.043 is less than 0.05, reject $H_0$. There is convincing evidence that the true mean weight of all the bakery's loaves is less than 500 grams.",
+    "Because the p-value of 0.087 is greater than 0.05, fail to reject $H_0$. There is not convincing evidence that the true mean weight is less than 500 grams.",
+    "Because the p-value of 0.043 is less than 0.05, reject $H_0$. This proves the bakery's loaves weigh 489 grams on average.",
+    "Because the p-value of 0.957 is greater than 0.05, fail to reject $H_0$. The true mean weight is 500 grams."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The one-sided p-value is $P(t < -1.83)$ with $\\text{df} = 15$, about 0.043 (technology; Table B gives between 0.025 and 0.05). Because $0.043 < 0.05$, reject $H_0$: there is convincing evidence that the true mean weight is less than 500 grams.",
+    "options": [
+     "Right: the p-value compared with $\\alpha$, then evidence language about the parameter in context.",
+     "0.087 is the two-sided p-value; $H_a: \\mu < 500$ is one-sided, so the p-value is the one tail, 0.043.",
+     "A test never proves anything, and 489 grams is the sample mean, not the true mean.",
+     "0.957 is the area in the wrong tail; and failing to reject would never show the mean is 500 grams."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-11",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "4.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a correct interpretation of the slope in the output?",
+   "stimulus": "exam-2-s2",
+   "options": [
+    "For each additional year of age, the price of a car drops by exactly 1.85 thousand dollars.",
+    "For each additional year of age, the predicted price of a car of this model decreases by about 1.85 thousand dollars.",
+    "A car that is 0 years old is predicted to cost 1.85 thousand dollars.",
+    "About 1.85% of the variation in price is accounted for by age."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The slope $b = -1.85$: for each additional year of age, the predicted price decreases by about 1.85 thousand dollars (about \\$1,850). The word \"predicted\" matters: actual prices vary around the line.",
+    "options": [
+     "Actual prices vary around the line (the typical prediction error is $s = 1.92$ thousand dollars), so the drop is in the predicted price, not exact for every car.",
+     "Right: the change in the predicted response for each one-unit increase in the explanatory variable.",
+     "That describes an intercept, and the intercept is 24.60, not 1.85.",
+     "That is the role of $r^2$ (79.2%), not the slope."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-12",
+   "unit": "unit-5",
+   "topic": "least-squares-regression",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the predicted price of a 6-year-old car of this model?",
+   "stimulus": "exam-2-s2",
+   "options": [
+    "13.50 thousand dollars",
+    "35.70 thousand dollars",
+    "22.75 thousand dollars",
+    "11.10 thousand dollars"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\hat{y} = 24.60 - 1.85x = 24.60 - 1.85(6) = 24.60 - 11.10 = 13.50$ thousand dollars (about \\$13,500).",
+    "options": [
+     "Right: substitute $x = 6$ into $\\hat{y} = 24.60 - 1.85x$.",
+     "This adds $1.85(6)$; the slope is negative, so the predicted price goes down with age.",
+     "This subtracts the slope only once, $24.60 - 1.85$, the prediction for a 1-year-old car.",
+     "11.10 is the predicted drop over 6 years, $1.85(6)$, not the predicted price."
+    ]
+   }
+  },
+  {
+   "id": "stat-exam-2-13",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is the correlation between age and price for these 20 cars?",
+   "stimulus": "exam-2-s2",
+   "options": [
+    "0.792",
+    "$-0.792$",
+    "0.890",
+    "$-0.890$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$r^2 = 0.792$, so $|r| = \\sqrt{0.792} \\approx 0.890$. The slope is negative, so $r$ is negative: $r \\approx -0.890$.",
+    "options": [
+     "0.792 is $r^2$; the correlation is its square root, with the sign of the slope.",
+     "This keeps the sign of the slope but forgets the square root of $r^2$.",
+     "The size is right, but the slope is negative, so the correlation is negative.",
+     "Right: $r = -\\sqrt{0.792}$."
+    ]
+   }
+  }
+ ]
+}

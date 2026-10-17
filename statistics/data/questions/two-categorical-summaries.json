@@ -1,0 +1,544 @@
+{
+ "stimuli": {
+  "two-categorical-summaries-s1": {
+   "kind": "table",
+   "title": "Park visitors by visit type and activity",
+   "text": "Rangers at a state park asked a random sample of 250 visitors whether this was their first visit and what their main activity was that day (invented data).",
+   "table": {
+    "caption": "Visit type and main activity for 250 park visitors",
+    "cols": [
+     "Visit type",
+     "Hiking",
+     "Fishing",
+     "Picnic",
+     "Total"
+    ],
+    "rows": [
+     [
+      "First visit",
+      "45",
+      "15",
+      "40",
+      "100"
+     ],
+     [
+      "Returning",
+      "60",
+      "54",
+      "36",
+      "150"
+     ],
+     [
+      "Total",
+      "105",
+      "69",
+      "76",
+      "250"
+     ]
+    ]
+   }
+  },
+  "two-categorical-summaries-s2": {
+   "kind": "table",
+   "title": "Driver's education and the road test",
+   "text": "A state records, for a random sample of 200 new drivers, whether each took a driver's education course and whether each passed the road test on the first try (invented data).",
+   "table": {
+    "caption": "Course and first-try result for 200 new drivers",
+    "cols": [
+     "Course",
+     "Passed",
+     "Failed",
+     "Total"
+    ],
+    "rows": [
+     [
+      "Took the course",
+      "60",
+      "20",
+      "80"
+     ],
+     [
+      "No course",
+      "66",
+      "54",
+      "120"
+     ],
+     [
+      "Total",
+      "126",
+      "74",
+      "200"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-two-categorical-summaries-1",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What proportion of the 250 visitors were on a first visit and hiking?",
+   "why": {
+    "correct": "A joint relative frequency divides one cell by the grand total: $\\frac{45}{250} = 0.18$."
+   },
+   "stimulus": "two-categorical-summaries-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.18,
+    "mistakes": [
+     {
+      "value": 0.45,
+      "why": "That divides by the 100 first visits, the share of first visits who hiked. \"Of the 250 visitors\" asks for the cell over the grand total."
+     },
+     {
+      "value": 0.42857142857142855,
+      "why": "That divides by the 105 hikers. The question is about all 250 visitors, so divide by 250."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-two-categorical-summaries-2",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the marginal relative frequency of fishing?",
+   "why": {
+    "correct": "A marginal relative frequency uses a total on the edge of the table: 69 of the 250 visitors fished, $\\frac{69}{250} = 0.276$."
+   },
+   "stimulus": "two-categorical-summaries-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.276,
+    "mistakes": [
+     {
+      "value": 0.36,
+      "why": "That is the share of returning visitors who fished, a conditional relative frequency. The marginal uses the fishing total, 69, over 250."
+     },
+     {
+      "value": 0.46,
+      "why": "That divides the fishing total by the 150 returning visitors. A marginal divides by the grand total, 250."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-two-categorical-summaries-3",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Of the returning visitors, what proportion came to fish?",
+   "why": {
+    "correct": "\"Of the returning visitors\" means divide by that row's total: $\\frac{54}{150} = 0.36$."
+   },
+   "stimulus": "two-categorical-summaries-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.36,
+    "mistakes": [
+     {
+      "value": 0.216,
+      "why": "That is the joint relative frequency, out of all 250 visitors. Here the group is the 150 returning visitors."
+     },
+     {
+      "value": 0.782608695652174,
+      "why": "That is the share of the 69 people who fished who were returning visitors. Start from the group named first: returning visitors."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-two-categorical-summaries-4",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A ranger says, \"Returning visitors are more likely to come to fish than first-time visitors.\" Is the claim supported for this sample?",
+   "why": {
+    "correct": "Compare conditional relative frequencies: 54 of 150 returning visitors fished (36%) against 15 of 100 first visits (15%).",
+    "options": [
+     "The conclusion is right but counts are not the evidence: there are more returning visitors, so compare percents.",
+     "Right: each group's own percent, compared directly.",
+     "The marginal percent describes everyone together; the claim compares two groups.",
+     "That divides by the wrong total. Start from each visit type and find the percent of it that fished."
+    ]
+   },
+   "stimulus": "two-categorical-summaries-s1",
+   "options": [
+    "Yes: 54 returning visitors fished and 15 first-time visitors fished, a big gap",
+    "Yes: 36% of returning visitors fished, compared with 15% of first-time visitors",
+    "No: just 69 of the 250 visitors fished, 27.6% of the whole sample",
+    "No: 54 of the 69 people who fished were returning, so the groups are the same"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-two-categorical-summaries-5",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which list is the marginal distribution of main activity?",
+   "why": {
+    "correct": "The marginal distribution of activity uses the column totals over 250: $\\frac{105}{250} = 0.42$, $\\frac{69}{250} = 0.276$, $\\frac{76}{250} = 0.304$.",
+    "options": [
+     "Those are percents of first visits only, a conditional distribution.",
+     "That is the marginal distribution of visit type, not of activity.",
+     "Right: each column total over the grand total.",
+     "Those are joint relative frequencies for first visits only."
+    ]
+   },
+   "stimulus": "two-categorical-summaries-s1",
+   "options": [
+    "Hiking 45%, fishing 15%, picnic 40% of first visits",
+    "First visit 40%, returning 60% of the visitors",
+    "Hiking 42%, fishing 27.6%, picnic 30.4%",
+    "Hiking 18%, fishing 6%, picnic 16% of the 250 visitors"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-two-categorical-summaries-6",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What proportion of the drivers who took the course passed on the first try?",
+   "why": {
+    "correct": "Start from the 80 course takers: $\\frac{60}{80} = 0.75$."
+   },
+   "stimulus": "two-categorical-summaries-s2",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.75,
+    "mistakes": [
+     {
+      "value": 0.47619047619047616,
+      "why": "That is the share of the 126 drivers who passed who took the course. The question starts from the course takers, so divide by 80."
+     },
+     {
+      "value": 0.3,
+      "why": "That divides by all 200 drivers, a joint relative frequency. Divide by the 80 who took the course."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-two-categorical-summaries-7",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A school ad says, \"Most drivers who pass on the first try took a driver's education course.\" Do these data support the ad?",
+   "why": {
+    "correct": "Start from the drivers who passed: 60 of the 126 took the course, $\\frac{60}{126} \\approx 0.476$, less than half.",
+    "options": [
+     "Right: \"of drivers who pass\" means divide by the 126 who passed.",
+     "True, but that answers a different question, about course takers rather than about drivers who passed.",
+     "The ad is about drivers who passed, so the group to start from is the 126 who passed.",
+     "That is the marginal share who took the course, not the share of passers who did."
+    ]
+   },
+   "stimulus": "two-categorical-summaries-s2",
+   "options": [
+    "No: of the 126 drivers who passed, only 60 (about 48%) took the course",
+    "Yes: 75% of the drivers who took the course passed, which is most of them",
+    "Yes: 60 course takers passed, which is most of the group of 80",
+    "No: the course takers are 80 of 200 drivers, which is 40% of the sample"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-two-categorical-summaries-8",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write an expression for the proportion of drivers with no course who failed on the first try.",
+   "why": {
+    "correct": "The group is the 120 drivers with no course, and 54 of them failed: $\\frac{54}{120} = 0.45$."
+   },
+   "stimulus": "two-categorical-summaries-s2",
+   "setup": {
+    "answer": "54/120",
+    "bind": {},
+    "mustUse": [
+     "54",
+     "120"
+    ],
+    "mistakes": [
+     {
+      "expr": "54/74",
+      "why": "That divides by the 74 drivers who failed, which gives the share of failures with no course. Divide by the 120 drivers with no course."
+     },
+     {
+      "expr": "54/200",
+      "why": "That divides by all 200 drivers. The question is only about the 120 with no course."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-two-categorical-summaries-9",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Overall, 126 of the 200 drivers passed (63%). If taking the course were not associated with passing, what would the table show?",
+   "why": {
+    "correct": "No association means the conditional relative frequencies match: each group would pass at the overall rate, 63%. In the data the rates are 75% and 55%, so there is an association.",
+    "options": [
+     "Equal counts are not the test, since the groups have different sizes (80 and 120).",
+     "The overall rate is 63%, so with no association each group would pass at about 63%.",
+     "Right: with no association each group looks like the whole.",
+     "Group sizes say nothing about association; the percents within each group do."
+    ]
+   },
+   "stimulus": "two-categorical-summaries-s2",
+   "options": [
+    "About the same number of passers in each group, near 63 drivers each",
+    "Exactly half of each group passing, 50% and 50% of the drivers",
+    "About 63% of each group passing, the same as the overall rate",
+    "More drivers in the course group than in the group with no course"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-two-categorical-summaries-10",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "single",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which describes a conditional relative frequency in a two-way table?",
+   "why": {
+    "correct": "A conditional relative frequency is a count divided by the total of the row or column that names the group: \"of those who ..., what share ...\".",
+    "options": [
+     "That is a joint relative frequency.",
+     "That is a marginal relative frequency.",
+     "Relative frequencies are shares, found by dividing, not by subtracting.",
+     "Right: the share within one group."
+    ]
+   },
+   "options": [
+    "A cell count divided by the grand total of the whole table",
+    "A row or column total divided by the grand total of the table",
+    "The difference between two cell counts in the same row of the table",
+    "A cell count divided by the total of its row or of its column"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-two-categorical-summaries-11",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A table of 500 voters shows party membership and support for a school bond. 120 voters are Party A members who support the bond. What is $\\frac{120}{500}$?",
+   "why": {
+    "correct": "One cell over the grand total is a joint relative frequency: 24% of all 500 voters are Party A members who support the bond.",
+    "options": [
+     "Right: one cell divided by the grand total.",
+     "A marginal uses a row or column total on top, not one cell.",
+     "A conditional divides by a row or column total, not by 500.",
+     "That would divide by the number of Party A members."
+    ]
+   },
+   "options": [
+    "A joint relative frequency",
+    "A marginal relative frequency",
+    "A conditional relative frequency",
+    "The percent of Party A members who support the bond"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-two-categorical-summaries-12",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cafe recorded 180 orders. In the morning there were 80 coffee and 25 tea orders; in the afternoon, 30 coffee and 45 tea orders (invented data). What proportion of the afternoon orders were tea?",
+   "why": {
+    "correct": "There were $30 + 45 = 75$ afternoon orders, and 45 were tea: $\\frac{45}{75} = 0.6$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.6,
+    "mistakes": [
+     {
+      "value": 0.6428571428571429,
+      "why": "That divides by the 70 tea orders, giving the share of tea orders made in the afternoon. Divide by the 75 afternoon orders."
+     },
+     {
+      "value": 0.25,
+      "why": "That divides by all 180 orders. The question is about afternoon orders only."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-two-categorical-summaries-13",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a sample of airline passengers, 30% of the men and 30% of the women prefer a window seat. What is the marginal relative frequency of preferring a window seat?",
+   "why": {
+    "correct": "The overall percent is a weighted mix of the group percents. If each group is 30%, the mix is 30% too, however many men and women there are.",
+    "options": [
+     "Adding percents of different groups does not give a percent of the whole.",
+     "That would matter if the two percents differed. Here they are equal.",
+     "Right: a mix of 30% and 30% is 30%.",
+     "The overall rate is a weighted mix of 30% and 30%, which is 30%."
+    ]
+   },
+   "options": [
+    "60%, the two percents added together",
+    "It depends on how many men and how many women there are",
+    "30%, because each group has the same 30%",
+    "15%, half of the 30% because there are two groups"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-two-categorical-summaries-14",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "conclude",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A cafe recorded 180 orders. In the morning there were 80 coffee and 25 tea orders; in the afternoon, 30 coffee and 45 tea orders (invented data). Build a statement that compares tea orders in the morning and the afternoon.",
+   "why": {
+    "correct": "Morning: $\\frac{25}{105} \\approx 0.238$. Afternoon: $\\frac{45}{75} = 0.60$. Compare conditional relative frequencies, not counts."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "claim": {
+      "label": "Comparison",
+      "options": [
+       "A greater share of afternoon orders than morning orders were tea",
+       "A greater share of morning orders than afternoon orders were tea",
+       "Time of day and type of drink are not associated"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "60% of afternoon orders were tea, compared with about 24% of morning orders.",
+       "2": "The shares differ a lot (60% and 24%), so they are associated."
+      }
+     },
+     "evidence": {
+      "label": "Numbers",
+      "options": [
+       "60% (45 of 75) compared with about 24% (25 of 105)",
+       "45 tea orders compared with 25 tea orders",
+       "About 39% of all 180 orders were tea"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Counts mislead when the groups differ in size; use each group's share.",
+       "2": "That is the marginal share; it does not compare morning with afternoon."
+      }
+     }
+    },
+    "model": "At this cafe, a greater share of afternoon orders were tea: 60% of afternoon orders (45 of 75) compared with about 24% of morning orders (25 of 105), so time of day and drink are associated.",
+    "write": {
+     "context": [
+      "tea",
+      "afternoon"
+     ],
+     "parameter": false,
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-two-categorical-summaries-15",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "You find the conditional relative frequencies of activity for first-time park visitors: hiking, fishing and picnic. What must they add to?",
+   "why": {
+    "correct": "They split one group, the first-time visitors, into its categories, so they add to 1 (100%), apart from rounding.",
+    "options": [
+     "Right: every first-time visitor is in exactly one activity.",
+     "That would be true of the joint relative frequencies in that row, not the conditional ones.",
+     "Relative frequencies are shares, and the counts are what add to 100.",
+     "Conditional relative frequencies in one row use only that row's total."
+    ]
+   },
+   "options": [
+    "1, or 100%, since they split one group into its categories",
+    "The marginal relative frequency of first-time visitors, 0.4",
+    "The number of first-time visitors in the sample, 100",
+    "It depends on how many visitors were returning to the park"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-two-categorical-summaries-16",
+   "unit": "unit-2",
+   "topic": "two-categorical-summaries",
+   "type": "multi",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A two-way table of 250 park visitors has visit type in the rows (totals 100 and 150) and activity in the columns (totals 105, 69 and 76). Which of these are joint relative frequencies? Select all that apply.",
+   "why": {
+    "correct": "A joint relative frequency is one cell over the grand total, 250.",
+    "options": [
+     "Right: first visit and hiking, over all visitors.",
+     "That divides by the returning row total, a conditional relative frequency.",
+     "That divides by a row total, a conditional relative frequency.",
+     "That is a column total over 250, a marginal relative frequency.",
+     "That divides by a column total, a conditional relative frequency."
+    ]
+   },
+   "options": [
+    "$\\frac{45}{250}$",
+    "$\\frac{36}{150}$",
+    "$\\frac{45}{100}$",
+    "$\\frac{105}{250}$",
+    "$\\frac{54}{69}$"
+   ],
+   "correct": [
+    0
+   ]
+  }
+ ]
+}

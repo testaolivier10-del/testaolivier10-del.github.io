@@ -1,0 +1,672 @@
+{
+ "stimuli": {
+  "test-two-means-s1": {
+   "kind": "table",
+   "title": "Caffeine and reaction time",
+   "text": "<p>Forty-two adult volunteers were randomly assigned to drink a caffeinated drink (C, 20 people) or an identical-tasting caffeine-free drink (N, 22 people). Thirty minutes later each did a reaction-time task (invented data). Dotplots of both groups show no strong skew or outliers. The researchers test $H_0: \\mu_C - \\mu_N = 0$ against $H_a: \\mu_C - \\mu_N < 0$ at $\\alpha = 0.05$, where $\\mu_C$ and $\\mu_N$ are the true mean reaction times with and without caffeine for adults like these.</p>",
+   "table": {
+    "caption": "Reaction times in milliseconds",
+    "cols": [
+     "Group",
+     "n",
+     "Mean",
+     "SD"
+    ],
+    "rows": [
+     [
+      "Caffeine (C)",
+      "20",
+      "241",
+      "28"
+     ],
+     [
+      "No caffeine (N)",
+      "22",
+      "262",
+      "31"
+     ]
+    ]
+   }
+  },
+  "test-two-means-s2": {
+   "kind": "table",
+   "title": "Weekly exercise in two counties",
+   "text": "<p>A health department took independent random samples of adults in two large counties and asked how many hours they exercised last week (invented data). Both samples are large, and small shares of each county's adults. The department tests $H_0: \\mu_1 - \\mu_2 = 0$ against $H_a: \\mu_1 - \\mu_2 \\ne 0$ at $\\alpha = 0.05$, where $\\mu_1$ and $\\mu_2$ are the true mean weekly exercise hours of adults in county 1 and county 2.</p>",
+   "table": {
+    "caption": "Hours of exercise last week",
+    "cols": [
+     "County",
+     "n",
+     "Mean",
+     "SD"
+    ],
+    "rows": [
+     [
+      "County 1",
+      "45",
+      "4.6",
+      "2.9"
+     ],
+     [
+      "County 2",
+      "50",
+      "3.9",
+      "3.3"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-test-two-means-1",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "setup",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the expression for the test statistic. Type it as on the exam, for example (a - b)/sqrt(s^2/m + r^2/n).",
+   "stimulus": "test-two-means-s1",
+   "why": {
+    "correct": "$t = \\frac{(\\bar{x}_C - \\bar{x}_N) - 0}{\\sqrt{\\frac{s_C^2}{n_C} + \\frac{s_N^2}{n_N}}} = \\frac{241 - 262}{\\sqrt{\\frac{28^2}{20} + \\frac{31^2}{22}}} = \\frac{-21}{9.10} = -2.31$."
+   },
+   "setup": {
+    "answer": "(241 - 262)/sqrt(28^2/20 + 31^2/22)",
+    "bind": {},
+    "mustUse": [
+     "20",
+     "22",
+     "28",
+     "31"
+    ],
+    "then": {
+     "kind": "t",
+     "from": {
+      "fn": "t2",
+      "args": [
+       241,
+       28,
+       20,
+       262,
+       31,
+       22
+      ],
+      "pick": "t"
+     }
+    },
+    "mistakes": [
+     {
+      "expr": "(241 - 262)/(28/sqrt(20) + 31/sqrt(22))",
+      "why": "Standard errors do not add. Put 28^2/20 + 31^2/22 under one square root."
+     },
+     {
+      "expr": "(241 - 262)/sqrt(28^2 + 31^2)",
+      "why": "Divide each squared standard deviation by its own sample size."
+     },
+     {
+      "expr": "(262 - 241)/sqrt(28^2/20 + 31^2/22)",
+      "why": "Keep the order of the hypotheses: caffeine minus no caffeine, 241 - 262."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-2",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the p-value of the test?",
+   "stimulus": "test-two-means-s1",
+   "why": {
+    "correct": "$t = -2.31$ with technology df 40.0 gives $p = P(t < -2.31) = 0.0132$. With the conservative df 19, $p = 0.0163$; both are accepted and both are below 0.05."
+   },
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "t2",
+     "args": [
+      241,
+      28,
+      20,
+      262,
+      31,
+      22
+     ],
+     "pick": "p.less"
+    },
+    "mistakes": [
+     {
+      "value": 0.0263,
+      "why": "That is the two-sided p-value. The alternative $\\mu_C - \\mu_N < 0$ is one-sided: one tail."
+     },
+     {
+      "value": 0.9868,
+      "why": "That is the area to the right of $t = -2.31$. For a \"less than\" alternative, the p-value is the left tail."
+     },
+     {
+      "value": 0.0105,
+      "why": "That uses the standard normal. The standard error uses $s_C$ and $s_N$, so use the t distribution."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-3",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "State the conclusion at $\\alpha = 0.05$ ($p = 0.0132$).",
+   "stimulus": "test-two-means-s1",
+   "why": {
+    "correct": "p is below alpha: reject $H_0$ and state the evidence for $H_a$ about the difference in true means, in context."
+   },
+   "conclude": {
+    "mode": "test",
+    "alpha": 0.05,
+    "p": 0.0132,
+    "ha": "less",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "It is proven",
+       "There is convincing evidence for the null hypothesis"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is below alpha, so the data do give convincing evidence.",
+       "2": "A test gives evidence; it never proves anything.",
+       "3": "A test weighs evidence against the null hypothesis, never for it."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean reaction time with caffeine is less than without caffeine, for adults like these",
+       "the caffeine group's sample mean reaction time was less",
+       "every adult reacts faster after caffeine"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the sample result, 241 against 262 ms; the test is about the true means.",
+       "2": "The test is about means; some individuals may not react faster."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.0132 is less than 0.05, we reject the null hypothesis. There is convincing evidence that the true mean reaction time with caffeine is less than without caffeine, for adults like these.",
+    "write": {
+     "context": [
+      "caffeine",
+      "reaction"
+     ],
+     "direction": "less",
+     "compare": {
+      "p": 0.0132,
+      "alpha": 0.05
+     }
+    }
+   }
+  },
+  {
+   "id": "stat-test-two-means-4",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does the design let the researchers conclude?",
+   "stimulus": "test-two-means-s1",
+   "options": [
+    "Caffeine causes faster mean reaction time for adults like these volunteers",
+    "Caffeine speeds reactions for each adult in the population",
+    "Just an association, because the sample sizes are under 30",
+    "Nothing, because the groups have different sizes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Random assignment: cause and effect. Random sampling (absent): generalizing to a population.",
+    "options": [
+     "Random assignment supports cause and effect. The volunteers were not a random sample, so the result applies to adults like them.",
+     "Volunteers were not randomly sampled from a population, and a test is about means, not every adult.",
+     "Sample size affects conditions, not whether cause and effect can be claimed.",
+     "Unequal group sizes are fine for a two-sample t test."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-5",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "single",
+   "practice": "3.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student uses the conservative df, 19, instead of the technology df, 40.0. How does the result change?",
+   "stimulus": "test-two-means-s1",
+   "options": [
+    "The p-value is a little smaller, so the evidence is stronger",
+    "The p-value is a little larger (0.0163), and the decision at 0.05 is the same",
+    "The test statistic changes to $-1.98$",
+    "The decision flips to fail to reject"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Conservative df give a larger p-value, so they reject a little less often; here both routes reject $H_0$.",
+    "options": [
+     "Fewer df means heavier tails and a larger p-value.",
+     "Fewer degrees of freedom give heavier tails, so the same t has a larger p-value; it is still below 0.05.",
+     "The t statistic does not depend on df; only the p-value does.",
+     "0.0163 is still below 0.05."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-6",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the value of the test statistic?",
+   "stimulus": "test-two-means-s2",
+   "why": {
+    "correct": "$t = \\frac{4.6 - 3.9}{\\sqrt{\\frac{2.9^2}{45} + \\frac{3.3^2}{50}}} = \\frac{0.7}{0.636} = 1.10$."
+   },
+   "numeric": {
+    "kind": "t",
+    "from": {
+     "fn": "t2",
+     "args": [
+      4.6,
+      2.9,
+      45,
+      3.9,
+      3.3,
+      50
+     ],
+     "pick": "t"
+    },
+    "mistakes": [
+     {
+      "value": 0.78,
+      "why": "That divides by the sum of the two standard errors, 0.432 + 0.467 = 0.899. Add the variances under one square root."
+     },
+     {
+      "value": 0.16,
+      "why": "That leaves out the sample sizes: $\\sqrt{2.9^2 + 3.3^2} = 4.39$. Divide each variance by its $n$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-7",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the p-value?",
+   "stimulus": "test-two-means-s2",
+   "why": {
+    "correct": "Two-sided: $p = 2P(t > 1.10) = 0.274$ with technology df 93.0 (conservative df 44 gives 0.277; both accepted)."
+   },
+   "numeric": {
+    "kind": "pvalue",
+    "alpha": 0.05,
+    "from": {
+     "fn": "t2",
+     "args": [
+      4.6,
+      2.9,
+      45,
+      3.9,
+      3.3,
+      50
+     ],
+     "pick": "p.two"
+    },
+    "mistakes": [
+     {
+      "value": 0.137,
+      "why": "That is one tail. The alternative $\\ne$ is two-sided: double it."
+     },
+     {
+      "value": 0.863,
+      "why": "That is the area to the left of $t = 1.10$. A two-sided p-value doubles the smaller tail."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-8",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "conclude",
+   "practice": "4.G",
+   "level": "apply",
+   "diff": 2,
+   "q": "State the conclusion at $\\alpha = 0.05$ ($p = 0.274$).",
+   "stimulus": "test-two-means-s2",
+   "why": {
+    "correct": "p is above alpha: fail to reject $H_0$. The data are not convincing evidence of a difference; that is not evidence the means are equal."
+   },
+   "conclude": {
+    "mode": "test",
+    "alpha": 0.05,
+    "p": 0.274,
+    "ha": "different",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "It is proven",
+       "There is convincing evidence for the null hypothesis"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "The p-value is above alpha, so the data do not give convincing evidence.",
+       "2": "A test gives evidence; it never proves anything.",
+       "3": "A test weighs evidence against the null hypothesis, never for it."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true mean weekly exercise hours of adults differ between the two counties",
+       "the two sample means differ",
+       "the two counties have the same true mean exercise hours"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample means do differ (4.6 and 3.9); the test is about the true means.",
+       "2": "A test never shows the null hypothesis is true."
+      }
+     }
+    },
+    "model": "Because the p-value of 0.274 is greater than 0.05, we fail to reject the null hypothesis. There is not convincing evidence that the true mean weekly exercise hours of adults differ between the two counties.",
+    "write": {
+     "context": [
+      "exercise",
+      "count"
+     ],
+     "direction": "different",
+     "compare": {
+      "p": 0.274,
+      "alpha": 0.05
+     }
+    }
+   }
+  },
+  {
+   "id": "stat-test-two-means-9",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "conclude",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Interpret the p-value of 0.274 in context.",
+   "stimulus": "test-two-means-s2",
+   "why": {
+    "correct": "Condition on $H_0$ (no difference in true means), then give the probability of a difference in sample means at least as large as 0.7 hours, in either direction."
+   },
+   "conclude": {
+    "mode": "pvalue",
+    "slots": {
+     "condition": {
+      "options": [
+       "Assuming the true mean weekly exercise hours of the two counties are equal,",
+       "Assuming the true difference is 0.7 hours,",
+       "Because the null hypothesis is probably true,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is computed under the null hypothesis, a difference of 0.",
+       "2": "A p-value is computed assuming $H_0$, not a judgment of it."
+      }
+     },
+     "claim": {
+      "options": [
+       "there is a 0.274 probability of getting a difference in sample means of 0.7 hours or more in either direction",
+       "there is a 0.274 probability that the null hypothesis is true",
+       "there is a 0.274 probability that the counties differ"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A p-value is not the probability that a hypothesis is true.",
+       "2": "The probability is about sample results, not about the parameters."
+      }
+     },
+     "context": {
+      "options": [
+       "by chance, with random samples of 45 and 50 adults.",
+       "for one adult chosen from each county.",
+       "in the whole population of adults."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The statistic is a difference of means of the two samples.",
+       "2": "The probability is about samples of these sizes."
+      }
+     }
+    },
+    "model": "Assuming the true mean weekly exercise hours of the two counties are equal, there is a 0.274 probability of getting a difference in sample means of 0.7 hours or more in either direction by chance, with random samples of 45 and 50 adults.",
+    "write": {
+     "context": [
+      "exercise"
+     ],
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-test-two-means-10",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "After failing to reject $H_0: \\mu_1 - \\mu_2 = 0$, which error might the health department have made?",
+   "options": [
+    "A Type I error: the true means are equal, but the test said they differ",
+    "Both types of error at once",
+    "No error is possible, since the p-value is large",
+    "A Type II error: the true means differ, but the test did not detect it"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Fail to reject $H_0$: the possible error is Type II. Reject $H_0$: the possible error is Type I.",
+    "options": [
+     "A Type I error needs a rejection of $H_0$, which did not happen.",
+     "Each decision risks one type of error: rejecting risks Type I, failing to reject risks Type II.",
+     "A large p-value can still come from a false $H_0$ if the difference is small or the samples too small.",
+     "Only a decision to fail to reject can be a Type II error."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-11",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A teacher measures each of 28 students' quiz scores before and after a review game and asks whether scores rise on average. Which procedure fits?",
+   "options": [
+    "A two-sample t test comparing before and after scores",
+    "A paired t test on the 28 differences",
+    "A two-proportion z test",
+    "A one-sample t test on the after scores alone"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Same individuals measured twice: paired t test, $H_0: \\mu_d = 0$, $H_a: \\mu_d > 0$ with $d$ = after minus before.",
+    "options": [
+     "The two sets of scores come from the same students, so they are not independent.",
+     "Each student gives two linked scores, so test the mean of the after minus before differences.",
+     "Scores are quantitative; the parameter is a mean difference.",
+     "The before scores carry the comparison."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-12",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A researcher compares the proportion of adults who exercise at least 3 hours a week in two counties, using independent random samples. Which procedure fits?",
+   "options": [
+    "A two-sample t test for $\\mu_1 - \\mu_2$",
+    "A paired t test",
+    "A two-sample z test for $p_1 - p_2$",
+    "A one-sample t test for each county"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Choosing the procedure: categorical response, two groups, so a two-sample z test for proportions. Quantitative response, two independent groups: two-sample t test.",
+    "options": [
+     "The question is about a proportion, not a mean number of hours.",
+     "The two samples are independent, and the response is categorical.",
+     "The response is \"at least 3 hours or not\", a categorical variable, so compare proportions.",
+     "Two separate tests do not compare the counties."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-13",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "numeric",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Independent random samples give $\\bar{x}_1 = 52.1$, $s_1 = 6.0$, $n_1 = 36$ and $\\bar{x}_2 = 48.7$, $s_2 = 7.2$, $n_2 = 40$. What is the t statistic for $H_0: \\mu_1 - \\mu_2 = 0$?",
+   "why": {
+    "correct": "$t = \\frac{52.1 - 48.7}{\\sqrt{\\frac{6.0^2}{36} + \\frac{7.2^2}{40}}} = \\frac{3.4}{\\sqrt{1 + 1.296}} = \\frac{3.4}{1.515} = 2.24$."
+   },
+   "numeric": {
+    "kind": "t",
+    "from": {
+     "fn": "t2",
+     "args": [
+      52.1,
+      6,
+      36,
+      48.7,
+      7.2,
+      40
+     ],
+     "pick": "t"
+    },
+    "mistakes": [
+     {
+      "value": 1.59,
+      "why": "That divides by the sum of the standard errors, $1 + 1.138$. Add the variances, then take one square root."
+     },
+     {
+      "value": -2.24,
+      "why": "The order is group 1 minus group 2, so the statistic is positive here."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-14",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A two-sided two-sample t test of $H_0: \\mu_1 - \\mu_2 = 0$ gives $p = 0.03$. What can you say about the 95% two-sample t interval for $\\mu_1 - \\mu_2$ from the same data?",
+   "options": [
+    "It does not contain 0",
+    "It contains 0",
+    "It is centered at 0.03",
+    "It has width 0.97"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At matching levels, rejecting $H_0: \\mu_1 - \\mu_2 = 0$ two-sided and excluding 0 from the interval are the same finding.",
+    "options": [
+     "A two-sided test at 0.05 and a 95% interval agree: $p < 0.05$ means 0 is outside the interval.",
+     "That would go with $p > 0.05$.",
+     "The interval is centered at $\\bar{x}_1 - \\bar{x}_2$; 0.03 is a probability.",
+     "The width depends on $t^*$ and the standard error, not on the p-value."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-15",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "multi",
+   "practice": "3.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statements about the two-sample t statistic $t = \\frac{\\bar{x}_1 - \\bar{x}_2}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$ are true? Select all that apply.",
+   "options": [
+    "It measures the difference in sample means in standard errors",
+    "It uses one combined standard deviation for both groups",
+    "It requires the two samples to be the same size",
+    "Its value depends on the degrees of freedom",
+    "A larger $|t|$ gives a larger p-value"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "The two-sample t statistic is the observed difference over its standard error, built from $s_1$ and $s_2$ separately; df only enter when finding the p-value.",
+    "options": [
+     "Right: (statistic minus null value 0) over the standard error.",
+     "It uses $s_1$ and $s_2$ separately, each with its own $n$.",
+     "Any sample sizes work.",
+     "df affect the p-value, not the statistic.",
+     "A larger $|t|$ means stronger evidence, so a smaller p-value."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-16",
+   "unit": "unit-4",
+   "topic": "test-two-means",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In the caffeine study, suppose both groups had been four times as large, with the same means and standard deviations. What would happen to the test statistic?",
+   "options": [
+    "$|t|$ would stay at 2.31",
+    "$|t|$ would be four times as large",
+    "$|t|$ would double, to about 4.61",
+    "$|t|$ would be half as large"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\sqrt{\\frac{28^2}{80} + \\frac{31^2}{88}} = 4.55$, half of 9.10, so $t = \\frac{-21}{4.55} = -4.61$.",
+    "options": [
+     "The standard error shrinks with larger samples, so the same difference counts for more.",
+     "The standard error depends on $\\sqrt{n}$, so it halves rather than quarters.",
+     "Each variance term is divided by four times the sample size, so the standard error halves and $|t|$ doubles.",
+     "Larger samples make the evidence stronger, not weaker."
+    ]
+   }
+  }
+ ]
+}

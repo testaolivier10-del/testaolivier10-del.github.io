@@ -1,0 +1,5 @@
+{
+ "zero-difference": {
+  "def": "The value $p_1 - p_2 = 0$, which means the two population proportions are equal. If a confidence interval for $p_1 - p_2$ contains 0, a difference of zero is plausible and there is not convincing evidence of a difference; if 0 is outside the interval, there is."
+ }
+}

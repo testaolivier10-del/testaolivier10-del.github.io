@@ -1,0 +1,14 @@
+{
+ "lsrl": {
+  "def": "The least-squares regression line, $\\hat{y} = a + bx$: the line that makes the sum of the squared residuals as small as possible. Its slope is $b = r\\frac{s_y}{s_x}$, and it passes through $(\\bar{x}, \\bar{y})$."
+ },
+ "r-squared": {
+  "def": "The coefficient of determination, $r^2$: the fraction of the variation in the response variable that is accounted for by the least-squares line using the explanatory variable."
+ },
+ "s-residuals": {
+  "def": "The standard deviation of the residuals, $s = \\sqrt{\\frac{\\sum (y - \\hat{y})^2}{n - 2}}$: the typical size of a prediction error, in the units of the response variable."
+ },
+ "influential": {
+  "def": "A point whose removal would change the least-squares line a lot. Points with $x$ values far from $\\bar{x}$ have high leverage and are often influential; a point with a large residual is an outlier."
+ }
+}

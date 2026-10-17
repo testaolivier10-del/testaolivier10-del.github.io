@@ -1,0 +1,76 @@
+{
+  "about": "Probability trees (docs/apstat-spec.md section 6). explore.scenes are the Explore view's two events (a tree's three numbers; everything else is computed by ApStatMath.probabilityTrees.joint); contexts are the Test yourself settings (ApStatMath.probabilityTrees.generate). Validator: scripts/lib/apstat-tool-checks/probability-trees.mjs.",
+  "slug": "probability-trees",
+  "kind": "simulator",
+  "topic": "conditional-probability",
+  "intro": "<p>The same two events, three ways: a tree diagram, a two-way table and a Venn diagram, all linked. Pick a question and every view lights up the outcomes it counts, and, for a conditional probability, the slice it is limited to. Then simulate and watch the share of trials close in on the exact answer.</p>",
+  "howItWorksTitle": "How the three views and the simulation are built",
+  "howItWorks": "<p>Everything comes from three numbers: P(A), P(B | A) and P(B | not A). Each path of the tree multiplies its branches (the multiplication rule), the table adds paths, and a conditional probability divides a joint probability by the probability of the condition.</p><ul><li><b>Table.</b> Counts out of 1,000, so a probability is a count over a total; the condition chooses which total.</li><li><b>Venn diagram.</b> The circle areas are in proportion to P(A) and P(B), and their overlap is P(A and B), found by solving for the distance between the circles.</li><li><b>Independent</b> means P(B | A) = P(B): the two branches to B match. Mutually exclusive means P(A and B) = 0: the circles do not touch.</li><li><b>Simulation.</b> Each trial first draws A or not A with P(A), then B or not B with the matching conditional probability, from a seeded random number generator.</li></ul><p>Test yourself makes new problems from a seed (the problem code), and every key is recomputed by the validator.</p>",
+  "partTopics": { "AorB": "independence-unions", "indep": "independence-unions", "me": "mutually-exclusive" },
+  "explore": {
+    "scenes": [
+      { "id": "screening", "topic": "conditional-probability", "name": "A screening test", "pop": "patients",
+        "A": "Has the condition", "nA": "No condition", "B": "Tests positive", "nB": "Tests negative",
+        "pA": 0.05, "pBgA": 0.9, "pBgNA": 0.08,
+        "note": "A test that is right 90% of the time for sick patients still gives mostly false positives when the condition is rare: compare P(A | B) with P(B | A)." },
+      { "id": "students", "topic": "conditional-probability", "name": "Sports and part-time jobs", "pop": "students",
+        "A": "Plays a sport", "nA": "No sport", "B": "Has a job", "nB": "No job",
+        "pA": 0.45, "pBgA": 0.25, "pBgNA": 0.45,
+        "note": "Athletes are less likely to have a job here, so knowing A changes the chance of B: dependent events." },
+      { "id": "spam", "topic": "conditional-probability", "name": "A spam filter", "pop": "messages",
+        "A": "Spam", "nA": "Not spam", "B": "Says \"free\"", "nB": "No \"free\"",
+        "pA": 0.3, "pBgA": 0.6, "pBgNA": 0.05,
+        "note": "The word \"free\" is far more common in spam, so seeing it raises the chance a message is spam from 0.3 to P(A | B)." },
+      { "id": "dice", "topic": "independence-unions", "name": "One roll of a fair die", "pop": "rolls",
+        "A": "Even number", "nA": "Odd number", "B": "5 or 6", "nB": "1 to 4",
+        "pA": 0.5, "pBgA": 0.3333333333333333, "pBgNA": 0.3333333333333333,
+        "note": "Among the even numbers (2, 4, 6) one is a 5 or 6, and among the odd numbers (1, 3, 5) one is too: P(B | A) = P(B | not A) = 1/3, so A and B are independent." }
+    ]
+  },
+  "contexts": [
+    {
+      "id": "screening", "topic": "conditional-probability", "types": ["tree", "table", "rules"], "noIndep": true,
+      "lead": "A clinic screens patients for a condition with a quick test.",
+      "who": "a patient", "one": "patient", "many": "patients",
+      "ev": { "A": "has the condition", "Ap": "have the condition", "nA": "does not have the condition", "B": "tests positive", "Bp": "test positive", "nB": "tests negative" },
+      "tree": { "a": "of all patients, the proportion who have the condition is", "ba": "the test is positive for a patient with the condition with probability", "bna": "for a patient without it with probability" },
+      "pA": [0.02, 0.15], "pBgA": [0.8, 0.98], "pBgNA": [0.03, 0.15],
+      "totals": [400, 500, 800, 1000],
+      "tableLead": "The clinic's records for last year's patients give these counts.", "tableCap": "Patients by condition and test result",
+      "rules": { "both": { "A": "has the condition", "B": "is over 60" }, "disjoint": { "A": "tests positive", "B": "tests negative" } }
+    },
+    {
+      "id": "students", "topic": "conditional-probability", "types": ["tree", "table", "rules"],
+      "lead": "At a large high school, some students play a sport and some have a part-time job.",
+      "who": "a student", "one": "student", "many": "students",
+      "ev": { "A": "plays a sport", "Ap": "play a sport", "nA": "does not play a sport", "B": "has a part-time job", "Bp": "have a part-time job", "nB": "does not have a job" },
+      "tree": { "a": "the proportion of students who play a sport is", "ba": "a student who plays a sport has a part-time job with probability", "bna": "a student who does not with probability" },
+      "pA": [0.3, 0.6], "pBgA": [0.15, 0.4], "pBgNA": [0.3, 0.55],
+      "totals": [200, 250, 400, 500],
+      "tableLead": "A survey of the students gives these counts.", "tableCap": "Students by sport and job",
+      "rules": { "both": { "A": "plays a sport", "B": "is in the band" }, "disjoint": { "A": "is a junior", "B": "is a senior" } }
+    },
+    {
+      "id": "spam", "topic": "conditional-probability", "types": ["tree", "table", "rules"],
+      "lead": "An email filter studies the messages a company receives.",
+      "who": "a message", "one": "message", "many": "messages",
+      "ev": { "A": "is spam", "Ap": "are spam", "nA": "is not spam", "B": "contains the word \"free\"", "Bp": "contain the word \"free\"", "nB": "does not contain \"free\"" },
+      "tree": { "a": "the proportion of messages that are spam is", "ba": "a spam message contains the word \"free\" with probability", "bna": "a message that is not spam with probability" },
+      "pA": [0.2, 0.5], "pBgA": [0.4, 0.75], "pBgNA": [0.02, 0.12],
+      "totals": [500, 800, 1000, 2000],
+      "tableLead": "Last week the filter sorted these messages.", "tableCap": "Messages by type and the word \"free\"",
+      "rules": { "both": { "A": "is spam", "B": "has an attachment" }, "disjoint": { "A": "arrived on a Monday", "B": "arrived on a Tuesday" } }
+    },
+    {
+      "id": "commute", "topic": "conditional-probability", "types": ["tree", "table", "rules"],
+      "lead": "Commuters in a city either drive or take the train to work.",
+      "who": "a commuter", "one": "commuter", "many": "commuters",
+      "ev": { "A": "drives", "Ap": "drive", "nA": "takes the train", "B": "is late to work", "Bp": "are late to work", "nB": "is on time" },
+      "tree": { "a": "the proportion of commuters who drive is", "ba": "a commuter who drives is late with probability", "bna": "one who takes the train with probability" },
+      "pA": [0.4, 0.7], "pBgA": [0.1, 0.3], "pBgNA": [0.03, 0.12],
+      "totals": [300, 400, 600, 800],
+      "tableLead": "A city survey of commuters on one morning gives these counts.", "tableCap": "Commuters by mode and arrival",
+      "rules": { "both": { "A": "drives", "B": "listens to a podcast on the way" }, "disjoint": { "A": "drives", "B": "takes the train" } }
+    }
+  ]
+}

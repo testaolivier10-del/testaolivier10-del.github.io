@@ -1,0 +1,56 @@
+<p>An observational study can show that two variables are related, but not why. To learn whether a treatment causes a change, you have to impose it, and you have to do it so that nothing else can explain the result. This page covers the vocabulary of experiments, the four principles of a good design, the three standard designs, and what random assignment lets you conclude.</p>
+
+<h2>The parts of an experiment</h2>
+<ul>
+<li><b>Experimental units</b> are the individuals treatments are given to. When they are people, they are called <b>subjects</b>.</li>
+<li>A <b>treatment</b> is a condition imposed on the units. The explanatory variable in an experiment is often called a <b>factor</b>, and its values are <b>levels</b>: "glasses" is a factor with levels "blue-light blocking" and "clear".</li>
+<li>The <b>response variable</b> is measured after the treatments: sleep quality, push-up gain, tomato weight.</li>
+<li>A <b>control group</b> gives a baseline: no treatment, the standard treatment, or a <b>placebo</b>, a fake treatment that looks real. People often improve just because they expect to, the <b>placebo effect</b>; a placebo group experiences it too, so the comparison removes it.</li>
+</ul>
+
+<h2>Four principles</h2>
+<ol>
+<li><b>Comparison.</b> Use two or more treatments (one may be a control).</li>
+<li><b>Random assignment.</b> Let a chance process decide which units get which treatment. Then other variables, measured or not, are balanced between the groups on average, so they cannot explain a difference.</li>
+<li><b>Replication.</b> Give each treatment to enough units that chance differences between individuals average out.</li>
+<li><b>Control.</b> Keep other conditions the same for every group (same instructions, same timing, same measurement).</li>
+</ol>
+<p><b>Blinding</b> adds protection against expectations. In a <b>single-blind</b> experiment the subjects do not know which treatment they got; in a <b>double-blind</b> one, neither do the people who interact with them or measure the response.</p>
+
+<h2>Three designs</h2>
+<figure id="fig-block" data-fig="block-design"><figcaption>A randomized block design: 40 plants in two blocks by bench, with fertilizers assigned at random inside each block.</figcaption></figure>
+<table class="compare">
+<thead><tr><th>Design</th><th>How units are assigned</th><th>Use it when</th></tr></thead>
+<tbody>
+<tr><th>Completely randomized</th><td>every unit assigned to a treatment by chance, all at once</td><td>units are fairly similar</td></tr>
+<tr><th>Randomized block</th><td>group similar units into blocks, then randomize within each block</td><td>a known variable (experience, location) affects the response</td></tr>
+<tr><th>Matched pairs</th><td>pairs of similar units get one treatment each, or each unit gets both treatments in random order</td><td>units can be paired closely, or can receive both treatments</td></tr>
+</tbody>
+</table>
+<p>Blocking works like stratifying in a sample, but for assigning treatments. If beginners and experienced members gain push-ups at very different rates, a completely randomized design lets that difference blur the comparison. Comparing programs within each block removes it, so the effect of the program is easier to see. A matched pairs design is a block design with blocks of size two.</p>
+<div class="worked">
+<p><b>Describe a randomized block design, with the randomization.</b> A gym compares training programs P and Q with 16 beginners and 24 experienced volunteers.</p>
+<p>Blocks: beginners and experienced members, because experience likely affects push-up gains.</p>
+<p>Randomization in the beginner block: write the 16 names on identical slips, mix them in a container, draw 8 slips; those 8 do program P and the other 8 do program Q. Repeat in the experienced block: 24 slips, draw 12 for P, the other 12 do Q.</p>
+<p>Response: each member’s gain in push-ups after six weeks, compared between programs within each block.</p>
+<p>A procedure that says only "randomly assign the members" loses credit. Say how: slips or labels, mixing or generating, and which group the chosen units join.</p>
+</div>
+
+<h2>Statistically significant</h2>
+<p>Even if a treatment does nothing, random assignment will put slightly different units in each group, so the group results will differ a little by chance. A difference is <b>statistically significant</b> when it is too large to be explained by that chance variation alone. Later units show how to measure this; for now, "statistically significant" means "bigger than chance would usually produce".</p>
+
+<h2>What can you conclude?</h2>
+<p>Random assignment and random sampling do different jobs. Random assignment allows a cause-and-effect conclusion. Random sampling allows generalizing to the population the sample came from.</p>
+<table class="compare">
+<thead><tr><th></th><th>Random assignment</th><th>No random assignment</th></tr></thead>
+<tbody>
+<tr><th>Random sample</th><td>cause and effect, for the population</td><td>a relationship, for the population</td></tr>
+<tr><th>No random sample</th><td>cause and effect, for units like those studied</td><td>a relationship, for the units studied</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>State the scope of inference.</b> Sixty student volunteers were randomly assigned to blue-light or clear glasses, double-blind, and the blue-light group slept much better, a statistically significant difference.</p>
+<p>Cause: yes, because the glasses were randomly assigned.</p>
+<p>Generalizing: only to students like these volunteers, because they were not a random sample of all college students.</p>
+<p>In context: <i>"Because the students were randomly assigned to the glasses, the study gives evidence that blue-light glasses cause better sleep quality for students like those in the study. Because they were volunteers, the result should not be generalized to all college students."</i></p>
+</div>

@@ -1,0 +1,72 @@
+{
+ "hook": "Of 300 randomly chosen students, those who keep a phone in the bedroom seem to sleep less: 35% of them sleep under 7 hours, against 20% of the others. The expected counts are ready. Now one number, $\\chi^2$, has to sum up how far the whole table is from \"no association\", and a new distribution has to say whether that number is surprising.",
+ "prereq": [
+  {
+   "q": "Row total 200, column total 90, grand total 300. What is the expected count?",
+   "options": [
+    "$60$",
+    "$90$",
+    "$66.7$",
+    "$45$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{200 \\times 90}{300} = 60$.",
+   "review": "chi-square-setup"
+  },
+  {
+   "q": "A test gives a p-value of 0.016 at $\\alpha = 0.05$. The decision is",
+   "options": [
+    "reject $H_0$",
+    "fail to reject $H_0$",
+    "accept $H_0$",
+    "accept $H_a$ as proven"
+   ],
+   "correct": 0,
+   "why": "$0.016 < 0.05$, so reject $H_0$.",
+   "review": "test-one-proportion"
+  }
+ ],
+ "figure": {
+  "figure": "chi-square-tail",
+  "caption": "The chi-square distribution with 2 degrees of freedom. The observed $\\chi^2 = 8.21$ cuts off a right tail of area 0.0165, the p-value."
+ },
+ "chain": [
+  {
+   "cause": "For each cell, compare the observed count with the expected count",
+   "effect": "the term $\\frac{(O - E)^2}{E}$ is that cell's contribution: large where the table departs from $H_0$"
+  },
+  {
+   "cause": "Add the terms over every cell",
+   "effect": "$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$, which is 0 when the table matches $H_0$ and grows as it departs"
+  },
+  {
+   "cause": "If $H_0$ is true, $\\chi^2$ follows a chi-square distribution with $\\text{df} = (r - 1)(c - 1)$",
+   "effect": "the p-value is the area to the right of the observed $\\chi^2$ under that curve"
+  },
+  {
+   "cause": "Compare the p-value with $\\alpha$",
+   "effect": "conclude about an association (or a difference in distributions) in context, then describe it from the largest terms"
+  }
+ ],
+ "ideas": [
+  "$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$ over every cell; each term is a chi-square component.",
+  "Degrees of freedom: $\\text{df} = (\\text{rows} - 1)(\\text{columns} - 1)$.",
+  "The p-value is always the right-tail area: only large $\\chi^2$ values are evidence against $H_0$.",
+  "Conclude: \"There is (is not) convincing evidence of an association between ... and ... for ...\" (independence) or \"that the distribution of ... differs among ...\" (homogeneity)."
+ ],
+ "misconception": {
+  "wrong": "The cell with the largest observed count contributes the most to $\\chi^2$.",
+  "right": "What matters is the gap between observed and expected, relative to expected: $\\frac{(O - E)^2}{E}$. A big count close to its expected count adds almost nothing."
+ },
+ "check": [
+  "stat-chi-square-test-1",
+  "stat-chi-square-test-2",
+  "stat-chi-square-test-3",
+  "stat-chi-square-test-4",
+  "stat-chi-square-test-5",
+  "stat-chi-square-test-11",
+  "stat-chi-square-test-13"
+ ],
+ "summary": "Carrying out a chi-square test: find each expected count, add the components $\\frac{(O - E)^2}{E}$ to get $\\chi^2$, use the chi-square distribution with $(r - 1)(c - 1)$ degrees of freedom for the right-tail p-value, compare it with $\\alpha$, and conclude about the association or the distributions in context. The largest components show where the association lies.",
+ "topic": "chi-square-test"
+}

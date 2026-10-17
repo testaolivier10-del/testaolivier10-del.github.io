@@ -1,0 +1,84 @@
+{
+ "hook": "A poll of 400 adults finds that 62 of the 120 youngest get their news mostly from social media, but only 23 of the 140 oldest do. Is that a real link between age and news habits, or could chance produce a table like this? Comparing more than two groups on a variable with more than two categories needs a new tool: the chi-square test.",
+ "prereq": [
+  {
+   "q": "In a two-way table, 130 of 400 adults use social media for news. What proportion is that?",
+   "options": [
+    "$0.325$",
+    "$0.13$",
+    "$0.30$",
+    "$3.08$"
+   ],
+   "correct": 0,
+   "why": "$\\frac{130}{400} = 0.325$, a marginal relative frequency.",
+   "review": "two-categorical-summaries"
+  },
+  {
+   "q": "Two categorical variables are associated when",
+   "options": [
+    "the conditional distributions differ across groups",
+    "the counts are all large",
+    "the row totals are equal",
+    "one variable has more categories"
+   ],
+   "correct": 0,
+   "why": "Association means the distribution of one variable changes with the other.",
+   "review": "two-categorical-displays"
+  },
+  {
+   "q": "Which is a correct null hypothesis?",
+   "options": [
+    "A statement of no effect or no difference about the population",
+    "A statement about the sample results",
+    "The claim the researcher hopes to prove",
+    "A statement that the p-value is small"
+   ],
+   "correct": 0,
+   "why": "The null hypothesis is the \"nothing going on\" claim about parameters.",
+   "review": "test-one-proportion-setup"
+  }
+ ],
+ "figure": {
+  "figure": "expected-counts-table",
+  "caption": "Observed counts with the expected counts under $H_0$ beside them, each found as row total times column total over the grand total."
+ },
+ "chain": [
+  {
+   "cause": "Ask whether two categorical variables are related, or whether groups share one distribution",
+   "effect": "use a chi-square test: independence for one sample and two variables, homogeneity for several samples or groups and one variable"
+  },
+  {
+   "cause": "$H_0$ says no association (or the same distribution in every group)",
+   "effect": "under $H_0$, every row has the same column proportions as the whole table"
+  },
+  {
+   "cause": "Apply the overall column proportion to each row",
+   "effect": "expected count $= \\frac{\\text{row total} \\times \\text{column total}}{\\text{grand total}}$"
+  },
+  {
+   "cause": "Compare each observed count with its expected count",
+   "effect": "$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$ is large when the table is far from what $H_0$ predicts, after checking random, 10% and expected counts at least 5"
+  }
+ ],
+ "ideas": [
+  "Independence: one random sample, two categorical variables. $H_0$: no association between them in the population.",
+  "Homogeneity: separate random samples or randomly assigned groups, one categorical variable. $H_0$: the distribution is the same in every population.",
+  "Expected count $= \\frac{\\text{row total} \\times \\text{column total}}{\\text{grand total}}$; do not round expected counts.",
+  "Conditions: random; 10% for each sample; every expected count at least 5."
+ ],
+ "misconception": {
+  "wrong": "The large counts condition for a chi-square test is that every observed count is at least 10.",
+  "right": "The condition is about expected counts, the counts $H_0$ predicts, and the threshold is 5: every expected count must be at least 5."
+ },
+ "check": [
+  "stat-chi-square-setup-1",
+  "stat-chi-square-setup-2",
+  "stat-chi-square-setup-3",
+  "stat-chi-square-setup-4",
+  "stat-chi-square-setup-5",
+  "stat-chi-square-setup-12",
+  "stat-chi-square-setup-16"
+ ],
+ "summary": "A chi-square test compares a two-way table of observed counts with the counts expected if $H_0$ were true. Choose independence (one sample, two variables) or homogeneity (several samples or groups, one variable), state $H_0$ and $H_a$ in context, find each expected count as row total times column total over the grand total, and check random, 10% and expected counts at least 5.",
+ "topic": "chi-square-setup"
+}

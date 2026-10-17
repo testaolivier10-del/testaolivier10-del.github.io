@@ -1,0 +1,8 @@
+{
+ "bar-chart": {
+  "def": "A graph of a categorical variable with one bar per category, separated by gaps, whose height (from 0) is the category’s count or relative frequency."
+ },
+ "pie-chart": {
+  "def": "A circle cut into slices, one per category, each slice sized by the category’s relative frequency. It needs categories that together make up one whole."
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "pooled-proportion": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep",
+  "ext": "svg",
+  "w": 600,
+  "h": 360,
+  "alt": "Bar chart of the share of households that sorted recycling correctly: new bin 0.781 (125 of 160), old bin 0.650 (91 of 140), and the pooled proportion 0.72 (216 of 300), shown as a dashed line that lies between the two."
+ }
+}

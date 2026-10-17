@@ -1,0 +1,11 @@
+{
+ "correlation-gallery": {
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep",
+  "ext": "svg",
+  "w": 760,
+  "h": 250,
+  "alt": "Four small scatterplots with their correlations computed from the data: strong positive, r = 0.99; moderate negative, r = -0.79; weak positive, r = 0.29; and a strong curved arch with r = 0.04."
+ }
+}

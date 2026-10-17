@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="640" height="380" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">How sophomores and seniors get to school</title>
+<desc id="d">Segmented bar chart of how 160 sophomores and 140 seniors get to school. Sophomores: 45% bus, 30% car, 25% walk or bike. Seniors: 20% bus, 60% car, 20% walk or bike. The bars differ, so class year and way to school are associated.</desc>
+<rect width="640" height="380" fill="#FFFFFF"/>
+<line x1="82" y1="290" x2="442" y2="290" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="82" y1="238" x2="442" y2="238" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="82" y1="186" x2="442" y2="186" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="82" y1="134" x2="442" y2="134" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="82" y1="82" x2="442" y2="82" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="82" y1="30" x2="442" y2="30" stroke="#E4E7E6" stroke-width="1"/>
+<line x1="82" y1="290" x2="442" y2="290" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="82" y1="30" x2="82" y2="290" stroke="#1F2A28" stroke-width="1.4"/>
+<line x1="77" y1="290" x2="82" y2="290" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="73" y="294.5" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">0%</text>
+<line x1="77" y1="238" x2="82" y2="238" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="73" y="242.5" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">20%</text>
+<line x1="77" y1="186" x2="82" y2="186" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="73" y="190.5" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">40%</text>
+<line x1="77" y1="134" x2="82" y2="134" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="73" y="138.5" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">60%</text>
+<line x1="77" y1="82" x2="82" y2="82" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="73" y="86.5" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">80%</text>
+<line x1="77" y1="30" x2="82" y2="30" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="73" y="34.5" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">100%</text>
+<text x="36" y="160" font-size="14" text-anchor="middle" fill="#1F2A28" transform="rotate(-90 36 160)">Percent of group</text>
+<rect x="114.4" y="173" width="115.2" height="117" fill="#0072B2" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="172" y="236.5" font-size="14" text-anchor="middle" font-weight="bold" fill="#FFFFFF">45%</text>
+<rect x="114.4" y="95" width="115.2" height="78" fill="#6E2470" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="172" y="139" font-size="14" text-anchor="middle" font-weight="bold" fill="#FFFFFF">30%</text>
+<rect x="114.4" y="30" width="115.2" height="65" fill="#009E73" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="172" y="67.5" font-size="14" text-anchor="middle" font-weight="bold" fill="#FFFFFF">25%</text>
+<text x="172" y="310" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">Sophomores</text>
+<text x="172" y="327" font-size="12" text-anchor="middle" font-weight="normal" fill="#5A6563">(n = 160)</text>
+<rect x="294.4" y="238" width="115.2" height="52" fill="#0072B2" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="352" y="269" font-size="14" text-anchor="middle" font-weight="bold" fill="#FFFFFF">20%</text>
+<rect x="294.4" y="82" width="115.2" height="156" fill="#6E2470" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="352" y="165" font-size="14" text-anchor="middle" font-weight="bold" fill="#FFFFFF">60%</text>
+<rect x="294.4" y="30" width="115.2" height="52" fill="#009E73" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="352" y="61" font-size="14" text-anchor="middle" font-weight="bold" fill="#FFFFFF">20%</text>
+<text x="352" y="310" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">Seniors</text>
+<text x="352" y="327" font-size="12" text-anchor="middle" font-weight="normal" fill="#5A6563">(n = 140)</text>
+<text x="262" y="352" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">Class year</text>
+<text x="478" y="38" font-size="14" text-anchor="start" font-weight="bold" fill="#1F2A28">Main way to school</text>
+<rect x="478" y="56" width="18" height="18" fill="#009E73" stroke="#1F2A28" stroke-width="0.6"/>
+<text x="504" y="70" font-size="14" text-anchor="start" font-weight="normal" fill="#1F2A28">Walk or bike</text>
+<rect x="478" y="84" width="18" height="18" fill="#6E2470" stroke="#1F2A28" stroke-width="0.6"/>
+<text x="504" y="98" font-size="14" text-anchor="start" font-weight="normal" fill="#1F2A28">Car</text>
+<rect x="478" y="112" width="18" height="18" fill="#0072B2" stroke="#1F2A28" stroke-width="0.6"/>
+<text x="504" y="126" font-size="14" text-anchor="start" font-weight="normal" fill="#1F2A28">Bus</text>
+<text x="478" y="170" font-size="13" text-anchor="start" font-weight="normal" fill="#5A6563">Each bar is one group</text>
+<text x="478" y="190" font-size="13" text-anchor="start" font-weight="normal" fill="#5A6563">and adds to 100%.</text>
+<text x="478" y="210" font-size="13" text-anchor="start" font-weight="normal" fill="#5A6563">Different bars, so the</text>
+<text x="478" y="230" font-size="13" text-anchor="start" font-weight="normal" fill="#5A6563">variables are associated.</text>
+</svg>

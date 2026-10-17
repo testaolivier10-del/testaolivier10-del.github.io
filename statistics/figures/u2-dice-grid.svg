@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 430" width="560" height="430" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">The 36 outcomes of rolling two dice</title>
+<desc id="d">A 6 by 6 grid of the 36 equally likely outcomes when a red die and a blue die are rolled. The 5 outcomes with a sum of 8 are shaded: (2, 6), (3, 5), (4, 4), (5, 3) and (6, 2). So P(sum is 8) = 5/36.</desc>
+<rect width="560" height="430" fill="#FFFFFF"/>
+<text x="266" y="30" font-size="15" text-anchor="middle" font-weight="bold" fill="#0072B2">Blue die</text>
+<text x="48" y="216" font-size="15" font-weight="bold" fill="#6E2470" text-anchor="middle" transform="rotate(-90 48 216)">Red die</text>
+<text x="136" y="52" font-size="14" text-anchor="middle" font-weight="bold" fill="#0072B2">1</text>
+<text x="94" y="91" font-size="14" text-anchor="middle" font-weight="bold" fill="#6E2470">1</text>
+<rect x="110" y="60" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="136" y="91" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">1, 1</text>
+<rect x="162" y="60" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="188" y="91" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">1, 2</text>
+<rect x="214" y="60" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="240" y="91" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">1, 3</text>
+<rect x="266" y="60" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="292" y="91" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">1, 4</text>
+<rect x="318" y="60" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="344" y="91" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">1, 5</text>
+<rect x="370" y="60" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="396" y="91" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">1, 6</text>
+<text x="188" y="52" font-size="14" text-anchor="middle" font-weight="bold" fill="#0072B2">2</text>
+<text x="94" y="143" font-size="14" text-anchor="middle" font-weight="bold" fill="#6E2470">2</text>
+<rect x="110" y="112" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="136" y="143" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">2, 1</text>
+<rect x="162" y="112" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="188" y="143" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">2, 2</text>
+<rect x="214" y="112" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="240" y="143" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">2, 3</text>
+<rect x="266" y="112" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="292" y="143" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">2, 4</text>
+<rect x="318" y="112" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="344" y="143" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">2, 5</text>
+<rect x="370" y="112" width="52" height="52" fill="#E9D3E8" stroke="#5A6563" stroke-width="1"/>
+<text x="396" y="143" font-size="13" text-anchor="middle" font-weight="bold" fill="#6E2470">2, 6</text>
+<text x="240" y="52" font-size="14" text-anchor="middle" font-weight="bold" fill="#0072B2">3</text>
+<text x="94" y="195" font-size="14" text-anchor="middle" font-weight="bold" fill="#6E2470">3</text>
+<rect x="110" y="164" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="136" y="195" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">3, 1</text>
+<rect x="162" y="164" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="188" y="195" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">3, 2</text>
+<rect x="214" y="164" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="240" y="195" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">3, 3</text>
+<rect x="266" y="164" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="292" y="195" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">3, 4</text>
+<rect x="318" y="164" width="52" height="52" fill="#E9D3E8" stroke="#5A6563" stroke-width="1"/>
+<text x="344" y="195" font-size="13" text-anchor="middle" font-weight="bold" fill="#6E2470">3, 5</text>
+<rect x="370" y="164" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="396" y="195" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">3, 6</text>
+<text x="292" y="52" font-size="14" text-anchor="middle" font-weight="bold" fill="#0072B2">4</text>
+<text x="94" y="247" font-size="14" text-anchor="middle" font-weight="bold" fill="#6E2470">4</text>
+<rect x="110" y="216" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="136" y="247" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">4, 1</text>
+<rect x="162" y="216" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="188" y="247" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">4, 2</text>
+<rect x="214" y="216" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="240" y="247" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">4, 3</text>
+<rect x="266" y="216" width="52" height="52" fill="#E9D3E8" stroke="#5A6563" stroke-width="1"/>
+<text x="292" y="247" font-size="13" text-anchor="middle" font-weight="bold" fill="#6E2470">4, 4</text>
+<rect x="318" y="216" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="344" y="247" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">4, 5</text>
+<rect x="370" y="216" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="396" y="247" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">4, 6</text>
+<text x="344" y="52" font-size="14" text-anchor="middle" font-weight="bold" fill="#0072B2">5</text>
+<text x="94" y="299" font-size="14" text-anchor="middle" font-weight="bold" fill="#6E2470">5</text>
+<rect x="110" y="268" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="136" y="299" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">5, 1</text>
+<rect x="162" y="268" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="188" y="299" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">5, 2</text>
+<rect x="214" y="268" width="52" height="52" fill="#E9D3E8" stroke="#5A6563" stroke-width="1"/>
+<text x="240" y="299" font-size="13" text-anchor="middle" font-weight="bold" fill="#6E2470">5, 3</text>
+<rect x="266" y="268" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="292" y="299" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">5, 4</text>
+<rect x="318" y="268" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="344" y="299" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">5, 5</text>
+<rect x="370" y="268" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="396" y="299" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">5, 6</text>
+<text x="396" y="52" font-size="14" text-anchor="middle" font-weight="bold" fill="#0072B2">6</text>
+<text x="94" y="351" font-size="14" text-anchor="middle" font-weight="bold" fill="#6E2470">6</text>
+<rect x="110" y="320" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="136" y="351" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">6, 1</text>
+<rect x="162" y="320" width="52" height="52" fill="#E9D3E8" stroke="#5A6563" stroke-width="1"/>
+<text x="188" y="351" font-size="13" text-anchor="middle" font-weight="bold" fill="#6E2470">6, 2</text>
+<rect x="214" y="320" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="240" y="351" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">6, 3</text>
+<rect x="266" y="320" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="292" y="351" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">6, 4</text>
+<rect x="318" y="320" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="344" y="351" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">6, 5</text>
+<rect x="370" y="320" width="52" height="52" fill="#FFFFFF" stroke="#5A6563" stroke-width="1"/>
+<text x="396" y="351" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">6, 6</text>
+<text x="266" y="406" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">Sum is 8: 5 of the 36 outcomes, so P(sum is 8) = 5/36</text>
+</svg>

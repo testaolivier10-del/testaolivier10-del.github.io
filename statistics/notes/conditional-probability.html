@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conditional Probability — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="The chance that a randomly chosen adult gets news online is one number; the chance once you know the adult is under 40 is another.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/conditional-probability.html">
+<meta property="og:title" content="Conditional Probability — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="The chance that a randomly chosen adult gets news online is one number; the chance once you know the adult is under 40 is another.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/conditional-probability.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/conditional-probability.html#reading",
+      "name": "Conditional Probability",
+      "url": "https://levlprep.com/statistics/notes/conditional-probability.html",
+      "description": "The chance that a randomly chosen adult gets news online is one number; the chance once you know the adult is under 40 is another.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "conditional probability ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Probability, Random Variables, and Probability Distributions",
+          "item": "https://levlprep.com/statistics/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Conditional Probability: notes",
+          "item": "https://levlprep.com/statistics/notes/conditional-probability.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="conditional-probability" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Exploring One-Variable Data and Collecting Data</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Probability, Random Variables, and Probability Distributions</b><small>12 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="two-categorical-displays"><a href="two-categorical-displays.html"><span class="bk-toc-n">2.1</span>Tabular and Graphical Representations for the Distributions of Two Categorical Variables</a></li><li data-toc-t="two-categorical-summaries"><a href="two-categorical-summaries.html"><span class="bk-toc-n">2.2</span>Summary Statistics for Two Categorical Variables</a></li><li data-toc-t="simulation"><a href="simulation.html"><span class="bk-toc-n">2.3</span>Estimating Probabilities Using Simulation</a></li><li data-toc-t="probability-intro"><a href="probability-intro.html"><span class="bk-toc-n">2.4</span>Introduction to Probability</a></li><li data-toc-t="mutually-exclusive"><a href="mutually-exclusive.html"><span class="bk-toc-n">2.5</span>Mutually Exclusive Events</a></li><li class="current" data-toc-t="conditional-probability"><a href="#main" aria-current="page"><span class="bk-toc-n">2.6</span>Conditional Probability</a><div class="bk-toc-onpage"><p>On this page</p><a href="#given-that-a-new-total">Given that: a new total</a><a href="#reversing-the-condition-changes-the-answer">Reversing the condition changes the answer</a><a href="#the-multiplication-rule">The multiplication rule</a><a href="#tree-diagrams">Tree diagrams</a><a href="#checklist">Checklist</a></div></li><li data-toc-t="independence-unions"><a href="independence-unions.html"><span class="bk-toc-n">2.7</span>Independent Events and Unions of Events</a></li><li data-toc-t="random-variables"><a href="random-variables.html"><span class="bk-toc-n">2.8</span>Introduction to Random Variables and Probability Distributions</a></li><li data-toc-t="random-variable-parameters"><a href="random-variable-parameters.html"><span class="bk-toc-n">2.9</span>Parameters of Random Variables</a></li><li data-toc-t="binomial-distribution"><a href="binomial-distribution.html"><span class="bk-toc-n">2.10</span>The Binomial Distribution</a></li><li data-toc-t="normal-distribution"><a href="normal-distribution.html"><span class="bk-toc-n">2.11</span>The Normal Distribution</a></li><li data-toc-t="sampling-distributions"><a href="sampling-distributions.html"><span class="bk-toc-n">2.12</span>Sampling Distributions and the Central Limit Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Inference for Categorical Data: Proportions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Probability, Random Variables, and Probability Distributions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Conditional Probability: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/conditional-probability.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 2 &middot; Topic 2.6 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Conditional Probability</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="conditional-probability">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fconditional-probability.html&amp;title=Conditional%20Probability%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/conditional-probability.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>New information changes <a class="gl" href="../notes/simulation.html" data-c="probability">probabilities</a>. The chance that a <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">randomly</a> chosen adult gets news online is one number; the chance once you know the adult is under 40 is another. This topic is about that second kind of probability, and about the most common mistake in all of probability: mixing up which <a class="gl" href="../notes/probability-intro.html" data-c="event">event</a> is known.</p>
+
+<h2 id="given-that-a-new-total">Given that: a new total</h2>
+<p>A random <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> of 400 adults reported their main news source.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Age group</th><th>Online</th><th>TV</th><th>Print</th><th>Total</th></tr></thead>
+<tbody>
+<tr><td>Under 40</td><td>132</td><td>66</td><td>22</td><td>220</td></tr>
+<tr><td>40 and over</td><td>54</td><td>90</td><td>36</td><td>180</td></tr>
+<tr><td>Total</td><td>186</td><td>156</td><td>58</td><td>400</td></tr>
+</tbody>
+</table></div>
+<p>Choose one of the 400 at random. The probability of "online" is <math class="stat-m"><semantics><mrow><mfrac><mn>186</mn><mn>400</mn></mfrac><mo>=</mo><mn>0.465</mn></mrow><annotation encoding="application/x-tex">\frac{186}{400} = 0.465</annotation></semantics></math>. Now suppose you are told the person is under 40. Only the 220 people in that row are possible, so the probability becomes <math class="stat-m"><semantics><mrow><mfrac><mn>132</mn><mn>220</mn></mfrac><mo>=</mo><mn>0.6</mn></mrow><annotation encoding="application/x-tex">\frac{132}{220} = 0.6</annotation></semantics></math>. That is a <b><span class="gl" tabindex="0" data-c="conditional-probability">conditional probability</span></b>, written</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>online</mtext><mo>|</mo><mtext>under </mtext><mn>40</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.6</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">P(\text{online} \mid \text{under } 40) = 0.6,</annotation></semantics></math></p>
+<p>read "the probability of online given under 40". The event after the bar is the one you know; its total goes on the bottom. In general,</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo>|</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">P(A \mid B) = \frac{P(A \cap B)}{P(B)}.</annotation></semantics></math></p>
+<p>With the table: <math class="stat-m"><semantics><mrow><mfrac><mrow><mn>132</mn><mo>/</mo><mn>400</mn></mrow><mrow><mn>220</mn><mo>/</mo><mn>400</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{132/400}{220/400}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>132</mn><mn>220</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{132}{220}</annotation></semantics></math>, the same as dividing the cell by its row total. A conditional probability from a table is a <a class="gl" href="../notes/two-categorical-summaries.html" data-c="conditional-rel-freq">conditional relative frequency</a>.</p>
+
+<h2 id="reversing-the-condition-changes-the-answer">Reversing the condition changes the answer</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Find <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>under </mtext><mn>40</mn><mo>|</mo><mtext>online</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{under } 40 \mid \text{online})</annotation></semantics></math> and compare it with <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>online</mtext><mo>|</mo><mtext>under </mtext><mn>40</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{online} \mid \text{under } 40)</annotation></semantics></math>.</p>
+<p>Given online, the 186 online readers are the total: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>under </mtext><mn>40</mn><mo>|</mo><mtext>online</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{under } 40 \mid \text{online})</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>132</mn><mn>186</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{132}{186}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">≈</mo><mn>0.710</mn></mrow><annotation encoding="application/x-tex">\approx 0.710</annotation></semantics></math>.</p>
+<p><math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>online</mtext><mo>|</mo><mtext>under </mtext><mn>40</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{online} \mid \text{under } 40)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>132</mn><mn>220</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{132}{220}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.6</mn></mrow><annotation encoding="application/x-tex">= 0.6</annotation></semantics></math>.</p>
+<p>Same cell, different condition, different answer.</p>
+</div>
+<p>Getting the condition backward is behind many bad arguments. "Most injured drivers wore seat belts" is about <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>belt</mtext><mo>|</mo><mtext>injured</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{belt} \mid \text{injured})</annotation></semantics></math>, which is high simply because most drivers wear belts. Whether belts are safe is about <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>injured</mtext><mo>|</mo><mtext>belt</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{injured} \mid \text{belt})</annotation></semantics></math>.</p>
+
+<h2 id="the-multiplication-rule">The multiplication rule</h2>
+<p>Multiply both sides of the definition by <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(A)</annotation></semantics></math>, with the events in the other order, and you get the <b><span class="gl" tabindex="0" data-c="multiplication-rule">general multiplication rule</span></b>:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>⋅</mo><mi>P</mi><mo stretchy="false">(</mo><mi>B</mi><mo>|</mo><mi>A</mi><mo stretchy="false">)</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">P(A \cap B) = P(A) \cdot P(B \mid A).</annotation></semantics></math></p>
+<p>It is the natural way to find "both" for events in sequence. Draw two tokens <a class="gl" href="../notes/random-sampling.html" data-c="replacement">without replacement</a> from a bag of 5 red and 3 blue: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>both red</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{both red})</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>5</mn><mn>8</mn></mfrac><mo>⋅</mo><mfrac><mn>4</mn><mn>7</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{5}{8} \cdot \frac{4}{7}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>20</mn><mn>56</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{20}{56}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">≈</mo><mn>0.357</mn></mrow><annotation encoding="application/x-tex">\approx 0.357</annotation></semantics></math>. The second fraction is conditional: after a red token is gone, 4 of the 7 left are red.</p>
+
+<h2 id="tree-diagrams">Tree diagrams</h2>
+<figure id="fig-tree"  class="stat-figure"><div class="stat-figimg" data-fig="u2-screening-tree"><img src="../figures/u2-screening-tree.svg" alt="Tree diagram for a screening test. First branches: 0.04 of people have the condition and 0.96 do not. Given the condition, the test is positive with probability 0.90 and negative 0.10. Given no condition, positive 0.06 and negative 0.94. The four paths multiply to 0.036, 0.004, 0.0576 and 0.9024. The positive paths add to 0.0936." width="680" height="360" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A tree for a screening test, from the share with the condition to the test result. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>A <b><span class="gl" tabindex="0" data-c="tree-diagram">tree diagram</span></b> lays out a process in stages. In a <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a>, 4% of people have a condition. A screening test is positive for 90% of people with it and for 6% of people without it. The first branches split by condition (0.04 and 0.96); the second branches give the test result given each first branch. Two rules run the tree, as <a class="figref" href="#fig-tree">the figure</a> shows:</p>
+<ul>
+<li>Multiply along a path (the multiplication rule): <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>condition</mtext><mo>∩</mo><mtext>positive</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{condition} \cap \text{positive})</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mo stretchy="false">(</mo><mn>0.04</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= (0.04)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">(</mo><mn>0.90</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0.90)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.036</mn></mrow><annotation encoding="application/x-tex">= 0.036</annotation></semantics></math>.</li>
+<li>Add the paths that end where you want: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>positive</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{positive})</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.036</mn></mrow><annotation encoding="application/x-tex">= 0.036</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mo stretchy="false">(</mo><mn>0.96</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">+ (0.96)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">(</mo><mn>0.06</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0.06)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.036</mn></mrow><annotation encoding="application/x-tex">= 0.036</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.0576</mn></mrow><annotation encoding="application/x-tex">+ 0.0576</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.0936</mn></mrow><annotation encoding="application/x-tex">= 0.0936</annotation></semantics></math>.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> A person tests positive. Find the probability that the person has the condition.</p>
+<p>Structure: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>condition</mtext><mo>|</mo><mtext>positive</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{condition} \mid \text{positive})</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>condition</mtext><mo>∩</mo><mtext>positive</mtext><mo stretchy="false">)</mo></mrow><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>positive</mtext><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{P(\text{condition} \cap \text{positive})}{P(\text{positive})}</annotation></semantics></math>.</p>
+<p>Substitute: <math class="stat-m"><semantics><mrow><mfrac><mn>0.036</mn><mn>0.0936</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{0.036}{0.0936}</annotation></semantics></math>.</p>
+<p>Answer: about 0.385. Of the people who test positive, about 38.5% have the condition.</p>
+</div>
+<p>Why so low when the test catches 90% of <a class="gl" href="../notes/variables.html" data-c="observational-unit">cases</a>? Because so few people have the condition. The false positives, 0.0576 of everyone, outnumber the true positives, 0.036. Screening programs follow a positive result with a second, more accurate test for exactly this reason.</p>
+
+<h2 id="checklist">Checklist</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>You want</th><th>Do this</th></tr></thead>
+<tbody>
+<tr><td><math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo>|</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(A \mid B)</annotation></semantics></math> from a table</td><td>cell for A and B over the total for B</td></tr>
+<tr><td><math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(A \cap B)</annotation></semantics></math> in stages</td><td><math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>⋅</mo><mi>P</mi><mo stretchy="false">(</mo><mi>B</mi><mo>|</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(A) \cdot P(B \mid A)</annotation></semantics></math>, multiply along the path</td></tr>
+<tr><td>P(result) from a tree</td><td>add every path ending in the result</td></tr>
+<tr><td>Reverse a condition</td><td>one path over the sum of the paths with the known result</td></tr>
+</tbody>
+</table></div>
+<p>Before computing, write the probability in words and in notation, and say aloud which event comes after the bar. That one habit prevents most mistakes in this topic.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:conditional-probability">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="mutually-exclusive.html"><span>&larr; Previous</span><b>Mutually Exclusive Events</b></a><a class="tb-chapter-link next" href="independence-unions.html"><span>Next &rarr;</span><b>Independent Events and Unions of Events</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:conditional-probability">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

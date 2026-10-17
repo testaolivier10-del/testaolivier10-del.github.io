@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" width="680" height="360" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Tree diagram for a screening test</title>
+<desc id="d">Tree diagram for a screening test. First branches: 0.04 of people have the condition and 0.96 do not. Given the condition, the test is positive with probability 0.90 and negative 0.10. Given no condition, positive 0.06 and negative 0.94. The four paths multiply to 0.036, 0.004, 0.0576 and 0.9024. The positive paths add to 0.0936.</desc>
+<rect width="680" height="360" fill="#FFFFFF"/>
+<line x1="40" y1="180" x2="222" y2="90" stroke="#6E2470" stroke-width="2"/>
+<text x="135" y="127" font-size="14" text-anchor="middle" font-weight="bold" fill="#6E2470" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">0.04</text>
+<line x1="40" y1="180" x2="222" y2="270" stroke="#0072B2" stroke-width="2"/>
+<text x="135" y="243" font-size="14" text-anchor="middle" font-weight="bold" fill="#0072B2" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">0.96</text>
+<text x="232" y="95" font-size="14" text-anchor="start" font-weight="bold" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Condition</text>
+<text x="232" y="275" font-size="14" text-anchor="start" font-weight="bold" fill="#1F2A28" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">No condition</text>
+<line x1="312" y1="90" x2="422" y2="45" stroke="#6E2470" stroke-width="2"/>
+<text x="371" y="59.5" font-size="14" text-anchor="middle" font-weight="bold" fill="#6E2470" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">0.9</text>
+<line x1="312" y1="90" x2="422" y2="135" stroke="#6E2470" stroke-width="2"/>
+<text x="371" y="130.5" font-size="14" text-anchor="middle" font-weight="bold" fill="#6E2470" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">0.1</text>
+<line x1="330" y1="270" x2="422" y2="225" stroke="#0072B2" stroke-width="2"/>
+<text x="380" y="239.5" font-size="14" text-anchor="middle" font-weight="bold" fill="#0072B2" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">0.06</text>
+<line x1="330" y1="270" x2="422" y2="315" stroke="#0072B2" stroke-width="2"/>
+<text x="380" y="310.5" font-size="14" text-anchor="middle" font-weight="bold" fill="#0072B2" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">0.94</text>
+<text x="430" y="50" font-size="14" text-anchor="start" font-weight="bold" fill="#D55E00">Positive</text>
+<text x="510" y="50" font-size="14" text-anchor="start" font-weight="normal" fill="#D55E00">0.04 × 0.9 = 0.036</text>
+<text x="430" y="140" font-size="14" text-anchor="start" font-weight="normal" fill="#1F2A28">Negative</text>
+<text x="510" y="140" font-size="14" text-anchor="start" font-weight="normal" fill="#1F2A28">0.04 × 0.1 = 0.004</text>
+<text x="430" y="230" font-size="14" text-anchor="start" font-weight="bold" fill="#D55E00">Positive</text>
+<text x="510" y="230" font-size="14" text-anchor="start" font-weight="normal" fill="#D55E00">0.96 × 0.06 = 0.0576</text>
+<text x="430" y="320" font-size="14" text-anchor="start" font-weight="normal" fill="#1F2A28">Negative</text>
+<text x="510" y="320" font-size="14" text-anchor="start" font-weight="normal" fill="#1F2A28">0.96 × 0.94 = 0.9024</text>
+<text x="40" y="350" font-size="14" text-anchor="start" font-weight="bold" fill="#D55E00">P(positive) = 0.036 + 0.0576 = 0.0936</text>
+</svg>

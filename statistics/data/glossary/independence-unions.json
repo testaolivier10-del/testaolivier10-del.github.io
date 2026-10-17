@@ -1,0 +1,11 @@
+{
+ "independent-events": {
+  "def": "Two events are independent when knowing that one happened does not change the probability of the other: $P(A \\mid B) = P(A)$. For independent events, $P(A \\cap B) = P(A) \\cdot P(B)$. Events that are not independent are dependent."
+ },
+ "union": {
+  "def": "The union of A and B, written $A \\cup B$, is the event that A or B or both happen. The general addition rule gives its probability: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$."
+ },
+ "venn": {
+  "def": "A Venn diagram draws the sample space as a rectangle and events as circles inside it. Overlapping circles show outcomes in both events; the regions can hold counts or probabilities."
+ }
+}

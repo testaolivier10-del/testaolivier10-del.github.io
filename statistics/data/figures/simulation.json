@@ -1,0 +1,12 @@
+{
+ "u2-sim-dotplot": {
+  "file": "figures/u2-sim-dotplot.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Dotplot of 100 simulated random selections of 4 members from a council of 8 seniors and 12 juniors, showing the number of seniors chosen each time. Only 2 of the 100 trials picked 4 seniors, so the estimated chance of 4 seniors is 2 out of 100, or 0.02."
+ }
+}

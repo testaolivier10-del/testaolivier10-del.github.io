@@ -1,0 +1,62 @@
+/* Regression lab (statistics/assets/tools/regression-lab.js). OWNED BY THIS
+   TOOL ONLY. Colours come from the course tokens: --stat-s1 the points,
+   --stat-s2 the least-squares line, --stat-s4 residuals (segments, squares,
+   stems in the residual plot: one colour for one idea), --stat-s3 your line,
+   so light and dark follow the theme. The svg is laid out in real pixels. */
+.rl-card{display:flex;flex-direction:column;gap:12px;}
+.rl-fig{position:relative;width:100%;min-height:320px;}
+.ls-root .rl-fig{flex:1;min-height:0;height:100%;}
+.rl-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);touch-action:pan-y;user-select:none;-webkit-user-select:none;}
+.rl-svg text{fill:var(--muted);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.rl-grid line{stroke:var(--line);stroke-width:1;}
+.rl-axis line,.rl-axis-l{stroke:var(--muted);stroke-width:1;}
+.rl-axt{fill:var(--ink) !important;font-weight:600;}
+.rl-line{stroke:var(--stat-s2);stroke-width:2.6;stroke-linecap:round;}
+.rl-line.is-ext{stroke:var(--white);stroke-width:3.4;stroke-dasharray:1 7;stroke-linecap:butt;}
+.rl-mine{stroke:var(--stat-s3);stroke-width:2.4;stroke-dasharray:8 5;}
+.rl-handle rect{fill:var(--stat-s3);stroke:var(--white);stroke-width:2;}
+.rl-handle path{fill:none;stroke:var(--white);stroke-width:1.6;}
+.rl-handle{cursor:ns-resize;touch-action:none;outline:none;}
+.rl-handle:focus-visible rect{stroke:var(--cink);stroke-width:3;}
+.rl-seg{stroke:var(--stat-s4);stroke-width:2;}
+.rl-seg.is-sel{stroke-width:3.2;}
+.rl-sq{fill:var(--stat-s4);fill-opacity:.14;stroke:var(--stat-s4);stroke-opacity:.6;stroke-width:1;}
+.rl-pt{fill:var(--stat-s1);stroke:var(--white);stroke-width:1.6;}
+.rl-svg [data-i]{cursor:grab;touch-action:none;outline:none;}
+.rl-svg [data-i]:focus-visible{stroke:var(--cink);stroke-width:3.4;}
+.rl-pt.is-flag{fill:var(--stat-s2);}
+.rl-pt.is-sel{stroke:var(--cink);stroke-width:3.4;}
+.rl-sell{fill:var(--cink) !important;font-weight:700;}
+.rl-at{stroke:var(--cink);stroke-width:1.4;stroke-dasharray:4 3;}
+.rl-hat{fill:var(--white);stroke:var(--cink);stroke-width:2.6;}
+.rl-hatl{fill:var(--cink) !important;font-weight:700;}
+.rl-at.is-warn,.rl-hat.is-warn{stroke:var(--bad-text,#B3261E);}
+.rl-hatl.is-warn{fill:var(--bad-text,#B3261E) !important;}
+.rl-zero{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:5 4;}
+.rl-stem{stroke:var(--stat-s4);stroke-width:1.6;stroke-opacity:.7;}
+.rl-stem.is-sel{stroke-width:3;stroke-opacity:1;}
+.rl-rpt{fill:var(--stat-s1);stroke:var(--white);stroke-width:1.2;}
+.rl-rpt.is-sel{stroke:var(--cink);stroke-width:2.6;}
+.rl-rt{fill:var(--muted);}
+.rl-ph{fill:var(--muted) !important;font-style:italic;}
+.rl-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.rl-btns{display:flex;flex-wrap:wrap;gap:8px;}
+.rl-h{font-size:1rem;font-weight:700;margin:16px 0 4px;color:var(--ink);}
+.bt-why-b > .rl-h:first-child{margin-top:4px;}
+.rl-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;}
+.rl-tbl tr.hl td{background:var(--ctint);}
+.rl-data{border-collapse:collapse;font-size:.92em;margin:8px 0;}
+.rl-data th,.rl-data td{border:1px solid var(--line);padding:3px 6px;text-align:right;font-variant-numeric:tabular-nums;}
+.rl-data th{text-align:left;font-weight:600;}
+.rl-data caption{text-align:left;font-weight:600;padding-bottom:4px;}
+.rl-sum{font-variant-numeric:tabular-nums;font-weight:600;}
+.rl-qfig{margin:0;width:100%;}
+.ls-root .ls-drill-stage .rl-qfig{flex:1;min-height:220px;position:relative;}
+.ls-root .ls-drill-stage .rl-qfig > svg{position:absolute;inset:0;width:100%;height:100%;}
+.ls-root .ls-drill-stage .ls-drill-text{flex:none;overflow-x:auto;}
+body.ls-on .stat-crumb{display:none;} /* Tool Studio hides the other courses' crumbs; .stat-crumb is not in its list yet */
+.rl-key circle{fill:var(--stat-s2);stroke:var(--white);stroke-width:1.2;}
+.rl-data{width:100%;table-layout:fixed;}
+.rl-data th{width:34%;}
+.ls-root.ls-phone .rl-data{font-size:.82em;}
+.ls-root.ls-phone .rl-data th{font-weight:600;line-height:1.2;}

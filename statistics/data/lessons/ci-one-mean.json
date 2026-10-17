@@ -1,0 +1,88 @@
+{
+ "topic": "ci-one-mean",
+ "hook": "A city wants to know how far its bike commuters ride. It cannot ask every one of them, and it has no idea what the population standard deviation is. From 25 riders it gets a mean of 6.8 miles and a standard deviation of 2.9 miles. Building an interval from those two numbers needs one new tool: the t distribution.",
+ "prereq": [
+  {
+   "q": "A confidence interval has the form",
+   "options": [
+    "statistic $\\pm$ (critical value)(standard error)",
+    "statistic $\\pm$ standard error",
+    "parameter $\\pm$ margin of error",
+    "critical value $\\pm$ statistic"
+   ],
+   "correct": 0,
+   "why": "Point estimate plus or minus the margin of error, and the margin of error is the critical value times the standard error.",
+   "review": "ci-one-proportion"
+  },
+  {
+   "q": "For random samples of size $n$ (under 10% of the population), the standard deviation of $\\bar{x}$ is",
+   "options": [
+    "$\\frac{\\sigma}{\\sqrt{n}}$",
+    "$\\frac{\\sigma}{n}$",
+    "$\\sigma$",
+    "$\\sigma\\sqrt{n}$"
+   ],
+   "correct": 0,
+   "why": "Means vary less than single values, by a factor of $\\sqrt{n}$.",
+   "review": "sampling-dist-mean"
+  },
+  {
+   "q": "In a matched pairs design,",
+   "options": [
+    "each subject (or pair of similar subjects) gets both treatments",
+    "subjects are split into two unrelated groups",
+    "no treatment is imposed",
+    "every subject gets a placebo"
+   ],
+   "correct": 0,
+   "why": "Matched pairs compare two treatments within each pair, so the two responses belong together.",
+   "review": "experimental-design"
+  }
+ ],
+ "figure": {
+  "figure": "t-vs-normal",
+  "caption": "The standard normal curve and t distributions with 3 and 15 degrees of freedom. Fewer degrees of freedom mean heavier tails, so the 95% critical value $t^*$ is farther out than $z^* = 1.96$."
+ },
+ "chain": [
+  {
+   "cause": "The population standard deviation $\\sigma$ is unknown",
+   "effect": "estimate it with the sample standard deviation $s$, so the standard error is $\\frac{s}{\\sqrt{n}}$"
+  },
+  {
+   "cause": "$s$ itself varies from sample to sample",
+   "effect": "$\\frac{\\bar{x} - \\mu}{s/\\sqrt{n}}$ varies more than a z-score: it follows a t distribution with $n - 1$ degrees of freedom"
+  },
+  {
+   "cause": "The t distribution has heavier tails than the normal",
+   "effect": "the critical value $t^*$ is larger than $z^*$, more so for small samples"
+  },
+  {
+   "cause": "Put it together",
+   "effect": "the one-sample t interval is $\\bar{x} \\pm t^*\\frac{s}{\\sqrt{n}}$"
+  },
+  {
+   "cause": "For paired data, subtract within each pair first",
+   "effect": "the same interval on the differences, $\\bar{x}_d \\pm t^*\\frac{s_d}{\\sqrt{n}}$, estimates the mean difference $\\mu_d$"
+  }
+ ],
+ "ideas": [
+  "One-sample t interval: $\\bar{x} \\pm t^*\\frac{s}{\\sqrt{n}}$, with $t^*$ from the t distribution with $\\text{df} = n - 1$.",
+  "Conditions: random sample (or random assignment); 10% condition when sampling without replacement; normal/large sample (population normal, or $n \\ge 30$, or a graph of the sample with no strong skew or outliers).",
+  "Paired data (two measurements on the same individual or matched pair): work with the differences, one sample, parameter $\\mu_d$.",
+  "Interpretation: \"We are 95% confident that the interval from ... to ... captures the true mean ...\""
+ ],
+ "misconception": {
+  "wrong": "With a sample of 30 or more, use $z^* = 1.96$ for a mean.",
+  "right": "Whenever $s$ stands in for an unknown $\\sigma$, use $t^*$ with $n - 1$ degrees of freedom. For large samples $t^*$ is close to $z^*$, but it is still the right value to use."
+ },
+ "check": [
+  "stat-ci-one-mean-2",
+  "stat-ci-one-mean-3",
+  "stat-ci-one-mean-4",
+  "stat-ci-one-mean-5",
+  "stat-ci-one-mean-11",
+  "stat-ci-one-mean-13",
+  "stat-ci-one-mean-15"
+ ],
+ "summary": "When $\\sigma$ is unknown, a confidence interval for a mean is $\\bar{x} \\pm t^*\\frac{s}{\\sqrt{n}}$ with $t^*$ from the t distribution with $n - 1$ degrees of freedom. Check random, 10% and normal/large sample. For paired data, compute the differences and build the same interval for the mean difference $\\mu_d$."
+}

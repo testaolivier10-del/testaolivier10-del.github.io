@@ -1,0 +1,71 @@
+{
+ "topic": "test-two-means-setup",
+ "hook": "A coach wants to compare two running shoes with 40 runners. She can have every runner try both shoes, or split the runners into two groups. Both plans compare means, but they lead to different tests, and one of them is far better at spotting a small difference. Setting up a test for two means starts with telling the two designs apart.",
+ "prereq": [
+  {
+   "q": "Which statement about a 95% interval for $\\mu_1 - \\mu_2$ from 1.2 to 4.8 is true?",
+   "options": [
+    "It gives convincing evidence that $\\mu_1 > \\mu_2$",
+    "It proves $\\mu_1 - \\mu_2 = 3$",
+    "0 is a plausible value for the difference",
+    "It is about the two sample means"
+   ],
+   "correct": 0,
+   "why": "Every plausible value is positive, so $\\mu_1 > \\mu_2$ is supported.",
+   "review": "ci-two-means-claims"
+  },
+  {
+   "q": "Hypotheses for a paired t test are usually",
+   "options": [
+    "$H_0: \\mu_d = 0$ and an alternative about $\\mu_d$",
+    "$H_0: \\bar{x}_d = 0$",
+    "$H_0: \\mu_1 = \\mu_2$ for two independent samples",
+    "$H_0: \\mu_d > 0$"
+   ],
+   "correct": 0,
+   "why": "The parameter is the true mean difference, and the null value is 0.",
+   "review": "test-one-mean-setup"
+  }
+ ],
+ "figure": {
+  "figure": "paired-vs-two-sample",
+  "caption": "Left: a paired design measures each unit twice and analyzes one list of differences. Right: a two-sample design compares two independent groups. The design, not the data, decides the test."
+ },
+ "chain": [
+  {
+   "cause": "Two independent groups (two random samples, or random assignment to two treatments)",
+   "effect": "the parameter is $\\mu_1 - \\mu_2$ and the test is a two-sample t test"
+  },
+  {
+   "cause": "Write $H_0: \\mu_1 - \\mu_2 = 0$ and $H_a$ with $>$, $<$ or $\\ne$ from the question",
+   "effect": "define $\\mu_1$ and $\\mu_2$ in context, with the order of subtraction"
+  },
+  {
+   "cause": "Check random, 10% (each sample) and normal/large sample (each group)",
+   "effect": "the two-sample t test can be trusted"
+  },
+  {
+   "cause": "Two measurements on each unit, or matched units",
+   "effect": "the data are paired, so use a paired t test on the differences instead; pairing removes unit-to-unit variation"
+  }
+ ],
+ "ideas": [
+  "Two-sample t test: $H_0: \\mu_1 - \\mu_2 = 0$ (or $\\mu_1 = \\mu_2$) against $H_a: \\mu_1 - \\mu_2 > 0$, $< 0$ or $\\ne 0$.",
+  "Define both parameters in context: \"$\\mu_X$ = the true mean battery life of all new brand X phones\".",
+  "Conditions for each group: random (independent random samples or random assignment), 10% (when sampling), normal/large sample.",
+  "Paired or two-sample is decided by the design: same units twice or matched units, paired; separate groups, two-sample."
+ ],
+ "misconception": {
+  "wrong": "Any study with two columns of numbers uses a two-sample t test.",
+  "right": "If the two columns are linked unit by unit (before and after, twins, both shoes on the same runner), the data are paired: test the mean of the differences. A two-sample t test is for two independent groups."
+ },
+ "check": [
+  "stat-test-two-means-setup-1",
+  "stat-test-two-means-setup-2",
+  "stat-test-two-means-setup-3",
+  "stat-test-two-means-setup-4",
+  "stat-test-two-means-setup-5",
+  "stat-test-two-means-setup-14"
+ ],
+ "summary": "To set up a test for two means, decide from the design whether the data are paired or two independent groups. For two groups, define $\\mu_1$ and $\\mu_2$ in context, write $H_0: \\mu_1 - \\mu_2 = 0$ with an alternative from the question, and check random, 10% and normal/large sample for each group. This is a two-sample t test."
+}

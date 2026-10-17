@@ -1,0 +1,777 @@
+{
+ "stimuli": {
+  "scatterplots-s1": {
+   "kind": "graph",
+   "title": "Sleep and reaction time",
+   "text": "A sports science class measures 14 student volunteers: hours of sleep the night before and reaction time, in milliseconds, on a screen test the next morning. (Invented data.)",
+   "plot": {
+    "label": "Scatterplot of hours of sleep, 4.5 to 9.5, against reaction time in milliseconds, 281 to 341; the points fall from upper left to lower right in a straight band",
+    "kind": "scatter",
+    "xs": [
+     4.5,
+     5,
+     5.5,
+     6,
+     6,
+     6.5,
+     7,
+     7,
+     7.5,
+     8,
+     8,
+     8.5,
+     9,
+     9.5
+    ],
+    "ys": [
+     338,
+     341,
+     322,
+     330,
+     312,
+     326,
+     301,
+     318,
+     309,
+     294,
+     306,
+     287,
+     296,
+     281
+    ],
+    "x": [
+     4,
+     10
+    ],
+    "y": [
+     270,
+     350
+    ],
+    "xLabel": "hours of sleep",
+    "yLabel": "reaction time (ms)"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "hours of sleep",
+      "unit": "hours",
+      "values": [
+       4.5,
+       5,
+       5.5,
+       6,
+       6,
+       6.5,
+       7,
+       7,
+       7.5,
+       8,
+       8,
+       8.5,
+       9,
+       9.5
+      ]
+     },
+     {
+      "name": "reaction time",
+      "unit": "ms",
+      "values": [
+       338,
+       341,
+       322,
+       330,
+       312,
+       326,
+       301,
+       318,
+       309,
+       294,
+       306,
+       287,
+       296,
+       281
+      ]
+     }
+    ]
+   }
+  },
+  "scatterplots-s2": {
+   "kind": "graph",
+   "title": "Outdoor temperature and gas use",
+   "text": "A homeowner records the average outdoor temperature (degrees Fahrenheit) and the natural gas used for heating (therms) on 16 winter days. (Invented data.)",
+   "plot": {
+    "label": "Scatterplot of 16 days: average temperature from 12 to 48 degrees against gas use from 2.1 to 9.8 therms, falling in a straight band, with one point at 20 degrees and 2.1 therms far below the others",
+    "kind": "scatter",
+    "xs": [
+     12,
+     15,
+     18,
+     20,
+     22,
+     25,
+     28,
+     30,
+     33,
+     35,
+     38,
+     40,
+     43,
+     45,
+     48,
+     20
+    ],
+    "ys": [
+     9.8,
+     9.1,
+     8.7,
+     8.2,
+     7.9,
+     7.1,
+     6.6,
+     6.2,
+     5.4,
+     5.0,
+     4.3,
+     4.1,
+     3.3,
+     3.0,
+     2.4,
+     2.1
+    ],
+    "x": [
+     10,
+     50
+    ],
+    "y": [
+     0,
+     11
+    ],
+    "xLabel": "temperature (°F)",
+    "yLabel": "gas used (therms)"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "temperature",
+      "unit": "degrees F",
+      "values": [
+       12,
+       15,
+       18,
+       20,
+       22,
+       25,
+       28,
+       30,
+       33,
+       35,
+       38,
+       40,
+       43,
+       45,
+       48,
+       20
+      ]
+     },
+     {
+      "name": "gas used",
+      "unit": "therms",
+      "values": [
+       9.8,
+       9.1,
+       8.7,
+       8.2,
+       7.9,
+       7.1,
+       6.6,
+       6.2,
+       5.4,
+       5.0,
+       4.3,
+       4.1,
+       3.3,
+       3.0,
+       2.4,
+       2.1
+      ]
+     }
+    ]
+   }
+  },
+  "scatterplots-s3": {
+   "kind": "graph",
+   "title": "Age and price of used cars",
+   "text": "A dealer lists the age (years) and asking price (thousands of dollars) of 16 used cars of one model. (Invented data.)",
+   "plot": {
+    "label": "Scatterplot of 16 used cars: age from 1 to 11 years against price from 12.2 to 31.5 thousand dollars; price falls quickly at first and then levels off, a curved pattern",
+    "kind": "scatter",
+    "xs": [
+     1,
+     1,
+     2,
+     2,
+     3,
+     3,
+     4,
+     4,
+     5,
+     6,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "ys": [
+     31.5,
+     30.2,
+     26.4,
+     27.5,
+     23.1,
+     22.4,
+     20.4,
+     19.6,
+     17.6,
+     15.6,
+     16.4,
+     14.8,
+     13.7,
+     12.9,
+     12.5,
+     12.2
+    ],
+    "x": [
+     0,
+     12
+    ],
+    "y": [
+     10,
+     34
+    ],
+    "xLabel": "age (years)",
+    "yLabel": "price ($1,000)"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "age",
+      "unit": "years",
+      "values": [
+       1,
+       1,
+       2,
+       2,
+       3,
+       3,
+       4,
+       4,
+       5,
+       6,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ]
+     },
+     {
+      "name": "price",
+      "unit": "thousand dollars",
+      "values": [
+       31.5,
+       30.2,
+       26.4,
+       27.5,
+       23.1,
+       22.4,
+       20.4,
+       19.6,
+       17.6,
+       15.6,
+       16.4,
+       14.8,
+       13.7,
+       12.9,
+       12.5,
+       12.2
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-scatterplots-1",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "3.A",
+   "level": "recall",
+   "diff": 1,
+   "stimulus": "scatterplots-s1",
+   "q": "Which variable is the explanatory variable, and where does it go?",
+   "why": {
+    "correct": "Explanatory on the horizontal axis, response on the vertical axis.",
+    "options": [
+     "Right: sleep is thought to help explain reaction time, so it is the explanatory variable, plotted on the x axis.",
+     "Reaction time is the response: the class wants to see how it changes with sleep.",
+     "Switching the axes changes the picture and the story. The convention puts the explanatory variable on the x axis.",
+     "The explanatory variable goes on the horizontal axis; the response goes on the vertical axis."
+    ]
+   },
+   "options": [
+    "Hours of sleep, on the horizontal axis",
+    "Reaction time, on the horizontal axis",
+    "Either one, because the plot is the same both ways",
+    "Hours of sleep, on the vertical axis"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-scatterplots-2",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "scatterplots-s1",
+   "q": "What is the direction of the association?",
+   "why": {
+    "correct": "Direction: does $y$ tend to rise or fall as $x$ increases?",
+    "options": [
+     "Right: the points fall from upper left to lower right, so larger x values go with smaller y values.",
+     "Points need not be on a line to show a clear trend. These clearly fall from left to right.",
+     "The points with more sleep sit lower, at shorter reaction times.",
+     "\"Positive\" means both go up together. Here one goes up as the other goes down, which is negative."
+    ]
+   },
+   "options": [
+    "Negative: students who slept more tended to have shorter reaction times",
+    "There is no direction, since the points do not lie exactly on a line",
+    "Negative: students who slept more tended to have longer reaction times",
+    "Positive: students who slept more tended to have shorter reaction times"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-scatterplots-3",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scatterplots-s1",
+   "q": "Which description of the form and strength fits the plot?",
+   "why": {
+    "correct": "Form: straight or curved. Strength: how tightly the points follow the form.",
+    "options": [
+     "Right: the points follow a straight band with little scatter around it.",
+     "The points do not bend; they follow one straight trend.",
+     "Strength is how closely points follow the pattern, not how steep it is.",
+     "The scatter around the trend is small compared with the overall drop."
+    ]
+   },
+   "options": [
+    "Linear and strong: points stay close to a straight line",
+    "Curved and strong: the points bend more and more as sleep increases",
+    "Strong, because the trend drops steeply as sleep increases",
+    "Linear and weak: the points are scattered far from any pattern"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-scatterplots-4",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "conclude",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scatterplots-s1",
+   "q": "Describe the association in context.",
+   "why": {
+    "correct": "Strength, direction, form and unusual features, in context."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "strength": {
+      "label": "Strength",
+      "options": [
+       "There is a strong,",
+       "There is a weak,",
+       "There is a perfect,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The points stay close to the trend, so the association is strong.",
+       "2": "The points do not lie exactly on a line."
+      }
+     },
+     "direction": {
+      "options": [
+       "negative,",
+       "positive,",
+       "curved,"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Reaction time falls as sleep rises: negative.",
+       "2": "\"Curved\" is a form, and the form here is linear."
+      }
+     },
+     "form": {
+      "label": "Form and context",
+      "options": [
+       "linear association between hours of sleep and reaction time, with no clear outliers.",
+       "linear association between the x values and the y values.",
+       "linear association, so less sleep causes slower reactions."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name the variables in context.",
+       "2": "An association from an observational study does not show cause."
+      }
+     }
+    },
+    "model": "There is a strong, negative, linear association between hours of sleep the night before and reaction time for these students, with no clear outliers: students who slept more tended to react faster.",
+    "write": {
+     "context": [
+      "sleep",
+      "reaction"
+     ],
+     "parameter": false,
+     "evidence": false,
+     "forbid": [
+      "causes"
+     ]
+    }
+   }
+  },
+  {
+   "id": "stat-scatterplots-5",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scatterplots-s2",
+   "q": "Which point is unusual, and why?",
+   "why": {
+    "correct": "In a scatterplot, an outlier falls far from the overall pattern.",
+    "options": [
+     "Right: it sits well below the pattern; other days near 20°F used about 8 therms.",
+     "An outlier in a scatterplot is a point far from the pattern, even if its values are not extreme on either axis alone.",
+     "It is at the end of the range, but it sits right on the trend.",
+     "It is the largest value, but it fits the pattern: the coldest day used the most gas."
+    ]
+   },
+   "options": [
+    "20°F with 2.1 therms: far below other days that cold",
+    "There are no unusual points, since each point is between 2 and 10 therms",
+    "The day at 48°F with 2.4 therms: the warmest day",
+    "The day at 12°F with 9.8 therms: the most gas of any day"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-scatterplots-6",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scatterplots-s2",
+   "q": "Leaving out the unusual day, how would you describe the association?",
+   "why": {
+    "correct": "Describe the pattern of the bulk of the data and mention the outlier separately.",
+    "options": [
+     "Right: the other 15 points fall steadily as temperature rises, close to a straight line.",
+     "One unusual point does not erase a clear pattern in the other 15.",
+     "As temperature rises, gas use falls, a negative association.",
+     "The points follow a straight trend closely, so the association is strong and linear."
+    ]
+   },
+   "options": [
+    "A strong, negative, linear association: colder days used more gas",
+    "No association, because one day breaks the pattern",
+    "A strong, positive, linear association: warmer days used more gas",
+    "A weak, negative, curved association"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-scatterplots-7",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "scatterplots-s2",
+   "q": "What is the most likely explanation for the unusual day?",
+   "why": {
+    "correct": "Look for a reason behind an outlier; report it.",
+    "options": [
+     "The clear pattern in the other points shows that it does.",
+     "The other 15 days show the opposite: colder days use more gas.",
+     "It might be an error, but a point should be checked and its removal explained, not dropped silently.",
+     "Right: an outlier often has a story; it should be checked and reported, not silently deleted."
+    ]
+   },
+   "options": [
+    "Gas use does not depend on the temperature",
+    "Colder days use less gas than warmer days do",
+    "The temperature was recorded wrong, so the point should be removed without comment",
+    "Something else changed, such as the family being away"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-scatterplots-8",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "scatterplots-s2",
+   "q": "Which statement about cause is justified by this plot?",
+   "why": {
+    "correct": "Association is not causation, even when a cause is plausible.",
+    "options": [
+     "The direction is backward, and the plot does not show cause at all.",
+     "One outlier does not hide a clear association.",
+     "An observational plot cannot prove a cause, and the amount saved per degree is a question for a model.",
+     "Right: a scatterplot of observational data shows association. Here a cause is believable for other reasons, but the plot by itself does not prove it."
+    ]
+   },
+   "options": [
+    "It shows that gas use causes the temperature to change",
+    "It shows nothing, since the plot has an outlier",
+    "It proves that each degree of warming saves the same amount of gas",
+    "Association only; a cause is plausible, but not proven by the plot"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-scatterplots-9",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scatterplots-s3",
+   "q": "What is the form of the association?",
+   "why": {
+    "correct": "Form describes the shape of the pattern: straight or curved.",
+    "options": [
+     "Price falls the whole way; it only falls more slowly for older cars.",
+     "Right: the drop from year 1 to year 4 is about 11 thousand dollars, but from year 8 to year 11 it is about 1.5 thousand.",
+     "Direction and form are separate features. This negative association has a curved form.",
+     "The yearly drop shrinks with age, so the points bend."
+    ]
+   },
+   "options": [
+    "Curved: price rises and then falls",
+    "Curved: a fast early drop, then a leveling off",
+    "No form, because the association is negative",
+    "Linear: price drops by the same amount each year"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-scatterplots-10",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scatterplots-s3",
+   "q": "About how much did price fall from 1-year-old to 4-year-old cars, compared with 8-year-old to 11-year-old cars?",
+   "why": {
+    "correct": "Read approximate values off the plot to compare changes.",
+    "options": [
+     "Read the plot: the early drop is several times the late one.",
+     "That reverses the two spans: the steep drop is at the young end.",
+     "Right: about 30.9 to 20 for the first three years, about 13.7 to 12.2 for the last three.",
+     "Those are prices, not drops in price."
+    ]
+   },
+   "options": [
+    "About the same, about 6 thousand dollars in each span",
+    "About 1.5 thousand dollars, compared with about 11 thousand",
+    "About 11 thousand dollars, compared with about 1.5 thousand",
+    "About 20 thousand dollars, compared with about 12 thousand"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-scatterplots-11",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scatterplots-s3",
+   "q": "Which describes the direction and strength?",
+   "why": {
+    "correct": "A curved association can be strong.",
+    "options": [
+     "Right: price falls with age, and the points stay close to the bend.",
+     "A curved pattern can be strong. Strength is how closely the points follow the pattern, whatever its shape.",
+     "Direction is about how $y$ changes as $x$ increases, not the size of the values.",
+     "Newer cars costing more is a negative association: as age rises, price falls."
+    ]
+   },
+   "options": [
+    "Negative and strong: points follow the curve closely",
+    "Negative and weak, because the pattern is not a straight line",
+    "Positive and strong, since each price is above 10 thousand dollars",
+    "Positive and weak, since newer cars cost more"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-scatterplots-12",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "scatterplots-s3",
+   "q": "A buyer says, \"Since the pattern is curved, age and price are not related.\" What is wrong with this?",
+   "why": {
+    "correct": "Form and the existence of a relationship are different questions.",
+    "options": [
+     "Relationships can be curved. This one is strong.",
+     "The relationship is negative: older cars cost less.",
+     "The pattern really is curved; the problem is the conclusion drawn from it.",
+     "Right: price changes with age in a clear, predictable way, only not by the same amount each year."
+    ]
+   },
+   "options": [
+    "Nothing; two variables are related just when the pattern is linear",
+    "The buyer should have said the relationship is positive",
+    "The pattern is linear, so the buyer misread it",
+    "A curved pattern is still a relationship, just not a linear one"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-scatterplots-13",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "3.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "A researcher wants to know whether the number of hours a store is open each week helps explain its weekly sales. How should the scatterplot be set up?",
+   "why": {
+    "correct": "Explanatory variable on $x$, response on $y$.",
+    "options": [
+     "Each axis shows a different variable.",
+     "Right: hours open is the explanatory variable, sales the response.",
+     "A scatterplot plots two quantitative variables, one point per store.",
+     "That puts the response on the x axis. The variable thought to explain goes on the x axis."
+    ]
+   },
+   "options": [
+    "Hours open on both axes",
+    "Hours open on the horizontal axis, weekly sales on the vertical axis",
+    "One axis for each store, with bars for sales",
+    "Weekly sales on the horizontal axis, hours open on the vertical axis"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-scatterplots-14",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which pair of variables could be shown on a scatterplot?",
+   "why": {
+    "correct": "A scatterplot needs two quantitative variables on the same individuals.",
+    "options": [
+     "Right: two quantitative variables measured on the same individuals.",
+     "Favorite subject is categorical, so a scatterplot cannot show it.",
+     "A scatterplot pairs two variables on the same individuals. These are one variable for two groups.",
+     "Both are categorical. A two-way table or segmented bar chart fits them."
+    ]
+   },
+   "options": [
+    "Height and arm span of 25 students, both in centimeters",
+    "Grade level and favorite subject of 25 students",
+    "Heights of 25 students in one class and 30 students in another",
+    "Favorite sport and eye color of 25 students"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-scatterplots-15",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Plot A shows points tightly packed around a gentle upward trend; plot B shows points loosely scattered around a steep upward trend. Which association is stronger?",
+   "why": {
+    "correct": "Strength is tightness around the pattern.",
+    "options": [
+     "Positive and negative associations can both be strong.",
+     "Right: strength measures how closely points follow the form, not the steepness.",
+     "Two positive associations can differ in strength.",
+     "Steepness is about how much $y$ changes per unit of $x$, not about strength."
+    ]
+   },
+   "options": [
+    "Neither, because strength needs a negative trend",
+    "Plot A, because its points are closer to the pattern",
+    "Both are equally strong, since both are positive",
+    "Plot B, because its trend is steeper"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-scatterplots-16",
+   "unit": "unit-5",
+   "topic": "scatterplots",
+   "type": "single",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does a positive association between two quantitative variables mean?",
+   "why": {
+    "correct": "Positive: as $x$ increases, $y$ tends to increase.",
+    "options": [
+     "Association describes a pattern, not cause.",
+     "Points can trend upward without lying on a line.",
+     "Right: the points trend upward from left to right.",
+     "Values can be positive with any direction of association."
+    ]
+   },
+   "options": [
+    "Each increase in one causes an increase in the other",
+    "The points lie exactly on an upward line",
+    "Above-average values of one tend to go with above-average values of the other",
+    "Both variables take positive values"
+   ],
+   "correct": 2
+  }
+ ]
+}

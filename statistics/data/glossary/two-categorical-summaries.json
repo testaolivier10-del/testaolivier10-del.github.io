@@ -1,0 +1,11 @@
+{
+ "joint-rel-freq": {
+  "def": "A joint relative frequency is the count in one cell of a two-way table divided by the grand total: the share of all individuals who are in both categories, such as first visit and hiking."
+ },
+ "marginal-rel-freq": {
+  "def": "A marginal relative frequency is a row or column total divided by the grand total: the share of all individuals in one category of one variable. Listed for every category, they form the marginal distribution of that variable."
+ },
+ "conditional-rel-freq": {
+  "def": "A conditional relative frequency is a cell count divided by the total of its row or column: the share of one group that falls in a category, such as the share of first-time visitors who hiked. The shares for one group form its conditional distribution and add to 1."
+ }
+}

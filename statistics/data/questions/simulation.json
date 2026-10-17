@@ -1,0 +1,689 @@
+{
+ "stimuli": {
+  "simulation-s1": {
+   "kind": "graph",
+   "title": "Simulated families collecting 4 prizes",
+   "text": "Each box of a cereal holds one of 4 prizes, and each prize is in one fourth of the boxes, packed at random. A student used random numbers to simulate 100 families, each buying boxes until it had all 4 prizes. Each dot shows how many boxes one simulated family bought.",
+   "plot": {
+    "label": "Dotplot of the number of boxes bought by 100 simulated families until they had all 4 prizes, from 4 to 18 boxes",
+    "kind": "dot",
+    "data": [
+     4,
+     9,
+     8,
+     12,
+     7,
+     12,
+     7,
+     11,
+     7,
+     10,
+     4,
+     5,
+     4,
+     4,
+     5,
+     10,
+     9,
+     5,
+     8,
+     4,
+     5,
+     11,
+     8,
+     9,
+     9,
+     6,
+     11,
+     10,
+     10,
+     9,
+     5,
+     5,
+     18,
+     14,
+     7,
+     9,
+     7,
+     13,
+     8,
+     6,
+     5,
+     8,
+     7,
+     11,
+     6,
+     8,
+     5,
+     5,
+     6,
+     11,
+     5,
+     8,
+     9,
+     6,
+     6,
+     8,
+     11,
+     9,
+     11,
+     6,
+     9,
+     8,
+     14,
+     11,
+     5,
+     7,
+     5,
+     6,
+     6,
+     16,
+     7,
+     6,
+     4,
+     5,
+     10,
+     6,
+     5,
+     6,
+     6,
+     8,
+     7,
+     10,
+     12,
+     10,
+     9,
+     8,
+     7,
+     11,
+     14,
+     10,
+     7,
+     4,
+     7,
+     18,
+     8,
+     8,
+     8,
+     7,
+     4,
+     4
+    ],
+    "xLabel": "boxes",
+    "x": [
+     2,
+     22
+    ],
+    "xStep": 2,
+    "yTicks": false
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "boxes bought",
+      "unit": "boxes",
+      "values": [
+       4,
+       9,
+       8,
+       12,
+       7,
+       12,
+       7,
+       11,
+       7,
+       10,
+       4,
+       5,
+       4,
+       4,
+       5,
+       10,
+       9,
+       5,
+       8,
+       4,
+       5,
+       11,
+       8,
+       9,
+       9,
+       6,
+       11,
+       10,
+       10,
+       9,
+       5,
+       5,
+       18,
+       14,
+       7,
+       9,
+       7,
+       13,
+       8,
+       6,
+       5,
+       8,
+       7,
+       11,
+       6,
+       8,
+       5,
+       5,
+       6,
+       11,
+       5,
+       8,
+       9,
+       6,
+       6,
+       8,
+       11,
+       9,
+       11,
+       6,
+       9,
+       8,
+       14,
+       11,
+       5,
+       7,
+       5,
+       6,
+       6,
+       16,
+       7,
+       6,
+       4,
+       5,
+       10,
+       6,
+       5,
+       6,
+       6,
+       8,
+       7,
+       10,
+       12,
+       10,
+       9,
+       8,
+       7,
+       11,
+       14,
+       10,
+       7,
+       4,
+       7,
+       18,
+       8,
+       8,
+       8,
+       7,
+       4,
+       4
+      ]
+     }
+    ]
+   }
+  },
+  "simulation-s2": {
+   "kind": "diagram",
+   "title": "Simulating free throws with random digits",
+   "text": "A basketball player makes 70% of her free throws. A coach wants to estimate the chance that she makes 9 or more of her next 10 free throws, and plans a simulation with a table of random digits (each digit from 0 to 9 is as likely as the others).",
+   "html": "<svg viewBox=\"0 0 520 90\" width=\"520\" height=\"90\" role=\"img\" aria-label=\"A row of 10 random digits: 4 8 0 2 7 9 1 6 3 5, used as 10 simulated free throws\"><rect width=\"520\" height=\"90\" fill=\"#FFFFFF\"/><rect x=\"10\" y=\"20\" width=\"44\" height=\"44\" rx=\"6\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"32\" y=\"50\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">4</text><rect x=\"60\" y=\"20\" width=\"44\" height=\"44\" rx=\"6\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"82\" y=\"50\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">8</text><rect x=\"110\" y=\"20\" width=\"44\" height=\"44\" rx=\"6\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"132\" y=\"50\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">0</text><rect x=\"160\" y=\"20\" width=\"44\" height=\"44\" rx=\"6\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"182\" y=\"50\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">2</text><rect x=\"210\" y=\"20\" width=\"44\" height=\"44\" rx=\"6\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"232\" y=\"50\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">7</text><rect x=\"260\" y=\"20\" width=\"44\" height=\"44\" rx=\"6\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"282\" y=\"50\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">9</text><rect x=\"310\" y=\"20\" width=\"44\" height=\"44\" rx=\"6\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"332\" y=\"50\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">1</text><rect x=\"360\" y=\"20\" width=\"44\" height=\"44\" rx=\"6\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"382\" y=\"50\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">6</text><rect x=\"410\" y=\"20\" width=\"44\" height=\"44\" rx=\"6\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"432\" y=\"50\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">3</text><rect x=\"460\" y=\"20\" width=\"44\" height=\"44\" rx=\"6\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"482\" y=\"50\" font-size=\"22\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">5</text><text x=\"10\" y=\"84\" font-size=\"13\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#5A6563\">One row of random digits: 4 8 0 2 7 9 1 6 3 5</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "stat-simulation-1",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the simulation to estimate the chance that a family needs 10 or more boxes to get all 4 prizes.",
+   "why": {
+    "correct": "Count the dots at 10 or more: 27 of the 100 trials. The estimate is $\\frac{27}{100} = 0.27$."
+   },
+   "stimulus": "simulation-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.27,
+    "mistakes": [
+     {
+      "value": 0.19,
+      "why": "That counts only the trials above 10. \"10 or more\" includes the trials at exactly 10."
+     },
+     {
+      "value": 0.73,
+      "why": "That is the share of trials that needed 9 or fewer boxes, the other side."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-simulation-2",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 2,
+   "q": "What does one dot in the dotplot stand for?",
+   "why": {
+    "correct": "Each dot is one trial: one simulated family buying boxes until all 4 prizes appear, recorded as the number of boxes.",
+    "options": [
+     "Each dot is a whole run of boxes, not a single box.",
+     "The dots stack by number of boxes bought, not by prize.",
+     "The families were simulated with random numbers; no one was surveyed.",
+     "Right: the result of one repetition of the chance process."
+    ]
+   },
+   "stimulus": "simulation-s1",
+   "options": [
+    "One box of cereal opened by the student who ran the simulation",
+    "One of the 4 prizes, with its count of boxes stacked above it",
+    "One real family surveyed in a store about how many boxes it bought",
+    "One trial: a simulated family buying boxes until it has all 4 prizes"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-simulation-3",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Estimate the chance that a family gets all 4 prizes in the first 4 boxes.",
+   "why": {
+    "correct": "9 of the 100 simulated families needed exactly 4 boxes, so the estimate is $\\frac{9}{100} = 0.09$."
+   },
+   "stimulus": "simulation-s1",
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.09,
+    "mistakes": [
+     {
+      "value": 0.25,
+      "why": "That is the chance for one box to hold one particular prize. Getting 4 different prizes in 4 boxes is much less likely; count the dots at 4."
+     },
+     {
+      "value": 0.04,
+      "why": "That uses the number of boxes, 4, as a count of trials. Count how many dots sit at 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-simulation-4",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A family bought 15 boxes before it found all 4 prizes. Based on the simulation, is that surprising?",
+   "why": {
+    "correct": "Only 3 of the 100 simulated families needed 15 or more boxes, an estimated chance of about 0.03. That is unusual, but it does happen when prizes are packed at random.",
+    "options": [
+     "The most common results being near 6 or 7 is the reason 15 is unusual, not typical.",
+     "Right: an estimated chance of about 0.03, rare but not impossible.",
+     "Some simulated families needed 15 or more boxes, up to 18.",
+     "A simulation built from the right chance process is exactly how to judge it."
+    ]
+   },
+   "stimulus": "simulation-s1",
+   "options": [
+    "No: the most common results are near 6 or 7 boxes, so 15 is typical",
+    "Somewhat: about 3 in 100 simulated families needed 15 or more boxes",
+    "Yes: no simulated family needed more than 12 boxes",
+    "It is impossible to judge, because the simulation used random numbers"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-simulation-5",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How could the student get a more trustworthy estimate of the chance of needing 10 or more boxes?",
+   "why": {
+    "correct": "By the law of large numbers, the share of trials with the result settles down near the true value as the number of trials grows.",
+    "options": [
+     "Choosing the larger estimate builds in a bias toward larger values.",
+     "The model has to match the real packing, one fourth for each prize.",
+     "Right: more trials give a steadier estimate.",
+     "Stopping early changes what is being simulated and hides the long runs."
+    ]
+   },
+   "stimulus": "simulation-s1",
+   "options": [
+    "Run the same 100 trials again and keep whichever estimate is larger",
+    "Change the prize chances so that 10 boxes is the most common result",
+    "Run many more trials, such as 1,000 simulated families",
+    "Stop each trial after 9 boxes so that the results are closer together"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-simulation-6",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which assignment of digits models one free throw correctly?",
+   "why": {
+    "correct": "Seven of the ten digits must mean a make: 0 to 6 is 7 digits (70%), 7 to 9 is 3 digits (30%).",
+    "options": [
+     "That reverses the plan: makes get 3 of the 10 digits, a 30% chance.",
+     "That is 8 of the 10 digits, an 80% chance of a make.",
+     "That is 5 of the 10 digits, a 50% chance, not 70%.",
+     "Right: 7 of the 10 equally common digits, 70%."
+    ]
+   },
+   "stimulus": "simulation-s2",
+   "options": [
+    "Digits 0 to 6 mean a miss; digits 7 to 9 mean a make",
+    "Digits 0 to 7 mean a make; digits 8 and 9 mean a miss",
+    "Digits 0 to 4 mean a make; digits 5 to 9 mean a miss",
+    "Digits 0 to 6 mean a make; digits 7 to 9 mean a miss"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-simulation-7",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In this simulation, what is one trial?",
+   "why": {
+    "correct": "One trial must copy the whole situation once: 10 free throws, so 10 random digits, recording the number of makes.",
+    "options": [
+     "Right: one trial imitates the 10 free throws once.",
+     "One digit is one shot; the question is about 10 shots together.",
+     "The player takes 10 shots; 9 is the result being counted.",
+     "The 70% decides which digits are makes, not how many digits to use."
+    ]
+   },
+   "stimulus": "simulation-s2",
+   "options": [
+    "A group of 10 random digits, recording how many of them are makes",
+    "One random digit, recording whether it is a make or a miss",
+    "A group of 9 random digits, since the question asks about 9 makes",
+    "A group of 70 random digits, one for each percent of her makes"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-simulation-8",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Should the coach skip a digit that repeats one already used in the same trial?",
+   "why": {
+    "correct": "Each shot has the same 70% chance whatever happened on earlier shots, so repeated digits are kept. Skipping repeats is for choosing different individuals, such as people for a sample.",
+    "options": [
+     "Skipping repeats is for selecting different individuals, like a sample of students.",
+     "Right: shots are not people being chosen, so repeats are fine.",
+     "Keeping repeats is what keeps every shot at 70%; skipping them would distort the chances.",
+     "Every digit is assigned; 0 is one of the make digits in the 0 to 6 plan."
+    ]
+   },
+   "stimulus": "simulation-s2",
+   "options": [
+    "Yes: a digit used once has already been chosen and should be skipped",
+    "No: each shot has the same 70% chance whatever happened before",
+    "Yes: repeated digits would make the estimate too high",
+    "No: but she should skip 0, since 0 is neither a make nor a miss"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-simulation-9",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using digits 0 to 6 for a make, how many makes are in the row of digits shown?",
+   "why": {
+    "correct": "The digits 4, 0, 2, 1, 6, 3 and 5 are makes (7 of them); 8, 7 and 9 are misses. This trial is a 7, so it does not count as \"9 or more\"."
+   },
+   "stimulus": "simulation-s2",
+   "numeric": {
+    "kind": "count",
+    "answer": 7,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "That counts the misses (8, 7, 9). Count the digits from 0 to 6."
+     },
+     {
+      "value": 6,
+      "why": "Check again: 4, 0, 2, 1, 6, 3 and 5 are all from 0 to 6, which is 7 makes."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-simulation-10",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is a simulation in statistics?",
+   "why": {
+    "correct": "A simulation imitates a chance process with a model (random numbers, a coin, a spinner) that has the same chances, repeated many times to estimate how often a result happens.",
+    "options": [
+     "A simulation uses a model of the chance process, not real subjects.",
+     "That is a sample survey. A simulation imitates chance with a model.",
+     "A simulation produces data from a model; it is not a guess.",
+     "Right: then the share of trials with the result estimates its chance."
+    ]
+   },
+   "options": [
+    "Repeating a real experiment on people until the result is clear",
+    "Collecting a random sample from a population and computing a statistic",
+    "Guessing a likely result from experience before collecting any data",
+    "Imitating a chance process with a model that has the same chances, many times"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-simulation-11",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A fair coin lands heads in 13 of its first 20 flips (0.65). After 2,000 flips, the share of heads is most likely to be",
+   "why": {
+    "correct": "The law of large numbers: in many trials the share of heads settles near the true value, 0.5. Early streaks are not \"made up for\"; they are swamped by later flips.",
+    "options": [
+     "Right: the long-run share approaches the true chance.",
+     "The first 20 flips carry little weight among 2,000.",
+     "The coin does not remember; the early surplus is diluted, not reversed.",
+     "For a fair coin, the long-run share is near 0.5."
+    ]
+   },
+   "options": [
+    "close to 0.5",
+    "close to 0.65",
+    "below 0.5, to balance the early heads",
+    "impossible to guess from what is known"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-simulation-12",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two students simulate the same chance process. One runs 50 trials and estimates 0.12; the other runs 1,000 trials and estimates 0.09. Which estimate is more trustworthy, and why?",
+   "why": {
+    "correct": "Estimates from more trials vary less around the true value (the law of large numbers), so 0.09 from 1,000 trials is more trustworthy.",
+    "options": [
+     "A larger estimate is not a better one.",
+     "Right: 1,000 trials give a steadier estimate than 50.",
+     "The model is the same, but 50 trials leave much more room for chance.",
+     "Simulations vary by chance; more trials reduce that variation."
+    ]
+   },
+   "options": [
+    "0.12, because the first student got a larger share of successes",
+    "0.09, because estimates from more trials stay closer to the true value",
+    "Each is equally trustworthy, since both used the same model",
+    "Neither one, because two simulations should give the same answer"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-simulation-13",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "To study families with 4 children, a student simulates 200 families, using a coin flip for each child (heads for a girl). In 62 of the 200 simulated families, 3 or more of the children were girls. Estimate the chance that a family of 4 children has 3 or more girls.",
+   "why": {
+    "correct": "The estimate is the share of trials with the result: $\\frac{62}{200} = 0.31$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "answer": 0.31,
+    "mistakes": [
+     {
+      "value": 0.0775,
+      "why": "That divides by the 800 simulated children. A trial is a family, so divide by the 200 families."
+     },
+     {
+      "value": 0.75,
+      "why": "That is 3 girls out of 4 children, the result being counted, not its estimated chance."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-simulation-14",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "conclude",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student council of 8 seniors and 12 juniors says it picked 4 members at random to go to a conference, and all 4 chosen were seniors. In 100 simulated random picks of 4 members, only 2 picked 4 seniors. Build a conclusion about the claim.",
+   "why": {
+    "correct": "The estimated chance of 4 seniors in a random pick is $\\frac{2}{100} = 0.02$. A result that rare gives reason to doubt that the pick was random, though it does not rule chance out."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "evidence": {
+      "label": "Estimate",
+      "options": [
+       "The estimated chance of 4 seniors in a random pick is about 0.02",
+       "The estimated chance of 4 seniors in a random pick is about 0.4",
+       "The chance of 4 seniors is 4 out of 20, or 0.2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "0.4 is the share of the council who are seniors (8 of 20), not the chance that all 4 picks are seniors.",
+       "2": "Use the simulation: 2 of 100 trials, about 0.02."
+      }
+     },
+     "claim": {
+      "label": "Conclusion",
+      "options": [
+       "so a random pick rarely gives 4 seniors, which gives reason to doubt the pick was random",
+       "so the pick was certainly not random",
+       "so 4 seniors is a typical result of a random pick"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rare is not impossible: 2 of 100 random picks did give 4 seniors.",
+       "2": "Only 2 of 100 trials gave 4 seniors, which is rare, not typical."
+      }
+     }
+    },
+    "model": "In the simulation only 2 of 100 random picks chose 4 seniors, an estimated chance of about 0.02. Because getting 4 seniors by chance is so unusual, this gives reason to doubt that the council picked the members at random.",
+    "write": {
+     "context": [
+      "seniors",
+      "random"
+     ],
+     "parameter": false,
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-simulation-15",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "order",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps of a simulation in order.",
+   "options": [
+    "Describe how one trial will be done with a chance device that has the right chances",
+    "Say what will be recorded at the end of each trial",
+    "Carry out many trials and record each result",
+    "Estimate the chance as the share of trials that gave the result"
+   ],
+   "why": {
+    "correct": "Model the chance process, say what to record, repeat many times, then estimate with the share of trials. A plan someone else could follow names the device and its assignment first."
+   }
+  },
+  {
+   "id": "stat-simulation-16",
+   "unit": "unit-2",
+   "topic": "simulation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "To simulate a 1-in-6 chance, a student lets the random digits 1 to 6 mean a success and 0, 7, 8 and 9 mean a failure. What is wrong with this plan?",
+   "why": {
+    "correct": "Each digit has a 1-in-10 chance, so 6 digits give a 6-in-10 chance of success, not 1 in 6. A fair die with one face as a success works, or the digits 1 to 6 with 0, 7, 8 and 9 skipped and the digit 1 as the success.",
+    "options": [
+     "The digits come from 0 to 9, so the faces of a die are 6 of 10 equally common digits.",
+     "Right: 6 of the 10 digits are successes.",
+     "The number of digits is not the issue; the share of success digits is.",
+     "Adding 0 makes it 7 in 10, further from 1 in 6."
+    ]
+   },
+   "options": [
+    "Nothing is wrong, since 1 to 6 are the faces of a die",
+    "It gives success a 6-in-10 chance, not a 1-in-6 chance",
+    "It should use 2-digit numbers, because 6 is a 1-digit number",
+    "The digit 0 should have been counted as a success, too"
+   ],
+   "correct": 1
+  }
+ ]
+}

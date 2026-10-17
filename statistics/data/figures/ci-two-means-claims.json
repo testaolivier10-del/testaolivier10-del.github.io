@@ -1,0 +1,12 @@
+{
+ "diff-interval-claims": {
+  "file": "figures/diff-interval-claims.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 292,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three confidence intervals for the true difference in mean reading score, headphones minus no headphones, each centered at 4.5 points: 90% from 1.35 to 7.65, 95% from 0.72 to 8.28 and 99% from −0.53 to 9.53. A dashed line at 0 lies left of the 90% and 95% intervals but inside the 99% interval. A second dashed line at 5 points, the school's threshold, lies inside all three."
+ }
+}

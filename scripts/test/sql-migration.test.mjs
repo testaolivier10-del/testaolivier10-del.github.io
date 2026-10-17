@@ -154,15 +154,15 @@ test('2026-10f-apphys.sql adds apphys to every course check and course list, run
   assert.ok(fns.get('count_premium_step').includes("'signin-for-checkout'"), 'keeps the 2026-10d steps');
   assert.ok(fns.get('count_premium_step').includes("'limit-hit'"), 'keeps the 2026-10e-funnel-seen step');
   // schema.sql has moved on to apcalc (2026-10g), which only adds 'apcalc'.
-  assert.equal(fns.get('count_premium_step').trim(), blocks(SCHEMA).get('count_premium_step').trim().replace(", 'apphys', 'apcalc')", ", 'apphys')"), 'count_premium_step matches schema.sql');
+  assert.equal(fns.get('count_premium_step').trim(), blocks(SCHEMA).get('count_premium_step').trim().replace(", 'apphys', 'apcalc', 'apstat')", ", 'apphys')"), 'count_premium_step matches schema.sql');
   assert.match(fns.get('premium_add_pass'), /p_until timestamptz default null/, 'the fixed-date pass parameter is kept');
   for (const f of ['premium_add_pass', 'count_premium_paid']) assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
   assert.doesNotMatch(mig + SCHEMA, /'apchem'\)/, 'no course list stops at apchem');
 });
 
-test('2026-10g-apcalc.sql adds apcalc to every course check and course list, runs last, matches schema.sql, and is not granted to browsers where it must not be', () => {
+test('2026-10g-apcalc.sql adds apcalc to every course check and course list, runs after 2026-10f, and is not granted to browsers where it must not be', () => {
   const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
-  assert.equal(files[files.length - 1], '2026-10g-apcalc.sql', 'runs after 2026-10f-apphys.sql');
+  assert.ok(files.indexOf('2026-10g-apcalc.sql') > files.indexOf('2026-10f-apphys.sql'), 'runs after 2026-10f-apphys.sql');
   const mig = readFileSync('scripts/sql/migrations/2026-10g-apcalc.sql', 'utf8');
   const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc')";
   for (const t of ['premium_passes', 'premium_funnel', 'exam_completions'])
@@ -171,12 +171,33 @@ test('2026-10g-apcalc.sql adds apcalc to every course check and course list, run
   for (const f of ['report_question', 'join_waitlist', 'count_premium_step', 'premium_add_pass', 'record_exam_completion', 'count_premium_paid']) {
     assert.ok(fns.has(f), `${f} is redefined`);
     assert.ok(fns.get(f).includes(LIST), `${f} accepts apcalc`);
-    assert.equal(fns.get(f).trim(), blocks(SCHEMA).get(f).trim(), `${f} matches schema.sql`);
+    // schema.sql has moved on to apstat (2026-10h), which only adds 'apstat'.
+    assert.equal(fns.get(f).trim(), blocks(SCHEMA).get(f).trim().replace(", 'apcalc', 'apstat')", ", 'apcalc')"), `${f} matches schema.sql`);
   }
   assert.ok(fns.get('count_premium_step').includes("'limit-hit'"), 'keeps the 2026-10e-funnel-seen step');
   assert.match(fns.get('premium_add_pass'), /p_until timestamptz default null/, 'the fixed-date pass parameter is kept');
   for (const f of ['premium_add_pass', 'count_premium_paid']) assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
   assert.doesNotMatch(mig + SCHEMA, /'apphys'\)/, 'no course list stops at apphys');
+  assert.match(mig, /NOT APPLIED/);
+});
+
+test('2026-10h-apstat.sql adds apstat to every course check and course list, runs last, matches schema.sql, and is not granted to browsers where it must not be', () => {
+  const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
+  assert.equal(files[files.length - 1], '2026-10h-apstat.sql', 'runs after 2026-10g-apcalc.sql');
+  const mig = readFileSync('scripts/sql/migrations/2026-10h-apstat.sql', 'utf8');
+  const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat')";
+  for (const t of ['premium_passes', 'premium_funnel', 'exam_completions'])
+    assert.ok(mig.includes(`add constraint ${t}_course_check check (course in ${LIST})`), `${t} check lists apstat`);
+  const fns = blocks(mig);
+  for (const f of ['report_question', 'join_waitlist', 'count_premium_step', 'premium_add_pass', 'record_exam_completion', 'count_premium_paid']) {
+    assert.ok(fns.has(f), `${f} is redefined`);
+    assert.ok(fns.get(f).includes(LIST), `${f} accepts apstat`);
+    assert.equal(fns.get(f).trim(), blocks(SCHEMA).get(f).trim(), `${f} matches schema.sql`);
+  }
+  assert.ok(fns.get('count_premium_step').includes("'limit-hit'"), 'keeps the 2026-10e-funnel-seen step');
+  assert.match(fns.get('premium_add_pass'), /p_until timestamptz default null/, 'the fixed-date pass parameter is kept');
+  for (const f of ['premium_add_pass', 'count_premium_paid']) assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
+  assert.doesNotMatch(mig + SCHEMA, /'apcalc'\)/, 'no course list stops at apcalc');
   assert.match(mig, /NOT APPLIED/);
 });
 
@@ -202,8 +223,8 @@ test('2026-10e-funnel-seen.sql: limit-hit is a funnel step everywhere the browse
   for (const f of ['count_premium_step', 'track_ref']) {
     assert.ok(fns.has(f), `${f} is redefined`);
     assert.match(fns.get(f), /'limit-hit'/, `${f} accepts limit-hit`);
-    // schema.sql carries the later 2026-10f-apphys.sql version, which only adds 'apphys'.
-    assert.equal(fns.get(f).trim(), blocks(SCHEMA).get(f).trim().replace(", 'apchem', 'apphys', 'apcalc')", ", 'apchem')"), `${f} matches schema.sql`);
+    // schema.sql carries the later versions (2026-10f to 10h), which only add course keys.
+    assert.equal(fns.get(f).trim(), blocks(SCHEMA).get(f).trim().replace(", 'apchem', 'apphys', 'apcalc', 'apstat')", ", 'apchem')"), `${f} matches schema.sql`);
   }
   assert.doesNotMatch(fns.get('track_ref'), /'paid'/, 'a browser cannot claim a sale');
   assert.match(mig, /grant execute on function public\.count_premium_step\(text, text\) to anon, authenticated;/);

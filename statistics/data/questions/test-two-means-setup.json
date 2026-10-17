@@ -1,0 +1,583 @@
+{
+ "stimuli": {
+  "test-two-means-setup-s1": {
+   "kind": "graph",
+   "title": "Battery life of two phone brands",
+   "text": "<p>A consumer group bought a random sample of 15 new phones of brand X and an independent random sample of 15 of brand Y, from the hundreds of thousands sold, and ran each until its battery died while streaming video (invented data). The group asks whether brand X phones last longer on average. Brand X: mean 9.80 hours, SD 1.10; brand Y: mean 9.10 hours, SD 1.30.</p>",
+   "plot": {
+    "label": "Side-by-side boxplots of battery life for 15 brand X and 15 brand Y phones, X centered a little higher, both roughly symmetric with no outliers",
+    "kind": "box",
+    "groups": [
+     {
+      "name": "Brand X",
+      "data": [
+       9.2,
+       8.9,
+       11,
+       9.7,
+       10.2,
+       9.5,
+       10.2,
+       11.7,
+       9.5,
+       10.3,
+       9.8,
+       9.2,
+       8.6,
+       7.6,
+       11.6
+      ]
+     },
+     {
+      "name": "Brand Y",
+      "data": [
+       9.6,
+       8.4,
+       10.5,
+       7.9,
+       8.8,
+       9.9,
+       7.9,
+       9.8,
+       9.1,
+       11,
+       10.7,
+       10.1,
+       6.9,
+       9,
+       6.9
+      ]
+     }
+    ],
+    "x": [
+     6,
+     12.5
+    ],
+    "xLabel": "battery life while streaming (hours)"
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "brand X",
+      "unit": "hours",
+      "values": [
+       9.2,
+       8.9,
+       11,
+       9.7,
+       10.2,
+       9.5,
+       10.2,
+       11.7,
+       9.5,
+       10.3,
+       9.8,
+       9.2,
+       8.6,
+       7.6,
+       11.6
+      ]
+     },
+     {
+      "name": "brand Y",
+      "unit": "hours",
+      "values": [
+       9.6,
+       8.4,
+       10.5,
+       7.9,
+       8.8,
+       9.9,
+       7.9,
+       9.8,
+       9.1,
+       11,
+       10.7,
+       10.1,
+       6.9,
+       9,
+       6.9
+      ]
+     }
+    ]
+   }
+  },
+  "test-two-means-setup-s2": {
+   "kind": "table",
+   "title": "Two ways to compare running shoes",
+   "text": "<p>A coach has 40 runners and two shoe designs, A and B, and wants to know whether mean 5-kilometer time differs between the designs (invented plan). She considers two designs.</p>",
+   "table": {
+    "caption": "The two plans",
+    "cols": [
+     "Plan",
+     "What happens"
+    ],
+    "rows": [
+     [
+      "Plan 1",
+      "Every runner runs one 5 km in each shoe, a week apart, in a randomly chosen order."
+     ],
+     [
+      "Plan 2",
+      "The 40 runners are randomly assigned, 20 to shoe A and 20 to shoe B, and each runs one 5 km."
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-test-two-means-setup-1",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which hypotheses match the consumer group's question?",
+   "stimulus": "test-two-means-setup-s1",
+   "options": [
+    "$H_0: \\mu_X - \\mu_Y = 0$, $H_a: \\mu_X - \\mu_Y \\ne 0$",
+    "$H_0: \\mu_X - \\mu_Y = 0$, $H_a: \\mu_X - \\mu_Y > 0$",
+    "$H_0: \\bar{x}_X - \\bar{x}_Y = 0$, $H_a: \\bar{x}_X - \\bar{x}_Y > 0$",
+    "$H_0: \\mu_d = 0$, $H_a: \\mu_d > 0$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$H_0: \\mu_X - \\mu_Y = 0$, $H_a: \\mu_X - \\mu_Y > 0$ (equivalently $\\mu_X = \\mu_Y$ and $\\mu_X > \\mu_Y$).",
+    "options": [
+     "The question has a direction (\"longer\"), set before the data, so the alternative is one-sided.",
+     "The null says no difference in true mean battery life; the alternative says brand X lasts longer on average.",
+     "Hypotheses use parameters, never sample means.",
+     "There are no pairs here: the phones of the two brands are separate samples."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-2",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "How should $\\mu_X$ be defined?",
+   "stimulus": "test-two-means-setup-s1",
+   "options": [
+    "The true mean battery life while streaming of all new brand X phones",
+    "The mean battery life of the 15 brand X phones tested",
+    "The difference in mean battery life between brand X phones and brand Y phones",
+    "The battery life of a typical brand X phone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\mu_X$ = the true mean battery life (hours, while streaming video) of all new brand X phones; $\\mu_Y$ likewise for brand Y.",
+    "options": [
+     "A parameter is a population value, named in context.",
+     "That is the sample mean, 9.80 hours.",
+     "That is $\\mu_X - \\mu_Y$; $\\mu_X$ is one brand's mean.",
+     "The parameter is a mean, not one phone's value."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-3",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which test fits this study?",
+   "stimulus": "test-two-means-setup-s1",
+   "options": [
+    "A paired t test on the 15 differences, brand X minus brand Y",
+    "A one-sample t test of $\\mu_X = 9.10$",
+    "A two-proportion z test",
+    "A two-sample t test for $\\mu_X - \\mu_Y$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Two independent groups and a mean response: a two-sample t test.",
+    "options": [
+     "Phone 1 of brand X has no partner among the brand Y phones, so there is nothing to pair.",
+     "9.10 is a sample mean with its own variability, not a known value to test against.",
+     "Battery life is quantitative, so compare means.",
+     "Two independent random samples, a quantitative response and unknown population standard deviations."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-4",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Each brand has only 15 phones. How is the normal/large sample condition checked?",
+   "stimulus": "test-two-means-setup-s1",
+   "options": [
+    "Each boxplot shows no strong skew and no outliers",
+    "The two samples together have 30 phones",
+    "Battery lives are normally distributed",
+    "The two sample standard deviations are about equal"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Normal/large sample, for each group: normal population, $n \\ge 30$, or a graph without strong skew or outliers. Here, the graphs.",
+    "options": [
+     "Both samples are smaller than 30, so each group's graph must look roughly symmetric without outliers, as these do.",
+     "Each sample is checked separately; 15 is less than 30.",
+     "Nothing says the populations are normal, so the graphs are the evidence.",
+     "Equal spreads are not a condition for this test."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-5",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "How is the 10% condition met?",
+   "stimulus": "test-two-means-setup-s1",
+   "options": [
+    "30 phones in total is less than 10% of both brands combined",
+    "The phones were randomly selected",
+    "15 is less than 10% of the phones sold, for each brand",
+    "It is not needed, because this is an experiment"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Sampling without replacement from each brand: $15 < 0.10 N$ for each brand.",
+    "options": [
+     "Check each sample against its own population.",
+     "That is the random condition.",
+     "Each sample is a tiny share of its own brand's hundreds of thousands of phones.",
+     "The phones were sampled, not assigned to treatments, so the 10% condition applies."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-6",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "If the coach uses plan 1, which test should she use?",
+   "stimulus": "test-two-means-setup-s2",
+   "options": [
+    "A paired t test on each runner's time in A minus time in B",
+    "A two-sample t test on the 40 times in shoe A and the 40 times in shoe B",
+    "A one-sample t test on the A times",
+    "A two-proportion z test on who ran faster"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Plan 1 is a matched pairs design: one difference per runner, $H_0: \\mu_d = 0$, paired t test with df 39.",
+    "options": [
+     "Each runner gives two linked times, so test the mean of the 40 differences.",
+     "The two sets of times come from the same runners, so they are not independent samples.",
+     "That ignores the B times, which carry the comparison.",
+     "Times are quantitative; turning them into \"faster or not\" throws information away."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-7",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "If the coach uses plan 2, which test should she use?",
+   "stimulus": "test-two-means-setup-s2",
+   "options": [
+    "A paired t test on 20 differences",
+    "A two-sample t test for $\\mu_A - \\mu_B$",
+    "Two separate one-sample t tests, one for each shoe design",
+    "A one-sample t test of the 40 times"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Plan 2 is a completely randomized design with two groups: a two-sample t test.",
+    "options": [
+     "No runner wears both shoes, so there are no natural pairs.",
+     "Two separate groups formed by random assignment: compare the two group means.",
+     "The question is about the difference between the shoes, which needs one test.",
+     "Mixing the two groups together hides the comparison."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-8",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why is plan 1 likely to detect a real difference between the shoes more easily than plan 2?",
+   "stimulus": "test-two-means-setup-s2",
+   "options": [
+    "Plan 1 uses more runners than plan 2 does",
+    "Plan 1 does not need random assignment of any kind",
+    "Plan 2 would need a test other than a t test",
+    "Each runner serves as their own comparison"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Pairing controls a large source of variability, so the standard error of the mean difference is smaller and a real effect is easier to detect.",
+    "options": [
+     "Both plans use the same 40 runners.",
+     "Plan 1 still randomizes the order of the shoes.",
+     "Plan 2 is analyzed with a two-sample t test.",
+     "Fast and slow runners differ by minutes; the shoe effect may be seconds. Pairing subtracts out each runner's ability, so the differences vary much less."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-9",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For plan 2, which hypotheses fit the coach's question?",
+   "stimulus": "test-two-means-setup-s2",
+   "options": [
+    "$H_0: \\mu_A - \\mu_B = 0$, $H_a: \\mu_A - \\mu_B \\ne 0$",
+    "$H_0: \\mu_A - \\mu_B = 0$, $H_a: \\mu_A - \\mu_B < 0$",
+    "$H_0: \\mu_A - \\mu_B \\ne 0$, $H_a: \\mu_A - \\mu_B = 0$",
+    "$H_0: \\mu_d = 0$, $H_a: \\mu_d \\ne 0$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$H_0: \\mu_A - \\mu_B = 0$, $H_a: \\mu_A - \\mu_B \\ne 0$, where $\\mu_A$ and $\\mu_B$ are the true mean 5 km times in shoe A and in shoe B for runners like these.",
+    "options": [
+     "The coach asks whether the mean times differ, in either direction: two-sided.",
+     "She asked about a difference, not about A being faster.",
+     "The equality goes in the null hypothesis.",
+     "Plan 2 has no pairs, so there is no $\\mu_d$."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-10",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes $H_0: \\bar{x}_1 = \\bar{x}_2$ for a two-sample t test. What is wrong?",
+   "options": [
+    "It should be $H_0: \\bar{x}_1 > \\bar{x}_2$",
+    "Nothing is wrong, since sample means estimate the true means anyway",
+    "Hypotheses must be about the population means $\\mu_1$ and $\\mu_2$",
+    "It should be written as $H_0: \\bar{x}_1 - \\bar{x}_2 = 0$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Write $H_0: \\mu_1 = \\mu_2$ (or $\\mu_1 - \\mu_2 = 0$), with each $\\mu$ defined in context.",
+    "options": [
+     "The null hypothesis holds the equality, and the symbols are the problem.",
+     "Estimating is what statistics do; hypotheses state claims about the parameters.",
+     "The sample means are known numbers; the test is about whether the true means differ.",
+     "That rewrites the same mistake; use $\\mu_1 - \\mu_2$."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-11",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In an experiment, 36 volunteers are randomly assigned, 18 each, to a new or a standard pain reliever, and minutes until relief are recorded. Which condition checks are needed for a two-sample t test?",
+   "options": [
+    "A random sample of volunteers and the 10% condition",
+    "Random assignment, plus a graph of each group",
+    "At least 10 successes and failures in each group",
+    "That 36 is at least 30"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Experiment: random assignment; no 10% check; normal/large sample for each group (18 < 30, so check graphs).",
+    "options": [
+     "The volunteers were assigned, not sampled; the 10% condition applies to sampling.",
+     "Random assignment is the random condition; the 10% condition is not needed for an experiment; with 18 per group, check each group's graph.",
+     "That is the large counts condition for proportions.",
+     "Each group has 18; the combined size does not settle the shape condition."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-12",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "conclude",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the battery test ($H_0: \\mu_X - \\mu_Y = 0$, $H_a: \\mu_X - \\mu_Y > 0$), describe a Type II error in context.",
+   "why": {
+    "correct": "A Type II error fails to reject a false null hypothesis: brand X really does last longer on average, but the test does not find convincing evidence of it."
+   },
+   "conclude": {
+    "mode": "error",
+    "slots": {
+     "condition": {
+      "options": [
+       "A Type II error would occur if the true mean battery life of brand X phones is greater than that of brand Y phones",
+       "A Type II error would occur if the two brands have the same true mean battery life",
+       "A Type II error would occur if the sample means are equal"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That condition goes with a Type I error.",
+       "2": "Errors are about the true parameters, not the samples."
+      }
+     },
+     "claim": {
+      "options": [
+       "but we do not find convincing evidence that it is greater",
+       "and we find convincing evidence that it is greater",
+       "and we accept that the means are equal"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rejecting a false null hypothesis is the right decision.",
+       "2": "A test never accepts the null hypothesis."
+      }
+     }
+    },
+    "model": "A Type II error would occur if the true mean battery life of brand X phones is greater than that of brand Y phones, but we do not find convincing evidence that it is greater.",
+    "write": {
+     "context": [
+      "battery"
+     ],
+     "direction": "greater"
+    }
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-13",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A nutrition researcher asks whether the mean sugar content differs between store-brand and name-brand cereals. Which alternative hypothesis fits?",
+   "options": [
+    "$H_a: \\mu_S - \\mu_N > 0$",
+    "$H_a: \\mu_S - \\mu_N = 0$",
+    "$H_a: \\bar{x}_S - \\bar{x}_N \\ne 0$",
+    "$H_a: \\mu_S - \\mu_N \\ne 0$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Two-sided: $H_a: \\mu_S - \\mu_N \\ne 0$, with $\\mu_S$ and $\\mu_N$ the true mean sugar contents of store-brand and name-brand cereals.",
+    "options": [
+     "Nothing in the question points to store brands having more sugar.",
+     "The equality belongs in the null hypothesis.",
+     "The alternative is about the true means, not the sample means.",
+     "\"Differs\" asks about a difference in either direction, so the alternative is two-sided."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-14",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "multi",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which studies call for a two-sample t test? Select all that apply.",
+   "options": [
+    "Commute times of a random sample of nurses and an independent random sample of teachers",
+    "Plant growth for seeds randomly assigned to two fertilizers",
+    "Reaction time of 25 drivers, each tested with and without a phone call",
+    "The proportion of voters in two towns who support a park",
+    "Weights of 30 patients before and after a diet"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Two-sample t: two independent groups and a quantitative response. Two measurements on the same units: paired t.",
+    "options": [
+     "Right: two independent random samples, a mean response.",
+     "Right: two groups formed by random assignment.",
+     "Each driver is tested twice: paired.",
+     "That compares proportions, not means.",
+     "Before and after on the same patients: paired."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-15",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A company knows from years of records that its old bulbs last 1,200 hours on average. It tests a random sample of 40 new bulbs. Which test fits?",
+   "options": [
+    "A one-sample t test of $H_0: \\mu = 1200$",
+    "A two-sample t test comparing new and old bulbs",
+    "A paired t test of old minus new",
+    "A two-sample z test for proportions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One sample compared with a fixed value: one-sample t test. Two samples, each with its own variability: two-sample t test.",
+    "options": [
+     "Only the new bulbs are sampled; 1,200 is a known standard, so it is the hypothesized mean.",
+     "There is no second sample: the old bulbs' mean is given as a known value.",
+     "No bulb is measured under both conditions.",
+     "Lifetime is quantitative."
+    ]
+   }
+  },
+  {
+   "id": "stat-test-two-means-setup-16",
+   "unit": "unit-4",
+   "topic": "test-two-means-setup",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Independent random samples: 40 delivery times from company P (roughly symmetric) and 12 from company Q (strongly skewed right with an outlier). Is a two-sample t test appropriate?",
+   "options": [
+    "Yes, because the total of 52 is at least 30",
+    "No, because the sample from Q is small and strongly skewed",
+    "Yes, because the sample from P has at least 30 delivery times in it",
+    "No, because the sample sizes are different"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The normal/large sample condition must hold for each group.",
+    "options": [
+     "Each group is checked separately.",
+     "P passes ($n = 40 \\ge 30$), but each group must pass. Q has $n = 12$ with strong skew and an outlier.",
+     "P passing does not rescue Q.",
+     "Different sample sizes are allowed."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two-Mean Sampling Distribution — AP® Statistics Notes</title>
+<meta name="description" content="The second half of Unit 4 compares two means: two orchards, two machines, two treatments in an experiment.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/sampling-dist-two-means.html">
+<meta property="og:title" content="Two-Mean Sampling Distribution — AP® Statistics Notes">
+<meta property="og:description" content="The second half of Unit 4 compares two means: two orchards, two machines, two treatments in an experiment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/sampling-dist-two-means.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/sampling-dist-two-means.html#reading",
+      "name": "Sampling Distributions for the Difference Between Two Sample Means",
+      "url": "https://levlprep.com/statistics/notes/sampling-dist-two-means.html",
+      "description": "The second half of Unit 4 compares two means: two orchards, two machines, two treatments in an experiment.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "sampling distributions for the difference between two sample means ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Quantitative Data: Means",
+          "item": "https://levlprep.com/statistics/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Sampling Distributions for the Difference Between Two Sample Means: notes",
+          "item": "https://levlprep.com/statistics/notes/sampling-dist-two-means.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="sampling-dist-two-means" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Inference for Categorical Data: Proportions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Inference for Quantitative Data: Means</b><small>10 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 10 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="sampling-dist-mean"><a href="sampling-dist-mean.html"><span class="bk-toc-n">4.1</span>Sampling Distributions for Sample Means</a></li><li data-toc-t="ci-one-mean"><a href="ci-one-mean.html"><span class="bk-toc-n">4.2</span>Constructing a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="ci-one-mean-claims"><a href="ci-one-mean-claims.html"><span class="bk-toc-n">4.3</span>Justifying a Claim Based on a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean-setup"><a href="test-one-mean-setup.html"><span class="bk-toc-n">4.4</span>Setting Up a Test for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean"><a href="test-one-mean.html"><span class="bk-toc-n">4.5</span>Carrying Out a Test for a Population Mean or Population Mean Difference</a></li><li class="current" data-toc-t="sampling-dist-two-means"><a href="#main" aria-current="page"><span class="bk-toc-n">4.6</span>Sampling Distributions for the Difference Between Two Sample Means</a><div class="bk-toc-onpage"><p>On this page</p><a href="#a-difference-of-two-sample-means">A difference of two sample means</a><a href="#center-and-spread">Center and spread</a><a href="#conditions-behind-the-formula">Conditions behind the formula</a><a href="#shape">Shape</a><a href="#probabilities-about-a-difference">Probabilities about a difference</a></div></li><li data-toc-t="ci-two-means"><a href="ci-two-means.html"><span class="bk-toc-n">4.7</span>Constructing a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="ci-two-means-claims"><a href="ci-two-means-claims.html"><span class="bk-toc-n">4.8</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="test-two-means-setup"><a href="test-two-means-setup.html"><span class="bk-toc-n">4.9</span>Setting Up a Test for the Difference Between Two Population Means</a></li><li data-toc-t="test-two-means"><a href="test-two-means.html"><span class="bk-toc-n">4.10</span>Carrying Out a Test for the Difference Between Two Population Means</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Regression Analysis</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Inference for Quantitative Data: Means</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Sampling Distributions for the Difference Between Two Sample Means: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/sampling-dist-two-means.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.6 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Sampling Distributions for the Difference Between Two Sample Means</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="sampling-dist-two-means">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fsampling-dist-two-means.html&amp;title=Sampling%20Distributions%20for%20the%20Difference%20Between%20Two%20Sample%20Means%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/sampling-dist-two-means.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>The second half of Unit 4 compares two <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a>: two orchards, two machines, two <a class="gl" href="../notes/experimental-design.html" data-c="treatment">treatments</a> in an <a class="gl" href="../notes/investigative-questions.html" data-c="experiment">experiment</a>. The statistic is the <b><span class="gl" tabindex="0" data-c="diff-means">difference in sample means</span></b>, <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\bar{x}_1 - \bar{x}_2</annotation></semantics></math>. Like every statistic it varies from <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> to sample, and its <a class="gl" href="../notes/sampling-distributions.html" data-c="sampling-distribution">sampling distribution</a> is the foundation for the intervals and tests that follow. You met the same idea for two proportions in Unit 3.</p>
+
+<h2 id="a-difference-of-two-sample-means">A difference of two sample means</h2>
+<p>Apple weights at orchard A have mean <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>A</mi></msub><mo>=</mo><mn>180</mn></mrow><annotation encoding="application/x-tex">\mu_A = 180</annotation></semantics></math> grams and <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a> <math class="stat-m"><semantics><mrow><msub><mi>σ</mi><mi>A</mi></msub><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">\sigma_A = 20</annotation></semantics></math> grams. At orchard B, <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>B</mi></msub><mo>=</mo><mn>170</mn></mrow><annotation encoding="application/x-tex">\mu_B = 170</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>σ</mi><mi>B</mi></msub><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">\sigma_B = 25</annotation></semantics></math> grams (invented <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>). A buyer takes <a class="gl" href="../notes/sampling-dist-two-proportions.html" data-c="independent-samples">independent random samples</a>, 40 apples from A and 50 from B, and computes <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>A</mi></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">\bar{x}_A - \bar{x}_B</annotation></semantics></math>.</p>
+<p>From the first topic of this unit, each sample mean has its own sampling <a class="gl" href="../notes/variables.html" data-c="distribution">distribution</a>:</p>
+<ul>
+<li><math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">\bar{x}_A</annotation></semantics></math>: mean 180, standard deviation <math class="stat-m"><semantics><mrow><mfrac><mn>20</mn><msqrt><mn>40</mn></msqrt></mfrac><mo>=</mo><mn>3.16</mn></mrow><annotation encoding="application/x-tex">\frac{20}{\sqrt{40}} = 3.16</annotation></semantics></math> grams;</li>
+<li><math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">\bar{x}_B</annotation></semantics></math>: mean 170, standard deviation <math class="stat-m"><semantics><mrow><mfrac><mn>25</mn><msqrt><mn>50</mn></msqrt></mfrac><mo>=</mo><mn>3.54</mn></mrow><annotation encoding="application/x-tex">\frac{25}{\sqrt{50}} = 3.54</annotation></semantics></math> grams.</li>
+</ul>
+<figure id="fig-diff"  class="stat-figure"><div class="stat-figimg" data-fig="diff-means-normal"><img src="../figures/diff-means-normal.svg" alt="Top: two normal curves for the sample mean apple weight, orchard A centered at 180 grams with standard deviation 3.16 and orchard B centered at 170 grams with standard deviation 3.54. Bottom: a wider normal curve for the difference of the two sample means, centered at 10 grams with standard deviation 4.74; the area below 0, shaded, is 0.0175." width="720" height="560" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The two sampling distributions, and the wider sampling distribution of their difference. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="center-and-spread">Center and spread</h2>
+<p>The <a class="gl" href="../notes/describing-distributions.html" data-c="center">center</a> is what you would guess: the difference is centered at the difference of the <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> means,</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>μ</mi><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>2</mn></msub></mrow></msub><mo>=</mo><msub><mi>μ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>μ</mi><mn>2</mn></msub><mo>.</mo></mrow><annotation encoding="application/x-tex">\mu_{\bar{x}_1 - \bar{x}_2} = \mu_1 - \mu_2.</annotation></semantics></math></p>
+<p>The spread is where intuition often goes wrong. The means are subtracted, but the <a class="gl" href="../notes/describing-distributions.html" data-c="spread">variability</a> is not. Think about what can make <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>A</mi></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">\bar{x}_A - \bar{x}_B</annotation></semantics></math> come out far from 10: <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">\bar{x}_A</annotation></semantics></math> might be unusually high, or <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">\bar{x}_B</annotation></semantics></math> unusually low, or both. Each sample mean brings its own uncertainty, and for <a class="gl" href="../notes/independence-unions.html" data-c="independent-events">independent</a> samples the uncertainties pile up. The rule is that <b><a class="gl" href="../notes/summary-statistics.html" data-c="variance">variances</a> add</b>:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>σ</mi><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>2</mn></msub></mrow></msub><mo>=</mo><msqrt><mrow><mfrac><msubsup><mi>σ</mi><mn>1</mn><mn>2</mn></msubsup><msub><mi>n</mi><mn>1</mn></msub></mfrac><mo>+</mo><mfrac><msubsup><mi>σ</mi><mn>2</mn><mn>2</mn></msubsup><msub><mi>n</mi><mn>2</mn></msub></mfrac></mrow></msqrt><mo>.</mo></mrow><annotation encoding="application/x-tex">\sigma_{\bar{x}_1 - \bar{x}_2} = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}.</annotation></semantics></math></p>
+<p>This formula is on the reference sheet. Notice its parts: each population variance is divided by its own sample size, the two are added, and then the <a class="gl" href="../notes/math-formulas.html" data-c="square-root">square root</a> is taken. Standard deviations themselves are never added, and the variances are never subtracted.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the mean and standard deviation of the sampling distribution of <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>A</mi></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">\bar{x}_A - \bar{x}_B</annotation></semantics></math>.</p>
+<p>Center: <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>A</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">\mu_A - \mu_B</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>180</mn><mo>−</mo><mn>170</mn></mrow><annotation encoding="application/x-tex">= 180 - 170</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">= 10</annotation></semantics></math> grams.</p>
+<p>Spread: <math class="stat-m"><semantics><mrow><msqrt><mrow><mfrac><msubsup><mi>σ</mi><mi>A</mi><mn>2</mn></msubsup><msub><mi>n</mi><mi>A</mi></msub></mfrac><mo>+</mo><mfrac><msubsup><mi>σ</mi><mi>B</mi><mn>2</mn></msubsup><msub><mi>n</mi><mi>B</mi></msub></mfrac></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\frac{\sigma_A^2}{n_A} + \frac{\sigma_B^2}{n_B}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mrow><mfrac><msup><mn>20</mn><mn>2</mn></msup><mn>40</mn></mfrac><mo>+</mo><mfrac><msup><mn>25</mn><mn>2</mn></msup><mn>50</mn></mfrac></mrow></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{\frac{20^2}{40} + \frac{25^2}{50}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mrow><mn>10</mn><mo>+</mo><mn>12.5</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{10 + 12.5}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>4.74</mn></mrow><annotation encoding="application/x-tex">= 4.74</annotation></semantics></math> grams.</p>
+<p>Check: 4.74 is larger than either 3.16 or 3.54, as it should be. (Adding the standard deviations would give <math class="stat-m"><semantics><mrow><mn>3.16</mn><mo>+</mo><mn>3.54</mn><mo>=</mo><mn>6.70</mn></mrow><annotation encoding="application/x-tex">3.16 + 3.54 = 6.70</annotation></semantics></math>, which is too large.)</p>
+</div>
+
+<h2 id="conditions-behind-the-formula">Conditions behind the formula</h2>
+<ul>
+<li><b>Independent samples:</b> two separate <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">random</a> samples, or two groups formed by <a class="gl" href="../notes/experimental-design.html" data-c="random-assignment">random assignment</a> in an experiment. <a class="gl" href="../notes/ci-one-mean.html" data-c="paired-data">Paired data</a> (the same runners timed twice, twins, before and after) are not independent; use the differences and the one-sample methods instead.</li>
+<li><b><a class="gl" href="../notes/sampling-dist-proportion.html" data-c="ten-percent">10% condition</a>, for each sample:</b> each sample is less than 10% of its own population. A sample of 60 nurses from a hospital of 450 fails it (<math class="stat-m"><semantics><mrow><mn>60</mn><mo>&gt;</mo><mn>45</mn></mrow><annotation encoding="application/x-tex">60 &gt; 45</annotation></semantics></math>) even if a second hospital is large. Random assignment in an experiment has no population to sample from, so the 10% condition does not apply there.</li>
+</ul>
+
+<h2 id="shape">Shape</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Populations, Sample sizes, Shape of x-bar_1 − x-bar_2"><table class="stat-compare">
+<thead><tr><th scope="col">Populations</th><th scope="col">Sample sizes</th><th scope="col">Shape of <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\bar{x}_1 - \bar{x}_2</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td>both normal</td><td>any</td><td>normal</td></tr>
+<tr><td>not known to be normal</td><td>both <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n_1 \ge 30</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n_2 \ge 30</annotation></semantics></math></td><td><a class="gl" href="../notes/normal-distribution.html" data-c="normal-distribution">approximately normal</a> (<a class="gl" href="../notes/sampling-distributions.html" data-c="clt">central limit theorem</a>)</td></tr>
+<tr><td><a class="gl" href="../notes/describing-distributions.html" data-c="skewed">skewed</a></td><td>either sample small</td><td>not reliably normal</td></tr>
+</tbody>
+</table></div>
+<p>Each sample is checked on its own. A total of 90 apples does not help if one of the samples has only 8 from a skewed population.</p>
+
+<h2 id="probabilities-about-a-difference">Probabilities about a difference</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> What is the <a class="gl" href="../notes/simulation.html" data-c="probability">probability</a> that the buyer's sample from B comes out heavier on average than the sample from A, that is, <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>A</mi></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>B</mi></msub><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\bar{x}_A - \bar{x}_B &lt; 0</annotation></semantics></math>?</p>
+<p><a class="gl" href="../notes/describing-distributions.html" data-c="shape">Shape</a>: <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mi>A</mi></msub><mo>=</mo><mn>40</mn><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n_A = 40 \ge 30</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mi>B</mi></msub><mo>=</mo><mn>50</mn><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n_B = 50 \ge 30</annotation></semantics></math>, so the difference is approximately normal, with mean 10 and standard deviation 4.74 grams.</p>
+<p>Expression and substitution: <math class="stat-m"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>0</mn><mo>−</mo><mn>10</mn></mrow><mn>4.74</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{0 - 10}{4.74}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.11</mn></mrow><annotation encoding="application/x-tex">= -2.11</annotation></semantics></math>.</p>
+<p>Answer: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>A</mi></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>B</mi></msub><mo>&lt;</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\bar{x}_A - \bar{x}_B &lt; 0)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>z</mi><mo>&lt;</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.11</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= P(z &lt; -2.11)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.0175</mn></mrow><annotation encoding="application/x-tex">= 0.0175</annotation></semantics></math> (technology; Table A gives 0.0174 for <math class="stat-m"><semantics><mrow><mi>z</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.11</mn></mrow><annotation encoding="application/x-tex">z = -2.11</annotation></semantics></math>). Even though A's apples are heavier on average, about 2% of pairs of samples would show the opposite.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> Machine 1 fills bottles with mean 500.0 mL and SD 1.5 mL; machine 2 with mean 499.0 mL and SD 2.0 mL; both normal. With samples of 8 and 10 bottles, find <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>2</mn></msub><mo>&gt;</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\bar{x}_1 - \bar{x}_2 &gt; 2)</annotation></semantics></math>.</p>
+<p>Shape: both populations are normal, so the difference is normal even with small samples.</p>
+<p>Center <math class="stat-m"><semantics><mrow><mn>500.0</mn><mo>−</mo><mn>499.0</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">500.0 - 499.0 = 1</annotation></semantics></math> mL; spread <math class="stat-m"><semantics><mrow><msqrt><mrow><mfrac><msup><mn>1.5</mn><mn>2</mn></msup><mn>8</mn></mfrac><mo>+</mo><mfrac><msup><mn>2.0</mn><mn>2</mn></msup><mn>10</mn></mfrac></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\frac{1.5^2}{8} + \frac{2.0^2}{10}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mrow><mn>0.281</mn><mo>+</mo><mn>0.400</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{0.281 + 0.400}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.825</mn></mrow><annotation encoding="application/x-tex">= 0.825</annotation></semantics></math> mL.</p>
+<p><math class="stat-m"><semantics><mrow><mi>z</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mo>−</mo><mn>1</mn></mrow><mn>0.825</mn></mfrac><mo>=</mo><mn>1.21</mn></mrow><annotation encoding="application/x-tex">z = \frac{2 - 1}{0.825} = 1.21</annotation></semantics></math>, so <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>2</mn></msub><mo>&gt;</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\bar{x}_1 - \bar{x}_2 &gt; 2)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>z</mi><mo>&gt;</mo><mn>1.21</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= P(z &gt; 1.21)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.113</mn></mrow><annotation encoding="application/x-tex">= 0.113</annotation></semantics></math>.</p>
+</div>
+<p>In practice the population standard deviations are rarely known. The next topic replaces <math class="stat-m"><semantics><mrow><msub><mi>σ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\sigma_1</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>σ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\sigma_2</annotation></semantics></math> with the sample standard deviations <math class="stat-m"><semantics><mrow><msub><mi>s</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">s_1</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>s</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">s_2</annotation></semantics></math> and builds a <a class="gl" href="../notes/ci-one-proportion.html" data-c="confidence-interval">confidence interval</a> for <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>μ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\mu_1 - \mu_2</annotation></semantics></math>.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:sampling-dist-two-means">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="test-one-mean.html"><span>&larr; Previous</span><b>Carrying Out a Test for a Population Mean or Population Mean Difference</b></a><a class="tb-chapter-link next" href="ci-two-means.html"><span>Next &rarr;</span><b>Constructing a Confidence Interval for the Difference Between Two Population Means</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:sampling-dist-two-means">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

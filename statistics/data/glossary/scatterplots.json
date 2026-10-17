@@ -1,0 +1,8 @@
+{
+ "scatterplot": {
+  "def": "A graph of two quantitative variables measured on the same individuals: one point per individual, with the explanatory variable on the horizontal axis and the response variable on the vertical axis."
+ },
+ "direction-form-strength": {
+  "def": "The features used to describe a scatterplot. Direction: positive (both rise together), negative (one rises as the other falls) or none. Form: linear or curved. Strength: how closely the points follow the form."
+ }
+}

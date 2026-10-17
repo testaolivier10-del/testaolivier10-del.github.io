@@ -1,0 +1,82 @@
+{
+ "topic": "sampling-problems",
+ "hook": "A news website asks readers to vote on a new law, and 85% of 50,000 votes say no. That sounds decisive. But who votes in an online poll? Mostly people with strong feelings, often angry ones. A biased method gives the wrong answer however many people take part, and the only cure is a better method.",
+ "prereq": [
+  {
+   "q": "What is a sampling frame?",
+   "options": [
+    "The list the sample is drawn from",
+    "The sample size",
+    "The survey question",
+    "The population mean"
+   ],
+   "correct": 0,
+   "why": "The frame is the list of individuals the sample is chosen from.",
+   "review": "random-sampling"
+  },
+  {
+   "q": "Which uses chance to choose individuals?",
+   "options": [
+    "A simple random sample",
+    "Asking friends",
+    "Asking the first 50 shoppers",
+    "Letting people sign up"
+   ],
+   "correct": 0,
+   "why": "Only the simple random sample uses a chance process.",
+   "review": "random-sampling"
+  }
+ ],
+ "figure": {
+  "figure": "frame-and-response",
+  "caption": "A sample can go wrong at three points: the frame can leave people out (undercoverage), chosen people can fail to respond (nonresponse), and answers can be untrue (response bias)."
+ },
+ "chain": [
+  {
+   "cause": "A method that lets people choose themselves, or picks whoever is easy to reach",
+   "effect": "over-represents some kinds of people: voluntary response or convenience sampling"
+  },
+  {
+   "cause": "A frame that misses part of the population",
+   "effect": "those people have no chance of being chosen: undercoverage"
+  },
+  {
+   "cause": "Chosen people who do not respond, or who answer untruthfully because of wording or pressure",
+   "effect": "nonresponse and response bias, even in a random sample"
+  },
+  {
+   "cause": "Each of these pushes results the same way every time",
+   "effect": "the method is biased, and a larger sample does not fix it"
+  }
+ ],
+ "ideas": [
+  "A sampling method is <b>biased</b> if it systematically overestimates or underestimates the value it is trying to estimate.",
+  "<b>Voluntary response samples</b> (people choose to answer) and <b>convenience samples</b> (easy to reach) are not random and are usually biased.",
+  "<b>Undercoverage</b>: part of the population is missing from the frame. <b>Nonresponse</b>: chosen individuals do not respond. <b>Response bias</b>: answers are not true, from leading wording, sensitive questions or pressure.",
+  "Name the bias, explain how the sample differs from the population, and give the likely direction. A larger sample never removes bias."
+ ],
+ "misconception": {
+  "wrong": "The online poll got 50,000 votes, so its result must be close to the truth.",
+  "right": "A voluntary response sample is biased toward strong opinions. More votes give a more precise answer to the wrong question; only a random sample from the population fixes the method."
+ },
+ "check": [
+  "stat-sampling-problems-1",
+  "stat-sampling-problems-2",
+  "stat-sampling-problems-3",
+  "stat-sampling-problems-4",
+  "stat-sampling-problems-5",
+  "stat-sampling-problems-10",
+  "stat-sampling-problems-14"
+ ],
+ "summary": "Bias is a systematic error in a sampling method. Voluntary response and convenience samples are biased because they are not random; undercoverage, nonresponse and response bias can affect even random samples. To explain a bias, name it, say how the sample differs from the population and in which direction, and remember that a bigger sample does not cure it.",
+ "connections": [
+  {
+   "href": "../notes/random-sampling.html",
+   "label": "Back: choosing a sample (1.11)"
+  },
+  {
+   "href": "../notes/experimental-design.html",
+   "label": "Next: designing experiments (1.13)"
+  }
+ ]
+}

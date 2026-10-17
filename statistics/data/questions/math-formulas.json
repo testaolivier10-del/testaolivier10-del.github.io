@@ -1,0 +1,309 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "stat-math-formulas-1",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Evaluate $\\frac{2 + 4 + 9}{3}$.",
+   "why": {
+    "correct": "The fraction bar acts like brackets: add the top first, $2 + 4 + 9 = 15$, then divide, $\\frac{15}{3} = 5$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [2, 4, 9]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 9,
+      "why": "That divides just the 9 by 3: $2 + 4 + 3$. The fraction bar groups the whole top, so add first: $\\frac{15}{3}$."
+     },
+     {
+      "value": 15,
+      "why": "That is the top alone. Finish by dividing by 3."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-formulas-2",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Evaluate $\\sqrt{\\frac{(2 - 5)^2 + (4 - 5)^2 + (9 - 5)^2}{3 - 1}}$. Give two decimal places.",
+   "why": {
+    "correct": "Inside first: $(-3)^2 + (-1)^2 + 4^2 = 9 + 1 + 16 = 26$; the bottom is $3 - 1 = 2$; $\\frac{26}{2} = 13$; then $\\sqrt{13} = 3.61$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "from": {
+     "fn": "sd",
+     "args": [
+      [2, 4, 9]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 13,
+      "why": "That is the value before the square root. Finish with $\\sqrt{13}$."
+     },
+     {
+      "value": 2.943920288775949,
+      "why": "That divides by 3 instead of $3 - 1 = 2$. Work out the bottom as written."
+     },
+     {
+      "value": 0,
+      "why": "The distances $-3$, $-1$ and $4$ add to 0, but each is squared first: 9, 1 and 16."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-formulas-3",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "single",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "For the values $x_1 = 3$, $x_2 = 5$ and $x_3 = 10$, what is $\\sum x_i$?",
+   "why": {
+    "correct": "$\\sum x_i$ tells you to add every $x_i$: $3 + 5 + 10 = 18$.",
+    "options": [
+     "The summation sign adds; it does not multiply.",
+     "Right: the summation sign adds every value, $3 + 5 + 10 = 18$.",
+     "Dividing by 3 gives the average; the sum itself is 18.",
+     "That is how many terms there are, not their sum."
+    ]
+   },
+   "options": [
+    "150",
+    "18",
+    "6",
+    "3"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-formulas-4",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is $6 + 4 \\times 3$?",
+   "why": {
+    "correct": "Order of operations: brackets, powers and roots, then multiplication and division, then addition and subtraction.",
+    "options": [
+     "Left to right gives $10 \\times 3$, but multiplication comes before addition.",
+     "The $\\times$ sign asks for a product, not a sum.",
+     "Only the 4 and 3 are multiplied; the 6 is added.",
+     "Right: multiply before adding, $4 \\times 3 = 12$, then $6 + 12 = 18$."
+    ]
+   },
+   "options": [
+    "30",
+    "13",
+    "72",
+    "18"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-math-formulas-5",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Type an expression for the average of 12, 15, 18 and 21: add the values, then divide by how many there are.",
+   "why": {
+    "correct": "$\\frac{12 + 15 + 18 + 21}{4} = \\frac{66}{4} = 16.5$."
+   },
+   "setup": {
+    "answer": "(12 + 15 + 18 + 21)/4",
+    "mustUse": [
+     "4"
+    ],
+    "mistakes": [
+     {
+      "expr": "12 + 15 + 18 + 21/4",
+      "why": "Without brackets only the 21 is divided by 4. Put the sum in brackets: (12 + 15 + 18 + 21)/4."
+     },
+     {
+      "expr": "(12 + 15 + 18 + 21)/3",
+      "why": "There are four values, so divide by 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-formulas-6",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $(-3)^2$?",
+   "why": {
+    "correct": "A square is never negative: $(-3)^2 = 9$. On a calculator, type the brackets, or $-3^2$ gives $-9$.",
+    "options": [
+     "Right: $(-3) \\times (-3) = 9$; a negative times a negative is positive.",
+     "That is $-(3^2)$. With the brackets, the whole $-3$ is squared.",
+     "Squaring multiplies a number by itself, not by 2.",
+     "A square is a number times itself: $(-3)(-3)$."
+    ]
+   },
+   "options": [
+    "9",
+    "−9",
+    "−6",
+    "6"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-formulas-7",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is $\\sqrt{0.25}$?",
+   "why": {
+    "correct": "The square root of a number is the value that, times itself, gives the number: $0.5^2 = 0.25$.",
+    "options": [
+     "A square root undoes squaring; it does not halve.",
+     "Check: $0.05 \\times 0.05 = 0.0025$, not 0.25.",
+     "Right: $0.5 \\times 0.5 = 0.25$.",
+     "That squares 0.25 instead of taking its root."
+    ]
+   },
+   "options": [
+    "0.125",
+    "0.05",
+    "0.5",
+    "0.0625"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-formulas-8",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Type an expression for the square root of the whole quantity 26 divided by 2.",
+   "why": {
+    "correct": "$\\sqrt{\\frac{26}{2}} = \\sqrt{13} \\approx 3.61$. The brackets of the root hold the whole fraction."
+   },
+   "setup": {
+    "answer": "sqrt(26/2)",
+    "mustUse": [
+     "26",
+     "2"
+    ],
+    "mistakes": [
+     {
+      "expr": "sqrt(26)/2",
+      "why": "That takes the root of 26 and then divides by 2. Put the whole fraction inside the root: sqrt(26/2)."
+     },
+     {
+      "expr": "26/2",
+      "why": "The square root is missing: sqrt(26/2)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-formulas-9",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A formula says $y = \\frac{x - 50}{8}$. What is $y$ when $x = 62$?",
+   "why": {
+    "correct": "Substitute, then follow the order: top first, $62 - 50 = 12$, then $\\frac{12}{8} = 1.5$.",
+    "options": [
+     "That works out $62 - \\frac{50}{8}$. The fraction bar groups $62 - 50$ first.",
+     "Substitute 62 for x, subtract 50, then divide by 8.",
+     "Right: $\\frac{62 - 50}{8} = \\frac{12}{8} = 1.5$.",
+     "The formula is x minus 50, so $62 - 50 = 12$, which is positive."
+    ]
+   },
+   "options": [
+    "55.75",
+    "14",
+    "1.5",
+    "−1.5"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-formulas-10",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "order",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for evaluating $\\sqrt{\\frac{(2 - 5)^2 + (4 - 5)^2 + (9 - 5)^2}{3 - 1}}$ in order.",
+   "why": {
+    "correct": "Brackets, then powers, then the sum on top, then the division, and the square root of the whole result last."
+   },
+   "options": [
+    "Subtract inside each bracket: −3, −1, 4",
+    "Square each result: 9, 1, 16",
+    "Add the squares: 26",
+    "Divide by 3 − 1 = 2: 13",
+    "Take the square root: about 3.61"
+   ]
+  },
+  {
+   "id": "stat-math-formulas-11",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two students evaluate $\\sum (x_i - 5)$ for the values 2, 4 and 9. What do they get, and why?",
+   "why": {
+    "correct": "Each term is a signed distance from 5: $-3$, $-1$ and $4$, which add to 0. That is why spread formulas square the distances first.",
+    "options": [
+     "Right: $(2 - 5) + (4 - 5) + (9 - 5) = -3 - 1 + 4 = 0$. Here 5 is the average, and distances from the average always add to 0.",
+     "Squaring is a different formula, $\\sum (x_i - 5)^2$. This one has no squares.",
+     "Signs count: the distances below 5 are negative.",
+     "The 5 is subtracted from each value before adding."
+    ]
+   },
+   "options": [
+    "0: the distances from 5 above and below cancel",
+    "26, from squaring each distance first",
+    "8, from adding the distances without their signs",
+    "15, from adding the values and ignoring the 5"
+   ],
+   "correct": 0
+  }
+ ]
+}

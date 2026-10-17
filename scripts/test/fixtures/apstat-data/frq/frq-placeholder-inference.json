@@ -1,0 +1,152 @@
+{
+ "id": "frq-placeholder-inference",
+ "type": "inference",
+ "points": 10,
+ "placeholder": true,
+ "title": "Placeholder: inference: a test or an interval",
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "test-one-mean"
+ ],
+ "practices": [
+  "2.C",
+  "3.E",
+  "4.G"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Placeholder: inference: a test or an interval",
+  "plot": {
+   "label": "Placeholder dotplot of warm-up times for the free-response question",
+   "kind": "dot",
+   "data": [
+    12,
+    15,
+    9,
+    22,
+    18,
+    30,
+    14,
+    11,
+    16,
+    20,
+    13,
+    15,
+    17,
+    45
+   ],
+   "xLabel": "minutes"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Describe</b> placeholder part (a) of this question.",
+   "points": 3,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (a), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (a), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 3 for part (a), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (a), written to test the page."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Describe</b> placeholder part (b) of this question.",
+   "points": 3,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (b), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (b), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 3 for part (b), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (b), written to test the page."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Describe</b> placeholder part (c) of this question.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (c), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (c), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (c), written to test the page.",
+   "check": {
+    "type": "numeric",
+    "numeric": {
+     "kind": "pvalue",
+     "from": {
+      "fn": "z1prop",
+      "args": [
+       0.47,
+       0.5,
+       400
+      ],
+      "pick": "p.less"
+     }
+    }
+   }
+  },
+  {
+   "label": "d",
+   "prompt": "<b>Describe</b> placeholder part (d) of this question.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part (d), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part (d), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "A placeholder full-credit answer for part (d), written to test the page."
+  }
+ ]
+}

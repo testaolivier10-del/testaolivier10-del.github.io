@@ -1,0 +1,8 @@
+{
+ "two-sample-t-interval": {
+  "def": "A confidence interval for the difference of two population means, $\\mu_1 - \\mu_2$, from two independent samples or randomized groups: $(\\bar{x}_1 - \\bar{x}_2) \\pm t^*\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$, with technology df or the conservative df."
+ },
+ "conservative-df": {
+  "def": "For two-sample t procedures, the smaller of $n_1 - 1$ and $n_2 - 1$. It never exceeds the technology (Welch) degrees of freedom, so it gives a slightly larger $t^*$: a wider interval and a larger p-value. Both choices are accepted."
+ }
+}

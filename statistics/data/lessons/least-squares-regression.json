@@ -1,0 +1,71 @@
+{
+ "hook": "Draw a line through a scatterplot by eye and someone else will draw a slightly different one. Which is best? Statistics has a precise answer: the line that makes the squared misses as small as possible. That one line, its $r^2$ and its typical error $s$ are what every regression printout reports, and one unusual point can change them all.",
+ "prereq": [
+  {
+   "q": "A point is at $(6, 50)$ and the line predicts 46 there. What is the residual?",
+   "options": [
+    "$4$",
+    "$-4$",
+    "$46$",
+    "$50$"
+   ],
+   "correct": 0,
+   "why": "$50 - 46 = 4$.",
+   "review": "residuals"
+  },
+  {
+   "q": "A correlation of $r = -0.9$ describes",
+   "options": [
+    "a strong negative linear association",
+    "a weak negative association",
+    "a strong positive association",
+    "no association"
+   ],
+   "correct": 0,
+   "why": "Size near 1, negative sign.",
+   "review": "correlation"
+  }
+ ],
+ "figure": {
+  "figure": "influential-point",
+  "caption": "One player at 16 hours pulls the least-squares slope from 2.92 down to 0.49: an influential point."
+ },
+ "chain": [
+  {
+   "cause": "Every line leaves residuals; square them so misses above and below both count",
+   "effect": "the least-squares line is the one line that makes $\\sum (y - \\hat{y})^2$ as small as possible"
+  },
+  {
+   "cause": "Solving for that line",
+   "effect": "gives $b = r\\frac{s_y}{s_x}$ and a line through $(\\bar{x}, \\bar{y})$, so $a = \\bar{y} - b\\bar{x}$"
+  },
+  {
+   "cause": "Compare the scatter around the line with the scatter around $\\bar{y}$",
+   "effect": "$r^2$ is the share of the variation in $y$ the line accounts for, and $s$ is the typical size of a residual"
+  },
+  {
+   "cause": "Squaring makes far-off points count heavily",
+   "effect": "a point with an extreme $x$ value (high leverage) can pull the line toward itself and be influential"
+  }
+ ],
+ "ideas": [
+  "The least-squares regression line minimizes the sum of squared residuals; $b = r\\frac{s_y}{s_x}$ and it passes through $(\\bar{x}, \\bar{y})$.",
+  "$r^2$: \"About [ ]% of the variation in [y] is accounted for by the linear model using [x].\"",
+  "$s$: \"The actual [y] typically differs from the predicted [y] by about $s$ [units of y].\"",
+  "Outlier: a large residual. High-leverage point: an extreme $x$. Influential point: removing it changes the slope or intercept a lot."
+ ],
+ "misconception": {
+  "wrong": "$r^2 = 0.764$ means the line predicts 76.4% of the cases correctly.",
+  "right": "$r^2$ is about variation, not cases: 76.4% of the variation in $y$ is accounted for by the linear model using $x$; the rest is scatter the line does not explain."
+ },
+ "check": [
+  "stat-least-squares-regression-1",
+  "stat-least-squares-regression-2",
+  "stat-least-squares-regression-3",
+  "stat-least-squares-regression-7",
+  "stat-least-squares-regression-10",
+  "stat-least-squares-regression-12"
+ ],
+ "summary": "The least-squares regression line makes the sum of squared residuals as small as possible; its slope is $b = r\\frac{s_y}{s_x}$ and it passes through $(\\bar{x}, \\bar{y})$. Report $r^2$, the share of the variation in $y$ the line accounts for, and $s$, the typical prediction error in the units of $y$. Check for high-leverage and influential points, which can change the line a lot.",
+ "topic": "least-squares-regression"
+}

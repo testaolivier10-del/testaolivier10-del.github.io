@@ -1,0 +1,12 @@
+{
+ "part-of-whole": {
+  "file": "figures/part-of-whole.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 220,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Twenty-four boxes in a row, 18 shaded in plum, above a scale from 0 to 1 marked every 0.25. A dashed line at 0.75 marks where the shaded part ends. The caption reads: part over whole, 18 over 24, equals 0.75, equals 75%."
+ }
+}

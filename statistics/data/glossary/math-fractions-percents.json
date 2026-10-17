@@ -1,0 +1,8 @@
+{
+ "proportion-math": {
+  "def": "A percent is a part out of 100: the decimal form of a part of a whole, multiplied by 100. For example, 0.75 is 75%."
+ },
+ "fraction-of-whole": {
+  "def": "A part of a whole is the count in one group divided by the count in the whole group it belongs to, giving a number from 0 to 1."
+ }
+}

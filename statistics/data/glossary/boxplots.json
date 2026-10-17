@@ -1,0 +1,8 @@
+{
+ "five-number-summary": {
+  "def": "The minimum, first quartile $Q_1$, median, third quartile $Q_3$ and maximum of a data set. Together they split the ordered data into four quarters."
+ },
+ "boxplot": {
+  "def": "A graph of the five-number summary: a box from $Q_1$ to $Q_3$ with a line at the median, whiskers to the most extreme values inside the $1.5 \\times \\text{IQR}$ fences, and outliers drawn as separate points."
+ }
+}

@@ -1,0 +1,3899 @@
+{
+ "about": "AP Statistics concept dependency map (docs/apstat-spec.md, docs/apstat-phase0.md): the 55 topics of the revised CED in order, the \"Math you need\" skills with the topic each comes before, and every concept with the topic that teaches it, the concepts it depends on and, for notation, the TeX patterns that use it. Our own words; no CED text. Checked by scripts/check-apstat-map.mjs.",
+ "version": 1,
+ "ced": {
+  "edition": "Revised course, effective fall 2026 (5 units, 55 topics)",
+  "effective": "Exam format of May 2027",
+  "note": "Built from docs/apstat-ced-map.json, itself from docs/apstat-research/framework.md. Objectives beyond Unit 2.1 unverified (docs/apstat-needs-author.md, ced-text)."
+ },
+ "practices": [
+  {
+   "id": 1,
+   "name": "Formulate Questions",
+   "skills": [
+    "1.A"
+   ],
+   "mcqWeight": [
+    5,
+    10
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Collect Data",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D",
+    "2.E"
+   ],
+   "mcqWeight": [
+    20,
+    30
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Analyze Data",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C",
+    "3.D",
+    "3.E"
+   ],
+   "mcqWeight": [
+    25,
+    35
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Interpret Results",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "4.D",
+    "4.E",
+    "4.F",
+    "4.G"
+   ],
+   "mcqWeight": [
+    25,
+    35
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "course",
+   "title": "Units"
+  },
+  {
+   "id": "skills",
+   "title": "Skills"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "unit-1",
+   "n": 1,
+   "part": "course",
+   "title": "Exploring One-Variable Data and Collecting Data",
+   "weight": [
+    20,
+    30
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "data-explorer",
+      "title": "Data explorer: one data set as dotplot, histogram and boxplot; drag a point and watch mean vs median",
+      "topic": "summary-statistics"
+     },
+     {
+      "id": "sampling-lab",
+      "title": "Sampling lab: SRS, stratified, cluster and systematic samples from an illustrated population; bias made visible",
+      "topic": "random-sampling"
+     },
+     {
+      "id": "design-randomizer",
+      "title": "Design randomizer: assign treatments, blocks and matched pairs with a seeded generator",
+      "topic": "experimental-design"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Compare two distributions from boxplots and summary statistics, in context",
+      "topic": "comparing-distributions",
+      "type": "analyze"
+     },
+     {
+      "title": "A survey: choose between sampling methods, name the bias, write an investigative question",
+      "topic": "sampling-problems",
+      "type": "collect"
+     },
+     {
+      "title": "Design an experiment with blocking and explain what random assignment allows",
+      "topic": "experimental-design",
+      "type": "collect"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A histogram and a boxplot of commute times",
+      "topic": "describing-distributions",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Summary statistics for two groups",
+      "topic": "comparing-distributions",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Resistant and nonresistant summaries",
+      "topic": "summary-statistics"
+     },
+     {
+      "title": "SRS, stratified, cluster and systematic samples",
+      "topic": "random-sampling"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From an investigative question to a data collection plan",
+      "topic": "investigative-questions"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-2",
+   "n": 2,
+   "part": "course",
+   "title": "Probability, Random Variables, and Probability Distributions",
+   "weight": [
+    15,
+    25
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "probability-trees",
+      "title": "Probability trees: tree, two-way table and Venn diagram of the same events, linked",
+      "topic": "conditional-probability"
+     },
+     {
+      "id": "distribution-areas",
+      "title": "Distribution areas: shade a region under a normal curve or binomial histogram and read the probability",
+      "topic": "normal-distribution"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A binomial random variable defined in context: parameters, a probability and what it says about a claim",
+      "topic": "binomial-distribution",
+      "type": "multi"
+     },
+     {
+      "title": "Conditional probability from a two-way table",
+      "topic": "conditional-probability",
+      "type": "analyze"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A two-way table of survey responses (the probability set)",
+      "topic": "two-categorical-summaries",
+      "stimulus": "table"
+     },
+     {
+      "title": "A probability distribution of a discrete random variable",
+      "topic": "random-variable-parameters",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Mutually exclusive versus independent",
+      "topic": "independence-unions"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Name the distribution, the parameters, the boundary and the direction",
+      "topic": "normal-distribution"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-3",
+   "n": 3,
+   "part": "course",
+   "title": "Inference for Categorical Data: Proportions",
+   "weight": [
+    15,
+    25
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "sampling-distributions",
+      "title": "Sampling distributions (flagship): watch the distribution of a sample proportion or mean build sample by sample",
+      "topic": "sampling-dist-proportion"
+     },
+     {
+      "id": "ci-capture",
+      "title": "Interval capture: 100 intervals from one population, coloured by whether they capture the parameter",
+      "topic": "ci-one-proportion-claims"
+     },
+     {
+      "id": "p-value-explorer",
+      "title": "p-value explorer: the null distribution, the shaded p-value, Type I and II errors and power",
+      "topic": "p-values"
+     },
+     {
+      "id": "chi-square-lab",
+      "title": "Chi-square lab: expected counts cell by cell, components as a heat map, the statistic on its distribution",
+      "topic": "chi-square-test"
+     },
+     {
+      "id": "justification-trainer",
+      "title": "Say it in context: conclusions, intervals, p-values and errors built slot by slot",
+      "topic": "test-one-proportion"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A one-proportion z test, start to finish",
+      "topic": "test-one-proportion",
+      "type": "inference"
+     },
+     {
+      "title": "A two-proportion interval and the claim it supports",
+      "topic": "ci-two-proportions-claims",
+      "type": "inference"
+     },
+     {
+      "title": "Type I and Type II errors and their consequences in context",
+      "topic": "errors-and-power",
+      "type": "multi"
+     },
+     {
+      "title": "A chi-square test for independence",
+      "topic": "chi-square-test",
+      "type": "inference"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Computer output for a test of one proportion",
+      "topic": "test-one-proportion",
+      "stimulus": "table"
+     },
+     {
+      "title": "Observed and expected counts in a two-way table",
+      "topic": "chi-square-setup",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Type I versus Type II error",
+      "topic": "errors-and-power"
+     },
+     {
+      "title": "Homogeneity versus independence",
+      "topic": "chi-square-setup"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "State, plan, do, conclude for a test of a proportion",
+      "topic": "test-one-proportion"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-4",
+   "n": 4,
+   "part": "course",
+   "title": "Inference for Quantitative Data: Means",
+   "weight": [
+    10,
+    20
+   ],
+   "tools": {
+    "simulators": [],
+    "frqThemes": [
+     {
+      "title": "A paired t interval for a mean difference",
+      "topic": "ci-one-mean",
+      "type": "inference"
+     },
+     {
+      "title": "A two-sample t test from summary statistics",
+      "topic": "test-two-means",
+      "type": "inference"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Dotplots of two independent samples",
+      "topic": "test-two-means-setup",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Before and after measurements on the same subjects",
+      "topic": "test-one-mean-setup",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "z procedures versus t procedures",
+      "topic": "ci-one-mean"
+     },
+     {
+      "title": "Paired versus two-sample",
+      "topic": "test-two-means-setup"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Choosing the inference procedure",
+      "topic": "test-two-means"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-5",
+   "n": 5,
+   "part": "course",
+   "title": "Regression Analysis",
+   "weight": [
+    10,
+    20
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "regression-lab",
+      "title": "Regression lab: drag points; the least-squares line, r, r squared and the residual plot update live",
+      "topic": "least-squares-regression"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Interpret slope, r squared and a residual from computer output",
+      "topic": "least-squares-regression",
+      "type": "analyze"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A scatterplot with its least-squares line (the regression set)",
+      "topic": "linear-models",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Regression computer output",
+      "topic": "least-squares-regression",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Outliers, high-leverage points and influential points",
+      "topic": "least-squares-regression"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Describe, fit, check the residuals, interpret",
+      "topic": "residuals"
+     }
+    ]
+   }
+  },
+  {
+   "id": "skills-math",
+   "part": "skills",
+   "title": "Math you need"
+  }
+ ],
+ "topics": [
+  {
+   "id": "intro-statistics",
+   "ced": "1.1",
+   "title": "Introducing Statistics: What Can We Learn from Data?",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "introducing statistics: what can we learn from data? ap statistics explained"
+  },
+  {
+   "id": "variables",
+   "ced": "1.2",
+   "title": "Variables",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "2.A"
+   ],
+   "practices": [
+    2
+   ],
+   "searchPhrase": "variables ap statistics explained"
+  },
+  {
+   "id": "one-categorical-tables",
+   "ced": "1.3",
+   "title": "Tabular Representation and Summary Statistics for One Categorical Variable",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "4.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "tabular representation and summary statistics for one categorical variable ap statistics explained"
+  },
+  {
+   "id": "one-categorical-displays",
+   "ced": "1.4",
+   "title": "Graphical Representations for One Categorical Variable",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "4.A",
+    "4.B"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "graphical representations for one categorical variable ap statistics explained"
+  },
+  {
+   "id": "one-quantitative-displays",
+   "ced": "1.5",
+   "title": "Graphical Representations for One Quantitative Variable",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "3.A"
+   ],
+   "practices": [
+    3
+   ],
+   "searchPhrase": "graphical representations for one quantitative variable ap statistics explained"
+  },
+  {
+   "id": "describing-distributions",
+   "ced": "1.6",
+   "title": "Descriptions for One Quantitative Variable Distributions",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B"
+   ],
+   "practices": [
+    4
+   ],
+   "searchPhrase": "descriptions for one quantitative variable distributions ap statistics explained"
+  },
+  {
+   "id": "summary-statistics",
+   "ced": "1.7",
+   "title": "Summary Statistics for One Quantitative Variable",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "3.B",
+    "4.A",
+    "4.B"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "summary statistics for one quantitative variable ap statistics explained"
+  },
+  {
+   "id": "boxplots",
+   "ced": "1.8",
+   "title": "Graphical Representations of Summary Statistics for One Quantitative Variable",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "4.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "graphical representations of summary statistics for one quantitative variable ap statistics explained"
+  },
+  {
+   "id": "comparing-distributions",
+   "ced": "1.9",
+   "title": "Comparisons of the Distributions for One Quantitative Variable",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "3.B",
+    "4.A",
+    "4.B",
+    "4.C"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "comparisons of the distributions for one quantitative variable ap statistics explained"
+  },
+  {
+   "id": "investigative-questions",
+   "ced": "1.10",
+   "title": "The Investigative Question Revisited and Data Collection",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "the investigative question revisited and data collection ap statistics explained"
+  },
+  {
+   "id": "random-sampling",
+   "ced": "1.11",
+   "title": "Random Sampling",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "searchPhrase": "random sampling ap statistics explained"
+  },
+  {
+   "id": "sampling-problems",
+   "ced": "1.12",
+   "title": "Potential Problems with Sampling",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "2.A"
+   ],
+   "practices": [
+    2
+   ],
+   "searchPhrase": "potential problems with sampling ap statistics explained"
+  },
+  {
+   "id": "experimental-design",
+   "ced": "1.13",
+   "title": "Experimental Design",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "searchPhrase": "experimental design ap statistics explained"
+  },
+  {
+   "id": "two-categorical-displays",
+   "ced": "2.1",
+   "title": "Tabular and Graphical Representations for the Distributions of Two Categorical Variables",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B"
+   ],
+   "practices": [
+    4
+   ],
+   "searchPhrase": "tabular and graphical representations for the distributions of two categorical variables ap statistics explained"
+  },
+  {
+   "id": "two-categorical-summaries",
+   "ced": "2.2",
+   "title": "Summary Statistics for Two Categorical Variables",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.B",
+    "4.A",
+    "4.B"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "summary statistics for two categorical variables ap statistics explained"
+  },
+  {
+   "id": "simulation",
+   "ced": "2.3",
+   "title": "Estimating Probabilities Using Simulation",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "searchPhrase": "estimating probabilities using simulation ap statistics explained"
+  },
+  {
+   "id": "probability-intro",
+   "ced": "2.4",
+   "title": "Introduction to Probability",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "searchPhrase": "introduction to probability ap statistics explained"
+  },
+  {
+   "id": "mutually-exclusive",
+   "ced": "2.5",
+   "title": "Mutually Exclusive Events",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "4.B"
+   ],
+   "practices": [
+    4
+   ],
+   "searchPhrase": "mutually exclusive events ap statistics explained"
+  },
+  {
+   "id": "conditional-probability",
+   "ced": "2.6",
+   "title": "Conditional Probability",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "searchPhrase": "conditional probability ap statistics explained"
+  },
+  {
+   "id": "independence-unions",
+   "ced": "2.7",
+   "title": "Independent Events and Unions of Events",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "searchPhrase": "independent events and unions of events ap statistics explained"
+  },
+  {
+   "id": "random-variables",
+   "ced": "2.8",
+   "title": "Introduction to Random Variables and Probability Distributions",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.A"
+   ],
+   "practices": [
+    3
+   ],
+   "searchPhrase": "introduction to random variables and probability distributions ap statistics explained"
+  },
+  {
+   "id": "random-variable-parameters",
+   "ced": "2.9",
+   "title": "Parameters of Random Variables",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.B",
+    "4.D"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "parameters of random variables ap statistics explained"
+  },
+  {
+   "id": "binomial-distribution",
+   "ced": "2.10",
+   "title": "The Binomial Distribution",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.C",
+    "3.D",
+    "4.B",
+    "4.D"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "the binomial distribution ap statistics explained"
+  },
+  {
+   "id": "normal-distribution",
+   "ced": "2.11",
+   "title": "The Normal Distribution",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.C",
+    "3.D",
+    "4.C"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "the normal distribution ap statistics explained"
+  },
+  {
+   "id": "sampling-distributions",
+   "ced": "2.12",
+   "title": "Sampling Distributions and the Central Limit Theorem",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "4.C"
+   ],
+   "practices": [
+    4
+   ],
+   "searchPhrase": "sampling distributions and the central limit theorem ap statistics explained"
+  },
+  {
+   "id": "estimators",
+   "ced": "3.1",
+   "title": "Estimators",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.D",
+    "4.D"
+   ],
+   "practices": [
+    2,
+    4
+   ],
+   "searchPhrase": "estimators ap statistics explained"
+  },
+  {
+   "id": "sampling-dist-proportion",
+   "ced": "3.2",
+   "title": "Sampling Distributions for Sample Proportions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "3.D",
+    "4.E"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "sampling distributions for sample proportions ap statistics explained"
+  },
+  {
+   "id": "ci-one-proportion",
+   "ced": "3.3",
+   "title": "Constructing a Confidence Interval for a Population Proportion",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "3.E",
+    "4.E"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "searchPhrase": "constructing a confidence interval for a population proportion ap statistics explained"
+  },
+  {
+   "id": "ci-one-proportion-claims",
+   "ced": "3.4",
+   "title": "Justifying a Claim Based on a Confidence Interval for a Population Proportion",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "4.F",
+    "4.G"
+   ],
+   "practices": [
+    4
+   ],
+   "searchPhrase": "justifying a claim based on a confidence interval for a population proportion ap statistics explained"
+  },
+  {
+   "id": "test-one-proportion-setup",
+   "ced": "3.5",
+   "title": "Setting Up a Test for a Population Proportion",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "2.E",
+    "4.E"
+   ],
+   "practices": [
+    2,
+    4
+   ],
+   "searchPhrase": "setting up a test for a population proportion ap statistics explained"
+  },
+  {
+   "id": "p-values",
+   "ced": "3.6",
+   "title": "p-Values",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "4.F"
+   ],
+   "practices": [
+    4
+   ],
+   "searchPhrase": "p-values ap statistics explained"
+  },
+  {
+   "id": "test-one-proportion",
+   "ced": "3.7",
+   "title": "Carrying Out a Test for a Population Proportion",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "3.E",
+    "4.G"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "carrying out a test for a population proportion ap statistics explained"
+  },
+  {
+   "id": "errors-and-power",
+   "ced": "3.8",
+   "title": "Potential Errors When Performing Tests",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.D",
+    "4.F"
+   ],
+   "practices": [
+    2,
+    4
+   ],
+   "searchPhrase": "potential errors when performing tests ap statistics explained"
+  },
+  {
+   "id": "sampling-dist-two-proportions",
+   "ced": "3.9",
+   "title": "Sampling Distributions for the Difference Between Sample Proportions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "3.D",
+    "4.E"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "sampling distributions for the difference between sample proportions ap statistics explained"
+  },
+  {
+   "id": "ci-two-proportions",
+   "ced": "3.10",
+   "title": "Constructing a Confidence Interval for the Difference Between Two Population Proportions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "3.E",
+    "4.E"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "searchPhrase": "constructing a confidence interval for the difference between two population proportions ap statistics explained"
+  },
+  {
+   "id": "ci-two-proportions-claims",
+   "ced": "3.11",
+   "title": "Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "4.F",
+    "4.G"
+   ],
+   "practices": [
+    4
+   ],
+   "searchPhrase": "justifying a claim based on a confidence interval for the difference between two population proportions ap statistics explained"
+  },
+  {
+   "id": "test-two-proportions-setup",
+   "ced": "3.12",
+   "title": "Setting Up a Test for the Difference Between Two Population Proportions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "2.E",
+    "4.E"
+   ],
+   "practices": [
+    2,
+    4
+   ],
+   "searchPhrase": "setting up a test for the difference between two population proportions ap statistics explained"
+  },
+  {
+   "id": "test-two-proportions",
+   "ced": "3.13",
+   "title": "Carrying Out a Test for the Difference Between Two Population Proportions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "3.E",
+    "4.G"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "carrying out a test for the difference between two population proportions ap statistics explained"
+  },
+  {
+   "id": "chi-square-setup",
+   "ced": "3.14",
+   "title": "Setting Up a Chi-Square Test for Homogeneity or Independence",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "2.E",
+    "3.C",
+    "4.E"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "searchPhrase": "setting up a chi-square test for homogeneity or independence ap statistics explained"
+  },
+  {
+   "id": "chi-square-test",
+   "ced": "3.15",
+   "title": "Carrying Out a Chi-Square Test for Homogeneity or Independence",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "3.E",
+    "4.G"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "carrying out a chi-square test for homogeneity or independence ap statistics explained"
+  },
+  {
+   "id": "sampling-dist-mean",
+   "ced": "4.1",
+   "title": "Sampling Distributions for Sample Means",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "3.D",
+    "4.E"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "sampling distributions for sample means ap statistics explained"
+  },
+  {
+   "id": "ci-one-mean",
+   "ced": "4.2",
+   "title": "Constructing a Confidence Interval for a Population Mean or Population Mean Difference",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "3.E",
+    "4.E"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "searchPhrase": "constructing a confidence interval for a population mean or population mean difference ap statistics explained"
+  },
+  {
+   "id": "ci-one-mean-claims",
+   "ced": "4.3",
+   "title": "Justifying a Claim Based on a Confidence Interval for a Population Mean or Population Mean Difference",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "4.F",
+    "4.G"
+   ],
+   "practices": [
+    4
+   ],
+   "searchPhrase": "justifying a claim based on a confidence interval for a population mean or population mean difference ap statistics explained"
+  },
+  {
+   "id": "test-one-mean-setup",
+   "ced": "4.4",
+   "title": "Setting Up a Test for a Population Mean or Population Mean Difference",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "2.E",
+    "4.E"
+   ],
+   "practices": [
+    2,
+    4
+   ],
+   "searchPhrase": "setting up a test for a population mean or population mean difference ap statistics explained"
+  },
+  {
+   "id": "test-one-mean",
+   "ced": "4.5",
+   "title": "Carrying Out a Test for a Population Mean or Population Mean Difference",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "3.E",
+    "4.G"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "carrying out a test for a population mean or population mean difference ap statistics explained"
+  },
+  {
+   "id": "sampling-dist-two-means",
+   "ced": "4.6",
+   "title": "Sampling Distributions for the Difference Between Two Sample Means",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "3.D",
+    "4.E"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "sampling distributions for the difference between two sample means ap statistics explained"
+  },
+  {
+   "id": "ci-two-means",
+   "ced": "4.7",
+   "title": "Constructing a Confidence Interval for the Difference Between Two Population Means",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "3.E",
+    "4.E"
+   ],
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "searchPhrase": "constructing a confidence interval for the difference between two population means ap statistics explained"
+  },
+  {
+   "id": "ci-two-means-claims",
+   "ced": "4.8",
+   "title": "Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Means",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "4.F",
+    "4.G"
+   ],
+   "practices": [
+    4
+   ],
+   "searchPhrase": "justifying a claim based on a confidence interval for the difference between two population means ap statistics explained"
+  },
+  {
+   "id": "test-two-means-setup",
+   "ced": "4.9",
+   "title": "Setting Up a Test for the Difference Between Two Population Means",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "2.E",
+    "4.E"
+   ],
+   "practices": [
+    2,
+    4
+   ],
+   "searchPhrase": "setting up a test for the difference between two population means ap statistics explained"
+  },
+  {
+   "id": "test-two-means",
+   "ced": "4.10",
+   "title": "Carrying Out a Test for the Difference Between Two Population Means",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "3.E",
+    "4.G"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "carrying out a test for the difference between two population means ap statistics explained"
+  },
+  {
+   "id": "scatterplots",
+   "ced": "5.1",
+   "title": "Graphical Representations Between Two Quantitative Variables",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "4.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "graphical representations between two quantitative variables ap statistics explained"
+  },
+  {
+   "id": "correlation",
+   "ced": "5.2",
+   "title": "Correlation",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "3.B",
+    "4.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "correlation ap statistics explained"
+  },
+  {
+   "id": "linear-models",
+   "ced": "5.3",
+   "title": "Linear Regression Models",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "3.B",
+    "4.B"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "linear regression models ap statistics explained"
+  },
+  {
+   "id": "residuals",
+   "ced": "5.4",
+   "title": "Residuals",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "3.B",
+    "4.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "residuals ap statistics explained"
+  },
+  {
+   "id": "least-squares-regression",
+   "ced": "5.5",
+   "title": "Least-Squares Regression",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "3.B",
+    "4.B",
+    "4.D"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "least-squares regression ap statistics explained"
+  },
+  {
+   "id": "math-fractions-percents",
+   "ced": null,
+   "title": "Fractions, Decimals and Percents",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    3
+   ],
+   "before": "one-categorical-tables",
+   "searchPhrase": "fractions, decimals and percents for statistics"
+  },
+  {
+   "id": "math-formulas",
+   "ced": null,
+   "title": "Formulas, Order of Operations and Square Roots",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    3
+   ],
+   "before": "summary-statistics",
+   "searchPhrase": "formulas, order of operations and square roots for statistics"
+  },
+  {
+   "id": "math-inequality-words",
+   "ced": null,
+   "title": "Inequalities in Words",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    3
+   ],
+   "before": "probability-intro",
+   "searchPhrase": "inequalities in words for statistics"
+  },
+  {
+   "id": "math-counting",
+   "ced": null,
+   "title": "Factorials and Combinations",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    3
+   ],
+   "before": "binomial-distribution",
+   "searchPhrase": "factorials and combinations for statistics"
+  },
+  {
+   "id": "math-lines",
+   "ced": null,
+   "title": "Lines: Slope and Intercept",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    3
+   ],
+   "before": "scatterplots",
+   "searchPhrase": "lines: slope and intercept for statistics"
+  }
+ ],
+ "everydayWords": {
+  "about": "Common words a student already roughly knows. They may be used in their everyday sense before the topic that teaches them; the technical terms of the same concept stay strict (\"simple random sample\", \"independent events\", \"statistical power\" is not used).",
+  "words": [
+   "average",
+   "random",
+   "randomly",
+   "at random",
+   "chance",
+   "likely",
+   "unlikely",
+   "outcome",
+   "outcomes",
+   "trial",
+   "trials",
+   "percent",
+   "percents",
+   "percentage",
+   "percentages",
+   "range",
+   "center",
+   "variation",
+   "independent",
+   "simulate",
+   "case",
+   "cases",
+   "form",
+   "direction",
+   "strength",
+   "level",
+   "levels",
+   "factor",
+   "factors",
+   "block",
+   "blocks",
+   "subject",
+   "subjects",
+   "survey",
+   "surveys",
+   "frequency",
+   "frequencies",
+   "plausible",
+   "confident",
+   "bins",
+   "blind",
+   "mode",
+   "modes",
+   "uniform",
+   "discrete",
+   "slope",
+   "slopes",
+   "intercept",
+   "power",
+   "association",
+   "associated",
+   "hypothesis",
+   "estimate",
+   "experiment",
+   "experiments",
+   "sample",
+   "samples",
+   "population",
+   "populations",
+   "event",
+   "events",
+   "skew",
+   "gap",
+   "gaps",
+   "cluster",
+   "clusters",
+   "df"
+  ]
+ },
+ "concepts": [
+  {
+   "id": "proportion-math",
+   "term": "percent",
+   "aliases": [
+    "percents",
+    "percentage",
+    "percentages"
+   ],
+   "taughtIn": "math-fractions-percents",
+   "dependsOn": []
+  },
+  {
+   "id": "fraction-of-whole",
+   "term": "part of a whole",
+   "aliases": [
+    "parts of a whole"
+   ],
+   "taughtIn": "math-fractions-percents",
+   "dependsOn": []
+  },
+  {
+   "id": "order-of-operations",
+   "term": "order of operations",
+   "aliases": [],
+   "taughtIn": "math-formulas",
+   "dependsOn": []
+  },
+  {
+   "id": "square-root",
+   "term": "square root",
+   "aliases": [
+    "square roots"
+   ],
+   "taughtIn": "math-formulas",
+   "dependsOn": [],
+   "notation": [
+    "\\\\sqrt"
+   ]
+  },
+  {
+   "id": "summation",
+   "term": "summation",
+   "aliases": [
+    "sigma notation",
+    "summation notation"
+   ],
+   "taughtIn": "math-formulas",
+   "dependsOn": [
+    "order-of-operations"
+   ],
+   "notation": [
+    "\\\\sum"
+   ]
+  },
+  {
+   "id": "inequality-words",
+   "term": "at least",
+   "aliases": [
+    "at most",
+    "fewer than",
+    "no more than",
+    "no fewer than"
+   ],
+   "taughtIn": "math-inequality-words",
+   "dependsOn": []
+  },
+  {
+   "id": "factorial",
+   "term": "factorial",
+   "aliases": [
+    "factorials"
+   ],
+   "taughtIn": "math-counting",
+   "dependsOn": [],
+   "notation": [
+    "[0-9a-z]\\s*!"
+   ]
+  },
+  {
+   "id": "combination",
+   "term": "combination",
+   "aliases": [
+    "combinations",
+    "n choose k"
+   ],
+   "taughtIn": "math-counting",
+   "dependsOn": [
+    "factorial"
+   ],
+   "notation": [
+    "\\\\binom",
+    "\\{\\}_\\{?[0-9a-z]+\\}?C"
+   ]
+  },
+  {
+   "id": "slope-line",
+   "term": "slope",
+   "aliases": [
+    "slopes"
+   ],
+   "taughtIn": "math-lines",
+   "dependsOn": []
+  },
+  {
+   "id": "intercept",
+   "term": "y-intercept",
+   "aliases": [
+    "intercept",
+    "intercepts"
+   ],
+   "taughtIn": "math-lines",
+   "dependsOn": [
+    "slope-line"
+   ]
+  },
+  {
+   "id": "statistics",
+   "term": "statistics (field)",
+   "aliases": [
+    "study of data"
+   ],
+   "taughtIn": "intro-statistics",
+   "dependsOn": []
+  },
+  {
+   "id": "data",
+   "term": "data",
+   "aliases": [
+    "data set",
+    "data sets",
+    "dataset"
+   ],
+   "taughtIn": "intro-statistics",
+   "dependsOn": [
+    "statistics"
+   ]
+  },
+  {
+   "id": "population",
+   "term": "population",
+   "aliases": [
+    "populations"
+   ],
+   "taughtIn": "intro-statistics",
+   "dependsOn": [
+    "data"
+   ]
+  },
+  {
+   "id": "sample",
+   "term": "sample",
+   "aliases": [
+    "samples"
+   ],
+   "taughtIn": "intro-statistics",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "context",
+   "term": "in context",
+   "aliases": [],
+   "taughtIn": "intro-statistics",
+   "dependsOn": [
+    "data"
+   ]
+  },
+  {
+   "id": "observational-unit",
+   "term": "observational unit",
+   "aliases": [
+    "observational units",
+    "case",
+    "cases"
+   ],
+   "taughtIn": "variables",
+   "dependsOn": [
+    "data"
+   ]
+  },
+  {
+   "id": "variable",
+   "term": "variable",
+   "aliases": [
+    "variables"
+   ],
+   "taughtIn": "variables",
+   "dependsOn": [
+    "observational-unit"
+   ]
+  },
+  {
+   "id": "categorical-variable",
+   "term": "categorical variable",
+   "aliases": [
+    "categorical variables",
+    "categorical data"
+   ],
+   "taughtIn": "variables",
+   "dependsOn": [
+    "variable"
+   ]
+  },
+  {
+   "id": "quantitative-variable",
+   "term": "quantitative variable",
+   "aliases": [
+    "quantitative variables",
+    "quantitative data"
+   ],
+   "taughtIn": "variables",
+   "dependsOn": [
+    "variable"
+   ]
+  },
+  {
+   "id": "discrete-variable",
+   "term": "discrete variable",
+   "aliases": [
+    "discrete variables",
+    "discrete"
+   ],
+   "taughtIn": "variables",
+   "dependsOn": [
+    "quantitative-variable"
+   ]
+  },
+  {
+   "id": "continuous-variable",
+   "term": "continuous variable",
+   "aliases": [
+    "continuous variables"
+   ],
+   "taughtIn": "variables",
+   "dependsOn": [
+    "quantitative-variable"
+   ]
+  },
+  {
+   "id": "parameter",
+   "term": "parameter",
+   "aliases": [
+    "parameters"
+   ],
+   "taughtIn": "variables",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "statistic",
+   "term": "statistic (number)",
+   "aliases": [
+    "sample statistic",
+    "sample statistics"
+   ],
+   "taughtIn": "variables",
+   "dependsOn": [
+    "sample"
+   ]
+  },
+  {
+   "id": "distribution",
+   "term": "distribution",
+   "aliases": [
+    "distributions",
+    "distribution of a variable"
+   ],
+   "taughtIn": "variables",
+   "dependsOn": [
+    "variable"
+   ]
+  },
+  {
+   "id": "frequency-table",
+   "term": "frequency table",
+   "aliases": [
+    "frequency tables",
+    "frequency",
+    "frequencies"
+   ],
+   "taughtIn": "one-categorical-tables",
+   "dependsOn": [
+    "categorical-variable"
+   ]
+  },
+  {
+   "id": "relative-frequency",
+   "term": "relative frequency",
+   "aliases": [
+    "relative frequencies",
+    "relative frequency table"
+   ],
+   "taughtIn": "one-categorical-tables",
+   "dependsOn": [
+    "frequency-table",
+    "proportion-math"
+   ]
+  },
+  {
+   "id": "sample-proportion",
+   "term": "sample proportion",
+   "aliases": [
+    "sample proportions",
+    "p-hat"
+   ],
+   "taughtIn": "one-categorical-tables",
+   "dependsOn": [
+    "relative-frequency",
+    "statistic"
+   ],
+   "notation": [
+    "\\\\hat\\{?p"
+   ]
+  },
+  {
+   "id": "population-proportion",
+   "term": "population proportion",
+   "aliases": [
+    "population proportions",
+    "true proportion"
+   ],
+   "taughtIn": "one-categorical-tables",
+   "dependsOn": [
+    "parameter",
+    "relative-frequency"
+   ]
+  },
+  {
+   "id": "bar-chart",
+   "term": "bar chart",
+   "aliases": [
+    "bar charts",
+    "bar graph",
+    "bar graphs"
+   ],
+   "taughtIn": "one-categorical-displays",
+   "dependsOn": [
+    "frequency-table"
+   ]
+  },
+  {
+   "id": "pie-chart",
+   "term": "pie chart",
+   "aliases": [
+    "pie charts"
+   ],
+   "taughtIn": "one-categorical-displays",
+   "dependsOn": [
+    "relative-frequency"
+   ]
+  },
+  {
+   "id": "dotplot",
+   "term": "dotplot",
+   "aliases": [
+    "dotplots",
+    "dot plot",
+    "dot plots"
+   ],
+   "taughtIn": "one-quantitative-displays",
+   "dependsOn": [
+    "quantitative-variable",
+    "distribution"
+   ]
+  },
+  {
+   "id": "stemplot",
+   "term": "stemplot",
+   "aliases": [
+    "stemplots",
+    "stem-and-leaf plot",
+    "stem-and-leaf plots"
+   ],
+   "taughtIn": "one-quantitative-displays",
+   "dependsOn": [
+    "quantitative-variable"
+   ]
+  },
+  {
+   "id": "histogram",
+   "term": "histogram",
+   "aliases": [
+    "histograms",
+    "bin width",
+    "bins"
+   ],
+   "taughtIn": "one-quantitative-displays",
+   "dependsOn": [
+    "quantitative-variable",
+    "frequency-table"
+   ]
+  },
+  {
+   "id": "cumulative-graph",
+   "term": "cumulative relative frequency graph",
+   "aliases": [
+    "cumulative graph",
+    "cumulative graphs",
+    "ogive"
+   ],
+   "taughtIn": "one-quantitative-displays",
+   "dependsOn": [
+    "relative-frequency"
+   ]
+  },
+  {
+   "id": "shape",
+   "term": "shape",
+   "aliases": [
+    "shape of a distribution"
+   ],
+   "taughtIn": "describing-distributions",
+   "dependsOn": [
+    "distribution"
+   ]
+  },
+  {
+   "id": "symmetric",
+   "term": "symmetric",
+   "aliases": [
+    "roughly symmetric",
+    "approximately symmetric"
+   ],
+   "taughtIn": "describing-distributions",
+   "dependsOn": [
+    "shape"
+   ]
+  },
+  {
+   "id": "skewed",
+   "term": "skewed",
+   "aliases": [
+    "skewed right",
+    "skewed left",
+    "right-skewed",
+    "left-skewed",
+    "skewness",
+    "skew"
+   ],
+   "taughtIn": "describing-distributions",
+   "dependsOn": [
+    "shape"
+   ]
+  },
+  {
+   "id": "modality",
+   "term": "unimodal",
+   "aliases": [
+    "bimodal",
+    "multimodal",
+    "mode",
+    "modes"
+   ],
+   "taughtIn": "describing-distributions",
+   "dependsOn": [
+    "shape"
+   ]
+  },
+  {
+   "id": "uniform-shape",
+   "term": "uniform distribution",
+   "aliases": [
+    "uniform"
+   ],
+   "taughtIn": "describing-distributions",
+   "dependsOn": [
+    "shape"
+   ]
+  },
+  {
+   "id": "center",
+   "term": "center",
+   "aliases": [
+    "center of a distribution"
+   ],
+   "taughtIn": "describing-distributions",
+   "dependsOn": [
+    "distribution"
+   ]
+  },
+  {
+   "id": "spread",
+   "term": "variability",
+   "aliases": [
+    "variation"
+   ],
+   "taughtIn": "describing-distributions",
+   "dependsOn": [
+    "distribution"
+   ]
+  },
+  {
+   "id": "outlier",
+   "term": "outlier",
+   "aliases": [
+    "outliers"
+   ],
+   "taughtIn": "describing-distributions",
+   "dependsOn": [
+    "distribution"
+   ]
+  },
+  {
+   "id": "gap-cluster",
+   "term": "gap",
+   "aliases": [
+    "gaps",
+    "cluster",
+    "clusters"
+   ],
+   "taughtIn": "describing-distributions",
+   "dependsOn": [
+    "distribution"
+   ]
+  },
+  {
+   "id": "mean",
+   "term": "mean",
+   "aliases": [
+    "means",
+    "average",
+    "sample mean",
+    "x-bar"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "center",
+    "summation"
+   ],
+   "notation": [
+    "\\\\bar\\{?x"
+   ]
+  },
+  {
+   "id": "population-mean",
+   "term": "population mean",
+   "aliases": [
+    "true mean",
+    "mu"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "mean",
+    "parameter"
+   ]
+  },
+  {
+   "id": "median",
+   "term": "median",
+   "aliases": [
+    "medians"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "center"
+   ]
+  },
+  {
+   "id": "quartile",
+   "term": "quartile",
+   "aliases": [
+    "quartiles",
+    "first quartile",
+    "third quartile",
+    "Q1",
+    "Q3"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "median"
+   ],
+   "notation": [
+    "Q_\\{?[13]"
+   ]
+  },
+  {
+   "id": "percentile",
+   "term": "percentile",
+   "aliases": [
+    "percentiles"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "median"
+   ]
+  },
+  {
+   "id": "range",
+   "term": "range",
+   "aliases": [],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "spread"
+   ]
+  },
+  {
+   "id": "iqr",
+   "term": "interquartile range",
+   "aliases": [
+    "IQR"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "quartile",
+    "range"
+   ],
+   "notation": [
+    "\\\\text\\{IQR\\}"
+   ]
+  },
+  {
+   "id": "standard-deviation",
+   "term": "standard deviation",
+   "aliases": [
+    "standard deviations",
+    "SD",
+    "sample standard deviation"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "mean",
+    "spread",
+    "square-root"
+   ]
+  },
+  {
+   "id": "variance",
+   "term": "variance",
+   "aliases": [
+    "variances",
+    "sample variance"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "standard-deviation"
+   ]
+  },
+  {
+   "id": "population-sd",
+   "term": "population standard deviation",
+   "aliases": [
+    "sigma"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "standard-deviation",
+    "parameter"
+   ]
+  },
+  {
+   "id": "outlier-rule",
+   "term": "1.5 IQR rule",
+   "aliases": [
+    "fences",
+    "fence",
+    "outlier rule"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "iqr",
+    "outlier"
+   ]
+  },
+  {
+   "id": "resistant",
+   "term": "resistant",
+   "aliases": [
+    "resistant measure",
+    "nonresistant",
+    "not resistant"
+   ],
+   "taughtIn": "summary-statistics",
+   "dependsOn": [
+    "median",
+    "mean"
+   ]
+  },
+  {
+   "id": "five-number-summary",
+   "term": "five-number summary",
+   "aliases": [
+    "five number summary"
+   ],
+   "taughtIn": "boxplots",
+   "dependsOn": [
+    "quartile",
+    "median"
+   ]
+  },
+  {
+   "id": "boxplot",
+   "term": "boxplot",
+   "aliases": [
+    "boxplots",
+    "box plot",
+    "box plots",
+    "box-and-whisker plot",
+    "whisker",
+    "whiskers"
+   ],
+   "taughtIn": "boxplots",
+   "dependsOn": [
+    "five-number-summary",
+    "outlier-rule"
+   ]
+  },
+  {
+   "id": "z-score",
+   "term": "z-score",
+   "aliases": [
+    "z-scores",
+    "standardized score",
+    "standardized value"
+   ],
+   "taughtIn": "comparing-distributions",
+   "dependsOn": [
+    "mean",
+    "standard-deviation"
+   ]
+  },
+  {
+   "id": "relative-position",
+   "term": "relative position",
+   "aliases": [],
+   "taughtIn": "comparing-distributions",
+   "dependsOn": [
+    "percentile"
+   ]
+  },
+  {
+   "id": "investigative-question",
+   "term": "investigative question",
+   "aliases": [
+    "investigative questions",
+    "statistical question"
+   ],
+   "taughtIn": "investigative-questions",
+   "dependsOn": [
+    "variable",
+    "parameter",
+    "population"
+   ]
+  },
+  {
+   "id": "census",
+   "term": "census",
+   "aliases": [
+    "censuses"
+   ],
+   "taughtIn": "investigative-questions",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "observational-study",
+   "term": "observational study",
+   "aliases": [
+    "observational studies",
+    "prospective study",
+    "retrospective study"
+   ],
+   "taughtIn": "investigative-questions",
+   "dependsOn": [
+    "sample"
+   ]
+  },
+  {
+   "id": "experiment",
+   "term": "experiment",
+   "aliases": [
+    "experiments"
+   ],
+   "taughtIn": "investigative-questions",
+   "dependsOn": [
+    "observational-unit"
+   ]
+  },
+  {
+   "id": "survey",
+   "term": "sample survey",
+   "aliases": [
+    "sample surveys",
+    "survey",
+    "surveys"
+   ],
+   "taughtIn": "investigative-questions",
+   "dependsOn": [
+    "sample"
+   ]
+  },
+  {
+   "id": "explanatory-response",
+   "term": "explanatory variable",
+   "aliases": [
+    "explanatory variables",
+    "response variable",
+    "response variables"
+   ],
+   "taughtIn": "investigative-questions",
+   "dependsOn": [
+    "variable"
+   ]
+  },
+  {
+   "id": "confounding",
+   "term": "confounding variable",
+   "aliases": [
+    "confounding variables",
+    "confounding",
+    "confounded"
+   ],
+   "taughtIn": "investigative-questions",
+   "dependsOn": [
+    "explanatory-response"
+   ]
+  },
+  {
+   "id": "causation",
+   "term": "cause-and-effect conclusion",
+   "aliases": [
+    "cause-and-effect",
+    "causal conclusion",
+    "causation"
+   ],
+   "taughtIn": "investigative-questions",
+   "dependsOn": [
+    "experiment",
+    "confounding"
+   ]
+  },
+  {
+   "id": "random-selection",
+   "term": "random",
+   "aliases": [
+    "randomly",
+    "at random",
+    "chance process"
+   ],
+   "taughtIn": "random-sampling",
+   "dependsOn": [
+    "sample"
+   ]
+  },
+  {
+   "id": "srs",
+   "term": "simple random sample",
+   "aliases": [
+    "simple random samples",
+    "SRS"
+   ],
+   "taughtIn": "random-sampling",
+   "dependsOn": [
+    "random-selection"
+   ]
+  },
+  {
+   "id": "replacement",
+   "term": "without replacement",
+   "aliases": [
+    "with replacement"
+   ],
+   "taughtIn": "random-sampling",
+   "dependsOn": [
+    "random-selection"
+   ]
+  },
+  {
+   "id": "stratified",
+   "term": "stratified random sample",
+   "aliases": [
+    "stratified random samples",
+    "stratified sample",
+    "strata",
+    "stratum"
+   ],
+   "taughtIn": "random-sampling",
+   "dependsOn": [
+    "srs"
+   ]
+  },
+  {
+   "id": "cluster-sample",
+   "term": "cluster sample",
+   "aliases": [
+    "cluster samples",
+    "cluster sampling"
+   ],
+   "taughtIn": "random-sampling",
+   "dependsOn": [
+    "srs"
+   ]
+  },
+  {
+   "id": "systematic",
+   "term": "systematic random sample",
+   "aliases": [
+    "systematic random samples",
+    "systematic sample",
+    "systematic sampling"
+   ],
+   "taughtIn": "random-sampling",
+   "dependsOn": [
+    "srs"
+   ]
+  },
+  {
+   "id": "sampling-frame",
+   "term": "sampling frame",
+   "aliases": [
+    "sampling frames"
+   ],
+   "taughtIn": "random-sampling",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "bias",
+   "term": "bias",
+   "aliases": [
+    "biased",
+    "unbiased"
+   ],
+   "taughtIn": "sampling-problems",
+   "dependsOn": [
+    "sample",
+    "population"
+   ]
+  },
+  {
+   "id": "voluntary-response",
+   "term": "voluntary response sample",
+   "aliases": [
+    "voluntary response",
+    "voluntary response bias",
+    "self-selected"
+   ],
+   "taughtIn": "sampling-problems",
+   "dependsOn": [
+    "bias"
+   ]
+  },
+  {
+   "id": "convenience",
+   "term": "convenience sample",
+   "aliases": [
+    "convenience samples",
+    "convenience sampling"
+   ],
+   "taughtIn": "sampling-problems",
+   "dependsOn": [
+    "bias"
+   ]
+  },
+  {
+   "id": "undercoverage",
+   "term": "undercoverage",
+   "aliases": [],
+   "taughtIn": "sampling-problems",
+   "dependsOn": [
+    "bias",
+    "sampling-frame"
+   ]
+  },
+  {
+   "id": "nonresponse",
+   "term": "nonresponse",
+   "aliases": [
+    "nonresponse bias"
+   ],
+   "taughtIn": "sampling-problems",
+   "dependsOn": [
+    "bias"
+   ]
+  },
+  {
+   "id": "response-bias",
+   "term": "response bias",
+   "aliases": [
+    "question wording"
+   ],
+   "taughtIn": "sampling-problems",
+   "dependsOn": [
+    "bias"
+   ]
+  },
+  {
+   "id": "experimental-unit",
+   "term": "experimental unit",
+   "aliases": [
+    "experimental units",
+    "subject",
+    "subjects"
+   ],
+   "taughtIn": "experimental-design",
+   "dependsOn": [
+    "experiment"
+   ]
+  },
+  {
+   "id": "treatment",
+   "term": "treatment",
+   "aliases": [
+    "treatments",
+    "factor",
+    "factors",
+    "level",
+    "levels"
+   ],
+   "taughtIn": "experimental-design",
+   "dependsOn": [
+    "experiment",
+    "explanatory-response"
+   ]
+  },
+  {
+   "id": "control-group",
+   "term": "control group",
+   "aliases": [
+    "control groups",
+    "placebo",
+    "placebos",
+    "placebo effect"
+   ],
+   "taughtIn": "experimental-design",
+   "dependsOn": [
+    "treatment"
+   ]
+  },
+  {
+   "id": "random-assignment",
+   "term": "random assignment",
+   "aliases": [
+    "randomly assign",
+    "randomly assigned",
+    "randomization"
+   ],
+   "taughtIn": "experimental-design",
+   "dependsOn": [
+    "treatment",
+    "random-selection"
+   ]
+  },
+  {
+   "id": "replication",
+   "term": "replication",
+   "aliases": [],
+   "taughtIn": "experimental-design",
+   "dependsOn": [
+    "experimental-unit"
+   ]
+  },
+  {
+   "id": "blinding",
+   "term": "blinding",
+   "aliases": [
+    "blind",
+    "single-blind",
+    "double-blind"
+   ],
+   "taughtIn": "experimental-design",
+   "dependsOn": [
+    "treatment"
+   ]
+  },
+  {
+   "id": "completely-randomized",
+   "term": "completely randomized design",
+   "aliases": [
+    "completely randomized designs"
+   ],
+   "taughtIn": "experimental-design",
+   "dependsOn": [
+    "random-assignment"
+   ]
+  },
+  {
+   "id": "block-design",
+   "term": "randomized block design",
+   "aliases": [
+    "randomized block designs",
+    "block",
+    "blocks",
+    "blocking"
+   ],
+   "taughtIn": "experimental-design",
+   "dependsOn": [
+    "random-assignment"
+   ]
+  },
+  {
+   "id": "matched-pairs",
+   "term": "matched pairs design",
+   "aliases": [
+    "matched pairs",
+    "matched-pairs design"
+   ],
+   "taughtIn": "experimental-design",
+   "dependsOn": [
+    "block-design"
+   ]
+  },
+  {
+   "id": "statistically-significant-diff",
+   "term": "statistically significant",
+   "aliases": [
+    "statistical significance"
+   ],
+   "taughtIn": "experimental-design",
+   "dependsOn": [
+    "random-assignment"
+   ]
+  },
+  {
+   "id": "two-way-table",
+   "term": "two-way table",
+   "aliases": [
+    "two-way tables",
+    "contingency table"
+   ],
+   "taughtIn": "two-categorical-displays",
+   "dependsOn": [
+    "frequency-table"
+   ]
+  },
+  {
+   "id": "segmented-bar",
+   "term": "segmented bar chart",
+   "aliases": [
+    "segmented bar charts",
+    "side-by-side bar chart",
+    "side-by-side bar charts",
+    "mosaic plot",
+    "mosaic plots"
+   ],
+   "taughtIn": "two-categorical-displays",
+   "dependsOn": [
+    "bar-chart",
+    "two-way-table"
+   ]
+  },
+  {
+   "id": "association",
+   "term": "association",
+   "aliases": [
+    "associated",
+    "no association"
+   ],
+   "taughtIn": "two-categorical-displays",
+   "dependsOn": [
+    "two-way-table"
+   ]
+  },
+  {
+   "id": "joint-rel-freq",
+   "term": "joint relative frequency",
+   "aliases": [
+    "joint relative frequencies"
+   ],
+   "taughtIn": "two-categorical-summaries",
+   "dependsOn": [
+    "two-way-table",
+    "relative-frequency"
+   ]
+  },
+  {
+   "id": "marginal-rel-freq",
+   "term": "marginal relative frequency",
+   "aliases": [
+    "marginal relative frequencies",
+    "marginal distribution"
+   ],
+   "taughtIn": "two-categorical-summaries",
+   "dependsOn": [
+    "two-way-table",
+    "relative-frequency"
+   ]
+  },
+  {
+   "id": "conditional-rel-freq",
+   "term": "conditional relative frequency",
+   "aliases": [
+    "conditional relative frequencies",
+    "conditional distribution",
+    "conditional distributions"
+   ],
+   "taughtIn": "two-categorical-summaries",
+   "dependsOn": [
+    "two-way-table",
+    "relative-frequency"
+   ]
+  },
+  {
+   "id": "simulation",
+   "term": "simulation",
+   "aliases": [
+    "simulations",
+    "simulate",
+    "simulated"
+   ],
+   "taughtIn": "simulation",
+   "dependsOn": [
+    "random-selection"
+   ]
+  },
+  {
+   "id": "trial",
+   "term": "trial",
+   "aliases": [
+    "trials"
+   ],
+   "taughtIn": "simulation",
+   "dependsOn": [
+    "simulation"
+   ]
+  },
+  {
+   "id": "law-large-numbers",
+   "term": "law of large numbers",
+   "aliases": [],
+   "taughtIn": "simulation",
+   "dependsOn": [
+    "simulation"
+   ]
+  },
+  {
+   "id": "probability",
+   "term": "probability",
+   "aliases": [
+    "probabilities",
+    "chance",
+    "likely",
+    "unlikely"
+   ],
+   "taughtIn": "simulation",
+   "dependsOn": [
+    "random-selection"
+   ]
+  },
+  {
+   "id": "sample-space",
+   "term": "sample space",
+   "aliases": [
+    "outcome",
+    "outcomes",
+    "equally likely"
+   ],
+   "taughtIn": "probability-intro",
+   "dependsOn": [
+    "probability"
+   ]
+  },
+  {
+   "id": "event",
+   "term": "event",
+   "aliases": [
+    "events"
+   ],
+   "taughtIn": "probability-intro",
+   "dependsOn": [
+    "sample-space"
+   ]
+  },
+  {
+   "id": "complement",
+   "term": "complement",
+   "aliases": [
+    "complements",
+    "complement rule"
+   ],
+   "taughtIn": "probability-intro",
+   "dependsOn": [
+    "event"
+   ],
+   "notation": [
+    "\\^\\{?c\\}?\\)",
+    "\\^\\{?C\\}"
+   ]
+  },
+  {
+   "id": "intersection",
+   "term": "joint probability",
+   "aliases": [
+    "intersection",
+    "both A and B"
+   ],
+   "taughtIn": "mutually-exclusive",
+   "dependsOn": [
+    "event"
+   ],
+   "notation": [
+    "\\\\cap"
+   ]
+  },
+  {
+   "id": "mutually-exclusive",
+   "term": "mutually exclusive",
+   "aliases": [
+    "disjoint"
+   ],
+   "taughtIn": "mutually-exclusive",
+   "dependsOn": [
+    "intersection"
+   ]
+  },
+  {
+   "id": "conditional-probability",
+   "term": "conditional probability",
+   "aliases": [
+    "conditional probabilities"
+   ],
+   "taughtIn": "conditional-probability",
+   "dependsOn": [
+    "intersection",
+    "conditional-rel-freq"
+   ],
+   "notation": [
+    "P\\s*\\([^()]*\\\\mid"
+   ]
+  },
+  {
+   "id": "multiplication-rule",
+   "term": "multiplication rule",
+   "aliases": [
+    "general multiplication rule"
+   ],
+   "taughtIn": "conditional-probability",
+   "dependsOn": [
+    "conditional-probability"
+   ]
+  },
+  {
+   "id": "tree-diagram",
+   "term": "tree diagram",
+   "aliases": [
+    "tree diagrams"
+   ],
+   "taughtIn": "conditional-probability",
+   "dependsOn": [
+    "conditional-probability"
+   ]
+  },
+  {
+   "id": "independent-events",
+   "term": "independent events",
+   "aliases": [
+    "independence",
+    "independent",
+    "dependent events"
+   ],
+   "taughtIn": "independence-unions",
+   "dependsOn": [
+    "conditional-probability"
+   ]
+  },
+  {
+   "id": "union",
+   "term": "union",
+   "aliases": [
+    "unions",
+    "addition rule",
+    "general addition rule"
+   ],
+   "taughtIn": "independence-unions",
+   "dependsOn": [
+    "intersection"
+   ],
+   "notation": [
+    "\\\\cup"
+   ]
+  },
+  {
+   "id": "venn",
+   "term": "Venn diagram",
+   "aliases": [
+    "Venn diagrams"
+   ],
+   "taughtIn": "independence-unions",
+   "dependsOn": [
+    "union"
+   ]
+  },
+  {
+   "id": "random-variable",
+   "term": "random variable",
+   "aliases": [
+    "random variables"
+   ],
+   "taughtIn": "random-variables",
+   "dependsOn": [
+    "probability",
+    "quantitative-variable"
+   ]
+  },
+  {
+   "id": "probability-distribution",
+   "term": "probability distribution",
+   "aliases": [
+    "probability distributions"
+   ],
+   "taughtIn": "random-variables",
+   "dependsOn": [
+    "random-variable"
+   ]
+  },
+  {
+   "id": "cumulative-probability",
+   "term": "cumulative probability",
+   "aliases": [
+    "cumulative probabilities"
+   ],
+   "taughtIn": "random-variables",
+   "dependsOn": [
+    "probability-distribution"
+   ]
+  },
+  {
+   "id": "expected-value",
+   "term": "expected value",
+   "aliases": [
+    "expected values",
+    "mean of a random variable"
+   ],
+   "taughtIn": "random-variable-parameters",
+   "dependsOn": [
+    "probability-distribution",
+    "mean"
+   ],
+   "notation": [
+    "E\\s*\\(\\s*X",
+    "\\\\mu_\\{?X"
+   ]
+  },
+  {
+   "id": "rv-sd",
+   "term": "standard deviation of a random variable",
+   "aliases": [],
+   "taughtIn": "random-variable-parameters",
+   "dependsOn": [
+    "expected-value",
+    "standard-deviation"
+   ],
+   "notation": [
+    "\\\\sigma_\\{?X"
+   ]
+  },
+  {
+   "id": "binomial-setting",
+   "term": "binomial setting",
+   "aliases": [
+    "binomial settings"
+   ],
+   "taughtIn": "binomial-distribution",
+   "dependsOn": [
+    "trial",
+    "independent-events"
+   ]
+  },
+  {
+   "id": "binomial",
+   "term": "binomial distribution",
+   "aliases": [
+    "binomial distributions",
+    "binomial random variable",
+    "binomial probability",
+    "binomial probabilities",
+    "binomial"
+   ],
+   "taughtIn": "binomial-distribution",
+   "dependsOn": [
+    "binomial-setting",
+    "probability-distribution",
+    "combination"
+   ]
+  },
+  {
+   "id": "binomial-mean-sd",
+   "term": "mean of a binomial distribution",
+   "aliases": [
+    "standard deviation of a binomial distribution"
+   ],
+   "taughtIn": "binomial-distribution",
+   "dependsOn": [
+    "binomial",
+    "expected-value",
+    "rv-sd"
+   ]
+  },
+  {
+   "id": "density-curve",
+   "term": "density curve",
+   "aliases": [
+    "density curves",
+    "area under the curve"
+   ],
+   "taughtIn": "normal-distribution",
+   "dependsOn": [
+    "distribution",
+    "probability"
+   ]
+  },
+  {
+   "id": "normal-distribution",
+   "term": "normal distribution",
+   "aliases": [
+    "normal distributions",
+    "normal model",
+    "normal curve",
+    "normally distributed",
+    "approximately normal"
+   ],
+   "taughtIn": "normal-distribution",
+   "dependsOn": [
+    "density-curve",
+    "symmetric"
+   ],
+   "notation": [
+    "N\\s*\\(\\s*[0-9a-z\\\\]"
+   ]
+  },
+  {
+   "id": "standard-normal",
+   "term": "standard normal distribution",
+   "aliases": [
+    "standard normal"
+   ],
+   "taughtIn": "normal-distribution",
+   "dependsOn": [
+    "normal-distribution",
+    "z-score"
+   ]
+  },
+  {
+   "id": "empirical-rule",
+   "term": "empirical rule",
+   "aliases": [
+    "68-95-99.7 rule"
+   ],
+   "taughtIn": "normal-distribution",
+   "dependsOn": [
+    "normal-distribution"
+   ]
+  },
+  {
+   "id": "sampling-distribution",
+   "term": "sampling distribution",
+   "aliases": [
+    "sampling distributions",
+    "sampling variability"
+   ],
+   "taughtIn": "sampling-distributions",
+   "dependsOn": [
+    "statistic",
+    "distribution"
+   ],
+   "notation": [
+    "\\\\mu_\\{\\\\(bar|hat)",
+    "\\\\sigma_\\{\\\\(bar|hat)"
+   ]
+  },
+  {
+   "id": "clt",
+   "term": "central limit theorem",
+   "aliases": [
+    "Central Limit Theorem",
+    "CLT"
+   ],
+   "taughtIn": "sampling-distributions",
+   "dependsOn": [
+    "sampling-distribution",
+    "normal-distribution",
+    "mean"
+   ]
+  },
+  {
+   "id": "estimator",
+   "term": "estimator",
+   "aliases": [
+    "estimators",
+    "point estimate",
+    "point estimates",
+    "point estimator",
+    "estimate"
+   ],
+   "taughtIn": "estimators",
+   "dependsOn": [
+    "statistic",
+    "parameter",
+    "sampling-distribution"
+   ]
+  },
+  {
+   "id": "unbiased-estimator",
+   "term": "unbiased estimator",
+   "aliases": [
+    "unbiased estimators",
+    "biased estimator",
+    "biased estimators"
+   ],
+   "taughtIn": "estimators",
+   "dependsOn": [
+    "estimator",
+    "bias"
+   ]
+  },
+  {
+   "id": "large-counts",
+   "term": "large counts condition",
+   "aliases": [
+    "large counts"
+   ],
+   "taughtIn": "sampling-dist-proportion",
+   "dependsOn": [
+    "sampling-distribution",
+    "sample-proportion"
+   ]
+  },
+  {
+   "id": "ten-percent",
+   "term": "10% condition",
+   "aliases": [
+    "10 percent condition",
+    "ten percent condition"
+   ],
+   "taughtIn": "sampling-dist-proportion",
+   "dependsOn": [
+    "replacement",
+    "sampling-distribution"
+   ]
+  },
+  {
+   "id": "sd-phat",
+   "term": "standard deviation of the sample proportion",
+   "aliases": [],
+   "taughtIn": "sampling-dist-proportion",
+   "dependsOn": [
+    "sampling-distribution",
+    "sample-proportion"
+   ]
+  },
+  {
+   "id": "confidence-interval",
+   "term": "confidence interval",
+   "aliases": [
+    "confidence intervals",
+    "interval estimate",
+    "one-sample z interval",
+    "one-proportion z interval"
+   ],
+   "taughtIn": "ci-one-proportion",
+   "dependsOn": [
+    "estimator",
+    "sd-phat"
+   ]
+  },
+  {
+   "id": "standard-error",
+   "term": "standard error",
+   "aliases": [
+    "standard errors",
+    "SE"
+   ],
+   "taughtIn": "ci-one-proportion",
+   "dependsOn": [
+    "sd-phat"
+   ],
+   "notation": [
+    "\\\\text\\{SE\\}",
+    "\\\\mathrm\\{SE\\}"
+   ]
+  },
+  {
+   "id": "critical-value",
+   "term": "critical value",
+   "aliases": [
+    "critical values",
+    "z*"
+   ],
+   "taughtIn": "ci-one-proportion",
+   "dependsOn": [
+    "standard-normal"
+   ],
+   "notation": [
+    "z\\^\\{?\\*",
+    "z\\^\\{?\\\\ast"
+   ]
+  },
+  {
+   "id": "margin-of-error",
+   "term": "margin of error",
+   "aliases": [
+    "margins of error"
+   ],
+   "taughtIn": "ci-one-proportion",
+   "dependsOn": [
+    "critical-value",
+    "standard-error"
+   ],
+   "notation": [
+    "\\\\text\\{ME\\}"
+   ]
+  },
+  {
+   "id": "conditions",
+   "term": "conditions for inference",
+   "aliases": [
+    "check conditions",
+    "random condition"
+   ],
+   "taughtIn": "ci-one-proportion",
+   "dependsOn": [
+    "large-counts",
+    "ten-percent"
+   ]
+  },
+  {
+   "id": "confidence-level",
+   "term": "confidence level",
+   "aliases": [
+    "confidence levels",
+    "95% confident",
+    "confident"
+   ],
+   "taughtIn": "ci-one-proportion",
+   "dependsOn": [
+    "confidence-interval"
+   ]
+  },
+  {
+   "id": "plausible",
+   "term": "plausible value",
+   "aliases": [
+    "plausible values",
+    "plausible"
+   ],
+   "taughtIn": "ci-one-proportion-claims",
+   "dependsOn": [
+    "confidence-interval"
+   ]
+  },
+  {
+   "id": "convincing-evidence",
+   "term": "convincing evidence",
+   "aliases": [],
+   "taughtIn": "ci-one-proportion-claims",
+   "dependsOn": [
+    "plausible"
+   ]
+  },
+  {
+   "id": "hypotheses",
+   "term": "null hypothesis",
+   "aliases": [
+    "null hypotheses",
+    "alternative hypothesis",
+    "alternative hypotheses",
+    "hypothesis",
+    "hypotheses"
+   ],
+   "taughtIn": "test-one-proportion-setup",
+   "dependsOn": [
+    "parameter"
+   ],
+   "notation": [
+    "H_\\{?0",
+    "H_\\{?a",
+    "H_\\{?A"
+   ]
+  },
+  {
+   "id": "significance-test",
+   "term": "significance test",
+   "aliases": [
+    "significance tests",
+    "hypothesis test",
+    "hypothesis tests",
+    "test of significance",
+    "one-sample z test",
+    "one-proportion z test"
+   ],
+   "taughtIn": "test-one-proportion-setup",
+   "dependsOn": [
+    "hypotheses"
+   ]
+  },
+  {
+   "id": "significance-level",
+   "term": "significance level",
+   "aliases": [
+    "significance levels",
+    "alpha"
+   ],
+   "taughtIn": "test-one-proportion-setup",
+   "dependsOn": [
+    "significance-test"
+   ],
+   "notation": [
+    "\\\\alpha"
+   ]
+  },
+  {
+   "id": "one-two-sided",
+   "term": "one-sided",
+   "aliases": [
+    "two-sided",
+    "one-sided test",
+    "two-sided test",
+    "one-tailed",
+    "two-tailed"
+   ],
+   "taughtIn": "test-one-proportion-setup",
+   "dependsOn": [
+    "hypotheses"
+   ]
+  },
+  {
+   "id": "null-value",
+   "term": "null value",
+   "aliases": [
+    "hypothesized value"
+   ],
+   "taughtIn": "test-one-proportion-setup",
+   "dependsOn": [
+    "hypotheses"
+   ],
+   "notation": [
+    "p_\\{?0\\}?(?![0-9])"
+   ]
+  },
+  {
+   "id": "test-statistic",
+   "term": "test statistic",
+   "aliases": [
+    "test statistics",
+    "standardized test statistic"
+   ],
+   "taughtIn": "p-values",
+   "dependsOn": [
+    "standard-error",
+    "null-value"
+   ]
+  },
+  {
+   "id": "p-value",
+   "term": "p-value",
+   "aliases": [
+    "p-values",
+    "P-value",
+    "P-values"
+   ],
+   "taughtIn": "p-values",
+   "dependsOn": [
+    "test-statistic",
+    "probability"
+   ]
+  },
+  {
+   "id": "reject",
+   "term": "reject the null hypothesis",
+   "aliases": [
+    "fail to reject",
+    "reject H0"
+   ],
+   "taughtIn": "test-one-proportion",
+   "dependsOn": [
+    "p-value",
+    "significance-level"
+   ]
+  },
+  {
+   "id": "type-i",
+   "term": "Type I error",
+   "aliases": [
+    "Type I errors"
+   ],
+   "taughtIn": "errors-and-power",
+   "dependsOn": [
+    "reject"
+   ]
+  },
+  {
+   "id": "type-ii",
+   "term": "Type II error",
+   "aliases": [
+    "Type II errors"
+   ],
+   "taughtIn": "errors-and-power",
+   "dependsOn": [
+    "reject"
+   ],
+   "notation": [
+    "\\\\beta"
+   ]
+  },
+  {
+   "id": "power",
+   "term": "power",
+   "aliases": [
+    "power of a test"
+   ],
+   "taughtIn": "errors-and-power",
+   "dependsOn": [
+    "type-ii"
+   ]
+  },
+  {
+   "id": "diff-proportions",
+   "term": "difference in sample proportions",
+   "aliases": [
+    "difference between sample proportions",
+    "difference of two proportions",
+    "difference in proportions"
+   ],
+   "taughtIn": "sampling-dist-two-proportions",
+   "dependsOn": [
+    "sample-proportion",
+    "sampling-distribution"
+   ],
+   "notation": [
+    "\\\\hat\\{?p\\}?_\\{?1\\}?\\s*-\\s*\\\\hat"
+   ]
+  },
+  {
+   "id": "two-sample-z-interval",
+   "term": "two-sample z interval",
+   "aliases": [
+    "two-proportion z interval"
+   ],
+   "taughtIn": "ci-two-proportions",
+   "dependsOn": [
+    "confidence-interval",
+    "diff-proportions"
+   ]
+  },
+  {
+   "id": "independent-samples",
+   "term": "independent samples",
+   "aliases": [
+    "independent random samples",
+    "two independent samples"
+   ],
+   "taughtIn": "sampling-dist-two-proportions",
+   "dependsOn": [
+    "sample",
+    "independent-events"
+   ]
+  },
+  {
+   "id": "two-sample-z-test",
+   "term": "two-sample z test",
+   "aliases": [
+    "two-proportion z test",
+    "two-sample z test for proportions"
+   ],
+   "taughtIn": "test-two-proportions-setup",
+   "dependsOn": [
+    "significance-test",
+    "diff-proportions"
+   ]
+  },
+  {
+   "id": "zero-difference",
+   "term": "zero difference",
+   "aliases": [
+    "difference of zero",
+    "0 in the interval",
+    "zero is in the interval"
+   ],
+   "taughtIn": "ci-two-proportions-claims",
+   "dependsOn": [
+    "two-sample-z-interval",
+    "plausible"
+   ]
+  },
+  {
+   "id": "two-sample-z-statistic",
+   "term": "two-sample z statistic",
+   "aliases": [
+    "combined standard error"
+   ],
+   "taughtIn": "test-two-proportions",
+   "dependsOn": [
+    "two-sample-z-test",
+    "test-statistic"
+   ]
+  },
+  {
+   "id": "pooled-proportion",
+   "term": "pooled proportion",
+   "aliases": [
+    "combined proportion",
+    "pooled sample proportion"
+   ],
+   "taughtIn": "test-two-proportions-setup",
+   "dependsOn": [
+    "two-sample-z-test"
+   ],
+   "notation": [
+    "p_\\{?c\\}?"
+   ]
+  },
+  {
+   "id": "chi-square",
+   "term": "chi-square",
+   "aliases": [
+    "chi-square statistic",
+    "chi-squared"
+   ],
+   "taughtIn": "chi-square-setup",
+   "dependsOn": [
+    "two-way-table"
+   ],
+   "notation": [
+    "\\\\chi"
+   ]
+  },
+  {
+   "id": "homogeneity",
+   "term": "chi-square test for homogeneity",
+   "aliases": [
+    "test for homogeneity",
+    "homogeneity"
+   ],
+   "taughtIn": "chi-square-setup",
+   "dependsOn": [
+    "chi-square",
+    "significance-test"
+   ]
+  },
+  {
+   "id": "independence-test",
+   "term": "chi-square test for independence",
+   "aliases": [
+    "test for independence",
+    "test of independence"
+   ],
+   "taughtIn": "chi-square-setup",
+   "dependsOn": [
+    "chi-square",
+    "significance-test",
+    "association"
+   ]
+  },
+  {
+   "id": "expected-count",
+   "term": "expected count",
+   "aliases": [
+    "expected counts",
+    "observed count",
+    "observed counts"
+   ],
+   "taughtIn": "chi-square-setup",
+   "dependsOn": [
+    "two-way-table"
+   ]
+  },
+  {
+   "id": "degrees-of-freedom",
+   "term": "degrees of freedom",
+   "aliases": [
+    "df"
+   ],
+   "taughtIn": "chi-square-test",
+   "dependsOn": [
+    "chi-square"
+   ],
+   "notation": [
+    "\\\\text\\{df\\}",
+    "\\\\mathrm\\{df\\}"
+   ]
+  },
+  {
+   "id": "chi-square-dist",
+   "term": "chi-square distribution",
+   "aliases": [
+    "chi-square distributions"
+   ],
+   "taughtIn": "chi-square-test",
+   "dependsOn": [
+    "degrees-of-freedom",
+    "density-curve"
+   ]
+  },
+  {
+   "id": "chi-square-component",
+   "term": "chi-square component",
+   "aliases": [
+    "components",
+    "contribution to chi-square"
+   ],
+   "taughtIn": "chi-square-test",
+   "dependsOn": [
+    "expected-count",
+    "chi-square"
+   ]
+  },
+  {
+   "id": "sd-xbar",
+   "term": "standard deviation of the sample mean",
+   "aliases": [],
+   "taughtIn": "sampling-dist-mean",
+   "dependsOn": [
+    "sampling-distribution",
+    "mean",
+    "clt"
+   ]
+  },
+  {
+   "id": "t-distribution",
+   "term": "t distribution",
+   "aliases": [
+    "t distributions",
+    "t-distribution",
+    "t*",
+    "t critical value"
+   ],
+   "taughtIn": "ci-one-mean",
+   "dependsOn": [
+    "density-curve",
+    "degrees-of-freedom",
+    "sd-xbar"
+   ],
+   "notation": [
+    "t\\^\\{?\\*",
+    "t\\^\\{?\\\\ast"
+   ]
+  },
+  {
+   "id": "one-sample-t-interval",
+   "term": "one-sample t interval",
+   "aliases": [
+    "one-sample t intervals",
+    "t interval",
+    "t intervals"
+   ],
+   "taughtIn": "ci-one-mean",
+   "dependsOn": [
+    "t-distribution",
+    "confidence-interval"
+   ]
+  },
+  {
+   "id": "paired-data",
+   "term": "paired data",
+   "aliases": [
+    "mean difference",
+    "paired t",
+    "paired differences",
+    "population mean difference"
+   ],
+   "taughtIn": "ci-one-mean",
+   "dependsOn": [
+    "matched-pairs",
+    "one-sample-t-interval"
+   ],
+   "notation": [
+    "\\\\mu_\\{?d\\b",
+    "\\\\bar\\{?x\\}?_\\{?d"
+   ]
+  },
+  {
+   "id": "normal-large-sample",
+   "term": "normal/large sample condition",
+   "aliases": [
+    "large sample condition",
+    "nearly normal condition"
+   ],
+   "taughtIn": "ci-one-mean",
+   "dependsOn": [
+    "clt",
+    "conditions"
+   ]
+  },
+  {
+   "id": "one-sample-t-test",
+   "term": "one-sample t test",
+   "aliases": [
+    "one-sample t tests",
+    "t test",
+    "t tests",
+    "paired t test"
+   ],
+   "taughtIn": "test-one-mean-setup",
+   "dependsOn": [
+    "significance-test",
+    "t-distribution"
+   ]
+  },
+  {
+   "id": "mu-null",
+   "term": "hypothesized mean",
+   "aliases": [
+    "mu0",
+    "mu-zero"
+   ],
+   "taughtIn": "test-one-mean-setup",
+   "dependsOn": [
+    "null-value",
+    "population-mean"
+   ],
+   "notation": [
+    "\\\\mu_\\{?0"
+   ]
+  },
+  {
+   "id": "interval-width",
+   "term": "interval width",
+   "aliases": [
+    "width of an interval",
+    "width of the interval",
+    "narrower interval",
+    "wider interval"
+   ],
+   "taughtIn": "ci-one-mean-claims",
+   "dependsOn": [
+    "one-sample-t-interval",
+    "margin-of-error"
+   ]
+  },
+  {
+   "id": "t-statistic",
+   "term": "t statistic",
+   "aliases": [
+    "t statistics",
+    "t-statistic"
+   ],
+   "taughtIn": "test-one-mean",
+   "dependsOn": [
+    "one-sample-t-test",
+    "test-statistic"
+   ]
+  },
+  {
+   "id": "diff-means",
+   "term": "difference in sample means",
+   "aliases": [
+    "difference between sample means",
+    "difference of two means",
+    "difference in means"
+   ],
+   "taughtIn": "sampling-dist-two-means",
+   "dependsOn": [
+    "mean",
+    "sampling-distribution",
+    "independent-samples"
+   ],
+   "notation": [
+    "\\\\bar\\{?x\\}?_\\{?1\\}?\\s*-\\s*\\\\bar"
+   ]
+  },
+  {
+   "id": "two-sample-t-interval",
+   "term": "two-sample t interval",
+   "aliases": [
+    "two-sample t intervals"
+   ],
+   "taughtIn": "ci-two-means",
+   "dependsOn": [
+    "one-sample-t-interval",
+    "diff-means"
+   ]
+  },
+  {
+   "id": "two-sample-t-test",
+   "term": "two-sample t test",
+   "aliases": [
+    "two-sample t tests"
+   ],
+   "taughtIn": "test-two-means-setup",
+   "dependsOn": [
+    "one-sample-t-test",
+    "diff-means"
+   ]
+  },
+  {
+   "id": "practical-significance",
+   "term": "practical significance",
+   "aliases": [
+    "practically significant",
+    "practically important"
+   ],
+   "taughtIn": "ci-two-means-claims",
+   "dependsOn": [
+    "two-sample-t-interval",
+    "statistically-significant-diff"
+   ]
+  },
+  {
+   "id": "conservative-df",
+   "term": "conservative degrees of freedom",
+   "aliases": [
+    "technology degrees of freedom",
+    "Welch degrees of freedom"
+   ],
+   "taughtIn": "ci-two-means",
+   "dependsOn": [
+    "two-sample-t-interval",
+    "degrees-of-freedom"
+   ]
+  },
+  {
+   "id": "two-sample-t-statistic",
+   "term": "two-sample t statistic",
+   "aliases": [
+    "two-sample t statistics"
+   ],
+   "taughtIn": "test-two-means",
+   "dependsOn": [
+    "two-sample-t-test",
+    "t-statistic"
+   ]
+  },
+  {
+   "id": "scatterplot",
+   "term": "scatterplot",
+   "aliases": [
+    "scatterplots",
+    "scatter plot",
+    "scatter plots"
+   ],
+   "taughtIn": "scatterplots",
+   "dependsOn": [
+    "quantitative-variable",
+    "explanatory-response"
+   ]
+  },
+  {
+   "id": "direction-form-strength",
+   "term": "direction",
+   "aliases": [
+    "form",
+    "strength",
+    "positive association",
+    "negative association",
+    "linear form"
+   ],
+   "taughtIn": "scatterplots",
+   "dependsOn": [
+    "scatterplot",
+    "association"
+   ]
+  },
+  {
+   "id": "correlation",
+   "term": "correlation",
+   "aliases": [
+    "correlation coefficient",
+    "correlations",
+    "r value"
+   ],
+   "taughtIn": "correlation",
+   "dependsOn": [
+    "direction-form-strength",
+    "z-score"
+   ]
+  },
+  {
+   "id": "regression-line",
+   "term": "regression line",
+   "aliases": [
+    "regression lines",
+    "linear regression model",
+    "linear model",
+    "linear models",
+    "predicted value",
+    "predicted values",
+    "y-hat"
+   ],
+   "taughtIn": "linear-models",
+   "dependsOn": [
+    "scatterplot",
+    "slope-line",
+    "intercept"
+   ],
+   "notation": [
+    "\\\\hat\\{?y"
+   ]
+  },
+  {
+   "id": "extrapolation",
+   "term": "extrapolation",
+   "aliases": [
+    "extrapolate",
+    "extrapolating"
+   ],
+   "taughtIn": "linear-models",
+   "dependsOn": [
+    "regression-line"
+   ]
+  },
+  {
+   "id": "residual",
+   "term": "residual",
+   "aliases": [
+    "residuals"
+   ],
+   "taughtIn": "residuals",
+   "dependsOn": [
+    "regression-line"
+   ]
+  },
+  {
+   "id": "residual-plot",
+   "term": "residual plot",
+   "aliases": [
+    "residual plots"
+   ],
+   "taughtIn": "residuals",
+   "dependsOn": [
+    "residual",
+    "scatterplot"
+   ]
+  },
+  {
+   "id": "lsrl",
+   "term": "least-squares regression line",
+   "aliases": [
+    "least-squares regression",
+    "least-squares line",
+    "LSRL",
+    "line of best fit"
+   ],
+   "taughtIn": "least-squares-regression",
+   "dependsOn": [
+    "residual",
+    "summation"
+   ]
+  },
+  {
+   "id": "r-squared",
+   "term": "coefficient of determination",
+   "aliases": [
+    "r-squared",
+    "r squared",
+    "r2"
+   ],
+   "taughtIn": "least-squares-regression",
+   "dependsOn": [
+    "lsrl",
+    "correlation"
+   ],
+   "notation": [
+    "r\\^\\{?2"
+   ]
+  },
+  {
+   "id": "s-residuals",
+   "term": "standard deviation of the residuals",
+   "aliases": [
+    "residual standard deviation"
+   ],
+   "taughtIn": "least-squares-regression",
+   "dependsOn": [
+    "residual",
+    "standard-deviation"
+   ]
+  },
+  {
+   "id": "influential",
+   "term": "influential point",
+   "aliases": [
+    "influential points",
+    "high-leverage point",
+    "high-leverage points",
+    "leverage"
+   ],
+   "taughtIn": "least-squares-regression",
+   "dependsOn": [
+    "lsrl",
+    "outlier"
+   ]
+  }
+ ],
+ "circularDependencies": []
+}

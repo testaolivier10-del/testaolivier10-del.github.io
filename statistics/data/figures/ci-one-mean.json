@@ -1,0 +1,12 @@
+{
+ "t-vs-normal": {
+  "file": "figures/t-vs-normal.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three bell-shaped density curves centered at 0 on an axis from -4.5 to 4.5: the standard normal (solid black), the t distribution with 15 degrees of freedom (dashed blue) and the t distribution with 3 degrees of freedom (orange), which is lowest in the middle and highest in the tails. Dashed marks show the 95% critical values: z* = 1.96, t* = 2.131 for 15 df and t* = 3.182 for 3 df. The outer 5% of the 3 df curve is shaded."
+ }
+}

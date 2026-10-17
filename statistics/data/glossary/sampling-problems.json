@@ -1,0 +1,20 @@
+{
+ "bias": {
+  "def": "A sampling method is biased if it systematically overestimates or underestimates the population value, in the same direction sample after sample."
+ },
+ "voluntary-response": {
+  "def": "A voluntary response sample is made of people who choose themselves, for example by answering an online poll. It overrepresents people with strong opinions."
+ },
+ "convenience": {
+  "def": "A convenience sample is made of individuals who are easy to reach, such as shoppers at one store. It is not random and is usually biased."
+ },
+ "undercoverage": {
+  "def": "Undercoverage happens when part of the population is left out of the sampling frame, so those individuals have no chance of being chosen."
+ },
+ "nonresponse": {
+  "def": "Nonresponse happens when individuals chosen for a sample cannot be reached or do not respond. If they differ from those who respond, the results are biased."
+ },
+ "response-bias": {
+  "def": "Response bias happens when answers do not reflect the truth, because of leading question wording, sensitive questions, or pressure from the interviewer or the setting."
+ }
+}

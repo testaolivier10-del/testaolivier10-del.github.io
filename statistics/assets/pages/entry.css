@@ -1,0 +1,125 @@
+/* AP® Statistics entry pages and trainer, on top of pages.css: the justification
+   trainer (pages/justify.js), the score calculator (pages/score.js), the
+   equations-sheet walkthrough and the unit practice tests
+   (scripts/lib/apstat-entry.mjs). Kept out of pages.css so the exams page
+   does not carry them. */
+.stat-js-how summary{cursor:pointer;font:900 16px var(--font-ui);color:var(--cink);min-height:44px;display:flex;align-items:center;}
+.stat-js-how[open] summary{margin-bottom:6px;}
+.stat-js-nav span{color:var(--muted);}
+@media (max-width:640px){
+  body[data-app="justify"] .stat-hero{margin-top:10px;padding:14px 16px;border-radius:16px;}
+  body[data-app="justify"] .stat-hero .eyebrow{margin-bottom:4px;}
+  body[data-app="justify"] .stat-hero h1{font-size:22px;line-height:1.2;margin:0;}
+  body[data-app="justify"] .stat-hero .lede{display:none;}
+}
+.stat-js-steps{margin:0 0 8px;padding-left:22px;}
+.stat-js-steps li{margin:4px 0;}
+.stat-js-card .stat-js-title{margin:4px 0 12px;font-size:21px;}
+.stat-js-card .stat-js-title:focus{outline:none;}
+.stat-js-prompt{font-size:16px;margin:14px 0;}
+.stat-js-check{margin:18px 0 0;}
+.stat-js-check h2:focus{outline:none;}
+.stat-js-yours{margin:0 0 12px;padding:10px 12px;border-radius:10px;border:2px dashed var(--line);}
+.stat-js-yours p{margin:0;overflow-wrap:anywhere;}
+.stat-js-models{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin:14px 0;}
+.stat-js-model{padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--white);}
+.stat-js-model.is-earns{border-color:var(--cink);background:var(--ctint);}
+.stat-js-model p{margin:0 0 8px;}
+.stat-js-model .stat-js-why{margin:0;font-size:14px;}
+.stat-js-model .stat-fq-sample-k{font:900 11.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--cink);}
+.stat-js-model.is-misses .stat-fq-sample-k{color:var(--muted);}
+.stat-js-empty{color:var(--ink);}
+.stat-sc-form{display:grid;gap:16px;}
+.stat-sc-part{border:0;margin:0;padding:0;min-width:0;}
+.stat-sc-part legend{font:900 15px var(--font-ui);margin:0 0 8px;}
+.stat-sc-mcq,.stat-sc-q{display:flex;flex-direction:column;gap:4px;font:800 13.5px var(--font-ui);}
+.stat-sc-mcq input,.stat-sc-q input{min-height:44px;padding:8px 10px;font:700 16px var(--font-ui);border:2px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);max-width:100%;box-sizing:border-box;}
+.stat-sc-mcq input{max-width:140px;}
+.stat-sc-part input[type=range]{width:100%;min-height:44px;accent-color:var(--cink);}
+.stat-sc-frq{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;}
+.stat-sc-q small{font-weight:600;color:var(--muted);}
+.stat-sc-out{margin:16px 0;}
+.stat-sc-formula{padding:10px 12px;border-radius:10px;background:var(--ctint);overflow-wrap:anywhere;}
+.stat-eq{width:100%;border-collapse:collapse;font-size:14.5px;}
+.stat-eq th,.stat-eq td{text-align:left;vertical-align:top;padding:10px 8px;border-bottom:1px solid var(--line);}
+.stat-eq thead th{font:900 12.5px var(--font-ui);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+.stat-eq-f{font:700 15px var(--font-mono, monospace);white-space:normal;color:var(--cink);}
+.stat-eq tbody th{min-width:150px;}
+/* Fixed columns so a long formula cannot squeeze the words; MathML does not wrap, so it scrolls in its cell.
+   From 720 px: below that the columns size to their content and the whole table scrolls in its (focusable) region. */
+@media (min-width: 720px){
+  .stat-eq{table-layout:fixed;}
+  .stat-eq thead th:nth-child(1){width:34%;} .stat-eq thead th:nth-child(2){width:25%;} .stat-eq thead th:nth-child(3){width:27%;} .stat-eq thead th:nth-child(4){width:14%;}
+}
+.stat-eq-f{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:2px 0 4px;}
+@media (max-width: 719px){ .stat-eq-f{max-width:none;overflow:visible;} }
+.stat-eq-not li{margin:8px 0;}
+.stat-entry .stat-qs{margin:16px 0;}
+.stat-cards-row{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 12px;}
+.stat-sample-done{margin:14px 0;}
+@media (max-width:560px){
+  .stat-eq thead{display:none;}
+  .stat-eq tr{display:block;padding:8px 0;border-bottom:1px solid var(--line);}
+  .stat-eq th,.stat-eq td{display:block;border:0;padding:3px 0;}
+  .stat-eq tbody th{min-width:0;}
+}
+.stat-eq-tools{display:block;margin-top:6px;font-weight:700;}
+.stat-eq-tools a{display:inline-block;min-height:24px;}
+
+/* Justification trainer on the Tool Studio (justify.js studio()): the
+   prompt and the answer box are the stage; no card inside the stage card. */
+.ls-root .stat-ls-jcard{margin:0;padding:0;border:0;background:none;box-shadow:none;display:flex;flex-direction:column;gap:10px;flex:1;min-height:0;}
+.ls-root .stat-ls-jcard .stat-js-title{margin:0;font:900 var(--ls-l)/1.25 var(--font-ui);letter-spacing:-.01em;}
+.ls-root .stat-ls-jcard .stat-stim{margin:0;padding:12px 14px;border-radius:16px;background:var(--surface2);border:0;font-size:var(--ls-m);}
+.ls-root .stat-ls-jcard .stat-stim-k{font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-transform:none;letter-spacing:0;margin:0 0 4px;}
+.ls-root .stat-ls-jcard .stat-js-prompt{margin:0;font:800 var(--ls-m)/1.45 var(--font-ui);}
+.ls-root .stat-ls-jcard .stat-fq-alabel{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .stat-ls-jcard .stat-fq-answer{flex:1 0 120px;min-height:120px;border:0;border-radius:16px;box-shadow:inset 0 0 0 2px var(--line);font:600 var(--ls-m)/1.5 var(--font-ui);padding:12px 14px;resize:none;}
+.ls-root .stat-ls-jcard .stat-fq-answer:focus{outline:none;box-shadow:inset 0 0 0 2px var(--cink);}
+.ls-root .stat-ls-jcard > .stat-small{margin:0;font-size:var(--ls-s);}
+.ls-root .stat-pr-actions{display:flex;gap:10px;flex-wrap:wrap;margin:0;}
+.ls-root .stat-pr-actions > *{flex:1 1 auto;}
+.ls-root .stat-ls-jnav{margin:0;}
+.ls-root .stat-ls-jnav a{display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:14px;background:var(--surface2);color:var(--ink);font:700 var(--ls-m) var(--font-ui);text-decoration:none;}
+.ls-root .stat-ls-jnav span{display:none;}
+.ls-sheet .stat-js-check{margin:0;}
+.ls-sheet .stat-js-check h2{font:900 var(--ls-l)/1.25 var(--font-ui);margin:0 0 10px;}
+.ls-sheet .stat-js-yours{border-radius:14px;}
+.ls-sheet .stat-fq-sample-k,.ls-sheet .stat-js-model .stat-fq-sample-k{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.ls-sheet .stat-js-models{grid-template-columns:1fr;}
+.ls-sheet .stat-js-model{border-radius:16px;border:0;box-shadow:inset 0 0 0 1.5px var(--line);}
+.ls-sheet .stat-js-model.is-earns{box-shadow:inset 0 0 0 2px var(--cink);}
+.ls-sheet .stat-fq-rpart{margin:0;padding:0;border:0;}
+.ls-sheet .stat-fq-rpart legend{font:800 var(--ls-s) var(--font-ui);color:var(--muted);padding:0;margin-bottom:6px;}
+.ls-sheet .stat-js-how{margin:0;padding:14px 0 0;border:0;border-top:1px solid var(--line-soft);background:none;box-shadow:none;border-radius:0;}
+.ls-sheet .stat-js-how summary{color:var(--ink);pointer-events:none;min-height:0;}
+.ls-sheet .stat-js-check[hidden]{display:none;}
+.ls-root .stat-ls-jlist{display:flex;flex-direction:column;gap:10px;}
+.ls-root .stat-ls-jlist .stat-fq-card{border:0;box-shadow:inset 0 0 0 1.5px var(--line);border-radius:16px;}
+.ls-root .stat-ls-jlist .stat-fq-card-k{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.ls-root .stat-ls-jlist #stat-js-count{margin:0;}
+.ls-root .stat-fq-filters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;}
+.ls-root .stat-fq-filters .stat-pr-field{display:flex;flex-direction:column;gap:4px;font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .stat-fq-filters select{width:100%;min-height:48px;padding:0 12px;border:0;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font:700 var(--ls-m) var(--font-ui);}
+
+/* Reference pages on the calm layout (pages/calm-ref.js): the slim bar,
+   then the page in calm type (13 / 16 / 22), no caps kickers, no hero. */
+body.stat-calm-ref main.stat-entry{max-width:760px;margin:0 auto;padding:4px 16px 32px;font:600 16px/1.6 var(--font-ui);color:var(--ink);}
+body.stat-calm-ref main.stat-entry .stat-ref-lede{margin:8px 0 20px;font:700 22px/1.35 var(--font-ui);letter-spacing:-.01em;color:var(--ink);}
+body.stat-calm-ref main.stat-entry .xsection{margin:0;padding:22px 0 0;border:0;background:none;box-shadow:none;border-radius:0;}
+body.stat-calm-ref main.stat-entry .xsection + .xsection{margin-top:22px;border-top:1px solid var(--line-soft);}
+body.stat-calm-ref main.stat-entry h2{margin:0 0 10px;font:900 22px/1.25 var(--font-ui);letter-spacing:-.01em;text-transform:none;color:var(--ink);}
+body.stat-calm-ref main.stat-entry p,body.stat-calm-ref main.stat-entry li{font-size:16px;line-height:1.6;}
+body.stat-calm-ref main.stat-entry .stat-small{font-size:13px;}
+body.stat-calm-ref main.stat-entry table{font-size:13px;}
+body.stat-calm-ref main.stat-entry th{text-transform:none;letter-spacing:0;}
+body.stat-calm-ref main.stat-entry .stat-ex-band-warn{border-radius:16px;}
+body.stat-calm-ref .stat-foot{max-width:760px;margin:0 auto;padding:0 16px 24px;}
+@media (min-width:1000px){ body.stat-calm-ref main.stat-entry{padding-top:8px;} }
+.ls-root .stat-ls-jcard .stat-js-prompt{color:var(--ink);} .ls-root .stat-ls-jcard .stat-stim{box-shadow:none;}
+/* "Say it in context": the conclusion builder under the checklist (pages/justify.js). */
+.stat-js-build{margin-top:14px;}
+.stat-js-build .stat-cl-slot select{max-width:100%;}
+.stat-js-bact{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.stat-js-bfb:empty{display:none;}
+.stat-js-bfb{margin-top:8px;}

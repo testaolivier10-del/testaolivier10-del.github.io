@@ -1,0 +1,558 @@
+{
+ "stimuli": {
+  "binomial-distribution-s1": {
+   "kind": "diagram",
+   "title": "Guessing on a quiz",
+   "set": "probability",
+   "text": "A quiz has 12 multiple-choice questions, each with 4 options and one right answer. A student who has not studied guesses at random on every question, independently. Let X = the number of questions the student gets right.",
+   "html": "<svg viewBox=\"0 0 520 70\" width=\"520\" height=\"70\" role=\"img\" aria-label=\"Twelve quiz questions shown as boxes, each with four options A to D and a one in four chance of a correct guess\"><rect width=\"520\" height=\"70\" fill=\"#FFFFFF\"/><rect x=\"8\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"26\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q1</text><rect x=\"50\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"68\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q2</text><rect x=\"92\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"110\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q3</text><rect x=\"134\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"152\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q4</text><rect x=\"176\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"194\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q5</text><rect x=\"218\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"236\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q6</text><rect x=\"260\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"278\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q7</text><rect x=\"302\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"320\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q8</text><rect x=\"344\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"362\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q9</text><rect x=\"386\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"404\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q10</text><rect x=\"428\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"446\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q11</text><rect x=\"470\" y=\"10\" width=\"36\" height=\"36\" rx=\"5\" fill=\"#F5E6F4\" stroke=\"#6E2470\"/><text x=\"488\" y=\"33\" font-size=\"13\" text-anchor=\"middle\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#1F2A28\">Q12</text><text x=\"8\" y=\"64\" font-size=\"13\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#5A6563\">12 questions, each guessed right with probability 1/4 = 0.25</text></svg>"
+  },
+  "binomial-distribution-s2": {
+   "kind": "table",
+   "title": "Survey phone calls",
+   "text": "A polling firm dials 15 phone numbers chosen at random from a list of over a million numbers in a city. From long experience, 20% of calls are answered. Let Y = the number of the 15 calls that are answered (invented data).",
+   "table": {
+    "caption": "The polling setup",
+    "cols": [
+     "Number of calls",
+     "Chance a call is answered",
+     "Y counts"
+    ],
+    "rows": [
+     [
+      "15",
+      "0.20",
+      "answered calls"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-binomial-distribution-1",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the student gets exactly 3 questions right?",
+   "why": {
+    "correct": "X is binomial with $n = 12$ and $p = 0.25$. $P(X = 3) = \\binom{12}{3}(0.25)^3(0.75)^9 = 220(0.015625)(0.07508) \\approx 0.258$.",
+    "options": [
+     "That is the chance of guessing one question right, not of exactly 3 right out of 12.",
+     "That is $P(X \\le 3)$, the probability of 3 or fewer.",
+     "Right: the binomial formula with n = 12, p = 0.25, k = 3.",
+     "That is one arrangement of 3 right and 9 wrong. Multiply by $\\binom{12}{3} = 220$ arrangements."
+    ]
+   },
+   "stimulus": "binomial-distribution-s1",
+   "options": [
+    "0.25",
+    "0.649",
+    "0.258",
+    "0.001"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-binomial-distribution-2",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that the student gets at least 6 questions right?",
+   "why": {
+    "correct": "$P(X \\ge 6) = 1 - P(X \\le 5) = 1 - 0.9456 = 0.0544$, with X binomial, $n = 12$, $p = 0.25$.",
+    "options": [
+     "That is $P(X \\ge 5)$: subtracting $P(X \\le 4)$ leaves 5 in.",
+     "That is $P(X = 6)$ alone. At least 6 includes 7 through 12.",
+     "That is $P(X \\le 5)$, the complement.",
+     "Right: 1 minus the cumulative probability up to 5."
+    ]
+   },
+   "stimulus": "binomial-distribution-s1",
+   "options": [
+    "0.1576",
+    "0.0401",
+    "0.9456",
+    "0.0544"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-binomial-distribution-3",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the mean and standard deviation of X?",
+   "why": {
+    "correct": "$\\mu_X = np = 12(0.25) = 3$ questions and $\\sigma_X = \\sqrt{np(1 - p)} = \\sqrt{12(0.25)(0.75)} = \\sqrt{2.25} = 1.5$ questions.",
+    "options": [
+     "Right: np and the square root of np(1 − p).",
+     "2.25 is the variance; take its square root.",
+     "The mean is np = 3, not half of the 12 questions.",
+     "0.75 is 1 − p, not the standard deviation."
+    ]
+   },
+   "stimulus": "binomial-distribution-s1",
+   "options": [
+    "Mean 3, standard deviation 1.5",
+    "Mean 3, standard deviation 2.25",
+    "Mean 6, standard deviation 1.5",
+    "Mean 3, standard deviation 0.75"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-binomial-distribution-4",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is it reasonable to model Y with a binomial distribution?",
+   "why": {
+    "correct": "Binomial setting: each call is answered or not (two outcomes), the number of calls is fixed at 15, the chance of an answer is 0.20 on each call, and calls to numbers chosen at random from a huge list are independent.",
+    "options": [
+     "Random choice helps independence, but the fixed number, two outcomes and constant p are also needed.",
+     "Right: all four conditions, in context.",
+     "That is the mean, not a reason the distribution is binomial.",
+     "The firm dials exactly 15 numbers; a fixed number of trials is one of the conditions."
+    ]
+   },
+   "stimulus": "binomial-distribution-s2",
+   "options": [
+    "The 15 numbers are a random sample from the list, and 15 calls is a large enough number of trials",
+    "Each call is answered or not, n = 15 is fixed, p = 0.20 each time, calls are independent",
+    "About 20% of the 15 calls, which is 3 calls, will be answered",
+    "The firm keeps dialing new numbers until someone answers a call"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-binomial-distribution-5",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that exactly 2 of the 15 calls are answered?",
+   "why": {
+    "correct": "Y is binomial with $n = 15$, $p = 0.20$. $P(Y = 2) = \\binom{15}{2}(0.20)^2(0.80)^{13} = 105(0.04)(0.80)^{13} \\approx 0.2309$."
+   },
+   "stimulus": "binomial-distribution-s2",
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "binomPmf",
+     "args": [
+      2,
+      15,
+      0.2
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.002199023255552002,
+      "why": "That is one arrangement of 2 answered and 13 not. Multiply by $\\binom{15}{2} = 105$."
+     },
+     {
+      "value": 0.39802320925491236,
+      "why": "That is $P(Y \\le 2)$. Exactly 2 is a single value."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-binomial-distribution-6",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the probability that fewer than 2 of the calls are answered?",
+   "why": {
+    "correct": "\"Fewer than 2\" means 0 or 1: $P(Y \\le 1) = P(Y = 0) + P(Y = 1) = (0.80)^{15} + 15(0.20)(0.80)^{14} \\approx 0.1671$."
+   },
+   "stimulus": "binomial-distribution-s2",
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "binomCdf",
+     "args": [
+      1,
+      15,
+      0.2
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.39802320925491236,
+      "why": "That is $P(Y \\le 2)$, which includes 2. \"Fewer than 2\" is 0 or 1."
+     },
+     {
+      "value": 0.1319413953331201,
+      "why": "That is $P(Y = 1)$ alone; add $P(Y = 0)$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-binomial-distribution-7",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "setup",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the binomial expression for $P(Y = 2)$, as you would on the exam.",
+   "why": {
+    "correct": "$P(Y = k) = \\binom{n}{k}p^k(1 - p)^{n - k}$ with $n = 15$, $k = 2$, $p = 0.20$: $\\binom{15}{2}(0.2)^2(0.8)^{13}$."
+   },
+   "stimulus": "binomial-distribution-s2",
+   "setup": {
+    "answer": "15C2 * 0.2^2 * 0.8^13",
+    "bind": {},
+    "mustUse": [
+     "15",
+     "0.2",
+     "0.8",
+     "13"
+    ],
+    "mistakes": [
+     {
+      "expr": "0.2^2 * 0.8^13",
+      "why": "That is one order of answers. The 2 answered calls can be any 2 of the 15, so multiply by 15C2."
+     },
+     {
+      "expr": "15C2 * 0.2^2 * 0.8^15",
+      "why": "The exponents must add to 15: 2 answered and 13 not answered."
+     },
+     {
+      "expr": "15C2 * 0.8^2 * 0.2^13",
+      "why": "The success probability, 0.2, goes with the 2 answered calls."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-binomial-distribution-8",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The mean of Y is $np = 15(0.20) = 3$. Which interpretation is correct?",
+   "why": {
+    "correct": "A binomial mean is a long-run average: over many sets of 15 random calls, the firm averages about 3 answered calls per set.",
+    "options": [
+     "Individual sets vary: 1, 2, 5 answered and so on.",
+     "Right: the long-run average count.",
+     "The probability 0.20 is for one call; $P(Y = 3)$ is a different number.",
+     "The mean is a long-run average, not a lucky outcome."
+    ]
+   },
+   "stimulus": "binomial-distribution-s2",
+   "options": [
+    "Each set of 15 calls will have exactly 3 answered calls, no more and no less",
+    "Over many sets of 15 random calls, about 3 per set are answered on average",
+    "The most likely result is 3 answered calls, with probability 0.20",
+    "3 of the 15 calls will be answered if the firm is lucky"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-binomial-distribution-9",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which list gives the conditions for a binomial setting?",
+   "why": {
+    "correct": "Binary outcomes (success or failure), Independent trials, a fixed Number of trials, and the Same probability of success on each trial.",
+    "options": [
+     "Independence is the condition; a large number of trials is not required.",
+     "p can be any value from 0 to 1, not just one half.",
+     "Right: the four conditions.",
+     "The mean np follows from the conditions; it is not one of them."
+    ]
+   },
+   "options": [
+    "Two outcomes per trial, a random sample, a large number of trials, the same p each trial",
+    "Equally likely outcomes, independent trials, and a probability of success of one half",
+    "Two outcomes per trial, independent trials, a fixed number of trials, the same p each trial",
+    "A fixed number of trials, outcomes that are counts, and a mean of n times p"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-binomial-distribution-10",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a large city, 36% of adults have a library card. For a random sample of 50 adults, let C = the number with a library card. What is the mean of C?",
+   "why": {
+    "correct": "C is binomial with $n = 50$ and $p = 0.36$, so $\\mu_C = np = 50(0.36) = 18$ adults."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 1,
+    "answer": 18,
+    "mistakes": [
+     {
+      "value": 0.36,
+      "why": "That is p, the chance for one adult. The mean count is np."
+     },
+     {
+      "value": 25,
+      "why": "That is half of 50; the mean uses p = 0.36, not one half."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-binomial-distribution-11",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the same library card setting ($n = 50$, $p = 0.36$), what is the standard deviation of C?",
+   "why": {
+    "correct": "$\\sigma_C = \\sqrt{np(1 - p)} = \\sqrt{50(0.36)(0.64)} = \\sqrt{11.52} \\approx 3.39$ adults."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "answer": 3.394112549695428,
+    "mistakes": [
+     {
+      "value": 11.52,
+      "why": "That is the variance, np(1 − p). Take its square root."
+     },
+     {
+      "value": 4.242640687119285,
+      "why": "Include (1 − p) = 0.64 inside the square root."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-binomial-distribution-12",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "At a coffee shop, 30% of customers order with the mobile app. For 10 randomly chosen customers, let A = the number who use the app. Find $P(A \\ge 4)$.",
+   "why": {
+    "correct": "A is binomial with $n = 10$, $p = 0.3$. $P(A \\ge 4) = 1 - P(A \\le 3) = 1 - 0.6496 = 0.3504$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "binomCdf",
+     "args": [
+      3,
+      10,
+      0.3
+     ],
+     "complement": true
+    },
+    "mistakes": [
+     {
+      "value": 0.20012094899999988,
+      "why": "That is $P(A = 4)$ alone. At least 4 runs from 4 to 10."
+     },
+     {
+      "value": 0.1502683326000005,
+      "why": "That is $P(A > 4)$: subtracting $P(A \\le 4)$ leaves out 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-binomial-distribution-13",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "conclude",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The coffee shop claims that 30% of its customers use the app. In a random sample of 10 customers, 7 used it. If the claim is true, $P(A \\ge 7) \\approx 0.0106$, with A binomial, $n = 10$, $p = 0.3$. Build a conclusion about the claim.",
+   "why": {
+    "correct": "The probability is computed assuming the claim. It is about 1%, so 7 or more app users out of 10 would be very unusual if only 30% of customers used the app."
+   },
+   "conclude": {
+    "mode": "claim",
+    "slots": {
+     "evidence": {
+      "label": "Probability",
+      "options": [
+       "If 30% of customers use the app, the chance that 7 or more of 10 random customers do is about 0.011",
+       "The chance that 30% of customers use the app is about 0.011",
+       "The chance that exactly 7 of 10 customers use the app is 0.7"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The 0.011 is computed assuming the claim; it is not the chance that the claim is true.",
+       "2": "7 of 10 is the sample share, not a probability from the model."
+      }
+     },
+     "claim": {
+      "label": "Conclusion",
+      "options": [
+       "so this sample gives reason to doubt the claim and suggests more than 30% use the app",
+       "so the claim is shown to be false",
+       "so the sample is consistent with the claim"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An unusual result casts doubt on a claim; it does not show it false for certain.",
+       "2": "A result this unusual under the claim is not consistent with it."
+      }
+     }
+    },
+    "model": "If 30% of customers use the app, the probability that 7 or more of 10 randomly chosen customers use it is about 0.011. Because that is so unlikely, this sample gives reason to doubt the claim and suggests that more than 30% of customers use the app.",
+    "write": {
+     "context": [
+      "app",
+      "customers"
+     ],
+     "parameter": false,
+     "evidence": false
+    }
+   }
+  },
+  {
+   "id": "stat-binomial-distribution-14",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A jar holds 12 tickets, 4 of them winners. A child draws 4 tickets without replacement and counts the winners. Why is this count not binomial?",
+   "why": {
+    "correct": "Drawing without replacement from only 12 tickets changes the chance of a winner after each draw (4 of 12, then 3 of 11 or 4 of 11), so the trials are not independent and p is not the same on each draw.",
+    "options": [
+     "Each draw is a winner or not, which is two outcomes.",
+     "The child draws exactly 4 tickets.",
+     "p can be any value; one half is not required.",
+     "Right: from so few tickets, each draw changes what is left."
+    ]
+   },
+   "options": [
+    "There are more than two possible outcomes for each draw from the jar",
+    "The number of draws is not fixed in advance",
+    "The chance of a winner is not one half",
+    "Each draw changes the chance of a winner, so draws are not independent"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-binomial-distribution-15",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a binomial random variable B, which expression gives the probability that B is fewer than 3?",
+   "why": {
+    "correct": "Fewer than 3 means 0, 1 or 2, so it is $P(B \\le 2)$.",
+    "options": [
+     "Right: 0, 1 or 2.",
+     "That includes 3, which \"fewer than 3\" leaves out.",
+     "That is only 0 or 1.",
+     "That is the probability of more than 3."
+    ]
+   },
+   "options": [
+    "$P(B \\le 2)$",
+    "$P(B \\le 3)$",
+    "$P(B < 2)$",
+    "$1 - P(B \\le 3)$"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-binomial-distribution-16",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "numeric",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A factory's machine makes defective parts 5% of the time, independently. In a box of 20 parts, what is the probability that at most 1 is defective?",
+   "why": {
+    "correct": "Let X = the number of defective parts, binomial with $n = 20$, $p = 0.05$. $P(X \\le 1) = (0.95)^{20} + 20(0.05)(0.95)^{19} \\approx 0.7358$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "binomCdf",
+     "args": [
+      1,
+      20,
+      0.05
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.37735360253530725,
+      "why": "That is $P(X = 1)$ alone. At most 1 also includes 0 defective parts."
+     },
+     {
+      "value": 0.35848592240854193,
+      "why": "That is $P(X = 0)$ alone; add $P(X = 1)$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-binomial-distribution-17",
+   "unit": "unit-2",
+   "topic": "binomial-distribution",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A friend claims a coin is fair, and it lands heads 7 times in 10 flips. If the coin is fair, $P(\\text{7 or more heads}) \\approx 0.172$. What does this suggest?",
+   "why": {
+    "correct": "About 17% of the time, a fair coin gives 7 or more heads in 10 flips. That is not unusual, so this result gives little reason to doubt that the coin is fair.",
+    "options": [
+     "More than half happens often by chance in 10 flips.",
+     "A probability below one half is not unusual; about 17% happens often.",
+     "Right: about a 17% chance is not unusual.",
+     "The result does not show the coin is fair; it just does not cast doubt on it."
+    ]
+   },
+   "options": [
+    "The coin is unfair, because 7 heads is more than half",
+    "The coin is unfair, because a probability of 0.172 is less than 0.5",
+    "A fair coin often does this, so there is little reason to doubt it",
+    "The coin is fair, since the result is possible for a fair coin"
+   ],
+   "correct": 2
+  }
+ ]
+}

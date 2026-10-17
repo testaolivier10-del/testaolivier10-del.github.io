@@ -1,0 +1,42 @@
+<p>The setup of a test fixes the hypotheses and the standard of evidence. Now the data arrive, and we need one number that says how surprising they are if the null hypothesis is true. That number is the p-value. This topic is about computing it and, just as important, saying what it means.</p>
+
+<h2>The logic: assume $H_0$, then ask how surprising the data are</h2>
+<p>A significance test argues like this. Suppose $H_0$ is true. Then the sampling distribution of $\hat{p}$ is centered at $p_0$, and we know its spread. If our sample proportion lands somewhere typical in that distribution, the data are consistent with $H_0$. If it lands far out in a tail, in the direction $H_a$ points, then either something rare happened or $H_0$ is wrong. The rarer the result under $H_0$, the stronger the evidence against it.</p>
+
+<h2>The test statistic</h2>
+<p>To measure "how far out", standardize. The reference sheet gives the general form of a <b>standardized test statistic</b>:</p>
+<p>$$\text{test statistic} = \frac{\text{statistic} - \text{parameter}}{\text{standard error of the statistic}}$$</p>
+<p>For one proportion, the statistic is $\hat{p}$, the parameter is its null value $p_0$, and because we are assuming $H_0$ is true, the spread is computed with $p_0$ too:</p>
+<p>$$z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1 - p_0)}{n}}}$$</p>
+<p>Using $\hat{p}$ inside the square root is the most common error on this calculation. An interval uses $\hat{p}$ there because it has no null value; a test has one and must use it.</p>
+
+<h2>The p-value</h2>
+<p>The <b>p-value</b> is the probability, assuming $H_0$ is true, of getting a statistic at least as extreme as the one observed, in the direction of $H_a$. Which area you find depends on the alternative:</p>
+<table>
+<thead><tr><th scope="col">Alternative</th><th scope="col">p-value</th></tr></thead>
+<tbody>
+<tr><td>$H_a: p < p_0$</td><td>area to the left of $z$: $P(Z \le z)$</td></tr>
+<tr><td>$H_a: p > p_0$</td><td>area to the right of $z$: $P(Z \ge z)$</td></tr>
+<tr><td>$H_a: p \ne p_0$</td><td>both tails: $2P(Z \ge |z|)$</td></tr>
+</tbody>
+</table>
+<figure id="fig-tails" data-fig="p-value-tails"><figcaption>The same test statistic, z = −1.77, gives a one-sided p-value of 0.039 and a two-sided p-value of 0.077.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example.</b> A coffee chain says 40% of its customers order a pastry. A store manager suspects her store is lower. In a random sample of 300 of the store's orders, 105 include a pastry. Test $H_0: p = 0.40$ against $H_a: p < 0.40$, where $p$ is the true proportion of all the store's orders that include a pastry. (Random, 10% and large counts, $300(0.40) = 120$ and $300(0.60) = 180$, are met.)</p>
+<p><b>Statistic.</b> $\hat{p} = \frac{105}{300} = 0.35$.</p>
+<p><b>Test statistic.</b> $z = \frac{0.35 - 0.40}{\sqrt{0.40(0.60)/300}} = \frac{-0.05}{0.0283} = -1.77$.</p>
+<p><b>p-value.</b> $H_a$ says "less than", so find the left tail: $P(Z \le -1.77) = 0.0385$ (technology: a 1-proportion z test gives $z = -1.77$, p-value 0.0385; Table A gives 0.0384).</p>
+<p><b>Interpretation.</b> Assuming the true proportion of all the store's orders that include a pastry is 0.40, there is a 0.0385 probability of getting a sample proportion of 0.35 or less by chance in a random sample of 300 orders.</p>
+</div>
+<p>The interpretation has four parts: the condition ("assuming the true proportion is 0.40"), the probability, the statistic and direction ("0.35 or less"), and the sample ("a random sample of 300 orders"). For a two-sided test, say "at least as far from 0.40 as the observed value, in either direction".</p>
+
+<h2>A p-value from a simulation</h2>
+<p>You can also estimate a p-value without a formula. Simulate many samples in a world where $H_0$ is true, then count the simulated results at least as extreme as the real one. A player who claims to make 75% of her free throws makes 31 of 50 ($\hat{p} = 0.62$). If 3 of 100 simulated sets of 50 shots by a 75% shooter come out at 0.62 or lower, the estimated p-value is $\frac{3}{100} = 0.03$. The dotplot of simulated results is centered at 0.75, not at 0.62, because it is built assuming $H_0$.</p>
+
+<h2>What a p-value is not</h2>
+<ul>
+<li>It is <b>not</b> the probability that $H_0$ is true. It is computed by assuming $H_0$ is true.</li>
+<li>A large p-value does <b>not</b> show that $H_0$ is true. It shows that the data are consistent with it.</li>
+<li>A small p-value is evidence against $H_0$, not proof. Rare results do happen.</li>
+</ul>
+<p>Smaller p-values come from results farther from $p_0$ in the direction of $H_a$, and from larger samples, which shrink the standard deviation and so stretch the same difference into a larger $z$. In the next topic you will compare the p-value with $\alpha$ to reach a decision.</p>

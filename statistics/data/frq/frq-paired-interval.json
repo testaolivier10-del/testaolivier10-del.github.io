@@ -1,0 +1,252 @@
+{
+ "id": "frq-paired-interval",
+ "type": "inference",
+ "title": "A fuel additive for city buses",
+ "points": 10,
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "ci-one-mean",
+  "ci-one-mean-claims"
+ ],
+ "practices": [
+  "2.C",
+  "4.E",
+  "3.E",
+  "4.F",
+  "4.G"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Fuel economy with and without an additive",
+  "text": "<p>A city's transit agency runs a fleet of 400 buses. To test a fuel additive, it selected 12 buses at random. Each bus ran one week on regular fuel and one week on fuel with the additive, in a randomly chosen order, on its usual route. The table gives fuel economy in miles per gallon (invented data), and the dotplot shows the 12 differences (with additive minus without).</p><p>The maker of the additive claims it raises mean fuel economy by more than 0.5 miles per gallon.</p>",
+  "table": {
+   "caption": "Fuel economy (miles per gallon) of 12 buses",
+   "cols": [
+    "Bus",
+    "Without",
+    "With",
+    "Difference (with minus without)"
+   ],
+   "rows": [
+    [
+     "1",
+     "6.1",
+     "7",
+     "0.9"
+    ],
+    [
+     "2",
+     "5.8",
+     "6.1",
+     "0.3"
+    ],
+    [
+     "3",
+     "6.4",
+     "7.4",
+     "1"
+    ],
+    [
+     "4",
+     "5.5",
+     "6.1",
+     "0.6"
+    ],
+    [
+     "5",
+     "6.9",
+     "7.4",
+     "0.5"
+    ],
+    [
+     "6",
+     "6.2",
+     "7",
+     "0.8"
+    ],
+    [
+     "7",
+     "5.9",
+     "5.8",
+     "-0.1"
+    ],
+    [
+     "8",
+     "6.6",
+     "7.3",
+     "0.7"
+    ],
+    [
+     "9",
+     "5.7",
+     "6.9",
+     "1.2"
+    ],
+    [
+     "10",
+     "6.3",
+     "6.7",
+     "0.4"
+    ],
+    [
+     "11",
+     "6",
+     "6.9",
+     "0.9"
+    ],
+    [
+     "12",
+     "6.5",
+     "7.1",
+     "0.6"
+    ]
+   ]
+  },
+  "plot": {
+   "label": "Dotplot of the 12 differences in fuel economy, with additive minus without, from -0.1 to 1.2 miles per gallon, with no strong skew and no outliers",
+   "kind": "dot",
+   "data": [
+    0.9,
+    0.3,
+    1,
+    0.6,
+    0.5,
+    0.8,
+    -0.1,
+    0.7,
+    1.2,
+    0.4,
+    0.9,
+    0.6
+   ],
+   "step": 0.1,
+   "x": [
+    -0.4,
+    2.0
+   ],
+   "xLabel": "with minus without (mpg)"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Identify</b> the appropriate inference procedure for estimating how much the additive changes mean fuel economy, and <b>define</b> the parameter it estimates in context.",
+   "rubric": [
+    {
+     "point": "Names a paired t interval for a mean difference (a one-sample t interval on the differences), and gives the reason: each bus was measured both with and without the additive.",
+     "accept": [
+      "paired t interval",
+      "one-sample t interval for the mean of the differences",
+      "matched pairs t interval"
+     ]
+    },
+    {
+     "point": "Defines the parameter in context with the order of subtraction: the true mean difference in fuel economy (with additive minus without) for all 400 buses in the fleet.",
+     "accept": [
+      "mu_d = the true mean of (with minus without) mpg for the fleet's buses",
+      "the population mean difference in miles per gallon for the agency's buses"
+     ]
+    }
+   ],
+   "sample": "Paired t interval for a mean difference, because each bus was measured twice (with and without the additive). mu_d = the true mean difference in fuel economy (with additive minus without), in miles per gallon, for all 400 buses in the fleet."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "<b>Justify</b> that the conditions for the procedure in part (a) are met.",
+   "rubric": [
+    {
+     "point": "Random: the 12 buses were selected at random (and the order of the two weeks was randomized).",
+     "accept": [
+      "the problem says the buses were chosen at random",
+      "random sample of 12 buses"
+     ]
+    },
+    {
+     "point": "10%: 12 is less than 10% of the 400 buses in the fleet (12 < 40).",
+     "accept": [
+      "12 < 0.10(400) = 40",
+      "the sample is less than 10% of the fleet"
+     ]
+    },
+    {
+     "point": "Normal/large sample: n = 12 < 30, so refers to the dotplot of the differences and says it shows no strong skew and no outliers.",
+     "accept": [
+      "the dotplot of the differences has no strong skew or outliers",
+      "the differences look roughly symmetric with no outliers"
+     ]
+    }
+   ],
+   "sample": "Random: the agency selected the 12 buses at random. 10%: 12 is less than 10% of the 400 buses (12 < 40). Normal/large sample: n = 12 < 30, but the dotplot of the 12 differences shows no strong skew and no outliers, so a t procedure is reasonable."
+  },
+  {
+   "label": "c",
+   "points": 3,
+   "prompt": "<b>Construct</b> a 95% confidence interval for the parameter you defined in part (a). Show your work.",
+   "rubric": [
+    {
+     "point": "Gives the summary of the differences: x-bar_d = 0.65 and s_d = 0.35 (about 0.350) miles per gallon.",
+     "accept": [
+      "x-bar_d = 0.65, s_d = 0.350",
+      "mean difference 0.65 mpg, standard deviation 0.35 mpg"
+     ]
+    },
+    {
+     "point": "Shows the expression with values substituted, using t* = 2.201 with df = 11: 0.65 +/- 2.201(0.350/sqrt(12)).",
+     "accept": [
+      "0.65 +/- 2.201*0.350/sqrt(12)",
+      "x-bar_d +/- t*(s_d/sqrt(n)) with the numbers and df 11"
+     ]
+    },
+    {
+     "point": "Gives the interval, about from 0.43 to 0.87 miles per gallon.",
+     "accept": [
+      "(0.43, 0.87)",
+      "from 0.427 to 0.873 mpg",
+      "0.65 +/- 0.223"
+     ]
+    }
+   ],
+   "sample": "x-bar_d = 0.65 mpg, s_d = 0.350 mpg, n = 12, df = 11, t* = 2.201. 0.65 +/- 2.201(0.350/sqrt(12)) = 0.65 +/- 0.223, from 0.43 to 0.87 miles per gallon.",
+   "check": {
+    "type": "interval",
+    "interval": {
+     "places": 2,
+     "from": {
+      "fn": "ci1mean",
+      "args": [
+       0.6500000000000001,
+       0.35032452487268534,
+       12,
+       0.95
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Interpret</b> your interval in context. Then <b>explain</b> whether the interval supports the maker's claim that the additive raises mean fuel economy by more than 0.5 miles per gallon.",
+   "rubric": [
+    {
+     "point": "Interprets the interval: we are 95% confident that the interval from 0.43 to 0.87 captures the true mean difference (with minus without) in fuel economy for the fleet's buses.",
+     "accept": [
+      "95% confident the interval captures the true mean increase in mpg for the agency's buses"
+     ]
+    },
+    {
+     "point": "Uses the interval for the claim: 0.5 is in the interval (plausible values below 0.5 remain), so the interval does not give convincing evidence that the true mean increase is more than 0.5 mpg; notes it does give convincing evidence of some increase, since every value is above 0, if mentioned.",
+     "accept": [
+      "0.5 is inside the interval, so not convincing evidence for the claim",
+      "values from 0.43 to 0.5 are plausible, so the claim is not supported"
+     ]
+    }
+   ],
+   "sample": "We are 95% confident that the interval from 0.43 to 0.87 miles per gallon captures the true mean difference in fuel economy (with additive minus without) for all 400 buses in the fleet. Because 0.5 is in the interval, the interval does not give convincing evidence that the true mean increase is more than 0.5 miles per gallon. (Every value in the interval is greater than 0, so it does give convincing evidence that the additive raises mean fuel economy by some amount.)"
+  }
+ ]
+}

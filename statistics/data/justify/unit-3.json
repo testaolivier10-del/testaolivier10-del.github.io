@@ -1,0 +1,304 @@
+{
+ "about": "\"Say it in context\" prompts for unit-3 (docs/apstat-architecture.md, \"Justification trainer\"; spec section 6). Written in Phase 3 from the banks; checked by checkJustify in scripts/lib/apstat-exams.mjs, numbers recomputed in JUSTIFY_NUMBERS. Invented data.",
+ "prompts": [
+  {
+   "unit": "unit-3",
+   "id": "u3-interval-interpret",
+   "topic": "ci-one-proportion",
+   "practice": "4.F",
+   "skill": "interval",
+   "title": "Interpret a confidence interval",
+   "context": "<p>A random sample of 500 teens in a state found that 151 have a part time job. A 95% confidence interval for the proportion of all the state's teens who have a part time job is from 0.262 to 0.342.</p>",
+   "prompt": "<b>Interpret</b> the confidence interval in context.",
+   "checklist": [
+    "States the confidence level: \"We are 95% confident\"",
+    "Says the interval captures (contains) the parameter, with both endpoints: from 0.262 to 0.342",
+    "Names the parameter in context: the true proportion of all the state's teens who have a part time job (not the sample proportion)"
+   ],
+   "earns": {
+    "answer": "We are 95% confident that the interval from 0.262 to 0.342 captures the true proportion of all the state's teens who have a part time job.",
+    "why": "It has the level, the interval and the parameter in context, the three parts an exam answer needs."
+   },
+   "misses": {
+    "answer": "We are 95% confident that the proportion of the 500 teens who have a part time job is between 0.262 and 0.342.",
+    "why": "The proportion of the 500 sampled teens is known exactly (0.302); the interval estimates the proportion for all the state's teens."
+   },
+   "conclude": {
+    "mode": "interval",
+    "slots": {
+     "level": {
+      "options": [
+       "We are 95% confident that",
+       "There is a 95% probability that",
+       "95% of the state's teens are such that"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "After the interval is built, it either captures the parameter or not; the 95% describes the method, so say confident.",
+       "2": "The interval is about one proportion, not about 95% of the teens."
+      }
+     },
+     "claim": {
+      "options": [
+       "the interval from 0.262 to 0.342 captures",
+       "the sample proportion falls between 0.262 and 0.342, which describes",
+       "0.302 is exactly"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample proportion is known; the interval estimates the parameter.",
+       "2": "0.302 is the estimate; the interval gives a range of plausible values."
+      }
+     },
+     "parameter": {
+      "options": [
+       "the true proportion of all the state's teens who have a part time job.",
+       "the proportion of the 500 sampled teens who have a part time job.",
+       "the number of the state's teens who have a part time job."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the sample; the interval is about all the state's teens.",
+       "2": "The parameter is a proportion, not a count."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-confidence-level",
+   "topic": "ci-one-proportion",
+   "practice": "4.F",
+   "skill": "interval",
+   "title": "Interpret the confidence level",
+   "context": "<p>A random sample of 500 teens in a state found that 151 have a part time job. A 95% confidence interval for the proportion of all the state's teens who have a part time job is from 0.262 to 0.342.</p>",
+   "prompt": "<b>Interpret</b> the confidence level, 95%, in context.",
+   "checklist": [
+    "Describes repeated sampling: many random samples of 500 of the state's teens, with a 95% interval built from each",
+    "Says about 95% of those intervals would capture the true proportion of all the state's teens with a part time job",
+    "Avoids saying there is a 95% chance this one interval contains the proportion, or that 95% of teens are in it"
+   ],
+   "earns": {
+    "answer": "If we took many random samples of 500 of the state's teens and built a 95% confidence interval from each sample, about 95% of those intervals would capture the true proportion of all the state's teens who have a part time job.",
+    "why": "It describes the long run success rate of the method, with the sample size and the parameter in context."
+   },
+   "misses": {
+    "answer": "There is a 95% chance that the true proportion of teens with a part time job is between 0.262 and 0.342.",
+    "why": "That reads the level as a probability about this one interval. The level describes the method over many samples."
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-claim-from-interval",
+   "topic": "ci-one-proportion-claims",
+   "practice": "4.G",
+   "skill": "interval",
+   "title": "Use the interval to judge a claim",
+   "context": "<p>A random sample of 500 teens in a state found that 151 have a part time job. A 95% confidence interval for the proportion of all the state's teens who have a part time job is from 0.262 to 0.342.</p><p>A news report claims that 30% of the state's teens have a part time job.</p>",
+   "prompt": "<b>Explain</b> whether the interval gives convincing evidence that the true proportion differs from 0.30.",
+   "checklist": [
+    "Notes that 0.30 is inside the interval from 0.262 to 0.342, so 0.30 is a plausible value",
+    "Concludes the interval does not give convincing evidence that the true proportion differs from 0.30",
+    "Does not say the interval proves the proportion is 0.30: other values in the interval are plausible too"
+   ],
+   "earns": {
+    "answer": "Because 0.30 is in the interval from 0.262 to 0.342, 0.30 is a plausible value for the true proportion of all the state's teens who have a part time job. So the interval does not give convincing evidence that the true proportion differs from 0.30. It does not show the proportion is 0.30 either, since every value from 0.262 to 0.342 is plausible.",
+    "why": "It compares the claimed value with the interval, concludes with evidence language, and does not overclaim."
+   },
+   "misses": {
+    "answer": "Since 0.30 is in the interval, the interval proves the news report is right.",
+    "why": "An interval never proves a value: 0.28 and 0.33 are just as plausible. The conclusion is \"not convincing evidence that it differs.\""
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-pvalue-meaning",
+   "topic": "p-values",
+   "practice": "4.F",
+   "skill": "test",
+   "title": "What the p-value means",
+   "context": "<p>A city's transit office tests whether more than 25% of all the city's commuters ride a bus at least once a week. It takes a random sample of 300 of the city's more than 200,000 commuters: 93 ride a bus at least once a week, so $\\hat{p} = 0.31$. The hypotheses are $H_0: p = 0.25$ and $H_a: p > 0.25$, where $p$ is the true proportion of all the city's commuters who ride a bus at least once a week. The test gives $z = 2.40$ and a p-value of 0.0082.</p>",
+   "prompt": "<b>Interpret</b> the p-value of 0.0082 in context.",
+   "checklist": [
+    "Conditions on the null hypothesis: assuming the true proportion of all the city's commuters who ride a bus weekly is 0.25",
+    "Names the statistic and the side: a sample proportion of 0.31 or more",
+    "Names the chance part and sample: by chance, in a random sample of 300 commuters, with probability 0.0082"
+   ],
+   "earns": {
+    "answer": "Assuming the true proportion of all the city's commuters who ride a bus at least once a week is 0.25, there is a 0.0082 probability of getting a sample proportion of 0.31 or more by chance in a random sample of 300 commuters.",
+    "why": "It conditions on $H_0$, names the statistic and the side (or more), the sample size and the context."
+   },
+   "misses": {
+    "answer": "There is a 0.0082 probability that the null hypothesis is true.",
+    "why": "The p-value assumes $H_0$ is true; it is the probability of data this extreme, not the probability that $H_0$ is true."
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-test-conclusion",
+   "topic": "test-one-proportion",
+   "practice": "4.G",
+   "skill": "test",
+   "title": "State the test's conclusion",
+   "context": "<p>A city's transit office tests whether more than 25% of all the city's commuters ride a bus at least once a week. It takes a random sample of 300 of the city's more than 200,000 commuters: 93 ride a bus at least once a week, so $\\hat{p} = 0.31$. The hypotheses are $H_0: p = 0.25$ and $H_a: p > 0.25$, where $p$ is the true proportion of all the city's commuters who ride a bus at least once a week. The test gives $z = 2.40$ and a p-value of 0.0082.</p>",
+   "prompt": "<b>State</b> the conclusion of the test at $\\alpha = 0.05$.",
+   "checklist": [
+    "Compares the p-value with alpha, with the inequality: $0.0082 < 0.05$, so reject $H_0$",
+    "Uses evidence language: there is convincing evidence",
+    "States the parameter in context, on the side of $H_a$: the true proportion of all the city's commuters who ride a bus at least once a week is greater than 0.25"
+   ],
+   "earns": {
+    "answer": "Because the p-value of 0.0082 is less than $\\alpha = 0.05$, we reject $H_0$. There is convincing evidence that the true proportion of all the city's commuters who ride a bus at least once a week is greater than 0.25.",
+    "why": "It has the four parts: the comparison, the evidence wording, the side of $H_a$, and the parameter in context."
+   },
+   "misses": {
+    "answer": "We reject $H_0$, so the proportion of commuters who ride the bus is 0.31.",
+    "why": "0.31 is the sample proportion. The conclusion compares nothing with alpha and states no evidence about the parameter; a test gives evidence that $p > 0.25$, not a value for $p$."
+   },
+   "conclude": {
+    "mode": "test",
+    "p": 0.0082,
+    "alpha": 0.05,
+    "ha": "greater",
+    "slots": {
+     "evidence": {
+      "options": [
+       "There is convincing evidence",
+       "There is not convincing evidence",
+       "This proves"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The p-value is below alpha, so the evidence is convincing.",
+       "2": "A test gives evidence; it never proves."
+      }
+     },
+     "parameter": {
+      "options": [
+       "that the true proportion of all the city's commuters who ride a bus weekly",
+       "that the proportion of the 300 sampled commuters who ride a bus weekly",
+       "that the sample proportion 0.31"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample proportion is known; the conclusion is about all the city's commuters.",
+       "2": "A conclusion is about the parameter, not the statistic."
+      }
+     },
+     "direction": {
+      "options": [
+       "is greater than 0.25.",
+       "is equal to 0.25.",
+       "is different from 0.31."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Evidence is for $H_a: p > 0.25$, never that $H_0$ is true.",
+       "2": "The hypotheses are about 0.25, the null value."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-type-errors",
+   "topic": "errors-and-power",
+   "practice": "2.D",
+   "skill": "errors",
+   "title": "Type I and Type II errors in context",
+   "context": "<p>A city's transit office tests whether more than 25% of all the city's commuters ride a bus at least once a week. It takes a random sample of 300 of the city's more than 200,000 commuters: 93 ride a bus at least once a week, so $\\hat{p} = 0.31$. The hypotheses are $H_0: p = 0.25$ and $H_a: p > 0.25$, where $p$ is the true proportion of all the city's commuters who ride a bus at least once a week. The test gives $z = 2.40$ and a p-value of 0.0082.</p><p>If the office finds convincing evidence, it will add buses to its morning routes.</p>",
+   "prompt": "<b>Describe</b> a Type I error and a Type II error in this context, and give a consequence of each.",
+   "checklist": [
+    "Type I, with the conditional clause: the true proportion is 0.25, but the office finds convincing evidence that it is greater than 0.25",
+    "Type I consequence: the office adds buses that ridership does not need, wasting money",
+    "Type II, with the conditional clause: the true proportion is greater than 0.25, but the office does not find convincing evidence that it is",
+    "Type II consequence: the office does not add buses that are needed, so buses stay crowded"
+   ],
+   "earns": {
+    "answer": "A Type I error would occur if the true proportion of all the city's commuters who ride a bus weekly is 0.25, but the office finds convincing evidence that it is greater than 0.25. Then it would add morning buses that are not needed, wasting money. A Type II error would occur if the true proportion is greater than 0.25, but the office does not find convincing evidence that it is. Then it would not add buses that riders need, and morning buses would stay crowded.",
+    "why": "Each error states the truth first (the conditional clause), then the wrong decision, then a consequence in context."
+   },
+   "misses": {
+    "answer": "A Type I error is rejecting a true null hypothesis. A Type II error is failing to reject a false null hypothesis.",
+    "why": "These are textbook definitions with no context: nothing about bus riders, the 0.25 value or the decision to add buses, and no consequences."
+   },
+   "conclude": {
+    "mode": "error",
+    "slots": {
+     "condition": {
+      "options": [
+       "Suppose the true proportion of all the city's commuters who ride a bus weekly is 0.25.",
+       "Suppose the sample proportion is 0.31.",
+       "Suppose the office adds buses."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An error is about the truth of the parameter, not the sample.",
+       "2": "Start with the truth (the conditional clause), then the decision."
+      }
+     },
+     "claim": {
+      "options": [
+       "If the office finds convincing evidence that it is greater than 0.25, that is a Type I error.",
+       "If the office finds convincing evidence that it is greater than 0.25, that is a Type II error.",
+       "If the office fails to find convincing evidence, that is a Type I error."
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rejecting a true null hypothesis is a Type I error.",
+       "2": "Failing to reject a true null hypothesis is the correct decision, not an error."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-conditions-prop-test",
+   "topic": "test-one-proportion-setup",
+   "practice": "4.E",
+   "skill": "conditions",
+   "title": "Check the conditions in words, with numbers",
+   "context": "<p>A city's transit office tests whether more than 25% of all the city's commuters ride a bus at least once a week. It takes a random sample of 300 of the city's more than 200,000 commuters: 93 ride a bus at least once a week, so $\\hat{p} = 0.31$. The hypotheses are $H_0: p = 0.25$ and $H_a: p > 0.25$, where $p$ is the true proportion of all the city's commuters who ride a bus at least once a week. The test gives $z = 2.40$ and a p-value of 0.0082.</p>",
+   "prompt": "<b>Verify</b> the conditions for the one-sample z test for a proportion.",
+   "checklist": [
+    "Random: the problem says a random sample of 300 commuters",
+    "10%: 300 is less than 10% of the more than 200,000 commuters in the city, so sampling without replacement is fine",
+    "Large counts with the null value: $np_0 = 300(0.25) = 75 \\ge 10$ and $n(1 - p_0) = 300(0.75) = 225 \\ge 10$"
+   ],
+   "earns": {
+    "answer": "Random: the office took a random sample of 300 commuters. 10%: 300 is less than 10% of the more than 200,000 commuters in the city. Large counts: $np_0 = 300(0.25) = 75$ and $n(1 - p_0) = 300(0.75) = 225$ are both at least 10, so the sampling distribution of $\\hat{p}$ is approximately normal.",
+    "why": "Each condition is named, tied to the problem's facts, and checked with numbers; large counts use $p_0$, as a test requires."
+   },
+   "misses": {
+    "answer": "The sample is random and $n = 300$ is greater than 30, so the conditions are met.",
+    "why": "\"n greater than 30\" is not a condition for proportions; the large counts check with $p_0$ and the 10% condition are missing."
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-chi-square-conclusion",
+   "topic": "chi-square-test",
+   "practice": "4.G",
+   "skill": "test",
+   "title": "Conclude a chi-square test for homogeneity",
+   "context": "<p>A district takes separate random samples of students at its three high schools and records each student's usual way of getting to school (bus, car, walk, bike). A chi-square test for homogeneity of $H_0$: the distribution of travel method is the same at the three schools gives $\\chi^2 = 14.6$ with $\\text{df} = 6$ and a p-value of 0.024 (invented data).</p>",
+   "prompt": "<b>State</b> the conclusion of the test at $\\alpha = 0.05$.",
+   "checklist": [
+    "Compares: because the p-value of 0.024 is less than $\\alpha = 0.05$, reject $H_0$",
+    "Uses evidence language and the alternative: there is convincing evidence that the distribution of travel method is not the same at the three schools",
+    "Keeps the parameter level: about all the students at the three schools (the true proportions using each method differ), not just the samples"
+   ],
+   "earns": {
+    "answer": "Because the p-value of 0.024 is less than $\\alpha = 0.05$, we reject $H_0$. There is convincing evidence that the distribution of travel method is not the same for all students at the three high schools: the true proportions of all students using at least one of the methods differ among the schools.",
+    "why": "It compares the p-value with alpha, uses evidence language, and states the alternative about the populations of students."
+   },
+   "misses": {
+    "answer": "We reject $H_0$ because $\\chi^2$ is big, so every school has a different travel method.",
+    "why": "\"Big\" is not compared with anything, and the alternative says the distributions are not all the same, not that every school differs in every method."
+   }
+  }
+ ]
+}

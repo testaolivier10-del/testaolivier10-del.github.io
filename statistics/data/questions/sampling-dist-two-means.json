@@ -1,0 +1,550 @@
+{
+ "stimuli": {
+  "sampling-dist-two-means-s1": {
+   "kind": "table",
+   "title": "Apples from two orchards",
+   "text": "<p>Apple weights at two large orchards (invented data): at orchard A the mean is 180 grams with standard deviation 20 grams; at orchard B the mean is 170 grams with standard deviation 25 grams. A buyer takes independent random samples of 40 apples from A and 50 apples from B, each from the thousands harvested, and computes $\\bar{x}_A - \\bar{x}_B$, the difference in sample means.</p>",
+   "table": {
+    "caption": "The two populations and the two samples",
+    "cols": [
+     "Orchard",
+     "Population mean",
+     "Population SD",
+     "Sample size"
+    ],
+    "rows": [
+     [
+      "A",
+      "180 g",
+      "20 g",
+      "40"
+     ],
+     [
+      "B",
+      "170 g",
+      "25 g",
+      "50"
+     ]
+    ]
+   }
+  },
+  "sampling-dist-two-means-s2": {
+   "kind": "table",
+   "title": "Two bottling machines",
+   "text": "<p>Two machines fill water bottles (invented data). Fill volumes from machine 1 are normally distributed with mean 500.0 mL and standard deviation 1.5 mL; from machine 2, normally distributed with mean 499.0 mL and standard deviation 2.0 mL. An inspector takes independent random samples of 8 bottles from machine 1 and 10 from machine 2, out of each day's thousands.</p>",
+   "table": {
+    "caption": "The two machines",
+    "cols": [
+     "Machine",
+     "Mean",
+     "Standard deviation",
+     "Shape",
+     "Sample size"
+    ],
+    "rows": [
+     [
+      "1",
+      "500.0 mL",
+      "1.5 mL",
+      "normal",
+      "8"
+     ],
+     [
+      "2",
+      "499.0 mL",
+      "2.0 mL",
+      "normal",
+      "10"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-sampling-dist-two-means-1",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "single",
+   "practice": "3.D",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the mean of the sampling distribution of $\\bar{x}_A - \\bar{x}_B$?",
+   "stimulus": "sampling-dist-two-means-s1",
+   "options": [
+    "0 grams",
+    "10 grams",
+    "350 grams",
+    "4.74 grams"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\mu_{\\bar{x}_A - \\bar{x}_B} = \\mu_A - \\mu_B = 180 - 170 = 10$ grams.",
+    "options": [
+     "That would be true only if the two orchards had the same mean weight.",
+     "The mean of a difference of sample means is the difference of the population means: $180 - 170 = 10$ grams.",
+     "That adds the means. The statistic is a difference, so subtract.",
+     "That is the standard deviation of the difference, not its mean."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-2",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the standard deviation of the sampling distribution of $\\bar{x}_A - \\bar{x}_B$, in grams?",
+   "stimulus": "sampling-dist-two-means-s1",
+   "why": {
+    "correct": "$\\sigma_{\\bar{x}_A - \\bar{x}_B} = \\sqrt{\\frac{\\sigma_A^2}{n_A} + \\frac{\\sigma_B^2}{n_B}} = \\sqrt{\\frac{20^2}{40} + \\frac{25^2}{50}} = \\sqrt{10 + 12.5} = 4.74$ grams."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "unit": "grams",
+    "from": {
+     "fn": "t2",
+     "args": [
+      180,
+      20,
+      40,
+      170,
+      25,
+      50
+     ],
+     "pick": "se"
+    },
+    "mistakes": [
+     {
+      "value": 6.7,
+      "why": "That adds the two standard deviations, $\\frac{20}{\\sqrt{40}} + \\frac{25}{\\sqrt{50}}$. Variances add, not standard deviations: square, add, then take the square root."
+     },
+     {
+      "value": 1.58,
+      "why": "That subtracts the variances. Even for a difference of means, the variances add, because each sample mean adds its own variability."
+     },
+     {
+      "value": 32.02,
+      "why": "That leaves out the sample sizes. Each variance is divided by its own $n$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-3",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "setup",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the expression for the standard deviation of $\\bar{x}_A - \\bar{x}_B$. Type it as on the exam, for example sqrt(a^2/m + b^2/n).",
+   "stimulus": "sampling-dist-two-means-s1",
+   "why": {
+    "correct": "$\\sqrt{\\frac{20^2}{40} + \\frac{25^2}{50}} = 4.74$ grams: each population variance divided by its own sample size, added, then the square root."
+   },
+   "setup": {
+    "answer": "sqrt(20^2/40 + 25^2/50)",
+    "bind": {},
+    "mustUse": [
+     "40",
+     "50"
+    ],
+    "mistakes": [
+     {
+      "expr": "20/sqrt(40) + 25/sqrt(50)",
+      "why": "Standard deviations do not add. Add the variances 20^2/40 and 25^2/50, then take one square root."
+     },
+     {
+      "expr": "sqrt(20/40 + 25/50)",
+      "why": "Square each standard deviation first: 20^2/40, not 20/40."
+     },
+     {
+      "expr": "sqrt(20^2 + 25^2)",
+      "why": "Divide each variance by its sample size: 20^2/40 and 25^2/50."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-4",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 3,
+   "q": "What is the probability that the sample mean weight from orchard A is less than the sample mean weight from orchard B (that is, $\\bar{x}_A - \\bar{x}_B < 0$)?",
+   "stimulus": "sampling-dist-two-means-s1",
+   "why": {
+    "correct": "$\\bar{x}_A - \\bar{x}_B$ is approximately normal with mean 10 and standard deviation 4.74. $P(\\bar{x}_A - \\bar{x}_B < 0) = P\\left(z < \\frac{0 - 10}{4.74}\\right) = P(z < -2.11) = 0.0175$ (Table A gives 0.0174)."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "normCdf",
+     "args": [
+      0,
+      10,
+      4.743416490252569
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.0677,
+      "why": "That uses a standard deviation of 6.70, from adding the standard deviations. Add the variances: $\\sqrt{10 + 12.5} = 4.74$."
+     },
+     {
+      "value": 0.9825,
+      "why": "That is the probability that A's sample mean is larger. The question asks for $\\bar{x}_A - \\bar{x}_B < 0$, the lower tail."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-5",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is a normal model reasonable for the sampling distribution of $\\bar{x}_A - \\bar{x}_B$?",
+   "stimulus": "sampling-dist-two-means-s1",
+   "options": [
+    "Each sample has at least 30 apples",
+    "The total sample size, 90, is at least 30",
+    "Apple weights are normally distributed",
+    "The samples are independent"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Shape: both populations normal, or both $n_1 \\ge 30$ and $n_2 \\ge 30$. Here the second holds.",
+    "options": [
+     "$n_A = 40 \\ge 30$ and $n_B = 50 \\ge 30$, so each sample mean is approximately normal, and so is their difference.",
+     "Each sample needs its own check; a small sample cannot borrow size from the other.",
+     "The stimulus does not say the populations are normal, so rely on the sample sizes.",
+     "Independence is needed for the standard deviation formula, not for the shape."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-6",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The samples are small. What is the shape of the sampling distribution of $\\bar{x}_1 - \\bar{x}_2$?",
+   "stimulus": "sampling-dist-two-means-s2",
+   "options": [
+    "Not normal, because both samples are smaller than 30",
+    "Approximately normal, because 8 + 10 = 18 is at least 15",
+    "Normal, because both populations are normal",
+    "Skewed toward the machine with the larger standard deviation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Both populations are normal, so $\\bar{x}_1$, $\\bar{x}_2$ and their difference are normal for any sample sizes.",
+    "options": [
+     "The central limit theorem is not needed when the populations are normal.",
+     "There is no such rule; the reason is the normal populations.",
+     "Normal populations give normal sample means at any sample size, and the difference of two independent normal sample means is normal too.",
+     "Both populations are normal, so nothing introduces skew."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-7",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the standard deviation of $\\bar{x}_1 - \\bar{x}_2$, in mL?",
+   "stimulus": "sampling-dist-two-means-s2",
+   "why": {
+    "correct": "$\\sqrt{\\frac{1.5^2}{8} + \\frac{2.0^2}{10}} = \\sqrt{0.281 + 0.400} = 0.825$ mL."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 3,
+    "unit": "mL",
+    "from": {
+     "fn": "t2",
+     "args": [
+      500,
+      1.5,
+      8,
+      499,
+      2,
+      10
+     ],
+     "pick": "se"
+    },
+    "mistakes": [
+     {
+      "value": 1.162,
+      "why": "That adds the standard deviations $\\frac{1.5}{\\sqrt{8}} + \\frac{2.0}{\\sqrt{10}}$. Add the variances, then take the square root."
+     },
+     {
+      "value": 2.5,
+      "why": "That leaves out the sample sizes: $\\sqrt{1.5^2 + 2.0^2} = 2.5$. Divide each variance by its $n$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-8",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "numeric",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 3,
+   "q": "What is the probability that $\\bar{x}_1 - \\bar{x}_2$ is greater than 2 mL?",
+   "stimulus": "sampling-dist-two-means-s2",
+   "why": {
+    "correct": "$\\bar{x}_1 - \\bar{x}_2$ is normal with mean $500.0 - 499.0 = 1$ and standard deviation 0.825. $P(\\bar{x}_1 - \\bar{x}_2 > 2) = P\\left(z > \\frac{2 - 1}{0.825}\\right) = P(z > 1.21) = 0.113$."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "normCdf",
+     "args": [
+      0,
+      1,
+      0.8253787009609589
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.0075,
+      "why": "That centers the distribution at 0. Its mean is the difference of the population means, $500.0 - 499.0 = 1$ mL."
+     },
+     {
+      "value": 0.8871,
+      "why": "That is the area below 2 mL. \"Greater than 2\" is the upper tail."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-9",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Suppose the inspector sees $\\bar{x}_1 - \\bar{x}_2 = 2.1$ mL. Given the machines' true means (500.0 and 499.0 mL), is this result surprising?",
+   "stimulus": "sampling-dist-two-means-s2",
+   "options": [
+    "Yes, because 2.1 is more than twice the true difference of 1 mL between machines",
+    "Not very: a difference of 2.1 mL or more happens in about 9% of samples",
+    "Yes, because the true means differ by just 1 mL",
+    "There is no way to judge it without the sample standard deviations"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$z = \\frac{2.1 - 1}{0.825} = 1.33$, and about 9% of differences are that large or larger, so it is not unusual.",
+    "options": [
+     "Being twice as large is not the measure. Count standard deviations: about 1.3.",
+     "With mean 1 and standard deviation 0.825, a difference of 2.1 is only about 1.3 standard deviations above the mean.",
+     "Sample means vary; with samples this small, a gap of 2.1 mL is quite possible.",
+     "The population standard deviations are known here, so the sampling distribution is known."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-10",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the standard deviation of $\\bar{x}_1 - \\bar{x}_2$ add the two variances, even though the means are subtracted?",
+   "options": [
+    "Because subtracting a negative number is the same as adding a positive one",
+    "Because the two samples are the same size",
+    "Because the second mean is usually smaller than the first",
+    "Each sample mean varies on its own, and both kinds of variation show up in the difference"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For independent samples, $\\sigma^2_{\\bar{x}_1 - \\bar{x}_2} = \\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}$: uncertainty from both samples accumulates.",
+    "options": [
+     "The rule is about variability, not about signs.",
+     "The rule holds for any sample sizes, as long as the samples are independent.",
+     "The sizes of the means do not matter; their variability does.",
+     "A difference can be off because $\\bar{x}_1$ is high, because $\\bar{x}_2$ is low, or both, so its spread is larger than either one's."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-11",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A coach records each of 25 runners' mile time in the morning and again in the evening. Why should the formula $\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$ not be used for the morning mean minus the evening mean?",
+   "options": [
+    "The two sets of times come from the same runners, so they are not independent samples",
+    "The sample of 25 is smaller than 30",
+    "Mile times are not normally distributed",
+    "The formula is for proportions, not for means"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The variance formula needs two independent samples. Measurements on the same individuals are paired, so use the differences and a one-sample method.",
+    "options": [
+     "A fast runner is fast both times, so the two means move together. Paired data are analyzed through the differences instead.",
+     "Sample size affects the shape, not whether this formula applies.",
+     "Shape is a separate condition; the issue is dependence.",
+     "This is the formula for means; it needs independent samples."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-12",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "single",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Independent random samples of 60 nurses are taken at each of two hospitals, one with 450 nurses and one with 2,000. Which condition check is needed for the standard deviation formula?",
+   "options": [
+    "The total of 120 has to be less than 10% of the 2,450 nurses",
+    "Each sample has to be less than 10% of its own hospital's nurses",
+    "The two hospitals need the same number of nurses",
+    "Each sample needs at least 10 nurses"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Independence within each sample: $n_1 < 0.10N_1$ and $n_2 < 0.10N_2$. Here $60 > 45$ at the smaller hospital.",
+    "options": [
+     "Each sample is drawn from its own population, so each is checked separately.",
+     "The 10% condition is checked for each sample. 60 is less than 10% of 2,000 (200) but not of 450 (45), so it fails for the first hospital.",
+     "Population sizes can differ; each sample just needs to be a small share of its own population.",
+     "That is not a condition for means; the large counts condition is for proportions."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-13",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "multi",
+   "practice": "4.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "In which situations is the sampling distribution of $\\bar{x}_1 - \\bar{x}_2$ approximately normal? Select all that apply.",
+   "options": [
+    "Both populations are normal, with $n_1 = 6$ and $n_2 = 9$",
+    "Both populations are skewed, with $n_1 = 45$ and $n_2 = 60$",
+    "Both populations are strongly skewed, with $n_1 = 50$ and $n_2 = 8$",
+    "Both populations are strongly skewed, with $n_1 = n_2 = 12$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Each sample mean must be approximately normal: from a normal population, or from a sample of at least 30.",
+    "options": [
+     "Right: normal populations give a normal difference at any sample size.",
+     "Right: both samples are at least 30, so the central limit theorem applies to each.",
+     "The second sample is small and its population is skewed, so its mean is not approximately normal.",
+     "Neither condition holds: the populations are not normal and the samples are small."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-14",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "single",
+   "practice": "4.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In the orchard study, the buyer increases the sample from orchard B from 50 to 200 apples and keeps 40 from orchard A. What happens to the standard deviation of $\\bar{x}_A - \\bar{x}_B$?",
+   "options": [
+    "It is cut in half",
+    "It stays the same",
+    "It decreases, but not by half",
+    "It increases, because there are more apples"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Variance $= \\frac{\\sigma_A^2}{n_A} + \\frac{\\sigma_B^2}{n_B} = 10 + 3.125$; square root 3.62 grams.",
+    "options": [
+     "Only one variance term shrinks (12.5 to 3.125); the other stays at 10.",
+     "A larger sample from B makes $\\bar{x}_B$ less variable, so the difference varies less.",
+     "It becomes $\\sqrt{\\frac{20^2}{40} + \\frac{25^2}{200}} = \\sqrt{10 + 3.125} = 3.62$ grams, down from 4.74. The orchard A part, 10, does not shrink.",
+     "More data make sample means less variable, not more."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-15",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "single",
+   "practice": "3.D",
+   "level": "recall",
+   "diff": 1,
+   "q": "For independent random samples, which gives the mean and standard deviation of the sampling distribution of $\\bar{x}_1 - \\bar{x}_2$?",
+   "options": [
+    "Mean $\\mu_1 - \\mu_2$, standard deviation $\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$",
+    "Mean $\\mu_1 - \\mu_2$, standard deviation $\\frac{\\sigma_1}{\\sqrt{n_1}} - \\frac{\\sigma_2}{\\sqrt{n_2}}$",
+    "Mean 0, standard deviation $\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$",
+    "Mean $\\mu_1 - \\mu_2$, standard deviation $\\sqrt{\\frac{\\sigma_1^2}{n_1} - \\frac{\\sigma_2^2}{n_2}}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\mu_{\\bar{x}_1 - \\bar{x}_2} = \\mu_1 - \\mu_2$ and $\\sigma_{\\bar{x}_1 - \\bar{x}_2} = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$.",
+    "options": [
+     "These are the formulas on the reference sheet for the difference of two sample means.",
+     "Standard deviations neither add nor subtract; variances add.",
+     "The center is 0 only when the population means are equal.",
+     "The variances add, even though the means are subtracted."
+    ]
+   }
+  },
+  {
+   "id": "stat-sampling-dist-two-means-16",
+   "unit": "unit-4",
+   "topic": "sampling-dist-two-means",
+   "type": "single",
+   "practice": "4.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In an experiment, 50 volunteers are randomly assigned, 25 to each of two diets, and weight change is recorded. The volunteers are not a random sample. Which statement is true about using the sampling distribution of $\\bar{x}_1 - \\bar{x}_2$?",
+   "options": [
+    "It does not apply, because there was no random sample",
+    "It applies after checking that 25 is less than 10% of the volunteers",
+    "It applies if both diets give the same mean weight change",
+    "Random assignment makes the groups independent, so it applies"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For experiments, random assignment provides independence between groups. Results then apply to volunteers like these, not to a larger population.",
+    "options": [
+     "Random assignment also gives the chance process the model needs.",
+     "The 10% condition is for sampling from a population, not for random assignment within a group of volunteers.",
+     "The model works whatever the true means are; its center is $\\mu_1 - \\mu_2$.",
+     "The randomness comes from the assignment; the two groups' responses vary independently, and the 10% condition does not apply."
+    ]
+   }
+  }
+ ]
+}

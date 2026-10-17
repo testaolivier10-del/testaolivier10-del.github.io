@@ -1,0 +1,46 @@
+<p>Most questions in statistics compare groups: do patients on a new schedule wait less? Is one bus route more reliable? This topic covers two kinds of comparison. First, comparing whole distributions, feature by feature. Second, comparing single values that come from different distributions, using z-scores and percentiles.</p>
+
+<h2>Comparing distributions</h2>
+<p>Put the groups on the same scale: parallel boxplots, dotplots stacked on one axis, or histograms with the same bins. Then compare every feature you would describe for one distribution:</p>
+<ul>
+<li><b>Shape</b>: is one skewed and the other symmetric?</li>
+<li><b>Center</b>: which has the greater median (or mean)?</li>
+<li><b>Spread</b>: which is more variable (larger IQR or standard deviation)?</li>
+<li><b>Unusual features</b>: outliers, gaps or clusters in either group.</li>
+</ul>
+<p>The single most common lost point: listing numbers without comparing them. "Route 1’s median is 31 and Route 2’s is 28" describes; it does not compare. Use a comparing word: <i>greater, less, more variable, less variable, similar</i>.</p>
+<figure id="fig-cmp" data-fig="compare-and-z"><figcaption>Parallel boxplots of delivery times at two restaurants, and a z-score shown on a number line.</figcaption></figure>
+<div class="worked">
+<p><b>Compare two distributions.</b> A commuter timed 15 trips on each of two bus routes. Route 1 (minutes): $Q_1 = 28$, median 31, $Q_3 = 34$, whiskers from 24 to 39, no outliers. Route 2: $Q_1 = 23$, median 28, $Q_3 = 38$, whiskers from 18 to 45, one outlier at 62.</p>
+<p>Shape: Route 2 is skewed right with a high outlier; Route 1 is roughly symmetric.</p>
+<p>Center: Route 1 has the greater median travel time, 31 minutes against 28.</p>
+<p>Spread: Route 2 is much more variable, with an IQR of $38 - 23 = 15$ minutes against $34 - 28 = 6$ minutes.</p>
+<p>In context: <i>"Trips on Route 1 have a greater median time than trips on Route 2 (31 against 28 minutes), but Route 2’s times are far more variable (IQR 15 against 6 minutes). Route 2 is skewed right with an outlier at 62 minutes, while Route 1 is roughly symmetric with no outliers."</i></p>
+<p>A claim from the data: if the commuter must arrive within 40 minutes every day, Route 1 is the better choice, because all 15 of its trips took 39 minutes or less, while 3 of Route 2’s trips took more than 40.</p>
+</div>
+<p>One more trap: you cannot combine two groups by averaging their medians. The median of the combined data depends on every value and on the size of each group.</p>
+
+<h2>Relative position: z-scores</h2>
+<p>Ana scored 86 on a test in class A; Ben scored 88 on a different test in class B. Who did better? The raw scores cannot answer this, because the tests differ. What we can compare is how far each score stands above its own class, measured in a unit that adjusts for each class’s spread: the standard deviation.</p>
+<p>The <b>z-score</b> of a value is</p>
+<p>$$z = \frac{x - \bar{x}}{s}$$</p>
+<p>using the sample mean and standard deviation (or $\frac{x - \mu}{\sigma}$ when the population values are known). It counts how many standard deviations the value is above (positive) or below (negative) the mean.</p>
+<div class="worked">
+<p><b>Compare with z-scores.</b> Class A has mean 74 and standard deviation 8; class B has mean 81 and standard deviation 4.</p>
+<p>Ana: $z = \frac{86 - 74}{8} = \frac{12}{8} = 1.5$.</p>
+<p>Ben: $z = \frac{88 - 81}{4} = \frac{7}{4} = 1.75$.</p>
+<p>Interpretation in context: <i>"Ana’s score is 1.5 standard deviations above the mean score of class A, and Ben’s score is 1.75 standard deviations above the mean score of class B."</i></p>
+<p>Conclusion: relative to his class, Ben did better. Ana is 12 points above her mean and Ben only 7, but class B’s scores vary less, so 7 points there is the larger achievement.</p>
+</div>
+<p>A z-score has no units, since the top and bottom of the fraction are in the same units. Converting heights from inches to centimeters leaves every z-score the same. You can also run the formula backward: the value with z-score $-0.5$ when the mean is 60 and the standard deviation is 10 is $60 + (-0.5)(10) = 55$.</p>
+
+<h2>Relative position: percentiles</h2>
+<p>A percentile is the other measure of relative position: a height at the 90th percentile of a class is at or above 90% of the heights in that class. Like a z-score, a percentile describes position within its own group. Kai at the 90th percentile of his class and Lena at the 85th percentile of hers does not tell you who is taller in centimeters.</p>
+<table class="compare">
+<thead><tr><th></th><th>z-score</th><th>Percentile</th></tr></thead>
+<tbody>
+<tr><th>Tells you</th><td>standard deviations above or below the mean</td><td>percent of values at or below</td></tr>
+<tr><th>Needs</th><td>the mean and standard deviation</td><td>the ordered data</td></tr>
+<tr><th>Sign</th><td>negative below the mean</td><td>always from 0 to 100</td></tr>
+</tbody>
+</table>

@@ -1,0 +1,71 @@
+{
+ "topic": "random-variable-parameters",
+ "hook": "A food truck plans tomorrow's supplies. Some orders are 1 taco, some are 5. How many tacos is an average order? Not the middle of 1 to 5: small orders are far more common. Weight each order size by how often it happens and you get the mean of the random variable, the number every planner wants.",
+ "prereq": [
+  {
+   "q": "The mean of the data 2, 4, 9 is",
+   "options": [
+    "5",
+    "4",
+    "15",
+    "9"
+   ],
+   "correct": 0,
+   "why": "$\\frac{2 + 4 + 9}{3} = 5$.",
+   "review": "summary-statistics"
+  },
+  {
+   "q": "For X with $P(X = 1) = 0.5$, $P(X = 2) = 0.3$, $P(X = 3) = 0.2$, what is $P(X \\ge 2)$?",
+   "options": [
+    "0.5",
+    "0.3",
+    "0.2",
+    "0.8"
+   ],
+   "correct": 0,
+   "why": "$0.3 + 0.2 = 0.5$.",
+   "review": "random-variables"
+  }
+ ],
+ "figure": {
+  "figure": "u2-tacos-balance",
+  "caption": "The mean, 2.5 tacos, is where the probability histogram balances; the standard deviation, about 1.12 tacos, is a typical distance from it."
+ },
+ "chain": [
+  {
+   "cause": "Some values of X are more likely than others",
+   "effect": "a plain average of the values is wrong; each value must count by its probability"
+  },
+  {
+   "cause": "Multiply each value by its probability and add",
+   "effect": "the mean (expected value) $\\mu_X = \\sum x_i p_i$, the long-run average"
+  },
+  {
+   "cause": "Weight the squared distances from the mean the same way",
+   "effect": "the variance; its square root is the standard deviation $\\sigma_X$"
+  },
+  {
+   "cause": "Interpret both in context",
+   "effect": "the mean is the average over many repetitions; the SD is how far values typically land from it"
+  }
+ ],
+ "ideas": [
+  "The <b>mean</b> or <b>expected value</b> of a discrete random variable is $\\mu_X = E(X) = \\sum x_i p_i$: each value times its probability, added up. It is the long-run average and need not be a possible value.",
+  "The <b>standard deviation</b> is $\\sigma_X = \\sqrt{\\sum (x_i - \\mu_X)^2 p_i}$: a typical distance of the values from the mean, in the units of X.",
+  "Show the expression, the substitution and the answer: $1(0.20) + 2(0.35) + \\dots = 2.5$.",
+  "Interpret in context: \"Over many orders, the average number of tacos per order is about 2.5.\""
+ ],
+ "misconception": {
+  "wrong": "The mean of X is the average of its possible values: $\\frac{1 + 2 + 3 + 4 + 5}{5} = 3$ tacos.",
+  "right": "Each value counts by its probability. Small orders are more likely, so $\\mu_X = \\sum x_i p_i = 2.5$ tacos."
+ },
+ "check": [
+  "stat-random-variable-parameters-1",
+  "stat-random-variable-parameters-2",
+  "stat-random-variable-parameters-3",
+  "stat-random-variable-parameters-4",
+  "stat-random-variable-parameters-6",
+  "stat-random-variable-parameters-13"
+ ],
+ "summary": "The mean of a discrete random variable weights each value by its probability: $\\mu_X = \\sum x_i p_i$. It is the average over many repetitions. The standard deviation $\\sigma_X = \\sqrt{\\sum (x_i - \\mu_X)^2 p_i}$ is a typical distance from that mean. Write the expression with the numbers substituted, then interpret both in context."
+}

@@ -1,0 +1,8 @@
+{
+ "diff-proportions": {
+  "def": "The statistic $\\hat{p}_1 - \\hat{p}_2$, one sample proportion minus another. Its sampling distribution has mean $p_1 - p_2$ and, for independent samples, standard deviation $\\sqrt{\\frac{p_1(1-p_1)}{n_1} + \\frac{p_2(1-p_2)}{n_2}}$."
+ },
+ "independent-samples": {
+  "def": "Two samples where the individuals chosen for one have no link to those chosen for the other, such as separate random samples from two schools. Samples linked person to person, such as husbands and their own wives, are not independent samples."
+ }
+}

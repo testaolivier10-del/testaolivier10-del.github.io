@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Probability — AP® Statistics Notes</title>
+<meta name="description" content="When every outcome has the same chance, you can often skip the repetition and find the probability exactly, by careful counting.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/probability-intro.html">
+<meta property="og:title" content="Introduction to Probability — AP® Statistics Notes">
+<meta property="og:description" content="When every outcome has the same chance, you can often skip the repetition and find the probability exactly, by careful counting.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/probability-intro.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/probability-intro.html#reading",
+      "name": "Introduction to Probability",
+      "url": "https://levlprep.com/statistics/notes/probability-intro.html",
+      "description": "When every outcome has the same chance, you can often skip the repetition and find the probability exactly, by careful counting.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "introduction to probability ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Probability, Random Variables, and Probability Distributions",
+          "item": "https://levlprep.com/statistics/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Introduction to Probability: notes",
+          "item": "https://levlprep.com/statistics/notes/probability-intro.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="probability-intro" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Exploring One-Variable Data and Collecting Data</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Probability, Random Variables, and Probability Distributions</b><small>12 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="two-categorical-displays"><a href="two-categorical-displays.html"><span class="bk-toc-n">2.1</span>Tabular and Graphical Representations for the Distributions of Two Categorical Variables</a></li><li data-toc-t="two-categorical-summaries"><a href="two-categorical-summaries.html"><span class="bk-toc-n">2.2</span>Summary Statistics for Two Categorical Variables</a></li><li data-toc-t="simulation"><a href="simulation.html"><span class="bk-toc-n">2.3</span>Estimating Probabilities Using Simulation</a></li><li class="current" data-toc-t="probability-intro"><a href="#main" aria-current="page"><span class="bk-toc-n">2.4</span>Introduction to Probability</a><div class="bk-toc-onpage"><p>On this page</p><a href="#sample-spaces-and-events">Sample spaces and events</a><a href="#probability-by-counting">Probability by counting</a><a href="#two-rules-every-probability-follows">Two rules every probability follows</a><a href="#the-complement-rule">The complement rule</a><a href="#words-to-translate-carefully">Words to translate carefully</a></div></li><li data-toc-t="mutually-exclusive"><a href="mutually-exclusive.html"><span class="bk-toc-n">2.5</span>Mutually Exclusive Events</a></li><li data-toc-t="conditional-probability"><a href="conditional-probability.html"><span class="bk-toc-n">2.6</span>Conditional Probability</a></li><li data-toc-t="independence-unions"><a href="independence-unions.html"><span class="bk-toc-n">2.7</span>Independent Events and Unions of Events</a></li><li data-toc-t="random-variables"><a href="random-variables.html"><span class="bk-toc-n">2.8</span>Introduction to Random Variables and Probability Distributions</a></li><li data-toc-t="random-variable-parameters"><a href="random-variable-parameters.html"><span class="bk-toc-n">2.9</span>Parameters of Random Variables</a></li><li data-toc-t="binomial-distribution"><a href="binomial-distribution.html"><span class="bk-toc-n">2.10</span>The Binomial Distribution</a></li><li data-toc-t="normal-distribution"><a href="normal-distribution.html"><span class="bk-toc-n">2.11</span>The Normal Distribution</a></li><li data-toc-t="sampling-distributions"><a href="sampling-distributions.html"><span class="bk-toc-n">2.12</span>Sampling Distributions and the Central Limit Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Inference for Categorical Data: Proportions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Probability, Random Variables, and Probability Distributions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Introduction to Probability: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/probability-intro.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 2 &middot; Topic 2.4 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Introduction to Probability</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="probability-intro">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fprobability-intro.html&amp;title=Introduction%20to%20Probability%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/probability-intro.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>A <a class="gl" href="../notes/simulation.html" data-c="simulation">simulation</a> estimates a <a class="gl" href="../notes/simulation.html" data-c="probability">probability</a> by repeating a <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">chance process</a>. When every outcome has the same chance, you can often skip the repetition and find the probability exactly, by careful counting. This page sets up the words you need: <span class="gl" tabindex="0" data-c="sample-space">sample space</span>, <span class="gl" tabindex="0" data-c="event">event</span> and <span class="gl" tabindex="0" data-c="complement">complement</span>.</p>
+
+<h2 id="sample-spaces-and-events">Sample spaces and events</h2>
+<p>The <b><a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> space</b> of a chance process is the list of all its possible outcomes. Flip a coin: heads, tails. Roll one die: 1, 2, 3, 4, 5, 6. Roll a red die and a blue die: 36 ordered pairs, from (1, 1) to (6, 6). An <b>event</b> is a set of outcomes, described in words: "the sum is 8" is the event made of (2, 6), (3, 5), (4, 4), (5, 3) and (6, 2).</p>
+<figure id="fig-dice"  class="stat-figure"><div class="stat-figimg" data-fig="u2-dice-grid"><img src="../figures/u2-dice-grid.svg" alt="A 6 by 6 grid of the 36 equally likely outcomes when a red die and a blue die are rolled. The 5 outcomes with a sum of 8 are shaded: (2, 6), (3, 5), (4, 4), (5, 3) and (6, 2). So P(sum is 8) = 5/36." width="560" height="430" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The 36 outcomes of two dice, with the event "sum is 8" shaded. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Order matters here. (2, 6) <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a> red 2 and blue 6; (6, 2) means red 6 and blue 2. They are different outcomes, which is why the grid in <a class="figref" href="#fig-dice">the figure</a> has 36 cells.</p>
+
+<h2 id="probability-by-counting">Probability by counting</h2>
+<p>If the outcomes in the sample space are <b>equally likely</b>, then</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mtext>number of outcomes in </mtext><mi>A</mi></mrow><mtext>number of outcomes in the sample space</mtext></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">P(A) = \frac{\text{number of outcomes in } A}{\text{number of outcomes in the sample space}}.</annotation></semantics></math></p>
+<div class="worked">
+<p><b>Worked example 1.</b> Two fair dice are rolled. Find the probability that the sum is <a class="gl" href="../notes/math-inequality-words.html" data-c="inequality-words">at least</a> 10.</p>
+<p>Write the event in words first: "at least 10" means a sum of 10, 11 or 12.</p>
+<p>Count its outcomes: (4, 6), (5, 5), (6, 4), (5, 6), (6, 5), (6, 6). That is 6.</p>
+<p>Divide: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>sum</mtext><mo>≥</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{sum} \ge 10)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>6</mn><mn>36</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{6}{36}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{1}{6}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">≈</mo><mn>0.167</mn></mrow><annotation encoding="application/x-tex">\approx 0.167</annotation></semantics></math>.</p>
+</div>
+<p>The rule needs equally likely outcomes. There are 11 possible sums (2 to 12), but they are not equally likely: six pairs give 7 and only one gives 12. Likewise "win, lose or tie" does not make each a one-third chance. When outcomes are not equally likely, probabilities come from long-run shares or from <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>, such as the counts in a table. Choose one of 40 club members at random, 8 of them juniors, and each member is equally likely, so <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>junior</mtext><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>8</mn><mn>40</mn></mfrac><mo>=</mo><mn>0.2</mn></mrow><annotation encoding="application/x-tex">P(\text{junior}) = \frac{8}{40} = 0.2</annotation></semantics></math>, even though there are only 4 classes.</p>
+
+<h2 id="two-rules-every-probability-follows">Two rules every probability follows</h2>
+<ul>
+<li>Every probability is between 0 and 1. A probability of 0 means the event never happens; 1 means it always does. A value like 1.2 or <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.3</mn></mrow><annotation encoding="application/x-tex">-0.3</annotation></semantics></math> signals a mistake.</li>
+<li>The probabilities of all the outcomes in a sample space add to 1, because one of them is sure to happen.</li>
+</ul>
+<p>A probability is a long-run idea. A forecast of 0.3 for rain means that on many days like tomorrow it rains on about 30% of them. It does not promise 3 rainy days in every 10.</p>
+
+<h2 id="the-complement-rule">The complement rule</h2>
+<p>The <b>complement</b> of event A, written <math class="stat-m"><semantics><mrow><msup><mi>A</mi><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">A^c</annotation></semantics></math>, is "A does not happen". A and <math class="stat-m"><semantics><mrow><msup><mi>A</mi><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">A^c</annotation></semantics></math> split the sample space between them, so</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msup><mi>A</mi><mi>c</mi></msup><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">P(A^c) = 1 - P(A).</annotation></semantics></math></p>
+<p>The complement is often much easier to count. "At least one" questions are the classic <a class="gl" href="../notes/variables.html" data-c="observational-unit">case</a>: the complement of "at least one 6" is "no 6 at all".</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Two dice are rolled. Find the probability that at least one die shows a 6.</p>
+<p>Complement: neither die shows a 6. The red die has 5 choices and the blue die has 5 choices, so <math class="stat-m"><semantics><mrow><mn>5</mn><mo>×</mo><mn>5</mn><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">5 \times 5 = 25</annotation></semantics></math> outcomes.</p>
+<p>Complement rule: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>at least one </mtext><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{at least one } 6)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>1</mn><mo>−</mo><mfrac><mn>25</mn><mn>36</mn></mfrac></mrow><annotation encoding="application/x-tex">= 1 - \frac{25}{36}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>11</mn><mn>36</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{11}{36}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">≈</mo><mn>0.306</mn></mrow><annotation encoding="application/x-tex">\approx 0.306</annotation></semantics></math>.</p>
+<p>Check by direct count: 6 outcomes with a red 6 and 6 with a blue 6, but (6, 6) is in both lists, so <math class="stat-m"><semantics><mrow><mn>6</mn><mo>+</mo><mn>6</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">6 + 6 - 1 = 11</annotation></semantics></math>.</p>
+</div>
+<p>The direct count shows the trap the complement avoids: counting (6, 6) twice gives <math class="stat-m"><semantics><mrow><mfrac><mn>12</mn><mn>36</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{12}{36}</annotation></semantics></math>, which is wrong.</p>
+
+<h2 id="words-to-translate-carefully">Words to translate carefully</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Words</th><th>Means</th><th>For a sum of two dice</th></tr></thead>
+<tbody>
+<tr><td>at least 10</td><td>10 or more</td><td>10, 11, 12</td></tr>
+<tr><td>more than 10</td><td>above 10</td><td>11, 12</td></tr>
+<tr><td>at most 3</td><td>3 or less</td><td>2, 3</td></tr>
+<tr><td>not doubles</td><td>the complement of doubles</td><td>30 of the 36 outcomes</td></tr>
+</tbody>
+</table></div>
+<p>Write the event in words, list or count its outcomes, and check that your answer is between 0 and 1. If it is bigger than a half, ask whether the event really is more likely than not.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:probability-intro">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="math-inequality-words.html"><span>&larr; Previous</span><b>Inequalities in Words</b></a><a class="tb-chapter-link next" href="mutually-exclusive.html"><span>Next &rarr;</span><b>Mutually Exclusive Events</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:probability-intro">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

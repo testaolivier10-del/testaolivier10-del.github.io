@@ -1,0 +1,58 @@
+<p>New information changes probabilities. The chance that a randomly chosen adult gets news online is one number; the chance once you know the adult is under 40 is another. This topic is about that second kind of probability, and about the most common mistake in all of probability: mixing up which event is known.</p>
+
+<h2>Given that: a new total</h2>
+<p>A random sample of 400 adults reported their main news source.</p>
+<table class="compare">
+<thead><tr><th>Age group</th><th>Online</th><th>TV</th><th>Print</th><th>Total</th></tr></thead>
+<tbody>
+<tr><td>Under 40</td><td>132</td><td>66</td><td>22</td><td>220</td></tr>
+<tr><td>40 and over</td><td>54</td><td>90</td><td>36</td><td>180</td></tr>
+<tr><td>Total</td><td>186</td><td>156</td><td>58</td><td>400</td></tr>
+</tbody>
+</table>
+<p>Choose one of the 400 at random. The probability of "online" is $\frac{186}{400} = 0.465$. Now suppose you are told the person is under 40. Only the 220 people in that row are possible, so the probability becomes $\frac{132}{220} = 0.6$. That is a <b>conditional probability</b>, written</p>
+<p>$$P(\text{online} \mid \text{under } 40) = 0.6,$$</p>
+<p>read "the probability of online given under 40". The event after the bar is the one you know; its total goes on the bottom. In general,</p>
+<p>$$P(A \mid B) = \frac{P(A \cap B)}{P(B)}.$$</p>
+<p>With the table: $\frac{132/400}{220/400} = \frac{132}{220}$, the same as dividing the cell by its row total. A conditional probability from a table is a conditional relative frequency.</p>
+
+<h2>Reversing the condition changes the answer</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Find $P(\text{under } 40 \mid \text{online})$ and compare it with $P(\text{online} \mid \text{under } 40)$.</p>
+<p>Given online, the 186 online readers are the total: $P(\text{under } 40 \mid \text{online}) = \frac{132}{186} \approx 0.710$.</p>
+<p>$P(\text{online} \mid \text{under } 40) = \frac{132}{220} = 0.6$.</p>
+<p>Same cell, different condition, different answer.</p>
+</div>
+<p>Getting the condition backward is behind many bad arguments. "Most injured drivers wore seat belts" is about $P(\text{belt} \mid \text{injured})$, which is high simply because most drivers wear belts. Whether belts are safe is about $P(\text{injured} \mid \text{belt})$.</p>
+
+<h2>The multiplication rule</h2>
+<p>Multiply both sides of the definition by $P(A)$, with the events in the other order, and you get the <b>general multiplication rule</b>:</p>
+<p>$$P(A \cap B) = P(A) \cdot P(B \mid A).$$</p>
+<p>It is the natural way to find "both" for events in sequence. Draw two tokens without replacement from a bag of 5 red and 3 blue: $P(\text{both red}) = \frac{5}{8} \cdot \frac{4}{7} = \frac{20}{56} \approx 0.357$. The second fraction is conditional: after a red token is gone, 4 of the 7 left are red.</p>
+
+<h2>Tree diagrams</h2>
+<figure id="fig-tree" data-fig="u2-screening-tree"><figcaption>A tree for a screening test, from the share with the condition to the test result.</figcaption></figure>
+<p>A <b>tree diagram</b> lays out a process in stages. In a population, 4% of people have a condition. A screening test is positive for 90% of people with it and for 6% of people without it. The first branches split by condition (0.04 and 0.96); the second branches give the test result given each first branch. Two rules run the tree, as <a class="figref" href="#fig-tree">the figure</a> shows:</p>
+<ul>
+<li>Multiply along a path (the multiplication rule): $P(\text{condition} \cap \text{positive}) = (0.04)(0.90) = 0.036$.</li>
+<li>Add the paths that end where you want: $P(\text{positive}) = 0.036 + (0.96)(0.06) = 0.036 + 0.0576 = 0.0936$.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> A person tests positive. Find the probability that the person has the condition.</p>
+<p>Structure: $P(\text{condition} \mid \text{positive}) = \frac{P(\text{condition} \cap \text{positive})}{P(\text{positive})}$.</p>
+<p>Substitute: $\frac{0.036}{0.0936}$.</p>
+<p>Answer: about 0.385. Of the people who test positive, about 38.5% have the condition.</p>
+</div>
+<p>Why so low when the test catches 90% of cases? Because so few people have the condition. The false positives, 0.0576 of everyone, outnumber the true positives, 0.036. Screening programs follow a positive result with a second, more accurate test for exactly this reason.</p>
+
+<h2>Checklist</h2>
+<table class="compare">
+<thead><tr><th>You want</th><th>Do this</th></tr></thead>
+<tbody>
+<tr><td>$P(A \mid B)$ from a table</td><td>cell for A and B over the total for B</td></tr>
+<tr><td>$P(A \cap B)$ in stages</td><td>$P(A) \cdot P(B \mid A)$, multiply along the path</td></tr>
+<tr><td>P(result) from a tree</td><td>add every path ending in the result</td></tr>
+<tr><td>Reverse a condition</td><td>one path over the sum of the paths with the known result</td></tr>
+</tbody>
+</table>
+<p>Before computing, write the probability in words and in notation, and say aloud which event comes after the bar. That one habit prevents most mistakes in this topic.</p>

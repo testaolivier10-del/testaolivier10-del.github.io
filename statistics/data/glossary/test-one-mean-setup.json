@@ -1,0 +1,8 @@
+{
+ "one-sample-t-test": {
+  "def": "A significance test of $H_0: \\mu = \\mu_0$ for a population mean when $\\sigma$ is unknown, using the t distribution with $n - 1$ degrees of freedom. A paired t test is a one-sample t test on the differences of paired data, usually with $H_0: \\mu_d = 0$."
+ },
+ "mu-null": {
+  "def": "The hypothesized mean $\\mu_0$: the value of the population mean stated by the null hypothesis $H_0: \\mu = \\mu_0$. It comes from the question (a claim, a standard, a past value), never from the sample."
+ }
+}

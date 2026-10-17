@@ -1,0 +1,12 @@
+{
+ "p-value-tails": {
+  "file": "figures/p-value-tails.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 320,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two standard normal curves. Left, labeled one-sided, alternative p < 0.40: the area to the left of the test statistic z = −1.77 is shaded; it is the p-value, about 0.039. Right, labeled two-sided, alternative p is not 0.40: the areas to the left of z = −1.77 and to the right of z = 1.77 are both shaded; together they are the p-value, about 0.077, twice the one-sided value."
+ }
+}

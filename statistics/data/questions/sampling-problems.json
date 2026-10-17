@@ -1,0 +1,441 @@
+{
+ "stimuli": {
+  "sampling-problems-s1": {
+   "kind": "table",
+   "title": "A survey about a parking fee",
+   "html": "<p>A city council wants to know what proportion of the city’s adult residents oppose a new fee for parking downtown. Three plans are proposed:</p><ul><li><b>Plan 1:</b> post a link on the city website inviting residents to answer one question.</li><li><b>Plan 2:</b> interview shoppers on the main downtown street on a weekday afternoon.</li><li><b>Plan 3:</b> mail a survey to 500 adults chosen at random from the list of registered voters. Only 210 mail it back.</li></ul>"
+  },
+  "sampling-problems-s2": {
+   "kind": "table",
+   "title": "Two ways to ask",
+   "html": "<p>Two versions of a survey question were written about the same fee.</p><ul><li><b>Version A:</b> \"Do you support a small fee to keep downtown streets clean and safe?\"</li><li><b>Version B:</b> \"Do you support a new tax on drivers who visit downtown?\"</li></ul>"
+  }
+ },
+ "items": [
+  {
+   "id": "stat-sampling-problems-1",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What kind of sample does plan 1 produce?",
+   "why": {
+    "correct": "When people choose whether to take part, the sample is a voluntary response sample.",
+    "options": [
+     "In a convenience sample the researcher picks people who are easy to reach; here people pick themselves.",
+     "Right: people decide for themselves whether to answer.",
+     "No chance process chooses anyone.",
+     "No clusters are chosen at random; anyone who wants to can answer."
+    ]
+   },
+   "stimulus": "sampling-problems-s1",
+   "options": [
+    "A convenience sample",
+    "A voluntary response sample",
+    "A simple random sample",
+    "A cluster sample of website visitors"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-sampling-problems-2",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How is plan 1 likely to be biased?",
+   "why": {
+    "correct": "Voluntary response samples overrepresent people with strong opinions, here most likely opponents of the fee, so the estimate is too high.",
+    "options": [
+     "People with strong objections tend to respond most, which pushes the estimate up, not down.",
+     "Being able to answer is not the same as being chosen by chance; who answers is self-selected.",
+     "Many responses from a self-selected group are still biased.",
+     "Right: residents who feel strongly, often those angry about a new fee, are the most likely to bother answering."
+    ]
+   },
+   "stimulus": "sampling-problems-s1",
+   "options": [
+    "It likely underestimates the proportion who oppose the fee",
+    "It has no bias, since each resident can reach the website",
+    "It gives the exact proportion, because many people respond",
+    "It likely overestimates the proportion who oppose the fee"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-sampling-problems-3",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which problem does plan 2 have?",
+   "why": {
+    "correct": "Choosing whoever is easy to reach gives a convenience sample. Downtown shoppers, many of whom drive and park there, may differ from other residents.",
+    "options": [
+     "Right: shoppers on one street on a weekday afternoon are easy to reach but may differ from residents as a whole.",
+     "The interviewers choose whom to approach; people do not sign themselves up.",
+     "Downtown drivers are likely overrepresented, not left out.",
+     "Plan 2 uses interviews, not mail."
+    ]
+   },
+   "stimulus": "sampling-problems-s1",
+   "options": [
+    "A convenience sample of people downtown",
+    "It is a voluntary response sample of downtown shoppers",
+    "It has undercoverage of shoppers who drive downtown",
+    "Response bias by mail"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-sampling-problems-4",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Only 210 of the 500 adults in plan 3 mailed the survey back. What is this problem called?",
+   "why": {
+    "correct": "Nonresponse occurs when individuals chosen for the sample cannot be reached or do not respond.",
+    "options": [
+     "Undercoverage is about people left out of the frame; these 500 were chosen, then 290 did not reply.",
+     "The sample was chosen at random; the problem is that many chosen people did not answer.",
+     "Right: people chosen for the sample did not respond, and they may differ from those who did.",
+     "Response bias is about answers that are not truthful; here there are no answers from 290 people."
+    ]
+   },
+   "stimulus": "sampling-problems-s1",
+   "options": [
+    "Undercoverage",
+    "Voluntary response",
+    "Nonresponse",
+    "Response bias"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-sampling-problems-5",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Plan 3 draws its sample from the list of registered voters. Which problem does that frame create?",
+   "why": {
+    "correct": "When the sampling frame misses part of the population, those individuals have no chance of being chosen: undercoverage.",
+    "options": [
+     "Nonresponse is a separate problem in plan 3; the frame itself causes undercoverage.",
+     "People register to vote, not to be in a survey; the issue is who the list leaves out.",
+     "Right: the frame leaves part of the population out, and those residents may feel differently about the fee.",
+     "People who register are not chosen by chance and may differ from those who do not."
+    ]
+   },
+   "stimulus": "sampling-problems-s1",
+   "options": [
+    "Nonresponse: registered voters are less likely to answer mailed surveys",
+    "Voluntary response: registered voters choose to be on the list",
+    "Undercoverage of residents who are not registered",
+    "No problem"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-sampling-problems-6",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What kind of problem can wording like this cause?",
+   "why": {
+    "correct": "Question wording that leads people toward an answer causes response bias.",
+    "options": [
+     "Right: the wording pushes people toward an answer, so the answers do not reflect their true views.",
+     "Wording does not leave anyone out of the sampling frame.",
+     "People can answer either version; the problem is how the wording shapes the answers.",
+     "That is about how people are chosen, not how they are asked."
+    ]
+   },
+   "stimulus": "sampling-problems-s2",
+   "options": [
+    "Response bias",
+    "Undercoverage",
+    "Nonresponse",
+    "Convenience sampling"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-sampling-problems-7",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which version is likely to get more \"yes\" answers, and why?",
+   "why": {
+    "correct": "Loaded words such as \"small\" and \"clean and safe\" push answers toward yes; \"new tax\" pushes them toward no.",
+    "options": [
+     "\"Tax\" usually makes people less willing, not more.",
+     "Clearer, perhaps, but \"tax on drivers\" tends to raise opposition.",
+     "Wording is one of the best known causes of response bias.",
+     "Right: the wording frames the fee as minor and beneficial."
+    ]
+   },
+   "stimulus": "sampling-problems-s2",
+   "options": [
+    "Version B: \"new tax\" makes the idea sound more official to people",
+    "Version B: naming drivers makes it clearer who would pay",
+    "Neither version",
+    "Version A: its words make the fee sound appealing"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-sampling-problems-8",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which wording is the most neutral?",
+   "why": {
+    "correct": "A neutral question describes the issue plainly, without loaded words, and offers both sides.",
+    "options": [
+     "It suggests a benefit and asks people to agree.",
+     "Right: it states the fee plainly and gives both sides.",
+     "\"Forced\" and \"yet another\" push toward no.",
+     "Telling people what others think pressures them to agree."
+    ]
+   },
+   "stimulus": "sampling-problems-s2",
+   "options": [
+    "\"Do you agree that a fee would keep downtown clean?\"",
+    "\"Do you support or oppose a 2-dollar parking fee?\"",
+    "\"Should drivers be forced to pay yet another fee?\"",
+    "\"Most residents support the fee. Do you?\""
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-sampling-problems-9",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The council asks Version A of 2,000 adults chosen at random instead of 500. What happens to the response bias?",
+   "why": {
+    "correct": "A larger sample does not fix bias. Only changing the method (neutral wording) does.",
+    "options": [
+     "Right: bias is built into the method, so a bigger sample just gives a more confident wrong answer.",
+     "Sample size reduces chance variation, not bias.",
+     "Random sampling handles who is chosen, not how they are asked.",
+     "More people hearing the same loaded question still lean the same way."
+    ]
+   },
+   "stimulus": "sampling-problems-s2",
+   "options": [
+    "It stays: a larger sample repeats the same push in the wording",
+    "It shrinks to nothing, because the sample is four times larger",
+    "It shrinks a little, because random sampling cancels wording effects",
+    "It reverses, because a big sample includes more people who disagree"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-sampling-problems-10",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does it mean for a sampling method to be biased?",
+   "why": {
+    "correct": "A biased method systematically favors some outcomes, so its estimates are off in the same direction again and again.",
+    "options": [
+     "Chance variation from sample to sample is expected even in a good method; bias is a consistent push one way.",
+     "Bias in statistics is about the method, not the researcher’s feelings.",
+     "Right: bias is a systematic error that repeats sample after sample.",
+     "Every sample is smaller than its population; that alone is not bias."
+    ]
+   },
+   "options": [
+    "Its results vary a little from one sample to the next",
+    "The researcher has opinions",
+    "It errs in the same direction again and again",
+    "It uses a sample that is smaller than the population"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-sampling-problems-11",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A talk show asks viewers to text in their opinion of a new law; 50,000 viewers respond and 85% oppose the law. What is the best criticism?",
+   "why": {
+    "correct": "A voluntary response sample is biased toward people with strong views. A huge sample does not fix it.",
+    "options": [
+     "Size is not the issue; who chose to respond is.",
+     "Right: a voluntary response sample is biased however large it is.",
+     "There is no such rule; the problem is self-selection.",
+     "A high percent is possible; the method is what makes it untrustworthy."
+    ]
+   },
+   "options": [
+    "50,000 responses is too small for a law that affects millions",
+    "Viewers chose to respond, so strong views are overrepresented",
+    "Texting costs money, so the results are illegal to report",
+    "85% is too high a result to be a real survey finding"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-sampling-problems-12",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A survey phones only landline numbers. Which group is most likely undercovered?",
+   "why": {
+    "correct": "Undercoverage happens when the sampling frame leaves out part of the population, here people without landlines.",
+    "options": [
+     "They are in the frame and likely to respond.",
+     "Having a phone at home puts people in the frame, not outside it.",
+     "Refusing after being chosen is nonresponse, not undercoverage.",
+     "Right: people with no landline are missing from the frame, and they tend to be younger."
+    ]
+   },
+   "options": [
+    "Older adults who answer their landline",
+    "People who live in houses with phones",
+    "Residents who refuse to answer the survey",
+    "Young adults who have only mobile phones"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-sampling-problems-13",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A teacher asks students face to face, \"Have you ever cheated on a test?\" What is the most likely effect?",
+   "why": {
+    "correct": "Sensitive questions, especially asked in person, cause response bias: the proportion who admit cheating will likely be too low.",
+    "options": [
+     "Absence is possible, but the main problem is untruthful answers.",
+     "Right: a sensitive question asked in person invites untruthful answers, which underestimates cheating.",
+     "Every student is on the list; the issue is honesty.",
+     "The teacher asks each student; the problem is how they answer."
+    ]
+   },
+   "options": [
+    "Nonresponse from absences",
+    "Response bias: some may deny cheating",
+    "Undercoverage: students who cheat are not on the class list",
+    "Voluntary response: students choose to answer the question"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-sampling-problems-14",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student explains why a convenience sample is a problem: \"The sample is too small.\" Which explanation would earn credit instead?",
+   "why": {
+    "correct": "Explain bias by the method: a nonrandom sample may differ systematically from the population. Name how it differs and the likely direction.",
+    "options": [
+     "That would be a calculation error, not a problem with the sample.",
+     "Convenience samples are fast; that is their appeal.",
+     "Any sample can give a percent; size is not what makes it biased.",
+     "Right: the issue is that the method is not random, not the sample size."
+    ]
+   },
+   "options": [
+    "The researcher may have made arithmetic errors in the results",
+    "A convenience sample takes too long to collect",
+    "The sample is too small to calculate a percent",
+    "Easy-to-reach people may differ from the population"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-sampling-problems-15",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "multi",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these is an example of nonresponse? Select all that apply.",
+   "why": {
+    "correct": "Nonresponse is a chosen individual who cannot be reached or will not answer.",
+    "options": [
+     "Right: chosen individuals could not be reached.",
+     "That is undercoverage: those people were never in the frame.",
+     "That leading wording causes response bias.",
+     "That is a voluntary response sample."
+    ]
+   },
+   "options": [
+    "Of 800 randomly chosen households, 300 never answer the door",
+    "A survey frame leaves out people living in dormitories",
+    "A question asks, \"Don’t you agree that taxes are too high?\"",
+    "A website invites anyone to fill in a form about a new park"
+   ],
+   "correct": [0]
+  },
+  {
+   "id": "stat-sampling-problems-16",
+   "unit": "unit-1",
+   "topic": "sampling-problems",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A random sample of 600 adults is chosen from a complete list of a city’s adults. Which problem can still occur?",
+   "why": {
+    "correct": "Random sampling from a complete frame prevents selection bias. Nonresponse and response bias can still happen after people are chosen.",
+    "options": [
+     "Right: random selection removes selection bias, but chosen people can still fail to answer or answer untruthfully.",
+     "People were chosen by chance, not self-selected.",
+     "Chance chose the sample, not convenience.",
+     "The list is complete, so no adult is left out."
+    ]
+   },
+   "options": [
+    "Nonresponse or response bias",
+    "Voluntary response bias in the sample",
+    "Convenience sampling by the interviewers",
+    "Undercoverage"
+   ],
+   "correct": 0
+  }
+ ]
+}

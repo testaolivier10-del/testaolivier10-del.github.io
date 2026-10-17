@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrying Out a Two-Sample t Test — AP® Statistics Notes</title>
+<meta name="description" content="What is new is one formula, the two-sample t statistic, and the habit of choosing among all the procedures you now know.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/test-two-means.html">
+<meta property="og:title" content="Carrying Out a Two-Sample t Test — AP® Statistics Notes">
+<meta property="og:description" content="What is new is one formula, the two-sample t statistic, and the habit of choosing among all the procedures you now know.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/test-two-means.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/test-two-means.html#reading",
+      "name": "Carrying Out a Test for the Difference Between Two Population Means",
+      "url": "https://levlprep.com/statistics/notes/test-two-means.html",
+      "description": "What is new is one formula, the two-sample t statistic, and the habit of choosing among all the procedures you now know.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "carrying out a test for the difference between two population means ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Quantitative Data: Means",
+          "item": "https://levlprep.com/statistics/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Carrying Out a Test for the Difference Between Two Population Means: notes",
+          "item": "https://levlprep.com/statistics/notes/test-two-means.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="test-two-means" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Inference for Categorical Data: Proportions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Inference for Quantitative Data: Means</b><small>10 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 10 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="sampling-dist-mean"><a href="sampling-dist-mean.html"><span class="bk-toc-n">4.1</span>Sampling Distributions for Sample Means</a></li><li data-toc-t="ci-one-mean"><a href="ci-one-mean.html"><span class="bk-toc-n">4.2</span>Constructing a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="ci-one-mean-claims"><a href="ci-one-mean-claims.html"><span class="bk-toc-n">4.3</span>Justifying a Claim Based on a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean-setup"><a href="test-one-mean-setup.html"><span class="bk-toc-n">4.4</span>Setting Up a Test for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean"><a href="test-one-mean.html"><span class="bk-toc-n">4.5</span>Carrying Out a Test for a Population Mean or Population Mean Difference</a></li><li data-toc-t="sampling-dist-two-means"><a href="sampling-dist-two-means.html"><span class="bk-toc-n">4.6</span>Sampling Distributions for the Difference Between Two Sample Means</a></li><li data-toc-t="ci-two-means"><a href="ci-two-means.html"><span class="bk-toc-n">4.7</span>Constructing a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="ci-two-means-claims"><a href="ci-two-means-claims.html"><span class="bk-toc-n">4.8</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="test-two-means-setup"><a href="test-two-means-setup.html"><span class="bk-toc-n">4.9</span>Setting Up a Test for the Difference Between Two Population Means</a></li><li class="current" data-toc-t="test-two-means"><a href="#main" aria-current="page"><span class="bk-toc-n">4.10</span>Carrying Out a Test for the Difference Between Two Population Means</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-two-sample-t-statistic">The two-sample t statistic</a><a href="#a-complete-test">A complete test</a><a href="#choosing-the-inference-procedure">Choosing the inference procedure</a><a href="#common-slips">Common slips</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Regression Analysis</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Inference for Quantitative Data: Means</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Carrying Out a Test for the Difference Between Two Population Means: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/test-two-means.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.10 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Carrying Out a Test for the Difference Between Two Population Means</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="test-two-means">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Ftest-two-means.html&amp;title=Carrying%20Out%20a%20Test%20for%20the%20Difference%20Between%20Two%20Population%20Means%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/test-two-means.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>This is the last procedure of Unit 4, and it reuses everything before it: the <a class="gl" href="../notes/ci-one-proportion.html" data-c="standard-error">standard error</a> of a difference from the two-sample interval, the logic of a <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="significance-test">significance test</a> from the <a class="gl" href="../notes/test-one-mean-setup.html" data-c="one-sample-t-test">one-sample t test</a>, and the setup from the previous topic. What is new is one formula, the <span class="gl" tabindex="0" data-c="two-sample-t-statistic">two-sample t statistic</span>, and the habit of choosing among all the procedures you now know.</p>
+
+<h2 id="the-two-sample-t-statistic">The two-sample t statistic</h2>
+<p>Assume <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> is true: the true <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a> are equal, so <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>μ</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mu_1 - \mu_2 = 0</annotation></semantics></math>. Then the <a class="gl" href="../notes/sampling-dist-two-means.html" data-c="diff-means">difference in sample means</a>, <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\bar{x}_1 - \bar{x}_2</annotation></semantics></math>, varies around 0 with standard error <math class="stat-m"><semantics><mrow><msqrt><mrow><mfrac><msubsup><mi>s</mi><mn>1</mn><mn>2</mn></msubsup><msub><mi>n</mi><mn>1</mn></msub></mfrac><mo>+</mo><mfrac><msubsup><mi>s</mi><mn>2</mn><mn>2</mn></msubsup><msub><mi>n</mi><mn>2</mn></msub></mfrac></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}</annotation></semantics></math>. Measure the observed difference in standard errors:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>t</mi><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>2</mn></msub><mo stretchy="false">)</mo><mo>−</mo><mn>0</mn></mrow><msqrt><mrow><mfrac><msubsup><mi>s</mi><mn>1</mn><mn>2</mn></msubsup><msub><mi>n</mi><mn>1</mn></msub></mfrac><mo>+</mo><mfrac><msubsup><mi>s</mi><mn>2</mn><mn>2</mn></msubsup><msub><mi>n</mi><mn>2</mn></msub></mfrac></mrow></msqrt></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">t = \frac{(\bar{x}_1 - \bar{x}_2) - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}.</annotation></semantics></math></p>
+<p>This is the <b>two-sample <a class="gl" href="../notes/test-one-mean.html" data-c="t-statistic">t statistic</a></b>. Its <a class="gl" href="../notes/p-values.html" data-c="p-value">p-value</a> comes from a <a class="gl" href="../notes/ci-one-mean.html" data-c="t-distribution">t distribution</a> with the technology (Welch) <a class="gl" href="../notes/chi-square-test.html" data-c="degrees-of-freedom">degrees of freedom</a>, or with the conservative df, the smaller of <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n_1 - 1</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n_2 - 1</annotation></semantics></math>. The conservative choice gives a slightly larger p-value; both are accepted.</p>
+<figure id="fig-t2"  class="stat-figure"><div class="stat-figimg" data-fig="two-sample-t-pvalue"><img src="../figures/two-sample-t-pvalue.svg" alt="The t distribution with 40.0 degrees of freedom, centered at 0. A dashed line marks the observed two-sample t statistic -2.31, and the small area to its left is shaded: the one-sided p-value, 0.0132." width="720" height="380" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The null model for the caffeine test and the shaded left-tail p-value. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="a-complete-test">A complete test</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> Forty-two volunteers were <a class="gl" href="../notes/experimental-design.html" data-c="random-assignment">randomly assigned</a> to a caffeinated drink (C, <math class="stat-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">n = 20</annotation></semantics></math>) or a caffeine-free look-alike (N, <math class="stat-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>22</mn></mrow><annotation encoding="application/x-tex">n = 22</annotation></semantics></math>), then did a reaction-time task (invented <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>). Caffeine: <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>=</mo><mn>241</mn></mrow><annotation encoding="application/x-tex">\bar{x} = 241</annotation></semantics></math> ms, <math class="stat-m"><semantics><mrow><mi>s</mi><mo>=</mo><mn>28</mn></mrow><annotation encoding="application/x-tex">s = 28</annotation></semantics></math>; no caffeine: <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>=</mo><mn>262</mn></mrow><annotation encoding="application/x-tex">\bar{x} = 262</annotation></semantics></math> ms, <math class="stat-m"><semantics><mrow><mi>s</mi><mo>=</mo><mn>31</mn></mrow><annotation encoding="application/x-tex">s = 31</annotation></semantics></math>. <a class="gl" href="../notes/one-quantitative-displays.html" data-c="dotplot">Dotplots</a> of both groups show no strong <a class="gl" href="../notes/describing-distributions.html" data-c="skewed">skew</a> or <a class="gl" href="../notes/describing-distributions.html" data-c="outlier">outliers</a>. Is there <a class="gl" href="../notes/ci-one-proportion-claims.html" data-c="convincing-evidence">convincing evidence</a> at <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math> that caffeine lowers mean reaction time?</p>
+<p><b>State.</b> <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><msub><mi>μ</mi><mi>C</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>N</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_0: \mu_C - \mu_N = 0</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>μ</mi><mi>C</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>N</mi></msub><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_a: \mu_C - \mu_N &lt; 0</annotation></semantics></math>, where <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">\mu_C</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">\mu_N</annotation></semantics></math> are the <a class="gl" href="../notes/summary-statistics.html" data-c="population-mean">true mean</a> reaction times with and without caffeine for adults like these volunteers.</p>
+<p><b>Plan.</b> <a class="gl" href="../notes/test-two-means-setup.html" data-c="two-sample-t-test">Two-sample t test</a>. <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">Random</a>: random assignment to the two drinks. 10%: not needed for an <a class="gl" href="../notes/investigative-questions.html" data-c="experiment">experiment</a>. Normal/large <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a>: both groups are under 30, but neither dotplot shows strong skew or outliers.</p>
+<p><b>Do.</b> <math class="stat-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>241</mn><mo>−</mo><mn>262</mn></mrow><msqrt><mrow><mfrac><msup><mn>28</mn><mn>2</mn></msup><mn>20</mn></mfrac><mo>+</mo><mfrac><msup><mn>31</mn><mn>2</mn></msup><mn>22</mn></mfrac></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">= \frac{241 - 262}{\sqrt{\frac{28^2}{20} + \frac{31^2}{22}}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>21</mn></mrow><msqrt><mrow><mn>39.2</mn><mo>+</mo><mn>43.68</mn></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">= \frac{-21}{\sqrt{39.2 + 43.68}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>21</mn></mrow><mn>9.10</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{-21}{9.10}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.31</mn></mrow><annotation encoding="application/x-tex">= -2.31</annotation></semantics></math>. Technology df 40.0; the alternative is "less than", so <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>t</mi><mo>&lt;</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.31</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= P(t &lt; -2.31)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.0132</mn></mrow><annotation encoding="application/x-tex">= 0.0132</annotation></semantics></math>. (Conservative df 19: <math class="stat-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.0163</mn></mrow><annotation encoding="application/x-tex">p = 0.0163</annotation></semantics></math>.)</p>
+<p><b>Conclude.</b> Because the p-value of 0.0132 is less than 0.05, we <a class="gl" href="../notes/test-one-proportion.html" data-c="reject">reject the null hypothesis</a>. There is convincing evidence that the true mean reaction time with caffeine is less than without caffeine, for adults like these.</p>
+<p><b>Scope.</b> The drinks were randomly assigned, so the faster reactions can be credited to caffeine. The volunteers were not a random sample, so the result applies to adults like them.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2 (<a class="gl" href="../notes/test-one-proportion-setup.html" data-c="one-two-sided">two-sided</a>, fail to reject).</b> <a class="gl" href="../notes/sampling-dist-two-proportions.html" data-c="independent-samples">Independent random samples</a> of adults in two large counties: county 1, <math class="stat-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>45</mn></mrow><annotation encoding="application/x-tex">n = 45</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>=</mo><mn>4.6</mn></mrow><annotation encoding="application/x-tex">\bar{x} = 4.6</annotation></semantics></math> hours of exercise last week, <math class="stat-m"><semantics><mrow><mi>s</mi><mo>=</mo><mn>2.9</mn></mrow><annotation encoding="application/x-tex">s = 2.9</annotation></semantics></math>; county 2, <math class="stat-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">n = 50</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>=</mo><mn>3.9</mn></mrow><annotation encoding="application/x-tex">\bar{x} = 3.9</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mi>s</mi><mo>=</mo><mn>3.3</mn></mrow><annotation encoding="application/x-tex">s = 3.3</annotation></semantics></math>. Test <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><msub><mi>μ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>μ</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_0: \mu_1 - \mu_2 = 0</annotation></semantics></math> against <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>μ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>μ</mi><mn>2</mn></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_a: \mu_1 - \mu_2 \ne 0</annotation></semantics></math> at <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>.</p>
+<p>Conditions: <a class="gl" href="../notes/independence-unions.html" data-c="independent-events">independent</a> random samples; each is less than 10% of its county's adults; both <math class="stat-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n \ge 30</annotation></semantics></math>.</p>
+<p><math class="stat-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>4.6</mn><mo>−</mo><mn>3.9</mn></mrow><msqrt><mrow><mfrac><msup><mn>2.9</mn><mn>2</mn></msup><mn>45</mn></mfrac><mo>+</mo><mfrac><msup><mn>3.3</mn><mn>2</mn></msup><mn>50</mn></mfrac></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">= \frac{4.6 - 3.9}{\sqrt{\frac{2.9^2}{45} + \frac{3.3^2}{50}}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>0.7</mn><mn>0.636</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{0.7}{0.636}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>1.10</mn></mrow><annotation encoding="application/x-tex">= 1.10</annotation></semantics></math>, technology df 93.0, two-sided <math class="stat-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>2</mn><mi>P</mi><mo stretchy="false">(</mo><mi>t</mi><mo>&gt;</mo><mn>1.10</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.274</mn></mrow><annotation encoding="application/x-tex">p = 2P(t &gt; 1.10) = 0.274</annotation></semantics></math>.</p>
+<p>Because the p-value of 0.274 is greater than 0.05, we fail to reject the <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="hypotheses">null hypothesis</a>. There is not convincing evidence that the true mean weekly exercise hours of adults differ between the two counties.</p>
+<p>The p-value <a class="gl" href="../notes/intro-statistics.html" data-c="context">in context</a>: Assuming there is no difference in the true mean weekly exercise hours of the two counties, there is a 0.274 <a class="gl" href="../notes/simulation.html" data-c="probability">probability</a> of getting a difference in sample means of 0.7 hours or more in either <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">direction</a> by chance, with random samples of 45 and 50 adults.</p>
+</div>
+<p>Having failed to reject, the department might have made a <a class="gl" href="../notes/errors-and-power.html" data-c="type-ii">Type II error</a>: the true means could differ by an amount these samples could not detect. A rejection, like the caffeine result, risks a <a class="gl" href="../notes/errors-and-power.html" data-c="type-i">Type I error</a> instead.</p>
+
+<h2 id="choosing-the-inference-procedure">Choosing the inference procedure</h2>
+<p>Unit 3 and Unit 4 together give you a small family of procedures. Three questions pick the right one.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Question, If, Then"><table class="stat-compare">
+<thead><tr><th scope="col">Question</th><th scope="col">If</th><th scope="col">Then</th></tr></thead>
+<tbody>
+<tr><td>1. What is the response?</td><td>categorical (yes or no)</td><td>proportions: z procedures</td></tr>
+<tr><td></td><td>categorical with several categories, in a <a class="gl" href="../notes/two-categorical-displays.html" data-c="two-way-table">two-way table</a></td><td><a class="gl" href="../notes/chi-square-setup.html" data-c="homogeneity">chi-square test for homogeneity</a> or independence (Unit 3)</td></tr>
+<tr><td></td><td>quantitative (a measurement)</td><td>means: t procedures</td></tr>
+<tr><td>2. How many groups, and how linked?</td><td>one sample, or <a class="gl" href="../notes/ci-one-mean.html" data-c="paired-data">paired data</a></td><td>one-sample t (paired: on the differences)</td></tr>
+<tr><td></td><td>two independent groups</td><td>two-sample t</td></tr>
+<tr><td>3. What is asked?</td><td>"<a class="gl" href="../notes/estimators.html" data-c="estimator">estimate</a>", "how much"</td><td><a class="gl" href="../notes/ci-one-proportion.html" data-c="confidence-interval">confidence interval</a></td></tr>
+<tr><td></td><td>"is there convincing evidence", a claim</td><td>significance test</td></tr>
+</tbody>
+</table></div>
+<p>For example, a teacher who measures each student's score before and after a review game has a quantitative response and paired data: a paired t test on the differences. A researcher comparing the proportion of adults who exercise <a class="gl" href="../notes/math-inequality-words.html" data-c="inequality-words">at least</a> 3 hours a week in two counties has a categorical response and two groups: a <a class="gl" href="../notes/test-two-proportions-setup.html" data-c="two-sample-z-test">two-sample z test for proportions</a>.</p>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Adding standard errors instead of <a class="gl" href="../notes/summary-statistics.html" data-c="variance">variances</a> in the denominator.</li>
+<li>Switching the order of subtraction between the hypotheses, the statistic and the conclusion.</li>
+<li>Doubling (or not doubling) the tail area: one tail for <math class="stat-m"><semantics><mrow><mo>&lt;</mo></mrow><annotation encoding="application/x-tex">&lt;</annotation></semantics></math> or <math class="stat-m"><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math>, two for <math class="stat-m"><semantics><mrow><mo>≠</mo></mrow><annotation encoding="application/x-tex">\ne</annotation></semantics></math>.</li>
+<li>Concluding "the means are equal" after failing to reject.</li>
+<li>Claiming cause and effect from two random samples, or generalizing to a <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> from volunteers.</li>
+</ul>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:test-two-means">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="test-two-means-setup.html"><span>&larr; Previous</span><b>Setting Up a Test for the Difference Between Two Population Means</b></a><a class="tb-chapter-link next" href="math-lines.html"><span>Next &rarr;</span><b>Lines: Slope and Intercept</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:test-two-means">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

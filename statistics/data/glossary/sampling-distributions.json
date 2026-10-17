@@ -1,0 +1,8 @@
+{
+ "sampling-distribution": {
+  "def": "The sampling distribution of a statistic is the distribution of the values it takes in all possible random samples of the same size from the same population. Its spread shows sampling variability: how much the statistic changes from sample to sample. For the sample mean, $\\mu_{\\bar{x}} = \\mu$ and $\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}}$."
+ },
+ "clt": {
+  "def": "The Central Limit Theorem says that when the sample size n is large, the sampling distribution of the sample mean is approximately normal, whatever the shape of the population. A common guide is n of 30 or more; if the population is normal, $\\bar{x}$ is normal for any n."
+ }
+}

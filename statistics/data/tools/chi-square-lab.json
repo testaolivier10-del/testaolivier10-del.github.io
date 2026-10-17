@@ -1,0 +1,48 @@
+{
+  "slug": "chi-square-lab",
+  "kind": "simulator",
+  "topic": "chi-square-test",
+  "about": "Data for the chi-square lab (docs/apstat-spec.md section 6). explore.studies are the tables the Explore view opens on; contexts are the Test yourself studies (each makes new tables from its base proportions). design is homogeneity (separate samples or groups: rows are the groups) or independence (one sample, two variables). The model is statistics/assets/tools/math/chi-square-lab.js; every number comes from ApStatDist.",
+  "intro": "<p>A chi-square test asks whether a two-way table is far from what the null hypothesis predicts. Change any count and watch its expected count, its share of the statistic and the p-value move. The expected counts come from the table's own totals; the statistic adds up how far each cell is from its expected count.</p>",
+  "howItWorksTitle": "How the test is built",
+  "howItWorks": "<p>If $H_0$ is true, each cell's expected count is $\\frac{(\\text{row total})(\\text{column total})}{\\text{grand total}}$. Each cell adds $\\frac{(O - E)^2}{E}$ to the statistic; the colors show which cells add the most, orange where the observed count is above the expected count and blue where it is below. The sum $\\chi^2$ is compared with the $\\chi^2$ distribution with $(r - 1)(c - 1)$ degrees of freedom, and the p-value is the area to its right.</p><ul><li><b>Homogeneity or independence.</b> The arithmetic is the same. Homogeneity compares the distribution of one variable across separate samples or treatment groups; independence asks whether two variables are associated in one sample.</li><li><b>Conditions.</b> Random samples or random assignment, 10% of the population when sampling without replacement, and every expected count at least 5.</li><li><b>Chance tables.</b> \"Chance table\" draws a new table from the null hypothesis itself (each row keeps its total; the counts follow the pooled column proportions), so you can see how big $\\chi^2$ gets by chance alone.</li></ul><p>Test yourself makes new tables from a seed (the problem code), checks every step against a key the validator recomputes independently, and names the usual slip when an answer misses.</p>",
+  "partTopics": { "test": "chi-square-setup", "hyp": "chi-square-setup", "cond": "chi-square-setup" },
+  "explore": {
+    "studies": [
+      { "id": "lunch", "topic": "chi-square-test", "name": "Lunch choice at three schools (homogeneity)", "design": "homogeneity",
+        "rows": ["North", "Central", "South"], "cols": ["Pizza", "Salad", "Sandwich", "Hot meal"], "obs": [[38, 14, 22, 26], [30, 25, 20, 25], [24, 21, 33, 22]],
+        "rowVar": "school", "colVar": "lunch choice", "groups": "the three schools", "pop": "students at the three schools",
+        "story": "Random samples of 100 students at each of three schools were asked what they usually eat for lunch." },
+      { "id": "news", "topic": "chi-square-test", "name": "Age and news source (independence)", "design": "independence",
+        "rows": ["18 to 34", "35 to 54", "55 and over"], "cols": ["Social media", "TV", "Websites"], "obs": [[62, 18, 40], [38, 34, 44], [17, 56, 31]],
+        "rowVar": "age group", "colVar": "main news source", "groups": "the three age groups", "pop": "adults in the city",
+        "story": "A random sample of 340 adults in a city were asked their age and their main source of news." },
+      { "id": "plants", "topic": "chi-square-test", "name": "Fertilizer and flowering (homogeneity, an experiment)", "design": "homogeneity",
+        "rows": ["Fertilizer A", "Fertilizer B"], "cols": ["Many flowers", "Some flowers", "None"], "obs": [[31, 42, 17], [22, 44, 24]],
+        "rowVar": "fertilizer", "colVar": "flowering", "groups": "the two fertilizers", "pop": "plants like these",
+        "story": "A gardener randomly assigned 180 seedlings to two fertilizers, 90 each, and recorded how much each plant flowered." }
+    ]
+  },
+  "contexts": [
+    { "id": "lunch", "topic": "chi-square-test", "types": ["expected", "chooser"], "design": "homogeneity",
+      "rows": ["North", "Central", "South"], "cols": ["Pizza", "Salad", "Sandwich"], "rowNs": [60, 80, 100, 120], "base": [0.4, 0.25, 0.35],
+      "rowVar": "school", "colVar": "lunch choice", "groups": "the three schools", "pop": "students at the three schools",
+      "story": "Separate random samples of students at three schools (North, Central and South) were asked whether they usually eat pizza, salad or a sandwich for lunch. The table on the stage shows the counts." },
+    { "id": "news", "topic": "chi-square-test", "types": ["expected", "chooser"], "design": "independence",
+      "rows": ["18 to 34", "35 to 54", "55 and over"], "cols": ["Social media", "TV", "Websites"], "Ns": [240, 300, 360], "rowBase": [0.35, 0.35, 0.3], "base": [0.35, 0.33, 0.32],
+      "rowVar": "age group", "colVar": "main news source", "groups": "the three age groups", "pop": "adults in the city",
+      "story": "A random sample of adults in a city were asked their age group and their main source of news. The table on the stage shows the counts." },
+    { "id": "plants", "topic": "chi-square-test", "types": ["expected", "chooser"], "design": "homogeneity",
+      "rows": ["Fertilizer A", "Fertilizer B"], "cols": ["Many flowers", "Some flowers", "None"], "rowNs": [60, 80, 90], "base": [0.3, 0.45, 0.25],
+      "rowVar": "fertilizer", "colVar": "amount of flowering", "groups": "the two fertilizers", "pop": "seedlings like these",
+      "story": "A gardener randomly assigned seedlings to two fertilizers and recorded how much each plant flowered. The table on the stage shows the counts." },
+    { "id": "pets", "topic": "chi-square-test", "types": ["expected", "chooser"], "design": "independence",
+      "rows": ["Lives in an apartment", "Lives in a house"], "cols": ["Dog", "Cat", "No pet"], "Ns": [200, 250, 320], "rowBase": [0.45, 0.55], "base": [0.35, 0.3, 0.35],
+      "rowVar": "type of home", "colVar": "pet ownership", "groups": "the two types of home", "pop": "households in the town",
+      "story": "A random sample of households in a town were asked what type of home they live in and whether they own a dog, a cat or no pet. The table on the stage shows the counts." },
+    { "id": "commute", "topic": "chi-square-test", "types": ["expected", "chooser"], "design": "homogeneity",
+      "rows": ["Downtown", "Suburbs"], "cols": ["Car", "Transit", "Bike or walk", "Work from home"], "rowNs": [120, 150, 200], "base": [0.45, 0.25, 0.12, 0.18],
+      "rowVar": "area", "colVar": "commute type", "groups": "downtown and suburban workers", "pop": "workers in the two areas",
+      "story": "Separate random samples of downtown and suburban workers were asked how they usually get to work. The table on the stage shows the counts." }
+  ]
+}

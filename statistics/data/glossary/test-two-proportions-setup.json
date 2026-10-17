@@ -1,0 +1,8 @@
+{
+ "two-sample-z-test": {
+  "def": "A significance test of $H_0: p_1 - p_2 = 0$ about two population proportions, using two independent random samples or two randomly assigned groups. Its standard error uses the pooled proportion $p_c$."
+ },
+ "pooled-proportion": {
+  "def": "The proportion of successes in two samples combined, $p_c = \\frac{x_1 + x_2}{n_1 + n_2}$. A two-sample z test uses it because the null hypothesis says the two proportions are equal."
+ }
+}

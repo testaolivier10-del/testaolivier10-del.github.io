@@ -1,0 +1,41 @@
+<p>The test for a difference of two means asks the same kind of question as the interval: is there convincing evidence that two true means differ, or that one is larger? Before the arithmetic comes the setup, and with two groups there is one new decision to make first: are the data paired, or are they two independent groups?</p>
+
+<h2>Paired or two independent groups?</h2>
+<p>The design decides, not the numbers. Look at how the data were produced.</p>
+<figure id="fig-design" data-fig="paired-vs-two-sample"><figcaption>Paired designs give one list of differences; two-sample designs give two independent groups.</figcaption></figure>
+<table class="stat-compare">
+<thead><tr><th scope="col"></th><th scope="col">Paired</th><th scope="col">Two independent groups</th></tr></thead>
+<tbody>
+<tr><th scope="row">How the data arise</th><td>each unit measured twice, or units matched in pairs</td><td>two separate random samples, or random assignment to two groups</td></tr>
+<tr><th scope="row">Examples</th><td>before and after; both shoes on the same runner; twins</td><td>brand X phones and brand Y phones; runners split into two shoe groups</td></tr>
+<tr><th scope="row">Parameter</th><td>$\mu_d$, the true mean difference</td><td>$\mu_1 - \mu_2$, the difference of true means</td></tr>
+<tr><th scope="row">Test</th><td>paired t test (one-sample t on the differences)</td><td>two-sample t test</td></tr>
+<tr><th scope="row">df</th><td>$n - 1$, where $n$ is the number of pairs</td><td>technology, or the smaller of $n_1 - 1$ and $n_2 - 1$</td></tr>
+</tbody>
+</table>
+<p>A coach with 40 runners and two shoe designs can do either. In plan 1, every runner runs once in each shoe, in random order: paired. In plan 2, the runners are randomly split 20 and 20: two groups. Plan 1 is usually better at detecting a small effect. Runners differ from each other by minutes; a shoe might change a time by seconds. Pairing compares each runner with themselves, so the large runner-to-runner variation drops out of the differences.</p>
+
+<h2>Hypotheses for two means</h2>
+<p>For two independent groups, the null hypothesis says the true means are equal, and the alternative comes from the question:</p>
+<p>$$H_0: \mu_1 - \mu_2 = 0 \qquad H_a: \mu_1 - \mu_2 > 0, \quad < 0, \quad \text{or} \ne 0.$$</p>
+<p>You may also write $H_0: \mu_1 = \mu_2$ and $H_a: \mu_1 > \mu_2$. Either way, define both parameters in context, and keep the order of subtraction consistent from the hypotheses to the conclusion.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A consumer group buys a random sample of 15 brand X phones and an independent random sample of 15 brand Y phones and runs each until the battery dies while streaming (invented data). Does brand X last longer on average? Set up the test.</p>
+<p>Procedure: a two-sample t test for $\mu_X - \mu_Y$.</p>
+<p>Hypotheses: $H_0: \mu_X - \mu_Y = 0$, $H_a: \mu_X - \mu_Y > 0$, where $\mu_X$ is the true mean battery life while streaming of all new brand X phones and $\mu_Y$ the same for brand Y.</p>
+<p>Conditions. Random: independent random samples of each brand. 10%: 15 is less than 10% of all phones sold, for each brand. Normal/large sample: both samples have $n = 15 < 30$, but boxplots of both show no strong skew and no outliers.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> For plan 2 of the shoe study (runners randomly assigned 20 to shoe A, 20 to shoe B), the coach asks whether the mean 5 km time differs between the shoes.</p>
+<p>Hypotheses: $H_0: \mu_A - \mu_B = 0$, $H_a: \mu_A - \mu_B \ne 0$, where $\mu_A$ and $\mu_B$ are the true mean 5 km times in shoes A and B for runners like these. "Differs" means two-sided.</p>
+<p>Conditions. Random: random assignment of runners to shoes. 10%: not needed, since this is an experiment, not a sample from a population. Normal/large sample: 20 per group, so check that a graph of each group's times shows no strong skew or outliers.</p>
+</div>
+
+<h2>Conditions, group by group</h2>
+<p>Every condition is checked for each group. A sample of 40 delivery times from company P passes the normal/large sample condition by size, but if the sample of 12 from company Q is strongly skewed with an outlier, the test is not appropriate: P passing does not rescue Q. Different sample sizes are fine, and the two standard deviations do not need to match; the test uses each one separately.</p>
+
+<h2>When it is a one-sample test after all</h2>
+<p>If one of the two means is a known standard rather than a second sample (an old bulb's long-established mean life of 1,200 hours, say), there is only one sample: test $H_0: \mu = 1200$ with a one-sample t test. A two-sample test is for two groups that both carry sampling variability.</p>
+
+<h2>Errors in context</h2>
+<p>For the battery test, a Type I error would occur if the two brands have the same true mean battery life but we find convincing evidence that brand X's is greater. A Type II error would occur if the true mean battery life of brand X phones is greater than that of brand Y phones, but we do not find convincing evidence that it is greater. The next topic computes the test statistic and the p-value.</p>

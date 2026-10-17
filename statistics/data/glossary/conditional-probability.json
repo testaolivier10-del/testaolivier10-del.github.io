@@ -1,0 +1,11 @@
+{
+ "conditional-probability": {
+  "def": "The conditional probability of A given B, written $P(A \\mid B)$, is the probability that A happens when we know B has happened: $P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}$. In a two-way table it is a cell divided by the total of the row or column for B."
+ },
+ "multiplication-rule": {
+  "def": "The general multiplication rule finds the probability that two events both happen: $P(A \\cap B) = P(A) \\cdot P(B \\mid A)$. For two draws without replacement, the second probability is the one given the first draw."
+ },
+ "tree-diagram": {
+  "def": "A tree diagram shows a chance process in stages: branches for the first stage with their probabilities, then branches for the second stage with probabilities given the first. Multiplying along a path gives the probability of that path; adding paths gives the probability of an event."
+ }
+}
