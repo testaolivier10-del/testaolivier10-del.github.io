@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lines: Slope and Intercept — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="Unit 5 describes how one quantitative variable changes with another using a straight line.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/math-lines.html">
+<meta property="og:title" content="Lines: Slope and Intercept — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="Unit 5 describes how one quantitative variable changes with another using a straight line.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/math-lines.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/math-lines.html#reading",
+      "name": "Lines: Slope and Intercept",
+      "url": "https://levlprep.com/statistics/notes/math-lines.html",
+      "description": "Unit 5 describes how one quantitative variable changes with another using a straight line.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "lines: slope and intercept for statistics",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/statistics/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Lines: Slope and Intercept: notes",
+          "item": "https://levlprep.com/statistics/notes/math-lines.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="math-lines" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Regression Analysis</a>
+    <a class="bk-toc-chap" href="../units/skills-math.html"><span class="bk-toc-chap-n">S</span><span><b>Math you need</b><small>5 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="skills-math"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="math-fractions-percents"><a href="math-fractions-percents.html"><span class="bk-toc-n">S</span>Fractions, Decimals and Percents</a></li><li data-toc-t="math-formulas"><a href="math-formulas.html"><span class="bk-toc-n">S</span>Formulas, Order of Operations and Square Roots</a></li><li data-toc-t="math-inequality-words"><a href="math-inequality-words.html"><span class="bk-toc-n">S</span>Inequalities in Words</a></li><li data-toc-t="math-counting"><a href="math-counting.html"><span class="bk-toc-n">S</span>Factorials and Combinations</a></li><li class="current" data-toc-t="math-lines"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Lines: Slope and Intercept</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-equation-of-a-line">The equation of a line</a><a href="#slope">Slope</a><a href="#intercept">Intercept</a><a href="#saying-it-in-context">Saying it in context</a></div></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Lines: Slope and Intercept: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/math-lines.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Skills <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Lines: Slope and Intercept</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">2 min read &middot; free</span><span class="bk-chip" data-chip-topic="math-lines">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fmath-lines.html&amp;title=Lines%3A%20Slope%20and%20Intercept%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/math-lines.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>Unit 5 describes how one <a class="gl" href="../notes/variables.html" data-c="quantitative-variable">quantitative variable</a> changes with another using a straight line. Before that, you need to be comfortable reading any line: what its <span class="gl" tabindex="0" data-c="slope-line">slope</span> says, what its <span class="gl" tabindex="0" data-c="intercept">intercept</span> says, and how to find both.</p>
+
+<h2 id="the-equation-of-a-line">The equation of a line</h2>
+<p>Statistics writes a line as</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>x</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">y = a + bx,</annotation></semantics></math></p>
+<p>with the intercept first. <math class="stat-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> is the <b>slope</b> and <math class="stat-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> is the <b>y-intercept</b>. (Algebra classes often write <math class="stat-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">y = mx + b</annotation></semantics></math>; it is the same line with different letters.)</p>
+<figure id="fig-line"  class="stat-figure"><div class="stat-figimg" data-fig="slope-intercept"><img src="../figures/slope-intercept.svg" alt="The line y = 12 + 3x for the cost in dollars of renting a bike for x hours, on axes from 0 to 8 hours and 0 to 40 dollars. The line starts at the intercept, 12 dollars at 0 hours. A step of 1 hour to the right (the run) goes with a rise of 3 dollars: the slope is 3 dollars per hour." width="720" height="360" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The rental cost line <math class="stat-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>12</mn><mo>+</mo><mn>3</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">y = 12 + 3x</annotation></semantics></math>, with its intercept and one rise-over-run step. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="slope">Slope</h2>
+<p>The slope is the change in y for each one-unit increase in x. On a graph it is rise over run: from any point on the line, move 1 unit right, and y changes by <math class="stat-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math>. A positive slope rises; a negative slope falls.</p>
+<p>From two points <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_1, y_1)</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_2, y_2)</annotation></semantics></math>:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>b</mi><mo>=</mo><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">b = \frac{y_2 - y_1}{x_2 - x_1}.</annotation></semantics></math></p>
+<p>Subtract in the same order on top and bottom. The slope has units: y units per x unit, such as dollars per hour.</p>
+<div class="worked">
+<p><b>Slope and intercept from two points.</b> A line passes through <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>7</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 7)</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mn>6</mn><mo>,</mo><mn>19</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(6, 19)</annotation></semantics></math>.</p>
+<p>Slope: <math class="stat-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>19</mn><mo>−</mo><mn>7</mn></mrow><mrow><mn>6</mn><mo>−</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{19 - 7}{6 - 2}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>12</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{12}{4}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">= 3</annotation></semantics></math>.</p>
+<p>Intercept: write <math class="stat-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><mo>+</mo><mn>3</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">y = a + 3x</annotation></semantics></math> and use one point, <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>7</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 7)</annotation></semantics></math>: <math class="stat-m"><semantics><mrow><mn>7</mn><mo>=</mo><mi>a</mi><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><mo>+</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">7 = a + 3(2) = a + 6</annotation></semantics></math>, so <math class="stat-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a = 1</annotation></semantics></math>.</p>
+<p>Equation: <math class="stat-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn><mo>+</mo><mn>3</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">y = 1 + 3x</annotation></semantics></math>. Check with the other point: <math class="stat-m"><semantics><mrow><mn>1</mn><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo>=</mo><mn>19</mn></mrow><annotation encoding="application/x-tex">1 + 3(6) = 19</annotation></semantics></math>. Correct.</p>
+</div>
+
+<h2 id="intercept">Intercept</h2>
+<p>The y-intercept is the value of y when <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>, where the line crosses the vertical axis. For the bike rental <math class="stat-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>12</mn><mo>+</mo><mn>3</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">y = 12 + 3x</annotation></semantics></math>, it is the 12 dollar fee charged before any hours. Sometimes <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> makes no sense: a line giving adult height from shoe length has an intercept at shoe length 0, which no adult has. Then the intercept is just a number that places the line, with no meaning of its own.</p>
+
+<h2 id="saying-it-in-context">Saying it in context</h2>
+<div class="worked">
+<p><b>Interpret a line.</b> A cooling drink’s temperature is <math class="stat-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>80</mn><mo>−</mo><mn>2.5</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">y = 80 - 2.5x</annotation></semantics></math> degrees Fahrenheit after <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> minutes.</p>
+<p>Slope: <i>"For each additional minute, the temperature of the drink decreases by 2.5 degrees."</i></p>
+<p>Intercept: <i>"At 0 minutes, when it is poured, the drink is 80 degrees."</i> Here <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> makes sense, so the intercept has a meaning.</p>
+<p>A value: after 6 minutes, <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>80</mn><mo>−</mo><mn>2.5</mn><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 80 - 2.5(6)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>80</mn><mo>−</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">= 80 - 15</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>65</mn></mrow><annotation encoding="application/x-tex">= 65</annotation></semantics></math> degrees.</p>
+</div>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th></th><th>Slope <math class="stat-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></th><th>Intercept <math class="stat-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><th>Meaning</th><td>change in y per one-unit increase in x</td><td>y when <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math></td></tr>
+<tr><th>Units</th><td>y units per x unit</td><td>y units</td></tr>
+<tr><th>Template</th><td>"For each additional [x unit], [y] increases (decreases) by [b] [y units]."</td><td>"When [x] is 0, [y] is [a] [y units]." (only if <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> makes sense)</td></tr>
+</tbody>
+</table></div>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:math-lines">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="test-two-means.html"><span>&larr; Previous</span><b>Carrying Out a Test for the Difference Between Two Population Means</b></a><a class="tb-chapter-link next" href="scatterplots.html"><span>Next &rarr;</span><b>Graphical Representations Between Two Quantitative Variables</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:math-lines">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

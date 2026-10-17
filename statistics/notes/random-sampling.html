@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Sampling — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="A sample is only useful if it represents the population. The surest way to get one is to let chance choose.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/random-sampling.html">
+<meta property="og:title" content="Random Sampling — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="A sample is only useful if it represents the population. The surest way to get one is to let chance choose.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/random-sampling.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/random-sampling.html#reading",
+      "name": "Random Sampling",
+      "url": "https://levlprep.com/statistics/notes/random-sampling.html",
+      "description": "A sample is only useful if it represents the population. The surest way to get one is to let chance choose.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "random sampling ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exploring One-Variable Data and Collecting Data",
+          "item": "https://levlprep.com/statistics/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Random Sampling: notes",
+          "item": "https://levlprep.com/statistics/notes/random-sampling.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="random-sampling" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Exploring One-Variable Data and Collecting Data</b><small>13 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 13 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="intro-statistics"><a href="intro-statistics.html"><span class="bk-toc-n">1.1</span>Introducing Statistics: What Can We Learn from Data?</a></li><li data-toc-t="variables"><a href="variables.html"><span class="bk-toc-n">1.2</span>Variables</a></li><li data-toc-t="one-categorical-tables"><a href="one-categorical-tables.html"><span class="bk-toc-n">1.3</span>Tabular Representation and Summary Statistics for One Categorical Variable</a></li><li data-toc-t="one-categorical-displays"><a href="one-categorical-displays.html"><span class="bk-toc-n">1.4</span>Graphical Representations for One Categorical Variable</a></li><li data-toc-t="one-quantitative-displays"><a href="one-quantitative-displays.html"><span class="bk-toc-n">1.5</span>Graphical Representations for One Quantitative Variable</a></li><li data-toc-t="describing-distributions"><a href="describing-distributions.html"><span class="bk-toc-n">1.6</span>Descriptions for One Quantitative Variable Distributions</a></li><li data-toc-t="summary-statistics"><a href="summary-statistics.html"><span class="bk-toc-n">1.7</span>Summary Statistics for One Quantitative Variable</a></li><li data-toc-t="boxplots"><a href="boxplots.html"><span class="bk-toc-n">1.8</span>Graphical Representations of Summary Statistics for One Quantitative Variable</a></li><li data-toc-t="comparing-distributions"><a href="comparing-distributions.html"><span class="bk-toc-n">1.9</span>Comparisons of the Distributions for One Quantitative Variable</a></li><li data-toc-t="investigative-questions"><a href="investigative-questions.html"><span class="bk-toc-n">1.10</span>The Investigative Question Revisited and Data Collection</a></li><li class="current" data-toc-t="random-sampling"><a href="#main" aria-current="page"><span class="bk-toc-n">1.11</span>Random Sampling</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-let-chance-choose">Why let chance choose?</a><a href="#simple-random-samples">Simple random samples</a><a href="#stratified-cluster-and-systematic-samples">Stratified, cluster and systematic samples</a><a href="#strata-or-clusters">Strata or clusters?</a></div></li><li data-toc-t="sampling-problems"><a href="sampling-problems.html"><span class="bk-toc-n">1.12</span>Potential Problems with Sampling</a></li><li data-toc-t="experimental-design"><a href="experimental-design.html"><span class="bk-toc-n">1.13</span>Experimental Design</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Exploring One-Variable Data and Collecting Data</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Random Sampling: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/random-sampling.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.11 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Random Sampling</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="random-sampling">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Frandom-sampling.html&amp;title=Random%20Sampling%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/random-sampling.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>A <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> is only useful if it represents the <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a>. The surest way to get one is to let <a class="gl" href="../notes/simulation.html" data-c="probability">chance</a> choose. This page covers why chance works, the four <span class="gl" tabindex="0" data-c="random-selection">random</span> sampling methods on the exam, and how to write a sampling procedure that someone else could follow exactly.</p>
+
+<h2 id="why-let-chance-choose">Why let chance choose?</h2>
+<p>When a person picks the sample, their choices creep in: friendly-looking people, nearby houses, the first names on a list. Those choices can make the sample differ from the population in ways nobody planned. A <b>random</b> selection uses a chance process, such as a random number generator, so nobody’s preferences decide who is chosen. On <a class="gl" href="../notes/summary-statistics.html" data-c="mean">average</a>, a random sample looks like the population it came from, and the larger it is, the closer its results tend to be to the population’s.</p>
+<p>Sampling starts from a <b><span class="gl" tabindex="0" data-c="sampling-frame">sampling frame</span></b>, the list of individuals the sample is actually drawn from: a school roster, a list of addresses, a park map of ponds. Ideally the frame lists the whole population.</p>
+
+<h2 id="simple-random-samples">Simple random samples</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="srs">simple random sample</span></b> (SRS) of size n is chosen so that every group of n individuals has the same chance of being the sample. That is stronger than saying each individual has the same chance: in a sample of whole homerooms, each student has the same chance, but a group of 100 students from many different homerooms can never occur.</p>
+<p>Samples are usually drawn <b><span class="gl" tabindex="0" data-c="replacement">without replacement</span></b>: once an individual is chosen, it cannot be chosen again. Drawing <b>with replacement</b> puts each one back, so it could be picked twice, which makes no sense for a committee or a <a class="gl" href="../notes/investigative-questions.html" data-c="survey">survey</a>.</p>
+<div class="worked">
+<p><b>Write an SRS procedure.</b> A park has 80 ponds; a team will test the water in 10 of them.</p>
+<p><b>Label.</b> Number the ponds on the park map from 1 to 80.</p>
+<p><b>Generate.</b> Use a random number generator to produce whole numbers from 1 to 80.</p>
+<p><b>Skip repeats.</b> If a number comes up again, ignore it.</p>
+<p><b>Select.</b> Continue until 10 different numbers have been chosen, and test the ponds with those numbers.</p>
+<p>A procedure that says only "pick 10 ponds at random" loses credit: another person could not repeat it.</p>
+</div>
+
+<h2 id="stratified-cluster-and-systematic-samples">Stratified, cluster and systematic samples</h2>
+<figure id="fig-four"  class="stat-figure"><div class="stat-figimg" data-fig="four-samples"><img src="../figures/four-samples.svg" alt="Four copies of the same population of 48 students in 6 homerooms of 8, with selected students in plum. Simple random sample: any 8 of the 48, scattered. Stratified random sample: the grades are strata, two homerooms each, and 3 students are chosen at random from each grade. Cluster sample: 2 whole homerooms chosen at random. Systematic random sample: a random start at the 3rd student, then every 6th student in order." width="720" height="470" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The same population of 48 students, sampled four ways. Chosen students are in plum. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>A <b><span class="gl" tabindex="0" data-c="stratified">stratified random sample</span></b> first splits the population into groups called <b>strata</b> (singular: stratum) whose members are similar, such as grades or neighborhoods, then takes an SRS from each stratum. Every stratum is guaranteed a place in the sample. When the response differs between strata, stratifying also gives estimates that vary less from sample to sample than an SRS of the same size.</p>
+<p>A <b><span class="gl" tabindex="0" data-c="cluster-sample">cluster sample</span></b> splits the population into groups called <a class="gl" href="../notes/describing-distributions.html" data-c="gap-cluster">clusters</a>, often by location (homerooms, city <a class="gl" href="../notes/experimental-design.html" data-c="block-design">blocks</a>), chooses some clusters at random, and measures everyone in them. It is convenient: four homerooms are much easier to survey than 100 students scattered across the school. It works best when each cluster looks like a small copy of the population.</p>
+<p>A <b><span class="gl" tabindex="0" data-c="systematic">systematic random sample</span></b> chooses a random starting point in an ordered list and then takes every kth individual. From 1,200 students with <math class="stat-m"><semantics><mrow><mi>k</mi><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">k = 12</annotation></semantics></math>, it gives about <math class="stat-m"><semantics><mrow><mfrac><mn>1200</mn><mn>12</mn></mfrac><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">\frac{1200}{12} = 100</annotation></semantics></math> students. It is easy, but risky if the list has a pattern that repeats every k entries, such as every 10th house on a street being a corner house.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Method</th><th>How</th><th>Strength</th><th>Watch out</th></tr></thead>
+<tbody>
+<tr><th>SRS</th><td>label, generate, skip repeats, select</td><td>every group of n equally possible</td><td>needs a full list; may miss a subgroup by chance</td></tr>
+<tr><th>Stratified</th><td>SRS within each stratum</td><td>every stratum represented; more precise when strata differ</td><td>strata must be groups of similar individuals</td></tr>
+<tr><th>Cluster</th><td>choose whole groups at random, measure everyone in them</td><td>cheap and convenient</td><td>clusters that differ from each other make results less precise</td></tr>
+<tr><th>Systematic</th><td>random start, then every kth</td><td>easy to carry out</td><td>a pattern in the list that repeats every k</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="strata-or-clusters">Strata or clusters?</h2>
+<p>The two ideas are used in opposite ways. Strata should be groups of individuals who are alike, and you sample from <i>every</i> stratum. Clusters should each be a mix that resembles the population, and you sample <i>all</i> of a few clusters. If a principal thinks opinions differ by grade, she should stratify by grade. If she just needs a quick, reasonable sample and homerooms mix all kinds of students, clusters are fine.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:random-sampling">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="investigative-questions.html"><span>&larr; Previous</span><b>The Investigative Question Revisited and Data Collection</b></a><a class="tb-chapter-link next" href="sampling-problems.html"><span>Next &rarr;</span><b>Potential Problems with Sampling</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:random-sampling">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

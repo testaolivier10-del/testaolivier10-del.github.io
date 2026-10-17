@@ -33,10 +33,9 @@
    9. AP® Calculus AB's the same way (<!-- hub-calc:start/end -->,
       <!-- nf-calc:start/end -->, calculus/manifest.json), hidden until its
       first unit is published (docs/apcalc-spec.md).
-  10. AP® Statistics's manifest (statistics/manifest.json) only: it is
-      registered hidden (docs/apstat-spec.md), so it has no hub card, no 404
-      card and no pricing entry; the launch adds those markers the AP®
-      Calculus AB way. */
+  10. AP® Statistics's the same way (<!-- hub-stat:start/end -->,
+      <!-- nf-stat:start/end -->, statistics/manifest.json), since its launch
+      (docs/apstat-spec.md decision 15). */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText } from './lib/premium-data.mjs';
@@ -83,14 +82,16 @@ const BIO = ORDER.includes('apbio');
 const CHEM = ORDER.includes('apchem');
 const PHYS = ORDER.includes('apphys');
 const CALC = ORDER.includes('apcalc');
+const STAT = ORDER.includes('apstat');
 /* Once every topic in the map is published the card stops promising more.
    "N published topics" keeps clear of check-site's ochem topic-count claim. */
 const CHEM_ALL = N.apchemTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apchem-dependency-map.json'), 'utf8')).topics.length;
 const PHYS_ALL = N.apphysTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apphys-dependency-map.json'), 'utf8')).topics.length;
 const CALC_ALL = N.apcalcTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apcalc-dependency-map.json'), 'utf8')).topics.length;
+const STAT_ALL = N.apstatTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apstat-dependency-map.json'), 'utf8')).topics.length;
 const BIO_ALL = N.apbioTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apbio-dependency-map.json'), 'utf8')).topics.length;
-// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB).
-const MARK = BIO || CHEM || PHYS || CALC;
+// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics).
+const MARK = BIO || CHEM || PHYS || CALC || STAT;
 // The College Board sentence, on every page that uses the mark (docs/apbio-spec.md).
 const TM_HTML = `<p class="tm-note">${esc(DISCLAIMER)}</p>`;
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
@@ -508,6 +509,29 @@ function hubCalcCard() {
         </a>`;
 }
 
+/* AP® Statistics's hub card, the same way: a bell curve over histogram bars
+   in plum (docs/apstat-spec.md decision 5), counted, never typed. */
+function hubStatCard() {
+  const topics = N.apstatTopics;
+  return `        <a class="featured-card" href="statistics/" data-tint="apstat">
+          <div class="featured-top">
+            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20v-4M10 20v-8M14 20v-8M17 20v-4" stroke-opacity=".55"/><path d="M3 18c4 0 5-13 9-13s5 13 9 13"/><path d="M2 21h20"/></svg></div>
+            <span class="status-badge">Beta</span>
+          </div>
+          <div>
+            <p class="featured-name">AP® Statistics</p>
+            <p class="featured-desc">Built on the revised course framework for the May 2027 exam: lessons from scratch, numbers from a table or a calculator both accepted, and conclusions checked part by part in context. ${STAT_ALL ? `All ${fmt(topics)} published topics, from the math you need to regression.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
+          </div>
+          <div class="featured-tags">
+            <span>Beta</span>
+            <span>Free notes</span>
+            <span>Sampling simulator</span>
+            <span>Conclusions in context</span>
+          </div>
+          <span class="featured-cta">Start learning &rarr;</span>
+        </a>`;
+}
+
 {
   const rel = 'index.html';
   let src = readFileSync(join(ROOT, rel), 'utf8');
@@ -517,6 +541,7 @@ function hubCalcCard() {
   src = between(src, '<!-- hub-chem:start -->', '<!-- hub-chem:end -->', CHEM ? hubChemCard() : '', rel);
   src = between(src, '<!-- hub-phys:start -->', '<!-- hub-phys:end -->', PHYS ? hubPhysCard() : '', rel);
   src = between(src, '<!-- hub-calc:start -->', '<!-- hub-calc:end -->', CALC ? hubCalcCard() : '', rel);
+  src = between(src, '<!-- hub-stat:start -->', '<!-- hub-stat:end -->', STAT ? hubStatCard() : '', rel);
   /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
@@ -529,7 +554,7 @@ function hubCalcCard() {
   }
   /* The desktop facts row (polish 2026-10-17, A2): course-neutral, counted
      from every open course's bank, never typed. */
-  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc };
+  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat };
   const allQ = OPEN.reduce((n, c) => n + (BANK[c.key] || 0), 0);
   const facts = [
     `${fmt(allQ)} practice questions, each one explained`,
@@ -669,6 +694,11 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
       <p>${CALC_ALL ? `All ${fmt(N.apcalcTopics)} published topics` : `${fmt(N.apcalcTopics)} published topic${N.apcalcTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
     </a>`;
   out = between(out, '<!-- nf-calc:start -->', '<!-- nf-calc:end -->', CALC ? calc : '', rel);
+  const stat = `    <a class="card nf-card" href="/statistics/">
+      <h2>AP® Statistics (Beta) &rarr;</h2>
+      <p>${STAT_ALL ? `All ${fmt(N.apstatTopics)} published topics` : `${fmt(N.apstatTopics)} published topic${N.apstatTopics === 1 ? '' : 's'} so far`}, in the order of the revised course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+    </a>`;
+  out = between(out, '<!-- nf-stat:start -->', '<!-- nf-stat:end -->', STAT ? stat : '', rel);
   put(rel, out);
 }
 

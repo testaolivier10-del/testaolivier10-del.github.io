@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interval for a Proportion — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="A point estimate such as p-hat = 0.62 is our best single guess, but it is almost never exactly right.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/ci-one-proportion.html">
+<meta property="og:title" content="Interval for a Proportion — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="A point estimate such as p-hat = 0.62 is our best single guess, but it is almost never exactly right.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/ci-one-proportion.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/ci-one-proportion.html#reading",
+      "name": "Constructing a Confidence Interval for a Population Proportion",
+      "url": "https://levlprep.com/statistics/notes/ci-one-proportion.html",
+      "description": "A point estimate such as p-hat = 0.62 is our best single guess, but it is almost never exactly right.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "constructing a confidence interval for a population proportion ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Categorical Data: Proportions",
+          "item": "https://levlprep.com/statistics/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Constructing a Confidence Interval for a Population Proportion: notes",
+          "item": "https://levlprep.com/statistics/notes/ci-one-proportion.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="ci-one-proportion" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Inference for Categorical Data: Proportions</b><small>15 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="estimators"><a href="estimators.html"><span class="bk-toc-n">3.1</span>Estimators</a></li><li data-toc-t="sampling-dist-proportion"><a href="sampling-dist-proportion.html"><span class="bk-toc-n">3.2</span>Sampling Distributions for Sample Proportions</a></li><li class="current" data-toc-t="ci-one-proportion"><a href="#main" aria-current="page"><span class="bk-toc-n">3.3</span>Constructing a Confidence Interval for a Population Proportion</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-idea-go-out-a-fixed">The idea: go out a fixed distance on each side</a><a href="#the-three-pieces">The three pieces</a><a href="#conditions-for-inference">Conditions for inference</a><a href="#what-changes-the-margin-of-error">What changes the margin of error</a></div></li><li data-toc-t="ci-one-proportion-claims"><a href="ci-one-proportion-claims.html"><span class="bk-toc-n">3.4</span>Justifying a Claim Based on a Confidence Interval for a Population Proportion</a></li><li data-toc-t="test-one-proportion-setup"><a href="test-one-proportion-setup.html"><span class="bk-toc-n">3.5</span>Setting Up a Test for a Population Proportion</a></li><li data-toc-t="p-values"><a href="p-values.html"><span class="bk-toc-n">3.6</span>p-Values</a></li><li data-toc-t="test-one-proportion"><a href="test-one-proportion.html"><span class="bk-toc-n">3.7</span>Carrying Out a Test for a Population Proportion</a></li><li data-toc-t="errors-and-power"><a href="errors-and-power.html"><span class="bk-toc-n">3.8</span>Potential Errors When Performing Tests</a></li><li data-toc-t="sampling-dist-two-proportions"><a href="sampling-dist-two-proportions.html"><span class="bk-toc-n">3.9</span>Sampling Distributions for the Difference Between Sample Proportions</a></li><li data-toc-t="ci-two-proportions"><a href="ci-two-proportions.html"><span class="bk-toc-n">3.10</span>Constructing a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="ci-two-proportions-claims"><a href="ci-two-proportions-claims.html"><span class="bk-toc-n">3.11</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions-setup"><a href="test-two-proportions-setup.html"><span class="bk-toc-n">3.12</span>Setting Up a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions"><a href="test-two-proportions.html"><span class="bk-toc-n">3.13</span>Carrying Out a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="chi-square-setup"><a href="chi-square-setup.html"><span class="bk-toc-n">3.14</span>Setting Up a Chi-Square Test for Homogeneity or Independence</a></li><li data-toc-t="chi-square-test"><a href="chi-square-test.html"><span class="bk-toc-n">3.15</span>Carrying Out a Chi-Square Test for Homogeneity or Independence</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Inference for Categorical Data: Proportions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Constructing a Confidence Interval for a Population Proportion: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/ci-one-proportion.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 3 &middot; Topic 3.3 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Constructing a Confidence Interval for a Population Proportion</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="ci-one-proportion">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fci-one-proportion.html&amp;title=Constructing%20a%20Confidence%20Interval%20for%20a%20Population%20Proportion%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/ci-one-proportion.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>A <a class="gl" href="../notes/estimators.html" data-c="estimator">point estimate</a> such as <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mn>0.62</mn></mrow><annotation encoding="application/x-tex">\hat{p} = 0.62</annotation></semantics></math> is our best single guess, but it is almost never exactly right. A <b><span class="gl" tabindex="0" data-c="confidence-interval">confidence interval</span></b> gives a <a class="gl" href="../notes/summary-statistics.html" data-c="range">range</a> of values instead, built so that the method captures the <a class="gl" href="../notes/one-categorical-tables.html" data-c="population-proportion">true proportion</a> a known <a class="gl" href="../notes/math-fractions-percents.html" data-c="proportion-math">percent</a> of the time. This topic is about building one correctly; the next topic is about what it lets you say.</p>
+
+<h2 id="the-idea-go-out-a-fixed">The idea: go out a fixed distance on each side</h2>
+<p>From the last topic, when the conditions hold, <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> is <a class="gl" href="../notes/normal-distribution.html" data-c="normal-distribution">approximately normal</a> with <a class="gl" href="../notes/summary-statistics.html" data-c="mean">mean</a> <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> and <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a> <math class="stat-m"><semantics><mrow><msqrt><mrow><mi>p</mi><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo stretchy="false">)</mo><mo>/</mo><mi>n</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{p(1 - p)/n}</annotation></semantics></math>. In 95% of <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">random</a> <a class="gl" href="../notes/intro-statistics.html" data-c="sample">samples</a>, <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> lands within 1.96 standard deviations of <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>. Turn that sentence around: in 95% of samples, <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> is within 1.96 standard deviations of <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math>. So if we go 1.96 standard deviations out on each side of whatever <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> we get, 95% of the intervals we build that way will reach across <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>.</p>
+<figure id="fig-ci"  class="stat-figure"><div class="stat-figimg" data-fig="ci-construction"><img src="../figures/ci-construction.svg" alt="Top: the normal sampling distribution of the sample proportion, centered at the unknown true proportion p, with the middle 95% shaded between p minus 1.96 standard deviations and p plus 1.96 standard deviations. Below it, three sample proportions are drawn with their intervals, each the sample proportion plus or minus 1.96 standard deviations. The two sample proportions that land inside the shaded middle 95% give intervals that reach across p; the one that lands in the tail gives an interval that misses p." width="640" height="470" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Sample proportions that land in the middle 95% of the sampling distribution give intervals that capture p; the ones in the tails give intervals that miss. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Every confidence interval in this course has the same <a class="gl" href="../notes/describing-distributions.html" data-c="shape">shape</a>, which is on the reference sheet:</p>
+<p style="text-align:center"><b>statistic ± (<span class="gl" tabindex="0" data-c="critical-value">critical value</span>)(<span class="gl" tabindex="0" data-c="standard-error">standard error</span> of the statistic)</b></p>
+<p>For one proportion that is</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>±</mo><msup><mi>z</mi><mo>∗</mo></msup><msqrt><mfrac><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">)</mo></mrow><mi>n</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex">\hat{p} \pm z^*\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}</annotation></semantics></math></p>
+
+<h2 id="the-three-pieces">The three pieces</h2>
+<ul>
+<li><b>The point estimate</b> <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> is the <a class="gl" href="../notes/describing-distributions.html" data-c="center">center</a> of the interval.</li>
+<li><b>The standard error</b>, <math class="stat-m"><semantics><mrow><mtext>SE</mtext></mrow><annotation encoding="application/x-tex">\text{SE}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mfrac><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">)</mo></mrow><mi>n</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}</annotation></semantics></math>. The true standard deviation needs <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>, which we do not know, so we substitute <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math>. A standard deviation estimated from the <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a> is called a standard error.</li>
+<li><b>The critical value</b> <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">z^*</annotation></semantics></math> comes from the <b><span class="gl" tabindex="0" data-c="confidence-level">confidence level</span></b> <math class="stat-m"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math>. It is the value with an area of <math class="stat-m"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math> between <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">-z^*</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">z^*</annotation></semantics></math> under the <a class="gl" href="../notes/normal-distribution.html" data-c="standard-normal">standard normal</a> curve, so each tail holds <math class="stat-m"><semantics><mrow><mfrac><mrow><mn>1</mn><mo>−</mo><mi>C</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1 - C}{2}</annotation></semantics></math>.</li>
+</ul>
+<p>The product <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup><mo>⋅</mo><mtext>SE</mtext></mrow><annotation encoding="application/x-tex">z^* \cdot \text{SE}</annotation></semantics></math> is the <b><span class="gl" tabindex="0" data-c="margin-of-error">margin of error</span></b>, <math class="stat-m"><semantics><mrow><mtext>ME</mtext></mrow><annotation encoding="application/x-tex">\text{ME}</annotation></semantics></math>: how far the interval reaches on each side of <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Confidence level, Area in each tail, Area below z*, z*"><table>
+<thead><tr><th scope="col">Confidence level</th><th scope="col">Area in each tail</th><th scope="col">Area below <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">z^*</annotation></semantics></math></th><th scope="col"><math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">z^*</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td>90%</td><td>0.05</td><td>0.95</td><td>1.645</td></tr>
+<tr><td>95%</td><td>0.025</td><td>0.975</td><td>1.960</td></tr>
+<tr><td>98%</td><td>0.01</td><td>0.99</td><td>2.326</td></tr>
+<tr><td>99%</td><td>0.005</td><td>0.995</td><td>2.576</td></tr>
+</tbody>
+</table></div>
+<p>Find <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">z^*</annotation></semantics></math> with an inverse normal command using the area below it, or from the bottom row of Table B. A common slip is to use 0.90 as the area for a 90% interval: that leaves all 10% in one tail.</p>
+
+<h2 id="conditions-for-inference">Conditions for inference</h2>
+<p>Check three conditions, in words and with numbers, before you calculate.</p>
+<ul>
+<li><b>Random:</b> the data come from a random sample (or a randomized <a class="gl" href="../notes/investigative-questions.html" data-c="experiment">experiment</a>). Quote the problem: "a random sample of 400 students."</li>
+<li><b>10%:</b> when sampling <a class="gl" href="../notes/random-sampling.html" data-c="replacement">without replacement</a>, <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> is <a class="gl" href="../notes/math-inequality-words.html" data-c="inequality-words">at most</a> 10% of the <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a>: "400 is less than 10% of the 28,000 students."</li>
+<li><b><a class="gl" href="../notes/sampling-dist-proportion.html" data-c="large-counts">Large counts</a>:</b> at least 10 successes and 10 failures in the sample: <math class="stat-m"><semantics><mrow><mi>n</mi><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>≥</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">n\hat{p} \ge 10</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mi>n</mi><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">)</mo><mo>≥</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">n(1 - \hat{p}) \ge 10</annotation></semantics></math>. For an interval we use the sample's counts, because <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> is unknown.</li>
+</ul>
+<p>The procedure's full name is the <b>one-sample z interval for a proportion</b> (some books say one-proportion z interval). Name it on the exam; "z interval" alone is incomplete.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> A random sample of 400 of a university's 28,000 students finds that 248 regularly skip breakfast. Construct a 95% confidence interval for the proportion of all students at the university who regularly skip breakfast.</p>
+<p><b>Procedure.</b> One-sample z interval for a proportion, where <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> is the true proportion of all students at the university who regularly skip breakfast.</p>
+<p><b>Conditions.</b> Random: a random sample of 400 students. 10%: 400 is less than 10% of 28,000 (2,800). Large counts: 248 skip and 152 do not, both at least 10.</p>
+<p><b>Calculate.</b> <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mfrac><mn>248</mn><mn>400</mn></mfrac><mo>=</mo><mn>0.62</mn></mrow><annotation encoding="application/x-tex">\hat{p} = \frac{248}{400} = 0.62</annotation></semantics></math>. <math class="stat-m"><semantics><mrow><mtext>SE</mtext></mrow><annotation encoding="application/x-tex">\text{SE}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mfrac><mrow><mn>0.62</mn><mo stretchy="false">(</mo><mn>0.38</mn><mo stretchy="false">)</mo></mrow><mn>400</mn></mfrac></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{\frac{0.62(0.38)}{400}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.0243</mn></mrow><annotation encoding="application/x-tex">= 0.0243</annotation></semantics></math>. For 95%, <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup><mo>=</mo><mn>1.96</mn></mrow><annotation encoding="application/x-tex">z^* = 1.96</annotation></semantics></math>, so <math class="stat-m"><semantics><mrow><mtext>ME</mtext></mrow><annotation encoding="application/x-tex">\text{ME}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>1.96</mn><mo stretchy="false">(</mo><mn>0.0243</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 1.96(0.0243)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.0476</mn></mrow><annotation encoding="application/x-tex">= 0.0476</annotation></semantics></math>.</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mn>0.62</mn><mo>±</mo><mn>1.96</mn><msqrt><mfrac><mrow><mn>0.62</mn><mo stretchy="false">(</mo><mn>0.38</mn><mo stretchy="false">)</mo></mrow><mn>400</mn></mfrac></msqrt><mo>=</mo><mn>0.62</mn><mo>±</mo><mn>0.048</mn></mrow><annotation encoding="application/x-tex">0.62 \pm 1.96\sqrt{\frac{0.62(0.38)}{400}} = 0.62 \pm 0.048</annotation></semantics></math></p>
+<p><b>Answer.</b> The interval runs from 0.572 to 0.668. Technology (a one-proportion z interval) gives the same. Interpreted: we are 95% confident that the interval from 0.572 to 0.668 captures the true proportion of all students at the university who regularly skip breakfast.</p>
+</div>
+<p>Type an interval as "from 0.572 to 0.668" or "(0.572, 0.668)". Never "0.572-0.668", which reads as a subtraction.</p>
+
+<h2 id="what-changes-the-margin-of-error">What changes the margin of error</h2>
+<ul>
+<li><b>Sample size:</b> <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> sits under a <a class="gl" href="../notes/math-formulas.html" data-c="square-root">square root</a> in the denominator. Four times the sample size halves the margin of error.</li>
+<li><b>Confidence <a class="gl" href="../notes/experimental-design.html" data-c="treatment">level</a>:</b> more confidence needs a larger <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">z^*</annotation></semantics></math>, so the interval gets longer. A 99% interval reaches farther than a 95% interval from the same data.</li>
+<li><b>Population size:</b> it does not appear, as long as the <a class="gl" href="../notes/sampling-dist-proportion.html" data-c="ten-percent">10% condition</a> holds.</li>
+</ul>
+<p>To plan a sample size, solve <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup><msqrt><mfrac><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">)</mo></mrow><mi>n</mi></mfrac></msqrt><mo>≤</mo><mtext>ME</mtext></mrow><annotation encoding="application/x-tex">z^*\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} \le \text{ME}</annotation></semantics></math> for <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math>: <math class="stat-m"><semantics><mrow><mi>n</mi><mo>≥</mo><msup><mrow><mo fence="true" stretchy="true">(</mo><mfrac><msup><mi>z</mi><mo>∗</mo></msup><mtext>ME</mtext></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n \ge \left(\frac{z^*}{\text{ME}}\right)^2\hat{p}(1 - \hat{p})</annotation></semantics></math>. With no earlier estimate, use <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\hat{p} = 0.5</annotation></semantics></math>, which gives the largest <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> and so is safe. Always round a sample size up.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:ci-one-proportion">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="sampling-dist-proportion.html"><span>&larr; Previous</span><b>Sampling Distributions for Sample Proportions</b></a><a class="tb-chapter-link next" href="ci-one-proportion-claims.html"><span>Next &rarr;</span><b>Justifying a Claim Based on a Confidence Interval for a Population Proportion</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:ci-one-proportion">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

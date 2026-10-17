@@ -340,7 +340,8 @@
         if(n.sub) s += '_' + par(tx(n.sub).trim());
         if(n.sup){
           var u = tx(n.sup).trim();
-          s += /^[0-9−+-]+$/.test(u) ? u.replace(/./g, function(c){ return SUPD[c]; }) : /^[′″‴]$/.test(u) ? u : '^' + par(u);
+          // A star (z*, t*, the critical values) reads as itself, not "^(*)".
+          s += /^[0-9−+-]+$/.test(u) ? u.replace(/./g, function(c){ return SUPD[c]; }) : /^[′″‴]$/.test(u) ? u : /^[*∗]$/.test(u) ? '*' : '^' + par(u);
         }
         return s + (b0.k === 'fn' ? ' ' : '');
       }

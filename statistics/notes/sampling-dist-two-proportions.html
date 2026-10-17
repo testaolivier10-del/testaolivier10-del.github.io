@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two-Proportion Sampling Distribution — AP® Statistics Notes</title>
+<meta name="description" content="Many of the most useful questions in statistics compare two groups. Do more teens than adults use a bike share?">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/sampling-dist-two-proportions.html">
+<meta property="og:title" content="Two-Proportion Sampling Distribution — AP® Statistics Notes">
+<meta property="og:description" content="Many of the most useful questions in statistics compare two groups. Do more teens than adults use a bike share?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/sampling-dist-two-proportions.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/sampling-dist-two-proportions.html#reading",
+      "name": "Sampling Distributions for the Difference Between Sample Proportions",
+      "url": "https://levlprep.com/statistics/notes/sampling-dist-two-proportions.html",
+      "description": "Many of the most useful questions in statistics compare two groups. Do more teens than adults use a bike share?",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "sampling distributions for the difference between sample proportions ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Categorical Data: Proportions",
+          "item": "https://levlprep.com/statistics/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Sampling Distributions for the Difference Between Sample Proportions: notes",
+          "item": "https://levlprep.com/statistics/notes/sampling-dist-two-proportions.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="sampling-dist-two-proportions" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Inference for Categorical Data: Proportions</b><small>15 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="estimators"><a href="estimators.html"><span class="bk-toc-n">3.1</span>Estimators</a></li><li data-toc-t="sampling-dist-proportion"><a href="sampling-dist-proportion.html"><span class="bk-toc-n">3.2</span>Sampling Distributions for Sample Proportions</a></li><li data-toc-t="ci-one-proportion"><a href="ci-one-proportion.html"><span class="bk-toc-n">3.3</span>Constructing a Confidence Interval for a Population Proportion</a></li><li data-toc-t="ci-one-proportion-claims"><a href="ci-one-proportion-claims.html"><span class="bk-toc-n">3.4</span>Justifying a Claim Based on a Confidence Interval for a Population Proportion</a></li><li data-toc-t="test-one-proportion-setup"><a href="test-one-proportion-setup.html"><span class="bk-toc-n">3.5</span>Setting Up a Test for a Population Proportion</a></li><li data-toc-t="p-values"><a href="p-values.html"><span class="bk-toc-n">3.6</span>p-Values</a></li><li data-toc-t="test-one-proportion"><a href="test-one-proportion.html"><span class="bk-toc-n">3.7</span>Carrying Out a Test for a Population Proportion</a></li><li data-toc-t="errors-and-power"><a href="errors-and-power.html"><span class="bk-toc-n">3.8</span>Potential Errors When Performing Tests</a></li><li class="current" data-toc-t="sampling-dist-two-proportions"><a href="#main" aria-current="page"><span class="bk-toc-n">3.9</span>Sampling Distributions for the Difference Between Sample Proportions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#a-new-statistic-the-difference">A new statistic: the difference</a><a href="#center-the-difference-of-the-true">Center: the difference of the true proportions</a><a href="#spread-the-variances-add">Spread: the variances add</a><a href="#shape-approximately-normal-with-large-counts">Shape: approximately normal with large counts</a><a href="#seeing-it-in-a-simulation">Seeing it in a simulation</a><a href="#why-this-matters-next">Why this matters next</a></div></li><li data-toc-t="ci-two-proportions"><a href="ci-two-proportions.html"><span class="bk-toc-n">3.10</span>Constructing a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="ci-two-proportions-claims"><a href="ci-two-proportions-claims.html"><span class="bk-toc-n">3.11</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions-setup"><a href="test-two-proportions-setup.html"><span class="bk-toc-n">3.12</span>Setting Up a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions"><a href="test-two-proportions.html"><span class="bk-toc-n">3.13</span>Carrying Out a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="chi-square-setup"><a href="chi-square-setup.html"><span class="bk-toc-n">3.14</span>Setting Up a Chi-Square Test for Homogeneity or Independence</a></li><li data-toc-t="chi-square-test"><a href="chi-square-test.html"><span class="bk-toc-n">3.15</span>Carrying Out a Chi-Square Test for Homogeneity or Independence</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Inference for Categorical Data: Proportions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Sampling Distributions for the Difference Between Sample Proportions: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/sampling-dist-two-proportions.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 3 &middot; Topic 3.9 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Sampling Distributions for the Difference Between Sample Proportions</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="sampling-dist-two-proportions">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fsampling-dist-two-proportions.html&amp;title=Sampling%20Distributions%20for%20the%20Difference%20Between%20Sample%20Proportions%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/sampling-dist-two-proportions.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>Many of the most useful questions in statistics compare two groups. Do more teens than adults use a bike share? Does a new reminder text get more patients to show up than the old one? To answer them, you take a <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> from each group and compare the two <a class="gl" href="../notes/one-categorical-tables.html" data-c="sample-proportion">sample proportions</a>. Before you can judge a comparison, you need to know how much a difference of two sample proportions moves around just by <a class="gl" href="../notes/simulation.html" data-c="probability">chance</a>. That is what this topic is about.</p>
+
+<h2 id="a-new-statistic-the-difference">A new statistic: the difference</h2>
+<p>Suppose a fraction <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">p_1</annotation></semantics></math> of <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> 1 and a fraction <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_2</annotation></semantics></math> of population 2 have some trait. Take a <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">random</a> sample of size <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">n_1</annotation></semantics></math> from the first population and, separately, a random sample of size <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">n_2</annotation></semantics></math> from the second. Each sample gives a sample proportion, <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_1</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_2</annotation></semantics></math>. The statistic we care about is their <b><span class="gl" tabindex="0" data-c="diff-proportions">difference in sample proportions</span></b>:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub><mo>.</mo></mrow><annotation encoding="application/x-tex">\hat{p}_1 - \hat{p}_2.</annotation></semantics></math></p>
+<p>Like any statistic, it changes from sample to sample. Its <a class="gl" href="../notes/sampling-distributions.html" data-c="sampling-distribution">sampling distribution</a> has a <a class="gl" href="../notes/describing-distributions.html" data-c="center">center</a>, a spread and a <a class="gl" href="../notes/describing-distributions.html" data-c="shape">shape</a>, and each one follows from what you already know about a single sample proportion.</p>
+
+<h2 id="center-the-difference-of-the-true">Center: the difference of the true proportions</h2>
+<p>You know that <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_1</annotation></semantics></math> is centered at <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">p_1</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_2</annotation></semantics></math> is centered at <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_2</annotation></semantics></math>. So their difference is centered at the difference of the true proportions:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>μ</mi><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow></msub><mo>=</mo><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub><mo>.</mo></mrow><annotation encoding="application/x-tex">\mu_{\hat{p}_1 - \hat{p}_2} = p_1 - p_2.</annotation></semantics></math></p>
+<p>This <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a> <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_1 - \hat{p}_2</annotation></semantics></math> is an <a class="gl" href="../notes/estimators.html" data-c="unbiased-estimator">unbiased estimator</a> of <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_1 - p_2</annotation></semantics></math>. It is not always right, but it is not off in one <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">direction</a> on average.</p>
+
+<h2 id="spread-the-variances-add">Spread: the variances add</h2>
+<p>Here is the surprising part. Each sample proportion has its own chance error. When you subtract, those errors do not cancel. Sometimes <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_1</annotation></semantics></math> comes out high while <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_2</annotation></semantics></math> comes out low, and then the difference is far too big. The two errors pile up. So a difference of two <a class="gl" href="../notes/independence-unions.html" data-c="independent-events">independent</a> statistics varies <b>more</b> than either one alone.</p>
+<p>The rule is that the <b><a class="gl" href="../notes/summary-statistics.html" data-c="variance">variances</a> add</b> (a variance is a <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a> squared). For <span class="gl" tabindex="0" data-c="independent-samples">two independent samples</span>:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>σ</mi><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow></msub><mo>=</mo><msqrt><mrow><mfrac><mrow><msub><mi>p</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><msub><mi>n</mi><mn>1</mn></msub></mfrac><mo>+</mo><mfrac><mrow><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><msub><mi>n</mi><mn>2</mn></msub></mfrac></mrow></msqrt><mo>.</mo></mrow><annotation encoding="application/x-tex">\sigma_{\hat{p}_1 - \hat{p}_2} = \sqrt{\frac{p_1(1 - p_1)}{n_1} + \frac{p_2(1 - p_2)}{n_2}}.</annotation></semantics></math></p>
+<p>Each term under the <a class="gl" href="../notes/math-formulas.html" data-c="square-root">square root</a> is the variance of one sample proportion. You add them first, then take one square root. Adding the two standard deviations, or subtracting anything, gives the wrong answer. This formula is on the reference sheet you get on the exam.</p>
+<p>The formula needs <b>independent samples</b>: who ends up in one sample has nothing to do with who ends up in the other. Two separate random samples from two schools are independent. Husbands and their own wives are not, because each person in one sample is linked to a person in the other.</p>
+
+<h2 id="shape-approximately-normal-with-large-counts">Shape: approximately normal with large counts</h2>
+<p>A single <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> has an <a class="gl" href="../notes/normal-distribution.html" data-c="normal-distribution">approximately normal</a> <a class="gl" href="../notes/variables.html" data-c="distribution">distribution</a> when <math class="stat-m"><semantics><mrow><mi>n</mi><mi>p</mi><mo>≥</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">np \ge 10</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mi>n</mi><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo stretchy="false">)</mo><mo>≥</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">n(1 - p) \ge 10</annotation></semantics></math>. For a difference you need this for <b>both</b> samples, so four counts in all:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><msub><mi>p</mi><mn>1</mn></msub><mo>≥</mo><mn>10</mn><mo>,</mo><mspace width="1em"></mspace><msub><mi>n</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo>≥</mo><mn>10</mn><mo>,</mo><mspace width="1em"></mspace><msub><mi>n</mi><mn>2</mn></msub><msub><mi>p</mi><mn>2</mn></msub><mo>≥</mo><mn>10</mn><mo>,</mo><mspace width="1em"></mspace><msub><mi>n</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mo>≥</mo><mn>10</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">n_1 p_1 \ge 10,\quad n_1(1 - p_1) \ge 10,\quad n_2 p_2 \ge 10,\quad n_2(1 - p_2) \ge 10.</annotation></semantics></math></p>
+<p>Some books use 5 instead of 10; 10 is the safer habit. When sampling <a class="gl" href="../notes/random-sampling.html" data-c="replacement">without replacement</a>, also check the <a class="gl" href="../notes/sampling-dist-proportion.html" data-c="ten-percent">10% condition</a> for each sample against its own population, so that the observations in each sample are close to independent.</p>
+
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="stat-compare">
+<thead><tr><th></th><th>One sample proportion <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math></th><th>Difference <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_1 - \hat{p}_2</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td>Center</td><td><math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></td><td><math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_1 - p_2</annotation></semantics></math></td></tr>
+<tr><td>Standard deviation</td><td><math class="stat-m"><semantics><mrow><msqrt><mfrac><mrow><mi>p</mi><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\frac{p(1-p)}{n}}</annotation></semantics></math></td><td><math class="stat-m"><semantics><mrow><msqrt><mrow><mfrac><mrow><msub><mi>p</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><msub><mi>n</mi><mn>1</mn></msub></mfrac><mo>+</mo><mfrac><mrow><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><msub><mi>n</mi><mn>2</mn></msub></mfrac></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}</annotation></semantics></math></td></tr>
+<tr><td>Normal shape when</td><td><math class="stat-m"><semantics><mrow><mi>n</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">np</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mi>n</mi><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n(1-p)</annotation></semantics></math> are <a class="gl" href="../notes/math-inequality-words.html" data-c="inequality-words">at least</a> 10</td><td>the same two counts for each sample</td></tr>
+<tr><td>Independence</td><td>10% condition</td><td>10% condition for each sample, and the two samples independent</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="seeing-it-in-a-simulation">Seeing it in a simulation</h2>
+<figure id="fig-sim"  class="stat-figure"><div class="stat-figimg" data-fig="diff-props-sim"><img src="../figures/diff-props-sim.svg" alt="Histogram of 1,000 simulated differences in sample proportions, Northfield minus Riverton, centered at 0.14 and running from about 0 to 0.30, with a normal curve of mean 0.14 and standard deviation 0.060 drawn over the bars." width="640" height="400" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> 1,000 simulated differences <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mi>A</mi></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">\hat{p}_A - \hat{p}_B</annotation></semantics></math> for samples of 150 and 120, with the normal curve from the formulas. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>In Northfield, 62% of households compost; in Riverton, 48% do. <a class="figref" href="#fig-sim">The figure</a> shows 1,000 <a class="gl" href="../notes/simulation.html" data-c="simulation">simulated</a> values of <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mi>A</mi></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">\hat{p}_A - \hat{p}_B</annotation></semantics></math> for random samples of 150 Northfield and 120 Riverton households. The bars pile up around 0.14, the true difference, and the normal curve from the formulas fits them well. Most differences land between about 0.02 and 0.26, roughly two standard deviations either side of the center.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> For the compost samples, find the probability that the sample difference <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mi>A</mi></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">\hat{p}_A - \hat{p}_B</annotation></semantics></math> is 0 or less, so that the sample makes Riverton look at least as good as Northfield.</p>
+<p><b>Center:</b> <math class="stat-m"><semantics><mrow><mi>μ</mi><mo>=</mo><mn>0.62</mn><mo>−</mo><mn>0.48</mn><mo>=</mo><mn>0.14</mn></mrow><annotation encoding="application/x-tex">\mu = 0.62 - 0.48 = 0.14</annotation></semantics></math>.</p>
+<p><b>Spread:</b> <math class="stat-m"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mrow><mfrac><mrow><mn>0.62</mn><mo stretchy="false">(</mo><mn>0.38</mn><mo stretchy="false">)</mo></mrow><mn>150</mn></mfrac><mo>+</mo><mfrac><mrow><mn>0.48</mn><mo stretchy="false">(</mo><mn>0.52</mn><mo stretchy="false">)</mo></mrow><mn>120</mn></mfrac></mrow></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{\frac{0.62(0.38)}{150} + \frac{0.48(0.52)}{120}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mrow><mn>0.00157</mn><mo>+</mo><mn>0.00208</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{0.00157 + 0.00208}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mn>0.00365</mn></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{0.00365}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.060</mn></mrow><annotation encoding="application/x-tex">= 0.060</annotation></semantics></math>.</p>
+<p><b>Shape:</b> <math class="stat-m"><semantics><mrow><mn>150</mn><mo stretchy="false">(</mo><mn>0.62</mn><mo stretchy="false">)</mo><mo>=</mo><mn>93</mn></mrow><annotation encoding="application/x-tex">150(0.62) = 93</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mn>150</mn><mo stretchy="false">(</mo><mn>0.38</mn><mo stretchy="false">)</mo><mo>=</mo><mn>57</mn></mrow><annotation encoding="application/x-tex">150(0.38) = 57</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mn>120</mn><mo stretchy="false">(</mo><mn>0.48</mn><mo stretchy="false">)</mo><mo>=</mo><mn>57.6</mn></mrow><annotation encoding="application/x-tex">120(0.48) = 57.6</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mn>120</mn><mo stretchy="false">(</mo><mn>0.52</mn><mo stretchy="false">)</mo><mo>=</mo><mn>62.4</mn></mrow><annotation encoding="application/x-tex">120(0.52) = 62.4</annotation></semantics></math> are each at least 10, so the distribution is approximately normal. The samples are independent and random, and each is far less than 10% of the households in its town.</p>
+<p><b>Probability:</b> <math class="stat-m"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>0</mn><mo>−</mo><mn>0.14</mn></mrow><mn>0.060</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{0 - 0.14}{0.060}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.32</mn></mrow><annotation encoding="application/x-tex">= -2.32</annotation></semantics></math>, and the area to the left under the <a class="gl" href="../notes/normal-distribution.html" data-c="standard-normal">standard normal</a> curve is about <math class="stat-m"><semantics><mrow><mn>0.010</mn></mrow><annotation encoding="application/x-tex">0.010</annotation></semantics></math>.</p>
+<p><b><a class="gl" href="../notes/intro-statistics.html" data-c="context">In context</a>:</b> only about 1% of pairs of samples like these would show Riverton composting at least as much as Northfield. A sample like that would be surprising if the true rates really are 62% and 48%.</p>
+</div>
+
+<h2 id="why-this-matters-next">Why this matters next</h2>
+<p>In the next topics you will not know <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">p_1</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_2</annotation></semantics></math>; you will <a class="gl" href="../notes/estimators.html" data-c="estimator">estimate</a> their difference with an interval and test whether it is 0. Both tools stand on this sampling distribution: its center tells you the difference is <a class="gl" href="../notes/sampling-problems.html" data-c="bias">unbiased</a>, and its standard deviation tells you how far a sample difference typically lands from the truth.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:sampling-dist-two-proportions">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="errors-and-power.html"><span>&larr; Previous</span><b>Potential Errors When Performing Tests</b></a><a class="tb-chapter-link next" href="ci-two-proportions.html"><span>Next &rarr;</span><b>Constructing a Confidence Interval for the Difference Between Two Population Proportions</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:sampling-dist-two-proportions">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

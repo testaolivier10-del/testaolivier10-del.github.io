@@ -7,6 +7,6 @@
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "A data table about shelter dogs with columns Dog, Size group, Vaccinated?, Times adopted and Weight in kilograms, and four dogs as rows. Size group and Vaccinated? are tagged categorical. Times adopted is tagged quantitative, discrete. Weight is tagged quantitative, continuous. One row is outlined and labelled: a row is one observational unit, one dog. The weight column is outlined and labelled: a column is one variable, a characteristic recorded for every dog."
+  "alt": "A data table about shelter dogs with columns Dog, Size group, Vaccinated?, Times adopted and Weight in kilograms, and four dogs as rows. Size group and Vaccinated? are tagged categorical. Times adopted is tagged quantitative, discrete. Weight is tagged quantitative, continuous. One row is outlined and labeled: a row is one observational unit, one dog. The weight column is outlined and labeled: a column is one variable, a characteristic recorded for every dog."
  }
 }

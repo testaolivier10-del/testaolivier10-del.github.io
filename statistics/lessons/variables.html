@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variables — AP® Statistics Lesson | LevlPrep</title>
+<meta name="description" content="Observational units are the individuals in a data set, and variables are the characteristics recorded for each.">
+<link rel="canonical" href="https://levlprep.com/statistics/lessons/variables.html">
+<meta property="og:title" content="Variables — AP® Statistics Lesson | LevlPrep">
+<meta property="og:description" content="Observational units are the individuals in a data set, and variables are the characteristics recorded for each.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/lessons/variables.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/course/lesson.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/lessons/variables.html#lesson",
+      "name": "Variables",
+      "url": "https://levlprep.com/statistics/lessons/variables.html",
+      "description": "Observational units are the individuals in a data set, and variables are the characteristics recorded for each.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "observational unit"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "variable"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "categorical variable"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "quantitative variable"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "discrete variable"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "continuous variable"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "parameter"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "statistic (number)"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "distribution"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exploring One-Variable Data and Collecting Data",
+          "item": "https://levlprep.com/statistics/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Variables",
+          "item": "https://levlprep.com/statistics/lessons/variables.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="variables" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Exploring One-Variable Data and Collecting Data</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Variables</span></nav></div>
+<div class="xshell stat-ls cx-ls stat-stepped" data-course="apstat" data-next-title="Fractions, Decimals and Percents" data-next-unit="skills-math" data-next-free="1">
+  <aside class="stat-ls-rail stat-nav-ref" aria-label="Lesson parts">
+    <p class="stat-ls-k cx-ls-k">Unit 1 · Exploring One-Variable Data and Collecting Data</p>
+    <p class="stat-ls-links"><a href="../units/unit-1.html">&larr; Back to the unit</a><a href="../notes/variables.html">Read the notes</a></p>
+    <div class="stat-ls-prog cx-ls-prog"><div class="stat-ls-track"><div class="stat-ls-fill"></div></div><span class="stat-ls-count">Step 1 / 11</span></div>
+    <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of 11</span><span class="cx-ls-all">All steps</span></button>
+    <ol class="stat-ls-steps cx-ls-steps" id="lesson-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="stat-ls-main stat-lesson">
+  <header class="stat-ls-hero">
+    <div class="eyebrow">Unit 1 · Topic 1.2 <span class="stat-beta stat-nav-ref">Beta</span></div>
+    <h1>Variables</h1>
+    <p class="lede">Observational units are the individuals in a data set, and variables are the characteristics recorded for each.</p>
+    <p class="stat-tags stat-nav-ref"><span class="stat-tag">Practice 2: Collect Data</span></p>
+  </header>
+  <div class="stat-ls-card">
+  <section class="stat-part stat-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="stat-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="stat-step-body stat-hook">An animal shelter keeps a record for every dog: its size group, whether it is vaccinated, its kennel number, how many times it has been adopted, its weight. Before you can summarize any of it, you have to know what kind of information each column holds. A kennel number is a number, but its <a class="gl" href="../notes/summary-statistics.html" data-c="mean">average</a> tells you nothing. Sorting the columns is the first job of every analysis.</div>
+  </section>
+  <section class="stat-part stat-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="stat-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="stat-step-body"><nav class="stat-nav-ref" aria-label="Earlier topics"><ul class="stat-links"><li><a href="../notes/intro-statistics.html">Introducing Statistics: What Can We Learn from Data?</a></li></ul></nav></div>
+  </section>
+  <section class="stat-part stat-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="stat-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="stat-step-body"><div class="stat-qs" data-set="prereq"><div class="stat-q" data-qid="variables-pre-1"><p class="stat-q-stem"><span class="stat-q-n">1.</span> A city asks 500 of its 80,000 adults about a new park. What is the sample?</p><ol class="stat-opts"><li>The 500 adults who were asked</li><li>The 80,000 adults in the city</li><li>The new park</li><li>The city council</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>The sample is the part of the population that data come from.</p><ul><li><b>Correct:</b> The 500 adults who were asked: </li><li>The 80,000 adults in the city: </li><li>The new park: </li><li>The city council: </li></ul></details></div><div class="stat-q" data-qid="variables-pre-2"><p class="stat-q-stem"><span class="stat-q-n">2.</span> Which question needs data from many individuals?</p><ol class="stat-opts"><li>How long do adults in the city spend commuting?</li><li>How long is the main bridge?</li><li>What year was the park built?</li><li>How many members are on the city council?</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Commute times vary from person to person; the other answers are single facts.</p><ul><li><b>Correct:</b> How long do adults in the city spend commuting?: </li><li>How long is the main bridge?: </li><li>What year was the park built?: </li><li>How many members are on the city council?: </li></ul></details></div></div></div>
+  </section>
+  <section class="stat-part stat-step" id="figure" aria-labelledby="h-figure">
+    <p class="stat-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="stat-step-body"><figure class="stat-figure stat-lesson-fig"><div class="stat-figimg" data-fig="data-table-anatomy"><img src="../figures/data-table-anatomy.svg" alt="A data table about shelter dogs with columns Dog, Size group, Vaccinated?, Times adopted and Weight in kilograms, and four dogs as rows. Size group and Vaccinated? are tagged categorical. Times adopted is tagged quantitative, discrete. Weight is tagged quantitative, continuous. One row is outlined and labeled: a row is one observational unit, one dog. The weight column is outlined and labeled: a column is one variable, a characteristic recorded for every dog." width="740" height="330" loading="lazy" decoding="async"></div><figcaption>In a <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a> table each row is one <span class="gl" tabindex="0" data-c="observational-unit">observational unit</span> and each column is one <span class="gl" tabindex="0" data-c="variable">variable</span>. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="stat-part stat-step" id="chain" aria-labelledby="h-chain">
+    <p class="stat-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="stat-step-body"><ol class="stat-chain"><li><span class="stat-cause">Each row of a data table is one individual</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">the individuals are the observational units</span></li><li><span class="stat-cause">Each column records one characteristic for every individual</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">each column is a variable, and its values can differ from row to row</span></li><li><span class="stat-cause">Some variables put individuals into groups, others record amounts</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">categorical and <span class="gl" tabindex="0" data-c="quantitative-variable">quantitative variables</span> need different summaries and graphs</span></li><li><span class="stat-cause">A number can describe the whole <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> or only the <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a></span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">it is a <span class="gl" tabindex="0" data-c="parameter">parameter</span> (usually unknown) or a statistic (used to <a class="gl" href="../notes/estimators.html" data-c="estimator">estimate</a> the parameter)</span></li></ol></div>
+  </section>
+  <section class="stat-part stat-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="stat-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="stat-step-body"><ul class="stat-ideas"><li>An <b>observational unit</b> is one individual the data describe: a person, a dog, a fish, a day. A <b>variable</b> is a characteristic recorded for each unit.</li><li>A <b><span class="gl" tabindex="0" data-c="categorical-variable">categorical variable</span></b> places each unit in a group (size group, yes or no). A <b>quantitative variable</b> records an amount, where arithmetic makes sense.</li><li>Quantitative variables are <b><span class="gl" tabindex="0" data-c="discrete-variable">discrete</span></b> (separate values, usually counts) or <b>continuous</b> (any value in an interval, usually measurements).</li><li>Numbers that are labels, such as ZIP codes or jersey numbers, are categorical.</li><li>A <b>parameter</b> describes a population; a <b>statistic</b> describes a sample. The <b><span class="gl" tabindex="0" data-c="distribution">distribution</span></b> of a variable tells what values it takes and how often.</li></ul></div>
+  </section>
+  <section class="stat-part stat-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="stat-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="stat-step-body stat-misconception"><p class="stat-wrong"><b>The wrong idea:</b> Kennel number is quantitative, because its values are numbers.</p><p class="stat-right"><b>What actually happens:</b> Kennel numbers are labels. Ask whether arithmetic makes sense: an average kennel number tells you nothing, so the variable is categorical.</p></div>
+  </section>
+  <section class="stat-part stat-step" id="check" aria-labelledby="h-check">
+    <p class="stat-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="stat-step-body"><p class="stat-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="stat-qs" data-set="check"><div class="stat-set"><section class="stat-stim" data-stim="variables-s1" aria-labelledby="stim-variables-s1"><p class="stat-stim-k">Table</p><h3 id="stim-variables-s1">Records for five shelter dogs</h3><div class="stat-stim-text">An animal shelter keeps one record for each dog in its care. Part of the table is below (invented data).</div><div class="table-wrap" tabindex="0" role="region" aria-label="Shelter records"><table class="stat-data"><caption>Shelter records</caption><thead><tr><th scope="col">Dog</th><th scope="col">Size group</th><th scope="col">Vaccinated?</th><th scope="col">Kennel number</th><th scope="col">Times adopted before</th><th scope="col">Weight (kg)</th></tr></thead><tbody><tr><th scope="row">Milo</th><td>small</td><td>yes</td><td>14</td><td>0</td><td>6.8</td></tr><tr><th scope="row">Nala</th><td>large</td><td>no</td><td>3</td><td>1</td><td>29.4</td></tr><tr><th scope="row">Otis</th><td>medium</td><td>yes</td><td>22</td><td>2</td><td>15.1</td></tr><tr><th scope="row">Pip</th><td>small</td><td>yes</td><td>7</td><td>0</td><td>4.9</td></tr><tr><th scope="row">Rosie</th><td>large</td><td>yes</td><td>18</td><td>1</td><td>33.0</td></tr></tbody></table></div></section><div class="stat-q" data-qid="stat-variables-1"><p class="stat-q-stem"><span class="stat-q-n">1.</span> What are the observational units in this table?</p><ol class="stat-opts"><li>Kennels</li><li>The dogs</li><li>The size groups small, medium and large</li><li>The columns of the table, one for each characteristic</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Each row describes one dog, so the dogs are the observational units.</p><ul><li>Kennels: Kennel number is one of the variables recorded about each dog; the rows are dogs.</li><li><b>Correct:</b> The dogs: Right: each row is one dog, and every variable is recorded for each dog.</li><li>The size groups small, medium and large: Those are values of one variable, size group.</li><li>The columns of the table, one for each characteristic: Columns are variables. Observational units are what each row describes.</li></ul></details></div><div class="stat-q" data-qid="stat-variables-2"><p class="stat-q-stem"><span class="stat-q-n">2.</span> Which variable is categorical even though its values are numbers?</p><ol class="stat-opts"><li>Weight (kg)</li><li>Times adopted before, a count for each dog</li><li>Vaccinated?, recorded as a yes or a no</li><li>Kennel number</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Kennel numbers name places; doing arithmetic with them makes no sense, so the variable is categorical.</p><ul><li>Weight (kg): Weight is a measured amount, so it is quantitative.</li><li>Times adopted before, a count for each dog: A count is quantitative: 2 adoptions is twice as many as 1.</li><li>Vaccinated?, recorded as a yes or a no: This is categorical, but its values are words, not numbers.</li><li><b>Correct:</b> Kennel number: Right: a kennel number is a label. Averaging two kennel numbers gives nothing useful.</li></ul></details></div><div class="stat-q" data-qid="stat-variables-3"><p class="stat-q-stem"><span class="stat-q-n">3.</span> How should "Times adopted before" be classified?</p><ol class="stat-opts"><li>Quantitative and discrete</li><li>Quantitative and continuous, like any measurement</li><li>Categorical, because it takes just a few different values</li><li>Categorical</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>A count is quantitative, and since it takes whole-number values with gaps between them, it is discrete.</p><ul><li><b>Correct:</b> Quantitative and discrete: Right: it is a count, and counts take separate whole-number values.</li><li>Quantitative and continuous, like any measurement: A count jumps from 0 to 1 to 2; it does not take every value in between.</li><li>Categorical, because it takes just a few different values: Having few values does not make a variable categorical; these values are amounts.</li><li>Categorical: Every variable is recorded for each dog. What matters is whether the values are amounts.</li></ul></details></div><div class="stat-q" data-qid="stat-variables-4"><p class="stat-q-stem"><span class="stat-q-n">4.</span> Which variable is quantitative and continuous?</p><ol class="stat-opts"><li>Times adopted before, which takes the values 0, 1 and 2</li><li>Kennel number, which runs from 1 up to about 25</li><li>Weight (kg)</li><li>Size group</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>A continuous variable is measured and can take any value in an interval. Weight is one.</p><ul><li>Times adopted before, which takes the values 0, 1 and 2: A count is discrete: no dog has been adopted 1.5 times.</li><li>Kennel number, which runs from 1 up to about 25: Kennel numbers are labels, so the variable is categorical.</li><li><b>Correct:</b> Weight (kg): Right: weight is measured and can take any value in a range, such as 15.1 or 15.13 kg.</li><li>Size group: Size group puts dogs into groups, so it is categorical even though the groups have an order.</li></ul></details></div></div><div class="stat-set"><section class="stat-stim" data-stim="variables-s2" aria-labelledby="stim-variables-s2"><p class="stat-stim-k">Table</p><h3 id="stim-variables-s2">Seniors with part-time jobs</h3><div class="stat-stim-html"><p>District records show that 31% of the 1,250 seniors in a school district have a part-time job. A reporter chooses 80 of the district’s seniors at random and finds that 26% of the 80 have a part-time job. Those with jobs work an average of 14 hours a week (invented data).</p></div></section><div class="stat-q" data-qid="stat-variables-5"><p class="stat-q-stem"><span class="stat-q-n">5.</span> In this situation, what is the 31%?</p><ol class="stat-opts"><li>A statistic, because it is written as a percent</li><li>A variable</li><li>A parameter</li><li>An observational unit of the reporter’s study</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>A parameter is a number that describes a population. The 31% describes all 1,250 seniors.</p><ul><li>A statistic, because it is written as a percent: A statistic describes a sample. The 31% comes from records on every senior.</li><li>A variable: A variable is a characteristic of each senior, such as whether that senior has a job.</li><li><b>Correct:</b> A parameter: Right: 31% describes the whole population, all 1,250 seniors in the district.</li><li>An observational unit of the reporter’s study: Observational units are the seniors themselves, not a number about them.</li></ul></details></div><div class="stat-q" data-qid="stat-variables-6"><p class="stat-q-stem"><span class="stat-q-n">6.</span> In this situation, what is the 26%?</p><ol class="stat-opts"><li>A statistic</li><li>A parameter, because it describes the district’s seniors</li><li>A variable</li><li>The population that the reporter wants to learn about</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>A statistic is a number that describes a sample. The 26% describes the 80 seniors chosen.</p><ul><li><b>Correct:</b> A statistic: Right: 26% describes the sample of 80 seniors the reporter asked.</li><li>A parameter, because it describes the district’s seniors: It describes only the 80 seniors in the sample, so it is a statistic.</li><li>A variable: "Has a job" is the variable; 26% is a number that summarizes it for the sample.</li><li>The population that the reporter wants to learn about: The population is the 1,250 seniors; 26% is a number found from the sample.</li></ul></details></div></div><div class="stat-q" data-qid="stat-variables-13"><p class="stat-q-stem"><span class="stat-q-n">7.</span> A league’s official roster lists every player. From it, the average height of all players in the league is 191 cm. A fan measures 12 players and finds an average of 189 cm. Which is correct?</p><ol class="stat-opts"><li>191 cm is a statistic and 189 cm is a parameter</li><li>Both are statistics, because both are averages of heights</li><li>Both are parameters, because both describe league players</li><li>191 cm is a parameter and 189 cm is a statistic</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>A parameter describes a population (the whole league); a statistic describes a sample (the 12 players).</p><ul><li>191 cm is a statistic and 189 cm is a parameter: This reverses them: the roster covers the whole league, the population.</li><li>Both are statistics, because both are averages of heights: Whether a number is a parameter or a statistic depends on the group it describes, not on how it is computed.</li><li>Both are parameters, because both describe league players: The 189 describes only the 12 measured players, a sample.</li><li><b>Correct:</b> 191 cm is a parameter and 189 cm is a statistic: Right: 191 describes every player in the league; 189 describes the 12 measured.</li></ul></details></div></div></div>
+  </section>
+  <section class="stat-part stat-step" id="summary" aria-labelledby="h-summary">
+    <p class="stat-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="stat-step-body">Observational units are the individuals in a data set, and variables are the characteristics recorded for each. Categorical variables sort units into groups; quantitative ones record amounts, discrete or continuous. A parameter describes a population, a statistic describes a sample, and a distribution tells what values a variable takes and how often.</div>
+  </section>
+  <section class="stat-part stat-step" id="next" aria-labelledby="h-next">
+    <p class="stat-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="stat-step-body"><nav class="stat-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="math-fractions-percents.html">Fractions, Decimals and Percents &rarr;</a></p></nav></div>
+  </section>
+  <section class="stat-part stat-step" id="connections" aria-labelledby="h-connections">
+    <p class="stat-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="stat-step-body"><ul class="stat-links stat-nav-ref"><li><a href="../notes/intro-statistics.html">Back: introducing statistics (1.1)</a></li><li><a href="../notes/one-categorical-tables.html">Later: tables for one categorical variable (1.3)</a></li></ul></div>
+  </section>
+    <div class="stat-ls-actions stat-nav-ref"><button type="button" class="stat-ls-back">&larr; Previous</button><button type="button" class="stat-ls-go">Continue &rarr;</button><a class="stat-ls-go" hidden href="math-fractions-percents.html">Next lesson &rarr;</a></div>
+  </div>
+  <div class="cx-ls-end">
+    <div class="stat-share stat-nav-ref" role="group" aria-label="Share or print this lesson"><a class="stat-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Flessons%2Fvariables.html&amp;title=Variables%3A%20statistics%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="stat-share-btn" data-copy="https://levlprep.com/statistics/lessons/variables.html">Copy link</button><button type="button" class="stat-share-btn" data-print>Print</button></div>
+    <p class="stat-small stat-nav-ref"><a href="../practice.html?topic=variables">Question set for this topic</a></p>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.stat-ls'),p=s&&s.querySelectorAll('.stat-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.stat-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apstat_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="lesson:variables">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="stat-page-data">{"topic":"variables","unit":"unit-1","free":true,"prereq":[{"id":"variables-pre-1","type":"single","unit":"unit-1","topic":"variables","q":"A city asks 500 of its 80,000 adults about a new park. What is the sample?","options":["The 500 adults who were asked","The 80,000 adults in the city","The new park","The city council"],"correct":0,"why":{"correct":"The sample is the part of the population that data come from.","options":["","","",""]},"reviewHref":"../notes/intro-statistics.html","reviewTitle":"Introducing Statistics: What Can We Learn from Data?"},{"id":"variables-pre-2","type":"single","unit":"unit-1","topic":"variables","q":"Which question needs data from many individuals?","options":["How long do adults in the city spend commuting?","How long is the main bridge?","What year was the park built?","How many members are on the city council?"],"correct":0,"why":{"correct":"Commute times vary from person to person; the other answers are single facts.","options":["","","",""]},"reviewHref":"../notes/intro-statistics.html","reviewTitle":"Introducing Statistics: What Can We Learn from Data?"}],"check":[{"id":"stat-variables-1","type":"single","unit":"unit-1","topic":"variables","practice":"2.A","level":"recall","diff":1,"stimulus":"variables-s1","q":"What are the observational units in this table?","options":["Kennels","The dogs","The size groups small, medium and large","The columns of the table, one for each characteristic"],"correct":1,"why":{"correct":"Each row describes one dog, so the dogs are the observational units.","options":["Kennel number is one of the variables recorded about each dog; the rows are dogs.","Right: each row is one dog, and every variable is recorded for each dog.","Those are values of one variable, size group.","Columns are variables. Observational units are what each row describes."]}},{"id":"stat-variables-2","type":"single","unit":"unit-1","topic":"variables","practice":"2.A","level":"apply","diff":2,"stimulus":"variables-s1","q":"Which variable is categorical even though its values are numbers?","options":["Weight (kg)","Times adopted before, a count for each dog","Vaccinated?, recorded as a yes or a no","Kennel number"],"correct":3,"why":{"correct":"Kennel numbers name places; doing arithmetic with them makes no sense, so the variable is categorical.","options":["Weight is a measured amount, so it is quantitative.","A count is quantitative: 2 adoptions is twice as many as 1.","This is categorical, but its values are words, not numbers.","Right: a kennel number is a label. Averaging two kennel numbers gives nothing useful."]}},{"id":"stat-variables-3","type":"single","unit":"unit-1","topic":"variables","practice":"2.A","level":"apply","diff":2,"stimulus":"variables-s1","q":"How should \"Times adopted before\" be classified?","options":["Quantitative and discrete","Quantitative and continuous, like any measurement","Categorical, because it takes just a few different values","Categorical"],"correct":0,"why":{"correct":"A count is quantitative, and since it takes whole-number values with gaps between them, it is discrete.","options":["Right: it is a count, and counts take separate whole-number values.","A count jumps from 0 to 1 to 2; it does not take every value in between.","Having few values does not make a variable categorical; these values are amounts.","Every variable is recorded for each dog. What matters is whether the values are amounts."]}},{"id":"stat-variables-4","type":"single","unit":"unit-1","topic":"variables","practice":"2.A","level":"apply","diff":2,"stimulus":"variables-s1","q":"Which variable is quantitative and continuous?","options":["Times adopted before, which takes the values 0, 1 and 2","Kennel number, which runs from 1 up to about 25","Weight (kg)","Size group"],"correct":2,"why":{"correct":"A continuous variable is measured and can take any value in an interval. Weight is one.","options":["A count is discrete: no dog has been adopted 1.5 times.","Kennel numbers are labels, so the variable is categorical.","Right: weight is measured and can take any value in a range, such as 15.1 or 15.13 kg.","Size group puts dogs into groups, so it is categorical even though the groups have an order."]}},{"id":"stat-variables-5","type":"single","unit":"unit-1","topic":"variables","practice":"2.A","level":"apply","diff":1,"stimulus":"variables-s2","q":"In this situation, what is the 31%?","options":["A statistic, because it is written as a percent","A variable","A parameter","An observational unit of the reporter’s study"],"correct":2,"why":{"correct":"A parameter is a number that describes a population. The 31% describes all 1,250 seniors.","options":["A statistic describes a sample. The 31% comes from records on every senior.","A variable is a characteristic of each senior, such as whether that senior has a job.","Right: 31% describes the whole population, all 1,250 seniors in the district.","Observational units are the seniors themselves, not a number about them."]}},{"id":"stat-variables-6","type":"single","unit":"unit-1","topic":"variables","practice":"2.A","level":"apply","diff":1,"stimulus":"variables-s2","q":"In this situation, what is the 26%?","options":["A statistic","A parameter, because it describes the district’s seniors","A variable","The population that the reporter wants to learn about"],"correct":0,"why":{"correct":"A statistic is a number that describes a sample. The 26% describes the 80 seniors chosen.","options":["Right: 26% describes the sample of 80 seniors the reporter asked.","It describes only the 80 seniors in the sample, so it is a statistic.","\"Has a job\" is the variable; 26% is a number that summarizes it for the sample.","The population is the 1,250 seniors; 26% is a number found from the sample."]}},{"id":"stat-variables-13","type":"single","unit":"unit-1","topic":"variables","practice":"2.A","level":"analyze","diff":2,"q":"A league’s official roster lists every player. From it, the average height of all players in the league is 191 cm. A fan measures 12 players and finds an average of 189 cm. Which is correct?","options":["191 cm is a statistic and 189 cm is a parameter","Both are statistics, because both are averages of heights","Both are parameters, because both describe league players","191 cm is a parameter and 189 cm is a statistic"],"correct":3,"why":{"correct":"A parameter describes a population (the whole league); a statistic describes a sample (the 12 players).","options":["This reverses them: the roster covers the whole league, the population.","Whether a number is a parameter or a statistic depends on the group it describes, not on how it is computed.","The 189 describes only the 12 measured players, a sample.","Right: 191 describes every player in the league; 189 describes the 12 measured."]}}],"stimuli":{"variables-s1":{"kind":"table","title":"Records for five shelter dogs","html":"\u003cdiv class=\"stat-stim-text\">An animal shelter keeps one record for each dog in its care. Part of the table is below (invented data).\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Shelter records\">\u003ctable class=\"stat-data\">\u003ccaption>Shelter records\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Dog\u003c/th>\u003cth scope=\"col\">Size group\u003c/th>\u003cth scope=\"col\">Vaccinated?\u003c/th>\u003cth scope=\"col\">Kennel number\u003c/th>\u003cth scope=\"col\">Times adopted before\u003c/th>\u003cth scope=\"col\">Weight (kg)\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Milo\u003c/th>\u003ctd>small\u003c/td>\u003ctd>yes\u003c/td>\u003ctd>14\u003c/td>\u003ctd>0\u003c/td>\u003ctd>6.8\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Nala\u003c/th>\u003ctd>large\u003c/td>\u003ctd>no\u003c/td>\u003ctd>3\u003c/td>\u003ctd>1\u003c/td>\u003ctd>29.4\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Otis\u003c/th>\u003ctd>medium\u003c/td>\u003ctd>yes\u003c/td>\u003ctd>22\u003c/td>\u003ctd>2\u003c/td>\u003ctd>15.1\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Pip\u003c/th>\u003ctd>small\u003c/td>\u003ctd>yes\u003c/td>\u003ctd>7\u003c/td>\u003ctd>0\u003c/td>\u003ctd>4.9\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Rosie\u003c/th>\u003ctd>large\u003c/td>\u003ctd>yes\u003c/td>\u003ctd>18\u003c/td>\u003ctd>1\u003c/td>\u003ctd>33.0\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"},"variables-s2":{"kind":"table","title":"Seniors with part-time jobs","html":"\u003cdiv class=\"stat-stim-html\">\u003cp>District records show that 31% of the 1,250 seniors in a school district have a part-time job. A reporter chooses 80 of the district’s seniors at random and finds that 26% of the 80 have a part-time job. Those with jobs work an average of 14 hours a week (invented data).\u003c/p>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/lesson.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-expr.js" defer></script>
+<script src="../assets/stat-math.js" defer></script>
+<script src="../assets/stat-dist.js" defer></script>
+<script src="../assets/stat-grade.js" defer></script>
+<script src="../assets/stat-questions.js" defer></script>
+<script src="../assets/stat-lesson.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Sampling — AP® Statistics Lesson | LevlPrep</title>
+<meta name="description" content="Random sampling uses chance to choose individuals from a sampling frame.">
+<link rel="canonical" href="https://levlprep.com/statistics/lessons/random-sampling.html">
+<meta property="og:title" content="Random Sampling — AP® Statistics Lesson | LevlPrep">
+<meta property="og:description" content="Random sampling uses chance to choose individuals from a sampling frame.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/lessons/random-sampling.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/course/lesson.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/lessons/random-sampling.html#lesson",
+      "name": "Random Sampling",
+      "url": "https://levlprep.com/statistics/lessons/random-sampling.html",
+      "description": "Random sampling uses chance to choose individuals from a sampling frame.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "random"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "simple random sample"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "without replacement"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "stratified random sample"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "cluster sample"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "systematic random sample"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "sampling frame"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exploring One-Variable Data and Collecting Data",
+          "item": "https://levlprep.com/statistics/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Random Sampling",
+          "item": "https://levlprep.com/statistics/lessons/random-sampling.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="random-sampling" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Exploring One-Variable Data and Collecting Data</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Random Sampling</span></nav></div>
+<div class="xshell stat-ls cx-ls stat-stepped" data-course="apstat" data-next-title="Potential Problems with Sampling" data-next-unit="unit-1" data-next-free="1">
+  <aside class="stat-ls-rail stat-nav-ref" aria-label="Lesson parts">
+    <p class="stat-ls-k cx-ls-k">Unit 1 · Exploring One-Variable Data and Collecting Data</p>
+    <p class="stat-ls-links"><a href="../units/unit-1.html">&larr; Back to the unit</a><a href="../notes/random-sampling.html">Read the notes</a></p>
+    <div class="stat-ls-prog cx-ls-prog"><div class="stat-ls-track"><div class="stat-ls-fill"></div></div><span class="stat-ls-count">Step 1 / 11</span></div>
+    <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of 11</span><span class="cx-ls-all">All steps</span></button>
+    <ol class="stat-ls-steps cx-ls-steps" id="lesson-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="stat-ls-main stat-lesson">
+  <header class="stat-ls-hero">
+    <div class="eyebrow">Unit 1 · Topic 1.11 <span class="stat-beta stat-nav-ref">Beta</span></div>
+    <h1>Random Sampling</h1>
+    <p class="lede">Random sampling uses chance to choose individuals from a sampling frame.</p>
+    <p class="stat-tags stat-nav-ref"><span class="stat-tag">Practice 2: Collect Data</span></p>
+  </header>
+  <div class="stat-ls-card">
+  <section class="stat-part stat-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="stat-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="stat-step-body stat-hook">A principal wants 100 students’ opinions on a new schedule. She could number all 1,200 students and pick 100 by <a class="gl" href="../notes/simulation.html" data-c="probability">chance</a>, pick 25 from each grade, pick four whole homerooms, or take every 12th name on a list. All four are <span class="gl" tabindex="0" data-c="random-selection">random</span>. They differ in cost, in convenience, and in how well they guarantee that every grade is heard.</div>
+  </section>
+  <section class="stat-part stat-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="stat-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="stat-step-body"><nav class="stat-nav-ref" aria-label="Earlier topics"><ul class="stat-links"><li><a href="../notes/intro-statistics.html">Introducing Statistics: What Can We Learn from Data?</a></li></ul></nav></div>
+  </section>
+  <section class="stat-part stat-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="stat-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="stat-step-body"><div class="stat-qs" data-set="prereq"><div class="stat-q" data-qid="random-sampling-pre-1"><p class="stat-q-stem"><span class="stat-q-n">1.</span> A school wants to know what its 1,200 students think. What is the population?</p><ol class="stat-opts"><li>The 1,200 students</li><li>The 100 students asked</li><li>The principal</li><li>The schedule</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>The population is the whole group the question is about.</p><ul><li><b>Correct:</b> The 1,200 students: </li><li>The 100 students asked: </li><li>The principal: </li><li>The schedule: </li></ul></details></div><div class="stat-q" data-qid="random-sampling-pre-2"><p class="stat-q-stem"><span class="stat-q-n">2.</span> A study asks 100 students their opinion without imposing anything. What kind of study is it?</p><ol class="stat-opts"><li>A sample survey</li><li>An experiment</li><li>A census</li><li>None of these</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>It asks a sample questions, so it is a sample survey, an observational study.</p><ul><li><b>Correct:</b> A sample survey: </li><li>An experiment: </li><li>A census: </li><li>None of these: </li></ul></details></div></div></div>
+  </section>
+  <section class="stat-part stat-step" id="figure" aria-labelledby="h-figure">
+    <p class="stat-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="stat-step-body"><figure class="stat-figure stat-lesson-fig"><div class="stat-figimg" data-fig="four-samples"><img src="../figures/four-samples.svg" alt="Four copies of the same population of 48 students in 6 homerooms of 8, with selected students in plum. Simple random sample: any 8 of the 48, scattered. Stratified random sample: the grades are strata, two homerooms each, and 3 students are chosen at random from each grade. Cluster sample: 2 whole homerooms chosen at random. Systematic random sample: a random start at the 3rd student, then every 6th student in order." width="720" height="470" loading="lazy" decoding="async"></div><figcaption>One <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> of 48 students, four random <a class="gl" href="../notes/intro-statistics.html" data-c="sample">samples</a>: simple random, stratified by grade, <a class="gl" href="../notes/describing-distributions.html" data-c="gap-cluster">cluster</a> (two whole homerooms) and systematic (every 6th after a random start). <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="stat-part stat-step" id="chain" aria-labelledby="h-chain">
+    <p class="stat-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="stat-step-body"><ol class="stat-chain"><li><span class="stat-cause">Use chance, not judgment, to choose the sample</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">no one’s preferences decide who is in it, so it tends to represent the population</span></li><li><span class="stat-cause">Label every individual in the <span class="gl" tabindex="0" data-c="sampling-frame">sampling frame</span> and pick labels at random, skipping repeats</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">you get a <span class="gl" tabindex="0" data-c="srs">simple random sample</span>: every group of n has the same chance</span></li><li><span class="stat-cause">Split the population into <span class="gl" tabindex="0" data-c="stratified">strata</span> of similar individuals and sample each</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">every group is represented, and estimates vary less when strata differ</span></li><li><span class="stat-cause">Choose whole clusters, or every kth individual after a random start</span><span class="stat-arrow" aria-hidden="true">→</span><span class="stat-effect">sampling is cheaper and easier, at some cost in precision or with a risk from patterns in the list</span></li></ol></div>
+  </section>
+  <section class="stat-part stat-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="stat-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="stat-step-body"><ul class="stat-ideas"><li>A <b>simple random sample</b> (SRS) of size n gives every group of n individuals the same chance of being chosen. Procedure: label, generate random numbers, skip repeats, select.</li><li>Sampling <b><span class="gl" tabindex="0" data-c="replacement">without replacement</span></b> <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a> each individual can be chosen once; <b>with replacement</b> allows repeats.</li><li>A <b>stratified random sample</b> splits the population into <b>strata</b> of similar individuals and takes an SRS from each.</li><li>A <b><span class="gl" tabindex="0" data-c="cluster-sample">cluster sample</span></b> chooses whole groups at random and measures everyone in them. A <b><span class="gl" tabindex="0" data-c="systematic">systematic random sample</span></b> takes every kth individual after a random start.</li><li>The <b>sampling frame</b> is the list the sample is drawn from.</li></ul></div>
+  </section>
+  <section class="stat-part stat-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="stat-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="stat-step-body stat-misconception"><p class="stat-wrong"><b>The wrong idea:</b> "Use a random number generator to choose 10 ponds" is a complete procedure.</p><p class="stat-right"><b>What actually happens:</b> Someone else could not follow it. Say how the ponds are labeled (1 to 80), what is generated (whole numbers from 1 to 80), what to do with repeats (skip them) and when to stop (10 different ponds).</p></div>
+  </section>
+  <section class="stat-part stat-step" id="check" aria-labelledby="h-check">
+    <p class="stat-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="stat-step-body"><p class="stat-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="stat-qs" data-set="check"><div class="stat-set"><section class="stat-stim" data-stim="random-sampling-s1" aria-labelledby="stim-random-sampling-s1"><p class="stat-stim-k">Table</p><h3 id="stim-random-sampling-s1">Four ways to sample a school</h3><div class="stat-stim-html"><p>A high school has 1,200 students: 300 in each of grades 9, 10, 11 and 12, in 48 homerooms of 25 students. The principal wants about 100 students’ opinions on a new schedule. Four plans:</p><ul><li><b>Plan P:</b> number the students from 1 to 1,200 and use a random number generator to choose 100 different numbers.</li><li><b>Plan Q:</b> choose 25 students at random from each grade.</li><li><b>Plan R:</b> choose 4 of the 48 homerooms at random and survey every student in them.</li><li><b>Plan S:</b> list the students alphabetically, choose a random starting point among the first 12, then take every 12th student.</li></ul></div></section><div class="stat-q" data-qid="stat-random-sampling-1"><p class="stat-q-stem"><span class="stat-q-n">1.</span> What kind of sample does plan P give?</p><ol class="stat-opts"><li>A stratified random sample</li><li>A simple random sample</li><li>A cluster sample</li><li>A systematic random sample, since a generator is used</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Choosing n individuals so that every possible group of n has the same chance is a simple random sample.</p><ul><li>A stratified random sample: Numbering the students is a step in choosing; nothing is split into strata.</li><li><b>Correct:</b> A simple random sample: Right: every group of 100 students has the same chance of being the sample.</li><li>A cluster sample: A cluster sample takes whole groups such as homerooms; plan P picks individual students.</li><li>A systematic random sample, since a generator is used: A systematic sample takes every kth individual after a random start.</li></ul></details></div><div class="stat-q" data-qid="stat-random-sampling-2"><p class="stat-q-stem"><span class="stat-q-n">2.</span> What kind of sample does plan Q give?</p><ol class="stat-opts"><li>A cluster sample, with the grades as the clusters</li><li>A simple random sample of 100 of the school’s students</li><li>A systematic random sample of 25 students per grade</li><li>A stratified random sample, with the grades as strata</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Splitting the population into strata and taking a simple random sample from each is a stratified random sample.</p><ul><li>A cluster sample, with the grades as the clusters: In a cluster sample whole groups are chosen and everyone in them is surveyed; plan Q samples within every grade.</li><li>A simple random sample of 100 of the school’s students: Not every group of 100 is possible: a sample of 100 ninth graders cannot happen.</li><li>A systematic random sample of 25 students per grade: No every kth rule is used; students are chosen at random within each grade.</li><li><b>Correct:</b> A stratified random sample, with the grades as strata: Right: the population is split into groups by grade and a simple random sample is taken from each.</li></ul></details></div><div class="stat-q" data-qid="stat-random-sampling-3"><p class="stat-q-stem"><span class="stat-q-n">3.</span> What kind of sample does plan R give, and what is its main advantage?</p><ol class="stat-opts"><li>A cluster sample: whole homerooms make it easy</li><li>A stratified sample: it guarantees that each grade is included</li><li>A simple random sample: each student has the same chance of selection</li><li>A systematic sample</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Choosing whole groups (clusters) at random and measuring every individual in them is cluster sampling. Its strength is convenience.</p><ul><li><b>Correct:</b> A cluster sample: whole homerooms make it easy: Right: clusters are chosen at random and everyone in them is included, which saves time.</li><li>A stratified sample: it guarantees that each grade is included: Homerooms are chosen at random, so some grades may be missed; it is a cluster sample.</li><li>A simple random sample: each student has the same chance of selection: Each student does have the same chance, but not every group of 100 is possible, so it is not simple random.</li><li>A systematic sample: The 4 homerooms are chosen at random, not by an every kth rule.</li></ul></details></div><div class="stat-q" data-qid="stat-random-sampling-4"><p class="stat-q-stem"><span class="stat-q-n">4.</span> The principal thinks opinions on the schedule differ a lot from grade to grade. Which plan best makes sure each grade’s view is represented?</p><ol class="stat-opts"><li>Plan R</li><li>Plan P</li><li>Plan Q</li><li>Plan S</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Stratify by a variable that is related to the response: each stratum is represented, and estimates vary less from sample to sample.</p><ul><li>Plan R: Four random homerooms could all come from one or two grades.</li><li>Plan P: A simple random sample could by chance include few students from some grade.</li><li><b>Correct:</b> Plan Q: Right: stratifying by grade guarantees 25 students from each grade, and when grades differ it gives more precise results.</li><li>Plan S: An alphabetical list has nothing to do with grade, so grades may be uneven.</li></ul></details></div></div><div class="stat-set"><section class="stat-stim" data-stim="random-sampling-s2" aria-labelledby="stim-random-sampling-s2"><p class="stat-stim-k">Table</p><h3 id="stim-random-sampling-s2">Testing pond water</h3><div class="stat-stim-html"><p>A park has 80 ponds, listed on a park map. A wildlife team has the time and equipment to test the water in 10 of them, and wants a simple random sample of 10 ponds.</p></div></section><div class="stat-q" data-qid="stat-random-sampling-6"><p class="stat-q-stem"><span class="stat-q-n">5.</span> Put the steps for choosing the simple random sample of 10 ponds in order.</p><ol class="stat-opts"><li>Label the 80 ponds on the map with the numbers 1 to 80</li><li>Use a random number generator to produce whole numbers from 1 to 80</li><li>Skip any number that has already been chosen</li><li>Keep going until 10 different numbers are chosen</li><li>Test the water in the 10 ponds with those numbers</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Label, generate random numbers, skip repeats, stop at 10 different labels, then measure those individuals.</p><ul><li>Correct order: 1. Label the 80 ponds on the map with the numbers 1 to 80 2. Use a random number generator to produce whole numbers from 1 to 80 3. Skip any number that has already been chosen 4. Keep going until 10 different numbers are chosen 5. Test the water in the 10 ponds with those numbers</li></ul></details></div><div class="stat-q" data-qid="stat-random-sampling-7"><p class="stat-q-stem"><span class="stat-q-n">6.</span> A team member writes, "Use a random number generator to pick 10 ponds." Why is this not enough as a procedure?</p><ol class="stat-opts"><li>It leaves out labeling 1 to 80 and handling repeats</li><li>A random number generator gives the same pond each time</li><li>Ten ponds is too few</li><li>Ponds have to be picked from a table, not from a generator</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>A procedure must be clear enough that another person could carry it out exactly: label 1 to 80, generate, skip repeats, choose 10.</p><ul><li><b>Correct:</b> It leaves out labeling 1 to 80 and handling repeats: Right: someone else could not follow it. A procedure must label, generate, skip repeats and select.</li><li>A random number generator gives the same pond each time: A generator gives different numbers; the issue is the missing steps.</li><li>Ten ponds is too few: The sample size was set by time and equipment; the procedure is what is incomplete.</li><li>Ponds have to be picked from a table, not from a generator: Either a table or a generator works when the steps are spelled out.</li></ul></details></div></div><div class="stat-q" data-qid="stat-random-sampling-11"><p class="stat-q-stem"><span class="stat-q-n">7.</span> How should strata differ from clusters?</p><ol class="stat-opts"><li>Strata are chosen at random, and clusters are chosen by the researcher</li><li>Strata are larger groups of people than clusters</li><li>Strata hold similar individuals; clusters each mix the population</li><li>Strata and clusters are two names for the same idea</li></ol><details class="stat-q-key"><summary>Show the answer</summary><p>Stratify by groups whose members are similar to each other; cluster by groups that each resemble the whole population.</p><ul><li>Strata are chosen at random, and clusters are chosen by the researcher: In stratified sampling every stratum is sampled; in cluster sampling clusters are chosen at random.</li><li>Strata are larger groups of people than clusters: Size does not define them; what matters is how alike the individuals are within each group.</li><li><b>Correct:</b> Strata hold similar individuals; clusters each mix the population: Right: strata group similar individuals; clusters work best when each one mixes the population.</li><li>Strata and clusters are two names for the same idea: They are used in opposite ways: sample within every stratum, or survey all of a few clusters.</li></ul></details></div></div></div>
+  </section>
+  <section class="stat-part stat-step" id="summary" aria-labelledby="h-summary">
+    <p class="stat-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="stat-step-body">Random sampling uses chance to choose individuals from a sampling frame. A simple random sample gives every group of n the same chance; a stratified sample takes an SRS within each stratum of similar individuals; a cluster sample takes whole groups chosen at random; a systematic sample takes every kth individual after a random start. Write procedures as label, generate, skip repeats, select.</div>
+  </section>
+  <section class="stat-part stat-step" id="next" aria-labelledby="h-next">
+    <p class="stat-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="stat-step-body"><nav class="stat-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="sampling-problems.html">Potential Problems with Sampling &rarr;</a></p></nav></div>
+  </section>
+  <section class="stat-part stat-step" id="connections" aria-labelledby="h-connections">
+    <p class="stat-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="stat-step-body"><ul class="stat-links stat-nav-ref"><li><a href="../notes/investigative-questions.html">Back: collecting data (1.10)</a></li><li><a href="sampling-problems.html">Next: problems with sampling (1.12)</a></li></ul></div>
+  </section>
+    <div class="stat-ls-actions stat-nav-ref"><button type="button" class="stat-ls-back">&larr; Previous</button><button type="button" class="stat-ls-go">Continue &rarr;</button><a class="stat-ls-go" hidden href="sampling-problems.html">Next lesson &rarr;</a></div>
+  </div>
+  <div class="cx-ls-end">
+    <div class="stat-share stat-nav-ref" role="group" aria-label="Share or print this lesson"><a class="stat-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Flessons%2Frandom-sampling.html&amp;title=Random%20Sampling%3A%20statistics%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="stat-share-btn" data-copy="https://levlprep.com/statistics/lessons/random-sampling.html">Copy link</button><button type="button" class="stat-share-btn" data-print>Print</button></div>
+    <p class="stat-small stat-nav-ref"><a href="../practice.html?topic=random-sampling">Question set for this topic</a></p>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.stat-ls'),p=s&&s.querySelectorAll('.stat-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.stat-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apstat_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="lesson:random-sampling">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="stat-page-data">{"topic":"random-sampling","unit":"unit-1","free":true,"prereq":[{"id":"random-sampling-pre-1","type":"single","unit":"unit-1","topic":"random-sampling","q":"A school wants to know what its 1,200 students think. What is the population?","options":["The 1,200 students","The 100 students asked","The principal","The schedule"],"correct":0,"why":{"correct":"The population is the whole group the question is about.","options":["","","",""]},"reviewHref":"../notes/intro-statistics.html","reviewTitle":"Introducing Statistics: What Can We Learn from Data?"},{"id":"random-sampling-pre-2","type":"single","unit":"unit-1","topic":"random-sampling","q":"A study asks 100 students their opinion without imposing anything. What kind of study is it?","options":["A sample survey","An experiment","A census","None of these"],"correct":0,"why":{"correct":"It asks a sample questions, so it is a sample survey, an observational study.","options":["","","",""]},"reviewHref":"../notes/investigative-questions.html","reviewTitle":"The Investigative Question Revisited and Data Collection"}],"check":[{"id":"stat-random-sampling-1","type":"single","unit":"unit-1","topic":"random-sampling","practice":"2.A","level":"apply","diff":1,"stimulus":"random-sampling-s1","q":"What kind of sample does plan P give?","options":["A stratified random sample","A simple random sample","A cluster sample","A systematic random sample, since a generator is used"],"correct":1,"why":{"correct":"Choosing n individuals so that every possible group of n has the same chance is a simple random sample.","options":["Numbering the students is a step in choosing; nothing is split into strata.","Right: every group of 100 students has the same chance of being the sample.","A cluster sample takes whole groups such as homerooms; plan P picks individual students.","A systematic sample takes every kth individual after a random start."]}},{"id":"stat-random-sampling-2","type":"single","unit":"unit-1","topic":"random-sampling","practice":"2.A","level":"apply","diff":1,"stimulus":"random-sampling-s1","q":"What kind of sample does plan Q give?","options":["A cluster sample, with the grades as the clusters","A simple random sample of 100 of the school’s students","A systematic random sample of 25 students per grade","A stratified random sample, with the grades as strata"],"correct":3,"why":{"correct":"Splitting the population into strata and taking a simple random sample from each is a stratified random sample.","options":["In a cluster sample whole groups are chosen and everyone in them is surveyed; plan Q samples within every grade.","Not every group of 100 is possible: a sample of 100 ninth graders cannot happen.","No every kth rule is used; students are chosen at random within each grade.","Right: the population is split into groups by grade and a simple random sample is taken from each."]}},{"id":"stat-random-sampling-3","type":"single","unit":"unit-1","topic":"random-sampling","practice":"2.A","level":"apply","diff":2,"stimulus":"random-sampling-s1","q":"What kind of sample does plan R give, and what is its main advantage?","options":["A cluster sample: whole homerooms make it easy","A stratified sample: it guarantees that each grade is included","A simple random sample: each student has the same chance of selection","A systematic sample"],"correct":0,"why":{"correct":"Choosing whole groups (clusters) at random and measuring every individual in them is cluster sampling. Its strength is convenience.","options":["Right: clusters are chosen at random and everyone in them is included, which saves time.","Homerooms are chosen at random, so some grades may be missed; it is a cluster sample.","Each student does have the same chance, but not every group of 100 is possible, so it is not simple random.","The 4 homerooms are chosen at random, not by an every kth rule."]}},{"id":"stat-random-sampling-4","type":"single","unit":"unit-1","topic":"random-sampling","practice":"2.B","level":"analyze","diff":2,"stimulus":"random-sampling-s1","q":"The principal thinks opinions on the schedule differ a lot from grade to grade. Which plan best makes sure each grade’s view is represented?","options":["Plan R","Plan P","Plan Q","Plan S"],"correct":2,"why":{"correct":"Stratify by a variable that is related to the response: each stratum is represented, and estimates vary less from sample to sample.","options":["Four random homerooms could all come from one or two grades.","A simple random sample could by chance include few students from some grade.","Right: stratifying by grade guarantees 25 students from each grade, and when grades differ it gives more precise results.","An alphabetical list has nothing to do with grade, so grades may be uneven."]}},{"id":"stat-random-sampling-6","type":"order","unit":"unit-1","topic":"random-sampling","practice":"2.B","level":"apply","diff":2,"stimulus":"random-sampling-s2","q":"Put the steps for choosing the simple random sample of 10 ponds in order.","options":["Label the 80 ponds on the map with the numbers 1 to 80","Use a random number generator to produce whole numbers from 1 to 80","Skip any number that has already been chosen","Keep going until 10 different numbers are chosen","Test the water in the 10 ponds with those numbers"],"why":{"correct":"Label, generate random numbers, skip repeats, stop at 10 different labels, then measure those individuals."}},{"id":"stat-random-sampling-7","type":"single","unit":"unit-1","topic":"random-sampling","practice":"2.B","level":"analyze","diff":2,"stimulus":"random-sampling-s2","q":"A team member writes, \"Use a random number generator to pick 10 ponds.\" Why is this not enough as a procedure?","options":["It leaves out labeling 1 to 80 and handling repeats","A random number generator gives the same pond each time","Ten ponds is too few","Ponds have to be picked from a table, not from a generator"],"correct":0,"why":{"correct":"A procedure must be clear enough that another person could carry it out exactly: label 1 to 80, generate, skip repeats, choose 10.","options":["Right: someone else could not follow it. A procedure must label, generate, skip repeats and select.","A generator gives different numbers; the issue is the missing steps.","The sample size was set by time and equipment; the procedure is what is incomplete.","Either a table or a generator works when the steps are spelled out."]}},{"id":"stat-random-sampling-11","type":"single","unit":"unit-1","topic":"random-sampling","practice":"2.B","level":"analyze","diff":2,"q":"How should strata differ from clusters?","options":["Strata are chosen at random, and clusters are chosen by the researcher","Strata are larger groups of people than clusters","Strata hold similar individuals; clusters each mix the population","Strata and clusters are two names for the same idea"],"correct":2,"why":{"correct":"Stratify by groups whose members are similar to each other; cluster by groups that each resemble the whole population.","options":["In stratified sampling every stratum is sampled; in cluster sampling clusters are chosen at random.","Size does not define them; what matters is how alike the individuals are within each group.","Right: strata group similar individuals; clusters work best when each one mixes the population.","They are used in opposite ways: sample within every stratum, or survey all of a few clusters."]}}],"stimuli":{"random-sampling-s1":{"kind":"table","title":"Four ways to sample a school","html":"\u003cdiv class=\"stat-stim-html\">\u003cp>A high school has 1,200 students: 300 in each of grades 9, 10, 11 and 12, in 48 homerooms of 25 students. The principal wants about 100 students’ opinions on a new schedule. Four plans:\u003c/p>\u003cul>\u003cli>\u003cb>Plan P:\u003c/b> number the students from 1 to 1,200 and use a random number generator to choose 100 different numbers.\u003c/li>\u003cli>\u003cb>Plan Q:\u003c/b> choose 25 students at random from each grade.\u003c/li>\u003cli>\u003cb>Plan R:\u003c/b> choose 4 of the 48 homerooms at random and survey every student in them.\u003c/li>\u003cli>\u003cb>Plan S:\u003c/b> list the students alphabetically, choose a random starting point among the first 12, then take every 12th student.\u003c/li>\u003c/ul>\u003c/div>"},"random-sampling-s2":{"kind":"table","title":"Testing pond water","html":"\u003cdiv class=\"stat-stim-html\">\u003cp>A park has 80 ponds, listed on a park map. A wildlife team has the time and equipment to test the water in 10 of them, and wants a simple random sample of 10 ponds.\u003c/p>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/lesson.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-expr.js" defer></script>
+<script src="../assets/stat-math.js" defer></script>
+<script src="../assets/stat-dist.js" defer></script>
+<script src="../assets/stat-grade.js" defer></script>
+<script src="../assets/stat-questions.js" defer></script>
+<script src="../assets/stat-lesson.js" defer></script>
+</body>
+</html>

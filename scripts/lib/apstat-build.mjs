@@ -564,7 +564,7 @@ export function attribution(f, { adapted = false } = {}) {
 }
 
 /* One figure's markup: an <img> for raster or SVG files, with masks for
-   labelled figures when asked. */
+   labeled figures when asked. */
 export function figureImg(C, figId, depth, { masks = false } = {}) {
   const f = C.figures[figId];
   if (!f) return '';

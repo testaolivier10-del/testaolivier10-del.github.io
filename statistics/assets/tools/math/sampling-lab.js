@@ -51,7 +51,7 @@
      groups: [{ name, from, to, mean, sd }] }, clusters: { by: 'row'|'col'|'room',
      names: [...] , rooms?: { per, rows, cols } }, trend?: { by, per } }
      A 'room' layout groups the grid into rooms of rows x cols seats; units
-     are labelled room by room. */
+     are labeled room by room. */
   var popCache = {};
   function population(scene){
     var key = scene.id + ':' + scene.seed;
@@ -278,7 +278,7 @@
       { t: 'Label the ' + U + ' from 1 to ' + fN(N) + '.', ok: true, why: 'Every ' + ctx.unit + ' needs its own number so the random numbers can point at it.' },
       { t: 'Label the ' + U + ' from 1 to ' + n + '.', ok: false, why: 'Only ' + n + ' labels for ' + fN(N) + ' ' + U + ' leaves most of the population out. Label all ' + fN(N) + '.' },
       { t: 'Put the ' + U + ' in alphabetical order.', ok: false, why: 'An order is not a label. Give each ' + ctx.unit + ' a distinct number from 1 to ' + fN(N) + '.' },
-      { t: 'Choose ' + n + ' ' + U + ' that seem typical.', ok: false, why: 'Choosing by judgment is not random. The labelling step gives every ' + ctx.unit + ' a number instead.' }
+      { t: 'Choose ' + n + ' ' + U + ' that seem typical.', ok: false, why: 'Choosing by judgment is not random. The labeling step gives every ' + ctx.unit + ' a number instead.' }
     ];
     var genOpts = [
       { t: 'Use a random number generator to produce integers from 1 to ' + fN(N) + '.', ok: true, why: 'The range matches the labels exactly, so every ' + ctx.unit + ' can be chosen.' },

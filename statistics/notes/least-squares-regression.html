@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Least-Squares Regression — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="You can predict with a regression line and check it with residuals. Two questions remain. Which line, out of all the lines you could draw, should be used?">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/least-squares-regression.html">
+<meta property="og:title" content="Least-Squares Regression — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="You can predict with a regression line and check it with residuals. Two questions remain. Which line, out of all the lines you could draw, should be used?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/least-squares-regression.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/least-squares-regression.html#reading",
+      "name": "Least-Squares Regression",
+      "url": "https://levlprep.com/statistics/notes/least-squares-regression.html",
+      "description": "You can predict with a regression line and check it with residuals. Two questions remain. Which line, out of all the lines you could draw, should be used?",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "least-squares regression ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Regression Analysis",
+          "item": "https://levlprep.com/statistics/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Least-Squares Regression: notes",
+          "item": "https://levlprep.com/statistics/notes/least-squares-regression.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="least-squares-regression" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Regression Analysis</b><small>5 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="scatterplots"><a href="scatterplots.html"><span class="bk-toc-n">5.1</span>Graphical Representations Between Two Quantitative Variables</a></li><li data-toc-t="correlation"><a href="correlation.html"><span class="bk-toc-n">5.2</span>Correlation</a></li><li data-toc-t="linear-models"><a href="linear-models.html"><span class="bk-toc-n">5.3</span>Linear Regression Models</a></li><li data-toc-t="residuals"><a href="residuals.html"><span class="bk-toc-n">5.4</span>Residuals</a></li><li class="current" data-toc-t="least-squares-regression"><a href="#main" aria-current="page"><span class="bk-toc-n">5.5</span>Least-Squares Regression</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-least-squares-line">The least-squares line</a><a href="#how-well-does-the-line-fit">How well does the line fit? r² and s</a><a href="#unusual-points">Unusual points</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Regression Analysis</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Least-Squares Regression: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/least-squares-regression.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.5 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Least-Squares Regression</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="least-squares-regression">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fleast-squares-regression.html&amp;title=Least-Squares%20Regression%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/least-squares-regression.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>You can predict with a <a class="gl" href="../notes/linear-models.html" data-c="regression-line">regression line</a> and check it with <a class="gl" href="../notes/residuals.html" data-c="residual">residuals</a>. Two questions remain. Which line, out of all the lines you could draw, should be used? And once you have it, how well does it do? This topic answers both, and then looks at the points that can change the answers.</p>
+
+<h2 id="the-least-squares-line">The least-squares line</h2>
+<p>Every line through a <a class="gl" href="../notes/scatterplots.html" data-c="scatterplot">scatterplot</a> leaves residuals, some positive and some negative. Adding them up is useless, because they cancel. Squaring them first makes every miss count, and big misses count a lot. The <b><span class="gl" tabindex="0" data-c="lsrl">least-squares regression line</span></b> is the line that makes</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mover accent="true"><mi>y</mi><mo stretchy="false">&#x005E;</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mo largeop="true" movablelimits="false">∑</mo><msup><mtext>residual</mtext><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\sum (y - \hat{y})^2 = \sum \text{residual}^2</annotation></semantics></math></p>
+<p>as small as possible. Exactly one line does that, and technology finds it. Its <a class="gl" href="../notes/math-lines.html" data-c="slope-line">slope</a> and <a class="gl" href="../notes/math-lines.html" data-c="intercept">intercept</a> have simple formulas in terms of summary statistics:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>b</mi><mo>=</mo><mi>r</mi><mfrac><msub><mi>s</mi><mi>y</mi></msub><msub><mi>s</mi><mi>x</mi></msub></mfrac><mo>,</mo><mspace width="2em"></mspace><mi>a</mi><mo>=</mo><mover accent="true"><mi>y</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>−</mo><mi>b</mi><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>.</mo></mrow><annotation encoding="application/x-tex">b = r\frac{s_y}{s_x}, \qquad a = \bar{y} - b\bar{x}.</annotation></semantics></math></p>
+<p>Two facts follow. The line always passes through the point of <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a>, <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>,</mo><mover accent="true"><mi>y</mi><mo stretchy="true">&#x00AF;</mo></mover><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\bar{x}, \bar{y})</annotation></semantics></math>. And in <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a> units, an <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> that is one SD above <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> gets a prediction only <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> SDs above <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{y}</annotation></semantics></math>: predictions are pulled toward the mean unless <math class="stat-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r = \pm 1</annotation></semantics></math>. (The reference sheet gives <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\hat{y} = a + bx</annotation></semantics></math> but not the slope formula, so learn <math class="stat-m"><semantics><mrow><mi>b</mi><mo>=</mo><mi>r</mi><mfrac><msub><mi>s</mi><mi>y</mi></msub><msub><mi>s</mi><mi>x</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">b = r\frac{s_y}{s_x}</annotation></semantics></math> as a relationship.)</p>
+<div class="worked">
+<p><b>Worked example 1.</b> For ten basketball players, practice hours have <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>=</mo><mn>5.00</mn></mrow><annotation encoding="application/x-tex">\bar{x} = 5.00</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>s</mi><mi>x</mi></msub><mo>=</mo><mn>2.00</mn></mrow><annotation encoding="application/x-tex">s_x = 2.00</annotation></semantics></math>; free throw <a class="gl" href="../notes/math-fractions-percents.html" data-c="proportion-math">percentages</a> have <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>=</mo><mn>61.40</mn></mrow><annotation encoding="application/x-tex">\bar{y} = 61.40</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>s</mi><mi>y</mi></msub><mo>=</mo><mn>6.04</mn></mrow><annotation encoding="application/x-tex">s_y = 6.04</annotation></semantics></math>; and <math class="stat-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0.966</mn></mrow><annotation encoding="application/x-tex">r = 0.966</annotation></semantics></math>. Find the least-squares line.</p>
+<p>Slope: <math class="stat-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.966</mn><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>6.04</mn><mn>2.00</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">= 0.966\left(\frac{6.04}{2.00}\right)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>2.917</mn></mrow><annotation encoding="application/x-tex">= 2.917</annotation></semantics></math>.</p>
+<p>Intercept: <math class="stat-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>61.40</mn><mo>−</mo><mn>2.917</mn><mo stretchy="false">(</mo><mn>5.00</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 61.40 - 2.917(5.00)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>46.82</mn></mrow><annotation encoding="application/x-tex">= 46.82</annotation></semantics></math>.</p>
+<p>Line: <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mn>46.82</mn><mo>+</mo><mn>2.917</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">\hat{y} = 46.82 + 2.917x</annotation></semantics></math>. For each additional hour of practice a week, the predicted free throw percentage increases by about 2.9 percentage points.</p>
+</div>
+
+<h2 id="how-well-does-the-line-fit">How well does the line fit? <math class="stat-m"><semantics><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">r^2</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></h2>
+<p>The <b><span class="gl" tabindex="0" data-c="r-squared">coefficient of determination</span></b>, <math class="stat-m"><semantics><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">r^2</annotation></semantics></math>, compares the scatter around the line with the scatter around <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{y}</annotation></semantics></math>. It is the fraction of the <a class="gl" href="../notes/describing-distributions.html" data-c="spread">variation</a> in <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> that the line accounts for. Interpret it with this template:</p>
+<p style="text-align:center"><b>"About [<math class="stat-m"><semantics><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">r^2</annotation></semantics></math> as a percent] of the variation in [<math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>] is accounted for by the linear model using [<math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>]."</b></p>
+<p>The <b><span class="gl" tabindex="0" data-c="s-residuals">standard deviation of the residuals</span></b>, <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math>, is the typical size of a prediction error, in the units of <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>:</p>
+<p style="text-align:center"><b>"The actual [<math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>] typically differs from the predicted [<math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>] by about <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> [units]."</b></p>
+<div class="worked">
+<p><b>Worked example 2.</b> A magazine regresses fuel economy (mpg) on weight (thousands of pounds) for 30 car models. The output shows Constant 48.7, Weight <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6.25</mn></mrow><annotation encoding="application/x-tex">-6.25</annotation></semantics></math>, S = 2.81 and R-Sq = 76.4%.</p>
+<p><b>Line:</b> <math class="stat-m"><semantics><mrow><mover accent="true"><mtext>mpg</mtext><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\widehat{\text{mpg}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>48.7</mn><mo>−</mo><mn>6.25</mn><mo stretchy="false">(</mo><mtext>weight</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 48.7 - 6.25(\text{weight})</annotation></semantics></math>.</p>
+<p><b>Slope:</b> for each additional 1,000 pounds, the predicted fuel economy decreases by about 6.25 mpg.</p>
+<p><b><math class="stat-m"><semantics><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">r^2</annotation></semantics></math>:</b> about 76.4% of the variation in fuel economy is accounted for by the linear model using weight.</p>
+<p><b><math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math>:</b> a car's actual fuel economy typically differs from its predicted fuel economy by about 2.81 mpg.</p>
+<p><b><math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>:</b> <math class="stat-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msqrt><mn>0.764</mn></msqrt><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.874</mn></mrow><annotation encoding="application/x-tex">r = -\sqrt{0.764} = -0.874</annotation></semantics></math>, negative because the slope is negative.</p>
+</div>
+<p>Reading output: the "Constant" row is the intercept <math class="stat-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>, the row named for the <a class="gl" href="../notes/investigative-questions.html" data-c="explanatory-response">explanatory variable</a> is the slope <math class="stat-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math>, "S" is <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> and "R-Sq" is <math class="stat-m"><semantics><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">r^2</annotation></semantics></math>. Output may show other columns; this course needs only these.</p>
+
+<h2 id="unusual-points">Unusual points</h2>
+<figure id="fig-inf"  class="stat-figure"><div class="stat-figimg" data-fig="influential-point"><img src="../figures/influential-point.svg" alt="Practice hours against free throw percentage for ten players rising steeply, with slope 2.92 for their least-squares line; an eleventh player at 16 hours and 58% pulls the line down to a slope of 0.49." width="620" height="400" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> One player far to the right pulls the least-squares line down. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="stat-compare">
+<thead><tr><th>Kind of point</th><th>What it is</th><th>Typical effect</th></tr></thead>
+<tbody>
+<tr><td><a class="gl" href="../notes/describing-distributions.html" data-c="outlier">Outlier</a></td><td>a large residual: far above or below the line</td><td>raises <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math>, lowers <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">r^2</annotation></semantics></math></td></tr>
+<tr><td><span class="gl" tabindex="0" data-c="influential">High-leverage point</span></td><td>an <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> value far from <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math></td><td>can pull the line toward itself</td></tr>
+<tr><td>Influential point</td><td>removing it changes the slope or intercept a lot</td><td>often a high-leverage point</td></tr>
+</tbody>
+</table></div>
+<p>Because squares make far-off points count heavily, the least-squares line, like the mean, is <a class="gl" href="../notes/summary-statistics.html" data-c="resistant">not resistant</a>. <a class="figref" href="#fig-inf">The figure</a> shows the ten players plus an eleventh who practices 16 hours a week and makes 58%. With all eleven, the slope is 0.49 and <math class="stat-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0.32</mn></mrow><annotation encoding="application/x-tex">r = 0.32</annotation></semantics></math>. Without the eleventh, the slope is 2.92 and <math class="stat-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0.97</mn></mrow><annotation encoding="application/x-tex">r = 0.97</annotation></semantics></math>. That single high-leverage point is influential: it hides a strong linear <a class="gl" href="../notes/two-categorical-displays.html" data-c="association">association</a> among everyone else.</p>
+<p>A point near <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> with an unusual <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> behaves differently. It has a large residual, so it raises <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> and lowers <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>, but it has little leverage, so the slope barely moves.</p>
+<p>What to do with unusual points: look for a reason, then report the analysis with and without them. Never delete a point just because it does not fit.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:least-squares-regression">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="residuals.html"><span>&larr; Previous</span><b>Residuals</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:least-squares-regression">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

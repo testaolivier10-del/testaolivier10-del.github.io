@@ -1,7 +1,33 @@
 {
  "about": "Hand-written meta descriptions for pages whose opening text has no whole sentence short enough to be one. Shaped { lessons: {topic: text}, notes: {topic: text}, units: {chapter: text}, titles: {topic: text} }; \"titles\" is a shorter topic name for the <title> of its lesson and notes pages when the full one would be cut. Never use the mark here: no \"AP\" in any meta description (docs/apstat-spec.md decision 2).",
  "lessons": {},
- "notes": {},
+ "notes": {
+  "ci-two-proportions": "How to build and interpret a confidence interval for the difference between two population proportions, with the conditions to check and a worked example.",
+  "sampling-dist-proportion": "The sampling distribution of a sample proportion: its mean, its standard deviation, the 10% condition and the large counts condition for a normal shape."
+ },
  "units": {},
- "titles": {}
+ "titles": {
+  "one-categorical-displays": "Graphs for One Categorical Variable",
+  "one-quantitative-displays": "Graphs for One Quantitative Variable",
+  "sampling-dist-proportion": "Sampling Distribution of a Proportion",
+  "sampling-dist-mean": "Sampling Distribution of a Mean",
+  "sampling-dist-two-proportions": "Two-Proportion Sampling Distribution",
+  "sampling-dist-two-means": "Two-Mean Sampling Distribution",
+  "ci-one-proportion": "Interval for a Proportion",
+  "ci-one-proportion-claims": "Claims from a Proportion Interval",
+  "test-one-proportion-setup": "Setting Up a Proportion Test",
+  "test-one-proportion": "Carrying Out a Proportion Test",
+  "ci-two-proportions": "Interval for Two Proportions",
+  "ci-two-proportions-claims": "Claims from a Two-Proportion Interval",
+  "test-two-proportions-setup": "Setting Up a Two-Proportion Test",
+  "test-two-proportions": "Carrying Out a Two-Proportion Test",
+  "ci-one-mean": "Interval for a Mean",
+  "ci-one-mean-claims": "Claims from a Mean Interval",
+  "test-one-mean-setup": "Setting Up a Test for a Mean",
+  "test-one-mean": "Carrying Out a Test for a Mean",
+  "ci-two-means": "Interval for Two Means",
+  "ci-two-means-claims": "Claims from a Two-Mean Interval",
+  "test-two-means-setup": "Setting Up a Two-Sample t Test",
+  "test-two-means": "Carrying Out a Two-Sample t Test"
+ }
 }

@@ -8,7 +8,7 @@
    population, one row each, against a line at the true value (population
    blue); each interval's center dot is its sample statistic (sample orange);
    an interval that captures the parameter is green, one that misses is
-   vermillion, thicker and marked with a cross (never colour alone). Change
+   vermillion, thicker and marked with a cross (never color alone). Change
    the level and the SAME samples rebuild their intervals (the arms stretch
    or shrink, and some flip); change n and new samples are drawn. Every
    interval built since the last change counts toward the long run rate,

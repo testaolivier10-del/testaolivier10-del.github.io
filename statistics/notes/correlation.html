@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correlation — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="A scatterplot shows the direction, form and strength of a relationship, but &quot;strong&quot; and &quot;fairly strong&quot; are hard to compare from one plot to the next.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/correlation.html">
+<meta property="og:title" content="Correlation — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="A scatterplot shows the direction, form and strength of a relationship, but &quot;strong&quot; and &quot;fairly strong&quot; are hard to compare from one plot to the next.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/correlation.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/correlation.html#reading",
+      "name": "Correlation",
+      "url": "https://levlprep.com/statistics/notes/correlation.html",
+      "description": "A scatterplot shows the direction, form and strength of a relationship, but \"strong\" and \"fairly strong\" are hard to compare from one plot to the next.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "correlation ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Regression Analysis",
+          "item": "https://levlprep.com/statistics/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Correlation: notes",
+          "item": "https://levlprep.com/statistics/notes/correlation.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="correlation" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Regression Analysis</b><small>5 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="scatterplots"><a href="scatterplots.html"><span class="bk-toc-n">5.1</span>Graphical Representations Between Two Quantitative Variables</a></li><li class="current" data-toc-t="correlation"><a href="#main" aria-current="page"><span class="bk-toc-n">5.2</span>Correlation</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-r-tells-you">What r tells you</a><a href="#where-the-number-comes-from">Where the number comes from</a><a href="#interpreting-r-in-context">Interpreting r in context</a><a href="#properties-to-remember">Properties to remember</a><a href="#correlation-is-not-causation">Correlation is not causation</a></div></li><li data-toc-t="linear-models"><a href="linear-models.html"><span class="bk-toc-n">5.3</span>Linear Regression Models</a></li><li data-toc-t="residuals"><a href="residuals.html"><span class="bk-toc-n">5.4</span>Residuals</a></li><li data-toc-t="least-squares-regression"><a href="least-squares-regression.html"><span class="bk-toc-n">5.5</span>Least-Squares Regression</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Regression Analysis</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Correlation: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/correlation.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.2 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Correlation</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="correlation">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fcorrelation.html&amp;title=Correlation%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/correlation.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>A <a class="gl" href="../notes/scatterplots.html" data-c="scatterplot">scatterplot</a> shows the <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">direction</a>, form and strength of a relationship, but "strong" and "fairly strong" are hard to compare from one plot to the next. For a linear pattern, one number does the job: the <b><span class="gl" tabindex="0" data-c="correlation">correlation</span></b>, written <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>.</p>
+
+<h2 id="what-r-tells-you">What <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> tells you</h2>
+<ul>
+<li>The <b>sign</b> gives the direction: <math class="stat-m"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &gt; 0</annotation></semantics></math> for a positive <a class="gl" href="../notes/two-categorical-displays.html" data-c="association">association</a>, <math class="stat-m"><semantics><mrow><mi>r</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &lt; 0</annotation></semantics></math> for a negative one.</li>
+<li>The <b>size</b> gives the strength of the linear pattern: near 1 or <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> when points hug a line, near 0 when there is no linear pattern.</li>
+<li><math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> is always between <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> and 1. It equals 1 or <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> only when every point lies exactly on a line.</li>
+</ul>
+<figure id="fig-gal"  class="stat-figure"><div class="stat-figimg" data-fig="correlation-gallery"><img src="../figures/correlation-gallery.svg" alt="Four small scatterplots with their correlations computed from the data: strong positive, r = 0.99; moderate negative, r = -0.79; weak positive, r = 0.29; and a strong curved arch with r = 0.04." width="760" height="250" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Four data sets with their correlations. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p><a class="figref" href="#fig-gal">The figure</a> shows four <a class="gl" href="../notes/intro-statistics.html" data-c="data">data sets</a>. Rough guide: a size above about 0.8 is strong, 0.5 to 0.8 moderate, below 0.5 weak. But look at the fourth plot: the points follow an arch almost perfectly, yet <math class="stat-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0.04</mn></mrow><annotation encoding="application/x-tex">r = 0.04</annotation></semantics></math>. Correlation measures how well a <b>line</b> fits, nothing else.</p>
+
+<h2 id="where-the-number-comes-from">Where the number comes from</h2>
+<p>The formula uses <a class="gl" href="../notes/comparing-distributions.html" data-c="z-score">z-scores</a>, which you met with one <a class="gl" href="../notes/variables.html" data-c="variable">variable</a>. Standardize each <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and each <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>, multiply each pair, and <a class="gl" href="../notes/summary-statistics.html" data-c="mean">average</a> the products (dividing by <math class="stat-m"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math>, as for a <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a>):</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo largeop="true" movablelimits="false">∑</mo><msub><mi>z</mi><mi>x</mi></msub><msub><mi>z</mi><mi>y</mi></msub><mo>,</mo><mspace width="2em"></mspace><msub><mi>z</mi><mi>x</mi></msub><mo>=</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><msub><mi>s</mi><mi>x</mi></msub></mfrac><mo>,</mo><mspace width="1em"></mspace><msub><mi>z</mi><mi>y</mi></msub><mo>=</mo><mfrac><mrow><mi>y</mi><mo>−</mo><mover accent="true"><mi>y</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><msub><mi>s</mi><mi>y</mi></msub></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">r = \frac{1}{n - 1}\sum z_x z_y, \qquad z_x = \frac{x - \bar{x}}{s_x},\quad z_y = \frac{y - \bar{y}}{s_y}.</annotation></semantics></math></p>
+<p>Why does this work? Draw lines at <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{y}</annotation></semantics></math>. A point above average on both variables has two positive z-scores, so a positive product; a point below average on both has two negative z-scores, again a positive product. Points in the other two corners give negative products. If most points sit in the upper right and lower left, the products add up to a positive <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example.</b> Find <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> for the four points <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 3)</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(4, 5)</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mn>6</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(6, 4)</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mn>8</mn><mo>,</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(8, 8)</annotation></semantics></math>.</p>
+<p>Means and standard deviations: <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\bar{x} = 5</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>s</mi><mi>x</mi></msub><mo>=</mo><mn>2.582</mn></mrow><annotation encoding="application/x-tex">s_x = 2.582</annotation></semantics></math>; <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\bar{y} = 5</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>s</mi><mi>y</mi></msub><mo>=</mo><mn>2.160</mn></mrow><annotation encoding="application/x-tex">s_y = 2.160</annotation></semantics></math>.</p>
+<p>z-scores: <math class="stat-m"><semantics><mrow><msub><mi>z</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">z_x</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1.162</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.387</mn><mo>,</mo><mn>0.387</mn><mo>,</mo><mn>1.162</mn></mrow><annotation encoding="application/x-tex">= -1.162, -0.387, 0.387, 1.162</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>z</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">z_y</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.926</mn><mo>,</mo><mn>0</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.463</mn><mo>,</mo><mn>1.389</mn></mrow><annotation encoding="application/x-tex">= -0.926, 0, -0.463, 1.389</annotation></semantics></math>.</p>
+<p>Products: <math class="stat-m"><semantics><mrow><mn>1.076</mn></mrow><annotation encoding="application/x-tex">1.076</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.179</mn></mrow><annotation encoding="application/x-tex">-0.179</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mn>1.614</mn></mrow><annotation encoding="application/x-tex">1.614</annotation></semantics></math>, which add to <math class="stat-m"><semantics><mrow><mn>2.511</mn></mrow><annotation encoding="application/x-tex">2.511</annotation></semantics></math>.</p>
+<p><math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>1</mn><mrow><mn>4</mn><mo>−</mo><mn>1</mn></mrow></mfrac><mo stretchy="false">(</mo><mn>2.511</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= \frac{1}{4 - 1}(2.511)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.837</mn></mrow><annotation encoding="application/x-tex">= 0.837</annotation></semantics></math>: a fairly strong, positive, linear association.</p>
+<p>In practice, use technology: a linear regression or correlation command on the two lists reports <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> directly. The formula is for understanding, not for long hand calculations.</p>
+</div>
+
+<h2 id="interpreting-r-in-context">Interpreting <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> in context</h2>
+<p>For the teacher's 8 students, technology gives <math class="stat-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0.951</mn></mrow><annotation encoding="application/x-tex">r = 0.951</annotation></semantics></math> between hours studied and quiz score. Write it like this: "There is a strong, positive, linear association between hours studied and quiz score for these students." Do not write "95% of students ..." or "scores rise 0.95 points per hour". <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> is not a <a class="gl" href="../notes/math-fractions-percents.html" data-c="proportion-math">percent</a> and has no units.</p>
+
+<h2 id="properties-to-remember">Properties to remember</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="stat-compare">
+<thead><tr><th>Property</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>No units; changing units (hours to minutes) leaves <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> the same</td><td>z-scores have no units</td></tr>
+<tr><td>Switching <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> leaves <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> the same</td><td>the formula treats the variables alike</td></tr>
+<tr><td><a class="gl" href="../notes/summary-statistics.html" data-c="resistant">Not resistant</a>: one <a class="gl" href="../notes/describing-distributions.html" data-c="outlier">outlier</a> can change <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> a lot</td><td>a far-off point has large z-scores</td></tr>
+<tr><td>Measures linear association only</td><td>a <a class="gl" href="../notes/describing-distributions.html" data-c="symmetric">symmetric</a> curve gives products that cancel</td></tr>
+</tbody>
+</table></div>
+<p>To see the outlier effect: add a ninth student who studied 6 hours but scored 40, and <math class="stat-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> falls from 0.95 to about 0.14.</p>
+
+<h2 id="correlation-is-not-causation">Correlation is not causation</h2>
+<p>A strong correlation in observational data does not mean one variable causes the other. Across cities, the number of fire trucks sent to a fire is strongly correlated with the damage, because bigger fires bring more trucks and do more damage. A third variable linked to both, here the size of the fire, can create a correlation. Only a randomized <a class="gl" href="../notes/investigative-questions.html" data-c="experiment">experiment</a> supports a claim of cause.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:correlation">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="scatterplots.html"><span>&larr; Previous</span><b>Graphical Representations Between Two Quantitative Variables</b></a><a class="tb-chapter-link next" href="linear-models.html"><span>Next &rarr;</span><b>Linear Regression Models</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:correlation">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

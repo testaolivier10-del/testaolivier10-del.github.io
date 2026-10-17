@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setting Up a Two-Sample t Test — AP® Statistics Notes</title>
+<meta name="description" content="Before the arithmetic comes the setup, and with two groups there is one new decision to make first: are the data paired, or are they two independent groups?">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/test-two-means-setup.html">
+<meta property="og:title" content="Setting Up a Two-Sample t Test — AP® Statistics Notes">
+<meta property="og:description" content="Before the arithmetic comes the setup, and with two groups there is one new decision to make first: are the data paired, or are they two independent groups?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/test-two-means-setup.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/test-two-means-setup.html#reading",
+      "name": "Setting Up a Test for the Difference Between Two Population Means",
+      "url": "https://levlprep.com/statistics/notes/test-two-means-setup.html",
+      "description": "Before the arithmetic comes the setup, and with two groups there is one new decision to make first: are the data paired, or are they two independent groups?",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "setting up a test for the difference between two population means ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Quantitative Data: Means",
+          "item": "https://levlprep.com/statistics/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Setting Up a Test for the Difference Between Two Population Means: notes",
+          "item": "https://levlprep.com/statistics/notes/test-two-means-setup.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="test-two-means-setup" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Inference for Categorical Data: Proportions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Inference for Quantitative Data: Means</b><small>10 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 10 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="sampling-dist-mean"><a href="sampling-dist-mean.html"><span class="bk-toc-n">4.1</span>Sampling Distributions for Sample Means</a></li><li data-toc-t="ci-one-mean"><a href="ci-one-mean.html"><span class="bk-toc-n">4.2</span>Constructing a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="ci-one-mean-claims"><a href="ci-one-mean-claims.html"><span class="bk-toc-n">4.3</span>Justifying a Claim Based on a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean-setup"><a href="test-one-mean-setup.html"><span class="bk-toc-n">4.4</span>Setting Up a Test for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean"><a href="test-one-mean.html"><span class="bk-toc-n">4.5</span>Carrying Out a Test for a Population Mean or Population Mean Difference</a></li><li data-toc-t="sampling-dist-two-means"><a href="sampling-dist-two-means.html"><span class="bk-toc-n">4.6</span>Sampling Distributions for the Difference Between Two Sample Means</a></li><li data-toc-t="ci-two-means"><a href="ci-two-means.html"><span class="bk-toc-n">4.7</span>Constructing a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="ci-two-means-claims"><a href="ci-two-means-claims.html"><span class="bk-toc-n">4.8</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Means</a></li><li class="current" data-toc-t="test-two-means-setup"><a href="#main" aria-current="page"><span class="bk-toc-n">4.9</span>Setting Up a Test for the Difference Between Two Population Means</a><div class="bk-toc-onpage"><p>On this page</p><a href="#paired-or-two-independent-groups">Paired or two independent groups?</a><a href="#hypotheses-for-two-means">Hypotheses for two means</a><a href="#conditions-group-by-group">Conditions, group by group</a><a href="#when-it-is-a-one-sample">When it is a one-sample test after all</a><a href="#errors-in-context">Errors in context</a></div></li><li data-toc-t="test-two-means"><a href="test-two-means.html"><span class="bk-toc-n">4.10</span>Carrying Out a Test for the Difference Between Two Population Means</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Regression Analysis</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Inference for Quantitative Data: Means</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Setting Up a Test for the Difference Between Two Population Means: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/test-two-means-setup.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.9 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Setting Up a Test for the Difference Between Two Population Means</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="test-two-means-setup">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Ftest-two-means-setup.html&amp;title=Setting%20Up%20a%20Test%20for%20the%20Difference%20Between%20Two%20Population%20Means%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/test-two-means-setup.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>The test for a <a class="gl" href="../notes/sampling-dist-two-means.html" data-c="diff-means">difference of two means</a> asks the same kind of question as the interval: is there <a class="gl" href="../notes/ci-one-proportion-claims.html" data-c="convincing-evidence">convincing evidence</a> that two true means differ, or that one is larger? Before the arithmetic comes the setup, and with two groups there is one new decision to make first: are the <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a> paired, or are they two <a class="gl" href="../notes/independence-unions.html" data-c="independent-events">independent</a> groups?</p>
+
+<h2 id="paired-or-two-independent-groups">Paired or two independent groups?</h2>
+<p>The design decides, not the numbers. Look at how the data were produced.</p>
+<figure id="fig-design"  class="stat-figure"><div class="stat-figimg" data-fig="paired-vs-two-sample"><img src="../figures/paired-vs-two-sample.svg" alt="Left panel, paired design: five numbered runners each run in shoe A and in shoe B, and each gives one difference, A minus B; the differences form one sample, analyzed with a paired t test on the mean difference with df equal to the number of pairs minus 1. Right panel, two groups: runners are split at random into group 1 wearing shoe A and group 2 wearing shoe B, different runners in each; each group gives its own mean, standard deviation and size, analyzed with a two-sample t test on mu 1 minus mu 2, with technology df or the smaller n minus 1." width="720" height="470" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Paired designs give one list of differences; two-sample designs give two independent groups. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Paired, Two independent groups"><table class="stat-compare">
+<thead><tr><th scope="col"></th><th scope="col">Paired</th><th scope="col">Two independent groups</th></tr></thead>
+<tbody>
+<tr><th scope="row">How the data arise</th><td>each unit measured twice, or units matched in pairs</td><td>two separate <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">random</a> <a class="gl" href="../notes/intro-statistics.html" data-c="sample">samples</a>, or <a class="gl" href="../notes/experimental-design.html" data-c="random-assignment">random assignment</a> to two groups</td></tr>
+<tr><th scope="row">Examples</th><td>before and after; both shoes on the same runner; twins</td><td>brand X phones and brand Y phones; runners split into two shoe groups</td></tr>
+<tr><th scope="row">Parameter</th><td><math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">\mu_d</annotation></semantics></math>, the true <a class="gl" href="../notes/ci-one-mean.html" data-c="paired-data">mean difference</a></td><td><math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>μ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\mu_1 - \mu_2</annotation></semantics></math>, the difference of true <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a></td></tr>
+<tr><th scope="row">Test</th><td><a class="gl" href="../notes/test-one-mean-setup.html" data-c="one-sample-t-test">paired t test</a> (one-sample t on the differences)</td><td><span class="gl" tabindex="0" data-c="two-sample-t-test">two-sample t test</span></td></tr>
+<tr><th scope="row">df</th><td><math class="stat-m"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math>, where <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> is the number of pairs</td><td>technology, or the smaller of <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n_1 - 1</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n_2 - 1</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>A coach with 40 runners and two shoe designs can do either. In plan 1, every runner runs once in each shoe, in random order: paired. In plan 2, the runners are randomly split 20 and 20: two groups. Plan 1 is usually better at detecting a small effect. Runners differ from each other by minutes; a shoe might change a time by seconds. Pairing compares each runner with themselves, so the large runner-to-runner <a class="gl" href="../notes/describing-distributions.html" data-c="spread">variation</a> drops out of the differences.</p>
+
+<h2 id="hypotheses-for-two-means">Hypotheses for two means</h2>
+<p>For two independent groups, the <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="hypotheses">null hypothesis</a> says the true means are equal, and the alternative comes from the question:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><msub><mi>μ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>μ</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn><mspace width="2em"></mspace><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>μ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>μ</mi><mn>2</mn></msub><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="1em"></mspace><mo>&lt;</mo><mn>0</mn><mo>,</mo><mspace width="1em"></mspace><mtext>or</mtext><mo>≠</mo><mn>0</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">H_0: \mu_1 - \mu_2 = 0 \qquad H_a: \mu_1 - \mu_2 &gt; 0, \quad &lt; 0, \quad \text{or} \ne 0.</annotation></semantics></math></p>
+<p>You may also write <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><msub><mi>μ</mi><mn>1</mn></msub><mo>=</mo><msub><mi>μ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">H_0: \mu_1 = \mu_2</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>μ</mi><mn>1</mn></msub><mo>&gt;</mo><msub><mi>μ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">H_a: \mu_1 &gt; \mu_2</annotation></semantics></math>. Either way, define both <a class="gl" href="../notes/variables.html" data-c="parameter">parameters</a> <a class="gl" href="../notes/intro-statistics.html" data-c="context">in context</a>, and keep the order of subtraction consistent from the hypotheses to the conclusion.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A consumer group buys a random sample of 15 brand X phones and an independent random sample of 15 brand Y phones and runs each until the battery dies while streaming (invented data). Does brand X last longer on average? Set up the test.</p>
+<p>Procedure: a two-sample t test for <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>X</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>Y</mi></msub></mrow><annotation encoding="application/x-tex">\mu_X - \mu_Y</annotation></semantics></math>.</p>
+<p>Hypotheses: <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><msub><mi>μ</mi><mi>X</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>Y</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_0: \mu_X - \mu_Y = 0</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>μ</mi><mi>X</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>Y</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_a: \mu_X - \mu_Y &gt; 0</annotation></semantics></math>, where <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">\mu_X</annotation></semantics></math> is the <a class="gl" href="../notes/summary-statistics.html" data-c="population-mean">true mean</a> battery life while streaming of all new brand X phones and <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>Y</mi></msub></mrow><annotation encoding="application/x-tex">\mu_Y</annotation></semantics></math> the same for brand Y.</p>
+<p>Conditions. Random: <a class="gl" href="../notes/sampling-dist-two-proportions.html" data-c="independent-samples">independent random samples</a> of each brand. 10%: 15 is less than 10% of all phones sold, for each brand. Normal/large sample: both samples have <math class="stat-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>15</mn><mo>&lt;</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n = 15 &lt; 30</annotation></semantics></math>, but <a class="gl" href="../notes/boxplots.html" data-c="boxplot">boxplots</a> of both show no strong <a class="gl" href="../notes/describing-distributions.html" data-c="skewed">skew</a> and no <a class="gl" href="../notes/describing-distributions.html" data-c="outlier">outliers</a>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> For plan 2 of the shoe study (runners randomly assigned 20 to shoe A, 20 to shoe B), the coach asks whether the mean 5 km time differs between the shoes.</p>
+<p>Hypotheses: <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><msub><mi>μ</mi><mi>A</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>B</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_0: \mu_A - \mu_B = 0</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>μ</mi><mi>A</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>B</mi></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_a: \mu_A - \mu_B \ne 0</annotation></semantics></math>, where <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">\mu_A</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">\mu_B</annotation></semantics></math> are the true mean 5 km times in shoes A and B for runners like these. "Differs" means <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="one-two-sided">two-sided</a>.</p>
+<p>Conditions. Random: random assignment of runners to shoes. 10%: not needed, since this is an <a class="gl" href="../notes/investigative-questions.html" data-c="experiment">experiment</a>, not a sample from a <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a>. Normal/large sample: 20 per group, so check that a graph of each group's times shows no strong skew or outliers.</p>
+</div>
+
+<h2 id="conditions-group-by-group">Conditions, group by group</h2>
+<p>Every condition is checked for each group. A sample of 40 delivery times from company P passes the <a class="gl" href="../notes/ci-one-mean.html" data-c="normal-large-sample">normal/large sample condition</a> by size, but if the sample of 12 from company Q is strongly skewed with an outlier, the test is not appropriate: P passing does not rescue Q. Different sample sizes are fine, and the two <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviations</a> do not need to match; the test uses each one separately.</p>
+
+<h2 id="when-it-is-a-one-sample">When it is a one-sample test after all</h2>
+<p>If one of the two means is a known standard rather than a second sample (an old bulb's long-established mean life of 1,200 hours, say), there is only one sample: test <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><mi>μ</mi><mo>=</mo><mn>1200</mn></mrow><annotation encoding="application/x-tex">H_0: \mu = 1200</annotation></semantics></math> with a one-sample t test. A two-sample test is for two groups that both carry <a class="gl" href="../notes/sampling-distributions.html" data-c="sampling-distribution">sampling variability</a>.</p>
+
+<h2 id="errors-in-context">Errors in context</h2>
+<p>For the battery test, a <a class="gl" href="../notes/errors-and-power.html" data-c="type-i">Type I error</a> would occur if the two brands have the same true mean battery life but we find convincing evidence that brand X's is greater. A <a class="gl" href="../notes/errors-and-power.html" data-c="type-ii">Type II error</a> would occur if the true mean battery life of brand X phones is greater than that of brand Y phones, but we do not find convincing evidence that it is greater. The next topic computes the <a class="gl" href="../notes/p-values.html" data-c="test-statistic">test statistic</a> and the <a class="gl" href="../notes/p-values.html" data-c="p-value">p-value</a>.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:test-two-means-setup">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="ci-two-means-claims.html"><span>&larr; Previous</span><b>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Means</b></a><a class="tb-chapter-link next" href="test-two-means.html"><span>Next &rarr;</span><b>Carrying Out a Test for the Difference Between Two Population Means</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:test-two-means-setup">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

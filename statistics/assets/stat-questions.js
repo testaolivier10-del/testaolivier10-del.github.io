@@ -307,6 +307,8 @@
       '<div class="stat-q-body"></div><div class="stat-q-feedback cx-fb" aria-live="polite"></div><div class="stat-q-actions"></div>';
     var body = wrap.querySelector('.stat-q-body'), fb = wrap.querySelector('.stat-q-feedback'), actions = wrap.querySelector('.stat-q-actions');
     host.appendChild(wrap);
+    // Flag toggle on the study pages (assets/course/flags.js); opts.flag 'session' for an exam-only item.
+    if(studyPage() && window.LevlFlags && opts.flag !== false) window.LevlFlags.attach(wrap, 'apstat', q.id, opts.flag);
 
     function finish(g, detailHtml, pick, part){
       done = true;
@@ -398,8 +400,8 @@
       });
     }
 
-    /* A typed number: labelled, Enter checks. When the item asks for the
-       unit (numeric.askUnit), a second labelled box takes it; otherwise the
+    /* A typed number: labeled, Enter checks. When the item asks for the
+       unit (numeric.askUnit), a second labeled box takes it; otherwise the
        unit sits beside the box. Value and units are graded separately, each
        with its own line in the feedback. */
     function numeric(){
@@ -441,7 +443,7 @@
     function notesHtml(list){ return list && list.length ? '<ul class="stat-num-notes">' + list.map(function(n){ return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : ''; }
     function lockMark(input, g){ input.readOnly = true; if(!opts.exam) input.parentNode.insertAdjacentHTML('beforeend', '<span class="stat-mark ' + (g.correct ? 'ok">Correct' : 'no">Your answer') + '</span>'); }
 
-    /* An interval: one labelled box, "from a to b", "(a, b)" or "a +/- m". */
+    /* An interval: one labeled box, "from a to b", "(a, b)" or "a +/- m". */
     function intervalItem(){
       var I = q.interval || {}, id = 'iv-' + (++uid);
       body.innerHTML = '<div class="stat-num"><label for="' + id + '">Your interval</label><span class="stat-num-row"><input type="text" id="' + id + '" autocomplete="off" spellcheck="false" aria-describedby="' + id + '-h"></span>' +
@@ -511,7 +513,7 @@
       [input, vin].forEach(function(el){ if(el) el.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); if(el === input && vin && !vin.value.trim()) vin.focus(); else go(); } }); });
     }
 
-    /* A conclusion built slot by slot (spec section 7, rule 5): a labelled
+    /* A conclusion built slot by slot (spec section 7, rule 5): a labeled
        select per slot, graded exactly; the feedback names the slot that is
        wrong. With conclude.write, a box to write it in your own words first;
        its rule flags are hints and never count. */
@@ -550,7 +552,7 @@
     }
 
     /* A typed expression (docs/apstat-architecture.md, "expr items"): a
-       labelled box with the item's left-hand side ("f'(x) ="), a live
+       labeled box with the item's left-hand side ("f'(x) ="), a live
        preview of how the answer is read, rendered as math, and Enter to
        check. Graded by evaluation at many points (ApStatExpr.grade). */
     function expr(){

@@ -124,7 +124,7 @@ One branch, `claude/apstat`, one PR at the end. Phases as AP® Calculus AB.
 | 2 | Trainers (section 6) | 4 builders at once, each owning whole slugs (section 5a); runs alongside Phase 1 because contexts unlock per unit | |
 | 3 | "Say it in context" trainer, two fixed practice exams, formulas page, unit tests, cram kit | one session (needs the banks) | **done 2026-10-17**: 36 prompts (8, 6, 8, 7, 7 by unit; every skill; 7 with the conclusion builder), two forms (29 bank + 13 exam-only each, one probability and one regression set, unit and practice counts in range, Q1-Q4 FRQs), formulas page held to the 2026 sheet, unit tests, cram kit; every new number recomputed (`EXAM_NUMBERS`, `JUSTIFY_NUMBERS`, distractors too); independent review `docs/apstat-reviews/phase3.md`, all findings applied (decision 14) |
 | 4 | Independent accuracy checks per unit and for tools and exams (every key recomputed by code with `ApStatDist`); fixes | reviewers in parallel, one per unit group + tools + exams | |
-| Launch | Publish, generators, continuity pass against calculus on every shared page type, "Eight courses" wording, full CI with browser checks, PR | one session | |
+| Launch | Publish, generators, continuity pass against calculus on every shared page type, "Eight courses" wording, full CI with browser checks, PR | one session | **done 2026-10-17** (decision 15); Premium not on sale until the section 9 checklist |
 
 Quality bar: AP® Calculus AB authoring rules; every number, probability, interval and p-value key recomputed
 by code; every plot drawn from the data or distribution it claims to show; independent accuracy review.
@@ -295,6 +295,35 @@ All grading is code; nothing is graded by an AI model. Formats in `docs/apstat-a
     (`scripts/lib/apstat-exams.mjs`). Formulas page: the sheet's three section headings, `s_x`, the means of the
     two difference distributions and the Table B and C ranges as on the 2026 sheet.
 
+15. (2026-10-17, launch) **Published, Premium not on sale**, as AP® Calculus AB decision 12.
+    - All five units and `skills-math` in `statistics/data/published.json`; registry `status: 'beta'`; every
+      generator rerun (course, courses, pricing with the plum hub card and the 404 card, OG tags, sitemap, crumbs).
+      `onSale: false` stays. `sw.js` cache v82. Changelog entry 2026-10-17. Eight courses: hub hero count and facts
+      (generated), lede, meta descriptions (no "AP"), manifest, `search.html`, `sources.html` (new section),
+      Premium rules and `terms.html#fixed-date` (generated), cross-course comment.
+    - Shared fixes from the reviews: the `setup.then` value step is prepared from its recipe and graded as a second
+      box; FRQ `check` answers are computed in the build (`prepareFrqCheck`) and the FRQ page has a "Check my number"
+      box; `df` accepts the technology df or the Table B row rounded down, never rounded up or pooled; t intervals
+      carry the conservative-df and Table B row intervals as `interval.alts` (`intervalAlts`), so the three
+      ci-two-means items went back to either df; `stat-plot.js` puts the x-axis name under the ticks, dotplot counts
+      on their rows and the residual axis at the bottom; tiny p-values read "< 0.0001" in Explore.
+    - Phase 3 note kept: most bank probability and regression 3-question sets are lesson check items, so the exam
+      forms use exam-only sets (decision 14). Left as is.
+    - Polish 2026-10-17 brought over from calculus: flagging (`apstat_flagged_v1`, practice mode, exam list, the
+      dashboard card via `flags.js` DIRS), lesson step toggle and share at the end, the after-check prompt, one Next,
+      the level card zero state, the short hero with one Beta note, no lone card in Practice and study, the "Try a
+      step" sample (`stat-sampling-problems-11`), dashboard plural and folded units. Shared CSS/JS lists now know
+      `.stat-crumb`, `.stat-mark`, `.stat-foot`.
+    - Publishing turned on site checks: British spellings in data and runtime strings, 22 cut titles that read the
+      same (`descriptions.json` `titles`), two notes descriptions pointing at the last topic, seven trainer
+      descriptions over 160 characters.
+    - Continuity pass (statistics vs calculus, every shared page type, 390/1440, light/dark, Playwright; practice
+      answered on a numeric, an interval, a setup with its value step and a conclude item; Enlarge on a phone for
+      three trainers; the FRQ page with "Check my number"; the dashboard seeded with progress and flags). Fixes: a
+      build-time `<wbr>` inside a definition showed as text in the glossary page, its tooltips and both
+      flashcard decks (calculus had it too; `glossary-page.js`, `glossary-tip.js`, both `flashcards.js`); the
+      formulas page printed raw `$...$` in a habit line; plain text read `z^*` as "z^(*)" (now "z*").
+
 ## 9. Open items for the owner
 
 Before Phase 1 (built as proposed in Phase 0, each easy to change; decision 11):
@@ -313,6 +342,6 @@ and the normal approximation to the binomial; `frq-scoring`; `set-format`).
       `"stat-2027"` with its product id to `POLAR_PRODUCTS` in the Cloudflare Worker settings; deploy the Worker
       (PASSES, `URL_COURSE`, `COURSE_NAMES`, tutor `COURSE_RULES.apstat`).
 - [ ] Check the founding discount shows on the statistics pass at checkout.
-- [ ] Remove `onSale: false` from `COURSES.apstat`; bump the `sw.js` cache; grant owner access.
+- [ ] Remove `onSale: false` from `COURSES.apstat`; bump the `sw.js` cache (v82 at launch, so v83); grant owner access.
 - [ ] Merge the PR (this puts AP® Statistics Premium on sale).
 - [ ] Optional: an AP® Statistics teacher reviews the course (the Beta note stays until then).

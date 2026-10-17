@@ -282,7 +282,7 @@
     ];
     var text = propText(c, s) + '<p>The p-value is ' + P4(s.p) + '.</p>';
     var sol = [
-      'The p-value is the area ' + (s.ha === 'two' ? 'in both tails' : s.ha === 'greater' ? 'to the right' : 'to the left') + ' of $\\hat{p} = ' + ph + '$ under the null distribution, centred at $p_0 = ' + s.p0 + '$.',
+      'The p-value is the area ' + (s.ha === 'two' ? 'in both tails' : s.ha === 'greater' ? 'to the right' : 'to the left') + ' of $\\hat{p} = ' + ph + '$ under the null distribution, centered at $p_0 = ' + s.p0 + '$.',
       'Interpretation: assuming ' + propParam(c) + ' is ' + s.p0 + ', there is a ' + P4(s.p) + ' probability of getting a sample proportion ' + tailWord + ' by chance in a random sample of ' + s.n + '.',
       s.ha === 'two' ? 'A one-sided test in the direction of the sample counts only one of the two tails: ' + P4(s.p / 2) + '.' : 'A two-sided test counts both tails: twice this tail, ' + P4(2 * s.p) + '.'
     ];

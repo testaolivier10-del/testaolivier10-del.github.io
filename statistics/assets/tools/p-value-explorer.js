@@ -436,7 +436,7 @@
         LS.caption(cap, 'explore');
         LS.pills([{ k: 'p-value', html: P4(t.p), tone: 'readout' }, { html: rej ? 'p-value &lt; α: reject H<sub>0</sub>' : 'p-value ≥ α: fail to reject H<sub>0</sub>', tone: rej ? 'good' : 'warn' }], 'left', 'explore');
       }
-      title.textContent = 'Null distribution of ' + nm() + ' centred at ' + (isMean() ? c.mu0 : c.p0) + ' with the p-value shaded';
+      title.textContent = 'Null distribution of ' + nm() + ' centered at ' + (isMean() ? c.mu0 : c.p0) + ' with the p-value shaded';
       why('p', t);
       say();
     }

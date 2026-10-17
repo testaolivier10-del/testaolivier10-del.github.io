@@ -2,8 +2,8 @@
  "stimuli": {
   "ci-two-means-claims-s1": {
    "kind": "table",
-   "title": "Noise-cancelling headphones and reading scores",
-   "text": "<p>Sixty students at a large high school volunteered for a study. They were randomly assigned, 30 to each group, to take a timed reading test (out of 100) with noise-cancelling headphones (H) or without them (N), in a noisy room (invented data). Boxplots of both groups show no strong skew or outliers. The school would buy headphones only if they raise the mean score by more than 5 points.</p>",
+   "title": "Noise-canceling headphones and reading scores",
+   "text": "<p>Sixty students at a large high school volunteered for a study. They were randomly assigned, 30 to each group, to take a timed reading test (out of 100) with noise-canceling headphones (H) or without them (N), in a noisy room (invented data). Boxplots of both groups show no strong skew or outliers. The school would buy headphones only if they raise the mean score by more than 5 points.</p>",
    "table": {
     "caption": "Summary of reading scores and a 95% two-sample t interval for $\\mu_H - \\mu_N$",
     "cols": [

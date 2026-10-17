@@ -5,7 +5,7 @@
    the frame is ApStatTools.modes (Explore, then Test yourself) on the Tool Studio.
 
    Explore: one picture in three linked panels on ONE x scale, each in its own
-   colour everywhere (population blue, one sample orange, the sampling
+   color everywhere (population blue, one sample orange, the sampling
    distribution green):
      Population   the population's histogram with mu and sigma marked, or 100
                   people for a proportion; "Draw your own" lets the student
@@ -286,7 +286,7 @@
       }
       if(!dots){ bins = distBins(dd, pw); count(bins.w); dpx = Math.max(3, bins.w / span * pw); }
       var yScale = dots ? dpx : (distH - 22) / niceCount(mxc);
-      // the parameter line (population colour) through the bottom panel
+      // the parameter line (population color) through the bottom panel
       var cpx = dx(th0.center);
       g.push('<line class="sd-mu" x1="' + cpx.toFixed(1) + '" x2="' + cpx.toFixed(1) + '" y1="' + y3.toFixed(1) + '" y2="' + y3b.toFixed(1) + '"/>');
       if(!dots){
@@ -528,10 +528,10 @@
   function givenSvg(g, W, H){
     var L = 16, R = W - 16, out = [], aria;
     if(g.pops[0].p != null){
-      // the population(s) as people: 100 each, the proportion coloured
+      // the population(s) as people: 100 each, the proportion colored
       var two = g.pops.length > 1, stack = two && W < 500, gw = two && !stack ? (R - L - 16) / 2 : R - L, gh = stack ? (H - 60) / 2 - 22 : H - 80;
       g.pops.forEach(function(pp, i){ out.push(peopleSvg(pp, stack ? L : L + i * (gw + 16), stack ? 30 + i * (gh + 30) : 34, gw, gh, (two ? 'Group ' + (i + 1) + ': ' : '') + 'p = ' + T.F(pp.p, 2))); });
-      aria = 'The population' + (two ? 's' : '') + ' as 100 people each; ' + g.pops.map(function(pp){ return Math.round(pp.p * 100) + ' in 100'; }).join(' and ') + ' are coloured.';
+      aria = 'The population' + (two ? 's' : '') + ' as 100 people each; ' + g.pops.map(function(pp){ return Math.round(pp.p * 100) + ' in 100'; }).join(' and ') + ' are colored.';
       out.unshift('<text class="sd-h sd-c-pop" x="' + L + '" y="16">The population' + (two ? 's' : '') + '</text><text class="sd-read sd-muted" x="' + R + '" y="16" text-anchor="end">' + (two ? 'n₁ = ' + g.n[0] + ', n₂ = ' + g.n[1] : 'n = ' + g.n) + '</text>');
     } else {
       var a = Infinity, b = -Infinity;

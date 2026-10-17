@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Potential Errors When Performing… — AP® Statistics Notes</title>
+<meta name="description" content="A significance test makes a decision from a sample, and samples vary. So even a test done perfectly can reach the wrong decision.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/errors-and-power.html">
+<meta property="og:title" content="Potential Errors When Performing… — AP® Statistics Notes">
+<meta property="og:description" content="A significance test makes a decision from a sample, and samples vary. So even a test done perfectly can reach the wrong decision.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/errors-and-power.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/errors-and-power.html#reading",
+      "name": "Potential Errors When Performing Tests",
+      "url": "https://levlprep.com/statistics/notes/errors-and-power.html",
+      "description": "A significance test makes a decision from a sample, and samples vary. So even a test done perfectly can reach the wrong decision.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "potential errors when performing tests ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Categorical Data: Proportions",
+          "item": "https://levlprep.com/statistics/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Potential Errors When Performing Tests: notes",
+          "item": "https://levlprep.com/statistics/notes/errors-and-power.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="errors-and-power" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Inference for Categorical Data: Proportions</b><small>15 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="estimators"><a href="estimators.html"><span class="bk-toc-n">3.1</span>Estimators</a></li><li data-toc-t="sampling-dist-proportion"><a href="sampling-dist-proportion.html"><span class="bk-toc-n">3.2</span>Sampling Distributions for Sample Proportions</a></li><li data-toc-t="ci-one-proportion"><a href="ci-one-proportion.html"><span class="bk-toc-n">3.3</span>Constructing a Confidence Interval for a Population Proportion</a></li><li data-toc-t="ci-one-proportion-claims"><a href="ci-one-proportion-claims.html"><span class="bk-toc-n">3.4</span>Justifying a Claim Based on a Confidence Interval for a Population Proportion</a></li><li data-toc-t="test-one-proportion-setup"><a href="test-one-proportion-setup.html"><span class="bk-toc-n">3.5</span>Setting Up a Test for a Population Proportion</a></li><li data-toc-t="p-values"><a href="p-values.html"><span class="bk-toc-n">3.6</span>p-Values</a></li><li data-toc-t="test-one-proportion"><a href="test-one-proportion.html"><span class="bk-toc-n">3.7</span>Carrying Out a Test for a Population Proportion</a></li><li class="current" data-toc-t="errors-and-power"><a href="#main" aria-current="page"><span class="bk-toc-n">3.8</span>Potential Errors When Performing Tests</a><div class="bk-toc-onpage"><p>On this page</p><a href="#two-ways-to-be-wrong">Two ways to be wrong</a><a href="#describing-an-error-in-context">Describing an error in context</a><a href="#how-likely-is-each-error">How likely is each error?</a><a href="#seeing-and-power">Seeing α, β and power</a><a href="#what-increases-power">What increases power</a></div></li><li data-toc-t="sampling-dist-two-proportions"><a href="sampling-dist-two-proportions.html"><span class="bk-toc-n">3.9</span>Sampling Distributions for the Difference Between Sample Proportions</a></li><li data-toc-t="ci-two-proportions"><a href="ci-two-proportions.html"><span class="bk-toc-n">3.10</span>Constructing a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="ci-two-proportions-claims"><a href="ci-two-proportions-claims.html"><span class="bk-toc-n">3.11</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions-setup"><a href="test-two-proportions-setup.html"><span class="bk-toc-n">3.12</span>Setting Up a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions"><a href="test-two-proportions.html"><span class="bk-toc-n">3.13</span>Carrying Out a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="chi-square-setup"><a href="chi-square-setup.html"><span class="bk-toc-n">3.14</span>Setting Up a Chi-Square Test for Homogeneity or Independence</a></li><li data-toc-t="chi-square-test"><a href="chi-square-test.html"><span class="bk-toc-n">3.15</span>Carrying Out a Chi-Square Test for Homogeneity or Independence</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Inference for Categorical Data: Proportions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Potential Errors When Performing Tests: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/errors-and-power.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 3 &middot; Topic 3.8 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Potential Errors When Performing Tests</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="errors-and-power">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Ferrors-and-power.html&amp;title=Potential%20Errors%20When%20Performing%20Tests%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/errors-and-power.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>A <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="significance-test">significance test</a> makes a decision from a sample, and <a class="gl" href="../notes/intro-statistics.html" data-c="sample">samples</a> vary. So even a test done perfectly can reach the wrong decision. This topic names the two ways a test can be wrong, says how <a class="gl" href="../notes/simulation.html" data-c="probability">likely</a> each one is, and shows what you can do about them. The exam asks you to describe each error <a class="gl" href="../notes/intro-statistics.html" data-c="context">in context</a> and to explain its consequence.</p>
+
+<h2 id="two-ways-to-be-wrong">Two ways to be wrong</h2>
+<p>The truth is either <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> or <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">H_a</annotation></semantics></math>, and the decision is either reject <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> or <a class="gl" href="../notes/test-one-proportion.html" data-c="reject">fail to reject</a> it. That gives four <a class="gl" href="../notes/probability-intro.html" data-c="sample-space">outcomes</a>, two of them mistakes.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: H_0 is true, H_a is true"><table>
+<thead><tr><th scope="col"></th><th scope="col"><math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> is true</th><th scope="col"><math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">H_a</annotation></semantics></math> is true</th></tr></thead>
+<tbody>
+<tr><th scope="row">Reject <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math></th><td><b><span class="gl" tabindex="0" data-c="type-i">Type I error</span></b> (probability <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>)</td><td>Correct (probability = <span class="gl" tabindex="0" data-c="power">power</span>)</td></tr>
+<tr><th scope="row">Fail to reject <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math></th><td>Correct</td><td><b><span class="gl" tabindex="0" data-c="type-ii">Type II error</span></b> (probability <math class="stat-m"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math>)</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>A <b>Type I error</b> is rejecting <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> when <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> is true: finding <a class="gl" href="../notes/ci-one-proportion-claims.html" data-c="convincing-evidence">convincing evidence</a> for an effect that is not there.</li>
+<li>A <b>Type II error</b> is failing to reject <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> when <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">H_a</annotation></semantics></math> is true: missing an effect that is there.</li>
+</ul>
+<p>Only one error is possible after a decision. If you rejected <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math>, the only possible mistake is Type I. If you failed to reject, the only possible mistake is Type II.</p>
+
+<h2 id="describing-an-error-in-context">Describing an error in context</h2>
+<p>Readers want the condition first: what is actually true, then the wrong decision, then what happens because of it.</p>
+<div class="worked">
+<p><b>Worked example.</b> A city must replace its water pipes if more than 10% of its homes have lead above a safety limit. It tests <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><mi>p</mi><mo>=</mo><mn>0.10</mn></mrow><annotation encoding="application/x-tex">H_0: p = 0.10</annotation></semantics></math> against <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><mi>p</mi><mo>&gt;</mo><mn>0.10</mn></mrow><annotation encoding="application/x-tex">H_a: p &gt; 0.10</annotation></semantics></math>, where <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> is the <a class="gl" href="../notes/one-categorical-tables.html" data-c="population-proportion">true proportion</a> of all the city's homes with lead above the limit, and replaces the pipes if there is convincing evidence for <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">H_a</annotation></semantics></math>. Describe each error and its consequence.</p>
+<p><b>Type I error.</b> The true proportion of all the city's homes with lead above the limit is 0.10, but the test finds convincing evidence that it is greater than 0.10. Consequence: the city spends money replacing pipes that did not need replacing.</p>
+<p><b>Type II error.</b> The true proportion of all the city's homes with lead above the limit is greater than 0.10, but the test does not find convincing evidence that it is greater than 0.10. Consequence: the pipes are not replaced, and residents keep drinking water with too much lead.</p>
+<p><b>Which is worse?</b> Here the Type II error is a health risk, so the city should make it less likely, for example by using <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.10</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.10</annotation></semantics></math> instead of 0.01 or by testing more homes.</p>
+</div>
+
+<h2 id="how-likely-is-each-error">How likely is each error?</h2>
+<p><b>Type I.</b> If <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> is true, the test rejects whenever the <a class="gl" href="../notes/p-values.html" data-c="p-value">p-value</a> falls below <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, and that happens with probability <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>. So <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>Type I error</mtext><mo stretchy="false">)</mo><mo>=</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">P(\text{Type I error}) = \alpha</annotation></semantics></math>. Choosing <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> is choosing how often you are willing to raise a false alarm.</p>
+<p><b>Type II.</b> Its probability, <math class="stat-m"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math>, depends on what the true value of <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> actually is. A true proportion of 0.11 is hard to tell apart from 0.10; a true proportion of 0.20 is easy. So <math class="stat-m"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math> is always "against" a specific alternative value.</p>
+<p>The <b>power</b> of a test against a specific alternative is the probability that it rejects <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> when that alternative is true: the chance it detects a real effect. <math class="stat-m"><semantics><mrow><mtext>power</mtext><mo>=</mo><mn>1</mn><mo>−</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\text{power} = 1 - \beta</annotation></semantics></math>.</p>
+
+<h2 id="seeing-and-power">Seeing α, β and power</h2>
+<figure id="fig-power"  class="stat-figure"><div class="stat-figimg" data-fig="power-alpha-beta"><img src="../figures/power-alpha-beta.svg" alt="Two normal curves for the sample proportion from samples of 200. The left curve, centered at the null value 0.50, is the distribution if the null is true; the right curve, centered at 0.60, is the distribution if the true proportion is 0.60. A vertical line at the cutoff 0.558 marks where the test rejects H0 at alpha = 0.05 (sample proportions above it). Under the null curve, the small area beyond the cutoff is alpha, the probability of a Type I error. Under the alternative curve, the area to the left of the cutoff is beta, the probability of a Type II error, about 0.11; the area to the right is the power, about 0.89." width="640" height="370" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A one-sided test of H0: p = 0.5 with 200 customers at α = 0.05 rejects when the sample proportion is 0.558 or more. If p is really 0.60, the area beyond the cutoff under the right curve is the power, about 0.89; the area before it is β, about 0.11. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>A snack company will switch recipes only if there is convincing evidence that more than half of its customers prefer the new one. With 200 customers and <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>, the test rejects <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><mi>p</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">H_0: p = 0.5</annotation></semantics></math> when <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>≥</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\hat{p} \ge 0.5</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>1.645</mn><msqrt><mfrac><mrow><mn>0.5</mn><mo stretchy="false">(</mo><mn>0.5</mn><mo stretchy="false">)</mo></mrow><mn>200</mn></mfrac></msqrt></mrow><annotation encoding="application/x-tex">+ 1.645\sqrt{\frac{0.5(0.5)}{200}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.558</mn></mrow><annotation encoding="application/x-tex">= 0.558</annotation></semantics></math>. If in fact <math class="stat-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.60</mn></mrow><annotation encoding="application/x-tex">p = 0.60</annotation></semantics></math>, then <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> is <a class="gl" href="../notes/normal-distribution.html" data-c="normal-distribution">approximately normal</a> with <a class="gl" href="../notes/summary-statistics.html" data-c="mean">mean</a> 0.60 and <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a> <math class="stat-m"><semantics><mrow><msqrt><mfrac><mrow><mn>0.60</mn><mo stretchy="false">(</mo><mn>0.40</mn><mo stretchy="false">)</mo></mrow><mn>200</mn></mfrac></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\frac{0.60(0.40)}{200}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.0346</mn></mrow><annotation encoding="application/x-tex">= 0.0346</annotation></semantics></math>, and</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mtext>power</mtext><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>≥</mo><mn>0.558</mn><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>Z</mi><mo>≥</mo><mfrac><mrow><mn>0.558</mn><mo>−</mo><mn>0.60</mn></mrow><mn>0.0346</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>≥</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1.21</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.887</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">\text{power} = P(\hat{p} \ge 0.558) = P\left(Z \ge \frac{0.558 - 0.60}{0.0346}\right) = P(Z \ge -1.21) = 0.887.</annotation></semantics></math></p>
+<p>So <math class="stat-m"><semantics><mrow><mi>β</mi><mo>=</mo><mn>1</mn><mo>−</mo><mn>0.887</mn><mo>=</mo><mn>0.113</mn></mrow><annotation encoding="application/x-tex">\beta = 1 - 0.887 = 0.113</annotation></semantics></math>: about an 11% chance of missing a real 60% preference.</p>
+
+<h2 id="what-increases-power">What increases power</h2>
+<ul>
+<li><b>A larger sample size.</b> Both curves get narrower and overlap less. This is the best fix, because it lowers <math class="stat-m"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math> without raising <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.</li>
+<li><b>A larger <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.</b> The cutoff moves toward <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p_0</annotation></semantics></math>, so rejecting is easier: power rises, but so does the Type I error probability.</li>
+<li><b>A true value farther from <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p_0</annotation></semantics></math>.</b> Big effects are easier to detect than small ones. You cannot choose this, but you can plan the sample size for the smallest effect worth finding.</li>
+</ul>
+<p>For a fixed sample size, the two error probabilities move in opposite directions: lowering <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> raises <math class="stat-m"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math>. Decide which error has worse consequences in context, and choose <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> with that in mind.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:errors-and-power">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="test-one-proportion.html"><span>&larr; Previous</span><b>Carrying Out a Test for a Population Proportion</b></a><a class="tb-chapter-link next" href="sampling-dist-two-proportions.html"><span>Next &rarr;</span><b>Sampling Distributions for the Difference Between Sample Proportions</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:errors-and-power">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

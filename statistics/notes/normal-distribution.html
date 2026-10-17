@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Normal Distribution — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="Some random variables are measurements rather than counts: an egg's weight, a battery's life, a person's height.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/normal-distribution.html">
+<meta property="og:title" content="The Normal Distribution — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="Some random variables are measurements rather than counts: an egg's weight, a battery's life, a person's height.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/normal-distribution.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/normal-distribution.html#reading",
+      "name": "The Normal Distribution",
+      "url": "https://levlprep.com/statistics/notes/normal-distribution.html",
+      "description": "Some random variables are measurements rather than counts: an egg's weight, a battery's life, a person's height.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "the normal distribution ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Probability, Random Variables, and Probability Distributions",
+          "item": "https://levlprep.com/statistics/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Normal Distribution: notes",
+          "item": "https://levlprep.com/statistics/notes/normal-distribution.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="normal-distribution" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Exploring One-Variable Data and Collecting Data</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Probability, Random Variables, and Probability Distributions</b><small>12 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="two-categorical-displays"><a href="two-categorical-displays.html"><span class="bk-toc-n">2.1</span>Tabular and Graphical Representations for the Distributions of Two Categorical Variables</a></li><li data-toc-t="two-categorical-summaries"><a href="two-categorical-summaries.html"><span class="bk-toc-n">2.2</span>Summary Statistics for Two Categorical Variables</a></li><li data-toc-t="simulation"><a href="simulation.html"><span class="bk-toc-n">2.3</span>Estimating Probabilities Using Simulation</a></li><li data-toc-t="probability-intro"><a href="probability-intro.html"><span class="bk-toc-n">2.4</span>Introduction to Probability</a></li><li data-toc-t="mutually-exclusive"><a href="mutually-exclusive.html"><span class="bk-toc-n">2.5</span>Mutually Exclusive Events</a></li><li data-toc-t="conditional-probability"><a href="conditional-probability.html"><span class="bk-toc-n">2.6</span>Conditional Probability</a></li><li data-toc-t="independence-unions"><a href="independence-unions.html"><span class="bk-toc-n">2.7</span>Independent Events and Unions of Events</a></li><li data-toc-t="random-variables"><a href="random-variables.html"><span class="bk-toc-n">2.8</span>Introduction to Random Variables and Probability Distributions</a></li><li data-toc-t="random-variable-parameters"><a href="random-variable-parameters.html"><span class="bk-toc-n">2.9</span>Parameters of Random Variables</a></li><li data-toc-t="binomial-distribution"><a href="binomial-distribution.html"><span class="bk-toc-n">2.10</span>The Binomial Distribution</a></li><li class="current" data-toc-t="normal-distribution"><a href="#main" aria-current="page"><span class="bk-toc-n">2.11</span>The Normal Distribution</a><div class="bk-toc-onpage"><p>On this page</p><a href="#density-curves">Density curves</a><a href="#normal-distributions">Normal distributions</a><a href="#standardizing-the-standard-normal">Standardizing: the standard normal</a><a href="#working-backward-from-an-area-to">Working backward: from an area to a value</a><a href="#show-the-work-the-exam-asks">Show the work the exam asks for</a></div></li><li data-toc-t="sampling-distributions"><a href="sampling-distributions.html"><span class="bk-toc-n">2.12</span>Sampling Distributions and the Central Limit Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Inference for Categorical Data: Proportions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Probability, Random Variables, and Probability Distributions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Normal Distribution: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/normal-distribution.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 2 &middot; Topic 2.11 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">The Normal Distribution</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="normal-distribution">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fnormal-distribution.html&amp;title=The%20Normal%20Distribution%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/normal-distribution.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>Some <a class="gl" href="../notes/random-variables.html" data-c="random-variable">random variables</a> are measurements rather than counts: an egg's weight, a battery's life, a person's height. They can take any value in a <a class="gl" href="../notes/summary-statistics.html" data-c="range">range</a>, so there is no list of values to put in a table. Instead, a smooth curve describes the <a class="gl" href="../notes/variables.html" data-c="distribution">distribution</a>, and <a class="gl" href="../notes/simulation.html" data-c="probability">probabilities</a> are areas under it. The most important such curve is the <span class="gl" tabindex="0" data-c="normal-distribution">normal curve</span>.</p>
+
+<h2 id="density-curves">Density curves</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="density-curve">density curve</span></b> is a smooth curve that lies on or above the horizontal axis and has an area of exactly 1 under it. The area over any interval is the proportion of values in that interval, which is also the probability that a <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">randomly</a> chosen value lands there. It is like a <a class="gl" href="../notes/one-quantitative-displays.html" data-c="histogram">histogram</a> with very narrow bars, rescaled so the total area is 1.</p>
+<p>One consequence surprises people: the probability of any single exact value is 0, because a single point has no width and so no area. <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>weight</mtext><mo>=</mo><mn>60</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{weight} = 60)</annotation></semantics></math> is 0; <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>59.5</mn><mo>&lt;</mo><mtext>weight</mtext><mo>&lt;</mo><mn>60.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(59.5 &lt; \text{weight} &lt; 60.5)</annotation></semantics></math> is not. For the same reason, <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>X</mi><mo>&lt;</mo><mn>60</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(X &lt; 60)</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>X</mi><mo>≤</mo><mn>60</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(X \le 60)</annotation></semantics></math> are equal for a continuous random <a class="gl" href="../notes/variables.html" data-c="variable">variable</a>.</p>
+
+<h2 id="normal-distributions">Normal distributions</h2>
+<p>A <b>normal distribution</b> has a <a class="gl" href="../notes/describing-distributions.html" data-c="symmetric">symmetric</a>, single-peaked, bell-shaped density curve. Two <a class="gl" href="../notes/variables.html" data-c="parameter">parameters</a> fix it: the <a class="gl" href="../notes/summary-statistics.html" data-c="mean">mean</a> <math class="stat-m"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math>, at the <a class="gl" href="../notes/describing-distributions.html" data-c="center">center</a>, and the <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a> <math class="stat-m"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>, which sets the spread. Write it <math class="stat-m"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>μ</mi><mo>,</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(\mu, \sigma)</annotation></semantics></math>. Egg weights at a farm might be <math class="stat-m"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mn>58</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(58, 4)</annotation></semantics></math> grams. The curve changes from bending down to bending up one standard deviation from the mean on each side, at 54 and 62 grams.</p>
+<figure id="fig-emp"  class="stat-figure"><div class="stat-figimg" data-fig="u2-empirical-rule"><img src="../figures/u2-empirical-rule.svg" alt="Normal density curve for egg weights with mean 58 grams and standard deviation 4 grams, axis marked from 46 to 70 grams. Brackets show that about 68% of weights fall within 1 standard deviation (54 to 62 g), about 95% within 2 (50 to 66 g) and about 99.7% within 3 (46 to 70 g)." width="680" height="400" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The empirical rule for egg weights, <math class="stat-m"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mn>58</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(58, 4)</annotation></semantics></math>. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Every normal curve has the same <a class="gl" href="../notes/describing-distributions.html" data-c="shape">shape</a> when measured in standard deviations, which gives the <b><span class="gl" tabindex="0" data-c="empirical-rule">empirical rule</span></b>, shown in <a class="figref" href="#fig-emp">the figure</a>:</p>
+<ul>
+<li>about 68% of values lie within 1 standard deviation of the mean (54 to 62 grams);</li>
+<li>about 95% lie within 2 standard deviations (50 to 66 grams);</li>
+<li>about 99.7% lie within 3 standard deviations (46 to 70 grams).</li>
+</ul>
+<p>Because the curve is symmetric, the leftover 5% outside 2 standard deviations splits evenly: about 2.5% of eggs weigh more than 66 grams.</p>
+<p>A normal model is a model, not a law. It fits many roughly symmetric, mound-shaped distributions. It does not fit strongly <a class="gl" href="../notes/describing-distributions.html" data-c="skewed">skewed</a> <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>, like bank waiting times, whatever their mean and standard deviation.</p>
+
+<h2 id="standardizing-the-standard-normal">Standardizing: the standard normal</h2>
+<p>For values that are not a whole number of standard deviations away, standardize. The <a class="gl" href="../notes/comparing-distributions.html" data-c="z-score">z-score</a> from Unit 1, <math class="stat-m"><semantics><mrow><mi>z</mi><mo>=</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac></mrow><annotation encoding="application/x-tex">z = \frac{x - \mu}{\sigma}</annotation></semantics></math>, says how many standard deviations a value is from the mean. Standardizing a normal random variable gives the <b><span class="gl" tabindex="0" data-c="standard-normal">standard normal distribution</span></b>, <math class="stat-m"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(0, 1)</annotation></semantics></math>. Table A on the reference sheet lists the area to the left of each z from about −3.4 to 3.4; a calculator's normal area command gives the same areas directly.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Battery life B is <math class="stat-m"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mn>18</mn><mo>,</mo><mn>1.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(18, 1.5)</annotation></semantics></math> hours. Find the probability that a battery lasts less than 16 hours.</p>
+<p>Name the distribution, boundary and <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">direction</a>: B is <math class="stat-m"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mn>18</mn><mo>,</mo><mn>1.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(18, 1.5)</annotation></semantics></math>; we want <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>B</mi><mo>&lt;</mo><mn>16</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(B &lt; 16)</annotation></semantics></math>, the area to the left of 16. A sketch shades the left tail.</p>
+<p>Standardize: <math class="stat-m"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>16</mn><mo>−</mo><mn>18</mn></mrow><mn>1.5</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{16 - 18}{1.5}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">≈</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1.33</mn></mrow><annotation encoding="application/x-tex">\approx -1.33</annotation></semantics></math>.</p>
+<p>Find the area: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&lt;</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1.33</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.0918</mn></mrow><annotation encoding="application/x-tex">P(Z &lt; -1.33) = 0.0918</annotation></semantics></math> from Table A (technology, without rounding z: 0.0912). About 9% of batteries last less than 16 hours.</p>
+</div>
+<p>For an area to the right, subtract from 1: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&gt;</mo><mn>1.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(Z &gt; 1.5)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>1</mn><mo>−</mo><mn>0.9332</mn></mrow><annotation encoding="application/x-tex">= 1 - 0.9332</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.0668</mn></mrow><annotation encoding="application/x-tex">= 0.0668</annotation></semantics></math>. For an area between two values, subtract two left areas: with egg weights, <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>55</mn><mo>&lt;</mo><mi>W</mi><mo>&lt;</mo><mn>60</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(55 &lt; W &lt; 60)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mi>P</mi><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.75</mn><mo>&lt;</mo><mi>Z</mi><mo>&lt;</mo><mn>0.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= P(-0.75 &lt; Z &lt; 0.5)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.6915</mn><mo>−</mo><mn>0.2266</mn></mrow><annotation encoding="application/x-tex">= 0.6915 - 0.2266</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.4649</mn></mrow><annotation encoding="application/x-tex">= 0.4649</annotation></semantics></math>.</p>
+
+<h2 id="working-backward-from-an-area-to">Working backward: from an area to a value</h2>
+<p>Sometimes the area is given and the boundary is wanted, such as a <a class="gl" href="../notes/summary-statistics.html" data-c="percentile">percentile</a> or a cutoff. Reverse the steps: find the z with the right area to its left (Table A read from the inside out, or an inverse normal command), then turn it back into the original units with <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>μ</mi><mo>+</mo><mi>z</mi><mi>σ</mi></mrow><annotation encoding="application/x-tex">x = \mu + z\sigma</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> The heaviest 5% of eggs are sold as jumbo. Find the minimum jumbo weight.</p>
+<p>The boundary has 95% of the area below it, so <math class="stat-m"><semantics><mrow><mi>z</mi><mo>≈</mo><mn>1.645</mn></mrow><annotation encoding="application/x-tex">z \approx 1.645</annotation></semantics></math>.</p>
+<p>Unstandardize: <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>58</mn><mo>+</mo><mn>1.645</mn><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>64.6</mn></mrow><annotation encoding="application/x-tex">x = 58 + 1.645(4) \approx 64.6</annotation></semantics></math> grams. Eggs of about 64.6 grams or more are jumbo.</p>
+</div>
+
+<h2 id="show-the-work-the-exam-asks">Show the work the exam asks for</h2>
+<p>A calculator command on its own ("normalcdf") does not earn credit. Write the distribution and its parameters, the boundary, and the direction, with a labeled sketch or in symbols: "W is <math class="stat-m"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mn>58</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(58, 4)</annotation></semantics></math>; <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>W</mi><mo>&gt;</mo><mn>66</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(W &gt; 66)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>&gt;</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= P(Z &gt; 2)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">≈</mo><mn>0.0228</mn></mrow><annotation encoding="application/x-tex">\approx 0.0228</annotation></semantics></math>." Then answer <a class="gl" href="../notes/intro-statistics.html" data-c="context">in context</a>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Question</th><th>Steps</th></tr></thead>
+<tbody>
+<tr><td>Area from a value</td><td>name <math class="stat-m"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>μ</mi><mo>,</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(\mu, \sigma)</annotation></semantics></math>, sketch, <math class="stat-m"><semantics><mrow><mi>z</mi><mo>=</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac></mrow><annotation encoding="application/x-tex">z = \frac{x - \mu}{\sigma}</annotation></semantics></math>, area to the left (subtract from 1 for the right)</td></tr>
+<tr><td>Area between two values</td><td>two z-scores, subtract the two left areas</td></tr>
+<tr><td>Value from an area</td><td>area to the left, inverse normal z, <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>μ</mi><mo>+</mo><mi>z</mi><mi>σ</mi></mrow><annotation encoding="application/x-tex">x = \mu + z\sigma</annotation></semantics></math></td></tr>
+<tr><td>Comparing two values on different scales</td><td>compare z-scores, not raw values</td></tr>
+</tbody>
+</table></div>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:normal-distribution">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="binomial-distribution.html"><span>&larr; Previous</span><b>The Binomial Distribution</b></a><a class="tb-chapter-link next" href="sampling-distributions.html"><span>Next &rarr;</span><b>Sampling Distributions and the Central Limit Theorem</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:normal-distribution">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

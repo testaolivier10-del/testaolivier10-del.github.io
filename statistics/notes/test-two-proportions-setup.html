@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setting Up a Two-Proportion Test — AP® Statistics Notes</title>
+<meta name="description" content="A test answers a sharper question: is there convincing evidence that they differ at all, or differ in one direction?">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/test-two-proportions-setup.html">
+<meta property="og:title" content="Setting Up a Two-Proportion Test — AP® Statistics Notes">
+<meta property="og:description" content="A test answers a sharper question: is there convincing evidence that they differ at all, or differ in one direction?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/test-two-proportions-setup.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/test-two-proportions-setup.html#reading",
+      "name": "Setting Up a Test for the Difference Between Two Population Proportions",
+      "url": "https://levlprep.com/statistics/notes/test-two-proportions-setup.html",
+      "description": "A test answers a sharper question: is there convincing evidence that they differ at all, or differ in one direction?",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "setting up a test for the difference between two population proportions ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Categorical Data: Proportions",
+          "item": "https://levlprep.com/statistics/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Setting Up a Test for the Difference Between Two Population Proportions: notes",
+          "item": "https://levlprep.com/statistics/notes/test-two-proportions-setup.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="test-two-proportions-setup" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Inference for Categorical Data: Proportions</b><small>15 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="estimators"><a href="estimators.html"><span class="bk-toc-n">3.1</span>Estimators</a></li><li data-toc-t="sampling-dist-proportion"><a href="sampling-dist-proportion.html"><span class="bk-toc-n">3.2</span>Sampling Distributions for Sample Proportions</a></li><li data-toc-t="ci-one-proportion"><a href="ci-one-proportion.html"><span class="bk-toc-n">3.3</span>Constructing a Confidence Interval for a Population Proportion</a></li><li data-toc-t="ci-one-proportion-claims"><a href="ci-one-proportion-claims.html"><span class="bk-toc-n">3.4</span>Justifying a Claim Based on a Confidence Interval for a Population Proportion</a></li><li data-toc-t="test-one-proportion-setup"><a href="test-one-proportion-setup.html"><span class="bk-toc-n">3.5</span>Setting Up a Test for a Population Proportion</a></li><li data-toc-t="p-values"><a href="p-values.html"><span class="bk-toc-n">3.6</span>p-Values</a></li><li data-toc-t="test-one-proportion"><a href="test-one-proportion.html"><span class="bk-toc-n">3.7</span>Carrying Out a Test for a Population Proportion</a></li><li data-toc-t="errors-and-power"><a href="errors-and-power.html"><span class="bk-toc-n">3.8</span>Potential Errors When Performing Tests</a></li><li data-toc-t="sampling-dist-two-proportions"><a href="sampling-dist-two-proportions.html"><span class="bk-toc-n">3.9</span>Sampling Distributions for the Difference Between Sample Proportions</a></li><li data-toc-t="ci-two-proportions"><a href="ci-two-proportions.html"><span class="bk-toc-n">3.10</span>Constructing a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="ci-two-proportions-claims"><a href="ci-two-proportions-claims.html"><span class="bk-toc-n">3.11</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</a></li><li class="current" data-toc-t="test-two-proportions-setup"><a href="#main" aria-current="page"><span class="bk-toc-n">3.12</span>Setting Up a Test for the Difference Between Two Population Proportions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#naming-the-procedure">Naming the procedure</a><a href="#hypotheses">Hypotheses</a><a href="#why-the-test-pools-the-samples">Why the test pools the samples</a><a href="#conditions">Conditions</a></div></li><li data-toc-t="test-two-proportions"><a href="test-two-proportions.html"><span class="bk-toc-n">3.13</span>Carrying Out a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="chi-square-setup"><a href="chi-square-setup.html"><span class="bk-toc-n">3.14</span>Setting Up a Chi-Square Test for Homogeneity or Independence</a></li><li data-toc-t="chi-square-test"><a href="chi-square-test.html"><span class="bk-toc-n">3.15</span>Carrying Out a Chi-Square Test for Homogeneity or Independence</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Inference for Categorical Data: Proportions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Setting Up a Test for the Difference Between Two Population Proportions: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/test-two-proportions-setup.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 3 &middot; Topic 3.12 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Setting Up a Test for the Difference Between Two Population Proportions</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="test-two-proportions-setup">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Ftest-two-proportions-setup.html&amp;title=Setting%20Up%20a%20Test%20for%20the%20Difference%20Between%20Two%20Population%20Proportions%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/test-two-proportions-setup.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>An interval estimates how far apart two proportions are. A test answers a sharper question: is there <a class="gl" href="../notes/ci-one-proportion-claims.html" data-c="convincing-evidence">convincing evidence</a> that they differ at all, or differ in one <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">direction</a>? Before computing anything, a test needs a careful setup. This topic covers the setup for comparing two proportions: the procedure, the <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="hypotheses">hypotheses</a>, the <span class="gl" tabindex="0" data-c="pooled-proportion">pooled proportion</span> and the conditions.</p>
+
+<h2 id="naming-the-procedure">Naming the procedure</h2>
+<p>When two groups are compared on a yes or no <a class="gl" href="../notes/probability-intro.html" data-c="sample-space">outcome</a>, the <a class="gl" href="../notes/variables.html" data-c="parameter">parameter</a> is a <a class="gl" href="../notes/sampling-dist-two-proportions.html" data-c="diff-proportions">difference of two proportions</a>, <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_1 - p_2</annotation></semantics></math>, and the procedure is a <b><span class="gl" tabindex="0" data-c="two-sample-z-test">two-sample z test</span> for <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_1 - p_2</annotation></semantics></math></b>. Name it in full on the exam. "A z test" alone is incomplete.</p>
+<p>The two groups can come from two <a class="gl" href="../notes/sampling-dist-two-proportions.html" data-c="independent-samples">independent random samples</a> (teens in 2016 and teens in 2026) or from <a class="gl" href="../notes/experimental-design.html" data-c="random-assignment">random assignment</a> in an <a class="gl" href="../notes/investigative-questions.html" data-c="experiment">experiment</a> (households given new or old recycling <a class="gl" href="../notes/one-quantitative-displays.html" data-c="histogram">bins</a>). Two measurements on the same people, like before and after on the same players, are linked, so this test does not fit.</p>
+
+<h2 id="hypotheses">Hypotheses</h2>
+<p>The null hypothesis is "no difference": <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_0: p_1 - p_2 = 0</annotation></semantics></math>, which is the same as <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>=</mo><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_1 = p_2</annotation></semantics></math>. The alternative matches the question:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="stat-compare">
+<thead><tr><th>The question asks whether</th><th>Alternative</th></tr></thead>
+<tbody>
+<tr><td>group 1's proportion is higher</td><td><math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_a: p_1 - p_2 &gt; 0</annotation></semantics></math></td></tr>
+<tr><td>group 1's proportion is lower</td><td><math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_a: p_1 - p_2 &lt; 0</annotation></semantics></math></td></tr>
+<tr><td>the proportions differ, or "have changed"</td><td><math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_a: p_1 - p_2 \ne 0</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>Three rules. Hypotheses are about parameters (<math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>), never statistics (<math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math>). Define each parameter <a class="gl" href="../notes/intro-statistics.html" data-c="context">in context</a> right after them. And choose the direction from the question, before looking at the <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>; picking <math class="stat-m"><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math> because the <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> came out higher makes the evidence look stronger than it is.</p>
+
+<h2 id="why-the-test-pools-the-samples">Why the test pools the samples</h2>
+<figure id="fig-pool"  class="stat-figure"><div class="stat-figimg" data-fig="pooled-proportion"><img src="../figures/pooled-proportion.svg" alt="Bar chart of the share of households that sorted recycling correctly: new bin 0.781 (125 of 160), old bin 0.650 (91 of 140), and the pooled proportion 0.72 (216 of 300), shown as a dashed line that lies between the two." width="600" height="360" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The pooled proportion sits between the two sample proportions, closer to the larger group. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>A <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="significance-test">significance test</a> asks: if <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> were true, how surprising would our data be? So every calculation is done as if <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> were true. If <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>=</mo><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_1 = p_2</annotation></semantics></math>, both samples come from <a class="gl" href="../notes/intro-statistics.html" data-c="population">populations</a> with the same proportion, and the best <a class="gl" href="../notes/estimators.html" data-c="estimator">estimate</a> of that common value uses all the data at once. That is the <b>pooled proportion</b>:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>p</mi><mi>c</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>+</mo><msub><mi>n</mi><mn>2</mn></msub></mrow></mfrac><mo>=</mo><mfrac><mtext>total successes</mtext><mtext>total sample size</mtext></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">p_c = \frac{x_1 + x_2}{n_1 + n_2} = \frac{\text{total successes}}{\text{total sample size}}.</annotation></semantics></math></p>
+<p>Pool the counts, not the proportions. Averaging <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_1</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_2</annotation></semantics></math> gives the wrong value whenever the sample sizes differ, because it lets the smaller sample count as much as the larger one. A <a class="gl" href="../notes/ci-one-proportion.html" data-c="confidence-interval">confidence interval</a> does not pool, because it makes no assumption that the proportions are equal.</p>
+
+<h2 id="conditions">Conditions</h2>
+<ul>
+<li><b><a class="gl" href="../notes/random-sampling.html" data-c="random-selection">Random</a>:</b> two <a class="gl" href="../notes/independence-unions.html" data-c="independent-events">independent</a> random samples, or two groups formed by random assignment.</li>
+<li><b>10%:</b> when sampling <a class="gl" href="../notes/random-sampling.html" data-c="replacement">without replacement</a>, each sample is less than 10% of its population.</li>
+<li><b><a class="gl" href="../notes/sampling-dist-proportion.html" data-c="large-counts">Large counts</a>:</b> because the test assumes <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math>, use <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">p_c</annotation></semantics></math>: <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><msub><mi>p</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">n_1 p_c</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mi>c</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n_1(1 - p_c)</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub><msub><mi>p</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">n_2 p_c</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mi>c</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n_2(1 - p_c)</annotation></semantics></math> are each <a class="gl" href="../notes/math-inequality-words.html" data-c="inequality-words">at least</a> 10.</li>
+</ul>
+
+<div class="worked">
+<p><b>Worked example.</b> A city randomly assigns 160 volunteer households a new recycling bin and 140 the old bin. Afterward, 125 of the new bin households and 91 of the old bin households sort correctly. Set up a test of whether the new bin increases correct sorting.</p>
+<p><b>Procedure:</b> a two-sample z test for <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mi>N</mi></msub><mo>−</mo><msub><mi>p</mi><mi>O</mi></msub></mrow><annotation encoding="application/x-tex">p_N - p_O</annotation></semantics></math>.</p>
+<p><b>Hypotheses:</b> <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><msub><mi>p</mi><mi>N</mi></msub><mo>−</mo><msub><mi>p</mi><mi>O</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_0: p_N - p_O = 0</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>p</mi><mi>N</mi></msub><mo>−</mo><msub><mi>p</mi><mi>O</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_a: p_N - p_O &gt; 0</annotation></semantics></math>, where <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">p_N</annotation></semantics></math> is the <a class="gl" href="../notes/one-categorical-tables.html" data-c="population-proportion">true proportion</a> of households like these that would sort correctly with the new bin and <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mi>O</mi></msub></mrow><annotation encoding="application/x-tex">p_O</annotation></semantics></math> is the true proportion that would with the old bin.</p>
+<p><b>Pooled proportion:</b> <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">p_c</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>125</mn><mo>+</mo><mn>91</mn></mrow><mrow><mn>160</mn><mo>+</mo><mn>140</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{125 + 91}{160 + 140}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>216</mn><mn>300</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{216}{300}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.72</mn></mrow><annotation encoding="application/x-tex">= 0.72</annotation></semantics></math>.</p>
+<p><b>Conditions.</b> Random: the bins were randomly assigned to the households. 10%: not needed, because the households were not sampled from a larger population; they were volunteers, so any conclusion applies to households like them. Large counts: <math class="stat-m"><semantics><mrow><mn>160</mn><mo stretchy="false">(</mo><mn>0.72</mn><mo stretchy="false">)</mo><mo>=</mo><mn>115.2</mn></mrow><annotation encoding="application/x-tex">160(0.72) = 115.2</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mn>160</mn><mo stretchy="false">(</mo><mn>0.28</mn><mo stretchy="false">)</mo><mo>=</mo><mn>44.8</mn></mrow><annotation encoding="application/x-tex">160(0.28) = 44.8</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mn>140</mn><mo stretchy="false">(</mo><mn>0.72</mn><mo stretchy="false">)</mo><mo>=</mo><mn>100.8</mn></mrow><annotation encoding="application/x-tex">140(0.72) = 100.8</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mn>140</mn><mo stretchy="false">(</mo><mn>0.28</mn><mo stretchy="false">)</mo><mo>=</mo><mn>39.2</mn></mrow><annotation encoding="application/x-tex">140(0.28) = 39.2</annotation></semantics></math> are each at least 10.</p>
+</div>
+<p><a class="figref" href="#fig-pool">The figure</a> shows the three proportions from this example. The pooled value, 0.72, is the single proportion both groups would share if the bin made no difference. The next topic uses it to build the <a class="gl" href="../notes/p-values.html" data-c="test-statistic">test statistic</a> and the <a class="gl" href="../notes/p-values.html" data-c="p-value">p-value</a>.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:test-two-proportions-setup">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="ci-two-proportions-claims.html"><span>&larr; Previous</span><b>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</b></a><a class="tb-chapter-link next" href="test-two-proportions.html"><span>Next &rarr;</span><b>Carrying Out a Test for the Difference Between Two Population Proportions</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:test-two-proportions-setup">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

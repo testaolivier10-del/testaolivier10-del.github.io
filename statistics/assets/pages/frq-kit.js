@@ -3,7 +3,7 @@
 
      ApStatFrq.index(base) / load(base, id)   assets/frq/index.json, <id>.json
      ApStatFrq.questionHtml(f, opts)          stimulus + parts; opts.write adds a
-                                             labelled textarea per part,
+                                             labeled textarea per part,
                                              opts.n numbers it ("Question 3")
      ApStatFrq.rubricHtml(f, opts)            per part: one checkbox per rubric
                                              point (what earns it, what else

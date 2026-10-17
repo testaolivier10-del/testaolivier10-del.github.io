@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factorials and Combinations — AP® Statistics Notes</title>
+<meta name="description" content="Some probability questions need a count first: how many different ways can 3 of 10 quiz answers be right? Listing them all would take a long time.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/math-counting.html">
+<meta property="og:title" content="Factorials and Combinations — AP® Statistics Notes">
+<meta property="og:description" content="Some probability questions need a count first: how many different ways can 3 of 10 quiz answers be right? Listing them all would take a long time.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/math-counting.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/math-counting.html#reading",
+      "name": "Factorials and Combinations",
+      "url": "https://levlprep.com/statistics/notes/math-counting.html",
+      "description": "Some probability questions need a count first: how many different ways can 3 of 10 quiz answers be right? Listing them all would take a long time.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "factorials and combinations for statistics",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/statistics/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Factorials and Combinations: notes",
+          "item": "https://levlprep.com/statistics/notes/math-counting.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="math-counting" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Regression Analysis</a>
+    <a class="bk-toc-chap" href="../units/skills-math.html"><span class="bk-toc-chap-n">S</span><span><b>Math you need</b><small>5 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="skills-math"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="math-fractions-percents"><a href="math-fractions-percents.html"><span class="bk-toc-n">S</span>Fractions, Decimals and Percents</a></li><li data-toc-t="math-formulas"><a href="math-formulas.html"><span class="bk-toc-n">S</span>Formulas, Order of Operations and Square Roots</a></li><li data-toc-t="math-inequality-words"><a href="math-inequality-words.html"><span class="bk-toc-n">S</span>Inequalities in Words</a></li><li class="current" data-toc-t="math-counting"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Factorials and Combinations</a><div class="bk-toc-onpage"><p>On this page</p><a href="#factorials-counting-orders">Factorials: counting orders</a><a href="#combinations-counting-choices">Combinations: counting choices</a><a href="#useful-facts">Useful facts</a><a href="#order-or-no-order">Order or no order?</a></div></li><li data-toc-t="math-lines"><a href="math-lines.html"><span class="bk-toc-n">S</span>Lines: Slope and Intercept</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Factorials and Combinations: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/math-counting.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Skills <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Factorials and Combinations</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">2 min read &middot; free</span><span class="bk-chip" data-chip-topic="math-counting">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fmath-counting.html&amp;title=Factorials%20and%20Combinations%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/math-counting.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>Some <a class="gl" href="../notes/simulation.html" data-c="probability">probability</a> questions need a count first: how many different ways can 3 of 10 quiz answers be right? Listing them all would take a long time. Two tools do the counting for you: the <span class="gl" tabindex="0" data-c="factorial">factorial</span> and the <span class="gl" tabindex="0" data-c="combination">combination</span>.</p>
+
+<h2 id="factorials-counting-orders">Factorials: counting orders</h2>
+<p>How many ways can you line up 5 different books on a shelf? There are 5 choices for the first spot. Once that book is placed, 4 remain for the second spot, then 3, then 2, then 1. Multiply:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mn>5</mn><mo>×</mo><mn>4</mn><mo>×</mo><mn>3</mn><mo>×</mo><mn>2</mn><mo>×</mo><mn>1</mn><mo>=</mo><mn>120</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">5 \times 4 \times 3 \times 2 \times 1 = 120.</annotation></semantics></math></p>
+<p>That product is written <math class="stat-m"><semantics><mrow><mn>5</mn><mo>!</mo></mrow><annotation encoding="application/x-tex">5!</annotation></semantics></math>, read "5 factorial". In general,</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>n</mi><mo>!</mo><mo>=</mo><mi>n</mi><mo>×</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>×</mo><mo>⋯</mo><mo>×</mo><mn>2</mn><mo>×</mo><mn>1</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">n! = n \times (n - 1) \times (n - 2) \times \cdots \times 2 \times 1,</annotation></semantics></math></p>
+<p>and by definition <math class="stat-m"><semantics><mrow><mn>0</mn><mo>!</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0! = 1</annotation></semantics></math>. Factorials grow fast: <math class="stat-m"><semantics><mrow><mn>10</mn><mo>!</mo><mo>=</mo><mn>3</mn><mo>,</mo><mn>628</mn><mo>,</mo><mn>800</mn></mrow><annotation encoding="application/x-tex">10! = 3{,}628{,}800</annotation></semantics></math>.</p>
+
+<h2 id="combinations-counting-choices">Combinations: counting choices</h2>
+<p>Often the order does not matter. A team of Ana and Ben is the same team as Ben and Ana. Counting <i>ordered</i> choices of 2 from 4 people gives <math class="stat-m"><semantics><mrow><mn>4</mn><mo>×</mo><mn>3</mn><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">4 \times 3 = 12</annotation></semantics></math>, but that counts each team twice, once in each order. Divide by the <math class="stat-m"><semantics><mrow><mn>2</mn><mo>!</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2! = 2</annotation></semantics></math> orders: 6 teams.</p>
+<figure id="fig-teams"  class="stat-figure"><div class="stat-figimg" data-fig="choose-two-of-four"><img src="../figures/choose-two-of-four.svg" alt="All six teams of 2 that can be chosen from Ana, Ben, Cal and Dee: Ana and Ben, Ana and Cal, Ana and Dee, Ben and Cal, Ben and Dee, Cal and Dee. Below: 4C2 = 4! / (2! × 2!) = 24 / 4 = 6 teams." width="720" height="250" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The six teams of 2 from 4 people. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>The general rule is the <b>combination</b>, the number of ways to choose k items from n when order does not matter:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>k</mi></msub><mo>=</mo><mrow><mo>(</mo><mfrac linethickness="0"><mi>n</mi><mi>k</mi></mfrac><mo>)</mo></mrow><mo>=</mo><mfrac><mrow><mi>n</mi><mo>!</mo></mrow><mrow><mi>k</mi><mo>!</mo><mspace width="0.1667em"></mspace><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mi>k</mi><mo stretchy="false">)</mo><mo>!</mo></mrow></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">{}_nC_k = \binom{n}{k} = \frac{n!}{k!\,(n - k)!}.</annotation></semantics></math></p>
+<p>Read it "n choose k". Both notations <a class="gl" href="../notes/summary-statistics.html" data-c="mean">mean</a> the same thing; on a calculator it is usually nCr, and in Bluebook you can type 10C3.</p>
+<div class="worked">
+<p><b>Choose 3 of 10.</b> In how many ways can a student get exactly 3 of 10 quiz questions right?</p>
+<p>The order does not matter (it is just which 3 questions), so use a combination.</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mrow></mrow><mn>10</mn></msub><msub><mi>C</mi><mn>3</mn></msub><mo>=</mo><mfrac><mrow><mn>10</mn><mo>!</mo></mrow><mrow><mn>3</mn><mo>!</mo><mspace width="0.1667em"></mspace><mn>7</mn><mo>!</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>10</mn><mo>×</mo><mn>9</mn><mo>×</mo><mn>8</mn><mo>×</mo><mn>7</mn><mo>!</mo></mrow><mrow><mn>3</mn><mo>×</mo><mn>2</mn><mo>×</mo><mn>1</mn><mo>×</mo><mn>7</mn><mo>!</mo></mrow></mfrac><mo>=</mo><mfrac><mn>720</mn><mn>6</mn></mfrac><mo>=</mo><mn>120</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">{}_{10}C_3 = \frac{10!}{3!\,7!} = \frac{10 \times 9 \times 8 \times 7!}{3 \times 2 \times 1 \times 7!} = \frac{720}{6} = 120.</annotation></semantics></math></p>
+<p>The <math class="stat-m"><semantics><mrow><mn>7</mn><mo>!</mo></mrow><annotation encoding="application/x-tex">7!</annotation></semantics></math> cancels: you only ever need the top k <a class="gl" href="../notes/experimental-design.html" data-c="treatment">factors</a> over <math class="stat-m"><semantics><mrow><mi>k</mi><mo>!</mo></mrow><annotation encoding="application/x-tex">k!</annotation></semantics></math>.</p>
+<p>Answer: 120 different sets of 3 questions.</p>
+</div>
+
+<h2 id="useful-facts">Useful facts</h2>
+<ul>
+<li><math class="stat-m"><semantics><mrow><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">{}_nC_0 = 1</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>n</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">{}_nC_n = 1</annotation></semantics></math>: one way to choose nothing, one way to choose everything.</li>
+<li><math class="stat-m"><semantics><mrow><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>k</mi></msub><mo>=</mo><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">{}_nC_k = {}_nC_{n-k}</annotation></semantics></math>: choosing the 3 questions that are right is the same as choosing the 7 that are wrong, so <math class="stat-m"><semantics><mrow><msub><mrow></mrow><mn>10</mn></msub><msub><mi>C</mi><mn>3</mn></msub><mo>=</mo><msub><mrow></mrow><mn>10</mn></msub><msub><mi>C</mi><mn>7</mn></msub><mo>=</mo><mn>120</mn></mrow><annotation encoding="application/x-tex">{}_{10}C_3 = {}_{10}C_7 = 120</annotation></semantics></math>.</li>
+<li><math class="stat-m"><semantics><mrow><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mn>1</mn></msub><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">{}_nC_1 = n</annotation></semantics></math>: there are n ways to choose one item.</li>
+</ul>
+
+<h2 id="order-or-no-order">Order or no order?</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Situation</th><th>Order matters?</th><th>Count</th></tr></thead>
+<tbody>
+<tr><td>Line up 5 books</td><td>yes</td><td><math class="stat-m"><semantics><mrow><mn>5</mn><mo>!</mo><mo>=</mo><mn>120</mn></mrow><annotation encoding="application/x-tex">5! = 120</annotation></semantics></math></td></tr>
+<tr><td>Choose a team of 2 from 4</td><td>no</td><td><math class="stat-m"><semantics><mrow><msub><mrow></mrow><mn>4</mn></msub><msub><mi>C</mi><mn>2</mn></msub><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">{}_4C_2 = 6</annotation></semantics></math></td></tr>
+<tr><td>Pizza with 3 of 6 toppings</td><td>no</td><td><math class="stat-m"><semantics><mrow><msub><mrow></mrow><mn>6</mn></msub><msub><mi>C</mi><mn>3</mn></msub><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">{}_6C_3 = 20</annotation></semantics></math></td></tr>
+<tr><td>Which 3 of 10 answers are right</td><td>no</td><td><math class="stat-m"><semantics><mrow><msub><mrow></mrow><mn>10</mn></msub><msub><mi>C</mi><mn>3</mn></msub><mo>=</mo><mn>120</mn></mrow><annotation encoding="application/x-tex">{}_{10}C_3 = 120</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>In Unit 2 the combination appears inside a probability formula, counting the different orders in which successes and failures can happen. Being quick and sure with <math class="stat-m"><semantics><mrow><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">{}_nC_k</annotation></semantics></math> now makes that formula much easier.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:math-counting">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="random-variable-parameters.html"><span>&larr; Previous</span><b>Parameters of Random Variables</b></a><a class="tb-chapter-link next" href="binomial-distribution.html"><span>Next &rarr;</span><b>The Binomial Distribution</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:math-counting">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

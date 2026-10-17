@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrying Out a Chi-Square Test for… — AP® Statistics Notes</title>
+<meta name="description" content="Carrying Out a Chi-Square Test for Homogeneity or Independence explained from scratch: free statistics study notes with figures and worked examples.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/chi-square-test.html">
+<meta property="og:title" content="Carrying Out a Chi-Square Test for… — AP® Statistics Notes">
+<meta property="og:description" content="Carrying Out a Chi-Square Test for Homogeneity or Independence explained from scratch: free statistics study notes with figures and worked examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/chi-square-test.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/chi-square-test.html#reading",
+      "name": "Carrying Out a Chi-Square Test for Homogeneity or Independence",
+      "url": "https://levlprep.com/statistics/notes/chi-square-test.html",
+      "description": "Carrying Out a Chi-Square Test for Homogeneity or Independence explained from scratch: free statistics study notes with figures and worked examples.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "carrying out a chi-square test for homogeneity or independence ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Categorical Data: Proportions",
+          "item": "https://levlprep.com/statistics/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Carrying Out a Chi-Square Test for Homogeneity or Independence: notes",
+          "item": "https://levlprep.com/statistics/notes/chi-square-test.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="chi-square-test" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Inference for Categorical Data: Proportions</b><small>15 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="estimators"><a href="estimators.html"><span class="bk-toc-n">3.1</span>Estimators</a></li><li data-toc-t="sampling-dist-proportion"><a href="sampling-dist-proportion.html"><span class="bk-toc-n">3.2</span>Sampling Distributions for Sample Proportions</a></li><li data-toc-t="ci-one-proportion"><a href="ci-one-proportion.html"><span class="bk-toc-n">3.3</span>Constructing a Confidence Interval for a Population Proportion</a></li><li data-toc-t="ci-one-proportion-claims"><a href="ci-one-proportion-claims.html"><span class="bk-toc-n">3.4</span>Justifying a Claim Based on a Confidence Interval for a Population Proportion</a></li><li data-toc-t="test-one-proportion-setup"><a href="test-one-proportion-setup.html"><span class="bk-toc-n">3.5</span>Setting Up a Test for a Population Proportion</a></li><li data-toc-t="p-values"><a href="p-values.html"><span class="bk-toc-n">3.6</span>p-Values</a></li><li data-toc-t="test-one-proportion"><a href="test-one-proportion.html"><span class="bk-toc-n">3.7</span>Carrying Out a Test for a Population Proportion</a></li><li data-toc-t="errors-and-power"><a href="errors-and-power.html"><span class="bk-toc-n">3.8</span>Potential Errors When Performing Tests</a></li><li data-toc-t="sampling-dist-two-proportions"><a href="sampling-dist-two-proportions.html"><span class="bk-toc-n">3.9</span>Sampling Distributions for the Difference Between Sample Proportions</a></li><li data-toc-t="ci-two-proportions"><a href="ci-two-proportions.html"><span class="bk-toc-n">3.10</span>Constructing a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="ci-two-proportions-claims"><a href="ci-two-proportions-claims.html"><span class="bk-toc-n">3.11</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions-setup"><a href="test-two-proportions-setup.html"><span class="bk-toc-n">3.12</span>Setting Up a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions"><a href="test-two-proportions.html"><span class="bk-toc-n">3.13</span>Carrying Out a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="chi-square-setup"><a href="chi-square-setup.html"><span class="bk-toc-n">3.14</span>Setting Up a Chi-Square Test for Homogeneity or Independence</a></li><li class="current" data-toc-t="chi-square-test"><a href="#main" aria-current="page"><span class="bk-toc-n">3.15</span>Carrying Out a Chi-Square Test for Homogeneity or Independence</a><div class="bk-toc-onpage"><p>On this page</p><a href="#components-cell-by-cell">Components: cell by cell</a><a href="#degrees-of-freedom-and-the-chi">Degrees of freedom and the chi-square distribution</a><a href="#describing-the-association">Describing the association</a><a href="#reading-table-c">Reading Table C</a><a href="#wording-to-avoid">Wording to avoid</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Inference for Categorical Data: Proportions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Carrying Out a Chi-Square Test for Homogeneity or Independence: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/chi-square-test.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 3 &middot; Topic 3.15 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Carrying Out a Chi-Square Test for Homogeneity or Independence</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="chi-square-test">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fchi-square-test.html&amp;title=Carrying%20Out%20a%20Chi-Square%20Test%20for%20Homogeneity%20or%20Independence%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/chi-square-test.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>In the last topic you set up a <a class="gl" href="../notes/chi-square-setup.html" data-c="chi-square">chi-square</a> test: you chose <a class="gl" href="../notes/independence-unions.html" data-c="independent-events">independence</a> or <a class="gl" href="../notes/chi-square-setup.html" data-c="homogeneity">homogeneity</a>, wrote the <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="hypotheses">hypotheses</a>, found the <a class="gl" href="../notes/chi-square-setup.html" data-c="expected-count">expected counts</a> and checked the conditions. Now you finish the job. The statistic <math class="stat-m"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math> sums up how far the table is from the null hypothesis, a new family of <a class="gl" href="../notes/variables.html" data-c="distribution">distributions</a> tells you how surprising that sum is, and the conclusion says what it <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a>.</p>
+
+<h2 id="components-cell-by-cell">Components: cell by cell</h2>
+<p>For each cell, compare the observed count <math class="stat-m"><semantics><mrow><mi>O</mi></mrow><annotation encoding="application/x-tex">O</annotation></semantics></math> with the expected count <math class="stat-m"><semantics><mrow><mi>E</mi></mrow><annotation encoding="application/x-tex">E</annotation></semantics></math> and compute <math class="stat-m"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mi>O</mi><mo>−</mo><mi>E</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mi>E</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{(O - E)^2}{E}</annotation></semantics></math>. This is the cell's <b><span class="gl" tabindex="0" data-c="chi-square-component">chi-square component</span></b>, its contribution to the total. Then add them all:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup><mo>=</mo><mo largeop="true" movablelimits="false">∑</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>O</mi><mo>−</mo><mi>E</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mi>E</mi></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">\chi^2 = \sum \frac{(O - E)^2}{E}.</annotation></semantics></math></p>
+<p>A big component marks a cell where the <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a> and <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> disagree. Note that it is the <a class="gl" href="../notes/describing-distributions.html" data-c="gap-cluster">gap</a> relative to <math class="stat-m"><semantics><mrow><mi>E</mi></mrow><annotation encoding="application/x-tex">E</annotation></semantics></math> that matters. A gap of 10 where 30 were expected gives <math class="stat-m"><semantics><mrow><mfrac><mn>100</mn><mn>30</mn></mfrac><mo>=</mo><mn>3.33</mn></mrow><annotation encoding="application/x-tex">\frac{100}{30} = 3.33</annotation></semantics></math>; the same gap where 60 were expected gives only <math class="stat-m"><semantics><mrow><mfrac><mn>100</mn><mn>60</mn></mfrac><mo>=</mo><mn>1.67</mn></mrow><annotation encoding="application/x-tex">\frac{100}{60} = 1.67</annotation></semantics></math>.</p>
+
+<h2 id="degrees-of-freedom-and-the-chi">Degrees of freedom and the chi-square distribution</h2>
+<p>If <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> is true and the conditions hold, the statistic follows (approximately) a <b><span class="gl" tabindex="0" data-c="chi-square-dist">chi-square distribution</span></b>. There is one curve for each number of <b><span class="gl" tabindex="0" data-c="degrees-of-freedom">degrees of freedom</span></b>; for a <a class="gl" href="../notes/two-categorical-displays.html" data-c="two-way-table">two-way table</a>,</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mtext>df</mtext><mo>=</mo><mo stretchy="false">(</mo><mtext>rows</mtext><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mtext>columns</mtext><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">\text{df} = (\text{rows} - 1)(\text{columns} - 1).</annotation></semantics></math></p>
+<p>Why that number? Once the row and column totals are fixed, you can fill in only <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>c</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(r - 1)(c - 1)</annotation></semantics></math> cells freely; the totals then force the rest. That count of free cells is the df.</p>
+<p>Every chi-square curve starts at 0 (a sum of squares cannot be negative), is <a class="gl" href="../notes/describing-distributions.html" data-c="skewed">skewed right</a>, and has its mean at the df. As the df grows, the curve spreads out and becomes more <a class="gl" href="../notes/describing-distributions.html" data-c="symmetric">symmetric</a>.</p>
+<p>Only large values of <math class="stat-m"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math> are evidence against <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math>, so the <a class="gl" href="../notes/p-values.html" data-c="p-value">p-value</a> is always the area in the <b>right tail</b>, beyond the observed <math class="stat-m"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math>.</p>
+<figure id="fig-tail"  class="stat-figure"><div class="stat-figimg" data-fig="chi-square-tail"><img src="../figures/chi-square-tail.svg" alt="Right-skewed chi-square density curve with 2 degrees of freedom; a dashed line marks the observed statistic 8.21 and the thin shaded tail to its right is the p-value, 0.0165." width="640" height="360" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The chi-square curve with 2 degrees of freedom and the right tail beyond the observed statistic. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example.</b> A <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">random</a> <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> of 300 students at a large high school reports whether they keep a phone in the bedroom at night and their usual sleep. Test at <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math> whether the two <a class="gl" href="../notes/variables.html" data-c="variable">variables</a> are <a class="gl" href="../notes/two-categorical-displays.html" data-c="association">associated</a>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="stat-compare">
+<thead><tr><th>Phone in bedroom</th><th>Under 7 hours</th><th>7 to 8 hours</th><th>Over 8 hours</th><th>Total</th></tr></thead>
+<tbody>
+<tr><td>Yes</td><td>70 (60)</td><td>90 (93.3)</td><td>40 (46.7)</td><td>200</td></tr>
+<tr><td>No</td><td>20 (30)</td><td>50 (46.7)</td><td>30 (23.3)</td><td>100</td></tr>
+<tr><td>Total</td><td>90</td><td>140</td><td>70</td><td>300</td></tr>
+</tbody>
+</table></div>
+<p><b>State.</b> <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math>: there is no association between keeping a phone in the bedroom and usual sleep for students at the school. <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">H_a</annotation></semantics></math>: there is an association.</p>
+<p><b>Plan.</b> A <a class="gl" href="../notes/chi-square-setup.html" data-c="independence-test">chi-square test for independence</a>. Random: a random sample of 300 students. 10%: 300 is less than 10% of the students at a large school. <a class="gl" href="../notes/sampling-dist-proportion.html" data-c="large-counts">Large counts</a>: the expected counts in parentheses are each <a class="gl" href="../notes/math-inequality-words.html" data-c="inequality-words">at least</a> 5 (the smallest is 23.3).</p>
+<p><b>Do.</b> <math class="stat-m"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>70</mn><mo>−</mo><mn>60</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>60</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{(70 - 60)^2}{60}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>90</mn><mo>−</mo><mn>93.3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>93.3</mn></mfrac></mrow><annotation encoding="application/x-tex">+ \frac{(90 - 93.3)^2}{93.3}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>40</mn><mo>−</mo><mn>46.7</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>46.7</mn></mfrac></mrow><annotation encoding="application/x-tex">+ \frac{(40 - 46.7)^2}{46.7}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>20</mn><mo>−</mo><mn>30</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>30</mn></mfrac></mrow><annotation encoding="application/x-tex">+ \frac{(20 - 30)^2}{30}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>50</mn><mo>−</mo><mn>46.7</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>46.7</mn></mfrac></mrow><annotation encoding="application/x-tex">+ \frac{(50 - 46.7)^2}{46.7}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>30</mn><mo>−</mo><mn>23.3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>23.3</mn></mfrac></mrow><annotation encoding="application/x-tex">+ \frac{(30 - 23.3)^2}{23.3}</annotation></semantics></math></p>
+<p><math class="stat-m"><semantics><mrow><mo>=</mo><mn>1.67</mn></mrow><annotation encoding="application/x-tex">= 1.67</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.12</mn></mrow><annotation encoding="application/x-tex">+ 0.12</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.95</mn></mrow><annotation encoding="application/x-tex">+ 0.95</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>3.33</mn></mrow><annotation encoding="application/x-tex">+ 3.33</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.24</mn></mrow><annotation encoding="application/x-tex">+ 0.24</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>1.90</mn></mrow><annotation encoding="application/x-tex">+ 1.90</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>8.21</mn></mrow><annotation encoding="application/x-tex">= 8.21</annotation></semantics></math>, with <math class="stat-m"><semantics><mrow><mtext>df</mtext><mo>=</mo><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>3</mn><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\text{df} = (2 - 1)(3 - 1) = 2</annotation></semantics></math>.</p>
+<p>The p-value is <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><msup><mi>χ</mi><mn>2</mn></msup><mo>≥</mo><mn>8.21</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.0165</mn></mrow><annotation encoding="application/x-tex">P(\chi^2 \ge 8.21) = 0.0165</annotation></semantics></math>, the right-tail area under the chi-square curve with 2 degrees of freedom. On a calculator, enter the observed counts as a matrix and run a chi-square test; it reports the same statistic, df and p-value and fills in the expected counts.</p>
+<p><b>Conclude.</b> Because the p-value of 0.0165 is less than <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>, we reject <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math>. There is <a class="gl" href="../notes/ci-one-proportion-claims.html" data-c="convincing-evidence">convincing evidence</a> of an association between keeping a phone in the bedroom and usual hours of sleep for students at the school.</p>
+</div>
+<p><a class="figref" href="#fig-tail">The figure</a> shows how far out 8.21 sits: if there were no association, a value this large would happen less than 2% of the time.</p>
+
+<h2 id="describing-the-association">Describing the association</h2>
+<p>A chi-square test says only that an association exists. To say what it looks like, use the table. The largest components here are the "no phone" row's under 7 hours (3.33) and over 8 hours (1.90) cells: students without a phone in the bedroom are less <a class="gl" href="../notes/simulation.html" data-c="probability">likely</a> than expected to sleep under 7 hours and more likely to sleep over 8. In conditional <a class="gl" href="../notes/math-fractions-percents.html" data-c="proportion-math">percents</a>, 35% of phone keepers sleep under 7 hours, against 20% of the others.</p>
+<p>This was an <a class="gl" href="../notes/investigative-questions.html" data-c="observational-study">observational study</a>, so we cannot say phones <b>cause</b> less sleep; students who sleep less might keep their phones nearby for other reasons.</p>
+
+<h2 id="reading-table-c">Reading Table C</h2>
+<p>Without technology, find the row for your df in Table C and see which <a class="gl" href="../notes/ci-one-proportion.html" data-c="critical-value">critical values</a> your <math class="stat-m"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math> falls between. For <math class="stat-m"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup><mo>=</mo><mn>9.8</mn></mrow><annotation encoding="application/x-tex">\chi^2 = 9.8</annotation></semantics></math> with 4 degrees of freedom, the row shows 9.49 (tail area 0.05) and 11.14 (tail area 0.025), so the p-value is between 0.025 and 0.05. Technology gives 0.044.</p>
+
+<h2 id="wording-to-avoid">Wording to avoid</h2>
+<ul>
+<li>When the p-value is large, never say the variables "are independent" or the distributions "are the same". Say there is not convincing evidence of an association (or of a difference).</li>
+<li>The alternative has no <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">direction</a>, so the conclusion does not either. Directions come from describing the table afterward.</li>
+<li>For homogeneity, conclude about the distributions: "There is (is not) convincing evidence that the distribution of results differs between yoga and physical therapy for adults like these."</li>
+</ul>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:chi-square-test">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="chi-square-setup.html"><span>&larr; Previous</span><b>Setting Up a Chi-Square Test for Homogeneity or Independence</b></a><a class="tb-chapter-link next" href="sampling-dist-mean.html"><span>Next &rarr;</span><b>Sampling Distributions for Sample Means</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:chi-square-test">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparisons of the Distributions… — AP® Statistics Notes</title>
+<meta name="description" content="Most questions in statistics compare groups: do patients on a new schedule wait less? Is one bus route more reliable?">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/comparing-distributions.html">
+<meta property="og:title" content="Comparisons of the Distributions… — AP® Statistics Notes">
+<meta property="og:description" content="Most questions in statistics compare groups: do patients on a new schedule wait less? Is one bus route more reliable?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/comparing-distributions.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/comparing-distributions.html#reading",
+      "name": "Comparisons of the Distributions for One Quantitative Variable",
+      "url": "https://levlprep.com/statistics/notes/comparing-distributions.html",
+      "description": "Most questions in statistics compare groups: do patients on a new schedule wait less? Is one bus route more reliable?",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "comparisons of the distributions for one quantitative variable ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exploring One-Variable Data and Collecting Data",
+          "item": "https://levlprep.com/statistics/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Comparisons of the Distributions for One Quantitative Variable: notes",
+          "item": "https://levlprep.com/statistics/notes/comparing-distributions.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="comparing-distributions" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Exploring One-Variable Data and Collecting Data</b><small>13 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 13 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="intro-statistics"><a href="intro-statistics.html"><span class="bk-toc-n">1.1</span>Introducing Statistics: What Can We Learn from Data?</a></li><li data-toc-t="variables"><a href="variables.html"><span class="bk-toc-n">1.2</span>Variables</a></li><li data-toc-t="one-categorical-tables"><a href="one-categorical-tables.html"><span class="bk-toc-n">1.3</span>Tabular Representation and Summary Statistics for One Categorical Variable</a></li><li data-toc-t="one-categorical-displays"><a href="one-categorical-displays.html"><span class="bk-toc-n">1.4</span>Graphical Representations for One Categorical Variable</a></li><li data-toc-t="one-quantitative-displays"><a href="one-quantitative-displays.html"><span class="bk-toc-n">1.5</span>Graphical Representations for One Quantitative Variable</a></li><li data-toc-t="describing-distributions"><a href="describing-distributions.html"><span class="bk-toc-n">1.6</span>Descriptions for One Quantitative Variable Distributions</a></li><li data-toc-t="summary-statistics"><a href="summary-statistics.html"><span class="bk-toc-n">1.7</span>Summary Statistics for One Quantitative Variable</a></li><li data-toc-t="boxplots"><a href="boxplots.html"><span class="bk-toc-n">1.8</span>Graphical Representations of Summary Statistics for One Quantitative Variable</a></li><li class="current" data-toc-t="comparing-distributions"><a href="#main" aria-current="page"><span class="bk-toc-n">1.9</span>Comparisons of the Distributions for One Quantitative Variable</a><div class="bk-toc-onpage"><p>On this page</p><a href="#comparing-distributions">Comparing distributions</a><a href="#relative-position-z-scores">Relative position: z-scores</a><a href="#relative-position-percentiles">Relative position: percentiles</a></div></li><li data-toc-t="investigative-questions"><a href="investigative-questions.html"><span class="bk-toc-n">1.10</span>The Investigative Question Revisited and Data Collection</a></li><li data-toc-t="random-sampling"><a href="random-sampling.html"><span class="bk-toc-n">1.11</span>Random Sampling</a></li><li data-toc-t="sampling-problems"><a href="sampling-problems.html"><span class="bk-toc-n">1.12</span>Potential Problems with Sampling</a></li><li data-toc-t="experimental-design"><a href="experimental-design.html"><span class="bk-toc-n">1.13</span>Experimental Design</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Exploring One-Variable Data and Collecting Data</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Comparisons of the Distributions for One Quantitative Variable: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/comparing-distributions.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.9 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Comparisons of the Distributions for One Quantitative Variable</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="comparing-distributions">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fcomparing-distributions.html&amp;title=Comparisons%20of%20the%20Distributions%20for%20One%20Quantitative%20Variable%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/comparing-distributions.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>Most questions in statistics compare groups: do patients on a new schedule wait less? Is one bus route more reliable? This topic covers two kinds of comparison. First, comparing whole <a class="gl" href="../notes/variables.html" data-c="distribution">distributions</a>, feature by feature. Second, comparing single values that come from different distributions, using <span class="gl" tabindex="0" data-c="z-score">z-scores</span> and <a class="gl" href="../notes/summary-statistics.html" data-c="percentile">percentiles</a>.</p>
+
+<h2 id="comparing-distributions">Comparing distributions</h2>
+<p>Put the groups on the same scale: parallel <a class="gl" href="../notes/boxplots.html" data-c="boxplot">boxplots</a>, <a class="gl" href="../notes/one-quantitative-displays.html" data-c="dotplot">dotplots</a> stacked on one axis, or <a class="gl" href="../notes/one-quantitative-displays.html" data-c="histogram">histograms</a> with the same bins. Then compare every feature you would describe for one distribution:</p>
+<ul>
+<li><b><a class="gl" href="../notes/describing-distributions.html" data-c="shape">Shape</a></b>: is one <a class="gl" href="../notes/describing-distributions.html" data-c="skewed">skewed</a> and the other <a class="gl" href="../notes/describing-distributions.html" data-c="symmetric">symmetric</a>?</li>
+<li><b><a class="gl" href="../notes/describing-distributions.html" data-c="center">Center</a></b>: which has the greater <a class="gl" href="../notes/summary-statistics.html" data-c="median">median</a> (or <a class="gl" href="../notes/summary-statistics.html" data-c="mean">mean</a>)?</li>
+<li><b>Spread</b>: which is more <a class="gl" href="../notes/variables.html" data-c="variable">variable</a> (larger <a class="gl" href="../notes/summary-statistics.html" data-c="iqr">IQR</a> or <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a>)?</li>
+<li><b>Unusual features</b>: <a class="gl" href="../notes/describing-distributions.html" data-c="outlier">outliers</a>, gaps or <a class="gl" href="../notes/describing-distributions.html" data-c="gap-cluster">clusters</a> in either group.</li>
+</ul>
+<p>The single most common lost point: listing numbers without comparing them. "Route 1’s median is 31 and Route 2’s is 28" describes; it does not compare. Use a comparing word: <i>greater, less, more variable, less variable, similar</i>.</p>
+<figure id="fig-cmp"  class="stat-figure"><div class="stat-figimg" data-fig="compare-and-z"><img src="../figures/compare-and-z.svg" alt="Top: parallel boxplots of delivery times in minutes for two restaurants, 15 orders each. Restaurant A has median 32 and a narrow box from 28 to 36. Restaurant B has a lower median, 27, a wider box from 23 to 37, a long right whisker and one high outlier at 60. Bottom: a z-score number line from minus 3 to plus 3 with the mean at 0; a value with z = 1.5 sits 1.5 standard deviations above the mean." width="720" height="412" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Parallel boxplots of delivery times at two restaurants, and a z-score shown on a number line. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Compare two distributions.</b> A commuter timed 15 trips on each of two bus routes. Route 1 (minutes): <math class="stat-m"><semantics><mrow><msub><mi>Q</mi><mn>1</mn></msub><mo>=</mo><mn>28</mn></mrow><annotation encoding="application/x-tex">Q_1 = 28</annotation></semantics></math>, median 31, <math class="stat-m"><semantics><mrow><msub><mi>Q</mi><mn>3</mn></msub><mo>=</mo><mn>34</mn></mrow><annotation encoding="application/x-tex">Q_3 = 34</annotation></semantics></math>, whiskers from 24 to 39, no outliers. Route 2: <math class="stat-m"><semantics><mrow><msub><mi>Q</mi><mn>1</mn></msub><mo>=</mo><mn>23</mn></mrow><annotation encoding="application/x-tex">Q_1 = 23</annotation></semantics></math>, median 28, <math class="stat-m"><semantics><mrow><msub><mi>Q</mi><mn>3</mn></msub><mo>=</mo><mn>38</mn></mrow><annotation encoding="application/x-tex">Q_3 = 38</annotation></semantics></math>, whiskers from 18 to 45, one outlier at 62.</p>
+<p>Shape: Route 2 is skewed right with a high outlier; Route 1 is roughly symmetric.</p>
+<p>Center: Route 1 has the greater median travel time, 31 minutes against 28.</p>
+<p>Spread: Route 2 is much more variable, with an IQR of <math class="stat-m"><semantics><mrow><mn>38</mn><mo>−</mo><mn>23</mn><mo>=</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">38 - 23 = 15</annotation></semantics></math> minutes against <math class="stat-m"><semantics><mrow><mn>34</mn><mo>−</mo><mn>28</mn><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">34 - 28 = 6</annotation></semantics></math> minutes.</p>
+<p><a class="gl" href="../notes/intro-statistics.html" data-c="context">In context</a>: <i>"Trips on Route 1 have a greater median time than trips on Route 2 (31 against 28 minutes), but Route 2’s times are far more variable (IQR 15 against 6 minutes). Route 2 is skewed right with an outlier at 62 minutes, while Route 1 is roughly symmetric with no outliers."</i></p>
+<p>A claim from the <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>: if the commuter must arrive within 40 minutes every day, Route 1 is the better choice, because all 15 of its trips took 39 minutes or less, while 3 of Route 2’s trips took more than 40.</p>
+</div>
+<p>One more trap: you cannot combine two groups by averaging their medians. The median of the combined data depends on every value and on the size of each group.</p>
+
+<h2 id="relative-position-z-scores">Relative position: z-scores</h2>
+<p>Ana scored 86 on a test in class A; Ben scored 88 on a different test in class B. Who did better? The raw scores cannot answer this, because the tests differ. What we can compare is how far each score stands above its own class, measured in a unit that adjusts for each class’s spread: the standard deviation.</p>
+<p>The <b>z-score</b> of a value is</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>z</mi><mo>=</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><mi>s</mi></mfrac></mrow><annotation encoding="application/x-tex">z = \frac{x - \bar{x}}{s}</annotation></semantics></math></p>
+<p>using the <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> mean and standard deviation (or <math class="stat-m"><semantics><mrow><mfrac><mrow><mi>x</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{x - \mu}{\sigma}</annotation></semantics></math> when the <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> values are known). It counts how many standard deviations the value is above (positive) or below (negative) the mean.</p>
+<div class="worked">
+<p><b>Compare with z-scores.</b> Class A has mean 74 and standard deviation 8; class B has mean 81 and standard deviation 4.</p>
+<p>Ana: <math class="stat-m"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>86</mn><mo>−</mo><mn>74</mn></mrow><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{86 - 74}{8}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>12</mn><mn>8</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{12}{8}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>1.5</mn></mrow><annotation encoding="application/x-tex">= 1.5</annotation></semantics></math>.</p>
+<p>Ben: <math class="stat-m"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>88</mn><mo>−</mo><mn>81</mn></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{88 - 81}{4}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>7</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{7}{4}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>1.75</mn></mrow><annotation encoding="application/x-tex">= 1.75</annotation></semantics></math>.</p>
+<p>Interpretation in context: <i>"Ana’s score is 1.5 standard deviations above the mean score of class A, and Ben’s score is 1.75 standard deviations above the mean score of class B."</i></p>
+<p>Conclusion: relative to his class, Ben did better. Ana is 12 points above her mean and Ben only 7, but class B’s scores vary less, so 7 points there is the larger achievement.</p>
+</div>
+<p>A z-score has no units, since the top and bottom of the fraction are in the same units. Converting heights from inches to centimeters leaves every z-score the same. You can also run the formula backward: the value with z-score <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">-0.5</annotation></semantics></math> when the mean is 60 and the standard deviation is 10 is <math class="stat-m"><semantics><mrow><mn>60</mn><mo>+</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.5</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo><mo>=</mo><mn>55</mn></mrow><annotation encoding="application/x-tex">60 + (-0.5)(10) = 55</annotation></semantics></math>.</p>
+
+<h2 id="relative-position-percentiles">Relative position: percentiles</h2>
+<p>A percentile is the other measure of <span class="gl" tabindex="0" data-c="relative-position">relative position</span>: a height at the 90th percentile of a class is at or above 90% of the heights in that class. Like a z-score, a percentile describes position within its own group. Kai at the 90th percentile of his class and Lena at the 85th percentile of hers does not tell you who is taller in centimeters.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th></th><th>z-score</th><th>Percentile</th></tr></thead>
+<tbody>
+<tr><th>Tells you</th><td>standard deviations above or below the mean</td><td><a class="gl" href="../notes/math-fractions-percents.html" data-c="proportion-math">percent</a> of values at or below</td></tr>
+<tr><th>Needs</th><td>the mean and standard deviation</td><td>the ordered data</td></tr>
+<tr><th>Sign</th><td>negative below the mean</td><td>always from 0 to 100</td></tr>
+</tbody>
+</table></div>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:comparing-distributions">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="boxplots.html"><span>&larr; Previous</span><b>Graphical Representations of Summary Statistics for One Quantitative Variable</b></a><a class="tb-chapter-link next" href="investigative-questions.html"><span>Next &rarr;</span><b>The Investigative Question Revisited and Data Collection</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:comparing-distributions">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

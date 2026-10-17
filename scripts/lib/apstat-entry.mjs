@@ -155,7 +155,7 @@ ${bodyOpen(' data-app="formula-sheet"')}
   <section class="xsection stat-eq-tips" aria-labelledby="eq-tips"><h2 id="eq-tips">Three habits that save points</h2>
     <ul class="stat-links">
       <li><b>Show the expression, then the numbers, then the answer.</b> Write the formula's structure, substitute the values, then give the result. A calculator result alone is not work.</li>
-      <li><b>Name the distribution or the procedure.</b> "X is binomial with $n = 10$ and $p = 0.3$", "a one-sample z test for a proportion", with the boundary and the direction.</li>
+      <li><b>Name the distribution or the procedure.</b> "${R('$X$ is binomial with $n = 10$ and $p = 0.3$')}", "a one-sample z test for a proportion", with the boundary and the direction.</li>
       <li><b>Table or technology, both count.</b> A p-value from Table B written as a range and the same p-value from a calculator are both right; keep full precision until the end.</li>
     </ul>
   </section>

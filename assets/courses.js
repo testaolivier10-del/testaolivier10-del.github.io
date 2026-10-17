@@ -88,11 +88,11 @@
     {
       // As AP® Calculus AB (docs/apstat-spec.md decision 2): the mark only in
       // the full names, never in a URL; the key travels as its folder,
-      // "statistics". 'hidden' until published (the launch checklist in
-      // docs/apstat-spec.md section 9).
+      // "statistics". Was 'hidden' until published; 'beta' since the launch
+      // (docs/apstat-spec.md decision 15).
       key: 'apstat', short: 'Statistics', name: 'AP® Statistics', productName: 'AP® Statistics',
       path: '/statistics/', dir: 'statistics', storagePrefix: 'apstat_', rankLabel: 'Statistics rank',
-      searchLabel: 'Statistics', aliases: ['statistics', 'stats', 'stat'], paid: true, status: 'hidden', order: 8,
+      searchLabel: 'Statistics', aliases: ['statistics', 'stats', 'stat'], paid: true, status: 'beta', order: 8,
     },
   ];
 

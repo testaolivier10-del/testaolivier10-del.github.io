@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrying Out a Test for a Mean — AP® Statistics Notes</title>
+<meta name="description" content="Assume the null hypothesis is true: the population mean is μ_0 . Then sample means vary around μ_0 , with a standard error of s/(√n) .">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/test-one-mean.html">
+<meta property="og:title" content="Carrying Out a Test for a Mean — AP® Statistics Notes">
+<meta property="og:description" content="Assume the null hypothesis is true: the population mean is μ_0 . Then sample means vary around μ_0 , with a standard error of s/(√n) .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/test-one-mean.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/test-one-mean.html#reading",
+      "name": "Carrying Out a Test for a Population Mean or Population Mean Difference",
+      "url": "https://levlprep.com/statistics/notes/test-one-mean.html",
+      "description": "Assume the null hypothesis is true: the population mean is μ_0 . Then sample means vary around μ_0 , with a standard error of s/(√n) .",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "carrying out a test for a population mean or population mean difference ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Quantitative Data: Means",
+          "item": "https://levlprep.com/statistics/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Carrying Out a Test for a Population Mean or Population Mean Difference: notes",
+          "item": "https://levlprep.com/statistics/notes/test-one-mean.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="test-one-mean" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Inference for Categorical Data: Proportions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Inference for Quantitative Data: Means</b><small>10 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 10 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="sampling-dist-mean"><a href="sampling-dist-mean.html"><span class="bk-toc-n">4.1</span>Sampling Distributions for Sample Means</a></li><li data-toc-t="ci-one-mean"><a href="ci-one-mean.html"><span class="bk-toc-n">4.2</span>Constructing a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="ci-one-mean-claims"><a href="ci-one-mean-claims.html"><span class="bk-toc-n">4.3</span>Justifying a Claim Based on a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean-setup"><a href="test-one-mean-setup.html"><span class="bk-toc-n">4.4</span>Setting Up a Test for a Population Mean or Population Mean Difference</a></li><li class="current" data-toc-t="test-one-mean"><a href="#main" aria-current="page"><span class="bk-toc-n">4.5</span>Carrying Out a Test for a Population Mean or Population Mean Difference</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-t-statistic">The t statistic</a><a href="#a-complete-test">A complete test</a><a href="#which-tail">Which tail?</a><a href="#paired-data-the-same-test-on">Paired data: the same test on the differences</a><a href="#interpreting-the-p-value">Interpreting the p-value</a></div></li><li data-toc-t="sampling-dist-two-means"><a href="sampling-dist-two-means.html"><span class="bk-toc-n">4.6</span>Sampling Distributions for the Difference Between Two Sample Means</a></li><li data-toc-t="ci-two-means"><a href="ci-two-means.html"><span class="bk-toc-n">4.7</span>Constructing a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="ci-two-means-claims"><a href="ci-two-means-claims.html"><span class="bk-toc-n">4.8</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="test-two-means-setup"><a href="test-two-means-setup.html"><span class="bk-toc-n">4.9</span>Setting Up a Test for the Difference Between Two Population Means</a></li><li data-toc-t="test-two-means"><a href="test-two-means.html"><span class="bk-toc-n">4.10</span>Carrying Out a Test for the Difference Between Two Population Means</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Regression Analysis</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Inference for Quantitative Data: Means</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Carrying Out a Test for a Population Mean or Population Mean Difference: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/test-one-mean.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.5 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Carrying Out a Test for a Population Mean or Population Mean Difference</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="test-one-mean">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Ftest-one-mean.html&amp;title=Carrying%20Out%20a%20Test%20for%20a%20Population%20Mean%20or%20Population%20Mean%20Difference%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/test-one-mean.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>With the <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="hypotheses">hypotheses</a> written and the conditions checked, the rest of a <a class="gl" href="../notes/test-one-mean-setup.html" data-c="one-sample-t-test">t test</a> is three steps: compute a <a class="gl" href="../notes/p-values.html" data-c="test-statistic">test statistic</a>, find its <a class="gl" href="../notes/p-values.html" data-c="p-value">p-value</a>, and write the conclusion. Each step has a standard <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">form</a> that earns the points, and a classic slip that loses them.</p>
+
+<h2 id="the-t-statistic">The t statistic</h2>
+<p>Assume the null hypothesis is true: the <a class="gl" href="../notes/summary-statistics.html" data-c="population-mean">population mean</a> is <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\mu_0</annotation></semantics></math>. Then <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a> vary around <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\mu_0</annotation></semantics></math>, with a <a class="gl" href="../notes/ci-one-proportion.html" data-c="standard-error">standard error</a> of <math class="stat-m"><semantics><mrow><mfrac><mi>s</mi><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{s}{\sqrt{n}}</annotation></semantics></math>. The question is how far the observed <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> is from <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\mu_0</annotation></semantics></math>, measured in standard errors. That is the <b><span class="gl" tabindex="0" data-c="t-statistic">t statistic</span></b>:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>t</mi><mo>=</mo><mfrac><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>−</mo><msub><mi>μ</mi><mn>0</mn></msub></mrow><mrow><mi>s</mi><mo>/</mo><msqrt><mi>n</mi></msqrt></mrow></mfrac><mo>,</mo><mspace width="2em"></mspace><mtext>df</mtext><mo>=</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}, \qquad \text{df} = n - 1.</annotation></semantics></math></p>
+<p>It has the same <a class="gl" href="../notes/describing-distributions.html" data-c="shape">shape</a> as every standardized test statistic: (statistic minus <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="null-value">null value</a>) divided by the standard error. Because <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> estimates <math class="stat-m"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>, the p-value comes from the <a class="gl" href="../notes/ci-one-mean.html" data-c="t-distribution">t distribution</a>, not the <a class="gl" href="../notes/normal-distribution.html" data-c="standard-normal">standard normal</a>.</p>
+<figure id="fig-tp"  class="stat-figure"><div class="stat-figimg" data-fig="t-test-pvalue"><img src="../figures/t-test-pvalue.svg" alt="The t distribution with 44 degrees of freedom, centered at 0. A dashed line marks the observed t statistic 2.37, and the small area under the curve to its right is shaded: the one-sided p-value, 0.0112." width="720" height="380" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The t distribution with 44 df, the observed t = 2.37 and the shaded p-value. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="a-complete-test">A complete test</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> A company advertises a mean delivery time of 30 minutes. A <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">random</a> sample of 45 of last month's thousands of deliveries has <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>=</mo><mn>32.4</mn></mrow><annotation encoding="application/x-tex">\bar{x} = 32.4</annotation></semantics></math> minutes and <math class="stat-m"><semantics><mrow><mi>s</mi><mo>=</mo><mn>6.8</mn></mrow><annotation encoding="application/x-tex">s = 6.8</annotation></semantics></math> minutes (invented <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>). Is there <a class="gl" href="../notes/ci-one-proportion-claims.html" data-c="convincing-evidence">convincing evidence</a> at <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math> that the true mean is longer than 30 minutes?</p>
+<p><b>State.</b> <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><mi>μ</mi><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">H_0: \mu = 30</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><mi>μ</mi><mo>&gt;</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">H_a: \mu &gt; 30</annotation></semantics></math>, where <math class="stat-m"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math> is the true mean delivery time of all the company's deliveries in the city.</p>
+<p><b>Plan.</b> One-sample t test for a mean. Random: a random sample of 45 deliveries. 10%: 45 is less than 10% of last month's deliveries. Normal/large sample: <math class="stat-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>45</mn><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n = 45 \ge 30</annotation></semantics></math>.</p>
+<p><b>Do.</b> <math class="stat-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>−</mo><msub><mi>μ</mi><mn>0</mn></msub></mrow><mrow><mi>s</mi><mo>/</mo><msqrt><mi>n</mi></msqrt></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{\bar{x} - \mu_0}{s/\sqrt{n}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>32.4</mn><mo>−</mo><mn>30</mn></mrow><mrow><mn>6.8</mn><mo>/</mo><msqrt><mn>45</mn></msqrt></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{32.4 - 30}{6.8/\sqrt{45}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>2.4</mn><mn>1.014</mn></mfrac></mrow><annotation encoding="application/x-tex">= \frac{2.4}{1.014}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>2.37</mn></mrow><annotation encoding="application/x-tex">= 2.37</annotation></semantics></math>, with <math class="stat-m"><semantics><mrow><mtext>df</mtext><mo>=</mo><mn>44</mn></mrow><annotation encoding="application/x-tex">\text{df} = 44</annotation></semantics></math>. The alternative says "greater than", so the p-value is the area to the right: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>t</mi><mo>&gt;</mo><mn>2.37</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.0112</mn></mrow><annotation encoding="application/x-tex">P(t &gt; 2.37) = 0.0112</annotation></semantics></math>.</p>
+<p><b>Conclude.</b> Because the p-value of 0.0112 is less than 0.05, we <a class="gl" href="../notes/test-one-proportion.html" data-c="reject">reject the null hypothesis</a>. There is convincing evidence that the true mean delivery time of all the company's deliveries in the city is greater than 30 minutes.</p>
+</div>
+<p>Technology does the "Do" step in one command, a one-sample t test from the summary statistics, and reports <math class="stat-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2.37</mn></mrow><annotation encoding="application/x-tex">t = 2.37</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mtext>df</mtext><mo>=</mo><mn>44</mn></mrow><annotation encoding="application/x-tex">\text{df} = 44</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.0112</mn></mrow><annotation encoding="application/x-tex">p = 0.0112</annotation></semantics></math>. On the exam, still write the formula with the numbers substituted; the calculator output alone is not work.</p>
+<p>With Table B, find the <a class="gl" href="../notes/chi-square-test.html" data-c="degrees-of-freedom">df</a> row (44 is not listed, so use the next smaller row, 40) and locate 2.37 between two <a class="gl" href="../notes/ci-one-proportion.html" data-c="critical-value">critical values</a>: 2.123 (one-tail <a class="gl" href="../notes/simulation.html" data-c="probability">probability</a> 0.02) and 2.423 (0.01). So <math class="stat-m"><semantics><mrow><mn>0.01</mn><mo>&lt;</mo><mi>p</mi><mo>&lt;</mo><mn>0.02</mn></mrow><annotation encoding="application/x-tex">0.01 &lt; p &lt; 0.02</annotation></semantics></math>, which is enough to decide at <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>.</p>
+
+<h2 id="which-tail">Which tail?</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Alternative, p-value"><table class="stat-compare">
+<thead><tr><th scope="col">Alternative</th><th scope="col">p-value</th></tr></thead>
+<tbody>
+<tr><td><math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><mi>μ</mi><mo>&gt;</mo><msub><mi>μ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_a: \mu &gt; \mu_0</annotation></semantics></math></td><td>area to the right of <math class="stat-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></td></tr>
+<tr><td><math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><mi>μ</mi><mo>&lt;</mo><msub><mi>μ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_a: \mu &lt; \mu_0</annotation></semantics></math></td><td>area to the left of <math class="stat-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></td></tr>
+<tr><td><math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><mi>μ</mi><mo>≠</mo><msub><mi>μ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_a: \mu \ne \mu_0</annotation></semantics></math></td><td>twice the area beyond <math class="stat-m"><semantics><mrow><mo stretchy="false">|</mo><mi>t</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|t|</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<div class="worked">
+<p><b>Worked example 2 (<a class="gl" href="../notes/test-one-proportion-setup.html" data-c="one-two-sided">two-sided</a>).</b> A random sample of 20 students at a large university slept a mean of 7.55 hours with <math class="stat-m"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1.09</mn></mrow><annotation encoding="application/x-tex">s = 1.09</annotation></semantics></math> hours. Test <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><mi>μ</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">H_0: \mu = 8</annotation></semantics></math> against <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><mi>μ</mi><mo>≠</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">H_a: \mu \ne 8</annotation></semantics></math> at <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>, where <math class="stat-m"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math> is the true mean nightly sleep of students at the university. (Assume the conditions are met.)</p>
+<p><math class="stat-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>7.55</mn><mo>−</mo><mn>8</mn></mrow><mrow><mn>1.09</mn><mo>/</mo><msqrt><mn>20</mn></msqrt></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{7.55 - 8}{1.09/\sqrt{20}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1.85</mn></mrow><annotation encoding="application/x-tex">= -1.85</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mtext>df</mtext><mo>=</mo><mn>19</mn></mrow><annotation encoding="application/x-tex">\text{df} = 19</annotation></semantics></math>. Two-sided: <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>2</mn><mi>P</mi><mo stretchy="false">(</mo><mi>t</mi><mo>&lt;</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1.85</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 2P(t &lt; -1.85)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.080</mn></mrow><annotation encoding="application/x-tex">= 0.080</annotation></semantics></math>.</p>
+<p>Because the p-value of 0.080 is greater than 0.05, we fail to reject the null hypothesis. There is not convincing evidence that the true mean nightly sleep of students at the university is different from 8 hours.</p>
+</div>
+<p>Notice what the second conclusion does not say. It does not say the mean is 8 hours, and it does not say "accept <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math>". The sample mean was 7.55; the data simply could not rule out 8.</p>
+
+<h2 id="paired-data-the-same-test-on">Paired data: the same test on the differences</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> For 12 randomly chosen gym members who took a breathing class, the differences in resting heart rate (before minus after) have <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>d</mi></msub><mo>=</mo><mn>2.83</mn></mrow><annotation encoding="application/x-tex">\bar{x}_d = 2.83</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>s</mi><mi>d</mi></msub><mo>=</mo><mn>2.12</mn></mrow><annotation encoding="application/x-tex">s_d = 2.12</annotation></semantics></math> beats per minute, with no strong <a class="gl" href="../notes/describing-distributions.html" data-c="skewed">skew</a> or <a class="gl" href="../notes/describing-distributions.html" data-c="outlier">outliers</a>. Test <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><msub><mi>μ</mi><mi>d</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_0: \mu_d = 0</annotation></semantics></math> against <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><msub><mi>μ</mi><mi>d</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_a: \mu_d &gt; 0</annotation></semantics></math> at <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>.</p>
+<p><math class="stat-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mi>d</mi></msub><mo>−</mo><mn>0</mn></mrow><mrow><msub><mi>s</mi><mi>d</mi></msub><mo>/</mo><msqrt><mi>n</mi></msqrt></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{\bar{x}_d - 0}{s_d/\sqrt{n}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>2.83</mn><mo>−</mo><mn>0</mn></mrow><mrow><mn>2.12</mn><mo>/</mo><msqrt><mn>12</mn></msqrt></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{2.83 - 0}{2.12/\sqrt{12}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>4.62</mn></mrow><annotation encoding="application/x-tex">= 4.62</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mtext>df</mtext><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">\text{df} = 11</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><mi>p</mi><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>t</mi><mo>&gt;</mo><mn>4.62</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.0004</mn></mrow><annotation encoding="application/x-tex">p = P(t &gt; 4.62) = 0.0004</annotation></semantics></math>.</p>
+<p>Because the p-value of 0.0004 is less than 0.05, we reject the null hypothesis. There is convincing evidence that the true mean drop in resting heart rate (before minus after) for gym members who take the class is greater than 0.</p>
+</div>
+<p>Can the gym say the class <i>caused</i> the drop? No. The members were sampled at random, so the result generalizes to members who take the class, but there was no <a class="gl" href="../notes/experimental-design.html" data-c="random-assignment">random assignment</a> and no comparison group. Something else in those four weeks could explain it.</p>
+
+<h2 id="interpreting-the-p-value">Interpreting the p-value</h2>
+<p>The p-value is a probability computed assuming the null hypothesis is true. For the delivery test: Assuming the true mean delivery time of all the company's deliveries is 30 minutes, there is a 0.0112 probability of getting a sample mean of 32.4 minutes or more by chance in a random sample of 45 deliveries.</p>
+<p>It is not the probability that <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> is true, and it is not the probability that the result is due to chance. Small p-values say the data would be surprising if <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> were true, and that is the evidence for <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">H_a</annotation></semantics></math>.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:test-one-mean">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="test-one-mean-setup.html"><span>&larr; Previous</span><b>Setting Up a Test for a Population Mean or Population Mean Difference</b></a><a class="tb-chapter-link next" href="sampling-dist-two-means.html"><span>Next &rarr;</span><b>Sampling Distributions for the Difference Between Two Sample Means</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:test-one-mean">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

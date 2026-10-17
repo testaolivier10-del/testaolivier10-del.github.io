@@ -147,7 +147,7 @@ FIG.push((() => {
   b += R(250, 232, 300, 50, { rx: 10, fill: '#FFFFFF', stroke: PLUM, w: 2 });
   b += TL(400, 252, 'Conclusion about the population, in context:\nabout 65% of the school\'s students say yes', { anchor: 'middle', size: 12.5, lh: 16 });
   return svg(id, W, H, 'From a population to a conclusion',
-    'A study of a school. On the left, a population of 2,400 students drawn as grey dots, a few in plum. An arrow labelled choose leads to a sample of 120 students. An arrow labelled ask leads to the data: each answer is yes or no, and 78 of 120 say yes. A curved arrow returns to the population with the conclusion, in context: about 65% of the school\'s students say yes.', b);
+    'A study of a school. On the left, a population of 2,400 students drawn as gray dots, a few in plum. An arrow labeled choose leads to a sample of 120 students. An arrow labeled ask leads to the data: each answer is yes or no, and 78 of 120 say yes. A curved arrow returns to the population with the conclusion, in context: about 65% of the school\'s students say yes.', b);
 })());
 
 // 1.2 anatomy of a data table
@@ -173,7 +173,7 @@ FIG.push((() => {
   b += L(cx(4) + cw[4] / 2, y0 + rh * 5 + 4, cx(4) + cw[4] / 2, y0 + rh * 5 + 34, { stroke: VERM });
   b += TL(cx(4) + cw[4] / 2 - 160, y0 + rh * 5 + 50, 'A column is one variable: a characteristic\nrecorded for every dog', { size: 12.5, weight: 'bold', fill: '#A84300', lh: 15 });
   return svg(id, W, H, 'Rows, columns and types of variables',
-    'A data table about shelter dogs with columns Dog, Size group, Vaccinated?, Times adopted and Weight in kilograms, and four dogs as rows. Size group and Vaccinated? are tagged categorical. Times adopted is tagged quantitative, discrete. Weight is tagged quantitative, continuous. One row is outlined and labelled: a row is one observational unit, one dog. The weight column is outlined and labelled: a column is one variable, a characteristic recorded for every dog.', b);
+    'A data table about shelter dogs with columns Dog, Size group, Vaccinated?, Times adopted and Weight in kilograms, and four dogs as rows. Size group and Vaccinated? are tagged categorical. Times adopted is tagged quantitative, discrete. Weight is tagged quantitative, continuous. One row is outlined and labeled: a row is one observational unit, one dog. The weight column is outlined and labeled: a column is one variable, a characteristic recorded for every dog.', b);
 })());
 
 // 1.3 counts to relative frequencies

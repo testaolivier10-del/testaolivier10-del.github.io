@@ -229,7 +229,7 @@ fig('alternative-directions', 'test-one-proportion-setup', {
 /* 3.6: a p-value is a tail area of the null distribution. */
 fig('p-value-tails', 'p-values', {
   title: 'A p-value as a tail area',
-  alt: 'Two standard normal curves. Left, labelled one-sided, alternative p < 0.40: the area to the left of the test statistic z = −1.77 is shaded; it is the p-value, about 0.039. Right, labelled two-sided, alternative p is not 0.40: the areas to the left of z = −1.77 and to the right of z = 1.77 are both shaded; together they are the p-value, about 0.077, twice the one-sided value.',
+  alt: 'Two standard normal curves. Left, labeled one-sided, alternative p < 0.40: the area to the left of the test statistic z = −1.77 is shaded; it is the p-value, about 0.039. Right, labeled two-sided, alternative p is not 0.40: the areas to the left of z = −1.77 and to the right of z = 1.77 are both shaded; together they are the p-value, about 0.077, twice the one-sided value.',
   draw() {
     const W = 640, body = [];
     const z = (0.35 - 0.40) / Math.sqrt(0.4 * 0.6 / 300), p1 = Dist.normCdf(z);

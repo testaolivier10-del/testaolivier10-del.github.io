@@ -373,7 +373,7 @@
     ]
    },
    "options": [
-    "The sample space should also include a fourth outcome, a cancelled game",
+    "The sample space should also include a fourth outcome, a canceled game",
     "The probability of a win is 1, since a team plays to win",
     "Win, lose and tie need not be equally likely",
     "The answer should be $\\frac{1}{2}$, since a game is either won or not"

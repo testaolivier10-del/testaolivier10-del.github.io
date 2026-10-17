@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphical Representations Between… — AP® Statistics Notes</title>
+<meta name="description" content="Until now, most of the data in this course has been one variable at a time, or categories in a two-way table.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/scatterplots.html">
+<meta property="og:title" content="Graphical Representations Between… — AP® Statistics Notes">
+<meta property="og:description" content="Until now, most of the data in this course has been one variable at a time, or categories in a two-way table.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/scatterplots.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/scatterplots.html#reading",
+      "name": "Graphical Representations Between Two Quantitative Variables",
+      "url": "https://levlprep.com/statistics/notes/scatterplots.html",
+      "description": "Until now, most of the data in this course has been one variable at a time, or categories in a two-way table.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "graphical representations between two quantitative variables ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Regression Analysis",
+          "item": "https://levlprep.com/statistics/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Graphical Representations Between Two Quantitative Variables: notes",
+          "item": "https://levlprep.com/statistics/notes/scatterplots.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="scatterplots" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Regression Analysis</b><small>5 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="scatterplots"><a href="#main" aria-current="page"><span class="bk-toc-n">5.1</span>Graphical Representations Between Two Quantitative Variables</a><div class="bk-toc-onpage"><p>On this page</p><a href="#making-a-scatterplot">Making a scatterplot</a><a href="#four-things-to-describe">Four things to describe</a><a href="#strength-is-not-steepness">Strength is not steepness</a><a href="#curves-and-outliers">Curves and outliers</a><a href="#association-is-not-causation">Association is not causation</a></div></li><li data-toc-t="correlation"><a href="correlation.html"><span class="bk-toc-n">5.2</span>Correlation</a></li><li data-toc-t="linear-models"><a href="linear-models.html"><span class="bk-toc-n">5.3</span>Linear Regression Models</a></li><li data-toc-t="residuals"><a href="residuals.html"><span class="bk-toc-n">5.4</span>Residuals</a></li><li data-toc-t="least-squares-regression"><a href="least-squares-regression.html"><span class="bk-toc-n">5.5</span>Least-Squares Regression</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Regression Analysis</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Graphical Representations Between Two Quantitative Variables: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/scatterplots.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.1 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Graphical Representations Between Two Quantitative Variables</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="scatterplots">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fscatterplots.html&amp;title=Graphical%20Representations%20Between%20Two%20Quantitative%20Variables%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/scatterplots.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>Until now, most of the <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a> in this course has been one <a class="gl" href="../notes/variables.html" data-c="variable">variable</a> at a time, or categories in a <a class="gl" href="../notes/two-categorical-displays.html" data-c="two-way-table">two-way table</a>. This unit is about two <b>quantitative</b> variables measured on the same individuals: hours of sleep and reaction time, outdoor temperature and gas use, a car's age and its price. The first tool is a picture, and it comes before any formula.</p>
+
+<h2 id="making-a-scatterplot">Making a scatterplot</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="scatterplot">scatterplot</span></b> shows each individual as one point. Its horizontal position is the value of one variable and its vertical position the value of the other.</p>
+<ul>
+<li>Put the <b><a class="gl" href="../notes/investigative-questions.html" data-c="explanatory-response">explanatory variable</a></b>, the one you think helps explain or predict the other, on the horizontal axis (<math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>).</li>
+<li>Put the <b>response variable</b>, the <a class="gl" href="../notes/probability-intro.html" data-c="sample-space">outcome</a>, on the vertical axis (<math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>).</li>
+<li>Label both axes with the variable and its units, and choose scales that fit the data, which need not start at 0.</li>
+</ul>
+<p>If neither variable explains the other (height and arm span, say), either can go on either axis. But when there is a natural explanatory variable, it goes across.</p>
+
+<h2 id="four-things-to-describe">Four things to describe</h2>
+<figure id="fig-sleep"  class="stat-figure"><div class="stat-figimg" data-fig="sleep-reaction"><img src="../figures/sleep-reaction.svg" alt="Scatterplot of 14 students: hours of sleep the night before against reaction time in milliseconds. The points fall from upper left to lower right in a fairly narrow straight band, labeled direction negative, form linear, strength strong." width="620" height="400" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Sleep and reaction time for 14 students. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Look at <a class="figref" href="#fig-sleep">the scatterplot</a> and describe four features:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="stat-compare">
+<thead><tr><th>Feature</th><th>Question to ask</th><th>Sleep and reaction time</th></tr></thead>
+<tbody>
+<tr><td><span class="gl" tabindex="0" data-c="direction-form-strength">Direction</span></td><td>As <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> increases, does <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> tend to increase (positive) or decrease (negative)?</td><td>negative: more sleep, shorter times</td></tr>
+<tr><td>Form</td><td>Do the points follow a straight line (linear) or a bend (curved)?</td><td>linear</td></tr>
+<tr><td>Strength</td><td>How closely do the points follow that form?</td><td>strong: little scatter around the trend</td></tr>
+<tr><td>Unusual features</td><td>Are there <a class="gl" href="../notes/describing-distributions.html" data-c="outlier">outliers</a> (points far from the pattern) or separate <a class="gl" href="../notes/describing-distributions.html" data-c="gap-cluster">clusters</a>?</td><td>none</td></tr>
+</tbody>
+</table></div>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe the relationship between hours of sleep and reaction time.</p>
+<p>There is a strong, negative, linear <a class="gl" href="../notes/two-categorical-displays.html" data-c="association">association</a> between hours of sleep the night before and reaction time for these 14 students, with no clear outliers. Students who slept more tended to react faster: reaction times fall from about 340 milliseconds after 4.5 to 5 hours of sleep to about 290 milliseconds after 9 to 9.5 hours.</p>
+</div>
+<p>Notice the habits: every feature is named, the variables are named <a class="gl" href="../notes/intro-statistics.html" data-c="context">in context</a> with units, and a few values from the graph make the description concrete.</p>
+
+<h2 id="strength-is-not-steepness">Strength is not steepness</h2>
+<p>A common slip is to call a steep trend "strong". Steepness tells you how much <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> changes for each unit of <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>; strength tells you how tightly the points hug the pattern. A gently rising trend with points packed close is stronger than a steep trend with points scattered widely. Strength also does not depend on form: a curved pattern can be very strong.</p>
+
+<h2 id="curves-and-outliers">Curves and outliers</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> A dealer plots the age and price of 16 used cars of one model. Prices fall from about 31 thousand dollars for 1-year-old cars to about 20 thousand at 4 years, but only from about 13.7 to 12.2 thousand between 8 and 11 years.</p>
+<p>There is a strong, negative, curved association between age and price for these cars: price drops quickly in the first few years and then <a class="gl" href="../notes/experimental-design.html" data-c="treatment">levels</a> off. There are no clear outliers.</p>
+</div>
+<p>An <b>outlier</b> in a scatterplot is a point that falls far from the overall pattern. It need not be extreme on either variable alone. On a homeowner's plot of temperature against gas use, one day at 20 degrees used only 2.1 therms while other days that cold used about 8. Its values are ordinary; the <a class="gl" href="../notes/math-counting.html" data-c="combination">combination</a> is not. When you see such a point, look for a reason (the family was away and turned the heat down) and report it rather than deleting it quietly.</p>
+
+<h2 id="association-is-not-causation">Association is not causation</h2>
+<p>A scatterplot of observational data shows that two variables move together. It does not show that one causes the other. Students who sleep more might also eat breakfast, or be less stressed, and those could affect reaction time too. Sometimes a cause is believable for other reasons (cold weather clearly drives heating), but the plot alone does not prove it. Only a randomized <a class="gl" href="../notes/investigative-questions.html" data-c="experiment">experiment</a> can support a <a class="gl" href="../notes/investigative-questions.html" data-c="causation">cause-and-effect conclusion</a>.</p>
+
+<p>The next topic puts a number on the direction and strength of a linear association, so that "strong" and "weak" can be compared from one plot to another.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:scatterplots">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="math-lines.html"><span>&larr; Previous</span><b>Lines: Slope and Intercept</b></a><a class="tb-chapter-link next" href="correlation.html"><span>Next &rarr;</span><b>Correlation</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:scatterplots">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

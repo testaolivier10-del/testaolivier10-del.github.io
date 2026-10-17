@@ -51,7 +51,7 @@
   // Definitions may carry a few inline tags (italic species names, H<sub>2</sub>O).
   /* A few inline tags survive escaping; so does math rendered at build time
      (AP® Calculus AB definitions carry <math>...</math>). */
-  function rich(s){ return String(s == null ? '' : s).split(/(<math[\s\S]*?<\/math>)/).map(function(x, i){ return i % 2 ? x : esc(x).replace(/&lt;(\/?)(i|b|em|strong|sub|sup)&gt;/g, '<$1$2>'); }).join(''); }
+  function rich(s){ return String(s == null ? '' : s).split(/(<math[\s\S]*?<\/math>)/).map(function(x, i){ return i % 2 ? x : esc(x).replace(/&lt;(\/?)(i|b|em|strong|sub|sup)&gt;/g, '<$1$2>').replace(/&lt;wbr&gt;/g, '<wbr>'); }).join(''); }
   function reEsc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
   function load(){

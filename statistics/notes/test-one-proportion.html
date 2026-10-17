@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrying Out a Proportion Test — AP® Statistics Notes</title>
+<meta name="description" content="You have all the pieces: hypotheses and conditions (setup), the test statistic and p-value.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/test-one-proportion.html">
+<meta property="og:title" content="Carrying Out a Proportion Test — AP® Statistics Notes">
+<meta property="og:description" content="You have all the pieces: hypotheses and conditions (setup), the test statistic and p-value.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/test-one-proportion.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/test-one-proportion.html#reading",
+      "name": "Carrying Out a Test for a Population Proportion",
+      "url": "https://levlprep.com/statistics/notes/test-one-proportion.html",
+      "description": "You have all the pieces: hypotheses and conditions (setup), the test statistic and p-value.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "carrying out a test for a population proportion ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Categorical Data: Proportions",
+          "item": "https://levlprep.com/statistics/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Carrying Out a Test for a Population Proportion: notes",
+          "item": "https://levlprep.com/statistics/notes/test-one-proportion.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="test-one-proportion" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Inference for Categorical Data: Proportions</b><small>15 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="estimators"><a href="estimators.html"><span class="bk-toc-n">3.1</span>Estimators</a></li><li data-toc-t="sampling-dist-proportion"><a href="sampling-dist-proportion.html"><span class="bk-toc-n">3.2</span>Sampling Distributions for Sample Proportions</a></li><li data-toc-t="ci-one-proportion"><a href="ci-one-proportion.html"><span class="bk-toc-n">3.3</span>Constructing a Confidence Interval for a Population Proportion</a></li><li data-toc-t="ci-one-proportion-claims"><a href="ci-one-proportion-claims.html"><span class="bk-toc-n">3.4</span>Justifying a Claim Based on a Confidence Interval for a Population Proportion</a></li><li data-toc-t="test-one-proportion-setup"><a href="test-one-proportion-setup.html"><span class="bk-toc-n">3.5</span>Setting Up a Test for a Population Proportion</a></li><li data-toc-t="p-values"><a href="p-values.html"><span class="bk-toc-n">3.6</span>p-Values</a></li><li class="current" data-toc-t="test-one-proportion"><a href="#main" aria-current="page"><span class="bk-toc-n">3.7</span>Carrying Out a Test for a Population Proportion</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-decision-compare-the-p-value">The decision: compare the p-value with α</a><a href="#the-conclusion-has-four-parts">The conclusion has four parts</a><a href="#a-complete-test-state-plan-do">A complete test: state, plan, do, conclude</a><a href="#reading-computer-output">Reading computer output</a><a href="#what-a-test-can-and-cannot">What a test can and cannot tell you</a></div></li><li data-toc-t="errors-and-power"><a href="errors-and-power.html"><span class="bk-toc-n">3.8</span>Potential Errors When Performing Tests</a></li><li data-toc-t="sampling-dist-two-proportions"><a href="sampling-dist-two-proportions.html"><span class="bk-toc-n">3.9</span>Sampling Distributions for the Difference Between Sample Proportions</a></li><li data-toc-t="ci-two-proportions"><a href="ci-two-proportions.html"><span class="bk-toc-n">3.10</span>Constructing a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="ci-two-proportions-claims"><a href="ci-two-proportions-claims.html"><span class="bk-toc-n">3.11</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions-setup"><a href="test-two-proportions-setup.html"><span class="bk-toc-n">3.12</span>Setting Up a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions"><a href="test-two-proportions.html"><span class="bk-toc-n">3.13</span>Carrying Out a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="chi-square-setup"><a href="chi-square-setup.html"><span class="bk-toc-n">3.14</span>Setting Up a Chi-Square Test for Homogeneity or Independence</a></li><li data-toc-t="chi-square-test"><a href="chi-square-test.html"><span class="bk-toc-n">3.15</span>Carrying Out a Chi-Square Test for Homogeneity or Independence</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Inference for Categorical Data: Proportions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Carrying Out a Test for a Population Proportion: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/test-one-proportion.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 3 &middot; Topic 3.7 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Carrying Out a Test for a Population Proportion</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="test-one-proportion">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Ftest-one-proportion.html&amp;title=Carrying%20Out%20a%20Test%20for%20a%20Population%20Proportion%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/test-one-proportion.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>You have all the pieces: <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="hypotheses">hypotheses</a> and conditions (setup), the <a class="gl" href="../notes/p-values.html" data-c="test-statistic">test statistic</a> and <a class="gl" href="../notes/p-values.html" data-c="p-value">p-value</a>. This topic puts them together into one complete <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="significance-test">significance test</a> and adds the last step, the decision and the conclusion. On the exam this is a whole free-response question, scored part by part, so we write every part out.</p>
+
+<h2 id="the-decision-compare-the-p-value">The decision: compare the p-value with α</h2>
+<p>The <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="significance-level">significance level</a> <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> was chosen before the <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>. Now compare:</p>
+<ul>
+<li>If the p-value is less than <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, <b>reject <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math></b>. The result would be too unusual if <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> were true, so there is <b><a class="gl" href="../notes/ci-one-proportion-claims.html" data-c="convincing-evidence">convincing evidence</a></b> for <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">H_a</annotation></semantics></math>.</li>
+<li>If the p-value is greater than <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, <b><span class="gl" tabindex="0" data-c="reject">fail to reject</span> <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math></b>. The result is not unusual enough, so there is <b>not convincing evidence</b> for <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">H_a</annotation></semantics></math>.</li>
+</ul>
+<p>"Fail to reject" is not "accept". A large p-value <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a> the data are consistent with <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math>, and also with many values near <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p_0</annotation></semantics></math>. It never shows that <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> is true, just as a "not guilty" verdict does not show that someone is innocent.</p>
+
+<h2 id="the-conclusion-has-four-parts">The conclusion has four parts</h2>
+<ol>
+<li><b>Compare</b>, naming both numbers and the inequality: "Because the p-value of 0.0136 is less than <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>, we reject <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math>."</li>
+<li><b>Evidence</b>: "There is convincing evidence that ..." (or "is not convincing evidence").</li>
+<li><b><a class="gl" href="../notes/variables.html" data-c="parameter">Parameter</a> and <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">direction</a></b>: "... the <a class="gl" href="../notes/one-categorical-tables.html" data-c="population-proportion">true proportion</a> of all ... is less than 0.18." Use the direction word of <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">H_a</annotation></semantics></math>, even when you fail to reject.</li>
+<li><b>Context</b>: the <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> and <a class="gl" href="../notes/variables.html" data-c="variable">variable</a>, in the question's words.</li>
+</ol>
+<p>Conclusions about the <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> ("the <a class="gl" href="../notes/one-categorical-tables.html" data-c="sample-proportion">sample proportion</a> is less than 0.18") earn nothing: we knew that before the test. Conclusions about <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math> being true, and the words "prove" and "accept", lose the point.</p>
+
+<h2 id="a-complete-test-state-plan-do">A complete test: state, plan, do, conclude</h2>
+<figure id="fig-steps"  class="stat-figure"><div class="stat-figimg" data-fig="test-four-steps"><img src="../figures/test-four-steps.svg" alt="Four boxes in a column joined by arrows, for a test about chronic absence in a school district. State: the hypotheses H0: p = 0.18 and Ha: p &lt; 0.18, where p is the true proportion of all district students who are chronically absent, with alpha = 0.05. Plan: a one-sample z test for a proportion; random sample; 450 is less than 10% of the students; 450(0.18) = 81 and 450(0.82) = 369 are at least 10. Do: z = (0.14 − 0.18) / sqrt(0.18(0.82)/450) = −2.21 and p-value = 0.014. Conclude: because 0.014 &lt; 0.05, reject H0; there is convincing evidence that the true proportion is less than 0.18." width="640" height="506" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The four steps of a significance test, filled in for the chronic absence example below. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example.</b> Last year 18% of a large district's students were chronically absent. This year the district began a mentoring program. In a <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">random</a> sample of 450 of the district's 21,000 students, 63 are chronically absent. Is there convincing evidence at <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math> that the proportion has gone down?</p>
+<p><b>State.</b> <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><mi>p</mi><mo>=</mo><mn>0.18</mn></mrow><annotation encoding="application/x-tex">H_0: p = 0.18</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><mi>p</mi><mo>&lt;</mo><mn>0.18</mn></mrow><annotation encoding="application/x-tex">H_a: p &lt; 0.18</annotation></semantics></math>, where <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> is the true proportion of all the district's students who are chronically absent this year. <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>.</p>
+<p><b>Plan.</b> One-sample z test for a proportion. Random: a random sample of 450 students. 10%: 450 is less than 10% of the 21,000 students. <a class="gl" href="../notes/sampling-dist-proportion.html" data-c="large-counts">Large counts</a>: <math class="stat-m"><semantics><mrow><mi>n</mi><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">np_0</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>450</mn><mo stretchy="false">(</mo><mn>0.18</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 450(0.18)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>81</mn><mo>≥</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">= 81 \ge 10</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><mi>n</mi><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n(1 - p_0)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>450</mn><mo stretchy="false">(</mo><mn>0.82</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 450(0.82)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>369</mn><mo>≥</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">= 369 \ge 10</annotation></semantics></math>.</p>
+<p><b>Do.</b> <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mfrac><mn>63</mn><mn>450</mn></mfrac><mo>=</mo><mn>0.14</mn></mrow><annotation encoding="application/x-tex">\hat{p} = \frac{63}{450} = 0.14</annotation></semantics></math>.</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>z</mi><mo>=</mo><mfrac><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo>−</mo><msub><mi>p</mi><mn>0</mn></msub></mrow><msqrt><mfrac><mrow><msub><mi>p</mi><mn>0</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><mi>n</mi></mfrac></msqrt></mfrac><mo>=</mo><mfrac><mrow><mn>0.14</mn><mo>−</mo><mn>0.18</mn></mrow><msqrt><mfrac><mrow><mn>0.18</mn><mo stretchy="false">(</mo><mn>0.82</mn><mo stretchy="false">)</mo></mrow><mn>450</mn></mfrac></msqrt></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.04</mn></mrow><mn>0.0181</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.21</mn></mrow><annotation encoding="application/x-tex">z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1 - p_0)}{n}}} = \frac{0.14 - 0.18}{\sqrt{\frac{0.18(0.82)}{450}}} = \frac{-0.04}{0.0181} = -2.21</annotation></semantics></math></p>
+<p>p-value <math class="stat-m"><semantics><mrow><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>Z</mi><mo>≤</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.21</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.0136</mn></mrow><annotation encoding="application/x-tex">= P(Z \le -2.21) = 0.0136</annotation></semantics></math>. (Technology: a 1-proportion z test gives <math class="stat-m"><semantics><mrow><mi>z</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.21</mn></mrow><annotation encoding="application/x-tex">z = -2.21</annotation></semantics></math>, p-value 0.0136.)</p>
+<p><b>Conclude.</b> Because the p-value of 0.0136 is less than <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math>, we reject <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math>. There is convincing evidence that the true proportion of all the district's students who are chronically absent this year is less than 0.18.</p>
+</div>
+<p>With <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.01</annotation></semantics></math> instead, the same data give the opposite decision: <math class="stat-m"><semantics><mrow><mn>0.0136</mn><mo>&gt;</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">0.0136 &gt; 0.01</annotation></semantics></math>, so we would fail to reject <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math>, and there would not be convincing evidence that the true proportion is less than 0.18. That is why <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> is fixed in advance.</p>
+
+<h2 id="reading-computer-output">Reading computer output</h2>
+<p>Software prints a line such as "Test of p = 0.5 vs p > 0.5: X = 532, N = 1000, Sample p = 0.532, Z = 2.02, P-Value = 0.0215". Read the hypotheses from the first part (<math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><mi>p</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">H_0: p = 0.5</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mi>a</mi></msub><mo>:</mo><mi>p</mi><mo>&gt;</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">H_a: p &gt; 0.5</annotation></semantics></math>), then compare the p-value with <math class="stat-m"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> as usual. You still have to state the hypotheses with the parameter defined, check the conditions and write the conclusion; output is not work.</p>
+
+<h2 id="what-a-test-can-and-cannot">What a test can and cannot tell you</h2>
+<ul>
+<li><b>Generalize:</b> with a random sample, the conclusion applies to the population sampled (all the district's students).</li>
+<li><b>Cause:</b> only <a class="gl" href="../notes/experimental-design.html" data-c="random-assignment">random assignment</a> to <a class="gl" href="../notes/experimental-design.html" data-c="treatment">treatments</a> supports cause and effect. The mentoring study compares this year with last year with no randomly assigned comparison group, so it cannot show that the program caused the drop; other changes could explain it.</li>
+<li><b>Tests and intervals agree:</b> a <a class="gl" href="../notes/test-one-proportion-setup.html" data-c="one-two-sided">two-sided test</a> at <math class="stat-m"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math> almost always rejects <math class="stat-m"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>:</mo><mi>p</mi><mo>=</mo><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0: p = p_0</annotation></semantics></math> when <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p_0</annotation></semantics></math> is outside the 95% interval and fails to reject when it is inside. (The test's <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a> uses <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p_0</annotation></semantics></math> and the interval's <a class="gl" href="../notes/ci-one-proportion.html" data-c="standard-error">standard error</a> uses <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math>, so in rare borderline <a class="gl" href="../notes/variables.html" data-c="observational-unit">cases</a> the two can disagree.) A one-sided test at 0.05 goes with a 90% interval in the same way. The interval adds something the test does not: how far from <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p_0</annotation></semantics></math> the true proportion plausibly is.</li>
+</ul>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:test-one-proportion">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="p-values.html"><span>&larr; Previous</span><b>p-Values</b></a><a class="tb-chapter-link next" href="errors-and-power.html"><span>Next &rarr;</span><b>Potential Errors When Performing Tests</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:test-one-proportion">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

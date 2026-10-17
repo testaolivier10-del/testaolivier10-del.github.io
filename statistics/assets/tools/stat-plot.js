@@ -187,7 +187,7 @@
       var lab = [];
       xt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ay !== L) return; lab.push('<text x="' + r2(F.sx(v)) + '" y="' + r2(Math.min(F.h - 4, ax + 15)) + '" text-anchor="middle">' + (spec.piX ? piLabel(v) : fmtTick(v)) + '</text>'); });
       yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ax !== B) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + yText(v) + '</text>'); });
-      // The x-axis name sits under the tick labels, centred, when the axis is
+      // The x-axis name sits under the tick labels, centered, when the axis is
       // the bottom edge (every data plot), so it never covers the data; the
       // picture grows by one line for it. Inside the plot only when the axis
       // runs through it (a function plot through y = 0).

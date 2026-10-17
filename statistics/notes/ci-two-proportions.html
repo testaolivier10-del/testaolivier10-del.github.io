@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interval for Two Proportions — AP® Statistics Notes</title>
+<meta name="description" content="How to build and interpret a confidence interval for the difference between two population proportions, with the conditions to check and a worked example.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/ci-two-proportions.html">
+<meta property="og:title" content="Interval for Two Proportions — AP® Statistics Notes">
+<meta property="og:description" content="How to build and interpret a confidence interval for the difference between two population proportions, with the conditions to check and a worked example.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/ci-two-proportions.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/ci-two-proportions.html#reading",
+      "name": "Constructing a Confidence Interval for the Difference Between Two Population Proportions",
+      "url": "https://levlprep.com/statistics/notes/ci-two-proportions.html",
+      "description": "How to build and interpret a confidence interval for the difference between two population proportions, with the conditions to check and a worked example.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "constructing a confidence interval for the difference between two population proportions ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Categorical Data: Proportions",
+          "item": "https://levlprep.com/statistics/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Constructing a Confidence Interval for the Difference Between Two Population Proportions: notes",
+          "item": "https://levlprep.com/statistics/notes/ci-two-proportions.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="ci-two-proportions" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 3 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+    <a class="bk-toc-chap" href="../units/unit-3.html"><span class="bk-toc-chap-n">3</span><span><b>Inference for Categorical Data: Proportions</b><small>15 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-3"><div class="tb-progress-row"><span><b>0</b> of 15 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="estimators"><a href="estimators.html"><span class="bk-toc-n">3.1</span>Estimators</a></li><li data-toc-t="sampling-dist-proportion"><a href="sampling-dist-proportion.html"><span class="bk-toc-n">3.2</span>Sampling Distributions for Sample Proportions</a></li><li data-toc-t="ci-one-proportion"><a href="ci-one-proportion.html"><span class="bk-toc-n">3.3</span>Constructing a Confidence Interval for a Population Proportion</a></li><li data-toc-t="ci-one-proportion-claims"><a href="ci-one-proportion-claims.html"><span class="bk-toc-n">3.4</span>Justifying a Claim Based on a Confidence Interval for a Population Proportion</a></li><li data-toc-t="test-one-proportion-setup"><a href="test-one-proportion-setup.html"><span class="bk-toc-n">3.5</span>Setting Up a Test for a Population Proportion</a></li><li data-toc-t="p-values"><a href="p-values.html"><span class="bk-toc-n">3.6</span>p-Values</a></li><li data-toc-t="test-one-proportion"><a href="test-one-proportion.html"><span class="bk-toc-n">3.7</span>Carrying Out a Test for a Population Proportion</a></li><li data-toc-t="errors-and-power"><a href="errors-and-power.html"><span class="bk-toc-n">3.8</span>Potential Errors When Performing Tests</a></li><li data-toc-t="sampling-dist-two-proportions"><a href="sampling-dist-two-proportions.html"><span class="bk-toc-n">3.9</span>Sampling Distributions for the Difference Between Sample Proportions</a></li><li class="current" data-toc-t="ci-two-proportions"><a href="#main" aria-current="page"><span class="bk-toc-n">3.10</span>Constructing a Confidence Interval for the Difference Between Two Population Proportions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-parts-of-the-interval">The parts of the interval</a><a href="#conditions-in-words-with-numbers">Conditions, in words, with numbers</a><a href="#a-full-example">A full example</a><a href="#what-95-confident-means">What &quot;95% confident&quot; means</a><a href="#what-changes-the-width">What changes the width</a><a href="#experiments-random-assignment">Experiments: random assignment</a></div></li><li data-toc-t="ci-two-proportions-claims"><a href="ci-two-proportions-claims.html"><span class="bk-toc-n">3.11</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions-setup"><a href="test-two-proportions-setup.html"><span class="bk-toc-n">3.12</span>Setting Up a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="test-two-proportions"><a href="test-two-proportions.html"><span class="bk-toc-n">3.13</span>Carrying Out a Test for the Difference Between Two Population Proportions</a></li><li data-toc-t="chi-square-setup"><a href="chi-square-setup.html"><span class="bk-toc-n">3.14</span>Setting Up a Chi-Square Test for Homogeneity or Independence</a></li><li data-toc-t="chi-square-test"><a href="chi-square-test.html"><span class="bk-toc-n">3.15</span>Carrying Out a Chi-Square Test for Homogeneity or Independence</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Inference for Categorical Data: Proportions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Constructing a Confidence Interval for the Difference Between Two Population Proportions: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/ci-two-proportions.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 3 &middot; Topic 3.10 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Constructing a Confidence Interval for the Difference Between Two Population Proportions</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="ci-two-proportions">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fci-two-proportions.html&amp;title=Constructing%20a%20Confidence%20Interval%20for%20the%20Difference%20Between%20Two%20Population%20Proportions%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/ci-two-proportions.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>In the last topic you learned how a difference of two <a class="gl" href="../notes/one-categorical-tables.html" data-c="sample-proportion">sample proportions</a> behaves when you know both true proportions. In real studies you know neither. You have two <a class="gl" href="../notes/intro-statistics.html" data-c="sample">samples</a> and want to <a class="gl" href="../notes/estimators.html" data-c="estimator">estimate</a> how far apart the <a class="gl" href="../notes/intro-statistics.html" data-c="population">populations</a> are. A <a class="gl" href="../notes/ci-one-proportion.html" data-c="confidence-interval">confidence interval</a> for <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_1 - p_2</annotation></semantics></math> does that job, and it is built exactly like the interval for one proportion: an estimate plus or minus a <a class="gl" href="../notes/ci-one-proportion.html" data-c="margin-of-error">margin of error</a>.</p>
+
+<h2 id="the-parts-of-the-interval">The parts of the interval</h2>
+<p>Every confidence interval in this course has the same structure:</p>
+<p style="text-align:center"><b>statistic <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">±</mo></mrow><annotation encoding="application/x-tex">\pm</annotation></semantics></math> (<a class="gl" href="../notes/ci-one-proportion.html" data-c="critical-value">critical value</a>) <math class="stat-m"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math> (<a class="gl" href="../notes/ci-one-proportion.html" data-c="standard-error">standard error</a> of the statistic)</b></p>
+<p>For a <a class="gl" href="../notes/sampling-dist-two-proportions.html" data-c="diff-proportions">difference of two proportions</a>:</p>
+<ul>
+<li>The <b>statistic</b> is the sample difference, <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_1 - \hat{p}_2</annotation></semantics></math>.</li>
+<li>The <b>critical value</b> <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">z^*</annotation></semantics></math> comes from the <a class="gl" href="../notes/normal-distribution.html" data-c="standard-normal">standard normal distribution</a>: 1.645 for 90%, 1.96 for 95%, 2.576 for 99%.</li>
+<li>The <b>standard error</b> is the <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a> of <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\hat{p}_1 - \hat{p}_2</annotation></semantics></math> with each unknown <math class="stat-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> replaced by its sample proportion.</li>
+</ul>
+<p>Put together, the <b><span class="gl" tabindex="0" data-c="two-sample-z-interval">two-sample z interval</span></b> for <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>−</mo><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_1 - p_2</annotation></semantics></math> is</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub><mo stretchy="false">)</mo><mo>±</mo><msup><mi>z</mi><mo>∗</mo></msup><msqrt><mrow><mfrac><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><msub><mi>n</mi><mn>1</mn></msub></mfrac><mo>+</mo><mfrac><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><msub><mi>n</mi><mn>2</mn></msub></mfrac></mrow></msqrt><mo>.</mo></mrow><annotation encoding="application/x-tex">(\hat{p}_1 - \hat{p}_2) \pm z^* \sqrt{\frac{\hat{p}_1(1 - \hat{p}_1)}{n_1} + \frac{\hat{p}_2(1 - \hat{p}_2)}{n_2}}.</annotation></semantics></math></p>
+<p>Why the sample proportions in the standard error? Because we do not know <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">p_1</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_2</annotation></semantics></math>; the whole point is to estimate them. The <a class="gl" href="../notes/summary-statistics.html" data-c="variance">variances</a> still add, just as in the last topic.</p>
+
+<h2 id="conditions-in-words-with-numbers">Conditions, in words, with numbers</h2>
+<ul>
+<li><b><a class="gl" href="../notes/random-sampling.html" data-c="random-selection">Random</a>:</b> two <a class="gl" href="../notes/sampling-dist-two-proportions.html" data-c="independent-samples">independent random samples</a>, or two groups formed by <a class="gl" href="../notes/experimental-design.html" data-c="random-assignment">random assignment</a> in an <a class="gl" href="../notes/investigative-questions.html" data-c="experiment">experiment</a>. Say which, in the words of the problem.</li>
+<li><b>10%:</b> when sampling <a class="gl" href="../notes/random-sampling.html" data-c="replacement">without replacement</a>, each sample is less than 10% of its population. (In an experiment with no sampling, this check is not needed.)</li>
+<li><b><a class="gl" href="../notes/sampling-dist-proportion.html" data-c="large-counts">Large counts</a>:</b> <a class="gl" href="../notes/math-inequality-words.html" data-c="inequality-words">at least</a> 10 successes and 10 failures in each sample: <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">n_1\hat{p}_1</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n_1(1 - \hat{p}_1)</annotation></semantics></math>, <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">n_2\hat{p}_2</annotation></semantics></math> and <math class="stat-m"><semantics><mrow><msub><mi>n</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n_2(1 - \hat{p}_2)</annotation></semantics></math> are each at least 10. These are just the counts of yes and no answers in the <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>. Some books use 5; 10 is the common threshold.</li>
+</ul>
+<p>Never check <math class="stat-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n \ge 30</annotation></semantics></math> for proportions. That rule belongs to <a class="gl" href="../notes/summary-statistics.html" data-c="mean">means</a>.</p>
+
+<h2 id="a-full-example">A full example</h2>
+<figure id="fig-ci2"  class="stat-figure"><div class="stat-figimg" data-fig="two-prop-interval"><img src="../figures/two-prop-interval.svg" alt="Number line showing a 95% confidence interval for the city minus suburbs difference in proportions: a dot at the estimate 0.08 and a bar from 0.006 to 0.154, a margin of error of 0.074 on each side, with a dashed line at 0 just left of the bar." width="640" height="230" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The interval as a picture: the estimate in the middle and a margin of error on each side. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example.</b> A transit agency takes a random sample of 400 city residents and a separate random sample of 300 suburban residents. In the city, 248 say they would ride a new train line (<math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mi>C</mi></msub><mo>=</mo><mn>0.62</mn></mrow><annotation encoding="application/x-tex">\hat{p}_C = 0.62</annotation></semantics></math>); in the suburbs, 162 do (<math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mi>S</mi></msub><mo>=</mo><mn>0.54</mn></mrow><annotation encoding="application/x-tex">\hat{p}_S = 0.54</annotation></semantics></math>). Construct and interpret a 95% confidence interval for <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mi>C</mi></msub><mo>−</mo><msub><mi>p</mi><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">p_C - p_S</annotation></semantics></math>.</p>
+<p><b>Name the procedure and the <a class="gl" href="../notes/variables.html" data-c="parameter">parameter</a>.</b> A two-sample z interval for <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mi>C</mi></msub><mo>−</mo><msub><mi>p</mi><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">p_C - p_S</annotation></semantics></math>, where <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">p_C</annotation></semantics></math> is the <a class="gl" href="../notes/one-categorical-tables.html" data-c="population-proportion">true proportion</a> of all city residents who would ride the line and <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">p_S</annotation></semantics></math> is the true proportion of all suburban residents who would.</p>
+<p><b>Conditions.</b> Random: the problem says two separate random samples. 10%: 400 is less than 10% of city residents and 300 is less than 10% of suburban residents. Large counts: 248, 152, 162 and 138 are each at least 10.</p>
+<p><b>Calculate.</b> <math class="stat-m"><semantics><mrow><mtext>SE</mtext></mrow><annotation encoding="application/x-tex">\text{SE}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mrow><mfrac><mrow><mn>0.62</mn><mo stretchy="false">(</mo><mn>0.38</mn><mo stretchy="false">)</mo></mrow><mn>400</mn></mfrac><mo>+</mo><mfrac><mrow><mn>0.54</mn><mo stretchy="false">(</mo><mn>0.46</mn><mo stretchy="false">)</mo></mrow><mn>300</mn></mfrac></mrow></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{\frac{0.62(0.38)}{400} + \frac{0.54(0.46)}{300}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mrow><mn>0.000589</mn><mo>+</mo><mn>0.000828</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{0.000589 + 0.000828}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.0376</mn></mrow><annotation encoding="application/x-tex">= 0.0376</annotation></semantics></math>.</p>
+<p><math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0.62</mn><mo>−</mo><mn>0.54</mn><mo stretchy="false">)</mo><mo>±</mo><mn>1.96</mn><mo stretchy="false">(</mo><mn>0.0376</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0.62 - 0.54) \pm 1.96(0.0376)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.08</mn><mo>±</mo><mn>0.074</mn></mrow><annotation encoding="application/x-tex">= 0.08 \pm 0.074</annotation></semantics></math>, which is from 0.006 to 0.154.</p>
+<p>On a calculator this is a 2-proportion z interval; type the counts (248 of 400, 162 of 300) and the <a class="gl" href="../notes/experimental-design.html" data-c="treatment">level</a>.</p>
+<p><b>Interpret.</b> We are <a class="gl" href="../notes/ci-one-proportion.html" data-c="confidence-level">95% confident</a> that the interval from 0.006 to 0.154 captures the true difference in the proportions of all city residents and all suburban residents who would ride the new train line (city minus suburbs).</p>
+</div>
+<p><a class="figref" href="#fig-ci2">The figure</a> shows the same interval as a bar around the estimate. Notice the phrase "(city minus suburbs)". A difference has an order, and a reader needs to know which group came first. Subtract the other way and every sign flips: the interval for <math class="stat-m"><semantics><mrow><msub><mi>p</mi><mi>S</mi></msub><mo>−</mo><msub><mi>p</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">p_S - p_C</annotation></semantics></math> is from <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.154</mn></mrow><annotation encoding="application/x-tex">-0.154</annotation></semantics></math> to <math class="stat-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.006</mn></mrow><annotation encoding="application/x-tex">-0.006</annotation></semantics></math>.</p>
+
+<h2 id="what-95-confident-means">What "95% confident" means</h2>
+<p>The 95% describes the method, not this one interval. If the agency took many pairs of random samples of these sizes and built a 95% interval from each, about 95% of those intervals would capture the true difference. Our interval either captures it or does not; we just do not know which.</p>
+<p>Three readings to avoid:</p>
+<ul>
+<li>"There is a 95% <a class="gl" href="../notes/simulation.html" data-c="probability">chance</a> the true difference is in this interval." The true difference is a fixed number, not a random one.</li>
+<li>"95% of city residents ..." The interval is about one number for the whole population, never about individuals.</li>
+<li>Anything about the sample difference. We know it exactly: 0.08.</li>
+</ul>
+
+<h2 id="what-changes-the-width">What changes the width</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="stat-compare">
+<thead><tr><th>Change</th><th>Effect on the margin of error</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Higher confidence level</td><td>wider</td><td><math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">z^*</annotation></semantics></math> is larger</td></tr>
+<tr><td>Larger samples</td><td>narrower</td><td>each <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> divides a variance; four times the <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> halves the SE</td></tr>
+<tr><td>Proportions near 0.5</td><td>wider</td><td><math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\hat{p}(1 - \hat{p})</annotation></semantics></math> is largest at 0.5</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="experiments-random-assignment">Experiments: random assignment</h2>
+<p>The same interval works for an experiment that randomly assigns <a class="gl" href="../notes/experimental-design.html" data-c="experimental-unit">subjects</a> to two treatments. Random assignment takes the place of two random samples. It also changes what you can conclude: a difference between the groups can be blamed on the treatment, a <a class="gl" href="../notes/investigative-questions.html" data-c="causation">cause-and-effect conclusion</a>. If the subjects were volunteers rather than a random sample, generalize only to subjects like them.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:ci-two-proportions">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="sampling-dist-two-proportions.html"><span>&larr; Previous</span><b>Sampling Distributions for the Difference Between Sample Proportions</b></a><a class="tb-chapter-link next" href="ci-two-proportions-claims.html"><span>Next &rarr;</span><b>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Proportions</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:ci-two-proportions">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

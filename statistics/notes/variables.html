@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variables — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="Variables explained from scratch: free statistics study notes with figures and worked examples.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/variables.html">
+<meta property="og:title" content="Variables — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="Variables explained from scratch: free statistics study notes with figures and worked examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/variables.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/variables.html#reading",
+      "name": "Variables",
+      "url": "https://levlprep.com/statistics/notes/variables.html",
+      "description": "Variables explained from scratch: free statistics study notes with figures and worked examples.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "variables ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exploring One-Variable Data and Collecting Data",
+          "item": "https://levlprep.com/statistics/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Variables: notes",
+          "item": "https://levlprep.com/statistics/notes/variables.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="variables" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Exploring One-Variable Data and Collecting Data</b><small>13 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 13 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="intro-statistics"><a href="intro-statistics.html"><span class="bk-toc-n">1.1</span>Introducing Statistics: What Can We Learn from Data?</a></li><li class="current" data-toc-t="variables"><a href="#main" aria-current="page"><span class="bk-toc-n">1.2</span>Variables</a><div class="bk-toc-onpage"><p>On this page</p><a href="#observational-units-and-variables">Observational units and variables</a><a href="#categorical-or-quantitative">Categorical or quantitative?</a><a href="#parameter-or-statistic">Parameter or statistic?</a><a href="#distributions">Distributions</a><a href="#a-checklist-for-any-data-table">A checklist for any data table</a></div></li><li data-toc-t="one-categorical-tables"><a href="one-categorical-tables.html"><span class="bk-toc-n">1.3</span>Tabular Representation and Summary Statistics for One Categorical Variable</a></li><li data-toc-t="one-categorical-displays"><a href="one-categorical-displays.html"><span class="bk-toc-n">1.4</span>Graphical Representations for One Categorical Variable</a></li><li data-toc-t="one-quantitative-displays"><a href="one-quantitative-displays.html"><span class="bk-toc-n">1.5</span>Graphical Representations for One Quantitative Variable</a></li><li data-toc-t="describing-distributions"><a href="describing-distributions.html"><span class="bk-toc-n">1.6</span>Descriptions for One Quantitative Variable Distributions</a></li><li data-toc-t="summary-statistics"><a href="summary-statistics.html"><span class="bk-toc-n">1.7</span>Summary Statistics for One Quantitative Variable</a></li><li data-toc-t="boxplots"><a href="boxplots.html"><span class="bk-toc-n">1.8</span>Graphical Representations of Summary Statistics for One Quantitative Variable</a></li><li data-toc-t="comparing-distributions"><a href="comparing-distributions.html"><span class="bk-toc-n">1.9</span>Comparisons of the Distributions for One Quantitative Variable</a></li><li data-toc-t="investigative-questions"><a href="investigative-questions.html"><span class="bk-toc-n">1.10</span>The Investigative Question Revisited and Data Collection</a></li><li data-toc-t="random-sampling"><a href="random-sampling.html"><span class="bk-toc-n">1.11</span>Random Sampling</a></li><li data-toc-t="sampling-problems"><a href="sampling-problems.html"><span class="bk-toc-n">1.12</span>Potential Problems with Sampling</a></li><li data-toc-t="experimental-design"><a href="experimental-design.html"><span class="bk-toc-n">1.13</span>Experimental Design</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Probability, Random Variables, and Probability Distributions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Exploring One-Variable Data and Collecting Data</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Variables: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/variables.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.2 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Variables</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="variables">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fvariables.html&amp;title=Variables%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/variables.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p><a class="gl" href="../notes/intro-statistics.html" data-c="data">Data</a> usually arrive as a table. Before you summarize anything, you need to read the table correctly: what each row is, what each column holds, and whether each number describes a whole <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> or just a <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a>. This page gives you the words for all three.</p>
+
+<h2 id="observational-units-and-variables">Observational units and variables</h2>
+<p>An <b><span class="gl" tabindex="0" data-c="observational-unit">observational unit</span></b> is one individual the data describe. It can be a person, an animal, a car, a day, a school. In a data table, each row is one observational unit.</p>
+<p>A <b><span class="gl" tabindex="0" data-c="variable">variable</span></b> is a characteristic recorded for every observational unit, a characteristic whose value can change from one unit to the next. In a table, each column is one variable. "Eye color" is a variable; "brown" is one of its values.</p>
+<figure id="fig-table"  class="stat-figure"><div class="stat-figimg" data-fig="data-table-anatomy"><img src="../figures/data-table-anatomy.svg" alt="A data table about shelter dogs with columns Dog, Size group, Vaccinated?, Times adopted and Weight in kilograms, and four dogs as rows. Size group and Vaccinated? are tagged categorical. Times adopted is tagged quantitative, discrete. Weight is tagged quantitative, continuous. One row is outlined and labeled: a row is one observational unit, one dog. The weight column is outlined and labeled: a column is one variable, a characteristic recorded for every dog." width="740" height="330" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Each row is one dog, an observational unit. Each column is a variable, tagged with its type. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="categorical-or-quantitative">Categorical or quantitative?</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="categorical-variable">categorical variable</span></b> places each unit in a group: size group (small, medium, large), vaccinated (yes, no), favorite sport. A <b><span class="gl" tabindex="0" data-c="quantitative-variable">quantitative variable</span></b> records a number that is an amount: weight, time, a count. The test is simple: <i>does arithmetic with the values make sense?</i> The <a class="gl" href="../notes/summary-statistics.html" data-c="mean">average</a> weight of five dogs tells you something. The average kennel number does not.</p>
+<p>That test catches the classic trap. ZIP codes, jersey numbers, phone area codes and kennel numbers are written as numbers, but they are labels. They are categorical.</p>
+<p>Quantitative variables come in two kinds.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Kind</th><th>What its values look like</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><th>Discrete</th><td>Separate values with <a class="gl" href="../notes/describing-distributions.html" data-c="gap-cluster">gaps</a> between them, usually counts</td><td>number of siblings, texts sent today, times adopted</td></tr>
+<tr><th>Continuous</th><td>Any value in an interval, usually measurements</td><td>weight, height, time to run a mile</td></tr>
+</tbody>
+</table></div>
+<p>Rounding does not change the kind. Height recorded to the nearest centimeter is still continuous, because a true height can be any value in a <a class="gl" href="../notes/summary-statistics.html" data-c="range">range</a>.</p>
+
+<h2 id="parameter-or-statistic">Parameter or statistic?</h2>
+<p>A number that describes a population is a <b><span class="gl" tabindex="0" data-c="parameter">parameter</span></b>. A number that describes a sample is a <b>statistic</b>. A handy memory aid: <i>p</i>opulation goes with <i>p</i>arameter, <i>s</i>ample goes with <i>s</i>tatistic.</p>
+<p>Parameters are usually unknown, because finding one requires measuring every individual in the population. So we compute a statistic from a sample and use it to <a class="gl" href="../notes/estimators.html" data-c="estimator">estimate</a> the parameter. A parameter is fixed. A statistic changes from sample to sample, because each sample contains different individuals.</p>
+<div class="worked">
+<p><b>Classify the numbers.</b> District records show that 31% of the 1,250 seniors in a school district have a part-time job. A reporter chooses 80 seniors <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">at random</a>; 26% of them have a part-time job.</p>
+<p>31%: it comes from records on all 1,250 seniors, the population, so it is a <b>parameter</b>.</p>
+<p>26%: it describes the 80 seniors in the sample, so it is a <b>statistic</b>. Another reporter, with another 80 seniors, would <a class="gl" href="../notes/simulation.html" data-c="probability">likely</a> get a different <a class="gl" href="../notes/math-fractions-percents.html" data-c="proportion-math">percent</a>, perhaps 29% or 33%. The 31% would stay 31%.</p>
+<p>The variable in both numbers is "has a part-time job" (yes or no), a categorical variable. The observational units are the seniors.</p>
+</div>
+
+<h2 id="distributions">Distributions</h2>
+<p>The <b><span class="gl" tabindex="0" data-c="distribution">distribution</span></b> of a variable tells what values the variable takes and how often it takes each one. For "size group" in a shelter, the distribution might be 12 small, 20 medium and 8 large dogs. For "weight", it tells how the weights are spread over the possible values. Describing distributions is the main job of the rest of Unit 1: first for categorical variables with tables and graphs, then for quantitative variables with graphs and numbers.</p>
+
+<h2 id="a-checklist-for-any-data-table">A checklist for any data table</h2>
+<ul>
+<li>What is one row? Those are the observational units.</li>
+<li>For each column: is it a group (categorical) or an amount (quantitative)? If quantitative, a count (<span class="gl" tabindex="0" data-c="discrete-variable">discrete</span>) or a measurement (continuous)?</li>
+<li>For each number reported: does it describe the population (parameter) or a sample (statistic)?</li>
+</ul>
+<p>Getting these right decides which graph to draw and which summary to compute, so it is worth thirty seconds on every problem.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:variables">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="intro-statistics.html"><span>&larr; Previous</span><b>Introducing Statistics: What Can We Learn from Data?</b></a><a class="tb-chapter-link next" href="math-fractions-percents.html"><span>Next &rarr;</span><b>Fractions, Decimals and Percents</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:variables">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

@@ -113,7 +113,7 @@
      everything else in them is plain text. rich() escapes the text and keeps
      the math; maskTerm() masks the term in the text only. */
   var MATH_SPLIT = /(<math[\s\S]*?<\/math>)/;
-  function rich(s){ return String(s == null ? '' : s).split(MATH_SPLIT).map(function(x, i){ return i % 2 ? x : esc(x); }).join(''); }
+  function rich(s){ return String(s == null ? '' : s).split(MATH_SPLIT).map(function(x, i){ return i % 2 ? x : esc(x).replace(/&lt;wbr&gt;/g, '<wbr>'); }).join(''); }
   function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
   function maskTerm(def, term){
     var names = [term.replace(/^the\s+/i, '')], paren = term.match(/^(.*?)\s*\(([^)]+)\)\s*$/);

@@ -5,7 +5,7 @@
    ApStatTools.modes on the Tool Studio. Styles: chi-square-lab.css.
 
    Explore: one stage, two linked pictures. Top: the two-way table, each cell
-   with its observed count, its expected count and a heat colour for its
+   with its observed count, its expected count and a heat color for its
    component (O - E)²/E, orange where O is above E and blue where it is below;
    row and column totals. Bottom: the χ² distribution for the table's df,
    the statistic marked, the p-value shaded, and a stacked bar along the axis
@@ -58,7 +58,7 @@
     var t = CS.table(obs), all = R * C;
     var labW = Math.min(small ? 92 : 170, Math.max(70, W * 0.24)), totW = small ? 44 : 64, pad = small ? 4 : 12;
     var cw = (W - pad * 2 - labW - totW) / C, headH = small ? 34 : 38, ch = (small ? 46 : Math.min(58, Math.max(46, (H * 0.5 - headH) / (R + 1)))) + (v.compText ? 12 : 0);
-    // Without the curve the table has the stage: bigger cells, centred.
+    // Without the curve the table has the stage: bigger cells, centered.
     if(!v.curve) ch = Math.max(ch, Math.min(small ? 70 : 84, (H - headH - 12) / (R + 1)));
     var x0 = pad + labW, y0 = v.curve ? 4 : Math.max(4, (H - headH - ch * (R + 1)) / 2), out = [], cells = [], maxComp = 0, i, j;
     for(i = 0; i < R; i++) for(j = 0; j < C; j++) maxComp = Math.max(maxComp, t.components[i][j]);
@@ -295,7 +295,7 @@
       var body = fitNote +
         '<p><b>Hypotheses.</b> ' + tx('$H_0$: ' + h.h0 + ' $H_a$: ' + h.ha) + '</p>' +
         '<p><b>Expected counts.</b> ' + tx('If $H_0$ is true, each cell should hold $\\frac{(\\text{row total})(\\text{column total})}{\\text{grand total}}$. The smallest here is ' + F(t.minExpected, 2) + (t.ok ? ', at least 5, so the large counts condition is met.' : ': below 5, so the chi-square distribution may not fit.')) + '</p>' +
-        '<p><b>The statistic.</b> ' + tx('$\\chi^2 = \\sum \\frac{(O - E)^2}{E} = ' + F(t.chi2, 2) + '$; each coloured segment of the bar on the axis is one cell\'s share. Orange cells hold more than expected, blue fewer.') + '</p>' +
+        '<p><b>The statistic.</b> ' + tx('$\\chi^2 = \\sum \\frac{(O - E)^2}{E} = ' + F(t.chi2, 2) + '$; each colored segment of the bar on the axis is one cell\'s share. Orange cells hold more than expected, blue fewer.') + '</p>' +
         '<p><b>Decide and conclude.</b> ' + tx('$df = (' + S.obs.length + ' - 1)(' + S.obs[0].length + ' - 1) = ' + t.df + '$, p-value $= P(\\chi^2 \\ge ' + F(t.chi2, 2) + ') ' + PEQ(t.p) + '$. Because the p-value ' + (t.p < 0.00005 ? '(less than 0.0001)' : 'of ' + P4(t.p)) + ' is ' + (rej ? 'less' : 'greater') + ' than $\\alpha = ' + (S.alpha === 0.1 ? '0.10' : S.alpha) + '$, we ' + (rej ? 'reject' : 'fail to reject') + ' $H_0$. ' + CS.conclusions(c, rej)[0].t) + '</p>' +
         '<p class="bt-small">Press Chance table a few times: tables drawn from ' + tx('$H_0$') + ' itself still give χ² values around the df, and about ' + Math.round(S.alpha * 100) + ' in 100 land beyond the cutoff.</p>';
       T.explain(whyEl, 'χ² adds up how far each cell is from the count the null hypothesis predicts; a large χ² is evidence against the null.', body); openWhy();

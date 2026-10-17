@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linear Regression Models — AP® Statistics Notes | LevlPrep</title>
+<meta name="description" content="A scatterplot describes a relationship; a correlation measures how linear it is.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/linear-models.html">
+<meta property="og:title" content="Linear Regression Models — AP® Statistics Notes | LevlPrep">
+<meta property="og:description" content="A scatterplot describes a relationship; a correlation measures how linear it is.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/linear-models.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/linear-models.html#reading",
+      "name": "Linear Regression Models",
+      "url": "https://levlprep.com/statistics/notes/linear-models.html",
+      "description": "A scatterplot describes a relationship; a correlation measures how linear it is.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "linear regression models ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Regression Analysis",
+          "item": "https://levlprep.com/statistics/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Linear Regression Models: notes",
+          "item": "https://levlprep.com/statistics/notes/linear-models.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="linear-models" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Inference for Quantitative Data: Means</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Regression Analysis</b><small>5 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="scatterplots"><a href="scatterplots.html"><span class="bk-toc-n">5.1</span>Graphical Representations Between Two Quantitative Variables</a></li><li data-toc-t="correlation"><a href="correlation.html"><span class="bk-toc-n">5.2</span>Correlation</a></li><li class="current" data-toc-t="linear-models"><a href="#main" aria-current="page"><span class="bk-toc-n">5.3</span>Linear Regression Models</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-regression-line">The regression line</a><a href="#making-a-prediction">Making a prediction</a><a href="#interpreting-the-slope">Interpreting the slope</a><a href="#interpreting-the-intercept-when-it-makes">Interpreting the intercept, when it makes sense</a><a href="#extrapolation">Extrapolation</a></div></li><li data-toc-t="residuals"><a href="residuals.html"><span class="bk-toc-n">5.4</span>Residuals</a></li><li data-toc-t="least-squares-regression"><a href="least-squares-regression.html"><span class="bk-toc-n">5.5</span>Least-Squares Regression</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Regression Analysis</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Linear Regression Models: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/linear-models.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.3 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Linear Regression Models</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="linear-models">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Flinear-models.html&amp;title=Linear%20Regression%20Models%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/linear-models.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>A <a class="gl" href="../notes/scatterplots.html" data-c="scatterplot">scatterplot</a> describes a relationship; a <a class="gl" href="../notes/correlation.html" data-c="correlation">correlation</a> measures how linear it is. The next step is to use the relationship: to predict the response for a given value of the <a class="gl" href="../notes/investigative-questions.html" data-c="explanatory-response">explanatory variable</a>. When the pattern is linear, a straight line does that.</p>
+
+<h2 id="the-regression-line">The regression line</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="regression-line">regression line</span></b> is a line that describes how the response <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> changes, on <a class="gl" href="../notes/summary-statistics.html" data-c="mean">average</a>, as the explanatory <a class="gl" href="../notes/variables.html" data-c="variable">variable</a> <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> changes. In statistics it is written</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>x</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">\hat{y} = a + bx,</annotation></semantics></math></p>
+<p>where <math class="stat-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> is the <a class="gl" href="../notes/math-lines.html" data-c="intercept">intercept</a> and <math class="stat-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> is the <a class="gl" href="../notes/math-lines.html" data-c="slope-line">slope</a>, the same kind of equation as <math class="stat-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">y = mx + b</annotation></semantics></math> from algebra. Watch the letters: here <math class="stat-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> is the slope (algebra's <math class="stat-m"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math>) and <math class="stat-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> is the intercept (algebra's <math class="stat-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math>), written first. The hat on <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math> ("y-hat") says that the output is a <b>predicted value</b>, not an observed one. Real <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a> points scatter above and below the line; the line gives the typical value for each <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. (This equation, <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\hat{y} = a + bx</annotation></semantics></math>, is on the reference sheet.)</p>
+<p>Where does the line come from? Usually from technology, which fits the line to the data. Topic 5.5 explains how the best line is chosen. For now, take the equation as given and learn to use it.</p>
+
+<h2 id="making-a-prediction">Making a prediction</h2>
+<figure id="fig-line"  class="stat-figure"><div class="stat-figimg" data-fig="regression-line-predict"><img src="../figures/regression-line-predict.svg" alt="The sleep and reaction time scatterplot with the regression line, predicted time = 391.1 minus 11.37 times hours; dashed lines go up from 6.8 hours to the line and across to a predicted reaction time of 314 milliseconds." width="620" height="400" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The regression line for the sleep data and one prediction. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> For 14 students, the line for predicting reaction time (milliseconds) from hours of sleep is <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mn>391.1</mn><mo>−</mo><mn>11.37</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">\hat{y} = 391.1 - 11.37x</annotation></semantics></math>. Predict the reaction time of a student who slept 6.8 hours.</p>
+<p><math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>391.1</mn><mo>−</mo><mn>11.37</mn><mo stretchy="false">(</mo><mn>6.8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 391.1 - 11.37(6.8)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>391.1</mn><mo>−</mo><mn>77.3</mn></mrow><annotation encoding="application/x-tex">= 391.1 - 77.3</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>313.8</mn></mrow><annotation encoding="application/x-tex">= 313.8</annotation></semantics></math> milliseconds.</p>
+<p>In words: the line predicts a reaction time of about 314 milliseconds for a student who slept 6.8 hours. <a class="figref" href="#fig-line">The figure</a> shows the same prediction: up from 6.8 to the line, then across.</p>
+</div>
+
+<h2 id="interpreting-the-slope">Interpreting the slope</h2>
+<p>The slope is the change in the predicted value for each one-unit increase in <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. Its units are units of <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> per unit of <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. Use this template, filling <a class="gl" href="../notes/intro-statistics.html" data-c="context">in context</a>:</p>
+<p style="text-align:center"><b>"For each additional [unit of <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>], the predicted [<math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>] increases (decreases) by about <math class="stat-m"><semantics><mrow><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|b|</annotation></semantics></math> [units of <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>]."</b></p>
+<p>For the sleep line: for each additional hour of sleep, the predicted reaction time decreases by about 11.4 milliseconds. The word "predicted" matters. The slope does not say that every student who sleeps one more hour reacts exactly 11.4 milliseconds faster; it describes the trend of the predictions.</p>
+<p>The slope always has the same sign as the correlation: a <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">negative association</a> gives a falling line.</p>
+
+<h2 id="interpreting-the-intercept-when-it-makes">Interpreting the intercept, when it makes sense</h2>
+<p>The intercept <math class="stat-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> is the predicted <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> when <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>. Interpret it only if <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> is a sensible value inside, or very near, the data.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A resale site fits <math class="stat-m"><semantics><mrow><mover accent="true"><mtext>price</mtext><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\widehat{\text{price}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>620</mn><mo>−</mo><mn>95</mn><mo stretchy="false">(</mo><mtext>age</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= 620 - 95(\text{age})</annotation></semantics></math> to listings of one phone model aged 0 to 6 years.</p>
+<p><b>Slope:</b> for each additional year of age, the predicted resale price decreases by about 95 dollars.</p>
+<p><b>Intercept:</b> a new phone (age 0) has a predicted price of 620 dollars. This makes sense, because new phones are in the data.</p>
+<p><b>A prediction:</b> for a 3.5-year-old phone, <math class="stat-m"><semantics><mrow><mn>620</mn><mo>−</mo><mn>95</mn><mo stretchy="false">(</mo><mn>3.5</mn><mo stretchy="false">)</mo><mo>=</mo><mn>287.5</mn></mrow><annotation encoding="application/x-tex">620 - 95(3.5) = 287.5</annotation></semantics></math>, so about 287.50 dollars.</p>
+</div>
+<p>Compare a line for children aged 5 to 12, <math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="false">&#x005E;</mo></mover><mo>=</mo><mn>76</mn><mo>+</mo><mn>6.2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">\hat{y} = 76 + 6.2x</annotation></semantics></math> for height in centimeters. The intercept would describe a newborn, but no newborns are in the data, and children do not grow at a steady rate from birth. So the intercept has no useful meaning here.</p>
+
+<h2 id="extrapolation">Extrapolation</h2>
+<p>A line is fit to the <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> values in the data. Using it far outside that <a class="gl" href="../notes/summary-statistics.html" data-c="range">range</a> is <b><span class="gl" tabindex="0" data-c="extrapolation">extrapolation</span></b>, and it is unreliable: nothing in the data says the pattern continues. The phone line predicts <math class="stat-m"><semantics><mrow><mn>620</mn><mo>−</mo><mn>95</mn><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>140</mn></mrow><annotation encoding="application/x-tex">620 - 95(8) = -140</annotation></semantics></math> dollars for an 8-year-old phone, an impossible price. The sleep line predicts about 243 milliseconds for 13 hours of sleep, far faster than any student in the data, who all slept 4.5 to 9.5 hours. Both numbers come out of the equation; neither should be trusted.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="stat-compare">
+<thead><tr><th>Part</th><th>Meaning</th><th>Template</th></tr></thead>
+<tbody>
+<tr><td><math class="stat-m"><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math></td><td>predicted value of <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></td><td>"The predicted [<math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>] for [<math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> value] is ..."</td></tr>
+<tr><td><math class="stat-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></td><td>predicted change in <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> per unit of <math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></td><td>"For each additional ..., the predicted ... increases (decreases) by about ..."</td></tr>
+<tr><td><math class="stat-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></td><td>predicted <math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> when <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math></td><td>"When [<math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>] is 0, the predicted [<math class="stat-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>] is ...", only if <math class="stat-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> makes sense</td></tr>
+</tbody>
+</table></div>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:linear-models">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="correlation.html"><span>&larr; Previous</span><b>Correlation</b></a><a class="tb-chapter-link next" href="residuals.html"><span>Next &rarr;</span><b>Residuals</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:linear-models">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

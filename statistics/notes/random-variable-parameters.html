@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parameters of Random Variables — AP® Statistics Notes</title>
+<meta name="description" content="In Unit 1 you summarized a data set with its mean and standard deviation. A probability distribution can be summarized the same way.">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/random-variable-parameters.html">
+<meta property="og:title" content="Parameters of Random Variables — AP® Statistics Notes">
+<meta property="og:description" content="In Unit 1 you summarized a data set with its mean and standard deviation. A probability distribution can be summarized the same way.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/random-variable-parameters.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/random-variable-parameters.html#reading",
+      "name": "Parameters of Random Variables",
+      "url": "https://levlprep.com/statistics/notes/random-variable-parameters.html",
+      "description": "In Unit 1 you summarized a data set with its mean and standard deviation. A probability distribution can be summarized the same way.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "parameters of random variables ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Probability, Random Variables, and Probability Distributions",
+          "item": "https://levlprep.com/statistics/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Parameters of Random Variables: notes",
+          "item": "https://levlprep.com/statistics/notes/random-variable-parameters.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="random-variable-parameters" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Exploring One-Variable Data and Collecting Data</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Probability, Random Variables, and Probability Distributions</b><small>12 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="two-categorical-displays"><a href="two-categorical-displays.html"><span class="bk-toc-n">2.1</span>Tabular and Graphical Representations for the Distributions of Two Categorical Variables</a></li><li data-toc-t="two-categorical-summaries"><a href="two-categorical-summaries.html"><span class="bk-toc-n">2.2</span>Summary Statistics for Two Categorical Variables</a></li><li data-toc-t="simulation"><a href="simulation.html"><span class="bk-toc-n">2.3</span>Estimating Probabilities Using Simulation</a></li><li data-toc-t="probability-intro"><a href="probability-intro.html"><span class="bk-toc-n">2.4</span>Introduction to Probability</a></li><li data-toc-t="mutually-exclusive"><a href="mutually-exclusive.html"><span class="bk-toc-n">2.5</span>Mutually Exclusive Events</a></li><li data-toc-t="conditional-probability"><a href="conditional-probability.html"><span class="bk-toc-n">2.6</span>Conditional Probability</a></li><li data-toc-t="independence-unions"><a href="independence-unions.html"><span class="bk-toc-n">2.7</span>Independent Events and Unions of Events</a></li><li data-toc-t="random-variables"><a href="random-variables.html"><span class="bk-toc-n">2.8</span>Introduction to Random Variables and Probability Distributions</a></li><li class="current" data-toc-t="random-variable-parameters"><a href="#main" aria-current="page"><span class="bk-toc-n">2.9</span>Parameters of Random Variables</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-mean-or-expected-value">The mean, or expected value</a><a href="#the-standard-deviation">The standard deviation</a><a href="#expected-gain-in-games-and-insurance">Expected gain in games and insurance</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="binomial-distribution"><a href="binomial-distribution.html"><span class="bk-toc-n">2.10</span>The Binomial Distribution</a></li><li data-toc-t="normal-distribution"><a href="normal-distribution.html"><span class="bk-toc-n">2.11</span>The Normal Distribution</a></li><li data-toc-t="sampling-distributions"><a href="sampling-distributions.html"><span class="bk-toc-n">2.12</span>Sampling Distributions and the Central Limit Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Inference for Categorical Data: Proportions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Probability, Random Variables, and Probability Distributions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Parameters of Random Variables: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/random-variable-parameters.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 2 &middot; Topic 2.9 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Parameters of Random Variables</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="random-variable-parameters">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Frandom-variable-parameters.html&amp;title=Parameters%20of%20Random%20Variables%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/random-variable-parameters.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>In Unit 1 you summarized a <a class="gl" href="../notes/intro-statistics.html" data-c="data">data set</a> with its <a class="gl" href="../notes/summary-statistics.html" data-c="mean">mean</a> and <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a>. A <a class="gl" href="../notes/random-variables.html" data-c="probability-distribution">probability distribution</a> can be summarized the same way. The only change is that values are weighted by their <a class="gl" href="../notes/simulation.html" data-c="probability">probabilities</a> instead of counted equally. These two numbers, the mean and <span class="gl" tabindex="0" data-c="rv-sd">standard deviation of a random variable</span>, describe what happens in the long run.</p>
+
+<h2 id="the-mean-or-expected-value">The mean, or expected value</h2>
+<p>Let X = the number of tacos in a <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">randomly</a> chosen order at a food truck.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th><math class="stat-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+<tbody><tr><td><math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>X</mi><mo>=</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(X = x)</annotation></semantics></math></td><td>0.20</td><td>0.35</td><td>0.25</td><td>0.15</td><td>0.05</td></tr></tbody>
+</table></div>
+<p>Imagine 100 typical orders: about 20 have 1 taco, 35 have 2, 25 have 3, 15 have 4 and 5 have 5. The total is <math class="stat-m"><semantics><mrow><mn>20</mn><mo>+</mo><mn>70</mn><mo>+</mo><mn>75</mn><mo>+</mo><mn>60</mn><mo>+</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">20 + 70 + 75 + 60 + 25</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>250</mn></mrow><annotation encoding="application/x-tex">= 250</annotation></semantics></math> tacos, or 2.5 tacos per order. Dividing by 100 at the end is the same as multiplying each value by its probability. That gives the formula for the <b>mean</b> or <b><span class="gl" tabindex="0" data-c="expected-value">expected value</span></b> of a <a class="gl" href="../notes/variables.html" data-c="discrete-variable">discrete</a> <a class="gl" href="../notes/random-variables.html" data-c="random-variable">random variable</a>, which is on the reference sheet:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>μ</mi><mi>X</mi></msub><mo>=</mo><mi>E</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo>=</mo><mo largeop="true" movablelimits="false">∑</mo><msub><mi>x</mi><mi>i</mi></msub><msub><mi>p</mi><mi>i</mi></msub><mo>.</mo></mrow><annotation encoding="application/x-tex">\mu_X = E(X) = \sum x_i p_i.</annotation></semantics></math></p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the mean of X.</p>
+<p>Structure: <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>X</mi></msub><mo>=</mo><mo largeop="true" movablelimits="false">∑</mo><msub><mi>x</mi><mi>i</mi></msub><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mu_X = \sum x_i p_i</annotation></semantics></math>.</p>
+<p>Substitute: <math class="stat-m"><semantics><mrow><mn>1</mn><mo stretchy="false">(</mo><mn>0.20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1(0.20)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>2</mn><mo stretchy="false">(</mo><mn>0.35</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">+ 2(0.35)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>3</mn><mo stretchy="false">(</mo><mn>0.25</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">+ 3(0.25)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>4</mn><mo stretchy="false">(</mo><mn>0.15</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">+ 4(0.15)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>5</mn><mo stretchy="false">(</mo><mn>0.05</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">+ 5(0.05)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.20</mn></mrow><annotation encoding="application/x-tex">= 0.20</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.70</mn></mrow><annotation encoding="application/x-tex">+ 0.70</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">+ 0.75</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.60</mn></mrow><annotation encoding="application/x-tex">+ 0.60</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">+ 0.25</annotation></semantics></math>.</p>
+<p>Answer: <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>X</mi></msub><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">\mu_X = 2.5</annotation></semantics></math> tacos. Interpretation: over many orders, the average number of tacos per order is about 2.5.</p>
+</div>
+<p>Three things to notice. The mean is not the plain average of 1 to 5 (that would be 3): small orders are more likely, so they pull the mean down. The mean need not be a possible value: no order contains 2.5 tacos. And it is a long-run statement: it does not predict the next order.</p>
+<figure id="fig-balance"  class="stat-figure"><div class="stat-figimg" data-fig="u2-tacos-balance"><img src="../figures/u2-tacos-balance.svg" alt="Probability histogram of X, the number of tacos in an order: 0.20, 0.35, 0.25, 0.15 and 0.05 for 1 to 5 tacos. A triangle under the axis marks the mean, 2.5 tacos, where the histogram would balance; arrows show one standard deviation, about 1.12 tacos, on each side." width="600" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The mean is the balance point of the probability histogram. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Picture the probability <a class="gl" href="../notes/one-quantitative-displays.html" data-c="histogram">histogram</a> as a seesaw with weights on it. The mean is where it balances, as in <a class="figref" href="#fig-balance">the figure</a>.</p>
+
+<h2 id="the-standard-deviation">The standard deviation</h2>
+<p>The <b>standard deviation</b> of X measures how far its values typically fall from the mean. Weight each squared distance from the mean by its probability, add, and take the <a class="gl" href="../notes/math-formulas.html" data-c="square-root">square root</a>:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>σ</mi><mi>X</mi></msub><mo>=</mo><msqrt><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>X</mi></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup><msub><mi>p</mi><mi>i</mi></msub></mrow></msqrt><mo>.</mo></mrow><annotation encoding="application/x-tex">\sigma_X = \sqrt{\sum (x_i - \mu_X)^2 p_i}.</annotation></semantics></math></p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the standard deviation of X.</p>
+<p>Structure: <math class="stat-m"><semantics><mrow><msub><mi>σ</mi><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">\sigma_X</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><msqrt><mrow><mo largeop="true" movablelimits="false">∑</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>X</mi></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup><msub><mi>p</mi><mi>i</mi></msub></mrow></msqrt></mrow><annotation encoding="application/x-tex">= \sqrt{\sum (x_i - \mu_X)^2 p_i}</annotation></semantics></math> with <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mi>X</mi></msub><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">\mu_X = 2.5</annotation></semantics></math>.</p>
+<p>Substitute: <math class="stat-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mn>2.5</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">(</mo><mn>0.20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1 - 2.5)^2(0.20)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><mn>2.5</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">(</mo><mn>0.35</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">+ (2 - 2.5)^2(0.35)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mo stretchy="false">(</mo><mn>3</mn><mo>−</mo><mn>2.5</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">(</mo><mn>0.25</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">+ (3 - 2.5)^2(0.25)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mo stretchy="false">(</mo><mn>4</mn><mo>−</mo><mn>2.5</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">(</mo><mn>0.15</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">+ (4 - 2.5)^2(0.15)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mo stretchy="false">(</mo><mn>5</mn><mo>−</mo><mn>2.5</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">(</mo><mn>0.05</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">+ (5 - 2.5)^2(0.05)</annotation></semantics></math> <math class="stat-m"><semantics><mrow><mo>=</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">= 0.45</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.0875</mn></mrow><annotation encoding="application/x-tex">+ 0.0875</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.0625</mn></mrow><annotation encoding="application/x-tex">+ 0.0625</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.3375</mn></mrow><annotation encoding="application/x-tex">+ 0.3375</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">+</mo><mn>0.3125</mn></mrow><annotation encoding="application/x-tex">+ 0.3125</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>1.25</mn></mrow><annotation encoding="application/x-tex">= 1.25</annotation></semantics></math>.</p>
+<p>Answer: <math class="stat-m"><semantics><mrow><msub><mi>σ</mi><mi>X</mi></msub><mo>=</mo><msqrt><mn>1.25</mn></msqrt><mo>≈</mo><mn>1.12</mn></mrow><annotation encoding="application/x-tex">\sigma_X = \sqrt{1.25} \approx 1.12</annotation></semantics></math> tacos. Interpretation: the number of tacos in an order typically differs from the mean of 2.5 by about 1.12 tacos.</p>
+</div>
+<p>The number inside the square root, 1.25, is the <a class="gl" href="../notes/summary-statistics.html" data-c="variance">variance</a>. Forgetting the square root is a common slip; the standard deviation is in tacos, the same units as X. Unlike a <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a>'s standard deviation, there is no <math class="stat-m"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math> here: the probabilities already are the weights.</p>
+
+<h2 id="expected-gain-in-games-and-insurance">Expected gain in games and insurance</h2>
+<p>Expected value is how fundraisers, casinos and insurers plan. A school game costs $2. It pays $10 with probability 0.10 and $5 with probability 0.15. Let W = a player's net gain: $8, $3 or −$2.</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>μ</mi><mi>W</mi></msub><mo>=</mo><mn>8</mn><mo stretchy="false">(</mo><mn>0.10</mn><mo stretchy="false">)</mo><mo>+</mo><mn>3</mn><mo stretchy="false">(</mo><mn>0.15</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>0.75</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.80</mn><mo>+</mo><mn>0.45</mn><mo>−</mo><mn>1.50</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.25</mn><mo>.</mo></mrow><annotation encoding="application/x-tex">\mu_W = 8(0.10) + 3(0.15) + (-2)(0.75) = 0.80 + 0.45 - 1.50 = -0.25.</annotation></semantics></math></p>
+<p>Interpretation: if many people play, players lose an average of about 25 cents per play, so the school raises about $0.25 per play in the long run, roughly $100 over 400 plays. A game is fair when the expected net gain is 0.</p>
+
+<h2 id="common-slips">Common slips</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Slip</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Averaging the values, <math class="stat-m"><semantics><mrow><mfrac><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>3</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>5</mn></mrow><mn>5</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1 + 2 + 3 + 4 + 5}{5}</annotation></semantics></math></td><td>weight each value by its probability</td></tr>
+<tr><td>Averaging the probabilities</td><td>the probabilities alone always add to 1; multiply by the values</td></tr>
+<tr><td>Reporting the variance as the SD</td><td>take the square root</td></tr>
+<tr><td>Prizes instead of net gains</td><td>subtract the cost from every prize, including the $0 prize</td></tr>
+<tr><td>Only the answer, no expression</td><td>write <math class="stat-m"><semantics><mrow><mo largeop="true" movablelimits="false">∑</mo><msub><mi>x</mi><mi>i</mi></msub><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\sum x_i p_i</annotation></semantics></math> with every number substituted</td></tr>
+</tbody>
+</table></div>
+<p>Comparing spreads works as with data: two random <a class="gl" href="../notes/variables.html" data-c="variable">variables</a> with the same mean can have very different standard deviations. Values farther from the mean, with the same probabilities, mean a larger <math class="stat-m"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:random-variable-parameters">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="random-variables.html"><span>&larr; Previous</span><b>Introduction to Random Variables and Probability Distributions</b></a><a class="tb-chapter-link next" href="math-counting.html"><span>Next &rarr;</span><b>Factorials and Combinations</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:random-variable-parameters">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>

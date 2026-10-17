@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampling Distribution of a Mean — AP® Statistics Notes</title>
+<meta name="description" content="Unit 3 asked how a sample proportion p-hat varies from sample to sample. Unit 4 asks the same question about a sample mean x-bar .">
+<link rel="canonical" href="https://levlprep.com/statistics/notes/sampling-dist-mean.html">
+<meta property="og:title" content="Sampling Distribution of a Mean — AP® Statistics Notes">
+<meta property="og:description" content="Unit 3 asked how a sample proportion p-hat varies from sample to sample. Unit 4 asks the same question about a sample mean x-bar .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/statistics/notes/sampling-dist-mean.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/statistics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/stat.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/statistics/notes/sampling-dist-mean.html#reading",
+      "name": "Sampling Distributions for Sample Means",
+      "url": "https://levlprep.com/statistics/notes/sampling-dist-mean.html",
+      "description": "Unit 3 asked how a sample proportion p-hat varies from sample to sample. Unit 4 asks the same question about a sample mean x-bar .",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "sampling distributions for sample means ap statistics explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/statistics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Statistics",
+          "item": "https://levlprep.com/statistics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inference for Quantitative Data: Means",
+          "item": "https://levlprep.com/statistics/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Sampling Distributions for Sample Means: notes",
+          "item": "https://levlprep.com/statistics/notes/sampling-dist-mean.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="stat" data-topic="sampling-dist-mean" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Inference for Categorical Data: Proportions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Inference for Quantitative Data: Means</b><small>10 topics</small></span></a>
+    <div class="stat-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 10 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="sampling-dist-mean"><a href="#main" aria-current="page"><span class="bk-toc-n">4.1</span>Sampling Distributions for Sample Means</a><div class="bk-toc-onpage"><p>On this page</p><a href="#a-population-and-many-samples-from">A population, and many samples from it</a><a href="#center-the-sample-mean-is-unbiased">Center: the sample mean is unbiased</a><a href="#spread-divide-by-the-square-root">Spread: divide by the square root of n</a><a href="#shape-normal-population-or-a-large">Shape: normal population, or a large sample</a><a href="#probabilities-about-a-sample-mean">Probabilities about a sample mean</a><a href="#what-to-remember">What to remember</a></div></li><li data-toc-t="ci-one-mean"><a href="ci-one-mean.html"><span class="bk-toc-n">4.2</span>Constructing a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="ci-one-mean-claims"><a href="ci-one-mean-claims.html"><span class="bk-toc-n">4.3</span>Justifying a Claim Based on a Confidence Interval for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean-setup"><a href="test-one-mean-setup.html"><span class="bk-toc-n">4.4</span>Setting Up a Test for a Population Mean or Population Mean Difference</a></li><li data-toc-t="test-one-mean"><a href="test-one-mean.html"><span class="bk-toc-n">4.5</span>Carrying Out a Test for a Population Mean or Population Mean Difference</a></li><li data-toc-t="sampling-dist-two-means"><a href="sampling-dist-two-means.html"><span class="bk-toc-n">4.6</span>Sampling Distributions for the Difference Between Two Sample Means</a></li><li data-toc-t="ci-two-means"><a href="ci-two-means.html"><span class="bk-toc-n">4.7</span>Constructing a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="ci-two-means-claims"><a href="ci-two-means-claims.html"><span class="bk-toc-n">4.8</span>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Means</a></li><li data-toc-t="test-two-means-setup"><a href="test-two-means-setup.html"><span class="bk-toc-n">4.9</span>Setting Up a Test for the Difference Between Two Population Means</a></li><li data-toc-t="test-two-means"><a href="test-two-means.html"><span class="bk-toc-n">4.10</span>Carrying Out a Test for the Difference Between Two Population Means</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Regression Analysis</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Inference for Quantitative Data: Means</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Sampling Distributions for Sample Means: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/sampling-dist-mean.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.1 <span class="stat-beta stat-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Sampling Distributions for Sample Means</h1>
+      <p class="bk-meta stat-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="sampling-dist-mean">Not practiced</span></p>
+      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fsampling-dist-mean.html&amp;title=Sampling%20Distributions%20for%20Sample%20Means%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/sampling-dist-mean.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="stat-prose bk-prose">
+<p>Unit 3 asked how a <a class="gl" href="../notes/one-categorical-tables.html" data-c="sample-proportion">sample proportion</a> <math class="stat-m"><semantics><mrow><mover accent="true"><mi>p</mi><mo stretchy="false">&#x005E;</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> varies from <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> to sample. Unit 4 asks the same question about a <a class="gl" href="../notes/summary-statistics.html" data-c="mean">sample mean</a> <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>. Every inference procedure for means in this unit rests on the answer, so it is worth getting exactly right: the <a class="gl" href="../notes/describing-distributions.html" data-c="center">center</a>, the spread and the <a class="gl" href="../notes/describing-distributions.html" data-c="shape">shape</a> of the <a class="gl" href="../notes/sampling-distributions.html" data-c="sampling-distribution">sampling distribution</a> of <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>.</p>
+
+<h2 id="a-population-and-many-samples-from">A population, and many samples from it</h2>
+<p>A coffee chain records the wait time of every car at its drive-through (invented <a class="gl" href="../notes/intro-statistics.html" data-c="data">data</a>). Over thousands of cars, the mean wait is <math class="stat-m"><semantics><mrow><mi>μ</mi><mo>=</mo><mn>4.2</mn></mrow><annotation encoding="application/x-tex">\mu = 4.2</annotation></semantics></math> minutes and the <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviation</a> is <math class="stat-m"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>2.8</mn></mrow><annotation encoding="application/x-tex">\sigma = 2.8</annotation></semantics></math> minutes. Most cars wait 2 or 3 minutes; a few wait 10 or more, so the <a class="gl" href="../notes/variables.html" data-c="distribution">distribution</a> is strongly <a class="gl" href="../notes/describing-distributions.html" data-c="skewed">skewed right</a>.</p>
+<p>A manager takes a <a class="gl" href="../notes/random-sampling.html" data-c="random-selection">random</a> sample of cars and computes the mean wait <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>. A second random sample gives a different <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>, a third another. If you could take every possible sample of the same size and plot all the means, you would have the <b>sampling distribution of <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math></b>. The figure shows 5,000 <a class="gl" href="../notes/simulation.html" data-c="simulation">simulated</a> sample means for samples of 4 cars and of 40 cars.</p>
+<figure id="fig-panels"  class="stat-figure"><div class="stat-figimg" data-fig="xbar-sampling-panels"><img src="../figures/xbar-sampling-panels.svg" alt="Three histograms on the same axis from 0 to 14 minutes. Top: 20,000 simulated drive-through wait times, strongly skewed right, mean 4.19 and standard deviation 2.78. Middle: 5,000 means of samples of 4 cars, still skewed right, standard deviation 1.41. Bottom: 5,000 means of samples of 40 cars, bell shaped and narrow, standard deviation 0.439, close to 2.8 divided by the square root of 40. A dashed line marks the population mean 4.2 in every panel." width="720" height="640" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The population of wait times, then 5,000 simulated sample means for n = 4 and n = 40. Same center, smaller spread, more normal shape. <span class="stat-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Three things stand out in <a class="figref" href="#fig-panels">the figure</a>. The means pile up around 4.2 minutes. They spread out much less than single wait times. And with 40 cars, the skew is gone: the means <a class="gl" href="../notes/scatterplots.html" data-c="direction-form-strength">form</a> a bell shape.</p>
+
+<h2 id="center-the-sample-mean-is-unbiased">Center: the sample mean is unbiased</h2>
+<p>Some samples happen to catch more slow cars, some fewer. Over all possible samples, the overestimates and underestimates balance exactly. So the mean of the sampling distribution equals the <a class="gl" href="../notes/summary-statistics.html" data-c="population-mean">population mean</a>:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>μ</mi><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></msub><mo>=</mo><mi>μ</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">\mu_{\bar{x}} = \mu.</annotation></semantics></math></p>
+<p>This holds for every sample size and every <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> shape. In the language of Unit 3, <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> is an <b><a class="gl" href="../notes/estimators.html" data-c="unbiased-estimator">unbiased estimator</a></b> of <math class="stat-m"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math>.</p>
+
+<h2 id="spread-divide-by-the-square-root">Spread: divide by the square root of n</h2>
+<p>Why do means vary less than single values? A mean adds <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> values and divides by <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math>. A slow car in the sample is usually offset, <a class="gl" href="../notes/math-inequality-words.html" data-c="inequality-words">at least</a> partly, by quick ones. The more cars you average, the more the high and low values cancel. The exact result, for <a class="gl" href="../notes/independence-unions.html" data-c="independent-events">independent</a> observations, is</p>
+<p><math class="stat-m" display="block"><semantics><mrow><msub><mi>σ</mi><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></msub><mo>=</mo><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}.</annotation></semantics></math></p>
+<p>This is the <b><span class="gl" tabindex="0" data-c="sd-xbar">standard deviation of the sample mean</span></b>. Notice the <a class="gl" href="../notes/math-formulas.html" data-c="square-root">square root</a>. To cut the spread in half, you need four times as many observations, because <math class="stat-m"><semantics><mrow><msqrt><mn>4</mn></msqrt><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\sqrt{4} = 2</annotation></semantics></math>. Going from 16 bags to 64 bags halves the spread; it does not quarter it.</p>
+<p>The formula needs independent observations. Sampling <a class="gl" href="../notes/random-sampling.html" data-c="replacement">without replacement</a> makes the draws slightly dependent, so check the <b><a class="gl" href="../notes/sampling-dist-proportion.html" data-c="ten-percent">10% condition</a></b>: the sample is less than 10% of the population. A sample of 40 cars from thousands passes easily. A sample of 60 apartments from a complex of 400 does not (<math class="stat-m"><semantics><mrow><mn>60</mn><mo>&gt;</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">60 &gt; 40</annotation></semantics></math>), and then <math class="stat-m"><semantics><mrow><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sigma}{\sqrt{n}}</annotation></semantics></math> overstates the true spread.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> For random samples of 40 cars, find the mean and standard deviation of the sampling distribution of <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>.</p>
+<p>Center: <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></msub><mo>=</mo><mi>μ</mi><mo>=</mo><mn>4.2</mn></mrow><annotation encoding="application/x-tex">\mu_{\bar{x}} = \mu = 4.2</annotation></semantics></math> minutes.</p>
+<p>Spread: <math class="stat-m"><semantics><mrow><msub><mi>σ</mi><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></msub></mrow><annotation encoding="application/x-tex">\sigma_{\bar{x}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">= \frac{\sigma}{\sqrt{n}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mn>2.8</mn><msqrt><mn>40</mn></msqrt></mfrac></mrow><annotation encoding="application/x-tex">= \frac{2.8}{\sqrt{40}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.443</mn></mrow><annotation encoding="application/x-tex">= 0.443</annotation></semantics></math> minutes.</p>
+<p>The 10% condition holds: 40 cars is less than 10% of the thousands of cars served last month.</p>
+</div>
+
+<h2 id="shape-normal-population-or-a-large">Shape: normal population, or a large sample</h2>
+<p>The shape depends on the population and on <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Population, Sample size, Shape of the sampling distribution of x-bar"><table class="stat-compare">
+<thead><tr><th scope="col">Population</th><th scope="col">Sample size</th><th scope="col">Shape of the sampling distribution of <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td>Normal</td><td>any <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></td><td>Normal</td></tr>
+<tr><td>Not normal, or unknown</td><td><math class="stat-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n \ge 30</annotation></semantics></math></td><td><a class="gl" href="../notes/normal-distribution.html" data-c="normal-distribution">Approximately normal</a> (<a class="gl" href="../notes/sampling-distributions.html" data-c="clt">central limit theorem</a>)</td></tr>
+<tr><td>Skewed</td><td>small <math class="stat-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></td><td>Skewed the same way as the population, less strongly</td></tr>
+</tbody>
+</table></div>
+<p>The <b>central limit theorem</b> (Unit 2) is the reason the second row works: averaging enough values smooths away skew. A common rule of thumb is <math class="stat-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n \ge 30</annotation></semantics></math>; a very strongly skewed population may need more.</p>
+<p>Be careful what the theorem says. It is about the distribution of many sample means. It does not say the 40 wait times in one sample look normal. A random sample looks like its population, so a sample of wait times is skewed right too.</p>
+
+<h2 id="probabilities-about-a-sample-mean">Probabilities about a sample mean</h2>
+<p>Once the sampling distribution is approximately normal, standardize with the standard deviation of <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>, not of single values:</p>
+<p><math class="stat-m" display="block"><semantics><mrow><mi>z</mi><mo>=</mo><mfrac><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>−</mo><mi>μ</mi></mrow><mrow><mi>σ</mi><mo>/</mo><msqrt><mi>n</mi></msqrt></mrow></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">z = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}}.</annotation></semantics></math></p>
+<div class="worked">
+<p><b>Worked example 2.</b> What is the <a class="gl" href="../notes/simulation.html" data-c="probability">probability</a> that the mean wait of a random sample of 40 cars is more than 5 minutes?</p>
+<p>Shape: <math class="stat-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>40</mn><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n = 40 \ge 30</annotation></semantics></math>, so by the central limit theorem <math class="stat-m"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> is approximately normal, with mean 4.2 and standard deviation 0.443 (worked example 1).</p>
+<p>Expression and substitution: <math class="stat-m"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>−</mo><mi>μ</mi></mrow><mrow><mi>σ</mi><mo>/</mo><msqrt><mi>n</mi></msqrt></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{\bar{x} - \mu}{\sigma/\sqrt{n}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mfrac><mrow><mn>5</mn><mo>−</mo><mn>4.2</mn></mrow><mrow><mn>2.8</mn><mo>/</mo><msqrt><mn>40</mn></msqrt></mrow></mfrac></mrow><annotation encoding="application/x-tex">= \frac{5 - 4.2}{2.8/\sqrt{40}}</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>1.81</mn></mrow><annotation encoding="application/x-tex">= 1.81</annotation></semantics></math>.</p>
+<p>Answer: <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mo>&gt;</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\bar{x} &gt; 5)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>z</mi><mo>&gt;</mo><mn>1.81</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= P(z &gt; 1.81)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.035</mn></mrow><annotation encoding="application/x-tex">= 0.035</annotation></semantics></math>. Technology gives the same with a normal distribution of mean 4.2 and standard deviation 0.443, area above 5. A sample mean above 5 minutes would happen in only about 3.5% of samples, so it would be surprising if the true mean were really 4.2.</p>
+</div>
+<p>Compare one car. <math class="stat-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mtext>one wait</mtext><mo>&gt;</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\text{one wait} &gt; 5)</annotation></semantics></math> cannot be found with a normal model at all, because single wait times are skewed. Even for a normal population, one value is far more likely to land far from <math class="stat-m"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math> than a mean is. For phone batteries with mean 12.5 hours and standard deviation 1.6 hours (normal), one battery lasts more than 13 hours with probability <math class="stat-m"><semantics><mrow><mi>P</mi><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>z</mi><mo>&gt;</mo><mfrac><mrow><mn>13</mn><mo>−</mo><mn>12.5</mn></mrow><mn>1.6</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">P\left(z &gt; \frac{13 - 12.5}{1.6}\right)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>z</mi><mo>&gt;</mo><mn>0.31</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= P(z &gt; 0.31)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.38</mn></mrow><annotation encoding="application/x-tex">= 0.38</annotation></semantics></math>, but the mean of 10 batteries does so with probability only <math class="stat-m"><semantics><mrow><mi>P</mi><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>z</mi><mo>&gt;</mo><mfrac><mrow><mn>13</mn><mo>−</mo><mn>12.5</mn></mrow><mrow><mn>1.6</mn><mo>/</mo><msqrt><mn>10</mn></msqrt></mrow></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">P\left(z &gt; \frac{13 - 12.5}{1.6/\sqrt{10}}\right)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>z</mi><mo>&gt;</mo><mn>0.99</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= P(z &gt; 0.99)</annotation></semantics></math><wbr><math class="stat-m"><semantics><mrow><mo form="infix">=</mo><mn>0.16</mn></mrow><annotation encoding="application/x-tex">= 0.16</annotation></semantics></math>.</p>
+
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>Center: <math class="stat-m"><semantics><mrow><msub><mi>μ</mi><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></msub><mo>=</mo><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu_{\bar{x}} = \mu</annotation></semantics></math>.</li>
+<li>Spread: <math class="stat-m"><semantics><mrow><msub><mi>σ</mi><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover></msub><mo>=</mo><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}</annotation></semantics></math>, after checking the 10% condition.</li>
+<li>Shape: normal if the population is normal; approximately normal if <math class="stat-m"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n \ge 30</annotation></semantics></math>; otherwise it keeps some skew.</li>
+<li>Always say which condition gives the normal shape, in words, with the numbers: "the population is normal" or "<math class="stat-m"><semantics><mrow><mi>n</mi><mo>=</mo><mn>40</mn><mo>≥</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n = 40 \ge 30</annotation></semantics></math>, so the central limit theorem applies".</li>
+</ul>
+<p>In real studies, <math class="stat-m"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math> is almost never known. The next topic replaces it with the sample standard deviation <math class="stat-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> and shows the price of doing so.</p>
+
+    </article>
+    <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:sampling-dist-mean">Report a problem</button></p>
+    <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="chi-square-test.html"><span>&larr; Previous</span><b>Carrying Out a Chi-Square Test for Homogeneity or Independence</b></a><a class="tb-chapter-link next" href="ci-one-mean.html"><span>Next &rarr;</span><b>Constructing a Confidence Interval for a Population Mean or Population Mean Difference</b></a></nav>
+  </main>
+</div>
+<footer class="stat-foot xshell">
+  <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:sampling-dist-mean">Report a problem</button></span></p>
+  <p class="stat-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApStatSection = 'learn'; window.ApStatBase = '../';</script>
+<script src="../assets/stat-curriculum.js" defer></script>
+<script src="../assets/stat-core.js" defer></script>
+<script src="../assets/stat-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/stat-toc.js" defer></script>
+</body>
+</html>
