@@ -152,7 +152,7 @@ test('ApStatMath: shared helpers and seeded samplers', () => {
   assert.equal(M.diagnose(cell, 0.3).ok, true);
   assert.equal(M.diagnose(cell, 0.15).why, 'Halved.');
   assert.match(M.diagnose(cell, 0.7).why, /complement/);
-  assert.match(M.diagnose(cell, 0.6).why, /one-sided or two-sided/);
+  assert.match(M.diagnose(cell, 0.6).why, /one tail or two/);
   assert.match(M.diagnose(M.cell(1.28, 0.001), -1.28).why, /sign/);
   // Samplers: reproducible, the right sizes, and statistically right.
   const r = M.rng(2027);

@@ -99,9 +99,9 @@
     if(near(x, A, r, ab)) return { ok: true };
     for(var i = 0; i < c.mistakes.length; i++) if(near(x, c.mistakes[i].value, r, ab)) return { ok: false, why: c.mistakes[i].why };
     if(!A) return { ok: false };
-    if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of a subtraction: statistic minus the null value.' };
+    if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of a subtraction (for a test, statistic minus the null value).' };
     if(near(1 - x, A, r, ab) && A > 0 && A < 1) return { ok: false, why: 'That is the complement. Check the direction: less than or greater than.' };
-    if(near(x / 2, A, r, ab) || near(x * 2, A, r, ab)) return { ok: false, why: 'Off by a factor of 2. Check whether the test is one-sided or two-sided.' };
+    if(near(x / 2, A, r, ab) || near(x * 2, A, r, ab)) return { ok: false, why: 'Off by a factor of 2. Check for a step that was doubled or halved (for a test, one tail or two).' };
     if(Math.abs(x - A) < 0.01) return { ok: false, why: 'Close. Keep full precision until the last step, then round.' };
     return { ok: false };
   }
