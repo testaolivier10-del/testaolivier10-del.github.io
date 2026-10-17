@@ -169,7 +169,7 @@
     },
     {
       "id": "w1006-05-airway-sizing",
-      "status": "scheduled",
+      "status": "posted",
       "added_on": "2026-10-05",
       "approved_on": "2026-10-05",
       "date": "2026-10-15",
@@ -189,7 +189,7 @@
     },
     {
       "id": "w1007-03-co-pulseox",
-      "status": "scheduled",
+      "status": "posted",
       "added_on": "2026-10-06",
       "approved_on": "2026-10-06",
       "date": "2026-10-16",
@@ -199,7 +199,7 @@
       "badge": "NREMT",
       "hook": "It says 99%. They're poisoned.",
       "buffer": "6ac6df3e01166a3e1c0c5e7e",
-      "youtube_id": null,
+      "youtube_id": "Dx8qhZ820nI",
       "thumbnail_set": null,
       "yt_buffer": "6ac706a857f9bd074d24f322",
       "related_video": "lqxfWZZtRgE",
