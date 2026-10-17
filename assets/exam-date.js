@@ -7,6 +7,8 @@
        subject: 'nremt',              // storage key is <subject>_exam_date
        target: function(days){        // optional: the per-day number
          return { n: 12, unit: 'new questions', why: 'covers the rest of the bank once' };
+         // unit is the plural; one: the singular, used when n is 1 (else the
+         // plural minus its final s)
        },
        links: { practice: 'practice.html', review: 'review.html', exams: 'exams.html' }
      });
@@ -92,6 +94,11 @@
     try{ return new Date(p[0], p[1] - 1, p[2]).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }); }
     catch(e){ return iso; }
   }
+  // "1 topic a day", never "1 topics a day": the noun follows the number shown.
+  function unitFor(t){
+    if(t.n !== 1) return t.unit;
+    return t.one || String(t.unit).replace(/s$/, '');
+  }
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
   // The same three tiers the Study Plan used, said once instead of as a plan
@@ -137,7 +144,7 @@
           if(dflt) html += '<p class="xd-note" style="margin-top:0">The scheduled date for everyone. If yours is different, change it.</p>';
           var t = days > 0 && typeof opts.target === 'function' ? opts.target(days) : null;
           if(t && t.n > 0){
-            html += '<div class="xd-target"><b>' + t.n.toLocaleString() + '</b> ' + esc(t.unit) + ' a day ' + esc(t.why || '') + '.</div>';
+            html += '<div class="xd-target"><b>' + t.n.toLocaleString() + '</b> ' + esc(unitFor(t)) + ' a day ' + esc(t.why || '') + '.</div>';
           } else if(t && t.done){
             html += '<div class="xd-target">' + esc(t.done) + '</div>';
           }

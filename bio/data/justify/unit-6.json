@@ -1,0 +1,100 @@
+{
+ "about": "Justification trainer prompts for Unit 6, Gene Expression and Regulation (docs/apbio-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u6-reading-codons",
+   "unit": "unit-6",
+   "topic": "translation",
+   "practice": "2.B",
+   "skill": "models",
+   "title": "From codons to a short peptide",
+   "context": "<p>Model: an mRNA strand reads 5′ AUG GCU UGG AAA UAA 3′. A ribosome binds the mRNA. Each tRNA has a three-base anticodon at one end and carries one amino acid at the other. The genetic code gives AUG = methionine (Met), GCU = alanine (Ala), UGG = tryptophan (Trp), AAA = lysine (Lys) and UAA = stop. The ribosome makes the peptide Met-Ala-Trp-Lys.</p>",
+   "prompt": "<b>Use</b> the model to <b>explain</b> how the base sequence of this mRNA sets the order of amino acids in the peptide.",
+   "checklist": [
+    "Says the ribosome reads the mRNA 5′ to 3′ in codons of three bases, starting at the start codon AUG",
+    "Says each tRNA anticodon pairs with a complementary codon, so the codon picks which tRNA, and so which amino acid, comes next (for example anticodon 3′ CGA 5′ pairs with GCU and brings Ala)",
+    "Says the ribosome joins each new amino acid to the chain with a peptide bond, then moves one codon along",
+    "Says no tRNA pairs with the stop codon UAA, so translation ends and the four-amino-acid peptide is released"
+   ],
+   "earns": {
+    "answer": "The ribosome reads the mRNA from 5′ to 3′, three bases at a time, starting at the start codon AUG. Each codon pairs with a tRNA whose anticodon is complementary to it. AUG pairs with the tRNA carrying Met. The next codon, GCU, pairs with the anticodon 3′ CGA 5′, and that tRNA carries Ala. The ribosome forms a peptide bond between Met and Ala, then moves along one codon. UGG brings Trp and AAA brings Lys in the same way. No tRNA pairs with UAA, a stop codon, so a release factor ends translation and the peptide Met-Ala-Trp-Lys is released. The order of codons sets the order of amino acids.",
+    "why": "It walks through the model step by step: reading frame, codon and anticodon pairing, bond formation and the stop, with a worked example."
+   },
+   "misses": {
+    "answer": "The mRNA codons code for amino acids, so the ribosome puts them in order using the genetic code.",
+    "why": "It restates the result. It never says how tRNA anticodons pair with codons or how the ribosome reads three bases at a time and stops."
+   }
+  },
+  {
+   "id": "u6-lac-enzyme-media",
+   "unit": "unit-6",
+   "topic": "gene-regulation",
+   "practice": "4.B",
+   "skill": "data",
+   "title": "Lactose, glucose and enzyme levels",
+   "context": "<p>E. coli makes β-galactosidase, an enzyme that breaks lactose into glucose and galactose, from a gene in the lac operon. Researchers grew E. coli on four media and measured β-galactosidase activity. Glycerol is a carbon source that does not affect the lac operon directly.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Enzyme activity on four growth media\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Medium</th><th scope=\"col\">β-galactosidase activity (units/mg protein)</th></tr></thead><tbody><tr><td>Glycerol</td><td>5</td></tr><tr><td>Glycerol + lactose</td><td>1,000</td></tr><tr><td>Glucose</td><td>5</td></tr><tr><td>Glucose + lactose</td><td>80</td></tr></tbody></table></div>",
+   "prompt": "<b>Describe</b> the effect of lactose on β-galactosidase activity with and without glucose present, using values from the table.",
+   "checklist": [
+    "Without glucose, adding lactose raises activity from 5 to 1,000 units/mg protein, a 200-fold increase",
+    "With glucose, adding lactose raises activity only from 5 to 80 units/mg protein, a 16-fold increase",
+    "Compares the two lactose media: glucose lowers activity from 1,000 to 80 units/mg protein, 92% lower",
+    "Concludes lactose turns on enzyme production, but much less when glucose is also present"
+   ],
+   "earns": {
+    "answer": "Lactose increases β-galactosidase activity, and glucose reduces that increase. Without glucose, adding lactose raises activity from 5 to 1,000 units/mg protein, a 200-fold increase. With glucose present, adding lactose raises activity only from 5 to 80 units/mg protein, a 16-fold increase. When lactose is present, glucose lowers activity from 1,000 to 80 units/mg protein, which is 92% lower. Without lactose, activity stays at 5 units/mg protein whether or not glucose is present.",
+    "why": "It describes each comparison with values, units and the size and direction of the change, which is what a describe task asks for."
+   },
+   "misses": {
+    "answer": "Lactose increases the enzyme and glucose decreases it.",
+    "why": "It gives no values or units, no size of change."
+   }
+  },
+  {
+   "id": "u6-silent-vs-frameshift",
+   "unit": "unit-6",
+   "topic": "mutations",
+   "practice": "6.E",
+   "skill": "prediction",
+   "title": "Two changes in the same codon",
+   "context": "<p>A gene codes for an enzyme 300 amino acids long. Codon 12 of its mRNA is GAA, which codes for glutamic acid. Two mutations are found in different individuals. In mutation A, the third base of codon 12 changes, so the codon becomes GAG, which also codes for glutamic acid. In mutation B, one extra base is inserted in codon 12.</p>",
+   "prompt": "<b>Predict</b> the effect of each mutation on the enzyme's function, and <b>justify</b> each prediction.",
+   "checklist": [
+    "Predicts mutation A has no effect: GAG still codes for glutamic acid, so the amino acid sequence is unchanged",
+    "Predicts mutation B most likely makes a nonfunctional enzyme",
+    "Justifies B with a frameshift: every codon after the insertion is read in a new frame, so most amino acids after the insertion change",
+    "Adds that the new frame is likely to hit a stop codon early, giving a short protein that cannot fold into the working shape"
+   ],
+   "earns": {
+    "answer": "Mutation A will not change the enzyme's function. GAG codes for glutamic acid, the same as GAA, so the amino acid sequence, the folding and the active site stay the same. Mutation B will most likely make the enzyme nonfunctional. The ribosome reads mRNA in groups of three bases, so one inserted base shifts the reading frame for every codon after it. Most of the amino acids from about position 12 onward will be different, and a stop codon is likely to appear early in the new frame, giving a short protein. That protein cannot fold into the enzyme's normal shape, so it cannot catalyze the reaction.",
+    "why": "It gives a prediction for each mutation and justifies it with how codons are read, linking sequence to folding to function."
+   },
+   "misses": {
+    "answer": "Both mutations change the DNA, so both will change the enzyme and stop it from working.",
+    "why": "A change in DNA does not always change the protein: GAG and GAA code for the same amino acid. It gives no reason why the insertion matters."
+   }
+  },
+  {
+   "id": "u6-pcr-peanut-controls",
+   "unit": "unit-6",
+   "topic": "biotechnology",
+   "practice": "3.C",
+   "skill": "design",
+   "title": "Controls in a PCR food test",
+   "context": "<p>A lab tests a cookie labeled \"peanut-free\" for peanut DNA. It uses PCR with primers that copy a 180 base pair section of a peanut gene, then runs the products on a gel.</p><div class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Gel lanes and results\"><table class=\"bio-data\"><thead><tr><th scope=\"col\">Lane</th><th scope=\"col\">What was loaded</th><th scope=\"col\">Result</th></tr></thead><tbody><tr><td>1</td><td>DNA ladder of known sizes</td><td>Bands at 100, 200, 300 bp and up</td></tr><tr><td>2</td><td>PCR product from cookie DNA</td><td>Band at 180 bp</td></tr><tr><td>3</td><td>PCR product from pure peanut DNA</td><td>Band at 180 bp</td></tr><tr><td>4</td><td>PCR with water instead of DNA</td><td>No band</td></tr></tbody></table></div>",
+   "prompt": "<b>Explain</b> what lane 3 and lane 4 each rule out, and <b>justify</b> the lab's conclusion about the cookie.",
+   "checklist": [
+    "Lane 3 is a positive control: it shows the primers and the reaction work and that peanut DNA gives a 180 bp band, ruling out a failed reaction as the reason for any missing band",
+    "Lane 4 is a negative control: with no DNA added there is no band, ruling out peanut DNA contaminating the reagents as the source of the band in lane 2",
+    "Concludes the cookie contains peanut DNA, because lane 2 has a band of the same size as the peanut control, read against the ladder"
+   ],
+   "earns": {
+    "answer": "Lane 3 is a positive control. Pure peanut DNA gives a band at 180 bp, so the primers and the PCR reagents work and the expected band size is known. This rules out a failed reaction as the reason a sample might show no band. Lane 4 is a negative control. With water in place of DNA there is no band, so the reagents are not contaminated with peanut DNA. This rules out contamination as the source of the band in lane 2. Lane 2 has a band at 180 bp, the same size as lane 3, judged against the ladder in lane 1. So the cookie contains peanut DNA, and the \"peanut-free\" label is not supported.",
+    "why": "It names each control's type and says exactly which other explanation it removes, then uses the band sizes to support the conclusion."
+   },
+   "misses": {
+    "answer": "Lanes 3 and 4 are the controls. The cookie has peanut DNA because there is a band in lane 2.",
+    "why": "It labels the controls without saying what each one rules out, so it cannot show why the band in lane 2 can be trusted."
+   }
+  }
+ ]
+}

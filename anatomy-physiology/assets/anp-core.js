@@ -316,7 +316,7 @@
 
   if(window.StudyHubAccount){
     var mergers = {}; mergers[KEY] = merge; mergers['anp_flashcards_v1'] = mergeCards;
-    window.StudyHubAccount.registerNamespace('anp', [KEY, 'anp_flashcards_v1', 'anp_prefs_v1'], mergers);
+    window.StudyHubAccount.registerNamespace('anp', [KEY, 'anp_flashcards_v1', 'anp_prefs_v1', 'anp_flagged_v1'], mergers);
   }
 
   document.documentElement.classList.add('js');

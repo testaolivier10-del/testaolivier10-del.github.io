@@ -21,6 +21,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems } from './lib/apbio-build.mjs';
+import { loadJustify, checkJustify } from './lib/apbio-exams.mjs';
 export { trademarkProblems };
 
 const DATA = join(ROOT, 'bio', 'data');
@@ -166,7 +167,7 @@ const textOfItem = q => [q.q, ...(q.options || []), q.why?.correct, ...((q.why &
 
 /* Concepts taught after this topic whose words appear in text (outside a
    declared preview box) break the ordering rule. */
-function orderingProblems(map, topicId, texts) {
+export function orderingProblems(map, topicId, texts) {
   const order = map.topics.map(t => t.id), here = order.indexOf(topicId);
   const later = map.concepts.filter(c => order.indexOf(c.taughtIn) > here);
   const body = texts.join('\n').replace(/<aside class="bio-preview"[\s\S]*?<\/aside>/g, ' ');
@@ -448,7 +449,12 @@ if (isMain) {
     const errs = check(readJson(join(toolDir, f)), map) || [];
     if (errs.length) { toolFails++; console.log(`tool ${slug}: FAIL`); for (const e of errs) console.log(`  FAIL: ${e}`); }
   }
-  const bad = failed + bankErr.length + frqFails + metaFails + toolFails;
-  console.log(`AP Biology content: ${ids.length} topics, ${total} items, ${failed} failing${draft ? ` (+${draft} in unpublished chapters)` : ''}; bank ${bankErr.length}, FRQ ${frqFails}, meta ${metaFails}, tools ${toolFails} failing.`);
+  // The justification trainer's prompts (docs/apbio-architecture.md, "Justification trainer").
+  let justifyFails = 0;
+  if (map && exists(join(DATA, 'justify'))) {
+    for (const e of checkJustify(loadJustify(DATA, map), { map, trademarkProblems, orderingProblems })) { console.log(`justify: FAIL: ${e}`); justifyFails++; }
+  }
+  const bad = failed + bankErr.length + frqFails + metaFails + toolFails + justifyFails;
+  console.log(`AP Biology content: ${ids.length} topics, ${total} items, ${failed} failing${draft ? ` (+${draft} in unpublished chapters)` : ''}; bank ${bankErr.length}, FRQ ${frqFails}, meta ${metaFails}, tools ${toolFails}, justify ${justifyFails} failing.`);
   if (args.includes('--check') && bad) process.exit(1);
 }

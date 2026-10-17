@@ -13,9 +13,9 @@
    split or shuffled (spec decision 6). A filter picks items; any set holding
    a picked item comes in whole.
 
-   Modes: build a set (the filters), my weakest topics, questions I missed
+   Modes: build a set (the filters), my weakest topics, questions I missed, flagged questions
    (retried until right, three tries at most). Deep links: ?unit=, ?topic=,
-   ?practice=, ?type=standalone|sets|numeric, ?diff=1-3, ?mode=missed|weak;
+   ?practice=, ?type=standalone|sets|numeric, ?diff=1-3, ?mode=missed|weak|flagged;
    the address bar follows the builder, so any set is a stable, shareable
    link (spec section 1, "Teachers"), and it prints as a worksheet.
 
@@ -56,7 +56,8 @@
   var MODES = [
     { id: 'build', title: 'Build a set', desc: 'Pick the unit, topic, practice, type and difficulty.' },
     { id: 'weak', title: 'My weakest topics', desc: 'Your lowest-mastery topics, mixed.' },
-    { id: 'missed', title: 'Questions I missed', desc: 'Retried until you get each one right.' }
+    { id: 'missed', title: 'Questions I missed', desc: 'Retried until you get each one right.' },
+    { id: 'flagged', title: 'Flagged questions', desc: '' }
   ];
   var MODE = byId(MODES);
   var COUNTS = [5, 10, 20, 0];
@@ -96,6 +97,9 @@
     if(f.kind === 'numeric' && q.type !== 'numeric') return false;
     return true;
   }
+  /* Flags (assets/course/flags.js): kept until the student unflags them. */
+  function flaggedIds(){ var o = {}; (window.LevlFlags ? window.LevlFlags.list('apbio') : []).forEach(function(id){ o[id] = 1; }); return o; }
+  function flaggedCount(){ var f = flaggedIds(); return stubs ? stubs.filter(function(q){ return f[q.id]; }).length : 0; }
   function missedIds(){ var o = {}; (Core ? Core.missed() : []).forEach(function(id){ o[id] = 1; }); return o; }
   function weakTopics(){ return Core ? Core.weakest(3).filter(function(x){ return x.value < 0.8; }) : []; }
 
@@ -103,6 +107,7 @@
   function poolFor(mode){
     var pick;
     if(mode === 'missed'){ var m = missedIds(); pick = function(q){ return m[q.id]; }; }
+    else if(mode === 'flagged'){ var fl = flaggedIds(); pick = function(q){ return fl[q.id]; }; }
     else if(mode === 'weak'){ var w = {}; weakTopics().forEach(function(x){ w[x.id] = 1; }); pick = function(q){ return w[q.topic]; }; }
     else pick = function(q){ return matches(q, state); };
     var out = blocks.filter(function(b){ return b.items.some(pick); });
@@ -180,6 +185,7 @@
   }
   function modeUnavailable(id){
     if(id === 'missed' && !poolFor('missed').length) return 'Nothing missed. Nice.';
+    if(id === 'flagged' && !flaggedCount()) return 'Nothing flagged. Use Flag on any question to find it here.';
     if(id === 'weak' && !poolFor('weak').length) return Core && Core.weakest(1).length ? 'No topic below 80% mastery.' : 'Answer some questions first.';
     return '';
   }
@@ -241,7 +247,7 @@
         '<fieldset class="cx-step"><legend>' + n1 + '1</span>What do you want to practice?</legend><div class="cx-choices">' +
           MODES.map(function(m){
             var why = modeUnavailable(m.id);
-            return '<label class="cx-choice"><input type="radio" name="mode" value="' + m.id + '"' + (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span><b>' + esc(m.title) + '</b><span>' + esc(why || m.desc) + '</span></span></label>';
+            return '<label class="cx-choice"><input type="radio" name="mode" value="' + m.id + '"' + (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span><b>' + esc(m.title) + '</b><span>' + esc(why || (m.id === 'flagged' ? plural(flaggedCount(), 'question') + ' you flagged to come back to.' : m.desc)) + '</span></span></label>';
           }).join('') + '</div></fieldset>' +
         '<div class="cx-step bio-pr-pickstep"><h2 class="cx-step-h">' + n1 + '2</span><span class="bio-pr-pick-h"></span></h2><div class="bio-pr-pick"></div></div>' +
         '<fieldset class="cx-step bio-pr-count"><legend>' + n1 + '3</span>How many questions?</legend><div class="cx-pills">' +

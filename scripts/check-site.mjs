@@ -729,7 +729,10 @@ if (Array.isArray(bank)) {
   for (const file of [...htmlFiles, join(ROOT, 'README.md')]) {
     if (!existsSync(file)) continue;
     const rel = relative(ROOT, file);
-    const body = readFileSync(file, 'utf8');
+    // The hub's facts row states the total across every course's bank,
+    // written by build-pricing.mjs (whose --check keeps it current), so it
+    // is not a claim about one bank.
+    const body = readFileSync(file, 'utf8').replace(/<!-- hero-facts:start -->[\s\S]*?<!-- hero-facts:end -->/, '');
     // The README describes both courses in the same file, so a figure in it is
     // correct if it matches either bank. Everything else belongs to one course.
     const isReadme = rel === 'README.md';

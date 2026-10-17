@@ -6,7 +6,9 @@
    only the button: the mascot, its first-visit tip and the tuck-on-scroll on
    phones. Reaching for it (hover or focus) starts fetching tutor.js; pressing
    it opens the panel as soon as tutor.js arrives. tutor.js adopts this button
-   instead of drawing its own. Mounted by site-chrome.js (mountTutor). */
+   instead of drawing its own. Mounted by site-chrome.js (mountTutor).
+
+   On a phone it sits in the header row, not over the text (polish A10). */
 (function(){
   'use strict';
   if(window.LEVLPREP_TUTOR_INLINE || document.querySelector('.lp-launch')) return;
@@ -62,6 +64,19 @@
   }
 
   var btn, tip;
+  var PHONE = window.matchMedia('(max-width:640px)');
+  // body.lp-has-fab (padding clear of a floating button) only while it floats.
+  function dock(){
+    var menu = document.getElementById('chromeMenuBtn');
+    var row = menu && menu.parentNode;
+    if(PHONE.matches && row){
+      if(btn.parentNode !== row) row.insertBefore(btn, menu);
+      document.body.classList.remove('lp-has-fab');
+    } else {
+      if(btn.parentNode !== document.body) document.body.appendChild(btn);
+      document.body.classList.add('lp-has-fab');
+    }
+  }
   function init(){
     var style = document.createElement('style');
     style.id = 'lp-launch-css';
@@ -74,7 +89,9 @@
     btn.setAttribute('aria-label', 'Ask the study assistant');
     btn.innerHTML = SVG;
     document.body.appendChild(btn);
-    document.body.classList.add('lp-has-fab');
+    dock();
+    if(PHONE.addEventListener) PHONE.addEventListener('change', dock);
+    else if(PHONE.addListener) PHONE.addListener(dock);
 
     tip = document.createElement('div');
     tip.className = 'lp-tip';

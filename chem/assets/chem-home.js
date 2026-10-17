@@ -25,6 +25,8 @@
   function renderHero(){
     if(HP){
       var info = HP.levelInfo('apchem');
+      // Zeros say nothing to a new visitor: the card shows what it tracks until the first XP (polish 2026-10-17, B10).
+      el('chemLevel').toggleAttribute('data-lv-zero', !(info.total > 0));
       el('chemLvRing').textContent = 'L' + info.level;
       el('chemLvTitle').textContent = info.title;
       el('chemLvSub').textContent = 'Level ' + info.level + ' · ' + info.total + ' XP';

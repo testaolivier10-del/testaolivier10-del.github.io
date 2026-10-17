@@ -218,12 +218,13 @@ function lessonPage(id) {
 <div class="xshell">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../chapters/${ch.id}.html` }, { name: t.title }], depth)}
 </div>
-<div class="xshell anp-ls${parts.length > 1 ? ' anp-stepped' : ''}">
+<div class="xshell anp-ls cx-ls${parts.length > 1 ? ' anp-stepped' : ''}" data-course="anp"${nxBuilt ? ` data-next-title="${esc(nx.title)}" data-next-unit="${nx.chapter}"` : ''}>
   <aside class="anp-ls-rail anp-nav-ref" aria-label="Lesson parts">
-    <p class="anp-ls-k">Chapter ${chapterNumber(ch.id)} · ${esc(ch.title)}</p>
+    <p class="anp-ls-k cx-ls-k">Chapter ${chapterNumber(ch.id)} · ${esc(ch.title)}</p>
     <p class="anp-ls-links"><a href="../chapters/${ch.id}.html">&larr; Back to the chapter</a><a href="../notes/${id}.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/></svg>Read the notes</a></p>
-    <div class="anp-ls-prog"><div class="anp-ls-track"><div class="anp-ls-fill"></div></div><span class="anp-ls-count">Step 1 / ${parts.length}</span></div>
-    <ol class="anp-ls-steps">${parts.map((p, i) => `<li><a href="#${p.id}"><span class="n">${i + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
+    <div class="anp-ls-prog cx-ls-prog"><div class="anp-ls-track"><div class="anp-ls-fill"></div></div><span class="anp-ls-count">Step 1 / ${parts.length}</span></div>
+    <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of ${parts.length}</span><span class="cx-ls-all">All steps</span></button>
+    <ol class="anp-ls-steps cx-ls-steps" id="lesson-steps">${parts.map((p, i) => `<li><a href="#${p.id}"><span class="n">${i + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
   </aside>
   <main id="main" class="anp-ls-main anp-lesson">
   <header class="anp-ls-hero">
@@ -252,11 +253,11 @@ ${STEP_FIRST_PAINT}
 ${footer(depth)}
 <script type="application/json" id="anp-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
 <script src="../../assets/report-question.js" defer></script>
-${tail({ depth, section: 'learn', extra: ['anp-questions.js', 'anp-lesson.js'], premium: true })}
+${tail({ depth, section: 'learn', extra: ['anp-questions.js', 'anp-lesson.js'], premium: true, site: ['course/lesson.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: `lessons/${id}.html`, depth, jsonld, meta: `<meta name="anp-topic" content="${id}">\n` }) + body;
+  return head({ title, desc, path: `lessons/${id}.html`, depth, jsonld, meta: `<meta name="anp-topic" content="${id}">\n<link rel="stylesheet" href="../../assets/course/lesson.css">\n` }) + body;
 }
 
 /* ------------------------------------------- textbook frame (chapter, notes) */
@@ -748,7 +749,8 @@ function homePage() {
       <p class="lede">${HOME_WORDS[map.chapters.length] || map.chapters.length} chapters and ${map.topics.length} topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time. Practice sits inside the reading.</p>
       <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('anp_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All chapters &rarr;</a><a class="link-quiet" href="tools/predict.html">Predict the change &rarr;</a></div>
     </div>
-    <div class="anp-level-card" id="anpLevel">
+    <div class="anp-level-card" id="anpLevel" data-lv-zero>
+      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
       <div class="anp-level-top">
         <div class="anp-level-chip"><div class="level-ring" id="anpLvRing">L1</div><div class="t"><b id="anpLvTitle">Cell Scout</b><span id="anpLvSub">Level 1 &middot; 0 XP</span></div></div>
         <div class="streak-chip" id="anpStreak" hidden title="Day streak, across every subject">${STREAK_SVG}<span id="anpStreakN">0</span></div>
@@ -903,7 +905,7 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
 ${footer(depth)}
 ${HUB_PAGES.has(entry.slug) && !isTool ? `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/hub.css">\n<script src="${depth}../assets/course/hub.js" defer></script>\n` : ''}${isTool ? `<link rel="stylesheet" href="${depth}assets/tools/tool-kit.css">\n` : ''}${isTool && entry.studio ? `<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">\n` : ''}<link rel="stylesheet" href="${depth}assets/${entry.css}">
 <script src="${depth}../assets/report-question.js" defer></script>
-${[...(study ? ['course/study.js'] : []), ...(entry.siteScripts || [])].map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), ...(isTool ? ['tools/tool-kit.js'] : []), entry.script], premium: true, site: isTool && entry.studio ? ['course/tool-studio.js'] : [] })}
+${[...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'dashboard'].includes(entry.slug) ? ['course/flags.js'] : []), ...(entry.siteScripts || [])].map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), ...(isTool ? ['tools/tool-kit.js'] : []), entry.script], premium: true, site: isTool && entry.studio ? ['course/tool-studio.js'] : [] })}
 </body>
 </html>
 `;

@@ -132,11 +132,11 @@
     <div>
       <div class="eyebrow">AP&reg; Calculus AB <span class="calc-beta calc-nav-ref">Beta</span></div>
       <h1>AP&reg; Calculus AB, one idea at a time.</h1>
-      <p class="lede">Built on the course framework, in its order: eight units, each topic taught from scratch, with the math you need placed just before it is used. Then practice that checks what the exam checks: answers you type as expressions, graphs and tables, calculator and no-calculator parts, and justifications that name the theorem.</p>
-      <p class="calc-review-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher.</p>
+      <p class="lede">Each topic taught from scratch, in framework order, then practice that grades typed answers and justifications.</p>
       <div class="hero-ctas"><a class="btn-press" id="heroPrimaryCta" href="lessons/math-functions.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apcalc_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script><a class="link-quiet" href="learn.html">All units &rarr;</a><a class="link-quiet" href="tools/limit-explorer.html">Limit explorer &rarr;</a></div>
     </div>
-    <div class="calc-level-card" id="calcLevel">
+    <div class="calc-level-card" id="calcLevel" data-lv-zero>
+      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
       <div class="calc-level-top">
         <div class="calc-level-chip"><div class="level-ring" id="calcLvRing">L1</div><div class="t"><b id="calcLvTitle">Limit Seeker</b><span id="calcLvSub">Level 1 &middot; 0 XP</span></div></div>
         <div class="streak-chip" id="calcStreak" hidden title="Day streak, across every subject"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg><span id="calcStreakN">0</span></div>
@@ -183,7 +183,7 @@
     <div>
       <h2 id="h-covers">What the course covers</h2>
       <p>8 units and 81 topics in the order of the course framework (the Calculus AB topics only), plus 7 math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
-      <p>1,392 practice questions, many in stimulus sets of four or five that share one graph or table, as on the real exam. Every option has its own explanation, and typed answers are graded by their value, so any correct form counts.</p>
+      <p>1,392 practice questions, many in stimulus sets of four or five that share one graph or table, as on the real exam. Every option has its own explanation, and typed answers are graded by their value, so any correct form counts. Practice checks what the exam checks: answers you type as expressions, graphs and tables, calculator and no-calculator parts, and justifications that name the theorem.</p>
       <p class="calc-small">All 88 topics are built, each with its lesson, notes and questions.</p>
     </div>
     <div>
@@ -216,14 +216,30 @@
     </div>
   </section>
 
+  <section class="xsection" id="sample" aria-labelledby="h-sample">
+    <div class="calc-sample-row">
+      <div>
+        <h2 id="h-sample">Try a step.</h2>
+        <p class="section-lede">One real question from the bank. Pick an answer to see why it is right or wrong.</p>
+        <ol class="calc-sample-list">
+          <li><span class="n" aria-hidden="true">1</span> Read the situation</li>
+          <li><span class="n" aria-hidden="true">2</span> Pick the answer you would bet on</li>
+          <li><span class="n" aria-hidden="true">3</span> See the cause and effect behind it</li>
+        </ol>
+      </div>
+      <div class="calc-qcard" id="calcSample" data-correct="0">
+        <span class="tag domain">Unit 1 &middot; Limits and Continuity</span> <span class="tag diff">What a Limit Is and How to Write It</span>
+        <p class="qtext" id="calcSampleQ">A function <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> has <math class="calc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">k(3) = 8</annotation></semantics></math>, and as <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> approaches 3 from either side, the values <math class="calc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">k(x)</annotation></semantics></math> close in on 6. Which is correct?</p>
+        <div class="calc-qopts" role="group" aria-labelledby="calcSampleQ"><button type="button" class="qopt" data-i="0" data-why="Limit 6 from the trend, value 8 at the point."><span class="letter">A</span> <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mi>k</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} k(x) = 6</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">k(3) = 8</annotation></semantics></math></button><button type="button" class="qopt" data-i="1" data-why="The two numbers are swapped."><span class="letter">B</span> <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mi>k</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} k(x) = 8</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">k(3) = 6</annotation></semantics></math></button><button type="button" class="qopt" data-i="2" data-why="The value at the point does not set the limit."><span class="letter">C</span> <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mi>k</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} k(x) = 8</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">k(3) = 8</annotation></semantics></math></button><button type="button" class="qopt" data-i="3" data-why="The input target is 3, not 6."><span class="letter">D</span> <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>6</mn></mrow></munder><mi>k</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 6} k(x) = 3</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">k(3) = 8</annotation></semantics></math></button></div>
+        <p class="why" id="calcSampleWhy" aria-live="polite"></p>
+        <details class="calc-sample-key"><summary>Show the answer</summary><p><b><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mi>k</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} k(x) = 6</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">k(3) = 8</annotation></semantics></math></b> The limit is where the values head (6); the value at 3 is what <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> actually gives there (8).</p></details>
+        <p class="calc-sample-more"><a class="link-quiet" href="lessons/limit-notation.html">Open the free lesson on what a limit is and how to write it &rarr;</a></p>
+      </div>
+    </div>
+  </section>
   <section class="xsection" aria-labelledby="h-go">
     <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="calc-cards"><li><a href="practice.html"><b>Practice</b><span>Drill a unit, a topic or a mathematical practice, with graph and table sets.</span></a></li><li><a href="review.html"><b>Review</b><span>Missed questions come back when you are about to forget them.</span></a></li><li><a href="exams.html"><b>Exams</b><span>Unit tests and full timed practice exams in the real four-part format.</span></a></li><li><a href="frq.html"><b>Free-response practice</b><span>Every recurring free-response type, with 9-point rubrics and sample answers.</span></a></li><li><a href="justify.html"><b>Justification trainer</b><span>Justify with the right theorem and its hypotheses, checked against a rubric.</span></a></li><li><a href="cram.html"><b>Cram kit</b><span>3-week and 2-week plans to exam day, and timed mixed sets.</span></a></li><li><a href="flashcards.html"><b>Flashcards</b><span>Spaced-repetition cards from the glossary.</span></a></li><li><a href="tools.html"><b>Tools</b><span>Trainers and drills, then the questions about what you did.</span></a></li><li><a href="dashboard.html"><b>Dashboard</b><span>Mastery by unit, topic and mathematical practice.</span></a></li>
-      <li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>
-      <li><a href="formula-sheet.html"><b>Formulas to know</b><span>No formula sheet is given on the exam: every formula and theorem you need, and where it is taught.</span></a></li>
-      <li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li>
-      <li><a href="unit-tests/unit-1.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>
-    </ul>
+    <ul class="calc-cards calc-go"><li><a href="practice.html"><b>Practice</b><span>Drill a unit, a topic or a mathematical practice, with graph and table sets.</span></a></li><li><a href="review.html"><b>Review</b><span>Missed questions come back when you are about to forget them.</span></a></li><li><a href="exams.html"><b>Exams</b><span>Unit tests and full timed practice exams in the real four-part format.</span></a></li><li><a href="frq.html"><b>Free-response practice</b><span>Every recurring free-response type, with 9-point rubrics and sample answers.</span></a></li><li><a href="justify.html"><b>Justification trainer</b><span>Justify with the right theorem and its hypotheses, checked against a rubric.</span></a></li><li><a href="cram.html"><b>Cram kit</b><span>3-week and 2-week plans to exam day, and timed mixed sets.</span></a></li><li><a href="flashcards.html"><b>Flashcards</b><span>Spaced-repetition cards from the glossary.</span></a></li><li><a href="tools.html"><b>Tools</b><span>Trainers and drills, then the questions about what you did.</span></a></li><li><a href="dashboard.html"><b>Dashboard</b><span>Mastery by unit, topic and mathematical practice.</span></a></li><li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li><li><a href="formula-sheet.html"><b>Formulas to know</b><span>No formula sheet is given on the exam: every formula and theorem you need, and where it is taught.</span></a></li><li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li><li><a href="unit-tests/unit-1.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li></ul>
   </section>
 
   <section class="xsection" aria-label="About LevlPrep">
@@ -233,7 +249,6 @@
       <div class="trust-pill">Unit sheets free to print</div>
       <div class="trust-pill">Progress saved on your device</div>
     </div>
-    <p class="calc-disclaimer calc-home-legal">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
   </section>
 </main>
 <footer class="calc-foot xshell">

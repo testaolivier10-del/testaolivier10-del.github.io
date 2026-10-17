@@ -242,6 +242,26 @@ body[data-course="apcalc"]{--ctint:#FCE8EE;--cink:#8C1036;}
    proposed; the same values as IDENTITY.accent in scripts/lib/apstat-build.mjs). */
 body[data-course="apstat"]{--ctint:#F5E6F4;--cink:#6E2470;}
 :root[data-theme="dark"] body[data-course="apstat"]{--ctint:rgba(214,120,206,0.10);--cink:#F0BCEB;}
+/* Primary buttons in the course color (--cink, page-colored text). Contrast,
+   light / dark: ochem 8.4 / 10.5, A&P 6.5 / 10.5, Biology 6.6 / 12.3,
+   Chemistry 8.6 / 10.7, Physics 8.4 / 12.1, Calculus 9.4 / 10.8, Statistics 9.8 / 10.9. */
+body:is([data-course="ochem"],[data-course="anp"],[data-course="bio"],[data-course="apchem"],[data-course="apphys"],[data-course="apcalc"],[data-course="apstat"],.bio,.chem,.phys,.calc){--btn-bg:var(--cink);--btn-ink:var(--paper);}
+
+/* The same pairs for a course's card outside its pages (hub cards, polish A3). */
+[data-tint="ochem"]{--ctint:#ECE8FB;--cink:#4B3BA8;}
+[data-tint="anp"]{--ctint:#FBE9E4;--cink:#A33B26;}
+[data-tint="bio"]{--ctint:#E4F1DD;--cink:#2D6A1F;}
+[data-tint="apchem"]{--ctint:#E3EAFA;--cink:#1D44A6;}
+[data-tint="apphys"]{--ctint:#FBEED5;--cink:#734200;}
+[data-tint="apcalc"]{--ctint:#FCE8EE;--cink:#8C1036;}
+[data-tint="apstat"]{--ctint:#F5E6F4;--cink:#6E2470;}
+:root[data-theme="dark"] [data-tint="ochem"]{--ctint:rgba(156,143,224,0.18);--cink:#C9C0F2;}
+:root[data-theme="dark"] [data-tint="anp"]{--ctint:rgba(236,132,108,0.07);--cink:#F2B9A9;}
+:root[data-theme="dark"] [data-tint="bio"]{--ctint:rgba(140,200,110,0.08);--cink:#B6E2A2;}
+:root[data-theme="dark"] [data-tint="apchem"]{--ctint:rgba(90,130,230,0.12);--cink:#B3C8F7;}
+:root[data-theme="dark"] [data-tint="apphys"]{--ctint:rgba(235,165,50,0.10);--cink:#F5CF8A;}
+:root[data-theme="dark"] [data-tint="apcalc"]{--ctint:rgba(232,80,122,0.10);--cink:#F7B8CA;}
+:root[data-theme="dark"] [data-tint="apstat"]{--ctint:rgba(214,120,206,0.10);--cink:#F0BCEB;}
 
 /* ==========================================================================
    2. Base
@@ -310,6 +330,8 @@ strong,b{font-weight:900;}
 .btn-press:hover,.btn-dark:hover,.start-btn:hover,.auth-modal-submit:hover{
   filter:brightness(1.06);color:var(--on-accent);background:var(--navy);transform:translateY(-1px);
 }
+/* Course color on course pages: --btn-bg/--btn-ink, section 1 (polish C3). */
+.btn-press,.btn-press:hover{background:var(--btn-bg,var(--navy));color:var(--btn-ink,var(--on-accent));}
 .btn-press:active,.btn-dark:active,.start-btn:active,.auth-modal-submit:active{
   transform:translateY(1px) scale(.98);box-shadow:0 3px 8px rgba(31,74,66,0.25);
 }
@@ -947,19 +969,30 @@ footer .privacy-link a:hover{color:var(--ink);}
   .site-header__course-short{display:inline;}
   .site-header__course{font-size:14.5px;color:var(--cink);padding-left:11px;flex-shrink:0;}
 }
-/* A phone's header row holds the mark, the course, search, level, account,
-   mute and theme. At 360-390px that only fits with the wordmark text dropped
-   (the mark still links to the hub), tighter gaps, and the streak chip left
-   to the course homes, which show it in their hero. */
+/* Phone header: mark, wordmark (polish A9), course, search, level, menu.
+   Under 360px with a course name the wordmark text drops. */
 @media (max-width:480px){
   .site-header__inner{padding-left:14px;padding-right:14px;gap:8px;}
-  .site-header__brand .brand-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+  .site-header__brand{gap:7px;font-size:15.5px;}
+  .site-header__brand .brand-mark{width:30px;height:30px;border-radius:10px;font-size:15px;}
   .site-header__brand-row{gap:8px;}
+  .site-header__course{padding-left:9px;}
   .nav-right{gap:6px;}
   .nav-right .theme-toggle::after,.nav-right .level-badge::after{inset:-6px;}
 }
 @media (max-width:400px){
   .nav-streak{display:none;}
+}
+/* The assistant button, docked in the phone header by tutor-launcher.js
+   (polish A10); the id outranks tutor.js's floating rules. */
+#site-header .lp-launch{
+  position:static;width:34px;height:34px;opacity:1;transform:none;pointer-events:auto;
+  filter:none;box-shadow:var(--lift-sm);border-radius:11px;flex-shrink:0;
+}
+#site-header .lp-launch svg{border-radius:11px;}
+#site-header .lp-launch:hover{transform:none;}
+@media (max-width:359px){
+  .site-header__brand:has(+ .site-header__course) .brand-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
 }
 
 /* ==========================================================================
@@ -976,6 +1009,9 @@ footer{
   font-family:var(--font-ui);font-weight:600;
   margin-top:48px;font-size:12.5px;color:var(--muted);max-width:60ch;
 }
+/* A course footer that is its own shell keeps the shell's gutter, in line
+   with the content (each .xx-foot zeroed it; polish A11). */
+footer.xshell{padding-left:clamp(18px,3.5vw,48px);padding-right:clamp(18px,3.5vw,48px);}
 
 ::selection{background:var(--accent);color:var(--on-accent-fill);}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px;}
@@ -1457,6 +1493,13 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 }
 @keyframes levl-floatup{0%{transform:translate(0,0) scale(1);opacity:1}70%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.6);opacity:0}}
 .levl-pulse{animation:levl-pulse .6s cubic-bezier(.2,.8,.3,1.4);}
+/* The same gain, still: reduced motion, or no level badge on the page. */
+.levl-xp-still{
+  position:fixed;z-index:80;pointer-events:none;opacity:0;
+  font:600 13.5px var(--font-mono);color:var(--accent-text);background:var(--tint-accent);
+  padding:5px 11px;border-radius:var(--radius-pill);box-shadow:var(--lift);transition:opacity .2s ease;
+}
+.levl-xp-still.show{opacity:1;}
 @keyframes levl-pulse{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
 /* Level-up toast, anchored just under the header so it never lands on the
    answer or explanation the student is reading (audit 2026-10). */

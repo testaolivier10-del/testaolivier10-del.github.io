@@ -65,7 +65,8 @@
                                     opts.enlarge false hides the button. Hooks for tool
                                     CSS: .ls-phone (root), --ls-scale / --ls-zoom and
                                     .is-big (stage); docs/tools-calm.md "Phones"
-     s.hint({ target, text, key })  pulse + tooltip on target, once per tool
+     s.hint({ target, text, key, inside })  pulse + tooltip on target, once per tool
+                                     (inside: true puts it inside a big target)
                                     per device; gone on first interaction
      s.suspend(on)                  hide the studio and give the page its
                                     chrome back (a Premium gate, an error)
@@ -709,10 +710,13 @@
         var cost = over(c, keep[0]) * 4 + over(c, keep[1]) * 4 + over(c, r) * 2 + (t0 < 0 || t0 + th > vh ? 1e7 : 0) + Math.abs(t0 - top);
         if(!best || cost < best.cost) best = { cost: cost, top: t0, below: i === 1 };
       });
+      // A large text box: sit inside it, top left, so the tip never covers the
+      // question written just above it (justification trainers).
+      if(o.inside && r.height > th + 40){ left = Math.max(8, r.left + 14); best = { top: Math.max(8, r.top + 14), below: true, inside: true }; }
       tip.style.left = (left + sx) + 'px';
       tip.style.top = (best.top + sy) + 'px';
       tip.classList.toggle('is-below', best.below);
-      tip.classList.toggle('no-arrow', best.below ? best.top > r.bottom + 14 : best.top + th < r.top - 14);
+      tip.classList.toggle('no-arrow', best.inside || (best.below ? best.top > r.bottom + 14 : best.top + th < r.top - 14));
       tip.style.setProperty('--ax', Math.max(14, Math.min(tw - 26, r.left + r.width / 2 - left - 6)) + 'px');
     }
     function queue(){ if(!raf) raf = requestAnimationFrame(place); }

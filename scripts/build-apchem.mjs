@@ -31,6 +31,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlink
 import { join, dirname } from 'node:path';
 import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
+import { connectionsWithNext } from './lib/lesson-next.mjs';
 import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from './lib/glossary.mjs';
 import { premiumData, lockedLd, courseOffers } from './lib/premium-data.mjs';
 import {
@@ -176,7 +177,7 @@ function build() {
       { id: 'check', kind: 'Check yourself', nav: 'Check yourself', h: 'Check yourself', html: `<p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check">${staticQuestions(check, stimuli, depth)}</div>` },
       { id: 'summary', kind: 'Summary', nav: 'Summary', h: 'Summary', html: g(L.summary) },
       { id: 'next', kind: 'Up next', nav: 'What comes next', h: 'What comes next', html: nx ? `<nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="${nx.id}.html">${esc(nx.title)} &rarr;</a></p></nav>` : '<p>This is the last topic in the course.</p>' },
-      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="chem-links chem-nav-ref">${connections(id, L).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
+      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="chem-links chem-nav-ref">${connectionsWithNext(connections(id, L), nx).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
     ].filter(Boolean);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LearningResource', '@id': `${url}#lesson`, name: t.title, url, description: desc, learningResourceType: 'Lesson', educationalLevel: 'High school', inLanguage: 'en', ...freeLd(t),
@@ -187,12 +188,13 @@ function build() {
     const body = `
 ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
 <div class="xshell">${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../units/${ch.id}.html` }, { name: t.title }])}</div>
-<div class="xshell chem-ls${parts.length > 1 ? ' chem-stepped' : ''}">
+<div class="xshell chem-ls cx-ls${parts.length > 1 ? ' chem-stepped' : ''}" data-course="apchem"${nx ? ` data-next-title="${esc(nx.title)}" data-next-unit="${nx.chapter}"${isFreeTopic(map, nx) ? ' data-next-free="1"' : ''}` : ''}>
   <aside class="chem-ls-rail chem-nav-ref" aria-label="Lesson parts">
-    <p class="chem-ls-k">${unitLabel(ch)} · ${esc(ch.title)}</p>
+    <p class="chem-ls-k cx-ls-k">${unitLabel(ch)} · ${esc(ch.title)}</p>
     <p class="chem-ls-links"><a href="../units/${ch.id}.html">&larr; Back to the unit</a><a href="../notes/${id}.html">Read the notes</a></p>
-    <div class="chem-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / ${parts.length}</span></div>
-    <ol class="chem-ls-steps">${parts.map((p, i) => `<li><a href="#${p.id}"><span class="n">${i + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
+    <div class="chem-ls-prog cx-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / ${parts.length}</span></div>
+    <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of ${parts.length}</span><span class="cx-ls-all">All steps</span></button>
+    <ol class="chem-ls-steps cx-ls-steps" id="lesson-steps">${parts.map((p, i) => `<li><a href="#${p.id}"><span class="n">${i + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
   </aside>
   <main id="main" class="chem-ls-main chem-lesson">
   <header class="chem-ls-hero">
@@ -200,8 +202,6 @@ ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
     <h1>${esc(t.title)}</h1>
     <p class="lede">${esc(lede)}</p>
     <p class="chem-tags chem-nav-ref">${(t.practices || []).map(n => `<span class="chem-tag">Practice ${n}: ${esc(practiceName(n))}</span>`).join('')}</p>
-    ${shareBar(`lessons/${id}.html`, `${t.title}: chemistry lesson`, 'lesson')}
-    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=${id}">Question set for this topic</a></p>
   </header>
   <div class="chem-ls-card">
 ${parts.map((p, i) => `  <section class="chem-part chem-step${i === 0 ? ' is-on' : ''}" id="${p.id}" aria-labelledby="h-${p.id}">
@@ -211,16 +211,20 @@ ${parts.map((p, i) => `  <section class="chem-part chem-step${i === 0 ? ' is-on'
   </section>`).join('\n')}
     <div class="chem-ls-actions chem-nav-ref"><button type="button" class="chem-ls-back">&larr; Previous</button><button type="button" class="chem-ls-go">Continue &rarr;</button><a class="chem-ls-go" hidden href="${nx ? `${nx.id}.html">Next lesson` : `../units/${ch.id}.html">Back to the unit`} &rarr;</a></div>
   </div>
+  <div class="cx-ls-end">
+    ${shareBar(`lessons/${id}.html`, `${t.title}: chemistry lesson`, 'lesson')}
+    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=${id}">Question set for this topic</a></p>
+  </div>
   </main>
 </div>
 ${STEP_FIRST_PAINT}
 ${footer(depth, `lesson:${id}`)}
 <script type="application/json" id="chem-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
-${tail({ depth, section: 'learn', extra: ['chem-questions.js', 'chem-lesson.js'], premium: true })}
+${tail({ depth, section: 'learn', extra: ['chem-questions.js', 'chem-lesson.js'], premium: true, site: ['course/lesson.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: `lessons/${id}.html`, depth, jsonld, noindex }) + body;
+    return head({ title, desc, path: `lessons/${id}.html`, depth, jsonld, noindex, meta: '<link rel="stylesheet" href="../../assets/course/lesson.css">\n' }) + body;
   }
 
   /* ------------------------------------------------------------ notes */
@@ -596,6 +600,7 @@ ${tail({ depth, section: 'learn', extra: ['chem-toc.js', 'chem-book.js'] })}
   </section>`;
   }
 
+
   function homePage() {
     const depth = '';
     const title = `${LABEL} Course, Free to Start | LevlPrep`;
@@ -632,11 +637,11 @@ ${bodyOpen()}
     <div>
       <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>
       <h1>${COURSE_HTML}, one particle at a time.</h1>
-      <p class="lede">Built on the 2024 course framework, in its order: ${word(units.length).toLowerCase()} units, each topic taught from scratch at the particle level, with the math you need refreshed first. Then practice that checks what the exam checks: units, significant figures, particle diagrams and justifications that compare both species.</p>
-      <p class="chem-review-note">${BETA_PILL} ${esc(BETA_NOTE)}</p>
+      <p class="lede">Each topic taught from scratch at the particle level, in framework order, then practice that checks your reasoning.</p>
       <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apchem_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All units &rarr;</a>${freeSim ? `<a class="link-quiet" href="tools/${freeSim.slug}.html">${esc(freeSim.name)} &rarr;</a>` : ''}</div>
     </div>
-    <div class="chem-level-card" id="chemLevel">
+    <div class="chem-level-card" id="chemLevel" data-lv-zero>
+      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
       <div class="chem-level-top">
         <div class="chem-level-chip"><div class="level-ring" id="chemLvRing">L1</div><div class="t"><b id="chemLvTitle">Mole Counter</b><span id="chemLvSub">Level 1 &middot; 0 XP</span></div></div>
         <div class="streak-chip" id="chemStreak" hidden title="Day streak, across every subject">${STREAK_SVG}<span id="chemStreakN">0</span></div>
@@ -683,7 +688,7 @@ ${bodyOpen()}
     <div>
       <h2 id="h-covers">What the course covers</h2>
       <p>${units.length} units and ${unitTopics.length} topics in the order of the 2024 course framework, plus ${skillTopics} math refresher topics built on the official equations and constants sheet. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
-      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation.</p>
+      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation. Practice checks what the exam checks: units, significant figures, particle diagrams and justifications that compare both species.</p>
       <p class="chem-small">${built.length === topics.length ? `All ${built.length} topics are built, each with its lesson, notes and questions.` : `So far, ${built.length} of ${topics.length} topics are built. The rest are listed so you can see where everything fits.`}</p>
     </div>
     <div>
@@ -718,12 +723,11 @@ ${sims.length ? `
 ${homeSample(depth)}
   <section class="xsection" aria-labelledby="h-go">
     <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="chem-cards">${(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`).join('')}
-      <li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>
-      <li><a href="equations-sheet.html"><b>Equations sheet, explained</b><span>What each equation and constant is for, and what the sheet leaves out.</span></a></li>
-      <li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li>
-${units.filter(chapterBuilt).length ? `      <li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>
-` : ''}    </ul>
+    <ul class="chem-cards chem-go">${[...(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`),
+      `<li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>`,
+      `<li><a href="equations-sheet.html"><b>Equations sheet, explained</b><span>What each equation and constant is for, and what the sheet leaves out.</span></a></li>`,
+      `<li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li>`,
+      ...(units.filter(chapterBuilt).length ? [`<li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>`] : [])].join('')}</ul>
   </section>
 
   <section class="xsection" aria-label="About LevlPrep">
@@ -733,7 +737,6 @@ ${units.filter(chapterBuilt).length ? `      <li><a href="unit-tests/${units.fil
       <div class="trust-pill">Unit sheets free to print</div>
       <div class="trust-pill">Progress saved on your device</div>
     </div>
-    <p class="chem-disclaimer chem-home-legal">${esc(DISCLAIMER)}</p>
   </section>
 </main>
 ${footer(depth, 'home')}
@@ -806,7 +809,7 @@ ${bodyOpen(` data-app="${a.slug}"`)}
     : `<p class="chem-soon">This page arrives with the first published unit. Meanwhile, read the <a href="learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `page:${a.slug}`)}
-${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssList.map(f => `<link rel="stylesheet" href="assets/${f}">\n`).join('')}${a.studio ? '<link rel="stylesheet" href="../assets/course/tool-studio.css">\n' : ''}${tail({ depth, section: a.section, extra: ['chem-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(a.studio ? ['course/tool-studio.js'] : []), ...(a.siteScripts || [])] })}
+${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssList.map(f => `<link rel="stylesheet" href="assets/${f}">\n`).join('')}${a.studio ? '<link rel="stylesheet" href="../assets/course/tool-studio.css">\n' : ''}${tail({ depth, section: a.section, extra: ['chem-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'dashboard'].includes(a.slug) ? ['course/flags.js'] : []), ...(a.studio ? ['course/tool-studio.js'] : []), ...(a.siteScripts || [])] })}
 </body>
 </html>
 `;

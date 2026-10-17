@@ -81,6 +81,8 @@
   function renderHero(){
     if(!HP) return;
     var info = HP.levelInfo('ochem');
+    // Zeros say nothing to a new visitor (polish 2026-10-17, B10).
+    el('heroProgress').toggleAttribute('data-lv-zero', !(info.total > 0));
     el('heroLevelRing').textContent = 'L' + info.level;
     el('heroLevelTitle').textContent = info.title;
     el('heroLevelSub').textContent = 'Level ' + info.level + ' · ' + info.total + ' XP';
@@ -400,7 +402,33 @@
     }
   }
 
+  /* ---- "Try a step": a real bank question (scripts/build-ochem-home.mjs),
+     graded in place. The page's "Show the answer" disclosure is the no-script
+     fallback; once this runs the feedback line replaces it. */
+  function sample(){
+    var card = el('ochemSample');
+    if(!card) return;
+    var right = +card.getAttribute('data-correct');
+    var opts = [].slice.call(card.querySelectorAll('.qopt'));
+    var why = el('ochemSampleWhy'), keyBox = card.querySelector('.sample-key'), key = keyBox ? keyBox.querySelector('p') : null;
+    if(keyBox) keyBox.hidden = true;
+    opts.forEach(function(b){
+      b.addEventListener('click', function(){
+        var i = +b.getAttribute('data-i');
+        opts.forEach(function(o){
+          var j = +o.getAttribute('data-i');
+          o.disabled = true;
+          o.classList.toggle('correct', j === right);
+          o.classList.toggle('incorrect', j === i && i !== right);
+        });
+        var k = key ? key.innerHTML : '';
+        why.innerHTML = i === right ? '<b>Correct.</b> ' + k.replace(/^<b>[\s\S]*?<\/b>\s*/, '') : '<b>Not quite.</b> Answer: ' + k;
+      });
+    });
+  }
+
   function render(){
+    try{ sample(); }catch(e){}
     try{ renderHero(); }catch(e){}
     try{ renderHeroCta(); }catch(e){}
     try{ renderResume(); }catch(e){}

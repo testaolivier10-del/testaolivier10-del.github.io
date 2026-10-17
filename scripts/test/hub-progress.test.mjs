@@ -21,7 +21,8 @@ test('the level curve is the documented one and round-trips', () => {
   // migrated users keep the level they had. If this ever changes, it demotes
   // every existing user, so pin it.
   assert.equal(HP.xpForLevel(1), 0);
-  assert.equal(HP.xpForLevel(2), 100);
+  assert.equal(HP.xpForLevel(2), 50, 'the first level-up comes early, inside a first session');
+  assert.equal(HP.xpForLevel(3), 400);
   assert.equal(HP.xpForLevel(5), 1600);
   assert.equal(HP.xpForLevel(20), 36100);
 
@@ -46,20 +47,20 @@ test('awards accumulate, split by subject, and report a level-up once', () => {
   const { HP } = fresh();
   assert.equal(HP.level(), 1);
 
-  const a = HP.award('nremt', 60);
-  assert.equal(a.total, 60);
-  assert.equal(a.leveledUp, false, '60 XP is short of level 2');
+  const a = HP.award('nremt', 40);
+  assert.equal(a.total, 40);
+  assert.equal(a.leveledUp, false, '40 XP is short of level 2');
 
-  const b = HP.award('ochem', 50);
+  const b = HP.award('ochem', 70);
   assert.equal(b.total, 110);
   assert.equal(b.level, 2);
-  assert.equal(b.leveledUp, true, 'crossing 100 is a level-up');
+  assert.equal(b.leveledUp, true, 'crossing 50 is a level-up');
 
   // The next award stays at level 2, so it must not claim another level-up.
   assert.equal(HP.award('ochem', 5).leveledUp, false);
 
-  assert.equal(HP.subjectXp('nremt'), 60);
-  assert.equal(HP.subjectXp('ochem'), 55);
+  assert.equal(HP.subjectXp('nremt'), 40);
+  assert.equal(HP.subjectXp('ochem'), 75);
   assert.equal(HP.xp().total, 115, 'the shared total is the sum of the subjects');
   assert.equal(HP.subjectXp('physics'), 0, 'a subject with no XP reads as zero, not undefined');
 });
@@ -81,6 +82,13 @@ test('levelInfo reports progress within the current level', () => {
   assert.equal(info.total, 450);
   assert.equal(info.into, 50, '50 XP into level 3');
   assert.equal(info.span, 500, 'level 3 spans 400..900');
+
+  const { HP: H2 } = fresh();
+  H2.award('nremt', 60);           // level 2 starts at 50, level 3 at 400
+  const i2 = H2.levelInfo('nremt');
+  assert.equal(i2.level, 2);
+  assert.equal(i2.into, 10);
+  assert.equal(i2.span, 350);
   assert.equal(info.toNext, 450);
 });
 

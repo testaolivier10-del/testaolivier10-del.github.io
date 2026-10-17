@@ -88,6 +88,7 @@ const CALC = ORDER.includes('apcalc');
 const CHEM_ALL = N.apchemTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apchem-dependency-map.json'), 'utf8')).topics.length;
 const PHYS_ALL = N.apphysTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apphys-dependency-map.json'), 'utf8')).topics.length;
 const CALC_ALL = N.apcalcTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apcalc-dependency-map.json'), 'utf8')).topics.length;
+const BIO_ALL = N.apbioTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apbio-dependency-map.json'), 'utf8')).topics.length;
 // Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB).
 const MARK = BIO || CHEM || PHYS || CALC;
 // The College Board sentence, on every page that uses the mark (docs/apbio-spec.md).
@@ -112,11 +113,16 @@ function passRow(p) {
     `</span></li>`;
 }
 
+/* One <details> per course (polish 2026-10-17, A8): the page opens on the
+   course the visitor came from (?course=, #key or the referring course page,
+   chosen by the script at the end of the page) and the rest stay folded to
+   one line with their lowest price. */
 function courseSection(key) {
   const c = COURSES[key];
+  const from = lowest(c).price;
   return `
-        <section class="pp-course" id="${key}" aria-labelledby="pp-${key}">
-          <h2 id="pp-${key}">${esc(c.name)}</h2>
+        <details class="pp-course" id="${key}" data-path="${COURSE_URL[key]}">
+          <summary><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}</span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul>${c.free.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
             <div><h3>Premium adds</h3><ul>${c.premium.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
@@ -125,7 +131,7 @@ function courseSection(key) {
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="${key}" data-premium-source="pricing-page">Get Premium for ${esc(c.name)}</button> <a href="${COURSE_URL[key]}">Start free</a></p>
           ${c.guarantee ? `<p class="pp-guarantee" id="pass-or-extend">${esc(guaranteeText())} <a href="terms.html#pass-or-extend">The full terms</a>.</p>` : ''}${c.passes.some((p) => p.until) ? `
           <p>One pass, whenever you buy it: it lasts through ${esc(longDate(c.passes.find((p) => p.until).until))}, the end of the 2027 exam season.</p>` : ''}
-        </section>`;
+        </details>`;
 }
 
 function premiumPage() {
@@ -173,12 +179,21 @@ function premiumPage() {
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
-  .hero .pp-anchor{margin:14px 0 0;max-width:60ch;font-size:14.5px;font-weight:700;color:var(--muted);line-height:1.6;}
   .pp p,.pp li{font-size:15.5px;font-weight:600;color:var(--muted);line-height:1.6;max-width:66ch;}
   .pp strong{color:var(--ink);font-weight:800;}
-  .pp h2{font-size:21px;margin:0 0 10px;}
+  .pp h2{font-size:19px;margin:0 0 10px;}
   .pp h3{font:900 12px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 6px;}
-  .pp-course{border:var(--bw) solid var(--line);border-radius:var(--radius);padding:18px 20px;margin:0 0 18px;}
+  .pp-course{border:var(--bw) solid var(--line);border-radius:var(--radius);padding:0 20px;margin:0 0 12px;background:var(--white);}
+  .pp-course[open]{padding-bottom:18px;}
+  .pp-course{scroll-margin-top:calc(var(--chrome-row1-h) + 16px);}
+  .pp-course > summary{list-style:none;display:flex;align-items:center;gap:12px;padding:16px 0;cursor:pointer;}
+  .pp-course > summary::-webkit-details-marker{display:none;}
+  .pp-course > summary::before{content:var(--disclose);font:900 20px/1 var(--font-ui);color:var(--muted);width:12px;flex-shrink:0;transition:transform .15s ease;}
+  .pp-course[open] > summary::before{transform:rotate(90deg);}
+  .pp-course > summary h2{margin:0;flex:1;min-width:0;}
+  .pp .pp-from{font:900 14px var(--font-ui);color:var(--muted);white-space:nowrap;}
+  .pp-course[open] .pp-from{visibility:hidden;}
+  @media (prefers-reduced-motion:reduce){.pp-course > summary::before{transition:none;}}
   .pp-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .pp-cols ul{padding-left:18px;margin:0;}
   .pp-cols li{margin-bottom:5px;}
@@ -209,8 +224,7 @@ ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
   <div class="hero">
     <div class="eyebrow">Free vs Premium</div>
     <h1>What&rsquo;s free, and what Premium adds.</h1>
-    <p class="lede">${esc(FREE_SENTENCE)} Premium is a one-time pass for one course: no subscription, nothing renews.${founding ? ` <span data-founding-until="${founding.until}">Founding-member price: ${FOUNDING.off}% off every pass until ${longDate(founding.until)}.</span>` : ''}</p>
-    <p class="pp-anchor">A pass costs $${LOW} to $${HIGH}, about what ${tutorSpan} with a private tutor costs (<a href="${TUTOR_HOUR.source}" rel="noopener">Care.com</a> puts a US tutor&rsquo;s average starting rate near $${TUTOR_HOUR.rate} an hour, ${TUTOR_HOUR.checked}). If it isn&rsquo;t what you expected, you can refund it yourself, in full, within 7 days (once per account, <a href="terms.html">terms</a>).</p>
+    <p class="lede">Every course is free to start. Premium is a one-time pass for one course, $${LOW} to $${HIGH}, with no subscription and a 7-day refund.${founding ? ` <span data-founding-until="${founding.until}">${FOUNDING.off}% off until ${longDate(founding.until)}.</span>` : ''}</p>
   </div>
 
   <div class="xsection">
@@ -226,6 +240,8 @@ ${ORDER.map(courseSection).join('\n')}
     <div class="xgrid">
       <div class="xlabel">The rules</div>
       <div class="xcontent narrow pp">
+        <p>${esc(FREE_SENTENCE)}</p>
+        <p>A pass costs $${LOW} to $${HIGH}, about what ${tutorSpan} with a private tutor costs (<a href="${TUTOR_HOUR.source}" rel="noopener">Care.com</a> puts a US tutor&rsquo;s average starting rate near $${TUTOR_HOUR.rate} an hour, ${TUTOR_HOUR.checked}).</p>
         <ul class="pp-rules">
           <li><strong>One-time, never a subscription.</strong> Prices are in US dollars; sales tax or VAT is added at checkout and shown before you pay. Polar, our merchant of record, sells the pass and sends the receipt.</li>
           <li><strong>Buying needs a free account</strong>, so the pass follows you to every device. Everything free works without one.</li>
@@ -246,6 +262,27 @@ ${MARK ? `    ${TM_HTML}
   </footer>
 </div>
 
+<script>
+// Open the course the visitor came from: ?course= (a key or its folder), a
+// #key link, or the course page that linked here. With none, all stay folded.
+(function(){
+  var list = [].slice.call(document.querySelectorAll('details.pp-course'));
+  var want = null, q = null, ref = '';
+  try { q = new URLSearchParams(location.search).get('course'); } catch(e){}
+  var h = location.hash.replace('#', '');
+  try { var r = new URL(document.referrer); if(r.origin === location.origin) ref = r.pathname; } catch(e){}
+  list.forEach(function(d){
+    var path = d.getAttribute('data-path'), folder = path.split('/').join('');
+    if(!want && q && (q === d.id || q === folder)) want = d;
+  });
+  if(!want && h) want = document.getElementById(h);
+  if(!want && ref) list.forEach(function(d){ if(!want && ref.indexOf(d.getAttribute('data-path')) === 0) want = d; });
+  if(want && want.tagName === 'DETAILS'){
+    want.open = true;
+    if(want !== list[0] || h) want.scrollIntoView({ block: 'start' });
+  }
+})();
+</script>
 <script>
 // The founding price ends on its date without a rebuild: after it, the
 // founding parts hide and the full price shows.
@@ -273,16 +310,37 @@ put('premium.html', premiumPage());
 
 /* ---- 2. the hub ------------------------------------------------------------ */
 
+/* Two plan cards side by side (polish 2026-10-17, A6: one thin centred
+   paragraph left a wide card empty). Both lists are the clauses of
+   FREE_SENTENCE, so the cards cannot drift from what every other page says. */
 function hubPricing() {
   const low = Math.min(...ORDER.map((k) => lowest(COURSES[k]).price));
   const price = founding
-    ? `Premium passes start at ${money(low)}, one-time<span data-founding-until="${founding.until}"> (${money(foundingPrice(low))} at the founding-member price until ${longDate(founding.until)})</span>.`
-    : `Premium passes start at ${money(low)}, one-time.`;
+    ? `From ${money(low)}, one-time<span data-founding-until="${founding.until}"> (${money(foundingPrice(low))} founding price until ${longDate(founding.until)})</span>`
+    : `From ${money(low)}, one-time`;
+  const cap = (t) => t[0].toUpperCase() + t.slice(1);
+  const [notes, lessons, adds] = FREE_SENTENCE.replace(/\.$/, '').split('; ');
+  if (!adds || !/^Premium adds /.test(adds)) throw new Error('build-pricing: FREE_SENTENCE no longer reads "…; …; Premium adds …"');
+  const premium = adds.replace(/^Premium adds /, '').split(/, | and /);
+  const li = (t) => `<li>${esc(cap(t))}</li>`;
   return `  <div class="xsection">
     <div class="xgrid">
       <div class="xlabel">Free and Premium</div>
       <div class="xcontent">
-        <p class="section-lede">${esc(FREE_SENTENCE)} ${price} No subscription. <a href="premium.html">What&rsquo;s free in each course, and the prices</a>.</p>
+        <div class="hub-plans">
+          <div class="hub-plan">
+            <h3>Free</h3>
+            <p class="hub-plan__price">Every course, free to start</p>
+            <ul>${li(notes)}${li(lessons)}</ul>
+          </div>
+          <div class="hub-plan hub-plan--premium">
+            <h3>Premium</h3>
+            <p class="hub-plan__price">${price}</p>
+            <ul>${premium.map(li).join('')}</ul>
+            <p class="hub-plan__note">One pass per course. No subscription, and a 7-day refund.</p>
+          </div>
+        </div>
+        <a class="featured-cta hub-plans__more" href="premium.html">What&rsquo;s free in each course, and the prices &rarr;</a>
       </div>
     </div>
   </div>
@@ -301,6 +359,9 @@ const passWords = (p) => (p.until ? `for a pass valid through ${longDate(p.until
   : /^(semester|full year)/i.test(p.label) ? `a ${p.label[0].toLowerCase()}${p.label.slice(1)}` : `for ${p.label}`);
 const passList = (k) => COURSES[k].passes.map((p) => `${money(p.price)} ${passWords(p)}`).join(' or ');
 const PRICE = `Premium is a one-time pass per course, with no subscription: ${ORDER.map((k) => `${COURSES[k].name}, ${passList(k)}`).join('; ')}. Prices are in US dollars.`;
+/* On the page the price answer is one line plus the link (polish 2026-10-17,
+   A7); the structured data keeps every price. */
+const PRICE_SHORT = `A one-time pass for one course, from ${money(LOW)} to ${money(HIGH)} in US dollars, with no subscription.`;
 const FAQ = [
   ['Is LevlPrep free?', FREE_SENTENCE],
   ['How much does Premium cost?', PRICE],
@@ -314,7 +375,7 @@ function hubFaq() {
       <div class="xcontent">
         <div class="hub-faq">
 ${FAQ.map(([q, a], i) => `          <h2>${esc(q)}</h2>
-          <p>${esc(a)}${i === 1 ? ' <a href="premium.html">Free vs Premium, course by course</a>.' : ''}</p>`).join('\n')}
+          <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p>`).join('\n')}
         </div>
       </div>
     </div>
@@ -360,14 +421,14 @@ function hubLd() {
    ochem curriculum's count. */
 function hubBioCard() {
   const topics = N.apbioTopics;
-  return `        <a class="featured-card" href="bio/">
+  return `        <a class="featured-card" href="bio/" data-tint="bio">
           <div class="featured-top">
             <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6"/><path d="M17 3c0 6-10 6-10 12"/><path d="M8.5 7h7M8.5 17h7"/></svg></div>
             <span class="status-badge">Beta</span>
           </div>
           <div>
             <p class="featured-name">AP® Biology</p>
-            <p class="featured-desc">Built on the 2025 course framework, in its order: lessons from scratch, data-heavy practice like the real exam, and the statistics skills. ${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, more every few weeks.</p>
+            <p class="featured-desc">Built on the 2025 course framework, in its order: lessons from scratch, data-heavy practice like the real exam, and the statistics skills. ${BIO_ALL ? `All ${fmt(topics)} published topics, from the chemistry of life to ecology.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, more every few weeks.`}</p>
           </div>
           <div class="featured-tags">
             <span>Beta</span>
@@ -382,7 +443,7 @@ function hubBioCard() {
 /* AP® Chemistry's hub card, the same way: counted, never typed. */
 function hubChemCard() {
   const topics = N.apchemTopics;
-  return `        <a class="featured-card" href="chem/">
+  return `        <a class="featured-card" href="chem/" data-tint="apchem">
           <div class="featured-top">
             <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v6L4 19a1.6 1.6 0 0 0 1.4 2h13.2A1.6 1.6 0 0 0 20 19l-5-10V3"/><path d="M7.5 3h9M6.7 14h10.6"/></svg></div>
             <span class="status-badge">Beta</span>
@@ -405,7 +466,7 @@ function hubChemCard() {
    decision 3), counted, never typed. */
 function hubPhysCard() {
   const topics = N.apphysTopics;
-  return `        <a class="featured-card" href="physics/">
+  return `        <a class="featured-card" href="physics/" data-tint="apphys">
           <div class="featured-top">
             <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16"/><path d="M12 3v11.5"/><circle cx="12" cy="17.5" r="3"/><path d="M6.5 15.5a7 7 0 0 0 11 0" stroke-dasharray="1.5 2.5"/></svg></div>
             <span class="status-badge">Beta</span>
@@ -428,7 +489,7 @@ function hubPhysCard() {
    (docs/apcalc-spec.md decision 6), counted, never typed. */
 function hubCalcCard() {
   const topics = N.apcalcTopics;
-  return `        <a class="featured-card" href="calculus/">
+  return `        <a class="featured-card" href="calculus/" data-tint="apcalc">
           <div class="featured-top">
             <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3.5c-1.3-.7-2.6.1-2.8 1.6l-1.4 13.8c-.2 1.5-1.5 2.3-2.8 1.6"/><path d="M3 17c3 0 4-7 8-8s5 2 6 3" stroke-opacity=".55"/><path d="M15 6l6 4" stroke-dasharray="1.5 2.5"/></svg></div>
             <span class="status-badge">Beta</span>
@@ -461,11 +522,23 @@ function hubCalcCard() {
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
   for (const [re, txt] of [
     [/(<div class="eyebrow">)\w+ courses( &middot; free to start<\/div>)/, `$1${word} courses$2`],
-    [/(<a class="link-quiet" href="#subjects">See all )\w+( courses<\/a>)/, `$1${word.toLowerCase()}$2`],
+    [/(<a class="featured-cta hero-more" href="#subjects">See all )\w+( courses &rarr;<\/a>)/, `$1${word.toLowerCase()}$2`],
   ]) {
     if (!re.test(src)) throw new Error(`${rel}: the hero no longer matches ${re}`);
     src = src.replace(re, txt);
   }
+  /* The desktop facts row (polish 2026-10-17, A2): course-neutral, counted
+     from every open course's bank, never typed. */
+  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc };
+  const allQ = OPEN.reduce((n, c) => n + (BANK[c.key] || 0), 0);
+  const facts = [
+    `${fmt(allQ)} practice questions, each one explained`,
+    'Notes free forever in every course',
+    `One level and one streak across all ${word.toLowerCase()} courses`,
+    'No ads',
+  ];
+  src = between(src, '<!-- hero-facts:start -->', '<!-- hero-facts:end -->',
+    `    <div class="fact-row">\n${facts.map((f) => `      <span><span class="dot"></span>${f}</span>`).join('\n')}\n    </div>`, rel);
   const m = src.indexOf('<!-- levlprep-structured-data -->');
   if (m === -1) throw new Error('index.html: no <!-- levlprep-structured-data --> marker');
   const s0 = src.indexOf('<script type="application/ld+json">', m);
@@ -578,7 +651,7 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
   let out = between(src, '<!-- nf-ochem:start -->', '<!-- nf-ochem:end -->', card, rel);
   const bio = `    <a class="card nf-card" href="/bio/">
       <h2>AP® Biology (Beta) &rarr;</h2>
-      <p>${fmt(N.apbioTopics)} published topic${N.apbioTopics === 1 ? '' : 's'} so far, in the order of the 2025 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+      <p>${BIO_ALL ? `All ${fmt(N.apbioTopics)} published topics` : `${fmt(N.apbioTopics)} published topic${N.apbioTopics === 1 ? '' : 's'} so far`}, in the order of the 2025 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
     </a>`;
   out = between(out, '<!-- nf-bio:start -->', '<!-- nf-bio:end -->', BIO ? bio : '', rel);
   const chem = `    <a class="card nf-card" href="/chem/">

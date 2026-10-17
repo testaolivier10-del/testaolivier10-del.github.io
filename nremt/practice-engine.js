@@ -2221,6 +2221,10 @@ $id('nextBtn').addEventListener('click', () => {
     renderQuestion();
     renderJumpRow();
     const right = isAnswerCorrect(qNow, answers[current]);
+    // The per-correct XP is paid as the answer is checked, so the gain shows
+    // on the answer that earned it (polish 2026-10-17, B11); showResults pays
+    // the rest and skips what was paid here.
+    if(right && window.LevlXP) window.LevlXP.awardXp(XP_PER_CORRECT);
     if(window.LevlSound && window.LevlSound.answer) window.LevlSound.answer(right);
     if(window.LevlAnnounce) window.LevlAnnounce.say(right ? 'Correct.' : 'Not quite. ' + formatCorrectAnswerText(qNow, LETTERS));
     $id('nextBtn').focus();
@@ -2274,10 +2278,15 @@ let lastSessionMisses = [];
 // accuracy milestone (see DOMAIN_TIER_THRESHOLDS in nav.js, which also renders
 // the header's level badge). Awarded once per finished session, not live per
 // question, so it stays a single localStorage write instead of one per answer.
-function awardQuizXp(domainStats, score){
+// paidLive: correct answers whose XP was already awarded when they were
+// checked (practice modes); the returned total still includes them, so the
+// results screen shows what the whole session earned.
+const XP_PER_CORRECT = 10;
+function awardQuizXp(domainStats, score, paidLive){
   if(!window.LevlXP) return;
-  const XP_PER_CORRECT = 10, COMPLETION_BONUS = 25;
+  const COMPLETION_BONUS = 25;
   let xpGain = score * XP_PER_CORRECT + COMPLETION_BONUS;
+  const already = Math.min(score, paidLive || 0) * XP_PER_CORRECT;
 
   const xpState = window.LevlXP.loadXp();
   const allDomainStats = loadDomainStatsAll();
@@ -2296,7 +2305,7 @@ function awardQuizXp(domainStats, score){
     if(tier !== (xpState.domainTiers[d] || 0)) tierUpdates[d] = tier;
   });
 
-  window.LevlXP.awardXp(xpGain, tierUpdates);
+  window.LevlXP.awardXp(xpGain - already, tierUpdates);
   return xpGain;
 }
 
@@ -2367,7 +2376,8 @@ function showResults(){
   recordDomainStatsAll(domainStats);
   recordExamDomainStats(examStats);
   if(mode !== 'adaptive') recordStudyActivity(activeIndices.length);
-  const xpGained = awardQuizXp(domainStats, score);
+  const paidLive = practiceChecks() ? activeIndices.reduce((n, qIdx, i) => n + (checked[i] && isAnswerCorrect(QUESTIONS[qIdx], answers[i]) ? 1 : 0), 0) : 0;
+  const xpGained = awardQuizXp(domainStats, score, paidLive);
 
   /* The one page on the site with no per-answer chime: this quiz withholds
      right/wrong until you submit, the way the real exam does, so a sound on

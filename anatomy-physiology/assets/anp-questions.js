@@ -83,6 +83,8 @@
     var fb = wrap.querySelector('.anp-q-feedback');
     var actions = wrap.querySelector('.anp-q-actions');
     host.appendChild(wrap);
+    // Flag toggle on the study pages (assets/course/flags.js); opts.flag 'session' for an exam-only item.
+    if(studyPage() && window.LevlFlags && opts.flag !== false) window.LevlFlags.attach(wrap, 'anp', q.id, opts.flag);
 
     function finish(correct, score, detailHtml, pick, part){
       done = true;

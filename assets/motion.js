@@ -49,15 +49,18 @@
 
   function badge(){ return document.getElementById('levelBadge'); }
 
-  /* ---- +N XP chip ---- */
+  /* ---- +N XP chip ----
+     Shown on every award, so a first session sees each correct answer pay
+     (polish 2026-10-17, B11). Small, aria-hidden (the answer verdict is what
+     gets announced), pointer-events none, and placed just under the header,
+     so it never covers the question or its explanation. With reduced motion
+     it simply appears beside the badge and goes, with no flight. */
+  var holder = null, holderTimer;
   function floatXp(gained){
     if(!gained) return;
     var to = badge();
-    if(reduced() || !to || to.hidden || !to.offsetWidth){ pulseBadge(); return; }
-    var b = to.getBoundingClientRect();
-    // Starts just under the badge rather than where the answer was clicked:
-    // flying up from the option it crossed the explanation the student was
-    // about to read (audit 2026-10, gamification row).
+    var b = to && !to.hidden && to.offsetWidth ? to.getBoundingClientRect() : null;
+    if(reduced() || !b){ staticXp(gained, b); return; }
     var from = { x: b.left + b.width / 2 - 20, y: b.bottom + 52 };
     var chip = document.createElement('span');
     chip.className = 'levl-xp-float';
@@ -69,6 +72,28 @@
     chip.style.setProperty('--dy', (b.top + b.height / 2 - from.y + 34) + 'px');
     document.body.appendChild(chip);
     setTimeout(function(){ chip.remove(); pulseBadge(); }, 1000);
+  }
+  // One still chip, reused: several quick awards add up instead of stacking.
+  function staticXp(gained, b){
+    if(!holder || !holder.isConnected){
+      holder = document.createElement('span');
+      holder.className = 'levl-xp-still';
+      holder.setAttribute('aria-hidden', 'true');
+      holder.__n = 0;
+      document.body.appendChild(holder);
+    }
+    holder.__n = (holder.classList.contains('show') ? holder.__n : 0) + gained;
+    holder.textContent = '+' + holder.__n + ' XP';
+    var top = b ? b.bottom + 8 : null;
+    if(top == null){
+      var h = document.getElementById('site-header');
+      top = (h ? h.getBoundingClientRect().bottom : 0) + 8;
+    }
+    holder.style.top = Math.max(8, top) + 'px';
+    holder.style.right = b ? Math.max(8, window.innerWidth - b.right) + 'px' : '16px';
+    holder.classList.add('show');
+    clearTimeout(holderTimer);
+    holderTimer = setTimeout(function(){ holder.classList.remove('show'); }, 1400);
   }
   function pulseBadge(){
     var el = badge();

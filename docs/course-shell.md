@@ -29,6 +29,8 @@ editor, FRQ, cram plan, skill sheets, Classroom sharing for AP), exam formats, B
 | `assets/course/book.css` | W-B |
 | `assets/course/study.css` | W-C (practice, review, flashcards, exams) |
 | `assets/course/hub.css` | W-D (dashboard, search, tools hub, home row) |
+| `assets/course/flags.js` (+ study.css section 7, `.cx-flagcard` in hub.css) | flags for A&P and the four APs: `LevlFlags`, key `<course>_flagged_v1`; practice, review, exams, dashboard (polish 2026-10-17, D1) |
+| `assets/course/lesson.js`, `lesson.css` | lesson chrome for A&P and the four APs: phone step toggle, Share/Copy/Print at the end, the after-check nudge (`LevlLesson.checked`) (polish 2026-10-17, D2, D3) |
 
 Load order on a course page: `theme.css`, `assets/course/base.css`, the area file(s), then the course's own CSS.
 
