@@ -6,12 +6,13 @@ the exam went fully digital), so most books, Khan Academy and older practice tes
 below is the revised course unless marked "old".
 
 Access note: shell egress to collegeboard.org is blocked (proxy 403) and Firecrawl had no credits, so pages were read
-through WebFetch text extraction. Several URLs timed out at the permission step and were not read (listed at the end).
-The CED extraction stops at about 110k characters, inside Unit 2, so **Units 1 and 2 learning objectives come from the
-CED text; Unit 3 topic titles come from the CED's Course at a Glance pages; Unit 4 and 5 topic titles come from two
-third-party sites that say they follow the 2026-27 course** (Fiveable's Unit 4 navigation, Lumisource's Unit 5 page),
-and both agree with the topic numbers the CED extraction did show (4.1, 4.2, 4.7, 5.1, 5.3, 5.5). Marked
-**[third party]**; a person should check them against the CED PDF.
+through WebFetch text extraction. The CED extraction stops at about 110k characters (read at offsets 0, 40k and 100k):
+it covers Units 1 and 2 in full (all 25 topic titles), the Course at a Glance for Unit 3 (all 15 titles) and the
+overviews of Units 4 and 5. **Phase 0 check (2026-10-17):** the official student course page
+(apstudents.collegeboard.org/courses/ap-statistics) lists a subset of every unit's topic titles, and the reference
+sheet PDF was read in full. With those, **every topic title is now official except 4.3, 4.5, 4.9 and 5.4**, which three
+third-party sites that follow the 2026-27 course agree on (Fiveable, num8ers, OnePrep). Per-topic sources are in
+`docs/apstat-ced-map.json` (`source`); what is still unread is in `docs/apstat-needs-author.md` (`ced-text`).
 
 Key official URLs
 - Course page: https://apcentral.collegeboard.org/courses/ap-statistics
@@ -89,7 +90,7 @@ distribution (old 1.10) and sampling distributions with the Central Limit Theore
   replication, control of other variables; single and double blind; completely randomized, randomized block, matched
   pairs; volunteers limit generalization.
 
-### Unit 2 (CED titles and skills; learning objectives read for 2.1 only)
+### Unit 2 (CED titles and skills, all 12 read in the CED text; learning objectives read for 2.1 only)
 - 2.1 Tabular and Graphical Representations for the Distributions of Two Categorical Variables [4.A, 4.B]. Two-way
   tables, side-by-side and segmented bar charts, mosaic plots; association.
 - 2.2 Summary Statistics for Two Categorical Variables [3.B, 4.A, 4.B]
@@ -109,7 +110,7 @@ with its structure, the values substituted, and the answer; a distribution calcu
 the parameters and the boundary value, and shows the direction (for example a labelled sketch or
 `P(X ≥ 4)` with X binomial, n = 10, p = 0.3).
 
-### Unit 3 (CED Course at a Glance titles)
+### Unit 3 (CED Course at a Glance titles; 7 of 15 also on the official student page)
 3.1 Estimators; 3.2 Sampling Distributions for Sample Proportions; 3.3 Constructing a Confidence Interval for a
 Population Proportion; 3.4 Justifying a Claim Based on a Confidence Interval for a Population Proportion; 3.5 Setting
 Up a Test for a Population Proportion; 3.6 p-Values; 3.7 Carrying Out a Test for a Population Proportion; 3.8 Potential
@@ -120,7 +121,7 @@ a Test for the Difference Between Two Population Proportions; 3.13 Carrying Out 
 Population Proportions; 3.14 Setting Up a Chi-Square Test for Homogeneity or Independence; 3.15 Carrying Out a
 Chi-Square Test for Homogeneity or Independence.
 
-### Unit 4 [third party: Fiveable Unit 4 navigation, "verified for the 2027 exam"]
+### Unit 4 [official for 7 of 10: 4.1, 4.2, 4.7 in the CED text; 4.4, 4.6, 4.8, 4.10 on the student page. 4.3, 4.5, 4.9 third party (Fiveable, num8ers, OnePrep agree)]
 4.1 Sampling Distributions for Sample Means; 4.2 Constructing a Confidence Interval for a Population Mean or Population
 Mean Difference; 4.3 Justifying a Claim Based on a Confidence Interval for a Population Mean or Population Mean
 Difference; 4.4 Setting Up a Test for a Population Mean or Population Mean Difference; 4.5 Carrying Out a Test for a
@@ -131,18 +132,29 @@ Two Population Means; 4.10 Carrying Out a Test for the Difference Between Two Po
 (Matched pairs, "population mean difference", are taught with one-sample t procedures in 4.2-4.5.)
 https://fiveable.me/ap-stats/unit-4/sampling-distributions-for-sample-means/study-guide/JcwkFAqbdjfLgHUdojkE
 
-### Unit 5 [third party: Lumisource Unit 5 review]
+### Unit 5 [official for 4 of 5: 5.1, 5.2, 5.3, 5.5 on the student page (5.1, 5.3, 5.5 also in the CED text). 5.4 Residuals third party (Fiveable, num8ers agree)]
 5.1 Graphical Representations Between Two Quantitative Variables; 5.2 Correlation; 5.3 Linear Regression Models; 5.4
 Residuals; 5.5 Least-Squares Regression. No transformations and no inference for slope.
-https://www.lumisource.io/ap/statistics/unit5/review
+https://www.lumisource.io/ap/statistics/unit5/review ; https://num8ers.com/?p=20190 ; https://fiveable.me/ap-stats/unit-5/residuals/study-guide/zdTJQZw0UVGswyK6kkEF ;
+https://apstudents.collegeboard.org/courses/ap-statistics (official titles for 5.1-5.3, 5.5)
 
 ### Exclusions checklist (from the revisions page)
 Not assessed, so no item, FRQ or required step uses them (a notes `going-further` aside may mention one): the
 geometric distribution; combining random variables (sum and difference rules for means and variances of random
 variables, so no question asks for the SD of X + Y); chi-square goodness of fit; transformations to achieve linearity;
 inference for regression slope (t interval and test for β); old "departures from linearity" topics. The sampling
-distribution formulas for p̂₁ − p̂₂ and x̄₁ − x̄₂ remain (they are on the reference sheet). Open: whether the normal
-approximation to the binomial and the "10% condition" wording are still in the CED Units 2-4 text (not read).
+distribution formulas for p̂₁ − p̂₂ and x̄₁ − x̄₂ remain (they are on the reference sheet).
+
+Phase 0 findings (2026-10-17):
+- **10% condition: in the course.** The CED's Unit 4 overview names "the 10% condition" (confusing it with the
+  randomization condition is listed as a common student error). Teach it with large counts in 3.2 and use it in every
+  inference topic when sampling without replacement.
+- **Pooled two-sample t: not in the course.** The 2026 reference sheet gives only the unpooled SE for x̄₁ − x̄₂; the
+  only pooled quantity on the sheet is p_c for the two-proportion test. Two-sample t procedures are unpooled
+  (technology df, conservative df accepted).
+- **Normal approximation to the binomial: not found.** No mention in the readable CED text, the reference sheet, the
+  revisions page or the student page. Still unverified (needs-author `ced-text`); do not test it.
+- **b = r·s_y/s_x is not on the 2026 reference sheet** (only ŷ = a + bx), and neither is a formula for r.
 
 ## 3. Practices and skills (CED)
 
@@ -193,9 +205,10 @@ suggest about 20-22 minutes each.
   (each with mean, SD and SE).
 - Tables: A standard normal probabilities (z from −3.4 to 3.4, area below z); B t critical values (df 1-30, 40, 50, 60,
   80, 100, 1000, ∞; tail probabilities 0.25 to 0.0005, confidence levels 50% to 99.9%); C χ² critical values (df 1-30,
-  40-100).
-- Not on the sheet (students must know): formulas for b and r and r² (old sheets had b = r·s_y/s_x; check the revised
-  sheet), the 1.5 × IQR rule, z-score, the empirical rule, conditions (random, 10%, large counts, normal/large sample),
+  40, 50, 60, 80, 100; the same twelve tail probabilities as Table B). Read in full 2026-10-17.
+- No pooled t: the means formulas are unpooled only; the one pooled SE is p_c (two proportions, p₁ = p₂ assumed).
+- Not on the sheet (students must know): formulas for b and r and r² (old sheets had b = r·s_y/s_x; the 2026 sheet
+  does not), the 1.5 × IQR rule, z-score, the empirical rule, conditions (random, 10%, large counts, normal/large sample),
   degrees of freedom rules, interpretation wording.
 
 ## 5. Scores
@@ -236,7 +249,9 @@ intervals to tests.
 ## 7. URLs not read (permission timeouts or blocked)
 
 https://apcentral.collegeboard.org/courses/ap-statistics/exam ;
-https://apcentral.collegeboard.org/media/pdf/ap-statistics-course-at-a-glance.pdf (and the printable poster);
+https://apcentral.collegeboard.org/media/pdf/ap-statistics-course-at-a-glance.pdf (permission timeout again in Phase 0;
+the printable poster too);
 https://apstudents.collegeboard.org/about-ap-scores/score-distributions/ap-statistics ; fiveable.me/ap-stats ;
-lumisource Units 1 and 4. A person should read the CED Units 2-5 topic pages for learning objectives and any
+lumisource Units 1 and 4; oneprep.co Units 3 and 5. The CED PDF text past about 110k characters (Units 2-5 topic pages)
+is out of WebFetch's reach. A person should read the CED Units 2-5 topic pages for learning objectives and any
 exclusion statements before content authoring (needs-author `ced-text`).
