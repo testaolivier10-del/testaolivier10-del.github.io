@@ -1,0 +1,564 @@
+{
+ "stimuli": {
+  "residuals-s1": {
+   "kind": "graph",
+   "title": "Car age and price: the line and its residuals",
+   "text": "The dealer's 16 used cars of one model (age in years, price in thousands of dollars) with the regression line $\\widehat{\\text{price}} = 29.56 - 1.905(\\text{age})$. The bottom panel is the residual plot. (Invented data.)",
+   "figure": "residual-plot-pair",
+   "data": {
+    "vars": [
+     {
+      "name": "age",
+      "unit": "years",
+      "values": [
+       1,
+       1,
+       2,
+       2,
+       3,
+       3,
+       4,
+       4,
+       5,
+       6,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ]
+     },
+     {
+      "name": "price",
+      "unit": "thousand dollars",
+      "values": [
+       31.5,
+       30.2,
+       26.4,
+       27.5,
+       23.1,
+       22.4,
+       20.4,
+       19.6,
+       17.6,
+       15.6,
+       16.4,
+       14.8,
+       13.7,
+       12.9,
+       12.5,
+       12.2
+      ]
+     }
+    ]
+   }
+  },
+  "residuals-s2": {
+   "kind": "graph",
+   "title": "Iced drinks and temperature: the residual plot",
+   "set": "regression",
+   "text": "A cafe records the daily high temperature (°F) and the number of iced drinks sold on 12 days. Its regression line is $\\hat{y} = -114.8 + 3.41x$. The residual plot is below. (Invented data.)",
+   "plot": {
+    "label": "Residual plot of the iced drink line: 12 residuals between about minus 7.5 and 5.4 scattered above and below the zero line with no pattern, across temperatures from 62 to 91 degrees",
+    "kind": "resid",
+    "xs": [
+     62,
+     65,
+     68,
+     70,
+     72,
+     75,
+     77,
+     80,
+     83,
+     85,
+     88,
+     91
+    ],
+    "ys": [
+     98,
+     112,
+     113,
+     128,
+     125,
+     142,
+     140,
+     160,
+     163,
+     178,
+     184,
+     200
+    ],
+    "xLabel": "temperature (°F)",
+    "yLabel": "residual (drinks)",
+    "width": 520,
+    "height": 260
+   },
+   "data": {
+    "vars": [
+     {
+      "name": "temperature",
+      "unit": "degrees F",
+      "values": [
+       62,
+       65,
+       68,
+       70,
+       72,
+       75,
+       77,
+       80,
+       83,
+       85,
+       88,
+       91
+      ]
+     },
+     {
+      "name": "iced drinks",
+      "unit": "drinks",
+      "values": [
+       98,
+       112,
+       113,
+       128,
+       125,
+       142,
+       140,
+       160,
+       163,
+       178,
+       184,
+       200
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "stat-residuals-1",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "residuals-s1",
+   "q": "The 5-year-old car is listed at 17.6 thousand dollars. What is its residual, in thousands of dollars? Give two decimal places.",
+   "why": {
+    "correct": "$\\hat{y} = 29.56 - 1.905(5) = 20.04$, so the residual is $17.6 - 20.04 = -2.44$."
+   },
+   "numeric": {
+    "kind": "stat",
+    "places": 2,
+    "from": {
+     "fn": "lsrl",
+     "args": [
+      [
+       1,
+       1,
+       2,
+       2,
+       3,
+       3,
+       4,
+       4,
+       5,
+       6,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11
+      ],
+      [
+       31.5,
+       30.2,
+       26.4,
+       27.5,
+       23.1,
+       22.4,
+       20.4,
+       19.6,
+       17.6,
+       15.6,
+       16.4,
+       14.8,
+       13.7,
+       12.9,
+       12.5,
+       12.2
+      ]
+     ],
+     "pick": "residuals.8"
+    },
+    "mistakes": [
+     {
+      "value": 2.438,
+      "why": "That is predicted minus actual. A residual is actual minus predicted, $y - \\hat{y}$."
+     },
+     {
+      "value": 20.038,
+      "why": "That is the predicted price, $\\hat{y}$. The residual is the actual price minus it."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-residuals-2",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "residuals-s1",
+   "q": "Interpret the residual of about $-2.44$ for the 5-year-old car.",
+   "why": {
+    "correct": "Residual $= y - \\hat{y}$; negative means the line overpredicts.",
+    "options": [
+     "Right: a negative residual means the actual value is below the predicted value.",
+     "Negative means below the line: actual minus predicted is less than 0.",
+     "A residual is a gap between actual and predicted, not a yearly change.",
+     "Every point has a residual; a moderate one is normal scatter."
+    ]
+   },
+   "options": [
+    "Its price is about 2,438 dollars less than the line predicts for a 5-year-old car",
+    "Its price is about 2,438 dollars more than the line predicts",
+    "The car lost about 2,438 dollars of value each year",
+    "The line is wrong for this car and should be refit without it"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-residuals-3",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "residuals-s1",
+   "q": "What does the residual plot show about using a line for these data?",
+   "why": {
+    "correct": "A good line leaves residuals scattered randomly around 0, with no pattern.",
+    "options": [
+     "Residuals of any line have both signs. What matters is whether they form a pattern.",
+     "Size alone does not settle it; the curved pattern shows a line is the wrong shape.",
+     "Negative residuals are expected. The problem is the curved pattern.",
+     "Right: a pattern in the residuals means the relationship is curved, so a line misses it in a systematic way."
+    ]
+   },
+   "options": [
+    "A line is appropriate, because the residuals are both positive and negative",
+    "A line is appropriate, because the residuals are small",
+    "A line is not appropriate, because some residuals are negative",
+    "A line is not appropriate: the residuals form a U-shaped curve"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-residuals-4",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "residuals-s1",
+   "q": "For which cars does the line underpredict the price?",
+   "why": {
+    "correct": "Underpredict: positive residual, actual above predicted.",
+    "options": [
+     "The oldest cars also have positive residuals.",
+     "A fitted line still misses individual points both ways.",
+     "Right: their residuals are positive, so the actual prices are above the line.",
+     "Those residuals are negative: the line overpredicts them."
+    ]
+   },
+   "options": [
+    "The newest cars only",
+    "None of them, since the line is fit to the data",
+    "The newest and the oldest cars",
+    "The cars aged 4 to 7 years"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-residuals-5",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "residuals-s1",
+   "q": "A buyer uses the line to predict the price of a 10-year-old car. Based on the residual plot, what is likely?",
+   "why": {
+    "correct": "A pattern in the residuals tells you where predictions are biased.",
+    "options": [
+     "Ages up to 11 are in the data, so 10 is not extrapolation.",
+     "Prices fall, but more slowly than the line says for old cars, so it underpredicts.",
+     "Right: the curve lifts the oldest prices above the line, so the line tends to underpredict there.",
+     "Inside the data, but where the residuals show a systematic positive gap."
+    ]
+   },
+   "options": [
+    "The prediction is impossible, since 10 years is extrapolation",
+    "The prediction is probably too high, since prices fall with age",
+    "The prediction is probably too low, since cars this old have positive residuals",
+    "The prediction is about right, since 10 years is inside the data"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-residuals-6",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "residuals-s2",
+   "q": "What does the residual plot suggest?",
+   "why": {
+    "correct": "No pattern in the residual plot: a linear model is appropriate.",
+    "options": [
+     "Random ups and downs are expected; a systematic curve would be the problem.",
+     "Residuals are rarely 0. A random scatter around 0 is what a good fit looks like.",
+     "Negative residuals appear with any line. There is no curved pattern here.",
+     "Right: no curve and no change in spread, so the line captures the pattern."
+    ]
+   },
+   "options": [
+    "A line is not reasonable, because the residuals go up and down",
+    "A line is not reasonable, because the residuals are not 0",
+    "A curve would fit better, because some residuals are negative",
+    "A line is a reasonable model: the residuals scatter randomly around 0"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-residuals-7",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "residuals-s2",
+   "q": "On the 80°F day, the cafe sold 160 iced drinks. What is the residual for that day?",
+   "why": {
+    "correct": "Residual $= y - \\hat{y}$.",
+    "options": [
+     "That is predicted minus actual. Residual is actual minus predicted.",
+     "Right: $\\hat{y} = -114.8 + 3.41(80) = 157.7$, and $160 - 157.7 = 2.3$.",
+     "That is the temperature, not a residual.",
+     "That is the predicted number of drinks, not the residual."
+    ]
+   },
+   "options": [
+    "About -2.3 drinks",
+    "About 2.3 drinks",
+    "About 80 drinks",
+    "About 157.7 drinks"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-residuals-8",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "residuals-s2",
+   "q": "The day with the most negative residual, about $-7.5$, was 77°F. What does that residual mean?",
+   "why": {
+    "correct": "Interpret a residual in context: actual compared with predicted.",
+    "options": [
+     "The line predicts drinks, not temperature.",
+     "A residual is one day's gap, not a rate.",
+     "Right: negative residual, actual below predicted.",
+     "A negative residual means fewer than predicted."
+    ]
+   },
+   "options": [
+    "The temperature was about 7.5 degrees lower than predicted",
+    "Sales dropped by 7.5 drinks per degree that day",
+    "The cafe sold about 7.5 fewer iced drinks that day than the line predicts for 77°F",
+    "The cafe sold about 7.5 more iced drinks than predicted"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-residuals-9",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A line predicts a student's exam score from homework average: $\\hat{y} = 12.5 + 0.8x$. A student with a homework average of 40 scored 47. Write the expression for the residual, then evaluate it.",
+   "why": {
+    "correct": "Residual $= 47 - (12.5 + 0.8(40)) = 47 - 44.5 = 2.5$ points."
+   },
+   "setup": {
+    "answer": "47 - (12.5 + 0.8*40)",
+    "bind": {},
+    "mustUse": [
+     "47",
+     "12.5",
+     "0.8",
+     "40"
+    ],
+    "mistakes": [
+     {
+      "expr": "(12.5 + 0.8*40) - 47",
+      "why": "That is predicted minus actual. A residual is actual minus predicted."
+     },
+     {
+      "expr": "47 - 12.5 + 0.8*40",
+      "why": "Keep the prediction in parentheses: subtract the whole $\\hat{y} = 12.5 + 0.8(40)$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-residuals-10",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "A point has a residual of 0. Where is it?",
+   "why": {
+    "correct": "Residual 0: actual equals predicted.",
+    "options": [
+     "Being at $\\bar{y}$ does not make the residual 0 unless the line passes through it there.",
+     "A residual of 0 can happen at any $x$.",
+     "Far from the line means a large residual.",
+     "Right: its actual value equals its predicted value."
+    ]
+   },
+   "options": [
+    "At the mean of $y$",
+    "At $x = 0$",
+    "Far from the line",
+    "Exactly on the regression line"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-residuals-11",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A residual plot shows residuals spread out more and more as $x$ increases, like a fan. What does this mean?",
+   "why": {
+    "correct": "Fan shape: spread of the residuals changes with $x$.",
+    "options": [
+     "A curve shows up as a bend in the residuals. A fan shows growing spread.",
+     "A fan shape says nothing about $r$ being 0.",
+     "Right: the line's typical error changes with $x$, so predictions for large $x$ are less reliable.",
+     "The residuals are largest there, so the fit is worst there."
+    ]
+   },
+   "options": [
+    "The relationship is curved",
+    "The correlation is exactly 0",
+    "Predictions are less precise for large $x$, since the scatter grows",
+    "The line fits perfectly for large $x$"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-residuals-12",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A line overpredicts a value. What is the sign of its residual?",
+   "why": {
+    "correct": "Below the line: negative residual.",
+    "options": [
+     "Positive means the actual value is above the prediction, an underprediction.",
+     "Zero means the prediction is exact.",
+     "The sign depends only on whether the point is above or below the line.",
+     "Right: overpredicting means $\\hat{y} > y$, so $y - \\hat{y} < 0$."
+    ]
+   },
+   "options": [
+    "Positive",
+    "Zero",
+    "It depends on the slope",
+    "Negative"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-residuals-13",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "A line predicts weight (kg) from height (cm). In what units are its residuals?",
+   "why": {
+    "correct": "Residuals are in the units of the response.",
+    "options": [
+     "That is the unit of the slope.",
+     "Residuals have the units of $y$.",
+     "Residuals are vertical gaps, in the units of the response.",
+     "Right: a residual is a difference of two $y$ values, so it has the units of $y$."
+    ]
+   },
+   "options": [
+    "Kilograms per centimeter",
+    "No units",
+    "Centimeters",
+    "Kilograms"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-residuals-14",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which residual plot pattern means a straight line fits the data well?",
+   "why": {
+    "correct": "A good residual plot is a patternless horizontal band.",
+    "options": [
+     "A trend in the residuals means the line has missed a pattern.",
+     "Right: no curve, no fan, nothing systematic.",
+     "A U shape means the data curve.",
+     "A fan means the spread changes with $x$."
+    ]
+   },
+   "options": [
+    "Points rising steadily from left to right",
+    "Points scattered randomly above and below 0, with about the same spread everywhere",
+    "Points forming a clear U shape",
+    "Points fanning out from left to right"
+   ],
+   "correct": 1
+  }
+ ]
+}
