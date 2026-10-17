@@ -251,7 +251,7 @@
   try{
     if(window.StudyHubAccount && window.StudyHubAccount.registerNamespace){
       var mergers = {}; mergers[KEY] = merge;
-      window.StudyHubAccount.registerNamespace(COURSE, [KEY, 'apcalc_flashcards_v1', 'apcalc_prefs_v1'], mergers);
+      window.StudyHubAccount.registerNamespace(COURSE, [KEY, 'apcalc_flashcards_v1', 'apcalc_prefs_v1', 'apcalc_flagged_v1'], mergers);
     }
   }catch(e){}
 

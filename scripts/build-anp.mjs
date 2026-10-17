@@ -903,7 +903,7 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
 ${footer(depth)}
 ${HUB_PAGES.has(entry.slug) && !isTool ? `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/hub.css">\n<script src="${depth}../assets/course/hub.js" defer></script>\n` : ''}${isTool ? `<link rel="stylesheet" href="${depth}assets/tools/tool-kit.css">\n` : ''}${isTool && entry.studio ? `<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">\n` : ''}<link rel="stylesheet" href="${depth}assets/${entry.css}">
 <script src="${depth}../assets/report-question.js" defer></script>
-${[...(study ? ['course/study.js'] : []), ...(entry.siteScripts || [])].map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), ...(isTool ? ['tools/tool-kit.js'] : []), entry.script], premium: true, site: isTool && entry.studio ? ['course/tool-studio.js'] : [] })}
+${[...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'dashboard'].includes(entry.slug) ? ['course/flags.js'] : []), ...(entry.siteScripts || [])].map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), ...(isTool ? ['tools/tool-kit.js'] : []), entry.script], premium: true, site: isTool && entry.studio ? ['course/tool-studio.js'] : [] })}
 </body>
 </html>
 `;

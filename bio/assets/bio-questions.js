@@ -139,6 +139,8 @@
       '<div class="bio-q-body"></div><div class="bio-q-feedback cx-fb" aria-live="polite"></div><div class="bio-q-actions"></div>';
     var body = wrap.querySelector('.bio-q-body'), fb = wrap.querySelector('.bio-q-feedback'), actions = wrap.querySelector('.bio-q-actions');
     host.appendChild(wrap);
+    // Flag toggle on the study pages (assets/course/flags.js); opts.flag 'session' for an exam-only item.
+    if(studyPage() && window.LevlFlags && opts.flag !== false) window.LevlFlags.attach(wrap, 'apbio', q.id, opts.flag);
 
     function finish(g, detailHtml, pick, part){
       done = true;

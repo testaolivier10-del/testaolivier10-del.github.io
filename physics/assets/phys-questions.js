@@ -330,6 +330,8 @@
       '<div class="phys-q-body"></div><div class="phys-q-feedback cx-fb" aria-live="polite"></div><div class="phys-q-actions"></div>';
     var body = wrap.querySelector('.phys-q-body'), fb = wrap.querySelector('.phys-q-feedback'), actions = wrap.querySelector('.phys-q-actions');
     host.appendChild(wrap);
+    // Flag toggle on the study pages (assets/course/flags.js); opts.flag 'session' for an exam-only item.
+    if(studyPage() && window.LevlFlags && opts.flag !== false) window.LevlFlags.attach(wrap, 'apphys', q.id, opts.flag);
 
     function finish(g, detailHtml, pick, part){
       done = true;

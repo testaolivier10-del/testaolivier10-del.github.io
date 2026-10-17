@@ -39,7 +39,8 @@
     { id: 'core',    title: 'A core concept',         desc: 'One big idea, across every system.' },
     { id: 'studied', title: 'Everything I have studied', desc: 'Mixed, from each topic you have started.' },
     { id: 'weak',    title: 'My weak spots',          desc: 'Your lowest-mastery topics and concepts.' },
-    { id: 'missed',  title: 'Questions I missed',     desc: 'Retried until you get each one right.' }
+    { id: 'missed',  title: 'Questions I missed',     desc: 'Retried until you get each one right.' },
+    { id: 'flagged', title: 'Flagged questions',      desc: '' }
   ];
   var MODE = byId(MODES);
   var COUNTS = [5, 10, 20, 0];   // 0 = all
@@ -78,6 +79,8 @@
     var ids = {}; (Core ? Core.missed() : []).forEach(function(id){ ids[id] = 1; });
     return ids;
   }
+  /* Flags (assets/course/flags.js): kept until the student unflags them. */
+  function flaggedIds(){ var o = {}; (window.LevlFlags ? window.LevlFlags.list('anp') : []).forEach(function(id){ o[id] = 1; }); return o; }
   function missedToolCount(){
     return (Core ? Core.missed() : []).filter(function(id){ return id.indexOf(':') > -1; }).length;
   }
@@ -93,6 +96,7 @@
     if(mode === 'core') return bank.filter(function(q){ return (q.core || []).indexOf(opt.core) > -1; });
     if(mode === 'studied'){ var s = {}; studiedTopics().forEach(function(t){ s[t] = 1; }); return bank.filter(function(q){ return s[q.topic]; }); }
     if(mode === 'missed'){ var m = missedIds(); return bank.filter(function(q){ return m[q.id]; }); }
+    if(mode === 'flagged'){ var fl = flaggedIds(); return bank.filter(function(q){ return fl[q.id]; }); }
     if(mode === 'weak'){
       var w = weakSpots(), wt = {}, wc = {};
       w.topics.forEach(function(x){ wt[x.id] = 1; }); w.core.forEach(function(x){ wc[x.id] = 1; });
@@ -190,6 +194,7 @@
   function modeUnavailable(id){
     if(id === 'studied' && !studiedTopics().length) return 'Complete a lesson or answer a question first.';
     if(id === 'missed' && !poolFor('missed').length) return 'Nothing missed. Nice.';
+    if(id === 'flagged' && !poolFor('flagged').length) return 'Nothing flagged. Use Flag on any question to find it here.';
     if(id === 'weak' && !poolFor('weak').length) return Core && Core.weakest(1).length ? 'No topic below 80% mastery.' : 'Answer some questions first.';
     return '';
   }
@@ -198,7 +203,7 @@
     var pool = poolFor(state.mode);
     if(!pool.length) return 'No questions match yet.';
     var d = store(), fresh = pool.filter(function(q){ return !d.q[q.id] || !d.q[q.id].n; }).length;
-    return plural(pool.length, 'question') + ' available' + (state.mode === 'missed' ? '' : ', ' + fresh + ' you have not tried') + '.';
+    return plural(pool.length, 'question') + ' available' + (state.mode === 'missed' || state.mode === 'flagged' ? '' : ', ' + fresh + ' you have not tried') + '.';
   }
 
   var PICK_H = { topic: 'Which topic?', chapter: 'Which chapter?', core: 'Which core concept?', studied: 'What goes in', weak: 'Where you are weakest', missed: 'Missed tool items' };
@@ -227,7 +232,7 @@
             var why = modeUnavailable(m.id);
             return '<label class="cx-choice"><input type="radio" name="mode" value="' + m.id + '"' +
               (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span><b>' + esc(m.title) + '</b>' +
-              '<span>' + esc(why || m.desc) + '</span></span></label>';
+              '<span>' + esc(why || (m.id === 'flagged' ? plural(poolFor('flagged').length, 'question') + ' you flagged to come back to.' : m.desc)) + '</span></span></label>';
           }).join('') +
         '</div></fieldset>' +
         '<div class="cx-step anp-pr-pickstep"><h2 class="cx-step-h">' + step(2) + '<span class="anp-pr-pick-h"></span></h2>' +

@@ -311,8 +311,10 @@ const SHELL_BUDGETS = [
      reference; measured 66.0 KB on the exams page before any unit is
      published. 67 -> 68 at launch (docs/apcalc-spec.md decision 12): the
      curriculum with every topic live and calc-math.js breaking long inline
-     chains at "=" for phones; measured 67.5 KB. */
-  ['calculus', 68],
+     chains at "=" for phones; measured 67.5 KB.
+     68 -> 68.5 (polish 2026-10-17, D1): the flag hook in calc-questions.js and the
+     Flagged practice mode and exam flag list; measured 68.1 KB. */
+  ['calculus', 68.5],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

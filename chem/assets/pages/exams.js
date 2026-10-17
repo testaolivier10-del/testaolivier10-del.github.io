@@ -427,6 +427,8 @@
       if(run.left <= 0){ clearInterval(run.tick); onEnd(true); }
     }, 250);
   }
+  // A flag set or cleared mid exam repaints the question map (assets/course/flags.js).
+  document.addEventListener('levl:flag', function(){ if(run && !run.done && run.qs && app.querySelector('.chem-ex-navcount')) status(); });
   function guard(e){ if(run && !run.done){ e.preventDefault(); e.returnValue = ''; } }
 
   function startSectionOne(qs, frqs, label, meta, k){
@@ -441,7 +443,7 @@
       '<div class="chem-ex-paused" hidden><p><b>Paused.</b> The question is hidden while the clock is stopped.</p><button type="button" class="btn-press chem-ex-resume">Resume</button></div>' +
       '<h2 class="sr-only">Section I questions</h2><div class="chem-ex-stage"></div>' +
       '<div class="chem-ex-controls"><button type="button" class="btn-outline chem-ex-prev">Previous</button><button type="button" class="btn-press chem-ex-next">Next</button><button type="button" class="btn-outline chem-ex-finish">' + (frqs.length ? 'End Section I' : 'Finish exam') + '</button></div>' +
-      '<div class="chem-ex-confirm" hidden role="alertdialog" aria-labelledby="chem-ex-confirm-t"><p id="chem-ex-confirm-t"></p><button type="button" class="btn-press chem-ex-yes">' + (frqs.length ? 'End Section I' : 'Finish now') + '</button> <button type="button" class="btn-outline chem-ex-no">Keep working</button></div>' +
+      '<div class="chem-ex-confirm" hidden role="alertdialog" aria-labelledby="chem-ex-confirm-t"><p id="chem-ex-confirm-t"></p><div class="cx-flaglist" hidden></div><button type="button" class="btn-press chem-ex-yes">' + (frqs.length ? 'End Section I' : 'Finish now') + '</button> <button type="button" class="btn-outline chem-ex-no">Keep working</button></div>' +
     '</div>';
     app.querySelector('.chem-ex-nav').addEventListener('click', function(e){ var b = e.target.closest('[data-go]'); if(b) go(+b.getAttribute('data-go')); });
     app.querySelector('.chem-ex-prev').addEventListener('click', function(){ go(run.i - 1); });
@@ -473,6 +475,7 @@
       b.setAttribute('aria-label', 'Question ' + (i + 1) + ', ' + (d ? 'answered' : 'not answered'));
     });
     app.querySelector('.chem-ex-navcount').textContent = '(' + answered() + ' of ' + run.qs.length + ' answered)';
+    if(window.LevlFlags) window.LevlFlags.markNav(app.querySelectorAll('.chem-ex-nav button'), 'apchem', run.qs);
     app.querySelector('.chem-ex-prev').disabled = run.i === 0;
     var left = run.qs.length - answered();
     app.querySelector('.chem-ex-next').textContent = !left ? (run.frqs.length ? 'End Section I' : 'Finish exam') : (run.res[run.qs[run.i].id] ? 'Next' : 'Skip for now');
@@ -489,7 +492,7 @@
       stage.appendChild(box);
       run.els[q.id] = box;
       // A set's stimulus is shown with each of its questions.
-      Q.hydrate(box, [q], { exam: true, record: false, onAnswer: function(res){ lockedIn(q, box, res); } });
+      Q.hydrate(box, [q], { exam: true, record: false, flag: OWN.items.some(function(x){ return x.id === q.id; }) ? 'session' : undefined, onAnswer: function(res){ lockedIn(q, box, res); } });
       var nEl = box.querySelector('.chem-q-n'); if(nEl) nEl.textContent = (i + 1) + '.';
       var chk = box.querySelector('.chem-check'); if(chk) chk.textContent = 'Lock in answer';
     }
@@ -523,6 +526,7 @@
     var left = run.qs.length - answered(), box = app.querySelector('.chem-ex-confirm');
     box.querySelector('p').textContent = (left ? plural(left, 'question') + ' not answered yet. Unanswered questions count as wrong. ' : 'All ' + run.qs.length + ' answered. ') +
       (run.frqs.length ? 'You cannot come back to Section I. End it now?' : 'Finish and see your results?');
+    if(window.LevlFlags) window.LevlFlags.examList(box.querySelector('.cx-flaglist'), 'apchem', run.qs, function(i){ box.hidden = true; go(i); });
     box.hidden = false;
     box.querySelector('.chem-ex-yes').focus();
   }

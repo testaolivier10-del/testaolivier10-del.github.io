@@ -279,6 +279,8 @@
       '<div class="chem-q-body"></div><div class="chem-q-feedback cx-fb" aria-live="polite"></div><div class="chem-q-actions"></div>';
     var body = wrap.querySelector('.chem-q-body'), fb = wrap.querySelector('.chem-q-feedback'), actions = wrap.querySelector('.chem-q-actions');
     host.appendChild(wrap);
+    // Flag toggle on the study pages (assets/course/flags.js); opts.flag 'session' for an exam-only item.
+    if(studyPage() && window.LevlFlags && opts.flag !== false) window.LevlFlags.attach(wrap, 'apchem', q.id, opts.flag);
 
     function finish(g, detailHtml, pick, part){
       done = true;

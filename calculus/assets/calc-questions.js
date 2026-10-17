@@ -270,6 +270,8 @@
       '<div class="calc-q-body"></div><div class="calc-q-feedback cx-fb" aria-live="polite"></div><div class="calc-q-actions"></div>';
     var body = wrap.querySelector('.calc-q-body'), fb = wrap.querySelector('.calc-q-feedback'), actions = wrap.querySelector('.calc-q-actions');
     host.appendChild(wrap);
+    // Flag toggle on the study pages (assets/course/flags.js); opts.flag 'session' for an exam-only item.
+    if(studyPage() && window.LevlFlags && opts.flag !== false) window.LevlFlags.attach(wrap, 'apcalc', q.id, opts.flag);
 
     function finish(g, detailHtml, pick, part){
       done = true;

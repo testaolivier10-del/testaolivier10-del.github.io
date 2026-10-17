@@ -251,7 +251,7 @@
   try{
     if(window.StudyHubAccount && window.StudyHubAccount.registerNamespace){
       var mergers = {}; mergers[KEY] = merge;
-      window.StudyHubAccount.registerNamespace(COURSE, [KEY, 'apchem_flashcards_v1', 'apchem_prefs_v1'], mergers);
+      window.StudyHubAccount.registerNamespace(COURSE, [KEY, 'apchem_flashcards_v1', 'apchem_prefs_v1', 'apchem_flagged_v1'], mergers);
     }
   }catch(e){}
 
