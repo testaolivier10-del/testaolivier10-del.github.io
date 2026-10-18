@@ -19,8 +19,32 @@
     "2026-10-15 daily run: scheduled w1007-04-gcs-floor for 2026-10-25 on TikTok and YouTube (Buffer full again at 10 per channel; w1014-01, w1014-03, w1014-02 approved and waiting). w1006-05-airway-sizing got youtube_id 2xul4FXiT1c. New pro thumbnails made (thumb_v2) for b2-05, b2-04, w1006-04, w1006-05 and w1007-03, copied to Downloads\\LevlPrep-posting\\thumbs. Studio upload of the w1006-04 thumbnail was sent and Save clicked, but the laptop went offline before it could be confirmed, so shorts_thumb stays false and the next run rechecks it; the other three uploads, D2 and D4 were skipped. yt-ap-01-intro-levels-of-organization upload failed: Zapier task limit reached; stays approved. D1: gcs-floor related_video set to the NREMT long video.",
     "2026-10-15 ~9pm PT: yt-ap-01 published by hand through YouTube Studio in Olivier's Chrome at his request (Zapier out of tasks): https://youtu.be/aMvkCfwrepA, public, not for kids, AI use answered No (Olivier: AI narration does not need the label), tags and English set in Studio; thumbnail, playlist 'Anatomy and Physiology | LevlPrep' (new) and captions set by API; comment posted (not pinned yet); embed PR #69 (A&P notes are generated: edit anatomy-physiology/data/notes/<id>.html and run node scripts/build-anp.mjs). w1006-04 Studio thumbnail confirmed.",
     "2026-10-17 daily run (fired 2:39pm PT, late): scheduled w1014-01-aspirin-chew for 2026-10-26 on TikTok and YouTube; Buffer full again, w1014-03 and w1014-02 approved and waiting. w1007-03-co-pulseox got youtube_id Dx8qhZ820nI and its Studio thumbnail. New pro thumbnails for w1007-09, w1007-06, w1007-01. yt_api.py and yt_comment.py were missing from pipeline/ and were added from the Project copies. Studio now opens as the Levl Prep channel and the comment menu offers Pin, but both Related video and Pin ask for YouTube's one time verification (advanced features); b2-04 related_set unavailable, related_check_after 2026-10-24; no pins done. Related video backfill: 5 A&P Shorts to aMvkCfwrepA. The co-pulseox live description has a bare levlprep.com; left as is.",
-    "2026-10-17 evening: Olivier completed YouTube advanced features verification on Levl Prep (levlprepofficial@gmail.com). Related video set in Studio on all 12 Shorts that had one (b2-04 included)."
+    "2026-10-17 evening: Olivier completed YouTube advanced features verification on Levl Prep (levlprepofficial@gmail.com). Related video set in Studio on all 12 Shorts that had one (b2-04 included).",
+    "2026-10-18 daily run (fired 11am PT): checkup clean. Buffer top-up of w1014-03-caffeine-block (one free slot per channel, for 2026-10-27) was blocked by this session's permission check (same as 2026-10-12); nothing was posted, w1014-03 and w1014-02 stay approved. Buffer covers through 2026-10-26. w1007-09-sarcomere got youtube_id dHMBVSkC0pE, its Studio thumbnail and related video. New pro thumbnails (thumb_v2) for w1007-10, w1007-07, w1007-02, copied to Downloads\\LevlPrep-posting\\thumbs. Comments: 1 generic YouTube comment on w1006-04 (spam like, no reply); 2 TikTok replies drafted in comment_drafts. Sarcomere live description has a bare levlprep.com; left as is."
   ],
   "pending_reruns": [],
-  "related_check_after": null
+  "related_check_after": null,
+  "comments_seen": [
+    "yt:UgzKkSO9S4e721tY4O14AaABAg",
+    "tt:sparkie_90:co-pulseox:put on end tidal",
+    "tt:fattie8652:chair-flip:axial hydrogens"
+  ],
+  "comment_drafts": [
+    {
+      "platform": "tiktok",
+      "video": "w1007-03-co-pulseox",
+      "author": "sparkie_90",
+      "comment": "Put on end tidal or rad57 will help too",
+      "reply": "Good call on the Rad 57. A CO oximeter reads carbon monoxide directly, which a regular pulse ox can't. End tidal is great for breathing, but it measures CO2, so it won't flag CO poisoning on its own.",
+      "status": "drafted 2026-10-18"
+    },
+    {
+      "platform": "tiktok",
+      "video": "w1006-03-chair-flip",
+      "author": "fattie8652",
+      "comment": "wouldn't the axial hydrogens turn into equatorial",
+      "reply": "You're right, good catch. In a real ring flip every axial spot becomes equatorial, hydrogens included, and our animation left those two axial. We've fixed it. Thanks for watching that closely!",
+      "status": "drafted 2026-10-18"
+    }
+  ]
 }
