@@ -51,3 +51,14 @@ EMT B prompt: "EMT: woman about 35, light skin, blond hair in a neat bun, navy E
 | emtb-offer | EMT B | kneeling, open hand offering two tablets |
 | emtb-chew | EMT B | kneeling, pointing at her mouth ("chew") |
 | emtb-pulse | EMT B | kneeling, taking a pulse while checking her watch |
+
+## Added 2026-10-17 (Figma AI, gemini-3.1-flash-image, one run cycle sheet in Figma file "LevlPrep character art" 2lhxP8MDFrbTTR5f43Tmu9; keyed with pipeline/chroma.py, each frame cut 420x672 and aligned on the torso so frames swap without a jump)
+Jordan run cycle, same description as Jordan above, side view facing right. Note: her face is drawn in a slightly different (profile) style from the older Jordan poses; when she runs, use these frames, and prefer generating matching still poses from this sheet's look for new Jordan scenes.
+
+| file | character | pose |
+|---|---|---|
+| jordan-run1 | Jordan | run cycle frame 1: contact (front heel down) |
+| jordan-run2 | Jordan | run cycle frame 2: passing (body low) |
+| jordan-run3 | Jordan | run cycle frame 3: push off (front knee high) |
+| jordan-run4 | Jordan | run cycle frame 4: flight (both feet off the ground) |
+Play with rig.cycle_svg + rig.cycle at about 10 frames per second.

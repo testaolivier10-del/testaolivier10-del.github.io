@@ -165,3 +165,24 @@ def debug(name, path):
     for ex, ey, rx, ry in r["eyes"]: d.ellipse([ex - rx, ey - ry, ex + rx, ey + ry], outline=(255, 0, 255, 255))
     bg = bg.resize((im.width * 2, im.height * 2))
     bg.convert("RGB").save(path)
+
+
+def cycle_svg(c, frames, x, y, h, cid, flip=False, opacity=1):
+    """A frame by frame cycle (run, walk, idle loop): every frame is a full pose PNG of the same size, drawn from
+    one character sheet and aligned on the torso. Returns SVG with all frames stacked; cycle() shows one at a time."""
+    from PIL import Image
+    import shutil as _sh
+    out = f"{LP}/out/{c.spec['id']}"
+    imgs = []
+    for i, f in enumerate(frames):
+        p = _src(f); _sh.copy(p, f"{out}/{f}.png")
+        im = Image.open(p); w = im.width * h / im.height
+        tr = f' transform="translate({2 * x + w:.0f} 0) scale(-1 1)"' if flip else ""
+        imgs.append(f'<image id="{cid}-f{i}" href="{f}.png" x="{x}" y="{y}" width="{w:.0f}" height="{h}"{tr} opacity="{1 if i == 0 else 0}"/>')
+    return f'<g id="{cid}" opacity="{opacity}">{"".join(imgs)}</g>'
+
+
+def cycle(c, cid, n, t0, t1, fps=10):
+    """Show frame (time * fps) mod n of cycle_svg cid between t0 and t1; driven by the timeline, so exact on every frame."""
+    c.g(f'tl.fromTo({{f:0}},{{f:0}},{{f:{(t1 - t0) * fps:.2f},duration:{t1 - t0:.2f},ease:"none",immediateRender:false,'
+        f'onUpdate(){{const k=Math.floor(this.targets()[0].f)%{n}; for(let i=0;i<{n};i++){{const e=document.getElementById("{cid}-f"+i); if(e) e.setAttribute("opacity", i===k?1:0);}}}}}},{t0:.2f});')

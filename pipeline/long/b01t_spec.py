@@ -24,10 +24,11 @@ for b in S.CHAPTERS[0]["beats"]:
         b["gap"] = round(TIM[_keys[i + 1]][0] - TIM[k][0] - TIM[k][1] - b.get("pause", 0), 3)
 
 # Jordan on the road (top left 520,250, height 760 = the posted layout)
-JX, JY, JH = 520, 250, 760
-JS = JH / 1226
-ARM = (JX + 250 * JS, JY + 240 * JS)          # a sweaty spot on her upper arm, in stage units
-FACE = (925, 420)                               # face and chest, for the inset
+# Jordan running: a 4 frame run cycle (one character sheet, frames 420x672, aligned on the torso)
+JX, JY, JK = 600, 200, 1.32
+JH = 672 * JK
+ARM = (JX + 185 * JK, JY + 250 * JK)          # a sweaty spot on her upper arm, in stage units
+FACE = (JX + 200 * JK, JY + 200 * JK)          # face and chest, for the corner circle
 INS = (1740, 900, 130)
 INS_S = 0.565
 INS_T = (INS[0] - INS_S * FACE[0], INS[1] - INS_S * FACE[1])
@@ -53,22 +54,24 @@ def sweat(c):
              '<filter id="blurM" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="40"/></filter>'
              f'<clipPath id="rdClip"><circle id="rdC" cx="{INS[0]}" cy="{INS[1]}" r="2600"/></clipPath>')
     s.append(f'<g id="g_road" clip-path="url(#rdClip)"><g id="rdT" mask="url(#mRd)">{far_mid}')
-    s.append(rig.char(c, "jordan-sprint", JX, JY, JH, "jR"))
+    s.append(rig.cycle_svg(c, [f"jordan-run{i}" for i in range(1, 5)], JX, JY, JH, "jR"))
     for k in range(10):
-        x = JX + 120 + (k % 5) * 70; y = JY + 170 + (k // 5) * 160
+        x = JX + 150 + (k % 5) * 50; y = JY + 120 + (k // 5) * 140
         s.append(f'<circle id="sw_vp{k}" cx="{x}" cy="{y}" r="9" fill="#e8f8ff" opacity="0"/>')
     s.append(fg + '</g></g>')
     s.append(f'<circle id="insRing" cx="{INS[0]}" cy="{INS[1]}" r="{INS[2]}" fill="none" stroke="{WARM}" stroke-width="7" opacity="0"/>')
     c.g(f'tl.set("#g_road",{{opacity:1}},0); gsap.set("#rdT",{{svgOrigin:"0 0"}}); gsap.set("#dropG",{{svgOrigin:"{DC[0]} {DC[1]}"}});')
-    B.road_motion(c, "rdA", t0, T["c4q"]); bob(c, "#jR", t0, T["c4q"], 10, 0.36)
-    rig.idle(c, "jR", t0, T["c4q"], seed=21, fast=True)
-    rig.react(c, "jR", "squint", t0 + 0.3)
+    B.road_motion(c, "rdA", t0, T["c4q"]); rig.cycle(c, "jR", 4, t0, T["c4q"], fps=10)
 
     def to_inset(t, d=1.0):
+        """shrink into the corner, then close the circle (no bubble left on screen)"""
         g(f'tl.to("#rdT",{{scale:{INS_S},x:{INS_T[0]:.1f},y:{INS_T[1]:.1f},duration:{d},ease:"power2.inOut"}},{t:.2f});')
-        g(f'tl.to("#rdC",{{attr:{{r:{INS[2]}}},duration:{d},ease:"power2.inOut"}},{t:.2f}); tl.to("#insRing",{{opacity:1,duration:0.4}},{t + d - 0.3:.2f});')
+        g(f'tl.to("#rdC",{{attr:{{r:{INS[2]}}},duration:{d},ease:"power2.inOut"}},{t:.2f}); tl.to("#insRing",{{opacity:1,duration:0.3}},{t + d - 0.3:.2f});')
+        g(f'tl.to("#rdC, #insRing",{{attr:{{r:0}},duration:0.35,ease:"back.in(1.6)"}},{t + d + 0.15:.2f}); tl.set("#insRing",{{opacity:0}},{t + d + 0.5:.2f});')
 
     def to_full(t, d=0.9):
+        """reopen from the same corner spot, then grow back to full size"""
+        g(f'tl.set("#insRing",{{opacity:1}},{t - 0.35:.2f}); tl.fromTo("#rdC, #insRing",{{attr:{{r:0}}}},{{attr:{{r:{INS[2]}}},duration:0.35,ease:"back.out(1.6)",immediateRender:false}},{t - 0.35:.2f});')
         g(f'tl.to("#rdT",{{scale:1,x:0,y:0,duration:{d},ease:"power2.inOut"}},{t:.2f});')
         g(f'tl.to("#rdC",{{attr:{{r:2600}},duration:{d},ease:"power2.in"}},{t:.2f}); tl.to("#insRing",{{opacity:0,duration:0.25}},{t:.2f});')
 
@@ -145,7 +148,6 @@ def sweat(c):
     g(f'tl.to("#skinWarm",{{opacity:0.25,duration:1.2}},{C["t7"][5] + 0.8:.2f});')
     s.append(L(c, "sw_soak", 1250, 1058, "cooler sweat soaks up heat from the skin", C["t7"][5] + 0.8, 34, WARM))
     c.hide("#sw_slow", C["t7"][5] + 0.7)
-    rig.react(c, "jR", "relief", C["t7"][5] + 0.9, 0.7)
 
     # ---------------- t8: the drop shrinks back into her arm and the road comes back to full size
     tb = T["t8"] - 0.35
@@ -162,7 +164,6 @@ def sweat(c):
     s.append(chip("sw_2k", 1520, 600, "> 2,000 J per gram of sweat", GOLD, 40, 0)); c.pop("#sw_2k", C["t8"][1] + 0.6)
     s.append(chip("sw_ec", 1520, 720, "evaporative cooling", TEAL, 46, 0)); c.pop("#sw_ec", C["t8"][2])
     s.append(lottiefx.place(c, "sparkle-stars", 1300, 560, 440, 300, C["t8"][2] + 0.05, dur=1.9))
-    rig.react(c, "jR", "relief", C["t8"][2] + 0.1)
     s.append(card("sw_lc", 1300, 790, 440, 260, TEAL, op=0)); c.fade_in("#sw_lc", C["t8"][3] - 0.1, y=20)
     s.append(f'<g id="sw_leaf" opacity="0"><ellipse cx="1520" cy="900" rx="170" ry="70" fill="url(#gLeaf)" transform="rotate(-12 1520 900)"/><path d="M 1360 930 L 1690 870" stroke="#2c6b30" stroke-width="5"/></g>')
     c.fade_in("#sw_leaf", C["t8"][3], y=20)
