@@ -285,7 +285,8 @@
       "buffer": "6ac9c876b07d37ac975fc77a",
       "youtube_id": null,
       "thumbnail_set": null,
-      "yt_buffer": "6ac9c88fed92ed8fa5b99a49"
+      "yt_buffer": "6ac9c88fed92ed8fa5b99a49",
+      "thumb_v2": true
     },
     {
       "id": "y1011-02-burn-story",
@@ -332,7 +333,8 @@
       "thumbnail_set": null,
       "yt_buffer": "6acc5910ea568e911a4ef883",
       "related_video": "1p-L3_POFL0",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "w1007-02-jaw-thrust",
@@ -350,7 +352,8 @@
       "thumbnail_set": null,
       "yt_buffer": "6acee562848c31c8095723c9",
       "related_video": "lqxfWZZtRgE",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "w1007-08-oxygen-curve",
