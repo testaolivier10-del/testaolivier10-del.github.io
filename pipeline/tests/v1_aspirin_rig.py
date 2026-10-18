@@ -345,7 +345,8 @@ def compose(c):
 
     def vcam(t, px, py, k, d=0.8, ease="power2.inOut"):
         """Camera inside the artery view only, so the Frank inset never leaves the frame."""
-        g(f'tl.to("#vCam",{{scale:{k},x:{540 - k * px:.1f},y:{480 - k * py:.1f},svgOrigin:"0 0",duration:{d},ease:"{ease}"}},{t:.2f});')
+        g(f'tl.to("#vCam",{{scale:{k},x:{540 - k * px:.1f},y:{480 - k * py:.1f},duration:{d},ease:"{ease}"}},{t:.2f});')
+    g('gsap.set("#vCam",{svgOrigin:"0 0"});')  # set once: repeating svgOrigin in later tweens makes GSAP add a drifting offset
     c.sound("whoosh", tl0, 0.8)
     c.set("#scV", tl0, "opacity:1")
     g(f'tl.fromTo("#lensC",{{attr:{{r:0}}}},{{attr:{{r:1250}},duration:0.95,ease:"power2.in",immediateRender:false}},{tl0:.2f});')
