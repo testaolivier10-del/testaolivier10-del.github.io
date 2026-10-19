@@ -1,0 +1,11 @@
+{
+ "open": {},
+ "calls": [
+  {
+   "date": "2026-10-18",
+   "kind": "setup and tests before the ledger (from Modal's usage page, about)",
+   "seconds": 0,
+   "usd": 14.5
+  }
+ ]
+}

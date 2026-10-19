@@ -189,6 +189,13 @@ def build(spec):
     c.sound("punch", 0.02, 0.9)
     c.music_auto = []
     stage = spec["compose"](c)
+    # Full screen is the default (Olivier, 2026-10-18): the art fills 1080x1920, titles and captions sit on soft fades.
+    # Compose code keeps its 1080x960 "core" coordinates (placed at y=440); full height art uses top:-440px, height:1920px.
+    # layout="strip" only for rebuilding old reference specs.
+    full = spec.get("layout", "full") == "full"
+    if full and 'id="core"' not in stage:
+        import fullbleed
+        stage = fullbleed.wrap(stage)
     c.L.insert(0, 'tl.fromTo("#tt0",{opacity:1,scale:1.06},{opacity:1,scale:1,duration:0.5,ease:"back.out(2)"},0);')
     tE = c.T[last]
     c.g(f'tl.fromTo("#end",{{opacity:0}},{{opacity:1,duration:0.3}},{tE:.2f});')
@@ -203,7 +210,7 @@ def build(spec):
     v = spec.get("vars", "")
     lottie_tag = '<script src="lottie.min.js"></script>' if os.path.exists(f"{out}/lottie.min.js") else ""
     html = f'''<!doctype html><html><head><meta charset="utf-8"><title>{spec["id"]}</title><script src="gsap.min.js"></script>{lottie_tag}
-<style>{fonts()}{CSS}{spec.get("css","")}</style></head><body>
+<style>{fonts()}{CSS}{__import__("fullbleed").CSS if full else ""}{spec.get("css","")}</style></head><body>
 <div id="root" style="{v}"><div class="bg"></div><div class="orb" id="o1"></div><div class="orb" id="o2"></div><div id="grid"></div>{sparks}
 <div id="progress"><i id="pbar"></i></div>
 <div id="badge"><span>{spec["badge"]}</span></div>

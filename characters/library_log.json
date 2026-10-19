@@ -1,0 +1,35 @@
+{
+ "entries": [
+  {
+   "id": "t1018-pulse-full",
+   "date": "2026-10-18",
+   "pieces": [
+    "kit_fb",
+    "cu_fb",
+    "L_thumb_fb",
+    "L_fing_fb",
+    "watch2_0",
+    "clips/kitA",
+    "clips/kitB"
+   ],
+   "setting": "kitchen",
+   "lighting": "night, warm window and pendant",
+   "camera": "wide side view, then wrist close up"
+  },
+  {
+   "id": "t1018-caffeine-full",
+   "date": "2026-10-18",
+   "pieces": [
+    "dorm_fb",
+    "syn_fb",
+    "rec",
+    "brain_fb",
+    "clips/cafA",
+    "clips/cafB"
+   ],
+   "setting": "dorm desk",
+   "lighting": "night, desk lamp and laptop glow",
+   "camera": "wide side view, then lens into head, synapse"
+  }
+ ]
+}
