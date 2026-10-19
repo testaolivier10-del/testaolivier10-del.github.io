@@ -372,7 +372,8 @@
       "thumbnail_set": null,
       "yt_buffer": "6acee579848c31c809572632",
       "related_video": "aMvkCfwrepA",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "w1007-05-sn2-umbrella",
@@ -390,7 +391,8 @@
       "thumbnail_set": null,
       "yt_buffer": "6ad036de29c470dd80bb6815",
       "related_video": "1p-L3_POFL0",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "w1007-04-gcs-floor",
@@ -408,7 +410,8 @@
       "thumbnail_set": null,
       "yt_buffer": "6ad19b1a9597cd16626583f2",
       "related_video": "lqxfWZZtRgE",
-      "related_set": false
+      "related_set": false,
+      "thumb_v2": true
     },
     {
       "id": "y1011-01-burn-depth",
