@@ -132,9 +132,10 @@
       "youtube_id": "EBZNvvrwnuo",
       "thumbnail_set": null,
       "yt_buffer": "6ac706822977c961bdc2b4ed",
-      "shorts_thumb": true,
+      "shorts_thumb": false,
       "related_video": "aMvkCfwrepA",
-      "related_set": true
+      "related_set": true,
+      "thumb_v2": true
     },
     {
       "id": "w1006-03-chair-flip",
@@ -151,9 +152,10 @@
       "youtube_id": "TrK9lBe_364",
       "thumbnail_set": null,
       "yt_buffer": "6ac7068e365feab0d73a674d",
-      "shorts_thumb": true,
+      "shorts_thumb": false,
       "related_video": "1p-L3_POFL0",
-      "related_set": true
+      "related_set": true,
+      "thumb_v2": true
     },
     {
       "id": "w1006-04-mix-it-up",
