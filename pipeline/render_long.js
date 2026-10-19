@@ -14,7 +14,17 @@ const path = require('path');
   await page.goto('file://' + path.resolve(dir, 'index.html'));
   await page.evaluate(() => document.fonts.ready.then(() => 1));
   const cdp = await page.context().newCDPSession(page);
-  const seek = (t) => page.evaluate(async (t) => { window.__timelines.main.time(t, false); if (window.__onSeek) await window.__onSeek(t); return 1; }, t);
+  // AI acting shots: <img class="mclip" data-dir data-start data-n data-fps [data-hold="manual"]> show one PNG frame per video frame.
+  const seek = (t) => page.evaluate(async (t) => {
+    window.__timelines.main.time(t, false);
+    await Promise.all([...document.querySelectorAll('img.mclip')].map(async (im) => {
+      const s = +im.dataset.start, n = +im.dataset.n, fps = +im.dataset.fps;
+      if (t < s) { if (im.dataset.hold !== 'manual') im.style.opacity = 0; return; }
+      const src = `${im.dataset.dir}/${String(Math.min(n - 1, Math.floor((t - s) * fps))).padStart(4, '0')}.png`;
+      if (im.getAttribute('src') !== src) { im.setAttribute('src', src); try { await im.decode(); } catch (e) {} }
+      if (im.dataset.hold !== 'manual') im.style.opacity = 1;
+    }));
+    if (window.__onSeek) await window.__onSeek(t); return 1; }, t);
   if (mode === 'stills') {
     for (const t of rest.map(Number)) { await seek(t); await page.screenshot({ path: path.join(dir, `still_${t}.png`) }); }
   } else if (mode === 'thumb') {
@@ -24,7 +34,8 @@ const path = require('path');
   } else if (mode === 'seg') {
     const f0 = +rest[0], f1 = +rest[1], out = rest[2];
     // Activity intervals of every tween: frames where nothing is animating reuse the previous capture.
-    const iv = await page.evaluate(() => window.__timelines.main.getChildren(true, true, false).map(t => [t.startTime(), t.startTime() + t.totalDuration()]));
+    const iv = await page.evaluate(() => window.__timelines.main.getChildren(true, true, false).map(t => [t.startTime(), t.startTime() + t.totalDuration()])
+      .concat([...document.querySelectorAll('img.mclip')].map(im => [+im.dataset.start, +im.dataset.start + (+im.dataset.n) / (+im.dataset.fps)])));
     const busy = (a, b) => iv.some(([s, e]) => s < b + 1e-6 && e > a - 1e-6);
     let last = null, lastT = -1, shots = 0;
     const ff = spawn('ffmpeg', ['-y', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
