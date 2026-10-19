@@ -17,5 +17,8 @@
   "radical-halogenation": "Radical halogenation notes: homolysis and fishhook arrows, initiation, propagation and termination, why bromination is selective, and allylic bromination.",
   "skeletal-structures": "Skeletal structure notes: the rules for reading line-angle drawings, implied hydrogens and charges, converting to condensed formulas, and drawing rings.",
   "sn2": "SN2 mechanism notes: the concerted step, backside attack and inversion of configuration, steric hindrance, second-order rate law, solvent and nucleophile.",
-  "uv-vis": "UV-Vis spectroscopy notes: pi to pi-star transitions, why more conjugation means longer wavelength and color, the Beer-Lambert law, and substituent shifts."
+  "uv-vis": "UV-Vis spectroscopy notes: pi to pi-star transitions, why more conjugation means longer wavelength and color, the Beer-Lambert law, and substituent shifts.",
+  "axial-equatorial": "Axial vs equatorial bonds on a cyclohexane chair: how to tell them apart, which way each one points, and why groups prefer the equatorial position.",
+  "ring-flips": "What a ring flip does in organic chemistry: every axial group becomes equatorial, every group keeps its face. Worked examples of drawing the other chair.",
+  "prochirality": "Prochiral definition and examples: the substitution test for homotopic, enantiotopic and diastereotopic groups, and naming pro-R and pro-S hydrogens."
 }
