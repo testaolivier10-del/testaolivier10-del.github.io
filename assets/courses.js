@@ -94,6 +94,14 @@
       path: '/statistics/', dir: 'statistics', storagePrefix: 'apstat_', rankLabel: 'Statistics rank',
       searchLabel: 'Statistics', aliases: ['statistics', 'stats', 'stat'], paid: true, status: 'beta', order: 8,
     },
+    {
+      // As AP® Statistics (docs/apenv-spec.md decision 2): the mark only in
+      // the full names, never in a URL; the key travels as its folder,
+      // "environmental-science". 'hidden' until a unit is published.
+      key: 'apenv', short: 'Env Science', name: 'AP® Environmental Science', productName: 'AP® Environmental Science',
+      path: '/environmental-science/', dir: 'environmental-science', storagePrefix: 'apenv_', rankLabel: 'Environmental Science rank',
+      searchLabel: 'Environmental Science', aliases: ['environmental', 'envsci', 'apes'], paid: true, status: 'hidden', order: 9,
+    },
   ];
 
   var list = LIST.slice().sort(function (a, b) { return a.order - b.order; });

@@ -139,6 +139,16 @@ const CARDS = [
     title: 'Statistics for the May 2027 exam, one idea at a time',
     sub: 'Free notes for every topic, simulators you can run, and conclusions checked part by part.',
   },
+  /* AP® Environmental Science (folder environmental-science/), the same rules:
+     no mark, no counts (docs/apenv-spec.md decision 5). Render with
+     ONLY=environmental-science/assets/og-image.png. */
+  {
+    out: 'environmental-science/assets/og-image.png',
+    badge: 'Beta · Free notes',
+    brand: 'LevlPrep',
+    title: 'Environmental Science for the May 2027 exam, one system at a time',
+    sub: 'Free notes for every topic, every calculation drilled with its setup and units, and answers made specific enough to score.',
+  },
 ];
 // ONLY=<out path> renders just that card (adding a course need not re-render the others).
 if (process.env.ONLY) CARDS.splice(0, CARDS.length, ...CARDS.filter((c) => c.out === process.env.ONLY));

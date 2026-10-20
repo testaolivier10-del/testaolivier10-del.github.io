@@ -1,0 +1,7032 @@
+{
+ "about": "AP Environmental Science concept dependency map (docs/apenv-spec.md, docs/apenv-phase0.md): the 99 topics of the CED in order, the \"Math you need\" skills with the topic each comes before, and every concept with the topic that teaches it, the concepts it depends on and, for notation, the TeX patterns that use it. Our own words; no CED text. Checked by scripts/check-apenv-map.mjs.",
+ "version": 1,
+ "ced": {
+  "edition": "Effective Fall 2026, V.1 (9 units, 99 topics; minor clarifications only)",
+  "effective": "Exam format of May 2027",
+  "note": "Built from docs/apenv-ced-map.json, itself from docs/apenv-research/framework.md. Objectives beyond Topic 3.7 unverified (docs/apenv-needs-author.md, ced-text)."
+ },
+ "bigIdeas": [
+  {
+   "id": "ENG",
+   "name": "Energy Transfer"
+  },
+  {
+   "id": "ERT",
+   "name": "Interactions Between Earth Systems"
+  },
+  {
+   "id": "EIN",
+   "name": "Interactions Between Different Species and the Environment"
+  },
+  {
+   "id": "STB",
+   "name": "Sustainability"
+  }
+ ],
+ "practices": [
+  {
+   "id": 1,
+   "name": "Concept Explanation",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C"
+   ],
+   "mcqWeight": [
+    30,
+    38
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Visual Representations",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C"
+   ],
+   "mcqWeight": [
+    12,
+    19
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Text Analysis",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C",
+    "3.D",
+    "3.E"
+   ],
+   "mcqWeight": [
+    6,
+    8
+   ],
+   "notAssessed": [
+    "3.D",
+    "3.E"
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Scientific Experiments",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "4.D",
+    "4.E"
+   ],
+   "mcqWeight": [
+    2,
+    4
+   ],
+   "notAssessed": [
+    "4.D"
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Data Analysis",
+   "skills": [
+    "5.A",
+    "5.B",
+    "5.C",
+    "5.D",
+    "5.E"
+   ],
+   "mcqWeight": [
+    12,
+    19
+   ]
+  },
+  {
+   "id": 6,
+   "name": "Mathematical Routines",
+   "skills": [
+    "6.A",
+    "6.B",
+    "6.C"
+   ],
+   "mcqWeight": [
+    6,
+    9
+   ]
+  },
+  {
+   "id": 7,
+   "name": "Environmental Solutions",
+   "skills": [
+    "7.A",
+    "7.B",
+    "7.C",
+    "7.D",
+    "7.E",
+    "7.F"
+   ],
+   "mcqWeight": [
+    17,
+    23
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "course",
+   "title": "Units"
+  },
+  {
+   "id": "skills",
+   "title": "Skills"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "unit-1",
+   "n": 1,
+   "part": "course",
+   "title": "The Living World: Ecosystems",
+   "weight": [
+    6,
+    8
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "energy-flow",
+      "title": "Energy flow: energy, biomass and number pyramids from one ecosystem, the 10% rule live, GPP, respiration and NPP, a food web that responds when a species is removed",
+      "topic": "energy-flow"
+     },
+     {
+      "id": "cycles",
+      "title": "Cycles: carbon, nitrogen, phosphorus and water as reservoir-and-flux diagrams; tap a process, perturb a reservoir",
+      "topic": "carbon-cycle"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Energy flow and net primary productivity: the 10% rule across trophic levels and NPP from GPP",
+      "topic": "energy-flow",
+      "type": "calc",
+      "author": "A"
+     },
+     {
+      "title": "Design an experiment on primary productivity: hypothesis, variables, control and its purpose",
+      "topic": "primary-productivity",
+      "type": "design",
+      "author": "A"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A table of GPP and respiration for several ecosystems",
+      "topic": "primary-productivity",
+      "stimulus": "quantitative",
+      "author": "A"
+     },
+     {
+      "title": "Energy at each trophic level of a food chain",
+      "topic": "energy-flow",
+      "stimulus": "quantitative",
+      "author": "A"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Carbon, nitrogen, phosphorus and water cycles: reservoirs, processes, human impacts",
+      "topic": "water-cycle"
+     },
+     {
+      "title": "Terrestrial biomes by temperature and precipitation",
+      "topic": "terrestrial-biomes"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From sunlight to a top predator: productivity, trophic levels and the 10% rule",
+      "topic": "energy-flow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-2",
+   "n": 2,
+   "part": "course",
+   "title": "The Living World: Biodiversity",
+   "weight": [
+    6,
+    8
+   ],
+   "tools": {
+    "frqThemes": [],
+    "stimulusThemes": [
+     {
+      "title": "Species counts on islands of different size and distance",
+      "topic": "island-biogeo",
+      "stimulus": "quantitative",
+      "author": "B"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Primary and secondary succession",
+      "topic": "succession"
+     },
+     {
+      "title": "The four kinds of ecosystem services",
+      "topic": "ecosystem-services"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From biodiversity to resilience after a disruption",
+      "topic": "succession"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-3",
+   "n": 3,
+   "part": "course",
+   "title": "Populations",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "population-growth",
+      "title": "Population growth: exponential vs logistic with r and K, overshoot and dieback, r- vs K-selected traits, survivorship curves kept separate, doubling time by the rule of 70",
+      "topic": "population-growth"
+     },
+     {
+      "id": "age-structure",
+      "title": "Age structure: build a population pyramid; TFR and replacement; birth and death rates to growth rate; the demographic transition",
+      "topic": "age-structure"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Population growth: rate of natural increase, the rule of 70 and the year a population doubles",
+      "topic": "human-population",
+      "type": "calc",
+      "author": "B"
+     },
+     {
+      "title": "Read age structure diagrams and survivorship data, and predict growth",
+      "topic": "age-structure",
+      "type": "data",
+      "author": "B"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Crude birth and death rates for several countries",
+      "topic": "human-population",
+      "stimulus": "quantitative",
+      "author": "B"
+     },
+     {
+      "title": "Population pyramids of three countries",
+      "topic": "age-structure",
+      "stimulus": "visual",
+      "author": "B"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "r-selected and K-selected species (and why survivorship curves are a separate idea)",
+      "topic": "r-k-selection"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From birth and death rates to doubling time",
+      "topic": "human-population"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-4",
+   "n": 4,
+   "part": "course",
+   "title": "Earth Systems and Resources",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "soil-texture",
+      "title": "Soil texture: drag sand, silt and clay on the texture triangle; porosity, permeability, water-holding capacity; horizons and erosion",
+      "topic": "soil-properties"
+     },
+     {
+      "id": "earth-climate",
+      "title": "Earth and climate: seasons from axial tilt, insolation by latitude, circulation cells and winds, rain shadow, El Niño vs La Niña side by side",
+      "topic": "el-nino-la-nina"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Design an investigation of soil texture and erosion",
+      "topic": "soil-properties",
+      "type": "design",
+      "author": "C"
+     },
+     {
+      "title": "Interpret climate and ENSO data: sea surface temperature, trade winds and rainfall",
+      "topic": "el-nino-la-nina",
+      "type": "data",
+      "author": "C"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "The soil texture triangle with marked samples",
+      "topic": "soil-properties",
+      "stimulus": "visual",
+      "author": "C"
+     },
+     {
+      "title": "A map of Pacific sea surface temperatures in El Niño and La Niña",
+      "topic": "el-nino-la-nina",
+      "stimulus": "visual",
+      "author": "C"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Convergent, divergent and transform boundaries",
+      "topic": "plate-tectonics"
+     },
+     {
+      "title": "El Niño and La Niña: winds, upwelling, rainfall",
+      "topic": "el-nino-la-nina"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From uneven heating to winds, currents and climate",
+      "topic": "geo-and-climate"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-5",
+   "n": 5,
+   "part": "course",
+   "title": "Land and Water Use",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "frqThemes": [
+     {
+      "title": "Irrigation: water use per area, efficiency and cost",
+      "topic": "irrigation",
+      "type": "calc",
+      "author": "D"
+     },
+     {
+      "title": "Design an investigation of an agricultural practice and soil quality",
+      "topic": "sustainable-agriculture",
+      "type": "design",
+      "author": "D"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Water used by four irrigation methods",
+      "topic": "irrigation",
+      "stimulus": "quantitative",
+      "author": "D"
+     },
+     {
+      "title": "A passage arguing for (or against) a grazing policy",
+      "topic": "meat-production",
+      "stimulus": "text",
+      "author": "D"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Irrigation methods by efficiency and drawback",
+      "topic": "irrigation"
+     },
+     {
+      "title": "Soil conservation practices and how each works",
+      "topic": "sustainable-agriculture"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From the tragedy of the commons to sustainable yield",
+      "topic": "sustainability"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-6",
+   "n": 6,
+   "part": "course",
+   "title": "Energy Resources and Consumption",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "energy-chain",
+      "title": "Energy chain: a power plant from fuel to outlet with efficiency at each step; sources compared on emissions, land, cost and intermittency; kWh, BTU and CO2",
+      "topic": "fossil-fuels"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Energy and emissions: kWh, efficiency, cost and carbon dioxide saved",
+      "topic": "energy-conservation",
+      "type": "calc",
+      "author": "E"
+     },
+     {
+      "title": "Interpret energy consumption trends by fuel and by country",
+      "topic": "global-energy-consumption",
+      "type": "data",
+      "author": "E"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Energy consumption by fuel over several decades",
+      "topic": "global-energy-consumption",
+      "stimulus": "quantitative",
+      "author": "E"
+     },
+     {
+      "title": "Efficiency at each step of a power plant",
+      "topic": "fossil-fuels",
+      "stimulus": "quantitative",
+      "author": "E"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Energy sources compared: emissions, land, cost, intermittency",
+      "topic": "wind-energy"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From fuel to outlet: efficiency at each step",
+      "topic": "fossil-fuels"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-7",
+   "n": 7,
+   "part": "course",
+   "title": "Atmospheric Pollution",
+   "weight": [
+    7,
+    10
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "air-pollution",
+      "title": "Air pollution: smog through a day, thermal inversion on and off, acid rain from NOx and SOx, primary vs secondary pollutants, reduction methods matched to pollutants",
+      "topic": "photochemical-smog"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Interpret air quality data: ozone and NO2 through a day",
+      "topic": "photochemical-smog",
+      "type": "data",
+      "author": "F"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Concentrations of NO, NO2 and ozone over a day",
+      "topic": "photochemical-smog",
+      "stimulus": "visual",
+      "author": "F"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Air pollutants: source, effect and how to reduce it",
+      "topic": "reducing-air-pollutants"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From tailpipe to smog to a health alert",
+      "topic": "photochemical-smog"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-8",
+   "n": 8,
+   "part": "course",
+   "title": "Aquatic and Terrestrial Pollution",
+   "weight": [
+    7,
+    10
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "water-pollution",
+      "title": "Water pollution: the eutrophication chain step by step with a dissolved oxygen graph; thermal pollution and oxygen vs temperature; sewage treatment stages",
+      "topic": "eutrophication"
+     },
+     {
+      "id": "dose-response",
+      "title": "Dose and response: read LD50 and the threshold dose; compare toxicity; bioaccumulation vs biomagnification up a food chain",
+      "topic": "dose-response-curve"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Design an investigation of eutrophication or thermal pollution",
+      "topic": "eutrophication",
+      "type": "design",
+      "author": "F"
+     },
+     {
+      "title": "Toxicity calculations: LD50 and dose, then half-life of a pesticide",
+      "topic": "lethal-dose-50",
+      "type": "calc",
+      "author": "G"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A passage on a proposed wetland development",
+      "topic": "wetlands-mangroves",
+      "stimulus": "text",
+      "author": "F"
+     },
+     {
+      "title": "Dose-response data for two pesticides",
+      "topic": "dose-response-curve",
+      "stimulus": "quantitative",
+      "author": "G"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Primary, secondary and tertiary sewage treatment",
+      "topic": "sewage-treatment"
+     },
+     {
+      "title": "Bioaccumulation and biomagnification",
+      "topic": "bioaccumulation-biomagnification"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From fertilizer on a field to a dead zone",
+      "topic": "eutrophication"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-9",
+   "n": 9,
+   "part": "course",
+   "title": "Global Change",
+   "weight": [
+    15,
+    20
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "climate-change",
+      "title": "Climate change: the greenhouse effect beside the ozone layer, ocean acidification carbonate chemistry with pH, sea level from thermal expansion and land ice (not sea ice)",
+      "topic": "greenhouse-effect"
+     },
+     {
+      "id": "justify",
+      "title": "Make it specific: hypotheses, variables and controls, cause-and-effect chains and solutions fitted to the scenario, built part by part",
+      "topic": "human-impacts-biodiversity"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Interpret CO2, temperature and ocean pH records",
+      "topic": "ocean-acidification",
+      "type": "data",
+      "author": "G"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Atmospheric CO2 and ocean pH at one station over decades",
+      "topic": "ocean-acidification",
+      "stimulus": "quantitative",
+      "author": "G"
+     },
+     {
+      "title": "Diagram of the greenhouse effect and the ozone layer",
+      "topic": "greenhouse-effect",
+      "stimulus": "visual",
+      "author": "G"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "The greenhouse effect and ozone depletion: gases, radiation, effects",
+      "topic": "greenhouse-effect"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From fossil fuel to warming, acidification and sea level",
+      "topic": "climate-change"
+     }
+    ]
+   }
+  },
+  {
+   "id": "skills-math",
+   "part": "skills",
+   "title": "Math you need",
+   "tools": {
+    "simulators": [
+     {
+      "id": "calculation-studio",
+      "title": "Calculation studio (flagship): every exam calculation as seeded problems, the setup, answer and units graded separately, a dimensional-analysis chain whose units cancel",
+      "topic": "math-percents"
+     }
+    ],
+    "frqThemes": [],
+    "stimulusThemes": [],
+    "comparisonTables": [
+     {
+      "title": "Formulas you must memorize: which one, when, and the classic trap",
+      "topic": "math-percents"
+     }
+    ],
+    "pathways": []
+   }
+  }
+ ],
+ "topics": [
+  {
+   "id": "intro-ecosystems",
+   "ced": "1.1",
+   "title": "Introduction to Ecosystems",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "introduction to ecosystems environmental science explained"
+  },
+  {
+   "id": "terrestrial-biomes",
+   "ced": "1.2",
+   "title": "Terrestrial Biomes",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.A",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "terrestrial biomes environmental science explained"
+  },
+  {
+   "id": "aquatic-biomes",
+   "ced": "1.3",
+   "title": "Aquatic Biomes",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "aquatic biomes environmental science explained"
+  },
+  {
+   "id": "carbon-cycle",
+   "ced": "1.4",
+   "title": "The Carbon Cycle",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "the carbon cycle environmental science explained"
+  },
+  {
+   "id": "nitrogen-cycle",
+   "ced": "1.5",
+   "title": "The Nitrogen Cycle",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "the nitrogen cycle environmental science explained"
+  },
+  {
+   "id": "phosphorus-cycle",
+   "ced": "1.6",
+   "title": "The Phosphorus Cycle",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "the phosphorus cycle environmental science explained"
+  },
+  {
+   "id": "water-cycle",
+   "ced": "1.7",
+   "title": "The Hydrologic (Water) Cycle",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "the hydrologic (water) cycle environmental science explained"
+  },
+  {
+   "id": "primary-productivity",
+   "ced": "1.8",
+   "title": "Primary Productivity",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "1.B",
+    "6.B"
+   ],
+   "practices": [
+    1,
+    6
+   ],
+   "searchPhrase": "primary productivity environmental science explained"
+  },
+  {
+   "id": "trophic-levels",
+   "ced": "1.9",
+   "title": "Trophic Levels",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "1.A",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "trophic levels environmental science explained"
+  },
+  {
+   "id": "energy-flow",
+   "ced": "1.10",
+   "title": "Energy Flow and the 10% Rule",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "2.B",
+    "6.B"
+   ],
+   "practices": [
+    2,
+    6
+   ],
+   "searchPhrase": "energy flow and the 10% rule environmental science explained"
+  },
+  {
+   "id": "food-webs",
+   "ced": "1.11",
+   "title": "Food Chains and Food Webs",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "searchPhrase": "food chains and food webs environmental science explained"
+  },
+  {
+   "id": "biodiversity",
+   "ced": "2.1",
+   "title": "Introduction to Biodiversity",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.B",
+    "5.B"
+   ],
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "introduction to biodiversity environmental science explained"
+  },
+  {
+   "id": "ecosystem-services",
+   "ced": "2.2",
+   "title": "Ecosystem Services",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.C",
+    "7.A"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "ecosystem services environmental science explained"
+  },
+  {
+   "id": "island-biogeo",
+   "ced": "2.3",
+   "title": "Island Biogeography",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "2.B",
+    "5.B"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "island biogeography environmental science explained"
+  },
+  {
+   "id": "ecological-tolerance",
+   "ced": "2.4",
+   "title": "Ecological Tolerance",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "2.A",
+    "5.A"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "ecological tolerance environmental science explained"
+  },
+  {
+   "id": "natural-disruptions",
+   "ced": "2.5",
+   "title": "Natural Disruptions to Ecosystems",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "5.A",
+    "1.B"
+   ],
+   "practices": [
+    5,
+    1
+   ],
+   "searchPhrase": "natural disruptions to ecosystems environmental science explained"
+  },
+  {
+   "id": "evolving-populations",
+   "ced": "2.6",
+   "title": "Adaptations",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.B",
+    "5.B"
+   ],
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "adaptations environmental science explained"
+  },
+  {
+   "id": "succession",
+   "ced": "2.7",
+   "title": "Ecological Succession",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.B",
+    "5.A"
+   ],
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "ecological succession environmental science explained"
+  },
+  {
+   "id": "generalists-specialists",
+   "ced": "3.1",
+   "title": "Generalist and Specialist Species",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "generalist and specialist species environmental science explained"
+  },
+  {
+   "id": "r-k-selection",
+   "ced": "3.2",
+   "title": "K-Selected r-Selected Species",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "k-selected r-selected species environmental science explained"
+  },
+  {
+   "id": "survivorship-curves",
+   "ced": "3.3",
+   "title": "Survivorship Curves",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "2.A",
+    "5.A"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "survivorship curves environmental science explained"
+  },
+  {
+   "id": "carrying-limits",
+   "ced": "3.4",
+   "title": "Carrying Capacity",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "2.B",
+    "5.A"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "carrying capacity environmental science explained"
+  },
+  {
+   "id": "population-growth",
+   "ced": "3.5",
+   "title": "Population Growth and Resource Availability",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "5.A",
+    "6.B"
+   ],
+   "practices": [
+    5,
+    6
+   ],
+   "searchPhrase": "population growth and resource availability environmental science explained"
+  },
+  {
+   "id": "age-structure",
+   "ced": "3.6",
+   "title": "Age Structure Diagrams",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "2.A",
+    "5.B"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "age structure diagrams environmental science explained"
+  },
+  {
+   "id": "total-fertility-rate",
+   "ced": "3.7",
+   "title": "Total Fertility Rate",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "1.B",
+    "5.B"
+   ],
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "total fertility rate environmental science explained"
+  },
+  {
+   "id": "human-population",
+   "ced": "3.8",
+   "title": "Human Population Dynamics",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "6.A",
+    "6.C"
+   ],
+   "practices": [
+    6
+   ],
+   "searchPhrase": "human population dynamics environmental science explained"
+  },
+  {
+   "id": "population-transition",
+   "ced": "3.9",
+   "title": "Demographic Transition",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "2.B",
+    "5.A"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "demographic transition environmental science explained"
+  },
+  {
+   "id": "plate-tectonics",
+   "ced": "4.1",
+   "title": "Plate Tectonics",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "searchPhrase": "plate tectonics environmental science explained"
+  },
+  {
+   "id": "soil-formation",
+   "ced": "4.2",
+   "title": "Soil Formation and Erosion",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "2.A",
+    "1.B"
+   ],
+   "practices": [
+    2,
+    1
+   ],
+   "searchPhrase": "soil formation and erosion environmental science explained"
+  },
+  {
+   "id": "soil-properties",
+   "ced": "4.3",
+   "title": "Soil Composition and Properties",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "2.A",
+    "5.B"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "soil composition and properties environmental science explained"
+  },
+  {
+   "id": "atmosphere",
+   "ced": "4.4",
+   "title": "Earth's Atmosphere",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "1.A",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "earth's atmosphere environmental science explained"
+  },
+  {
+   "id": "global-wind-patterns",
+   "ced": "4.5",
+   "title": "Global Wind Patterns",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "2.B",
+    "1.B"
+   ],
+   "practices": [
+    2,
+    1
+   ],
+   "searchPhrase": "global wind patterns environmental science explained"
+  },
+  {
+   "id": "watersheds",
+   "ced": "4.6",
+   "title": "Watersheds",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "bigIdeas": [
+    "ERT"
+   ],
+   "skills": [
+    "2.A",
+    "1.B"
+   ],
+   "practices": [
+    2,
+    1
+   ],
+   "searchPhrase": "watersheds environmental science explained"
+  },
+  {
+   "id": "solar-radiation-seasons",
+   "ced": "4.7",
+   "title": "Solar Radiation and Earth's Seasons",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "2.B",
+    "1.B"
+   ],
+   "practices": [
+    2,
+    1
+   ],
+   "searchPhrase": "solar radiation and earth's seasons environmental science explained"
+  },
+  {
+   "id": "geo-and-climate",
+   "ced": "4.8",
+   "title": "Earth's Geography and Climate",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "2.B",
+    "1.C"
+   ],
+   "practices": [
+    2,
+    1
+   ],
+   "searchPhrase": "earth's geography and climate environmental science explained"
+  },
+  {
+   "id": "el-nino-la-nina",
+   "ced": "4.9",
+   "title": "El Niño and La Niña",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "2.B",
+    "5.C"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "el niño and la niña environmental science explained"
+  },
+  {
+   "id": "tragedy-of-commons",
+   "ced": "5.1",
+   "title": "The Tragedy of the Commons",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "7.A",
+    "7.B"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "the tragedy of the commons environmental science explained"
+  },
+  {
+   "id": "clearcutting",
+   "ced": "5.2",
+   "title": "Clearcutting",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "7.A",
+    "7.C"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "clearcutting environmental science explained"
+  },
+  {
+   "id": "green-revolution",
+   "ced": "5.3",
+   "title": "The Green Revolution",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "1.B",
+    "7.C"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "the green revolution environmental science explained"
+  },
+  {
+   "id": "agricultural-practices",
+   "ced": "5.4",
+   "title": "Impacts of Agricultural Practices",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "7.A",
+    "7.C"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "impacts of agricultural practices environmental science explained"
+  },
+  {
+   "id": "irrigation",
+   "ced": "5.5",
+   "title": "Irrigation Methods",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "6.B",
+    "7.C"
+   ],
+   "practices": [
+    6,
+    7
+   ],
+   "searchPhrase": "irrigation methods environmental science explained"
+  },
+  {
+   "id": "pest-control",
+   "ced": "5.6",
+   "title": "Pest Control Methods",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "7.A",
+    "7.C"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "pest control methods environmental science explained"
+  },
+  {
+   "id": "meat-production",
+   "ced": "5.7",
+   "title": "Meat Production Methods",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "7.A",
+    "7.C"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "meat production methods environmental science explained"
+  },
+  {
+   "id": "overfishing",
+   "ced": "5.8",
+   "title": "Impacts of Overfishing",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "7.A",
+    "5.A"
+   ],
+   "practices": [
+    7,
+    5
+   ],
+   "searchPhrase": "impacts of overfishing environmental science explained"
+  },
+  {
+   "id": "mining",
+   "ced": "5.9",
+   "title": "Impacts of Mining",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "7.A",
+    "7.C"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "impacts of mining environmental science explained"
+  },
+  {
+   "id": "urbanization",
+   "ced": "5.10",
+   "title": "Impacts of Urbanization",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "7.A",
+    "7.C"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "impacts of urbanization environmental science explained"
+  },
+  {
+   "id": "ecological-footprints",
+   "ced": "5.11",
+   "title": "Ecological Footprints",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "6.B",
+    "7.A"
+   ],
+   "practices": [
+    6,
+    7
+   ],
+   "searchPhrase": "ecological footprints environmental science explained"
+  },
+  {
+   "id": "sustainability",
+   "ced": "5.12",
+   "title": "Introduction to Sustainability",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "1.A",
+    "5.B"
+   ],
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "introduction to sustainability environmental science explained"
+  },
+  {
+   "id": "urban-runoff",
+   "ced": "5.13",
+   "title": "Methods to Reduce Urban Runoff",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "7.E",
+    "7.F"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "methods to reduce urban runoff environmental science explained"
+  },
+  {
+   "id": "integrated-pest-management",
+   "ced": "5.14",
+   "title": "Integrated Pest Management",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "7.E",
+    "7.C"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "integrated pest management environmental science explained"
+  },
+  {
+   "id": "sustainable-agriculture",
+   "ced": "5.15",
+   "title": "Sustainable Agriculture",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "7.E",
+    "7.F"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "sustainable agriculture environmental science explained"
+  },
+  {
+   "id": "aquaculture",
+   "ced": "5.16",
+   "title": "Aquaculture",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "7.C",
+    "7.E"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "aquaculture environmental science explained"
+  },
+  {
+   "id": "sustainable-forestry",
+   "ced": "5.17",
+   "title": "Sustainable Forestry",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "7.E",
+    "7.F"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "sustainable forestry environmental science explained"
+  },
+  {
+   "id": "renewable-nonrenewable",
+   "ced": "6.1",
+   "title": "Renewable and Nonrenewable Resources",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "renewable and nonrenewable resources environmental science explained"
+  },
+  {
+   "id": "global-energy-consumption",
+   "ced": "6.2",
+   "title": "Global Energy Consumption",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "5.A",
+    "5.B"
+   ],
+   "practices": [
+    5
+   ],
+   "searchPhrase": "global energy consumption environmental science explained"
+  },
+  {
+   "id": "fuel-types",
+   "ced": "6.3",
+   "title": "Fuel Types and Uses",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "fuel types and uses environmental science explained"
+  },
+  {
+   "id": "energy-resources-distribution",
+   "ced": "6.4",
+   "title": "Distribution of Natural Energy Resources",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "5.A",
+    "1.B"
+   ],
+   "practices": [
+    5,
+    1
+   ],
+   "searchPhrase": "distribution of natural energy resources environmental science explained"
+  },
+  {
+   "id": "fossil-fuels",
+   "ced": "6.5",
+   "title": "Fossil Fuels",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "2.B",
+    "7.C"
+   ],
+   "practices": [
+    2,
+    7
+   ],
+   "searchPhrase": "fossil fuels environmental science explained"
+  },
+  {
+   "id": "nuclear-power",
+   "ced": "6.6",
+   "title": "Nuclear Power",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "6.B",
+    "7.C"
+   ],
+   "practices": [
+    6,
+    7
+   ],
+   "searchPhrase": "nuclear power environmental science explained"
+  },
+  {
+   "id": "biomass-energy",
+   "ced": "6.7",
+   "title": "Energy from Biomass",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "1.B",
+    "7.C"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "energy from biomass environmental science explained"
+  },
+  {
+   "id": "solar-energy",
+   "ced": "6.8",
+   "title": "Solar Energy",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "1.B",
+    "7.C"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "solar energy environmental science explained"
+  },
+  {
+   "id": "hydroelectric",
+   "ced": "6.9",
+   "title": "Hydroelectric Power",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "1.B",
+    "7.C"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "hydroelectric power environmental science explained"
+  },
+  {
+   "id": "geothermal",
+   "ced": "6.10",
+   "title": "Geothermal Energy",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "1.B",
+    "7.C"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "geothermal energy environmental science explained"
+  },
+  {
+   "id": "hydrogen-fuel-cell",
+   "ced": "6.11",
+   "title": "Hydrogen Fuel Cell",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "1.B",
+    "7.C"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "hydrogen fuel cell environmental science explained"
+  },
+  {
+   "id": "wind-energy",
+   "ced": "6.12",
+   "title": "Wind Energy",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "1.B",
+    "7.C"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "wind energy environmental science explained"
+  },
+  {
+   "id": "energy-conservation",
+   "ced": "6.13",
+   "title": "Energy Conservation",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "bigIdeas": [
+    "ENG"
+   ],
+   "skills": [
+    "6.B",
+    "7.E"
+   ],
+   "practices": [
+    6,
+    7
+   ],
+   "searchPhrase": "energy conservation environmental science explained"
+  },
+  {
+   "id": "air-pollution",
+   "ced": "7.1",
+   "title": "Introduction to Air Pollution",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "1.A",
+    "7.A"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "introduction to air pollution environmental science explained"
+  },
+  {
+   "id": "photochemical-smog",
+   "ced": "7.2",
+   "title": "Photochemical Smog",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "2.B",
+    "5.A"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "photochemical smog environmental science explained"
+  },
+  {
+   "id": "thermal-inversion",
+   "ced": "7.3",
+   "title": "Thermal Inversion",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "2.B",
+    "1.B"
+   ],
+   "practices": [
+    2,
+    1
+   ],
+   "searchPhrase": "thermal inversion environmental science explained"
+  },
+  {
+   "id": "co2-particulates",
+   "ced": "7.4",
+   "title": "Atmospheric CO2 and Particulates",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "1.A",
+    "5.A"
+   ],
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "atmospheric co2 and particulates environmental science explained"
+  },
+  {
+   "id": "indoor-air",
+   "ced": "7.5",
+   "title": "Indoor Air Pollutants",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "1.A",
+    "7.A"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "indoor air pollutants environmental science explained"
+  },
+  {
+   "id": "reducing-air-pollutants",
+   "ced": "7.6",
+   "title": "Reduction of Air Pollutants",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "7.E",
+    "7.F"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "reduction of air pollutants environmental science explained"
+  },
+  {
+   "id": "acid-rain",
+   "ced": "7.7",
+   "title": "Acid Rain",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "2.B",
+    "7.C"
+   ],
+   "practices": [
+    2,
+    7
+   ],
+   "searchPhrase": "acid rain environmental science explained"
+  },
+  {
+   "id": "noise-pollution",
+   "ced": "7.8",
+   "title": "Noise Pollution",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "1.A",
+    "7.A"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "noise pollution environmental science explained"
+  },
+  {
+   "id": "pollution-sources",
+   "ced": "8.1",
+   "title": "Sources of Pollution",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "1.A",
+    "7.A"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "sources of pollution environmental science explained"
+  },
+  {
+   "id": "human-impacts-ecosystems",
+   "ced": "8.2",
+   "title": "Human Impacts on Ecosystems",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "5.A",
+    "7.A"
+   ],
+   "practices": [
+    5,
+    7
+   ],
+   "searchPhrase": "human impacts on ecosystems environmental science explained"
+  },
+  {
+   "id": "endocrine-disruptors",
+   "ced": "8.3",
+   "title": "Endocrine Disruptors",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "1.B",
+    "5.B"
+   ],
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "endocrine disruptors environmental science explained"
+  },
+  {
+   "id": "wetlands-mangroves",
+   "ced": "8.4",
+   "title": "Human Impacts on Wetlands and Mangroves",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "7.A",
+    "7.C"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "human impacts on wetlands and mangroves environmental science explained"
+  },
+  {
+   "id": "eutrophication",
+   "ced": "8.5",
+   "title": "Eutrophication",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "2.B",
+    "5.B"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "eutrophication environmental science explained"
+  },
+  {
+   "id": "thermal-pollution",
+   "ced": "8.6",
+   "title": "Thermal Pollution",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "2.B",
+    "5.B"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "thermal pollution environmental science explained"
+  },
+  {
+   "id": "persistent-organic-pollutants",
+   "ced": "8.7",
+   "title": "Persistent Organic Pollutants (POPs)",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "1.B",
+    "5.B"
+   ],
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "persistent organic pollutants (pops) environmental science explained"
+  },
+  {
+   "id": "bioaccumulation-biomagnification",
+   "ced": "8.8",
+   "title": "Bioaccumulation and Biomagnification",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "2.B",
+    "6.B"
+   ],
+   "practices": [
+    2,
+    6
+   ],
+   "searchPhrase": "bioaccumulation and biomagnification environmental science explained"
+  },
+  {
+   "id": "solid-waste",
+   "ced": "8.9",
+   "title": "Solid Waste Disposal",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "7.A",
+    "7.C"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "solid waste disposal environmental science explained"
+  },
+  {
+   "id": "waste-reduction",
+   "ced": "8.10",
+   "title": "Waste Reduction Methods",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "7.E",
+    "7.F"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "waste reduction methods environmental science explained"
+  },
+  {
+   "id": "sewage-treatment",
+   "ced": "8.11",
+   "title": "Sewage Treatment",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "2.B",
+    "7.F"
+   ],
+   "practices": [
+    2,
+    7
+   ],
+   "searchPhrase": "sewage treatment environmental science explained"
+  },
+  {
+   "id": "lethal-dose-50",
+   "ced": "8.12",
+   "title": "Lethal Dose 50% (LD50)",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "5.B",
+    "6.B"
+   ],
+   "practices": [
+    5,
+    6
+   ],
+   "searchPhrase": "lethal dose 50% (ld50) environmental science explained"
+  },
+  {
+   "id": "dose-response-curve",
+   "ced": "8.13",
+   "title": "Dose Response Curve",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "5.A",
+    "5.B"
+   ],
+   "practices": [
+    5
+   ],
+   "searchPhrase": "dose response curve environmental science explained"
+  },
+  {
+   "id": "pollution-human-health",
+   "ced": "8.14",
+   "title": "Pollution and Human Health",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "1.B",
+    "7.A"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "pollution and human health environmental science explained"
+  },
+  {
+   "id": "pathogens",
+   "ced": "8.15",
+   "title": "Pathogens and Infectious Diseases",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "1.B",
+    "7.A"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "pathogens and infectious diseases environmental science explained"
+  },
+  {
+   "id": "ozone-depletion",
+   "ced": "9.1",
+   "title": "Stratospheric Ozone Depletion",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "2.B",
+    "5.A"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "stratospheric ozone depletion environmental science explained"
+  },
+  {
+   "id": "reducing-ozone-depletion",
+   "ced": "9.2",
+   "title": "Reducing Ozone Depletion",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "7.E",
+    "7.F"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "reducing ozone depletion environmental science explained"
+  },
+  {
+   "id": "greenhouse-effect",
+   "ced": "9.3",
+   "title": "The Greenhouse Effect",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "2.B",
+    "1.B"
+   ],
+   "practices": [
+    2,
+    1
+   ],
+   "searchPhrase": "the greenhouse effect environmental science explained"
+  },
+  {
+   "id": "greenhouse-gas-increases",
+   "ced": "9.4",
+   "title": "Increases in the Greenhouse Gases",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "5.A",
+    "5.C"
+   ],
+   "practices": [
+    5
+   ],
+   "searchPhrase": "increases in the greenhouse gases environmental science explained"
+  },
+  {
+   "id": "climate-change",
+   "ced": "9.5",
+   "title": "Global Climate Change",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "5.C",
+    "7.A"
+   ],
+   "practices": [
+    5,
+    7
+   ],
+   "searchPhrase": "global climate change environmental science explained"
+  },
+  {
+   "id": "ocean-warming",
+   "ced": "9.6",
+   "title": "Ocean Warming",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "5.A",
+    "1.B"
+   ],
+   "practices": [
+    5,
+    1
+   ],
+   "searchPhrase": "ocean warming environmental science explained"
+  },
+  {
+   "id": "ocean-acidification",
+   "ced": "9.7",
+   "title": "Ocean Acidification",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "bigIdeas": [
+    "STB"
+   ],
+   "skills": [
+    "2.B",
+    "6.B"
+   ],
+   "practices": [
+    2,
+    6
+   ],
+   "searchPhrase": "ocean acidification environmental science explained"
+  },
+  {
+   "id": "invasive-species",
+   "ced": "9.8",
+   "title": "Invasive Species",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "1.B",
+    "7.C"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "invasive species environmental science explained"
+  },
+  {
+   "id": "endangered-species",
+   "ced": "9.9",
+   "title": "Endangered Species",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "1.B",
+    "7.E"
+   ],
+   "practices": [
+    1,
+    7
+   ],
+   "searchPhrase": "endangered species environmental science explained"
+  },
+  {
+   "id": "human-impacts-biodiversity",
+   "ced": "9.10",
+   "title": "Human Impacts on Biodiversity",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "bigIdeas": [
+    "EIN"
+   ],
+   "skills": [
+    "7.A",
+    "7.E"
+   ],
+   "practices": [
+    7
+   ],
+   "searchPhrase": "human impacts on biodiversity environmental science explained"
+  },
+  {
+   "id": "math-sci-notation",
+   "ced": null,
+   "title": "Scientific Notation and Metric Prefixes",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "bigIdeas": [],
+   "skills": [
+    "6.A",
+    "6.B",
+    "6.C"
+   ],
+   "practices": [
+    6
+   ],
+   "before": "carbon-cycle",
+   "searchPhrase": "scientific notation and metric prefixes for environmental science"
+  },
+  {
+   "id": "math-rates",
+   "ced": null,
+   "title": "Rates and Per-Capita Values",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "bigIdeas": [],
+   "skills": [
+    "6.A",
+    "6.B",
+    "6.C"
+   ],
+   "practices": [
+    6
+   ],
+   "before": "primary-productivity",
+   "searchPhrase": "rates and per-capita values for environmental science"
+  },
+  {
+   "id": "math-units",
+   "ced": null,
+   "title": "Unit Conversions and Dimensional Analysis",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "bigIdeas": [],
+   "skills": [
+    "6.A",
+    "6.B",
+    "6.C"
+   ],
+   "practices": [
+    6
+   ],
+   "before": "primary-productivity",
+   "searchPhrase": "unit conversions and dimensional analysis for environmental science"
+  },
+  {
+   "id": "math-percents",
+   "ced": null,
+   "title": "Percents and Percent Change",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "bigIdeas": [],
+   "skills": [
+    "6.A",
+    "6.B",
+    "6.C"
+   ],
+   "practices": [
+    6
+   ],
+   "before": "energy-flow",
+   "searchPhrase": "percents and percent change for environmental science"
+  },
+  {
+   "id": "math-doubling",
+   "ced": null,
+   "title": "Growth Rates, Doubling Time and the Rule of 70",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "bigIdeas": [],
+   "skills": [
+    "6.A",
+    "6.B",
+    "6.C"
+   ],
+   "practices": [
+    6
+   ],
+   "before": "population-growth",
+   "searchPhrase": "growth rates, doubling time and the rule of 70 for environmental science"
+  }
+ ],
+ "everydayWords": {
+  "about": "Common words a student already roughly knows. They may be used in their everyday sense before the topic that teaches them; the technical terms of the same concept stay strict (\"nitrogen fixation\", \"carrying capacity\", \"photochemical smog\" are not used early).",
+  "words": [
+   "ecosystem",
+   "ecosystems",
+   "population",
+   "populations",
+   "community",
+   "communities",
+   "species",
+   "habitat",
+   "habitats",
+   "predator",
+   "predators",
+   "prey",
+   "precipitation",
+   "carbon dioxide",
+   "CO2",
+   "photosynthesis",
+   "fossil fuel",
+   "fossil fuels",
+   "fertilizer",
+   "fertilizers",
+   "evaporation",
+   "erosion",
+   "percent",
+   "percents",
+   "percentage",
+   "percentages",
+   "rate",
+   "rates",
+   "sustainable",
+   "climate change",
+   "global warming",
+   "coal",
+   "natural gas",
+   "pesticide",
+   "pesticides",
+   "recycling",
+   "recycle",
+   "recycled",
+   "landfill",
+   "landfills",
+   "smog",
+   "dose",
+   "doses",
+   "radioactive",
+   "parasite",
+   "parasites",
+   "decompose",
+   "burning fossil fuels",
+   "wetland",
+   "wetlands",
+   "marsh",
+   "swamp",
+   "glacier",
+   "glaciers",
+   "sea ice",
+   "plowing",
+   "compost",
+   "per person",
+   "turbine",
+   "turbines"
+  ]
+ },
+ "concepts": [
+  {
+   "id": "ecosystem",
+   "term": "ecosystem",
+   "aliases": [
+    "ecosystems"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": []
+  },
+  {
+   "id": "population",
+   "term": "population",
+   "aliases": [
+    "populations"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": []
+  },
+  {
+   "id": "community",
+   "term": "community",
+   "aliases": [
+    "communities",
+    "biological community"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "species",
+   "term": "species",
+   "aliases": [],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": []
+  },
+  {
+   "id": "habitat",
+   "term": "habitat",
+   "aliases": [
+    "habitats"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": []
+  },
+  {
+   "id": "biotic",
+   "term": "biotic",
+   "aliases": [
+    "biotic factor",
+    "biotic factors"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "ecosystem"
+   ]
+  },
+  {
+   "id": "abiotic",
+   "term": "abiotic",
+   "aliases": [
+    "abiotic factor",
+    "abiotic factors"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "ecosystem"
+   ]
+  },
+  {
+   "id": "predation",
+   "term": "predation",
+   "aliases": [
+    "predator",
+    "predators",
+    "prey"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "species"
+   ]
+  },
+  {
+   "id": "competition",
+   "term": "competition",
+   "aliases": [
+    "interspecific competition",
+    "intraspecific competition"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "species"
+   ]
+  },
+  {
+   "id": "symbiosis",
+   "term": "symbiosis",
+   "aliases": [
+    "symbiotic",
+    "symbiotic relationship"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "species"
+   ]
+  },
+  {
+   "id": "mutualism",
+   "term": "mutualism",
+   "aliases": [
+    "mutualistic"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "symbiosis"
+   ]
+  },
+  {
+   "id": "commensalism",
+   "term": "commensalism",
+   "aliases": [],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "symbiosis"
+   ]
+  },
+  {
+   "id": "parasitism",
+   "term": "parasitism",
+   "aliases": [
+    "parasite",
+    "parasites"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "symbiosis"
+   ]
+  },
+  {
+   "id": "resource-partitioning",
+   "term": "resource partitioning",
+   "aliases": [],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "competition"
+   ]
+  },
+  {
+   "id": "niche",
+   "term": "niche",
+   "aliases": [
+    "ecological niche",
+    "niches"
+   ],
+   "taughtIn": "intro-ecosystems",
+   "dependsOn": [
+    "habitat"
+   ]
+  },
+  {
+   "id": "biome",
+   "term": "biome",
+   "aliases": [
+    "biomes"
+   ],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "ecosystem"
+   ]
+  },
+  {
+   "id": "precipitation",
+   "term": "precipitation",
+   "aliases": [],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": []
+  },
+  {
+   "id": "climatograph",
+   "term": "climatograph",
+   "aliases": [
+    "climatographs",
+    "climate diagram"
+   ],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "biome",
+    "precipitation"
+   ]
+  },
+  {
+   "id": "tropical-rainforest",
+   "term": "tropical rainforest",
+   "aliases": [
+    "tropical rainforests"
+   ],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "temperate-forest",
+   "term": "temperate deciduous forest",
+   "aliases": [
+    "temperate seasonal forest",
+    "temperate deciduous forests"
+   ],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "temperate-rainforest",
+   "term": "temperate rainforest",
+   "aliases": [
+    "temperate rainforests"
+   ],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "taiga",
+   "term": "taiga",
+   "aliases": [
+    "boreal forest",
+    "boreal forests"
+   ],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "tundra",
+   "term": "tundra",
+   "aliases": [],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "permafrost",
+   "term": "permafrost",
+   "aliases": [],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "tundra"
+   ]
+  },
+  {
+   "id": "savanna",
+   "term": "savanna",
+   "aliases": [
+    "savannas",
+    "tropical grassland"
+   ],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "temperate-grassland",
+   "term": "temperate grassland",
+   "aliases": [
+    "temperate grasslands",
+    "prairie"
+   ],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "desert-biome",
+   "term": "desert biome",
+   "aliases": [
+    "subtropical desert"
+   ],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "chaparral",
+   "term": "chaparral",
+   "aliases": [
+    "shrubland",
+    "woodland/shrubland"
+   ],
+   "taughtIn": "terrestrial-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "salinity",
+   "term": "salinity",
+   "aliases": [],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "abiotic"
+   ]
+  },
+  {
+   "id": "dissolved-oxygen",
+   "term": "dissolved oxygen",
+   "aliases": [
+    "dissolved oxygen level",
+    "dissolved oxygen levels"
+   ],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "abiotic"
+   ]
+  },
+  {
+   "id": "freshwater-biome",
+   "term": "freshwater biome",
+   "aliases": [
+    "freshwater biomes"
+   ],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "biome",
+    "salinity"
+   ]
+  },
+  {
+   "id": "lake-zones",
+   "term": "littoral zone",
+   "aliases": [
+    "limnetic zone",
+    "profundal zone",
+    "benthic zone"
+   ],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "freshwater-biome"
+   ]
+  },
+  {
+   "id": "wetland",
+   "term": "wetland",
+   "aliases": [
+    "wetlands",
+    "marsh",
+    "swamp"
+   ],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "estuary",
+   "term": "estuary",
+   "aliases": [
+    "estuaries"
+   ],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "salinity"
+   ]
+  },
+  {
+   "id": "mangrove",
+   "term": "mangrove",
+   "aliases": [
+    "mangroves",
+    "mangrove forest"
+   ],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "estuary"
+   ]
+  },
+  {
+   "id": "coral-reef",
+   "term": "coral reef",
+   "aliases": [
+    "coral reefs"
+   ],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "mutualism"
+   ]
+  },
+  {
+   "id": "intertidal",
+   "term": "intertidal zone",
+   "aliases": [
+    "intertidal zones"
+   ],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "open-ocean",
+   "term": "open ocean",
+   "aliases": [
+    "pelagic zone"
+   ],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "biome"
+   ]
+  },
+  {
+   "id": "photic-zone",
+   "term": "photic zone",
+   "aliases": [
+    "aphotic zone"
+   ],
+   "taughtIn": "aquatic-biomes",
+   "dependsOn": [
+    "open-ocean"
+   ]
+  },
+  {
+   "id": "carbon-cycle",
+   "term": "carbon cycle",
+   "aliases": [],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": [
+    "ecosystem"
+   ]
+  },
+  {
+   "id": "reservoir",
+   "term": "reservoir",
+   "aliases": [
+    "reservoirs"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": []
+  },
+  {
+   "id": "flux",
+   "term": "flux",
+   "aliases": [
+    "fluxes"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": [
+    "reservoir"
+   ]
+  },
+  {
+   "id": "carbon-sink",
+   "term": "carbon sink",
+   "aliases": [
+    "carbon sinks",
+    "carbon source",
+    "carbon sources"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": [
+    "reservoir"
+   ]
+  },
+  {
+   "id": "photosynthesis",
+   "term": "photosynthesis",
+   "aliases": [
+    "photosynthesize"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": []
+  },
+  {
+   "id": "cellular-respiration",
+   "term": "cellular respiration",
+   "aliases": [
+    "respiration"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": [
+    "photosynthesis"
+   ]
+  },
+  {
+   "id": "decomposition",
+   "term": "decomposition",
+   "aliases": [
+    "decompose",
+    "decomposes"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": []
+  },
+  {
+   "id": "decomposer",
+   "term": "decomposer",
+   "aliases": [
+    "decomposers"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": [
+    "decomposition"
+   ]
+  },
+  {
+   "id": "carbon-dioxide",
+   "term": "carbon dioxide",
+   "aliases": [
+    "CO2"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": []
+  },
+  {
+   "id": "methane",
+   "term": "methane",
+   "aliases": [
+    "CH4"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": []
+  },
+  {
+   "id": "fossil-fuel",
+   "term": "fossil fuel",
+   "aliases": [
+    "fossil fuels"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": [
+    "carbon-cycle"
+   ]
+  },
+  {
+   "id": "combustion",
+   "term": "combustion",
+   "aliases": [
+    "burning fossil fuels"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": [
+    "fossil-fuel"
+   ]
+  },
+  {
+   "id": "sedimentation",
+   "term": "sedimentation",
+   "aliases": [
+    "sedimentary rock"
+   ],
+   "taughtIn": "carbon-cycle",
+   "dependsOn": [
+    "reservoir"
+   ]
+  },
+  {
+   "id": "nitrogen-cycle",
+   "term": "nitrogen cycle",
+   "aliases": [],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": [
+    "reservoir"
+   ]
+  },
+  {
+   "id": "nitrogen-fixation",
+   "term": "nitrogen fixation",
+   "aliases": [
+    "nitrogen-fixing bacteria",
+    "fix nitrogen"
+   ],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": [
+    "nitrogen-cycle"
+   ]
+  },
+  {
+   "id": "nitrification",
+   "term": "nitrification",
+   "aliases": [],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": [
+    "nitrogen-cycle"
+   ]
+  },
+  {
+   "id": "assimilation",
+   "term": "assimilation",
+   "aliases": [],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": [
+    "nitrogen-cycle"
+   ]
+  },
+  {
+   "id": "ammonification",
+   "term": "ammonification",
+   "aliases": [],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": [
+    "decomposer"
+   ]
+  },
+  {
+   "id": "denitrification",
+   "term": "denitrification",
+   "aliases": [],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": [
+    "nitrogen-cycle"
+   ]
+  },
+  {
+   "id": "ammonium",
+   "term": "ammonium",
+   "aliases": [
+    "ammonia",
+    "NH4+",
+    "NH3"
+   ],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": [
+    "nitrogen-cycle"
+   ]
+  },
+  {
+   "id": "nitrate",
+   "term": "nitrate",
+   "aliases": [
+    "nitrates",
+    "NO3-"
+   ],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": [
+    "nitrogen-cycle"
+   ]
+  },
+  {
+   "id": "limiting-nutrient",
+   "term": "limiting nutrient",
+   "aliases": [
+    "limiting nutrients"
+   ],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": [
+    "nitrogen-cycle"
+   ]
+  },
+  {
+   "id": "fertilizer",
+   "term": "fertilizer",
+   "aliases": [
+    "fertilizers"
+   ],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": []
+  },
+  {
+   "id": "leaching",
+   "term": "leaching",
+   "aliases": [
+    "leached"
+   ],
+   "taughtIn": "nitrogen-cycle",
+   "dependsOn": []
+  },
+  {
+   "id": "phosphorus-cycle",
+   "term": "phosphorus cycle",
+   "aliases": [],
+   "taughtIn": "phosphorus-cycle",
+   "dependsOn": [
+    "reservoir",
+    "limiting-nutrient"
+   ]
+  },
+  {
+   "id": "weathering",
+   "term": "weathering",
+   "aliases": [
+    "weathered"
+   ],
+   "taughtIn": "phosphorus-cycle",
+   "dependsOn": []
+  },
+  {
+   "id": "phosphate",
+   "term": "phosphate",
+   "aliases": [
+    "phosphates"
+   ],
+   "taughtIn": "phosphorus-cycle",
+   "dependsOn": [
+    "phosphorus-cycle"
+   ]
+  },
+  {
+   "id": "hydrologic-cycle",
+   "term": "hydrologic cycle",
+   "aliases": [
+    "water cycle"
+   ],
+   "taughtIn": "water-cycle",
+   "dependsOn": [
+    "reservoir",
+    "precipitation"
+   ]
+  },
+  {
+   "id": "evaporation",
+   "term": "evaporation",
+   "aliases": [
+    "evaporate",
+    "evaporates"
+   ],
+   "taughtIn": "water-cycle",
+   "dependsOn": []
+  },
+  {
+   "id": "transpiration",
+   "term": "transpiration",
+   "aliases": [
+    "evapotranspiration"
+   ],
+   "taughtIn": "water-cycle",
+   "dependsOn": [
+    "hydrologic-cycle"
+   ]
+  },
+  {
+   "id": "condensation",
+   "term": "condensation",
+   "aliases": [
+    "condense",
+    "condenses"
+   ],
+   "taughtIn": "water-cycle",
+   "dependsOn": []
+  },
+  {
+   "id": "runoff",
+   "term": "runoff",
+   "aliases": [
+    "surface runoff"
+   ],
+   "taughtIn": "water-cycle",
+   "dependsOn": [
+    "hydrologic-cycle"
+   ]
+  },
+  {
+   "id": "infiltration",
+   "term": "infiltration",
+   "aliases": [
+    "infiltrate",
+    "infiltrates"
+   ],
+   "taughtIn": "water-cycle",
+   "dependsOn": [
+    "hydrologic-cycle"
+   ]
+  },
+  {
+   "id": "groundwater",
+   "term": "groundwater",
+   "aliases": [],
+   "taughtIn": "water-cycle",
+   "dependsOn": [
+    "infiltration"
+   ]
+  },
+  {
+   "id": "aquifer",
+   "term": "aquifer",
+   "aliases": [
+    "aquifers"
+   ],
+   "taughtIn": "water-cycle",
+   "dependsOn": [
+    "groundwater"
+   ]
+  },
+  {
+   "id": "producer",
+   "term": "producer",
+   "aliases": [
+    "producers",
+    "autotroph",
+    "autotrophs"
+   ],
+   "taughtIn": "primary-productivity",
+   "dependsOn": [
+    "photosynthesis"
+   ]
+  },
+  {
+   "id": "primary-productivity",
+   "term": "primary productivity",
+   "aliases": [
+    "productivity"
+   ],
+   "taughtIn": "primary-productivity",
+   "dependsOn": [
+    "producer",
+    "unit-rate"
+   ]
+  },
+  {
+   "id": "gpp",
+   "term": "gross primary productivity",
+   "aliases": [
+    "GPP"
+   ],
+   "taughtIn": "primary-productivity",
+   "dependsOn": [
+    "primary-productivity"
+   ],
+   "notation": [
+    "\\\\text\\{GPP\\}"
+   ]
+  },
+  {
+   "id": "npp",
+   "term": "net primary productivity",
+   "aliases": [
+    "NPP"
+   ],
+   "taughtIn": "primary-productivity",
+   "dependsOn": [
+    "gpp",
+    "cellular-respiration"
+   ],
+   "notation": [
+    "\\\\text\\{NPP\\}"
+   ]
+  },
+  {
+   "id": "trophic-level",
+   "term": "trophic level",
+   "aliases": [
+    "trophic levels"
+   ],
+   "taughtIn": "trophic-levels",
+   "dependsOn": [
+    "producer"
+   ]
+  },
+  {
+   "id": "consumer",
+   "term": "consumer",
+   "aliases": [
+    "consumers",
+    "heterotroph",
+    "heterotrophs",
+    "primary consumer",
+    "primary consumers",
+    "secondary consumer",
+    "secondary consumers",
+    "tertiary consumer",
+    "tertiary consumers"
+   ],
+   "taughtIn": "trophic-levels",
+   "dependsOn": [
+    "trophic-level"
+   ]
+  },
+  {
+   "id": "herbivore",
+   "term": "herbivore",
+   "aliases": [
+    "herbivores",
+    "carnivore",
+    "carnivores",
+    "omnivore",
+    "omnivores"
+   ],
+   "taughtIn": "trophic-levels",
+   "dependsOn": [
+    "consumer"
+   ]
+  },
+  {
+   "id": "apex-predator",
+   "term": "apex predator",
+   "aliases": [
+    "apex predators",
+    "top predator",
+    "top predators"
+   ],
+   "taughtIn": "trophic-levels",
+   "dependsOn": [
+    "consumer",
+    "predation"
+   ]
+  },
+  {
+   "id": "ten-percent-rule",
+   "term": "10% rule",
+   "aliases": [
+    "ten percent rule",
+    "10 percent rule"
+   ],
+   "taughtIn": "energy-flow",
+   "dependsOn": [
+    "trophic-level",
+    "percent"
+   ]
+  },
+  {
+   "id": "biomass",
+   "term": "biomass",
+   "aliases": [],
+   "taughtIn": "energy-flow",
+   "dependsOn": [
+    "trophic-level"
+   ]
+  },
+  {
+   "id": "energy-pyramid",
+   "term": "energy pyramid",
+   "aliases": [
+    "energy pyramids",
+    "pyramid of energy",
+    "biomass pyramid",
+    "pyramid of numbers"
+   ],
+   "taughtIn": "energy-flow",
+   "dependsOn": [
+    "ten-percent-rule",
+    "biomass"
+   ]
+  },
+  {
+   "id": "thermodynamics",
+   "term": "first law of thermodynamics",
+   "aliases": [
+    "second law of thermodynamics",
+    "laws of thermodynamics"
+   ],
+   "taughtIn": "energy-flow",
+   "dependsOn": []
+  },
+  {
+   "id": "efficiency",
+   "term": "efficiency",
+   "aliases": [
+    "efficient",
+    "ecological efficiency"
+   ],
+   "taughtIn": "energy-flow",
+   "dependsOn": [
+    "thermodynamics"
+   ]
+  },
+  {
+   "id": "food-chain",
+   "term": "food chain",
+   "aliases": [
+    "food chains"
+   ],
+   "taughtIn": "food-webs",
+   "dependsOn": [
+    "trophic-level"
+   ]
+  },
+  {
+   "id": "food-web",
+   "term": "food web",
+   "aliases": [
+    "food webs"
+   ],
+   "taughtIn": "food-webs",
+   "dependsOn": [
+    "food-chain"
+   ]
+  },
+  {
+   "id": "detritivore",
+   "term": "detritivore",
+   "aliases": [
+    "detritivores",
+    "detritus"
+   ],
+   "taughtIn": "food-webs",
+   "dependsOn": [
+    "decomposer"
+   ]
+  },
+  {
+   "id": "biodiversity",
+   "term": "biodiversity",
+   "aliases": [
+    "biological diversity"
+   ],
+   "taughtIn": "biodiversity",
+   "dependsOn": [
+    "species",
+    "ecosystem"
+   ]
+  },
+  {
+   "id": "genetic-diversity",
+   "term": "genetic diversity",
+   "aliases": [],
+   "taughtIn": "biodiversity",
+   "dependsOn": [
+    "biodiversity"
+   ]
+  },
+  {
+   "id": "species-richness",
+   "term": "species richness",
+   "aliases": [],
+   "taughtIn": "biodiversity",
+   "dependsOn": [
+    "biodiversity"
+   ]
+  },
+  {
+   "id": "species-evenness",
+   "term": "species evenness",
+   "aliases": [
+    "evenness"
+   ],
+   "taughtIn": "biodiversity",
+   "dependsOn": [
+    "species-richness"
+   ]
+  },
+  {
+   "id": "habitat-diversity",
+   "term": "habitat diversity",
+   "aliases": [
+    "ecosystem diversity"
+   ],
+   "taughtIn": "biodiversity",
+   "dependsOn": [
+    "biodiversity",
+    "habitat"
+   ]
+  },
+  {
+   "id": "bottleneck",
+   "term": "population bottleneck",
+   "aliases": [
+    "bottleneck effect",
+    "bottleneck event"
+   ],
+   "taughtIn": "biodiversity",
+   "dependsOn": [
+    "genetic-diversity",
+    "population"
+   ]
+  },
+  {
+   "id": "keystone-species",
+   "term": "keystone species",
+   "aliases": [],
+   "taughtIn": "biodiversity",
+   "dependsOn": [
+    "community"
+   ]
+  },
+  {
+   "id": "ecosystem-service",
+   "term": "ecosystem services",
+   "aliases": [
+    "ecosystem service"
+   ],
+   "taughtIn": "ecosystem-services",
+   "dependsOn": [
+    "ecosystem"
+   ]
+  },
+  {
+   "id": "provisioning-service",
+   "term": "provisioning services",
+   "aliases": [
+    "provisioning service"
+   ],
+   "taughtIn": "ecosystem-services",
+   "dependsOn": [
+    "ecosystem-service"
+   ]
+  },
+  {
+   "id": "regulating-service",
+   "term": "regulating services",
+   "aliases": [
+    "regulating service"
+   ],
+   "taughtIn": "ecosystem-services",
+   "dependsOn": [
+    "ecosystem-service"
+   ]
+  },
+  {
+   "id": "cultural-service",
+   "term": "cultural services",
+   "aliases": [
+    "cultural service"
+   ],
+   "taughtIn": "ecosystem-services",
+   "dependsOn": [
+    "ecosystem-service"
+   ]
+  },
+  {
+   "id": "supporting-service",
+   "term": "supporting services",
+   "aliases": [
+    "supporting service"
+   ],
+   "taughtIn": "ecosystem-services",
+   "dependsOn": [
+    "ecosystem-service"
+   ]
+  },
+  {
+   "id": "island-biogeography",
+   "term": "island biogeography",
+   "aliases": [
+    "theory of island biogeography"
+   ],
+   "taughtIn": "island-biogeo",
+   "dependsOn": [
+    "species-richness"
+   ]
+  },
+  {
+   "id": "habitat-fragmentation",
+   "term": "habitat fragmentation",
+   "aliases": [
+    "fragmentation",
+    "habitat fragments"
+   ],
+   "taughtIn": "island-biogeo",
+   "dependsOn": [
+    "island-biogeography",
+    "habitat"
+   ]
+  },
+  {
+   "id": "range-of-tolerance",
+   "term": "range of tolerance",
+   "aliases": [
+    "ecological tolerance",
+    "tolerance range"
+   ],
+   "taughtIn": "ecological-tolerance",
+   "dependsOn": [
+    "abiotic"
+   ]
+  },
+  {
+   "id": "optimal-range",
+   "term": "optimal range",
+   "aliases": [],
+   "taughtIn": "ecological-tolerance",
+   "dependsOn": [
+    "range-of-tolerance"
+   ]
+  },
+  {
+   "id": "zone-of-stress",
+   "term": "zone of physiological stress",
+   "aliases": [
+    "zone of intolerance",
+    "zones of physiological stress"
+   ],
+   "taughtIn": "ecological-tolerance",
+   "dependsOn": [
+    "range-of-tolerance"
+   ]
+  },
+  {
+   "id": "natural-disruption",
+   "term": "natural disruption",
+   "aliases": [
+    "natural disruptions",
+    "disturbance",
+    "disturbances"
+   ],
+   "taughtIn": "natural-disruptions",
+   "dependsOn": [
+    "ecosystem"
+   ]
+  },
+  {
+   "id": "natural-selection",
+   "term": "natural selection",
+   "aliases": [],
+   "taughtIn": "evolving-populations",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "adaptation",
+   "term": "adaptation",
+   "aliases": [
+    "adaptations"
+   ],
+   "taughtIn": "evolving-populations",
+   "dependsOn": [
+    "natural-selection"
+   ]
+  },
+  {
+   "id": "ecological-succession",
+   "term": "ecological succession",
+   "aliases": [
+    "succession"
+   ],
+   "taughtIn": "succession",
+   "dependsOn": [
+    "natural-disruption"
+   ]
+  },
+  {
+   "id": "primary-succession",
+   "term": "primary succession",
+   "aliases": [],
+   "taughtIn": "succession",
+   "dependsOn": [
+    "ecological-succession"
+   ]
+  },
+  {
+   "id": "secondary-succession",
+   "term": "secondary succession",
+   "aliases": [],
+   "taughtIn": "succession",
+   "dependsOn": [
+    "ecological-succession"
+   ]
+  },
+  {
+   "id": "pioneer-species",
+   "term": "pioneer species",
+   "aliases": [],
+   "taughtIn": "succession",
+   "dependsOn": [
+    "ecological-succession"
+   ]
+  },
+  {
+   "id": "climax-community",
+   "term": "climax community",
+   "aliases": [
+    "mature community"
+   ],
+   "taughtIn": "succession",
+   "dependsOn": [
+    "ecological-succession",
+    "community"
+   ]
+  },
+  {
+   "id": "generalist",
+   "term": "generalist species",
+   "aliases": [
+    "generalist",
+    "generalists"
+   ],
+   "taughtIn": "generalists-specialists",
+   "dependsOn": [
+    "niche"
+   ]
+  },
+  {
+   "id": "specialist",
+   "term": "specialist species",
+   "aliases": [
+    "specialist",
+    "specialists"
+   ],
+   "taughtIn": "generalists-specialists",
+   "dependsOn": [
+    "niche"
+   ]
+  },
+  {
+   "id": "biotic-potential",
+   "term": "biotic potential",
+   "aliases": [],
+   "taughtIn": "r-k-selection",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "r-selected",
+   "term": "r-selected",
+   "aliases": [
+    "r-selected species",
+    "r-strategist",
+    "r-strategists"
+   ],
+   "taughtIn": "r-k-selection",
+   "dependsOn": [
+    "biotic-potential"
+   ]
+  },
+  {
+   "id": "k-selected",
+   "term": "K-selected",
+   "aliases": [
+    "K-selected species",
+    "K-strategist",
+    "K-strategists"
+   ],
+   "taughtIn": "r-k-selection",
+   "dependsOn": [
+    "biotic-potential"
+   ]
+  },
+  {
+   "id": "reproductive-strategy",
+   "term": "reproductive strategy",
+   "aliases": [
+    "reproductive strategies"
+   ],
+   "taughtIn": "r-k-selection",
+   "dependsOn": [
+    "r-selected"
+   ]
+  },
+  {
+   "id": "survivorship-curve",
+   "term": "survivorship curve",
+   "aliases": [
+    "survivorship curves",
+    "Type I curve",
+    "Type II curve",
+    "Type III curve"
+   ],
+   "taughtIn": "survivorship-curves",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "carrying-capacity",
+   "term": "carrying capacity",
+   "aliases": [],
+   "taughtIn": "carrying-limits",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "overshoot",
+   "term": "overshoot",
+   "aliases": [
+    "population overshoot"
+   ],
+   "taughtIn": "carrying-limits",
+   "dependsOn": [
+    "carrying-capacity"
+   ]
+  },
+  {
+   "id": "dieback",
+   "term": "dieback",
+   "aliases": [
+    "die-back",
+    "population crash"
+   ],
+   "taughtIn": "carrying-limits",
+   "dependsOn": [
+    "overshoot"
+   ]
+  },
+  {
+   "id": "exponential-growth",
+   "term": "exponential growth",
+   "aliases": [
+    "J-curve",
+    "J-shaped curve"
+   ],
+   "taughtIn": "population-growth",
+   "dependsOn": [
+    "biotic-potential"
+   ]
+  },
+  {
+   "id": "logistic-growth",
+   "term": "logistic growth",
+   "aliases": [
+    "S-curve",
+    "S-shaped curve"
+   ],
+   "taughtIn": "population-growth",
+   "dependsOn": [
+    "exponential-growth",
+    "carrying-capacity"
+   ]
+  },
+  {
+   "id": "limiting-factor",
+   "term": "limiting factor",
+   "aliases": [
+    "limiting factors"
+   ],
+   "taughtIn": "population-growth",
+   "dependsOn": [
+    "carrying-capacity"
+   ]
+  },
+  {
+   "id": "density-dependent",
+   "term": "density-dependent factor",
+   "aliases": [
+    "density-dependent factors",
+    "density-dependent"
+   ],
+   "taughtIn": "population-growth",
+   "dependsOn": [
+    "limiting-factor"
+   ]
+  },
+  {
+   "id": "density-independent",
+   "term": "density-independent factor",
+   "aliases": [
+    "density-independent factors",
+    "density-independent"
+   ],
+   "taughtIn": "population-growth",
+   "dependsOn": [
+    "limiting-factor"
+   ]
+  },
+  {
+   "id": "population-density",
+   "term": "population density",
+   "aliases": [],
+   "taughtIn": "population-growth",
+   "dependsOn": [
+    "population",
+    "per-capita"
+   ]
+  },
+  {
+   "id": "age-structure",
+   "term": "age structure diagram",
+   "aliases": [
+    "age structure diagrams",
+    "population pyramid",
+    "population pyramids",
+    "age pyramid"
+   ],
+   "taughtIn": "age-structure",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "cohort",
+   "term": "cohort",
+   "aliases": [
+    "cohorts",
+    "age cohort"
+   ],
+   "taughtIn": "age-structure",
+   "dependsOn": [
+    "age-structure"
+   ]
+  },
+  {
+   "id": "population-momentum",
+   "term": "population momentum",
+   "aliases": [],
+   "taughtIn": "age-structure",
+   "dependsOn": [
+    "age-structure"
+   ]
+  },
+  {
+   "id": "development-level",
+   "term": "developed country",
+   "aliases": [
+    "developed countries",
+    "developing country",
+    "developing countries",
+    "developed nation",
+    "developing nation"
+   ],
+   "taughtIn": "age-structure",
+   "dependsOn": []
+  },
+  {
+   "id": "total-fertility-rate",
+   "term": "total fertility rate",
+   "aliases": [
+    "TFR"
+   ],
+   "taughtIn": "total-fertility-rate",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "replacement-level",
+   "term": "replacement-level fertility",
+   "aliases": [
+    "replacement level",
+    "replacement fertility"
+   ],
+   "taughtIn": "total-fertility-rate",
+   "dependsOn": [
+    "total-fertility-rate"
+   ]
+  },
+  {
+   "id": "infant-mortality",
+   "term": "infant mortality",
+   "aliases": [
+    "infant mortality rate"
+   ],
+   "taughtIn": "total-fertility-rate",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "crude-birth-rate",
+   "term": "crude birth rate",
+   "aliases": [
+    "CBR",
+    "birth rate",
+    "birth rates"
+   ],
+   "taughtIn": "human-population",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "crude-death-rate",
+   "term": "crude death rate",
+   "aliases": [
+    "CDR",
+    "death rate",
+    "death rates"
+   ],
+   "taughtIn": "human-population",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "natural-increase",
+   "term": "rate of natural increase",
+   "aliases": [
+    "natural increase"
+   ],
+   "taughtIn": "human-population",
+   "dependsOn": [
+    "crude-birth-rate",
+    "crude-death-rate",
+    "growth-rate"
+   ]
+  },
+  {
+   "id": "migration",
+   "term": "immigration",
+   "aliases": [
+    "emigration",
+    "net migration"
+   ],
+   "taughtIn": "human-population",
+   "dependsOn": [
+    "population"
+   ]
+  },
+  {
+   "id": "malthus",
+   "term": "Malthusian theory",
+   "aliases": [
+    "Thomas Malthus",
+    "Malthus"
+   ],
+   "taughtIn": "human-population",
+   "dependsOn": [
+    "exponential-growth"
+   ]
+  },
+  {
+   "id": "demographic-transition",
+   "term": "demographic transition",
+   "aliases": [
+    "demographic transition model"
+   ],
+   "taughtIn": "population-transition",
+   "dependsOn": [
+    "crude-birth-rate",
+    "crude-death-rate"
+   ]
+  },
+  {
+   "id": "transition-stages",
+   "term": "preindustrial stage",
+   "aliases": [
+    "transitional stage",
+    "industrial stage",
+    "postindustrial stage"
+   ],
+   "taughtIn": "population-transition",
+   "dependsOn": [
+    "demographic-transition"
+   ]
+  },
+  {
+   "id": "convection",
+   "term": "convection",
+   "aliases": [
+    "convection current",
+    "convection currents"
+   ],
+   "taughtIn": "plate-tectonics",
+   "dependsOn": []
+  },
+  {
+   "id": "plate-tectonics",
+   "term": "plate tectonics",
+   "aliases": [
+    "tectonic plate",
+    "tectonic plates"
+   ],
+   "taughtIn": "plate-tectonics",
+   "dependsOn": [
+    "convection"
+   ]
+  },
+  {
+   "id": "convergent-boundary",
+   "term": "convergent boundary",
+   "aliases": [
+    "convergent boundaries",
+    "subduction",
+    "subduction zone"
+   ],
+   "taughtIn": "plate-tectonics",
+   "dependsOn": [
+    "plate-tectonics"
+   ]
+  },
+  {
+   "id": "divergent-boundary",
+   "term": "divergent boundary",
+   "aliases": [
+    "divergent boundaries",
+    "seafloor spreading",
+    "rift valley"
+   ],
+   "taughtIn": "plate-tectonics",
+   "dependsOn": [
+    "plate-tectonics"
+   ]
+  },
+  {
+   "id": "transform-boundary",
+   "term": "transform boundary",
+   "aliases": [
+    "transform boundaries",
+    "transform fault"
+   ],
+   "taughtIn": "plate-tectonics",
+   "dependsOn": [
+    "plate-tectonics"
+   ]
+  },
+  {
+   "id": "hot-spot",
+   "term": "hot spot",
+   "aliases": [
+    "hot spots",
+    "hotspot",
+    "hotspots"
+   ],
+   "taughtIn": "plate-tectonics",
+   "dependsOn": [
+    "plate-tectonics"
+   ]
+  },
+  {
+   "id": "parent-material",
+   "term": "parent material",
+   "aliases": [
+    "bedrock"
+   ],
+   "taughtIn": "soil-formation",
+   "dependsOn": [
+    "weathering"
+   ]
+  },
+  {
+   "id": "humus",
+   "term": "humus",
+   "aliases": [],
+   "taughtIn": "soil-formation",
+   "dependsOn": [
+    "decomposition"
+   ]
+  },
+  {
+   "id": "soil-horizon",
+   "term": "soil horizon",
+   "aliases": [
+    "soil horizons",
+    "O horizon",
+    "A horizon",
+    "B horizon",
+    "C horizon",
+    "topsoil",
+    "subsoil"
+   ],
+   "taughtIn": "soil-formation",
+   "dependsOn": [
+    "parent-material",
+    "humus"
+   ]
+  },
+  {
+   "id": "erosion",
+   "term": "erosion",
+   "aliases": [
+    "soil erosion",
+    "erode",
+    "eroded"
+   ],
+   "taughtIn": "soil-formation",
+   "dependsOn": []
+  },
+  {
+   "id": "soil-texture",
+   "term": "soil texture",
+   "aliases": [
+    "soil texture triangle",
+    "texture triangle"
+   ],
+   "taughtIn": "soil-properties",
+   "dependsOn": [
+    "soil-horizon"
+   ]
+  },
+  {
+   "id": "loam",
+   "term": "loam",
+   "aliases": [],
+   "taughtIn": "soil-properties",
+   "dependsOn": [
+    "soil-texture"
+   ]
+  },
+  {
+   "id": "porosity",
+   "term": "porosity",
+   "aliases": [
+    "pore space"
+   ],
+   "taughtIn": "soil-properties",
+   "dependsOn": [
+    "soil-texture"
+   ]
+  },
+  {
+   "id": "permeability",
+   "term": "permeability",
+   "aliases": [],
+   "taughtIn": "soil-properties",
+   "dependsOn": [
+    "porosity"
+   ]
+  },
+  {
+   "id": "water-holding-capacity",
+   "term": "water-holding capacity",
+   "aliases": [],
+   "taughtIn": "soil-properties",
+   "dependsOn": [
+    "soil-texture"
+   ]
+  },
+  {
+   "id": "soil-fertility",
+   "term": "soil fertility",
+   "aliases": [],
+   "taughtIn": "soil-properties",
+   "dependsOn": [
+    "soil-texture"
+   ]
+  },
+  {
+   "id": "ph",
+   "term": "pH",
+   "aliases": [
+    "pH scale"
+   ],
+   "taughtIn": "soil-properties",
+   "dependsOn": []
+  },
+  {
+   "id": "troposphere",
+   "term": "troposphere",
+   "aliases": [],
+   "taughtIn": "atmosphere",
+   "dependsOn": []
+  },
+  {
+   "id": "stratosphere",
+   "term": "stratosphere",
+   "aliases": [],
+   "taughtIn": "atmosphere",
+   "dependsOn": [
+    "troposphere"
+   ]
+  },
+  {
+   "id": "upper-layers",
+   "term": "mesosphere",
+   "aliases": [
+    "thermosphere",
+    "exosphere"
+   ],
+   "taughtIn": "atmosphere",
+   "dependsOn": [
+    "stratosphere"
+   ]
+  },
+  {
+   "id": "ozone",
+   "term": "ozone",
+   "aliases": [
+    "O3"
+   ],
+   "taughtIn": "atmosphere",
+   "dependsOn": []
+  },
+  {
+   "id": "ozone-layer",
+   "term": "ozone layer",
+   "aliases": [],
+   "taughtIn": "atmosphere",
+   "dependsOn": [
+    "ozone",
+    "stratosphere"
+   ]
+  },
+  {
+   "id": "uv-radiation",
+   "term": "ultraviolet radiation",
+   "aliases": [
+    "UV radiation",
+    "UV",
+    "UV-B",
+    "UVB"
+   ],
+   "taughtIn": "atmosphere",
+   "dependsOn": [
+    "ozone-layer"
+   ]
+  },
+  {
+   "id": "circulation-cells",
+   "term": "Hadley cell",
+   "aliases": [
+    "Hadley cells",
+    "Ferrel cell",
+    "Ferrel cells",
+    "polar cell",
+    "polar cells"
+   ],
+   "taughtIn": "global-wind-patterns",
+   "dependsOn": [
+    "convection"
+   ]
+  },
+  {
+   "id": "coriolis",
+   "term": "Coriolis effect",
+   "aliases": [],
+   "taughtIn": "global-wind-patterns",
+   "dependsOn": []
+  },
+  {
+   "id": "prevailing-winds",
+   "term": "trade winds",
+   "aliases": [
+    "westerlies",
+    "prevailing winds",
+    "polar easterlies"
+   ],
+   "taughtIn": "global-wind-patterns",
+   "dependsOn": [
+    "circulation-cells",
+    "coriolis"
+   ]
+  },
+  {
+   "id": "watershed",
+   "term": "watershed",
+   "aliases": [
+    "watersheds",
+    "drainage basin"
+   ],
+   "taughtIn": "watersheds",
+   "dependsOn": [
+    "runoff"
+   ]
+  },
+  {
+   "id": "insolation",
+   "term": "insolation",
+   "aliases": [
+    "solar radiation"
+   ],
+   "taughtIn": "solar-radiation-seasons",
+   "dependsOn": []
+  },
+  {
+   "id": "axial-tilt",
+   "term": "axial tilt",
+   "aliases": [
+    "tilt of Earth's axis"
+   ],
+   "taughtIn": "solar-radiation-seasons",
+   "dependsOn": [
+    "insolation"
+   ]
+  },
+  {
+   "id": "albedo",
+   "term": "albedo",
+   "aliases": [],
+   "taughtIn": "solar-radiation-seasons",
+   "dependsOn": [
+    "insolation"
+   ]
+  },
+  {
+   "id": "rain-shadow",
+   "term": "rain shadow",
+   "aliases": [
+    "rain shadow effect"
+   ],
+   "taughtIn": "geo-and-climate",
+   "dependsOn": [
+    "precipitation"
+   ]
+  },
+  {
+   "id": "ocean-current",
+   "term": "ocean current",
+   "aliases": [
+    "ocean currents",
+    "gyre",
+    "gyres"
+   ],
+   "taughtIn": "geo-and-climate",
+   "dependsOn": [
+    "prevailing-winds"
+   ]
+  },
+  {
+   "id": "upwelling",
+   "term": "upwelling",
+   "aliases": [],
+   "taughtIn": "el-nino-la-nina",
+   "dependsOn": [
+    "ocean-current"
+   ]
+  },
+  {
+   "id": "el-nino",
+   "term": "El Niño",
+   "aliases": [
+    "El Nino",
+    "ENSO",
+    "El Niño-Southern Oscillation"
+   ],
+   "taughtIn": "el-nino-la-nina",
+   "dependsOn": [
+    "upwelling",
+    "prevailing-winds"
+   ]
+  },
+  {
+   "id": "la-nina",
+   "term": "La Niña",
+   "aliases": [
+    "La Nina"
+   ],
+   "taughtIn": "el-nino-la-nina",
+   "dependsOn": [
+    "el-nino"
+   ]
+  },
+  {
+   "id": "tragedy-of-commons",
+   "term": "tragedy of the commons",
+   "aliases": [
+    "common resource",
+    "common resources"
+   ],
+   "taughtIn": "tragedy-of-commons",
+   "dependsOn": []
+  },
+  {
+   "id": "clearcutting",
+   "term": "clearcutting",
+   "aliases": [
+    "clear-cutting",
+    "clearcut",
+    "clear-cut"
+   ],
+   "taughtIn": "clearcutting",
+   "dependsOn": [
+    "erosion"
+   ]
+  },
+  {
+   "id": "deforestation",
+   "term": "deforestation",
+   "aliases": [
+    "deforested"
+   ],
+   "taughtIn": "clearcutting",
+   "dependsOn": [
+    "clearcutting"
+   ]
+  },
+  {
+   "id": "green-revolution",
+   "term": "Green Revolution",
+   "aliases": [],
+   "taughtIn": "green-revolution",
+   "dependsOn": [
+    "fertilizer"
+   ]
+  },
+  {
+   "id": "monoculture",
+   "term": "monoculture",
+   "aliases": [
+    "monocultures"
+   ],
+   "taughtIn": "green-revolution",
+   "dependsOn": [
+    "genetic-diversity"
+   ]
+  },
+  {
+   "id": "gmo",
+   "term": "genetically modified organism",
+   "aliases": [
+    "genetically modified organisms",
+    "GMO",
+    "GMOs",
+    "genetically modified"
+   ],
+   "taughtIn": "green-revolution",
+   "dependsOn": [
+    "green-revolution"
+   ]
+  },
+  {
+   "id": "synthetic-fertilizer",
+   "term": "synthetic fertilizer",
+   "aliases": [
+    "synthetic fertilizers",
+    "inorganic fertilizer"
+   ],
+   "taughtIn": "green-revolution",
+   "dependsOn": [
+    "fertilizer"
+   ]
+  },
+  {
+   "id": "tilling",
+   "term": "tilling",
+   "aliases": [
+    "tillage",
+    "plowing"
+   ],
+   "taughtIn": "agricultural-practices",
+   "dependsOn": [
+    "erosion"
+   ]
+  },
+  {
+   "id": "slash-and-burn",
+   "term": "slash-and-burn",
+   "aliases": [
+    "slash-and-burn farming"
+   ],
+   "taughtIn": "agricultural-practices",
+   "dependsOn": [
+    "deforestation"
+   ]
+  },
+  {
+   "id": "furrow-irrigation",
+   "term": "furrow irrigation",
+   "aliases": [],
+   "taughtIn": "irrigation",
+   "dependsOn": []
+  },
+  {
+   "id": "flood-irrigation",
+   "term": "flood irrigation",
+   "aliases": [],
+   "taughtIn": "irrigation",
+   "dependsOn": []
+  },
+  {
+   "id": "spray-irrigation",
+   "term": "spray irrigation",
+   "aliases": [],
+   "taughtIn": "irrigation",
+   "dependsOn": []
+  },
+  {
+   "id": "drip-irrigation",
+   "term": "drip irrigation",
+   "aliases": [],
+   "taughtIn": "irrigation",
+   "dependsOn": [
+    "efficiency"
+   ]
+  },
+  {
+   "id": "waterlogging",
+   "term": "waterlogging",
+   "aliases": [
+    "waterlogged"
+   ],
+   "taughtIn": "irrigation",
+   "dependsOn": []
+  },
+  {
+   "id": "salinization",
+   "term": "salinization",
+   "aliases": [
+    "soil salinization"
+   ],
+   "taughtIn": "irrigation",
+   "dependsOn": [
+    "salinity",
+    "evaporation"
+   ]
+  },
+  {
+   "id": "aquifer-depletion",
+   "term": "aquifer depletion",
+   "aliases": [
+    "groundwater depletion",
+    "cone of depression"
+   ],
+   "taughtIn": "irrigation",
+   "dependsOn": [
+    "aquifer"
+   ]
+  },
+  {
+   "id": "pesticide",
+   "term": "pesticide",
+   "aliases": [
+    "pesticides",
+    "insecticide",
+    "insecticides",
+    "herbicide",
+    "herbicides"
+   ],
+   "taughtIn": "pest-control",
+   "dependsOn": []
+  },
+  {
+   "id": "pesticide-resistance",
+   "term": "pesticide resistance",
+   "aliases": [
+    "resistance to pesticides"
+   ],
+   "taughtIn": "pest-control",
+   "dependsOn": [
+    "pesticide",
+    "natural-selection"
+   ]
+  },
+  {
+   "id": "cafo",
+   "term": "concentrated animal feeding operation",
+   "aliases": [
+    "concentrated animal feeding operations",
+    "CAFO",
+    "CAFOs",
+    "feedlot",
+    "feedlots"
+   ],
+   "taughtIn": "meat-production",
+   "dependsOn": []
+  },
+  {
+   "id": "grazing",
+   "term": "rotational grazing",
+   "aliases": [
+    "free-range grazing",
+    "free range grazing"
+   ],
+   "taughtIn": "meat-production",
+   "dependsOn": []
+  },
+  {
+   "id": "overgrazing",
+   "term": "overgrazing",
+   "aliases": [
+    "overgrazed"
+   ],
+   "taughtIn": "meat-production",
+   "dependsOn": [
+    "carrying-capacity"
+   ]
+  },
+  {
+   "id": "desertification",
+   "term": "desertification",
+   "aliases": [],
+   "taughtIn": "meat-production",
+   "dependsOn": [
+    "overgrazing",
+    "erosion"
+   ]
+  },
+  {
+   "id": "overfishing",
+   "term": "overfishing",
+   "aliases": [
+    "overfished"
+   ],
+   "taughtIn": "overfishing",
+   "dependsOn": [
+    "tragedy-of-commons"
+   ]
+  },
+  {
+   "id": "bycatch",
+   "term": "bycatch",
+   "aliases": [],
+   "taughtIn": "overfishing",
+   "dependsOn": [
+    "overfishing"
+   ]
+  },
+  {
+   "id": "fishery-collapse",
+   "term": "fishery collapse",
+   "aliases": [
+    "fisheries collapse",
+    "collapsed fishery"
+   ],
+   "taughtIn": "overfishing",
+   "dependsOn": [
+    "overfishing"
+   ]
+  },
+  {
+   "id": "ore",
+   "term": "ore",
+   "aliases": [
+    "ores",
+    "mineral ore"
+   ],
+   "taughtIn": "mining",
+   "dependsOn": []
+  },
+  {
+   "id": "surface-mining",
+   "term": "surface mining",
+   "aliases": [
+    "strip mining",
+    "open-pit mining",
+    "mountaintop removal"
+   ],
+   "taughtIn": "mining",
+   "dependsOn": [
+    "ore"
+   ]
+  },
+  {
+   "id": "subsurface-mining",
+   "term": "subsurface mining",
+   "aliases": [],
+   "taughtIn": "mining",
+   "dependsOn": [
+    "ore"
+   ]
+  },
+  {
+   "id": "overburden",
+   "term": "overburden",
+   "aliases": [
+    "tailings",
+    "mine tailings"
+   ],
+   "taughtIn": "mining",
+   "dependsOn": [
+    "surface-mining"
+   ]
+  },
+  {
+   "id": "acid-mine-drainage",
+   "term": "acid mine drainage",
+   "aliases": [],
+   "taughtIn": "mining",
+   "dependsOn": [
+    "ph"
+   ]
+  },
+  {
+   "id": "reclamation",
+   "term": "land reclamation",
+   "aliases": [
+    "reclamation"
+   ],
+   "taughtIn": "mining",
+   "dependsOn": [
+    "surface-mining"
+   ]
+  },
+  {
+   "id": "urbanization",
+   "term": "urbanization",
+   "aliases": [],
+   "taughtIn": "urbanization",
+   "dependsOn": []
+  },
+  {
+   "id": "urban-sprawl",
+   "term": "urban sprawl",
+   "aliases": [],
+   "taughtIn": "urbanization",
+   "dependsOn": [
+    "urbanization"
+   ]
+  },
+  {
+   "id": "impervious-surface",
+   "term": "impervious surface",
+   "aliases": [
+    "impervious surfaces"
+   ],
+   "taughtIn": "urbanization",
+   "dependsOn": [
+    "runoff",
+    "infiltration"
+   ]
+  },
+  {
+   "id": "saltwater-intrusion",
+   "term": "saltwater intrusion",
+   "aliases": [],
+   "taughtIn": "urbanization",
+   "dependsOn": [
+    "aquifer"
+   ]
+  },
+  {
+   "id": "urban-heat-island",
+   "term": "urban heat island",
+   "aliases": [
+    "urban heat island effect"
+   ],
+   "taughtIn": "urbanization",
+   "dependsOn": [
+    "albedo",
+    "urbanization"
+   ]
+  },
+  {
+   "id": "ecological-footprint",
+   "term": "ecological footprint",
+   "aliases": [
+    "ecological footprints"
+   ],
+   "taughtIn": "ecological-footprints",
+   "dependsOn": [
+    "per-capita"
+   ]
+  },
+  {
+   "id": "carbon-footprint",
+   "term": "carbon footprint",
+   "aliases": [
+    "carbon footprints"
+   ],
+   "taughtIn": "ecological-footprints",
+   "dependsOn": [
+    "ecological-footprint"
+   ]
+  },
+  {
+   "id": "sustainability",
+   "term": "sustainability",
+   "aliases": [
+    "sustainable"
+   ],
+   "taughtIn": "sustainability",
+   "dependsOn": []
+  },
+  {
+   "id": "sustainable-yield",
+   "term": "maximum sustainable yield",
+   "aliases": [
+    "sustainable yield"
+   ],
+   "taughtIn": "sustainability",
+   "dependsOn": [
+    "sustainability",
+    "logistic-growth"
+   ]
+  },
+  {
+   "id": "environmental-indicator",
+   "term": "environmental indicator",
+   "aliases": [
+    "environmental indicators"
+   ],
+   "taughtIn": "sustainability",
+   "dependsOn": [
+    "sustainability"
+   ]
+  },
+  {
+   "id": "permeable-pavement",
+   "term": "permeable pavement",
+   "aliases": [
+    "pervious pavement"
+   ],
+   "taughtIn": "urban-runoff",
+   "dependsOn": [
+    "impervious-surface"
+   ]
+  },
+  {
+   "id": "rain-garden",
+   "term": "rain garden",
+   "aliases": [
+    "rain gardens"
+   ],
+   "taughtIn": "urban-runoff",
+   "dependsOn": [
+    "infiltration"
+   ]
+  },
+  {
+   "id": "green-roof",
+   "term": "green roof",
+   "aliases": [
+    "green roofs"
+   ],
+   "taughtIn": "urban-runoff",
+   "dependsOn": [
+    "runoff"
+   ]
+  },
+  {
+   "id": "ipm",
+   "term": "integrated pest management",
+   "aliases": [
+    "IPM"
+   ],
+   "taughtIn": "integrated-pest-management",
+   "dependsOn": [
+    "pesticide"
+   ]
+  },
+  {
+   "id": "biocontrol",
+   "term": "biological control",
+   "aliases": [
+    "biocontrol"
+   ],
+   "taughtIn": "integrated-pest-management",
+   "dependsOn": [
+    "ipm",
+    "predation"
+   ]
+  },
+  {
+   "id": "crop-rotation",
+   "term": "crop rotation",
+   "aliases": [],
+   "taughtIn": "sustainable-agriculture",
+   "dependsOn": [
+    "soil-fertility"
+   ]
+  },
+  {
+   "id": "contour-plowing",
+   "term": "contour plowing",
+   "aliases": [],
+   "taughtIn": "sustainable-agriculture",
+   "dependsOn": [
+    "erosion"
+   ]
+  },
+  {
+   "id": "terracing",
+   "term": "terracing",
+   "aliases": [
+    "terraces"
+   ],
+   "taughtIn": "sustainable-agriculture",
+   "dependsOn": [
+    "erosion"
+   ]
+  },
+  {
+   "id": "windbreak",
+   "term": "windbreak",
+   "aliases": [
+    "windbreaks",
+    "shelterbelt"
+   ],
+   "taughtIn": "sustainable-agriculture",
+   "dependsOn": [
+    "erosion"
+   ]
+  },
+  {
+   "id": "strip-cropping",
+   "term": "strip cropping",
+   "aliases": [],
+   "taughtIn": "sustainable-agriculture",
+   "dependsOn": [
+    "erosion"
+   ]
+  },
+  {
+   "id": "no-till",
+   "term": "no-till farming",
+   "aliases": [
+    "no-till",
+    "conservation tillage"
+   ],
+   "taughtIn": "sustainable-agriculture",
+   "dependsOn": [
+    "tilling"
+   ]
+  },
+  {
+   "id": "organic-fertilizer",
+   "term": "organic fertilizer",
+   "aliases": [
+    "organic fertilizers",
+    "manure fertilizer"
+   ],
+   "taughtIn": "sustainable-agriculture",
+   "dependsOn": [
+    "fertilizer"
+   ]
+  },
+  {
+   "id": "aquaculture",
+   "term": "aquaculture",
+   "aliases": [
+    "fish farming",
+    "fish farm",
+    "fish farms"
+   ],
+   "taughtIn": "aquaculture",
+   "dependsOn": [
+    "overfishing"
+   ]
+  },
+  {
+   "id": "sustainable-forestry",
+   "term": "sustainable forestry",
+   "aliases": [],
+   "taughtIn": "sustainable-forestry",
+   "dependsOn": [
+    "sustainability",
+    "deforestation"
+   ]
+  },
+  {
+   "id": "selective-cutting",
+   "term": "selective cutting",
+   "aliases": [
+    "selective logging"
+   ],
+   "taughtIn": "sustainable-forestry",
+   "dependsOn": [
+    "clearcutting"
+   ]
+  },
+  {
+   "id": "reforestation",
+   "term": "reforestation",
+   "aliases": [
+    "replanting"
+   ],
+   "taughtIn": "sustainable-forestry",
+   "dependsOn": [
+    "deforestation"
+   ]
+  },
+  {
+   "id": "prescribed-burn",
+   "term": "prescribed burn",
+   "aliases": [
+    "prescribed burns",
+    "controlled burn",
+    "controlled burns"
+   ],
+   "taughtIn": "sustainable-forestry",
+   "dependsOn": []
+  },
+  {
+   "id": "renewable",
+   "term": "renewable resource",
+   "aliases": [
+    "renewable resources",
+    "renewable energy",
+    "renewable"
+   ],
+   "taughtIn": "renewable-nonrenewable",
+   "dependsOn": []
+  },
+  {
+   "id": "nonrenewable",
+   "term": "nonrenewable resource",
+   "aliases": [
+    "nonrenewable resources",
+    "nonrenewable energy",
+    "nonrenewable"
+   ],
+   "taughtIn": "renewable-nonrenewable",
+   "dependsOn": []
+  },
+  {
+   "id": "depletable",
+   "term": "depletable resource",
+   "aliases": [
+    "depletable"
+   ],
+   "taughtIn": "renewable-nonrenewable",
+   "dependsOn": [
+    "renewable"
+   ]
+  },
+  {
+   "id": "energy-consumption",
+   "term": "energy consumption",
+   "aliases": [
+    "per capita energy use"
+   ],
+   "taughtIn": "global-energy-consumption",
+   "dependsOn": [
+    "development-level"
+   ]
+  },
+  {
+   "id": "coal",
+   "term": "coal",
+   "aliases": [
+    "lignite",
+    "bituminous coal",
+    "anthracite"
+   ],
+   "taughtIn": "fuel-types",
+   "dependsOn": [
+    "fossil-fuel"
+   ]
+  },
+  {
+   "id": "peat",
+   "term": "peat",
+   "aliases": [],
+   "taughtIn": "fuel-types",
+   "dependsOn": [
+    "coal"
+   ]
+  },
+  {
+   "id": "natural-gas",
+   "term": "natural gas",
+   "aliases": [],
+   "taughtIn": "fuel-types",
+   "dependsOn": [
+    "fossil-fuel",
+    "methane"
+   ]
+  },
+  {
+   "id": "petroleum",
+   "term": "petroleum",
+   "aliases": [
+    "crude oil"
+   ],
+   "taughtIn": "fuel-types",
+   "dependsOn": [
+    "fossil-fuel"
+   ]
+  },
+  {
+   "id": "cogeneration",
+   "term": "cogeneration",
+   "aliases": [
+    "combined heat and power"
+   ],
+   "taughtIn": "fuel-types",
+   "dependsOn": [
+    "efficiency"
+   ]
+  },
+  {
+   "id": "proven-reserve",
+   "term": "proven reserve",
+   "aliases": [
+    "proven reserves"
+   ],
+   "taughtIn": "energy-resources-distribution",
+   "dependsOn": [
+    "nonrenewable"
+   ]
+  },
+  {
+   "id": "power-plant",
+   "term": "power plant",
+   "aliases": [
+    "power plants",
+    "turbine",
+    "turbines",
+    "electric generator"
+   ],
+   "taughtIn": "fossil-fuels",
+   "dependsOn": [
+    "combustion"
+   ]
+  },
+  {
+   "id": "fracking",
+   "term": "hydraulic fracturing",
+   "aliases": [
+    "fracking",
+    "fracked"
+   ],
+   "taughtIn": "fossil-fuels",
+   "dependsOn": [
+    "natural-gas"
+   ]
+  },
+  {
+   "id": "tar-sands",
+   "term": "tar sands",
+   "aliases": [
+    "oil sands",
+    "bitumen"
+   ],
+   "taughtIn": "fossil-fuels",
+   "dependsOn": [
+    "petroleum"
+   ]
+  },
+  {
+   "id": "uranium",
+   "term": "uranium",
+   "aliases": [
+    "uranium-235",
+    "U-235"
+   ],
+   "taughtIn": "nuclear-power",
+   "dependsOn": []
+  },
+  {
+   "id": "nuclear-fission",
+   "term": "nuclear fission",
+   "aliases": [
+    "fission"
+   ],
+   "taughtIn": "nuclear-power",
+   "dependsOn": [
+    "uranium"
+   ]
+  },
+  {
+   "id": "radioactive-decay",
+   "term": "radioactive decay",
+   "aliases": [
+    "radioactivity",
+    "radioactive",
+    "radioisotope",
+    "radioisotopes"
+   ],
+   "taughtIn": "nuclear-power",
+   "dependsOn": []
+  },
+  {
+   "id": "half-life",
+   "term": "half-life",
+   "aliases": [
+    "half-lives"
+   ],
+   "taughtIn": "nuclear-power",
+   "dependsOn": [
+    "radioactive-decay"
+   ]
+  },
+  {
+   "id": "nuclear-waste",
+   "term": "nuclear waste",
+   "aliases": [
+    "radioactive waste",
+    "spent fuel",
+    "spent fuel rods"
+   ],
+   "taughtIn": "nuclear-power",
+   "dependsOn": [
+    "half-life"
+   ]
+  },
+  {
+   "id": "meltdown",
+   "term": "meltdown",
+   "aliases": [
+    "nuclear meltdown"
+   ],
+   "taughtIn": "nuclear-power",
+   "dependsOn": [
+    "nuclear-fission"
+   ]
+  },
+  {
+   "id": "biofuel",
+   "term": "biofuel",
+   "aliases": [
+    "biofuels",
+    "ethanol",
+    "biodiesel"
+   ],
+   "taughtIn": "biomass-energy",
+   "dependsOn": [
+    "biomass"
+   ]
+  },
+  {
+   "id": "photovoltaic",
+   "term": "photovoltaic cell",
+   "aliases": [
+    "photovoltaic cells",
+    "photovoltaic",
+    "solar panel",
+    "solar panels",
+    "PV"
+   ],
+   "taughtIn": "solar-energy",
+   "dependsOn": [
+    "insolation"
+   ]
+  },
+  {
+   "id": "passive-solar",
+   "term": "passive solar",
+   "aliases": [
+    "passive solar heating"
+   ],
+   "taughtIn": "solar-energy",
+   "dependsOn": [
+    "insolation"
+   ]
+  },
+  {
+   "id": "active-solar",
+   "term": "active solar",
+   "aliases": [
+    "active solar heating",
+    "concentrated solar"
+   ],
+   "taughtIn": "solar-energy",
+   "dependsOn": [
+    "insolation"
+   ]
+  },
+  {
+   "id": "intermittency",
+   "term": "intermittency",
+   "aliases": [
+    "intermittent"
+   ],
+   "taughtIn": "solar-energy",
+   "dependsOn": []
+  },
+  {
+   "id": "hydroelectric",
+   "term": "hydroelectric power",
+   "aliases": [
+    "hydroelectricity",
+    "hydropower",
+    "hydroelectric"
+   ],
+   "taughtIn": "hydroelectric",
+   "dependsOn": [
+    "power-plant"
+   ]
+  },
+  {
+   "id": "run-of-river",
+   "term": "run-of-the-river",
+   "aliases": [
+    "run-of-the-river hydroelectric"
+   ],
+   "taughtIn": "hydroelectric",
+   "dependsOn": [
+    "hydroelectric"
+   ]
+  },
+  {
+   "id": "tidal-energy",
+   "term": "tidal energy",
+   "aliases": [
+    "tidal power"
+   ],
+   "taughtIn": "hydroelectric",
+   "dependsOn": [
+    "hydroelectric"
+   ]
+  },
+  {
+   "id": "geothermal",
+   "term": "geothermal energy",
+   "aliases": [
+    "geothermal"
+   ],
+   "taughtIn": "geothermal",
+   "dependsOn": [
+    "radioactive-decay"
+   ]
+  },
+  {
+   "id": "heat-pump",
+   "term": "ground source heat pump",
+   "aliases": [
+    "ground source heat pumps",
+    "heat pump",
+    "heat pumps"
+   ],
+   "taughtIn": "geothermal",
+   "dependsOn": [
+    "geothermal"
+   ]
+  },
+  {
+   "id": "fuel-cell",
+   "term": "hydrogen fuel cell",
+   "aliases": [
+    "hydrogen fuel cells",
+    "fuel cell",
+    "fuel cells"
+   ],
+   "taughtIn": "hydrogen-fuel-cell",
+   "dependsOn": []
+  },
+  {
+   "id": "wind-turbine",
+   "term": "wind turbine",
+   "aliases": [
+    "wind turbines",
+    "wind farm",
+    "wind farms",
+    "wind energy"
+   ],
+   "taughtIn": "wind-energy",
+   "dependsOn": [
+    "power-plant"
+   ]
+  },
+  {
+   "id": "energy-conservation",
+   "term": "energy conservation",
+   "aliases": [
+    "conserve energy",
+    "conserving energy"
+   ],
+   "taughtIn": "energy-conservation",
+   "dependsOn": [
+    "energy-consumption"
+   ]
+  },
+  {
+   "id": "energy-efficiency",
+   "term": "energy efficiency",
+   "aliases": [
+    "energy-efficient"
+   ],
+   "taughtIn": "energy-conservation",
+   "dependsOn": [
+    "efficiency"
+   ]
+  },
+  {
+   "id": "hybrid-vehicle",
+   "term": "hybrid vehicle",
+   "aliases": [
+    "hybrid vehicles",
+    "electric vehicle",
+    "electric vehicles"
+   ],
+   "taughtIn": "energy-conservation",
+   "dependsOn": [
+    "energy-efficiency"
+   ]
+  },
+  {
+   "id": "primary-pollutant",
+   "term": "primary pollutant",
+   "aliases": [
+    "primary pollutants"
+   ],
+   "taughtIn": "air-pollution",
+   "dependsOn": []
+  },
+  {
+   "id": "secondary-pollutant",
+   "term": "secondary pollutant",
+   "aliases": [
+    "secondary pollutants"
+   ],
+   "taughtIn": "air-pollution",
+   "dependsOn": [
+    "primary-pollutant"
+   ]
+  },
+  {
+   "id": "criteria-pollutant",
+   "term": "criteria pollutant",
+   "aliases": [
+    "criteria pollutants",
+    "criteria air pollutants"
+   ],
+   "taughtIn": "air-pollution",
+   "dependsOn": [
+    "primary-pollutant"
+   ]
+  },
+  {
+   "id": "clean-air-act",
+   "term": "Clean Air Act",
+   "aliases": [],
+   "taughtIn": "air-pollution",
+   "dependsOn": [
+    "criteria-pollutant"
+   ]
+  },
+  {
+   "id": "nitrogen-oxides",
+   "term": "nitrogen oxides",
+   "aliases": [
+    "NOx",
+    "nitrogen dioxide",
+    "NO2",
+    "nitrogen oxide"
+   ],
+   "taughtIn": "air-pollution",
+   "dependsOn": [
+    "primary-pollutant"
+   ]
+  },
+  {
+   "id": "sulfur-dioxide",
+   "term": "sulfur dioxide",
+   "aliases": [
+    "SO2",
+    "sulfur oxides",
+    "SOx"
+   ],
+   "taughtIn": "air-pollution",
+   "dependsOn": [
+    "primary-pollutant"
+   ]
+  },
+  {
+   "id": "carbon-monoxide",
+   "term": "carbon monoxide",
+   "aliases": [
+    "CO"
+   ],
+   "taughtIn": "air-pollution",
+   "dependsOn": [
+    "primary-pollutant"
+   ]
+  },
+  {
+   "id": "particulate-matter",
+   "term": "particulate matter",
+   "aliases": [
+    "particulates",
+    "PM2.5",
+    "PM10"
+   ],
+   "taughtIn": "air-pollution",
+   "dependsOn": [
+    "primary-pollutant"
+   ]
+  },
+  {
+   "id": "voc",
+   "term": "volatile organic compound",
+   "aliases": [
+    "volatile organic compounds",
+    "VOC",
+    "VOCs"
+   ],
+   "taughtIn": "air-pollution",
+   "dependsOn": [
+    "primary-pollutant"
+   ]
+  },
+  {
+   "id": "photochemical-smog",
+   "term": "photochemical smog",
+   "aliases": [
+    "smog"
+   ],
+   "taughtIn": "photochemical-smog",
+   "dependsOn": [
+    "nitrogen-oxides",
+    "voc"
+   ]
+  },
+  {
+   "id": "ground-level-ozone",
+   "term": "ground-level ozone",
+   "aliases": [
+    "tropospheric ozone"
+   ],
+   "taughtIn": "photochemical-smog",
+   "dependsOn": [
+    "ozone",
+    "secondary-pollutant"
+   ]
+  },
+  {
+   "id": "thermal-inversion",
+   "term": "thermal inversion",
+   "aliases": [
+    "temperature inversion",
+    "inversion layer"
+   ],
+   "taughtIn": "thermal-inversion",
+   "dependsOn": [
+    "troposphere"
+   ]
+  },
+  {
+   "id": "natural-emissions",
+   "term": "natural emissions",
+   "aliases": [
+    "natural emission"
+   ],
+   "taughtIn": "co2-particulates",
+   "dependsOn": [
+    "particulate-matter"
+   ]
+  },
+  {
+   "id": "haze",
+   "term": "haze",
+   "aliases": [],
+   "taughtIn": "co2-particulates",
+   "dependsOn": [
+    "particulate-matter"
+   ]
+  },
+  {
+   "id": "indoor-air-pollutant",
+   "term": "indoor air pollutant",
+   "aliases": [
+    "indoor air pollutants",
+    "indoor air pollution"
+   ],
+   "taughtIn": "indoor-air",
+   "dependsOn": [
+    "primary-pollutant"
+   ]
+  },
+  {
+   "id": "radon",
+   "term": "radon",
+   "aliases": [
+    "radon-222"
+   ],
+   "taughtIn": "indoor-air",
+   "dependsOn": [
+    "radioactive-decay"
+   ]
+  },
+  {
+   "id": "asbestos",
+   "term": "asbestos",
+   "aliases": [],
+   "taughtIn": "indoor-air",
+   "dependsOn": [
+    "indoor-air-pollutant"
+   ]
+  },
+  {
+   "id": "formaldehyde",
+   "term": "formaldehyde",
+   "aliases": [],
+   "taughtIn": "indoor-air",
+   "dependsOn": [
+    "voc"
+   ]
+  },
+  {
+   "id": "sick-building",
+   "term": "sick building syndrome",
+   "aliases": [],
+   "taughtIn": "indoor-air",
+   "dependsOn": [
+    "indoor-air-pollutant"
+   ]
+  },
+  {
+   "id": "scrubber",
+   "term": "scrubber",
+   "aliases": [
+    "scrubbers",
+    "wet scrubber",
+    "wet scrubbers"
+   ],
+   "taughtIn": "reducing-air-pollutants",
+   "dependsOn": [
+    "sulfur-dioxide"
+   ]
+  },
+  {
+   "id": "catalytic-converter",
+   "term": "catalytic converter",
+   "aliases": [
+    "catalytic converters"
+   ],
+   "taughtIn": "reducing-air-pollutants",
+   "dependsOn": [
+    "nitrogen-oxides",
+    "carbon-monoxide"
+   ]
+  },
+  {
+   "id": "electrostatic-precipitator",
+   "term": "electrostatic precipitator",
+   "aliases": [
+    "electrostatic precipitators"
+   ],
+   "taughtIn": "reducing-air-pollutants",
+   "dependsOn": [
+    "particulate-matter"
+   ]
+  },
+  {
+   "id": "baghouse",
+   "term": "baghouse filter",
+   "aliases": [
+    "baghouse",
+    "baghouse filters"
+   ],
+   "taughtIn": "reducing-air-pollutants",
+   "dependsOn": [
+    "particulate-matter"
+   ]
+  },
+  {
+   "id": "vapor-recovery",
+   "term": "vapor recovery nozzle",
+   "aliases": [
+    "vapor recovery",
+    "vapor recovery nozzles"
+   ],
+   "taughtIn": "reducing-air-pollutants",
+   "dependsOn": [
+    "voc"
+   ]
+  },
+  {
+   "id": "acid-deposition",
+   "term": "acid deposition",
+   "aliases": [
+    "acid rain",
+    "acid precipitation"
+   ],
+   "taughtIn": "acid-rain",
+   "dependsOn": [
+    "nitrogen-oxides",
+    "sulfur-dioxide",
+    "ph"
+   ]
+  },
+  {
+   "id": "buffering",
+   "term": "buffering capacity",
+   "aliases": [
+    "buffer",
+    "buffers"
+   ],
+   "taughtIn": "acid-rain",
+   "dependsOn": [
+    "acid-deposition"
+   ]
+  },
+  {
+   "id": "noise-pollution",
+   "term": "noise pollution",
+   "aliases": [],
+   "taughtIn": "noise-pollution",
+   "dependsOn": []
+  },
+  {
+   "id": "decibel",
+   "term": "decibel",
+   "aliases": [
+    "decibels",
+    "dB"
+   ],
+   "taughtIn": "noise-pollution",
+   "dependsOn": [
+    "noise-pollution"
+   ]
+  },
+  {
+   "id": "point-source",
+   "term": "point source",
+   "aliases": [
+    "point sources",
+    "point source pollution"
+   ],
+   "taughtIn": "pollution-sources",
+   "dependsOn": []
+  },
+  {
+   "id": "nonpoint-source",
+   "term": "nonpoint source",
+   "aliases": [
+    "nonpoint sources",
+    "nonpoint source pollution"
+   ],
+   "taughtIn": "pollution-sources",
+   "dependsOn": [
+    "point-source",
+    "runoff"
+   ]
+  },
+  {
+   "id": "indicator-species",
+   "term": "indicator species",
+   "aliases": [],
+   "taughtIn": "human-impacts-ecosystems",
+   "dependsOn": [
+    "range-of-tolerance"
+   ]
+  },
+  {
+   "id": "coral-bleaching",
+   "term": "coral bleaching",
+   "aliases": [
+    "bleached coral"
+   ],
+   "taughtIn": "human-impacts-ecosystems",
+   "dependsOn": [
+    "coral-reef"
+   ]
+  },
+  {
+   "id": "oil-spill",
+   "term": "oil spill",
+   "aliases": [
+    "oil spills"
+   ],
+   "taughtIn": "human-impacts-ecosystems",
+   "dependsOn": []
+  },
+  {
+   "id": "microplastics",
+   "term": "microplastics",
+   "aliases": [
+    "microplastic",
+    "ocean plastics"
+   ],
+   "taughtIn": "human-impacts-ecosystems",
+   "dependsOn": []
+  },
+  {
+   "id": "endocrine-disruptor",
+   "term": "endocrine disruptor",
+   "aliases": [
+    "endocrine disruptors",
+    "hormone disruptor"
+   ],
+   "taughtIn": "endocrine-disruptors",
+   "dependsOn": []
+  },
+  {
+   "id": "storm-surge",
+   "term": "storm surge",
+   "aliases": [
+    "storm surges"
+   ],
+   "taughtIn": "wetlands-mangroves",
+   "dependsOn": [
+    "mangrove"
+   ]
+  },
+  {
+   "id": "wetland-drainage",
+   "term": "wetland drainage",
+   "aliases": [
+    "draining wetlands"
+   ],
+   "taughtIn": "wetlands-mangroves",
+   "dependsOn": [
+    "wetland"
+   ]
+  },
+  {
+   "id": "eutrophication",
+   "term": "eutrophication",
+   "aliases": [
+    "cultural eutrophication",
+    "eutrophic",
+    "oligotrophic"
+   ],
+   "taughtIn": "eutrophication",
+   "dependsOn": [
+    "limiting-nutrient",
+    "fertilizer"
+   ]
+  },
+  {
+   "id": "algal-bloom",
+   "term": "algal bloom",
+   "aliases": [
+    "algal blooms",
+    "harmful algal bloom",
+    "harmful algal blooms"
+   ],
+   "taughtIn": "eutrophication",
+   "dependsOn": [
+    "eutrophication"
+   ]
+  },
+  {
+   "id": "hypoxia",
+   "term": "hypoxia",
+   "aliases": [
+    "hypoxic",
+    "dead zone",
+    "dead zones"
+   ],
+   "taughtIn": "eutrophication",
+   "dependsOn": [
+    "algal-bloom",
+    "dissolved-oxygen",
+    "decomposer"
+   ]
+  },
+  {
+   "id": "thermal-pollution",
+   "term": "thermal pollution",
+   "aliases": [],
+   "taughtIn": "thermal-pollution",
+   "dependsOn": [
+    "dissolved-oxygen",
+    "power-plant"
+   ]
+  },
+  {
+   "id": "thermal-shock",
+   "term": "thermal shock",
+   "aliases": [],
+   "taughtIn": "thermal-pollution",
+   "dependsOn": [
+    "thermal-pollution"
+   ]
+  },
+  {
+   "id": "pop",
+   "term": "persistent organic pollutant",
+   "aliases": [
+    "persistent organic pollutants",
+    "POP",
+    "POPs"
+   ],
+   "taughtIn": "persistent-organic-pollutants",
+   "dependsOn": [
+    "half-life"
+   ]
+  },
+  {
+   "id": "ddt",
+   "term": "DDT",
+   "aliases": [
+    "PCB",
+    "PCBs"
+   ],
+   "taughtIn": "persistent-organic-pollutants",
+   "dependsOn": [
+    "pop",
+    "pesticide"
+   ]
+  },
+  {
+   "id": "bioaccumulation",
+   "term": "bioaccumulation",
+   "aliases": [
+    "bioaccumulate",
+    "bioaccumulates"
+   ],
+   "taughtIn": "bioaccumulation-biomagnification",
+   "dependsOn": [
+    "pop"
+   ]
+  },
+  {
+   "id": "biomagnification",
+   "term": "biomagnification",
+   "aliases": [
+    "biomagnify",
+    "biomagnifies"
+   ],
+   "taughtIn": "bioaccumulation-biomagnification",
+   "dependsOn": [
+    "bioaccumulation",
+    "food-chain"
+   ]
+  },
+  {
+   "id": "methylmercury",
+   "term": "methylmercury",
+   "aliases": [],
+   "taughtIn": "bioaccumulation-biomagnification",
+   "dependsOn": [
+    "biomagnification"
+   ]
+  },
+  {
+   "id": "municipal-solid-waste",
+   "term": "municipal solid waste",
+   "aliases": [
+    "MSW"
+   ],
+   "taughtIn": "solid-waste",
+   "dependsOn": []
+  },
+  {
+   "id": "sanitary-landfill",
+   "term": "sanitary landfill",
+   "aliases": [
+    "sanitary landfills",
+    "landfill",
+    "landfills"
+   ],
+   "taughtIn": "solid-waste",
+   "dependsOn": [
+    "municipal-solid-waste"
+   ]
+  },
+  {
+   "id": "leachate",
+   "term": "leachate",
+   "aliases": [],
+   "taughtIn": "solid-waste",
+   "dependsOn": [
+    "sanitary-landfill"
+   ]
+  },
+  {
+   "id": "incineration",
+   "term": "incineration",
+   "aliases": [
+    "incinerator",
+    "incinerators",
+    "waste-to-energy"
+   ],
+   "taughtIn": "solid-waste",
+   "dependsOn": [
+    "municipal-solid-waste"
+   ]
+  },
+  {
+   "id": "e-waste",
+   "term": "e-waste",
+   "aliases": [
+    "electronic waste"
+   ],
+   "taughtIn": "solid-waste",
+   "dependsOn": [
+    "municipal-solid-waste"
+   ]
+  },
+  {
+   "id": "source-reduction",
+   "term": "source reduction",
+   "aliases": [],
+   "taughtIn": "waste-reduction",
+   "dependsOn": [
+    "municipal-solid-waste"
+   ]
+  },
+  {
+   "id": "recycling",
+   "term": "recycling",
+   "aliases": [
+    "recycle",
+    "recycled"
+   ],
+   "taughtIn": "waste-reduction",
+   "dependsOn": []
+  },
+  {
+   "id": "composting",
+   "term": "composting",
+   "aliases": [
+    "compost"
+   ],
+   "taughtIn": "waste-reduction",
+   "dependsOn": [
+    "decomposition"
+   ]
+  },
+  {
+   "id": "landfill-gas",
+   "term": "landfill gas",
+   "aliases": [
+    "landfill mitigation"
+   ],
+   "taughtIn": "waste-reduction",
+   "dependsOn": [
+    "sanitary-landfill",
+    "methane"
+   ]
+  },
+  {
+   "id": "sewage-treatment",
+   "term": "sewage treatment",
+   "aliases": [
+    "wastewater treatment",
+    "sewage treatment plant"
+   ],
+   "taughtIn": "sewage-treatment",
+   "dependsOn": []
+  },
+  {
+   "id": "primary-treatment",
+   "term": "primary treatment",
+   "aliases": [],
+   "taughtIn": "sewage-treatment",
+   "dependsOn": [
+    "sewage-treatment"
+   ]
+  },
+  {
+   "id": "secondary-treatment",
+   "term": "secondary treatment",
+   "aliases": [],
+   "taughtIn": "sewage-treatment",
+   "dependsOn": [
+    "primary-treatment"
+   ]
+  },
+  {
+   "id": "tertiary-treatment",
+   "term": "tertiary treatment",
+   "aliases": [],
+   "taughtIn": "sewage-treatment",
+   "dependsOn": [
+    "secondary-treatment"
+   ]
+  },
+  {
+   "id": "sludge",
+   "term": "sludge",
+   "aliases": [],
+   "taughtIn": "sewage-treatment",
+   "dependsOn": [
+    "primary-treatment"
+   ]
+  },
+  {
+   "id": "septic-system",
+   "term": "septic system",
+   "aliases": [
+    "septic systems",
+    "septic tank",
+    "septic tanks"
+   ],
+   "taughtIn": "sewage-treatment",
+   "dependsOn": [
+    "sewage-treatment"
+   ]
+  },
+  {
+   "id": "dose",
+   "term": "dose",
+   "aliases": [
+    "doses",
+    "dosage"
+   ],
+   "taughtIn": "lethal-dose-50",
+   "dependsOn": []
+  },
+  {
+   "id": "toxicity",
+   "term": "toxicity",
+   "aliases": [
+    "toxicant",
+    "toxicants",
+    "toxic substance"
+   ],
+   "taughtIn": "lethal-dose-50",
+   "dependsOn": [
+    "dose"
+   ]
+  },
+  {
+   "id": "ld50",
+   "term": "LD50",
+   "aliases": [
+    "lethal dose 50%",
+    "median lethal dose"
+   ],
+   "taughtIn": "lethal-dose-50",
+   "dependsOn": [
+    "toxicity"
+   ],
+   "notation": [
+    "\\\\text\\{LD\\}_\\{?50"
+   ]
+  },
+  {
+   "id": "dose-response-curve",
+   "term": "dose-response curve",
+   "aliases": [
+    "dose-response curves",
+    "dose response curve"
+   ],
+   "taughtIn": "dose-response-curve",
+   "dependsOn": [
+    "ld50"
+   ]
+  },
+  {
+   "id": "threshold-dose",
+   "term": "threshold dose",
+   "aliases": [],
+   "taughtIn": "dose-response-curve",
+   "dependsOn": [
+    "dose-response-curve"
+   ]
+  },
+  {
+   "id": "ed50",
+   "term": "ED50",
+   "aliases": [
+    "effective dose 50%"
+   ],
+   "taughtIn": "dose-response-curve",
+   "dependsOn": [
+    "dose-response-curve"
+   ]
+  },
+  {
+   "id": "synergism",
+   "term": "synergism",
+   "aliases": [
+    "synergistic",
+    "synergistic effect"
+   ],
+   "taughtIn": "pollution-human-health",
+   "dependsOn": [
+    "toxicity"
+   ]
+  },
+  {
+   "id": "acute-chronic",
+   "term": "acute exposure",
+   "aliases": [
+    "chronic exposure",
+    "acute effect",
+    "chronic effect"
+   ],
+   "taughtIn": "pollution-human-health",
+   "dependsOn": [
+    "dose"
+   ]
+  },
+  {
+   "id": "pathogen",
+   "term": "pathogen",
+   "aliases": [
+    "pathogens"
+   ],
+   "taughtIn": "pathogens",
+   "dependsOn": []
+  },
+  {
+   "id": "infectious-disease",
+   "term": "infectious disease",
+   "aliases": [
+    "infectious diseases"
+   ],
+   "taughtIn": "pathogens",
+   "dependsOn": [
+    "pathogen"
+   ]
+  },
+  {
+   "id": "disease-vector",
+   "term": "disease vector",
+   "aliases": [
+    "disease vectors",
+    "vector-borne",
+    "vector-borne disease"
+   ],
+   "taughtIn": "pathogens",
+   "dependsOn": [
+    "pathogen"
+   ]
+  },
+  {
+   "id": "named-diseases",
+   "term": "malaria",
+   "aliases": [
+    "tuberculosis",
+    "cholera",
+    "plague",
+    "West Nile virus",
+    "Zika virus",
+    "SARS",
+    "MERS"
+   ],
+   "taughtIn": "pathogens",
+   "dependsOn": [
+    "infectious-disease"
+   ]
+  },
+  {
+   "id": "cfc",
+   "term": "chlorofluorocarbon",
+   "aliases": [
+    "chlorofluorocarbons",
+    "CFC",
+    "CFCs"
+   ],
+   "taughtIn": "ozone-depletion",
+   "dependsOn": [
+    "ozone-layer"
+   ]
+  },
+  {
+   "id": "ozone-depletion",
+   "term": "ozone depletion",
+   "aliases": [
+    "ozone hole",
+    "ozone-depleting"
+   ],
+   "taughtIn": "ozone-depletion",
+   "dependsOn": [
+    "cfc",
+    "uv-radiation"
+   ]
+  },
+  {
+   "id": "montreal-protocol",
+   "term": "Montreal Protocol",
+   "aliases": [],
+   "taughtIn": "reducing-ozone-depletion",
+   "dependsOn": [
+    "cfc"
+   ]
+  },
+  {
+   "id": "hcfc",
+   "term": "hydrochlorofluorocarbon",
+   "aliases": [
+    "hydrochlorofluorocarbons",
+    "HCFC",
+    "HCFCs",
+    "HFC",
+    "HFCs",
+    "hydrofluorocarbons"
+   ],
+   "taughtIn": "reducing-ozone-depletion",
+   "dependsOn": [
+    "cfc"
+   ]
+  },
+  {
+   "id": "infrared",
+   "term": "infrared radiation",
+   "aliases": [
+    "infrared",
+    "IR"
+   ],
+   "taughtIn": "greenhouse-effect",
+   "dependsOn": []
+  },
+  {
+   "id": "greenhouse-gas",
+   "term": "greenhouse gas",
+   "aliases": [
+    "greenhouse gases",
+    "GHG",
+    "GHGs"
+   ],
+   "taughtIn": "greenhouse-effect",
+   "dependsOn": [
+    "infrared",
+    "carbon-dioxide",
+    "methane"
+   ]
+  },
+  {
+   "id": "greenhouse-effect",
+   "term": "greenhouse effect",
+   "aliases": [],
+   "taughtIn": "greenhouse-effect",
+   "dependsOn": [
+    "greenhouse-gas"
+   ]
+  },
+  {
+   "id": "gwp",
+   "term": "global warming potential",
+   "aliases": [
+    "GWP"
+   ],
+   "taughtIn": "greenhouse-effect",
+   "dependsOn": [
+    "greenhouse-gas"
+   ]
+  },
+  {
+   "id": "nitrous-oxide",
+   "term": "nitrous oxide",
+   "aliases": [
+    "N2O"
+   ],
+   "taughtIn": "greenhouse-gas-increases",
+   "dependsOn": [
+    "greenhouse-gas"
+   ]
+  },
+  {
+   "id": "keeling-curve",
+   "term": "Keeling curve",
+   "aliases": [],
+   "taughtIn": "greenhouse-gas-increases",
+   "dependsOn": [
+    "carbon-dioxide"
+   ]
+  },
+  {
+   "id": "ice-core",
+   "term": "ice core",
+   "aliases": [
+    "ice cores"
+   ],
+   "taughtIn": "greenhouse-gas-increases",
+   "dependsOn": [
+    "greenhouse-gas"
+   ]
+  },
+  {
+   "id": "climate-change",
+   "term": "climate change",
+   "aliases": [
+    "global climate change",
+    "global warming"
+   ],
+   "taughtIn": "climate-change",
+   "dependsOn": [
+    "greenhouse-effect"
+   ]
+  },
+  {
+   "id": "sea-level-rise",
+   "term": "sea level rise",
+   "aliases": [
+    "rising sea levels",
+    "sea-level rise"
+   ],
+   "taughtIn": "climate-change",
+   "dependsOn": [
+    "climate-change"
+   ]
+  },
+  {
+   "id": "positive-feedback",
+   "term": "positive feedback loop",
+   "aliases": [
+    "positive feedback loops",
+    "positive feedback"
+   ],
+   "taughtIn": "climate-change",
+   "dependsOn": [
+    "climate-change"
+   ]
+  },
+  {
+   "id": "land-ice",
+   "term": "land ice",
+   "aliases": [
+    "ice sheet",
+    "ice sheets",
+    "glacier",
+    "glaciers",
+    "sea ice"
+   ],
+   "taughtIn": "climate-change",
+   "dependsOn": [
+    "sea-level-rise"
+   ]
+  },
+  {
+   "id": "thermal-expansion",
+   "term": "thermal expansion",
+   "aliases": [],
+   "taughtIn": "ocean-warming",
+   "dependsOn": [
+    "sea-level-rise"
+   ]
+  },
+  {
+   "id": "thermohaline",
+   "term": "thermohaline circulation",
+   "aliases": [
+    "ocean conveyor belt"
+   ],
+   "taughtIn": "ocean-warming",
+   "dependsOn": [
+    "ocean-current",
+    "salinity"
+   ]
+  },
+  {
+   "id": "ocean-acidification",
+   "term": "ocean acidification",
+   "aliases": [],
+   "taughtIn": "ocean-acidification",
+   "dependsOn": [
+    "ph",
+    "carbon-dioxide"
+   ]
+  },
+  {
+   "id": "carbonic-acid",
+   "term": "carbonic acid",
+   "aliases": [
+    "carbonate",
+    "carbonate ions",
+    "calcium carbonate"
+   ],
+   "taughtIn": "ocean-acidification",
+   "dependsOn": [
+    "ocean-acidification"
+   ]
+  },
+  {
+   "id": "invasive-species",
+   "term": "invasive species",
+   "aliases": [
+    "nonnative species",
+    "non-native species",
+    "exotic species"
+   ],
+   "taughtIn": "invasive-species",
+   "dependsOn": [
+    "generalist",
+    "r-selected"
+   ]
+  },
+  {
+   "id": "endangered-species",
+   "term": "endangered species",
+   "aliases": [
+    "threatened species"
+   ],
+   "taughtIn": "endangered-species",
+   "dependsOn": [
+    "specialist",
+    "k-selected"
+   ]
+  },
+  {
+   "id": "esa",
+   "term": "Endangered Species Act",
+   "aliases": [
+    "CITES"
+   ],
+   "taughtIn": "endangered-species",
+   "dependsOn": [
+    "endangered-species"
+   ]
+  },
+  {
+   "id": "habitat-loss",
+   "term": "habitat loss",
+   "aliases": [
+    "habitat destruction"
+   ],
+   "taughtIn": "human-impacts-biodiversity",
+   "dependsOn": [
+    "habitat-fragmentation"
+   ]
+  },
+  {
+   "id": "hippco",
+   "term": "HIPPCO",
+   "aliases": [],
+   "taughtIn": "human-impacts-biodiversity",
+   "dependsOn": [
+    "habitat-loss",
+    "invasive-species"
+   ]
+  },
+  {
+   "id": "wildlife-corridor",
+   "term": "wildlife corridor",
+   "aliases": [
+    "wildlife corridors",
+    "habitat corridor",
+    "habitat corridors"
+   ],
+   "taughtIn": "human-impacts-biodiversity",
+   "dependsOn": [
+    "habitat-fragmentation"
+   ]
+  },
+  {
+   "id": "mass-extinction",
+   "term": "mass extinction",
+   "aliases": [
+    "mass extinctions",
+    "sixth mass extinction"
+   ],
+   "taughtIn": "human-impacts-biodiversity",
+   "dependsOn": [
+    "biodiversity"
+   ]
+  },
+  {
+   "id": "scientific-notation",
+   "term": "scientific notation",
+   "aliases": [],
+   "taughtIn": "math-sci-notation",
+   "dependsOn": [],
+   "notation": [
+    "\\\\times\\s*10\\^"
+   ]
+  },
+  {
+   "id": "metric-prefix",
+   "term": "metric prefix",
+   "aliases": [
+    "metric prefixes"
+   ],
+   "taughtIn": "math-sci-notation",
+   "dependsOn": [
+    "scientific-notation"
+   ]
+  },
+  {
+   "id": "unit-rate",
+   "term": "unit rate",
+   "aliases": [
+    "unit rates"
+   ],
+   "taughtIn": "math-rates",
+   "dependsOn": []
+  },
+  {
+   "id": "rate",
+   "term": "rate",
+   "aliases": [
+    "rates"
+   ],
+   "taughtIn": "math-rates",
+   "dependsOn": []
+  },
+  {
+   "id": "per-capita",
+   "term": "per capita",
+   "aliases": [
+    "per-capita",
+    "per person"
+   ],
+   "taughtIn": "math-rates",
+   "dependsOn": [
+    "unit-rate"
+   ]
+  },
+  {
+   "id": "dimensional-analysis",
+   "term": "dimensional analysis",
+   "aliases": [
+    "unit conversion",
+    "unit conversions",
+    "factor-label method"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "unit-rate"
+   ]
+  },
+  {
+   "id": "conversion-factor",
+   "term": "conversion factor",
+   "aliases": [
+    "conversion factors"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "dimensional-analysis"
+   ]
+  },
+  {
+   "id": "energy-units",
+   "term": "kilowatt-hour",
+   "aliases": [
+    "kilowatt-hours",
+    "kWh",
+    "BTU",
+    "BTUs",
+    "joule",
+    "joules",
+    "kilocalorie",
+    "kilocalories",
+    "kcal"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "conversion-factor"
+   ]
+  },
+  {
+   "id": "power-units",
+   "term": "watt",
+   "aliases": [
+    "watts",
+    "kilowatt",
+    "kilowatts",
+    "megawatt",
+    "megawatts"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "energy-units"
+   ]
+  },
+  {
+   "id": "percent",
+   "term": "percent",
+   "aliases": [
+    "percents",
+    "percentage",
+    "percentages"
+   ],
+   "taughtIn": "math-percents",
+   "dependsOn": []
+  },
+  {
+   "id": "percent-change",
+   "term": "percent change",
+   "aliases": [
+    "percentage change",
+    "percent increase",
+    "percent decrease"
+   ],
+   "taughtIn": "math-percents",
+   "dependsOn": [
+    "percent"
+   ]
+  },
+  {
+   "id": "growth-rate",
+   "term": "growth rate",
+   "aliases": [
+    "growth rates",
+    "annual growth rate",
+    "percent growth rate"
+   ],
+   "taughtIn": "math-doubling",
+   "dependsOn": [
+    "percent"
+   ]
+  },
+  {
+   "id": "rule-of-70",
+   "term": "rule of 70",
+   "aliases": [],
+   "taughtIn": "math-doubling",
+   "dependsOn": [
+    "growth-rate"
+   ]
+  },
+  {
+   "id": "doubling-time",
+   "term": "doubling time",
+   "aliases": [
+    "doubling times"
+   ],
+   "taughtIn": "math-doubling",
+   "dependsOn": [
+    "rule-of-70"
+   ]
+  }
+ ],
+ "circularDependencies": []
+}

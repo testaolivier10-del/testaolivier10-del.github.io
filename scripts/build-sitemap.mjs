@@ -47,7 +47,7 @@ function walk(dir, out = []) {
     const full = join(dir, name);
     // anatomy-physiology/data holds the A&P sources (notes are HTML
     // fragments); build-anp.mjs turns them into the pages listed here.
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data')) && !full.endsWith(join('physics', 'data')) && !full.endsWith(join('calculus', 'data')) && !full.endsWith(join('statistics', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data')) && !full.endsWith(join('physics', 'data')) && !full.endsWith(join('calculus', 'data')) && !full.endsWith(join('statistics', 'data')) && !full.endsWith(join('environmental-science', 'data'))) walk(full, out); }
     else if (name.endsWith('.html') && !SKIP_FILES.test(name)) out.push(full);
   }
   return out;
@@ -69,10 +69,10 @@ function priorityFor(path) {
   if (path === '/') return '1.0';
   if (COURSE_HOME.test(path)) return '0.9';
   if (COURSE_NAMED.test(path)) return '0.8';
-  if (/^\/(ochem\/notes|nremt\/notes|anatomy-physiology\/(notes|chapters)|bio\/(notes|units)|chem\/(notes|units)|physics\/(notes|units)|calculus\/(notes|units)|statistics\/(notes|units))\//.test(path)) return '0.7';
+  if (/^\/(ochem\/notes|nremt\/notes|anatomy-physiology\/(notes|chapters)|bio\/(notes|units)|chem\/(notes|units)|physics\/(notes|units)|calculus\/(notes|units)|statistics\/(notes|units)|environmental-science\/(notes|units))\//.test(path)) return '0.7';
   if (/^\/nremt\/[^/]+\.html$/.test(path)) return '0.7';
-  if (/^\/(ochem\/(lessons|mechanisms)|anatomy-physiology\/(lessons|concepts)|bio\/(lessons|unit-sheets|frq)|chem\/(lessons|unit-sheets|frq)|physics\/(lessons|unit-sheets|frq)|calculus\/(lessons|unit-sheets|frq)|statistics\/(lessons|unit-sheets|frq))\//.test(path)) return '0.6';
-  if (/^\/(ochem|anatomy-physiology|bio|chem|physics|calculus|statistics)\/tools\//.test(path)) return '0.5';
+  if (/^\/(ochem\/(lessons|mechanisms)|anatomy-physiology\/(lessons|concepts)|bio\/(lessons|unit-sheets|frq)|chem\/(lessons|unit-sheets|frq)|physics\/(lessons|unit-sheets|frq)|calculus\/(lessons|unit-sheets|frq)|statistics\/(lessons|unit-sheets|frq)|environmental-science\/(lessons|unit-sheets|frq))\//.test(path)) return '0.6';
+  if (/^\/(ochem|anatomy-physiology|bio|chem|physics|calculus|statistics|environmental-science)\/tools\//.test(path)) return '0.5';
   if (/^\/(privacy|terms|changelog|sources)\.html$|credits\.html$/.test(path)) return '0.3';
   return '0.5';
 }

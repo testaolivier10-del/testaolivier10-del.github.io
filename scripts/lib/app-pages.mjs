@@ -34,6 +34,9 @@ export const APP_STATE_PAGES = [
   'statistics/dashboard.html',
   'statistics/review.html',
   'statistics/search.html',
+  'environmental-science/dashboard.html',
+  'environmental-science/review.html',
+  'environmental-science/search.html',
 ];
 
 export const NOINDEX = '<meta name="robots" content="noindex, follow">';

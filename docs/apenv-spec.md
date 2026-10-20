@@ -113,7 +113,7 @@ One branch, `claude/apenv`, one PR at the end. Phases as AP® Statistics.
 | Phase | What | Parallel split | Status |
 |---|---|---|---|
 | R | Research: `docs/apenv-research/framework.md`, `market.md`; this spec | one session | **done 2026-10-20** |
-| 0 | Fork AP® Statistics: CED map (99 topics + math chapter), dependency map, generator `scripts/build-apenv.mjs`, runtime `environmental-science/assets/` (`env-*`), `ApEnvCalc` (calculation recipes) and unit-aware numeric + setup grading, `ApEnvPlot` (line, bar, scatter, pyramid, dual-axis data figures), checks, tests, fixture, registration hidden (registry, Premium pass, Worker, SQL migration, hub/pricing, search, sitemap, OG, budgets, theme, sw.js), tool scaffolding, architecture and authoring guide, briefs, needs-author | one session (shared files) | |
+| 0 | Fork AP® Statistics: CED map (99 topics + math chapter), dependency map, generator `scripts/build-apenv.mjs`, runtime `environmental-science/assets/` (`env-*`), `ApEnvCalc` (calculation recipes) and unit-aware numeric + setup grading, `ApEnvPlot` (line, bar, scatter, pyramid, dual-axis data figures), checks, tests, fixture, registration hidden (registry, Premium pass, Worker, SQL migration, hub/pricing, search, sitemap, OG, budgets, theme, sw.js), tool scaffolding, architecture and authoring guide, briefs, needs-author | one session (shared files) | **done 2026-10-20** (decision 10) |
 | 1 | Content: lessons, notes, banks (incl. stimulus sets), FRQs, glossary, figures | 7 authors at once (section 5a) | |
 | 2 | Trainers (section 6) | 4 builders at once, each owning whole slugs | |
 | 3 | "Make it specific" trainer, two fixed practice exams, formulas page, unit tests, cram kit | one session | |
@@ -234,6 +234,20 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
    scientific calculator opens in a new tab.
 9. (2026-10-20) **Free tier (proposed):** Units 1-2 and the "Math you need" lessons free (23 of 104 topics, 22%,
    within the 16-33% the other AP® courses give). Notes free forever. Owner to confirm.
+10. (2026-10-20) **Phase 0 done, as built** (`docs/apenv-phase0.md`, `docs/apenv-architecture.md`). Accent: light
+    `--cink #474A10` on `--ctint #EFF0DA` (8.0:1; 9.3:1 on white, 8.6:1 as button text on the page), dark
+    `--cink #DCDB98` (11.2:1 on the card) on `rgba(200,200,100,0.10)` (9.1:1); soft `#D3D27F`; header short name
+    "Env Science". Choices the spec left open or that differ from it: (a) a `calc` FRQ's "check my number" may
+    also be a setup check (`check.type: "setup"`), so the setup point is drillable on FRQs too; (b) stimulus
+    `kind` is the exam's set kind (`quantitative`, `visual`, `text`), so one field drives the label, the bank
+    index and the form checker; (c) practice weights are not enforced in exam forms until a person confirms them
+    (`practicesConfirmed`, needs-author `practice-weights`); (d) four topic slugs avoid the letters "ap" as a
+    token (`island-biogeo`, `evolving-populations`, `carrying-limits`, `population-transition`); (e) the
+    written-answer trainer is the simulator id `justify` in the map, as AP® Statistics; (f) `EXAM_NUMBERS` and
+    `JUSTIFY_NUMBERS` are empty until Phase 3 writes the exams and prompts; (g) `ApEnvCalc.evaluate` rounds to 12
+    significant digits so float noise never reaches a key; (h) the site shell budget went from 291 to 292 KB
+    (registration measured 291.4 KB) and "generalist" was added to the spelling checker's American words. SQL
+    migration `2026-10j-apenv.sql` written, not applied.
 
 ## 9. Open items for the owner
 

@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v83';
+const CACHE_NAME = 'levlprep-v84';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -270,6 +270,27 @@ COURSE_URLS.statistics = [
   'statistics/assets/stat-questions.js',
   'statistics/assets/stat-nav.js',
   'statistics/assets/glossary.json',
+];
+COURSE_URLS['environmental-science'] = [
+  // The AP® Environmental Science shell (key apenv, folder
+  // environmental-science), as Statistics with the calculation recipes in
+  // place of the distributions library.
+  'environmental-science/index.html',
+  'environmental-science/learn.html',
+  'environmental-science/search.html',
+  'environmental-science/tools.html',
+  'environmental-science/dashboard.html',
+  'environmental-science/manifest.json',
+  'environmental-science/assets/env.css',
+  'environmental-science/assets/env-curriculum.js',
+  'environmental-science/assets/env-core.js',
+  'environmental-science/assets/env-expr.js',
+  'environmental-science/assets/env-math.js',
+  'environmental-science/assets/env-calc.js',
+  'environmental-science/assets/env-grade.js',
+  'environmental-science/assets/env-questions.js',
+  'environmental-science/assets/env-nav.js',
+  'environmental-science/assets/glossary.json',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude

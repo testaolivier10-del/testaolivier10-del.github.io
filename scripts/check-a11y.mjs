@@ -125,6 +125,15 @@ const PAGES = [
   ['/statistics/frq.html', 'the AP® Statistics free-response list'],
   ['/statistics/formula-sheet.html', 'the AP® Statistics reference sheet page'],
   ...bioPages('statistics', 'AP® Statistics'),
+  // AP® Environmental Science, the same way, hidden until a unit is published.
+  ['/environmental-science/', 'the AP® Environmental Science course home'],
+  ['/environmental-science/glossary.html', 'the AP® Environmental Science glossary'],
+  ['/environmental-science/practice.html', 'the AP® Environmental Science practice builder'],
+  ['/environmental-science/exams.html', 'the AP® Environmental Science exams app'],
+  ['/environmental-science/frq.html', 'the AP® Environmental Science free-response list'],
+  ['/environmental-science/formula-sheet.html', 'the AP® Environmental Science formulas page'],
+  ['/environmental-science/justify.html', 'the AP® Environmental Science "Make it specific" page'],
+  ...bioPages('environmental-science', 'AP® Environmental Science'),
 ];
 
 /* The first published AP® Biology topic's lesson and notes page, the first

@@ -68,7 +68,7 @@ test('flags go into the progress backup and are registered for account sync', ()
   const snap = b.window.LevlBackup.snapshot();
   assert.ok('apphys_flagged_v1' in snap.data, 'the backup file carries the flags');
   for (const [file, course] of [['bio/assets/bio-core.js', 'apbio'], ['chem/assets/chem-core.js', 'apchem'],
-    ['physics/assets/phys-core.js', 'apphys'], ['calculus/assets/calc-core.js', 'apcalc'], ['statistics/assets/stat-core.js', 'apstat'], ['anatomy-physiology/assets/anp-core.js', 'anp']]) {
+    ['physics/assets/phys-core.js', 'apphys'], ['calculus/assets/calc-core.js', 'apcalc'], ['statistics/assets/stat-core.js', 'apstat'], ['environmental-science/assets/env-core.js', 'apenv'], ['anatomy-physiology/assets/anp-core.js', 'anp']]) {
     const src = readFileSync(file, 'utf8');
     assert.match(src, new RegExp(`registerNamespace\\([^)]*'${course}_flagged_v1'`), `${file} syncs ${course}_flagged_v1`);
   }

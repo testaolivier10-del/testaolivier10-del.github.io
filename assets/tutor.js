@@ -43,6 +43,7 @@
     { key: 'apphys', dir: 'physics' },
     { key: 'apcalc', dir: 'calculus' },
     { key: 'apstat', dir: 'statistics' },
+    { key: 'apenv', dir: 'environmental-science' },
   ];
   // courses:end
   function courseKey(){
@@ -145,6 +146,14 @@
       .catch(function(){ return []; });
   }
 
+  // AP® Environmental Science's, the same way (scripts/build-apenv.mjs).
+  function envPages(){
+    return fetch('/environmental-science/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(list){ return list.length ? list.concat([{ file: '/environmental-science/glossary.html', title: 'Glossary', data: '/environmental-science/assets/glossary.json' }]) : list; })
+      .catch(function(){ return []; });
+  }
+
   function resolvePages(){
     var k = courseKey();
     if(k === 'ochem') return ochemPages();
@@ -154,6 +163,7 @@
     if(k === 'apphys') return physPages();
     if(k === 'apcalc') return calcPages();
     if(k === 'apstat') return statPages();
+    if(k === 'apenv') return envPages();
     return Promise.resolve(NREMT_PAGES);
   }
 
@@ -167,6 +177,7 @@
     if(k === 'apphys') return '<a href="/physics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apcalc') return '<a href="/calculus/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apstat') return '<a href="/statistics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    if(k === 'apenv') return '<a href="/environmental-science/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
@@ -1087,6 +1098,12 @@
       'How do I write a conclusion for a significance test?',
       'When do I use a t procedure instead of a z procedure?',
       'What is the difference between a Type I and a Type II error?'
+    ],
+    apenv: [
+      'How do I set up a percent change calculation?',
+      'What is the difference between the greenhouse effect and ozone depletion?',
+      'How do I write a testable hypothesis?',
+      'What is the difference between bioaccumulation and biomagnification?'
     ]
   };
 
@@ -1098,7 +1115,8 @@
     apchem: 'Ask me anything from this course — every published Chemistry notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.',
     apphys: 'Ask me anything from this course — every published Physics notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.',
     apcalc: 'Ask me anything from this course — every published Calculus notes page and the glossary are indexed. I can define a term, explain a derivative or an integral step by step, or point you at the page it came from.',
-    apstat: 'Ask me anything from this course: every published Statistics notes page and the glossary are indexed. I can define a term, explain a calculation or a conclusion step by step, or point you at the page it came from.'
+    apstat: 'Ask me anything from this course: every published Statistics notes page and the glossary are indexed. I can define a term, explain a calculation or a conclusion step by step, or point you at the page it came from.',
+    apenv: 'Ask me anything from this course: every published Environmental Science notes page and the glossary are indexed. I can define a term, explain a calculation or a cause-and-effect chain step by step, or point you at the page it came from.'
   };
 
   function Tutor(mount, opts){

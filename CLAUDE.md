@@ -46,6 +46,15 @@ launch checklist); read it before AP® Statistics work and update it in the same
 writing rules and conclusion templates: `docs/apstat-authoring-guide.md`; map and the CED check: `docs/apstat-phase0.md`;
 open points: `docs/apstat-needs-author.md`; briefs: `docs/apstat-briefs/`. Registered `hidden` until launch.
 
+## AP® Environmental Science course
+
+`docs/apenv-spec.md` is the source of truth (owner brief, research summary, trainers, grading, build plan,
+decisions, launch checklist); read it before AP® Environmental Science work and update it in the same commit.
+Research: `docs/apenv-research/`. Formats, `ApEnvCalc` recipes and unit-aware grading: `docs/apenv-architecture.md`;
+writing rules (setups with brackets and units, specific answers, content traps): `docs/apenv-authoring-guide.md`;
+map and the CED check: `docs/apenv-phase0.md`; open points: `docs/apenv-needs-author.md`; briefs (authors A-G,
+builders T1-T4): `docs/apenv-briefs/`. Registered `hidden` until launch.
+
 ## Ochem readability and diagram pass
 
 `docs/ochem-readability-audit.md` lists every notes and lesson page's findings, worst first, and

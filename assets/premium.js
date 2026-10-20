@@ -270,6 +270,37 @@
         'The full dashboard: mastery by unit, topic and skill',
       ],
     },
+    apenv: {
+      name: 'AP® Environmental Science',
+      // Not on sale until its product exists and a unit is published
+      // (docs/apenv-spec.md decision 3): nothing locked, no checkout.
+      onSale: false,
+      dailyFree: 15,
+      // The free tier (docs/apenv-spec.md decision 9, proposed): Units 1 and 2
+      // and every "Math you need" lesson. Keep in step with FREE_UNITS in
+      // scripts/lib/apenv-build.mjs.
+      freeChapters: ['unit-1', 'unit-2'],
+      passes: [
+        { id: 'env-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The formulas you must memorize, explained, and the cram-kit study plan outline',
+        'Every lesson in Units 1 and 2, and every "Math you need" lesson',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'Three trainers: the calculation studio, energy flow and the nutrient cycles',
+        'Your progress, XP, streak and weak topics',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every trainer: population growth, age structure, soil, climate, energy, pollution, dose-response and climate change',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
+        'The full dashboard: mastery by unit, topic and science practice',
+      ],
+    },
   };
 
   // Which course a page belongs to, for returnCourse().
@@ -283,6 +314,7 @@
     { key: 'apphys', path: '/physics/' },
     { key: 'apcalc', path: '/calculus/' },
     { key: 'apstat', path: '/statistics/' },
+    { key: 'apenv', path: '/environmental-science/' },
   ];
   // courses:end
 

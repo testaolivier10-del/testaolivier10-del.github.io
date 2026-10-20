@@ -1,0 +1,119 @@
+/* AP® Environmental Science course home, loaded by environmental-science/index.html only. A fork of
+   anatomy-physiology/assets/anp-home.css (spec decisions 1 and 27): the same
+   layout, components and shared theme.css pieces (level ring, XP track, qopt,
+   trust pills), with the class prefix env- and the course tint. env-home.js
+   fills the level card, the three "now" cards and the path from the runtime;
+   the markup stands without it. */
+.env-home-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,5vw,52px);align-items:center;}
+.env-home-hero h1{max-width:18ch;}
+.env-home-hero .env-review-note{margin:0 0 20px;}
+.env-level-card,.env-now-card,.env-qcard{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift-lg);}
+.env-level-card{border-radius:22px;padding:26px 26px 22px;}
+.env-level-top{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.env-level-chip{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+.env-level-chip .t b{display:block;font-weight:900;font-size:16px;}
+.env-level-chip .t span{font-size:12.5px;color:var(--muted);font-weight:700;}
+.env-level-card .level-ring{border-color:var(--cink);color:var(--cink);background:var(--ctint);}
+.env-part-bars{margin-top:14px;}
+.env-part-bars .mini-domain-row span:first-child{min-width:92px;}
+.env-now-row{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:18px;}
+.env-now-card{padding:22px 24px;}
+.env-now-card.due{box-shadow:var(--lift-lg),inset 0 0 0 2px var(--amber);}
+.env-now-card .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.env-now-card h2{margin:0 0 6px;font-size:19px;}
+.env-now-card p{margin:0 0 16px;font-size:13.5px;font-weight:700;color:var(--muted);}
+.env-now-card .xp-track{height:10px;margin:0 0 14px;}
+
+/* The path: a real ordered list of unit links, placed as a snake (left to
+   right, then right to left) by the --r/--c pairs the generator writes for 5,
+   4 and 3 columns, so it needs no script to lay out. One column on a phone.
+   env-home.js only draws the line through the rings. */
+.env-path-legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0 26px;}
+.env-path-legend span{display:inline-flex;align-items:center;gap:8px;font:800 12.5px var(--font-ui);color:var(--muted);background:var(--white);padding:6px 12px;border-radius:999px;box-shadow:var(--lift-sm);}
+.env-path-legend i{width:10px;height:10px;border-radius:50%;background:var(--c);}
+.env-path{position:relative;max-width:1000px;margin:0 auto;container-type:inline-size;}
+.env-path .path-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;}
+.env-path .path-track,.env-path .path-fill{fill:none;stroke:var(--line);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;}
+.env-path .path-fill{stroke:var(--cink);}
+.env-path-list{list-style:none;margin:0;padding:14px 0 6px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:40px 10px;}
+.env-path .node{position:relative;z-index:1;grid-row:var(--r5);grid-column:var(--c5);display:flex;justify-content:center;}
+.env-path .node > *{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;text-decoration:none;color:inherit;border-radius:12px;}
+.env-path .ring{position:relative;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;background:conic-gradient(var(--cink) calc(var(--p,0) * 1%),var(--line) 0);transition:transform .18s ease;}
+.env-path .ring::before{content:"";position:absolute;inset:-8px;border-radius:50%;background:var(--pc);opacity:.18;z-index:-1;}
+.env-path .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--white);box-shadow:var(--lift-sm);font:900 15px var(--font-mono);color:var(--muted);}
+.env-path a:hover .ring,.env-path a:focus-visible .ring{transform:translateY(-3px);}
+.env-path .label{display:flex;flex-direction:column;gap:2px;max-width:170px;padding:2px 6px;border-radius:8px;background:var(--paper);}
+.env-path .label b{font-size:13.5px;font-weight:900;line-height:1.25;text-wrap:balance;}
+.env-path .label small{font:700 12px var(--font-ui);color:var(--muted);}
+.env-path .part{align-self:center;margin-bottom:4px;font:900 10px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--pcd);padding:2px 8px;border-radius:999px;}
+.env-path .current .ring{width:68px;height:68px;box-shadow:0 0 0 6px var(--ctint);}
+.env-path .current .ring::before{inset:-14px;background:var(--ctint);opacity:.9;}
+.env-path .current .n{width:54px;height:54px;color:var(--cink);font-size:17px;}
+.env-path .current .label b,.env-path .current .label small{color:var(--cink);}
+@container (max-width:899px){.env-path-list{grid-template-columns:repeat(4,minmax(0,1fr));} .env-path .node{grid-row:var(--r4);grid-column:var(--c4);}}
+@container (max-width:759px){.env-path-list{grid-template-columns:repeat(3,minmax(0,1fr));} .env-path .node{grid-row:var(--r3);grid-column:var(--c3);}}
+@container (max-width:479px){
+  .env-path-list{grid-template-columns:1fr;gap:18px;}
+  .env-path .node{grid-row:auto;grid-column:1;justify-content:flex-start;}
+  .env-path .node > *{flex-direction:row;text-align:left;gap:16px;}
+  .env-path .ring,.env-path .current .ring{width:60px;height:60px;}
+  .env-path .current .n{width:48px;height:48px;}
+  .env-path .label{max-width:none;}
+  .env-path .part{align-self:flex-start;}
+}
+@media (prefers-reduced-motion:reduce){.env-path .ring{transition:none;}}
+
+/* Dark tools panel, sample question, about, trust. */
+.env-feature{background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;color:#fff;}
+.env-feature h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
+.env-feature p{color:var(--muted-on-dark);font-size:15px;font-weight:600;margin:0 0 20px;max-width:42ch;}
+:root[data-theme="dark"] .env-feature p{color:#D0DED9;} /* 5.3:1 on the dark theme navy; --muted-on-dark was 3.7:1 */
+.env-feature .icon-circle{width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;margin:0 auto;}
+.env-feature .icon-circle svg{width:170px;height:170px;}
+.env-tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+.env-tool-chips a{font:800 12px var(--font-ui);color:#fff;text-decoration:none;background:rgba(255,255,255,.14);border-radius:var(--radius-pill);padding:6px 12px;}
+.env-tool-chips a:hover{background:rgba(255,255,255,.26);color:#fff;}
+.env-sample-row,.env-home-about{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,48px);align-items:center;}
+.env-sample-row h2{margin-top:0;}
+.env-sample-row .section-lede{margin:0 0 24px;text-align:left;}
+.env-sample-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.env-sample-list li{display:flex;align-items:center;gap:12px;font-weight:800;font-size:14.5px;padding:12px 16px;background:var(--white);border:var(--bw) solid var(--line);border-radius:14px;}
+.env-sample-list .n{width:26px;height:26px;border-radius:8px;background:var(--ctint);color:var(--cink);display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);flex-shrink:0;}
+.env-qcard{padding:26px;}
+.env-qcard .qtext{font-weight:800;font-size:16px;margin:14px 0 18px;line-height:1.5;}
+.env-qcard .qopt{font-size:14.5px;padding:13px 16px;box-shadow:var(--lift-sm);}
+.env-qcard .why{margin:4px 0 0;padding:12px 14px;border-radius:12px;background:var(--ctint);font:600 13.5px/1.55 var(--font-ui);}
+.env-qcard .why:empty{display:none;}
+.env-qcard .why b{color:var(--cink);}
+.env-sample-key summary{cursor:pointer;font-weight:800;color:var(--cink);}
+.env-sample-key p{font:600 13.5px/1.55 var(--font-ui);}
+.js .env-sample-key{display:none;}
+.env-sample-more{margin:14px 0 0;}
+.env-home-about{align-items:start;}
+.env-home-about h2{font-size:22px;margin:0 0 12px;}
+.env-home-about p{font-weight:600;line-height:1.7;}
+.env-how li{align-items:flex-start;font-weight:600;line-height:1.5;}
+.env-home-legal{max-width:none;text-align:center;margin:18px auto 0;}
+@media (max-width:1000px){.env-now-row{grid-template-columns:1fr;}}
+@media (max-width:900px){
+  .env-home-hero,.env-feature,.env-sample-row,.env-home-about{grid-template-columns:1fr;}
+  .env-feature{text-align:center;}
+  .env-feature p{margin-left:auto;margin-right:auto;}
+  .env-tool-chips{justify-content:center;}
+}
+@media (max-width:560px){.env-feature .icon-circle,.env-feature .icon-circle svg{width:120px;height:120px;}}
+
+/* Practice and study (polish 2026-10-17, C2): fixed columns so no card sits
+   alone on the last row. 4 across: with 4n+1 cards the first spans two. 2
+   across: with an odd count the first spans two. 1 across on phones. */
+.env-go{grid-template-columns:repeat(4,minmax(0,1fr));}
+.env-go > li:first-child:nth-last-child(4n+1){grid-column:span 2;}
+@media (max-width:1000px){
+  .env-go{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .env-go > li:first-child:nth-last-child(4n+1){grid-column:auto;}
+  .env-go > li:first-child:nth-last-child(odd){grid-column:span 2;}
+}
+@media (max-width:560px){
+  .env-go{grid-template-columns:minmax(0,1fr);}
+  .env-go > li:first-child:nth-last-child(odd){grid-column:auto;}
+}
