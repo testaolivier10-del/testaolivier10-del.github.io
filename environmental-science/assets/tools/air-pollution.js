@@ -116,21 +116,24 @@
   /* the day's curves */
   function curves(x0, y0, w, h, day, hr, o){
     o = o || {};
-    var out = [], L = x0 + 36, R = x0 + w - 8, Tp = y0 + 22, B = y0 + h - 22, ymax = o.ymax || Math.max(80, niceMax(Math.max(day.peaks.NO.value, day.peaks.NO2.value, day.peaks.O3.value) * 1.1));
+    // kept clear of the stage's rounded corners: every axis label inside
+    var out = [], L = x0 + 44, R = x0 + w - 26, Tp = y0 + 24, B = y0 + h - 30, ymax = o.ymax || Math.max(80, niceMax(Math.max(day.peaks.NO.value, day.peaks.NO2.value, day.peaks.O3.value) * 1.1));
     function X(t){ return L + t / 24 * (R - L); }
     function Y(v){ return B - v / ymax * (B - Tp); }
     // night shading
     out.push('<rect class="ap-nightbg" x="' + n2(L) + '" y="' + n2(Tp) + '" width="' + n2(X(6) - L) + '" height="' + n2(B - Tp) + '"/><rect class="ap-nightbg" x="' + n2(X(19)) + '" y="' + n2(Tp) + '" width="' + n2(R - X(19)) + '" height="' + n2(B - Tp) + '"/>');
     var step = ymax <= 100 ? 20 : ymax <= 200 ? 50 : 100;
     for(var v = 0; v <= ymax + 0.1; v += step){ out.push(line(L, Y(v), R, Y(v), 'ap-grid')); out.push(txt(L - 4, Y(v) + 4, String(v), 'ap-t ap-tk', 'end')); }
-    [0, 6, 12, 18].forEach(function(t){ out.push(txt(X(t), B + 15, t === 0 ? 'midnight' : t === 12 ? 'noon' : (t > 12 ? t - 12 + ' p.m.' : t + ' a.m.'), 'ap-t ap-tk', t ? 'middle' : 'start')); });
+    [0, 6, 12, 18, 24].forEach(function(t){ out.push(txt(X(t), B + 15, t === 0 || t === 24 ? '12 a.m.' : t === 12 ? 'noon' : (t > 12 ? t - 12 + ' p.m.' : t + ' a.m.'), 'ap-t ap-tk', t === 0 ? 'start' : t === 24 ? 'end' : 'middle')); });
     out.push(txt(L, y0 + 12, 'ppb', 'ap-t ap-tk'));
+    var legendN = 0;
     (o.species || SP).forEach(function(s, i){
       if(s.k === 'VOC' && !o.voc) return;
       var pts = []; for(var j = 0; j < day.hours.length; j += 2) pts.push(n2(X(day.hours[j])) + ',' + n2(Y(Math.min(ymax, day[s.k][j] * (s.k === 'VOC' ? 0.5 : 1)))));
       out.push('<polyline class="ap-curve ' + s.cls + (o.mono ? ' ap-mono' + i : '') + '" points="' + pts.join(' ') + '"/>');
-      var p = day.peaks[s.k];
-      out.push('<g class="ap-peaklab ' + s.cls + '">' + txt(X(p.hour) + (s.k === 'NO' ? -10 : 6), Y(Math.min(ymax, p.value * (s.k === 'VOC' ? 0.5 : 1))) - 8, o.labels ? o.labels[s.k] : s.label, 'ap-t ap-b ap-cl', s.k === 'NO' ? 'end' : 'start') + '</g>');
+      // a legend row above the plot, so no label sits on a curve or the clock line
+      var lx = R - (3 - legendN) * (w < 520 ? 70 : 84) - (o.voc ? (w < 520 ? 70 : 84) : 0); legendN++;
+      out.push('<g class="ap-peaklab ' + s.cls + '">' + line(lx - 22, y0 + 8, lx - 6, y0 + 8, 'ap-curve ' + s.cls + (o.mono ? ' ap-mono' + i : '')) + txt(lx - 2, y0 + 12, o.labels ? o.labels[s.k] : s.label, 'ap-t ap-b ap-cl') + '</g>');
     });
     out.push(line(L, B, R, B, 'ap-axisl'));
     if(hr != null){
