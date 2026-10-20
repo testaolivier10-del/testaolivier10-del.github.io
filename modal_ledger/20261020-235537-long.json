@@ -1,0 +1,16 @@
+{
+ "run": "20261020-235537-long",
+ "task": "long",
+ "started": 1792540538.3975196,
+ "reservation": {
+  "usd": 0.54,
+  "status": "active",
+  "month": "2026-10",
+  "asked": 0.54,
+  "free_when_granted": 12.5
+ },
+ "spent_in_run": 0.0,
+ "open": {},
+ "calls": [],
+ "touched": 1792540538.3975856
+}
