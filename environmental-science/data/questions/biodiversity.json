@@ -61,8 +61,8 @@
   "biodiversity-s2": {
    "kind": "text",
    "title": "A seal population that came back",
-   "passage": "By the 1890s, hunting for their oil had cut northern elephant seals down to one small colony, perhaps a few dozen animals, on an island off the coast of Mexico. Once hunting stopped, the colony grew, and today well over 100,000 of these seals breed along the coasts of Mexico and California. Researchers compared DNA from living seals with DNA from museum skins collected before the hunting began. The living seals carry far less genetic variety than their ancestors did. A comeback in numbers, the researchers argue, can hide a loss that lasts: a population descended from so few survivors may cope poorly with a new disease or a change in its ocean.",
-   "source": "Invented passage for practice, summarizing published studies of northern elephant seals."
+   "passage": "By the 1890s, hunting for their oil had cut northern elephant seals down to one small colony, perhaps a few dozen animals, on an island off the coast of Mexico. Once hunting stopped, the colony grew, and today more than 200,000 of these seals breed along the coasts of Mexico and California. Researchers compared DNA from living seals with DNA from museum skins collected before the hunting began. The living seals carry far less genetic variety than their ancestors did. A comeback in numbers, the researchers argue, can hide a loss that lasts: a population descended from so few survivors may cope poorly with a new disease or a change in its ocean.",
+   "source": "Invented passage for practice, summarizing published studies of northern elephant seals (DNA from museum specimens; population counts near 225,000 in 2010)."
   }
  },
  "items": [
@@ -200,7 +200,7 @@
    "options": [
     "Hunting for seal oil is still the main threat to northern elephant seals",
     "Museum skins are a better source of DNA than living animals",
-    "Once a population passes 100,000 animals it has regained as much genetic variety as it ever had",
+    "Once a population passes 200,000 animals it has regained as much genetic variety as it ever had",
     "Numbers can recover while genetic diversity stays low, leaving the seals vulnerable"
    ],
    "correct": 3,
