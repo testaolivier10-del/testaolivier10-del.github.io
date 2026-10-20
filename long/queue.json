@@ -116,6 +116,25 @@
       "playlist_added": false,
       "captions_set": false,
       "pr_url": ""
+    },
+    {
+      "id": "yt-nremt-35-bleeding",
+      "course": "nremt",
+      "topic_pages": "",
+      "title": "",
+      "description_file": "",
+      "video": "",
+      "thumb": "",
+      "captions": "",
+      "playlist": "",
+      "date": "",
+      "status": "building",
+      "approved_on": "",
+      "youtube_id": "",
+      "thumbnail_set": false,
+      "playlist_added": false,
+      "captions_set": false,
+      "pr_url": ""
     }
   ]
 }
