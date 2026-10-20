@@ -1,0 +1,384 @@
+{
+ "id": "frq-energy-conservation-calc",
+ "type": "calc",
+ "points": 10,
+ "title": "A family cuts its energy use: refrigerator and furnace",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "energy-conservation",
+  "fossil-fuels",
+  "fuel-types"
+ ],
+ "practices": [
+  "6.A",
+  "6.B",
+  "6.C",
+  "7.E",
+  "7.F"
+ ],
+ "stimulus": {
+  "kind": "quantitative",
+  "title": "A household's energy upgrades",
+  "invented": true,
+  "table": {
+   "caption": "Energy data for one household (invented data for practice; the carbon dioxide factors are near published values)",
+   "cols": [
+    "Item",
+    "Value"
+   ],
+   "rows": [
+    [
+     "Old refrigerator",
+     "1,100 kWh per year"
+    ],
+    [
+     "New refrigerator",
+     "400 kWh per year"
+    ],
+    [
+     "Electricity price",
+     "\\$0.15 per kWh"
+    ],
+    [
+     "Carbon dioxide from the local grid",
+     "0.4 kg per kWh"
+    ],
+    [
+     "Natural gas burned by the old furnace",
+     "900 therms per year"
+    ],
+    [
+     "Old furnace efficiency",
+     "80%"
+    ],
+    [
+     "New furnace efficiency",
+     "95%"
+    ],
+    [
+     "Natural gas price",
+     "\\$1.40 per therm"
+    ],
+    [
+     "Energy in 1 therm of natural gas",
+     "100,000 BTU"
+    ],
+    [
+     "Carbon dioxide from burning natural gas",
+     "5.3 kg per therm"
+    ]
+   ]
+  },
+  "text": "A family in a cold-winter state is deciding how to cut its energy use. Show every setup with numbers and units. Efficiency = useful energy out ÷ energy in × 100."
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the percent decrease in yearly electricity use when the family replaces the old refrigerator with the new one. Show your setup.",
+   "rubric": [
+    {
+     "point": "A correct setup with the difference in brackets divided by the old value: (1,100 - 400) / 1,100 × 100.",
+     "accept": [
+      "(400 - 1,100) / 1,100 × 100 with the answer stated as a decrease",
+      "equivalent setup with units shown"
+     ]
+    },
+    {
+     "point": "Correct answer with units: about 63.6% (accept 63% to 64%).",
+     "accept": [
+      "63.6% decrease",
+      "a 64% decrease"
+     ]
+    }
+   ],
+   "sample": "Percent change = (new - old) / old × 100 = (400 kWh - 1,100 kWh) / 1,100 kWh × 100 = -63.6%. Electricity use for the refrigerator decreases by about 63.6%.",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "(1100 - 400) / 1100 * 100",
+     "mustUse": [
+      "1100",
+      "400"
+     ],
+     "mistakes": [
+      {
+       "expr": "(1100 - 400) / 400 * 100",
+       "why": "Divide by the old value (1,100 kWh), the starting point, not the new one."
+      },
+      {
+       "expr": "(1100 - 400) / 1100",
+       "why": "Multiply by 100 to turn the fraction into a percent."
+      }
+     ],
+     "then": {
+      "unit": "%",
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          1100,
+          400
+         ]
+        },
+        1100
+       ]
+      },
+      "tol": 0.3,
+      "mistakes": [
+       {
+        "value": 175,
+        "why": "You divided by the new value (400). Percent change divides by the old value, 1,100."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the mass of carbon dioxide, in kg, the new refrigerator avoids each year. Show your setup with units that cancel.",
+   "rubric": [
+    {
+     "point": "A correct setup with units: (1,100 kWh - 400 kWh) × 0.4 kg / 1 kWh.",
+     "accept": [
+      "700 kWh × 0.4 kg/kWh"
+     ]
+    },
+    {
+     "point": "Correct answer with units: 280 kg of carbon dioxide per year.",
+     "accept": [
+      "280 kg CO2",
+      "0.28 metric tons"
+     ]
+    }
+   ],
+   "sample": "Electricity saved = 1,100 kWh - 400 kWh = 700 kWh per year. Carbon dioxide avoided = 700 kWh × (0.4 kg / 1 kWh) = 280 kg of carbon dioxide per year.",
+   "check": {
+    "type": "numeric",
+    "numeric": {
+     "from": {
+      "fn": "emissions",
+      "args": [
+       {
+        "fn": "sub",
+        "args": [
+         1100,
+         400
+        ]
+       },
+       0.4
+      ]
+     },
+     "unit": "kg",
+     "units": [
+      "kg CO2",
+      "kg of CO2"
+     ],
+     "mistakes": [
+      {
+       "from": {
+        "fn": "emissions",
+        "args": [
+         1100,
+         0.4
+        ]
+       },
+       "why": "That is the old refrigerator's total. Use the electricity saved: 1,100 - 400 = 700 kWh."
+      },
+      {
+       "from": {
+        "fn": "div",
+        "args": [
+         700,
+         0.4
+        ]
+       },
+       "why": "You divided. Multiply kWh by kg per kWh so kWh cancels."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "The old furnace burns 900 therms a year at 80% efficiency. <b>Calculate</b> how many therms the new 95% efficient furnace would burn to deliver the same heat to the house. Show your setup.",
+   "rubric": [
+    {
+     "point": "A correct setup: heat delivered = 900 therms × 0.80, then therms needed = (900 × 0.80) / 0.95.",
+     "accept": [
+      "using BTU: 900 × 100,000 BTU × 0.80 = 72,000,000 BTU, ÷ 0.95, ÷ 100,000 BTU per therm"
+     ]
+    },
+    {
+     "point": "Correct answer with units: about 758 therms per year (accept 757 to 758.5).",
+     "accept": [
+      "757.9 therms"
+     ]
+    }
+   ],
+   "sample": "Heat delivered by the old furnace = 900 therms × 0.80 = 720 therms of useful heat. The new furnace needs 720 therms ÷ 0.95 = about 758 therms of natural gas per year to deliver the same heat.",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "900 therm * 0.80 / 0.95",
+     "unit": "therm",
+     "mustUse": [
+      "900",
+      "0.80",
+      "0.95"
+     ],
+     "mistakes": [
+      {
+       "expr": "900 therm * 0.95",
+       "why": "That is what the new furnace would deliver from 900 therms. First find the heat the house needs (900 × 0.80), then divide by 0.95."
+      },
+      {
+       "expr": "900 therm * 0.95 / 0.80",
+       "why": "The efficiencies are swapped. Heat needed = 900 × 0.80; gas for the new furnace = that ÷ 0.95."
+      }
+     ],
+     "then": {
+      "unit": "therm",
+      "units": [
+       "therms"
+      ],
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          900,
+          0.8
+         ]
+        },
+        0.95
+       ]
+      },
+      "tol": 0.6,
+      "mistakes": [
+       {
+        "value": 855,
+        "why": "That is 900 × 0.95, the heat the new furnace makes from the old amount of gas. Divide the needed heat by 0.95 instead."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "d",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the money the family saves each year on natural gas with the new furnace. Use your answer from part (c). Show your setup.",
+   "rubric": [
+    {
+     "point": "Correct setup and answer with units: (900 - 758) therms × \\$1.40/therm ≈ \\$199 per year (accept \\$198 to \\$200, or a value consistent with part (c)).",
+     "accept": [
+      "142 therms × \\$1.40 per therm"
+     ]
+    }
+   ],
+   "sample": "Therms saved = 900 - 758 = 142 therms. Money saved = 142 therms × (\\$1.40 / 1 therm) ≈ \\$199 per year.",
+   "check": {
+    "type": "numeric",
+    "numeric": {
+     "from": {
+      "fn": "cost",
+      "args": [
+       {
+        "fn": "sub",
+        "args": [
+         900,
+         {
+          "fn": "div",
+          "args": [
+           {
+            "fn": "mul",
+            "args": [
+             900,
+             0.8
+            ]
+           },
+           0.95
+          ]
+         }
+        ]
+       },
+       1.4
+      ]
+     },
+     "unit": "$",
+     "tol": 1.5,
+     "mistakes": [
+      {
+       "from": {
+        "fn": "cost",
+        "args": [
+         {
+          "fn": "div",
+          "args": [
+           {
+            "fn": "mul",
+            "args": [
+             900,
+             0.8
+            ]
+           },
+           0.95
+          ]
+         },
+         1.4
+        ]
+       },
+       "why": "That is the cost of running the new furnace. Savings use the therms saved: 900 minus the new furnace's therms."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "label": "e",
+   "points": 1,
+   "prompt": "<b>Explain</b> why burning natural gas in the new furnace still contributes to climate change, even though it is more efficient.",
+   "rubric": [
+    {
+     "point": "Explains that burning natural gas (methane) still releases carbon dioxide, a gas that traps heat, so emissions fall but are not zero.",
+     "accept": [
+      "combustion of methane produces carbon dioxide",
+      "natural gas is a fossil fuel; efficiency lowers but does not end carbon dioxide release"
+     ]
+    }
+   ],
+   "sample": "Natural gas is mostly methane, a fossil fuel, and burning it combines its carbon with oxygen to make carbon dioxide, which traps heat in the atmosphere. The new furnace burns less gas for the same heat, so emissions fall by about 750 kg a year, but every therm it burns still releases about 5.3 kg of carbon dioxide."
+  },
+  {
+   "label": "f",
+   "points": 2,
+   "prompt": "<b>Propose</b> one change, other than replacing the furnace or the refrigerator, that would further reduce the family's home heating energy, and <b>justify</b> how it works.",
+   "rubric": [
+    {
+     "point": "Proposes a specific, realistic change other than a new furnace or refrigerator: adding attic insulation, sealing drafts and weather stripping, installing efficient windows, a programmable thermostat set lower at night, or a ground source heat pump.",
+     "accept": [
+      "lowering the thermostat setting in winter",
+      "planting a windbreak on the north side"
+     ]
+    },
+    {
+     "point": "Justifies how it works: less heat escapes (or less heating is needed when no one is home), so less gas is burned for the same comfort.",
+     "accept": [
+      "insulation slows heat flow through the attic so the furnace runs less",
+      "a heat pump moves heat from the ground instead of burning gas"
+     ]
+    }
+   ],
+   "sample": "The family should add insulation to the attic and seal drafts around windows and doors. Insulation slows the flow of heat out of the house, so the furnace runs fewer hours to keep the same temperature and burns less natural gas."
+  }
+ ]
+}

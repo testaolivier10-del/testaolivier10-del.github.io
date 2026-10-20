@@ -174,8 +174,10 @@
       say(head + ' Chain: ' + chainText(st) + '.');
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>', 'explore');
+        // Never an ellipsis on a unit: short symbols (t for metric ton), and while units are
+        // still to cancel the left pill counts them (the stage lists them in full).
         var short = function(t){ return t.replace(/metric ton/g, 't'); };
-        LS.pills([{ k: 'Left', html: esc(short(st.leftText)), tone: st.done ? 'good' : 'warn' }], 'left', 'explore');
+        LS.pills([st.done ? { k: 'Left', html: esc(short(st.leftText)), tone: 'good' } : { k: 'To cancel', html: String(extra.length), tone: 'warn' }], 'left', 'explore');
         LS.pills([{ k: 'Goal', html: esc(short(st.targetText)), tone: 'readout' }], 'right', 'explore');
       }
     }
@@ -237,9 +239,26 @@
       types: S.TYPES, typeLabel: 'Calculation type',
       title: function(p){ var t = S.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice calculation'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); },
+      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); doneLine(host, s, right, api); },
       newLabel: 'New calculation'
     });
+  }
+
+  /* After the last step: say plainly that every answer is now right, and how
+     many were right the first time (what is recorded), so a miss on a first
+     try never reads as a wrong final answer. Runs after the shared drill's own
+     summary (env-tools.js studioDrill done), which it replaces. */
+  function doneLine(host, s, right, api){
+    api.firsts = (api.firsts || 0) + (right ? 1 : 0);
+    var steps = api.problem.steps, n = steps.length;
+    if(s !== steps[n - 1]) return;
+    var r = api.firsts, st = T.studioOf(host);
+    api.firsts = 0;
+    setTimeout(function(){
+      var msg = r === n ? '<b>All ' + n + ' steps right the first time.</b> The worked solution is under Why.'
+        : '<b>Done: every answer is now in.</b> First tries: ' + r + ' of ' + n + ' right (the misses go to your review queue). The worked solution is under Why.';
+      if(st){ st.caption(msg, 'quiz'); st.pills([{ html: r + ' of ' + n + ' first try', tone: r === n ? 'good' : 'warn' }], 'left', 'quiz'); }
+    }, 0);
   }
 
   /* -------------------------------------------------- drill figures */
@@ -263,7 +282,7 @@
     var W = b.W, H = b.H, L = 40, R = W - 40, base = H - 46, top = 58, mx = Math.max(g.bars[0].value, g.bars[1].value) * 1.12;
     var bw = Math.min(110, (R - L) / 4), xs = [L + (R - L) * 0.28, L + (R - L) * 0.72], y = function(v){ return base - (base - top) * v / mx; };
     var o = [svgOpen(W, H, 'Bar chart: ' + g.bars.map(function(x){ return x.label + ' ' + (x.hide ? 'unknown' : nf(x.value) + ' ' + g.unit); }).join(', '))];
-    o.push(tx(L - 8, 26, g.unit, 'cs-axl', 'start'));
+    o.push(tx(L - 8, 26, g.title || g.unit, 'cs-cap', 'start'));
     o.push('<line class="cs-base" x1="' + L + '" x2="' + R + '" y1="' + base + '" y2="' + base + '"/>');
     if(g.bars[1].hide){
       // the part inside the whole

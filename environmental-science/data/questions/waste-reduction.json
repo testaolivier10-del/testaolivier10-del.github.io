@@ -1,0 +1,482 @@
+{
+ "stimuli": {
+  "waste-reduction-s1": {
+   "kind": "quantitative",
+   "title": "A city's trash before and after a pay-as-you-throw program",
+   "invented": true,
+   "table": {
+    "caption": "Average household waste per week, in kilograms, one year before and one year after the city began charging by the bag (invented data for practice)",
+    "cols": [
+     "Stream",
+     "Before (kg/week)",
+     "After (kg/week)"
+    ],
+    "rows": [
+     [
+      "Trash to the landfill",
+      "18.0",
+      "11.7"
+     ],
+     [
+      "Recycling",
+      "4.0",
+      "6.5"
+     ],
+     [
+      "Compost (food and yard)",
+      "1.0",
+      "3.8"
+     ],
+     [
+      "Total",
+      "23.0",
+      "22.0"
+     ]
+    ]
+   }
+  },
+  "waste-reduction-s2": {
+   "kind": "text",
+   "title": "A passage on a plastic bag fee",
+   "source": "Invented passage for practice.",
+   "passage": "In 2020 a coastal city began charging shoppers 10 cents for each single-use plastic or paper bag at checkout. The mayor's office says the fee will cut litter on beaches and in storm drains and push shoppers to bring their own bags. A grocers' group opposes it, saying the fee is a hidden tax on low-income families and that reusable bags must be used many times before they are better for the environment than a thin plastic bag. One year later, the city reports that bags handed out at checkout fell by 70%, while sales of reusable bags rose. The grocers' group points out that sales of small plastic trash-can liners also rose."
+  }
+ },
+ "items": [
+  {
+   "id": "env-waste-reduction-1",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in household trash sent to the landfill after the program began.",
+   "stimulus": "waste-reduction-s1",
+   "why": {
+    "correct": "$\\frac{(11.7 - 18.0)}{18.0} \\times 100 = -35\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      18,
+      11.7
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -53.8461538462,
+      "why": "You divided by the after value. Divide by the before value, 18.0 kg."
+     },
+     {
+      "value": 35,
+      "why": "Landfill trash fell, so the change is negative: -35%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-2",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Total household waste barely changed (23.0 to 22.0 kg). What does the program mainly do, based on the data?",
+   "stimulus": "waste-reduction-s1",
+   "options": [
+    "It makes households produce far less waste overall",
+    "It shifts waste from the trash into recycling and compost",
+    "It moves waste from recycling into the trash",
+    "It has no effect on where waste goes"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Households moved material from the trash into recycling and compost, which are cheaper or free, so landfill trash fell much more than total waste.",
+    "options": [
+     "Total waste fell by only 1 kg a week.",
+     "Right: recycling and compost rose as trash fell.",
+     "Recycling rose; it did not move into the trash.",
+     "Landfill trash fell 35%."
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-3",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "After the program, what percent of each household's total waste is diverted from the landfill by recycling and compost?",
+   "stimulus": "waste-reduction-s1",
+   "why": {
+    "correct": "Diverted: $6.5 + 3.8 = 10.3$ kg of 22.0 kg. $\\frac{10.3}{22.0} \\times 100 = 46.8\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        6.5,
+        3.8
+       ]
+      },
+      22
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 29.5454545455,
+      "why": "That counts recycling alone. Add compost (3.8 kg) before dividing."
+     },
+     {
+      "value": 53.1818181818,
+      "why": "That is the landfill share (11.7 of 22.0). Diverted means recycling plus compost."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-4",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Is pay-as-you-throw a policy or a technology?",
+   "stimulus": "waste-reduction-s1",
+   "options": [
+    "A policy: a city rule that charges by the bag",
+    "A technology: a machine that sorts recycling",
+    "A technology: special trash bags that break down",
+    "Neither: it is a natural change in habits"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Charging households by the bag of trash is a rule set by the city, so it is a policy. It works through a price incentive, not a device.",
+    "options": [
+     "Right: it changes behavior with a price.",
+     "The program is a fee rule, not a machine.",
+     "The bags are not the point; the fee is.",
+     "The change followed the new fee rule."
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-5",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the grocers' group's main claim?",
+   "stimulus": "waste-reduction-s2",
+   "options": [
+    "The fee will cut litter on beaches",
+    "Bags handed out fell by 70%",
+    "Plastic bags should be banned outright",
+    "The fee burdens low-income families and its benefit is overstated"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The grocers argue that the fee is unfair to low-income families and may not help the environment as much as claimed.",
+    "options": [
+     "That is the mayor's claim.",
+     "That is the city's report, not the grocers' claim.",
+     "The grocers oppose the fee; they do not call for a ban.",
+     "Right: fairness and doubtful benefit."
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-6",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How does the rise in sales of plastic trash-can liners relate to the grocers' argument?",
+   "stimulus": "waste-reduction-s2",
+   "options": [
+    "It proves the fee eliminated plastic use",
+    "It shows reusable bags break down faster",
+    "It suggests part of the plastic saved was replaced by liners",
+    "It shows beaches have more litter than before"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "People had reused checkout bags as trash liners; buying liners instead offsets part of the drop in plastic, which supports the grocers' doubt about the size of the benefit.",
+    "options": [
+     "Liner sales rose, so plastic use did not vanish.",
+     "Liner sales say nothing about reusable bags breaking down.",
+     "Right: it weakens how much plastic was really saved.",
+     "The passage gives no litter data."
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-7",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What assumption does the mayor's office make in predicting less beach litter?",
+   "stimulus": "waste-reduction-s2",
+   "options": [
+    "Paper bags make up most beach litter",
+    "Checkout bags are a large part of beach litter",
+    "Reusable bags are never thrown away",
+    "Shoppers will stop buying groceries"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The prediction assumes that checkout bags are a meaningful share of beach and storm drain litter, so fewer bags handed out means less litter.",
+    "options": [
+     "The mayor does not single out paper bags.",
+     "Right: the claim depends on bags being a real share of litter.",
+     "The mayor makes no claim about reusable bags lasting forever.",
+     "Nothing in the passage suggests that."
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-8",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "order",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Order the waste hierarchy from most preferred to least preferred.",
+   "options": [
+    "Reduce (make and use less)",
+    "Reuse (use things again)",
+    "Recycle and compost",
+    "Recover energy (waste-to-energy)",
+    "Dispose (landfill)"
+   ],
+   "why": {
+    "correct": "Reducing avoids waste altogether; reusing keeps items in use; recycling and composting make new materials; energy recovery and landfilling are last."
+   }
+  },
+  {
+   "id": "env-waste-reduction-9",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which action is an example of source reduction?",
+   "options": [
+    "Designing products with less packaging",
+    "Recycling aluminum cans into new cans",
+    "Burning trash to make electricity",
+    "Collecting methane from a landfill"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Source reduction means making less waste in the first place, such as designing products with less packaging or buying in bulk.",
+    "options": [
+     "Right: less material is used, so less becomes waste.",
+     "Recycling handles waste after it is made.",
+     "That is energy recovery from waste.",
+     "That handles gas from waste already buried."
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-10",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does recycling aluminum save so much energy compared with making new aluminum?",
+   "options": [
+    "Recycled aluminum is lighter, so it is cheaper to ship",
+    "Recycling turns aluminum into a fuel",
+    "Recycled cans need no sorting or cleaning",
+    "It skips mining ore and the energy-hungry step of freeing the metal"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Making new aluminum means mining bauxite ore and using huge amounts of electricity to separate the metal. Remelting used cans skips those steps and uses about 95% less energy.",
+    "options": [
+     "Recycled and new aluminum weigh the same.",
+     "Aluminum is remelted into new metal, not burned.",
+     "Cans still need collecting and sorting.",
+     "Right: remelting cans takes about 5% of the energy."
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-11",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is a drawback of recycling?",
+   "options": [
+    "It increases the need for mining new ore",
+    "It adds methane to landfills",
+    "Collection and sorting cost money, and some plastics have weak markets",
+    "It makes products impossible to reuse"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Collecting, sorting and processing recyclables costs money and energy, and markets for some materials, especially mixed plastics, are weak, so some collected material is still landfilled.",
+    "options": [
+     "Recycling reduces the need for new ore.",
+     "Recycling keeps material out of landfills.",
+     "Right: recycling is not free, and not all of it gets reused.",
+     "Recycling does not prevent reuse."
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-12",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does composting food scraps reduce methane from landfills?",
+   "options": [
+    "Compost absorbs the methane the landfill makes",
+    "Food breaks down with oxygen instead of without it, so less methane forms",
+    "Composting turns food into plastic",
+    "Composting burns food at high temperature"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In a compost pile, microbes break food down with oxygen, making CO2, water and humus. In a landfill, food breaks down without oxygen and makes methane.",
+    "options": [
+     "Composting keeps food out of the landfill; it does not absorb landfill gas.",
+     "Right: aerobic decomposition makes CO2, not methane.",
+     "Composting makes humus-rich soil, not plastic.",
+     "Composting is decay, not burning."
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-13",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Assume that recycling one aluminum can saves about 0.2 kWh of energy compared with making a new can from ore. A school recycles 12,000 cans a year. Write the setup for the kWh saved, then the answer.",
+   "why": {
+    "correct": "$12{,}000\\,\\text{cans} \\times \\frac{0.2\\,\\text{kWh}}{1\\,\\text{can}} = 2{,}400\\,\\text{kWh}$ a year."
+   },
+   "setup": {
+    "answer": "12000 * 0.2",
+    "mustUse": [
+     "12000",
+     "0.2"
+    ],
+    "mistakes": [
+     {
+      "expr": "12000 / 0.2",
+      "why": "Multiply the number of cans by the kWh per can so cans cancel."
+     }
+    ],
+    "then": {
+     "unit": "kWh",
+     "from": {
+      "fn": "mul",
+      "args": [
+       12000,
+       0.2
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 60000,
+       "why": "You divided 12,000 by 0.2. Multiply: 12,000 × 0.2 = 2,400 kWh."
+      },
+      {
+       "value": 2.4,
+       "why": "That is MWh. The question asks for kWh: 2,400."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-waste-reduction-14",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A school sends most of its cafeteria food scraps to the landfill. Propose a solution, other than recycling, that reduces this waste, and explain how it works.",
+   "why": {
+    "correct": "It respects \"other than recycling\", fits a school, and says how it works: composting keeps food out of the landfill and makes soil."
+   },
+   "specific": {
+    "frame": "The school could ___, which reduces landfill waste because ___.",
+    "slots": {
+     "action": {
+      "label": "Solution",
+      "options": [
+       "compost the food scraps in a school garden",
+       "recycle the food containers",
+       "burn the scraps in the school boiler"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The question says other than recycling, and the issue is food scraps.",
+       "2": "Burning food at a school is unsafe and does not fit the setting."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "microbes break the food down with oxygen into humus instead of making methane in a landfill",
+       "the scraps become plastic that can be reused",
+       "the scraps dry out and blow away"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Composting does not make plastic.",
+       "2": "Scraps blowing away is litter, not a solution."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "otherThan": [
+      "recycl"
+     ],
+     "context": [
+      "food",
+      "compost",
+      "school"
+     ]
+    },
+    "model": "The school could compost the food scraps in a school garden, which reduces landfill waste because microbes break the food down with oxygen into humus instead of making methane in a landfill."
+   }
+  }
+ ]
+}

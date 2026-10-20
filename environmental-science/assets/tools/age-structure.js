@@ -230,9 +230,26 @@
       types: A.TYPES, typeLabel: 'Kind of problem',
       title: function(p){ var t = A.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); }
+      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); doneLine(host, s, right, api); }
     });
   }
+  /* After the last step: say plainly that every answer is now right, and how
+     many were right the first time (what is recorded), so a miss on a first
+     try never reads as a wrong final answer. Runs after the shared drill's own
+     summary (env-tools.js studioDrill done), which it replaces. */
+  function doneLine(host, s, right, api){
+    api.firsts = (api.firsts || 0) + (right ? 1 : 0);
+    var steps = api.problem.steps, n = steps.length;
+    if(s !== steps[n - 1]) return;
+    var r = api.firsts, st = T.studioOf(host);
+    api.firsts = 0;
+    setTimeout(function(){
+      var msg = r === n ? '<b>All ' + n + ' steps right the first time.</b> The worked solution is under Why.'
+        : '<b>Done: every answer is now in.</b> First tries: ' + r + ' of ' + n + ' right (the misses go to your review queue). The worked solution is under Why.';
+      if(st){ st.caption(msg, 'quiz'); st.pills([{ html: r + ' of ' + n + ' first try', tone: r === n ? 'good' : 'warn' }], 'left', 'quiz'); }
+    }, 0);
+  }
+
   function figure(el, p, st){
     var g = p.figure, ph = (window.innerWidth || 1280) <= 640, W = ph ? 360 : 640, H = ph ? 340 : 360, inner = '', aria = '';
     if(!g){ el.innerHTML = ''; return; }

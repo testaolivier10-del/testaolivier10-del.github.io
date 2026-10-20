@@ -1,0 +1,12 @@
+{
+ "waste-reduction-hierarchy": {
+  "file": "figures/waste-reduction-hierarchy.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An inverted pyramid of five bands from most preferred at the top to least preferred at the bottom: reduce, reuse, recycle and compost, recover energy, and dispose in a landfill. Each band gives an example: less packaging, refillable bottles, aluminum cans and food scraps, waste-to-energy plants, sanitary landfills."
+ }
+}

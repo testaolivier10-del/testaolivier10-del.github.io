@@ -1,0 +1,12 @@
+{
+ "energy-conservation-home": {
+  "file": "figures/energy-conservation-home.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A house with labeled ways to save energy: attic insulation and weather stripping keep heat in; LED bulbs use at least 75 percent less electricity than incandescent bulbs; efficient appliances and low-flow fixtures; a programmable thermostat lowers heat or cooling when no one needs it; a shade tree and windbreak (conservation landscaping). A banner lists large-scale measures: vehicle fuel economy, hybrids and electric vehicles, public transportation and green building design."
+ }
+}

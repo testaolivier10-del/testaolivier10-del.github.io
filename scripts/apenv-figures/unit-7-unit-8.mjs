@@ -607,6 +607,65 @@ FIG['bioaccumulation-biomagnification-chain'] = () => {
     'Left: a food chain from lake water to phytoplankton, zooplankton, small fish, large fish and an osprey; the pesticide concentration rises from 0.00005 ppm in water to 0.04, 0.3, 2, 12 and 50 ppm in the osprey (invented values), shown by more dots at each level. Right: one species of fish at ages 2, 6 and 10 years, with mercury rising from 0.08 to 0.31 to 0.62 ppm as it ages.', s);
 };
 
+/* 8.9 Cross-section of a sanitary landfill (diagram). */
+FIG['solid-waste-landfill'] = () => {
+  let s = rect(0, 0, 800, 420, '#F4F6EC');
+  // groundwater
+  s += rect(0, 360, 800, 60, '#9FC2DA') + T(400, 398, 'groundwater', { size: 14, fill: '#FFFFFF', weight: 700, italic: true });
+  // liner
+  s += path('M100,330 L700,330 L640,150 L160,150 z', 'none', 'none', 0);
+  s += path('M80,340 L720,340 L720,352 L80,352 z', '#B08A5A', 'none', 0);
+  s += path('M80,334 L720,334', 'none', INK, 4);
+  // trash layers
+  for (let i = 0; i < 4; i++) {
+    const y = 300 - i * 40;
+    s += rect(130 + i * 20, y, 540 - i * 40, 28, ['#B7B09A', '#A79F86', '#B7B09A', '#A79F86'][i]);
+    s += rect(130 + i * 20, y - 6, 540 - i * 40, 6, '#8C7A5A');
+  }
+  // cap
+  s += path('M190,170 C300,120 500,120 610,170 L610,176 L190,176 z', '#8C7A5A', 'none', 0);
+  s += path('M190,170 C300,120 500,120 610,170', 'none', '#6B8E3A', 6);
+  // leachate pipes
+  for (const x of [200, 330, 460, 590]) s += circle(x, 326, 6, '#FFFFFF', INK, 2);
+  s += line(200, 326, 740, 326, INK, 1, '3 3') + arrow(720, 326, 760, 326, { color: BLUE, sw: 3, m: 'arB' });
+  // gas wells
+  for (const x of [300, 500]) s += rect(x - 4, 90, 8, 220, '#6B7370') + path(`M${x},90 L${x},70`, 'none', '#6B7370', 4);
+  s += path('M500,70 L620,70', 'none', '#6B7370', 4) + path('M300,70 L500,70', 'none', '#6B7370', 4);
+  s += box(620, 50, 160, 40, ['methane to flare', 'or generator'], { fill: '#FFFFFF', stroke: OLIVE, size: 13 });
+  // labels
+  const lab = (x, y, t, tx, ty) => line(x, y, tx, ty, OLIVE, 1.2) + T(tx, ty - 9, t, { size: 13, anchor: 'start', weight: 700 });
+  s += lab(240, 150, 'clay and soil cap with plants', 14, 110);
+  s += lab(160, 270, 'trash in layers', 14, 250);
+  s += lab(175, 252, 'daily soil cover', 14, 205);
+  s += lab(300, 160, 'gas well', 334, 128);
+  s += lab(100, 336, 'clay and plastic liner', 14, 300);
+  s += T(700, 300, ['leachate pipes', 'to treatment'], { size: 13, weight: 700, fill: BLUE, lh: 1.2 });
+  return svg(800, 420, 'A sanitary landfill',
+    'Cross-section of a sanitary landfill. A compacted clay layer and plastic liner sit above groundwater, with perforated pipes collecting leachate and sending it to treatment. Trash is placed in layers separated by daily soil cover. Vertical gas wells collect methane and pipe it to a flare or generator. A clay and soil cap planted with grass covers the top.', s);
+};
+
+/* 8.10 The waste hierarchy (diagram). */
+FIG['waste-reduction-hierarchy'] = () => {
+  let s = '';
+  const bands = [
+    ['Reduce', 'less packaging, durable goods, buy only what you need', GREEN],
+    ['Reuse', 'refillable bottles, cloth bags, repair, donate', '#4FA06A'],
+    ['Recycle and compost', 'aluminum cans, paper; food and yard scraps to compost', '#B5A23A'],
+    ['Recover energy', 'waste-to-energy plants, landfill gas to electricity', '#D98A3A'],
+    ['Dispose', 'sanitary landfill', RED],
+  ];
+  bands.forEach(([name, ex, col], i) => {
+    const y = 30 + i * 74, w = 560 - i * 90, x = 250 - w / 2 + 70;
+    s += path(`M${x},${y} L${x + w},${y} L${x + w - 45},${y + 64} L${x + 45},${y + 64} z`, col, 'none', 0);
+    s += T(x + w / 2, y + 32, name, { size: 18, weight: 700, fill: '#FFFFFF' });
+    s += T(620, y + 32, ex, { size: 13, anchor: 'start', fill: INK });
+  });
+  s += arrow(14, 40, 14, 380, { sw: 3 });
+  s += `<text x="34" y="210" font-size="14" font-weight="700" fill="${INK}" text-anchor="middle" transform="rotate(-90 34 210)">most preferred to least preferred</text>`;
+  return svg(800, 420, 'The waste hierarchy',
+    'An inverted pyramid of five bands, most preferred at the top: reduce (less packaging, durable goods), reuse (refillable bottles, cloth bags, repair), recycle and compost (aluminum cans, paper, food and yard scraps), recover energy (waste-to-energy plants, landfill gas), and dispose (sanitary landfill) at the bottom.', s);
+};
+
 export { FIG };
 const isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
 if (isMain) {

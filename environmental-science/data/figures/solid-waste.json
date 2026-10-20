@@ -1,0 +1,12 @@
+{
+ "solid-waste-landfill": {
+  "file": "figures/solid-waste-landfill.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Cross-section of a sanitary landfill. At the bottom, a compacted clay layer and a plastic liner sit above groundwater, with perforated pipes that collect leachate and send it to treatment. Layers of trash are separated by daily soil cover. Vertical gas wells collect methane to a flare or generator. A clay and soil cap with grass covers the top."
+ }
+}

@@ -197,3 +197,8 @@
   .cs-tray-h{font-size:12.5px;margin-bottom:6px;}
   .cs-tile .cs-frac{font-size:13px;}
 }
+
+/* A step answered right after a miss shows the success state, not the first try's red
+   (tool-studio.css lists .is-wrong after .is-right at the same weight). */
+.ls-root .cd-step.is-right.is-right input[type=text]{box-shadow:inset 0 0 0 2px var(--good-text);border-color:var(--good-text);}
+.cs-fig-svg .cs-cap{font:800 13.5px var(--font-ui);fill:var(--ink);}

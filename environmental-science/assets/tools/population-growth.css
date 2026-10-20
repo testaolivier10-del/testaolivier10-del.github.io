@@ -85,3 +85,7 @@
   .pg-svg .pg-phl{font-size:12px;}
   .pg-view{font-size:13px;}
 }
+
+/* A step answered right after a miss shows the success state, not the first try's red
+   (tool-studio.css lists .is-wrong after .is-right at the same weight). */
+.ls-root .cd-step.is-right.is-right input[type=text]{box-shadow:inset 0 0 0 2px var(--good-text);border-color:var(--good-text);}

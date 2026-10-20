@@ -1,0 +1,620 @@
+{
+ "stimuli": {
+  "solid-waste-s1": {
+   "kind": "quantitative",
+   "title": "What happened to United States municipal solid waste in 2018",
+   "source": "EPA, Advancing Sustainable Materials Management: 2018 Fact Sheet (December 2020), Table 1",
+   "table": {
+    "caption": "Municipal solid waste managed in the United States in 2018, in millions of short tons (EPA)",
+    "cols": [
+     "Management",
+     "Millions of tons"
+    ],
+    "rows": [
+     [
+      "Landfilled",
+      "146.1"
+     ],
+     [
+      "Recycled",
+      "69.1"
+     ],
+     [
+      "Combusted with energy recovery",
+      "34.6"
+     ],
+     [
+      "Composted",
+      "24.9"
+     ],
+     [
+      "Other food management",
+      "17.7"
+     ],
+     [
+      "Total generated",
+      "292.4"
+     ]
+    ]
+   }
+  },
+  "solid-waste-s2": {
+   "kind": "visual",
+   "title": "Methane captured at a landfill and the electricity it makes",
+   "invented": true,
+   "plot": {
+    "label": "Bar chart of methane captured at a landfill gas plant in thousand metric tons per year: 2016, 4; 2018, 6; 2020, 9; 2022, 11; 2024, 12; invented data",
+    "kind": "bar",
+    "categories": [
+     "2016",
+     "2018",
+     "2020",
+     "2022",
+     "2024"
+    ],
+    "values": [
+     4,
+     6,
+     9,
+     11,
+     12
+    ],
+    "xLabel": "Year",
+    "yLabel": "Methane captured (thousand t)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-solid-waste-1",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the municipal solid waste generated in 2018 was landfilled?",
+   "stimulus": "solid-waste-s1",
+   "why": {
+    "correct": "$\\frac{146.1\\,\\text{million tons}}{292.4\\,\\text{million tons}} \\times 100 = 50.0\\%$. The EPA reports 50%."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      146.1,
+      292.4
+     ]
+    },
+    "unit": "%",
+    "places": 1,
+    "mistakes": [
+     {
+      "value": 200.136892539,
+      "why": "You divided the total by the landfilled amount. A share puts the part (146.1) over the whole (292.4)."
+     },
+     {
+      "value": 0.499658002736,
+      "why": "That is the fraction. Multiply by 100 for a percent: about 50%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-2",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the 2018 waste was recycled or composted together?",
+   "stimulus": "solid-waste-s1",
+   "why": {
+    "correct": "Recycled plus composted: $69.1 + 24.9 = 94.0$ million tons. Share: $\\frac{94.0}{292.4} \\times 100 = 32.1\\%$. The EPA reports 32.1%."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        69.1,
+        24.9
+       ]
+      },
+      292.4
+     ]
+    },
+    "unit": "%",
+    "places": 1,
+    "mistakes": [
+     {
+      "value": 23.6320109439,
+      "why": "That is recycling alone. Add the composted amount (24.9) before dividing: 94.0 / 292.4."
+     },
+     {
+      "value": 8.51573187415,
+      "why": "That is the composted share alone. Add recycling (69.1) first."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-3",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement best describes how the United States managed its municipal solid waste in 2018?",
+   "stimulus": "solid-waste-s1",
+   "options": [
+    "Most of it was recycled",
+    "About half of it was landfilled",
+    "Most of it was burned for energy",
+    "More was made into compost than was landfilled"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Half (146.1 of 292.4 million tons) went to landfills, more than recycling (69.1), combustion (34.6) and compost (24.9) put together.",
+    "options": [
+     "Recycling took 69.1 million tons, under a quarter.",
+     "Right: 146.1 of 292.4 million tons.",
+     "Combustion took 34.6 million tons, about 12%.",
+     "Only 24.9 million tons was composted, far less than was landfilled."
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-4",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The United States had about 327 million people in 2018. About how many pounds of municipal solid waste did each person generate per day? (1 short ton = 2,000 lb.) Round to one decimal place.",
+   "stimulus": "solid-waste-s1",
+   "why": {
+    "correct": "$\\frac{292.4 \\times 10^{6}\\,\\text{tons} \\times 2{,}000\\,\\text{lb/ton}}{327 \\times 10^{6}\\,\\text{people} \\times 365\\,\\text{days}} = 4.9$ lb per person per day, matching the EPA figure."
+   },
+   "numeric": {
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          292400000,
+          2000
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          327000000,
+          365
+         ]
+        }
+       ]
+      },
+      1
+     ]
+    },
+    "unit": "lb/person/day",
+    "units": [
+     "lb per person per day",
+     "lb",
+     "pounds"
+    ],
+    "places": 1,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          292400000,
+          2000
+         ]
+        },
+        327000000
+       ]
+      },
+      "why": "That is pounds per person per year. Divide by 365 days for a daily amount."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        292400000,
+        {
+         "fn": "mul",
+         "args": [
+          327000000,
+          365
+         ]
+        }
+       ]
+      },
+      "why": "That answer is still in tons. Convert tons to pounds first: × 2,000 lb per ton."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-5",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe the trend in methane captured at the landfill.",
+   "stimulus": "solid-waste-s2",
+   "options": [
+    "It rises from 4 to 12 thousand t",
+    "It falls from 12 to 4 thousand metric tons",
+    "It stays near 4 thousand metric tons",
+    "It rises, then falls after 2020"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Methane captured rises every two years, from 4 to 12 thousand metric tons, tripling, with smaller gains at the end.",
+    "options": [
+     "Right: steady gains, smaller near the end.",
+     "Read left to right: it rises with time.",
+     "It reaches 12 by 2024.",
+     "It keeps rising after 2020."
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-6",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does a landfill produce methane in the first place?",
+   "stimulus": "solid-waste-s2",
+   "options": [
+    "Plastic melts in the heat and turns into methane",
+    "The clay liner reacts with rain to make methane",
+    "Methane is added to landfills to keep them warm",
+    "Bacteria break down buried food waste"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Buried food, yard waste and paper are broken down by bacteria in the airless (anaerobic) conditions inside the landfill, which produces methane and CO2.",
+    "options": [
+     "Plastic does not turn into methane this way.",
+     "The liner keeps leachate in; it does not make methane.",
+     "Methane is made inside the landfill, not added.",
+     "Right: anaerobic decomposition makes methane."
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-7",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "single",
+   "practice": "7.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which benefit of capturing landfill methane is best supported by what you know about methane?",
+   "stimulus": "solid-waste-s2",
+   "options": [
+    "It removes leachate from the groundwater below",
+    "It makes the landfill decompose plastic faster",
+    "It makes power and keeps methane out of the air",
+    "It stops the landfill from producing any more waste"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Methane is a fuel, so burning it makes electricity; burning it also turns a gas that traps far more heat than CO2 into CO2 and water, and it lowers explosion risk.",
+    "options": [
+     "Gas capture does not treat leachate.",
+     "Gas capture does not speed plastic breakdown.",
+     "Right: an energy source and a climate benefit.",
+     "The landfill still receives and holds waste."
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-8",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in methane captured from 2016 to 2024.",
+   "stimulus": "solid-waste-s2",
+   "why": {
+    "correct": "$\\frac{(12 - 4)}{4} \\times 100 = 200\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      4,
+      12
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 66.6666666667,
+      "why": "You divided by the 2024 value. Divide by the starting (2016) value, 4."
+     },
+     {
+      "value": 300,
+      "why": "300% is 12 as a percent of 4. Subtract first: (12 - 4) / 4 × 100 = 200%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-9",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which feature of a sanitary landfill keeps leachate out of groundwater?",
+   "options": [
+    "A daily cover of soil over the trash",
+    "A liner with collection pipes",
+    "Gas wells that collect methane",
+    "A fence around the whole site"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A sanitary landfill sits on a clay and plastic liner, with pipes that collect leachate for treatment.",
+    "options": [
+     "Daily soil cover controls pests and odors; the liner protects groundwater.",
+     "Right: the liner blocks it and the pipes collect it.",
+     "Gas wells handle methane, not leachate.",
+     "A fence keeps people and animals out."
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-10",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do newspapers and food buried in a landfill decades ago often look almost unchanged when dug up?",
+   "options": [
+    "Little oxygen or water reaches them",
+    "Landfills are too cold for any bacteria to live",
+    "Newspapers and food are unable to decompose",
+    "Methane preserves everything in the landfill"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Landfills are packed tight and kept dry, with little oxygen or water, so decomposition is very slow.",
+    "options": [
+     "Right: tight, dry conditions slow decay.",
+     "Landfills are often warm inside; the limit is oxygen and water.",
+     "They decompose readily where oxygen and moisture are present.",
+     "Methane is a product of decay, not a preservative."
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-11",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A city considers incinerating its trash instead of landfilling it. Which pair gives one advantage and one disadvantage?",
+   "options": [
+    "No more landfill is needed, and building it is free of cost",
+    "It lowers air pollution, but it takes up more land",
+    "It turns the trash into soil, but it is slow",
+    "Less volume, but air pollution and toxic ash"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Incineration cuts waste volume by about 90% and can generate electricity, but it releases air pollutants and leaves toxic ash that still needs disposal.",
+    "options": [
+     "The ash still needs a landfill, and incinerators are expensive.",
+     "Incinerators add air pollution and take up less land than landfills.",
+     "Burning does not make soil; decay into compost does.",
+     "Right: less volume, but air pollution and ash."
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-12",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does e-waste need special handling instead of going to an ordinary landfill?",
+   "options": [
+    "It is too heavy for landfill trucks to carry",
+    "It releases ozone when buried",
+    "It holds lead and mercury that leach out",
+    "It decomposes too fast and makes landfills sink"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Old phones, computers and TVs contain lead, mercury, cadmium and other toxic metals that can leach into groundwater, along with valuable metals worth recovering.",
+    "options": [
+     "Weight is not the issue; toxic metals are.",
+     "Buried e-waste does not release ozone.",
+     "Right: and valuable metals worth recovering.",
+     "Electronics barely decompose at all."
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-13",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Ocean dumping of garbage is now banned in the United States. Which harm did it cause?",
+   "options": [
+    "It cooled the ocean surface and caused ice ages",
+    "Plastic entangled and was eaten by animals",
+    "It added oxygen that bleached coral reefs",
+    "It made seawater fresh near the coasts"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Dumped trash, especially plastic, entangled and was eaten by marine animals, and some waste released toxic chemicals into the water.",
+    "options": [
+     "Garbage dumping did not change climate this way.",
+     "Right: this harmed wildlife across the oceans.",
+     "Trash does not add oxygen or bleach coral.",
+     "Dumping garbage does not lower salinity."
+    ]
+   }
+  },
+  {
+   "id": "env-solid-waste-14",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town of 40,000 people generates 2.2 kg of municipal solid waste per person per day. Write the setup, with units, for the metric tons it generates in a year (1 metric ton = 1,000 kg), then the answer.",
+   "why": {
+    "correct": "$40{,}000\\,\\text{people} \\times 2.2\\,\\frac{\\text{kg}}{\\text{person} \\cdot \\text{day}} \\times 365\\,\\text{days} \\times \\frac{1\\,\\text{t}}{1{,}000\\,\\text{kg}} = 32{,}120$ metric tons a year."
+   },
+   "setup": {
+    "answer": "40000 * 2.2 * 365 / 1000",
+    "mustUse": [
+     "40000",
+     "2.2",
+     "365",
+     "1000"
+    ],
+    "mistakes": [
+     {
+      "expr": "40000 * 2.2 * 365",
+      "why": "That is kilograms. Divide by 1,000 to get metric tons."
+     },
+     {
+      "expr": "40000 * 2.2 / 1000",
+      "why": "That is one day. Multiply by 365 days for a year."
+     }
+    ],
+    "then": {
+     "unit": "metric tons",
+     "units": [
+      "tonnes",
+      "tonne",
+      "t",
+      "metric ton"
+     ],
+     "from": {
+      "fn": "div",
+      "args": [
+       {
+        "fn": "mul",
+        "args": [
+         40000,
+         2.2,
+         365
+        ]
+       },
+       1000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 32120000,
+       "why": "32,120,000 is in kilograms. Divide by 1,000 for metric tons."
+      },
+      {
+       "value": 88,
+       "why": "88 metric tons is one day. Multiply by 365."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-solid-waste-15",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A landfill is leaking leachate into a nearby well. Propose a solution, other than closing the landfill, and explain how it works.",
+   "why": {
+    "correct": "The solution respects \"other than closing\", targets the leachate, and says how it works."
+   },
+   "specific": {
+    "frame": "The operators could ___, which protects the well because ___.",
+    "slots": {
+     "action": {
+      "label": "Solution",
+      "options": [
+       "install a liner and leachate collection pipes in new cells and pump and treat leachate from the old ones",
+       "close the landfill permanently",
+       "burn the methane from the landfill"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The question says other than closing the landfill.",
+       "2": "Burning methane deals with gas, not leachate in groundwater."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "the leachate is caught and treated before it can seep into the groundwater",
+       "the leachate evaporates faster",
+       "the well water becomes saltier"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Leachate does not evaporate away in a landfill.",
+       "2": "Salinity is not the fix."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "otherThan": [
+      "close"
+     ],
+     "context": [
+      "leachate",
+      "groundwater",
+      "liner"
+     ]
+    },
+    "model": "The operators could install a liner and leachate collection pipes in new cells and pump and treat leachate from the old ones, which protects the well because the leachate is caught and treated before it can seep into the groundwater."
+   }
+  }
+ ]
+}

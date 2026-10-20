@@ -63,6 +63,7 @@
     for(var i = 0; i < SCALE.length; i++) if(a >= SCALE[i][0]){ var v = x / SCALE[i][0]; if(Math.abs(v - +v.toPrecision(4)) < 1e-9 * Math.abs(v)){ w = nf(v, 3) + ' ' + SCALE[i][1]; break; } }
     return { comma: nf(x, 3), words: w, sci: sci(x, 4) };
   }
+  function cap(s){ s = String(s).replace(/^the /, ''); return s.charAt(0).toUpperCase() + s.slice(1); }
   function pick(r, a){ return a[Math.floor(r() * a.length)]; }
   function between(r, ab, step){ var s = step || 1, n = Math.round((ab[1] - ab[0]) / s); return M.round(ab[0] + s * Math.floor(r() * (n + 1)), 6); }
 
@@ -284,7 +285,7 @@
     ];
     var sol = ['Setup: (new − old) / old × 100 = (' + nf(nw) + ' − ' + nf(old) + ') / ' + nf(old) + ' × 100.', '= ' + nf(nw - old) + ' / ' + nf(old) + ' × 100 = ' + nf(ans, 1) + '%' + (ans < 0 ? ' (a decrease).' : ' (an increase).'),
       'Readers want the brackets: without them, a calculator divides first and gives a different number.'];
-    return { text: text, steps: steps, solution: sol, figure: { kind: 'bars', bars: [{ label: String(y0), value: old }, { label: String(y1), value: nw }], unit: u, ask: 'Percent change?', result: nf(ans, 1) + '%', change: true }, given: { old: old, nw: nw } };
+    return { text: text, steps: steps, solution: sol, figure: { kind: 'bars', title: cap(c.what) + ' (' + u + ')', bars: [{ label: String(y0), value: old }, { label: String(y1), value: nw }], unit: u, ask: 'Percent change?', result: nf(ans, 1) + '%', change: true }, given: { old: old, nw: nw } };
   };
 
   /* Percent of a quantity: pct / 100 × quantity */
@@ -297,7 +298,7 @@
       answerStep(ans, c.unit, { units: c.units, mistakes: [{ value: pct * q, why: 'Divide the percent by 100 first: ' + nf(pct) + '% is ' + nf(pct / 100, 4) + '.' }, { value: q - ans, why: 'That is the part that is NOT ' + nf(pct) + '%. The question asks for the ' + nf(pct) + '% part.' }] })
     ];
     var sol = ['Setup: ' + nf(pct) + ' / 100 × ' + nf(q) + ' ' + c.unitWord + ' = ' + nf(pct / 100, 4) + ' × ' + nf(q) + '.', '= ' + nf(ans) + ' ' + c.unitWord + '.', 'Calculator-free: 10% is the number with the decimal moved one place left; build other percents from it.'];
-    return { text: text, steps: steps, solution: sol, figure: { kind: 'bars', bars: [{ label: 'All', value: q }, { label: nf(pct) + '%', value: ans, hide: true }], unit: c.unitWord, ask: nf(pct) + '% of it?', result: nf(ans) + ' ' + c.unitWord }, given: { q: q, pct: pct } };
+    return { text: text, steps: steps, solution: sol, figure: { kind: 'bars', title: cap(c.unitWord), bars: [{ label: 'All', value: q }, { label: nf(pct) + '%', value: ans, hide: true }], unit: c.unitWord, ask: nf(pct) + '% of it?', result: nf(ans) + ' ' + c.unitWord }, given: { q: q, pct: pct } };
   };
 
   /* Rule of 70 doubling time, then the year */
@@ -538,7 +539,7 @@
       answerStep(yearly, c.answerUnit, { units: c.units, places: 2, hint: c.money ? 'Type the number only (no $), then "dollars" or $ as the unit.' : '', mistakes: [{ value: save, why: 'That is one ' + per + '. The question asks for a year: × ' + perN + '.' }, { value: before * perN * price, why: 'Use the difference (before − after), not the before value.' }] })
     ];
     var sol = ['Saved each ' + per + ': ' + nf(before) + ' − ' + nf(after) + ' = ' + nf(cut) + ' ' + c.quShow + '.', 'Per year: ' + nf(cut) + ' × ' + perN + ' × ' + nf(price) + ' = ' + (c.money ? '$' + M.fixed(yearly, 2) : nf(yearly, 2) + ' ' + c.answerShow) + '.'];
-    return { text: text, steps: steps, solution: sol, figure: { kind: 'bars', bars: [{ label: 'Before', value: before }, { label: 'After', value: after }], unit: c.quShow + ' per ' + per, ask: 'Saved per year?', result: c.money ? '$' + M.fixed(yearly, 2) : nf(yearly, 2) + ' ' + c.answerShow, change: false, saving: true }, given: { before: before, after: after, price: price, perN: perN } };
+    return { text: text, steps: steps, solution: sol, figure: { kind: 'bars', title: c.quShow + ' per ' + per, bars: [{ label: 'Before', value: before }, { label: 'After', value: after }], unit: c.quShow + ' per ' + per, ask: 'Saved per year?', result: c.money ? '$' + M.fixed(yearly, 2) : nf(yearly, 2) + ' ' + c.answerShow, change: false, saving: true }, given: { before: before, after: after, price: price, perN: perN } };
   };
 
   /* LD50 read from a dose-response table, then a whole-body dose */

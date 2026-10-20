@@ -1,0 +1,72 @@
+{
+ "topic": "solid-waste",
+ "hook": "Each person in the United States threw away about 4.9 pounds of trash a day in 2018, according to the EPA. Across the country that came to 292 million tons in a year, and half of it went into landfills. A modern landfill is not a dump. It is a lined, engineered structure designed to keep trash, liquid and gas from escaping for decades.",
+ "prereq": [
+  {
+   "q": "What do decomposers release when they break down waste with no oxygen?",
+   "options": [
+    "Methane",
+    "Ozone",
+    "Sulfur dioxide",
+    "Radon"
+   ],
+   "correct": 0,
+   "why": "Without oxygen, decomposition produces methane as well as CO2.",
+   "review": "carbon-cycle"
+  },
+  {
+   "q": "Which pollutants are stored in fat and build up in food chains?",
+   "options": [
+    "Persistent organic pollutants and mercury",
+    "Nitrate and phosphate",
+    "Water vapor and CO2",
+    "Sand and silt"
+   ],
+   "correct": 0,
+   "why": "Persistent, fat-soluble pollutants bioaccumulate and biomagnify.",
+   "review": "bioaccumulation-biomagnification"
+  }
+ ],
+ "figure": {
+  "figure": "solid-waste-landfill",
+  "caption": "A sanitary landfill: a clay and plastic liner, leachate collection pipes, daily soil cover, gas wells and a final cap."
+ },
+ "chain": [
+  {
+   "cause": "Households and businesses throw away municipal solid waste",
+   "effect": "about half goes to landfills in the United States"
+  },
+  {
+   "cause": "Rain filters through the buried waste",
+   "effect": "it dissolves chemicals and becomes leachate, which a liner and pipes must catch"
+  },
+  {
+   "cause": "Bacteria break down food, yard waste and paper with no oxygen",
+   "effect": "methane and CO2 form; gas wells collect the methane to burn or use for power"
+  },
+  {
+   "cause": "Tightly packed, dry trash gets little oxygen and water",
+   "effect": "it decomposes very slowly, so landfills fill up and must be managed for decades"
+  }
+ ],
+ "ideas": [
+  "<b>Municipal solid waste</b> is everyday trash from homes and businesses. In 2018 (EPA) about 50% was landfilled, 32% recycled or composted, and 12% burned for energy.",
+  "A <b>sanitary landfill</b> has a clay and plastic liner, <b>leachate</b> collection pipes, daily soil cover, gas wells and a final cap. Leachate is liquid that seeps through trash and picks up pollutants.",
+  "Buried organic waste decomposes slowly without oxygen and makes methane. <b>Incineration</b> cuts volume about 90% and can make power, but releases air pollutants and toxic ash.",
+  "<b>E-waste</b> holds lead, mercury and cadmium and needs special handling. Ocean dumping of trash is banned in the United States."
+ ],
+ "misconception": {
+  "wrong": "Trash in a landfill rots away within a few years.",
+  "right": "A landfill is packed tight and kept dry, so little oxygen and water reach the trash. Decomposition is very slow, and some newspapers and food stay recognizable for decades."
+ },
+ "check": [
+  "env-solid-waste-9",
+  "env-solid-waste-1",
+  "env-solid-waste-2",
+  "env-solid-waste-3",
+  "env-solid-waste-4",
+  "env-solid-waste-10",
+  "env-solid-waste-14"
+ ],
+ "summary": "Municipal solid waste in the United States is mostly landfilled (about half in 2018), with the rest recycled, composted or burned. Sanitary landfills use liners, leachate collection, soil cover, gas wells and caps to contain trash; buried organic waste decomposes slowly without oxygen and makes methane. Incineration cuts volume but releases air pollutants and ash. E-waste needs special handling, and ocean dumping is banned."
+}

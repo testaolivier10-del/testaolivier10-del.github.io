@@ -204,8 +204,8 @@
    "name": "Earth and climate",
    "title": "Earth and Climate",
    "desc": "Seasons from axial tilt, insolation by latitude, circulation cells and winds, the rain shadow, and El Niño and La Niña side by side.",
-   "blurb": "Tilt the Earth, then switch between El Niño and La Niña.",
-   "lede": "Tilt the axis and watch the sunlight move.",
+   "blurb": "Move through the year with the tilted Earth, then switch between El Niño and La Niña.",
+   "lede": "Drag the date and watch the noon sun climb and fall.",
    "studio": true,
    "premium": "tools"
   },

@@ -1,0 +1,14 @@
+{
+ "source-reduction": {
+  "def": "Reducing waste before it is created, for example by designing products with less packaging, making durable goods, or buying only what is needed. It is the most preferred step in the waste hierarchy."
+ },
+ "recycling": {
+  "def": "Collecting used materials such as aluminum, paper, glass and some plastics and processing them into new products. It saves resources and energy but costs money and energy to collect and sort."
+ },
+ "composting": {
+  "def": "Letting microbes break down food scraps, yard waste and paper with oxygen to make humus-rich compost for soil. It keeps organic waste out of landfills, where it would make methane."
+ },
+ "landfill-gas": {
+  "def": "The methane and CO2 produced when buried waste decomposes without oxygen. Landfills can capture it with wells and burn it to generate electricity (landfill gas to energy), a form of landfill mitigation."
+ }
+}
