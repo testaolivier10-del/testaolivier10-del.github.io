@@ -247,7 +247,7 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     `JUSTIFY_NUMBERS` are empty until Phase 3 writes the exams and prompts; (g) `ApEnvCalc.evaluate` rounds to 12
     significant digits so float noise never reaches a key; (h) the site shell budget went from 291 to 292 KB
     (registration measured 291.4 KB) and "generalist" was added to the spelling checker's American words. SQL
-    migration `2026-10j-apenv.sql` written, not applied.
+    migration `2026-10k-apenv.sql` written, not applied.
 11. (2026-10-20) **Phase 3 as built** (`docs/apenv-reviews/phase3.md`). Practice exams: each form is 80 questions in
     course order, 22 exam-only (`data/exams/items.json`: three quantitative sets per form built on calculations, plus
     standalone items on the reader-report traps) and 58 bank questions (six bank sets, four visual and two text, and
@@ -288,6 +288,10 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
       curves (population growth), and Loam over Clay loam when the point sits on Loam (soil texture). Left as is:
       the soil triangle's axis titles touch an end tick number at some points (readable, as before), and the
       energy-flow phone layout puts the level names next to the organism names by design.
+    - Rebased onto main's analytics work (#75): the exam-quit hooks and the per-question tally arguments ported to
+      `env-core.js` and `pages/exams.js`; the migration renamed `2026-10k-apenv.sql` so it still runs after
+      `2026-10j-question-stats.sql`. Budgets: the environmental-science shell 83 -> 85.5 KB (Phase 3 grader growth
+      plus nine units; measured 85.0), the hub 9.8 -> 10.1 KB (its card; measured 9.8).
 
 ## 9. Open items for the owner
 
@@ -296,7 +300,7 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
 - Uncertain research: `docs/apenv-needs-author.md`.
 
 **Launch checklist (after the PR is ready, owner):**
-- [ ] Apply SQL migration `2026-10j-apenv.sql` in Supabase (check live function bodies match apart from `apenv`).
+- [ ] Apply SQL migration `2026-10k-apenv.sql` in Supabase (check live function bodies match apart from `apenv`).
 - [ ] Create the Polar product "AP® Environmental Science Premium (through June 30, 2027)", $25 one-time; add
       `"env-2027"` with its product id to `POLAR_PRODUCTS` in the Cloudflare Worker settings; deploy the Worker
       (PASSES, `URL_COURSE`, `COURSE_NAMES`, tutor `COURSE_RULES.apenv`).

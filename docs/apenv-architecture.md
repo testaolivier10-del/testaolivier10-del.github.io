@@ -242,7 +242,7 @@ lists include it. Files: `assets/courses.js` (key `apenv`, order 9, short "Env S
 starters, greeting); `assets/course/flags.js`; `assets/theme.css`; `index.html` and `404.html` markers
 (`hub-env`, `nf-env`); `robots.txt`; `sw.js` (`COURSE_URLS['environmental-science']`, cache v84);
 `worker/src/premium.js` (`PASSES['env-2027']`, `URL_COURSE`, `COURSE_NAMES`), `worker/src/index.js`
-(`COURSE_RULES.apenv`), `worker/dist/worker.js` rebuilt; `scripts/sql/migrations/2026-10j-apenv.sql` (NOT
+(`COURSE_RULES.apenv`), `worker/dist/worker.js` rebuilt; `scripts/sql/migrations/2026-10k-apenv.sql` (NOT
 applied) with `schema.sql`, `reports.sql`, `pageviews.sql`; `scripts/build-pricing.mjs` (hub and 404 cards,
 manifest), `lib/premium-data.mjs` (counts), `build-og-images.mjs` (`environmental-science/assets/og-image.png`),
 `build-og-tags.mjs`, `build-sitemap.mjs`, `lib/app-pages.mjs`, `check-site.mjs`, `check-a11y.mjs`,

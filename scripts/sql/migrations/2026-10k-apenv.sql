@@ -1,6 +1,6 @@
 -- AP® Environmental Science (course key apenv): the database half of registering
--- the course (docs/apenv-spec.md, the owner checklist). Named 2026-10j so it
--- sorts after 2026-10i-table-grants.sql: migrations run, and are compared with
+-- the course (docs/apenv-spec.md, the owner checklist). Named 2026-10k so it
+-- sorts after 2026-10j-question-stats.sql: migrations run, and are compared with
 -- schema.sql, in file-name order. NOT APPLIED anywhere yet.
 --
 -- Run once, BEFORE the AP® Environmental Science pass goes on sale: Supabase

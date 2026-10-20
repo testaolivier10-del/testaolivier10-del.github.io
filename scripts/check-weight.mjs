@@ -351,8 +351,12 @@ const SHELL_BUDGETS = [
      unit-aware graders (env-grade.js: numbers with units and scale words,
      the named slips, the "Make it specific" slots and hints). Measured on
      the exams page before any unit is published: 82.2 KB, against
-     Statistics' 82.7 (the recipes are smaller than the distributions). */
-  ['environmental-science', 83],
+     Statistics' 82.7 (the recipes are smaller than the distributions).
+     83 -> 85.5 at the launch (docs/apenv-spec.md decision 12): Phase 3 and the
+     reviews grew the unit parser and normaliser (seconds, ng, kL, °C, metric
+     tons, compound divisors, "per", scale words; decision 11) and the shell
+     carries all nine published units; measured 85.0 KB. */
+  ['environmental-science', 85.5],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -388,8 +392,10 @@ const BUDGETS = [
      that keeps the last card from sitting alone. The FAQ price answer got
      shorter. Measured 9.3 KB. 9.4 -> 9.8 for AP® Statistics' launch
      (docs/apstat-spec.md decision 15): its hub card, its pass in the FAQ and
-     the offers. Measured 9.6 KB. */
-  ['index.html', 9.8],
+     the offers. Measured 9.6 KB. 9.8 -> 10.1 for AP® Environmental Science's
+     launch (docs/apenv-spec.md decision 12): its hub card, its pass in the FAQ
+     and the offers. Measured 9.8 KB. */
+  ['index.html', 10.1],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */

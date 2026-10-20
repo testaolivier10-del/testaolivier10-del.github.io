@@ -203,10 +203,10 @@ test('2026-10h-apstat.sql adds apstat to every course check and course list, run
   assert.match(mig, /NOT APPLIED/);
 });
 
-test('2026-10j-apenv.sql adds apenv to every course check and course list, runs last, matches schema.sql, and is not granted to browsers where it must not be', () => {
+test('2026-10k-apenv.sql adds apenv to every course check and course list, runs last, matches schema.sql, and is not granted to browsers where it must not be', () => {
   const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
-  assert.equal(files[files.length - 1], '2026-10j-apenv.sql', 'runs after 2026-10i-table-grants.sql');
-  const mig = readFileSync('scripts/sql/migrations/2026-10j-apenv.sql', 'utf8');
+  assert.equal(files[files.length - 1], '2026-10k-apenv.sql', 'runs after 2026-10j-question-stats.sql');
+  const mig = readFileSync('scripts/sql/migrations/2026-10k-apenv.sql', 'utf8');
   const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv')";
   for (const t of ['premium_passes', 'premium_funnel', 'exam_completions'])
     assert.ok(mig.includes(`add constraint ${t}_course_check check (course in ${LIST})`), `${t} check lists apenv`);
