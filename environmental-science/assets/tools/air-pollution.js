@@ -124,7 +124,7 @@
     out.push('<rect class="ap-nightbg" x="' + n2(L) + '" y="' + n2(Tp) + '" width="' + n2(X(6) - L) + '" height="' + n2(B - Tp) + '"/><rect class="ap-nightbg" x="' + n2(X(19)) + '" y="' + n2(Tp) + '" width="' + n2(R - X(19)) + '" height="' + n2(B - Tp) + '"/>');
     var step = ymax <= 100 ? 20 : ymax <= 200 ? 50 : 100;
     for(var v = 0; v <= ymax + 0.1; v += step){ out.push(line(L, Y(v), R, Y(v), 'ap-grid')); out.push(txt(L - 4, Y(v) + 4, String(v), 'ap-t ap-tk', 'end')); }
-    [0, 6, 12, 18, 24].forEach(function(t){ out.push(txt(X(t), B + 15, t === 0 || t === 24 ? '12 a.m.' : t === 12 ? 'noon' : (t > 12 ? t - 12 + ' p.m.' : t + ' a.m.'), 'ap-t ap-tk', t === 0 ? 'start' : t === 24 ? 'end' : 'middle')); });
+    [0, 6, 12, 18].forEach(function(t){ out.push(txt(X(t), B + 15, t === 0 ? '12 a.m.' : t === 12 ? 'noon' : (t > 12 ? t - 12 + ' p.m.' : t + ' a.m.'), 'ap-t ap-tk', t === 0 ? 'start' : 'middle')); });
     out.push(txt(L, y0 + 12, 'ppb', 'ap-t ap-tk'));
     var legendN = 0;
     (o.species || SP).forEach(function(s, i){
@@ -296,7 +296,10 @@
       host.removeEventListener('click', onClick); host.removeEventListener('change', onChange);
       s.root.addEventListener('click', onClick); s.root.addEventListener('change', onChange);
       draw();
-      if(s.mode() === 'explore') s.hint({ target: $('.ap-fig'), inside: true, text: 'Start here: drag the Time of day slider' });
+      if(s.mode() === 'explore'){
+        $('.ap-fig').insertAdjacentHTML('beforeend', '<span class="ap-hintspot" aria-hidden="true"></span>');
+        s.hint({ target: $('.ap-hintspot'), text: 'Start here: drag the Time of day slider' });
+      }
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ if(!anim) draw(); }, 60); }).observe($('.ap-fig')); }
     }
     draw();

@@ -70,7 +70,7 @@
     var c = E.chain(id, 100), S = E.SOURCES[id], n = c.stages.length + 2, out = [], vert = W < 560;
     var A0, A1, mid, bandMax, cEnd;
     if(vert){ A0 = 22; A1 = H - 30; bandMax = Math.min(W * 0.26, 100); mid = W * 0.5; cEnd = W - 34; }
-    else { A0 = 20; A1 = W - 20; bandMax = Math.min(H * 0.3, 150); mid = 100 + bandMax / 2; cEnd = H - 92; }
+    else { A0 = 20; A1 = W - 20; bandMax = Math.min(H * 0.3, 150); mid = 112 + bandMax / 2; cEnd = H - 92; }
     var step = (A1 - A0) / n;
     function at(i){ return A0 + step * (i + 0.5); }
     function P(a, cc){ return vert ? n2(cc) + ' ' + n2(a) : n2(a) + ' ' + n2(cc); }
@@ -101,9 +101,10 @@
         if(isStage) g += txt(48, a + 14, Math.round(l.eff * 100) + '% efficient', 'ech-t ech-eff ech-s');
       } else {
         g += '<rect class="ech-hit" x="' + n2(a - step / 2 + 2) + '" y="8" width="' + n2(step - 4) + '" height="' + n2(mid + bandMax / 2 + 26) + '" rx="10"/>';
-        g += (ICON[l.k] || ICON.gen)(a, 50, 0.85);
-        g += txt(a, 22, esc(l.name), 'ech-t ech-name', 'middle');
-        if(isStage) g += txt(a, mid + bandMax / 2 + 18, Math.round(l.eff * 100) + '%', 'ech-t ech-eff', 'middle');
+        g += (ICON[l.k] || ICON.gen)(a, 46, 0.72);
+        g += txt(a, 18, esc(l.name), 'ech-t ech-name', 'middle');
+        // the efficiency sits under the icon, clear of the band and its waste heat
+        if(isStage) g += txt(a, 84, Math.round(l.eff * 100) + '% efficient', 'ech-t ech-eff ech-s', 'middle');
       }
       g += '</g>';
       out.push(g);
@@ -113,7 +114,7 @@
       else if(!vert) out.push(txt(a, mid - bandMax / 2 - 8, f0(l.e), 'ech-t ech-ev', 'middle'));
       // phone: halfway to the next stage, inside the band when it is wide enough, else just left of it
       else if(i === n - 1) out.push(txt(mid, a + 16, f0(l.e), 'ech-t ech-ev', 'middle'));
-      else { var ym = a + step / 2 + 5, hw = hOf(l.e); out.push(hw >= 30 ? txt(mid, ym, f0(l.e), 'ech-t ech-ev ech-on-band', 'middle') : txt(mid - bandMax / 2 - 6, ym, f0(l.e), 'ech-t ech-ev', 'end')); }
+      else out.push(txt(mid - bandMax / 2 - 6, a + step / 2 + 5, f0(l.e), 'ech-t ech-ev', 'end'));
     });
     // where the 100 units end up (wide screens with room)
     if(!vert && H - cEnd > 80){
@@ -247,7 +248,10 @@
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       s.root.addEventListener('click', onClick); s.root.addEventListener('keydown', onKey);
       draw();
-      if(s.mode() === 'explore') s.hint({ target: $('.ech-fig'), inside: true, text: 'Start here: pick a source below, then tap a step' });
+      if(s.mode() === 'explore'){
+        $('.ech-fig').insertAdjacentHTML('beforeend', '<span class="ech-hintspot" aria-hidden="true"></span>');
+        s.hint({ target: $('.ech-hintspot'), text: 'Start here: pick a source below, then tap a step' });
+      }
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.ech-fig')); }
     }
     draw();

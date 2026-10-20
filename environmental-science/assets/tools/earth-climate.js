@@ -162,7 +162,7 @@
   /* Daily sunlight at the top of the atmosphere by latitude, for the date
      (solid) with the two solstices (dashed). */
   function insChart(x0, y0, w, h, decl, lat){
-    var L = x0 + 40, Rt = x0 + w - 8, Tp = y0 + 22, B = y0 + h - 26, out = [];
+    var L = x0 + 40, Rt = x0 + w - 48, Tp = y0 + 22, B = y0 + h - 26, out = [];
     function X(l){ return L + (l + 90) / 180 * (Rt - L); }
     function Y(v){ return B - v / 560 * (B - Tp); }
     out.push(txt(x0 + 4, y0 + 12, 'Daily sunlight by latitude (W/m², top of the atmosphere)', 'ec-t ec-s ec-b'));
@@ -232,8 +232,10 @@
       if(Math.abs(r[0]) < 90) out.push(line(cx + R * Math.cos(r[0] * RAD), GY(r[0]), sx0, y, 'ec-lead'));
       out.push(txt(sx0 - 4, y + 4, Math.abs(r[0]) + '°', 'ec-t ec-tk', 'end'));
       if(!show.rise) return;
-      if(!phone) out.push(txt(sx1 + 10, y + 4, r[1] === 'rise' ? 'Air rises: rain' : 'Air sinks: dry', 'ec-t ec-s ' + (r[1] === 'rise' ? 'ec-c-wet' : 'ec-c-dry')));
-      else if(Math.abs(r[0]) < 90) out.push(r[1] === 'rise' ? cloud(sx1 - 14, y - 2, 5, 'ec-cloud ec-cloud-sm') : sunIcon(sx1 - 12, y, 3.5));
+      // "rises"/"sinks" once the air step is done; "rain"/"dry" (and the phone's cloud and sun) once the climate step is
+      var wet = show.belts, word = r[1] === 'rise' ? 'Air rises' + (wet ? ': rain' : '') : 'Air sinks' + (wet ? ': dry' : '');
+      if(!phone) out.push(txt(sx1 + 10, y + 4, word, 'ec-t ec-s ' + (r[1] === 'rise' ? 'ec-c-wet' : 'ec-c-dry')));
+      else if(wet && Math.abs(r[0]) < 90) out.push(r[1] === 'rise' ? cloud(sx1 - 14, y - 2, 5, 'ec-cloud ec-cloud-sm') : sunIcon(sx1 - 12, y, 3.5));
     });
     // the balloon
     var by = GY(lat), bx = cx - R * Math.cos(lat * RAD) - 2;
@@ -245,7 +247,7 @@
   /* Rain shadow: a cross-section; altitude in km on the left. */
   function shadowScene(W, H, S, at, o){
     o = o || {};
-    var out = [], L = 40, Rt = W - 10, Tp = 12, B = H - 16, zmax = Math.max(4.5, S.H + 1), phone = W < 560;
+    var out = [], L = 40, Rt = W - 10, Tp = 12, B = H - 16, zmax = Math.max(4.5, S.H + 1.8), phone = W < 560;
     function X(u){ return L + u * (Rt - L); }
     function Y(z){ return B - z / zmax * (B - Tp); }
     function ground(u){ var d = (u - 0.52) / 0.17; return S.H * Math.exp(-d * d * 0.9); }
@@ -284,8 +286,14 @@
     pts.forEach(function(p){
       var hide = o.hide && ((p.top && o.hide.top) || (p.u > 0.9 && o.hide.lee));
       var y = Y(pz(p.u)) - (p.top ? 14 : 10);
-      if(p.cb){ out.push(tag(X(0.01), Y(S.lcl) - 8, p.s, 'ec-tag-wet', 'start')); return; }
-      out.push(tag(X(p.u), y, hide ? (p.top ? 'Summit ? °C' : 'Far side ? °C') : p.s, p.top || p.u > 0.9 ? 'ec-tag-you' : '', p.a));
+      // the summit on the summit; start, cloud base and far side in a column
+      // under the leeward heading, clear of the air's path, the rain and Enlarge
+      var txtS = hide ? (p.top ? 'Summit ? °C' : 'Far side ? °C') : p.s;
+      if(p.top){ out.push(tag(X(p.u), y, txtS, 'ec-tag-you', 'middle')); return; }
+      var row = p.cb ? 1 : p.u > 0.9 ? 2 : 0;
+      var colY = Tp + 42 + row * 24, peakY = Y(pz(0.52)) - 14;
+      if(phone && Math.abs(colY - peakY) < 22 + 48) colY = peakY + 30 + row * 24;
+      out.push(tag(X(0.99), colY, txtS, p.cb ? 'ec-tag-wet' : p.u > 0.9 ? 'ec-tag-you' : '', 'end'));
     });
     if(at != null){
       var pu = 0.05 + at * 0.9;
@@ -534,7 +542,10 @@
       host.removeEventListener('click', onClick);
       s.root.addEventListener('click', onClick);
       draw();
-      if(s.mode() === 'explore') s.hint({ target: $('.ec-fig'), inside: true, text: ({ sun: 'Start here: drag the Date slider', winds: 'Start here: move the balloon', shadow: 'Start here: Send the air over', enso: 'Start here: try Side by side' })[st.scene] });
+      if(s.mode() === 'explore'){
+        $('.ec-fig').insertAdjacentHTML('beforeend', '<span class="ec-hintspot" aria-hidden="true"></span>');
+        s.hint({ target: $('.ec-hintspot'), text: ({ sun: 'Start here: drag the Date slider', winds: 'Start here: move the balloon', shadow: 'Start here: Send the air over', enso: 'Start here: try Side by side' })[st.scene] });
+      }
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ if(!anim) draw(); }, 60); }).observe($('.ec-fig')); }
       window.addEventListener('resize', function(){ if(!anim) draw(); });
     }

@@ -75,3 +75,5 @@
 /* chip rows wrap from their left edge (no sideways scroll) */
 .ech-chips{display:flex;flex-wrap:wrap;gap:8px;overflow:visible;}
 .ech-chips[hidden]{display:none;}
+/* the first-run hint points here: a small spot near the top of the picture */
+.ech-hintspot{position:absolute;left:50%;top:6px;width:24px;height:24px;margin-left:-12px;pointer-events:none;}

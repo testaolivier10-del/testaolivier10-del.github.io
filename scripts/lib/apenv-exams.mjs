@@ -216,10 +216,49 @@ export function checkJustify(prompts, ctx) {
    item's keyed option, or a prompt's text). Each entry is { id, key, starts?,
    also?, check? } for an item (also: distractor values recomputed from the
    slip they name, each one an option) and { id, has: [...], check? } for a
-   prompt. Empty until Phase 3 writes the exams and prompts; the shape is
-   kept so the check is ready. */
-void Calc;
-export const EXAM_NUMBERS = [];
+   prompt. Every number comes from ApEnvCalc (scripts/lib/apenv-mathlib.mjs,
+   Calc), the same code the graders use. */
+const C = (fn, ...args) => Calc.evaluate({ fn, args });
+// Thousands commas, as the options print numbers.
+const nf = (x, d = 0) => Number(x.toFixed(d)).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+const r12 = x => +x.toPrecision(12);
+// Form 1, set exam-1-s1: GPP 24,000, respiration 9,000, 10% per level.
+const g1 = { gpp: 24000, r: 9000 }, npp1 = C('npp', g1.gpp, g1.r);
+// Form 1, set exam-1-s2: Country P, CBR 28, CDR 8 in 2025; 40 million doubles to 80 million.
+const ni1 = C('naturalIncrease', 28, 8);
+// Form 1, set exam-1-s3: 400 tubes, 32 W to 15 W, 2,000 h, $0.12 and 0.4 kg per kWh.
+const tubes = 400, hrs = 2000, kwhSaved = C('div', C('mul', tubes, C('sub', 32, 15), hrs), 1000), kwhLed = C('div', C('mul', tubes, 15, hrs), 1000), kwhOld = C('div', C('mul', tubes, 32, hrs), 1000);
+// Form 2, set exam-2-s1: 1,200,000 to 1,500,000; 1.4% per year from 2025.
+// Form 2, set exam-2-s2: 40 ha, 6,000 m3/ha, drip 40% less, $0.25 per m3.
+const dripHa = C('mul', 6000, C('sub', 1, 0.40)), savedHa = C('sub', 6000, dripHa), savedFarm = C('mul', savedHa, 40);
+// Form 2, set exam-2-s3: sea level 0, 32, 66, 103 mm in 1993, 2003, 2013, 2023.
+const sea = [0, 32, 66, 103];
+export const EXAM_NUMBERS = [
+  { id: 'env-exam-1-01', key: `${nf(npp1)} kcal/m²/yr`, also: [`${nf(C('gpp', g1.gpp, g1.r))} kcal/m²/yr`, `${nf(C('tenPercent', g1.gpp, 1))} kcal/m²/yr`, `${nf(g1.r)} kcal/m²/yr`] },
+  { id: 'env-exam-1-02', key: `${nf(C('tenPercent', npp1, 2))} kcal/m²/yr`, also: [`${nf(C('tenPercent', npp1, 1))} kcal/m²/yr`, `${nf(C('tenPercent', npp1, 3))} kcal/m²/yr`, `${nf(C('tenPercent', g1.gpp, 2))} kcal/m²/yr`] },
+  { id: 'env-exam-1-04', key: `${ni1.toFixed(1)}%`, also: [`${nf(28 - 8)}%`, `${((28 - 8) / 100).toFixed(1)}%`, `${C('naturalIncrease', 28, -8).toFixed(1)}%`] },
+  { id: 'env-exam-1-05', key: `${C('doublingYear', 2025, ni1)}`, check: () => C('mul', 40, 2) === 80,
+    also: [`${Math.round(C('doublingYear', 2025, 20))}`, `${Math.round(C('doublingYear', 2025, 3.6))}`, `${2025 + 70}`] },
+  { id: 'env-exam-1-11', key: `${nf(kwhSaved)} kWh`, also: [`${nf(kwhSaved * 1000)} kWh`, `${nf(kwhLed)} kWh`, `${nf(kwhSaved / tubes)} kWh`] },
+  { id: 'env-exam-1-12', key: `\\$${nf(C('cost', kwhSaved, 0.12))}`, also: [`\\$${nf(C('div', kwhSaved, 0.12))}`, `\\$${nf(C('cost', kwhOld, 0.12))}`, `\\$${nf(C('cost', kwhLed, 0.12))}`] },
+  { id: 'env-exam-1-13', key: `${nf(C('emissions', kwhSaved, 0.4))} kg`, also: [`${nf(C('div', kwhSaved, 0.4))} kg`, `${nf(C('emissions', kwhLed, 0.4))} kg`, `${nf(C('emissions', kwhSaved, 0.4) / 1000, 2)} kg`] },
+  { id: 'env-exam-1-18', key: `Pesticide X is ${C('magnification', 500, 50)} times as toxic as pesticide Y`, also: [`Pesticide Y is ${C('magnification', 500, 50)} times as toxic as pesticide X`, `Pesticide X is ${C('sub', 500, 50)} times as toxic as pesticide Y`] },
+  { id: 'env-exam-1-21', key: `About ${Math.round(C('percentChange', 316, 420))}%`, also: [`About ${Math.round(C('percentChange', 316, 420) * 316 / 420)}%`, `About ${C('sub', 420, 316)}%`, `About ${(420 / 316).toFixed(1)}%`] },
+  { id: 'env-exam-2-05', key: `${C('percentChange', 1200000, 1500000)}%`, also: [`${C('fractionOf', 300000, 1500000)}%`, `${C('percentChange', 1200000, 1500000) / 100}%`, `${C('fractionOf', 1500000, 1200000)}%`] },
+  { id: 'env-exam-2-06', key: `${C('doublingYear', 2025, 1.4)}`, check: () => C('mul', 1500000, 2) === 3000000,
+    also: [`${C('doublingYear', 2025, 14)}`, `${C('doublingYear', 2000, 1.4)}`, `${2025 + 70}`] },
+  { id: 'env-exam-2-07', key: `It would double, to about ${C('ruleOf70', 0.7)} years`, check: () => C('ruleOf70', 0.7) === 2 * C('ruleOf70', 1.4),
+    also: [`It would halve, to about ${C('ruleOf70', 1.4) / 2} years`, `It would stay at about ${C('ruleOf70', 1.4)} years, since the population is the same`] },
+  { id: 'env-exam-2-12', key: `${nf(dripHa)} m³`, also: [`${nf(C('percentOf', 40, 6000))} m³`, `${nf(6000 - 40)} m³`, `${nf(C('mul', 6000, 1.40))} m³`] },
+  { id: 'env-exam-2-13', key: `${nf(savedFarm)} m³`, also: [`${nf(C('mul', dripHa, 40))} m³`, `${nf(C('mul', 6000, 40))} m³`, `${nf(savedHa)} m³`] },
+  { id: 'env-exam-2-14', key: `\\$${nf(C('cost', savedFarm, 0.25))}`, also: [`\\$${nf(C('div', savedFarm, 0.25))}`, `\\$${nf(C('cost', C('mul', dripHa, 40), 0.25))}`, `\\$${nf(C('cost', C('mul', 6000, 40), 0.25))}`] },
+  { id: 'env-exam-2-15', key: `About ${Math.round(C('chainEfficiency', 35, 90, 90))}%`, check: () => Math.abs(r12(0.35 * 0.9 * 0.9) - 0.2835) < 1e-12,
+    also: [`About ${Math.round((35 + 90 + 90) / 3)}%`, `About ${35 - 10 - 10}%`, `About 35%`] },
+  { id: 'env-exam-2-19', key: `${C('biomagnify', 0.04, 10, 3)} ppm`, also: [`${C('biomagnify', 0.04, 10, 2)} ppm`, `${C('biomagnify', 0.04, 10, 1)} ppm`, `${r12(0.04 * 10 * 3)} ppm`] },
+  { id: 'env-exam-2-20', key: `About ${C('div', sea[3] - sea[0], 2023 - 1993).toFixed(1)} mm per year`, also: [`About ${Math.round(C('div', sea[3] - sea[0], 3))} mm per year`, `About ${C('div', sea[3] - sea[2], 10).toFixed(1)} mm per year`, `About ${C('div', 30, 103).toFixed(2)} mm per year`] },
+  { id: 'env-exam-2-21', key: 'Sea level rose in each decade, and the rise per decade grew', check: () => { const d = sea.slice(1).map((v, i) => v - sea[i]); return d.every((x, i) => !i || x > d[i - 1]) && d.join() === '32,34,37'; } },
+];
+// Every number a prompt shows, recomputed, in the text where it must appear.
 export const JUSTIFY_NUMBERS = [];
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {
