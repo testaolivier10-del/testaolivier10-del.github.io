@@ -167,7 +167,7 @@
       else if(st.wrongWay.length) head = 'A factor is upside down (outlined). Tap it to turn it over so its units cancel.';
       else if(st.decoys.length) head = 'True but not needed: ' + trayOf(st.decoys[0]).note + ' Remove it with ×.';
       else if(st.done){ head = 'Done. Every unit but ' + st.targetText + ' cancels: ' + nf(st.value, 4) + ' ' + st.targetText + '.'; tone = 'good'; }
-      else head = (cancelled.length ? 'Good: ' + S.pretty(cancelled[cancelled.length - 1]) + ' cancelled. ' : '') + 'Now cancel ' + extra.map(function(e){ return S.pretty(e.u); }).join(' and ') + '.';
+      else head = (cancelled.length ? 'Good: ' + S.pretty(cancelled[cancelled.length - 1]) + ' canceled. ' : '') + 'Now cancel ' + extra.map(function(e){ return S.pretty(e.u); }).join(' and ') + '.';
       var why = whyHtml(st);
       T.explain($('.cs-say'), '<b>' + esc(head) + '</b>', why);
       nums(st);
@@ -192,7 +192,7 @@
     function whyHtml(st){
       var key = S.keyOrder(scn), p = [];
       p.push('<p><b>Dimensional analysis.</b> A conversion factor is a fraction worth 1: ' + esc('0.9 kg CO₂ per 1 kWh') + ' is the same amount on top and bottom, said two ways. Multiplying by it changes the units, not the amount. Put the unit you want to get rid of on the <b>bottom</b>, so it cancels the same unit on top.</p>');
-      p.push('<p><b>Read the struck units.</b> Each cancelled pair has its own colour. When the only unit left is the goal (' + esc(st.targetText) + '), the number is the answer.</p>');
+      p.push('<p><b>Read the struck units.</b> Each canceled pair has its own color. When the only unit left is the goal (' + esc(st.targetText) + '), the number is the answer.</p>');
       if(st.done) p.push('<p><b>On the exam, write it like this</b> (the setup point):</p>' + setupHtml(st) + '<p>Then the answer with its unit (the second point): <b>' + esc(nf(st.value, 4) + ' ' + st.targetText) + '</b>.</p>');
       else p.push('<p><b>One way to finish:</b> ' + key.map(function(k){ var tr = trayOf(k.id); return esc(S.pretty(k.flipped ? tr.f[3] : tr.f[1])) + ' over ' + esc(S.pretty(k.flipped ? tr.f[1] : tr.f[3])); }).join(', then ') + '. Any order works if every unit cancels.</p>');
       p.push('<p><b>Without a calculator.</b> Multiply the tops, multiply the bottoms, then divide once. Powers of ten move the decimal point: × 1,000 is three places right, ÷ 1,000 three places left.</p>');
@@ -439,7 +439,7 @@
   /* A chain of factors: the givens as cards first; once the setup is
      answered, the same cards as a chain with each cancelled pair struck. */
   FIG.chain = function(g, b, st){
-    var W = b.W, H = b.H, o = [svgOpen(W, H, st.setup ? 'The chain of factors with the cancelled units struck through' : 'The givens of the problem as cards')];
+    var W = b.W, H = b.H, o = [svgOpen(W, H, st.setup ? 'The chain of factors with the canceled units struck through' : 'The givens of the problem as cards')];
     var cards = [{ top: nf(g.start.v, 4) + ' ' + g.start.u, bot: '' }].concat(g.factors.map(function(f){ return { top: (f.n === 1 && !f.nu ? '1' : nf(f.n, 4) + (f.nu ? ' ' + f.nu : '')), bot: nf(f.d, 4) + (f.du ? ' ' + f.du : '') }; }));
     if(!st.setup){
       var cw = b.ph ? 150 : 180, ch = 54, per = b.ph ? 2 : 3, gx = (W - per * cw - (per - 1) * 14) / 2;
