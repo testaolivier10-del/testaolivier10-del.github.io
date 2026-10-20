@@ -97,10 +97,11 @@
     {
       // As AP® Statistics (docs/apenv-spec.md decision 2): the mark only in
       // the full names, never in a URL; the key travels as its folder,
-      // "environmental-science". 'hidden' until a unit is published.
+      // "environmental-science". Was 'hidden' until published; 'beta' since
+      // the launch (docs/apenv-spec.md decision 12).
       key: 'apenv', short: 'Env Science', name: 'AP® Environmental Science', productName: 'AP® Environmental Science',
       path: '/environmental-science/', dir: 'environmental-science', storagePrefix: 'apenv_', rankLabel: 'Environmental Science rank',
-      searchLabel: 'Environmental Science', aliases: ['environmental', 'envsci', 'apes'], paid: true, status: 'hidden', order: 9,
+      searchLabel: 'Environmental Science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], paid: true, status: 'beta', order: 9,
     },
   ];
 

@@ -95,8 +95,9 @@ test('nothing published: no topic pages, every page noindex', () => {
   for (const f of html) assert.match(readFileSync(f, 'utf8'), /<meta name="robots" content="noindex/, f);
 });
 
-test('the real published list is empty in Phase 0', () => {
-  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, []);
+test('the real published list holds every chapter since the launch', () => {
+  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters,
+    ['skills-math', 'unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6', 'unit-7', 'unit-8', 'unit-9']);
 });
 
 test('the course home has its own headline, olive and its own icon, not Statistics\'', () => {
@@ -174,6 +175,8 @@ test('FRQ pages: the three types, 10 points, the index, the teachers page and sh
   assert.equal(checks[1].check.setup.then.answer, 2055, 'a setup check with its value step');
   const page = readFileSync(join(root, `${D}/frq/frq-placeholder-calc.html`), 'utf8');
   assert.match(page, /class="env-lines"/, 'printable lined space');
+  // "Check my number" grades a setup with ApEnvExpr: the page loads it (Launch fix).
+  for (const f of ['env-expr.js', 'env-math.js', 'env-calc.js', 'env-grade.js']) assert.ok(page.indexOf(`assets/${f}"`) > -1 && page.indexOf(`assets/${f}"`) < page.indexOf('pages/frq-kit.js'), `${f} before frq-kit.js`);
   assert.match(page, /placeholder question/i);
   assert.ok(!page.includes(one.parts[0].sample.slice(0, 50)), 'the sample answer is not in the page HTML');
   for (const p of ['frq/frq-placeholder-design.html', `lessons/${T}.html`, `notes/${T}.html`, 'unit-sheets/unit-3.html']) {

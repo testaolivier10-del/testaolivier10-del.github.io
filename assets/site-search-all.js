@@ -32,7 +32,7 @@
     { key: 'apphys', searchLabel: 'Physics', name: 'AP® Physics 1', dir: 'physics', aliases: ['physics', 'phys', 'physics-1'], status: 'beta' },
     { key: 'apcalc', searchLabel: 'Calculus', name: 'AP® Calculus AB', dir: 'calculus', aliases: ['calculus', 'calc', 'calculus-ab'], status: 'beta' },
     { key: 'apstat', searchLabel: 'Statistics', name: 'AP® Statistics', dir: 'statistics', aliases: ['statistics', 'stats', 'stat'], status: 'beta' },
-    { key: 'apenv', searchLabel: 'Environmental Science', name: 'AP® Environmental Science', dir: 'environmental-science', aliases: ['environmental', 'envsci', 'apes'], status: 'hidden' },
+    { key: 'apenv', searchLabel: 'Environmental Science', name: 'AP® Environmental Science', dir: 'environmental-science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], status: 'beta' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {

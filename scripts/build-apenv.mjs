@@ -53,6 +53,9 @@ const OUT = args.includes('--out') ? args[args.indexOf('--out') + 1] : join(ROOT
 const map = loadMap();
 // APENV_DATA points the build at another data folder (tests use the
 // placeholder sample in scripts/test/fixtures/apenv-data, never environmental-science/data).
+/* A definition is plain text with build-time MathML in it (and the <wbr> the
+   math renderer puts between formulas): escape the text, keep the math. */
+const escKeepMath = (s) => String(s).split(/(<math\b[\s\S]*?<\/math>|<wbr>)/).map((x, i) => i % 2 ? x : esc(x)).join('');
 const C = loadCourse(ROOT, { map, data: process.env.APENV_DATA || undefined, published: process.env.APENV_PUBLISHED !== undefined ? process.env.APENV_PUBLISHED.split(',').filter(Boolean) : undefined });
 const outputs = new Map();
 const LABEL = 'AP® Environmental Science';
@@ -452,7 +455,7 @@ ${bodyOpen(` data-unit="${chId}"`)}
       <p>${text(L.summary)}</p>
       ${(L.ideas || []).length ? `<ul>${L.ideas.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
       <p class="env-sheet-chain">${L.chain.map(s => esc(text(s.effect))).join(' <span aria-hidden="true">&rarr;</span> ')}</p>
-      ${terms(t).length ? `<dl class="env-sheet-terms">${terms(t).map(c => `<div><dt>${esc(c.term)}</dt><dd>${esc(C.glossary[c.id].def)}</dd></div>`).join('')}</dl>` : ''}
+      ${terms(t).length ? `<dl class="env-sheet-terms">${terms(t).map(c => `<div><dt>${esc(c.term)}</dt><dd>${escKeepMath(C.glossary[c.id].def)}</dd></div>`).join('')}</dl>` : ''}
     </section>`;
     }).join('\n  ')}</div>
 </main>
@@ -904,7 +907,7 @@ ${bodyOpen(` data-frq="${f.id}"`)}
 </main>
 ${footer(depth, `frq:${f.id}`)}
 <link rel="stylesheet" href="../assets/pages/pages.css">
-${tail({ depth, section: 'exams', extra: ['env-grade.js', 'pages/frq-kit.js', 'pages/frq.js'], premium: true })}
+${tail({ depth, section: 'exams', extra: ['env-expr.js', 'env-math.js', 'env-calc.js', 'env-grade.js', 'pages/frq-kit.js', 'pages/frq.js'], premium: true })}
 </body>
 </html>
 `;

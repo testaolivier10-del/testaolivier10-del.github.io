@@ -272,8 +272,9 @@
     },
     apenv: {
       name: 'AP® Environmental Science',
-      // Not on sale until its product exists and a unit is published
-      // (docs/apenv-spec.md decision 3): nothing locked, no checkout.
+      // Published (docs/apenv-spec.md decision 12) but not on sale until its
+      // Polar product exists (decision 3, launch checklist): nothing locked,
+      // no checkout.
       onSale: false,
       dailyFree: 15,
       // The free tier (docs/apenv-spec.md decision 9, proposed): Units 1 and 2

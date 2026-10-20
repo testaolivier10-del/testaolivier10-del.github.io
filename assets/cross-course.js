@@ -1,6 +1,6 @@
 /* Cross-course suggestions: "the other course goes deeper on this".
 
-   Eight courses on one site, and a student in one of them has no reason to
+   Nine courses on one site, and a student in one of them has no reason to
    know the others teach the thing they just struggled with. An EMT student who
    finished a cardiology drill is exactly the person A&P's cardiovascular
    chapter was written for; an ochem student who just did pKa is one step from
