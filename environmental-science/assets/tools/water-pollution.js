@@ -139,7 +139,7 @@
         '<div class="wp-grp wp-grp-nutrients"></div>' +
         '<div class="wp-grp wp-grp-heat"></div>' +
         '<div class="wp-grp wp-grp-sewage"></div>' +
-        '<div class="wp-go ls-act wp-grp-act"><button type="button" class="btn-press sm ls-btn ls-pri wp-play">Play 60 days</button><button type="button" class="bt-btn wp-reset">Day 0</button></div>' +
+        '<div class="wp-go wp-grp-act"><button type="button" class="btn-press sm ls-btn ls-pri wp-play">Play 60 days</button><button type="button" class="bt-btn wp-reset">Day 0</button></div>' +
       '</div>' +
       '<div class="wp-say"></div>' +
       T.moreHtml('<div class="wp-tl"></div><label class="bt-radio wp-opt"><input type="checkbox" class="wp-algae" checked> Show the algae on the oxygen graph</label><div class="wp-rv"></div>', 'lake and river temperature') +
@@ -406,15 +406,19 @@
       var PLOT = { x0: x0 + 2, y0: top - 2, x1: x1, y1: bot - 1 }, xsR = steps(x1 - 2, x0 + 120, 24);
       // the hypoxic label: inside the band, toward its right end, clear of both curves
       var ht = phone ? 'Hypoxic: under 2 mg/L' : 'Hypoxic (dead zone): under 2 mg/L', hy = [yh + 13, bot - 4, yh + (bot - yh) / 2 + 4];
-      var hp = Lo.place(ht, 11.5, 800, grid(xsR, hy, [x1, yh + 13], 'end'), { within: { x0: x0 + 2, y0: yh + 1, x1: x1, y1: bot }, optional: true }) ||
-        Lo.place(phone ? 'Hypoxic below this line' : 'Hypoxic (dead zone) below 2 mg/L', 11.5, 800, grid(xsR, [yh - 4, yh - 18, yh - 32], [x1, yh - 4], 'end'), { within: PLOT });
-      if(hp && /below/.test(ht) === false && hp.y < yh) ht = phone ? 'Hypoxic below this line' : 'Hypoxic (dead zone) below 2 mg/L';
-      labs.push(bgr(hp, 'wp-lbg') + '<text class="wp-hypo-t" ' + at(hp) + '>' + ht + '</text>');
+      var hp = Lo.place(ht, 11.5, 800, grid(xsR, hy, [x1, yh + 13], 'end'), { within: { x0: x0 + 2, y0: yh + 1, x1: x1, y1: bot }, optional: true });
+      if(hp) labs.push(bgr(hp, 'wp-lbg') + '<text class="wp-hypo-t" ' + at(hp) + '>' + ht + '</text>');
+      else {
+        // no clear room in the band: a key on the title row names it instead
+        var kt = phone ? 'Hypoxic: under 2' : 'Hypoxic (dead zone): under 2 mg/L', kw = textW(kt, 11.5, 800);
+        var kp = Lo.place(kt, 11.5, 800, grid(steps(x1, x0 + kw + 20, 12), [top + 12, top + 26, (top + yh) / 2], [x1, top + 12], 'end'), { within: { x0: x0 + 18, y0: top - 2, x1: x1, y1: yh - 2 } });
+        labs.push(bgr(kp, 'wp-lbg') + '<rect class="wp-hypo" x="' + (kp.b.x0 - 14).toFixed(1) + '" y="' + (kp.y - 10).toFixed(1) + '" width="11" height="11" style="fill-opacity:.6"/><text class="wp-hypo-t" ' + at(kp) + '>' + kt + '</text>');
+      }
       var st = 'saturation ' + F(run.osat) + ' mg/L at ' + tLake + ' °C', sp = Lo.place(st, 11.5, 700, grid(xsR, [y(run.osat) - 5, y(run.osat) + 14], [x1, y(run.osat) - 5], 'end'), { within: PLOT });
       labs.push(bgr(sp, 'wp-lbg') + '<text class="wp-tk" ' + at(sp) + '>' + st + '</text>');
       if(showAlgae && level > 0){
         var pk = run.peakDay, apx = x(pk), apy = ya(run.A[pk]);
-        var ap = Lo.place('algae', 12.5, 800, [[apx - 8, apy + 6, 'end'], [apx + 8, apy + 4, 'start'], [apx, apy - 8, 'middle']].concat(grid(steps(x0 + 6, x(pk + 20), 16), steps(apy, bot - 4, 8), [apx, apy], 'middle')), { within: PLOT, optional: true });
+        var ap = Lo.place('algae', 12.5, 800, [[apx - 8, apy + 6, 'end'], [apx + 8, apy + 4, 'start'], [apx, apy - 8, 'middle'], [apx + 8, apy + 18, 'start'], [apx - 8, apy + 20, 'end'], [apx + 12, apy + 32, 'start']], { within: PLOT, optional: true });
         if(ap) labs.push('<text class="wp-lab wp-c-alg" ' + at(ap) + '>algae</text>');
       }
       g.push(labs.join(''));

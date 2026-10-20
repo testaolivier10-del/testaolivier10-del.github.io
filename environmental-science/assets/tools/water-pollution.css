@@ -129,3 +129,6 @@ body.ls-on .env-crumb{display:none;}
 .wp-lbg{fill:var(--white);fill-opacity:.85;}
 .wp-germs circle{fill:var(--wp-bad);}
 .wp-lab.wp-in{fill:#FFFFFF;stroke:rgba(0,0,0,.35);stroke-width:2.5px;}
+/* Play sits in the dock's flow (not stuck to the screen's foot), so the
+   first-run tip above it never covers the scene switch or the Day stepper. */
+.ls-dock .wp-go{position:static;box-shadow:none;}

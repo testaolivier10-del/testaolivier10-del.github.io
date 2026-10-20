@@ -161,7 +161,7 @@
      flows (static up and heat arrows), interactive } */
   function geom(P, o){
     var W = o.W, H = o.H, n = P.levels.length, phone = W < 600;
-    var colW = phone ? 120 : 214, top = phone ? 30 : 38, bot = o.budget ? (phone ? 74 : 62) : 14;
+    var colW = phone ? 120 : 214, top = phone ? 30 : 38, bot = o.budget ? (phone ? 80 : 62) : 14;
     var band = (H - top - bot) / n, barH = Math.min(band * 0.56, phone ? 46 : 60);
     var x0 = colW + 8, x1 = W - 8, cx = (x0 + x1) / 2, wMax = x1 - x0, wMin = phone ? 26 : 34;
     var vals = P.levels.map(function(l){ return l[o.key]; });
@@ -223,7 +223,7 @@
         '<rect class="ef-bud-r" x="' + x0 + '" y="' + y.toFixed(1) + '" width="' + (w * fr).toFixed(1) + '" height="' + bh + '" rx="4"/>' +
         '<rect class="ef-bud-n" x="' + (x0 + w * fr).toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + (w * (1 - fr)).toFixed(1) + '" height="' + bh + '" rx="4"/>' +
         '<text class="ef-bud-l heat" x="' + (x0 + 2) + '" y="' + ty.toFixed(1) + '">Respiration ' + num(P.r) + '</text>' +
-        '<text class="ef-bud-l npp" x="' + (x1 - 2) + '" y="' + ty.toFixed(1) + '" text-anchor="end">NPP ' + num(P.npp) + '</text></g>');
+        '<text class="ef-bud-l npp" x="' + (phone ? Math.min(x0 + w * fr + 4, x1 - 150) : x0 + w * fr + 4).toFixed(1) + '" y="' + (ty + (phone ? 16 : 0)).toFixed(1) + '">NPP ' + num(P.npp) + '</text></g>');
     }
     return out.join('');
   }
@@ -304,8 +304,8 @@
     host.innerHTML = '<section class="bt-problem ef-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Energy flow through an ecosystem</h2>' +
       '<div class="ef-fig"><svg class="ef-svg" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="' + nid + '-d"></svg><p class="sr-only" id="' + nid + '-d"></p></div>' +
       '<div class="ef-ctl">' +
-        '<div class="ef-views ls-scroll" role="group" aria-label="What the pyramid shows">' + VIEWS.map(function(v){ return '<button type="button" class="tchip ef-view" data-v="' + v[0] + '" aria-pressed="false">' + v[1] + '</button>'; }).join('') + '</div>' +
-        '<div class="ef-ecos ls-scroll" role="group" aria-label="Ecosystem">' + EF.ECO_IDS.map(function(id){ return '<button type="button" class="tchip ef-eco" data-e="' + id + '" aria-pressed="false">' + esc(EF.ECOS[id].title) + '</button>'; }).join('') + '</div>' +
+        '<div class="ef-views" role="group" aria-label="What the pyramid shows">' + VIEWS.map(function(v){ return '<button type="button" class="tchip ef-view" data-v="' + v[0] + '" aria-pressed="false">' + v[1] + '</button>'; }).join('') + '</div>' +
+        '<div class="ef-ecos" role="group" aria-label="Ecosystem">' + EF.ECO_IDS.map(function(id){ return '<button type="button" class="tchip ef-eco" data-e="' + id + '" aria-pressed="false">' + esc(EF.ECOS[id].title) + '</button>'; }).join('') + '</div>' +
         '<div class="ef-gpp"></div><div class="ef-webctl" hidden><button type="button" class="bt-btn ef-reset">Bring every species back</button></div>' +
       '</div>' +
       '<div class="ef-say"></div>' +

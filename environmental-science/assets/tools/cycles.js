@@ -103,7 +103,7 @@
       for(var c = 0; c < 6; c++) out.push('<path class="cy-crop" d="M' + (W * (0.36 + c * 0.03)).toFixed(1) + ' ' + (sea - H * 0.03).toFixed(1) + ' v-' + (16 * s) + ' m0 4 l-5 -5 m5 9 l5 -5"/>');
       if(on.fert) out.push('<g transform="translate(' + (W * 0.55) + ' ' + (sea - H * 0.03) + ') scale(' + s + ')"><path d="M-10 0 L-12 -26 Q0 -30 12 -26 L10 0Z" class="cy-bag"/><text x="0" y="-9" text-anchor="middle" class="cy-bag-t">N</text></g>');
       // lightning
-      out.push('<path class="cy-bolt" d="M' + (W * 0.66) + ' ' + (H * 0.18) + ' l-10 22 h9 l-8 22 l20 -28 h-9 l8 -16z"/>');
+      out.push('<path class="cy-bolt" d="M' + (W * (W < 600 ? 0.6 : 0.66)) + ' ' + (H * 0.18) + ' l-10 22 h9 l-8 22 l20 -28 h-9 l8 -16z"/>');
       if(on.flood) out.push('<path class="cy-puddle" d="M' + (W * 0.36) + ' ' + (sea - H * 0.015) + ' q' + (W * 0.08) + ' 8 ' + (W * 0.16) + ' 0 z"/>');
     } else if(cy === 'phosphorus'){
       out.push(tree(W * 0.08, sea - H * 0.06, 1.1 * s) + tree(W * 0.34, sea - H * 0.03, 0.9 * s, true));
@@ -161,7 +161,7 @@
       },
       RP: {
         burn: { f: ['r', 0], t: ['b', 0.2], via: [[0.5, 0.78]] }, decomp: { f: ['r', -0.4], t: ['b', -0.2] },
-        clear: { f: ['r', 0.5], t: ['b', -0.5] }, plant: { f: ['l', 0.5], t: ['t', 0.3] },
+        clear: { f: ['b', 0.75], t: ['b', -0.5], via: [[0.43, 0.22]] }, plant: { f: ['l', 0.5], t: ['t', 0.3] },
         volcano: { f: ['r', 0], t: ['r', 0.3], via: [[0.975, 0.62], [0.975, 0.34], [0.84, 0.24]] }
       }
     },
@@ -175,6 +175,10 @@
         nitr: { f: ['r', 0], t: ['b', -0.5] }, assim: { f: ['l', 0], t: ['b', 0.6] },
         waste: { f: ['b', -0.4], t: ['t', 0.3] }, ammon: { f: ['b', 0], t: ['t', -0.2] },
         leach: { f: ['b', 0.3], t: ['t', 0] }
+      },
+      RP: {
+        denit: { f: ['t', 0.5], t: ['b', 0.6] }, light: { f: ['b', -0.2], t: ['t', -0.6] },
+        wdenit: { f: ['r', 0], t: ['b', 0.95], via: [[0.95, 0.62], [0.95, 0.32]] }
       }
     },
     phosphorus: {
@@ -198,9 +202,9 @@
         melt: { f: ['t', 0.3], t: ['r', 0], via: [[0.3, 0.018], [0.975, 0.03], [0.975, 0.5]] }
       },
       RP: {
-        pump: { f: ['t', -0.85], t: ['b', -0.75] }, runoff: { f: ['b', 0.6], t: ['l', 0] }, rivers: { f: ['t', 0.7], t: ['b', -0.5] },
+        pump: { f: ['t', -0.85], t: ['b', -0.75] }, runoff: { f: ['r', 0.5], t: ['l', 0] }, rivers: { f: ['t', 0.7], t: ['b', -0.5] },
         evap: { f: ['t', 0.6], t: ['b', 0.8] }, oprecip: { f: ['b', 0.35], t: ['t', -0.3] },
-        melt: { f: ['l', 0], t: ['b', 0.6], via: [[0.045, 0.4], [0.045, 0.975], [0.86, 0.975]] }
+        melt: { f: ['t', -0.6], t: ['b', 0.6], via: [[0.03, 0.12], [0.03, 0.975], [0.86, 0.975]] }
       }
     }
   };
