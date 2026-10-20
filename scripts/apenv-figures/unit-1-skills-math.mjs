@@ -438,7 +438,7 @@ const add = (topic, fig) => figs.push({ topic, ...fig });
   b += box(560, 300, 180, 120, 'Decomposers and\ndetritivores\nfungi, bacteria,\nearthworms', { fill: SAND, stroke: '#8C6D46', size: 12 });
   b += T(560, 440, 'They break down dead matter', { size: 11, fill: GREY }) + T(560, 454, 'from every level.', { size: 11, fill: GREY });
   b += T(24, 24, 'A meadow food web: arrows point from the food to the eater', { size: 15, weight: 'bold' });
-  b += T(24, 462, 'Producers green, primary consumers olive, secondary consumers blue, top predator vermillion.', { size: 11, fill: GREY });
+  b += T(24, 462, 'Producers green, primary consumers olive, higher consumers blue, top predator vermillion.', { size: 11, fill: GREY });
   add('food-webs', svg('food-webs-meadow', W, H, 'A meadow food web',
     'A food web in a meadow, with arrows from food to eater. Grass is eaten by grasshoppers and rabbits. Shrubs are eaten by rabbits and mice. Grasshoppers are eaten by frogs. Frogs are eaten by snakes. Mice are eaten by snakes, foxes and hawks. Rabbits are eaten by foxes and hawks. Snakes are eaten by hawks. Decomposers and detritivores, such as fungi, bacteria and earthworms, break down dead matter from every level.', b));
 }
