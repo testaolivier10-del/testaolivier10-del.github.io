@@ -449,6 +449,8 @@
     </footer>
 </div>
 <script src="assets/nav.js" defer></script>
+<script src="assets/body-figures.js" defer></script>
+<script src="assets/station-patient.js" defer></script>
 <script src="assets/station-run.js" defer></script>
 <script>
 /* ---- Tool Studio (docs/tools-calm.md; assets/nremt-studio.js) ------------
@@ -476,6 +478,7 @@ document.addEventListener('DOMContentLoaded', function(){
   studio.add('details', guide);
   var INTRO = '<h3 class="ls-title-l">A station, out loud, against the clock</h3>' +
     '<p>Examiners score what you say and show, not what you think. Say each phase out loud as you would in the room, then tick it. The clock runs against the station&rsquo;s limit, and the critical criteria light up when the run breaks one: no PPE if you tick a later phase before BSI, and the time limit once it passes. Tap any other criterion you know you broke.</p>' +
+    '<p><b>On a patient.</b> Bleeding control and BVM ventilation are run on an illustrated patient: each action you tick happens on the body (gauze, the tourniquet, the mask, the bag), and at the end anything missed or done out of order is still showing, numbered. You can place the tourniquet by tapping the thigh, and squeeze the bag yourself to practice the rate.</p>' +
     '<p>No points, no pass or fail: the real sheet has its own point list. The reading guide in Details has how scoring works and the official sheets.</p>';
   var stepped = null;
   function card(name){
@@ -515,6 +518,8 @@ document.addEventListener('DOMContentLoaded', function(){
       var sp = window.LevlStudio.stepper(wrap, { items: 'li.run-step', label: 'Phase' });
       wrap.addEventListener('change', function(e){
         if(!e.target.checked) return;
+        // a step the patient says is not done yet (a tourniquet that does not stop the bleed) waits
+        if(e.target.closest('li').classList.contains('is-hold')) return;
         var all = [].slice.call(wrap.querySelectorAll('li.run-step')), i = all.indexOf(e.target.closest('li'));
         if(i >= 0 && i < all.length - 1) setTimeout(function(){ sp.go(i + 1); }, 250);
       });
