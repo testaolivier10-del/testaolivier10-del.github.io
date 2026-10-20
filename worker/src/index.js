@@ -17,19 +17,9 @@
 import { runReminders, reminderText } from './reminders.js';
 import { runEmailReminders, unsubscribe } from './email.js';
 import { umamiProxy } from './umami.js';
+import { MODELS, extractText } from './ai.js';
+import { gradeRoute } from './frq-grade.js';
 import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar, bearerToken, sessionUser } from './premium.js';
-
-// Tried in order until one answers. A single hard-coded model is a time bomb:
-// this shipped on @cf/meta/llama-3.1-8b-instruct, which the docs still list but
-// the platform had deprecated months earlier, and the assistant fell back to
-// quoting notes for every question with nothing on the page saying why.
-// A deprecated model fails immediately and costs no inference, so the chain is
-// only ever walked when something is genuinely wrong.
-const MODELS = [
-  '@cf/zai-org/glm-4.7-flash',
-  '@cf/google/gemma-4-26b-a4b-it',
-  '@cf/nvidia/nemotron-3-120b-a12b',
-];
 
 // Only these origins may call the Worker. Without this, anyone could point
 // their own site at your endpoint and spend your daily allowance.
@@ -189,38 +179,6 @@ function systemPrompt(course){
   return SHARED_RULES + (COURSE_RULES[course] || COURSE_RULES.nremt);
 }
 
-// Workers AI models do not agree on where the text goes: some return
-// {response}, some nest it under result, some use the OpenAI shape, and some
-// return the content as an array of parts. Reading only `response` made a
-// working model look like a broken one — the call succeeded and the answer was
-// thrown away as "Empty response".
-function extractText(result) {
-  if (!result) return '';
-  if (typeof result === 'string') return result.trim();
-
-  const candidates = [
-    result.response,
-    result.result?.response,
-    result.output_text,
-    result.choices?.[0]?.message?.content,
-    result.choices?.[0]?.text,
-    result.message?.content,
-    result.text,
-  ];
-
-  for (const candidate of candidates) {
-    if (typeof candidate === 'string' && candidate.trim()) return candidate.trim();
-    if (Array.isArray(candidate)) {
-      const joined = candidate
-        .map((part) => (typeof part === 'string' ? part : part?.text || part?.content || ''))
-        .join('')
-        .trim();
-      if (joined) return joined;
-    }
-  }
-  return '';
-}
-
 function corsHeaders(origin, env) {
   const allowed = allowedOrigins(env).includes(origin) ? origin : ALLOWED_ORIGINS[0];
   return {
@@ -264,7 +222,7 @@ export default {
     }));
   },
 
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const origin = request.headers.get('Origin') || '';
     const path = new URL(request.url).pathname;
     const reply = (body, status) => json(body, status, origin, env);
@@ -347,6 +305,15 @@ export default {
     // rules that keep it from being abused are in premiumRefund().
     if (path === '/premium/refund') {
       const r = await premiumRefund(request, env);
+      return reply(r.body, r.status);
+    }
+
+    /* The AI free-response grader (src/frq-grade.js, docs/frq-grader.md):
+       signed-in Premium students only, checked inside, plus a daily cap.
+       Same Origin check and throttle as everything above. */
+    if (path === '/frq/grade') {
+      const later = ctx && typeof ctx.waitUntil === 'function' ? (p) => ctx.waitUntil(p) : undefined;
+      const r = await gradeRoute(request, env, { later });
       return reply(r.body, r.status);
     }
 

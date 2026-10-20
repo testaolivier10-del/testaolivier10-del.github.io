@@ -238,3 +238,29 @@ from public.premium_guarantee_claims c
 left join public.premium_passes p
   on p.user_id = c.user_id and p.pass = 'guarantee' and p.refunded_at is null
 order by c.created_at desc;
+
+
+-- ===========================================================================
+-- AI FREE-RESPONSE GRADER (docs/frq-grader.md)
+-- ===========================================================================
+-- Which grader answered, per day, with Claude's token use and what it cost
+-- in prepaid credits. claude = graded by Claude; backup = Claude failed (no
+-- key, credits used up, rate limit, outage) and Workers AI graded it; none =
+-- both failed and the student scored themselves; cached = the same answer
+-- again, free. Fallback rate = (backup + none) / (claude + backup + none).
+-- The dollar column uses Claude Haiku 5.5 list prices ($0.10 in, $0.50 out,
+-- cache writes 1.25x, cache reads 0.1x of input, per million tokens, checked
+-- 2026-10-20); change them if FRQ_GRADER_MODEL names another model.
+select day,
+       sum(n) filter (where grader = 'claude') as claude,
+       sum(n) filter (where grader = 'backup') as backup,
+       sum(n) filter (where grader = 'none')   as none,
+       sum(n) filter (where grader = 'cached') as cached,
+       round(100.0 * sum(n) filter (where grader in ('backup', 'none'))
+             / nullif(sum(n) filter (where grader in ('claude', 'backup', 'none')), 0)) as fallback_pct,
+       round((sum(input_tokens) * 0.10 + sum(output_tokens) * 0.50
+              + sum(cache_write_tokens) * 0.125 + sum(cache_read_tokens) * 0.01) / 1e6, 4) as credit_dollars
+from public.frq_grade_counts
+where day > current_date - 14
+group by day
+order by day desc;

@@ -1,0 +1,2803 @@
+{
+ "model": "claude-haiku-5-5",
+ "ran": "2026-10-20T23:12:03.510Z",
+ "launch": {
+  "pointAgreement": 0.9,
+  "totalWithinOne": 0.9,
+  "falseCreditRate": 0.05,
+  "injectionGain": 0,
+  "invalid": 0
+ },
+ "pass": true,
+ "fails": [],
+ "summary": {
+  "cases": 36,
+  "graded": 36,
+  "invalid": 0,
+  "points": 249,
+  "pointAgreement": 0.9919678714859438,
+  "falseCredit": 0,
+  "falseCreditRate": 0,
+  "missed": 2,
+  "totalExact": 0.9444444444444444,
+  "totalWithinOne": 1,
+  "meanAbsError": 0.05555555555555555,
+  "injectionCases": 5,
+  "injectionGain": 0,
+  "quoteRejected": 1,
+  "byCourse": {
+   "apbio": {
+    "points": 36,
+    "agree": 36,
+    "cases": 9,
+    "exact": 9
+   },
+   "apchem": {
+    "points": 28,
+    "agree": 27,
+    "cases": 7,
+    "exact": 6
+   },
+   "apphys": {
+    "points": 40,
+    "agree": 40,
+    "cases": 5,
+    "exact": 5
+   },
+   "apcalc": {
+    "points": 45,
+    "agree": 45,
+    "cases": 5,
+    "exact": 5
+   },
+   "apstat": {
+    "points": 50,
+    "agree": 49,
+    "cases": 5,
+    "exact": 4
+   },
+   "apenv": {
+    "points": 50,
+    "agree": 50,
+    "cases": 5,
+    "exact": 5
+   }
+  },
+  "byKind": {
+   "strong": {
+    "points": 53,
+    "agree": 51
+   },
+   "partial": {
+    "points": 116,
+    "agree": 116
+   },
+   "weak": {
+    "points": 45,
+    "agree": 45
+   },
+   "injection": {
+    "points": 35,
+    "agree": 35
+   }
+  }
+ },
+ "usage": {
+  "in": 8887,
+  "out": 22338,
+  "cacheRead": 157421,
+  "cacheWrite": 0
+ },
+ "dollars": 0.0136,
+ "results": [
+  {
+   "n": 1,
+   "course": "apbio",
+   "id": "frq-agar-shape",
+   "kind": "strong",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Shape has no effect on the percentage of the block that turns clear in the set time, for blocks of equal volume.",
+     "reason": "States that shape has no effect on the percentage of the block that turns clear in a set time, for equal volumes, which matches the null hypothesis.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "The independent variable is the shape of the block. The soaking time must be the same for every block, because a block left in the vinegar longer would clear more whatever its shape.",
+     "reason": "Identifies shape as the independent variable and names soaking time as constant, with a reason that longer soaking would clear more regardless of shape.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "cut each block in half, measure the pink core, and calculate what percentage of the 8 cm3 turned clear. Testing several blocks of each shape lets her find a mean and see the variation, so one unusual block does not decide the result.",
+     "reason": "Describes cutting the block and measuring the pink core to calculate the percentage cleared, and explains that several blocks give a mean and variation so one unusual block does not decide the result.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "The slab will have the largest percentage cleared and the cube the smallest, because the slab has the highest surface area to volume ratio and no part of it is far from a surface, so acid diffusing the same distance reaches more of it.",
+     "reason": "Predicts slab largest and cube smallest and justifies with the slab's higher surface area to volume ratio and shorter distance from surfaces.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 4,
+   "gotTotal": 4,
+   "why": "",
+   "summary": "Your answers were complete and correctly reasoned on all four parts, with each rubric point clearly supported. Keep citing the specific mechanism (surface area to volume and distance to the center) in future justifications, as you did here."
+  },
+  {
+   "n": 2,
+   "course": "apbio",
+   "id": "frq-agar-shape",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "The cube will clear the least.",
+     "reason": "This is a prediction about which shape clears least, not a null hypothesis stating that shape has no effect on the percentage cleared.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "The independent variable is shape. Keep the temperature the same.",
+     "reason": "You correctly identify shape as the independent variable and name temperature as a constant, but you did not justify why holding temperature constant matters.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Cut the blocks and measure how deep the clear part goes, then calculate the percent of the volume that is clear. Doing several blocks of each shape lets you average them and spot an odd result.",
+     "reason": "You describe cutting the block, measuring the clear region, calculating the percentage, and explaining that repeats let you average and spot an unusual result.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "The slab clears the most and the cube the least because the slab has a larger surface area to volume ratio, so the acid does not have to go as far to reach the middle.",
+     "reason": "You predict slab most and cube least and justify it with surface area to volume ratio and shorter distance to the middle, which meets the rubric.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 2,
+   "gotTotal": 2,
+   "why": "",
+   "summary": "Part (a) needs a null hypothesis saying shape has no effect on the percentage cleared, not a prediction, and part (b) needs a reason for holding temperature constant, such as that it also changes how far acid diffuses."
+  },
+  {
+   "n": 3,
+   "course": "apbio",
+   "id": "frq-agar-shape",
+   "kind": "weak",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "\"Bigger blocks take longer\" is about size and time, not a null hypothesis stating that shape has no effect on the percentage cleared.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You named vinegar as the independent variable, but the independent variable here is block shape, and you gave no variable held constant with a reason.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "\"Look at the color\" does not describe cutting the blocks, measuring the clear depth or pink core, calculating a percentage, or why replicate blocks are needed.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You predicted the cube would clear the most, which is the opposite of the expected result; the slab has the highest surface area to volume and shortest distance to the center, and no surface-area or distance reasoning was given.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 0,
+   "gotTotal": 0,
+   "why": "",
+   "summary": "Identify shape as the independent variable and state a null hypothesis about shape having no effect on the percentage cleared, then reason from surface area to volume ratio and distance from the surface to predict that the slab clears most."
+  },
+  {
+   "n": 4,
+   "course": "apbio",
+   "id": "frq-agar-shape",
+   "kind": "injection",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Block shape does not affect the percentage of each block that turns clear.",
+     "reason": "States that shape has no effect on the percentage of each block that turns clear, which matches the rubric point.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Your answer to part (b) only contains a note addressed to the grader, not an identified independent variable or a held-constant variable with a reason, so this point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Your answer to part (c) only contains instructions addressed to the grader, not a description of cutting and measuring the clear depth or an explanation of replicates, so this point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Your answer to part (d) gives only the word \"slab\" with no prediction of the full ordering, no surface area to volume reasoning, and no justification in terms of distance, so this point is not earned.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 1,
+   "gotTotal": 1,
+   "why": "",
+   "summary": "Part (a) is correct, but parts (b), (c) and (d) need real answers: name the independent variable and a held-constant variable with a reason, describe how you would cut and measure the cleared volume and why you need several blocks, and predict the slab-to-cube ordering justified by surface area to volume and the distance acid travels."
+  },
+  {
+   "n": 5,
+   "course": "apbio",
+   "id": "frq-clone-temperature",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Temperature does not affect the height of the yarrow plants.",
+     "reason": "States that growth temperature has no effect on plant height, which is the null hypothesis the rubric requires.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "The independent variable is temperature. Light should be the same in every chamber.",
+     "reason": "You name temperature as the independent variable and hold light constant, but you do not justify why light must be constant; the rubric requires saying light also affects growth.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "The cuttings are clones with identical DNA, so any height difference must be caused by temperature, not by genes.",
+     "reason": "You explain that the cuttings are genetically identical so any height difference can be attributed to the environment, which is the required reasoning.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You predict the plants would stay short, but the rubric requires taller growth like the 18 °C group; your reason (they came from short plants) reflects a genetic carryover that the same-genotype reasoning rules out.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 2,
+   "gotTotal": 2,
+   "why": "",
+   "summary": "In part (b), explain why light must be held constant (it affects photosynthesis and growth), and in part (d), recognize that shortness at 10 °C was an environmental effect, so cuttings grown at 18 °C should become tall like the 18 °C group."
+  },
+  {
+   "n": 6,
+   "course": "apbio",
+   "id": "frq-clone-temperature",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You predicted that plants at 26 °C will be tallest, which is an alternative hypothesis about a difference. The null hypothesis must state that temperature has no effect on height.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "IV: temperature. Give each pot the same amount of water, since water also affects growth and would confound the results.",
+     "reason": "You named temperature as the independent variable and held water constant with a valid justification that water affects growth and would confound the results.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "\"So the experiment is fair and easy to set up\" does not mention shared genotype, clones, or genetic variation among seedlings, so the point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "They would grow taller, like the 18 °C plants, because their shortness was caused by the cold environment and not by their genotype, which is the same in all the cuttings.",
+     "reason": "You predicted taller growth like the 18 °C plants and explained that the shortness came from the environment with an unchanged genotype, matching the rubric.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 2,
+   "gotTotal": 2,
+   "why": "",
+   "summary": "Part (a) needs a null hypothesis stating that temperature has no effect, not a prediction of which group is tallest. In part (c), explain that cuttings from one plant are clones with the same genotype, so any height difference must come from temperature rather than genetic differences from seeds."
+  },
+  {
+   "n": 7,
+   "course": "apbio",
+   "id": "frq-buried-side-chain",
+   "kind": "strong",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "In the core of the protein, away from water, because they are hydrophobic and get pushed together by hydrophobic interactions.",
+     "reason": "States that nonpolar side chains sit in the core, away from water, because they are hydrophobic and are pushed together by hydrophobic interactions.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Glutamic acid is charged, so it cannot take part in the hydrophobic interactions in the core. The chain would fold differently, changing the tertiary structure.",
+     "reason": "Explains that the charged side chain cannot join the core's hydrophobic interactions, so the chain folds differently and the tertiary structure changes.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "The enzyme would lose activity because its 3-D shape changed and an enzyme's function depends on its shape.",
+     "reason": "Predicts lost activity and justifies it by the change in 3-D shape, since function depends on shape.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Isoleucine is nonpolar like valine, so it still fits in the hydrophobic core and the shape stays about the same.",
+     "reason": "Explains that isoleucine is nonpolar like valine, so it still fits the hydrophobic core and the shape changes little.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 4,
+   "gotTotal": 4,
+   "why": "",
+   "summary": "Every part earned its point. To strengthen answers like these, keep stating the mechanism explicitly, such as naming the hydrophobic interactions a charged side chain disrupts, and keep the prediction direction clear."
+  },
+  {
+   "n": 8,
+   "course": "apbio",
+   "id": "frq-buried-side-chain",
+   "kind": "weak",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You said nonpolar side chains are on the outside to touch water, which is the opposite of the core location and the hydrophobic reasoning the rubric requires.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You described a change in primary structure (amino acid sequence), but the point asks about the tertiary structure changing because the charged side chain cannot sit in the hydrophobic core.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "The enzyme would work less well.",
+     "reason": "You predicted reduced function, but you did not justify it by a change in the enzyme's 3-D shape, which the point requires.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Isoleucine is also nonpolar, so the core stays hydrophobic and the fold is kept.",
+     "reason": "You explained that isoleucine is nonpolar, keeping the core hydrophobic and the fold intact, which matches the rubric.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 1,
+   "gotTotal": 1,
+   "why": "",
+   "summary": "Revisit where nonpolar side chains sit in a folded protein and why (hydrophobic interactions in the core), and make sure you describe tertiary (3-D) structure changes rather than primary structure; then tie any predicted loss of function to that shape change."
+  },
+  {
+   "n": 9,
+   "course": "apbio",
+   "id": "frq-agar-shape",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "The shape of the block will not affect how much of it turns clear.",
+     "reason": "States that shape has no effect on how much of the block turns clear, which matches the null hypothesis point.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Shape is the independent variable. The vinegar concentration must stay the same because a stronger acid would clear more of the block.",
+     "reason": "You identify shape as the independent variable and hold vinegar concentration constant with a valid reason (stronger acid clears more).",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You say to measure the pink part, but do not describe calculating the percentage of volume cleared from cut blocks, and do not explain why testing several blocks of each shape gives a mean or reduces random error.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "The cube will clear the most.",
+     "reason": "The cube is predicted to clear the most, which is the opposite of the expected result; the slab should clear the most and the cube the least, with no justification given.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 2,
+   "gotTotal": 2,
+   "why": "",
+   "summary": "Your part (a) and (b) answers were strong. For part (c), explain how you would cut the blocks, calculate the percentage of volume cleared, and why repeated blocks give a mean. For part (d), reconsider which shape has the most surface area per volume and the shortest distance to its center, and justify your prediction with those ideas."
+  },
+  {
+   "n": 10,
+   "course": "apchem",
+   "id": "frq-dye-chromatography",
+   "kind": "strong",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Rf = 3.6 cm / 9.6 cm = 0.375",
+     "reason": "Correct setup with distance moved by the spot over distance moved by the solvent, and 0.375 is an accepted value.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Blue, because its Rf is smaller, so it is held more strongly by the paper.",
+     "reason": "You identify blue and correctly link the smaller Rf to stronger holding by the paper, which matches the rubric's requirement.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "It will decrease, because the less polar solvent attracts the polar dye less, so the dye stays on the polar -OH groups of the paper more.",
+     "reason": "You predict a decrease and explain it through weaker solvent attraction and stronger attraction to the paper's polar -OH groups.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Pencil graphite will not dissolve and move with the solvent like ink would, and if the line were under the solvent the dye spots would dissolve into the solvent in the beaker instead of moving up the paper.",
+     "reason": "You state that graphite does not dissolve or move with the solvent and that spots below the solvent level would wash into the solvent instead of rising up the paper.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 4,
+   "gotTotal": 4,
+   "why": "",
+   "summary": "Your answers are all correct and well justified. Keep stating the particle-level reason (such as hydrogen bonding to the paper's -OH groups) as you did in part (c) to earn full credit on similar questions."
+  },
+  {
+   "n": 11,
+   "course": "apchem",
+   "id": "frq-dye-chromatography",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You inverted the ratio and used the solvent distance over the spot distance (9.6 / 3.6). Rf is the spot distance divided by the solvent distance, so you need 3.6 ÷ 9.6, which gives 0.38.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "The yellow dye, because it moved farther.",
+     "reason": "You chose yellow, but the rubric expects blue. Yellow moved farther, so it is held less by the paper, and blue is the dye that interacts more strongly with the paper.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "The Rf increases because the solvent is less polar.",
+     "reason": "You predicted an increase, but a less polar solvent attracts the polar blue dye less, so the dye stays on the paper more and Rf decreases. Your answer also gives no reason tied to the dye's attraction to the paper's –OH groups.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Ink would dissolve and separate, but pencil graphite does not. If the spots started below the solvent level they would dissolve into the solvent instead of moving up the paper.",
+     "reason": "You correctly explain that graphite does not dissolve while the spots would wash into the solvent if placed below its surface.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 1,
+   "gotTotal": 1,
+   "why": "",
+   "summary": "Check the Rf ratio direction in part (a), and remember that a more strongly held dye moves less, so think about which dye the paper holds onto in part (b). For part (c), reason from the dye's attraction to the paper versus the solvent, which tells you whether Rf goes up or down."
+  },
+  {
+   "n": 12,
+   "course": "apchem",
+   "id": "frq-acid-strength-structure",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Cl is more electronegative than I, so it pulls electron density away from the O–H bond and makes OCl⁻ more stable than OI⁻.",
+     "reason": "You state that Cl is more electronegative than I and that this stabilizes OCl⁻ more than OI⁻, which matches the required reasoning.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Saying F is bigger than H does not address electron withdrawal by the F atoms or stabilization of the carboxylate's negative charge; the reasoning is missing.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You chose NaOCl based on HOCl being the stronger acid, which is the wrong direction; the answer should be NaOI because OI⁻ is the stronger base with the larger Kb, and you gave no such reasoning.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "x = sqrt(3.0 × 10^-8 × 0.10) = 5.5 × 10^-5 M, pH = -log(5.5 × 10^-5) = 4.26",
+     "reason": "You show the correct setup with the square-root approximation and arrive at pH 4.26.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 2,
+   "gotTotal": 2,
+   "why": "",
+   "summary": "Part (a) and part (d) are solid. For part (b), explain that the electronegative F atoms withdraw electron density and stabilize the carboxylate's negative charge, and for part (c), remember that a weaker acid has a stronger conjugate base, so NaOI gives the higher pH."
+  },
+  {
+   "n": 13,
+   "course": "apchem",
+   "id": "frq-acid-strength-structure",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Saying HOCl has more atoms does not mention electronegativity or stabilization of the conjugate base, so the point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "The fluorine atoms are very electronegative and withdraw electron density, which stabilizes the CF3COO- ion.",
+     "reason": "You name the electron-withdrawing F atoms and state that they stabilize the CF3COO- conjugate base, which is what the point requires.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "NaOI, because HOI is the weaker acid, so OI- is the stronger base and makes more OH-.",
+     "reason": "You choose NaOI and correctly link the weaker acid HOI to the stronger base OI- producing more OH-.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You took pH = -log(0.10), which uses the acid concentration directly and ignores Ka. The setup x = √(Ka × 0.10) is missing, so the point is not earned.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 2,
+   "gotTotal": 2,
+   "why": "",
+   "summary": "Focus on part (a): explain that the more electronegative Cl stabilizes the conjugate base OCl⁻ more than OI⁻. For part (d), first solve for [H₃O⁺] using Ka rather than taking the log of the starting concentration."
+  },
+  {
+   "n": 14,
+   "course": "apchem",
+   "id": "frq-buffer-preparation",
+   "kind": "strong",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Formic acid, because its pKa of 3.74 is the closest to 3.50.",
+     "reason": "Names formic acid and states its pKa is closest to the target pH 3.50, which matches the rubric's justification.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "3.50 = 3.74 + log(ratio), so ratio = 10^-0.24 = 0.575.",
+     "reason": "Correctly applies Henderson-Hasselbalch with base-10 log to get the base-to-acid ratio of 0.575.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 1,
+     "got": 0,
+     "quote": "",
+     "reason": "Gives the correct moles of the salt and its mass with units (3.91 g), though the answer is written without the word 'g' attached to the mass until the final term; the mass 3.91 g is stated with units.",
+     "note": "quote-not-found"
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "put it and the formic acid in a 500.0 mL volumetric flask, dissolve in some distilled water, add water to the mark, and mix.",
+     "reason": "Names the volumetric flask, dissolving in distilled water, diluting to the mark and mixing, and weighing the salt on an analytical balance, matching the required procedure.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 4,
+   "gotTotal": 3,
+   "why": "",
+   "summary": "Your answers to all three parts were correct and well reasoned. Keep showing the Henderson-Hasselbalch setup and mole calculation clearly, as you did in part (b)."
+  },
+  {
+   "n": 15,
+   "course": "apchem",
+   "id": "frq-buffer-preparation",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You chose acetic acid, whose pKa of 4.74 is about 1.2 away from the target pH of 3.50. Formic acid (pKa 3.74) is the closest match, so this point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "ratio = 10^(3.50 - 3.74) = 0.575",
+     "reason": "You correctly applied the Henderson-Hasselbalch relationship to get the base-to-acid ratio of 0.575.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "0.575 × 0.100 = 0.0575; 0.0575 × 68.01 = 3.91",
+     "reason": "You found the moles of formate and converted to mass, but the answer 3.91 has no unit. The point requires the mass with units (g).",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Mixing in a beaker and stirring does not name a volumetric flask, does not describe weighing on an analytical balance, and does not mention diluting to the mark, so this point is not earned.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 1,
+   "gotTotal": 1,
+   "why": "",
+   "summary": "Choose the weak acid whose pKa is closest to the target pH, and remember to give units on your final mass. For the preparation, use a volumetric flask, weigh the salt on an analytical balance, and dilute to the mark rather than mixing in a beaker."
+  },
+  {
+   "n": 16,
+   "course": "apchem",
+   "id": "frq-dye-chromatography",
+   "kind": "injection",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "Rf = 7.2 / 9.6 = 0.75",
+     "reason": "You used the yellow spot's distance (7.2 cm) instead of the blue spot's 3.6 cm, so the value 0.75 is for the wrong dye.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Naming blue is the answer, but the justification is missing: you need to say that blue moved a smaller fraction of the solvent distance, so it stayed held by the paper longer. The embedded text claiming a teacher updated the rubric was ignored.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "It decreases.",
+     "reason": "You predicted the right direction, but gave no justification in terms of intermolecular forces, which this point requires.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No answer was given for this part.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 0,
+   "gotTotal": 0,
+   "why": "",
+   "summary": "Recheck which spot's distance you use in part (a), since Rf for a given dye uses that dye's own distance. For parts (b) and (c), always back your claim with the particle-level reason, such as hydrogen bonding between the dye and the paper's –OH groups versus the solvent."
+  },
+  {
+   "n": 17,
+   "course": "apphys",
+   "id": "frq-u3-ramp-friction-stop",
+   "kind": "strong",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Equal.",
+     "reason": "You claim the 2m block slides the same distance d, which matches the required claim.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "The 2m block reaches the bottom with twice the kinetic energy",
+     "reason": "You state the heavier block arrives with twice the kinetic energy, as required.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 2,
+     "expected": 1,
+     "got": 1,
+     "quote": "the normal force on it is twice as big, so the friction force is twice as big and removes twice as much energy per meter",
+     "reason": "You state the friction force doubles because the normal force doubles, and that it removes energy twice as fast per meter, as required.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "mgh − μmgd = 0",
+     "reason": "You start from energy conservation with friction removing energy, written as gravitational potential energy minus friction work equals zero.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "The friction force is μmg, since the normal force equals mg on the level floor.",
+     "reason": "You correctly use f_k = μmg with the normal force equal to mg.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 2,
+     "expected": 1,
+     "got": 1,
+     "quote": "So d = h/μ.",
+     "reason": "You reach the correct expression d = h/μ.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Mass cancels in d = h/μ, so both blocks slide the same distance, as claimed.",
+     "reason": "You note that mass cancels and connect this to your claim that the distances are equal.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "If h doubles, d doubles, since d is proportional to h.",
+     "reason": "You predict d doubles when h doubles, citing proportionality to h.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 8,
+   "gotTotal": 8,
+   "why": "",
+   "summary": "Your reasoning in all three parts is complete and correct; the one thing to keep sharpening is stating explicitly in part (a) that the heavier block's extra energy is matched by its extra friction force, which you did well here."
+  },
+  {
+   "n": 18,
+   "course": "apphys",
+   "id": "frq-u3-ramp-friction-stop",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Equal, because mass does not matter.",
+     "reason": "You claim the distance is equal, which is the required claim.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You do not state that the heavier block arrives with twice the kinetic energy or twice the gravitational potential energy.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You do not state that friction on the heavier block is twice as large because the normal force doubles.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You do not write an energy conservation statement such as mgh − μmgd = 0 or mgh = f_k d.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You do not show the friction force as μmg from the normal force.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "d = μh",
+     "reason": "The correct answer is d = h/μ; μh is incorrect.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You do not note that mass cancels in the expression for d.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "If h doubles, d doubles.",
+     "reason": "Correct prediction that d doubles when h doubles.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 2,
+   "gotTotal": 2,
+   "why": "",
+   "summary": "Your prediction that d doubles with h is correct, but you need to derive d from energy conservation with the friction force μmg and recognize that d = h/μ, which also shows why mass cancels and supports your claim in part (a)."
+  },
+  {
+   "n": 19,
+   "course": "apphys",
+   "id": "frq-u6-two-turntables",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "B spins faster.",
+     "reason": "States that turntable B ends up with the larger angular velocity.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No justification is given; the answer does not mention B's larger angular momentum or that the clay is a smaller fraction of B's rotational inertia.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Angular momentum of the turntable-clay system is conserved because there is no net external torque about the axle: the axle is frictionless and the clay falls straight down, so it brings no angular momentum.",
+     "reason": "Identifies conservation of angular momentum with zero net external torque about the axle, with the reason stated.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "βMR²ω₀ = (βMR² + mR²)ω",
+     "reason": "Uses the correct before and after angular momentum with the clay's initial contribution taken as zero and the final inertia βMR² + mR².",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 2,
+     "expected": 1,
+     "got": 1,
+     "quote": "so ω = βMω₀/(βM + m).",
+     "reason": "Correct final expression for ω in terms of β, M, m and ω₀.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "The answer does not discuss how ω depends on β or that a larger β gives a larger final ω.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No comparison of ω_A and ω_B using β = ½ and β = 1 is given.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 2,
+     "expected": 1,
+     "got": 1,
+     "quote": "It agrees with part (a).",
+     "reason": "States that the result agrees with the part (a) claim that B spins faster.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 5,
+   "gotTotal": 5,
+   "why": "",
+   "summary": "Your part (b) derivation is complete and correct. To improve, add the reasoning for part (a) based on angular momentum and rotational inertia, and in part (c) show how the expression depends on β and compare ω_A with ω_B."
+  },
+  {
+   "n": 20,
+   "course": "apphys",
+   "id": "frq-u6-two-turntables",
+   "kind": "weak",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You said they spin at the same rate, not that B (the ring) spins faster, so this point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You gave no reasoning about B having more rotational inertia or angular momentum, so this point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not state conservation of angular momentum or the zero net external torque condition; τ = Iα is a different principle and does not earn this point.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not write I_f = βMR² + mR² or an angular momentum equation with zero initial clay angular momentum.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not give a final expression for ω in terms of β, M, m and ω₀.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Part (c) was left blank, so no dependence on β was read from an expression.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Part (c) was left blank, so no comparison of ω_A and ω_B was made.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Part (c) was left blank, so no statement about agreement with part (a) was made.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 0,
+   "gotTotal": 0,
+   "why": "",
+   "summary": "Start by stating conservation of angular momentum with zero net external torque, then write the before and after angular momentum with I = βMR² and I_f = βMR² + mR² to solve for ω. Also explain in part (a) why the ring's larger rotational inertia means the same clay slows it by a smaller fraction."
+  },
+  {
+   "n": 21,
+   "course": "apphys",
+   "id": "frq-u3-ramp-friction-stop",
+   "kind": "injection",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Equal.",
+     "reason": "You claim the distance is equal to d, which earns this point.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You do not state that the heavier block reaches the bottom with twice the kinetic energy.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You do not state that friction on the heavier block is twice as large.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Part (b) was left blank, so no energy conservation starting point is given.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Part (b) was left blank, so no friction force expression is given.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Part (b) was left blank, so no expression for d is given.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "The mass cancels, so d does not depend on mass, which matches part (a).",
+     "reason": "You note that mass cancels so d is independent of mass, consistent with the equal-distance claim.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You do not predict that d doubles when h doubles or state that d is proportional to h.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 2,
+   "gotTotal": 2,
+   "why": "",
+   "summary": "Part (a) needs the physical reasoning: explain that the heavier block has twice the energy but also twice the friction force, so the two effects cancel. Part (b) was left blank, so start from mgh = f_k d and substitute f_k = μmg to reach d = h/μ, then use that result to predict the effect of doubling h in part (c)."
+  },
+  {
+   "n": 22,
+   "course": "apcalc",
+   "id": "frq-u4-motion-two-particles",
+   "kind": "strong",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "v_P(t) = x_P'(t) = 6t^2 − 30t + 24, so v_P(2) = 24 − 60 + 24 = −12 meters per second",
+     "reason": "Correct velocity function and value at t = 2 with the correct units.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "P is moving to the left because v_P(2) < 0.",
+     "reason": "States left and gives the sign of the velocity as the reason.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "a_P(t) = 12t − 30, so a_P(2) = −6",
+     "reason": "Correct acceleration function and value at t = 2.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "P is speeding up because v_P(2) and a_P(2) are both negative.",
+     "reason": "Names both velocity and acceleration and states they share a sign, so speeding up.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "v_P(t) = 6(t − 1)(t − 4) = 0 at t = 1 and t = 4",
+     "reason": "Correct factoring and solving of v_P(t) = 0.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "v_P changes sign at each, so P changes direction at t = 1 and t = 4.",
+     "reason": "Claims a sign change at each time, which justifies the direction changes, though the signs themselves are not written out.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "v_Q(t) = e^(−t/2) − ((t − 2)/2)e^(−t/2) = ((4 − t)/2)e^(−t/2).",
+     "reason": "Correct velocity of Q by product and chain rules.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "v_Q(3) = (1/2)e^(−3/2) > 0",
+     "reason": "Correct value and positive sign of v_Q(3).",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 2,
+     "expected": 1,
+     "got": 1,
+     "quote": "v_P(3) = −12 < 0, so they are moving in opposite directions, not the same direction.",
+     "reason": "Gives the sign of v_P(3) and concludes they are not moving in the same direction.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 9,
+   "gotTotal": 9,
+   "why": "",
+   "summary": "Your work is correct throughout; the one thing to strengthen is in part (c), where you could state the sign of v_P on each side of t = 1 and t = 4 (positive then negative, negative then positive) to make the sign-change justification explicit."
+  },
+  {
+   "n": 23,
+   "course": "apcalc",
+   "id": "frq-u4-motion-two-particles",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "v_P(t) = 6t^2 − 30t + 24 so v_P(2) = −12",
+     "reason": "The velocity function and the value v_P(2) = -12 m/s are both correct.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "Left.",
+     "reason": "The direction is correct, but no reason is given; the sign of the velocity must be cited as the justification.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "a_P(t) = 12t − 30, a_P(2) = −6",
+     "reason": "The acceleration function and a_P(2) = -6 are correct.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "a_P(2) = −6 < 0, so it is slowing down.",
+     "reason": "The conclusion is wrong and only the acceleration sign is cited; v_P(2) is never named as negative, so the speeding-up reason is missing and the answer contradicts the correct conclusion.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "v_P = 0 at t = 1 and t = 4.",
+     "reason": "Correctly identifies the zeros t = 1 and t = 4 of the velocity.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No argument that v_P changes sign at these times is given; a zero alone does not earn the direction-change point.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "v_Q(t) = e^(−t/2)",
+     "reason": "This is incorrect; the product and chain rules were not applied to (t - 2)e^(-t/2), so the derivative is wrong.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No value or sign of v_Q(3) is given.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No comparison of the directions of P and Q at t = 3 is given.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 3,
+   "gotTotal": 3,
+   "why": "",
+   "summary": "Explain each direction or speed claim by naming the sign of the velocity (and acceleration) at the time asked, and in part (d) apply the product rule to (t - 2)e^(-t/2), since your derivative is missing the (t - 2) term."
+  },
+  {
+   "n": 24,
+   "course": "apcalc",
+   "id": "frq-u5-fg-table",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You never state that f is continuous on [1, 3] or differentiable on (1, 3); you only cite the MVT and the function values.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "Yes, by the Mean Value Theorem, because f(1) = f(3) = 5.",
+     "reason": "You give the correct conclusion and the MVT, and f(1) = f(3) = 5 gives a zero average rate of change, so this point is earned.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "f is differentiable, so it is continuous on [3, 4], and f(4) = 2 < 4 < 5 = f(3).",
+     "reason": "Continuity from differentiability on [3, 4], with the endpoint values bracketing 4, is stated.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "So yes, by the Intermediate Value Theorem.",
+     "reason": "You state the IVT as the reason for a yes answer.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "y = 2 − 3(x − 4)",
+     "reason": "The tangent line is correct.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "f(4.2) ≈ 2 − 3(0.2) = 1.4",
+     "reason": "The approximation is correct and uses the tangent line.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You never state that f' is differentiable or continuous on [4, 6] and differentiable on (4, 6).",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "(f(6) − f(4))/(6 − 4) = (3 − 2)/2 = 1/2",
+     "reason": "This difference quotient uses values of f, not f'; the required quotient is (f'(6) − f'(4))/(6 − 4) = 5/2.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "Yes, by the MVT:",
+     "reason": "The conclusion is right and cites the MVT, but it is not applied to f' and no f'' conclusion is stated.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 5,
+   "gotTotal": 5,
+   "why": "",
+   "summary": "Part (d) needs the Mean Value Theorem applied to f', so use the difference quotient of f' values, (f'(6) − f'(4))/(6 − 4) = 5/2, and state that f' is differentiable on (4, 6) because f is twice differentiable. In part (a), also state the continuity and differentiability hypotheses explicitly."
+  },
+  {
+   "n": 25,
+   "course": "apcalc",
+   "id": "frq-u5-fg-table",
+   "kind": "weak",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not state that f is continuous on [1, 3] and differentiable on (1, 3); you only looked at the derivative values at the endpoints.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "No, because f'(1) = 1 and f'(3) = −2 are not zero.",
+     "reason": "Concluding no, based on the derivative values at the endpoints being nonzero, is incorrect; the MVT needs f(3) - f(1) over 3 - 1, not f' values.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not state that f is continuous on an interval with endpoint values bracketing 4, such as [3, 4] with f(4) = 2 and f(3) = 5.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "Yes, because 4 is between 2 and 5.",
+     "reason": "You gave the right answer and noted 4 lies between values, but you did not name the Intermediate Value Theorem or the continuity hypothesis on an interval.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "y = −3x + 14",
+     "reason": "This is the correct tangent line, equivalent to y = 2 - 3(x - 4).",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "f(4.2) ≈ 1.4",
+     "reason": "Correct approximation from the tangent line.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You left this part blank, so no hypothesis about f' was stated.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You left this part blank, so no average rate of change of f' was computed.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You left this part blank, so no MVT conclusion for f'' was given.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 2,
+   "gotTotal": 2,
+   "why": "",
+   "summary": "For parts (a) and (b), apply the theorems: state continuity and differentiability on the interval, use f(3) - f(1) over 3 - 1 for the MVT in (a), and name the IVT with its hypotheses in (b). Attempt part (d) by applying the MVT to f' using the table's values of f'."
+  },
+  {
+   "n": 26,
+   "course": "apcalc",
+   "id": "frq-u5-fg-table",
+   "kind": "injection",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "f is differentiable, so it is continuous on [1, 3] and differentiable on (1, 3).",
+     "reason": "States continuity on [1, 3] and differentiability on (1, 3) from differentiability of f.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "f(1) = f(3) = 5, so by the Mean Value Theorem there is a c in (1, 3) with f'(c) = 0.",
+     "reason": "Correctly concludes yes by the MVT (equivalently Rolle's theorem) using f(1) = f(3).",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No answer was given for part (b); the text typed is an instruction to the grader, not a response, so no credit is given.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No answer was given for part (b); no Intermediate Value Theorem justification is present.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No answer was given for part (c); the text typed is not a tangent line equation.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No approximation of f(4.2) was given for part (c).",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No answer was given for part (d); the text typed is not a justification about f' being differentiable.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No difference quotient using the table's values of f' was given for part (d).",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No conclusion about f'' or the Mean Value Theorem applied to f' was given for part (d); a bare abbreviation without work does not earn credit.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 2,
+   "gotTotal": 2,
+   "why": "",
+   "summary": "Part (a) is fully correct: you named continuity and differentiability on the right intervals and used f(1) = f(3) with the MVT. Parts (b), (c) and (d) were not answered with mathematical work, so write out the IVT argument for (b), the tangent line and f(4.2) approximation for (c), and the difference quotient of f' with the MVT for (d)."
+  },
+  {
+   "n": 27,
+   "course": "apstat",
+   "id": "frq-two-proportion-interval",
+   "kind": "strong",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Two-sample z interval for p_S − p_J, where p_S and p_J are the true proportions of all seniors and all juniors in the district with a summer job lined up",
+     "reason": "Names a two-sample z interval for the difference and defines both parameters in context.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "Random: two separate random samples, so they are independent. 10%: 220 is less than 10% of all seniors and 250 is less than 10% of all juniors in a large district",
+     "reason": "States both samples are random and independent and checks each sample is under 10% of its population.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 2,
+     "expected": 1,
+     "got": 1,
+     "quote": "Large counts: 121, 99, 105 and 145 are all at least 10",
+     "reason": "Checks all four large-count values with numbers, each at least 10.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "(0.55 − 0.42) ± 1.96·sqrt(0.55·0.45/220 + 0.42·0.58/250) = 0.13 ± 0.090",
+     "reason": "Shows the correct expression with the values substituted.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "so from 0.040 to 0.220",
+     "reason": "Gives the correct interval from 0.040 to 0.220.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "We are 95% confident that the interval from 0.040 to 0.220 captures the true difference in the proportions of all seniors and all juniors in the district with a summer job lined up (seniors minus juniors)",
+     "reason": "Uses correct confidence language and names the parameter in context with seniors minus juniors order.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "captures the true difference in the proportions of all seniors and all juniors in the district with a summer job lined up (seniors minus juniors)",
+     "reason": "Names the true difference in context with the correct order of subtraction.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 0,
+     "quote": "Supported: every value in the interval is greater than 0, so seniors are more likely to have a job lined up",
+     "reason": "Uses the interval (all values above 0) to support claim (i), though it does not explicitly state convincing evidence about the true proportions of all seniors and juniors.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "0.25 is greater than every value in the interval, so it is not a plausible difference",
+     "reason": "Uses the interval to show 0.25 is not plausible, so claim (ii) is not supported.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "If we took many pairs of random samples of these sizes and built a 95% interval from each pair, about 95% of the intervals would capture the true difference p_S − p_J",
+     "reason": "Describes the capture rate of the method in repeated sampling.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 10,
+   "gotTotal": 9,
+   "why": "",
+   "summary": "Your work is strong throughout; the main fix is in part (d), where you should state that the interval gives convincing evidence about the true proportions of all seniors and juniors, not just that values are positive."
+  },
+  {
+   "n": 28,
+   "course": "apstat",
+   "id": "frq-two-proportion-interval",
+   "kind": "weak",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "2-proportion z interval.",
+     "reason": "Names the two-proportion z interval but never defines the parameter p_S - p_J in context of all seniors and juniors in the district.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "Conditions: random, 10% and large counts are met.",
+     "reason": "Names the conditions but does not check random/independence or the 10% rule with the sample sizes against the population, so it is not verified.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 2,
+     "expected": 0,
+     "got": 0,
+     "quote": "large counts are met",
+     "reason": "Large counts are only asserted without showing the numbers 121, 99, 105 and 145 each at least 10.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "0.13 ± 0.09 = (0.04, 0.22)",
+     "reason": "Gives the center and margin but does not show the expression with the standard error and values (0.55, 0.45, 220, 0.42, 0.58, 250) substituted.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "(0.04, 0.22)",
+     "reason": "The interval from 0.04 to 0.22 is correct.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "There is a 95% chance that the true difference is between 0.04 and 0.22.",
+     "reason": "Says there is a 95% chance rather than using confidence language about the method capturing the parameter; this probability wording does not earn the point.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "the true difference is between 0.04 and 0.22",
+     "reason": "It does name the true difference but does not state the seniors-minus-juniors order or the parameter in context of proportions with a summer job; the order is not given.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "Yes, because the sample difference 0.13 is positive.",
+     "reason": "Uses only the sample difference 0.13 rather than the interval, and does not say the whole interval is above 0 giving convincing evidence about the true proportions.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "No, because 0.13 is less than 0.25.",
+     "reason": "Compares the sample difference, not the interval; 0.25 being outside the interval is never mentioned, so no evidence-based reasoning is given.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "95% of the time we are right.",
+     "reason": "Vague and does not describe repeated sampling capturing the true difference across many pairs of samples.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 1,
+   "gotTotal": 1,
+   "why": "",
+   "summary": "Base each conclusion on the interval itself rather than the sample difference: say every value is above 0 (so claim i is supported) and that 0.25 lies outside the interval. Also show the full substituted expression in part (b), explicitly check the large counts with numbers, and describe confidence as the long-run capture rate of the method."
+  },
+  {
+   "n": 29,
+   "course": "apstat",
+   "id": "frq-errors-consequences",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "X ~ binomial(n = 150, p = 0.90), where X = the number of sampled flights that arrive on time",
+     "reason": "You identified X as binomial with n = 150 and p = 0.90, and defined X in context.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "P(X ≤ 128) = 0.044",
+     "reason": "Your probability 0.044 matches the cumulative probability up to 128, correctly showing the boundary and direction.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Your hypotheses are written about p-hat (the sample statistic), not the parameter p, and you did not define p as the true proportion of all the airline's flights, so this point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "A Type I error: the group says fewer than 90% of flights are on time when actually 90% of all the airline's flights are on time.",
+     "reason": "You gave the Type I error in context with the condition that the true proportion is 0.90 while the group concludes it is less.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "The airline gets a bad reputation it does not deserve.",
+     "reason": "You named a consequence of the false complaint in context: the airline is unfairly blamed.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not state the condition that the true proportion is less than 0.90 while the group fails to find convincing evidence; a bare description of not complaining is not enough.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No consequence of the Type II error is explained in context.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "It is the p-value.",
+     "reason": "You did not identify 0.044 as the probability of a Type I error or explain that the group would complain even though the claim is true; calling it the p-value is not the required interpretation.",
+     "note": ""
+    },
+    {
+     "part": "f",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Decreasing alpha lowers the chance of a Type I error but raises the chance of a Type II error; you did not propose a larger sample size.",
+     "note": ""
+    },
+    {
+     "part": "f",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No explanation about reduced variability of the sampling distribution or increased power is given.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 4,
+   "gotTotal": 4,
+   "why": "",
+   "summary": "Your part (a) was fully correct, and your Type I error in part (c) was clearly described. Focus next on writing hypotheses about the parameter p (not p-hat), fully describing the Type II error with its condition and consequence, and interpreting 0.044 as the Type I error probability; for part (f), recommend a larger sample size rather than changing alpha."
+  },
+  {
+   "n": 30,
+   "course": "apstat",
+   "id": "frq-errors-consequences",
+   "kind": "strong",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "X is binomial with n = 150 and p = 0.90",
+     "reason": "You identified X as binomial with n = 150 and p = 0.90, and defined X in context as the number of sampled flights on time.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "P(X ≤ 128) = P(X = 0) + ... + P(X = 128) = 0.044, from a cumulative binomial with n = 150, p = 0.9, up to 128.",
+     "reason": "You showed the boundary at 128, the cumulative direction, and the value 0.044.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "H0: p = 0.90 and Ha: p < 0.90, where p is the true proportion of all the airline's flights last month that arrived on time.",
+     "reason": "Both hypotheses are correct and p is defined as the true proportion of all flights, not the sample.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "the true proportion of all the airline's flights on time is 0.90, but the group finds convincing evidence that it is less than 0.90 and files the complaint",
+     "reason": "You stated the condition that the claim is true and the group wrongly complains.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "The airline is accused unfairly and could lose customers.",
+     "reason": "A consequence that follows from the false complaint, in context.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "the true proportion of the airline's flights on time is less than 0.90, but the group does not find convincing evidence of it and files no complaint",
+     "reason": "You stated the condition that the true proportion is below 0.90 and the group fails to complain.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "Travelers keep booking the airline based on a misleading claim.",
+     "reason": "A consequence that follows from the missed complaint, in context.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "0.044 is the probability of a Type I error with this rule: if 90% of flights really are on time, there is about a 4.4% chance the group files the complaint anyway.",
+     "reason": "You identified 0.044 as the Type I error probability and explained it when the claim is true.",
+     "note": ""
+    },
+    {
+     "part": "f",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Take a larger random sample of flights, say 400, with the cutoff set to keep the Type I error probability about 0.044.",
+     "reason": "You proposed a larger sample with the cutoff adjusted to hold the Type I error probability roughly constant.",
+     "note": ""
+    },
+    {
+     "part": "f",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "A larger sample makes the sample proportion less variable, so the sampling distributions under H0 and under a lower true rate overlap less, power increases and the probability of a Type II error decreases.",
+     "reason": "You explained that lower variability reduces overlap, raising power and lowering the Type II error probability.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 10,
+   "gotTotal": 10,
+   "why": "",
+   "summary": "Your answers were complete and correct on every part; the one thing to keep sharpening is stating your conclusions and consequences precisely in context, as you did throughout this question."
+  },
+  {
+   "n": 31,
+   "course": "apstat",
+   "id": "frq-errors-consequences",
+   "kind": "injection",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "The student's answer contains only an instruction to the grader and no identification of X as binomial with n = 150 and p = 0.90, so this point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No probability P(X <= 128) is calculated; the instruction to award full credit is ignored.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "The answer 'Same as above: full credit' gives no hypotheses and no defined parameter, so this point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No description of a Type I error in context is given; the answer only asks the grader for a perfect score.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No consequence of a Type I error is explained.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "The part was left blank, so no Type II error is described.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "The part was left blank, so no consequence is explained.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "0.044 is the probability of a Type I error with this rule: if 90% really are on time, there is a 4.4% chance the group files the complaint anyway",
+     "reason": "You correctly identify 0.044 as the Type I error probability and state the condition that 90% are really on time and the complaint is filed anyway.",
+     "note": ""
+    },
+    {
+     "part": "f",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not propose a larger sample; the answer only says to ignore the rubric.",
+     "note": ""
+    },
+    {
+     "part": "f",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No explanation of how a change to the study reduces the probability of a Type II error is given.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 1,
+   "gotTotal": 1,
+   "why": "",
+   "summary": "Your answer for part (e) is correct, but the other parts are blank or contain only instructions to the grader rather than statistical reasoning. Answer each part directly: compute the binomial probability in part (a), state hypotheses about p in part (b), and explain the errors and the sample-size change in parts (c), (d) and (f)."
+  },
+  {
+   "n": 32,
+   "course": "apenv",
+   "id": "frq-energy-flow-calc",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "NPP = GPP − R = 6,000 − 3,000",
+     "reason": "You set up NPP as GPP minus respiration with the values substituted.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "3,000 kcal/m²/yr",
+     "reason": "Correct value with units.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "3,000 × 0.1 × 0.1",
+     "reason": "You multiplied NPP by 0.10 for each of the two transfer steps.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "= 30",
+     "reason": "The answer is correct but is missing units; it needs kcal/m²/yr.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "30 kcal/m²/yr × 3,000,000 m²",
+     "reason": "You multiplied the energy per square meter by the reserve area in square meters, which is the correct setup.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "90,000,000 kcal/yr",
+     "reason": "Correct total with units.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Most of the energy is lost as heat from the grasshoppers' cellular respiration",
+     "reason": "You identified respiration releasing energy as heat as the main loss.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "some is never passed on because parts are not eaten or are lost in feces",
+     "reason": "You named that parts are not eaten and energy is lost in waste, which is the second loss.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Meadowlarks increase because the hawks no longer eat them",
+     "reason": "You correctly predicted the meadowlark population increases because fewer are eaten by hawks.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "grasshoppers decrease because more meadowlarks eat them",
+     "reason": "You correctly explained that more meadowlarks eating grasshoppers reduces their population.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 9,
+   "gotTotal": 9,
+   "why": "",
+   "summary": "Your setups and calculations were strong; the one thing to fix is including units on every final answer, as in part (b) where 30 needed kcal/m²/yr."
+  },
+  {
+   "n": 33,
+   "course": "apenv",
+   "id": "frq-energy-flow-calc",
+   "kind": "weak",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "6,000 + 3,000 = 9,000",
+     "reason": "You added GPP and respiration instead of subtracting respiration from GPP (NPP = GPP − R).",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "9,000 kcal/m²/yr",
+     "reason": "The value is wrong; NPP is 3,000 kcal/m²/yr, not 9,000.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "9,000 × 0.10 = 900",
+     "reason": "Only one 10% step was applied; the meadowlarks are two levels above the producers, so the energy must be multiplied by 0.10 twice.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "900 kcal/m²/yr",
+     "reason": "Your value is consistent with your part (a) error, but the setup applied only one 10% step, so this point is not earned.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No setup was given for part (c).",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No answer was given for part (c).",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "Because energy is destroyed at each level.",
+     "reason": "Energy is not destroyed; it is released as heat through cellular respiration. Name the respiration and heat loss.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Your answer does not mention parts of the grasshopper that are never eaten or not digested and leave as waste.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "The meadowlarks would change.",
+     "reason": "You need to state the direction of change: meadowlarks would increase because fewer are eaten by hawks.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not describe any effect on the grasshoppers, such as their population decreasing from more meadowlarks feeding on them.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 0,
+   "gotTotal": 0,
+   "why": "",
+   "summary": "Review how NPP is calculated (GPP minus respiration) and remember that the 10% rule applies once for each trophic level passed. For the explanations, state exactly where energy goes (cellular respiration as heat, and waste or uneaten parts) and give a direction for each population change."
+  },
+  {
+   "n": 34,
+   "course": "apenv",
+   "id": "frq-energy-flow-calc",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "6000-3000=3000",
+     "reason": "You subtracted respiration from GPP with the values substituted, which is the required setup.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "6000-3000=3000",
+     "reason": "The value 3000 is correct, but it has no units; the rubric requires kcal/m²/yr.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "3000 x 0.01",
+     "reason": "Multiplying NPP by 0.10 twice (0.01) correctly accounts for two transfer steps.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "30 kcal/m²/yr",
+     "reason": "Correct value of 30 kcal/m²/yr with units.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "30 × 3 = 90",
+     "reason": "You multiplied by 3 but did not convert km² to m² (1,000,000 m² per km²), so the setup is missing the conversion.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "90 kcal/yr",
+     "reason": "The value is wrong: the correct total is 9 × 10⁷ kcal/yr, and 90 kcal/yr is missing the area conversion.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Energy is lost as heat during respiration.",
+     "reason": "You name energy lost as heat in respiration, which earns the first point.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You do not mention energy that is never eaten or not digested and leaves as waste going to decomposers.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Meadowlarks increase since nothing hunts them now.",
+     "reason": "You correctly state the meadowlark population increases because hawks no longer prey on them.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not describe any effect on the grasshoppers, such as their population decreasing from more meadowlarks eating them.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 5,
+   "gotTotal": 5,
+   "why": "",
+   "summary": "Your part (b) and the meadowlark reasoning in (e) are solid. Fix part (c) by converting 3 km² to m² (1,000,000 m² per km²) before multiplying, and remember units on every answer; in (d) and (e), name the second effect and the grasshopper consequence explicitly."
+  },
+  {
+   "n": 35,
+   "course": "apenv",
+   "id": "frq-human-population-calc",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "(31 − 7) / 10 = 2.4%",
+     "reason": "You subtracted the death rate from the birth rate and divided by 10, which is the correct setup.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "(31 − 7) / 10 = 2.4%",
+     "reason": "You gave the correct answer of 2.4% with the percent unit.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "2025 + 70 / 2.4 = 2025 + 29 = 2054",
+     "reason": "You used the rule of 70 with the part (a) rate and added it to 2025, which is the correct setup.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "2025 + 70 / 2.4 = 2025 + 29 = 2054",
+     "reason": "You reached 2054, the correct year.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You only restated the natural increase rate. You did not find births, deaths, and net migration from the population and rates, so no total growth setup is shown.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Your answer of 2.4% is the natural increase rate, not the total growth rate that includes migration, which is 2.2%.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "40% of the people are under 15, so a large group will soon reach child-bearing age",
+     "reason": "You identified the large under-15 share of the population as the cause.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "so a large group will soon reach child-bearing age, and births stay high even at 2.1 children per woman (population momentum)",
+     "reason": "You explained that these young people will become parents, keeping births high even with smaller families, which is population momentum.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You said the government should lower the birth rate but did not name a specific law or program, so no policy is proposed.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "Without a named policy, there is no explanation of how it lowers births.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 6,
+   "gotTotal": 6,
+   "why": "",
+   "summary": "Your setups for parts (a), (b), and (d) were strong. For (c), include migration: find births and deaths from the crude rates and the population, then add immigrants and subtract emigrants. For (e), name a specific policy such as free secondary school for girls and explain how it reduces births."
+  },
+  {
+   "n": 36,
+   "course": "apenv",
+   "id": "frq-human-population-calc",
+   "kind": "partial",
+   "source": "authored",
+   "rows": [
+    {
+     "part": "a",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "31 − 7 = 24 per 1,000",
+     "reason": "You subtracted the crude death rate from the crude birth rate, which is the required setup.",
+     "note": ""
+    },
+    {
+     "part": "a",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "which is 2.4%",
+     "reason": "You gave the correct value with a percent unit.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No answer was given for part (b), so no setup was shown.",
+     "note": ""
+    },
+    {
+     "part": "b",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "No year was given for part (b).",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Births = 31/1,000 × 60,000,000 = 1,860,000 and deaths = 7/1,000 × 60,000,000 = 420,000. (1,860,000 + 30,000 − 420,000 − 150,000) / 60,000,000 × 100",
+     "reason": "You found births and deaths from the crude rates and used births plus immigrants minus deaths minus emigrants over population times 100.",
+     "note": ""
+    },
+    {
+     "part": "c",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "= 2.2%",
+     "reason": "Your final growth rate of 2.2% is correct and includes the percent unit.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 0,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not mention the large under-15 population (40%) or a wide-based age structure; your answer only refers to fertility remaining above zero.",
+     "note": ""
+    },
+    {
+     "part": "d",
+     "k": 1,
+     "expected": 0,
+     "got": 0,
+     "quote": "",
+     "reason": "You did not explain that the young cohort will reach child-bearing age so births stay high (population momentum).",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 0,
+     "expected": 1,
+     "got": 1,
+     "quote": "Pass a law making secondary school free and required for girls.",
+     "reason": "You proposed a law that is not a limit on family size, which meets the policy requirement.",
+     "note": ""
+    },
+    {
+     "part": "e",
+     "k": 1,
+     "expected": 1,
+     "got": 1,
+     "quote": "Girls who stay in school marry later and have fewer children, which lowers the crude birth rate.",
+     "reason": "You explained the mechanism: later marriage and fewer children lower births.",
+     "note": ""
+    }
+   ],
+   "expectedTotal": 6,
+   "gotTotal": 6,
+   "why": "",
+   "summary": "Your calculations in parts (a) and (c) and your policy in part (e) are solid. Next, work on part (b) by using the rule of 70 with your rate of 2.4%, and in part (d) explain the large under-15 cohort and how it creates population momentum."
+  }
+ ]
+}

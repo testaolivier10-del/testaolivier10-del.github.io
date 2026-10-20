@@ -55,6 +55,11 @@ writing rules (setups with brackets and units, specific answers, content traps):
 map and the CED check: `docs/apenv-phase0.md`; open points: `docs/apenv-needs-author.md`; briefs (authors A-G,
 builders T1-T4): `docs/apenv-briefs/`. Registered `hidden` until launch.
 
+## AI FRQ grader (AP® courses)
+
+`docs/frq-grader.md` is the status file (owner decisions, design, setup, eval and launch rule). Worker:
+`worker/src/frq-grade.js`; page: `assets/course/frq-grader.js`; eval: `scripts/frq-eval/`. Shipped off.
+
 ## Ochem readability and diagram pass
 
 `docs/ochem-readability-audit.md` lists every notes and lesson page's findings, worst first, and

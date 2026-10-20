@@ -18,7 +18,8 @@ const SCHEMA = readFileSync('scripts/sql/schema.sql', 'utf8');
 const FN = /(?:create or replace function|create function) public\.(\w+)\(.*?\n\$\$;\n/gs;
 const blocks = (sql) => new Map([...sql.matchAll(FN)].map((m) => [m[1], m[0]]));
 
-const WORKER_ONLY = ['unsubscribe_email_reminder', 'premium_add_pass', 'premium_refund_order', 'premium_rechain', 'count_premium_paid'];
+const WORKER_ONLY = ['unsubscribe_email_reminder', 'premium_add_pass', 'premium_refund_order', 'premium_rechain', 'count_premium_paid',
+  'frq_grade_take', 'frq_grade_give_back', 'count_frq_grade'];
 
 function browserRpcs() {
   const names = new Set();
@@ -205,7 +206,8 @@ test('2026-10h-apstat.sql adds apstat to every course check and course list, run
 
 test('2026-10k-apenv.sql adds apenv to every course check and course list, runs last, matches schema.sql, and is not granted to browsers where it must not be', () => {
   const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
-  assert.equal(files[files.length - 1], '2026-10k-apenv.sql', 'runs after 2026-10j-question-stats.sql');
+  // Later migrations that list no paid-course set (2026-10l, the FRQ grader) may follow it.
+  assert.ok(files.indexOf('2026-10k-apenv.sql') > files.indexOf('2026-10j-question-stats.sql'), 'runs after 2026-10j-question-stats.sql');
   const mig = readFileSync('scripts/sql/migrations/2026-10k-apenv.sql', 'utf8');
   const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv')";
   for (const t of ['premium_passes', 'premium_funnel', 'exam_completions'])
@@ -250,4 +252,26 @@ test('2026-10e-funnel-seen.sql: limit-hit is a funnel step everywhere the browse
   }
   assert.doesNotMatch(fns.get('track_ref'), /'paid'/, 'a browser cannot claim a sale');
   assert.match(mig, /grant execute on function public\.count_premium_step\(text, text\) to anon, authenticated;/);
+});
+
+test('2026-10l-frq-grader.sql: the grader cap and counts are Worker only, match schema.sql and run last', () => {
+  const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
+  assert.equal(files[files.length - 1], '2026-10l-frq-grader.sql');
+  const mig = readFileSync('scripts/sql/migrations/2026-10l-frq-grader.sql', 'utf8');
+  assert.match(mig, /NOT APPLIED/);
+  const fns = blocks(mig);
+  for (const f of ['frq_grade_take', 'frq_grade_give_back', 'count_frq_grade']) {
+    assert.ok(fns.has(f), `${f} is defined`);
+    assert.equal(fns.get(f), blocks(SCHEMA).get(f), `${f} matches schema.sql`);
+    assert.doesNotMatch(mig + SCHEMA, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`), `${f} stays Worker only`);
+  }
+  // The cap is atomic: one upsert that refuses past the limit.
+  assert.match(fns.get('frq_grade_take'), /on conflict \(user_id, day\) do update set n = frq_grade_daily\.n \+ 1\s+where frq_grade_daily\.n < p_limit/);
+  for (const t of ['frq_grade_daily', 'frq_grade_counts']) {
+    assert.ok(mig.includes(`alter table public.${t} enable row level security;`), `${t} has RLS`);
+    assert.ok(SCHEMA.includes(`create table if not exists public.${t} (`), `${t} is in schema.sql`);
+  }
+  // Anonymous: the counts carry no user.
+  const counts = mig.slice(mig.indexOf('create table if not exists public.frq_grade_counts'), mig.indexOf(');', mig.indexOf('create table if not exists public.frq_grade_counts')));
+  assert.doesNotMatch(counts, /user_id|browser|ip/);
 });

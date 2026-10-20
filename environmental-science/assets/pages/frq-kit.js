@@ -23,7 +23,8 @@
      ApEnvFrq.scores() / saveScore(id, rec)  self-scores in apenv_prefs_v1
                                              .frqScores (synced with prefs)
 
-   No AI grading: the student checks each rubric point themselves. */
+   The student checks each rubric point themselves; the optional AI grader
+   (assets/course/frq-grader.js) can pre-fill those checkboxes as an estimate. */
 (function(){
   var DRAFTS = 'apenv_frq_drafts_v1', PREFS = 'apenv_prefs_v1';
   // The four free-response questions of May 2027, in exam order

@@ -23,7 +23,8 @@
      ApBioFrq.scores() / saveScore(id, rec)  self-scores in apbio_prefs_v1
                                              .frqScores (synced with prefs)
 
-   No AI grading: the student checks each rubric point themselves. */
+   The student checks each rubric point themselves; the optional AI grader
+   (assets/course/frq-grader.js) can pre-fill those checkboxes as an estimate. */
 (function(){
   var DRAFTS = 'apbio_frq_drafts_v1', PREFS = 'apbio_prefs_v1';
   var TYPES = {
