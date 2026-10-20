@@ -62,7 +62,8 @@
       var conv = R * NO / (NO + K.ks);
       var dNO = K.eNO * E + jN - tit - conv - mix * NO;
       var dNO2 = K.eNO2 * E - jN + tit + conv - K.lN * J * NO2 - mix * NO2;
-      var dO3 = jN - tit - mix * (O3 - K.bg) - K.dep * O3;
+      // surface uptake of ozone acts on a thinner layer when mixing is shallow
+      var dO3 = jN - tit - mix * (O3 - K.bg) - K.dep * (0.75 / mix) * O3;
       var dV = K.eV * E + 3 - K.lV * R * V - mix * V;
       NO += dNO * dt; NO2 += dNO2 * dt; O3 += dO3 * dt; V += dV * dt;
       if(k >= 3 * per && (k - 3 * per) % 50 === 0){

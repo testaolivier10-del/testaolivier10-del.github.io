@@ -115,7 +115,7 @@
    "options": [
     "Warmer water holds more dissolved oxygen",
     "Warmer water holds less dissolved oxygen",
-    "Oxygen stays the same at every temperature",
+    "Oxygen stays about level as it warms",
     "Oxygen falls until 20 °C, then rises again"
    ],
    "correct": 1,
@@ -174,7 +174,7 @@
    "q": "Warm water also speeds up fish metabolism. Why does that make thermal pollution doubly hard on fish?",
    "stimulus": "thermal-pollution-s1",
    "options": [
-    "Oxygen supply falls just as the fish need more of it",
+    "Less oxygen just as fish need more",
     "Warm water holds more oxygen, so fish grow too fast",
     "Faster metabolism lets fish live without oxygen",
     "Warm water turns oxygen into carbon dioxide"
@@ -204,7 +204,7 @@
     "About 10 °C, where the line reaches 11 mg per L",
     "About 20 °C, where the line reaches 9 mg per L",
     "About 0 °C, where the line is highest",
-    "About 34 °C, where the line drops below 7 mg per L"
+    "About 34 °C, below 7 mg per L"
    ],
    "correct": 3,
    "why": {
@@ -230,7 +230,7 @@
    "options": [
     "Temperature falls and oxygen rises",
     "Both temperature and oxygen rise together",
-    "Temperature rises by 11 °C and oxygen falls by 2.6 mg per L",
+    "It warms by 11 °C; oxygen falls",
     "Neither changes much between the two sites"
    ],
    "correct": 2,
@@ -256,7 +256,7 @@
    "stimulus": "thermal-pollution-s2",
    "options": [
     "Metals in the cooling water poison the trout",
-    "The heated water from the plant is too warm and too low in oxygen",
+    "The water is too warm and low in oxygen",
     "Fertilizer from the plant causes an algal bloom",
     "Radiation from the plant's fuel leaks into the river"
    ],
@@ -316,9 +316,9 @@
    "q": "Which change at the plant would most directly reduce the harm shown in the table?",
    "stimulus": "thermal-pollution-s2",
    "options": [
-    "Cool the water in a cooling tower or pond before returning it",
+    "Cool the water in a cooling tower first",
     "Add chlorine to the water before returning it",
-    "Release the water at night in summer only",
+    "Release the water at night during summer",
     "Stock the river with more trout each spring"
    ],
    "correct": 0,
@@ -345,7 +345,7 @@
     "Metals released into a river by a factory",
     "Radioactive waste leaking from a nuclear plant",
     "Extra nutrients that cause algal blooms",
-    "A harmful rise in water temperature caused by people"
+    "Water warmed by people to harmful levels"
    ],
    "correct": 3,
    "why": {
@@ -370,7 +370,7 @@
    "options": [
     "Fertilizer runoff from corn fields",
     "Pesticides sprayed on orchards",
-    "Cooling water returned by power plants",
+    "Power plant cooling water",
     "Sulfur dioxide from smokestacks"
    ],
    "correct": 2,
@@ -395,7 +395,7 @@
    "q": "How does paving a watershed add thermal pollution to its streams?",
    "options": [
     "Pavement adds metals that heat the water chemically",
-    "Rain warms as it runs over hot pavement, then flows into streams",
+    "Rain warms on hot pavement, then flows in",
     "Pavement blocks rain, so streams dry up and cool",
     "Paved roads release radiation that warms water"
    ],
@@ -420,7 +420,7 @@
    "diff": 2,
    "q": "What is thermal shock?",
    "options": [
-    "A sudden temperature change that kills organisms",
+    "A sudden, deadly change in temperature",
     "A slow warming over many decades",
     "An electric current in water from power lines",
     "The shock wave from a nuclear reactor"
@@ -449,7 +449,7 @@
     "It protects the river and makes the plant use less water",
     "It raises the river temperature even more",
     "It adds metals to the river",
-    "It protects the river but costs money and evaporates water"
+    "It protects the river but evaporates water"
    ],
    "correct": 3,
    "why": {
@@ -549,19 +549,18 @@
     "correct": "$50{,}000\\,\\frac{\\text{L}}{\\text{s}} \\times 86{,}400\\,\\text{s} = 4{,}320{,}000{,}000\\,\\text{L}$, or $4.32 \\times 10^{9}$ L (4.32 billion liters)."
    },
    "setup": {
-    "answer": "50000 L/s * 86400 s",
+    "answer": "50000 * 86400",
     "mustUse": [
      "50000",
      "86400"
     ],
-    "unit": "L",
     "mistakes": [
      {
-      "expr": "50000 L/s * 24 s",
+      "expr": "50000 * 24",
       "why": "There are 86,400 seconds in a day, not 24. Use 24 × 60 × 60 = 86,400."
      },
      {
-      "expr": "50000 L/s / 86400 s",
+      "expr": "50000 / 86400",
       "why": "Multiply the rate by the time so seconds cancel."
      }
     ],
@@ -578,10 +577,6 @@
       ]
      },
      "mistakes": [
-      {
-       "value": 4.32,
-       "why": "Keep the scale: 4.32 billion is 4,320,000,000 L (4.32 × 10^9)."
-      },
       {
        "value": 1200000,
        "why": "1,200,000 uses 24 instead of 86,400 seconds in a day."

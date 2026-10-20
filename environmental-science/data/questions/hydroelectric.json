@@ -49,9 +49,9 @@
    "q": "How does a hydroelectric dam make electricity?",
    "options": [
     "Water is heated into steam that spins a turbine",
-    "Water is split into hydrogen that is burned",
-    "Sunlight on the reservoir is turned into electricity",
-    "Falling water spins a turbine that turns a generator"
+    "Water is split into hydrogen that is then burned",
+    "Sunlight on the reservoir surface becomes electricity",
+    "Falling water spins a turbine and generator"
    ],
    "correct": 3,
    "why": {
@@ -74,10 +74,10 @@
    "diff": 1,
    "q": "What is a run-of-the-river hydroelectric system?",
    "options": [
-    "One that floods a whole valley behind a tall dam",
-    "One that uses ocean tides moving in and out of a bay",
-    "One that uses a river's natural flow with little or no reservoir",
-    "One that pumps river water uphill to store it for later"
+    "One that floods a whole valley behind a very tall concrete dam",
+    "One that uses ocean tides moving in and out of a narrow bay",
+    "One using natural river flow with little storage",
+    "One that pumps river water uphill to store it for later use"
    ],
    "correct": 2,
    "why": {
@@ -126,10 +126,10 @@
    "diff": 2,
    "q": "A large dam is built on a river where salmon swim upstream to spawn. What is the most direct effect on the salmon?",
    "options": [
-    "The dam blocks their migration to upstream spawning grounds",
-    "The dam raises the salt content of the river",
+    "The dam blocks their way upstream to spawn",
+    "The dam raises the salt content of the river water",
     "The turbines add nutrients that cause algae to grow",
-    "The reservoir releases carbon monoxide that poisons the fish"
+    "The reservoir releases a gas that poisons the fish"
    ],
    "correct": 0,
    "why": {
@@ -153,9 +153,9 @@
    "q": "Why does the river below a large dam often erode its banks and delta, even though the dam holds back floods?",
    "options": [
     "The turbines grind rock into the water, which wears away the banks",
-    "The water below the dam is saltier, so it dissolves the banks",
-    "The dam raises the river's temperature, which melts the banks",
-    "The reservoir traps sediment, so the water released carries little"
+    "The water below the dam is saltier, so it dissolves the river banks",
+    "The dam raises the river's temperature, which softens the banks",
+    "The reservoir traps the sediment"
    ],
    "correct": 3,
    "why": {
@@ -178,10 +178,10 @@
    "diff": 2,
    "q": "Which is a major advantage of a large hydroelectric dam?",
    "options": [
-    "It improves fish migration up and down the river",
-    "It increases the amount of sediment reaching the delta",
-    "It can raise or lower output quickly to match demand",
-    "It releases no greenhouse gases at all over its whole life"
+    "It improves fish migration both up and down the river",
+    "It increases the amount of sediment that reaches the delta",
+    "It can change output quickly to match demand",
+    "It releases no heat-trapping gases over its whole working life"
    ],
    "correct": 2,
    "why": {
@@ -190,7 +190,7 @@
      "Dams block fish migration.",
      "Dams trap sediment.",
      "Right: flexible, storable, reliable output.",
-     "Rotting vegetation in reservoirs releases methane, and building the dam takes concrete."
+     "Rotting plants in reservoirs release methane, and making the concrete releases carbon dioxide."
     ]
    }
   },
@@ -451,10 +451,10 @@
    "q": "Why does a taller dam generally produce more electricity from the same flow of water?",
    "stimulus": "hydroelectric-s2",
    "options": [
-    "A taller dam traps more sediment, which spins the turbine",
+    "A taller dam traps more sediment, which helps spin the turbine",
     "A taller dam keeps the water colder, which spins the turbine faster",
-    "A taller dam blocks more fish, which lowers friction",
-    "The water falls farther, so it has more energy when it hits the turbine"
+    "A taller dam blocks more fish, which lowers friction in the pipe",
+    "The water falls farther, so it carries more energy"
    ],
    "correct": 3,
    "why": {
@@ -478,10 +478,10 @@
    "q": "Using the diagram, which ecological change is most likely in the river below the dam?",
    "stimulus": "hydroelectric-s2",
    "options": [
-    "Migrating fish reach upstream more easily",
-    "The river below the dam dries up completely",
-    "Its flow, temperature and sediment change, altering habitat",
-    "The river becomes warmer and full of new sediment"
+    "Migrating fish reach their upstream streams more easily",
+    "The river below the dam dries up for good",
+    "Flow, temperature and sediment all change",
+    "The river becomes warmer and fills with new sediment"
    ],
    "correct": 2,
    "why": {
