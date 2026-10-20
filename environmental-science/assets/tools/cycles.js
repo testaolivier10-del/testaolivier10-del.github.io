@@ -30,6 +30,7 @@
   function grp(x){ var s = String(x).split('.'); s[0] = s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ','); return s.join('.'); }
   function amt(v){
     var a = Math.abs(v);
+    if(a >= 1e8) return grp(Math.round(v / 1e6)) + ' million';
     if(a >= 1e6) return M.fmt(v / 1e6, 3) + ' million';
     if(a >= 100) return grp(Math.round(v));
     return M.fmt(v, 3);
@@ -136,18 +137,26 @@
      two reservoirs separate and no label sits on another. */
   var BEND = {
     carbon: { photo: 1.6, resp: 1.6, uptake: 1.4, release: 1.4, volcano: -3.2, sediment: 0.4, burial: 0.4, death: 0.6, decomp: 0.9, burn: -1.6, clear: -2.4, plant: 2.6 },
-    nitrogen: { fix: -1.2, light: 1.6, haber: 3.2, denit: 1.4, wdenit: -1.8, nitr: 0.8, assim: 1.2, waste: 0.8, ammon: -0.9, leach: 0.8 },
+    nitrogen: { fix: -0.6, light: 1.4, haber: 3, denit: 0.9, wdenit: -1.2, nitr: 0.8, assim: -1, waste: 0.8, ammon: 0.9, leach: -0.8 },
     phosphorus: { weather: 1, assim: 1.4, decomp: 1.4, runoff: 0.8, sediment: 0.6, uplift: 1.2, mine: -1.8, sewage: -1.2 },
-    water: { evap: 1.3, oprecip: 1.3, lprecip: -1.2, et: -1.3, runoff: 0.8, infil: 0.8, seep: -1, rivers: 0.9, melt: 2.2, pump: 1.2 }
+    water: { evap: 1.3, oprecip: 1.3, lprecip: -1.4, et: -1.4, runoff: 0.8, infil: 0.8, seep: -1.2, rivers: -0.9, melt: -2.6, pump: 1.4 }
   };
-  var LABEL_T = { carbon: { photo: 0.38, resp: 0.38, uptake: 0.36, release: 0.36, volcano: 0.3 }, water: { evap: 0.36, oprecip: 0.36, et: 0.5 }, nitrogen: { light: 0.62 }, phosphorus: { assim: 0.4, decomp: 0.4 } };
+  var LABEL_T = { carbon: { photo: 0.38, resp: 0.38, uptake: 0.36, release: 0.36, volcano: 0.3 }, water: { evap: 0.62, oprecip: 0.36, et: 0.62, lprecip: 0.34, seep: 0.55 }, nitrogen: { light: 0.3, haber: 0.55, fix: 0.55, denit: 0.4, wdenit: 0.5, assim: 0.45 }, phosphorus: { assim: 0.3, decomp: 0.68 } };
+  /* A phone's portrait stage: a few reservoirs move so cards never touch
+     and every arrow keeps room for its number. */
+  var PHONE_AT = {
+    nitrogen: { org: [0.24, 0.27], dead: [0.21, 0.58], nh4: [0.36, 0.8], no3: [0.64, 0.5], water: [0.8, 0.8] },
+    water: { ice: [0.2, 0.17], soil: [0.2, 0.52], lakes: [0.42, 0.68], ocean: [0.8, 0.74], ground: [0.36, 0.93] },
+    carbon: { soil: [0.22, 0.62], ocean: [0.8, 0.62] },
+    phosphorus: { org: [0.22, 0.28], soil: [0.35, 0.6] }
+  };
   function layout(cy, W, H){
-    var Y = CY.CYCLES[cy], phone = W < 600, cs = cardSize(phone), pos = {};
+    var Y = CY.CYCLES[cy], phone = W < 600, cs = cardSize(phone), pos = {}, PA = phone ? PHONE_AT[cy] || {} : {};
     Y.reservoirs.forEach(function(r){
-      var x = r.at[0] * W, y = r.at[1] * H;
-      x = Math.max(cs.w / 2 + 6, Math.min(W - cs.w / 2 - 6, x));
+      var at = PA[r.id] || r.at, w = Math.max(cs.w, r.name.length * (phone ? 7.6 : 8.4) + 18), x = at[0] * W, y = at[1] * H;
+      x = Math.max(w / 2 + 4, Math.min(W - w / 2 - 4, x));
       y = Math.max(cs.h / 2 + 6, Math.min(H - cs.h / 2 - 6, y));
-      pos[r.id] = { x: x, y: y, w: cs.w, h: cs.h };
+      pos[r.id] = { x: x, y: y, w: w, h: cs.h };
     });
     return pos;
   }
@@ -177,14 +186,31 @@
       var f = flux[p.id] != null ? flux[p.id] : p.flux, sel = o.sel === p.id, dim = o.sel && !sel;
       out.push('<path class="cy-arrow' + (p.human ? ' human' : '') + (p.slow ? ' slow' : '') + (sel ? ' is-sel' : '') + (dim ? ' is-dim' : '') + (o.ask === p.id ? ' is-ask' : '') + '" d="' + pathD(cv) + '" stroke-width="' + widthOf(f, phone).toFixed(1) + '" marker-end="url(#' + o.mk + (p.human ? '-h' : sel || o.ask === p.id ? '-s' : '') + ')"/>');
     });
+    // particles go under the labels and cards
+    out.push('<g class="cy-fx" aria-hidden="true"></g>');
     // labels on the arrows: the name on desktop, a number badge on a phone
-    // (or the nitrogen order); the selected process always by name
-    procs.forEach(function(p, i){
-      var cv = cvs[p.id], m = cv.at((LABEL_T[cy] || {})[p.id] || 0.5), sel = o.sel === p.id, dim = o.sel && !sel, ask = o.ask === p.id;
-      var label = ask && o.hideName ? '?' : p.n ? p.n + '. ' + p.name : p.name;
+    // (or the nitrogen order); the selected process always by name. Each
+    // label takes the spot along its arrow that overlaps least with the
+    // cards and the labels already placed.
+    var placed = Y.reservoirs.map(function(r){ var b = pos[r.id]; return [b.x - b.w / 2 - 2, b.y - b.h / 2 - 2, b.x + b.w / 2 + 2, b.y + b.h / 2 + 2]; });
+    function overlap(a, b){ var w = Math.min(a[2], b[2]) - Math.max(a[0], b[0]), h = Math.min(a[3], b[3]) - Math.max(a[1], b[1]); return w > 0 && h > 0 ? w * h : 0; }
+    var order = procs.map(function(p, i){ return { p: p, i: i }; }).sort(function(a, b){ return (b.p.id === o.sel || b.p.id === o.ask) - (a.p.id === o.sel || a.p.id === o.ask); });
+    var NUM = numbered(cy).num;
+    var TRY = [0.5, 0.42, 0.58, 0.34, 0.66, 0.26, 0.74, 0.2, 0.8];
+    order.forEach(function(e){
+      var p = e.p, i = e.i, cv = cvs[p.id], sel = o.sel === p.id, dim = o.sel && !sel, ask = o.ask === p.id;
       if(o.hideLabels && !sel && !ask) return;
-      if(phone && !sel && !ask){ label = p.n ? String(p.n) : String(i + 1); }
+      var label = ask && o.hideName ? '?' : p.n ? p.n + '. ' + p.name : p.name;
+      if(phone && !sel && !ask) label = p.human ? p.name.split(' ')[0] : String(NUM[p.id]);
       var fs = phone ? 11.5 : 12.5, tw = label.length * fs * 0.56 + 12, th = fs + 9;
+      var pref = (LABEL_T[cy] || {})[p.id], tries = pref ? [pref].concat(TRY) : TRY, best = null;
+      tries.forEach(function(tt){
+        var m = cv.at(tt), r = [m[0] - tw / 2, m[1] - th / 2, m[0] + tw / 2, m[1] + th / 2];
+        var sc = placed.reduce(function(s, q){ return s + overlap(r, q); }, 0) + Math.abs(tt - 0.5) * 2 + (r[0] < 2 || r[2] > W - 2 || r[1] < 2 || r[3] > H - 2 ? 5000 : 0);
+        if(!best || sc < best.sc) best = { sc: sc, m: m, r: r };
+      });
+      placed.push(best.r);
+      var m = best.m;
       out.push('<g class="cy-plabel' + (sel ? ' is-sel' : '') + (dim ? ' is-dim' : '') + (p.human ? ' human' : '') + (ask ? ' is-ask' : '') + '" data-p="' + p.id + '"' + (o.interactive ? ' role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(p.name + ': ' + rName(cy, p.from) + ' to ' + rName(cy, p.to)) + '"' : '') + '>' +
         '<rect x="' + (m[0] - tw / 2).toFixed(1) + '" y="' + (m[1] - th / 2).toFixed(1) + '" width="' + tw.toFixed(1) + '" height="' + th + '" rx="' + (th / 2) + '"/>' +
         '<text x="' + m[0].toFixed(1) + '" y="' + (m[1] + fs * 0.36).toFixed(1) + '" text-anchor="middle">' + esc(label) + '</text></g>');
@@ -201,6 +227,15 @@
         '<text class="cy-res-a" x="' + b.x.toFixed(1) + '" y="' + (b.y + b.h / 2 - 8).toFixed(1) + '" text-anchor="middle">' + (o.hideAmounts ? esc(r.what) : at ? esc(at) + (d ? ' <tspan class="cy-d ' + (/▲/.test(d) ? 'up' : 'dn') + '">' + esc(d) + '</tspan>' : '') : d ? '<tspan class="cy-d ' + (/▲/.test(d) ? 'up' : 'dn') + '">' + esc(d) + '</tspan>' : esc(r.what)) + '</text></g>');
     });
     return { svg: out.join(''), curves: cvs, pos: pos };
+  }
+  /* Every natural process has one number, the same on the picture (on a
+     phone) and on its dock chip: the nitrogen processes 1 to 5 in the
+     exam's order, then the rest. */
+  function numbered(cy){
+    var ps = CY.CYCLES[cy].processes.filter(function(p){ return !p.human; });
+    if(cy === 'nitrogen') ps = ps.slice().sort(function(a, b){ return (a.n || 9) - (b.n || 9); });
+    var m = {}; ps.forEach(function(p, i){ m[p.id] = i + 1; });
+    return { list: ps, num: m };
   }
   function isOn(Y, on, pid){ return Y.changes.some(function(c){ return on[c.id] && c.proc === pid; }); }
   function rName(cy, id){ return CY.res(cy, id).name.toLowerCase(); }
@@ -234,7 +269,7 @@
         '<div class="cy-lbl ls-lbl">What people change</div><div class="cy-changes ls-scroll" role="group" aria-label="Human changes"></div>' +
       '</div>' +
       '<div class="cy-say"></div>' +
-      T.moreHtml('<div class="cy-years"></div><div class="bt-buttons"><button type="button" class="bt-btn cy-reset">Undo every change</button></div><p class="bt-small">The years run forward when you switch a change on. Carbon is in GtC (billion tonnes of carbon); nitrogen and phosphorus are relative amounts (each reservoir starts at 100%); water is in thousand km³.</p>', 'years, undo') +
+      T.moreHtml('<div class="cy-years"></div><div class="bt-buttons"><button type="button" class="bt-btn cy-reset">Undo every change</button></div><p class="bt-small">The years run forward when you switch a change on. Carbon is in GtC (billion tonnes of carbon); nitrogen and phosphorus are relative amounts (each reservoir starts at 100%); water is in km³.</p>', 'years, undo') +
       '<div class="cy-nums"></div><p class="sr-only cy-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.cy-live'));
     var cue = T.cue('Tap a process to see what moves where.');
@@ -245,10 +280,8 @@
     var svg = $('.cy-svg');
 
     function chips(){
-      var Y = CY.CYCLES[st.cy];
-      var procs = Y.processes.filter(function(p){ return !p.human; });
-      if(st.cy === 'nitrogen') procs = procs.slice().sort(function(a, b){ return (a.n || 9) - (b.n || 9); });
-      $('.cy-procs').innerHTML = procs.map(function(p){ return '<button type="button" class="tchip cy-p" data-p="' + p.id + '" aria-pressed="false">' + (p.n ? '<span class="cy-n">' + p.n + '</span> ' : '') + esc(p.name) + '</button>'; }).join('');
+      var Y = CY.CYCLES[st.cy], N = numbered(st.cy);
+      $('.cy-procs').innerHTML = N.list.map(function(p){ return '<button type="button" class="tchip cy-p" data-p="' + p.id + '" aria-pressed="false"><span class="cy-n' + (p.n ? ' ord' : '') + '" aria-hidden="true">' + N.num[p.id] + '</span> ' + esc(p.name) + '</button>'; }).join('');
       $('.cy-changes').innerHTML = Y.changes.map(function(c){ return '<button type="button" class="tchip cy-c" data-ch="' + c.id + '" aria-pressed="false">' + esc(c.name) + '</button>'; }).join('');
     }
     function onClick(e){
@@ -330,7 +363,7 @@
       var sz = size(), sm = sim.pools[st.years];
       geo = draw(st.cy, { W: sz.W, H: sz.H, on: st.on, sel: st.sel, pools: sm, flux: sim.flux, interactive: true, mk: mk });
       svg.setAttribute('viewBox', '0 0 ' + sz.W + ' ' + sz.H);
-      svg.innerHTML = defs(mk) + geo.svg + '<g class="cy-fx" aria-hidden="true"></g>';
+      svg.innerHTML = defs(mk) + geo.svg;
       root().querySelectorAll('.cy-cy').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-c') === st.cy)); });
       root().querySelectorAll('.cy-p').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-p') === st.sel)); });
       root().querySelectorAll('.cy-c').forEach(function(b){ b.setAttribute('aria-pressed', String(!!st.on[b.getAttribute('data-ch')])); });

@@ -1,0 +1,8 @@
+{
+ "geothermal": {
+  "def": "Heat from Earth's interior, from radioactive decay and heat left from Earth's formation, used to make electricity where hot rock is near the surface or to heat buildings."
+ },
+ "heat-pump": {
+  "def": "A ground source heat pump uses electricity to move heat between a building and the ground a few meters down, which stays at a steady temperature, heating in winter and cooling in summer."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "persistent-organic-pollutants-transport": {
+  "file": "figures/persistent-organic-pollutants-transport.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A map-like diagram from the warm tropics on the left to the cold Arctic on the right. POPs evaporate from fields and factories in warm regions, hop through the air in a series of evaporate and condense steps, and settle in the cold Arctic, where they enter the ocean food web and build up in seals and polar bears."
+ }
+}

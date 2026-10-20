@@ -291,7 +291,7 @@
       var o3 = [], items = g.kind === 'co2' ? [['coal', 2.31], ['gas', 0.96], ['nuclear', 0], ['wind', 0]] : null;
       if(items){
         o3.push(txt(20, 26, 'CO₂ at the plant, lb per kWh (EIA, 2023)', 'ech-t ech-b'));
-        items.forEach(function(it, k){ var y = 50 + k * 36, w = (W - 190) * it[1] / 2.5; o3.push((ICON[E.SOURCES[it[0]].icon])(32, y + 10, 0.5)); o3.push(txt(56, y + 15, esc(E.SOURCES[it[0]].name), 'ech-t')); o3.push('<rect class="ech-bar ech-bar-' + (it[1] ? 'fossil' : 'clean') + (it[0] === g.source ? ' is-sel' : '') + '" x="150" y="' + y + '" width="' + n2(Math.max(2, w)) + '" height="20" rx="4"/>'); o3.push(txt(156 + Math.max(2, w), y + 15, T.F(it[1], 2), 'ech-t ech-ev')); });
+        items.forEach(function(it, k){ var y = 50 + k * 36, w = (W - 190) * it[1] / 2.5; o3.push((ICON[E.SOURCES[it[0]].icon])(32, y + 10, 0.5)); o3.push(txt(56, y + 15, esc(E.SOURCES[it[0]].name), 'ech-t')); o3.push('<rect class="ech-bar ech-bar-' + (it[1] ? 'fossil' : 'clean') + (it[0] === g.source ? ' is-sel' : '') + '" x="150" y="' + y + '" width="' + n2(Math.max(2, w)) + '" height="20" rx="4"/>'); o3.push(txt(156 + Math.max(2, w), y + 15, it[1] ? T.F(it[1], 2) : '0 at the plant', 'ech-t ech-ev')); });
         svg = '<svg class="ech-svg" viewBox="0 0 ' + W + ' 200" role="img" aria-label="CO2 per kWh: coal 2.31 lb, natural gas 0.96 lb, nuclear and wind 0 at the plant.">' + o3.join('') + '</svg>';
       } else {
         // a meter: power (the rate) times hours

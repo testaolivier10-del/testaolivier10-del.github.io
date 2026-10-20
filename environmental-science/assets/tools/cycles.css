@@ -87,7 +87,8 @@
 .cy-ctl{display:flex;flex-direction:column;gap:8px;}
 .cy-cycles,.cy-procs,.cy-changes{display:flex;flex-wrap:wrap;gap:8px;}
 .cy-lbl{font:800 13px var(--font-ui);color:var(--muted);margin:2px 0 -2px;}
-.cy-n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--cink);color:var(--white);font:900 11px var(--font-ui);}
+.cy-n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--paper);border:1.5px solid var(--line);color:var(--ink);font:900 11px var(--font-ui);}
+.cy-n.ord{background:var(--cink);border-color:var(--cink);color:var(--white);}
 .cy-c[aria-pressed="true"]{border-color:var(--bad-text,#A0291E);}
 .cy-why-l{margin:0;padding-left:18px;display:grid;gap:6px;}
 @media (prefers-reduced-motion:reduce){.cy-fx{display:none;}}

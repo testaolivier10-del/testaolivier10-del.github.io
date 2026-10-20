@@ -1,0 +1,613 @@
+{
+ "stimuli": {
+  "persistent-organic-pollutants-s1": {
+   "kind": "quantitative",
+   "title": "A pesticide in the fat of Arctic seals, far from where it was used",
+   "invented": true,
+   "table": {
+    "caption": "Average concentration of a banned organochlorine pesticide in seal blubber, in parts per billion (invented data for practice). The pesticide was never used within 2,000 km of the colony.",
+    "cols": [
+     "Year",
+     "Pesticide in blubber (ppb)",
+     "Years since a worldwide ban"
+    ],
+    "rows": [
+     [
+      "1985",
+      "1,200",
+      "before ban"
+     ],
+     [
+      "1995",
+      "900",
+      "before ban"
+     ],
+     [
+      "2005",
+      "600",
+      "1"
+     ],
+     [
+      "2015",
+      "420",
+      "11"
+     ],
+     [
+      "2025",
+      "300",
+      "21"
+     ]
+    ]
+   }
+  },
+  "persistent-organic-pollutants-s2": {
+   "kind": "visual",
+   "title": "How long two pesticides last in soil",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of the percent of a pesticide still in soil over 20 years: a persistent organochlorine falls slowly from 100 to 25 percent, while a fast-degrading pesticide falls from 100 to near 0 within 2 years; invented data",
+    "kind": "line",
+    "x": [
+     0,
+     20
+    ],
+    "y": [
+     0,
+     100
+    ],
+    "xStep": 4,
+    "yStep": 20,
+    "xLabel": "Years after application",
+    "yLabel": "Pesticide left in soil (%)",
+    "series": [
+     {
+      "name": "Persistent pesticide",
+      "points": [
+       [
+        0,
+        100
+       ],
+       [
+        2,
+        87
+       ],
+       [
+        4,
+        76
+       ],
+       [
+        6,
+        66
+       ],
+       [
+        8,
+        57
+       ],
+       [
+        10,
+        50
+       ],
+       [
+        12,
+        44
+       ],
+       [
+        16,
+        33
+       ],
+       [
+        20,
+        25
+       ]
+      ]
+     },
+     {
+      "name": "Fast-degrading pesticide",
+      "points": [
+       [
+        0,
+        100
+       ],
+       [
+        0.5,
+        50
+       ],
+       [
+        1,
+        25
+       ],
+       [
+        1.5,
+        12.5
+       ],
+       [
+        2,
+        6.25
+       ],
+       [
+        4,
+        0.4
+       ],
+       [
+        8,
+        0
+       ],
+       [
+        20,
+        0
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-persistent-organic-pollutants-1",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe the trend in the pesticide in seal blubber from 1985 to 2025.",
+   "stimulus": "persistent-organic-pollutants-s1",
+   "options": [
+    "It rises each decade after the ban",
+    "It falls but is still present after the ban",
+    "It drops to zero right after the ban",
+    "It stays near 1,200 ppb throughout"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "It falls steadily, from 1,200 to 300 ppb, but it is still present 21 years after the ban.",
+    "options": [
+     "The values fall every decade.",
+     "Right: 1,200 down to 300 ppb, not zero.",
+     "It is still 300 ppb in 2025.",
+     "It falls to a quarter of that level."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-2",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The pesticide was never used within 2,000 km of the seals. How did it reach them?",
+   "stimulus": "persistent-organic-pollutants-s1",
+   "options": [
+    "It moved north by air and water",
+    "Arctic plants make the pesticide naturally",
+    "Seals swim 2,000 km to farms to feed",
+    "It formed in the seals from carbon dioxide in the air"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "POPs evaporate in warm places, travel in the air and ocean currents, and condense in cold regions, so they collect in the Arctic far from where they were used.",
+    "options": [
+     "Right: long-range transport carries POPs toward the poles.",
+     "The pesticide is synthetic; plants do not make it.",
+     "Seals do not feed on farmland; the chemical traveled to them.",
+     "Animals do not make pesticides from CO2."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-3",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in the pesticide in blubber from 1985 to 2025.",
+   "stimulus": "persistent-organic-pollutants-s1",
+   "why": {
+    "correct": "$\\frac{(300 - 1{,}200)}{1{,}200} \\times 100 = -75\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      1200,
+      300
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -300,
+      "why": "You divided by the 2025 value. Divide by the starting (1985) value, 1,200."
+     },
+     {
+      "value": 25,
+      "why": "25% is what is left (300 of 1,200). The change is (300 - 1,200) / 1,200 × 100 = -75%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-4",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does the slow decline after the ban show about this chemical?",
+   "stimulus": "persistent-organic-pollutants-s1",
+   "options": [
+    "The ban had no effect on the pesticide",
+    "It breaks down in a few weeks once it reaches the Arctic",
+    "Seals produce more of it as they age",
+    "It breaks down slowly, lasting decades"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Even with no new use, the pesticide breaks down slowly and stays in food webs and fat for decades: it is persistent.",
+    "options": [
+     "Levels fell after the ban, so it did have an effect.",
+     "If so, levels would drop to near zero quickly.",
+     "Seals do not make the pesticide.",
+     "Right: that is what persistent means."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-5",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "About how long does it take for half of the persistent pesticide to break down?",
+   "stimulus": "persistent-organic-pollutants-s2",
+   "options": [
+    "About half a year",
+    "About 20 years",
+    "About 10 years",
+    "About 2 years"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The persistent pesticide reaches 50% at about 10 years. The fast-degrading one reaches 50% at about half a year.",
+    "options": [
+     "That is the fast-degrading pesticide, the dashed line.",
+     "At 20 years about 25% is left; half was gone at 10 years.",
+     "Right: its line crosses 50% at year 10.",
+     "At 2 years about 87% of the persistent one is left."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-6",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is the persistent pesticide more likely to reach animals far from the field?",
+   "stimulus": "persistent-organic-pollutants-s2",
+   "options": [
+    "It breaks down faster, so it spreads more widely",
+    "It lasts long enough to travel far",
+    "It is applied at higher doses on the fields",
+    "Animals are attracted to its smell"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Because it lasts for decades, it has years to move through soil, water, air and food chains. The fast-degrading one is gone before it can travel far.",
+    "options": [
+     "The persistent one breaks down slower, not faster.",
+     "Right: persistence gives time for transport.",
+     "The graph shows percent left, not doses.",
+     "Nothing in the graph is about smell."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-7",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The fast-degrading pesticide has a half-life of half a year. What percent is left after 2 years?",
+   "stimulus": "persistent-organic-pollutants-s2",
+   "why": {
+    "correct": "2 years is $\\frac{2}{0.5} = 4$ half-lives, so $100\\% \\times 0.5^{4} = 6.25\\%$ is left."
+   },
+   "numeric": {
+    "from": {
+     "fn": "halfLifeLeft",
+     "args": [
+      100,
+      0.5,
+      2
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 12.5,
+      "why": "That is after 3 half-lives. Two years is 4 half-lives of half a year: 100 × 0.5 × 0.5 × 0.5 × 0.5."
+     },
+     {
+      "value": 25,
+      "why": "That is after 2 half-lives (1 year). Two years is 4 half-lives."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-8",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What makes a pollutant a persistent organic pollutant (POP)?",
+   "options": [
+    "It lasts for years and is stored in fat",
+    "It is a metal that dissolves easily in water",
+    "It is a gas that breaks down in hours in sunlight",
+    "It is a nutrient that feeds algae"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "POPs are carbon-based synthetic chemicals that resist breaking down, dissolve in fat rather than water, travel long distances, and are toxic.",
+    "options": [
+     "Right: those features define a POP.",
+     "POPs are organic (carbon-based), and they dissolve in fat, not water.",
+     "POPs last for years or decades.",
+     "That describes nitrate or phosphate."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-9",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these is a persistent organic pollutant?",
+   "options": [
+    "Nitrate from fertilizer",
+    "Carbon monoxide from car exhaust",
+    "Radon from rock under homes",
+    "PCBs from old electrical gear"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "DDT, PCBs and dioxins are classic POPs, now restricted worldwide under the Stockholm Convention.",
+    "options": [
+     "Nitrate is a nutrient, not a POP.",
+     "CO is an air pollutant gas that does not persist this way.",
+     "Radon is a radioactive gas, not an organic chemical.",
+     "Right: PCBs are a classic POP."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-10",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do POPs build up in the fat of animals rather than being passed out in urine?",
+   "options": [
+    "They are too large to fit inside cells",
+    "Animals use them as a source of energy",
+    "They dissolve in fat, not water",
+    "They turn into bone over time"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "POPs dissolve in fat, not water. Urine removes water-soluble substances, so fat-soluble POPs stay stored in fatty tissue.",
+    "options": [
+     "They are small molecules; the issue is fat solubility.",
+     "POPs are not used for energy.",
+     "Right: being fat-soluble keeps them in the body.",
+     "POPs are stored mainly in fat, not built into bone."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-11",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are birds of prey such as bald eagles and peregrine falcons linked to the story of DDT?",
+   "options": [
+    "DDT killed the fish the birds ate, so they starved",
+    "DDT caused thin eggshells that broke",
+    "DDT made the birds grow too large to fly",
+    "DDT attracted birds to farms, where they were shot"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "DDT and its breakdown products interfered with calcium use in birds, so they laid thin-shelled eggs that broke during incubation. Populations recovered after the 1972 United States ban.",
+    "options": [
+     "The key effect was on eggshells, not food supply.",
+     "Right: they recovered after DDT was banned.",
+     "DDT did not change body size this way.",
+     "The decline came from failed eggs."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-12",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What does the Stockholm Convention do?",
+   "options": [
+    "It restricts POPs worldwide",
+    "It limits the chemicals that thin the ozone layer",
+    "It sets limits on the gases that warm the climate",
+    "It protects wetlands of international importance"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Stockholm Convention (2001) is an international treaty to eliminate or restrict the production and use of persistent organic pollutants.",
+    "options": [
+     "Right: it is the global POPs treaty.",
+     "That is a different treaty, covered in Unit 9.",
+     "That is the job of climate treaties.",
+     "That is the Ramsar Convention."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-13",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Some countries still spray DDT on indoor walls to kill mosquitoes that spread a deadly disease. What trade-off does this involve?",
+   "options": [
+    "It is cheap but does not kill mosquitoes",
+    "It breaks down fast, so there is no environmental cost",
+    "It raises crop yields but lowers rainfall",
+    "It saves lives but adds a lasting pollutant"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "DDT sprayed on indoor walls saves lives by killing mosquitoes that carry disease, but it is persistent and can enter the environment and food chains. The treaty allows limited use for this reason.",
+    "options": [
+     "DDT does kill mosquitoes; that is why it is used.",
+     "DDT is persistent; that is the cost.",
+     "Indoor spraying is not about crops or rain.",
+     "Right: health benefits versus long-lasting harm."
+    ]
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-14",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A POP has a half-life of 15 years in lake sediment. Sediment now holds 80 ppm. Write the setup for the concentration after 45 years, then the answer.",
+   "why": {
+    "correct": "45 years is $\\frac{45}{15} = 3$ half-lives: $80\\,\\text{ppm} \\times 0.5 \\times 0.5 \\times 0.5 = 10\\,\\text{ppm}$."
+   },
+   "setup": {
+    "answer": "80 * 0.5^(45 / 15)",
+    "mustUse": [
+     "80",
+     "45",
+     "15"
+    ],
+    "mistakes": [
+     {
+      "expr": "80 * 0.5^(15 / 45)",
+      "why": "The number of half-lives is the time over the half-life: 45 / 15 = 3."
+     },
+     {
+      "expr": "80 / (45 / 15)",
+      "why": "Each half-life halves the amount; it does not divide by the number of half-lives. Use 80 × 0.5 three times."
+     }
+    ],
+    "then": {
+     "unit": "ppm",
+     "from": {
+      "fn": "halfLifeLeft",
+      "args": [
+       80,
+       15,
+       45
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 26.6666666667,
+       "why": "You divided 80 by 3. Halve three times instead: 80, 40, 20, 10."
+      },
+      {
+       "value": 20,
+       "why": "20 ppm is after 2 half-lives (30 years). 45 years is 3 half-lives: 10 ppm."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-15",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Propose a policy that would reduce a POP in a nation's rivers, and explain how it works.",
+   "why": {
+    "correct": "A policy is a rule; this one stops new inputs, the only lasting fix for a chemical that breaks down so slowly."
+   },
+   "specific": {
+    "frame": "The nation could ___, which reduces the POP because ___.",
+    "slots": {
+     "policy": {
+      "label": "Policy",
+      "options": [
+       "ban making and using the chemical and require safe destruction of old stocks",
+       "build a filter on one river",
+       "ask people to eat fish less often"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "One filter is a technology on one river, not a national policy.",
+       "2": "Eating less fish lowers exposure but not the POP in rivers."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "no new chemical enters, so levels fall slowly as the old amount breaks down",
+       "the chemical breaks down faster once it is banned",
+       "fish stop absorbing it"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A ban does not change how fast the chemical breaks down.",
+       "2": "Fish still absorb whatever is left."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "ban",
+      "chemical",
+      "pop"
+     ]
+    },
+    "model": "The nation could ban making and using the chemical and require safe destruction of old stocks, which reduces the POP because no new chemical enters, so levels fall slowly as the old amount breaks down."
+   }
+  }
+ ]
+}

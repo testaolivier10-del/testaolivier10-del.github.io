@@ -204,7 +204,7 @@
     out.push('<rect class="ec-strip" x="' + n2(sx0) + '" y="' + n2(st) + '" width="' + n2(cw) + '" height="' + n2(sb - st) + '" rx="10"/>');
     out.push(txt(sx0 + 6, st - 6, 'Surface', 'ec-t ec-s ec-muted')); out.push(txt(sx1 - 6, st - 6, 'High up', 'ec-t ec-s ec-muted', 'end'));
     // the probe first, so the cells' labels sit on top of it
-    out.push(line(sx0, SY(lat), sx1, SY(lat), 'ec-probe'));
+    out.push(line(sx0 - 8, SY(lat), sx0 + 12, SY(lat), 'ec-probe') + line(sx1 - 12, SY(lat), sx1 + 8, SY(lat), 'ec-probe'));
     /* Each cell is a loop: up (to the right, "high up") along its rising
        edge, poleward or equatorward aloft, down at its sinking edge, back
        along the surface. rise: the latitude where its air rises. */
@@ -217,7 +217,7 @@
       g += arrow(xr, my - dirAloft * ah, xr, my + dirAloft * ah, 'ec-cellarrow', 7);        // aloft: toward the sinking edge
       g += arrow(mx + aw, sinkY, mx - aw, sinkY, 'ec-cellarrow', 7);                        // sinks: aloft to surface
       g += arrow(xl, my + dirAloft * ah, xl, my - dirAloft * ah, 'ec-cellarrow', 7);        // surface: back to the rising edge
-      g += txt(mx, my + (sel ? -8 : 4), c[2], 'ec-t ec-b ec-celln ec-halo', 'middle') + '</g>';
+      g += txt(mx, my + 4, c[2], 'ec-t ec-b ec-celln ec-halo', 'middle') + '</g>';
       out.push(g);
     });
     // rising and sinking marks, joined to the globe

@@ -174,8 +174,9 @@
       say(head + ' Chain: ' + chainText(st) + '.');
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>', 'explore');
-        LS.pills([{ k: 'Left', html: esc(st.leftText), tone: st.done ? 'good' : tone === 'good' ? 'good' : 'warn' }], 'left', 'explore');
-        LS.pills([{ k: 'Goal', html: esc(st.targetText), tone: 'readout' }], 'right', 'explore');
+        var short = function(t){ return t.replace(/metric ton/g, 't'); };
+        LS.pills([{ k: 'Left', html: esc(short(st.leftText)), tone: st.done ? 'good' : 'warn' }], 'left', 'explore');
+        LS.pills([{ k: 'Goal', html: esc(short(st.targetText)), tone: 'readout' }], 'right', 'explore');
       }
     }
     function chainText(st){

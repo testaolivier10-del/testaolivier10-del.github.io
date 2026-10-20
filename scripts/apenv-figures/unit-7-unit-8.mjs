@@ -548,6 +548,65 @@ FIG['thermal-pollution-plant'] = () => {
     'A power plant pumps in cool river water to condense its steam and returns it warmer through an outlet; a warm plume with less dissolved oxygen spreads downstream. Alternatively, the warm water goes to a cooling tower, which releases the heat and some water vapor to the air.', s);
 };
 
+/* 8.7 Long-range transport of POPs toward the poles (diagram). */
+FIG['persistent-organic-pollutants-transport'] = () => {
+  let s = `<defs><linearGradient id="popsky" x1="0" x2="1"><stop offset="0" stop-color="#FBE3D2"/><stop offset="1" stop-color="#DCEBF6"/></linearGradient></defs>`;
+  s += rect(0, 0, 800, 300, 'url(#popsky)') + rect(0, 300, 560, 100, '#D7CFA8') + rect(560, 300, 240, 100, '#E9F1F7');
+  s += T(110, 30, 'Warm regions', { size: 16, weight: 700, fill: RED }) + T(700, 30, 'Cold Arctic', { size: 16, weight: 700, fill: BLUE });
+  // field and factory
+  for (let i = 0; i < 4; i++) s += rect(30 + i * 34, 278, 30, 22, '#B9C27A');
+  s += rect(170, 250, 60, 50, '#C9CCC2', INK, 1) + rect(210, 220, 12, 30, '#C9CCC2', INK, 1);
+  s += T(130, 325, 'used on fields, released by industry', { size: 13 });
+  // hops
+  const hops = [[120, 270], [250, 140], [330, 270], [430, 140], [500, 270], [600, 150], [660, 290]];
+  for (let i = 0; i < hops.length - 1; i++) {
+    const [x1, y1] = hops[i], [x2, y2] = hops[i + 1];
+    s += arrow(x1, y1, x2, y2, { color: i % 2 ? BLUE : RED, sw: 2.5, dash: '6 4', m: i % 2 ? 'arB' : 'arR' });
+  }
+  s += T(250, 122, 'evaporates where warm', { size: 13, fill: RED, weight: 700 });
+  s += T(430, 122, 'travels on the wind', { size: 13, fill: INK, weight: 700 });
+  s += T(520, 292, 'condenses where cool', { size: 13, fill: BLUE, weight: 700 });
+  // arctic ice, seal, bear
+  s += rect(600, 300, 200, 18, '#FFFFFF', '#B9C0C6', 1);
+  s += `<ellipse cx="660" cy="292" rx="26" ry="10" fill="#7E807A"/>` + circle(686, 286, 7, '#7E807A');
+  s += `<ellipse cx="745" cy="280" rx="34" ry="18" fill="#F2F2EC" stroke="#B9C0C6"/>` + circle(778, 268, 11, '#F2F2EC', '#B9C0C6', 1);
+  s += T(700, 345, ['stored in the fat of', 'seals and polar bears'], { size: 13, weight: 700, fill: OLIVE, lh: 1.25 });
+  s += T(400, 385, 'POPs collect in cold regions far from where they were used.', { size: 14, fill: GREY, italic: true });
+  return svg(800, 400, 'Persistent organic pollutants travel toward the poles',
+    'From warm regions on the left, where POPs are used on fields and released by industry, the chemicals evaporate, travel on the wind, condense where it is cooler and evaporate again, hopping toward the cold Arctic on the right. There they settle and are stored in the fat of seals and polar bears.', s);
+};
+
+/* 8.8 Biomagnification up a lake food chain, and bioaccumulation in one fish
+   (diagram; the concentrations are the invented values of the set in
+   data/questions/bioaccumulation-biomagnification.json). */
+FIG['bioaccumulation-biomagnification-chain'] = () => {
+  let s = '';
+  const lv = [['Lake water', '0.00005 ppm', 1], ['Phytoplankton', '0.04 ppm', 3], ['Zooplankton', '0.3 ppm', 6], ['Small fish', '2 ppm', 11], ['Large fish', '12 ppm', 18], ['Osprey', '50 ppm', 28]];
+  s += T(250, 22, 'Biomagnification: up the food chain', { size: 17, weight: 700, fill: OLIVE });
+  lv.forEach(([name, ppm, dots], i) => {
+    const y = 380 - i * 58, w = 260 - i * 18, x = 270 - w / 2;
+    s += rect(x, y - 22, w, 44, i === 5 ? '#FCEFE6' : PALE, i === 5 ? RED : OLIVE, 2, 8);
+    s += T(x - 12, y, name, { size: 14, anchor: 'end', weight: 700 });
+    s += T(x + w + 12, y, ppm, { size: 14, anchor: 'start', weight: 700, fill: i === 5 ? RED : INK });
+    const per = Math.max(2, Math.floor((w - 20) / 12)); for (let k = 0; k < dots; k++) s += circle(x + 10 + (k % per) * 12, y - 12 + Math.floor(k / per) * 10, 3.2, RED);
+    if (i < 5) s += arrow(270, y - 24, 270, y - 32, { sw: 2 });
+  });
+  s += T(250, 418, 'Each level eats many of the level below and keeps their pesticide.', { size: 13, fill: GREY, italic: true });
+  // bioaccumulation panel
+  s += line(500, 40, 500, 420, '#DADDD4', 1.5);
+  s += T(650, 22, 'Bioaccumulation: in one fish', { size: 17, weight: 700, fill: BLUE });
+  [[2, 0.08, 40], [6, 0.31, 60], [10, 0.62, 80]].forEach(([age, hg, len], i) => {
+    const y = 110 + i * 100, x = 640;
+    s += `<ellipse cx="${x}" cy="${y}" rx="${len / 2 + 10}" ry="${len / 6 + 6}" fill="#9FC2DA" stroke="${BLUE}" stroke-width="1.5"/>`;
+    s += path(`M${x + len / 2 + 8},${y} L${x + len / 2 + 26},${y - 12} L${x + len / 2 + 26},${y + 12} z`, '#9FC2DA', BLUE, 1.5);
+    s += T(x - len / 2 - 20, y, `${age} yr`, { size: 14, anchor: 'end', weight: 700 });
+    s += T(x, y + len / 6 + 22, `mercury ${hg} ppm`, { size: 13, fill: BLUE, weight: 700 });
+  });
+  s += T(650, 418, 'Older fish have had longer to store it.', { size: 13, fill: GREY, italic: true });
+  return svg(800, 440, 'Bioaccumulation and biomagnification',
+    'Left: a food chain from lake water to phytoplankton, zooplankton, small fish, large fish and an osprey; the pesticide concentration rises from 0.00005 ppm in water to 0.04, 0.3, 2, 12 and 50 ppm in the osprey (invented values), shown by more dots at each level. Right: one species of fish at ages 2, 6 and 10 years, with mercury rising from 0.08 to 0.31 to 0.62 ppm as it ages.', s);
+};
+
 export { FIG };
 const isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
 if (isMain) {

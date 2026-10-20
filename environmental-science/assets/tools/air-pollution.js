@@ -101,13 +101,14 @@
   }
   /* temperature with height, the inversion's warm layer marked */
   function profile(x0, y0, w, h, on){
-    var P = A.inversionProfile(on), out = [], L = x0 + 34, R = x0 + w - 6, Tp = y0 + 18, B = y0 + h - 22;
+    var P = A.inversionProfile(on), out = [], L = x0 + 46, R = x0 + w - 10, Tp = y0 + 30, B = y0 + h - 22;
     function X(t){ return L + (t - 0) / 18 * (R - L); }
     function Y(z){ return B - z / 1200 * (B - Tp); }
-    out.push(txt(x0 + 2, y0 + 10, 'Height vs temperature', 'ap-t ap-s ap-b'));
+    out.push(txt(x0 + 2, y0 + 14, 'Temperature with height', 'ap-t ap-s ap-b'));
     [0, 400, 800, 1200].forEach(function(z){ out.push(line(L, Y(z), R, Y(z), 'ap-grid')); out.push(txt(L - 4, Y(z) + 4, z + ' m', 'ap-t ap-tk', 'end')); });
     [0, 6, 12, 18].forEach(function(t){ out.push(txt(X(t), B + 14, t + '°', 'ap-t ap-tk', 'middle')); });
-    if(on) out.push('<rect class="ap-lidband" x="' + n2(L) + '" y="' + n2(Y(P.top)) + '" width="' + n2(R - L) + '" height="' + n2(Y(P.lid) - Y(P.top)) + '"/>');
+    if(on) out.push('<rect class="ap-lidband" x="' + n2(L) + '" y="' + n2(Y(P.top)) + '" width="' + n2(R - L) + '" height="' + n2(Y(P.lid) - Y(P.top)) + '"/>' + txt(L + 6, Y(P.lid) - 6, 'Warm layer: a lid', 'ap-t ap-s ap-b ap-on-lid'));
+    else out.push(txt(R - 4, Tp + 12, 'Cooler with height: air mixes', 'ap-t ap-s ap-muted', 'end'));
     out.push('<polyline class="ap-prof" points="' + P.pts.map(function(p){ return n2(X(p[1])) + ',' + n2(Y(p[0])); }).join(' ') + '"/>');
     out.push(line(L, B, R, B, 'ap-axisl'));
     return out.join('');
@@ -147,25 +148,27 @@
     // the power plant and its plume
     var px = W * 0.08, pw = W * 0.14;
     out.push('<rect class="ap-bldg" x="' + n2(px) + '" y="' + n2(gy - 40) + '" width="' + n2(pw) + '" height="40"/><rect class="ap-stack" x="' + n2(px + pw * 0.62) + '" y="' + n2(gy - 100) + '" width="' + n2(pw * 0.2) + '" height="60"/>');
-    for(var i = 0; i < 6; i++){ var t = i / 5; out.push('<circle class="ap-plume" cx="' + n2(px + pw * 0.72 + t * W * 0.45) + '" cy="' + n2(gy - 110 - t * 30 - Math.sin(t * 3) * 6) + '" r="' + n2(8 + t * 16) + '" opacity="' + (0.15 + 0.6 * f * (1 - t * 0.4)).toFixed(2) + '"/>'); }
+    var cx = W * 0.62, cy = gy * 0.34, sx = px + pw * 0.72, sy = gy - 104;
+    for(var i = 0; i < 9; i++){ var t = i / 8, qx = sx + (cx - 70 - sx) * t, qy = sy - Math.sin(t * Math.PI * 0.5) * (sy - cy - 10); out.push('<circle class="ap-plume" cx="' + n2(qx) + '" cy="' + n2(qy) + '" r="' + n2(6 + t * 16) + '" opacity="' + (0.1 + 0.55 * f).toFixed(2) + '"/>'); }
     out.push(txt(px + pw / 2, gy + 16, 'Power plant', 'ap-t ap-s', 'middle'));
-    out.push(txt(px + pw * 0.75, gy - 108, phone ? 'SO₂, NOx' : 'SO₂ and NOx', 'ap-t ap-s ap-b', 'start'));
+    out.push(txt(sx + 10, sy + 4, phone ? 'SO₂, NOx' : 'SO₂ and NOx', 'ap-t ap-s ap-b ap-halo', 'start'));
+    if(!phone) out.push(txt((sx + cx) / 2, (sy + cy) / 2 + 34, '+ water: sulfuric and nitric acid', 'ap-t ap-s ap-halo', 'middle'));
     // cloud and rain
-    var cx = W * 0.62, cy = gy * 0.32;
     out.push('<path class="ap-raincloud" d="M' + n2(cx - 70) + ' ' + n2(cy + 16) + 'a22 22 0 0 1 18 -34a32 32 0 0 1 58 -10a26 26 0 0 1 48 16a18 18 0 0 1 0 28z"/>');
     for(var r = 0; r < 12; r++){ var rx = cx - 60 + r * 11, ry = cy + 24 + (r % 3) * 10; out.push('<line class="ap-drop" x1="' + n2(rx) + '" y1="' + n2(ry) + '" x2="' + n2(rx - 4) + '" y2="' + n2(ry + 14) + '" style="stroke:' + phColor(rain) + '"/>'); }
     out.push('<g class="ap-tag"><rect x="' + n2(cx - 54) + '" y="' + n2(cy - 46) + '" width="108" height="24" rx="12"/>' + txt(cx, cy - 29, 'Rain pH ' + f1(rain), 'ap-t ap-b ap-tag-t', 'middle') + '</g>');
     // ground, bedrock, lake
     out.push('<rect class="' + (st.lime ? 'ap-lime' : 'ap-granite') + '" x="0" y="' + n2(gy) + '" width="' + W + '" height="' + n2(H - gy) + '"/>');
     out.push(txt(8, H - 8, st.lime ? 'Limestone bedrock (buffers acid)' : 'Granite bedrock (no buffer)', 'ap-t ap-s ap-on-rock'));
-    var lx = W * 0.36, lw = W * 0.6, ly = gy + 6, lh = (H - gy) * 0.58;
+    var lx = W * 0.4, lw = W * 0.52, ly = gy + 2, lh = (H - gy) * 0.4;
     out.push('<path class="ap-lake" style="fill:' + phColor(lake) + '" d="M' + n2(lx) + ' ' + n2(ly) + 'Q' + n2(lx + lw / 2) + ' ' + n2(ly + lh * 1.6) + ' ' + n2(lx + lw) + ' ' + n2(ly) + 'Z"/>');
     out.push('<g class="ap-tag"><rect x="' + n2(lx + lw / 2 - 52) + '" y="' + n2(ly + 4) + '" width="104" height="24" rx="12"/>' + txt(lx + lw / 2, ly + 21, 'Lake pH ' + f1(lake), 'ap-t ap-b ap-tag-t', 'middle') + '</g>');
     // the tolerance strip
-    var sx = W * 0.36, sw = W * 0.6, sy = ly + lh * 0.78 + 4, n = A.TOLERANCE.length, cw = sw / n;
+    var tx0 = phone ? 6 : W * 0.3, sw = W - tx0 - 6, ty = ly + lh * 0.8 + 14, n = A.TOLERANCE.length, cw = sw / n;
+    out.push(txt(tx0, ty - 6, 'Lowest pH each animal survives (EPA)', 'ap-t ap-s ap-b ap-on-rock'));
     A.TOLERANCE.forEach(function(a, k){
-      var ok = lake >= a.ph, x = sx + k * cw;
-      out.push('<g class="ap-animal' + (ok ? '' : ' is-gone') + '"><rect x="' + n2(x + 1) + '" y="' + n2(sy) + '" width="' + n2(cw - 2) + '" height="' + (phone ? 34 : 38) + '" rx="6"/>' + txt(x + cw / 2, sy + 15, phone ? a.name.slice(0, 5) : a.name, 'ap-t ap-s ap-b', 'middle') + txt(x + cw / 2, sy + (phone ? 29 : 31), (ok ? '' : '✕ ') + 'pH ' + a.ph.toFixed(1), 'ap-t ap-tk', 'middle') + '</g>');
+      var ok = lake >= a.ph, x = tx0 + k * cw, nm = phone ? ({ Snails: 'Snail', Clams: 'Clam', Crayfish: 'Crayf.', Salamanders: 'Salam.', Mayfly: 'Mayfly', Perch: 'Perch', Frogs: 'Frog', Trout: 'Trout', Bass: 'Bass' })[a.name] : a.name;
+      out.push('<g class="ap-animal' + (ok ? '' : ' is-gone') + '"><rect x="' + n2(x + 1) + '" y="' + n2(ty) + '" width="' + n2(cw - 2) + '" height="40" rx="6"/>' + txt(x + cw / 2, ty + 16, nm, 'ap-t ap-s ap-b', 'middle') + txt(x + cw / 2, ty + 32, (ok ? '' : '✕ ') + a.ph.toFixed(1), 'ap-t ap-tk', 'middle') + '</g>');
     });
     return out.join('');
   }
@@ -236,7 +239,7 @@
       if(st.view === 'smog'){
         var d = day(), h = st.hour, no = d.at('NO', h), no2 = d.at('NO2', h), o3 = d.at('O3', h), pk = d.peaks;
         var phase = h < 6 ? 'Night: no sunlight, so no new ozone; NO from late traffic has used most of it up.' : h < 9.5 ? 'Morning rush: engines pour out NO (and VOCs). Not much ozone yet.' : h < 12 ? 'Late morning: NO is being turned into NO₂, the brown haze, and sunlight starts splitting NO₂ to make ozone.' : h < 16.5 ? 'Afternoon: strong sunlight and the morning’s NO₂ and VOCs make ozone peak.' : h < 19.5 ? 'Evening: the sun is lower and the evening rush adds NO, which destroys ozone.' : 'After sunset: ozone falls; no light, and NO reacts with it.';
-        head = A.clock(h) + '. ' + phase;
+        head = A.clock(h) + ': ' + phase.charAt(0).toLowerCase() + phase.slice(1);
         pills = [{ k: 'NO', html: f0(no), tone: 'readout' }, { k: 'NO₂', html: f0(no2), tone: 'readout' }, { k: 'O₃', html: f0(o3) + ' ppb', tone: 'accent' }];
         right = st.inversion ? [{ html: 'Inversion: trapped', tone: 'warn' }] : [];
         why = '<p><b>Primary, then secondary.</b> Car engines and power plants emit NO (a primary pollutant) and VOCs (from gasoline and solvents). In the air NO becomes NO₂, the reddish-brown gas in the haze. Sunlight splits NO₂: NO₂ + light → NO + O, and O + O₂ → O₃. Ozone is a secondary pollutant: no one emits it.</p>' +
@@ -252,7 +255,7 @@
         var rain = A.rainPH(st.load), lake = A.lakePH(rain, st.lime), gone = A.TOLERANCE.filter(function(a){ return lake < a.ph; });
         head = 'Rain pH ' + f1(rain) + (rain < 5.55 ? ' (acid rain)' : ' (normal rain)') + '; the lake on ' + (st.lime ? 'limestone' : 'granite') + ' is at pH ' + f1(lake) + '. ' + (gone.length ? gone.length + ' of ' + A.TOLERANCE.length + ' animals cannot live here.' : 'Every animal in the chart can live here.');
         pills = [{ k: 'Rain', html: 'pH ' + f1(rain), tone: rain < 5.55 ? 'warn' : 'good' }, { k: 'Lake', html: 'pH ' + f1(lake), tone: 'readout' }];
-        right = [{ k: 'vs clean rain', html: rain < 5.55 ? T.F(Math.pow(10, 5.6 - rain), 0) + '× more acidic' : 'normal', tone: 'readout' }];
+        right = [{ html: rain < 5.55 ? T.F(Math.pow(10, 5.6 - rain), 0) + '× clean rain' : 'normal rain', tone: 'readout' }];
         why = '<p><b>Clean rain is already slightly acidic</b> (pH about 5.6): CO₂ dissolves to make weak carbonic acid. Acid rain is rain below that.</p>' +
           '<p><b>SO₂ and NOx make it.</b> Burning coal releases sulfur dioxide; hot combustion in engines and power plants makes nitrogen oxides. In the air they form sulfuric and nitric acid, which fall in rain, snow and fog, often far downwind of the smokestacks. VOCs, particulates and CO₂ are not acid-rain gases.</p>' +
           '<p><b>The log scale.</b> Each pH unit is ten times the hydrogen ions: rain at pH 4.6 is 10 times more acidic than rain at 5.6, and pH 3.6 is 100 times more.</p>' +
@@ -330,13 +333,30 @@
       inner = o.join(''); label = 'A pH scale from 0 to 14 with the rain at pH ' + p.given.a.toFixed(1) + ' and the comparison at ' + p.given.b.toFixed(1) + '.';
       H = 200;
     } else if(g.kind === 'reduce'){
-      var P = A.POLL[g.id], o2 = [];
-      o2.push('<rect class="ap-bldg" x="40" y="80" width="90" height="70"/><rect class="ap-stack" x="100" y="20" width="16" height="60"/>');
-      o2.push('<circle class="ap-plume" cx="130" cy="18" r="16" opacity=".6"/><circle class="ap-plume" cx="160" cy="12" r="22" opacity=".45"/>');
-      o2.push('<g class="ap-car" transform="translate(190 132) scale(3)"><rect x="0" y="0" width="14" height="6" rx="2"/><circle cx="3" cy="6" r="1.8"/><circle cx="11" cy="6" r="1.8"/></g>');
-      o2.push(txt(W / 2 + 60, 60, esc(P.name), 'ap-t ap-b'));
-      if(st.fix) o2.push(txt(W / 2 + 60, 84, 'Fix: ' + esc(P.fix.split(' (')[0].split(',')[0]), 'ap-t ap-s'));
-      inner = o2.join(''); label = 'A power plant and a car, the sources of ' + P.name + '.'; H = 170;
+      // the pollutant's real source, drawn; its fix appears on it once answered
+      var P = A.POLL[g.id], o2 = [], stack = g.id === 'SO2' || g.id === 'PM', pump = g.id === 'VOC', gy = 150;
+      H = 190;
+      o2.push('<rect class="ap-ground2" x="0" y="' + gy + '" width="' + W + '" height="40"/>');
+      if(stack){
+        o2.push('<rect class="ap-bldg" x="40" y="80" width="120" height="70" rx="3"/><rect class="ap-stack" x="128" y="18" width="20" height="62"/>');
+        if(st.fix) o2.push('<rect class="ap-fixbox" x="164" y="60" width="78" height="54" rx="6"/>' + txt(203, 92, g.id === 'SO2' ? 'Scrubber' : 'Precipitator', 'ap-t ap-s ap-b', 'middle') + line(148, 70, 164, 80, 'ap-pipe') + line(242, 80, 262, 46, 'ap-pipe'));
+        for(var q = 0; q < 4; q++) o2.push('<circle class="ap-plume" cx="' + n2((st.fix ? 266 : 140) + q * 22) + '" cy="' + n2(14 - q * 3) + '" r="' + n2(8 + q * 4) + '" opacity="' + (st.fix ? 0.12 : 0.5) + '"/>');
+      } else if(pump){
+        o2.push('<rect class="ap-pump" x="70" y="62" width="54" height="88" rx="6"/><rect class="ap-pumpwin" x="80" y="74" width="34" height="22" rx="3"/><path class="ap-hose" d="M124 90 q30 6 34 40"/><rect class="ap-nozzle" x="150" y="128" width="18" height="10" rx="3"/>');
+        o2.push('<g class="ap-car" transform="translate(180 108) scale(4)"><rect x="0" y="0" width="14" height="6" rx="2"/><circle cx="3" cy="6" r="1.8"/><circle cx="11" cy="6" r="1.8"/></g>');
+        for(var vq = 0; vq < 3; vq++) o2.push('<path class="ap-vapor" d="M' + (162 + vq * 8) + ' 124 q-6 -10 0 -20 t0 -20" opacity="' + (st.fix ? 0.12 : 0.7) + '"/>');
+        if(st.fix) o2.push(txt(159, 158 + 18, 'Vapor recovery', 'ap-t ap-s ap-b', 'middle'));
+      } else {
+        o2.push('<g class="ap-car" transform="translate(60 96) scale(8)"><rect x="0" y="0" width="14" height="6" rx="2"/><circle cx="3" cy="6" r="1.8"/><circle cx="11" cy="6" r="1.8"/></g>');
+        o2.push('<rect class="ap-pipe2" x="20" y="134" width="44" height="6" rx="3"/>');
+        if(st.fix) o2.push('<rect class="ap-fixbox" x="36" y="126" width="30" height="20" rx="5"/>' + txt(44, 176, 'Catalytic converter', 'ap-t ap-s ap-b'));
+        for(var e2 = 0; e2 < 3; e2++) o2.push('<circle class="ap-exh2" cx="' + (14 - e2 * 10) + '" cy="' + (136 - e2 * 6) + '" r="' + (5 + e2 * 3) + '" opacity="' + (st.fix ? 0.15 : 0.6) + '"/>');
+      }
+      var tx = Math.max(W * 0.5, 290);
+      o2.push(txt(tx, 50, esc(P.name), 'ap-t ap-b'));
+      o2.push(txt(tx, 72, 'From ' + esc(P.src), 'ap-t ap-s ap-muted'));
+      if(st.fix && W > 500) o2.push(txt(tx, 100, 'Fix: ' + esc(P.fix.split(' (')[0].split(', ')[0].replace(/^a /, '')), 'ap-t ap-s ap-b ap-c-o3'));
+      inner = o2.join(''); label = 'The source of ' + P.name + ': ' + P.src + (st.fix ? ', with its fix: ' + P.fix : '') + '.';
     } else if(g.kind === 'pct'){
       var S = g.S, L2 = 70, R2 = W - 30, B2 = H - 40, T2 = 30, mx = S.from * 1.15, o3 = [];
       var Y2 = function(v){ return B2 - v / mx * (B2 - T2); };

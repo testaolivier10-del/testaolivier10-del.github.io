@@ -1,0 +1,76 @@
+{
+ "topic": "persistent-organic-pollutants",
+ "hook": "Inuit communities in the Canadian Arctic live thousands of kilometers from any farm or factory. Yet tests in the 1980s and 1990s found some of the highest levels of certain pesticides and industrial chemicals in the world in their blood and breast milk. The chemicals had traveled north on the wind and up the food chain into the seals and whales people ate.",
+ "prereq": [
+  {
+   "q": "What does half-life mean?",
+   "options": [
+    "The time for half of a substance to break down or decay",
+    "Half the age of an organism",
+    "The time to double a population",
+    "Half the depth of a lake"
+   ],
+   "correct": 0,
+   "why": "After one half-life, half of the original amount is left.",
+   "review": "nuclear-power"
+  },
+  {
+   "q": "What is an endocrine disruptor?",
+   "options": [
+    "A chemical that interferes with hormones",
+    "A germ that causes disease",
+    "A gas that blocks oxygen in blood",
+    "A nutrient that feeds algae"
+   ],
+   "correct": 0,
+   "why": "It mimics, blocks or alters hormones.",
+   "review": "endocrine-disruptors"
+  }
+ ],
+ "figure": {
+  "figure": "persistent-organic-pollutants-transport",
+  "caption": "POPs evaporate where it is warm, travel on the wind and condense where it is cold, collecting in polar regions far from where they were used."
+ },
+ "chain": [
+  {
+   "cause": "A synthetic, carbon-based chemical is made and used (a pesticide, an insulator)",
+   "effect": "it enters soil, water and air"
+  },
+  {
+   "cause": "Its chemical bonds resist breakdown by sunlight, water and microbes",
+   "effect": "it persists for years to decades"
+  },
+  {
+   "cause": "It evaporates in warm places and condenses in cold ones",
+   "effect": "it travels long distances and collects in the Arctic"
+  },
+  {
+   "cause": "It dissolves in fat rather than water",
+   "effect": "animals store it in fatty tissue instead of excreting it"
+  },
+  {
+   "cause": "It stays toxic while stored",
+   "effect": "it harms reproduction, development and the immune system, as DDT did to birds of prey"
+  }
+ ],
+ "ideas": [
+  "A <b>persistent organic pollutant</b> (POP) is a synthetic, carbon-based chemical that resists breakdown, dissolves in fat, travels long distances and is toxic.",
+  "Examples: <b>DDT</b> and other old pesticides, <b>PCBs</b> from electrical equipment, and dioxins from burning plastics and some industrial processes.",
+  "POPs collect in cold regions far from where they were used, and they are stored in fat, so they build up in animals over time.",
+  "Harm: thin eggshells (DDT in birds of prey), reproductive and immune problems, some cancers. The <b>Stockholm Convention</b> (2001) restricts them worldwide."
+ ],
+ "misconception": {
+  "wrong": "Once a chemical is banned, it soon disappears from the environment.",
+  "right": "A POP breaks down so slowly that it stays in soil, sediment and animal fat for decades after it is banned, falling only gradually."
+ },
+ "check": [
+  "env-persistent-organic-pollutants-8",
+  "env-persistent-organic-pollutants-9",
+  "env-persistent-organic-pollutants-1",
+  "env-persistent-organic-pollutants-2",
+  "env-persistent-organic-pollutants-3",
+  "env-persistent-organic-pollutants-4",
+  "env-persistent-organic-pollutants-11"
+ ],
+ "summary": "Persistent organic pollutants are synthetic, carbon-based chemicals such as DDT, PCBs and dioxins that resist breakdown, dissolve in fat, travel long distances on wind and water and stay toxic for decades. They collect in cold regions and in animal fat, harming reproduction and development; DDT thinned the eggshells of birds of prey. Bans such as the Stockholm Convention cut new inputs, but levels fall slowly."
+}

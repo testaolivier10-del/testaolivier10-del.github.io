@@ -1,0 +1,76 @@
+{
+ "topic": "bioaccumulation-biomagnification",
+ "hook": "In a lake, a pesticide is so dilute in the water that a test can barely find it: a few parts per hundred million. In the ospreys that fish there, the same pesticide is a million times more concentrated, enough to make their eggs crack under the parents' weight. Nobody sprayed the ospreys. The food chain concentrated the chemical for them.",
+ "prereq": [
+  {
+   "q": "About what share of energy passes from one trophic level to the next?",
+   "options": [
+    "About 10%",
+    "About 50%",
+    "About 90%",
+    "All of it"
+   ],
+   "correct": 0,
+   "why": "By the 10% rule, about 90% is used or lost as heat at each level.",
+   "review": "energy-flow"
+  },
+  {
+   "q": "Why are persistent organic pollutants stored in animal fat?",
+   "options": [
+    "They dissolve in fat, not water",
+    "They are a source of energy",
+    "They are made by the animals",
+    "They are too large for cells"
+   ],
+   "correct": 0,
+   "why": "Fat-soluble chemicals are stored rather than excreted.",
+   "review": "persistent-organic-pollutants"
+  }
+ ],
+ "figure": {
+  "figure": "bioaccumulation-biomagnification-chain",
+  "caption": "Bioaccumulation happens inside one organism over time; biomagnification multiplies the concentration at each step up the food chain."
+ },
+ "chain": [
+  {
+   "cause": "A persistent, fat-soluble pollutant (DDT, PCBs, methylmercury) enters the water at a very low level",
+   "effect": "producers and small organisms absorb it and store it in fat"
+  },
+  {
+   "cause": "The organism keeps taking it in but cannot break it down or excrete it",
+   "effect": "its body concentration rises over its life: bioaccumulation"
+  },
+  {
+   "cause": "Each consumer eats many organisms from the level below",
+   "effect": "it takes in all their stored pollutant, while much of the food's mass is used for energy"
+  },
+  {
+   "cause": "This repeats at every trophic level",
+   "effect": "the concentration multiplies up the chain: biomagnification"
+  },
+  {
+   "cause": "Top predators carry the highest levels",
+   "effect": "they suffer harm, such as thin eggshells in birds of prey, and people who eat top predator fish are exposed"
+  }
+ ],
+ "ideas": [
+  "<b>Bioaccumulation</b>: a substance builds up in <b>one organism</b> over its life, because it is taken in faster than it is removed.",
+  "<b>Biomagnification</b>: the concentration rises at <b>each higher trophic level</b> of a food chain. Top predators carry the most.",
+  "Substances that do this are persistent and fat-soluble: DDT, PCBs and <b>methylmercury</b>, which bacteria make from mercury released mainly by burning coal.",
+  "Effects: DDT thinned eggshells of eagles, ospreys and pelicans; mercury harms the developing nervous system, so fish advisories limit meals of large predatory fish."
+ ],
+ "misconception": {
+  "wrong": "Bioaccumulation and biomagnification are two names for the same thing.",
+  "right": "Bioaccumulation is the build-up inside one organism over time. Biomagnification is the increase from one trophic level to the next."
+ },
+ "check": [
+  "env-bioaccumulation-biomagnification-10",
+  "env-bioaccumulation-biomagnification-1",
+  "env-bioaccumulation-biomagnification-2",
+  "env-bioaccumulation-biomagnification-3",
+  "env-bioaccumulation-biomagnification-4",
+  "env-bioaccumulation-biomagnification-5",
+  "env-bioaccumulation-biomagnification-14"
+ ],
+ "summary": "Bioaccumulation is the build-up of a persistent, fat-soluble pollutant in one organism over its life. Biomagnification is the rise in its concentration at each higher trophic level, because each consumer eats many organisms and keeps their stored pollutant. DDT, PCBs and methylmercury reach their highest levels in top predators, thinning eggshells in birds of prey and leading to fish advisories for people."
+}

@@ -199,7 +199,8 @@
 
   function genReduce(r, c){
     var ids = ['NOx', 'SO2', 'PM', 'VOC', 'CO'], id = r.pick(ids), P = POLL[id];
-    var others = M.shuffle(r, ids.filter(function(x){ return x !== id && POLL[x].fix !== P.fix; })).slice(0, 3);
+    // NOx and CO share the catalytic converter, so never offer one as a wrong answer for the other
+    var others = M.shuffle(r, ids.filter(function(x){ return x !== id && !(/catalytic/.test(POLL[x].fix) && /catalytic/.test(P.fix)); })).slice(0, 3);
     var steps = [
       choice('fix', 'Which method reduces ' + P.name + ' at its source?', [[P.fix.charAt(0).toUpperCase() + P.fix.slice(1), 'It targets ' + P.name + ', which comes from ' + P.from + '.']].concat(others.map(function(o){ var Q = POLL[o]; return [Q.fix.charAt(0).toUpperCase() + Q.fix.slice(1), 'That reduces ' + Q.name + ', not ' + P.name + '.']; })), '7.B'),
       choice('kind', 'What kind of pollutant is this?', [

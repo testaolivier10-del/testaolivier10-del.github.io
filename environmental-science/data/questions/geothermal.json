@@ -1,0 +1,568 @@
+{
+ "stimuli": {
+  "geothermal-s1": {
+   "kind": "quantitative",
+   "title": "Heating one home for a year: furnace or heat pump",
+   "invented": true,
+   "table": {
+    "caption": "Energy used and prices for heating the same house for one winter (invented data for practice)",
+    "cols": [
+     "System",
+     "Energy used per year",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Natural gas furnace",
+      "800 therms of gas",
+      "\\$1.30 per therm"
+     ],
+     [
+      "Ground source heat pump",
+      "6,600 kWh of electricity",
+      "\\$0.14 per kWh"
+     ]
+    ]
+   },
+   "text": "A therm is a unit of heat energy used for natural gas (1 therm = 100,000 BTU)."
+  },
+  "geothermal-s2": {
+   "kind": "visual",
+   "title": "Geothermal power plant and ground source heat pump",
+   "figure": "geothermal-plant-heat-pump"
+  }
+ },
+ "items": [
+  {
+   "id": "env-geothermal-1",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Where does geothermal energy come from?",
+   "options": [
+    "Sunlight that warms the soil",
+    "Natural gas burned underground",
+    "Friction from flowing water",
+    "Heat from Earth's interior"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Geothermal heat comes mostly from radioactive decay deep in Earth, plus heat left over from Earth's formation.",
+    "options": [
+     "Sunlight warms only the top few meters; geothermal plants tap heat from far deeper.",
+     "No fuel is burned in a geothermal plant.",
+     "Water flow does not make meaningful heat.",
+     "Right: heat from Earth's interior."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-2",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are geothermal power plants built in places like Iceland, New Zealand and California but rarely in the middle of continents?",
+   "options": [
+    "Geothermal plants have to be built next to an ocean for cooling",
+    "The middle of a continent has no heat at any depth beneath it",
+    "Hot rock is near the surface at plate boundaries",
+    "Those places get more sunlight to heat the ground than other places"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Making electricity needs very hot water or steam at depths that can be drilled. That happens near plate boundaries, hot spots and volcanic areas.",
+    "options": [
+     "Coastal cooling is not the reason.",
+     "Heat exists everywhere at depth; it is just too deep to reach cheaply in most places.",
+     "Right: plate boundaries bring heat near the surface.",
+     "Geothermal heat comes from below, not from sunlight."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-3",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "At a geothermal power plant, why is the cooled water pumped back down into the ground?",
+   "options": [
+    "To cool the hot rock so that the plant can shut down",
+    "To refill the underground reservoir",
+    "To add more salt to the water so that it boils faster",
+    "To store the plant's electricity as heat for later use"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Injecting the water back keeps the reservoir from running dry and disposes of water that may carry dissolved minerals.",
+    "options": [
+     "The goal is to keep the plant running, not to cool the rock.",
+     "Right: reinjection keeps the resource from being depleted.",
+     "Adding salt is not the purpose.",
+     "Electricity is not stored this way."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-4",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A geothermal field produced less steam each year after its wells were drilled. What is the most likely cause?",
+   "options": [
+    "Hot water was removed faster than it returned",
+    "Earth's core has started to cool down quickly in that region",
+    "Sunlight on the field was blocked by new buildings nearby",
+    "The steam was used up by radioactive decay deep underground"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A geothermal reservoir can be depleted if hot water is withdrawn faster than it is recharged, which is why plants reinject water.",
+    "options": [
+     "Right: overuse can deplete a geothermal reservoir.",
+     "Earth's interior cools far too slowly to matter.",
+     "Sunlight does not drive geothermal steam.",
+     "Radioactive decay makes heat; it does not use up steam."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-5",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does a ground source heat pump heat a house in winter?",
+   "options": [
+    "It burns natural gas that is stored in the soil",
+    "It uses sunlight that is stored in the roof shingles",
+    "It makes electricity from hot steam under the house",
+    "It moves heat from the ground into the house"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A few meters down, the ground stays about 10 to 16 °C all year. Fluid in buried pipes picks up that heat, and the heat pump concentrates it into the house.",
+    "options": [
+     "No fuel is burned.",
+     "Roof sunlight is solar energy, not a heat pump.",
+     "Heat pumps work with mild ground temperatures, not steam.",
+     "Right: the pump moves heat from the ground into the house."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-6",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why can a ground source heat pump work almost anywhere, unlike a geothermal power plant?",
+   "options": [
+    "It burns fuel, so it does not depend on the ground beneath it",
+    "It runs on the wind that blows across the open ground",
+    "Shallow ground has a steady temperature nearly everywhere",
+    "It needs water hotter than 150 °C, found under most houses"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Heat pumps need only the steady temperature of shallow ground, not hot rock near the surface. They do need electricity to run the pump.",
+    "options": [
+     "A heat pump burns no fuel; it uses electricity to move heat.",
+     "Wind is not involved.",
+     "Right: shallow ground is a steady temperature almost everywhere.",
+     "Such hot water is found only in volcanic areas."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-7",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is an environmental drawback of some geothermal power plants?",
+   "options": [
+    "They flood large river valleys behind tall dams",
+    "They can release hydrogen sulfide gas",
+    "They release large amounts of soot, just like a coal plant",
+    "They depend on daylight and stop working each night"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Underground steam can carry hydrogen sulfide and small amounts of carbon dioxide and dissolved minerals. Releases are far smaller than from fossil fuel plants.",
+    "options": [
+     "Flooding valleys is a dam's impact.",
+     "Right: hydrogen sulfide and some dissolved minerals.",
+     "Geothermal plants burn nothing, so they make no soot.",
+     "Geothermal runs day and night."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-8",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the yearly cost of heating the home with the natural gas furnace, then give the answer.",
+   "stimulus": "geothermal-s1",
+   "why": {
+    "correct": "$800\\,\\text{therm} \\times \\frac{\\$1.30}{1\\,\\text{therm}} = \\$1{,}040$."
+   },
+   "setup": {
+    "answer": "800 therm * 1.30 $/therm",
+    "unit": "$",
+    "mustUse": [
+     "800",
+     "1.30"
+    ],
+    "mistakes": [
+     {
+      "expr": "800 therm / (1.30 $/therm)",
+      "why": "Dividing by the price leaves therms squared per dollar. Multiply therms by dollars per therm."
+     }
+    ],
+    "then": {
+     "unit": "$",
+     "from": {
+      "fn": "cost",
+      "args": [
+       800,
+       1.3
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "div",
+        "args": [
+         800,
+         1.3
+        ]
+       },
+       "check": 615.3846153846154,
+       "why": "You divided by the price. Multiply the therms used by the price per therm."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-geothermal-9",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the yearly cost of heating the home with the ground source heat pump?",
+   "stimulus": "geothermal-s1",
+   "why": {
+    "correct": "$6{,}600\\,\\text{kWh} \\times \\frac{\\$0.14}{1\\,\\text{kWh}} = \\$924$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "cost",
+     "args": [
+      6600,
+      0.14
+     ]
+    },
+    "unit": "$",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "cost",
+       "args": [
+        6600,
+        1.3
+       ]
+      },
+      "why": "You used the gas price per therm. The heat pump runs on electricity at \\$0.14 per kWh."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        6600,
+        0.14
+       ]
+      },
+      "why": "You divided by the price. Multiply kWh by dollars per kWh."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-10",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The heat pump costs \\$12,000 more to install than a new furnace. Write the setup for the number of years for the yearly savings to repay that extra cost, then give the answer.",
+   "stimulus": "geothermal-s1",
+   "why": {
+    "correct": "Yearly savings: $1{,}040 - 924 = 116$ dollars. Payback: $\\frac{12{,}000}{1{,}040 - 924} \\approx 103$ years. At these prices the heat pump does not pay for itself in its lifetime; it is chosen to cut emissions, or where gas is costlier."
+   },
+   "setup": {
+    "answer": "12000 / (1040 - 924)",
+    "mustUse": [
+     "12000",
+     "1040",
+     "924"
+    ],
+    "mistakes": [
+     {
+      "expr": "12000 / 1040 - 924",
+      "why": "Put brackets around the difference: 12,000 ÷ (1,040 - 924). Without them the division happens first."
+     },
+     {
+      "expr": "12000 / 924",
+      "why": "Divide by the yearly savings (1,040 - 924), not by the heat pump's cost."
+     }
+    ],
+    "then": {
+     "unit": "yr",
+     "units": [
+      "years"
+     ],
+     "from": {
+      "fn": "div",
+      "args": [
+       12000,
+       {
+        "fn": "sub",
+        "args": [
+         1040,
+         924
+        ]
+       }
+      ]
+     },
+     "tol": 0.6,
+     "mistakes": [
+      {
+       "from": {
+        "fn": "div",
+        "args": [
+         12000,
+         924
+        ]
+       },
+       "check": 12.987012987012987,
+       "why": "You divided by the heat pump's yearly cost. Divide by the yearly savings, 1,040 - 924 = 116 dollars."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-geothermal-11",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The local utility makes its electricity from wind and sunlight. Which conclusion about the two heating systems is best supported?",
+   "stimulus": "geothermal-s1",
+   "options": [
+    "The heat pump would release carbon dioxide stored in the ground",
+    "The heat pump would cut heating emissions sharply",
+    "The furnace would release less carbon dioxide than the heat pump",
+    "Both systems would release the same amount of carbon dioxide"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The furnace burns natural gas in the home; the heat pump runs on electricity, which here comes from sources that release no carbon dioxide while running.",
+    "options": [
+     "The ground loop moves heat; it does not release gas.",
+     "Right: clean electricity makes the heat pump nearly emission-free in use.",
+     "The furnace burns gas, which releases carbon dioxide.",
+     "One burns gas; the other uses clean electricity."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-12",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the power plant on the left of the diagram, what spins the turbine?",
+   "stimulus": "geothermal-s2",
+   "options": [
+    "Steam from the production well",
+    "Cooled water in the injection well",
+    "Burning fuel in a boiler",
+    "Wind blowing across the surface"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Steam and hot water rise up the production well and spin the turbine.",
+    "options": [
+     "Right: steam from underground.",
+     "The injection well returns water after it has done its work.",
+     "Nothing is burned.",
+     "Wind is not part of the diagram."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-13",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "On the right of the diagram, why does the heat pump move heat into the house in winter but out of it in summer?",
+   "stimulus": "geothermal-s2",
+   "options": [
+    "The ground heats up in winter and cools in summer",
+    "The house makes its own heat in winter from the pipes",
+    "The pump runs on sunlight, which changes with the season",
+    "The ground is warmer than winter air and cooler than summer air"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A few meters down, the ground stays about the same temperature all year: warmer than the winter air, cooler than the summer air.",
+    "options": [
+     "The ground's temperature stays nearly steady.",
+     "The pipes carry heat from the ground; they do not make it.",
+     "The pump runs on electricity.",
+     "Right: the ground's steady temperature is between winter and summer air."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-14",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Both systems in the diagram use heat from the ground. Which statement compares them correctly?",
+   "stimulus": "geothermal-s2",
+   "options": [
+    "The heat pump makes electricity and the power plant makes heat",
+    "Neither one uses electricity or fuel to run",
+    "Only the plant needs hot rock near the surface",
+    "Both need hot rock near a plate boundary to work"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The power plant needs very hot water or steam, found near plate boundaries. The heat pump needs only the mild, steady temperature of shallow ground, found almost everywhere.",
+    "options": [
+     "It is the other way round.",
+     "A heat pump uses electricity to run.",
+     "Right: very different temperatures needed.",
+     "Heat pumps work far from plate boundaries."
+    ]
+   }
+  },
+  {
+   "id": "env-geothermal-15",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A school district in a region with no hot rock near the surface wants to cut the natural gas it burns for heating. Propose a geothermal solution and explain how it works.",
+   "why": {
+    "correct": "A ground source heat pump fits because it uses the ground's steady shallow temperature, which exists almost everywhere."
+   },
+   "specific": {
+    "frame": "The district should install ___, which works because ___.",
+    "slots": {
+     "tech": {
+      "label": "Technology",
+      "options": [
+       "ground source heat pumps",
+       "a geothermal power plant",
+       "deeper natural gas wells"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A power plant needs hot rock near the surface, which this region lacks.",
+       "2": "More gas wells would not reduce gas burning."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "buried pipes pick up heat from the ground, which stays about the same temperature all year, and the pump moves it into the buildings",
+       "the pipes burn gas more efficiently underground",
+       "the pipes collect sunlight stored in the soil"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A heat pump burns no gas.",
+       "2": "Shallow ground temperature is steady because the ground stores heat; the system does not collect sunlight directly."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "heat pump",
+      "ground",
+      "pipes"
+     ]
+    },
+    "model": "The district should install ground source heat pumps, which works because buried pipes pick up heat from the ground, which stays about the same temperature all year, and the pumps move that heat into the schools instead of burning natural gas."
+   }
+  },
+  {
+   "id": "env-geothermal-16",
+   "unit": "unit-6",
+   "topic": "geothermal",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an advantage of geothermal power plants over wind and solar?",
+   "options": [
+    "Steady output in any weather, day or night",
+    "They can be built on any piece of land in the world",
+    "They release no gases or dissolved minerals of any kind",
+    "They need no drilling or pumping in order to operate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Geothermal heat is always there, so plants run around the clock. They are limited to suitable sites and can release some gases.",
+    "options": [
+     "Right: steady, weather-independent output.",
+     "They need hot rock near the surface, found in few places.",
+     "Steam can carry hydrogen sulfide and dissolved minerals.",
+     "Wells must be drilled and water pumped and reinjected."
+    ]
+   }
+  }
+ ]
+}

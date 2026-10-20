@@ -1,0 +1,12 @@
+{
+ "geothermal-plant-heat-pump": {
+  "file": "figures/geothermal-plant-heat-pump.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 410,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels. Left: a geothermal power plant. Steam and hot water rise from hot rock up a production well to spin a turbine connected to a generator that sends out electricity; cooled water returns down an injection well. The hot rock is heated by Earth's interior through radioactive decay and heat left from Earth's formation. Right: a house with a heat pump connected to a U-shaped pipe loop buried a few meters down, where the ground stays about the same temperature all year; in winter heat moves from the ground to the house, in summer from the house to the ground."
+ }
+}

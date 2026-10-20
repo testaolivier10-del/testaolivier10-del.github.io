@@ -78,6 +78,7 @@
     "type": "numeric",
     "numeric": {
      "unit": "mg/kg",
+     "tol": 0.5,
      "from": {
       "fn": "ld50",
       "args": [

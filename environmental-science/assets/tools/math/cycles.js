@@ -25,8 +25,8 @@
        planting forests takes carbon out of the air. 1 ppm of CO2 = 2.12 GtC.
        Nitrogen and phosphorus: relative amounts (100 = before any change), a
        linear box model (each flow = rate × the amount in its source), so a
-       change works its way around the cycle. Water (thousand km³ and thousand
-       km³/yr, rounded from Trenberth et al. 2007): the same box model.
+       change works its way around the cycle. Water (km³ and km³/yr, rounded
+       from Trenberth et al. 2007): the same box model.
    Drills (every number from ApEnvCalc, never typed)
      TYPES  process, nitrogen, reservoir, human, budget, residence
      generate(rng, context, type) -> { ctx, topic, type, text, steps, solution, givens, figure } */
@@ -73,11 +73,11 @@
       id: 'nitrogen', name: 'Nitrogen cycle', unit: '', funit: '', topic: 'nitrogen-cycle', relative: true,
       reservoirs: [
         { id: 'n2', name: 'Atmosphere', what: 'N₂ gas, 78% of air', amount: 100, at: [0.5, 0.1], fixed: true },
-        { id: 'org', name: 'Plants and animals', what: 'proteins, DNA', amount: 100, at: [0.17, 0.3] },
-        { id: 'dead', name: 'Wastes and dead matter', what: 'organic nitrogen', amount: 100, at: [0.15, 0.62] },
-        { id: 'nh4', name: 'Ammonium in soil', what: 'NH₃ / NH₄⁺', amount: 100, at: [0.33, 0.84] },
-        { id: 'no3', name: 'Nitrate in soil', what: 'NO₂⁻ then NO₃⁻', amount: 100, at: [0.5, 0.62] },
-        { id: 'water', name: 'Streams and ocean', what: 'dissolved nitrate', amount: 100, at: [0.83, 0.7] }
+        { id: 'org', name: 'Plants and animals', what: 'proteins, DNA', amount: 100, at: [0.15, 0.3] },
+        { id: 'dead', name: 'Wastes, dead matter', what: 'organic nitrogen', amount: 100, at: [0.14, 0.66] },
+        { id: 'nh4', name: 'Ammonium in soil', what: 'NH₃ / NH₄⁺', amount: 100, at: [0.4, 0.74] },
+        { id: 'no3', name: 'Nitrate in soil', what: 'NO₂⁻ then NO₃⁻', amount: 100, at: [0.58, 0.56] },
+        { id: 'water', name: 'Streams and ocean', what: 'dissolved nitrate', amount: 100, at: [0.85, 0.74] }
       ],
       processes: [
         { id: 'fix', n: 1, from: 'n2', to: 'nh4', name: 'Nitrogen fixation', flux: 10, agent: 'Nitrogen-fixing bacteria (in soil and in the root nodules of legumes)', what: 'turn N₂ gas, which plants cannot use, into ammonia (NH₃) and ammonium (NH₄⁺).' },
@@ -123,31 +123,31 @@
       ]
     },
     water: {
-      id: 'water', name: 'Water cycle', unit: 'thousand km³', funit: 'thousand km³/yr', topic: 'water-cycle', start: 2020,
+      id: 'water', name: 'Water cycle', unit: 'km³', funit: 'km³/yr', topic: 'water-cycle', start: 2020,
       reservoirs: [
-        { id: 'atm', name: 'Atmosphere', what: 'water vapor, clouds', amount: 12.7, at: [0.5, 0.1] },
-        { id: 'ice', name: 'Ice and snow', what: 'glaciers, ice sheets', amount: 26350, at: [0.15, 0.18] },
-        { id: 'soil', name: 'Soil water', what: 'in the root zone', amount: 122, at: [0.2, 0.64] },
-        { id: 'lakes', name: 'Lakes and rivers', what: 'surface fresh water', amount: 180, at: [0.47, 0.42] },
-        { id: 'ground', name: 'Groundwater', what: 'aquifers', amount: 15300, at: [0.36, 0.88] },
-        { id: 'ocean', name: 'Ocean', what: 'salt water, 97% of all water', amount: 1335000, at: [0.81, 0.66] }
+        { id: 'atm', name: 'Atmosphere', what: 'water vapor, clouds', amount: 12700, at: [0.5, 0.1] },
+        { id: 'ice', name: 'Ice and snow', what: 'glaciers, ice sheets', amount: 26350000, at: [0.15, 0.16] },
+        { id: 'soil', name: 'Soil water', what: 'in the root zone', amount: 122000, at: [0.17, 0.62] },
+        { id: 'lakes', name: 'Lakes and rivers', what: 'surface fresh water', amount: 180000, at: [0.5, 0.6] },
+        { id: 'ground', name: 'Groundwater', what: 'aquifers', amount: 15300000, at: [0.36, 0.89] },
+        { id: 'ocean', name: 'Ocean', what: 'salt water, 97% of all water', amount: 1335000000, at: [0.82, 0.66] }
       ],
       processes: [
-        { id: 'evap', from: 'ocean', to: 'atm', name: 'Evaporation', flux: 413, agent: 'Sunlight', what: 'heats the ocean surface and turns liquid water into vapor (salt stays behind).' },
-        { id: 'oprecip', from: 'atm', to: 'ocean', name: 'Precipitation on the ocean', flux: 373, agent: 'Clouds', what: 'release rain and snow when water vapor cools and condenses.' },
-        { id: 'lprecip', from: 'atm', to: 'soil', name: 'Precipitation on land', flux: 113, agent: 'Clouds blown over the land', what: 'rain and snow on the land. Winds carry about 40 of the ocean\'s 413 thousand km³ inland each year.' },
-        { id: 'et', from: 'soil', to: 'atm', name: 'Evapotranspiration', flux: 73, agent: 'Plants and the sun', what: 'return water to the air: plants transpire through their leaves and soil water evaporates.' },
-        { id: 'runoff', from: 'soil', to: 'lakes', name: 'Runoff', flux: 30, agent: 'Gravity', what: 'moves water over the ground into streams, lakes and rivers.' },
-        { id: 'infil', from: 'soil', to: 'ground', name: 'Infiltration', flux: 10, agent: 'Porous soil and rock', what: 'let water soak down to recharge aquifers.' },
-        { id: 'seep', from: 'ground', to: 'lakes', name: 'Groundwater flow', flux: 10, slow: true, agent: 'Aquifers', what: 'slowly feed springs, rivers and lakes.' },
-        { id: 'rivers', from: 'lakes', to: 'ocean', name: 'River flow', flux: 40, agent: 'Rivers', what: 'carry the land\'s extra water back to the ocean.' },
+        { id: 'evap', from: 'ocean', to: 'atm', name: 'Evaporation', flux: 413000, agent: 'Sunlight', what: 'heats the ocean surface and turns liquid water into vapor (salt stays behind).' },
+        { id: 'oprecip', from: 'atm', to: 'ocean', name: 'Precipitation on the ocean', flux: 373000, agent: 'Clouds', what: 'release rain and snow when water vapor cools and condenses.' },
+        { id: 'lprecip', from: 'atm', to: 'soil', name: 'Precipitation on land', flux: 113000, agent: 'Clouds blown over the land', what: 'rain and snow on the land. Winds carry about 40,000 of the 413,000 km³ evaporated from the ocean inland each year.' },
+        { id: 'et', from: 'soil', to: 'atm', name: 'Evapotranspiration', flux: 73000, agent: 'Plants and the sun', what: 'return water to the air: plants transpire through their leaves and soil water evaporates.' },
+        { id: 'runoff', from: 'soil', to: 'lakes', name: 'Runoff', flux: 30000, agent: 'Gravity', what: 'moves water over the ground into streams, lakes and rivers.' },
+        { id: 'infil', from: 'soil', to: 'ground', name: 'Infiltration', flux: 10000, agent: 'Porous soil and rock', what: 'let water soak down to recharge aquifers.' },
+        { id: 'seep', from: 'ground', to: 'lakes', name: 'Groundwater flow', flux: 10000, slow: true, agent: 'Aquifers', what: 'slowly feed springs, rivers and lakes.' },
+        { id: 'rivers', from: 'lakes', to: 'ocean', name: 'River flow', flux: 40000, agent: 'Rivers', what: 'carry the land\'s extra water back to the ocean.' },
         { id: 'melt', from: 'ice', to: 'ocean', name: 'Melting', flux: 0, human: true, agent: 'A warming climate', what: 'melts glaciers and ice sheets on land, which raises sea level (melting sea ice does not).' },
         { id: 'pump', from: 'ground', to: 'soil', name: 'Pumping for irrigation', flux: 0, human: true, agent: 'Wells', what: 'pump groundwater faster than infiltration refills it, so the water table drops.' }
       ],
       changes: [
         { id: 'pave', name: 'Pave land (cities)', scale: { infil: 0.3, runoff: 1.6, et: 0.85 }, did: 'Paving land' },
-        { id: 'pump', name: 'Pump groundwater', proc: 'pump', rate: 3, did: 'Pumping groundwater' },
-        { id: 'warm', name: 'Warm the climate', proc: 'melt', rate: 0.5, scale: { evap: 1.04, oprecip: 1.04, lprecip: 1.04, et: 1.04 }, did: 'Warming the climate' }
+        { id: 'pump', name: 'Pump groundwater', proc: 'pump', rate: 3000, did: 'Pumping groundwater' },
+        { id: 'warm', name: 'Warm the climate', proc: 'melt', rate: 500, scale: { evap: 1.04, oprecip: 1.04, lprecip: 1.04, et: 1.04 }, did: 'Warming the climate' }
       ]
     }
   };
@@ -233,7 +233,7 @@
     var pool = Y.processes.filter(function(p){ return !p.human && !/^(waste|wdenit|death)$/.test(p.id) && !(cy === 'carbon' && p.id === 'burial'); });
     var P = r.pick(pool);
     // distractors: other processes of this cycle with different endpoints
-    var others = M.shuffle(r, Y.processes.filter(function(q){ return q.id !== P.id && q.name !== P.name && !(q.from === P.from && q.to === P.to); }).map(function(q){ return q.name; }))
+    var others = M.shuffle(r, Y.processes.filter(function(q){ return !q.human && q.id !== P.id && q.name !== P.name && !(q.from === P.from && q.to === P.to); }).map(function(q){ return q.name; }))
       .filter(function(n, i, a){ return a.indexOf(n) === i; }).slice(0, 3);
     var opts = [P.name].concat(others);
     var why = opts.map(function(o, i){
@@ -246,7 +246,8 @@
     var steps = [choice('name', 'Which process is this?', opts, 0, why, '2.A')];
     // the agent, as a second step
     var agents = M.shuffle(r, Y.processes.filter(function(q){ return q.agent !== P.agent && !q.human; }).map(function(q){ return q.agent; })).filter(function(a, i, l){ return l.indexOf(a) === i; }).slice(0, 2);
-    if(agents.length === 2 && P.agent.toLowerCase() !== P.name.toLowerCase()){
+    var trivial = P.agent.toLowerCase().indexOf(P.name.toLowerCase().slice(0, 6)) > -1;
+    if(agents.length === 2 && !trivial){
       var ao = [P.agent].concat(agents);
       steps.push(choice('agent', 'What carries out ' + lc(P.name) + '?', ao, 0, ao.map(function(a, i){ return i ? 'That is what drives ' + lc(Y.processes.filter(function(q){ return q.agent === a; })[0].name) + '.' : 'Right. ' + P.agent + ' ' + P.what; }), '1.A'));
     }
@@ -289,7 +290,7 @@
     { cycle: 'carbon', label: 'Where is most of Earth\'s carbon stored?', options: ['Sedimentary rock (such as limestone)', 'The atmosphere', 'Land plants', 'Fossil fuels'], why: ['Right. Sedimentary rock holds tens of millions of GtC, far more than anything else. Of the reservoirs that exchange carbon quickly, the ocean is largest.', 'The atmosphere holds about 870 GtC, one of the smallest reservoirs.', 'Land plants hold about 450 GtC.', 'Fossil fuel reserves hold about 1,000 GtC.'] },
     { cycle: 'carbon', label: 'Of the reservoirs that trade carbon with the air within years to centuries, which is largest?', options: ['The ocean', 'The atmosphere', 'Land plants', 'Soil'], why: ['Right. The ocean holds about 38,000 GtC, mostly as dissolved CO₂ and carbonate.', 'The atmosphere holds about 870 GtC.', 'Land plants hold about 450 GtC.', 'Soil holds about 1,700 GtC.'] },
     { cycle: 'nitrogen', label: 'Where is most of the nitrogen in the nitrogen cycle?', options: ['The atmosphere, as N₂ gas', 'Soil, as nitrate', 'Living things, as proteins', 'The ocean, as nitrate'], why: ['Right. N₂ is 78% of the air, but most organisms cannot use it until bacteria fix it.', 'Soil nitrate is a small, fast-changing pool.', 'Living things hold a small share.', 'The ocean holds less than the air.'] },
-    { cycle: 'water', label: 'Where is most of Earth\'s fresh water?', options: ['Ice caps and glaciers', 'Lakes and rivers', 'The atmosphere', 'Soil'], why: ['Right. About 26,000 thousand km³ is frozen; groundwater is next. Lakes and rivers hold well under 1%.', 'Lakes and rivers hold only about 180 thousand km³.', 'The atmosphere holds about 13 thousand km³ at any moment.', 'Soil holds about 120 thousand km³.'] },
+    { cycle: 'water', label: 'Where is most of Earth\'s fresh water?', options: ['Ice caps and glaciers', 'Lakes and rivers', 'The atmosphere', 'Soil'], why: ['Right. About 26 million km³ is frozen; groundwater (about 15 million km³) is next. Lakes and rivers hold well under 1%.', 'Lakes and rivers hold only about 180,000 km³.', 'The atmosphere holds about 13,000 km³ at any moment.', 'Soil holds about 120,000 km³.'] },
     { cycle: 'phosphorus', label: 'Why does phosphorus often limit plant growth in lakes and on land?', options: ['It is released only slowly, by the weathering of rock', 'Plants cannot absorb phosphate', 'Most phosphorus is in the atmosphere', 'Bacteria remove it as a gas'], why: ['Right. Weathering is slow, so little phosphate is available; adding phosphate (fertilizer, sewage) can trigger algal blooms.', 'Plant roots absorb phosphate readily.', 'Phosphorus has no significant atmospheric reservoir.', 'There is no common phosphorus gas; that is nitrogen\'s denitrification.'] },
     { cycle: 'carbon', label: 'Which is a carbon sink: a reservoir that takes in more carbon than it releases?', options: ['A growing forest', 'A coal power plant', 'A burning forest', 'A volcano'], why: ['Right. A growing forest takes in more CO₂ by photosynthesis than it releases by respiration.', 'A power plant is a source: it releases CO₂.', 'A burning forest releases its carbon as CO₂.', 'A volcano is a (small) source of CO₂.'] }
   ];
@@ -336,7 +337,13 @@
   /* The carbon budget: sources minus sinks, then to ppm. */
   function genBudget(r, ctx){
     var Cc = C();
-    var ff = r.pick([8.5, 9, 9.4, 9.6, 9.8, 10, 10.2]), luc = r.pick([0.8, 1, 1.1, 1.2, 1.4, 1.6]), oc = r.pick([2.4, 2.5, 2.6, 2.8, 2.9, 3]), ld = r.pick([2.6, 2.8, 3, 3.1, 3.3, 3.5]);
+    // Recent years (Global Carbon Project scale); drawn again until the
+    // share left in the air is clearly in one band (not near 40% or 60%).
+    var ff, luc, oc, ld, f, guard = 0;
+    do {
+      ff = r.pick([8.5, 9, 9.4, 9.6, 9.8, 10, 10.2]); luc = r.pick([0.8, 1, 1.1, 1.2, 1.4, 1.6]); oc = r.pick([2.4, 2.5, 2.6, 2.8, 2.9, 3]); ld = r.pick([2.6, 2.8, 3, 3.1, 3.3, 3.5]);
+      f = (ff + luc - oc - ld) / (ff + luc);
+    } while((Math.abs(f - 0.4) < 0.03 || Math.abs(f - 0.6) < 0.03) && guard++ < 50);
     var net = Cc.evaluate({ fn: 'sub', args: [{ fn: 'add', args: [ff, luc] }, { fn: 'add', args: [oc, ld] }] });
     var p = Cc.evaluate({ fn: 'div', args: [net, PPM] });
     var wrongSign = Cc.evaluate({ fn: 'add', args: [ff, luc, oc, ld] });

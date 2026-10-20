@@ -56,6 +56,8 @@ export function recheck(p, c, w, errs) {
     if (!(g.a < 5.6)) bad('the acid rain must be below 5.6');
   } else if (p.type === 'reduce') {
     if (!FIX[g.id].test(right(step(p, 'fix')))) bad(`fix key for ${g.id}`);
+    const fx = step(p, 'fix');
+    if (fx.options.filter((o, i) => i !== fx.correct && FIX[g.id].test(o)).length) bad(`a wrong option for ${g.id} names the right fix`);
     if (!/^Primary/.test(right(step(p, 'kind')))) bad('kind key');
     const acid = g.id === 'NOx' || g.id === 'SO2';
     if (!(acid ? /^Yes/ : /^No/).test(right(step(p, 'acid')))) bad('acid key');

@@ -2,7 +2,7 @@
    One color per pollutant everywhere (Okabe-Ito, colorblind safe, each curve
    also labeled): NO blue, NO2 brown-orange, O3 olive (the course accent),
    VOCs purple. Light and dark from tokens. */
-.ap-svg,.ap-qfig{--ap-no:#0072B2;--ap-no2:#C2571A;--ap-o3:var(--cink);--ap-voc:#9B5FB5;--ap-mtn:#6F7F73;--ap-bldg:#4A5560;--ap-road:#3C4248;--ap-lid:rgba(230,120,60,.28);}
+.ap-svg,.ap-qfig{--ap-no:#0072B2;--ap-no2:#C2571A;--ap-o3:var(--cink);--ap-voc:#9B5FB5;--ap-mtn:#6F7F73;--ap-bldg:#4A5560;--ap-road:#3C4248;--ap-lid:rgba(240,110,40,.32);}
 :root[data-theme="dark"] .ap-svg,:root[data-theme="dark"] .ap-qfig{--ap-no:#6CB8EC;--ap-no2:#F09A5E;--ap-voc:#C99BE0;--ap-mtn:#3E4A43;--ap-bldg:#2B323A;--ap-road:#1E2328;--ap-lid:rgba(240,140,80,.30);}
 .ap-card{display:grid;gap:14px;}
 .ap-fig{position:relative;min-height:320px;height:min(70vh,580px);}
@@ -72,3 +72,12 @@
 .ap-animal.is-gone rect{fill:var(--paper);stroke:#C2571A;stroke-dasharray:4 3;}
 .ap-animal.is-gone .ap-t{fill:var(--muted);}
 .ap-bar{fill:var(--muted);} .ap-bar.is-new{fill:var(--cink);}
+.ap-halo{paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.ap-muted{fill:var(--muted);}
+.ap-ground2{fill:var(--paper);}
+.ap-fixbox{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.ap-pipe{stroke:#7E8A92;stroke-width:6;stroke-linecap:round;}
+.ap-pipe2{fill:#7E8A92;}
+.ap-exh2{fill:#8C8C8C;}
+.ap-pump{fill:#C2571A;} .ap-pumpwin{fill:#F2EED8;} .ap-hose{fill:none;stroke:#2B2B2B;stroke-width:3;} .ap-nozzle{fill:#2B2B2B;}
+.ap-vapor{fill:none;stroke:var(--ap-voc);stroke-width:2.4;stroke-linecap:round;}
