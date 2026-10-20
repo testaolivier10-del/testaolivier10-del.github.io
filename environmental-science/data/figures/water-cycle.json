@@ -1,0 +1,12 @@
+{
+ "water-cycle-diagram": {
+  "file": "figures/water-cycle-diagram.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The water cycle. The sun drives evaporation from the ocean and transpiration from plants. Water vapor cools and condenses into clouds. Precipitation falls on land. Some water flows over the surface as runoff to the ocean. Some soaks into the ground by infiltration and becomes groundwater, stored in an aquifer, a layer of rock and sediment whose pores hold water; groundwater flows slowly toward the ocean."
+ }
+}

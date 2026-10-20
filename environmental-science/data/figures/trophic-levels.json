@@ -1,0 +1,12 @@
+{
+ "trophic-levels-meadow": {
+  "file": "figures/trophic-levels-meadow.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Five feeding levels in a meadow, bottom to top, with arrows pointing from food to eater. Trophic level 1, producers: grass, which makes its own food by photosynthesis. Level 2, primary consumers: a grasshopper, a herbivore that eats producers. Level 3, secondary consumers: a frog that eats primary consumers. Level 4, tertiary consumers: a snake. At the top, an apex predator: a hawk that eats snakes and that nothing hunts."
+ }
+}

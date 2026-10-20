@@ -1,0 +1,12 @@
+{
+ "phosphorus-cycle-steps": {
+  "file": "figures/phosphorus-cycle-steps.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The phosphorus cycle has no gas phase. Weathering releases phosphate from rocks into soil. Plants take up phosphate and animals get it by eating plants; wastes, remains and decomposers return it to the soil. Rain washes phosphate from soil into lakes, rivers and oceans, where it settles as sediment. Over millions of years, uplift turns sediments back into rock on land. People add phosphate as fertilizer to farm soil, and water from farms and wastewater carries extra phosphate into lakes, where algae then grow out of control. Because phosphorus does not cycle through the air, it moves slowly and is often a limiting nutrient."
+ }
+}

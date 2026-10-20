@@ -1,0 +1,689 @@
+{
+ "stimuli": {
+  "terrestrial-biomes-s1": {
+   "kind": "visual",
+   "title": "A climatograph for location X",
+   "invented": true,
+   "plot": {
+    "label": "Climatograph for location X: monthly average temperature and precipitation over one year, invented data",
+    "kind": "dual",
+    "series": [
+     {
+      "name": "Temperature (°C)",
+      "points": [
+       [
+        1,
+        26
+       ],
+       [
+        2,
+        27
+       ],
+       [
+        3,
+        27
+       ],
+       [
+        4,
+        26
+       ],
+       [
+        5,
+        25
+       ],
+       [
+        6,
+        24
+       ],
+       [
+        7,
+        24
+       ],
+       [
+        8,
+        25
+       ],
+       [
+        9,
+        26
+       ],
+       [
+        10,
+        27
+       ],
+       [
+        11,
+        27
+       ],
+       [
+        12,
+        26
+       ]
+      ],
+      "axis": "left"
+     },
+     {
+      "name": "Precipitation (mm)",
+      "points": [
+       [
+        1,
+        210
+       ],
+       [
+        2,
+        190
+       ],
+       [
+        3,
+        170
+       ],
+       [
+        4,
+        90
+       ],
+       [
+        5,
+        20
+       ],
+       [
+        6,
+        5
+       ],
+       [
+        7,
+        2
+       ],
+       [
+        8,
+        5
+       ],
+       [
+        9,
+        15
+       ],
+       [
+        10,
+        60
+       ],
+       [
+        11,
+        150
+       ],
+       [
+        12,
+        200
+       ]
+      ],
+      "axis": "right",
+      "dashed": true
+     }
+    ],
+    "x": [
+     1,
+     12
+    ],
+    "y": [
+     0,
+     35
+    ],
+    "yRight": [
+     0,
+     250
+    ],
+    "xLabel": "Month (1 = January)",
+    "yLabel": "Temperature (°C)",
+    "yRightLabel": "Precipitation (mm)"
+   }
+  },
+  "terrestrial-biomes-s2": {
+   "kind": "quantitative",
+   "title": "Climate of four sites",
+   "invented": true,
+   "table": {
+    "caption": "Average yearly temperature and precipitation at four sites (invented data for practice)",
+    "cols": [
+     "Site",
+     "Average yearly temperature (°C)",
+     "Yearly precipitation (cm)",
+     "Coldest month (°C)"
+    ],
+    "rows": [
+     [
+      "A",
+      "−10",
+      "20",
+      "−30"
+     ],
+     [
+      "B",
+      "27",
+      "300",
+      "25"
+     ],
+     [
+      "C",
+      "12",
+      "120",
+      "−3"
+     ],
+     [
+      "D",
+      "24",
+      "15",
+      "12"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-terrestrial-biomes-1",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which two abiotic factors are used most to tell terrestrial biomes apart?",
+   "options": [
+    "Temperature and precipitation",
+    "Wind speed and day length",
+    "Soil color and elevation",
+    "Number of animal species and tree height"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Biomes are defined mainly by their climate: average temperature and how much precipitation falls, and when.",
+    "options": [
+     "Right: temperature and precipitation decide which plants can grow.",
+     "Wind and day length matter less than temperature and precipitation.",
+     "Soil and elevation are shaped by climate rather than defining the biome.",
+     "Species counts and tree height are results of the climate, and they are biotic."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-2",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A biome has long, very cold winters, short summers, and a layer of soil that stays frozen all year. Few trees grow. Which biome is it?",
+   "options": [
+    "Taiga",
+    "Tundra",
+    "Temperate grassland",
+    "Chaparral"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A soil layer frozen all year is permafrost, which keeps tree roots out. Cold plus permafrost plus few trees is tundra.",
+    "options": [
+     "Taiga is cold but is a forest of conifers.",
+     "Right: permafrost and almost no trees mark the tundra.",
+     "Grasslands have warm summers and no permafrost.",
+     "Chaparral has mild, wet winters and hot, dry summers."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-3",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do the soils of tropical rainforests tend to be poor in nutrients even though the forest is lush?",
+   "options": [
+    "Heavy rain washes nutrients away; plants absorb the rest fast.",
+    "The cold slows the breakdown of dead leaves.",
+    "Little rain falls, so dead matter stays dry and does not break down.",
+    "Fires burn the dead leaves each dry season."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Warmth and moisture make dead matter decompose fast; heavy rain then washes nutrients out, and the dense plants take up the rest, so little stays in the soil.",
+    "options": [
+     "Right: rain washes nutrients out and plants absorb the rest quickly.",
+     "Tropical rainforests are warm all year, not cold.",
+     "Tropical rainforests are the wettest biome.",
+     "Yearly fires are a feature of savannas and grasslands."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-4",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A biome has hot, dry summers and mild, rainy winters. Its plants are shrubs with small, waxy leaves, and fires are common in late summer. Which biome is it?",
+   "options": [
+    "Savanna",
+    "Desert biome",
+    "Chaparral",
+    "Temperate deciduous forest"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Hot dry summers, mild wet winters, shrubs and fire describe chaparral, found in places like coastal California.",
+    "options": [
+     "Savannas are warm all year with a wet and a dry season and are grassy with scattered trees.",
+     "Deserts get very little rain in any season.",
+     "Right: dry summers and wet winters with fire-prone shrubs.",
+     "Deciduous forests get rain all year and have cold winters."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-5",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What happens to biomes as you go up a tall mountain near the equator?",
+   "options": [
+    "They stay the same, since the latitude does not change.",
+    "They change in about the order seen going toward the poles.",
+    "They become wetter and much warmer near the top.",
+    "They change in the reverse of the order seen going poleward."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Temperature falls with height, so going up a mountain is like going toward the poles: forest, then conifers, then tundra-like plants near the top.",
+    "options": [
+     "Height lowers temperature, so the biomes change.",
+     "Right: cooler air with height gives a pole-ward sequence.",
+     "Air gets colder, not warmer, with height.",
+     "The order matches the trip toward the poles, from warm to cold."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-6",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which biome covers the most land at high northern latitudes, just south of the tundra, with cone-bearing evergreen trees?",
+   "options": [
+    "Temperate rainforest",
+    "Taiga (boreal forest)",
+    "Temperate deciduous forest",
+    "Temperate grassland"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The taiga, or boreal forest, is the great belt of conifers across Canada, Scandinavia and Russia.",
+    "options": [
+     "Temperate rainforests are wet coastal forests, not the northern belt.",
+     "Right: the taiga is the cold, conifer-filled belt south of the tundra.",
+     "Deciduous forests lie farther south and lose their leaves in fall.",
+     "Grasslands have few trees."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-7",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Savannas and temperate grasslands both have grasses and few trees. Which fact best tells them apart?",
+   "options": [
+    "Savannas get almost no rain, while grasslands get a moderate amount.",
+    "Savannas stay warm through the year; temperate grasslands have cold winters.",
+    "Temperate grasslands have scattered trees, while savannas lack trees.",
+    "Savannas are found mostly at high latitudes near the poles."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both are grassy, but savannas are tropical: warm all year, with rain falling mostly in one season. Temperate grasslands have hot summers and cold winters.",
+    "options": [
+     "Savannas do get rain, often 50 to 130 cm a year in a wet season; \"no rain\" is a common error.",
+     "Right: the temperature pattern is the clearest difference.",
+     "Savannas are the grassland with scattered trees.",
+     "Savannas are tropical, near the equator."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-8",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why trees are scarce in the tundra.",
+   "why": {
+    "correct": "Permafrost keeps roots shallow and the growing season is short, so large trees cannot grow."
+   },
+   "specific": {
+    "frame": "Because ___ stays frozen all year and the growing season is ___, trees ___.",
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "a layer of soil",
+       "the air",
+       "the lakes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Tundra air thaws in summer; the problem is frozen ground.",
+       "2": "Frozen lakes do not stop roots; frozen soil does."
+      }
+     },
+     "season": {
+      "label": "Growing season",
+      "options": [
+       "short",
+       "long"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Tundra summers are brief, which limits plant growth."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "cannot root deeply or grow large",
+       "grow faster than in forests",
+       "lose their leaves in fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cold and frozen soil slow growth, not speed it up.",
+       "2": "Losing leaves does not explain why trees are missing."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "permafrost",
+      "frozen",
+      "roots"
+     ]
+    },
+    "model": "Because permafrost, a layer of soil, stays frozen all year and the growing season is short, tree roots cannot grow deep, so trees cannot grow large in the tundra."
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-9",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which biome has broadleaf trees that drop their leaves in fall, warm summers, cold winters, and rain spread through the year?",
+   "options": [
+    "Temperate deciduous forest",
+    "Tropical rainforest",
+    "Taiga (boreal forest)",
+    "Tropical savanna"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Trees that drop their leaves for a cold winter, with year-round rain, define the temperate deciduous forest.",
+    "options": [
+     "Right: seasons plus leaf drop plus steady rain.",
+     "Tropical rainforests are warm all year, and the trees keep their leaves.",
+     "Taiga trees are mostly evergreen conifers.",
+     "Savannas are warm all year with a dry season."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-10",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement describes the climatograph for location X?",
+   "stimulus": "terrestrial-biomes-s1",
+   "options": [
+    "Temperatures swing from below freezing in winter to hot in summer.",
+    "It stays warm, and most rain falls in a few wet months.",
+    "It is cool year-round, with steady rain in each month.",
+    "Very little rain falls in any month."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Temperature stays between 24 and 27 °C, while precipitation ranges from 210 mm to 2 mm: a wet season and a dry season.",
+    "options": [
+     "The temperature line never goes below 24 °C.",
+     "Right: steady warmth with a wet season and a dry season.",
+     "It is warm, and rain varies from 2 to 210 mm a month.",
+     "Several months get more than 150 mm."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-11",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which biome best matches location X?",
+   "stimulus": "terrestrial-biomes-s1",
+   "options": [
+    "Tropical rainforest",
+    "Savanna",
+    "Desert biome",
+    "Temperate grassland"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Warm all year with a long dry season and a strong wet season is the pattern of a savanna.",
+    "options": [
+     "A tropical rainforest is wet in every month; location X has dry months near 0 mm.",
+     "Right: warm all year with a wet and a dry season.",
+     "A desert would be dry all year; location X gets about 1,100 mm.",
+     "Temperate grasslands have cold winters; location X stays above 24 °C."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-12",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "numeric",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the total yearly precipitation at location X? Add the 12 monthly values (210, 190, 170, 90, 20, 5, 2, 5, 15, 60, 150, 200) and give the answer in millimeters.",
+   "stimulus": "terrestrial-biomes-s1",
+   "why": {
+    "correct": "$210 + 190 + 170 + 90 + 20 + 5 + 2 + 5 + 15 + 60 + 150 + 200 = 1{,}117$ mm, about 112 cm."
+   },
+   "numeric": {
+    "unit": "mm",
+    "units": [
+     "millimeters"
+    ],
+    "tol": 0.5,
+    "from": {
+     "fn": "add",
+     "args": [
+      210,
+      190,
+      170,
+      90,
+      20,
+      5,
+      2,
+      5,
+      15,
+      60,
+      150,
+      200
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 111.7,
+      "why": "That is the total in centimeters. The question asks for millimeters: 1,117 mm."
+     },
+     {
+      "value": 93.0833333333,
+      "why": "That is the monthly average. The question asks for the total: add all 12 months."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-13",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The dry months at location X often bring fires. How do the fires help keep this biome grassy?",
+   "stimulus": "terrestrial-biomes-s1",
+   "options": [
+    "Fires kill tree seedlings; grasses regrow from roots.",
+    "Fires add water to the soil, which favors grass over trees.",
+    "Fires cool the soil, so tree roots stop growing.",
+    "Fires kill the grasses but let young trees spread."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Grasses grow back from roots below ground after a fire; young trees are killed, so trees stay scattered.",
+    "options": [
+     "Right: fire favors grasses over young trees.",
+     "Fire does not add rain.",
+     "Fire heats, not cools, the area.",
+     "It is the other way: grasses recover and tree seedlings die."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-14",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which site is most likely a tropical rainforest?",
+   "stimulus": "terrestrial-biomes-s2",
+   "options": [
+    "Site A",
+    "Site B",
+    "Site C",
+    "Site D"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Site B is warm all year (27 °C, coldest month 25 °C) and very wet (300 cm).",
+    "options": [
+     "Site A is cold and dry: tundra.",
+     "Right: warm and very wet all year.",
+     "Site C has a cold month below freezing: temperate.",
+     "Site D gets only 15 cm of precipitation: desert."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-15",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which pairing of site and biome is best supported by the data?",
+   "stimulus": "terrestrial-biomes-s2",
+   "options": [
+    "Site A, taiga",
+    "Site C, temperate deciduous forest",
+    "Site D, savanna",
+    "Site B, temperate rainforest"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Site C has a mild average (12 °C), a winter month below freezing and 120 cm of precipitation: a temperate deciduous forest.",
+    "options": [
+     "Site A averages −10 °C with 20 cm: colder and drier, like tundra.",
+     "Right: seasonal temperatures and moderate rain.",
+     "Site D gets 15 cm: too dry for a savanna; it is a desert.",
+     "Site B is hot all year: tropical, not temperate."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-16",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Sites A and D both get little precipitation. What explains why they are different biomes?",
+   "stimulus": "terrestrial-biomes-s2",
+   "options": [
+    "Their temperatures differ: site A is very cold and site D is hot.",
+    "Site A gets more precipitation than site D.",
+    "Site D is closer to the poles than site A.",
+    "They are the same biome, since precipitation decides biomes alone."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Biomes depend on temperature and precipitation together. Both are dry, but A averages −10 °C (tundra) and D 24 °C (desert).",
+    "options": [
+     "Right: same dryness, very different temperatures.",
+     "Site A gets 20 cm and site D 15 cm; that small gap does not explain the difference.",
+     "Site D is warm, so it is likely closer to the equator.",
+     "Temperature matters too; a cold dry place and a hot dry place are different biomes."
+    ]
+   }
+  },
+  {
+   "id": "env-terrestrial-biomes-17",
+   "unit": "unit-1",
+   "topic": "terrestrial-biomes",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Temperate rainforests grow along some coasts, such as the Pacific Northwest. What climate supports them?",
+   "options": [
+    "Hot temperatures and very little rain",
+    "Very cold temperatures with permafrost",
+    "Mild temperatures and heavy rain from ocean air",
+    "Hot summers, cold winters and a moderate amount of rain"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Moist ocean air brings heavy rain and keeps temperatures mild, which supports huge conifers and mosses.",
+    "options": [
+     "That describes a desert.",
+     "That describes the tundra.",
+     "Right: mild and very wet coastal climate.",
+     "That describes a temperate deciduous forest."
+    ]
+   }
+  }
+ ]
+}

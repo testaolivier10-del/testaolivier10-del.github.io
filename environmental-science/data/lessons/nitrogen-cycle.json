@@ -1,0 +1,68 @@
+{
+ "topic": "nitrogen-cycle",
+ "hook": "Every protein in your body contains nitrogen, and you are swimming in it: 78% of each breath is nitrogen gas. Yet plants can starve for nitrogen while surrounded by it, because almost nothing can break N2 apart. Bacteria in soil and in bean roots do it for the whole planet, and farmers spend billions on fertilizer to do it faster.",
+ "prereq": [
+  {
+   "q": "What do decomposers do?",
+   "options": [
+    "Break down dead matter and wastes",
+    "Make food from sunlight",
+    "Eat only living plants",
+    "Store carbon in rock"
+   ],
+   "correct": 0,
+   "why": "Decomposers break down dead matter and return nutrients to the soil.",
+   "review": "carbon-cycle"
+  },
+  {
+   "q": "What is a reservoir in a nutrient cycle?",
+   "options": [
+    "A place where an element is stored for a time",
+    "A movement between two places",
+    "A kind of decomposer",
+    "A gas in the air"
+   ],
+   "correct": 0,
+   "why": "A reservoir stores; a flux moves.",
+   "review": "carbon-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "nitrogen-cycle-steps",
+  "caption": "The five steps of the nitrogen cycle, with the main reservoirs."
+ },
+ "chain": [
+  {
+   "cause": "Bacteria fix N2 from the air (nitrogen fixation)",
+   "effect": "ammonium enters the soil"
+  },
+  {
+   "cause": "Other bacteria turn ammonium into nitrate (nitrification)",
+   "effect": "plants take up nitrate and build proteins (assimilation)"
+  },
+  {
+   "cause": "Decomposers break down wastes and remains (ammonification)",
+   "effect": "ammonium returns to the soil, and denitrifying bacteria send some nitrate back to the air as N2"
+  }
+ ],
+ "ideas": [
+  "The atmosphere (78% N2) is the main reservoir, but most living things cannot use N2.",
+  "<b>Nitrogen fixation</b> (bacteria, lightning, industry) makes <b>ammonium</b>; <b>nitrification</b> makes <b>nitrate</b>; <b>assimilation</b> brings it into living things; <b>ammonification</b> returns ammonium; <b>denitrification</b> returns N2 to the air.",
+  "Nitrogen is often the <b>limiting nutrient</b> on land, which is why <b>fertilizer</b> raises crop yields.",
+  "Nitrate dissolves and is not held by soil, so extra nitrate is lost by <b>leaching</b> into streams and wells."
+ ],
+ "misconception": {
+  "wrong": "Plants take nitrogen straight from the air, since the air is mostly nitrogen.",
+  "right": "Most plants cannot break N2 apart. They take up nitrate and ammonium from the soil, made by nitrogen-fixing and nitrifying bacteria (or added as fertilizer). Legumes get help from bacteria in their root nodules."
+ },
+ "check": [
+  "env-nitrogen-cycle-4",
+  "env-nitrogen-cycle-7",
+  "env-nitrogen-cycle-10",
+  "env-nitrogen-cycle-11",
+  "env-nitrogen-cycle-12",
+  "env-nitrogen-cycle-14",
+  "env-nitrogen-cycle-15"
+ ],
+ "summary": "Nitrogen’s largest reservoir is N2 gas in the air, which most organisms cannot use. Bacteria fix it into ammonium, nitrifying bacteria turn ammonium into nitrate, plants assimilate nitrate, decomposers return ammonium by ammonification, and denitrifying bacteria in low-oxygen soil return N2 to the air. Nitrogen often limits plant growth, and excess fertilizer nitrate leaches into water."
+}

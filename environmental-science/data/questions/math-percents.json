@@ -1,0 +1,416 @@
+{
+ "stimuli": {
+  "math-percents-s1": {
+   "kind": "quantitative",
+   "title": "Frogs counted in a wetland",
+   "invented": true,
+   "table": {
+    "caption": "Spring frog counts in a restored wetland (invented data for practice)",
+    "cols": [
+     "Year",
+     "Frogs counted"
+    ],
+    "rows": [
+     [
+      "2020",
+      "120"
+     ],
+     [
+      "2022",
+      "150"
+     ],
+     [
+      "2024",
+      "135"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-math-percents-1",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town’s water use rose from 4,000 to 5,000 liters per day. Write the setup for the percent change, then give the answer.",
+   "why": {
+    "correct": "$\\frac{5{,}000 - 4{,}000}{4{,}000} \\times 100 = 25\\%$."
+   },
+   "setup": {
+    "answer": "(5000 - 4000) / 4000 * 100",
+    "mustUse": [
+     "5000",
+     "4000",
+     "100"
+    ],
+    "mistakes": [
+     {
+      "expr": "(5000 - 4000) / 5000 * 100",
+      "why": "Divide by the old (starting) value, 4,000, not the new one."
+     },
+     {
+      "expr": "(5000 - 4000) / 4000",
+      "why": "Multiply by 100 to turn the fraction into a percent."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       4000,
+       5000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 20,
+       "why": "20% is the change divided by the new value. Divide by the old value, 4,000."
+      },
+      {
+       "value": 0.25,
+       "why": "0.25 is the fraction. Multiply by 100: 25%."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-math-percents-2",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A forest of 800 hectares lost 120 hectares to logging. By what percent did the forest area change?",
+   "why": {
+    "correct": "New area: $800 - 120 = 680$ ha. $\\frac{680 - 800}{800} \\times 100 = -15\\%$, a decrease of 15%."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      800,
+      680
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 17.6470588235,
+      "why": "You divided by the new area (680). Percent change divides by the starting area, 800."
+     },
+     {
+      "value": -0.15,
+      "why": "Multiply the fraction by 100 for a percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-percents-3",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Coal provides 18% of a country’s 4.0 million GWh of electricity. How many GWh is that?",
+   "why": {
+    "correct": "$\\frac{18}{100} \\times 4{,}000{,}000 = 720{,}000$ GWh."
+   },
+   "numeric": {
+    "unit": "GWh",
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      18,
+      4000000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 72000000,
+      "why": "You multiplied by 18, not 18%. Divide the percent by 100 first: 0.18 × 4,000,000."
+     },
+     {
+      "value": 0.72,
+      "why": "You dropped \"million\". 18% of 4.0 million is 0.72 million = 720,000 GWh."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-percents-4",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Of 2,500 kg of household waste, 650 kg was recycled. What percent was recycled?",
+   "why": {
+    "correct": "$\\frac{650}{2{,}500} \\times 100 = 26\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      650,
+      2500
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.26,
+      "why": "0.26 is the fraction. Multiply by 100 for a percent."
+     },
+     {
+      "value": 384.615384615,
+      "why": "You divided 2,500 by 650. The part (650) goes on top."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-percents-5",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which setup gives the percent change from 80 to 60?",
+   "options": [
+    "(60 - 80) / 80 × 100",
+    "60 - 80 / 80 × 100",
+    "(80 - 60) / 60 × 100",
+    "(60 - 80) / 60 × 100"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "New minus old, in brackets, divided by the old value, times 100: $-25\\%$.",
+    "options": [
+     "Right: brackets, old value on the bottom, × 100.",
+     "Without brackets the division happens first, so it is not the change.",
+     "That divides by the new value and reverses the sign.",
+     "That divides by the new value."
+    ]
+   }
+  },
+  {
+   "id": "env-math-percents-6",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Better insulation and new appliances cut a home’s electricity use from 9,600 kWh to 6,000 kWh a year. What is the percent decrease? Give a positive number.",
+   "why": {
+    "correct": "$\\frac{9{,}600 - 6{,}000}{9{,}600} \\times 100 = 37.5\\%$ decrease."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "mul",
+     "args": [
+      -1,
+      {
+       "fn": "percentChange",
+       "args": [
+        9600,
+        6000
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 60,
+      "why": "You divided by the new value (6,000). Use the starting value, 9,600."
+     },
+     {
+      "value": 3600,
+      "why": "3,600 kWh is the change itself. Divide by 9,600 and multiply by 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-percents-7",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "single",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A fish population fell 50% one year and rose 50% the next. Compared with the start, the population is...",
+   "options": [
+    "25% lower",
+    "the same",
+    "25% higher",
+    "50% lower"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Start 100 → $100 \\times 0.5 = 50$ → $50 \\times 1.5 = 75$, which is 25% below 100. Each percent is of a different starting value.",
+    "options": [
+     "Right: 75 is 25% below 100.",
+     "The 50% rise is of a smaller number, so it does not undo the fall.",
+     "It ends below the start.",
+     "It recovered part of the loss."
+    ]
+   }
+  },
+  {
+   "id": "env-math-percents-8",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in frogs from 2020 to 2022, then give the answer.",
+   "stimulus": "math-percents-s1",
+   "why": {
+    "correct": "$\\frac{150 - 120}{120} \\times 100 = 25\\%$."
+   },
+   "setup": {
+    "answer": "(150 - 120) / 120 * 100",
+    "mustUse": [
+     "150",
+     "120",
+     "100"
+    ],
+    "mistakes": [
+     {
+      "expr": "150 - 120 / 120 * 100",
+      "why": "Put brackets around 150 - 120. Without them the division happens first."
+     },
+     {
+      "expr": "(150 - 120) / 150 * 100",
+      "why": "Divide by the 2020 value (120), the starting value."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       120,
+       150
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 30,
+       "why": "30 is the change in frogs. Divide by 120 and multiply by 100 for a percent."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-math-percents-9",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What was the percent change in frogs from 2022 to 2024?",
+   "stimulus": "math-percents-s1",
+   "why": {
+    "correct": "$\\frac{135 - 150}{150} \\times 100 = -10\\%$, a decrease of 10%."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      150,
+      135
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 11.1111111111,
+      "why": "You divided by 135. Percent change divides by the earlier value, 150 (and the change is a decrease)."
+     },
+     {
+      "value": 10,
+      "why": "The size is right, but frogs went down: the percent change is negative, -10%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-percents-10",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What was the percent change in frogs over the whole period, from 2020 to 2024?",
+   "stimulus": "math-percents-s1",
+   "why": {
+    "correct": "$\\frac{135 - 120}{120} \\times 100 = 12.5\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      120,
+      135
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 15,
+      "why": "You added +25% and -10%. Percents of different starting values do not add; use the 2020 and 2024 counts."
+     },
+     {
+      "value": 11.1111111111,
+      "why": "You divided by 135. Divide by the 2020 count, 120."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-percents-11",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "single",
+   "practice": "5.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement describes the frog counts?",
+   "stimulus": "math-percents-s1",
+   "options": [
+    "They rose 25%, then fell 10%, ending 12.5% above 2020.",
+    "They rose 25% and kept rising.",
+    "They fell over the whole period.",
+    "They rose 15% overall, since 25 - 10 = 15."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "120 → 150 is +25%; 150 → 135 is -10%; 120 → 135 is +12.5% overall.",
+    "options": [
+     "Right: each change computed from its own start.",
+     "The count fell from 2022 to 2024.",
+     "135 is above 120.",
+     "Percent changes from different starting values do not simply add."
+    ]
+   }
+  }
+ ]
+}

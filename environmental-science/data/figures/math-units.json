@@ -1,0 +1,12 @@
+{
+ "math-units-chain": {
+  "file": "figures/math-units-chain.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A pump runs 6 hours a day for 30 days and draws 2 kilowatts. The chain is 30 days over 1, times 6 hours over 1 day, times 2 kilowatts. Days cancel, and hours times kilowatts gives kilowatt-hours: 360 kWh. Then 360 kWh times $0.15 per kWh, with kWh cancelling, is $54."
+ }
+}

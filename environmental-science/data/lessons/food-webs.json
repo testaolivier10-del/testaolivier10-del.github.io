@@ -1,0 +1,68 @@
+{
+ "topic": "food-webs",
+ "hook": "A hawk does not eat just one thing, and neither does a fox or a frog. Draw every feeding link in a meadow and you get a tangled web, not a straight line. That web is why ecosystems can absorb some losses, and why removing one key species can still change everything around it.",
+ "prereq": [
+  {
+   "q": "About what share of energy passes from one trophic level to the next?",
+   "options": [
+    "About 10%",
+    "About 50%",
+    "About 90%",
+    "All of it"
+   ],
+   "correct": 0,
+   "why": "The 10% rule.",
+   "review": "energy-flow"
+  },
+  {
+   "q": "What is a primary consumer?",
+   "options": [
+    "An organism that eats producers",
+    "A producer",
+    "An apex predator",
+    "A decomposer"
+   ],
+   "correct": 0,
+   "why": "Primary consumers (herbivores) eat producers.",
+   "review": "trophic-levels"
+  }
+ ],
+ "figure": {
+  "figure": "food-webs-meadow",
+  "caption": "A meadow food web: arrows point from food to eater."
+ },
+ "chain": [
+  {
+   "cause": "Most organisms eat several foods and are eaten by several predators",
+   "effect": "food chains link into a food web"
+  },
+  {
+   "cause": "A species declines",
+   "effect": "its predators switch to other prey, and its prey increase"
+  },
+  {
+   "cause": "Changes pass along the links",
+   "effect": "species two or three steps away can change too"
+  }
+ ],
+ "ideas": [
+  "A <b>food chain</b> is one path of who eats whom; a <b>food web</b> is all the linked chains in an ecosystem.",
+  "Arrows point from food to eater, the way energy and matter move.",
+  "Decomposers and <b>detritivores</b> break down dead matter from every level and return nutrients to producers.",
+  "Webs with many links are usually more stable: consumers can switch food when one species declines."
+ ],
+ "misconception": {
+  "wrong": "Removing a predator only affects the species it eats.",
+  "right": "Effects spread through the web. Fewer predators means more of their prey, which then eat more of their own food: a change can reach producers two or three links away."
+ },
+ "check": [
+  "env-food-webs-5",
+  "env-food-webs-8",
+  "env-food-webs-9",
+  "env-food-webs-10",
+  "env-food-webs-12",
+  "env-food-webs-13",
+  "env-food-webs-14"
+ ],
+ "summary": "A food chain follows one path of energy from producers to top consumers; a food web shows all the overlapping chains in an ecosystem. Arrows point from food to eater. Decomposers and detritivores recycle nutrients from every level. Because organisms are linked, a change in one population spreads: prey increase when predators decline, and the effect can reach plants several links away."
+}

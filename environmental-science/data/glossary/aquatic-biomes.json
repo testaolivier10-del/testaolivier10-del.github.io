@@ -1,0 +1,35 @@
+{
+ "salinity": {
+  "def": "The amount of dissolved salt in water, often in parts per thousand (ppt). Freshwater is near 0 ppt and seawater about 35 ppt."
+ },
+ "dissolved-oxygen": {
+  "def": "Oxygen gas dissolved in water, in mg/L, which fish and other aquatic animals use. Cold, moving water holds more of it than warm, still water."
+ },
+ "freshwater-biome": {
+  "def": "An aquatic biome with very low salinity: lakes, ponds, rivers, streams and freshwater wetlands."
+ },
+ "lake-zones": {
+  "def": "The zones of a lake: the littoral zone (shallow edge with rooted plants), limnetic zone (open sunlit water), profundal zone (deep water too dark for photosynthesis) and benthic zone (the bottom)."
+ },
+ "wetland": {
+  "def": "Land covered by shallow water or saturated with water for at least part of the year, such as a marsh or swamp. Wetlands store floodwater, filter pollutants and shelter wildlife."
+ },
+ "estuary": {
+  "def": "The area where a river meets the sea and fresh and salt water mix. Rich in nutrients and sunlight, estuaries are nurseries for many fish and shellfish."
+ },
+ "mangrove": {
+  "def": "A salt-tolerant tree that grows along tropical coasts and estuaries; mangrove forests hold sediment with their roots, protect shores from storms and shelter young fish."
+ },
+ "coral-reef": {
+  "def": "A structure built by colonies of coral animals in warm, clear, shallow seawater. Algae living inside the coral share food from photosynthesis in a mutualism."
+ },
+ "intertidal": {
+  "def": "The intertidal zone: the strip of shore covered by water at high tide and exposed to air at low tide, where organisms must resist drying and waves."
+ },
+ "open-ocean": {
+  "def": "The deep water of the ocean away from the coast. It covers most of Earth, but each square meter grows little algae because nutrients are scarce at the sunlit surface."
+ },
+ "photic-zone": {
+  "def": "The upper layer of a body of water where enough light reaches for photosynthesis. Below it lies the aphotic zone, which is too dark."
+ }
+}

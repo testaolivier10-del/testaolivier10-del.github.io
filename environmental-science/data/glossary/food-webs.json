@@ -1,0 +1,11 @@
+{
+ "food-chain": {
+  "def": "A single sequence of organisms, each eaten by the next, showing one path that energy and matter take from producers to top consumers."
+ },
+ "food-web": {
+  "def": "All the interconnected food chains in an ecosystem, showing that most organisms eat and are eaten by several species."
+ },
+ "detritivore": {
+  "def": "An organism, such as an earthworm, millipede or crab, that eats detritus (dead organic matter) and breaks it into smaller pieces, speeding decomposition."
+ }
+}

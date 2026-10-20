@@ -1,0 +1,503 @@
+{
+ "stimuli": {
+  "math-units-s1": {
+   "kind": "quantitative",
+   "title": "Appliances in one home",
+   "invented": true,
+   "table": {
+    "caption": "Power rating and daily use of three appliances in one home (invented data for practice). Electricity costs \\$0.15 per kWh.",
+    "cols": [
+     "Appliance",
+     "Power (W)",
+     "Hours used per day"
+    ],
+    "rows": [
+     [
+      "Space heater",
+      "1,500",
+      "4"
+     ],
+     [
+      "Refrigerator",
+      "150",
+      "24"
+     ],
+     [
+      "LED lights (all together)",
+      "60",
+      "5"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-math-units-1",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farm field covers 4.0 hectares. How many square meters is that? (1 ha = 10,000 m².)",
+   "why": {
+    "correct": "$4.0\\,\\text{ha} \\times \\frac{10{,}000\\,\\text{m}^{2}}{1\\,\\text{ha}} = 40{,}000$ m²."
+   },
+   "numeric": {
+    "unit": "m^2",
+    "units": [
+     "m2",
+     "square meters",
+     "sq m"
+    ],
+    "from": {
+     "fn": "convert",
+     "args": [
+      4,
+      "ha",
+      "m2"
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.0004,
+      "why": "You divided by 10,000. Square meters are smaller than hectares, so the number gets bigger: multiply."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-units-2",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A water pump draws 2 kW and runs 6 hours a day for 30 days. Write the setup, with units, for the energy it uses, then give the answer in kWh.",
+   "why": {
+    "correct": "$30\\,\\text{days} \\times \\frac{6\\,\\text{h}}{1\\,\\text{day}} \\times 2\\,\\text{kW} = 360$ kWh. Days cancel, and kW × h is kWh."
+   },
+   "setup": {
+    "answer": "30 days * 6 h/day * 2 kW",
+    "mustUse": [
+     "30",
+     "6",
+     "2"
+    ],
+    "unit": "kW h",
+    "mistakes": [
+     {
+      "expr": "30 days * 6 h/day / 2 kW",
+      "why": "Energy is power times time, so multiply by 2 kW; dividing leaves units that do not make kWh."
+     },
+     {
+      "expr": "30 days * 6 h/day * 2000 W / 1000",
+      "why": "That works, but 2 kW is already in kilowatts. Multiply by 2 kW directly for kWh."
+     }
+    ],
+    "then": {
+     "unit": "kWh",
+     "units": [
+      "kilowatt-hours"
+     ],
+     "from": {
+      "fn": "mul",
+      "args": [
+       30,
+       6,
+       2
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 360000,
+       "why": "That is in watt-hours (you used 2,000 W). Divide by 1,000 for kWh, or use 2 kW."
+      },
+      {
+       "value": 12,
+       "why": "That is one day (6 h × 2 kW). The question asks for 30 days."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-math-units-3",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Electricity costs \\$0.15 per kWh. How much does 360 kWh cost?",
+   "why": {
+    "correct": "$360\\,\\text{kWh} \\times \\frac{\\$0.15}{1\\,\\text{kWh}} = \\$54$."
+   },
+   "numeric": {
+    "unit": "dollars",
+    "units": [
+     "$",
+     "USD"
+    ],
+    "tol": 0.005,
+    "from": {
+     "fn": "cost",
+     "args": [
+      360,
+      0.15
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2400,
+      "why": "You divided 360 by 0.15. A price per kWh is multiplied by the kWh: 360 × 0.15."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-units-4",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A furnace burns natural gas that releases $6.8 \\times 10^{6}$ BTU of heat in a winter. How many kWh is that? Use 1 kWh = 3,400 BTU (rounded).",
+   "why": {
+    "correct": "$6.8 \\times 10^{6}\\,\\text{BTU} \\times \\frac{1\\,\\text{kWh}}{3{,}400\\,\\text{BTU}} = 2{,}000$ kWh."
+   },
+   "numeric": {
+    "unit": "kWh",
+    "units": [
+     "kilowatt-hours"
+    ],
+    "from": {
+     "fn": "div",
+     "args": [
+      6800000,
+      3400
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 23120000000,
+      "why": "You multiplied by 3,400. To go from BTU to kWh, put BTU on the bottom of the factor: × 1 kWh / 3,400 BTU."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-units-5",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A car’s tank holds 25 gallons. Write the setup, with units, for the volume in liters, then give the answer. Use 1 gal = 3.79 L.",
+   "why": {
+    "correct": "$25\\,\\text{gal} \\times \\frac{3.79\\,\\text{L}}{1\\,\\text{gal}} = 94.75$ L, about 95 L."
+   },
+   "setup": {
+    "answer": "25 gal * 3.79 L/gal",
+    "mustUse": [
+     "25",
+     "3.79"
+    ],
+    "unit": "L",
+    "mistakes": [
+     {
+      "expr": "25 gal / 3.79 L/gal",
+      "why": "Dividing leaves gal² per L. Multiply by 3.79 L per gal so the gallons cancel."
+     }
+    ],
+    "then": {
+     "unit": "L",
+     "units": [
+      "liters"
+     ],
+     "from": {
+      "fn": "mul",
+      "args": [
+       25,
+       3.79
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 6.5963060686,
+       "why": "You divided 25 by 3.79. A liter is smaller than a gallon, so the number of liters is larger."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-math-units-6",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "single",
+   "practice": "6.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which is a unit of power (a rate of energy use) rather than a unit of energy?",
+   "options": [
+    "Kilowatt (kW)",
+    "Kilowatt-hour (kWh)",
+    "British thermal unit (BTU)",
+    "Joule (J)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A watt is one joule per second, a rate. kWh, BTU and joules are amounts of energy.",
+    "options": [
+     "Right: kW is a rate.",
+     "A kWh is energy: a kilowatt used for an hour.",
+     "A BTU is an amount of heat energy.",
+     "A joule is the SI unit of energy."
+    ]
+   }
+  },
+  {
+   "id": "env-math-units-7",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 60-W light bulb is left on for 10 hours. How many kWh of energy does it use?",
+   "why": {
+    "correct": "$60\\,\\text{W} \\times 10\\,\\text{h} = 600$ Wh; $600\\,\\text{Wh} \\times \\frac{1\\,\\text{kWh}}{1{,}000\\,\\text{Wh}} = 0.6$ kWh."
+   },
+   "numeric": {
+    "unit": "kWh",
+    "units": [
+     "kilowatt-hours"
+    ],
+    "tol": 0.005,
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        60,
+        10
+       ]
+      },
+      1000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 600,
+      "why": "600 is in watt-hours. Divide by 1,000 for kilowatt-hours."
+     },
+     {
+      "value": 6,
+      "why": "You divided by 100. A kilowatt is 1,000 watts."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-units-8",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A household uses 900 kWh of electricity a month. Its power company releases 0.4 kg of CO2 per kWh. How many kilograms of CO2 does the household’s electricity release in a year?",
+   "why": {
+    "correct": "$900\\,\\frac{\\text{kWh}}{\\text{month}} \\times 12\\,\\text{months} \\times 0.4\\,\\frac{\\text{kg}}{\\text{kWh}} = 4{,}320$ kg CO2."
+   },
+   "numeric": {
+    "unit": "kg",
+    "units": [
+     "kg CO2",
+     "kilograms"
+    ],
+    "from": {
+     "fn": "emissions",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        900,
+        12
+       ]
+      },
+      0.4
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 360,
+      "why": "That is one month. The question asks for a year: multiply by 12."
+     },
+     {
+      "value": 27000,
+      "why": "You divided by 0.4. Multiply the kWh by the kg of CO2 per kWh."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-units-9",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup, with units, for the energy the space heater uses in one day, in kWh. Then give the answer.",
+   "stimulus": "math-units-s1",
+   "why": {
+    "correct": "$1{,}500\\,\\text{W} \\times 4\\,\\text{h} \\times \\frac{1\\,\\text{kW}}{1{,}000\\,\\text{W}} = 6$ kWh."
+   },
+   "setup": {
+    "answer": "1500 W * 4 h * 1 kW / 1000 W",
+    "mustUse": [
+     "1500",
+     "4",
+     "1000"
+    ],
+    "unit": "kW h",
+    "mistakes": [
+     {
+      "expr": "1500 W * 4 h",
+      "why": "That is in watt-hours (6,000 Wh). Multiply by 1 kW / 1,000 W to get kWh."
+     }
+    ],
+    "then": {
+     "unit": "kWh",
+     "from": {
+      "fn": "div",
+      "args": [
+       {
+        "fn": "mul",
+        "args": [
+         1500,
+         4
+        ]
+       },
+       1000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 6000,
+       "why": "6,000 is in watt-hours. Divide by 1,000 for kWh."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-math-units-10",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which appliance uses the most energy in a day?",
+   "stimulus": "math-units-s1",
+   "options": [
+    "Space heater",
+    "Refrigerator",
+    "LED lights",
+    "The heater and refrigerator tie"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Per day: heater $1{,}500 \\times 4 = 6{,}000$ Wh; refrigerator $150 \\times 24 = 3{,}600$ Wh; lights $60 \\times 5 = 300$ Wh.",
+    "options": [
+     "Right: 6 kWh a day.",
+     "The refrigerator runs longest but uses 3.6 kWh a day.",
+     "The lights use 0.3 kWh a day.",
+     "6 kWh and 3.6 kWh are not equal."
+    ]
+   }
+  },
+  {
+   "id": "env-math-units-11",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "At \\$0.15 per kWh, how much does it cost to run the refrigerator for 30 days?",
+   "stimulus": "math-units-s1",
+   "why": {
+    "correct": "$150\\,\\text{W} \\times 24\\,\\text{h} = 3{,}600$ Wh = 3.6 kWh a day; $3.6 \\times 30 = 108$ kWh; $108 \\times \\$0.15 = \\$16.20$."
+   },
+   "numeric": {
+    "unit": "dollars",
+    "units": [
+     "$",
+     "USD"
+    ],
+    "tol": 0.005,
+    "from": {
+     "fn": "cost",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        150,
+        24,
+        30,
+        0.001
+       ]
+      },
+      0.15
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 16200,
+      "why": "You left the energy in watt-hours. Divide by 1,000 to get kWh before multiplying by the price."
+     },
+     {
+      "value": 0.54,
+      "why": "That is one day. Multiply by 30 days."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-units-12",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "single",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The family replaces the space heater with one rated 1,000 W, used the same 4 hours a day. How much energy does that save each day?",
+   "stimulus": "math-units-s1",
+   "options": [
+    "2 kWh",
+    "0.5 kWh",
+    "4 kWh",
+    "500 kWh"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Old: 6 kWh a day. New: $1{,}000\\,\\text{W} \\times 4\\,\\text{h} = 4$ kWh. Saved: $6 - 4 = 2$ kWh a day.",
+    "options": [
+     "Right: 6 - 4 = 2 kWh.",
+     "0.5 kWh is the power difference (500 W) for one hour.",
+     "4 kWh is what the new heater uses, not the saving.",
+     "500 is the difference in watts, not kWh."
+    ]
+   }
+  }
+ ]
+}

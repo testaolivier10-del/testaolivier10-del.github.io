@@ -1,0 +1,68 @@
+{
+ "topic": "terrestrial-biomes",
+ "hook": "Fly from the Arctic to the Amazon and the land below changes in a predictable order: bare tundra, dark conifer forest, leafy forest, then grassland or desert, then rainforest. Plants follow climate, and animals follow plants. Two numbers, how warm a place is and how much precipitation it gets, predict most of what you would see.",
+ "prereq": [
+  {
+   "q": "Which of these is an abiotic factor?",
+   "options": [
+    "Yearly rainfall",
+    "A population of rabbits",
+    "A fungus on a log",
+    "A flowering plant"
+   ],
+   "correct": 0,
+   "why": "Rainfall is nonliving; the others are living, so biotic.",
+   "review": "intro-ecosystems"
+  },
+  {
+   "q": "A community is best described as...",
+   "options": [
+    "all the populations of different species living in one area",
+    "one species in one area",
+    "the nonliving parts of an area",
+    "the place where one species lives"
+   ],
+   "correct": 0,
+   "why": "A community is every population living and interacting in one place.",
+   "review": "intro-ecosystems"
+  }
+ ],
+ "figure": {
+  "figure": "terrestrial-biomes-climate",
+  "caption": "A simplified map of biomes by average yearly temperature and yearly precipitation."
+ },
+ "chain": [
+  {
+   "cause": "A place has a certain temperature and precipitation pattern",
+   "effect": "only some kinds of plants can grow there"
+  },
+  {
+   "cause": "The plants that grow set the structure (grass, shrubs, conifers, broadleaf trees)",
+   "effect": "they decide which animals can find food and shelter"
+  },
+  {
+   "cause": "Places with similar climates on different continents",
+   "effect": "end up with similar-looking biomes, even with different species"
+  }
+ ],
+ "ideas": [
+  "A <b>biome</b> is a large region with a typical climate and typical plants, found on several continents.",
+  "Temperature and <b>precipitation</b> together decide the biome; a <b>climatograph</b> shows both month by month.",
+  "Cold: <b>tundra</b> (with <b>permafrost</b>) and <b>taiga</b>. Temperate: <b>temperate grassland</b>, <b>chaparral</b>, <b>temperate deciduous forest</b>, <b>temperate rainforest</b>. Warm: <b>desert biome</b>, <b>savanna</b>, <b>tropical rainforest</b>.",
+  "Going up a mountain changes biomes in roughly the same order as going toward the poles, because it gets colder."
+ ],
+ "misconception": {
+  "wrong": "A savanna is a desert with some grass, so it gets almost no rain.",
+  "right": "A savanna gets a fair amount of rain (often 50 to 130 cm a year), but almost all of it falls in a wet season. A long dry season and fires keep trees scattered."
+ },
+ "check": [
+  "env-terrestrial-biomes-2",
+  "env-terrestrial-biomes-7",
+  "env-terrestrial-biomes-10",
+  "env-terrestrial-biomes-11",
+  "env-terrestrial-biomes-12",
+  "env-terrestrial-biomes-13",
+  "env-terrestrial-biomes-16"
+ ],
+ "summary": "Terrestrial biomes are set mainly by temperature and precipitation. Tundra and taiga are cold; grassland, chaparral, deciduous forest and temperate rainforest are temperate; desert, savanna and tropical rainforest are warm. A climatograph shows monthly temperature and precipitation, so you can read a biome off it. Savannas are not deserts: they have a wet season and a dry season."
+}

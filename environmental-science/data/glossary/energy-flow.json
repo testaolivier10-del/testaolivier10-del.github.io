@@ -1,0 +1,17 @@
+{
+ "ten-percent-rule": {
+  "def": "The rule of thumb that about 10% of the energy at one trophic level is passed to the next; the rest is used for life processes and lost as heat."
+ },
+ "biomass": {
+  "def": "The total mass of living (or recently living) organisms in an area, often measured as dry mass in grams per square meter."
+ },
+ "energy-pyramid": {
+  "def": "A diagram of the energy at each trophic level, which always narrows going up because energy is lost as heat at each step. A biomass pyramid shows mass and a pyramid of numbers shows counts of organisms."
+ },
+ "thermodynamics": {
+  "def": "The laws of energy. The first law: energy is not created or destroyed, only changed in form. The second law: each energy transfer turns some energy into heat that is less useful, so no transfer is 100% efficient."
+ },
+ "efficiency": {
+  "def": "The share of energy put in that comes out in a useful form: useful output ÷ input × 100. Ecological efficiency is the share of energy passed from one trophic level to the next, about 10%."
+ }
+}

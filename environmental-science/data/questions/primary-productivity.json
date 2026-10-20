@@ -1,0 +1,615 @@
+{
+ "stimuli": {
+  "primary-productivity-s1": {
+   "kind": "quantitative",
+   "title": "Gross productivity and respiration in five ecosystems",
+   "invented": true,
+   "table": {
+    "caption": "Gross primary productivity (GPP) and plant respiration (R) in five ecosystems, in kcal per square meter per year (invented, rounded data for practice; real values vary widely)",
+    "cols": [
+     "Ecosystem",
+     "GPP (kcal/m²/yr)",
+     "Respiration R (kcal/m²/yr)"
+    ],
+    "rows": [
+     [
+      "Tropical rainforest",
+      "7,600",
+      "4,400"
+     ],
+     [
+      "Temperate deciduous forest",
+      "5,000",
+      "3,000"
+     ],
+     [
+      "Temperate grassland",
+      "2,400",
+      "1,200"
+     ],
+     [
+      "Desert scrub",
+      "400",
+      "250"
+     ],
+     [
+      "Open ocean",
+      "1,000",
+      "600"
+     ]
+    ]
+   }
+  },
+  "primary-productivity-s2": {
+   "kind": "visual",
+   "title": "Light and oxygen bottles in a lake",
+   "invented": true,
+   "plot": {
+    "label": "Bar chart of dissolved oxygen at the start and after 24 hours in a clear bottle and a dark bottle of lake water, invented data",
+    "kind": "bar",
+    "categories": [
+     "Start",
+     "Clear bottle, 24 h",
+     "Dark bottle, 24 h"
+    ],
+    "values": [
+     8,
+     9.5,
+     7.4
+    ],
+    "y": [
+     0,
+     10
+    ],
+    "xLabel": "Bottle",
+    "yLabel": "Dissolved oxygen (mg/L)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-primary-productivity-1",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is gross primary productivity (GPP)?",
+   "options": [
+    "The total rate producers capture energy",
+    "The energy left after producers use some for respiration",
+    "The energy that reaches the animals at the top of the chain",
+    "The rate at which decomposers release CO2 from dead matter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "GPP is the total energy (or carbon) producers capture by photosynthesis in an area per unit of time.",
+    "options": [
+     "Right: the total capture by photosynthesis.",
+     "That is net primary productivity (NPP).",
+     "Animals at the top get a tiny share of the energy, not GPP.",
+     "Decomposer respiration is a different flux."
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-2",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is net primary productivity (NPP) always smaller than GPP?",
+   "options": [
+    "Producers use some of it in respiration.",
+    "Plant-eating animals eat part of the GPP before it is measured.",
+    "Sunlight is lost before it reaches the leaves of the plants.",
+    "Decomposers break down part of the GPP each night."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\text{NPP} = \\text{GPP} - \\text{R}$: the plants’ own respiration uses part of what they capture, leaving NPP as new plant matter.",
+    "options": [
+     "Right: plant respiration is subtracted.",
+     "Grazing removes NPP later; it is not why NPP is smaller than GPP.",
+     "Light that misses leaves is never counted in GPP.",
+     "Decomposers act on dead matter, not on GPP itself."
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-3",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A salt marsh has a GPP of 9,000 kcal/m²/yr, and its plants use 5,500 kcal/m²/yr in respiration. What is its NPP?",
+   "why": {
+    "correct": "$\\text{NPP} = \\text{GPP} - \\text{R} = 9{,}000 - 5{,}500 = 3{,}500$ kcal/m²/yr."
+   },
+   "numeric": {
+    "unit": "kcal/m^2/yr",
+    "units": [
+     "kcal/m2/yr",
+     "kcal per m2 per year",
+     "kcal/(m^2 yr)"
+    ],
+    "from": {
+     "fn": "npp",
+     "args": [
+      9000,
+      5500
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 14500,
+      "why": "You added. NPP is what is left after respiration: GPP minus R."
+     },
+     {
+      "value": -3500,
+      "why": "Subtract respiration from GPP, not GPP from respiration: 9,000 - 5,500."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-4",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A forest’s NPP is 2,000 kcal/m²/yr, and its plants use 4,000 kcal/m²/yr in respiration. Write the setup for its GPP, then give the answer.",
+   "why": {
+    "correct": "$\\text{GPP} = \\text{NPP} + \\text{R} = 2{,}000 + 4{,}000 = 6{,}000$ kcal/m²/yr."
+   },
+   "setup": {
+    "answer": "2000 + 4000",
+    "mustUse": [
+     "2000",
+     "4000"
+    ],
+    "mistakes": [
+     {
+      "expr": "4000 - 2000",
+      "why": "GPP is the total: NPP plus what respiration used, so add."
+     }
+    ],
+    "then": {
+     "unit": "kcal/m^2/yr",
+     "units": [
+      "kcal/m2/yr",
+      "kcal per m2 per year"
+     ],
+     "from": {
+      "fn": "gpp",
+      "args": [
+       2000,
+       4000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 2000,
+       "why": "That is 4,000 - 2,000. GPP = NPP + R: add them."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-primary-productivity-5",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which factor most limits primary productivity in a desert?",
+   "options": [
+    "Water, which is scarce",
+    "Sunlight, since deserts are cloudy most days",
+    "Carbon dioxide, since desert air lacks it",
+    "Temperature, since deserts are cold year-round"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Deserts get plenty of light, but little water. Plants close leaf pores to save water, which also limits the CO2 they take in, so photosynthesis is slow.",
+    "options": [
+     "Right: water shortage limits photosynthesis.",
+     "Deserts are among the sunniest places.",
+     "Desert air has the same CO2 as anywhere.",
+     "Many deserts are hot; temperature is not the main limit."
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-6",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which ecosystem usually has the highest NPP per square meter?",
+   "options": [
+    "Tropical rainforest",
+    "Open ocean",
+    "Arctic tundra",
+    "Hot desert"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Warmth, abundant water and year-round light give tropical rainforests (along with swamps, marshes and reefs) the highest NPP per square meter.",
+    "options": [
+     "Right: warm, wet and sunny all year.",
+     "The open ocean is low per square meter because surface nutrients are scarce.",
+     "Cold and a short growing season limit the tundra.",
+     "Lack of water limits deserts."
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-7",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does more sunlight not always increase primary productivity?",
+   "options": [
+    "Another factor may be limiting.",
+    "Plants do not use sunlight for photosynthesis.",
+    "Sunlight lowers the amount of CO2 in the air.",
+    "More light speeds respiration more than photosynthesis."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Productivity is limited by whatever is scarcest: light, water, temperature or nutrients. Adding more of something that is not scarce changes little.",
+    "options": [
+     "Right: the scarcest factor sets the limit.",
+     "Photosynthesis is powered by light.",
+     "Light does not change atmospheric CO2.",
+     "That is not a general rule; light mainly drives photosynthesis."
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-8",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "specific",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student will grow algae in jars under different amounts of nitrate. Build a testable hypothesis.",
+   "why": {
+    "correct": "A directional hypothesis names the change in the independent variable, the direction of the dependent variable and a reason."
+   },
+   "specific": {
+    "frame": "If more ___ is added, then algae growth will ___, because nitrogen is ___.",
+    "slots": {
+     "iv": {
+      "label": "Independent variable",
+      "options": [
+       "nitrate",
+       "light",
+       "water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The student is changing nitrate, not light.",
+       "2": "Every jar has water; nitrate is what changes."
+      }
+     },
+     "direction": {
+      "label": "Direction",
+      "options": [
+       "increase",
+       "be affected",
+       "change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\"Be affected\" gives no direction. Say increase or decrease.",
+       "2": "\"Change\" gives no direction. Say increase or decrease."
+      }
+     },
+     "because": {
+      "label": "Reason",
+      "options": [
+       "often a limiting nutrient",
+       "a gas that blocks light",
+       "poisonous to algae"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Dissolved nitrate does not block light.",
+       "2": "Nitrate is a nutrient for algae at these levels."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "noQuestion": true,
+     "mechanism": true,
+     "context": [
+      "nitrate",
+      "algae"
+     ]
+    },
+    "model": "If more nitrate is added, then algae growth will increase, because nitrogen is often the limiting nutrient for algae."
+   }
+  },
+  {
+   "id": "env-primary-productivity-9",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the NPP of the temperate grassland?",
+   "stimulus": "primary-productivity-s1",
+   "why": {
+    "correct": "$\\text{NPP} = 2{,}400 - 1{,}200 = 1{,}200$ kcal/m²/yr."
+   },
+   "numeric": {
+    "unit": "kcal/m^2/yr",
+    "units": [
+     "kcal/m2/yr",
+     "kcal per m2 per year"
+    ],
+    "from": {
+     "fn": "npp",
+     "args": [
+      2400,
+      1200
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 3600,
+      "why": "You added GPP and R. NPP is GPP minus R."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-10",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which ecosystem has the highest NPP?",
+   "stimulus": "primary-productivity-s1",
+   "options": [
+    "Tropical rainforest",
+    "Temperate deciduous forest",
+    "Temperate grassland",
+    "Open ocean"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "NPP: rainforest 3,200; deciduous forest 2,000; grassland 1,200; desert scrub 150; open ocean 400 kcal/m²/yr.",
+    "options": [
+     "Right: 7,600 - 4,400 = 3,200.",
+     "5,000 - 3,000 = 2,000.",
+     "2,400 - 1,200 = 1,200.",
+     "1,000 - 600 = 400."
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-11",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What percent of its GPP does the tropical rainforest use in respiration?",
+   "stimulus": "primary-productivity-s1",
+   "why": {
+    "correct": "$\\frac{4{,}400}{7{,}600} \\times 100 = 57.9\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "rel": 0.01,
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      4400,
+      7600
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.578947368421,
+      "why": "That is the fraction. Multiply by 100 for a percent."
+     },
+     {
+      "value": 42.1052631579,
+      "why": "That is the share left as NPP. The question asks for the share used in respiration: R / GPP × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-12",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which ecosystem has the largest share of its GPP left as NPP?",
+   "stimulus": "primary-productivity-s1",
+   "options": [
+    "Temperate grassland",
+    "Tropical rainforest",
+    "Desert scrub",
+    "Open ocean"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "NPP as a share of GPP: grassland $1{,}200/2{,}400 = 50\\%$; rainforest 42%; deciduous forest 40%; desert scrub 37.5%; open ocean 40%.",
+    "options": [
+     "Right: half of its GPP is left.",
+     "Highest NPP, but only about 42% of its GPP is left.",
+     "About 37.5% of its GPP is left.",
+     "40% of its GPP is left."
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-13",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Oxygen fell from 8.0 to 7.4 mg/L in the dark bottle in 24 hours. What was the rate of respiration, in mg/L of oxygen per day?",
+   "stimulus": "primary-productivity-s2",
+   "why": {
+    "correct": "In the dark there is no photosynthesis, so the drop is respiration alone: $8.0 - 7.4 = 0.6$ mg/L per day."
+   },
+   "numeric": {
+    "unit": "mg/L/day",
+    "units": [
+     "mg/L per day",
+     "mg per L per day"
+    ],
+    "tol": 0.005,
+    "from": {
+     "fn": "sub",
+     "args": [
+      8,
+      7.4
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "1.5 is the change in the clear bottle (net productivity). Respiration is the drop in the dark bottle."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-14",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The rise in the clear bottle (8.0 to 9.5 mg/L) measures which quantity?",
+   "stimulus": "primary-productivity-s2",
+   "options": [
+    "Net productivity",
+    "Gross productivity by itself",
+    "Respiration by itself",
+    "Decomposition of dead algae"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In light, algae photosynthesize and respire at once, so the oxygen change is the net: 1.5 mg/L per day.",
+    "options": [
+     "Right: the clear bottle shows the net change.",
+     "Gross productivity adds back the respiration measured in the dark bottle.",
+     "Respiration alone is the dark bottle.",
+     "Decomposers are part of respiration in both bottles."
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-15",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Use both bottles to find gross productivity, in mg/L of oxygen per day.",
+   "stimulus": "primary-productivity-s2",
+   "why": {
+    "correct": "Gross = net + respiration $= (9.5 - 8.0) + (8.0 - 7.4) = 1.5 + 0.6 = 2.1$ mg/L per day."
+   },
+   "numeric": {
+    "unit": "mg/L/day",
+    "units": [
+     "mg/L per day",
+     "mg per L per day"
+    ],
+    "tol": 0.005,
+    "from": {
+     "fn": "gpp",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        9.5,
+        8
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        8,
+        7.4
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.9,
+      "why": "You subtracted respiration from net. Gross productivity adds it back: 1.5 + 0.6."
+     },
+     {
+      "value": 1.5,
+      "why": "1.5 is the net change. Add the respiration from the dark bottle (0.6) to get gross."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-primary-productivity-16",
+   "unit": "unit-1",
+   "topic": "primary-productivity",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is the dark bottle needed in this experiment?",
+   "stimulus": "primary-productivity-s2",
+   "options": [
+    "It measures respiration by itself.",
+    "It shows how much light the algae need to grow.",
+    "It keeps the water in the bottles from warming up.",
+    "It stops the algae in the bottle from respiring."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With no light there is no photosynthesis, so the oxygen drop is respiration. Adding it to the clear-bottle change gives gross productivity.",
+    "options": [
+     "Right: it isolates respiration.",
+     "One dark bottle cannot measure light need.",
+     "Temperature is not its purpose.",
+     "Algae respire in the dark; that is what it measures."
+    ]
+   }
+  }
+ ]
+}

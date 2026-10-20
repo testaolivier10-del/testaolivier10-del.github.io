@@ -1,0 +1,11 @@
+{
+ "unit-rate": {
+  "def": "A rate for one unit of the second quantity, such as 150 liters per 1 person or 3 cm per 1 week."
+ },
+ "rate": {
+  "def": "A comparison of two quantities with different units, found by dividing, such as liters per day or people per square kilometer."
+ },
+ "per-capita": {
+  "def": "Per person: a total divided by the number of people, used to compare places of different sizes."
+ }
+}

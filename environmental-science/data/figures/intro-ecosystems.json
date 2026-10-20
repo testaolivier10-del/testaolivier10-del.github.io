@@ -1,0 +1,12 @@
+{
+ "intro-ecosystems-interactions": {
+  "file": "figures/intro-ecosystems-interactions.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 368,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A table of five interactions between two species, with + for helped, minus for harmed and 0 for not affected. Mutualism: + and +, bees and flowers. Commensalism: + and 0, barnacles on a whale. Parasitism: + and minus, a tick on a deer. Predation: + and minus, an owl eating a mouse. Competition: minus and minus, two plant species shading each other. Mutualism, commensalism and parasitism are the three kinds of symbiosis."
+ }
+}

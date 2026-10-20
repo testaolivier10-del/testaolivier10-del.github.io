@@ -1,0 +1,41 @@
+{
+ "carbon-cycle": {
+  "def": "The movement of carbon among the atmosphere, living things, soil, the ocean, sediments and rock, and fossil fuels, by processes such as photosynthesis, respiration, decomposition, combustion and sedimentation."
+ },
+ "reservoir": {
+  "def": "A place where an element such as carbon is stored for a time, such as the atmosphere, the ocean, soil, living things or rock."
+ },
+ "flux": {
+  "def": "The movement of a substance from one reservoir to another, often given as an amount per year."
+ },
+ "carbon-sink": {
+  "def": "A reservoir that takes in more carbon than it releases, such as a growing forest or the ocean. A carbon source releases more carbon than it takes in."
+ },
+ "photosynthesis": {
+  "def": "The process in which plants, algae and some bacteria use light energy to turn carbon dioxide and water into sugar, releasing oxygen."
+ },
+ "cellular-respiration": {
+  "def": "The process in which living things break down sugar with oxygen to release energy, giving off carbon dioxide and water."
+ },
+ "decomposition": {
+  "def": "The breakdown of dead matter and wastes by decomposers, which releases carbon dioxide (or methane where oxygen is scarce) and returns nutrients to the soil."
+ },
+ "decomposer": {
+  "def": "An organism, mostly bacteria and fungi, that breaks down dead matter and wastes, returning nutrients to the soil and carbon to the air."
+ },
+ "carbon-dioxide": {
+  "def": "CO2, a gas made of one carbon and two oxygen atoms. It is taken in by photosynthesis and released by respiration, decomposition and combustion."
+ },
+ "methane": {
+  "def": "CH4, a gas made of one carbon and four hydrogen atoms, released by decomposition without oxygen (swamps, rice paddies, landfills), by cattle and from natural gas."
+ },
+ "fossil-fuel": {
+  "def": "Coal, oil or natural gas: the remains of ancient organisms buried and changed by heat and pressure over millions of years. They store carbon from the slow part of the carbon cycle."
+ },
+ "combustion": {
+  "def": "Burning: a fuel reacts with oxygen and releases energy, carbon dioxide and water. Burning fossil fuels or wood moves stored carbon into the atmosphere."
+ },
+ "sedimentation": {
+  "def": "The settling of particles, such as shells and dead matter, to the bottom of water, where over long times they can harden into sedimentary rock such as limestone."
+ }
+}

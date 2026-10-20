@@ -1,0 +1,80 @@
+{
+ "topic": "energy-flow",
+ "hook": "A field of grass can feed a herd of grazers, the grazers a few predators, and the predators perhaps one large hunter. Every step up loses most of the energy as heat. That single fact explains why big predators are rare, why there are so few trophic levels, and why eating plants feeds more people per acre than eating meat.",
+ "prereq": [
+  {
+   "q": "What is the trophic level of a herbivore?",
+   "options": [
+    "Primary consumer (level 2)",
+    "Producer (level 1)",
+    "Secondary consumer (level 3)",
+    "Apex predator"
+   ],
+   "correct": 0,
+   "why": "Herbivores eat producers.",
+   "review": "trophic-levels"
+  },
+  {
+   "q": "Which setup gives what percent 650 is of 2,500?",
+   "options": [
+    "650 / 2500 × 100",
+    "2500 / 650 × 100",
+    "(2500 - 650) / 650 × 100",
+    "650 × 2500 / 100"
+   ],
+   "correct": 0,
+   "why": "Part over whole, times 100.",
+   "review": "math-percents"
+  },
+  {
+   "q": "NPP is...",
+   "options": [
+    "GPP minus plant respiration",
+    "GPP plus plant respiration",
+    "the energy reaching the top predator",
+    "the sunlight hitting a field"
+   ],
+   "correct": 0,
+   "why": "NPP = GPP - R.",
+   "review": "primary-productivity"
+  }
+ ],
+ "figure": {
+  "figure": "energy-flow-pyramid",
+  "caption": "An energy pyramid: about 10% of the energy passes up each level."
+ },
+ "chain": [
+  {
+   "cause": "Organisms at each level use most of their food energy for respiration and body heat",
+   "effect": "that energy leaves as heat and cannot be passed on"
+  },
+  {
+   "cause": "Some of each level is never eaten, or is lost in waste",
+   "effect": "that energy goes to decomposers instead"
+  },
+  {
+   "cause": "Only about 10% is stored as new tissue",
+   "effect": "about 10% is available to the next level up, so energy shrinks at every step"
+  }
+ ],
+ "ideas": [
+  "The <b>10% rule</b>: about 10% of the energy at one trophic level reaches the next. Multiply by 0.10 for each step up.",
+  "The <b>first law of thermodynamics</b>: energy is not created or destroyed. The second law: every transfer turns some into heat, so no transfer is 100% efficient.",
+  "An <b>energy pyramid</b> always narrows going up; <b>biomass</b> pyramids usually do too.",
+  "Transfer <b>efficiency</b> = energy at the higher level ÷ energy at the lower level × 100."
+ ],
+ "misconception": {
+  "wrong": "Energy is used up or destroyed as it moves up the trophic levels.",
+  "right": "Energy is not destroyed (first law). It changes form, and at each step most of it becomes heat released to the surroundings (second law), which organisms cannot use as food."
+ },
+ "check": [
+  "env-energy-flow-1",
+  "env-energy-flow-2",
+  "env-energy-flow-9",
+  "env-energy-flow-10",
+  "env-energy-flow-11",
+  "env-energy-flow-12",
+  "env-energy-flow-13"
+ ],
+ "summary": "Energy enters ecosystems through producers and flows one way, up the trophic levels. At each step about 90% is used for life processes and lost as heat, so only about 10% passes on: multiply by 0.10 for each step. This explains energy pyramids, the small number of trophic levels and why eating at a lower level feeds more people. Energy is not destroyed; it leaves as heat."
+}

@@ -1,0 +1,12 @@
+{
+ "aquatic-biomes-lake-zones": {
+  "file": "figures/aquatic-biomes-lake-zones.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A cross-section of a lake. The littoral zone is the shallow edge where rooted plants grow. The limnetic zone is the open water near the surface where sunlight reaches. A dashed line marks the depth light reaches. Below it, the profundal zone is deep water too dark for plants to grow. The benthic zone is the bottom of the lake and its mud."
+ }
+}

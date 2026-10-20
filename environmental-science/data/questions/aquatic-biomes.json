@@ -1,0 +1,600 @@
+{
+ "stimuli": {
+  "aquatic-biomes-s1": {
+   "kind": "quantitative",
+   "title": "Dissolved oxygen and salinity at four sites",
+   "invented": true,
+   "table": {
+    "caption": "Water measured at midday at four sites along one river and its coast (invented data for practice)",
+    "cols": [
+     "Site",
+     "Salinity (ppt)",
+     "Water temperature (°C)",
+     "Dissolved oxygen (mg/L)"
+    ],
+    "rows": [
+     [
+      "1: mountain stream",
+      "0",
+      "8",
+      "11.5"
+     ],
+     [
+      "2: slow river in a town",
+      "0",
+      "24",
+      "6.0"
+     ],
+     [
+      "3: river mouth (estuary)",
+      "15",
+      "20",
+      "7.5"
+     ],
+     [
+      "4: open ocean surface",
+      "35",
+      "18",
+      "7.8"
+     ]
+    ]
+   }
+  },
+  "aquatic-biomes-s2": {
+   "kind": "visual",
+   "title": "Light with depth in a clear lake",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of the percent of surface light left at each depth in a clear lake, invented data",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Light left",
+      "points": [
+       [
+        0,
+        100
+       ],
+       [
+        2,
+        55
+       ],
+       [
+        4,
+        30
+       ],
+       [
+        6,
+        16
+       ],
+       [
+        8,
+        9
+       ],
+       [
+        10,
+        5
+       ],
+       [
+        12,
+        2.7
+       ],
+       [
+        14,
+        1.5
+       ],
+       [
+        16,
+        0.8
+       ]
+      ]
+     }
+    ],
+    "x": [
+     0,
+     16
+    ],
+    "y": [
+     0,
+     100
+    ],
+    "xLabel": "Depth (m)",
+    "yLabel": "Surface light left (%)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-aquatic-biomes-1",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which abiotic factor is used first to separate freshwater biomes from marine biomes?",
+   "options": [
+    "Salinity",
+    "Water depth",
+    "Water color",
+    "Number of fish species"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Salinity, the amount of dissolved salt, separates freshwater (near 0) from seawater (about 35 parts per thousand).",
+    "options": [
+     "Right: salt content is the main dividing line.",
+     "Both lakes and oceans have shallow and deep water.",
+     "Color is not a defining factor.",
+     "Fish numbers are biotic and depend on many things."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-2",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is an estuary such a rich place for young fish and shellfish?",
+   "options": [
+    "Rivers bring nutrients, and the shallow, sheltered water gets plenty of sunlight.",
+    "Its water is colder and saltier than the open ocean.",
+    "It has no predators, so young animals are safe.",
+    "It is deep, so the water is dark and calm."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Nutrients from rivers plus sunlit, shallow water let plants and algae grow fast, and marsh plants or mangroves shelter the young.",
+    "options": [
+     "Right: nutrients plus light mean plenty of food, and the young find shelter.",
+     "Estuaries mix fresh and salt water, so they are less salty than the ocean.",
+     "Predators live in estuaries too; the young find shelter, not safety from every predator.",
+     "Estuaries are shallow, and light reaches the bottom."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-3",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Coral reefs grow in clear, warm, shallow water that is low in nutrients. Why does coral need clear, shallow water?",
+   "options": [
+    "The algae living inside the coral need sunlight for photosynthesis.",
+    "Coral needs to be near the surface to breathe air.",
+    "Waves carry more food into shallow water.",
+    "Cold, deep water has too much oxygen for coral."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Corals and the algae inside them are a mutualism: the algae make food from light and share it. Murky or deep water blocks the light.",
+    "options": [
+     "Right: the coral’s partner algae need light.",
+     "Coral animals take oxygen from water; they do not breathe air.",
+     "Coral gets most of its food from its algae, not from waves.",
+     "Cold water holds more oxygen, but that is not why coral needs shallow water."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-4",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A biologist finds a coastal forest of salt-tolerant trees whose tangled roots hold mud in place, in a tropical area where a river meets the sea. What is it?",
+   "options": [
+    "A coral reef",
+    "A mangrove forest",
+    "A temperate rainforest",
+    "An intertidal zone on a rocky shore"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Salt-tolerant trees with stilt roots along tropical coasts and estuaries are mangroves.",
+    "options": [
+     "Coral reefs are underwater animal structures, not trees.",
+     "Right: salt-tolerant trees with tangled roots at a tropical river mouth.",
+     "Temperate rainforests are not salt-tolerant coastal trees.",
+     "A rocky intertidal shore has algae, barnacles and snails, not trees."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-5",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Organisms in the intertidal zone are covered by water at high tide and exposed to air at low tide. Which challenge do they face?",
+   "options": [
+    "Drying out and being pounded by waves",
+    "Complete darkness for most of the day",
+    "Water that stays frozen solid through the year",
+    "Water with no dissolved oxygen"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The intertidal zone swings between wet and dry with each tide, and waves batter it, so its organisms resist drying and cling tightly.",
+    "options": [
+     "Right: drying at low tide and wave force.",
+     "The intertidal zone is shallow and sunlit.",
+     "Temperatures vary but are not frozen year-round.",
+     "Moving, mixed water there is well oxygenated."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-6",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Wetlands such as marshes and swamps are often called \"nature’s sponges.\" Which benefit does this describe?",
+   "options": [
+    "They soak up floodwater and release it slowly.",
+    "They make the water around them saltier.",
+    "They raise the temperature of nearby rivers.",
+    "They remove sunlight from shallow water."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Wetland soils and plants hold large amounts of water during floods and release it slowly, and they also filter pollutants.",
+    "options": [
+     "Right: wetlands store floodwater and release it slowly.",
+     "Freshwater wetlands do not add salt.",
+     "Wetlands do not heat rivers.",
+     "Wetlands do not remove sunlight; their plants use it."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-7",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which part of a lake is the shallow edge where rooted plants grow?",
+   "options": [
+    "Littoral zone",
+    "Limnetic zone",
+    "Profundal zone",
+    "Benthic zone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The littoral zone is the shallow, sunlit edge where plants can root in the bottom.",
+    "options": [
+     "Right: the shallow edge with rooted plants.",
+     "The limnetic zone is open, sunlit water away from shore.",
+     "The profundal zone is deep water too dark for photosynthesis.",
+     "The benthic zone is the bottom sediment."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-8",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does each square meter of the open ocean grow so little algae, even though the ocean is huge?",
+   "options": [
+    "Nutrients are scarce in the sunlit surface water.",
+    "The water is too salty for any algae.",
+    "There is too much light at the surface.",
+    "Seawater holds no dissolved oxygen."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Algae need both light and nutrients. In much of the open ocean, nutrients sink below the sunlit surface, so algae grow slowly there.",
+    "options": [
+     "Right: light is at the top, but nutrients are scarce there.",
+     "Marine algae thrive in salt water.",
+     "Light helps algae; too much light is not the limit.",
+     "Seawater does hold dissolved oxygen."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-9",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why a warm, slow river can hold less oxygen for fish than a cold mountain stream.",
+   "why": {
+    "correct": "Warmer water holds less dissolved oxygen, and slow water mixes in less air."
+   },
+   "specific": {
+    "frame": "As water temperature ___, the amount of dissolved oxygen the water can hold ___, so fish have ___ oxygen.",
+    "slots": {
+     "change": {
+      "label": "Temperature",
+      "options": [
+       "increases",
+       "decreases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The river is warmer than the stream, so its temperature is higher."
+      }
+     },
+     "direction": {
+      "label": "Oxygen held",
+      "options": [
+       "decreases",
+       "increases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Warm water holds less gas than cold water."
+      }
+     },
+     "effect": {
+      "label": "For fish",
+      "options": [
+       "less",
+       "more"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less dissolved oxygen means less for fish to use."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "oxygen",
+      "warm",
+      "temperature"
+     ]
+    },
+    "model": "As water temperature increases, the amount of dissolved oxygen the water can hold decreases, which means fish in the warm river have less oxygen than fish in the cold stream."
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-10",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which site is an estuary, based on the data?",
+   "stimulus": "aquatic-biomes-s1",
+   "options": [
+    "Site 1",
+    "Site 2",
+    "Site 3",
+    "Site 4"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An estuary mixes fresh and salt water, so its salinity is between 0 and about 35 ppt. Site 3 has 15 ppt.",
+    "options": [
+     "Site 1 is fresh water (0 ppt).",
+     "Site 2 is fresh water (0 ppt).",
+     "Right: 15 ppt is in between fresh and ocean water.",
+     "Site 4 is full seawater (35 ppt)."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-11",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which relationship between temperature and dissolved oxygen do sites 1 and 2 show?",
+   "stimulus": "aquatic-biomes-s1",
+   "options": [
+    "Warmer water had less dissolved oxygen.",
+    "Warmer water had more dissolved oxygen.",
+    "Temperature and dissolved oxygen were unrelated.",
+    "Salinity explains the difference in oxygen."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Site 1 at 8 °C had 11.5 mg/L; site 2 at 24 °C had 6.0 mg/L. Both are fresh water, so salinity does not explain it.",
+    "options": [
+     "Right: 24 °C with 6.0 mg/L vs 8 °C with 11.5 mg/L.",
+     "The warmer site had the lower value.",
+     "There is a clear difference that matches the temperatures.",
+     "Both sites have 0 ppt salinity."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-12",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How much more dissolved oxygen does the mountain stream (site 1) hold than the slow river (site 2)? Give the answer with its unit.",
+   "stimulus": "aquatic-biomes-s1",
+   "why": {
+    "correct": "$11.5 - 6.0 = 5.5$ mg/L more at site 1."
+   },
+   "numeric": {
+    "unit": "mg/L",
+    "tol": 0.05,
+    "from": {
+     "fn": "sub",
+     "args": [
+      11.5,
+      6
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 17.5,
+      "why": "You added the two values. \"How much more\" is a difference: 11.5 - 6.0."
+     },
+     {
+      "value": 1.91666666667,
+      "why": "You divided the two values. \"How much more\" asks for the difference: 11.5 - 6.0."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-13",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student claims the open ocean (site 4) has low dissolved oxygen because it is salty. Do the data support the claim?",
+   "stimulus": "aquatic-biomes-s1",
+   "options": [
+    "No: site 4 has more oxygen than the fresh, warm river at site 2.",
+    "Yes: site 4 has the lowest oxygen of the four sites.",
+    "Yes: oxygen falls steadily as salinity rises from site 1 to site 4.",
+    "No: site 4 has more oxygen than the cold mountain stream."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Site 4 has 7.8 mg/L, more than site 2 (6.0 mg/L), so salt water here is not the lowest; temperature fits the pattern better.",
+    "options": [
+     "Right: 7.8 mg/L at site 4 is above 6.0 mg/L at site 2.",
+     "Site 2 has the lowest value, 6.0 mg/L.",
+     "Oxygen does not fall steadily: site 2 (0 ppt) is lowest.",
+     "Site 4 (7.8) has less oxygen than site 1 (11.5)."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-14",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "About how much of the surface light is left at a depth of 4 m?",
+   "stimulus": "aquatic-biomes-s2",
+   "options": [
+    "About 70%",
+    "About 30%",
+    "About 9%",
+    "About 55%"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The graph reads 30% at 4 m.",
+    "options": [
+     "70% is the light lost by 4 m, not the light left.",
+     "Right: the curve passes 30% at 4 m.",
+     "9% is the value at 8 m.",
+     "55% is the value at 2 m."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-15",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Algae need at least about 1% of surface light to make more food by photosynthesis than they use. Where does the photic zone of this lake end?",
+   "stimulus": "aquatic-biomes-s2",
+   "options": [
+    "At about 4 m",
+    "At about 8 m",
+    "At about 15 m",
+    "At the lake surface"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Light falls to 1.5% at 14 m and 0.8% at 16 m, so the 1% level is near 15 m. Below it is the aphotic zone.",
+    "options": [
+     "At 4 m, 30% of the light is left, well above 1%.",
+     "At 8 m, 9% is left, still above 1%.",
+     "Right: between 14 m (1.5%) and 16 m (0.8%).",
+     "The surface has all of the light."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-16",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Rain after a storm washes mud into the lake and makes the water cloudy. How would the graph change?",
+   "stimulus": "aquatic-biomes-s2",
+   "options": [
+    "Light would fall off faster, so the photic zone would be shallower.",
+    "Light would fall off more slowly, so the photic zone would be deeper.",
+    "The curve would not change, because mud does not block light.",
+    "The surface value would rise above 100%."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Particles absorb and scatter light, so less reaches each depth. The 1% level moves up, and fewer algae and rooted plants can grow deep down.",
+    "options": [
+     "Right: cloudy water blocks light, so the curve drops faster.",
+     "Mud blocks light; it does not let more through.",
+     "Suspended particles do block light.",
+     "The surface value is 100% by definition."
+    ]
+   }
+  },
+  {
+   "id": "env-aquatic-biomes-17",
+   "unit": "unit-1",
+   "topic": "aquatic-biomes",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which statement about salinity is correct?",
+   "options": [
+    "Freshwater has very little salt; ocean water has about 35 parts per thousand.",
+    "Ocean water and freshwater have the same salinity.",
+    "Estuaries are saltier than the open ocean.",
+    "Lakes are saltier than estuaries."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Freshwater is close to 0 ppt, seawater about 35 ppt, and estuaries are in between.",
+    "options": [
+     "Right: near 0 ppt for freshwater, about 35 ppt for seawater.",
+     "Seawater is far saltier than freshwater.",
+     "Estuaries are diluted by river water, so they are less salty.",
+     "Most lakes are freshwater, less salty than estuaries."
+    ]
+   }
+  }
+ ]
+}

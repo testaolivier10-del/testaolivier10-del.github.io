@@ -1,0 +1,12 @@
+{
+ "nitrogen-cycle-steps": {
+  "file": "figures/nitrogen-cycle-steps.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The nitrogen cycle. Nitrogen gas, N2, makes up 78 percent of the atmosphere. Step 1, nitrogen fixation: bacteria in soil and in legume roots turn N2 into ammonium. Step 2, nitrification: bacteria turn ammonium into nitrite and then nitrate. Step 3, assimilation: plant roots take up nitrate and ammonium, and animals get nitrogen by eating plants. Wastes and remains go to decomposers. Step 4, ammonification: decomposers release ammonium. Step 5, denitrification: bacteria in soil with little oxygen turn nitrate back into N2 gas. Lightning also fixes a little nitrogen, and fertilizer adds ammonium and nitrate directly."
+ }
+}

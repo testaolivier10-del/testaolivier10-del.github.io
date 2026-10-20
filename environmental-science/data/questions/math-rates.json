@@ -1,0 +1,412 @@
+{
+ "stimuli": {
+  "math-rates-s1": {
+   "kind": "quantitative",
+   "title": "Household trash in three towns",
+   "invented": true,
+   "table": {
+    "caption": "Population and household trash collected in one year in three towns (invented data for practice)",
+    "cols": [
+     "Town",
+     "Population",
+     "Trash collected per year (metric tons)"
+    ],
+    "rows": [
+     [
+      "Alder",
+      "12,000",
+      "6,000"
+     ],
+     [
+      "Birch",
+      "50,000",
+      "20,000"
+     ],
+     [
+      "Cedar",
+      "4,000",
+      "2,600"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-math-rates-1",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town of 30,000 people uses 4,500,000 liters of water a day. How many liters is that per person per day?",
+   "why": {
+    "correct": "$\\frac{4{,}500{,}000\\,\\text{L}}{30{,}000\\,\\text{people}} = 150$ L per person per day."
+   },
+   "numeric": {
+    "unit": "L",
+    "units": [
+     "L/person",
+     "liters per person",
+     "L per person per day",
+     "liters"
+    ],
+    "from": {
+     "fn": "perCapita",
+     "args": [
+      4500000,
+      30000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.00666666666667,
+      "why": "You divided people by liters. Per person means the total ÷ the number of people."
+     },
+     {
+      "value": 135000000000,
+      "why": "You multiplied. A per-person value divides the total by the population."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-rates-2",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A family’s car used 1,200 liters of gasoline in 15,000 km of driving. Write the setup for the fuel used per km, with units, then give the answer.",
+   "why": {
+    "correct": "$\\frac{1{,}200\\,\\text{L}}{15{,}000\\,\\text{km}} = 0.08$ L per km."
+   },
+   "setup": {
+    "answer": "1200 L / 15000 km",
+    "mustUse": [
+     "1200",
+     "15000"
+    ],
+    "unit": "L/km",
+    "mistakes": [
+     {
+      "expr": "15000 km / 1200 L",
+      "why": "That gives km per liter. \"Liters per km\" puts liters on top: 1200 L / 15000 km."
+     }
+    ],
+    "then": {
+     "unit": "L/km",
+     "units": [
+      "liters per km",
+      "L per km"
+     ],
+     "from": {
+      "fn": "div",
+      "args": [
+       1200,
+       15000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 12.5,
+       "why": "That is km per liter (15000 / 1200). The question asks for liters per km."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-math-rates-3",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which value lets you compare how much water two cities of very different sizes use, fairly?",
+   "options": [
+    "Water use per person",
+    "Total water use",
+    "Number of water pipes",
+    "Area of each city’s reservoir"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A bigger city uses more in total just because it has more people. Dividing by population gives a per-person rate you can compare.",
+    "options": [
+     "Right: per capita removes the effect of size.",
+     "Totals depend mostly on how many people live there.",
+     "Pipe counts do not measure use.",
+     "Storage size does not measure use."
+    ]
+   }
+  },
+  {
+   "id": "env-math-rates-4",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A lake’s water level drops 36 cm over 12 weeks of drought. What is the average rate of drop, in cm per week?",
+   "why": {
+    "correct": "$\\frac{36\\,\\text{cm}}{12\\,\\text{weeks}} = 3$ cm per week."
+   },
+   "numeric": {
+    "unit": "cm/week",
+    "units": [
+     "cm per week",
+     "cm/wk"
+    ],
+    "tol": 0.05,
+    "from": {
+     "fn": "div",
+     "args": [
+      36,
+      12
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.333333333333,
+      "why": "You divided weeks by cm. A rate in cm per week puts cm on top."
+     },
+     {
+      "value": 432,
+      "why": "You multiplied. A rate per week divides the change by the number of weeks."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-rates-5",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A county of 2,500 square kilometers has 400,000 people. How many people live there per square kilometer?",
+   "why": {
+    "correct": "$\\frac{400{,}000\\,\\text{people}}{2{,}500\\,\\text{km}^{2}} = 160$ people per km²."
+   },
+   "numeric": {
+    "unit": "people/km^2",
+    "units": [
+     "people per km2",
+     "people/km2",
+     "people per square kilometer",
+     "people per km^2"
+    ],
+    "from": {
+     "fn": "density",
+     "args": [
+      400000,
+      2500
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.00625,
+      "why": "You divided area by people. Density is people ÷ area."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-rates-6",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A school of 800 students throws away 2.4 metric tons of food each month. How many kilograms is that per student per month? (1 metric ton = 1,000 kg.)",
+   "why": {
+    "correct": "2.4 metric tons = 2,400 kg. $\\frac{2{,}400\\,\\text{kg}}{800\\,\\text{students}} = 3$ kg per student."
+   },
+   "numeric": {
+    "unit": "kg",
+    "units": [
+     "kg/student",
+     "kg per student"
+    ],
+    "tol": 0.05,
+    "from": {
+     "fn": "perCapita",
+     "args": [
+      2400,
+      800
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.003,
+      "why": "That is metric tons per student. The question asks for kilograms: change 2.4 metric tons to 2,400 kg first."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-rates-7",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "single",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A leaky faucet drips 15 mL every minute. Which setup gives the liters lost in one day?",
+   "options": [
+    "15 mL/min × 60 min/h × 24 h/day × 1 L/1,000 mL",
+    "15 mL/min × 60 min/h × 24 h/day × 1,000 mL/1 L",
+    "15 mL ÷ 60 min ÷ 24 h × 1 L/1,000 mL",
+    "15 mL/min × 24 h/day × 1 L/1,000 mL"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Minutes per hour and hours per day turn a per-minute rate into a per-day rate; 1 L per 1,000 mL turns mL into L: 21.6 L a day.",
+    "options": [
+     "Right: every unit cancels except L per day.",
+     "The last factor is upside down, so mL do not cancel and the number is a million times too big.",
+     "Dividing by time makes the rate smaller, not a daily total.",
+     "It skips the 60 minutes in an hour, so minutes and hours do not cancel."
+    ]
+   }
+  },
+  {
+   "id": "env-math-rates-8",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many metric tons of trash per person did Alder collect in the year?",
+   "stimulus": "math-rates-s1",
+   "why": {
+    "correct": "$\\frac{6{,}000\\,\\text{t}}{12{,}000\\,\\text{people}} = 0.5$ metric tons per person."
+   },
+   "numeric": {
+    "unit": "metric tons",
+    "units": [
+     "t",
+     "tonnes",
+     "metric tons per person",
+     "tonnes per person"
+    ],
+    "tol": 0.005,
+    "from": {
+     "fn": "perCapita",
+     "args": [
+      6000,
+      12000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "You divided people by trash. Per person is the trash ÷ the people."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-rates-9",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which town produced the most trash per person?",
+   "stimulus": "math-rates-s1",
+   "options": [
+    "Cedar",
+    "Birch",
+    "Alder",
+    "Alder and Birch tied"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Per person: Alder 0.5, Birch $\\frac{20{,}000}{50{,}000} = 0.4$, Cedar $\\frac{2{,}600}{4{,}000} = 0.65$ metric tons. Cedar is highest even though its total is lowest.",
+    "options": [
+     "Right: 0.65 metric tons per person.",
+     "Birch has the largest total but 0.4 per person.",
+     "Alder is 0.5 per person.",
+     "Alder (0.5) and Birch (0.4) are not equal."
+    ]
+   }
+  },
+  {
+   "id": "env-math-rates-10",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many kilograms of trash per person did Birch collect? (1 metric ton = 1,000 kg.)",
+   "stimulus": "math-rates-s1",
+   "why": {
+    "correct": "$\\frac{20{,}000\\,\\text{t}}{50{,}000\\,\\text{people}} = 0.4$ t per person; $0.4 \\times 1{,}000 = 400$ kg per person."
+   },
+   "numeric": {
+    "unit": "kg",
+    "units": [
+     "kg/person",
+     "kg per person"
+    ],
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "perCapita",
+       "args": [
+        20000,
+        50000
+       ]
+      },
+      1000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.4,
+      "why": "0.4 is in metric tons. Multiply by 1,000 to get kilograms."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-rates-11",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A newspaper headline says \"Birch is the most wasteful town.\" What does the per-person data show?",
+   "stimulus": "math-rates-s1",
+   "options": [
+    "Birch has the largest total but the smallest per-person amount.",
+    "Birch is the most wasteful by both measures.",
+    "Birch has the most trash per person.",
+    "The towns are too different in size to compare."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Birch’s total (20,000 t) is largest because it has the most people; per person (0.4 t) it is the least wasteful of the three.",
+    "options": [
+     "Right: totals reflect size; per person shows behavior.",
+     "Per person, Birch is the lowest.",
+     "Cedar has the most per person (0.65 t).",
+     "Per-person values make a fair comparison across sizes."
+    ]
+   }
+  }
+ ]
+}

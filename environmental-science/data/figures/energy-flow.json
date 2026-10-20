@@ -1,0 +1,12 @@
+{
+ "energy-flow-pyramid": {
+  "file": "figures/energy-flow-pyramid.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An energy pyramid from invented data in kilocalories per square meter per year. Producers 10,000; primary consumers 1,000; secondary consumers 100; tertiary consumers 10. Each level holds about 10 percent of the level below; about 90 percent is used for life processes and lost as heat, as the second law of thermodynamics predicts. Widths are not to scale."
+ }
+}

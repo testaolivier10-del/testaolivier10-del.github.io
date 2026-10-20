@@ -1,0 +1,509 @@
+{
+ "stimuli": {
+  "nitrogen-cycle-s1": {
+   "kind": "quantitative",
+   "title": "Nitrate in a stream below farm fields",
+   "invented": true,
+   "table": {
+    "caption": "Nitrate in stream water at two sites, in mg of nitrate-nitrogen per liter (invented data for practice)",
+    "cols": [
+     "Month",
+     "Above the farm fields (mg/L)",
+     "Below the farm fields (mg/L)"
+    ],
+    "rows": [
+     [
+      "March",
+      "0.8",
+      "2.1"
+     ],
+     [
+      "April (fertilizer spread)",
+      "0.9",
+      "6.4"
+     ],
+     [
+      "May",
+      "0.8",
+      "4.0"
+     ],
+     [
+      "August",
+      "0.6",
+      "1.2"
+     ]
+    ]
+   }
+  },
+  "nitrogen-cycle-s2": {
+   "kind": "text",
+   "title": "Beans in the rotation",
+   "passage": "A farmer who grows corn year after year adds nitrogen fertilizer every spring. A neighbor plants soybeans every other year instead of corn. The neighbor says the soybeans \"put nitrogen back in the ground for free,\" so the corn that follows needs less fertilizer. Soybeans are legumes; their roots carry swellings, called nodules, that house bacteria. The neighbor adds that less fertilizer also means less nitrate washing into the creek.",
+   "source": "Invented passage for practice."
+  }
+ },
+ "items": [
+  {
+   "id": "env-nitrogen-cycle-1",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Where is most of Earth’s nitrogen stored?",
+   "options": [
+    "In the atmosphere as N2 gas",
+    "In living plants and animals",
+    "In ocean sediments",
+    "In soil as nitrate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "About 78% of the air is N2 gas, by far the largest nitrogen reservoir.",
+    "options": [
+     "Right: the atmosphere is the main reservoir.",
+     "Living things hold a small fraction.",
+     "Sediments hold some nitrogen but far less than the air.",
+     "Soil nitrate is small and changes quickly."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-2",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why can most plants not use the N2 gas that surrounds them?",
+   "options": [
+    "The bond holding the two atoms is too strong for plants.",
+    "N2 gas is poisonous to the cells of most plants.",
+    "N2 gas is found in soil air, not in the air around leaves.",
+    "Plants take up nitrogen as a gas through their leaves."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The triple bond in N2 is very hard to break. Only some bacteria (and lightning, or industry) can convert N2 into ammonia or ammonium that plants can use.",
+    "options": [
+     "Right: the bond is too strong for plants to break.",
+     "N2 is not toxic; it is simply unusable to most plants.",
+     "N2 makes up most of the air around leaves.",
+     "Plants take up nitrogen through their roots as nitrate and ammonium."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-3",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "order",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put these steps in order, following one nitrogen atom from the air into a plant and back to the air.",
+   "options": [
+    "Nitrogen fixation: bacteria turn N2 into ammonium",
+    "Nitrification: bacteria turn ammonium into nitrate",
+    "Assimilation: plant roots take up nitrate",
+    "Ammonification: decomposers release ammonium from dead plant matter",
+    "Denitrification: bacteria turn nitrate back into N2"
+   ],
+   "why": {
+    "correct": "Fixation makes ammonium, nitrification makes nitrate, plants assimilate it, decomposers return it as ammonium, and (after nitrification again) denitrifying bacteria return nitrate to the air as N2."
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-4",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A soil stays soaked with water for weeks, so it has very little oxygen. Which process speeds up there?",
+   "options": [
+    "Denitrification",
+    "Nitrification",
+    "Nitrogen fixation by lightning",
+    "Assimilation by animals"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Denitrifying bacteria work where oxygen is scarce and turn nitrate into N2 gas, which escapes to the air.",
+    "options": [
+     "Right: low oxygen favors denitrification.",
+     "Nitrification needs oxygen, so it slows in soaked soil.",
+     "Lightning is not affected by soil oxygen.",
+     "Animals assimilate nitrogen by eating; soil oxygen does not drive it."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-5",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does nitrate leach out of soil more easily than ammonium?",
+   "options": [
+    "Its negative charge keeps soil particles from holding it.",
+    "Nitrate is a gas that escapes from the soil into the air.",
+    "Nitrate is heavier than ammonium, so it sinks faster.",
+    "Ammonium is broken down by sunlight before it can move."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Clay and organic matter carry negative charges. Positive ammonium is held; negative nitrate is not, so water carries it down and away.",
+    "options": [
+     "Right: negative nitrate is not held by negative soil particles.",
+     "Nitrate is dissolved in water, not a gas.",
+     "Weight is not what moves it; water carries it.",
+     "Sunlight does not reach far into soil."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-6",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a nitrogen cycle diagram, an arrow goes from \"dead plants and animal wastes\" to \"ammonium in soil.\" Which process is it?",
+   "options": [
+    "Ammonification",
+    "Nitrification by soil bacteria",
+    "Denitrification",
+    "Assimilation by roots"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Decomposers break down organic nitrogen in wastes and remains and release ammonium: ammonification.",
+    "options": [
+     "Right: decomposers release ammonium.",
+     "Nitrification starts from ammonium and makes nitrate.",
+     "Denitrification makes N2 gas from nitrate.",
+     "Assimilation is uptake by living things."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-7",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Nitrogen is often the limiting nutrient for plant growth on land. What does that mean?",
+   "options": [
+    "Adding nitrogen raises growth more than adding other nutrients.",
+    "Nitrogen in the soil stops plants from growing taller.",
+    "Plants contain more nitrogen than any other element.",
+    "Too much nitrogen in the soil poisons the roots of plants."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A limiting nutrient is the one in shortest supply compared with need; adding it raises growth until something else becomes limiting.",
+    "options": [
+     "Right: the scarcest needed nutrient limits growth.",
+     "Nitrogen is needed for growth; it does not stop it.",
+     "Plants contain far more carbon, oxygen and hydrogen than nitrogen.",
+     "Excess nitrogen causes other problems, but that is not what limiting means."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-8",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A farmer spreads much more fertilizer than the crop can use, just before heavy rain. Build the cause-and-effect chain for what happens to the nitrogen.",
+   "why": {
+    "correct": "Extra nitrate is not taken up, rain leaches it, and it washes into nearby streams and wells."
+   },
+   "specific": {
+    "frame": "Extra ___ is not taken up by the crop, so heavy rain ___ it, which carries it into ___.",
+    "slots": {
+     "form": {
+      "label": "Form of nitrogen",
+      "options": [
+       "nitrate",
+       "N2 gas",
+       "protein"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fertilizer adds nitrate and ammonium, not N2 gas.",
+       "2": "Protein is nitrogen already inside living things."
+      }
+     },
+     "process": {
+      "label": "What rain does",
+      "options": [
+       "leaches",
+       "fixes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fixing turns N2 into ammonium; rain does not fix nitrogen."
+      }
+     },
+     "sink": {
+      "label": "Where it goes",
+      "options": [
+       "nearby streams and wells",
+       "the plant’s leaves",
+       "the deep rock"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The crop could not take up the extra; that is why it washes away.",
+       "2": "Dissolved nitrate moves with water into streams and wells, not into rock."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "nitrate",
+      "rain",
+      "stream"
+     ]
+    },
+    "model": "Extra nitrate is not taken up by the crop, so heavy rain leaches it out of the soil, which leads to nitrate washing into nearby streams and wells."
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-9",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Animals get the nitrogen they need to build proteins mainly by...",
+   "options": [
+    "eating plants, or animals that ate plants",
+    "breathing in N2 gas from the air around them",
+    "drinking water that has N2 gas dissolved in it",
+    "absorbing nitrate from water through their skin"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Animals cannot use N2 or nitrate directly; they get nitrogen as proteins and other compounds in their food.",
+    "options": [
+     "Right: nitrogen passes from plants to animals in food.",
+     "Animals breathe N2 in and out without using it.",
+     "Dissolved N2 is unusable to animals too.",
+     "Animals do not absorb nitrate through their skin for protein."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-10",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement describes the data?",
+   "stimulus": "nitrogen-cycle-s1",
+   "options": [
+    "Higher below the fields each month, peaking in April",
+    "Higher above the fields than below them in each month",
+    "The same above the fields and below them in each month",
+    "Rising steadily below the fields from March to August"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Below the fields: 2.1, 6.4, 4.0, 1.2 mg/L, each higher than above (0.6 to 0.9), peaking in April.",
+    "options": [
+     "Right: higher below each month, highest in April.",
+     "Above the fields is the lower site each month.",
+     "Below the fields is 1.2 to 6.4, above is 0.6 to 0.9.",
+     "It rises to April, then falls to 1.2 in August."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-11",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In April, how many times higher was nitrate below the fields than above them?",
+   "stimulus": "nitrogen-cycle-s1",
+   "why": {
+    "correct": "$\\frac{6.4}{0.9} = 7.1$, so about 7 times higher below the fields."
+   },
+   "numeric": {
+    "rel": 0.01,
+    "from": {
+     "fn": "div",
+     "args": [
+      6.4,
+      0.9
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.140625,
+      "why": "You divided above by below. \"How many times higher below\" puts the below value on top: 6.4 / 0.9."
+     },
+     {
+      "value": 5.5,
+      "why": "5.5 mg/L is the difference. \"How many times\" asks for a ratio: 6.4 / 0.9."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-12",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What best explains the April peak below the fields?",
+   "stimulus": "nitrogen-cycle-s1",
+   "options": [
+    "April fertilizer was leached into the stream.",
+    "Denitrification added nitrate to the stream in April.",
+    "Fish in the stream released extra nitrate in April.",
+    "Nitrate fell from the air in the April rain."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The peak matches the month fertilizer was spread, and it appears below the fields but not above them.",
+    "options": [
+     "Right: timing and location both point to fertilizer washing off the fields.",
+     "Denitrification removes nitrate; it does not add it.",
+     "Fish would raise nitrate at both sites, and not mostly in April.",
+     "Rain falls on both sites, but only the lower one peaks."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-13",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which practice would most directly lower the April peak?",
+   "stimulus": "nitrogen-cycle-s1",
+   "options": [
+    "A strip of grass and trees along the stream",
+    "Spreading the same fertilizer just before heavy rain",
+    "Draining the wetlands along the banks of the stream",
+    "Spreading more of the fertilizer in March instead"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A strip of plants along the stream takes up nitrate from the water draining off the fields and slows it before it reaches the stream.",
+    "options": [
+     "Right: plants in the strip absorb nitrate before it reaches the stream.",
+     "Rain right after spreading increases leaching.",
+     "Wetlands remove nitrate (plants and denitrification); draining them makes it worse.",
+     "Moving the same excess earlier would still leach."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-14",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the neighbor’s main claim?",
+   "stimulus": "nitrogen-cycle-s2",
+   "options": [
+    "Soybeans add nitrogen, so the next corn needs less.",
+    "Corn grows better than soybeans in most kinds of soil.",
+    "Fertilizer is the main source of nitrogen for soybeans.",
+    "Bacteria in the creek remove nitrate from farm water."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The neighbor says soybeans put nitrogen back in the ground, so the following corn needs less fertilizer.",
+    "options": [
+     "Right: that is the claim.",
+     "The passage does not compare corn and soybean growth.",
+     "The claim is that soybeans add nitrogen, not that they need fertilizer.",
+     "The creek is mentioned, but not bacteria in it."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-15",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which process explains how the soybeans \"put nitrogen back in the ground\"?",
+   "stimulus": "nitrogen-cycle-s2",
+   "options": [
+    "Bacteria in the nodules fix nitrogen.",
+    "Soybean leaves absorb nitrate from the air.",
+    "Soybean roots carry out denitrification.",
+    "The nodules turn other minerals into nitrogen."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Nitrogen-fixing bacteria living in legume root nodules turn N2 into ammonium, which the plant uses; leftover roots and stems release it to the soil.",
+    "options": [
+     "Right: nitrogen fixation by bacteria in the nodules.",
+     "Leaves do not take nitrate from air.",
+     "Denitrification removes nitrogen from soil.",
+     "One element cannot become another."
+    ]
+   }
+  },
+  {
+   "id": "env-nitrogen-cycle-16",
+   "unit": "unit-1",
+   "topic": "nitrogen-cycle",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The neighbor’s last sentence assumes which link?",
+   "stimulus": "nitrogen-cycle-s2",
+   "options": [
+    "Less fertilizer leaves less extra nitrate to leach.",
+    "Soybean roots take nitrate out of the creek water.",
+    "Corn plants release nitrate into nearby creeks.",
+    "Creeks need added nitrate to stay healthy for fish."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The argument links less fertilizer to less leftover nitrate in the soil, so less washes into the creek.",
+    "options": [
+     "Right: less excess means less leaching.",
+     "Soybeans do not draw water from the creek.",
+     "The claim is about fertilizer, not corn itself.",
+     "The passage treats nitrate in the creek as a problem."
+    ]
+   }
+  }
+ ]
+}

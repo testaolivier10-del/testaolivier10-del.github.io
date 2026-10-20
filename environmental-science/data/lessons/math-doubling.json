@@ -1,0 +1,68 @@
+{
+ "topic": "math-doubling",
+ "hook": "A city growing \"only\" 3.5% a year doubles in 20 years: twice the schools, water and roads within one generation. Growth at a steady percent speeds up as the base gets bigger. The rule of 70 lets you turn any yearly growth rate into a doubling time in your head, and the exam asks for it every year.",
+ "prereq": [
+  {
+   "q": "What is the percent change from 50 to 100?",
+   "options": [
+    "100%",
+    "50%",
+    "200%",
+    "2%"
+   ],
+   "correct": 0,
+   "why": "(100 - 50) / 50 × 100 = 100%.",
+   "review": "math-percents"
+  },
+  {
+   "q": "What does \"per capita\" mean?",
+   "options": [
+    "Per person",
+    "Per year",
+    "Per city",
+    "Per area"
+   ],
+   "correct": 0,
+   "why": "Per capita is per person.",
+   "review": "math-rates"
+  }
+ ],
+ "figure": {
+  "figure": "math-doubling-curve",
+  "caption": "Growing 2% a year, a population doubles about every 35 years."
+ },
+ "chain": [
+  {
+   "cause": "A population grows by a fixed percent each year",
+   "effect": "each year’s increase is larger than the last"
+  },
+  {
+   "cause": "Divide 70 by the percent growth rate",
+   "effect": "you get the doubling time in years"
+  },
+  {
+   "cause": "Add the doubling time to the start year",
+   "effect": "you get the year the population doubles"
+  }
+ ],
+ "ideas": [
+  "A <b>growth rate</b> is the percent change per year: 2% a year means 2 more for every 100 each year.",
+  "<b>Rule of 70</b>: doubling time ≈ 70 ÷ growth rate (in %, not as a decimal).",
+  "<b>Doubling time</b> depends on the rate, not on the starting size.",
+  "Each doubling multiplies by 2: after n doublings, multiply by 2 n times (2, 4, 8, 16, ...)."
+ ],
+ "misconception": {
+  "wrong": "A question asking \"in what year\" wants the doubling time.",
+  "right": "The doubling time is a number of years. \"In what year\" asks you to add it to the starting year: 70 ÷ 2.5 = 28 years, so 2024 + 28 = 2052."
+ },
+ "check": [
+  "env-math-doubling-1",
+  "env-math-doubling-2",
+  "env-math-doubling-4",
+  "env-math-doubling-8",
+  "env-math-doubling-9",
+  "env-math-doubling-10",
+  "env-math-doubling-11"
+ ],
+ "summary": "A population growing by a fixed percent each year doubles in a fixed time. By the rule of 70, doubling time ≈ 70 ÷ growth rate in percent. Add the doubling time to the start year for \"in what year\"; multiply by 2 for each doubling to project the size. Doubling time depends only on the rate: twice the rate, half the time."
+}

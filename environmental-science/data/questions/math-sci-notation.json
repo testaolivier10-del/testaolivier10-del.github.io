@@ -1,0 +1,382 @@
+{
+ "stimuli": {
+  "math-sci-notation-s1": {
+   "kind": "quantitative",
+   "title": "Water use in three cities",
+   "invented": true,
+   "table": {
+    "caption": "Yearly water use and population of three cities (invented data for practice)",
+    "cols": [
+     "City",
+     "Population",
+     "Water use per year (liters)"
+    ],
+    "rows": [
+     [
+      "North Falls",
+      "2.0 × 10⁵",
+      "1.2 × 10¹⁰"
+     ],
+     [
+      "Lake City",
+      "1.5 million",
+      "9.0 × 10¹⁰"
+     ],
+     [
+      "Pine Hill",
+      "40,000",
+      "3.2 × 10⁹"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-math-sci-notation-1",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "single",
+   "practice": "6.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "How is 4,300,000 written in scientific notation?",
+   "options": [
+    "$4.3 \\times 10^{6}$",
+    "$43 \\times 10^{5}$",
+    "$4.3 \\times 10^{5}$",
+    "$0.43 \\times 10^{7}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Move the decimal point 6 places left to get a number from 1 to 10: $4.3 \\times 10^{6}$.",
+    "options": [
+     "Right: 4.3 is between 1 and 10, and the point moved 6 places.",
+     "Equal in value, but 43 is not between 1 and 10, so it is not scientific notation.",
+     "That is 430,000; the point moved 6 places, not 5.",
+     "Equal in value, but 0.43 is less than 1, so it is not scientific notation."
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-2",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A forest stores $3.0 \\times 10^{4}$ kg of carbon on each of its $2.0 \\times 10^{3}$ hectares. How many kilograms of carbon does the whole forest store?",
+   "why": {
+    "correct": "Multiply the front numbers and add the exponents: $(3.0 \\times 2.0) \\times 10^{4 + 3} = 6.0 \\times 10^{7}$ kg, which is 60,000,000 kg (60 million kg)."
+   },
+   "numeric": {
+    "unit": "kg",
+    "from": {
+     "fn": "mul",
+     "args": [
+      30000,
+      2000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6000000000000,
+      "why": "You multiplied the exponents (4 × 3 = 12). When you multiply powers of ten, add the exponents: 4 + 3 = 7."
+     },
+     {
+      "value": 15,
+      "why": "You divided 3.0 × 10^4 by 2.0 × 10^3. The total over all hectares is a product: kg per hectare × hectares."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-3",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A country has $2.4 \\times 10^{8}$ people and throws away $1.2 \\times 10^{11}$ kg of trash a year. How many kilograms of trash is that per person? (Divide the trash by the people.)",
+   "why": {
+    "correct": "$\\frac{1.2 \\times 10^{11}}{2.4 \\times 10^{8}} = 0.5 \\times 10^{3} = 5.0 \\times 10^{2}$ kg per person, which is 500 kg."
+   },
+   "numeric": {
+    "unit": "kg",
+    "units": [
+     "kg/person",
+     "kg per person"
+    ],
+    "from": {
+     "fn": "div",
+     "args": [
+      120000000000,
+      240000000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.002,
+      "why": "You divided people by trash. Per person means trash ÷ people."
+     },
+     {
+      "value": 5000,
+      "why": "Check the front numbers: 1.2 ÷ 2.4 = 0.5, so the answer is 0.5 × 10^3 = 5 × 10^2, not 5 × 10^3."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-4",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A lake holds 750 ML (megaliters) of water. How many liters is that?",
+   "options": [
+    "$7.5 \\times 10^{8}$ L",
+    "$7.5 \\times 10^{5}$ L",
+    "$7.5 \\times 10^{2}$ L",
+    "$7.5 \\times 10^{11}$ L"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Mega means $10^{6}$: $750 \\times 10^{6} = 7.5 \\times 10^{8}$ L.",
+    "options": [
+     "Right: 750 million liters.",
+     "That treats mega as kilo ($10^{3}$).",
+     "That is 750 L; the prefix was ignored.",
+     "That treats mega as giga ($10^{9}$)."
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-5",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A water sample holds 2.5 g of dissolved salt. How many milligrams is that?",
+   "why": {
+    "correct": "There are 1,000 mg in 1 g: $2.5\\,\\text{g} \\times \\frac{1{,}000\\,\\text{mg}}{1\\,\\text{g}} = 2{,}500$ mg."
+   },
+   "numeric": {
+    "unit": "mg",
+    "units": [
+     "milligrams"
+    ],
+    "from": {
+     "fn": "convert",
+     "args": [
+      2.5,
+      "g",
+      "mg"
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.0025,
+      "why": "You divided by 1,000. Milligrams are smaller units, so the number gets bigger: multiply by 1,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-6",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Four lakes hold these volumes of water. Which holds the most?",
+   "options": [
+    "$3 \\times 10^{9}$ L",
+    "$5 \\times 10^{8}$ L",
+    "2 GL (gigaliters)",
+    "900 ML (megaliters)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Write each in liters: $3 \\times 10^{9}$; $5 \\times 10^{8}$; 2 GL = $2 \\times 10^{9}$; 900 ML = $9 \\times 10^{8}$. The largest is $3 \\times 10^{9}$ L.",
+    "options": [
+     "Right: 3 billion liters.",
+     "The front number 5 is larger, but the power of ten is smaller: 500 million L.",
+     "2 GL is 2 billion L, less than 3 billion.",
+     "900 ML is 900 million L, less than a billion."
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-7",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A landfill receives $4.0 \\times 10^{5}$ kg of trash a day. Write the setup for how much it receives in 30 days, with units, then give the answer.",
+   "why": {
+    "correct": "$4.0 \\times 10^{5}\\,\\text{kg/day} \\times 30\\,\\text{days} = 1.2 \\times 10^{7}$ kg, which is 12 million kg."
+   },
+   "setup": {
+    "answer": "4.0 * 10^5 kg/day * 30 days",
+    "mustUse": [
+     "30"
+    ],
+    "unit": "kg",
+    "mistakes": [
+     {
+      "expr": "4.0 * 10^5 kg/day / 30 days",
+      "why": "You divided by the days. A daily amount times the number of days gives the total."
+     },
+     {
+      "expr": "4.0 * 10^5 * 30 * 10^5 kg",
+      "why": "The 30 days has no power of ten. Multiply 4.0 × 10^5 by 30 only."
+     }
+    ],
+    "then": {
+     "unit": "kg",
+     "from": {
+      "fn": "mul",
+      "args": [
+       400000,
+       30
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 1200000,
+       "why": "4.0 × 30 = 120, so the answer is 120 × 10^5 = 1.2 × 10^7 kg. Moving the point one place adds 1 to the exponent."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-math-sci-notation-8",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which city has the largest population?",
+   "stimulus": "math-sci-notation-s1",
+   "options": [
+    "North Falls",
+    "Lake City",
+    "Pine Hill",
+    "North Falls and Lake City are tied"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Write them the same way: North Falls 200,000; Lake City 1,500,000; Pine Hill 40,000.",
+    "options": [
+     "$2.0 \\times 10^{5}$ is 200,000, less than 1.5 million.",
+     "Right: 1.5 million = 1,500,000.",
+     "40,000 is the smallest.",
+     "200,000 and 1,500,000 are not equal."
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-9",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many liters of water does Lake City use per person each year?",
+   "stimulus": "math-sci-notation-s1",
+   "why": {
+    "correct": "1.5 million = $1.5 \\times 10^{6}$. $\\frac{9.0 \\times 10^{10}\\,\\text{L}}{1.5 \\times 10^{6}\\,\\text{people}} = 6.0 \\times 10^{4}$ L per person, which is 60,000 L."
+   },
+   "numeric": {
+    "unit": "L",
+    "units": [
+     "L/person",
+     "liters per person",
+     "liters"
+    ],
+    "from": {
+     "fn": "perCapita",
+     "args": [
+      90000000000,
+      1500000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 60000000000,
+      "why": "You divided by 1.5 instead of 1.5 million. Write 1.5 million as 1.5 × 10^6 before you divide."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-10",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How many times more water does Lake City use in a year than North Falls?",
+   "stimulus": "math-sci-notation-s1",
+   "why": {
+    "correct": "$\\frac{9.0 \\times 10^{10}}{1.2 \\times 10^{10}} = 7.5$ times as much."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      90000000000,
+      12000000000
+     ]
+    },
+    "tol": 0.05,
+    "mistakes": [
+     {
+      "value": 0.133333333333,
+      "why": "You divided North Falls by Lake City. \"How many times more does Lake City use\" puts Lake City on top."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-11",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which city uses the most water per person?",
+   "stimulus": "math-sci-notation-s1",
+   "options": [
+    "North Falls",
+    "Lake City",
+    "Pine Hill",
+    "The three cities use equal amounts per person"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Per person: North Falls $\\frac{1.2 \\times 10^{10}}{2.0 \\times 10^{5}} = 6.0 \\times 10^{4}$ L; Lake City $6.0 \\times 10^{4}$ L; Pine Hill $\\frac{3.2 \\times 10^{9}}{4.0 \\times 10^{4}} = 8.0 \\times 10^{4}$ L. Pine Hill uses the most per person even though its total is smallest.",
+    "options": [
+     "North Falls uses 60,000 L per person.",
+     "Lake City uses the most in total, but 60,000 L per person.",
+     "Right: 80,000 L per person.",
+     "Pine Hill (80,000 L) differs from the other two (60,000 L)."
+    ]
+   }
+  }
+ ]
+}

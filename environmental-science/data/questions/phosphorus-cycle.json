@@ -1,0 +1,542 @@
+{
+ "stimuli": {
+  "phosphorus-cycle-s1": {
+   "kind": "quantitative",
+   "title": "Adding nutrients to small test ponds",
+   "invented": true,
+   "table": {
+    "caption": "Algae in four groups of identical outdoor test ponds after 6 weeks, in micrograms of chlorophyll per liter (invented data for practice)",
+    "cols": [
+     "Ponds",
+     "Nutrient added each week",
+     "Algae (µg chlorophyll/L)"
+    ],
+    "rows": [
+     [
+      "A",
+      "none",
+      "4"
+     ],
+     [
+      "B",
+      "nitrate",
+      "5"
+     ],
+     [
+      "C",
+      "phosphate",
+      "28"
+     ],
+     [
+      "D",
+      "nitrate and phosphate",
+      "31"
+     ]
+    ]
+   }
+  },
+  "phosphorus-cycle-s2": {
+   "kind": "visual",
+   "title": "Phosphate in three streams",
+   "invented": true,
+   "plot": {
+    "label": "Bar chart of average phosphate in three streams with different land around them, invented data",
+    "kind": "bar",
+    "categories": [
+     "Forest",
+     "Farmland",
+     "Town"
+    ],
+    "values": [
+     0.02,
+     0.18,
+     0.11
+    ],
+    "y": [
+     0,
+     0.2
+    ],
+    "xLabel": "Land around the stream",
+    "yLabel": "Phosphate (mg/L)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-phosphorus-cycle-1",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Where is most of Earth’s phosphorus stored?",
+   "options": [
+    "In rock and sediment",
+    "In the atmosphere as a gas",
+    "In living plants and animals",
+    "In rivers, lakes and the ocean"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Phosphorus is stored mainly in phosphate minerals in rock and in ocean sediments; it has no significant gas form.",
+    "options": [
+     "Right: rock and sediment are the main reservoirs.",
+     "Phosphorus has no significant gas phase, unlike carbon and nitrogen.",
+     "Living things hold a small, active share.",
+     "Water holds only small amounts at any time."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-2",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does phosphorus usually move through ecosystems more slowly than carbon or nitrogen?",
+   "options": [
+    "It has no gas phase to carry it.",
+    "Plants do not need phosphorus to grow and reproduce.",
+    "It is released mainly by volcanoes, which erupt rarely.",
+    "Decomposers do not release it from dead plants and animals."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Carbon and nitrogen move quickly through the atmosphere. Phosphorus must be weathered from rock and moved by water, which is slow.",
+    "options": [
+     "Right: no trip through the air makes it slow.",
+     "Plants need phosphorus for DNA, ATP and cell membranes.",
+     "Weathering of rock, not volcanoes, is the main source.",
+     "Decomposers do return phosphate to the soil."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-3",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which process releases phosphate from rocks into the soil?",
+   "options": [
+    "Weathering",
+    "Nitrogen fixation by bacteria",
+    "Photosynthesis",
+    "Denitrification in wet soil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rain, temperature changes and living things slowly break rock down, releasing phosphate.",
+    "options": [
+     "Right: weathering frees phosphate from rock.",
+     "Fixation is part of the nitrogen cycle.",
+     "Photosynthesis moves carbon, not phosphate from rock.",
+     "Denitrification returns nitrogen gas to the air."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-4",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What do organisms use phosphorus for?",
+   "options": [
+    "Building DNA, ATP, membranes and bones",
+    "Making the sugars of photosynthesis in leaves",
+    "Storing oxygen in the red cells of the blood",
+    "Breaking the strong bond in N2 gas from the air"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Phosphate is part of DNA and RNA, ATP (the energy carrier), the phospholipids of cell membranes, and the minerals of bones and teeth.",
+    "options": [
+     "Right: DNA, ATP, membranes, bones and teeth.",
+     "Sugars are made of carbon, hydrogen and oxygen.",
+     "Iron in blood carries oxygen, not phosphorus.",
+     "Bacteria break N2 with enzymes; that is not what phosphorus is for."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-5",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Phosphorus that settles in ocean sediments can return to land. How?",
+   "options": [
+    "Sediments become rock that is slowly lifted up.",
+    "It rises from the sea as a gas and falls in rain.",
+    "Fish carry it up rivers and onto land each season.",
+    "Lightning fixes it from the air into the soil."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sediments harden into rock, and geologic uplift raises it, slowly, where weathering can release phosphate again.",
+    "options": [
+     "Right: uplift of rock over geologic time.",
+     "Phosphorus has no significant gas phase, so it does not rise from the sea.",
+     "Animals move small amounts, such as seabird droppings, but not the main return route.",
+     "Lightning fixes nitrogen, not phosphorus."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-6",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Where does most of the phosphate in commercial fertilizer come from?",
+   "options": [
+    "Mined phosphate rock",
+    "Phosphorus gas captured from the air",
+    "Bacteria living in the roots of legumes",
+    "Seawater that is boiled down to dry salt"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Phosphate fertilizer is made from mined phosphate rock, which forms far more slowly than it is mined.",
+    "options": [
+     "Right: mined phosphate rock.",
+     "There is no phosphorus gas to capture.",
+     "Legume bacteria fix nitrogen, not phosphorus.",
+     "Seawater holds very little phosphate."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-7",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Phosphate sticks tightly to soil particles. How does most of the phosphate from a farm field reach a lake?",
+   "options": [
+    "On soil washed off in heavy rain",
+    "As a gas blown over the lake by the wind",
+    "By denitrification in the wet soil of the field",
+    "Through the leaves of the crop and into the air"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Because phosphate clings to soil, it moves mostly when soil itself is washed away, so keeping soil on the field keeps phosphate out of water.",
+    "options": [
+     "Right: phosphate rides on soil that washes away.",
+     "Phosphorus has no gas form.",
+     "Denitrification is part of the nitrogen cycle.",
+     "Leaves do not deliver phosphate to lakes."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-8",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A lake receives wastewater with high phosphate. Build the chain for what happens to the algae.",
+   "why": {
+    "correct": "Phosphate is usually the limiting nutrient in freshwater, so adding it lets algae grow fast."
+   },
+   "specific": {
+    "frame": "Phosphate is often the ___ in lakes, so adding it makes algae ___, because ___.",
+    "slots": {
+     "role": {
+      "label": "Role of phosphate",
+      "options": [
+       "limiting nutrient",
+       "main gas in the air",
+       "cause of denitrification"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Phosphorus has no significant gas form.",
+       "2": "Denitrification is a nitrogen process."
+      }
+     },
+     "direction": {
+      "label": "Algae",
+      "options": [
+       "grow quickly",
+       "die off at once",
+       "stay the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Adding a scarce nutrient helps algae grow, at least at first.",
+       "2": "A limiting nutrient changes growth when it is added."
+      }
+     },
+     "because": {
+      "label": "Reason",
+      "options": [
+       "the scarcest nutrient is no longer in short supply",
+       "phosphate blocks sunlight",
+       "phosphate is a poison to fish"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Phosphate is dissolved and does not block light.",
+       "2": "The question is about algae growth, and phosphate is a nutrient for them."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "algae",
+      "phosphate",
+      "lake"
+     ]
+    },
+    "model": "Phosphate is often the limiting nutrient in lakes, so adding it makes algae grow quickly, because the nutrient that was in shortest supply is no longer scarce."
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-9",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which ponds grew the most algae?",
+   "stimulus": "phosphorus-cycle-s1",
+   "options": [
+    "Ponds D, with both added",
+    "Ponds A, with no nutrient added",
+    "Ponds B, with nitrate added each week",
+    "Ponds C, with phosphate added each week"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ponds D reached 31 µg/L, the highest value.",
+    "options": [
+     "Right: 31 µg/L.",
+     "Ponds A had the least (4 µg/L).",
+     "Ponds B had 5 µg/L, barely more than A.",
+     "Ponds C had 28 µg/L, close to D but lower."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-10",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which nutrient was limiting algae growth in these ponds?",
+   "stimulus": "phosphorus-cycle-s1",
+   "options": [
+    "Phosphate: it raised algae 4 to 28",
+    "Nitrate, since adding it raised algae from 4 to 5",
+    "Neither one, since algae need just light and water",
+    "Both equally, since ponds D have the most algae"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Phosphate alone gave a large rise; nitrate alone gave almost none. So phosphate was in shortest supply.",
+    "options": [
+     "Right: adding phosphate made the big difference.",
+     "A rise of 1 µg/L is tiny compared with phosphate’s 24.",
+     "Nutrients clearly changed growth.",
+     "D is only a little above C, so phosphate did most of the work."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-11",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many times more algae grew in ponds C than in ponds A?",
+   "stimulus": "phosphorus-cycle-s1",
+   "why": {
+    "correct": "$\\frac{28}{4} = 7$ times as much."
+   },
+   "numeric": {
+    "tol": 0.05,
+    "from": {
+     "fn": "div",
+     "args": [
+      28,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 24,
+      "why": "24 µg/L is the difference. \"How many times more\" asks for the ratio: 28 / 4."
+     },
+     {
+      "value": 0.142857142857,
+      "why": "You divided A by C. Put the ponds you compare (C) on top: 28 / 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-12",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is the purpose of ponds A in this study?",
+   "stimulus": "phosphorus-cycle-s1",
+   "options": [
+    "A baseline for comparison",
+    "They test the effect of adding both nutrients at once.",
+    "They show how fast phosphate is weathered from rock.",
+    "They are spare ponds in case another pond fails."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ponds A had nothing added, so they show how much algae grows without the treatment: the control.",
+    "options": [
+     "Right: the control is a baseline for comparison.",
+     "Ponds D test both nutrients.",
+     "Weathering is not measured.",
+     "A control is part of the design, not a spare."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-13",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "About how much phosphate does the farmland stream carry?",
+   "stimulus": "phosphorus-cycle-s2",
+   "options": [
+    "About 0.18 mg/L",
+    "About 0.02 mg/L",
+    "About 0.11 mg/L",
+    "About 1.8 mg/L"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The farmland bar reaches about 0.18 mg/L.",
+    "options": [
+     "Right: just under 0.2 mg/L.",
+     "0.02 mg/L is the forest stream.",
+     "0.11 mg/L is the town stream.",
+     "The axis tops out at 0.2 mg/L."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-14",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What best explains why the forest stream has the least phosphate?",
+   "stimulus": "phosphorus-cycle-s2",
+   "options": [
+    "Roots hold the soil in place.",
+    "Forest leaves remove phosphate gas from the air.",
+    "Trees release their phosphate into the air as a gas.",
+    "Forest soil lacks phosphate, so little can wash in."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Phosphate travels mostly on soil that washes away; forest cover keeps soil in place, and no fertilizer is added.",
+    "options": [
+     "Right: little erosion and no fertilizer.",
+     "There is no phosphate in the air to remove.",
+     "Phosphorus has no gas form.",
+     "Forest soils contain phosphate; it just stays put."
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-15",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How much more phosphate does the farmland stream carry than the forest stream, in mg/L?",
+   "stimulus": "phosphorus-cycle-s2",
+   "why": {
+    "correct": "$0.18 - 0.02 = 0.16$ mg/L more."
+   },
+   "numeric": {
+    "unit": "mg/L",
+    "tol": 0.005,
+    "from": {
+     "fn": "sub",
+     "args": [
+      0.18,
+      0.02
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 9,
+      "why": "9 is the ratio (0.18 / 0.02). \"How much more, in mg/L\" asks for the difference."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-phosphorus-cycle-16",
+   "unit": "unit-1",
+   "topic": "phosphorus-cycle",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which action would most directly lower phosphate in the farmland stream?",
+   "stimulus": "phosphorus-cycle-s2",
+   "options": [
+    "Winter cover crops on the fields",
+    "Adding more phosphate fertilizer just before heavy rain",
+    "Removing the trees that grow along the stream banks",
+    "Plowing the fields right before the winter storms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Plant cover holds soil, and phosphate moves on soil. Less soil lost means less phosphate in the stream.",
+    "options": [
+     "Right: keeping soil in place keeps phosphate out of the water.",
+     "More fertilizer before rain adds phosphate.",
+     "Trees along the bank catch soil; removing them adds phosphate.",
+     "Bare plowed soil washes away in storms."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "topic": "aquatic-biomes",
+ "hook": "Follow a single river from a mountain to the sea. It starts cold, fast and full of oxygen, slows and warms as it crosses farmland, mixes with seawater in a muddy, food-rich estuary, and finally reaches an ocean so deep that most of it never sees sunlight. Each stretch is a different aquatic biome, set by salt, light, depth and oxygen.",
+ "prereq": [
+  {
+   "q": "Which is an abiotic factor of a lake?",
+   "options": [
+    "Water temperature",
+    "Algae",
+    "Fish",
+    "Bacteria"
+   ],
+   "correct": 0,
+   "why": "Temperature is nonliving; the others are living.",
+   "review": "intro-ecosystems"
+  },
+  {
+   "q": "Which two factors mostly decide terrestrial biomes?",
+   "options": [
+    "Temperature and precipitation",
+    "Wind and soil color",
+    "Elevation and day length",
+    "Animals and plants"
+   ],
+   "correct": 0,
+   "why": "Climate (temperature and precipitation) sets land biomes.",
+   "review": "terrestrial-biomes"
+  }
+ ],
+ "figure": {
+  "figure": "aquatic-biomes-lake-zones",
+  "caption": "The zones of a lake, set by depth and light."
+ },
+ "chain": [
+  {
+   "cause": "Light fades with depth",
+   "effect": "plants and algae grow only in the sunlit photic zone"
+  },
+  {
+   "cause": "Rivers carry nutrients to coasts and estuaries",
+   "effect": "shallow, sunlit coastal water is very productive"
+  },
+  {
+   "cause": "Warm or still water holds less dissolved oxygen",
+   "effect": "fish and other animals there have less oxygen to use"
+  }
+ ],
+ "ideas": [
+  "Aquatic biomes are sorted by <b>salinity</b>, depth, light, temperature and <b>dissolved oxygen</b>: the <b>freshwater biome</b> (lakes, rivers, <b>wetland</b>s) and marine biomes (<b>estuary</b>, <b>intertidal zone</b>, <b>coral reef</b>, <b>open ocean</b>).",
+  "A lake has a <b>littoral zone</b> (shallow edge), limnetic zone (open sunlit water), profundal zone (deep, dark) and benthic zone (bottom).",
+  "Only the <b>photic zone</b> has enough light for photosynthesis; below it is the aphotic zone.",
+  "Estuaries, salt marshes and <b>mangrove</b> forests grow more life per square meter than almost anywhere on Earth: nutrients plus light plus shelter."
+ ],
+ "misconception": {
+  "wrong": "The open ocean grows the most life per square meter because it is so large.",
+  "right": "The open ocean grows a lot in total because it is huge, but each square meter grows little: nutrients are scarce in the sunlit surface. Coral reefs, estuaries and wetlands grow far more per square meter."
+ },
+ "check": [
+  "env-aquatic-biomes-3",
+  "env-aquatic-biomes-10",
+  "env-aquatic-biomes-11",
+  "env-aquatic-biomes-12",
+  "env-aquatic-biomes-14",
+  "env-aquatic-biomes-15",
+  "env-aquatic-biomes-16"
+ ],
+ "summary": "Aquatic biomes differ mainly in salinity, depth, light, temperature and dissolved oxygen. Freshwater biomes include lakes (with littoral, limnetic, profundal and benthic zones), rivers and wetlands; marine biomes include estuaries, the intertidal zone, coral reefs and the open ocean. Plants and algae need the photic zone, and colder, moving water holds more oxygen."
+}

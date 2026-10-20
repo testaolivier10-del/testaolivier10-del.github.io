@@ -1,0 +1,12 @@
+{
+ "terrestrial-biomes-climate": {
+  "file": "figures/terrestrial-biomes-climate.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A simplified chart of biomes placed by average yearly temperature from minus 15 to 30 degrees Celsius and yearly precipitation from 0 to 450 centimeters. Tundra is coldest and dry. Taiga is cold with moderate precipitation. In the temperate band, desert is driest, then temperate grassland and chaparral, then temperate deciduous forest, then temperate rainforest at the wettest. In the warm band, desert is driest, savanna has moderate rain, and tropical rainforest is wettest, above 200 centimeters. Real biomes overlap, and seasons matter too."
+ }
+}

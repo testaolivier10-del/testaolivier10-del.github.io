@@ -1,0 +1,682 @@
+{
+ "stimuli": {
+  "carbon-cycle-s1": {
+   "kind": "quantitative",
+   "title": "A simplified yearly carbon budget",
+   "invented": true,
+   "table": {
+    "caption": "Carbon added to and removed from the atmosphere by human activity in one year, in billions of metric tons of carbon (invented, rounded data for practice; real budgets are similar in size)",
+    "cols": [
+     "Flux",
+     "Billions of metric tons of carbon per year"
+    ],
+    "rows": [
+     [
+      "Added: combustion of fossil fuels and cement making",
+      "9.7"
+     ],
+     [
+      "Added: clearing and burning forests",
+      "1.1"
+     ],
+     [
+      "Removed: taken up by the ocean",
+      "2.9"
+     ],
+     [
+      "Removed: taken up by plants and soils on land",
+      "3.2"
+     ]
+    ]
+   }
+  },
+  "carbon-cycle-s2": {
+   "kind": "visual",
+   "title": "Carbon dioxide over two years at one station",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of monthly carbon dioxide in the air at a northern station over two years, rising each year with a yearly up-and-down cycle, invented data",
+    "kind": "line",
+    "series": [
+     {
+      "name": "CO2",
+      "points": [
+       [
+        1,
+        418
+       ],
+       [
+        2,
+        419
+       ],
+       [
+        3,
+        420
+       ],
+       [
+        4,
+        421
+       ],
+       [
+        5,
+        421.5
+       ],
+       [
+        6,
+        420
+       ],
+       [
+        7,
+        418
+       ],
+       [
+        8,
+        416
+       ],
+       [
+        9,
+        415
+       ],
+       [
+        10,
+        416
+       ],
+       [
+        11,
+        417.5
+       ],
+       [
+        12,
+        419
+       ],
+       [
+        13,
+        420.5
+       ],
+       [
+        14,
+        421.5
+       ],
+       [
+        15,
+        422.5
+       ],
+       [
+        16,
+        423.5
+       ],
+       [
+        17,
+        424
+       ],
+       [
+        18,
+        422.5
+       ],
+       [
+        19,
+        420.5
+       ],
+       [
+        20,
+        418.5
+       ],
+       [
+        21,
+        417.5
+       ],
+       [
+        22,
+        418.5
+       ],
+       [
+        23,
+        420
+       ],
+       [
+        24,
+        421.5
+       ]
+      ]
+     }
+    ],
+    "x": [
+     1,
+     24
+    ],
+    "y": [
+     412,
+     426
+    ],
+    "xLabel": "Month (1 = January of year 1)",
+    "yLabel": "CO2 in the air (ppm)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-carbon-cycle-1",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which process moves carbon from the atmosphere into living things?",
+   "options": [
+    "Photosynthesis",
+    "Cellular respiration",
+    "Combustion",
+    "Decomposition"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Plants, algae and some bacteria take in CO2 and build it into sugars during photosynthesis.",
+    "options": [
+     "Right: photosynthesis takes CO2 out of the air.",
+     "Respiration releases CO2 to the air.",
+     "Combustion releases CO2 to the air.",
+     "Decomposition releases CO2 as decomposers respire."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-2",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which reservoir holds by far the most carbon on Earth?",
+   "options": [
+    "Sedimentary rock",
+    "The atmosphere",
+    "Living plants and animals",
+    "Soil and dead matter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Most of Earth’s carbon is locked in sedimentary rock such as limestone and in ocean sediments, where it stays for millions of years.",
+    "options": [
+     "Right: rock and sediments are the largest, slowest reservoir.",
+     "The atmosphere is a small reservoir compared with rocks and the ocean.",
+     "Living things hold far less than rocks or the ocean.",
+     "Soil holds more than the air, but far less than rock and sediment."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-3",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does burning fossil fuels increase the CO2 in the atmosphere so much faster than natural processes remove it?",
+   "options": [
+    "It releases in decades carbon buried over millions of years.",
+    "It turns the oxygen in the air directly into carbon dioxide.",
+    "It stops photosynthesis in the forests near the fuel.",
+    "It releases methane, which then hardens into rock."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fossil fuels are ancient carbon that the slow part of the cycle buried. Combustion releases it far faster than photosynthesis, the ocean and sedimentation can take it back up.",
+    "options": [
+     "Right: slow-cycle carbon is released at a fast-cycle rate.",
+     "Combustion joins carbon from the fuel with oxygen; the carbon comes from the fuel.",
+     "Photosynthesis continues; it is just slower than the release.",
+     "Methane does not turn into rock."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-4",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A forest takes in more carbon by photosynthesis each year than it releases. What is the forest?",
+   "options": [
+    "A carbon sink",
+    "A carbon source",
+    "A fossil fuel reservoir",
+    "A flux of zero"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A sink takes in more carbon than it releases, so carbon builds up in it.",
+    "options": [
+     "Right: net uptake makes it a sink.",
+     "A source releases more than it takes in.",
+     "Living forests are not fossil fuel reservoirs.",
+     "The flux into the forest is larger than the flux out, so the net flux is not zero."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-5",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a carbon cycle diagram, which arrow represents decomposition?",
+   "options": [
+    "Dead matter in the soil to the air",
+    "Atmosphere to plants and algae",
+    "Ocean to sedimentary rock",
+    "Fossil fuels to the atmosphere"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Decomposers break down dead matter and release its carbon to the air as CO2 by respiration (or as methane where oxygen is scarce).",
+    "options": [
+     "Right: decomposers return carbon in dead matter to the air.",
+     "That arrow is photosynthesis.",
+     "That arrow is sedimentation.",
+     "That arrow is combustion."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-6",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Plant matter in wet, oxygen-poor soil (such as a swamp) breaks down slowly and releases methane rather than mostly CO2. Why?",
+   "options": [
+    "Without oxygen, some microbes decompose matter in ways that release methane.",
+    "The water in the swamp turns the carbon dioxide into methane.",
+    "Plants in swamps do not carry out photosynthesis, so methane builds up.",
+    "Swamps lack decomposers, so the dead matter turns into methane by itself."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Where oxygen is scarce, some microbes break down dead matter without oxygen and release methane, and decomposition is slower, so dead matter piles up.",
+    "options": [
+     "Right: oxygen-free decomposition releases methane.",
+     "Water does not convert CO2 to methane.",
+     "Swamp plants do photosynthesize.",
+     "Decomposers are present; they just work differently and more slowly."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-7",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which change would move the most carbon from a fast reservoir to the atmosphere in a single year?",
+   "options": [
+    "Burning a large forest",
+    "Shells settling on the ocean floor",
+    "Limestone forming over many years",
+    "A tree growing a crop of new leaves"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Burning releases the carbon stored in the trees as CO2 within days. Shells settling and rock forming remove carbon from the air slowly, and growth takes carbon in.",
+    "options": [
+     "Right: combustion of plant matter releases its carbon quickly.",
+     "Sedimentation stores carbon; it does not release it.",
+     "Rock formation stores carbon over long times.",
+     "Growth takes carbon out of the air."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-8",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A farmer drains a peat-rich swamp to grow crops. Explain how this affects atmospheric CO2.",
+   "why": {
+    "correct": "Draining lets oxygen in, so decomposers break down the stored dead matter faster and release CO2."
+   },
+   "specific": {
+    "frame": "Draining lets ___ into the soil, so decomposers break down stored dead matter ___, which ___ the CO2 in the atmosphere.",
+    "slots": {
+     "cause": {
+      "label": "What gets in",
+      "options": [
+       "oxygen",
+       "nitrogen",
+       "sunlight"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The key change for decomposers is oxygen, which speeds up their respiration.",
+       "2": "Light does not reach far into soil and is not what speeds decomposition."
+      }
+     },
+     "rate": {
+      "label": "Rate",
+      "options": [
+       "faster",
+       "more slowly"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More oxygen speeds decomposition; waterlogging is what slowed it."
+      }
+     },
+     "effect": {
+      "label": "Effect on CO2",
+      "options": [
+       "increases",
+       "decreases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Faster decomposition releases stored carbon as CO2, so it rises."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "decompos",
+      "oxygen",
+      "swamp"
+     ]
+    },
+    "model": "Draining lets oxygen into the swamp soil, so decomposers break down the stored dead matter faster, which increases the CO2 in the atmosphere."
+   }
+  },
+  {
+   "id": "env-carbon-cycle-9",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "How does the ocean take up carbon from the atmosphere?",
+   "options": [
+    "CO2 dissolves at the surface, and algae use it.",
+    "Fish at the surface breathe in CO2 from the air.",
+    "Breaking waves turn the CO2 into oxygen gas.",
+    "Seawater pushes CO2 away, so the ocean just releases it."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "CO2 dissolves at the sea surface, and algae near the surface build it into sugars; some carbon sinks to deep water and sediments.",
+    "options": [
+     "Right: dissolving plus photosynthesis by algae.",
+     "Fish take in oxygen from water and release CO2.",
+     "Waves mix water but do not change CO2 into oxygen.",
+     "The ocean both takes in and releases CO2; overall it takes in more today."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-10",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How much carbon do human activities add to the atmosphere in the year shown? Give the total in billions of metric tons.",
+   "stimulus": "carbon-cycle-s1",
+   "why": {
+    "correct": "$9.7 + 1.1 = 10.8$ billion metric tons of carbon."
+   },
+   "numeric": {
+    "unit": "billion metric tons",
+    "units": [
+     "billion tonnes",
+     "billion t",
+     "billion metric tons of carbon"
+    ],
+    "tol": 0.05,
+    "from": {
+     "fn": "add",
+     "args": [
+      9.7,
+      1.1
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6.1,
+      "why": "You added the two removals (2.9 + 3.2). The question asks what is added: 9.7 + 1.1."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-11",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How much of the added carbon stays in the atmosphere that year? Subtract both removals from the total added (in billions of metric tons).",
+   "stimulus": "carbon-cycle-s1",
+   "why": {
+    "correct": "Added: $9.7 + 1.1 = 10.8$. Removed: $2.9 + 3.2 = 6.1$. Left in the air: $10.8 - 6.1 = 4.7$ billion metric tons."
+   },
+   "numeric": {
+    "unit": "billion metric tons",
+    "units": [
+     "billion tonnes",
+     "billion t",
+     "billion metric tons of carbon"
+    ],
+    "tol": 0.05,
+    "from": {
+     "fn": "sub",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        9.7,
+        1.1
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        2.9,
+        3.2
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 7.9,
+      "why": "You subtracted only the ocean (10.8 - 2.9). Land plants and soils remove carbon too: subtract both."
+     },
+     {
+      "value": 3.6,
+      "why": "You left out the forest clearing. The total added is 9.7 + 1.1 = 10.8."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-12",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion do the data support?",
+   "stimulus": "carbon-cycle-s1",
+   "options": [
+    "Sinks remove a bit over half of the added carbon.",
+    "The ocean removes more carbon than plants and soils on land do.",
+    "Natural sinks remove the whole amount of carbon people add.",
+    "Clearing forests adds more carbon than burning fossil fuels does."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Removed $2.9 + 3.2 = 6.1$ of $10.8$ added, a bit more than half (about 56%). The rest stays in the air.",
+    "options": [
+     "Right: 6.1 of 10.8 is a little over half.",
+     "Land (3.2) removes more than the ocean (2.9).",
+     "6.1 is less than 10.8, so some carbon stays in the air.",
+     "Forest clearing (1.1) adds far less than fossil fuels (9.7)."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-13",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which two patterns does the graph show?",
+   "stimulus": "carbon-cycle-s2",
+   "options": [
+    "A yearly rise, with a peak in spring and a dip in late summer",
+    "A steady fall from one year to the next, with no seasonal cycle",
+    "A rise each summer and a fall each winter, with no yearly trend",
+    "No change over the two years shown on the graph"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each year ends higher (about 419 to 421.5 ppm in December), and within each year CO2 is highest around May and lowest around September.",
+    "options": [
+     "Right: an upward trend plus a yearly cycle.",
+     "The values rise from year 1 to year 2.",
+     "The dips come in late summer, not the peaks.",
+     "Year 2 is about 2 to 3 ppm higher than year 1."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-14",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does CO2 fall from about May to September at a northern station?",
+   "stimulus": "carbon-cycle-s2",
+   "options": [
+    "Northern plants photosynthesize more in summer.",
+    "People burn more fossil fuels in the summer months.",
+    "Decomposition of dead leaves speeds up in summer.",
+    "The ocean releases more CO2 during the summer."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Most land is in the Northern Hemisphere. In its growing season, photosynthesis takes in more CO2 than respiration and decomposition release, so CO2 falls.",
+    "options": [
+     "Right: summer photosynthesis draws CO2 down.",
+     "More burning would raise CO2, not lower it.",
+     "More decomposition would raise CO2.",
+     "Releasing CO2 would raise it."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-15",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By how much did CO2 change from month 1 (418 ppm) to month 13 (420.5 ppm)?",
+   "stimulus": "carbon-cycle-s2",
+   "why": {
+    "correct": "$420.5 - 418 = 2.5$ ppm higher after one year."
+   },
+   "numeric": {
+    "unit": "ppm",
+    "tol": 0.05,
+    "from": {
+     "fn": "sub",
+     "args": [
+      420.5,
+      418
+     ]
+    },
+    "mistakes": [
+     {
+      "value": -2.5,
+      "why": "Subtract the old value from the new: 420.5 - 418, so the change is +2.5 ppm."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-16",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "5.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student predicted that CO2 would be highest in summer, when people run air conditioners. Do the data support the prediction?",
+   "stimulus": "carbon-cycle-s2",
+   "options": [
+    "No: CO2 is lowest in late summer and highest in spring.",
+    "Yes: CO2 peaks in July and August of each year.",
+    "Yes: CO2 rises steadily through each summer.",
+    "No: CO2 stays the same from month to month."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The highest values are in May (months 5 and 17) and the lowest in September (months 9 and 21), so the prediction is not supported.",
+    "options": [
+     "Right: the low point is in late summer.",
+     "Months 7 and 8 (and 19 and 20) are falling, not peaking.",
+     "CO2 falls through summer in the graph.",
+     "CO2 changes by several ppm within each year."
+    ]
+   }
+  },
+  {
+   "id": "env-carbon-cycle-17",
+   "unit": "unit-1",
+   "topic": "carbon-cycle",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Over millions of years, the shells of tiny sea organisms pile up on the ocean floor and harden into limestone. What does this do to carbon?",
+   "options": [
+    "It stores carbon in rock for a long time.",
+    "It releases the carbon to the air in a few days.",
+    "It moves the carbon into the soil of forests.",
+    "It turns the carbon into another element."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sedimentation locks carbon away in sedimentary rock, the slowest, largest reservoir.",
+    "options": [
+     "Right: sedimentation makes a long-term carbon store.",
+     "Rock formation is slow and stores carbon.",
+     "The carbon stays on the ocean floor, not in forest soil.",
+     "Carbon does not turn into another element."
+    ]
+   }
+  }
+ ]
+}
