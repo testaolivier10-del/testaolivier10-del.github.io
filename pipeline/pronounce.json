@@ -1,0 +1,227 @@
+{
+ "about": "Shared pronunciation list for every LevlPrep video (Shorts and long). shown = how it is written on screen and in captions; spoken = what the narration text must say so Liam (eleven_v3) reads it right. Orbital labels (1s, 2p, 3d, 2px, 3p4, 1s2 with superscripts) are handled by a rule in pronounce.py. Add a term whenever a respelling is needed twice or a transcript check flags it. Check with: python3 pronounce.py check <module>.",
+ "terms": [
+  {
+   "shown": "NREMT",
+   "spoken": "N R E M T"
+  },
+  {
+   "shown": "EMT",
+   "spoken": "E M T"
+  },
+  {
+   "shown": "AEMT",
+   "spoken": "A E M T"
+  },
+  {
+   "shown": "EMS",
+   "spoken": "E M S"
+  },
+  {
+   "shown": "EMD",
+   "spoken": "E M D"
+  },
+  {
+   "shown": "CPR",
+   "spoken": "C P R"
+  },
+  {
+   "shown": "AED",
+   "spoken": "A E D"
+  },
+  {
+   "shown": "BVM",
+   "spoken": "B V M"
+  },
+  {
+   "shown": "OPA",
+   "spoken": "O P A"
+  },
+  {
+   "shown": "NPA",
+   "spoken": "N P A"
+  },
+  {
+   "shown": "GCS",
+   "spoken": "G C S"
+  },
+  {
+   "shown": "NHTSA",
+   "spoken": "N H T S A"
+  },
+  {
+   "shown": "TQM",
+   "spoken": "T Q M"
+  },
+  {
+   "shown": "QI",
+   "spoken": "Q I"
+  },
+  {
+   "shown": "ALS",
+   "spoken": "A L S"
+  },
+  {
+   "shown": "BLS",
+   "spoken": "B L S"
+  },
+  {
+   "shown": "MCI",
+   "spoken": "M C I"
+  },
+  {
+   "shown": "ECG",
+   "spoken": "E C G"
+  },
+  {
+   "shown": "EKG",
+   "spoken": "E K G"
+  },
+  {
+   "shown": "STEMI",
+   "spoken": "S T E M I"
+  },
+  {
+   "shown": "PPE",
+   "spoken": "P P E"
+  },
+  {
+   "shown": "CO2",
+   "spoken": "C O 2"
+  },
+  {
+   "shown": "SpO2",
+   "spoken": "S P O 2"
+  },
+  {
+   "shown": "ETCO2",
+   "spoken": "E T C O 2"
+  },
+  {
+   "shown": "mmHg",
+   "spoken": "millimeters of mercury"
+  },
+  {
+   "shown": "BP",
+   "spoken": "blood pressure",
+   "note": "only when it means blood pressure"
+  },
+  {
+   "shown": "DNA",
+   "spoken": "D N A"
+  },
+  {
+   "shown": "RNA",
+   "spoken": "R N A"
+  },
+  {
+   "shown": "mRNA",
+   "spoken": "M R N A"
+  },
+  {
+   "shown": "tRNA",
+   "spoken": "T R N A"
+  },
+  {
+   "shown": "ATP",
+   "spoken": "A T P"
+  },
+  {
+   "shown": "ADP",
+   "spoken": "A D P"
+  },
+  {
+   "shown": "AMP",
+   "spoken": "A M P"
+  },
+  {
+   "shown": "NADH",
+   "spoken": "N A D H"
+  },
+  {
+   "shown": "FADH2",
+   "spoken": "F A D H 2"
+  },
+  {
+   "shown": "NAD+",
+   "spoken": "N A D plus"
+  },
+  {
+   "shown": "GTP",
+   "spoken": "G T P"
+  },
+  {
+   "shown": "pH",
+   "spoken": "P H"
+  },
+  {
+   "shown": "pKa",
+   "spoken": "P K A"
+  },
+  {
+   "shown": "Ka",
+   "spoken": "K A"
+  },
+  {
+   "shown": "Kb",
+   "spoken": "K B"
+  },
+  {
+   "shown": "Ksp",
+   "spoken": "K S P"
+  },
+  {
+   "shown": "ER",
+   "spoken": "E R"
+  },
+  {
+   "shown": "SN1",
+   "spoken": "S N 1"
+  },
+  {
+   "shown": "SN2",
+   "spoken": "S N 2"
+  },
+  {
+   "shown": "E1",
+   "spoken": "E 1"
+  },
+  {
+   "shown": "E2",
+   "spoken": "E 2"
+  },
+  {
+   "shown": "VSEPR",
+   "spoken": "vesper",
+   "note": "VSEPR is said like vesper"
+  },
+  {
+   "shown": "IUPAC",
+   "spoken": "I U PAC"
+  },
+  {
+   "shown": "NMR",
+   "spoken": "N M R"
+  },
+  {
+   "shown": "IR",
+   "spoken": "I R"
+  },
+  {
+   "shown": "AP",
+   "spoken": "A P"
+  },
+  {
+   "shown": "levlprep.com",
+   "spoken": "levl prep dot com"
+  },
+  {
+   "shown": "LevlPrep",
+   "spoken": "levl prep"
+  },
+  {
+   "shown": "A&P",
+   "spoken": "A and P"
+  }
+ ]
+}
