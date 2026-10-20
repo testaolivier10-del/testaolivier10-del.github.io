@@ -532,6 +532,9 @@
     var after = before - cut;
     price = M.round(price, 2);
     var per = c.per, perN = c.perN;
+    // Never a yearly saving that equals a number printed in the problem (before, after): a student could copy it.
+    var guard = 0;
+    while(guard++ < 20 && [before, after].some(function(v){ return Math.abs((before - after) * perN * price - v) < 0.5; })) price = M.round(price + (c.priceStep || 0.01), 2);
     var save = calc('savings', [before, after, price]), yearly = calc('mul', [save, perN]);
     var text = '<p>' + c.lead.replace('{before}', nf(before)).replace('{after}', nf(after)) + ' ' + c.priceText.replace('{price}', (c.money ? '$' + M.fixed(price, 2) : nf(price))) + '</p><p><b>' + c.ask + '</b></p>';
     var key = '(' + raw(before) + ' - ' + raw(after) + ') ' + c.qu + '/' + per + ' * ' + perN + ' ' + per + '/yr * ' + raw(price) + ' ' + c.pu + '/' + c.qu;

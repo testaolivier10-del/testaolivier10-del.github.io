@@ -60,7 +60,7 @@ export function recheck(p, c, w, errs) {
       if (g.out != null) want('compare', ev('inputNeeded', [g.out, o]), 'input');
       break;
     }
-    case 'cost': { const v = ev('mul', [ev('savings', [g.before, g.after, g.price]), g.perN]); setupIs(v); want('answer', v); break; }
+    case 'cost': { const v = ev('mul', [ev('savings', [g.before, g.after, g.price]), g.perN]); setupIs(v); want('answer', v); if ([g.before, g.after].some(x => Math.abs(v - x) < 0.5)) bad(`the saving ${v} equals a number printed in the problem`); break; }
     case 'dose': { const ld = ev('ld50', [g.pts]); want('read', ld, 'LD50'); const v = ev('doseFor', [ld, g.kg]); setupIs(v); want('answer', v); break; }
     case 'biomag': { const v = ev('biomagnify', [g.c0, g.f, g.n]); setupIs(v); want('answer', v); break; }
     case 'tfr': {

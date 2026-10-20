@@ -96,7 +96,7 @@
     var gap = b.map(function(p){ return r1(p[0]) + ',' + r1(p[1]); }).concat(d.slice().reverse().map(function(p){ return r1(p[0]) + ',' + r1(p[1]); }));
     out.push('<polygon class="ap-gap" points="' + gap.join(' ') + '"/>');
     out.push('<polyline class="ap-cbr" points="' + b.map(function(p){ return r1(p[0]) + ',' + r1(p[1]); }).join(' ') + '"/><polyline class="ap-cdr" points="' + d.map(function(p){ return r1(p[0]) + ',' + r1(p[1]); }).join(' ') + '"/>');
-    out.push(tx(x(2.05), y(rateAt(2.05).cbr) - 8, 'birth rate', 'ap-cbrl', 'start'), tx(x(1.5) + 6, y(rateAt(1.7).cdr) + 22, 'death rate', 'ap-cdrl', 'start'));
+    out.push(tx(x(2.05), y(rateAt(2.05).cbr) - 8, 'birth rate', 'ap-cbrl', 'start'), tx(x(3), y(rateAt(3).cdr) + 18, 'death rate', 'ap-cdrl', 'middle'));
     out.push(tx(L, top - 10, 'per 1,000 per year', 'ap-axl', 'start'));
     if(o.cbr != null && !o.hide){
       var pos = o.pos, xm = x(pos);

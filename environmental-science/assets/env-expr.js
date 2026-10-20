@@ -183,7 +183,14 @@
       while(is('!')){ next(); b = { k: 'fact', a: b }; }
       if(is('^')){ next(); inExp++; var e = unary(); inExp--; b = { k: 'pow', a: b, b: e }; }
       // Units after a quantity (not inside an exponent): 2.5 × 10^6 people.
-      if(!inExp) while(is('unit')) b = { k: 'mul', a: b, b: unitPow(), imp: true, qty: true };
+      if(!inExp){
+        var hasU = false;
+        while(is('unit')){ b = { k: 'mul', a: b, b: unitPow(), imp: true, qty: true }; hasU = true; }
+        // A conversion factor written with a compound unit stays one quantity:
+        // in "5000 W / 1000 W/kW" the divisor is 1000 W/kW, as a reader reads
+        // it, so W cancels and the answer is in kW (u1-math review).
+        while(hasU && is('/') && toks[p + 1] && toks[p + 1].t === 'unit'){ next(); b = { k: 'div', a: b, b: unitPow(), qty: true }; }
+      }
       return b;
     }
     // The argument of a function written without brackets: the product of

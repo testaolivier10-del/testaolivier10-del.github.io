@@ -188,7 +188,7 @@
     var text = '<p>' + c.lead + ' The pyramid shows the share of the population in each 5-year age group (a model country, invented for practice).</p>';
     var order = ['expansive', 'stable', 'constrictive'];
     var steps = [
-      choice('shape', 'What shape is this pyramid?', order.map(function(k){ return [SHAPE_TXT[k][0], SHAPE_TXT[k][1]]; }), { fixed: true }),
+      choice('shape', 'What shape is this pyramid?', order.map(function(k){ return [SHAPE_TXT[k][0], (k === sh ? 'Right. ' : 'Not this one. Compare the base with the 25–39 bands. ') + SHAPE_TXT[k][1]]; }), { fixed: true }),
       choice('predict', 'What will the population most likely do over the next 30 years (without migration)?', sh === 'expansive' ? [
         ['Grow quickly: the large young bands are about to have children of their own.', 'Right. A wide base means population momentum: many future parents.'],
         ['Shrink, because the base is narrow.', 'The base here is wide, not narrow.'],
@@ -219,7 +219,7 @@
     var text = '<p>' + c.lead + ' Its crude birth rate is ' + cbr + ' and its crude death rate ' + cdr + ' per 1,000 people per year.</p>';
     var order = [1, 2, 3, 4];
     var steps = [
-      choice('stage', 'Which stage of the demographic transition fits best?', order.map(function(k){ return [STAGES[k].name, STAGES[k].what + (k === st ? '' : ' These rates do not fit it.')]; }), { fixed: true }),
+      choice('stage', 'Which stage of the demographic transition fits best?', order.map(function(k){ return [STAGES[k].name, (k === st ? 'Right. ' : 'Not this one. ') + STAGES[k].what + (k === st ? '' : ' These rates do not fit it.')]; }), { fixed: true }),
       choice('cause', 'What best explains a country moving out of ' + (st === 1 ? 'stage 1 into stage 2' : st === 2 ? 'stage 2 into stage 3' : st === 3 ? 'stage 3 into stage 4' : 'stage 3 into stage 4') + '?', st === 1 ? [
         ['Better food supply, clean water, sanitation and medicine lower the death rate.', 'Right. Deaths fall first; birth rates stay high for a while, so growth speeds up.'],
         ['Women gain access to education and family planning, lowering the birth rate.', 'That drives the later move from stage 2 to stage 3.'],

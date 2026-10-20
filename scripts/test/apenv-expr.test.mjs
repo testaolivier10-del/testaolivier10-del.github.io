@@ -88,3 +88,14 @@ test('units authors needed: seconds, nanograms, kiloliters, degrees, decades, me
   assert.equal(X.gradeSetup(item, '50000 L/s * 86400 s').correct, true);
   assert.equal(X.gradeSetup(item, '50000 L/s * 24 h').correct, false);
 });
+
+test('a conversion factor with a compound unit divides as one quantity: 5000 W / 1000 W/kW is 5 kW', () => {
+  for (const s of ['5000 W / 1000 W/kW', '5000 W / (1000 W/kW)', '5000 W * 1 kW/1000 W', '1500 W * 4 h / 1000 W/kW']) {
+    const r = X.evaluate(s); assert.ok(r.ok, s);
+    assert.ok(['kW', 'h kW'].includes(X.dimText(r.dims)), `${s}: ${X.dimText(r.dims)}`);
+  }
+  assert.equal(X.evaluate('1500 W * 4 h / 1000 W/kW').value, 6);
+  assert.equal(X.evaluate('6 / 2 / 3').value, 1, 'plain numbers keep left-to-right division');
+  const item = { setup: { answer: '1500 W * 4 h * 1 kW / 1000 W', unit: 'kW h', requireUnits: true } };
+  assert.equal(X.gradeSetup(item, '1500 W * 4 h / 1000 W/kW').correct, true);
+});

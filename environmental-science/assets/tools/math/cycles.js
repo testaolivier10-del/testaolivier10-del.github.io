@@ -386,7 +386,7 @@
     var Cc = C(), list = RESID.filter(function(x){ return !ctx.cycle || x.cycle === ctx.cycle; }), R = r.pick(list.length ? list : RESID);
     var S = r.pick(R.store), F = r.pick(R.flow);
     var yrs = Cc.evaluate({ fn: 'div', args: [S, F] });
-    var ans = R.out === 'days' ? Cc.evaluate({ fn: 'convert', args: [yrs, 'yr', 'day'] }) : yrs;
+    var ans = R.out === 'days' ? Cc.evaluate({ fn: 'mul', args: [yrs, 365] }) : yrs; // 365 days a year, as the setup and the worked solution
     var big = function(x){ return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
     var text = '<p>A reservoir holds ' + big(S) + ' ' + R.storeU + ', and ' + big(F) + ' ' + R.flowU + ' flows in and out of it. About how long does ' + R.what + ' stay there on average (its residence time)?' + (R.out === 'days' ? ' Give the answer in days.' : '') + '</p>';
     var setupAns = R.out === 'days' ? S + ' / ' + F + ' * 365' : S + ' / ' + F;
@@ -395,7 +395,7 @@
       figure: { cycle: R.cycle },
       steps: [
         { key: 'setup', kind: 'setup', practice: '6.B', label: 'Write the setup: amount stored divided by the flow' + (R.out === 'days' ? ', then years to days.' : '.'), hint: R.out === 'days' ? 'For example 13000 / 500000 * 365.' : 'For example 40 / 5.',
-          cell: M.setupCell(setupAns, { mustUse: [String(S), String(F)], parens: false, times100: false, tol: 0.003,
+          cell: M.setupCell(setupAns, { mustUse: [String(S), String(F)], parens: false, times100: false,
             mistakes: [{ expr: F + ' / ' + S + (R.out === 'days' ? ' * 365' : ''), why: 'Upside down: residence time = amount stored ÷ flow, so the units (' + R.storeU + ') ÷ (' + R.flowU + ') leave years.' }].concat(R.out === 'days' ? [{ expr: S + ' / ' + F, why: 'That is in years. Multiply by 365 days per year.' }] : []) }) },
         { key: 'ans', kind: 'unit', practice: '6.C', label: 'Residence time, with its unit.',
           cell: M.unitCell(ans, R.out, { rel: 0.02, mistakes: [{ value: Cc.evaluate({ fn: 'div', args: [F, S] }) * (R.out === 'days' ? 365 : 1), why: 'Upside down: amount stored ÷ flow.' }].concat(R.out === 'days' ? [{ value: yrs, why: 'That is in years; the question asks for days (× 365).' }] : []) }) }

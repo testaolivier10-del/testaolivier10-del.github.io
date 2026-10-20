@@ -447,7 +447,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.cc-grp-air input[type=range]'), 'Start here: add CO₂', s.root.querySelector('.cc-grp-air .bt-slider'));
+      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.cc-grp-air .bt-slider'), 'Start here: add CO₂', s.root.querySelector('.cc-grp-air .bt-slider'));
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.cc-fig')); }
       try{ new MutationObserver(function(){ draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }

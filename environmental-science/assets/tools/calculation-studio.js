@@ -226,7 +226,8 @@
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       s.root.addEventListener('click', onClick); s.root.addEventListener('keydown', onKey);
       draw();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.cs-tile'), text: 'Start here: add a factor' });
+      // The hint sits on the chain (above the tray, never over it): "tap a factor below".
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.cs-chain'), text: 'Start here: tap a factor below', inside: true });
     }
     makeSlider(); draw();
     return { studio: studio };

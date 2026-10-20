@@ -348,6 +348,22 @@
     return { studio: studio };
   }
 
+  /* After a step the drill clears its Check button (the focused element),
+     and the figure redraws: keep focus in the drill, on the next step's
+     first input, else on the feedback just given, never the page start. */
+  function keepFocus(api){
+    setTimeout(function(){
+      var a = document.activeElement;
+      if(a && a !== document.body && document.contains(a) && a.offsetParent !== null) return;
+      var area = api.area, root = (area && area.closest('.ls-root')) || document;
+      var steps = [].slice.call(root.querySelectorAll('form.cd-step'));
+      var open = steps.filter(function(f){ return f.querySelector('button[type=submit]'); }).pop();
+      var t = open && [].slice.call(open.querySelectorAll('input:not([readonly]):not([disabled])')).filter(function(x){ return x.offsetParent !== null; })[0];
+      if(!t){ var fb = steps.length ? steps[steps.length - 1].querySelector('.cd-fb') : null; if(fb){ fb.setAttribute('tabindex', '-1'); t = fb; } }
+      if(!t) t = root.querySelector('.cd-again');
+      if(t) try{ t.focus({ preventScroll: true }); }catch(e){}
+    }, 30);
+  }
   /* ------------------------------------------------------ test yourself */
   function quiz(host, data){
     T.drill(host, data, { slug: SLUG, noun: 'drill',
@@ -356,7 +372,7 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { classify: 'Read the texture triangle', missing: 'Find the missing percent', porosity: 'Water in soil', horizons: 'Soil horizons', erosion: 'Erosion and conservation', percolation: 'A percolation test' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; figure(el, p, {}); },
-      onStep: function(s, right, api){ api.done = api.done || {}; api.done[s.key] = true; figure(api.fig, api.problem, api.done); }
+      onStep: function(s, right, api){ keepFocus(api); api.done = api.done || {}; api.done[s.key] = true; figure(api.fig, api.problem, api.done); }
     });
   }
   function figure(el, p, done){

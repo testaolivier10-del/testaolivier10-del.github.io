@@ -174,3 +174,15 @@ test('"how many times": 10^6, 10⁶ times, 1 × 10^6 times and a million times a
   assert.equal(G.numeric(N, '10^6 kg').correct, false, 'a real unit on a multiplier is wrong');
   assert.equal(G.numeric({ answer: 100, unit: 'times' }, '100').correct, true, 'the word times is optional');
 });
+
+/* Phase 3 (u1-math review): a scale word in the key's unit and the same word
+   typed cancel; a bare number in the key's scale still reads right. */
+test('keys with a scale word in the unit: "10.8 billion metric tons" is right, as is 1.08e10 t', () => {
+  const G = B.window.ApEnvGrade;
+  const N = { answer: 10.8, unit: 'billion metric tons', mistakes: [{ value: 6.1, why: 'Only the carbon released, not the net change.' }] };
+  for (const t of ['10.8 billion metric tons', '10.8 billion t', '1.08e10 metric tons', '10,800,000,000 metric tons', '1.08 × 10^10 t']) assert.equal(G.numeric(N, t).correct, true, t);
+  assert.equal(G.numeric(N, '10.8').parts.value, true, 'a bare number in the key scale is the right value (its unit is missing)');
+  assert.equal(G.numeric(N, '10.8 million metric tons').parts.value, false);
+  assert.match(G.numeric(N, '6.1 billion metric tons').notes[0], /carbon released/, 'authored mistakes match in the same scale');
+  assert.equal(G.numeric({ answer: 24, unit: 'million people' }, '24 million people').correct, true);
+});

@@ -205,7 +205,11 @@
     var sim = simulate({ model: 'over', r: rr, K: K, n0: n0, years: 40, lag: lag, crash: 0.55 });
     var text = '<p>' + c.lead + ' The graph follows the herd for 40 years (a model, invented numbers for practice). The dashed line is the carrying capacity the range had at the start, ' + nf(K) + ' ' + c.unitWord + '.</p>';
     var steps = [
-      numStep('read', 'About how many ' + c.unitWord + ' were there at the peak?', sim.peak, { rel: 0.08, abs: 0, hint: 'Read the highest point of the curve.' }),
+      numStep('read', 'About how many ' + c.unitWord + ' were there at the peak?', sim.peak, { rel: 0.08, abs: 0, hint: 'Read the highest point of the curve.',
+        mistakes: [{ value: K, why: 'That is the dashed line, the carrying capacity K. The peak is the top of the curve, above it.' },
+          { value: sim.peakT, why: 'That is the year of the peak (the x axis). Read the number of ' + c.unitWord + ' on the y axis.' },
+          { value: sim.n[sim.n.length - 1], why: 'That is where the herd ends up after the dieback. The peak comes earlier, the highest point.' },
+          { value: sim.low, why: 'That is the low point after the crash. The peak is the highest point.' }] }),
       choice('phase', 'What happened when the population went above the dashed line?', [
         ['Overshoot: it went past the carrying capacity, used up resources faster than they grew back, and then died back.', 'Right. Above K, the herd ate the range faster than it regrew; food ran short and the population crashed.'],
         ['The carrying capacity rose to make room for more ' + c.unitWord + '.', 'K is set by the range’s food and space. Overgrazing lowers it; it does not rise.'],

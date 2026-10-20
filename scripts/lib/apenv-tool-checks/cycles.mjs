@@ -73,9 +73,8 @@ export function recheck(p, c, w, errs) {
     }
     case 'residence': {
       const yrs = Calc.evaluate({ fn: 'div', args: [g.S, g.F] });
-      const ans = g.out === 'days' ? Calc.evaluate({ fn: 'convert', args: [yrs, 'yr', 'day'] }) : yrs;
-      // the page asks for × 365; a Julian year is 365.25 days, within the 2% tolerance
-      want('ans', ans); setupIs('setup', ans, 0.003);
+      const ans = g.out === 'days' ? Calc.evaluate({ fn: 'mul', args: [yrs, 365] }) : yrs; // 365 days a year everywhere
+      want('ans', ans); setupIs('setup', ans);
       break;
     }
     default: errs.push(`${w}: unknown type ${p.type}`);

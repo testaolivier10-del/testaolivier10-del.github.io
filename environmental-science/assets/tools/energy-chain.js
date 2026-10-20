@@ -261,7 +261,12 @@
       types: [{ value: 'chain', label: 'Efficiency of a chain' }, { value: 'fuel', label: 'Fuel needed, kWh to BTU' }, { value: 'heatrate', label: 'Heat rate to efficiency' }, { value: 'co2', label: 'Carbon dioxide from kWh' }, { value: 'power', label: 'Watts, hours and cost' }],
       typeLabel: 'Kind of problem',
       title: function(p){ return { chain: 'How much reaches the home?', fuel: 'How much fuel?', co2: 'How much carbon dioxide?', power: 'Watts to kilowatt-hours', heatrate: 'From heat rate to efficiency' }[p.type] || 'Practice problem'; },
-      extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
+      extra: function(el, p, api){
+        api.fig = el; api.st = {}; figure(el, p, api.st);
+        // a list of stages reads as one run-on line in the side caption: make it one sentence
+        var ul = api.area.querySelector('.bt-context ul.ech-list');
+        if(ul){ var items = Array.prototype.map.call(ul.querySelectorAll('li'), function(li){ return li.textContent.replace(': ', ' '); }); var para = document.createElement('p'); para.textContent = 'The steps, in order: ' + items.join('; ') + '.'; ul.parentNode.replaceChild(para, ul); }
+      },
       onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); }
     });
   }

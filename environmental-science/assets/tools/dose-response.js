@@ -396,7 +396,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.dr-grp-dose input[type=range]'), 'Start here: raise the dose', s.root.querySelector('.dr-grp-dose .bt-slider'));
+      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.dr-grp-dose .bt-slider'), 'Start here: raise the dose', s.root.querySelector('.dr-grp-dose .bt-slider'));
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.dr-fig')); }
     }
     sync(); draw(); words();

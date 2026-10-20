@@ -172,8 +172,38 @@
   }
   function near(v, A, tol){ return Math.abs(v - A) <= tol + 1e-9 * Math.abs(A); }
 
+  /* A key whose unit starts with a scale word ("billion metric tons",
+     "million people") is read in base units, so the scale word typed and the
+     one in the key's unit cancel: "10.8 billion metric tons",
+     "1.08e10 metric tons" and "10,800,000,000 t" all match a key of 10.8
+     billion metric tons (u1-math review). A bare number in the key's scale
+     ("10.8") still matches the value. */
+  var SCALE_UNIT = /^\s*(thousand|million|billion|trillion)s?\b\s*/i;
+  function baseKey(N){
+    var m = SCALE_UNIT.exec(String(N.unit || ''));
+    if(!m) return null;
+    var k = SCALE[m[1].toLowerCase()], o = {}, key;
+    for(key in N) o[key] = N[key];
+    o.answer = +N.answer * k; o.unit = String(N.unit).replace(SCALE_UNIT, '');
+    o.units = (N.units || []).map(function(u){ return String(u).replace(SCALE_UNIT, ''); });
+    if(N.tol != null) o.tol = N.tol * k;
+    o.places = null;
+    o.mistakes = (N.mistakes || []).map(function(mk){ var c = {}, x; for(x in mk) c[x] = mk[x]; c.value = +mk.value * k; if(mk.tol != null) c.tol = mk.tol * k; return c; });
+    o.scaleWord = m[1].toLowerCase(); o.scaleK = k;
+    return o;
+  }
   function numeric(N, typed){
     N = N || {};
+    var B = baseKey(N);
+    if(B){
+      var p0 = readNumber(typed && typeof typed === 'object' ? typed.value : typed);
+      // No scale word typed and the number is the key's own size: read it in the key's scale.
+      if(p0 && !p0.scale && !/^\s*\S*\s*(?:e|×|x|\*)/.test(String(typed)) && Math.abs(p0.value) < B.scaleK / 10){
+        var t2 = typed && typeof typed === 'object' ? { value: String(typed.value) + ' ' + B.scaleWord, unit: typed.unit } : String(typed).replace(/^(\s*[+-]?[0-9.,]+)/, '$1 ' + B.scaleWord);
+        return numeric(B, t2);
+      }
+      return numeric(B, typed);
+    }
     var raw = typed && typeof typed === 'object' ? typed.value : typed;
     var p = readNumber(raw);
     if(!p) return { valid: false, correct: false, score: 0, notes: ['Type a number, such as 1250, 2.5 million or 2.5e6, then its unit.'] };
