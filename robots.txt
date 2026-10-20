@@ -5,5 +5,10 @@ Allow: /
 # them, and indexed they would compete with those pages as duplicates.
 Disallow: /nremt/assets/questions.json
 Disallow: /anatomy-physiology/data/notes/
+Disallow: /bio/data/notes/
+Disallow: /chem/data/notes/
+Disallow: /physics/data/notes/
+Disallow: /calculus/data/notes/
+Disallow: /statistics/data/notes/
 
 Sitemap: https://levlprep.com/sitemap.xml

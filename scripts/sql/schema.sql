@@ -1255,3 +1255,11 @@ grant execute on function public.record_exam_completion(text, integer) to authen
 -- Worker only (service role), granted above and to nobody else:
 -- unsubscribe_email_reminder, premium_add_pass, premium_refund_order,
 -- premium_rechain, count_premium_paid.
+
+-- Tables (migrations/2026-10i-table-grants.sql): anon touches no table
+-- directly; authenticated only its own user_progress row. The service role
+-- (the Worker) keeps everything. RLS was already blocking every row; this
+-- also takes away TRUNCATE, which RLS does not cover.
+revoke all on all tables in schema public from anon, authenticated;
+alter default privileges in schema public revoke all on tables from anon, authenticated;
+grant select, insert, update on public.user_progress to authenticated;

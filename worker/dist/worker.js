@@ -1143,9 +1143,10 @@ async function ledgerRemove(env, keys, kind) {
    - at least GUARANTEE.minExams full timed exams taken during the paid
      pass and before the exam date, so the pass was actually used to
      prepare. They are counted from exam_completions, which the database
-     stamps (record_exam_completion), not from the synced history the
-     browser writes; history entries dated before EXAM_LOG_SINCE still
-     count, since nothing recorded exams on the server then;
+     stamps (record_exam_completion), never from the synced history the
+     browser writes (a student can write anything there). Entries dated
+     before EXAM_LOG_SINCE used to count too; that was dropped 2026-10-19,
+     when no NREMT pass had been bought before the log started;
    - once per account and per email address, ever (premium_ledger again);
    - the claim records the legal name and state the candidate tested under,
      so it can be checked against the Registry's public certification
@@ -1157,19 +1158,16 @@ async function ledgerRemove(env, keys, kind) {
    takes the extension back (premium_refund_order in schema.sql). */
 const GUARANTEE = { claimDays: 30, extendDays: 90, minExams: 2 };
 
-/* Server-stamped exam records start with the 2026-10 migration. Synced
-   history entries dated before this still count toward the guarantee; after
-   it, only exam_completions do. Set to the day the migration is applied. */
+/* Server-stamped exam records start with the 2026-10 migration. */
 const EXAM_LOG_SINCE = Date.parse('2026-10-15T00:00:00Z');
 const FULL_EXAM_MIN_QUESTIONS = 50;
 
-/* The exams that count: server records, plus history from before the log. */
-function countableExams(completions, legacyHistory) {
-  const server = (completions || [])
+/* The exams that count: server records only. The browser-written history is
+   not evidence, since the student controls it. */
+function countableExams(completions) {
+  return (completions || [])
     .filter((c) => c && Number(c.questions) >= FULL_EXAM_MIN_QUESTIONS && Number.isFinite(Date.parse(c.finished_at)))
     .map((c) => ({ date: Date.parse(c.finished_at) }));
-  const legacy = (legacyHistory || []).filter((h) => h && Number(h.date) < EXAM_LOG_SINCE);
-  return server.concat(legacy);
 }
 
 /* The bought pass the exam fell in: the one a guarantee extends. */
@@ -1227,15 +1225,13 @@ async function premiumGuarantee(request, env, now = Date.now()) {
   if (!user) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
   const uid = encodeURIComponent(user.id);
-  const [passRes, examRes, progRes] = await Promise.all([
+  const [passRes, examRes] = await Promise.all([
     sb(env, `premium_passes?select=pass,order_id,amount_cents,refunded_at,starts_at,expires_at,customer_id&user_id=eq.${uid}&course=eq.nremt`),
     sb(env, `exam_completions?select=questions,finished_at&user_id=eq.${uid}&course=eq.nremt&order=finished_at.desc&limit=200`),
-    sb(env, `user_progress?select=data&id=eq.${uid}&limit=1`),
   ]);
-  if (!passRes.ok || !examRes.ok || !progRes.ok) return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
+  if (!passRes.ok || !examRes.ok) return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
   const passes = await passRes.json();
-  const prog = (await progRes.json())[0];
-  const history = countableExams(await examRes.json(), examHistory(prog && prog.data));
+  const history = countableExams(await examRes.json());
   const customer = (passes.find((p) => p.customer_id) || {}).customer_id;
   const keys = await ledgerKeys({ email: user.email, customerId: customer, userId: user.id });
   const ledger = await ledgerHas(env, keys, 'guarantee');

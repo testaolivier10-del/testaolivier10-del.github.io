@@ -478,7 +478,7 @@ function corePage(coreId) {
   const url = `${SITE}${BASE}concepts/${coreId}.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'LearningResource', '@id': `${url}#concept`, name: cc.name, url, description: desc, learningResourceType: 'Concept overview', isPartOf: { '@id': COURSE_ID } },
-    crumbs(orgCrumbs([{ name: 'Core concepts', url: `${SITE}${BASE}concepts/index.html` }, { name: cc.name, url }])),
+    crumbs(orgCrumbs([{ name: 'Core concepts', url: `${SITE}${BASE}concepts/` }, { name: cc.name, url }])),
   ] };
   const body = `
 <body data-core="${coreId}">
@@ -513,7 +513,7 @@ function coreIndexPage() {
   const depth = '../';
   const title = courseTitle('Core concepts of physiology', AP_LABELS, FULL);
   const desc = 'Eight ideas that explain every body system, from homeostasis to flow down gradients, with every place each one appears in the course.';
-  const url = `${SITE}${BASE}concepts/index.html`;
+  const url = `${SITE}${BASE}concepts/`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', '@id': `${url}#concepts`, name: 'Core concepts', url, description: desc, isPartOf: { '@id': COURSE_ID } },
     crumbs(orgCrumbs([{ name: 'Core concepts', url }])),
@@ -532,7 +532,7 @@ ${tail({ depth, section: 'learn', extra: ['anp-chapter.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: 'concepts/index.html', depth, ogType: 'website', jsonld }) + body;
+  return head({ title, desc, path: 'concepts/', depth, ogType: 'website', jsonld }) + body;
 }
 
 /* ------------------------------------------------------------ credits */

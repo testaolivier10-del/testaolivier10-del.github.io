@@ -204,7 +204,7 @@ const stamped = (n, at = NOW - 20 * DAY) => Array.from({ length: n }, (_, i) => 
 test('exams count from the server log; synced history only from before it existed', () => {
   assert.equal(countableExams(stamped(2), []).length, 2);
   assert.equal(countableExams([], exams(2, EXAM_LOG_SINCE + DAY)).length, 0, 'history the browser wrote after the log started');
-  assert.equal(countableExams([], exams(2, EXAM_LOG_SINCE - 10 * DAY)).length, 2);
+  assert.equal(countableExams([], exams(2, EXAM_LOG_SINCE - 10 * DAY)).length, 0, 'browser history never counts, even from before the log');
   assert.equal(countableExams([{ questions: 10, finished_at: iso(NOW) }], []).length, 0, 'a short quiz is not a full exam');
 });
 
