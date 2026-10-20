@@ -48,6 +48,9 @@
   var ACCESS_KEY = 'levlprep_premium_v1';
   var QUOTA_KEY = 'levlprep_quota_v1';
   var SCORE_KEY = 'levlprep_today_score_v1';
+  // Every answer ever, per course, so a locked card can show a student how far
+  // they have come (this browser only, like the daily score).
+  var TALLY_KEY = 'levlprep_course_tally_v1';
 
   /* Founding-member offer: shown in the dialog, applied at checkout by the
      Worker (its FOUNDING_DISCOUNT_ID). Set `until` to null to end it. */
@@ -506,6 +509,16 @@
     if (correct) t.right++;
     s[course] = t;
     writeJson(SCORE_KEY, s);
+    var all = readJson(TALLY_KEY);
+    var a = all[course] || { right: 0, total: 0 };
+    a.total++;
+    if (correct) a.right++;
+    all[course] = a;
+    writeJson(TALLY_KEY, all);
+  }
+  function courseTally(course) {
+    var a = readJson(TALLY_KEY)[course];
+    return a ? { right: a.right, total: a.total } : { right: 0, total: 0 };
   }
   function todayScore(course) {
     var t = readJson(SCORE_KEY)[course];
@@ -602,8 +615,10 @@
       '<span class="premium-card__tag">Premium</span>' +
       '<b>' + esc(lockTitle(feature)) + '</b>' +
       scoreLine(course, feature) +
+      progressLine(course, feature) +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
       '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time. No subscription.</span>' +
+      yearLine(c) +
       (c.guarantee ? '<p class="premium-card__guarantee">Includes Pass-or-extend: don’t pass the NREMT, and you can claim a free extension (conditions apply).</p>' : '') +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source || feature) + '>See Premium</button>' +
       tomorrowLine(course, feature) +
@@ -624,6 +639,27 @@
     var t = todayScore(course);
     if (!t.total) return '';
     return '<p class="premium-card__score">You got <strong>' + t.right + ' of ' + t.total + '</strong> right today. Keep going with unlimited practice.</p>';
+  }
+
+  /* On every other locked card: the student's own work in this course so far,
+     shown once there is enough of it to mean something. Their numbers, not a
+     sales claim (docs/trust-conversion-plan.md, 2026-10-20). */
+  var PROGRESS_MIN = 10;
+  function progressLine(course, feature) {
+    if (feature === 'daily-limit') return '';
+    var a = courseTally(course);
+    if (a.total < PROGRESS_MIN) return '';
+    return '<p class="premium-card__progress">So far you’ve answered <strong>' + a.total + ' questions</strong> here, ' +
+      Math.round(a.right * 100 / a.total) + '% right. Premium picks up from there.</p>';
+  }
+
+  /* A dated pass (the AP® ones) ends on the same day whenever it is bought,
+     so starting earlier simply covers more of the school year. */
+  function yearLine(c) {
+    var low = c.passes.reduce(function (a, b) { return b.price < a.price ? b : a; });
+    if (!low.until) return '';
+    return '<p class="premium-card__year">It runs through ' + untilText(low.until) +
+      ' whenever you buy it, so the sooner you start, the more of this school year it covers.</p>';
   }
 
   function lockTitle(feature) {
@@ -656,6 +692,7 @@
       '<b>Premium for ' + esc(c.name) + '</b>' +
       '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time</span>' +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
+      (live(course) ? yearLine(c) : '') +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source) + '>' +
         (live(course) ? 'See Premium' : 'Get notified') + '</button>' +
     '</div>';
@@ -771,7 +808,7 @@
       var dated = c.passes.filter(function (p) { return p.until; })[0];
       document.getElementById('premiumSub').textContent =
         (dated
-          ? 'A one-time pass, valid through ' + untilText(dated.until) + ' whenever you buy it. No subscription, nothing renews.'
+          ? 'A one-time pass, valid through ' + untilText(dated.until) + ' whenever you buy it, so the sooner you start, the more of the school year it covers. No subscription, nothing renews.'
           : 'One-time passes. No subscription, nothing renews.') +
         ' Prices in US dollars, plus any sales tax or VAT, shown before you pay.' +
         (foundingLive() ? ' Founding-member price: ' + FOUNDING.off + '% off until ' + FOUNDING.until + '.' : '');
@@ -789,7 +826,7 @@
         'Full refund within 7 days of buying, once per account and email address. Sold by Polar, our merchant of record. ' +
         'Under 18? You need a parent or guardian’s permission, and they accept the terms for you; under 16, they should make the purchase. ' +
         (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '') +
-        (course === 'apbio' || course === 'apchem' || course === 'apphys' || course === 'apcalc' || course === 'apstat' ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
+        (/^ap/.test(course) ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
         '<a href="/premium.html" target="_blank" rel="noopener">Free vs Premium</a> &middot; ' +
         '<a href="/terms.html#premium" target="_blank" rel="noopener">Terms and refunds</a>';
     } else {
@@ -1194,6 +1231,7 @@
     open: open,
     quota: quota,
     noteAnswer: noteAnswer,
+    courseTally: courseTally,
     todayScore: todayScore,
     freeExam: freeExam,
     onChange: onChange,

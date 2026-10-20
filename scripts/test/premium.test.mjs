@@ -248,3 +248,22 @@ test('the daily-limit card shows today\'s score, and only that card', () => {
   assert.ok(!/premium-card__score/.test(premium.gate('nremt', 'exam', 'results')), 'the exam card has no daily score');
   assert.deepEqual({ ...premium.todayScore('ochem') }, { right: 0, total: 0 });
 });
+
+test('a locked card shows the student\'s own progress once there is enough of it', () => {
+  const { premium, hooks } = fresh();
+  hooks.setLaunched(true);
+  for (let i = 0; i < 9; i++) premium.noteAnswer('nremt', i % 3 !== 0);
+  assert.ok(!/premium-card__progress/.test(premium.gate('nremt', 'scenarios', 'hub')), 'nothing under 10 answers');
+  premium.noteAnswer('nremt', true);
+  assert.deepEqual({ ...premium.courseTally('nremt') }, { right: 7, total: 10 });
+  assert.match(premium.gate('nremt', 'scenarios', 'hub'), /answered <strong>10 questions<\/strong> here, 70% right/);
+  assert.ok(!/premium-card__progress/.test(premium.gate('nremt', 'daily-limit', 'quiz')), 'the daily-limit card keeps its own score line');
+  assert.deepEqual({ ...premium.courseTally('ochem') }, { right: 0, total: 0 });
+});
+
+test('dated passes say that buying earlier covers more of the school year', () => {
+  const { premium, hooks } = fresh();
+  hooks.setLaunched(true);
+  assert.match(premium.gate('apbio', 'frq', 'hub'), /runs through June 30, 2027 whenever you buy it/);
+  assert.ok(!/premium-card__year/.test(premium.gate('nremt', 'scenarios', 'hub')), 'NREMT passes are not dated');
+});
