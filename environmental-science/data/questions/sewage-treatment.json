@@ -357,7 +357,7 @@
    "q": "Which claim is best supported by the two curves?",
    "stimulus": "sewage-treatment-s2",
    "options": [
-    "The upgrade removed most waste",
+    "The upgrade removed most oxygen-demanding waste",
     "The upgrade added oxygen to the river at 40 km",
     "The river was healthier before the upgrade",
     "The upgrade moved the low point farther downstream"
@@ -366,7 +366,7 @@
    "why": {
     "correct": "After the upgrade the oxygen dip almost disappears, so better treatment removed most of the oxygen-demanding waste before it reached the river.",
     "options": [
-     "Right: the dip shrank from 3.0 to 7.5 mg per L at its low point.",
+     "Right: the low point of the dip rose from 3.0 to 7.5 mg per L.",
      "Both curves are near 8 to 8.5 mg per L at 40 km.",
      "DO was much lower before the upgrade.",
      "The low point stays near 10 km; it just became much smaller."

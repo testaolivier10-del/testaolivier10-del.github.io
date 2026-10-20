@@ -497,24 +497,23 @@
    "practice": "7.E",
    "level": "apply",
    "diff": 2,
-   "q": "Which actions would reduce eutrophication in a lake fed by farm runoff? Select all that apply.",
+   "q": "Which actions would cut the nutrients reaching a lake fed by farm runoff? Select all that apply.",
    "options": [
     "Plant buffer strips of grass and trees along the shore",
-    "Test soil and apply just the fertilizer the crops need",
     "Switch to a different insecticide on the fields",
-    "Pump air into the lake bottom each summer"
+    "Pump air into the lake bottom each summer",
+    "Add a chemical to the lake that kills the algae"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Buffer strips and cover crops keep nutrients on the land, and matching fertilizer to crop needs cuts the surplus. Aerating the lake treats a symptom; switching insecticides does nothing for nutrients.",
+    "correct": "Only the buffer strips keep nitrate and phosphate on the land. Aerating the lake and killing the algae treat symptoms while the same nutrients keep arriving, and insecticides are pesticides, not nutrients.",
     "options": [
-     "Right: plants take up nutrients before runoff reaches the lake.",
-     "Right: less surplus fertilizer means less runoff.",
-     "Insecticides do not add or remove nutrients.",
-     "Aeration raises oxygen but leaves the nutrient supply unchanged."
+     "Right: plants take up nitrate and phosphate from runoff before it reaches the lake.",
+     "Insecticides are pesticides, not nutrients; changing them does not cut nitrate or phosphate.",
+     "Aeration raises oxygen but treats a symptom; the same nutrients still arrive.",
+     "Killing the bloom does not cut the nutrients, and the dead algae still decompose and use oxygen."
     ]
    }
   },

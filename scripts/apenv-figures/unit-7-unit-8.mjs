@@ -483,10 +483,10 @@ FIG['wetlands-mangroves-services'] = () => {
   s += tag(20, 30, ['stores floodwater,', 'releases it slowly']);
   s += tag(190, 30, ['filters sediment', 'and pollutants']);
   s += tag(360, 30, ['soils store carbon', '(slow decay)']);
-  s += tag(20, 120, ['habitat for ducks', 'and herons']);
+  s += tag(20, 330, ['habitat for ducks', 'and herons']);
   s += `<ellipse cx="622" cy="252" rx="10" ry="4" fill="#E0C35A"/>` + `<ellipse cx="600" cy="262" rx="10" ry="4" fill="#E0C35A"/>`;
   s += tag(620, 30, ['nursery for', 'young fish']);
-  s += line(170, 160, 210, 210, OLIVE, 1.2) + line(265, 82, 265, 178, OLIVE, 1.2) + line(435, 82, 380, 206, OLIVE, 1.2) + line(165, 82, 185, 210, OLIVE, 1.2) + line(695, 82, 615, 246, OLIVE, 1.2);
+  s += line(170, 350, 205, 242, OLIVE, 1.2) + line(265, 82, 265, 178, OLIVE, 1.2) + line(435, 82, 380, 206, OLIVE, 1.2) + line(165, 82, 185, 210, OLIVE, 1.2) + line(695, 82, 615, 246, OLIVE, 1.2);
   s += T(80, 300, 'river', { size: 13, fill: BLUE, italic: true, weight: 700 });
   return svg(800, 420, 'Ecosystem services of wetlands and mangroves',
     'A river flows through a freshwater marsh to a coast lined with mangroves. Labels show the services: the marsh stores floodwater and releases it slowly, filters sediment and pollutants, stores carbon in slowly decaying soils, recharges groundwater, and gives habitat to ducks and herons. At the coast, mangrove roots slow waves and storm surge, and the mangroves are a nursery for young fish.', s);

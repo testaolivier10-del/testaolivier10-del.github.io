@@ -1,6 +1,6 @@
 {
  "topic": "bioaccumulation-biomagnification",
- "hook": "In a lake, a pesticide is so dilute in the water that a test can barely find it: a few parts per hundred million. In the ospreys that fish there, the same pesticide is a million times more concentrated, enough to make their eggs crack under the parents' weight. Nobody sprayed the ospreys. The food chain concentrated the chemical for them.",
+ "hook": "In a lake, a pesticide is so dilute in the water that a test can barely find it: 0.00005 ppm, or 5 parts per hundred billion. In the ospreys that fish there, the same pesticide is a million times more concentrated, enough to make their eggs crack under the parents' weight. Nobody sprayed the ospreys. The food chain concentrated the chemical for them.",
  "prereq": [
   {
    "q": "About what share of energy passes from one trophic level to the next?",
