@@ -600,29 +600,25 @@
    "practice": "7.C",
    "level": "analyze",
    "diff": 2,
-   "q": "Which are environmental effects of surface mining? Select all that apply.",
+   "q": "A surface mine opens above a forested valley. Which of these is a likely effect on the stream below? Select all that apply.",
    "options": [
-    "Removal of habitat over a wide area",
-    "Sediment washed from bare ground into streams",
-    "Dust and particles blown from waste piles",
-    "A rise in stream pH as metals are removed",
-    "More forest cover over the mined area",
-    "Less erosion on the slopes around the pit"
+    "More sediment washed from bare ground into the stream",
+    "A rise in stream pH as metals are removed from the water",
+    "More forest shade over the stream",
+    "Less erosion on the slopes around the pit",
+    "Lower levels of dissolved metals in the stream"
    ],
    "correct": [
-    0,
-    1,
-    2
+    0
    ],
    "why": {
-    "correct": "Surface mining clears habitat, bares the ground to erosion, and leaves dusty waste piles. It lowers stream pH and removes forest.",
+    "correct": "Bare ground erodes into the stream. Mine drainage lowers pH and adds metals, and the forest is removed.",
     "options": [
-     "Right: the land above the deposit is cleared.",
-     "Right: bare ground erodes into streams.",
-     "Right: waste piles release dust.",
+     "Right: bare ground erodes into the stream.",
      "Mine drainage lowers pH and adds metals.",
-     "Surface mining removes forest cover.",
-     "Bare slopes erode more, not less."
+     "Surface mining removes forest cover and shade.",
+     "Bare slopes erode more, not less.",
+     "Mine waste adds dissolved metals."
     ]
    }
   }

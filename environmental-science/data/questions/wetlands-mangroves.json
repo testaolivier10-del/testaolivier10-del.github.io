@@ -1,0 +1,530 @@
+{
+ "stimuli": {
+  "wetlands-mangroves-s1": {
+   "kind": "text",
+   "title": "A passage on a proposed wetland development",
+   "source": "Invented passage for practice.",
+   "passage": "A developer has asked the county to drain and fill 120 hectares of freshwater marsh beside the Willow River to build 400 homes and a shopping center. The developer argues that the marsh is \"unused land\" that breeds mosquitoes, and that the project will bring 600 jobs and new tax money for schools. To offset the loss, the developer offers to build a 40-hectare artificial pond elsewhere in the county. A group of downstream farmers opposes the plan. They point out that the marsh soaks up water during spring storms, and they fear more frequent flooding of their fields. A local birding club adds that the marsh is a stopover for migrating ducks and herons. The county must decide next month."
+  },
+  "wetlands-mangroves-s2": {
+   "kind": "quantitative",
+   "title": "Mangrove cover and storm damage in five coastal villages",
+   "invented": true,
+   "table": {
+    "caption": "Width of the mangrove belt in front of each village and the share of homes damaged in one cyclone (invented data for practice)",
+    "cols": [
+     "Village",
+     "Mangrove belt width (m)",
+     "Homes damaged (%)"
+    ],
+    "rows": [
+     [
+      "North Point",
+      "0",
+      "78"
+     ],
+     [
+      "Fisher Bay",
+      "50",
+      "61"
+     ],
+     [
+      "Long Shore",
+      "200",
+      "34"
+     ],
+     [
+      "Palm Inlet",
+      "500",
+      "15"
+     ],
+     [
+      "Delta Head",
+      "1,000",
+      "9"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-wetlands-mangroves-1",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the developer's main claim?",
+   "stimulus": "wetlands-mangroves-s1",
+   "options": [
+    "The marsh protects downstream farms from flooding",
+    "The marsh is unused land that jobs would put to use",
+    "The marsh is an important stopover for migrating birds",
+    "The county should delay its decision for a year"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The developer claims the marsh is unused land and that building on it will bring jobs and tax money, with a pond to offset the loss.",
+    "options": [
+     "That is the farmers' point, not the developer's.",
+     "Right: that is the developer's argument.",
+     "That is the birding club's point.",
+     "Nobody in the passage asks for a delay."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-2",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which assumption underlies calling the marsh \"unused land\"?",
+   "stimulus": "wetlands-mangroves-s1",
+   "options": [
+    "Land without buildings or crops is worth little",
+    "Marshes store more water than any other ecosystem",
+    "Migrating birds can find another stopover easily",
+    "Farmers downstream will benefit from the new jobs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The phrase assumes land has value only when people build on it or farm it, ignoring the ecosystem services the marsh already provides, such as flood control and habitat.",
+    "options": [
+     "Right: it overlooks the services the marsh already gives.",
+     "That is not an assumption the developer needs or makes.",
+     "The developer does not mention birds.",
+     "The passage does not link the jobs to the farmers."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-3",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which evidence would most strengthen the farmers' argument?",
+   "stimulus": "wetlands-mangroves-s1",
+   "options": [
+    "A survey showing residents want a shopping center",
+    "A count of the herons that use the marsh each spring",
+    "A report that the new homes will be well insulated",
+    "Floods rose after a similar marsh was filled"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Their argument is that the marsh absorbs floodwater. Measurements showing how much water the marsh holds in storms, or flooding after similar marshes were filled, support it directly.",
+    "options": [
+     "That supports the developer, not the farmers.",
+     "That supports the birding club, not the flood claim.",
+     "Insulation has nothing to do with flooding.",
+     "Right: that tests their claim about floodwater directly."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-4",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why might the 40-hectare artificial pond fail to replace the marsh's services?",
+   "stimulus": "wetlands-mangroves-s1",
+   "options": [
+    "Ponds hold more floodwater than marshes",
+    "Artificial ponds attract more ducks than marshes do",
+    "It is smaller, elsewhere, and lacks marsh plants",
+    "Ponds are illegal in most counties"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The pond is a third of the size, in a different place in the watershed, and open water lacks the marsh plants and soils that slow floodwater, filter pollutants and give shelter to birds.",
+    "options": [
+     "A smaller pond in another place cannot hold the marsh's floodwater for this river.",
+     "Even if true, that does not replace flood control or filtering.",
+     "Right: size, location and structure all differ.",
+     "Legality is not the issue; ecological function is."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-5",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The offset pond replaces what percent of the marsh's area?",
+   "stimulus": "wetlands-mangroves-s1",
+   "why": {
+    "correct": "$\\frac{40\\,\\text{ha}}{120\\,\\text{ha}} \\times 100 = 33.3\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      40,
+      120
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 300,
+      "why": "You divided the marsh by the pond. The share replaced is the pond over the marsh: 40 / 120."
+     },
+     {
+      "value": -66.6666666667,
+      "why": "That is the percent change in area. The question asks what share the pond replaces: 40 / 120 × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-6",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What relationship do the data show between mangrove belt width and storm damage?",
+   "stimulus": "wetlands-mangroves-s2",
+   "options": [
+    "Wider mangrove belts go with more storm damage",
+    "Wider mangrove belts go with less storm damage",
+    "Belt width makes no difference to the damage",
+    "Damage falls until 200 m, then rises again"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The wider the mangrove belt, the smaller the share of homes damaged: 78% with none, 9% behind 1,000 m.",
+    "options": [
+     "Damage falls, not rises, as the belt widens.",
+     "Right: damage falls steadily as the belt widens.",
+     "Damage ranges from 78% to 9% across the villages.",
+     "It keeps falling at 500 m and 1,000 m."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-7",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How do mangroves reduce storm damage to the villages behind them?",
+   "stimulus": "wetlands-mangroves-s2",
+   "options": [
+    "Dense roots and trunks slow waves and storm surge",
+    "Mangroves make the cyclone's winds blow out to sea",
+    "Mangroves raise the air temperature, which weakens storms",
+    "Mangroves soak up the rain before it falls on homes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The dense tangle of mangrove roots and trunks slows waves and storm surge and holds sediment in place, so less water and energy reach the homes.",
+    "options": [
+     "Right: they absorb wave energy before it reaches land.",
+     "Mangroves do not change the direction of a cyclone.",
+     "They do not weaken cyclones by heating the air.",
+     "Trees do not stop the rain from falling."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-8",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in homes damaged from North Point (no mangroves) to Palm Inlet (500 m of mangroves).",
+   "stimulus": "wetlands-mangroves-s2",
+   "why": {
+    "correct": "$\\frac{(15 - 78)}{78} \\times 100 = -80.8\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      78,
+      15
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -63,
+      "why": "-63 is the difference in percentage points. Percent change divides by the starting value: -63 / 78 × 100."
+     },
+     {
+      "value": -420,
+      "why": "You divided by 15. Divide by the starting value, 78."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-9",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which of these is an ecosystem service provided by wetlands?",
+   "options": [
+    "Producing most of the world's crude oil",
+    "Making the air warmer in winter",
+    "Raising the salinity of nearby rivers",
+    "Filtering pollutants from the water"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Wetland plants and soils filter sediment and pollutants from water and store floodwater, among many other services.",
+    "options": [
+     "Oil forms deep underground over millions of years, not in wetlands today.",
+     "That is not a wetland ecosystem service.",
+     "Wetlands do not raise river salinity as a service.",
+     "Right: wetlands clean water and reduce flooding."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-10",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which human activity is a major cause of mangrove loss in tropical countries?",
+   "options": [
+    "Planting coral reefs on mudflats",
+    "Building ski resorts in mountain forests",
+    "Clearing mangroves for shrimp ponds",
+    "Melting glaciers on high peaks"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Large areas of mangrove have been cleared for shrimp farms (aquaculture ponds), along with coastal building, farming and cutting for wood.",
+    "options": [
+     "Coral does not replace mangroves, and people do not plant it on mudflats.",
+     "Mangroves grow on tropical coasts, not mountains.",
+     "Right: shrimp aquaculture has replaced large areas of mangrove.",
+     "Glaciers are far from mangrove coasts."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-11",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do drained wetlands often release CO2?",
+   "options": [
+    "The water evaporates and turns into CO2",
+    "Air reaches stored plant matter, which decays",
+    "Wetland plants make CO2 by photosynthesis",
+    "Draining cools the soil so it releases gas"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Waterlogged wetland soils hold large amounts of slowly decaying plant matter because there is little oxygen. Draining them lets oxygen in, so decomposers break the matter down and release CO2.",
+    "options": [
+     "Water does not turn into CO2.",
+     "Right: draining speeds decomposition of stored carbon.",
+     "Photosynthesis takes CO2 in.",
+     "The release comes from decomposition, not cooling."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-12",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which change would most likely follow the filling of a large wetland upstream of a town?",
+   "options": [
+    "More flooding downstream",
+    "Cleaner water in the river below",
+    "More habitat for wetland birds",
+    "Lower water levels in each storm"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With nowhere to spread and soak in, floodwater runs downstream faster and higher, so the town floods more often. Water quality also falls without the wetland's filtering.",
+    "options": [
+     "Right: the wetland no longer stores floodwater.",
+     "Losing the wetland removes a filter, so water quality usually falls.",
+     "Filling removes wetland habitat.",
+     "Storm flows usually rise, not fall."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-13",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Under the United States Clean Water Act, what is generally required before a developer may fill a protected wetland?",
+   "options": [
+    "Nothing, because wetlands are not covered by any law",
+    "A tax on the mosquitoes that live there",
+    "Approval from the nearest airport",
+    "A permit with steps to offset the loss"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A permit is generally required to fill regulated wetlands, and developers are often required to avoid, minimize, and then offset (mitigate) losses by restoring or creating wetland elsewhere.",
+    "options": [
+     "Many wetlands are regulated under the Clean Water Act.",
+     "No such tax exists.",
+     "Airports have no role in wetland permits.",
+     "Right: that is wetland mitigation."
+    ]
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-14",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Propose a solution the county could adopt, other than rejecting the project outright, that balances the developer's plan with the farmers' flood concerns, and explain how it works.",
+   "why": {
+    "correct": "The answer respects \"other than rejecting\", fits a county, and says how it works: keeping the wetland where floodwater gathers preserves its storage."
+   },
+   "specific": {
+    "frame": "The county could ___, which reduces flood risk because it ___.",
+    "slots": {
+     "action": {
+      "label": "Solution",
+      "options": [
+       "approve building only on the drier edge and protect the core marsh with a conservation easement",
+       "reject the project outright",
+       "require the homes to be painted green"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The question says other than rejecting the project.",
+       "2": "Paint color does nothing for flooding."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "keeps the marsh that stores storm water, so downstream flooding does not increase",
+       "makes the homes cheaper to build",
+       "moves the river to a new channel"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cost does not address flooding.",
+       "2": "Moving a river is not part of this plan and would cause other harm."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "otherThan": [
+      "reject"
+     ],
+     "context": [
+      "marsh",
+      "wetland",
+      "flood"
+     ]
+    },
+    "model": "The county could approve building only on the drier edge and protect the core marsh with a conservation easement, which reduces flood risk because it keeps the marsh that stores storm water, so downstream flooding does not increase."
+   }
+  },
+  {
+   "id": "env-wetlands-mangroves-15",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A marsh covers 120 hectares. During a storm it stores water 0.5 meters deep across its whole area. Write the setup, with units, for the volume of water it stores in cubic meters (1 ha = 10,000 m²), then the answer.",
+   "why": {
+    "correct": "$120\\,\\text{ha} \\times \\frac{10{,}000\\,\\text{m}^{2}}{1\\,\\text{ha}} \\times 0.5\\,\\text{m} = 600{,}000\\,\\text{m}^{3}$."
+   },
+   "setup": {
+    "answer": "120 * 10000 * 0.5",
+    "mustUse": [
+     "120",
+     "10000",
+     "0.5"
+    ],
+    "mistakes": [
+     {
+      "expr": "120 * 0.5",
+      "why": "Convert hectares to square meters first (× 10,000 m² per ha) so the answer is in cubic meters."
+     },
+     {
+      "expr": "120 * 10000",
+      "why": "That is the area. Multiply by the depth, 0.5 m, to get a volume."
+     }
+    ],
+    "then": {
+     "unit": "m3",
+     "units": [
+      "m^3",
+      "cubic meters"
+     ],
+     "from": {
+      "fn": "waterVolume",
+      "args": [
+       0.5,
+       {
+        "fn": "convert",
+        "args": [
+         120,
+         "ha",
+         "m2"
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 60,
+       "why": "You forgot to convert hectares to square meters. 1 ha is 10,000 m²."
+      },
+      {
+       "value": 1200000,
+       "why": "Multiply by the depth, 0.5 m, not divide: 1,200,000 × 0.5 = 600,000 m³."
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

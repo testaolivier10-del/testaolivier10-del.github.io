@@ -623,29 +623,25 @@
    "practice": "7.A",
    "level": "analyze",
    "diff": 2,
-   "q": "Which are counted in a person's ecological footprint? Select all that apply.",
+   "q": "Which of these is counted in a person's ecological footprint? Select all that apply.",
    "options": [
-    "Cropland that grows the person's food",
     "Forest needed to absorb the carbon dioxide from the person's energy use",
-    "Land covered by the person's home and roads",
     "The number of children the person has",
     "The person's height and weight",
-    "The amount of rain that falls on the person's town"
+    "The amount of rain that falls on the person's town",
+    "The number of species in the person's county"
    ],
    "correct": [
-    0,
-    1,
-    2
+    0
    ],
    "why": {
-    "correct": "The footprint is the area of cropland, pasture, forest, fishing grounds and built land needed to support the person.",
+    "correct": "The footprint is the area of cropland, pasture, forest, fishing grounds and built land needed to support the person, including forest to absorb carbon dioxide.",
     "options": [
-     "Right: cropland for food.",
-     "Right: forest to absorb carbon dioxide.",
-     "Right: built-up land.",
+     "Right: forest to absorb carbon dioxide is usually the largest part in wealthy countries.",
      "Family size affects a population's total, not one person's footprint.",
      "Body size is not counted.",
-     "Rainfall affects biocapacity, not the footprint."
+     "Rainfall affects biocapacity, not the footprint.",
+     "Species counts measure biodiversity, not a footprint."
     ]
    }
   }

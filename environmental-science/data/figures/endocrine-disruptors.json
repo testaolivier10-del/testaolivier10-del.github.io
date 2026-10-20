@@ -1,0 +1,12 @@
+{
+ "endocrine-disruptors-receptor": {
+  "file": "figures/endocrine-disruptors-receptor.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels showing a cell receptor. Left: a natural hormone fits the receptor and sends a normal signal. Middle: a mimic chemical with a similar shape fits the receptor and sends a false signal. Right: a blocker chemical sits in the receptor so the natural hormone cannot bind and no signal is sent."
+ }
+}

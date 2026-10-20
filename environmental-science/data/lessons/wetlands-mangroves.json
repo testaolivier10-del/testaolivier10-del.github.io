@@ -1,0 +1,72 @@
+{
+ "topic": "wetlands-mangroves",
+ "hook": "A county is asked to fill a 120-hectare marsh for homes and shops. To the developer it is empty, mosquito-filled land. To the farmers downstream it is a giant sponge that keeps their fields from flooding every spring. To migrating ducks it is a rest stop on a 3,000 km trip. Who is right depends on what you count.",
+ "prereq": [
+  {
+   "q": "Which of these is a regulating ecosystem service?",
+   "options": [
+    "Flood control by a wetland",
+    "Timber from a forest",
+    "Fish caught for food",
+    "A hiking trail"
+   ],
+   "correct": 0,
+   "why": "Regulating services control natural processes, such as floods and water quality.",
+   "review": "ecosystem-services"
+  },
+  {
+   "q": "Where do mangroves grow?",
+   "options": [
+    "Along warm, tropical coasts in salty water",
+    "In cold mountain streams",
+    "In deserts far from water",
+    "In the open ocean"
+   ],
+   "correct": 0,
+   "why": "Mangroves are salt-tolerant trees of tropical and subtropical coasts.",
+   "review": "aquatic-biomes"
+  }
+ ],
+ "figure": {
+  "figure": "wetlands-mangroves-services",
+  "caption": "What wetlands and mangroves do: store floodwater, filter water, buffer storms, store carbon and give habitat."
+ },
+ "chain": [
+  {
+   "cause": "Wetlands and mangroves are drained, filled or cleared for building, farming or shrimp ponds",
+   "effect": "their plants, soils and water storage are lost"
+  },
+  {
+   "cause": "Floodwater has nowhere to spread and soak in",
+   "effect": "downstream flooding becomes more frequent and severe"
+  },
+  {
+   "cause": "Water no longer passes slowly through wetland plants and soils",
+   "effect": "more sediment, nutrients and pollutants reach rivers and coasts"
+  },
+  {
+   "cause": "Coasts lose their mangrove belt",
+   "effect": "storm surges and waves reach homes with more force, and nursery habitat for fish is lost"
+  }
+ ],
+ "ideas": [
+  "<b>Ecosystem services</b> of wetlands: store floodwater, recharge groundwater, filter pollutants and sediment, store carbon, and give habitat and nurseries for fish and birds.",
+  "<b>Mangroves</b> protect coasts from <b>storm surge</b> and erosion with their dense roots, and shelter young fish.",
+  "Threats: <b>wetland drainage</b> and filling for development and farms, dams and water diversion, pollution, and clearing mangroves for shrimp aquaculture.",
+  "Protection: laws such as the Clean Water Act permit process, mitigation (avoid, minimize, restore), conservation easements and restoration."
+ ],
+ "misconception": {
+  "wrong": "A wetland that is not farmed or built on is unused land.",
+  "right": "A wetland is working all the time: storing floodwater, filtering water, storing carbon and sheltering wildlife. Filling it removes those services."
+ },
+ "check": [
+  "env-wetlands-mangroves-1",
+  "env-wetlands-mangroves-2",
+  "env-wetlands-mangroves-3",
+  "env-wetlands-mangroves-9",
+  "env-wetlands-mangroves-6",
+  "env-wetlands-mangroves-7",
+  "env-wetlands-mangroves-12"
+ ],
+ "summary": "Wetlands and mangroves provide valuable ecosystem services: they store floodwater, recharge groundwater, filter pollutants, store carbon, buffer coasts against storm surge and shelter fish and birds. Draining and filling them for development and farms, and clearing mangroves for shrimp ponds, removes these services, raising flood and storm damage and lowering water quality. Permits, mitigation and restoration protect them."
+}

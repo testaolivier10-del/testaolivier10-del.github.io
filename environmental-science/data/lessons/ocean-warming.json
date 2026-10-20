@@ -1,0 +1,72 @@
+{
+ "topic": "ocean-warming",
+ "hook": "In 2016 and 2017, water off northeastern Australia stayed unusually warm for weeks. Large parts of the Great Barrier Reef turned white and many corals died. The ocean had been quietly soaking up heat for decades, and the reef showed what that heat can do.",
+ "prereq": [
+  {
+   "q": "Which change raises sea level?",
+   "options": [
+    "Melting land ice",
+    "Melting sea ice",
+    "More sea ice",
+    "More snow on land"
+   ],
+   "correct": 0,
+   "why": "Land ice adds water to the ocean; floating sea ice does not.",
+   "review": "climate-change"
+  },
+  {
+   "q": "How does temperature affect dissolved oxygen in water?",
+   "options": [
+    "Warmer water holds less oxygen",
+    "Warmer water holds more oxygen",
+    "Temperature has no effect",
+    "Only salt water is affected"
+   ],
+   "correct": 0,
+   "why": "Gases dissolve less in warm water, which is why thermal pollution lowers oxygen.",
+   "review": "thermal-pollution"
+  }
+ ],
+ "figure": {
+  "figure": "ocean-warming-effects",
+  "caption": "The ocean absorbs most of the extra heat, with five main effects."
+ },
+ "chain": [
+  {
+   "cause": "Greenhouse gases trap extra heat",
+   "effect": "the ocean absorbs about 90% of it, because water stores heat well"
+  },
+  {
+   "cause": "Warmer water takes up more space (thermal expansion)",
+   "effect": "sea level rises, alongside water from melting land ice"
+  },
+  {
+   "cause": "Warmer water holds less oxygen and mixes less",
+   "effect": "oxygen falls and fewer nutrients reach the surface"
+  },
+  {
+   "cause": "Heat stress and shifting temperatures",
+   "effect": "corals bleach, fish move toward the poles, and currents can change"
+  }
+ ],
+ "ideas": [
+  "The ocean has absorbed about 90% of the extra heat trapped since 1970.",
+  "<b>Thermal expansion</b>: warmer water takes up more space. With melting land ice, it causes most sea level rise. It is caused by heat, not by dissolved CO₂.",
+  "Warming lowers dissolved oxygen, bleaches corals, shifts species ranges and makes the surface layer mix less with nutrient-rich deep water.",
+  "The <b>thermohaline circulation</b> (ocean conveyor belt) is driven by temperature and salinity; fresh meltwater could weaken it."
+ ],
+ "misconception": {
+  "wrong": "Seawater expands because it absorbs carbon dioxide.",
+  "right": "Thermal expansion is caused by heat: warmer water molecules move faster and spread apart. CO₂ dissolving in seawater changes its chemistry, which is a different problem covered next."
+ },
+ "check": [
+  "env-ocean-warming-1",
+  "env-ocean-warming-2",
+  "env-ocean-warming-4",
+  "env-ocean-warming-5",
+  "env-ocean-warming-6",
+  "env-ocean-warming-9",
+  "env-ocean-warming-10"
+ ],
+ "summary": "The ocean absorbs about 90% of the extra heat. Warmer water expands (thermal expansion), which with melting land ice raises sea level. Warm water holds less oxygen and mixes less, so oxygen and surface nutrients fall. Heat stress bleaches corals and pushes species toward the poles. The thermohaline circulation, driven by temperature and salinity, could slow as fresh meltwater enters the North Atlantic."
+}

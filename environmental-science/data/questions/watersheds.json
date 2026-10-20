@@ -153,19 +153,18 @@
    "q": "Which features of a watershed increase the runoff and erosion that follow a storm? Select all that apply.",
    "options": [
     "Steep slopes",
-    "Bare or paved ground",
+    "Gentle, nearly flat slopes",
     "Deep, sandy soil",
     "Thick forest cover"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Water runs off steep, bare or paved ground quickly. Permeable soil and plant cover let water soak in and hold soil in place.",
+    "correct": "Water runs off steep ground quickly, with force to carry soil. Gentle slopes, permeable soil and plant cover let water soak in and hold soil in place.",
     "options": [
      "Right: steep slopes speed up runoff and erosion.",
-     "Right: bare or paved ground lets less water soak in.",
+     "On gentle slopes water moves slowly and has more time to soak in.",
      "Sandy soil is permeable, so more water soaks in and less runs off.",
      "Forest cover slows water and lets it soak in."
     ]

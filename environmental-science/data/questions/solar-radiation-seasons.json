@@ -5,7 +5,7 @@
    "title": "Average sunlight reaching the top of the atmosphere by latitude",
    "invented": true,
    "plot": {
-    "label": "Line graph of yearly average incoming sunlight against latitude from the equator to the pole, invented data close to measured values",
+    "label": "Line graph of yearly average incoming sunlight against latitude from the equator to the pole, invented data rounded from the calculated yearly average",
     "kind": "line",
     "series": [
      {
@@ -13,27 +13,27 @@
       "points": [
        [
         0,
-        420
+        415
        ],
        [
         15,
-        410
+        400
        ],
        [
         30,
-        380
+        365
        ],
        [
         45,
-        330
+        305
        ],
        [
         60,
-        260
+        235
        ],
        [
         75,
-        200
+        185
        ],
        [
         90,
@@ -277,11 +277,11 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Sunlight falls from 420 W/m² at the equator to 175 W/m² at the pole.",
+    "correct": "Sunlight falls from 415 W/m² at the equator to 175 W/m² at the pole.",
     "options": [
      "Right: the line falls with latitude.",
      "The line slopes down, not up.",
-     "The values range from 420 to 175 W/m².",
+     "The values range from 415 to 175 W/m².",
      "The pole has the lowest value, 175 W/m²."
     ]
    }
@@ -294,28 +294,28 @@
    "practice": "6.B",
    "level": "apply",
    "diff": 2,
-   "q": "Use the graph. Write the setup for the percent change in incoming sunlight from the equator (420 W/m²) to 60° N (260 W/m²), then the answer.",
+   "q": "Use the graph. Write the setup for the percent change in incoming sunlight from the equator (415 W/m²) to 60° N (235 W/m²), then the answer.",
    "stimulus": "solar-radiation-seasons-s1",
    "why": {
-    "correct": "$\\frac{260 - 420}{420} \\times 100 \\approx -38\\%$. Sunlight at 60° N is about 38% less than at the equator."
+    "correct": "$\\frac{235 - 415}{415} \\times 100 \\approx -43\\%$. Sunlight at 60° N is about 43% less than at the equator."
    },
    "setup": {
-    "answer": "(260 - 420) / 420 * 100",
+    "answer": "(235 - 415) / 415 * 100",
     "mustUse": [
-     "260",
-     "420"
+     "235",
+     "415"
     ],
     "mistakes": [
      {
-      "expr": "(260 - 420) / 260 * 100",
-      "why": "Divide by the starting value, 420 at the equator, not 260."
+      "expr": "(235 - 415) / 235 * 100",
+      "why": "Divide by the starting value, 415 at the equator, not 235."
      },
      {
-      "expr": "(420 - 260) / 420 * 100",
-      "why": "Use new minus old: (260 - 420). The sunlight falls, so the change is negative."
+      "expr": "(415 - 235) / 415 * 100",
+      "why": "Use new minus old: (235 - 415). The sunlight falls, so the change is negative."
      },
      {
-      "expr": "260 - 420 / 420 * 100",
+      "expr": "235 - 415 / 415 * 100",
       "why": "Put brackets around the difference so it is divided as a whole."
      }
     ],
@@ -323,22 +323,22 @@
      "from": {
       "fn": "percentChange",
       "args": [
-       420,
-       260
+       415,
+       235
       ]
      },
      "unit": "%",
      "mistakes": [
       {
-       "value": -0.380952381,
-       "why": "Multiply by 100 to turn the fraction into a percent: about −38%."
+       "value": -0.4337349398,
+       "why": "Multiply by 100 to turn the fraction into a percent: about −43%."
       },
       {
        "from": {
         "fn": "percentChange",
         "args": [
-         260,
-         420
+         235,
+         415
         ]
        },
        "why": "That is the change from 60° N back to the equator. Start at the equator."

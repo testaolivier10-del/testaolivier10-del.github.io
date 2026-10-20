@@ -1,0 +1,12 @@
+{
+ "ocean-warming-effects": {
+  "file": "figures/ocean-warming-effects.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A central box: the ocean absorbs heat; it has taken up about 90% of the extra heat trapped since 1970. Arrows lead to five effects: water expands, so sea level rises; warm water holds less dissolved oxygen, so fish and shellfish struggle; heat-stressed corals expel their algae and can starve (coral bleaching); fish shift toward the poles or into deeper, cooler water; and a warm surface layer floats on top, so fewer nutrients rise to it."
+ }
+}

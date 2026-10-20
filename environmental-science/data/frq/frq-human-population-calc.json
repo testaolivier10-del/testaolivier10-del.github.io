@@ -1,0 +1,290 @@
+{
+ "id": "frq-human-population-calc",
+ "type": "calc",
+ "points": 10,
+ "title": "Population growth in Country V",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "human-population",
+  "total-fertility-rate",
+  "age-structure"
+ ],
+ "practices": [
+  "6.A",
+  "6.B",
+  "6.C",
+  "1.B",
+  "7.E"
+ ],
+ "stimulus": {
+  "kind": "quantitative",
+  "title": "Country V in 2025",
+  "invented": true,
+  "table": {
+   "caption": "Population data for Country V, 2025 (invented data for practice)",
+   "cols": [
+    "Measure",
+    "Value"
+   ],
+   "rows": [
+    [
+     "Population",
+     "60 million"
+    ],
+    [
+     "Crude birth rate (per 1,000 people per year)",
+     "31"
+    ],
+    [
+     "Crude death rate (per 1,000 people per year)",
+     "7"
+    ],
+    [
+     "Immigrants per year",
+     "30,000"
+    ],
+    [
+     "Emigrants per year",
+     "150,000"
+    ],
+    [
+     "Share of the population under 15",
+     "40%"
+    ],
+    [
+     "Total fertility rate (children per woman)",
+     "4.0"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the rate of natural increase of Country V in 2025, as a percent. Show your setup.",
+   "rubric": [
+    {
+     "point": "Correct setup: the difference between the crude birth rate and the crude death rate, divided by 10.",
+     "accept": [
+      "(31 - 7) / 10",
+      "((31 - 7) / 1,000) × 100",
+      "any setup that subtracts 7 from 31 and converts per 1,000 to percent"
+     ]
+    },
+    {
+     "point": "Correct answer with unit: 2.4%.",
+     "accept": [
+      "2.4%",
+      "2.4 percent",
+      "2.4% per year"
+     ]
+    }
+   ],
+   "sample": "Rate of natural increase = (31 - 7) / 10 = 24 / 10 = 2.4% per year.",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "(31 - 7) / 10",
+     "mustUse": [
+      "31",
+      "7"
+     ],
+     "mistakes": [
+      {
+       "expr": "31 - 7",
+       "why": "That is the gap per 1,000 people. Divide it by 10 to get a percent."
+      },
+      {
+       "expr": "(31 - 7) / 100",
+       "why": "The rates are per 1,000, so divide the difference by 10, not 100."
+      }
+     ],
+     "then": {
+      "unit": "%",
+      "from": {
+       "fn": "naturalIncrease",
+       "args": [
+        31,
+        7
+       ]
+      },
+      "mistakes": [
+       {
+        "value": 24,
+        "why": "That is per 1,000 people. Divide by 10 for a percent: 2.4%."
+       },
+       {
+        "value": 0.24,
+        "why": "You divided by 100. Divide by 10: 2.4%."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "Assume Country V’s rate of natural increase stays the same and no one moves in or out. <b>Calculate</b> the year in which Country V’s population will reach 120 million. Show your setup.",
+   "rubric": [
+    {
+     "point": "Correct setup: the rule of 70 with the rate from part (a), added to the start year 2025.",
+     "accept": [
+      "2025 + 70 / 2.4",
+      "doubling time = 70 / 2.4 ≈ 29 years, then 2025 + 29",
+      "a correct setup using an incorrect rate carried from part (a)"
+     ]
+    },
+    {
+     "point": "Correct answer: the year 2054 (accept 2054 or 2055 from rounding the doubling time).",
+     "accept": [
+      "2054",
+      "about 2054",
+      "2055 if 29.2 was rounded up to 30"
+     ]
+    }
+   ],
+   "sample": "Doubling time = 70 / 2.4 ≈ 29.2 years. 120 million is double 60 million, so the year is 2025 + 29.2 ≈ 2054.",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "2025 + 70 / 2.4",
+     "mustUse": [
+      "2025",
+      "70",
+      "2.4"
+     ],
+     "mistakes": [
+      {
+       "expr": "70 / 2.4",
+       "why": "That is the doubling time in years. The question asks for a year: add it to 2025."
+      },
+      {
+       "expr": "2025 + 70 / 24",
+       "why": "Use the rate in percent, 2.4, not the gap per 1,000 (24)."
+      }
+     ],
+     "then": {
+      "tol": 1,
+      "from": {
+       "fn": "doublingYear",
+       "args": [
+        2025,
+        2.4
+       ]
+      },
+      "mistakes": [
+       {
+        "value": 29.17,
+        "why": "That is the doubling time. Add it to the start year: 2025 + 29.2 ≈ 2054."
+       },
+       {
+        "value": 2027.92,
+        "why": "That used 24 instead of 2.4 (70 / 24 ≈ 2.9 years). Use the rate in percent."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Calculate</b> Country V’s total population growth rate in 2025, as a percent, including both natural increase and migration. Show your setup.",
+   "rubric": [
+    {
+     "point": "Correct setup: births and deaths found from the crude rates and the population, then (births + immigrants - deaths - emigrants) / population × 100.",
+     "accept": [
+      "births = 31/1,000 × 60,000,000 = 1,860,000; deaths = 7/1,000 × 60,000,000 = 420,000; (1,860,000 + 30,000 - 420,000 - 150,000) / 60,000,000 × 100",
+      "rate of natural increase plus net migration as a percent: 2.4% + (30,000 - 150,000) / 60,000,000 × 100"
+     ]
+    },
+    {
+     "point": "Correct answer with unit: 2.2%.",
+     "accept": [
+      "2.2%",
+      "2.2 percent per year"
+     ]
+    }
+   ],
+   "sample": "Births = 31/1,000 × 60,000,000 = 1,860,000. Deaths = 7/1,000 × 60,000,000 = 420,000. Growth rate = (1,860,000 + 30,000 - 420,000 - 150,000) / 60,000,000 × 100 = 1,320,000 / 60,000,000 × 100 = 2.2%.",
+   "check": {
+    "type": "numeric",
+    "numeric": {
+     "unit": "%",
+     "from": {
+      "fn": "growthRate",
+      "args": [
+       1860000,
+       420000,
+       30000,
+       150000,
+       60000000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 2.4,
+       "why": "That is natural increase only. Net migration (30,000 in, 150,000 out) lowers it to 2.2%."
+      },
+      {
+       "value": 2.6,
+       "why": "You added the net migration. More people leave than arrive, so subtract 120,000."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "Suppose Country V’s total fertility rate falls quickly from 4.0 to 2.1. <b>Explain</b> why Country V’s population would most likely continue to grow for several decades.",
+   "rubric": [
+    {
+     "point": "Identifies the cause: 40% of the population is under 15, a large young cohort (a wide-based pyramid).",
+     "accept": [
+      "many young people",
+      "a large share of children",
+      "a wide base on its age structure diagram"
+     ]
+    },
+    {
+     "point": "Explains the link: these young people will reach child-bearing age, so the number of births stays high even with smaller families (population momentum).",
+     "accept": [
+      "the large cohort of children will become parents, so total births remain greater than deaths",
+      "population momentum because many people are entering their reproductive years"
+     ]
+    }
+   ],
+   "sample": "Forty percent of Country V’s people are under 15, so a very large group of young people has not yet reached child-bearing age. As they grow up, the number of parents increases, so even at 2.1 children per woman the total number of births stays well above the number of deaths for decades. This is population momentum."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "<b>Propose</b> a government policy, other than limiting the number of children a family may have, that would likely lower Country V’s crude birth rate, and <b>explain</b> how it would do so.",
+   "rubric": [
+    {
+     "point": "Proposes a realistic policy (a law, program or rule) that is not a limit on family size.",
+     "accept": [
+      "a law making secondary school free and required for girls",
+      "funding free family planning clinics",
+      "a law raising the minimum age of marriage to 18",
+      "paid jobs programs for women"
+     ]
+    },
+    {
+     "point": "Explains how the policy lowers births.",
+     "accept": [
+      "girls who stay in school marry later and have fewer children",
+      "access to contraception lets couples choose to have fewer children",
+      "later marriage shortens the years in which women have children"
+     ]
+    }
+   ],
+   "sample": "Country V could pass a law making secondary school free and required for girls. Girls who stay in school longer tend to marry later and take paid jobs, so they have fewer children over their lives, which lowers the crude birth rate."
+  }
+ ]
+}

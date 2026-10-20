@@ -44,23 +44,29 @@
   /* o: { W, H, x0, w, sel (band index), max (% at the axis end), bands (dependency tints) } */
   function pyrSvg(pyr, o){
     var n = pyr.groups.length, x0 = o.x0 || 0, W = o.w || o.W, H = o.H, ph = W < 380, lab = ph ? 38 : 50, top = o.top || 26, bot = 34;
-    var cx = x0 + W / 2, half = (W - lab) / 2 - 6, bh = (H - top - bot) / n, mx = o.max || 14;
+    var cx = x0 + W / 2, half = (W - lab) / 2 - 18, bh = (H - top - bot) / n, mx = o.max || 14;
     var sx = function(v){ return half * Math.min(v, mx) / mx; };
     var out = [];
     // gridlines at 2% steps
-    var stp = mx > 16 ? 5 : mx > 8 ? 2 : 1;
+    var stp = mx > 16 ? 5 : mx > 6 ? 2 : 1, lbl = mx > 16 ? 5 : mx > 10 ? 4 : mx > 6 ? 2 : 1;
     for(var v = stp; v <= mx + 1e-9; v += stp){
       [-1, 1].forEach(function(sg){ var xx = cx + sg * (lab / 2 + sx(v)); out.push('<line class="ap-grid" x1="' + r1(xx) + '" x2="' + r1(xx) + '" y1="' + top + '" y2="' + r1(H - bot) + '"/>'); });
-      if(v % (stp * 2) === 0 || stp === 5) [-1, 1].forEach(function(sg){ out.push(tx(cx + sg * (lab / 2 + sx(v)), H - bot + 15, v + '%', 'ap-tk', 'middle')); });
+      if(v % lbl === 0) [-1, 1].forEach(function(sg){ out.push(tx(cx + sg * (lab / 2 + sx(v)), H - bot + 15, v + '%', 'ap-tk', 'middle')); });
     }
     for(var i = 0; i < n; i++){
-      var y = H - bot - (i + 1) * bh, m = pyr.male[i], f = pyr.female[i], band = o.bands ? (i <= 2 ? ' is-young' : i >= 13 ? ' is-old' : ' is-work') : '', on = o.sel === i ? ' is-sel' : '';
+      var y = H - bot - (i + 1) * bh, m = pyr.male[i], f = pyr.female[i], band = '', on = o.sel === i ? ' is-sel' : '';
       out.push('<rect class="ap-m' + band + on + '" x="' + r1(cx - lab / 2 - sx(m)) + '" y="' + r1(y + 1) + '" width="' + r1(sx(m)) + '" height="' + r1(bh - 2) + '" rx="2"/>');
       out.push('<rect class="ap-f' + band + on + '" x="' + r1(cx + lab / 2) + '" y="' + r1(y + 1) + '" width="' + r1(sx(f)) + '" height="' + r1(bh - 2) + '" rx="2"/>');
       if(!ph || i % 2 === 0) out.push(tx(cx, y + bh / 2 + 4, pyr.groups[i], 'ap-age' + (o.sel === i ? ' is-sel' : ''), 'middle'));
       out.push('<rect class="ap-hit" data-i="' + i + '" x="' + r1(x0) + '" y="' + r1(y) + '" width="' + r1(W) + '" height="' + r1(bh) + '"/>');
     }
     out.push(tx(cx - lab / 2 - 4, top - 10, 'Male', 'ap-sex is-m', 'end'), tx(cx + lab / 2 + 4, top - 10, 'Female', 'ap-sex is-f', 'start'));
+    // The dependency groups as brackets at the left edge: under 15 and 65 and over.
+    if(o.bands){
+      var yb = function(i){ return H - bot - i * bh; }, bx = x0 + 6;
+      out.push('<path class="ap-br is-young" d="M' + (bx + 6) + ' ' + r1(yb(0) - 1) + 'H' + bx + 'V' + r1(yb(3) + 1) + 'H' + (bx + 6) + '"/>' + tx(bx + 10, (yb(0) + yb(3)) / 2 + 4, ph ? '<15' : 'under 15', 'ap-brl is-young', 'start'));
+      out.push('<path class="ap-br is-old" d="M' + (bx + 6) + ' ' + r1(yb(13) - 1) + 'H' + bx + 'V' + r1(yb(17) + 1) + 'H' + (bx + 6) + '"/>' + tx(bx + 10, (yb(13) + yb(17)) / 2 + 4, '65+', 'ap-brl is-old', 'start'));
+    }
     out.push(tx(cx, H - 4, '% of the population', 'ap-axl', 'middle'));
     if(o.sel != null){
       var si = o.sel, yy = H - bot - (si + 1) * bh, tot = pyr.male[si] + pyr.female[si];
@@ -115,7 +121,7 @@
     var stage = 2, tfr = A.STAGES[2].tfr, e0 = A.STAGES[2].e0, cbr = A.STAGES[2].cbr, cdr = A.STAGES[2].cdr, sel = null, LS = null, touched = false, anim = null, shown = null, nid = T.nid('ap');
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem ap-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Age structure</h2>' +
-      '<div class="ap-stage"><div class="ap-fig"><svg class="ap-svg" role="img" tabindex="0" xmlns="http://www.w3.org/2000/svg"></svg></div><div class="ap-strip" aria-hidden="true"></div></div>' +
+      '<div class="ap-stage"><div class="ap-strip" aria-hidden="true"></div><div class="ap-fig"><svg class="ap-svg" role="img" tabindex="0" xmlns="http://www.w3.org/2000/svg"></svg></div></div>' +
       '<div class="ap-ctl">' +
         '<div class="ap-stages tseg" role="group" aria-label="Stage of the demographic transition">' + [1, 2, 3, 4].map(function(s){ return '<button type="button" class="ap-st" data-s="' + s + '" aria-pressed="' + (s === stage) + '">Stage ' + s + '</button>'; }).join('') + '</div>' +
         '<div class="ap-sl-t"></div>' +
@@ -159,8 +165,7 @@
       var wh = size(), W = wh[0], H = wh[1], side = W >= 700, pw = side ? Math.round(W * 0.56) : W, tw = side ? W - pw - 24 : W;
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       var pyrH = side ? H : Math.round(H * 0.64);
-      var mx = Math.max(10, Math.ceil(Math.max.apply(null, pyr.male.concat(pyr.female)) / 2) * 2 + 1);
-      mx = mx <= 14 ? 14 : mx <= 18 ? 18 : 26;
+      var big = Math.max.apply(null, pyr.male.concat(pyr.female)) * 1.12, mx = [5, 8, 12, 16, 20].filter(function(v){ return v >= big; })[0] || 26;
       var out = pyrSvg(pyr, { W: W, w: pw, H: pyrH, sel: sel, max: mx, bands: true });
       out += '<g transform="translate(' + (side ? pw + 24 : 0) + ' ' + (side ? 0 : pyrH + 6) + ')">' + transSvg({ w: tw, H: side ? H : H - pyrH - 6, stage: stage, cbr: cbr, cdr: cdr, pos: posOf(cbr, cdr, stage), top: side ? 26 : 22 }) + '</g>';
       svg.innerHTML = out;
@@ -232,11 +237,17 @@
     var g = p.figure, ph = (window.innerWidth || 1280) <= 640, W = ph ? 360 : 640, H = ph ? 340 : 360, inner = '', aria = '';
     if(!g){ el.innerHTML = ''; return; }
     if(g.kind === 'pyr'){
-      var pyr = A.pyramid(g.tfr, g.e0), b = A.broad(pyr), mx = Math.max.apply(null, pyr.male.concat(pyr.female)), max = mx < 6.5 ? 8 : mx < 9 ? 10 : mx < 13 ? 14 : 18;
+      var pyr = A.pyramid(g.tfr, g.e0), b = A.broad(pyr), big = Math.max.apply(null, pyr.male.concat(pyr.female)) * 1.12, max = [5, 8, 12, 16, 20].filter(function(v){ return v >= big; })[0] || 26;
       var showShape = g.hide !== 'shape' || st.predict;
       inner = pyrSvg(pyr, { W: W, w: W, H: H, max: max, bands: !!g.bands, top: 26 });
       if(g.bands) inner += '<g class="ap-legend">' + tx(8, 16, 'under 15: ' + nf(b.young, 1) + '%', 'ap-lg is-young', 'start') + tx(W - 8, 16, '65 and over: ' + nf(b.old, 1) + '%', 'ap-lg is-old', 'end') + '</g>';
-      if(g.hide === 'shape' && !st.predict) inner = pyrSvg({ groups: pyr.groups, male: pyr.male.map(function(){ return 0; }), female: pyr.female.map(function(){ return 0; }) }, { W: W, w: W, H: H, max: max, top: 26 }) + tx(W / 2, H / 2, 'The pyramid appears once you predict it.', 'ap-axl', 'middle');
+      if(g.hide === 'shape' && !st.predict){
+        // Before the prediction: the birth rates by age as bars (the table, drawn), not the pyramid that answers it.
+        var asfr = p.given.asfr, bands = ['15–19', '20–24', '25–29', '30–34', '35–39', '40–44', '45–49'], L = 46, R = W - 14, B = H - 44, T0 = 34, mxr = Math.max.apply(null, asfr) * 1.15, bw = (R - L) / 7 * 0.66;
+        inner = tx(L - 10, 20, 'births per 1,000 women', 'ap-axl', 'start') + '<line class="ap-grid" x1="' + L + '" x2="' + R + '" y1="' + B + '" y2="' + B + '"/>';
+        asfr.forEach(function(v, i){ var x = L + (R - L) * (i + 0.5) / 7, y = B - (B - T0) * v / mxr; inner += '<rect class="ap-f" x="' + r1(x - bw / 2) + '" y="' + r1(y) + '" width="' + r1(bw) + '" height="' + r1(B - y) + '" rx="3"/>' + tx(x, y - 6, String(v), 'ap-age is-sel', 'middle') + tx(x, B + 16, ph ? bands[i].split('–')[0] : bands[i], 'ap-tk', 'middle'); });
+        inner += tx((L + R) / 2, H - 6, 'age of mother (the pyramid appears once you predict it)', 'ap-axl', 'middle');
+      }
       aria = showShape ? 'Population pyramid: ' + nf(b.young, 1) + '% under 15 and ' + nf(b.old, 1) + '% 65 and over.' : 'An empty pyramid frame.';
     } else if(g.kind === 'rates'){
       inner = transSvg({ w: W, H: H, cbr: g.cbr, cdr: g.cdr, hide: true, stage: null });

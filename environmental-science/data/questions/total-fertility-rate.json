@@ -457,19 +457,18 @@
    "q": "Which changes usually lower a country’s total fertility rate? Select all that apply.",
    "options": [
     "More girls finish secondary school",
-    "Family planning becomes easier to get",
+    "The legal age of marriage is lowered",
     "More families depend on children to work on farms",
     "Infant mortality rises sharply"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Education, family planning and lower infant mortality lower TFR.",
+    "correct": "Education, family planning and lower infant mortality lower TFR; earlier marriage, child labor on farms and high infant mortality raise it.",
     "options": [
      "Right: schooling delays marriage and widens choices.",
-     "Right: people can choose how many children to have and when.",
+     "Earlier marriage adds years of child-bearing, which raises TFR.",
      "Children as farm labor raise the value of large families, raising TFR.",
      "High infant mortality tends to raise TFR."
     ]

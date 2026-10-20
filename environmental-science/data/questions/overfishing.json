@@ -615,29 +615,25 @@
    "practice": "7.B",
    "level": "analyze",
    "diff": 2,
-   "q": "Which are policies that can reduce overfishing? Select all that apply.",
+   "q": "Which of these is a policy that would reduce overfishing? Select all that apply.",
    "options": [
-    "A yearly catch limit for each species, set from surveys of the stock",
-    "A minimum size for fish that may be kept, so young fish can breed first",
-    "Closed seasons during the months when the fish spawn",
+    "A law setting a yearly catch limit for each species, based on stock surveys",
     "Government payments that lower the cost of fuel for fishing boats",
     "Removing the limits so boats compete freely for the fish",
-    "Allowing bottom trawling across the whole sea floor"
+    "Allowing bottom trawling across the whole sea floor",
+    "Sonar that helps each boat find schools of fish faster"
    ],
    "correct": [
-    0,
-    1,
-    2
+    0
    ],
    "why": {
-    "correct": "Catch limits, size limits and closed seasons all keep the catch below what the stock can replace. Fuel subsidies and open access increase fishing.",
+    "correct": "A catch limit set by law keeps the catch below what the stock can replace. The others increase fishing or are a technology, not a policy.",
     "options": [
-     "Right: a catch limit caps how much is taken.",
-     "Right: size limits let fish reproduce before they are caught.",
-     "Right: closed seasons protect spawning fish.",
+     "Right: a legal catch limit caps how much is taken.",
      "Fuel subsidies make fishing cheaper, so boats fish more.",
      "Open access is the tragedy of the commons.",
-     "Trawling everywhere destroys sea-floor habitat."
+     "Trawling everywhere destroys sea-floor habitat.",
+     "Sonar is a technology, and it makes catching fish easier, not harder."
     ]
    }
   }

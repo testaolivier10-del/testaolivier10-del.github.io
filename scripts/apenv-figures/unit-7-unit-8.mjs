@@ -424,6 +424,74 @@ FIG['human-impacts-ecosystems-indicators'] = () => {
     'Three groups of stream invertebrates along a scale from clean to polluted water. Pollution-sensitive: mayfly, stonefly and caddisfly larvae. Somewhat tolerant: dragonfly larvae, crayfish and scuds. Pollution-tolerant: midge larvae, aquatic worms and leeches. Many sensitive species mean a healthy stream; only tolerant species mean a polluted one.', s);
 };
 
+/* 8.3 Hormone, mimic and blocker at a receptor (diagram). */
+FIG['endocrine-disruptors-receptor'] = () => {
+  let s = '';
+  // receptor: a cup with a V-shaped notch on top of the cell
+  const receptor = x => path(`M${x - 50},250 L${x - 50},180 L${x - 22},180 L${x},212 L${x + 22},180 L${x + 50},180 L${x + 50},250 z`, '#DCE6C8', OLIVE, 2.5);
+  // ligand: a pointed key fits the notch (seated) ; a flat block sits on top (blocker)
+  const pointed = (x, y, col) => path(`M${x - 22},${y - 34} L${x + 22},${y - 34} L${x + 22},${y - 32} L${x},${y} L${x - 22},${y - 32} z`, col, INK, 1.5);
+  const flatBlock = (x, y, col) => path(`M${x - 24},${y - 30} L${x + 24},${y - 30} L${x + 24},${y} L${x},${y + 30} L${x - 24},${y} z`, col, INK, 1.5);
+  const panels = [
+    ['Natural hormone', ['fits the receptor and', 'sends the normal signal'], BLUE, 'hormone', GREEN, 'signal ON'],
+    ['Mimic', ['a look-alike chemical fits', 'and sends a false signal'], RED, 'mimic', RED, 'false signal ON'],
+    ['Blocker', ['sits in the receptor;', 'the hormone cannot bind'], '#7A4F9E', 'blocker', GREY, 'no signal'],
+  ];
+  panels.forEach(([title, lines, col, kind, sigCol, sig], i) => {
+    const x = 140 + i * 260;
+    s += T(x, 28, title, { size: 18, weight: 700, fill: col });
+    s += T(x, 62, lines, { size: 14, lh: 1.25 });
+    s += rect(x - 110, 250, 220, 56, '#F4F5EC', OLIVE, 1.5) + T(x, 288, 'target cell', { size: 13, fill: GREY });
+    s += receptor(x);
+    s += T(x - 78, 196, 'receptor', { size: 12, fill: OLIVE, anchor: 'end' }) + line(x - 76, 196, x - 52, 200, OLIVE, 1);
+    if (kind === 'blocker') {
+      s += flatBlock(x, 182, col);
+      s += pointed(x + 76, 140, BLUE) + T(x + 76, 92, 'hormone', { size: 12, fill: BLUE });
+      s += line(x + 58, 112, x + 94, 142, RED, 3) + line(x + 94, 112, x + 58, 142, RED, 3);
+    } else s += pointed(x, 212, col);
+    s += arrow(x, 310, x, 336, { color: sigCol, sw: 3, m: kind === 'blocker' ? 'ar' : 'arO' });
+    s += T(x, 350, sig, { size: 14, weight: 700, fill: sigCol });
+  });
+  return svg(800, 360, 'How endocrine disruptors act at a receptor',
+    'Three panels with a receptor on a target cell. Left: the natural hormone fits the receptor and turns on the normal signal. Middle: a mimic chemical with a similar shape fits and turns on a false signal. Right: a blocker sits in the receptor so the natural hormone cannot bind, and no signal is sent.', s);
+};
+
+/* 8.4 Ecosystem services of wetlands and mangroves (diagram). */
+FIG['wetlands-mangroves-services'] = () => {
+  let s = rect(0, 0, 800, 420, '#F4F6EC');
+  // land, marsh, coast, sea
+  s += rect(0, 220, 520, 200, '#D9D0B5') + rect(520, 220, 280, 200, '#5C9CC8');
+  s += path('M0,240 C80,232 160,252 240,240 C320,228 400,250 520,238 L520,262 C400,272 320,252 240,264 C160,276 80,256 0,264 z', '#7FB3D9', 'none', 0);
+  // marsh grass
+  for (let x = 160; x < 420; x += 16) s += line(x, 240, x - 4, 212, '#6B8E3A', 2.5) + line(x + 5, 240, x + 8, 216, '#6B8E3A', 2.5);
+  s += T(290, 196, 'Freshwater marsh', { size: 15, weight: 700, fill: OLIVE });
+  // groundwater arrow
+  s += arrow(290, 270, 290, 340, { color: BLUE, sw: 3, m: 'arB' });
+  s += T(290, 360, ['recharges', 'groundwater'], { size: 13, fill: BLUE, weight: 700, lh: 1.2 });
+  // mangroves at coast
+  for (let x = 530; x < 660; x += 26) {
+    s += rect(x + 9, 170, 6, 50, '#6B4E2E') + circle(x + 12, 160, 18, '#4F7A3A');
+    for (const dx of [-8, 0, 8]) s += path(`M${x + 12},${200} C${x + 12 + dx},${215} ${x + 12 + dx * 1.6},${225} ${x + 12 + dx * 2},${240}`, 'none', '#6B4E2E', 2);
+  }
+  s += T(600, 124, 'Mangroves', { size: 15, weight: 700, fill: OLIVE });
+  // waves
+  for (const y of [270, 300, 330]) s += path(`M690,${y} C705,${y - 8} 720,${y + 8} 735,${y} C750,${y - 8} 765,${y + 8} 780,${y}`, 'none', '#FFFFFF', 3);
+  s += arrow(780, 350, 690, 330, { color: '#FFFFFF', sw: 3 });
+  s += T(720, 392, ['roots slow waves', 'and storm surge'], { size: 13, fill: '#FFFFFF', weight: 700, lh: 1.2 });
+  // labels for marsh services
+  const tag = (x, y, lines) => box(x, y, 150, 52, lines, { fill: '#FFFFFF', stroke: OLIVE, size: 13 });
+  s += tag(20, 30, ['stores floodwater,', 'releases it slowly']);
+  s += tag(190, 30, ['filters sediment', 'and pollutants']);
+  s += tag(360, 30, ['soils store carbon', '(slow decay)']);
+  s += tag(20, 120, ['habitat for ducks', 'and herons']);
+  s += `<ellipse cx="622" cy="252" rx="10" ry="4" fill="#E0C35A"/>` + `<ellipse cx="600" cy="262" rx="10" ry="4" fill="#E0C35A"/>`;
+  s += tag(620, 30, ['nursery for', 'young fish']);
+  s += line(170, 160, 210, 210, OLIVE, 1.2) + line(265, 82, 265, 178, OLIVE, 1.2) + line(435, 82, 380, 206, OLIVE, 1.2) + line(165, 82, 185, 210, OLIVE, 1.2) + line(695, 82, 615, 246, OLIVE, 1.2);
+  s += T(80, 300, 'river', { size: 13, fill: BLUE, italic: true, weight: 700 });
+  return svg(800, 420, 'Ecosystem services of wetlands and mangroves',
+    'A river flows through a freshwater marsh to a coast lined with mangroves. Labels show the services: the marsh stores floodwater and releases it slowly, filters sediment and pollutants, stores carbon in slowly decaying soils, recharges groundwater, and gives habitat to ducks and herons. At the coast, mangrove roots slow waves and storm surge, and the mangroves are a nursery for young fish.', s);
+};
+
 export { FIG };
 const isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
 if (isMain) {

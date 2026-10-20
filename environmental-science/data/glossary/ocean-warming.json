@@ -1,0 +1,8 @@
+{
+ "thermal-expansion": {
+  "def": "The increase in volume of water as it warms. Thermal expansion of seawater is one of the two main causes of sea level rise, with melting land ice."
+ },
+ "thermohaline": {
+  "def": "Thermohaline circulation (the ocean conveyor belt): the slow global movement of deep ocean water, driven by differences in temperature and salinity, which set the water’s density."
+ }
+}

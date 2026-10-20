@@ -1,0 +1,12 @@
+{
+ "invasive-species-takeover": {
+  "file": "figures/invasive-species-takeover.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A graph with two y axes (invented data). The invasive mussel (left axis, per square meter) goes 0, 2, 8, 30, 110, 350, 800, 1200, 1350, 1400, 1420 in years 0 to 10: slow at first, then explosive growth, then leveling off. The native mussel (right axis, per square meter) goes 40, 40, 39, 37, 33, 26, 17, 9, 5, 3, 2: steady at first, then falling as the invader takes over."
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "topic": "nuclear-power",
+ "hook": "A single fuel pellet about the size of a fingertip holds as much energy as roughly a metric ton of coal. A nuclear plant runs on thousands of them, splitting uranium atoms to boil water, with no smoke from its stack. The catch is what the pellets become: waste that stays dangerous for longer than human history.",
+ "prereq": [
+  {
+   "q": "In a coal power plant, what spins the turbine?",
+   "options": [
+    "High-pressure steam",
+    "Burning coal directly",
+    "Cooling water",
+    "Electricity from the grid"
+   ],
+   "correct": 0,
+   "why": "Heat makes steam, and the steam spins the turbine.",
+   "review": "fossil-fuels"
+  },
+  {
+   "q": "Why is a fuel called nonrenewable?",
+   "options": [
+    "It exists in a fixed supply that forms far slower than it is used",
+    "It pollutes the air",
+    "It is expensive",
+    "It is found underground"
+   ],
+   "correct": 0,
+   "why": "Nonrenewable is about the rate of replacement.",
+   "review": "renewable-nonrenewable"
+  }
+ ],
+ "figure": {
+  "figure": "nuclear-power-reactor",
+  "caption": "A nuclear power plant: fission in the uranium fuel rods heats water, steam spins the turbine and generator, and a condenser and cooling tower remove waste heat."
+ },
+ "chain": [
+  {
+   "cause": "A neutron strikes a uranium-235 nucleus",
+   "effect": "the nucleus splits (fission), releasing heat and 2 or 3 more neutrons"
+  },
+  {
+   "cause": "Those neutrons split more nuclei, while control rods absorb the extra ones",
+   "effect": "a steady chain reaction makes a steady supply of heat"
+  },
+  {
+   "cause": "Water carries the heat to a steam generator",
+   "effect": "steam spins a turbine and generator, with no carbon dioxide released"
+  },
+  {
+   "cause": "Fission leaves radioactive products with long half-lives",
+   "effect": "spent fuel must be cooled and stored for thousands of years, and loss of cooling can cause a meltdown"
+  }
+ ],
+ "ideas": [
+  "The fuel is <b>uranium</b> enriched to about 3 to 5 percent uranium-235. <b>Nuclear fission</b> splits its nuclei, releasing heat and neutrons in a chain reaction; control rods absorb neutrons to control it.",
+  "<b>Radioactive decay</b>: unstable nuclei give off radiation and change into other elements. The <b>half-life</b> is the time for half of the radioactive atoms to decay. Amount left = start × 0.5^(time ÷ half-life).",
+  "<b>Nuclear waste</b> (spent fuel) stays dangerous for thousands of years; it is kept in cooling pools and then dry casks, and the United States has no permanent storage site.",
+  "No air pollution or carbon dioxide while running, but uranium is nonrenewable, mining it disturbs land, plants release warm water, and a <b>meltdown</b> (Three Mile Island 1979, Chernobyl 1986, Fukushima 2011) can spread radioactive material."
+ ],
+ "misconception": {
+  "wrong": "A nuclear plant's fuel is the water or steam in its reactor, and the clouds from its cooling towers are radioactive smoke.",
+  "right": "The fuel is uranium. Water only carries the heat, and the plume from a cooling tower is water vapor, not smoke."
+ },
+ "check": [
+  "env-nuclear-power-1",
+  "env-nuclear-power-3",
+  "env-nuclear-power-5",
+  "env-nuclear-power-8",
+  "env-nuclear-power-9",
+  "env-nuclear-power-10"
+ ],
+ "summary": "Nuclear power plants split uranium-235 nuclei in a controlled chain reaction; the heat makes steam that spins a turbine, with no carbon dioxide released while running. Radioactive isotopes decay with a fixed half-life, so amount left = start × 0.5^(time ÷ half-life). The costs are a nonrenewable mined fuel, waste that must be stored for thousands of years, warm water released to rivers, and the rare but severe risk of a meltdown."
+}

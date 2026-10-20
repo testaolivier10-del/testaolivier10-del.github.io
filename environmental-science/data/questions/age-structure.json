@@ -385,19 +385,18 @@
    "q": "Which features usually go with a wide-based population pyramid? Select all that apply.",
    "options": [
     "Many children compared with older adults",
-    "Rapid population growth",
+    "A falling number of births in the coming decades",
     "A large share of people over 60",
     "A population that is about to shrink"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Wide base: many young, rapid growth.",
+    "correct": "Wide base: many young, rapid growth, and rising births as the young become parents.",
     "options": [
      "Right: the wide base is the large young cohort.",
-     "Right: many young people mean many future parents.",
+     "Many young people will become parents, so births rise rather than fall.",
      "A wide base goes with a small share of older people.",
      "A wide base predicts growth."
     ]

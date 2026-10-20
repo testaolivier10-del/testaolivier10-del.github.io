@@ -120,3 +120,7 @@
    reported); hidden here so the studio stays one screen. */
 body.ls-on .env-crumb{display:none;}
 .wp-muted{fill:var(--muted);}
+/* Dark mode: the shared pill and setup-row labels (muted #8CA39B) reach only
+   4.2 to 4.4:1 on the olive tints; a lighter muted here gives 5.6:1 or more
+   (shared fix reported to the lead for tool-studio.css). */
+:root[data-theme="dark"] .ls-root .ls-pill-k,:root[data-theme="dark"] .ls-root .ls-k{color:#B4C6C0;}

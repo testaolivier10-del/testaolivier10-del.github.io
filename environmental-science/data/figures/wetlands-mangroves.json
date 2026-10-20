@@ -1,0 +1,12 @@
+{
+ "wetlands-mangroves-services": {
+  "file": "figures/wetlands-mangroves-services.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Diagram of a river flowing through a marsh to a mangrove coast. Labels show the services: the marsh stores floodwater and recharges groundwater; its plants filter sediment and pollutants; its soils store carbon; ducks and herons use it as habitat; at the coast, mangrove roots slow waves and storm surge and shelter young fish."
+ }
+}

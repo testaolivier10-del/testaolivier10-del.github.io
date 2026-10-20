@@ -80,3 +80,25 @@ plan and the countdown use the date only.
   wolf effect is debated in the literature. A teacher may prefer to drop the wolf passage (trophic-levels-s1).
 - **math-doubling builds only with Unit 3.** Its map anchor is `before: population-growth`, so the build skips it until
   Unit 3 is published (by design). Its content is checked and clean now.
+
+## Author D (Unit 5): points for a person to check (open, 2026-10-20)
+
+- **Irrigation efficiency percentages.** Sources disagree on the exact share of water each method delivers (flood
+  roughly 40-60% lost, furrow about one third, spray about a quarter or less, drip often over 90% delivered). The
+  notes teach the order (flood < furrow < spray < drip) with rough ranges; the invented data (flood 48%, furrow 64%,
+  spray 80%, drip 92%) sit inside those ranges. A teacher may want one set of reference numbers.
+- **"About 70% of freshwater withdrawals go to agriculture."** Widely cited (FAO AQUASTAT); used as a round figure in
+  the irrigation hook and notes, not in any item key.
+- **Ecological footprint figures.** Notes quote Earth's biocapacity as about 1.6 gha per person and the world average
+  footprint as about 2.6 gha per person (Global Footprint Network, recent editions; values shift slightly by year).
+  No item key depends on them beyond the invented chart's 1.6 line.
+- **FAO 2022 aquaculture figures** (94.4 million metric tons farmed vs 91.0 million wild aquatic animals) are quoted
+  from the FAO SOFIA 2024 key messages in the aquaculture notes. The aquaculture data table is labeled invented
+  (rounded, regional) because older-year values could not be checked against the FAO source in this session.
+- **Maximum sustainable yield at K/2** is taught as the logistic-model result. Mainstream, but a teacher may want a
+  sentence noting real fisheries rarely follow the model exactly (the notes already add a safety-margin caveat).
+- **Feed conversion figures** (beef about 8, pork about 4, chicken about 2 kg feed per kg; salmon about 1.3) are
+  labeled invented and sit in the range of published estimates, which vary a lot by system and by whether live
+  weight or edible meat is counted.
+- **Bank rule, not mine alone:** the whole bank has 4 of 44 select-all items with one correct option (rule: 20%).
+  Unit 5 contributes 3 of its 11. Other units' authors need to convert some of theirs.

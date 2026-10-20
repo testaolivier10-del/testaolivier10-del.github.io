@@ -70,11 +70,11 @@
     ],
     "rows": [
      [
-      "Nitrogen (N<sub>2</sub>)",
+      "Nitrogen (N₂)",
       "78.08"
      ],
      [
-      "Oxygen (O<sub>2</sub>)",
+      "Oxygen (O₂)",
       "20.95"
      ],
      [
@@ -82,7 +82,7 @@
       "0.93"
      ],
      [
-      "Carbon dioxide (CO<sub>2</sub>)",
+      "Carbon dioxide (CO₂)",
       "0.042"
      ],
      [
@@ -282,19 +282,18 @@
    "q": "Which statements about the atmosphere are correct? Select all that apply.",
    "options": [
     "Nitrogen is the most common gas in dry air",
-    "The ozone layer is in the stratosphere",
+    "The ozone layer is in the troposphere",
     "Most of the air's mass is in the thermosphere",
     "Oxygen makes up about half of dry air"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
     "correct": "Dry air is about 78% nitrogen and 21% oxygen. The ozone layer lies about 15 to 35 km up, in the stratosphere. Most of the air's mass is in the troposphere.",
     "options": [
      "Right: nitrogen is about 78% of dry air.",
-     "Right: the ozone layer is in the stratosphere.",
+     "The ozone layer is in the stratosphere, above the troposphere.",
      "The thermosphere holds a tiny fraction of the air; about 75% of the mass is in the troposphere.",
      "Oxygen is about 21% of dry air, not half."
     ]

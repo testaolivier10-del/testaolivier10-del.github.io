@@ -417,19 +417,18 @@
    "q": "Which limiting factors are density-dependent? Select all that apply.",
    "options": [
     "Food that runs short as more animals share it",
-    "A parasite that passes easily between crowded hosts",
+    "A cold snap that kills insects whatever their number",
     "A hurricane that floods a coastal marsh",
     "A wildfire started by lightning"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Density-dependent factors strengthen as a population becomes denser.",
+    "correct": "Density-dependent factors strengthen as a population becomes denser. Weather and fire act whatever the density.",
     "options": [
      "Right: shortage grows with density.",
-     "Right: transmission rises with crowding.",
+     "A cold snap acts regardless of crowding: density-independent.",
      "A storm acts whatever the population size: density-independent.",
      "Fire acts regardless of density: density-independent."
     ]

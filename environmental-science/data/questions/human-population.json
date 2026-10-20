@@ -741,20 +741,19 @@
    "diff": 2,
    "q": "Which changes would raise a country’s total population growth rate, if nothing else changes? Select all that apply.",
    "options": [
-    "The crude death rate falls",
-    "More people immigrate",
+    "The crude death rate falls while births stay the same",
+    "Both crude rates fall by 2 per 1,000",
     "The crude birth rate falls",
     "More people emigrate"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Growth rises with more births or immigrants and with fewer deaths or emigrants.",
+    "correct": "Growth rises with more births or immigrants and with fewer deaths or emigrants. A fall in births that matches a fall in deaths leaves the gap unchanged.",
     "options": [
      "Right: fewer deaths widen the gap between births and deaths.",
-     "Right: immigrants add to the population.",
+     "If births and deaths both fall by 2 per 1,000, the gap, and so the growth rate, stays the same.",
      "Fewer births lower the growth rate.",
      "Emigrants leave, lowering the growth rate."
     ]

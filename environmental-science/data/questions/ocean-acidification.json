@@ -1,0 +1,583 @@
+{
+ "stimuli": {
+  "ocean-acidification-s1": {
+   "kind": "quantitative",
+   "title": "Atmospheric CO₂ and seawater pH at one ocean station",
+   "invented": true,
+   "table": {
+    "caption": "Yearly averages of atmospheric CO₂ and surface seawater pH at an open-ocean station (invented data for practice, shaped like long-running station records)",
+    "cols": [
+     "Year",
+     "Atmospheric CO₂ (ppm)",
+     "Seawater pH"
+    ],
+    "rows": [
+     [
+      "1990",
+      "354",
+      "8.110"
+     ],
+     [
+      "1995",
+      "361",
+      "8.101"
+     ],
+     [
+      "2000",
+      "370",
+      "8.093"
+     ],
+     [
+      "2005",
+      "380",
+      "8.084"
+     ],
+     [
+      "2010",
+      "390",
+      "8.075"
+     ],
+     [
+      "2015",
+      "401",
+      "8.064"
+     ],
+     [
+      "2020",
+      "414",
+      "8.053"
+     ]
+    ]
+   }
+  },
+  "ocean-acidification-s2": {
+   "kind": "visual",
+   "title": "How dissolved CO₂ lowers ocean pH",
+   "figure": "ocean-acidification-carbonate"
+  }
+ },
+ "items": [
+  {
+   "id": "env-ocean-acidification-1",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is ocean acidification?",
+   "options": [
+    "The fall in ocean pH as seawater absorbs CO₂",
+    "The rise in ocean temperature from trapped heat",
+    "The buildup of nitrates from fertilizer runoff",
+    "Acid rain falling on lakes and streams"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ocean absorbs about a quarter of the CO₂ people release; as it dissolves, it lowers the pH of seawater.",
+    "options": [
+     "Right: dissolved CO₂ forms carbonic acid, raising hydrogen ions and lowering pH.",
+     "That is ocean warming, a related but separate change.",
+     "Nitrate runoff causes eutrophication, not acidification.",
+     "Acid rain comes from SO₂ and NOx; ocean acidification comes from CO₂ in the air."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-2",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "When CO₂ dissolves in seawater, which product makes the water more acidic?",
+   "options": [
+    "Oxygen gas released by the reaction",
+    "Hydrogen ions from carbonic acid",
+    "Calcium carbonate dissolving out of the water",
+    "Nitrogen gas from the air"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "pH measures hydrogen ions: more H⁺ means lower pH and more acidic water.",
+    "options": [
+     "The reaction does not release oxygen.",
+     "Right: CO₂ + H₂O → H₂CO₃, which releases H⁺. More H⁺ means lower pH.",
+     "Calcium carbonate is what shells are made of; acidification makes it harder to build.",
+     "Nitrogen is not part of the reaction."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-3",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does ocean acidification make it harder for corals, clams and some plankton to build shells and skeletons?",
+   "options": [
+    "Acid water is too cold for shells to form",
+    "Dissolved CO₂ blocks sunlight from reaching the reef",
+    "Hydrogen ions bind carbonate, the shell material",
+    "Acid water has too much carbonate for shells to use"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Fewer carbonate ions mean shell-builders spend more energy making calcium carbonate, and existing shells can start to dissolve.",
+    "options": [
+     "Acidification is a chemical change, not a temperature change.",
+     "CO₂ in water does not block light.",
+     "Right: H⁺ + CO₃²⁻ → HCO₃⁻ removes the carbonate these animals need.",
+     "It has less carbonate, not more."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-4",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Surface ocean pH has fallen from about 8.2 to about 8.1 since the 1700s. Which statement is correct?",
+   "options": [
+    "Seawater is now an acid, with a pH below 7",
+    "The change is too small to matter, since pH barely moved",
+    "Seawater has become neutral, with a pH of 7",
+    "Seawater is still basic, but it is less basic than before"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Acidification describes a direction: pH falling toward 7, not that the ocean is acidic.",
+    "options": [
+     "A pH of 8.1 is above 7, so it is still basic.",
+     "The pH scale is logarithmic, so 0.1 is about 26% more hydrogen ions.",
+     "8.1 is not 7.",
+     "Right: pH above 7 is basic; \"acidification\" means moving toward acid."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-5",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Describe the relationship between atmospheric CO₂ and seawater pH in the table.",
+   "stimulus": "ocean-acidification-s1",
+   "options": [
+    "As CO₂ rose, pH fell",
+    "As CO₂ rose, pH rose",
+    "CO₂ and pH both stayed the same",
+    "pH fell until 2005, then rose"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An inverse relationship: more CO₂ in the air, more CO₂ dissolved, more carbonic acid, lower pH.",
+    "options": [
+     "Right: CO₂ went from 354 to 414 ppm while pH fell from 8.110 to 8.053.",
+     "pH fell in every five-year step.",
+     "Both changed in every step.",
+     "pH kept falling through 2020."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-6",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By how much did the seawater pH change from 1990 to 2020? Give the change as later minus earlier.",
+   "stimulus": "ocean-acidification-s1",
+   "why": {
+    "correct": "$8.053 - 8.110 = -0.057$ pH units."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      8.053,
+      8.11
+     ]
+    },
+    "tol": 0.0005,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        8.11,
+        8.053
+       ]
+      },
+      "why": "Subtract earlier from later: 8.053 − 8.110. pH fell, so the change is negative."
+     },
+     {
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        8.11,
+        8.053
+       ]
+      },
+      "why": "That is a percent change. The question asks for the change in pH units: 8.053 − 8.110."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-7",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in atmospheric CO₂ from 1990 to 2020 in the table, then the answer.",
+   "stimulus": "ocean-acidification-s1",
+   "why": {
+    "correct": "$\\frac{(414 - 354)}{354} \\times 100 \\approx 16.9\\%$"
+   },
+   "setup": {
+    "answer": "(414 - 354) / 354 * 100",
+    "mustUse": [
+     "414",
+     "354"
+    ],
+    "mistakes": [
+     {
+      "expr": "(414 - 354) / 414 * 100",
+      "why": "Divide by the old value, 354 ppm in 1990, not the new value."
+     },
+     {
+      "expr": "414 - 354 / 354 * 100",
+      "why": "Without brackets the division happens first. Write (414 − 354) ÷ 354 × 100."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       354,
+       414
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 60,
+       "why": "60 ppm is the change in CO₂. Divide by 354 and multiply by 100 for the percent: about 16.9%."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-ocean-acidification-8",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 3,
+   "q": "The pH scale is logarithmic: hydrogen ion concentration multiplies by 10 for each drop of 1 pH unit, so it multiplies by 10 raised to the drop. Using the table, by what factor did hydrogen ion concentration increase from 1990 to 2020?",
+   "stimulus": "ocean-acidification-s1",
+   "why": {
+    "correct": "$10^{(8.110 - 8.053)} = 10^{0.057} \\approx 1.14$: about 14% more hydrogen ions in 30 years."
+   },
+   "numeric": {
+    "from": {
+     "fn": "pow",
+     "args": [
+      10,
+      {
+       "fn": "sub",
+       "args": [
+        8.11,
+        8.053
+       ]
+      }
+     ]
+    },
+    "places": 2,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        8.11,
+        8.053
+       ]
+      },
+      "why": "0.057 is the drop in pH, not the factor. Raise 10 to that power: 10^0.057."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        10,
+        {
+         "fn": "sub",
+         "args": [
+          8.11,
+          8.053
+         ]
+        }
+       ]
+      },
+      "why": "Multiply by 10 for each whole unit means 10 raised to the drop, not 10 times the drop: 10^0.057."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-9",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the figure, what does CO₂ form when it dissolves in water?",
+   "stimulus": "ocean-acidification-s2",
+   "options": [
+    "Carbonic acid (H₂CO₃)",
+    "Calcium carbonate (CaCO₃)",
+    "Ozone (O₃)",
+    "Sulfuric acid (H₂SO₄)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dissolved CO₂ reacts with water to form carbonic acid, a weak acid.",
+    "options": [
+     "Right: CO₂ + H₂O → H₂CO₃.",
+     "Calcium carbonate is the shell material, not the first product.",
+     "Ozone is not part of this reaction.",
+     "Sulfuric acid comes from SO₂ in acid rain."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-10",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the figure, why does adding H⁺ reduce the carbonate ions in seawater?",
+   "stimulus": "ocean-acidification-s2",
+   "options": [
+    "H⁺ turns carbonate into CO₂ gas, which escapes",
+    "H⁺ combines with CO₃²⁻ to form HCO₃⁻",
+    "H⁺ freezes carbonate into sea ice",
+    "H⁺ makes carbonate sink to the deep ocean"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Fewer carbonate ions remain for animals that build calcium carbonate.",
+    "options": [
+     "In the figure, H⁺ and carbonate form bicarbonate, not CO₂ gas.",
+     "Right: each hydrogen ion that grabs a carbonate ion turns it into bicarbonate.",
+     "Freezing is not part of the chemistry.",
+     "The carbonate is converted, not moved."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-11",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Based on the figure’s pH scale, about how many times more hydrogen ions would surface seawater have at pH 7.8 than at pH 8.1?",
+   "stimulus": "ocean-acidification-s2",
+   "options": [
+    "About 0.3 times",
+    "About 3 times",
+    "About 2 times",
+    "About 30 times"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Factor = $10^{\\text{drop}}$: $10^{(8.1 - 7.8)} = 10^{0.3} \\approx 2.0$.",
+    "options": [
+     "0.3 is the drop in pH, not the factor.",
+     "Each whole unit is ten times; 0.3 units is about 2 times, not 3.",
+     "Right: a drop of 0.3 pH units is $10^{0.3} \\approx 2$ times the hydrogen ions.",
+     "That would be a drop of about 1.5 pH units."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-12",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "specific",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how burning fossil fuels harms oysters and other shell-building animals.",
+   "stimulus": "ocean-acidification-s2",
+   "why": {
+    "correct": "Every link: CO₂, carbonic acid, more H⁺, lower pH, less carbonate, weaker shells."
+   },
+   "specific": {
+    "frame": "More CO₂ dissolves in seawater and forms ___, so pH ___ and carbonate ions ___, making it harder to build ___.",
+    "slots": {
+     "acid": {
+      "label": "What forms",
+      "options": [
+       "carbonic acid",
+       "sulfuric acid",
+       "nitric acid"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Sulfuric acid forms from SO₂ in acid rain, not from CO₂.",
+       "2": "Nitric acid forms from NOx, not from CO₂."
+      }
+     },
+     "ph": {
+      "label": "pH",
+      "options": [
+       "decreases",
+       "increases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More H⁺ means lower pH."
+      }
+     },
+     "co3": {
+      "label": "Carbonate ions",
+      "options": [
+       "decrease",
+       "increase"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "H⁺ combines with carbonate, so carbonate falls."
+      }
+     },
+     "shell": {
+      "label": "What is harder to build",
+      "options": [
+       "calcium carbonate shells",
+       "cell membranes",
+       "muscle tissue"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The chemistry affects carbonate, the shell material.",
+       "2": "Muscle tissue is not made of carbonate."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "carbonate",
+      "pH",
+      "CO2",
+      "shell"
+     ]
+    },
+    "model": "Burning fossil fuels adds CO₂ to the air; more CO₂ dissolves in seawater and forms carbonic acid, so pH decreases and carbonate ions decrease because hydrogen ions bind them, making it harder for oysters to build calcium carbonate shells."
+   }
+  },
+  {
+   "id": "env-ocean-acidification-13",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "multi",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which organisms are most directly threatened by ocean acidification? Select all that apply.",
+   "options": [
+    "Reef-building corals",
+    "Oysters and clams",
+    "Kelp, a large brown alga",
+    "Sea turtles"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Animals that make calcium carbonate shells or skeletons, including some plankton at the base of food webs, are hit first.",
+    "options": [
+     "Right: coral skeletons are calcium carbonate.",
+     "Right: their shells are calcium carbonate.",
+     "Kelp does not build a carbonate shell; some algae may even grow faster with more CO₂.",
+     "A sea turtle shell is bone covered with keratin, not calcium carbonate built from seawater, so turtles are not hit first."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-14",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which action would do the most to slow ocean acidification worldwide?",
+   "options": [
+    "Adding fertilizer to the open ocean",
+    "Cutting CO₂ emissions from burning fossil fuels",
+    "Phasing out CFCs",
+    "Banning sulfur in gasoline"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Acidification is driven by CO₂ itself, so the global fix is cutting CO₂ emissions.",
+    "options": [
+     "Fertilizer causes algal blooms and dead zones.",
+     "Right: less CO₂ in the air means less dissolving into the ocean.",
+     "CFCs destroy ozone; they are not the cause of acidification.",
+     "That reduces acid rain, not ocean acidification."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-acidification-15",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does ocean acidification track the Keeling curve so closely?",
+   "options": [
+    "Warmer air directly lowers seawater pH",
+    "The Keeling curve measures ocean pH",
+    "The ocean absorbs part of the CO₂ added to the air",
+    "Acid rain carries CO₂ into the sea"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The surface ocean and the air exchange CO₂, so ocean chemistry follows the atmosphere.",
+    "options": [
+     "Temperature affects how much CO₂ dissolves, but the cause is the CO₂ itself.",
+     "The Keeling curve measures CO₂ in the air.",
+     "Right: as CO₂ in the air rises, more dissolves at the surface.",
+     "Acid rain is mostly SO₂ and NOx; CO₂ dissolves directly from the air."
+    ]
+   }
+  }
+ ]
+}

@@ -343,19 +343,18 @@
    "q": "Which changes would lower the carrying capacity of a lake for a fish species? Select all that apply.",
    "options": [
     "A drought that shrinks the lake by half",
-    "Runoff that fills spawning areas with mud",
+    "A wet year that raises the lake’s water level",
     "A rise in the number of insects the fish eat",
     "New underwater plants that shelter young fish"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Carrying capacity falls when resources or space shrink.",
+    "correct": "Carrying capacity falls when resources or space shrink and rises when they grow.",
     "options": [
      "Right: less water means less space and food.",
-     "Right: lost spawning habitat lowers the number of fish the lake can support.",
+     "More water means more space and food, which raises carrying capacity.",
      "More food would raise carrying capacity.",
      "More shelter would raise carrying capacity."
     ]

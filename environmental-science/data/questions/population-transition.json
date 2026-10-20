@@ -373,19 +373,18 @@
    "q": "Which changes usually help move a country from stage 2 to stage 3? Select all that apply.",
    "options": [
     "More girls stay in school and more women work for pay",
-    "Infant mortality falls, so families need fewer births",
+    "Infant mortality rises, so families need more births",
     "Most families stay on farms where children work",
     "Clean water first reaches villages"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Stage 3 is driven by the falling birth rate.",
+    "correct": "Stage 3 is driven by the falling birth rate: schooling, paid work, low infant mortality and family planning all lower it.",
     "options": [
      "Right: both lower the birth rate.",
-     "Right: lower infant mortality is followed by lower fertility.",
+     "Rising infant mortality pushes fertility up, the opposite of stage 3.",
      "Farm work by children keeps the birth rate high.",
      "Clean water lowers the death rate, which is the change into stage 2."
     ]

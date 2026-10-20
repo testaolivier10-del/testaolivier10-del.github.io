@@ -352,19 +352,18 @@
    "q": "Which statements about survivorship curves are correct? Select all that apply.",
    "options": [
     "Survivors are usually plotted on a log scale",
-    "A Type I curve stays high until old age",
+    "A Type I curve drops steeply early in life",
     "A Type III curve shows high survival among the young",
     "A Type II curve drops steeply at old age"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Type I high then late drop; Type II steady; Type III early drop.",
+    "correct": "Type I high then late drop; Type II steady; Type III early drop. Only the log scale statement is correct.",
     "options": [
      "Right: a log scale shows both large and small numbers clearly.",
-     "Right: most individuals survive until late in life.",
+     "Type I stays high until old age; an early drop is Type III.",
      "Type III shows low survival among the young.",
      "A steep drop at old age is Type I."
     ]

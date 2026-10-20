@@ -1,0 +1,72 @@
+{
+ "topic": "endocrine-disruptors",
+ "hook": "Biologists sampling a river below a city's wastewater pipe found something strange: more than half of the male bass had egg cells growing in their testes. Upstream, almost none did. The water looked clean. The culprit was a set of chemicals at a few parts per trillion that the fish's bodies mistook for their own hormones.",
+ "prereq": [
+  {
+   "q": "Which kind of pollution comes from one identifiable place, such as a pipe?",
+   "options": [
+    "A point source",
+    "A nonpoint source",
+    "A natural source",
+    "A secondary pollutant"
+   ],
+   "correct": 0,
+   "why": "A pipe is a single outlet, so it is a point source.",
+   "review": "pollution-sources"
+  },
+  {
+   "q": "What are pesticides designed to do?",
+   "options": [
+    "Kill or control pests such as insects and weeds",
+    "Add nitrogen to soil",
+    "Raise the pH of soil",
+    "Make crops grow taller"
+   ],
+   "correct": 0,
+   "why": "Pesticides (insecticides, herbicides and others) kill or control pests.",
+   "review": "pest-control"
+  }
+ ],
+ "figure": {
+  "figure": "endocrine-disruptors-receptor",
+  "caption": "A hormone fits its receptor and sends a signal. An endocrine disruptor can fit the same receptor and send a false signal, or block the real one."
+ },
+ "chain": [
+  {
+   "cause": "Hormones from glands travel in the blood and bind to receptors on cells",
+   "effect": "the cells switch on growth, development or reproduction"
+  },
+  {
+   "cause": "An endocrine disruptor has a shape similar to a hormone",
+   "effect": "it binds the receptor and sends a false signal, or blocks the real hormone"
+  },
+  {
+   "cause": "Exposure happens during development, even at very low doses",
+   "effect": "reproductive organs, growth and behavior develop abnormally"
+  },
+  {
+   "cause": "Many such chemicals pass through city wastewater plants and persist",
+   "effect": "fish, frogs and other wildlife downstream show intersex and reproductive effects"
+  }
+ ],
+ "ideas": [
+  "An <b>endocrine disruptor</b> interferes with hormones: it mimics a hormone, blocks its receptor, or changes how much is made.",
+  "Examples: the herbicide atrazine, BPA and phthalates in some plastics, and synthetic estrogen from birth control pills that passes into wastewater.",
+  "Effects: intersex fish, frogs with abnormal sex organs, thinner eggshells, and in people reproductive, developmental and some cancer risks. Effects can appear at very low doses.",
+  "Reduce them by limiting their use, extra cleaning steps at wastewater plants, proper disposal of medicines, and safer substitutes."
+ ],
+ "misconception": {
+  "wrong": "A chemical at a few parts per billion is too dilute to matter.",
+  "right": "Hormones themselves work at tiny concentrations, so chemicals that mimic them can change development at very low doses."
+ },
+ "check": [
+  "env-endocrine-disruptors-9",
+  "env-endocrine-disruptors-1",
+  "env-endocrine-disruptors-2",
+  "env-endocrine-disruptors-3",
+  "env-endocrine-disruptors-5",
+  "env-endocrine-disruptors-6",
+  "env-endocrine-disruptors-11"
+ ],
+ "summary": "Endocrine disruptors are chemicals that interfere with hormones by mimicking them, blocking their receptors or changing how much is made. Atrazine, BPA, phthalates and synthetic estrogens are examples. Even at very low doses they can cause intersex fish, abnormal frog development and human reproductive and developmental problems. Limits on use, extra cleaning steps at wastewater plants and safe medicine disposal reduce them."
+}

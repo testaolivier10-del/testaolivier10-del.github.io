@@ -30,7 +30,7 @@
 .ec-muted{fill:var(--muted);}
 .ec-c-sun{fill:var(--ec-sun-ink);} .ec-c-you{fill:var(--ec-you);} .ec-c-wet{fill:var(--ec-wet-ink);} .ec-c-dry{fill:var(--ec-dry-ink);}
 .ec-c-nino{fill:var(--ec-nino);} .ec-c-nina{fill:var(--ec-nina);}
-.ec-on-night{fill:#fff;opacity:.9;font-weight:800;paint-order:stroke;stroke:rgba(0,0,0,.35);stroke-width:2px;}
+.ec-halo{paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;font-weight:800;}
 .ec-on-deep{fill:#E6F1FA;font-weight:800;}
 .ec-on-land{fill:#2E2414;font-weight:900;}
 :root[data-theme="dark"] .ec-on-land{fill:#F4EBDD;}
@@ -77,7 +77,7 @@
 /* winds and cells */
 .ec-belt-wet{fill:var(--ec-wet);opacity:.28;}
 .ec-belt-dry{fill:var(--ec-dry);opacity:.38;}
-.ec-wind line{stroke:var(--ink);stroke-width:2;stroke-linecap:round;} .ec-wind polygon{fill:var(--ink);}
+.ec-wind line{stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;} .ec-wind polygon{fill:var(--ink);}
 .ec-strip{fill:var(--paper);stroke:var(--line);stroke-width:1.2;}
 .ec-cellbox{fill:var(--ec-cell);stroke:var(--ec-wet);stroke-width:1.4;opacity:.9;}
 .ec-cellarrow line{stroke:var(--ec-wet);stroke-width:2;} .ec-cellarrow polygon{fill:var(--ec-wet);}
@@ -98,7 +98,7 @@
 .ec-cbase{stroke:var(--ec-wet);stroke-width:1.5;stroke-dasharray:6 4;}
 .ec-path{fill:none;stroke:var(--cink);stroke-width:2.2;stroke-dasharray:2 5;stroke-linecap:round;}
 .ec-parcel{fill:var(--cink);stroke:var(--white);stroke-width:2.5;}
-.ec-tree{fill:var(--ec-tree);}
+.ec-tree{fill:var(--ec-tree);} .ec-trunk{fill:#6B4F2A;}
 .ec-cactus{fill:none;stroke:#5E8C3A;stroke-width:2.4;stroke-linecap:round;}
 .ec-shrub{fill:#9B8B5E;}
 /* El Niño */
