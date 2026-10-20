@@ -45,12 +45,12 @@
     "correct": "$\\frac{4{,}500{,}000\\,\\text{L}}{30{,}000\\,\\text{people}} = 150$ L per person per day."
    },
    "numeric": {
-    "unit": "L/person",
+    "unit": "L/person/day",
     "units": [
-     "L",
-     "liters per person",
+     "liters per person per day",
      "L per person per day",
-     "liters"
+     "L/person",
+     "liters per person"
     ],
     "from": {
      "fn": "perCapita",
@@ -227,12 +227,13 @@
    "diff": 2,
    "q": "A school of 800 students throws away 2.4 metric tons of food each month. How many kilograms is that per student per month? (1 metric ton = 1,000 kg.)",
    "why": {
-    "correct": "2.4 metric tons = 2,400 kg. $\\frac{2{,}400\\,\\text{kg}}{800\\,\\text{students}} = 3$ kg per student."
+    "correct": "2.4 metric tons = 2,400 kg. $\\frac{2{,}400\\,\\text{kg}}{800\\,\\text{students}} = 3$ kg per student per month."
    },
    "numeric": {
-    "unit": "kg/student",
+    "unit": "kg/student/month",
     "units": [
-     "kg",
+     "kg per student per month",
+     "kg/student",
      "kg per student"
     ],
     "tol": 0.05,
@@ -293,11 +294,11 @@
    "numeric": {
     "unit": "metric tons/person",
     "units": [
-     "metric tons",
-     "t",
-     "tonnes",
+     "t/person",
+     "tonnes per person",
      "metric tons per person",
-     "tonnes per person"
+     "metric tons/person/yr",
+     "metric tons per person per year"
     ],
     "tol": 0.005,
     "from": {
@@ -358,8 +359,9 @@
    "numeric": {
     "unit": "kg/person",
     "units": [
-     "kg",
-     "kg per person"
+     "kg per person",
+     "kg/person/yr",
+     "kg per person per year"
     ],
     "from": {
      "fn": "mul",

@@ -136,7 +136,7 @@ test('"Make it specific": slots graded exactly; the free-text flags are hints on
    and a bare unit on a rate key loses the unit point. */
 test('metric tons and rates in every spelling', () => {
   const G = B.window.ApEnvGrade;
-  for (const u of ['t', 'MT', 'tonne', 'tonnes', 'metric ton', 'metric tons']) assert.equal(G.normUnit(u), G.normUnit('metric tons'), u);
+  for (const u of ['t', 'MT', 'tonne', 'tonnes', 'metric ton', 'metric tons', 'metric tonnes', 'Metric Tons']) assert.equal(G.normUnit(u), G.normUnit('metric tons'), u);
   assert.notEqual(G.normUnit('Mt'), G.normUnit('metric tons'), 'Mt is a megaton');
   assert.notEqual(G.normUnit('t'), G.normUnit('ton'), 'a metric ton is not a short ton');
   for (const [a, b] of [['°C per decade', '°C/decade'], ['degrees C per decade', '°C/decade'], ['kg per person per year', 'kg/person/yr'], ['kg/person/year', 'kg per person per yr'], ['people per square kilometer', 'people/km²'], ['nanograms per liter', 'ng/L']]) assert.equal(G.normUnit(a), G.normUnit(b), `${a} = ${b}`);

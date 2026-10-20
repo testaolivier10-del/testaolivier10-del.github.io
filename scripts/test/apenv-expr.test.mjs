@@ -89,6 +89,22 @@ test('units authors needed: seconds, nanograms, kiloliters, degrees, decades, me
   assert.equal(X.gradeSetup(item, '50000 L/s * 24 h').correct, false);
 });
 
+/* u5 review: "metric tons" typed in a setup was read letter by letter
+   ("tric is not a unit") while "t" worked. */
+test('metric tons in a setup: every spelling is the tonne, as t and MT are', () => {
+  for (const s of ['40 metric tons', '40 metric ton', '40 Metric Tons', '40 metric tonnes', '40 metric  tonne', '40 t', '40 MT', '40 tonnes']) {
+    const r = X.evaluate(s); assert.ok(r.ok, `${s}: ${r.error}`);
+    assert.equal(r.value, 40, s); assert.equal(X.dimText(r.dims), 'tonne', s);
+  }
+  assert.equal(X.dimText(X.evaluate('2 metric tons/ha * 30 ha').dims), 'tonne');
+  assert.equal(X.dimText(X.evaluate('40 metric tons * 1000 kg/t').dims), 'kg');
+  assert.deepEqual({ ...X.unitDims('metric tons/ha') }, { tonne: 1, ha: -1 });
+  const item = { setup: { answer: '2 t/ha * 30 ha', unit: 'metric tons', requireUnits: true } };
+  for (const s of ['2 metric tons/ha * 30 ha', '2 t/ha * 30 ha', '2 MT/ha * 30 ha']) assert.equal(X.gradeSetup(item, s).correct, true, s);
+  assert.equal(X.gradeSetup(item, '2 metric tons/ha * 30').correct, false, 'units must cancel to metric tons (ha left over)');
+  assert.equal(X.evaluate('40 tons').ok && X.dimText(X.evaluate('40 tons').dims), 'ton', 'a short ton stays a ton');
+});
+
 test('a conversion factor with a compound unit divides as one quantity: 5000 W / 1000 W/kW is 5 kW', () => {
   for (const s of ['5000 W / 1000 W/kW', '5000 W / (1000 W/kW)', '5000 W * 1 kW/1000 W', '1500 W * 4 h / 1000 W/kW']) {
     const r = X.evaluate(s); assert.ok(r.ok, s);

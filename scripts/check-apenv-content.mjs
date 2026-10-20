@@ -348,7 +348,7 @@ export function rateUnitWarning(q) {
   if (unit && (/\//.test(unit) || /\bper\b/.test(unit) || Grade.normUnit(unit).includes('-'))) return null;
   if (['%', 'times', 'ppm', 'ppb'].includes(unit)) return null;
   const sents = strip(q.q).split(/(?<=[.?])\s+/);
-  const ask = sents.filter(x => /\?/.test(x) || /^(Calculate|Give|Find|Write|Estimate|Determine|What)\b/.test(x)).join(' ').replace(/parts per (million|billion)/gi, '').replace(/\bat [^,.?]*\bper\b[^,.?]*,/gi, '');
+  const ask = sents.filter(x => /\?/.test(x) || /^(Calculate|Give|Find|Write|Estimate|Determine|What)\b/.test(x)).join(' ').replace(/parts per (million|billion)/gi, '').replace(/\bat (?:[^,.?]|\.\d)*\bper\b[^,.?]*,/gi, '');
   const m = ask.match(/\bper\s+(?!cent\b)([a-z]+)/i);
   return m ? `item ${q.id}: the question asks for a rate ("per ${m[1]}") but the key unit "${unit || '(none)'}" has no "/"; key it as a rate (X/${m[1]}) unless the stem fixes the "per" and a plain unit is meant` : null;
 }

@@ -272,14 +272,13 @@
    "practice": "6.C",
    "level": "apply",
    "diff": 2,
-   "q": "What is Country N’s crude birth rate? Type the number of births per 1,000 people (the number only).",
+   "q": "What is Country N’s crude birth rate? Give it in births per 1,000 people.",
    "stimulus": "human-population-s2",
    "why": {
     "correct": "$\\frac{1{,}100{,}000}{50{,}000{,}000} \\times 1{,}000 = 22$ births per 1,000 people."
    },
    "numeric": {
     "unit": "births per 1,000 people",
-    "askUnit": false,
     "from": {
      "fn": "mul",
      "args": [

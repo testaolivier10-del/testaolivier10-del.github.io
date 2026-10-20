@@ -233,25 +233,29 @@
    "q": "The lake bottom covers 3,000 m². Write the setup for the total number of invasive mussels in year 10, then the answer.",
    "stimulus": "invasive-species-s1",
    "why": {
-    "correct": "$1{,}420\\,\\text{per m}^{2} \\times 3{,}000\\,\\text{m}^{2} = 4{,}260{,}000$ mussels, about 4.3 million."
+    "correct": "$1{,}420\\,\\frac{\\text{mussels}}{\\text{m}^{2}} \\times 3{,}000\\,\\text{m}^{2} = 4{,}260{,}000$ mussels, about 4.3 million."
    },
    "setup": {
-    "answer": "1420 / m2 * 3000 m2",
+    "answer": "1420 mussels/m2 * 3000 m2",
     "mustUse": [
      "1420",
      "3000"
     ],
     "mistakes": [
      {
-      "expr": "1420 / 3000",
+      "expr": "1420 mussels/m2 / 3000 m2",
       "why": "Density times area gives the total. Multiply 1,420 per m² by 3,000 m²."
      },
      {
-      "expr": "1400 * 3000",
+      "expr": "1400 mussels/m2 * 3000 m2",
       "why": "In year 10 the density is 1,420 per m², not 1,400 (that is year 9)."
      }
     ],
     "then": {
+     "unit": "mussels",
+     "units": [
+      "mussel"
+     ],
      "from": {
       "fn": "mul",
       "args": [
@@ -265,7 +269,10 @@
        "why": "1,420 is the number per square meter. Multiply by the 3,000 m² of lake bottom: 4,260,000 mussels."
       }
      ]
-    }
+    },
+    "units": [
+     "mussels"
+    ]
    }
   },
   {

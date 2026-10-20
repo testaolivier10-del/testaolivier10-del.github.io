@@ -549,18 +549,18 @@
     "correct": "$50{,}000\\,\\frac{\\text{L}}{\\text{s}} \\times 86{,}400\\,\\text{s} = 4{,}320{,}000{,}000\\,\\text{L}$, or $4.32 \\times 10^{9}$ L (4.32 billion liters)."
    },
    "setup": {
-    "answer": "50000 * 86400",
+    "answer": "50000 L/s * 86400 s",
     "mustUse": [
      "50000",
      "86400"
     ],
     "mistakes": [
      {
-      "expr": "50000 * 24",
+      "expr": "50000 L/s * 24 h",
       "why": "There are 86,400 seconds in a day, not 24. Use 24 × 60 × 60 = 86,400."
      },
      {
-      "expr": "50000 / 86400",
+      "expr": "50000 L/s / 86400 s",
       "why": "Multiply the rate by the time so seconds cancel."
      }
     ],
@@ -582,7 +582,9 @@
        "why": "1,200,000 uses 24 instead of 86,400 seconds in a day."
       }
      ]
-    }
+    },
+    "unit": "L",
+    "requireUnits": true
    }
   }
  ]

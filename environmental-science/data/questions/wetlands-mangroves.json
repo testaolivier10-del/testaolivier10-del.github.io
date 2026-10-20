@@ -477,7 +477,7 @@
     "correct": "$120\\,\\text{ha} \\times \\frac{10{,}000\\,\\text{m}^{2}}{1\\,\\text{ha}} \\times 0.5\\,\\text{m} = 600{,}000\\,\\text{m}^{3}$."
    },
    "setup": {
-    "answer": "120 * 10000 * 0.5",
+    "answer": "120 ha * 10000 m2/ha * 0.5 m",
     "mustUse": [
      "120",
      "10000",
@@ -485,11 +485,11 @@
     ],
     "mistakes": [
      {
-      "expr": "120 * 0.5",
+      "expr": "120 ha * 0.5 m",
       "why": "Convert hectares to square meters first (× 10,000 m² per ha) so the answer is in cubic meters."
      },
      {
-      "expr": "120 * 10000",
+      "expr": "120 ha * 10000 m2/ha",
       "why": "That is the area. Multiply by the depth, 0.5 m, to get a volume."
      }
     ],
@@ -523,7 +523,9 @@
        "why": "Multiply by the depth, 0.5 m, not divide: 1,200,000 × 0.5 = 600,000 m³."
       }
      ]
-    }
+    },
+    "unit": "m3",
+    "requireUnits": true
    }
   }
  ]

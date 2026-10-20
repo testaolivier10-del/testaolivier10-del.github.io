@@ -82,6 +82,10 @@
     s = s.replace(/([0-9.)])\s*[xX]\s*(?=[0-9.(])/g, '$1*');
     // A space between digits is not a thousands separator here; a comma is.
     s = s.replace(/(\d),(\d{3})(?!\d)/g, '$1$2');
+    // "metric ton(s)" and "metric tonne(s)" are one unit, the metric ton,
+    // read as its symbol t (shown as t in the key); letter by letter,
+    // "metric" was m times e times "tric" (u5 review).
+    s = s.replace(/\bmetric\s+ton(?:ne)?s?\b/gi, 't');
     return s;
   }
   function tokenize(src, names){

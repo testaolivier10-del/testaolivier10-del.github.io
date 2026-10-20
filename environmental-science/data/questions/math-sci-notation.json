@@ -106,8 +106,9 @@
    "numeric": {
     "unit": "kg/person",
     "units": [
-     "kg",
-     "kg per person"
+     "kg per person",
+     "kg/person/yr",
+     "kg per person per year"
     ],
     "from": {
      "fn": "div",
@@ -297,14 +298,15 @@
    "q": "How many liters of water does Lake City use per person each year?",
    "stimulus": "math-sci-notation-s1",
    "why": {
-    "correct": "1.5 million = $1.5 \\times 10^{6}$. $\\frac{9.0 \\times 10^{10}\\,\\text{L}}{1.5 \\times 10^{6}\\,\\text{people}} = 6.0 \\times 10^{4}$ L per person, which is 60,000 L."
+    "correct": "1.5 million = $1.5 \\times 10^{6}$. $\\frac{9.0 \\times 10^{10}\\,\\text{L}}{1.5 \\times 10^{6}\\,\\text{people}} = 6.0 \\times 10^{4}$ L per person per year, which is 60,000 L."
    },
    "numeric": {
-    "unit": "L/person",
+    "unit": "L/person/yr",
     "units": [
-     "L",
-     "liters per person",
-     "liters"
+     "liters per person per year",
+     "L per person per year",
+     "L/person",
+     "liters per person"
     ],
     "from": {
      "fn": "perCapita",
@@ -348,7 +350,8 @@
       "value": 0.133333333333,
       "why": "You divided North Falls by Lake City. \"How many times more does Lake City use\" puts Lake City on top."
      }
-    ]
+    ],
+    "unit": "times"
    }
   },
   {

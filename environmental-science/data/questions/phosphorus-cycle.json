@@ -396,7 +396,8 @@
       "value": 0.142857142857,
       "why": "You divided A by C. Put the ponds you compare (C) on top: 28 / 4."
      }
-    ]
+    ],
+    "unit": "times"
    }
   },
   {

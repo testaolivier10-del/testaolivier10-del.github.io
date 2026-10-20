@@ -367,7 +367,8 @@
       "value": 5.5,
       "why": "5.5 mg/L is the difference. \"How many times\" asks for a ratio: 6.4 / 0.9."
      }
-    ]
+    ],
+    "unit": "times"
    }
   },
   {

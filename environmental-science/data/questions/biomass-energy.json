@@ -315,20 +315,20 @@
     "correct": "$75 - 55 = 20$ GJ per hectare."
    },
    "setup": {
-    "answer": "75 GJ - 55 GJ",
-    "unit": "GJ",
+    "answer": "75 GJ/ha - 55 GJ/ha",
+    "unit": "GJ/ha",
     "mustUse": [
      "75",
      "55"
     ],
     "mistakes": [
      {
-      "expr": "75 GJ + 55 GJ",
+      "expr": "75 GJ/ha + 55 GJ/ha",
       "why": "Net energy subtracts the energy put in from the energy you get out."
      }
     ],
     "then": {
-     "unit": "GJ",
+     "unit": "GJ/ha",
      "from": {
       "fn": "sub",
       "args": [
@@ -337,8 +337,8 @@
       ]
      },
      "units": [
-      "GJ/ha",
-      "GJ per hectare"
+      "GJ per hectare",
+      "GJ/hectare"
      ],
      "mistakes": [
       {

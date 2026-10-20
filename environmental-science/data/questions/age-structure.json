@@ -216,7 +216,7 @@
     "correct": "Divide: $\\frac{14.9}{1.8} \\approx 8.3$. There are more than eight young people for every person aged 60 or over."
    },
    "numeric": {
-    "unit": "",
+    "unit": "times",
     "places": 1,
     "from": {
      "fn": "magnification",

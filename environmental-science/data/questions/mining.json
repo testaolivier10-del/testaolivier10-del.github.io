@@ -378,7 +378,8 @@
       "value": 30,
       "why": "pH units multiply, not add: three units is 10 × 10 × 10 = 1,000, not 3 × 10."
      }
-    ]
+    ],
+    "unit": "times"
    },
    "stimulus": "mining-s1"
   },

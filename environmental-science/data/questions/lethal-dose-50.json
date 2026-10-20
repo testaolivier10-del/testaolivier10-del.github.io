@@ -145,7 +145,7 @@
    "practice": "6.B",
    "level": "apply",
    "diff": 2,
-   "q": "The LD50 of a pesticide in rats is 60 mg/kg. What dose of pesticide would be expected to kill half of a group of rats that each have a mass of 0.40 kg? Give the dose per rat in milligrams.",
+   "q": "The LD50 of a pesticide in rats is 60 mg/kg. What dose of pesticide would be expected to kill half of a group of rats that each have a mass of 0.40 kg? Give the dose for one rat in milligrams.",
    "why": {
     "correct": "The setup multiplies the dose per kilogram by the body mass, so kilograms cancel: $60\\,\\frac{\\text{mg}}{\\text{kg}} \\times 0.40\\,\\text{kg} = 24\\,\\text{mg}$."
    },
@@ -391,7 +391,8 @@
       },
       "why": "A difference does not say how many times as toxic. Divide the LD50s: 4,000 mg/kg ÷ 4 mg/kg = 1,000."
      }
-    ]
+    ],
+    "unit": "times"
    }
   },
   {

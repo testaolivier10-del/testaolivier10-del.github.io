@@ -116,7 +116,7 @@
     if(!u) return '';
     if(/^(?:×|x|X|times|-?fold)$/.test(u)) return 'times';
     u = u.replace(/\b(?:degrees?|deg)\s*(C|F|celsius|fahrenheit)\b/gi, function(m, x){ return '°' + x.charAt(0).toUpperCase(); }).replace(/°\s+([CF])\b/g, '°$1')
-      .replace(/\b(metric ton)s?\b/gi, 'tonne').replace(/kilowatt[- ]hours?/gi, 'kWh').replace(/megawatt[- ]hours?/gi, 'MWh')
+      .replace(/\bmetric\s+ton(?:ne)?s?\b/gi, 'tonne').replace(/kilowatt[- ]hours?/gi, 'kWh').replace(/megawatt[- ]hours?/gi, 'MWh')
       .replace(/\bsquare\s+([A-Za-z]+)/gi, '$1^2').replace(/\bsq\.?\s+([A-Za-z]+)/gi, '$1^2').replace(/\bcubic\s+([A-Za-z]+)/gi, '$1^3')
       .replace(/([A-Za-z]+)\s+squared\b/gi, '$1^2').replace(/([A-Za-z]+)\s+cubed\b/gi, '$1^3')
       .replace(/\b(?:per|each|every|a)\b/gi, '/').replace(/\s*[·*•⋅×]\s*/g, ' ').replace(/[()]/g, ' ').replace(/\^/g, '');

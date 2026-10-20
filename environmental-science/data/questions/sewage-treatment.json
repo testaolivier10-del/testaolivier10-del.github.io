@@ -506,19 +506,19 @@
    "practice": "6.B",
    "level": "apply",
    "diff": 2,
-   "q": "A city of 80,000 people produces about 300 liters of wastewater per person per day. Write the setup for the liters the plant treats per day, then give the answer in liters per day (millions of liters per day).",
+   "q": "A city of 80,000 people produces about 300 liters of wastewater per person per day. Write the setup, with units, for the liters of wastewater the plant treats per day, then give the answer in liters per day.",
    "why": {
-    "correct": "$80{,}000\\,\\text{people} \\times \\frac{300\\,\\text{L}}{\\text{person}} = 24{,}000{,}000\\,\\text{L}$ a day, which is 24 million liters per day or $2.4 \\times 10^{7}$ L/day."
+    "correct": "$80{,}000\\,\\text{people} \\times 300\\,\\frac{\\text{L}}{\\text{person} \\cdot \\text{day}} = 24{,}000{,}000\\,\\text{L/day}$, which is 24 million liters per day or $2.4 \\times 10^{7}$ L/day."
    },
    "setup": {
-    "answer": "80000 * 300",
+    "answer": "80000 people * 300 L/person/day",
     "mustUse": [
      "80000",
      "300"
     ],
     "mistakes": [
      {
-      "expr": "80000 / 300",
+      "expr": "80000 people / (300 L/person/day)",
       "why": "Multiply people by liters per person so the people cancel."
      }
     ],
@@ -527,9 +527,7 @@
      "units": [
       "L per day",
       "liters per day",
-      "liters/day",
-      "L",
-      "liters"
+      "liters/day"
      ],
      "from": {
       "fn": "mul",
@@ -541,10 +539,12 @@
      "mistakes": [
       {
        "value": 266.666666667,
-       "why": "You divided. Multiply people by liters per person: 24,000,000 L."
+       "why": "You divided. Multiply people by liters per person per day: 24,000,000 L/day."
       }
      ]
-    }
+    },
+    "unit": "L/day",
+    "requireUnits": true
    }
   },
   {

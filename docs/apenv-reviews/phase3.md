@@ -76,3 +76,32 @@ flashcard deck studies and flips.
   `tools/earth-climate.js:464` (needs an allow-list entry in `scripts/lib/spelling.mjs`).
 - Phase 4 should check: every exam-only item and prompt for science and wording; the distractors' explanations; the
   worked lines on the formulas page.
+
+## Post-review item updates
+
+Every key below was recomputed with independent scratch arithmetic, then the key, its unit spellings, its setup
+spellings and every authored mistake were graded through `ApEnvQuestions.grade` / `ApEnvExpr.gradeSetup` in a vm
+(35 items, 0 failures). No ids changed, no items deleted.
+
+- **Units back in setups** (`unit` + `requireUnits` where the stem says "with units"): `env-thermal-pollution-15`
+  (`50000 L/s * 86400 s`), `env-wetlands-mangroves-15` (`120 ha * 10000 m2/ha * 0.5 m`), `env-invasive-species-6`
+  (`1420 mussels/m2 * 3000 m2`, answer unit "mussels"; a bare `1420 * 3000` still earns the setup point),
+  `env-sewage-treatment-14` (`80000 people * 300 L/person/day`, keyed L/day; stem no longer says "(millions of liters
+  per day)", bare "L" no longer accepted), `env-solid-waste-14` (`... * 1 t / 1000 kg`), `env-clearcutting-8`
+  (`250 ha * 150 t/ha`), `env-fuel-types-13` (`500 t * 27000 MJ/t`). `env-math-units-9` already accepts
+  `1500 W * 4 h / 1000 W/kW` (unchanged). `env-human-population-6` asks for "births per 1,000 people" again (unit graded).
+- **`unit: "times"`** on all 11 "how many times" keys listed above (the word optional, a real unit refused).
+- **Rate warnings**: keyed as rates `env-biomass-energy-10` (GJ/ha), `env-math-rates-1` (L/person/day),
+  `-6` (kg/student/month), `env-math-sci-notation-9` (L/person/yr), each still accepting the shorter per-person
+  spelling; stem fixed for `env-fuel-types-13` ("in one day") and `env-lethal-dose-50-3` ("for one rat").
+  `env-math-rates-8`, `-10`, `env-math-sci-notation-3`, `env-indoor-air-15`, `env-plate-tectonics-15` were already
+  keyed or worded right (no warning); `-8`, `-10`, `sci-notation-3` gained per-year spellings.
+  `env-math-units-11` was a checker false positive: "at \$0.15 per kWh," is now skipped (decimal in the price).
+  `check-apenv-content --check`: 0 failing, 0 rate warnings.
+- **"metric tons" in setups** (u5 review): `env-expr.js` reads "metric ton(s)/tonne(s)" as `t`; `env-grade.js`
+  `normUnit` also folds "metric tonnes". Test in `apenv-expr.test.mjs`. All 7 metric-ton setup items checked
+  (`clearcutting-8`, `fuel-types-13`, `greenhouse-effect-10`, `reducing-air-pollutants-14`, `solid-waste-14`, and the
+  two percent-change items `el-nino-la-nina-12`, `reducing-ozone-depletion-14`). Scale words inside a setup
+  ("10.8 billion metric tons") are still not parsed; the keys do not need them.
+- **Select-all with one correct option**: 21 of 52 `multi` items (40.4%), above the 20% target; exams hold no `multi`.
+- Checks: `node --test scripts/test/apenv-*.test.mjs` 184 pass; `check-apenv-map`: nothing used before it is taught.

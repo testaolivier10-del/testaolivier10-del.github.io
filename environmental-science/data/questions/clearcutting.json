@@ -249,18 +249,18 @@
     "correct": "Multiply the area by the carbon per hectare so hectares cancel: $250\\,\\text{ha} \\times \\frac{150\\,\\text{metric tons}}{1\\,\\text{ha}} = 37{,}500$ metric tons of carbon."
    },
    "setup": {
-    "answer": "250 * 150",
+    "answer": "250 ha * 150 t/ha",
     "mustUse": [
      "250",
      "150"
     ],
     "mistakes": [
      {
-      "expr": "250 / 150",
+      "expr": "250 ha / (150 t/ha)",
       "why": "Carbon per hectare times hectares gives carbon. Multiply, so the hectares cancel."
      },
      {
-      "expr": "150 / 250",
+      "expr": "150 t/ha / 250 ha",
       "why": "Dividing gives a value per hectare of area, not a total. Multiply the area by the carbon per hectare."
      }
     ],
@@ -268,7 +268,9 @@
      "unit": "metric tons",
      "units": [
       "t",
-      "tonnes"
+      "tonnes",
+      "metric ton",
+      "MT"
      ],
      "from": {
       "fn": "mul",

@@ -153,7 +153,7 @@
     "correct": "Divide the later count by the earlier one: $\\frac{80}{10} = 8$ times. That is three doublings in 6 hours ($2 \\times 2 \\times 2 = 8$), one every 2 hours."
    },
    "numeric": {
-    "unit": "",
+    "unit": "times",
     "from": {
      "fn": "magnification",
      "args": [

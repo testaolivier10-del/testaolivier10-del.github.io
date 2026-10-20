@@ -476,7 +476,8 @@
       },
       "why": "Subtracting gives the difference in meters. Divide to find how many times higher."
      }
-    ]
+    ],
+    "unit": "times"
    },
    "stimulus": "sustainable-forestry-s2"
   },

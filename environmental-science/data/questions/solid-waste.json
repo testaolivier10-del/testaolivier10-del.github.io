@@ -508,7 +508,7 @@
     "correct": "$40{,}000\\,\\text{people} \\times 2.2\\,\\frac{\\text{kg}}{\\text{person} \\cdot \\text{day}} \\times 365\\,\\text{days} \\times \\frac{1\\,\\text{t}}{1{,}000\\,\\text{kg}} = 32{,}120$ metric tons a year."
    },
    "setup": {
-    "answer": "40000 * 2.2 * 365 / 1000",
+    "answer": "40000 people * 2.2 kg/person/day * 365 days * 1 t / 1000 kg",
     "mustUse": [
      "40000",
      "2.2",
@@ -517,11 +517,11 @@
     ],
     "mistakes": [
      {
-      "expr": "40000 * 2.2 * 365",
+      "expr": "40000 people * 2.2 kg/person/day * 365 days",
       "why": "That is kilograms. Divide by 1,000 to get metric tons."
      },
      {
-      "expr": "40000 * 2.2 / 1000",
+      "expr": "40000 people * 2.2 kg/person/day * 1 t / 1000 kg",
       "why": "That is one day. Multiply by 365 days for a year."
      }
     ],
@@ -557,7 +557,9 @@
        "why": "88 metric tons is one day. Multiply by 365."
       }
      ]
-    }
+    },
+    "unit": "metric tons",
+    "requireUnits": true
    }
   },
   {

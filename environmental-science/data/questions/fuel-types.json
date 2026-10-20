@@ -426,13 +426,13 @@
    "practice": "6.B",
    "level": "apply",
    "diff": 2,
-   "q": "A generating station burns 500 metric tons of bituminous coal a day. Using the table, each metric ton (1,000 kg) releases 27,000 MJ. Write the setup for the energy released per day, with units, then give the answer.",
+   "q": "A generating station burns 500 metric tons of bituminous coal a day. Using the table, each metric ton (1,000 kg) releases 27,000 MJ. Write the setup for the energy released in one day, with units, then give the answer.",
    "stimulus": "fuel-types-s1",
    "why": {
-    "correct": "$500\\,\\text{tonne} \\times \\frac{27{,}000\\,\\text{MJ}}{1\\,\\text{tonne}} = 13{,}500{,}000\\,\\text{MJ}$ a day, or $1.35 \\times 10^{7}$ MJ."
+    "correct": "$500\\,\\text{t} \\times \\frac{27{,}000\\,\\text{MJ}}{1\\,\\text{t}} = 13{,}500{,}000\\,\\text{MJ}$ in one day, or $1.35 \\times 10^{7}$ MJ (t is the metric ton)."
    },
    "setup": {
-    "answer": "500 tonne * 27000 MJ/tonne",
+    "answer": "500 t * 27000 MJ/t",
     "unit": "MJ",
     "mustUse": [
      "500",
@@ -440,8 +440,8 @@
     ],
     "mistakes": [
      {
-      "expr": "500 tonne / (27000 MJ/tonne)",
-      "why": "Dividing leaves tonne squared over MJ, not MJ. Multiply by the energy per tonne so tonnes cancel."
+      "expr": "500 t / (27000 MJ/t)",
+      "why": "Dividing leaves metric tons squared per MJ, not MJ. Multiply by the energy per metric ton so the metric tons cancel."
      }
     ],
     "then": {
@@ -463,7 +463,7 @@
         ]
        },
        "check": 54,
-       "why": "You divided the energy per tonne by the tonnes. Multiply: tonnes × MJ per tonne."
+       "why": "You divided the energy per metric ton by the metric tons. Multiply: metric tons × MJ per metric ton."
       }
      ]
     }

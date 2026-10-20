@@ -806,7 +806,8 @@
       },
       "why": "You divided the ED50 by the LD50. Put the larger dose on top: 60 ÷ 10 = 6."
      }
-    ]
+    ],
+    "unit": "times"
    }
   },
   {
