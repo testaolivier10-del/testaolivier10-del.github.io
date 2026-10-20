@@ -401,6 +401,8 @@
   /* GPP, respiration and NPP */
   GEN.npp = function(r, c){
     var g = between(r, c.gpp, c.step || 100), resp = Math.round(g * between(r, [35, 70], 1) / 1000) * 10, mode = pick(r, ['npp', 'gpp', 'r']);
+    // Respiration exactly half of GPP makes the answer equal a number in the stem.
+    if(resp * 2 === g) resp += 10 * Math.max(1, Math.round(g / 2000));
     var npp = calc('npp', [g, resp]), u = c.unit;
     var text, steps, sol, ask, key, ans;
     if(mode === 'npp'){

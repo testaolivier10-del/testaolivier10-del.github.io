@@ -316,15 +316,13 @@
    "diff": 2,
    "q": "A hospital receives 80 mg of iodine-131, which has a half-life of 8 days. Write the setup for the amount left after 24 days, then give the answer.",
    "why": {
-    "correct": "$80\\,\\text{mg} \\times 0.5^{24/8} = 80 \\times 0.125 = 10\\,\\text{mg}$."
+    "correct": "$80\\,\\text{mg} \\times 0.5^{24/8} = 80 \\times 0.5^{3} = 80 \\times 0.125 = 10\\,\\text{mg}$. Writing $0.5^{3}$ directly (24 ÷ 8 = 3 half-lives) earns the setup too."
    },
    "setup": {
     "answer": "80 mg * 0.5^(24/8)",
     "unit": "mg",
     "mustUse": [
-     "80",
-     "24",
-     "8"
+     "80"
     ],
     "mistakes": [
      {

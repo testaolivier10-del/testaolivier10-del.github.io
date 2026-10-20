@@ -45,9 +45,9 @@
     "correct": "$\\frac{4{,}500{,}000\\,\\text{L}}{30{,}000\\,\\text{people}} = 150$ L per person per day."
    },
    "numeric": {
-    "unit": "L",
+    "unit": "L/person",
     "units": [
-     "L/person",
+     "L",
      "liters per person",
      "L per person per day",
      "liters"
@@ -230,9 +230,9 @@
     "correct": "2.4 metric tons = 2,400 kg. $\\frac{2{,}400\\,\\text{kg}}{800\\,\\text{students}} = 3$ kg per student."
    },
    "numeric": {
-    "unit": "kg",
+    "unit": "kg/student",
     "units": [
-     "kg/student",
+     "kg",
      "kg per student"
     ],
     "tol": 0.05,
@@ -291,8 +291,9 @@
     "correct": "$\\frac{6{,}000\\,\\text{t}}{12{,}000\\,\\text{people}} = 0.5$ metric tons per person."
    },
    "numeric": {
-    "unit": "metric tons",
+    "unit": "metric tons/person",
     "units": [
+     "metric tons",
      "t",
      "tonnes",
      "metric tons per person",
@@ -355,9 +356,9 @@
     "correct": "$\\frac{20{,}000\\,\\text{t}}{50{,}000\\,\\text{people}} = 0.4$ t per person; $0.4 \\times 1{,}000 = 400$ kg per person."
    },
    "numeric": {
-    "unit": "kg",
+    "unit": "kg/person",
     "units": [
-     "kg/person",
+     "kg",
      "kg per person"
     ],
     "from": {

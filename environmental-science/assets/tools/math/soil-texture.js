@@ -248,7 +248,7 @@
   /* A percolation (infiltration) test: water level drop over time -> rate. */
   function genPercolation(r, ctx){
     var Cc = C(), id = r.pick(['sand', 'loamy-sand', 'sandy-loam', 'silt-loam', 'clay-loam', 'silty-clay-loam']), rate0 = INFIL[id];
-    var mins = SANDY[id] ? r.pick([10, 15, 20, 30, 60]) : r.pick([30, 60, 90, 120]), drop = M.sig(rate0 * mins / 60 * r.pick([0.8, 1, 1.2]), 2);
+    var mins = SANDY[id] ? r.pick([10, 15, 20, 30, 60]) : r.pick([30, 60, 90, 120]), drop = M.sig(rate0 * mins / 60 * r.pick(id === 'sandy-loam' ? [1, 1.2] : [0.8, 1, 1.2]), 2); // a sandy loam stays above the 2 cm/hr the feedback quotes
     if(drop < 0.1) drop = 0.1;
     var hrs = Cc.evaluate({ fn: 'convert', args: [mins, 'min', 'h'] });
     var rate = Cc.evaluate({ fn: 'div', args: [drop, hrs] });

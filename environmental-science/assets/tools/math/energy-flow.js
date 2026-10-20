@@ -270,7 +270,8 @@
   function genNpp(r, ctx){
     var E = ecoOf(ctx), Cc = C();
     var gpp = r.pick([4000, 5000, 6000, 8000, 10000, 12000, 15000, 20000, 24000, 30000]);
-    var rPct = r.pick([40, 45, 50, 55, 60, 65]);
+    // Never 50%: then NPP equals respiration and the answer is a number in the stem.
+    var rPct = r.pick([35, 40, 45, 55, 60, 65]);
     var resp = Cc.evaluate({ fn: 'percentOf', args: [rPct, gpp] });
     var npp = Cc.evaluate({ fn: 'npp', args: [gpp, resp] });
     var heatWhy = ['Right. Cellular respiration releases the energy as heat, which leaves the ecosystem; it is never recycled.',

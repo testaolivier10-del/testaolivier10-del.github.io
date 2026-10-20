@@ -263,14 +263,23 @@
     var steps = [];
     for(var i = start + 1; i <= start + 2; i++){
       var id = NORDER[i], P = proc('nitrogen', id), prev = proc('nitrogen', NORDER[i - 1]);
-      var opts = M.shuffle(r, names.filter(function(n){ return n !== P.name && n !== prev.name; })).slice(0, 3);
-      opts.splice(r.int(0, 3), 0, P.name);
+      // After ammonification the ammonium is nitrified again before it can be
+      // denitrified, so "which comes next?" would make nitrification right too.
+      // That step asks which process returns the nitrogen to the air, and leaves
+      // nitrification out of its options.
+      var toAir = id === 'denit';
+      var opts = M.shuffle(r, names.filter(function(n){ return n !== P.name && n !== prev.name && !(toAir && n === proc('nitrogen', 'nitr').name); })).slice(0, 3);
+      opts.splice(r.int(0, opts.length), 0, P.name);
       var why = opts.map(function(o){
         var q = Y.processes.filter(function(x){ return x.name === o; })[0];
         if(o === P.name) return 'Right. ' + P.name + ': ' + NCHEM[id] + '. ' + P.agent + ' ' + P.what;
-        return o + ' is ' + NCHEM[q.id] + '. After ' + lc(prev.name) + ' the nitrogen is ' + (NORDER[i - 1] === 'fix' ? 'ammonium' : NORDER[i - 1] === 'nitr' ? 'nitrate in the soil' : NORDER[i - 1] === 'assim' ? 'in living things, then in their wastes and dead bodies' : 'ammonium again, or nitrate') + '.';
+        if(toAir) return o + ' is ' + NCHEM[q.id] + '. It does not send nitrogen back to the air as N₂; only denitrification does.';
+        if(NORDER[i - 1] === 'nitr' && q.id === 'denit') return 'Denitrification also starts from nitrate, but it sends the nitrogen back to the air. In the cycle\'s main path, plants take the nitrate up first.';
+        return o + ' is ' + NCHEM[q.id] + '. After ' + lc(prev.name) + ' the nitrogen is ' + (NORDER[i - 1] === 'fix' ? 'ammonium' : NORDER[i - 1] === 'nitr' ? 'nitrate in the soil' : 'in living things, then in their wastes and dead bodies') + '.';
       });
-      steps.push(choice('n' + (i + 1), 'After ' + lc(prev.name) + ' (' + NCHEM[prev.id] + '), which process comes next?', opts, opts.indexOf(P.name), why, '2.B', { fixed: true }));
+      var label = toAir ? 'After ' + lc(prev.name) + ' (' + NCHEM[prev.id] + '), nitrifying bacteria turn the ammonium into nitrate again. Which process then returns the nitrogen to the atmosphere?'
+        : 'After ' + lc(prev.name) + ' (' + NCHEM[prev.id] + '), which process comes next?';
+      steps.push(choice('n' + (i + 1), label, opts, opts.indexOf(P.name), why, '2.B', { fixed: true }));
     }
     var chemOpts = ['Nitrogen-fixing bacteria', 'Nitrifying bacteria', 'Denitrifying bacteria', 'Plant roots'];
     var lastId = NORDER[start + 2], cK = { fix: 0, nitr: 1, denit: 2, assim: 3, ammon: -1 }[lastId];

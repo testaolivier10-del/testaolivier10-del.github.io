@@ -104,9 +104,9 @@
     "correct": "$\\frac{1.2 \\times 10^{11}}{2.4 \\times 10^{8}} = 0.5 \\times 10^{3} = 5.0 \\times 10^{2}$ kg per person, which is 500 kg."
    },
    "numeric": {
-    "unit": "kg",
+    "unit": "kg/person",
     "units": [
-     "kg/person",
+     "kg",
      "kg per person"
     ],
     "from": {
@@ -300,9 +300,9 @@
     "correct": "1.5 million = $1.5 \\times 10^{6}$. $\\frac{9.0 \\times 10^{10}\\,\\text{L}}{1.5 \\times 10^{6}\\,\\text{people}} = 6.0 \\times 10^{4}$ L per person, which is 60,000 L."
    },
    "numeric": {
-    "unit": "L",
+    "unit": "L/person",
     "units": [
-     "L/person",
+     "L",
      "liters per person",
      "liters"
     ],
