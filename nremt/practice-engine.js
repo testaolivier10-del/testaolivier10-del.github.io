@@ -1797,7 +1797,7 @@ function updateAdaptiveDifficulty(q, correct){
 function recordAdaptiveAnswer(qIdx, correct){
   const q = QUESTIONS[qIdx];
   // Today's score, which the daily-limit card shows (assets/premium.js).
-  if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('nremt', correct);
+  if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('nremt', correct, q.id, q.system);
   updateMastery(qIdx, correct);
   if(!adaptiveState.sessionDomainStats[q.system]) adaptiveState.sessionDomainStats[q.system] = {correct:0, total:0};
   adaptiveState.sessionDomainStats[q.system].total++;
@@ -1871,6 +1871,13 @@ function beginQuiz(withTimer, resumeState){
   // One event per attempt started. A resume is deliberately not counted: it is
   // the same attempt, and counting it would inflate starts against finishes
   // and make the completion rate read worse than it is.
+  // Where an exam is left halfway, if it is (analytics.js examStart/exam-quit).
+  // A resume continues the same attempt, so it is watched like a start.
+  if(window.LevlAnalytics && window.LevlAnalytics.examStart){
+    window.LevlAnalytics.examStart('nremt', mode, totalLen, function(){
+      return answers.filter(function(a){ return a !== null && a !== undefined; }).length;
+    });
+  }
   if(!resumeState && window.LevlAnalytics){
     window.LevlAnalytics.event('exam-start', { mode: mode, questions: totalLen });
     // Once per browser, ever: how long this student had to hunt before they
@@ -2221,6 +2228,11 @@ $id('nextBtn').addEventListener('click', () => {
     renderQuestion();
     renderJumpRow();
     const right = isAnswerCorrect(qNow, answers[current]);
+    // Per-question tallies (assets/analytics.js answer()). Adaptive answers
+    // are counted by recordAdaptiveAnswer, through noteAnswer.
+    if(mode !== 'adaptive' && window.LevlAnalytics && window.LevlAnalytics.answer){
+      window.LevlAnalytics.answer('nremt', qNow.id, right, qNow.system);
+    }
     // The per-correct XP is paid as the answer is checked, so the gain shows
     // on the answer that earned it (polish 2026-10-17, B11); showResults pays
     // the rest and skips what was paid here.
@@ -2420,6 +2432,16 @@ function showResults(){
   // is "are people passing", and a bare percentage per attempt is finer-grained
   // than that needs while saying more about the individual.
   if(window.LevlAnalytics){
+    if(window.LevlAnalytics.examEnd) window.LevlAnalytics.examEnd();
+    // A full exam is scored here, all at once, so its answers are tallied here
+    // too, with the average time per question.
+    if(mode === 'full' && window.LevlAnalytics.answer){
+      const avg = activeIndices.length ? (Date.now() - startTime) / 1000 / activeIndices.length : 0;
+      activeIndices.forEach((qIdx, i) => {
+        const q = QUESTIONS[qIdx];
+        if(q && answers[i] !== null && answers[i] !== undefined) window.LevlAnalytics.answer('nremt', q.id, isAnswerCorrect(q, answers[i]), q.system, avg);
+      });
+    }
     const pct = Math.round(score / activeIndices.length * 100);
     window.LevlAnalytics.event('exam-finish', {
       mode: mode,

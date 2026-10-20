@@ -63,6 +63,11 @@ locally (`BROWSER=1` adds the browser checks). New check-site rules go in `scrip
 
 `docs/trust-conversion-plan.md` is the status file (funnel numbers, owner facts for the About page, plan).
 
+## Analytics
+
+`docs/analytics-plan.md` is the status file: the Umami proxy and bot filter, first-touch source, question tallies
+(`question_stats`), exam-quit, read depth and the rest, plus how to verify and read them.
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.

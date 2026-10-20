@@ -161,6 +161,12 @@
         var v = form.querySelector('input').value;
         if(!/^\d{4}-\d{2}-\d{2}$/.test(v)) return;
         write(subject, v);
+        // How far away, in weeks, never the date (assets/analytics.js).
+        var an = window.LevlAnalytics;
+        if(an && an.examDateSet){
+          var p = v.split('-'), when = new Date(+p[0], +p[1] - 1, +p[2]), now = new Date();
+          an.examDateSet(subject, Math.round((when - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000));
+        }
         editing = false;
         render();
       });

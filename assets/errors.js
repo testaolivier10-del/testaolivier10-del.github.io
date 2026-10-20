@@ -131,6 +131,12 @@
       if (seen[key]) return;
       seen[key] = true;
       sent++;
+      // The first error on a page also goes to Umami, where it sits in the
+      // same visit as what the student was doing (the full report still goes
+      // to the database below). Only the message's first words.
+      if (sent === 1 && window.LevlAnalytics && window.LevlAnalytics.event) {
+        window.LevlAnalytics.event('js-error', { page: String(window.location.pathname).slice(0, 80), msg: msg.slice(0, 60) });
+      }
 
       queue.push({
         p_path: String(window.location.pathname).slice(0, 200),

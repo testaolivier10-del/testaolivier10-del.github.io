@@ -464,7 +464,10 @@
      what they did before asking them to pay (trust plan, 2026-10-08). Every
      course's answer check calls noteAnswer; it is kept in this browser only
      and reset at local midnight. */
-  function noteAnswer(course, correct) {
+  function noteAnswer(course, correct, qid, topic) {
+    // Every answer, for the per-question tallies (analytics.js answer()).
+    var an = window.LevlAnalytics;
+    if (an && an.answer && qid != null) an.answer(course, qid, correct, topic);
     if (!COURSES[course]) return;
     var s = readJson(SCORE_KEY);
     var t = s[course] && s[course].day === today() ? s[course] : { day: today(), right: 0, total: 0 };
@@ -815,6 +818,13 @@
 
   // Sent with a checkout so the paid webhook can credit the video (never
   // when analytics is turned off in this browser).
+  // The channel this browser first came from (analytics.js source()), so a
+  // purchase is credited to it; null when analytics is off.
+  function firstSource() {
+    var an = window.LevlAnalytics;
+    if (!an || !an.source || (an.optedOut && an.optedOut())) return null;
+    return an.source();
+  }
   function attributedRef() {
     var an = window.LevlAnalytics;
     if (!an || !an.attributedRef || (an.optedOut && an.optedOut())) return null;
@@ -846,7 +856,7 @@
       return fetch(ENDPOINT + '/premium/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
-        body: JSON.stringify({ pass: passId, returnTo: window.location.href, ref: attributedRef() }),
+        body: JSON.stringify({ pass: passId, returnTo: window.location.href, ref: attributedRef(), src: firstSource() }),
       });
     }).then(function (res) {
       return res.json().then(function (body) { return { ok: res.ok, body: body }; });

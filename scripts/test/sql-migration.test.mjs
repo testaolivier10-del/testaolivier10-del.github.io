@@ -183,7 +183,8 @@ test('2026-10g-apcalc.sql adds apcalc to every course check and course list, run
 
 test('2026-10h-apstat.sql adds apstat to every course check and course list, runs last, matches schema.sql, and is not granted to browsers where it must not be', () => {
   const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
-  assert.equal(files[files.length - 1], '2026-10h-apstat.sql', 'runs after 2026-10g-apcalc.sql');
+  // Later migrations that list no courses (2026-10i grants, 2026-10j question tallies) may follow it.
+  assert.ok(files.indexOf('2026-10h-apstat.sql') > files.indexOf('2026-10g-apcalc.sql'), 'runs after 2026-10g-apcalc.sql');
   const mig = readFileSync('scripts/sql/migrations/2026-10h-apstat.sql', 'utf8');
   const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat')";
   for (const t of ['premium_passes', 'premium_funnel', 'exam_completions'])
