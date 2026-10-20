@@ -9,14 +9,16 @@
   "asked": 0.54,
   "free_when_granted": 12.5
  },
- "spent_in_run": 0.0,
- "open": {
-  "fc-01M5DVXABWSS6NN86X67DXDH7W": {
-   "t": 1792540584.5593364,
+ "spent_in_run": 0.092,
+ "open": {},
+ "calls": [
+  {
+   "date": "2026-10-20",
    "kind": "images",
-   "n": 1
+   "seconds": 84,
+   "usd": 0.092,
+   "call": "fc-01M5DVXABWSS6NN86X67DXDH7W"
   }
- },
- "calls": [],
- "touched": 1792540584.5593684
+ ],
+ "touched": 1792540668.629566
 }
