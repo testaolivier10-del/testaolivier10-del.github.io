@@ -4,6 +4,7 @@
    point), with role="img" and a real label, or it refuses. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { createBrowser } from './harness.mjs';
 
 const B = createBrowser();
@@ -69,4 +70,17 @@ test('dual axis at the default width: axis names above the plot, apart; the lege
   const vbW = +h.match(/viewBox="0 0 (\d+)/)[1];
   for (const m of h.matchAll(/<g class="env-plot-legend">([\s\S]*?)<\/g>/g)) for (const t of m[1].matchAll(/<text x="([\d.]+)"[^>]*>([^<]*)</g)) assert.ok(+t[1] + P.textW(t[2]) <= vbW + 1, `legend "${t[2]}" fits`);
   assert.equal(F.w, 360, 'the default width');
+});
+
+/* Phase 3 (tool reviewers): the Tool Studio "Start here" hint on a
+   full-width target must never widen the page at 390 px (shared file
+   assets/course/tool-studio.*): its ring is clamped to the viewport and the
+   tip pulled back inside it. Checked in a browser at 390 px on every trainer
+   (docs/apenv-reviews/phase3.md); here the code that does it. */
+test('Tool Studio hint: ring clamped to the viewport, tip kept inside it', () => {
+  const js = readFileSync('assets/course/tool-studio.js', 'utf8'), css = readFileSync('assets/course/tool-studio.css', 'utf8');
+  assert.match(js, /var rl = Math\.max\(0, r\.left - pad\), rr2 = Math\.min\(vw0, r\.right \+ pad\);/);
+  assert.match(js, /if\(left \+ tw > vw - 8\) left = Math\.max\(8, vw - 8 - tw\);/);
+  assert.match(css, /\.ls-halo\{[^}]*box-sizing:border-box;max-width:100vw;/);
+  assert.match(css, /\.ls-coach\{[^}]*max-width:min\(320px,calc\(100vw - 16px\)\);box-sizing:border-box;/);
 });

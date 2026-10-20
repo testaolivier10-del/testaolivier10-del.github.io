@@ -116,7 +116,7 @@ One branch, `claude/apenv`, one PR at the end. Phases as AP® Statistics.
 | 0 | Fork AP® Statistics: CED map (99 topics + math chapter), dependency map, generator `scripts/build-apenv.mjs`, runtime `environmental-science/assets/` (`env-*`), `ApEnvCalc` (calculation recipes) and unit-aware numeric + setup grading, `ApEnvPlot` (line, bar, scatter, pyramid, dual-axis data figures), checks, tests, fixture, registration hidden (registry, Premium pass, Worker, SQL migration, hub/pricing, search, sitemap, OG, budgets, theme, sw.js), tool scaffolding, architecture and authoring guide, briefs, needs-author | one session (shared files) | **done 2026-10-20** (decision 10) |
 | 1 | Content: lessons, notes, banks (incl. stimulus sets), FRQs, glossary, figures | 7 authors at once (section 5a) | |
 | 2 | Trainers (section 6) | 4 builders at once, each owning whole slugs | |
-| 3 | "Make it specific" trainer, two fixed practice exams, formulas page, unit tests, cram kit | one session | |
+| 3 | "Make it specific" trainer, two fixed practice exams, formulas page, unit tests, cram kit | one session | **built 2026-10-20**: 45 prompts (5 per unit, every skill, 21 with builders), two forms (22 exam-only + 58 bank each, 3 quantitative, 4 visual, 2 text sets, units in range, design/data/calc FRQs), timed sections, formulas page with worked lines and a Formulas deck, unit tests, cram kit; every new number recomputed; shared engine fixes (dual plots, units, sources, hint); report `docs/apenv-reviews/phase3.md`; accuracy review in Phase 4 (decision 11) |
 | 4 | Independent accuracy checks per unit group, tools and exams (every calculation key recomputed by code) | reviewers in parallel | |
 | Launch | Publish, generators, continuity pass against statistics on every shared page type, "Nine courses" wording, full CI with browser checks, PR | one session | |
 
@@ -248,6 +248,22 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     significant digits so float noise never reaches a key; (h) the site shell budget went from 291 to 292 KB
     (registration measured 291.4 KB) and "generalist" was added to the spelling checker's American words. SQL
     migration `2026-10j-apenv.sql` written, not applied.
+11. (2026-10-20) **Phase 3 as built** (`docs/apenv-reviews/phase3.md`). Practice exams: each form is 80 questions in
+    course order, 22 exam-only (`data/exams/items.json`: three quantitative sets per form built on calculations, plus
+    standalone items on the reader-report traps) and 58 bank questions (six bank sets, four visual and two text, and
+    40 standalones), never a lesson check item or a free unit-test item, unit counts 6, 6, 10, 9, 10, 10, 7, 8, 14.
+    FRQs: form 1 primary-productivity design, age-structure data, human-population calc; form 2 eutrophication design,
+    ocean-acidification data, energy-conservation calc. Timed sections: one section of a fixed form alone
+    (`exams.html?form=<n>&section=1|2`). "Make it specific": 45 prompts, first 3 free; builders reuse
+    `ApEnvGrade.specific`. Every exam-only key, its named-slip distractors and every prompt number are recomputed with
+    `ApEnvCalc` (`EXAM_NUMBERS`, `JUSTIFY_NUMBERS`). Formulas page: four columns (formula with a worked line computed by
+    `ApEnvCalc` under it, what and when, the trap, where taught); the same rows are the "Formulas" flashcard deck
+    (`assets/formulas.json`, ids `eq:<recipe>`, free). Shared engine (lead-owned files): dual-axis names above the
+    plot and a wrapping legend; unit parser and normaliser extended (seconds, ng, kL, °C, decades, t and MT for metric
+    tons, m² × m = m³, compound-unit divisors, "per" = "/", numbers in a denominator, powers of ten and scale words for
+    "how many times", scale words in a key's unit cancel the typed one); a content-check warning for a rate asked with
+    a unit that has no "/"; CDC and other US and UN agencies accepted as sources; the Tool Studio hint clamped to the
+    viewport.
 
 ## 9. Open items for the owner
 

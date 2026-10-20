@@ -3,9 +3,13 @@
      - the glossary (assets/glossary.json): every defined term of a published
        topic, both ways, term -> definition and definition -> term;
      - the lesson summaries (assets/summaries.json): "sum up this topic",
-       one card per published topic.
-   Decks: everything, a unit, a topic, or "terms from questions I missed".
-   Deep links: ?unit=<id>, ?topic=<id>, ?deck=missed.
+       one card per published topic;
+     - the "Formulas" deck (assets/formulas.json, built from the formulas
+       page): what a formula is for and when to use it on the front; the
+       formula, a worked line and the trap on the back. The exam gives no
+       formula sheet, so these are always available, published topic or not.
+   Decks: everything, a unit, a topic, "Formulas", or "terms from questions I missed".
+   Deep links: ?unit=<id>, ?topic=<id>, ?deck=missed, ?deck=formulas.
 
    SCHEDULING: the same SM-2 variant as ochem's and A&P's (Again / Hard /
    Good / Easy, 20 new cards a day, studying ahead never lengthens an
@@ -14,7 +18,7 @@
    STORAGE  localStorage['apenv_flashcards_v1'] (in the apenv sync namespace,
    env-core.js; merged card by card with the site's mergeCardSchedules):
      { v: 1, cards: { <cardId>: { i, e, d, r, l, t } }, fresh: { day, n }, paid: { day, xp } }
-   Card ids are permanent: gl:<concept>:t, gl:<concept>:d, sm:<topic>.
+   Card ids are permanent: gl:<concept>:t, gl:<concept>:d, sm:<topic>, eq:<recipe>.
 
    Self-grading moves no mastery number (cards never touch
    apenv_progress_v1); cards pay XP (2 each, 60 a day at most). */
@@ -88,17 +92,18 @@
   }catch(e){}
 
   /* ---- preferences (apenv_prefs_v1.flashcards) ---- */
-  var prefs = { deck: 'all', kinds: { t: true, d: true, s: true } };
+  var prefs = { deck: 'all', kinds: { t: true, d: true, s: true, f: true } };
   function readPrefs(){ try{ return JSON.parse(localStorage.getItem(PREFS) || '{}') || {}; }catch(e){ return {}; } }
   (function(){
     var p = readPrefs().flashcards;
     if(p && typeof p === 'object'){
       if(typeof p.deck === 'string') prefs.deck = p.deck;
-      if(p.kinds && typeof p.kinds === 'object') ['t', 'd', 's'].forEach(function(k){ if(typeof p.kinds[k] === 'boolean') prefs.kinds[k] = p.kinds[k]; });
+      if(p.kinds && typeof p.kinds === 'object') ['t', 'd', 's', 'f'].forEach(function(k){ if(typeof p.kinds[k] === 'boolean') prefs.kinds[k] = p.kinds[k]; });
     }
     var q = new URLSearchParams(location.search);
     ['topic', 'unit'].forEach(function(k){ if(q.get(k)) prefs.deck = k + ':' + q.get(k); });
     if(q.get('deck') === 'missed') prefs.deck = 'missed';
+    if(q.get('deck') === 'formulas') prefs.deck = 'formulas';
   })();
   function savePrefs(){ try{ var all = readPrefs(); all.flashcards = prefs; localStorage.setItem(PREFS, JSON.stringify(all)); }catch(e){} }
 
@@ -127,7 +132,9 @@
     });
     return def;
   }
-  function buildCards(gloss, sums){
+  function buildCards(gloss, sums, eqs){
+    // Formula cards: ordered after every topic, grouped by the page's sections.
+    (eqs || []).forEach(function(e, i){ CARDS.push({ id: e.id, kind: 'f', topic: e.topic, eq: e, order: 1e6 + i }); });
     Object.keys(gloss || {}).forEach(function(cid){
       var g = gloss[cid];
       if(!g || !g.d || !built(g.p)) return;
@@ -143,17 +150,19 @@
     CARDS.forEach(function(c){ BY_ID[c.id] = c; });
   }
   function inDeck(c, deck){
+    if(deck === 'formulas') return c.kind === 'f';
     if(!prefs.kinds[c.kind]) return false;
     if(deck === 'all') return true;
     if(deck === 'missed') return !!(missedConcepts && c.concept && missedConcepts[c.concept]);
     var p = deck.split(':');
     if(p[0] === 'topic') return c.topic === p[1];
-    if(p[0] === 'unit') return TOPIC[c.topic] && TOPIC[c.topic].unit === p[1];
+    if(p[0] === 'unit') return c.kind !== 'f' && TOPIC[c.topic] && TOPIC[c.topic].unit === p[1];
     return true;
   }
   function deckCards(deck){ return CARDS.filter(function(c){ return inDeck(c, deck); }); }
   function deckName(deck){
     if(deck === 'missed') return 'Terms from questions I missed';
+    if(deck === 'formulas') return 'Formulas you must memorize';
     var p = deck.split(':');
     if(p[0] === 'topic' && TOPIC[p[1]]) return TOPIC[p[1]].title;
     if(p[0] === 'unit' && UNIT[p[1]]) return unitName(p[1]);
@@ -191,23 +200,24 @@
       return;
     }
     var cards = deckCards(prefs.deck), q = queueFor(cards, now), todo = q.due.length + q.fresh.length;
-    var units = CU.units.filter(function(u){ return CARDS.some(function(c){ return TOPIC[c.topic].unit === u.id; }); });
+    var units = CU.units.filter(function(u){ return CARDS.some(function(c){ return c.kind !== 'f' && TOPIC[c.topic] && TOPIC[c.topic].unit === u.id; }); });
     var opt = function(v, label){ return '<option value="' + esc(v) + '"' + (v === prefs.deck ? ' selected' : '') + '>' + esc(label) + '</option>'; };
     var count = function(pred){ return CARDS.filter(function(c){ return prefs.kinds[c.kind] && pred(c); }).length; };
-    var sel = opt('all', 'Every published topic (' + count(function(){ return true; }) + ')') + opt('missed', 'Terms from questions I missed') +
-      '<optgroup label="Units">' + units.map(function(u){ return opt('unit:' + u.id, unitName(u.id) + ' (' + count(function(c){ return TOPIC[c.topic].unit === u.id; }) + ')'); }).join('') + '</optgroup>' +
+    var nf = CARDS.filter(function(c){ return c.kind === 'f'; }).length;
+    var sel = opt('all', 'Every published topic (' + count(function(){ return true; }) + ')') + (nf ? opt('formulas', 'Formulas you must memorize (' + nf + ')') : '') + opt('missed', 'Terms from questions I missed') +
+      '<optgroup label="Units">' + units.map(function(u){ return opt('unit:' + u.id, unitName(u.id) + ' (' + count(function(c){ return c.kind !== 'f' && TOPIC[c.topic].unit === u.id; }) + ')'); }).join('') + '</optgroup>' +
       units.map(function(u){
-        var ts = CU.topics.filter(function(t){ return t.unit === u.id && CARDS.some(function(c){ return c.topic === t.id; }); });
+        var ts = CU.topics.filter(function(t){ return t.unit === u.id && CARDS.some(function(c){ return c.kind !== 'f' && c.topic === t.id; }); });
         return '<optgroup label="Topics: ' + esc(unitName(u.id)) + '">' + ts.map(function(t){ return opt('topic:' + t.id, (t.ced ? t.ced + ' ' : '') + t.title + ' (' + count(function(c){ return c.topic === t.id; }) + ')'); }).join('') + '</optgroup>';
       }).join('');
-    var kinds = [['t', 'Term → definition', kindCount('t')], ['d', 'Definition → term', kindCount('d')], ['s', 'Topic summaries', kindCount('s')]];
+    var kinds = [['t', 'Term → definition', kindCount('t')], ['d', 'Definition → term', kindCount('d')], ['s', 'Topic summaries', kindCount('s')], ['f', 'Formulas', kindCount('f')]];
     var missedNote = prefs.deck === 'missed' ? (missedConcepts === null ? '<p class="cx-small">Finding the terms in your missed questions…</p>' : !cards.length ? '<p class="cx-small">No missed terms right now. When you get a question wrong, the glossary terms it uses land in this deck.</p>' : '') : '';
     var stat = function(v, l, cls){ return LevlStudy.stat(l, v, '', cls); };
     // By unit: progress across every card in each unit (the list NREMT and
     // Ochem show by topic area and chapter). A row opens that deck.
     var dd = load();
     var byUnit = units.map(function(u, i){
-      var cs = CARDS.filter(function(c){ return prefs.kinds[c.kind] && TOPIC[c.topic].unit === u.id; });
+      var cs = CARDS.filter(function(c){ return c.kind !== 'f' && prefs.kinds[c.kind] && TOPIC[c.topic].unit === u.id; });
       var learned = 0, due = 0;
       cs.forEach(function(c){ var st = dd.cards[c.id]; if(!isNew(st)){ learned++; if(st.d <= now) due++; } });
       var deck = 'unit:' + u.id;
@@ -266,12 +276,16 @@
     showCard();
   }
   function frontHtml(c){
+    if(c.kind === 'f') return '<p class="env-fc-ask">Write the formula, then check.</p><p class="env-fc-q env-fc-q-def">' + c.eq.front + '</p><p class="env-fc-a-sub">' + c.eq.cue + '</p>';
     if(c.kind === 't') return '<p class="env-fc-ask">What does this term mean?</p><p class="env-fc-q">' + esc(c.term) + '</p>';
     if(c.kind === 'd') return '<p class="env-fc-ask">Which term is this?</p><p class="env-fc-q env-fc-q-def">' + rich(c.masked) + '</p>';
     return '<p class="env-fc-ask">Sum up this topic in two or three sentences, then check.</p><p class="env-fc-q env-fc-q-def">' + esc(TOPIC[c.topic].title) + '</p>';
   }
   function backHtml(c){
     var t = TOPIC[c.topic];
+    if(c.kind === 'f') return '<p class="env-fc-a env-fc-eq">' + c.eq.formula + '</p><p class="env-fc-a-sub"><b>Worked:</b> ' + c.eq.worked + '</p><p class="env-fc-a-sub"><b>Trap:</b> ' + c.eq.trap + '</p>' +
+      '<p class="env-fc-from">' + (t && t.built ? 'Taught in <a href="' + esc(BASE + 'notes/' + c.topic + '.html') + '">' + esc(t.title) + '</a> &middot; ' : '') + '<a href="' + esc(BASE + 'formula-sheet.html') + '">all formulas</a>' +
+      (window.LevlReport ? ' <span class="env-fc-report">' + window.LevlReport.button('apenv', c.id) + '</span>' : '') + '</p>';
     var body = c.kind === 't' ? '<p class="env-fc-a">' + rich(c.def) + '</p>' : c.kind === 'd' ? '<p class="env-fc-a env-fc-a-term">' + esc(c.term) + '</p><p class="env-fc-a-sub">' + rich(c.def) + '</p>' : '<p class="env-fc-a">' + rich(c.back) + '</p>';
     return body + '<p class="env-fc-from">Taught in <a href="' + esc(BASE + 'lessons/' + c.topic + '.html') + '">' + esc(t.title) + '</a> &middot; <a href="' + esc(BASE + 'notes/' + c.topic + '.html') + '">notes</a>' +
       (window.LevlReport ? ' <span class="env-fc-report">' + window.LevlReport.button('apenv', c.id) + '</span>' : '') + '</p>';
@@ -286,7 +300,7 @@
     var p = Math.round(run.done / Math.max(1, run.done + run.queue.length) * 100);
     app.innerHTML = '<div class="cx-session env-fc-session"><div class="cx-sbar"><span class="cx-sbar-t">' + esc(deckName(run.deck)) + (run.mode === 'ahead' ? ' &middot; studying ahead' : '') + '</span><span class="cx-sbar-n">' + run.done + ' done &middot; ' + run.queue.length + ' to go</span><button type="button" class="cx-end" data-act="quit">End session</button></div>' +
       '<div class="cx-progress" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></div>' +
-      '<div class="env-fc-card" id="env-fc-card"><button type="button" class="env-fc-face env-fc-front" data-act="flip" aria-describedby="env-fc-hint"><span class="env-fc-meta">' + st + '<span class="env-fc-tag">' + (c.kind === 's' ? 'Summary' : 'Glossary') + '</span><span>' + esc(TOPIC[c.topic].title) + '</span></span>' +
+      '<div class="env-fc-card" id="env-fc-card"><button type="button" class="env-fc-face env-fc-front" data-act="flip" aria-describedby="env-fc-hint"><span class="env-fc-meta">' + st + '<span class="env-fc-tag">' + (c.kind === 's' ? 'Summary' : c.kind === 'f' ? 'Formula' : 'Glossary') + '</span><span>' + esc(c.kind === 'f' ? c.eq.group : TOPIC[c.topic].title) + '</span></span>' +
         frontHtml(c) + '<span class="env-fc-tap" id="env-fc-hint">Tap or press Space to show the answer</span></button></div>' +
       '<p class="env-fc-keys" aria-hidden="true"><kbd>Space</kbd> flip &middot; <kbd>1</kbd> Again &middot; <kbd>2</kbd> Hard &middot; <kbd>3</kbd> Good &middot; <kbd>4</kbd> Easy</p><p class="sr-only" aria-live="polite" id="env-fc-live"></p></div>';
     app.querySelector('[data-act="quit"]').addEventListener('click', function(){ finish(true); });
@@ -364,8 +378,8 @@
 
   app.innerHTML = '<div class="env-fc-loading panel" aria-busy="true"><p>Shuffling the deck…</p></div>';
   function getJson(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).catch(function(){ return null; }); }
-  Promise.all([getJson(BASE + 'assets/glossary.json'), getJson(BASE + 'assets/summaries.json')]).then(function(res){
-    buildCards(glossMap(res[0]), res[1]);
+  Promise.all([getJson(BASE + 'assets/glossary.json'), getJson(BASE + 'assets/summaries.json'), getJson(BASE + 'assets/formulas.json')]).then(function(res){
+    buildCards(glossMap(res[0]), res[1], res[2]);
     if(!(prefs.deck === 'all' || prefs.deck === 'missed' || deckCards(prefs.deck).length)) prefs.deck = 'all';
     if(prefs.deck === 'missed') return loadMissed().then(renderHome);
     renderHome();

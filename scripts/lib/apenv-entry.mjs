@@ -22,6 +22,7 @@
    the generator (ctx) so the pages share its head, crumbs, footer and tail. */
 import { loadExams, loadJustify, formUnits, FREE_JUSTIFY, JUSTIFY_SKILLS } from './apenv-exams.mjs';
 import { renderMath, prepareBank, specificSlots } from './apenv-build.mjs';
+import { Calc } from './apenv-mathlib.mjs';
 
 export const SAMPLE_SIZE = 12;
 
@@ -65,46 +66,106 @@ export function unitSample(ch, ctx) {
 
 /* The formula page, "Formulas you must memorize" (docs/apenv-spec.md
    section 3, differentiator 2). Each row is [formula (TeX), what it is, when
-   you use it, the classic trap, 'Unit N', topic id, trainers?], in our own
-   words; the trainers (tools/<slug>.html) are linked only when live. Every
-   calculation type in spec section 7 appears (a test holds the list to
-   ApEnvCalc's recipes, scripts/test/apenv-exams.test.mjs). */
+   you use it, the classic trap, 'Unit N' or 'Math you need', topic id,
+   trainers, recipe, worked], in our own words; the trainers
+   (tools/<slug>.html) are linked only when live. The worked line is
+   [setup TeX, ApEnvCalc recipe, unit TeX, decimals]: the page prints
+   "setup = answer unit" with the answer computed by ApEnvCalc at build time,
+   so no worked number is typed by hand. Every calculation type in spec
+   section 7 appears (scripts/test/apenv-exams.test.mjs holds the list to
+   ApEnvCalc's recipes). Each row is also a card in the "Formulas" flashcard
+   deck (assets/formulas.json). */
 const D = String.raw;
 export const EQ = [
   { id: 'percents', h: 'Percents and change', rows: [
-    [D`\text{percent change} = \frac{\text{new} - \text{old}}{\text{old}} \times 100`, 'How much a quantity grew or shrank, as a percent of where it started.', 'Any "by what percent did it change" question.', 'Brackets around the difference, divide by the OLD value, then × 100.', 'Math you need', 'math-percents', ['calculation-studio'], 'percentChange'],
-    [D`\text{part} = \frac{\text{percent}}{100} \times \text{whole}`, 'A percent of a quantity.', 'Energy passed on, water lost, the share of a budget.', 'Turn the percent into a decimal first: 10% is 0.10.', 'Math you need', 'math-percents', ['calculation-studio'], 'percentOf'],
+    [D`\text{percent change} = \frac{\text{new} - \text{old}}{\text{old}} \times 100`, 'How much a quantity grew or shrank, as a percent of where it started.', 'Any "by what percent did it change" question.', 'Brackets around the difference, divide by the OLD value, then × 100. A fall comes out negative.', 'Math you need', 'math-percents', ['calculation-studio'], 'percentChange',
+      [D`\frac{(150 - 120)\,\text{fish}}{120\,\text{fish}} \times 100`, { fn: 'percentChange', args: [120, 150] }, D`\%`, 0]],
+    [D`\text{part} = \frac{\text{percent}}{100} \times \text{whole}`, 'A percent of a quantity.', 'Energy passed on, water lost, the share of a budget.', 'Turn the percent into a decimal first: 10% is 0.10. "40% less" means 60% is left.', 'Math you need', 'math-percents', ['calculation-studio'], 'percentOf',
+      [D`0.40 \times 6{,}000\,\text{m}^3`, { fn: 'percentOf', args: [40, 6000] }, D`\text{m}^3`, 0]],
   ] },
   { id: 'populations', h: 'Populations', rows: [
-    [D`\text{rate of natural increase (\%)} = \frac{\text{CBR} - \text{CDR}}{10}`, 'Growth from births and deaths, when both rates are per 1,000 people.', 'Turning crude birth and death rates into a growth rate in percent.', 'Divide by 10, not 100: the rates are per 1,000.', 'Unit 3', 'human-population', ['population-growth', 'age-structure'], 'naturalIncrease'],
-    [D`\text{growth rate (\%)} = \frac{(\text{births} + \text{immigration}) - (\text{deaths} + \text{emigration})}{\text{population}} \times 100`, 'Growth from counts, with migration.', 'When the scenario gives numbers of people rather than rates.', 'Immigration adds, emigration subtracts.', 'Unit 3', 'human-population', ['population-growth'], 'growthRate'],
-    [D`\text{doubling time} \approx \frac{70}{\text{growth rate (\%)}}`, 'The rule of 70: how long a population (or anything growing at a steady rate) takes to double.', 'A growth rate in percent per year, and a question about doubling.', 'Use the rate in percent (2, not 0.02); if it asks "in what year", add the doubling time to the start year.', 'Math you need', 'math-doubling', ['population-growth', 'calculation-studio'], 'ruleOf70'],
-    [D`N = N_0 \times 2^{t / T_d}`, 'A population after a number of doubling times.', 'How big something gets after a stated time at a steady growth rate.', 'Count the doublings first: t divided by the doubling time.', 'Unit 3', 'population-growth', ['population-growth'], 'afterDoublings'],
-    [D`\text{TFR} \approx 2.1`, 'Replacement-level fertility: the average number of children per woman that keeps a population the same size over time.', 'Judging whether a population will grow or shrink in the long run.', 'Not 2.0: a little extra makes up for children who do not survive to have children.', 'Unit 3', 'total-fertility-rate', ['age-structure'], 'aboveReplacement'],
+    [D`\text{rate of natural increase }(\%) = \frac{\text{CBR} - \text{CDR}}{10}`, 'Growth from births and deaths, when both rates are per 1,000 people.', 'Turning crude birth and death rates into a growth rate in percent.', 'Divide by 10, not 100: the rates are per 1,000.', 'Unit 3', 'human-population', ['population-growth', 'age-structure'], 'naturalIncrease',
+      [D`\frac{30 - 10}{10}`, { fn: 'naturalIncrease', args: [30, 10] }, D`\%\text{ per year}`, 1]],
+    [D`\text{growth }(\%) = \frac{(\text{B} + \text{I}) - (\text{D} + \text{E})}{\text{population}} \times 100`, 'Growth from counts, with migration: B births, I immigrants, D deaths, E emigrants.', 'When the scenario gives numbers of people rather than rates.', 'Immigration adds, emigration subtracts; divide by the population at the start.', 'Unit 3', 'human-population', ['population-growth'], 'growthRate',
+      [D`\frac{(1{,}100{,}000 + 100{,}000) - (400{,}000 + 50{,}000)}{50{,}000{,}000} \times 100`, { fn: 'growthRate', args: [1100000, 400000, 100000, 50000, 50000000] }, D`\%`, 1]],
+    [D`\text{doubling time} \approx \frac{70}{\text{growth rate }(\%)}`, 'The rule of 70: how long a population (or anything growing at a steady rate) takes to double.', 'A growth rate in percent per year, and a question about doubling.', 'Use the rate in percent (2, not 0.02).', 'Math you need', 'math-doubling', ['population-growth', 'calculation-studio'], 'ruleOf70',
+      [D`\frac{70}{1.4}`, { fn: 'ruleOf70', args: [1.4] }, D`\text{years}`, 0]],
+    [D`\text{year it doubles} = \text{start year} + \frac{70}{\text{growth rate }(\%)}`, 'The calendar year a population doubles.', 'Any question that asks "in what year".', 'Add the doubling time to the start year; 50 years is not the answer to "in what year".', 'Math you need', 'math-doubling', ['population-growth', 'calculation-studio'], 'doublingYear',
+      [D`2025 + \frac{70}{1.4}`, { fn: 'doublingYear', args: [2025, 1.4] }, '', -1]],
+    [D`N = N_0 \times 2^{t / T_d}`, 'A population after a number of doubling times.', 'How big something gets after a stated time at a steady growth rate.', 'Count the doublings first: t divided by the doubling time.', 'Unit 3', 'population-growth', ['population-growth'], 'afterDoublings',
+      [D`1{,}000\,\text{bacteria} \times 2^{30 / 10}`, { fn: 'afterDoublings', args: [1000, 30, 10] }, D`\text{bacteria}`, 0]],
+    [D`N = N_0 \times \left(1 + \frac{r}{100}\right)^{t}`, 'Exponential growth at r percent a year, year by year.', 'A projection a set number of years ahead.', 'r is a percent, so divide by 100; t is the exponent, not a multiplier.', 'Unit 3', 'population-growth', ['population-growth'], 'exponential',
+      [D`5{,}000\,\text{people} \times (1.02)^{10}`, { fn: 'exponential', args: [5000, 2, 10] }, D`\text{people}`, 0]],
+    [D`\text{TFR} \approx 2.1`, 'Replacement-level fertility: the average number of children per woman that keeps a population the same size over time.', 'Judging whether a population will grow or shrink in the long run.', 'Not 2.0: a little extra makes up for children who do not survive to have children.', 'Unit 3', 'total-fertility-rate', ['age-structure'], 'aboveReplacement',
+      [D`3.4 - 2.1`, { fn: 'aboveReplacement', args: [3.4] }, D`\text{children per woman above 2.1}`, 1]],
+    [D`\text{TFR} = \frac{\text{sum of age-specific birth rates per 1,000 women} \times 5}{1{,}000}`, 'Total fertility rate from birth rates in 5-year age bands.', 'A table of births per 1,000 women by age group.', 'Multiply by the 5 years in each band, then divide by 1,000.', 'Unit 3', 'total-fertility-rate', ['age-structure'], 'tfr',
+      [D`\frac{(20 + 110 + 130 + 90 + 40 + 10 + 0) \times 5}{1{,}000}`, { fn: 'tfr', args: [[20, 110, 130, 90, 40, 10, 0]] }, D`\text{children per woman}`, 1]],
   ] },
   { id: 'energy-flow', h: 'Energy flow and productivity', rows: [
-    [D`\text{NPP} = \text{GPP} - \text{respiration}`, 'Net primary productivity: the energy producers store, after their own respiration.', 'What is left for consumers, from GPP and respiration.', 'NPP is never larger than GPP.', 'Unit 1', 'primary-productivity', ['energy-flow'], 'npp'],
-    [D`E_{\text{next level}} = E \times 0.10`, 'The 10% rule: about a tenth of the energy at one trophic level reaches the next.', 'Energy at the top of a food chain from the energy at the bottom.', 'Multiply by 0.10 once per step up: two steps is × 0.01.', 'Unit 1', 'energy-flow', ['energy-flow', 'calculation-studio'], 'tenPercent'],
+    [D`\text{NPP} = \text{GPP} - \text{respiration}`, 'Net primary productivity: the energy producers store, after their own respiration.', 'What is left for consumers, from GPP and respiration.', 'NPP is never larger than GPP; GPP = NPP + respiration.', 'Unit 1', 'primary-productivity', ['energy-flow'], 'npp',
+      [D`24{,}000 - 9{,}000\,\text{kcal/m}^2\text{/yr}`, { fn: 'npp', args: [24000, 9000] }, D`\text{kcal/m}^2\text{/yr}`, 0]],
+    [D`E_{\text{next level}} = E \times 0.10`, 'The 10% rule: about a tenth of the energy at one trophic level reaches the next.', 'Energy at the top of a food chain from the energy at the bottom.', 'Multiply by 0.10 once per arrow: producers to secondary consumers is two steps, × 0.01.', 'Unit 1', 'energy-flow', ['energy-flow', 'calculation-studio'], 'tenPercent',
+      [D`15{,}000\,\text{kcal} \times 0.10 \times 0.10`, { fn: 'tenPercent', args: [15000, 2] }, D`\text{kcal}`, 0]],
   ] },
   { id: 'energy', h: 'Energy, efficiency and emissions', rows: [
-    [D`\text{efficiency} = \frac{\text{useful output}}{\text{input}} \times 100`, 'The share of input energy that comes out as useful work.', 'Power plants, engines, light bulbs.', 'Output over input, never the other way round.', 'Unit 6', 'energy-conservation', ['energy-chain'], 'efficiency'],
-    [D`\text{overall efficiency} = e_1 \times e_2 \times e_3 \times \ldots`, 'Efficiencies in a chain multiply.', 'Fuel to plant to wires to bulb.', 'Multiply the decimals; do not add or average the percents.', 'Unit 6', 'fossil-fuels', ['energy-chain'], 'chainEfficiency'],
-    [D`\text{energy (kWh)} = \text{power (kW)} \times \text{time (h)}`, 'Energy used by a device running at a steady power.', 'Electricity use and cost from wattage and hours.', 'Watts to kilowatts: divide by 1,000.', 'Math you need', 'math-units', ['energy-chain', 'calculation-studio'], 'mul'],
-    [D`\text{cost} = \text{quantity} \times \text{price per unit}`, 'What a quantity costs.', 'Electricity, water or fuel bills; savings are the cost before minus the cost after.', 'Keep the units: kWh × $/kWh gives $.', 'Unit 6', 'energy-conservation', ['calculation-studio'], 'savings'],
-    [D`\text{emissions} = \text{quantity} \times \text{emission factor}`, 'Carbon dioxide (or another gas) released, from how much fuel or electricity is used.', 'Emissions saved by a change.', 'The factor\'s units must cancel what you multiply: kWh × kg CO₂/kWh.', 'Unit 6', 'energy-conservation', ['energy-chain'], 'emissions'],
+    [D`\text{efficiency} = \frac{\text{useful output}}{\text{input}} \times 100`, 'The share of input energy that comes out as useful work.', 'Power plants, engines, light bulbs.', 'Output over input, never the other way round.', 'Unit 6', 'energy-conservation', ['energy-chain'], 'efficiency',
+      [D`\frac{350\,\text{MWh}}{1{,}000\,\text{MWh}} \times 100`, { fn: 'efficiency', args: [350, 1000] }, D`\%`, 0]],
+    [D`\text{overall efficiency} = e_1 \times e_2 \times e_3 \times \ldots`, 'Efficiencies in a chain multiply.', 'Fuel to plant to wires to motor.', 'Multiply the decimals; do not add or average the percents.', 'Unit 6', 'fossil-fuels', ['energy-chain'], 'chainEfficiency',
+      [D`0.35 \times 0.90 \times 0.90 \times 100`, { fn: 'chainEfficiency', args: [35, 90, 90] }, D`\%`, 2]],
+    [D`\text{energy (kWh)} = \text{power (kW)} \times \text{time (h)}`, 'Energy used by a device running at a steady power.', 'Electricity use from wattage and hours.', 'Watts to kilowatts: divide by 1,000.', 'Math you need', 'math-units', ['energy-chain', 'calculation-studio'], 'mul',
+      [D`1{,}500\,\text{W} \times 4\,\text{h} \times \frac{1\,\text{kW}}{1{,}000\,\text{W}}`, { fn: 'div', args: [{ fn: 'mul', args: [1500, 4] }, 1000] }, D`\text{kWh}`, 0]],
+    [D`\text{cost} = \text{quantity} \times \text{price per unit}`, 'What a quantity costs.', 'Electricity, water or fuel bills.', 'Keep the units: kWh × \$/kWh gives \$; multiply, do not divide by the price.', 'Unit 6', 'energy-conservation', ['calculation-studio'], 'cost',
+      [D`13{,}600\,\text{kWh} \times \frac{\$0.12}{1\,\text{kWh}}`, { fn: 'cost', args: [13600, 0.12] }, '', 0, D`\$`]],
+    [D`\text{savings} = (\text{use before} - \text{use after}) \times \text{price}`, 'Money (or energy) saved by a change.', 'An upgrade, a new bulb, a new irrigation method.', 'Subtract first, then multiply; the cost of the new use alone is not the saving.', 'Unit 6', 'energy-conservation', ['calculation-studio'], 'savings',
+      [D`(25{,}600 - 12{,}000)\,\text{kWh} \times \frac{\$0.12}{1\,\text{kWh}}`, { fn: 'savings', args: [25600, 12000, 0.12] }, '', 0, D`\$`]],
+    [D`\text{emissions} = \text{quantity} \times \text{emission factor}`, 'Carbon dioxide (or another gas) released, from how much fuel or electricity is used.', 'Emissions, or emissions saved by a change.', 'The factor\'s units must cancel what you multiply: kWh × kg CO₂/kWh.', 'Unit 6', 'energy-conservation', ['energy-chain'], 'emissions',
+      [D`13{,}600\,\text{kWh} \times \frac{0.4\,\text{kg CO}_2}{1\,\text{kWh}}`, { fn: 'emissions', args: [13600, 0.4] }, D`\text{kg CO}_2`, 0]],
+    [D`\text{value in new unit} = \text{value} \times \frac{\text{new unit}}{\text{old unit}}`, 'Unit conversion by dimensional analysis: each factor is a fraction equal to 1.', 'Gallons to liters, hectares to square meters, BTU to kWh, and any chain of them.', 'Put the unit you want to get rid of in the denominator, so it cancels.', 'Math you need', 'math-units', ['calculation-studio'], 'convert',
+      [D`25\,\text{gal} \times \frac{3.785\,\text{L}}{1\,\text{gal}}`, { fn: 'mul', args: [25, 3.785] }, D`\text{L}`, 1]],
   ] },
   { id: 'toxicology', h: 'Toxicology and half-life', rows: [
-    [D`\text{amount left} = \text{amount} \times \left(\frac{1}{2}\right)^{t / t_{1/2}}`, 'Radioactive decay, or a pesticide breaking down: what is left after time t.', 'Amount left after a time, or the number of half-lives.', 'Count half-lives first: time divided by half-life.', 'Unit 6', 'nuclear-power', ['dose-response', 'calculation-studio'], 'halfLifeLeft'],
-    [D`\text{LD}_{50}`, 'The dose that kills half of a test population, read off a dose-response curve.', 'Comparing how toxic two substances are.', 'A lower LD50 means a MORE toxic substance.', 'Unit 8', 'lethal-dose-50', ['dose-response'], 'ld50'],
-    [D`\text{dose} = \text{dose per kg} \times \text{body mass (kg)}`, 'A whole-body dose from a dose in mg per kg.', 'How much of a substance would reach a stated dose.', 'Convert body mass to kilograms first.', 'Unit 8', 'lethal-dose-50', ['dose-response'], 'doseFor'],
-    [D`C_{\text{top}} = C \times f^{\,n}`, 'Biomagnification: concentration multiplies by a factor at each step up a food chain.', 'The concentration in a top predator.', 'Bioaccumulation is one organism over time; biomagnification is up the chain.', 'Unit 8', 'bioaccumulation-biomagnification', ['dose-response'], 'biomagnify'],
+    [D`\text{number of half-lives} = \frac{\text{time}}{t_{1/2}}`, 'How many times a radioactive or breaking-down substance has halved.', 'The first step of every half-life question.', 'Divide the time by the half-life, not the other way round.', 'Unit 6', 'nuclear-power', ['dose-response', 'calculation-studio'], 'halfLives',
+      [D`\frac{24\,\text{days}}{8\,\text{days}}`, { fn: 'halfLives', args: [24, 8] }, D`\text{half-lives}`, 0]],
+    [D`\text{amount left} = \text{amount} \times \left(\frac{1}{2}\right)^{t / t_{1/2}}`, 'What is left after time t.', 'Radioactive decay, or a pesticide breaking down.', 'Three half-lives leave one eighth, not one third or one sixth.', 'Unit 6', 'nuclear-power', ['dose-response', 'calculation-studio'], 'halfLifeLeft',
+      [D`80\,\text{mg} \times \left(\frac{1}{2}\right)^{24/8}`, { fn: 'halfLifeLeft', args: [80, 8, 24] }, D`\text{mg}`, 0]],
+    [D`\text{LD}_{50}`, 'The dose that kills half of a test population, read off a dose-response curve.', 'Comparing how toxic two substances are.', 'A lower LD50 means a MORE toxic substance; read across from 50% to the curve, then down to the dose.', 'Unit 8', 'lethal-dose-50', ['dose-response'], 'ld50',
+      [D`\text{dose at }50\%\text{ deaths}`, { fn: 'ld50', args: [[[0, 0], [10, 20], [20, 50], [40, 90]]] }, D`\text{mg/kg}`, 0]],
+    [D`\text{dose} = \text{dose per kg} \times \text{body mass (kg)}`, 'A whole-body dose from a dose in mg per kg.', 'How much of a substance would reach a stated dose.', 'Convert body mass to kilograms first.', 'Unit 8', 'lethal-dose-50', ['dose-response'], 'doseFor',
+      [D`25\,\text{mg/kg} \times 12\,\text{kg}`, { fn: 'doseFor', args: [25, 12] }, D`\text{mg}`, 0]],
+    [D`C_{\text{top}} = C \times f^{\,n}`, 'Biomagnification: concentration multiplies by a factor at each step up a food chain.', 'The concentration in a top predator.', 'Bioaccumulation is one organism over time; biomagnification is up the chain.', 'Unit 8', 'bioaccumulation-biomagnification', ['dose-response'], 'biomagnify',
+      [D`0.04\,\text{ppm} \times 10^{3}`, { fn: 'biomagnify', args: [0.04, 10, 3] }, D`\text{ppm}`, 0]],
+    [D`\text{magnification} = \frac{\text{higher concentration}}{\text{lower concentration}}`, 'How many times more concentrated a substance is at one level than another.', '"How many times greater" questions, and comparing LD50s.', 'Divide, do not subtract; the answer has no unit ("times").', 'Unit 8', 'bioaccumulation-biomagnification', ['dose-response'], 'magnification',
+      [D`\frac{0.2\,\text{ppm}}{0.002\,\text{ppm}}`, { fn: 'magnification', args: [0.2, 0.002] }, D`\text{times}`, 0]],
   ] },
   { id: 'land-water', h: 'Land, water and people', rows: [
-    [D`\text{per capita} = \frac{\text{total}}{\text{population}}`, 'An amount per person.', 'Water use, energy use, waste or footprint per person.', 'Scale words first: 2.5 million is 2,500,000.', 'Math you need', 'math-rates', ['calculation-studio'], 'perCapita'],
-    [D`\text{population density} = \frac{\text{number}}{\text{area}}`, 'How crowded a population is.', 'People per square kilometer, trees per hectare.', 'Area units must match the question (km² or hectares).', 'Unit 3', 'population-growth', ['calculation-studio'], 'density'],
-    [D`\text{water volume} = \text{depth} \times \text{area}`, 'Irrigation water from the depth applied and the field area.', 'Water use per field, then per crop or per dollar.', 'Put depth and area in matching units before you multiply.', 'Unit 5', 'irrigation', ['calculation-studio'], 'waterVolume'],
+    [D`\text{per capita} = \frac{\text{total}}{\text{population}}`, 'An amount per person.', 'Water use, energy use, waste or footprint per person.', 'Scale words first: 4.5 billion is 4,500,000,000.', 'Math you need', 'math-rates', ['calculation-studio'], 'perCapita',
+      [D`\frac{4.5 \times 10^{9}\,\text{L}}{3 \times 10^{6}\,\text{people}}`, { fn: 'perCapita', args: [4.5e9, 3e6] }, D`\text{L per person}`, 0]],
+    [D`\text{population density} = \frac{\text{number}}{\text{area}}`, 'How crowded a population is.', 'People per square kilometer, trees per hectare.', 'Area units must match the question (km² or hectares).', 'Unit 3', 'population-growth', ['calculation-studio'], 'density',
+      [D`\frac{1{,}200{,}000\,\text{people}}{400\,\text{km}^2}`, { fn: 'density', args: [1200000, 400] }, D`\text{people/km}^2`, 0]],
+    [D`\text{water volume} = \text{depth} \times \text{area}`, 'Irrigation water from the depth applied and the field area.', 'Water applied to a field or stored in a wetland.', 'Put depth and area in matching units (m and m²) before you multiply.', 'Unit 5', 'irrigation', ['calculation-studio'], 'waterVolume',
+      [D`0.5\,\text{m} \times 1{,}200{,}000\,\text{m}^2`, { fn: 'waterVolume', args: [0.5, 1200000] }, D`\text{m}^3`, 0]],
+    [D`\text{water per area} = \frac{\text{volume}}{\text{area}}`, 'Water use per hectare (or per acre).', 'Comparing irrigation methods or farms of different sizes.', 'Volume over area, and keep both units in the answer (m³/ha).', 'Unit 5', 'irrigation', ['calculation-studio'], 'waterPerArea',
+      [D`\frac{9{,}000\,\text{m}^3}{1.5\,\text{ha}}`, { fn: 'waterPerArea', args: [9000, 1.5] }, D`\text{m}^3\text{/ha}`, 0]],
   ] },
 ];
+/* A worked line as TeX: "setup = answer unit", the answer from ApEnvCalc
+   (to the row's decimals, thousands as {,}); a leading unit (\$) goes before
+   the number. */
+export function workedValue(w) { return Calc.evaluate(w[1]); }
+export function workedTex(w) {
+  const v = workedValue(w), d = Math.max(0, w[3] || 0);
+  // Decimals -1: a year, printed without a thousands comma.
+  const num = w[3] === -1 ? String(Math.round(v)) : Number(v.toFixed(d)).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }).replace(/,/g, '{,}');
+  return `${w[0]} = ${w[4] || ''}${num}${w[2] ? `\\,${w[2]}` : ''}`;
+}
+/* The "Formulas" flashcard deck (assets/formulas.json, read by
+   pages/flashcards.js): one card per row, front "what it is" and the cue,
+   back the formula, its worked line and the trap; card id eq:<recipe>. */
+export function formulaCards() {
+  return EQ.flatMap(s => s.rows.map(r => ({ id: `eq:${r[7]}`, group: s.h, topic: r[5], front: renderMath([r[1]])[0], cue: renderMath([r[2]])[0],
+    formula: renderMath([`$${r[0]}$`])[0], worked: renderMath([`$${workedTex(r[8])}$`])[0], trap: renderMath([r[3]])[0] })));
+}
+
 // Not formulas, but numbers the exam expects you to know or convert.
 export const NOT_ON = [
   ['Scale words', 'thousand = $10^3$, million = $10^6$, billion = $10^9$, trillion = $10^{12}$. Multiply by adding exponents and divide by subtracting them.', 'math-sci-notation'],
@@ -144,7 +205,7 @@ export function entryPages(ctx) {
     ] };
     const R = x => renderMath(x);
     const sections = EQ.map(s => `<section class="xsection env-eq-sec" aria-labelledby="eq-${s.id}"><h2 id="eq-${s.id}">${esc(s.h)}</h2>
-    <div class="table-wrap" tabindex="0" role="region" aria-label="${esc(s.h)}: formulas"><table class="env-eq"><thead><tr><th scope="col">Formula</th><th scope="col">What it is</th><th scope="col">When you use it</th><th scope="col">The trap</th><th scope="col">Learn it in</th></tr></thead><tbody>${s.rows.map(r => `<tr><th scope="row"><span class="env-eq-f">${R(`$${r[0]}$`)}</span></th><td>${R(r[1])}</td><td>${R(r[2])}</td><td>${R(r[3])}</td><td>${esc(r[4])}<br>${topicLink(r[5], depth)}${trainers(r[6])}</td></tr>`).join('')}</tbody></table></div></section>`).join('\n  ');
+    <div class="table-wrap" tabindex="0" role="region" aria-label="${esc(s.h)}: formulas"><table class="env-eq"><thead><tr><th scope="col">Formula and a worked line</th><th scope="col">What it is and when to use it</th><th scope="col">The trap</th><th scope="col">Learn it in</th></tr></thead><tbody>${s.rows.map(r => `<tr><th scope="row"><span class="env-eq-f">${R(`$${r[0]}$`)}</span><span class="env-eq-w"><span class="env-small">Worked:</span> ${R(`$${workedTex(r[8])}$`)}</span></th><td>${R(r[1])} <span class="env-small">${R(r[2])}</span></td><td>${R(r[3])}</td><td>${esc(r[4])}<br>${topicLink(r[5], depth)}${trainers(r[6])}</td></tr>`).join('')}</tbody></table></div></section>`).join('\n  ');
     const body = `
 ${bodyOpen(' data-app="formula-sheet"')}
 <main id="main" class="xshell env-app env-entry">
@@ -179,6 +240,9 @@ ${tail({ depth, section: 'exams', extra: ['pages/calm-ref.js'], site: ['course/t
 `;
     out[path] = head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body;
   }
+
+  /* The "Formulas" flashcard deck: free, always served (the formulas page is). */
+  out['assets/formulas.json'] = JSON.stringify(formulaCards());
 
   /* ---------------------------------------------------- unit practice tests */
   const stimFor = q => { const s = ((C.questions[q.topic] || {}).stimuli || {})[q.stimulus]; return s; };

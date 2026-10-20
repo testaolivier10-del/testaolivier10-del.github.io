@@ -40,6 +40,8 @@
                      for every student, so a score can be compared with a
                      friend's or a second try. Some questions appear only in
                      these exams (assets/exams/items.json). ?mode=full&form=1.
+                     Timed sections (Phase 3): ?section=1 or 2 (or the Section
+                     choice) runs one section of a fixed exam on its own clock.
 
      Mixed timed set the cram kit's timed sets (spec decision 26): 10, 20 or
                      30 questions from every published unit by the midpoint
@@ -100,7 +102,7 @@
 
   var bank = null, blocks = null, frqList = [], K = null, run = null;
   var FORMS = [], OWN = { items: [], stimuli: {} };
-  var cfg = { kind: 'full', unit: '', len: 25, n: 20, timing: 'std', form: '' };
+  var cfg = { kind: 'full', unit: '', len: 25, n: 20, timing: 'std', form: '', section: '' };
   function formById(id){ return FORMS.filter(function(f){ return f.id === id; })[0] || null; }
   var MIXED = [10, 20, 30];
   function cramOk(){ return !Core.allowed || Core.allowed('cram'); }
@@ -249,9 +251,11 @@
     var fmt = '<p>Section I: 80 multiple-choice questions with four options in 90 min, alone and in sets that share a data table or graph, a model or diagram, or a passage. Section II: 3 free-response questions in 70 min, each worth 10 points: design an investigation, analyze and interpret quantitative data, and an environmental problem with calculations. A scientific calculator is allowed throughout. Then you score your free responses with the rubrics.</p>';
     if(fm){
       var fu = {}; fm.mcq.forEach(function(b){ b.forEach(function(id){ var q = byIdQ(id); if(q) fu[q.unit] = (fu[q.unit] || 0) + 1; }); });
-      return formPick + '<div class="cx-note env-ex-note"><p><b>' + esc(fm.title) + ': a complete exam in the real format.</b> The same questions in a set order for everyone, so you can compare a second try.</p>' + fmt +
+      var secPick = '<fieldset class="cx-group"><legend>Section</legend><div class="cx-pills">' + [['', 'Whole exam'], ['1', 'Section I only (80 questions, 90 min)'], ['2', 'Section II only (3 questions, 70 min)']].map(function(o){
+        return '<label class="cx-pill"><input type="radio" name="section" value="' + o[0] + '"' + (cfg.section === o[0] ? ' checked' : '') + '><span>' + o[1] + '</span></label>'; }).join('') + '</div></fieldset>';
+      return formPick + secPick + '<div class="cx-note env-ex-note"><p><b>' + esc(fm.title) + ': a complete exam in the real format.</b> The same questions in a set order for everyone, so you can compare a second try.</p>' + fmt +
         '<h2 class="env-ex-h3">Section I, by unit</h2><ul class="env-ex-areas">' + courseUnits().map(function(u){ return '<li class="is-on"><span>' + esc(unitName(u.id)) + (Array.isArray(u.weight) ? ' <span class="env-small">(' + u.weight[0] + '–' + u.weight[1] + '%)</span>' : '') + '</span><b>' + (fu[u.id] || 0) + '</b></li>'; }).join('') + '</ul></div>' +
-        timingField() + '<p class="env-small">' + (t.k ? 'Section I: ' + minutes(90 * 60 * t.k) + '. Section II: ' + minutes(70 * 60 * t.k) + (t.k > 1 ? ', with extra time' : '') + '.' : 'Untimed: the clock counts up instead of down.') + '</p>';
+        timingField() + '<p class="env-small">' + (t.k ? (cfg.section !== '2' ? 'Section I: ' + minutes(90 * 60 * t.k) + '. ' : '') + (cfg.section !== '1' ? 'Section II: ' + minutes(70 * 60 * t.k) + '.' : '') + (t.k > 1 ? ' With extra time.' : '') : 'Untimed: the clock counts up instead of down.') + '</p>';
     }
     var plan = examPlan();
     var unitRows = plan.units.map(function(u){
@@ -274,7 +278,7 @@
   function summary(){
     if(cfg.kind === 'mixed'){ if(!cramOk()) return 'Mixed timed sets are part of Premium.'; var m = mixedPlan(cfg.n); return m.n ? 'Mixed timed set: about ' + plural(m.n, 'question') + (timing().k ? ', about ' + minutes(m.n * MCQ_SEC * timing().k) : ', untimed') + '.' : 'No questions are published yet.'; }
     if(cfg.kind === 'unit'){ var p = unitPlan(cfg.unit, cfg.len); return p.n ? plural(p.n, 'question') + (timing().k ? ', about ' + minutes(p.n * MCQ_SEC * timing().k) : ', untimed') + '.' : 'No questions are published for this unit yet.'; }
-    if(formById(cfg.form)) return formById(cfg.form).title + ': 80 multiple-choice questions + 3 free-response questions.';
+    if(formById(cfg.form)) return formById(cfg.form).title + (cfg.section === '1' ? ', Section I: 80 multiple-choice questions in 90 minutes.' : cfg.section === '2' ? ', Section II: 3 free-response questions in 70 minutes.' : ': 80 multiple-choice questions + 3 free-response questions.');
     var plan = examPlan();
     if(!plan.mcqN) return 'No questions are published yet.';
     return (plan.full ? 'Full practice exam: ' : 'Shorter practice exam: ') + plural(plan.mcqN, 'multiple-choice question') + (plan.frqN ? ' + ' + plural(plan.frqN, 'free-response question') : '') + '.';
@@ -332,8 +336,9 @@
       if(n === 'len') cfg.len = +v;
       if(n === 'n') cfg.n = +v;
       if(n === 'form') cfg.form = v;
+      if(n === 'section') cfg.section = v;
       if(n === 'timing'){ cfg.timing = v; setPref('examTiming', v); }
-      if(n === 'kind' || n === 'unit' || n === 'len' || n === 'n' || n === 'timing' || n === 'form'){
+      if(n === 'kind' || n === 'unit' || n === 'len' || n === 'n' || n === 'timing' || n === 'form' || n === 'section'){
         app.querySelector('.env-ex-panel').innerHTML = panelHtml();
         var again = form.querySelector('[name="' + n + '"]' + (e.target.type === 'radio' ? '[value="' + v + '"]' : '')); if(again) again.focus();
       }
@@ -376,7 +381,9 @@
       });
       if(qs.some(function(q){ return !q; })) throw new Error('missing questions');
       if(Core.freeExam && !Core.freeExam().use()){ renderSetup(); return; }
-      startExam(qs, r[1], f.title, { kind: 'full', form: f.id }, timing().k);
+      // Timed sections: one section of a fixed exam on its own clock.
+      var sec = cfg.section, label = f.title + (sec === '1' ? ': Section I' : sec === '2' ? ': Section II' : '');
+      startExam(sec === '2' ? [] : qs, sec === '1' ? [] : r[1], label, { kind: 'full', form: f.id, section: sec || null, partial: !!sec }, timing().k);
     }).catch(function(){
       if(btn){ btn.disabled = false; btn.textContent = 'Start'; }
       var msg = app.querySelector('.env-pr-avail'); if(msg) msg.textContent = 'The exam questions did not load. Check your connection and try again.';
@@ -440,6 +447,7 @@
     run = { label: label, meta: meta, k: k, res: {}, rows: [], startedAt: Date.now(), done: false, section: 1,
       mcqParts: mcqParts, frqParts: frqParts, frqs: frqParts.reduce(function(o, p){ return o.concat(p.frqs); }, []), answers: [], pi: 0 };
     window.addEventListener('beforeunload', guard);
+    if(!mcqParts.length && frqParts.length) return startSectionTwo(0);
     startSectionOne(0);
   }
 
@@ -746,8 +754,9 @@
     var weak = byTopic.filter(function(x){ return x.c < x.n; }).slice(0, 3);
     view('results');
     app.innerHTML = '<div class="env-ex-results">' +
-      '<div class="env-pr-score"><span class="env-pr-score-big">' + right + '<small>/' + total + '</small></span><span><b>Multiple choice: ' + pctOf(right, total) + '%</b><span class="env-small">' + esc(run.label) +
-        (run.timeUp1 ? ' · time ran out in Section I' : '') + '</span></span></div>' +
+      // A Section II timed section has no multiple choice to score.
+      (total ? '<div class="env-pr-score"><span class="env-pr-score-big">' + right + '<small>/' + total + '</small></span><span><b>Multiple choice: ' + pctOf(right, total) + '%</b><span class="env-small">' + esc(run.label) +
+        (run.timeUp1 ? ' · time ran out in Section I' : '') + '</span></span></div>' : '') +
       (fo ? '<div class="env-pr-score env-ex-fsum"><span class="env-pr-score-big">' + fg + '<small>/' + fo + '</small></span><span><b>Free response (your self-score): ' + pctOf(fg, fo) + '%</b><span class="env-small">' + plural(run.frqs.length, 'question') + ' scored with the rubrics' + (run.timeUp2 ? ' · time ran out in Section II' : '') + '</span></span></div>' : '') +
       (k === 'full' ? '<p class="env-small">No AP® score is estimated: May 2027 is the first exam in this format, so there is no score data to calibrate one. Use the section percentages and the breakdowns below.</p>' : '') +
       (missedN ? '<p>' + plural(rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>' + (rows.some(function(x){ return !x.r.correct && x.q.own; }) ? ' (questions written only for this exam stay here, in the review below)' : '') + '.</p>' : '<p>Every multiple-choice question right.</p>') +
@@ -839,6 +848,7 @@
       if(p.get('mode') === 'unit' || p.get('mode') === 'full' || p.get('mode') === 'mixed') cfg.kind = p.get('mode');
       if(MIXED.indexOf(+p.get('n')) > -1) cfg.n = +p.get('n');
       if(formById('form-' + p.get('form'))){ cfg.form = 'form-' + p.get('form'); cfg.kind = 'full'; }
+      if(p.get('section') === '1' || p.get('section') === '2') cfg.section = p.get('section');
       else if(cfg.kind === 'full' && FORMS.length && !p.get('form')) cfg.form = FORMS[0].id;
       renderSetup();
       if(p.toString()){ var s = app.querySelector('.env-pr-start'); if(s && !s.disabled) s.focus(); }

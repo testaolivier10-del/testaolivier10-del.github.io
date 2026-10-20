@@ -1,0 +1,193 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-2",
+   "id": "u2-tolerance-hypothesis",
+   "topic": "ecological-tolerance",
+   "practice": "4.A",
+   "skill": "hypothesis",
+   "title": "A hypothesis about trout and warm water",
+   "context": "<p>A biologist keeps young brook trout in tanks at 12, 16, 20 and 24 °C for 30 days and counts how many survive in each tank (invented study for practice).</p>",
+   "prompt": "<b>Write</b> a testable hypothesis for this study.",
+   "checklist": [
+    "Names the change: water temperature",
+    "Names what is measured: the number of trout that survive",
+    "Gives a direction for the result",
+    "Gives a reason based on the trout's range of tolerance"
+   ],
+   "earns": {
+    "answer": "If the water temperature is raised above the trout's optimal range, then fewer trout will survive, because warm water is outside their range of tolerance and puts them under physiological stress.",
+    "why": "A statement with the change, the measured variable, a direction and a reason tied to the range of tolerance."
+   },
+   "misses": {
+    "answer": "How does water temperature impact the number of trout that survive?",
+    "why": "It is a question, and \"impact\" gives no direction to test."
+   },
+   "specific": {
+    "slots": {
+     "change": {
+      "label": "If ...",
+      "options": [
+       "the water temperature is raised",
+       "the tanks are made larger",
+       "more trout are added to each tank"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Tank size is the same throughout; temperature is what changes.",
+       "2": "Each tank starts with the same number of trout."
+      }
+     },
+     "measure": {
+      "label": "then ...",
+      "options": [
+       "fewer trout will survive",
+       "the trout will change color",
+       "the trout will affect the water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Color is not measured; survival is.",
+       "2": "This gives neither the measured variable nor a direction."
+      }
+     },
+     "because": {
+      "label": "because ...",
+      "options": [
+       "warm water is outside the trout's range of tolerance",
+       "trout like the cold",
+       "warm water has more food in it"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Liking is not a reason a reader accepts; name the tolerance range or the stress.",
+       "2": "Food is not part of the study, and it would not explain fewer survivors."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-island-trend",
+   "topic": "island-biogeo",
+   "practice": "5.C",
+   "skill": "trend",
+   "title": "Island size and species",
+   "context": "<p>Bird species counted on four islands the same distance from the mainland (invented data for practice): 2 km², 9 species; 20 km², 18 species; 200 km², 35 species; 2,000 km², 70 species.</p>",
+   "prompt": "<b>Describe</b> the relationship in the data and <b>explain</b> it.",
+   "checklist": [
+    "Describes the trend with numbers: species rise from 9 to 70 as area rises from 2 to 2,000 km²",
+    "Notes the pattern: each tenfold rise in area roughly doubles the number of species",
+    "Explains it: larger islands have more habitats and larger populations, so fewer species go extinct"
+   ],
+   "earns": {
+    "answer": "Larger islands have more bird species: 9 species on 2 km² but 70 on 2,000 km². Each tenfold increase in area about doubles the species count (9, 18, 35, 70). Larger islands hold more kinds of habitat and larger populations, so their extinction rates are lower and more species persist.",
+    "why": "It describes the trend with the data, adds the doubling pattern and gives the mechanism (habitat and extinction)."
+   },
+   "misses": {
+    "answer": "Bigger islands have more birds on them because there is more room.",
+    "why": "It confuses birds with bird species, gives no numbers, and \"more room\" skips habitats and extinction rates."
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-wetland-tradeoff",
+   "topic": "ecosystem-services",
+   "practice": "7.C",
+   "skill": "tradeoff",
+   "title": "Draining a wetland for farmland",
+   "prompt": "<b>Describe</b> one economic advantage and one environmental disadvantage of draining a wetland to grow crops, each with its reason.",
+   "checklist": [
+    "Gives an advantage with its reason: new cropland earns income from food sold",
+    "Gives a disadvantage that is a lost ecosystem service, with how the wetland provided it",
+    "Each point says why, not just names a word"
+   ],
+   "earns": {
+    "answer": "Advantage: the drained land can grow crops, so the farmer earns income from food that land produced nothing to sell before. Disadvantage: the town loses flood control, because the wetland held storm water like a sponge and released it slowly; once it is drained, rain runs off quickly and floods land downstream.",
+    "why": "Each side has its reason, and the disadvantage names the ecosystem service and how it worked."
+   },
+   "misses": {
+    "answer": "It makes money but it is bad for the environment and the animals.",
+    "why": "\"Bad for the environment\" names no service and no mechanism, and the advantage has no reason."
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-fire-succession-chain",
+   "topic": "succession",
+   "practice": "1.C",
+   "skill": "chain",
+   "title": "From burned forest back to forest",
+   "context": "<p>A fire burns a forest but leaves its soil in place.</p>",
+   "prompt": "<b>Explain</b> how the area returns to forest, naming each stage.",
+   "checklist": [
+    "Names it secondary succession, since the soil remained",
+    "Pioneer plants (grasses, weeds) grow first from seeds and roots in the soil",
+    "Shrubs and fast-growing trees shade out the pioneers; later, shade-tolerant trees replace them as the soil deepens",
+    "Ends with a mature forest community"
+   ],
+   "earns": {
+    "answer": "This is secondary succession, because the soil was not destroyed. Grasses and weeds sprout first from seeds and roots left in the soil. They add organic matter, and shrubs and fast-growing, sun-loving trees move in and shade them out. Over decades, shade-tolerant trees grow up under those trees and replace them, until a mature forest returns.",
+    "why": "It names the kind of succession with its reason and every stage in order, each with why it gives way to the next."
+   },
+   "misses": {
+    "answer": "The forest grows back over time through primary succession.",
+    "why": "Soil remained, so it is secondary succession, and no stages are named."
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-dune-solution",
+   "topic": "natural-disruptions",
+   "practice": "7.E",
+   "skill": "solution",
+   "title": "Protecting a beach town from storm flooding",
+   "context": "<p>A beach town loses houses when storm waves flood the shore. The town cannot afford a concrete seawall and wants a solution other than moving the houses.</p>",
+   "prompt": "<b>Propose</b> a solution that fits these constraints and <b>explain</b> how it works.",
+   "checklist": [
+    "Proposes a low-cost option other than a seawall or moving houses (for example, rebuilding and planting dunes, or restoring a salt marsh)",
+    "Explains how it works: how it reduces the force or reach of the storm waves",
+    "Fits the town's scale and stated constraints"
+   ],
+   "earns": {
+    "answer": "Rebuild the sand dunes in front of the houses and plant them with dune grass. The grass roots hold the sand in place, and the dunes act as a barrier that absorbs wave energy and blocks the flooding waves before they reach the houses, at much lower cost than a seawall.",
+    "why": "It respects both constraints and explains the mechanism (roots hold sand, dunes absorb wave energy)."
+   },
+   "misses": {
+    "answer": "Build a seawall to stop the waves from hitting the houses.",
+    "why": "The question rules out a seawall, and the reader gives no point for a solution the stem excludes."
+   },
+   "specific": {
+    "slots": {
+     "solution": {
+      "label": "Solution",
+      "options": [
+       "rebuild the dunes and plant them with dune grass",
+       "build a concrete seawall",
+       "move the houses inland"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The town cannot afford a seawall.",
+       "2": "The question asks for something other than moving the houses."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "roots hold the sand, and the dunes absorb wave energy before it reaches the houses",
+       "it makes the beach look nicer for tourists",
+       "it stops storms from forming"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Looks are not a way of stopping a surge.",
+       "2": "No local project stops storms forming; it can only reduce their damage."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

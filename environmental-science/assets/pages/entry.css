@@ -49,10 +49,13 @@
    From 720 px: below that the columns size to their content and the whole table scrolls in its (focusable) region. */
 @media (min-width: 720px){
   .env-eq{table-layout:fixed;}
-  .env-eq thead th:nth-child(1){width:34%;} .env-eq thead th:nth-child(2){width:25%;} .env-eq thead th:nth-child(3){width:27%;} .env-eq thead th:nth-child(4){width:14%;}
+  /* Four columns: the formula with its worked line under it, what and when, the trap, where it is taught. */
+  .env-eq thead th:nth-child(1){width:42%;} .env-eq thead th:nth-child(2){width:26%;} .env-eq thead th:nth-child(3){width:19%;} .env-eq thead th:nth-child(4){width:13%;}
 }
-.env-eq-f{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:2px 0 4px;}
-@media (max-width: 719px){ .env-eq-f{max-width:none;overflow:visible;} }
+.env-eq-f,.env-eq-w{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:2px 0 4px;}
+.env-eq-w{font-size:14px;font-weight:400;margin-top:4px;}
+@media (max-width: 719px){ .env-eq-f,.env-eq-w{max-width:none;overflow:visible;} }
+@media (max-width: 560px){ .env-eq-w{max-width:100%;overflow-x:auto;} }
 .env-eq-not li{margin:8px 0;}
 .env-entry .env-qs{margin:16px 0;}
 .env-cards-row{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 12px;}

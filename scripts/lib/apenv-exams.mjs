@@ -259,7 +259,16 @@ export const EXAM_NUMBERS = [
   { id: 'env-exam-2-21', key: 'Sea level rose in each decade, and the rise per decade grew', check: () => { const d = sea.slice(1).map((v, i) => v - sea[i]); return d.every((x, i) => !i || x > d[i - 1]) && d.join() === '32,34,37'; } },
 ];
 // Every number a prompt shows, recomputed, in the text where it must appear.
-export const JUSTIFY_NUMBERS = [];
+export const JUSTIFY_NUMBERS = [
+  { id: 'u1-co2-seasons-trend', has: [`a drop of ${C('sub', 424, 418)} ppm`] },
+  { id: 'u2-island-trend', has: ['9 species on 2 km²', '70 on 2,000 km²'], check: () => [9, 18, 35, 70].every((v, i, a) => !i || Math.abs(v / a[i - 1] - 2) < 0.1) },
+  { id: 'u3-deer-trend', has: [`ten times as many`, `a drop of ${-C('percentChange', 2000, 500)}%`], check: () => C('magnification', 2000, 200) === 10 },
+  { id: 'u3-doubling-year', has: [`70 / 1.75 = ${C('ruleOf70', 1.75)} years`, `2025 + 40 = ${C('doublingYear', 2025, 1.75)}`], check: () => C('mul', 2, 2) === 4 },
+  { id: 'u4-enso-trend', has: [`${C('sub', 24, 19)} °C warmer`, `${-C('percentChange', 8, 2)}% lower`] },
+  { id: 'u6-use-trend', has: [`(10 - 4) / 4 × 100 = ${C('percentChange', 4, 10)}%`, `${C('sub', 6, 4)} exajoules in the first decade and ${C('sub', 10, 6)} in the second`] },
+  { id: 'u8-biomagnification-trend', has: [`0.2 / 0.002 = ${C('magnification', 0.2, 0.002)} times`], check: () => C('magnification', 0.02, 0.002) === 10 && C('magnification', 0.002, 0.00002) === 100 },
+  { id: 'u9-co2-temperature-trend', has: [`a rise of ${C('sub', 414, 317)} ppm`] },
+];
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {
   const errs = [];

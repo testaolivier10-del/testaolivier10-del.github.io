@@ -219,7 +219,9 @@ questions with 3-5 quantitative, 3-5 visual and exactly 2 text sets (whole sets,
 count within its weight range of 80 (6-8% gives 4-7, 10-15% 8-12, 7-10% 5-8, 15-20% 12-16); Section II is 3
 FRQs in the order `design`, `data`, `calc`, 10 points each; no question or FRQ in two forms. Practice weights are
 checked only when the map sets `practicesConfirmed` (they are third party: needs-author `practice-weights`).
-`EXAM_NUMBERS` and `JUSTIFY_NUMBERS` recompute every exam-only key and prompt number (empty until Phase 3).
+`EXAM_NUMBERS` and `JUSTIFY_NUMBERS` recompute every exam-only key, its named-slip distractors and every prompt number
+(Phase 3). `exams.html?form=<n>&section=1|2` runs one section of a fixed form on its own clock. The formulas page's rows
+(`EQ`) carry a worked line computed by `ApEnvCalc` and are also the "Formulas" flashcard deck (`assets/formulas.json`).
 
 ## "Make it specific": `data/justify/<unit>.json`
 

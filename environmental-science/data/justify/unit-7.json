@@ -1,0 +1,221 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-7",
+   "id": "u7-smog-chain",
+   "topic": "photochemical-smog",
+   "practice": "1.B",
+   "skill": "chain",
+   "title": "How a sunny day makes ozone",
+   "prompt": "<b>Explain</b> how morning traffic in a sunny city leads to high ground-level ozone in the afternoon.",
+   "checklist": [
+    "Cars emit nitrogen oxides (NO) and volatile organic compounds during the morning rush",
+    "NO is oxidized to nitrogen dioxide (NO2), and sunlight splits NO2, freeing oxygen atoms",
+    "The oxygen atoms join oxygen molecules to form ozone, and VOCs keep NO from destroying it, so ozone builds to a peak in the afternoon"
+   ],
+   "earns": {
+    "answer": "In the morning rush hour, cars emit nitrogen oxide and VOCs. The nitrogen oxide turns into nitrogen dioxide, and as the sun climbs, sunlight splits nitrogen dioxide into nitrogen oxide and a free oxygen atom, which joins an oxygen molecule to form ozone. Radicals from VOCs turn nitrogen oxide back into nitrogen dioxide without using up ozone, so ozone builds through the day and peaks in the afternoon.",
+    "why": "Every link: the emissions, sunlight splitting NO2, ozone forming, and why it accumulates."
+   },
+   "misses": {
+    "answer": "Cars give off ozone, which builds up during the day.",
+    "why": "Cars do not emit ozone; it is a secondary pollutant made by sunlight acting on their emissions."
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-radon-solution",
+   "topic": "indoor-air",
+   "practice": "7.E",
+   "skill": "solution",
+   "title": "Radon in a basement",
+   "context": "<p>A family finds high radon levels in their basement bedroom. They cannot move.</p>",
+   "prompt": "<b>Propose</b> a solution that fits their situation and <b>explain</b> how it lowers the radon.",
+   "checklist": [
+    "Proposes a fix that keeps the family in the house (seal cracks, install a vent pipe and fan under the floor)",
+    "Explains how it works: blocks radon entering from the rock and soil, or removes it before it gets in",
+    "Fits the stated constraint"
+   ],
+   "earns": {
+    "answer": "Seal the cracks in the basement floor and walls and install a vent pipe with a fan that draws air from under the floor and blows it outside above the roof. Radon gas from the rock below is pulled away before it can seep into the house, so it reduces indoor radon levels.",
+    "why": "It fits the constraint and explains how radon is kept out."
+   },
+   "misses": {
+    "answer": "Open the windows sometimes to let fresh air in.",
+    "why": "Vague (how often, which windows?), and it never says how the radon, which seeps up from the ground, is stopped."
+   },
+   "specific": {
+    "slots": {
+     "solution": {
+      "label": "Solution",
+      "options": [
+       "seal floor cracks and add a vent fan that draws air from under the floor",
+       "move to a new house",
+       "buy an air purifier with a carbon filter"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The family cannot move.",
+       "2": "Ordinary room purifiers do little against radon gas; the fix is to keep it out."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "it pulls radon from the soil outside before it enters the house",
+       "it makes the radon less radioactive",
+       "it adds more oxygen to the room"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nothing in a home changes how radioactive radon is.",
+       "2": "Oxygen does not cancel radon."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-scrubber-policy",
+   "topic": "reducing-air-pollutants",
+   "practice": "7.B",
+   "skill": "policy",
+   "title": "Cutting sulfur dioxide from power plants",
+   "prompt": "<b>Propose</b> a policy to reduce sulfur dioxide from coal power plants and <b>explain</b> how it works.",
+   "checklist": [
+    "Proposes a policy, a law or rule (an emissions cap, a cap-and-trade program, a law requiring scrubbers), not just a device",
+    "Explains how it cuts emissions",
+    "Names sulfur dioxide and the plants it targets"
+   ],
+   "earns": {
+    "answer": "Pass a law that caps total sulfur dioxide from power plants and lets plants trade permits. Each plant must cut its emissions (for example by installing scrubbers or burning low-sulfur coal) or buy permits from plants that cut more, so total sulfur dioxide falls to the cap at the lowest cost.",
+    "why": "A policy, with how the cap forces emissions down."
+   },
+   "misses": {
+    "answer": "Power plants should use scrubbers in their smokestacks.",
+    "why": "Scrubbers are a technology. The policy would be a law requiring them, or a cap that makes plants choose them."
+   },
+   "specific": {
+    "slots": {
+     "type": {
+      "label": "A policy is",
+      "options": [
+       "a law that caps sulfur dioxide and lets plants trade permits",
+       "a scrubber in the smokestack",
+       "switching to low-sulfur coal"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is a device, a technology.",
+       "2": "That is an action a plant takes, not a law or rule."
+      }
+     },
+     "how": {
+      "label": "It works because",
+      "options": [
+       "plants must cut emissions or buy permits, so the total falls to the cap",
+       "it makes the smoke a different color",
+       "it moves the plants farther away"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Color is not the point.",
+       "2": "Moving plants does not reduce emissions."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-buffer-hypothesis",
+   "topic": "acid-rain",
+   "practice": "4.A",
+   "skill": "hypothesis",
+   "title": "A hypothesis about lakes and acid rain",
+   "context": "<p>Researchers measure the pH of 20 lakes that receive the same acid rain. Half sit on limestone bedrock and half on granite (invented study for practice).</p>",
+   "prompt": "<b>Write</b> a testable hypothesis for this study.",
+   "checklist": [
+    "Names the change: limestone versus granite bedrock",
+    "Names the measure: lake pH",
+    "Gives a direction: higher pH (less acidic) on limestone",
+    "Gives a reason: limestone neutralizes (buffers) the acid"
+   ],
+   "earns": {
+    "answer": "If a lake sits on limestone bedrock rather than granite, then its pH will be higher, because limestone neutralizes acid from the rain and granite does not.",
+    "why": "Statement, change, measured variable, direction and reason."
+   },
+   "misses": {
+    "answer": "The kind of rock under each lake affects its pH.",
+    "why": "\"Affects\" gives no direction to test, and there is no reason why the rock matters."
+   },
+   "specific": {
+    "slots": {
+     "change": {
+      "label": "If ...",
+      "options": [
+       "a lake sits on limestone rather than granite",
+       "a lake is larger",
+       "a lake has more fish"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lake size is not the variable.",
+       "2": "Fish are not part of the study."
+      }
+     },
+     "direction": {
+      "label": "then ...",
+      "options": [
+       "its pH will be higher",
+       "its pH will be lower",
+       "its pH will change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Limestone neutralizes acid, which raises pH.",
+       "2": "\"Change\" gives no direction; a hypothesis says which way."
+      }
+     },
+     "because": {
+      "label": "because ...",
+      "options": [
+       "limestone neutralizes acid",
+       "granite is harder",
+       "limestone makes more rain fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Hardness does not neutralize acid.",
+       "2": "Bedrock does not change rainfall."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-noise-control",
+   "topic": "noise-pollution",
+   "practice": "4.C",
+   "skill": "control",
+   "title": "A control in a traffic noise study",
+   "context": "<p>A scientist plays recorded highway noise near nests in one forest and records how often birds sing. Birds at nests in a second, similar forest hear no recording (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the control group, <b>describe</b> its purpose, and <b>identify</b> one variable to hold constant.",
+   "checklist": [
+    "Control group: birds at nests in the forest with no recorded noise",
+    "Purpose: a baseline to compare with, so any change in singing can be traced to the noise",
+    "A constant: species of bird, time of day, season or habitat"
+   ],
+   "earns": {
+    "answer": "The control group is the birds in the second forest that hear no recording. They give a baseline: comparing their singing with the birds hearing highway noise shows whether the noise changes how often birds sing. The time of day of the recordings must be the same in both forests.",
+    "why": "It names the control, says what it is for (a baseline) and gives a constant."
+   },
+   "misses": {
+    "answer": "The control is the quiet forest with no highway noise.",
+    "why": "It names the control but gives neither its purpose (a baseline) nor a constant."
+   }
+  }
+ ]
+}
