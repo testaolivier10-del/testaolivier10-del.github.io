@@ -321,19 +321,21 @@
     var fish = Math.max(0, Math.round((up - 0.35) * 3.2));
     for(var fz = 0; fz < fish; fz++){ var fx = X(0.84 - fz * 0.07), fy = sea + 14 + (fz % 2) * 9; out.push('<path class="ec-fish" d="M' + n2(fx) + ' ' + n2(fy) + 'q6 -5 12 0q-6 5 -12 0zm12 0l5 -4v8z"/>'); }
     // Walker circulation: rising (rain) over rainX, east aloft, sinking in the east, trade winds west at the surface
-    var rx = X(P.rainX), top = y0 + h * 0.13, sinkX = X(Math.min(0.92, Math.max(P.rainX + 0.3, 0.8)));
+    var rx = X(P.rainX), top = y0 + Math.max(36, h * 0.14), sinkX = X(Math.min(0.92, Math.max(P.rainX + 0.3, 0.8)));
     var thick = Math.max(0.8, 3.2 * P.trade);
     out.push(cloud(rx, top + 12, phone ? 9 : 12));
     out.push(rain(rx, top + 22, phone ? 9 : 12, 5, sea - top - 30));
     out.push(arrow(rx + 22, top + 2, sinkX - 6, top + 2, 'ec-walker', 7));
     out.push(arrow(sinkX, top + 8, sinkX, sea - 26, 'ec-walker', 7));
     out.push('<g style="stroke-width:' + n2(thick) + 'px">' + arrow(sinkX - 6, sea - 14, rx + 18, sea - 14, 'ec-trade', 6 + thick * 1.5, 3 + thick) + '</g>');
-    out.push(txt((rx + sinkX) / 2, sea - 22, P.trade < 0.55 ? 'Trade winds weak' : P.trade > 1.4 ? 'Trade winds strong' : 'Trade winds', 'ec-t ec-s ec-b', 'middle'));
+    // the label starts right of the rain, so it never sits on the streaks
+    var tl = (P.trade < 0.55 ? 16 : P.trade > 1.4 ? 18 : 11) * 6.6, fits = sinkX - 12 - (rx + 18) >= tl;
+    out.push(txt(rx + (phone ? 16 : 20), fits ? sea - 24 : sea + 16, P.trade < 0.55 ? 'Trade winds weak' : P.trade > 1.4 ? 'Trade winds strong' : 'Trade winds', 'ec-t ec-s ec-b ec-halo', 'start'));
     if(sinkX < x0 + w - 30) out.push(sunIcon(sinkX + 18, top + 22, 5));
     // what it means on land
     if(P.state === 'nino'){ out.push(tag(x0 + 4, sea - h * 0.13, 'Drought', 'ec-tag-dry')); out.push(tag(x0 + w - 4, sea - h * 0.3, 'Floods', 'ec-tag-wet', 'end')); }
     if(P.state === 'nina'){ out.push(tag(x0 + 4, sea - h * 0.13, 'Heavy rain', 'ec-tag-wet')); out.push(tag(x0 + w - 4, sea - h * 0.3, 'Dry', 'ec-tag-dry', 'end')); }
-    out.push(tag(x0 + 4, y0 + 16, o.title || (P.name + ' (Niño 3.4 ' + (a > 0 ? '+' : a < 0 ? '−' : '') + f1(Math.abs(a)) + ' °C)'), P.state === 'nino' ? 'ec-tag-nino' : P.state === 'nina' ? 'ec-tag-nina' : ''));
+    out.push(tag(x0 + 6, y0 + 20, o.title || (P.name + ' (Niño 3.4 ' + (a > 0 ? '+' : a < 0 ? '−' : '') + f1(Math.abs(a)) + ' °C)'), P.state === 'nino' ? 'ec-tag-nino' : P.state === 'nina' ? 'ec-tag-nina' : ''));
     if(!o.compact) out.push(txt(X(0.5), bot - 8, 'Cold deep water', 'ec-t ec-s ec-on-deep', 'middle'));
     return out.join('');
   }
@@ -348,9 +350,9 @@
     host.innerHTML = '<section class="bt-problem ec-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Earth and climate explorer</h2>' +
       '<div class="ec-fig"><svg class="ec-svg" role="img" xmlns="http://www.w3.org/2000/svg"></svg></div>' +
       '<div class="ec-ctl">' +
-        '<div class="ec-scenes ls-scroll" role="group" aria-label="View">' + SCENES.map(function(s){ return '<button type="button" class="tchip ec-scene" data-s="' + s.id + '" aria-pressed="false">' + esc(s.label) + '</button>'; }).join('') + '</div>' +
+        '<div class="ec-scenes ec-chips" role="group" aria-label="View">' + SCENES.map(function(s){ return '<button type="button" class="tchip ec-scene" data-s="' + s.id + '" aria-pressed="false">' + esc(s.label) + '</button>'; }).join('') + '</div>' +
         '<div class="ec-g" data-g="sun"></div><div class="ec-g" data-g="winds"></div><div class="ec-g" data-g="shadow"></div>' +
-        '<div class="ec-g" data-g="enso"><div class="ec-enso ls-scroll" role="group" aria-label="Pacific conditions">' +
+        '<div class="ec-g" data-g="enso"><div class="ec-enso ec-chips" role="group" aria-label="Pacific conditions">' +
           '<button type="button" class="tchip ec-es" data-a="-1.5" aria-pressed="false">La Niña</button><button type="button" class="tchip ec-es" data-a="0" aria-pressed="false">Neutral</button><button type="button" class="tchip ec-es" data-a="1.5" aria-pressed="false">El Niño</button><button type="button" class="tchip ec-cmp" aria-pressed="false">Side by side</button></div></div>' +
       '</div>' +
       '<div class="ec-say"></div>' +
@@ -525,7 +527,7 @@
       host.removeEventListener('click', onClick);
       s.root.addEventListener('click', onClick);
       draw();
-      if(s.mode() === 'explore') s.hint({ target: sDay.input, text: 'Start here: drag the date' });
+      if(s.mode() === 'explore') s.hint({ target: $('.ec-fig'), inside: true, text: 'Start here: drag the Date slider' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ if(!anim) draw(); }, 60); }).observe($('.ec-fig')); }
       window.addEventListener('resize', function(){ if(!anim) draw(); });
     }

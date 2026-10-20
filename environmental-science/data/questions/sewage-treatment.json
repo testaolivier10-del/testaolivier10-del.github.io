@@ -1,0 +1,600 @@
+{
+ "stimuli": {
+  "sewage-treatment-s1": {
+   "kind": "quantitative",
+   "title": "Wastewater quality through a treatment plant",
+   "invented": true,
+   "table": {
+    "caption": "Average wastewater measurements at each point in a city treatment plant (invented data for practice). BOD (biochemical oxygen demand) is the oxygen microbes would use to break down the organic matter.",
+    "cols": [
+     "Sample point",
+     "Suspended solids (mg/L)",
+     "BOD (mg/L)",
+     "Total phosphorus (mg/L)",
+     "Fecal coliform bacteria (per 100 mL)"
+    ],
+    "rows": [
+     [
+      "Raw sewage in",
+      "240",
+      "220",
+      "7.0",
+      "10,000,000"
+     ],
+     [
+      "After primary",
+      "120",
+      "150",
+      "6.0",
+      "5,000,000"
+     ],
+     [
+      "After secondary",
+      "20",
+      "20",
+      "4.5",
+      "200,000"
+     ],
+     [
+      "After tertiary and disinfection",
+      "5",
+      "5",
+      "0.5",
+      "20"
+     ]
+    ]
+   }
+  },
+  "sewage-treatment-s2": {
+   "kind": "visual",
+   "title": "Dissolved oxygen in a river below a sewage outfall, before and after a plant upgrade",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of dissolved oxygen in milligrams per liter at distances from 0 to 40 kilometers below a sewage outfall: before the upgrade it drops from 8.5 to a low of 3 at 10 km and recovers to 8 at 40 km; after the upgrade it dips only to 7.5 at 10 km; invented data",
+    "kind": "line",
+    "x": [
+     0,
+     40
+    ],
+    "y": [
+     0,
+     10
+    ],
+    "xStep": 5,
+    "yStep": 2,
+    "xLabel": "Distance below the outfall (km)",
+    "yLabel": "Dissolved oxygen (mg per L)",
+    "series": [
+     {
+      "name": "Before upgrade",
+      "points": [
+       [
+        0,
+        8.5
+       ],
+       [
+        5,
+        5
+       ],
+       [
+        10,
+        3
+       ],
+       [
+        15,
+        3.5
+       ],
+       [
+        20,
+        5
+       ],
+       [
+        30,
+        7
+       ],
+       [
+        40,
+        8
+       ]
+      ]
+     },
+     {
+      "name": "After upgrade",
+      "points": [
+       [
+        0,
+        8.6
+       ],
+       [
+        5,
+        8
+       ],
+       [
+        10,
+        7.5
+       ],
+       [
+        15,
+        7.6
+       ],
+       [
+        20,
+        7.9
+       ],
+       [
+        30,
+        8.3
+       ],
+       [
+        40,
+        8.5
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-sewage-treatment-1",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the BOD in raw sewage is removed by the end of secondary treatment?",
+   "stimulus": "sewage-treatment-s1",
+   "why": {
+    "correct": "Removed: $220 - 20 = 200$ mg/L. $\\frac{200}{220} \\times 100 = 90.9\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        220,
+        20
+       ]
+      },
+      220
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 9.09090909091,
+      "why": "That is the share left (20 of 220). The share removed is (220 - 20) / 220 × 100."
+     },
+     {
+      "value": 31.8181818182,
+      "why": "That is the share removed by primary treatment alone (220 to 150). The question asks through secondary."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-2",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which stage removes the most BOD?",
+   "stimulus": "sewage-treatment-s1",
+   "options": [
+    "Primary treatment, from 220 to 150 mg/L",
+    "Secondary, from 150 to 20 mg/L",
+    "Tertiary treatment, from 20 to 5 mg/L",
+    "Each stage removes the same amount"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Secondary treatment lowers BOD from 150 to 20 mg/L, a drop of 130. Primary removes 70, tertiary 15.",
+    "options": [
+     "That is a drop of 70 mg/L, less than secondary.",
+     "Right: a drop of 130 mg/L.",
+     "That is a drop of 15 mg/L.",
+     "The drops are 70, 130 and 15 mg/L."
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-3",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does secondary treatment remove so much BOD?",
+   "stimulus": "sewage-treatment-s1",
+   "options": [
+    "Microbes in aerated tanks eat it",
+    "Screens catch the large objects in the sewage",
+    "Chlorine dissolves the organic matter",
+    "Settling tanks let the dissolved matter sink"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In secondary treatment, aerated tanks let bacteria and other microbes eat the dissolved organic matter, so it is broken down in the plant instead of in the river.",
+    "options": [
+     "Right: the plant uses oxygen so the river does not have to.",
+     "Screens act at the start and remove little BOD.",
+     "Chlorine kills germs; it is not the main BOD step.",
+     "Settling is primary treatment; dissolved organics do not sink."
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-4",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "7.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Phosphorus falls from 4.5 to 0.5 mg/L only after tertiary treatment. Why does that step matter for the lake downstream?",
+   "stimulus": "sewage-treatment-s1",
+   "options": [
+    "It raises the water temperature for fish",
+    "It adds oxygen directly to the lake",
+    "It kills the bacteria in the sewage",
+    "It keeps out a nutrient algae need"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Primary and secondary treatment leave most phosphorus. Removing it in tertiary treatment keeps the limiting nutrient out of the lake, which prevents algal blooms and the oxygen drop that follows.",
+    "options": [
+     "Phosphorus removal does not change temperature.",
+     "Removing phosphorus prevents the oxygen drop; it does not add oxygen.",
+     "Disinfection kills bacteria; phosphorus removal targets a nutrient.",
+     "Right: less phosphorus, less eutrophication."
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-5",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Before the upgrade, where in the river was dissolved oxygen lowest?",
+   "stimulus": "sewage-treatment-s2",
+   "options": [
+    "Right at the outfall, at 8.5 mg per L",
+    "40 km below the outfall, at 8.0 mg per L",
+    "About 10 km below, at 3.0 mg per L",
+    "5 km below the outfall, at 5.0 mg per L"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Before the upgrade DO fell to 3.0 mg per L about 10 km below the outfall, then recovered downstream.",
+    "options": [
+     "DO is still high at the outfall; it falls downstream.",
+     "By 40 km the river has nearly recovered.",
+     "Right: the low point of the solid line.",
+     "DO falls further, to 3.0, at 10 km."
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-6",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why was dissolved oxygen lowest some distance downstream rather than right at the outfall?",
+   "stimulus": "sewage-treatment-s2",
+   "options": [
+    "Sewage warms up as it flows and boils off oxygen",
+    "Microbes use oxygen as the waste flows",
+    "Fish gather 10 km downstream and use the oxygen",
+    "The river gets deeper at 10 km"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Microbes in the river break down the organic matter as the water flows. Their oxygen use takes time to pull DO down, so the low point is downstream; then the river recovers as the organic matter is used up and oxygen mixes back in.",
+    "options": [
+     "Flowing water does not heat enough to explain this.",
+     "Right: decomposition takes time and distance.",
+     "Fish use little oxygen compared with decomposers.",
+     "Depth is not shown and does not explain the curve."
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-7",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "At 10 km below the outfall, find the percent change in dissolved oxygen from before to after the upgrade.",
+   "stimulus": "sewage-treatment-s2",
+   "why": {
+    "correct": "$\\frac{(7.5 - 3.0)}{3.0} \\times 100 = 150\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      3,
+      7.5
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 60,
+      "why": "You divided by the after value. Divide by the before value, 3.0 mg per L."
+     },
+     {
+      "value": 250,
+      "why": "250% is 7.5 as a percent of 3.0. Subtract first: (7.5 - 3.0) / 3.0 × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-8",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which claim is best supported by the two curves?",
+   "stimulus": "sewage-treatment-s2",
+   "options": [
+    "The upgrade removed most waste",
+    "The upgrade added oxygen to the river at 40 km",
+    "The river was healthier before the upgrade",
+    "The upgrade moved the low point farther downstream"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "After the upgrade the oxygen dip almost disappears, so better treatment removed most of the oxygen-demanding waste before it reached the river.",
+    "options": [
+     "Right: the dip shrank from 3.0 to 7.5 mg per L at its low point.",
+     "Both curves are near 8 to 8.5 mg per L at 40 km.",
+     "DO was much lower before the upgrade.",
+     "The low point stays near 10 km; it just became much smaller."
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-9",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "order",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the stages of a sewage treatment plant in order.",
+   "options": [
+    "Screens and grit chambers remove large objects and sand",
+    "Primary settling tanks let solids sink as sludge",
+    "Aerated tanks let microbes break down dissolved organic matter",
+    "Tertiary filters and chemicals remove nitrogen and phosphorus",
+    "Chlorine or UV light kills remaining germs",
+    "Clean water is released to a river or lake"
+   ],
+   "why": {
+    "correct": "Physical removal, then biological breakdown, then nutrient removal, then disinfection, then discharge."
+   }
+  },
+  {
+   "id": "env-sewage-treatment-10",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What happens in primary sewage treatment?",
+   "options": [
+    "Microbes break down dissolved organic matter",
+    "Chemicals remove nitrogen and phosphorus",
+    "Ultraviolet light kills the bacteria",
+    "Solids settle out of the water in tanks"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Primary treatment is physical: screens remove large debris, and wastewater sits in settling tanks so solids sink as sludge and grease floats off.",
+    "options": [
+     "That is secondary treatment.",
+     "That is tertiary treatment.",
+     "That is disinfection, the last step.",
+     "Right: a physical process using gravity."
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-11",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is done with the sludge removed during treatment?",
+   "options": [
+    "It is released straight into the river",
+    "It is added to the drinking water supply",
+    "It is digested, dried and disposed of",
+    "It is shipped to the ocean and dumped"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Sludge is digested by microbes (often making methane that can be burned for energy), then dried and landfilled, incinerated, or, if clean enough, used as fertilizer.",
+    "options": [
+     "That would undo the treatment.",
+     "Sludge is waste, not drinking water.",
+     "Right: and digestion can yield methane for energy.",
+     "Ocean dumping of sludge is banned in the United States."
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-12",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does a household septic system treat wastewater?",
+   "options": [
+    "Chlorine tablets in the toilet clean the water",
+    "Solids settle; soil filters the liquid",
+    "The water is piped to a city treatment plant",
+    "The wastewater evaporates from an open pond"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Wastewater flows into an underground tank where solids settle and bacteria break some down; the liquid flows out into a drain field, where soil filters it and microbes break down what is left.",
+    "options": [
+     "Septic systems rely on settling and soil, not chlorine tablets.",
+     "Right: a small, two-part system for one home.",
+     "That describes a sewer system, not a septic system.",
+     "A septic tank is buried and sealed."
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-13",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In some older cities, storm drains and sewers share one pipe. What problem does this cause during heavy rain?",
+   "options": [
+    "Raw sewage overflows into rivers",
+    "The extra water makes the treatment work better",
+    "Rainwater freezes in the pipes and blocks them",
+    "Sludge turns into drinking water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Heavy rain overwhelms the combined system, so untreated sewage mixed with stormwater overflows into rivers (a combined sewer overflow), adding germs and oxygen-demanding waste.",
+    "options": [
+     "Right: a combined sewer overflow.",
+     "The plant is overwhelmed, not helped.",
+     "Freezing is not the problem described.",
+     "That is not what happens."
+    ]
+   }
+  },
+  {
+   "id": "env-sewage-treatment-14",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A city of 80,000 people produces about 300 liters of wastewater per person per day. Write the setup for the liters the plant treats per day, then give the answer in millions of liters.",
+   "why": {
+    "correct": "$80{,}000\\,\\text{people} \\times \\frac{300\\,\\text{L}}{\\text{person}} = 24{,}000{,}000\\,\\text{L}$ a day, which is 24 million liters or $2.4 \\times 10^{7}$ L."
+   },
+   "setup": {
+    "answer": "80000 * 300",
+    "mustUse": [
+     "80000",
+     "300"
+    ],
+    "mistakes": [
+     {
+      "expr": "80000 / 300",
+      "why": "Multiply people by liters per person so the people cancel."
+     }
+    ],
+    "then": {
+     "unit": "L",
+     "units": [
+      "liters"
+     ],
+     "from": {
+      "fn": "mul",
+      "args": [
+       80000,
+       300
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 266.666666667,
+       "why": "You divided. Multiply people by liters per person: 24,000,000 L."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-sewage-treatment-15",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "specific",
+   "practice": "7.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A town's treatment plant has primary and secondary treatment only, and the lake below it has summer algal blooms. Justify adding tertiary treatment.",
+   "why": {
+    "correct": "The justification names what tertiary treatment removes (phosphorus and nitrogen) and how that helps (no nutrient supply for blooms, so no oxygen crash)."
+   },
+   "specific": {
+    "frame": "Tertiary treatment removes ___, which reduces algal blooms because ___.",
+    "slots": {
+     "removes": {
+      "label": "What it removes",
+      "options": [
+       "phosphorus and nitrogen",
+       "large objects such as rags and sticks",
+       "heat from the water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Screens remove large objects at the start of treatment.",
+       "2": "Treatment does not remove heat; that is about thermal pollution."
+      }
+     },
+     "because": {
+      "label": "How it helps",
+      "options": [
+       "algae no longer get the limiting nutrients they need to bloom",
+       "the water becomes too cold for algae",
+       "chlorine kills all the algae in the lake"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Tertiary treatment does not cool the water.",
+       "2": "Chlorine is used at the plant, not added to the lake."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "phosphorus",
+      "nitrogen",
+      "nutrient"
+     ]
+    },
+    "model": "Tertiary treatment removes phosphorus and nitrogen, which reduces algal blooms because algae no longer get the limiting nutrients they need to bloom, so the lake avoids the oxygen drop when blooms die."
+   }
+  }
+ ]
+}

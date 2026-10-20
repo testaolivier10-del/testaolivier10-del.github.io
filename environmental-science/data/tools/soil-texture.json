@@ -1,0 +1,17 @@
+{
+ "slug": "soil-texture",
+ "kind": "simulator",
+ "topic": "soil-properties",
+ "intro": "<p>A soil's texture is its mix of sand, silt and clay. The texture triangle turns three percentages into one class name, and that class predicts how the soil drains, holds water and holds nutrients. Drag the point (or the sliders: the three always add up to 100%), read the class, and watch the magnified sample and the water bars change. Then dig down through the soil horizons.</p>",
+ "howItWorksTitle": "How the triangle works",
+ "howItWorks": "<p>Each side of the triangle is one fraction. Read clay along lines parallel to the base (clay rises toward the top corner), sand along lines parallel to the right side (sand rises toward the bottom left) and silt along lines parallel to the left side (silt rises toward the bottom right). The three lines through any point meet there, and their percentages always sum to 100.</p><p>The twelve class regions are drawn from the USDA class definitions (Soil Survey Manual, 2017), the same rules that name the class, so the picture and the name always agree. The percents are of the mineral fine earth (particles under 2 mm): sand 0.05 to 2 mm, silt 0.002 to 0.05 mm, clay under 0.002 mm.</p><p>Porosity, permeability and water-holding capacity are shown as relative levels: clay has the most total pore space and holds the most water, but its pores are so small that water moves through slowly; sand drains fastest and holds the least. Infiltration rates are typical values for each class, for illustration.</p>",
+ "explore": { "start": [40, 40, 20] },
+ "partTopics": {
+  "h1": "soil-formation", "h2": "soil-formation", "order": "soil-formation", "e1": "soil-formation", "e2": "soil-formation"
+ },
+ "contexts": [
+  { "id": "triangle", "topic": "soil-properties", "types": ["classify", "missing"] },
+  { "id": "water", "topic": "soil-properties", "types": ["porosity", "percolation"] },
+  { "id": "profile", "topic": "soil-formation", "types": ["horizons", "erosion"] }
+ ]
+}

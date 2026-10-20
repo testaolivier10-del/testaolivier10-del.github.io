@@ -1,0 +1,76 @@
+{
+ "topic": "sewage-treatment",
+ "hook": "Before modern sewage treatment, many rivers below cities had stretches where almost nothing could live: the water smelled, fish were gone, and swimmers got sick. Today a city of a million people can return its wastewater to a river clean enough for fish. The trick is a series of steps that copy what nature does, only faster and in a small space.",
+ "prereq": [
+  {
+   "q": "In the eutrophication chain, what uses up dissolved oxygen?",
+   "options": [
+    "Decomposers breaking down dead organic matter",
+    "Living algae making food",
+    "Sunlight on the water",
+    "Cold water"
+   ],
+   "correct": 0,
+   "why": "Decomposers respire as they break down organic matter, using oxygen.",
+   "review": "eutrophication"
+  },
+  {
+   "q": "Which is a point source of water pollution?",
+   "options": [
+    "A sewage plant outfall pipe",
+    "Runoff from many lawns",
+    "Dust from plowed fields",
+    "Exhaust from all cars in a city"
+   ],
+   "correct": 0,
+   "why": "An outfall is a single pipe, a point source.",
+   "review": "pollution-sources"
+  }
+ ],
+ "figure": {
+  "figure": "sewage-treatment-stages",
+  "caption": "Primary treatment is physical, secondary is biological, tertiary removes nutrients, and disinfection kills germs before release."
+ },
+ "chain": [
+  {
+   "cause": "Screens and settling tanks remove debris and let solids sink (primary)",
+   "effect": "large objects, grit and much of the solid matter are removed as sludge"
+  },
+  {
+   "cause": "Microbes in aerated tanks eat the dissolved organic matter (secondary)",
+   "effect": "BOD falls, so the waste will not use up the river's oxygen"
+  },
+  {
+   "cause": "Filters and chemicals remove nitrogen and phosphorus (tertiary)",
+   "effect": "nutrients that would feed algal blooms are kept out of the river"
+  },
+  {
+   "cause": "Chlorine, ozone or UV light treats the water (disinfection)",
+   "effect": "germs are killed before the water is released"
+  },
+  {
+   "cause": "Sludge is digested, dried and disposed of or reused",
+   "effect": "methane can be captured for energy and solids are landfilled, burned or spread as fertilizer"
+  }
+ ],
+ "ideas": [
+  "<b>Primary treatment</b>: physical. Screens, grit chambers and settling tanks remove solids as <b>sludge</b>.",
+  "<b>Secondary treatment</b>: biological. Microbes in aerated tanks break down dissolved organic matter, cutting BOD so the river keeps its oxygen.",
+  "<b>Tertiary treatment</b>: removes nitrogen and phosphorus (preventing eutrophication) and other chemicals. Then <b>disinfection</b> with chlorine, ozone or UV kills germs.",
+  "Homes without sewers use a <b>septic system</b>: a tank where solids settle and a drain field where soil filters the liquid. Combined sewers can overflow untreated sewage in heavy rain."
+ ],
+ "misconception": {
+  "wrong": "Sewage treatment just filters the water.",
+  "right": "Filtering and settling are only the first step. Secondary treatment uses living microbes to eat the dissolved waste, and tertiary treatment and disinfection remove nutrients and kill germs."
+ },
+ "check": [
+  "env-sewage-treatment-10",
+  "env-sewage-treatment-9",
+  "env-sewage-treatment-1",
+  "env-sewage-treatment-2",
+  "env-sewage-treatment-3",
+  "env-sewage-treatment-4",
+  "env-sewage-treatment-14"
+ ],
+ "summary": "Sewage treatment cleans wastewater in stages. Primary treatment physically removes solids as sludge; secondary treatment uses microbes in aerated tanks to break down dissolved organic matter and cut BOD; tertiary treatment removes nitrogen and phosphorus; disinfection kills germs. Sludge is digested and disposed of or reused. Septic systems treat wastewater for single homes, and combined sewers can overflow in storms."
+}

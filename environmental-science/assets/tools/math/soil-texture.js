@@ -84,21 +84,25 @@
     return [a[0] / p.length, a[1] / p.length, a[2] / p.length];
   }
 
-  /* Relative properties, 0 to 1, from the fractions. */
-  function props(sand, silt, clay){
-    var s = sand / 100, si = silt / 100, c = clay / 100;
-    var porosity = 0.35 + 0.2 * c + 0.12 * si;               // total pore space (fraction): sand ~0.35-0.4, clay ~0.5-0.55
-    var perm = Math.max(0.02, Math.min(1, Math.pow(s, 1.6) * 0.95 + 0.05 - 0.6 * c));
-    var hold = Math.max(0.05, Math.min(1, 0.15 + 0.55 * si + 0.75 * c - 0.15 * s));
-    var aer = Math.max(0.05, Math.min(1, 0.2 + 0.8 * s - 0.3 * c));
-    var fert = Math.max(0.05, Math.min(1, 0.15 + 0.9 * c + 0.4 * si - 0.25 * Math.max(0, c - 0.45) * 2));
-    return { porosity: porosity, permeability: perm, holding: hold, aeration: aer, nutrients: fert };
-  }
-  function word(x){ return x >= 0.7 ? 'high' : x >= 0.4 ? 'medium' : 'low'; }
-
   /* Typical infiltration (cm/hr) by class, illustrative mid values within
      the USDA hydrologic soil group ranges. */
   var INFIL = { 'sand': 20, 'loamy-sand': 6, 'sandy-loam': 2.5, 'loam': 1.3, 'silt-loam': 0.7, 'silt': 0.5, 'sandy-clay-loam': 0.4, 'clay-loam': 0.2, 'silty-clay-loam': 0.15, 'sandy-clay': 0.12, 'silty-clay': 0.1, 'clay': 0.06 };
+
+  /* Relative properties, 0 to 1. Porosity is a fraction of the volume
+     (sand about 0.36, clay about 0.5); permeability is the class's typical
+     infiltration rate on a log scale from clay (0) to sand (1), so the word
+     always agrees with the class and with the drills; water held and
+     nutrients rise with the fine fractions. */
+  function props(sand, silt, clay){
+    var s = sand / 100, si = silt / 100, c = clay / 100, id = classify(sand, silt, clay);
+    var porosity = 0.35 + 0.2 * c + 0.12 * si;
+    var perm = (Math.log(INFIL[id]) - Math.log(INFIL.clay)) / (Math.log(INFIL.sand) - Math.log(INFIL.clay));
+    var hold = Math.max(0.05, Math.min(1, 0.15 + 0.55 * si + 0.75 * c - 0.15 * s));
+    var aer = Math.max(0.05, Math.min(1, 0.2 + 0.8 * s - 0.3 * c));
+    var fert = Math.max(0.05, Math.min(1, 0.15 + 0.9 * c + 0.4 * si - 0.25 * Math.max(0, c - 0.45) * 2));
+    return { porosity: porosity, permeability: perm, holding: hold, aeration: aer, nutrients: fert, infil: INFIL[id] };
+  }
+  function word(x){ return x >= 0.7 ? 'high' : x >= 0.4 ? 'medium' : 'low'; }
 
   /* Drainage against a loam, by class (from the infiltration table: more
      than 1.5 times a loam's rate is faster, less than 1/1.5 is slower). */

@@ -72,3 +72,6 @@
 .ech-bar.is-sel{stroke:var(--ink);stroke-width:2;}
 .ech-day{fill:var(--paper);stroke:var(--line);stroke-width:1;}
 .ech-fig .ech-ev,.ech-fig .ech-wv,.ech-fig .ech-wastehead{pointer-events:none;}
+/* chip rows wrap from their left edge (no sideways scroll) */
+.ech-chips{display:flex;flex-wrap:wrap;gap:8px;overflow:visible;}
+.ech-chips[hidden]{display:none;}

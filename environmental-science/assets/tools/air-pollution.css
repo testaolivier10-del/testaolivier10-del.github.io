@@ -81,3 +81,6 @@
 .ap-exh2{fill:#8C8C8C;}
 .ap-pump{fill:#C2571A;} .ap-pumpwin{fill:#F2EED8;} .ap-hose{fill:none;stroke:#2B2B2B;stroke-width:3;} .ap-nozzle{fill:#2B2B2B;}
 .ap-vapor{fill:none;stroke:var(--ap-voc);stroke-width:2.4;stroke-linecap:round;}
+/* chip rows wrap from their left edge (no sideways scroll) */
+.ap-chips{display:flex;flex-wrap:wrap;gap:8px;overflow:visible;}
+.ap-chips[hidden]{display:none;}

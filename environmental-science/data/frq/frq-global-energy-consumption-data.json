@@ -36,7 +36,7 @@
    ],
    "y": [
     0,
-    350
+    400
    ],
    "series": [
     {
@@ -253,7 +253,7 @@
    "prompt": "Country A expects its energy use per person to keep rising. <b>Identify</b> one environmental consequence if this growth is met mostly with coal, and <b>propose</b> a solution that would let country A meet its demand with less of that consequence.",
    "rubric": [
     {
-     "point": "Identifies a consequence of burning more coal: more carbon dioxide and faster climate change, or more air pollution (smog, acid rain, particles) harming health.",
+     "point": "Identifies a consequence of burning more coal: more carbon dioxide and faster climate change, or more air pollution (smoke, soot and fine particles) harming health.",
      "accept": [
       "more air pollution",
       "higher carbon dioxide emissions"

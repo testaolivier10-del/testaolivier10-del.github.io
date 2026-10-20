@@ -69,7 +69,7 @@
     o = o || {};
     var c = E.chain(id, 100), S = E.SOURCES[id], n = c.stages.length + 2, out = [], vert = W < 560;
     var A0, A1, mid, bandMax, cEnd;
-    if(vert){ A0 = 14; A1 = H - 10; bandMax = Math.min(W * 0.26, 100); mid = W * 0.5; cEnd = W - 34; }
+    if(vert){ A0 = 22; A1 = H - 30; bandMax = Math.min(W * 0.26, 100); mid = W * 0.5; cEnd = W - 34; }
     else { A0 = 20; A1 = W - 20; bandMax = Math.min(H * 0.3, 150); mid = 100 + bandMax / 2; cEnd = H - 92; }
     var step = (A1 - A0) / n;
     function at(i){ return A0 + step * (i + 0.5); }
@@ -107,9 +107,13 @@
       }
       g += '</g>';
       out.push(g);
-      var hv = Math.max(hOf(l.e), 14);
-      if(!vert && i > 0 && i < n - 1 && hOf(l.e) < 30) hv = hOf(l.e) + 4;
-      out.push(i === 0 ? T2((at(0) + at(1)) / 2, mid + (vert ? 0 : 5), '100', 'ech-t ech-ev ech-on-band', 'middle') : (vert ? txt(mid + hOf(l.e) / 2 + 6, a + 5, f0(l.e), 'ech-t ech-ev', 'start') : txt(a, mid - hv / 2 - 6, f0(l.e), 'ech-t ech-ev', 'middle')));
+      // values never sit on a flow: on a phone inside the band itself, on a
+      // wide screen in one row above the widest part of the band
+      if(i === 0) out.push(vert ? txt(mid, (at(0) + at(1)) / 2 + 5, '100', 'ech-t ech-ev ech-on-band', 'middle') : txt((at(0) + at(1)) / 2, mid + 5, '100', 'ech-t ech-ev ech-on-band', 'middle'));
+      else if(!vert) out.push(txt(a, mid - bandMax / 2 - 8, f0(l.e), 'ech-t ech-ev', 'middle'));
+      // phone: halfway to the next stage, inside the band when it is wide enough, else just left of it
+      else if(i === n - 1) out.push(txt(mid, a + 16, f0(l.e), 'ech-t ech-ev', 'middle'));
+      else { var ym = a + step / 2 + 5, hw = hOf(l.e); out.push(hw >= 30 ? txt(mid, ym, f0(l.e), 'ech-t ech-ev ech-on-band', 'middle') : txt(mid - hw / 2 - 6, ym, f0(l.e), 'ech-t ech-ev', 'end')); }
     });
     // where the 100 units end up (wide screens with room)
     if(!vert && H - cEnd > 80){
@@ -167,8 +171,8 @@
       '<div class="ech-fig"></div>' +
       '<div class="ech-ctl">' +
         '<div class="ech-views ls-seg" role="group" aria-label="View"><button type="button" class="ech-view" data-v="flow" aria-pressed="true">Energy flow</button><button type="button" class="ech-view" data-v="cmp" aria-pressed="false">Compare</button></div>' +
-        '<div class="ech-srcs ls-scroll" role="group" aria-label="Power source">' + E.ORDER.map(function(id){ return '<button type="button" class="tchip ech-src" data-id="' + id + '" aria-pressed="false">' + esc(E.SOURCES[id].name) + '</button>'; }).join('') + '</div>' +
-        '<div class="ech-meas ls-scroll" role="group" aria-label="Measure" hidden>' + MEASURES.map(function(m){ return '<button type="button" class="tchip ech-m" data-m="' + m.id + '" aria-pressed="false">' + esc(m.label) + '</button>'; }).join('') + '</div>' +
+        '<div class="ech-srcs ech-chips" role="group" aria-label="Power source">' + E.ORDER.map(function(id){ return '<button type="button" class="tchip ech-src" data-id="' + id + '" aria-pressed="false">' + esc(E.SOURCES[id].name) + '</button>'; }).join('') + '</div>' +
+        '<div class="ech-meas ech-chips" role="group" aria-label="Measure" hidden>' + MEASURES.map(function(m){ return '<button type="button" class="tchip ech-m" data-m="' + m.id + '" aria-pressed="false">' + esc(m.label) + '</button>'; }).join('') + '</div>' +
       '</div>' +
       '<div class="ech-say"></div>' +
       T.moreHtml('<div class="ech-home"></div>', 'a home’s month of electricity') +
@@ -243,7 +247,7 @@
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       s.root.addEventListener('click', onClick); s.root.addEventListener('keydown', onKey);
       draw();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ech-src[data-id="gas"]'), text: 'Start here: pick a source' });
+      if(s.mode() === 'explore') s.hint({ target: $('.ech-fig'), inside: true, text: 'Start here: pick a source below, then tap a step' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.ech-fig')); }
     }
     draw();

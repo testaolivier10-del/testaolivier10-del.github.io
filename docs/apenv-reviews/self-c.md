@@ -38,6 +38,7 @@ plate-tectonics-boundaries, soil-formation-horizons, soil-properties-texture-tri
 - `node scripts/check-apenv-content.mjs --topic <id>`: ok for all 9 topics; full run 0 failing, FRQ 0 failing.
 - `node scripts/check-apenv-map.mjs --check`: nothing used before it is taught.
 - `APENV_PUBLISHED=unit-4 node scripts/build-apenv.mjs --out <scratch>`: 9 topics built; one notes page loaded in a browser with no errors.
+- `node --test scripts/test/apenv-*.test.mjs`: 142 pass, 3 fail, all in builder T3's in-progress tool tests (air-pollution, earth-climate, energy-chain), not in content.
 - No em dashes; American spelling.
 
 ## Map edits

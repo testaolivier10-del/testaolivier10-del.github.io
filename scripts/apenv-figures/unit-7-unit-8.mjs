@@ -648,22 +648,55 @@ FIG['solid-waste-landfill'] = () => {
 FIG['waste-reduction-hierarchy'] = () => {
   let s = '';
   const bands = [
-    ['Reduce', 'less packaging, durable goods, buy only what you need', GREEN],
-    ['Reuse', 'refillable bottles, cloth bags, repair, donate', '#4FA06A'],
-    ['Recycle and compost', 'aluminum cans, paper; food and yard scraps to compost', '#B5A23A'],
-    ['Recover energy', 'waste-to-energy plants, landfill gas to electricity', '#D98A3A'],
-    ['Dispose', 'sanitary landfill', RED],
+    ['Reduce', ['less packaging, durable', 'goods, buy what you need'], GREEN],
+    ['Reuse', ['refillable bottles, cloth', 'bags, repair, donate'], '#4FA06A'],
+    ['Recycle and compost', ['aluminum cans, paper;', 'food and yard scraps'], '#9A8A2A'],
+    ['Recover energy', ['waste-to-energy plants,', 'landfill gas to power'], '#C9762A'],
+    ['Dispose', ['sanitary landfill'], RED],
   ];
   bands.forEach(([name, ex, col], i) => {
-    const y = 30 + i * 74, w = 560 - i * 90, x = 250 - w / 2 + 70;
+    const y = 30 + i * 74, w = 460 - i * 72, x = 300 - w / 2;
     s += path(`M${x},${y} L${x + w},${y} L${x + w - 45},${y + 64} L${x + 45},${y + 64} z`, col, 'none', 0);
     s += T(x + w / 2, y + 32, name, { size: 18, weight: 700, fill: '#FFFFFF' });
-    s += T(620, y + 32, ex, { size: 13, anchor: 'start', fill: INK });
+    s += T(560, y + 32, ex, { size: 14, anchor: 'start', fill: INK, lh: 1.3 });
   });
   s += arrow(14, 40, 14, 380, { sw: 3 });
   s += `<text x="34" y="210" font-size="14" font-weight="700" fill="${INK}" text-anchor="middle" transform="rotate(-90 34 210)">most preferred to least preferred</text>`;
   return svg(800, 420, 'The waste hierarchy',
     'An inverted pyramid of five bands, most preferred at the top: reduce (less packaging, durable goods), reuse (refillable bottles, cloth bags, repair), recycle and compost (aluminum cans, paper, food and yard scraps), recover energy (waste-to-energy plants, landfill gas), and dispose (sanitary landfill) at the bottom.', s);
+};
+
+/* 8.11 The stages of a sewage treatment plant (diagram). */
+FIG['sewage-treatment-stages'] = () => {
+  let s = '';
+  const st = [
+    ['Screens and', 'grit chamber', 'remove debris and sand', '#E2E0D8', INK],
+    ['Primary', 'settling tank', 'solids sink as sludge', PALE, OLIVE],
+    ['Secondary', 'aeration tank', 'microbes eat organic matter', '#E5F1E8', GREEN],
+    ['Tertiary', 'filters', 'remove N and P', '#E8F2F9', BLUE],
+    ['Disinfection', 'chlorine or UV', 'kills germs', '#FCEFE6', RED],
+  ];
+  const W = 130, gap = 24, y = 90, H = 120;
+  s += T(30, 60, ['raw', 'sewage'], { size: 13, weight: 700, lh: 1.2 });
+  s += arrow(10, y + H / 2, 22, y + H / 2, { sw: 3 });
+  st.forEach(([a, b, c, fill, col], i) => {
+    const x = 24 + i * (W + gap);
+    s += box(x, y, W, H, null, { fill, stroke: col, sw: 2.5 });
+    s += T(x + W / 2, y + 26, a, { size: 15, weight: 700, fill: col });
+    s += T(x + W / 2, y + 46, b, { size: 14, weight: 700, fill: col });
+    s += T(x + W / 2, y + 86, c.length > 18 ? [c.split(' ').slice(0, 2).join(' '), c.split(' ').slice(2).join(' ')] : c, { size: 13, lh: 1.25 });
+    if (i < 4) s += arrow(x + W + 2, y + H / 2, x + W + gap - 2, y + H / 2, { sw: 3 });
+  });
+  s += arrow(24 + 4 * (W + gap) + W / 2, y + H + 4, 24 + 4 * (W + gap) + W / 2, y + H + 46, { sw: 3, color: BLUE, m: 'arB' });
+  s += T(24 + 4 * (W + gap) + W / 2, y + H + 66, ['clean water', 'to the river'], { size: 13, weight: 700, fill: BLUE, lh: 1.2 });
+  // sludge path
+  for (const i of [1, 2]) { const x = 24 + i * (W + gap) + W / 2; s += line(x, y + H, x, 290, '#8C7A5A', 3, '6 4'); }
+  s += line(24 + 1 * (W + gap) + W / 2, 290, 24 + 2 * (W + gap) + W / 2, 290, '#8C7A5A', 3, '6 4');
+  s += arrow(24 + 1.5 * (W + gap) + W / 2, 290, 24 + 1.5 * (W + gap) + W / 2, 312, { color: '#8C7A5A', sw: 3 });
+  s += box(140, 314, 260, 64, ['Sludge digester: methane for energy;', 'solids landfilled, burned or used', 'as fertilizer'], { fill: '#F3EDE2', stroke: '#8C7A5A', size: 13 });
+  s += T(160, 30, 'physical', { size: 13, fill: GREY, italic: true }) + T(330, 30, 'biological', { size: 13, fill: GREY, italic: true }) + T(560, 30, 'nutrients and germs', { size: 13, fill: GREY, italic: true });
+  return svg(800, 400, 'Stages of sewage treatment',
+    'Flow diagram from left to right: raw sewage enters screens and a grit chamber that remove debris and sand; a primary settling tank where solids sink as sludge; a secondary aeration tank where microbes eat organic matter; tertiary filters that remove nitrogen and phosphorus; and disinfection with chlorine or UV that kills germs, after which clean water goes to the river. Sludge from the primary and secondary tanks goes to a digester that makes methane for energy; the solids are landfilled, burned or used as fertilizer.', s);
 };
 
 export { FIG };

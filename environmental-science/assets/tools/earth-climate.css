@@ -115,3 +115,6 @@
 .ec-bar-w{fill:var(--ec-hot);} .ec-bar-c{fill:var(--ec-cool);}
 .ec-meanline{stroke:var(--cink);stroke-width:2.4;stroke-dasharray:6 4;}
 .ec-detchart svg{width:100%;height:auto;}
+/* chip rows wrap from their left edge (no sideways scroll) */
+.ec-chips{display:flex;flex-wrap:wrap;gap:8px;overflow:visible;}
+.ec-chips[hidden]{display:none;}

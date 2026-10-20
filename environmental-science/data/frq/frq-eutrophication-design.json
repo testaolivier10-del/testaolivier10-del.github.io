@@ -1,0 +1,223 @@
+{
+ "id": "frq-eutrophication-design",
+ "type": "design",
+ "points": 10,
+ "title": "Phosphate, algae and dissolved oxygen in pond-water tanks",
+ "units": [
+  "unit-8"
+ ],
+ "topics": [
+  "eutrophication",
+  "thermal-pollution",
+  "pollution-sources"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "4.C",
+  "4.E",
+  "2.B",
+  "7.E"
+ ],
+ "stimulus": {
+  "kind": "visual",
+  "title": "Algae and dissolved oxygen in tanks with different phosphate additions",
+  "invented": true,
+  "plot": {
+   "label": "Dual-axis line graph of four pond-water tanks given 0, 0.1, 0.5 and 1.0 milligrams per liter of phosphate: algae after 14 days rise from 4 to 15 to 38 to 55 micrograms of chlorophyll per liter, while dissolved oxygen at dawn on day 21 falls from 8.2 to 7.0 to 4.1 to 2.3 milligrams per liter; invented data",
+   "kind": "dual",
+   "x": [
+    0,
+    1
+   ],
+   "y": [
+    0,
+    60
+   ],
+   "yRight": [
+    0,
+    10
+   ],
+   "xStep": 0.25,
+   "yStep": 10,
+   "xLabel": "Phosphate added (mg per L)",
+   "yLabel": "Algae (µg per L)",
+   "yRightLabel": "Dawn DO (mg per L)",
+   "series": [
+    {
+     "name": "Algae",
+     "axis": "left",
+     "points": [
+      [
+       0,
+       4
+      ],
+      [
+       0.1,
+       15
+      ],
+      [
+       0.5,
+       38
+      ],
+      [
+       1,
+       55
+      ]
+     ]
+    },
+    {
+     "name": "Dawn DO",
+     "axis": "right",
+     "points": [
+      [
+       0,
+       8.2
+      ],
+      [
+       0.1,
+       7
+      ],
+      [
+       0.5,
+       4.1
+      ],
+      [
+       1,
+       2.3
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "A student set up four identical 40-liter tanks of pond water in a sunny greenhouse and added 0, 0.1, 0.5 or 1.0 mg/L of phosphate. Algae were measured after 14 days, and dissolved oxygen was measured at dawn on day 21, after many algae had died. <b>Write</b> a testable hypothesis for the effect of phosphate on algae.",
+   "rubric": [
+    {
+     "point": "A testable, directional hypothesis linking phosphate to algae: if more phosphate is added, then algae will increase (a reason is not required but may be given).",
+     "accept": [
+      "If more phosphate is added, algae growth will increase",
+      "Tanks with more phosphate will have more algae because phosphorus is the limiting nutrient"
+     ]
+    }
+   ],
+   "sample": "If more phosphate is added to the tanks, then the amount of algae will increase, because phosphorus is the limiting nutrient for algae in fresh water."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Identify</b> the independent variable and the dependent variable for the algae measurement.",
+   "rubric": [
+    {
+     "point": "Independent variable: the amount of phosphate added (mg/L).",
+     "accept": [
+      "phosphate concentration",
+      "amount of phosphate added"
+     ]
+    },
+    {
+     "point": "Dependent variable: the amount of algae (chlorophyll, in µg/L) after 14 days.",
+     "accept": [
+      "algae amount measured as chlorophyll",
+      "algae growth"
+     ]
+    }
+   ],
+   "sample": "The independent variable is the amount of phosphate added to each tank. The dependent variable is the amount of algae, measured as chlorophyll in micrograms per liter after 14 days."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Identify</b> the control in this experiment, and <b>describe</b> its purpose.",
+   "rubric": [
+    {
+     "point": "Identifies the control: the tank with 0 mg/L phosphate added.",
+     "accept": [
+      "the tank with no phosphate",
+      "0 mg/L tank"
+     ]
+    },
+    {
+     "point": "Describes its purpose: a baseline showing algae and oxygen without added phosphate, for comparison with the treated tanks.",
+     "accept": [
+      "a baseline to compare against",
+      "shows what happens without added phosphate"
+     ]
+    }
+   ],
+   "sample": "The control is the tank with no phosphate added. It is a baseline: it shows how much algae grows and how much oxygen there is without added phosphate, so any difference in the other tanks can be credited to the phosphate."
+  },
+  {
+   "label": "d",
+   "points": 1,
+   "prompt": "<b>Identify</b> one variable that should be held constant across the tanks.",
+   "rubric": [
+    {
+     "point": "Any valid constant: water volume, source of pond water, water temperature, light, nitrate level, tank size or shape, starting amount of algae.",
+     "accept": [
+      "same volume of pond water",
+      "same light and temperature",
+      "same nitrate level"
+     ]
+    }
+   ],
+   "sample": "The water temperature should be kept the same in every tank, because temperature also changes algae growth and dissolved oxygen."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "Using the graph, <b>explain</b> why dissolved oxygen on day 21 is lowest in the tank with the most phosphate. Include every step.",
+   "rubric": [
+    {
+     "point": "Links phosphate to more algae, then to more algae dying (the bloom dies back).",
+     "accept": [
+      "more phosphate caused a bigger bloom that then died",
+      "the 1.0 mg/L tank grew the most algae, 55 µg/L, and the most died"
+     ]
+    },
+    {
+     "point": "Explains that decomposers break down the dead algae and use oxygen, so dissolved oxygen falls (2.3 mg/L in that tank).",
+     "accept": [
+      "decomposition of the dead algae used up oxygen",
+      "bacteria respire as they decompose the algae, lowering DO"
+     ]
+    }
+   ],
+   "sample": "The tank with 1.0 mg/L of phosphate grew the most algae (55 µg/L). When those algae died, decomposers broke them down and used dissolved oxygen in respiration. With the most dead algae to decompose, that tank lost the most oxygen, falling to 2.3 mg/L by dawn on day 21."
+  },
+  {
+   "label": "f",
+   "points": 1,
+   "prompt": "The student wants to test thermal pollution instead. <b>Describe</b> one change to the design, and <b>predict</b> its effect on dissolved oxygen.",
+   "rubric": [
+    {
+     "point": "Describes changing the independent variable to water temperature (for example 15, 20, 25 and 30 °C with no phosphate added) and predicts that dissolved oxygen will decrease as temperature increases.",
+     "accept": [
+      "heat tanks to different temperatures; DO will be lower in warmer tanks",
+      "use temperature as the independent variable; warmer water holds less oxygen"
+     ]
+    }
+   ],
+   "sample": "Instead of phosphate, the student could keep tanks at 15, 20, 25 and 30 °C with no phosphate added. Dissolved oxygen will decrease as temperature increases, because warmer water holds less oxygen."
+  },
+  {
+   "label": "g",
+   "points": 1,
+   "prompt": "The pond the water came from drains a watershed of corn fields. <b>Propose</b> one practice the farmers could use to reduce phosphate reaching the pond, and <b>explain</b> how it works.",
+   "rubric": [
+    {
+     "point": "A realistic farm practice with how it works, such as buffer strips of grass and trees that slow runoff and take up phosphate, soil testing so only needed fertilizer is applied, cover crops or no-till that reduce erosion of phosphate-bearing soil.",
+     "accept": [
+      "buffer strips that absorb phosphate before runoff reaches the pond",
+      "apply fertilizer only as soil tests show is needed, so less is left to wash off"
+     ]
+    }
+   ],
+   "sample": "The farmers could plant buffer strips of grass and trees between the fields and the pond. The plants slow the runoff and take up phosphate, and they trap soil particles that carry phosphorus, so less reaches the pond."
+  }
+ ]
+}

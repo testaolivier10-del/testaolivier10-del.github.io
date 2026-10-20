@@ -77,7 +77,7 @@
     // the inversion lid: a warm layer drawn as a band
     if(lid != null){
       out.push('<rect class="ap-lid" x="' + n2(x0) + '" y="' + n2(lid - 14) + '" width="' + n2(w) + '" height="28"/>');
-      out.push(txt(x0 + w - 8, lid + 4, 'Warm layer (inversion lid)', 'ap-t ap-s ap-on-lid', 'end'));
+      out.push(txt(x0 + w - 8, lid + 4, 'Warm layer (inversion lid)', 'ap-t ap-s ap-b ap-on-lid ap-halo', 'end'));
     }
     // haze: NO2 brown, ozone pale, filling the mixed layer
     var top = lid != null ? lid : y0 + h * 0.1, hz = Math.min(0.75, no2 / 160), oz = Math.min(0.6, o3 / 220);
@@ -184,7 +184,7 @@
       '<div class="ap-ctl">' +
         '<div class="ap-views ls-seg" role="group" aria-label="View"><button type="button" class="ap-view" data-v="smog" aria-pressed="true">Smog day</button><button type="button" class="ap-view" data-v="acid" aria-pressed="false">Acid rain</button></div>' +
         '<div class="ap-g" data-g="smog"><div class="ap-row"></div><div class="ap-btns ls-act"><button type="button" class="btn-press sm ls-btn ls-pri ap-play">Play the day</button><button type="button" class="tchip ap-inv" aria-pressed="false">Inversion</button></div></div>' +
-        '<div class="ap-g" data-g="acid" hidden><div class="ap-row2"></div><div class="ap-rock ls-scroll" role="group" aria-label="Bedrock"><button type="button" class="tchip ap-r" data-r="0" aria-pressed="true">Granite</button><button type="button" class="tchip ap-r" data-r="1" aria-pressed="false">Limestone</button></div></div>' +
+        '<div class="ap-g" data-g="acid" hidden><div class="ap-row2"></div><div class="ap-rock ap-chips" role="group" aria-label="Bedrock"><button type="button" class="tchip ap-r" data-r="0" aria-pressed="true">Granite</button><button type="button" class="tchip ap-r" data-r="1" aria-pressed="false">Limestone</button></div></div>' +
       '</div>' +
       '<div class="ap-say"></div>' +
       T.moreHtml('<div class="ap-more"></div>', 'traffic, clouds, VOC curve') +
@@ -293,7 +293,7 @@
       host.removeEventListener('click', onClick); host.removeEventListener('change', onChange);
       s.root.addEventListener('click', onClick); s.root.addEventListener('change', onChange);
       draw();
-      if(s.mode() === 'explore') s.hint({ target: sH.input, text: 'Start here: drag the clock' });
+      if(s.mode() === 'explore') s.hint({ target: $('.ap-fig'), inside: true, text: 'Start here: drag the Time of day slider' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ if(!anim) draw(); }, 60); }).observe($('.ap-fig')); }
     }
     draw();
