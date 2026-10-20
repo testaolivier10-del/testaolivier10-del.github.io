@@ -9,10 +9,10 @@ Every other review looks at stills. This one reads every frame of final.mp4 and 
 For each finding, and around every big change, it saves a frame strip (every 2nd frame across about 0.8 s)
 so the fresh eyes reviewer sees the motion itself, not one still on either side of it.
 
-usage: python3 motion_qc.py <video.mp4> [--long] [--audio VOICE] [--out DIR]
-  --audio  file whose sound marks when the narrator talks: final_nomusic.mp4 for Shorts, the voice only mix for long
-           videos (default: final_nomusic.mp4 next to the video if it exists, else the video itself; music then
-           counts as talking, so give the voice file whenever there is one)
+usage: python3 motion_qc.py <video.mp4> [--long] [--meta META] [--audio VOICE] [--out DIR]
+  When the narrator talks comes from, in order: --meta, or meta.json next to the video (both engines write it: each
+  beat's exact start T and length D), else --audio or final_nomusic.mp4 next to the video (sound above -38 dB), else
+  the video itself (music then counts as talking; the report's talk_source says which was used).
   --long  long video limits (a freeze while talking is flagged after 6 s, not 1.5 s; calm teaching is allowed)
 output: DIR/report.json, DIR/strip_<n>_<time>.png, and a short summary on stdout. Exit 1 if any FROZEN or JUMP.
 Needs ffmpeg, ffprobe, numpy, Pillow (all in setup.sh / setup_long.sh)."""
@@ -70,13 +70,27 @@ def main():
     vw, vh, fps, dur = probe(path)
     w, h = (W, H) if vh >= vw else (H, W)
     F = frames(path, w, h)
-    d = np.abs(np.diff(F, axis=0)).mean(axis=(1, 2))          # change from frame i to i+1, in grey levels
+    D = np.abs(np.diff(F, axis=0))
+    d = D.mean(axis=(1, 2))                                    # change from frame i to i+1, in grey levels
+    th, tw_ = h // 7 if h > w else h // 4, w // 4 if h > w else w // 7      # 4 x 7 tiles of the frame
+    T = D[:, : th * (h // th), : tw_ * (w // tw_)].reshape(len(D), h // th, th, w // tw_, tw_).mean(axis=(2, 4))
+    # the most changed tile of the ART (not the title and caption zones, whose text switches in one frame by design):
+    # catches a small piece popping in. Shorts: tile rows 2 to 4 of 7 (about 550 to 1370 px); long: rows 1 to 3 of 4.
+    T = T[:, 2:5, :] if h > w else T[:, 1:4, :]
+    tmax = T.reshape(len(D), -1).max(axis=1)
     t_of = lambda i: (i + 1) / fps
-    voice = a[a.index("--audio") + 1] if "--audio" in a else None
-    if not voice:
-        nm = os.path.join(os.path.dirname(os.path.abspath(path)), "final_nomusic.mp4")
-        voice = nm if os.path.exists(nm) and os.path.abspath(nm) != os.path.abspath(path) else path
-    talk = speech(voice, dur)
+    here = os.path.dirname(os.path.abspath(path))
+    meta = a[a.index("--meta") + 1] if "--meta" in a else os.path.join(here, "meta.json")
+    voice = None
+    if os.path.exists(meta):
+        m = json.load(open(meta)); talk = sorted((m["T"][k], m["T"][k] + m["D"][k]) for k in m["D"] if k in m["T"])
+        voice = "meta:" + meta
+    else:
+        voice = a[a.index("--audio") + 1] if "--audio" in a else None
+        if not voice:
+            nm = os.path.join(here, "final_nomusic.mp4")
+            voice = nm if os.path.exists(nm) and os.path.abspath(nm) != os.path.abspath(path) else path
+        talk = speech(voice, dur)
     still = d < 0.15                                           # practically no change
     freeze_min = 6.0 if long else 1.5
     findings = []
@@ -89,9 +103,9 @@ def main():
             while j + 1 < len(d) and still[j + 1]: j += 1
             a_, b_ = t_of(i) - 1 / fps, t_of(j)
             if b_ - a_ >= freeze_min and overlap(a_, b_, talk) >= freeze_min * 0.8:
-                end_card = b_ >= dur - 1.0     # the closing card that runs to the end is meant to hold still
+                end_card = b_ >= dur - 1.0 and b_ - a_ <= (25.0 if long else 4.5)   # the closing card may hold, briefly
                 findings.append(dict(kind="END_CARD" if end_card else "FROZEN", t=round(a_, 2), end=round(b_, 2),
-                                     note=(f"closing card holds {b_ - a_:.1f} s (fine if the narration is over; check the voice file was given)"
+                                     note=(f"closing card holds {b_ - a_:.1f} s (fine: the narration is over)"
                                            if end_card else f"picture unchanged {b_ - a_:.1f} s while the narrator talks")))
             i = j + 1
         else:
@@ -99,16 +113,21 @@ def main():
 
     # JUMPS: one frame changes far more than the frames around it
     med = np.array([np.median(d[max(0, k - 8):k + 9]) for k in range(len(d))])
-    big = d > np.maximum(12.0, 6 * med + 3)                     # a real visual event, much bigger than its neighbourhood
+    tmed = np.array([np.median(tmax[max(0, k - 8):k + 9]) for k in range(len(tmax))])
+    big_whole = d > np.maximum(12.0, 6 * med + 3)               # a real visual event across the frame
+    big_tile = tmax > np.maximum(6.0, 10 * tmed + 4)            # or a sharp change in one part of the frame
+    big = big_whole | big_tile
+    sig = np.where(big_whole, d, tmax)
     small = lambda k, ref: k < 0 or k >= len(d) or d[k] < ref / 3
     k = 0
     while k < len(d):
         if big[k]:
             # a pop or cut is one spike; a flash (one odd frame) is two spikes in a row: on, then off
             span = 2 if (k + 1 < len(d) and big[k + 1]) else 1
-            ref = min(d[k:k + span])
-            if small(k - 1, ref) and small(k + span, ref):
-                findings.append(dict(kind="JUMP", t=round(t_of(k), 2), score=round(float(d[k]), 1),
+            ref = min(sig[k:k + span])
+            quiet = lambda j: j < 0 or j >= len(d) or (d[j] < ref / 3 if big_whole[k] else tmax[j] < ref / 3)
+            if quiet(k - 1) and quiet(k + span):
+                findings.append(dict(kind="JUMP", t=round(t_of(k), 2), score=round(float(sig[k]), 1),
                                      note=("a single odd frame (a flash or a frame from somewhere else)" if span == 2
                                            else "one frame changes much more than its neighbours (a pop or an unplanned cut)")))
             k += span
@@ -144,7 +163,7 @@ def main():
         s = strip(path, t, fps, os.path.join(out, f"strip_t{n:02d}_{t:.1f}.png"), tw)
         if s: strips.append(dict(t=round(t, 2), strip=s))
 
-    rep = dict(video=path, voice_file=voice, duration=round(dur, 2), fps=round(fps, 3), long=long, talking_seconds=round(sum(b - a for a, b in talk), 1),
+    rep = dict(video=path, talk_source=voice, duration=round(dur, 2), fps=round(fps, 3), long=long, talking_seconds=round(sum(b - a for a, b in talk), 1),
                moving_share=round(float((d >= 0.15).mean()), 3), findings=findings, transition_strips=strips)
     json.dump(rep, open(os.path.join(out, "report.json"), "w"), indent=1)
     bad = [f for f in findings if f["kind"] in ("FROZEN", "JUMP")]

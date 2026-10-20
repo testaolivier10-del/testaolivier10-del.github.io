@@ -36,21 +36,26 @@ def beats(mod):
     if hasattr(mod, "CHAPTERS"): return [b for ch in mod.CHAPTERS for b in ch["beats"]]
     return mod.SPEC["beats"]
 
-def spoken(vo):
-    vo = re.sub(r"«([^|»]*)\|[^»]*»", r"\1", vo)
+def spoken(vo, mod=None):
+    """The text that will be voiced: the module's own clean() when it has one (that is what voice_all.py sends)."""
+    if mod is not None and hasattr(mod, "clean"): vo = mod.clean(vo)
+    else: vo = re.sub(r"«([^|»]*)\|[^»]*»", r"\1", vo)
     return re.sub(r"\{\d+\}|\[[^\]]+\]", " ", vo)
 
 def check(name):
     mod = importlib.import_module(name); long = hasattr(mod, "CHAPTERS"); hits = []
     T = terms()
     for b in beats(mod):
-        text = spoken(b["vo"])
+        text = spoken(b["vo"], mod)
+        if "«" in text or "»" in text:      # a mark that would be read aloud: this script's clean() does not resolve them
+            hits.append((b["key"], "«…»", "resolve the marks (copy the o02 script's _MARK block) or write the spoken form directly"))
         for t in T:
             for m in pattern(t["shown"]).finditer(text):
                 hits.append((b["key"], m.group(0), t["spoken"] + (m.group(1) or "")))
         for m in ORB.finditer(text):
             hits.append((b["key"], m.group(0), orbital_spoken(m)))
     for key, shown, say in hits:
+        if shown == "«…»": print(f"  {key}: a «spoken|shown» mark would be read aloud. Fix: {say}"); continue
         fix = f"«{say}|{shown}»" if long else f"vo: {say!r}, disp keeps {shown!r}"
         print(f"  {key}: {shown!r} is in the spoken text. Fix: {fix}")
     print(f"pronounce check {name}: {len(hits)} term(s) to respell" + ("" if hits else ", clean"))
