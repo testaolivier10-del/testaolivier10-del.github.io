@@ -1,0 +1,71 @@
+{
+ "topic": "biomass-energy",
+ "hook": "About a quarter of the world's people still cook mainly with wood, charcoal, dung or crop waste, while some cars run on ethanol from corn and buses on biodiesel from soybean oil. All of it is biomass: sunlight stored by plants a few months or decades ago. That makes biomass renewable, but only when it is used no faster than it grows.",
+ "prereq": [
+  {
+   "q": "What is biomass in an ecosystem?",
+   "options": [
+    "The total mass of living or recently living organisms",
+    "The mass of rock in the soil",
+    "The energy in sunlight",
+    "The water in a lake"
+   ],
+   "correct": 0,
+   "why": "Biomass is organic matter from living things, and it stores energy captured by producers.",
+   "review": "energy-flow"
+  },
+  {
+   "q": "When is a renewable resource depleted?",
+   "options": [
+    "When it is used faster than it is replaced",
+    "When it releases carbon dioxide",
+    "When it is burned",
+    "Never"
+   ],
+   "correct": 0,
+   "why": "Depletable renewables, like forests, shrink if harvest outpaces regrowth.",
+   "review": "renewable-nonrenewable"
+  }
+ ],
+ "figure": {
+  "figure": "biomass-energy-carbon",
+  "caption": "Biomass stores carbon by photosynthesis; burning returns it to the air in hours, and only regrowth takes it back over years to decades."
+ },
+ "chain": [
+  {
+   "cause": "Plants capture carbon dioxide and sunlight by photosynthesis",
+   "effect": "energy and carbon are stored in wood, crops and waste"
+  },
+  {
+   "cause": "The biomass is burned, or turned into biofuels such as ethanol and biodiesel",
+   "effect": "its energy is released, along with carbon dioxide, soot and other pollutants"
+  },
+  {
+   "cause": "New plants grow on the same land at the same rate",
+   "effect": "they take the carbon back up, so the cycle is close to carbon neutral"
+  },
+  {
+   "cause": "Forest is cut faster than it regrows, or cleared for fuel crops",
+   "effect": "carbon dioxide rises, habitat is destroyed and soil erodes"
+  }
+ ],
+ "ideas": [
+  "Biomass energy comes from wood, charcoal, crop waste, dung and plants grown for fuel. It is renewable but depletable.",
+  "<b>Biofuels</b>: <b>ethanol</b> is fermented from crop sugars (corn, sugarcane) and blended into gasoline; <b>biodiesel</b> is made from plant oils or animal fats.",
+  "Burning biomass releases carbon dioxide, soot and particles. Indoor smoke from cooking fires harms the lungs, a major cause of illness in poorer countries.",
+  "Biomass is near carbon neutral only if regrowth keeps pace. Corn ethanol takes much fossil energy to make; clearing forest for fuel crops releases more carbon than the fuel saves."
+ ],
+ "misconception": {
+  "wrong": "Biomass is a clean fuel, because it is renewable and carbon neutral.",
+  "right": "Burning biomass releases carbon dioxide, soot and other pollutants. It is close to carbon neutral only when new growth takes the carbon back at the same rate, and it still pollutes the air."
+ },
+ "check": [
+  "env-biomass-energy-2",
+  "env-biomass-energy-4",
+  "env-biomass-energy-5",
+  "env-biomass-energy-12",
+  "env-biomass-energy-13",
+  "env-biomass-energy-14"
+ ],
+ "summary": "Biomass energy releases the sunlight stored in wood, crops and waste, either by burning or by making biofuels such as ethanol and biodiesel. It is renewable when harvest matches regrowth, and regrowth reabsorbs the carbon dioxide released. But burning biomass pollutes the air, especially indoors, and fuel crops use land, water and fossil energy; clearing forest for them can release more carbon than the fuel saves."
+}

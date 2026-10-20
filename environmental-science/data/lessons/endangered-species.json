@@ -1,0 +1,72 @@
+{
+ "topic": "endangered-species",
+ "hook": "In 1963, fewer than 500 pairs of bald eagles nested in the lower 48 states. DDT had thinned their eggshells, and hunting and the clearing of nesting trees had done the rest. By 2007 there were nearly 10,000 pairs, and the national bird came off the endangered list. Protection worked, but only after the cause was found and stopped.",
+ "prereq": [
+  {
+   "q": "Which traits describe a K-selected species?",
+   "options": [
+    "Few offspring, lots of parental care, slow maturity",
+    "Many offspring, little care",
+    "Short lives, early maturity",
+    "Rapid population booms"
+   ],
+   "correct": 0,
+   "why": "K-selected species reproduce slowly, so they recover slowly from losses.",
+   "review": "r-k-selection"
+  },
+  {
+   "q": "What is a specialist species?",
+   "options": [
+    "One with a narrow niche, such as one food or habitat",
+    "One that eats many foods",
+    "One found in every biome",
+    "One that thrives after disturbance"
+   ],
+   "correct": 0,
+   "why": "Specialists depend on a narrow set of conditions.",
+   "review": "generalists-specialists"
+  }
+ ],
+ "figure": {
+  "figure": "endangered-species-categories",
+  "caption": "Traits that raise extinction risk, and the laws and programs that protect species."
+ },
+ "chain": [
+  {
+   "cause": "Specialist, K-selected species with small ranges",
+   "effect": "cannot easily shift to new food or habitat and replace losses slowly"
+  },
+  {
+   "cause": "Shrinking habitat, hunting, trade, pollution or invaders reduce their numbers",
+   "effect": "they become threatened, then endangered"
+  },
+  {
+   "cause": "Small populations lose genetic diversity",
+   "effect": "they are more vulnerable to disease and change"
+  },
+  {
+   "cause": "The Endangered Species Act, CITES, protected areas and captive breeding",
+   "effect": "can stop the decline and let numbers recover"
+  }
+ ],
+ "ideas": [
+  "<b>Endangered species</b>: in danger of extinction in all or much of its range. <b>Threatened species</b>: likely to become endangered soon.",
+  "Most at risk: specialists, K-selected species, small or isolated populations, species needing large territories, those hunted or traded.",
+  "The <b>Endangered Species Act</b> (US, 1973) lists species, bans harming them and protects critical habitat. <b>CITES</b> is the international treaty controlling trade.",
+  "Recoveries: bald eagle (DDT ban plus protection), California condor and black-footed ferret (captive breeding and release)."
+ ],
+ "misconception": {
+  "wrong": "An endangered species just needs to be bred in zoos to be saved.",
+  "right": "Captive breeding helps when numbers are very low, but a species recovers in the wild only if the cause of decline is removed and enough habitat is protected."
+ },
+ "check": [
+  "env-endangered-species-2",
+  "env-endangered-species-4",
+  "env-endangered-species-5",
+  "env-endangered-species-6",
+  "env-endangered-species-7",
+  "env-endangered-species-8",
+  "env-endangered-species-9"
+ ],
+ "summary": "Endangered species face extinction now; threatened species likely will soon. Specialists, K-selected species, small populations and species that need large territories are most at risk. The US Endangered Species Act protects listed species and their critical habitat, and CITES controls international trade. Recovery works when the cause of decline is removed, as with the bald eagle after DDT was banned."
+}

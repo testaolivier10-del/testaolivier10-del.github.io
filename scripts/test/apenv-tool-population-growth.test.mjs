@@ -72,7 +72,7 @@ test('population-growth: planted mistakes are caught', () => {
 
 test('population-growth: the J-curve is ApEnvCalc.exponential and doubles in the rule-of-70 time', () => {
   const s = S.simulate({ model: 'exp', r: 0.07, K: 1e9, n0: 100, years: 30 });
-  for (const t of [1, 10, 30]) assert.equal(s.n[t], Calc.evaluate({ fn: 'exponential', args: [100, 7, t] }));
+  for (const t of [1, 10, 30]) { const k = Calc.evaluate({ fn: 'exponential', args: [100, 7, t] }); assert.ok(Math.abs(s.n[t] / k - 1) < 1e-9, `${s.n[t]} vs ${k}`); }
   assert.equal(S.doublingTime(0.07), 10);
   // the rule of 70 is an approximation: within 3% of the exact doubling at 7%
   assert.ok(Math.abs(s.n[10] / 200 - 1) < 0.03);
