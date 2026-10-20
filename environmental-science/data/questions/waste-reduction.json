@@ -89,7 +89,7 @@
    "stimulus": "waste-reduction-s1",
    "options": [
     "It makes households produce far less waste overall",
-    "It shifts waste from the trash into recycling and compost",
+    "It shifts trash into recycling and compost",
     "It moves waste from recycling into the trash",
     "It has no effect on where waste goes"
    ],
@@ -185,7 +185,7 @@
     "The fee will cut litter on beaches",
     "Bags handed out fell by 70%",
     "Plastic bags should be banned outright",
-    "The fee burdens low-income families and its benefit is overstated"
+    "The fee is unfair and helps less than claimed"
    ],
    "correct": 3,
    "why": {
@@ -211,7 +211,7 @@
    "options": [
     "It proves the fee eliminated plastic use",
     "It shows reusable bags break down faster",
-    "It suggests part of the plastic saved was replaced by liners",
+    "Some saved plastic came back as liners",
     "It shows beaches have more litter than before"
    ],
    "correct": 2,
@@ -237,8 +237,8 @@
    "stimulus": "waste-reduction-s2",
    "options": [
     "Paper bags make up most beach litter",
-    "Checkout bags are a large part of beach litter",
-    "Reusable bags are never thrown away",
+    "Checkout bags are a big share of litter",
+    "Reusable bags are seldom thrown away",
     "Shoppers will stop buying groceries"
    ],
    "correct": 1,
@@ -282,7 +282,7 @@
    "diff": 2,
    "q": "Which action is an example of source reduction?",
    "options": [
-    "Designing products with less packaging",
+    "Using less packaging on products",
     "Recycling aluminum cans into new cans",
     "Burning trash to make electricity",
     "Collecting methane from a landfill"
@@ -311,7 +311,7 @@
     "Recycled aluminum is lighter, so it is cheaper to ship",
     "Recycling turns aluminum into a fuel",
     "Recycled cans need no sorting or cleaning",
-    "It skips mining ore and the energy-hungry step of freeing the metal"
+    "It skips mining and refining ore"
    ],
    "correct": 3,
    "why": {
@@ -336,7 +336,7 @@
    "options": [
     "It increases the need for mining new ore",
     "It adds methane to landfills",
-    "Collection and sorting cost money, and some plastics have weak markets",
+    "Collecting and sorting cost money",
     "It makes products impossible to reuse"
    ],
    "correct": 2,
@@ -361,7 +361,7 @@
    "q": "How does composting food scraps reduce methane from landfills?",
    "options": [
     "Compost absorbs the methane the landfill makes",
-    "Food breaks down with oxygen instead of without it, so less methane forms",
+    "Food decays with oxygen, so less methane forms",
     "Composting turns food into plastic",
     "Composting burns food at high temperature"
    ],
@@ -378,6 +378,32 @@
   },
   {
    "id": "env-waste-reduction-13",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which choice is an example of reuse rather than recycling?",
+   "options": [
+    "Refilling a glass milk bottle many times",
+    "Melting glass bottles into new jars",
+    "Shredding paper into pulp for new paper",
+    "Grinding plastic into flakes for fleece"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Refilling a glass bottle uses the same item again without breaking it down. Melting it into new glass would be recycling.",
+    "options": [
+     "Right: the same bottle is used again.",
+     "Melting into new products is recycling.",
+     "Turning material into pulp is recycling.",
+     "Processing into new material is recycling."
+    ]
+   }
+  },
+  {
+   "id": "env-waste-reduction-14",
    "unit": "unit-8",
    "topic": "waste-reduction",
    "type": "setup",
@@ -423,7 +449,7 @@
    }
   },
   {
-   "id": "env-waste-reduction-14",
+   "id": "env-waste-reduction-15",
    "unit": "unit-8",
    "topic": "waste-reduction",
    "type": "specific",
